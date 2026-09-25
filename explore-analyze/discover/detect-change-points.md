@@ -1,8 +1,8 @@
 ---
 navigation_title: Detect change points
 applies_to:
-  stack: ga 9.5+
   serverless: ga
+  stack: ga 9.5+
 products:
   - id: kibana
 type: how-to

@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/try-esql.html
 navigation_title: Get started with ES|QL
 applies_to:
-  stack: ga
   serverless: ga
+  stack: ga
 products:
   - id: kibana
 type: tutorial
@@ -38,7 +38,7 @@ Discover shows the rows the query returns. The first command names that data, so
 
 `FROM` names an index, a data stream, or an alias. This tutorial uses the sample web logs. When your data is a time series data stream, start with [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) instead of `FROM`.
 
-{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` PromQL series start with [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4` PromQL series start with [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md).
 
 The full list is in [source commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands). What you can name in `FROM` is in the [`FROM` reference](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from).
 
@@ -48,7 +48,7 @@ This tutorial uses {{esql}} mode. Classic mode uses data views with Kibana Query
 2. If the editor is not already in {{esql}} mode, switch to it from either location:
 
    - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
-   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
    If the editor already shows an {{esql}} query, skip this step. If the tab already has a KQL or Lucene query, Discover converts it when you switch. Switching back to classic mode does not restore that query. Refer to [Revert to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 
@@ -68,11 +68,11 @@ This tutorial uses {{esql}} mode. Classic mode uses data views with Kibana Query
     1. Query the sample web logs you added earlier.
     2. Keep only the `machine.os` and `machine.ram` fields in the results table.
 
-    {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` You can describe this query instead of copying it. In the editor search bar, select **Natural language**, for example `operating system and RAM from the sample web logs`. Refer to [Generate a full query from natural language](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search-nl).
+    {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` You can describe this query instead of copying it. In the editor search bar, select **Natural language**, for example `operating system and RAM from the sample web logs`. Refer to [Generate a full query from natural language](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search-nl).
 
 5. Select **Search** (or **▶Run** in earlier versions).
 
-   {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` If the editor underlines the query, select **Fix with AI** on the error. Refer to [Fix query errors with AI](../query-filter/languages/esql-kibana.md#esql-kibana-ai-fix).
+   {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` If the editor underlines the query, select **Fix with AI** on the error. Refer to [Fix query errors with AI](../query-filter/languages/esql-kibana.md#esql-kibana-ai-fix).
 
 **Result:** The table lists operating systems and RAM values. The chart shows those documents over the time range.
 
@@ -99,7 +99,7 @@ If the commands are hard to read, select {icon}`line_break` **Prettify query** i
 
 `WHERE` drops rows from the table and the chart. `SORT` orders the full result, which is why a later `LIMIT` still shows the highest RAM values rather than an arbitrary 10 rows. `LIMIT 10` only keeps this example short.
 
-{applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview` You can open the editor search bar and type a KQL filter instead of writing `WHERE`. The editor inserts a `WHERE KQL()` command. Refer to [Build {{esql}} queries from KQL syntax](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` You can open the editor search bar and type a KQL filter instead of writing `WHERE`. The editor inserts a `WHERE KQL()` command. Refer to [Build {{esql}} queries from KQL syntax](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search).
 
 1. Copy the following query.
 
@@ -121,7 +121,7 @@ A column header reorders only the rows already retrieved. `SORT` is what orders 
 
 `STATS` replaces each document with one row per group. Here each destination becomes a row, with a count of visits, and the chart follows that aggregation instead of the individual documents.
 
-{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` You can generate that pipe instead of typing it. Add `// count visits by destination`, then press {kbd}`cmd+J` (Mac) or {kbd}`ctrl+J` (Windows/Linux). Refer to [Generate {{esql}} from a comment](../query-filter/languages/esql-kibana.md#esql-kibana-ai-comment).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` You can generate that pipe instead of typing it. Add `// count visits by destination`, then press {kbd}`cmd+J` (Mac) or {kbd}`ctrl+J` (Windows/Linux). Refer to [Generate {{esql}} from a comment](../query-filter/languages/esql-kibana.md#esql-kibana-ai-comment).
 
 1. Copy the following query.
 
@@ -149,7 +149,7 @@ FROM kibana_sample_data_logs
 
 To stay on one destination, filter from that value in the results table. Discover adds a `WHERE` clause for you. Refer to [Refine an {{esql}} query from the results table](esql-results.md#refine-esql-query-from-table).
 
-{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` To ask what the pattern means, select **AI Agent** in the {{kib}} header. The agent uses this query and these rows. Refer to [Analyze your data with AI](discover-get-started.md#analyze-with-ai).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` To ask what the pattern means, select **AI Agent** in the {{kib}} header. The agent uses this query and these rows. Refer to [Analyze your data with AI](discover-get-started.md#analyze-with-ai).
 
 To reopen this query, the columns, and the tabs later, select **Save** in the application menu. You can share the session, or add the session, the chart, or the table to a dashboard.
 
@@ -164,7 +164,7 @@ The steps are in [Save a Discover session for reuse](save-open-search.md) and [S
 - [Use Discover with ES|QL](use-esql.md): Switch modes, browse data sources, work with results, and add variable controls.
 - [Create lookup indices from Discover queries](create-lookup-indices.md): Build or edit a lookup index from a `LOOKUP JOIN` command.
 - [Inspect grouped STATS results in Discover](inspect-grouped-stats.md): Expand `STATS BY` groups, inspect patterns, and filter from a group.
-- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [Detect change points in Discover](detect-change-points.md): Find a spike, dip, or shift in a time series.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Detect change points in Discover](detect-change-points.md): Find a spike, dip, or shift in a time series.
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Commands, functions, and operators, when you want more than this session.
 - [Use ES|QL in the {{kib}} UI](../query-filter/languages/esql-kibana.md): Editor tools, time parameters, AI assistance, and Fast mode.
 - [Learn data exploration and visualization with Kibana](../kibana-data-exploration-learning-tutorial.md): A longer path from Discover into dashboards.

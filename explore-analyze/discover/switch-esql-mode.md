@@ -1,8 +1,8 @@
 ---
 navigation_title: Switch query mode
 applies_to:
-  stack: ga
   serverless: ga
+  stack: ga
 products:
   - id: kibana
 type: how-to
@@ -24,7 +24,7 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 2. Switch from either location:
 
    - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
-   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
 If you've entered a KQL or Lucene query in classic mode, Discover converts it to {{esql}} when you switch:
 

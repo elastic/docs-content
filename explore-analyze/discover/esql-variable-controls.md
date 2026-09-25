@@ -1,8 +1,8 @@
 ---
 navigation_title: Add variable controls
 applies_to:
-  stack: ga 9.2
   serverless: ga
+  stack: ga 9.2
 products:
   - id: kibana
 type: how-to
@@ -33,8 +33,8 @@ You can add them from your Discover {{esql}} query.
 
 ### Allow multi-value selections in a Discover control [esql-multi-values-controls]
 ```{applies_to}
-stack: preview 9.3
 serverless: preview
+stack: preview 9.3
 ```
 
 :::{include} ../_snippets/multi-value-esql-controls.md

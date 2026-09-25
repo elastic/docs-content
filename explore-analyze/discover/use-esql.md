@@ -1,8 +1,8 @@
 ---
 navigation_title: Use Discover with ES|QL
 applies_to:
-  stack: ga
   serverless: ga
+  stack: ga
 products:
   - id: kibana
 type: overview
@@ -26,7 +26,7 @@ The editor itself, time parameters, AI assistance, and Fast mode are covered in 
 | You want to change a value in the query without keeping several copies | [Add variable controls to Discover queries](esql-variable-controls.md) |
 | You need enrichment data for a `LOOKUP JOIN` | [Create lookup indices from Discover queries](create-lookup-indices.md) |
 | You grouped with `STATS BY` and want to look inside the groups | [Inspect grouped STATS results in Discover](inspect-grouped-stats.md) |
-| {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You want to find a spike, dip, or shift in a time series | [Detect change points in Discover](detect-change-points.md) |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` You want to find a spike, dip, or shift in a time series | [Detect change points in Discover](detect-change-points.md) |
 | You want to keep the chart, the table, or the session | [Save a Discover session for reuse](save-open-search.md) |
 
 ## Related pages

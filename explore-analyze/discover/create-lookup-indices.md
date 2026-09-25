@@ -1,8 +1,8 @@
 ---
 navigation_title: Create lookup indices
 applies_to:
-  stack: preview 9.2
   serverless: preview
+  stack: preview 9.2
 products:
   - id: kibana
 type: how-to
@@ -52,7 +52,7 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
 5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
 
    :::{tip}
-   :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+   :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
    The search field supports free text and [KQL](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the filter doesn't match unsaved values.
    :::
 
@@ -151,7 +151,7 @@ The following limitations apply to the lookup index editor in {{kib}}. For gener
 Row display limit
 :   The lookup index editor displays up to 1,000 rows. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index. The `LIMIT` command in your {{esql}} query has no effect on the data shown here.
 
-    {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` The search field accepts KQL syntax for precise filtering. Unsaved rows and values aren't matched until you save the index.
+    {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` The search field accepts KQL syntax for precise filtering. Unsaved rows and values aren't matched until you save the index.
 
 ## Related pages
 

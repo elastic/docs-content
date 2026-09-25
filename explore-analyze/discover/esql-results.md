@@ -1,8 +1,8 @@
 ---
 navigation_title: Work with results
 applies_to:
-  stack: ga
   serverless: ga
+  stack: ga
 products:
   - id: kibana
 type: how-to
@@ -32,7 +32,7 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
 
 :::{tip}
-:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+:applies_to: {"serverless": "preview", "stack": "preview 9.5"}
 You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
 :::
 
@@ -54,7 +54,7 @@ FROM kibana_sample_data_logs
 
 By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs. To customize the visible columns without changing the query, [add fields from the fields list](discover-get-started.md#explore-fields-in-your-data).
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the query doesn't contain transformational commands such as `KEEP` or `STATS`, the time field remains the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query doesn't contain transformational commands such as `KEEP` or `STATS`, the time field remains the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
 
 To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
 
@@ -73,7 +73,7 @@ FROM kibana_sample_data_logs
 ```
 
 :::{note}
-:applies_to: { stack: ga 9.4, serverless: ga }
+:applies_to: { serverless: ga, stack: ga 9.4 }
 When a query without transformational commands (such as `KEEP` or `STATS`) returns 5 or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
 :::
 
@@ -81,8 +81,8 @@ Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Us
 
 Depending on your query, **Discover** provides additional ways to display and organize the results table:
 
-- {applies_to}`{ stack: preview 9.4, serverless: preview }` A `STATS BY` query with a single grouping field displays expandable groups. Refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
-- {applies_to}`{ stack: preview 9.5, serverless: preview }` A `STATS` or `INLINE STATS` query that includes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation displays inline charts. To add sparklines to categorized patterns, refer to [Add sparklines to patterns](inspect-grouped-stats.md#esql-cascade-pattern-sparkline).
+- {applies_to}`{ serverless: preview, stack: preview 9.4 }` A `STATS BY` query with a single grouping field displays expandable groups. Refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
+- {applies_to}`{ serverless: preview, stack: preview 9.5 }` A `STATS` or `INLINE STATS` query that includes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation displays inline charts. To add sparklines to categorized patterns, refer to [Add sparklines to patterns](inspect-grouped-stats.md#esql-cascade-pattern-sparkline).
 
 To reorder or resize columns, adjust the table density or row height, or display the table in full-screen mode, refer to [Customize the Discover view](document-explorer.md).
 
@@ -126,7 +126,7 @@ When your query produces a chart, you can change the chart type, axes, breakdown
 You can keep what you found without saving the Discover session:
 
 - To put the chart on a dashboard, select {icon}`app_dashboard` **Save visualization to dashboard** next to the chart (or {icon}`save` **Save visualization** in earlier versions). Refer to [Add Discover visualizations to dashboards](save-open-search.md#add-discover-visualization-esql).
-- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` To put the current table on a dashboard, select {icon}`app_dashboard` **Save table to dashboard**. Refer to [Save the current table to a dashboard](save-open-search.md#save-table-to-dashboard).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` To put the current table on a dashboard, select {icon}`app_dashboard` **Save table to dashboard**. Refer to [Save the current table to a dashboard](save-open-search.md#save-table-to-dashboard).
 
 To reopen the same query, columns, tabs, and controls later, [save the Discover session](save-open-search.md).
 

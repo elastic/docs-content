@@ -1,8 +1,8 @@
 ---
 navigation_title: Browse data sources
 applies_to:
-  stack: ga 9.4
   serverless: ga
+  stack: ga 9.4
 products:
   - id: kibana
 type: how-to
@@ -25,7 +25,7 @@ The browsers are:
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
-:applies_to: {stack: preview 9.4, serverless: preview}
+:applies_to: {serverless: preview, stack: preview 9.4}
 [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
 :::
 

@@ -1,8 +1,8 @@
 ---
 navigation_title: Inspect grouped STATS
 applies_to:
-  stack: preview 9.4
   serverless: preview
+  stack: preview 9.4
 products:
   - id: kibana
 type: how-to
@@ -33,7 +33,7 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
    **Result:** The table lists one row per group. The results count above the table reports the number of groups instead of the number of documents.
 
    :::{note}
-   :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+   :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
    When searching large datasets, you can get faster, estimated results by using {icon}`bolt` **Fast mode**. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
    :::
 
@@ -54,8 +54,8 @@ Pattern detection on text fields is also available outside {{esql}} from the **P
 
 ## Add sparklines to patterns [esql-cascade-pattern-sparkline]
 ```{applies_to}
-stack: preview 9.5
 serverless: preview
+stack: preview 9.5
 ```
 
 When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) over time, **Discover** renders an inline chart next to the row aggregates. For example, the following query categorizes log messages and renders a sparkline for each pattern:
