@@ -58,7 +58,7 @@ The Threat Intelligence view on the Overview dashboard provides streamlined thre
 The view shows the total number of ingested threat indicators, enabled threat intelligence sources, and ingested threat indicators per source. To learn more about the ingested indicator data, click **View indicators**.
 
 ::::{note}
-For more information about connecting to threat intelligence sources, visit [Enable threat intelligence integrations](/solutions/security/get-started/enable-threat-intelligence-integrations.md).
+For more information about connecting to threat intelligence sources, visit [Enable threat intelligence integrations](/solutions/security/ingest-data/enable-threat-intelligence-integrations.md).
 ::::
 
 

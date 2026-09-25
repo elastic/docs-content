@@ -25,7 +25,7 @@ If indicator data is not appearing in the Indicators table after you installed a
 * Ensure the indicator data you’re ingesting is mapped to [Elastic Common Schema (ECS)](ecs://reference/index.md).
 
 ::::{note}
-These troubleshooting steps also apply to the [Threat Intelligence view](/solutions/security/get-started/enable-threat-intelligence-integrations.md).
+These troubleshooting steps also apply to the [Threat Intelligence view](/solutions/security/ingest-data/enable-threat-intelligence-integrations.md).
 ::::
 
 

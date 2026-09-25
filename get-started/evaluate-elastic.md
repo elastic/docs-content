@@ -203,7 +203,7 @@ Once data is flowing, use the trial to validate the features that will determine
 | Dashboards | Get useful visualizations of your environment, or create your own custom visualization | [Security dashboards](/solutions/security/dashboards.md) |
 | Endpoint protection | Prevent malware and ransomware | [Configure {{elastic-defend}}](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md) |
 | Timeline | Investigate threats in chronological order in an interactive workspace | [Investigate with Timeline](/solutions/security/investigate/timeline.md) |
-| Threat intelligence | Enrich alerts with threat context | [Threat intelligence integrations](/solutions/security/get-started/enable-threat-intelligence-integrations.md) |
+| Threat intelligence | Enrich alerts with threat context | [Threat intelligence integrations](/solutions/security/ingest-data/enable-threat-intelligence-integrations.md) |
 
 :::
 
@@ -285,7 +285,7 @@ In particular, [Index and search basics](/solutions/search/get-started/index-bas
 :::{tab-item} Security
 
 1. Review the [Security getting started guide](/solutions/security/get-started.md).
-2. [Ingest security data](/solutions/security/get-started/ingest-data-to-elastic-security.md) from your environment.
+2. [Ingest security data](/solutions/security/ingest-data.md) from your environment.
 3. Deploy {{elastic-defend}} to protect critical endpoints.
 4. Enable prebuilt detection rules.
 5. Investigate sample security events or anomalous activity.

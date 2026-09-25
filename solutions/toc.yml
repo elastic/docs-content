@@ -589,18 +589,34 @@ toc:
               - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
           - file: security/get-started/elastic-security-ui.md
+          - file: security/get-started/automatic-migration.md
           - file: security/security-serverless-feature-tiers.md
-          - file: security/get-started/ingest-data-to-elastic-security.md
-            children:
-              - file: security/get-started/enable-threat-intelligence-integrations.md
-              - file: security/get-started/automatic-migration.md
-              - file: security/get-started/automatic-import.md
-              - file: security/get-started/content-connectors.md
           - file: security/get-started/spaces-elastic-security.md
             children:
               - file: security/get-started/spaces-defend-faq.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
+      - file: security/ingest-data.md
+        children:
+          - file: security/ingest-data/automatic-import.md
+          - file: security/ingest-data/enable-threat-intelligence-integrations.md
+          - file: security/ingest-data/content-connectors.md
+          - file: security/integrations/ingest-third-party-security-data.md
+            children:
+              - file: security/integrations/aws-config.md
+              - file: security/integrations/aws-inspector.md
+              - file: security/integrations/aws-sec-hub.md
+              - file: security/integrations/aws-security-hub-cspm.md
+              - file: security/integrations/cncf-falco.md
+              - file: security/integrations/google-security-command-center.md
+              - file: security/integrations/microsoft-defender-for-cloud.md
+              - file: security/integrations/microsoft-defender-for-endpoint.md
+              - file: security/integrations/microsoft-defender-xdr.md
+              - file: security/integrations/prisma-cloud.md
+              - file: security/integrations/qualys.md
+              - file: security/integrations/rapid7.md
+              - file: security/integrations/tenablevm.md
+              - file: security/integrations/wiz.md
       - file: security/esql-for-security.md
         children:
           - file: security/esql-for-security/esql-threat-hunting-tutorial.md
@@ -799,22 +815,6 @@ toc:
               - file: security/cloud/d4c/get-started-with-d4c.md
               - file: security/cloud/d4c/d4c-policies.md
               - file: security/cloud/d4c/kubernetes-dashboard.md
-      - file: security/integrations/ingest-third-party-security-data.md
-        children:
-          - file: security/integrations/aws-config.md
-          - file: security/integrations/aws-inspector.md
-          - file: security/integrations/aws-sec-hub.md
-          - file: security/integrations/aws-security-hub-cspm.md
-          - file: security/integrations/cncf-falco.md
-          - file: security/integrations/google-security-command-center.md
-          - file: security/integrations/microsoft-defender-for-cloud.md
-          - file: security/integrations/microsoft-defender-for-endpoint.md
-          - file: security/integrations/microsoft-defender-xdr.md
-          - file: security/integrations/prisma-cloud.md
-          - file: security/integrations/qualys.md
-          - file: security/integrations/rapid7.md
-          - file: security/integrations/tenablevm.md
-          - file: security/integrations/wiz.md
       - file: security/investigate.md
         children:
           - file: security/investigate/discover-security.md
