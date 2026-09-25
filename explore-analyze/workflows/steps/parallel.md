@@ -42,7 +42,7 @@ The step has two modes, and each step must use exactly one of them.
 | `mode` | top level | string | No | Failure policy: `fail-fast` (default) or `settled`. Refer to [Handle branch failures](#workflows-parallel-failures). |
 | `branch-timeout` | top level | duration | No | Maximum time a single branch may run. No default. |
 | `timeout` | top level | duration | No | Maximum time the whole step may run, across all branches. No default. |
-| `if` | top level | string | No | KQL condition that gates the whole step. When it's false, the workflow skips the step and no branch runs. Refer to [Step-level `if`](/explore-analyze/workflows/steps/if.md#workflows-step-level-if). |
+| `if` | top level | string | No | Boolean or KQL expression that determines whether the step runs. When it's false, the workflow skips the step and no branch runs. Refer to [Skip a single step](/explore-analyze/workflows/steps/if.md#workflows-step-level-if). |
 
 Each entry in `branches` takes the following fields:
 
@@ -236,7 +236,7 @@ A branch body must be a straight-line sequence of steps. The following are rejec
 |---|---|
 | Nested flow-control steps: `if`, `switch`, `foreach`, `while` | Put the branching logic in a step before or after the `parallel` step, or move the branch body into a child workflow and call it with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute). |
 | Human-in-the-loop waits: `waitForInput`, `waitForApproval` | Pause before or after the `parallel` step. |
-| Step-level `if` on a step inside a branch | Set `if` on the `parallel` step to gate every branch at once, or evaluate the condition in a step that runs before the `parallel` step. |
+| Step-level `if` inside a branch | Set `if` on the `parallel` step to run or skip every branch together, or evaluate the condition in a step that runs before the `parallel` step. |
 | Step-level `on-failure` inside a branch | `mode: settled` to collect every branch's outcome, then handle failures in a step after the `parallel` step. |
 | Step-level `timeout` inside a branch | `branch-timeout` on the `parallel` step. |
 

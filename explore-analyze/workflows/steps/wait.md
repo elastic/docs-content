@@ -22,8 +22,8 @@ Use the following parameters to configure a `wait` step:
 |-----------|----------|-------------|
 | `name` | Yes | Unique step identifier |
 | `type` | Yes | Step type - must be `wait` |
+| `if` {applies_to}`stack: ga 9.4+` | No | Boolean or KQL expression that determines whether the step runs. When it's false, the workflow skips the pause and continues. Refer to [Skip a single step](/explore-analyze/workflows/steps/if.md#workflows-step-level-if). |
 | `with.duration` | Yes | Duration to wait before continuing (for example, `"5s"`) |
-| `if` {applies_to}`stack: ga 9.4+` | No | KQL condition that determines whether the step runs. When it's false, the workflow skips the pause and continues. Refer to [Step-level `if`](/explore-analyze/workflows/steps/if.md#workflows-step-level-if). |
 
 ```yaml
 steps:

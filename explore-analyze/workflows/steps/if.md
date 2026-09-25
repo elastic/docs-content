@@ -37,7 +37,7 @@ steps:
       # Steps to run if condition is false (optional)
 ```
 
-To skip a single step instead of branching between two sets of steps, set the `if` property on that step. Refer to [Step-level `if`](#workflows-step-level-if).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` To run or skip one step on its own instead of branching between two sets of steps, set `if` on that step. Refer to [Skip a single step](#workflows-step-level-if).
 
 The `condition` field supports the following expression types:
 
@@ -196,12 +196,13 @@ steps:
         type: http
 ```
 
-## Step-level `if` [workflows-step-level-if]
+## Skip a single step [workflows-step-level-if]
 ```{applies_to}
+serverless: ga
 stack: ga 9.4+
 ```
 
-To skip a single step, set the `if` property on the step itself rather than wrapping the step in an `if` step. The step runs only when the condition is true.
+To run a step only when a condition is true, add a step-level `if` to it instead of wrapping it in an `if` step. When the condition is false, the workflow skips the step and continues with the next one.
 
 ```yaml
 steps:
@@ -215,6 +216,6 @@ steps:
 A step-level `if` takes the same boolean and KQL expressions as the `if` step's `condition`, and you can set it on any step type, with two exceptions:
 
 * The `if` step itself. It already branches on its own `condition`, so setting a step-level `if` on it is a validation error.
-* A step inside a [`parallel`](/explore-analyze/workflows/steps/parallel.md) branch body. Set `if` on the `parallel` step to gate every branch at once, or evaluate the condition in a step that runs before the `parallel` step.
+* A step inside a [`parallel`](/explore-analyze/workflows/steps/parallel.md) branch body. Set `if` on the `parallel` step to run or skip every branch together, or evaluate the condition in a step that runs before the `parallel` step.
 
 A step-level `if` expression and an `if` step's `condition` can each be up to 2,000 characters long. For a longer condition, compute the value in an earlier step, for example with [`data.set`](/explore-analyze/workflows/steps/data.md#data-set), and compare that shorter value instead.
