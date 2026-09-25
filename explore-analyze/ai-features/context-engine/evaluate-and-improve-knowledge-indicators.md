@@ -27,6 +27,8 @@ You can inspect and test KIs in a [managed AI index](concepts.md#managed-ai-indi
 
 ## Open a Knowledge Indicator
 
+Follow these steps to inspect a generated KI:
+
 1. Find **Context** in the navigation menu or use the global search field.
 2. Open the AI index you want to inspect.
 3. Select the **Knowledge Indicators** tab.
@@ -101,6 +103,8 @@ Review the KI as context for an agent, not only as a valid document. Confirm tha
 Syntax and runtime verification show that a generated query parses and runs. They do not prove that its fields, grouping, and calculations answer the intended question. Review the query logic and its results before relying on it as guidance for an agent.
 
 ## Check refresh behavior
+
+Follow these steps to verify that later automation runs update the intended KI:
 
 1. Record the KI's `id`, `updated_at`, and provenance run ID.
 2. Run its automation again.

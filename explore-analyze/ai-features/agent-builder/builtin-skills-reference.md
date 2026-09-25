@@ -405,6 +405,8 @@ $$$agent-builder-search-use-case-library-skill$$$ `search.use-case-library` {app
 
 ## Related pages
 
+For more information, refer to the following pages:
+
 - [Skills in {{agent-builder}}](skills.md)
 - [Custom skills](custom-skills.md)
 - [Skill creation guidelines](skill-creation-guidelines.md)

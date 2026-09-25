@@ -27,6 +27,8 @@ This guide covers both routes. Examples on this page use Python, but the same ap
 
 ## Requirements
 
+Before you begin, make sure you have:
+
 * An {{stack}} deployment with an Enterprise license, or an {{serverless-full}} project.
 * The `contextEngine:enabled` advanced setting turned on in the space you want to query. This setting is per space, and the APIs return `404` in any space where it's off.
 * At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI Index](quickstart.md#context-engine-create-ai-index) if you don't have one yet.
@@ -54,12 +56,16 @@ Choose a connection route.
 :::{tab-item} MCP server
 :sync: mcp
 
+Complete the following steps for the MCP server route:
+
 1. Create credentials with the Agent Builder, Context Engine, and Elasticsearch privileges required for MCP access.
 2. Connect to the Agent Builder MCP endpoint.
 3. Load the Context Engine tools.
 :::
 :::{tab-item} Context Engine APIs
 :sync: api
+
+Complete the following steps for the API route:
 
 1. Create credentials with the Context Engine and Elasticsearch privileges required for API access.
 2. Configure the Context Engine API client.
@@ -71,6 +77,8 @@ Choose a connection route.
 
 Your credential needs privileges in both Kibana and Elasticsearch. The MCP route additionally needs Agent Builder **Read**, which is what makes the tools visible.
 
+Create the credential as follows:
+
 1. In Kibana, go to **Stack Management → API Keys** and click `Create API key` 
 2. Leave **Control security privileges** off and define a role with the following privileges:
 
@@ -78,6 +86,8 @@ Your credential needs privileges in both Kibana and Elasticsearch. The MCP route
     :group: ce-transport
     :::::{tab-item} MCP server
     :sync: mcp
+
+    Assign the following privileges:
 
     * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
     * **Kibana privileges**, in the space you want to query: **Agent Builder** at **Read**, and **Context Engine** at **Read**.
@@ -129,6 +139,8 @@ Your credential needs privileges in both Kibana and Elasticsearch. The MCP route
     :::::
     :::::{tab-item} API
     :sync: api
+
+    Assign the following privileges:
 
     * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
     * **Kibana privileges**, in the space you want to query: **Context Engine** at **Read**.
@@ -233,6 +245,8 @@ async def main() -> None:
     tools = [t for t in all_tools if t.name in CONTEXT_ENGINE_TOOLS]   <6>
 ```
 
+The annotations explain the following details:
+
 1. The three Context Engine tool names to filter from the MCP server's full tool list.
 2. Set `KIBANA_SPACE` to target a non-default space. Leave it unset for the default space.
 3. The transport type required by `langchain-mcp-adapters` for the Kibana MCP endpoint.
@@ -315,6 +329,8 @@ def query_ai_indices(query: str, params: dict | None = None, limit: int = 20) ->
     return response.json()
 ```
 
+The annotations explain the following details:
+
 1. Set `KIBANA_SPACE` to target a non-default space. Leave it unset for the default space.
 2. Required on all three endpoints. Without it the request fails with `400`.
 3. Required for `POST` on self-managed and {{ech}} deployments. Harmless elsewhere.
@@ -372,6 +388,8 @@ async def main() -> None:   <1>
     agent = create_agent(llm, tools)
 ```
 
+The annotations explain the following details:
+
 1. `main` is a coroutine function: it must be declared `async def` and run with `asyncio.run(main())`, as in [Step 4](#step-4-ask-a-question).
 2. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
 
@@ -415,6 +433,8 @@ async def main() -> None:
     )
 ```
 
+The annotations explain the following details:
+
 1. The raw URL of the skill file. Any `SKILL.md` works here.
 2. Fetches the skill once, at startup.
 3. Seeds the agent's virtual filesystem. The directory name under `/skills/` identifies the skill.
@@ -452,6 +472,8 @@ def main() -> None:
     )
     agent = create_agent(llm, [list_ai_indices, describe_ai_index, query_ai_indices])
 ```
+
+The annotation explains the following detail:
 
 1. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
 
@@ -495,6 +517,8 @@ def main() -> None:
         checkpointer=InMemorySaver(),   <6>
     )
 ```
+
+The annotations explain the following details:
 
 1. The raw URL of the skill file. Any `SKILL.md` works here.
 2. Fetches the skill once, at startup.
@@ -617,6 +641,8 @@ Set `KIBANA_SPACE` to the space ID before creating the client, so requests go to
 To read from several spaces in one agent, build one client per space and register a separate set of tools for each.
 
 ## Troubleshooting
+
+Use the following table to resolve common integration problems:
 
 | Symptom | Cause | Resolution |
 | :---- | :---- | :---- |

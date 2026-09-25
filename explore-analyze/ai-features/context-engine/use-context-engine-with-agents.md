@@ -35,6 +35,8 @@ Access to an AI index and access to its source data are separate. The integratio
 
 ## Choose an integration
 
+Choose the integration that matches where you build and run the agent:
+
 | Approach | Use it when | How the agent accesses Context Engine |
 |---|---|---|
 | [{{agent-builder}}](use-context-engine-with-agent-builder.md) | You want to build and run the agent in {{kib}}. | Assign one or more AI indices to the agent. {{agent-builder}} adds the Context Engine retrieval tools and describes the assigned indices in the agent's instructions. |

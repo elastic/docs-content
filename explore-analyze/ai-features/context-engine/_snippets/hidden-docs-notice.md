@@ -2,7 +2,7 @@
 :::{important}
 This page is currently hidden from the documentation navigation. The current page is intended for testing Context Engine enablement and the end-to-end workflow while the feature is under development.
 
-**Live pages:**
+The following Context Engine pages are live:
 
 - [Landing page](/explore-analyze/ai-features/context-engine.md)
     - [Get started with Context Engine](/explore-analyze/ai-features/context-engine/quickstart.md)
