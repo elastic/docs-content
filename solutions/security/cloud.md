@@ -13,9 +13,9 @@ products:
 
 # Cloud Security
 
-Elastic Security for Cloud helps you improve your cloud security posture by comparing your cloud configuration to best practices, and scanning for vulnerabilities. It also helps you monitor and investigate your cloud workloads inside and outside Kubernetes.
+Elastic Security for Cloud helps you improve your cloud security posture by comparing your cloud configuration to best practices, inventorying your cloud assets, and scanning for vulnerabilities.
 
-This page describes what each solution does and provides links to more information.
+This page describes what each solution does and provides links to more information. To connect your cloud accounts and set up these capabilities, refer to [Set up cloud security](/solutions/security/cloud/set-up-cloud-security.md).
 
 
 ## Cloud Security Posture Management (CSPM) [_cloud_security_posture_management_cspm]
@@ -55,14 +55,6 @@ Scans your cloud workloads for known vulnerabilities. When it finds a vulnerabil
 [Read the CNVM docs](/solutions/security/cloud/cloud-native-vulnerability-management.md).
 
 
-## Cloud Workload Protection for VMs [_cloud_workload_protection_for_vms]
+## Cloud workload protection [_cloud_workload_protection_for_vms]
 
-Helps you monitor and protect your Linux VMs. It uses {{elastic-defend}} to instantly detect and prevent malicious behavior and malware, and captures workload telemetry data for process, file, and network activity. You can use this data with Elastic’s out-of-the-box detection rules and {{ml}} models. These detections generate alerts that quickly help you identify and remediate threats.
-
-[Read the CWP for VMs docs](/solutions/security/cloud/cloud-workload-protection-for-vms.md).
-
-## Cloud workload protection for Kubernetes 
-
-Uses Elastic's Defend for Containers (D4C) integration to provide cloud-native runtime protections for containerized environments by identifying and optionally blocking unexpected system behavior in Kubernetes containers.
-
-[Read the D4C docs](/solutions/security/cloud/d4c/d4c-overview.md).
+To detect and prevent threats at runtime on your Linux VMs and Kubernetes containers, refer to [Protect cloud workloads](/solutions/security/protect-cloud-workloads.md).
