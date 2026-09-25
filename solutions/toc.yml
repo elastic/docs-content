@@ -677,9 +677,6 @@ toc:
               - file: security/workspace-settings/spaces-elastic-security.md
               - file: security/workspace-settings/data-views-elastic-security.md
               - file: security/workspace-settings/create-runtime-fields-in-elastic-security.md
-      - file: security/esql-for-security.md
-        children:
-          - file: security/esql-for-security/esql-threat-hunting-tutorial.md
       - file: security/ai.md
         children:
           - file: security/ai/large-language-model-performance-matrix.md
@@ -805,27 +802,80 @@ toc:
               - file: security/cloud/d4c/get-started-with-d4c.md
               - file: security/cloud/d4c/d4c-policies.md
               - file: security/cloud/d4c/kubernetes-dashboard.md
-      - file: security/cloud.md
+      - file: security/hunt-and-assess-posture.md
         children:
-          - file: security/cloud/security-posture-management-overview.md
-          - file: security/cloud/cloud-security-posture-management.md
+          - file: security/dashboards.md
             children:
-              - file: security/cloud/findings-page.md
-              - file: security/cloud/benchmarks.md
-              - file: security/cloud/cspm-dashboard.md
-              - file: security/cloud/cspm-frequently-asked-questions-faq.md
-          - file: security/cloud/kubernetes-security-posture-management.md
+              - file: security/dashboards/overview-dashboard.md
+              - file: security/dashboards/detection-response-dashboard.md
+              - file: security/dashboards/cloud-security-posture-dashboard.md
+              - file: security/dashboards/kubernetes-dashboard.md
+              - file: security/dashboards/entity-analytics-dashboard.md
+              - file: security/dashboards/data-quality-dashboard.md
+              - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
+              - file: security/dashboards/detection-rule-monitoring-dashboard.md
+              - file: security/dashboards/endpoint-detection-response-dashboard.md
+          - file: security/cloud.md
             children:
-              - file: security/cloud/findings-page-2.md
-              - file: security/cloud/kspm-benchmarks.md
-              - file: security/cloud/kspm-dashboard.md
-              - file: security/cloud/kspm-frequently-asked-questions.md
-          - file: security/cloud/asset-disc.md
-          - file: security/cloud/cloud-native-vulnerability-management.md
+              - file: security/cloud/security-posture-management-overview.md
+              - file: security/cloud/cloud-security-posture-management.md
+                children:
+                  - file: security/cloud/findings-page.md
+                  - file: security/cloud/benchmarks.md
+                  - file: security/cloud/cspm-dashboard.md
+                  - file: security/cloud/cspm-frequently-asked-questions-faq.md
+              - file: security/cloud/kubernetes-security-posture-management.md
+                children:
+                  - file: security/cloud/findings-page-2.md
+                  - file: security/cloud/kspm-benchmarks.md
+                  - file: security/cloud/kspm-dashboard.md
+                  - file: security/cloud/kspm-frequently-asked-questions.md
+              - file: security/cloud/asset-disc.md
+              - file: security/cloud/cloud-native-vulnerability-management.md
+                children:
+                  - file: security/cloud/findings-page-3.md
+                  - file: security/cloud/cnvm-dashboard.md
+                  - file: security/cloud/cnvm-frequently-asked-questions-faq.md
+          - file: security/advanced-entity-analytics.md
             children:
-              - file: security/cloud/findings-page-3.md
-              - file: security/cloud/cnvm-dashboard.md
-              - file: security/cloud/cnvm-frequently-asked-questions-faq.md
+              - file: security/advanced-entity-analytics/entity-store.md
+                children:
+                  - file: security/advanced-entity-analytics/entity-relationships.md
+              - file: security/advanced-entity-analytics/entity-risk-scoring.md
+                children:
+                  - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
+                  - file: security/advanced-entity-analytics/asset-criticality.md
+                  - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md
+              - file: security/advanced-entity-analytics/manage-entities.md
+                children:
+                  - file: security/advanced-entity-analytics/watchlists.md
+                  - file: security/advanced-entity-analytics/entity-resolution.md
+                  - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+                    children:
+                      - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
+                      - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
+                      - file: security/advanced-entity-analytics/monitor-privileged-user-activities.md
+              - file: security/advanced-entity-analytics/advanced-behavioral-detections.md
+                children:
+                  - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
+                  - file: security/advanced-entity-analytics/anomaly-detection.md
+                  - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
+                  - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
+              - file: security/advanced-entity-analytics/investigate-entities.md
+                children:
+                  - file: security/advanced-entity-analytics/monitor-entity-risk.md
+                  - file: security/advanced-entity-analytics/view-entity-details.md
+              - file: security/advanced-entity-analytics/explore.md
+                children:
+                  - file: security/advanced-entity-analytics/hosts-page.md
+                  - file: security/advanced-entity-analytics/network-page.md
+                    children:
+                      - file: security/advanced-entity-analytics/configure-network-map-data.md
+                      - file: security/advanced-entity-analytics/configure-dns-histogram.md
+                  - file: security/advanced-entity-analytics/users-page.md
+          - file: security/esql-for-security.md
+            children:
+              - file: security/esql-for-security/esql-threat-hunting-tutorial.md
       - file: security/investigate.md
         children:
           - file: security/investigate/discover-security.md
@@ -846,52 +896,4 @@ toc:
           - file: security/investigate/notes.md
           - file: security/investigate/indicators-of-compromise.md
           - file: security/investigate/security-cases.md
-      - file: security/dashboards.md
-        children:
-          - file: security/dashboards/overview-dashboard.md
-          - file: security/dashboards/detection-response-dashboard.md
-          - file: security/dashboards/cloud-security-posture-dashboard.md
-          - file: security/dashboards/kubernetes-dashboard.md
-          - file: security/dashboards/entity-analytics-dashboard.md
-          - file: security/dashboards/data-quality-dashboard.md
-          - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
-          - file: security/dashboards/detection-rule-monitoring-dashboard.md
-          - file: security/dashboards/endpoint-detection-response-dashboard.md
-      - file: security/advanced-entity-analytics.md
-        children:
-          - file: security/advanced-entity-analytics/entity-store.md
-            children:
-              - file: security/advanced-entity-analytics/entity-relationships.md
-          - file: security/advanced-entity-analytics/entity-risk-scoring.md
-            children:
-              - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
-              - file: security/advanced-entity-analytics/asset-criticality.md
-              - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md
-          - file: security/advanced-entity-analytics/manage-entities.md
-            children:
-              - file: security/advanced-entity-analytics/watchlists.md
-              - file: security/advanced-entity-analytics/entity-resolution.md
-              - file: security/advanced-entity-analytics/privileged-user-monitoring.md
-                children:
-                  - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
-                  - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
-                  - file: security/advanced-entity-analytics/monitor-privileged-user-activities.md
-          - file: security/advanced-entity-analytics/advanced-behavioral-detections.md
-            children:
-              - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
-              - file: security/advanced-entity-analytics/anomaly-detection.md
-              - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
-              - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
-          - file: security/advanced-entity-analytics/investigate-entities.md
-            children:
-              - file: security/advanced-entity-analytics/monitor-entity-risk.md
-              - file: security/advanced-entity-analytics/view-entity-details.md
-          - file: security/advanced-entity-analytics/explore.md
-            children:
-              - file: security/advanced-entity-analytics/hosts-page.md
-              - file: security/advanced-entity-analytics/network-page.md
-                children:
-                  - file: security/advanced-entity-analytics/configure-network-map-data.md
-                  - file: security/advanced-entity-analytics/configure-dns-histogram.md
-              - file: security/advanced-entity-analytics/users-page.md
       - file: security/apis.md
