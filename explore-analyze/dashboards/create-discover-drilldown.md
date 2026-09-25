@@ -29,7 +29,7 @@ The drilldown opens **Discover** from the panel itself.
 The following panel types support Discover drilldowns:
 
 * **Visualizations that use a data view**
-* {applies_to}`serverless:` {applies_to}`stack: ga 9.5` **Visualizations based on an {{esql}} query**
+* {applies_to}`serverless:` {applies_to}`stack: ga 9.5+` **Visualizations based on an {{esql}} query**
 
     On {{esql}} panels, {{kib}} turns the dashboard filters and the dashboard KQL or Lucene query into a `WHERE` clause in the panel's ES|QL query. **Discover** then uses that same context. {{kib}} drops a filter when ES|QL cannot express it. The **Explore in Discover** panel action applies the same translation.
 
