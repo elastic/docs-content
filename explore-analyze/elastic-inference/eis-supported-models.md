@@ -40,6 +40,12 @@ For region availability and request routing, refer to [Region and hosting](eis-r
 :caption: Scroll horizontally to view more information.
 :::
 
+### Optical character recognition (OCR) and document parsing models
+
+:::{csv-include} ocr-models.csv
+:caption: Scroll horizontally to view more information.
+:::
+
 ::::{important}
 
 * The applicable terms of use, uptime, and performance for each of the AI models available with EIS are each described in the applicable AI model's Provider Terms and Model Card.
