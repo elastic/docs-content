@@ -92,9 +92,9 @@ Before proceeding:
    For {{eck}}, also identify every `nodeSet` in your {{es}} manifest that has the `data_*` role associated with the tier you want to remove.
    :::
 
-1. Check whether the tier you are removing holds regular indices, [{{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), or both. Use the guidance for the tier you are removing:
+1. Check whether the tier you are removing holds regular indices, [{{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), or both:
 
-   * **Warm tier:** This tier typically holds regular indices. Follow [Remove a tier with regular indices](#remove-regular-indices-self-managed-eck) unless you have manually mounted {{search-snaps}} on the tier.
+   * **Warm tier:** This tier typically holds regular indices unless you have manually mounted {{search-snaps}} on it.
    * **Cold tier:** This tier can hold regular indices or [fully mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) {{search-snaps}}. Check for standard {{ilm-init}}-managed {{search-snap}} indices:
 
       ```sh
@@ -115,9 +115,6 @@ Before proceeding:
    Manually mounted {{search-snaps}} might not use the standard `restored-*` or `partial-*` prefixes. If you mounted snapshots manually, adapt the index names or patterns in these requests to match your configuration.
    :::
 
-   * If the tier does not contain any {{search-snap}} indices, follow [Remove a tier with regular indices](#remove-regular-indices-self-managed-eck).
-   * If the tier contains {{search-snap}} indices, review [Remove a tier with {{search-snaps}}](#remove-searchable-snapshots-self-managed-eck) and select the appropriate procedure based on how the indices are mounted. If regular indices also remain, restore or move the {{search-snap}} indices first, but do not remove the nodes. Then return to the regular indices procedure.
-
 1. Review the {{ilm-init}} policies and index templates that can send data to the tier you are removing, and plan the changes required so that they no longer use the tier. This prevents newly created indices and future lifecycle transitions from targeting a tier that is no longer available.
 
    Depending on your configuration, plan to:
@@ -130,18 +127,57 @@ Before proceeding:
 
    To learn more about {{ilm-init}} or shard allocation filtering, refer to [Create your index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md), [Managing the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md), and [Shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md).
 
-### Remove a tier with regular indices [remove-regular-indices-self-managed-eck]
+After completing this preparation:
 
-This section covers the removal of a tier that holds regular indices. The goal is to ensure all shard allocation rules allow the data to move to other tiers, and then vacate and remove the nodes. You also need to temporarily stop {{ilm-init}} to prevent new indices from being routed to the tier while you work.
+* If the tier contains {{search-snaps}}, start with [Vacate tier nodes containing {{search-snaps}}](#remove-searchable-snapshots-self-managed-eck).
+* If the tier contains regular indices, or fully mounted {{search-snaps}} that you want to move while keeping them mounted, continue with [Vacate tier nodes containing regular indices](#remove-regular-indices-self-managed-eck).
+* After completing every applicable vacate procedure, [remove the tier nodes](#remove-empty-tier-nodes-self-managed-eck).
+
+### Vacate tier nodes containing {{search-snaps}} [remove-searchable-snapshots-self-managed-eck]
+
+This section explains how to vacate nodes in a data tier that contains [{{search-snap}} indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). Choose how to handle the data before vacating the nodes:
+
+* **[Partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) on the frozen tier:** These indices cannot remain mounted outside the frozen tier.
+    * To preserve the data as regular indices, select another tier with sufficient capacity and follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md).
+    * If you no longer need the data, delete the mounted indices and any source snapshots you no longer need.
+* **[Fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) on the cold tier:**
+    * To keep them as {{search-snaps}}, use the [regular index vacate procedure](#remove-regular-indices-self-managed-eck) to move their shards to another tier. Fully mounted {{search-snaps}} follow the same shard allocation rules as regular indices.
+    * To preserve the data as regular indices, select another tier with sufficient capacity and follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md).
+    * If you no longer need the data, delete the mounted indices and any source snapshots you no longer need.
 
 :::{note}
-If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) {{search-snaps}}, you have two options:
+:applies_to: {"stack": "ga 9.5+"}
 
-* **To keep them as {{search-snaps}} on another tier**: apply the same steps in this section. Fully mounted {{search-snaps}} follow the same shard placement rules as regular indices and can be moved by updating their allocation settings.
-* **To restore them to regular indices on another tier**: follow [Remove a tier with {{search-snaps}}](#remove-searchable-snapshots-self-managed-eck) to restore the indices and delete the original {{search-snap}} indices and source snapshots, but do not remove the nodes yet. Then return to this section to move any regular indices and remove the nodes.
+If you are removing the frozen tier and [{{dlm-init}}](/manage-data/lifecycle/data-stream.md) manages partially mounted indices on it, remove `frozen_after` from the affected data streams and index templates before proceeding.
 :::
 
-1. Apply the changes to {{ilm-init}} policies and index templates that you planned in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck). These changes prevent newly created indices and future lifecycle transitions from targeting the tier. They do not move indices already allocated there. The remaining steps update those indices and relocate their shards.
+1. Apply the changes to {{ilm-init}} policies and index templates that you planned in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck) so that they no longer create or route {{search-snap}} indices to the tier you want to remove. These changes prevent new {{search-snaps}} from appearing while you process the existing ones.
+
+1. For each mounted {{search-snap}} whose data you want to preserve as a regular index, follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md). Complete the restore, validation, alias or data stream update, and mounted index cleanup for one index before proceeding to the next.
+
+1. For each mounted {{search-snap}} whose data you do not want to preserve, record its source snapshot details before deleting the index:
+
+   ```sh
+   GET /<searchable-snapshot-index-name>/_settings?filter_path=**.index.store.snapshot.snapshot_name,**.index.store.snapshot.repository_name&expand_wildcards=all
+   DELETE /<searchable-snapshot-index-name>
+   ```
+
+   If you no longer need the source snapshot, delete it after confirming that it contains no other data you need and that no other mounted index in this or another cluster depends on it:
+
+   ```sh
+   DELETE /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>
+   ```
+
+After processing all {{search-snaps}}, continue based on what remains on the tier:
+
+* If the tier also contains regular indices, or fully mounted {{search-snaps}} that you want to move to another tier while keeping them mounted, continue to [Vacate tier nodes containing regular indices](#remove-regular-indices-self-managed-eck).
+* Otherwise, continue to [Remove the tier nodes](#remove-empty-tier-nodes-self-managed-eck).
+
+### Vacate tier nodes containing regular indices [remove-regular-indices-self-managed-eck]
+
+This section covers vacating tier nodes that hold regular indices. It also applies to fully mounted {{search-snaps}} that you want to keep mounted, because they follow the same shard allocation rules as regular indices.
+
+1. If you have not already done so, apply the changes to {{ilm-init}} policies and index templates that you planned in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck). These changes prevent newly created indices and future lifecycle transitions from targeting the tier. They do not move indices already allocated there. The remaining steps update those indices and relocate their shards.
 
    :::{warning}
    Temporarily [stopping {{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md) can prevent lifecycle transitions while you update the cluster configuration, but it affects every {{ilm-init}}-managed index in the cluster. It pauses actions such as rollover, migration, and deletion. On clusters with sustained ingestion, a long pause can cause indices on the hot tier to grow until the tier runs out of disk space.
@@ -256,15 +292,15 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
       }
       ```
 
-      Removing a custom filter does not necessarily start relocation if the current nodes remain eligible. The node vacate or {{eck}} `nodeSet` removal in the following steps forces any remaining shards to move.
+      Removing a custom filter does not necessarily start relocation if the current nodes remain eligible. The manual vacate in the following step forces any remaining shards to move.
 
-1. Vacate the nodes.
+1. Vacate the nodes manually.
 
-   ::::{note}
-   On {{eck}}, removing a `nodeSet` from the {{es}} manifest causes {{eck}} to migrate data away from its nodes before removing the underlying StatefulSet, as described in [Cluster upgrade patterns](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md#k8s-upgrade-patterns). If the allocation rules in the previous step are correctly updated, you can skip the manual vacate and proceed directly to removing the `nodeSet`. However, we recommend completing the manual vacate first because it gives you more control and visibility over the relocation process.
-   ::::
+   :::{note}
+   On {{eck}}, removing a `nodeSet` from the {{es}} manifest can migrate data away from its nodes before removing the underlying StatefulSet, as described in [Cluster upgrade patterns](/deploy-manage/deploy/cloud-on-k8s/nodes-orchestration.md#k8s-upgrade-patterns). This procedure uses a manual vacate so that you can verify the nodes are empty before removing the `nodeSet`.
+   :::
 
-   To vacate the nodes manually, exclude them from shard allocation by name. {{es}} then relocates their remaining shards to other eligible nodes:
+   Exclude the nodes from shard allocation by name. {{es}} then relocates their remaining shards to other eligible nodes:
 
    ```sh
    PUT /_cluster/settings
@@ -280,9 +316,21 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
    Wait until `GET /_cat/allocation?v=true&s=node` shows that no shards remain on those nodes before proceeding. Updating settings starts the relocation process, but you must wait until [shard allocation and recovery](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery.md) finish. If shards stay on the original tier, use the [cluster allocation explain]({{es-apis}}operation/operation-cluster-allocation-explain) API to determine the cause. Refer to [Using the cluster allocation API for troubleshooting](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md) for common examples. Common causes include [disk watermarks](/troubleshoot/elasticsearch/fix-watermark-errors.md) or [`index.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) limit reached on the destination nodes.
    :::
 
-1. Remove the nodes.
+After the nodes are empty, continue to [Remove the tier nodes](#remove-empty-tier-nodes-self-managed-eck).
 
-   After confirming that no shards remain on the nodes, remove them using the instructions for your deployment type.
+### Remove the tier nodes [remove-empty-tier-nodes-self-managed-eck]
+
+After completing every applicable vacate procedure, follow these steps to remove the empty nodes from the tier.
+
+1. Confirm that no shards remain on the nodes you want to remove:
+
+   ```sh
+   GET /_cat/allocation?v=true&s=node
+   ```
+
+   Do not continue until the nodes report no shards. If shards remain, complete the applicable vacate procedure and use the [cluster allocation explain]({{es-apis}}operation/operation-cluster-allocation-explain) API to identify any allocation constraints.
+
+1. Remove the nodes.
 
    :::::{applies-switch}
 
@@ -293,14 +341,14 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
    ::::{applies-item} eck:
    Remove every `nodeSet` associated with the tier from your {{es}} manifest, or set each `count` to `0`. If an `ElasticsearchAutoscaler` policy manages any of these `nodeSet`s, remove the matching policy before applying this change. Otherwise, autoscaling might change the `nodeSet` counts while you complete this procedure. Refer to [Autoscaling in ECK](/deploy-manage/autoscaling/autoscaling-in-eck.md).
 
-   If you skipped the manual vacate, {{eck}} migrates the remaining data before safely stopping the pods.
+   {{eck}} safely stops the pods after you have vacated their shards.
    ::::
 
    :::::
 
 1. Wait until `GET /_cat/nodes?v` shows no nodes from the removed tier remaining in the cluster.
 
-   If you ran the manual vacate, remove the deleted node names from the exclusion rule only after the nodes have left the cluster. Restore any `_name` exclusions that existed before the vacate. If none existed, clear the setting:
+1. If you used the manual vacate, remove the deleted node names from the exclusion rule only after the nodes have left the cluster. Restore any `_name` exclusions that existed before the vacate. If none existed, clear the setting:
 
    ```sh
    PUT /_cluster/settings
@@ -311,82 +359,7 @@ If the tier also holds [fully mounted](/deploy-manage/tools/snapshot-and-restore
    }
    ```
 
-   Confirm that `GET /_cluster/health` reports `green`.
-
-1. Verify that {{ilm-init}} is running and that no indices report errors related to the removed tier:
-
-   ```sh
-   GET /_ilm/status
-   GET /_all/_ilm/explain?human=true&expand_wildcards=all&only_errors=true
-   ```
-
-   Confirm that `operation_mode` is `RUNNING`. Investigate any reported errors and verify that no policy still attempts to allocate data to the removed tier.
-
-### Remove a tier with {{search-snaps}} [remove-searchable-snapshots-self-managed-eck]
-
-This section explains how to remove a data tier that contains [{{search-snap}} indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). Choose how to handle the data before removing the tier:
-
-* **[Partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) on the frozen tier:** These indices cannot remain mounted outside the frozen tier.
-    * To preserve the data as regular indices, select another tier with sufficient capacity and follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md).
-    * If you no longer need the data, delete the mounted indices and any source snapshots you no longer need.
-* **[Fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) on the cold tier:**
-    * To keep them as {{search-snaps}}, move them to another tier by following [Remove a tier with regular indices](#remove-regular-indices-self-managed-eck).
-    * To preserve the data as regular indices, select another tier with sufficient capacity and follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md).
-    * If you no longer need the data, delete the mounted indices and any source snapshots you no longer need.
-
-:::{note}
-:applies_to: {"stack": "ga 9.5+"}
-
-If you are removing the frozen tier and [{{dlm-init}}](/manage-data/lifecycle/data-stream.md) manages partially mounted indices on it, remove `frozen_after` from the affected data streams and index templates before proceeding.
-:::
-
-1. Apply the changes to {{ilm-init}} policies and index templates that you planned in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck). These changes prevent newly created indices and future lifecycle transitions from targeting the tier while you process its existing {{search-snap}} indices.
-
-1. For each mounted {{search-snap}} whose data you want to preserve as a regular index, follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md). Complete the restore, validation, alias or data stream update, and mounted index cleanup for one index before proceeding to the next.
-
-1. For each mounted {{search-snap}} whose data you do not want to preserve, record its source snapshot details before deleting the index:
-
-   ```sh
-   GET /<searchable-snapshot-index-name>/_settings?filter_path=**.index.store.snapshot.snapshot_name,**.index.store.snapshot.repository_name&expand_wildcards=all
-   DELETE /<searchable-snapshot-index-name>
-   ```
-
-   If you no longer need the source snapshot, delete it after confirming that it contains no other data you need and that no other mounted index in this or another cluster depends on it:
-
-   ```sh
-   DELETE /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>
-   ```
-
-1. Check whether any regular indices remain on the data nodes you want to remove:
-
-   ```sh
-   GET /_cat/shards?v&h=index,shard,prirep,state,node
-   ```
-
-   Filter the output by the node names you identified in [Before you remove a data tier](#before-remove-data-tier-self-managed-eck).
-
-   * If regular indices remain, do not remove the nodes yet. Return to [Remove a tier with regular indices](#remove-regular-indices-self-managed-eck) to update their allocation rules, relocate their shards, and remove the nodes.
-   * If no indices remain on the nodes, confirm that `GET /_cat/allocation?v=true&s=node` reports no shards on them, and then continue.
-
-1. Remove the nodes.
-
-   After confirming that no shards remain on the nodes, remove them using the instructions for your deployment type.
-
-   :::::{applies-switch}
-
-   ::::{applies-item} self:
-   Stop the {{es}} service on each node to be removed and decommission the host. For step-by-step instructions, refer to [Add or remove {{es}} nodes](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md).
-   ::::
-
-   ::::{applies-item} eck:
-   Remove every `nodeSet` associated with the tier from your {{es}} manifest, or set each `count` to `0`. If an `ElasticsearchAutoscaler` policy manages any of these `nodeSet`s, remove the matching policy before applying this change. Otherwise, autoscaling might change the `nodeSet` counts while you complete this procedure. Refer to [Autoscaling in ECK](/deploy-manage/autoscaling/autoscaling-in-eck.md).
-
-   {{eck}} safely drains and stops the pods.
-   ::::
-
-   :::::
-
-1. Confirm that `GET /_cluster/health` reports `green` and that `GET /_cat/nodes?v` shows no nodes from the removed tier remaining in the cluster.
+1. Confirm that `GET /_cluster/health` reports `green`.
 
 1. Verify that {{ilm-init}} is running and that no indices report errors related to the removed tier:
 
