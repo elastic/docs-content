@@ -32,9 +32,7 @@ The following panel types support dashboard drilldowns:
 * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` **Visualizations based on an {{esql}} query**
 * **Vega** visualizations
 * **Maps**
-* **TSVB**
-* **Aggregation-based**
-* **Timelion**
+* Legacy Kibana visualization types, such as **TSVB**, **Aggregation-based**, and **Timelion**
 
 Some values cannot open a drilldown. For a value created at query time, including an {{esql}} result, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
 
