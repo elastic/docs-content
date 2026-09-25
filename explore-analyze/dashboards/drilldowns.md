@@ -17,14 +17,30 @@ The destination keeps the context of that selection. That includes the value you
 
 Selecting a value can also filter the dashboard you have open, for example when you select a slice or drag a time range. Add a drilldown when you want that same selection to open another view.
 
+Use this page to create a dashboard, URL, or Discover drilldown, and to carry the selected value and dashboard context to the destination.
+
+## Drilldown types [drilldown-types]
+
+You can add three types of drilldown:
+
+* **Dashboard**: Open another dashboard from a panel. For example, open a host dashboard from a summary dashboard, with a filter for the host name you selected.
+* **URL**: Open a website from a panel. For example, open a search page that includes the host name you selected.
+* **Discover**: Open **Discover** from a visualization panel. For example, open the documents for one slice of a pie chart.
+
+[![Drilldowns video](https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg)](https://videos.elastic.co/watch/UhGkdJGC32HRn3oS5ZYJL1?)
+
 ## Requirements [drilldowns-requirements]
 
-To add drilldowns to dashboard panels, you need:
+To add a drilldown, you need:
 
 * **All** privilege for the **Dashboard** feature in {{product.kibana}}
 * An existing dashboard with at least one panel that supports drilldowns
-* For dashboard drilldowns: A target dashboard to navigate to
-* For URL drilldowns: A URL template. Variables can come from the dashboard and from the value you select
+
+What else you need depends on the drilldown type:
+
+* **Dashboard**: The destination dashboard.
+* **Discover**: The panel itself. The drilldown opens **Discover** from that panel.
+* **URL**: A URL template that can include variables from the dashboard and from the value you select.
 
 A drilldown uses a value from a field in the data source. You cannot filter on a value created at query time, because that value has no field in the index. This includes a Lens formula, an aggregation result, and an {{esql}} `EVAL` or `STATS` result.
 
@@ -35,56 +51,44 @@ When the value comes from an {{esql}} query:
 
 For more information about filter pills, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
 
-## Drilldown types [drilldown-types]
-
-You can add three types of drilldown:
-
-* **Dashboard**: Open another dashboard from a panel. For example, open a host dashboard from a summary dashboard, with a filter for the host name you selected.
-* **URL**: Open a website from a panel. For example, open a search page that includes the host name you selected.
-* **Discover**: Open **Discover** from a **Lens** panel. For example, open the documents for one slice of a pie chart.
-
-[![Drilldowns video](https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg)](https://videos.elastic.co/watch/UhGkdJGC32HRn3oS5ZYJL1?)
-
 ## Create dashboard drilldowns [dashboard-drilldowns]
 
 A dashboard drilldown opens another dashboard and can carry the time range, filters, and query with it. Use one to continue from a summary into a more specific view.
 
 For example, a dashboard can show logs and metrics for several data centers. A drilldown can open a dashboard for the one data center or server you select.
 
-![Drilldown on data table that navigates to another dashboard](/explore-analyze/images/kibana-dashboard_drilldownOnDataTable_8.3.gif)
-
 The following panel types support dashboard drilldowns:
 
-* **Lens visualizations that use a data view**
-* {applies_to}`serverless:` {applies_to}`stack: ga 9.4` **Lens visualizations built with {{esql}}**
+* **Visualizations that use a data view**
+* {applies_to}`serverless:` {applies_to}`stack: ga 9.4` **Visualizations based on an {{esql}} query**
+* **Vega** visualizations
 * **Maps**
 * **TSVB**
-* **Vega**
-* **Aggregation-based** area chart, data table, heat map, horizontal bar chart, line chart, pie chart, tag cloud, and vertical bar chart
+* **Aggregation-based**
 * **Timelion**
 
 ### Create and set up the dashboards you want to connect [_create_and_set_up_the_dashboards_you_want_to_connect]
 
-Use the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data to create a dashboard and add panels, then set a search and filter on the **[Logs] Web Traffic** dashboard.
+This example creates a dashboard and a dashboard drilldown. Follow it with the sample data, or use your own dashboard and data.
 
-1. Add the **Sample web logs** data.
+1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
 2. Create a new dashboard.
 
     * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In the application menu, select **Add** → **From library**.
     * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Add from library**.
 
 3. Add the **[Logs] Visits** panel.
-4. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**.
+4. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**, or to a 30-day period that contains data, depending on when you installed the sample data.
 5. Save the dashboard. In the **Title** field, enter `Detailed logs`.
-6. Open the **[Logs] Web Traffic** dashboard, then set a search and filter.
+6. Open the **[Logs] Web Traffic** dashboard that was added with the sample data, then set a search and a filter.
 
-    Search: `extension.keyword: ("gz" or "css" or "deb")`<br> Filter: `geo.src: US`
+    [Search](using.md#_filter_dashboards_using_the_kql_query_bar): `extension.keyword: ("gz" or "css" or "deb")`<br> [Filter](using.md#_add_pills_using_the_filter_editor): `geo.src: US`
 
 ### Create the dashboard drilldown [_create_the_dashboard_drilldown]
 
 Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] Web Traffic** dashboard.
 
-1. Open the panel menu for the **[Logs] Errors by host** data table, then select **Create drilldown**.
+1. Hover over the **[Logs] Errors by host** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
 2. Select **Go to dashboard**.
 
     1. In **Name**, enter a name. For example, `View details`.
@@ -100,7 +104,7 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
    :screenshot:
    :::
 
-The **Detailed logs** dashboard opens with the `geo.src` filter, the KQL query, and the **Last 30 days** time range.
+The **Detailed logs** dashboard opens with the `geo.src` filter, the KQL query, and the time range you set.
 
 ## Create URL drilldowns [create-url-drilldowns]
 
@@ -120,7 +124,7 @@ Some panels support more than one interaction. Under **Trigger**, select when th
 
 If a pie chart breaks down values from a GitHub repository, a URL drilldown can open the matching GitHub search from the slice you select.
 
-1. Add the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data.
+1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
 2. Open the **[Logs] Web Traffic** dashboard.
 3. Select **Edit**.
 4. Add a pie chart.
@@ -131,7 +135,7 @@ If a pie chart breaks down values from a GitHub repository, a URL drilldown can 
 5. Set the visualization type to **Pie**.
 6. From **Available fields**, drag **machine.os.keyword** to the workspace.
 7. Select **Save and return**.
-8. Open the pie chart panel menu, then select **Create drilldown**.
+8. Hover over the pie chart panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
 9. Select **Go to URL**.
 
     1. In **Name**, enter a name. For example, `Show on GitHub`.
@@ -183,7 +187,7 @@ The [variables reference](#variables-reference) lists every variable, including 
 
 ## Create Discover drilldowns [discover-drilldowns]
 
-A Discover drilldown opens **Discover** from a **Lens** panel and can carry the time range, filters, and query with it. Use one to read the documents behind a chart value.
+A Discover drilldown opens **Discover** from a visualization panel and can carry the time range, filters, and query with it. Use one to read the documents behind a chart value.
 
 For example, a Discover drilldown on a pie chart can open only the documents for the slice you select.
 
@@ -191,20 +195,20 @@ For example, a Discover drilldown on a pie chart can open only the documents for
 
 The following panel types support Discover drilldowns:
 
-* **Lens visualizations that use a data view**
-* {applies_to}`serverless:` {applies_to}`stack: ga 9.5` **Lens visualizations built with {{esql}}**
+* **Visualizations that use a data view**
+* {applies_to}`serverless:` {applies_to}`stack: ga 9.5` **Visualizations based on an {{esql}} query**
 
     On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
 
 ::::{tip}
-You can [open Lens dashboard panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
+You can [open a visualization panel in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
 ::::
 
 ### Create the Discover drilldown [_create_the_discover_drilldown]
 
-Create a drilldown that opens **Discover** from the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data **[Logs] Web Traffic** dashboard.
+Create a drilldown that opens **Discover** from the **[Logs] Web Traffic** dashboard. That dashboard is added when you install the [**Sample web logs**](/manage-data/ingest/sample-data.md) data.
 
-1. Select **Edit**, open the panel menu for the **[Logs] Bytes distribution** bar vertical stacked chart, then select **Create drilldown**.
+1. Select **Edit**. Hover over the **[Logs] Bytes distribution** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
 2. Select **Open in Discover**.
 3. In **Name**, enter a name. For example, `View bytes distribution in Discover`.
 4. To open **Discover** in a new tab, select **Open in new tab**.
