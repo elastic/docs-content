@@ -52,6 +52,8 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 | Recoveries | Closes the alert episode after recovery is detected a set number of times in a row. | Use when a rule alternates between breaching and recovering on consecutive evaluations, and you want to avoid a constant stream of open and closed notifications. |
 | Duration | Closes the alert episode after recovery has held continuously for a set time. | Use when you need the condition to stay resolved for a minimum stretch of time before you trust it, rather than just counting evaluations. |
 
+{applies_to}`stack: experimental 9.6+` Recovery delay applies only when an alert episode recovers through its recovery strategy. An alert episode that resolves through [no-data handling](configure-no-data-handling.md) with the **Recover immediately** option (or **Recover** in earlier versions) skips the recovering phase, so the delay doesn't apply to it.
+
 ### Recovery delay fields
 
 | Field | Type | Accepted values | Description |
