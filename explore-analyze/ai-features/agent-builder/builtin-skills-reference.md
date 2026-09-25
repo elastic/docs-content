@@ -82,12 +82,34 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
     :::
 
 $$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Composes, discovers, and modifies alerting rules and action policies from within a conversation.
+:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover [{{kib}} alerting](/explore-analyze/alerting/alerts.md) rules, {{observability}} rules, or {{elastic-sec}} detection rules.
+
+    {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` The [`action-policy-management`](#agent-builder-action-policy-management-skill) skill handles notification setup. This skill still offers to set up notifications after it composes a rule, then passes the request to `action-policy-management`.
+
+    {applies_to}`stack: preview =9.5` This skill composes action policies itself, and is also assigned the `platform.alerting.manage_action_policy` tool.
 
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_rule`, `platform.alerting.manage_action_policy`
+    `platform.alerting.manage_rule`
 
     :::
+
+    **Prerequisites:** Turn on the `alerting:v2:enabled` advanced setting, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md), and the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional). Saving a rule requires the **Rules: All** privilege. For the privileges you need, refer to [Requirements](/explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
+
+$$$agent-builder-action-policy-management-skill$$$ `action-policy-management` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
+:   Composes, discovers, and modifies action policies from within a conversation. Use when a user asks to set up, change, or stop alert notifications, such as sending email or paging an on-call responder. An [action policy](/explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md) controls how alert episodes are matched, grouped, throttled, and dispatched to workflows. It applies to a whole {{kib}} space rather than to a single rule, so one policy can match alert episodes from many rules.
+
+    :::{dropdown} Assigned tools
+    `platform.alerting.manage_action_policy`
+
+    :::
+
+    **Prerequisites:** Turn on the `alerting:v2:enabled` advanced setting, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md), and the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional). Saving an action policy requires the **Action Policies: All** privilege. Notifications also require at least one configured connector, and an Enterprise license on {{stack}} deployments. For the privileges you need, refer to [Requirements](/explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
+
+    **Related skills:** [`rule-management`](#agent-builder-rule-management-skill) composes the rules whose alert episodes a policy matches.
+
+<!-- TODO(agent-builder): action-policy-management is expected to gain a third prerequisite, in addition to the two advanced settings listed above: the space-scoped `alerting:v2:experimentalFeatures` advanced setting. The setting itself already exists on main (kibana#291305), but nothing reads it for this skill yet — kibana#292162 wires it to the skill's availability handler and is still open, so the prerequisite is deliberately not stated above. Add it to the action-policy-management entry once #292162 merges. -->
+
+<!-- TODO(agent-builder): whether rule-management and action-policy-management keep their experimental gating after Alerting V2 goes GA is still undecided. If that changes, both entries need their lifecycle badges and their Prerequisites lines updated. -->
 
 ### Streams and significant events
 
