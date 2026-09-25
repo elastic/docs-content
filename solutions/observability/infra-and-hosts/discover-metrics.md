@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.4+
+  stack: ga 9.4+, preview 9.2-9.3
   serverless: ga
 description: Make the most of Discover to explore metrics data.
 products:
@@ -29,7 +29,9 @@ Use the `TS` command to select the data source. For example, the following query
 
 To visualize your metrics data as charts:
   - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
-  - The metric must be a time series metric.
+  - The metric must be a time series metric. Gauge, counter, and histogram metrics are supported.
+
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Histogram metrics are charted using the 95th percentile, and support the `tdigest` and `exponential_histogram` field types. Metrics stored as the legacy `histogram` field type are also charted, but their percentiles are calculated assuming T-Digest encoding, so the chart shows a warning that the values are approximate if the histogram was encoded differently.
 
 The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from Discover.
 
@@ -77,6 +79,8 @@ Use the search function to find and visualize specific metric data:
 
 Break down your metrics by dimensions to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
 
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` You can break down by up to five dimensions at a time. Each chart shows a separate line for every combination of the selected dimension values. The **Dimensions** control displays a badge with the number of dimensions you've selected, and you can select **Clear selection** to deselect them all. When you reach five, a message tells you that the maximum is selected, and you must deselect a dimension before you can add another.
+
 :::{note}
 Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If an expected dimension is missing, verify that the field is mapped as a `time_series_dimension` in your 
 [time series data stream (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) configuration.
@@ -96,7 +100,7 @@ You can filter the view to focus on specific values in two ways:
 - **Edit the query directly**: Manually add a `| WHERE` clause to your ES|QL query. For example: `| WHERE <dimension> = <value>`
 ::::
 
-::::{applies-item} stack: ga 9.2-9.3
+::::{applies-item} stack: preview 9.2-9.3
 **Filter dimensions by a specific value**
 
 Select specific values to focus on within the dimension. You can select up to 10 values to filter your dimension by.

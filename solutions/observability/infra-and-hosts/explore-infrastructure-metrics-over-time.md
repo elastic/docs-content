@@ -14,7 +14,7 @@ products:
 :applies_to: stack: deprecated 9.4+
 :class: warning
 
-Use [Metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) instead of the Metrics Explorer app.
+Metrics Explorer will be removed in a future version. Use [Metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) instead of the Metrics Explorer app. To find the Discover equivalent of each Metrics Explorer control, refer to [Move to Discover](#move-to-discover).
 ::::
 
 The **Metrics Explorer** page enables you to create time-series visualizations based on aggregation of your metrics, chart them against related metrics, and break them down per the field of your choice. You can group and create visualizations of metrics for one or more resources that you are monitoring.
@@ -79,3 +79,17 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 8. To calculate the network traffic for all the interfaces, from the **group by** dropdown, select `Terms` and add the `system.network.name` field.
 9. You will also need to add the **Series Agg** aggregation and the **Sum** function. From the **Aggregation** dropdown, select `Series Agg`, and from the **Function** dropdown, select `Sum`.
 10. If you would like to save this visualization and add it to a custom dashboard later, click **Save**.
+
+## Move to Discover [move-to-discover]
+
+[Metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) replaces Metrics Explorer. Most Metrics Explorer controls have a direct equivalent:
+
+| In Metrics Explorer | In Discover |
+| --- | --- |
+| Selecting metrics in the **of** field | Search the metrics grid for the metrics you want |
+| The **graph per** dropdown | The **Dimensions** control, which accepts up to five dimensions at a time |
+| **Actions** → **Add filter** | Select a value on a chart, or add a `WHERE` clause to your {{esql}} query |
+| The aggregation dropdown | The per-metric-type aggregation settings {applies_to}`stack: ga 9.6+` |
+| **Actions** → **Open In Visualize** | **Copy to dashboard**, which saves the chart to a new or existing dashboard |
+
+Discover selects its data source with the `TS` {{esql}} command, for example `TS metrics-*`, rather than with an index pattern. Breakdown dimensions come from fields mapped as `time_series_dimension`, so the data stream you query must use the time series index mode. For the full set of requirements, refer to [Explore metrics data with Discover](/solutions/observability/infra-and-hosts/discover-metrics.md).
