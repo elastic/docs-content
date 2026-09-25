@@ -45,7 +45,7 @@ Some values cannot open a drilldown. For a value created at query time, refer to
 
 ## Create the drilldown [_create_the_discover_drilldown]
 
-This example creates a Discover drilldown on the **[Logs] Bytes distribution** panel. Follow it with the sample data, or use your own dashboard and data.
+This example opens **Discover** from a visualization panel. Follow it with the sample data, or use your own dashboard and data.
 
 1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
 2. Open that dashboard and select **Edit**.
@@ -68,4 +68,6 @@ This example creates a Discover drilldown on the **[Logs] Bytes distribution** p
 ## Related pages [create-discover-drilldown-related-pages]
 
 * [Drilldowns](drilldowns.md)
+* [Create a dashboard drilldown](create-dashboard-drilldown.md)
+* [Create a URL drilldown](create-url-drilldown.md)
 * [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns)
