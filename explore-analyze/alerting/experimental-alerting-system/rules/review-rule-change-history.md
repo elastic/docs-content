@@ -1,8 +1,8 @@
 ---
 navigation_title: Review rule change history
 applies_to:
-  stack: experimental 9.6+
   serverless: experimental
+  stack: experimental 9.6+
 products:
   - id: kibana
 description: "Review a rule's change history in the experimental alerting system to see who changed a rule and when, and compare versions with a JSON diff."
@@ -10,26 +10,21 @@ description: "Review a rule's change history in the experimental alerting system
 
 # Review rule change history in the {{alerting-v2-system}} [review-rule-change-history]
 
-A rule's change history records each change made to the rule's configuration, so you can trace how a rule reached its current state, confirm who changed it and when, and compare two versions to see which fields differ.
+Use a rule's change history to see who changed the rule and when, and to compare any two versions of its configuration.
 
-To open a rule's change history, do one of the following:
+To open the change history, select **View change history** from any of these places:
 
-- From **Rules**, open a rule's actions menu, then select **View change history**.
-- From a rule's details page, open the actions menu, then select **View change history**.
+- A rule's actions menu on the **Rules** page
+- The rule summary flyout
+- The actions menu on the rule's details page
 
-The change history lists each previous version of the rule with the following details:
+The change history lists the rule's versions, newest first. A **Current version** badge marks the latest version. Each entry shows who made the change, when they made it, and the kind of change, such as `rule_create` or `rule_update`.
 
-| Detail | Description |
-|---|---|
-| **Author** | The user who made the change. |
-| **Timestamp** | When the change was made. |
-| **Action** | The kind of change made to the rule. |
+Select an entry to see how that version differs from the one before it. {{kib}} shows the difference as a JSON diff of the rule's configuration, with added and removed lines highlighted. The oldest entry has no earlier version, so selecting it shows its full configuration.
 
-Select two versions to compare them. The comparison shows a JSON diff of the rule's configuration that highlights the fields that differ between the versions you selected.
+To compare the selected version with a different one, select the **Version actions** icon on that entry, then select **Compare to this version**.
 
-:::{note}
-Change history is read-only. You can review and compare previous versions, but you can't restore a rule to an earlier version.
-:::
+Change history is read-only, so you can't restore an earlier version from it. To undo a change, edit the rule and set the changed fields back to their earlier values.
 
 ## Related pages
 
