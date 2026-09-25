@@ -370,6 +370,14 @@ After completing every applicable vacate procedure, follow these steps to remove
 
    Confirm that `operation_mode` is `RUNNING`. Investigate any reported errors and verify that no policy still attempts to allocate data to the removed tier.
 
+   For indices in the `ERROR` step, resolve the underlying cause first. You can then force {{ilm-init}} to retry the failed step immediately:
+
+   ```sh
+   POST /<affected-indexes>/_ilm/retry
+   ```
+
+   For guidance, refer to [Fix {{ilm-init}} errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md#ilm-steps-errors).
+
 
 ## Related pages
 
