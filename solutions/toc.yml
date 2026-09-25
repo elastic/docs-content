@@ -11,6 +11,11 @@ toc:
               - file: search/get-started/index-basics.md
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
+      - file: search/set-up.md
+        children:
+          - file: search/set-up/get-started-with-elasticsearch.md
+          - file: search/set-up/api-key-and-endpoints.md
+          - file: search/set-up/connect-through-an-sdk.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
