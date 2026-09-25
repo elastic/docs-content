@@ -259,7 +259,7 @@ Escape a string with the built-in `encodeURIComponent` function, but leave `@`, 
 
 ### Pass context and table values in the URL [url-drilldown-examples]
 
-You can use variables to pass the dashboard time range, the dashboard filters, or a table cell in the URL. The [variables reference](#variables-reference) lists every variable. Select **Add variable** to insert a variable for the panel and the trigger you selected. Save the dashboard, then select a value on the panel and confirm the URL before you share the drilldown.
+You can pass the dashboard time range, the dashboard filters, and a table cell in the URL. The same variables can open Discover with that dashboard state. The [variables reference](#variables-reference) lists every variable. Select **Add variable** to insert a variable for the panel and the trigger you selected. Save the dashboard, then select a value on the panel and confirm the URL before you share the drilldown.
 
 **Time range.** `context.panel.timeRange.from` and `context.panel.timeRange.to` are the panel time range when the panel has its own time range. Otherwise they are the dashboard time range. Format them with the `date` helper when the site expects a calendar date:
 
@@ -267,18 +267,20 @@ You can use variables to pass the dashboard time range, the dashboard filters, o
 https://example.com/search?from={{date context.panel.timeRange.from "YYYY-MM-DD"}}&to={{date context.panel.timeRange.to "YYYY-MM-DD"}}
 ```
 
-**Dashboard filters and query.** `context.panel.filters` is the list of filters on the dashboard. Filters that exist only on the panel are not included. `context.panel.query.query` is the dashboard query, and `context.panel.query.language` is the language of that query. Use the `rison` helper when the destination stores {{kib}} state in the URL:
+**Open Discover.** This URL opens Discover with the dashboard time range, filters, {{data-source}}, and query. `{{kibanaUrl}}` is the {{kib}} base URL.
+
+`context.panel.filters` is the list of filters on the dashboard. Filters that exist only on the panel are not included. The URL encodes that list with the `rison` helper. `context.panel.indexPatternId` is available when the panel uses one {{data-source}}. `context.panel.query.query` is the dashboard query, and `context.panel.query.language` is the language of that query.
 
 ```text
-{{rison context.panel.filters}}
+{{kibanaUrl}}/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:'{{context.panel.timeRange.from}}',to:'{{context.panel.timeRange.to}}'))&_a=(columns:!(_source),filters:{{rison context.panel.filters}},index:'{{context.panel.indexPatternId}}',interval:auto,query:(language:{{context.panel.query.language}},query:'{{context.panel.query.query}}'),sort:!())
 ```
 
-Start internal links with `{{kibanaUrl}}`, which is the {{kib}} base URL.
+For a **Range selection** trigger, use `{{date event.from}}` and `{{date event.to}}` in the time slot. Those values are the range you select on the panel.
 
-**Table row.** For a **Table row click** trigger, `event.values.[0]` is the first cell in the row. `event.keys.[0]` is the field name for that column, and `event.columnNames.[0]` is the column label. This URL puts the first cell in the path:
+**Table row.** For a **Table row click** trigger, `event.values.[0]` is the first cell in the row. `event.keys.[0]` is the field name for that column, and `event.columnNames.[0]` is the column label. This URL passes the field name and the first cell:
 
 ```text
-https://example.com/host/{{event.values.[0]}}
+https://example.com/?{{event.keys.[0]}}={{event.values.[0]}}
 ```
 
 A **Single click** that returns more than one data point can also use `event.points`. The [variables reference](#variables-reference) includes it with the other variables.
