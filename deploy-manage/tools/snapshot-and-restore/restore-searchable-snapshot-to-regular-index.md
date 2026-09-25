@@ -131,10 +131,10 @@ GET /_resolve/index/<restored-index-name>
 
 An empty `indices`, `aliases`, and `data_streams` response confirms that the name is available.
 
-For an {{ilm-init}}-managed index that is not a data stream backing index, {{ilm-init}} typically creates an alias with the original index name and points it to the mounted index. If this alias conflicts with the restored index name, use one of the following approaches:
+For an {{ilm-init}}-managed index that is not a data stream backing index, the `searchable_snapshot` action creates an alias with the original index name and points it to the mounted index. Because indices and aliases share the same namespace, you cannot restore the regular index with its original name while that alias exists.
 
-* To preserve access through the alias, select a different restored index name. After the restore, transfer the alias to the regular index.
-* If the regular index must use the alias name, use the [update aliases API]({{es-apis}}operation/operation-indices-update-aliases) to remove the alias from every index before the restore. Queries that use this name fail until the restore creates the regular index. Do not transfer this alias after the restore because its name identifies the regular index.
+* To preserve access through the existing alias, restore the regular index with a different name and then transfer the alias to it. This is the recommended approach.
+* If the regular index itself must use the original name, use the [update aliases API]({{es-apis}}operation/operation-indices-update-aliases) to remove or rename the conflicting alias before the restore. After you remove the alias, requests that use the original name will fail until the restore completes.
 
 ::::
 
