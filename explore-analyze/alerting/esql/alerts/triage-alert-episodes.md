@@ -33,7 +33,7 @@ Temporarily silence notifications for an alert episode's series, without disabli
 | Snooze | Silences notifications for the alert episode's series for a set duration. The rule continues to evaluate and the alert episode remains visible. | A known condition is expected to persist for a fixed time and you want to reduce noise without disabling the rule, for example during a scheduled maintenance window. | Series |
 | Unsnooze | Ends the active snooze, restoring notifications immediately. Clears the snooze for all alert episodes sharing the same `group_hash`, not only the one you acted on. | The condition has changed and you want notifications to resume before the snooze expires. | Series |
 
-Snooze is one of several silencing mechanisms in the {{alerting-v2-system}}, each with a different scope. For the full comparison, refer to [Reduce notification noise](../action-policies/reduce-notification-noise.md).
+Snooze is one of several silencing mechanisms in {{alerting-v2-system}}, each with a different scope. For the full comparison, refer to [Reduce notification noise](../action-policies/reduce-notification-noise.md).
 
 ## Close and reopen alert episodes [close-and-reopen-episodes]
 

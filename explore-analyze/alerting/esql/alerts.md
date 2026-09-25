@@ -15,7 +15,7 @@ description: "Alert episodes track a problem from first detection through recove
 
 {{kib}} tracks each problem as an **alert episode**: the grouping of [rule events](rules/rule-event-field-reference.md) that share `episode.id`, from first detection through recovery.
 
-This page explains the core concepts you need to work with the {{alerting-v2-system}}: how alert episodes move through lifecycle states, and how series group alert episodes over time for the same monitored subject.
+This page explains the core concepts you need to work with {{alerting-v2-system}}: how alert episodes move through lifecycle states, and how series group alert episodes over time for the same monitored subject.
 
 ## Alert episode lifecycle states [alert-episode-lifecycle]
 
@@ -67,4 +67,4 @@ From here, you can view, manage, and query alert episode data, and query `.rule-
 
 - [View and manage alerts](alerts/view-and-manage-alerts.md): Open the alert episodes table, triage active alert episodes, and acknowledge, snooze, or resolve them.
 - [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events belong to an alert episode.
-- [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
+- [Query alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.

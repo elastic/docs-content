@@ -90,4 +90,4 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 
 - [How {{kib}} stores rule events](rule-event-data-model.md): How events with `type: signal` and events with `type: alert` share `.rule-events`.
 - [Query rule events](query-signals.md): Query examples for events with `type: signal` in Discover.
-- [Query {{alerting-v2-system}} alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode and triage query examples.
+- [Query alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode and triage query examples.

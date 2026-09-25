@@ -20,7 +20,7 @@ Use the following pages to learn how the system works, look up the terms used th
 - [Glossary](get-started/glossary.md): Look up definitions of key terms used throughout the {{alerting-v2-system}} documentation, such as alert episode, action policy, and rule event.
 - [Create your first rule](get-started/create-your-first-rule.md): A hands-on tutorial that walks you through loading sample data, creating a rule, and observing the alert lifecycle from breach through automatic recovery.
 
-Before you start the tutorial, [set up the {{alerting-v2-system}}](setup.md) and [configure access](manage/configure-access.md) for your role.
+Before you start the tutorial, [set up {{alerting-v2-system}}](setup.md) and [configure access](manage/configure-access.md) for your role.
 
 ## Explore the documentation [explore-documentation]
 
