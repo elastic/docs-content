@@ -12,7 +12,7 @@ products:
   - id: security
 ---
 
-# Use Context Engine with {{agent-builder}}
+# Use {{context-engine}} with {{agent-builder}}
 
 :::{include} _snippets/hidden-docs-notice.md
 :::
@@ -23,8 +23,8 @@ When you assign an [AI index](concepts.md#ai-indices) to an {{agent-builder}} ag
 
 You need:
 
-- Context Engine enabled in the current {{kib}} space.
-- An AI index that contains at least one KI. To create one, follow [Get started with Context Engine](quickstart.md).
+- {{context-engine}} enabled in the current {{kib}} space.
+- An AI index that contains at least one KI. To create one, follow [Get started with {{context-engine}}](quickstart.md).
 - Access to create or edit an {{agent-builder}} agent and read the AI index.
 - Access to the underlying data and an appropriate agent tool if the agent must query source data.
 
@@ -42,7 +42,7 @@ The list contains AI indices registered in the current space that you can access
 
 ## Understand what the assignment provides
 
-When an agent has at least one AI index, {{agent-builder}} automatically gives it three dedicated Context Engine tools:
+When an agent has at least one AI index, {{agent-builder}} automatically gives it three dedicated {{context-engine}} tools:
 
 - `list_ai_indices` lists the accessible AI indices and their query targets.
 - `describe_ai_index` returns the selected AI index's purpose, fields, KI types, tags, and example queries.

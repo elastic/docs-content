@@ -21,7 +21,7 @@ Building a useful AI index starts with decisions about its purpose, source data,
 
 This page covers AI indices that you create and maintain. Elastic integrations can also supply [managed AI indices](concepts.md#managed-ai-indices) whose configuration is read-only.
 
-For a UI-led example that creates and tests an AI index, follow [Get started with Context Engine](quickstart.md).
+For a UI-led example that creates and tests an AI index, follow [Get started with {{context-engine}}](quickstart.md).
 
 ## Define the AI index's purpose
 
@@ -83,4 +83,4 @@ Where [agent traces](concepts.md#agent-traces) are available, look for empty ret
 
 Use those observations to revise the AI index description, source coverage, generation strategy, automation instructions, or refresh schedule. Run the automation again and compare the resulting KIs and agent behavior. Improving the automation makes the change repeatable for later runs and for every agent that uses the AI index. For a structured review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
-For definitions of the objects involved, refer to [Context Engine concepts](concepts.md). To make the resulting context available to an agent, refer to [Use Context Engine with agents](use-context-engine-with-agents.md).
+For definitions of the objects involved, refer to [{{context-engine}} concepts](concepts.md). To make the resulting context available to an agent or application, refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md).

@@ -12,16 +12,16 @@ products:
   - id: security
 ---
 
-# Context Engine
+# {{context-engine}}
 
 :::{include} context-engine/_snippets/hidden-docs-notice.md
 :::
 
-Context Engine enables you to distill raw source data into context optimized for retrieval by agents and applications. This upfront investment reduces repeated source data scanning and interpretation, helping agents respond faster and use fewer model tokens.
+{{context-engine}} enables you to distill raw source data into context optimized for retrieval by agents and applications. This upfront investment reduces repeated source data scanning and interpretation, helping agents respond faster and use fewer model tokens.
 
-## Context Engine use cases
+## {{context-engine}} use cases
 
-Context Engine is useful when agents repeatedly need to interpret large, complex, or changing bodies of data. For example, you can:
+{{context-engine}} is useful when agents repeatedly need to interpret large, complex, or changing bodies of data. For example, you can:
 
 - Turn technical documentation, policies, cases, or runbooks into reusable explanations, procedures, and limitations.
 - Give agents business definitions and verified query patterns for working with structured data.
@@ -30,9 +30,9 @@ Context Engine is useful when agents repeatedly need to interpret large, complex
 
 These use cases share the same advantage: move recurring interpretation into an automation, reuse the resulting context across questions and agents, and improve it as agent traces reveal gaps.
 
-## How Context Engine works
+## How {{context-engine}} works
 
-To build and use context with Context Engine:
+To build and use context with {{context-engine}}:
 
 :::::{stepper}
 
@@ -62,18 +62,18 @@ Review KIs and [agent traces](context-engine/concepts.md#agent-traces) to identi
 
 :::::
 
-## Get started with Context Engine
+## Get started with {{context-engine}}
 
-Follow [Get started with Context Engine](context-engine/quickstart.md) to create an AI index from existing {{es}} data, generate your first KI, and test how an {{agent-builder}} agent uses it.
+Follow [Get started with {{context-engine}}](context-engine/quickstart.md) to create an AI index from existing {{es}} data, generate your first KI, and test how an {{agent-builder}} agent uses it.
 
-## Context Engine concepts
+## {{context-engine}} concepts
 
-Learn how AI indices, sources, automations, KIs, and agent access fit together in [Context Engine concepts](context-engine/concepts.md).
+Learn how AI indices, sources, automations, KIs, and agent access fit together in [{{context-engine}} concepts](context-engine/concepts.md).
 
 ## Build and maintain an AI index
 
 Learn how to choose source data, select a KI generation strategy, review automations, and maintain useful context in [Build and maintain an AI index](context-engine/build-and-maintain-ai-index.md).
 
-## Use Context Engine with agents
+## Use {{context-engine}} with agents and applications
 
-Learn how to [use Context Engine with agents](context-engine/use-context-engine-with-agents.md), including {{agent-builder}} agents and agents built with LangChain.
+Learn how to [use {{context-engine}} with agents and applications](context-engine/use-context-engine-with-agents.md), including {{agent-builder}} agents and agents built with LangChain.

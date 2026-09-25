@@ -12,12 +12,12 @@ products:
   - id: security
 ---
 
-# Get started with Context Engine
+# Get started with {{context-engine}}
 
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-In this tutorial, you use Context Engine to create reusable context from data already stored in {{es}}. You create an AI index, add a source, generate a Knowledge Indicator, and test it with an {{agent-builder}} agent. You can use your own data or the {{kib}} sample ecommerce data.
+In this tutorial, you use {{context-engine}} to create reusable context from data already stored in {{es}}. You create an AI index, add a source, generate a Knowledge Indicator, and test it with an {{agent-builder}} agent. You can use your own data or the {{kib}} sample ecommerce data.
 
 ## Tutorial outcome
 
@@ -25,7 +25,7 @@ The result is an AI index containing one Knowledge Indicator about a dataset you
 
 A Knowledge Indicator (KI) is a document generated from source data, stored in an AI index, and retrieved as context by agents to help answer questions. A KI can contain distilled findings, explanations of how to interpret the data, limitations, and verified ESQL queries for retrieving current information from the source.
 
-An automation generates and refreshes the KI. In Context Engine, an automation is implemented as an [Elastic Workflow](/explore-analyze/workflows.md).
+An automation generates and refreshes the KI. In {{context-engine}}, an automation is implemented as an [Elastic Workflow](/explore-analyze/workflows.md).
 
 ## Before you begin
 
@@ -34,18 +34,18 @@ You need:
 - An {{stack}} deployment with an Enterprise license, or a {{serverless-full}} project.
 - Kibana 9.6 or a compatible Serverless project.
 - Permission to change Advanced Settings in the current Kibana space.
-- Permission to [create and run Workflows](/explore-analyze/workflows/get-started/setup.md) and manage Context Engine AI indices.
+- Permission to [create and run Workflows](/explore-analyze/workflows/get-started/setup.md) and manage {{context-engine}} AI indices.
 - Elasticsearch data that you can read. If you do not have suitable data, install the [**Sample eCommerce orders** data](https://www.elastic.co/docs/manage-data/ingest/sample-data#add-sample-data-sets), which creates the `kibana_sample_data_ecommerce` index.
 
 Starting with existing data matters. An AI index does not ingest source data by itself. Its sources identify the data that an automation can use to generate KIs.
 
-## 1. Enable Context Engine
+## 1. Enable {{context-engine}}
 
-Turn on Context Engine for the current Kibana space:
+Turn on {{context-engine}} for the current Kibana space:
 
 1. In Kibana, open **Stack Management → Advanced Settings**.
-2. Search for **Context Engine**.
-3. Turn on **Context Engine** (`contextEngine:enabled`).
+2. Search for **{{context-engine}}**.
+3. Turn on **{{context-engine}}** (`contextEngine:enabled`).
 4. Open **Context** from the Kibana navigation.
 
 This setting applies to the current Kibana space.
@@ -69,7 +69,7 @@ The AI index initially has no sources, automations, or KIs. You must add a sourc
 
 ## 3. Add the source data
 
-An ESQL source gives Context Engine data to inspect when it suggests an automation. Start with a small, current sample so that you can review the resulting KI before expanding its coverage.
+An ESQL source gives {{context-engine}} data to inspect when it suggests an automation. Start with a small, current sample so that you can review the resulting KI before expanding its coverage.
 
 Add an ESQL source to the AI index:
 
@@ -86,7 +86,7 @@ Add an ESQL source to the AI index:
 4. Confirm that the query appears under **Selected sources**.
 5. Select **Save**.
 
-This source gives Context Engine the 100 newest orders as a grounding sample. If you use your own data, change the index, sort field, filters, and limit to select representative records.
+This source gives {{context-engine}} the 100 newest orders as a grounding sample. If you use your own data, change the index, sort field, filters, and limit to select representative records.
 
 The generated Workflow can also inspect the mapping and run aggregations over the underlying index. Review those queries before you run the automation, and distinguish sampled observations from full-dataset findings.
 
@@ -148,7 +148,7 @@ Add the populated AI index to an Agent Builder agent:
 3. In **AI Indices**, add the AI index under **Additional indices**.
 4. Save the agent.
 
-The assignment makes the AI index and the dedicated Context Engine retrieval tools available to the agent. Its name and description help the agent decide when to retrieve its KIs. For details about the tools, source-data access, and custom instructions, refer to [Use Context Engine with {{agent-builder}}](use-context-engine-with-agent-builder.md).
+The assignment makes the AI index and the dedicated {{context-engine}} retrieval tools available to the agent. Its name and description help the agent decide when to retrieve its KIs. For details about the tools, source-data access, and custom instructions, refer to [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
 
 ## 8. Test how the agent uses the KI
 

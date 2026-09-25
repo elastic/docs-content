@@ -14,14 +14,14 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-A LangChain agent can retrieve Knowledge Indicators (KIs) from Context Engine using read-only tools.
+A LangChain agent can retrieve Knowledge Indicators (KIs) from {{context-engine}} using read-only tools.
 
-For the integration model and the built-in {{agent-builder}} route, refer to [Use Context Engine with agents](use-context-engine-with-agents.md).
+For the integration model and the built-in {{agent-builder}} route, refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md).
 
-You can connect a LangChain agent to Context Engine in two ways:
+You can connect a LangChain agent to {{context-engine}} in two ways:
 
-- Use the **[Agent Builder Model Context Protocol (MCP) server](/explore-analyze/ai-features/agent-builder/mcp-server.md)** to load the built-in Context Engine retrieval tools.
-- Use the **Context Engine APIs** to wrap the available retrieval operations as LangChain tools in your application.
+- Use the **[Agent Builder Model Context Protocol (MCP) server](/explore-analyze/ai-features/agent-builder/mcp-server.md)** to load the built-in {{context-engine}} retrieval tools.
+- Use the **{{context-engine}} APIs** to wrap the available retrieval operations as LangChain tools in your application.
 
 This guide covers both routes. Examples on this page use Python, but the same approach works in [LangChain.js](https://reference.langchain.com/javascript/langchain).
 
@@ -37,7 +37,7 @@ Before you begin, make sure you have:
 
 ## How retrieval works
 
-Context Engine uses a discovery-first retrieval flow:
+{{context-engine}} uses a discovery-first retrieval flow:
 
 1. List the AI Indices available to the agent.
 2. Describe the relevant AI Index to identify its query target, fields, and available Knowledge Indicators.
@@ -47,7 +47,7 @@ Describing the AI Index before querying it prevents the agent from guessing the 
 
 Both connection routes run the same three operations, against one Kibana space, as the owner of the API key. An agent only ever sees the AI Indices that key is allowed to read.
 
-## Step 0: Connect to Context Engine
+## Step 0: Connect to {{context-engine}}
 
 Choose a connection route.
 
@@ -58,17 +58,17 @@ Choose a connection route.
 
 Complete the following steps for the MCP server route:
 
-1. Create credentials with the Agent Builder, Context Engine, and Elasticsearch privileges required for MCP access.
+1. Create credentials with the Agent Builder, {{context-engine}}, and Elasticsearch privileges required for MCP access.
 2. Connect to the Agent Builder MCP endpoint.
-3. Load the Context Engine tools.
+3. Load the {{context-engine}} tools.
 :::
-:::{tab-item} Context Engine APIs
+:::{tab-item} {{context-engine}} APIs
 :sync: api
 
 Complete the following steps for the API route:
 
-1. Create credentials with the Context Engine and Elasticsearch privileges required for API access.
-2. Configure the Context Engine API client.
+1. Create credentials with the {{context-engine}} and Elasticsearch privileges required for API access.
+2. Configure the {{context-engine}} API client.
 3. Wrap the retrieval operations as LangChain tools.
 :::
 ::::
@@ -90,7 +90,7 @@ Create the credential as follows:
     Assign the following privileges:
 
     * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
-    * **Kibana privileges**, in the space you want to query: **Agent Builder** at **Read**, and **Context Engine** at **Read**.
+    * **Kibana privileges**, in the space you want to query: **Agent Builder** at **Read**, and **{{context-engine}}** at **Read**.
 
     ::::{dropdown} Example of a concrete definition
     ```json
@@ -143,7 +143,7 @@ Create the credential as follows:
     Assign the following privileges:
 
     * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
-    * **Kibana privileges**, in the space you want to query: **Context Engine** at **Read**.
+    * **Kibana privileges**, in the space you want to query: **{{context-engine}}** at **Read**.
 
     ::::{dropdown} Example of a concrete definition
     ```json
@@ -204,7 +204,7 @@ This example also uses an OpenRouter key to reach the model:
 export OPENROUTER_API_KEY="sk-..."
 ```
 
-## Step 2: Set up Context Engine tools
+## Step 2: Set up {{context-engine}} tools
 
 Choose how to make the retrieval tools available to LangChain:
 
@@ -247,12 +247,12 @@ async def main() -> None:
 
 The annotations explain the following details:
 
-1. The three Context Engine tool names to filter from the MCP server's full tool list.
+1. The three {{context-engine}} tool names to filter from the MCP server's full tool list.
 2. Set `KIBANA_SPACE` to target a non-default space. Leave it unset for the default space.
 3. The transport type required by `langchain-mcp-adapters` for the Kibana MCP endpoint.
 4. Agent Builder serves the MCP endpoint at `/api/agent_builder/mcp`.
 5. The MCP server accepts only `Authorization` and does not need a `kbn-xsrf` header.
-6. Narrow the server's full tool list to the three Context Engine tools.
+6. Narrow the server's full tool list to the three {{context-engine}} tools.
 :::
 :::{tab-item} API
 :sync: api
@@ -636,11 +636,11 @@ If the agent answers without calling the tools, or queries a target that describ
 
 ## Query a different space
 
-Set `KIBANA_SPACE` to the space ID before creating the client, so requests go to `/s/{space_id}/api/context_engine`. The API key needs the Context Engine feature privilege in that space, and `contextEngine:enabled` has to be on there.
+Set `KIBANA_SPACE` to the space ID before creating the client, so requests go to `/s/{space_id}/api/context_engine`. The API key needs the {{context-engine}} feature privilege in that space, and `contextEngine:enabled` has to be on there.
 
 To read from several spaces in one agent, build one client per space and register a separate set of tools for each.
 
-For common access and retrieval failures, refer to [Troubleshoot Context Engine retrieval](use-context-engine-with-agents.md#troubleshoot-context-engine-retrieval).
+For common access and retrieval failures, refer to [Troubleshoot {{context-engine}} retrieval](use-context-engine-with-agents.md#troubleshoot-context-engine-retrieval).
 
 ## Appendix
 
