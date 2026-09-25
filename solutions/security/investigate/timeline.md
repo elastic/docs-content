@@ -15,6 +15,8 @@ products:
 
 Use Timeline as your workspace for investigations and threat hunting. You can add alerts from multiple indices to a Timeline to facilitate advanced investigations.
 
+This page covers both granting access to Timeline, which you do once, and working with Timelines day to day. To duplicate, export, or delete existing Timelines, skip to [Manage existing Timelines](#manage-timelines-ui).
+
 You can drag or send fields of interest to a Timeline to create the desired query. For example, you can add fields from tables and histograms on the **Overview**, **Alerts**, **Hosts**, and **Network** pages, as well as from other Timelines. Alternatively, you can add a query directly in Timeline by expanding the [query builder](/solutions/security/investigate/timeline.md#narrow-expand) and clicking **+ Add field**.
 
 :::{image} /solutions/images/security-timeline-ui-updated.png

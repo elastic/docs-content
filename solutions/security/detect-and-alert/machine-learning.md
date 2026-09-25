@@ -13,6 +13,8 @@ description: Create detection rules that trigger on machine learning anomaly det
 
 {{ml-cap}} rules generate alerts when a {{ml}} {{anomaly-job}} discovers an anomaly that exceeds a defined score threshold. Unlike other rule types, {{ml}} rules do not require you to write a query. Instead, they rely on {{ml}} jobs that continuously model normal behavior and flag deviations.
 
+This page covers both keeping the {{ml}} jobs behind existing rules running and configuring new {{ml}} rules. If you're defining a new rule, skip to [Annotated examples](#ml-examples).
+
 ### When to use a {{ml}} rule
 
 {{ml-cap}} rules are the right fit when:

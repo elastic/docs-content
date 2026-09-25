@@ -15,6 +15,8 @@ products:
 
 Incorporate notes into your investigative workflows to coordinate responses, conduct threat hunting, and share investigative findings. You can attach notes to alerts, events, and Timelines and manage them from the **Notes** page.
 
+This page covers both granting access to notes, which you do once, and working with notes day to day. To search, filter, or delete notes across alerts, events, and Timelines, skip to [Manage all notes](#manage-notes).
+
 ::::{note}
 * {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga` You can attach up to 100 notes to alerts and events. The number of notes you can attach to Timelines is unlimited.
 * {applies_to}`stack: ga =9.0` Configure the `securitySolution:maxUnassociatedNotes` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) to specify the maximum number of notes that you can attach to alerts and events.

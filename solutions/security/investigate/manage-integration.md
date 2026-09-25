@@ -13,6 +13,7 @@ products:
 
 # Manage the integration [manage-osquery-integration]
 
+This page covers both setting up the Osquery Manager integration and maintaining it afterward. If the integration is already running, skip to [Upgrade Osquery versions](#_upgrade_osquery_versions) or [Debug issues](#_debug_issues).
 
 ## System requirements [_system_requirements]
 

@@ -14,7 +14,7 @@ description: Find and fill gaps in Elastic Security detection rule executions ma
 
 Gaps are periods when a detection rule didn't run as scheduled. They can be caused by various disruptions, including system updates, resource constraints, or simply turning off a rule. Addressing gaps is essential for maintaining consistent detection coverage and avoiding missed alerts.
 
-This page explains how to find gaps and fill them, either manually or automatically.
+This page covers both finding and filling gaps as they occur and a one-time setting that fills them for you. To turn on automatic gap fill, skip to [Fill gaps automatically](#fill-gaps-automatically).
 
 ## Find gaps [find-gaps]
 

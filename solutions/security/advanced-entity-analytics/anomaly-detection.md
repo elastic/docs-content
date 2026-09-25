@@ -22,6 +22,8 @@ navigation_title: Anomaly detection
 
 Anomaly detection jobs identify anomalous events or patterns in your data. In a security context, they’re typically used with detection rules to trigger alerts when behavior deviates from baseline activity.
 
+This page covers both starting and stopping the {{ml}} jobs that find anomalies and reviewing the anomalies they find. If your jobs are already running, skip to [View detected anomalies](#view-anomalies).
+
 
 ::::{tip}
 Refer to [{{ml-cap}}: Anomaly detection](/explore-analyze/machine-learning/anomaly-detection.md) for more background.

@@ -26,6 +26,8 @@ With Osquery, you can:
 
 To use Osquery, you must add the [Osquery manager integration](manage-integration.md) to an {{agent}} policy. After completing that step, you can use the Osquery features that are available in your solution.
 
+This page covers both granting the privileges Osquery Manager needs, which you do once, and running and scheduling queries day to day. To set up queries that run on a recurring schedule, skip to [Schedule queries with packs](#osquery-schedule-query).
+
 % The following Osquery features are available from {{elastic-sec}}:
 
 % * **[Osquery Response Actions](/solutions/security/investigate/add-osquery-response-actions.md)** - Use Osquery Response Actions to add live queries to custom query rules.

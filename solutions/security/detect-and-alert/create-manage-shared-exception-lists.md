@@ -16,6 +16,8 @@ description: Create and manage shared exception lists to apply the same exceptio
 
 Shared exception lists let you group exception items and apply them to multiple rules at once. Instead of adding the same exception to each rule individually, create a shared list and associate it with any rules that need it.
 
+This page covers both creating a shared exception list and managing lists you already have. To edit, export, import, duplicate, or delete an existing list, skip to [Manage shared exception lists](#manage-exception-lists).
+
 :::{image} /solutions/images/security-rule-exceptions-page.png
 :alt: Shared Exception Lists page
 :screenshot:

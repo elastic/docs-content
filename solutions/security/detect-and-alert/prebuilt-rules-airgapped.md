@@ -17,6 +17,8 @@ description: Learn how to install and update Elastic prebuilt detection rules in
 * [Use a self-hosted {{package-registry}}](#install-prebuilt-rules-self-hosted-epr): Host your own {{package-registry}} to provide rules to your air-gapped environment. This is the recommended approach for ongoing rule management and updates.
 * [Manually transfer prebuilt rules](#import-export-airgapped): Export rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment. This is a simpler approach for one-time transfers or when container infrastructure isn't available.
 
+This page covers both installing prebuilt rules in an air-gapped environment for the first time and keeping them up to date afterward. If your self-hosted registry is already running, skip to [Update prebuilt rules using your self-hosted registry](#update-prebuilt-rules-self-hosted-registry).
+
 ::::{note}
 A set of prebundled detection rules that you can install without a {{package-registry}} are included when [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md#general-fleet-settings-kb) is set to `true`. However, to receive rule updates beyond what's bundled with your {{kib}} version, use one of the methods described on this page.
 ::::

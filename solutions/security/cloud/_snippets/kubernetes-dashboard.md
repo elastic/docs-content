@@ -1,6 +1,8 @@
 
 The Kubernetes dashboard provides insight into Linux process data from your Kubernetes clusters. It shows sessions in detail and in the context of your monitored infrastructure.
 
+This page covers both using the dashboard and the setup it needs before it shows data. If the dashboard is empty, skip to [Setup](#_setup).
+
 ## Requirements
 * Kubernetes node operating systems must have Linux kernels 5.10.16 or higher.
 * This feature is currently available on GKE and EKS using Linux hosts and Kubernetes versions that match [these](/solutions/security/cloud/d4c/d4c-overview.md#_support_matrix) specifications.

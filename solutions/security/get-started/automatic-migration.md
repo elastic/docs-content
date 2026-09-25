@@ -37,6 +37,8 @@ For rule migrations, if comparable Elastic-authored rules exist, Automatic Migra
 
 You can ingest your data before migrating your assets, or migrate your assets first in which case the tool recommends which data sources you need to power your migrated rules.
 
+This page covers both starting a migration and finishing the work on translated assets afterward. If a migration has already run, skip to [The Translated rules page](#the-translated-rules-page) or [The Translated dashboards page](#the-translated-dashboards-page).
+
 ::::{applies-switch}
 
 :::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
