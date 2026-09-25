@@ -1291,14 +1291,43 @@ redirects:
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
 
   # Plugins and bundles hub: move deployment-specific plugin pages under deploy-manage/plugins-and-configuration-files/ issue: https://github.com/elastic/docs-content-internal/issues/1075
-  'deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md': 'deploy-manage/plugins-and-configuration-files/elastic-cloud/add-plugins-extensions.md'
+  # Headings renamed on the same page: '## Plugins' -> '## Add {{es}} plugins', '## Bundles' -> '## Add configuration bundles'.
+  # 'ec-adding-plugins' and 'manage-through-the-api' are unchanged and pass through.
+  'deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md':
+    to: 'deploy-manage/plugins-and-configuration-files/elastic-cloud/add-plugins-extensions.md'
+    many:
+      - to: 'deploy-manage/plugins-and-configuration-files/elastic-cloud/add-plugins-extensions.md'
+        anchors:
+          'plugins': 'add-es-plugins'
+          'bundles': 'add-configuration-bundles'
   'deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-ech.md': 'deploy-manage/plugins-and-configuration-files/elastic-cloud/add-plugins-provided-with-ech.md'
   'deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md': 'deploy-manage/plugins-and-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md'
   'deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md': 'deploy-manage/plugins-and-configuration-files/elastic-cloud/manage-plugins-extensions-through-api.md'
-  'deploy-manage/deploy/cloud-enterprise/add-plugins.md': 'deploy-manage/plugins-and-configuration-files/cloud-enterprise/add-plugins.md'
+  # Page split: the old page's content became 'add-plugins-provided-with-ece.md', while 'add-plugins.md'
+  # is now a hub. Anchor-less requests land on the hub; the old anchors follow the content.
+  'deploy-manage/deploy/cloud-enterprise/add-plugins.md':
+    to: 'deploy-manage/plugins-and-configuration-files/cloud-enterprise/add-plugins.md'
+    many:
+      - to: 'deploy-manage/plugins-and-configuration-files/cloud-enterprise/add-plugins-provided-with-ece.md'
+        anchors:
+          'ece-adding-plugins':
+          'add-plugins-when-creating-a-new-ece-deployment': 'add-plugins-when-creating-a-new-ece-deployment'
+          'add-plugins-to-an-existing-ece-deployment': 'add-plugins-to-an-existing-ece-deployment'
   'deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md': 'deploy-manage/plugins-and-configuration-files/cloud-enterprise/add-custom-bundles-plugins.md'
   'deploy-manage/deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md': 'deploy-manage/plugins-and-configuration-files/cloud-enterprise/ece-include-additional-kibana-plugin.md'
-  'deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md': 'deploy-manage/plugins-and-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md'
+  # Page split: the init-container sections (including 'istio-note') moved to the init containers page and the
+  # custom image section moved to create-custom-images.md. 'k8s-bundles-plugins' and
+  # 'use-a-volume-and-volume-mount-together-with-a-configmap-or-secret' still exist on the target and pass through.
+  'deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md':
+    to: 'deploy-manage/plugins-and-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md'
+    many:
+      - to: 'deploy-manage/plugins-and-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md'
+        anchors:
+          'istio-note': 'istio-note'
+          'use-init-containers-for-plugins-installation':
+      - to: 'deploy-manage/deploy/cloud-on-k8s/create-custom-images.md'
+        anchors:
+          'create-a-custom-image':
   'deploy-manage/deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md': 'deploy-manage/plugins-and-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md'
   'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-plugins.md': 'deploy-manage/plugins-and-configuration-files/cloud-on-k8s/k8s-kibana-plugins.md'
   # related to https://github.com/elastic/docs-content/issues/7709
