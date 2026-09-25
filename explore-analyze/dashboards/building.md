@@ -25,7 +25,7 @@ Use the following table to find the right approach for building your dashboards,
 Once you have a dashboard, you can enhance it:
 
 * [Add filter controls](../visualize/add-controls.md) to let viewers explore the data interactively
-* [Add drilldowns](drilldowns.md) to navigate between dashboards or to external URLs
+* Add [Drilldowns](drilldowns.md) to open another dashboard, a URL, or Discover from a panel
 * [Arrange and resize panels](arrange-panels.md) to optimize its layout
 
 You can also maintain your dashboards after you create them: [organize your collection](managing.md) with search, tags, and favorites, [duplicate](duplicate-dashboards.md) a dashboard to reuse it as a starting point, [import](import-dashboards.md) one from another space, instance, or deployment, or [share or export](sharing.md) it. For repeatable, auditable changes, [manage your dashboards as code](manage-dashboards-as-code.md) to version-control their definitions and deploy them across environments.

@@ -298,6 +298,11 @@ toc:
           - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
           - file: dashboards/drilldowns.md
+            children:
+              - file: dashboards/create-dashboard-drilldown.md
+              - file: dashboards/create-url-drilldown.md
+              - file: dashboards/create-discover-drilldown.md
+              - file: dashboards/manage-drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
       - file: dashboards/managing.md

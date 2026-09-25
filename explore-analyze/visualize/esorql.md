@@ -182,7 +182,7 @@ You can filter the dashboard or open a drilldown only from a value that comes fr
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If the column only renames an index field with `RENAME`, you can still filter and open a drilldown from it. Otherwise the visualization explains that the value relies on a field created at query time. On a **Bar**, **Line**, **Area**, **Pie**, **Treemap**, **Mosaic**, or **Waffle** chart, **Filter for** and **Filter out** stay in the legend but cannot be used. The legend menu and the tooltip give that explanation. A **Heat map** shows the explanation in the tooltip. If the value is a date, the chart does not show **Filter for**, **Filter out**, or that explanation. In a **Table**, **Filter for** and **Filter out** stay visible but cannot be used, and the cell menu gives the explanation.
 - {applies_to}`stack: ga =9.4` The filter and drilldown options are not available.
 
-For more information, refer to [Add drilldowns](../dashboards/drilldowns.md#drilldowns-requirements).
+For more information, refer to [Drilldowns](../dashboards/drilldowns.md#drilldowns-requirements).
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}

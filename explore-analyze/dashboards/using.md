@@ -77,7 +77,7 @@ You can create filter pills by:
 
 When the value comes from an {{esql}} query:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` The visualization explains why you cannot filter or drill down from that value. [Add drilldowns](drilldowns.md#drilldowns-requirements) describes where the explanation appears, including date values and renamed columns.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` The visualization explains why you cannot filter or drill down from that value. [Drilldowns](drilldowns.md#drilldowns-requirements) describes where the explanation appears, including date values and renamed columns.
 - {applies_to}`stack: ga =9.4` The filter and drilldown options are not available.
 :::
 
