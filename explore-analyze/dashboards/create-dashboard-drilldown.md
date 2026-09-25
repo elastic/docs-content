@@ -50,15 +50,14 @@ This example opens another dashboard from a panel. Follow it with the sample dat
         * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Add from library**.
 
     2. Add the **[Logs] Visits** panel.
-    3. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**, or to a 30-day period that contains data, depending on when you installed the sample data.
-    4. Save the dashboard. In the **Title** field, enter `Detailed logs`.
+    3. Save the dashboard. In the **Title** field, enter `Detailed logs`.
     ::::
 
-3. Open the **[Logs] Web Traffic** dashboard, then set a search and a filter for the drilldown to carry.
+3. Open the **[Logs] Web Traffic** dashboard and select **Edit**.
+4. Set a search, a filter, and a time range for the drilldown to carry.
 
-    [Search](using.md#_filter_dashboards_using_the_kql_query_bar): `extension.keyword: ("gz" or "css" or "deb")`<br> [Filter](using.md#_add_pills_using_the_filter_editor): `geo.src: US`
+    [Search](using.md#_filter_dashboards_using_the_kql_query_bar): `extension.keyword: ("gz" or "css" or "deb")`<br> [Filter](using.md#_add_pills_using_the_filter_editor): `geo.src: US`<br> [Time filter](../query-filter/filtering.md): **Last 30 days**, or a 30-day period that contains data, depending on when you installed the sample data.
 
-4. On the **[Logs] Web Traffic** dashboard, select **Edit**.
 5. Hover over the **[Logs] Errors by host** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
 6. Select **Go to dashboard**.
 
