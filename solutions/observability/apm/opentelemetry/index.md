@@ -21,7 +21,7 @@ OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the 
 
 **Install OpenTelemetry content packs to work with OpenTelemetry data**
 
-OpenTelemetry data is stored using OpenTelemetry semantic conventions. To visualize it, install content-only packs that provide compatible dashboards.
+OpenTelemetry data is stored using OpenTelemetry semantic conventions. You must install content-only packs that provide compatible dashboards to visualize your data.
 
 In the {{kib}} Integrations UI, search for `otel` and install packs like **System OpenTelemetry Assets**. Beats-based integrations ship ECS dashboards, which don't work with OpenTelemetry semantic conventions.
 

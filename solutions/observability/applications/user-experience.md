@@ -23,7 +23,7 @@ Powered by the APM Real user monitoring (RUM) agent, all it takes is a few lines
 
 ## Why is {{user-experience}} important? [why-user-experience]
 
-Search engines place importance on user experience when organically ranking websites. Elastic makes it easy to view your website data in the context of Google Core Web Vitals, metrics that score three key areas of user experience: loading performance, visual stability, and interactivity. Core Web Vitals are among Google’s search ranking factors, so good scores can help your pages rank and qualify for features like the “Top Stories” section of Google search results.
+Search engines place importance on user experience when organically ranking websites. Elastic makes it easy to view your website data in the context of Google Core Web Vitals, with metrics that score three key areas of user experience: loading performance, visual stability, and interactivity. Core Web Vitals are among Google’s top search ranking factors, so good scores can help your pages rank and qualify for features like the “Top Stories” section of Google search results.
 
 ## How does {{user-experience}} work? [how-user-experience-works]
 
