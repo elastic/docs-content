@@ -65,7 +65,7 @@ Export the session as JSON to inspect its definition, or to use that JSON as the
 2. Set what the JSON includes:
 
    - To include every open tab, leave **Export only the current tab** off. Turn it on to include only the tab you are viewing.
-   - If the session is not saved, turn on **Include current time settings** to include the current time filter and refresh interval. The switch is off until you turn it on.
+   - If the session is not saved, turn on **Include current time settings** to include the current time filter and refresh interval. The setting is off by default.
    - If the session is saved, **Include current time settings** is not available. The JSON includes the current time filter and refresh interval only when you saved the session with **Store time with Discover session**.
 
 3. Review the JSON. If a property can't be included, {{kib}} removes it and lists it under **Unsupported properties were removed**. Select **Show details** to see what was removed. If {{kib}} can't export the session, the flyout shows **Unable to export** and the error. Select **Retry** to try again.
