@@ -68,7 +68,3 @@ From here, you can view, manage, and query alert episode data, and query `.rule-
 - [View and manage alerts](alerts/view-and-manage-alerts.md): Open the alert episodes table, triage active alert episodes, and acknowledge, snooze, or resolve them.
 - [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events belong to an alert episode.
 - [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
-
-:::{important} - How to use the {{alerting-v2-system}} documentation
-Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.
-:::

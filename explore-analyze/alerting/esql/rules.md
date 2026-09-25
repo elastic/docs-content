@@ -31,7 +31,3 @@ Use these pages to create a rule, change its settings, or manage existing rules.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.
 - [Rule mode](rules/configure-rule-mode.md): Set whether matches are grouped into an alert episode or remain available for later analysis.
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the **Rules** page.
-
-:::{important} - How to use the {{alerting-v2-system}} documentation
-Because the {{alerting-v2-system}} is still evolving, its UI can change before general availability. Rather than pointing to an exact button or menu, the documentation focuses on the underlying concepts and behavior. If something doesn't match what you see in the {{kib}} UI, look for the closest equivalent instead. The concepts and behaviors described in the documentation still apply.
-:::
