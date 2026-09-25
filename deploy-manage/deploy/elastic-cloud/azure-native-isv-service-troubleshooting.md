@@ -48,10 +48,10 @@ One possible cause of a resource creation failure is the default network securit
 Follow these steps to resolve the problem:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Go to the [Network security page](https://cloud.elastic.co/access-security/network-security).
+2. From the navigation menu, go to **Organization** → [**Network security**](https://cloud.elastic.co/access-security/network-security).
 3. Edit the policy and disable the **Apply to future resources by default** option.
 4. In Azure, create a new {{ecloud}} resource.
-5. After the deployment has been created successfully, go back to the [Network security page](https://cloud.elastic.co/access-security/network-security) in {{ecloud}} and re-enable the **Apply to future resources by default** option.
+5. After the deployment has been created successfully, go back to **Organization** → [**Network security**](https://cloud.elastic.co/access-security/network-security) in {{ecloud}} and re-enable the **Apply to future resources by default** option.
 
 If your resource still does not create successfully, [contact the Elastic Support Team](#azure-integration-support) for assistance.
 
@@ -81,7 +81,7 @@ $$$azure-integration-logs-not-ingested$$$
 ## Logs not being ingested
 
 * When you set up monitoring for your Azure services, if your Azure and Elastic resources are in different subscriptions, you need to make sure that the `Microsoft.Elastic` resource provider is registered in the subscription in which the Azure resources exist. Check [Configure log ingestion](azure-native-isv-service-logs-metrics.md#configure-log-ingestion) for details.
-* If you are using [network security policies](/deploy-manage/security/network-security.md), reach out to [the Elastic Support Team](#azure-integration-support).
+* If you are using [network security policies](/deploy-manage/security/network-security.md), Azure resource logs can be blocked from reaching your deployment. Contact [Elastic Support](#azure-integration-support) or refer to [ECH: Azure Native ISV Resource Logs blocked by Traffic Filters](https://support.elastic.co/knowledge/18603788).
 
 
 $$$azure-integration-support$$$

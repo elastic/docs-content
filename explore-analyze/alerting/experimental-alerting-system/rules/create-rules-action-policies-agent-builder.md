@@ -65,11 +65,13 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating workflows and action policies.
 
 :::{note}
-Signal rules do not support notifications. Alert episodes, and therefore action policies, only apply to rules running in Alert mode. If you ask the agent to set up notifications for a signal rule, the rule management skill explains the limitation and offers to either convert the rule to Alert mode or create a separate alert rule.
+Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, the skill explains the limitation. If the rule is still a draft in the conversation, the skill changes it so matches open alert episodes before you save it. If the rule is already saved, that setting can't change, so the skill offers to create a new rule with the same query and schedule that opens alert episodes, then set up notifications on that rule.
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
-- **Action Policies** - Action policies are the gating mechanism. They evaluate the rule's alert episodes and invoke the workflow when an episode matches. When created alongside a rule, an action policy is automatically scoped to it.
+- **Action Policies** - Action policies are the gating mechanism. {{kib}} evaluates them against the rule's alert episodes and invokes the workflow for the episodes they apply to. When you create an action policy with a rule, the policy applies to that rule's alert episodes.
+    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` If the rule already has a [tag](configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, the agent selects that tag. Otherwise, it adds a `notify-<rule-name>` tag in lowercase with hyphens (for example, `notify-high-cpu-prod`). The policy also applies to alert episodes from any other rule with that tag.
+    * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` The action policy references the rule by ID.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.
 
@@ -77,11 +79,14 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 The three objects have a dependency chain that determines the order in which they must be saved:
 
-1. **Rule** - The action policy references the rule by ID. The ID is not available until the rule is persisted.
+1. **Rule** - Save the rule first, so the action policy can link to it.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 
+:::{note}
+:applies_to: {"stack": "removed 9.6+, experimental =9.5", "serverless": "unavailable"}
 Action policies saved or edited through {{agent-builder}} also receive the `agent-builder-assisted` tag automatically, with the same behavior: user-editable and re-applied on subsequent agent edits.
+:::
 
 ## Related pages
 
