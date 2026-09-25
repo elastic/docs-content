@@ -436,6 +436,8 @@ toc:
                   - file: tools/snapshot-and-restore/ece-restore-snapshots-into-existing-deployment.md
                   - file: tools/snapshot-and-restore/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md
           - file: tools/snapshot-and-restore/searchable-snapshots.md
+            children:
+              - file: tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md
       - file: tools/cross-cluster-replication.md
         children:
           - file: tools/cross-cluster-replication/set-up-cross-cluster-replication.md
