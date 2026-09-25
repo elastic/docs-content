@@ -14,6 +14,8 @@ products:
 
 The {{es}} output sends events directly to {{es}} by using the {{es}} HTTP API.
 
+If {{agent}} sends data to an {{ech}} deployment or a {{serverless-full}} Observability or Security project, you can configure the output to send log data to the [Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md) instead. The managed endpoint buffers data before indexing it, which helps absorb bursts in ingest volume. Refer to [When to use the Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md#when-to-use) for details.
+
 **Compatibility:** This output works with all compatible versions of {{es}}. See the [Elastic Support Matrix](https://www.elastic.co/support/matrix#matrix_compatibility).
 
 This example configures an {{es}} output called `default` in the `elastic-agent.yml` file using the recommended [token-based authentication (API key)](#output-elasticsearch-apikey-authentication-settings):
