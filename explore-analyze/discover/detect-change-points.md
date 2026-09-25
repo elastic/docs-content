@@ -1,8 +1,8 @@
 ---
 navigation_title: Detect change points
 applies_to:
-  stack: ga 9.5+
   serverless: ga
+  stack: ga 9.5+
 products:
   - id: kibana
 type: how-to
@@ -24,7 +24,7 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 In this example, you use the sample web logs data to detect changes in the average number of bytes transferred for each destination country.
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Switch to {{esql}} mode. Refer to [Using {{esql}}](try-esql.md#tutorial-try-esql) for the available options.
+2. Switch to {{esql}} mode. Refer to [Get started with {{esql}} in Discover](try-esql.md#tutorial-try-esql) for the available options.
 3. Set the time range to **All time**, or select a range that covers at least one month of the sample data.
 4. Enter the following query:
 
@@ -92,6 +92,7 @@ Discover displays a separate chart for each group that contains a detected chang
 
 ## Related pages
 
-- [Using {{esql}} in Discover](try-esql.md)
+- [Get started with {{esql}} in Discover](try-esql.md)
+- [Use Discover with {{esql}}](use-esql.md)
 - [`CHANGE_POINT` command reference](elasticsearch://reference/query-languages/esql/commands/change-point.md)
 - [Detect change points in AIOps Labs](../machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection)

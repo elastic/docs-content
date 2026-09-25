@@ -281,14 +281,22 @@ toc:
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
+      - file: discover/use-esql.md
+        children:
+          - file: discover/try-esql.md
+          - file: discover/switch-esql-mode.md
+          - file: discover/browse-esql-sources.md
+          - file: discover/esql-results.md
+          - file: discover/esql-variable-controls.md
+          - file: discover/create-lookup-indices.md
+          - file: discover/inspect-grouped-stats.md
+          - file: discover/detect-change-points.md
       - file: discover/document-explorer.md
       - file: discover/discover-search-for-relevance.md
       - file: discover/save-open-search.md
       - file: discover/show-field-statistics.md
       - file: discover/run-pattern-analysis-discover.md
-      - file: discover/detect-change-points.md
       - file: discover/background-search.md
-      - file: discover/try-esql.md
   - file: dashboards.md
     children:
       - file: dashboards/using.md

@@ -649,6 +649,69 @@ redirects:
 
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+  # related to https://github.com/elastic/docs-content/issues/4890
+  'explore-analyze/discover/try-esql.md':
+    to: 'explore-analyze/discover/try-esql.md'
+    many:
+      - to: 'explore-analyze/discover/switch-esql-mode.md'
+        anchors:
+          'revert-to-classic-mode': 'revert-to-classic-mode'
+      - to: 'explore-analyze/discover/browse-esql-sources.md'
+        anchors:
+          'discover-esql-resource-browsers': 'discover-esql-resource-browsers'
+      - to: 'explore-analyze/discover/esql-results.md'
+        anchors:
+          'esql-kibana-results-table': 'esql-kibana-results-table'
+          'esql-kibana-results-table-limitations': 'esql-kibana-results-table-limitations'
+          '_sorting': '_sorting'
+          '_esql_and_time_series_data': '_esql_and_time_series_data'
+          '_edit_the_esql_visualization': '_edit_the_esql_visualization'
+          'refine-esql-query-from-table': 'refine-esql-query-from-table'
+          'refine-an-esql-query-by-interacting-with-the-results-table': 'refine-esql-query-from-table'
+      - to: 'explore-analyze/discover/esql-variable-controls.md'
+        anchors:
+          'add-variable-control': 'add-variable-control'
+          'esql-multi-values-controls': 'esql-multi-values-controls'
+          'import-discover-query-with-controls': 'import-discover-query-with-controls'
+          'edit-a-variable-control': 'edit-a-variable-control'
+      - to: 'explore-analyze/discover/create-lookup-indices.md'
+        anchors:
+          'discover-esql-lookup-join': 'discover-esql-lookup-join'
+          'create-lookup-esql': 'create-lookup-esql'
+          'esql-lookup-index-from-file': 'esql-lookup-index-from-file'
+          'view-edit-lookup-esql': 'view-edit-lookup-esql'
+          'discover-esql-lookup-editor-limitations': 'discover-esql-lookup-editor-limitations'
+          'reset-the-lookup-index-configuration': 'reset-the-lookup-index-configuration'
+      - to: 'explore-analyze/discover/inspect-grouped-stats.md'
+        anchors:
+          'esql-cascade-layout': 'esql-cascade-layout'
+          'esql-cascade-pattern-sparkline': 'esql-cascade-pattern-sparkline'
+          'pattern-rendering': 'pattern-rendering'
+          'grouped-row-actions': 'grouped-row-actions'
+          'opt-out-of-the-grouped-layout': 'opt-out-of-the-grouped-layout'
+  'explore-analyze/discover/use-esql.md':
+    to: 'explore-analyze/discover/use-esql.md'
+    many:
+      - to: 'explore-analyze/discover/switch-esql-mode.md'
+        anchors:
+          'switch-discover-query-mode': 'switch-discover-query-mode'
+          'revert-to-classic-mode': 'revert-to-classic-mode'
+      - to: 'explore-analyze/discover/browse-esql-sources.md'
+        anchors:
+          'discover-esql-resource-browsers': 'discover-esql-resource-browsers'
+      - to: 'explore-analyze/discover/esql-results.md'
+        anchors:
+          'esql-kibana-results-table': 'esql-kibana-results-table'
+          'esql-kibana-results-table-limitations': 'esql-kibana-results-table-limitations'
+          '_sorting': '_sorting'
+          '_esql_and_time_series_data': '_esql_and_time_series_data'
+          '_edit_the_esql_visualization': '_edit_the_esql_visualization'
+          'refine-esql-query-from-table': 'refine-esql-query-from-table'
+      - to: 'explore-analyze/discover/esql-variable-controls.md'
+        anchors:
+          'add-variable-control': 'add-variable-control'
+          'esql-multi-values-controls': 'esql-multi-values-controls'
+          'import-discover-query-with-controls': 'import-discover-query-with-controls'
 
 # Related to https://github.com/elastic/docs-content/pull/3493
   'solutions/security/cloud/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'

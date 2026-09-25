@@ -57,7 +57,7 @@ Select the data you want to explore, and then specify the time range in which to
    ::::{tip}
    By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
-   You can also [use {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
+   You can also [use {{esql}}](try-esql.md), which lets you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -102,9 +102,10 @@ You can later filter the data that shows in the chart and in the table by specif
 
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
 
-   When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Organize the query results](try-esql.md#esql-kibana-results-table).
+   When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
+
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
 4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
@@ -308,7 +309,7 @@ For example, exclude results from the ecommerce sample data view where day of we
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
-You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
+You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](switch-esql-mode.md#revert-to-classic-mode) at any time.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to ES|QL `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
@@ -322,7 +323,7 @@ Partial results appear when an {{esql}} query:
 - {applies_to}`stack: ga 9.3+` is canceled.
 :::
 
-Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
+Learn more about how to use ES|QL queries in [Get started with {{esql}} in Discover](try-esql.md) and [Use Discover with {{esql}}](use-esql.md).
 
 ### Cancel a running query [cancel-query-in-discover]
 
@@ -460,7 +461,7 @@ serverless: preview
 
 **Discover** integrates with [{{agent-builder}}](../ai-features/elastic-agent-builder.md) to provide AI-powered analysis of your {{esql}} query results. The [`discover-data-analysis` skill](../ai-features/agent-builder/builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) runs aggregation queries against the full dataset behind your current view, renders a chart for the main finding, and proposes drill-down queries you can run in a new tab.
 
-This feature is available only when **Discover** is in [{{esql}} mode](/explore-analyze/discover/try-esql.md). To write or fix the query itself with AI, use the [AI assistance in the {{esql}} editor](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
+This feature is available only when **Discover** is in [{{esql}} mode](use-esql.md). To write or fix the query itself with AI, use the [AI assistance in the {{esql}} editor](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
 
 To start an analysis:
 
