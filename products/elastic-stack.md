@@ -42,27 +42,34 @@ steps:
 ::::{card-group}
 :title: What's new
 :id: whats-new
-:intro: Release notes for Elasticsearch, Kibana, and Logstash.
+:intro: Release notes for Elasticsearch, Kibana, Elastic Agent, Logstash, and Beats.
 
 :::{link-card}
 title: Elasticsearch
 link: elasticsearch://release-notes/index.md
 icon: elasticsearch
-description: Elasticsearch release notes.
 :::
 
 :::{link-card}
 title: Kibana
 link: kibana://release-notes/index.md
 icon: kibana
-description: Kibana release notes.
+:::
+
+:::{link-card}
+title: Elastic Agent
+link: elastic-agent://release-notes/index.md
 :::
 
 :::{link-card}
 title: Logstash
 link: logstash://release-notes/index.md
 icon: logstash
-description: Logstash release notes.
+:::
+
+:::{link-card}
+title: Beats
+link: beats://release-notes/index.md
 :::
 ::::
 

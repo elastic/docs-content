@@ -8,7 +8,7 @@ description: Refresh the What's new cards on Elastic product hub pages. Use when
 
 Update `hub-whats-new.yml` at the docs-content repo root. Hub pages render that file with `{whats-new}` and `:product: elasticsearch`, `kibana`, or `logstash`.
 
-The Elastic Stack hub does not use this file. It links to the Elasticsearch, Kibana, and Logstash release notes with a regular `{card-group}`. Solution release notes stay in the Solutions section.
+The Elastic Stack hub does not use this file. It links to the Elasticsearch, Kibana, Elastic Agent, Logstash, and Beats release notes with a regular `{card-group}`. Solution release notes stay in the Solutions section. Do not add a description that only repeats the card title.
 
 ## When to run
 
