@@ -84,7 +84,7 @@ If it is not possible to follow these extra steps then you may be able to use th
 
 ## Available node roles [node-roles-list]
 
-Every node is implicitly a [coordinating node](#coordinating-only-node-role). This means that a node that has an explicit empty list of roles in the `node.roles` setting will only act as a coordinating node, which cannot be disabled. As a result, every node needs to have enough memory and CPU in order to deal with the [search *gather* phase](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). Refer to [minimum size recommendations for production use](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-minimum-recommendations).
+Every node is implicitly a [coordinating node](#coordinating-only-node-role). This means that a node that has an explicit empty list of roles in the `node.roles` setting will only act as a coordinating node, which cannot be deactivated. As a result, every node needs to have enough memory and CPU to deal with the [search *gather* phase](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). Refer to [minimum size recommendations for production use](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-minimum-recommendations).
 
 The following is a list of the roles that a node can perform in a cluster on top of implicitly being a coordinating node. A node can have one or more roles.
 
