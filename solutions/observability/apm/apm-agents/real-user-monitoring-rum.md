@@ -1,4 +1,5 @@
 ---
+description: Capture real user interactions in the browser with the Elastic RUM JavaScript agent. Measure client-side performance metrics like Time to First Byte, domInteractive, and domComplete.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-rum.html
 applies_to:

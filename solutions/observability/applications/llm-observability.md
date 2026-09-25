@@ -1,5 +1,6 @@
 ---
 navigation_title: LLM and agentic AI observability
+description: Monitor the performance, usage, and cost of LLM and agentic AI applications with Elastic. Collect metrics, logs, and traces, and analyze prompts and responses in prebuilt dashboards.
 products:
   - id: observability
   - id: apm

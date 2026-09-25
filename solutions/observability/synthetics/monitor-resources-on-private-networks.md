@@ -160,9 +160,7 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 If you upgraded from a version that allowed cross-space agent policy selection, any private location that references an agent policy from a different space will show **Policy not found in the current space** in the UI. To resolve this, reassign the private location to an agent policy in the same space, or create a new agent policy in the current space and re-enroll the {{agent}}.
 ::::
 
-::::{important}
-It is not currently possible to use custom CAs for synthetics browser tests in private locations without following a workaround. To learn more about the workaround, refer to the following GitHub issue: [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).
-::::
+Using custom CAs for synthetics browser tests in private locations is not currently possible without a workaround. To learn more, refer to the GitHub issue [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).
 
 ## Monitor integration health [synthetics-private-location-health]
 

@@ -1,4 +1,5 @@
 ---
+description: Monitor software services and applications in real time with Elastic APM. Track response times, database queries, external requests, errors, and host and runtime metrics.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm.html

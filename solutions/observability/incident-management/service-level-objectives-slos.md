@@ -1,4 +1,5 @@
 ---
+description: Set measurable reliability targets for your services with Elastic SLOs. Track availability, latency, and error rates, and monitor error budgets and burn rates in real time.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo.html
   - https://www.elastic.co/guide/en/serverless/current/observability-slos.html

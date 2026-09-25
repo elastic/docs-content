@@ -1,4 +1,5 @@
 ---
+description: Monitor the availability of your services and applications with Elastic Synthetics. Run lightweight HTTP, TCP, and ICMP checks and browser monitors from global or private locations.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-uptime-synthetics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-synthetics.html
