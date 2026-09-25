@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens region map chart](/explore-analyze/images/region-map-chart-example.png)
 
-## Build a region map chart with the point-and-click editor [build-a-region-map-chart]
+## Create a region map chart [create-a-region-map-chart]
+
+### Create a region map chart with the point-and-click editor [build-a-region-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a region map chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -61,7 +64,7 @@ The chart preview updates to show a map with regions colored by metric value. If
 
 ::::::
 
-## Build a region map chart with an {{esql}} query [build-a-region-map-chart-with-esql]
+### Create a region map chart with an {{esql}} query [build-a-region-map-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

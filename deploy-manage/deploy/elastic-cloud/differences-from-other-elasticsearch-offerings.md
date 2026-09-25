@@ -120,7 +120,7 @@ These capabilities cover alerting, notifications, reporting, and AI-assisted exp
 | [**Agent Builder**](/explore-analyze/ai-features/elastic-agent-builder.md) | ✅ | ✅ | The AI Agent chat experience that Agent Builder powers is the default in all project types. |
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
-| **[Reporting](/explore-analyze/report-and-share.md)** | ✅ All report types and file formats | ✅ Discover CSV, Lens CSV, Dashboard JSON<br><br>❌ Dashboard and visualization PDF and PNG | |
+| **[Reporting](/explore-analyze/report-and-share.md)** | ✅ All report types and file formats | ✅ Discover CSV, Lens CSV, Discover session JSON, Dashboard JSON<br><br>❌ Dashboard and visualization PDF and PNG | |
 | [**Watcher**](/explore-analyze/alerting/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
 
 ### {{es}} [elasticsearch]

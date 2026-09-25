@@ -41,6 +41,8 @@ You can share direct links to saved Discover sessions, dashboards, and visualiza
 * **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users will see the most recent 7 days when they open the link.
 * **Absolute time range** (default): The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link will always show that exact week of January 1-7, 2025, regardless of when users open the link.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens a specific document in **Discover**, refer to [Share a link to a document](discover/discover-get-started.md#share-a-document-link).
+
 ::::{tip}
 When sharing an object with unsaved changes, you get a temporary link that might break in the future, for example in case of upgrade. Save the object to get a permanent link instead.
 ::::
@@ -64,7 +66,9 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **CSV reports** — Generate CSV reports of saved Discover sessions.
 * **CSV download** — Generate and download CSV files of Lens visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
-* {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+* **Export JSON**
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
 
 :::{tip}
 Several applications let you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation).

@@ -234,7 +234,7 @@ Dive into an individual document to view its fields and the documents that occur
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To filter or copy values in the table without opening the flyout, switch **View mode** to **JSON**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
-1. In the document table, select the **View details** icon {icon}`expand` (**Toggle dialog with details** in earlier {{stack}} versions) to show document details.
+1. In the document table, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier {{stack}} versions) to show document details.
 
     ![Table view with document expanded](/explore-analyze/images/kibana-document-table-expanded.png "")
 
@@ -248,8 +248,14 @@ Dive into an individual document to view its fields and the documents that occur
    You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
-3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
-4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**.
+3. To navigate to a view of the document that you can bookmark and share, select **View single document**. This action isn't available in {{esql}} mode.
+4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**. This action isn't available in {{esql}} mode.
+
+::::{tip}
+:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
+
+To copy a link that reopens this document, select {icon}`link` **Copy link** in the flyout header. Refer to [Share a link to a document](#share-a-document-link).
+::::
 
 
 ## Search and filter data [search-in-discover]
@@ -401,9 +407,49 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 5. Select **Save**.
 
 
-### Share your Discover session [share-your-findings]
+### Share your findings [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+You can share the current view, show the results on a dashboard, export the session, or copy a link that reopens a specific document.
+
+- Select {icon}`share` **Share** in the application menu to copy a link to the current view. For the link options, refer to [Reporting and sharing](../report-and-share.md).
+- To show the results on a dashboard, add the session, its chart, or its table, to the dashboard. Refer to [Use Discover sessions in dashboards](save-open-search.md#_add_search_results_to_a_dashboard).
+- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Refer to [Reporting and sharing](../report-and-share.md#manually-generate-reports).
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
+
+In classic mode, select {icon}`maximize` **View details** on a row, then select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).
+
+#### Share a link to a document [share-a-document-link]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+When you are investigating a result, copy a link that reopens **Discover** with that document's flyout open. Recipients land on the same document instead of only the surrounding query.
+
+1. In the document table, select {icon}`maximize` **View details** on the document's row.
+2. In the flyout header, select {icon}`link` **Copy link**.
+
+   :::{image} /explore-analyze/images/kibana-discover-copy-document-link.png
+   :alt: Copy link tooltip in the flyout header
+   :screenshot:
+   :width: 400px
+   :::
+
+Opening the link brings back the same flyout.
+
+The link uses the absolute time range of the results on screen, so the document stays in that range.
+
+After you expand a grouped {{esql}} result and select a nested document, **Copy link** reopens that document in the default layout and keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
+
+When **Copy link** can copy the open document, **Share** includes that document. The session link opens **Discover** with the same flyout. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
+
+If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the document before copying the link. For example:
+
+```esql
+FROM kibana_sample_data_logs METADATA _id, _index
+```
+
+If the query transforms rows, such as with `STATS` or `KEEP`, you cannot copy a link to an individual result. **Copy link** stays available and shows a warning. If `_id` and `_index` are missing, **Copy link** stays available and warns you to add `METADATA _id, _index`.
 
 
 ## Analyze your data with AI [analyze-with-ai]
