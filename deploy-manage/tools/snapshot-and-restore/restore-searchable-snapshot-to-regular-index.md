@@ -33,7 +33,7 @@ If you want to restore {{search-snap}} indices and keep them as {{search-snaps}}
 
 Before restoring {{search-snap}} data to a regular index:
 
-* Confirm that the repository and source snapshot used by the mounted index are registered and available.
+* Confirm that searchable snapshot index's source repository is registered and source snapshot is available.
 * Ensure that the destination data nodes or tier have enough local storage for the complete regular index and its replicas. During the restore, the mounted and regular indices exist at the same time.
 * If the cluster uses data tiers, select a destination tier other than the frozen tier. The frozen tier is reserved for partially mounted {{search-snaps}}.
 * Ensure that you have the [permissions required to restore a snapshot](restore-snapshot.md#prerequisites) and manage the affected indices, aliases, lifecycle policies, and data streams.
