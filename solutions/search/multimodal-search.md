@@ -11,7 +11,7 @@ Multimodal search finds results by meaning across more than one content type. Co
 
 Multimodal search builds on [vector search](vector.md). A multimodal embedding model maps each supported input into a dense vector so content with similar meaning is nearby in vector space, even when the media types differ.
 
-On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
 
 :::{tip}
 For a hands-on tutorial, refer to [Tutorial: Build multimodal search with a `semantic` field](multimodal-search/multimodal-search-tutorial.md).

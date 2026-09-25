@@ -23,7 +23,7 @@ In hybrid search, semantic retrieval scores by meaning while lexical search scor
 
 The recommended way to use hybrid search in the {{stack}} follows the `semantic_text` workflow: you avoid hand-building {{infer}} ingest pipelines for embeddings while still keeping a dedicated `text` field for keyword-style matching.
 
-On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
 
 ## Requirements [semantic-text-requirements]
 

@@ -14,7 +14,7 @@ products:
 
 Hybrid search runs [full-text search](full-text.md) and [vector search](vector.md) in one request. For the vector part, you can use managed [semantic search](semantic-search.md) workflows or set up vector fields yourself. Either way, you return one ranked list that combines keyword matching with similarity search.
 
-On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
 
 The recommended way to use hybrid search in the {{stack}} is the [`semantic_text` workflow](semantic-search/semantic-search-semantic-text.md). Check out the [hands-on tutorial](hybrid-semantic-text.md) for a step-by-step guide.
 
