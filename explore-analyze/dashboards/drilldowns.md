@@ -137,9 +137,8 @@ The following panel types support URL drilldowns:
 This example adds a pie chart and a URL drilldown that opens a GitHub search for the slice you select. Follow it with the sample data, or use your own dashboard and data.
 
 1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
-2. Open the **[Logs] Web Traffic** dashboard.
-3. Select **Edit**.
-4. Add a pie chart.
+2. Open the **[Logs] Web Traffic** dashboard and select **Edit**.
+3. Add a pie chart.
 
     * {applies_to}`serverless:` {applies_to}`stack: ga 9.6+` In the application menu, select **Add** → **Create visualization**.
     * {applies_to}`stack: ga 9.5` In the application menu, select **Add** → **Visualization**.
@@ -147,11 +146,9 @@ This example adds a pie chart and a URL drilldown that opens a GitHub search for
     * {applies_to}`stack: ga 9.2-9.3` In the application menu, select **add** → **Lens**.
     * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Create visualization**.
 
-5. Set the visualization type to **Pie**.
-6. From **Available fields**, drag **machine.os.keyword** to the workspace.
-7. Select **Save and return**.
-8. Hover over the pie chart panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
-9. Select **Go to URL**.
+4. Set the visualization type to **Pie**, drag **machine.os.keyword** from **Available fields** to the workspace, then select **Save and return**.
+5. Hover over the pie chart panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
+6. Select **Go to URL**.
 
     1. In **Name**, enter a name. For example, `Show on GitHub`.
     2. For **Trigger**, select **Single click**. To use another interaction, refer to [URL drilldown triggers](#url-drilldown-triggers).
@@ -166,8 +163,8 @@ This example adds a pie chart and a URL drilldown that opens a GitHub search for
     4. Optional: Open **Additional options**. **Open URL in new tab** and **Encode URL** are already on. **Open URL in new tab** opens the site in a new browser tab. Turn it off to open the site in the same tab. **Encode URL** percent-encodes the URL after the template is filled in.
     5. Select **Create drilldown**.
 
-10. Save the dashboard.
-11. On the pie chart panel, select a slice, then select **Show on GitHub**.
+7. Save the dashboard.
+8. On the pie chart panel, select a slice, then select **Show on GitHub**.
 
     ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png)
 
@@ -198,55 +195,6 @@ https://example.com/host/{{event.values.[0]}}
 ```
 
 A **Single click** that returns more than one data point can also use `event.points`. The [variables reference](#variables-reference) includes it with the other variables.
-
-## Create Discover drilldowns [discover-drilldowns]
-
-A Discover drilldown opens **Discover** from a visualization panel and can carry the time range, filters, and query with it. Use one to read the documents behind a chart value.
-
-For example, a Discover drilldown on a pie chart can open only the documents for the slice you select.
-
-![Drilldown on bar vertical stacked chart that navigates to Discover](/explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.gif)
-
-The following panel types support Discover drilldowns:
-
-* **Visualizations that use a data view**
-* {applies_to}`serverless:` {applies_to}`stack: ga 9.5` **Visualizations based on an {{esql}} query**
-
-    On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
-
-::::{tip}
-You can [open a visualization panel in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
-::::
-
-### Create the Discover drilldown [_create_the_discover_drilldown]
-
-Create a drilldown that opens **Discover** from the **[Logs] Web Traffic** dashboard. That dashboard is added when you install the [**Sample web logs**](/manage-data/ingest/sample-data.md) data.
-
-1. Select **Edit**. Hover over the **[Logs] Bytes distribution** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
-2. Select **Open in Discover**.
-3. In **Name**, enter a name. For example, `View bytes distribution in Discover`.
-4. To open **Discover** in a new tab, select **Open in new tab**.
-5. Select **Create drilldown**.
-6. Save the dashboard.
-7. On the **[Logs] Bytes distribution** bar vertical stacked chart, select a bar, then select **View bytes distribution in Discover**.
-
-   :::{image} /explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.png
-   :alt: Drilldown on bar vertical stacked chart that navigates to Discover
-   :screenshot:
-   :::
-
-**Discover** opens in a new tab and shows the documents for the bar you selected.
-
-## Manage drilldowns [manage-drilldowns]
-
-You can edit a drilldown, copy it to another panel, or delete it.
-
-1. Open the panel menu that includes the drilldown, then select **Manage drilldowns**.
-2. On the **Manage** tab, use the following options:
-
-    * To change a drilldown, select **Edit**, make your changes, then select **Save**.
-    * To copy a drilldown, select **Copy**, enter the drilldown name, then select **Create drilldown**.
-    * To delete a drilldown, select it, then select **Delete ({count})**.
 
 ## URL templating [url-templating-language]
 
@@ -427,3 +375,55 @@ Save the dashboard and test the drilldown on the panel before you rely on it. To
 |  | event.columnNames | Column names. |
 | **Range selection** | event.from<br>event.to | Start and end of the selected range, as numbers.<br>Tip: Use the [date](#helpers) helper to format a date. |
 |  | event.key | Aggregation field behind the selected range, if available. |
+
+## Create Discover drilldowns [discover-drilldowns]
+
+A Discover drilldown opens **Discover** from a visualization panel and can carry the time range, filters, and query with it. Use one to read the documents behind a chart value.
+
+For example, a Discover drilldown on a pie chart can open only the documents for the slice you select.
+
+The following panel types support Discover drilldowns:
+
+* **Visualizations that use a data view**
+* {applies_to}`serverless:` {applies_to}`stack: ga 9.5` **Visualizations based on an {{esql}} query**
+
+    On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
+
+    On an {{esql}} **Bar**, **Line**, **Area**, or **Heat map**, drag to select a range. That range opens the drilldown. A click updates the {{esql}} query.
+
+On a visualization that uses a data view, select the value.
+
+::::{tip}
+You can [open a visualization panel in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
+::::
+
+### Create the Discover drilldown [_create_the_discover_drilldown]
+
+This example creates a Discover drilldown on the **[Logs] Bytes distribution** panel. Follow it with the sample data, or use your own dashboard and data.
+
+1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
+2. Open that dashboard and select **Edit**.
+3. Hover over the **[Logs] Bytes distribution** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
+4. Select **Open in Discover**. In **Name**, enter `View bytes distribution in Discover`. **Open in new tab** is already on. Select **Create drilldown**.
+5. Save the dashboard.
+6. Drag across the bars to select a range of `bytes` values, then select **View bytes distribution in Discover**.
+
+   :::{image} /explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.png
+   :alt: Drilldown on bar vertical stacked chart that navigates to Discover
+   :screenshot:
+   :::
+
+**Discover** opens in a new tab and shows the documents for the range you selected.
+
+## Manage drilldowns [manage-drilldowns]
+
+You can edit a drilldown, copy it, or delete it.
+
+1. Open the panel menu that includes the drilldown, then select **Manage drilldowns**.
+2. On the **Manage** tab, use the following options:
+
+    * To change a drilldown, select **Edit**, make your changes, then select **Save**.
+    * To make another copy on the same panel, select **Copy**, then select **Create drilldown**. The name ends with `(copy)`.
+    * To delete a drilldown, select it, then select **Delete ({count})**.
+
+To reuse a drilldown from another panel on the same dashboard, open {icon}`plus_in_circle` **Create drilldown** on the panel that should get it. When another panel already has a drilldown this panel can run, **Copy existing drilldown** lists it, with the source panel title under the drilldown name. Select **Copy**, then select **Create drilldown**. If the trigger is not supported on this panel, the trigger name shows a warning.
