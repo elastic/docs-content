@@ -23,13 +23,9 @@ In the generally available {{kib}} alerting system, the term **alert** refers to
 
 The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an [alert episode](alerts.md) and can notify. Events that aren't part of an alert episode remain available for later analysis.
 
-:::{image} /explore-analyze/images/basic-system-flow.png
-:alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping that event into an alert episode or keeping it with no episode for later analysis
-:::
-
 ## The building blocks
 
-The flowchart is the big picture. The five objects in this section are the pieces you'll create and configure: rules, rule events, alert episodes, action policies, and workflows.
+That's the big picture. The five objects in this section are the pieces you'll create and configure: rules, rule events, alert episodes, action policies, and workflows.
 
 ### Rules
 
@@ -63,11 +59,7 @@ Refer to [Connect workflows](workflows-alerting.md) to learn more.
 
 ## How the pieces fit together [how-pieces-fit-together]
 
-The following diagram is a more detailed version of the same flow. It places the five objects on that path so you can see how they connect.
-
-:::{image} /explore-analyze/images/detailed-system-flow.png
-:alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping the event into an alert episode that an action policy can route to a workflow, or keeping the event with no episode for later analysis
-:::
+This section walks through the same flow in more detail. It places the five objects on that path so you can see how they connect.
 
 Every match still becomes a rule event. From there, the rule's configuration determines the next step:
 
