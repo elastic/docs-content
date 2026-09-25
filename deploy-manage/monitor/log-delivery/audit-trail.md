@@ -88,9 +88,9 @@ Use Discover or {{esql}} to explore delivered audit trail logs in the following 
 
 | Data stream or index pattern | Contents |
 | --- | --- |
-| `logs-*.audit.otel-*` | All audit logs |
-| `logs-org.audit.otel-elastic_cloud` | Organization-level audit logs (administration, configuration, billing, and similar) |
-| `logs-serverless.audit.otel-elastic_cloud` | Project-level audit logs ({{es}}, {{kib}}, and {{ecloud}} project signals) |
+| `logs-*audit.otel-*` | All audit logs |
+| `logs-elastic_cloud.org_audit.otel-default` | Organization-level audit logs (administration, configuration, billing, and similar) |
+| `logs-elastic_cloud.serverless_audit.otel-default` | Project-level audit logs ({{es}}, {{kib}}, and {{ecloud}} project signals) |
 
 :::{warning}
 Restrict who can access these locations in your destination project, because logs might include user identifiers and client IPs.
@@ -98,12 +98,12 @@ Restrict who can access these locations in your destination project, because log
 
 ### Example queries
 
-Explore the following examples of what you can investigate with your delivered audit logs. Run each query against `logs-*.audit.otel-*` in Discover.
+Explore the following examples of what you can investigate with your delivered audit logs. Run each query against `logs-*_audit.otel-*` in Discover.
 
 #### Failed or denied activity
 
 ```esql
-FROM logs-*.audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.outcome == "failure" OR event.action IN ("access_denied", "authentication_failed")
 | KEEP @timestamp, user.name, user.id, event.action, event.outcome, source.ip, project.id, service.name
 | SORT @timestamp DESC
@@ -113,14 +113,14 @@ FROM logs-*.audit.otel-*
 #### {{kib}} and saved-object changes
 
 ```esql
-FROM logs-*.audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.action IN (
     "rule_create", "rule_delete", "rule_update",
     "saved_object_create", "saved_object_delete", "saved_object_update",
     "connector_create", "connector_delete", "connector_update",
     "space_update"
   )
-| KEEP @timestamp, user.name, event.action, kibana.space.id, kibana.saved_object.type, kibana.saved_object.id, service.name
+| KEEP @timestamp, user.name, event.action, elastic_cloud.serverless_audit.space.id, elastic_cloud.serverless_audit.saved_object.type, elastic_cloud.serverless_audit.saved_object.id, service.name
 | SORT @timestamp DESC
 | LIMIT 100
 ```
@@ -128,9 +128,9 @@ FROM logs-*.audit.otel-*
 #### Access denied on indices
 
 ```esql
-FROM logs-*.audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.action == "access_denied"
-| KEEP @timestamp, user.name, elasticsearch.audit.action, elasticsearch.audit.indices, source.ip, service.name
+| KEEP @timestamp, user.name, elastic_cloud.serverless_audit.action, elastic_cloud.serverless_audit.indices, source.ip, service.name
 | SORT @timestamp DESC
 | LIMIT 100
 ```
@@ -138,7 +138,7 @@ FROM logs-*.audit.otel-*
 #### Who is changing configuration and objects
 
 ```esql
-FROM logs-*.audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.type IN ("creation", "change", "deletion")
 | STATS events = COUNT(*) BY user.name, event.action, service.name
 | SORT events DESC
@@ -150,10 +150,10 @@ FROM logs-*.audit.otel-*
 Do not select the **Ignore data searches and reads** filter for this query. Replace `<INDEX_PATTERN>` with the index or pattern to watch.
 
 ```esql
-FROM logs-*.audit.otel-*
+FROM logs-*_audit.otel-*
 | WHERE event.action == "access_granted"
-  AND elasticsearch.audit.indices LIKE "<INDEX_PATTERN>"
-| KEEP @timestamp, user.name, user.id, elasticsearch.audit.action, elasticsearch.audit.indices, source.ip, service.name
+  AND elastic_cloud.serverless_audit.indices LIKE "<INDEX_PATTERN>"
+| KEEP @timestamp, user.name, user.id, elastic_cloud.serverless_audit.action, elastic_cloud.serverless_audit.indices, source.ip, service.name
 | SORT @timestamp DESC
 | LIMIT 100
 ```

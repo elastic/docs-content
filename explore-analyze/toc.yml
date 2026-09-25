@@ -450,7 +450,7 @@ toc:
                   - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
                   - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
                   - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
-                  - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-artifacts.md
               - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
               - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
               - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
