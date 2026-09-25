@@ -766,6 +766,8 @@ toc:
           - file: security/manage-elastic-defend/automatic-troubleshooting.md
           - file: security/manage-elastic-defend/allowlist-elastic-endpoint-in-third-party-antivirus-apps.md
           - file: security/manage-elastic-defend/elastic-endpoint-self-protection-features.md
+          - file: security/manage-elastic-defend/manage-quarantined-files.md
+          - file: security/manage-elastic-defend/manually-copy-artifact-updates.md
       - file: security/endpoint-response-actions.md
         children:
           - file: security/endpoint-response-actions/automated-response-actions.md
