@@ -31,7 +31,7 @@ By the end of this guide, you'll have a structured trial plan, clear evaluation 
 To complete each step of your evaluation, your {{ecloud}} trial provides full access to the following Elastic capabilities: 
 
 - All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
-- {applies_to}`stack: unavailable` The [{{es}} {{vectordb}}](/solutions/vector-database.md) {{serverless-short}} project type for embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval.
+- {applies_to}`ech: unavailable` The [{{es}} {{vectordb}}](/solutions/vector-database.md) {{serverless-short}} project type for embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval.
 - Integrations to ingest your data using the method that best suits your use case.
 - {{ml-cap}} features to evaluate anomaly detection results and search relevance, and explore visualization tools from our trained models.
 - Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
