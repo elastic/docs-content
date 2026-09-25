@@ -59,16 +59,17 @@ This example creates a dashboard and a dashboard drilldown. Follow it with the s
 
 Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] Web Traffic** dashboard.
 
-1. Hover over the **[Logs] Errors by host** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
-2. Select **Go to dashboard**.
+1. On the **[Logs] Web Traffic** dashboard, select **Edit**.
+2. Hover over the **[Logs] Errors by host** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
+3. Select **Go to dashboard**.
 
     1. In **Name**, enter a name. For example, `View details`.
     2. From **Choose destination dashboard**, select **Detailed logs**.
     3. To keep the `geo.src` filter, the KQL query, and the time filter, select **Use filters and query from origin dashboard** and **Use date range from origin dashboard**.
     4. Select **Create drilldown**.
 
-3. Save the dashboard.
-4. In the data table panel, select **+** on a value, then select **View details**.
+4. Save the dashboard.
+5. On the **[Logs] Errors by host** table, select **+** on a value, then select **View details**.
 
    :::{image} /explore-analyze/images/kibana-dashboard_drilldownOnPanel.png
    :alt: Drilldown on data table that navigates to another dashboard

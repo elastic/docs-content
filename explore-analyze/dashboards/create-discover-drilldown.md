@@ -33,9 +33,9 @@ The following panel types support Discover drilldowns:
 
     On {{esql}} panels, {{kib}} turns the dashboard filters and the dashboard KQL or Lucene query into a `WHERE` clause in the panel's ES|QL query. **Discover** then uses that same context. {{kib}} drops a filter when ES|QL cannot express it. The **Explore in Discover** panel action applies the same translation.
 
-    On an {{esql}} **Bar**, **Line**, **Area**, or **Heat map**, drag to select a range. That range opens the drilldown. A click updates the {{esql}} query.
+    On an {{esql}} **Bar**, **Line**, **Area**, or **Heat map**, a click updates the {{esql}} query.
 
-On a visualization that uses a data view, select the value.
+On a **Bar**, **Line**, **Area**, or **Heat map**, drag to select a range. That range opens the drilldown. On a **Pie**, a **Metric**, or a **Table**, select the value.
 
 ::::{tip}
 You can [open a visualization panel in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
@@ -50,7 +50,7 @@ This example creates a Discover drilldown on the **[Logs] Bytes distribution** p
 1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
 2. Open that dashboard and select **Edit**.
 3. Hover over the **[Logs] Bytes distribution** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
-4. Select **Open in Discover**. In **Name**, enter `View bytes distribution in Discover`. **Open in new tab** is already on. Select **Create drilldown**.
+4. Select **Open in Discover**. In **Name**, enter `View bytes distribution in Discover`. **Open in new tab** is already on. Turn it off to open **Discover** in the same tab. Select **Create drilldown**.
 5. Save the dashboard.
 6. Drag across the bars to select a range of `bytes` values, then select **View bytes distribution in Discover**.
 
