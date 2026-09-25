@@ -104,3 +104,6 @@ Defining too many fields in an index can lead to a mapping explosion, which can 
 Consider a situation where every new document inserted introduces new fields, such as with [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md). Each new field is added to the index mapping, which can become a problem as the mapping grows.
 
 Use the [mapping limit settings](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) to limit the number of field mappings (created manually or dynamically) and prevent documents from causing a mapping explosion.
+
+:::{related-learning} data-types-and-mappings
+:::

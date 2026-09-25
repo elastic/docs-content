@@ -29,12 +29,12 @@ This page explains how to start monitoring the security posture of your cloud as
 
 You can set up CSPM for AWS either by enrolling a single cloud account, or by enrolling an organization containing multiple accounts. Either way, you must first add the CSPM integration, then enable cloud account access. 
 
-Two deployment technologies are available: agentless and agent-based. 
+Two deployment options are available: {{managed-integration}} and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-aws-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* The [{{managed-integration}} deployment](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-aws-agentless) allows you to collect cloud posture data without having to manage the infrastructure that collects it. 
+* The [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-aws-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
-## Agentless deployment [cspm-aws-agentless]
+## {{managed-integration}} deployment [cspm-aws-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
@@ -46,18 +46,49 @@ Two deployment technologies are available: agentless and agent-based.
 :::{include} _snippets/cspm-namespace.md
 :::
 
-7. In **Deployment options** select **Agentless**.
+7. In **Deployment options**, select the deployment mode:
+    * {applies_to}`{serverless: ga, stack: ga 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to AWS. The following methods are available:
 
-    * Option 1: [Cloud connector](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` 
-      * To use a pre-existing cloud connector for this deployment, select **Existing connection** then the cloud connector's name. 
-      * To use a new cloud connector: under **New connection**, enter a **Cloud Connector Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
-      ::::{important}
-      {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+    * Option 1 (recommended): [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:
+
+      :::::{applies-switch}
+
+      ::::{applies-item} { "serverless": "preview", "stack": "preview 9.4+" }
+      1. In the **Preferred method** dropdown, select **Federated Identity**.
+      2. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name.
+
+         To create a new identity:
+
+         1. On the **New Identity** tab, enter a **Federated Identity Name**.
+         2. Expand the **Steps to assume role** section and complete the instructions to generate a `Role ARN` and `External ID`.
+         3. Enter the values in the respective fields in {{kib}}.
       ::::
 
+      ::::{applies-item} { "stack": "preview 9.2-9.3" }
+      1. In the **Preferred method** dropdown, select **Cloud Connectors**.
+      2. To use a pre-existing cloud connector for this deployment, select the **Existing Connection** tab, then select the cloud connector's name.
 
-    * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the instructions to automatically create the necessary credentials using CloudFormation.
+         To use a new cloud connector:
+
+         1. Under **New Connection**, enter a **Cloud Connector Name**.
+         2. Expand the **Steps to assume role** section and complete the instructions to generate a `Role ARN` and `External ID`.
+         3. Enter the values in the respective fields in {{kib}}.
+
+      :::{note}
+      :applies_to: { serverless: removed, stack: removed 9.3 } 
+      
+      On {{stack}} versions earlier than 9.3, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      :::
+      ::::
+
+      :::::
+
+
+    * Option 2: Direct access keys/CloudFormation.
+       1. In the **Preferred method** dropdown, select **Direct access keys**.
+       2. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
        ::::{note}
        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.

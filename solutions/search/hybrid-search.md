@@ -16,4 +16,6 @@ Hybrid search runs [full-text search](full-text.md) and [vector search](vector.m
 
 The recommended way to use hybrid search in the {{stack}} is the [`semantic_text` workflow](semantic-search/semantic-search-semantic-text.md). Check out the [hands-on tutorial](hybrid-semantic-text.md) for a step-by-step guide.
 
+For examples of using approximate kNN in hybrid search, refer to [Use approximate kNN in hybrid search](vector/knn/approximate-knn-query-examples.md#combine_approximate_knn_with_other_features).
+
 We recommend implementing hybrid search with the [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) algorithm. This approach merges rankings from the full-text and vector queries, giving more weight to documents that score well in either one. The final list balances exact keyword matches with similarity-based matches.
