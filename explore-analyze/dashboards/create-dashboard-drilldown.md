@@ -24,7 +24,7 @@ To create a dashboard drilldown, you need:
 :::{include} _snippets/drilldown-access.md
 :::
 
-You also need a destination dashboard.
+* A destination dashboard.
 
 The following panel types support dashboard drilldowns:
 
