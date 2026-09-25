@@ -221,7 +221,7 @@ POST /_security/role_mapping/ldap-superuser
 ### Example: Using a role mapping file [ece_using_the_role_mapping_files_2]
 
 :::{tip}
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/plugins-and-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+If you're using {{ech}} or {{ece}}, upload the file before referencing it in the configuration. For {{ech}}, upload it [as a custom bundle](/deploy-manage/plugins-and-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/plugins-and-configuration-files/cloud-enterprise/add-custom-bundles-plugins.md).
 
 If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/plugins-and-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
