@@ -617,6 +617,44 @@ toc:
               - file: security/integrations/rapid7.md
               - file: security/integrations/tenablevm.md
               - file: security/integrations/wiz.md
+      - file: security/set-up.md
+        children:
+          - file: security/configure-elastic-defend.md
+            children:
+              - file: security/configure-elastic-defend/elastic-defend-requirements.md
+              - file: security/configure-elastic-defend/install-elastic-defend.md
+                children:
+                  - hidden: security/configure-elastic-defend/enable-access-for-macos-monterey.md
+                  - hidden: security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md
+                  - file: security/configure-elastic-defend/enable-access-for-macos.md
+                  - file: security/configure-elastic-defend/deploy-on-macos-with-mdm.md
+                  - file: security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md
+              - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
+              - file: security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md
+                children:
+                  - file: security/configure-elastic-defend/configure-updates-for-protection-artifacts.md
+                  - file: security/configure-elastic-defend/turn-off-diagnostic-data-for-elastic-defend.md
+                  - file: security/configure-elastic-defend/configure-self-healing-rollback-for-windows-endpoints.md
+                  - file: security/configure-elastic-defend/configure-linux-file-system-monitoring.md
+                  - file: security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md
+                  - file: security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md
+              - file: security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md
+              - file: security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md
+              - file: security/configure-elastic-defend/uninstall-elastic-agent.md
+          - file: security/cloud/set-up-cloud-security.md
+            children:
+              - file: security/cloud/enable-cloud-security-features.md
+              - file: security/cloud/get-started-with-cspm-for-aws.md
+              - file: security/cloud/get-started-with-cspm-for-gcp.md
+              - file: security/cloud/get-started-with-cspm-for-azure.md
+              - file: security/cloud/cspm-privilege-requirements.md
+              - file: security/cloud/get-started-with-kspm.md
+              - file: security/cloud/asset-disc-aws.md
+              - file: security/cloud/asset-disc-gcp.md
+              - file: security/cloud/asset-disc-azure.md
+              - file: security/cloud/get-started-with-cnvm.md
+              - file: security/cloud/cnvm-privilege-requirements.md
+          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
       - file: security/esql-for-security.md
         children:
           - file: security/esql-for-security/esql-threat-hunting-tutorial.md
@@ -727,28 +765,6 @@ toc:
               - file: security/detect-and-alert/visualize-detection-alerts.md
               - file: security/detect-and-alert/view-detection-alert-details.md
               - file: security/detect-and-alert/query-alert-indices.md
-      - file: security/configure-elastic-defend.md
-        children:
-          - file: security/configure-elastic-defend/elastic-defend-requirements.md
-          - file: security/configure-elastic-defend/install-elastic-defend.md
-            children:
-              - hidden: security/configure-elastic-defend/enable-access-for-macos-monterey.md
-              - hidden: security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md
-              - file: security/configure-elastic-defend/enable-access-for-macos.md
-              - file: security/configure-elastic-defend/deploy-on-macos-with-mdm.md
-              - file: security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md
-          - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
-          - file: security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md
-            children:
-              - file: security/configure-elastic-defend/configure-updates-for-protection-artifacts.md
-              - file: security/configure-elastic-defend/turn-off-diagnostic-data-for-elastic-defend.md
-              - file: security/configure-elastic-defend/configure-self-healing-rollback-for-windows-endpoints.md
-              - file: security/configure-elastic-defend/configure-linux-file-system-monitoring.md
-              - file: security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md
-              - file: security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md
-          - file: security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md
-          - file: security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md
-          - file: security/configure-elastic-defend/uninstall-elastic-agent.md
       - file: security/manage-elastic-defend.md
         children:
           - file: security/manage-elastic-defend/endpoints.md
@@ -779,33 +795,21 @@ toc:
       - file: security/cloud.md
         children:
           - file: security/cloud/security-posture-management-overview.md
-          - file: security/cloud/enable-cloud-security-features.md
           - file: security/cloud/cloud-security-posture-management.md
             children:
-              - file: security/cloud/get-started-with-cspm-for-aws.md
-              - file: security/cloud/get-started-with-cspm-for-gcp.md
-              - file: security/cloud/get-started-with-cspm-for-azure.md
-              - file: security/cloud/cspm-privilege-requirements.md
               - file: security/cloud/findings-page.md
               - file: security/cloud/benchmarks.md
               - file: security/cloud/cspm-dashboard.md
               - file: security/cloud/cspm-frequently-asked-questions-faq.md
           - file: security/cloud/kubernetes-security-posture-management.md
             children:
-              - file: security/cloud/get-started-with-kspm.md
               - file: security/cloud/findings-page-2.md
               - file: security/cloud/kspm-benchmarks.md
               - file: security/cloud/kspm-dashboard.md
               - file: security/cloud/kspm-frequently-asked-questions.md
           - file: security/cloud/asset-disc.md
-            children:
-              - file: security/cloud/asset-disc-aws.md
-              - file: security/cloud/asset-disc-gcp.md
-              - file: security/cloud/asset-disc-azure.md
           - file: security/cloud/cloud-native-vulnerability-management.md
             children:
-              - file: security/cloud/get-started-with-cnvm.md
-              - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/findings-page-3.md
               - file: security/cloud/cnvm-dashboard.md
               - file: security/cloud/cnvm-frequently-asked-questions-faq.md
@@ -850,7 +854,6 @@ toc:
           - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/advanced-entity-analytics.md
         children:
-          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
           - file: security/advanced-entity-analytics/entity-store.md
             children:
               - file: security/advanced-entity-analytics/entity-relationships.md
