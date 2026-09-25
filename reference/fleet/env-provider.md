@@ -65,6 +65,8 @@ inputs:
 ```
 
 Each {{agent}} uses the env provider to resolve `${env.APP_LOG_DIR}` from the environment variables defined on the host at runtime. This allows a single policy in {{fleet}} to adapt its behavior per host without creating multiple policies.
+
+For a worked example that uses this approach to monitor many database hosts from one integration policy, refer to [](/reference/fleet/scale-integration-policies.md).
 ::::
 
 :::::
