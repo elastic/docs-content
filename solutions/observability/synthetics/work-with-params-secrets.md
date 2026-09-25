@@ -55,14 +55,14 @@ stack: ga 9.1
 serverless: ga
 ```
 
-By default, custom user roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} sub-feature privilege to a role. When added, users can view a global parameter value using the [**Get parameters** API]({{kib-apis}}operation/operation-get-parameters) or by selecting the {icon}`eye` icon.
+By default, custom user roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} [sub-feature privilege](/solutions/observability/get-started/observability-kibana-privileges.md#synthetics-and-uptime-sub-feature-privileges) to a role. When added, users can view a global parameter value using the [**Get parameters** API]({{kib-apis}}operation/operation-get-parameters) or by selecting the {icon}`eye` icon.
 
 To add the **Can read global parameter values** {{kib}} privilege to a role:
 
 1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Edit an existing role or select **Create role**.
 1. From the **Kibana** section, select **Add Kibana privilege**.
-1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
+1. Expand `Synthetics and Uptime` in the list of [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md).
 2. Turn on **Customize sub-feature privileges**.
 3. Turn on **Can read global parameter values**.
 

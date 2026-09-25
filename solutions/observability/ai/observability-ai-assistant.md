@@ -42,7 +42,7 @@ To set up or use AI assistant, you need the following:
 
 * An appropriate [Elastic subscription](https://www.elastic.co/subscriptions)
 
-* The `Observability AI Assistant: All` {{kib}} privilege
+* The **Observability AI Assistant: All** [{{kib}} privilege](/solutions/observability/get-started/observability-kibana-privileges.md)
 
 * An [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
 
