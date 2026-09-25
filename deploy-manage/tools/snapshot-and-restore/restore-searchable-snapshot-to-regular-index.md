@@ -33,13 +33,13 @@ If you want to restore {{search-snap}} indices and keep them as {{search-snaps}}
 
 Before restoring {{search-snap}} data to a regular index:
 
-* Confirm that searchable snapshot index's source repository is registered and source snapshot is available.
+* Confirm that the source repository used by the mounted index is registered and that the source snapshot is available.
 * Ensure that the destination data nodes or tier have enough local storage for the complete regular index and its replicas. During the restore, the mounted and regular indices exist at the same time.
-* If the cluster uses data tiers, select a destination tier other than the frozen tier. The frozen tier is reserved for partially mounted {{search-snaps}}.
+* If the cluster uses data tiers, select a destination tier other than the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier), which is reserved for partially mounted {{search-snaps}}.
 * Ensure that you have the [permissions required to restore a snapshot](restore-snapshot.md#prerequisites) and manage the affected indices, aliases, lifecycle policies, and data streams.
 
 ::::{warning}
-The source snapshot is the sole complete copy of the {{search-snap}} data. Do not delete it until the regular index is fully restored and verified and the mounted index has been deleted. Before deleting a source snapshot, also verify that no other mounted index depends on it.
+The source snapshot is the sole complete copy of the {{search-snap}} data. Do not delete it until the regular index is fully restored and verified and the mounted index has been deleted.
 ::::
 
 ## Restore the data as a regular index [restore-searchable-snapshot-data]
@@ -93,7 +93,7 @@ From the response, record the following details:
 
 Define the following values to use in the restore request:
 
-* **Restored index name**: Select a name that does not already exist. For {{ilm-init}}-created {{search-snaps}}, this is typically the mounted index name without the `restored-` or `partial-` prefix. For {{dlm-init}}-created {{search-snaps}}, remove the `dlm-frozen-` prefix. For manually mounted snapshots, select any available index name. In this example, use `.ds-logs-app-2026.09.01-000123`.
+* **Restored index name**: Select a name that does not conflict with an existing index, data stream, or alias. For an {{ilm-init}}-created data stream backing index, this is typically the mounted index name without the `restored-` or `partial-` prefix. For a {{dlm-init}}-created backing index, remove the `dlm-frozen-` prefix. For manually mounted snapshots, select any available index name. In this example, use `.ds-logs-app-2026.09.01-000123`.
 * **Allocation**: If the cluster uses data tiers, select the destination and fallback tiers for the regular index. If the cluster uses nodes with the generic `data` role instead, plan to clear the inherited tier preference. The example in this guide uses the cold tier, with the warm and hot tiers as fallbacks.
 * **Number of replicas**: Select the number of replicas required for the regular index. The example uses one replica.
 
@@ -120,6 +120,21 @@ For example, the mounted index used throughout this guide is a backing index of 
 
 * If `aliases` contains any entries, record their names and complete configuration so that you can transfer them to the regular index.
 * If `data_stream` is present, the index is a backing index. Record the data stream name. If the field is absent, the index does not belong to a data stream.
+
+**Check for name conflicts.**
+
+Use the [resolve index API]({{es-apis}}operation/operation-indices-resolve-index) to confirm that the selected restored index name does not match an existing index, data stream, or alias:
+
+```console
+GET /_resolve/index/<restored-index-name>
+```
+
+An empty `indices`, `aliases`, and `data_streams` response confirms that the name is available.
+
+For an {{ilm-init}}-managed index that is not a data stream backing index, {{ilm-init}} typically creates an alias with the original index name and points it to the mounted index. If this alias conflicts with the restored index name, use one of the following approaches:
+
+* To preserve access through the alias, select a different restored index name. After the restore, transfer the alias to the regular index.
+* If the regular index must use the alias name, use the [update aliases API]({{es-apis}}operation/operation-indices-update-aliases) to remove the alias from every index before the restore. Queries that use this name fail until the restore creates the regular index. Do not transfer this alias after the restore because its name identifies the regular index.
 
 ::::
 
@@ -150,7 +165,7 @@ POST /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>/_restore <
 5. If the cluster uses data tiers, specify an ordered list of destination and fallback tiers. Do not include `data_frozen` because the restored index is a regular index. If the cluster does not use data tiers, set `index.routing.allocation.include._tier_preference` to `null` so that an inherited tier preference does not restrict allocation to nodes with the generic `data` role.
 6. Set the number of replicas required for the regular index.
 
-Snapshot restore does not apply current index templates. It restores the index metadata from the snapshot and then applies the overrides in the request. If the source index has custom `require`, `include`, or `exclude` allocation filters, add the appropriate `null` overrides to `index_settings` so that they do not prevent allocation on the destination tier.
+Snapshot restore does not apply current index templates. It restores the index metadata from the snapshot and then applies the overrides in the request. If the source index has custom [`require`, `include`, or `exclude` allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md#index-allocation-settings), add the appropriate `null` overrides to `index_settings` so that they do not prevent allocation on the destination tier.
 
 **Example:** Using the values gathered for `partial-.ds-logs-app-2026.09.01-000123` in the previous steps, restore the data with the following request:
 
@@ -227,26 +242,27 @@ Use the access details recorded earlier to make aliases and the data stream use 
 
 If the mounted {{search-snap}} index uses aliases, transfer them to the regular index in one request:
 
-  ```console
-  POST /_aliases
-  {
-    "actions": [
-      {
-        "remove": {
-          "index": "<searchable-snapshot-index-name>",
-          "alias": "<alias-name>"
-        }
-      },
-      {
-        "add": { <1>
-          "index": "<restored-index-name>",
-          "alias": "<alias-name>"
-        }
+```console
+POST /_aliases
+{
+  "actions": [
+    {
+      "remove": {
+        "index": "<searchable-snapshot-index-name>",
+        "alias": "<alias-name>"
       }
-    ]
-  }
-  ```
-  1. Add one `remove` and `add` action pair for each alias. Include any filter, routing, or other alias configuration recorded earlier. The request applies all actions atomically.
+    },
+    {
+      "add": { <1>
+        "index": "<restored-index-name>",
+        "alias": "<alias-name>"
+      }
+    }
+  ]
+}
+```
+
+1. Add one `remove` and `add` action pair for each alias. Include any filter, routing, or other alias configuration recorded earlier. The request applies all actions atomically.
 
 #### Replace a data stream backing index
 
@@ -325,6 +341,8 @@ After confirming that aliases, the data stream, or clients use the regular index
 DELETE /<searchable-snapshot-index-name>
 ```
 
+Deleting the mounted index does not delete its source snapshot or the data stored in the snapshot repository.
+
 ::::
 
 ::::{step} Delete the source snapshot (optional)
@@ -334,9 +352,12 @@ Delete the source snapshot if you no longer need it:
 :::{warning}
 Delete the source snapshot only after verifying the restored regular index and deleting the mounted {{search-snap}} index.
 
-Before deleting the snapshot, confirm that no other mounted index in this or another cluster depends on it and that it contains no other data you need. Manually created snapshots can contain multiple indices. A snapshot created by the {{ilm-init}} `searchable_snapshot` action contains only the managed index, but you must still confirm that you no longer need it.
+Before deleting the snapshot:
 
-If the restored index has no replicas, consider retaining the source snapshot until a new snapshot containing the restored data is available.
+* Confirm that no other mounted index in this or another cluster depends on it.
+* Confirm that it contains no other data you need. Manually created snapshots can contain multiple indices. A snapshot created by the {{ilm-init}} `searchable_snapshot` action contains only the managed index.
+* Retain the source snapshot if a backup snapshot that contains the mounted index must remain restorable. [A snapshot of a {{search-snap}} index](searchable-snapshots.md#back-up-restore-searchable-snapshots) contains only metadata that references the source snapshot, not the original index data.
+* If the restored data requires snapshot-based protection, retain the source snapshot until a new snapshot containing the regular index is available.
 :::
 
 ```console
