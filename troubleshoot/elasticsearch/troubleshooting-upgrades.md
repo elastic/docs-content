@@ -14,6 +14,9 @@ Most {{es}} [upgrades](/deploy-manage/upgrade/deployment-or-cluster/elasticsearc
 
 You can avoid most of these issues by completing the steps in the [](/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md) before you start. For more information, refer to [](/troubleshoot/elasticsearch/troubleshooting-upgrade-assistant.md).
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 ## Monitor an upgrade [troubleshooting-upgrades-monitor]
 
 During a rolling upgrade, {{es}} supports running two versions at the same time (the earlier version and the later version), but never more than two, and only for the duration of the upgrade.

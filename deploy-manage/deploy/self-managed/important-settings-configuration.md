@@ -27,6 +27,9 @@ products:
 * [Cluster backups](#important-settings-backups)
 * [DNS cache settings](#networkaddress-cache-ttl)
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 ## Bootstrap checks [bootstrap-checks]
 
 When each node starts, {{es}} runs [bootstrap checks](/deploy-manage/deploy/self-managed/bootstrap-checks.md) against {{es}} settings, JVM configuration, and the host operating system to confirm they meet minimum safety requirements. If a check fails, you can resolve it by updating the cluster or JVM settings described on this page (for example networking or discovery settings), by adjusting the server as described in [Important system configuration](/deploy-manage/deploy/self-managed/important-system-configuration.md) (for example file descriptors or `vm.max_map_count`), or both.

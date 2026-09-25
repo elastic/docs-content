@@ -12,7 +12,10 @@ products:
 Error: all shards failed
 ```
 
-The `all shards failed` error indicates that {{es}} couldn't get a successful response from any of the shards involved in the query. Possible causes include shard allocation issues, misconfiguration, insufficient resources, or unsupported operations such as aggregating on text fields. 
+The `all shards failed` error indicates that {{es}} couldn't get a successful response from any of the shards involved in the query. Possible causes include shard allocation issues, misconfiguration, insufficient resources, or unsupported operations such as aggregating on text fields.
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ##  Unsupported operations on text fields
 

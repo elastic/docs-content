@@ -13,6 +13,9 @@ products:
 
 In smaller clusters, it is most important to be resilient to single-node failures. This section gives some guidance on making your cluster as resilient as possible to the failure of an individual node.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 ::::{note}
 This document focuses on self-managed {{es}} deployments and describes resilience strategies for clusters with one to a few nodes. While the guidance is tailored to these environments, many of the core concepts, such as master elections, replica configuration, and client request distribution, are also relevant to other deployment types, like {{eck}}.
 

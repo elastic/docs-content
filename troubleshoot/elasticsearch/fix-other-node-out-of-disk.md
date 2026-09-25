@@ -14,6 +14,9 @@ products:
 
 {{es}} can use dedicated nodes to execute other functions apart from storing data or coordinating the cluster, for example machine learning. If one or more of these nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API]({{es-apis}}operation/operation-health-report) reports that a node that is not a master and does not contain data is out of space you need to increase the disk capacity of this node.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 :::::::{applies-switch}
 
 ::::::{applies-item} { ece:, ess: }

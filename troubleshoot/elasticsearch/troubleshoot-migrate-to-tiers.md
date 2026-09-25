@@ -16,6 +16,9 @@ products:
 
 This could lead to unassigned shards or shards not transitioning to the desired [tier](../../manage-data/lifecycle/data-tiers.md).
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 To fix this issue, use the following steps.
 
 You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
