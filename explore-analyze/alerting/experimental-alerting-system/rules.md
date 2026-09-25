@@ -18,13 +18,13 @@ Use this page to understand what a rule does, why notifications are sent by work
 
 Rules define *what* to detect. Action policies match alert episodes from any rule and decide whether and when to invoke a workflow. The workflow sends the notification.
 
-This separation means you can update how alert episodes are routed to workflows without touching a rule, and have multiple action policies respond to the same rule independently.
+This separation means you can update how alert episodes are routed to workflows without touching a rule, and have multiple action policies respond to the same alert episode independently.
 
 ## Create, configure, and manage rules [rules-next-steps]
 
 Use these pages to create a rule, change its settings, or manage existing rules.
 
-- [Create a rule](rules/create-a-rule.md): Compare creation paths and choose the one that fits your workflow.
+- [Create a rule](rules/create-a-rule.md): Compare creation paths and select the one that fits your workflow.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.
 - [Rule mode](rules/configure-rule-mode.md): Set whether matches are grouped into an alert episode or remain available for later analysis.
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the **Rules** page.
