@@ -1,5 +1,6 @@
 ---
 navigation_title: Alerting
+description: Create alerts in Elastic Observability. Define rules that detect conditions in your data and trigger actions through connectors.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-alerting.html
