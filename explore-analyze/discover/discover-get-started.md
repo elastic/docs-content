@@ -67,7 +67,10 @@ Select the data you want to explore, and then specify the time range in which to
    :::
 
 3. If needed, adjust the [time range](../query-filter/filtering.md), for example by setting it to the **Last 7 days**.
-    The range selection is based on the default time field in your data view. If you are using the sample data, this value was set when the data view was created. If you are using your own data view, and it does not have a time field, the range selection is not available.
+    The range selection is based on the default time field in your data view. If you are using the sample data, this value was set when the data view was created. If you are using your own data view and it does not have a time field:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The time filter stays visible, shows **All time**, and cannot be changed.
+    - {applies_to}`stack: ga 9.0-9.5` The range selection is not available.
 
 
 **Discover** is populated with your data and you can view various areas with different information:
@@ -100,6 +103,8 @@ You can later filter the data that shows in the chart and in the table by specif
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
 
    When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Organize the query results](try-esql.md#esql-kibana-results-table).
+
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
 4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
@@ -219,11 +224,15 @@ The content is copied to your clipboard in the selected format. Fields that are 
 You can copy the content of a single cell to your clipboard from the quick actions that appear when hovering over the cell.
 :::
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, you can also copy a field, a nested object, or the whole document from the tree. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
+
 
 ### Explore individual result or document details in depth [look-inside-a-document]
 
 $$$document-explorer-expand-documents$$$
 Dive into an individual document to view its fields and the documents that occurred before and after it.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To filter or copy values in the table without opening the flyout, switch **View mode** to **JSON**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
 1. In the document table, select the **View details** icon {icon}`expand` (**Toggle dialog with details** in earlier {{stack}} versions) to show document details.
 
@@ -396,9 +405,12 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 
 ### Share your findings [share-your-findings]
 
-You can share the current **Discover** session, or a link that reopens a specific document.
+You can share the current view, show the results on a dashboard, export the session, or copy a link that reopens a specific document.
 
-To share the session, including the query, filters, and table, select {icon}`share` **Share** in the application menu. For time range, authentication, export, and temporary links, refer to [Reporting and sharing](../report-and-share.md).
+- Select {icon}`share` **Share** in the application menu to copy a link to the current view. For the link options, refer to [Reporting and sharing](../report-and-share.md).
+- To show the results on a dashboard, add the session, its chart, or its table, to the dashboard. Refer to [Use Discover sessions in dashboards](save-open-search.md#_add_search_results_to_a_dashboard).
+- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Refer to [Reporting and sharing](../report-and-share.md#manually-generate-reports).
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
 
 In classic mode, expand a row and select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).
 
