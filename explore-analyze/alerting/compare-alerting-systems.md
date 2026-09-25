@@ -13,7 +13,7 @@ description: Compare Kibana alerting, the experimental ES|QL-based alerting syst
 
 # Compare alerting systems [compare-alerting-systems]
 
-Elastic offers three alerting systems, each suited to different use cases and workflows. For production, use {{kib}} alerting. The {{alerting-v2-system}} is available to try, but it isn't ready for production use. Use this page to compare them by goal, feature, and availability.
+Elastic offers three alerting systems, each suited to different use cases and workflows. Use this page to compare them by goal, feature, and availability.
 
 :::{note}
 {{elastic-sec}} has its own detection rules, separate from these three systems. For threat detection, refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
