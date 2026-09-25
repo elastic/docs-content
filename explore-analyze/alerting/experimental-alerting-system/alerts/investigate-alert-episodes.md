@@ -45,15 +45,15 @@ Related alert episodes from the same rule are grouped to help you answer whether
 
 ## Spot a flapping alert episode [flapping]
 ```{applies_to}
-stack: experimental 9.6+
 serverless: experimental
+stack: experimental 9.6+
 ```
 
-An alert episode that keeps swinging between active and recovering, rather than holding or resolving, carries a **Flapping** badge alongside its status. Select the badge to see why it was applied.
+A **Flapping** badge next to an alert episode's status means the alert episode keeps changing between `active` and `recovering` instead of holding or resolving. Select the badge to see why {{kib}} applied it.
 
-{{kib}} applies the badge when the alert episode changed between `active` and `recovering` at least 4 times across its last 20 rule events. Transitions into or out of `pending` and `inactive` don't count. An alert episode also needs a full 20 rule events before it can be marked at all, so a short-lived alert episode never carries the badge.
+{{kib}} applies the badge when the alert episode changed between `active` and `recovering` at least 4 times in its last 20 rule events. Changes into or out of `pending` and `inactive` don't count. {{kib}} checks an alert episode only after it has 20 rule events, so a short-lived alert episode never shows the badge.
 
-Flapping usually means the alert and recovery conditions sit too close to normal variation, or that the rule runs faster than the underlying metric settles. To damp it, require more consecutive breaches with [Alert delay](../rules/configure-rule-alert-delay.md), or separate the closing condition from the opening one with a [custom recovery condition](../rules/configure-rule-recovery.md).
+Flapping usually means that the alert condition sits too close to the metric's normal variation, or that the rule runs faster than the metric settles. To reduce flapping, add a [custom recovery condition](../rules/configure-rule-recovery.md) that requires the metric to move a safe margin back from the alert threshold. The alert episode then stays `active` until the recovery condition matches, instead of recovering as soon as the alert condition stops matching.
 
 :::{note}
 **Flapping** is a badge, not a lifecycle state. The alert episode remains `active` or `recovering`, action policies still match it on that status, and the badge neither suppresses nor delays notifications.
