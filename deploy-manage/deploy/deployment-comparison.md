@@ -47,7 +47,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 
 | Feature/capability | Fully self-managed, ECE, ECK, ECH | {{serverless-short}} |
 |-------------------|-------------------------------|----------------------|
-| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for dashboards.<br><br>PDF and PNG are not available. |
+| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for Discover sessions and dashboards.<br><br>PDF and PNG are not available. |
 
 ## Data lifecycle
 
