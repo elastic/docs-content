@@ -138,3 +138,19 @@ Storing this output into `nodes_stats.json` and then using [third-party tool JQ]
 {{es}}'s Ingest Pipeline processors don't have associated `id` like {{ls}}'s Pipelines to distinguish them so these emit in sequential order as seen in pipeline's definition. 
 
 The statistics report per node since its uptime, so will reset with node restarts. As a rough heuristic, you could look at an individual node's output knowing proportions will usually be about equal. 
+
+## Common issues [troubleshooting-pipelines-common]
+
+The following are the common [ingest processors](elasticsearch://reference/ingest-processor/index.md) to [cause high cpu](#troubleshooting-pipelines-symptoms-cpu) or [flag high milliseconds per event](#troubleshooting-pipelines-metrics):
+
+* Processors that execute custom code, such as the [`script` processor](elasticsearch://reference/ingest-processor/script-processor.md) or [`grok` processor](elasticsearch://reference/ingest-processor/grok-processor.md), which have not had currently ingesting data formats load tested against performance criteria.
+
+  :::{note}
+  While custom code can execute within {{es}}, troubleshooting its failures or optimizing its performance falls outside the of [scope of Elastic's support](https://www.elastic.co/support_policy#6).
+  :::
+
+* The [`foreach` processor](elasticsearch://reference/ingest-processor/foreach-processor.md) when iterating through large objects or arrays.
+
+* The [`enrich` processor](elasticsearch://reference/ingest-processor/enrich-processor.md)'s performance is dependent upon being colocated with [ingest and data roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) to minimize remote search operations.
+
+Refer to each processor's page for its performance guidance.

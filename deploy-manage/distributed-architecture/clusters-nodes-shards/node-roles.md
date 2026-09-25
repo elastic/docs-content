@@ -84,7 +84,9 @@ If it is not possible to follow these extra steps then you may be able to use th
 
 ## Available node roles [node-roles-list]
 
-The following is a list of the roles that a node can perform in a cluster. A node can have one or more roles.
+Every node is implicitly a [coordinating node](#coordinating-only-node-role). This means that a node that has an explicit empty list of roles in the `node.roles` setting will only act as a coordinating node, which cannot be disabled. As a result, every node needs to have enough memory and CPU in order to deal with the [search *gather* phase](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). Refer to [minimum size recommendations for production use](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-minimum-recommendations).
+
+The following is a list of the roles that a node can perform in a cluster on top of implicitly being a coordinating node. A node can have one or more roles.
 
 * [Master-eligible node](#master-node-role) (`master`): A node that is eligible to be [elected as the *master* node](../discovery-cluster-formation.md), which controls the cluster.
 * [Data node](#data-node-role) (`data`, `data_content`, `data_hot`, `data_warm`, `data_cold`, `data_frozen`): A node that has one of several data roles. Data nodes hold data and perform data related operations such as CRUD, search, and aggregations. You might use multiple data roles in a cluster so you can implement [data tiers](../../../manage-data/lifecycle/data-tiers.md).
@@ -92,20 +94,6 @@ The following is a list of the roles that a node can perform in a cluster. A nod
 * [Remote-eligible node](#remote-node) (`remote_cluster_client`): A node that is eligible to act as a remote client.
 * [Machine learning node](#ml-node-role) (`ml`): A node that can run {{ml-features}}. If you want to use {{ml-features}}, there must be at least one {{ml}} node in your cluster. For more information, see [Machine learning settings](../../deploy/self-managed/configure-elasticsearch.md) and [Machine learning in the {{stack}}](/explore-analyze/machine-learning.md).
 * [Transform node](#transform-node-role) (`transform`): A node that can perform transforms. If you want to use transforms, there must be at least one transform node in your cluster. For more information, see [Transforms settings](../../deploy/self-managed/configure-elasticsearch.md) and [*Transforming data*](../../../explore-analyze/transforms.md).
-
-::::{admonition} Coordinating node
-:class: note
-
-:name: coordinating-node
-
-Requests like search requests or bulk-indexing requests may involve data held on different data nodes. A search request, for example, is executed in two phases which are coordinated by the node which receives the client request — the *coordinating node*.
-
-In the *scatter* phase, the coordinating node forwards the request to the data nodes which hold the data. Each data node executes the request locally and returns its results to the coordinating node. In the *gather* phase, the coordinating node reduces each data node’s results into a single global result set.
-
-Every node is implicitly a coordinating node. This means that a node that has an explicit empty list of roles in the `node.roles` setting will only act as a coordinating node, which cannot be disabled. As a result, such a node needs to have enough memory and CPU in order to deal with the gather phase.
-
-::::
-
 
 
 ### Master-eligible node [master-node-role]
@@ -270,14 +258,15 @@ node.roles: [ ingest ]
 
 ### Coordinating only node [coordinating-only-node-role]
 
-If you take away the ability to be able to handle master duties, to hold data, and pre-process documents, then you are left with a *coordinating* node that can only route requests, handle the search reduce phase, and distribute bulk indexing. Essentially, coordinating only nodes behave as smart load balancers.
+Requests like [search requests or bulk-indexing requests](/deploy-manage/distributed-architecture/reading-and-writing-documents.md) may involve data held on different data nodes. A search request, for example, is executed in two phases which are coordinated by the node which receives the client request — the *coordinating node*. In the *scatter* phase, the coordinating node forwards the request to the data nodes which hold the data. Each data node executes the request locally and returns its results to the coordinating node. In the *gather* phase, the coordinating node reduces each data node’s results into a single global result set.
 
-Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state]({{es-apis}}operation/operation-cluster-state), like every other node, and they use the cluster state to route requests directly to the appropriate place(s).
+If you take away the ability to be able to handle master duties, to hold data, and pre-process documents, then you are left with a *coordinating* node that can only route requests, handle the [search *gather* phase](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model), and distribute bulk indexing. Essentially, coordinating only nodes behave as smart load balancers.
+
+Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state]({{es-apis}}operation/operation-cluster-state), like every other node, and they use the cluster state to route requests directly to the appropriate place(s). They should not be used alongside [enrich processors](elasticseaarch://reference/ingest-processor/enrich-processor.md).
 
 ::::{warning}
-Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the elected master node must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.
+Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the [elected master node](/deploy-manage/distributed-architecture/discovery-cluster-formation.md) must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.
 ::::
-
 
 To create a dedicated coordinating node, set:
 
