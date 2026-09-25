@@ -427,6 +427,12 @@ When you are investigating a result, copy a link that reopens **Discover** with 
 1. In the document table, select {icon}`maximize` **View details** on the row.
 2. In the flyout header, select {icon}`link` **Copy link**.
 
+   :::{image} /explore-analyze/images/kibana-discover-copy-document-link.png
+   :alt: Copy link tooltip in the flyout header
+   :screenshot:
+   :width: 400px
+   :::
+
 The link uses the absolute time range of the results on screen, so the document stays in that range when the link is opened.
 
 If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the row. For example:
