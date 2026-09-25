@@ -31,7 +31,7 @@ The following panel types support Discover drilldowns:
 * **Visualizations that use a data view**
 * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` **Visualizations based on an {{esql}} query**
 
-    On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
+    On {{esql}} panels, {{kib}} turns the dashboard filters and the dashboard KQL or Lucene query into a `WHERE` clause in the panel's ES|QL query. **Discover** then uses that same context. {{kib}} drops a filter when ES|QL cannot express it. The **Explore in Discover** panel action applies the same translation.
 
     On an {{esql}} **Bar**, **Line**, **Area**, or **Heat map**, drag to select a range. That range opens the drilldown. A click updates the {{esql}} query.
 
@@ -59,7 +59,7 @@ This example creates a Discover drilldown on the **[Logs] Bytes distribution** p
    :screenshot:
    :::
 
-**Discover** opens in a new tab and shows the documents for the range you selected.
+**Discover** opens in a new tab and shows the documents for the `bytes` range you selected. The dashboard time range, filters, and query stay in place.
 
 ## Next steps [create-discover-drilldown-next-steps]
 

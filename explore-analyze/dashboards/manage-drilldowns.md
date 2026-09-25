@@ -35,7 +35,7 @@ The panel already has a drilldown. To reuse one, another panel on the same dashb
 
 ## Reuse a drilldown on another panel [reuse-a-drilldown-on-another-panel]
 
-To reuse a drilldown from another panel on the same dashboard, open {icon}`plus_in_circle` **Create drilldown** on the panel that should get it. When another panel already has a drilldown this panel can run, **Copy existing drilldown** lists it, with the source panel title under the drilldown name. Select **Copy**, then select **Create drilldown**. If the trigger is not supported on this panel, the trigger name shows a warning.
+To reuse a drilldown from another panel on the same dashboard, open {icon}`plus_in_circle` **Create drilldown** on the panel that should get it. When another panel already has a drilldown this panel can run, **Copy existing drilldown** lists it, with the source panel title under the drilldown name. Select **Copy**, then select **Create drilldown**. If this panel does not support the trigger, the name shows a warning.
 
 ## Related pages [manage-drilldowns-related-pages]
 

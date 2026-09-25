@@ -39,7 +39,7 @@ A drilldown uses a value from a field in the data source. You cannot filter on a
 When the value comes from an {{esql}} query:
 
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` The visualization explains that the value relies on a field created at query time, and you cannot use **Filter for** or **Filter out**. On a chart, a date value does not show those actions or the explanation. If the column only renames an index field, you can still filter and open a drilldown. [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns) describes where the explanation appears.
-* {applies_to}`stack: ga =9.4` The drilldown option is not available.
+* {applies_to}`stack: ga =9.4` You cannot add a drilldown.
 
 For more information about filter pills, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
 

@@ -51,7 +51,7 @@ This example creates a dashboard and a dashboard drilldown. Follow it with the s
 3. Add the **[Logs] Visits** panel.
 4. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**, or to a 30-day period that contains data, depending on when you installed the sample data.
 5. Save the dashboard. In the **Title** field, enter `Detailed logs`.
-6. Open the **[Logs] Web Traffic** dashboard that was added with the sample data, then set a search and a filter.
+6. Open the **[Logs] Web Traffic** dashboard, then set a search and a filter.
 
     [Search](using.md#_filter_dashboards_using_the_kql_query_bar): `extension.keyword: ("gz" or "css" or "deb")`<br> [Filter](using.md#_add_pills_using_the_filter_editor): `geo.src: US`
 

@@ -67,7 +67,7 @@ This example adds a pie chart and a URL drilldown that opens a GitHub search for
 
         {{kib}} replaces `{{event.value}}` with the pie slice you select.
 
-    4. Optional: Open **Additional options**. **Open URL in new tab** and **Encode URL** are already on. **Open URL in new tab** opens the site in a new browser tab. Turn it off to open the site in the same tab. **Encode URL** percent-encodes the URL after the template is filled in.
+    4. Optional: Open **Additional options**. **Open URL in new tab** and **Encode URL** are already on. **Open URL in new tab** opens the site in a new browser tab. Turn it off to open the site in the same tab. **Encode URL** percent-encodes the URL after {{kib}} fills in the template.
     5. Select **Create drilldown**.
 
 7. Save the dashboard.
@@ -78,7 +78,7 @@ This example adds a pie chart and a URL drilldown that opens a GitHub search for
     :screenshot:
     :::
 
-The GitHub issues search opens with the slice value in the query.
+The GitHub issues search opens with the slice value in the query. To pass the dashboard time range, the filters, or a table cell, use the templates in [Pass context and table values in the URL](#url-drilldown-examples).
 
 ## URL template help [url-templating-language]
 
@@ -114,7 +114,7 @@ $$$variables-reference$$$
 | **Context** | context.panel | Context from the current dashboard panel. |
 |  | context.panel.id | ID of the panel. |
 |  | context.panel.title | Title of the panel. |
-|  | context.panel.filters | Filters on the dashboard. Filters that exist only on the panel are not included.<br>Tip: Use the [rison](#helpers) helper to pass these filters in a {{kib}} URL. |
+|  | context.panel.filters | Filters on the dashboard. This list leaves out filters that exist only on the panel.<br>Tip: Use the [rison](#helpers) helper to pass these filters in a {{kib}} URL. |
 |  | context.panel.query.query | Dashboard query string. |
 |  | context.panel.query.language | Language of the dashboard query. |
 |  | context.panel.timeRange.from<br>context.panel.timeRange.to | Panel time range when the panel has its own time range. Otherwise, the dashboard time range.<br>Tip: Use the [date](#helpers) helper to format the date. |
@@ -163,7 +163,7 @@ Example:
 
 **formatNumber**
 
-Format numbers. Numbers can be formatted to look like currency, percentages, times or numbers with decimal places, thousands, and abbreviations. Refer to [numeral.js](http://numeraljs.com/#format) for formatting options.
+Format a number as currency, a percentage, a time, or a number with decimal places, thousands, or an abbreviation. Refer to [numeral.js](http://numeraljs.com/#format) for formatting options.
 
 Example:
 
@@ -277,7 +277,7 @@ https://example.com/search?from={{date context.panel.timeRange.from "YYYY-MM-DD"
 
 **Open Discover.** This URL opens Discover with the dashboard time range, filters, {{data-source}}, and query. `{{kibanaUrl}}` is the {{kib}} base URL.
 
-`context.panel.filters` is the list of filters on the dashboard. Filters that exist only on the panel are not included. The URL encodes that list with the `rison` helper. `context.panel.indexPatternId` is available when the panel uses one {{data-source}}. `context.panel.query.query` is the dashboard query, and `context.panel.query.language` is the language of that query.
+`context.panel.filters` is the list of filters on the dashboard. This list leaves out filters that exist only on the panel. The URL encodes that list with the `rison` helper. `context.panel.indexPatternId` is available when the panel uses one {{data-source}}. `context.panel.query.query` is the dashboard query, and `context.panel.query.language` is the language of that query.
 
 ```text
 {{kibanaUrl}}/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:'{{context.panel.timeRange.from}}',to:'{{context.panel.timeRange.to}}'))&_a=(columns:!(_source),filters:{{rison context.panel.filters}},index:'{{context.panel.indexPatternId}}',interval:auto,query:(language:{{context.panel.query.language}},query:'{{context.panel.query.query}}'),sort:!())
