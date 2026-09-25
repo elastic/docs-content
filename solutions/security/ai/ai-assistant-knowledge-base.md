@@ -172,7 +172,7 @@ You can use an {{es}} connector or web crawler to create an index that contains 
 
 #### Use a content connector to ingest data from third-party applications to Knowledge Base
 
-You can ingest data from third-party platforms such as Github, Jira, Teams, Google Drive, Slack, email, and [more](elasticsearch://reference/search-connectors/index.md) using [content connectors](/solutions/security/get-started/content-connectors.md). 
+You can ingest data from third-party platforms such as Github, Jira, Teams, Google Drive, Slack, email, and [more](elasticsearch://reference/search-connectors/index.md) using [content connectors](/solutions/security/ingest-data/content-connectors.md). 
 
 Once you've set up a content connector, data from the selected source is ingested to an {{es}} index. To add it to Knowledge Base, follow the steps to [add an index](#knowledge-base-add-knowledge-index). 
 

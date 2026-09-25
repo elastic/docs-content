@@ -2,6 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ingest-data.html
   - https://www.elastic.co/guide/en/serverless/current/security-ingest-data.html
+navigation_title: Ingest data
 applies_to:
   stack: all
   serverless:
@@ -38,3 +39,10 @@ The {{agent}} with the [{{elastic-defend}} integration](https://www.elastic.co/p
 * Registry - Windows
 * DLL and Driver Load - Windows
 * Security - Windows
+
+## In this section [ingest-data-in-this-section]
+
+* [Automatic Import](/solutions/security/ingest-data/automatic-import.md): Use AI to create a custom integration for a data source that doesn't have a prebuilt Elastic integration.
+* [Enable threat intelligence integrations](/solutions/security/ingest-data/enable-threat-intelligence-integrations.md): Collect threat indicators from third-party threat intelligence sources for threat detection and matching.
+* [Content connectors](/solutions/security/ingest-data/content-connectors.md): Extract, index, and sync data from third-party applications such as GitHub, Jira, Slack, and Google Drive.
+* [Ingest third-party security data](/solutions/security/integrations/ingest-third-party-security-data.md): Bring in workload protection, security posture, and vulnerability data from third-party security tools.

@@ -1366,3 +1366,8 @@ redirects:
       'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
+  # Related to https://github.com/elastic/docs-content-internal/issues/1723
+  'solutions/security/get-started/ingest-data-to-elastic-security.md': 'solutions/security/ingest-data.md'
+  'solutions/security/get-started/automatic-import.md': 'solutions/security/ingest-data/automatic-import.md'
+  'solutions/security/get-started/enable-threat-intelligence-integrations.md': 'solutions/security/ingest-data/enable-threat-intelligence-integrations.md'
+  'solutions/security/get-started/content-connectors.md': 'solutions/security/ingest-data/content-connectors.md'
