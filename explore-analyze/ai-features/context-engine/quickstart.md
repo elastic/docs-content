@@ -1,6 +1,6 @@
 ---
 navigation_title: "Get started with Context Engine"
-description: Complete an end-to-end Context Engine workflow with existing {{es}} data and {{agent-builder}}.
+description: Step-by-step tutorial for creating reusable context from existing Elasticsearch data and testing it with an Agent Builder agent.
 type: tutorial
 applies_to:
   stack: experimental 9.6
@@ -31,6 +31,7 @@ An automation generates and refreshes the KI. In Context Engine, an automation i
 
 You need:
 
+- An {{stack}} deployment with an Enterprise license, or a {{serverless-full}} project.
 - Kibana 9.6 or a compatible Serverless project.
 - Permission to change Advanced Settings in the current Kibana space.
 - Permission to [create and run Workflows](/explore-analyze/workflows/get-started/setup.md) and manage Context Engine AI indices.
@@ -49,7 +50,7 @@ Turn on Context Engine for the current Kibana space:
 
 This setting applies to the current Kibana space.
 
-## 2. Create an AI index
+## 2. Create an AI index [context-engine-create-ai-index]
 
 An AI index stores KIs for a particular purpose. Its name and description also help agents decide whether it is relevant to a question.
 

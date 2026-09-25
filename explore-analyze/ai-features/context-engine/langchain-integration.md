@@ -29,7 +29,7 @@ This guide covers both routes. Examples on this page use Python, but the same ap
 
 * An {{stack}} deployment with an Enterprise license, or an {{serverless-full}} project.
 * The `contextEngine:enabled` advanced setting turned on in the space you want to query. This setting is per space, and the APIs return `404` in any space where it's off.
-* At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI Index](quickstart.md#2.-create-an-ai-index) if you don't have one yet.
+* At least one AI Index containing Knowledge Indicators (KIs). See [Create an AI Index](quickstart.md#context-engine-create-ai-index) if you don't have one yet.
 * An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#step-1-create-credentials) walks through this.
 * Python 3.10 or later, with `langchain` installed. The skill option in [Step 3](#step-3-create-the-agent) adds `deepagents`, which needs 3.11 or later.
 
