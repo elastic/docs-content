@@ -131,11 +131,6 @@ The following table describes the available fields for configuring RRule-based s
 
 ### Set the run time and timezone [rrule-run-time]
 
-`dtstart` and `tzid` control different things, and confusing them is a common reason a workflow runs at an unexpected hour:
-
-* `dtstart` is a single moment in time. The offset in the timestamp decides which moment: a trailing `Z` means UTC, and `-05:00` means five hours behind UTC. Setting `tzid` doesn't change which moment `dtstart` refers to.
-* `tzid` sets the timezone for calculating recurrences. It determines the clock time of each run and follows daylight saving time in that zone. Use an IANA timezone name, such as `America/Chicago`, rather than a fixed offset.
-
 To run a workflow at a specific local time, set `byhour` and `byminute`. Both use `tzid`, so runs stay at that local time when daylight saving time starts or ends. The following example runs every day at 4:00 PM in Chicago:
 
 ```yaml
@@ -150,7 +145,12 @@ triggers:
         byminute: [0]
 ```
 
-If you omit `byhour` and `byminute`, each run instead uses the clock time that `dtstart` falls on in `tzid`. This is where a `Z` timestamp is most likely to surprise you: `2026-05-11T16:00:00Z` is 4:00 PM UTC, which is 11:00 AM in Chicago, so the following trigger runs daily at 11:00 AM.
+If you omit `byhour` and `byminute`, each run uses the clock time that `dtstart` falls on in `tzid`. Because `dtstart` and `tzid` control different things, confusing them is a common reason a workflow runs at an unexpected hour:
+
+* `dtstart` is a single moment in time. The offset in the timestamp decides which moment: A trailing `Z` means UTC, and `-05:00` means five hours behind UTC. Setting `tzid` doesn't change which moment `dtstart` refers to.
+* `tzid` sets the timezone for calculating recurrences. It determines the clock time of each run and follows daylight saving time in that zone. Use an IANA timezone name, such as `America/Chicago`, rather than a fixed offset.
+
+For example, `2026-05-11T16:00:00Z` is 4:00 PM UTC, which is 11:00 AM in Chicago, so the following trigger runs daily at 11:00 AM:
 
 ```yaml
 triggers:
