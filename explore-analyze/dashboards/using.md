@@ -69,7 +69,7 @@ You can interact with some panel visualizations to explore specific data more in
 You can create filter pills by:
 
 - **Clicking on chart elements**, such as data points, bars, or slices.
-- **Using legend actions**: hover over a legend item and select **Filter for** or **Filter out** to filter the dashboard by a specific series.
+- **Using legend actions**: Hover over a legend item and select **Filter for** or **Filter out** to filter the dashboard by a specific series.
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}

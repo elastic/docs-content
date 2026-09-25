@@ -173,9 +173,9 @@ serverless: ga
 
 {{esql}} visualizations support the following [drilldown types](../dashboards/drilldowns.md#drilldown-types):
 
-- [Dashboard](../dashboards/create-dashboard-drilldown.md) drilldowns: open another dashboard from a data point.
-- [URL](../dashboards/create-url-drilldown.md) drilldowns: open an external URL from a data point.
-- {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
+- [Dashboard](../dashboards/create-dashboard-drilldown.md) drilldowns: Open another dashboard from a data point.
+- [URL](../dashboards/create-url-drilldown.md) drilldowns: Open an external URL from a data point.
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
 You can filter the dashboard or open a drilldown only from a value that comes from a field in the index. For a value created at query time with `EVAL` or `STATS`:
 
