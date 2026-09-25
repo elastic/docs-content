@@ -96,8 +96,9 @@ An AI index can have multiple ESQL and connector sources. Keep this first exampl
 Use the guided route for this tutorial:
 
 1. In **Automations**, select **Suggest automation**.
-2. Agent Builder opens a conversation using the AI index and its configured source as context.
-3. Ask it to create one `index_metadata` KI that:
+2. Agent Builder opens a conversation with a prefilled message based on the AI index and its configured source.
+3. Send the prefilled message to start the suggestion.
+4. Ask it to create one `index_metadata` KI that:
 
    - explains the dataset's purpose and limitations
    - records useful interpretations of its important entities, measures, and dimensions
@@ -105,7 +106,7 @@ Use the guided route for this tutorial:
    - uses a stable ID so later runs update the KI instead of creating duplicates
    - validates its ESQL before writing the KI
 
-4. Review the proposed plan before confirming it.
+5. Review the proposed plan before confirming it.
 
 The proposal should identify the source result it will analyze, the KI it will produce, the access patterns it will generate, and any limits introduced by the source query. It should also identify any additional mapping, sampling, or aggregation queries it plans to run against the underlying data.
 
@@ -121,7 +122,7 @@ Create the suggested automation and review its Workflow:
 
 1. Confirm the proposed plan.
 2. Let {{agent-builder}} build and pilot the Workflow.
-3. Review the pilot summary and proposed Workflow.
+3. Review the pilot summary, KI content, and proposed Workflow shown in the conversation.
 4. Before saving it, confirm that the Workflow:
 
    - uses the configured source as grounding input and identifies any additional queries against the underlying data
@@ -132,6 +133,8 @@ Create the suggested automation and review its Workflow:
 
 5. Authorize {{agent-builder}} to save the automation.
 6. Open the saved Workflow. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md) for details about its YAML structure and execution lifecycle.
+
+You do not need to understand every line of the generated YAML. Use the checklist in step 4 to review the decisions that determine what data the Workflow reads, what KI it creates, and how it validates the result.
 
 An automation is the process that generates and refreshes KIs. A suggested Workflow might include operations that:
 
@@ -144,13 +147,13 @@ An automation is the process that generates and refreshes KIs. A suggested Workf
 
 Review the scope of every query. For example, a Workflow might use the configured 100-document source as a sample but calculate totals and date ranges over the complete underlying index. The KI must make that distinction clear.
 
-The pilot can create a temporary KI to validate the Workflow and then remove it before saving the final automation. After saving, {{agent-builder}} might start the automation immediately.
+The pilot can create a temporary KI to validate the Workflow. Review its content in the conversation. If it remains available during the pilot, you can also inspect it under **Knowledge Indicators** in the AI index. {{agent-builder}} might delete this temporary KI before saving the final automation. After saving, it might start the automation immediately.
 
 ## 6. Run the automation and inspect the KI
 
 Inspect the automation run and the KI it creates:
 
-1. If {{agent-builder}} did not start the Workflow after saving it, run it manually.
+1. If {{agent-builder}} did not start the Workflow after saving it, ask it to run the saved automation in the same conversation. Alternatively, find **Workflows** in the navigation menu or use the global search field, locate the saved Workflow, and click **Run**. Refer to [Manage workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflow-run).
 2. [Check its execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md) and confirm that it completes successfully.
 3. Return to the AI index in **Context**.
 4. Open **Knowledge Indicators**.
