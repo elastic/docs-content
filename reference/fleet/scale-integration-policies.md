@@ -17,7 +17,7 @@ When you monitor many hosts that run the same service (for example, databases, m
 
 Keeping the number of integration policies low makes your configuration easier to maintain, and helps you stay within the [policy scaling limits](/reference/fleet/agent-policy.md#agent-policy-scale).
 
-Use the techniques on this page when each host has its own target, such as a local database, a log file, or an application on the host. Some integrations collect from one shared source, such as an AWS SQS queue. For those integrations, adding agents increases throughput without duplicate data. Refer to the integration documentation before you apply the techniques on this page.
+Use the techniques on this page when each host has its own target, such as a local database, a log file, or an application on the host. Some integrations collect from one shared source, such as an AWS SQS queue. For those integrations, adding agents increases throughput without duplicate data. Check the documentation of the integration you're using before you apply the techniques on this page.
 
 You can consolidate integration policies in the following ways:
 
@@ -34,8 +34,7 @@ An integration policy applies to *every* {{agent}} enrolled in the {{agent}} pol
 
 Agents that can't reach the other databases report failed connections, and the integration shows as unhealthy. Agents that can reach them collect the same data from every database. That uses agent resources and sends duplicate events to {{es}}. When the destination is a [time series data stream (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension), {{es}} rejects most duplicates during ingestion, based on the metric dimensions and the timestamp. The index rarely stores 200 copies, but the agents and {{es}} still spend resources collecting and rejecting the events.
 
-List several hosts in an integration policy only when you want every agent to connect to every one of those hosts. To give each agent its own host, use a variable instead.
-
+List several hosts in an integration policy only when you want every agent to connect to every one of those hosts. To give each agent its own host, use a variable instead, as described next on this page.
 
 ## Reuse one integration policy with variables [reuse-one-integration-policy-with-variables]
 
