@@ -18,7 +18,7 @@ Use the search bar to find rules by name or description. Each space-separated te
 
 Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort, or use bulk actions to enable, disable, or delete multiple rules at once.
 
-{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` You can also [update the API keys](#rotate-rule-api-key) of multiple rules at once.
+{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` You can also use bulk actions to [rotate the API keys](#rotate-rule-api-key) of multiple rules at once.
 
 ## Edit a rule inline [quick-edit-rule]
 
@@ -42,7 +42,7 @@ The rule details page is organized into tabs that let you review a rule's config
 
 Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, or delete it.
 
-{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The actions menu also includes **Update API key**. Refer to [Rotate a rule's API key](#rotate-rule-api-key).
+{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` To replace the rule's API key, select **Update API key** from the actions menu. Refer to [Rotate a rule's API key](#rotate-rule-api-key).
 
 ## Disable or snooze a rule [disable-snooze-rule]
 
@@ -50,16 +50,18 @@ Use **Disable** when you want the rule to stop running entirely until you re-ena
 
 ## Rotate a rule's API key [rotate-rule-api-key]
 ```{applies_to}
-stack: experimental 9.6+
 serverless: experimental
+stack: experimental 9.6+
 ```
 
-A rule queries your data with an API key from the user who last saved it. That key doesn't expire on its own, so a rule can keep running with access that the user it came from has since lost. To replace the key without editing the rule, select **Update API key**. {{kib}} generates a new key from your own credentials, invalidates the previous key, and keeps the rule's schedule and enabled state. After the rotation, **Last updated by** on the rule details page shows your name.
+Rotating a rule's API key replaces the key that the rule uses to query your data with a new key based on your credentials, without editing the rule. The current key comes from the user who last saved the rule and doesn't expire on its own, so the rule can keep running with access that user has since lost.
 
 Before you rotate a key, check two things:
 
-- **Your own access.** The new key carries your access, so the rule can reach only the data that you can reach. If your access is narrower than that of the user who last saved the rule, the rule fails on its next run.
-- **The rule's state.** You can rotate a key only for a rule that's enabled. For a disabled rule, **Update API key** stays unavailable until you enable the rule. If a rule is running when you select the action, the rotation skips that rule, so try again after the run finishes.
+- **Your own access.** The new key carries your access, so the rule can reach only the data that you can reach. If your access is narrower than that of the user who last saved the rule, the rule can fail or miss data on its next run.
+- **The rule's state.** You can rotate the key only for an enabled rule. For a disabled rule, **Update API key** is unavailable until you enable the rule. If the rule is running when you confirm, {{kib}} skips it, so try again after the run finishes.
+
+To rotate a key, select **Update API key**, then confirm. {{kib}} generates the new key, invalidates the previous one, and keeps the rule's schedule and enabled state. After the rotation, **Last updated by** on the rule details page shows your name.
 
 You can select **Update API key** from any of these places:
 
