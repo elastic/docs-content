@@ -22,11 +22,11 @@ When {{kib}} tracks matches as an [alert episode](alerts.md), it writes each mat
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | {{kib}} | Query returns results → Writes one rule event per matching row to `.rule-events` (`type: alert`) |
 | 3 | {{kib}} | Opens an alert episode in `pending` and advances it to `active` once the activation threshold is met |
-| 4 | Action policy | Evaluates the alert episode against its conditions (eligibility, match conditions, and frequency) |
-| 5 | Action policy | If conditions are met, invokes a workflow |
+| 4 | Dispatcher | Evaluates the alert episode against each action policy's conditions (eligibility, scope, and frequency) |
+| 5 | Dispatcher | If conditions are met, invokes a workflow |
 | 6 | Workflow | Sends notification or runs automation |
 | 7 | {{kib}} | Condition clears → Writes a new rule event → The alert episode moves to `recovering` → `inactive` |
-| 8 | Action policy | Evaluates the recovery event and invokes a workflow if conditions are met |
+| 8 | Dispatcher | Evaluates the recovery event and invokes a workflow if conditions are met |
 | 9 | Workflow | Sends the recovery notification |
 
 :::{note}
@@ -39,7 +39,9 @@ An SRE team wants to know when checkout service latency degrades, and notify the
 
 1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
 2. The first check where p95 exceeds 2 seconds opens an alert episode in `pending`. A second consecutive breach moves it to `active`.
-3. An action policy with a `rule.tags: "checkout"` matcher invokes an on-call workflow that sends a Slack message.
+3. {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` An action policy scoped to the `checkout` rule tag invokes an on-call workflow that sends a Slack message.
+
+   {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` An action policy scoped with `rule.tags: "checkout"` invokes an on-call workflow that sends a Slack message.
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
 
@@ -66,5 +68,5 @@ After a few weeks, the accumulated events become useful in two ways. The team ca
 ## Related pages
 
 - [Get started](get-started.md): Enable the {{alerting-v2-system}} and create your first rule.
-- [Rules](rules.md): What rules detect, how action policies invoke workflows, and how to choose a creation path.
-- [Notifications and actions](notifications-actions.md): Set up action policies that invoke workflows when an alert episode matches.
+- [Rules](rules.md): What rules detect, how action policies invoke workflows, and how to select a creation path.
+- [Notifications and actions](notifications-actions.md): Set up action policies that invoke workflows for the alert episodes they apply to.
