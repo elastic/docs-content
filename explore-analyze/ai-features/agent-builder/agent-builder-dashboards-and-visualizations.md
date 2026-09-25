@@ -68,7 +68,7 @@ In the canvas, you can explore the data before you save the dashboard: enter a K
 
 :::{tip}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-Select the {icon}`bolt` **Fast mode** option and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one {{esql}} visualization that uses `STATS`. For more about {{esql}} approximation, refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+Select the {icon}`bolt` **Fast mode** option and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one {{esql}}-based panel that uses one `STATS` command. For more about {{esql}} approximation, refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 :::
 ::::
 ::::{step} Save or refine

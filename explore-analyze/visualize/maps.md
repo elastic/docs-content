@@ -63,6 +63,9 @@ This choropleth map shows the density of non-emergency service requests in San D
 :screenshot:
 :::
 
+$$$maps-esql-fast-mode$$$
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Maps** panels that have an {{esql}} layer and use one `STATS` command are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results.
+
 
 ## Symbolize features using data values [_symbolize_features_using_data_values]
 
