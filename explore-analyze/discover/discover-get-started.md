@@ -234,7 +234,7 @@ Dive into an individual document to view its fields and the documents that occur
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To filter or copy values in the table without opening the flyout, switch **View mode** to **JSON**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
-1. In the document table, select the **View details** icon {icon}`expand` (**Toggle dialog with details** in earlier {{stack}} versions) to show document details.
+1. In the document table, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier {{stack}} versions) to show document details.
 
     ![Table view with document expanded](/explore-analyze/images/kibana-document-table-expanded.png "")
 
@@ -251,7 +251,9 @@ Dive into an individual document to view its fields and the documents that occur
 3. To navigate to a view of the document that you can bookmark and share, select **View single document**. This action isn't available in {{esql}} mode.
 4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**. This action isn't available in {{esql}} mode.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` When you are investigating a result, you can also [share a direct link](#share-a-document-link) to this document from the flyout.
+::::{tip}
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens this document, select {icon}`link` **Copy link** in the flyout header. Refer to [Share a link to a document](#share-a-document-link).
+::::
 
 
 ## Search and filter data [search-in-discover]
@@ -412,7 +414,7 @@ You can share the current view, show the results on a dashboard, export the sess
 - To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Refer to [Reporting and sharing](../report-and-share.md#manually-generate-reports).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
 
-In classic mode, expand a row and select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).
+In classic mode, select {icon}`maximize` **View details** on a row, then select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).
 
 #### Share a link to a document [share-a-document-link]
 ```{applies_to}
@@ -422,14 +424,20 @@ stack: ga 9.6+
 
 When you are investigating a result, copy a link that reopens **Discover** with that document's flyout open. Recipients land on the same document instead of only the surrounding query.
 
-1. Expand the document in the table.
+1. In the document table, select {icon}`maximize` **View details** on the row.
 2. In the flyout header, select {icon}`link` **Copy link**.
 
-The link uses an absolute time range so the document stays in the time window.
+The link uses the absolute time range of the results on screen, so the document stays in that range when the link is opened.
 
-If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the row. Queries that transform rows, such as `STATS` or `KEEP`, cannot copy a link. If those fields are missing, **Copy link** stays available and shows a warning instead of copying.
+If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the row. For example:
 
-If you share the session from **Share** while the flyout is open, that URL can include the same document. If you keep a relative time range, **Discover** warns that the document might fall outside the recipient's results.
+```esql
+FROM kibana_sample_data_logs METADATA _id, _index
+```
+
+Queries that transform rows, such as `STATS` or `KEEP`, cannot copy a link. If `_id` and `_index` are missing, **Copy link** stays available and shows a warning instead of copying.
+
+When **Copy link** can copy the open document, **Share** includes that document. The link opens **Discover** with the same flyout open. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
 
 
 ## Analyze your data with AI [analyze-with-ai]
