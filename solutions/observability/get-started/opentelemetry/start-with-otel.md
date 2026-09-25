@@ -69,10 +69,6 @@ Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpo
 
 The {{motlp}} is GA on {{ech}} and {{serverless-short}}. For application telemetry only, send directly from your EDOT SDK or any OTLP-compatible exporter to the endpoint, with no {{agent}} required. For infrastructure telemetry, run {{agent}} on your hosts or cluster and configure it to export to the {{motlp}} using the OTLP exporter.
 
-:::{note}
-The current {{ech}} quickstarts use a different path: an {{agent}} running on a host and writing directly to {{es}} using the `elasticsearch` exporter. This alternative works, but for new setups, use the mOTLP path. For more information, refer to [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
-:::
-
 Before committing to this path, note these {{motlp}} limitations:
 
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
@@ -104,13 +100,7 @@ Refer to [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md) an
 
 ## Quickstart for your environment [start-with-otel-quickstarts]
 
-Use the quickstart that matches your deployment and environment:
-
-| Deployment model | Kubernetes | Docker | Hosts or VMs |
-|---|---|---|---|
-| {{product.self}} Stack | [K8s on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
-| {{serverless-full}} | [K8s on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md) | [Docker on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md) | [Hosts on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md) |
-| {{ech}} | [K8s on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md) | [Docker on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/docker.md) | [Hosts on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md) |
+After you've chosen your ingestion path, follow the quickstart that matches your deployment and environment. Select yours from the matrix in [{{edot}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
 To send OTLP data directly to {{serverless-full}} or {{ech}} without running {{agent}}, follow [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
 

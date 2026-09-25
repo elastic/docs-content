@@ -1,10 +1,9 @@
 ---
 navigation_title: Kubernetes
-description: Step-by-step guide for setting up the {{agent}} and SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
+description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
   serverless:
-    observability:
+    observability: ga
   product:
     edot_collector: ga
 products:
@@ -24,7 +23,8 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with
 
 ## Prerequisites
 
-To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and including {{helm-version}}.
+- Helm version 3.9+ up to and including {{helm-version}}, required by the OpenTelemetry Kube Stack chart.
+- A user with the **Admin** role for the manual installation steps, which create an {{es}} API key. The **Editor** role is enough for the guided setup, where Elastic creates the key for you.
 
 ## Manual installation
 
@@ -84,9 +84,16 @@ The OpenTelemetry Operator automatically provides the OTLP endpoint configuratio
 For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](opentelemetry://reference/edot-sdks/index.md).
 ::::
 
+::::{step} Install the content packs
+
+Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}.
+
+::::
+
 ::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 ::::
 
@@ -96,7 +103,7 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 The following issues might occur.
 
-### API Key prefix not found
+### API key prefix not found
 
 The following error is due to an improperly formatted API key:
 
@@ -108,6 +115,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: Too many requests
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

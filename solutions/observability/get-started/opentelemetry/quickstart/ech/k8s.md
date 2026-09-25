@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes
-description: Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted to collect metrics, logs, and traces using the Managed OTLP Endpoint.
+description: Learn how to set up Elastic Agent and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted to collect metrics, logs, and traces using the Managed OTLP Endpoint.
 applies_to:
   deployment:
     ech: ga
@@ -12,12 +12,13 @@ products:
 
 # Quickstart for Kubernetes on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
+Learn how to set up the {{agent}} and EDOT SDKs in a {{k8s}} environment with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md), which is the recommended ingestion path for ECH.
 
 ## Prerequisites
 
 - An {{ech}} deployment running version 9.0 or later.
 - Helm version 3.9+ up to and including {{helm-version}}.
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege, to create the API key.
 
 ## Guided setup
 
@@ -106,7 +107,8 @@ Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kub
 
 ::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 ::::
 

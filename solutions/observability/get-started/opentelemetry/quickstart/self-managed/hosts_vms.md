@@ -1,14 +1,12 @@
 ---
 navigation_title: Hosts / VMs
-description: Learn how to set up the {{agent}} and EDOT SDKs to collect host metrics, logs and application traces.
+description: Learn how to set up Elastic Agent and EDOT SDKs to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
-  serverless:
-    observability:
+  deployment:
+    self: ga
   product:
     edot_collector: ga
 products:
-  - id: cloud-serverless
   - id: observability
   - id: edot-collector
 ---
@@ -16,6 +14,11 @@ products:
 # Quickstart for hosts / VMs on self-managed deployments
 
 Learn how to set up the {{agent}} and EDOT SDKs to collect host metrics, logs and application traces.
+
+## Prerequisites
+
+- The host or VM running a supported operating system (Linux, macOS, or Windows).
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege, to create the API key.
 
 ## Guided setup
 
@@ -86,7 +89,7 @@ $content | Set-Content .\otel.yml
 Run the following command to run the {{agent}}.
 
 :::{note}
-The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs.
+By default, the Collector opens ports `4317` and `4318` to receive application data from locally running EDOT SDKs.
 :::
 
 ::::{tab-set}
@@ -121,7 +124,8 @@ instrument your target applications following the setup instructions:
 Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 
 :::{tip}
-Activate Central Configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
+:applies_to: stack: preview 9.1+
+Enable central configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [Central configuration for EDOT SDKs](opentelemetry://reference/central-configuration.md).
 :::
 :::::
 
@@ -133,7 +137,8 @@ Install the **[System OpenTelemetry Assets](integration-docs://reference/system_
 
 :::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 :::::
 ::::::

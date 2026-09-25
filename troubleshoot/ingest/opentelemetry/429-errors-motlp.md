@@ -113,4 +113,4 @@ To prevent 429 errors and maintain reliable telemetry data flow, implement these
 ## Resources
 
 * [{{motlp}} reference](opentelemetry://reference/motlp.md)
-* [Quickstart: Send OTLP data to Elastic Serverless or {{ech}}](../../../solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md)
+* [Send OTLP data to Elastic Serverless or {{ech}}](../../../solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md)
