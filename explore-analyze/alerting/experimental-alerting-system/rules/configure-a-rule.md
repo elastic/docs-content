@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Overview of configurable rule settings in the experimental alerting system: required settings (mode, query, schedule) and optional settings (severity, grouping, alert delay, recovery, no-data, tags)."
+description: "Overview of configurable rule settings in the experimental alerting system: required settings (mode, query, schedule) and optional settings (severity, grouping, alert delay, recovery, no-data, artifacts)."
 ---
 
 # Configure a rule in the {{alerting-v2-system}} [rule-settings]
@@ -22,4 +22,4 @@ Rules in the {{alerting-v2-system}} have required settings and several optional 
 | [Alert delay](configure-rule-alert-delay.md) | Reduce noise with delay modes for opening alert episodes. Only when matches are grouped into an alert episode. | Optional |
 | [Recovery condition](configure-rule-recovery.md) | Whether an alert episode closes automatically, and how much confirmation it needs before it does. Only when matches are grouped into an alert episode. | Optional |
 | [No-data handling](configure-no-data-handling.md) | What the rule records when the base query returns no results. Only when matches are grouped into an alert episode. | Optional |
-| [Tags and runbooks](configure-rule-tags.md) | Free-form labels and investigation guides attached to the rule. Only when matches are grouped into an alert episode. | Optional |
+| [Tags, runbooks, and dashboards](configure-rule-artifacts.md) | Labels, investigation guides, and linked dashboards attached to the rule. Tags and runbooks apply only when matches are grouped into an alert episode. Dashboards apply to any rule. | Optional |
