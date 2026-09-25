@@ -22,7 +22,7 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 ## Requirements
 
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
+- Most features require at least one working large language model (LLM). To learn about connecting to an LLM, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
 
 ## Model selection and tested performance [model-selection-tested-performance]
 
@@ -111,7 +111,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ## AI-powered features in {{observability}}
 
-{{observability}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{observability}} use cases, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md).
+{{observability}}'s AI-powered features all require a [configured LLM](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any model that's configured in your environment. The model you select for one feature does not affect which model any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{observability}} use cases, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md).
 
 ### AI assistant for {{observability}}
 
@@ -132,7 +132,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ## AI-powered features in {{elastic-sec}} [security-features]
 
-{{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{elastic-sec}} use cases, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
+{{elastic-sec}}'s AI-powered features all require a [configured LLM](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any model that's configured in your environment. The model you select for one feature does not affect which model any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{elastic-sec}} use cases, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 
 ### AI Assistant for Security
 

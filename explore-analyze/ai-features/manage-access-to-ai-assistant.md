@@ -112,6 +112,8 @@ serverless: ga
 
 Elastic's AI-powered features can use [EIS](/explore-analyze/elastic-inference/eis.md) and [External Inference](/explore-analyze/elastic-inference/external.md) models, as well as your custom [Generative AI connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 
+{applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated` Generative AI connectors are deprecated. Use {{infer}} endpoints for new models.
+
 To control the models used by each feature, go to **Feature Settings** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/feature-settings.png

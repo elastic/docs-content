@@ -58,7 +58,7 @@ Tools execute {{es}} requests with the privileges of the current user or API key
 
 | Scope | Privilege | When to use it |
 | --- | --- | --- |
-| Cluster | `monitor_inference` | Required when an agent uses an AI connector that calls the {{es}} Inference API, including the Elastic default LLM, or when a tool uses the Inference API to generate queries from natural language. The built-in `search` and `generate_esql` tools and [index search tools](tools/index-search-tools.md) use this API. This privilege is not required for other {{kib}} GenAI connectors. |
+| Cluster | `monitor_inference` | Required when an agent uses a model that calls the {{es}} Inference API, including {{infer}} endpoints and the Elastic default LLM, or when a tool uses the Inference API to generate queries from natural language. The built-in `search` and `generate_esql` tools and [index search tools](tools/index-search-tools.md) use this API. This privilege is not required for models accessed through a {{kib}} Generative AI connector. |
 | Indices | `read` | Required for tools that query index data. Limit the assigned index patterns to the data the user or client needs. |
 | Indices | `view_index_metadata` | Required for tools that inspect index mappings. The built-in `search` tool and index search tools might use this capability internally. |
 
