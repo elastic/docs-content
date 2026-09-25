@@ -31,10 +31,10 @@ By the end of this guide, you'll have a structured trial plan, clear evaluation 
 To complete each step of your evaluation, your {{ecloud}} trial provides full access to the following Elastic capabilities: 
 
 - All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
-- The [{{es}} {{vectordb}}](/solutions/vector-database.md) {{serverless-short}} project type for embedding-driven workloads such as semantic search, RAG, and hybrid retrieval. {applies_to}`stack: unavailable`
+- {applies_to}`stack: unavailable` The [{{es}} {{vectordb}}](/solutions/vector-database.md) {{serverless-short}} project type for embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval.
 - Integrations to ingest your data using the method that best suits your use case.
 - {{ml-cap}} features to evaluate anomaly detection results and search relevance, and explore visualization tools from our trained models.
-- Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications, including on general-purpose {{es}} projects and dedicated {{vectordb}} projects.
+- Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
 
 To learn how {{ecloud}} works, refer to the [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) deployment documentation.
 
@@ -81,7 +81,7 @@ With your trial goal in mind, identify which Elastic solution best addresses you
 | Compliance requires centralized security monitoring | [Security](/solutions/security.md) |
 
 :::{tip}
-Not sure whether to evaluate Search on an {{es}} project or a {{vectordb}} project? Both support [vector search](/solutions/search/vector.md). Choose {{vectordb}} when embeddings and similarity search are the primary workload. Choose the {{es}} project for general-purpose search, mixed workloads, or {{kib}} search tooling such as Query Rules. Refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
+Not sure whether to evaluate Search on an {{es}} project or a {{vectordb}} project? Both support [vector search](/solutions/search/vector.md). Choose {{vectordb}} when embeddings and similarity search are the primary workload. Choose the {{es}} project for general-purpose search, mixed workloads, or {{kib}} search tooling such as Query rules. Refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
 :::
 
 ### Choose your deployment type
@@ -202,9 +202,9 @@ Once data is flowing, use the trial to validate the features that will determine
 
 | Feature | Why it matters | How to try it |
 |---------|----------------|---------------|
-| Vector and hybrid search with vector-tuned defaults | Get semantic and hybrid retrieval working quickly with vector-optimized defaults and hardware, so you can focus on retrieval quality, not cluster sizing | [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md) |
-| Search Power | Control how much search capacity you reserve for your data so you can balance low-latency performance with cost as query load grows | [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) |
-| Pricing designed for vector workloads | Costs follow how much you store and the search capacity you reserve, not fluctuating compute (VCUs) or query volume. This offers predictable spend for data you query often | [{{vectordb}} overview](/solutions/vector-database.md#pricing-designed-for-vector-workloads) |
+| Vector-tuned defaults | Semantic and hybrid retrieval without sizing a cluster | [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md) |
+| Search Power | Balance query latency against cost as load grows | [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) |
+| Storage-based pricing | Predictable spend that follows storage and reserved capacity | Index a representative dataset, then model spend against [{{vectordb}} billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) |
 
 :::
 
