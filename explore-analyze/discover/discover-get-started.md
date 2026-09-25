@@ -433,7 +433,13 @@ When you are investigating a result, copy a link that reopens **Discover** with 
    :width: 400px
    :::
 
-The link uses the absolute time range of the results on screen, so the document stays in that range when the link is opened.
+Opening the link brings back the same flyout.
+
+The link uses the absolute time range of the results on screen, so the document stays in that range.
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` After you expand a grouped {{esql}} result and select a nested document, **Copy link** reopens that document in the default layout and keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
+
+When **Copy link** can copy the open document, **Share** includes that document. The session link opens **Discover** with the same flyout. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
 
 If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the row. For example:
 
@@ -441,11 +447,7 @@ If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line
 FROM kibana_sample_data_logs METADATA _id, _index
 ```
 
-Queries that transform rows, such as `STATS` or `KEEP`, cannot copy a link to an aggregated row. If `_id` and `_index` are missing, **Copy link** stays available and shows a warning instead of copying.
-
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` After you expand a grouped {{esql}} result and select a nested document, **Copy link** reopens that document in the default layout and keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
-
-When **Copy link** can copy the open document, **Share** includes that document. The link opens **Discover** with the same flyout open. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
+Queries that transform rows, for example using `STATS` or `KEEP` commands, cannot copy a link to an aggregated row.
 
 
 ## Analyze your data with AI [analyze-with-ai]
