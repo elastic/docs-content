@@ -57,9 +57,17 @@ If you're using {{serverless-full}}, [compare {{es}} and {{vectordb}} projects](
 
 {{es}} provides two ways to perform kNN search. Select a method based on your dataset size, latency requirements, and whether you need exact scoring.
 
-[**Approximate kNN**](knn/approximate-knn.md) is best for most production workloads where low latency and scale matter more than perfect recall. It narrows the search to likely matches instead of scoring every document, reducing latency on large datasets.
+### Approximate kNN [knn-methods-approximate]
 
-[**Exact, brute-force kNN**](knn/exact-knn.md) is best for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing. It scores every matching document, which guarantees accurate results but does not scale well for large datasets. You can improve latency by filtering your data to a small subset of documents.
+[Approximate kNN search](knn/approximate-knn.md#approximate-knn) is best for most production workloads where low latency and scale matter more than perfect recall. It narrows the search to likely matches instead of scoring every document, reducing latency on large datasets.
+
+### Exact, brute-force kNN [knn-methods-exact]
+
+[Exact kNN search](knn/exact-knn.md#exact-knn) is best for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing. It scores every matching document, which guarantees accurate results but does not scale well for large datasets. You can improve latency by filtering your data to a small subset of documents.
+
+### Choosing between approximate and exact kNN [choosing-between-approximate-and-exact-knn]
+
+Approximate kNN offers low latency and good accuracy. Exact kNN guarantees accurate results but does not scale well for large datasets. For implementation details, refer to [Approximate kNN search](knn/approximate-knn.md) and [Exact kNN search](knn/exact-knn.md).
 
 ## kNN search examples [knn-search-examples]
 
@@ -175,3 +183,123 @@ Continue with the guide for the kNN search method that fits your use case:
 
 - [Approximate kNN search](knn/approximate-knn.md): Learn how to map, index, and query `dense_vector` fields for fast, scalable approximate kNN search.
 - [Exact kNN search](knn/exact-knn.md): Learn how to run exact brute-force kNN search for small datasets or precise scoring.
+
+## Topics moved from earlier versions of this page
+
+Older bookmarks and external links may still use section names from the previous long-form page. Use these links to find the current content.
+
+### Approximate kNN search [approximate-knn]
+
+Refer to [Approximate kNN search](knn/approximate-knn.md#approximate-knn).
+
+### Indexing considerations for approximate kNN search [knn-indexing-considerations]
+
+Refer to [Indexing considerations for approximate kNN search](knn/approximate-knn.md#knn-indexing-considerations).
+
+### Limitations for approximate kNN search [approximate-knn-limitations]
+
+Refer to [Approximate kNN search](knn/approximate-knn.md#approximate-knn). Some limitation notes also appear in [Cross-cluster search](/explore-analyze/cross-cluster-search.md#ccs-min-roundtrips).
+
+### Exact kNN search [exact-knn]
+
+Refer to [Exact kNN search](knn/exact-knn.md#exact-knn).
+
+### Tune approximate kNN for speed or accuracy [tune-approximate-knn-for-speed-accuracy]
+
+Refer to [Tune search-time speed versus accuracy](knn/optimize-performance-accuracy.md#tune-approximate-knn-for-speed-accuracy).
+
+### Approximate kNN using byte vectors [approximate-knn-using-byte-vectors]
+
+Refer to [Byte vectors](knn/optimize-performance-accuracy.md#approximate-knn-using-byte-vectors).
+
+### Byte quantized kNN search [knn-search-quantized-example]
+
+Refer to [Quantized float vectors](knn/optimize-performance-accuracy.md#knn-search-quantized-example).
+
+### BFloat16 vector encoding [knn-search-bfloat16]
+
+Refer to [BFloat16 vector encoding](knn/optimize-performance-accuracy.md#knn-search-bfloat16).
+
+### Oversampling and rescoring for quantized vectors [dense-vector-knn-search-rescoring]
+
+Refer to [Oversampling and rescoring for quantized vectors](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring).
+
+### The rescore_vector option [the-rescore_vector-option]
+
+Refer to [The `rescore_vector` option](knn/optimize-performance-accuracy.md#the-rescore_vector-option).
+
+### The on_disk_rescore option [the-on_disk_rescore-option]
+
+Refer to [The `on_disk_rescore` option](knn/optimize-performance-accuracy.md#the-on_disk_rescore-option).
+
+### Additional rescoring techniques [dense-vector-knn-search-rescoring-rescore-additional]
+
+Refer to [Additional rescoring techniques](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-rescore-additional).
+
+### Use the rescore section for top-level kNN search [dense-vector-knn-search-rescoring-rescore-section]
+
+Refer to [Use the `rescore` section for top-level kNN search](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-rescore-section).
+
+### Use a script_score query to rescore per shard [dense-vector-knn-search-rescoring-script-score]
+
+Refer to [Use a `script_score` query to rescore per shard](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-script-score).
+
+### Filtered kNN search [knn-search-filter-example]
+
+Refer to [Filter approximate kNN results](knn/filtered-knn-search.md#knn-search-filter-example).
+
+### Approximate kNN search and filtering [approximate-knn-search-and-filtering]
+
+Refer to [Filtering behavior and performance](knn/filtered-knn-search.md#filtering-behavior-and-performance).
+
+### Combine approximate kNN with other features [_combine_approximate_knn_with_other_features]
+
+Refer to [Use approximate kNN in hybrid search](knn/approximate-knn-query-examples.md#combine_approximate_knn_with_other_features).
+
+### Combine approximate kNN with other features [combine_approximate_knn_with_other_features]
+
+Refer to [Use approximate kNN in hybrid search](knn/approximate-knn-query-examples.md#combine_approximate_knn_with_other_features).
+
+### Search kNN with expected similarity [knn-similarity-search]
+
+Refer to [Set a similarity threshold for approximate kNN](knn/approximate-knn-query-examples.md#knn-similarity-search).
+
+### Search multiple kNN fields [_search_multiple_knn_fields]
+
+Refer to [Search multiple vector fields with approximate kNN](knn/approximate-knn-query-examples.md#_search_multiple_knn_fields).
+
+### Nested kNN search [nested-knn-search]
+
+Refer to [Nested approximate kNN search](knn/nested-knn-search.md#nested-knn-search).
+
+### Filtering in nested KNN search [nested-knn-search-filtering]
+
+Refer to [Filter in nested approximate kNN search](knn/nested-knn-search.md#nested-knn-search-filtering).
+
+### Filtering on nested metadata [nested-knn-search-filtering-nested-metatadata]
+
+Refer to [Filter on nested metadata](knn/nested-knn-search.md#nested-knn-search-filtering-nested-metatadata).
+
+### Filtering by sibling nested fields in nested KNN search [nested-knn-search-filtering-sibling]
+
+Refer to [Filter by sibling nested fields](knn/nested-knn-search.md#nested-knn-search-filtering-sibling).
+
+### Nested kNN Search with Inner hits [nested-knn-search-inner-hits]
+
+Refer to [Nested approximate kNN search with inner hits](knn/nested-knn-search.md#nested-knn-search-inner-hits).
+
+### Search with nested vectors for chunked content [nested-knn-search-chunked-content]
+
+Refer to [Chunked content retrieval](knn/nested-knn-search.md#nested-knn-search-chunked-content).
+
+### Create the index mapping [create-the-index-mapping]
+
+Refer to [Chunked content retrieval](knn/nested-knn-search.md#nested-knn-search-chunked-content).
+
+### Index the documents [index-the-documents]
+
+Refer to [Chunked content retrieval](knn/nested-knn-search.md#nested-knn-search-chunked-content).
+
+### Run the search query [run-the-search-query]
+
+Refer to [Chunked content retrieval](knn/nested-knn-search.md#nested-knn-search-chunked-content).
