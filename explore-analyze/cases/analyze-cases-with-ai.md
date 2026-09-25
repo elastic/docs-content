@@ -60,4 +60,4 @@ After a case is attached, you can ask the agent to act on it directly from the c
 
 If you keep the chat open, the case page updates in real time to show any changes the agent makes.
 
-{applies_to}`stack: ga 9.6+` Changes the agent makes also appear in the case's activity feed as **via** the agent name. Refer to [See how an action started](manage-cases.md#case-activity-source).
+{applies_to}`stack: ga 9.6+` The case's activity feed also records each change the agent makes, with **via** and the agent name after the username. Refer to [See how an action started](manage-cases.md#case-activity-source).
