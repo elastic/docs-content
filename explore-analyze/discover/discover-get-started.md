@@ -252,7 +252,9 @@ Dive into an individual document to view its fields and the documents that occur
 4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**. This action isn't available in {{esql}} mode.
 
 ::::{tip}
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens this document, select {icon}`link` **Copy link** in the flyout header. Refer to [Share a link to a document](#share-a-document-link).
+:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
+
+To copy a link that reopens this document, select {icon}`link` **Copy link** in the flyout header. Refer to [Share a link to a document](#share-a-document-link).
 ::::
 
 
@@ -424,7 +426,7 @@ stack: ga 9.6+
 
 When you are investigating a result, copy a link that reopens **Discover** with that document's flyout open. Recipients land on the same document instead of only the surrounding query.
 
-1. In the document table, select {icon}`maximize` **View details** on the row.
+1. In the document table, select {icon}`maximize` **View details** on the document's row.
 2. In the flyout header, select {icon}`link` **Copy link**.
 
    :::{image} /explore-analyze/images/kibana-discover-copy-document-link.png
@@ -435,13 +437,13 @@ When you are investigating a result, copy a link that reopens **Discover** with 
 
 The link uses the absolute time range of the results on screen, so the document stays in that range when the link is opened.
 
-If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the row. For example:
+If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the document before copying the link. For example:
 
 ```esql
 FROM kibana_sample_data_logs METADATA _id, _index
 ```
 
-Queries that transform rows, such as `STATS` or `KEEP`, cannot copy a link. If `_id` and `_index` are missing, **Copy link** stays available and shows a warning instead of copying.
+You cannot copy a link to a document transformed by a query, such as `STATS` or `KEEP`. If `_id` and `_index` are missing, **Copy link** stays available but shows a warning.
 
 When **Copy link** can copy the open document, **Share** includes that document. The link opens **Discover** with the same flyout open. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
 
