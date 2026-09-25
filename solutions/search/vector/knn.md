@@ -55,9 +55,15 @@ If you're using {{serverless-full}}, [compare {{es}} and {{vectordb}} projects](
 
 ## kNN search methods [knn-methods]
 
+$$$choosing-between-approximate-and-exact-knn$$$
+
 {{es}} provides two ways to perform kNN search. Select a method based on your dataset size, latency requirements, and whether you need exact scoring.
 
+$$$knn-methods-approximate$$$$$$approximate-knn$$$$$$approximate-knn-limitations$$$
+
 [**Approximate kNN**](knn/approximate-knn.md) is best for most production workloads where low latency and scale matter more than perfect recall. It narrows the search to likely matches instead of scoring every document, reducing latency on large datasets.
+
+$$$knn-methods-exact$$$$$$exact-knn$$$
 
 [**Exact, brute-force kNN**](knn/exact-knn.md) is best for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing. It scores every matching document, which guarantees accurate results but does not scale well for large datasets. You can improve latency by filtering your data to a small subset of documents.
 
@@ -178,77 +184,72 @@ Continue with the guide for the kNN search method that fits your use case:
 
 ## Resources
 
-$$$knn-methods-approximate$$$$$$approximate-knn$$$$$$approximate-knn-limitations$$$ Approximate kNN search
-:   Learn more about [Approximate kNN search](knn/approximate-knn.md#approximate-knn).
+::::{dropdown} Related kNN topics
+$$$knn-indexing-considerations$$$
 
-$$$knn-indexing-considerations$$$ Indexing considerations for approximate kNN search
-:   Learn more about [indexing considerations for approximate kNN search](knn/approximate-knn.md#knn-indexing-considerations).
+$$$tune-approximate-knn-for-speed-accuracy$$$
 
-$$$knn-methods-exact$$$$$$exact-knn$$$ Exact kNN search
-:   Learn more about [Exact kNN search](knn/exact-knn.md#exact-knn).
+$$$approximate-knn-using-byte-vectors$$$
 
-$$$choosing-between-approximate-and-exact-knn$$$ Choosing between approximate and exact kNN
-:   Learn more about [kNN search methods](#knn-methods).
+$$$knn-search-quantized-example$$$
 
-$$$tune-approximate-knn-for-speed-accuracy$$$ Tune approximate kNN for speed or accuracy
-:   Learn more about [tuning approximate kNN for speed or accuracy](knn/optimize-performance-accuracy.md#tune-approximate-knn-for-speed-accuracy).
+$$$knn-search-bfloat16$$$
 
-$$$approximate-knn-using-byte-vectors$$$ Approximate kNN using byte vectors
-:   Learn more about [approximate kNN using byte vectors](knn/optimize-performance-accuracy.md#approximate-knn-using-byte-vectors).
+$$$dense-vector-knn-search-rescoring$$$
 
-$$$knn-search-quantized-example$$$ Byte quantized kNN search
-:   Learn more about [byte quantized kNN search](knn/optimize-performance-accuracy.md#knn-search-quantized-example).
+$$$the-rescore_vector-option$$$
 
-$$$knn-search-bfloat16$$$ BFloat16 vector encoding
-:   Learn more about [BFloat16 vector encoding](knn/optimize-performance-accuracy.md#knn-search-bfloat16).
+$$$the-on_disk_rescore-option$$$
 
-$$$dense-vector-knn-search-rescoring$$$ Oversampling and rescoring for quantized vectors
-:   Learn more about [oversampling and rescoring for quantized vectors](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring).
+$$$dense-vector-knn-search-rescoring-rescore-additional$$$
 
-$$$the-rescore_vector-option$$$ The `rescore_vector` option
-:   Learn more about [the `rescore_vector` option](knn/optimize-performance-accuracy.md#the-rescore_vector-option).
+$$$dense-vector-knn-search-rescoring-rescore-section$$$
 
-$$$the-on_disk_rescore-option$$$ The `on_disk_rescore` option
-:   Learn more about [the `on_disk_rescore` option](knn/optimize-performance-accuracy.md#the-on_disk_rescore-option).
+$$$dense-vector-knn-search-rescoring-script-score$$$
 
-$$$dense-vector-knn-search-rescoring-rescore-additional$$$ Additional rescoring techniques
-:   Learn more about [additional rescoring techniques](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-rescore-additional).
+$$$_combine_approximate_knn_with_other_features$$$$$$combine_approximate_knn_with_other_features$$$
 
-$$$dense-vector-knn-search-rescoring-rescore-section$$$ Use the `rescore` section for top-level kNN search
-:   Learn more about [using the `rescore` section for top-level kNN search](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-rescore-section).
+$$$knn-similarity-search$$$
 
-$$$dense-vector-knn-search-rescoring-script-score$$$ Use a `script_score` query to rescore per shard
-:   Learn more about [using a `script_score` query to rescore per shard](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-script-score).
+$$$_search_multiple_knn_fields$$$
 
-$$$_combine_approximate_knn_with_other_features$$$$$$combine_approximate_knn_with_other_features$$$ Combine approximate kNN with other features
-:   Learn more about [combining approximate kNN with other features](knn/approximate-knn-query-examples.md#combine_approximate_knn_with_other_features).
+$$$knn-search-filter-example$$$
 
-$$$knn-similarity-search$$$ Search kNN with expected similarity
-:   Learn more about [searching kNN with expected similarity](knn/approximate-knn-query-examples.md#knn-similarity-search).
+$$$approximate-knn-search-and-filtering$$$
 
-$$$_search_multiple_knn_fields$$$ Search multiple kNN fields
-:   Learn more about [searching multiple kNN fields](knn/approximate-knn-query-examples.md#_search_multiple_knn_fields).
+$$$nested-knn-search$$$
 
-$$$knn-search-filter-example$$$ Filtered kNN search
-:   Learn more about [filtered kNN search](knn/filtered-knn-search.md#knn-search-filter-example).
+$$$nested-knn-search-filtering$$$
 
-$$$approximate-knn-search-and-filtering$$$ Approximate kNN search and filtering
-:   Learn more about [approximate kNN search and filtering](knn/filtered-knn-search.md#filtering-behavior-and-performance).
+$$$nested-knn-search-filtering-nested-metatadata$$$
 
-$$$nested-knn-search$$$ Nested kNN search
-:   Learn more about [nested kNN search](knn/nested-knn-search.md#nested-knn-search).
+$$$nested-knn-search-filtering-sibling$$$
 
-$$$nested-knn-search-filtering$$$ Filtering in nested kNN search
-:   Learn more about [filtering in nested kNN search](knn/nested-knn-search.md#nested-knn-search-filtering).
+$$$nested-knn-search-inner-hits$$$
 
-$$$nested-knn-search-filtering-nested-metatadata$$$ Filtering on nested metadata
-:   Learn more about [filtering on nested metadata](knn/nested-knn-search.md#nested-knn-search-filtering-nested-metatadata).
+$$$nested-knn-search-chunked-content$$$$$$create-the-index-mapping$$$$$$index-the-documents$$$$$$run-the-search-query$$$
 
-$$$nested-knn-search-filtering-sibling$$$ Filtering by sibling nested fields in nested kNN search
-:   Learn more about [filtering by sibling nested fields in nested kNN search](knn/nested-knn-search.md#nested-knn-search-filtering-sibling).
+- [Indexing considerations for approximate kNN search](knn/approximate-knn.md#knn-indexing-considerations)
+- [Tune approximate kNN for speed or accuracy](knn/optimize-performance-accuracy.md#tune-approximate-knn-for-speed-accuracy)
+- [Approximate kNN using byte vectors](knn/optimize-performance-accuracy.md#approximate-knn-using-byte-vectors)
+- [Byte quantized kNN search](knn/optimize-performance-accuracy.md#knn-search-quantized-example)
+- [BFloat16 vector encoding](knn/optimize-performance-accuracy.md#knn-search-bfloat16)
+- [Oversampling and rescoring for quantized vectors](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring)
+- [The `rescore_vector` option](knn/optimize-performance-accuracy.md#the-rescore_vector-option)
+- [The `on_disk_rescore` option](knn/optimize-performance-accuracy.md#the-on_disk_rescore-option)
+- [Additional rescoring techniques](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-rescore-additional)
+- [Use the `rescore` section for top-level kNN search](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-rescore-section)
+- [Use a `script_score` query to rescore per shard](knn/optimize-performance-accuracy.md#dense-vector-knn-search-rescoring-script-score)
+- [Combine approximate kNN with other features](knn/approximate-knn-query-examples.md#combine_approximate_knn_with_other_features)
+- [Search kNN with expected similarity](knn/approximate-knn-query-examples.md#knn-similarity-search)
+- [Search multiple kNN fields](knn/approximate-knn-query-examples.md#_search_multiple_knn_fields)
+- [Filtered kNN search](knn/filtered-knn-search.md)
+- [Approximate kNN search and filtering](knn/filtered-knn-search.md#filtering-behavior-and-performance)
+- [Nested kNN search](knn/nested-knn-search.md)
+- [Filtering in nested kNN search](knn/nested-knn-search.md#nested-knn-search-filtering)
+- [Filtering on nested metadata](knn/nested-knn-search.md#nested-knn-search-filtering-nested-metatadata)
+- [Filtering by sibling nested fields in nested kNN search](knn/nested-knn-search.md#nested-knn-search-filtering-sibling)
+- [Nested kNN search with inner hits](knn/nested-knn-search.md#nested-knn-search-inner-hits)
+- [Search with nested vectors for chunked content](knn/nested-knn-search.md#nested-knn-search-chunked-content)
+::::
 
-$$$nested-knn-search-inner-hits$$$ Nested kNN search with inner hits
-:   Learn more about [nested kNN search with inner hits](knn/nested-knn-search.md#nested-knn-search-inner-hits).
-
-$$$nested-knn-search-chunked-content$$$$$$create-the-index-mapping$$$$$$index-the-documents$$$$$$run-the-search-query$$$ Search with nested vectors for chunked content
-:   Learn more about [searching with nested vectors for chunked content](knn/nested-knn-search.md#nested-knn-search-chunked-content).
