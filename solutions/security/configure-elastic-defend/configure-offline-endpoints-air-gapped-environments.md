@@ -181,17 +181,7 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 
 ### Step 3: Manually copy artifact updates [_step_3_manually_copy_artifact_updates]
 
-Download the most recent artifact files from the Elastic global artifact server, then copy those files to the server instance you created in step 1.
-
-Below is an example script that downloads all the global artifact updates. There are different artifact files for each version of {{elastic-endpoint}}. Change the value of the `ENDPOINT_VERSION` variable in the example script to match the deployed version of {{elastic-endpoint}}.
-
-```sh subs=true
-export ENDPOINT_VERSION={{version.stack}} && wget -P downloads/endpoint/manifest https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip && zcat -q downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip | jq -r '.artifacts | to_entries[] | .value.relative_url' | xargs -I@ curl "https://artifacts.security.elastic.co@" --create-dirs -o ".@"
-```
-
-This command will download files and directory structure that should be directly copied to the file server.
-
-Elastic releases updates continuously as detection engines are improved. Therefore, we recommend updating air-gapped environments at least monthly to stay current with artifact updates.
+Copy the most recent artifact files from the Elastic global artifact server to the server instance you created in step 1, then repeat this regularly to keep your endpoints current. For the download script and the recommended update schedule, refer to [Manually copy artifact updates](/solutions/security/manage-elastic-defend/manually-copy-artifact-updates.md).
 
 
 ## Validate your self-hosted artifact server [validate-artifact-server]
