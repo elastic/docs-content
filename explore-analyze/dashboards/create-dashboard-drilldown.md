@@ -36,38 +36,39 @@ The following panel types support dashboard drilldowns:
 
 Some values cannot open a drilldown. For a value created at query time, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
 
-## Set up the origin and destination dashboards [_create_and_set_up_the_dashboards_you_want_to_connect]
+## Create the drilldown [_create_the_dashboard_drilldown]
 
-This example creates a dashboard and a dashboard drilldown. Follow it with the sample data, or use your own dashboard and data.
+This example opens the **Detailed logs** dashboard from the **[Logs] Web Traffic** dashboard. Follow it with the sample data, or use your own dashboards.
 
 1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
-2. Create a new dashboard.
+2. If you don't already have a dashboard to open from the panel, create one. This example uses a dashboard named **Detailed logs**.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In the application menu, select **Add** → **From library**.
-    * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Add from library**.
+    ::::{dropdown} Create the Detailed logs dashboard
+    1. Create a new dashboard.
 
-3. Add the **[Logs] Visits** panel.
-4. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**, or to a 30-day period that contains data, depending on when you installed the sample data.
-5. Save the dashboard. In the **Title** field, enter `Detailed logs`.
-6. Open the **[Logs] Web Traffic** dashboard, then set a search and a filter.
+        * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In the application menu, select **Add** → **From library**.
+        * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Add from library**.
+
+    2. Add the **[Logs] Visits** panel.
+    3. Set the [time filter](../query-filter/filtering.md) to **Last 30 days**, or to a 30-day period that contains data, depending on when you installed the sample data.
+    4. Save the dashboard. In the **Title** field, enter `Detailed logs`.
+    ::::
+
+3. Open the **[Logs] Web Traffic** dashboard, then set a search and a filter.
 
     [Search](using.md#_filter_dashboards_using_the_kql_query_bar): `extension.keyword: ("gz" or "css" or "deb")`<br> [Filter](using.md#_add_pills_using_the_filter_editor): `geo.src: US`
 
-## Create the drilldown [_create_the_dashboard_drilldown]
-
-Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] Web Traffic** dashboard.
-
-1. On the **[Logs] Web Traffic** dashboard, select **Edit**.
-2. Hover over the **[Logs] Errors by host** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
-3. Select **Go to dashboard**.
+4. On the **[Logs] Web Traffic** dashboard, select **Edit**.
+5. Hover over the **[Logs] Errors by host** panel, open the {icon}`boxes_vertical` panel menu, then select {icon}`plus_in_circle` **Create drilldown**.
+6. Select **Go to dashboard**.
 
     1. In **Name**, enter a name. For example, `View details`.
     2. From **Choose destination dashboard**, select **Detailed logs**.
     3. To keep the `geo.src` filter, the KQL query, and the time filter, select **Use filters and query from origin dashboard** and **Use date range from origin dashboard**.
     4. Select **Create drilldown**.
 
-4. Save the dashboard.
-5. On the **[Logs] Errors by host** table, select **+** on a value, then select **View details**.
+7. Save the dashboard.
+8. On the **[Logs] Errors by host** table, select **+** on a value, then select **View details**.
 
    :::{image} /explore-analyze/images/kibana-dashboard_drilldownOnPanel.png
    :alt: Drilldown on data table that navigates to another dashboard
