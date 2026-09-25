@@ -32,7 +32,7 @@ EQL rules are **not** the best fit when:
 
 ### Data requirements
 
-EQL rules require at least one {{es}} index pattern or [{{data-source}}](/solutions/security/get-started/data-views-elastic-security.md). The indexed data must include a timestamp field (defaults to `@timestamp`) and an event category field (defaults to `event.category`). Sequence queries also benefit from a tiebreaker field to resolve events that share the same timestamp.
+EQL rules require at least one {{es}} index pattern or [{{data-source}}](/solutions/security/workspace-settings/data-views-elastic-security.md). The indexed data must include a timestamp field (defaults to `@timestamp`) and an event category field (defaults to `event.category`). Sequence queries also benefit from a tiebreaker field to resolve events that share the same timestamp.
 
 <!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective EQL queries [craft-eql]

@@ -120,7 +120,7 @@ Group alerts by up to three fields, such as rule name, host, user, source IP, or
 |--------|----------|
 | Columns | Reorder columns |
 | Sort fields | Sort by one or more columns |
-| Fields | Add or remove fields (including [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md)) |
+| Fields | Add or remove fields (including [runtime fields](/solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md)) |
 | Full screen | Expand table to full screen |
 | Export to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Export filtered alerts and visible columns to a CSV file. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 

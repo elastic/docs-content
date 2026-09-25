@@ -53,7 +53,7 @@ Data does not appear in the dashboard until a user selects indices to check.
 * **Check multiple indices**: To check all indices in the current data view, click **Check all** at the top of the dashboard. A progress indicator will appear.
 
 ::::{important}
-To customize which indices are checked when you click **Check all**, [change the current data view](/solutions/security/get-started/data-views-elastic-security.md).
+To customize which indices are checked when you click **Check all**, [change the current data view](/solutions/security/workspace-settings/data-views-elastic-security.md).
 ::::
 
 

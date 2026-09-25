@@ -32,7 +32,7 @@ Custom query rules are **not** the best fit when you need to:
 
 ### Data requirements
 
-Custom query rules require at least one {{es}} index pattern or [data view](/solutions/security/get-started/data-views-elastic-security.md) that contains the events you want to match. The indices must be accessible to the user who creates or last edits the rule, because the rule executes with that user's [API key privileges](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
+Custom query rules require at least one {{es}} index pattern or [data view](/solutions/security/workspace-settings/data-views-elastic-security.md) that contains the events you want to match. The indices must be accessible to the user who creates or last edits the rule, because the rule executes with that user's [API key privileges](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
 
 <!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective queries [craft-custom-query]
@@ -176,7 +176,7 @@ This rule detects failed login attempts and uses [alert suppression](/solutions/
 The following settings appear in the **Define rule** section when creating a custom query rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **Index patterns or data view**
-:   The {{es}} indices or data view the rule queries when searching for events. Index patterns are prepopulated with the indices configured in the [`securitySolution:defaultIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting. Alternatively, select a data view from the drop-down to use its associated index patterns and [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md).
+:   The {{es}} indices or data view the rule queries when searching for events. Index patterns are prepopulated with the indices configured in the [`securitySolution:defaultIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting. Alternatively, select a data view from the drop-down to use its associated index patterns and [runtime fields](/solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md).
 
 **Custom query**
 :   The KQL or Lucene query that defines the main detection logic. Other fields such as filters or exceptions can be used to narrow the scope of the query.

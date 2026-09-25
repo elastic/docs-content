@@ -77,7 +77,7 @@ The example above displays the Flow event renderer, which highlights the movemen
 You can also modify a Timeline’s display in other ways:
 
 * [Add and remove fields](/solutions/security/investigate/timeline.md#add-remove-timeline-fields) from Timeline
-* Create [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) and display them in the Timeline
+* Create [runtime fields](/solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md) and display them in the Timeline
 * Reorder and resize columns
 * Copy a column name or values to a clipboard
 * Change how the name, value, or description of a field are displayed in Timeline

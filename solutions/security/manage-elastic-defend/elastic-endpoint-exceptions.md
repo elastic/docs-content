@@ -28,7 +28,7 @@ You must have the **Endpoint Exceptions** [privilege](/solutions/security/config
 
 By default, {{elastic-endpoint}} exceptions apply globally across all hosts running {{elastic-defend}}. If you opt in to per-policy behavior, you can also assign exceptions to specific {{elastic-defend}} integration policies, so the exception applies only to hosts assigned to that policy.
 
-{{elastic-endpoint}} exceptions are space-aware: when you create a per-policy exception, it is associated with the space you're working in. For more information on how spaces interact with endpoint artifacts, refer to [](/solutions/security/get-started/spaces-defend-faq.md).
+{{elastic-endpoint}} exceptions are space-aware: when you create a per-policy exception, it is associated with the space you're working in. For more information on how spaces interact with endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/spaces-defend-faq.md).
 
 If you're upgrading from an earlier version, your existing {{elastic-endpoint}} exceptions are preserved and are managed from the **Artifacts** page. 
 

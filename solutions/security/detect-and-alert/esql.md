@@ -109,7 +109,7 @@ Ensure you do not `DROP` or filter out `_id`, `_index`, or `_version` in subsequ
 
 ### Limitations
 
-If your {{esql}} query creates new fields that are not part of the ECS schema, they are not mapped to the alerts index. You cannot search for or filter them in the Alerts table. As a workaround, create [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md).
+If your {{esql}} query creates new fields that are not part of the ECS schema, they are not mapped to the alerts index. You cannot search for or filter them in the Alerts table. As a workaround, create [runtime fields](/solutions/security/workspace-settings/create-runtime-fields-in-elastic-security.md).
 
 ### Custom highlighted fields
 

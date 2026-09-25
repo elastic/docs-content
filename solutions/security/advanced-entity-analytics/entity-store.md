@@ -27,7 +27,7 @@ The entity store allows you to query, reconcile, maintain, and persist entity me
 * Asset criticality data
 * Entity risk score data
 
-The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
+The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../workspace-settings/data-views-elastic-security.md#default-data-view-security).
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
 
@@ -151,7 +151,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The entity store creates user, host, and service entities from data in supported source indices (mainly the [Security default data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security)) when the incoming events include the ECS fields needed to identify those entities. Any integration that populates standard ECS identity fields — such as `host.*`, `user.*`, `service.*`, and related `event.*` fields — can contribute to entity creation, as long as the data contains enough information for the entity store to identify and build the entity.
+The entity store creates user, host, and service entities from data in supported source indices (mainly the [Security default data view](/solutions/security/workspace-settings/data-views-elastic-security.md#default-data-view-security)) when the incoming events include the ECS fields needed to identify those entities. Any integration that populates standard ECS identity fields — such as `host.*`, `user.*`, `service.*`, and related `event.*` fields — can contribute to entity creation, as long as the data contains enough information for the entity store to identify and build the entity.
 
 Examples of supported integrations include:
 
@@ -255,7 +255,7 @@ Use `docsLimit` to control how many entities can be processed in one extraction 
 
 Use `excludedIndexPatterns` to exclude specific index patterns from log extraction.
 
-* By default, the entity store extracts entities from all data sources defined in the [default {{elastic-sec}} data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security). Use this parameter to skip patterns that are noisy, irrelevant, or too resource-intensive to process.
+* By default, the entity store extracts entities from all data sources defined in the [default {{elastic-sec}} data view](/solutions/security/workspace-settings/data-views-elastic-security.md#default-data-view-security). Use this parameter to skip patterns that are noisy, irrelevant, or too resource-intensive to process.
 * Accepts an array of index pattern strings.
 
 #### `frequency`
