@@ -70,6 +70,7 @@ Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `obs
 ## Card titles and links
 
 - Omit `link` on `{link-card}` so the title is plain text.
+- Do not set `description` on a link-card inside `{explore}`. The builder drops it.
 - If a page used to be the title URL, make it the first list item.
 - Feature-app cards (Discover, Dashboards, Visualizations, Machine learning, Kibana alerting, Alerting V2, Agent Builder, Workflows, AI Agent chat):
   1. `<Name> overview`
@@ -90,11 +91,17 @@ When a card is long next to shorter siblings, drop 1–2 links that are not firs
 
 When a card is short next to 4–5-link siblings, add 1–2 high-value pages that are unique to that card. Do not pad with overviews or pages already linked nearby.
 
-Do not add a link only to even the count. Leave a card short when it has only two real options (Cloud hosted vs Serverless, ECK vs ECE, the two Kibana API docs).
+Do not add a link only to even the count. Leave a card short when it has only two real options (the two Kibana API docs, AutoOps overview and the Stack Monitoring comparison).
 
 ## Section rules
 
-**Deploy.** Order: Managed on Elastic Cloud, Self-orchestrated (ECK, ECE), Self-managed, Maintain and monitor. Self-managed is Install, Docker, and Configure. Do not list every OS package. **Upgrade Kibana** links to `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types). Do not use `/deploy-manage/upgrade/deployment-or-cluster/kibana.md`. That page is self-managed only.
+**Deploy.** Order: Managed on Elastic Cloud, Self-orchestrated (ECK, ECE), Self-managed, Maintain and monitor. Cloud Hosted links the deployment page and Access Kibana. ECK and ECE link the orchestrator page and the Kibana page. Serverless stays one link. Self-managed is Install, Docker, and Configure. Do not list every OS package. **Upgrade Kibana** links to `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types). Do not use `/deploy-manage/upgrade/deployment-or-cluster/kibana.md`. That page is self-managed only.
+
+**Manage data.** Stack Monitoring and AutoOps are sibling cards. AutoOps links to the overview and the comparison with Stack Monitoring.
+
+**Dashboards.** Include Reporting and sharing (`/explore-analyze/report-and-share.md`).
+
+**Secure Kibana.** Authenticate users links Kibana authentication and Cloud organization authentication. Authorize access links user roles, serverless custom roles, Kibana privileges, spaces, API keys, and audit logging. Protect data links secure saved objects and Kibana and Elasticsearch mutual TLS.
 
 **Alerting.** Three cards: Kibana alerting (classic), Alerting V2, Alerting connectors.
 

@@ -183,9 +183,10 @@ links:
 
 :::{link-card}
 title: Managed on Elastic Cloud
-description: Run Kibana as a hosted deployment or a serverless project.
 links:
-  - label: Elastic Cloud Hosted
+  - label: Create a Cloud Hosted deployment
+    url: /deploy-manage/deploy/elastic-cloud/cloud-hosted.md
+  - label: Access Kibana on Cloud Hosted
     url: /deploy-manage/deploy/elastic-cloud/access-kibana.md
   - label: Serverless
     url: /deploy-manage/deploy/elastic-cloud/serverless.md
@@ -193,17 +194,19 @@ links:
 
 :::{link-card}
 title: Self-orchestrated
-description: Deploy and manage Kibana with Elastic Cloud on Kubernetes or Elastic Cloud Enterprise.
 links:
   - label: Elastic Cloud on Kubernetes (ECK)
+    url: /deploy-manage/deploy/cloud-on-k8s.md
+  - label: Kibana on ECK
     url: /deploy-manage/deploy/cloud-on-k8s/kibana-configuration.md
   - label: Elastic Cloud Enterprise (ECE)
+    url: /deploy-manage/deploy/cloud-enterprise.md
+  - label: Access Kibana on ECE
     url: /deploy-manage/deploy/cloud-enterprise/access-kibana.md
 :::
 
 :::{link-card}
 title: Self-managed
-description: Install and run Kibana on your own infrastructure.
 links:
   - label: Install Kibana
     url: /deploy-manage/deploy/self-managed/install-kibana.md
@@ -215,7 +218,6 @@ links:
 
 :::{link-card}
 title: Maintain and monitor
-description: Production guidance, upgrades, and logging for Kibana itself. Monitor the rest of the stack from Manage data and Kibana.
 links:
   - label: Run in production
     url: /deploy-manage/production-guidance/kibana-in-production-environments.md
@@ -232,7 +234,6 @@ links:
 
 :::{link-card}
 title: Data and indices
-description: Manage Elasticsearch indices, data streams, ingest pipelines, and transforms from Kibana.
 links:
   - label: Index management
     url: /manage-data/data-store/perform-index-operations.md
@@ -244,7 +245,6 @@ links:
 
 :::{link-card}
 title: Integrations and Fleet
-description: Browse and install integrations, then deploy and manage Elastic Agents from Kibana.
 links:
   - label: Integrations
     url: /reference/fleet/manage-integrations.md
@@ -256,7 +256,6 @@ links:
 
 :::{link-card}
 title: Stack Monitoring
-description: Monitor the health of Elasticsearch, Kibana, Logstash, and Beats from a single Kibana app.
 links:
   - label: Kibana monitoring data
     url: /deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md
@@ -267,8 +266,16 @@ links:
 :::
 
 :::{link-card}
+title: AutoOps
+links:
+  - label: AutoOps overview
+    url: /deploy-manage/monitor/autoops.md
+  - label: Compare with Stack Monitoring
+    url: /deploy-manage/monitor/autoops-vs-stack-monitoring.md
+:::
+
+:::{link-card}
 title: Spaces and saved objects
-description: Organize work into spaces. Manage dashboards, visualizations, and other Kibana objects, including export, import, and migration.
 links:
   - label: Spaces
     url: /deploy-manage/manage-spaces.md
@@ -285,7 +292,6 @@ links:
 
 :::{link-card}
 title: Discover
-description: Browse documents, filter, and query your indices in real time.
 links:
   - label: Discover overview
     url: /explore-analyze/discover.md
@@ -301,7 +307,6 @@ links:
 
 :::{link-card}
 title: Dashboards
-description: Combine visualizations, controls, and context in an interactive view.
 links:
   - label: Dashboards overview
     url: /explore-analyze/dashboards.md
@@ -313,11 +318,12 @@ links:
     url: /explore-analyze/visualize/dashboard-controls.md
   - label: Best practices
     url: /explore-analyze/dashboards/arrange-panels.md
+  - label: Reporting and sharing
+    url: /explore-analyze/report-and-share.md
 :::
 
 :::{link-card}
 title: Visualizations
-description: Create charts and visual panels with Lens, ES|QL, Vega, or a custom HTML panel.
 links:
   - label: Visualizations overview
     url: /explore-analyze/visualize.md
@@ -333,7 +339,6 @@ links:
 
 :::{link-card}
 title: Machine learning
-description: Detect anomalies, forecast trends, and run data frame analytics.
 links:
   - label: Machine learning overview
     url: /explore-analyze/machine-learning/machine-learning-in-kibana.md
@@ -354,7 +359,6 @@ links:
 
 :::{link-card}
 title: Kibana alerting
-description: Detect conditions with built-in rule types and send notifications through connectors.
 links:
   - label: Kibana alerting overview
     url: /explore-analyze/alerting/alerts.md
@@ -368,7 +372,6 @@ links:
 
 :::{link-card}
 title: Alerting V2
-description: Watch data with ES|QL rules, track alert episodes, and send notifications.
 links:
   - label: Alerting V2 overview
     url: /explore-analyze/alerting/system-overview.md
@@ -382,7 +385,6 @@ links:
 
 :::{link-card}
 title: Alerting connectors
-description: Send alerts and case updates to Slack, Jira, PagerDuty, and other incident-management tools.
 links:
   - label: Alerting connectors overview
     url: kibana://reference/connectors-kibana/alerting-cases-connectors.md
@@ -401,7 +403,6 @@ links:
 
 :::{link-card}
 title: Agent Builder
-description: Build custom AI agents that reason over your Elasticsearch data using LLMs and tools.
 links:
   - label: Agent Builder overview
     url: /explore-analyze/ai-features/elastic-agent-builder.md
@@ -415,7 +416,6 @@ links:
 
 :::{link-card}
 title: Workflows
-description: Automate tasks with sequences that chain Kibana actions, HTTP calls, and AI agents.
 links:
   - label: Workflows overview
     url: /explore-analyze/workflows.md
@@ -429,7 +429,6 @@ links:
 
 :::{link-card}
 title: AI Agent chat
-description: Chat with agents from the Kibana header to ask questions and take action on your data.
 links:
   - label: AI Agent chat overview
     url: /explore-analyze/ai-features/agent-builder/chat.md
@@ -443,7 +442,6 @@ links:
 
 :::{link-card}
 title: Context connectors
-description: Give agents access to external data and tools, such as Slack and GitHub.
 links:
   - label: Slack
     url: kibana://reference/connectors-kibana/slack-v2-action-type.md
@@ -462,7 +460,6 @@ links:
 
 :::{link-card}
 title: Query languages
-description: Languages you can use in Kibana to search, filter, and analyze Elasticsearch data.
 links:
   - label: Kibana Query Language (KQL)
     url: /explore-analyze/query-filter/languages/kql.md
@@ -476,7 +473,6 @@ links:
 
 :::{link-card}
 title: Developer tools
-description: Run API requests, profile queries, and debug patterns and scripts from Kibana.
 links:
   - label: Console
     url: /explore-analyze/query-filter/tools/console.md
@@ -490,7 +486,6 @@ links:
 
 :::{link-card}
 title: Search across clusters
-description: Run a search across remote clusters or linked serverless projects.
 links:
   - label: Cross-cluster search
     url: /explore-analyze/cross-cluster-search.md
@@ -510,30 +505,36 @@ links:
 :::{link-card}
 title: Authenticate users
 links:
-  - label: Kibana authentication (SSO, SAML, OIDC)
+  - label: Kibana authentication
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md
-  - label: User roles
-    url: /deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md
+  - label: Cloud organization authentication
+    url: /deploy-manage/users-roles/cloud-organization.md
 :::
 
 :::{link-card}
 title: Authorize access
 links:
+  - label: User roles
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md
+  - label: Serverless custom roles
+    url: /deploy-manage/users-roles/serverless-custom-roles.md
   - label: Kibana privileges
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md
   - label: Spaces
     url: /deploy-manage/manage-spaces.md
+  - label: API keys
+    url: /deploy-manage/api-keys.md
+  - label: Audit logging
+    url: /deploy-manage/security/logging-configuration/security-event-audit-logging.md
 :::
 
 :::{link-card}
-title: Protect data and audit
+title: Protect data
 links:
   - label: Secure saved objects
     url: /deploy-manage/security/secure-saved-objects.md
   - label: Kibana and Elasticsearch mutual TLS
     url: /deploy-manage/security/kibana-es-mutual-tls.md
-  - label: Enable audit logging
-    url: /deploy-manage/security/logging-configuration/enabling-audit-logs.md
 :::
 ::::
 
@@ -566,7 +567,6 @@ links:
 
 :::{link-card}
 title: Configuration and settings
-description: All kibana.yml settings and UI-configurable advanced settings.
 links:
   - label: Configuration reference
     url: kibana://reference/configuration-reference.md
@@ -582,7 +582,6 @@ links:
 
 :::{link-card}
 title: Release notes
-description: What's new, deprecated, and fixed in each Kibana release.
 links:
   - label: Kibana
     url: kibana://release-notes/index.md
@@ -596,7 +595,6 @@ links:
 
 :::{link-card}
 title: Related release notes
-description: Release notes for the rest of the Elastic Stack and solutions.
 links:
   - label: Elasticsearch
     url: elasticsearch://release-notes/index.md

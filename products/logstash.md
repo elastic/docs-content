@@ -121,7 +121,6 @@ links:
 :::{link-card}
 title: Install
 link: logstash://reference/installing-logstash.md
-description: Install and run Logstash on your own infrastructure.
 links:
   - label: Installing Logstash
     url: logstash://reference/installing-logstash.md
@@ -138,7 +137,6 @@ links:
 :::{link-card}
 title: Operate
 link: logstash://reference/upgrading-logstash.md
-description: Upgrade, scale, tune, and monitor Logstash.
 links:
   - label: Upgrade Logstash
     url: logstash://reference/upgrading-logstash.md
@@ -155,7 +153,6 @@ links:
 :::{link-card}
 title: Configure
 link: logstash://reference/config-setting-files.md
-description: Settings files, YAML config, and config reload.
 links:
   - label: Configuration files
     url: logstash://reference/config-setting-files.md
@@ -173,7 +170,6 @@ links:
 :::{link-card}
 title: Build pipelines
 link: logstash://reference/creating-logstash-pipeline.md
-description: Create and structure Logstash pipelines.
 links:
   - label: Creating a pipeline
     url: logstash://reference/creating-logstash-pipeline.md
@@ -188,7 +184,6 @@ links:
 :::{link-card}
 title: Inputs
 link: logstash-docs-md://lsr/input-plugins.md
-description: Collect events from files, beats, agents, JDBC, and more.
 links:
   - label: Input plugins
     url: logstash-docs-md://lsr/input-plugins.md
@@ -205,7 +200,6 @@ links:
 :::{link-card}
 title: Outputs
 link: logstash-docs-md://lsr/output-plugins.md
-description: Send processed events to Elasticsearch and other destinations.
 links:
   - label: Output plugins
     url: logstash-docs-md://lsr/output-plugins.md
@@ -220,7 +214,6 @@ links:
 :::{link-card}
 title: Central management and integrations
 link: logstash://reference/logstash-centralized-pipeline-management.md
-description: Manage pipelines from Kibana and extend Elastic Integrations.
 links:
   - label: Centralized pipeline management
     url: logstash://reference/logstash-centralized-pipeline-management.md
@@ -238,7 +231,6 @@ links:
 :::{link-card}
 title: Parse unstructured logs
 link: logstash-docs-md://lsr/plugins-filters-grok.md
-description: Extract fields from log lines with grok, dissect, and pipeline tutorials.
 links:
   - label: Grok filter
     url: logstash-docs-md://lsr/plugins-filters-grok.md
@@ -253,7 +245,6 @@ links:
 :::{link-card}
 title: Debug patterns
 link: /explore-analyze/query-filter/tools/grok-debugger.md
-description: Build and test grok patterns before you deploy them.
 links:
   - label: Grok Debugger
     url: /explore-analyze/query-filter/tools/grok-debugger.md
@@ -264,7 +255,6 @@ links:
 :::{link-card}
 title: Filter and enrich
 link: logstash-docs-md://lsr/filter-plugins.md
-description: Transform events with filters and Elastic Integrations processing.
 links:
   - label: Filter plugins
     url: logstash-docs-md://lsr/filter-plugins.md
@@ -279,7 +269,6 @@ links:
 :::{link-card}
 title: Inspect pipelines
 link: logstash://reference/logstash-pipeline-viewer.md
-description: View pipeline topology and processing in Kibana.
 links:
   - label: Pipeline viewer
     url: logstash://reference/logstash-pipeline-viewer.md
@@ -293,7 +282,6 @@ links:
 :::{link-card}
 title: Connect to Elasticsearch
 link: logstash://reference/secure-connection.md
-description: TLS, authentication, and API keys for Elasticsearch and Serverless.
 links:
   - label: Secure your connection
     url: logstash://reference/secure-connection.md
@@ -304,7 +292,6 @@ links:
 :::{link-card}
 title: TLS on the wire
 link: /reference/fleet/secure-logstash-connections.md
-description: Secure connections between agents, Beats, and Logstash.
 links:
   - label: Secure Logstash connections (Fleet)
     url: /reference/fleet/secure-logstash-connections.md
@@ -315,7 +302,6 @@ links:
 :::{link-card}
 title: Secrets
 link: logstash://reference/keystore.md
-description: Store credentials and sensitive settings in the Logstash keystore.
 links:
   - label: Logstash keystore
     url: logstash://reference/keystore.md
@@ -329,7 +315,6 @@ links:
 :::{link-card}
 title: Diagnose common issues
 link: /troubleshoot/ingest/logstash.md
-description: Startup, pipeline, and ingestion troubleshooting.
 links:
   - label: Troubleshoot Logstash
     url: /troubleshoot/ingest/logstash.md
@@ -342,7 +327,6 @@ links:
 :::{link-card}
 title: Capture diagnostics
 link: /troubleshoot/ingest/logstash/diagnostic.md
-description: Collect diagnostics for support and debugging.
 links:
   - label: Capture Logstash diagnostics
     url: /troubleshoot/ingest/logstash/diagnostic.md
@@ -351,7 +335,6 @@ links:
 :::{link-card}
 title: Logging
 link: logstash://reference/logging.md
-description: Configure and read Logstash logs.
 links:
   - label: Logging
     url: logstash://reference/logging.md
@@ -365,7 +348,6 @@ links:
 :::{link-card}
 title: Plugins
 link: logstash://reference/working-with-plugins.md
-description: Install, list, and configure Logstash plugins.
 links:
   - label: Working with plugins
     url: logstash://reference/working-with-plugins.md
@@ -382,7 +364,6 @@ links:
 :::{link-card}
 title: Settings and config
 link: logstash://reference/logstash-settings-file.md
-description: Settings reference and configuration examples.
 links:
   - label: logstash.yml
     url: logstash://reference/logstash-settings-file.md
@@ -395,7 +376,6 @@ links:
 :::{link-card}
 title: Releases
 link: logstash://release-notes/index.md
-description: What's new, breaking changes, and upgrades.
 links:
   - label: Release notes
     url: logstash://release-notes/index.md
