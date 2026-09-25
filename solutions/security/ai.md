@@ -29,6 +29,7 @@ These security-specific AI capabilities build on Elastic's [platform-level AI in
 | Compare LLM performance for security tasks | [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) |
 | Walk through AI-driven security workflows end-to-end | [AI use case guides](#ai-use-case-guides) |
 | Connect to an LLM provider | [LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md) |
+| Work with {{elastic-sec}} from Claude, Cursor, or Visual Studio Code | [Elastic Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md) |
 
 ## Interactive AI tools [interactive-ai-tools]
 
