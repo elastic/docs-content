@@ -13,12 +13,21 @@ products:
 
 # Tune approximate kNN search [tune-knn-search]
 
-{{es}} supports [approximate k-nearest neighbor search](../../../solutions/search/vector/knn.md#approximate-knn) for efficiently finding the *k* nearest vectors to a query vector. Since approximate kNN search works differently from other queries, there are special considerations around its performance.
+{{es}} supports [approximate k-nearest neighbor search](../../../solutions/search/vector/knn/approximate-knn.md) for efficiently finding the *k* nearest vectors to a query vector. Since approximate kNN search works differently from other queries, there are special considerations around its performance.
 
 Many of these recommendations help improve search speed. With approximate kNN, the indexing algorithm runs searches under the hood to create the vector index structures. So these same recommendations also help with indexing speed.
 
+## Use the `vectordb_document` index mode [_vectordb_document_index_mode]
+```{applies_to}
+stack: ga 9.5+
+```
 
-## Reduce vector memory foot-print [_reduce_vector_memory_foot_print]
+If an index exists primarily for vector search, create it with the `vectordb_document` [index mode](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting), which applies several of the recommendations on this page as index defaults: `bfloat16` vectors, vectors excluded from `_source`, preloaded vector index files, and merges that parallelize internally and run unthrottled. Because `index.mode` is final, set it at index creation and reindex to adopt it for existing data.
+
+For the setup example, see [Vector index mode](/solutions/search/vector/knn/approximate-knn.md#approximate-knn-vector-index-mode). For the full list of defaults, see [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes).
+
+
+## Reduce vector memory footprint [_reduce_vector_memory_foot_print]
 
 The default [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-element-type) is `float`. But this can be automatically quantized during index time through [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization). Quantization will reduce the required memory by 4x, 8x, or as much as 32x, but it will also reduce the precision of the vectors and increase disk usage for the field (by up to 25%, 12.5%, or 3.125%, respectively). Increased disk usage is a result of {{es}} storing both the quantized and the unquantized vectors. For example, when int8 quantizing 40GB of floating point vectors an extra 10GB of data will be stored for the quantized vectors. The total disk usage amounts to 50GB, but the memory usage for fast search will be reduced to 10GB.
 
@@ -60,75 +69,175 @@ You can also disable storing `dense_vector` fields in the `_source` through the 
 
 Another option is to use  [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
-## Ensure data nodes have enough memory [_ensure_data_nodes_have_enough_memory]
+## Ensure data nodes have enough capacity [_ensure_data_nodes_have_enough_memory]
 
-{{es}} uses either the Hierarchical Navigable Small World ([HNSW](https://arxiv.org/abs/1603.09320)) algorithm or the Disk Better Binary Quantization ([DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) algorithm for approximate kNN search. 
+{{es}} uses either the Hierarchical Navigable Small World ([HNSW](https://arxiv.org/abs/1603.09320)) algorithm or the Disk Better Binary Quantization ([DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) algorithm for approximate kNN search.
 
 HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures.
 
-DiskBBQ is a clustering algorithm which can scale efficiently often on less memory than HNSW.  Where HNSW typically performs poorly without sufficient memory to fit the entire structure in RAM, DiskBBQ scales linearly when using less available memory than the total index size. You can start with enough RAM to hold the vector data and index structures but, in most cases, you should be able to reduce your RAM allocation and still maintain good performance. In testing, as little as 1-5% of the index structure size (centroids and quantized vector data) loaded in off-heap RAM is necessary for reasonable performance for each set of queries that accesses largely overlapping clusters.  
+DiskBBQ is a clustering algorithm which can scale efficiently often on less memory than HNSW. Where HNSW typically performs poorly without sufficient memory to fit the entire structure in RAM, DiskBBQ scales linearly when using less available memory than the total index size. You can start with enough RAM to hold the vector data and index structures but, in most cases, you should be able to reduce your RAM allocation and still maintain good performance.
 
-To check the size of the vector data, you can use the [Analyze index disk usage]({{es-apis}}operation/operation-indices-disk-usage) API.
+A `dense_vector` field stores more than the values you index. On disk, {{es}} keeps the raw vectors (for rescoring and reindex), any quantized copy used for approximate search, and the search structure (an HNSW graph, or DiskBBQ centroids and clusters). 
 
-Here are estimates for different element types and quantization levels:
+### Vector files [vector-files]
 
-| `element_type` | `quantization` | Required RAM |
+Each structure is a Lucene file (also reported under `off_heap.*_size_bytes` in [index stats]({{es-apis}}operation/operation-indices-stats)). Metadata files (`.vem`, `.vemf`, `.vemq`, `.vemb`) are small and you do not need to preload them.
+
+::::{tab-set}
+
+:::{tab-item} HNSW
+
+| Component | File | What it is |
 | --- | --- | --- |
-| `float` | none | `num_vectors * num_dimensions * 4` | 
-| `float` | `int8` | `num_vectors * (num_dimensions + 4)` |
-| `float` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
-| `float` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
-| `bfloat16` | none | `num_vectors * num_dimensions * 2` |
-| `bfloat16` | `int8` | `num_vectors * (num_dimensions + 4)` |
-| `bfloat16` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
-| `bfloat16` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
-| `byte` | none |  `num_vectors * num_dimensions` |
-| `bit` | none | `num_vectors * (num_dimensions/8)` |
+| Raw vectors | `.vec` | Full-precision vectors. Scanned during search when there is no quantization; otherwise kept on disk for optional rescoring. |
+| Quantized vectors | `.veq` (int8 or int4) or `.veb` (BBQ) | Present only with quantization. A field uses one of these files, not both. |
+| HNSW graph | `.vex` | Proximity graph that HNSW walks at search time. |
 
-If you're using HNSW, the graph must also be in memory. To estimate the required bytes, use the following formula below. The default value for the HNSW `m` parameter is `16`.
+:::
 
-```{math}
-\begin{align*}
-estimated\ bytes &= num\_vectors \times 4 \times m \\
-&= num\_vectors \times 4 \times 16
-\end{align*}
+:::{tab-item} Flat
+
+| Component | File | What it is |
+| --- | --- | --- |
+| Raw vectors | `.vec` | Full-precision vectors. Scanned during search when there is no quantization; otherwise kept on disk for optional rescoring. |
+| Quantized vectors | `.veq` (int8 or int4) or `.veb` (BBQ) | Present only with quantization. A field uses one of these files, not both. |
+
+:::
+
+:::{tab-item} DiskBBQ
+
+```{applies_to}
+stack: ga 9.3+
 ```
 
-The following is an example of an estimate with the HNSW indexed `element_type: float` with no quantization, `m` set to `16`, and `1,000,000` vectors of `1024` dimensions:
+| Component | File | What it is |
+| --- | --- | --- | --- |
+| Raw vectors | `.vec` | Full-precision vectors kept on disk for optional rescoring. |
+| Centroids | `.cenivf` | Cluster centroids DiskBBQ uses to pick which clusters to visit. |
+| Clusters | `.clivf` | Quantized vectors grouped into clusters. Only clusters a query visits are paged in. |
 
-```{math}
+:::
+
+::::
+
+### Estimate disk usage [_estimate_disk_usage]
+
+Disk usage for a `dense_vector` field includes the raw vectors, quantized vectors when quantization is enabled, and the search structure.
+
+#### Raw vector storage
+
+Raw (unquantized) vectors are always stored on disk, including when quantization is enabled. Size depends on `element_type`:
+
+| `element_type` | Bytes per dimension | Disk per vector |
+| --- | --- | --- |
+| `float` | 4 | `num_dimensions × 4` |
+| `bfloat16` | 2 | `num_dimensions × 2` |
+| `byte` | 1 | `num_dimensions` |
+| `bit` | 1/8 | `⌈num_dimensions / 8⌉` |
+
+:::{math}
+\text{raw vector bytes} = \text{num\_vectors} \times \text{bytes\_per\_vector}
+:::
+
+#### Quantized vector storage
+
+When quantization is enabled, {{es}} stores both the raw vectors and a quantized copy. That increases total disk usage and reduces off-heap RAM. Quantized vector storage applies to `float` and `bfloat16` only. The extra 14 or 16 bytes per vector are a small correction the quantizer stores so it can rescore accurately.
+
+| `quantization` | Bytes per vector |
+| --- | --- |
+| `int8` | `num_dimensions + 16` |
+| `int4` | `⌈num_dimensions / 2⌉ + 16` |
+| `bbq` | `⌈num_dimensions / 64⌉ × 8 + 14` |
+
+:::{math}
+\text{estimated bytes} = \text{num\_vectors} \times \text{bytes per vector}
+:::
+
+#### Index structure on disk [_index_structure_on_disk]
+
+Overhead depends on the search algorithm. The default for HNSW `m` is `16`. The default for DiskBBQ `vectors_per_cluster` is `384`.
+
+| Index type | Component | Estimated bytes |
+| --- | --- | --- |
+| `hnsw` | Graph (`.vex`) | `num_vectors × 4 × m` |
+| `flat` | — | `0` |
+| `bbq_disk` {applies_to}`stack: ga 9.3+` | Centroids (`.cenivf`) | `⌈num_vectors / vectors_per_cluster⌉ × (num_dimensions + 16)` |
+| `bbq_disk` | Clusters (`.clivf`), `num_dimensions` 384 or more | `num_vectors × 2 × (⌈num_dimensions / 8⌉ + 16)` |
+| `bbq_disk` | Clusters (`.clivf`), `num_dimensions` less than 384 | `num_vectors × 2 × (⌈num_dimensions / 2⌉ + 16)` |
+
+For DiskBBQ, add centroid bytes and cluster bytes. The `× 2` on cluster vectors is a conservative upper bound: a vector might be written to a second cluster. Real cluster storage is between 1× and 2×.
+
+#### Total disk per replica
+
+:::{math}
+\text{total disk} = \text{raw vector bytes} + \text{quantized disk} + \text{index structure bytes}
+:::
+
+Each shard replica holds a full copy. Multiply the per-replica figure by `1 + number of replicas` for cluster-wide disk. To check the size of vector data in an existing index, use the [Analyze index disk usage]({{es-apis}}operation/operation-indices-disk-usage) API.
+
+
+### Estimate off-heap RAM [_estimate_off_heap_ram]
+
+Disk and off-heap RAM are two different numbers, and they can differ by a lot. Disk is every structure persisted for the field. Off-heap RAM is the working set that must stay in the operating system's filesystem cache for fast, stable query latency. Vector data is memory-mapped, so it lives in the OS page cache, separate from the Java heap.
+
+Provision at least the off-heap RAM figure per copy, plus headroom. Once the working set no longer fits in cache, queries start reading from disk and latency climbs sharply. For quantized indices the raw vectors stay on disk (read only for optional rescoring), so they count toward disk but not toward the required off-heap RAM.
+
+#### Index structure in RAM
+
+:::::{tab-set}
+
+::::{tab-item} HNSW
+
+The HNSW graph must be fully loaded in memory for efficient search. The default value for `m` is `16`.
+
+:::{math}
+\text{HNSW RAM} = \text{num\_vectors} \times 4 \times m
+:::
+
+Total off-heap RAM for HNSW:
+
+:::{math}
+\text{total RAM} = \text{vector RAM} + \text{HNSW RAM}
+:::
+
+Example with unquantized `hnsw`, `element_type: float`, `m` set to `16`, and `1,000,000` vectors of `1024` dimensions:
+
+:::{math}
 \begin{align*}
-estimated\ bytes &= (1,000,000 \times 4 \times 16) + (1,000,000 \times 4 \times 1024) \\
-&= 64,000,000 + 4,096,000,000 \\
-&= 4,160,000,000 \\
-&= 3.87GB
+\text{estimated bytes} &= (1{,}000{,}000 \times 4 \times 16) + (1{,}000{,}000 \times 4 \times 1024) \\
+&= 64{,}000{,}000 + 4{,}096{,}000{,}000 \\
+&= 4{,}160{,}000{,}000 \\
+&= 3.87\text{GB}
 \end{align*}
+:::
+
+::::
+
+::::{tab-item} Flat
+
+The flat index has no graph structure. Only vector data needs to be in RAM.
+
+:::{math}
+\text{total RAM} = \text{vector RAM}
+:::
+
+::::
+
+::::{tab-item} DiskBBQ
+
+```{applies_to}
+stack: ga 9.3+
 ```
 
 If you're using DiskBBQ, a fraction of the clusters and centroids need to be in memory.  When doing this estimation, it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes, first compute the number of clusters, then compute the cost of the centroids plus the cost of the quantized vectors within the clusters to get the total estimated bytes.  The default value for the number of `vectors_per_cluster` is `384`.
 
-```{math}
-\begin{align*}
-num\_clusters=\frac{num\_vectors}{vectors\_per\_cluster}=\frac{num\_vectors}{384}
-\end{align*}
-```
+Start with all centroids and posting lists in RAM and tune based on benchmark results. The useful fraction depends on your query patterns: queries that access overlapping clusters benefit from caching more.
 
-```{math}
-\begin{align*}
-estimated\ centroid\ bytes &= num\_clusters \times num\_dimensions \times 4 \\
-& + num\_clusters \times (num\_dimensions + 14)
-\end{align*}
-```
+::::
 
-```{math}
-\begin{align*}
-estimated\ quantized\ vector\ bytes = num\_vectors \times ((num\_dimensions/8 + 14 + 2) \times 2)
-\end{align*}
-```
+:::::
 
-Note that the required RAM is for the filesystem cache, which is separate from the Java heap.
-
-The data nodes should also leave a buffer for other ways that RAM is needed. For example your index might also include text fields and numerics, which also benefit from using filesystem cache. It’s recommended to run benchmarks with your specific dataset to ensure there’s a sufficient amount of memory to give good search performance. You can find [here](https://elasticsearch-benchmarks.elastic.co/#tracks/so_vector) and [here](https://elasticsearch-benchmarks.elastic.co/#tracks/dense_vector) some examples of datasets and configurations that we use for our nightly benchmarks.
+Data nodes should also leave a buffer for other ways that RAM is needed. For example your index might include text fields and numerics, which also benefit from using filesystem cache. Run benchmarks with your dataset to confirm there is enough memory for good search performance. Nightly examples include the [`so_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/so_vector) and [`dense_vector`](https://elasticsearch-benchmarks.elastic.co/#tracks/dense_vector) tracks.
 
 
 ## Warm up the filesystem cache [dense-vector-preloading]
@@ -139,17 +248,7 @@ If the machine running {{es}} is restarted, the filesystem cache will be empty, 
 Loading data into the filesystem cache eagerly on too many indices or too many files will make search *slower* if the filesystem cache is not large enough to hold all the data. Use with caution.
 ::::
 
-The following file extensions are used for the approximate kNN search: Each extension is broken down by the quantization types.
-
-* {applies_to}`stack: ga 9.3+` `cenivf` for DiskBBQ to store centroids
-* {applies_to}`stack: ga 9.3+` `clivf` for DiskBBQ to store clusters of quantized vectors
-* `vex` for the HNSW graph
-* `vec` for all non-quantized vector values. This includes all element types: `float`, `byte`, and `bit`.
-* `veq` for quantized vectors indexed with [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `int4` or `int8`
-* `veb` for binary vectors indexed with [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `bbq`
-* `vem`, `vemf`, `vemq`, and `vemb` for metadata, usually small and not a concern for preloading
-
-Generally, if you are using a quantized index, you should only preload the relevant quantized values and index structures such as the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive, because paging in the raw vectors might cause the OS to evict important index structures from the cache.
+Preload only the files that must stay in RAM. For quantized HNSW or flat, that is the quantized codes (`.veq` or `.veb`) plus the HNSW graph (`.vex`). For DiskBBQ, preload the centroids (`.cenivf`). Do not preload raw vectors (`.vec`). Paging them in can evict those index structures from the cache.
 
 You can gather additional detail about the specific files by using the [stats endpoint]({{es-apis}}operation/operation-indices-stats), which displays information about the index and fields.
 
