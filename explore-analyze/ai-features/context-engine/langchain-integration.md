@@ -640,22 +640,7 @@ Set `KIBANA_SPACE` to the space ID before creating the client, so requests go to
 
 To read from several spaces in one agent, build one client per space and register a separate set of tools for each.
 
-## Troubleshooting
-
-Use the following table to resolve common integration problems:
-
-| Symptom | Cause | Resolution |
-| :---- | :---- | :---- |
-| `400 Please specify a version via elastic-api-version header` | The version header is missing. | Send `elastic-api-version: 2023-10-31` on every request. |
-| `400 Request must contain a kbn-xsrf header` | A `POST` without the header, on a deployment that requires it. | Send `kbn-xsrf: true`. |
-| `403` on every endpoint | The API key lacks the Kibana **Context Engine** feature privilege. | Add it to the role. Elasticsearch index privileges alone aren't enough. |
-| `403` on query or describe only | Missing Elasticsearch privileges on the backing indices. | Grant `read` and `view_index_metadata` on `ai-index-*`. |
-| `404` on every endpoint | `contextEngine:enabled` is off in the space the URL points at. | Turn it on in that space's advanced settings. |
-| An AI Index you expect isn't listed | No `read` on its backing index, or every document in it belongs to another space. | Check the key's index privileges and which space the URL targets. |
-| `Unknown index` from a query, for an ID that *was* listed | The AI Index is registered but its backing index doesn't exist yet. | Expected for a registration with no data. Pick another index. |
-| A query returns no rows, but the index has data | Either the request is scoped to the wrong space, or the query carries its own space condition. | Point the request at the right space, and remove any space condition from the query. |
-| Describe returns a block with no `Knowledge item types` or `Tags` section | The counts need `read` on the backing indices, and need `type` and `tags` mapped as aggregatable keywords. | Expected degradation. The rest of the block is still usable. |
-| An error saying the response is too large | The result exceeds the 20 MB cap. | Drop large fields with `KEEP`, lower `limit`, or aggregate with `STATS`. |
+For common access and retrieval failures, refer to [Troubleshoot Context Engine retrieval](use-context-engine-with-agents.md#troubleshoot-context-engine-retrieval).
 
 ## Appendix
 

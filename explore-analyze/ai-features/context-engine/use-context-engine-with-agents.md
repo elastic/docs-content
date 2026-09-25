@@ -63,3 +63,18 @@ Test the agent with questions that exercise both paths:
 Inspect the agent's tool calls to confirm that it selected the expected AI index, retrieved a relevant KI, and queried source data only when needed. If the generated context is incomplete or misleading, [evaluate and improve the KIs](evaluate-and-improve-knowledge-indicators.md) instead of compensating with increasingly detailed agent instructions.
 
 Across a representative set of questions, compare response quality, tool calls, source queries, latency, and model token use. Repeated or related questions are especially useful because they show whether the AI index prevents agents from rediscovering the same information.
+
+## Troubleshoot Context Engine retrieval
+
+Use the following table to resolve common retrieval problems across agent integrations:
+
+| Symptom | Cause | Resolution |
+|---|---|---|
+| Every Context Engine operation returns `403`. | The credential lacks the Kibana **Context Engine** feature privilege. | Add the privilege in the space that contains the AI index. Elasticsearch index privileges alone are not enough. |
+| Query or describe operations return `403`. | The credential lacks Elasticsearch privileges on the backing indices. | Grant `read` and `view_index_metadata` on the relevant `ai-index-*` indices. |
+| Every Context Engine operation returns `404`. | `contextEngine:enabled` is turned off in the space targeted by the request. | Turn on Context Engine in that space's advanced settings. |
+| An expected AI index is not listed. | The credential cannot read its backing index, or its documents belong to another space. | Check the credential's index privileges and the space targeted by the request. |
+| A query returns `Unknown index` for an AI index that was listed. | The AI index is registered, but its backing index does not exist yet. | Select an AI index that contains data. |
+| A query returns no rows even though the AI index contains data. | The request targets the wrong space, or the query contains its own space condition. | Target the correct space and remove any space condition from the query. |
+| The describe operation omits Knowledge Indicator types or tags. | The credential cannot read the backing indices, or `type` and `tags` are not mapped as aggregatable keywords. | Check the index privileges and mappings. Other describe output remains available. |
+| The response is too large. | The result exceeds the 20 MB response limit. | Use `KEEP` to return only the required fields, lower the result limit, or aggregate the data with `STATS`. |
