@@ -110,26 +110,41 @@ The **Detailed logs** dashboard opens with the `geo.src` filter, the KQL query, 
 
 A URL drilldown opens a website from a panel. The URL can change with the dashboard time range, the dashboard filters, and the value you select. You build that URL with [variables](#url-template-variable) in a [URL template](#url-templating-language).
 
-![Drilldown on pie chart that navigates to GitHub](/explore-analyze/images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif)
+The following panel types support URL drilldowns:
 
-Some panels support more than one interaction. Under **Trigger**, select when the drilldown runs. The variables you can use depend on that choice. URL drilldowns support these triggers:
+* **Visualizations that use a data view**
+* {applies_to}`serverless:` {applies_to}`stack: ga 9.4` **Visualizations based on an {{esql}} query**
+* **Vega** visualizations
+* **Maps**
+* **Image**
+* **Discover** sessions
+* **TSVB**
+* **Aggregation-based**
+* **Timelion**
 
-* **Single click**: One data point in the panel. The template can use `{{event.value}}` and `{{event.key}}`.
-* **Table row click**: One row in a table. The template can use `{{event.values.[x]}}`, where `x` is the column number, starting at 0.
-* **Range selection**: A range of values in the panel. The template can use `{{event.from}}` and `{{event.to}}`.
+### URL drilldown triggers [url-drilldown-triggers]
 
-{applies_to}`serverless:` {applies_to}`stack: ga 9.4` {{esql}} visualization panels also support URL drilldowns.
+**Trigger** lists only the interactions that the panel supports. If the panel supports one interaction, **Trigger** is already set and the list is hidden.
+
+* **Single click**: Select one data point, such as a pie slice or a bar. The template can use `{{event.value}}` for the value and `{{event.key}}` for the field name. This trigger is available on visualizations that use a data view, visualizations based on an {{esql}} query, and **Maps**.
+* **Table row click**: Select a row in a table visualization that uses a data view or an {{esql}} query. The template can use `{{event.values.[x]}}`, where `x` is the column number, starting at 0. `{{event.keys.[x]}}` is the field name, and `{{event.columnNames.[x]}}` is the column label.
+* **Range selection**: Select a range of values on the visualization. The template can use `{{event.from}}` and `{{event.to}}`. This trigger is available on **Bar**, **Line**, **Area**, and **Heat map** visualizations, including those based on an {{esql}} query, and on **Aggregation-based**, **TSVB**, and **Timelion** panels.
+* **Context menu**: The drilldown name is added to the {icon}`boxes_vertical` panel menu. The template has no value from a data point. It can still use dashboard variables, such as the time range and `{{context.panel.title}}`. This is the only URL trigger on **Vega** visualizations, **Discover** sessions, and **Gauge** visualizations.
+* **Image click**: Select the image on an **Image** panel. The template has no value from the image. It can still use dashboard variables, such as `{{context.panel.title}}`.
 
 ### Create a URL drilldown [_create_a_url_drilldown]
 
-If a pie chart breaks down values from a GitHub repository, a URL drilldown can open the matching GitHub search from the slice you select.
+This example adds a pie chart and a URL drilldown that opens a GitHub search for the slice you select. Follow it with the sample data, or use your own dashboard and data.
 
 1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
 2. Open the **[Logs] Web Traffic** dashboard.
 3. Select **Edit**.
 4. Add a pie chart.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In the application menu, select **Add** → **Visualization**.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.6+` In the application menu, select **Add** → **Create visualization**.
+    * {applies_to}`stack: ga 9.5` In the application menu, select **Add** → **Visualization**.
+    * {applies_to}`stack: ga 9.4` In the application menu, select **Add panel** → **Lens**.
+    * {applies_to}`stack: ga 9.2-9.3` In the application menu, select **add** → **Lens**.
     * {applies_to}`stack: ga 9.0-9.1` In the application menu, select **Create visualization**.
 
 5. Set the visualization type to **Pie**.
@@ -139,7 +154,7 @@ If a pie chart breaks down values from a GitHub repository, a URL drilldown can 
 9. Select **Go to URL**.
 
     1. In **Name**, enter a name. For example, `Show on GitHub`.
-    2. For **Trigger**, select **Single click**.
+    2. For **Trigger**, select **Single click**. To use another interaction, refer to [URL drilldown triggers](#url-drilldown-triggers).
     3. To open {{kib}} issues on GitHub, enter this URL in **Enter URL**:
 
         ```text
@@ -148,20 +163,19 @@ If a pie chart breaks down values from a GitHub repository, a URL drilldown can 
 
         {{kib}} replaces `{{event.value}}` with the pie slice you select.
 
-    4. Select **Create drilldown**.
+    4. Optional: Open **Additional options**. **Open URL in new tab** and **Encode URL** are already on. **Open URL in new tab** opens the site in a new browser tab. Turn it off to open the site in the same tab. **Encode URL** percent-encodes the URL after the template is filled in.
+    5. Select **Create drilldown**.
 
 10. Save the dashboard.
 11. On the pie chart panel, select a slice, then select **Show on GitHub**.
 
     ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup_8.3.png)
 
-12. In the list of {{kib}} repository issues, confirm that the slice value appears in the search.
-
-    ![Open iOS issues in the elastic/kibana repository on GitHub](/explore-analyze/images/kibana-dashboard_urlDrilldownGithub_8.3.png)
+The GitHub issues search opens with the slice value in the query.
 
 ### Pass context and table values in the URL [url-drilldown-examples]
 
-Use variables to pass the dashboard time range, the dashboard filters, or a table cell in the URL. Select **Add variable** to insert a variable for the panel and the trigger you selected. Save the dashboard, then select a value on the panel and confirm the URL before you share the drilldown.
+You can use variables to pass the dashboard time range, the dashboard filters, or a table cell in the URL. The [variables reference](#variables-reference) lists every variable. Select **Add variable** to insert a variable for the panel and the trigger you selected. Save the dashboard, then select a value on the panel and confirm the URL before you share the drilldown.
 
 **Time range.** `context.panel.timeRange.from` and `context.panel.timeRange.to` are the panel time range when the panel has its own time range. Otherwise they are the dashboard time range. Format them with the `date` helper when the site expects a calendar date:
 
@@ -183,7 +197,7 @@ Start internal links with `{{kibanaUrl}}`, which is the {{kib}} base URL.
 https://example.com/host/{{event.values.[0]}}
 ```
 
-The [variables reference](#variables-reference) lists every variable, including `event.points` for a **Single click** that returns more than one data point.
+A **Single click** that returns more than one data point can also use `event.points`. The [variables reference](#variables-reference) includes it with the other variables.
 
 ## Create Discover drilldowns [discover-drilldowns]
 
