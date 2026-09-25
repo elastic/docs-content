@@ -29,16 +29,16 @@ From the **Rule Monitoring** tab on the **{{siem-rules-ui}}** page, you can get 
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
-The **Rule Monitoring Overview** panel summarizes rule health and gap coverage for every rule in the current {{kib}} space. It's expanded by default. Select the panel title to collapse or expand it. The panel header also shows the **Auto gap fill status** badge, described in [Fill gaps automatically](#fill-gaps-automatically).
+:::{applies-item} { "serverless": "ga", "stack": "ga 9.4+" }
+Use the **Rule Monitoring Overview** panel to check how every rule in the current {{kib}} space last ran, and how much gap time across the space is still unfilled. The panel is expanded by default. Its header also shows **Auto gap fill status**, which tells you whether [automatic gap fill](#fill-gaps-automatically) is on.
 
-The charts always cover the whole space. Filtering or searching the Rules table doesn't change them. To find the rules behind a number, use the Rules table filters.
+The panel's two charts always cover the whole space, so filtering or searching the Rules table doesn't change them. To find the rules behind a number, filter the Rules table instead, for example by **Gap fill status**.
 
-**Last response summary** shows the outcome of each rule's most recent run. The donut's center shows the total number of rules, and the table beside it shows how many rules reported each status. `Succeeded`, `Warning`, and `Failed` are the statuses from the **Last response** column, described in [Rule execution status](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-status). `No response` counts rules that have never recorded an outcome, such as a newly created rule that hasn't run yet. A rule that you turn off keeps the status from its last run.
+**Last response summary** counts rules by the outcome of their most recent run, with the total number of rules in the center of the chart. `Succeeded`, `Warning`, and `Failed` match the **Last response** column, described in [Rule execution status](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-status). `No response` counts rules that have never recorded an outcome, such as a new rule that hasn't run yet. A rule that you turn off keeps the status from its last run.
 
-**Rule gap summary** measures gap time from the last 90 days rather than counting rules. The [gap fill status](#gap-fill-status) names describe a rule's overall state. In this chart, the same names label how much gap time sits in each state. The donut's center shows the total gap duration recorded across the space, including time that's already been filled, and the table beside it splits that total into `Filled`, `In progress`, `Unfilled`, and `Error`. Your uncovered detection time is `Unfilled` plus `Error`, which holds unfilled time that automatic gap fill stopped retrying.
+**Rule gap summary** measures gap time from the last 90 days instead of counting rules. The total in the center of the chart is all gap time recorded across the space, including time that's already filled. The chart's table splits that total into `Filled`, `In progress`, `Unfilled`, and `Error` time. These are the [gap fill status](#gap-fill-status) names, applied to time instead of to rules. To find how much detection time is still uncovered, add `Unfilled` and `Error`. `Error` is unfilled time that automatic gap fill stopped retrying.
 
-Because each gap is split into these parts, a gap that's been partly filled contributes to more than one row. Durations also add up across rules, so one outage affecting many rules counts each rule's gap separately. The totals reflect your [gap detection scope](#gap-detection-scope-and-gap-reasons), so gaps with an excluded reason aren't counted.
+Because the chart splits each gap by status, a partially filled gap counts toward more than one row. Durations also add up across rules, so one outage that affects many rules counts each rule's gap separately. The totals follow your [gap detection scope](#gap-detection-scope-and-gap-reasons), so gaps with an excluded reason aren't counted.
 :::
 
 :::{applies-item} { "stack": "ga =9.3"}
@@ -200,7 +200,7 @@ Gap reasons describe the source of a gap. It can be either of the following:
 
 These values appear in the **Reason** column on the **Execution results** tab (and in related filters). They also drive which gaps are included in the **Rule gap summary** chart and in automatic gap fill.
 
-The **Gap detection scope** applies to the whole {{kib}} space. Use it to include or exclude gaps that occurred while a rule was turned off. By default, those gaps are excluded from the overview and from automatic gap fill because they often reflect planned maintenance rather than an unexpected detection failure.
+The **Gap detection scope** applies to the whole {{kib}} space. Use it to include or exclude gaps that occurred while a rule was turned off. By default, those gaps are excluded from the **Rule gap summary** chart and from automatic gap fill because they often reflect planned maintenance rather than an unexpected detection failure.
 
 When gaps from disabled rules are excluded, the **Fill gaps** bulk action shows a reminder that rules with that gap type won't be filled.
 
