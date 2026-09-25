@@ -606,45 +606,49 @@ toc:
           - file: security/esql-for-security/esql-threat-hunting-tutorial.md
       - file: security/ai.md
         children:
-          - file: security/ai/ease/ease-intro.md
-            children:
-              - file: security/ai/ease/ease-alerts.md
-              - file: security/ai/ease/ease-upgrade.md
-          - file: security/ai/agent-builder/agent-builder.md
-            children:
-              - file: security/ai/agent-builder/skills-model.md
-              - file: security/ai/agent-builder/skills-use-cases.md
-          - file: security/ai/ai-assistant.md
-            children:
-              - file: security/ai/ai-assistant-knowledge-base.md
-              - file: security/ai/usecase-knowledge-base-walkthrough.md
-          - file: security/ai/attack-discovery/index.md
-            children:
-              - file: security/ai/attack-discovery/grant-access.md
-              - file: security/ai/attack-discovery/run-attack-discovery.md
-                children:
-                  - file: security/ai/attack-discovery/run-from-attacks-page.md
-                    children:
-                      - file: security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md
-                      - file: security/ai/attack-discovery/manual-runs-from-attacks-page.md
-                      - file: security/ai/attack-discovery/schedule-runs-from-attacks-page.md
-                      - file: security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md
-                  - file: security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md
-                  - file: security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md
-                  - file: security/ai/attack-discovery/run-from-attack-discovery-page.md
-              - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
-              - file: security/ai/attack-discovery/manage-saved-discoveries.md
-                children:
-                  - file: security/ai/attack-discovery/manage-discoveries-from-attacks-page.md
-                  - file: security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md
           - file: security/ai/large-language-model-performance-matrix.md
-          - file: security/ai/use-cases.md
+          - file: security/ai/built-in-ai.md
             children:
-              - file: security/ai/triage-alerts.md
-              - file: security/ai/identify-investigate-document-threats.md
-              - file: security/ai/generate-customize-learn-about-esorql-queries.md
-          - file: security/ai/ease/ease-value-report.md
-      - file: security/mcp-app/elastic-security-mcp-app.md
+              - file: security/ai/ease/ease-intro.md
+                children:
+                  - file: security/ai/ease/ease-alerts.md
+                  - file: security/ai/ease/ease-upgrade.md
+              - file: security/ai/agent-builder/agent-builder.md
+                children:
+                  - file: security/ai/agent-builder/skills-model.md
+                  - file: security/ai/agent-builder/skills-use-cases.md
+              - file: security/ai/ai-assistant.md
+                children:
+                  - file: security/ai/ai-assistant-knowledge-base.md
+                  - file: security/ai/usecase-knowledge-base-walkthrough.md
+              - file: security/ai/attack-discovery/index.md
+                children:
+                  - file: security/ai/attack-discovery/grant-access.md
+                  - file: security/ai/attack-discovery/run-attack-discovery.md
+                    children:
+                      - file: security/ai/attack-discovery/run-from-attacks-page.md
+                        children:
+                          - file: security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md
+                          - file: security/ai/attack-discovery/manual-runs-from-attacks-page.md
+                          - file: security/ai/attack-discovery/schedule-runs-from-attacks-page.md
+                          - file: security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md
+                      - file: security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md
+                      - file: security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md
+                      - file: security/ai/attack-discovery/run-from-attack-discovery-page.md
+                  - file: security/ai/attack-discovery/triage-attack-discovery-findings.md
+                  - file: security/ai/attack-discovery/manage-saved-discoveries.md
+                    children:
+                      - file: security/ai/attack-discovery/manage-discoveries-from-attacks-page.md
+                      - file: security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md
+              - file: security/ai/use-cases.md
+                children:
+                  - file: security/ai/triage-alerts.md
+                  - file: security/ai/identify-investigate-document-threats.md
+                  - file: security/ai/generate-customize-learn-about-esorql-queries.md
+              - file: security/ai/ease/ease-value-report.md
+          - file: security/ai/external-ai-access.md
+            children:
+              - file: security/mcp-app/elastic-security-mcp-app.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/before-you-begin.md
