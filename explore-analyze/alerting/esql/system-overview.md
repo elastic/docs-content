@@ -14,7 +14,7 @@ description: Kibana ES|QL alerting writes each match as a rule event, then eithe
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-{{alerting-v2-system-cap}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and the system handles detection, tracking, and notification from there.
+{{alerting-v2-system-cap}} runs rules against your {{es}} data on a schedule, tracks each detected problem as an alert episode, and sends notifications through workflows.
 
 This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](get-started/how-it-works.md).
 
@@ -80,9 +80,9 @@ Every match still becomes a rule event. From there, the rule's configuration det
 
 ## Get started or go deeper [system-overview-next-steps]
 
-- **New to {{alerting-v2-system}}?** [Get started](get-started.md) explains how the system works, defines key terms, and walks you through creating your first rule with a hands-on tutorial.
-- **Ready to turn it on?** [Set up {{alerting-v2-system}}](setup.md) lists the requirements and shows you how to turn the system on and off.
-- **Giving your team access?** [Manage](manage.md) covers the role privileges your team needs and the API keys that authorize rules, action policies, and workflows.
-- **Wondering what you can detect?** [Rules](rules.md) shows you how to define what to watch for in {{esql}}, and how to choose and configure the right creation path for your use case.
-- **Curious what happens when something breaks?** [Alerts](alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.
-- **Want the right people to know when it matters?** [Notifications and actions](notifications-actions.md) shows you how action policies decide when to invoke a workflow, and how workflows send the notification.
+- [Get started](get-started.md): Learn how the system works and its key terms, then create your first rule in a hands-on tutorial.
+- [Set up {{alerting-v2-system}}](setup.md): Check the requirements, then turn the system on or off.
+- [Manage](manage.md): Give your team the role privileges it needs, and manage the API keys that authorize rules, action policies, and workflows.
+- [Rules](rules.md): Define what to watch for in {{esql}}, and decide which creation path fits your use case.
+- [Alerts](alerts.md): Learn how alert episodes track a problem from first detection through recovery, and how to triage them.
+- [Notifications and actions](notifications-actions.md): Learn how action policies decide when to invoke a workflow, and how workflows send the notification.
