@@ -32,7 +32,7 @@ The following panel types support URL drilldowns:
 * **Discover** sessions
 * Legacy Kibana visualization types, such as **TSVB**, **Aggregation-based**, and **Timelion**
 
-Some values cannot open a drilldown. For a value created at query time, including an {{esql}} result, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
+Some values cannot open a drilldown. For a value created at query time, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
 
 ## Triggers [url-drilldown-triggers]
 

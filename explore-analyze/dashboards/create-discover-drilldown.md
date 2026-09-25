@@ -41,7 +41,7 @@ On a **Bar**, **Line**, **Area**, or **Heat map**, drag to select a range. That 
 You can [open a visualization panel in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
 ::::
 
-Some values cannot open a drilldown. For a value created at query time, including an {{esql}} result, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
+Some values cannot open a drilldown. For a value created at query time, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
 
 ## Create the drilldown [_create_the_discover_drilldown]
 
