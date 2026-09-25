@@ -10,7 +10,7 @@ description: "How to reduce notification noise in the experimental alerting syst
 
 # Reduce notification noise from the {{alerting-v2-system}} [reduce-notification-noise]
 
-Several mechanisms within the {{alerting-v2-system}} can silence notifications for an alert episode. When an alert episode is silenced, the dispatcher stops processing it before any action policy matching, grouping, or frequency evaluation runs.
+Several mechanisms within the {{alerting-v2-system}} can silence notifications for an alert episode. When an alert episode is silenced, the dispatcher stops processing it before it evaluates any action policy against it.
 
 This page covers when to use each silencing mechanism and how the scope of an alert episode snooze differs from the scope of an action policy snooze. For an overview of where this fits in the full dispatch cycle, refer to [About action policies](about-action-policies.md).
 
@@ -35,6 +35,6 @@ Snoozing an alert episode differs from snoozing an action policy. When you snooz
 
 ## Related pages
 
-- [About action policies](about-action-policies.md): Understand how eligibility checks, match conditions, and frequency gates work after silencing.
+- [About action policies](about-action-policies.md): Understand how the eligibility, scope, and frequency gates work after silencing.
 - [Create and configure an action policy](create-configure-action-policy.md): Set up the action policies that run after alert episode silencing checks pass.
 - [Triage alert episodes](../alerts/triage-alert-episodes.md): Acknowledge, snooze, or deactivate alert episodes from the **Alerts** page.
