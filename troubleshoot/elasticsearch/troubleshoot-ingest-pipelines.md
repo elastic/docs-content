@@ -141,12 +141,12 @@ The statistics report per node since its uptime, so will reset with node restart
 
 ## Common issues [troubleshooting-pipelines-common]
 
-The following are the common [ingest processors](elasticsearch://reference/ingest-processor/index.md) to [cause high cpu](#troubleshooting-pipelines-symptoms-cpu) or [flag high milliseconds per event](#troubleshooting-pipelines-metrics):
+The following are the common [ingest processors](elasticsearch://reference/ingest-processor/index.md) to [cause high CPU](#troubleshooting-pipelines-symptoms-cpu) or [flag high milliseconds per event](#troubleshooting-pipelines-metrics):
 
-* Processors that execute custom code, such as the [`script` processor](elasticsearch://reference/ingest-processor/script-processor.md) or [`grok` processor](elasticsearch://reference/ingest-processor/grok-processor.md), which have not had currently ingesting data formats load tested against performance criteria.
+* Processors that run custom code, such as the [`script` processor](elasticsearch://reference/ingest-processor/script-processor.md) or [`grok` processor](elasticsearch://reference/ingest-processor/grok-processor.md), which have not had currently ingesting data formats load tested against performance criteria.
 
   :::{note}
-  While custom code can execute within {{es}}, troubleshooting its failures or optimizing its performance falls outside the of [scope of Elastic's support](https://www.elastic.co/support_policy#6).
+  While custom code can run within {{es}}, troubleshooting its failures or optimizing its performance falls outside the of [scope of Elastic's support](https://www.elastic.co/support_policy#6).
   :::
 
 * The [`foreach` processor](elasticsearch://reference/ingest-processor/foreach-processor.md) when iterating through large objects or arrays.
