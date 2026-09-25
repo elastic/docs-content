@@ -208,10 +208,13 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | `connector-id` | top level | string | No | GenAI connector. Mutually exclusive with `inference-id`. |
 | `inference-id` | top level | string | No | Inference endpoint ID. Mutually exclusive with `connector-id`. |
 | `create-conversation` | top level | boolean | No | When `true`, persist the conversation for follow-up steps or later reference. |
+| `public-conversation` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | top level | boolean | No | When `true`, make the conversation this step creates public. Any user who can access the agent can read and continue the conversation and see it in their conversation list. Only applies when `create-conversation` is `true`. Defaults to `false` (private). Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
 | `message` | `with` | string | Yes | User message to send to the agent. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
 | `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
 | `attachments` | `with` | array | No | Attachments to provide to the agent. Each attachment has `{ id?, type, data?, origin?, hidden? }`. |
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The step ignores `public-conversation` if `create-conversation` isn't `true`, or if it continues an existing conversation instead of creating one. Neither case returns an error.
 
 **Output shape:**
 

@@ -110,8 +110,6 @@ Select specific values to focus on within the dimension. You can select up to 10
 
 :::::
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` When you [save the Discover session](/explore-analyze/discover/save-open-search.md#_save_a_discover_session), the selected dimensions and the metric search term are saved with that tab and restored when you reopen or duplicate the session.
-
 **Change how metrics are aggregated** {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   You can change the default aggregation for each metric type:
     - **Counter**: average, sum (default), minimum, and maximum
