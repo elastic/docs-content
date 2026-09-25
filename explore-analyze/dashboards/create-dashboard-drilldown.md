@@ -38,7 +38,7 @@ Some values cannot open a drilldown. For a value created at query time, refer to
 
 ## Create the drilldown [_create_the_dashboard_drilldown]
 
-This example opens another dashboard from the **[Logs] Web Traffic** dashboard. Follow it with the sample data, or use your own dashboards.
+This example opens another dashboard from a panel. Follow it with the sample data, or use your own dashboards.
 
 1. Add the [**Sample web logs**](/manage-data/ingest/sample-data.md) data. This also adds the **[Logs] Web Traffic** dashboard.
 2. If you don't already have a dashboard to open from the panel, create one. This example uses a dashboard named **Detailed logs**.
