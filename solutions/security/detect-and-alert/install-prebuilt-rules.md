@@ -72,6 +72,8 @@ Elastic's severity ratings reflect the team's confidence that a match indicates 
 :::{tip}
 For most environments, this combination brings the list from 1,000+ rules down to a manageable 30–80. That's a set you can actually review and understand before enabling.
 :::
+
+Alternatively, filter by the `Profile: Recommended` tag instead of by severity. Elastic assigns this tag based on severity, alert volume, query cost, and threat coverage, so it includes some Medium severity rules that a severity filter excludes. Refer to [Operational profile tags](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-operational-tags).
 :::::::
 
 :::::::{step} Pick 2–3 MITRE tactics relevant to your environment

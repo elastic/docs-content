@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens area chart](../../images/kibana-area-chart.png)
 
-## Build an area chart with the point-and-click editor [build-an-area-chart]
+## Create an area chart [create-an-area-chart]
+
+### Create an area chart with the point-and-click editor [build-an-area-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build an area chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -66,7 +69,7 @@ Refer to [](#area-chart-settings) for all data configuration options for your ar
 
 ::::::
 
-## Build an area chart with an {{esql}} query [build-an-area-chart-with-esql]
+### Create an area chart with an {{esql}} query [build-an-area-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

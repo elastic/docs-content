@@ -497,7 +497,10 @@ Where it applies depends on the context:
 - In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
 - In **Dashboards** or when previewing a dashboard created with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md), **Fast mode** applies to the dashboard's [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and [**Vega** or **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use an {{esql}} data source with one `STATS` command. The option is unavailable when the dashboard has no {{esql}} panels.
 
-**Fast mode** is preserved when you save or share a dashboard.
+**Fast mode** is preserved when you:
+
+- Save or share a dashboard
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Save and reopen a Discover session. Refer to [Save a Discover session](/explore-analyze/discover/save-open-search.md#_save_a_discover_session).
 
 To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
 
