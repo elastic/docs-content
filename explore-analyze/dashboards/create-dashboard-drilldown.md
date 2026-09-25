@@ -36,7 +36,7 @@ The following panel types support dashboard drilldowns:
 * **Aggregation-based**
 * **Timelion**
 
-For a computed value, including an {{esql}} result, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
+Some values cannot open a drilldown. For a value created at query time, including an {{esql}} result, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
 
 ## Set up the origin and destination dashboards [_create_and_set_up_the_dashboards_you_want_to_connect]
 
