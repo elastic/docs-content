@@ -55,18 +55,18 @@ These rows only appear when the alert episode is in the corresponding state. Sys
 
 ## Review action policy activity for this alert episode [policy-history]
 ```{applies_to}
-stack: experimental 9.6+
 serverless: experimental
+stack: experimental 9.6+
 ```
 
-The **Policy history** tab lists the dispatcher's decisions for this alert episode alone, so you can tell whether a notification went out, was held back, or failed without filtering the space-wide history. Each row covers one dispatcher run and shows the timestamp, the action policy, the outcome, the action groups involved, and any workflows invoked.
+The **Policy history** tab lists the dispatcher's decisions for this alert episode alone, so you can tell whether a notification went out, was held back, or failed without filtering the space-wide history. The tab appears only if your role has the [**Execution history** privilege](../get-started/configure-access.md#alerting-execution-history-privileges).
 
-Search the list, or filter by outcome to show only **Dispatched**, **Throttled**, or **Failed** runs. Select an action policy name to open its configuration in a flyout. For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
+Each row covers one dispatcher run. The table matches the space-wide [Execution history](../action-policies/review-action-policy-execution-history.md) page, except that it hides the **Rules**, **Episodes**, and **Action groups** columns by default. Search the list, or filter by outcome to show only **Dispatched**, **Throttled**, or **Failed** runs. For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
 
-Compared with the space-wide [Execution history](../action-policies/review-action-policy-execution-history.md) page, this tab drops the **Rules** and **Episodes** columns, because both are fixed to this alert episode. The tab appears only if you have permission to read execution history.
+To open an action policy's configuration in a flyout, select its name. The name is a link only if your role can read action policies.
 
 :::{note}
-This tab covers the alert episode's whole lifetime, starting from when it opened. When it has nothing to show, the empty message reads "No action policy execution activity in the last 24 hours" because that message is shared with the space-wide page, which does use a 24-hour window. The tab itself isn't limited to 24 hours.
+The tab covers the alert episode's whole lifetime. When the tab is empty, it shows the same message as the space-wide page, "No action policy execution activity in the last 24 hours", but the tab isn't limited to 24 hours.
 :::
 
 ## Inspect the underlying data [inspect-data]
