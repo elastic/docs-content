@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens heat map chart representing temperatures in various cities](/explore-analyze/images/heat-map-chart-example.png)
 
-## Build a heat map chart with the point-and-click editor [build-a-heat-map-chart]
+## Create a heat map chart [create-a-heat-map-chart]
+
+### Create a heat map chart with the point-and-click editor [build-a-heat-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a heat map chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -64,7 +67,7 @@ The chart preview updates to show a grid of colored cells. Cell colors represent
 
 ::::::
 
-## Build a heat map chart with an {{esql}} query [build-a-heat-map-chart-with-esql]
+### Create a heat map chart with an {{esql}} query [build-a-heat-map-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
