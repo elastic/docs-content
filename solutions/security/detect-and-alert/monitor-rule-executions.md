@@ -20,6 +20,7 @@ Detection rules only protect your environment when they run reliably. This page 
 |-----------|-------------|
 | Check if a rule succeeded, failed, or has warnings | [Rule execution status](#rule-status) (Rules table) |
 | Get a summary of rule execution details and access individual rules | [Rule Monitoring tab](#rule-monitoring-tab) |
+| {applies_to}`{ "serverless": "ga", "stack": "ga 9.4+" }` See how many rules succeeded, failed, or have gaps | [Rule Monitoring Overview panel](/solutions/security/detect-and-alert/fill-rule-gaps.md#rule-monitoring-tab-gaps) (Rule Monitoring tab) |
 | Review a specific rule's run history | [Execution results](#rule-execution-logs) (rule details page) |
 | {applies_to}`stack: ga 9.4+` Handle deprecated prebuilt rules | [Handle deprecated prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#deprecated-prebuilt-rules) ({{siem-rules-ui}} page and rule details) |
 | Fill gaps from missed rule runs | [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) |
@@ -50,6 +51,14 @@ To sort the rules list, select any column header. To sort in descending order, s
 ::::
 
 For detailed information on a rule, the alerts it generated, and associated errors, select its name in the table. This also allows you to perform the same actions available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
+
+### Check rule health and gaps at a glance [rule-monitoring-overview]
+```{applies_to}
+serverless: ga
+stack: ga 9.4+
+```
+
+To see how every rule in the space last ran and how much gap time is still unfilled, use the **Rule Monitoring Overview** panel above the Rules table. For what each chart counts, refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md#rule-monitoring-tab-gaps).
 
 ### Gap information [gap-information]
 
