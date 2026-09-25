@@ -116,67 +116,27 @@ For a new AI index, {{agent-builder}} might recommend an Index/Table Metadata au
 **Create automation** is the manual route. It opens a new, disabled Workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation Workflow yourself.
 :::
 
-## 5. Create and review the automation
+## 5. Create the automation
 
-Create the suggested automation and review its Workflow:
+Create and review the suggested automation:
 
-1. Confirm the proposed plan.
-2. Let {{agent-builder}} build and pilot the Workflow.
-3. Review the pilot summary, KI content, and proposed Workflow shown in the conversation.
-4. Before saving it, confirm that the Workflow:
+1. Confirm the proposed plan, then let {{agent-builder}} build and pilot the Workflow.
+2. Review the pilot summary and KI content in the conversation.
+3. Confirm that the proposed Workflow uses the intended data, creates one `index_metadata` KI, distinguishes sampled observations from full-dataset findings, and validates its generated ESQL.
+4. Tell {{agent-builder}} to save the automation.
 
-   - uses the configured source as grounding input and identifies any additional queries against the underlying data
-   - creates one `index_metadata` KI
-   - records which claims come from a sample and which come from full-dataset aggregations
-   - validates any generated ESQL before writing it
-   - updates a stable KI document on later runs
-
-5. Authorize {{agent-builder}} to save the automation.
-6. Open the saved Workflow. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md) for details about its YAML structure and execution lifecycle.
-
-You do not need to understand every line of the generated YAML. Use the checklist in step 4 to review the decisions that determine what data the Workflow reads, what KI it creates, and how it validates the result.
-
-An automation is the process that generates and refreshes KIs. A suggested Workflow might include operations that:
-
-- Retrieve the source mapping.
-- Sample source documents and calculate grounding aggregations.
-- Generate structured KI content with an AI prompt.
-- Assemble the KI document.
-- Check the syntax and runtime behavior of generated ESQL.
-- Write the KI only when verification passes.
-
-Review the scope of every query. For example, a Workflow might use the configured 100-document source as a sample but calculate totals and date ranges over the complete underlying index. The KI must make that distinction clear.
-
-The pilot can create a temporary KI to validate the Workflow. Review its content in the conversation. If it remains available during the pilot, you can also inspect it under **Knowledge Indicators** in the AI index. {{agent-builder}} might delete this temporary KI before saving the final automation. After saving, it might start the automation immediately.
+You do not need to understand every line of the generated YAML. The pilot KI is temporary, and {{agent-builder}} might delete it before the saved automation runs.
 
 ## 6. Run the automation and inspect the KI
 
-Inspect the automation run and the KI it creates:
+Run the saved automation and inspect its output:
 
-1. If {{agent-builder}} did not start the Workflow after saving it, ask it to run the saved automation in the same conversation. Alternatively, find **Workflows** in the navigation menu or use the global search field, locate the saved Workflow, and click **Run**. Refer to [Manage workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflow-run).
-2. [Check its execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md) and confirm that it completes successfully.
-3. Return to the AI index in **Context**.
-4. Open **Knowledge Indicators**.
-5. Inspect the generated KI.
+1. If {{agent-builder}} did not start the Workflow after saving it, ask it to run the automation. You can also [run it from the Workflows page](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflow-run).
+2. [Check the execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md) and confirm that it completes successfully.
+3. Return to the AI index in **Context**, then open **Knowledge Indicators**.
+4. Confirm that it contains one `index_metadata` KI that describes the intended data, its limitations, and verified ESQL for querying the source.
 
-For a detailed explanation of the KI fields and a reusable review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
-
-Start by inspecting the KI's identity and provenance:
-
-- `id` remains stable across runs.
-- `type` is `index_metadata`.
-- `title` and `description` identify the data and its intended use.
-- `governance.provenance` identifies the Workflow and run that created or updated the KI.
-
-Then check that its content:
-
-- accurately describes the data represented by the source result
-- distinguishes sampled observations from full-dataset findings
-- contains useful interpretation rather than merely repeating field mappings
-- includes ESQL that targets the original source data
-- explains when to use the data and which questions it cannot answer
-
-A mapping query can already return field names and types. The KI is more useful when it captures business meaning, limitations, derived findings, or tested ways to use fields correctly. Syntax and runtime verification show that a query parses and runs, but you must still confirm that its grouping and calculations answer the intended question.
+For a detailed review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
 ## 7. Make the AI index available to an agent
 
