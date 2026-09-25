@@ -26,6 +26,8 @@ To use privileged user monitoring, you must:
 For more information, refer to [Privileged user monitoring requirements](/solutions/security/advanced-entity-analytics/privileged-user-monitoring-requirements.md).
 :::
 
+This page covers both defining privileged users for the first time and changing their data sources later. If privileged user monitoring is already set up, skip to [Manage data sources](#manage-data-sources).
+
 Before you can start monitoring privileged users, you need to define which users in your environment are considered privileged.
 
 Privileged users typically include accounts with elevated access rights that allow them to configure security settings, manage user permissions, or access sensitive data. 

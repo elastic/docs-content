@@ -13,7 +13,7 @@ products:
 
 # Indicators of compromise
 
-The Indicators page collects data from enabled threat intelligence feeds and provides a centralized view of indicators, also known as indicators of compromise (IoCs). This topic helps you set up the Indicators page and explains how to work with IoCs.
+The Indicators page collects data from enabled threat intelligence feeds and provides a centralized view of indicators, also known as indicators of compromise (IoCs). This topic helps you [set up the Indicators page](#setup-indicators-page), which you do once, and explains how to [work with IoCs](#intelligence-page-ui) day to day.
 
 ::::{admonition} Requirements
 * In {{stack}}, the Indicators page is an [Enterprise subscription](https://www.elastic.co/pricing) feature.

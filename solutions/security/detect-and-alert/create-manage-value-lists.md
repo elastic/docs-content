@@ -16,6 +16,8 @@ description: Create and manage value lists to define exceptions for detection ru
 
 Value lists hold multiple values of the same {{es}} [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md), such as IP addresses or keywords. Use them to [define exceptions](add-manage-exceptions.md) with the `is in list` and `is not in list` operators so that a rule skips alerts for any matching value. You can also use a value list as the [indicator match index](indicator-match.md#using-value-lists) when creating an indicator match rule.
 
+This page covers both creating value lists and maintaining the ones you already have. To change an existing list, skip to [Edit a value list](#edit-value-lists) or [Export or remove a value list](#export-remove-value-lists).
+
 :::{admonition} Endpoint rule exceptions
 Value lists cannot be used to define endpoint rule exceptions.
 :::

@@ -13,7 +13,7 @@ products:
 
 # AI Assistant Knowledge Base
 
-AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific documents and other specified information. This information, which can include everything from the location of your datacenters to the latest threat research, provides additional context that can improve the quality of AI Assistant’s responses to your queries. This topic describes how to enable and add information to Knowledge Base.
+AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific documents and other specified information. This information, which can include everything from the location of your datacenters to the latest threat research, provides additional context that can improve the quality of AI Assistant’s responses to your queries. This topic describes how to [enable Knowledge Base](#enable-knowledge-base), which you do once, and how to [add information to it](#knowledge-base-add-knowledge) over time.
 
 ::::{note}
 {{stack}} users: when you upgrade from {{elastic-sec}} version 8.15 to a newer version, information previously stored by AI Assistant will be lost.

@@ -19,6 +19,7 @@ products:
 To use entity risk scoring, your role must have the appropriate user role or privileges. For more information, refer to [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md).
 ::::
 
+This page covers both turning on risk scoring and moving to a newer risk engine later. If risk scoring is already on, skip to [Upgrade to the latest risk engine](#upgrade-risk-engine).
 
 ## Preview risky entities [_preview_risky_entities]
 

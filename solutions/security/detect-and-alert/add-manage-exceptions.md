@@ -16,6 +16,8 @@ description: Add and manage rule exceptions to prevent false positives and reduc
 
 Exceptions prevent a rule from generating alerts when specific conditions are met. You can add exceptions to individual rules, or create [shared exception lists](create-manage-shared-exception-lists.md) that apply to multiple rules.
 
+This page covers both adding exceptions to rules and managing exceptions that already exist. To find, edit, or remove an existing exception, skip to [View and manage exceptions](#manage-exception).
+
 ::::{note}
 Escaping rules differ between detection rule exceptions and {{elastic-endpoint}} exceptions. Before configuring exception conditions, refer to [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) to verify you're using the correct format.
 ::::

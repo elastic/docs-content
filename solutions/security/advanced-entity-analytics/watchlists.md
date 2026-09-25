@@ -17,6 +17,8 @@ This feature requires the appropriate [subscription](https://www.elastic.co/pric
 
 Watchlists let you define and manage groups of entities that are important to your organization — such as executives or critical infrastructure hosts — and factor watchlist membership directly into entity risk scoring. This keeps your most critical entities visible and easy to find during threat investigations. Watchlists sync automatically every 10 minutes to reflect changes in the underlying data sources.
 
+This page covers both creating watchlists and managing them afterward. To edit or delete an existing watchlist, skip to [View and manage watchlists](#watchlists-manage).
+
 Watchlists replace the [Privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. No data is migrated from existing privileged user monitoring configurations; you set up watchlists from scratch.
 
 ## Default watchlist [watchlists-default]

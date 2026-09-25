@@ -12,7 +12,7 @@ products:
 
 # Run from the Attack Discovery page [run-from-attack-discovery-page]
 
-This page describes how to run Attack Discovery from the **Attack Discovery** page. You can configure which alerts get analyzed, start an on-demand run, and set up a recurring schedule so discoveries are generated automatically.
+This page describes how to run Attack Discovery from the **Attack Discovery** page. It covers both choosing which alerts Attack Discovery analyzes, which you usually set once, and generating discoveries on demand or on a recurring schedule. To manage recurring runs, skip to [Schedule runs](#schedule-discoveries).
 
 :::{note}
 :applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}

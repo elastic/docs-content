@@ -17,6 +17,8 @@ products:
 
 Elastic's content connectors allow you to extract, transform, index, and sync data from third-party applications including Github, Jira, Teams, Google Drive, Slack, email, and more ([view all connectors](elasticsearch://reference/search-connectors/index.md)).
 
+This page covers both connecting a new source and managing one you've already set up. If you're here to adjust sync rules or scheduling on an existing connector, skip to [Manage a connector](#manage-a-connector).
+
 ## Managed vs self-managed connectors
 
 Content connectors are available in two deployment options: you can run them yourself or let Elastic run them within your managed deployment on {{ecloud}}.

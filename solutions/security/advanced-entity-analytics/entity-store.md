@@ -29,6 +29,8 @@ The entity store allows you to query, reconcile, maintain, and persist entity me
 
 The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../workspace-settings/data-views-elastic-security.md#default-data-view-security).
 
+This page covers both turning on the entity store and maintaining it afterward. If the entity store is already on, skip to [Verify engine status](#verify-engine-status) or [Troubleshoot entity store performance](#entity-store-troubleshoot).
+
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
 
 {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Entity relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md) sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [interactive graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations). Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
