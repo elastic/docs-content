@@ -17,16 +17,25 @@ This page lists valid fields for YAML rule definitions. For authoring guidance, 
 
 ## Base rule fields
 
-These four fields are required on every rule, regardless of format or mode. The value of `query.format` determines which additional query fields are required.
+`kind`, `metadata.name`, and `schedule.every` are required on every rule.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `kind` | string | `alert` or `signal` | Whether the rule tracks ongoing alert episodes (`alert`) or records point-in-time observations (`signal`). Set when the rule is created and can't be modified when editing the rule. |
 | `metadata.name` | string | Any string | The name of the rule. Max 256 characters. |
 | `schedule.every` | duration | Any duration string | How often the rule runs. For example: `5s`, `1m`, `5m`. Minimum interval applies. |
+
+::::{applies-switch}
+
+:::{applies-item} stack: experimental =9.5
+
+`query.format` is also required. It determines which additional query fields the rule uses.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
 | `query.format` | string | `composed` or `standalone` | The query structure the rule uses. `standalone` means each condition (breach, recovery, no-data) is a separate, self-contained ES\|QL query. `composed` means you write one base query and each condition is a pipe segment appended to it. The UI always creates `standalone` rules. |
 
-### Fields for `query.format: composed`
+**Fields for `query.format: composed`**
 
 Use `composed` when breach, recovery, and no-data conditions all start from the same data shape. Define that shape once in the base query and each condition adds only what differs.
 
@@ -36,7 +45,7 @@ Use `composed` when breach, recovery, and no-data conditions all start from the 
 | `query.breach.segment` | ES\|QL segment string | ES\|QL segment appended to the base query for breach detection. Written as a pipe command, for example `\| WHERE count > 5`. Required. |
 | `query.recovery.segment` | ES\|QL segment string | ES\|QL segment appended to the base query for recovery detection. Required when `recovery_strategy` is `query`. |
 
-### Fields for `query.format: standalone`
+**Fields for `query.format: standalone`**
 
 Use `standalone` when conditions need full independence. Each query can target different indices, apply different filters, or return a completely different shape.
 
@@ -45,6 +54,23 @@ Use `standalone` when conditions need full independence. Each query can target d
 | `query.breach.query` | Full ES\|QL string | Full ES\|QL query for breach detection. Required. |
 | `query.recovery.query` | Full ES\|QL string | Full ES\|QL query for recovery detection. Required when `recovery_strategy` is `query`. |
 | `query.no_data.query` | Full ES\|QL string | Full ES\|QL query that detects presence of data. Required when `no_data_strategy` is not `none`. Only supported on `standalone` format. |
+
+:::
+
+:::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+`query.base` is required. It is the only query field that can contain a `FROM` clause. `query.breach.segment` is optional.
+
+| Field | Type | Description |
+|---|---|---|
+| `query.base` | ES\|QL string | ES\|QL query that selects the data to evaluate. Must include a `FROM` clause. {{kib}} applies the time filter from `schedule.lookback` using `time_field`. Required. |
+| `query.breach.segment` | ES\|QL segment string | Optional clause appended to `query.base`, for example `WHERE avg_cpu > 0.85`. Do not include a `FROM` clause. If you omit it, every row returned by `query.base` is a match. |
+
+Put `FROM` only in `query.base`. To recover with a query that has its own `FROM` clause, set `recovery.strategy` to `query`. See [Recovery strategy](#recovery-strategy).
+
+:::
+
+::::
 
 ## Metadata fields
 
@@ -67,6 +93,10 @@ These fields control how far back each evaluation looks and which timestamp fiel
 
 ## Recovery strategy [recovery-strategy]
 
+:::::{applies-switch}
+
+::::{applies-item} stack: experimental =9.5
+
 The `recovery_strategy` field is optional. When omitted, the rule emits no recovery events and active alert episodes don't close automatically.
 
 | Field | Type | Accepted values | Description |
@@ -77,7 +107,31 @@ The `recovery_strategy` field is optional. When omitted, the rule emits no recov
 Rules with `kind: signal` must omit `recovery_strategy` or set it to `none`. Any other value fails validation.
 :::
 
+::::
+
+::::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+Set `recovery` on every rule with `kind: alert`. Omit `recovery` when `kind` is `signal`. An alert rule that omits it fails validation, and a signal rule that sets it fails validation.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `recovery.strategy` | string | `no_breach`, `condition`, `query`, or `manual` | How the alert episode recovers. <br><br> - `no_breach`: Recovers the alert episode when its group no longer appears in the breach results. The rule form calls this **Default recovery**. <br> - `condition`: Recovers the alert episode when `query.base` plus `recovery.segment` returns the group. Requires `query.breach`. The rule form calls this **Custom recovery**. <br> - `query`: Recovers the alert episode when `recovery.query` returns the group. Set this in YAML. The rule form does not offer it. <br> - `manual`: Does not recover automatically. Close the alert episode with a user action. The rule form calls this **No recovery**. |
+| `recovery.segment` | ES\|QL segment string | A clause with no `FROM` | Required when `recovery.strategy` is `condition`. Appended to `query.base`. For example: `WHERE avg_cpu < 0.60`. |
+| `recovery.query` | ES\|QL string | A full query, including `FROM` | Required when `recovery.strategy` is `query`. |
+
+:::{note}
+Do not set `state_transition.recovering` when `recovery.strategy` is `manual`. The API rejects that combination.
+:::
+
+::::
+
+:::::
+
 ## State transition fields [state-transition-fields]
+
+:::::{applies-switch}
+
+::::{applies-item} stack: experimental =9.5
 
 Only valid when `kind: alert`. Controls how many consecutive detections are required before an alert episode becomes active or recovers.
 
@@ -90,6 +144,29 @@ Only valid when `kind: alert`. Controls how many consecutive detections are requ
 | `state_transition.recovering_count` | integer | Integer, 0–1000 | Number of consecutive clear evaluations required before the alert episode recovers. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
 | `state_transition.recovering_timeframe` | duration | Any duration string | How long the condition must remain continuously non-breaching before the alert episode recovers. For example: `5m`. |
 
+::::
+
+::::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+Only valid when `kind` is `alert`. `pending` and `recovering` are optional. If you include either object, set `count` or `timeframe`. An empty phase object fails validation. `operator` is allowed only when both `count` and `timeframe` are set.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `state_transition.pending.count` | integer | Integer, 0–1000 | Consecutive matches required before the alert episode becomes active. Set to `0` to open it on the first match. |
+| `state_transition.pending.timeframe` | duration | Any duration string | How long the condition must hold before the alert episode becomes active. For example: `5m`. |
+| `state_transition.pending.operator` | string | `AND` or `OR` | When both `count` and `timeframe` are set, `AND` requires both and `OR` requires either. |
+| `state_transition.recovering.count` | integer | Integer, 0–1000 | Consecutive recoveries required before the alert episode becomes inactive. Set to `0` to close it on the first recovery. |
+| `state_transition.recovering.timeframe` | duration | Any duration string | How long the condition must hold before the alert episode becomes inactive. For example: `5m`. |
+| `state_transition.recovering.operator` | string | `AND` or `OR` | When both `count` and `timeframe` are set, `AND` requires both and `OR` requires either. |
+
+:::{note}
+`state_transition.recovering` is rejected when `recovery.strategy` is `manual`.
+:::
+
+::::
+
+:::::
+
 ## Grouping fields
 
 Use grouping to split a rule's detections into independent series, one per unique combination of field values. This lets a single rule track multiple subjects without creating a separate rule for each, for example, tracking CPU usage per host. Each series maintains its own alert episode lifecycle.
@@ -100,6 +177,10 @@ Use grouping to split a rule's detections into independent series, one per uniqu
 
 ## No-data strategy
 
+:::::{applies-switch}
+
+::::{applies-item} stack: experimental =9.5
+
 Use `no_data_strategy` to control what the rule does when an evaluation returns no results. This matters when data sources can go silent. Without this setting, a quiet data source and a healthy one look identical to the rule.
 
 | Field | Type | Accepted values | Description |
@@ -109,6 +190,25 @@ Use `no_data_strategy` to control what the rule does when an evaluation returns 
 :::{note}
 No-data detection is only supported with `query.format: standalone`. Setting `no_data_strategy` to any active value on a `composed` rule has no effect because `query.no_data.query` can only be defined on a standalone query. Rules with `kind: signal` must omit `no_data_strategy` or set it to `none`.
 :::
+
+::::
+
+::::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+Set `no_data` on every rule with `kind: alert`. Omit `no_data` when `kind` is `signal`. An alert rule that omits it fails validation, and a signal rule that sets it fails validation.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `no_data.strategy` | string | `ignore`, `keep_last`, `resolve`, or `alert` | What the rule does when a group has no data. <br><br> - `ignore`: Does not check whether a group still has data. Missing groups do not produce `no_data` events. The rule form calls this **Do nothing**. <br> - `keep_last`: Holds the alert episode's current status when the rule finds no data. The rule form calls this **Keep last known status**. <br> - `resolve`: Closes the alert episode the first time the rule finds no data for that group. The rule form calls this **Recover immediately**. <br> - `alert`: Marks an existing alert episode active when the rule finds no data. It does not open an episode for a group that has not breached. Create and update requests reject `alert`. |
+| `no_data.query` | ES\|QL string | A full query, including `FROM` | Optional presence query. Allowed when `no_data.strategy` is `keep_last`, `resolve`, or `alert`. If you omit it, the rule uses `query.base` as the presence query, and the rule must set `query.breach`. Do not set `no_data.query` when the strategy is `ignore`. |
+
+:::{note}
+Any strategy other than `ignore` requires `query.breach` or `no_data.query`. The rule uses that query to tell a group with no data apart from a group that stopped breaching.
+:::
+
+::::
+
+:::::
 
 ## Artifact fields
 

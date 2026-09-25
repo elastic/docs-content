@@ -13,7 +13,23 @@ description: "Configure alert delay for rules that group matches into an alert e
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, this corresponds to the `state_transition.pending_*` fields.
+Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change.
+
+::::{applies-switch}
+
+:::{applies-item} stack: experimental =9.5
+
+In YAML, this corresponds to the `state_transition.pending_*` fields.
+
+:::
+
+:::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+In YAML, this corresponds to `state_transition.pending.count`, `state_transition.pending.timeframe`, and `state_transition.pending.operator`.
+
+:::
+
+::::
 
 ## When to configure alert delay [alert-delay-when-to-use]
 
@@ -39,9 +55,25 @@ Leave alert delay set to **Immediate** when:
 
 Use the following fields to configure the Breaches and Duration modes. Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
+:::::{applies-switch}
+
+::::{applies-item} stack: experimental =9.5
+
 :::{note}
 In the YAML rule schema, these fields are prefixed with `state_transition.`. For example, `pending_count` here is `state_transition.pending_count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). They are the same fields.
 :::
+
+::::
+
+::::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+:::{note}
+In the YAML rule schema, these fields are nested under `state_transition.pending`. For example, `pending_count` here is `state_transition.pending.count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). A `pending` object must set `count` or `timeframe`. `operator` is allowed only when both are set.
+:::
+
+::::
+
+:::::
 
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
