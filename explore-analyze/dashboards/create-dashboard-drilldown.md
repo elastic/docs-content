@@ -54,7 +54,7 @@ This example opens another dashboard from the **[Logs] Web Traffic** dashboard. 
     4. Save the dashboard. In the **Title** field, enter `Detailed logs`.
     ::::
 
-3. Open the **[Logs] Web Traffic** dashboard, then set a search and a filter.
+3. Open the **[Logs] Web Traffic** dashboard, then set a search and a filter for the drilldown to carry.
 
     [Search](using.md#_filter_dashboards_using_the_kql_query_bar): `extension.keyword: ("gz" or "css" or "deb")`<br> [Filter](using.md#_add_pills_using_the_filter_editor): `geo.src: US`
 
