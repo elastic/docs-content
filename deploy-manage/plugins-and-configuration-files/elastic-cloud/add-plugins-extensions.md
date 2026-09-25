@@ -33,7 +33,7 @@ Bundles use the same extensions workflow as custom plugins: you upload a ZIP fil
 
 For example, you can upload an Identity Provider metadata file used when you [secure your clusters with SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
-All subscription levels, including Standard, can upload scripts and dictionaries. To prepare, upload, and enable a bundle, refer to [Upload custom plugins and bundles](upload-custom-plugins-bundles.md).
+Unlike custom plugins, bundles can be uploaded on all subscription levels, including Standard. To prepare, upload, and enable a bundle, refer to [Upload custom plugins and bundles](upload-custom-plugins-bundles.md).
 
 ## Manage through the API
 

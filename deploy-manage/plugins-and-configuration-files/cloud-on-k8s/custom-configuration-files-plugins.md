@@ -12,7 +12,7 @@ navigation_title: ConfigMaps and Secrets
 
 # Add configuration files with ConfigMaps or Secrets [k8s-bundles-plugins]
 
-On {{eck}}, configuration files such as synonym dictionaries, scripts, SAML metadata, or CA certificates are not delivered as ZIP *bundles*. Instead, you store the content in a ConfigMap or Secret, then mount it into your {{es}} pods with volumes and volume mounts.
+On {{eck}}, configuration files such as synonym dictionaries, SAML metadata, or CA certificates are not delivered as ZIP *bundles*. Instead, you store the content in a ConfigMap or Secret, then mount it into your {{es}} pods with volumes and volume mounts.
 
 This page walks through a synonyms file for the [synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md). You can use the same pattern for any other file you want to mount into the configuration directory of {{es}}, like adding CA certificates of external systems for example.
 

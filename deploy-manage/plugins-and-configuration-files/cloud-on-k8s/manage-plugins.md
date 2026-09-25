@@ -12,7 +12,7 @@ products:
 
 On {{eck}}, {{es}} runs in Kubernetes pods. Unlike {{ech}} and {{ece}}, {{eck}} does not host a catalog of plugins that you enable on a deployment. You must install any plugin that is not already in the base image before the main {{es}} container starts. That includes [official {{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), community or third-party plugins, and [plugins you write yourself](elasticsearch://extend/index.md).
 
-You can also add configuration files such as synonym dictionaries, scripts, SAML metadata, or CA certificates to the {{es}} configuration directory.
+You can also add configuration files such as synonym dictionaries, SAML metadata, or CA certificates to the {{es}} configuration directory.
 
 Refer to [](/deploy-manage/plugins-and-configuration-files.md) for options that apply to other deployment types.
 
