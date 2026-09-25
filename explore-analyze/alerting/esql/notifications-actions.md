@@ -2,7 +2,7 @@
 navigation_title: Notifications and actions
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How to set up notifications and actions for rules. Action policies invoke workflows, which send the notification."

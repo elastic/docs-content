@@ -2,7 +2,7 @@
 navigation_title: Connect workflows
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How action policies and alert episode lifecycle triggers invoke workflows, and when to use each."

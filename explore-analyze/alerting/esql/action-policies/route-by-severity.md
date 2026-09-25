@@ -2,7 +2,7 @@
 navigation_title: Route by severity
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How to route alert episodes to different workflows based on severity level."

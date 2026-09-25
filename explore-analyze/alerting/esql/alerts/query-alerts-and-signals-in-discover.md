@@ -2,7 +2,7 @@
 navigation_title: Query alert history
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alert episodes."

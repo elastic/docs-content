@@ -2,7 +2,7 @@
 navigation_title: Alerts
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Alert episodes track a problem from first detection through recovery. Alert episodes belong to a series that groups recurrences of the same condition."

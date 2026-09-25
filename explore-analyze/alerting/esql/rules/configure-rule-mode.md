@@ -2,7 +2,7 @@
 navigation_title: Rule mode
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How rule mode determines whether Kibana opens an alert episode or keeps matching rows available for later analysis, and when to use each."

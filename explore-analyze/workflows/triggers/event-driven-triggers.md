@@ -20,8 +20,8 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 - **Entity store triggers** — Fire when an entity's asset criticality or risk score changes in the entity store. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
-- **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
-- **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
+- **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
+- **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -454,7 +454,7 @@ triggers:
 
 ```{applies_to}
 stack: experimental 9.5+
-serverless: experimental
+serverless: ga
 ```
 
 :::{note}
@@ -503,7 +503,7 @@ Use these fields to write workflow conditions that scope the automation to speci
 
 ```{applies_to}
 stack: experimental 9.5+
-serverless: experimental
+serverless: ga
 ```
 
 :::{note}
