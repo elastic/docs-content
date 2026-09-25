@@ -11,7 +11,7 @@ type: how-to
 
 # Create a URL drilldown [create-url-drilldowns]
 
-A URL drilldown opens a website from a panel. The URL can change with the dashboard time range, the dashboard filters, and the value you select. You build that URL with [variables](#url-template-variable) in a [URL template](#url-templating-language).
+A URL drilldown opens a website from a panel. The URL can change with the dashboard time range, the dashboard filters, and the value you select. You build that URL with [variables](#url-template-variable). [URL template help](#url-templating-language) explains the syntax and the values you can insert.
 
 Refer to [Drilldowns](drilldowns.md) to choose a drilldown type and to check values created at query time.
 
@@ -36,6 +36,16 @@ The following panel types support URL drilldowns:
 
 For a computed value, including an {{esql}} result, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
 
+## Triggers [url-drilldown-triggers]
+
+The trigger is the interaction that runs the drilldown and decides which values the URL can use. When you create the drilldown, **Trigger** lists only the interactions the panel supports. If the panel supports one interaction, **Trigger** is already set and the list is hidden.
+
+* **Single click**: One data point, such as a pie slice or a bar. The template can use `{{event.value}}` for the value and `{{event.key}}` for the field name. This trigger is available on visualizations that use a data view, visualizations based on an {{esql}} query, and **Maps**.
+* **Table row click**: A row in a table visualization that uses a data view or an {{esql}} query. The template can use `{{event.values.[x]}}`, where `x` is the column number, starting at 0. `{{event.keys.[x]}}` is the field name, and `{{event.columnNames.[x]}}` is the column label.
+* **Range selection**: A range of values on the visualization. The template can use `{{event.from}}` and `{{event.to}}`. This trigger is available on **Bar**, **Line**, **Area**, and **Heat map** visualizations, including those based on an {{esql}} query, and on **Aggregation-based**, **TSVB**, and **Timelion** panels.
+* **Context menu**: The drilldown name is in the {icon}`boxes_vertical` panel menu. The template uses dashboard variables, such as the time range and `{{context.panel.title}}`. This is the only URL trigger on **Vega** visualizations, **Discover** sessions, and **Gauge** visualizations.
+* **Image click**: The image on an **Image** panel. The template uses dashboard variables, such as `{{context.panel.title}}`.
+
 ## Create the drilldown [_create_a_url_drilldown]
 
 This example adds a pie chart and a URL drilldown that opens a GitHub search for the slice you select. Follow it with the sample data, or use your own dashboard and data.
@@ -48,7 +58,7 @@ This example adds a pie chart and a URL drilldown that opens a GitHub search for
 6. Select **Go to URL**.
 
     1. In **Name**, enter a name. For example, `Show on GitHub`.
-    2. For **Trigger**, select **Single click**. To use another interaction, refer to [Choose a trigger](#url-drilldown-triggers).
+    2. For **Trigger**, select **Single click**. [Triggers](#url-drilldown-triggers) describes the other interactions and the values each one provides.
     3. To open {{kib}} issues on GitHub, enter this URL in **Enter URL**:
 
         ```text
@@ -63,32 +73,26 @@ This example adds a pie chart and a URL drilldown that opens a GitHub search for
 7. Save the dashboard.
 8. On the pie chart panel, select a slice, then select **Show on GitHub**.
 
-    ![URL drilldown popup](/explore-analyze/images/kibana-dashboard_urlDrilldownPopup.png)
+    :::{image} /explore-analyze/images/kibana-dashboard_urlDrilldownPopup.png
+    :alt: Pie chart menu with Show on GitHub
+    :screenshot:
+    :::
 
 The GitHub issues search opens with the slice value in the query.
 
-## Choose a trigger [url-drilldown-triggers]
+## URL template help [url-templating-language]
 
-**Trigger** lists only the interactions that the panel supports. If the panel supports one interaction, **Trigger** is already set and the list is hidden.
-
-* **Single click**: Select one data point, such as a pie slice or a bar. The template can use `{{event.value}}` for the value and `{{event.key}}` for the field name. This trigger is available on visualizations that use a data view, visualizations based on an {{esql}} query, and **Maps**.
-* **Table row click**: Select a row in a table visualization that uses a data view or an {{esql}} query. The template can use `{{event.values.[x]}}`, where `x` is the column number, starting at 0. `{{event.keys.[x]}}` is the field name, and `{{event.columnNames.[x]}}` is the column label.
-* **Range selection**: Select a range of values on the visualization. The template can use `{{event.from}}` and `{{event.to}}`. This trigger is available on **Bar**, **Line**, **Area**, and **Heat map** visualizations, including those based on an {{esql}} query, and on **Aggregation-based**, **TSVB**, and **Timelion** panels.
-* **Context menu**: The drilldown name is added to the {icon}`boxes_vertical` panel menu. The template has no value from a data point. It can still use dashboard variables, such as the time range and `{{context.panel.title}}`. This is the only URL trigger on **Vega** visualizations, **Discover** sessions, and **Gauge** visualizations.
-* **Image click**: Select the image on an **Image** panel. The template has no value from the image. It can still use dashboard variables, such as `{{context.panel.title}}`.
-
-## URL template [url-templating-language]
-
-The URL template input uses [Handlebars](https://ela.st/handlebars-docs#expressions), a templating language. A template looks like regular text with Handlebars expressions embedded in it.
+The **Enter URL** field takes a URL template. The template is a normal URL with [Handlebars](https://ela.st/handlebars-docs#expressions) expressions where a value should change.
 
 ```text
 https://github.com/elastic/kibana/issues?q={{event.value}}
 ```
 
-A Handlebars expression starts with `{{`, contains a value or helper, and ends with `}}`. When you run the drilldown, {{kib}} replaces each expression with a value from the dashboard and from the interaction.
+An expression starts with `{{` and ends with `}}`. It contains a variable, a helper, or both. When the drilldown runs, {{kib}} replaces each expression with a value from the dashboard and from the interaction.
 
-$$$helpers$$$
-In addition to [built-in](https://ela.st/handlebars-helpers) Handlebars helpers, you can use the custom helpers on this page.
+* [Variables](#url-template-variable) lists the values you can insert, such as the selected data point, the dashboard filters, and the {{kib}} base URL. The table groups them by source and by trigger.
+* [Custom helpers](#_custom_helpers) format or encode a value before it goes into the URL, for example as a date, as JSON, or in rison.
+* [Pass context and table values in the URL](#url-drilldown-examples) shows complete URLs for a calendar date, a Discover page, and a table cell.
 
 Refer to the Handlebars [documentation](https://ela.st/handlebars-docs#expressions) for advanced use cases.
 
@@ -128,6 +132,10 @@ $$$variables-reference$$$
 |  | event.key | Aggregation field behind the selected range, if available. |
 
 ### Custom helpers [_custom_helpers]
+
+$$$helpers$$$
+
+In addition to [built-in](https://ela.st/handlebars-helpers) Handlebars helpers, you can use the helpers below.
 
 **json**
 
