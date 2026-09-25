@@ -507,7 +507,7 @@ def main() -> None:
 
 ## Step 4: Ask a question
 
-Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer. The below question is just an example for illustration purposes.
+Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer. The following question is an example.
 
 ::::{tab-set}
 :group: ce-transport

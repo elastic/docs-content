@@ -97,11 +97,11 @@ An AI index can have multiple ESQL and connector sources. Keep this first exampl
 Use the guided route for this tutorial:
 
 1. In **Automations**, select **Suggest automation**.
-2. Agent Builder opens a conversation with a prefilled message based on the AI index and its configured source.
-3. Send the prefilled message to start the suggestion.
+2. Agent Builder opens a conversation with a pre-filled message based on the AI index and its configured source.
+3. Send the pre-filled message to start the suggestion.
 4. Ask it to create one `index_metadata` KI that:
 
-   - explains the dataset's purpose and limitations
+   - explains the purpose and limitations of the dataset
    - records useful interpretations of its important entities, measures, and dimensions
    - includes verified ESQL for common questions about the data
    - uses a stable ID so later runs update the KI instead of creating duplicates
