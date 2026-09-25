@@ -25,7 +25,7 @@ Check out [](/solutions/security/endpoint-response-actions/third-party-response-
 ::::{admonition} Prerequisites
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 * [{{kib}} feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md): Under **Actions and Connectors**, turn on **Customize sub-feature privileges** and enable **Endpoint Security**.
-* [{{elastic-sec}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md): **All** for the response action features, such as **Host Isolation**, that you want to perform.
+* [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md): **All** for the response action features, such as **Host Isolation**, that you want to perform.
 * (In {{serverless-short}}) [User roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles): **SOC manager** or **Endpoint operations analyst**
 * Endpoints must have actively running third-party agents installed.
 ::::
