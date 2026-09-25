@@ -2,6 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/response-actions.html
   - https://www.elastic.co/guide/en/serverless/current/security-response-actions.html
+navigation_title: Respond and contain
 applies_to:
   stack: all
   serverless:

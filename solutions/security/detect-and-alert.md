@@ -2,6 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detection-engine-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-engine-overview.html
+navigation_title: Detect and analyze
 applies_to:
   stack: all
   serverless:
