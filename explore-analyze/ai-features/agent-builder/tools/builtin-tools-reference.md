@@ -117,10 +117,10 @@ The following tools manage file attachments in conversations:
 -->
 
 <!--
-% SML (Semantic Metadata Layer) tools require the experimental Context Engine.
+% SML (Semantic Metadata Layer) tools require the experimental {{context-engine}}.
 % They are registered under platform.core.* and attached to the default agent, but only
 % surface when both the `agentBuilder:experimentalFeatures` and `contextEngine:enabled`
-% advanced settings are turned on. Uncomment when the Context Engine is publicly available.
+% advanced settings are turned on. Uncomment when {{context-engine}} is publicly available.
 
 `platform.core.sml_search`
 :   Searches the Semantic Metadata Layer (SML) for {{kib}} assets such as saved visualizations, dashboards, workflows, and connectors, using hybrid lexical and semantic retrieval.
