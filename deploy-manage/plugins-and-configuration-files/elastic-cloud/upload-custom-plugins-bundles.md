@@ -1,38 +1,27 @@
 ---
 navigation_title: Custom plugins and bundles
+description: Upload custom plugins and configuration bundles so every node in your Elastic Cloud Hosted deployment can use them.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-bundles.html
 applies_to:
   deployment:
-    ess: ga
+    ech: ga
 products:
   - id: cloud-hosted
 ---
 
 # Upload custom plugins and bundles
 
-::::{note}
-This page applies to {{ech}} deployments only. {{serverless-full}} projects do not support custom plugin or bundle uploads, including dictionary files used for synonyms, stop words, or [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md).
+Upload a ZIP file when you need a custom or third-party plugin that {{ech}} does not provide, or configuration files such as dictionaries and SAML metadata. In the {{ecloud}} console and API, these uploads are *extensions*.
 
-If you use {{serverless-short}} and need to manage synonyms, use the [synonyms APIs]({{es-serverless-apis}}group/endpoint-synonyms) or refer to [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md). For how {{ech}} and Serverless differ on plugins, bundles, and dictionary options, see [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-custom-plugins-and-bundles).
-::::
-
-There are several cases where you might need your own files to be made available to your {{es}} cluster’s nodes:
-
-* Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](/deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-ech.md).
-* Custom dictionaries, such as synonyms, stop words, compound words, and so on.
-* Cluster configuration files, such as an Identity Provider metadata file used when you [secure your clusters with SAML](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
-
-To facilitate this, we make it possible to upload a ZIP file that contains the files you want to make available. Uploaded files are stored using Amazon’s highly-available S3 service. This is necessary so we do not have to rely on the availability of third-party services, such as the official plugin repository, when provisioning nodes.
-
-Custom plugins and bundles are collectively referred to as extensions.
+Uploaded files are stored in highly available object storage so {{ecloud}} does not depend on third-party services, such as a public plugin repository, when provisioning nodes.
 
 ## Before you begin [ec_before_you_begin_7]
 
 The selected plugins/bundles are downloaded and provided when a node starts. Changing a plugin does not change it for nodes already running it. Refer to [Replace an extension](#ec-update-bundles-and-plugins).
 
-With great power comes great responsibility: your plugins can extend your deployment with new functionality, but also break it. Be careful. We obviously cannot guarantee that your custom code works.
+Custom plugins can add capabilities to your deployment, but they can also cause failures. Elastic does not guarantee that custom code will work correctly.
 
 ::::{important}
 You cannot edit or delete a custom extension after it has been used in a deployment. To remove it from your deployment, you can disable the extension and update your deployment configuration.
@@ -72,16 +61,13 @@ Bundles
 
     Here are some examples of bundles:
 
-    **Script**
-
-    ```text
-    $ tree .
-    .
-    └── scripts
-        └── test.js
-    ```
-
-    The script `test.js` can be referred in queries as `"script": "test"`.
+    <!--
+    A `scripts` bundle example was removed here. File scripts were removed from Elasticsearch
+    in 6.0 (elastic/elasticsearch#24627) and ScriptType defines only INLINE and STORED, so
+    `"script": "test"` can no longer resolve a file on disk. The Cloud runner still copies a
+    `scripts` folder to /app/config/scripts, but Elasticsearch never reads it. Don't re-add
+    the example; stored scripts use the _scripts API and are unrelated to bundles.
+    -->
 
     **Dictionary of synonyms**
 
@@ -92,9 +78,25 @@ Bundles
         └── synonyms.txt
     ```
 
-    The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the `synonym-filter`.
+    <!--
+    The bare `synonyms.txt` path is correct, even though `synonyms_path` normally resolves
+    relative to the config directory.
+    Other folders such as `saml`, `truststore`, and `ingest-geoip` keep their folder name, so
+    `dictionaries` is the only exception. Don't "correct" this to `dictionaries/synonyms.txt`.
+    -->
+    
+    The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the synonym token filter. Unlike other folders in a bundle, the contents of `dictionaries` are placed directly in the configuration directory rather than in a `dictionaries` subfolder.
 
     To learn more about analyzing with synonyms, check [Synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
+
+    <!--
+    The "Formatting Synonyms" link points at the 2.x Definitive Guide, which is EOL and
+    carries a "no longer updated" banner. It's kept only because it documents rule merging
+    and greedy matching, which the current reference docs don't cover. The synonym formats
+    themselves are already covered by the "Synonym token filter" link above, so this link
+    becomes redundant once https://github.com/elastic/elasticsearch/issues/160145 is
+    resolved. Remove it then. This is the last elastic.co/guide/ link in docs-content.
+    -->
 
     **GeoIP database bundle**
 
@@ -134,7 +136,7 @@ Creating extensions larger than 200MB must be done through the API. Refer to [Up
 
 After uploading your files, you can enable them when creating a new {{es}} deployment. For existing deployments, enable them from the deployment edit page:
 
-:::{include} _snippets/enable-extensions-on-deployment.md
+:::{include} /deploy-manage/deploy/elastic-cloud/_snippets/enable-extensions-on-deployment.md
 :::
 
 

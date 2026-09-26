@@ -1,5 +1,6 @@
 ---
-navigation_title: Include additional {{kib}} plugins
+navigation_title: Additional {{kib}} plugins
+description: Extend Kibana on Elastic Cloud Enterprise by including additional plugins in a custom Docker image and stack pack.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-include-additional-kibana-plugin.html
 applies_to:
@@ -58,7 +59,7 @@ This example runs a Dockerfile to install the [analyze_api_ui plugin](https://gi
     docker build . -t docker.elastic.co/cloud-assets/kibana-with-plugin:8.13.1
     ```
 
-4. If you have your own Docker repository, you can [push the modified Docker image to your repository](ece-install-offline-no-registry.md). Otherwise, run the following commands to compress and load the image into Docker:
+4. If you have your own Docker repository, you can [push the modified Docker image to your repository](/deploy-manage/deploy/cloud-enterprise/ece-install-offline-no-registry.md). Otherwise, run the following commands to compress and load the image into Docker:
 
     1. Create a .tar file of the Docker image, specifying the image name and version number:
 
@@ -79,7 +80,7 @@ This example runs a Dockerfile to install the [analyze_api_ui plugin](https://gi
 
 Follow these steps to update the {{stack}} pack zip files in your ECE setup to point to your modified Docker image:
 
-1. Download to a local directory the [{{stack}} pack](manage-elastic-stack-versions.md) that you want to modify.
+1. Download to a local directory the [{{stack}} pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md) that you want to modify.
 2. Save the following bash script with the name `change-kibana-image.sh`:
 
     ```sh
@@ -148,7 +149,7 @@ Follow these steps to update the {{stack}} pack zip files in your ECE setup to p
 
 5. Upload the modified {{stack}} pack to your ECE installation:
 
-    1. [Log into the Cloud UI](log-into-cloud-ui.md).
+    1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
     2. Go to **Platform** and then **{{stack}}**.
     3. Select **Upload {{stack}} pack** to add the new {{stack}} pack or replace an existing one. You can create a new deployment using the new or updated {{stack}} pack. When you launch {{kib}} the additional plugin is available.
 

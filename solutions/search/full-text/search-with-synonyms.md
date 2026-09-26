@@ -114,7 +114,7 @@ serverless: unavailable
 
 You can store your synonym set in a file.
 
-Make sure you upload the synonym set file to all your cluster nodes, in the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+Make sure you upload the synonym set file to all your cluster nodes, in the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](/deploy-manage/plugins-and-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md).
 
 An example of a synonym file:
 
