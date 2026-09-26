@@ -76,7 +76,24 @@ The case details page organizes information into editable sections:
 stack: ga 9.5
 ```
 
-The activity feed tracks a case's comments and history. To find specific entries, use the search box, filter by type (comments or history) or author, and sort by newest or oldest first. Select **Show more** to load additional entries, or clear the filters to return to the full feed.
+The activity feed tracks a case's comments and history. To find specific entries, use the search box, filter by **Type** (**Comments** or **History**) or **Author**, and sort by **Newest first** or **Oldest first**. Select **Show more** to load additional entries, or **Clear filters** to return to the full feed.
+
+#### See how an action started [case-activity-source]
+
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+Activity entries show which actions started outside the Cases UI. For those actions, the entry adds **via** and a source name after the username, for example *username* **via API**. The source can be one of the following:
+
+- **Agent**: An [{{agent-builder}}](analyze-cases-with-ai.md) agent ran the action. If you can access that chat, the agent name is a link that opens it.
+- **Workflow**: A [workflow](/explore-analyze/workflows.md) ran the action. If you can access workflows, the workflow name is a link to the workflow or its execution.
+- **Rule**: A rule ran the action.
+- **Attack Discovery**: [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) ran the action.
+- **API**: A request to the Cases API ran the action.
+
+To limit the feed to certain sources, use the **Source** filter. Along with the sources in the previous list, you can select **User** to find actions taken directly in the Cases UI. Those entries don't show **via**. Select **Not recorded** to find entries with no recorded source, such as activity from before {{kib}} started recording sources. You can select more than one source, for example **Agent** and **Workflow** to see only changes that agents and workflows made.
 
 ## Apply a template to a case [apply-case-template]
 
