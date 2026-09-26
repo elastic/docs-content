@@ -30,7 +30,8 @@ By the end of this guide, you'll have a structured trial plan, clear evaluation 
 
 To complete each step of your evaluation, your {{ecloud}} trial provides full access to the following Elastic capabilities: 
 
-- All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type. 
+- All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
+- {applies_to}`ech: unavailable` The [{{es}} {{vectordb}}](/solutions/vector-database.md) {{serverless-short}} project type for embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval.
 - Integrations to ingest your data using the method that best suits your use case.
 - {{ml-cap}} features to evaluate anomaly detection results and search relevance, and explore visualization tools from our trained models.
 - Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
@@ -71,12 +72,17 @@ With your trial goal in mind, identify which Elastic solution best addresses you
 |----------------|-----------------|
 | Users struggle to find relevant information across systems | [Search](/solutions/search.md) |
 | Build your first search application | [Search](/solutions/search.md) |
+| Build embedding-driven workloads such as semantic search, RAG, or AI-powered retrieval | [{{es}} {{vectordb}}](/solutions/vector-database.md) {applies_to}`stack: unavailable` |
 | Limited visibility into application performance or system health | [Observability](/solutions/observability.md) |
 | Slow incident response and troubleshooting | [Observability](/solutions/observability.md) |
 | Identify unknown unknowns through logs, traces, and metrics | [Observability](/solutions/observability.md) |
 | Detect and respond to endpoint security threats | [Security](/solutions/security.md) |
 | Security logs are difficult to analyze or correlate | [Security](/solutions/security.md) |
 | Compliance requires centralized security monitoring | [Security](/solutions/security.md) |
+
+:::{tip}
+Not sure whether to evaluate Search on an {{es}} project or a {{vectordb}} project? Both support [vector search](/solutions/search/vector.md). Choose {{vectordb}} when embeddings and similarity search are the primary workload. Choose the {{es}} project for general-purpose search, mixed workloads, or {{kib}} search tooling such as Query rules. Refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
+:::
 
 ### Choose your deployment type
 
@@ -88,7 +94,7 @@ Once you know what you want to evaluate, choose the deployment option that best 
 
 - Fully managed with automatic scaling.
 - Simplified configuration and maintenance.
-- Project-based organization (Search, {{observability}}, or Security).
+- Project-based organization ({{es}}, {{vectordb}}, {{observability}}, or Security).
 - Ideal for fast setup and focused trials of a single use case.
 
 :::
@@ -126,6 +132,14 @@ With your trial goal defined, follow this framework to build a PoC that demonstr
 - Reduce time to find information by X%.
 - Index and search Y documents with sub-second response times.
 - Demonstrate relevance tuning for domain-specific searches.
+
+:::
+
+:::{tab-item} {{vectordb}}
+
+- Index embeddings and retrieve relevant passages with sub-second response times.
+- Demonstrate semantic or hybrid search on a representative document set.
+- Validate retrieval quality for a RAG or recommendation workflow.
 
 :::
 
@@ -181,6 +195,16 @@ Once data is flowing, use the trial to validate the features that will determine
 | Relevance tuning | Ensure users find the most relevant results | [Query rules](/solutions/elasticsearch-solution-project/query-rules-ui.md) |
 | Search analytics | Understand what users search for and what they find | [Search relevance](/solutions/search/full-text/search-relevance.md) |
 | Performance at scale | Validate response times with production-like volumes | Index a representative dataset and benchmark queries |
+
+:::
+
+:::{tab-item} {{vectordb}}
+
+| Feature | Why it matters | How to try it |
+|---------|----------------|---------------|
+| Vector-tuned defaults | Semantic and hybrid retrieval without sizing a cluster | [{{es}} vector and full-text search in 10 minutes](/solutions/vector-database/vector-full-text-search.md) |
+| Search Power | Balance query latency against cost as load grows | [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) |
+| Storage-based pricing | Predictable spend that follows storage and reserved capacity | Index a representative dataset, then model spend against [{{vectordb}} billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md) |
 
 :::
 
@@ -273,6 +297,17 @@ For targeted learning paths, go to [](/solutions/search/get-started/quickstarts.
 In particular, [Index and search basics](/solutions/search/get-started/index-basics.md) and [Semantic search](/solutions/search/get-started/semantic-search.md).
 :::
 
+:::{tab-item} {{vectordb}}
+
+Follow [](/solutions/vector-database/vector-full-text-search.md), which includes:
+
+1. Create an {{es}} {{vectordb}} project and connect with a client.
+2. Create an index and add sample data.
+3. Run semantic and hybrid searches.
+4. Aggregate results with {{esql}}.
+
+:::
+
 :::{tab-item} Observability
 
 1. Review the [Observability getting started guide](/solutions/observability/get-started.md).
@@ -352,7 +387,7 @@ After proving value with one use case:
 
 Continue exploring Elastic's capabilities:
 
-- **[Solutions overview](/solutions/index.md)**: Deep dive into Search, Observability, and Security capabilities.
+- **[Solutions overview](/solutions/index.md)**: Deep dive into Search, {{vectordb}}, Observability, and Security capabilities.
 - **[Deploy and manage](/deploy-manage/index.md)**: Comprehensive deployment and operational guidance.
 - **[Manage data](/manage-data/index.md)**: Learn about data ingestion, storage, and lifecycle management.
 - **[Explore and analyze](/explore-analyze/index.md)**: Master {{kib}}'s visualization and analysis tools.
