@@ -15,7 +15,7 @@ products:
 
 In OpenTelemetry, an attribute is a key-value pair. Attributes are similar to [labels](/solutions/observability/apm/metadata.md#apm-data-model-labels) in that they add metadata to transactions, spans, and other entities.
 
-:::{note}
+:::{important}
 This page describes how attributes are handled when sending OTLP data to {{apm-server-or-mis}} (the `.apm` endpoint). On this path, attributes are mapped to ECS fields, and unmapped attributes are stored under `labels.*`.
 
 If you use the [{{motlp}}](opentelemetry://reference/motlp.md) or [{{agent}} in OTel mode](elastic-agent://reference/edot-collector/modes.md) as your ingest path, your data is stored in OTel-native format. Attributes are preserved under `resource.attributes.*` and `attributes.*`. For a comparison of both formats and guidance on choosing your ingest path, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
