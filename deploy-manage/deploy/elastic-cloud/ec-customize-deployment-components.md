@@ -33,6 +33,10 @@ For trials, larger sizes are not available until you [add a credit card](../../c
 
 For instances up to 64 GB of RAM, half the memory is assigned to the JVM heap (a bit less when monitoring is activated). For instances larger than 64 GB, the heap size is capped at 32 GB. For example, on a 32 GB instance, 16 GB are allotted to heap, while on a 128 GB instance, 32 GB are allotted to heap. Up to 256 GB RAM per instance is supported. The disk-to-RAM ratio currently is 1:24, meaning that you get 24 GB of storage space for each 1 GB of RAM. All clusters are backed by SSD drives.
 
+::::{note}
+Vector search relies heavily on the page cache to keep vector data quickly accessible, so [vector search optimized instance configurations](https://www.elastic.co/search-labs/blog/elasticsearch-vector-large-scale-part1) intentionally use a smaller heap-to-RAM ratio than the one described above, freeing up more memory for that cache. To check the actual heap size assigned to your instances, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes).
+::::
+
 ::::{tip}
 For production systems, each {{es}} instance in your cluster should have at least 4 GB of RAM, which assigns 2 GB to the JVM heap. Review [Minimum size recommendations for production use](elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
 ::::
