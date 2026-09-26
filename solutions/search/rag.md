@@ -65,6 +65,8 @@ You can build RAG applications with {{es}} by retrieving relevant context from y
 2. Pass the retrieved content as context to your language model
 3. The language model generates a response grounded in your data
 
+On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+
 ### Core search options
 
 **{{esql}} `COMPLETION` command:** Use the [`COMPLETION`](elasticsearch://reference/query-languages/esql/commands/completion.md) command to send prompts and context directly to language models within your {{esql}} queries.

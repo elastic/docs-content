@@ -27,10 +27,10 @@ This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/el
 
 ## Requirements [semantic-text-requirements]
 
-- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects.
-::::{note}
-You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
-::::
+- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects. You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
+- A running {{es}} cluster.
+  - When not using ML-nodes: On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector).
+  - When using ML-nodes: The **Using ML-nodes** examples require an [{{es}} project](/solutions/elasticsearch-solution-project.md).
 - To use the `semantic_text` field type with an {{infer}} service other than Elastic {{infer-cap}} Service, you must create an inference endpoint using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put).
 
 :::{tip}
