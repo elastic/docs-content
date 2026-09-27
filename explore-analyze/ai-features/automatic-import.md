@@ -30,26 +30,49 @@ products:
 
 ## Prepare your sample data [automatic-import-sample-data]
 
-To use Automatic Import, you must provide a sample of the data you want to import. An LLM processes that sample and creates an integration suitable for the data represented by the sample. **Automatic Import supports the following sample formats: JSON, NDJSON, CSV, and syslog (structured and unstructured).**
+Collect a sample of the data you want to import before you create the integration. Automatic Import sends that sample to the LLM, and the LLM builds an integration from it.
 
-{applies_to}`stack: removed 9.4` For API-based collection, Automatic Import can generate a program in **Common Expression Language (CEL)**. For background, refer to the [CEL specification](https://github.com/google/cel-spec){:target="_blank"} and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
+Save that sample in one of the following formats:
 
-* You can upload a sample of any size. The LLM detects its format and selects up to 1000 documents for detailed analysis.
+* **JSON and NDJSON**: Represent each event as its own object, and keep nesting shallow.
+* **CSV**: Include a header row with column names. Automatic Import recognizes the header. Without a header, the LLM attempts to create descriptive field names from the column formats and values.
+* **Syslog**: Use a structured or unstructured sample.
 
-  :::{note}
-  :applies_to: stack: ga 9.0-9.3
-  The LLM selects up to 100 documents for detailed analysis, not 1000.
-  :::
+Whichever format you use, include a wide range of unique log entries for the event types you want the integration to handle. The more the sample varies, the more accurate the pipeline is.
 
-* The more variety in your sample, the more accurate the pipeline is. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.
-* When you upload a CSV, a header with column names is automatically recognized. If the header is not present, the LLM attempts to create descriptive field names based on field formats and values.
-* For JSON and NDJSON samples, each object in your sample should represent an event. Avoid deeply nested object structures.
-* {applies_to}`stack: removed 9.4` When you select **`API (CEL input)`** as one of the sources, you’re prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
+:::{tip}
+Start the file with a focused set of the event types you want the integration to handle. Automatic Import sends the first samples in the file to the LLM, and the LLM builds the pipeline from those samples.
+:::
 
-::::{warning}
-:applies_to: stack: removed 9.4
-CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
+### Sample size limits
+
+Automatic Import has limits on what it can send to the LLM. A sample is a log line or a document.
+
+:::::{applies-switch}
+
+::::{applies-item} { "serverless": "ga", "stack": "ga 9.4+" }
+
+You can upload a file of any size. Automatic Import reads the file from the beginning and sends samples to the LLM until it reaches one of these limits:
+
+| Limit | Value | What happens |
+| --- | --- | --- |
+| Maximum samples | 1,000 | Stops after adding 1,000 samples to the request. |
+| Maximum sample length | 100,000 characters | Skips the entire sample and continues with later samples. |
+| Maximum request size | 10 MB | Stops before the request to the LLM exceeds 10 MB. This limit doesn't cap the file you upload. |
+
+Automatic Import stops at 1,000 samples or 10 MB, whichever comes first. A sample longer than 100,000 characters doesn't count toward either limit. Short log lines reach the 1,000-sample limit first. Long samples, such as verbose JSON, can fill the 10 MB request first.
+
+If Automatic Import omits samples, the **Sample log limits applied** warning tells you how many samples it sent to the LLM and how many it left out.
+
 ::::
+
+::::{applies-item} stack: ga 9.0-9.3
+
+Automatic Import sends the first 100 samples to the LLM.
+
+::::
+
+:::::
 
 
 ## Recommended models [automatic-import-recommended-models]
@@ -96,7 +119,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    - File Stream
    - AWS S3
    - AWS Cloudwatch
-   - Azure Blog Storage
+   - Azure Blob Storage
    - Azure Event Hub
    - GCP Pub/Sub
    - Google Cloud Storage
@@ -104,6 +127,10 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    - Kafka
    - TCP 
    - UDP
+
+   :::{note}
+   These methods don't call an HTTP API. To build an integration package that calls an HTTP API, use the [Elastic integration skills](https://github.com/elastic/integration-skills). These workflows build the package with an AI coding agent.
+   :::
 
 8. Under **Logs**, either upload a sample of your data or select an existing index. Only indexes that include the `event.original` field are supported. Make sure your sample includes all the types of events that you want the integration to handle.
 9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later.
@@ -164,9 +191,11 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 7. Define your **Data stream title**, **Data stream description**, and **Data stream name**. These fields appear on the integration's configuration page to help identify the data stream it writes to.
 8. Select your [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md). This determines how your new integration ingests the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
 
-   :::{note}
-   If you select **API (CEL input)** ([Common Expression Language](https://github.com/google/cel-spec) via the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md)), you have the additional option to upload the API's OAS file here. After you do, the LLM uses it to determine which API endpoints (GET only), query parameters, and data structures to use in the new custom integration. You then select which API endpoints to consume and your authentication method before uploading your sample data.
+   :::{warning}
+   CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
    :::
+
+   If you select **API (CEL input)**, upload an OpenAPI specification (OAS) file in JSON or YAML format. This file is separate from the data sample, and the sample formats described earlier don't apply to it. Automatic Import generates a Common Expression Language (CEL) program from that file. The LLM uses the specification to determine which API endpoints (GET only), query parameters, and data structures to use. Select the endpoints to consume and your authentication method, then upload a sample of the API responses in the next step. For background, refer to the [CEL specification](https://github.com/google/cel-spec) and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
 
 9. Upload a sample of your data. Make sure to include all the types of events that you want the new integration to handle.
 10. Click **Analyze logs**, then wait for processing to complete. This may take several minutes.
