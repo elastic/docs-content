@@ -31,7 +31,7 @@ To visualize your metrics data as charts:
   - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
   - The metric must be a time series metric. Gauge, counter, and histogram metrics are supported.
 
-    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Histogram metrics are charted using the 95th percentile, and support the `tdigest` and `exponential_histogram` field types. Metrics stored as the legacy `histogram` field type are also charted, but their percentiles are calculated assuming T-Digest encoding, so the chart shows a warning that the values are approximate if the histogram was encoded differently.
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Histogram metrics are charted using the 95th percentile by default, and support the [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md) and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md) field types. Metrics stored as the legacy [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) field type are also charted, but their percentiles are calculated assuming T-Digest encoding, so the chart shows a warning that the values might be approximate if the histogram was encoded differently.
 
 The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from Discover.
 
@@ -115,7 +115,7 @@ Select specific values to focus on within the dimension. You can select up to 10
 :::::
 
 **Change how metrics are aggregated** {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-:   You can change the default aggregation for each metric type:
+:   Select **Edit grid of metrics** ({icon}`pencil`) in the toolbar to open the **Configuration** flyout, where you can change the default aggregation for each metric type. Select **Apply and close** to update every metric of that type in the current Discover tab.
     - **Counter**: average, sum (default), minimum, and maximum
     - **Gauge**: average (default), sum, minimum, and maximum
     - **Histogram**: 50th percentile, 75th percentile, 90th percentile, 95th percentile (default), and 99th percentile

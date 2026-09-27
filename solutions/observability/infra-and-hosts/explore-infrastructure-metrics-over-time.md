@@ -89,7 +89,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 | Selecting metrics in the **of** field | Search the metrics grid for the metrics you want |
 | The **graph per** dropdown | The **Dimensions** control, which accepts up to five dimensions at a time |
 | **Actions** → **Add filter** | Select a value on a chart, or add a `WHERE` clause to your {{esql}} query |
-| The aggregation dropdown | The per-metric-type aggregation settings {applies_to}`stack: ga 9.6+` |
+| The aggregation dropdown | The **Edit grid of metrics** button, which lets you change how each metric type is aggregated {applies_to}`stack: ga 9.6+` |
 | **Actions** → **Open In Visualize** | **Copy to dashboard**, which saves the chart to a new or existing dashboard |
 
 Discover selects its data source with the `TS` {{esql}} command, for example `TS metrics-*`, rather than with an index pattern. Breakdown dimensions come from fields mapped as `time_series_dimension`, so the data stream you query must use the time series index mode. For the full set of requirements, refer to [Explore metrics data with Discover](/solutions/observability/infra-and-hosts/discover-metrics.md).
