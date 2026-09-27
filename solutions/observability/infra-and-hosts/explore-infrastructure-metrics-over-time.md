@@ -14,7 +14,7 @@ products:
 :applies_to: stack: deprecated 9.4+
 :class: warning
 
-Metrics Explorer will be removed in a future version. Use [Metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) instead of the Metrics Explorer app. To find the Discover equivalent of each Metrics Explorer control, refer to [Move to Discover](#move-to-discover).
+Metrics Explorer is deprecated in the latest versions. Use [Metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) instead of the Metrics Explorer app. To find the Discover equivalent of each Metrics Explorer control, refer to [Move to Discover](#move-to-discover).
 ::::
 
 The **Metrics Explorer** page enables you to create time-series visualizations based on aggregation of your metrics, chart them against related metrics, and break them down per the field of your choice. You can group and create visualizations of metrics for one or more resources that you are monitoring.
