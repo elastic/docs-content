@@ -23,8 +23,8 @@ Before you start, make sure you have the following:
   | To... | Required privilege |
   |---|---|
   | Access and use {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) |
-  | Save the rule | **Rules: All** (under **Alerting**) |
-  | Save the action policy | **Action Policies: All** (under **Alerting**) |
+  | Save the rule | **Rules: All** (under **Alerting V2**) |
+  | Save the action policy | **Action Policies: All** (under **Alerting V2**) |
   | Select or create the workflow destination | **Workflows: Read** to select an existing workflow; **Workflows: All** to create one (under **Analytics > Workflows**) |
 
 ## Propose and save a rule [ai-agent-rule-proposal]
@@ -84,11 +84,11 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 ### Save order [save-order-ai-agent]
 
-The three objects have a dependency chain that determines the order in which they must be saved:
+The three objects have a dependency chain that determines the order in which to save them:
 
 1. **Rule** - Save the rule first, so the action policy can link to it.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
-3. **Action policy** - You can save the action policy only after both its rule and its workflow exist.
+3. **Action policy** - You can't save the action policy until its workflow exists: {{kib}} disables **Create policy** while a workflow destination is still a draft. Nothing stops you from saving the policy before the rule, but the policy doesn't apply to the rule's alert episodes until the rule is saved.
 
 :::{note}
 :applies_to: {"stack": "removed 9.6+, experimental =9.5", "serverless": "unavailable"}

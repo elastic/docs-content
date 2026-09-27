@@ -93,23 +93,33 @@ $$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: 
 
     :::
 
-    **Prerequisites:** Turn on the `alerting:v2:enabled` advanced setting, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md), and the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional). Saving a rule requires the **Rules: All** privilege. For the privileges you need, refer to [Requirements](/explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
+    **Prerequisites:** Turn on the following advanced settings:
+
+    * `alerting:v2:enabled`, on the **Global Settings** tab, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md).
+    * `agentBuilder:experimentalFeatures`, on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
+    * {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` `alerting:v2:experimentalFeatures` (**Alerting V2: Experimental Features**), on the **Space Settings** tab.
+
+    Saving a rule requires the **Rules: All** privilege, under **Alerting V2**. For the privileges you need, refer to [Requirements](/explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
 
 $$$agent-builder-action-policy-management-skill$$$ `action-policy-management` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
-:   Composes, discovers, and modifies action policies from within a conversation. Use when a user asks to set up, change, or stop alert notifications, such as sending email or paging an on-call responder. An [action policy](/explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md) controls how alert episodes are matched, grouped, throttled, and dispatched to workflows. It applies to a whole {{kib}} space rather than to a single rule, so one policy can match alert episodes from many rules.
+:   Composes, discovers, and modifies action policies from within a conversation. Use when a user asks to set up, change, or inspect alert notifications, such as sending email or paging an on-call responder. An [action policy](/explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md) controls how alert episodes are matched, grouped, throttled, and dispatched to workflows. It applies to a whole {{kib}} space rather than to a single rule, so one policy can match alert episodes from many rules.
 
     :::{dropdown} Assigned tools
     `platform.alerting.manage_action_policy`
 
     :::
 
-    **Prerequisites:** Turn on the `alerting:v2:enabled` advanced setting, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md), and the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional). Saving an action policy requires the **Action Policies: All** privilege. Notifications also require at least one configured connector, and an Enterprise license on {{stack}} deployments. For the privileges you need, refer to [Requirements](/explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
+    **Prerequisites:** Turn on the following advanced settings:
+
+    * `alerting:v2:enabled`, on the **Global Settings** tab, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md).
+    * `agentBuilder:experimentalFeatures`, on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
+    * {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` `alerting:v2:experimentalFeatures` (**Alerting V2: Experimental Features**), on the **Space Settings** tab.
+
+    Saving an action policy requires the **Action Policies: All** privilege, under **Alerting V2**, and an Enterprise license on {{stack}} deployments. An action policy dispatches to a workflow rather than to a connector directly, so notifications also need a workflow whose steps reference a configured connector. For the privileges you need, refer to [Requirements](/explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
 
     **Related skills:** [`rule-management`](#agent-builder-rule-management-skill) composes the rules whose alert episodes a policy matches.
 
-<!-- TODO(agent-builder): action-policy-management is expected to gain a third prerequisite, in addition to the two advanced settings listed above: the space-scoped `alerting:v2:experimentalFeatures` advanced setting. The setting itself already exists on main (kibana#291305), but nothing reads it for this skill yet — kibana#292162 wires it to the skill's availability handler and is still open, so the prerequisite is deliberately not stated above. Add it to the action-policy-management entry once #292162 merges. -->
-
-<!-- TODO(agent-builder): whether rule-management and action-policy-management keep their experimental gating after Alerting V2 goes GA is still undecided. If that changes, both entries need their lifecycle badges and their Prerequisites lines updated. -->
+<!-- TODO(agent-builder): kibana#291242 removes the `alerting:v2:enabled` advanced setting entirely for Alerting V2 GA, which would drop the first prerequisite from both entries above. It ships from main only, so it lands in 9.6 if it merges. Still open as of Sep 27. Tracked as question 2 in docs-content-internal#1758. -->
 
 ### Streams and significant events
 
