@@ -2,8 +2,8 @@
 navigation_title: "Get started with Context Engine"
 description: Create an AI index, generate knowledge from your source data, and make that context available to an agent.
 applies_to:
-  stack: preview 9.6
-  serverless: preview
+  stack: experimental 9.6
+  serverless: experimental
 products:
   - id: elasticsearch
   - id: kibana

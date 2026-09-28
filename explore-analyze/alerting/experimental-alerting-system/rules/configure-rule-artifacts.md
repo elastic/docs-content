@@ -17,8 +17,8 @@ Tags, runbooks, and related dashboards are optional artifacts you attach to a ru
 Tags
 :   Free-form labels for filtering and organization. Add them to filter alert episodes on the **Alerts** page, to scope action policies by ownership or category, or to mark which team owns a rule.
 
-    * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` An action policy's **Rule tags** control covers every rule that carries at least one of the tags you select.
-    * {applies_to}`stack: removed 9.6+, experimental =9.5` Alert episodes inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
+    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` An action policy's [**Rule tags**](../action-policies/create-configure-action-policy.md#filter-by-rule-tags) control covers every rule that carries at least one of the tags you select.
+    * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` Alert episodes inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
 
 Runbooks
 :   An investigation guide stored with the rule. Add one when responders who don't know the service need triage steps next to the alert, or when the response should stay consistent.
