@@ -41,32 +41,35 @@ api:
     - spec: kibana-serverless.yaml
       product: kibana
       repository: elastic/kibana
+      aliases: [serverless]
       catalog:
         categories:
           - serverless
-  cloud:
+  cloud-hosted:
     - spec: cloud.json
       product: cloud-hosted
       repository: elastic/cloud
+      aliases: [cloud]
   cloud-enterprise:
     - spec: cloud-enterprise.json
       product: cloud-enterprise
       repository: elastic/cloud
   cloud-billing:
     - spec: cloud-billing.yaml
-      product: ess
+      product: cloud-hosted
       repository: elastic/cloud
       catalog:
         categories:
           - ess
   cloud-connect:
     - spec: cloud-connect.yml
-      product: ess
+      product: cloud-hosted
       repository: elastic/cloud-connected-api
   cloud-serverless:
     - spec: elastic-cloud-serverless.yml
       product: cloud-serverless
       repository: elastic/serverless-api-specification
+      aliases: [elastic-cloud-serverless]
       catalog:
         categories:
           - serverless
@@ -425,11 +428,11 @@ subs:
   es-apis: https://www.elastic.co/docs/api/doc/elasticsearch/
   es-serverless-apis: https://www.elastic.co/docs/api/doc/elasticsearch-serverless/
   kib-apis: https://www.elastic.co/docs/api/doc/kibana/
-  kib-serverless-apis: https://www.elastic.co/docs/api/doc/serverless/
+  kib-serverless-apis: https://www.elastic.co/docs/api/doc/kibana-serverless/
   ls-apis: https://www.elastic.co/docs/api/doc/logstash/
-  cloud-apis: https://www.elastic.co/docs/api/doc/cloud/
+  cloud-apis: https://www.elastic.co/docs/api/doc/cloud-hosted/
   cloud-billing-apis: https://www.elastic.co/docs/api/doc/cloud-billing/
-  cloud-serverless-apis: https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/
+  cloud-serverless-apis: https://www.elastic.co/docs/api/doc/cloud-serverless/
   ece-apis: https://www.elastic.co/docs/api/doc/cloud-enterprise/
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
