@@ -58,10 +58,23 @@ FROM kibana_sample_data_logs
 :screenshot:
 :::
 
-If the query gives an index field a new name:
+:::{tip}
+:applies_to: {"serverless": "ga", "stack": "ga 9.5+"}
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` You can still filter and open a drilldown from that field. `STATS count(*) BY host = hostname` renames `hostname` to `host`. `RENAME hostname AS host` does the same.
-- {applies_to}`stack: ga =9.4` You cannot filter or open a drilldown from that field.
+From this version, you can filter and open a drilldown when the query gives an index field a new name.
+
+```esql
+STATS count(*) BY host = hostname
+```
+
+This renames `hostname` to `host`.
+
+```esql
+RENAME hostname AS host
+```
+
+This does the same.
+:::
 
 ::::
 
