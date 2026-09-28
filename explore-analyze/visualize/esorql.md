@@ -177,27 +177,7 @@ serverless: ga
 - [URL](../dashboards/create-url-drilldown.md) drilldowns: Open an external URL from a data point.
 - {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
-You can filter the dashboard or open a drilldown only from a value that comes from a field in the index. You cannot filter or open a drilldown from a value created at query time.
-
-In the following example query, `status` does not exist in the index. The query creates `status` from `response.keyword`. For that reason, you cannot filter or open a drilldown from `status` in the resulting visualization.
-
-```esql
-FROM kibana_sample_data_logs
-| STATS COUNT(*) BY response.keyword
-| EVAL status = CASE(
-    response.keyword == "200", "ok",
-    response.keyword == "503", "critical error",
-    response.keyword == "404", "warning"
-  )
-| KEEP status, `COUNT(*)`
-```
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When you hover the chart, the visualization explains that you cannot filter or open a drilldown from that value because it relies on a field created at query time.
-
-:::{image} /explore-analyze/images/kibana-esql-query-time-value.png
-:alt: Tooltip on the critical error bar of an ES|QL chart. The tooltip says you cannot filter or drill down from a value created at query time.
-:screenshot:
-:::
+You cannot filter or open a drilldown from a value created at query time. Refer to [How a drilldown uses the selected value](../dashboards/drilldowns.md#drilldowns-requirements).
 
 $$$esql-viz-rename-index-field$$$
 :::{tip}
@@ -206,8 +186,6 @@ If the query gives an index field a new name:
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` You can still filter and open a drilldown from that field. `STATS count(*) BY host = hostname` renames `hostname` to `host`. `RENAME hostname AS host` does the same.
 - {applies_to}`stack: ga =9.4` You cannot filter or open a drilldown from that field.
 :::
-
-For more information, refer to [Drilldowns](../dashboards/drilldowns.md#drilldowns-requirements).
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}

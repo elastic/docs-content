@@ -75,7 +75,7 @@ You can create filter pills by:
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 {{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. A value created at query time has no matching field to filter on. This includes an {{esql}} `EVAL` or `STATS` result, a Lens formula, and an aggregation result.
 
-{{esql}} visualizations support drilldowns only for a value from an index field. You cannot filter or open a drilldown from a value created at query time. Refer to [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns) for details and examples.
+Refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements) for an {{esql}} example.
 :::
 
 

@@ -34,9 +34,29 @@ You can add three types of drilldown:
 
 ## How a drilldown uses the selected value [drilldowns-requirements]
 
-A drilldown uses a value from a field in the data source. You cannot filter on a value created at query time, because that value has no field in the index. This includes a Lens formula, an aggregation result, and an {{esql}} `EVAL` or `STATS` result.
+A drilldown uses a value from a field in the data source. You cannot filter or open a drilldown from a value created at query time, because that value has no field in the index. This includes a Lens formula, an aggregation result, and an {{esql}} `EVAL` or `STATS` result.
 
-{{esql}} visualizations support drilldowns only for a value from an index field. Refer to [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns) for details and examples.
+In the following {{esql}} query, `status` does not exist in the index. The query creates `status` from `response.keyword`. For that reason, you cannot filter or open a drilldown from `status` in the resulting visualization.
+
+```esql
+FROM kibana_sample_data_logs
+| STATS COUNT(*) BY response.keyword
+| EVAL status = CASE(
+    response.keyword == "200", "ok",
+    response.keyword == "503", "critical error",
+    response.keyword == "404", "warning"
+  )
+| KEEP status, `COUNT(*)`
+```
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When you hover over a value in an {{esql}} visualization, the chart explains that you cannot filter or open a drilldown from that value because it relies on a field created at query time.
+
+:::{image} /explore-analyze/images/kibana-esql-query-time-value.png
+:alt: Tooltip on the critical error bar of an ES|QL chart. The tooltip says you cannot filter or drill down from a value created at query time.
+:screenshot:
+:::
+
+If an {{esql}} query gives an index field a new name, refer to [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-rename-index-field).
 
 For more information about filter pills, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
 
