@@ -370,7 +370,7 @@ DELETE /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>
 
 ## Manage the regular index lifecycle [manage-restored-index-lifecycle]
 
-The restored regular index is not managed by {{ilm-init}} because the restore process removes its previous policy assignment and lifecycle execution state. Choose how to manage it based on why you restored the data and how you want to retain it:
+The restore performed in the [previous section](#restore-searchable-snapshot-data) removes the previous {{ilm-init}} policy assignment and lifecycle execution state so the restored regular index does not resume its original policy unexpectedly. Choose how to manage it based on why you restored the data and how you want to retain it:
 
 * Leave the index unmanaged.
 * Apply an {{ilm-init}} policy designed for an existing index.
@@ -405,7 +405,7 @@ Refer to [Apply an {{ilm-init}} policy to an existing index](/manage-data/lifecy
 
 ### Reuse an {{ilm-init}} policy with rollover [reuse-policy-with-rollover]
 
-You can reuse a policy with rollover when its rollover mechanism is already active and the restored index is not the write index. Set `index.lifecycle.indexing_complete` to `true` when you reapply the policy so that {{ilm-init}} does not attempt to roll over the historical index. You do not need this setting during the restore because the remove policy API clears it.
+You can reuse a policy with rollover when its rollover mechanism is already active and the restored index is not the write index. Set `index.lifecycle.indexing_complete` to `true` when you reapply the policy so that {{ilm-init}} does not attempt to roll over the historical index.
 
 If the reused policy contains a `searchable_snapshot` action, {{ilm-init}} can convert the regular index to a new {{search-snap}} after it completes any preceding actions.
 
