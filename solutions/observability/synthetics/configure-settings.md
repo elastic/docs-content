@@ -76,6 +76,7 @@ In the **{{private-location}}s** tab, you can add and manage {{private-location}
 ### Agents and health [synthetics-settings-private-locations-agents]
 ```{applies_to}
 stack: ga 9.6+
+serverless: ga
 ```
 
 The **{{private-location}}s** table shows the state of the {{agents}} that run each location's monitors:
@@ -193,6 +194,7 @@ A separate callout appears when maintenance windows are modified or deleted but 
 ### Private location shard rebalancing [synthetics-settings-advanced-rebalancing]
 ```{applies_to}
 stack: ga 9.6+
+serverless: ga
 ```
 
 Synthetics regularly reassigns monitors across the healthy agents of [scalable {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable). The **Rebalance private location shards** switch controls this for all {{kib}} spaces. It's on by default.

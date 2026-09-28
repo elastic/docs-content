@@ -116,9 +116,9 @@ To fix this issue, you can:
 
 If a monitor on a {{private-location}} reports more results than its schedule allows, more than one {{agent}} is running it. This can happen when:
 
-* Several {{agents}} are enrolled on the agent policy of a classic {{private-location}}. Each agent runs every monitor in the location. Unenroll all but one agent from the agent policy. {applies_to}`stack: ga 9.6+` Alternatively, turn on **Scale with multiple agents on this policy** for the location so that each monitor runs on one agent. Refer to [Scale a {{private-location}} across multiple {{agents}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable).
-* {applies_to}`stack: ga 9.6+` **Rebalance private location shards** is turned off. While it's off, each monitor in a scalable {{private-location}} runs on every agent enrolled on the agent policy. Turn the switch back on in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
-* {applies_to}`stack: ga 9.6+` An agent in a scalable {{private-location}} failed over recently. While a monitor moves to another agent, it can briefly run on two agents. No action is needed.
+* Several {{agents}} are enrolled on the agent policy of a classic {{private-location}}. Each agent runs every monitor in the location. Unenroll all but one agent from the agent policy. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Alternatively, use a [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable) with an Enterprise license so that each monitor runs on one agent.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Rebalance private location shards** is turned off. While it's off, each monitor in a scalable {{private-location}} runs on every agent enrolled on the agent policy. Turn the switch back on in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` An agent in a scalable {{private-location}} failed over recently. While a monitor moves to another agent, it can briefly run on two agents. No action is needed.
 
 
 ### No locations are available [synthetics-troubleshooting-no-locations]
