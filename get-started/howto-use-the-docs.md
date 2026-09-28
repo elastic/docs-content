@@ -39,9 +39,13 @@ A **Stack** badge indicates that a page applies to [{{stack}}](/get-started/the-
 
 On each documentation page, you can find several links that allow you to interact with the content:
 
-* **View as Markdown**: This link shows you the raw Markdown source code for the page you're viewing. This can be helpful if you want to reuse the source or feed the document to AI.
+* **View as Markdown**: This link opens a Markdown version of the current page, with generated frontmatter and resolved links — for example, to feed to an AI tool or script. Refer to [](machine-readable-docs.md) for the URL pattern and how to request Markdown programmatically.
 * **Edit this page**: Selecting this link will take you directly to the page's source file in its GitHub repository. From there, you can propose edits, which our team will review.
 * **Report an issue**: If you've found a problem, like a typo, a technical error, or confusing content, but don't want to edit the page yourself, use this link. It will open a new issue in our GitHub repository, pre-filled with information about the page you were on, so you can describe the problem in detail.
+
+## Machine-readable documentation
+
+Beyond the website, you can fetch any page as Markdown, download the whole documentation set, connect an AI agent through the docs MCP server, or read the docs from your terminal. Refer to [](machine-readable-docs.md) for all available channels.
 
 ## Versioned documentation
 
