@@ -2,8 +2,8 @@
 navigation_title: "Context Engine"
 description: Learn how Context Engine turns source data into distilled context for agents.
 applies_to:
-  stack: preview 9.6
-  serverless: preview
+  stack: experimental 9.6
+  serverless: experimental
 products:
   - id: elasticsearch
   - id: kibana
