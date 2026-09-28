@@ -41,6 +41,8 @@ You can share direct links to saved Discover sessions, dashboards, and visualiza
 * **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users will see the most recent 7 days when they open the link.
 * **Absolute time range** (default): The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link will always show that exact week of January 1-7, 2025, regardless of when users open the link.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens a specific document in **Discover**, refer to [Share a link to a document](discover/discover-get-started.md#share-a-document-link).
+
 ::::{tip}
 When sharing an object with unsaved changes, you get a temporary link that might break in the future, for example in case of upgrade. Save the object to get a permanent link instead.
 ::::
