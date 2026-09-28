@@ -28,7 +28,7 @@ outputs:
     api_key: "<id>:<key>"
 ```
 
-To create an API key with the required privileges, refer to [Grant standalone {{agent}}s access to {{es}}](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent).
+To create an API key with the required privileges, refer to [Grant standalone {{agent}}s access to {{es}}](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent). If the output sends data to the [Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md), create the API key as described in [Authentication](opentelemetry://reference/managed-inputs/authentication-delivery-and-failure-handling.md#authentication).
 
 ::::{note}
 Token-based authentication is required in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment.
