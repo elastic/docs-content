@@ -165,7 +165,7 @@ Use the case that matches your privacy setting and sign-in method:
 
 #### Total tokens by user
 
-To total tokens by user, combine the model call spans with the conversation round. Token counts are on the model call spans, and the user fields are on the round. Both spans share `trace_id` and `attributes.gen_ai.conversation.id`. A query that reads only one of those span kinds returns no per-user token total.
+To calculate total tokens by user, combine the model call spans with the conversation round. Token counts are on the model call spans, and the user fields are on the round. Both spans share `trace_id` and `attributes.gen_ai.conversation.id`. A query that reads only one of those span kinds returns no per-user token total.
 
 ### Message content attributes [message-content-attributes]
 
