@@ -75,7 +75,7 @@ Generate and download a PDF or PNG file of a dashboard. The report is a static, 
 
 To generate reports, you need the **Generate PDF or PNG reports** privilege, located under **Reporting** in the **Dashboard** feature privileges. The same privilege grants access to the **Reporting** page, where generated reports are listed.
 
-1. Open the dashboard, then select {icon}`download` **Export** in the application menu.
+1. Open the dashboard, then select {icon}`upload` **Export** in the application menu.
 2. Choose the PDF or PNG option.
 3. Optional: For PDF exports, enable **Print format** or **Optimize for printing** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
 4. Optional: To generate the report programmatically outside {{kib}}, for example in Watcher, copy the value from the **Post URL** field.
@@ -108,7 +108,7 @@ $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
 Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance. To version-control this JSON and deploy it across environments through a Git-based workflow, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
 
-1. Open the dashboard, then select {icon}`download` **Export** → **Export JSON** from the application menu.
+1. Open the dashboard, then select {icon}`upload` **Export** → **Export JSON** from the application menu.
 2. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.
 3. Choose how to use the JSON source:
 

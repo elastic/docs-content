@@ -57,7 +57,7 @@ Before you install the dashboard:
 
 The overview dashboard is not installed automatically. Install it once per {{kib}} space.
 
-1. Go to **{{stack-manage-app}}** → **GenAI Settings**.
+1. Go to **{{stack-manage-app}}** → **AI** → **GenAI Settings**.
 2. In the **Agent Builder Traces** section, confirm that **Collect conversation traces** is on and saved.
 3. Select **Install Dashboard**.
 

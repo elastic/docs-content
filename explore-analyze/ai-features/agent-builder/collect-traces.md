@@ -56,7 +56,7 @@ By default, traces record structural metadata only. Conversation content such as
 
 ## Enable and configure trace collection
 
-Trace collection is on by default. To manage it, go to **{{stack-manage-app}}** → **GenAI Settings** and open the **Agent Builder Traces** section.
+Trace collection is on by default. To manage it, go to **{{stack-manage-app}}** → **AI** → **GenAI Settings** and open the **Agent Builder Traces** section.
 
 :::{image} images/agent-builder-traces-settings.png
 :screenshot:
