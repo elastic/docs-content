@@ -44,15 +44,15 @@ We meter and bill data transfer using three dimensions:
 
 1. **Data in (free)**
    
-   *Data in* accounts for all of the traffic going into the deployment. It includes index requests with data payload, as well as queries sent to the deployment (although the byte size of the latter is typically much smaller).
+   *Data in* accounts for all of the traffic going into the deployment through its endpoint. It includes index requests with data payload, as well as queries sent to the deployment (although the byte size of the latter is typically much smaller). Data that a deployment reads from a snapshot repository, for example during a restore, is not billed.
 
 2. **Data out**
    
-   *Data out* accounts for all of the traffic coming out of the deployment. This includes search results, as well as monitoring data sent from the deployment. The same rate applies regardless of the destination of the data, whether to the internet, to another region, or to a cloud provider account in the same region. Data coming out of the deployment through AWS PrivateLink, GCP Private Service Connect, or Azure Private Link, is also considered *Data out*.
+   *Data out* accounts for all of the traffic returned from the deployment through its endpoint. This includes search results, as well as monitoring data sent from the deployment. The same rate applies regardless of the destination of the data, whether to the internet, to another region, or to a cloud provider account in the same region. Data coming out of the deployment through AWS PrivateLink, GCP Private Service Connect, or Azure Private Link, is also considered *Data out*. Snapshot traffic is not *Data out*; it is counted as *Data inter-node*. For details, refer to [Snapshot and restore data transfer](#snapshot-restore-data-transfer).
 
 3. **Data inter-node**
    
-   *Data inter-node* accounts for all of the traffic sent between the components of the deployment. This includes the data sync between nodes of a cluster which is managed automatically by {{es}} cluster sharding. It also includes data related to search queries executed across multiple nodes of a cluster. Note that single-node {{es}} clusters typically have lower charges, but may still incur inter-node charges accounting for data exchanged with {{kib}} nodes or other nodes, such as machine learning or APM.
+   *Data inter-node* accounts for all of the traffic sent from the components of the deployment that is not *Data out*, including traffic between nodes and data written to snapshot repositories. This includes the data sync between nodes of a cluster which is managed automatically by {{es}} cluster sharding. It also includes data related to search queries executed across multiple nodes of a cluster. Note that single-node {{es}} clusters typically have lower charges, but may still incur inter-node charges accounting for data exchanged with {{kib}} nodes or other nodes, such as machine learning or APM.
    
    We provide a free allowance of 100GB per month, which includes the sum of *data out* and *data inter-node*, across all deployments in the account. Once this threshold is passed, a charge is applied for any data transfer used in excess of the 100GB monthly free allowance.
 
@@ -61,25 +61,37 @@ Data inter-node charges are currently waived for Azure deployments.
 ::::
 
 
+### Snapshot and restore data transfer [snapshot-restore-data-transfer]
+
+Snapshot and restore traffic flows directly between the nodes of your deployment and the snapshot repository, not through the deployment endpoint. It is billed as follows, whether you use the default `found-snapshots` repository or a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types) in your own cloud provider account:
+
+* **Taking a snapshot** is billed as *Data inter-node*, not *Data out*. The same rate applies whether the repository is in the same region as the deployment or a different one. Because snapshots are incremental, only data that isn't already in the repository is transferred.
+* **Restoring a snapshot** into a deployment is not billed for the data read from the repository. After the restore, {{es}} may copy shards between nodes, for example to create replicas, and that traffic is billed as *Data inter-node*.
+* **Snapshot API requests** are billed under [Storage API requests](#storage) for all repositories, including custom repositories.
+* **Snapshot storage size** is billed under [Storage size](#storage) for the `found-snapshots` repository only. Your cloud provider bills you directly for storage in a custom repository, and may also charge for requests and cross-region transfer in your account.
+
+For example, to move data from a deployment in one organization to a new deployment in another organization, you can snapshot to a bucket you own and restore into the new deployment. The source deployment is charged *Data inter-node* for the snapshot data it writes, plus Storage API requests. The destination deployment is charged Storage API requests and *Data inter-node* for any shard copies made after the restore. Neither deployment is charged *Data out*.
+
+
 
 ### How can I control the Data Transfer cost? [ec_how_can_i_control_the_data_transfer_cost] 
 
 Data transfer out of deployments and between nodes of the cluster is hard to control, as it is a function of the use case employed for the cluster and cannot always be tuned. Use cases such as batch queries executed at a frequent interval may be revisited to help lower transfer costs, if applicable. Watcher email alerts also count towards data transfer out of the deployment, so you may want to reduce their frequency and size.
 
-The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster.  The only way to prevent shard movement is by having a single node in a single availability zone. This solution is only possible for clusters up to 64GB RAM and is not recommended as it creates a risk of data loss. [Oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Note that creating snapshots generates inter-node data transfer. The *storage* cost of snapshots is detailed later in this document.
+The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster.  The only way to prevent shard movement is by having a single node in a single availability zone. This solution is only possible for clusters up to 64GB RAM and is not recommended as it creates a risk of data loss. [Oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Creating snapshots and replicating shards after a restore also generate inter-node data transfer. For details, refer to [Snapshot and restore data transfer](#snapshot-restore-data-transfer). The *storage* cost of snapshots is detailed later in this document.
 
 The exact root cause of unusual data transfer is not always something we can identify as it can have many causes, some of which are out of our control and not associated with Cloud configuration changes.  It may help to [enable monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) and examine index and shard activity on your cluster.
 
 
 ## Storage [storage] 
 
-Storage costs are tied to the cost of storing the backup snapshots in the underlying IaaS object store, such as AWS S3, Google Cloud GCS or Azure Storage. These storage costs are *not* for the disk storage that persists the {{es}} indices, as that is already included in the [RAM Hours](#ram-hours).
+Storage costs are tied to the cost of storing the backup snapshots in the underlying IaaS object store, such as AWS S3, Google Cloud GCS or Azure Storage. These storage costs are *not* for the disk storage that persists the {{es}} indices, as that is already included in the [RAM Hours](#ram-hours). If you use a [custom snapshot repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), your cloud provider also bills you directly for that repository's storage and requests.
 
 As is common with Cloud providers, we meter and bill snapshot storage using two dimensions:
 
 1. **Storage size (GB/month)**
    
-   This is calculated by metering the storage space (GBs) occupied by all snapshots of all deployments tied to an account. The same unit price applies to all regions. To calculate the due charges, we meter the amount of storage on an hourly basis and produce an average size (in GB) for a given month. The average amount is then used to bill the account for the GB/month used within a billing cycle (a calendar month).
+   This is calculated by metering the storage space (GBs) occupied by all snapshots in the `found-snapshots` repository of all deployments tied to an account. Snapshots stored in a custom repository are not included. The same unit price applies to all regions. To calculate the due charges, we meter the amount of storage on an hourly basis and produce an average size (in GB) for a given month. The average amount is then used to bill the account for the GB/month used within a billing cycle (a calendar month).
     
    For example, if the storage used in April 2019 was 100GB for 10 days, and then 130GB for the remaining 20 days of the month, the average storage would be 120 GB/month, calculated as `(100*10 + 130*20)/30`.
    
@@ -88,7 +100,7 @@ As is common with Cloud providers, we meter and bill snapshot storage using two 
 
 2. **Storage API requests (1K Requests/month)**
    
-   These costs are calculated by counting the total number of calls to backup or restore snapshots made by all deployments associated with an account. Unlike storage size, this dimension is cumulative, summed up across the billing cycle, and is billed at a price of 1,000 requests.
+   These costs are calculated by counting the total number of calls to backup or restore snapshots made by all deployments associated with an account, across all snapshot repositories, including custom repositories. Unlike storage size, this dimension is cumulative, summed up across the billing cycle, and is billed at a price of 1,000 requests.
    
    We provide a free allowance of 100,000 API requests to all accounts each month across all the account deployments. Once this threshold is passed, we bill only for the use of API requests in excess of the free allowance.
    
