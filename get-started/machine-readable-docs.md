@@ -172,6 +172,32 @@ Add the following to `.vscode/mcp.json` in your project:
 
 The [Elastic plugin on the Cursor Marketplace](https://cursor.com/marketplace/elastic) bundles Elastic agent skills for Elasticsearch, Kibana, Observability, Security, and Cloud together with an `elastic-docs` MCP entry that points at the same server endpoint above. Installing the plugin is an alternative to manual Cursor configuration. The plugin source is available in the public [elastic/cursor-plugins](https://github.com/elastic/cursor-plugins) repository.
 
+### Example prompts [mcp-usage]
+
+Once connected, ask your AI tool questions in natural language. It picks the right tool for the request.
+
+Find and verify product documentation:
+
+- "Does Elasticsearch support customer-managed encryption keys for snapshots?"
+- "Summarize `https://www.elastic.co/docs/deploy-manage/api-keys`."
+- "What existing docs cover data stream lifecycle, and what else should I read before updating that page?"
+
+Audit documentation quality (for docs contributors):
+
+- "Check whether API key documentation is consistent across the Elasticsearch and Kibana sections."
+- "Is index lifecycle management covered coherently across the docs, or are there gaps?"
+
+### Troubleshooting [mcp-troubleshooting]
+
+No tools available after configuring the server
+:   Reload or restart your editor after editing the MCP config file, and confirm the server is enabled in your client's MCP settings, for example Cursor's **Settings** → **MCPs**, or by running `claude mcp list` in Claude Code.
+
+Empty or irrelevant search results
+:   Drop `productFilter` or `sectionFilter` values that might not match, and rephrase the query using the product's own terminology.
+
+Connection errors
+:   The server requires no authentication. If your network blocks outbound HTTPS to `elastic.co`, ask your network administrator to allow it; the server has no stdio fallback.
+
 ## Search and read the docs from the command line [elastic-cli]
 
 The `docs` commands in the Elastic CLI let you search, ask questions about, and read Elastic documentation directly from a terminal.
