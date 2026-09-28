@@ -63,17 +63,17 @@ FROM kibana_sample_data_logs
 
 From this version, you can filter and open a drilldown when the query gives an index field a new name.
 
-```esql
-STATS count(*) BY host = hostname
-```
+- Assign the new name in the `BY` clause of `STATS`.
 
-This renames `hostname` to `host`.
+  ```esql
+  STATS count(*) BY host = hostname
+  ```
 
-```esql
-RENAME hostname AS host
-```
+- Rename the field with the `RENAME` command.
 
-This does the same.
+  ```esql
+  RENAME hostname AS host
+  ```
 :::
 
 ::::
