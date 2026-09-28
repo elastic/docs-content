@@ -180,13 +180,24 @@ The [Elastic plugin on the Cursor Marketplace](https://cursor.com/marketplace/el
 
 Once connected, ask your AI tool questions in natural language. It picks the right tool for the request.
 
-Find and verify product documentation:
+`search_docs` — semantic search across published Elastic docs:
 
-- "Does Elasticsearch support customer-managed encryption keys for snapshots?"
+- "How do I configure index lifecycle management in Elasticsearch?"
+- "Find the docs page on Kibana Data Views setup."
+- "Search Elasticsearch docs for vector search reference pages." (uses `productFilter: "elasticsearch"`)
+- "What does the getting-started section say about deploying on Elastic Cloud?" (uses `sectionFilter: "getting-started"`)
+
+`find_related_docs` — surfaces adjacent pages on a topic, useful for building context before writing:
+
+- "What docs exist around Search onboarding for users new to Elastic?"
+- "Find pages related to Java client library onboarding."
+- "What's already published about MCP server authentication?"
+
+`get_document_by_url` — retrieves a specific page and its content:
+
 - "Summarize `https://www.elastic.co/docs/deploy-manage/api-keys`."
-- "What existing docs cover data stream lifecycle, and what else should I read before updating that page?"
 
-Audit documentation quality (for docs contributors):
+`check_docs_coherence` and `find_docs_inconsistencies` — for docs contributors auditing coverage and consistency:
 
 - "Check whether API key documentation is consistent across the Elasticsearch and Kibana sections."
 - "Is index lifecycle management covered coherently across the docs, or are there gaps?"
