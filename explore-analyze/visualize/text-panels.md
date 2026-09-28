@@ -12,7 +12,7 @@ products:
 
 To provide context to your dashboard panels, add **Text** panels that display important information, instructions, images, and more. You can create **Text** panels using GitHub-flavored Markdown text.
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can also save a Markdown panel to the **Visualize Library** to reuse it across multiple dashboards. For details, refer to [Save and reuse Markdown panels across dashboards](#markdown-library-reuse).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` You can also save a Markdown panel to the library to reuse it across multiple dashboards. For details, refer to [Save and reuse Markdown panels across dashboards](#markdown-library-reuse).
 
 ## Create a Markdown panel [create-markdown-panel]
 
@@ -104,15 +104,15 @@ For detailed information about writing on GitHub, click **Help** on the top-righ
 ## Save and reuse Markdown panels across dashboards [markdown-library-reuse]
 
 ```{applies_to}
-stack: ga 9.4
 serverless: ga
+stack: ga 9.4
 ```
 
-Save a Markdown panel to the **Visualize Library** so you can add it to multiple dashboards. When you edit a saved Markdown panel, your changes are reflected on every dashboard that uses it. For an overview of the library, refer to [Visualize Library](visualize-library.md).
+Save a Markdown panel to the library so you can add it to multiple dashboards. Add it later with **Add** → **From library**. When you edit a saved Markdown panel, your changes are reflected on every dashboard that uses it. For how linking works, refer to [Reuse panels from the Visualize library](visualize-library.md).
 
 ### Save a Markdown panel to the library [markdown-save-to-library]
 
-To save an existing Markdown panel from a dashboard to the **Visualize Library**:
+To save an existing Markdown panel from a dashboard to the library:
 
 1. On your dashboard, open the {icon}`boxes_vertical` panel menu of the Markdown panel.
 2. Select **Save to library**.

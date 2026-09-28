@@ -20,6 +20,7 @@ This page covers:
 - [Collapsible sections](#collapsible-sections)
 - [Moving and resizing panels](#resizing-containers)
 - [Copying and duplicating panels](#duplicate-panels)
+- [Panel title, description, and time range](#panel-settings)
 
 ## Requirements [arrange-panels-requirements]
 
@@ -192,5 +193,26 @@ Copy panels from one dashboard to another dashboard.
 
     ![Copy a panel to another dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt48304cb3cd1ee2e6/6753879eb7c4663812148d47/copy-to-dashboard-8.17.0.gif "")
 
+
+## Change panel settings [panel-settings]
+
+Give a panel its own title, description, or time range. These settings apply to this panel on this dashboard.
+
+1. Select **Edit**.
+2. Open the panel menu and select **Settings**.
+3. Turn on **Show title**, then enter a **Title**. You can also enter a **Description**.
+4. To use a time range that differs from the dashboard, turn on **Apply custom time range** and set **Time range**.
+5. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Turn **Show panel border** on or off. This panel then uses that choice instead of the dashboard border setting.
+6. Select **Apply**.
+
+### Remove a panel [remove-a-panel]
+
+Select **Edit**, open the panel menu, and select **Remove**.
+
+A panel that exists only on this dashboard is deleted. A panel linked to the library is removed from this dashboard, and the library copy remains. To reuse a panel before you remove it, [save it to the library](../visualize/visualize-library.md#save-to-visualize-library).
+
+### Convert a panel to Lens [convert-a-panel-to-lens]
+
+On a TSVB or aggregation-based panel, select **Edit**, open the panel menu, and select **Convert to Lens**. The panel opens in Lens.
 
 
