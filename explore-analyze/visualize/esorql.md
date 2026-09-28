@@ -1,5 +1,6 @@
 ---
 navigation_title: Visualizations (ES|QL query)
+description: Create Lens visualizations with an ES|QL query from Discover or a dashboard, then customize the chart, filters, and time series.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
 applies_to:
