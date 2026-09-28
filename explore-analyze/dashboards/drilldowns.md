@@ -56,7 +56,12 @@ FROM kibana_sample_data_logs
 :screenshot:
 :::
 
-If an {{esql}} query gives an index field a new name, refer to [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-rename-index-field).
+:::{tip}
+If the query gives an index field a new name:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` You can still filter and open a drilldown from that field. `STATS count(*) BY host = hostname` renames `hostname` to `host`. `RENAME hostname AS host` does the same.
+- {applies_to}`stack: ga =9.4` You cannot filter or open a drilldown from that field.
+:::
 
 For more information about filter pills, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
 
