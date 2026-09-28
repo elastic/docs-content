@@ -24,7 +24,10 @@ You can build an area chart in {{kib}} in either of these ways:
 
 To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
-![Example Lens area chart](../../images/kibana-area-chart.png)
+:::{image} /explore-analyze/images/kibana-area-chart.png
+:alt: Example Lens area chart
+:screenshot:
+:::
 
 ## Create an area chart [create-an-area-chart]
 
@@ -123,11 +126,19 @@ Use stacking to show how categories contribute to a total over time.
    You can set the area chart stack mode to:
    - **Stacked** — Show cumulative totals and category contributions.
 
-     ![Example Lens area chart stacked mode](../../images/kibana-area-stacked.png " =70%")
+     :::{image} /explore-analyze/images/kibana-area-stacked.png
+     :alt: Example Lens area chart stacked mode
+     :width: 60%
+     :screenshot:
+     :::
 
    - **Percentage (100%)** — Normalizes each timestamp to 100% to emphasize shares rather than magnitudes.
 
-     ![Example Lens area chart percentage mode](../../images/kibana-area-percentage.png " =70%")
+     :::{image} /explore-analyze/images/kibana-area-percentage.png
+     :alt: Example Lens area chart percentage mode
+     :width: 60%
+     :screenshot:
+     :::
 
 4. Optionally, in the **Breakdown** settings, you can set **Rank by** to specify the dimension the top values are ranked by.
 
@@ -135,7 +146,10 @@ Use stacking to show how categories contribute to a total over time.
 
 In Area charts, you can enable time shift to compare different periods and identify deltas.
 
-![Example Lens area chart compare periods](../../images/kibana-area-compare-periods.png)
+:::{image} /explore-analyze/images/kibana-area-compare-periods.png
+:alt: Example Lens area chart compare periods
+:screenshot:
+:::
 
 1. Create an area chart with a time-based **Horizontal axis** and your main metric on **Vertical axis**, for example: `bytes`.
 2. Duplicate the layer:
@@ -245,12 +259,18 @@ against the Visualizations API spec. To re-verify after a schema change, run:
 See .github/scripts/verify-lens-api-examples.py for full usage. -->
 
 **Traffic by geographic region**
-:   Visualizing which geographic regions generate the most traffic:
-   - **Horizontal axis**: `@timestamp` (Date histogram)
-   - **Vertical axis**: `records`
-   - **Breakdown**: `geo.dest`
-   
-![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
+
+Visualizing which geographic regions generate the most traffic:
+
+- **Horizontal axis**: `@timestamp` (Date histogram)
+- **Vertical axis**: `records`
+- **Breakdown**: `geo.dest`
+
+:::{image} /explore-analyze/images/kibana-area-geo-regions.png
+:alt: Example Lens area chart geographical regions
+:width: 70%
+:screenshot:
+:::
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
@@ -394,7 +414,11 @@ Visualizing HTTP response codes over time, highlighting the proportion of succes
 * **Stacking**: `Percentage` to show the distribution relative to the total count at each point in time.
 * **Annotation query**: `tags:error AND tags:security`
 
-![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
+:::{image} /explore-analyze/images/kibana-response-code-annotations.png
+:alt: Example Lens area chart response code annotations
+:width: 70%
+:screenshot:
+:::
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
