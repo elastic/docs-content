@@ -101,7 +101,7 @@ The Elastic Docs MCP server gives your AI tool direct access to Elastic's publis
 These tools help agents retrieve precise, up-to-date information from Elastic's docs: verifying how a feature actually works, finding what already exists on a topic before writing, or auditing documentation coverage and consistency.
 
 :::{important}
-This server gives agents access to Elastic **documentation**. To give an agent tools that query your own Elasticsearch data or Kibana resources, use the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) instead.
+This server gives agents access to Elastic **documentation**, not your own data. If you need an agent to query your Elasticsearch data or Kibana resources, use the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) instead.
 :::
 
 The server is available at:
