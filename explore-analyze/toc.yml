@@ -252,6 +252,7 @@ toc:
             children:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
+              - file: ai-features/agent-builder/troubleshooting/pre-execution-workflow-disabled.md
           - file: ai-features/agent-builder/limitations-known-issues.md
           - file: ai-features/agent-builder/glossary.md
           - hidden: ai-features/agent-builder/connectors.md
@@ -450,7 +451,7 @@ toc:
                   - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
                   - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
                   - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
-                  - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-artifacts.md
               - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
               - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
               - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md

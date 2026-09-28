@@ -23,7 +23,7 @@ The {{alerting-v2-system}} connects to workflows through two pathways. Both requ
 
 ### Action policies [action-policy-driven-workflows]
 
-Action policies evaluate alert episodes on a continuous schedule and invoke workflows when an alert episode meets the configured conditions. After a rule runs, the system routes each alert episode through episode eligibility, match conditions, and frequency gates before invoking a workflow. For the step-by-step evaluation sequence, refer to [How action policies are evaluated](action-policies/about-action-policies.md#how-action-policies-evaluated).
+{{kib}} evaluates action policies against alert episodes on a continuous schedule and invokes a workflow when an alert episode meets a policy's conditions. After a rule runs, the system routes each alert episode through the eligibility, scope, and frequency gates before invoking a workflow. For the step-by-step evaluation sequence, refer to [How the dispatcher evaluates action policies](action-policies/about-action-policies.md#how-action-policies-evaluated).
 
 ### Alert episode lifecycle triggers [alert-episode-lifecycle-triggers]
 
