@@ -8,7 +8,7 @@ features:
 # assembler-api-explorer feature flag is enabled (staging today). Production and
 # other environments ignore these declarations until the rollout completes.
 api:
-  # CloudFront remote specs — mirror https://d29hkgsdo66d1n.cloudfront.net/index.json.
+  # CloudFront remote specs - mirror https://d29hkgsdo66d1n.cloudfront.net/index.json.
   # No local spec files: each key fetches remotely on serve/build. Paths: /api/<key>/
   elasticsearch:
     - spec: elasticsearch.json
@@ -44,6 +44,14 @@ api:
       catalog:
         categories:
           - serverless
+  cloud:
+    - spec: cloud.json
+      product: cloud-hosted
+      repository: elastic/cloud
+  cloud-enterprise:
+    - spec: cloud-enterprise.json
+      product: cloud-enterprise
+      repository: elastic/cloud
   cloud-billing:
     - spec: cloud-billing.yaml
       product: ess
