@@ -2,8 +2,8 @@
 navigation_title: Query AI Indices with LangChain
 description: Connect a LangChain agent to Context Engine through the Agent Builder MCP server or the Context Engine APIs, so it can retrieve Knowledge Indicators from your AI Indices.
 applies_to:
-  stack: preview 9.6
-  serverless: preview
+  stack: experimental 9.6
+  serverless: experimental
 products:
   - id: kibana
 ---
