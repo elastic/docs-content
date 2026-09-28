@@ -265,7 +265,7 @@ Turning off rebalancing removes the agent assignment from every monitor in every
 
 To reduce a scalable location to a single agent, unenroll all but one {{agent}} from its agent policy. {{kib}} reassigns the remaining monitors to the surviving agent when the removed agents are detected as unhealthy.
 
-To pause monitor distribution across all scalable locations, use the **Rebalance private location shards** switch in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing). When the switch is off, each monitor runs on every agent enrolled on the location's agent policy, which produces duplicate results.
+To pause monitor distribution across all scalable locations, use the **Rebalance private location shards** switch in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced). When the switch is off, each monitor runs on every agent enrolled on the location's agent policy, which produces duplicate results.
 
 ## Scaling {{private-location}}s [synthetics-private-location-scaling]
 
