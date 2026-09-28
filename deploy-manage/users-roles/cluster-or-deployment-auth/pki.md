@@ -183,7 +183,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
 
     One way that you can determine the correct DN for a certificate is to use the [authenticate API]({{es-apis}}operation/operation-security-authenticate) (use the relevant PKI certificate as the means of authentication) and inspect the metadata field in the result. The user's distinguished name will be populated under the `pki_dn` key. You can also use the authenticate API to validate your role mapping.
 
-    PKI-authenticated users have the following metadata fields for role mapping rules:
+    PKI-authenticated users have the following metadata fields, which you can use in role mapping rules:
 
     | Field | Description |
     |-------|-------------|
