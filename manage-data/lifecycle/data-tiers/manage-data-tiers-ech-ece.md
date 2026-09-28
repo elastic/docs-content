@@ -145,38 +145,39 @@ After completing this preparation:
 
 ### Vacate tier instances containing {{search-snaps}} [searchable-snapshot-data-tier]
 
-This section explains how to vacate instances in a data tier that contains [{{search-snap}} indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). Choose how to handle the data before disabling the tier:
+This section explains how to vacate instances in a data tier that contains [{{search-snap}} indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). How you proceed depends on the mount type:
 
-* **[Partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) on the frozen tier:** These indices cannot remain mounted outside the frozen tier.
-    * To preserve the data as regular indices, select another tier with sufficient capacity and follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md).
-    * If you no longer need the data, delete the mounted indices and any source snapshots you no longer need.
-* **[Fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) on the cold tier:**
-    * To keep them as {{search-snaps}}, use [Prepare regular indices for tier removal](#non-searchable-snapshot-data-tier) before disabling the tier. Fully mounted {{search-snaps}} follow the same shard allocation rules as regular indices.
-    * To preserve the data as regular indices, select another tier with sufficient capacity and follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md).
-    * If you no longer need the data, delete the mounted indices and any source snapshots you no longer need.
+* **[Partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) on the frozen tier** cannot remain mounted after you disable the tier. Process every index in this section by either restoring its data as a regular index or deleting it.
+* **[Fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted)** do not require special handling in this section. To keep them mounted, treat them like regular indices and continue to [Prepare regular indices for tier removal](#non-searchable-snapshot-data-tier). To restore their data as regular indices or delete them, process them in this section.
 
 :::{note}
 :applies_to: {"stack": "ga 9.5+"}
 
-If you are disabling the frozen tier and [{{dlm-init}}](/manage-data/lifecycle/data-stream.md) manages partially mounted indices on it, remove `frozen_after` from the affected data streams and index templates before proceeding.
+If any [{{dlm-init}}](/manage-data/lifecycle/data-stream.md)-managed data stream uses `frozen_after`, remove this setting from the affected data stream lifecycles and index templates before disabling the frozen tier. This prevents backing indices, including restored indices, from being converted to partially mounted {{search-snaps}} again.
 :::
 
 1. Apply the changes to {{ilm-init}} policies and index templates that you planned in [Before you remove a data tier](#before-you-remove-a-data-tier) so that they no longer create or route {{search-snap}} indices to the tier you want to disable. These changes prevent new {{search-snaps}} from appearing while you process the existing ones.
 
-1. For each mounted {{search-snap}} whose data you want to preserve as a regular index, follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md). Complete the restore, validation, alias or data stream update, and mounted index cleanup for one index before proceeding to the next.
+1. For each partially mounted {{search-snap}}, and for each fully mounted {{search-snap}} that you do not want to keep mounted, select one of the following options:
 
-1. For each mounted {{search-snap}} whose data you do not want to preserve, record its source snapshot details before deleting the index:
+    * **Preserve the data as a regular index:** Follow [Restore {{search-snap}} data to a regular index](/deploy-manage/tools/snapshot-and-restore/restore-searchable-snapshot-to-regular-index.md). Complete the restore, validation, alias or data stream update, and mounted index cleanup for one index before proceeding to the next.
 
-   ```sh
-   GET /<searchable-snapshot-index-name>/_settings?filter_path=**.index.store.snapshot.snapshot_name,**.index.store.snapshot.repository_name&expand_wildcards=all
-   DELETE /<searchable-snapshot-index-name>
-   ```
+    * **Delete the data:** Record the source snapshot details before deleting the index:
 
-   If you no longer need the source snapshot, delete it after confirming that it contains no other data you need and that no other mounted index in this or another cluster depends on it:
+        ```sh
+        GET /<searchable-snapshot-index-name>/_settings?filter_path=**.index.store.snapshot.snapshot_name,**.index.store.snapshot.repository_name&expand_wildcards=all
+        DELETE /<searchable-snapshot-index-name>
+        ```
 
-   ```sh
-   DELETE /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>
-   ```
+        If you no longer need the source snapshot, delete it after confirming that it contains no other data you need and that no other mounted index in this or another cluster depends on it:
+
+        :::{warning}
+        After you delete the mounted index, deleting its source snapshot permanently removes the data if no other copy exists. Keep the source snapshot if you might need to restore the data later.
+        :::
+
+        ```sh
+        DELETE /_snapshot/<snapshot_repository_name>/<searchable_snapshot_name>
+        ```
 
 After processing all {{search-snaps}}, continue based on what remains on the tier:
 
