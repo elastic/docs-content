@@ -31,6 +31,7 @@ If you've entered a KQL or Lucene query in classic mode, Discover converts it to
 - The query text becomes an {{esql}} query.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar become `WHERE` clauses where possible.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Filters that can't be converted, such as scripted filters, are dropped.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the data view has a time field, Discover adds `SORT` on that field so the newest records appear first. Converted `WHERE` conditions stay in the query.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, Discover derives your starting query from your data sources. Administrators can set a different starting query for the space with the [**Default ES|QL query** (`discover:defaultEsqlQuery`)](kibana://reference/advanced-settings.md#kibana-discover-settings) setting. This setting doesn't apply after you edit the query or switch query modes.
 
