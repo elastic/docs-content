@@ -36,12 +36,7 @@ You can add three types of drilldown:
 
 A drilldown uses a value from a field in the data source. You cannot filter on a value created at query time, because that value has no field in the index. This includes a Lens formula, an aggregation result, and an {{esql}} `EVAL` or `STATS` result.
 
-[Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns) includes examples of a renamed index field and a value created in the query.
-
-For a value created at query time with an {{esql}} query:
-
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` The visualization explains that you cannot filter or drill down from that value. A date value does not show that explanation.
-* {applies_to}`stack: ga =9.4` The filter and drilldown actions are not shown. You can still add a drilldown on the panel for an index field.
+{{esql}} visualizations support drilldowns only for a value from an index field. Refer to [Add drilldowns to an {{esql}} visualization](../visualize/esorql.md#esql-viz-drilldowns) for details and examples.
 
 For more information about filter pills, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
 

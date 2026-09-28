@@ -177,11 +177,9 @@ serverless: ga
 - [URL](../dashboards/create-url-drilldown.md) drilldowns: Open an external URL from a data point.
 - {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
-You can filter the dashboard or open a drilldown only from a value that comes from a field in the index.
+You can filter the dashboard or open a drilldown only from a value that comes from a field in the index. You cannot filter or open a drilldown from a value created at query time.
 
-If the query renames an index field, you can still filter and open a drilldown from that field. `STATS count(*) BY host = hostname` renames `hostname` to `host`. `RENAME hostname AS host` does the same.
-
-If the query creates the value, you cannot filter or drill down from it. In this query, `status` does not exist in the index. The query creates `status` from `response.keyword`.
+In this query, `status` does not exist in the index. The query creates `status` from `response.keyword`.
 
 ```esql
 FROM kibana_sample_data_logs
@@ -194,16 +192,23 @@ FROM kibana_sample_data_logs
 | KEEP status, `COUNT(*)`
 ```
 
-For a value created at query time:
+::::{note}
+:applies_to: {"serverless": "ga", "stack": "ga 9.5+"}
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When you hover the chart, the visualization explains that you cannot filter or drill down from that value because it relies on a field created at query time. A date value does not show that explanation. In a table, the explanation is in the cell menu.
+When you hover the chart, the visualization explains that you cannot filter or open a drilldown from that value because it relies on a field created at query time.
 
-  :::{image} /explore-analyze/images/kibana-esql-query-time-value.png
-  :alt: Tooltip on the critical error bar of an ES|QL chart. The tooltip says you cannot filter or drill down from a value created at query time.
-  :screenshot:
-  :::
+:::{image} /explore-analyze/images/kibana-esql-query-time-value.png
+:alt: Tooltip on the critical error bar of an ES|QL chart. The tooltip says you cannot filter or drill down from a value created at query time.
+:screenshot:
+:::
+::::
 
-- {applies_to}`stack: ga =9.4` The filter and drilldown actions are not shown. You can still add a drilldown on the panel for an index field.
+### Rename an index field [esql-viz-rename-index-field]
+
+If the query gives an index field a new name:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` You can still filter and open a drilldown from that field. `STATS count(*) BY host = hostname` renames `hostname` to `host`. `RENAME hostname AS host` does the same.
+- {applies_to}`stack: ga =9.4` You cannot filter or open a drilldown from that field.
 
 For more information, refer to [Drilldowns](../dashboards/drilldowns.md#drilldowns-requirements).
 
