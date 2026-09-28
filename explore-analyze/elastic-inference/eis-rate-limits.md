@@ -12,6 +12,8 @@ This page lists the rate limits that apply to Elastic {{infer-cap}} Service (EIS
 
 Exceeding a limit results in HTTP 429 responses from the server until the sliding window moves on further and parts of the limit resets.
 
+Limits are applied on a per model basis per organization. This means that usage is counted independently for each model.
+
 Where both a requests-per-minute and a tokens-per-minute limit apply, whichever limit is reached first takes effect.
 
 ## Chat models [eis-rate-limits-chat]
