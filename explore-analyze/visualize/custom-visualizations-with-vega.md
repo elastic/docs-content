@@ -767,7 +767,7 @@ In the **Vega** spec, add to the `marks` block, then click **Update**:
           value: 100
         }
         fill: {
-          value: teal
+          value: black
         }
       }
     }
@@ -1055,7 +1055,7 @@ Add a signal that updates the {{kib}} time filter when the cursor is released wh
             value: 100
           }
           fill: {
-            value: teal
+            value: black
           }
           cursor: { value: "pointer" }
         }
@@ -1244,7 +1244,7 @@ Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite
 
 {{kib}} registers a default [Vega color scheme](https://vega.github.io/vega/docs/schemes/) with the id `elastic`, and sets a default color for each `mark` type. Override it by providing a different `stroke`, `fill`, or `color` (Vega-Lite) value.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` An area mark with no fill uses a gradient of the default color. The fill is fainter at the baseline and stronger toward the top of the area. A Vega-Lite `color` or `fill` encoding replaces that gradient with a solid series color.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` A Vega-Lite area mark with no fill uses a gradient of the default color. The fill is fainter at the baseline and stronger toward the top of the area. A `color` or `fill` encoding replaces that gradient with a solid series color.
 
 
 #### Writing {{es}} queries in Vega [vega-queries]
