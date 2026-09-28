@@ -81,7 +81,7 @@ With your trial goal in mind, identify which Elastic solution best addresses you
 | Compliance requires centralized security monitoring | [Security](/solutions/security.md) |
 
 :::{tip}
-Not sure whether to evaluate Search on an {{es}} project or a {{vectordb}} project? Both support [vector search](/solutions/search/vector.md). Choose {{vectordb}} when embeddings and similarity search are the primary workload. Choose the {{es}} project for general-purpose search, mixed workloads, or {{kib}} search tooling such as Query rules. Refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
+Not sure whether to evaluate Search on an {{es}} project or a {{vectordb}} project?  Both support [vector search](/solutions/search/vector.md). Start with {{vectordb}} when building hybrid or similarity search as the primary workload. Choose the {{es}} project only if you need features {{vectordb}} doesn't support, such as log and time series data, custom models on ML nodes, or search applications. Refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
 :::
 
 ### Choose your deployment type
