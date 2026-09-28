@@ -64,7 +64,7 @@ This choropleth map shows the density of non-emergency service requests in San D
 :::
 
 $$$maps-esql-fast-mode$$$
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` If the map has an {{esql}} layer, the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) option can appear on the dashboard. **Fast mode** can speed {{esql}} visualizations and Vega or Vega-Lite panels. It does not change the map. To approximate a `STATS` query on the map, add [`SET approximation`](../query-filter/languages/esql-kibana.md#esql-kibana-approximation) to the layer query.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` If the map has an {{esql}} layer, the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) option can appear on the dashboard. **Fast mode** can speed {{esql}} visualizations and Vega or Vega-Lite panels. It does not change the map. To approximate a `STATS` query on the map, add the [SET approximation directive](../query-filter/languages/esql-kibana.md#esql-kibana-approximation) to the layer query.
 
 
 ## Symbolize features using data values [_symbolize_features_using_data_values]

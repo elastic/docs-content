@@ -496,7 +496,7 @@ Where it applies depends on the context:
 
 - In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
 - In **Dashboards** or when previewing a dashboard created with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md), you can turn on **Fast mode** when the dashboard includes at least one {{esql}}-based panel. **Fast mode** returns faster, estimated results for [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and [**Vega** or **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use an {{esql}} data source with one `STATS` command. The option is unavailable when the dashboard has no {{esql}}-based panels.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` If a [map](/explore-analyze/visualize/maps.md#maps-esql-fast-mode) has an {{esql}} layer, turning **Fast mode** on does not change that map. **Fast mode** can still appear on the dashboard. To approximate a `STATS` query on the map, use the [`SET approximation`](#esql-kibana-approximation) directive in the layer query.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` If a [map](/explore-analyze/visualize/maps.md#maps-esql-fast-mode) has an {{esql}} layer, turning **Fast mode** on does not change that map. **Fast mode** can still appear on the dashboard. To approximate a `STATS` query on the map, use the [SET approximation directive](#esql-kibana-approximation) in the layer query.
 
 **Fast mode** is preserved when you:
 
