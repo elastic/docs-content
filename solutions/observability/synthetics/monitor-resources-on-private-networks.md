@@ -245,7 +245,7 @@ You can't move an agent's monitors to other agents before you unenroll it. When 
 
 ### How monitors are assigned to agents [synthetics-private-location-scalable-assignment]
 
-Synthetics assigns each monitor to one agent in the pool. The assignment balances the estimated memory cost of the monitors across agents: a browser monitor counts roughly as much as 50 lightweight monitors, and agents with more total RAM receive a larger share. Current CPU and memory usage appear in the Synthetics UI but aren't used for assignments.
+Synthetics assigns each monitor to one agent in the pool. The assignment balances the estimated memory cost of the monitors across agents: a browser monitor counts roughly as much as 50 lightweight monitors, and agents with more total RAM receive a larger share. Because assignment is weighted by memory cost rather than monitor count, the number of monitors per agent can look uneven even when memory is balanced. Current CPU and memory usage appear in the Synthetics UI but aren't used for assignments.
 
 About once a minute, Synthetics checks the health of every agent in the pool and adjusts assignments:
 
@@ -276,7 +276,7 @@ Example: For a private location expected to run 2 concurrent browser monitors an
 
 ### Known limitations on vertical scaling
 
-- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated.
+- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a scalable {{private-location}}, this limit applies per location, not per agent — adding more agents does not raise it.
 
 - Many Synthetics monitors, or monitors with complex configurations, can cause the check-in payload to exceed the default 1 MiB `checkin_limit.max_body_byte_size` limit on {{fleet-server}}. When this happens, check-ins are rejected and agents appear offline or unhealthy in the Fleet UI even though monitors are executing successfully. To resolve this, increase the `server.limits.checkin_limit.max_body_byte_size` setting on your self-managed Fleet Server. Refer to [Advanced {{fleet-server}} options](/reference/fleet/fleet-server-scalability.md#fleet-server-configuration) for configuration details and an example.
 
