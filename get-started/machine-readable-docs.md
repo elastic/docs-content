@@ -96,11 +96,15 @@ There is no per-page OKF endpoint. The bundle is the only distribution format.
 
 ## Connect an AI agent to the docs via MCP [docs-mcp-server]
 
+The Elastic Docs MCP server gives your AI tool direct access to Elastic's published documentation over the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro). It works with Claude Code, Cursor, VS Code, or any other tool that supports MCP.
+
+These tools help agents retrieve precise, up-to-date information from Elastic's docs: verifying how a feature actually works, finding what already exists on a topic before writing, or auditing documentation coverage and consistency.
+
 :::{important}
 This server gives agents access to Elastic **documentation**. To give an agent tools that query your own Elasticsearch data or Kibana resources, use the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) instead.
 :::
 
-The Elastic Docs MCP server is available at:
+The server is available at:
 
 ```
 https://www.elastic.co/docs/_mcp/
