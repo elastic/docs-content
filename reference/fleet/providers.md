@@ -106,4 +106,6 @@ providers:
 
 On {{fleet}}-managed {{agent}}, you can use provider variables in integration policy settings (for example, `${host.name}`, `${env.foo}`, `${agent.id}`), but you cannot add a `providers` configuration block directly through the {{fleet}} UI.
 
+Referencing variables this way lets a single integration policy serve many hosts, with each agent supplying its own values. For a worked example, refer to [](/reference/fleet/scale-integration-policies.md).
+
 Some providers can be configured on {{k8s}} deployments using ConfigMaps. For more details, refer to [Advanced {{agent}} configuration managed by {{fleet}}](/reference/fleet/advanced-kubernetes-managed-by-fleet.md).
