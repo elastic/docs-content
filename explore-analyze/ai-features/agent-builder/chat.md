@@ -90,6 +90,27 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :screenshot:
 :::
 
+### Attach images to a message
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Paste any image from your clipboard directly into the chat input to give the agent visual context — a screenshot, a photo, a diagram, anything you can copy as an image.
+
+- Paste an image (`Ctrl+V` / `Cmd+V`) into the chat input. A thumbnail appears above the input.
+- Attach up to 10 images to a single message.
+- Supported formats: PNG and JPEG, up to 3.5 MB each.
+- The **Send** button is disabled until all attached images finish uploading.
+- Hover a thumbnail and select the remove icon to drop it before sending.
+
+Once sent, the image renders in the conversation history, and the agent can refer back to it in later messages in the same conversation.
+
+:::{note}
+Only pasting from the clipboard is supported. Drag-and-drop and file-picker upload aren't available yet.
+:::
+
 ### Chat with data from multiple projects [agent-builder-cps-scope]
 ```{applies_to}
 stack: unavailable
