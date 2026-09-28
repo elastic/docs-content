@@ -67,6 +67,8 @@ Different control types target different panels:
 * A **Time slider** narrows the dashboard's [global time range](../query-filter/filtering.md), so it affects only the panels that use time-based data.
 * **Variable controls** affect only the {{esql}} visualizations whose query references the control's variable. They don't filter other panels.
 
+  {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` A [Vega panel that uses an {{esql}} data source](custom-visualizations-with-vega.md#vega-esql-variable-controls) runs with the control's value when its query references the variable.
+
   :::{tip}
   :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
   To see which panels a variable control affects, select its label while editing the dashboard. Its related panels are highlighted, and a variable control that no visualization uses shows a warning.

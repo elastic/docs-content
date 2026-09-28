@@ -1428,6 +1428,8 @@ The `url` object supports the following parameters:
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
 | `"params"` | An array of named parameter objects to substitute into the query. |
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` On a dashboard, a variable control overrides a matching name in `params`. Refer to [Apply dashboard variable controls to {{esql}} data sources](#vega-esql-variable-controls).
+
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
 {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
@@ -1531,6 +1533,19 @@ The following example creates a line chart of document counts over time. It wire
   }
 }
 ```
+
+
+#### Apply dashboard variable controls to {{esql}} data sources [vega-esql-variable-controls]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+On a dashboard, a [variable control](dashboard-controls.md#controls-scope-by-type) supplies the value for a variable when the control uses the same name. Write `?name` for a value, or `??name` for a field or function name. Each {{esql}} query in the spec runs with the control's current value when it references that variable, so the chart follows the selection.
+
+When `params` includes the same name, the dashboard value is used. `params` still supplies a name that no control sets. When the query uses `?_tstart` or `?_tend`, the dashboard time range supplies those values even when `params` sets the same names.
+
+In the **Visualize library** editor and in **Canvas**, the panel has no dashboard variable control. If the query references a variable and `params` does not include it, the visualization shows an error for an unknown query parameter.
 
 
 #### Access Elastic Map Service files [vega-esmfiles]
