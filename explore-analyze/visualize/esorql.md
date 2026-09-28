@@ -179,7 +179,7 @@ serverless: ga
 
 You can filter the dashboard or open a drilldown only from a value that comes from a field in the index. You cannot filter or open a drilldown from a value created at query time.
 
-In the following example query, `status` does not exist in the index. The query creates `status` from `response.keyword`. For that reason, it's not possible to drill down on that `status` in the resulting visualization.
+In the following example query, `status` does not exist in the index. The query creates `status` from `response.keyword`. For that reason, you cannot filter or open a drilldown from `status` in the resulting visualization.
 
 ```esql
 FROM kibana_sample_data_logs
@@ -192,7 +192,7 @@ FROM kibana_sample_data_logs
 | KEEP status, `COUNT(*)`
 ```
 
-{"serverless": "ga", "stack": "ga 9.5+"} From this version, when you hover the chart, the visualization explains that you cannot filter or open a drilldown from that value because it relies on a field created at query time.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When you hover the chart, the visualization explains that you cannot filter or open a drilldown from that value because it relies on a field created at query time.
 
 :::{image} /explore-analyze/images/kibana-esql-query-time-value.png
 :alt: Tooltip on the critical error bar of an ES|QL chart. The tooltip says you cannot filter or drill down from a value created at query time.
@@ -205,9 +205,9 @@ If the query gives an index field a new name:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` You can still filter and open a drilldown from that field. `STATS count(*) BY host = hostname` renames `hostname` to `host`. `RENAME hostname AS host` does the same.
 - {applies_to}`stack: ga =9.4` You cannot filter or open a drilldown from that field.
+:::
 
 For more information, refer to [Drilldowns](../dashboards/drilldowns.md#drilldowns-requirements).
-:::
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}
