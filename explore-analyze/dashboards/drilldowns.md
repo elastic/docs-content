@@ -166,10 +166,6 @@ The following panel types support Discover drilldowns:
 
     On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
 
-::::{tip}
-You can [open Lens dashboard panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
-::::
-
 
 
 ### Create the Discover drilldown [_create_the_discover_drilldown]
@@ -189,6 +185,21 @@ Create a drilldown that opens **Discover** from the [**Sample web logs**](../ind
    :::
 
 
+
+## Open panel data in Discover [open-panel-data-in-discover]
+
+You can open **Discover** from a panel without creating a drilldown.
+
+On a Discover session panel, open the panel menu and select **Open in Discover**. Discover opens that saved session. If the panel shows one tab of the session, Discover opens that tab. Dashboard filters are not added on top of the saved session.
+
+To open the documents behind another panel, enable one or both of these settings in `kibana.yml`. Both are off by default. The actions appear while you are viewing the dashboard, and only when the panel uses a single data view.
+
+* To show **Explore underlying data** in the panel menu, set [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-context) to `true`.
+* To show **Explore underlying data** when you select a value in the panel, set [`xpack.discoverEnhanced.actions.exploreDataInChart.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-chart) to `true`. The chart action is not available on maps.
+
+When the menu action is enabled, open the panel menu and select **Explore underlying data**. Discover opens the panel's data view and applies the dashboard filters together with the panel filters. If the dashboard has a query, Discover uses that query. If the panel has its own time range, Discover uses that time range.
+
+When the chart action is enabled, select a value in the panel, or select a time range on the chart, then select **Explore underlying data**. Discover includes that value or time range.
 
 ## Manage drilldowns [manage-drilldowns]
 

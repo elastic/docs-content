@@ -1,6 +1,16 @@
 redirects:
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
+  # related to https://github.com/elastic/platform-docs-team/issues/581
+  'explore-analyze/visualize/manage-panels.md':
+    to: 'explore-analyze/visualize/visualize-library.md'
+    many:
+      - to: 'explore-analyze/dashboards/drilldowns.md'
+        anchors:
+          'explore-the-underlying-documents': 'open-panel-data-in-discover'
+      - to: 'explore-analyze/dashboards/arrange-panels.md'
+        anchors:
+          'edit-panels': 'panel-settings'
   # related to https://github.com/elastic/docs-content/issues/7502
   'explore-analyze/find-and-organize/data-views.md':
     many:
