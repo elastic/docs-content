@@ -72,49 +72,6 @@ redirects:
     to: 'explore-analyze/ai-features.md'
     anchors:
       '': 'model-context-protocol-mcp-servers'
-  # Related to https://github.com/elastic/docs-content/pull/7484
-  'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md':
-    to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md'
-    many:
-      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml.md'
-        anchors:
-          '_idp_slo_service': 'saml-logout'
-          '_the_idp_use_single_logout_setting': 'saml-logout'
-          '_the_sp_logout_setting': 'saml-logout'
-          '_using_kib_without_single_logout': 'saml-logout'
-          'add-the-saml-provider-to-kibana': 'saml-configure-kibana'
-          'delegating-saml-authorization-to-another-realm': 'delegate-authorization-to-another-realm'
-          'example-role-mapping-api-using-saml-attributes': 'grant-access-by-group'
-          'example-using-the-role-mapping-api': 'grant-access-by-realm'
-          'prerequisites': 'saml-prerequisites'
-          'required-idp-information': 'saml-guide-idp'
-          'signing-requirements': 'saml-guide-idp'
-          'supported-idps': 'saml-guide-idp'
-      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md'
-        anchors:
-          '_extracting_partial_values_from_saml_attributes': 'saml-attribute-patterns'
-          'map-attributes': 'map-attributes'
-          'saml-attribute-mapping-nameid': 'saml-attribute-mapping-nameid'
-          'saml-es-user-properties': 'saml-es-user-properties'
-          'saml-user-metadata': 'saml-user-metadata'
-      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml-signing-encryption.md'
-        anchors:
-          '_configuring_es_for_encrypted_messages': 'saml-encryption-configure'
-          '_configuring_es_for_signing': 'saml-sign-configure'
-          '_generating_certificates_and_keys': 'saml-sign-generate-certs'
-          'example-using-elasticsearch-certutil': 'example-using-elasticsearch-certutil'
-          'example-using-openssl': 'example-using-openssl'
-          'sign-only-certain-message-types': 'sign-only-certain-message-types'
-      - to: 'deploy-manage/users-roles/cluster-or-deployment-auth/saml-without-kibana.md'
-        anchors:
-          'saml-no-kibana-idp-init-sso': 'saml-no-kibana-idp-init-sso'
-          'saml-no-kibana-realm': 'saml-no-kibana-realm'
-          'saml-no-kibana-slo': 'saml-no-kibana-slo'
-          'saml-no-kibana-sp-init-sso': 'saml-no-kibana-sp-init-sso'
-          'saml-no-kibana-user': 'saml-no-kibana-user'
-      - to: 'troubleshoot/elasticsearch/security/trb-security-saml.md'
-        anchors:
-          'saml-troubleshooting':
   'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-cluster-communications.md'
   'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
@@ -927,6 +884,12 @@ redirects:
     anchors:
       'alert-data-model':
 
+# Related to the tags and runbooks page adding dashboards
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-tags.md':
+    to: 'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-artifacts.md'
+    anchors:
+      'tags-investigation':
+
 # Related to cases and alerting documentation restructuring
   # Main pages
   'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
@@ -1231,6 +1194,98 @@ redirects:
     anchors:
       '': 'configure-privileges-for-ccs'
 
+  # kNN search page restructure: anchors moved to child pages
+  'solutions/search/vector/knn.md':
+    to: 'solutions/search/vector/knn.md'
+    anchors:
+      'choosing-between-approximate-and-exact-knn': 'knn-methods'
+      'knn-search-examples': 'knn-search-examples'
+      'knn-build-query-vector': 'knn-build-query-vector'
+      'knn-semantic-search': 'knn-semantic-search'
+      'knn-lookup-similar-documents': 'knn-lookup-similar-documents'
+    many:
+      - to: 'solutions/search/vector/knn/approximate-knn.md'
+        anchors:
+          'approximate-knn': 'approximate-knn'
+          'knn-methods-approximate': 'approximate-knn'
+          'knn-indexing-considerations': 'knn-indexing-considerations'
+          'approximate-knn-limitations': 'approximate-knn'
+      - to: 'solutions/search/vector/knn/exact-knn.md'
+        anchors:
+          'exact-knn': 'exact-knn'
+          'knn-methods-exact': 'exact-knn'
+      - to: 'solutions/search/vector/knn/optimize-performance-accuracy.md'
+        anchors:
+          'tune-approximate-knn-for-speed-accuracy': 'tune-approximate-knn-for-speed-accuracy'
+          'approximate-knn-using-byte-vectors': 'approximate-knn-using-byte-vectors'
+          'knn-search-quantized-example': 'knn-search-quantized-example'
+          'knn-search-bfloat16': 'knn-search-bfloat16'
+          'dense-vector-knn-search-rescoring': 'dense-vector-knn-search-rescoring'
+          'the-rescore_vector-option': 'the-rescore_vector-option'
+          'the-on_disk_rescore-option': 'the-on_disk_rescore-option'
+          'dense-vector-knn-search-rescoring-rescore-additional': 'dense-vector-knn-search-rescoring-rescore-additional'
+          'dense-vector-knn-search-rescoring-rescore-section': 'dense-vector-knn-search-rescoring-rescore-section'
+          'dense-vector-knn-search-rescoring-script-score': 'dense-vector-knn-search-rescoring-script-score'
+      - to: 'solutions/search/vector/knn/approximate-knn-query-examples.md'
+        anchors:
+          '_combine_approximate_knn_with_other_features': 'combine_approximate_knn_with_other_features'
+          'combine_approximate_knn_with_other_features': 'combine_approximate_knn_with_other_features'
+          'knn-similarity-search': 'knn-similarity-search'
+          '_search_multiple_knn_fields': '_search_multiple_knn_fields'
+      - to: 'solutions/search/vector/knn/filtered-knn-search.md'
+        anchors:
+          'knn-search-filter-example': 'knn-search-filter-example'
+          'approximate-knn-search-and-filtering': 'filtering-behavior-and-performance'
+      - to: 'solutions/search/vector/knn/nested-knn-search.md'
+        anchors:
+          'nested-knn-search': 'nested-knn-search'
+          'nested-knn-search-filtering': 'nested-knn-search-filtering'
+          'nested-knn-search-filtering-nested-metatadata': 'nested-knn-search-filtering-nested-metatadata'
+          'nested-knn-search-filtering-sibling': 'nested-knn-search-filtering-sibling'
+          'nested-knn-search-inner-hits': 'nested-knn-search-inner-hits'
+          'nested-knn-search-chunked-content': 'nested-knn-search-chunked-content'
+          'create-the-index-mapping': 'nested-knn-search-chunked-content'
+          'index-the-documents': 'nested-knn-search-chunked-content'
+          'run-the-search-query': 'nested-knn-search-chunked-content'
+
+  # Query vector examples moved to the shared kNN page
+  'solutions/search/vector/knn/approximate-knn-query-examples.md':
+    to: 'solutions/search/vector/knn/approximate-knn-query-examples.md'
+    many:
+      - to: 'solutions/search/vector/knn.md'
+        anchors:
+          'knn-build-query-vector': 'knn-build-query-vector'
+          'knn-semantic-search': 'knn-semantic-search'
+          'knn-lookup-similar-documents': 'knn-lookup-similar-documents'
+      - to: 'solutions/search/vector/knn/filtered-knn-search.md'
+        anchors:
+          'knn-search-filter-example': 'knn-search-filter-example'
+          'knn-prefilter-vs-postfilter': 'knn-prefilter-vs-postfilter'
+          'filtering-behavior-and-performance': 'filtering-behavior-and-performance'
+
+  # Approximate kNN query examples: page renamed and content reorganized
+  'solutions/search/vector/knn/build-search-queries.md':
+    to: 'solutions/search/vector/knn/approximate-knn-query-examples.md'
+    many:
+      - to: 'solutions/search/vector/knn.md'
+        anchors:
+          'knn-build-query-vector': 'knn-build-query-vector'
+          'knn-semantic-search': 'knn-semantic-search'
+          'knn-lookup-similar-documents': 'knn-lookup-similar-documents'
+      - to: 'solutions/search/vector/knn/filtered-knn-search.md'
+        anchors:
+          'knn-search-filter-example': 'knn-search-filter-example'
+          'knn-prefilter-vs-postfilter': 'knn-prefilter-vs-postfilter'
+          'filtering-behavior-and-performance': 'filtering-behavior-and-performance'
+          'approximate-knn-search-and-filtering': 'filtering-behavior-and-performance'
+      - to: 'solutions/search/vector/knn/nested-knn-search.md'
+        anchors:
+          'nested-knn-search': 'nested-knn-search'
+          'nested-knn-search-filtering': 'nested-knn-search-filtering'
+          'nested-knn-search-filtering-nested-metatadata': 'nested-knn-search-filtering-nested-metatadata'
+          'nested-knn-search-filtering-sibling': 'nested-knn-search-filtering-sibling'
+          'nested-knn-search-inner-hits': 'nested-knn-search-inner-hits'
+          'nested-knn-search-chunked-content': 'nested-knn-search-chunked-content'
   # Related to https://github.com/elastic/docs-content/pull/7151
   'deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md':
     to: 'deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md'
@@ -1244,6 +1299,13 @@ redirects:
     to: 'reference/fleet/managed-content.md'
     anchors:
       'managed-integrations-content':
+
+  # Fleet: folded the environment variables stub into the integration policy scaling guide
+  # related to https://github.com/elastic/docs-content/issues/2166
+  'reference/fleet/fleet-agent-environment-variables.md':
+    to: 'reference/fleet/scale-integration-policies.md'
+    anchors:
+      'fleet-agent-environment-variables': 'reuse-one-integration-policy-with-variables'
 
   # Jina on-prem deployment content moved back to ml-nlp-jina.md
   'explore-analyze/machine-learning/nlp/ml-nlp-jina-on-prem.md':
