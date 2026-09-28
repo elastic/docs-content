@@ -11,7 +11,7 @@ type: how-to
 
 # Create an {{serverless-full}} project [serverless-get-started]
 
-There are a few options to create a serverless project:
+You can create a serverless project in the following ways:
 
 * If you are a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration) to create a serverless project. For more information about the {{ecloud}} trials, refer to [Trial features](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 * If you are an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and [create a project in the {{ecloud}} console](#create-project-console). The `admin` predefined role or an equivalent custom role is required to create projects. Refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
@@ -31,7 +31,7 @@ Decide which project type you might need before you create the project. You'll s
 
 To match a type to your use case, review this [project comparison table](/deploy-manage/deploy/elastic-cloud/serverless.md#choose-a-project-type).
   
-You can't convert a project to a different type later. If you choose the wrong type, create another project. When you no longer need a project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) so it doesn't continue to incur charges.
+You can't convert a project to a different project type later. If you choose the wrong project type, create another project. When you no longer need a project, [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless) so it doesn't continue to incur charges.
 
 You can have up to 500 {{serverless-short}} projects in your organization. This limit applies whether you create projects in the {{ecloud}} console or with the API. If you reach the limit, you'll get an error when you try to create another project. To request an increase, [contact Elastic Support](/troubleshoot/index.md#contact-us).
 

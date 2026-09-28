@@ -10,7 +10,7 @@ navigation_title: Serverless FAQ
 
 The following FAQ addresses common questions about using {{serverless-full}} projects.
 
-For information about upcoming features, refer to our [roadmap](https://www.elastic.co/cloud/serverless/roadmap).
+For information about upcoming features, refer to our [roadmap](https://github.com/orgs/elastic/projects/2066/views/2?filterQuery=&sliceBy%5Bvalue%5D=Serverless).
 
 ## Pricing and availability
 
@@ -23,16 +23,17 @@ A: {{serverless-full}} is available in select AWS, GCP, and Azure regions, with 
 ## Data management
 
 **Q: How can I move data to or from {{serverless-short}} projects?**  
-A: You can [use Reindex from remote](/manage-data/migrate/migrate-data-using-reindex-api.md) as the most direct and managed
+A: You can [use Reindex from remote](/manage-data/migrate/migrate-data-using-reindex-api.md) as the preferred
 option. You can also [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from {{serverless-short}} projects.
 
 **Q: Can I request backups or restores for my serverless projects?**  
-A: Request for project backups or restores is currently unsupported, and we are working on data migration tools to better support this.
+A: On-demand project backups or restores are currently unavailable. 
+User-initiated data recovery is anticipated in a future release. You can follow its progress by referring to the [public roadmap](https://github.com/elastic/roadmap/issues/228).
 
 ## Security, compliance, and access
 
 **Q: How can I create {{serverless-full}} service accounts?**  
-A: Create API keys for service accounts in your {{serverless-short}} projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
+A: Create API keys for service accounts in your {{serverless-short}} projects. You can create them in {{kib}}, with the {{es}} API, or as code with Terraform. Refer to [](/deploy-manage/api-keys/serverless-project-api-keys.md) for details.
 
 **Q: Can I configure {{es}} authentication realms (for example, native realm) in {{serverless-short}} projects?**  
 A: No. {{serverless-short}} uses a different authentication model and does not support [{{es}} authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md). Project-level access is handled through [Serverless project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md), and user authentication is managed at the [{{ecloud}} organization level](/deploy-manage/users-roles/cloud-organization.md) (including SAML SSO).
@@ -49,10 +50,10 @@ A: In addition to the standard {{ecloud}} endpoints, ensure users can access `ki
 A: Connections and configurations are unaffected by upgrades. To ensure compatibility between software versions, quality testing and API versioning are used.
 
 **Q: Can I convert a {{serverless-full}} project into an {{ech}} deployment, or a hosted deployment into a {{serverless-short}} project?**  
-A: Projects and deployments are based on different architectures, so you are unable to convert.
+A: No, you cannot convert, because projects and deployments are based on different architectures.
 
 **Q: Can I convert a {{serverless-short}} project into a project of a different type?**  
-A: You are unable to convert projects into different project types, but you can create as many projects as you’d like. You will be charged only for your usage.
+A: No, you cannot convert your project to a different project type, but you can create as many projects as you’d like.
 
 **Q: How do I raise a support case for {{serverless-full}}?**  
 A: Raise a case for your subscription as you do today. In the body of the case, mention you are working with a {{serverless-short}} project to ensure appropriate support.
