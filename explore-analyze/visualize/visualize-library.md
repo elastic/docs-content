@@ -36,7 +36,9 @@ A [custom panel](custom-panels.md) is saved with its dashboard. You cannot save 
 
 Where you open the library depends on your version and navigation.
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` On the **Dashboards** page, select **Visualizations** or **Annotation groups**. In a solution view, and on serverless, **Visualize library** is not in the navigation menu. In the Classic navigation, **Visualize library** also stays in the navigation menu.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` On the **Dashboards** page, select **Visualizations** or **Annotation groups**.
+- {applies_to}`serverless: ga` **Visualize library** is not in the navigation menu.
+- {applies_to}`stack: ga 9.4+` **Visualize library** is not in the navigation menu in a [solution view](/deploy-manage/manage-spaces.md). In the **Classic** view, **Visualize library** stays in the navigation menu.
 - {applies_to}`stack: ga 9.0-9.3` Open **Visualize library** from the navigation menu.
 
 You can also search for **Visualize library** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).

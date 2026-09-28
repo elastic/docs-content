@@ -203,7 +203,7 @@ Give a panel its own title, description, or time range. These settings apply to 
 3. Turn on **Show title**, then enter a **Title**. You can also enter a **Description**.
 4. To use a time range that differs from the dashboard, turn on **Apply custom time range** and set **Time range**.
 5. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Turn **Show panel border** on or off. This panel then uses that choice instead of the dashboard border setting.
-6. Select **Apply**.
+6. Select **Apply**. The panel keeps the settings you applied.
 
 ### Remove a panel [remove-a-panel]
 
