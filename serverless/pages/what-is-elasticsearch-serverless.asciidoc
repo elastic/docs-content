@@ -38,9 +38,9 @@ Learn how to connect your applications to your {es-serverless} endpoint.
 a| [.card-title]#<<elasticsearch-ingest-your-data,*Ingest data →*>># +
 Learn how to get your data into {es} and start building your search application.
 
-| 🤖
-a| [.card-title]#https://www.elastic.co/docs/explore-analyze/ai-features/elastic-agent-builder[*Try Agent Builder →*]# +
-After you've added some data, use Agent Builder to chat with your data and build AI agents.
+| 🛝
+a| [.card-title]#{kibana-ref}/playground.html[*Try Playground →*]# +
+After you've added some data, use Playground to test out queries and combine {es} with the power of Generative AI in your applications.
 |===
 
 [discrete]
