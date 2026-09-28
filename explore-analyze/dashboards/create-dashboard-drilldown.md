@@ -34,7 +34,7 @@ The following panel types support dashboard drilldowns:
 * **Maps**
 * Legacy Kibana visualization types, such as **TSVB**, **Aggregation-based**, and **Timelion**
 
-Some values cannot open a drilldown. For a value created at query time, refer to [How a drilldown uses the selected value](drilldowns.md#drilldowns-requirements).
+For a value created at query time, refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements).
 
 ## Create the drilldown [_create_the_dashboard_drilldown]
 

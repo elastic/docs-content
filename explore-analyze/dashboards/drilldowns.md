@@ -32,11 +32,13 @@ You can add three types of drilldown:
 :screenshot:
 :::
 
-## How a drilldown uses the selected value [drilldowns-requirements]
+## Values that cannot open a drilldown [drilldowns-requirements]
 
 A drilldown uses a value from a field in the data source. You cannot filter or open a drilldown from a value created at query time, because that value has no field in the index. This includes a Lens formula, an aggregation result, and an {{esql}} `EVAL` or `STATS` result.
 
-In the following {{esql}} query, `status` does not exist in the index. The query creates `status` from `response.keyword`. For that reason, you cannot filter or open a drilldown from `status` in the resulting visualization.
+::::{dropdown} ES|QL example
+
+In the following query, `status` does not exist in the index. The query creates `status` from `response.keyword`. For that reason, you cannot filter or open a drilldown from `status` in the resulting visualization.
 
 ```esql
 FROM kibana_sample_data_logs
@@ -56,12 +58,12 @@ FROM kibana_sample_data_logs
 :screenshot:
 :::
 
-:::{tip}
 If the query gives an index field a new name:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` You can still filter and open a drilldown from that field. `STATS count(*) BY host = hostname` renames `hostname` to `host`. `RENAME hostname AS host` does the same.
 - {applies_to}`stack: ga =9.4` You cannot filter or open a drilldown from that field.
-:::
+
+::::
 
 For more information about filter pills, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
 

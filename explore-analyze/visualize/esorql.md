@@ -177,7 +177,7 @@ serverless: ga
 - [URL](../dashboards/create-url-drilldown.md) drilldowns: Open an external URL from a data point.
 - {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
-Refer to [How a drilldown uses the selected value](../dashboards/drilldowns.md#drilldowns-requirements) for a value created at query time, and for a renamed index field.
+Refer to [Values that cannot open a drilldown](../dashboards/drilldowns.md#drilldowns-requirements) for a value created at query time, and for a renamed index field.
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}
