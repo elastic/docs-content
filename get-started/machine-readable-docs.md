@@ -205,7 +205,7 @@ Audit documentation coverage and consistency (for docs contributors):
 ### Troubleshooting [mcp-troubleshooting]
 
 No tools available after configuring the server
-:   Reload or restart your editor after editing the MCP config file, and confirm the server is enabled in your client's MCP settings, for example Cursor's **Settings** → **MCPs**, or by running `claude mcp list` in Claude Code.
+:   Reload or restart your tool after adding the server, and confirm it's connected, for example Cursor's **Settings** → **MCPs**, or by running `claude mcp list` in Claude Code.
 
 Empty or irrelevant search results
 :   Drop `productFilter` or `sectionFilter` values that might not match, and rephrase the query using the product's own terminology.
