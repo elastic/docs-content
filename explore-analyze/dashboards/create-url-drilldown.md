@@ -13,7 +13,7 @@ type: how-to
 
 A URL drilldown opens a website from a panel. The URL can change with the dashboard time range, the dashboard filters, and the value you select. You build that URL with [variables](#url-template-variable). [URL template help](#url-templating-language) explains the syntax and the values you can insert.
 
-Refer to [Drilldowns](drilldowns.md) to choose a drilldown type and to check values created at query time.
+Refer to [Drilldowns](drilldowns.md) to choose a drilldown type.
 
 ## Before you begin [create-url-drilldown-requirements]
 
@@ -32,7 +32,7 @@ The following panel types support URL drilldowns:
 * **Discover** sessions
 * Legacy Kibana visualization types, such as **TSVB**, **Aggregation-based**, and **Timelion**
 
-For a value created at query time, refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements).
+A drilldown is compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements).
 
 ## Triggers [url-drilldown-triggers]
 

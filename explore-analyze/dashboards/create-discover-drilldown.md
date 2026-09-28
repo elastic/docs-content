@@ -15,7 +15,7 @@ A Discover drilldown opens **Discover** from a visualization panel and can carry
 
 For example, a Discover drilldown on a pie chart can open only the documents for the slice you select.
 
-Refer to [Drilldowns](drilldowns.md) to choose a drilldown type and to check values created at query time.
+Refer to [Drilldowns](drilldowns.md) to choose a drilldown type.
 
 ## Before you begin [create-discover-drilldown-requirements]
 
@@ -41,7 +41,7 @@ On a **Bar**, **Line**, **Area**, or **Heat map**, drag to select a range. That 
 You can [open a visualization panel in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
 ::::
 
-For a value created at query time, refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements).
+A drilldown is compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements).
 
 ## Create the drilldown [_create_the_discover_drilldown]
 

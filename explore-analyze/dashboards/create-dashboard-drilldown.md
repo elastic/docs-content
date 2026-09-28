@@ -15,7 +15,7 @@ A dashboard drilldown opens another dashboard and can carry the time range, filt
 
 For example, a dashboard can show logs and metrics for several data centers. A drilldown can open a dashboard for the one data center or server you select.
 
-Refer to [Drilldowns](drilldowns.md) to choose a drilldown type and to check values created at query time.
+Refer to [Drilldowns](drilldowns.md) to choose a drilldown type.
 
 ## Before you begin [create-dashboard-drilldown-requirements]
 
@@ -34,7 +34,7 @@ The following panel types support dashboard drilldowns:
 * **Maps**
 * Legacy Kibana visualization types, such as **TSVB**, **Aggregation-based**, and **Timelion**
 
-For a value created at query time, refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements).
+A drilldown is compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements).
 
 ## Create the drilldown [_create_the_dashboard_drilldown]
 
