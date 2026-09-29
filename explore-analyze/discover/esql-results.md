@@ -81,11 +81,18 @@ FROM kibana_sample_data_logs
 
 ## Show specific columns in the results table [esql-kibana-results-table]
 
-Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same. Until you add fields, the table shows a **Summary** column of each result's key-value pairs. The time field is the first column when the data has `@timestamp`, or when the query names that field.
+Until you add fields, the table shows a **Summary** column of each result's key-value pairs. The time field is the first column when the data has `@timestamp`, or when the query names that field.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no command such as `KEEP` or `STATS`, the time field stays the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
+:::{note}
+:applies_to: { serverless: ga, stack: ga 9.4 }
+When a query without a command such as `KEEP` or `STATS` returns 5 or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
+:::
 
 To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
+
+Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no command such as `KEEP` or `STATS`, the time field stays the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
 
 To control which fields the query returns, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
 
@@ -107,13 +114,6 @@ To display all fields as separate columns, use `KEEP *`:
 FROM kibana_sample_data_logs
 | KEEP *
 ```
-
-:::{note}
-:applies_to: { serverless: ga, stack: ga 9.4 }
-When a query without a command such as `KEEP` or `STATS` returns 5 or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
-:::
-
-To reorder or resize columns, adjust the table density or row height, or display the table in full-screen mode, refer to [Customize the Discover view](document-explorer.md).
 
 ## Row and column limits [esql-kibana-results-table-limitations]
 
