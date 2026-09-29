@@ -32,7 +32,7 @@ The panel already has a drilldown. To reuse one, another panel on the same dashb
 
     * To change a drilldown, select **Edit**, make your changes, then select **Save**.
     * To make another copy on the same panel, select **Copy**, then select **Create drilldown**. The name ends with `(copy)`.
-    * To delete a drilldown, select it, then select **Delete ({count})**.
+    * To delete a drilldown, select it, then select **Delete**.
 
 ## Reuse a drilldown on another panel [reuse-a-drilldown-on-another-panel]
 
