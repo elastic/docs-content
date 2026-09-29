@@ -276,7 +276,7 @@ Example: For a private location expected to run 2 concurrent browser monitors an
 
 ### Known limitations on vertical scaling
 
-- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a scalable {{private-location}}, this limit applies per location, not per agent — adding more agents does not raise it.
+- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a scalable {{private-location}}, this limit applies per location, not per agent, which means that adding more agents does not raise it.
 
 - Many Synthetics monitors, or monitors with complex configurations, can cause the check-in payload to exceed the default 1 MiB `checkin_limit.max_body_byte_size` limit on {{fleet-server}}. When this happens, check-ins are rejected and agents appear offline or unhealthy in the Fleet UI even though monitors are executing successfully. To resolve this, increase the `server.limits.checkin_limit.max_body_byte_size` setting on your self-managed Fleet Server. Refer to [Advanced {{fleet-server}} options](/reference/fleet/fleet-server-scalability.md#fleet-server-configuration) for configuration details and an example.
 

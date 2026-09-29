@@ -81,16 +81,16 @@ serverless: ga
 
 The **{{private-location}}s** table shows the state of the {{agents}} that run each location's monitors:
 
-* **Agent Policy**: The name of the location's agent policy. A [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable) shows a **Scalable** badge with the number of enrolled agents. A classic location shows the number of agents on its policy. Click the policy name to view its status, enrolled agents, and healthy agents, then click **View policy in {{fleet}}** to open it in {{fleet}}.
-* **Health**: How many of the location's agents are healthy, for example `2/3 healthy`. An agent is healthy when {{fleet}} reports it as online.
+* **Agent Policy**: Displays the name of the location's agent policy. A [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable) shows a **Scalable** badge with the number of enrolled agents, whereas a classic location shows the number of agents on its policy. Click the policy name to view its status, enrolled agents, and healthy agents. To open it in {{fleet}}, click **View policy in {{fleet}}**.
+* **Health**: Shows how many of the location's agents are healthy, for example `2/3 healthy`. An agent is healthy when {{fleet}} reports it as online.
 
 To view details for each agent, expand the location's row. The **Agents overview** panel shows:
 
 * The number of **Monitors**, **Agents**, and **Healthy agents** in the location, and the **Total memory** used and available across its agents.
-* **Monitors per agent**: One row for each agent, with its **Monitors**, **Monitors run**, **Memory (used / total)**, **CPU**, **Status**, and **Last agent check-in**. **Monitors run** is the share of the location's monitors that the agent runs. In a scalable location, each monitor runs on one agent. In a classic location, every agent runs all of the location's monitors.
+* Monitors per agent. Each row is one agent, with its **Monitors**, **Monitors run**, **Memory (used / total)**, **CPU**, **Status**, and **Last agent check-in**. **Monitors run** is the share of the location's monitors that the agent runs. In a scalable location, each monitor runs on one agent. In a classic location, every agent runs all of the location's monitors.
 * A **Needs attention** callout when agents aren't reporting as online, or when an agent uses 85% or more of its memory.
 
-Click an agent's name to view its health, capacity, and {{fleet}} details, then click **View full details in {{fleet}}** to open the agent in {{fleet}}. Use **View agent policy** and **Manage agents in {{fleet}}** to open the agent policy and its agents in {{fleet}}.
+Click an agent's name to view its health, capacity, and {{fleet}} details. To open it in {{fleet}}, click **View policy in {{fleet}}**. Use **View agent policy** and **Manage agents in {{fleet}}** to open the agent policy and its agents in {{fleet}}.
 
 Memory and CPU show **N/A** for agents that don't report host metrics. To report them, add the System integration to the agent policy.
 
