@@ -73,7 +73,7 @@ An ESQL source gives {{context-engine}} data to inspect when it suggests an auto
 Add an ESQL source to the AI index:
 
 1. In **Sources**, select **Edit**.
-2. On the **ESQL** tab, enter a query that returns a small, representative set of records from your data. If you are using the ecommerce sample data, enter:
+2. On the **Elasticsearch data** tab, expand **Advanced: ES|QL**, then enter a query that returns a small, representative set of records from your data. If you are using the ecommerce sample data, enter:
 
    ```esql
    FROM kibana_sample_data_ecommerce
