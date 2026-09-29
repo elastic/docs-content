@@ -38,9 +38,9 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 
 1. Open **Discover** from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. If the editor is not in {{esql}} mode yet, switch to it. Refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md#switch-discover-query-mode).
-3. Set the time filter to **Last 7 days**.
+3. Set the time filter to the 7 days before you installed the sample data. If you installed it today, select **Last 7 days**. Otherwise, [set a custom range](/explore-analyze/query-filter/filtering.md#set-time-filter) that ends on the installation date.
 
-   The sample web logs have an `@timestamp` field, so Discover connects the results to it. The time filter keeps only the results in the range you pick, and the chart shows how they spread over that range. Sample data timestamps are relative to when you installed the set. If the table stays empty, widen the range.
+   The sample web logs have an `@timestamp` field, so Discover connects the results to it. The time filter keeps only the results in the range you pick, and the chart shows how they spread over that range.
 
    :::{tip}
    If your time field has a name other than `@timestamp`, you can name it in the query to bind it to the time range selector. If your data has no time field, Discover shows no time filter and no chart. Refer to [Set the time filter for the table and the chart](esql-results.md#_esql_and_time_series_data).
@@ -56,7 +56,7 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 
 5. Select **Search** (or **▶Run** in earlier versions).
 
-**Result:** Each result in the table is one visit to the sample website. The table shows the time of each visit, and a **Summary** of its other fields. The chart shows how the visits spread over the last 7 days.
+**Result:** Each result in the table is one visit to the sample website. The table lists up to 1,000 visits, with the time of each visit and a **Summary** of its other fields. The chart shows how the visits spread over the 7 days.
 
 :::{image} /explore-analyze/images/kibana-discover-try-esql-from.png
 :alt: Discover in ES|QL mode with the query FROM kibana_sample_data_logs, a histogram of results over time, and a table with @timestamp and Summary columns
