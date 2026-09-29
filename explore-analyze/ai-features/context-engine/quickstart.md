@@ -81,7 +81,7 @@ Add an ESQL source to the AI index:
    | LIMIT 100
    ```
 
-3. Select **Add ESQL source**.
+3. Select **Add ES|QL source**.
 4. Confirm that the query appears under **Selected sources**.
 5. Select **Save**.
 
