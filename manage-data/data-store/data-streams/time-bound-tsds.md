@@ -13,7 +13,7 @@ products:
 
 # Time-bound indices and dimension-based routing [time-bound-indices]
 
-Unlike regular data streams that write only to the most recent backing index, {{tsds}} ({{tsds-init}}) are backed by a set of time-bound indices, each covering a contiguous, non-overlapping time range.
+Unlike regular data streams that write only to the most recent backing index, {{tsdses}} ({{tsds-init}}) are backed by a set of time-bound indices, each covering a contiguous, non-overlapping time range.
 {{es}} enforces that the `@timestamp` for each ingested document falls within the time range of exactly one backing index.
 
 ## How time-bound indices work [tsds-accepted-time-range]
@@ -45,7 +45,7 @@ By default, if no existing backing index can accept a document's `@timestamp`, {
 {{es}} does not create missing past backing indices unless you [turn on past index creation](#tsds-past-index-creation).
 
 ::::{tip}
-Writes might still be rejected even when a timestamp fits the accepted time range of a backing index. The following [actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions.md) can affect the writable time range, either because they make a backing index read-only or remove it:
+Writes might still be rejected even when a timestamp fits the accepted time range of a backing index. The following [actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) can affect the writable time range, either because they make a backing index read-only or remove it:
 
 - [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md)
 - [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
