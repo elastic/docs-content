@@ -17,7 +17,7 @@ In this tutorial you query data in **Discover** with Elasticsearch Query Languag
 
 You do not need a [data view](discover-get-started.md#find-the-data-you-want-to-use), and you do not need {{esql}} experience. For the rest of Discover, refer to [Explore fields and data with Discover](discover-get-started.md). For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
-By the end of this tutorial, you have a query that sets the rows in the table and the chart, and you can reopen it.
+By the end of this tutorial, you can query a data source from Discover, filter and sort the rows the table and chart show, group those rows, and save the session so you can reopen it.
 
 ## Before you begin [try-esql-prerequisites]
 
