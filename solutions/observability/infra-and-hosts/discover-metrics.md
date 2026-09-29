@@ -2,7 +2,7 @@
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Make the most of Discover to explore metrics data.
+description: Explore metrics data in Discover with an automatic grid of charts. Search, filter, and break down metrics by dimension, then add them to dashboards.
 products:
   - id: observability
   - id: security

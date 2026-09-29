@@ -22,11 +22,11 @@ A new panel appears on the dashboard with the results of the query along with an
 :screenshot:
 :::
 
-**Method 2: Adding the Discover visualization** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+`
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` **Method 2: Adding the Discover visualization**
 
 This method allows you to add the visualization of your Discover {{esql}} query to any dashboard.
 
-1. Next to the Discover visualization, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions).
+1. Next to the Discover visualization, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 
    :::{image} /explore-analyze/images/save-discover-viz-to-dashboard.png
    :alt: Importing Discover visualization with controls into a dashboard

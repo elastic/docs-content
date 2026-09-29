@@ -37,7 +37,7 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
 
    :::{note}
    :applies_to: { serverless: preview, stack: preview 9.5+ }
-   When searching large data sets, you can get faster, estimated results by using {icon}`bolt` **Fast mode**. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+   When you search large data sets, you can get faster, estimated results by using {icon}`bolt` **Fast mode**. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
    :::
 
    :::{image} /explore-analyze/images/discover-esql-cascade-overview.png

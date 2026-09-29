@@ -4,9 +4,10 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Find the data streams for an Elastic integration, then view or customize the lifecycle policy that manages their backing indices.
 ---
 
-# Managing lifecycle polices for integrations data [ilm-manage-lifecycle-policy-integrations-data]
+# Managing lifecycle policies for integrations data [ilm-manage-lifecycle-policy-integrations-data]
 
 Learn to apply and manage lifecycle policies for integrations data stored in {{es}}. This documentation covers default policies for Elastic integrations, how to override them, and how to align retention rules with your requirements.
 

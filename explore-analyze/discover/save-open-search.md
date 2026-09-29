@@ -8,7 +8,7 @@ applies_to:
 type: how-to
 products:
   - id: kibana
-description: Save Discover sessions to reuse queries, filters, and views. Add sessions to dashboards or build visualizations from them.
+description: Save Discover sessions to reuse queries, filters, and views. Add sessions to dashboards, or use them to build visualizations.
 ---
 
 # Save a Discover session for reuse [save-open-search]
@@ -116,7 +116,7 @@ You need permission to view and create dashboards.
 #### In {{esql}} mode [add-discover-visualization-esql]
 
 1. In Discover, run an {{esql}} query that produces a chart.
-2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** depending on the version you're using).
+2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 3. Enter a title for the panel, and optionally a description.
 4. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 5. Select **Save and go to dashboard**.

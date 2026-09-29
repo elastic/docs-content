@@ -10,6 +10,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+description: Set up your first Elastic Observability deployment, collect data from your infrastructure and applications, and explore it.
 ---
 
 # Get started with Elastic {{observability}} [observability-get-started]

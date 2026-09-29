@@ -13,7 +13,7 @@ description: Create and edit lookup indices from the ES|QL editor in Discover. A
 
 In **Discover**, [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) commands include interactive options that let you create or edit lookup indices directly from the editor. You can enter rows, upload a CSV file, and join the new index in the same query.
 
-This page describes the {{kib}} editor. You can also create and manage indices using the {{es}} APIs for [version 9]({{es-apis}}operation/operation-indices-create) and [{{serverless-full}}]({{es-serverless-apis}}operation/operation-indices-create).
+This page describes the {{kib}} editor. You can also create and manage indices with the create index API for [{{stack}}]({{es-apis}}operation/operation-indices-create) and for [{{serverless-full}}]({{es-serverless-apis}}operation/operation-indices-create).
 
 ## Before you begin
 
@@ -39,7 +39,7 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
 
 2. Select the **Create lookup index** suggestion that appears in the autocomplete menu.
 
-3. Enter a name for the lookup index.
+3. Enter a name for the lookup index. The name must follow these rules:
    - The name must not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
    - The name must not start with `-`, `_`, or `+`.
 
@@ -55,7 +55,7 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
 
    :::{tip}
    :applies_to: { serverless: preview, stack: preview 9.5+ }
-   The search field supports free text and [Kibana Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the filter doesn't match unsaved values.
+   The search field supports free text and [Kibana Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the search doesn't match unsaved values.
    :::
 
 6. **Save** any unsaved changes, then **Close** the index editor to return to your query.
@@ -72,7 +72,7 @@ When you are editing a lookup index from the {{esql}} editor, you can add data t
 1. Drag the files you want to upload from your computer. You can add several files at a time and can repeat the operation multiple times.
 
    :::{note}
-   If your index has unsaved changes, a message informs you that you lose these changes. To keep those changes, cancel the upload and save your index, then start a new upload.
+   If your index has unsaved changes, a message tells you that you lose these changes. To keep these changes, cancel the upload and save your index, then start a new upload.
    :::
 
 2. Preview the data for each file you're importing, then select **Continue**. If the editor detects issues, a message appears with more details. Typical issues include differences between the fields of the index and those of the imported files.
@@ -92,7 +92,7 @@ Data coming from the files is appended to the index, and the index is automatica
 2. Select the CSV file to import on your machine. You can select several files to import at once.
 
    :::{note}
-   If your index has unsaved changes, a message informs you that you lose these changes. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
+   If your index has unsaved changes, a message tells you that you lose these changes. To keep these changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
    :::
 
 3. Preview the data for each file you're importing. The editor detects and sets the field data types. If it detects issues, a **File issues** tab with more details appears before you validate the import. Common issues include differences between the fields in the index and in the imported files.
@@ -108,7 +108,7 @@ Data coming from the files is appended to the index, and the index is automatica
 
 ### View or edit a lookup index from the editor [view-edit-lookup-esql]
 
-You can view and modify existing lookup indices referenced in an {{esql}} query directly from the editor, depending on your privileges.
+You can view and edit existing lookup indices referenced in an {{esql}} query directly from the editor, depending on your privileges.
 
 To view or edit an index:
 

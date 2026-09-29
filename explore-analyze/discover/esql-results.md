@@ -13,7 +13,7 @@ description: Filter and sort ES|QL results in Discover, select columns, and turn
 
 After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You can filter the rows, sort them, and show the fields you want. You can also set the time filter, and the table and the chart use that time range.
 
-- **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows in the table, or change which rows come back](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) with `LIMIT`.
+- **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort rows or change which rows the query returns](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) with `LIMIT`.
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
 - **Time filter and chart:** [Set the time filter for the table and the chart](#_esql_and_time_series_data). Discover applies the time filter when the data has an `@timestamp` field. If the time field has another name, name it in the query.
 
@@ -96,7 +96,7 @@ To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColum
 
 Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no command such as `KEEP` or `STATS`, the time field stays the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no command such as `KEEP` or `STATS`, the time field stays the first column after you add other fields. CSV exports from **Discover** and from Discover session panels on dashboards also include the time field.
 
 ### Return specific fields with `KEEP`
 

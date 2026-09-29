@@ -29,9 +29,9 @@ If your visualization's query uses exactly one `STATS` command, dashboard users 
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
-In Discover, an [ES|QL query](../query-filter/languages/esql-kibana.md) shows a visualization when the query transforms the results, for example with `STATS` or `KEEP`, or when the results have a time field. The time field is `@timestamp`, or the field that the query compares with the `?_tstart` and `?_tend` parameters. The query determines the visualization type, such as a histogram or a bar chart. To change the visualization type and display options, select {icon}`pencil` **Edit visualization**.
+In Discover, an [ES|QL query](../query-filter/languages/esql-kibana.md) shows a visualization when the query transforms the results, for example, with `STATS` or `KEEP`, or when the results have a time field. The time field is `@timestamp`, or the field that the query compares with the `?_tstart` and `?_tend` parameters. The query determines the visualization type, such as a histogram or a bar chart. To change the visualization type and display options, select {icon}`pencil` **Edit visualization**.
 
-To add the visualization to an existing or a new dashboard, select {icon}`app_dashboard` **Save visualization to dashboard** ({icon}`save` **Save visualization** in earlier versions).
+To add the visualization to an existing or a new dashboard, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 
 ## Create from dashboard [_create_from_dashboard]
 

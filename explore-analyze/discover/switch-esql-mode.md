@@ -24,7 +24,7 @@ This page explains how to switch between modes, and what Discover does with your
 
 ## Switch to Discover's {{esql}} mode [switch-discover-query-mode]
 
-When switching from classic mode to {{esql}} mode, Discover converts the existing KQL or Lucene query as follows:
+When you switch from classic mode to {{esql}} mode, Discover converts the existing KQL or Lucene query as follows:
 
 - A KQL query becomes a `WHERE KQL("""<your query text>""")` clause, and a Lucene query becomes a `WHERE QSTR("""<your query text>""")` clause.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar become `WHERE` clauses where possible. Discover drops filters that it can't convert, such as scripted filters.
@@ -43,7 +43,7 @@ To switch:
 
 ## Switch to Discover's classic mode [revert-to-classic-mode]
 
-When switching from {{esql}} mode to classic mode, Discover drops the {{esql}} query and keeps the data you were querying:
+When you switch from {{esql}} mode to classic mode, Discover drops the {{esql}} query and keeps the data you were querying:
 
 - Classic mode opens with an empty KQL query. Discover doesn't restore a KQL or Lucene query that it converted when you switched to {{esql}}.
 - The data view is the one for the data source in the `FROM` command of the {{esql}} query. Discover doesn't reselect a saved data view that you used before switching to {{esql}}.
@@ -69,11 +69,7 @@ The contextual menu **Switch to classic** option appears only for the active tab
 :::
 ::::
 
-::::{applies-item} stack: ga 9.2-9.3
-From the application menu, select **Switch to classic**. This affects only your current Discover tab.
-::::
-
-::::{applies-item} stack: ga 9.0-9.1
+::::{applies-item} stack: ga 9.0-9.3
 From the application menu, select **Switch to classic**.
 ::::
 
