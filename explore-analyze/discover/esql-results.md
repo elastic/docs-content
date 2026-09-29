@@ -53,7 +53,7 @@ FROM kibana_sample_data_logs
 
 ## Show specific columns in the results table [esql-kibana-results-table]
 
-Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same. Until you add fields, the table shows `@timestamp` and a **Summary** column of each result's key-value pairs.
+Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same. Until you add fields, the table shows a **Summary** column of each result's key-value pairs. The time field is the first column when the data has `@timestamp`, or when the query names that field.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no command such as `KEEP` or `STATS`, the time field stays the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
 
