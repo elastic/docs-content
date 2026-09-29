@@ -154,12 +154,17 @@ FROM kibana_sample_data_ecommerce
 
 ## Keep a chart or table on a dashboard [_edit_the_esql_visualization]
 
-Put the chart or the current table on a dashboard after you customize it. Each one is saved as its own panel.
+Save the chart or the current table. Each one becomes its own panel. You can customize either one in Discover before you save.
 
-- **Chart:** [Change the chart type and display options](../visualize/esorql.md#_edit_and_add_from_discover), then [save the chart to a dashboard](save-open-search.md#add-discover-visualization-esql). The Discover session can stay unsaved.
-- **Table:** [Customize the table](document-explorer.md#document-explorer-customize).
+### Save the chart
 
-  {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Then [save the current table to a dashboard](save-open-search.md#save-table-to-dashboard). Later changes to the session do not change that panel.
+[Change the chart type and display options](../visualize/esorql.md#_edit_and_add_from_discover), then [save the chart to a dashboard](save-open-search.md#add-discover-visualization-esql). The Discover session can stay unsaved.
+
+### Save the table
+
+[Customize the table](document-explorer.md#document-explorer-customize).
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Save the current table to a dashboard](save-open-search.md#save-table-to-dashboard). Later changes to the session do not change that panel.
 
 ## Related pages
 
