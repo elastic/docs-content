@@ -30,7 +30,7 @@ In this tutorial, you learn how to:
 
 * download and run Ollama,
 * use ngrok to expose your local web server hosting Ollama over the internet
-* connect your local LLM to Playground
+* connect your local LLM to Agent Builder
 
 ## Download and run Ollama
 
@@ -111,15 +111,18 @@ Exposing a local endpoint to the internet can introduce security risks. Anyone w
    ```
    The response should be similar to the previous one.
 
-## Connecting the local LLM to Playground
-{applies_to}`stack: preview =9.0, beta 9.1-9.3, deprecated 9.4-9.5, removed 9.6+` {applies_to}`serverless: unavailable`
+## Connect the local LLM to Agent Builder
+{applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga`
 
-::::{note}
-The connector setup procedure described here also applies to [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) and other LLM use cases in Elastic.
-::::
+Create an [OpenAI connector](/explore-analyze/ai-features/agent-builder/models.md#connect-a-local-llm) for your local model:
 
-:::{include} /solutions/_snippets/connect-local-llm-to-playground.md
-:::
+1. Open **Connectors** from the navigation menu or global search, then select **Create connector** and **OpenAI**.
+2. Under **Connector settings**, select **Other (OpenAI Compatible Service)** as the provider.
+3. Enter your ngrok URL followed by `/v1/chat/completions`, for example, `<your-ngrok-endpoint>/v1/chat/completions`.
+4. Enter the model name, such as `llama3.2`. Provide any value for the API key; Ollama does not use it.
+5. Save the connector.
+
+In Agent Builder, select **Agents** and choose the connector's model from the model selector. For more information, refer to [model configuration in Agent Builder](/explore-analyze/ai-features/agent-builder/models.md).
 
 ## Using the local LLM with the {{infer}} API
 
