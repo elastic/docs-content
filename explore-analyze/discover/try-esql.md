@@ -168,6 +168,12 @@ After `STATS`, each row is a group, not a single result. Only the columns that `
 
 **Result:** The table lists one row per destination with its count, starting with the highest. The chart shows the same counts.
 
+:::{image} /explore-analyze/images/kibana-discover-try-esql-stats.png
+:alt: Discover with a STATS query that counts results by destination, a chart of counts by destination, and a table of groups with one group expanded to show its results
+:screenshot:
+:width: 90%
+:::
+
 `STATS` can compute several values at once, or group results by time to show a trend. Refer to the [`STATS` command](elasticsearch://reference/query-languages/esql/commands/stats-by.md). To look at the results behind each destination, refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
 
 ## Save your exploration
