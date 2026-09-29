@@ -85,6 +85,12 @@ An {{esql}} query is a chain of commands separated by pipes (`|`). Each command 
 
 **Result:** The table shows four columns: `bytes`, `geo.dest`, `machine.os`, and `response.keyword`. The number of results stays the same, and the chart now uses the columns you kept.
 
+:::{image} /explore-analyze/images/kibana-discover-try-esql-keep.png
+:alt: Discover with a KEEP query on bytes, geo.dest, machine.os, and response.keyword, a chart of bytes by destination, and a table with those four columns
+:screenshot:
+:width: 90%
+:::
+
 You can also add a column from the fields list, without changing the query. Refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
 
 ## Filter the results
