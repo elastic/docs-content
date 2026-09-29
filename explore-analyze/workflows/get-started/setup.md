@@ -52,6 +52,8 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 | Fully manage workflows | `All` for **Analytics → Workflows** |
 | Grant access to specific workflow actions | Set sub-feature privileges for **Analytics → Workflows** |
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To restrict a specific workflow to selected users, configure [workflow access control](/explore-analyze/workflows/authorization.md#workflows-access-control). Workflow roles apply in addition to the space privileges above.
+
 ## Show managed workflows [workflows-managed-visibility]
 
 ```{applies_to}
