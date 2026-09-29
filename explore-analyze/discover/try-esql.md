@@ -66,24 +66,24 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 
 ## Choose the columns to show in the table
 
-Each result has dozens of fields, but the table shows only the time and a **Summary**. To answer a question, you usually need a few specific fields as their own columns. In this step, you keep three fields: the operating system, the RAM, and the destination.
+Each result has dozens of fields, but the table shows only the time and a **Summary** by default. To answer a question, you usually need a few specific fields as their own columns. In this step, you keep four fields: the response size, the destination, the operating system, and the response code.
 
 An {{esql}} query is a chain of commands separated by pipes (`|`). Each command after the source command takes the results of the previous command, changes them, and passes them on. Commands run in the order you write them.
 
-[`KEEP`](elasticsearch://reference/query-languages/esql/commands/keep.md) is one of these processing commands. It keeps only the columns you list, in that order. It does not remove any results.
+[`KEEP`](elasticsearch://reference/query-languages/esql/commands/keep.md) is one of these processing commands. It keeps only the columns you list, in that order. It does not remove any results. Because the query now decides which columns exist, Discover also replaces the chart of results over time with a chart based on these columns.
 
 1. Add a `KEEP` line to the query:
 
    ```esql
    FROM kibana_sample_data_logs
-   | KEEP machine.os, machine.ram, geo.dest
+   | KEEP bytes, geo.dest, machine.os, response.keyword
    ```
 
    As you enter a field name, the editor suggests matching fields. Select a suggestion to insert it. Refer to [Autocomplete and in-app help](../query-filter/languages/esql-kibana.md#esql-kibana-autocomplete).
 
 2. Select **Search**.
 
-**Result:** The table shows three columns: `machine.os`, `machine.ram`, and `geo.dest`. The number of results and the chart stay the same, because `KEEP` changes only the columns.
+**Result:** The table shows four columns: `bytes`, `geo.dest`, `machine.os`, and `response.keyword`. The number of results stays the same, and the chart now uses the columns you kept.
 
 You can also add a column from the fields list, without changing the query. Refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
 
@@ -99,7 +99,7 @@ Because `WHERE` removes results, it changes both the table and the chart.
 
    ```esql
    FROM kibana_sample_data_logs
-   | KEEP machine.os, machine.ram, geo.dest
+   | KEEP bytes, geo.dest, machine.os, response.keyword
    | WHERE geo.dest != "GB"
    ```
 
@@ -107,13 +107,13 @@ Because `WHERE` removes results, it changes both the table and the chart.
 
 2. Select **Search**.
 
-**Result:** The results with `GB` as destination are gone from the table. The chart shows fewer results, because it counts the same results as the table.
+**Result:** The results with `GB` as destination are gone from the table. The chart updates too, because it uses the same results as the table.
 
 You can also filter from the table. Hover a value, then select **Filter for this** or **Filter out this**, and Discover writes the `WHERE` line for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
 ## Find the top results
 
-Sorting and limiting bring the most relevant results to the top, such as the results from the machines with the most RAM. In this step, you list the 10 results with the highest RAM.
+Sorting and limiting bring the most relevant results to the top, such as the largest responses. In this step, you list the 10 results with the highest `bytes` value.
 
 [`SORT`](elasticsearch://reference/query-languages/esql/commands/sort.md) orders the results by a field, in ascending (`asc`) or descending (`desc`) order. [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/limit.md) keeps only the first results. Because commands run in order, `SORT` followed by `LIMIT 10` returns the top 10. Without `SORT`, `LIMIT 10` returns any 10 results.
 
@@ -123,15 +123,15 @@ A query without `LIMIT` returns at most 1,000 results.
 
    ```esql
    FROM kibana_sample_data_logs
-   | KEEP machine.os, machine.ram, geo.dest
+   | KEEP bytes, geo.dest, machine.os, response.keyword
    | WHERE geo.dest != "GB"
-   | SORT machine.ram desc
+   | SORT bytes desc
    | LIMIT 10
    ```
 
 2. Select **Search**.
 
-**Result:** The table lists 10 results, starting with the highest RAM.
+**Result:** The table lists 10 results, starting with the highest `bytes` value.
 
 Sorting from a column header in the table is different. It reorders only the results already in the table, and it does not change which results the query returns. Refer to [Sort query results](esql-results.md#_sorting).
 
