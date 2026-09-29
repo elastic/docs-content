@@ -107,6 +107,11 @@ FROM kibana_sample_data_logs
 | KEEP bytes, geo.dest
 ```
 
+:::{image} /explore-analyze/images/kibana-discover-esql-keep-time-filter.png
+:alt: A KEEP query that omits @timestamp. The time filter is set, and the chart and table use that range.
+:screenshot:
+:::
+
 To display all fields as separate columns, use `KEEP *`:
 
 ```esql
