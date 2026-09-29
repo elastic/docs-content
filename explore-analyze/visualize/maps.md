@@ -63,6 +63,9 @@ This choropleth map shows the density of non-emergency service requests in San D
 :screenshot:
 :::
 
+$$$maps-esql-fast-mode$$$
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` If the map has an {{esql}} layer, toggling the dashboard's {icon}`bolt` [Fast mode](../query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) option has no effect on the map. To approximate a `STATS` query on the map, add the [SET approximation directive](../query-filter/languages/esql-kibana.md#esql-kibana-approximation) to the layer query.
+
 
 ## Symbolize features using data values [_symbolize_features_using_data_values]
 
