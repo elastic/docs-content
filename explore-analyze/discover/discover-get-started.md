@@ -309,10 +309,7 @@ For example, exclude results from the ecommerce sample data view where day of we
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
-You can switch to ES|QL mode in Discover from the application menu, and can [switch back to classic mode](switch-esql-mode.md#revert-to-classic-mode) at any time.
-If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to ES|QL `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
+You can switch between ES|QL and classic mode at any time. To learn what happens to your query and filters when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md).
 
 In ES|QL mode, the **Documents** tab is named **Results**.
 

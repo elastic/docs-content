@@ -19,8 +19,6 @@ Variable controls make your queries dynamic, so you don't need to keep several v
 
 ## Create a variable control from the Discover editor [add-variable-control]
 
-You can add a variable control from your {{esql}} query in Discover.
-
 :::{image} /explore-analyze/images/variable-control-discover.png
 :alt: The Create variable control panel beside an ES|QL query, with Create control highlighted in the editor.
 :screenshot:
@@ -33,7 +31,7 @@ You can add a variable control from your {{esql}} query in Discover.
 :::{include} ../_snippets/variable-control-examples.md
 :::
 
-**Result:** The control appears for the query, and its variable is inserted where you created it.
+**Result:** The control appears for the query, and Discover inserts its variable where you created it.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-variable-control.png
 :alt: A Count by control set to geo.dest in Discover, with the field list open.

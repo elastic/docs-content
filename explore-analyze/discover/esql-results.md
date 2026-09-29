@@ -61,7 +61,7 @@ From the menu of a column, select **Sort High-Low** or **Sort Low-High**. Discov
 :width: 50%
 :::
 
-**Result:** The table shows those same rows in the new order. The query doesn't change.
+**Result:** The table shows those same rows in the new order, and the query has no `SORT` command.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-sort-query.png
 :alt: The ES|QL query after a column sort. The query has no SORT command.
@@ -98,7 +98,7 @@ Add a field from the [fields list](discover-get-started.md#explore-fields-in-you
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no command such as `KEEP` or `STATS`, the time field stays the first column after you add other fields. The time field is also included in CSV exports from **Discover** and from Discover session panels on dashboards.
 
-### Return specific fields with KEEP
+### Return specific fields with `KEEP`
 
 To control which fields the query returns, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
 

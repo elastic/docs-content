@@ -29,15 +29,17 @@ This page describes the {{kib}} editor. You can also create and manage indices u
 You can create a lookup index directly from the {{esql}} editor. To populate this index, you can enter data manually or upload a CSV file up to 500 MB.
 
 1. In your {{esql}} query, add a `LOOKUP JOIN` command. For example:
+
    ```esql
    FROM kibana_sample_data_logs
    | LOOKUP JOIN
    ```
+
    Add a space after the command. The editor suggests existing lookup indices and offers to create one. You can also enter an index name in your query. If it doesn't exist, the editor suggests creating it.
 
 2. Select the **Create lookup index** suggestion that appears in the autocomplete menu.
 
-3. Define a name for the lookup index.
+3. Enter a name for the lookup index.
    - The name must not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
    - The name must not start with `-`, `_`, or `+`.
 
@@ -73,9 +75,9 @@ When you are editing a lookup index from the {{esql}} editor, you can add data t
    If your index has unsaved changes, a message informs you that you lose these changes. To keep those changes, cancel the upload and save your index, then start a new upload.
    :::
 
-2. Preview the data for each file you're importing, then select **Continue**. If issues are detected, a message appears with more details. Typical issues include differences between the fields of the index and those of the imported files.
-   - New fields coming from imported files are added to the index.
-   - Fields that exist in the index but are missing from the imported file are kept but not filled with any data.
+2. Preview the data for each file you're importing, then select **Continue**. If the editor detects issues, a message appears with more details. Typical issues include differences between the fields of the index and those of the imported files.
+   - The editor adds new fields from the imported files to the index.
+   - The editor keeps fields that exist in the index but not in the imported file, and leaves them empty.
 
 3. Review and adjust the field names and data types to match the needs of your lookup index. After the import, you can no longer edit them.
 
@@ -93,9 +95,9 @@ Data coming from the files is appended to the index, and the index is automatica
    If your index has unsaved changes, a message informs you that you lose these changes. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
    :::
 
-3. Preview the data for each file you're importing. Field data types are automatically detected and set. If issues are detected, a **File issues** tab with more details appears before you validate the import. Common issues include differences between the fields in the index and in the imported files.
-   - New fields coming from imported files are added to the index.
-   - Fields that exist in the index but are missing from the imported file are kept but not filled with any data.
+3. Preview the data for each file you're importing. The editor detects and sets the field data types. If it detects issues, a **File issues** tab with more details appears before you validate the import. Common issues include differences between the fields in the index and in the imported files.
+   - The editor adds new fields from the imported files to the index.
+   - The editor keeps fields that exist in the index but not in the imported file, and leaves them empty.
 
 4. Select **Import** to finalize the operation.
 
@@ -150,8 +152,6 @@ The following limitations apply to the lookup index editor in {{kib}}. For gener
 
 Row display limit
 :   The lookup index editor displays up to 1,000 rows. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index. The `LIMIT` command in your {{esql}} query has no effect on the data shown here.
-
-    {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The search field accepts Kibana Query Language (KQL) syntax for precise filtering. Unsaved rows and values aren't matched until you save the index.
 
 ## Related pages
 

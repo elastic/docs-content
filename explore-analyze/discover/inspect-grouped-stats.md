@@ -85,7 +85,7 @@ On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/
 :screenshot:
 :::
 
-## Grouped row actions [grouped-row-actions]
+## Act on a grouped row [grouped-row-actions]
 
 Select the {icon}`boxes_vertical` actions button on any group row to:
 
@@ -98,9 +98,9 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 
 ## Opt out of the grouped layout [opt-out-of-the-grouped-layout]
 
-When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge.
+When the grouped layout activates, Discover replaces the regular results table toolbar with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge.
 
-The grouping field is preselected from your `STATS BY` clause. From the **Group by** menu, select **none** to go back to the standard flat results table and the regular toolbar.
+Discover preselects the grouping field from your `STATS BY` clause. From the **Group by** menu, select **none** to go back to the standard flat results table and the regular toolbar.
 
 ## Related pages
 

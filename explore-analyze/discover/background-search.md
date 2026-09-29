@@ -7,7 +7,7 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: Send long-running queries to run in the background with background searches from Discover and Dashboards. Continue working while queries complete and access results later.
+description: Send long-running Discover and dashboard queries to the background. Keep working while they run, and open the results later.
 ---
 
 # Run Discover and Dashboards queries in the background [background-search]

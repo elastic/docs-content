@@ -249,7 +249,7 @@ Some {{esql}} commands have dedicated editor features beyond autocomplete, such 
 
 The {{esql}} editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
-In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/create-lookup-indices.md).
+In **Discover**, `LOOKUP JOIN` commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/create-lookup-indices.md).
 
 ##### Cross-cluster and cross-project lookup joins
 ```{applies_to}

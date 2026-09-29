@@ -8,7 +8,7 @@ applies_to:
 type: how-to
 products:
   - id: kibana
-description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
+description: Save Discover sessions to reuse queries, filters, and views. Add sessions to dashboards or build visualizations from them.
 ---
 
 # Save a Discover session for reuse [save-open-search]

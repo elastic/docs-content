@@ -11,7 +11,7 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 
 # Switch between {{esql}} and classic mode
 
-**Discover** has two query modes: {{esql}}, and classic mode, which uses data views with Kibana Query Language (KQL) or Lucene.
+**Discover** has two query modes: {{esql}} mode and classic mode. Classic mode uses data views with Kibana Query Language (KQL) or Lucene.
 
 This page explains how to switch between modes, and what Discover does with your queries when you switch.
 
@@ -19,7 +19,7 @@ This page explains how to switch between modes, and what Discover does with your
 
 ## Before you begin
 
-- Open **Discover**. If you are new to {{esql}} mode, start with [Get started with {{esql}} in Discover](try-esql.md).
+- Open **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2+` Switching modes applies only to the selected Discover tab. To switch several tabs, repeat the operation for each tab.
 
 ## Switch to Discover's {{esql}} mode [switch-discover-query-mode]
@@ -37,7 +37,7 @@ To switch:
 2. Switch from either location:
 
    - {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier versions) in the application menu.
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the {icon}`boxes_vertical` contextual menu of the active Discover tab. This affects only that tab.
 
 **Result:** The tab changes to {{esql}} mode. If a KQL or Lucene query exists, Discover converts it and runs it.
 
@@ -45,8 +45,8 @@ To switch:
 
 When switching from {{esql}} mode to classic mode, Discover drops the {{esql}} query and keeps the data you were querying:
 
-- Classic mode opens with an empty KQL query. A KQL or Lucene query that Discover converted when you switched to {{esql}} is not restored.
-- The data view is the one for the data source in the `FROM` command of the {{esql}} query. A saved data view you selected before that switch is not selected again.
+- Classic mode opens with an empty KQL query. Discover doesn't restore a KQL or Lucene query that it converted when you switched to {{esql}}.
+- The data view is the one for the data source in the `FROM` command of the {{esql}} query. Discover doesn't reselect a saved data view that you used before switching to {{esql}}.
 - If the data view has a time field, Discover sorts on that field so the newest records appear first.
 - The time range and refresh interval stay unchanged.
 
@@ -59,7 +59,7 @@ To switch:
 
 2. Switch the active tab from either location:
 
-   - From the tab's contextual menu ({icon}`boxes_vertical`), select **Switch to classic**.
+   - From the tab's {icon}`boxes_vertical` contextual menu, select **Switch to classic**.
    - From the application menu, select **Switch to Classic**.
 
    This affects only the active Discover tab.

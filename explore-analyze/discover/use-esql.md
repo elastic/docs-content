@@ -11,9 +11,9 @@ description: Find the Discover tasks that are specific to ES|QL mode, from runni
 
 # Use Discover with {{esql}}
 
-{{esql}} mode in **Discover** lets you explore data with an {{esql}} query. The query chooses the data, so you don't need a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene.
+{{esql}} mode in **Discover** lets you explore data with an {{esql}} query. The query sets the data, so you don't need a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene.
 
-The editor itself, time parameters, AI assistance, and Fast mode are covered in [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md). If you haven't run a query in this mode yet, start with [Get started with {{esql}} in Discover](try-esql.md).
+For the editor itself, time parameters, AI assistance, and Fast mode, refer to [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md). If you haven't run a query in this mode yet, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## {{esql}} tasks in Discover
 
@@ -21,12 +21,12 @@ The editor itself, time parameters, AI assistance, and Fast mode are covered in 
 | --- | --- |
 | You haven't run an {{esql}} query in Discover yet | [Get started with {{esql}} in Discover](try-esql.md) |
 | You want to query in {{esql}}, or go back to KQL, and you need to know what happens to the query | [Switch between {{esql}} and classic mode](switch-esql-mode.md) |
-| You are writing a query and need an index or a field name | [Browse data sources and fields from the {{esql}} editor in Discover](browse-esql-sources.md) |
+| You're writing a query and need an index or a field name | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Browse data sources and fields from the {{esql}} editor in Discover](browse-esql-sources.md) |
 | You have results and want to read them, sort them, or filter from a value | [Work with {{esql}} results in Discover](esql-results.md) |
-| You want to change a value in the query without keeping several copies | [Add variable controls to Discover queries](esql-variable-controls.md) |
-| You need enrichment data for a `LOOKUP JOIN` | [Create lookup indices from Discover queries](create-lookup-indices.md) |
-| You grouped with `STATS BY` and want to look inside the groups | [Inspect grouped STATS results in Discover](inspect-grouped-stats.md) |
-| You want to find a spike, dip, or shift in a time series | [Detect change points in Discover](detect-change-points.md) |
+| You want to change a value in the query without keeping several copies | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2+` [Add variable controls to Discover queries](esql-variable-controls.md) |
+| You need enrichment data for a `LOOKUP JOIN` | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2+` [Create lookup indices from Discover queries](create-lookup-indices.md) |
+| You grouped with `STATS BY` and want to look inside the groups | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` [Inspect grouped STATS results in Discover](inspect-grouped-stats.md) |
+| You want to find a spike, dip, or shift in a time series | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Detect change points in Discover](detect-change-points.md) |
 | You want to keep the chart, the table, or the session | [Save a Discover session for reuse](save-open-search.md) |
 
 ## Related pages
