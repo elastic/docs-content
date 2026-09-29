@@ -69,11 +69,13 @@ You can interact with some panel visualizations to explore specific data more in
 You can create filter pills by:
 
 - **Clicking on chart elements**, such as data points, bars, or slices.
-- **Using legend actions**: hover over a legend item and select **Filter In** or **Filter Out** to filter the dashboard by a specific series.
+- **Using legend actions**: Hover over a legend item and select **Filter for** or **Filter out** to filter the dashboard by a specific series.
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 {{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
+
+Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements) for an {{esql}} example.
 :::
 
 
