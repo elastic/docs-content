@@ -23,7 +23,7 @@ By the end of this tutorial, you can:
 - Add a field with the editor's suggestions
 - Filter and sort the rows the table and chart show
 - Group those rows with an aggregation
-- Narrow the results to one value, or save the session so you can reopen it
+- Filter the results to one destination, or save the session so you can reopen it
 
 ## Before you begin [try-esql-prerequisites]
 
@@ -135,7 +135,7 @@ To see the visits inside a destination, open the group. Refer to [Inspect groupe
 
 ## Step 5: Use the results
 
-Narrow these counts, ask what they mean, or save them. The query is:
+Filter these counts to one destination, or save the session so you can reopen the query. The query is:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -145,11 +145,9 @@ FROM kibana_sample_data_logs
 
 To stay on one destination, filter from that value in the results table. Discover adds a `WHERE` clause for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` To ask what the pattern means, select **AI Agent** in the {{kib}} header. The agent uses this query and these rows. Refer to [Analyze your data with AI](discover-get-started.md#analyze-with-ai).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` To ask what these counts mean, select **AI Agent** in the {{kib}} header. The agent uses this query and these rows. Refer to [Analyze your data with AI](discover-get-started.md#analyze-with-ai).
 
-Select **Save** in the application menu to reopen this query later. To share it, or to put the chart or the table on a dashboard, follow [Save a Discover session for reuse](save-open-search.md) and [Share your Discover session](discover-get-started.md#share-your-findings).
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` You can save the current table to a dashboard too.
+Select **Save** in the application menu to reopen this query later. Refer to [Save a Discover session for reuse](save-open-search.md). To share it, follow [Share your Discover session](discover-get-started.md#share-your-findings). To put the chart or the table on a dashboard, follow [Keep a chart or table on a dashboard](esql-results.md#_edit_the_esql_visualization).
 
 **Result:** After you save, you can reopen this query. You can also share it.
 
