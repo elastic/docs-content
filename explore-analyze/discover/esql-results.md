@@ -6,16 +6,16 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Filter and sort ES|QL results in Discover, select columns, and turn on the time picker for a time field other than @timestamp.
+description: Filter and sort ES|QL results in Discover, select columns, and turn on the time filter for a time field other than @timestamp.
 ---
 
 # Work with {{esql}} results in Discover
 
-After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You can narrow the rows, change their order, and show the fields you want. You can also let the time picker drive that table and its chart.
+After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You can filter the rows, sort them, and show the fields you want. You can also set the time filter, and the table and the chart use that time range.
 
 - **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows you retrieved or the full data set](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) when the table stops early.
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
-- **Time picker and chart:** [Let the time picker drive the table and the chart](#_esql_and_time_series_data). Discover does this when the data has an `@timestamp` field. If the time field has another name, name it in the query.
+- **Time filter and chart:** [Set the time filter for the table and the chart](#_esql_and_time_series_data). Discover applies the time filter when the data has an `@timestamp` field. If the time field has another name, name it in the query.
 
 To keep the chart or the table, [put it on a dashboard](#_edit_the_esql_visualization).
 
@@ -94,27 +94,27 @@ If you omit `LIMIT`, the table shows up to 1,000 rows. `LIMIT` can raise that to
 - **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
 - **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.
 
-## Show the time picker and the chart [_esql_and_time_series_data]
+## Show the time filter and the chart [_esql_and_time_series_data]
 
-When the data has an `@timestamp` field, the time picker drives the table and the chart.
+When the data has an `@timestamp` field, the time filter applies to the table and the chart.
 
 If the time field has another name, name it in the query with the `?_tstart` and `?_tend` parameters. For the editor behavior, refer to [Custom time parameters](../query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
-For example, the eCommerce sample data set has no `@timestamp` field. It has an `order_date` field. This query has no time picker and no chart:
+For example, the eCommerce sample data set has no `@timestamp` field. It has an `order_date` field. This query has no time filter and no chart:
 
 ```esql
 FROM kibana_sample_data_ecommerce
 | KEEP customer_first_name, email, products._id.keyword
 ```
 
-Add the parameters on `order_date`. Discover then shows the time picker and the chart.
+Add the parameters on `order_date`. Discover then shows the time filter and the chart.
 
 ```esql
 FROM kibana_sample_data_ecommerce
 | WHERE order_date >= ?_tstart and order_date <= ?_tend
 ```
 
-**Result:** The time picker sets the range for that table and chart.
+**Result:** The time filter sets the time range for that table and chart.
 
 ## Keep a chart or table on a dashboard [_edit_the_esql_visualization]
 
