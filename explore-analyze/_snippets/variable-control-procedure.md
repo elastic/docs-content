@@ -1,7 +1,7 @@
 1. While you edit your {{esql}} query, the autocomplete menu suggests adding a control when relevant or when you type `?` in the query. Select **Create control**.
 
    :::{image} /explore-analyze/images/esql-visualization-control-suggestion.png
-   :alt: ES|QL query prompting to add a control
+   :alt: The autocomplete menu with Create control highlighted.
    :width: 40%
    :screenshot:
    :::

@@ -21,7 +21,11 @@ Variable controls help you make your queries more dynamic instead of having to m
 
 You can add them from your Discover {{esql}} query.
 
-![Variable control in Discover](/explore-analyze/images/variable-control-discover.png " =75%")
+:::{image} /explore-analyze/images/variable-control-discover.png
+:alt: A variable control in Discover set to geo.dest, with its field list open.
+:screenshot:
+:width: 75%
+:::
 
 :::{include} ../_snippets/variable-control-procedure.md
 :::
