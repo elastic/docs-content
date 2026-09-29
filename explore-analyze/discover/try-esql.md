@@ -64,6 +64,8 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 :width: 90%
 :::
 
+The table is not the end of your exploration. To look at one result in detail, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier versions) on its row. The flyout lists all its fields, and you can filter the results from any of its values. Refer to [Explore individual result or document details in depth](discover-get-started.md#look-inside-a-document).
+
 ## Choose the columns to show in the table
 
 Each result has dozens of fields, but the table shows only the time and a **Summary** by default. To answer a question, you usually need a few specific fields as their own columns. In this step, you keep four fields: the response size, the destination, the operating system, and the response code.
@@ -174,7 +176,7 @@ After `STATS`, each row is a group, not a single result. Only the columns that `
 :width: 90%
 :::
 
-`STATS` can compute several values at once, or group results by time to show a trend. Refer to the [`STATS` command](elasticsearch://reference/query-languages/esql/commands/stats-by.md). To look at the results behind each destination, refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
+`STATS` can compute several values at once, or group results by time to show a trend. Refer to the [`STATS` command](elasticsearch://reference/query-languages/esql/commands/stats-by.md). To expand a group and look at the results behind it, refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
 
 ## Save your exploration
 
