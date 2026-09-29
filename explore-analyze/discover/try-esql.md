@@ -28,17 +28,19 @@ To follow this tutorial, you need the following:
 
 ## Query a data source [tutorial-try-esql]
 
-In {{esql}} mode, the query decides which data you explore. There is no data view to select. Instead, the first command of every query names the data source, and the table and the chart show what that source returns.
+In {{esql}} mode, the query decides which data you explore. There is no data view to select like in classic mode. Instead, the first command of every query names the data source, and the table and the chart show what that source returns.
 
-This first command is a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands). [`FROM`](elasticsearch://reference/query-languages/esql/commands/from.md) is the one you use most often. It reads from indices, data streams, or aliases, and you can list several sources or use a wildcard, such as `FROM logs-*`. Other source commands serve specific cases. For example, [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) queries time series data streams, and [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) runs a PromQL query. Command names are not case-sensitive, so `from` and `FROM` are the same.
+This first command is a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands). 
+- [`FROM`](elasticsearch://reference/query-languages/esql/commands/from.md) is {{esql}}'s generic source command. It takes the names of the sources to read, for example an index or a data stream. You can list several names or match them with a wildcard, such as `FROM logs-*`.
+- Other source commands serve specific cases. For example, [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) queries time series data streams, and [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) runs a PromQL query. 
 
-Discover also connects the results to a time field. The sample web logs have an `@timestamp` field, and Discover uses it automatically. The time filter limits the results to the range you pick, and the chart shows how the results spread over that range. When your time field has another name, you name it in the query. When your data has no time field, there is no time filter and no chart. Refer to [Set the time filter for the table and the chart](esql-results.md#_esql_and_time_series_data).
+Command names are not case-sensitive, so `from` and `FROM` are the same.
 
 1. Open **Discover** from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. If the editor is not in {{esql}} mode yet, switch to it. Refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md#switch-discover-query-mode).
 3. Set the time filter to **Last 7 days**.
 
-   Sample data timestamps are relative to when you installed the set. If the table stays empty, widen the range.
+   The sample web logs have an `@timestamp` field, so Discover connects the results to it. The time filter keeps only the results in the range you pick, and the chart shows how they spread over that range. Sample data timestamps are relative to when you installed the set. If the table stays empty, widen the range.
 
 4. Enter the following query in the editor:
 
@@ -51,6 +53,10 @@ Discover also connects the results to a time field. The sample web logs have an 
 5. Select **Search** (or **▶Run** in earlier versions).
 
 **Result:** Each result in the table is one visit to the sample website. The table shows the time of each visit, and a **Summary** of its other fields. The chart shows how the visits spread over the last 7 days.
+
+:::{tip}
+Discover uses `@timestamp` automatically. If your time field has another name, you name it in the query. If your data has no time field, Discover shows no time filter and no chart. Refer to [Set the time filter for the table and the chart](esql-results.md#_esql_and_time_series_data).
+:::
 
 ## Choose the columns
 
