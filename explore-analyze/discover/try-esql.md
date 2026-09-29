@@ -56,7 +56,7 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 
 5. Select **Search** (or **▶Run** in earlier versions).
 
-**Result:** Each result in the table is one visit to the sample website. The table lists up to 1,000 visits, with the time of each visit and a **Summary** of the visit. The chart shows how the visits spread over the 7 days.
+**Result:** The table lists up to 1,000 results by default, with the time and a **Summary** of each result. The chart shows how the results spread over the 7 days.
 
 :::{image} /explore-analyze/images/kibana-discover-try-esql-from.png
 :alt: Discover in ES|QL mode with the query FROM kibana_sample_data_logs, a histogram of results over time, and a table with @timestamp and Summary columns
@@ -66,7 +66,7 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 
 ## Choose the columns to show in the table
 
-Each visit has dozens of fields, but the table shows only the time and a **Summary**. To answer a question, you usually need a few specific fields as their own columns. In this step, you keep the operating system, the RAM, and the destination of each visit.
+Each result has dozens of fields, but the table shows only the time and a **Summary**. To answer a question, you usually need a few specific fields as their own columns. In this step, you keep three fields: the operating system, the RAM, and the destination.
 
 An {{esql}} query is a chain of commands separated by pipes (`|`). Each command after the source command takes the results of the previous command, changes them, and passes them on. Commands run in the order you write them.
 
@@ -89,7 +89,7 @@ You can also add a column from the fields list, without changing the query. Refe
 
 ## Filter the results
 
-Filtering focuses the results on the visits you care about. In this step, you exclude the visits to Great Britain.
+Filtering keeps only the results you care about. In this step, you exclude the results whose destination is Great Britain.
 
 [`WHERE`](elasticsearch://reference/query-languages/esql/commands/where.md) keeps only the results that match a condition. A condition compares a field with a value, with [operators](elasticsearch://reference/query-languages/esql/functions-operators/operators.md) such as `==`, `!=`, `>`, or `<`. You can combine conditions with `AND` and `OR`. Put text values in double quotes.
 
@@ -103,17 +103,17 @@ Because `WHERE` removes results, it changes both the table and the chart.
    | WHERE geo.dest != "GB"
    ```
 
-   The `!=` operator keeps every visit whose destination is not `GB`.
+   The `!=` operator keeps every result whose destination is not `GB`.
 
 2. Select **Search**.
 
-**Result:** Visits to Great Britain are gone from the table. The chart shows fewer visits, because it counts the same results as the table.
+**Result:** The results with `GB` as destination are gone from the table. The chart shows fewer results, because it counts the same results as the table.
 
 You can also filter from the table. Hover a value, then select **Filter for this** or **Filter out this**, and Discover writes the `WHERE` line for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
 ## Find the top results
 
-Sorting and limiting bring the most relevant results to the top, such as the visits from the machines with the most RAM. In this step, you list the 10 visits with the highest RAM.
+Sorting and limiting bring the most relevant results to the top, such as the results from the machines with the most RAM. In this step, you list the 10 results with the highest RAM.
 
 [`SORT`](elasticsearch://reference/query-languages/esql/commands/sort.md) orders the results by a field, in ascending (`asc`) or descending (`desc`) order. [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/limit.md) keeps only the first results. Because commands run in order, `SORT` followed by `LIMIT 10` returns the top 10. Without `SORT`, `LIMIT 10` returns any 10 results.
 
@@ -131,32 +131,32 @@ A query without `LIMIT` returns at most 1,000 results.
 
 2. Select **Search**.
 
-**Result:** The table lists 10 visits, starting with the highest RAM.
+**Result:** The table lists 10 results, starting with the highest RAM.
 
 Sorting from a column header in the table is different. It reorders only the results already in the table, and it does not change which results the query returns. Refer to [Sort query results](esql-results.md#_sorting).
 
 ## Count the results by group
 
-So far, each result is one visit. To find out where most visits go, you need one row per destination, with a count. In this step, you count the visits for each destination.
+So far, each row in the table is one result. To find out which destinations come up most often, you need one row per destination, with a count. In this step, you count the results for each destination.
 
-[`STATS`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) aggregates the results. An [aggregation function](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md), such as `COUNT`, `AVG`, or `SUM`, computes a value, and `BY` sets the groups. In `STATS visits = COUNT(*) BY geo.dest`, `COUNT(*)` counts the results in each group, `visits =` names the new column, and `BY geo.dest` makes one group per destination.
+[`STATS`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) aggregates the results. An [aggregation function](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md), such as `COUNT`, `AVG`, or `SUM`, computes a value, and `BY` sets the groups. In `STATS count = COUNT(*) BY geo.dest`, `COUNT(*)` counts the results in each group, `count =` names the new column, and `BY geo.dest` makes one group per destination.
 
-After `STATS`, the results are the groups, not the visits. Only the columns that `STATS` creates remain, in this query `visits` and `geo.dest`. That is why the query no longer needs `KEEP` or `LIMIT`, and why `SORT` now uses `visits`. The `WHERE` line stays before `STATS`, so the counts still exclude Great Britain.
+After `STATS`, each row is a group, not a single result. Only the columns that `STATS` creates remain, in this query `count` and `geo.dest`. That is why the query no longer needs `KEEP` or `LIMIT`, and why `SORT` now uses `count`. The `WHERE` line stays before `STATS`, so the counts still exclude Great Britain.
 
 1. Replace the query with the following one:
 
    ```esql
    FROM kibana_sample_data_logs
    | WHERE geo.dest != "GB"
-   | STATS visits = COUNT(*) BY geo.dest
-   | SORT visits desc
+   | STATS count = COUNT(*) BY geo.dest
+   | SORT count desc
    ```
 
 2. Select **Search**.
 
-**Result:** The table lists one row per destination with its number of visits, starting with the most visited. The chart shows the same counts.
+**Result:** The table lists one row per destination with its count, starting with the highest. The chart shows the same counts.
 
-`STATS` can compute several values at once, or group results by time to show a trend. Refer to the [`STATS` command](elasticsearch://reference/query-languages/esql/commands/stats-by.md). To look at the visits behind each destination, refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
+`STATS` can compute several values at once, or group results by time to show a trend. Refer to the [`STATS` command](elasticsearch://reference/query-languages/esql/commands/stats-by.md). To look at the results behind each destination, refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
 
 ## Save your exploration
 
@@ -165,7 +165,7 @@ Your query holds your whole exploration. Save it as a Discover session to come b
 A Discover session saves the query, not a copy of the results. When you open the session again, Discover runs the query again, so the results reflect the current data.
 
 1. Select **Save** in the application menu.
-2. Enter a **Title**, for example `Visits by destination`.
+2. Enter a **Title**, for example `Results by destination`.
 
    To reopen the session with the same time range, turn on **Store time with Discover session**.
 
