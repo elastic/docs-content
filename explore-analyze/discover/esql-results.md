@@ -122,7 +122,7 @@ To reopen the query later, [save the Discover session](save-open-search.md).
 ## Related pages
 
 - [Use Discover with {{esql}}](use-esql.md)
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` To analyze these results with an AI agent, get a chart of the main finding, and review suggested drill-down queries, refer to [Analyze your data with AI](discover-get-started.md#analyze-with-ai).
+- [Analyze your data with AI](discover-get-started.md#analyze-with-ai)
 - [Inspect grouped STATS results in Discover](inspect-grouped-stats.md)
 - [Save a Discover session for reuse](save-open-search.md)
 - [Customize the Discover view](document-explorer.md)
