@@ -46,7 +46,7 @@ Command names aren't case-sensitive, so `from` and `FROM` are the same.
 
 1. Open **Discover** from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. If the editor isn't in {{esql}} mode yet, select **Query in ES|QL** (**Try ES|QL** in earlier versions) in the application menu. For other ways to switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md#switch-discover-query-mode).
-3. Set the time filter to the seven days before you installed the sample data. If you installed it today, select **Last 7 days**. Otherwise, [set a custom range](/explore-analyze/query-filter/filtering.md#set-time-filter) that ends on the installation date.
+3. Set the time filter to the seven days before you installed the sample data. {{kib}} sets the sample timestamps relative to the day you install the data. If you installed it today, select **Last 7 days**. Otherwise, [set a custom range](/explore-analyze/query-filter/filtering.md#set-time-filter) that ends on the installation date.
 
    The sample web logs have an `@timestamp` field, so Discover uses it for the time filter and the chart over time. The time filter keeps only the results in the range you select, and the chart shows how they spread over that range.
 

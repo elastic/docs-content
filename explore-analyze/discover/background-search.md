@@ -27,7 +27,7 @@ If you have been using search sessions and upgrade to 9.2, your search sessions 
 
 :::::{applies-switch}
 
-::::{applies-item} serverless: ga
+::::{applies-item} serverless: preview
 This feature is enabled by default.
 ::::
 
@@ -57,7 +57,7 @@ The background searches that you run are personal and only visible by you. To us
 
 :::::{applies-switch}
 
-::::{applies-item} serverless: ga
+::::{applies-item} serverless: preview
 
 To send searches to the background, and to view and interact with the list of background searches from the **Discover** and **Dashboards** apps, you need permissions for **Discover** and **Dashboard**, and for the [Background search subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 ::::
@@ -94,7 +94,7 @@ You can send a search to the background only after it starts running. Until then
 You can resume your other tasks, for example start a new search, navigate to a different application, or close the browser.
 
 :::{tip}
-:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+:applies_to: {"stack": "ga 9.4+", "serverless": "preview"}
 When the search completes, a notification informs you, even if you have navigated to a different application. Selecting it opens the completed search results directly.
 :::
 
@@ -117,7 +117,7 @@ From the list of background searches, you can reopen, inspect, and edit any sear
    - To open it to view its results and continue your explorations, select its name. Relative dates are converted to absolute dates.
    - To rename it, select the {icon}`boxes_horizontal` **More actions** button, then select {icon}`pencil` **Edit name**. By default, background searches get default names that indicate their execution date and time.
    - To extend its current expiration date by another 7 days, select the {icon}`boxes_horizontal` More actions button, then select **Extend**.
-   - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` To inspect the details of a background search, select {icon}`boxes_horizontal` **More actions**, then select {icon}`document` **Inspect**. A child flyout opens showing the configuration for that background search.
+   - {applies_to}`serverless: preview` {applies_to}`stack: ga 9.5` To inspect the details of a background search, select {icon}`boxes_horizontal` **More actions**, then select {icon}`document` **Inspect**. A child flyout opens showing the configuration for that background search.
    - To delete it, select the {icon}`boxes_horizontal` More actions button, then select {icon}`trash` **Delete**.
 
 

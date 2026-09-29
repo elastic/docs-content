@@ -41,7 +41,8 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
 
 3. Enter a name for the lookup index. The name must follow these rules:
    - The name must not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
-   - The name must not start with `-`, `_`, or `+`.
+   - The name must not start with `-`, `_`, `+`, or `.`.
+   - The name must be lowercase.
 
 4. Provide data for the lookup index. You can either:
    - **Upload a CSV file up to 500 MB**. When you upload a file, you can preview its data, inspect its contents, and review any detected issues before importing it. Refer to [](#esql-lookup-index-from-file) for more details.
