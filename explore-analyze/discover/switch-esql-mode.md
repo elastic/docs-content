@@ -11,13 +11,24 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 
 # Switch between {{esql}} and classic mode
 
-**Discover** has two query modes: {{esql}}, and classic mode, which uses data views with Kibana Query Language (KQL) or Lucene. Switch when you want the query to select the data, or when you want the data view and filter bar back. This page explains what Discover does with the query you already have.
+**Discover** has two query modes: {{esql}}, and classic mode, which uses data views with Kibana Query Language (KQL) or Lucene. 
+
+This page explains how to switch between modes, and what Discover does with your queries when you switch.
 
 ## Before you begin
 
-- You need a **Discover** session. If you are new to {{esql}} mode, start with [Get started with {{esql}} in Discover](try-esql.md).
+- You need an open **Discover** session. If you are new to {{esql}} mode, start with [Get started with {{esql}} in Discover](try-esql.md).
+- Switching modes applies to the selected tab of your Discover session only. To switch multiple tabs to a different mode, you must repeat the operation for each.
 
-## Switch to {{esql}} [switch-discover-query-mode]
+## Switch to Discover's {{esql}} mode [switch-discover-query-mode]
+
+When switching from classic mode to {{esql}} mode, Discover converts the existing KQL or Lucene query as follows:
+
+- The query text becomes an {{esql}} query with a `WHERE KQL("<your query text")` clause.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar become `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the data view has a time field, Discover adds `SORT` on that field so the newest records appear first. Converted `WHERE` conditions stay in the query.
+
+To switch:
 
 1. Open the Discover tab you want to switch.
 
@@ -26,18 +37,12 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
    - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
-If you've entered a KQL or Lucene query in classic mode, Discover converts it to {{esql}} when you switch:
+**Result:** The tab changes to {{esql}} mode and The KQL or Lucene query, if it exists, is converted and runs automatically.
 
-- The query text becomes an {{esql}} query.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar become `WHERE` clauses where possible.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Filters that can't be converted, such as scripted filters, are dropped.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the data view has a time field, Discover adds `SORT` on that field so the newest records appear first. Converted `WHERE` conditions stay in the query.
+## Switch to Discover's classic mode [revert-to-classic-mode]
 
-**Result:** The tab opens in {{esql}} mode. A KQL or Lucene query you had already entered is converted into the {{esql}} editor.
-
-## Revert to Discover's classic mode [revert-to-classic-mode]
-
-You can go back to the classic data view and KQL mode in Discover at any time. When you switch from {{esql}} mode to classic mode, Discover discards the {{esql}} query, including one it built by converting KQL or Lucene, and opens classic mode with an empty KQL query.
+You can go back to the classic data view and KQL mode in Discover at any time. When you switch from {{esql}} mode to classic mode, Discover discards the {{esql}} query, and opens classic mode with an empty KQL query. 
+This happens even if you previously switched from classic mode with a query converted into {{esql}}.
 
 :::::{applies-switch}
 

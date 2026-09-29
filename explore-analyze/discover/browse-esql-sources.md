@@ -11,11 +11,13 @@ description: Browse data sources and fields from the ES|QL editor in Discover, a
 
 # Browse data sources and fields from the editor
 
-When you write a query, the {{esql}} editor includes two interactive browsers that help you find available data sources and field names. Use them when you do not want to memorize index or field names.
+When you write a query in {{esql}} mode, the editor includes two interactive browsers that help you browse and find available data sources and field names.
 
 ## Before you begin
 
-- You need an {{esql}} query in **Discover**. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
+- Make sure you are using **Discover**'s {{esql}} mode and that the editor is visble. 
+
+If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Find a data source or field [discover-esql-resource-browsers]
 
