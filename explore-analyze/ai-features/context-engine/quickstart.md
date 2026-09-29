@@ -23,7 +23,7 @@ In this tutorial, you use {{context-engine}} to create reusable context from dat
 
 The result is an AI index containing one Knowledge Indicator about a dataset you select.
 
-A Knowledge Indicator (KI) is a document generated from source data, stored in an AI index, and retrieved as context by agents to help answer questions. A KI can contain distilled findings, explanations of how to interpret the data, limitations, and verified ESQL queries for retrieving current information from the source.
+A Knowledge Indicator (KI) is a document generated from source data, stored in an AI index, and retrieved as context by agents to help answer questions. A KI can contain distilled findings, explanations of how to interpret the data, limitations, and verified {{esql}} queries for retrieving current information from the source.
 
 An automation generates and refreshes the KI. In {{context-engine}}, an automation is implemented as an [Elastic Workflow](/explore-analyze/workflows.md).
 
@@ -31,8 +31,7 @@ An automation generates and refreshes the KI. In {{context-engine}}, an automati
 
 You need:
 
-- An {{stack}} deployment with an Enterprise license, or a {{serverless-full}} project.
-- Kibana 9.6 or a compatible Serverless project.
+- An {{stack}} 9.6 deployment with an Enterprise license, or an {{serverless-full}} project.
 - Permission to change Advanced Settings in the current Kibana space.
 - Permission to [create and run Workflows](/explore-analyze/workflows/get-started/setup.md) and manage {{context-engine}} AI indices.
 - Elasticsearch data that you can read. If you do not have suitable data, install the [**Sample eCommerce orders** data](https://www.elastic.co/docs/manage-data/ingest/sample-data#add-sample-data-sets), which creates the `kibana_sample_data_ecommerce` index.
@@ -63,7 +62,7 @@ Create the AI index:
    > Context about [your data], including [the important subjects and questions] and tested ESQL for retrieving current details.
 
 4. Select **Index** as the storage type.
-5. Select **Create AI Index**.
+4. Select **Create AI index**.
 
 The AI index initially has no sources, automations, or KIs. You must add a source before you can create an automation.
 
@@ -74,7 +73,7 @@ An ESQL source gives {{context-engine}} data to inspect when it suggests an auto
 Add an ESQL source to the AI index:
 
 1. In **Sources**, select **Edit**.
-2. On the **ESQL** tab, enter a query that returns a small, representative set of records from your data. If you are using the ecommerce sample data, enter:
+2. On the **Elasticsearch data** tab, expand **Advanced: ES|QL**, then enter a query that returns a small, representative set of records from your data. If you are using the ecommerce sample data, enter:
 
    ```esql
    FROM kibana_sample_data_ecommerce
@@ -82,7 +81,7 @@ Add an ESQL source to the AI index:
    | LIMIT 100
    ```
 
-3. Select **Add ESQL source**.
+3. Select **Add ES|QL source**.
 4. Confirm that the query appears under **Selected sources**.
 5. Select **Save**.
 
@@ -101,11 +100,11 @@ Use the guided route for this tutorial:
 3. Send the pre-filled message to start the suggestion.
 4. Ask it to create one `index_metadata` KI that:
 
-   - explains the purpose and limitations of the dataset
-   - records useful interpretations of its important entities, measures, and dimensions
-   - includes verified ESQL for common questions about the data
-   - uses a stable ID so later runs update the KI instead of creating duplicates
-   - validates its ESQL before writing the KI
+   - Explains the purpose and limitations of the dataset
+   - Records useful interpretations of its important entities, measures, and dimensions
+   - Includes verified {{esql}} for common questions about the data
+   - Uses a stable ID so later runs update the KI instead of creating duplicates
+   - Validates its {{esql}} before writing the KI
 
 5. Review the proposed plan before confirming it.
 
@@ -161,10 +160,10 @@ For the ecommerce sample data, ask which questions the index cannot answer, then
 
 Confirm that the agent:
 
-- selects the relevant AI index
-- retrieves the KI as context
-- answers directly when the KI contains the required knowledge
-- uses targeted ESQL against the source when current detail is required
+- Selects the relevant AI index
+- Retrieves the KI as context
+- Answers directly when the KI contains the required knowledge
+- Uses targeted {{esql}} against the source when current detail is required
 
 KIs can reduce the time and model tokens agents spend exploring source data. They provide reusable knowledge and tested query guidance while preserving access to current source data.
 

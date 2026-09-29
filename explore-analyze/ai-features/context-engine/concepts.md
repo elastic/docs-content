@@ -61,7 +61,7 @@ Agent traces do not update KIs by themselves. Use their evidence to refine sourc
 
 For information about trace collection, contents, privacy, and access, refer to [Collect {{agent-builder}} traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
 
-## Automations and Workflows
+## Automations and workflows
 
 An automation generates or refreshes [Knowledge Indicators (KIs)](#knowledge-indicators) from an [AI index's](#ai-indices) [sources](#sources). {{context-engine}} implements each automation as an [Elastic Workflow](/explore-analyze/workflows.md), which defines the operations and [instructions](#tools-system-instructions-and-skills) used to analyze the source and write the result.
 

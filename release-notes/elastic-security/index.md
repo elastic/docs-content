@@ -46,7 +46,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the alert analysis workflow settings page so it loads without a Workflows privilege, instead of staying on a loading spinner [#287708]({{kib-pull}}287708).
 * Fixes the count label in Security donut charts so it's vertically centered [#286900]({{kib-pull}}286900).
 * Keeps the Agent Builder `security.alerts` tool scoped to the current {{kib}} space [#276488]({{kib-pull}}276488).
-* Fixes {{elastic-defend}} Device Control blocking macOS system updates from completing. Also adds a warning log about potential misuse of the filter_images advanced policy setting.
 * Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
 * Increases the {{elastic-defend}} event buffer size.
 * Updates a `c-ares` dependency in {{elastic-defend}} on Linux to resolve [CVE-2024-25629](https://github.com/c-ares/c-ares/security/advisories/GHSA-mg26-v6qh-x48q). The gRPC-bundled `c-ares` snapshot (~1.19) is unchanged and is tracked separately pending a gRPC version upgrade.
@@ -318,7 +317,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
 * Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
 * Fixes an issue where generating threat hunting leads failed when the number of candidate entities was very large [#275970]({{kib-pull}}275970).
-* Fixes {{elastic-defend}} Device Control blocking macOS system updates from completing. Also adds a warning log about potential misuse of the filter_images advanced policy setting.
 * Reduces {{elastic-defend}} CPU usage and lock contention during network cache cleanup on Linux, preventing event enrichment stalls at high connection counts.
 * Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
 * Increases the {{elastic-defend}} event buffer size.

@@ -1,4 +1,3 @@
-<!--
 :::{important}
 This page is currently hidden from the documentation navigation. The current page is intended for testing {{context-engine}} enablement and the end-to-end workflow while the feature is under development.
 
@@ -13,4 +12,3 @@ The following {{context-engine}} pages are live:
         - [Use {{context-engine}} with Agent Builder](/explore-analyze/ai-features/context-engine/use-context-engine-with-agent-builder.md)
         - [Query AI indices from LangChain](/explore-analyze/ai-features/context-engine/langchain-integration.md)
 :::
--->

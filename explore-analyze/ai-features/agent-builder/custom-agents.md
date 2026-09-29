@@ -97,9 +97,10 @@ For more information, refer to [Elastic capabilities](agent-builder-agents.md#el
 :::::{step} Configure pre-execution workflows (optional)
 ```{applies_to}
 stack: ga 9.4+
+serverless: ga
 ```
 
-Administrators can assign workflows that run once after each user message, before the agent makes any LLM calls in response. Use pre-execution workflows to prepare prompt context or stop an agent run before the LLM starts.
+Users whose role grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role, can assign workflows that run once after each user message, before the agent makes any calls to the large language model (LLM) in response. Use pre-execution workflows to add or rewrite prompt context, or to stop an agent run before the LLM starts.
 
 For details, refer to [Pre-execution workflows](agents-and-workflows.md#pre-execution-workflows).
 
