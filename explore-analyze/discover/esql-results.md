@@ -104,7 +104,7 @@ To control which fields the query returns, use the [`KEEP`](elasticsearch://refe
 
 ```esql
 FROM kibana_sample_data_logs
-| KEEP bytes, geo.dest
+| KEEP bytes, geo.dest, machine.os, response.keyword
 ```
 
 :::{image} /explore-analyze/images/kibana-discover-esql-keep-time-filter.png
