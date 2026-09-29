@@ -65,7 +65,7 @@ You can also find your endpoint details in {{kib}}. From the **Help menu** {icon
 ::::
 
 ::::{applies-item} ece: ga
-Your endpoint is in the **Connection details** panel in {{kib}}.
+Your endpoint details are in the **Connection details** panel in {{kib}}.
 
 1. Open {{kib}} for your deployment.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
