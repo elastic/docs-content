@@ -136,7 +136,6 @@ For example, the eCommerce sample data set has no `@timestamp` field. It has an 
 
 ```esql
 FROM kibana_sample_data_ecommerce
-| KEEP customer_first_name, email, products._id.keyword
 ```
 
 Add the parameters on `order_date`. Discover then shows the time filter and the chart.
