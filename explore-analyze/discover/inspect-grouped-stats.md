@@ -48,6 +48,12 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
 
 When the grouping field uses [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md), each row title shows the detected pattern with token highlighting, so you can scan repeated message structures at a glance.
 
+```esql
+FROM kibana_sample_data_logs
+| STATS Count = COUNT(*) BY Pattern = CATEGORIZE(message)
+| SORT Count DESC
+```
+
 ::::{tip}
 Pattern detection on text fields is also available outside {{esql}} from the **Patterns** view in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
