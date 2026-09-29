@@ -81,7 +81,7 @@ From the application menu, select **Switch to classic**.
 
 ## Next steps
 
-- [Browse data sources and fields from the editor](browse-esql-sources.md)
+- [Browse data sources and fields from the {{esql}} editor in Discover](browse-esql-sources.md)
 - [Work with {{esql}} results in Discover](esql-results.md)
 
 ## Related pages

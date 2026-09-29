@@ -9,7 +9,7 @@ type: how-to
 description: Browse data sources and fields from the ES|QL editor in Discover, and insert them into your query.
 ---
 
-# Browse data sources and fields from the editor
+# Browse data sources and fields from the {{esql}} editor in Discover
 
 When you write a query in {{esql}} mode, the editor includes two interactive browsers that help you browse and find available data sources and field names.
 

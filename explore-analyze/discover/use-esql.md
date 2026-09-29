@@ -21,7 +21,7 @@ The editor itself, time parameters, AI assistance, and Fast mode are covered in 
 | --- | --- |
 | You have not run an {{esql}} query in Discover yet | [Get started with {{esql}} in Discover](try-esql.md) |
 | You want to query in {{esql}}, or go back to KQL, and you need to know what happens to the query | [Switch between {{esql}} and classic mode](switch-esql-mode.md) |
-| You are writing a query and need an index or a field name | [Browse data sources and fields from the editor](browse-esql-sources.md) |
+| You are writing a query and need an index or a field name | [Browse data sources and fields from the {{esql}} editor in Discover](browse-esql-sources.md) |
 | You have results and want to read them, sort them, or filter from a value | [Work with {{esql}} results in Discover](esql-results.md) |
 | You want to change a value in the query without keeping several copies | [Add variable controls to Discover queries](esql-variable-controls.md) |
 | You need enrichment data for a `LOOKUP JOIN` | [Create lookup indices from Discover queries](create-lookup-indices.md) |
