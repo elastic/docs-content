@@ -11,14 +11,13 @@ description: Filter and sort ES|QL results in Discover, select columns, and turn
 
 # Work with {{esql}} results in Discover
 
-After you run an {{esql}} query, you can:
+After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You change the rows, the columns, and the time picker and chart so the table shows what you need.
 
-- [Filter the table from a value](#refine-esql-query-from-table). Discover adds a `WHERE` clause.
-- [Sort the rows you retrieved](#_sorting), or sort the full data set with `SORT`.
-- [Show the columns you want](#esql-kibana-results-table), from the fields list or with `KEEP`.
-- [See how many rows and columns Discover shows](#esql-kibana-results-table-limitations).
-- [Show the time picker and the chart](#_esql_and_time_series_data) for a time field other than `@timestamp`.
-- [Put the chart or the table on a dashboard](#_edit_the_esql_visualization).
+- **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows you retrieved or the full data set](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) when the table stops early.
+- **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
+- **Time picker and chart:** If the time field is not `@timestamp`, [name it in the query](#_esql_and_time_series_data). Discover then shows the time picker and the chart.
+
+To keep the chart or the table, [put it on a dashboard](#_edit_the_esql_visualization).
 
 ## Before you begin
 
