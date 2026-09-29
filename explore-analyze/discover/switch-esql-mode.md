@@ -37,12 +37,18 @@ To switch:
    - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
-**Result:** The tab changes to {{esql}} mode and The KQL or Lucene query, if it exists, is converted and runs automatically.
+**Result:** The tab changes to {{esql}} mode. If a KQL or Lucene query exists, Discover converts it and runs it.
 
 ## Switch to Discover's classic mode [revert-to-classic-mode]
 
-You can go back to the classic data view and KQL mode in Discover at any time. When you switch from {{esql}} mode to classic mode, Discover discards the {{esql}} query, and opens classic mode with an empty KQL query. 
-This happens even if you previously switched from classic mode with a query converted into {{esql}}.
+When switching from {{esql}} mode to classic mode, Discover drops the {{esql}} query and keeps the data you were querying:
+
+- Classic mode opens with an empty KQL query. A KQL or Lucene query that Discover converted when you switched to {{esql}} is not restored.
+- The data view is the one for the index pattern in the {{esql}} query. A saved data view you selected before that switch is not selected again.
+- If the data view has a time field, Discover sorts on that field so the newest records appear first.
+- The time range and refresh interval stay unchanged.
+
+To switch:
 
 :::::{applies-switch}
 
@@ -71,7 +77,7 @@ From the application menu, select **Switch to classic**.
 
 :::::
 
-**Result:** The tab opens in classic mode with an empty KQL query. The {{esql}} query is gone.
+**Result:** The tab opens in classic mode with an empty KQL query, on the data view for the index pattern you were querying.
 
 ## Next steps
 
