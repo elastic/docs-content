@@ -11,7 +11,7 @@ description: Filter and sort ES|QL results in Discover, select columns, and turn
 
 # Work with {{esql}} results in Discover
 
-After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You change the rows, the columns, and the time picker and chart so the table shows what you need.
+After an {{esql}} query runs in **Discover**, the results table shows what that query returned. Filtering a value, sorting the full data set, using `KEEP`, and naming the time field change the query. Sorting a column or adding a field from the fields list changes only the rows already on screen.
 
 - **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows you retrieved or the full data set](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) when the table stops early.
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
