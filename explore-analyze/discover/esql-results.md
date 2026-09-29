@@ -11,7 +11,14 @@ description: Filter and sort ES|QL results in Discover, select columns, and turn
 
 # Work with {{esql}} results in Discover
 
-After you run an {{esql}} query, filter it from a value in the results table or sort the rows you retrieved. You can also select which columns to show. If the time picker or the chart is missing, point the query at a different time field.
+After you run an {{esql}} query, you can:
+
+- [Filter the table from a value](#refine-esql-query-from-table). Discover adds a `WHERE` clause.
+- [Sort the rows you retrieved](#_sorting), or sort the full data set with `SORT`.
+- [Show the columns you want](#esql-kibana-results-table), from the fields list or with `KEEP`.
+- [See how many rows and columns Discover shows](#esql-kibana-results-table-limitations).
+- [Show the time picker and the chart](#_esql_and_time_series_data) for a time field other than `@timestamp`.
+- [Put the chart or the table on a dashboard](#_edit_the_esql_visualization).
 
 ## Before you begin
 
