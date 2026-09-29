@@ -26,7 +26,7 @@ To follow this tutorial, you need the following:
 - The `enableESQL` setting enabled in {{product.kibana}} **Advanced Settings**. It is enabled by default.
 - The {{product.kibana}} sample web logs. Add them from [Add sample data](/manage-data/ingest/sample-data.md). You can use your own indices instead. Replace `kibana_sample_data_logs` in the examples with a data source you can query.
 
-## Query a data source [tutorial-try-esql]
+## Step 1: Query a data source [tutorial-try-esql]
 
 In {{esql}} mode, the query decides which data you explore. There is no data view to select like in classic mode. Instead, the first command of every query names the data source, and the table and the chart show what that source returns.
 
@@ -66,7 +66,7 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 
 The table is not the end of your exploration. To look at one result in detail, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier versions) on its row. The flyout lists all its fields, and you can filter the results from any of its values. Refer to [Explore individual result or document details in depth](discover-get-started.md#look-inside-a-document).
 
-## Choose the columns to show in the table
+## Step 2: Choose the columns to show in the table [try-esql-columns]
 
 Each result has dozens of fields, but the table shows only the time and a **Summary** by default. To answer a question, you usually need a few specific fields as their own columns. In this step, you keep four fields: the response size, the destination, the operating system, and the response code.
 
@@ -95,7 +95,7 @@ An {{esql}} query is a chain of commands separated by pipes (`|`). Each command 
 
 You can also add a column from the fields list. This changes only the table, not the query, so the chart keeps showing the results over time. It works well for a quick look at a field. Use `KEEP` when the columns are part of your question, because they then apply wherever you use the query. Refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
 
-## Filter the results
+## Step 3: Filter the results [try-esql-filter]
 
 Filtering keeps only the results you care about. In this step, you exclude the results whose destination is Great Britain.
 
@@ -119,7 +119,7 @@ Because `WHERE` removes results, it changes both the table and the chart.
 
 You can also filter from the table, which saves typing the field name and value. Hover a value, then select **Filter for this** or **Filter out this**, and Discover writes the `WHERE` line for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
-## Find the top results
+## Step 4: Find the top results [try-esql-top-results]
 
 Sorting and limiting bring the most relevant results to the top, such as the largest responses. In this step, you list the 10 results with the highest `bytes` value.
 
@@ -149,7 +149,7 @@ A query without `LIMIT` returns at most 1,000 results.
 
 Sorting from a column header in the table is different. It reorders only the results already in the table, and it does not change which results the query returns. Refer to [Sort query results](esql-results.md#_sorting).
 
-## Count the results by group
+## Step 5: Count the results by group [try-esql-count-by-group]
 
 So far, each row in the table is one result. To find out which destinations come up most often, you need one row per destination, with a count. In this step, you count the results for each destination.
 
@@ -178,7 +178,7 @@ After `STATS`, each row is a group, not a single result. Only the columns that `
 
 `STATS` can compute several values at once, or group results by time to show a trend. Refer to the [`STATS` command](elasticsearch://reference/query-languages/esql/commands/stats-by.md). To expand a group and look at the results behind it, refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
 
-## Save your exploration
+## Step 6: Save your exploration [try-esql-save]
 
 Your query holds your whole exploration. Save it as a Discover session to come back to it, share it, or build on it later.
 
