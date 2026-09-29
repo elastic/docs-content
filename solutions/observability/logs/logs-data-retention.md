@@ -1,19 +1,21 @@
 ---
+description: Configure how long Elasticsearch keeps log data, per stream in the Streams UI or with the built-in logs lifecycle policy and data stream lifecycle settings.
 applies_to:
   stack: ga
-  serverless: unavailable
+  serverless: ga
 products:
   - id: observability
+  - id: cloud-serverless
 ---
 
 # Configure log data retention
 
-Your data retention policies define how long {{es}} keeps your log data before automatically removing it. Setting an appropriate data retention period helps manage storage costs and keeps your log data manageable.
+Your data retention policies define how long {{es}} keeps your log data before automatically removing it. Setting an appropriate data retention period helps manage storage costs and keeps your log data manageable. For where retention fits in the rest of your logs setup, refer to [Manage logs storage](/solutions/observability/logs/manage-storage.md).
 
 Manage log data retention in the following ways:
 
-* [Manage log data retention in Streams](../streams/configure-retention.md): Streams provides a single, centralized UI within {{kib}} that simplifies common tasks, including setting data retention. The **Retention** tab lets you manage how your stream retains data and provides insight into data ingestion and storage size.
-* [Manage log data retention in data streams](#logs-data-retention-data-streams): Data streams store append-only time series data across multiple indices and use {{ilm-init}} to automate backing index management, including automatic rollover and tiered storage.
+* [Manage log data retention in Streams](../streams/configure-retention.md): Streams provides a single, centralized UI within {{kib}} that simplifies common tasks, including setting data retention. The **Data lifecycle** tab (**Retention** in earlier versions) lets you manage how your stream retains data and provides insight into data ingestion and storage size.
+* [Manage log data retention in data streams](#logs-data-retention-data-streams): Data streams store append-only time series data across multiple indices and use {{ilm-init}} or data stream lifecycle to automate backing index management, including automatic rollover and tiered storage.
 
 ## Manage data retention in data streams [logs-data-retention-data-streams]
 
@@ -26,6 +28,9 @@ A data stream lets you store append-only time series data across multiple indice
 Refer to the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) docs for more information.
 
 ### Customize the built-in `logs@lifecycle` policy [logs-data-retention-built-in-ilm]
+```{applies_to}
+serverless: unavailable
+```
 
 The `logs@lifecycle` {{ilm-init}} policy is preconfigured for common logging use cases. View or duplicate the policy at **{{stack-manage-app}}** → **Index Lifecycle Policies** or find `Index Lifecycle Policies` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -38,6 +43,9 @@ The logs {{ilm-init}} policy provides a foundation for your logs data streams, b
 Refer to the **[Customize built-in policies tutorial](../../../manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)** for more on modifying the logs {{ilm-init}} policy.
 
 ### Automate rollover based on log volume [logs-data-retention-automate-rollover]
+```{applies_to}
+serverless: unavailable
+```
 
 When continuously indexing timestamped documents, you need to periodically roll over to a new index to ensure that backing indices stay within optimal size and performance limits.
 

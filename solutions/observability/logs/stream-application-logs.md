@@ -14,7 +14,7 @@ products:
 
 Application logs provide valuable insight into events that have occurred within your services and applications.
 
-The format of your logs (structured or plaintext) influences your log ingestion strategy.
+The format of your logs (structured or plaintext) influences your log ingestion strategy. For the recommended order to try these options in, and how application logs fit with the rest of your log collection, refer to [Ingest logs](/solutions/observability/logs/ingest.md#logs-ingest-application).
 
 
 ## Plaintext logs versus structured Elastic Common Schema (ECS) logs [observability-correlate-application-logs-plaintext-logs-vs-structured-elastic-common-schema-ecs-logs]
