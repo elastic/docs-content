@@ -69,6 +69,7 @@ Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. 
 :width: 70%
 :::
 
+::::{tip}
 A `LIMIT` can make that set shorter than the full data. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
 
 ```esql
@@ -76,6 +77,7 @@ FROM kibana_sample_data_logs
 | KEEP @timestamp, bytes, geo.dest
 | SORT bytes DESC
 ```
+::::
 
 ## Show specific columns in the results table [esql-kibana-results-table]
 
