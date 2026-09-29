@@ -76,7 +76,7 @@ On the last page of the table, a message indicates that you’ve reached the end
 
 ### Sort the fields [document-explorer-sort-data]
 
-Sort the data by one or more fields, in ascending or descending order. The default sort is based on the time field, from new to old.
+Sort the data by one or more fields, in ascending or descending order. In classic mode, the default sort is based on the time field, from new to old. In {{esql}} mode, the query sets the order of the results.
 
 To add or remove a sort on a single field, click the column header, and then select the sort order.
 

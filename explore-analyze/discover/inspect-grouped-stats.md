@@ -33,8 +33,8 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
    **Result:** The table lists one row per group. The results count above the table reports the number of groups instead of the number of documents.
 
    :::{note}
-   :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
-   When searching large datasets, you can get faster, estimated results by using {icon}`bolt` **Fast mode**. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+   :applies_to: { serverless: preview, stack: preview 9.5+ }
+   When searching large data sets, you can get faster, estimated results by using {icon}`bolt` **Fast mode**. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
    :::
 
    :::{image} /explore-analyze/images/discover-esql-cascade-overview.png
@@ -91,13 +91,13 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 - **Filter out**: append a `WHERE` clause that excludes documents matching this group.
 - **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
 
-**Filter in** and **Filter out** aren't available when the grouping field is not filterable.
+**Filter in** and **Filter out** aren't available when the grouping field isn't filterable.
 
 ## Opt out of the grouped layout [opt-out-of-the-grouped-layout]
 
 When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge.
 
-The grouping field is preselected from your `STATS BY` clause. Open the **Group by** menu and select **none** to fall back to the standard flat results table and bring back the regular toolbar.
+The grouping field is preselected from your `STATS BY` clause. From the **Group by** menu, select **none** to go back to the standard flat results table and the regular toolbar.
 
 ## Related pages
 

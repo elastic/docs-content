@@ -11,9 +11,9 @@ description: Create and edit lookup indices from the ES|QL editor in Discover. A
 
 # Create lookup indices from Discover queries
 
-In **Discover**, [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) commands include interactive options that let you create or edit lookup indices directly from the editor. You can type in rows, upload a CSV file, and join the new index in the same query.
+In **Discover**, [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) commands include interactive options that let you create or edit lookup indices directly from the editor. You can enter rows, upload a CSV file, and join the new index in the same query.
 
-This page describes the {{kib}} editor. You can also create and manage indices using the {{es}} APIs for [version 9]({{es-apis}}operation/operation-indices-create) and [Serverless]({{es-serverless-apis}}operation/operation-indices-create).
+This page describes the {{kib}} editor. You can also create and manage indices using the {{es}} APIs for [version 9]({{es-apis}}operation/operation-indices-create) and [{{serverless-full}}]({{es-serverless-apis}}operation/operation-indices-create).
 
 ## Before you begin
 
@@ -26,14 +26,14 @@ This page describes the {{kib}} editor. You can also create and manage indices u
 
 ### Create a lookup index from the editor [create-lookup-esql]
 
-You can create a lookup index directly from the {{esql}} editor. To populate this index, you can type in data manually or upload a CSV file up to 500 MB.
+You can create a lookup index directly from the {{esql}} editor. To populate this index, you can enter data manually or upload a CSV file up to 500 MB.
 
 1. In your {{esql}} query, add a `LOOKUP JOIN` command. For example:
    ```esql
    FROM kibana_sample_data_logs
    | LOOKUP JOIN
    ```
-   Add a space after the command. The editor suggests existing lookup indices and offers to create one. You can also type an index name in your query. If it doesn't exist, the editor suggests creating it.
+   Add a space after the command. The editor suggests existing lookup indices and offers to create one. You can also enter an index name in your query. If it doesn't exist, the editor suggests creating it.
 
 2. Select the **Create lookup index** suggestion that appears in the autocomplete menu.
 
@@ -47,13 +47,13 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
      :::{note}
      Some {{es}} data types aren't supported in {{kib}}.
      :::
-   - **Using a combination of both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
+   - **Combine both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
 
 5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
 
    :::{tip}
-   :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
-   The search field supports free text and [KQL](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the filter doesn't match unsaved values.
+   :applies_to: { serverless: preview, stack: preview 9.5+ }
+   The search field supports free text and [Kibana Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the filter doesn't match unsaved values.
    :::
 
 6. **Save** any unsaved changes, then **Close** the index editor to return to your query.
@@ -66,16 +66,16 @@ When you are editing a lookup index from the {{esql}} editor, you can add data t
 
 :::::{applies-switch}
 
-::::{applies-item} { serverless:, stack: ga 9.3+ }
+::::{applies-item} { serverless: preview, stack: preview 9.3+ }
 1. Drag the files you want to upload from your computer. You can add several files at a time and can repeat the operation multiple times.
 
    :::{note}
-   If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then start a new upload.
+   If your index has unsaved changes, a message informs you that you lose these changes. To keep those changes, cancel the upload and save your index, then start a new upload.
    :::
 
 2. Preview the data for each file you're importing, then select **Continue**. If issues are detected, a message appears with more details. Typical issues include differences between the fields of the index and those of the imported files.
-   - New fields coming from imported files will be added to the index.
-   - Fields that exist in the index but are missing from the imported file will be kept but not filled with any data.
+   - New fields coming from imported files are added to the index.
+   - Fields that exist in the index but are missing from the imported file are kept but not filled with any data.
 
 3. Review and adjust the field names and data types to match the needs of your lookup index. After the import, you can no longer edit them.
 
@@ -84,18 +84,18 @@ When you are editing a lookup index from the {{esql}} editor, you can add data t
 Data coming from the files is appended to the index, and the index is automatically saved.
 ::::
 
-::::{applies-item} stack: ga =9.2
+::::{applies-item} stack: preview =9.2
 1. Select {icon}`download` **Upload file**.
 
 2. Select the CSV file to import on your machine. You can select several files to import at once.
 
    :::{note}
-   If your index has unsaved changes, a message informs you that these changes will be lost. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
+   If your index has unsaved changes, a message informs you that you lose these changes. To keep those changes, cancel the upload and save your index, then select {icon}`download` **Upload file** again.
    :::
 
 3. Preview the data for each file you're importing. Field data types are automatically detected and set. If issues are detected, a **File issues** tab with more details appears before you validate the import. Common issues include differences between the fields in the index and in the imported files.
-   - New fields coming from imported files will be added to the index.
-   - Fields that exist in the index but are missing from the imported file will be kept but not filled with any data.
+   - New fields coming from imported files are added to the index.
+   - Fields that exist in the index but are missing from the imported file are kept but not filled with any data.
 
 4. Select **Import** to finalize the operation.
 
@@ -128,7 +128,7 @@ At any time, you can delete all the index data and fields.
 
 :::::{applies-switch}
 
-::::{applies-item} { serverless:, stack: ga 9.3+ }
+::::{applies-item} { serverless: preview, stack: preview 9.3+ }
 1. Select all the index data using the checkbox in the header of the table.
 
 2. Select **Delete selected** from the contextual menu that appears upon selecting entries.
@@ -138,7 +138,7 @@ At any time, you can delete all the index data and fields.
 The lookup index is fully reset and saved automatically.
 ::::
 
-::::{applies-item} stack: ga =9.2
+::::{applies-item} stack: preview =9.2
 In this version, you cannot fully reset the index configuration. For example, you can't remove columns. However, you can delete the index data. To do that, select the entries to delete, then select **Delete selected** from the contextual menu that appears.
 ::::
 
@@ -151,7 +151,7 @@ The following limitations apply to the lookup index editor in {{kib}}. For gener
 Row display limit
 :   The lookup index editor displays up to 1,000 rows. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index. The `LIMIT` command in your {{esql}} query has no effect on the data shown here.
 
-    {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` The search field accepts KQL syntax for precise filtering. Unsaved rows and values aren't matched until you save the index.
+    {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The search field accepts Kibana Query Language (KQL) syntax for precise filtering. Unsaved rows and values aren't matched until you save the index.
 
 ## Related pages
 

@@ -2,7 +2,7 @@
 navigation_title: Browse data sources
 applies_to:
   serverless: ga
-  stack: ga 9.4
+  stack: ga 9.4+
 products:
   - id: kibana
 type: how-to
@@ -15,9 +15,7 @@ When you write a query in {{esql}} mode, the editor includes two interactive bro
 
 ## Before you begin
 
-- Make sure you are using **Discover**'s {{esql}} mode and that the editor is visble. 
-
-If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
+- Make sure you are using **Discover**'s {{esql}} mode and that the editor is visible. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Find a data source or field [discover-esql-resource-browsers]
 
@@ -27,7 +25,7 @@ The browsers are:
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
-:applies_to: {serverless: preview, stack: preview 9.4}
+:applies_to: { serverless: preview, stack: preview 9.4+ }
 [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
 :::
 
@@ -35,7 +33,7 @@ The browsers are:
 
 2. Open the browser from either location:
 
-   - **The autocomplete menu**: select **Browse data sources** (or **Browse indices** in earlier versions) when editing a `FROM` or `TS` command, or **Browse fields** when editing a field position.
+   - **The autocomplete menu**: select **Browse data sources** when editing a `FROM` or `TS` command, or **Browse fields** when editing a field position.
    - **The data source badge**: the first `FROM` or `TS` keyword in the query is rendered as a clickable badge. Select it to open the data source browser.
 
 3. Select the data sources or the field you want to insert.

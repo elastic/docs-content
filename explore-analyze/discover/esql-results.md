@@ -13,7 +13,7 @@ description: Filter and sort ES|QL results in Discover, select columns, and turn
 
 After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You can filter the rows, sort them, and show the fields you want. You can also set the time filter, and the table and the chart use that time range.
 
-- **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows in the table, or change which rows come back](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) when the table stops early.
+- **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows in the table, or change which rows come back](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) with `LIMIT`.
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
 - **Time filter and chart:** [Set the time filter for the table and the chart](#_esql_and_time_series_data). Discover applies the time filter when the data has an `@timestamp` field. If the time field has another name, name it in the query.
 
@@ -25,7 +25,7 @@ To keep the chart or the table, [put it on a dashboard](#_edit_the_esql_visualiz
 
 ## Filter from a value in the results table [refine-esql-query-from-table]
 
-Hover a value in the results table, then filter for it or filter it out. Discover adds or completes a `WHERE` clause, and the table shows the matching rows.
+Hover over a value in the results table, then filter for it or filter it out.
 
 - {icon}`plus_circle` **Filter for this** keeps that value. For example, `WHERE host.keyword == "www.elastic.co"`.
 - {icon}`minus_circle` **Filter out this** excludes that value. For example, `WHERE host.keyword != "www.elastic.co"`.
@@ -37,11 +37,11 @@ Hover a value in the results table, then filter for it or filter it out. Discove
   :::
 
 :::{note}
-:applies_to: { serverless:, stack: ga 9.3+ }
-Up to and including version 9.2, filtering for multi-value fields isn't supported. On later versions, filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
+:applies_to: { serverless: ga, stack: ga 9.3+ }
+Filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
 :::
 
-{{esql}} mode has no filter bar, and dragging a field onto the table does not change the query.
+{{esql}} mode has no filter bar, and dragging a field onto the table doesn't change the query.
 
 **Result:** When you select **Filter for this** or **Filter out this**, Discover adds or completes a `WHERE` clause for that value, and the table shows the matching rows.
 
@@ -53,7 +53,7 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 
 ## Sort query results [_sorting]
 
-Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. Discover reorders the rows already in the table. The query stays the same, and Discover does not run it again.
+From the menu of a column, select **Sort High-Low** or **Sort Low-High**. Discover reorders the rows already in the table. The query stays the same, and Discover doesn't run it again.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-sort-column.png
 :alt: The menu for the bytes column, with Sort High-Low highlighted.
@@ -61,7 +61,7 @@ Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. 
 :width: 50%
 :::
 
-**Result:** The table shows those same rows in the new order. The query does not change.
+**Result:** The table shows those same rows in the new order. The query doesn't change.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-sort-query.png
 :alt: The ES|QL query after a column sort. The query has no SORT command.
@@ -70,7 +70,7 @@ Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. 
 :::
 
 ::::{tip}
-A column sort reorders only the rows the query returned. With no `LIMIT`, that is at most 1,000 rows. To change which rows come back, add a [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command. Elasticsearch orders the data, then keeps the first rows of that order. This query returns the 1,000 largest `bytes` values:
+A column sort reorders only the rows the query returned. With no `LIMIT`, that is at most 1,000 rows. To change which rows come back, add a [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command. {{es}} orders the data, then keeps the first rows of that order. This query returns the 1,000 largest `bytes` values:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -86,8 +86,8 @@ FROM kibana_sample_data_logs
 Until you add fields, the table shows a **Summary** column of each result's key-value pairs. The time field is the first column when the data has `@timestamp`, or when the query names that field.
 
 :::{note}
-:applies_to: { serverless: ga, stack: ga 9.4 }
-When a query without a command such as `KEEP` or `STATS` returns 5 or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
+:applies_to: { serverless: ga, stack: ga 9.4+ }
+When a query without a command such as `KEEP` or `STATS` returns five or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
 :::
 
 To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
@@ -132,17 +132,17 @@ When the data has an `@timestamp` field, the time filter applies to the table an
 
 If the time field has another name, name it in the query with the `?_tstart` and `?_tend` parameters. For the editor behavior, refer to [Custom time parameters](../query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
-For example, the eCommerce sample data set has no `@timestamp` field. It has an `order_date` field. This query has no time filter and no chart:
+For example, the eCommerce sample data set has no `@timestamp` field. It has an `order_date` field. With this query, the time filter doesn't apply, and Discover shows no chart:
 
 ```esql
 FROM kibana_sample_data_ecommerce
 ```
 
-Add the parameters on `order_date`. Discover then shows the time filter and the chart.
+Add the parameters on `order_date`. The time filter then applies, and Discover shows the chart.
 
 ```esql
 FROM kibana_sample_data_ecommerce
-| WHERE order_date >= ?_tstart and order_date <= ?_tend
+| WHERE order_date >= ?_tstart AND order_date <= ?_tend
 ```
 
 :::{image} /explore-analyze/images/kibana-discover-esql-order-date.png
@@ -154,7 +154,7 @@ FROM kibana_sample_data_ecommerce
 
 ## Keep a chart or table on a dashboard [_edit_the_esql_visualization]
 
-If you'd like to keep the chart or the table, you have several options:
+To keep the chart or the table, use one of these options:
 
 - **Save the Discover session.** [Save a Discover session for reuse](save-open-search.md) explains the options.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Save the table to a dashboard.** [Customize the table](document-explorer.md#document-explorer-customize) explains how to configure it before you [save it](save-open-search.md#save-table-to-dashboard).

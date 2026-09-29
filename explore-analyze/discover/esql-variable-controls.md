@@ -1,8 +1,8 @@
 ---
 navigation_title: Add variable controls
 applies_to:
-  serverless: ga
-  stack: ga 9.2
+  serverless: preview
+  stack: preview 9.2
 products:
   - id: kibana
 type: how-to
@@ -11,7 +11,7 @@ description: Add variable controls to an ES|QL query in Discover so you can chan
 
 # Add variable controls to Discover queries
 
-Variable controls help you make your queries more dynamic instead of having to maintain several versions of almost identical queries. Viewers change the value from the control. The query stays one query.
+Variable controls make your queries dynamic, so you don't need to keep several versions of almost identical queries. Viewers change the value from the control, and the query stays the same.
 
 ## Before you begin
 
@@ -19,7 +19,7 @@ Variable controls help you make your queries more dynamic instead of having to m
 
 ## Create a variable control from the Discover editor [add-variable-control]
 
-You can add them from your Discover {{esql}} query.
+You can add a variable control from your {{esql}} query in Discover.
 
 :::{image} /explore-analyze/images/variable-control-discover.png
 :alt: The Create variable control panel beside an ES|QL query, with Create control highlighted in the editor.
@@ -50,13 +50,13 @@ stack: preview 9.3
 :::{include} ../_snippets/multi-value-esql-controls.md
 :::
 
-#### Edit a variable control in Discover [edit-a-variable-control]
+### Edit a variable control in Discover [edit-a-variable-control]
 
-Once a control is active for your query, you can still edit it by hovering over it and by selecting the {icon}`pencil` **Edit** option that appears.
+After a control is active for your query, you can still edit it. Hover over the control, then select the {icon}`pencil` **Edit** option that appears.
 
 You can edit all the options described in [](#add-variable-control).
 
-When you save your edits, the control is updated for your query.
+When you save your edits, Discover updates the control for your query.
 
 ### Import a Discover query along with its controls into a dashboard [import-discover-query-with-controls]
 
