@@ -11,11 +11,11 @@ description: Filter and sort ES|QL results in Discover, select columns, and turn
 
 # Work with {{esql}} results in Discover
 
-After an {{esql}} query runs in **Discover**, the results table shows what that query returned. Filtering a value, sorting the full data set, using `KEEP`, and naming the time field change the query. Sorting a column or adding a field from the fields list changes only the rows already on screen.
+After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You can narrow the rows, change their order, and show the fields you want. You can also let the time picker drive that table and its chart.
 
 - **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows you retrieved or the full data set](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) when the table stops early.
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
-- **Time picker and chart:** If the time field is not `@timestamp`, [name it in the query](#_esql_and_time_series_data). Discover then shows the time picker and the chart.
+- **Time picker and chart:** [Let the time picker drive the table and the chart](#_esql_and_time_series_data). Discover does this when the data has an `@timestamp` field. If the time field has another name, name it in the query.
 
 To keep the chart or the table, [put it on a dashboard](#_edit_the_esql_visualization).
 
@@ -96,7 +96,7 @@ If you omit `LIMIT`, the table shows up to 1,000 rows. `LIMIT` can raise that to
 
 ## Show the time picker and the chart [_esql_and_time_series_data]
 
-Discover shows the time picker and the chart when the data has an `@timestamp` field.
+When the data has an `@timestamp` field, the time picker drives the table and the chart.
 
 If the time field has another name, name it in the query with the `?_tstart` and `?_tend` parameters. For the editor behavior, refer to [Custom time parameters](../query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
@@ -114,7 +114,7 @@ FROM kibana_sample_data_ecommerce
 | WHERE order_date >= ?_tstart and order_date <= ?_tend
 ```
 
-**Result:** The time picker and the chart are available for that query.
+**Result:** The time picker sets the range for that table and chart.
 
 ## Keep a chart or table on a dashboard [_edit_the_esql_visualization]
 
