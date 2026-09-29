@@ -21,14 +21,14 @@ To keep the chart or the table, [put it on a dashboard](#_edit_the_esql_visualiz
 
 ## Before you begin
 
-- You need an {{esql}} query in **Discover** that returns rows. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
+- You need an {{esql}} query in **Discover** that returns rows. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Filter from a value in the results table [refine-esql-query-from-table]
 
 Hover over a value in the results table, then filter for it or filter it out.
 
-- {icon}`plus_circle` **Filter for this** keeps that value. For example, `WHERE host.keyword == "www.elastic.co"`.
-- {icon}`minus_circle` **Filter out this** excludes that value. For example, `WHERE host.keyword != "www.elastic.co"`.
+- {icon}`plus_circle` **Filter for this** keeps that value. For example, ``WHERE `host.keyword` == "www.elastic.co"``.
+- {icon}`minus_circle` **Filter out this** excludes that value. For example, ``WHERE `host.keyword` != "www.elastic.co"``.
 
   :::{image} /explore-analyze/images/kibana-discover-esql-filter-out.png
   :alt: The value ios in the machine.os column, with Filter out this available.
@@ -38,7 +38,7 @@ Hover over a value in the results table, then filter for it or filter it out.
 
 :::{note}
 :applies_to: { serverless: ga, stack: ga 9.3+ }
-Filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
+Filtering for multi-value fields translates into `WHERE MV_CONTAINS` or `WHERE NOT MV_CONTAINS` clauses. For example, ``WHERE MV_CONTAINS(`tags.keyword`, ["error", "security"]::keyword)``.
 :::
 
 {{esql}} mode has no filter bar, and dragging a field onto the table doesn't change the query.
@@ -121,7 +121,7 @@ FROM kibana_sample_data_logs
 
 ## Row and column limits [esql-kibana-results-table-limitations]
 
-If you omit `LIMIT`, the table shows up to 1,000 rows. `LIMIT` can raise that to 10,000, which is as many rows as Discover displays. Aggregations still run on the full data set.
+If you omit `LIMIT`, the table shows up to 1,000 rows, or up to 10,000 rows for queries that start with `TS` or `PROMQL`. `LIMIT` can raise that to 10,000, which is as many rows as Discover displays. Aggregations still run on the full data set.
 
 - **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
 - **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.

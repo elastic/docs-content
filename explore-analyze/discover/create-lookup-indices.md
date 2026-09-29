@@ -20,7 +20,7 @@ This page describes the {{kib}} editor. You can also create and manage indices u
 - To create lookup indices, you need the [`create_index`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege on the corresponding pattern.
 - To edit lookup indices, you need the [`write`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
 - To view lookup indices in read-only mode, you need the [`view_index_metadata`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
-- You need an {{esql}} query in **Discover**. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
+- You need an {{esql}} query in **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Create and edit lookup indices from queries [discover-esql-lookup-join]
 
@@ -49,7 +49,7 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
      :::
    - **Combine both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
 
-5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
+5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
 
    :::{tip}
    :applies_to: { serverless: preview, stack: preview 9.5+ }
@@ -139,7 +139,7 @@ The lookup index is fully reset and saved automatically.
 ::::
 
 ::::{applies-item} stack: preview =9.2
-In this version, you cannot fully reset the index configuration. For example, you can't remove columns. However, you can delete the index data. To do that, select the entries to delete, then select **Delete selected** from the contextual menu that appears.
+In this version, you can't fully reset the index configuration. For example, you can't remove columns. However, you can delete the index data. To do that, select the entries to delete, then select **Delete selected** from the contextual menu that appears.
 ::::
 
 :::::

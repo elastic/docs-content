@@ -334,7 +334,7 @@ Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-langu
 {{esql}} variables help you add interactive controls to your queries and make them more dynamic.
 
 They're available for:
-* [Discover queries](/explore-analyze/discover/esql-variable-controls.md) {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2+`
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2+` [Discover queries](/explore-analyze/discover/esql-variable-controls.md)
 * [{{esql}} visualizations in dashboards](/explore-analyze/visualize/add-variable-controls.md)
 
 :::{include} ../../_snippets/variable-control-procedure.md

@@ -15,7 +15,7 @@ Variable controls make your queries dynamic, so you don't need to keep several v
 
 ## Before you begin
 
-- You need an {{esql}} query in **Discover**. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
+- You need an {{esql}} query in **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Create a variable control from the Discover editor [add-variable-control]
 

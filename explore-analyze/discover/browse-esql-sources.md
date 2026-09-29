@@ -15,7 +15,7 @@ When you write a query in {{esql}} mode, the editor includes two interactive bro
 
 ## Before you begin
 
-- Make sure you are using **Discover**'s {{esql}} mode and that the editor is visible. If you are new to that editor, start with [Get started with {{esql}} in Discover](try-esql.md).
+- Make sure you are using **Discover**'s {{esql}} mode and that the editor is visible. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Find a data source or field [discover-esql-resource-browsers]
 

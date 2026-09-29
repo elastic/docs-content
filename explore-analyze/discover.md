@@ -21,7 +21,7 @@ description: Use Discover to search and filter documents, analyze field structur
 ## What you can do with Discover
 
 **Search and explore**
-: Search through your data using KQL, Lucene, or {{esql}}. Filter results to focus on what matters. Discover adapts its interface based on the type of data you're exploring, providing specialized experiences for logs, metrics, and other data types.
+: Search through your data using Kibana Query Language (KQL), Lucene, or {{esql}}. Filter results to focus on what matters. Discover adapts its interface based on the type of data you're exploring, providing specialized experiences for logs, metrics, and other data types.
 
 **Analyze fields and documents**
 : View field statistics, examine individual documents, compare multiple documents side by side, and find patterns in your log data.

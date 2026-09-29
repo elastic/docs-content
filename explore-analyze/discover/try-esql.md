@@ -17,7 +17,14 @@ In this tutorial, you explore the {{kib}} sample web logs in **Discover** with E
 
 You don't need a [data view](discover-get-started.md#find-the-data-you-want-to-use), and you don't need {{esql}} experience. For the rest of Discover, refer to [Explore fields and data with Discover](discover-get-started.md). For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
-By the end of this tutorial, you'll know the main elements of your query and how they shape the results you see in **Discover**.
+By the end of this tutorial, you'll know the main elements of your query and how they shape the results you see in **Discover**. You'll practice how to:
+
+- Query a data source with `FROM`.
+- Keep only the columns you need with `KEEP`.
+- Filter the results with `WHERE`.
+- Find the top results with `SORT` and `LIMIT`.
+- Count the results by group with `STATS`.
+- Save your query as a Discover session.
 
 ## Before you begin [try-esql-prerequisites]
 
@@ -86,7 +93,7 @@ Commands after the source command are processing commands. [`KEEP`](elasticsearc
 
 2. Select **Search**.
 
-**Result:** The table shows four columns: `bytes`, `geo.dest`, `machine.os`, and `response.keyword`. The number of results stays the same, and the chart now uses the columns you kept.
+**Result:** The table shows four columns: `bytes`, `geo.dest`, `machine.os`, and `response.keyword`. The number of results stays the same, and the chart now uses the columns you kept. The time filter still applies, even though `@timestamp` is no longer a column.
 
 :::{image} /explore-analyze/images/kibana-discover-try-esql-keep.png
 :alt: Discover with a KEEP query on bytes, geo.dest, machine.os, and response.keyword, a chart of bytes by destination, and a table with those four columns
@@ -116,7 +123,7 @@ Because `WHERE` removes results, it changes both the table and the chart.
 
 2. Select **Search**.
 
-**Result:** The results with `GB` as their destination are gone from the table and from the chart, because the chart uses the same results as the table.
+**Result:** The results with `GB` as their destination are gone from the table and from the chart.
 
 You can also filter from the table, so you don't need to enter the field name and value. Hover over a value, then select **Filter for this** or **Filter out this**, and Discover writes the `WHERE` line for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
@@ -140,7 +147,7 @@ By default, a query without `LIMIT` returns at most 1,000 results.
 
 2. Select **Search**.
 
-**Result:** The table lists 10 results, starting with the highest `bytes` value. The chart shows only these 10 results.
+**Result:** The table lists 10 results, starting with the highest `bytes` value. The chart now reflects only these 10 results.
 
 :::{image} /explore-analyze/images/kibana-discover-try-esql-sort-limit.png
 :alt: Discover with a query that sorts by bytes in descending order and limits to 10, a chart of bytes by destination for those results, and a table with 10 results
@@ -169,7 +176,7 @@ After `STATS`, each row is a group, not a single result. Only the columns that `
 
 2. Select **Search**.
 
-**Result:** The table lists one row per destination with its count, starting with the highest. The chart shows the same counts.
+**Result:** The table shows each destination as a group with its count, starting with the highest. You can expand a group to see its results. The chart shows the same counts.
 
 :::{image} /explore-analyze/images/kibana-discover-try-esql-stats.png
 :alt: Discover with a STATS query that counts results by destination, a chart of counts by destination, and a table of groups with one group expanded to show its results
