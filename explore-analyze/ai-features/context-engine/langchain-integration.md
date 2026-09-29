@@ -50,7 +50,7 @@ Your credential needs privileges in both Kibana and Elasticsearch.
 
 Create the credential as follows:
 
-1. In Kibana, go to **Stack Management → API Keys** and click **Create API key**.
+1. In Kibana, go to **Stack Management → API Keys** and click `Create API key`
 2. Leave **Control security privileges** off and define a role with the following privileges:
 
     * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
@@ -158,7 +158,6 @@ def list_ai_indices() -> list[dict]:
             "id": entry["id"],
             "esql_target": entry["dest"]["value"],   <4>
             "description": entry.get("description"),
-            "managed": entry["managed"],
         }
         for entry in response.json()["ai_indices"]
     ]
@@ -449,7 +448,6 @@ def list_ai_indices() -> list[dict]:
             "id": entry["id"],
             "esql_target": entry["dest"]["value"],
             "description": entry.get("description"),
-            "managed": entry["managed"],
         }
         for entry in response.json()["ai_indices"]
     ]
@@ -549,7 +547,6 @@ def list_ai_indices() -> list[dict]:
             "id": entry["id"],
             "esql_target": entry["dest"]["value"],
             "description": entry.get("description"),
-            "managed": entry["managed"],
         }
         for entry in response.json()["ai_indices"]
     ]
