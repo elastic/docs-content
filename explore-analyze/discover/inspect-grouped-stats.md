@@ -24,8 +24,8 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
 
    ```esql
    FROM kibana_sample_data_logs
-   | STATS Count = COUNT(*) BY Pattern = CATEGORIZE(message)
-   | SORT Count DESC
+   | STATS Visits = COUNT(*), AvgBytes = AVG(bytes) BY geo.dest
+   | SORT Visits DESC
    ```
 
 2. Select **Search**.
