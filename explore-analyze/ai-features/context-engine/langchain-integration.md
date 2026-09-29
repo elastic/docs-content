@@ -1,6 +1,6 @@
 ---
-navigation_title: Query AI indices with LangChain
-description: Wrap the Context Engine APIs as LangChain tools, so a LangChain agent can retrieve Knowledge Indicators from your AI indices.
+navigation_title: Query AI Indices with LangChain
+description: Wrap the Context Engine APIs as LangChain tools, so a LangChain agent can retrieve Knowledge Indicators from your AI Indices.
 type: how-to
 applies_to:
   stack: experimental 9.6
@@ -212,7 +212,10 @@ The agent needs a model, the tools from Step 2, and instructions telling it to f
 * **System instructions**: a prompt string in your script. Everything stays in one file, which suits a single application.
 * **A skill**: a `SKILL.md` file that you write and keep outside your script. One copy serves every agent that loads it, and the agent reads the full instructions only when it judges them relevant.
 
-**With system instructions**
+::::{tab-set}
+:group: ce-instructions
+:::{tab-item} System instructions
+:sync: system-prompt
 
 ```py
 from langchain.agents import create_agent
@@ -244,7 +247,9 @@ The annotation explains the following detail:
 
 1. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
 
-**With a skill**
+:::
+:::{tab-item} Skill
+:sync: skill
 
 `SkillsMiddleware` applies progressive disclosure: at startup it reads each skill's frontmatter and puts only the `name` and `description` into the system prompt. The agent reads the full `SKILL.md` with `read_file` when it decides the skill applies, then pulls in supporting files only as the instructions call for them. The tool-calling rules stay out of the context window until they're needed.
 
@@ -278,7 +283,7 @@ Elastic Context Engine knowledge is available through three tools: `list_ai_indi
 - Answer from the rows you get back and cite the Knowledge Indicator titles.
 ```
 
-Replace the `SYSTEM_PROMPT` constant and the `create_agent` call with the following. Skills come from the `deepagents` package, which needs Python 3.11 or later.
+Create the agent with the skills middleware instead of a system prompt. Skills come from the `deepagents` package, which needs Python 3.11 or later.
 
 ```py
 from pathlib import Path
@@ -318,11 +323,17 @@ The annotations explain the following details:
 3. Scans `/skills/` and puts every skill it finds into the system prompt, name and description only.
 4. `StateBackend` holds the skill files in the graph's state, scoped to a single thread, so skills need a `checkpointer` for that state to be stored against. Swap `InMemorySaver` for a durable `checkpointer` to keep a thread beyond the life of the process.
 
+:::
+::::
+
 ## Step 4: Ask a question
 
 Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer. The following question is an example.
 
-**With system instructions**
+::::{tab-set}
+:group: ce-instructions
+:::{tab-item} System instructions
+:sync: system-prompt
 
 ```py
 def main() -> None:
@@ -342,7 +353,9 @@ if __name__ == "__main__":
     main()
 ```
 
-**With a skill**
+:::
+:::{tab-item} Skill
+:sync: skill
 
 ```py
 def main() -> None:
@@ -362,6 +375,9 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 ```
+
+:::
+::::
 
 A successful run shows the agent working through the retrieval flow in order. Check that:
 
