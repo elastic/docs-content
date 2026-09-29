@@ -15,7 +15,7 @@ products:
 
 ::::{important}
 
-**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the [**SLO Editor** custom role](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md#slo-all-access) is required to create SLOs.
 
 **For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
@@ -34,7 +34,7 @@ From here, complete the following steps:
 3. [Describe your SLO](/solutions/observability/incident-management/create-an-slo.md#slo-describe).
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos
+:url: https://github.com/elastic/agent-skills@observability-service-reliability
 :::
 
 ::::{note}
@@ -44,6 +44,10 @@ From here, complete the following steps:
 
 ## Define your SLI [define-sli]
 
+From the **Choose the SLI type** dropdown, select the type of SLI to use.
+
+{applies_to}`serverless: ga` When your project has [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can also set the [**Project scope**](#slo-cps-scope) to choose which of them the SLO monitors.
+
 The type of SLI to use depends on the location of your data:
 
 * [Custom KQL](/solutions/observability/incident-management/create-an-slo.md#custom-kql): Create an SLI based on raw logs coming from your services.
@@ -51,7 +55,6 @@ The type of SLI to use depends on the location of your data:
 * [Custom metric](/solutions/observability/incident-management/create-an-slo.md#custom-metric): Create an SLI to define custom equations from metric fields in your indices.
 * [Histogram metric](/solutions/observability/incident-management/create-an-slo.md#histogram-metric): Create an SLI based on histogram metrics.
 * [APM latency and APM availability](/solutions/observability/incident-management/create-an-slo.md#apm-latency-and-availability): Create an SLI based on services using application performance monitoring (APM).
-
 
 ### Custom KQL [custom-kql]
 
@@ -219,6 +222,17 @@ Synthetics availability SLIs are automatically grouped by monitor and location.
 
 ::::
 
+### Project scope [slo-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: ga
+```
+
+On {{serverless-full}}, an SLO can monitor source data from projects that are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md). The SLO does not use the header {{cps-init}} scope selector.
+
+Use the **Project scope** control to choose which linked projects the SLO monitors. This control opens the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) for the SLO.
+
+The control appears when at least one project is linked. You can select **This project**, **All projects**, or a subset. New SLOs default to **This project**. That scope is stored on the SLO and applies every time the SLO's transform runs.
 
 
 ## Set your objectives [set-slo]
@@ -274,3 +288,9 @@ After you’ve created your SLO, you can monitor it from the *SLOs* page in Obse
 :alt: Using the Add panel button to add an SLO Overview widget to a dashboard
 :screenshot:
 :::
+
+## Next steps [slo-create-next-steps]
+
+* [Create an SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md)
+* [Triage SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` [Create a composite SLO](/solutions/observability/incident-management/create-a-composite-slo.md)

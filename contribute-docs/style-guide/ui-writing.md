@@ -122,7 +122,7 @@ The Kibana chrome, the persistent layout that wraps every app, evolves over time
 
 | Term | What it refers to |
 |---|---|
-| **Global header** | The top bar of the Kibana chrome that hosts global controls (for example, the global search field and the space switcher). |
+| **Global header** | The top bar of the Kibana chrome that hosts global controls (for example, the global search field and the space selector). |
 | **Navigation menu** | The primary navigation panel on the left side of Kibana. Its contents and structure depend on the **Solution view** setting. |
 | &nbsp;&nbsp;&nbsp;&nbsp;**Solution view** | The per-space setting that controls the **navigation menu**. Possible values: Search, Observability, Security, or Classic. |
 | &nbsp;&nbsp;&nbsp;&nbsp;**Classic view** | The non-solution option in the **Solution view** setting. Don't use "Classic" on its own, because it's ambiguous with Discover's Classic mode. |

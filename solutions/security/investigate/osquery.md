@@ -122,7 +122,7 @@ You can also create a custom pack with one or more queries. For example, when cr
 
 You can run packs as live queries or schedule packs to run for one or more agent policies. When scheduled, queries in the pack are run for all agents in those policies.
 
-{applies_to}`stack: ga 9.5+` The schedule is set at the pack level and inherited by all queries in the pack. Individual queries can override the pack schedule.
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The schedule is set at the pack level and inherited by all queries in the pack. Individual queries can override the pack schedule.
 
 ### Create or edit a pack
 
@@ -150,6 +150,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
 ### Set a pack schedule [osquery-set-pack-schedule]
 ```yaml {applies_to}
 stack: ga 9.5+
+serverless: ga
 ```
 
 In the **Schedule** section of the pack, choose how the pack and its queries run. The two schedule types are mutually exclusive: a pack and all of its queries share one schedule type.
@@ -172,7 +173,7 @@ In the **Schedule** section of the pack, choose how the pack and its queries run
 1. Click **Add query** and then add a saved query or enter a new query. Each query must include a unique query ID and a schedule that controls when it runs. When you add a saved query to a pack, this adds a copy of the query. A connection is not maintained between saved queries and packs. 
 
     ::::{note}
-    :applies_to: stack: ga 9.5+
+    :applies_to: {"stack": "ga 9.5+", "serverless": "ga"}
     By default, queries inherit the pack schedule. To set a different schedule for a query, enable **Override pack schedule** in the query flyout. An override changes the schedule details only; a query cannot use a different schedule type than its pack.
     ::::
     
@@ -189,6 +190,16 @@ In the **Schedule** section of the pack, choose how the pack and its queries run
 
 ### View status of scheduled packs [osquery-schedule-status]
 
+:::::{applies-switch}
+
+::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+
+To check scheduled pack executions, including their results and status, use the [History](#osquery-view-history) tab.
+
+::::
+
+::::{applies-item} { "stack": "ga 9.0-9.4" }
+
 1. Open the **Packs** tab.
 2. Click a pack name to view the status.
 
@@ -201,6 +212,10 @@ In the **Schedule** section of the pack, choose how the pack and its queries run
 
 3. View scheduled query results in [**Discover**](../../../explore-analyze/discover.md) or the drag-and-drop [**Lens**](../../../explore-analyze/visualize/lens.md) editor.
 
+::::
+
+:::::
+
 ### Filter and duplicate packs
 ```yaml {applies_to}
 stack: ga 9.4+
@@ -208,7 +223,7 @@ serverless: ga
 ```
 The **Packs** tab includes search and filter options to help you find specific packs.
 
-You can duplicate an existing pack by clicking the **Actions** menu next to the pack and selecting **Duplicate pack**. You can also duplicate a pack from its details or edit pages.
+You can duplicate an existing pack by clicking the **Actions** menu next to the pack and selecting **Duplicate pack**. You can also duplicate a pack from its edit page.
 
 ## Save queries [osquery-manage-query]
 
@@ -230,9 +245,10 @@ To save a query:
 
         * The frequency to run the query.
         
-            {applies_to}`stack: ga 9.5+` This frequency applies when the query is added to a pack that uses an **Interval** schedule. If the pack uses a **Date & time** schedule, the query inherits the [pack schedule](#osquery-set-pack-schedule) instead.
+            {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` This frequency applies when the query is added to a pack that uses an **Interval** schedule. If the pack uses a **Date & time** schedule, the query inherits the [pack schedule](#osquery-set-pack-schedule) instead.
         * The minimum [version of Osquery](https://github.com/osquery/osquery/releases) required to run the query.
         * The operating system required to run the query. For information about supported platforms per table, refer to the [Osquery schema](https://osquery.io/schema).
+        * {applies_to}`stack: beta` {applies_to}`serverless: beta` The result type, which controls how scheduled pack results are logged. **Snapshot** (the default) logs a full point-in-time result set for each run. **Differential** logs only rows added or removed since the last run. **Differential (Ignore removals)** logs only added rows. For more information, refer to Osquery [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) and [differential logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
 
 3. Click **Test configuration** to test the query and any mapped fields:
 
@@ -298,7 +314,7 @@ To modify queries in prebuilt packs, you must first make a copy of the pack.
 
 :::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
 
-From the **Packs** tab, click the **Actions** menu next to the prebuilt pack and select **Duplicate pack**. You can also duplicate a pack from its details or edit pages. The duplicated pack is fully editable.
+From the **Packs** tab, click the **Actions** menu next to the prebuilt pack and select **Duplicate pack**. You can also duplicate a pack from its edit page. The duplicated pack is fully editable.
 
 :::::
 
@@ -408,6 +424,30 @@ Osquery responses include the following information:
 * By default, all query results are [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) that represent a point in time with a set of results, with no [differentials](https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
 * Osquery data is stored in the `logs-osquery_manager.result-<namespace>` datastream, and the result row data is under the `osquery` property in the document.
 
+### View results from a remote {{es}} output [osquery-remote-output-ccs]
+```{applies_to}
+stack: ga 9.4+
+serverless: unavailable
+```
 
+You can run Osquery against {{agents}} that send data to a [remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md), and view those results in Osquery on the local cluster. Live queries, query history, and scheduled pack results all include responses from those {{agents}}.
 
+This uses two separate connections:
+
+* **Remote {{es}} output:** {{agents}} send query results from the queried hosts to the remote cluster.
+* **{{ccs-cap}} ({{ccs-init}}):** The local cluster reads those query results back from the remote cluster.
+
+To set up the connections, complete the following steps:
+
+1. Create a remote {{es}} output and assign it to the {{agent}} policy that includes Osquery Manager. Refer to [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md).
+2. On the local cluster, add the remote cluster. Follow [Set up {{ccs}} to query remote data](/reference/fleet/remote-elasticsearch-output.md#set-up-ccs).
+3. Confirm that the local cluster is connected to the remote cluster. On the local cluster, go to **{{dev-tools-app}}**, then run:
+
+    ```console
+    GET /_remote/info
+    ```
+
+    At least one remote cluster must show `"connected" : true`. Osquery includes remote results only when a remote cluster is connected. For more details, refer to the [remote cluster info API]({{es-apis}}operation/operation-cluster-remote-info).
+
+After the remote cluster connects, wait 60 seconds, then run a query. The results table and history include responses from {{agents}} that use the remote output.
 

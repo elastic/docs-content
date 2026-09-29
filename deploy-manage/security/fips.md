@@ -5,6 +5,7 @@ mapped_pages:
 applies_to:
   deployment:
     self: ga
+    eck: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -25,7 +26,7 @@ The Federal Information Processing Standard (FIPS) Publication 140, titled "Secu
 - Some [Ingest tools](/deploy-manage/security/fips-ingest.md), including {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}}, are available as FIPS compatible binaries and can be configured to use FIPS 140-2 compliant cryptography.
 
 :::{note}
-If you are running {{es}} through {{eck}}, refer to [ECK FIPS compatibility](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md).
+If you are running {{es}} through {{eck}}, you also need a FIPS-compliant ECK operator. Refer to [](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md) for operator installation instructions.
 
 FIPS compliance is not officially supported in {{ece}} (ECE). While ECE may function on FIPS-enabled systems, this configuration has not been validated through our testing processes and is not recommended for production environments.
 :::

@@ -18,7 +18,7 @@ With {{ccr}}, you can replicate indices across clusters to:
 
 {{ccr-cap}} uses an active-passive model. You index to a *leader* index, and the data is replicated to one or more read-only *follower* indices. Before you can add a follower index to a cluster, you must configure the *remote cluster* that contains the leader index.
 
-When the leader index receives writes, the follower indices pull changes from the leader index on the remote cluster. You can manually create follower indices, or configure auto-follow patterns to automatically create follower indices for new time series indices.
+When the leader index receives writes, the follower indices pull changes from the leader index on the remote cluster. You can manually create follower indices, or [configure auto-follow patterns](./cross-cluster-replication/manage-auto-follow-patterns.md) to automatically create follower indices for new time series indices.
 
 You configure {{ccr}} clusters in a uni-directional or bi-directional setup:
 
@@ -184,6 +184,11 @@ Changes in the index mapping on the leader index are replicated to the follower 
 
 If you apply a non-dynamic settings change to the leader index that is needed by the follower index, the follower index closes itself, applies the settings update, and then re-opens itself. The follower index is unavailable for reads and cannot replicate writes during this cycle.
 
+### Index deletions [ccr-index-deletions]
+
+{{ccr-cap}} replicates document-level delete operations, but it does not propagate index deletions. Deleting a leader index does not cause {{ccr}} to delete the corresponding index on the follower cluster. This behavior applies to regular indices and data stream backing indices.
+
+You can use [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) to manage index retention independently on both clusters. {{ccr-cap}} copies the `index.lifecycle.name` setting from the leader index to its follower, but it [does not replicate the policy definition](#ccr-limitations). To manage follower indices with {{ilm}}, define a policy with that name on each follower cluster. For details about how {{ilm}} coordinates rollover and unfollow for auto-followed indices, refer to [Manage auto-follow patterns](cross-cluster-replication/manage-auto-follow-patterns.md#ccr-auto-follow-ilm).
 
 ## Initializing followers using remote recovery [ccr-remote-recovery]
 
@@ -233,8 +238,8 @@ This following sections provide more information about how to configure and use 
 
 * [System indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices)
 * [Machine learning jobs](../../explore-analyze/machine-learning.md)
-* [index templates](../../manage-data/data-store/templates.md)
-* [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) and [{{slm}}]({{es-apis}}group/endpoint-slm) polices
+* [Index templates](../../manage-data/data-store/templates.md)
+* [{{ilm-cap}}](../../manage-data/lifecycle/index-lifecycle-management.md) and [{{slm}}]({{es-apis}}group/endpoint-slm) policies
 * [User permissions and role mappings](../users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 * [Snapshot repository settings](snapshot-and-restore/self-managed.md)
 * [Cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)

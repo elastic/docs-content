@@ -21,6 +21,47 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.4 [elastic-observability-9.5.4-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.4-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.5.4-fixes]
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
+* Fixes Custom threshold and Metric threshold rules so grouped alerts stay active when **If there is no data** is set to **Do nothing** [#289623]({{kib-pull}}289623).
+
+## 9.5.3 [elastic-observability-9.5.3-release-notes]
+
+
+### Features and enhancements [elastic-observability-9.5.3-features-enhancements]
+* Adds a confirmation modal in Synthetics **Alerting defaults** settings when disabling an active default status or TLS rule. Custom synthetics rules are not affected [#287914]({{kib-pull}}287914).
+
+### Fixes [elastic-observability-9.5.3-fixes]
+* Fixes SLO dashboard embeddable panels (**SLO Overview**, **SLO Alerts**, **Error Budget**, and **Burn Rate**) not rendering when the `observability:enableInspectEsQueries` advanced setting is enabled or when {{kib}} runs in dev mode [#286626]({{kib-pull}}286626).
+* Fixes a 500 error when hovering over AWS RDS instances in the **Infrastructure Inventory** map tooltip, caused by unquoted ARN identifiers containing `:` characters being misinterpreted as KQL field-value separators [#288209]({{kib-pull}}288209).
+* Relabels the top-level **Alerting** privilege section in **Roles** to **Alerting V2** and marks each Alerting V2 sub-privilege as experimental [#288163]({{kib-pull}}288163).
+* Warns in Synthetics when a private location's {{agent}} version predates Maintenance Window support (8.19.x), so operators know monitors on that location will not honor active maintenance windows [#285327]({{kib-pull}}285327).
+* Fixes the Agent Builder research agent re-asking clarifying questions that the user had already answered earlier in the same session [#284800]({{kib-pull}}284800).
+* Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
+
+## 9.5.2 [elastic-observability-9.5.2-release-notes]
+
+### Fixes [elastic-observability-9.5.2-fixes]
+* Fixes the metric threshold rule form silently showing no conditions when the source configuration request is slow or fails, instead of showing a loading or error state [#280121]({{kib-pull}}280121).
+* Fixes the {{product.apm}} agent configuration tutorial page exposing the APM Server secret token to users without APM write permissions [#283942]({{kib-pull}}283942).
+* Fixes an error loading maintenance window status on the Synthetics monitors overview for users with read-only access [#281894]({{kib-pull}}281894).
+
+## 9.5.1 [elastic-observability-9.5.1-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.1-features-enhancements]
+* Shows attached maintenance windows in the Synthetics monitor details panel, resolving each window's ID to a title and linking directly to the **{{maint-windows-app}}** management page [#281853]({{kib-pull}}281853).
+* Adds smooth animated transitions to the Streams **Data lifecycle** phases preview bar when adding, removing, or editing lifecycle phases [#277149]({{kib-pull}}277149).
+* Adds an **Import from another stream** action to the Streams **Data lifecycle** tab, allowing users to copy a lifecycle configuration from another stream [#275948]({{kib-pull}}275948).
+
+### Fixes [elastic-observability-9.5.1-fixes]
+* Fixes an error when downloading agent policies that reuse objects by reference, caused by an `Unresolved alias` YAML serialization error [#280669]({{kib-pull}}280669).
+* Fixes Synthetics remote monitor Cross-Cluster Search queries to correctly scope to the target cluster [#278141]({{kib-pull}}278141).
+
 ## 9.5.0 [elastic-observability-9.5.0-release-notes]
 
 ### Features and enhancements [elastic-observability-9.5.0-features-enhancements]
@@ -147,6 +188,28 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
+
+## 9.4.7 [elastic-observability-9.4.7-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.7-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.4.7-fixes]
+* Fixes Custom threshold and Metric threshold rules so grouped alerts stay active when **If there is no data** is set to **Do nothing** [#289623]({{kib-pull}}289623).
+* Fixes a 500 error when hovering over AWS RDS instances in the **Infrastructure Inventory** map tooltip, caused by unquoted ARN identifiers containing `:` characters being misinterpreted as KQL field-value separators [#288209]({{kib-pull}}288209).
+* Fixes a race that creates the SLO summary temporary index with the wrong `service.name` mapping, causing new SLOs to be missing from filters [#286871]({{kib-pull}}286871).
+* Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
+
+## 9.4.6 [elastic-observability-9.4.6-release-notes]
+
+### Fixes [elastic-observability-9.4.6-fixes]
+* Fixes Custom Threshold rules using the rate aggregation to correctly fire when a monitored counter increases from `0` to any positive value [#283973]({{kib-pull}}283973).
+
+## 9.4.5 [elastic-observability-9.4.5-release-notes]
+
+### Fixes [elastic-observability-9.4.5-fixes]
+* Fixes package policy deletions not forwarding the `asyncDeploy` option to agent policy updates, causing deletions to always block on synchronous agent policy recompilation [#282580]({{kib-pull}}282580).
+* Fixes Synthetics monitors to support referencing maintenance windows by name in addition to ID [#282570]({{kib-pull}}282570).
 
 ## 9.4.4 [elastic-observability-9.4.4-release-notes]
 

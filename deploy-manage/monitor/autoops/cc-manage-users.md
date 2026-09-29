@@ -19,16 +19,16 @@ Learn how to invite users to your {{ecloud}} organization and give them access t
 To invite users to your organization and give them access to your cluster:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
-1. From the navigation menu, select **Organization**. 
-1. On the **Members** page, click **Invite members**.
-1. Enter the email address of the user you want to invite.
+2. From the navigation menu, select **Organization** → **Members**.
+3. Click **Invite members**.
+4. Enter the email address of the user you want to invite.
     
     To add multiple users, enter their email addresses separated by a space.
-1. In the **Assign roles** section, enable **Connected cluster access**. 
-1. Set roles for the users on all or selected clusters so that they have the appropriate permissions when they accept the invitation and sign in to {{ecloud}}. 
+5. In the **Assign roles** section, enable **Connected cluster access**. 
+6. Set roles for the users on all or selected clusters so that they have the appropriate permissions when they accept the invitation and sign in to {{ecloud}}. 
 
     Learn more about roles and their levels of access to AutoOps in [{{ecloud}} roles for AutoOps](#assign-roles).
-1. Click **Send invites**.
+7. Click **Send invites**.
     
     Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation before it expires. If an invitation expires, an admin can resend it.
 

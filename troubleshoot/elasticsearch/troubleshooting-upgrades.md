@@ -192,6 +192,7 @@ You might see [shard allocation issues](/troubleshoot/elasticsearch/diagnose-una
 
 * Node upgrades didn't follow the [recommended upgrade order](/deploy-manage/upgrade/deployment-or-cluster/elasticsearch.md#upgrade-order)
 * One of the [edge cases](#troubleshooting-upgrades-theory) described earlier occurs
+* An insufficient number of eligible nodes has been upgraded to allocate replicas
 
 Beyond the [common allocation issues](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md), these errors appear only during rolling upgrades:
 
@@ -204,7 +205,7 @@ Beyond the [common allocation issues](/troubleshoot/elasticsearch/cluster-alloca
 
 	* `cannot allocate replica shard to a node with version [X.X.X] since this is older than the primary version [Y.Y.Y]`
 
-If you encounter any of these, continue upgrading your nodes. The data allocates as more nodes reach the later version.
+Primary shards on a later-version node cannot allocate replicas onto earlier-version nodes. This is expected during a rolling upgrade. Continue upgrading nodes until enough later-version nodes exist to allocate the replicas.
 
 ### Post-upgrade issues [troubleshooting-upgrades-errors-post]
 

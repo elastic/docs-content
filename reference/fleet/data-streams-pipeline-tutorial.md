@@ -9,7 +9,7 @@ products:
   - id: elastic-agent
 ---
 
-# Tutorial: Transform data with custom ingest pipelines [data-streams-pipeline-tutorial]
+# Transform data with custom ingest pipelines [data-streams-pipeline-tutorial]
 
 This tutorial explains how to add a custom ingest pipeline to an Elastic Integration. Custom pipelines can be used to add custom data processing, like adding fields, obfuscate sensitive information, and more.
 
@@ -71,7 +71,6 @@ Add the pipeline you created in step one.
 
     * Processor: "Pipeline"
     * Pipeline name: "add_field"
-    * Value: `true`
 
 2. Click **Create pipeline** to return to the **Edit integration** page.
 

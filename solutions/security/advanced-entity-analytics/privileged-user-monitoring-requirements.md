@@ -22,7 +22,7 @@ The privileged user monitoring feature requires:
   * {applies_to}`stack: ` The appropriate [subscription](https://www.elastic.co/subscriptions)
   * {applies_to}`serverless: ` The appropriate [feature tier](https://www.elastic.co/pricing/serverless-security)
 
-{applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To enable this feature, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+{applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To enable this feature, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 
 To use this feature, you need:
   * {applies_to}`stack: ` A role with the appropriate [privileges](#privmon_privs)

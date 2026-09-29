@@ -304,7 +304,7 @@ For example, a page describing how to create an {{ech}} deployment just requires
 
 This is true for most situations. However, it can still be useful to call it out in a few specific scenarios:
 
-* **When there is a high risk of confusion for users**. For example, if a feature is available in two out of three serverless project types, it might make sense to clarify and be explicit about the feature being “unavailable” for the third type.
+* **When there is a high risk of confusion for users**. For example, if a feature is available in two out of four serverless project types, it might make sense to clarify and be explicit about the feature being “unavailable” for the other types.
 
   ```yml
   ---

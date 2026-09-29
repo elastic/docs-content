@@ -50,7 +50,7 @@ To find out if an integration is GA, see the [{{integrations}} quick reference t
 
 ## Supported outputs [supported-outputs-beats-and-agent]
 
-The following table shows the outputs supported by the {{agent}} in 9.0.0-beta1:
+The following table shows the outputs supported by {{agent}}:
 
 ::::{note}
 {{elastic-defend}} and APM Server have a different output matrix.
@@ -73,7 +73,7 @@ The following table shows the outputs supported by the {{agent}} in 9.0.0-beta1:
 
 | {{beats}} configuration | {{agent}} support |
 | --- | --- |
-| [Modules](beats://reference/filebeat/configuration-filebeat-modules.md) | Supported through integrations. |
+| Modules ([{{filebeat}}](beats://reference/filebeat/configuration-filebeat-modules.md), [{{metricbeat}}](beats://reference/metricbeat/configuration-metricbeat.md)) | Supported through integrations. Standalone {{agent}} also accepts module settings on an input or its streams. Refer to [Find the settings available for an input](elastic-agent-input-configuration.md#elastic-agent-input-configuration-available-settings). |
 | [Input setting overrides](beats://reference/filebeat/advanced-settings.md) | Not configurable. Set to default values. |
 | [General settings](beats://reference/filebeat/configuration-general-options.md) | Many of these global settings are now internal to the agent and should not be modified. |
 | [Project paths](beats://reference/filebeat/configuration-path.md) | {{agent}} configures these paths to provide a simpler and more streamlined configuration experience. |
@@ -96,7 +96,7 @@ The following table shows the outputs supported by the {{agent}} in 9.0.0-beta1:
 
 ## Capabilities comparison [additional-capabilities-beats-and-agent]
 
-The following table shows a comparison of capabilities supported by {{beats}} and the {{agent}} in 9.0.0-beta1:
+The following table shows a comparison of capabilities supported by {{beats}} and {{agent}}:
 
 | Item | {{beats}} | {{fleet}}-managed {{agent}} | Standalone {{agent}} | Description |
 | --- |:---:|:---:|:---:| --- |

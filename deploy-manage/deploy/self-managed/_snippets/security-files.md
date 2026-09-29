@@ -7,7 +7,7 @@ When you install {{es}}, the following certificates and keys are generated in th
 :   Keystore that contains the key and certificate for the HTTP layer for this node.
 
 `transport.p12`
-:   Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster.
+:   Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster. {{es}} also uses this file as the transport truststore. Auto-generated transport certificates have a long validity period and are unlikely to expire under normal operation.
 
 `http.p12` and `transport.p12` are password-protected PKCS#12 keystores. {{es}} stores the passwords for these keystores as [secure settings](/deploy-manage/security/secure-settings.md). To retrieve the passwords so that you can inspect or change the keystore contents, use the [`bin/elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool.
 

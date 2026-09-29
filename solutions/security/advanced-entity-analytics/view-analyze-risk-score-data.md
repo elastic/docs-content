@@ -119,7 +119,7 @@ Entity risk fields on alert documents denote the risk at the time the alert was 
 
 ### Alert details flyout [alert-details-flyout]
 
-To access risk score data in the alert details flyout, select **Insights** → **Entities** on the **Overview** tab:
+To access risk score data in the alert details flyout, click **Entities** in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) on the **Overview** tab:
 
 :::{image} /solutions/images/security-alerts-flyout-rs.png
 :alt: Risk scores in the Alerts flyout

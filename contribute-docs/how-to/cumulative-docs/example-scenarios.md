@@ -400,8 +400,7 @@ whether the product/deployment mode is versioned or unversioned.
 #### If a GA or deprecated feature is removed from a versioned product
 
 For example, we removed the `securitySolution:enableVisualizationsInFlyout` setting that was described on the
-[Configure advanced settings](https://www.elastic.co/docs/solutions/security/get-started/configure-advanced-settings)
-page from the Elastic Stack in 9.1.0 and from Serverless around the same time.
+**Configure advanced settings** page from the Elastic Stack in 9.1.0 and from Serverless around the same time.
 Because this functionality is still available before 9.1.0, we need that content to continue to be
 available to users on Elastic Stack earlier versions while communicating to users on later versions
 that it is no longer available.

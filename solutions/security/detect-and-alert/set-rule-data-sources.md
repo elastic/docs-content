@@ -13,7 +13,7 @@ description: Configure which Elasticsearch indices rules query and exclude cold 
 
 # Set rule data sources [exclude-cold-frozen-data-individual-rules]
 
-Every detection rule needs a data source that tells it which {{es}} indices to query. By default, rules inherit the index patterns defined in the [`securitySolution:defaultIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) advanced setting. You can override this default on a per-rule basis to target specific indices, exclude data tiers, or use a {{data-source}} with runtime fields.
+Every detection rule needs a data source that tells it which {{es}} indices to query. By default, rules inherit the index patterns defined in the [`securitySolution:defaultIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting. You can override this default on a per-rule basis to target specific indices, exclude data tiers, or use a {{data-source}} with runtime fields.
 
 ## Per-rule index patterns [per-rule-index-patterns]
 
@@ -54,7 +54,7 @@ Cold data tiers store time series data that's accessed infrequently and rarely u
 
 You have two options for excluding cold and frozen data from rules:
 
-* **Space-level setting (all rules)**: On {{stack}}, use [advanced settings](../get-started/configure-advanced-settings.md#exclude-cold-frozen-data-rule-executions) in the {{kib}} space to exclude `data_cold` or `data_frozen`. Two settings apply in different places; configure one or both:
+* **Space-level setting (all rules)**: On {{stack}}, use [advanced settings](kibana://reference/advanced-settings.md) in the {{kib}} space to exclude `data_cold` or `data_frozen`. Two settings apply in different places; configure one or both:
 
    * **`data_views:fields_excluded_data_tiers`**: For all [Data views](/explore-analyze/find-and-organize/data-views.md), excludes those tiers when {{es}} resolves field lists for the UI.
    * **`securitySolution:excludedDataTiersForRuleExecution`**: For [Security rule types](/solutions/security/detect-and-alert/rule-types.md), excludes those tiers during rule execution (not used by {{ml}} rules).

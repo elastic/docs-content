@@ -77,6 +77,8 @@ When using AWS PrivateLink, the following limitations apply:
 
 ```{include} _snippets/private-connectivity-limitations-ech.md
 ```
+```{include} _snippets/aws-privatelink-cloud-id-limitation.md
+```
 
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
 
@@ -200,7 +202,7 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
     :screenshot:
     :::
 
-    The security group for the endpoint should, at minimum, allow for inbound connectivity from your instances' CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243.
+    The security group for the endpoint should, at minimum, allow for inbound connectivity from your instances' CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243. If you use this endpoint for remote cluster traffic to an {{ech}} deployment, also allow port `9443` or `9400`, depending on the security model you configure.
 
     <!--need to verify this for serverless-->
 
@@ -247,6 +249,8 @@ After you create your VPC endpoint and DNS entries, check that you are able to r
 ::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for {{es}} and {{kib}} traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
 ::::
 ::::{applies-item} serverless: ga
 :::{include} _snippets/private-url-struct-serverless.md
@@ -373,7 +377,7 @@ Create a new private connection policy.
     Private connection policies are bound to a single resource type and region, and can be assigned only to resources with the same resource type and in the same region. If you want to associate a policy with multiple resource types or resources in multiple regions, then you have to recreate the policy for all applicable resource types and regions.
     :::
 6.  Under **Connectivity**, select **PrivateLink**.
-7.  Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment or project.
+7.  Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment or project. For each VPC filter, select **Add description** to add an optional description that helps you identify the filter later.
 
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
 
@@ -435,6 +439,8 @@ Use the alias you’ve set up as CNAME DNS record to access your resource.
 ::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for Elasticsearch and Kibana traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
 ::::
 ::::{applies-item} serverless: ga
 :::{include} _snippets/private-url-struct-serverless.md
@@ -520,8 +526,46 @@ To access the deployment or project:
 
 ### AWS PrivateLink and Fleet
 
+:::::{applies-switch}
+
+::::{applies-item} ech: ga
 :::{include} _snippets/private-connection-fleet.md
 :::
+::::
+
+::::{applies-item} serverless: ga
+When a private connection is set up for your project, {{fleet}} adds two entries that can route {{agent}} traffic over AWS PrivateLink:
+
+* A {{fleet-server}} host named **Private Fleet Server**, listed in the **Fleet server hosts** section.
+* An {{es}} output named **Private Elasticsearch Output**, listed in the **Outputs** section.
+
+Both entries appear on the **Fleet** → **Settings** page with an **AWS PrivateLink** badge, and they point to the private endpoints of your project. Elastic manages their names and URLs, so you can't change them. Neither entry is used until you select it, either as the default for all agent policies or in an individual policy.
+
+To send data from all agent policies over the private connection:
+
+1. Go to **Fleet** → **Settings**.
+2. In the **Fleet server hosts** section, select **Edit** for **Private Fleet Server**, then select **Make this Fleet server the default one**.
+3. In the **Outputs** section, select **Edit** for **Private Elasticsearch Output**, then select **Make this output the default for agent integrations**. To also send agent monitoring data over the private connection, select **Make this output the default for agent monitoring**.
+4. Save your changes.
+
+To send data from a single agent policy over the private connection, and leave the remaining policies on the public endpoints:
+
+1. Go to **Fleet** → **Agent policies**, then select the policy you want to change.
+2. On the **Settings** tab, set **Fleet Server** to **Private Fleet Server**.
+3. Set **Output for integrations** and, optionally, **Output for agent monitoring** to **Private Elasticsearch Output**.
+4. Save your changes.
+
+A selection made in an agent policy takes precedence over the defaults on the **Settings** page.
+
+If the private connection is later removed from your project, {{fleet}} restores the public {{fleet-server}} host and output as the defaults and deletes the private entries. Agent policies that used a private entry revert to the default, so {{agents}} continue to reach a valid endpoint.
+
+:::{admonition} Limitations
+* You can't create another {{es}} output that points to the private endpoint. Only the output that {{fleet}} adds can use that URL.
+* {{managed-integrations}} don't use the private endpoints. Elastic runs their collectors and writes the data to your project over Elastic's internal network. For more information, refer to [Security and data residency](/manage-data/ingest/managed-integrations/managed-integrations.md#managed-integrations-data-security).
+:::
+::::
+
+:::::
 
 ## Setting up a cross-region PrivateLink connection [ec-aws-inter-region-private-link]
 

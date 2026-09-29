@@ -1,5 +1,5 @@
 ---
-navigation_title: Scenario 1
+navigation_title: All data streams, all namespaces
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario1.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Scenario 1: Apply an ILM policy to all data streams generated from Fleet integrations across all namespaces [data-streams-scenario1]
+# Apply an ILM policy to all data streams across all namespaces [data-streams-scenario1]
 
 
 ::::{note}

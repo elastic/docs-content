@@ -56,7 +56,14 @@ The selected resource is created for you.
 
 If you select **{{serverless-short}}**, then the project is [sized automatically for you](/deploy-manage/deploy/elastic-cloud/serverless.md#_benefits_of_serverless_projects) and adjusts to your usage.
 
-If you select **Cloud Hosted**, a deployment is created with **16GB of RAM** and **560GB of storage**, across **two availability zones** for redundancy. The size of the deployment, both RAM and storage, can be changed [directly in the {{ecloud}} console](/deploy-manage/deploy/elastic-cloud/configure.md). Usage charges are based on the deployment size, so size your instance efficiently. The deployment defaults to the latest available version of the {{stack}}. Check our [Version policy](available-stack-versions.md) to learn more about when new versions are made available and old versions are removed from service.
+If you select **Cloud Hosted**, a deployment is created with **16GB of RAM** and **560GB of storage**, across **two availability zones** for redundancy. The deployment defaults to the latest available version of the {{stack}}. Check our [Version policy](available-stack-versions.md) to learn more about when new versions are made available and old versions are removed from service.
+
+:::{admonition} Configure advanced settings after deployment creation
+The Azure portal exposes only a subset of configuration options at deployment creation time. To access the full set of settings, open the **Advanced Settings** link from your deployment's overview page in the Azure portal. This opens the {{ecloud}} console, where you can configure:
+
+* **Deployment size**: Adjust RAM and storage to match your workload. Usage charges are based on deployment size, so size your instance efficiently. Refer to [Configure ECH deployments](/deploy-manage/deploy/elastic-cloud/configure.md).
+* **Customer-managed encryption key (BYOK)**: Encrypt your deployment at rest using a key from your own key management service. Refer to [Customer-managed encryption keys](azure-native-isv-service-byok.md).
+:::
 
 ### Alternative creation methods [azure-integration-cli-api]
 

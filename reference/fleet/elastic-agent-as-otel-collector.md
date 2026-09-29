@@ -156,7 +156,6 @@ Depending on your environment, you can use {{agent}} (as described on this page)
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | {{agent}} ({{fleet}}-managed) | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") |
 | {{agent}} (standalone) | Planned | ![no](images/red-x.svg "") | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
-| {{agent}} (OTel mode) | Planned | Planned | ![yes](images/green-check.svg "") | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
 | Upstream OTel Collector | Planned | Planned | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") | ![no](images/red-x.svg "") |
 
 *Planned* indicates that support is on the roadmap and not yet generally available.

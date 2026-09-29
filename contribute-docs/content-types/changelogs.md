@@ -5,8 +5,6 @@ description: "Guidelines for writing effective release notes content in changelo
 
 # Changelogs
 
-% Title and technical-formatting guidance updated (base-form verbs, {{esql}}, cleanup checklist, YAML quoting note) — documentation agent, 2026-05-11.
-
 This page provides guidelines for writing useful and consistent changelogs, which are the building blocks of Elastic release notes.
 Use this content type and the associated schema to draft new changelogs or to evaluate existing content.
 
@@ -211,21 +209,23 @@ Include a description when:
 Follow these best practices:
 
 - **Keep it concise**: Use a maximum of 600 characters.
-- **Focus on user value**: Explain what users can do or what problems are solved.
+- **Use third-person present**: Titles stay base-form imperative (*Fix*, *Add*); descriptions do not (*Fixes*, *Adds*, *Enables*, *Improves*, *Updates*, or *Removes* depending on type).
+- **Focus on user value**: Explain what users can do or what problems are solved. Avoid filler such as "This enhancement allows you to..."
 - **Provide context**: Help users understand when or why they would use this.
 - **Include relevant details**: Describe configuration changes, API changes, or behavioral differences.
 - **Use code blocks**: Consider the layout of your configuration examples and code snippets.
 
 #### Good description examples
 
-- This enhancement allows you to configure custom authentication providers through the security settings. Previously, only built-in providers were supported.
-- Fix an issue where queries with date range filters could cause excessive memory usage in clusters with many shards. The change optimizes memory allocation for date range queries.
+- Adds support for custom authentication providers through the security settings. Previously, only built-in providers were supported.
+- Fixes excessive memory usage for queries with date range filters in clusters with many shards by optimizing memory allocation.
 
 #### Poor description examples
 
 - "Internal refactoring": Doesn't explain user impact.
 - "See PR #12345 for details": Doesn't provide information, only a reference.
 - Repeating the title verbatim, which adds no value.
+- "Fixed Fleet package policy bulk creation": Past tense; use *Fixes*.
 
 ### Write about user impact and actions
 
@@ -267,6 +267,7 @@ Avoid these common mistakes:
 - **Being too vague**: "Bug fixes and performance improvements" doesn't help users understand what changed.
 - **Including unnecessary technical details**: Skip internal architecture changes unless they affect users.
 - **Shipping PR-style titles unchanged**: Omit `feat:`/`fix:` prefixes, auto-implement labels, and bracketed team tags—rewrite for users (see [Title cleanup checklist](#title-cleanup-checklist)).
+- **Mixing title and description verb forms**: Don't open a description with *Fix* or *Fixed*. Titles use *Fix*; descriptions use *Fixes*.
 
 ## Examples
 

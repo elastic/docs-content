@@ -13,6 +13,14 @@ products:
 
 Installing ECE on multiple hosts with your own registry server is simpler, because you do not have to load the Docker images on each host.
 
+::::{admonition} ECE service containers run as root
+[ECE service containers](ece-architecture.md#ece-service-containers) run as `root` (UID 0) because they interact directly with the Docker or Podman socket and perform privileged operations such as cgroup management and resource allocation. If your private registry or image scanner rejects images that run as the root user, add an exception for `elastic-cloud-enterprise`.
+::::
+
+:::{important}
+{{stack}} versions 9.5.0, 9.5.1, and 9.5.2 are unavailable due to a known issue. {{ece}} 4.2.0 includes 9.5.2 images so you can complete the installation. After {{ece}} is running, also pull the 9.5.3 images listed on [Available Docker images](ece-install-offline-images.md#ece-recent-download-list) and add that stack pack for new deployments. Review [the related KB article](https://ela.st/es-v95-replication-bug).
+:::
+
 1. Set up your private Docker registry. To learn more, check [Deploy a registry server](https://docs.docker.com/registry/deploying/).
 
     ::::{tip}

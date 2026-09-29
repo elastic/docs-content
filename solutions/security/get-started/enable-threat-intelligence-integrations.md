@@ -61,7 +61,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
     ::::
 
-2. Update the `securitySolution:defaultThreatIndex` [advanced setting](configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`):
+2. Update the `securitySolution:defaultThreatIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`):
 
     * If you’re *only* using {{filebeat}} version 8.x, add the appropriate {{filebeat}} threat intelligence index pattern. For example, `logs-ti*`, `filebeat-8*`.
     * If you’re using a previous version of Filebeat *and* a current one, differentiate between the threat intelligence indices by using unique index pattern names. For example, if you’re using {{filebeat}} version 7.0.0 and 8.0.0, update the setting to `logs-ti*`,`filebeat-7*`,`filebeat-8*`.
@@ -72,7 +72,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 ## Add a custom integration [custom-ti-integration]
 
 1. Set up a way to [ingest data](ingest-data-to-elastic-security.md) into your system.
-2. Update the `securitySolution:defaultThreatIndex` [advanced setting](configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`), for example, `logs-ti*`,`custom-ti-index*`.
+2. Update the `securitySolution:defaultThreatIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`), for example, `logs-ti*`,`custom-ti-index*`.
 
     ::::{note}
     Threat intelligence indices aren’t required to be ECS compatible. However, we strongly recommend compatibility if you’d like your alerts to be enriched with relevant threat indicator information. You can find a list of ECS-compliant threat intelligence fields at [Threat Fields](ecs://reference/ecs-threat.md).

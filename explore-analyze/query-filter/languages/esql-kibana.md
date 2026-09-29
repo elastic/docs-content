@@ -258,7 +258,7 @@ stack: ga 9.2
 
 Remote lookup joins are supported in [cross-cluster](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) and [cross-project](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) queries. By default, {{esql}} resolves the lookup index on every remote cluster in the query and each cluster joins against its own local index with that name.
 
-{applies_to}`stack: ga 9.6` To join against a lookup index on the local cluster or origin project when that index is missing from one or more clusters or projects in the query, use [`LOOKUP JOIN` coordinator mode](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#coordinator-mode).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To join against a lookup index on the local cluster or origin project when that index is missing from one or more clusters or projects in the query, use [`LOOKUP JOIN` coordinator mode](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#coordinator-mode).
 
 
 #### ENRICH command and enrich policies [esql-kibana-enrich]
@@ -309,6 +309,7 @@ FROM kibana_sample_data_logs
 | WHERE timestamp > NOW() - 15minutes
 ```
 
+To apply a time shift in an {{esql}} visualization, refer to [Compare current versus previous period with time shift](/explore-analyze/visualize/esorql.md#esql-viz-time-shift).
 
 ### Timezone handling [esql-kibana-timezone]
 ```{applies_to}
@@ -410,7 +411,7 @@ For the full list of supported settings and their parameters, refer to the [`SET
 
 ### Search across projects with `SET project_routing` [esql-kibana-cps]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
@@ -494,9 +495,13 @@ Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon
 Where it applies depends on the context:
 
 - In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
-- In **Dashboards** or when previewing a dashboard created with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md), **Fast mode** applies to the dashboard's [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and [**Vega** or **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use an {{esql}} data source with one `STATS` command. The option is unavailable when the dashboard has no {{esql}} panels.
+- In **Dashboards** or when previewing a dashboard created with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md), {icon}`bolt` **Fast mode** can return faster, estimated results for [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command. You can turn **Fast mode** on when the dashboard includes at least one {{esql}}-based panel.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Turning **Fast mode** on does not change a map with an {{esql}} layer. To approximate a `STATS` query on the map, use the [SET approximation directive](#esql-kibana-approximation) in the layer query. The option can still appear when that map is an {{esql}}-based panel on the dashboard.
 
-**Fast mode** is preserved when you save or share a dashboard.
+**Fast mode** is preserved when you:
+
+- Save or share a dashboard
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Save and reopen a Discover session. Refer to [Save a Discover session](/explore-analyze/discover/save-open-search.md#_save_a_discover_session).
 
 To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
 

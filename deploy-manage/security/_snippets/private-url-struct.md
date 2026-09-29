@@ -18,7 +18,5 @@ Use the following URL structure. Take the alias and product from your Elastic en
 
 
 :::{tip}
-{{ech}} supports ports 443 and 9243.
-
 You can also connect to the cluster using the {{es}} cluster ID, for example, https://6b111580caaa4a9e84b18ec7c600155e.{{example-phz-dn}}.
 :::

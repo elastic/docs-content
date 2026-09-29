@@ -23,6 +23,8 @@ You might need to adjust the retention period for one of the following reasons:
 Before increasing retention, ensure the `logging-and-metrics` system deployment has sufficient resources and disk capacity. Longer retention increases storage usage and cluster workload, and can result in a busy or overloaded cluster if the deployment is not scaled appropriately. Refer to [ECE system deployments configuration](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md) for more information.
 ::::
 
+To customize the retention period, create a new {{ilm-init}} policy with the required settings and apply it to the target data streams. On ECE 4.1.1 or later, [apply it through a component template](#customize-retention-component-templates), which is the recommended approach. On earlier versions, you can [clone the relevant index template](#customize-retention-index-templates) and configure it to use your custom {{ilm-init}} policy, though this requires repeating the procedure after upgrades that change template names.
+
 ## Available index templates [available-templates]
 
 The following list contains the names of the most relevant index templates and data streams in the ECE `logging-and-metrics` system deployment. You can check the entire list directly in {{kib}} on the **Index Management -> Index templates** page:
@@ -39,13 +41,69 @@ The following list contains the names of the most relevant index templates and d
 Index templates and data streams include a `<version>` tag as part of their name. This corresponds to the {{stack}} version of the internal component that sends data into the cluster, for example, `proxy-logs-8.18.8`. This version can change after an {{ece}} upgrade and must be taken into account when you apply any type of customization.
 ::::
 
-## Customize retention period
+## Customize retention using component templates [customize-retention-component-templates]
+```{applies_to}
+deployment:
+  ece: ga 4.1+
+```
 
-To customize the retention period for the different data streams, [create a new ILM policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) with the required settings, and apply it to the relevant data sets as follows:
+You can customize logs and metrics retention using a component template with a reserved name.
+
+Each index template in the `logging-and-metrics` cluster includes a `composed_of` array that references these reserved names. If you create a matching component template, {{es}} merges its settings into new backing indices. The names do not include a version tag, so they continue to match after an ECE upgrade.
+
+```{note}
+This method is only available in ECE 4.1.1 or later.
+```
+
+The following component template names are reserved for customization. Define only the templates that match the scope you need:
+
+| Component template | Applies to |
+|---|---|
+| `cluster-logs@custom` | `cluster-logs-<version>` data streams |
+| `proxy-logs@custom` | `proxy-logs-<version>` data streams |
+| `service-logs@custom` | `service-logs-<version>` data streams |
+| `metricbeat@custom` | `metricbeat-<version>` data streams |
+| `allocator-metricbeat@custom` | `allocator-metricbeat-<version>` data streams |
+| `ece-logs@custom` | All logging data streams |
+| `ece-metrics@custom` | All metrics data streams |
+| `ece-all@custom` | All logging and metrics data streams |
+
+If you define multiple `@custom` component templates, the most specific one takes precedence: an index-specific template (for example, `cluster-logs@custom`) overrides `ece-logs@custom`, which in turn overrides `ece-all@custom`.
+
+To customize the retention period:
+
+1. [Create a new {{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) with the required retention settings.
+
+2. [Create a component template](/manage-data/data-store/templates.md#component-templates) using the name that matches your target scope, and set `index.lifecycle.name` to the {{ilm-init}} policy you created. You can do this from {{kib}} **Index Management → Component templates**, or from the [{{kib}} Console](/explore-analyze/query-filter/tools/console.md). For example, to apply a custom {{ilm-init}} policy to all `cluster-logs` data streams:
+
+    ```console
+    PUT _component_template/cluster-logs@custom
+    {
+      "template": {
+        "settings": {
+          "index.lifecycle.name": "<MY_CUSTOM_ILM_POLICY>"
+        }
+      }
+    }
+    ```
+
+3. If you want the changes to take effect immediately, you can [manually roll over the associated data stream](/manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream) using the [{{kib}} Console](/explore-analyze/query-filter/tools/console.md). For example:
+
+    ```console
+    POST /cluster-logs-<version>/_rollover/
+    ```
+
+## Customize retention by cloning index templates [customize-retention-index-templates]
+
+::::{note}
+This method works on all ECE versions but requires repeating the procedure after upgrades that change index template names. If you are on ECE 4.1.1 or later, use the [component template method](#customize-retention-component-templates) instead.
+::::
+
+To customize the retention period for the different data streams, [create a new {{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) with the required settings, and apply it to the relevant data sets as follows:
 
 1. In {{kib}}, go to **Index Management → Index Templates** and identify the template that applies to the data stream or indices whose retention you want to change. Refer to [Available index templates](#available-templates) for a list of the most common templates.
 
-2. Open the template’s contextual menu and select **Clone** to [create a new template](/manage-data/data-store/templates.md). When cloning the template:
+2. Open the template's contextual menu and select **Clone** to [create a new template](/manage-data/data-store/templates.md). When cloning the template:
 
     1. Assign a higher `priority` to the new template so it takes precedence over the default template.
     2. In the **Index settings** section, set `index.lifecycle.name` to the custom {{ilm-init}} policy that has the required retention settings.

@@ -103,11 +103,13 @@ Private Link is not available for {{serverless-full}} in the Azure `northeurope`
 | Region | Azure Private Link Service alias | Private hosted zone domain name |
 | --- | --- | --- |
 | australiaeast | australiaeast-prod-privatelink-serverless.274cbc58-219f-481d-bc66-9a7b46d63be8.australiaeast.azure.privatelinkservice | private.australiaeast.azure.elastic.cloud |
+| brazilsouth | brazilsouth-prod-privatelink-serverless.f00d5555-2af2-40ff-81cd-033539a2e2fb.brazilsouth.azure.privatelinkservice | private.brazilsouth.azure.elastic.cloud |
 | eastus | eastus-prod-privatelink-serverless.00ee2891-1e3c-491b-b7cd-a5be7a2a42fc.eastus.azure.privatelinkservice | private.eastus.azure.elastic.cloud |
 | eastus2 | eastus2-prod-privatelink-serverless.46552e7f-8404-48e2-8c79-66801ef74a76.eastus2.azure.privatelinkservice | private.eastus2.azure.elastic.cloud |
 | germanywestcentral | germanywestcentral-prod-privatelink-serverless.bece7bbd-ce63-4728-aeda-ad42238d9d66.germanywestcentral.azure.privatelinkservice | private.germanywestcentral.azure.elastic.cloud |
 | southeastasia | southeastasia-prod-privatelink-serverless.ca3fc3e6-1b18-41a9-adcd-2c4ea7ca342e.southeastasia.azure.privatelinkservice | private.southeastasia.azure.elastic.cloud |
 | spaincentral | spaincentral-prod-privatelink-serverless.66548bb8-1b56-40b6-b679-062db94282a6.spaincentral.azure.privatelinkservice | private.spaincentral.azure.elastic.cloud |
+| swedencentral | swedencentral-prod-privatelink-serverless.06ba5ac0-d96e-42b2-891b-8bb53fb59acb.swedencentral.azure.privatelinkservice | private.swedencentral.azure.elastic.cloud |
 | uaenorth | uaenorth-prod-privatelink-serverless.235f486d-71e1-490d-9bab-49edc5d6a875.uaenorth.azure.privatelinkservice | private.uaenorth.azure.elastic.cloud |
 | westus2 | westus2-prod-privatelink-serverless.f03c3599-2fbc-4cb5-8a79-7cff7a0e2f2c.westus2.azure.privatelinkservice | private.westus2.azure.elastic.cloud |
 
@@ -230,7 +232,7 @@ The Private Link connection will be approved automatically after the private con
     Private connection policies are bound to a single resource type and region, and can be assigned only to resources with the same resource type and in the same region. If you want to associate a policy with multiple resource types or resources in multiple regions, then you have to recreate the policy for all applicable resource types and regions.
     :::
 6.  Under **Connectivity**, select **PrivateLink**.
-7.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment or project, this information will be used to filter traffic.
+7.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment or project, this information will be used to filter traffic. Select **Add description** to add an optional description that helps you identify the filter later.
 
     :::{tip}
     You can apply multiple policies to a single deployment or project. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
@@ -265,6 +267,8 @@ After you create your private connection, you can check that you're able to reac
 ::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for {{es}} and {{kib}} traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
 ::::
 ::::{applies-item} serverless: ga
 :::{include} _snippets/private-url-struct-serverless.md
@@ -441,6 +445,8 @@ Use the alias you've set up as an A record to access your resource.
 ::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for {{es}} and {{kib}} traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
 ::::
 ::::{applies-item} serverless: ga
 :::{include} _snippets/private-url-struct-serverless.md
@@ -521,7 +527,7 @@ To access the deployment or project:
     :::
     ::::
 
-### Azure Private Link and Fleet
+### Azure Private Link and Fleet [azure-private-link-and-fleet]
 
 :::{include} _snippets/private-connection-fleet.md
 :::

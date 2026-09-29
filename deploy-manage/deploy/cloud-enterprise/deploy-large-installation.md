@@ -59,6 +59,9 @@ Make sure you have completed all prerequisites and environment preparations desc
 
 ## Installation steps [ece_installation_steps_3]
 
+::::{include} /deploy-manage/deploy/_snippets/ece-proxy-protocol-install-note.md
+::::
+
 1. Install {{ece}} on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation, but you will remove some of its roles in a later step.
 
     ```sh

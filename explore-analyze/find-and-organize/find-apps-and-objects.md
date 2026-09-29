@@ -10,7 +10,7 @@ products:
 
 # Find apps and objects [kibana-navigation-search]
 
-To quickly find apps and the objects you create, use the search field in the global header. Search suggestions include deep links into applications, allowing you to directly navigate to the views you need most.
+To quickly find apps and the objects you create, use the search field in the [global header](/explore-analyze/find-and-organize/kibana-interface.md#global-header). Search suggestions include deep links into applications, allowing you to directly navigate to the views you need most.
 
 :::{tip}
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can also reorder the apps in the navigation menu and hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
@@ -24,7 +24,7 @@ To quickly find apps and the objects you create, use the search field in the glo
 
 You can search for objects by type, name, and tag. To get the most from the search feature, follow these tips:
 
-* Use the keyboard shortcut—**Ctrl**+**/** on Windows and Linux, **Command**+**/** on MacOS—to focus on the input at any time.
+* Use the keyboard shortcut to open the search field at any time: **Ctrl+/** on Windows and Linux, or **Command+/** on macOS.
 * Use the provided syntax keywords.
 
     |     |     |
@@ -35,7 +35,7 @@ You can search for objects by type, name, and tag. To get the most from the sear
     | Advanced searches | `tag:(tagname1 or tagname2) my_dashboard_title`<br>`type:lens tag:(tagname1 or tagname2)`<br>`type:(dashboard or canvas-workpad) logs`<br> |
 
 
-This example searches for visualizations with the tag `design` .
+This example searches for dashboards with the tag `Elastic Agent`.
 
 :::{image} /explore-analyze/images/kibana-tags-search.png
 :alt: Example of searching for tags

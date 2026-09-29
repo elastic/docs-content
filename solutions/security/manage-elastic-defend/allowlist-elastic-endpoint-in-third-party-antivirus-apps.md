@@ -46,7 +46,7 @@ Digital signatures:
 * `Elasticsearch, Inc.`
 * `Elasticsearch B.V.`
 
-For additional information about allowlisting on Windows, refer to [Trusting Elastic Defend in other software](https://github.com/elastic/endpoint/blob/main/PerformanceIssues-Windows.md#trusting-elastic-defend-in-other-software).
+For guidance on performance issues caused by running {{elastic-defend}} with other security software, refer to [High CPU usage or hangs with other security software](/troubleshoot/security/elastic-defend.md#ts-performance-other-security).
 
 
 ## Allowlist {{elastic-endpoint}} on macOS [allowlist-endpoint-on-macos]

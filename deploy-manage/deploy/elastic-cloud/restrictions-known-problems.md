@@ -39,6 +39,18 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 
 ## Stack versions [ec-stack-versions]
 
+* Due to a known issue, {{es}} 8.17.0 through 8.17.4, 8.18.0, and 9.0.0 through 9.0.1 might experience significant vector search performance degradation on Ubuntu 24.04. An interaction between Multi-Gen LRU (MGLRU) and Lucene read-advice behavior can cause excessive page faults and I/O during vector operations. In preparation for the end of support for Ubuntu 22.04, Elastic begins an incremental upgrade of the underlying {{ech}} infrastructure to Ubuntu 24.04 starting on November 20, 2026. If you run an affected version, upgrade before that date:
+  * 8.17.0 through 8.17.4: upgrade to 8.17.5 or later
+  * 8.18.0: upgrade to 8.18.1 or later
+  * 9.0.0 through 9.0.1: upgrade to 9.0.4 or later
+
+  We recommend upgrading to one of the currently available versions shown in the Cloud console.
+  If you need to upgrade to an older 8.x or 9.x minor version that is not shown, contact Elastic Support.
+
+* Due to a known issue, {{es}} 9.5.0, 9.5.1, and 9.5.2 can fail to fully replicate some bulk index operations from a primary shard when the node exceeds its indexing pressure limit. This can cause replica data to diverge from the primary. Version 9.5.2 is unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/c56aad67) for more guidance on the known issue.
+
+* Due to a known issue, {{es}} 9.5.0 and 9.5.1 can return incorrect results from searches that exclude values using a `must_not` clause, where the excluded field has doc values enabled but is not indexed for search. Versions 9.5.0 and 9.5.1 are unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/00f3a35b) for more guidance on the known issue.
+
 * Due to a known issue with the {{stack}}, certain upgrade paths to and from version 8.17 are currently blocked or disabled. Review [this KB article](https://support.elastic.co/knowledge/7c3ad709) for more guidance on the known issue. Additionally, review [this KB article](https://support.elastic.co/knowledge/e87d76a5) for detailed information regarding the specific versions affected. 
 
 * Due to a known issue with the {{stack}}, the upgrade path from 9.1.10 to 9.2.4 is unavailable. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.2.4-known-issues) for more information on the underlying issue.
@@ -102,6 +114,9 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 
 ```{include} /deploy-manage/security/_snippets/private-connectivity-limitations-ech.md
 ```
+```{include} /deploy-manage/security/_snippets/aws-privatelink-cloud-id-limitation.md
+```
+* **Remote clusters with API key authentication over GCP Private Service Connect:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic over GCP PSC.
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 

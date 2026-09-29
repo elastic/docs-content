@@ -48,7 +48,7 @@ Once applied, your customized policy will govern any new indices created after t
 
 * If you're looking for a more advanced use case, such as customizing an ILM policy for a selected set of data streams in one or more integrations or namespaces, check the set of tutorials in [](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
 
-    These tutorials go into greater depth about creating and using `@custom` component templates. For example, the tutorial [Apply an ILM policy to all data streams generated from {{fleet}} integrations across all namespaces](/reference/fleet/data-streams-scenario1.md) shows how to create and use the `logs@custom` and `metrics@custom` component templates to customize {{ilm-init}} policies associated with data streams in integrations.
+    These tutorials go into greater depth about creating and using `@custom` component templates. For example, the tutorial [](/reference/fleet/data-streams-scenario1.md) shows how to create and use the `logs@custom` and `metrics@custom` component templates to customize {{ilm-init}} policies associated with data streams in integrations.
 :::
 
 ## Scenario [example-using-index-lifecycle-policy-scenario]

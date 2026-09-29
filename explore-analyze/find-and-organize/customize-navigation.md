@@ -9,7 +9,7 @@ products:
 
 # Customize your navigation menu
 
-You can reorder the apps in the navigation menu and hide the ones you don't use, so the layout matches how you work. Your changes apply only to you, and only in the current space. Other users of the space are not affected.
+You can reorder the apps in the [navigation menu](/explore-analyze/find-and-organize/kibana-interface.md#navigation-menu) and hide the ones you don't use, so the layout matches how you work. Your changes apply only to you, and only in the current space. Other users of the space are not affected.
 
 ## Before you begin
 

@@ -45,5 +45,5 @@ The **Metadata** tab is organized into these expandable sections:
 To get data for this dashboard, set up [Cloud Workload Protection for Kubernetes](/solutions/security/cloud/d4c/get-started-with-d4c.md) for the clusters you want to display on the dashboard.
 
 ::::{important}
-This dashboard uses data from the `logs-*` index pattern, which is included by default in the [`securitySolution:defaultIndex` advanced setting](../../get-started/configure-advanced-settings.md). To collect data from multiple {{es}} clusters (as in a cross-cluster deployment), update `logs-*` to `*:logs-*`.
+This dashboard uses data from the `logs-*` index pattern, which is included by default in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings). To collect data from multiple {{es}} clusters (as in a cross-cluster deployment), update `logs-*` to `*:logs-*`.
 ::::

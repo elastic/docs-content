@@ -70,6 +70,10 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 You can't configure agent offline detection through these settings. An agent is marked offline after it stops checking in with {{fleet-server}} for 5 minutes. This threshold is fixed and can't be changed.
 ::::
 
+::::{tip}
+To fine tune the SSL/TLS settings of the {{fleet-server}} HTTPS endpoint, such as the allowed TLS versions (`server.ssl.supported_protocols`) and cipher suites (`server.ssl.cipher_suites`), refer to [Configure advanced SSL/TLS settings for {{fleet-server}}](/reference/fleet/secure-connections.md#fleet-server-advanced-ssl-settings).
+::::
+
 `cache`
 :   `num_counters`
 :   Size of the hash table. Best practice is to have this set to 10 times the max connections.

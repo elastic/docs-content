@@ -3,7 +3,11 @@ navigation_title: Columnar storage
 description: Learn when to use columnar index mode to store data once for analytics and search with a smaller storage footprint.
 applies_to:
   stack: preview 9.5
-  serverless: preview
+  serverless:
+    elasticsearch: preview
+    observability: preview
+    security: preview
+    vectordb: unavailable
 products:
   - id: elasticsearch
 ---
@@ -17,11 +21,12 @@ This strategy can reduce storage cost for high-volume, analytics-heavy data whil
 Columnar mode ships alongside existing index modes such as `standard`, [`logsdb`](/manage-data/data-store/data-streams/logs-data-stream.md), and [`time_series`](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md).
 You choose it per index (or in a template) at creation time; you can't change the mode after the index has been created.
 
+:::{note}
+Columnar index mode is not available in {{vectordb}} projects, which only support [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). Use an {{es}} project for columnar workloads. For details, refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
+:::
+
 This page explains what columnar index mode is, when to use it, and how it fits with the rest of the {{es}} data store.
-<!--
-TO-DO after https://github.com/elastic/elasticsearch/pull/151739 merges
-For enablement steps, sorting, `_source` modes, and limitations, refer to [Columnar index mode](elasticsearch://reference/columnar/index.md) in the {{es}} reference.
--->
+For enablement steps, sorting, `_source` modes, and limitations, refer to [Columnar index mode](elasticsearch://reference/elasticsearch/columnar/index.md) in the {{es}} reference.
 
 ## When to use columnar index mode [when-to-use-columnar]
 
@@ -63,10 +68,7 @@ At a high level, columnar index mode changes storage defaults while leaving the 
 
 Index sorting remains important for compression and query performance.
 `logsdb_columnar` sets sensible sort defaults for logs; for `columnar`, you choose sort fields that match your access patterns.
-<!--
-TO-DO: Wait for related PR to merge
-Details are in the [reference](elasticsearch://reference/columnar/index.md#index-sorting).
--->
+Details are in the [reference](elasticsearch://reference/elasticsearch/columnar/index.md#index-sorting).
 
 Columnar mode doesn't replace the [core data store concepts](/manage-data/data-store/index-basics.md):
 
@@ -78,18 +80,13 @@ What changes is how {{es}} lays data out on disk and which structures it builds 
 
 ## Next steps [columnar-next-steps]
 
-<!--
-TO-DO: Wait for related PR to merge
-* [Enable and configure columnar index mode](elasticsearch://reference/columnar/index.md): Create indices or templates with `columnar` or `logsdb_columnar`, configure index sorting, and review `_source` modes and limitations. -->
+* [Enable and configure columnar index mode](elasticsearch://reference/elasticsearch/columnar/index.md): Create indices or templates with `columnar` or `logsdb_columnar`, configure index sorting, and review `_source` modes and limitations.
 * [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md): Use `logsdb` for efficient log storage with current defaults, or move to `logsdb_columnar` when you're ready for the columnar logs profile.
 * [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md): Choose TSDS when your data is metrics with dimensions, not a general columnar analytics workload.
 * [Index fundamentals](/manage-data/data-store/index-basics.md): Review documents, mappings, settings, and shards if you're new to {{es}} storage concepts.
 
 ## Related pages [columnar-related-pages]
 
-<!--
-TO-DPO: Wait for related PR to merge
-* [Columnar index mode reference](elasticsearch://reference/columnar/index.md)
--->
+* [Columnar index mode reference](elasticsearch://reference/elasticsearch/columnar/index.md)
 * [`index.mode` setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)
 * [The {{es}} data store](/manage-data/data-store.md)

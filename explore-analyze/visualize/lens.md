@@ -116,7 +116,7 @@ When you can create a visualization, you can change the fields list to display a
 
 If the fields list is empty, change the [time filter](../query-filter/filtering.md).
 
-For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
+For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
 
 ### Assign colors to terms [assign-colors-to-terms]
 ```{applies_to}
@@ -147,8 +147,8 @@ To assign colors to terms in your visualization:
 
 1. Create a visualization using one of the supported types.
 2. Add a categorical field that contains the terms you want to color.
-3. In the field configuration, look for the **Color by value** option:
-   * For data tables: Select **Cell** or **Text**
+3. In the field configuration, look for the **Cell decoration** or **Color by value** (depending on your {{kib}} version) option:
+   * For data tables: Select **Background** or **Cell** (depending on your {{kib}} version), or **Text**
    * For other chart types: This option appears when you have a categorical breakdown
 4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
 5. Select a color palette from the available options:
@@ -263,6 +263,10 @@ These are examples of common formulas:
 ### Compare differences over time [compare-data-with-time-offsets]
 
 Compare your real-time data to the results that are offset by a time increment. For example, you can compare the real-time percentage of a user CPU time spent to the results offset by one hour.
+
+:::{tip}
+To apply a time shift in an {{esql}} visualization, refer to [Compare current versus previous period with time shift](esorql.md#esql-viz-time-shift).
+:::
 
 1. In the layer pane, click the field you want to offset.
 2. Click **Advanced**.
@@ -562,7 +566,7 @@ To configure the bounds, use the menus in the editor toolbar. Bar and area chart
 ::::{dropdown} Is it possible to display icons in data tables?
 :name: is-it-possible-to-show-icons-in-datatable
 
-You can display icons with [field formatters](../find-and-organize/data-views.md) in data tables.
+You can display icons with [field formatters](../find-and-organize/data-views/field-formatters.md) in data tables.
 
 ::::
 

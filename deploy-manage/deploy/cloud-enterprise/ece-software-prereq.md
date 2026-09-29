@@ -28,8 +28,9 @@ We recommend using kernel 4.15.x or later on Ubuntu.
 
 To check your kernel version, run `uname -r`.
 
-::::{note} 
-{{ece}} is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2.
+::::{note}
+* {{ece}} is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2. 
+* {{es}} versions 8.0.0–8.4.3 fail to start on hosts using cgroup v2 with the bundled JDK. Refer to [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more details.
 ::::
 
 
@@ -95,7 +96,7 @@ XFS is required if you want to use disk space quotas for {{es}} data directories
 Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
 ::::{important} 
-You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
+You must use XFS and have quotas enabled on all allocators, otherwise disk usage won't display correctly.
 ::::
 
 

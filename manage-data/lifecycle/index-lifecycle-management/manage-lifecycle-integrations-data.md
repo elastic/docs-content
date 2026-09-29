@@ -25,9 +25,9 @@ To find the data stream associated with a visualization in a {{kib}}:
 
     ![Explore in discover](/manage-data/images/ilm-explore-in-discover.png "")
 
-1. In **Discover**, the list of documents shows the columns for fields applicable to the visualization that you selected. Select any document that has data for those fields and click the **Toggle dialog with details** icon.
+1. In **Discover**, the list of documents shows the columns for fields applicable to the visualization that you selected. Select any document that has data for those fields, then select the **View details** icon {icon}`expand` (**Toggle dialog with details** in earlier {{stack}} versions).
 
-    ![Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
+    ![View details in the Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
 
 1. In the document details, there are three `data_stream` fields. The full [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
 
@@ -64,4 +64,4 @@ For any data stream that you're interested in, you can [view its current lifecyc
 After you've identified one or more data streams for which you'd like to customize how the data is managed over time, refer to our tutorials:
 
 * For steps to customize an {{ilm-init}} policy for a data stream, try out the [](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
-* For the steps to customize an ILM policy for a set of data streams, such as all logs or metrics data streams across all namespaces, across only a selected namespace, and others, check the set of tutorials in [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
+* For the steps to customize an ILM policy for a set of data streams, such as all logs or metrics data streams across all namespaces, across only a selected namespace, and others, check the set of tutorials in [](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.

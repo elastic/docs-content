@@ -20,7 +20,7 @@ products:
 The [{{agent-builder}} MCP server](mcp-server.md) supports API key authentication for MCP clients. For example, you can let a scheduled script or automated service query your data through {{agent-builder}} tools without a person signing in.
 
 :::{tip}
-:applies_to: serverless: preview
+:applies_to: serverless: ga
 In {{serverless-short}} projects, MCP clients can also authenticate using OAuth 2.1 through an [application connection](/deploy-manage/app-connections/oauth-clients.md). To compare authentication options, refer to [MCP server authentication](mcp-server.md#mcp-server-authentication).
 :::
 

@@ -17,6 +17,9 @@ products:
 2. [Data Transfer](#data-transfer)
 3. [Storage](#storage)
 4. [Synthetics](#synthetics)
+5. [Inference](#inference)
+6. [Workflow executions](#workflow-executions)
+7. [{{agent-builder}} executions](#agent-builder-executions)
 
 Read on for detail about each of these billing dimensions.
 
@@ -110,3 +113,21 @@ Note that reducing either the snapshot frequency or retention period limits the 
 
 Synthetic Monitoring browser tests are charged per test run (metered in 60 second increments). Lightweight tests are charged per location per month (per deployment) for up to 1k simultaneous test run capacity (~2.6 billion tests per month). Tests executed from private locations do not incur an execution charge. All test result data is stored in your deployment and billed for under existing dimensions.
 
+
+## Inference [inference]
+
+[Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is billed separately from [deployment capacity](#ram-hours), which includes ML nodes running in your deployment. For the token-based pricing model and how to find {{infer}} usage in the {{ecloud}} Console, refer to [EIS pricing](/explore-analyze/elastic-inference/eis.md#pricing).
+
+
+## Workflow executions [workflow-executions]
+
+{{ech}} bills [workflows](/explore-analyze/workflows.md) based on workflow executions. Each workflow run counts as one execution. The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included.
+
+For metering details, including how unsuccessful and skipped runs are handled, refer to [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing). For current billing amounts, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).
+
+
+## {{agent-builder}} executions [agent-builder-executions]
+
+{{ech}} bills {{agent-builder}} based on executions. Each completed interaction with an agent counts as at least one execution. The first 10,000 {{agent-builder}} executions across the {{ech}} deployments in an {{ecloud}} organization each month are included.
+
+For metering details, including how token volume and error responses are counted, refer to [Monitor usage and costs](/explore-analyze/ai-features/agent-builder/monitor-usage.md). For current billing amounts, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).
