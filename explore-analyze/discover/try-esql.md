@@ -43,7 +43,7 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
    The sample web logs have an `@timestamp` field, so Discover connects the results to it. The time filter keeps only the results in the range you pick, and the chart shows how they spread over that range. Sample data timestamps are relative to when you installed the set. If the table stays empty, widen the range.
 
    :::{tip}
-   If your time field has a name other than `@timestamp`, you name it in the query. If your data has no time field, Discover shows no time filter and no chart. Refer to [Set the time filter for the table and the chart](esql-results.md#_esql_and_time_series_data).
+   If your time field has a name other than `@timestamp`, you can name it in the query to bind it to the time range selector. If your data has no time field, Discover shows no time filter and no chart. Refer to [Set the time filter for the table and the chart](esql-results.md#_esql_and_time_series_data).
    :::
 
 4. Enter the following query in the editor:
@@ -58,7 +58,13 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 
 **Result:** Each result in the table is one visit to the sample website. The table shows the time of each visit, and a **Summary** of its other fields. The chart shows how the visits spread over the last 7 days.
 
-## Choose the columns
+:::{image} /explore-analyze/images/kibana-discover-try-esql-from.png
+:alt: Discover in ES|QL mode with the query FROM kibana_sample_data_logs, a histogram of results over time, and a table with @timestamp and Summary columns
+:screenshot:
+:width: 90%
+:::
+
+## Choose the columns to show in the table
 
 Each visit has dozens of fields, and the **Summary** column shows them all at once. To answer a question, you usually need only a few. In this step, you keep the operating system, the RAM, and the destination of each visit.
 
