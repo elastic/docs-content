@@ -42,7 +42,8 @@ Discover has two query modes. {{esql}} does not require a data view. Classic mod
 
 Once you're familiar with the basics, explore these guides for specific tasks:
 
-* **[Use Discover with {{esql}}](discover/use-esql.md)** - Run a first {{esql}} session, switch modes, and work with results.
+* **[Switch between {{esql}} and classic mode](discover/switch-esql-mode.md)** - Change query mode, and see what happens to your query and filters.
+* **[Use Discover with {{esql}}](discover/use-esql.md)** - Run a first {{esql}} session and work with results.
 * **[Search and filter data](discover/discover-get-started.md)** - Build queries and apply filters to narrow down your results.
 * **[Customize the Discover view](discover/document-explorer.md)** - Adjust the layout, columns, and display options to suit your needs.
 * **[Save a search for reuse](discover/save-open-search.md)** - Save your Discover sessions and add them to dashboards.
