@@ -42,6 +42,10 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 
    The sample web logs have an `@timestamp` field, so Discover connects the results to it. The time filter keeps only the results in the range you pick, and the chart shows how they spread over that range. Sample data timestamps are relative to when you installed the set. If the table stays empty, widen the range.
 
+   :::{tip}
+   If your time field has a name other than `@timestamp`, you name it in the query. If your data has no time field, Discover shows no time filter and no chart. Refer to [Set the time filter for the table and the chart](esql-results.md#_esql_and_time_series_data).
+   :::
+
 4. Enter the following query in the editor:
 
    ```esql
@@ -53,10 +57,6 @@ Command names are not case-sensitive, so `from` and `FROM` are the same.
 5. Select **Search** (or **▶Run** in earlier versions).
 
 **Result:** Each result in the table is one visit to the sample website. The table shows the time of each visit, and a **Summary** of its other fields. The chart shows how the visits spread over the last 7 days.
-
-:::{tip}
-Discover uses `@timestamp` automatically. If your time field has another name, you name it in the query. If your data has no time field, Discover shows no time filter and no chart. Refer to [Set the time filter for the table and the chart](esql-results.md#_esql_and_time_series_data).
-:::
 
 ## Choose the columns
 
