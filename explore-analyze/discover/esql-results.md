@@ -63,8 +63,10 @@ To control which fields the query returns, use the [`KEEP`](elasticsearch://refe
 
 ```esql
 FROM kibana_sample_data_logs
-| KEEP @timestamp, bytes, geo.dest
+| KEEP bytes, geo.dest
 ```
+
+You do not have to include `@timestamp` in `KEEP`. When the data has that field, the time filter still applies to the table and the chart.
 
 To display all fields as separate columns, use `KEEP *`:
 
