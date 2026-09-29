@@ -17,7 +17,7 @@ After an {{esql}} query runs in **Discover**, the results table shows what that 
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
 - **Time filter and chart:** [Set the time filter for the table and the chart](#_esql_and_time_series_data). Discover applies the time filter when the data has an `@timestamp` field. If the time field has another name, name it in the query.
 
-To keep the chart or the table, [put it on a dashboard](#_edit_the_esql_visualization).
+To keep the chart or the table, [save the session or add it to a dashboard](#_edit_the_esql_visualization).
 
 ## Before you begin
 
@@ -27,8 +27,8 @@ To keep the chart or the table, [put it on a dashboard](#_edit_the_esql_visualiz
 
 Hover over a value in the results table, then filter for it or filter it out.
 
-- {icon}`plus_circle` **Filter for this** keeps that value. For example, ``WHERE `host.keyword` == "www.elastic.co"``.
-- {icon}`minus_circle` **Filter out this** excludes that value. For example, ``WHERE `host.keyword` != "www.elastic.co"``.
+- {icon}`plus_circle` **Filter for this** keeps that value. For example, ``WHERE `machine.os` == "ios"``.
+- {icon}`minus_circle` **Filter out this** excludes that value. For example, ``WHERE `machine.os` != "ios"``.
 
   :::{image} /explore-analyze/images/kibana-discover-esql-filter-out.png
   :alt: The value ios in the machine.os column, with Filter out this available.
@@ -70,7 +70,7 @@ From the menu of a column, select **Sort High-Low** or **Sort Low-High**. Discov
 :::
 
 ::::{tip}
-A column sort reorders only the rows the query returned. With no `LIMIT`, that is at most 1,000 rows. To change which rows come back, add a [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command. {{es}} orders the data, then keeps the first rows of that order. This query returns the 1,000 largest `bytes` values:
+A column sort reorders only the rows the query returned. For a `FROM` query with no `LIMIT`, that is at most 1,000 rows. To change which rows come back, add a [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command. {{es}} orders the data, then keeps the first rows of that order. This query returns the 1,000 largest `bytes` values:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -152,7 +152,7 @@ FROM kibana_sample_data_ecommerce
 
 **Result:** The time filter sets the time range for that table and chart.
 
-## Keep a chart or table on a dashboard [_edit_the_esql_visualization]
+## Keep the chart or the table [_edit_the_esql_visualization]
 
 To keep the chart or the table, use one of these options:
 

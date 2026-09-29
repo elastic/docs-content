@@ -16,7 +16,10 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
 ## Before you begin
 
 - You need an {{esql}} query in **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
-- The grouped layout activates when the `BY` clause contains a single field reference or a single [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) call. Other grouping functions like `BUCKET` or `TBUCKET`, and queries that group by more than one field (for example, `BY clientip, extension`), keep the standard flat results table. Queries that use [`TS_INFO`](elasticsearch://reference/query-languages/esql/commands/ts-info.md) or [`METRICS_INFO`](elasticsearch://reference/query-languages/esql/commands/metrics-info.md) also keep the flat results table, because those commands return synthetic metric-metadata rows that have no underlying documents to expand.
+- Your query groups by a single field, or by a single [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) call. Other queries keep the standard flat results table:
+  - Queries that group by more than one field, for example `BY clientip, extension.keyword`.
+  - Queries that use other grouping functions, such as `BUCKET` or `TBUCKET`.
+  - Queries that use [`TS_INFO`](elasticsearch://reference/query-languages/esql/commands/ts-info.md) or [`METRICS_INFO`](elasticsearch://reference/query-languages/esql/commands/metrics-info.md). Their rows describe metrics and have no documents to expand.
 
 ## View grouped results from a STATS query [esql-cascade-layout]
 
