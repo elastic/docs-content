@@ -35,16 +35,9 @@ Hover a value in the results table, then filter for it or filter it out. Discove
 Up to and including version 9.2, filtering for multi-value fields isn't supported. On later versions, filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
 :::
 
-{{esql}} mode has no filter bar. Dragging a field onto the table does not change the query.
+{{esql}} mode has no filter bar, and dragging a field onto the table does not change the query.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` When you switch from classic mode, Discover converts active filters from the filter bar into `WHERE` clauses where it can. Filters that can't be converted are dropped. Refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md).
-
-:::{tip}
-:applies_to: {"serverless": "preview", "stack": "preview 9.5"}
-You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
-:::
-
-**Result:** The query includes the new `WHERE` clause, and the table shows the matching rows.
+**Result:** When you select **Filter for this** or **Filter out this**, Discover adds or completes a `WHERE` clause for that value, and the table shows the matching rows.
 
 ## Sort query results [_sorting]
 
@@ -129,6 +122,7 @@ To reopen the query later, [save the Discover session](save-open-search.md).
 ## Related pages
 
 - [Use Discover with {{esql}}](use-esql.md)
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` To analyze these results with an AI agent, get a chart of the main finding, and review suggested drill-down queries, refer to [Analyze your data with AI](discover-get-started.md#analyze-with-ai).
 - [Inspect grouped STATS results in Discover](inspect-grouped-stats.md)
 - [Save a Discover session for reuse](save-open-search.md)
 - [Customize the Discover view](document-explorer.md)
