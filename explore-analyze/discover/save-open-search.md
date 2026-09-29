@@ -176,7 +176,7 @@ From Discover, save the entire Discover session, including all its tabs, columns
 
 ::::{applies-switch}
 
-:::{applies-item} {"stack": "ga 9.5", "serverless": "ga"}
+:::{applies-item} { serverless: ga, stack: ga 9.5+ }
 When you save a Discover session, it is saved to the library. The **Add to dashboard** option of the dialog lets you choose whether to also add it as a panel on a dashboard:
 
 - **Existing**: The session is also added as a panel on a dashboard you choose.
@@ -188,7 +188,7 @@ If the session has multiple tabs, you can [choose which tab the panel displays](
 Follow the steps under [Save a Discover session](#_save_a_discover_session), and select the **Add to dashboard** option that matches what you want.
 :::
 
-:::{applies-item} {"stack": "ga 9.0-9.4"}
+:::{applies-item} stack: ga 9.0-9.4
 Saving from Discover saves the session to the library only. To put it on a dashboard, follow the steps under [Save a Discover session](#_save_a_discover_session), then [add the session from the dashboard library](#add-discover-session-from-library).
 :::
 
@@ -202,7 +202,7 @@ This option requires that the session has already been [saved to the library](#_
 
 1. Go to **Dashboards**.
 2. Open or create the dashboard, then switch to **Edit** mode if necessary.
-3. Depending on the version you're using, select **Add from library**, or **Add** > **From library**.
+3. Depending on the version you're using, select **Add from library**, or **Add** → **From library**.
 4. From the **Types** dropdown, select **Discover session**.
 5. Select the Discover session that you want to add, then select **X** to close the list.
 

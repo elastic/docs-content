@@ -82,7 +82,12 @@ You can send a search to the background only after it starts running. Until then
 
 1. Write or edit the query.
 
-1. Select {icon}`play` **Run** (or {icon}`refresh` **Refresh** if you already ran the query at least once) to start executing the query. At this point, the {icon}`background_task` **Send to background** button becomes available.
+1. Start the query:
+
+   - In {{esql}} mode, select **Search**. In earlier versions, select **Run**, or {icon}`refresh` **Refresh** if the query hasn't changed.
+   - In classic mode, select **Update**, or {icon}`refresh` **Refresh** if the query hasn't changed.
+
+   At this point, the {icon}`background_task` **Send to background** button becomes available.
 
 1. Select {icon}`background_task` **Send to background**. The search is sent to the background and added to the queue of background searches.
 
