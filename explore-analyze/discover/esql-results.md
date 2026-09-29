@@ -126,7 +126,7 @@ If you omit `LIMIT`, the table shows up to 1,000 rows. `LIMIT` can raise that to
 - **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
 - **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.
 
-## Show the time filter and the chart [_esql_and_time_series_data]
+## Set the time filter for the table and the chart [_esql_and_time_series_data]
 
 When the data has an `@timestamp` field, the time filter applies to the table and the chart.
 
