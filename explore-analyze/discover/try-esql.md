@@ -111,7 +111,7 @@ If you type the query on one line, select {icon}`line_break` **Prettify query** 
 
 **Result:** The table and chart no longer include visits to Great Britain. The table lists 10 rows, sorted by RAM in descending order.
 
-A column header reorders only the rows already retrieved. `SORT` is what orders the full data set. Refer to [Sort query results](esql-results.md#_sorting).
+Sorting from the column menu reorders only the rows already in the table. It does not change which rows the query returns. Refer to [Sort query results](esql-results.md#_sorting).
 
 ## Step 4: Group the rows
 

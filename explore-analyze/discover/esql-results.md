@@ -13,7 +13,7 @@ description: Filter and sort ES|QL results in Discover, select columns, and turn
 
 After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You can filter the rows, sort them, and show the fields you want. You can also set the time filter, and the table and the chart use that time range.
 
-- **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows you retrieved or the full data set](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) when the table stops early.
+- **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort the rows in the table, or change which rows come back](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) when the table stops early.
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
 - **Time filter and chart:** [Set the time filter for the table and the chart](#_esql_and_time_series_data). Discover applies the time filter when the data has an `@timestamp` field. If the time field has another name, name it in the query.
 
@@ -53,7 +53,7 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 
 ## Sort query results [_sorting]
 
-Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. Discover reorders only the rows the query already retrieved, and the query does not change.
+Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. Discover reorders the rows already in the table. The query stays the same, and Discover does not run it again.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-sort-column.png
 :alt: The menu for the bytes column, with Sort High-Low highlighted.
@@ -61,7 +61,7 @@ Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. 
 :width: 50%
 :::
 
-**Result:** A column header reorders only the rows already retrieved. The query does not change.
+**Result:** The table shows those same rows in the new order. The query does not change.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-sort-query.png
 :alt: The ES|QL query after a column sort. The query has no SORT command.
@@ -70,7 +70,7 @@ Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. 
 :::
 
 ::::{tip}
-A `LIMIT` can make that set shorter than the full data. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
+A column sort reorders only the rows the query returned. With no `LIMIT`, that is at most 1,000 rows. To change which rows come back, add a [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command. Elasticsearch orders the data, then keeps the first rows of that order. This query returns the 1,000 largest `bytes` values:
 
 ```esql
 FROM kibana_sample_data_logs
