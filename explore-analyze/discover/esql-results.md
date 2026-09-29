@@ -33,6 +33,7 @@ Hover a value in the results table, then filter for it or filter it out. Discove
   :::{image} /explore-analyze/images/kibana-discover-esql-filter-out.png
   :alt: The value ios in the machine.os column, with Filter out this available.
   :screenshot:
+  :width: 50%
   :::
 
 :::{note}
@@ -47,6 +48,7 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 :::{image} /explore-analyze/images/kibana-discover-esql-filter-where.png
 :alt: An ES|QL query with a WHERE clause that excludes ios from machine.os.
 :screenshot:
+:width: 50%
 :::
 
 ## Sort query results [_sorting]
@@ -56,6 +58,7 @@ Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. 
 :::{image} /explore-analyze/images/kibana-discover-esql-sort-column.png
 :alt: The menu for the bytes column, with Sort High-Low highlighted.
 :screenshot:
+:width: 50%
 :::
 
 A `LIMIT` can make that set shorter than the full data. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
@@ -71,6 +74,7 @@ FROM kibana_sample_data_logs
 :::{image} /explore-analyze/images/kibana-discover-esql-sort-query.png
 :alt: The ES|QL query after a column sort. The query has no SORT command.
 :screenshot:
+:width: 50%
 :::
 
 ## Show specific columns in the results table [esql-kibana-results-table]
