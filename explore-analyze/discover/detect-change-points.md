@@ -24,7 +24,7 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 In this example, you use the sample web logs data to detect changes in the average number of bytes transferred for each destination country.
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Switch to {{esql}} mode. Refer to [Get started with {{esql}} in Discover](try-esql.md#tutorial-try-esql) for the available options.
+2. Switch to {{esql}} mode. Refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md#switch-discover-query-mode).
 3. Set the time range to **All time**, or select a range that covers at least one month of the sample data.
 4. Enter the following query:
 
