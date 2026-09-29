@@ -12,14 +12,21 @@ products:
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
-Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (ECE) on Podman rather than Docker. Use these steps to install and configure Podman, and to apply the SELinux, XFS, and kernel tuning that ECE expects on RHEL-compatible distributions.
+Red Hat Enterprise Linux 8, 9, and 10, along with Rocky Linux 8 and 9, run {{ece}} (ECE) on Podman rather than Docker. Use these steps to install and configure Podman, and to apply the SELinux, XFS, and kernel tuning that ECE expects on RHEL-compatible distributions.
 
 * [Prerequisites](#ece-prerequisites-rhel8)
 * [Install Podman and configure the host](#ece-configure-hosts-rhel8-podman)
 
 ## Prerequisites [ece-prerequisites-rhel8]
 
-* Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
+* Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, RHEL 10, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
+
+    The following Podman versions and network backends are supported:
+
+    * RHEL 8 and Rocky Linux 8: Podman 4 with CNI
+    * RHEL 9: Podman 4 or Podman 5 with CNI
+    * Rocky Linux 9: Podman 5 with CNI
+    * {applies_to}`ece: ga 4.2` RHEL 10: Podman 5 with Netavark
 
 * Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure. For example, for AWS, allowing traffic between hosts is implemented using security groups.
 
@@ -45,7 +52,6 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
     ```sh
     sudo dnf -y install containernetworking-plugins
     ```
-
     ::::
 
 2. Remove Docker and previously installed Podman packages (if previously installed).
@@ -74,6 +80,11 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
         ```
 
 4. Install Podman:
+
+    ::::{note}
+    :applies_to: ece: ga 4.2
+    RHEL 10 supports Podman 5 only. Use the Podman 5 steps in this section. Podman 4 is not a supported combination on RHEL 10.
+    ::::
 
     * For Podman 4:
 
@@ -122,20 +133,42 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
             sudo dnf versionlock list
             ```
 
-5. For RHEL 9 and Rocky Linux 9 only: Switch the network stack from Netavark to CNI.
+5. Configure the Podman network backend. The required backend depends on the OS version:
 
-    1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
-    2. Open the `/etc/containers/containers.conf` file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
-    3. Reboot the system (`reboot`).
-    4. Check that the network stack has changed to `cni`: <br>
+    * For RHEL 8 and Rocky Linux 8: Ensure that Podman uses the CNI network backend. Although CNI is the default, set `network_backend="cni"` explicitly so the host does not depend on the existing configuration.
 
-        ```sh
-        cat /etc/containers/containers.conf
-        [...]
-        [network]
-        network_backend="cni"
-        [...]
-        ```
+        1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+        2. Open the `/etc/containers/containers.conf` file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
+        3. Reboot the system (`reboot`).
+        4. Check that the network stack is `cni`: <br>
+
+            ```sh
+            cat /etc/containers/containers.conf
+            [...]
+            [network]
+            network_backend="cni"
+            [...]
+            ```
+
+    * For RHEL 9 and Rocky Linux 9 only: Switch the network stack from Netavark to CNI.
+
+        1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+        2. Open the `/etc/containers/containers.conf` file. Navigate to the **network** section and make sure that the **network_backend** setting is set to `cni`.
+        3. Reboot the system (`reboot`).
+        4. Check that the network stack has changed to `cni`: <br>
+
+            ```sh
+            cat /etc/containers/containers.conf
+            [...]
+            [network]
+            network_backend="cni"
+            [...]
+            ```
+
+    * {applies_to}`ece: ga 4.2` For RHEL 10: Keep the default Netavark backend. Do not install `containernetworking-plugins` and do not set `network_backend=cni`.
+
+        1. If the `/etc/containers/containers.conf` file does not exist, copy the `/usr/share/containers/containers.conf` file to the `/etc/containers/` directory (for example, using `cp /usr/share/containers/containers.conf /etc/containers/`).
+        2. If the file contains a `network_backend` setting (for example a leftover `cni` pin), remove that line so Podman uses the RHEL 10 default (Netavark).
 
 6. If Podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
@@ -409,9 +442,7 @@ Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (E
         Choose IPv4 and IPv6 subnets that do not overlap with other networks in your environment. These values are local to each host, so the same subnets can be reused across ECE hosts.
         ::::
 
-    2. Set the dual-stack network as the default for new containers. Open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it.
-
-        On RHEL 9 and Rocky Linux 9, merge this setting with the existing `network_backend="cni"` configuration rather than creating a duplicate `[network]` section.
+    2. Set the dual-stack network as the default for new containers. Open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it. Make sure not to create a duplicate `[network]` section if one already exists.
 
         ```text
         [network]

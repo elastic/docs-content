@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens pie chart](../../images/kibana-lens-pie-chart.png)
 
-## Build a pie chart with the point-and-click editor [build-a-pie-chart]
+## Create a pie chart [create-a-pie-chart]
+
+### Create a pie chart with the point-and-click editor [build-a-pie-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a pie chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -65,7 +68,7 @@ The chart preview updates to show a pie divided into slices. Each slice represen
 
 ::::::
 
-## Build a pie chart with an {{esql}} query [build-a-pie-chart-with-esql]
+### Create a pie chart with an {{esql}} query [build-a-pie-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-<!-- Note: This file contains commented-out tool sections for features on main that are not yet available in released versions. -->
+<!-- Note: This file contains commented-out tool sections for tools that are gated behind an experimental feature flag, waiting on an unmerged Kibana PR, or of unconfirmed availability. Tools that are merged and scheduled for a version that hasn't shipped yet stay uncommented: their applies_to badge renders as "Planned" until that version is released. -->
 
 # {{agent-builder}} built-in tools reference
 
@@ -70,6 +70,9 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 
     **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
+
+`platform.core.list_inference_endpoints` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Lists the chat completion models available to agents, with their IDs, names, and types. Includes [{{infer}} endpoints](../models.md#add-an-inference-endpoint) with the `chat_completion` task type, and [Generative AI connectors](../models.md#configure-a-connector), which are deprecated. {{infer-cap}} endpoints with other task types, such as `text_embedding` and `rerank`, are excluded.
 
 #### Workflow execution tools
 
@@ -395,22 +398,6 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 
 `security.dismiss_lead` {applies_to}`stack: preview 9.5`
 :   Dismisses an AI-generated threat hunting lead by ID, marking it as triaged.
-
-### SIEM readiness tools
-
-SIEM readiness tools assess [SIEM readiness](/solutions/security/get-started/siem-readiness.md) across four dimensions: coverage, quality, continuity, and retention.
-
-`security.siem_readiness.get_coverage` {applies_to}`stack: preview 9.5`
-:   Retrieves SIEM data coverage health across the SIEM data categories (endpoint, identity, network, cloud, and application/SaaS), including document counts, detection-rule presence, health status, and findings.
-
-`security.siem_readiness.get_quality` {applies_to}`stack: preview 9.5`
-:   Retrieves SIEM data quality health based on ECS compatibility check results, including incompatible field mappings, health status, and findings. Requires a prior Data Quality dashboard run.
-
-`security.siem_readiness.get_continuity` {applies_to}`stack: preview 9.5`
-:   Retrieves SIEM ingest pipeline continuity health, including active pipelines, failure rates, silent data streams, and volume drops.
-
-`security.siem_readiness.get_retention` {applies_to}`stack: preview 9.5`
-:   Retrieves SIEM data retention health, including data streams and indices with retention configuration, retention days, and compliance status.
 
 ### PCI compliance tools
 ```{applies_to}

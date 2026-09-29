@@ -140,8 +140,7 @@ When you grant **Organization owner** access, or **Cloud resource** access for o
 
 Using {{ecloud}} keys for project-level API access, rather than [granting keys from within each {{serverless-short}} project](serverless-project-api-keys.md), allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
 
-:::{important} 
-:applies_to: serverless: preview
+:::{important}
 The [cross-project search feature](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) requires {{ecloud}} API keys for programmatic access.
 :::
 

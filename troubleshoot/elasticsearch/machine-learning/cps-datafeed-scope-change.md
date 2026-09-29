@@ -2,7 +2,7 @@
 navigation_title: Troubleshoot project scope changes
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: cloud-serverless

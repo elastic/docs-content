@@ -139,7 +139,7 @@ You can modify the criteria for changing an alert's status to [flapping state](v
 ## {{cps-cap}} scope for rules [observability-cps-scope-for-rules]
 
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 

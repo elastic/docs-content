@@ -2,7 +2,7 @@
 navigation_title: CPS {{ml}} {{dfeeds}}
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
   - id: cloud-serverless

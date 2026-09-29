@@ -333,14 +333,6 @@ $$$agent-builder-pci-compliance-skill$$$ `pci-compliance` {applies_to}`stack: pr
 
     **Prerequisites:** The `pciComplianceAgentBuilder` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
-$$$agent-builder-siem-readiness-skill$$$ `siem-readiness` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Assesses SIEM readiness across four dimensions: coverage (data ingested per category), quality (ECS field compatibility), continuity (ingest pipeline health), and retention (data retention compliance). Use when a user asks about SIEM health, readiness, data coverage, pipeline failures, ECS quality, or retention compliance.
-
-    :::{dropdown} Assigned tools
-    `security.siem_readiness.get_coverage`, `security.siem_readiness.get_quality`, `security.siem_readiness.get_continuity`, `security.siem_readiness.get_retention`
-
-    :::
-
 $$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
 :   Diagnoses [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) endpoint configuration issues such as endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus software. Queries endpoint data, inspects package configuration, and produces structured findings with specific endpoint IDs and remediation steps.
 
