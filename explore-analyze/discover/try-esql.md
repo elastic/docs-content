@@ -28,7 +28,7 @@ To follow this tutorial, you need the following:
 
 ## Name the data [tutorial-try-esql]
 
-The query starts by naming the data. Discover lists the results in the table.
+This step reads the sample web logs. The table shows the results from that source, and the later commands change those results.
 
 `FROM` is the source command for an index, a data stream, or an alias. `from` and `FROM` are the same command. Other source commands exist for specific kinds of data. Use [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) for a time series data stream, or [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) to query with PromQL.
 
