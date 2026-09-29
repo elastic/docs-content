@@ -119,7 +119,7 @@ $$$agent-builder-action-policy-management-skill$$$ `action-policy-management` {a
 
     **Related skills:** [`rule-management`](#agent-builder-rule-management-skill) composes the rules whose alert episodes a policy matches.
 
-<!-- TODO(agent-builder): kibana#291242 removes the `alerting:v2:enabled` advanced setting entirely for Alerting V2 GA, which would drop the first prerequisite from both entries above. It ships from main only, so it lands in 9.6 if it merges. Still open as of Sep 27. Tracked as question 2 in docs-content-internal#1758. -->
+<!-- TODO(agent-builder): kibana#291242 removes the `alerting:v2:enabled` advanced setting entirely for Alerting V2 GA, which would drop the first prerequisite from both entries above. It ships from main only, so it lands in 9.6 if it merges. Still open as of Sep 29; docs-content-internal#1758 question 18 confirms the removal is planned for 9.6/Serverless, but the code hasn't landed yet. Tracked as question 2 in docs-content-internal#1758. -->
 
 ### Streams and significant events
 
