@@ -278,7 +278,7 @@ node.roles: [ data_frozen ]
 Ingest nodes can run [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md), which consist of one or more ingest processors. Depending on the operations performed by the ingest processors and their resource requirements, you might benefit from dedicated ingest nodes that perform only this task.
 
 :::{important}
-If you use the [enrich processor](/manage-data/ingest/transform-enrich/data-enrichment.md), colocate the `ingest` role with a data role to minimize remote search operations, as remote enrich lookups can reduce ingest performance. Refer to [Set up an enrich processor](/manage-data/ingest/transform-enrich/set-up-an-enrich-processor.md).
+If you use the [enrich processor](/manage-data/ingest/transform-enrich/data-enrichment.md), colocate the `ingest` role with a data role to reduce the impact of enrich lookups on ingest performance. Refer to [Set up an enrich processor](/manage-data/ingest/transform-enrich/set-up-an-enrich-processor.md).
 :::
 
 To create a dedicated ingest node, set:
