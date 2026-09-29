@@ -387,8 +387,8 @@ To keep all your tabs for later, you can [Save your Discover session](#save-disc
 
 ### Run long-running queries in the background
 ```{applies_to}
-stack: ga 9.2
 serverless: preview
+stack: preview 9.2
 ```
 
 You can send your long-running KQL or {{esql}} queries to the background from **Discover** and let them run while you continue exploring your data. Refer to [Run queries in the background](/explore-analyze/discover/background-search.md).
