@@ -137,7 +137,13 @@ A query without `LIMIT` returns at most 1,000 results.
 
 2. Select **Search**.
 
-**Result:** The table lists 10 results, starting with the highest `bytes` value.
+**Result:** The table lists 10 results, starting with the highest `bytes` value. The chart shows only these 10 results.
+
+:::{image} /explore-analyze/images/kibana-discover-try-esql-sort-limit.png
+:alt: Discover with a query that sorts by bytes in descending order and limits to 10, a chart of bytes by destination for those results, and a table with 10 results
+:screenshot:
+:width: 90%
+:::
 
 Sorting from a column header in the table is different. It reorders only the results already in the table, and it does not change which results the query returns. Refer to [Sort query results](esql-results.md#_sorting).
 
