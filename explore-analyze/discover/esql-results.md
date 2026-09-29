@@ -30,6 +30,11 @@ Hover a value in the results table, then filter for it or filter it out. Discove
 - {icon}`plus_circle` **Filter for this** keeps that value. For example, `WHERE host.keyword == "www.elastic.co"`.
 - {icon}`minus_circle` **Filter out this** excludes that value. For example, `WHERE host.keyword != "www.elastic.co"`.
 
+  :::{image} /explore-analyze/images/kibana-discover-esql-filter-out.png
+  :alt: The value ios in the machine.os column, with Filter out this available.
+  :screenshot:
+  :::
+
 :::{note}
 :applies_to: { serverless:, stack: ga 9.3+ }
 Up to and including version 9.2, filtering for multi-value fields isn't supported. On later versions, filtering for multi-value fields translates into `WHERE MATCH` or `WHERE NOT MATCH` clauses. For example, `WHERE MATCH(tags.keyword, "error") AND MATCH(tags.keyword, "security")`.
@@ -39,9 +44,21 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 
 **Result:** When you select **Filter for this** or **Filter out this**, Discover adds or completes a `WHERE` clause for that value, and the table shows the matching rows.
 
+:::{image} /explore-analyze/images/kibana-discover-esql-filter-where.png
+:alt: An ES|QL query with a WHERE clause that excludes ios from machine.os.
+:screenshot:
+:::
+
 ## Sort query results [_sorting]
 
-Select a column name, then select the sort order. Discover reorders only the rows the query already retrieved, and the query does not change. A `LIMIT` can make that set shorter than the full data. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
+Open the menu for a column, then select **Sort High-Low** or **Sort Low-High**. Discover reorders only the rows the query already retrieved, and the query does not change.
+
+:::{image} /explore-analyze/images/kibana-discover-esql-sort-column.png
+:alt: The menu for the bytes column, with Sort High-Low highlighted.
+:screenshot:
+:::
+
+A `LIMIT` can make that set shorter than the full data. To sort the full data set, use the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -50,6 +67,11 @@ FROM kibana_sample_data_logs
 ```
 
 **Result:** A column header reorders only the rows already retrieved. `SORT` orders the full data set.
+
+:::{image} /explore-analyze/images/kibana-discover-esql-sort-query.png
+:alt: The ES|QL query after a column sort. The query has no SORT command.
+:screenshot:
+:::
 
 ## Show specific columns in the results table [esql-kibana-results-table]
 
@@ -67,6 +89,11 @@ FROM kibana_sample_data_logs
 ```
 
 You do not have to include `@timestamp` in `KEEP`. When the data has that field, the time filter still applies to the table and the chart.
+
+:::{image} /explore-analyze/images/kibana-discover-esql-keep-time-filter.png
+:alt: A KEEP query that omits @timestamp. The time filter is set, and the chart and table use that range.
+:screenshot:
+:::
 
 To display all fields as separate columns, use `KEEP *`:
 
@@ -108,6 +135,11 @@ Add the parameters on `order_date`. Discover then shows the time filter and the 
 FROM kibana_sample_data_ecommerce
 | WHERE order_date >= ?_tstart and order_date <= ?_tend
 ```
+
+:::{image} /explore-analyze/images/kibana-discover-esql-order-date.png
+:alt: The eCommerce sample with order_date named as the time field. The time filter and the chart are available.
+:screenshot:
+:::
 
 **Result:** The time filter sets the time range for that table and chart.
 
