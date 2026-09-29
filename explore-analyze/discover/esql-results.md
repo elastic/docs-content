@@ -154,13 +154,10 @@ FROM kibana_sample_data_ecommerce
 
 ## Keep a chart or table on a dashboard [_edit_the_esql_visualization]
 
-When the query produces a chart, change the chart type, axes, breakdown, and colors in the visualization editor next to the chart.
+Put the chart or the current table on a dashboard. Each one is saved as its own panel.
 
-To put the chart on a dashboard, follow [Add Discover visualizations to dashboards](save-open-search.md#add-discover-visualization-esql).
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` To put the current table on a dashboard, follow [Save the current table to a dashboard](save-open-search.md#save-table-to-dashboard).
-
-To reopen the query later, [save the Discover session](save-open-search.md).
+- **Chart:** [Save the chart to a dashboard](save-open-search.md#add-discover-visualization-esql). The Discover session can stay unsaved.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Table:** [Save the current table to a dashboard](save-open-search.md#save-table-to-dashboard). Later changes to the session do not change that panel.
 
 ## Related pages
 
