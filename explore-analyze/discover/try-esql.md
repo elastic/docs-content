@@ -91,7 +91,7 @@ An {{esql}} query is a chain of commands separated by pipes (`|`). Each command 
 :width: 90%
 :::
 
-You can also add a column from the fields list, without changing the query. Refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
+You can also add a column from the fields list. This changes only the table, not the query, so the chart keeps showing the results over time. It works well for a quick look at a field. Use `KEEP` when the columns are part of your question, because they then apply wherever you use the query. Refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
 
 ## Filter the results
 
@@ -113,9 +113,9 @@ Because `WHERE` removes results, it changes both the table and the chart.
 
 2. Select **Search**.
 
-**Result:** The results with `GB` as destination are gone from the table. The chart updates too, because it uses the same results as the table.
+**Result:** The results with `GB` as destination are gone from the table and from the chart, because the chart uses the same results as the table.
 
-You can also filter from the table. Hover a value, then select **Filter for this** or **Filter out this**, and Discover writes the `WHERE` line for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
+You can also filter from the table, which saves typing the field name and value. Hover a value, then select **Filter for this** or **Filter out this**, and Discover writes the `WHERE` line for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
 ## Find the top results
 
