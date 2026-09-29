@@ -8,12 +8,12 @@ applies_to:
 products:
   - id: kibana
 type: tutorial
-description: Learn how ES|QL commands change the documents, columns, and groups you see in Discover.
+description: Learn how ES|QL commands change the results you see in Discover.
 ---
 
 # Get started with {{esql}} in Discover [try-esql]
 
-In this tutorial you query the sample web logs in **Discover** with Elasticsearch Query Language ({{esql}}). You start from the documents, then turn them into one row per destination. Each command changes what the table and the chart show.
+In this tutorial you query the sample web logs in **Discover** with Elasticsearch Query Language ({{esql}}). You start from the results, then turn them into one row per destination. Each command changes the results in the table.
 
 You do not need a [data view](discover-get-started.md#find-the-data-you-want-to-use), and you do not need {{esql}} experience. For the rest of Discover, refer to [Explore fields and data with Discover](discover-get-started.md). For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
@@ -28,7 +28,7 @@ To follow this tutorial, you need the following:
 
 ## Name the data [tutorial-try-esql]
 
-The query starts by naming the data. Discover then lists those documents in the table and draws the chart from them.
+The query starts by naming the data. Discover lists the results in the table.
 
 `FROM` is the source command for an index, a data stream, or an alias. `from` and `FROM` are the same command. Other source commands exist for specific kinds of data. Use [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) for a time series data stream, or [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) to query with PromQL.
 
@@ -50,11 +50,11 @@ The sample web logs include `@timestamp`, so Discover uses that field for the ti
 
 5. Select **Search** (or **▶Run** in earlier versions).
 
-**Result:** The table lists the documents. The time field is the first column, and the other fields are in the **Summary** column. The chart shows those documents over the time range.
+**Result:** The table lists the results. The time field is the first column, and the other fields are in the **Summary** column. The chart shows those results over the time range.
 
 ## Choose the columns
 
-`KEEP` names the columns you want. The same documents stay in the table, and the chart still shows them over the time range.
+`KEEP` names the columns you want. The same results stay in the table, and the chart still shows them over the time range.
 
 To add a field yourself, enter its name on the `KEEP` line and select it from the suggestions. Refer to [Autocomplete and in-app help](../query-filter/languages/esql-kibana.md#esql-kibana-autocomplete).
 
@@ -71,7 +71,7 @@ To add a field yourself, enter its name on the `KEEP` line and select it from th
 
 ## Filter the rows
 
-`WHERE` removes documents that do not match. Those visits leave the table and the chart. Put string values in double quotes.
+`WHERE` removes results that do not match. Those results leave the table and the chart. Put string values in double quotes.
 
 1. Copy this query.
 
@@ -109,7 +109,7 @@ A column sort reorders only the rows already in the table. It does not change wh
 
 ## Turn the visits into groups
 
-`STATS` replaces the documents with one row per group. The columns come from the aggregation, so this query no longer uses `KEEP` or `LIMIT`. The `WHERE` stays, and the counts are the visits that are not to Great Britain. Discover draws the chart from these rows.
+`STATS` replaces the results with one row per group. The columns come from the aggregation, so this query no longer uses `KEEP` or `LIMIT`. The `WHERE` stays, and the counts are the visits that are not to Great Britain. Discover draws the chart from these rows.
 
 `COUNT(*)` counts the visits. `BY geo.dest` makes one row per destination.
 
