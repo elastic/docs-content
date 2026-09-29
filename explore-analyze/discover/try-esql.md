@@ -143,7 +143,7 @@ FROM kibana_sample_data_logs
 | SORT visits desc
 ```
 
-To stay on one destination, filter from that value in the results table. Discover adds a `WHERE` clause for you. Refer to [Refine an {{esql}} query from the results table](esql-results.md#refine-esql-query-from-table).
+To stay on one destination, filter from that value in the results table. Discover adds a `WHERE` clause for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` To ask what the pattern means, select **AI Agent** in the {{kib}} header. The agent uses this query and these rows. Refer to [Analyze your data with AI](discover-get-started.md#analyze-with-ai).
 
