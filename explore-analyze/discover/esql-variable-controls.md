@@ -22,7 +22,7 @@ Variable controls help you make your queries more dynamic instead of having to m
 You can add them from your Discover {{esql}} query.
 
 :::{image} /explore-analyze/images/variable-control-discover.png
-:alt: A variable control in Discover set to geo.dest, with its field list open.
+:alt: The Create variable control panel beside an ES|QL query, with Create control highlighted in the editor.
 :screenshot:
 :width: 75%
 :::
@@ -34,6 +34,12 @@ You can add them from your Discover {{esql}} query.
 :::
 
 **Result:** The control appears for the query, and its variable is inserted where you created it.
+
+:::{image} /explore-analyze/images/kibana-discover-esql-variable-control.png
+:alt: A Count by control set to geo.dest in Discover, with the field list open.
+:screenshot:
+:width: 75%
+:::
 
 ### Allow multi-value selections in a Discover control [esql-multi-values-controls]
 ```{applies_to}
