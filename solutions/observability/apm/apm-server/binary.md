@@ -773,7 +773,7 @@ To add the apm-server repository for APT:
 1. Download and install the Public Signing Key:
 
     ```shell
-    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
     ```
 
 1. You may need to install the `apt-transport-https` package on Debian before proceeding:
@@ -785,7 +785,7 @@ To add the apm-server repository for APT:
 1. Save the repository definition to `/etc/apt/sources.list.d/elastic-9.0.0.list`:
 
     ```shell
-    echo "deb https://artifacts.elastic.co/packages/9.0.0-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-9.0.0-prerelease.list
+    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.0.0-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-9.0.0-prerelease.list
     ```
 
     :::{warning}
