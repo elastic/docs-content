@@ -306,6 +306,28 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a partial-write bug so {{elastic-defend}} correctly sends data to a {{ls}} output when the kernel TCP send buffer is full, resolving premature connection failures.
 * Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
 
+## 9.4.8 [elastic-security-9.4.8-release-notes]
+
+### Features and enhancements [elastic-security-9.4.8-features-enhancements]
+
+* Adds the `--raw` option to the `memory-dump` response action for {{elastic-defend}} Windows hosts running {{agent}} 9.5.2 or later [#287713]({{kib-pull}}287713).
+* Adds an **Update to Elastic version** bulk action to the Rule Updates table that force-upgrades prebuilt rules to the exact Elastic version, discarding any customizations on the updated rules [#290589]({{kib-pull}}290589).
+
+### Fixes [elastic-security-9.4.8-fixes]
+
+* Fixes an issue where long text in table cells in the Security AI Assistant was cut off or caused the whole conversation to scroll horizontally [#293924]({{kib-pull}}293924).
+* Fixes an issue where Attack Discovery didn't automatically select a connector when multiple were available, which disabled **Run** and caused attack discovery generation to fail with a "No model selected" error [#293656]({{kib-pull}}293656).
+* Fixes an issue where detection rule failures caused by an invalid IP field query (such as a wildcard or literal value against an `ip` field) were classified as framework errors, which caused them to count against SLO dashboards [#291256]({{kib-pull}}291256).
+* Fixes detection rules that failed with a generic "expected to find aggregations on search result" error when the events search returned zero shards, for example because the rule owner lacks `read` privileges on the source indices. These rules now report an actionable warning that explains the cause [#290924]({{kib-pull}}290924).
+* Fixes the response console command parser so it rejects un-prefixed positional arguments (such as `get-file path /some/file/here`) with an error, instead of silently treating them as valid [#290325]({{kib-pull}}290325).
+* Fixes the **Isolate host** response action so it's disabled, with an explanatory tooltip, when the target host's {{elastic-defend}} version doesn't support host isolation [#290115]({{kib-pull}}290115).
+* Fixes an issue where the Rule details **Alerts** tab could show no results, and throw a `tableById is undefined` error in the console, when the alerts table had not been initialized yet (typical on first visit or in a private window) [#290076]({{kib-pull}}290076).
+* Fixes New Terms rule executions failing with `The content length (...) is bigger than the maximum allowed string (...)` when the documents fetched for new terms exceed `elasticsearch.maxResponseSize`. The rule now retries with smaller batches of terms and reports a warning instead of failing [#290058]({{kib-pull}}290058).
+* Fixes bulk closing alerts filtered on a scripted data view runtime field (one with a Painless script), which previously closed 0 alerts because the script wasn't forwarded to {{es}}. Also fixes the same issue in **Group alerts by** → **Take actions** → **Mark as closed**, which didn't forward runtime field data at all [#289549]({{kib-pull}}289549).
+* Fixes the detection rule `PATCH` API so it applies type-specific fields (such as `new_terms_fields`) even when `type` is omitted from the request, instead of silently ignoring them [#288917]({{kib-pull}}288917).
+* Allows bulk upgrading non-customized prebuilt rules whose rule type changed in the target version (such as `query` to `eql`), instead of blocking the upgrade as a non-solvable conflict [#288450]({{kib-pull}}288450).
+* Fixes rule exception items being deleted immediately from the actions menu with no warning. Kibana now shows a confirmation dialog before it deletes the exception item [#286807]({{kib-pull}}286807).
+
 ## 9.4.7 [elastic-security-9.4.7-release-notes]
 
 ### Fixes [elastic-security-9.4.7-fixes]
