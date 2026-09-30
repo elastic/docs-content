@@ -10,6 +10,10 @@ type: how-to
 
 # Find your project connection details [serverless-connection-details]
 
+::::{note}
+This page is for {{serverless-full}} projects. If you're using an {{ech}} deployment, refer to [](find-cloud-id.md).
+::::
+
 When you connect clients and tools to an {{serverless-full}} project, these are the main connection details you'll work with:
 
 **{{es}} endpoint**
@@ -22,49 +26,46 @@ When you connect clients and tools to an {{serverless-full}} project, these are 
 :   A unique, encoded string that represents your project's {{es}} endpoint (and, where applicable, {{kib}} endpoint) in a compact form. Compatible clients can use it instead of configuring host URLs individually: the client resolves those endpoints from the Cloud ID.
 
 
-[{{beats}}](beats://reference/index.md) and [{{ls}}](logstash://reference/index.md) can use a Cloud ID instead of the endpoint URL. All other clients and tools use the endpoint.
+## Find your {{es}} endpoint [_find_elasticsearch_endpoint]
 
-## Find your {{es}} endpoint and Cloud ID [_find_elasticsearch_endpoint]
+You can copy your endpoint from the {{ecloud}} Console, or from {{kib}}. Use whichever fits your workflow: the Console route doesn't require you to open {{kib}}.
 
-{applies_to}`elasticsearch: ga` In {{es-serverless}} projects, the **Get started with {{es}}** page shows the {{es}} endpoint directly, so you can copy it from there.
+{applies_to}`elasticsearch: ga` In {{es-serverless}} projects, the **Get started with {{es}}** page also shows the endpoint directly.
 
-Your endpoint is available in the **Connection details** panel in {{kib}}. 
+### From the {{ecloud}} Console [_find_endpoint_console]
 
-:::::{stepper}
-
-::::{step} Open the Connection details panel
-:anchor: open-connection-details
-
-Open your {{serverless-short}} project, then open the panel in one of these ways:
-
-* Select the **Help menu** {icon}`question`, and then select **Connection details**.
-* Select the project selector in the header, and then select **Connection details**.
-::::
-
-::::{step} Copy the {{es}} endpoint
-From the **Endpoints** tab, copy the **{{es}} endpoint**.
-
-:::{image} /solutions/images/kibana-connection-details-endpoints.png
-:alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
-:screenshot:
-:width: 50%
+:::{include} _snippets/find-endpoint-serverless-console.md
 :::
-::::
 
-::::{step} Copy the Cloud ID
-Turn on **Show Cloud ID**, then copy the value.
-::::
-
-:::::
-
-
-:::{admonition} Other endpoints available in the Cloud UI
-Your project also exposes endpoints for other applications, such as {{kib}} and, depending on the project type, {{fleet}} or OpenTelemetry (OTLP). To view them, open the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select **Manage** next to your project, and find the **Application endpoints, cluster and component IDs** area on your project's **Overview** page. That area also lists your project ID and component IDs. To connect clients and tools to {{es}}, use the **{{es}} endpoint**.
+:::{admonition} Other endpoints in this panel
+The **Application endpoints, cluster and component IDs** area also lists endpoints for other applications, such as {{kib}} and, depending on the project type, {{fleet}} or OpenTelemetry (OTLP), along with your project ID and component IDs. To connect clients and tools to {{es}}, use the **{{es}} endpoint**.
 :::
+
+### From {{kib}} [_find_endpoint_kibana]
+
+1. Open the **Connection details** panel in one of these ways:
+
+    * Select the **Help menu** {icon}`question`, and then select **Connection details**.
+    * Select the project selector in the header, and then select **Connection details**.
+
+2. On the **Endpoints** tab, copy the **{{es}} endpoint**.
+
+    :::{image} /solutions/images/kibana-connection-details-endpoints.png
+    :alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
+    :screenshot:
+    :width: 50%
+    :::
+
+## Find your Cloud ID [_find_cloud_id]
+
+The Cloud ID is available in {{kib}} only. You need it only for [{{beats}}](beats://reference/index.md) and [{{ls}}](logstash://reference/index.md), which can use it in place of the endpoint URL. All other clients and tools use the endpoint.
+
+1. In {{kib}}, open the **Connection details** panel from the **Help menu** {icon}`question` or the project selector in the header.
+2. Turn on **Show Cloud ID**, then copy the value.
 
 ## Create an API key [_create_api_key]
 
-You can create an API key in the **API key** tab of the [**Connection details** panel](#open-connection-details).
+You can create an API key in the **API key** tab of the [**Connection details** panel](#_find_endpoint_kibana).
 
 Alternatively, you can also create an API key from your project's **API keys** page, which you can access from the navigation menu or with the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -78,15 +79,10 @@ Keys created in your project work with that project only. If you want one key to
 
 ## Next steps [_next_steps]
 
-After you have your project's connection details, use them to configure a client or data shipper. Explore these pages:
+After you have your project's connection details, [send a test request](/solutions/elasticsearch-solution-project/search-connection-details.md#elasticsearch-get-started-test-connection) to confirm that your endpoint and API key work, then use them to configure a client or data shipper. Explore these pages:
 
 * [Beats for {{es-serverless}}](beats://reference/serverless/beats.md): Configure Beats to send logs, metrics, and other data using your {{es}} endpoint and API key.
 * [Sending data to {{es-serverless}}](logstash://reference/connecting-to-serverless.md): Configure {{ls}} to send data to your project.
 * [](/reference/fleet/install-elastic-agents.md): Collect and ship data with {{agent}} and Fleet.
 * [](/reference/elasticsearch-clients/index.md): Connect applications to your project with an official client library.
 * [](/manage-data/ingest.md): Browse other ingest options, from APIs and connectors to OpenTelemetry.
-
-## Related pages [_related_pages]
-
-* [](/solutions/elasticsearch-solution-project/search-connection-details.md): Connection details across deployment types, including {{ech}} and self-managed.
-* [Find your Cloud ID](find-cloud-id.md): Cloud ID for {{ech}} deployments.
