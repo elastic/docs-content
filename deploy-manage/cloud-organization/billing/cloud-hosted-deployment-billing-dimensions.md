@@ -63,14 +63,14 @@ Data inter-node charges are currently waived for Azure deployments.
 
 ### Snapshot and restore data transfer [snapshot-restore-data-transfer]
 
-Snapshot and restore traffic flows directly between the nodes of your deployment and the snapshot repository, not through the deployment endpoint. It is billed as follows, whether you use the default `found-snapshots` repository or a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types) in your own cloud provider account:
+Snapshot and restore traffic flows directly between the nodes of your deployment and the snapshot repository, not through the deployment endpoint. It is billed as follows:
 
-* **Taking a snapshot** is billed as *Data inter-node*, not *Data out*. The same rate applies whether the repository is in the same region as the deployment or a different one. Because snapshots are incremental, only data that isn't already in the repository is transferred.
+* **Taking a snapshot** is billed as *Data inter-node*, not *Data out*, whether you use the default `found-snapshots` repository or a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types) in your own cloud provider account. The same rate applies whether the repository is in the same region as the deployment or a different one. Because snapshots are incremental, only data that isn't already in the repository is transferred.
 * **Restoring a snapshot** into a deployment is not billed for the data read from the repository. After the restore, {{es}} may copy shards between nodes, for example to create replicas, and that traffic is billed as *Data inter-node*.
-* **Snapshot API requests** are billed under [Storage API requests](#storage) for all repositories, including custom repositories.
-* **Snapshot storage size** is billed under [Storage size](#storage) for the `found-snapshots` repository only. Your cloud provider bills you directly for storage in a custom repository, and may also charge for requests and cross-region transfer in your account.
+* **Snapshot API requests** are billed under [Storage API requests](#storage).
+* **Snapshot storage size** is billed under [Storage size](#storage) for the `found-snapshots` repository only. Your cloud provider bills you directly for storage in a custom repository.
 
-For example, to move data from a deployment in one organization to a new deployment in another organization, you can snapshot to a bucket you own and restore into the new deployment. The source deployment is charged *Data inter-node* for the snapshot data it writes, plus Storage API requests. The destination deployment is charged Storage API requests and *Data inter-node* for any shard copies made after the restore. Neither deployment is charged *Data out*.
+For example, to move data from a deployment in one organization to a new deployment in another organization, you can snapshot to a bucket you own and restore into the new deployment. The source deployment is charged *Data inter-node* for the snapshot data it writes. The destination deployment is charged *Data inter-node* for any shard copies made after the restore. Neither deployment is charged *Data out*.
 
 
 
@@ -85,7 +85,7 @@ The exact root cause of unusual data transfer is not always something we can ide
 
 ## Storage [storage] 
 
-Storage costs are tied to the cost of storing the backup snapshots in the underlying IaaS object store, such as AWS S3, Google Cloud GCS or Azure Storage. These storage costs are *not* for the disk storage that persists the {{es}} indices, as that is already included in the [RAM Hours](#ram-hours). If you use a [custom snapshot repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), your cloud provider also bills you directly for that repository's storage and requests.
+Storage costs are tied to the cost of storing the backup snapshots in the underlying IaaS object store, such as AWS S3, Google Cloud GCS or Azure Storage. These storage costs are *not* for the disk storage that persists the {{es}} indices, as that is already included in the [RAM Hours](#ram-hours). If you use a [custom snapshot repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), your cloud provider also bills you directly for that repository's storage.
 
 As is common with Cloud providers, we meter and bill snapshot storage using two dimensions:
 
@@ -100,7 +100,7 @@ As is common with Cloud providers, we meter and bill snapshot storage using two 
 
 2. **Storage API requests (1K Requests/month)**
    
-   These costs are calculated by counting the total number of calls to backup or restore snapshots made by all deployments associated with an account, across all snapshot repositories, including custom repositories. Unlike storage size, this dimension is cumulative, summed up across the billing cycle, and is billed at a price of 1,000 requests.
+   These costs are calculated by counting the total number of calls to backup or restore snapshots made by all deployments associated with an account. Unlike storage size, this dimension is cumulative, summed up across the billing cycle, and is billed at a price of 1,000 requests.
    
    We provide a free allowance of 100,000 API requests to all accounts each month across all the account deployments. Once this threshold is passed, we bill only for the use of API requests in excess of the free allowance.
    
