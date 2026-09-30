@@ -1,0 +1,99 @@
+name: Docs project metadata
+
+on:
+  issues:
+    types: [labeled, reopened]
+  workflow_dispatch:
+    inputs:
+      issue-url:
+        description: Full URL of one docs-content or docs-content-internal issue
+        required: true
+        type: string
+      dry-run:
+        description: Preview routing and enrichment without adding board items or changing fields
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  actions: read
+  contents: read
+  issues: write
+  pull-requests: read
+  copilot-requests: write
+
+concurrency:
+  group: docs-project-metadata-${{ inputs.issue-url || github.event.issue.html_url }}
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.action == 'labeled' &&
+       contains(fromJSON('["Team:SKI","Team:Admin","Team:Developer"]'), github.event.label.name)) ||
+      (github.event.action == 'reopened' &&
+       (contains(github.event.issue.labels.*.name, 'Team:SKI') ||
+        contains(github.event.issue.labels.*.name, 'Team:Admin') ||
+        contains(github.event.issue.labels.*.name, 'Team:Developer')))
+    runs-on: ubuntu-latest
+    outputs:
+      issue-url: ${{ inputs.issue-url || github.event.issue.html_url }}
+      enrich: ${{ steps.route.outputs.enrich }}
+      dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
+    env:
+      ISSUE_URL: ${{ inputs.issue-url || github.event.issue.html_url }}
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Route issue before enrichment
+        id: route
+        env:
+          GH_TOKEN: ${{ secrets.ADD_TO_BOARD_TOKEN }}
+        run: |
+          set -euo pipefail
+          [[ "$ISSUE_URL" =~ ^https://github\.com/elastic/docs-content(-internal)?/issues/[1-9][0-9]*$ ]] || exit 1
+          board=$(gh issue view "$ISSUE_URL" --json state,labels --jq '
+            select(.state == "OPEN") |
+            [.labels[].name | if . == "Team:SKI" then 1034
+              elif . == "Team:Admin" or . == "Team:Developer" then 2517
+              else empty end] | unique | select(length == 1) | .[0]')
+          if [ -z "$board" ]; then
+            echo "Skipped: closed issue, unsupported labels, or conflicting boards." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "Dry run: target board $board; no board changes. Enrichment checks existing membership." >> "$GITHUB_STEP_SUMMARY"
+          else
+            gh project item-add "$board" --owner elastic --url "$ISSUE_URL"
+            echo "Board assignment complete: https://github.com/orgs/elastic/projects/$board" >> "$GITHUB_STEP_SUMMARY"
+            echo "routed=true" >> "$GITHUB_OUTPUT"
+          fi
+          if [ "$board" = "1034" ] && [ -f .github/project-metadata/ski.yml ]; then
+            echo "enrich=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Enrichment skipped: no metadata profile is available." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Remove pending team label
+        if: steps.route.outputs.routed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # The caller token can only update issues in its own repository.
+          if [[ "$ISSUE_URL" == "https://github.com/$GITHUB_REPOSITORY/issues/"* ]]; then
+            gh issue edit "$ISSUE_URL" --remove-label needs-team
+          fi
+
+  run:
+    needs: prepare
+    if: needs.prepare.outputs.enrich == 'true'
+    uses: elastic/docs-actions/.github/workflows/gh-aw-project-metadata.lock.yml@v1
+    with:
+      issue-url: ${{ needs.prepare.outputs.issue-url }}
+      profile-path: .github/project-metadata/ski.yml
+      dry-run: ${{ fromJSON(needs.prepare.outputs.dry-run) }}
+    secrets:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      PROJECT_TOKEN: ${{ secrets.ADD_TO_BOARD_TOKEN }}

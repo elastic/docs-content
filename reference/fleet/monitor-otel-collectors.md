@@ -25,8 +25,11 @@ Supported collectors:
 Unlike {{agents}}, OTel Collectors don't display an agent policy in the **Agents** list. They use managed policies that can't be modified and aren't displayed in the **Agent policies** tab.
 :::
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` Collectors get a dedicated details page in {{fleet}}, with a pipeline visualization and panels for health, metadata, configuration, and recurring errors in the collector's logs.
+
 Learn more:
 
 * [Add an OTel Collector in Fleet](/reference/fleet/add-otel-collector.md)
 * [View OTel Collectors in Fleet](/reference/fleet/view-otel-collectors.md)
+* [Remove an OTel Collector from Fleet](/reference/fleet/remove-otel-collector.md)
 * [Add internal telemetry to an OTel Collector monitored by {{fleet}}](/reference/fleet/add-otel-collector-internal-telemetry.md)

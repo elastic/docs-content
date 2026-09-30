@@ -26,10 +26,6 @@ Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, 
 You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language when it creates or updates a dashboard through chat.
 :::
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
-:::
-
 :::{image} /explore-analyze/images/kibana-vega.png
 :alt: Vega UI
 :screenshot:
@@ -1247,6 +1243,8 @@ Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite
 #### Default theme to match {{kib}} [vega-theme]
 
 {{kib}} registers a default [Vega color scheme](https://vega.github.io/vega/docs/schemes/) with the id `elastic`, and sets a default color for each `mark` type. Override it by providing a different `stroke`, `fill`, or `color` (Vega-Lite) value.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` A Vega-Lite area mark with no fill uses a gradient of the default color. The fill is fainter at the baseline and stronger toward the top of the area. A `color` or `fill` encoding replaces that gradient with a solid series color.
 
 
 #### Writing {{es}} queries in Vega [vega-queries]

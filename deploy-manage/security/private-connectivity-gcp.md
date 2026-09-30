@@ -47,6 +47,8 @@ When using GCP Private Service Connect, the following limitations apply:
 ```{include} _snippets/private-connectivity-limitations-ech.md
 ```
 
+* **Remote clusters with API key authentication:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic.
+
 ## Private Service Connect URIs [ec-private-service-connect-uris]
 
 Service Attachments are set up by Elastic in all supported GCP regions under the following URIs:
@@ -202,9 +204,9 @@ Create a new private connection policy.
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 6. Under **Connectivity**, select **PrivateLink**.
-7. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
+7. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. For each VPC filter, select **Add description** to add an optional description that helps you identify the filter later.
     
-    If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
+    If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between GCP and Elastic in the applicable region.
     
     :::{tip}
     You can apply multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
@@ -255,6 +257,8 @@ Use the alias you’ve set up as CNAME A record to access your deployment.
 
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for Elasticsearch and Kibana traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication is supported with the TLS certificate based security model (port `9400`). The API key based security model is not yet available over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for more information.
 
 To access the deployment:
 

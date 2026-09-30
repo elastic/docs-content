@@ -1,6 +1,11 @@
 ---
 applies_to:
   stack: ga 9.0+
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 navigation_title: "Enable logsdb for integrations"
 description: "Enable logsdb index mode for integration data streams using @custom component templates."
 products:

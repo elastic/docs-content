@@ -3,7 +3,11 @@ navigation_title: "Quickstart"
 description: "Create a time series data stream, ingest sample metrics, and run an ES|QL query."
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 products:
   - id: elasticsearch
 ---
@@ -146,7 +150,7 @@ A successful request returns `"errors": false` and a `create` item for each docu
 :::
 
 :::{tip}
-If you get an error about timestamp values, check the error response for the valid timestamp range and run the bulk API again with appropriate `@timestamp` values.
+If you get an error about timestamp values, check the error response for the valid timestamp range.
 For more details, refer to [Accepted time range for adding data](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-accepted-time-range).
 :::
 

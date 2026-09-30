@@ -93,7 +93,6 @@ toc:
         children:
           - file: create-policy-no-ui.md
           - file: enable-custom-policy-settings.md
-          - file: fleet-agent-environment-variables.md
           - file: version-specific-agent-policies.md
       - file: fleet-roles-privileges.md
       - file: fleet-enrollment-tokens.md
@@ -102,6 +101,7 @@ toc:
     children:
       - file: add-otel-collector.md
       - file: view-otel-collectors.md
+      - file: remove-otel-collector.md
       - file: add-otel-collector-internal-telemetry.md
   - file: configure-standalone-elastic-agents.md
     children:
@@ -144,6 +144,7 @@ toc:
       - file: install-uninstall-integration-assets.md
       - file: view-integration-assets.md
       - file: integration-level-outputs.md
+      - file: scale-integration-policies.md
       - file: upgrade-integration.md
       - file: roll-back-integration.md
       - file: managed-content.md
