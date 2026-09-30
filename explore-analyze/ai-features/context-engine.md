@@ -17,7 +17,7 @@ products:
 :::{include} context-engine/_snippets/hidden-docs-notice.md
 :::
 
-{{context-engine}} enables you to distill raw source data into context optimized for retrieval by agents and applications. This upfront investment reduces repeated source data scanning and interpretation, helping agents respond faster and use fewer model tokens.
+{{context-engine}} enables you to distill raw source data into context optimized for retrieval by agents and applications. This upfront investment reduces repeated source data scanning and interpretation, helping agents respond faster and use fewer model tokens. When you connect agent traces, you can use evidence from real agent behavior to create a continuous improvement loop: identify gaps, refine automations, and regenerate better context.
 
 ## {{context-engine}} use cases
 
@@ -62,9 +62,9 @@ Review KIs and [agent traces](context-engine/concepts.md#agent-traces) to identi
 
 :::::
 
-## Get started with {{context-engine}}
+## {{context-engine}} quickstart
 
-Follow [Get started with {{context-engine}}](context-engine/quickstart.md) to create an AI index from existing {{es}} data, generate your first KI, and test how an {{agent-builder}} agent uses it.
+Follow the [{{context-engine}} quickstart](context-engine/quickstart.md) to create an AI index from existing {{es}} data, generate your first KI, and test how an {{agent-builder}} agent uses it.
 
 ## {{context-engine}} concepts
 
@@ -74,6 +74,14 @@ Learn how AI indices, sources, automations, KIs, and agent access fit together i
 
 Learn how to choose source data, select a KI generation strategy, review automations, and maintain useful context in [Build and maintain an AI index](context-engine/build-and-maintain-ai-index.md).
 
-## Use {{context-engine}} with agents and applications
+## Use an AI index
 
-Learn how to [use {{context-engine}} with agents and applications](context-engine/use-context-engine-with-agents.md), including {{agent-builder}} agents and agents built with LangChain.
+Learn how to retrieve context directly or through an agent or application in [Use an AI index](context-engine/use-an-ai-index.md).
+
+## Reference
+
+Use the [{{context-engine}} API guide](context-engine/context-engine-api.md) to find the available operations and links to the complete {{kib}} API reference.
+
+<!--
+Review [{{context-engine}} availability and limits](context-engine/availability-and-limits.md) for deployment support, requirements, and product limits.
+-->
