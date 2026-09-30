@@ -85,13 +85,8 @@ Expand-Archive .\elastic-agent-{{version.stack}}-windows-x86_64.zip
 
 :::::{step} Configure {{agent}}
 
-Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
-
-1. In Elastic Cloud Serverless, open your Observability project.
-2. Go to **Add data** → **Application** → **OpenTelemetry**.
-3. Select **Managed OTLP Endpoint** in the second step.
-4. Copy the OTLP endpoint configuration value.
-5. Select **Create API Key** to generate an API key.
+:::{include} ../get-started/opentelemetry/_snippets/serverless-endpoint-api.md
+:::
 
 Replace `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following commands:
 
