@@ -90,6 +90,27 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :screenshot:
 :::
 
+### Attach images to a message
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram. Pasting is the only way to attach an image. Dragging a file onto the input and selecting one from a file picker aren't supported.
+
+To attach an image, copy it to your clipboard, then press {kbd}`ctrl|cmd+v` in the chat input. A chip with the file name appears in the message text, and a thumbnail appears above the input. To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`.
+
+:::{image} images/agent-builder-image-attachment.png
+:alt: Chat input with an image thumbnail attached, a file chip in the message text, and the model selector below
+:width: 650px
+:screenshot:
+:::
+
+You can attach up to 10 images to a single message. Each image must be a PNG or JPEG file no larger than 3.5 MB. You can't submit the message until all attached images finish uploading.
+
+After you submit the message, the image appears in the conversation history, and the agent can refer to it in later messages in the same conversation.
+
 ### Chat with data from multiple projects [agent-builder-cps-scope]
 ```{applies_to}
 stack: unavailable
@@ -387,7 +408,9 @@ stack: ga 9.4+
 The **Customize** accordion in the left sidebar provides agent-scoped configuration for the currently selected agent. Expand it to access the following pages:
 
 **Overview**
-:   Displays a summary of the selected agent, including the total count of assigned skills and tools. Use the quick links to edit the agent's instructions or settings.
+:   Displays a summary of the selected agent, including the total count of assigned skills and tools. Use the quick links to edit the agent's instructions or settings. The page also shows a row of agent metadata that includes the agent's ID, followed by the access control level for custom agents or a **Read-only** badge for built-in agents. Select the copy icon {icon}`copy` to copy the ID.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The row begins with **Created by** and, when available, **Updated by**. These values correspond to the **Created by** and **Last updated by** columns in the [agent list](#manage-components). If a timestamp is available, a relative time is shown. Point to or focus on it to view the exact date and time. **Created by** displays **Unknown** if no creator was recorded.
 
 **Skills**
 :   Lists the skills assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**. Skills you import into the library must be turned on with their toggle in this list before the agent can use them. For how skills work and how to manage them, refer to [Skills in {{agent-builder}}](skills.md).
@@ -419,6 +442,8 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 :   View all agents available in the current {{kib}} space. The list displays each agent's name and access control level (**Public**, **Shared**, or **Private**), a **Read-only** badge for built-in agents, and any labels. From this page, you can create new agents, edit existing ones, or start a chat.
 
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list also includes **Created by** and **Last updated by** columns. When available, each column displays the user's name and a relative time, such as **3 months ago**. Point to or focus on the relative time to view the exact date and time. If the user's full name is unavailable, their username appears instead. The default agent and other agents installed automatically by {{kib}} display **Elastic**. Read-only built-in agents display a dash in both columns because no creator or editor is recorded for them. If only one value is recorded, only the corresponding column displays a value.
 
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.
