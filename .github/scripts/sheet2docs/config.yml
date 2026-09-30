@@ -112,14 +112,6 @@ outputs:
        by: "Name"
        direction: "ascending"
 #
-   - filename: "ocr-models.csv"
-     filter:
-       column: "Type"
-       values: ["OCR"]
-     sort:
-       by: "Name"
-       direction: "ascending"
-#
 #   - filename: "all-models.csv"
 #     # No filter: includes all rows
 #     sort:
