@@ -86,10 +86,27 @@ These optional fields add descriptive information to a rule for identification, 
 
 These fields control how far back each evaluation looks and which timestamp field is used for the time range filter. Both are optional, but omitting `schedule.lookback` means the query runs without a time bound.
 
+:::::{applies-switch}
+
+::::{applies-item} stack: experimental =9.5
+
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
 | `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Max 128 characters. Defaults to `@timestamp`. |
+
+::::
+
+::::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
+| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Max 256 characters. Defaults to `@timestamp`. |
+
+::::
+
+:::::
 
 ## Recovery strategy [recovery-strategy]
 
@@ -154,10 +171,10 @@ Only valid when `kind` is `alert`. `pending` and `recovering` are optional. If y
 |---|---|---|---|
 | `state_transition.pending.count` | integer | Integer, 0–1000 | Consecutive matches required before the alert episode becomes active. Set to `0` to open it on the first match. |
 | `state_transition.pending.timeframe` | duration | Any duration string | How long the condition must hold before the alert episode becomes active. For example: `5m`. |
-| `state_transition.pending.operator` | string | `AND` or `OR` | When both `count` and `timeframe` are set, `AND` requires both and `OR` requires either. |
+| `state_transition.pending.operator` | string | `and` or `or` | When both `count` and `timeframe` are set, `and` requires both and `or` requires either. |
 | `state_transition.recovering.count` | integer | Integer, 0–1000 | Consecutive recoveries required before the alert episode becomes inactive. Set to `0` to close it on the first recovery. |
 | `state_transition.recovering.timeframe` | duration | Any duration string | How long the condition must hold before the alert episode becomes inactive. For example: `5m`. |
-| `state_transition.recovering.operator` | string | `AND` or `OR` | When both `count` and `timeframe` are set, `AND` requires both and `OR` requires either. |
+| `state_transition.recovering.operator` | string | `and` or `or` | When both `count` and `timeframe` are set, `and` requires both and `or` requires either. |
 
 :::{note}
 `state_transition.recovering` is rejected when `recovery.strategy` is `manual`.
@@ -218,7 +235,8 @@ The `artifacts` array is optional and accepts up to 100 entries. Every artifact 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `artifacts[].id` | string | Any string | Artifact identifier. Required. Max 256 characters. |
+| `artifacts[].id` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | Any string | Artifact identifier. Required. Max 150 characters. |
+| `artifacts[].id` {applies_to}`stack: experimental =9.5` | string | Any string | Artifact identifier. Required. Max 256 characters. |
 | `artifacts[].type` | string | Any string | Use `runbook` or `dashboard`. Other strings are allowed. Max 128 characters. |
 | `artifacts[].data` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
 | `artifacts[].data.content` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |

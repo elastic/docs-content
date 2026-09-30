@@ -79,9 +79,24 @@ In the YAML rule schema, these fields are nested under `state_transition.pending
 | --- | --- | --- | --- |
 | `pending_count` | integer | 0–1000 | Number of consecutive breach evaluations required before the alert episode opens. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
 | `pending_timeframe` | duration | Any duration string | How long the condition must remain breached before the alert episode opens. Appears as **Active for** in Duration mode. |
-| `pending_operator` | string | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+| `pending_operator` {applies_to}`stack: experimental =9.5` | string | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+| `pending_operator` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | `and` or `or` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`and`) or either one is enough (`or`). |
+
+::::{applies-switch}
+
+:::{applies-item} stack: experimental =9.5
 
 You can combine Breaches and Duration by setting both `pending_count` and `pending_timeframe`. Use `pending_operator: AND` to require both conditions before the alert episode opens, or `pending_operator: OR` if either condition alone is enough.
+
+:::
+
+:::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+You can combine Breaches and Duration by setting both `pending_count` and `pending_timeframe`. Use `pending_operator: and` to require both conditions before the alert episode opens, or `pending_operator: or` if either condition alone is enough.
+
+:::
+
+::::
 
 :::{note}
 Looking for the equivalent delay before an alert episode closes? Refer to [Recovery condition](configure-rule-recovery.md#recovery-delay).
@@ -95,7 +110,7 @@ Create a rule that monitors CPU usage and runs every minute. A single high readi
 
 ### Require sustained breach before escalating
 
-Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `AND`. The rule only fires when the error rate has breached on 5 consecutive evaluations and has been continuously elevated for at least 2 minutes. Either condition alone isn't enough.
+Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `AND` (`and` on Stack 9.6+ and Serverless). The rule only fires when the error rate has breached on 5 consecutive evaluations and has been continuously elevated for at least 2 minutes. Either condition alone isn't enough.
 
 ## Related pages
 

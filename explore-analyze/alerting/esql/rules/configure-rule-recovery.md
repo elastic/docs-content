@@ -113,7 +113,8 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 | --- | --- | --- | --- |
 | `recovering_count` | integer | 0–1000 | Number of consecutive non-breaching evaluations required before the alert episode closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
 | `recovering_timeframe` | duration | Any duration string | How long the condition must remain non-breaching before the alert episode closes. |
-| `recovering_operator` | string | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+| `recovering_operator` {applies_to}`stack: experimental =9.5` | string | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+| `recovering_operator` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | `and` or `or` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`and`) or either one is enough (`or`). |
 
 Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
@@ -137,7 +138,21 @@ In the YAML rule schema, these fields are nested under `state_transition.recover
 
 :::::
 
+::::{applies-switch}
+
+:::{applies-item} stack: experimental =9.5
+
 You can combine Recoveries and Duration by setting both `recovering_count` and `recovering_timeframe`. Use `recovering_operator: AND` to require both conditions before the alert episode closes, or `recovering_operator: OR` if either condition alone is enough.
+
+:::
+
+:::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+You can combine Recoveries and Duration by setting both `recovering_count` and `recovering_timeframe`. Use `recovering_operator: and` to require both conditions before the alert episode closes, or `recovering_operator: or` if either condition alone is enough.
+
+:::
+
+::::
 
 ## Examples
 
