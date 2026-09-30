@@ -1,5 +1,6 @@
 ---
 navigation_title: "Prometheus remote write endpoint"
+description: Send metrics from Prometheus or any remote write client directly to the Elasticsearch Prometheus remote write endpoint and store them in a time series data stream (TSDS).
 applies_to:
   stack: ga 9.5+, preview =9.4
   serverless: ga
@@ -91,7 +92,7 @@ In both cases, Elasticsearch sanitizes dataset and namespace values, replacing a
 
 ### Route by URL path
 
-Set the dataset and namespace via URL path segments:
+Set the dataset and namespace using URL path segments:
 
 | Endpoint | Data stream |
 | --- | --- |

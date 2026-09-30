@@ -1,6 +1,6 @@
 ---
 navigation_title: Ingest custom metrics with {{edot}}
-description: Learn how to send custom metrics to Elastic using {{edot}} and OTLP. This lightweight quickstart covers the minimal setup to ingest and validate metrics in Elastic Observability.
+description: Learn how to send custom metrics to Elastic using Elastic OpenTelemetry and OTLP. This lightweight quickstart covers the minimal setup to ingest and validate metrics in Elastic Observability.
 applies_to:
   stack:
   serverless:
@@ -18,12 +18,12 @@ products:
 
 Use this quickstart to send custom metrics to Elastic using the {{agent}}.
 
-You’ll install a lightweight {{agent}}, configure a minimal Open Telemetry Protocol (OTLP) metrics pipeline, and verify the data in {{product.observability}}.
+You’ll install a lightweight {{agent}}, configure a minimal OpenTelemetry Protocol (OTLP) metrics pipeline, and verify the data in {{product.observability}}.
 
 ## Prerequisites
 
 - An Elastic deployment ({{serverless-short}}, {{ech}}, or self-managed)
-- An {{observability}} project {{kib}} instance
+- An {{observability}} project or {{kib}} instance
 - Permissions to create API keys
 - A system to run the {{agent}} (Docker, host, or VM)
 - Optional: An application that emits OpenTelemetry metrics
@@ -34,14 +34,14 @@ You’ll install a lightweight {{agent}}, configure a minimal Open Telemetry Pro
 
 In your {{product.observability}} deployment:
 
-1. Go to **{{manage-app}}** > **{{stack-manage-app}}** > **API keys**.
+1. Go to **{{manage-app}}** → **{{stack-manage-app}}** → **API keys**.
 2. Create a new API key and copy the value.
 3. Note your deployment's OTLP ingest endpoint.
 ::::::
 
 ::::::{step} Run the {{agent}} with a minimal metrics pipeline
 
-Update the `collector-config.yaml` file with the following Collector configuration to receive OTLP metrics and export them to Elastic:
+Create a `collector-config.yaml` file with the following Collector configuration to receive OTLP metrics and export them to Elastic:
 
 ```yaml
 receivers:
@@ -69,11 +69,13 @@ service:
 
 Run the configuration, for example with Docker:
 
-```bash
+```bash subs=true
 docker run --rm \
+  -e ELASTIC_AGENT_OTEL=true \
   -v $(pwd)/collector-config.yaml:/etc/otel/config.yaml \
   -p 4317:4317 -p 4318:4318 \
-  docker.elastic.co/observability/otel-collector:latest
+  elastic/elastic-agent:{{version.edot_collector}} \
+  --config /etc/otel/config.yaml
 ```
 ::::::
 
