@@ -114,7 +114,7 @@ Exposing a local endpoint to the internet can introduce security risks. Anyone w
 ## Connect the local LLM to Agent Builder
 {applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga`
 
-Create an [OpenAI connector](/explore-analyze/ai-features/agent-builder/models.md#connect-a-local-llm) for your local model:
+Create an [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for your local model. For details about using local LLMs with Agent Builder, refer to [Connect a local LLM](/explore-analyze/ai-features/agent-builder/models.md#connect-a-local-llm).
 
 1. Open **Connectors** from the navigation menu or global search, then select **Create connector** and **OpenAI**.
 2. Under **Connector settings**, select **Other (OpenAI Compatible Service)** as the provider.
