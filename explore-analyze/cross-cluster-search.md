@@ -63,7 +63,7 @@ After [remote clusters are connected](/deploy-manage/remote-clusters.md), you ca
 :::
 
 :::{warning}
-The `monitor` cluster privilege grants access to cluster monitoring operations beyond the status check required for asynchronous searches. {{kib}} uses asynchronous search internally for some search workflows. To prevent authorization failures when {{kib}} checks the status of a cross-cluster search, grant `monitor` on the local cluster. If a role is used only for direct [synchronous requests](/solutions/search/the-search-api.md) to the `_search` API, you can omit `monitor`.
+The following examples include the `monitor` cluster privilege on the local cluster to support [asynchronous searches](/solutions/search/async-search-api.md). This privilege is required when checking the status of an asynchronous {{ccs}}, but it also grants access to other monitoring operations on the local cluster. {{kib}} applications such as **Dashboards** and **Discover** use asynchronous search internally, so include `monitor` to ensure that {{ccs}} works reliably in {{kib}}. If a role is used only for direct [synchronous requests](/solutions/search/the-search-api.md) to the `_search` API, you can omit `monitor`.
 :::
 
 ### API key authentication [configure-privileges-for-ccs-api-key]
@@ -73,9 +73,9 @@ The `monitor` cluster privilege grants access to cluster monitoring operations b
 
 To grant a user {{ccs}} access, create a role on the local cluster, assign it the required privileges for the remote cluster alias and target indices, then assign that role to the user.
 
-Grant the `read` remote index privilege. To use {{ccs}} in {{kib}}, also grant the `view_index_metadata` remote index privilege and the `monitor` local cluster privilege. The following examples include these privileges so that the role supports both [synchronous](/solutions/search/the-search-api.md) and [asynchronous](/solutions/search/async-search-api.md) searches.
+For the target indices, grant the `read` remote index privilege. To use {{ccs}} in {{kib}}, also grant the `view_index_metadata` remote index privilege and the `monitor` local cluster privilege because some {{kib}} features rely on asynchronous search.
 
-Assuming the remote cluster is connected under the name of `my_remote_cluster`, the following requests create a `remote-search` role on the local cluster that allows searching the remote `target-index` index:
+Assuming the remote cluster is connected under the name of `my_remote_cluster`, the following request creates a `remote-search` role on the local cluster that allows searching the remote `target-index` index:
 
 :::::{applies-switch}
 ::::{applies-item} stack: ga 9.4+
