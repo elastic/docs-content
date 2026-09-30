@@ -72,4 +72,3 @@ The Elastic plugin for Claude packages those same skills into the Claude plugin 
 
 - [AI agent skills for Elastic](agent-skills.md)
 - [Access Elastic docs in machine-readable formats](/get-started/machine-readable-docs)
-- [Plugins in {{agent-builder}}](agent-builder/plugins.md) — installing plugin packages into agents within {{kib}}, a separate concept from the Claude plugin described on this page
