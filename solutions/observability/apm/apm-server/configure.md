@@ -76,6 +76,7 @@ If a setting is not supported on {{ecloud}}, you will get an error message when 
 {{ech}} supports the settings listed in [APM documentation](/solutions/observability/apm/apm-server/configure.md) under "APM Server binary" when running APM in standalone mode (legacy). For versions before 9, refer to [older documentation](https://www.elastic.co/guide/en/observability/8.18/apm-configuring-howto-apm-server.html).
 
 ::::{note}
-* Some settings are intentionally restricted to maintain system stability.
-* To change logging settings, you must first [enable deployment logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
+Some settings are intentionally restricted to maintain system stability.
 ::::
+
+To change logging settings, first [enable deployment logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
