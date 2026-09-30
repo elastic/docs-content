@@ -114,15 +114,9 @@ Exposing a local endpoint to the internet can introduce security risks. Anyone w
 ## Connect the local LLM to Agent Builder
 {applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga`
 
-Create an [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md) for your local model. For details about using local LLMs with Agent Builder, refer to [Connect a local LLM](/explore-analyze/ai-features/agent-builder/models.md#connect-a-local-llm).
+You can connect your locally hosted LLM to Elastic using the [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md), provided that your model is compatible with the OpenAI API format.
 
-1. Open **Connectors** from the navigation menu or global search, then select **Create connector** and **OpenAI**.
-2. Under **Connector settings**, select **Other (OpenAI Compatible Service)** as the provider.
-3. Enter your ngrok URL followed by `/v1/chat/completions`, for example, `<your-ngrok-endpoint>/v1/chat/completions`.
-4. Enter the model name, such as `llama3.2`. Provide any value for the API key; Ollama does not use it.
-5. Save the connector.
-
-In Agent Builder, select **Agents** and choose the connector's model from the model selector. For more information, refer to [model configuration in Agent Builder](/explore-analyze/ai-features/agent-builder/models.md).
+To use the model with Agent Builder, follow the [local LLM setup guidance](/explore-analyze/ai-features/agent-builder/models.md#connect-a-local-llm).
 
 ## Using the local LLM with the {{infer}} API
 
