@@ -36,17 +36,20 @@ For more information, refer to [Granting privileges for data streams and aliases
 
 ## Set up a data stream failure store [set-up-failure-store]
 
-Each data stream has its own failure store that can be enabled to accept failed documents. By default, this failure store is disabled and any ingestion problems are raised in the response to write operations.
+Each data stream has its own failure store that can be enabled to accept failed documents. When the failure store is not enabled, ingestion problems are raised in the response to write operations.
 
 ### Set up for new data streams [set-up-failure-store-new]
 
-You can specify in a data stream's [index template](../templates.md) if it should enable the failure store when it is first created.
+How you set up the failure store depends on the data stream:
+
+- {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` New logs data streams that match the `logs-*-*` pattern already have the failure store enabled through the built-in `logs` index template. No additional setup is needed.
+- For all other data streams, including logs data streams on {{stack}} 9.1 and earlier, enable the failure store in the data stream's [index template](../templates.md) using the following instructions.
 
 :::{note}
 Unlike the `settings` and `mappings` fields on an [index template](../templates.md) which are repeatedly applied to new data stream write indices on rollover, the `data_stream_options` section of a template is applied to a data stream only once when the data stream is first created. To configure existing data streams, use the put [data stream options API]({{es-apis}}operation/operation-indices-put-data-stream-options).
 :::
 
-To enable the failure store on a new data stream, enable it in the `data_stream_options` of the template:
+To enable the failure store for a new data stream manually, set `failure_store.enabled` to `true` in the `data_stream_options` of the template:
 
 ```console
 PUT _index_template/my-index-template

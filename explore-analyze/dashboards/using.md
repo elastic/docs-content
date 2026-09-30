@@ -31,7 +31,7 @@ This section shows the most common ways for you to filter dashboard data. For mo
 
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-When a dashboard includes {{esql}} visualizations or {{esql}}-powered [**Vega** and **Vega-Lite** panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use the `STATS` command, you can turn on {icon}`bolt` **Fast mode** to return faster, estimated results for them. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+On {{esql}} visualizations and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command, {icon}`bolt` **Fast mode** can return faster, estimated results. {{es}} still returns exact results when sampling would not speed up the query. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 :::
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
@@ -69,11 +69,13 @@ You can interact with some panel visualizations to explore specific data more in
 You can create filter pills by:
 
 - **Clicking on chart elements**, such as data points, bars, or slices.
-- **Using legend actions**: hover over a legend item and select **Filter In** or **Filter Out** to filter the dashboard by a specific series.
+- **Using legend actions**: Hover over a legend item and select **Filter for** or **Filter out** to filter the dashboard by a specific series.
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 {{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
+
+Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements) for an {{esql}} example.
 :::
 
 

@@ -46,6 +46,7 @@ Configures default index settings for logs data streams:
     * Contains a hook to the optional [`logs@custom`](#customize-preprocessing-with-logscustom) pipeline.   
   * Sets `ignore_malformed` to `true` globally. With this setting, documents with malformed fields can be indexed without causing ingestion failures. Refer to [ignore_malformed](elasticsearch://reference/elasticsearch/mapping-reference/ignore-malformed.md) for a list of supported fields.
   * Sets `ignore_dynamic_beyond_limit` to `true`, which allows dynamically mapped fields to be added even when the total field limit is exceeded. Extra fields are ignored instead of causing ingestion to fail. Refer to [Mapping limit settings](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) for more information.
+  * {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Enables the [failure store](/manage-data/data-store/data-streams/failure-store.md), which redirects documents that fail due to mapping conflicts or pipeline errors to a dedicated index.
 
 ### `ecs@mappings`
 
