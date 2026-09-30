@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create rules in the experimental alerting system by selecting a rule type and configuring it through a guided form that generates ES|QL automatically."
+description: "Create rules by selecting a rule type and configuring it through a guided form that generates ES|QL automatically."
 ---
 
-# Create a rule using the rule builder in the {{alerting-v2-system}} [use-rule-builder]
+# Create a rule using the rule builder [use-rule-builder]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 The rule builder lets you create a rule by selecting a rule type and configuring it through structured inputs, instead of writing {{esql}} directly. Behind the scenes, the rule builder generates the {{esql}} query for you from the data source, aggregation, filters, and alert conditions you set.
 

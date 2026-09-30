@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "The experimental alerting system stores rule events in .rule-events. The episode.* lifecycle fields apply only to type alert. Triage actions go to .alert-actions."
+description: "Kibana stores rule events in .rule-events. The episode.* lifecycle fields apply only to type alert. Triage actions go to .alert-actions."
 ---
 
-# How {{kib}} stores rule events in the {{alerting-v2-system}} [rule-event-data-model]
+# How {{kib}} stores rule events [rule-event-data-model]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 {{kib}} writes **rule events** to `.rule-events`. This page covers where that data lives, which fields each `type` uses, and where triage actions go. For what a rule event is, refer to [Rule events](../rules/rule-event-field-reference.md). For how events with `type: alert` relate to an [alert episode](../alerts.md), refer to [Alerts](../alerts.md).
 

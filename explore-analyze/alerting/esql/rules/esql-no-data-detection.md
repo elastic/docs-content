@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Detect silent hosts and stopped data sources in the experimental alerting system using ES|QL last-seen queries."
+description: "Detect silent hosts and stopped data sources using ES|QL last-seen queries."
 ---
 
-# No-data detection in the {{alerting-v2-system}} [no-data-esql-query]
+# No-data detection [no-data-esql-query]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 No-data detection identifies sources that have gone silent, such as a host that stopped reporting metrics. A silent host produces no rows at all, so a threshold query has nothing to evaluate a condition against.
 

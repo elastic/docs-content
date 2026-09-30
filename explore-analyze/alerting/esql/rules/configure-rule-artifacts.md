@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Add tags, runbooks, and related dashboards to rules in the experimental alerting system, for filtering, triage context, and investigation dashboards."
+description: "Add tags, runbooks, and related dashboards to rules, for filtering, triage context, and investigation dashboards."
 ---
 
-# Tags, runbooks, and dashboards in the {{alerting-v2-system}} [rule-artifacts]
+# Tags, runbooks, and dashboards [rule-artifacts]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 Tags, runbooks, and related dashboards are optional artifacts you attach to a rule. Decide when each one is worth adding, then attach tags and runbooks in the rule form or link dashboards from the rule details page.
 

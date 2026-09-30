@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Write ES|QL threshold queries for rules in the experimental alerting system. Covers single-series and grouped rules using STATS aggregation."
+description: "Write ES|QL threshold queries for rules. Covers single-series and grouped rules using STATS aggregation."
 ---
 
-# Threshold queries in the {{alerting-v2-system}} [esql-threshold-queries]
+# Threshold queries [esql-threshold-queries]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 A threshold query aggregates your data first, then applies an alert condition to the result. Use this pattern when a single matching event isn't enough to warrant an alert. You want to know whether a metric (count, rate, average) has crossed a limit over a time window.
 

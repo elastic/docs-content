@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Search, filter, and bulk-manage rules in the experimental alerting system. Use inline editing, the rule summary flyout, and the rule details page to manage rules."
+description: "Search, filter, and bulk-manage rules. Use inline editing, the rule summary flyout, and the rule details page to manage rules."
 ---
 
-# View and manage rules in the {{alerting-v2-system}} [manage-rules]
+# View and manage rules [manage-rules]
 
-After you create rules in the {{alerting-v2-system}}, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules** to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+After you create rules, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules** to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
 
 ## Find and filter rules [find-filter-rules]
 

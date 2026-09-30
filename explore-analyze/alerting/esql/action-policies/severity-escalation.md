@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to manage notifications when alert episode severity changes in the experimental alerting system, including escalation, de-escalation, and duplicate notification prevention."
+description: "How to manage notifications when alert episode severity changes, including escalation, de-escalation, and duplicate notification prevention."
 ---
 
-# Manage severity escalation notifications for the {{alerting-v2-system}} [severity-escalation]
+# Manage severity escalation notifications [severity-escalation]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 Use this page to control when a workflow runs as an alert episode's severity changes, including first-time matches, duplicate invocations, and de-escalation. Not every severity change invokes a workflow. The outcome depends on whether the action policy has already matched the alert episode and which frequency option you've selected.
 

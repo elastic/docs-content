@@ -5,10 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use the Execution History page in the experimental alerting system to monitor rule execution outcomes across all rules in a space."
+description: "Use the Execution History page to monitor rule execution outcomes across all rules in a space."
 ---
 
-# Review rule execution history in the {{alerting-v2-system}} [review-rule-execution-history]
+# Review rule execution history [review-rule-execution-history]
+
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
 
 Rule execution history gives you a cross-rule, filterable log of every rule run in the space, so you can confirm rules are running on schedule or spot patterns that aren't visible when looking at individual rules, such as a cluster of failures at the same timestamp that points to a shared dependency issue.
 

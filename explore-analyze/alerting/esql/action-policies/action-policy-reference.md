@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Grouping modes, frequency options, dispatch outcomes, and match conditions field reference for action policies in the experimental alerting system."
+description: "Grouping modes, frequency options, dispatch outcomes, and match conditions field reference for action policies."
 ---
 
-# Action policy reference for the {{alerting-v2-system}} [action-policy-reference]
+# Action policy reference [action-policy-reference]
 
-This page is a reference for action policy match condition fields, grouping modes, frequency options, and dispatch outcomes in the {{alerting-v2-system}}. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+This page is a reference for action policy match condition fields, grouping modes, frequency options, and dispatch outcomes. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
 
 ## Match conditions fields [action-policy-matcher-fields]
 

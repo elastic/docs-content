@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How the execution interval and lookback window control when a rule evaluates and how much data it covers each time in the experimental alerting system."
+description: "How the execution interval and lookback window control when a rule evaluates and how much data it covers each time."
 ---
 
-# Schedule and lookback in the {{alerting-v2-system}} [schedule-lookback]
+# Schedule and lookback [schedule-lookback]
 
-Schedule is a required setting for rules in the {{alerting-v2-system}}, and lookback is optional but strongly recommended. Together they control how often a rule runs and how far back it looks when evaluating data. This page describes both fields, lists the accepted values and bounds, and includes guidance on choosing appropriate values for different monitoring scenarios.
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+Schedule is a required rule setting, and lookback is optional but strongly recommended. Together they control how often a rule runs and how far back it looks when evaluating data. This page describes both fields, lists the accepted values and bounds, and includes guidance on choosing appropriate values for different monitoring scenarios.
 
 Both fields accept duration strings such as `30s`, `5m`, `2h`, or `7d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 

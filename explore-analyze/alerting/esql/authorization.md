@@ -6,12 +6,15 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Learn which credentials authorize rule, action policy, and workflow runs in the experimental alerting system, and how to diagnose and resolve authorization errors."
+description: "Learn which credentials authorize rule, action policy, and workflow runs, and how to diagnose and resolve authorization errors."
 ---
 
-# Rule, action policy, and workflow authorization in the {{alerting-v2-system}} [experimental-alerting-authorization]
+# Rule, action policy, and workflow authorization [experimental-alerting-authorization]
 
-The {{alerting-v2-system}} authorizes rules, action policies, and workflows differently. Use this page to understand which credential applies to each operation, diagnose authorization errors, and keep credentials current.
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+{{kib}} authorizes rules, action policies, and workflows differently. Use this page to understand which credential applies to each operation, diagnose authorization errors, and keep credentials current.
 
 ## Which key authorizes each operation [key-per-operation]
 

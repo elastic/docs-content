@@ -5,12 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Query experimental alerting data in Discover with .rule-events and .alert-actions field schemas. Reference tables list shared rule event fields, episode.* fields, and all action_type values."
+description: "Query alerting data in Discover with .rule-events and .alert-actions field schemas. Reference tables list shared rule event fields, episode.* fields, and all action_type values."
 ---
 
 # Rule event and alert action field reference [field-reference]
 
-This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back rule output and triage data:
+:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
+:::
+
+This page documents the fields written to the two data streams that back rule output and triage data:
 
 - **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). Events with `type: signal` and events that belong to an alert episode (`type: alert`) share this stream and most fields. The `episode.*` fields appear only on events with `type: alert`.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an alert episode, including all `action_type` values.
