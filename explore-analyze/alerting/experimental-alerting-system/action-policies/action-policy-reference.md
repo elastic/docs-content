@@ -14,36 +14,52 @@ This page is a reference for action policy match condition fields, grouping mode
 
 ## Match conditions fields [action-policy-matcher-fields]
 
-Use these fields in the **Match conditions** expression to filter which alert episodes an action policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `severity: "critical" AND episode_status: "active"`.
+Use the following fields in the **Match conditions** expression to filter which alert episodes an action policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `severity: "critical" AND episode_status: "active"`.
 
 | Field | Description | Example |
 |---|---|---|
 | `episode_id` | Unique identifier of the alert episode. | `episode_id: "ep-001"` <br> Match a specific alert episode by ID. |
 | `episode_status` | Current lifecycle status of the alert episode. One of `inactive`, `pending`, `active`, or `recovering`. | `episode_status: "active"` <br> Match only active alert episodes. |
-| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery; severity-scoped matchers only match open alert episodes. Severity can change during an alert episode without reopening it — action policy matching picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority alert episodes to a dedicated workflow. |
+| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery, so a severity-scoped policy applies only to open alert episodes. Severity can change during an alert episode without reopening it. The action policy picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority alert episodes to a dedicated workflow. |
 | `group_hash` | Stable hash identifying the alert series the alert episode belongs to. | `group_hash: "abc123"` <br> Match all alert episodes in a specific alert series. |
 | `last_event_timestamp` | ISO 8601 timestamp of the most recent event recorded for the alert episode. | `last_event_timestamp > "2026-01-01"` <br> Match alert episodes with activity after a specific date. |
+| `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alert episodes from a specific host in a host-based rule. |
+
+:::{note}
+:applies_to: {"serverless": "experimental", "stack": "experimental 9.6+"}
+To apply a policy to alert episodes from a set of rules, select those rules' tags in **Rule tags**. To learn more, refer to [Filter by rule tags](create-configure-action-policy.md#filter-by-rule-tags).
+:::
+
+### Rule fields [action-policy-matcher-rule-fields]
+```{applies_to}
+stack: removed 9.6+, experimental =9.5
+serverless: unavailable
+```
+
+In addition to the alert episode fields, you can use the following fields in the **Match conditions** expression to select alert episodes by the rule that produced them.
+
+| Field | Description | Example |
+|---|---|---|
 | `rule.id` | Unique identifier of the rule that generated the alert episode. | `rule.id: "rule-001"` <br> Match alert episodes from one specific rule. |
 | `rule.name` | Display name of the rule. | `rule.name: "High CPU"` <br> Match alert episodes from rules with this display name. |
 | `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match alert episodes from all rules with this tag. |
-| `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alert episodes from a specific host in a host-based rule. |
 
 ## Notify per options [action-policy-notification-grouping]
 
-Controls how the action policy batches matching alert episodes before invoking a workflow.
+Controls how the action policy batches alert episodes before invoking a workflow.
 
 | Option | Description | When to use |
 |---|---|---|
 | Episode | The action policy invokes a workflow once for each alert episode, independently of other alert episodes. Default selection. | You need issue-level visibility and want to handle each problem separately. |
 | Group | The action policy bundles alert episodes that share the same value for a specified `data.*` field into one workflow invocation for each unique value. Each unique value forms a **notification group**. | A rule produces many related alert episodes, such as one for each service or host, and you want to reduce noise by batching them into shared notifications. |
-| Digest | The action policy combines all matching alert episodes into a single workflow invocation, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alert episodes. |
+| Digest | The action policy combines all matching alert episodes into a single workflow invocation, regardless of what they have in common. | You want a single periodic summary of everything in scope, rather than individual alert episodes. |
 
 ## Frequency [action-policy-throttle-strategies]
 
 Frequency controls how often the action policy can invoke a workflow for a given alert episode or notification group. The available options depend on the **Notify per** setting. Not all options are valid for all modes.
 
 :::{note}
-The `.alert-actions` data stream records a throttled notification as `suppress`, not `throttled`. This is the same event described as `throttled` in the action policy execution history and event log; the two streams just use different vocabulary. For the full mapping, refer to [Event-log outcomes and .alert-actions action types](review-action-policy-execution-history.md#outcome-vocab-mapping).
+The `.alert-actions` data stream records a throttled notification as `suppress`, not `throttled`. This is the same event described as `throttled` in the action policy execution history and event log. The two streams use different vocabulary. For the full mapping, refer to [Event-log outcomes and .alert-actions action types](review-action-policy-execution-history.md#outcome-vocab-mapping).
 :::
 
 | Option | Description | When to use |
@@ -70,7 +86,7 @@ Available frequency options when you set **Notify per** to **Group**.
 
 | Option | Description | Example |
 |---|---|---|
-| At most once every… | Limits how often each notification group can invoke a workflow, regardless of how many alert episodes match or how often the rule runs. | 10 alert episodes share `data.host.name: "web-01"`. With a 1h limit, you get at most one notification an hour for that notification group. |
+| At most once every… | Limits how often each notification group can invoke a workflow, regardless of how many alert episodes it contains or how often the rule runs. | 10 alert episodes share `data.host.name: "web-01"`. With a 1h limit, you get at most one notification an hour for that notification group. |
 | Every evaluation | Invokes a workflow on every rule evaluation for each unique value in the group-by field. Still noisy on frequent rule schedules. | A rule running every 10 minutes with 5 unique host values produces up to 6 notifications an hour for each host. |
 
 ### Frequency options for Digest [action-policy-frequency-digest]
@@ -85,5 +101,5 @@ Available frequency options when you set **Notify per** to **Digest**.
 ## Related pages
 
 - [Create and configure an action policy](create-configure-action-policy.md): Apply these settings when configuring match conditions, grouping, and frequency.
-- [About action policies](about-action-policies.md): Understand the eligibility, match, and frequency gates that run before dispatch.
+- [About action policies](about-action-policies.md): Understand the eligibility, scope, and frequency gates that run before dispatch.
 - [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.
