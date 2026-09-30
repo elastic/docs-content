@@ -38,7 +38,7 @@ Once you understand the basics, explore these common tasks:
 - [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
 - [Create dashboards using AI](dashboards/create-dashboards-using-ai.md): Generate dashboards from natural language through chat with {{agent-builder}}.
 - [Add dashboard controls](visualize/dashboard-controls.md): Enable interactive filtering with options lists, range sliders, time sliders, and ES|QL variable controls.
-- [Add drilldowns](dashboards/drilldowns.md): Create interactive navigation between dashboards or to external URLs.
+- [Drilldowns](dashboards/drilldowns.md): Open another dashboard, a URL, or Discover from a panel.
 - [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning.
 
 **Manage and share**
