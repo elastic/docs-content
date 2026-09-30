@@ -45,7 +45,9 @@ deployment:
   eck: ga
 ```
 
-{{es}} settings that you normally put in `elasticsearch.yml` are set for each `nodeSet` under `spec.nodeSets[?].config` in the {{es}} resource manifest. Assign `node.roles` there to define each group of pods’ tiers. For example, you can assign the following tiers:
+In {{eck}}, a node set is a group of {{es}} pods that share one configuration. In the {{es}} manifest, set `node.roles` in that node set's `config` field (`spec.nodeSets[].config`). Use the same settings you would put in `elasticsearch.yml` on a self-managed host, and include a `data_*` role for each tier those pods should join.
+
+This example assigns the hot and content tiers and the `ingest` role:
 
 ```yaml
 spec:
@@ -65,7 +67,7 @@ Some settings are [managed by {{eck}}](/deploy-manage/deploy/cloud-on-k8s/settin
 
 ## Remove a data tier [remove-data-tier-self-managed-eck]
 
-Follow this section when you need to remove the warm, cold, or frozen tier from a self-managed or {{eck}} deployment. The hot and content tiers are required and cannot be removed. If you remove nodes assigned the `data_hot` or `data_content` role, ensure that the corresponding role remains assigned to other nodes.
+Follow this section when you need to remove a warm, cold, or frozen tier from a self-managed or {{eck}} deployment. The hot and content tiers are required and cannot be removed. If you remove nodes that are assigned a `data_hot` or `data_content` role, ensure that the corresponding role remains assigned to other nodes.
 
 The steps differ depending on whether the tier holds [regular indices](#remove-regular-indices-self-managed-eck) or [{{search-snap}}](#remove-searchable-snapshots-self-managed-eck) indices (typical for cold or frozen when using {{ilm}} ({{ilm-init}})).
 
