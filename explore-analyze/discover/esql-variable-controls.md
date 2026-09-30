@@ -52,7 +52,7 @@ stack: preview 9.3
 
 ### Edit a variable control in Discover [edit-a-variable-control]
 
-After a control is active for your query, you can still edit it. Hover over the control, then select the {icon}`pencil` **Edit** option that appears.
+After a control is active for your query, you can still edit it. Hover over the control, then select the {icon}`pencil` **Edit** option.
 
 You can edit all the options described in [](#add-variable-control).
 

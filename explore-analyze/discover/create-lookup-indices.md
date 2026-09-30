@@ -37,7 +37,7 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
 
    Add a space after the command. The editor suggests existing lookup indices and offers to create one. You can also enter an index name in your query. If it doesn't exist, the editor suggests creating it.
 
-2. Select the **Create lookup index** suggestion that appears in the autocomplete menu.
+2. Select the **Create lookup index** suggestion from the autocomplete menu.
 
 3. Enter a name for the lookup index. The name must follow these rules:
    - The name must not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
@@ -115,7 +115,7 @@ To view or edit an index:
 
 1. In the {{esql}} query, hover over the lookup index name.
 
-2. Select the **Edit lookup index** or **View lookup index** option that appears. A flyout showing the index appears.
+2. Select the **Edit lookup index** or **View lookup index** option. A flyout showing the index opens.
 
 3. Depending on your permissions and needs, explore or edit the index. When editing the index, you have the same options described in [](#create-lookup-esql).
 
@@ -134,7 +134,7 @@ At any time, you can delete all the index data and fields.
 ::::{applies-item} { serverless: preview, stack: preview 9.3+ }
 1. Select all the index data using the checkbox in the header of the table.
 
-2. Select **Delete selected** from the contextual menu that appears upon selecting entries.
+2. Select **Delete selected** from the contextual menu.
 
 3. Once all entries are deleted, a **Reset index** button appears. Select it to remove all fields configured in the index.
 
@@ -142,7 +142,7 @@ The lookup index is fully reset and saved automatically.
 ::::
 
 ::::{applies-item} stack: preview =9.2
-In this version, you can't fully reset the index configuration. For example, you can't remove columns. However, you can delete the index data. To do that, select the entries to delete, then select **Delete selected** from the contextual menu that appears.
+In this version, you can't fully reset the index configuration. For example, you can't remove columns. However, you can delete the index data. To do that, select the entries to delete, then select **Delete selected** from the contextual menu.
 ::::
 
 :::::
