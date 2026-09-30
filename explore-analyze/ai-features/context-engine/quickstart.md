@@ -1,6 +1,6 @@
 ---
-navigation_title: "Get started"
-description: Step-by-step tutorial for creating reusable context from existing Elasticsearch data and testing it with an Agent Builder agent.
+navigation_title: "Quickstart"
+description: Hands-on tutorial for creating reusable context from existing Elasticsearch data and testing it with an Agent Builder agent.
 type: tutorial
 applies_to:
   stack: experimental 9.6
@@ -12,20 +12,27 @@ products:
   - id: security
 ---
 
-# Get started with {{context-engine}}
+# {{context-engine}} quickstart
 
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-In this tutorial, you use the interactive {{kib}} and {{agent-builder}} route to create reusable context from data already stored in {{es}}. You create an AI index, add a source, generate a Knowledge Indicator, and test it with an {{agent-builder}} agent. You can use your own data or the {{kib}} sample ecommerce data. For programmatic management and other agent integrations, follow the task-specific pages linked under [Next steps](#next-steps).
+This hands-on quickstart shows you how to create an AI index for existing {{es}} data, generate a Knowledge Indicator, and test retrieval with an {{agent-builder}} agent. You can use your own data or the {{kib}} sample ecommerce data.
+
+:::{tip}
+Not ready for a hands-on tutorial yet? Choose the starting point that matches your goal:
+
+- Review [how {{context-engine}} works](../context-engine.md#how-context-engine-works) for an overview of the flow.
+- Learn the key building blocks in [{{context-engine}} concepts](concepts.md).
+:::
 
 ## Tutorial outcome
 
-The result is an AI index containing one Knowledge Indicator about a dataset you select.
+By the end of this tutorial, you will have:
 
-A Knowledge Indicator (KI) is a document generated from source data, stored in an AI index, and retrieved as context by agents to help answer questions. A KI can contain distilled findings, explanations of how to interpret the data, limitations, and verified {{esql}} queries for retrieving current information from the source.
-
-An automation generates and refreshes the KI. In {{context-engine}}, an automation is implemented as an [Elastic Workflow](/explore-analyze/workflows.md).
+- An AI index configured with the source data you selected.
+- An automation, implemented as an [Elastic Workflow](/explore-analyze/workflows.md), that generates and refreshes one Knowledge Indicator (KI) describing the dataset, its limitations, and verified {{esql}} queries for retrieving current details.
+- An {{agent-builder}} agent that can retrieve the KI as context.
 
 ## Before you begin
 
@@ -181,11 +188,6 @@ Choose a production schedule based on how quickly the source changes and how cur
 
 After completing this tutorial, you can:
 
-- [Create and manage AI indices](create-and-manage-ai-indices.md).
-- [Add and manage sources](add-and-manage-sources.md).
-- [Create and manage automations](create-and-manage-automations.md).
-- Expand or revise the source query after validating the initial KI.
-- Add connector sources for data that is not already in Elasticsearch.
-- Select another [KI generation strategy](concepts.md#knowledge-indicators) for specific subjects, such as cumulative product or customer profiles.
-- [Evaluate and improve the generated KIs](evaluate-and-improve-knowledge-indicators.md) as their sources and intended uses change.
-- [Use the AI index with another agent](use-context-engine-with-agents.md).
+- [Build and maintain the AI index](build-and-maintain-ai-index.md) by expanding its sources, selecting another generation strategy, or operating its automation.
+- [Evaluate and improve its KIs](evaluate-and-improve-knowledge-indicators.md) as their sources and intended uses change.
+- [Use the AI index](use-an-ai-index.md) through APIs or another agent integration.
