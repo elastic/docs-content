@@ -13,7 +13,13 @@ products:
 
 # Manage metrics storage [metrics-manage-storage]
 
-Metrics data grows quickly. Use these tools to keep storage costs down, retain the history you still need, and avoid cardinality surprises.
+Metrics data grows quickly. This page walks you through choosing a storage strategy that keeps costs down while retaining the history you still need: confirm your metrics land in a time series data stream (TSDS), then apply the lifecycle settings that match your requirements. Work through the sections in order:
+
+1. [Store metrics in a TSDS](#metrics-manage-storage-tsds). The OpenTelemetry Protocol (OTLP) and Prometheus remote write ingest paths do this by default.
+2. [Check metric temporality](#metrics-manage-storage-temporality) so rates and aggregations stay correct. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+3. [Downsample aging metrics](#metrics-manage-storage-downsampling) to keep long-term trends at a fraction of the storage cost.
+4. [Keep cardinality under control](#metrics-manage-storage-cardinality) so an extra label doesn't multiply your series count.
+5. [Choose a retention policy](#metrics-manage-storage-retention): a data stream lifecycle or an {{ilm}} ({{ilm-init}}) policy.
 
 ## Time series data streams (TSDS) [metrics-manage-storage-tsds]
 
@@ -43,7 +49,7 @@ For how to set and verify temporality, refer to [Metric temporality](/manage-dat
 
 Downsampling works with a TSDS only. As metrics age, you usually need less detail: last week's CPU at 10-second resolution matters less than the hourly trend. Downsampling replaces those raw samples with coarser buckets plus min, max, sum, and similar stats, so you keep long-term trends at a fraction of the storage cost.
 
-You typically turn it on in an index lifecycle management ({{ilm-init}}) policy or a data stream lifecycle, not with a one-off API call.
+You typically turn it on in an {{ilm-init}} policy or a data stream lifecycle, not with a one-off API call.
 
 For configuration and how to query the coarser buckets, refer to [Downsampling a time series data stream](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md).
 
@@ -55,11 +61,11 @@ In a TSDS, every new combination of dimension values is a new series, so review 
 
 ## Retention [metrics-manage-storage-retention]
 
-Retention is how long metrics stay in {{es}}, when backing indices roll over, and when old data is deleted.
+Retention is how long metrics stay in {{es}}, when backing indices roll over, and when old data is deleted. Pick the mechanism that matches your deployment and requirements:
 
-{applies_to}`serverless: unavailable` On the {{stack}}, {{ilm-cap}} ({{ilm-init}}) automates those actions with policies that move data through hot, warm, cold, frozen, and delete phases. Refer to [{{ilm-cap}}](/manage-data/lifecycle/index-lifecycle-management.md) for policy phases and how to apply them.
+{applies_to}`serverless: unavailable` Use {{ilm-cap}} ({{ilm-init}}) when you want metrics to move through hot, warm, cold, frozen, and delete phases as they age. {{ilm-init}} automates those actions with policies and is available on the {{stack}} only. Refer to [{{ilm-cap}}](/manage-data/lifecycle/index-lifecycle-management.md) for policy phases and how to apply them.
 
-Data stream lifecycle is a built-in alternative that sets rollover, retention, and downsampling on the data stream itself. It's available on the {{stack}} and is the retention option for {{serverless-short}}. Refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) for how to set retention on the data stream.
+Use a data stream lifecycle when you only need rollover, retention, and downsampling, set on the data stream itself. It's available on the {{stack}} and is the retention option for {{serverless-short}}. Refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) for how to set retention on the data stream.
 
 ## Related pages [metrics-manage-storage-related]
 

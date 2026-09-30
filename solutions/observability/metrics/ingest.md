@@ -18,16 +18,16 @@ Send metrics to Elastic over the OpenTelemetry Protocol (OTLP), with Prometheus 
 - You need existing Elastic Common Schema (ECS) integrations, dashboards, and alerts to keep working without customization: use {{agent}} integrations.
 - Prometheus already scrapes the metrics you need: keep it and add Prometheus remote write.
 
-For the other cases where classic Elastic components, such as {{agent}} integrations, {{metricbeat}}, and Elastic APM agents, still work better, refer to [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
+Classic Elastic components, such as {{agent}} integrations, {{metricbeat}}, and Elastic APM agents, work better in some other cases. For more information, refer to [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
 
 ## Ingest with OpenTelemetry (recommended) [metrics-ingest-otlp]
 
-You don't need {{edot}} to send OpenTelemetry metrics. Any OTLP-compatible SDK or Collector can send to the endpoints in this section. {{edot}} is the distribution that Elastic supports and recommends, and the [quickstarts](/solutions/observability/metrics/get-started.md) use it. The endpoint depends on your deployment type.
+{{edot}} is the distribution that Elastic supports and recommends, and the [quickstarts](/solutions/observability/metrics/get-started.md) use it. You don't need {{edot}} to send OpenTelemetry metrics: any OTLP-compatible SDK or Collector can send to the endpoints in this section. The endpoint depends on your deployment type.
 
 :::::{applies-switch}
 
 ::::{applies-item} { serverless:, ech: }
-Send metrics to the Managed OTLP Endpoint. Use a different setup depending on the telemetry you collect:
+Send metrics to the Managed OTLP Endpoint. Use the setup that matches the source of your metrics:
 
 - **Application metrics:** Point your EDOT SDKs or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
 - **Infrastructure metrics (host, {{k8s}}, Docker):** Run {{agent}} in OTel mode on your hosts or cluster and configure its OTLP exporter to send data to the endpoint.

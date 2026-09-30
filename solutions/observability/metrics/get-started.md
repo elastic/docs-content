@@ -13,19 +13,13 @@ products:
 
 # Get started with metrics [metrics-get-started]
 
-This page walks you through the recommended path for setting up metrics in Elasti.
+This page walks you through the fastest way to try metrics in Elastic: add one source, get its data flowing, and explore and query that data in {{kib}}. A quickstart gets data flowing in minutes on a single host or cluster, so you can confirm that collection, authentication, and storage work end to end before you design a larger setup.
 
-Consider starting with a quickstart rather than a full design exercise. A quickstart gets data flowing in minutes on a single host or cluster, so you can confirm that collection, authentication, and storage all work end to end before you decide how to model your metrics across your estate.
+When you're ready to add more sources and plan a production rollout, continue with [Next steps](#metrics-get-started-next).
 
-:::{tip}
-Before you add more sources, decide whether to standardize on the OpenTelemetry schema (recommended) or Elastic Common Schema (ECS). The ingest path you use determines the schema: OpenTelemetry Protocol (OTLP) paths store OpenTelemetry-native data, and {{agent}} integrations store ECS. The schema determines your metric field names, which in turn determines which prebuilt dashboards work and how your queries and alerts are written. Changing it later means rewriting those assets, so settle it early, while you only have one source to migrate.
+:::::::{stepper}
 
-For how each path stores data and which path matches your deployment, refer to [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md).
-:::
-
-:::::{stepper}
-
-::::{step} Get data flowing
+::::::{step} Get data flowing
 :anchor: metrics-get-started-quickstart
 
 Follow an {{edot}} quickstart for your deployment type and environment. Each quickstart deploys {{agent}} in OTel mode to collect logs, metrics, and traces. Use the row that matches your deployment and the column that matches where you run your workloads:
@@ -37,37 +31,48 @@ Follow an {{edot}} quickstart for your deployment type and environment. Each qui
 | Self-managed {{stack}} | [{{k8s}} on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
 
 To send **custom application metrics** instead of infrastructure metrics, follow [Ingest custom metrics with {{edot}}](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md).
-::::
+::::::
 
-::::{step} (Optional) Add more sources
-:anchor: metrics-get-started-ingest
-
-With a data model chosen, you can add more datat sources. You can send metrics using any OTLP-compatible client, Prometheus remote write, or {{agent}} integrations for specific services such as nginx, PostgreSQL, or Redis.
-
-If you're migrating an existing Prometheus or Datadog stack, refer to [Migrate metrics to Elastic](/solutions/observability/metrics/migrate.md) before you add more sources.
-
-For path-by-path configuration, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
-::::
-
-::::{step} Explore and query your data
+::::::{step} Explore and query your data
 :anchor: metrics-get-started-explore
 
-Once metrics are arriving from multiple sources, build the views and queries your team uses day to day.
+Once metrics are flowing, confirm they arrived and run your first query in {{kib}}:
 
-[Explore metrics](/solutions/observability/metrics/explore.md)
-:   Query with Elasticsearch Query Language ({{esql}}) or PromQL.
+:::::{applies-switch}
 
-    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Visualize in **Discover**, the Infrastructure UI, and dashboards.
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select {icon}`code` **{{esql}}** to switch to {{esql}} mode, then run a `TS` query to select your metrics data:
 
-    {applies_to}`stack: deprecated 9.4+, ga 9.0-9.3` Visualize in **Metrics Explorer**, the Infrastructure UI, and dashboards.
+    ```esql
+    TS metrics-*
+    ```
+
+3. Search the chart grid for a metric your quickstart collects, for example `system.cpu.utilization`, then break it down by a dimension such as the host name, or add its chart to a dashboard.
+
+For the full workflow, refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md).
 ::::
 
-::::{step} Manage storage and retention
-:anchor: metrics-get-started-storage
+::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
+1. Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Metrics Explorer**.
+2. Search for a metric your quickstart collects, for example `system.cpu.utilization`.
+3. Visualize or aggregate the metric data, and add the chart to a dashboard.
 
-Metrics volume grows faster than most teams expect, and cardinality is the usual cause. Before your setup becomes production-critical, set up downsampling and retention so storage costs stay predictable.
-
-For time series data streams (TSDS), downsampling, cardinality, and lifecycle options, refer to [Manage metrics storage](/solutions/observability/metrics/manage-storage.md).
+For the Metrics Explorer workflow, refer to [Explore infrastructure metrics over time](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md).
 ::::
 
 :::::
+
+To view infrastructure health by resource, such as hosts or pods, rather than by metric, use the **Infrastructure inventory** and **Hosts** views. For all the ways to query, visualize, and alert on metrics, refer to [Explore metrics](/solutions/observability/metrics/explore.md).
+::::::
+
+:::::::
+
+## Next steps [metrics-get-started-next]
+
+The quickstart gets one source flowing. Before you roll metrics out across your estate:
+
+- **Choose a data model.** Decide whether to standardize on the OpenTelemetry schema (recommended) or Elastic Common Schema (ECS). The ingest path you use determines the schema, the schema determines your metric field names, and the field names determine which prebuilt dashboards work and how your queries and alerts are written. Changing it later means rewriting those assets, so settle it early, while you only have one source to migrate. Refer to [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md).
+- **Add more sources.** Send metrics using any OTLP-compatible client, Prometheus remote write, or {{agent}} integrations for specific services such as nginx, PostgreSQL, or Redis. For path-by-path configuration, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
+- **Migrate an existing stack.** If you're moving from Prometheus or Datadog, you can run both systems side by side and switch over gradually. Refer to [Migrate metrics to Elastic](/solutions/observability/metrics/migrate.md).
+- **Manage storage and retention.** Metrics volume grows faster than most teams expect, and cardinality is the usual cause. Before your setup becomes production-critical, set up downsampling and retention so storage costs stay predictable. Refer to [Manage metrics storage](/solutions/observability/metrics/manage-storage.md).
