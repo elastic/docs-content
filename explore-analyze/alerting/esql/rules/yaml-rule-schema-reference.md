@@ -27,6 +27,19 @@ This page lists valid fields for YAML rule definitions. For authoring guidance, 
 
 ::::{applies-switch}
 
+:::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+`query.base` is required. It is the only query field that can contain a `FROM` clause. `query.breach.segment` is optional.
+
+| Field | Type | Description |
+|---|---|---|
+| `query.base` | ES\|QL string | ES\|QL query that selects the data to evaluate. Must include a `FROM` clause. {{kib}} applies the time filter from `schedule.lookback` using `time_field`. Required. |
+| `query.breach.segment` | ES\|QL segment string | Optional clause appended to `query.base`, for example `WHERE avg_cpu > 0.85`. Do not include a `FROM` clause. If you omit it, every row returned by `query.base` is a match. |
+
+Put `FROM` only in `query.base`. To recover with a query that has its own `FROM` clause, set `recovery.strategy` to `query`. See [Recovery strategy](#recovery-strategy).
+
+:::
+
 :::{applies-item} stack: experimental =9.5
 
 `query.format` is also required. It determines which additional query fields the rule uses.
@@ -57,19 +70,6 @@ Use `standalone` when conditions need full independence. Each query can target d
 
 :::
 
-:::{applies-item} { stack: experimental 9.6+, serverless: ga }
-
-`query.base` is required. It is the only query field that can contain a `FROM` clause. `query.breach.segment` is optional.
-
-| Field | Type | Description |
-|---|---|---|
-| `query.base` | ES\|QL string | ES\|QL query that selects the data to evaluate. Must include a `FROM` clause. {{kib}} applies the time filter from `schedule.lookback` using `time_field`. Required. |
-| `query.breach.segment` | ES\|QL segment string | Optional clause appended to `query.base`, for example `WHERE avg_cpu > 0.85`. Do not include a `FROM` clause. If you omit it, every row returned by `query.base` is a match. |
-
-Put `FROM` only in `query.base`. To recover with a query that has its own `FROM` clause, set `recovery.strategy` to `query`. See [Recovery strategy](#recovery-strategy).
-
-:::
-
 ::::
 
 ## Metadata fields
@@ -88,15 +88,6 @@ These fields control how far back each evaluation looks and which timestamp fiel
 
 :::::{applies-switch}
 
-::::{applies-item} stack: experimental =9.5
-
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
-| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Max 128 characters. Defaults to `@timestamp`. |
-
-::::
-
 ::::{applies-item} { stack: experimental 9.6+, serverless: ga }
 
 | Field | Type | Accepted values | Description |
@@ -106,25 +97,20 @@ These fields control how far back each evaluation looks and which timestamp fiel
 
 ::::
 
+::::{applies-item} stack: experimental =9.5
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
+| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Max 128 characters. Defaults to `@timestamp`. |
+
+::::
+
 :::::
 
 ## Recovery strategy [recovery-strategy]
 
 :::::{applies-switch}
-
-::::{applies-item} stack: experimental =9.5
-
-The `recovery_strategy` field is optional. When omitted, the rule emits no recovery events and active alert episodes don't close automatically.
-
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `recovery_strategy` | string | `no_breach`, `query`, or `none` | How recovery is detected. <br><br> -`no_breach`: Recovers an alert episode when its active group no longer appears in the breach results. <br> - `query`: Evaluates a separate recovery query defined in `query.recovery.segment` (composed) or `query.recovery.query` (standalone) <br> - `none`: Turns off recovery. |
-
-:::{note}
-Rules with `kind: signal` must omit `recovery_strategy` or set it to `none`. Any other value fails validation.
-:::
-
-::::
 
 ::::{applies-item} { stack: experimental 9.6+, serverless: ga }
 
@@ -142,26 +128,25 @@ Do not set `state_transition.recovering` when `recovery.strategy` is `manual`. T
 
 ::::
 
+::::{applies-item} stack: experimental =9.5
+
+The `recovery_strategy` field is optional. When omitted, the rule emits no recovery events and active alert episodes don't close automatically.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `recovery_strategy` | string | `no_breach`, `query`, or `none` | How recovery is detected. <br><br> -`no_breach`: Recovers an alert episode when its active group no longer appears in the breach results. <br> - `query`: Evaluates a separate recovery query defined in `query.recovery.segment` (composed) or `query.recovery.query` (standalone) <br> - `none`: Turns off recovery. |
+
+:::{note}
+Rules with `kind: signal` must omit `recovery_strategy` or set it to `none`. Any other value fails validation.
+:::
+
+::::
+
 :::::
 
 ## State transition fields [state-transition-fields]
 
 :::::{applies-switch}
-
-::::{applies-item} stack: experimental =9.5
-
-Only valid when `kind: alert`. Controls how many consecutive detections are required before an alert episode becomes active or recovers.
-
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `state_transition.pending_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before becoming active. |
-| `state_transition.pending_count` | integer | Integer, 0–1000 | Number of consecutive breaches required before the alert episode becomes active. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
-| `state_transition.pending_timeframe` | duration | Any duration string | How long the condition must remain continuously breached before the alert episode becomes active. For example: `5m`. |
-| `state_transition.recovering_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before recovering. |
-| `state_transition.recovering_count` | integer | Integer, 0–1000 | Number of consecutive clear evaluations required before the alert episode recovers. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
-| `state_transition.recovering_timeframe` | duration | Any duration string | How long the condition must remain continuously non-breaching before the alert episode recovers. For example: `5m`. |
-
-::::
 
 ::::{applies-item} { stack: experimental 9.6+, serverless: ga }
 
@@ -182,6 +167,21 @@ Only valid when `kind` is `alert`. `pending` and `recovering` are optional. If y
 
 ::::
 
+::::{applies-item} stack: experimental =9.5
+
+Only valid when `kind: alert`. Controls how many consecutive detections are required before an alert episode becomes active or recovers.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `state_transition.pending_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before becoming active. |
+| `state_transition.pending_count` | integer | Integer, 0–1000 | Number of consecutive breaches required before the alert episode becomes active. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
+| `state_transition.pending_timeframe` | duration | Any duration string | How long the condition must remain continuously breached before the alert episode becomes active. For example: `5m`. |
+| `state_transition.recovering_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before recovering. |
+| `state_transition.recovering_count` | integer | Integer, 0–1000 | Number of consecutive clear evaluations required before the alert episode recovers. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
+| `state_transition.recovering_timeframe` | duration | Any duration string | How long the condition must remain continuously non-breaching before the alert episode recovers. For example: `5m`. |
+
+::::
+
 :::::
 
 ## Grouping fields
@@ -196,20 +196,6 @@ Use grouping to split a rule's detections into independent series, one per uniqu
 
 :::::{applies-switch}
 
-::::{applies-item} stack: experimental =9.5
-
-Use `no_data_strategy` to control what the rule does when an evaluation returns no results. This matters when data sources can go silent. Without this setting, a quiet data source and a healthy one look identical to the rule.
-
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `no_data_strategy` | string | `emit`, `last_known_status`, `recover`, or `none` | Optional. What happens when the rule evaluates and returns no results. `emit` records a no-data event. `last_known_status` holds the last known status. `recover` forces recovery. `none` disables no-data detection. |
-
-:::{note}
-No-data detection is only supported with `query.format: standalone`. Setting `no_data_strategy` to any active value on a `composed` rule has no effect because `query.no_data.query` can only be defined on a standalone query. Rules with `kind: signal` must omit `no_data_strategy` or set it to `none`.
-:::
-
-::::
-
 ::::{applies-item} { stack: experimental 9.6+, serverless: ga }
 
 Set `no_data` on every rule with `kind: alert`. Omit `no_data` when `kind` is `signal`. An alert rule that omits it fails validation, and a signal rule that sets it fails validation.
@@ -221,6 +207,20 @@ Set `no_data` on every rule with `kind: alert`. Omit `no_data` when `kind` is `s
 
 :::{note}
 Any strategy other than `ignore` requires `query.breach` or `no_data.query`. The rule uses that query to tell a group with no data apart from a group that stopped breaching.
+:::
+
+::::
+
+::::{applies-item} stack: experimental =9.5
+
+Use `no_data_strategy` to control what the rule does when an evaluation returns no results. This matters when data sources can go silent. Without this setting, a quiet data source and a healthy one look identical to the rule.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `no_data_strategy` | string | `emit`, `last_known_status`, `recover`, or `none` | Optional. What happens when the rule evaluates and returns no results. `emit` records a no-data event. `last_known_status` holds the last known status. `recover` forces recovery. `none` disables no-data detection. |
+
+:::{note}
+No-data detection is only supported with `query.format: standalone`. Setting `no_data_strategy` to any active value on a `composed` rule has no effect because `query.no_data.query` can only be defined on a standalone query. Rules with `kind: signal` must omit `no_data_strategy` or set it to `none`.
 :::
 
 ::::
