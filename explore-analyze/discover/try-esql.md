@@ -28,7 +28,7 @@ By the end of this tutorial, you'll know the main elements of your query and how
 
 ## Before you begin [try-esql-prerequisites]
 
-To follow this tutorial, you need the following:
+Before you start:
 
 - {{esql}} enabled in {{kib}}. It's enabled by default. On {{stack}} deployments, an administrator can turn it off with the `enableESQL` advanced setting.
 - The {{kib}} sample web logs. Add them from [Add sample data](/manage-data/ingest/sample-data.md). You can use your own indices instead. Replace `kibana_sample_data_logs` in the examples with a data source you can query, and replace the field names in later steps with fields from your data.
