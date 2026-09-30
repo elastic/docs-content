@@ -493,4 +493,4 @@ Red Hat Enterprise Linux 8, 9, and 10, along with Rocky Linux 8 and 9, run {{ece
 
 Repeat these host preparation steps for every RHEL or Rocky Linux host that you want to use with {{ece}}.
 
-When you install {{ece}}, include the `--podman` flag. Refer to [](fresh-installation-of-ece-using-podman-hosts.md) for additional considerations when installing ECE on Podman hosts.
+After preparing and verifying all hosts, continue to [Installation of ECE using Podman](fresh-installation-of-ece-using-podman-hosts.md) to install {{ece}}.
