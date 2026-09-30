@@ -125,7 +125,7 @@ OCR models extract text, tables, formulas, and reading order from rendered pages
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
-| [`jina-ocr-v1`](https://jina.ai/models/jina-ocr-v1/) | Page-to-Markdown document parser. Accepts page images and generates Markdown output that preserves text, formulas, tables, and reading order. Supports input lengths up to 32K tokens. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted) | [EIS](#jina-eis-ocr), [Jina API](#jina-external) |
+| [`jina-ocr-v1`](https://jina.ai/models/jina-ocr-v1/) | Page-to-Markdown document parser. Accepts page images and generates Markdown output that preserves text, formulas, tables, and reading order. | [Elastic Hosted](#jina-elastic-hosted), [Elastic Serverless](#jina-elastic-hosted), [Jina](#jina-hosted) | [EIS](#jina-eis-ocr), [Jina API](#jina-external) |
 
 ### Rerankers [jina-rerankers]
 
