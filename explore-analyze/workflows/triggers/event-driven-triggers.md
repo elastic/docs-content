@@ -22,6 +22,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - **Entity store triggers** — Fire when an entity's asset criticality or risk score changes in the entity store. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 - **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 - **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
+- **{{alerting-v2-system-cap}} rule execution triggers** — Fire on the outcome of a single rule execution in the {{alerting-v2-system}}: the execution produced rule events, or it failed. {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental`
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -592,6 +593,156 @@ steps:
         Rule {{ event.rule.ruleId }} in space {{ event.rule.spaceId }} — trigger: {{ trigger.type }}
 ```
 
+## {{alerting-v2-system-cap}} rule execution triggers [alerting-rule-execution-triggers-event-driven]
+
+```{applies_to}
+stack: experimental 9.6+
+serverless: experimental
+```
+
+:::{note}
+These triggers are available only when the {{alerting-v2-system}} is [enabled](../../alerting/experimental-alerting-system/get-started/setup.md). If it isn't enabled, they don't appear in the trigger picker.
+:::
+
+Rule execution triggers fire on the outcome of a single rule execution, rather than on a change to an [alert episode](../../alerting/experimental-alerting-system/alerts.md). Use them to process what an execution produced, or to react to an execution failing, for example by notifying on-call when a rule's query stops working.
+
+`alerting.ruleEventsGenerated` fires for both rule kinds, but it matters most for rules whose `kind` is `signal`. Those rules never open an alert episode, and because [action policies](../../alerting/experimental-alerting-system/action-policies/about-action-policies.md) and [alert episode lifecycle triggers](#alert-episode-lifecycle-triggers-event-driven) both require one, a rule execution trigger is the only way to automate on them.
+
+### Available triggers [alerting-rule-execution-triggers-available]
+
+| Trigger ID | When it fires |
+|---|---|
+| `alerting.ruleEventsGenerated` | An execution completes successfully and writes at least one rule event. A successful execution that matched nothing doesn't fire it, because there's nothing to process. |
+| `alerting.ruleExecutionFailed` | An execution throws an error and doesn't complete. |
+
+Both fire once per execution. A rule on a one-minute schedule whose query is broken fires `alerting.ruleExecutionFailed` every minute until you fix or disable the rule, so make the workflow safe to run repeatedly.
+
+### Schema [alerting-rule-execution-triggers-schema]
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | One of: `alerting.ruleEventsGenerated`, `alerting.ruleExecutionFailed`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. The trigger fires only when the condition matches. |
+
+```yaml
+triggers:
+  - type: alerting.ruleEventsGenerated
+  - type: alerting.ruleExecutionFailed
+```
+
+A workflow can declare both triggers, but their payloads differ. In any step shared between them, reference only `event.rule.id` and `event.rule.spaceId`.
+
+### Event payload [alerting-rule-execution-triggers-event]
+
+:::{note}
+These triggers name the rule identifier `event.rule.id`. The [rule lifecycle triggers](#alerting-rule-lifecycle-triggers-event-driven) name the same thing `event.rule.ruleId`. Use the name that matches the family you're writing a condition for.
+:::
+
+`alerting.ruleEventsGenerated` identifies the execution and reports how much it produced:
+
+| `event.*` field | Contains |
+|---|---|
+| `event.rule.id` | Unique identifier of the rule that ran. |
+| `event.rule.spaceId` | ID of the {{kib}} space where the rule lives. |
+| `event.rule.kind` | Whether the rule creates alerts (`alert`) or only stores matching events (`signal`). Refer to [Rule mode](../../alerting/experimental-alerting-system/rules/configure-rule-mode.md). |
+| `event.rule.tags` | The rule's tags. Use them to route by owner or domain. |
+| `event.execution.executionId` | Unique identifier of this execution. |
+| `event.execution.scheduledAt` | The timestamp the execution was scheduled for. This holds the same value as `scheduled_timestamp` on the rule events the execution wrote, so you can use it to fetch exactly those events. |
+| `event.ruleEventsGenerated` | The number of rule events the execution wrote. Always one or more. |
+
+`alerting.ruleExecutionFailed` identifies the rule and describes the failure:
+
+| `event.*` field | Contains |
+|---|---|
+| `event.rule.id` | Unique identifier of the rule that failed. |
+| `event.rule.spaceId` | ID of the {{kib}} space where the rule lives. |
+| `event.error` | Message describing why the execution failed, truncated to 1,024 characters. |
+
+Unlike `alerting.ruleEventsGenerated`, this payload carries no rule name, tags, or kind, so a workflow can't route a failure by rule owner. Condition on `event.rule.id` to handle one rule, or handle all failures in one workflow and look up the rule from its ID.
+
+### Filter the events that fire the trigger [alerting-rule-execution-triggers-filter]
+
+Use `on.condition` to narrow which executions start the workflow.
+
+Fire only for signal rules that carry a specific tag:
+
+```yaml
+triggers:
+  - type: alerting.ruleEventsGenerated
+    on:
+      condition: 'event.rule.kind: "signal" and event.rule.tags: "security"'
+```
+
+Fire only for a specific rule:
+
+```yaml
+triggers:
+  - type: alerting.ruleExecutionFailed
+    on:
+      condition: 'event.rule.id: "my-rule-id"'
+```
+
+### Example: Process the rule events from one execution [alerting-rule-execution-triggers-example-events]
+
+The trigger tells you that an execution produced rule events and how many, but not what they were. To read them, query [`.rule-events`](../../alerting/experimental-alerting-system/rules/rule-event-field-reference.md) for the rule ID and the scheduled timestamp from the payload. That pair matches the events this execution wrote.
+
+```yaml
+name: process-signal-rule-events
+description: Fetch the rule events produced by a single rule execution.
+enabled: true
+
+triggers:
+  - type: alerting.ruleEventsGenerated
+    on:
+      condition: 'event.rule.kind: "signal"'
+
+steps:
+  - name: fetch_rule_events
+    type: elasticsearch.esql.query
+    with:
+      query: |
+        FROM .rule-events
+        | WHERE rule.id == "{{ event.rule.id }}"
+          AND scheduled_timestamp == "{{ event.execution.scheduledAt }}"::datetime
+          AND space_id == "{{ event.rule.spaceId }}"
+        | KEEP @timestamp, group_hash, status, type, severity
+        | LIMIT 10000
+
+  - name: report_fetched
+    type: console
+    with:
+      message: |
+        Fetched {{ steps.fetch_rule_events.output.values | size }} of the
+        {{ event.ruleEventsGenerated }} rule events that rule {{ event.rule.id }} wrote.
+```
+
+The ES|QL step returns rows in `output.values`, so compare that count with `event.ruleEventsGenerated` before acting on the results.
+
+### Example: Notify on-call when a rule stops working [alerting-rule-execution-triggers-example-failure]
+
+```yaml
+name: alert-on-rule-execution-failure
+description: Page on-call when an alerting rule's execution fails.
+enabled: true
+
+triggers:
+  - type: alerting.ruleExecutionFailed
+
+steps:
+  - name: page_oncall
+    type: pagerduty.triggerIncident
+    connector-id: "platform-pagerduty"
+    with:
+      dedup_key: "rule-failure-{{ event.rule.id }}"
+      summary: "Alerting rule {{ event.rule.id }} failed to run"
+      severity: "critical"
+      details:
+        space_id: "{{ event.rule.spaceId }}"
+        error: "{{ event.error }}"
+```
+
+The `dedup_key` keeps a rule that fails on every schedule interval from opening a new incident each time.
+
 ## Control event chains and prevent loops
 
 When a workflow's own steps cause an event that its trigger listens for, executions can chain together (workflow A emits an event, which runs workflow B, which emits an event that runs A again). Left unchecked, these chains can loop or generate load. Event-driven triggers give you controls to manage this, with safe defaults.
@@ -656,4 +807,5 @@ To reuse the data from an earlier run instead of a fresh event, select **Histori
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): See what triggered each run and inspect the event payload.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
+- [Review rule execution history](../../alerting/experimental-alerting-system/rules/review-rule-execution-history.md): Inspect the rule executions these triggers fire on.
 - [Connect workflows to the {{alerting-v2-system}}](../../alerting/experimental-alerting-system/workflows-alerting.md): Full reference for alert episode lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.
