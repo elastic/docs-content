@@ -7,6 +7,8 @@ description: "Learn how to contribute to Elastic documentation, including setup 
 
 In April 2025, Elastic migrated to a new documentation system at [elastic.co/docs](https://www.elastic.co/docs), using Markdown and the [`docs-builder`](https://elastic.github.io/docs-builder/) toolchain, which coincided with the release of {{stack}} 9.0.0, {{ece}} 4.0.0, and {{eck}} 3.0.0.
 
+test
+
 This documentation site includes docs for:
 - {{stack}} 9.x
 - {{ece}} 4.x
