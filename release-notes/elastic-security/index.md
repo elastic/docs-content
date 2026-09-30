@@ -27,6 +27,35 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.5.5 [elastic-security-9.5.5-release-notes]
+
+### Features and enhancements [elastic-security-9.5.5-features-enhancements]
+
+* Adds an **Update to Elastic version** bulk action to the Rule Updates table that force-upgrades prebuilt rules to the exact Elastic version, discarding any customizations on the updated rules [#290589]({{kib-pull}}290589).
+* Speeds up importing new detection rules by creating them in bulk instead of one at a time [#275695]({{kib-pull}}275695).
+
+### Fixes [elastic-security-9.5.5-fixes]
+
+* Fixes an issue where long text in table cells in the Security AI Assistant was cut off or caused the whole conversation to scroll horizontally [#293924]({{kib-pull}}293924).
+* Fixes an issue where Attack Discovery didn't automatically select a connector when multiple were available, which disabled **Run** and caused attack discovery generation to fail with a "No model selected" error [#293656]({{kib-pull}}293656).
+* Fixes detection rules created or enabled by a workflow so they use their own {{es}} API key instead of the workflow's, which previously caused the rule to stop running once the workflow's API key was revoked [#292911]({{kib-pull}}292911).
+* Fixes Osquery live query results and agent status so they display correctly when the query runs in a non-default {{kib}} space [#291767]({{kib-pull}}291767).
+* Fixes an issue where long-running Attack Discovery generations could fail with a `Security Exception: token expired` error [#291623]({{kib-pull}}291623).
+* Fixes an issue where detection rule failures caused by an invalid IP field query (such as a wildcard or literal value against an `ip` field) were classified as framework errors, which caused them to count against SLO dashboards [#291256]({{kib-pull}}291256).
+* Disables the Security Alert Analysis workflow by default for new spaces. Enable it from the Alert Analysis Workflow settings page [#291240]({{kib-pull}}291240).
+* Fixes detection rules that failed with a generic "expected to find aggregations on search result" error when the events search returned zero shards, for example because the rule owner lacks `read` privileges on the source indices. These rules now report an actionable warning that explains the cause [#290924]({{kib-pull}}290924).
+* Fixes related alert correlation after the Security alerts index rolls over [#290661]({{kib-pull}}290661).
+* Fixes the response console command parser so it rejects un-prefixed positional arguments (such as `get-file path /some/file/here`) with an error, instead of silently treating them as valid [#290325]({{kib-pull}}290325).
+* Reduces the time it takes to bulk import, update, or enable detection rules by skipping the wait for {{es}} to refresh after creating each rule's API key [#290306]({{kib-pull}}290306).
+* Fixes the **Isolate host** response action so it's disabled, with an explanatory tooltip, when the target host's {{elastic-defend}} version doesn't support host isolation [#290115]({{kib-pull}}290115).
+* Fixes an issue where the Rule details **Alerts** tab could show no results, and throw a `tableById is undefined` error in the console, when the alerts table had not been initialized yet (typical on first visit or in a private window) [#290076]({{kib-pull}}290076).
+* Fixes New Terms rule executions failing with `The content length (...) is bigger than the maximum allowed string (...)` when the documents fetched for new terms exceed `elasticsearch.maxResponseSize`. The rule now retries with smaller batches of terms and reports a warning instead of failing [#290058]({{kib-pull}}290058).
+* Fixes bulk **Investigate in Timeline** so it includes the correlated building-block events for selected EQL sequence alerts, instead of only the selected alerts [#289676]({{kib-pull}}289676).
+* Fixes bulk closing alerts filtered on a scripted data view runtime field (one with a Painless script), which previously closed 0 alerts because the script wasn't forwarded to {{es}}. Also fixes the same issue in **Group alerts by** → **Take actions** → **Mark as closed**, which didn't forward runtime field data at all [#289549]({{kib-pull}}289549).
+* Fixes the detection rule `PATCH` API so it applies type-specific fields (such as `new_terms_fields`) even when `type` is omitted from the request, instead of silently ignoring them [#288917]({{kib-pull}}288917).
+* Allows bulk upgrading non-customized prebuilt rules whose rule type changed in the target version (such as `query` to `eql`), instead of blocking the upgrade as a non-solvable conflict [#288450]({{kib-pull}}288450).
+* Fixes rule exception items being deleted immediately from the actions menu with no warning. Kibana now shows a confirmation dialog before it deletes the exception item [#286807]({{kib-pull}}286807).
+
 ## 9.5.4 [elastic-security-9.5.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.5.4-features-enhancements]
