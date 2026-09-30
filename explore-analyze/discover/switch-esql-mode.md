@@ -20,7 +20,7 @@ This page explains how to switch between modes, and what Discover does with your
 ## Before you begin
 
 - Open **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2+` Switching modes applies only to the selected Discover tab. To switch several tabs, repeat the operation for each tab.
+- Switching modes applies only to the selected [Discover tab](discover-get-started.md#run-multiple-explorations-with-tabs). To switch several tabs, repeat the operation for each tab.
 
 ## Switch to Discover's {{esql}} mode [switch-discover-query-mode]
 
