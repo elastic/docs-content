@@ -1,6 +1,6 @@
 ---
 navigation_title: Query AI Indices with LangChain
-description: Connect a LangChain agent to Context Engine through the Agent Builder MCP server or the Context Engine APIs, so it can retrieve Knowledge Indicators from your AI Indices.
+description: Wrap the Context Engine APIs as LangChain tools, so a LangChain agent can retrieve Knowledge Indicators from your AI Indices.
 type: how-to
 applies_to:
   stack: experimental 9.6
@@ -18,12 +18,9 @@ A LangChain agent can retrieve Knowledge Indicators (KIs) from {{context-engine}
 
 For the integration model and the built-in {{agent-builder}} route, refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md).
 
-You can connect a LangChain agent to {{context-engine}} in two ways:
+To connect a LangChain agent to {{context-engine}}, use the {{context-engine}} APIs to wrap the available retrieval operations as LangChain tools in your application.
 
-- Use the **[Agent Builder Model Context Protocol (MCP) server](/explore-analyze/ai-features/agent-builder/mcp-server.md)** to load the built-in {{context-engine}} retrieval tools.
-- Use the **{{context-engine}} APIs** to wrap the available retrieval operations as LangChain tools in your application.
-
-This guide covers both routes. Examples on this page use Python, but the same approach works in [LangChain.js](https://reference.langchain.com/javascript/langchain).
+Examples on this page use Python, but the same approach works in [LangChain.js](https://reference.langchain.com/javascript/langchain).
 
 ## Requirements
 
@@ -45,102 +42,16 @@ Before you begin, make sure you have:
 
 Describing the AI Index before querying it prevents the agent from guessing the query target or field names.
 
-Both connection routes run the same three operations, against one Kibana space, as the owner of the API key. An agent only ever sees the AI Indices that key is allowed to read.
-
-## Step 0: Connect to {{context-engine}}
-
-Choose a connection route.
-
-::::{tab-set}
-:group: ce-transport
-:::{tab-item} MCP server
-:sync: mcp
-
-Complete the following steps for the MCP server route:
-
-1. Create credentials with the Agent Builder, {{context-engine}}, and Elasticsearch privileges required for MCP access.
-2. Connect to the Agent Builder MCP endpoint.
-3. Load the {{context-engine}} tools.
-:::
-:::{tab-item} {{context-engine}} APIs
-:sync: api
-
-Complete the following steps for the API route:
-
-1. Create credentials with the {{context-engine}} and Elasticsearch privileges required for API access.
-2. Configure the {{context-engine}} API client.
-3. Wrap the retrieval operations as LangChain tools.
-:::
-::::
+All three operations run against one {{kib}} space, as the owner of the API key. An agent only ever sees the AI Indices that key is allowed to read.
 
 ## Step 1: Create credentials
 
-Your credential needs privileges in both Kibana and Elasticsearch. The MCP route additionally needs Agent Builder **Read**, which is what makes the tools visible.
+Your credential needs privileges in both Kibana and Elasticsearch.
 
 Create the credential as follows:
 
-1. In Kibana, go to **Stack Management → API Keys** and click `Create API key` 
+1. In Kibana, go to **Stack Management → API Keys** and click `Create API key`
 2. Leave **Control security privileges** off and define a role with the following privileges:
-
-    ::::::{tab-set}
-    :group: ce-transport
-    :::::{tab-item} MCP server
-    :sync: mcp
-
-    Assign the following privileges:
-
-    * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
-    * **Kibana privileges**, in the space you want to query: **Agent Builder** at **Read**, and **{{context-engine}}** at **Read**.
-
-    ::::{dropdown} Example of a concrete definition
-    ```json
-    {
-      "contextEngineRole": {
-        "cluster": [],
-        "indices": [
-          {
-            "names": [
-              "ai-index-*"
-            ],
-            "privileges": [
-              "read",
-              "view_index_metadata"
-            ],
-            "field_security": {
-              "grant": [
-                "*"
-              ],
-              "except": []
-            },
-            "allow_restricted_indices": false
-          }
-        ],
-        "applications": [
-          {
-            "application": "kibana-.kibana",
-            "privileges": [
-              "feature_agentBuilder.read",
-              "feature_contextEngine.read"
-            ],
-            "resources": [
-              "*"
-            ]
-          }
-        ],
-        "run_as": [],
-        "metadata": {},
-        "transient_metadata": {
-          "enabled": true
-        }
-      }
-    }
-    ```
-    ::::
-    :::::
-    :::::{tab-item} API
-    :sync: api
-
-    Assign the following privileges:
 
     * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
     * **Kibana privileges**, in the space you want to query: **{{context-engine}}** at **Read**.
@@ -188,8 +99,6 @@ Create the credential as follows:
     }
     ```
     ::::
-    :::::
-    ::::::
 
 3. Copy the `encoded` value and export it, along with your Kibana URL:
 
@@ -204,58 +113,8 @@ This example also uses an OpenRouter key to reach the model:
 export OPENROUTER_API_KEY="sk-..."
 ```
 
-## Step 2: Set up {{context-engine}} tools
+## Step 2: Wrap the retrieval operations as tools
 
-Choose how to make the retrieval tools available to LangChain:
-
-::::{tab-set}
-:group: ce-transport
-:::{tab-item} MCP server
-:sync: mcp
-The MCP endpoint takes a single `Authorization` header. It's exempt from Kibana's XSRF check, so no `kbn-xsrf` header is needed.
-
-```py
-import os
-
-from langchain_mcp_adapters.client import MultiServerMCPClient
-
-CONTEXT_ENGINE_TOOLS = {   <1>
-    "platform_context_engine_list_ai_indices",
-    "platform_context_engine_describe_ai_index",
-    "platform_context_engine_query_ai_indices",
-}
-
-
-async def main() -> None:
-    kibana = os.environ["KIBANA_URL"].rstrip("/")
-    space = os.environ.get("KIBANA_SPACE")   <2>
-    base = f"{kibana}/s/{space}" if space else kibana
-
-    client = MultiServerMCPClient(
-        {
-            "kibana": {
-                "transport": "streamable_http",   <3>
-                "url": f"{base}/api/agent_builder/mcp",   <4>
-                "headers": {"Authorization": f"ApiKey {os.environ['KIBANA_API_KEY']}"},   <5>
-            }
-        }
-    )
-
-    all_tools = await client.get_tools()
-    tools = [t for t in all_tools if t.name in CONTEXT_ENGINE_TOOLS]   <6>
-```
-
-The annotations explain the following details:
-
-1. The three {{context-engine}} tool names to filter from the MCP server's full tool list.
-2. Set `KIBANA_SPACE` to target a non-default space. Leave it unset for the default space.
-3. The transport type required by `langchain-mcp-adapters` for the Kibana MCP endpoint.
-4. Agent Builder serves the MCP endpoint at `/api/agent_builder/mcp`.
-5. The MCP server accepts only `Authorization` and does not need a `kbn-xsrf` header.
-6. Narrow the server's full tool list to the three {{context-engine}} tools.
-:::
-:::{tab-item} API
-:sync: api
 Each tool wraps one endpoint. The docstrings are the only instructions the model gets about how and when to call them, so they carry the ordering and the constraints.
 
 Every request needs these headers:
@@ -335,8 +194,6 @@ The annotations explain the following details:
 2. Required on all three endpoints. Without it the request fails with `400`.
 3. Required for `POST` on self-managed and {{ech}} deployments. Harmless elsewhere.
 4. The API response nests the {{esql}} target under `dest.value`. The example surfaces it as `esql_target` for clarity.
-:::
-::::
 
 Each entry the list operation returns gives the agent:
 
@@ -352,100 +209,12 @@ The list omits an AI Index when your credential can't read its backing index. It
 The agent needs a model, the tools from Step 2, and instructions telling it to follow the list, describe, query flow. You can supply those instructions two ways:
 
 * **System instructions**: a prompt string in your script. Everything stays in one file, which suits a single application.
-* **A skill**: a `SKILL.md` file loaded from a shared repository such as [elastic/agent-skills](https://github.com/elastic/agent-skills). One copy serves every agent that loads it, and the agent reads the full instructions only when it judges them relevant.
+* **A skill**: a `SKILL.md` file that you write and keep outside your script. One copy serves every agent that loads it, and the agent reads the full instructions only when it judges them relevant.
 
-:::::{tab-set}
-:group: ce-transport
-::::{tab-item} MCP server
-:sync: mcp
-
-**With system instructions**
-
-```py
-from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
-
-SYSTEM_PROMPT = """\
-You have access to Elastic Context Engine knowledge through three tools.
-
-To answer a question from that knowledge:
-1. Call platform_context_engine_list_ai_indices to see what is available.
-2. Call platform_context_engine_describe_ai_index on the index you pick.
-3. Call platform_context_engine_query_ai_indices with ES|QL built from that description.
-
-Never guess an index ID, an ES|QL target, or a field name — the describe output gives you
-all three. The server applies the space and permissions condition, so never add one to a query.
-Answer from the rows you get back and cite the Knowledge Indicator titles.
-"""
-
-async def main() -> None:   <1>
-    # ...MCP client and tools from Step 2...
-    llm = ChatOpenAI(
-        model="anthropic/claude-sonnet-4-6",
-        openai_api_key=os.environ["OPENROUTER_API_KEY"],
-        openai_api_base="https://openrouter.ai/api/v1",   <2>
-    )
-    agent = create_agent(llm, tools)
-```
-
-The annotations explain the following details:
-
-1. `main` is a coroutine function: it must be declared `async def` and run with `asyncio.run(main())`, as in [Step 4](#step-4-ask-a-question).
-2. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
-
-**With a skill**
-
-`SkillsMiddleware` applies progressive disclosure: at startup it reads each skill's frontmatter and puts only the `name` and `description` into the system prompt. The agent reads the full `SKILL.md` with `read_file` when it decides the skill applies, then pulls in supporting files only as the instructions call for them. The tool-calling rules stay out of the context window until they're needed.
-
-Replace the `SYSTEM_PROMPT` constant and the `create_agent` call with the following. Skills come from the `deepagents` package, which needs Python 3.11 or later.
-
-```py
-from urllib.request import urlopen
-
-from deepagents.backends import StateBackend
-from deepagents.backends.utils import create_file_data
-from deepagents.middleware import FilesystemMiddleware, SkillsMiddleware
-from langgraph.checkpoint.memory import InMemorySaver
-
-SKILL_URL = (
-    "https://raw.githubusercontent.com/elastic/agent-skills"
-    "/main/skills/kibana/kibana-context-engine/SKILL.md"
-)   <1>
-
-async def main() -> None:
-    # ...MCP client and tools from Step 2...
-    with urlopen(SKILL_URL) as response:
-        skill = response.read().decode()   <2>
-
-    backend = StateBackend()
-    skill_files = {
-        "/skills/kibana-context-engine/SKILL.md": create_file_data(skill),   <3>
-    }
-
-    agent = create_agent(
-        llm,
-        tools,
-        middleware=[
-            FilesystemMiddleware(backend=backend),   <4>
-            SkillsMiddleware(backend=backend, sources=["/skills/"]),   <5>
-        ],
-        checkpointer=InMemorySaver(),   <6>
-    )
-```
-
-The annotations explain the following details:
-
-1. The raw URL of the skill file. Any `SKILL.md` works here.
-2. Fetches the skill once, at startup.
-3. Seeds the agent's virtual filesystem. The directory name under `/skills/` identifies the skill.
-4. Gives the agent the `read_file` tool that the read stage depends on. Without it the agent can see each skill's description but can't open the instructions.
-5. Scans `/skills/` and puts every skill it finds into the system prompt, name and description only.
-6. `StateBackend` holds the skill files in the graph's state, scoped to a single thread, so skills need a `checkpointer` for that state to be stored against. Swap `InMemorySaver` for a durable `checkpointer` to keep a thread beyond the life of the process.
-::::
-::::{tab-item} API
-:sync: api
-
-**With system instructions**
+::::{tab-set}
+:group: ce-instructions
+:::{tab-item} System instructions
+:sync: system-prompt
 
 ```py
 from langchain.agents import create_agent
@@ -461,7 +230,7 @@ To answer a question from that knowledge:
 
 Never guess an index ID, an ES|QL target, or a field name — the describe output gives you
 all three. The server applies the space and permissions condition, so never add one to a query.
-Answer from the rows you get back and cite the knowledge indicator titles.
+Answer from the rows you get back and cite the Knowledge Indicator titles.
 """
 
 def main() -> None:
@@ -477,73 +246,98 @@ The annotation explains the following detail:
 
 1. This example routes through OpenRouter. Replace `openai_api_base` and the corresponding API key to use a different LLM provider.
 
-**With a skill**
+:::
+:::{tab-item} Skill
+:sync: skill
 
 `SkillsMiddleware` applies progressive disclosure: at startup it reads each skill's frontmatter and puts only the `name` and `description` into the system prompt. The agent reads the full `SKILL.md` with `read_file` when it decides the skill applies, then pulls in supporting files only as the instructions call for them. The tool-calling rules stay out of the context window until they're needed.
 
+Write the skill yourself, so it names your tools and states the rules your agent has to follow. The frontmatter needs a `name` and a `description`, and the `name` has to match the directory that holds the file. The description is all the agent sees until it opens the file, so write it around the questions the skill helps answer.
 
-Replace the `SYSTEM_PROMPT` constant and the `create_agent` call with the following. Skills come from the `deepagents` package, which needs Python 3.11 or later.
+The following `SKILL.md` covers the retrieval flow for the tools from [Step 2](#step-2-wrap-the-retrieval-operations-as-tools). Save it as `skills/context-engine-retrieval/SKILL.md`, next to your script:
+
+```markdown
+---
+name: context-engine-retrieval
+description: Retrieve Knowledge Indicators from Elastic Context Engine AI Indices. Use when a question is likely answered by recurring internal knowledge, such as policies, runbooks, or past investigation findings.
+---
+
+# Retrieve context from Elastic Context Engine
+
+Elastic Context Engine knowledge is available through three tools: `list_ai_indices`,
+`describe_ai_index`, and `query_ai_indices`.
+
+## Retrieval flow
+
+1. Call `list_ai_indices` to see which AI Indices you can read.
+2. Pick the AI Index whose description matches the question, then call `describe_ai_index` on it.
+3. Call `query_ai_indices` with an ES|QL query built from that description.
+
+## Rules
+
+- Never guess an index ID, an ES|QL target, or a field name. The describe output gives you all three.
+- Use the `FROM` target from the describe output verbatim.
+- Pass user input as named parameters rather than writing it into the query string.
+- The server applies the space and permissions condition, so never add one to a query.
+- Answer from the rows you get back and cite the Knowledge Indicator titles.
+```
+
+Create the agent with the skills middleware instead of a system prompt. Skills come from the `deepagents` package, which needs Python 3.11 or later.
 
 ```py
-from urllib.request import urlopen
+from pathlib import Path
 
 from deepagents.backends import StateBackend
 from deepagents.backends.utils import create_file_data
 from deepagents.middleware import FilesystemMiddleware, SkillsMiddleware
 from langgraph.checkpoint.memory import InMemorySaver
 
-SKILL_URL = (
-    "https://raw.githubusercontent.com/elastic/agent-skills"
-    "/main/skills/kibana/kibana-context-engine/SKILL.md"
-)   <1>
+SKILL_PATH = Path(__file__).parent / "skills/context-engine-retrieval/SKILL.md"
 
 
 def main() -> None:
-    with urlopen(SKILL_URL) as response:
-        skill = response.read().decode()   <2>
-
+    # ...llm as in the system instructions example...
     backend = StateBackend()
     skill_files = {
-        "/skills/kibana-context-engine/SKILL.md": create_file_data(skill),   <3>
+        "/skills/context-engine-retrieval/SKILL.md": create_file_data(
+            SKILL_PATH.read_text()
+        ),   <1>
     }
 
     agent = create_agent(
         llm,
         [list_ai_indices, describe_ai_index, query_ai_indices],
         middleware=[
-            FilesystemMiddleware(backend=backend),   <4>
-            SkillsMiddleware(backend=backend, sources=["/skills/"]),   <5>
+            FilesystemMiddleware(backend=backend),   <2>
+            SkillsMiddleware(backend=backend, sources=["/skills/"]),   <3>
         ],
-        checkpointer=InMemorySaver(),   <6>
+        checkpointer=InMemorySaver(),   <4>
     )
 ```
 
 The annotations explain the following details:
 
-1. The raw URL of the skill file. Any `SKILL.md` works here.
-2. Fetches the skill once, at startup.
-3. Seeds the agent's virtual filesystem. The directory name under `/skills/` identifies the skill.
-4. Gives the agent the `read_file` tool that the read stage depends on. Without it the agent can see each skill's description but can't open the instructions.
-5. Scans `/skills/` and puts every skill it finds into the system prompt, name and description only.
-6. `StateBackend` holds the skill files in the graph's state, scoped to a single thread, so skills need a `checkpointer` for that state to be stored against. Swap `InMemorySaver` for a durable `checkpointer` to keep a thread beyond the life of the process.
+1. Reads the skill once, at startup, and seeds the agent's virtual filesystem with it. The directory name under `/skills/` has to match the `name` in the skill's frontmatter.
+2. Gives the agent the `read_file` tool that the read stage depends on. Without it the agent can see each skill's description but can't open the instructions.
+3. Scans `/skills/` and puts every skill it finds into the system prompt, name and description only.
+4. `StateBackend` holds the skill files in the graph's state, scoped to a single thread, so skills need a `checkpointer` for that state to be stored against. Swap `InMemorySaver` for a durable `checkpointer` to keep a thread beyond the life of the process.
+
+:::
 ::::
-:::::
 
 ## Step 4: Ask a question
 
 Invoke the agent with a question that the Knowledge Indicators in your AI Index can answer. The following question is an example.
 
 ::::{tab-set}
-:group: ce-transport
-:::{tab-item} MCP server
-:sync: mcp
-
-**With system instructions**
+:group: ce-instructions
+:::{tab-item} System instructions
+:sync: system-prompt
 
 ```py
-async def main() -> None:
+def main() -> None:
     # ...agent from Step 3...
-    result = await agent.ainvoke(
+    result = agent.invoke(
         {
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
@@ -555,54 +349,12 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
 ```
 
-**With a skill**
-
-```py
-async def main() -> None:
-    # ...agent from Step 3...
-    result = await agent.ainvoke(
-        {
-            "messages": [
-                {"role": "user", "content": "What is our refund policy for annual plans?"},
-            ],
-            "files": skill_files,
-        },
-        config={"configurable": {"thread_id": "1"}},
-    )
-    print(result["messages"][-1].content)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
 :::
-:::{tab-item} API
-:sync: api
-
-**With system instructions**
-
-```py
-def main() -> None:
-    # ...agent from Step 3...
-    result = agent.invoke(
-        {
-            "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": "What is our refund policy for annual plans?"},
-            ]
-        }
-    )
-    print(result["messages"][-1].content)
-
-
-if __name__ == "__main__":
-    main()
-```
-
-**With a skill**
+:::{tab-item} Skill
+:sync: skill
 
 ```py
 def main() -> None:
@@ -622,6 +374,7 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 ```
+
 :::
 ::::
 
@@ -644,77 +397,7 @@ For common access and retrieval failures, refer to [Troubleshoot {{context-engin
 
 ## Appendix
 
-Here are the full end-to-end Python scripts using the system prompt option from [Step 3](#step-3-create-the-agent).
-
-:::{dropdown} demo_mcp.py
-```py
-import asyncio
-import os
-
-from langchain_mcp_adapters.client import MultiServerMCPClient
-from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
-
-CONTEXT_ENGINE_TOOLS = {
-    "platform_context_engine_list_ai_indices",
-    "platform_context_engine_describe_ai_index",
-    "platform_context_engine_query_ai_indices",
-}
-
-SYSTEM_PROMPT = """\
-You have access to Elastic Context Engine knowledge through three tools.
-
-To answer a question from that knowledge:
-1. Call platform_context_engine_list_ai_indices to see what is available.
-2. Call platform_context_engine_describe_ai_index on the index you pick.
-3. Call platform_context_engine_query_ai_indices with ES|QL built from that description.
-
-Never guess an index ID, an ES|QL target, or a field name — the describe output gives you
-all three. The server applies the space and permissions condition, so never add one to a query.
-Answer from the rows you get back and cite the Knowledge Indicator titles.
-"""
-
-
-async def main() -> None:
-    kibana = os.environ["KIBANA_URL"].rstrip("/")
-    space = os.environ.get("KIBANA_SPACE")
-    base = f"{kibana}/s/{space}" if space else kibana
-
-    client = MultiServerMCPClient(
-        {
-            "kibana": {
-                "transport": "streamable_http",
-                "url": f"{base}/api/agent_builder/mcp",
-                "headers": {"Authorization": f"ApiKey {os.environ['KIBANA_API_KEY']}"},
-            }
-        }
-    )
-
-    all_tools = await client.get_tools()
-    tools = [t for t in all_tools if t.name in CONTEXT_ENGINE_TOOLS]
-
-    llm = ChatOpenAI(
-        model="anthropic/claude-sonnet-4-6",
-        openai_api_key=os.environ["OPENROUTER_API_KEY"],
-        openai_api_base="https://openrouter.ai/api/v1",
-    )
-    agent = create_agent(llm, tools)
-
-    result = await agent.ainvoke(
-        {
-            "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": "What is our refund policy for annual plans?"},
-            ]
-        }
-    )
-    print(result["messages"][-1].content)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-:::
+Here is the full end-to-end Python script using the system prompt option from [Step 3](#step-3-create-the-agent):
 
 :::{dropdown} demo_api.py
 ```py
@@ -819,96 +502,12 @@ if __name__ == "__main__":
 ```
 :::
 
-Additionally, take a look at the same two scripts using the skill option from [Step 3](#step-3-create-the-agent):
-
-:::{dropdown} demo_mcp_skill.py
-```py
-import asyncio
-import os
-from urllib.request import urlopen
-
-from deepagents.backends import StateBackend
-from deepagents.backends.utils import create_file_data
-from deepagents.middleware import FilesystemMiddleware, SkillsMiddleware
-from langchain_mcp_adapters.client import MultiServerMCPClient
-from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
-from langgraph.checkpoint.memory import InMemorySaver
-
-CONTEXT_ENGINE_TOOLS = {
-    "platform_context_engine_list_ai_indices",
-    "platform_context_engine_describe_ai_index",
-    "platform_context_engine_query_ai_indices",
-}
-
-SKILL_URL = (
-    "https://raw.githubusercontent.com/elastic/agent-skills"
-    "/main/skills/kibana/kibana-context-engine/SKILL.md"
-)
-
-
-async def main() -> None:
-    kibana = os.environ["KIBANA_URL"].rstrip("/")
-    space = os.environ.get("KIBANA_SPACE")
-    base = f"{kibana}/s/{space}" if space else kibana
-
-    client = MultiServerMCPClient(
-        {
-            "kibana": {
-                "transport": "streamable_http",
-                "url": f"{base}/api/agent_builder/mcp",
-                "headers": {"Authorization": f"ApiKey {os.environ['KIBANA_API_KEY']}"},
-            }
-        }
-    )
-
-    all_tools = await client.get_tools()
-    tools = [t for t in all_tools if t.name in CONTEXT_ENGINE_TOOLS]
-
-    with urlopen(SKILL_URL) as response:
-        skill = response.read().decode()
-
-    backend = StateBackend()
-    skill_files = {
-        "/skills/kibana-context-engine/SKILL.md": create_file_data(skill),
-    }
-
-    llm = ChatOpenAI(
-        model="anthropic/claude-sonnet-4-6",
-        openai_api_key=os.environ["OPENROUTER_API_KEY"],
-        openai_api_base="https://openrouter.ai/api/v1",
-    )
-    agent = create_agent(
-        llm,
-        tools,
-        middleware=[
-            FilesystemMiddleware(backend=backend),
-            SkillsMiddleware(backend=backend, sources=["/skills/"]),
-        ],
-        checkpointer=InMemorySaver(),
-    )
-
-    result = await agent.ainvoke(
-        {
-            "messages": [
-                {"role": "user", "content": "What is our refund policy for annual plans?"},
-            ],
-            "files": skill_files,
-        },
-        config={"configurable": {"thread_id": "1"}},
-    )
-    print(result["messages"][-1].content)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-:::
+Additionally, take a look at the same script using the skill option from [Step 3](#step-3-create-the-agent):
 
 :::{dropdown} demo_api_skill.py
 ```py
 import os
-from urllib.request import urlopen
+from pathlib import Path
 
 import httpx
 from deepagents.backends import StateBackend
@@ -919,10 +518,7 @@ from langchain.tools import tool
 from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import InMemorySaver
 
-SKILL_URL = (
-    "https://raw.githubusercontent.com/elastic/agent-skills"
-    "/main/skills/kibana/kibana-context-engine/SKILL.md"
-)
+SKILL_PATH = Path(__file__).parent / "skills/context-engine-retrieval/SKILL.md"
 
 _kibana = os.environ["KIBANA_URL"].rstrip("/")
 _space = os.environ.get("KIBANA_SPACE")
@@ -982,12 +578,11 @@ def query_ai_indices(query: str, params: dict | None = None, limit: int = 20) ->
 
 
 def main() -> None:
-    with urlopen(SKILL_URL) as response:
-        skill = response.read().decode()
-
     backend = StateBackend()
     skill_files = {
-        "/skills/kibana-context-engine/SKILL.md": create_file_data(skill),
+        "/skills/context-engine-retrieval/SKILL.md": create_file_data(
+            SKILL_PATH.read_text()
+        ),
     }
 
     llm = ChatOpenAI(
@@ -1029,7 +624,6 @@ Here's an example of a `pyproject.toml` with the dependencies for the above scri
 dev = [
     "deepagents>=0.7",  # needed for skills instead of system prompts and requires Python 3.11+
     "langchain>=1.4.0",
-    "langchain-mcp-adapters>=0.3.2",  # needed if choosing the MCP connection route
     "langchain-openai>=1.6.2",  # only needed for this example or if you want to use OpenAI or OpenRouter LLMs
 ]
 ```
