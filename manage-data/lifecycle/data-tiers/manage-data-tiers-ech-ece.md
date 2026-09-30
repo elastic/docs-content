@@ -8,6 +8,7 @@ applies_to:
   deployment:
     ess: ga
     ece: ga
+type: how-to
 products:
   - id: elasticsearch
   - id: cloud-hosted
@@ -46,7 +47,9 @@ Review [{{es}} data tiers](/manage-data/lifecycle/data-tiers.md) so you choose t
 
 Follow this section when you need to remove a warm, cold, or frozen tier from an {{ech}} or {{ece}} deployment. The shared hot and content tier is required and cannot be removed.
 
-The steps differ depending on whether the tier holds [regular indices](#non-searchable-snapshot-data-tier) or [{{search-snap}}](#searchable-snapshot-data-tier) indices, which are typical for cold or frozen tiers when using {{ilm}} ({{ilm-init}}).
+The steps differ depending on whether the tier contains [regular indices](#non-searchable-snapshot-data-tier) or [{{search-snap}}](#searchable-snapshot-data-tier) indices, which are common for cold or frozen tiers when using {{ilm}} ({{ilm-init}}).
+
+If you plan to remove multiple tiers, remove them one at a time in this order: frozen, cold, then warm.
 
 ### Before you remove a data tier [before-you-remove-a-data-tier]
 
@@ -102,10 +105,10 @@ If in doubt, reach out to Support.
 
    :::::
 
-1. Check whether the tier you are removing holds regular indices, [{{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), or both:
+1. Check whether the instances in the tier you are removing hold shards from regular indices, [{{search-snap}} indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), or both:
 
-   * **Warm tier:** This tier typically holds regular indices unless you have manually mounted {{search-snaps}} on it.
-   * **Cold tier:** This tier can hold regular indices or [fully mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) {{search-snaps}}. Check for standard {{ilm-init}}-managed {{search-snap}} indices:
+   * **Warm tier:** This tier typically contains regular indices unless you have manually mounted {{search-snaps}} on it.
+   * **Cold tier:** This tier can contain regular indices or [fully mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) {{search-snaps}}. Check for standard {{ilm-init}}-managed {{search-snap}} indices:
 
        ```sh
        GET /_cat/indices/restored-*?expand_wildcards=all
@@ -115,7 +118,7 @@ If in doubt, reach out to Support.
 
        Exclude any fully mounted indices associated with the hot tier from the removal inventory. The hot tier is required and is not removed by this procedure.
 
-   * **Frozen tier:** This tier only holds [partially mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) {{search-snaps}}. Check for standard lifecycle-managed indices:
+   * **Frozen tier:** This tier contains only [partially mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) {{search-snaps}}. Check for standard lifecycle-managed indices:
 
        ```sh
        GET /_cat/indices/partial-*,dlm-frozen-*?expand_wildcards=all
@@ -133,7 +136,7 @@ If in doubt, reach out to Support.
    * Remove or move any `searchable_snapshot` action that mounts indices on the tier.
    * If you use custom allocation filters in policies or templates, remove or update those that target the tier.
 
-   Before proceeding, make sure that you have identified every affected policy and template.
+   Make sure that your plan covers every affected policy and template.
 
    To learn more about {{ilm-init}} or shard allocation filtering, refer to [Create your index lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md), [Managing the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md), and [Shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md).
 
@@ -147,8 +150,8 @@ When you have identified the instances, determined which indices are on the tier
 
 This section explains how to vacate instances in a data tier that contains [{{search-snap}} indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). How you proceed depends on the mount type:
 
-* **[Partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) on the frozen tier** cannot remain mounted after you disable the tier. Process every index in this tier by either restoring its data as a regular index or deleting it.
-* **[Fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted)** do not require special handling in this section. To keep them mounted, treat them like regular indices and continue to [Prepare regular indices for tier removal](#non-searchable-snapshot-data-tier). To restore their data as regular indices or delete them, process them in this section.
+* **[Partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) on the frozen tier** cannot remain mounted after you disable the tier. For each index, either restore its data as a regular index or delete it.
+* **[Fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted)** can remain mounted after you disable the tier. To keep them mounted, treat them like regular indices and continue to [Prepare regular indices for tier removal](#non-searchable-snapshot-data-tier). To restore their data as regular indices or delete them, follow the steps in this section for each index.
 
 :::{note}
 :applies_to: {"stack": "ga 9.5+"}
@@ -320,7 +323,7 @@ After updating the allocation rules, continue to [Disable the data tier](#disabl
 
 ### Disable the data tier [disable-data-tier-ech-ece]
 
-After completing every applicable vacate procedure, disable the data tier from the deployment editor.
+After completing all applicable procedures, confirm that any shard relocations triggered by the allocation changes have finished successfully. Then disable the data tier from the deployment editor.
 
 1. Edit the deployment and disable the data tier.
 
