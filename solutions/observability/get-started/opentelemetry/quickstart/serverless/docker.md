@@ -141,7 +141,10 @@ Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`ht
 
 ::::{step} Install the content packs
 
-Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration and the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
+In {{kib}}, find **{{integrations}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
+
+1. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+2. Search for **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)**, open the integration, and select **Install Docker OpenTelemetry Assets**.
 
 ::::
 

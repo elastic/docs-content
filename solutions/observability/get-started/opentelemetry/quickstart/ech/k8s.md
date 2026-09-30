@@ -101,7 +101,10 @@ For languages where auto-instrumentation is not available, manually instrument y
 
 ::::{step} Install the content packs
 
-Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}.
+In {{kib}}, find **{{integrations}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
+
+1. Search for **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)**, open the integration, and select **Install Kubernetes OpenTelemetry Assets**.
+2. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
 
 ::::
 
