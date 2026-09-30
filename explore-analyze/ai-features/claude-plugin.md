@@ -16,7 +16,7 @@ products:
 
 # Elastic plugin for Claude [elastic-claude-plugin]
 
-The [Elastic plugin for Claude](https://github.com/elastic/claude-plugin) is an official, open-source [Claude plugin](https://docs.claude.com/en/docs/claude-code/plugins) that bundles Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit. It gives Claude specialized knowledge of the {{stack}} so it can perform Elastic tasks more accurately and efficiently. The plugin is compatible with Claude Code and Claude Cowork, and has been tested on the desktop and web apps.
+The [Elastic plugin for Claude](https://github.com/elastic/claude-plugin) is an official, open-source [Claude plugin](https://docs.claude.com/en/docs/claude-code/plugins) that bundles Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit. It gives Claude specialized knowledge of the {{stack}} so it can perform Elastic tasks more accurately and efficiently. The plugin is compatible with Claude Code and Cowork, and has been tested on the desktop and web apps.
 
 ## Use cases
 
@@ -51,15 +51,11 @@ The Elastic plugin for Claude packages those same skills into the Claude plugin 
 
 ## Installation
 
-### Claude UI
-
-1. Open **Settings** → **Plugins** → **Discover**.
-2. Search for **Elastic**.
-3. Select **Add** to install the plugin.
+In the Claude desktop or web app, open **Settings** → **Plugins** → **Discover**, search for **Elastic**, and select **Add**.
 
 :::{image} images/claude-code-discover-elastic-plugin.png
 :screenshot:
-:alt: The Claude plugins settings panel showing the Discover tab with a search for Elastic. The Elastic plugin appears as the top result with an Add button.
+:alt: The Claude settings panel with Plugins selected in the sidebar, showing the Discover tab with a search for Elastic. The Elastic plugin appears as the top result with an Add button.
 :width: 700px
 :::
 
