@@ -32,15 +32,7 @@ Before you begin, make sure you have:
 * An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#step-1-create-credentials) walks through this.
 * Python 3.10 or later, with `langchain` installed. The skill option in [Step 3](#step-3-create-the-agent) adds `deepagents`, which needs 3.11 or later.
 
-## How retrieval works
-
-{{context-engine}} uses a discovery-first retrieval flow:
-
-1. List the AI Indices available to the agent.
-2. Describe the relevant AI Index to identify its query target, fields, and available Knowledge Indicators.
-3. Query the AI Index using the information returned by the describe operation.
-
-Describing the AI Index before querying it prevents the agent from guessing the query target or field names.
+{{context-engine}} uses a list, describe, and query sequence to retrieve KIs. For the available query modes and complete retrieval workflow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
 All three operations run against one {{kib}} space, as the owner of the API key. An agent only ever sees the AI Indices that key is allowed to read.
 
@@ -399,7 +391,7 @@ Set `KIBANA_SPACE` to the space ID before creating the client, so requests go to
 
 To read from several spaces in one agent, build one client per space and register a separate set of tools for each.
 
-For common access and retrieval failures, refer to [Troubleshoot {{context-engine}} retrieval](use-context-engine-with-agents.md#troubleshoot-context-engine-retrieval).
+For common access and retrieval failures, refer to [Troubleshoot retrieval](retrieve-context-from-ai-index.md#troubleshoot-retrieval).
 
 ## Appendix
 
