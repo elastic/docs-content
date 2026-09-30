@@ -115,17 +115,28 @@ jobs:
             });
             const isForkPR = pullRequest.head.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`;
             if (isForkPR) {
-              let isOrgMember = false;
+              // GITHUB_TOKEN cannot see private org membership, so
+              // checkMembershipForUser returns 404 for Elastic members and the
+              // review is skipped. Repository permission is visible to this
+              // token and still blocks outside contributors with read access.
+              let permission = 'none';
               try {
-                const { status } = await github.rest.orgs.checkMembershipForUser({
-                  org: context.repo.owner,
+                const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
                   username: context.actor,
                 });
-                isOrgMember = status === 204;
-              } catch {
-                isOrgMember = false;
+                permission = data.permission;
+              } catch (error) {
+                core.warning(
+                  `Fork PR: could not read repository permission for ${context.actor}: ${error.status || error.message}`
+                );
               }
-              if (!isOrgMember) {
+              const allowed = ['admin', 'maintain', 'write'].includes(permission);
+              if (!allowed) {
+                core.warning(
+                  `Fork PR: skipping docs review for ${context.actor} (repository permission: ${permission}).`
+                );
                 core.setOutput('docs_review_triggered', 'false');
                 return;
               }
