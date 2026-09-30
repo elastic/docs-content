@@ -40,7 +40,7 @@ Choose the integration that matches where you build and run the agent:
 | Approach | Use it when | How the agent or application accesses {{context-engine}} |
 |---|---|---|
 | [{{agent-builder}}](use-context-engine-with-agent-builder.md) | You want to build and run the agent in {{kib}}. | Assign one or more AI indices to the agent. {{agent-builder}} adds the {{context-engine}} retrieval tools and describes the assigned indices in the agent's instructions. |
-| [LangChain](langchain-integration.md) | You are building an agent with LangChain or LangGraph. | Load the {{context-engine}} tools through the {{agent-builder}} MCP server, or wrap the {{context-engine}} APIs as LangChain tools. |
+| [LangChain](langchain-integration.md) | You are building an agent with LangChain or LangGraph. | Wrap the {{context-engine}} APIs as LangChain tools in your application. |
 
 Both approaches list and describe AI indices before querying them. The agent only discovers AI indices that its credentials can read in the current {{kib}} space.
 

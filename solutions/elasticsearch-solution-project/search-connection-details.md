@@ -24,10 +24,50 @@ To create an API key, you need the `manage_api_key` or the `manage_own_api_key` 
 
 :::::{applies-switch}
 
-::::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
-Your endpoint is in the **Connection details** panel in {{kib}}.
+::::{applies-item} serverless: ga
+Your endpoint details are on your project's page in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
-1. Open {{kib}} for your deployment or project.
+1. In the {{ecloud}} Console, select **Serverless**.
+2. Find your project and select **Manage**.
+3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
+4. Copy the **Endpoint** value.
+
+    :::{image} /solutions/images/cloud-console-serverless-endpoint.png
+    :alt: The Elasticsearch panel on a Serverless project page in the Elastic Cloud Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
+    :screenshot:
+    :width: 50%
+    :::
+
+If your project runs on AWS, the panel also lists an **AWS PrivateLink endpoint**. Use it only when you connect through AWS PrivateLink. To learn more, refer to [](/deploy-manage/security/private-connectivity-aws.md).
+
+:::{tip}
+You can also find your endpoint details in {{kib}}. From the **Help menu** {icon}`question` or the project selector in the header, select **Connection details**, then copy the **{{es}} endpoint** from the **Endpoints** tab.
+:::
+::::
+
+::::{applies-item} ech: ga
+Your endpoint details are on your deployment's page in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+
+1. In the {{ecloud}} Console, select **Hosted**.
+2. Select your deployment.
+3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
+4. Copy the **Endpoint** value.
+
+    :::{image} /solutions/images/cloud-console-hosted-endpoint.png
+    :alt: The Elasticsearch panel on a hosted deployment page in the Elastic Cloud Console, showing the Endpoint value with a copy button
+    :screenshot:
+    :width: 50%
+    :::
+
+:::{tip}
+You can also find your endpoint details in {{kib}}. From the **Help menu** {icon}`question`, select **Connection details**, then copy the **{{es}} endpoint** from the **Endpoints** tab.
+:::
+::::
+
+::::{applies-item} ece: ga
+Your endpoint details are in the **Connection details** panel in {{kib}}.
+
+1. Open {{kib}} for your deployment.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Copy the **{{es}} endpoint** from the **Endpoints** tab.
 
@@ -38,10 +78,7 @@ Your endpoint is in the **Connection details** panel in {{kib}}.
 :::
 
 :::{tip}
-
-* When the space uses the **{{es}}** solution view, the **Getting started** page shows the endpoint directly.
-* {applies_to}`serverless: ga` You can also open **Connection details** from the project selector in the header.
-
+When the space uses the **{{es}}** solution view, the **Getting started** page shows the endpoint directly.
 :::
 
 ::::
@@ -95,7 +132,7 @@ serverless: ga
 
 :::{tip}
 :applies_to: {ech: ga}
-To skip {{kib}}, select **Manage** in the {{ecloud}} console and copy the **Cloud ID** from the deployment page.
+To skip {{kib}}, select **Hosted** in the {{ecloud}} Console, open your deployment, and copy the **Cloud ID** from the deployment page.
 :::
 
 ## Create an API key [create-an-api-key-cloud-self-managed]
@@ -134,7 +171,7 @@ Verify your endpoint and API key with a request to the {{es}} root endpoint.
 1. In a terminal, assign your endpoint and encoded API key to environment variables:
 
     ```bash
-    export ES_URL="https://a1b2c3d4e5f6.us-central1.gcp.cloud.es.io:443"
+    export ES_URL="https://my-deployment-a1b2c3.es.us-central1.gcp.elastic-cloud.com"
     export API_KEY="ZFZRbF9Jb0JDMEoxaVhoR2pSa3Q6dExwdmJSaldRTHFXWEp4TFFlR19Hdw=="
     ```
 
