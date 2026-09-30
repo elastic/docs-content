@@ -18,3 +18,5 @@ For OpenTelemetry metrics, prefer the {{es}} OTLP/HTTP endpoint over the Bulk AP
 It also simplifies setup by automatically creating [TSDS](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) through built-in index templates, and deriving dimensions and metric mappings from OTLP metadata.
 
 For more details, refer to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) reference.
+
+For an overview of all metrics ingest paths, including how this endpoint fits alongside the Managed OTLP Endpoint and {{agent}} integrations, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp).
