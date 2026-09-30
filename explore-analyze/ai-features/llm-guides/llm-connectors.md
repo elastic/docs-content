@@ -37,7 +37,7 @@ Models that do not appear in these resources may still work, but Elastic hasn't 
 
 ::::{important}
 :applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-The OpenAI, Amazon Bedrock, Google Gemini, and Elastic {{infer-cap}} connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
+The OpenAI, Amazon Bedrock, Google Gemini, and **AI Connector** connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
 
 In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new AI integrations, use {{es}} {{infer}} endpoints.
 ::::
