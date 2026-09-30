@@ -10,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Elastic Log monitoring [logs-checklist]
+# Log monitoring with Elastic Observability [logs-checklist]
 
 Elastic Observability allows you to deploy and manage logs at a petabyte scale, giving you insights into your logs in minutes. You can also search across your logs in one place, troubleshoot in real time, and detect patterns and outliers with categorization and anomaly detection. For more information, refer to the following links:
 

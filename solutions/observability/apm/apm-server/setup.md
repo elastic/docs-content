@@ -1,6 +1,6 @@
 ---
 navigation_title: Set up
-description: Set up APM Server for a self-managed Elastic Stack. Compare Fleet-managed APM Server with the standalone binary and choose the right deployment model.
+description: Set up APM Server for a self-managed Elastic Stack or Elastic Cloud Hosted deployment. Compare Fleet-managed APM Server with the standalone binary and choose the right deployment model.
 applies_to:
   stack: ga
   serverless: unavailable
