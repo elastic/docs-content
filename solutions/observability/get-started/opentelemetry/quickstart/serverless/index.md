@@ -4,8 +4,6 @@ description: Quickstart setup guides for Elastic OpenTelemetry on Elastic Cloud 
 applies_to:
   serverless:
     observability: ga
-  product:
-    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -14,7 +12,7 @@ products:
 
 # Quickstart on Elastic Cloud Serverless
 
-The [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. The endpoint is available to {{ecloud}} users on {{serverless-full}} and {{ech}}.
+The [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage.
 
 The {{motlp}} is designed for the following use cases:
 

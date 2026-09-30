@@ -63,7 +63,7 @@ Before committing to this path, note these {{motlp}} limitations:
 Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
-::::{applies-item} ess:
+::::{applies-item} ech:
 
 **Send data to the {{motlp}}.**
 
@@ -100,7 +100,7 @@ Refer to [{{agent}} modes](elastic-agent://reference/edot-collector/modes.md) an
 
 ## Quickstart for your environment [start-with-otel-quickstarts]
 
-After you've chosen your ingestion path, follow the quickstart that matches your deployment and environment. Select yours from the matrix in [{{edot}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
+After you choose your ingestion path, follow the quickstart that matches your deployment and environment. Select yours from the matrix in [{{edot}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
 To send OTLP data directly to {{serverless-full}} or {{ech}} without running {{agent}}, follow [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
 

@@ -4,8 +4,6 @@ description: Learn how to set up Elastic Agent and EDOT SDKs in a Kubernetes env
 applies_to:
   deployment:
     self: ga
-  product:
-    edot_collector: ga
 products:
   - id: observability
   - id: edot-collector
@@ -13,7 +11,7 @@ products:
 
 # Quickstart for Kubernetes on self-managed deployments
 
-Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment to collect host metrics, logs, and application traces.
 
 ## Guided setup
 
@@ -22,8 +20,9 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment to c
 
 ## Prerequisites
 
+- A self-managed {{stack}} deployment running version 9.0 or later.
 - Helm version 3.9+ up to and including {{helm-version}}, required by the OpenTelemetry Kube Stack chart.
-- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege, to create the API key.
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege to create the API key.
 
 ## Manual installation
 
@@ -67,7 +66,7 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 
 ::::{step} Auto-instrument applications
 
-Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet` or `go`) in the following command. 
+Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet`, or `go`) in the following command. 
 
 ```bash
 kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
@@ -75,15 +74,17 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
-For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](opentelemetry://reference/edot-sdks/index.md).
+For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](opentelemetry://reference/edot-sdks/index.md).
 ::::
 
 ::::{step} Install the content packs
 
-In {{kib}}, find **{{integrations}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
 
 1. Search for **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)**, open the integration, and select **Install Kubernetes OpenTelemetry Assets**.
 2. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+
+If an integration doesn't appear in the search results, turn on **Display beta integrations**.
 
 ::::
 

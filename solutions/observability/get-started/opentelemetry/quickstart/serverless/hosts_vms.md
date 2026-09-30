@@ -4,22 +4,21 @@ description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs on El
 applies_to:
   serverless:
     observability: ga
-  product:
-    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
   - id: edot-collector
 ---
 
-#  Quickstart for hosts / VMs on Elastic Cloud Serverless
+# Quickstart for hosts and VMs on Elastic Cloud Serverless
 
 Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless project.
 
 ## Prerequisites
 
+- An active {{obs-serverless}} project.
 - The host or VM running a supported operating system (Linux, macOS, or Windows).
-- A user with the **Admin** role for the manual installation steps, which create an {{es}} API key. The **Editor** role is enough for the guided setup, where Elastic creates the key for you.
+- A user with the **Admin** role or higher. Both the guided setup and the manual installation steps create an {{es}} API key, which requires the `manage_own_api_key` cluster privilege.
 
 ## Guided setup
 
@@ -130,7 +129,9 @@ Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`ht
 
 :::::{step} Install the content pack
 
-In {{kib}}, find **{{integrations}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+
+If the integration doesn't appear in the search results, turn on **Display beta integrations**.
 
 :::::
 

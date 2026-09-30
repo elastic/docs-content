@@ -4,8 +4,6 @@ description: Before following the quickstart guides to set up your Elastic OpenT
 applies_to:
   deployment:
     self: ga
-  product:
-    edot_collector: ga
 products:
   - id: observability
   - id: edot-collector

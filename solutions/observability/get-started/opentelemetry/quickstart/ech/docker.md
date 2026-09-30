@@ -18,7 +18,7 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment with {{e
 
 - An {{ech}} deployment running version 9.0 or later.
 - [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on the host.
-- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege, to create the API key.
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege to create the API key.
 
 ## Guided setup
 
@@ -146,10 +146,12 @@ Enable central configuration to configure your EDOT SDKs from within {{product.k
 
 ::::{step} Install the content packs
 
-In {{kib}}, find **{{integrations}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
 
 1. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
 2. Search for **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)**, open the integration, and select **Install Docker OpenTelemetry Assets**.
+
+If an integration doesn't appear in the search results, turn on **Display beta integrations**.
 
 ::::
 

@@ -4,8 +4,6 @@ description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs in a 
 applies_to:
   serverless:
     observability: ga
-  product:
-    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -14,7 +12,7 @@ products:
 
 # Quickstart for Kubernetes on Elastic Cloud Serverless
 
-Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs, and application traces.
 
 ## Guided setup
 
@@ -24,7 +22,7 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with
 ## Prerequisites
 
 - Helm version 3.9+ up to and including {{helm-version}}, required by the OpenTelemetry Kube Stack chart.
-- A user with the **Admin** role for the manual installation steps, which create an {{es}} API key. The **Editor** role is enough for the guided setup, where Elastic creates the key for you.
+- A user with the **Admin** role or higher. Both the guided setup and the manual installation steps create an {{es}} API key, which requires the `manage_own_api_key` cluster privilege.
 
 ## Manual installation
 
@@ -73,7 +71,7 @@ The Operator provides a deployment of the {{agent}} and configuration environmen
 
 ::::{step} Auto-instrument applications
 
-Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet` or `go`) in the following command. 
+Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet`, or `go`) in the following command. 
 
 ```bash
 kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
@@ -86,10 +84,12 @@ For languages where auto-instrumentation is not available, manually instrument y
 
 ::::{step} Install the content packs
 
-In {{kib}}, find **{{integrations}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
 
 1. Search for **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)**, open the integration, and select **Install Kubernetes OpenTelemetry Assets**.
 2. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+
+If an integration doesn't appear in the search results, turn on **Display beta integrations**.
 
 ::::
 

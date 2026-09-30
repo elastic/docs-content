@@ -12,8 +12,6 @@ applies_to:
     self: ga
   serverless:
     observability: ga
-  product:
-    edot_collector: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
@@ -40,7 +38,7 @@ These guides cover how to install the {{agent}}, turn on auto-instrumentation, a
 
 Select a guide based on the environment of your target system and your Elastic deployment model.
 
-| Deployment Model       | {{k8s}}                              | Docker                                  | Hosts or VMs                          |
+| Deployment model       | {{k8s}}                              | Docker                                  | Hosts or VMs                          |
 |-------------------------|-----------------------------------------|-----------------------------------------|---------------------------------------|
 | {{product.self}} Stack | [{{k8s}} on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts or VMs on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
 | {{serverless-full}}  | [{{k8s}} on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)     | [Docker on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)     | [Hosts or VMs on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)     |

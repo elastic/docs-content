@@ -18,7 +18,7 @@ cta:
 In this quickstart guide, you'll learn how to create the Kubernetes resources required to monitor your cluster infrastructure by using a single command to download, install, and configure {{agent}} in your Kubernetes cluster.
 
 :::{tip}
-We recommend using the [{{edot}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md) as the preferred way to collect {{k8s}} logs, metrics, and application traces using OpenTelemetry.
+We recommend the [{{edot}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md) to collect {{k8s}} logs, metrics, and application traces using OpenTelemetry.
 :::
 
 :::{note}

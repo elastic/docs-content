@@ -15,7 +15,7 @@ products:
 
 # Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
 
-Use this guide if you have an existing OTLP-compatible collector or SDK and want to send data directly to Elastic using the {{motlp}} endpoint — without switching to {{edot}}.
+Use this guide if you have an existing OTLP-compatible collector or SDK and want to send data directly to Elastic using the {{motlp}} — without switching to {{edot}}.
 
 The {{motlp}} provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for more information.
 

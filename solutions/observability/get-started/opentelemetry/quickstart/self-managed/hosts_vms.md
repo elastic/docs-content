@@ -1,24 +1,23 @@
 ---
-navigation_title: Hosts / VMs
+navigation_title: Hosts and VMs
 description: Learn how to set up Elastic Agent and EDOT SDKs to collect host metrics, logs, and application traces.
 applies_to:
   deployment:
     self: ga
-  product:
-    edot_collector: ga
 products:
   - id: observability
   - id: edot-collector
 ---
 
-# Quickstart for hosts / VMs on self-managed deployments
+# Quickstart for hosts and VMs on self-managed deployments
 
-Learn how to set up the {{agent}} and EDOT SDKs to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs to collect host metrics, logs, and application traces.
 
 ## Prerequisites
 
+- A self-managed {{stack}} deployment running version 9.0 or later.
 - The host or VM running a supported operating system (Linux, macOS, or Windows).
-- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges, to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege, to create the API key.
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege to create the API key.
 
 ## Guided setup
 
@@ -131,7 +130,9 @@ Enable central configuration to configure your EDOT SDKs from within {{product.k
 
 :::::{step} Install the content pack
 
-In {{kib}}, find **{{integrations}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+
+If the integration doesn't appear in the search results, turn on **Display beta integrations**.
 
 :::::
 

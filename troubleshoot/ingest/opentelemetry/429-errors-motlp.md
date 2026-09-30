@@ -41,7 +41,7 @@ A 429 status means that the rate of requests sent to the Managed OTLP endpoint h
 * Bursts of telemetry data exceed the short-term burst limit, even if your sustained rate is within limits.
 
     Exact limits vary by deployment type, subscription, and current configuration.
-    Refer to the [Rate limiting section](opentelemetry://reference/motlp.md#rate-limiting) in the mOTLP reference documentation for details.
+    Refer to [Managed inputs rate limiting](opentelemetry://reference/managed-inputs/rate-limiting.md) for details.
 
 * In {{ech}}, the {{es}} capacity for your deployment might be underscaled for the current ingest rate.
 * In {{serverless-full}}, rate limiting should not result from {{es}} capacity, since the platform automatically scales ingest capacity. If you suspect a scaling issue, [contact Elastic Support](/troubleshoot/ingest/opentelemetry/contact-support.md).
@@ -112,5 +112,5 @@ To prevent 429 errors and maintain reliable telemetry data flow, implement these
 
 ## Resources
 
-* [{{motlp}} reference](opentelemetry://reference/motlp.md)
+* [{{motlp}} reference](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md)
 * [Send OTLP data to Elastic Serverless or {{ech}}](../../../solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md)
