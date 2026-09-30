@@ -31,10 +31,10 @@ To change a cluster’s topology, from deployment management, select **Edit depl
 
 For trials, larger sizes are not available until you [add a credit card](../../cloud-organization/billing/add-billing-details.md).
 
-For instances up to 64 GB of RAM, half the memory is assigned to the JVM heap (a bit less when monitoring is activated). For instances larger than 64 GB, the heap size is capped at 32 GB. For example, on a 32 GB instance, 16 GB are allotted to heap, while on a 128 GB instance, 32 GB are allotted to heap. Up to 256 GB RAM per instance is supported. The disk-to-RAM ratio currently is 1:24, meaning that you get 24 GB of storage space for each 1 GB of RAM. All clusters are backed by SSD drives.
+For most hardware profiles, in instances up to 64 GB of RAM, half the memory is assigned to the JVM heap (slightly less when monitoring is activated). Vector search optimized profiles allocate a smaller share to heap so that more memory is available for caching vector data. 
 
 ::::{note}
-Vector search relies heavily on the page cache to keep vector data quickly accessible, so [vector search optimized instance configurations](https://www.elastic.co/search-labs/blog/elasticsearch-vector-large-scale-part1) intentionally use a smaller heap-to-RAM ratio than the one described above, freeing up more memory for that cache. To check the actual heap size assigned to your instances, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes).
+To check the actual heap size on your instances, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes).
 ::::
 
 ::::{tip}
