@@ -59,7 +59,19 @@ Every execution begins with a trigger entry that shows how the run started, such
 
 ## View execution history [workflows-execution-history]
 
-To review past runs, select the **Executions** tab, then click each run to see detailed logs. Workflow runs can be `Pending`, `In progress`, `Completed`, or `Failed`. 
+To review past runs, select the **Executions** tab, then select each run to see detailed logs. Workflow runs can have the following statuses:
+
+- **Pending**: The run hasn't started yet.
+- **Queued**: The run is in the concurrency backlog waiting for a slot. For more information, refer to [Concurrency control](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-concurrency). {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` 
+- **Running**: The run is executing at least one step.
+- **Waiting**: The run paused on a [`wait`](/explore-analyze/workflows/steps/wait.md) step, a [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) or [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) step, or while waiting for a child workflow to finish.
+- **Success**: The run finished successfully.
+- **Error**: The run stopped because a step failed and the workflow didn't recover.
+- **Canceled**: The run was stopped before it finished.
+- **Timed out**: The run exceeded its workflow timeout.
+- **Skipped**: The run was discarded because another execution was already in flight.
+
+To start a new test run with data from a past execution, open the workflow in the editor and follow [Reuse data from a previous run](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input-historical). After a run from the editor finishes, you can also click the **Run again** icon {icon}`refresh` in the execution panel to open the **Test workflow** dialog with that run already selected.
 
 ## Troubleshoot errors [workflows-troubleshoot-errors]
 

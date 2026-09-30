@@ -295,6 +295,8 @@ If your [Elastic subscription level](https://www.elastic.co/subscriptions) suppo
 2. Click **Agent policies**. Click the name of the policy you want to change, then click **Settings**.
 3. Set **Output for integrations** and (optionally) **Output for agent monitoring** to use a different output, for example, {{ls}}. You might need to scroll down to see these options.
 
+    {applies_to}`serverless: ga` If an AWS PrivateLink connection is set up for your project, you can select **Private Elasticsearch Output** to send this policy's data over your private endpoint while other policies keep using the default. Refer to [AWS PrivateLink and {{fleet}}](/deploy-manage/security/private-connectivity-aws.md#aws-privatelink-and-fleet).
+
     Unable to select a different output? Confirm that your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per policy output assignment** in {{fleet}}.
 
     :::{image} images/agent-output-settings.png
@@ -462,6 +464,10 @@ A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
 
+To stay within these limits, group agents by role rather than creating a policy for each host. Refer to [](/reference/fleet/scale-integration-policies.md).
+
 ## Scaling limitations of integration package policies [integration-policies-scale-limitations]
 
 A single {{agent}} policy supports a maximum of 10,000 integration package policies.
+
+If you're approaching this limit because you've created one integration policy per host, you can usually consolidate them into a single policy. Refer to [](/reference/fleet/scale-integration-policies.md).

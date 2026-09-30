@@ -80,7 +80,7 @@ To connect to, stream data to, and issue queries, you need to think about authen
 
 ### Basic authentication [ec_basic_authentication_2]
 
-For basic authentication, use the same deployment credentials (`username` and `password` parameters) and Cloud ID you copied down earlier. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details. (If you did not save the password, you can [reset the password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) .)
+For basic authentication, use the same deployment credentials (`username` and `password` parameters) and Cloud ID you copied down earlier. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details. (If you did not save the password, you can [reset it](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).)
 
 You first need to create and edit an `example.ini` file with your deployment details:
 

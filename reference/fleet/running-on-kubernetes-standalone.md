@@ -176,7 +176,7 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
 
     ::::
 
-2. You can see data flowing in by going to **Analytics → Discover** and selecting the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](/explore-analyze/find-and-organize/data-views.md) for them.
+2. You can see data flowing in by going to **Analytics → Discover** and selecting the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for them.
 3. You can see predefined dashboards by selecting **Analytics→Dashboard**, or by [installing assets through an integration](/reference/fleet/view-integration-assets.md).
 
 

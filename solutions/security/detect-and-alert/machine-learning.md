@@ -46,6 +46,8 @@ For an overview of using {{ml}} with {{elastic-sec}}, refer to [{{anomaly-detect
 
 From there you can view, start, and stop all {{ml}} jobs associated with prebuilt detection rules.
 
+{applies_to}`serverless: ga` When {{cps}} is enabled, jobs you start here search all linked projects. To change the job's project scope, refer to [{{cps-cap}} scope](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
+
 ::::{note}
 You can also create custom {{ml}} jobs in the {{ml-app}} app and reference them when creating custom {{ml}} rules. Custom jobs are managed in the {{ml-app}} app, not the **{{siem-rules-ui}}** page settings menu.
 ::::

@@ -2,6 +2,7 @@ project: "Solutions and use cases"
 toc:
   - file: index.md
   - file: search.md
+    default_cta: search
     children:
       - file: search/get-started.md
         children:
@@ -44,6 +45,14 @@ toc:
               - file: search/vector/dense-vector.md
                 children:
                   - file: search/vector/knn.md
+                    children:
+                      - file: search/vector/knn/approximate-knn.md
+                        children:
+                          - file: search/vector/knn/filtered-knn-search.md
+                          - file: search/vector/knn/nested-knn-search.md
+                          - file: search/vector/knn/approximate-knn-query-examples.md
+                          - file: search/vector/knn/optimize-performance-accuracy.md
+                      - file: search/vector/knn/exact-knn.md
                   - file: search/vector/bring-own-vectors.md
                   - file: search/vector/vector-storage-for-semantic-search.md
                   - file: search/vector/gpu-vector-indexing.md
@@ -72,6 +81,7 @@ toc:
           - file: search/site-or-app/search-ui.md
       - file: search/apis-and-tools.md
   - file: elasticsearch-solution-project.md
+    default_cta: search
     children:
       - file: elasticsearch-solution-project/get-started.md
         children:
@@ -90,10 +100,13 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
-  - hidden: vector-database.md
+  - file: vector-database.md
+    default_cta: vector
     children:
-      - hidden: vector-database/get-started.md
+      - file: vector-database/get-started.md
+      - file: vector-database/vector-full-text-search.md
   - file: observability.md
+    default_cta: observability
     children:
       - file: observability/get-started.md
         children:
@@ -107,6 +120,7 @@ toc:
               - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
               - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
+          - file: observability/get-started/opentelemetry/start-with-otel.md
           - file: observability/get-started/opentelemetry/quickstart/index.md
             children:
               - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
@@ -564,6 +578,7 @@ toc:
       - file: observability/observability-serverless-feature-tiers.md
       - file: observability/apis.md
   - file: security.md
+    default_cta: security
     children:
       - file: security/get-started.md
         children:
@@ -585,7 +600,6 @@ toc:
               - file: security/get-started/spaces-defend-faq.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
-          - file: security/get-started/siem-readiness.md
       - file: security/esql-for-security.md
         children:
           - file: security/esql-for-security/esql-threat-hunting-tutorial.md

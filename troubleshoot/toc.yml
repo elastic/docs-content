@@ -87,6 +87,13 @@ toc:
           - file: elasticsearch/discovery-troubleshooting.md
           - file: elasticsearch/monitoring-troubleshooting.md
           - file: elasticsearch/transform-troubleshooting.md
+          - file: elasticsearch/machine-learning-cps.md
+            children:
+              - file: elasticsearch/machine-learning/cps-datafeed-project-scope.md
+              - file: elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md
+              - file: elasticsearch/machine-learning/cps-datafeed-scope-change.md
+              - file: elasticsearch/machine-learning/cps-datafeed-credentials.md
+              - file: elasticsearch/machine-learning/cps-datafeed-field-mappings.md
           - file: elasticsearch/watcher-troubleshooting.md
           - file: elasticsearch/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md
   - file: kibana.md

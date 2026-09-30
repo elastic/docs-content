@@ -8,15 +8,17 @@ description: Learn which regions host Elastic Inference Service (EIS), how infer
 
 # Region and hosting [eis-regions]
 
-EIS is available to all Elastic customers in all regions on Elastic Cloud Serverless, Hosted, and Cloud-Connect. This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is currently deployed and explains how {{infer}} requests are routed.
+EIS is available to all Elastic customers in all regions on Elastic Cloud Serverless, Hosted, and also via [Cloud Connect](/deploy-manage/cloud-connect.md). This page lists the {{aws}}, Azure, and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is currently deployed and explains how {{infer}} requests are routed.
 
 ## Available regions [available-regions]
 
 **{{aws}}:**
 
-* `ap-northeast-1` (Tokyo)
+* `ap-northeast-1` (Tokyo, Japan)
+* `ap-southeast-2` (Sydney, Australia)
+* `ca-central-1` (Montreal, Canada)
 * `eu-central-1` (Frankfurt, Germany)
-* `eu-west-2` (London)
+* `eu-west-2` (London, UK)
 * `us-east-1` (N. Virginia, US)
 * `us-west-2` (Oregon, US)
 
