@@ -177,7 +177,7 @@ After resolving all conflicts, select **Update rule** to apply the update.
 
 ## Update rules with a rule type change [update-rule-type-change]
 
-When an Elastic update changes a rule's type, for example, from a custom query rule to an event correlation rule, you can accept only the Elastic version of the rule. You can't edit the final update, and updating the rule overwrites your customizations. The rule keeps its exceptions and actions, but some of them might stop working or behave differently with the new rule type. Response actions come from the Elastic version, so the update removes any response actions you added.
+When an Elastic update changes a rule's type, for example, from a custom query rule to an event correlation rule, you can accept only the Elastic version of the rule. You can't edit the final update, and updating the rule overwrites your customizations. The rule keeps its exceptions and actions, including response actions, but some of them might stop working or behave differently with the new rule type.
 
 With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, the rule update flyout shows a **Rule type change** warning for these rules. **Update all** and **Update *x* selected rule(s)** skip customized rules whose type changes. For rules you haven't customized:
 
