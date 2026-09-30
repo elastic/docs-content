@@ -1,6 +1,7 @@
 ---
 navigation_title: Elastic plugin for Claude
 description: "Install the official Elastic plugin for Claude to give the Claude AI assistant specialized skills, MCP server access, and Elastic-stack knowledge in any Claude environment."
+type: overview
 applies_to:
   stack: ga
   serverless: ga
@@ -25,7 +26,7 @@ Once installed, the plugin gives Claude the procedural knowledge to perform comm
 
 - Write and run ES|QL queries against a live cluster.
 - Build and manage {{kib}} dashboards, alerting rules, and workflows.
-- Onboard a service into {{observability}} using EDOT.
+- Onboard a service into {{observability}} using {{edot}}.
 - Triage {{elastic-sec}} alerts and manage cases.
 - Provision Elastic Cloud resources and manage user access.
 
@@ -58,7 +59,7 @@ The Elastic plugin for Claude packages those same skills into the Claude plugin 
 
 :::{image} images/claude-code-discover-elastic-plugin.png
 :screenshot:
-:alt: The Claude Code plugins panel showing the Discover tab with a search for Elastic. The Elastic plugin appears as the top result with an Add button.
+:alt: The Claude plugins settings panel showing the Discover tab with a search for Elastic. The Elastic plugin appears as the top result with an Add button.
 :width: 700px
 :::
 
