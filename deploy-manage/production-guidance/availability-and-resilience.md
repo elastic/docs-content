@@ -14,11 +14,11 @@ products:
 
 # Design for resilience [high-availability-cluster-design]
 
-Distributed systems like {{es}} are designed to keep working even if some of their components have failed. As long as there are enough well-connected nodes to take over their responsibilities, an {{es}} cluster can continue operating normally if some of its nodes are unavailable or disconnected.
-
 :::{admonition} Serverless does it for you
 {{serverless-full}} is designed to be resilient to node, zone, and index-level failures automatically. Because {{serverless-short}} uses a different architecture, the information on this page does not apply to {{serverless-short}} projects. To learn about the resilience features of {{serverless-short}}, refer to [](./availability-and-resilience/resilience-in-serverless.md).
 :::
+
+Distributed systems like {{es}} are designed to keep working even if some of their components have failed. As long as there are enough well-connected nodes to take over their responsibilities, an {{es}} cluster can continue operating normally if some of its nodes are unavailable or disconnected.
 
 {{es}} implements high availability (HA) at three key levels:
 
