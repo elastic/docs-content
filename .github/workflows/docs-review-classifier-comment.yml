@@ -18,5 +18,6 @@ jobs:
       && github.event.workflow_run.conclusion == 'success'
     permissions:
       actions: read
+      contents: read
       pull-requests: write
     uses: elastic/docs-actions/.github/workflows/review-classifier-comment.yml@v1

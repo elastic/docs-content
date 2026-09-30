@@ -31,5 +31,3 @@ jobs:
     with:
       pr-number: ${{ inputs.pr-number }}
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run }}
-      # Files that docs-builder excludes from the docset.
-      skip-paths: README.md AGENTS.md AI.md CLAUDE.md GEMINI.md changelog/** releases/**
