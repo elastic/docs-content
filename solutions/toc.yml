@@ -13,7 +13,7 @@ toc:
               - file: search/get-started/semantic-search.md
       - file: search/set-up.md
         children:
-          - file: search/set-up/get-started-with-elasticsearch.md
+          - file: search/set-up/choose-a-deployment-type.md
           - file: search/set-up/api-key-and-endpoints.md
           - file: search/set-up/connect-through-an-sdk.md
       - file: search/ingest-for-search.md

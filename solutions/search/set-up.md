@@ -4,19 +4,22 @@ applies_to:
   serverless:
 products:
   - id: elasticsearch
+  - id: kibana
   - id: cloud-serverless
+  - id: serverless-vector-database
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 navigation_title: Set up
-description: Compare Elasticsearch deployment options for search and choose where to run your project.
+description: Prepare Elasticsearch for search by selecting a deployment type, then connecting with an endpoint, API key, and language client.
+type: overview
 ---
 
-# Set up
+# Set up Elasticsearch for search [set-up-elasticsearch-for-search]
 
-Compare deployment options and get connected to {{es}} for search.
+This section covers where {{es}} runs for a search application and how you connect to it. Refer to the following pages to set up your {{es}} deployment:
 
-This page will include a side-by-side comparison of Vector Database Serverless, {{es}} Serverless, Elastic Cloud Hosted, and self-managed deployments.
-
-## In this section
-
-- [](/solutions/search/set-up/get-started-with-elasticsearch.md)
-- [](/solutions/search/set-up/api-key-and-endpoints.md)
-- [](/solutions/search/set-up/connect-through-an-sdk.md)
+* [](/solutions/search/set-up/choose-a-deployment-type.md): Compare deployment types and select one for your search workload.
+* [](/solutions/search/set-up/api-key-and-endpoints.md): Find the {{es}} endpoint and create an API key for search.
+* [](/solutions/search/set-up/connect-through-an-sdk.md): Install an official language client and connect it to your deployment.
