@@ -39,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       issue-url: ${{ inputs.issue-url || github.event.issue.html_url }}
+      profile-path: ${{ steps.route.outputs.profile-path }}
       enrich: ${{ steps.route.outputs.enrich }}
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
     env:
@@ -71,10 +72,15 @@ jobs:
             echo "Board assignment complete: https://github.com/orgs/elastic/projects/$board" >> "$GITHUB_STEP_SUMMARY"
             echo "routed=true" >> "$GITHUB_OUTPUT"
           fi
-          if [ "$board" = "1034" ] && [ -f .github/project-metadata/ski.yml ]; then
+          case "$board" in
+            1034) profile=.github/project-metadata/ski.yml ;;
+            2517) profile=.github/project-metadata/core.yml ;;
+          esac
+          if [ -f "$profile" ]; then
+            echo "profile-path=$profile" >> "$GITHUB_OUTPUT"
             echo "enrich=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Enrichment skipped: no metadata profile is available." >> "$GITHUB_STEP_SUMMARY"
+            echo "Enrichment skipped: $profile is not available." >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Remove pending team label
         if: steps.route.outputs.routed == 'true'
@@ -92,7 +98,7 @@ jobs:
     uses: elastic/docs-actions/.github/workflows/gh-aw-project-metadata.lock.yml@v1
     with:
       issue-url: ${{ needs.prepare.outputs.issue-url }}
-      profile-path: .github/project-metadata/ski.yml
+      profile-path: ${{ needs.prepare.outputs.profile-path }}
       dry-run: ${{ fromJSON(needs.prepare.outputs.dry-run) }}
     secrets:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
