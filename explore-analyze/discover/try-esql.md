@@ -32,6 +32,7 @@ To follow this tutorial, you need the following:
 
 - {{esql}} enabled in {{kib}}. It's enabled by default. On {{stack}} deployments, an administrator can turn it off with the `enableESQL` advanced setting.
 - The {{kib}} sample web logs. Add them from [Add sample data](/manage-data/ingest/sample-data.md). You can use your own indices instead. Replace `kibana_sample_data_logs` in the examples with a data source you can query, and replace the field names in later steps with fields from your data.
+- To help you go faster with what you learn in this tutorial, or to go further once you know the basics, the {{esql}} editor offers several tools. It suggests commands, fields, and values as you type, and its in-app help shows the syntax of each command. Depending on your version and setup, you can also browse data sources and fields, start a query from a KQL search, or have AI write or fix a query. This tutorial has you write each command yourself so that you learn what it does. Refer to [Write queries with the {{esql}} editor](../query-filter/languages/esql-kibana.md#esql-kibana-get-started).
 
 ## Step 1: Query a data source [tutorial-try-esql]
 
