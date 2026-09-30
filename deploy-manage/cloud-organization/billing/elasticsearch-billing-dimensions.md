@@ -33,6 +33,7 @@ The number of VCUs you need is determined by:
 
 * Volume and ingestion rate of your data
 * Data retention requirements
+* Number of indices
 * Search query volume
 * Search Power setting
 * Machine learning usage
@@ -90,12 +91,11 @@ To ensure optimal performance and cost-effectiveness for your project, it's impo
   Where your use case allows, batch documents into fewer, larger [`_bulk`]({{cloud-serverless-apis}}operation/operation-bulk) requests.
 * **Index count and size**: Consolidate small indices for better efficiency.
   In general, avoid a design where your project contains hundreds of very small indices, specifically those under 1GB each.
-  Avoiding small indices is important because every index in {{es}} has a certain amount of resource overhead.
+  Avoiding large numbers of small indices is important because every index in {{es}} has a certain amount of resource overhead.
   {{es}} needs to maintain metadata for each index to keep it running smoothly.
-  When you have a very large number of small indices, the combined overhead from all of them can consume more CPU resources than if the same data were stored in fewer, larger indices.
-  Higher resource consumption can lead to higher costs and potentially impact the overall performance of your project.
+  Higher resource consumption associated with large numbers of small indices leads to higher costs and can ultimately impact the overall performance of your project.
   
-  If your use case naturally generates many small, separate streams of data, the recommended approach is to implement a process to consolidate them into fewer, larger indices. This practice leads to more efficient resource utilization. By grouping your data into larger indices, you can ensure a more performant and cost-efficient experience with {{es-serverless}}.
+  If your use case naturally generates many small, separate streams of data, the recommended approach is to implement a data model which consolidates them into fewer, larger indices. This practice leads to more efficient resource utilization. By grouping your data into larger indices, you can ensure a more performant and cost-efficient experience with {{es-serverless}}.
 
 ### Project subtype or profile [elasticsearch-billing-project-subtype-or-profile]
 When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) to create projects, be aware that the `optimized_for` option affects the VCU allocation and costs.
