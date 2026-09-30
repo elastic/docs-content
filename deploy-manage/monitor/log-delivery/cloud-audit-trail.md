@@ -62,7 +62,7 @@ To use the {{ecloud}} audit trail, you need the following:
 * A [Platinum or Enterprise subscription]({{subscriptions}}).
 * An [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with organization owner permissions.
 * A destination deployment in the same organization to store audit logs. You might choose to use a dedicated deployment to keep audit data separate from production workloads.
-* Your organization ID. You can find this on the [Organization](https://cloud.elastic.co/organization/members) page under the organization name.
+* Your organization ID. You can find this on the [Organization](https://console.us-gov-east-1.aws.elastic-cloud.com/organization/members) page under the organization name.
 * The destination deployment ID. You can find this on the deployment's **Overview** page in the {{ecloud}} Console.
 
 ## Set up {{ecloud}} audit trail
@@ -72,24 +72,23 @@ To set up {{ecloud}} audit trail, you [install the integration](#install-the-ecl
 :::::::{stepper}
 :::::{step} Install the {{ecloud}} integration
 
-Before you enable delivery, install the **{{ecloud}}** integration on the destination deployment. The integration sets up everything you need to index and explore audit log events.
+Before you enable delivery, install the **Elastic GovCloud** integration on the destination deployment. The integration sets up everything you need to index and explore audit log events.
 
 To install the integration:
 
 1. Open {{kib}} on the destination deployment.
 2. Find **Integrations** in the navigation menu or use the global search field.
-3. Search for **{{ecloud}}**, and then select the card from the list.
-4. On the {{ecloud}} integration page, click **Add {{ecloud}}**.
+3. Search for **Elastic GovCloud**, and then select the card from the list.
+4. On the integration page, click **Add Elastic GovCloud**.
 5. On the installation page, click **Install assets only**. No agent policy is needed because the audit service pushes logs directly to your destination deployment.
 6. Confirm the installation.
 
 The following resources are installed:
 
-* Index templates for `logs-elastic_cloud.audit-*`
-* An ingest pipeline for the `elastic_cloud.audit` data stream
-* Field mappings, including [ECS](https://www.elastic.co/docs/reference/ecs) fields and `elastic_cloud.audit.api_key.*` fields
-* The **{{ecloud}} audit logs** data view (`logs-elastic_cloud.audit-*`)
-* The **[{{ecloud}}] Audit Logs** dashboard
+* Index templates for `logs-elastic_govcloud.org_audit-*`
+* An ingest pipeline for the `logs-elastic_govcloud.org_audit` data stream
+* Field mappings, including [ECS](https://www.elastic.co/docs/reference/ecs) fields and `elastic_govcloud.org_audit.api_key.*` fields
+* The **[Elastic GovCloud] Organization Audit Logs** dashboard
 :::::
 
 :::::{step} Enable audit log delivery
@@ -98,16 +97,16 @@ As an organization owner, enable delivery by calling the audit logs API.
 
 Events start flowing when you enable delivery. Historical cloud audit logs are not backfilled.
 
-1. Send a `POST` request to the audit logs endpoint, specifying your destination deployment and a data stream name that matches `logs-elastic_cloud.audit-*`. Replace the placeholders with your own values.
+1. Send a `POST` request to the audit logs endpoint, specifying your destination deployment and a data stream name that matches `logs-elastic_govcloud.org_audit-*`. Replace the placeholders with your own values.
 
    ```sh
    curl -X POST \
      -H "Authorization: ApiKey $CLOUD_API_KEY" \ <1>
      -H "Content-Type: application/json" \
-     "https://api.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs" \ <2>
+     "https://api.us-gov-east-1.aws.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs" \ <2>
      -d '{
        "deployment_id": "<DESTINATION_DEPLOYMENT_ID>", <3>
-       "index": "logs-elastic_cloud.audit-default" <4>
+       "index": "logs-elastic_govcloud.org_audit-default" <4>
      }'
    ```
    1. Replace `$CLOUD_API_KEY` with your {{ecloud}} API key
@@ -115,7 +114,7 @@ Events start flowing when you enable delivery. Historical cloud audit logs are n
    3. Replace `<DESTINATION_DEPLOYMENT_ID>` with the ID of the hosted deployment that receives the logs
    4. Represents the default data stream namespace.
 
-   To use a different data stream namespace, replace the `default` segment of the index name with your preferred namespace, for example `logs-elastic_cloud.audit-production`. The name must match the `logs-elastic_cloud.audit-*` pattern so that the installed index templates apply.
+   To use a different data stream namespace, replace the `default` segment of the index name with your preferred namespace, for example `logs-elastic_govcloud.org_audit-production`. The name must match the `logs-elastic_govcloud.org_audit-*` pattern so that the installed index templates apply.
 
    The data stream is created with a configurable retention policy that defaults to 30 days, and the failure store enabled.
 
@@ -128,7 +127,7 @@ Events start flowing when you enable delivery. Historical cloud audit logs are n
    ```sh
    curl -X GET \
      -H "Authorization: ApiKey $CLOUD_API_KEY" \
-     "https://api.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs"
+     "https://api.us-gov-east-1.aws.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs"
    ```
 
    The response returns the configured `deployment_id` and `index`.
@@ -150,7 +149,7 @@ If you need to decommission the destination deployment or switch to a different 
 ```sh
 curl -X DELETE \
   -H "Authorization: ApiKey $CLOUD_API_KEY" \
-  "https://api.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs"
+  "https://api.us-gov-east-1.aws.elastic-cloud.com/api/v1/organizations/$ORG_ID/audit_logs"
 ```
 
 This stops the delivery stream and invalidates the writer API key, but does not delete documents that were already indexed.
