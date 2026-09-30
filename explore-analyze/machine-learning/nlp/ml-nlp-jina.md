@@ -119,9 +119,9 @@ Reader models extract clean, structured content from HTML and complex documents 
 | --- | --- | --- | --- |
 | [`ReaderLM-v2`](https://jina.ai/models/ReaderLM-v2/) | Converts raw HTML into Markdown or JSON. Accepts HTML input and generates Markdown or JSON output. Supports input lengths up to 512K tokens. | [Jina](#jina-hosted), [Cloud Marketplaces](#jina-cloud-marketplaces), [On-prem](#jina-on-prem) | [Jina API](#jina-external), [Cloud marketplace endpoints](#jina-cloud-marketplaces-access) |
 
-### Optical character recognition (OCR) and document parsing models [jina-ocr]
+### OCR and document parsing models [jina-ocr]
 
-OCR models extract text, tables, formulas, and reading order from rendered pages or scanned documents and return structured output, ready for indexing and RAG pipelines.
+Optical character recognition (OCR) models extract text, tables, formulas, and reading order from rendered pages or scanned documents and return structured output, ready for indexing and RAG pipelines.
 
 | Model | Description | Deployment | Access |
 | --- | --- | --- | --- |
