@@ -185,10 +185,12 @@ With an Enterprise subscription on {{stack}} or a Security Analytics Complete pr
 
     1. To avoid also accepting Elastic's suggested resolutions for customized rules, select **Unmodified** in the **Modified/Unmodified** filter.
     2. Select the rules you want to update, then select **Update *x* selected rule(s)**.
-    3. In the **Conflicts found** dialog, select **Update rules**. The dialog counts rules whose type changes as auto-resolved conflicts, so **Update rules without conflicts** skips them.
+    3. In the **Conflicts found** dialog, select **Update rules**. The dialog counts these rules as auto-resolved conflicts even though you haven't customized them, so **Update rules without conflicts** skips them.
     4. Check the updated rules' exceptions and actions.
 
-* {applies_to}`stack: ga 9.0-9.3` You can't update them in bulk, the same as customized rules.
+* {applies_to}`stack: ga 9.0-9.3` As with customized rules, you can't update them in bulk.
+
+With a Basic–Platinum subscription on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, **Update all** and **Update *x* selected rule(s)** also update rules whose type changes.
 
 To update a single rule whose type changes:
 
