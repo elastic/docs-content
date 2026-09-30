@@ -11,7 +11,7 @@ products:
 # Find your Cloud ID [ec-cloud-id]
 
 ::::{note}
-This page is for {{ech}} deployments. If you're using a {{serverless-full}} project, refer to [Find your project connection details](find-connection-details-serverless.md).
+This page is for {{ech}} deployments. If you're using a {{serverless-full}} project, refer to [](find-connection-details-serverless.md).
 ::::
 
 The Cloud ID reduces the number of steps required to start sending data from Beats or Logstash to your hosted {{es}} cluster on {{ecloud}}. Because we made it easier to send data, you can start exploring visualizations in {{kib}} on {{ecloud}} that much more quickly.
