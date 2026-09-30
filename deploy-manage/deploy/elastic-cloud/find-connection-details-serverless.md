@@ -8,7 +8,7 @@ products:
 type: how-to
 ---
 
-# Find your project connection details [serverless-connection-details]
+# Find your {{serverless-short}} project connection details [serverless-connection-details]
 
 ::::{note}
 This page is for {{serverless-full}} projects. If you're using an {{ech}} deployment, refer to [](find-cloud-id.md).
