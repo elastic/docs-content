@@ -1,6 +1,6 @@
 ---
 navigation_title: Explore metrics
-description: Query, visualize, and alert on metrics using ES|QL, PromQL, Discover, the Infrastructure UI, Kibana dashboards, or Grafana.
+description: "Query, visualize, and alert on metrics using ES|QL, PromQL, Discover, the Infrastructure UI, Kibana dashboards, or Grafana."
 applies_to:
   stack: ga
   serverless:
@@ -26,7 +26,7 @@ Pick a language based on what you ingested and what you want to do:
 | If you want to | Use |
 |---|---|
 | Run time-series queries over OpenTelemetry (OTel) or Prometheus remote write metrics, including counters, rates, and time buckets | [{{esql}} with time-series (TS) mode](#metrics-query-esql-ts) {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` |
-| Reuse existing Prometheus queries, alerting rules, or Grafana dashboards | [PromQL](#metrics-query-promql) {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` |
+| Reuse existing Prometheus queries, alerting rules, or Grafana dashboards | [PromQL](#metrics-query-promql) {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` |
 
 ### {{esql}} for metrics [metrics-query-esql]
 
@@ -59,7 +59,7 @@ When a TSDS is downsampled, keep using the `TS` command. It's the optimized way 
 
 ### PromQL for metrics [metrics-query-promql]
 ```{applies_to}
-stack: preview =9.4, ga 9.5+
+stack: ga 9.5+, preview =9.4
 serverless: ga
 ```
 
@@ -112,7 +112,9 @@ After you can see the time series you care about, create a rule so a threshold n
 :   Alert on infrastructure resources from the **Infrastructure inventory** page.
 
 [Create a metric threshold rule](/solutions/observability/incident-management/create-metric-threshold-rule.md) {applies_to}`serverless: unavailable`
-:   Alert on metrics in the Infrastructure metrics indices. Create this rule from the **Rules** page. For Stack versions 9.0-9.3, you can also create it from **Metrics Explorer**.
+:   Alert on metrics in the Infrastructure metrics indices. Create this rule from the **Rules** page.
+
+    {applies_to}`stack: deprecated 9.4+, ga 9.0-9.3` You can also create this rule from **Metrics Explorer**.
 
 For the full list of {{observability}} rule types, refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md).
 

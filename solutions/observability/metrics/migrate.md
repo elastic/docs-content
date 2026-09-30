@@ -59,7 +59,7 @@ Use this endpoint rather than sending remote write traffic directly to {{es}}, w
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
-{applies_to}`stack: preview =9.4, ga 9.5+` The Managed Prometheus Remote Write endpoint isn't available. Send remote write traffic to {{es}} directly by adding this block to `prometheus.yml`:
+{applies_to}`stack: ga 9.5+, preview =9.4` The Managed Prometheus Remote Write endpoint isn't available. Send remote write traffic to {{es}} directly by adding this block to `prometheus.yml`:
 
 ```yaml
 remote_write:
@@ -79,6 +79,8 @@ For the endpoint URL, authentication, Grafana Alloy configuration, and how to ro
 By default, samples land in the `metrics-generic.prometheus-default` data stream. Prometheus metric names become `metrics.<metric_name>` fields, and labels become `labels.<label_name>` dimensions. PromQL continues to use the original Prometheus names. {{esql}} uses the {{es}} field names. For the mapping table, refer to [Data mapping](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#data-mapping).
 
 Grafana Alloy and other Prometheus remote write clients send to the same URL you configured in this step. For an Alloy example that targets the {{es}} endpoint, refer to [From Grafana Alloy](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#from-grafana-alloy). On {{serverless-full}} and {{ech}}, use the managed Prometheus endpoint as the URL instead.
+
+To confirm that samples are arriving, open **{{index-manage-app}}** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), select the **Data Streams** tab, and check that the data stream exists and its storage size grows as Prometheus sends samples.
 ::::::
 
 ::::::{step} Query and visualize
@@ -86,7 +88,7 @@ Grafana Alloy and other Prometheus remote write clients send to the same URL you
 
 After samples are in Elastic, you can keep your existing Grafana dashboards and PromQL.
 
-{applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` If you use Grafana and want to keep doing so, point it at {{es}} as a Prometheus data source. Grafana treats {{es}} like any other Prometheus backend, so existing dashboards and template variables keep working as long as they use supported PromQL. For the data source URL and authentication, refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md). For constructs {{es}} doesn't support, refer to [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md).
+{applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` If you use Grafana and want to keep doing so, point it at {{es}} as a Prometheus data source. Grafana treats {{es}} like any other Prometheus backend, so existing dashboards and template variables keep working as long as they use supported PromQL. For the data source URL and authentication, refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md). For constructs {{es}} doesn't support, refer to [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md).
 
 To query those metrics with PromQL in Elastic, or with Elasticsearch Query Language ({{esql}}) time-series mode, refer to [Explore metrics](/solutions/observability/metrics/explore.md#metrics-query).
 ::::::
@@ -123,7 +125,7 @@ If a collector already receives your metrics and exports them to Datadog, add El
 
 Any OpenTelemetry Collector distribution can do this, including vendor distributions. On {{ecloud}}, add an `otlp` exporter that points at the Managed OTLP Endpoint. On self-managed {{stack}}, forward OTLP to {{agent}} in OTel mode running as a gateway.
 
-For the Elastic OTLP destination, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp). {applies_to}`self: ga 9.2+` For the self-managed gateway pattern, refer to [Send data from an upstream OpenTelemetry Collector](/solutions/observability/get-started/opentelemetry/use-cases/upstream-collector/index.md).
+For the Elastic OTLP destination, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp). For the self-managed gateway pattern, refer to [Send data from an upstream OpenTelemetry Collector](/solutions/observability/get-started/opentelemetry/use-cases/upstream-collector/index.md).
 
 ### Replace Datadog Agent host and Kubernetes collection [metrics-migrate-datadog-infra]
 

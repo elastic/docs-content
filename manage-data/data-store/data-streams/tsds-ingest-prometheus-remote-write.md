@@ -1,7 +1,7 @@
 ---
 navigation_title: "Prometheus remote write endpoint"
 applies_to:
-  stack: preview =9.4, ga 9.5+
+  stack: ga 9.5+, preview =9.4
   serverless: ga
 products:
   - id: elasticsearch

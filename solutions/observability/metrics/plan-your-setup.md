@@ -49,7 +49,7 @@ The schema you end up with affects how you ingest, which metric names you query,
 | **Ingest using** | EDOT SDKs, any OTLP-compatible client, {{agent}} in OTel mode | {{agent}} integrations, {{metricbeat}} |
 | **Metric names** | OpenTelemetry semantic conventions (`system.cpu.utilization`) | ECS (`system.cpu.user.pct`) |
 | **Prebuilt dashboards** | OpenTelemetry content packs from the {{kib}} {{integrations}} UI | {{agent}} integration dashboards |
-| **PromQL support** {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | Yes | Yes, when the integration stores data as a time series data stream (TSDS) |
+| **PromQL support** {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` | Yes | Yes, when the integration stores data as a time series data stream (TSDS) |
 | **Recommended for** | Default | Existing ECS integrations, dashboards, and alerts |
 
 PromQL support depends on storage, not schema. {{es}} evaluates PromQL over any TSDS matched by `metrics-*`, whichever ingest path filled it. OTLP and Prometheus remote write metrics always land in a TSDS. {{agent}} integration data streams are a TSDS when the integration enables it. Refer to the [PromQL reference](elasticsearch://reference/query-languages/promql.md).
@@ -62,7 +62,7 @@ Your deployment type determines the recommended path. Use {{agent}} integrations
 |---|---|---|
 | {{serverless-full}} | Managed OTLP Endpoint | Managed Prometheus Remote Write endpoint, {{agent}} integrations |
 | {{ech}} | Managed OTLP Endpoint | Managed Prometheus Remote Write endpoint {applies_to}`stack: ga 9.4+`, {{agent}} integrations |
-| Self-managed {{stack}}, {{ece}}, {{eck}} | {{agent}} in OTel mode as a gateway | {{es}} OTLP/HTTP endpoint {applies_to}`self: ga 9.2+` {applies_to}`ece: ga` {applies_to}`eck: ga`, {{es}} Prometheus remote write endpoint {applies_to}`stack: preview =9.4, ga 9.5+`, {{agent}} integrations |
+| Self-managed {{stack}}, {{ece}}, {{eck}} | {{agent}} in OTel mode as a gateway | {{es}} OTLP/HTTP endpoint {applies_to}`stack: ga 9.2+`, {{es}} Prometheus remote write endpoint {applies_to}`stack: ga 9.5+, preview =9.4`, {{agent}} integrations |
 
 For configuration details for each path, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
 

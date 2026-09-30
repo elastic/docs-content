@@ -17,6 +17,13 @@ This page walks you through the fastest way to try metrics in Elastic: add one s
 
 When you're ready to add more sources and plan a production rollout, continue with [Next steps](#metrics-get-started-next).
 
+## Before you begin [metrics-get-started-before]
+
+You need:
+
+- An Elastic deployment or project: {{serverless-full}}, {{ech}}, or a self-managed {{stack}} deployment.
+- Access to install and run {{agent}} where your workloads run, or an application that can export OpenTelemetry metrics.
+
 :::::::{stepper}
 
 ::::::{step} Get data flowing
@@ -36,7 +43,7 @@ To send **custom application metrics** instead of infrastructure metrics, follow
 ::::::{step} Explore and query your data
 :anchor: metrics-get-started-explore
 
-Once metrics are flowing, confirm they arrived and run your first query in {{kib}}:
+After metrics are flowing, confirm they arrived and run your first query in {{kib}}:
 
 :::::{applies-switch}
 
@@ -70,9 +77,9 @@ To view infrastructure health by resource, such as hosts or pods, rather than by
 
 ## Next steps [metrics-get-started-next]
 
-The quickstart gets one source flowing. Before you roll metrics out across your estate:
+The quickstart gets one source flowing. Before you roll metrics out across your infrastructure:
 
 - **Choose a data model.** Decide whether to standardize on the OpenTelemetry schema (recommended) or Elastic Common Schema (ECS). The ingest path you use determines the schema, the schema determines your metric field names, and the field names determine which prebuilt dashboards work and how your queries and alerts are written. Changing it later means rewriting those assets, so settle it early, while you only have one source to migrate. Refer to [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md).
-- **Add more sources.** Send metrics using any OTLP-compatible client, Prometheus remote write, or {{agent}} integrations for specific services such as nginx, PostgreSQL, or Redis. For path-by-path configuration, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
+- **Add more sources.** Send metrics using any OTLP-compatible client, Prometheus remote write, or {{agent}} integrations for specific services such as Nginx, PostgreSQL, or Redis. For path-by-path configuration, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
 - **Migrate an existing stack.** If you're moving from Prometheus or Datadog, you can run both systems side by side and switch over gradually. Refer to [Migrate metrics to Elastic](/solutions/observability/metrics/migrate.md).
 - **Manage storage and retention.** Metrics volume grows faster than most teams expect, and cardinality is the usual cause. Before your setup becomes production-critical, set up downsampling and retention so storage costs stay predictable. Refer to [Manage metrics storage](/solutions/observability/metrics/manage-storage.md).

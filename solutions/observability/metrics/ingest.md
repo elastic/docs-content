@@ -32,13 +32,13 @@ Send metrics to the Managed OTLP Endpoint. Use the setup that matches the source
 - **Application metrics:** Point your EDOT SDKs or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
 - **Infrastructure metrics (host, {{k8s}}, Docker):** Run {{agent}} in OTel mode on your hosts or cluster and configure its OTLP exporter to send data to the endpoint.
 
-{{es}} doesn't expose an OTLP endpoint of its own on {{serverless-full}} or {{ech}}. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
+The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}} or {{ech}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
 Run {{agent}} in OTel mode as a gateway. The Managed OTLP Endpoint isn't available for self-managed {{stack}}, {{ece}}, or {{eck}} deployments. The gateway exposes an OTLP endpoint that your EDOT SDKs and edge collectors send to, and it writes to {{es}} with the `elasticsearch` exporter. For gateway versus edge setup, refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
 
-{applies_to}`self: ga 9.2+` {applies_to}`ece: ga` {applies_to}`eck: ga` {{es}} also accepts OTLP/HTTP directly on `/_otlp/v1/metrics`. Use it when an application exports OTLP natively and you don't want to run a Collector. Metrics land in a time series data stream (TSDS) through built-in index templates. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) and [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md).
+{applies_to}`stack: ga 9.2+` {{es}} also accepts OTLP/HTTP directly on `/_otlp/v1/metrics`. Use it when an application exports OTLP natively and you don't want to run a Collector. Metrics land in a time series data stream (TSDS) through built-in index templates. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) and [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md).
 ::::
 
 :::::
@@ -92,7 +92,7 @@ Use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/man
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
-{applies_to}`stack: preview =9.4, ga 9.5+` Send remote write traffic to the {{es}} `/_prometheus/api/v1/write` endpoint. Managed inputs aren't available on these deployments. For the URL, authentication, Grafana Alloy configuration, and data stream routing, refer to [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
+{applies_to}`stack: ga 9.5+, preview =9.4` Send remote write traffic to the {{es}} `/_prometheus/api/v1/write` endpoint. Managed inputs aren't available on these deployments. For the URL, authentication, Grafana Alloy configuration, and data stream routing, refer to [Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
 ::::
 
 :::::
