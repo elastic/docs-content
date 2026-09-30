@@ -125,5 +125,5 @@ The way that you alter the resources allocated to your {{kib}} instance depends 
 
 :::{note}
 :applies_to: { self:, eck: }
-Node.js suggests [allocating](/deploy-manage/production-guidance/kibana-configure-memory.md) 80% of available host memory to heap, assuming that {{kib}} is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example, allowing for HTTP sockets to be allocated.
+When running in a container, including {{eck}}, {{kib}} automatically sets the default Node.js heap based on the container memory limit. Starting in {{kib}} 9.4.0, the default is 75% of available memory, up to 4096 MB. Leave `--max-old-space-size` unset unless you need to override this default. For more information, refer to [](./kibana-configure-memory.md).
 :::
