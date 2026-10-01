@@ -17,13 +17,15 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-Use the {{context-engine}} APIs to manage AI indices, inspect their configuration, and query their Knowledge Indicators (KIs) with {{esql}}. This page provides quick access to the available operations. The {{kib}} API reference provides their complete parameters, request and response schemas, and errors.
+Use the {{context-engine}} APIs to manage AI indices, inspect their configuration, and query their Knowledge Indicators (KIs) with {{esql}}. The {{kib}} API reference provides their complete parameters, request and response schemas, and errors.
 
 ## Before you begin
 
 Turn on the `contextEngine:enabled` advanced setting in each {{kib}} space where you want to use the APIs. Requests to a space where the setting is turned off return `404`.
 
 API requests use the permissions and space of the authenticated caller. Include the space in the request URL when you are not using the default space.
+
+The caller also needs the `read` index privilege on each AI index's backing index (`ai-index-*`). AI indices without it are left out of list results, and query requests against them return `403`.
 
 ## Operations quick access
 

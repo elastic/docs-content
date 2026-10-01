@@ -17,11 +17,11 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-Create an AI index for a defined body of context, then maintain the metadata that agents use to decide when that context is relevant. You can work interactively in {{kib}} or manage AI indices programmatically with the {{context-engine}} APIs. You can update or delete AI indices that you create. [Managed AI indices](concepts.md#managed-ai-indices) are read-only.
+An AI index groups the sources, automations, and Knowledge Indicators (KIs) that agents retrieve as context for a defined subject. Its name and description help agents decide when that context is relevant. Create and maintain AI indices interactively in {{kib}} or programmatically with the {{context-engine}} APIs. You can update or delete AI indices that you create. [Managed AI indices](concepts.md#managed-ai-indices) are read-only.
 
 ## Before you begin
 
-You need {{context-engine}} enabled in the current {{kib}} space and permission to manage AI indices. To remove associated Workflow automations when deleting an AI index, you also need permission to delete Workflows.
+Turn on the `contextEngine:enabled` advanced setting in the current {{kib}} space. You also need the **All** privilege for the **Context Engine** feature. To remove associated workflow automations when deleting an AI index, you also need permission to delete workflows. To delete its backing index and KIs, you need the `delete_index` index privilege on that index.
 
 Define the purpose and boundaries of the AI index before creating it. For planning guidance, refer to [Define the AI index's purpose](build-and-maintain-ai-index.md#define-the-ai-indexs-purpose).
 
@@ -36,7 +36,7 @@ Create a custom AI index as follows:
 1. Open **Context** from the {{kib}} navigation.
 2. Select **Create AI Index**.
 3. Enter a **Name**. It must start with a lowercase letter or number and can contain lowercase letters, numbers, hyphens, and underscores.
-4. Enter a **Description** that states what the AI index is for and what its Knowledge Indicators (KIs) contain. Include example questions the KIs should help answer and any known gaps in the information.
+4. Enter a **Description** that states what the AI index is for and what its KIs contain. Include example questions the KIs should help answer and any known gaps in the information.
 5. Optional: Under **Agent traces**, select the traces that you want to use as feedback about how agents use the context.
 6. Select **Create AI index**.
 
@@ -92,11 +92,11 @@ For programmatic access, use the following APIs:
 
 ## Update an AI index
 
-In {{kib}}, you can update the description that agents and generated automation Workflows use. With the API, you can update the complete AI index definition.
+In {{kib}}, you can update the description that agents and generated automation workflows use. With the API, you can update the complete AI index definition.
 
 ### Use the UI
 
-Keep the description aligned with the context the AI index actually contains. The description shapes generated automation Workflows and helps agents decide whether the AI index is relevant.
+Keep the description aligned with the context the AI index actually contains. The description shapes generated automation workflows and helps agents decide whether the AI index is relevant.
 
 Update it as follows:
 
@@ -127,11 +127,11 @@ PUT kbn:/api/context_engine/ai_index/support_context
 
 ## Delete an AI index [delete-an-ai-index]
 
-Delete a custom AI index from {{kib}} or with the API. In either case, decide whether to preserve or delete its generated KIs and attached Workflow automations.
+Delete a custom AI index from {{kib}} or with the API. In either case, decide whether to preserve or delete its generated KIs and attached workflow automations.
 
 ### Use the UI
 
-Deleting an AI index always removes its {{context-engine}} entry. You can also remove the generated KIs and Workflow automations associated with it.
+Deleting an AI index always removes its {{context-engine}} entry. You can also remove the generated KIs and workflow automations associated with it.
 
 Delete an AI index as follows:
 
@@ -140,7 +140,7 @@ Delete an AI index as follows:
 3. In the confirmation dialog, select which associated resources to remove:
 
     - **Also delete the backing index `<index>` and its Knowledge Indicators**: selected by default. Clear it to keep the generated KIs and their {{es}} index.
-    - **Also delete its _N_ automations**: selected by default when the AI index has automations and you have permission to delete Workflows. Otherwise, it's unavailable.
+    - **Also delete its _N_ automations**: selected by default when the AI index has automations and you have permission to delete workflows. Otherwise, it's unavailable.
 
 4. Select **Delete AI index**.
 5. Confirm that the AI index no longer appears in **Context**.
@@ -159,9 +159,9 @@ You cannot edit or delete a managed AI index. Its owning Elastic integration con
 
 ### Use the API [delete-ai-index-api]
 
-Use the [delete AI index API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-context-engine-ai-index-aiindexid) for scripted cleanup. By default, the API deletes only the {{context-engine}} entry and preserves its {{es}} destination, KIs, and attached Workflows. Set the cleanup parameters explicitly when you also want to delete those resources.
+Use the [delete AI index API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-context-engine-ai-index-aiindexid) for scripted cleanup. By default, the API deletes only the {{context-engine}} entry and preserves its {{es}} destination, KIs, and attached workflows. Set the cleanup parameters explicitly when you also want to delete those resources.
 
-For example, the following request deletes the entry, its destination and KIs, and its attached Workflow automations:
+For example, the following request deletes the entry, its destination and KIs, and its attached workflow automations:
 
 ```console
 DELETE kbn:/api/context_engine/ai_index/support_context?delete_knowledge_indicators=true&delete_automations=true

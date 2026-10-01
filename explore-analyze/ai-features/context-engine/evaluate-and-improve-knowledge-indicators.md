@@ -21,7 +21,7 @@ A useful Knowledge Indicator (KI) gives an agent accurate, relevant context with
 
 ## Before you begin
 
-You need an AI index that contains at least one generated KI. To create one and review the required access, follow [Get started with {{context-engine}}](quickstart.md).
+You need an AI index that contains at least one generated KI, the **Read** privilege for the **Context Engine** feature, and the `read` and `view_index_metadata` index privileges on its backing index (`ai-index-*`). To refine an AI index's sources or automations, you need the **All** privilege for the **Context Engine** feature. To create an AI index and generate a KI, follow [Get started with {{context-engine}}](quickstart.md).
 
 You can inspect and test KIs in a [managed AI index](concepts.md#managed-ai-indices), but you cannot refine its sources or automations. The owning Elastic integration maintains that configuration.
 
