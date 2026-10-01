@@ -15,7 +15,11 @@ products:
 
 # AI steps [workflows-ai-steps]
 
-AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution. All four AI step types share a connector-based auth model: configure a generative AI connector in {{kib}}, then reference it by ID from a workflow step. When `connector-id` is omitted, the default connector configured for the workflow is used.
+AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution. All four AI step types reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the default model configured for the workflow is used.
+
+:::{note}
+{applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated` Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`; the other AI steps currently take `connector-id` only.
+:::
 
 ## Step types
 
@@ -205,7 +209,7 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `agent-id` | top level | string | No | Agent to invoke. Defaults to the built-in Elastic AI Agent. |
-| `connector-id` | top level | string | No | GenAI connector. Mutually exclusive with `inference-id`. |
+| `connector-id` | top level | string | No | Generative AI connector. Mutually exclusive with `inference-id`. Generative AI connectors are deprecated, so use `inference-id` for new workflows. |
 | `inference-id` | top level | string | No | Inference endpoint ID. Mutually exclusive with `connector-id`. |
 | `create-conversation` | top level | boolean | No | When `true`, persist the conversation for follow-up steps or later reference. |
 | `public-conversation` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | top level | boolean | No | When `true`, make the conversation this step creates public. Any user who can access the agent can read and continue the conversation and see it in their conversation list. Only applies when `create-conversation` is `true`. Defaults to `false` (private). Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
