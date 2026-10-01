@@ -1,3 +1,3 @@
 :::{note}
-This page documents the {{alerting-v2-system}}. For the generally available {{kib}} alerting system, refer to [{{kib}} alerting](/explore-analyze/alerting/alerts.md).
+This page documents {{alerting-v2-system}}. If you use {{alerting-v1-system}}, refer to the [{{alerting-v1-system}} overview](/explore-analyze/alerting/alerts.md).
 :::

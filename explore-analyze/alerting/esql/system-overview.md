@@ -1,30 +1,30 @@
 ---
-navigation_title: Experimental alerting system
+navigation_title: "{{alerting-v2-system-cap}}"
 applies_to:
   stack: experimental 9.5+
   serverless: ga
 products:
   - id: kibana
   - id: cloud-serverless
-description: The experimental Kibana alerting system writes each match as a rule event, then either groups those events into an alert episode with notifications or keeps them available for later analysis.
+description: Kibana ES|QL alerting writes each match as a rule event, then either groups those events into an alert episode with notifications or keeps them available for later analysis.
 ---
 
-# Overview [system-overview]
+# {{alerting-v2-system-cap}} overview [system-overview]
 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and the system handles detection, tracking, and notification from there.
+{{alerting-v2-system-cap}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and the system handles detection, tracking, and notification from there.
 
 This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](get-started/how-it-works.md).
 
 ::::{note}
-In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. Each system's APIs, UI, and instructions apply only to that system's concepts.
+In {{alerting-v1-system}}, the term **alert** refers to a tracked occurrence of a rule condition. In {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. Each system's APIs, UI, and instructions apply only to that system's concepts.
 ::::
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an [alert episode](alerts.md) and can notify. Events that aren't part of an alert episode remain available for later analysis.
+{{alerting-v2-system-cap}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an [alert episode](alerts.md) and can notify. Events that aren't part of an alert episode remain available for later analysis.
 
 :::{image} /explore-analyze/images/basic-system-flow.png
 :alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping that event into an alert episode or keeping it with no episode for later analysis
@@ -80,8 +80,8 @@ Every match still becomes a rule event. From there, the rule's configuration det
 
 ## Get started or go deeper [system-overview-next-steps]
 
-- **New to the {{alerting-v2-system}}?** [Get started](get-started.md) explains how the system works, defines key terms, and walks you through creating your first rule with a hands-on tutorial.
-- **Ready to turn it on?** [Set up the {{alerting-v2-system}}](setup.md) lists the requirements and shows you how to turn the system on and off.
+- **New to {{alerting-v2-system}}?** [Get started](get-started.md) explains how the system works, defines key terms, and walks you through creating your first rule with a hands-on tutorial.
+- **Ready to turn it on?** [Set up {{alerting-v2-system}}](setup.md) lists the requirements and shows you how to turn the system on and off.
 - **Giving your team access?** [Manage](manage.md) covers the role privileges your team needs and the API keys that authorize rules, action policies, and workflows.
 - **Wondering what you can detect?** [Rules](rules.md) shows you how to define what to watch for in {{esql}}, and how to choose and configure the right creation path for your use case.
 - **Curious what happens when something breaks?** [Alerts](alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.

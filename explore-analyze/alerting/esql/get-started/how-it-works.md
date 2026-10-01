@@ -14,7 +14,7 @@ description: A detailed walkthrough of how a rule's configuration determines whe
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-This page walks through what happens at each step after a rule runs on its schedule. Both paths begin the same way: {{kib}} writes a [rule event](../rules/rule-event-field-reference.md) for each matching row. The rule's configuration determines whether those events belong to an [alert episode](../alerts.md). Use this page to understand how the different components of the {{alerting-v2-system}} interact.
+This page walks through what happens at each step after a rule runs on its schedule. Both paths begin the same way: {{kib}} writes a [rule event](../rules/rule-event-field-reference.md) for each matching row. The rule's configuration determines whether those events belong to an [alert episode](../alerts.md). Use this page to understand how the different components of {{alerting-v2-system}} interact.
 
 ## Rule opens an alert episode [how-alert-mode-works]
 
@@ -70,7 +70,7 @@ After a few weeks, the accumulated events become useful in two ways. The team ca
 
 ## Related pages
 
-- [Set up the {{alerting-v2-system}}](../setup.md): Review the requirements and turn on the system.
+- [Set up {{alerting-v2-system}}](../setup.md): Review the requirements and turn on the system.
 - [Create your first rule](create-your-first-rule.md): Load sample data, create a rule, and observe the alert lifecycle.
 - [Rules](../rules.md): What rules detect, how action policies invoke workflows, and how to select a creation path.
 - [Notifications and actions](../notifications-actions.md): Set up action policies that invoke workflows for the alert episodes they apply to.

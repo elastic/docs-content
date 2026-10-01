@@ -1,6 +1,6 @@
 ---
 navigation_title: "Create alerts on trace data"
-description: "Create Kibana alerting rules on Agent Builder trace data to monitor token usage, agent error rates, and tool failures."
+description: "Create Kibana standard alerting rules on Agent Builder trace data to monitor token usage, agent error rates, and tool failures."
 applies_to:
   stack: ga 9.5+
   serverless: ga

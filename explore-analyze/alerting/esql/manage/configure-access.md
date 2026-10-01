@@ -102,7 +102,7 @@ Action policies invoke workflows, which send notifications. The **Workflows** pr
 
 ## Query rule output and alert episode data [alerting-data-investigation-privileges]
 
-The {{alerting-v2-system}} writes rule output and alert episode data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
+{{alerting-v2-system-cap}} writes rule output and alert episode data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
 
 ### {{kib}} feature access
 

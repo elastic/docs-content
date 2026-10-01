@@ -33,7 +33,7 @@ Before you start, make sure you have the following:
   - **{{ech}}** - An {{ech}} deployment running version 9.5 or later. Refer to [Create an Elastic Cloud hosted deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) if you don't have one. {applies_to}`stack: experimental 9.5`
   - **Self-managed** - An {{stack}} deployment running version 9.5 or later. Refer to the [local development quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) if you don't have one. {applies_to}`stack: experimental 9.5`
 
-- **The {{alerting-v2-system}} enabled**: The {{alerting-v2-system}} must be turned on in your space before you can use any of its features. Refer to [Set up the {{alerting-v2-system}}](../setup.md) for instructions.
+- **{{alerting-v2-system-cap}} enabled**: {{alerting-v2-system-cap}} must be turned on in your space before you can use any of its features. Refer to [Set up {{alerting-v2-system}}](../setup.md) for instructions.
 
 - **The required access**: Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must give you access to:
 

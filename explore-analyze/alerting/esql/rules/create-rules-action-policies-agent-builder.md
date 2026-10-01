@@ -72,7 +72,7 @@ After a rule is saved, you can ask the agent to configure notifications. The rul
 Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, the skill explains the limitation. If the rule is still a draft in the conversation, the skill changes it so matches open alert episodes before you save it. If the rule is already saved, that setting can't change, so the skill offers to create a new rule with the same query and schedule that opens alert episodes, then set up notifications on that rule.
 :::
 
-- **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
+- **Workflows** - Workflows are the delivery mechanism. They define what happens when {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
 - **Action Policies** - Action policies are the gating mechanism. {{kib}} evaluates them against the rule's alert episodes and invokes the workflow for the episodes they apply to. When you create an action policy with a rule, the policy applies to that rule's alert episodes.
     * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` If the rule already has a [tag](configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, the agent selects that tag. Otherwise, it adds a `notify-<rule-name>` tag in lowercase with hyphens (for example, `notify-high-cpu-prod`). The policy also applies to alert episodes from any other rule with that tag.
     * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` The action policy references the rule by ID.
@@ -96,4 +96,4 @@ Action policies saved or edited through {{agent-builder}} also receive the `agen
 
 - [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md): Learn how the {{agent-builder}} platform works, including agents, skills, and tools.
 - [About action policies](../action-policies/about-action-policies.md): Understand the gating mechanism the agent configures on your behalf.
-- [Connect workflows to the {{alerting-v2-system}}](../workflows-alerting.md): Understand the delivery mechanism the agent sets up when you ask it to configure notifications.
+- [Connect workflows to {{alerting-v2-system}}](../workflows-alerting.md): Understand the delivery mechanism the agent sets up when you ask it to configure notifications.

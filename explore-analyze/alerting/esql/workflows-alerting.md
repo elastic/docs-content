@@ -19,7 +19,7 @@ This page covers how action policies drive workflow invocations at runtime, the 
 
 ## How the alerting system connects to workflows [connection-pathways]
 
-The {{alerting-v2-system}} connects to workflows through two pathways. Both require an alert episode.
+{{alerting-v2-system-cap}} connects to workflows through two pathways. Both require an alert episode.
 
 - **Action Policies** - Action policies evaluate eligible alert episodes on a continuous schedule and invoke workflows based on match conditions and frequency settings.
 - **Alert episode lifecycle triggers** - Workflows are invoked when a specific event occurs on an alert episode, such as when the alert episode is activated, assigned, or deactivated.
@@ -32,7 +32,7 @@ The {{alerting-v2-system}} connects to workflows through two pathways. Both requ
 
 Lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a specific event occurs on an alert episode, with no scheduling or gating.
 
-When an alert episode is [activated](alerts.md#alert-episode-lifecycle), or [assigned, acknowledged, or snoozed](alerts/triage-alert-episodes.md), the {{alerting-v2-system}} emits a named trigger event (such as `alerting.episodeAssigned` or `alerting.episodeAcked`) and any workflow attached to it runs immediately.
+When an alert episode is [activated](alerts.md#alert-episode-lifecycle), or [assigned, acknowledged, or snoozed](alerts/triage-alert-episodes.md), {{alerting-v2-system}} emits a named trigger event (such as `alerting.episodeAssigned` or `alerting.episodeAcked`) and any workflow attached to it runs immediately.
 
 ### When to use action policies or lifecycle triggers [when-to-use-action-policies-lifecycle-triggers]
 
