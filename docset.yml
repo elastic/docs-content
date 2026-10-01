@@ -77,7 +77,10 @@ api:
       catalog:
         categories:
           - self
-
+  observability-intake-serverless:
+    - spec: bundled-apm-mis-openapi.json
+      product: observability
+      repository: elastic/apm-managed-service
 cta:
   monitor-kubernetes:
     button:
