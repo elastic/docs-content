@@ -61,8 +61,7 @@ Create the AI index:
 
    > Context about [your data], including [the important subjects and questions] and tested ESQL for retrieving current details.
 
-4. Select **Index** as the storage type.
-5. Select **Create AI index**.
+4. Select **Create AI index**.
 
 The AI index initially has no sources, automations, or KIs. You must add a source before you can create an automation.
 

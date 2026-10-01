@@ -36,7 +36,7 @@ Create a custom AI index as follows:
 1. Open **Context** from the {{kib}} navigation.
 2. Select **Create AI Index**.
 3. Enter a **Name**. It must start with a lowercase letter or number and can contain lowercase letters, numbers, hyphens, and underscores.
-4. Enter a **Description** that states what the AI index is for and what its KIs contain. Include example questions the KIs should help answer and any known gaps in the information.
+4. Enter a **Description** that states what the AI index is for and what its Knowledge Indicators (KIs) contain. Include example questions the KIs should help answer and any known gaps in the information.
 5. Optional: Under **Agent traces**, select the traces that you want to use as feedback about how agents use the context.
 6. Select **Create AI index**.
 
@@ -76,6 +76,8 @@ POST kbn:/api/context_engine/ai_index
 The response returns `"status": "created"`. Add sources and automations in later API requests, or include them in the create request when their definitions are already known. The API reference provides the complete request and response schemas.
 
 ## Inspect AI indices
+
+View AI indices in {{kib}}, or retrieve their definitions with the API.
 
 ### Use the UI
 
@@ -137,8 +139,8 @@ Delete an AI index as follows:
 2. Open the actions menu for the AI index, then select **Delete AI index**.
 3. In the confirmation dialog, select which associated resources to remove:
 
-    - Keep the backing-index option selected to delete the generated KIs and their {{es}} index.
-    - Keep the automations option selected to delete the attached Workflow automations. This option requires permission to delete Workflows.
+    - **Also delete the backing index `<index>` and its Knowledge Indicators**: selected by default. Clear it to keep the generated KIs and their {{es}} index.
+    - **Also delete its _N_ automations**: selected by default when the AI index has automations and you have permission to delete Workflows. Otherwise, it's unavailable.
 
 4. Select **Delete AI index**.
 5. Confirm that the AI index no longer appears in **Context**.
