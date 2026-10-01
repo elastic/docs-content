@@ -22,6 +22,8 @@ Whether you operate {{es}} on your own infrastructure or on {{k8s}} with {{eck}}
 
 ## Assign data tier roles [configure-data-tier-self-managed]
 
+The configuration steps for assigning data tier roles depend on your deployment type.
+
 :::::{applies-switch}
 
 ::::{applies-item} self:
