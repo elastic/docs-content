@@ -1077,7 +1077,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include full `host.*` fieldset information in events. When `false`, only `id`, `name`, and `os` are included. Warning: `true` will increase event size. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} only includes minimal information in the host fieldset in each event. Use this setting to also include extended information from the `alerts` and `metrics-*` documents. This setting was made available in 8.16. Starting with 8.18, this behavior is disabled by default. Before 8.16, full `host` information was always included.
+    {{elastic-endpoint}} only includes minimal information in the host fieldset in each event. Use this setting to also include extended information from the `alerts` and `metrics-*` documents. This setting was made available in 8.16. Starting with 8.18, this behavior is off by default. Before 8.16, full `host` information was always included.
 
 
 `linux.advanced.tty_io.max_event_interval_seconds`
