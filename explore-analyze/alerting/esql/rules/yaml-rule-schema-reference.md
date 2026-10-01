@@ -48,7 +48,7 @@ Put `FROM` only in `query.base`. To recover with a query that has its own `FROM`
 |---|---|---|---|
 | `query.format` | string | `composed` or `standalone` | The query structure the rule uses. `standalone` means each condition (breach, recovery, no-data) is a separate, self-contained ES\|QL query. `composed` means you write one base query and each condition is a pipe segment appended to it. The UI always creates `standalone` rules. |
 
-**Fields for `query.format: composed`**
+### Fields for `query.format: composed`
 
 Use `composed` when breach, recovery, and no-data conditions all start from the same data shape. Define that shape once in the base query and each condition adds only what differs.
 
@@ -58,7 +58,7 @@ Use `composed` when breach, recovery, and no-data conditions all start from the 
 | `query.breach.segment` | ES\|QL segment string | Required. ES\|QL segment appended to the base query for breach detection. Written as a pipe command, for example `\| WHERE count > 5`. |
 | `query.recovery.segment` | ES\|QL segment string | ES\|QL segment appended to the base query for recovery detection. Required when `recovery_strategy` is `query`. |
 
-**Fields for `query.format: standalone`**
+### Fields for `query.format: standalone`
 
 Use `standalone` when conditions need full independence. Each query can target different indices, apply different filters, or return a completely different shape.
 

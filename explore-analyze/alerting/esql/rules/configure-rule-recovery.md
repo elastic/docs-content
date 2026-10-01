@@ -51,7 +51,7 @@ An unset `recovery_strategy` behaves the same as **No recovery**, but unset usua
 
 An empty base query result triggers [no-data handling](configure-no-data-handling.md) for rules using **Default** or **Custom recovery**.
 
-**When to change the recovery strategy**
+### When to change the recovery strategy [recovery-strategy-when-to-use]
 
 Choose **Custom recovery** when:
 
