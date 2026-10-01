@@ -74,7 +74,7 @@ Collect the following information from all ECE director hosts that have ZK conta
 * [Zookeeper data directory details](#zk-file-list-sizes)
 * [ECE diagnostics](#ece-diagnostics)
 
-### Collect the file list, sizes, and timestamps of Zookeeper directories [zk-file-list-sizes]
+### Collect the Zookeeper data directory details [zk-file-list-sizes]
 
 ```bash
 # list files with sizes, ordered by time
