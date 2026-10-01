@@ -70,7 +70,7 @@ Agents and applications retrieve [KIs](#knowledge-indicators) from an [AI index]
 
 At retrieval time, an agent or application lists the AI indices it can access, describes a relevant AI index, and queries it for KIs. For the available query modes and complete retrieval workflow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
-To configure retrieval for an agent or application, refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md). For the built-in integration, follow [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
+To choose a retrieval or integration route, refer to [Use an AI index](use-an-ai-index.md). For the built-in integration, follow [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
 
 ## Tools, system instructions, and skills
 

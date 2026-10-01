@@ -16,7 +16,7 @@ products:
 
 A LangChain agent can retrieve Knowledge Indicators (KIs) from {{context-engine}} using read-only tools.
 
-For the integration model and the built-in {{agent-builder}} route, refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md).
+For agent-specific access, instructions, and testing guidance, refer to [Configure agents to use an AI index](use-context-engine-with-agents.md).
 
 To connect a LangChain agent to {{context-engine}}, use the {{context-engine}} APIs to wrap the available retrieval operations as LangChain tools in your application.
 

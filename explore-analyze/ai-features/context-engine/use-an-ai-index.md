@@ -26,7 +26,7 @@ Use the following guides to retrieve context through an agent or application:
 | Goal | Start here |
 | --- | --- |
 | Retrieve context directly or compare the available query modes | [Retrieve context from an AI index](retrieve-context-from-ai-index.md) |
-| Use an AI index with an agent or application | [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md) |
+| Configure and test an agent that uses an AI index | [Configure agents to use an AI index](use-context-engine-with-agents.md) |
 | Use an AI index with an {{agent-builder}} agent | [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md) |
 | Query an AI index from LangChain or LangGraph | [Query AI indices from LangChain](langchain-integration.md) |
 

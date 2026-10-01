@@ -14,7 +14,7 @@ The following {{context-engine}} pages are live:
         - [Evaluate and improve KIs](/explore-analyze/ai-features/context-engine/evaluate-and-improve-knowledge-indicators.md)
     - [Use an AI index](/explore-analyze/ai-features/context-engine/use-an-ai-index.md)
         - [Retrieve context](/explore-analyze/ai-features/context-engine/retrieve-context-from-ai-index.md)
-        - [Use {{context-engine}} with agents and applications](/explore-analyze/ai-features/context-engine/use-context-engine-with-agents.md)
+        - [Configure agents to use an AI index](/explore-analyze/ai-features/context-engine/use-context-engine-with-agents.md)
             - [Use {{context-engine}} with Agent Builder](/explore-analyze/ai-features/context-engine/use-context-engine-with-agent-builder.md)
             - [Query AI indices from LangChain](/explore-analyze/ai-features/context-engine/langchain-integration.md)
     - [{{context-engine}} APIs](/explore-analyze/ai-features/context-engine/context-engine-api.md)

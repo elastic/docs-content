@@ -1,6 +1,6 @@
 ---
-navigation_title: "Agents and apps"
-description: Learn how agents and applications retrieve Knowledge Indicators from AI indices and use them to answer questions or find current source data.
+navigation_title: "Configure agents"
+description: Configure source access, instructions, and testing for an agent that retrieves context from AI indices.
 type: overview
 applies_to:
   stack: experimental 9.6
@@ -12,31 +12,20 @@ products:
   - id: security
 ---
 
-# Use {{context-engine}} with agents and applications
+# Configure agents to use an AI index
 
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-Agents use {{context-engine}} to retrieve reusable context from [AI indices](concepts.md#ai-indices) before spending time and model tokens interpreting source data. A [Knowledge Indicator (KI)](concepts.md#knowledge-indicators) can answer a question directly or give the agent tested guidance for finding current details in the source.
+An agent that retrieves context from an AI index might also need tools and permissions to query source data when a [Knowledge Indicator (KI)](concepts.md#knowledge-indicators) points to current details. This page explains how to provide that access, tell the agent when to use the AI index, and test the integration. For the list, describe, and query sequence itself, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
-You can use {{context-engine}} with an {{agent-builder}} agent, an agent built with another framework, or an application that calls the [{{context-engine}} APIs](context-engine-api.md) directly.
+For implementation steps, follow the guide for [{{agent-builder}}](use-context-engine-with-agent-builder.md) or [LangChain and LangGraph](langchain-integration.md).
 
-Agents use {{context-engine}} retrieval operations to find an appropriate AI index and retrieve relevant KIs. For the common list, describe, and query workflow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
+## Provide access to context and source data
 
-A retrieved KI can answer a question directly or provide tested guidance for retrieving current details from source data.
+Access to an AI index and access to its source data are separate. Provide the agent with both the {{context-engine}} retrieval operations and any tools and permissions it needs to query the source.
 
-Access to an AI index and access to its source data are separate. The integration must provide both the {{context-engine}} retrieval operations and any tools and permissions the agent needs to query the source.
-
-## Choose an integration
-
-Choose the integration that matches where you build and run the agent:
-
-| Approach | Use it when | How the agent or application accesses {{context-engine}} |
-|---|---|---|
-| [{{agent-builder}}](use-context-engine-with-agent-builder.md) | You want to build and run the agent in {{kib}}. | Assign one or more AI indices to the agent. {{agent-builder}} adds the {{context-engine}} retrieval tools and describes the assigned indices in the agent's instructions. |
-| [LangChain](langchain-integration.md) | You are building an agent with LangChain or LangGraph. | Wrap the {{context-engine}} APIs as LangChain tools in your application. |
-
-Both approaches list and describe AI indices before querying them. The agent only discovers AI indices that its credentials can read in the current {{kib}} space.
+The agent only discovers AI indices that its credentials can read in the current {{kib}} space. A retrieved KI can answer a question directly or provide tested guidance for retrieving current details from source data.
 
 ## Define when the agent should use context
 

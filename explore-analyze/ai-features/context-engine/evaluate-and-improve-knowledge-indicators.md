@@ -133,7 +133,7 @@ After you make the AI index available to an agent or application:
 3. Inspect the retrieval, source queries, and other tool calls made for each response.
 4. Confirm that the agent retrieves the relevant KI, answers from it when appropriate, and queries the source only when it needs additional detail.
 
-With {{agent-builder}}, inspect the reasoning and tool calls shown with each response. If trace collection is available, you can also [view the trace for the conversation round](/explore-analyze/ai-features/agent-builder/chat.md#view-traces). For another agent framework or an application, inspect the equivalent client logs, traces, and API requests. Refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md) for the available integration routes.
+With {{agent-builder}}, inspect the reasoning and tool calls shown with each response. If trace collection is available, you can also [view the trace for the conversation round](/explore-analyze/ai-features/agent-builder/chat.md#view-traces). For another agent framework or an application, inspect the equivalent client logs, traces, and API requests. Refer to [Use an AI index](use-an-ai-index.md) for the available retrieval and integration routes.
 
 This test shows whether the KI reduces repeated source exploration. If the agent ignores the KI, retrieves an unrelated KI, or still performs broad source exploration, revise the AI index description, KI content and tags, source selection, or automation instructions.
 
