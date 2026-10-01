@@ -23,8 +23,25 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Filtering the Add Elastic rules page by tag or search can install an outdated prebuilt rule version
+**Applies to: {{stack}} 9.3.0-9.3.8, 9.4.0-9.4.7, 9.5.0-9.5.4**
+
+**Impact**<br>
+The **Add Elastic rules** page applies your tag or search filter before it determines the latest version of each prebuilt rule. If a rule's latest version no longer matches your filter, the results show an earlier version that does, and installing from those results installs that earlier version. This is uncommon. It affects only rules whose tags changed between versions, such as when `Data Source: AWS` became `Platform: AWS`. **Install all** isn't affected. The **Rule Updates** tab appears immediately after you install the affected rules. For more information, refer to [#290911](https://github.com/elastic/kibana/issues/290911).
+
+**Workaround**<br>
+If the **Rule Updates** tab appears immediately after you install prebuilt rules, [update those rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md) to the latest version.
+
+% Uncomment after 9.4.8 and 9.5.5 ship.
+
+% **Resolved**<br>
+
+% Resolved in {{stack}} 9.4.8 and 9.5.5. There's no fix for 9.3.x, so upgrade to one of these versions.
+
+:::
+
 :::{dropdown} {{elastic-defend}} Device Control blocks macOS updates, Recovery volume mounts, and Time Machine backups
-**Applies to: {{stack}} 9.4.6, 9.5.2, 9.5.3**
+**Applies to: {{agent}} 9.4.6, 9.4.7, 9.5.2, 9.5.3, and 9.5.4**
 
 **Impact**<br>
 On affected versions, {{elastic-defend}}'s Device Control feature on macOS blocks operating system updates, Recovery volume mounts, and Time Machine backups. The block occurs even when Device Control is set to allow access, and it doesn't generate a deny event in {{elastic-defend}} telemetry.
@@ -34,7 +51,7 @@ Turn off Device Control in the {{elastic-defend}} integration policy for the aff
 
 **Resolved**<br>
 
-Resolved in {{stack}} 9.4.7 and 9.5.4.
+Resolved in [independent {{agent}} releases](/reference/fleet/fleet-agent-release-process.md#independent-agent-releases) [9.4.7+build202609161309](elastic-agent://release-notes/index.md#elastic-agent-release-notes-9.4.7build202609161309) and [9.5.4+build202609161310](elastic-agent://release-notes/index.md#elastic-agent-release-notes-9.5.4build202609161310). [Upgrade {{agent}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) on affected hosts to the corresponding independent release. The base {{agent}} releases 9.4.7 and 9.5.4 do not contain this fix.
 
 :::
 

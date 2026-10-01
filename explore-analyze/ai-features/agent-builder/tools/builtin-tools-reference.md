@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-<!-- Note: This file contains commented-out tool sections for features on main that are not yet available in released versions. -->
+<!-- Note: This file contains commented-out tool sections for tools that are gated behind an experimental feature flag, waiting on an unmerged Kibana PR, or of unconfirmed availability. Tools that are merged and scheduled for a version that hasn't shipped yet stay uncommented: their applies_to badge renders as "Planned" until that version is released. -->
 
 # {{agent-builder}} built-in tools reference
 
@@ -71,6 +71,9 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 
     **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
 
+`platform.core.list_inference_endpoints` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Lists the chat completion models available to agents, with their IDs, names, and types. Includes [{{infer}} endpoints](../models.md#add-an-inference-endpoint) with the `chat_completion` task type, and [Generative AI connectors](../models.md#configure-a-connector), which are deprecated. {{infer-cap}} endpoints with other task types, such as `text_embedding` and `rerank`, are excluded.
+
 #### Workflow execution tools
 
 These platform core tools let agents run and track [Elastic Workflows](/explore-analyze/workflows.md). For the tools that inspect workflow syntax and definitions, refer to [Workflows tools](#workflows-tools).
@@ -117,10 +120,10 @@ The following tools manage file attachments in conversations:
 -->
 
 <!--
-% SML (Semantic Metadata Layer) tools require the experimental Context Engine.
+% SML (Semantic Metadata Layer) tools require the experimental {{context-engine}}.
 % They are registered under platform.core.* and attached to the default agent, but only
 % surface when both the `agentBuilder:experimentalFeatures` and `contextEngine:enabled`
-% advanced settings are turned on. Uncomment when the Context Engine is publicly available.
+% advanced settings are turned on. Uncomment when {{context-engine}} is publicly available.
 
 `platform.core.sml_search`
 :   Searches the Semantic Metadata Layer (SML) for {{kib}} assets such as saved visualizations, dashboards, workflows, and connectors, using hybrid lexical and semantic retrieval.

@@ -5,51 +5,57 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How action policies gate alert episodes through eligibility checks, match conditions, and frequency before invoking workflows in the experimental alerting system."
+description: "Action policies decide whether and when an alert episode invokes a workflow in the experimental alerting system. Eligibility, policy scope, and frequency gates control each dispatcher decision."
 ---
 
 # About action policies [about-action-policies]
 
 An action policy is the gating layer between an alert episode and a workflow in the {{alerting-v2-system}}. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates, and a workflow runs only once the alert episode clears every gate.
 
-This page explains why action policies are separate from rules, the gates an alert episode must pass, and how the dispatcher evaluates them.
+This page explains how rules and action policies work together, the gates an alert episode must pass, and how the dispatcher evaluates them.
 
-## Why action policies are separate from rules [policies-separate-from-rules]
+## How rules and action policies work together [rules-and-action-policies]
 
-Action policies are independent of rules. A single action policy can cover alert episodes from many rules, so an action policy matching `severity: "critical"` applies regardless of which rule produced the alert episode. You can create a rule without any action policy, which is useful for testing detection logic before wiring up notifications. You can also update notification routing later without touching the rule.
+A rule detects a condition and opens alert episodes. The rule doesn't automatically reference an action policy, and an action policy doesn't instantly link to a rule. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert episode, and invokes a workflow for the ones that pass every gate.
 
-To scope an action policy to one rule, use a matcher expression, for example `rule.id: "my-rule-id"`.
+Because of that separation, a single action policy can apply to alert episodes from many rules. An action policy scoped to `severity: "critical"` applies to every critical alert episode, regardless of which rule produced it. The separation also means you change notification routing by editing the action policy, without touching the rule.
+
+To control which of those alert episodes an action policy applies to, set its [scope](create-configure-action-policy.md#matcher). An action policy with an empty scope applies to all of them.
 
 ## How action policies gate alert episodes [action-policy-gates]
 
-The three gates are episode eligibility, match conditions, and frequency:
+A workflow runs only when the alert episode passes every gate. {{kib}} checks the gates in this order:
 
-* **Episode eligibility** - Skips alert episodes that are acknowledged, snoozed, or in a maintenance window. For details, refer to [Reduce notification noise](reduce-notification-noise.md).
-* **Match conditions** - Filters which alert episodes the action policy applies to. You define them using a [KQL](../../../query-filter/languages/kql.md) expression. An empty match condition applies to all eligible alert episodes in the space.
-* **Frequency** - Controls how often the action policy can invoke its workflows for the same group of alert episodes, and how alert episodes batch before a workflow is invoked. If a workflow was already invoked within the frequency interval that you chose, the alert episode waits. For available options, refer to [Action policy reference](action-policy-reference.md).
+| Gate | What it checks |
+|------|----------------|
+| Episode eligibility | Whether the alert episode is acknowledged, snoozed, or in a maintenance window. Any of these stops it. |
+| Policy scope {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` | Whether the alert episode's rule carries at least one of the selected rule tags, and whether the alert episode matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If both are set on the policy, they both have to pass. An empty scope passes every eligible alert episode in the space. |
+| Match conditions {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` | Whether the alert episode matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. An empty expression passes every eligible alert episode in the space. |
+| Frequency | Whether a workflow already ran for the alert episode's notification group within the policy's frequency interval. If it did, the alert episode waits. |
 
-If any gate stops the alert episode, the workflow is not invoked for that action policy. Because each action policy evaluates alert episodes independently, an alert episode blocked by one action policy can still trigger a workflow through a second action policy with different conditions.
+If any gate stops the alert episode, {{kib}} doesn't invoke a workflow for that action policy. Multiple action policies can apply to the same alert episode, and {{kib}} checks the gates separately for each one, with no precedence or merging between them.
 
-## How action policies are evaluated [how-action-policies-evaluated]
+An alert episode blocked by one action policy can still invoke a workflow through a second action policy with different conditions. If no action policy applies to an alert episode, no workflow is invoked and no notification is sent.
 
-{{kib}} runs a background process called the dispatcher that checks for eligible alert episodes on a short interval (around 5 seconds) and evaluates action policies against them. The dispatcher runs on its own cycle, separate from the rule schedule.
+## How the dispatcher evaluates action policies [how-action-policies-evaluated]
 
-For each enabled action policy that is not snoozed, the dispatcher works through the following steps:
+{{kib}} runs a background process called the dispatcher that checks for eligible alert episodes on a short interval (around 5 seconds) and evaluates action policies against them. The dispatcher runs on its own cycle, separate from the rule schedule, so a notification can arrive a few seconds after the rule that produced the alert episode.
+
+On each cycle, the dispatcher works through the following steps:
 
 | Step | Action |
 |------|--------|
-| 1 | Check whether the alert episode is acknowledged, snoozed, or marked inactive. If so, stop processing it. |
-| 2 | Check whether the alert episode matches the action policy's KQL. If not, stop evaluating this action policy and move to the next one. The alert episode continues to be evaluated by other enabled action policies. |
-| 3 | Determine how matching alert episodes batch into notification groups. |
-| 4 | Check whether a workflow has already been invoked for this notification group recently. If so, wait. |
-| 5 | Invoke the configured workflows, on the dispatcher's next polling cycle (roughly every 5 seconds). |
+| 1 | Collect the alert episodes that pass the eligibility check, and the action policies that are enabled and not snoozed. |
+| 2 | Run each action policy through the remaining [gates](#action-policy-gates), stopping that policy at the first gate the alert episode fails. A failure in one action policy doesn't stop the others. |
+| 3 | Invoke the workflows for each notification group that clears every gate. |
 
 :::{tip}
-If an action policy already matched an alert episode, a severity change does not re-trigger it. A severity change can still cause a different action policy to match for the first time and invoke a workflow. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
+If an action policy already applied to an alert episode, a severity change does not re-trigger it. A severity change can still bring the alert episode into a different action policy's scope for the first time and invoke a workflow. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
 :::
 
 ## Related pages
 
-- [Create and configure an action policy](create-configure-action-policy.md): Set up match conditions, grouping, frequency, and workflow destinations.
+- [Create and configure an action policy](create-configure-action-policy.md): Set up policy scope, grouping, frequency, and workflow destinations.
 - [Manage action policies](manage-action-policies.md): Enable, disable, snooze, edit, or delete your action policies.
 - [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
+- [Reduce notification noise](reduce-notification-noise.md): Acknowledge, snooze, or deactivate alert episodes so they stop at the eligibility gate.
