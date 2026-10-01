@@ -1,3 +1,4 @@
+<!--
 :::{important}
 This page is currently hidden from the documentation navigation.
 
@@ -18,3 +19,4 @@ The following {{context-engine}} pages are live:
             - [Query AI indices from LangChain](/explore-analyze/ai-features/context-engine/langchain-integration.md)
     - [{{context-engine}} APIs](/explore-analyze/ai-features/context-engine/context-engine-api.md)
 :::
+-->
