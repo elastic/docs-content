@@ -59,8 +59,12 @@ npx skills add elastic/agent-skills@elasticsearch-esql
 Install to specific agents:
 
 ```bash
-npx skills add elastic/agent-skills -a cursor -a claude-code
+npx skills add elastic/agent-skills -a cursor -a codex
 ```
+
+::::{note}
+For Claude, you may wish to install the skills via the [Elastic Claude Plugin](claude-plugin.md)
+::::
 
 List available skills without installing:
 
