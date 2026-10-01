@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Query AI Indices from LangChain
+# Query AI indices from LangChain
 
 :::{include} _snippets/hidden-docs-notice.md
 :::

@@ -12,7 +12,7 @@ products:
   - id: security
 ---
 
-# Retrieve context from an AI index in {{context-engine}}
+# Retrieve context from an AI index
 
 :::{include} _snippets/hidden-docs-notice.md
 :::
@@ -32,7 +32,7 @@ For direct API access, you also need credentials for the caller. The examples on
 
 ## How to query AI indices
 
-You can call the {{context-engine}} APIs directly. Agent integrations can expose tools that perform the list, describe, and query sequence:
+Choose a query mode based on whether your code or an agent controls the retrieval sequence:
 
 | Query mode | Use it when |
 | --- | --- |
@@ -119,7 +119,7 @@ Construct an {{esql}} query from the describe response and submit it with the [q
 ```console
 POST kbn:/api/context_engine/ai_index/_query
 {
-  "query": "FROM ai-index-ds-customer-support | WHERE type == ?type | KEEP title, description, content, type, tags | LIMIT 10",
+  "query": "FROM ai-index-ds-customer_support | WHERE type == ?type | KEEP title, description, content, type, tags | LIMIT 10",
   "params": { "type": "faq" },
   "limit": 10
 }
@@ -134,7 +134,7 @@ curl -X POST "${KIBANA_URL}/api/context_engine/ai_index/_query" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "FROM ai-index-ds-customer-support | WHERE type == ?type | KEEP title, description, content, type, tags | LIMIT 10",
+    "query": "FROM ai-index-ds-customer_support | WHERE type == ?type | KEEP title, description, content, type, tags | LIMIT 10",
     "params": { "type": "faq" },
     "limit": 10
   }'
@@ -142,7 +142,7 @@ curl -X POST "${KIBANA_URL}/api/context_engine/ai_index/_query" \
 :::
 ::::
 
-Replace `ai-index-ds-customer-support` and the selected fields with values returned by the describe operation. Pass user-provided values as named parameters instead of adding them directly to the query string.
+Replace `ai-index-ds-customer_support` and the selected fields with values returned by the describe operation. Pass user-provided values as named parameters instead of adding them directly to the query string.
 
 The query operation applies the current {{kib}} space to the request and returns only documents visible in that space. Do not add a space condition to the {{esql}} query.
 
@@ -178,7 +178,7 @@ Use the following table to resolve common retrieval problems:
 | Every {{context-engine}} operation returns `403`. | The credential lacks the {{kib}} **{{context-engine}}** feature privilege. | Add the privilege in the space that contains the AI index. {{es}} index privileges alone are not enough. |
 | Query or describe operations return `403`. | The credential lacks {{es}} privileges on the backing indices. | Grant `read` and `view_index_metadata` on the relevant `ai-index-*` indices. |
 | Every {{context-engine}} operation returns `404`. | `contextEngine:enabled` is turned off in the space targeted by the request. | Turn on {{context-engine}} in that space's advanced settings. |
-| An expected AI index is not listed. | The credential cannot read its backing index, or its documents belong to another space. | Check the credential's index privileges and the space targeted by the request. |
+| An expected AI index is not listed. | The credential cannot read its backing index, or the AI index is registered in another space. | Check the credential's index privileges and the space targeted by the request. |
 | A query returns `Unknown index` for an AI index that was listed. | The AI index is registered, but its backing index does not exist yet. | Select an AI index that contains data. |
 | A query returns no rows even though the AI index contains data. | The request targets the wrong space, or the query contains its own space condition. | Target the correct space and remove any space condition from the query. |
 | The describe operation omits KI types or tags. | The credential cannot read the backing indices, or `type` and `tags` are not mapped as aggregatable keywords. | Check the index privileges and mappings. Other describe output remains available. |

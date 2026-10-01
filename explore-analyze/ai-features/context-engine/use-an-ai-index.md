@@ -17,7 +17,7 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-Use an AI index to retrieve reusable context generated from source data. Applications can call the {{context-engine}} APIs directly. Agents can use dedicated tools or API clients made available through their integration. These paths reduce repeated source data discovery and interpretation.
+Use an AI index to retrieve reusable context generated from source data. Applications can call the {{context-engine}} APIs directly. Agents call the same operations through tools that their integration provides, such as the built-in {{agent-builder}} tools or LangChain tools that wrap the APIs. These paths reduce repeated source data discovery and interpretation.
 
 ## Query and integration options
 
