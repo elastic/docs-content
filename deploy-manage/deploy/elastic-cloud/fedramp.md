@@ -48,6 +48,7 @@ Most {{ech}} features are also available in FedRAMP authorized Cloud offerings. 
 | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) | Yes | Yes | TBD |
 | [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |
 | [Multiple organization membership](/deploy-manage/cloud-organization/manage-multiple-organizations.md) | Yes | Yes | Yes, with [limitations](#ec-fedramp-multi-org) |
+| [{{ecloud}} audit trail](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md) | No | Yes | No |
 
 ## Get started with FedRAMP [ec-fedramp-get-started]
 

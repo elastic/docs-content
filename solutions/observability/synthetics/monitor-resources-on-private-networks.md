@@ -27,16 +27,16 @@ To grant access using IP, use [this list of egress IPs](https://manifest.synthet
 
 ## Monitor using a private agent [monitor-via-private-agent]
 
-{{private-location}}s allow you to run monitors from your own premises. Before running a monitor on a {{private-location}}, you’ll have to:
+{{private-location}}s allow you to run monitors from your own premises. Before running a monitor on a {{private-location}}, you’ll need to:
 
 * [Set up {{fleet-server}} and {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
 * [Connect {{fleet}} to the {{stack}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
 * [Add a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the Synthetics UI.
 
-A {{private-location}} can be one of two types:
+A {{private-location}} is classic or scalable depending on how many {{agents}} share its agent policy:
 
 * **Classic**: The agent policy runs on a single {{agent}}, and that agent runs every monitor assigned to the location.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Scalable**: With an Enterprise or trial license, multiple {{agents}} can share one agent policy. {{kib}} automatically distributes each monitor to exactly one agent, with failover when an agent becomes unhealthy. Refer to [Scale a {{private-location}} across multiple {{agents}}](#synthetics-private-location-scalable) for more information.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Scalable**: With an [Enterprise subscription]({{subscriptions}}) or an active trial, enroll multiple {{agents}} on the same agent policy. {{kib}} automatically distributes each monitor to exactly one agent, with failover when an agent becomes unhealthy. You don't need to turn on anything extra when you add the {{private-location}}. Refer to [Scale a {{private-location}} across multiple {{agents}}](#synthetics-private-location-scalable) for more information.
 
 ::::{important}
 {{private-location}}s running through {{agent}} must have a direct connection to {{es}}. Do not configure any ingest pipelines, or output using Logstash as this will prevent Synthetics from working properly and [is not supported](/solutions/observability/synthetics/support-matrix.md).
@@ -56,8 +56,9 @@ The {{agent}} must be enrolled in {{fleet}}. {{private-location}}s cannot be set
 
 When you create the agent policy:
 
-* Run a classic {{private-location}} on a single {{agent}}. Classic {{private-location}}s do not distribute tests across {{agents}}, so running the same policy on more than one {{agent}} can produce duplicate or missing tests. To add capacity on one {{agent}}, refer to [Scaling {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling).
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To run tests on multiple {{agents}} that share one agent policy, use a [scalable {{private-location}}](#synthetics-private-location-scalable).
+* Decide how many {{agents}} run the policy:
+    * Run a classic {{private-location}} on a single {{agent}}. Classic {{private-location}}s do not distribute tests across {{agents}}, so running the same policy on more than one {{agent}} can produce duplicate or missing tests. To add capacity on one {{agent}}, refer to [Scaling {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling).
+    * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To run tests on multiple {{agents}} that share one agent policy, use a [scalable {{private-location}}](#synthetics-private-location-scalable).
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Create the agent policy in the same {{kib}} space as the {{private-location}}. Cross-space agent policies are not supported. To run monitors in more than one space, create a separate agent policy in each space.
 
 ## Connect to the {{stack}} or your Observability Serverless project [synthetics-private-location-connect]
@@ -213,11 +214,11 @@ serverless: ga
 
 A scalable {{private-location}} runs its monitors on a pool of {{agents}} that share one agent policy. Each monitor runs on one agent in the pool. When an agent becomes unhealthy, its monitors move to the healthy agents. When you add an agent, some monitors move to it.
 
-Use a scalable {{private-location}} when one {{agent}} can't run all the monitors in the location, or when monitors must keep running if an agent fails. Use a classic {{private-location}} when a single {{agent}} has enough capacity and you don't need failover.
+Enroll a second {{agent}} on the same agent policy when one {{agent}} can't run all the monitors in the location, or when monitors must keep running if an agent fails. Keep a single {{agent}} (a classic {{private-location}}) when it has enough capacity and you don't need failover.
 
 ### Requirements [synthetics-private-location-scalable-requirements]
 
-* An Enterprise license or trial. Without one, multiple {{agents}} on the same agent policy each run every monitor in the location, producing duplicate results.
+* An [Enterprise subscription]({{subscriptions}}) or an active trial. Without one, multiple {{agents}} on the same agent policy each run every monitor in the location, producing duplicate results. If your subscription level drops below Enterprise, Synthetics clears the agent assignments on its next rebalancing pass and the same duplicate behavior returns until you upgrade again. To avoid duplicate results in the meantime, [remove all but one agent](#synthetics-private-location-scalable-disable).
 * {{agents}} enrolled in {{fleet}} on the same agent policy. Failover requires at least two agents. The agent policy must be in the same {{kib}} space as the {{private-location}}.
 * For browser monitors, every agent in the pool must use an `elastic-agent-complete` Docker image. Refer to [Connect to the {{stack}}](#synthetics-private-location-connect) for more information.
 * Because a monitor can move to any agent in the pool, configure every agent the same way, including network access to monitored hosts, environment variables that your monitors read, and the host timezone.
@@ -231,7 +232,7 @@ To set up a scalable {{private-location}}:
 
 1. [Create an agent policy](#synthetics-private-location-fleet-agent) in the same {{kib}} space as the {{private-location}}.
 1. [Enroll two or more {{agents}}](#synthetics-private-location-connect) on that agent policy.
-1. [Add a {{private-location}}](#synthetics-private-location-add) that uses the agent policy. With an Enterprise or trial license, {{kib}} automatically distributes monitors across all enrolled agents.
+1. [Add a {{private-location}}](#synthetics-private-location-add) that uses the agent policy. With an Enterprise subscription or an active trial, {{kib}} automatically distributes monitors across all enrolled agents.
 
 On the **{{private-location}}s** tab, a scalable location shows a **Scalable** badge with the number of enrolled agents. Expand the location's row to view the monitors, health, and resource usage of each agent. Refer to [{{private-location}}s settings](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-private-locations) for more information.
 
@@ -239,7 +240,7 @@ To add agents to an existing location, enroll additional {{agents}} on its agent
 
 ### Remove agents [synthetics-private-location-scalable-disable]
 
-To reduce a scalable location to a single agent, unenroll all but one {{agent}} from its agent policy. {{kib}} reassigns the remaining monitors to the surviving agent when the removed agents are detected as unhealthy.
+To reduce a scalable location to a single agent, unenroll all but one {{agent}} from its agent policy. {{kib}} reassigns the remaining monitors to the surviving agent when the removed agents are detected as unhealthy. With one agent left, the location becomes a classic {{private-location}}: the remaining agent runs every monitor assigned to the location.
 
 You can't move an agent's monitors to other agents before you unenroll it. When you unenroll an agent, its monitors move only after it's detected as unhealthy, and they might miss some scheduled runs in the meantime.
 
@@ -253,7 +254,7 @@ About once a minute, Synthetics checks the health of every agent in the pool and
 * **Recovery and new agents**: After a recovered or newly enrolled agent has been healthy for 3 minutes, Synthetics moves only as many monitors to it as needed to balance the pool.
 * **No healthy agents**: If no agent in the pool is healthy, monitors keep their assignments and don't run until an agent recovers.
 
-To pause these adjustments for every scalable {{private-location}}, turn off **Rebalance private location shards** in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
+To stop these adjustments for every scalable {{private-location}}, turn off **Rebalance private location shards** in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
 
 ::::{warning}
 Turning off **Rebalance private location shards** removes the agent assignment from every monitor in every scalable {{private-location}}. Each monitor then runs on every agent enrolled on its location's agent policy, which duplicates test runs. When you turn the switch back on, Synthetics reassigns the monitors right away.
@@ -276,7 +277,7 @@ Example: For a private location expected to run 2 concurrent browser monitors an
 
 ### Known limitations on vertical scaling
 
-- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a scalable {{private-location}}, this limit applies per location, not per agent, which means that adding more agents does not raise it.
+- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a scalable {{private-location}}, this limit applies per location, not per agent — adding more agents does not raise it.
 
 - Many Synthetics monitors, or monitors with complex configurations, can cause the check-in payload to exceed the default 1 MiB `checkin_limit.max_body_byte_size` limit on {{fleet-server}}. When this happens, check-ins are rejected and agents appear offline or unhealthy in the Fleet UI even though monitors are executing successfully. To resolve this, increase the `server.limits.checkin_limit.max_body_byte_size` setting on your self-managed Fleet Server. Refer to [Advanced {{fleet-server}} options](/reference/fleet/fleet-server-scalability.md#fleet-server-configuration) for configuration details and an example.
 
