@@ -23,9 +23,6 @@ Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthroug
 :::
 ::::
 
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
-:::
-
 ## Requirements [diagnostic-tool-requirements]
 
 * Java Runtime Environment or Java Development Kit v1.8 or higher
