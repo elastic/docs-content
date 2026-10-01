@@ -40,6 +40,9 @@ Afterwards, you can:
 * Learn how manage [users and roles](../../users-roles/cloud-organization.md) in your {{es-serverless}} deployment.
 * Learn more about {{serverless-full}} in [our blog](https://www.elastic.co/blog/elastic-cloud-serverless).
 
+:::{include} /deploy-manage/_snippets/autoops-callout-monitoring.md
+:::
+
 ## Benefits of serverless projects [_benefits_of_serverless_projects]
 
 **Management free:** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, and business continuity.
@@ -55,9 +58,6 @@ Afterwards, you can:
 **Data and performance control**. Control your project data and query performance against your project data.
   * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams.
   * **Performance:** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined settings you can edit.
-
-:::{include} /deploy-manage/_snippets/autoops-callout-monitoring.md
-:::
 
 ## Monitor serverless status [general-serverless-status]
 
