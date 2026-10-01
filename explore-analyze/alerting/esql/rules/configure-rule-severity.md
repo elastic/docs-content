@@ -2,7 +2,7 @@
 navigation_title: Severity
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Assign severity levels to alert episodes using a severity column in ES|QL query output."

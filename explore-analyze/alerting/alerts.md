@@ -18,7 +18,7 @@ description: "Overview of Kibana alerting: rules, alerts, actions, connectors, a
 {{kib}} alerting is the built-in alerting system in {{kib}}. It lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
 
 :::{note}
-:applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
+:applies_to: {"stack": "experimental 9.5+", "serverless": "ga"}
 Looking for the {{alerting-v2-system}} built on {{esql}}? That system writes each match as a [rule event](esql/rules/rule-event-field-reference.md), then groups those events into [alert episodes](esql/alerts.md) or leaves them available for [later analysis](esql/alerts/query-signals.md). Start with the [{{alerting-v2-system-cap}} overview](esql/system-overview.md).
 ::::
 

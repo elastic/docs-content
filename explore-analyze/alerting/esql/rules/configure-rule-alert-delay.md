@@ -2,7 +2,7 @@
 navigation_title: Alert delay (alert episodes only)
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Configure alert delay for rules that group matches into an alert episode, to reduce noise from brief spikes before the alert episode opens."

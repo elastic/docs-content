@@ -2,7 +2,7 @@
 navigation_title: Tags, runbooks, and dashboards
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Add tags, runbooks, and related dashboards to rules, for filtering, triage context, and investigation dashboards."
@@ -20,7 +20,7 @@ Tags, runbooks, and related dashboards are optional artifacts you attach to a ru
 Tags
 :   Free-form labels for filtering and organization. Add them to filter alert episodes on the **Alerts** page, to scope action policies by ownership or category, or to mark which team owns a rule.
 
-    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` An action policy's [**Rule tags**](../action-policies/create-configure-action-policy.md#filter-by-rule-tags) control covers every rule that carries at least one of the tags you select.
+    * {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` An action policy's [**Rule tags**](../action-policies/create-configure-action-policy.md#filter-by-rule-tags) control covers every rule that carries at least one of the tags you select.
     * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` Alert episodes inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
 
 Runbooks
@@ -49,7 +49,7 @@ To link dashboards, your role needs **Rules: All** (under **Alerting**). Refer t
 1. Find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), go to **Rules**, then select the rule.
 2. On the **Overview** tab, expand **Artifacts**.
 3. In the **Dashboards** section:
-   * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` Select **Attach related dashboards**. Search for a dashboard. Results are grouped into **Attached** and **Other dashboards**. Select the dashboards to link, then select **Save**. This updates the rule right away.
+   * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` Select **Attach related dashboards**. Search for a dashboard. Results are grouped into **Attached** and **Other dashboards**. Select the dashboards to link, then select **Save**. This updates the rule right away.
    * {applies_to}`stack: experimental =9.5` Select **Manage linked dashboards**. In **Related dashboards**, search for a dashboard and select it, then save the rule.
 
 To remove a link, select the remove icon next to the dashboard, then select **Remove** to confirm. Removing a link updates the rule right away. This removes the link only. The dashboard itself is unaffected.

@@ -2,7 +2,7 @@
 navigation_title: Create from Discover
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Convert an ES|QL query from a Discover session into a rule, with the query pre-filled and a preview panel for verifying grouping."

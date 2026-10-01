@@ -2,7 +2,7 @@
 navigation_title: Action policy reference
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Grouping modes, frequency options, dispatch outcomes, and match conditions field reference for action policies."

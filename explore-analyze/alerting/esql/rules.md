@@ -2,7 +2,7 @@
 navigation_title: Rules
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Rules define what to detect using ES|QL. Each match is written as a rule event. The rule's configuration determines whether those events are grouped into an alert episode."

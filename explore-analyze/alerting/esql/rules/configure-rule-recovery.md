@@ -2,7 +2,7 @@
 navigation_title: Recovery condition
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How to configure when and how an alert episode recovers: the recovery strategy and the delay before an alert episode closes."

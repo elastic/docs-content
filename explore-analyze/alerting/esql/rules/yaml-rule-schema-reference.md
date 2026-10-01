@@ -2,7 +2,7 @@
 navigation_title: YAML rule schema reference
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "YAML rule definitions support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."
@@ -120,16 +120,16 @@ The `artifacts` array is optional and accepts up to 100 entries. Every artifact 
 |---|---|---|---|
 | `artifacts[].id` | string | Any string | Artifact identifier. Required. Max 256 characters. |
 | `artifacts[].type` | string | Any string | Use `runbook` or `dashboard`. Other strings are allowed. Max 128 characters. |
-| `artifacts[].data` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
-| `artifacts[].data.content` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |
-| `artifacts[].data.dashboard_id` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` | string | Non-empty string | ID of the dashboard to link. Required when `type` is `dashboard`. Max 1,024 characters. |
+| `artifacts[].data` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
+| `artifacts[].data.content` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |
+| `artifacts[].data.dashboard_id` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | ID of the dashboard to link. Required when `type` is `dashboard`. Max 1,024 characters. |
 | `artifacts[].value` {applies_to}`stack: experimental =9.5` | string | Any string | Required. Runbook Markdown (max 50,000 characters) or a dashboard ID (max 1,024 characters). |
 
 The following example attaches a runbook and a dashboard to the same rule.
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: experimental 9.6+, serverless: experimental }
+:::{applies-item} { stack: experimental 9.6+, serverless: ga }
 
 ```yaml
 artifacts:
