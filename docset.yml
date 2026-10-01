@@ -83,6 +83,7 @@ api:
     - spec: bundled-apm-mis-openapi.json
       product: observability
       repository: elastic/apm-managed-service
+      aliases: [observability-serverless]
 
 cta:
   monitor-kubernetes:
