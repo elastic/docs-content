@@ -33,7 +33,7 @@ This page lists valid fields for YAML rule definitions. For authoring guidance, 
 
 | Field | Type | Description |
 |---|---|---|
-| `query.base` | ES\|QL string | ES\|QL query that selects the data to evaluate. Must include a `FROM` clause. {{kib}} applies the time filter from `schedule.lookback` using `time_field`. Required. |
+| `query.base` | ES\|QL string | Required. ES\|QL query that selects the data to evaluate. Must include a `FROM` clause. {{kib}} applies the time filter from `schedule.lookback` using `time_field`. |
 | `query.breach.segment` | ES\|QL segment string | Optional clause appended to `query.base`, for example `WHERE avg_cpu > 0.85`. Do not include a `FROM` clause. If you omit it, every row returned by `query.base` is a match. |
 
 Put `FROM` only in `query.base`. To recover with a query that has its own `FROM` clause, set `recovery.strategy` to `query`. See [Recovery strategy](#recovery-strategy).
@@ -54,8 +54,8 @@ Use `composed` when breach, recovery, and no-data conditions all start from the 
 
 | Field | Type | Description |
 |---|---|---|
-| `query.base` | ES\|QL string | Base query that runs on every evaluation. Time filters are applied automatically using the lookback window. Required. |
-| `query.breach.segment` | ES\|QL segment string | ES\|QL segment appended to the base query for breach detection. Written as a pipe command, for example `\| WHERE count > 5`. Required. |
+| `query.base` | ES\|QL string | Required. Base query that runs on every evaluation. Time filters are applied automatically using the lookback window. |
+| `query.breach.segment` | ES\|QL segment string | Required. ES\|QL segment appended to the base query for breach detection. Written as a pipe command, for example `\| WHERE count > 5`. |
 | `query.recovery.segment` | ES\|QL segment string | ES\|QL segment appended to the base query for recovery detection. Required when `recovery_strategy` is `query`. |
 
 **Fields for `query.format: standalone`**
@@ -64,7 +64,7 @@ Use `standalone` when conditions need full independence. Each query can target d
 
 | Field | Type | Description |
 |---|---|---|
-| `query.breach.query` | Full ES\|QL string | Full ES\|QL query for breach detection. Required. |
+| `query.breach.query` | Full ES\|QL string | Required. Full ES\|QL query for breach detection. |
 | `query.recovery.query` | Full ES\|QL string | Full ES\|QL query for recovery detection. Required when `recovery_strategy` is `query`. |
 | `query.no_data.query` | Full ES\|QL string | Full ES\|QL query that detects presence of data. Required when `no_data_strategy` is not `none`. Only supported on `standalone` format. |
 
@@ -89,7 +89,7 @@ These fields control how far back each evaluation looks and which timestamp fiel
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
-| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Defaults to `@timestamp`. <br><br> The maximum character limits are: <br> - {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` 256 <br> - {applies_to}`stack: experimental =9.5` 128 |
+| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Defaults to `@timestamp`. <br><br> Max character limits: <br> - 256 {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` <br> - 128 {applies_to}`stack: experimental =9.5` |
 
 ## Recovery strategy [recovery-strategy]
 
@@ -218,8 +218,7 @@ The `artifacts` array is optional and accepts up to 100 entries. Every artifact 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `artifacts[].id` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | Any string | Artifact identifier. Required. Max 150 characters. |
-| `artifacts[].id` {applies_to}`stack: experimental =9.5` | string | Any string | Artifact identifier. Required. Max 256 characters. |
+| `artifacts[].id` | string | Any string | Required. Artifact identifier. <br><br> Max character limits: <br> - 150{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` <br> - 256 {applies_to}`stack: experimental =9.5` |
 | `artifacts[].type` | string | Any string | Use `runbook` or `dashboard`. Other strings are allowed. Max 128 characters. |
 | `artifacts[].data` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
 | `artifacts[].data.content` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |
