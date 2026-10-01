@@ -32,9 +32,6 @@ Compared to [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md), [{{e
 To compare {{serverless-short}} against every other deployment type, review the [detailed deployment comparison](/deploy-manage/deploy/deployment-comparison.md). If you're choosing between {{ech}} and {{serverless-short}} specifically, [compare their core features and capabilities](/deploy-manage/deploy/elastic-cloud.md#general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud), then review the [feature-level comparison](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) to check the specific features you depend on.
 :::
 
-:::{include} /deploy-manage/_snippets/autoops-callout-monitoring.md
-:::
-
 ## Benefits of serverless projects [_benefits_of_serverless_projects]
 
 **Management free:** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, and business continuity.
