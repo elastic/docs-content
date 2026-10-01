@@ -55,10 +55,7 @@ The default policy and repository are used when:
 - Restoring a snapshot to a different deployment
 - Taking automated snapshots in case of deployment changes
 
-:::{admonition} Default repository: same organization and same region
-:::{include} /deploy-manage/tools/snapshot-and-restore/_snippets/ech-found-snapshots-same-organization.md
-:::
-:::
+In {{ech}}, a snapshot in the default `found-snapshots` repository can be restored to another deployment only when both deployments are in the same organization and the same region. Refer to [](../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization).
 
 For API-driven deployment linking of platform-managed snapshots, refer to [Manage snapshot repositories in {{ech}}](snapshot-and-restore/elastic-cloud-hosted.md#register-snapshot-repos-ech).
 

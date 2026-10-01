@@ -37,10 +37,7 @@ Other repository types are available through official plugins:
 
 {{ech}} deployments automatically register a repository named `found-snapshots` in {{es}} clusters. These repositories are used together with the `cloud-snapshot-policy` SLM policy to take periodic snapshots of your {{es}} clusters. You can also use the `found-snapshots` repository for your own [SLM policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
-::::{admonition} Default repository: same organization and same region
-::::{include} /deploy-manage/tools/snapshot-and-restore/_snippets/ech-found-snapshots-same-organization.md
-::::
-::::
+The `found-snapshots` repository is specific to each deployment. You can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are in the same organization and the same region.
 
 In addition to the platform-managed `found-snapshots` repository, you can register custom snapshot repositories in {{ech}} deployments of the following types:
 

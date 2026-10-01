@@ -20,11 +20,6 @@ Use {{kib}} to manage your snapshots. In {{kib}}, you can set up additional repo
 
 Snapshots back up only open indices. If you close an index, it is not included in snapshots and you will not be able to restore the data.
 
-::::{admonition} Default repository: same organization and same region
-::::{include} /deploy-manage/tools/snapshot-and-restore/_snippets/ech-found-snapshots-same-organization.md
-::::
-::::
-
 ::::{important}
 {{ech}} registers the built-in `found-snapshots` repository on every deployment and uses it along with the `cloud-snapshot-policy` SLM policy for automated snapshots. This repository is your backup on {{ech}}. Snapshot data exists only in this repository and {{ech}} does not mirror it to separate storage or retain deleted snapshots through storage-level versioning or soft delete.
 
@@ -51,7 +46,7 @@ When working with snapshot repositories in {{ech}}, keep the following in mind:
 
 [{{ech}} deployments](https://cloud.elastic.co/registration?page=docs&placement=docs-body) automatically register the [`found-snapshots`](../snapshot-and-restore.md) repository. {{ech}} uses this repository and the `cloud-snapshot-policy` to take periodic snapshots of your cluster. You can also use the `found-snapshots` repository for your own [{{slm-init}} policies](create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
-The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are in the same organization and the same region. See the Cloud [Snapshot and restore](../snapshot-and-restore.md) documentation to learn more.
+The `found-snapshots` repository is specific to each deployment. You can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are in the same organization and the same region. Refer to [](../../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization).
 
 {{ech}} deployments also support the following repository types:
 
