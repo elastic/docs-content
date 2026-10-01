@@ -39,8 +39,8 @@ Integration testing
 
 In **{{ech}}**, a cluster is eligible as a destination for a snapshot restore if it meets these criteria:
 
-- The cluster is in the same region. For example, a snapshot taken in `eu-west-1` cannot be restored to `us-east-1` at this point. If you need to restore snapshots across regions, create the destination deployment, connect it to the source repository as a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), and then [restore from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
-- The destination cluster is able to read the indices. You can generally restore to your {{es}} cluster snapshots of indices created back to the previous major version, but refer to the [version compatibility matrix](../snapshot-and-restore.md#snapshot-restore-version-compatibility) for all the details.
+* A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same region and the same organization. Review [](../../deploy/elastic-cloud/restrictions-known-problems.md#ec-snapshot-restore-enterprise-search-kibana-across-deployments) for more guidance.
+* The destination cluster is able to read the indices. You can generally restore to your {{es}} cluster snapshots of indices created back to the previous major version, but refer to the [version compatibility matrix](../snapshot-and-restore.md#snapshot-restore-version-compatibility) for all the details.
 
 The list of available snapshots can be found in the `found-snapshots` repository.
 

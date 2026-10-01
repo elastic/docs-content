@@ -143,7 +143,8 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 * Currently, there is not a way to retrieve the values of {{kib}} encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, {{kib}} will not be able to decrypt the data required for some features to function properly in the target deployment.
 * If you have already restored a snapshot across deployments and now have broken {{kib}} saved objects in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
 
-A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same region. If you need to restore snapshots across regions, create the destination deployment, connect to the [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md), and then [restore from a snapshot](../../tools/snapshot-and-restore/restore-snapshot.md).
+::::{include} /deploy-manage/tools/snapshot-and-restore/_snippets/ech-found-snapshots-same-organization.md
+::::
 
 When restoring from a deployment that’s using searchable snapshots, you must not delete the snapshots in the source deployment even after they are successfully restored in the destination deployment. Refer to [Restore snapshots containing searchable snapshots indices across clusters](../../tools/snapshot-and-restore/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md) for more information.
 
