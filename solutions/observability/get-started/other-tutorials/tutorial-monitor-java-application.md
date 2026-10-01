@@ -571,7 +571,7 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
 
     You can see that a lot more data is indexed than the event itself. There is information about the offset in the file, information about the component shipping the logs, the name of the shipper’s name in the output, and there is a `message` field containing log line contents.
 
-    You can see there is a flaw in the request logging. If the user agent is `null`, something other than `null` is returned. Reading our logs is crucial; however, indexing them alone gains us nothing.  To fix this, here is a new request logger.
+    You can see there is a flaw in the request logging. If the user agent is `null`, something other than `null` is returned. Reading our logs is crucial. However, indexing them alone gains us nothing.  To fix this, here is a new request logger.
 
     ```java
     Javalin app = Javalin.create(config -> {

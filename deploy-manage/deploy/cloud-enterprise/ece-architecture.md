@@ -88,7 +88,7 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
 * **Secure communication through Stunnel**
 
-    Docker containers communicate securely with one another through Transport Layer Security, provided by [Stunnel](https://www.stunnel.org/) (as not all services or components support TLS natively). Tunneling all traffic between containers makes sure that it is not possible to eavesdrop, even when someone else has access to the underlying cloud or network infrastructure.
+    Docker containers communicate securely with one another through Transport Layer Security, provided by [Stunnel](https://www.stunnel.org/) (as not all services or components support TLS natively). Tunneling all traffic between containers makes sure that it is impossible to eavesdrop, even when someone else has access to the underlying cloud or network infrastructure.
 
 ## ECE service containers by host role [ece-service-containers]
 

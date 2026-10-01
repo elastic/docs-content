@@ -52,7 +52,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include MD5 hashes in alerts. Even if set to false, MD5 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate MD5 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default. Before 8.16, MD5 hashes were always included.
+    {{elastic-endpoint}} doesn't generate MD5 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing. Starting with 8.18, users are opted out by default. Before 8.16, MD5 hashes were always included.
 
 
 `[linux,mac,windows].advanced.alerts.hash.sha1`
@@ -60,7 +60,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include SHA-1 hashes in alerts. Even if set to `false`, SHA-1 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate SHA-1 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default. Before 8.16, SHA-1 hashes were always included.
+    {{elastic-endpoint}} doesn't generate SHA-1 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing. Starting with 8.18, users are opted out by default. Before 8.16, SHA-1 hashes were always included.
 
 
 `windows.advanced.alerts.rollback.self_healing.enabled`
@@ -499,7 +499,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include MD5 hashes in processes and libraries in events. Even if set to `false`, MD5 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate MD5 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default. Before 8.16, MD5 hashes were always included.
+    {{elastic-endpoint}} doesn't generate MD5 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing. Starting with 8.18, users are opted out by default. Before 8.16, MD5 hashes were always included.
 
 
 `[linux,mac,windows].advanced.events.hash.sha1`
@@ -507,7 +507,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include SHA-1 hashes in processes and libraries in events. Even if set to `false`, SHA-1 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate SHA-1 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default. Before 8.16, SHA-1 hashes were always included.
+    {{elastic-endpoint}} doesn't generate SHA-1 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing. Starting with 8.18, users are opted out by default. Before 8.16, SHA-1 hashes were always included.
 
 
 `[linux,mac,windows].advanced.events.hash.sha256`
@@ -515,7 +515,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include SHA-256 hashes in processes and libraries in events. Even if set to `false`, SHA-256 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate SHA-256 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-256 hashing; starting with 8.18, users are opted out by default. Before 8.16, SHA-256 hashes were always included.
+    {{elastic-endpoint}} doesn't generate SHA-256 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-256 hashing. Starting with 8.18, users are opted out by default. Before 8.16, SHA-256 hashes were always included.
 
 
 `mac.advanced.events.image_load`
@@ -561,7 +561,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Maximum number of process ancestry entries to include in process events. For 8.14 and earlier, default: `20`. For 8.15 and later, default: `5`.*
 
-    Use this setting to control how many ancestor processes {{elastic-endpoint}} includes in the `process.ancestry` field. Before 8.15, this field contained the last 20 ancestor processes; starting with 8.15, it was reduced to the last 5, to limit data volume.
+    Use this setting to control how many ancestor processes {{elastic-endpoint}} includes in the `process.ancestry` field. Before 8.15, this field contained the last 20 ancestor processes. Starting with 8.15, it was reduced to the last 5, to limit data volume.
 
 
 `windows.advanced.events.process.creation_flags`
@@ -1077,7 +1077,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include full `host.*` fieldset information in events. When `false`, only `id`, `name`, and `os` are included. Warning: `true` will increase event size. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} only includes minimal information in the host fieldset in each event. Use this setting to also include extended information from the `alerts` and `metrics-*` documents. This setting was made available in 8.16; starting with 8.18, this behavior is disabled by default. Before 8.16, full `host` information was always included.
+    {{elastic-endpoint}} only includes minimal information in the host fieldset in each event. Use this setting to also include extended information from the `alerts` and `metrics-*` documents. This setting was made available in 8.16. Starting with 8.18, this behavior is disabled by default. Before 8.16, full `host` information was always included.
 
 
 `linux.advanced.tty_io.max_event_interval_seconds`
