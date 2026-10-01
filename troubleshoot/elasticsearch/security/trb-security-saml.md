@@ -161,7 +161,7 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
     3. The SAML Response has been altered in transit and the signature cannot be validated even though the correct key is used.
 
     ::::{note}
-    The private keys and public keys and self-signed X.509 certificates that are used in SAML for digital signatures have no relation to the keys and certificates that are used for TLS either on the transport or the http layer. A signature validation failure has nothing to do with your `xpack.ssl` related configuration.
+    The private keys and public keys and self-signed X.509 certificates that are used in SAML for digital signatures have no relation to the keys and certificates that are used for TLS either on the transport or the HTTP layer. A signature validation failure has nothing to do with your `xpack.ssl` related configuration.
     ::::
 
 9. **Symptoms:**
