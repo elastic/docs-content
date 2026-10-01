@@ -9,7 +9,7 @@ products:
 description: "Learn what happens after a rule runs, look up key terms, and follow a hands-on tutorial to create a rule and observe the alert lifecycle."
 ---
 
-# Get started [get-started]
+# Get started with the system [get-started]
 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
