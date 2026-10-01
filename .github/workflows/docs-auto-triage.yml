@@ -18,3 +18,22 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       GH_AW_GITHUB_TOKEN: ${{ secrets.GH_AW_GITHUB_TOKEN }}
       GH_AW_GITHUB_MCP_SERVER_TOKEN: ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN }}
+
+  dispatch-project-metadata:
+    needs: run
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      # Labels that triage applies with GITHUB_TOKEN do not start the `labeled` trigger,
+      # but workflow_dispatch runs started with GITHUB_TOKEN do.
+      - name: Start project metadata workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          gh workflow run docs-project-metadata.yml --ref "$DEFAULT_BRANCH" \
+            -f issue-url="$ISSUE_URL" -f dry-run=false
