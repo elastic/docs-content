@@ -119,24 +119,43 @@ jobs:
               // checkMembershipForUser returns 404 for Elastic members and the
               // review is skipped. Repository permission is visible to this
               // token and still blocks outside contributors with read access.
+              // The legacy `permission` field folds `maintain` into `write`
+              // and `triage` into `read`, so checking admin and write covers
+              // maintainers too.
               let permission = 'none';
-              try {
-                const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  username: context.actor,
-                });
-                permission = data.permission;
-              } catch (error) {
-                core.warning(
-                  `Fork PR: could not read repository permission for ${context.actor}: ${error.status || error.message}`
-                );
+              let lookupFailed = false;
+              for (let attempt = 1; attempt <= 3; attempt++) {
+                try {
+                  const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    username: context.actor,
+                  });
+                  permission = data.permission;
+                  lookupFailed = false;
+                  break;
+                } catch (error) {
+                  // 404 means the actor is not a collaborator: no retry needed.
+                  if (error.status === 404) {
+                    lookupFailed = false;
+                    break;
+                  }
+                  lookupFailed = true;
+                  core.warning(
+                    `Fork PR: could not read repository permission for ${context.actor} (attempt ${attempt}/3): ${error.status || error.message}`
+                  );
+                }
               }
-              const allowed = ['admin', 'maintain', 'write'].includes(permission);
+              const allowed = ['admin', 'write'].includes(permission);
               if (!allowed) {
-                core.warning(
-                  `Fork PR: skipping docs review for ${context.actor} (repository permission: ${permission}).`
-                );
+                const reason = lookupFailed
+                  ? `the repository permission lookup failed for ${context.actor}. Uncheck and check the box again to retry.`
+                  : `${context.actor} needs write access to start a docs review from a fork pull request (repository permission: ${permission}).`;
+                core.warning(`Fork PR: skipping docs review because ${reason}`);
+                await core.summary
+                  .addHeading('Docs review skipped', 3)
+                  .addRaw(`Skipped because ${reason}`, true)
+                  .write();
                 core.setOutput('docs_review_triggered', 'false');
                 return;
               }
