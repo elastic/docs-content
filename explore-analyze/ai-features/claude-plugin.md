@@ -27,7 +27,7 @@ The plugin is compatible with Claude Code and Cowork, and has been tested on the
 The plugin contains **Agent skills** — skill packages synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
 See [AI agent skills for Elastic](agent-skills.md) for the full list and how skills work.
 
-Once installed, these skills gives Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
+Once installed, these skills give Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
 
 - Write and run ES|QL queries against a live cluster.
 - Build and manage {{kib}} dashboards, alerting rules, and workflows.
@@ -38,7 +38,7 @@ Once installed, these skills gives Claude the procedural knowledge to perform co
 ::::{note}
 The [elastic/agent-skills](https://github.com/elastic/agent-skills) repository is the authoritative source for Elastic agent skills.
 You can install skills directly from that repository into _any_ compatible AI coding agent, including Claude.
-This plugin merely facilitates a smoother, in-app, installation experience.
+The plugin simply provides a smoother in-app installation experience.
 ::::
 
 ### Access Elastic documentation in conversations
@@ -48,7 +48,7 @@ Claude can look up configuration options, API references, and feature guides wit
 
 ## Install the plugin
 
-In the Claude on the web or in the desktop app, open **Settings** → **Plugins** → **Discover**, search for **Elastic**, select the plugin, and click **Add**.
+In Claude on the web or in the desktop app, open **Settings** → **Plugins** → **Discover**, search for **Elastic**, and click **Add**.
 
 :::{image} images/claude-code-discover-elastic-plugin.png
 :screenshot:
@@ -57,7 +57,7 @@ In the Claude on the web or in the desktop app, open **Settings** → **Plugins*
 :::
 
 ::::{note}
-Plugins installed via https://claude.ai are synced to Claude Code, but with some nuances.
+Plugins installed via the Claude web app are synced to Claude Code, but with some nuances.
 See the official [Claude documentation on synced plugins](https://code.claude.com/docs/en/plugins/loading#synced-plugins) for more details.
 ::::
 
