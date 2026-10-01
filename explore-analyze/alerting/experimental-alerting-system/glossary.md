@@ -14,7 +14,7 @@ description: Definitions of key terms used throughout the experimental Kibana al
 These terms appear throughout the {{alerting-v2-system}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   A configuration that controls which alert episodes invoke a workflow and how often. A single action policy can apply to one rule, several rules, or all rules in the space. To learn more, refer to [Notifications and actions](notifications-actions.md).
+:   A configuration that controls which alert episodes invoke a workflow and how often. A single action policy can apply to alert episodes from one rule, several rules, or every rule in the space. To learn more, refer to [Notifications and actions](notifications-actions.md).
 
 **Alert episode**
 :   The complete record of one problem, from first detection to recovery, moving through states (pending, active, recovering, inactive). An alert episode is the grouping of [rule events](rules/rule-event-field-reference.md) that share `episode.id`. To learn more, refer to [Alerts](alerts.md).
@@ -29,7 +29,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 :   The language the system uses to evaluate your data. Some creation paths generate the query for you. To learn more, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql.md).
 
 **Notification**
-:   The message or action a workflow sends (such as a Slack message, an email, or a webhook call) when an alert episode matches an action policy or a lifecycle trigger fires. To learn more, refer to [How action policies are evaluated](action-policies/about-action-policies.md#how-action-policies-evaluated).
+:   The message or action a workflow sends (such as a Slack message, an email, or a webhook call) when an alert episode matches an action policy or a lifecycle trigger fires. To learn more, refer to [How the dispatcher evaluates action policies](action-policies/about-action-policies.md#how-action-policies-evaluated).
 
 **Rule**
 :   The definition of what to watch for in your data, how often to check, and what counts as a match. A rule runs on a schedule. {{kib}} writes rule events when the query finds a match. The rule's configuration determines whether those events belong to alert episodes. To learn more, refer to [Rules](rules.md).
