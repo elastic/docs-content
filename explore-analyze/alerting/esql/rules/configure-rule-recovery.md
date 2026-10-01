@@ -13,9 +13,29 @@ description: "How to configure when and how an alert episode recovers: the recov
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-Recovery condition settings are optional for rules that group matches into an alert episode. They control how the rule decides an alert episode has resolved and how much confirmation it needs before closing the alert episode. Setting these correctly ensures alert episodes close when the underlying problem is actually fixed, rather than staying open indefinitely, closing for the wrong reason, or flapping between open and closed.
+Recovery settings control how the rule decides an alert episode has resolved and how much confirmation it needs before closing the alert episode. Setting these correctly ensures alert episodes close when the underlying problem is actually fixed, rather than staying open indefinitely, closing for the wrong reason, or flapping between open and closed.
+
+::::{applies-switch}
+
+:::{applies-item} stack: experimental =9.5
+
+Recovery condition settings are optional for rules that group matches into an alert episode.
+
+:::
+
+:::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+Alert rules must set `recovery`. Signal rules must omit it. Omitting `recovery` on an alert rule fails validation.
+
+:::
+
+::::
 
 ## Recovery strategy [recovery-strategy-options]
+
+:::::{applies-switch}
+
+::::{applies-item} stack: experimental =9.5
 
 Choose one of the following options. Each maps to a `recovery_strategy` value if you're editing YAML directly.
 
@@ -45,6 +65,38 @@ Leave the recovery strategy set to **Default** when:
 
 * The breach condition no longer matching is a reliable enough signal that the problem is resolved. This covers most rules.
 
+::::
+
+::::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+Choose one of the following options. Each maps to a `recovery.strategy` value if you're editing YAML directly.
+
+| Option | `recovery.strategy` | Description |
+| --- | --- | --- |
+| **Default recovery** | `no_breach` | Recovers the alert episode when its group no longer appears in the breach results. This covers most rules. |
+| **Custom recovery** | `condition` | Appends `recovery.segment` to `query.base`. The alert episode recovers when that combined query returns the group. Requires an alert condition (`query.breach`). |
+| **No recovery** | `manual` | Does not recover automatically. The alert episode stays open until someone closes it. |
+
+To recover with a query that has its own `FROM` clause, set `recovery.strategy` to `query` and provide `recovery.query` in YAML. The rule form does not offer this option.
+
+**When to change the recovery strategy**
+
+Choose **Custom recovery** when:
+
+* The condition that should close an alert episode is not "no longer breaching." For example, a value needs to drop back to a safe margin below the original breach threshold. **Custom recovery** requires an alert condition. Without one, every row of the base query breaches, so the recovery condition can never succeed.
+
+Choose **No recovery** when:
+
+* The alert episode should never close automatically, because closing should be a deliberate decision, such as a security investigation that is not resolved just because the query stopped matching.
+
+Leave the recovery strategy set to **Default recovery** when:
+
+* The group leaving the breach results is a reliable signal that the problem is resolved. This covers most rules.
+
+::::
+
+:::::
+
 ## Recovery delay [recovery-delay]
 
 Recovery delay controls how much confirmation the rule needs, once the recovery strategy's condition is met, before it actually closes the alert episode. This is separate from the recovery strategy: the strategy decides *what* counts as recovered, and the delay decides *how many times or for how long* that signal must hold before the alert episode closes. The same three modes available for [alert delay](configure-rule-alert-delay.md) apply:
@@ -61,15 +113,46 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 | --- | --- | --- | --- |
 | `recovering_count` | integer | 0–1000 | Number of consecutive non-breaching evaluations required before the alert episode closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
 | `recovering_timeframe` | duration | Any duration string | How long the condition must remain non-breaching before the alert episode closes. |
-| `recovering_operator` | string | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+| `recovering_operator` {applies_to}`stack: experimental =9.5` | string | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
+| `recovering_operator` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | `and` or `or` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`and`) or either one is enough (`or`). |
 
 Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
+
+:::::{applies-switch}
+
+::::{applies-item} stack: experimental =9.5
 
 :::{note}
 In the YAML rule schema, these fields are prefixed with `state_transition.`. For example, `recovering_count` here is `state_transition.recovering_count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). They are the same fields.
 :::
 
+::::
+
+::::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+:::{note}
+In the YAML rule schema, these fields are nested under `state_transition.recovering`. For example, `recovering_count` here is `state_transition.recovering.count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). A `recovering` object must set `count` or `timeframe`. Do not set `state_transition.recovering` when `recovery.strategy` is `manual`.
+:::
+
+::::
+
+:::::
+
+::::{applies-switch}
+
+:::{applies-item} stack: experimental =9.5
+
 You can combine Recoveries and Duration by setting both `recovering_count` and `recovering_timeframe`. Use `recovering_operator: AND` to require both conditions before the alert episode closes, or `recovering_operator: OR` if either condition alone is enough.
+
+:::
+
+:::{applies-item} { stack: experimental 9.6+, serverless: ga }
+
+You can combine Recoveries and Duration by setting both `recovering_count` and `recovering_timeframe`. Use `recovering_operator: and` to require both conditions before the alert episode closes, or `recovering_operator: or` if either condition alone is enough.
+
+:::
+
+::::
 
 ## Examples
 
