@@ -86,27 +86,10 @@ These optional fields add descriptive information to a rule for identification, 
 
 These fields control how far back each evaluation looks and which timestamp field is used for the time range filter. Both are optional, but omitting `schedule.lookback` means the query runs without a time bound.
 
-:::::{applies-switch}
-
-::::{applies-item} { stack: experimental 9.6+, serverless: ga }
-
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
-| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Max 256 characters. Defaults to `@timestamp`. |
-
-::::
-
-::::{applies-item} stack: experimental =9.5
-
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
-| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Max 128 characters. Defaults to `@timestamp`. |
-
-::::
-
-:::::
+| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Defaults to `@timestamp`.<br>{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` Max 256 characters.<br>{applies_to}`stack: experimental =9.5` Max 128 characters. |
 
 ## Recovery strategy [recovery-strategy]
 
