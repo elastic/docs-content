@@ -22,7 +22,7 @@ This page lists valid fields for YAML rule definitions. For authoring guidance, 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `kind` | string | `alert` or `signal` | Whether the rule tracks ongoing alert episodes (`alert`) or records point-in-time observations (`signal`). Set when the rule is created and can't be modified when editing the rule. |
-| `metadata.name` | string | Any string | The name of the rule. Max 256 characters. |
+| `metadata.name` | string | Any string | Rule name. Must be unique within the {{kib}} space. Max 256 characters. |
 | `schedule.every` | duration | Any duration string | How often the rule runs. For example: `5s`, `1m`, `5m`. Minimum interval applies. |
 
 ::::{applies-switch}
@@ -218,9 +218,9 @@ The `artifacts` array is optional and accepts up to 100 entries. Every artifact 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `artifacts[].id` | string | Any string | Required. Artifact identifier. <br><br> Max character limits: <br> - 150{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` <br> - 256 {applies_to}`stack: experimental =9.5` |
+| `artifacts[].id` | string | Any string | Required. Unique identifier for the artifact within the rule's artifacts array. {{kib}} rejects the rule if two artifacts share an id. <br><br> Max character limits: <br> - 150{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` <br> - 256 {applies_to}`stack: experimental =9.5` |
 | `artifacts[].type` | string | Any string | Use `runbook` or `dashboard`. Other strings are allowed. Max 128 characters. |
-| `artifacts[].data` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
+| `artifacts[].data` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | object | Type-specific object | Required. Holds the fields specific to type, such as `data.content` or `data.dashboard_id`. Max 32 fields. |
 | `artifacts[].data.content` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |
 | `artifacts[].data.dashboard_id` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | string | Non-empty string | ID of the dashboard to link. Required when `type` is `dashboard`. Max 1,024 characters. |
 | `artifacts[].value` {applies_to}`stack: experimental =9.5` | string | Any string | Required. Runbook Markdown (max 50,000 characters) or a dashboard ID (max 1,024 characters). |
