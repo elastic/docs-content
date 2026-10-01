@@ -56,7 +56,7 @@ Afterwards, you can:
   * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams.
   * **Performance:** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined settings you can edit.
 
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::{include} /deploy-manage/_snippets/autoops-callout-monitoring.md
 :::
 
 ## Monitor serverless status [general-serverless-status]
