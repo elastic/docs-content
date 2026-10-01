@@ -422,14 +422,16 @@ toc:
       - file: alerting/compare-alerting-systems.md
       - file: alerting/esql/system-overview.md
         children:
-          - file: alerting/esql/how-it-works.md
-          - file: alerting/esql/glossary.md
           - file: alerting/esql/get-started.md
             children:
-              - file: alerting/esql/get-started/setup.md
-              - file: alerting/esql/get-started/configure-access.md
+              - file: alerting/esql/get-started/how-it-works.md
+              - file: alerting/esql/get-started/glossary.md
               - file: alerting/esql/get-started/create-your-first-rule.md
-          - file: alerting/esql/authorization.md
+          - file: alerting/esql/setup.md
+          - file: alerting/esql/manage.md
+            children:
+              - file: alerting/esql/manage/configure-access.md
+              - file: alerting/esql/manage/authorization.md
           - file: alerting/esql/rules.md
             children:
               - file: alerting/esql/rules/create-a-rule.md
