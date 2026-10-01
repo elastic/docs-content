@@ -18,9 +18,9 @@ products:
 :::
 
 :::{admonition} Simplify monitoring with AutoOps
-Use [AutoOps](/deploy-manage/monitor/autoops.md) in your {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, or self-managed clusters. 
+Use AutoOps in your {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, or self-managed clusters. 
 
-AutoOps is a monitoring tool that simplifies cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. 
+AutoOps is a monitoring tool that simplifies cluster management through real-time issue detection and resolution paths, resource utilization visibility, and performance recommendations. [Learn more about AutoOps](/deploy-manage/monitor/autoops.md).
 
 To help you make your decision, refer to [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 :::
