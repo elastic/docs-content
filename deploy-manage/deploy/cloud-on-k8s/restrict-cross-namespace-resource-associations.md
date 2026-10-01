@@ -16,33 +16,33 @@ When using the `elasticsearchRef` field to establish a connection to {{es}} from
 
 The enforcement of access control rules for cross-namespace associations is disabled by default. Once enabled, it only enforces access control for resources deployed across two different namespaces. Associations between resources deployed in the same namespace are not affected.
 
-ECK allows an association only if the `ServiceAccount` of the associated resource can send HTTP `GET` requests to the referenced resource object.
+When RBAC checks are enabled, ECK checks whether the associated resource's `ServiceAccount` has `get` permission for the referenced Kubernetes resource. The selected enforcement mode determines whether ECK unbinds the association or only emits a Warning event when access is denied.
 
 ::::{important}
-ECK automatically removes any associations that do not have the correct access rights. If you have existing associations, do not enable this feature without creating the required `Roles` and `RoleBindings` as described in the following sections.
+ECK automatically removes associations that lack the correct access rights, scoped to whichever reference types the selected enforcement mode checks. If you have existing associations, do not enable this feature without creating the required `Roles` and `RoleBindings` as described in the following sections.
 ::::
 
 
 ## Enforcement modes [k8s-restrict-cross-namespace-enforcement-modes]
 
-To enable the restriction of cross-namespace associations, start the operator with the `--enforce-rbac-on-refs` flag. It accepts these values:
+To enforce RBAC checks for cross-namespace associations, start the operator with the `--enforce-rbac-on-refs` flag. It accepts these values:
 
-| Value | Behavior |
-|---|---|
-| `false` | {applies_to}`eck: ga 3.0` Disabled (default). The operator performs no RBAC checks. |
-| `true` | {applies_to}`eck: ga 3.6` The operator checks RBAC for all cross-namespace references. It unbinds direct or transitive {{es}} references when the service account is denied access. For all other cross-namespace references, it emits a Warning event only.<br><br>{applies_to}`eck: ga 3.0-3.5` The operator checks and unbinds direct or transitive {{es}} references when the service account is denied access. Non-Elasticsearch references are not checked. |
-| `"legacy"` | {applies_to}`eck: ga 3.6` Deprecated alias for `true`. Will be removed in a future release. |
-| `"all"` | {applies_to}`eck: ga 3.6` The operator checks RBAC for all cross-namespace references and unbinds any where the service account is denied access. |
+| Value | Behavior                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `false` | {applies_to}`eck: ga 3.0+` The operator performs no RBAC checks. If you omit the flag, the operator uses this value by default.                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `true` | {applies_to}`eck: ga 3.6+` The operator performs RBAC checks on all cross-namespace references. If the `ServiceAccount` cannot access a referenced resource, the operator removes associations that use direct or transitive {{es}} references. For other reference types, it only emits an event of type `Warning`.<br><br>{applies_to}`eck: ga 3.0-3.5` The operator performs RBAC checks only on direct and transitive {{es}} references. If the `ServiceAccount` cannot access the referenced resource, the operator removes the association. It does not check other reference types. |
+| `"legacy"` | {applies_to}`eck: ga 3.6` Deprecated alias for `true`. Will be removed in a future release.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `"all"` | {applies_to}`eck: ga 3.6+` The operator performs RBAC checks on all cross-namespace references. If the `ServiceAccount` cannot access the referenced resource, the operator removes the association.                                                                                                                                                                                                                                                                                                                                                                                       |
 
 ::::{note}
-* The bare flag without a value (`--enforce-rbac-on-refs`) is equivalent to `--enforce-rbac-on-refs=true`.
+Specifying `--enforce-rbac-on-refs` without an explicit value is equivalent to setting it to `true`.
 
-* In a future release, `true` will become an alias for `"all"`, and the operator will unbind all cross-namespace references where the service account is denied access, not just Elasticsearch ones. Review the Warning events emitted for non-Elasticsearch references and update your RBAC rules so your setup is ready before that change lands.
+In a future release, `true` will become an alias for `"all"`. The operator will then remove any cross-namespace association for which the `ServiceAccount` cannot access the referenced resource, not only associations that use {{es}} references. Before this behavior changes, review events of type `Warning` for non-{{es}} references and update your RBAC rules as needed.
 ::::
 
 ## Set up RBAC for cross-namespace associations [k8s-restrict-cross-namespace-rbac-setup]
 
-These steps set up RBAC for an {{es}} association.
+Follow these steps to set up RBAC for an {{es}} association.
 
 1. Create a `ClusterRole` to allow HTTP `GET` requests to be run against {{es}} objects:
 
