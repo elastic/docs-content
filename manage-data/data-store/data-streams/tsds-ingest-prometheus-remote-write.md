@@ -1,7 +1,9 @@
 ---
 navigation_title: "Prometheus remote write endpoint"
+description: Send metrics from Prometheus or any remote write client directly to the Elasticsearch Prometheus remote write endpoint and store them in a time series data stream (TSDS).
 applies_to:
-  stack: preview =9.4, ga 9.5+
+  stack: ga 9.5+, preview =9.4
+  serverless: ga
 products:
   - id: elasticsearch
 ---
@@ -14,7 +16,9 @@ In addition to the ingestion of metrics data through the bulk API,
 The endpoint is available under `/_prometheus/api/v1/write`.
 
 :::{note}
-If you are using {{serverless-full}}, use [managed inputs](opentelemetry://reference/motlp/prometheus-remote-write.md) to send Prometheus metrics instead. Managed inputs are the recommended ingestion path for {{ecloud}} deployments and provide durable buffering, unified authentication, and back-pressure handling.
+On {{serverless-full}} and {{ech}}, the recommended way to send Prometheus metrics is the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) rather than this {{es}} endpoint. Managed inputs provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}.
+
+For an overview of all metrics ingest paths, including how Prometheus remote write fits alongside OpenTelemetry and {{agent}} integrations, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-prometheus).
 :::
 
 ## Overview
@@ -88,7 +92,7 @@ In both cases, Elasticsearch sanitizes dataset and namespace values, replacing a
 
 ### Route by URL path
 
-Set the dataset and namespace via URL path segments:
+Set the dataset and namespace using URL path segments:
 
 | Endpoint | Data stream |
 | --- | --- |
@@ -194,7 +198,8 @@ Custom dynamic templates are merged with the built-in ones. The built-in counter
 
 ## Limitations
 
-* Only the Prometheus remote write 1.0 protocol is supported. Remote write 2.0 is not yet supported.
+* Only the Prometheus remote write 1.0 protocol is supported. The endpoint accepts remote write 2.0 requests but discards their samples without returning an error, so keep clients on 1.0.
 * Time series with a missing `__name__` label are dropped.
+* Native histograms, which Prometheus and OpenTelemetry Collector exporters use for exponential histograms, are not supported. Time series that carry them are silently dropped. Classic histograms sent as `_bucket`, `_sum`, and `_count` series are supported.
 * Samples with non-finite values (NaN, Infinity) are silently dropped.
 * [Staleness markers](https://prometheus.io/docs/prometheus/latest/querying/basics/#staleness) are not supported.

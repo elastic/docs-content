@@ -1,5 +1,5 @@
 ---
-description: Step-by-step tutorial for monitoring a Java application with Elastic Observability, covering logs, infrastructure metrics, APM, and Uptime.
+description: Learn how to monitor a Java application with Elastic Observability, covering logs, infrastructure metrics, APM, and Uptime.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-java-app.html
 applies_to:
@@ -437,7 +437,7 @@ If script execution is disabled on your system, you need to set the execution po
 
     To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{ecloud}}.
 
-2. Log into {{kib}} user (you can do so from the Cloud Console without typing in any permissions) and select **Management** → **{{dev-tools-app}}**. Send the following request:
+2. Log in to {{kib}} (you can do so from the {{ecloud}} Console without entering credentials) and select **{{manage-app}}** → **{{dev-tools-app}}**. Send the following request:
 
     ```console
     POST /_security/api_key
@@ -569,7 +569,7 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
 
     ![{{kib}} single document view](/solutions/images/observability-monitor-java-app-kibana-single-document.png "")
 
-    You can see that a lot more data is indexed than just the event. There is information about the offset in the file, information about the component shipping the logs, the name of the shipper’s name in the output, and there is a `message` field containing log line contents.
+    You can see that a lot more data is indexed than just the event. There is information about the offset in the file, information about the component shipping the logs, the shipper’s name in the output, and there is a `message` field containing log line contents.
 
     You can see there is a flaw in the request logging. If the user agent is `null`, something other than `null` is returned. Reading our logs is crucial; however, just indexing them gains us nothing.  To fix this, here is a new request logger.
 
@@ -704,7 +704,7 @@ GET filebeat-*/_search?filter_path=**._source
 
 This returns a document like this.
 
-```console-response
+```console-result
 {
   "hits" : {
     "hits" : [
@@ -1018,7 +1018,7 @@ The underlying library used in our app is [micrometer.io](http://micrometer.io/)
     Javalin app = Javalin.create(config -> {
        ...
        config.registerPlugin(new MicrometerPlugin());
-    );
+    });
     ```
 
 3. Add a new metrics endpoint and ensure the `BasicAuthCredentials` class is imported as well.
@@ -1331,7 +1331,7 @@ Visualize the number of log messages over time, split by the log level. Since th
 
 The second visualization is to be a check for the number of open files in our application.
 
-As no one can remember all the field names, let’s again look at the metrics output again first.
+As no one can remember all the field names, let’s look at the metrics output again first.
 
 ```bash
 curl -s localhost:7000/metrics -u metrics:secret | grep ^process
@@ -1395,23 +1395,38 @@ Let’s look at the `process_files_open_files` metric. This should be a rather s
 
     ![Lens visualization](/solutions/images/observability-monitor-java-app-metrics-kibana-create-visualization-open-files.png "")
 
-5. Below `Add filter`, select the `metricbeat-*` index pattern. This will likely use `filebeat-*` as the default.
+5. Below `Add filter`, select the `metricbeat-*` {{data-source}}. This will likely use `filebeat-*` as the default.
 
     The x-axis uses the `@timestamp` field - which in turn will create a `date_histogram` aggregation again. The y-axis should not be the document count, as that one will always be stable, but the maximum value of the documents in the buckets. Click on the right of the field name on the y-axis and select `Max`. This gives you a similar visualization than shown, with a peak where you ran the `wrk` command above.
 
 6. Now let’s have a look at the {{infrastructure-app}} in {{kib}}. Select **{{observability}}** → **Infrastructure**.
 
-    You will only see data from a single shipper. Still, the moment you are running several services and the ability to group this per Kubernetes pod or host enables you to spot hosts with elevated CPU or memory consumption.
+    You will only see data from a single shipper. Still, when you run several services, the ability to group this data per Kubernetes pod or host helps you spot hosts with elevated CPU or memory consumption.
 
-7. Click **Metrics Explorer**, you can start exploring your data for specific hosts or the CPU usage across your nodes.
+7. Explore your data for specific hosts or the CPU usage across your nodes.
 
-    ![Metrics UI Log Counter](/solutions/images/observability-monitor-java-app-metrics-ui-prometheus-event-counter.png "")
+    :::::{applies-switch}
+
+    ::::{applies-item} stack: ga 9.4+
+    Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Refer to [Explore metrics data with Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) for the metrics workflow.
+    ::::
+
+    ::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
+    Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Metrics Explorer**.
+
+    :::{image} /solutions/images/observability-monitor-java-app-metrics-ui-prometheus-event-counter.png
+    :alt: Area chart of the total events counter in Metrics Explorer
+    :screenshot:
+    :::
 
     This is an area chart of the total events counter the Javalin app emits. It’s rising because there is a component polling an endpoint that, in turn, produces another log message. The steeper peek was due to sending more requests. But where is the sudden drop-off coming from? A JVM restart. As those metrics are not persisted, they reset on a JVM restart. With that in mind, it’s often better to log the `rate` instead of the `counter` field.
+    ::::
+
+    :::::
 
 ## Step 7: Instrument the application [_step_7_instrument_the_application]
 
-The third piece of {{observability}} is Application Performance Management (APM). An APM setup consists of an APM server which accepts the data (and is already running within our {{ecloud}} setup) and an agent delivering the data to the server.
+The third piece of {{observability}} is application performance monitoring (APM). An APM setup consists of an APM server which accepts the data (and is already running within our {{ecloud}} setup) and an agent delivering the data to the server.
 
 The agent has two tasks: instrumenting the Java application to extract application performance information and sending that data to the APM Server.
 
@@ -1486,7 +1501,7 @@ java -jar /tmp/apm-agent-attach-1.17.0-standalone.jar --pid 30730 \
   --config secret_token=PqWTHGtHZS2i0ZuBol
 ```
 
-This above message will return something like this:
+This message returns something like this:
 
 ```text
 2020-07-10 15:04:48.144  INFO Attaching the Elastic APM agent to 30730
@@ -1622,7 +1637,7 @@ A programmatic setup allows you to attach the agent via a line of java in your s
 
     ![Transaction with span](/solutions/images/observability-monitor-java-app-apm-ui-javalin-wttr-2.png "")
 
-    If the `city` parameter if that URL is of high cardinality, this will result in a high amount of URLs mentioned instead of the generic endpoint. If you would like to prevent this, a possibility would be to use `ctx.matchedPath()` to log every call to the weather API as `GET /weather/:city`. This however requires some refactoring by removing the `app.before()` handler and replacing it with a `app.after()` handler.
+    If the `city` parameter of that URL is of high cardinality, this will result in a high amount of URLs mentioned instead of the generic endpoint. If you would like to prevent this, a possibility would be to use `ctx.matchedPath()` to log every call to the weather API as `GET /weather/:city`. This however requires some refactoring by removing the `app.before()` handler and replacing it with a `app.after()` handler.
 
     ```java
     app.after(ctx -> ElasticApm.currentTransaction().setName(ctx.method()
@@ -1708,7 +1723,7 @@ Transaction ids are automatically added to logs. You can check the generated log
 }
 ```
 
-Having the `trace.id` and `transaction.id` added, in the case of an error you will get an `error.id` field.
+With `trace.id` and `transaction.id` added, an error also produces an `error.id` field.
 
 ::::{important}
 We have not covered the [Elastic APM OpenTracing bridge](apm-agent-java://reference/opentracing-bridge.md) or looked into the [additional metrics](apm-agent-java://reference/metrics.md) the agent provides, which allows us to take a look at things like garbage collection or the memory footprint of our application.
