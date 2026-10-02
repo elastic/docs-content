@@ -29,6 +29,10 @@ In this file, you can also enable SSL and set a variety of other options.
 
 Environment variables can be injected into configuration using `${MY_ENV_VAR}` syntax. By default, configuration validation will fail if an environment variable used in the config file is not present when {{kib}} starts. This behavior can be changed by using a default value for the environment variable, using the `${MY_ENV_VAR:defaultValue}` syntax.
 
+## Available settings
+
+For a complete list of settings that you can apply to {{kib}}, refer to [{{kib}} configuration reference](kibana://reference/configuration-reference.md).
+
 ## Reload configuration without restarting [reload-configuration]
 
 Most {{kib}} settings are read only at startup, so changing them requires a restart. However, you can update some settings without restarting {{kib}} by sending a `SIGHUP` signal to the running process. The settings described in this section support this type of reload on Unix-like systems. On Windows, you must restart {{kib}} to apply changes made in `kibana.yml`.
@@ -69,11 +73,6 @@ To reload the logging configuration:
 4. Verify that the updated logging settings produce the expected output.
 
 5. If the logging changes are temporary, restore the original settings and send another `SIGHUP` signal to reload the configuration.
-
-
-## Available settings
-
-For a complete list of settings that you can apply to {{kib}}, refer to [{{kib}} configuration reference](kibana://reference/configuration-reference.md).
 
 ## Additional topics
 
