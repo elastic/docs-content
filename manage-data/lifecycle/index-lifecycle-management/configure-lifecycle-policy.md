@@ -149,7 +149,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
     1. Configure any other options you'd like, including:
         * The [index mode](elasticsearch://reference/elasticsearch/index-settings/time-series.md) to use for the created indices.
         * The template priority, version, and any metadata.
-        * Whether or not to overwrite the `action.auto_create_index` cluster setting.
+        * Whether to overwrite the `action.auto_create_index` cluster setting.
 
         Refer to the [Create or update index template API]({{es-apis}}operation/operation-indices-put-index-template) documentation for details about these options.
 

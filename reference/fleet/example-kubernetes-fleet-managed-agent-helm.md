@@ -164,7 +164,7 @@ Now that you’ve {{agent}} and data is flowing, you can set up the {{k8s}} inte
 3. On the {{k8s}} integration page, click **Add Kubernetes** to add the integration to your {{agent}} policy.
 4. Scroll to the bottom of **Add Kubernetes integration** page. Under **Where to add this integration?** select the **Existing hosts** tab. On the **Agent policies** menu, select the agent policy that you created previously in the [Install {{agent}}](#agent-fleet-managed-helm-example-install-agent) steps.
 
-    You can leave all of the other integration settings at their default values. For details about the available inputs and data sets, refer to the [Kubernetes integration](integration-docs://reference/kubernetes/index.md) documentation.
+    You can leave all other integration settings at their default values. For details about the available inputs and data sets, refer to the [Kubernetes integration](integration-docs://reference/kubernetes/index.md) documentation.
 
     ::::{important}
     All inputs under the **Collect Kubernetes metrics from kube-state-metrics** section default to `kube-state-metrics:8080` as the destination host. This works if you deployed KSM (kube-state-metrics) alongside {{agent}} during the chart installation, which is the default behavior, as both components are installed in the same namespace.

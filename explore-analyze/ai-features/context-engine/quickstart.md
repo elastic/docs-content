@@ -1,5 +1,5 @@
 ---
-navigation_title: "Get started with Context Engine"
+navigation_title: "Get started"
 description: Step-by-step tutorial for creating reusable context from existing Elasticsearch data and testing it with an Agent Builder agent.
 type: tutorial
 applies_to:
@@ -17,7 +17,7 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-In this tutorial, you use {{context-engine}} to create reusable context from data already stored in {{es}}. You create an AI index, add a source, generate a Knowledge Indicator, and test it with an {{agent-builder}} agent. You can use your own data or the {{kib}} sample ecommerce data.
+In this tutorial, you use the interactive {{kib}} and {{agent-builder}} route to create reusable context from data already stored in {{es}}. You create an AI index, add a source, generate a Knowledge Indicator, and test it with an {{agent-builder}} agent. You can use your own data or the {{kib}} sample ecommerce data. For programmatic management and other agent integrations, follow the task-specific pages linked under [Next steps](#next-steps).
 
 ## Tutorial outcome
 
@@ -61,7 +61,6 @@ Create the AI index:
 
    > Context about [your data], including [the important subjects and questions] and tested ESQL for retrieving current details.
 
-4. Select **Index** as the storage type.
 4. Select **Create AI index**.
 
 The AI index initially has no sources, automations, or KIs. You must add a source before you can create an automation.
@@ -96,9 +95,8 @@ An AI index can have multiple ESQL and connector sources. Keep this first exampl
 Use the guided route for this tutorial:
 
 1. In **Automations**, select **Suggest automation**.
-2. Agent Builder opens a conversation with a pre-filled message based on the AI index and its configured source.
-3. Send the pre-filled message to start the suggestion.
-4. Ask it to create one `index_metadata` KI that:
+2. Agent Builder opens a conversation and sends a request based on the AI index and its configured source.
+3. Ask it to create one `index_metadata` KI that:
 
    - Explains the purpose and limitations of the dataset
    - Records useful interpretations of its important entities, measures, and dimensions
@@ -106,7 +104,7 @@ Use the guided route for this tutorial:
    - Uses a stable ID so later runs update the KI instead of creating duplicates
    - Validates its {{esql}} before writing the KI
 
-5. Review the proposed plan before confirming it.
+4. Review the proposed plan before confirming it.
 
 The proposal should identify the source result it will analyze, the KI it will produce, the access patterns it will generate, and any limits introduced by the source query. It should also identify any additional mapping, sampling, or aggregation queries it plans to run against the underlying data.
 
@@ -183,6 +181,9 @@ Choose a production schedule based on how quickly the source changes and how cur
 
 After completing this tutorial, you can:
 
+- [Create and manage AI indices](create-and-manage-ai-indices.md).
+- [Add and manage sources](add-and-manage-sources.md).
+- [Create and manage automations](create-and-manage-automations.md).
 - Expand or revise the source query after validating the initial KI.
 - Add connector sources for data that is not already in Elasticsearch.
 - Select another [KI generation strategy](concepts.md#knowledge-indicators) for specific subjects, such as cumulative product or customer profiles.

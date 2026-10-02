@@ -1,4 +1,5 @@
 ---
+description: Define service level objectives (SLOs) in Elastic Observability. Set targets for availability, latency, and error rate, and track error budgets and burn rates.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo.html
   - https://www.elastic.co/guide/en/serverless/current/observability-slos.html

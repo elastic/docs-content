@@ -10,6 +10,7 @@ In {{ech}}, you can also:
 * Encrypt your deployment with a [customer-managed encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md).
 * [Secure your settings](/deploy-manage/security/secure-settings.md) using {{es}} and {{kib}} keystores.
 * Use the list of [{{ecloud}} static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) to allow or restrict communications in your infrastructure.
+* In {{fedramp-mod}} environments, audit organization-level actions such as deployment management, API key usage, and sign-in activity. Refer to [](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md).
 
 {{ech}} doesn't support custom SSL certificates, which means that a custom CNAME for an {{ech}} endpoint such as *mycluster.mycompanyname.com* also is not supported.
 

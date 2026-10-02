@@ -28,7 +28,8 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 
 Elastic publishes tested model ratings and recommendations for chat and connector-based generative AI features including AI Assistant, {{agent-builder}}, and related workflows. Refer to:
 
-- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) and [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md) summarize model performance for those solutions' AI-powered features.
+- [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md): tested model ratings for the {{observability}} AI Assistant.
+- [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md): tested model ratings for {{elastic-sec}} AI-powered features.
 - [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models): models that work well with {{agent-builder}}.
 
 Other AI capabilities on this page—such as {{infer-cap}}, NLP and embedding models, and search ranking—use different model types and evaluation criteria. Refer to each feature's documentation for model choice; Elastic doesn't publish consolidated LLM performance matrices for every platform feature.
@@ -111,7 +112,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ## AI-powered features in {{observability}}
 
-{{observability}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{observability}} use cases, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md).
+{{observability}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for the {{observability}} AI Assistant, refer to the [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md).
 
 ### AI assistant for {{observability}}
 

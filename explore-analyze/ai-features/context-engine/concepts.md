@@ -17,18 +17,15 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-{{context-engine}} has four core building blocks:
+The following concepts help you understand how {{context-engine}} turns source data into context for agents and applications:
 
-- [AI indices](#ai-indices)
-- [Sources](#sources)
-- [Automations](#automations-and-workflows)
-- [Knowledge Indicators (KIs)](#knowledge-indicators)
-
-Optional [agent traces](#agent-traces) provide feedback about how well that context supports real questions.
-
-[Agents and applications](#agents-and-applications) use [tools and instructions](#tools-system-instructions-and-skills) to retrieve and apply the resulting context.
-
-For a hands-on introduction to these building blocks, follow [Get started with {{context-engine}}](quickstart.md).
+- [AI indices](#ai-indices) group the configuration and generated context for a particular purpose.
+- [Sources](#sources) identify the raw data available to automations.
+- [Automations and Workflows](#automations-and-workflows) analyze sources and generate or refresh KIs.
+- [Knowledge Indicators (KIs)](#knowledge-indicators) are documents of reusable context generated from source data.
+- [Agents and applications](#agents-and-applications) retrieve and apply the generated context.
+- [Tools, system instructions, and skills](#tools-system-instructions-and-skills) cover the operations agents can perform and the guidance for using them.
+- [Agent traces](#agent-traces) provide feedback about how well the context supports real questions.
 
 ## AI indices
 
@@ -50,16 +47,6 @@ A source is the data from which an [automation](#automations-and-workflows) gene
 - A connector source names a configured connector to an external system. Supported connectors include services such as Google Drive, GitHub, Jira, ServiceNow, and Slack, and cloud object stores. Refer to [Connectors in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/connectors.md) for more information about configuring connectors.
 
 An {{esql}} source can provide a small sample that grounds an automation proposal. The source query is not necessarily the only query the resulting Workflow runs. A Workflow can inspect mappings, take other samples, or calculate full-dataset aggregations. To add an {{esql}} source and review the generated Workflow, follow [Get started with {{context-engine}}](quickstart.md).
-
-## Agent traces
-
-Agent traces record how an [agent](#agents-and-applications) runs, including its model calls and tool calls. An [AI index](#ai-indices) can reference traces from an {{agent-builder}} agent or from a data stream that contains OpenTelemetry generative AI spans.
-
-{{context-engine}} can analyze these traces to identify query errors, empty retrievals, and cases where an agent queries raw data because its [KIs](#knowledge-indicators) do not cover the question. This feedback can expose gaps in the index's [sources](#sources), [automations](#automations-and-workflows), or generated context. Agent traces are feedback about context use. They are not sources from which automations generate KIs.
-
-Agent traces do not update KIs by themselves. Use their evidence to refine sources or automations, then regenerate and retest the KIs. This process turns repeated agent work into improvements to shared context instead of one-off changes to individual agent instructions.
-
-For information about trace collection, contents, privacy, and access, refer to [Collect {{agent-builder}} traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
 
 ## Automations and workflows
 
@@ -94,3 +81,13 @@ To configure retrieval for an agent or application, refer to [Use {{context-engi
 A tool is an operation an [agent](#agents-and-applications) can perform. MCP exposes tools to compatible clients, while APIs let applications call supported operations directly or wrap them as tools.
 
 System instructions and skills guide an agent in deciding when and how to use those operations. A skill packages reusable instructions and can associate them with tools and reference content, but it is not itself a tool, connection mechanism, or agent framework. Refer to the [{{context-engine}} entries in the built-in skills reference](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-context-engine-skills) for the skills that support context generation, evaluation, and retrieval.
+
+## Agent traces
+
+Agent traces record how an [agent](#agents-and-applications) runs, including its model calls and tool calls. An [AI index](#ai-indices) can reference traces from an {{agent-builder}} agent or from a data stream that contains OpenTelemetry generative AI spans.
+
+{{context-engine}} can analyze these traces to identify query errors, empty retrievals, and cases where an agent queries raw data because its [KIs](#knowledge-indicators) do not cover the question. This feedback can expose gaps in the index's [sources](#sources), [automations](#automations-and-workflows), or generated context. Agent traces are feedback about context use. They are not sources from which automations generate KIs.
+
+Agent traces do not update KIs by themselves. Use their evidence to refine sources or automations, then regenerate and retest the KIs. This process turns repeated agent work into improvements to shared context instead of one-off changes to individual agent instructions.
+
+For information about trace collection, contents, privacy, and access, refer to [Collect {{agent-builder}} traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).

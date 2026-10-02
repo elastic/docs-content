@@ -1,4 +1,5 @@
 ---
+description: Visualize service dependencies with Elastic APM service maps. Explore distributed trace connections, performance metrics, anomalies, alerts, and SLO status.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-service-maps.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-service-map.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Service Map [apm-service-maps]
+# Service map in Elastic APM [apm-service-maps]
 
 A service map is a real-time visual representation of the instrumented services in your application’s architecture. It shows you how these services are connected, along with high-level metrics like average transaction duration, requests per minute, and errors per minute. If enabled, service maps also integrate with {{ml}}—displaying real-time anomaly indicators based on {{anomaly-detect}} scores. All of these features can help you quickly and visually assess your services’ status.
 
