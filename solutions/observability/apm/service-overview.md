@@ -28,7 +28,7 @@ Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) b
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Each RED metric chart (**Latency**, **Throughput**, and **Failed transaction rate**) includes an **Open in Discover** button to explore the underlying trace data directly in Discover.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The overview also includes a **Service Map** panel scoped to the service, showing how it connects to the rest of your architecture. Refer to [](/solutions/observability/apm/service-map.md).
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The overview also includes a **Service Map** panel scoped to the service, showing how it connects to the rest of your architecture. Refer to [](/solutions/observability/apm/service-map.md) for more information.
 
 ## Time series and expected bounds comparison [service-time-comparison]
 
