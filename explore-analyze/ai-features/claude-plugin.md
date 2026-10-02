@@ -5,7 +5,6 @@ type: overview
 applies_to:
   stack: ga
   serverless: ga
-  product: preview
 products:
   - id: kibana
   - id: elasticsearch
@@ -38,7 +37,7 @@ Once installed, these skills give Claude the procedural knowledge to perform com
 ::::{note}
 The [elastic/agent-skills](https://github.com/elastic/agent-skills) repository is the authoritative source for Elastic agent skills.
 You can install skills directly from that repository into _any_ compatible AI coding agent, including Claude.
-The plugin simply provides a smoother in-app installation experience.
+The plugin provides a smoother in-app installation experience.
 ::::
 
 ### Access Elastic documentation in conversations

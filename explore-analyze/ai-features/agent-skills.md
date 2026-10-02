@@ -63,7 +63,7 @@ npx skills add elastic/agent-skills -a cursor -a codex
 ```
 
 ::::{note}
-For Claude, you may wish to install the skills via the [Elastic Claude Plugin](claude-plugin.md)
+For Claude, we recommend installing the skills using the [Elastic Claude plugin](claude-plugin.md)
 ::::
 
 List available skills without installing:
