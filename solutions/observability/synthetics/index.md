@@ -1,4 +1,5 @@
 ---
+description: Synthetic monitoring with Elastic. Run HTTP, TCP, and ICMP checks and browser monitors from Elastic's global locations or your own private locations.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-uptime-synthetics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-synthetics.html

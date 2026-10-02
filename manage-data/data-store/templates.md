@@ -78,7 +78,7 @@ To create an index template, complete the following steps:
     1. Configure any other options you'd like, including:
         * The [index mode](elasticsearch://reference/elasticsearch/index-settings/time-series.md) to use for the created indices.
         * The template priority, version, and any metadata.
-        * Whether or not to overwrite the `action.auto_create_index` cluster setting.
+        * Whether to overwrite the `action.auto_create_index` cluster setting.
 
         Refer to the [create or update index template]({{es-apis}}operation/operation-indices-put-index-template) API documentation for details about these options.
 
