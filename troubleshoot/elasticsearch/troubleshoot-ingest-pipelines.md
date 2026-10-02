@@ -139,9 +139,9 @@ Storing this output into `nodes_stats.json` and then using [third-party tool JQ]
 
 The statistics report per node since its uptime, so will reset with node restarts. As a rough heuristic, you could look at an individual node's output knowing proportions will usually be about equal. 
 
-## Common issues [troubleshooting-pipelines-common]
+## Common ingest processor performance impacts [troubleshooting-pipelines-common]
 
-The following are the common [ingest processors](elasticsearch://reference/ingest-processor/index.md) to [cause high CPU](#troubleshooting-pipelines-symptoms-cpu) or [flag high milliseconds per event](#troubleshooting-pipelines-metrics):
+The following [ingest processors](elasticsearch://reference/ingest-processor/index.md) are more likely to [cause high CPU](#troubleshooting-pipelines-symptoms-cpu) or [flag high milliseconds per event](#troubleshooting-pipelines-metrics), under certain conditions:
 
 * Processors that run custom code, such as the [`script` processor](elasticsearch://reference/ingest-processor/script-processor.md) or [`grok` processor](elasticsearch://reference/ingest-processor/grok-processor.md), which have not had currently ingesting data formats load tested against performance criteria.
 

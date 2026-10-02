@@ -92,6 +92,7 @@ The following is a list of the roles that a node can perform in a cluster. A nod
 * [Remote-eligible node](#remote-node) (`remote_cluster_client`): A node that is eligible to act as a remote client.
 * [Machine learning node](#ml-node-role) (`ml`): A node that can run {{ml-features}}. If you want to use {{ml-features}}, there must be at least one {{ml}} node in your cluster. For more information, see [Machine learning settings](../../deploy/self-managed/configure-elasticsearch.md) and [Machine learning in the {{stack}}](/explore-analyze/machine-learning.md).
 * [Transform node](#transform-node-role) (`transform`): A node that can perform transforms. If you want to use transforms, there must be at least one transform node in your cluster. For more information, see [Transforms settings](../../deploy/self-managed/configure-elasticsearch.md) and [*Transforming data*](../../../explore-analyze/transforms.md).
+* [Coordinating-only node](#coordinating-only-node)(` `): A node that acts as solely a [coordinating node](#coordinating-node), receiving requests from clients and coordinating their execution. This role is applied when an empty `node.roles` list is explicitly specified.
 
 
 ### Coordinating node [coordinating-node]
@@ -110,7 +111,7 @@ If you configure an explicit empty list for `node.roles`, the node has no assign
 Coordinating-only nodes can benefit large clusters by offloading request coordination from data and master-eligible nodes. They join the cluster and receive the full [cluster state]({{es-apis}}operation/operation-cluster-state), like every other node, and use the cluster state to route requests directly to the appropriate places.
 
 ::::{warning}
-Adding too many coordinating-only nodes to a cluster can increase the burden on the entire cluster because the [elected master node](/deploy-manage/distributed-architecture/discovery-cluster-formation.md) must await acknowledgment of cluster state updates from every node. The benefit of coordinating-only nodes should not be overstated: data nodes can perform the same function.
+Adding too many coordinating-only nodes to a cluster can increase the burden on the entire cluster because the [elected master node](/deploy-manage/distributed-architecture/discovery-cluster-formation.md) must await acknowledgment of cluster state updates from every node. Because data nodes can perform the same function, you should weigh the routing benefit of coordinating-only nodes against the added cluster overhead.
 ::::
 
 To create a coordinating-only node, set:
