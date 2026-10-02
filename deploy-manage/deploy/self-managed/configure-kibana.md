@@ -29,11 +29,19 @@ In this file, you can also enable SSL and set a variety of other options.
 
 Environment variables can be injected into configuration using `${MY_ENV_VAR}` syntax. By default, configuration validation will fail if an environment variable used in the config file is not present when {{kib}} starts. This behavior can be changed by using a default value for the environment variable, using the `${MY_ENV_VAR:defaultValue}` syntax.
 
-## Reload the logging configuration without restarting [reload-logging-configuration]
+## Reload configuration without restarting [reload-configuration]
 
-Most {{kib}} settings are read only at startup, so changing them requires a restart. The **logging** configuration is an exception: {{kib}} re-reads `kibana.yml` and re-applies its logging settings when the process receives a `SIGHUP` signal, without restarting.
+Most {{kib}} settings are read only at startup, so changing them requires a restart. However, you can update some settings without restarting {{kib}} by sending a `SIGHUP` signal to the running process. The settings described in this section support this type of reload on Unix-like systems. On Windows, you must restart {{kib}} to apply changes made in `kibana.yml`.
 
-This is useful to temporarily raise verbosity while troubleshooting: adjust [`logging.root.level`](kibana://reference/configuration-reference/logging-settings.md), a specific [dedicated logger](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md), or [meta filters](kibana://reference/configuration-reference/logging-settings.md) in `kibana.yml`, reload, capture the logs you need, then revert and reload again.
+:::{important}
+If {{kib}} cannot parse the updated `kibana.yml` or validate the settings being reloaded, it shuts down. Check your changes before sending `SIGHUP`.
+:::
+
+### Reload logging settings [reload-logging-settings]
+
+You can reload [{{kib}} logging settings](/deploy-manage/monitor/logging-configuration/kibana-logging.md) without restarting {{kib}}. This is useful when you need to temporarily increase logging verbosity while troubleshooting. You can change `logging.root.level`, configure a [dedicated logger](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md#dedicated-loggers), or increase verbosity for log records that match specific metadata. Reload the configuration and collect the detailed logs you need. When you finish, restore the original settings and reload the configuration.
+
+For all available logging settings, refer to the [{{kib}} logging configuration reference](kibana://reference/configuration-reference/logging-settings.md).
 
 To reload the logging configuration:
 
