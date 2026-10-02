@@ -1,6 +1,6 @@
 ---
-navigation_title: "Get started"
-description: Step-by-step tutorial for creating reusable context from existing Elasticsearch data and testing it with an Agent Builder agent.
+navigation_title: "Quickstart"
+description: Hands-on tutorial for creating reusable context from existing Elasticsearch data and testing it with an Agent Builder agent.
 type: tutorial
 applies_to:
   stack: experimental 9.6
@@ -12,20 +12,27 @@ products:
   - id: security
 ---
 
-# Get started with {{context-engine}}
+# {{context-engine}} quickstart
 
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-In this tutorial, you use the interactive {{kib}} and {{agent-builder}} route to create reusable context from data already stored in {{es}}. You create an AI index, add a source, generate a Knowledge Indicator, and test it with an {{agent-builder}} agent. You can use your own data or the {{kib}} sample ecommerce data. For programmatic management and other agent integrations, follow the task-specific pages linked under [Next steps](#next-steps).
+This hands-on quickstart shows you how to create an AI index for existing {{es}} data, generate a Knowledge Indicator, and test retrieval with an {{agent-builder}} agent. You can use your own data or the {{kib}} sample ecommerce data.
+
+:::{tip}
+Not ready for a hands-on tutorial yet? Choose the starting point that matches your goal:
+
+- Review [how {{context-engine}} works](../context-engine.md#how-context-engine-works) for an overview of the flow.
+- Learn the key building blocks in [{{context-engine}} concepts](concepts.md).
+:::
 
 ## Tutorial outcome
 
-The result is an AI index containing one Knowledge Indicator about a dataset you select.
+When you finish this tutorial, you have:
 
-A Knowledge Indicator (KI) is a document generated from source data, stored in an AI index, and retrieved as context by agents to help answer questions. A KI can contain distilled findings, explanations of how to interpret the data, limitations, and verified {{esql}} queries for retrieving current information from the source.
-
-An automation generates and refreshes the KI. In {{context-engine}}, an automation is implemented as an [Elastic Workflow](/explore-analyze/workflows.md).
+- An AI index configured with the source data you selected.
+- An [Elastic workflow](/explore-analyze/workflows.md) automation that generates and refreshes one Knowledge Indicator (KI) describing the dataset, its limitations, and verified {{esql}} queries for retrieving current details.
+- An {{agent-builder}} agent that can retrieve the KI as context.
 
 ## Before you begin
 
@@ -33,7 +40,7 @@ You need:
 
 - An {{stack}} 9.6 deployment with an Enterprise license, or an {{serverless-full}} project.
 - Permission to change Advanced Settings in the current Kibana space.
-- Permission to [create and run Workflows](/explore-analyze/workflows/get-started/setup.md) and manage {{context-engine}} AI indices.
+- Permission to [create and run workflows](/explore-analyze/workflows/get-started/setup.md) and manage {{context-engine}} AI indices.
 - Elasticsearch data that you can read. If you do not have suitable data, install the [**Sample eCommerce orders** data](https://www.elastic.co/docs/manage-data/ingest/sample-data#add-sample-data-sets), which creates the `kibana_sample_data_ecommerce` index.
 
 Starting with existing data matters. An AI index does not ingest source data by itself. Its sources identify the data that an automation can use to generate KIs.
@@ -86,7 +93,7 @@ Add an ESQL source to the AI index:
 
 This source gives {{context-engine}} the 100 newest orders as a grounding sample. If you use your own data, change the index, sort field, filters, and limit to select representative records.
 
-The generated Workflow can also inspect the mapping and run aggregations over the underlying index. Review those queries before you run the automation, and distinguish sampled observations from full-dataset findings.
+The generated workflow can also inspect the mapping and run aggregations over the underlying index. Review those queries before you run the automation, and distinguish sampled observations from full-dataset findings.
 
 An AI index can have multiple ESQL and connector sources. Keep this first example narrow so that you can inspect the generated KI before expanding its coverage.
 
@@ -111,16 +118,16 @@ The proposal should identify the source result it will analyze, the KI it will p
 For a new AI index, {{agent-builder}} might recommend an Index/Table Metadata automation first. This automation creates an `index_metadata` KI that describes what the data contains, when to use it, and how to query it.
 
 :::{note}
-**Create automation** is the manual route. It opens a new, disabled Workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation Workflow yourself.
+**Create automation** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
 :::
 
 ## 5. Create the automation
 
 Create and review the suggested automation:
 
-1. Confirm the proposed plan, then let {{agent-builder}} build and pilot the Workflow.
+1. Confirm the proposed plan, then let {{agent-builder}} build and pilot the workflow.
 2. Review the pilot summary and KI content in the conversation.
-3. Confirm that the proposed Workflow uses the intended data, creates one `index_metadata` KI, distinguishes sampled observations from full-dataset findings, and validates its generated ESQL.
+3. Confirm that the proposed workflow uses the intended data, creates one `index_metadata` KI, distinguishes sampled observations from full-dataset findings, and validates its generated ESQL.
 4. Tell {{agent-builder}} to save the automation.
 
 You do not need to understand every line of the generated YAML. The pilot KI is temporary, and {{agent-builder}} might delete it before the saved automation runs.
@@ -129,7 +136,7 @@ You do not need to understand every line of the generated YAML. The pilot KI is 
 
 Run the saved automation and inspect its output:
 
-1. If {{agent-builder}} did not start the Workflow after saving it, ask it to run the automation. You can also [run it from the Workflows page](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflow-run).
+1. If {{agent-builder}} did not start the workflow after saving it, ask it to run the automation. You can also [run it from the Workflows page](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflow-run).
 2. [Check the execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md) and confirm that it completes successfully.
 3. Return to the AI index in **Context**, then open **Knowledge Indicators**.
 4. Confirm that it contains one `index_metadata` KI that describes the intended data, its limitations, and verified ESQL for querying the source.
@@ -173,7 +180,7 @@ Run the automation again to confirm that it refreshes the existing KI:
 2. Return to **Knowledge Indicators**.
 3. Confirm that the existing KI was updated and that a duplicate was not created.
 4. Compare the KI's `updated_at` value and provenance run ID with the previous run.
-5. When the output is satisfactory, add an appropriate [scheduled trigger](/explore-analyze/workflows/triggers/scheduled-triggers.md) to the Workflow.
+5. When the output is satisfactory, add an appropriate [scheduled trigger](/explore-analyze/workflows/triggers/scheduled-triggers.md) to the workflow.
 
 Choose a production schedule based on how quickly the source changes and how current the generated context must be.
 
@@ -181,11 +188,6 @@ Choose a production schedule based on how quickly the source changes and how cur
 
 After completing this tutorial, you can:
 
-- [Create and manage AI indices](create-and-manage-ai-indices.md).
-- [Add and manage sources](add-and-manage-sources.md).
-- [Create and manage automations](create-and-manage-automations.md).
-- Expand or revise the source query after validating the initial KI.
-- Add connector sources for data that is not already in Elasticsearch.
-- Select another [KI generation strategy](concepts.md#knowledge-indicators) for specific subjects, such as cumulative product or customer profiles.
-- [Evaluate and improve the generated KIs](evaluate-and-improve-knowledge-indicators.md) as their sources and intended uses change.
-- [Use the AI index with another agent](use-context-engine-with-agents.md).
+- [Build and maintain the AI index](build-and-maintain-ai-index.md) by expanding its sources, selecting another generation strategy, or operating its automation.
+- [Evaluate and improve its KIs](evaluate-and-improve-knowledge-indicators.md) as their sources and intended uses change.
+- [Use the AI index](use-an-ai-index.md) through APIs or another agent integration.
