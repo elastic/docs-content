@@ -20,6 +20,10 @@ The connection process takes about 10 minutes.
 If you have an {{es}} cluster set up for local development or testing, you can connect it to AutoOps using Docker. Refer to [](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
 :::
 
+:::{note}
+Cloud connect is currently only available with Elastic Cloud and not [Elastic FedRAMP Cloud](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/fedramp).
+:::
+
 :::{include} ../_snippets/cc-autoops-all-licenses.md
 :::
 
