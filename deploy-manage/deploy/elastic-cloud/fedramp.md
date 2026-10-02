@@ -39,7 +39,7 @@ Most {{ech}} features are also available in FedRAMP authorized Cloud offerings. 
 | [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Global coverage or optional U.S. persons on U.S. soil support available | U.S. persons on U.S. soil support |
 | [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | Email, Index, Webhook, Gen-AI, Bedrock, Gemini, Inference, Slack, Slack-API, PagerDuty | Email, Index, Webhook, Gen-AI, Bedrock, Gemini, Inference, Slack, Slack-API, PagerDuty |
 | [Private connectivity](/deploy-manage/security/private-connectivity.md) | Yes | Yes | No |
-| [AutoOps](/deploy-manage/monitor/autoops.md) | Yes | No | No |
+| [AutoOps](/deploy-manage/monitor/autoops.md) | Yes | Yes | No |
 | [Synthetic monitoring](/solutions/observability/synthetics/index.md) | Yes | No | No |
 | [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) | Yes | No | No |
 | [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md) | Yes | No | No |
