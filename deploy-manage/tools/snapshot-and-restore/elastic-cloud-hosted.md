@@ -12,7 +12,7 @@ products:
 
 # Manage snapshot repositories in {{ech}}
 
-Snapshot repositories allow you to back up and restore your {{es}} data efficiently. In {{ech}}, a repository named `found-snapshots` is automatically registered and managed within your deployment, ensuring data security, long-term archiving, and seamless recovery.
+Snapshot repositories allow you to back up and restore your {{es}} data efficiently. In {{ech}}, repositories are automatically registered and managed within your deployment, ensuring data security, long-term archiving, and seamless recovery.
 
 By default, {{ech}} takes a snapshot of all the indices in your {{es}} cluster every 30 minutes. You can set a different snapshot interval if needed for your environment. You can also take snapshots on demand, without having to wait for the next interval. Taking a snapshot on demand does not affect the retention schedule for existing snapshots; it just adds an additional snapshot to the repository. This might be helpful if you are about to make a deployment change and you don’t have a current snapshot.
 
