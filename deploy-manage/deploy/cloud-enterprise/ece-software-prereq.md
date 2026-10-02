@@ -29,8 +29,10 @@ We recommend using kernel 4.15.x or later on Ubuntu.
 To check your kernel version, run `uname -r`.
 
 ::::{note}
-* {{ece}} is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2. 
+* {{ece}} 3.8.x, 4.2.x, and later support Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2. The cgroup version is determined by the OS, not by ECE. Ubuntu 20.04, RHEL 8.x, and Rocky Linux 8.x use cgroup v1. Ubuntu 22.04 and later, RHEL 9.x and later, Rocky Linux 9.x and later, and SLES 15 use cgroup v2. Earlier ECE versions, including 4.0 and 4.1, support only cgroup v1.
+* {{stack}} versions earlier than 7.15.0, including {{es}}, {{kib}}, APM Server, Integrations Server, and Beats, don't detect cgroup v2 memory limits. On cgroup v2 hosts, these components can use more memory than allocated and get stopped by the Linux out-of-memory (OOM) killer. Upgrade deployments to 7.15.0 or later before moving hosts to cgroup v2.
 * {{es}} versions 8.0.0–8.4.3 fail to start on hosts using cgroup v2 with the bundled JDK. Refer to [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more details.
+* On cgroup v2 hosts, [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) reports process CPU metrics in `system.process.cgroup.cpu.*` instead of `system.process.cgroup.cpuacct.*`, and `docker.memory.rss.pct` is unavailable. Update any custom dashboards or alerts that query these fields, or they return no data.
 ::::
 
 
