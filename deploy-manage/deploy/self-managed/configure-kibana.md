@@ -70,9 +70,6 @@ To reload the logging configuration:
 
 5. If the logging changes are temporary, restore the original settings and send another `SIGHUP` signal to reload the configuration.
 
-::::{note}
-`SIGHUP` is not available on Windows. On Windows, restart {{kib}} to apply logging configuration changes.
-::::
 
 ## Available settings
 
