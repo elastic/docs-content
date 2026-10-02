@@ -46,7 +46,7 @@ When working with snapshot repositories in {{ech}}, keep the following in mind:
 
 [{{ech}} deployments](https://cloud.elastic.co/registration?page=docs&placement=docs-body) automatically register the [`found-snapshots`](../snapshot-and-restore.md) repository. {{ech}} uses this repository and the `cloud-snapshot-policy` to take periodic snapshots of your cluster. You can also use the `found-snapshots` repository for your own [{{slm-init}} policies](create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
-The `found-snapshots` repository is specific to each deployment. You can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are in the same organization and the same region. To restore snapshots across regions or organizations using a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), refer to [](../../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization).
+The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are in the same organization and the same region. To restore snapshots across regions or organizations using a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), refer to [](../../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization).
 
 {{ech}} deployments also support the following repository types:
 
