@@ -155,6 +155,8 @@ When restoring from a deployment that’s using searchable snapshots, you must n
 1. Create the destination deployment in the desired organization or region, and register that [same repository as read-only](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
 1. [Restore the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster) on the destination deployment.
 
+These steps do not apply to {{kib}}. Refer to [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments) section.
+
 ## Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot [ec-migrate-elastic-agent]
 
 There are situations where you may need or want to move your installed {{agents}} from being managed in one deployment to being managed in another deployment.
