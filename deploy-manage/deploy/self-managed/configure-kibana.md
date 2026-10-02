@@ -60,7 +60,15 @@ To reload the logging configuration:
 
     If you run {{kib}} with multiple worker processes, send the signal to each process.
 
-3. Confirm the reload in the {{kib}} logs. You should see a message such as `Reloaded logging configuration due to SIGHUP`.
+3. Confirm the reload in the {{kib}} logs. A successful reload produces a message similar to:
+
+    ```text
+    Reloaded Kibana configuration (reason: SIGHUP signal received).
+    ```
+
+4. Verify that the updated logging settings produce the expected output.
+
+5. If the logging changes are temporary, restore the original settings and send another `SIGHUP` signal to reload the configuration.
 
 ::::{note}
 `SIGHUP` is not available on Windows. On Windows, restart {{kib}} to apply logging configuration changes.
