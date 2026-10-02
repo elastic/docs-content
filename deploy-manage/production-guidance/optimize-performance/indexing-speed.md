@@ -7,6 +7,7 @@ applies_to:
     ece: all
     eck: all
     self: all
+  serverless: all
 products:
   - id: elasticsearch
 ---
@@ -38,6 +39,10 @@ On the other hand, sending data to a single shard from too many concurrent threa
 Make sure to watch for `TOO_MANY_REQUESTS (429)` response codes (`EsRejectedExecutionException` with the Java client), which is the way that {{es}} tells you that it cannot keep up with the current indexing rate. When it happens, you should pause indexing a bit before trying again, ideally with randomized exponential backoff.
 
 Similarly to sizing bulk requests, only testing can tell what the optimal number of workers is. This can be tested by progressively increasing the number of workers until either I/O or CPU is saturated on the cluster.
+
+:::{note}
+In {{serverless-full}}, avoid starting at maximum parallelism. Instead, ramp up concurrency gradually, for example 1, 2, 4, 8, 16, 32 threads, while monitoring throughput and error rates. {{serverless-full}} scales resources automatically in response to demand. A gradual ramp-up allows the platform to scale more efficiently. Sudden large spikes can temporarily cause backpressure or transient errors while scaling catches up. As a starting point, double throughput approximately every 30 minutes for large-scale operations. Optimal settings vary by workload.
+:::
 
 ## Unset or increase the refresh interval [_unset_or_increase_the_refresh_interval]
 
@@ -94,6 +99,13 @@ Force merge is an expensive operation.
 ::::
 
 ## Disable replicas for initial loads [_disable_replicas_for_initial_loads]
+```yaml {applies_to}
+deployment:
+  ess: all
+  ece: all
+  eck: all
+  self: all
+```
 
 If you have a large amount of data that you want to load all at once into {{es}}, it may be beneficial to set `index.number_of_replicas` to `0` in order to speed up indexing. Having no replicas means that losing a single node may incur data loss, so it is important that the data lives elsewhere so that this initial load can be retried in case of an issue. Once the initial load is finished, you can set `index.number_of_replicas` back to its original value.
 
@@ -118,7 +130,7 @@ The filesystem cache is used to buffer I/O operations and plays a critical role 
 
 By default, {{es}} automatically sets its [JVM heap size](/deploy-manage/deploy/self-managed/important-settings-configuration.md#heap-size-settings) to follow this best practice. However, in self-managed or {{eck}} deployments, you have the flexibility to allocate even more memory to the filesystem cache.
 
-While the filesystem cache primarily benefits search workloads, it can also improve indexing speed in certain scenarios—especially when indexing into many shards or performing frequent segment merges that involve reading existing data.
+While the filesystem cache primarily benefits search workloads, it can also improve indexing speed in certain scenarios, especially when indexing into many shards or performing frequent segment merges that involve reading existing data.
 
 ::::{note}
 On Linux, the filesystem cache uses any memory not actively used by applications. To allocate memory to the cache, ensure that enough system memory remains available and is not consumed by {{es}} or other processes. 
@@ -130,6 +142,13 @@ When indexing a document that has an explicit id, {{es}} needs to check whether 
 
 
 ## Use faster hardware [indexing-use-faster-hardware]
+```yaml {applies_to}
+deployment:
+  ess: all
+  ece: all
+  eck: all
+  self: all
+```
 
 If indexing is I/O-bound, consider increasing the size of the filesystem cache (see above) or using faster storage. {{es}} generally creates individual files with sequential writes. However, indexing involves writing multiple files concurrently, and a mix of random and sequential reads too, so SSD drives tend to perform better than spinning disks.
 
@@ -156,6 +175,10 @@ For {{eck}} deployments, refer to the [ECK storage recommendations](/deploy-mana
 ::::
 
 ## Indexing buffer size [_indexing_buffer_size]
+```yaml {applies_to}
+deployment:
+  self: all
+```
 
 If your node is doing only heavy indexing, be sure [`indices.memory.index_buffer_size`](elasticsearch://reference/elasticsearch/configuration-reference/indexing-buffer-settings.md) is large enough to give at most 512 MB indexing buffer per shard doing heavy indexing (beyond that indexing performance does not typically improve). {{es}} takes that setting (a percentage of the java heap or an absolute byte-size), and uses it as a shared buffer across all active shards. Very active shards will naturally use this buffer more than shards that are performing lightweight indexing.
 
@@ -163,6 +186,9 @@ The default is `10%` which is often plenty: for example, if you give the JVM 10G
 
 
 ## Use {{ccr}} to prevent searching from stealing resources from indexing [_use_ccr_to_prevent_searching_from_stealing_resources_from_indexing]
+```yaml {applies_to}
+stack: ga
+```
 
 Within a single cluster, indexing and searching can compete for resources. By setting up two clusters, configuring [{{ccr}}](../../tools/cross-cluster-replication.md) to replicate data from one cluster to the other one, and routing all searches to the cluster that has the follower indices, search activity will no longer steal resources from indexing on the cluster that hosts the leader indices.
 
@@ -171,6 +197,40 @@ Within a single cluster, indexing and searching can compete for resources. By se
 
 [Hot Spotting](../../../troubleshoot/elasticsearch/hotspotting.md) can occur when node resources, shards, or requests are not evenly distributed. {{es}} maintains cluster state by syncing it across nodes, so continually hot spotted nodes can cause overall cluster performance degradation.
 
+
+## Tune bulk request size for large indexing jobs
+
+For large indexing or reindexing operations, aim to keep each bulk request around 4 MB. This helps you stay well within typical concurrency limits and avoid putting the cluster under memory pressure.
+
+As a starting point, use these batch sizes based on average document size:
+
+| Document size | Recommended batch size |
+|---|---|
+| ~1 KB | 4,000 documents |
+| ~4 KB | 1,000 documents |
+
+Adjust proportionally for other document sizes. There is no one-size-fits-all setting. Test different batch sizes and thread counts to find the optimal configuration for your workload.
+
+## Tune indexing for Serverless
+```yaml {applies_to}
+serverless: all
+```
+
+In {{serverless-full}}, the indexing tier scales automatically. Use the following practices to work effectively with autoscaling.
+
+**Use resiliency patterns**
+
+Configure your clients to use timeouts, retries, and exponential backoff. Transient failures and increased latency can occur during scaling events, maintenance, or software updates. Monitor end-to-end success rates rather than raw error counts. Some transient errors resolve automatically through retries.
+
+**Ramp up concurrency gradually**
+
+When starting a large indexing or reindexing job, increase concurrency in steps rather than starting at maximum parallelism. For example, start with 1 thread and double progressively: 1, 2, 4, 8, 16, 32. Monitor throughput and error rates at each step. A gradual ramp-up gives the platform time to scale and often results in faster overall job completion.
+
+As a starting point, double throughput approximately every 30 minutes for large-scale operations. Optimal settings vary by workload.
+
+**Batch writes to non-write indices**
+
+In {{serverless-full}}, the platform hollows a non-write index after it receives no ingestion for 15 minutes. Hollowing reduces the shard memory footprint. If you write to a non-write index frequently in small batches, you reset this window continuously. This prevents the indexing tier from scaling down and increases resource consumption. Batch writes to non-write indices where possible.
 
 ## Additional optimizations [_additional_optimizations]
 
