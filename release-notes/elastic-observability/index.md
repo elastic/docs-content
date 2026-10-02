@@ -189,6 +189,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
 
+## 9.4.8 [elastic-observability-9.4.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.8-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.4.8-fixes]
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
+
 ## 9.4.7 [elastic-observability-9.4.7-release-notes]
 
 ### Features and enhancements [elastic-observability-9.4.7-features-enhancements]
