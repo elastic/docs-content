@@ -1,5 +1,6 @@
 ---
 navigation_title: Configure
+description: Configure APM Server for Fleet-managed, standalone, or Elastic Cloud deployments. Find settings for authentication, outputs, logging, TLS, and sampling.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-apm-settings.html
   - https://www.elastic.co/guide/en/observability/current/apm-configuring-howto-apm-server.html
@@ -10,7 +11,7 @@ products:
   - id: observability
 ---
 
-# Configure APM Server [apm-configuring-howto-apm-server]
+# Configure Elastic APM Server [apm-configuring-howto-apm-server]
 
 How you configure the APM Server depends on your deployment method.
 
@@ -36,7 +37,7 @@ The following topics describe how to configure APM Server:
 
 ## Edit APM user settings [ec-manage-apm-settings]
 
-Change how Elastic APM runs by providing your own user settings. Starting in {{stack}} version 8.0, how you change APM settings and the settings that are available to you depend on how you spin up Elastic APM. There are two modes:
+Provide your own user settings to customize how Elastic APM runs. The settings you can change depend on how Elastic APM is deployed. There are two modes:
 
 {{fleet}}-managed APM integration
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
@@ -78,6 +79,4 @@ If a setting is not supported on {{ecloud}}, you will get an error message when 
 Some settings are intentionally restricted to maintain system stability.
 ::::
 
-::::{note}
-To change logging settings you must first [enable deployment logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
-::::
+To change logging settings, first [enable deployment logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
