@@ -106,6 +106,18 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 
 The OpenShift values file configures the minimum permissions required to run the chart and collect Kubernetes telemetry. It creates a custom [security context constraint (SCC)](https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/authentication_and_authorization/managing-pod-security-policies) for the daemon collector. Refer to the [OpenShift values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/values.yaml) for the complete configuration.
 
+#### Run the daemon collector as non-root
+
+By default, the daemon collector runs as root to read host files. To run it as a non-root user, also apply the rootless values file after the OpenShift values file:
+
+```bash subs=true
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/rootless-values.yaml'
+```
+
+The rootless configuration uses an init container to make `/var/lib/otelcol` writable so that the collector can persist file log checkpoints.
+
+#### Use an existing OpenTelemetry Operator
+
 If the OpenTelemetry Operator is already installed through Operator Lifecycle Manager (OLM), such as from OperatorHub, add the following flags to prevent the chart from installing another operator and its custom resource definitions (CRDs):
 
 ```bash
