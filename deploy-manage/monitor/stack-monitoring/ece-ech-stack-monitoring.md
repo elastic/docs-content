@@ -32,7 +32,7 @@ Monitoring consists of two components:
 
 With logging and monitoring enabled for a deployment, metrics are collected for {{es}}, {{kib}}, and APM with Fleet Server.
 
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::{include} /deploy-manage/_snippets/autoops-callout-monitoring.md
 :::
 
 ## Before you begin [logging-and-monitoring-limitations]

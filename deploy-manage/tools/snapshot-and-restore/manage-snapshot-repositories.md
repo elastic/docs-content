@@ -37,7 +37,7 @@ Other repository types are available through official plugins:
 
 {{ech}} deployments automatically register a repository named `found-snapshots` in {{es}} clusters. These repositories are used together with the `cloud-snapshot-policy` SLM policy to take periodic snapshots of your {{es}} clusters. You can also use the `found-snapshots` repository for your own [SLM policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
-The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s found-snapshots repository if the deployments are under the same account and in the same region.
+The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are in the same organization and the same region. To restore snapshots across regions or organizations using a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), refer to [](../../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization)
 
 In addition to the platform-managed `found-snapshots` repository, you can register custom snapshot repositories in {{ech}} deployments of the following types:
 

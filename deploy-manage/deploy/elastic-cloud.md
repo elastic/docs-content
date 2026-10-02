@@ -15,7 +15,7 @@ products:
 
 These hosted deployments and serverless projects are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
 
-You can check the operational status of {{ecloud}} at any time from [status.elastic.co](https://status.elastic.co/).
+You can check the operational status of {{ecloud}} at any time from [status.elastic.co](https://status.elastic.co/). If you are on a FedRAMP High deployment, use the [FedRAMP High status page](https://ela.st/fedramphighstatus) instead. You must log in to view this page.
 
 ## Sign up
 

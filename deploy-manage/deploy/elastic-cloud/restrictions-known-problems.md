@@ -24,7 +24,8 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
-* [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
+* [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
+* [Migrate a deployment to another organization or region](#ec-migrate-deployment-another-region-or-organization)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 * [Node count and size](#ec-node-count-size)
@@ -38,6 +39,14 @@ For limitations related to logging and monitoring, check the [Restrictions and l
 To learn more about the features that are supported by {{ecloud}}, check [{{ecloud}} Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
 
 ## Stack versions [ec-stack-versions]
+
+* Due to a known issue, {{es}} 8.17.0 through 8.17.4, 8.18.0, and 9.0.0 through 9.0.1 might experience significant vector search performance degradation on Ubuntu 24.04. An interaction between Multi-Gen LRU (MGLRU) and Lucene read-advice behavior can cause excessive page faults and I/O during vector operations. In preparation for the end of support for Ubuntu 22.04, Elastic begins an incremental upgrade of the underlying {{ech}} infrastructure to Ubuntu 24.04 starting on November 20, 2026. If you run an affected version, upgrade before that date:
+  * 8.17.0 through 8.17.4: upgrade to 8.17.5 or later
+  * 8.18.0: upgrade to 8.18.1 or later
+  * 9.0.0 through 9.0.1: upgrade to 9.0.4 or later
+
+  We recommend upgrading to one of the currently available versions shown in the Cloud console.
+  If you need to upgrade to an older 8.x or 9.x minor version that is not shown, contact Elastic Support.
 
 * Due to a known issue, {{es}} 9.5.0, 9.5.1, and 9.5.2 can fail to fully replicate some bulk index operations from a primary shard when the node exceeds its indexing pressure limit. This can cause replica data to diverge from the primary. Version 9.5.2 is unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/c56aad67) for more guidance on the known issue.
 
@@ -127,7 +136,7 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 
 * If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has network security enabled is not currently supported.
 
-## Restoring a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
+## Restore a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
 
 {{kib}} does not currently support restoring a snapshot of their indices across {{ecloud}} deployments.
 
@@ -135,10 +144,18 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 * Currently, there is not a way to retrieve the values of {{kib}} encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, {{kib}} will not be able to decrypt the data required for some features to function properly in the target deployment.
 * If you have already restored a snapshot across deployments and now have broken {{kib}} saved objects in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
 
-A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same region. If you need to restore snapshots across regions, create the destination deployment, connect to the [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md), and then [restore from a snapshot](../../tools/snapshot-and-restore/restore-snapshot.md).
-
 When restoring from a deployment that’s using searchable snapshots, you must not delete the snapshots in the source deployment even after they are successfully restored in the destination deployment. Refer to [Restore snapshots containing searchable snapshots indices across clusters](../../tools/snapshot-and-restore/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md) for more information.
 
+
+## Migrate a deployment to another organization or region [ec-migrate-deployment-another-region-or-organization]
+
+A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same organization and the same region. To copy data across regions or organizations, use a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types):
+
+1. On the source deployment, register a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types) and take a snapshot.
+1. Create the destination deployment in the desired organization or region, and register that [same repository as read-only](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
+1. [Restore the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster) on the destination deployment.
+
+These steps do not apply to {{kib}}. Refer to [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments) section.
 
 ## Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot [ec-migrate-elastic-agent]
 
