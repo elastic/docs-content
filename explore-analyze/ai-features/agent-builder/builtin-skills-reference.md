@@ -104,12 +104,44 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
     :::
 
 $$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Composes, discovers, and modifies alerting rules and action policies from within a conversation.
+:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover [{{kib}} alerting](/explore-analyze/alerting/alerts.md) rules, {{observability}} rules, or {{elastic-sec}} detection rules.
+
+    {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` The [`action-policy-management`](#agent-builder-action-policy-management-skill) skill handles notification setup. This skill still offers to set up notifications after it composes a rule, then passes the request to `action-policy-management`.
+
+    {applies_to}`stack: preview =9.5` This skill composes action policies itself, and is also assigned the `platform.alerting.manage_action_policy` tool.
 
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_rule`, `platform.alerting.manage_action_policy`
+    `platform.alerting.manage_rule`
 
     :::
+
+    **Prerequisites:** Turn on the following advanced settings:
+
+    * `alerting:v2:enabled`, on the **Global Settings** tab, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md).
+    * `agentBuilder:experimentalFeatures`, on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
+    * {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` `alerting:v2:experimentalFeatures` (**Alerting V2: Experimental Features**), on the **Space Settings** tab.
+
+    Saving a rule requires the **Rules: All** privilege, under **Alerting V2**. For the privileges you need, refer to [Requirements](/explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
+
+$$$agent-builder-action-policy-management-skill$$$ `action-policy-management` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
+:   Composes, discovers, and modifies action policies from within a conversation. Use when a user asks to set up, change, or inspect alert notifications, such as sending email or paging an on-call responder. An [action policy](/explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md) controls how alert episodes are matched, grouped, throttled, and dispatched to workflows. It applies to a whole {{kib}} space rather than to a single rule, so one policy can match alert episodes from many rules.
+
+    :::{dropdown} Assigned tools
+    `platform.alerting.manage_action_policy`
+
+    :::
+
+    **Prerequisites:** Turn on the following advanced settings:
+
+    * `alerting:v2:enabled`, on the **Global Settings** tab, as described in [Set up the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/setup.md).
+    * `agentBuilder:experimentalFeatures`, on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
+    * {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` `alerting:v2:experimentalFeatures` (**Alerting V2: Experimental Features**), on the **Space Settings** tab.
+
+    Saving an action policy requires the **Action Policies: All** privilege, under **Alerting V2**, and an Enterprise license on {{stack}} deployments. An action policy dispatches to a workflow rather than to a connector directly, so notifications also need a workflow whose steps reference a configured connector. For the privileges you need, refer to [Requirements](/explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
+
+    **Related skills:** [`rule-management`](#agent-builder-rule-management-skill) composes the rules whose alert episodes a policy matches.
+
+<!-- TODO(agent-builder): kibana#291242 removes the `alerting:v2:enabled` advanced setting entirely for Alerting V2 GA, which would drop the first prerequisite from both entries above. It ships from main only, so it lands in 9.6 if it merges. Still open as of Sep 29; docs-content-internal#1758 question 18 confirms the removal is planned for 9.6/Serverless, but the code hasn't landed yet. Tracked as question 2 in docs-content-internal#1758. -->
 
 ### Streams and significant events
 
