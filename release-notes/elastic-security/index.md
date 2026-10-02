@@ -310,7 +310,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.4.8-features-enhancements]
 
-* Adds the `--raw` option to the `memory-dump` response action for {{elastic-defend}} Windows hosts running {{agent}} 9.5.2 or later [#287713]({{kib-pull}}287713).
+* Adds the `--raw` option to the `memory-dump` response action for {{elastic-defend}} Windows hosts running {{agent}} 9.4.6 or later [#287713]({{kib-pull}}287713).
 * Adds an **Update to Elastic version** bulk action to the Rule Updates table that force-upgrades prebuilt rules to the exact Elastic version, discarding any customizations on the updated rules [#290589]({{kib-pull}}290589).
 * Adds experimental macOS 27 support to {{elastic-defend}}.
 
