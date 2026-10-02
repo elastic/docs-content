@@ -278,7 +278,7 @@ spec:
 3. The `memory` setting manages `resources.requests.memory` and `resources.limits.memory`. Remove both.
 4. The `storage` setting manages `resources.storage`. Remove it.
 
-After, the manifest contains only the fields that you own:
+After applying the changes, the manifest contains only the fields that you own:
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1

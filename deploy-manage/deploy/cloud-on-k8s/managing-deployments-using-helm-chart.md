@@ -189,13 +189,7 @@ Helm 4 applies chart renders through [Server-Side Apply](https://kubernetes.io/d
 UPGRADE FAILED: conflict with "elastic-operator" using elasticsearch.k8s.elastic.co/v1: .spec.nodeSets
 ```
 
-Starting with {applies_to}`eck: ga 3.6+`, the operator claims only the fields that it manages. Resources that earlier ECK versions managed can still carry the old field ownership. After you upgrade the ECK operator, run the following command once to give Helm back the ownership of the fields in your chart:
-
-```sh
-helm upgrade <release> <chart> -n <namespace> --force-conflicts
-```
-
-Later upgrades do not need the flag and do not cause conflicts.
+Starting with {applies_to}`eck: ga 3.6+`, the operator claims only the fields that it manages. Resources that earlier ECK versions managed can still carry the old field ownership. After you upgrade the ECK operator, run your usual `helm upgrade` command once with the `--force-conflicts` flag added, to give Helm back the ownership of the fields in your chart. Keep the same values and options that you used for your release, so that your configuration is preserved. Later upgrades do not need the flag and do not cause conflicts.
 
 ::::{important}
 If you use an `ElasticsearchAutoscaler`, first remove the [fields that the autoscaler manages](/deploy-manage/autoscaling/autoscaling-in-eck.md#k8s-autoscaling-ssa) from your chart. Otherwise, the forced upgrade resets those fields to the values in your chart, the operator claims their ownership again, and later upgrades conflict.
