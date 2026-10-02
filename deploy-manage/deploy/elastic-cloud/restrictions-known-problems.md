@@ -149,7 +149,7 @@ When restoring from a deployment that’s using searchable snapshots, you must n
 
 ## Migrate a deployment to another organization or region [ec-migrate-deployment-another-region-or-organization]
 
-{{ech}} does not support moving a deployment to another organization or region. A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same organization and the same region. To copy data across regions or organizations, use a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types):
+A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same organization and the same region. To copy data across regions or organizations, use a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types):
 
 1. On the source deployment, register a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types) and take a snapshot.
 1. Create the destination deployment in the desired organization or region, and register that [same repository as read-only](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
