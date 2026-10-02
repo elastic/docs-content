@@ -46,7 +46,7 @@ For all available logging settings, refer to the [{{kib}} logging configuration 
 To reload the logging configuration:
 
 1. Update the `logging` settings in `kibana.yml` to configure the log levels, output, or filtering you need.
-2. Send `SIGHUP` to the {{kib}} process:
+2. Send a `SIGHUP` signal to the running {{kib}} process to reload the configuration:
 
     ```sh
     kill -HUP <kibana_pid>
