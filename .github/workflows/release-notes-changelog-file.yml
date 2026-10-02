@@ -1,19 +1,17 @@
-name: changelog-submit
-
+name: Release notes changelog file
 on:
   workflow_run:
-    workflows: [changelog-validate]
+    workflows: [Release notes]
     types: [completed]
-
 permissions: {}
-
 jobs:
-  submit:
+  changelog-file:
     permissions:
       contents: write
       pull-requests: write
       id-token: write
       packages: read
-    uses: elastic/docs-actions/.github/workflows/changelog-submit.yml@v1
+      actions: write
+    uses: elastic/docs-actions/.github/workflows/release-notes-changelog-file.yml@v1
     with:
       config: changelog.yml

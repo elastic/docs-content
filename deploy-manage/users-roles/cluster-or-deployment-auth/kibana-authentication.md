@@ -28,6 +28,10 @@ After you configure an authentication method in {{es}}, you can configure an aut
 * [HTTP authentication](#http-authentication)
 * [Embedded content authentication](#embedded-content-authentication)
 
+:::{tip}
+On {{ech}} and {{serverless-full}}, single sign-on (SSO) between your {{ecloud}} account and {{kib}} is enabled by default. You can also configure SSO at the [organization level](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) or the deployment level, as described on this page. For details, refer to [](/deploy-manage/users-roles/cloud-organization.md).
+:::
+
 ## Multiple authentication providers [multiple-authentication-providers]
 
 Enable multiple authentication mechanisms at the same time by specifying a prioritized list of the authentication *providers* (typically of various types) in the configuration. Providers are consulted in ascending order. Make sure each configured provider has a unique name (e.g. `basic1` or `saml1` in the configuration example) and `order` setting. In the event that two or more providers have the same name or `order`, {{kib}} will fail to start.
@@ -74,7 +78,7 @@ xpack.security.authc.providers:
 :screenshot:
 :::
 
-For more information, refer to [authentication security settings](kibana://reference/configuration-reference/security-settings.md#authentication-security-settings).
+You can also configure some settings per provider, such as [session timeout](/deploy-manage/security/kibana-session-management.md). For more information, refer to [authentication security settings](kibana://reference/configuration-reference/security-settings.md#authentication-security-settings).
 
 ::::{tip}
 If you have multiple authentication providers configured, you can use the `auth_provider_hint` URL query parameter to create a deep link to any provider and bypass the Login Selector UI. Using the [`kibana.yml`](/deploy-manage/stack-settings.md) above as an example, you can add `?auth_provider_hint=basic1` to the login page URL, which will take you directly to the basic login page.
