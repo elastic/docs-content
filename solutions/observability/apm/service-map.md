@@ -31,13 +31,25 @@ Customize what the service map displays using either the query bar or the enviro
 If you’re using {{edot}} or contrib OpenTelemetry, set the `deployment.environment` resource attribute on your instrumented services. This attribute maps to the `service.environment` field that populates the environment selector. Without it, services appear under an "unset" environment, meaning you can’t distinguish between production, staging, or other environments using the selector. Refer to [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md) for configuration examples.
 :::
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To focus on one or more services, select them in the **Service name** filter above the map. The map highlights the selected services and their connections.
+### Focus on specific services [service-map-focus]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Service maps are also embedded where you’re already working: a service’s **Overview** tab and its transaction details include a **Service map** panel scoped to that service. To open the full service map from an embedded panel, select **Explore in Service map**. The services you were viewing stay filtered and highlighted on the full map.
+To focus on one or more services, select them in the **Service name** filter above the map. The map highlights the selected services and their connections.
 
-{applies_to}`stack: ga 9.0-9.5` {applies_to}`serverless: unavailable` To open a map that’s focused on a single service, select the **Service Map** tab on that service’s detail page. From there, you can use the tabs at the top of the page to jump to the **Transactions**, **Errors**, or **Metrics** overview for that service.
+Service maps are also embedded where you’re already working: a service’s **Overview** tab and its transaction details include a **Service Map** panel scoped to that service. To open the full service map from an embedded panel, click **Explore in Service Map**. The services you were viewing stay filtered and highlighted on the full map.
 
-{applies_to}`stack: ga 9.0-9.4` {applies_to}`serverless: unavailable` If there’s a specific service that interests you, select that service on the map to highlight its connections, then click **Focus map** to refocus the map on the selected service and lock the connection highlighting.
+### Focus on services in earlier versions [service-map-focus-legacy]
+```{applies_to}
+stack: ga 9.0-9.5
+serverless: unavailable
+```
+
+To open a map that’s focused on a single service, select the **Service Map** tab on that service’s detail page. From there, you can use the tabs at the top of the page to jump to the **Transactions**, **Errors**, or **Metrics** overview for that service.
+
+{applies_to}`stack: ga 9.0-9.4` If there’s a specific service that interests you, select that service on the map to highlight its connections, then click **Focus map** to refocus the map on the selected service and lock the connection highlighting.
 
 ### Map controls [service-map-controls]
 
@@ -54,7 +66,7 @@ Use the map controls to adjust the layout, filter what’s displayed, and naviga
 
 To save the current service map view to a {{kib}} dashboard, click the **Copy to dashboard** icon located in the upper-right corner of the map.
 
-When you click an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
+When you select an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
 
 :::{image} /solutions/images/observability-apm-service-map-service-flyout.png
 :alt: Service flyout panel open alongside the service map, showing RED metrics and a transactions list for the selected service
@@ -72,11 +84,25 @@ When you click an instrumented service node (circle shape), a **service flyout**
 
 You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transaction durations within the selected service. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For a description of what each color means, refer to [Anomaly score colors](#service-maps-legend-anomaly-colors).
+To learn how to create a {{ml}} job, refer to [Integrate with {{ml}}](/solutions/observability/apm/machine-learning.md).
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To investigate a detected anomaly, click the affected service node to open the service flyout. The flyout header shows a badge with the anomaly severity and score. Select the badge to open the service **Overview**, filtered to the environment where the anomaly was detected.
+### Investigate anomalies [service-map-anomaly-investigate]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
-{applies_to}`stack: ga 9.0-9.4` {applies_to}`serverless: unavailable` Node borders are color-coded based on the maximum anomaly score:
+To investigate a detected anomaly, select the affected service node to open the service flyout. The flyout header shows a badge with the anomaly severity and score. Select the badge to open the service **Overview**, filtered to the environment where the anomaly was detected.
+
+For a description of what each color means, refer to [Anomaly score colors](#service-maps-legend-anomaly-colors).
+
+### Anomaly detection in earlier versions [service-map-anomaly-legacy]
+```{applies_to}
+stack: ga 9.0-9.4
+serverless: unavailable
+```
+
+Node borders are color-coded based on the maximum anomaly score:
 
 |  |  |
 | --- | --- |
@@ -84,14 +110,12 @@ You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transa
 | ![Degraded service node icon](/solutions/images/observability-yellow-service.png "") | Max anomaly score **26-74**. Anomalous activity detected. Service might be degraded. |
 | ![Unhealthy service node icon](/solutions/images/observability-red-service.png "") | Max anomaly score **≥75**. Anomalous activity detected. Service is unhealthy. |
 
-{applies_to}`stack: ga 9.0-9.4` {applies_to}`serverless: unavailable` If an anomaly has been detected, click **View anomalies** to view the {{anomaly-detect}} metric viewer. This time series analysis displays additional details on the severity and time of the detected anomalies.
+If an anomaly has been detected, click **View anomalies** to view the {{anomaly-detect}} metric viewer. This time series analysis displays additional details on the severity and time of the detected anomalies.
 
 :::{image} /solutions/images/observability-apm-service-map-anomaly.png
 :alt: Anomaly score and View anomalies link in the service map popover
 :screenshot:
 :::
-
-To learn how to create a {{ml}} job, refer to [Integrate with {{ml}}](/solutions/observability/apm/machine-learning.md).
 
 ## Legend [service-maps-legend]
 
@@ -100,7 +124,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-An interactive legend is available directly on the map. Click the {icon}`question` (**Legend**) button to expand it and see an explanation of node shapes, connections, and anomaly score colors.
+An interactive legend is available directly on the map. Click the {icon}`question` **Legend** button to expand it and see an explanation of node shapes, connections, and anomaly score colors.
 
 ### Nodes [service-maps-legend-nodes]
 
