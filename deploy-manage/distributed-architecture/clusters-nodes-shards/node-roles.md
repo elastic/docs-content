@@ -92,7 +92,7 @@ The following is a list of the roles that a node can perform in a cluster. A nod
 * [Remote-eligible node](#remote-node) (`remote_cluster_client`): A node that is eligible to act as a remote client.
 * [Machine learning node](#ml-node-role) (`ml`): A node that can run {{ml-features}}. If you want to use {{ml-features}}, there must be at least one {{ml}} node in your cluster. For more information, see [Machine learning settings](../../deploy/self-managed/configure-elasticsearch.md) and [Machine learning in the {{stack}}](/explore-analyze/machine-learning.md).
 * [Transform node](#transform-node-role) (`transform`): A node that can perform transforms. If you want to use transforms, there must be at least one transform node in your cluster. For more information, see [Transforms settings](../../deploy/self-managed/configure-elasticsearch.md) and [*Transforming data*](../../../explore-analyze/transforms.md).
-* [Coordinating-only node](#coordinating-only-node)(` `): A node that acts as solely a [coordinating node](#coordinating-node), receiving requests from clients and coordinating their execution. This role is applied when an empty `node.roles` list is explicitly specified.
+* [Coordinating-only node](#coordinating-only-node-role)(` `): A node that acts as solely a [coordinating node](#coordinating-node), receiving requests from clients and coordinating their execution. This role is applied when an empty `node.roles` list is explicitly specified.
 
 
 ### Coordinating node [coordinating-node]
