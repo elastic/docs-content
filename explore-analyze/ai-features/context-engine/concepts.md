@@ -46,7 +46,7 @@ A source is the data from which an [automation](#automations-and-workflows) gene
 - An {{esql}} source uses a query to select data from one or more {{es}} indices or data streams.
 - A connector source names a configured connector to an external system. Supported connectors include services such as Google Drive, GitHub, Jira, ServiceNow, and Slack, and cloud object stores. Refer to [Connectors in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/connectors.md) for more information about configuring connectors.
 
-An {{esql}} source can provide a small sample that grounds an automation proposal. The source query is not necessarily the only query the resulting Workflow runs. A Workflow can inspect mappings, take other samples, or calculate full-dataset aggregations. To add an {{esql}} source and review the generated Workflow, follow [Get started with {{context-engine}}](quickstart.md).
+Selecting an {{es}} index, data stream, or alias creates an {{esql}} source in the form `FROM <name>`. You can instead provide an advanced {{esql}} query to narrow the available data. How an automation uses that source depends on its Workflow. The Workflow can run the configured query, inspect an underlying index's mapping, take other samples, or calculate full-dataset aggregations.
 
 ## Automations and workflows
 
