@@ -1,14 +1,11 @@
 ---
 navigation_title: Elastic Cloud Hosted
-description: Quickstart setup guides for the {{edot}} on Elastic Cloud Hosted.
+description: Quickstart setup guides for Elastic OpenTelemetry on Elastic Cloud Hosted.
 applies_to:
-  stack:
-  serverless:
-    observability:
-  product:
-    edot_collector: ga
+  deployment:
+    ech: ga
 products:
-  - id: cloud-serverless
+  - id: cloud-hosted
   - id: observability
   - id: edot-collector
 ---
