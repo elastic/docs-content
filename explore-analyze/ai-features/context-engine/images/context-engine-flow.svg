@@ -99,7 +99,7 @@
   <!-- Optional live-data path -->
   <path d="M1037 408v53H154v-47" fill="none" stroke="#667085" stroke-width="2" stroke-dasharray="5 5" marker-start="url(#arrow-slate)" marker-end="url(#arrow-slate)"/>
   <rect x="168" y="443" width="850" height="36" rx="18" fill="#FFFFFF" stroke="#D0D5DD"/>
-  <text x="593" y="466" text-anchor="middle" class="flow-body">For additional or near-real-time information, agents can use KI guidance to query source data directly</text>
+  <text x="593" y="466" text-anchor="middle" class="flow-body">If more detailed or up-to-date information is required, agents can use KI guidance to query source data directly.</text>
 
   <!-- Human-directed improvement loop -->
   <rect x="44" y="515" width="1112" height="96" rx="12" fill="#F2F4F7"/>
