@@ -53,6 +53,22 @@ Each alert episode tracks who performed the most recent response action of each 
 
 These rows only appear when the alert episode is in the corresponding state. System-generated actions display as **System**.
 
+## Review action policy activity for this alert episode [policy-history]
+```{applies_to}
+serverless: experimental
+stack: experimental 9.6+
+```
+
+The **Policy history** tab lists the dispatcher's decisions for this alert episode alone, so you can tell whether a notification went out, was held back, or failed without filtering the space-wide history. The tab appears only if your role has the [**Execution history** privilege](../get-started/configure-access.md#alerting-execution-history-privileges).
+
+Each row covers one dispatcher run. The table matches the space-wide [Execution history](../action-policies/review-action-policy-execution-history.md) page, except that it hides the **Rules**, **Episodes**, and **Action groups** columns by default. Search the list, or filter by outcome to show only **Dispatched**, **Throttled**, or **Failed** runs. For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
+
+To open an action policy's configuration in a flyout, select its name. The name is a link only if your role can read action policies.
+
+:::{note}
+The tab covers the alert episode's whole lifetime. When the tab is empty, it shows the same message as the space-wide page, "No action policy execution activity in the last 24 hours", but the tab isn't limited to 24 hours.
+:::
+
 ## Inspect the underlying data [inspect-data]
 
 Each alert episode includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
