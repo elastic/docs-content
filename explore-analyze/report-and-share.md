@@ -90,7 +90,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
     :::
 
     :::{dropdown} CSV
-    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
+    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/esql-variable-controls.md), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
     * Certain [limitations apply](#csv-limitations).
     :::
 

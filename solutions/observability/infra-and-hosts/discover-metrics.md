@@ -2,7 +2,7 @@
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Make the most of Discover to explore metrics data.
+description: Explore metrics data in Discover with an automatic grid of charts. Search, filter, and break down metrics by dimension, then add them to dashboards.
 products:
   - id: observability
   - id: security
@@ -31,7 +31,7 @@ To visualize your metrics data as charts:
   - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
   - The metric must be a time series metric.
 
-The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from Discover.
+The dedicated metrics view is only available in ES|QL mode. To switch, select {icon}`code` **Query in ES|QL** in the Discover application menu.
 
 You can also query a specific index:
 
