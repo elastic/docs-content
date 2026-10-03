@@ -52,7 +52,9 @@
   <!-- Automations -->
   <rect x="328" y="166" width="242" height="232" rx="14" fill="#175CD3"/>
   <circle cx="370" cy="207" r="20" fill="#FFFFFF" fill-opacity="0.16"/>
-  <text x="370" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#FFFFFF">&#9881;</text>
+  <g transform="translate(358 195) scale(1.5)" fill="#FFFFFF">
+    <path d="M7 6.944v2h2v-2H7Zm-5-5v2h2v-2H2Zm3 .5h7a3 3 0 1 1 0 6h-2v.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-.5H4a2 2 0 1 0 0 4h9.293l-1.646-1.646.707-.707 2.853 2.853-2.854 2.854-.707-.707 1.647-1.647H4a3 3 0 1 1 0-6h2v-.5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v.5h2a2 2 0 1 0 0-4H5v.5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v.5Z"/>
+  </g>
   <text x="400" y="214" class="card-title-inverse">Automations</text>
   <text x="449" y="253" text-anchor="middle" class="body-inverse">Elastic Workflows</text>
   <line x1="357" y1="271" x2="541" y2="271" stroke="#FFFFFF" stroke-opacity="0.3"/>
