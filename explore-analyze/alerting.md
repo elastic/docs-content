@@ -18,7 +18,7 @@ description: Watch your data and respond to conditions automatically with Elasti
 
 Elastic alerting helps you watch your data and respond when something needs attention, whether that is a metric crossing a limit, an asset leaving an area on a map, or an unusual pattern in your time series. You set the conditions and how people should be notified. Elastic runs the checks for you.
 
-Elastic offers three alerting systems. For production, use {{kib}} alerting. The {{alerting-v2-system}} is available to try, but it isn't ready for production use. If you're not sure which fits your situation, refer to [Compare alerting systems](alerting/compare-alerting-systems.md).
+Elastic offers three alerting systems. If you're not sure which fits your situation, refer to [Compare alerting systems](alerting/compare-alerting-systems.md).
 
 ## {{alerting-v2-system-cap}}
 
@@ -27,13 +27,13 @@ stack: experimental 9.5+
 serverless: experimental
 ```
 
-The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose whether matches are tracked as [alert episodes](alerting/experimental-alerting-system/alerts.md) or recorded as rule events for later analysis, and control notifications through action policies that handle routing, frequency, and notification batching. The {{alerting-v2-system}} also adds alert episode lifecycle tracking, per-series snooze, queryable rule event history, and rules that can correlate those events for escalation. It is a strong fit when you want full control over what data travels with each detection and how your team is notified.
+The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose whether matches are tracked as [alert episodes](alerting/esql/alerts.md) or recorded as rule events for later analysis, and control notifications through action policies that handle routing, frequency, and notification batching. The {{alerting-v2-system}} also adds alert episode lifecycle tracking, per-series snooze, queryable rule event history, and rules that can correlate those events for escalation. It is a strong fit when you want full control over what data travels with each detection and how your team is notified.
 
 :::{note}
 The {{alerting-v2-system}} runs next to {{kib}} alerting on {{serverless-full}} and {{stack}} 9.5 and later. You don't have to move everything at once. You can copy or rebuild rules when you're ready, and your existing {{kib}} alerting rules won't be affected.
 :::
 
-[Get started with the {{alerting-v2-system}} →](alerting/system-overview.md)
+[Get started with the {{alerting-v2-system}} →](alerting/esql/system-overview.md)
 
 ## {{kib}} alerting
 

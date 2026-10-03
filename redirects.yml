@@ -880,15 +880,71 @@ redirects:
 
 # Related to renaming Alert data model to Rule event data model
   'explore-analyze/alerting/experimental-alerting-system/alerts/alert-data-model.md':
-    to: 'explore-analyze/alerting/experimental-alerting-system/alerts/rule-event-data-model.md'
+    to: 'explore-analyze/alerting/esql/alerts/rule-event-data-model.md'
     anchors:
       'alert-data-model':
 
 # Related to the tags and runbooks page adding dashboards
   'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-tags.md':
-    to: 'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-artifacts.md'
+    to: 'explore-analyze/alerting/esql/rules/configure-rule-artifacts.md'
     anchors:
       'tags-investigation':
+
+# Related to moving the experimental alerting system docs to explore-analyze/alerting/esql
+  'explore-analyze/alerting/system-overview.md': 'explore-analyze/alerting/esql/system-overview.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md': 'explore-analyze/alerting/esql/action-policies/about-action-policies.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/action-policy-reference.md': 'explore-analyze/alerting/esql/action-policies/action-policy-reference.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/common-action-policy-scenarios.md': 'explore-analyze/alerting/esql/action-policies/common-action-policy-scenarios.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/create-configure-action-policy.md': 'explore-analyze/alerting/esql/action-policies/create-configure-action-policy.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/manage-action-policies.md': 'explore-analyze/alerting/esql/action-policies/manage-action-policies.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/re-notification.md': 'explore-analyze/alerting/esql/action-policies/re-notification.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/reduce-notification-noise.md': 'explore-analyze/alerting/esql/action-policies/reduce-notification-noise.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/review-action-policy-execution-history.md': 'explore-analyze/alerting/esql/action-policies/review-action-policy-execution-history.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/route-by-severity.md': 'explore-analyze/alerting/esql/action-policies/route-by-severity.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/severity-escalation.md': 'explore-analyze/alerting/esql/action-policies/severity-escalation.md'
+  'explore-analyze/alerting/experimental-alerting-system/alerts.md': 'explore-analyze/alerting/esql/alerts.md'
+  'explore-analyze/alerting/experimental-alerting-system/alerts/field-reference.md': 'explore-analyze/alerting/esql/alerts/field-reference.md'
+  'explore-analyze/alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md': 'explore-analyze/alerting/esql/alerts/investigate-alert-episodes.md'
+  'explore-analyze/alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md': 'explore-analyze/alerting/esql/alerts/query-alerts-and-signals-in-discover.md'
+  'explore-analyze/alerting/experimental-alerting-system/alerts/query-signals.md': 'explore-analyze/alerting/esql/alerts/query-signals.md'
+  'explore-analyze/alerting/experimental-alerting-system/alerts/rule-event-data-model.md': 'explore-analyze/alerting/esql/alerts/rule-event-data-model.md'
+  'explore-analyze/alerting/experimental-alerting-system/alerts/triage-alert-episodes.md': 'explore-analyze/alerting/esql/alerts/triage-alert-episodes.md'
+  'explore-analyze/alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md': 'explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md'
+  'explore-analyze/alerting/experimental-alerting-system/authorization.md': 'explore-analyze/alerting/esql/authorization.md'
+  'explore-analyze/alerting/experimental-alerting-system/get-started.md': 'explore-analyze/alerting/esql/get-started.md'
+  'explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md': 'explore-analyze/alerting/esql/get-started/configure-access.md'
+  'explore-analyze/alerting/experimental-alerting-system/get-started/create-your-first-rule.md': 'explore-analyze/alerting/esql/get-started/create-your-first-rule.md'
+  'explore-analyze/alerting/experimental-alerting-system/get-started/setup.md': 'explore-analyze/alerting/esql/get-started/setup.md'
+  'explore-analyze/alerting/experimental-alerting-system/glossary.md': 'explore-analyze/alerting/esql/glossary.md'
+  'explore-analyze/alerting/experimental-alerting-system/how-it-works.md': 'explore-analyze/alerting/esql/how-it-works.md'
+  'explore-analyze/alerting/experimental-alerting-system/notifications-actions.md': 'explore-analyze/alerting/esql/notifications-actions.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules.md': 'explore-analyze/alerting/esql/rules.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-a-rule.md': 'explore-analyze/alerting/esql/rules/configure-a-rule.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-no-data-handling.md': 'explore-analyze/alerting/esql/rules/configure-no-data-handling.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md': 'explore-analyze/alerting/esql/rules/configure-rule-alert-delay.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-artifacts.md': 'explore-analyze/alerting/esql/rules/configure-rule-artifacts.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-grouping.md': 'explore-analyze/alerting/esql/rules/configure-rule-grouping.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-mode.md': 'explore-analyze/alerting/esql/rules/configure-rule-mode.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-query.md': 'explore-analyze/alerting/esql/rules/configure-rule-query.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-recovery.md': 'explore-analyze/alerting/esql/rules/configure-rule-recovery.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-schedule.md': 'explore-analyze/alerting/esql/rules/configure-rule-schedule.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/configure-rule-severity.md': 'explore-analyze/alerting/esql/rules/configure-rule-severity.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/create-a-rule.md': 'explore-analyze/alerting/esql/rules/create-a-rule.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/create-esql-rule.md': 'explore-analyze/alerting/esql/rules/create-esql-rule.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/create-rule-from-discover.md': 'explore-analyze/alerting/esql/rules/create-rule-from-discover.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/create-rules-action-policies-agent-builder.md': 'explore-analyze/alerting/esql/rules/create-rules-action-policies-agent-builder.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/esql-first-rule-query.md': 'explore-analyze/alerting/esql/rules/esql-first-rule-query.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/esql-no-data-detection.md': 'explore-analyze/alerting/esql/rules/esql-no-data-detection.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/esql-persistent-breach.md': 'explore-analyze/alerting/esql/rules/esql-persistent-breach.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/esql-query-patterns.md': 'explore-analyze/alerting/esql/rules/esql-query-patterns.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/esql-slo-burn-rate.md': 'explore-analyze/alerting/esql/rules/esql-slo-burn-rate.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/esql-threshold-queries.md': 'explore-analyze/alerting/esql/rules/esql-threshold-queries.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/review-rule-execution-history.md': 'explore-analyze/alerting/esql/rules/review-rule-execution-history.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/rule-event-field-reference.md': 'explore-analyze/alerting/esql/rules/rule-event-field-reference.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/use-rule-builder.md': 'explore-analyze/alerting/esql/rules/use-rule-builder.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/view-manage-rules.md': 'explore-analyze/alerting/esql/rules/view-manage-rules.md'
+  'explore-analyze/alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md': 'explore-analyze/alerting/esql/rules/yaml-rule-schema-reference.md'
+  'explore-analyze/alerting/experimental-alerting-system/workflows-alerting.md': 'explore-analyze/alerting/esql/workflows-alerting.md'
 
 # Related to cases and alerting documentation restructuring
   # Main pages
