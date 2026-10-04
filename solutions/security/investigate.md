@@ -1,5 +1,5 @@
 ---
-navigation_title: Investigation tools
+navigation_title: Investigate
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/investigations-tools.html
   - https://www.elastic.co/guide/en/serverless/current/security-investigate-events.html
@@ -24,6 +24,8 @@ Together, these tools let you move from a single alert to a complete picture of 
 | Your goal | Start here |
 |---|---|
 | Investigate an alert or hunt for threats | [Timeline](/solutions/security/investigate/timeline.md) |
+| Hunt for threats with {{esql}} | [{{esql}} for security](/solutions/security/esql-for-security.md) |
+| Explore host, network, and user activity | [Explore](/solutions/security/advanced-entity-analytics/explore.md) → [Hosts](/solutions/security/advanced-entity-analytics/hosts-page.md), [Network](/solutions/security/advanced-entity-analytics/network-page.md), or [Users](/solutions/security/advanced-entity-analytics/users-page.md) |
 | Explore security alerts and events in Discover | [Explore Security data in Discover](/solutions/security/investigate/discover-security.md) |
 | Trace a process to its root cause | [Visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md) |
 | Review a Linux session for suspicious activity | [Session View](/solutions/security/investigate/session-view.md) |

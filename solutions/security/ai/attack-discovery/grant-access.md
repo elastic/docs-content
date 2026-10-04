@@ -1,5 +1,5 @@
 ---
-navigation_title: Grant feature access
+navigation_title: Attack Discovery privileges
 description: "Required Kibana, index, and workflow privileges for Attack Discovery by version."
 applies_to:
   stack: ga

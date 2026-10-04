@@ -1,4 +1,5 @@
 ---
+navigation_title: Ingest data
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ingest-data.html
   - https://www.elastic.co/guide/en/serverless/current/security-ingest-data.html

@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ai-for-security.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-for-security.html
-navigation_title: AI for security
+navigation_title: AI-assisted operations
 description: Learn how Elastic Security uses AI to automate alert triage, accelerate threat investigation, and augment SOC analyst workflows with Attack Discovery, AI Assistant, and Agent Builder.
 applies_to:
   stack: all
@@ -13,7 +13,7 @@ products:
   - id: cloud-serverless
 ---
 
-# AI for security [ai-for-security]
+# AI-assisted operations [ai-for-security]
 
 {{elastic-sec}} provides AI-powered tools that help security analysts automate alert triage, accelerate threat investigation, and streamline SOC operations. These tools use large language models (LLMs) to analyze your security data, identify attacks, generate queries, and assist with incident response—reducing mean time to respond and helping your team manage growing alert volumes.
 
@@ -29,6 +29,7 @@ These security-specific AI capabilities build on Elastic's [platform-level AI in
 | Compare LLM performance for security tasks | [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) |
 | Walk through AI-driven security workflows end-to-end | [AI use case guides](#ai-use-case-guides) |
 | Connect to an LLM provider | [LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md) |
+| {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Bring {{elastic-sec}} data into an external AI client, such as Claude or Cursor | [Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md) |
 
 ## Interactive AI tools [interactive-ai-tools]
 

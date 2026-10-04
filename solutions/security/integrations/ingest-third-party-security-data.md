@@ -1,4 +1,5 @@
 ---
+navigation_title: Integrations that power Findings and Alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ingest-third-party-cloud-security-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-third-party-cloud-security-data.html
