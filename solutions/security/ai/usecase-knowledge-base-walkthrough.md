@@ -5,6 +5,7 @@ applies_to:
     security: all
 products:
   - id: security
+  - id: cloud-serverless
 ---
 
 
@@ -26,7 +27,7 @@ You can add messages from Slack channels to Knowledge Base using the Slack conte
 
 1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content connectors". Click **+ New Connector** to open the **Create a connector** interface.
 2. Follow the steps to [create a content connector](/solutions/security/get-started/content-connectors.md). During setup, select `Slack`, then follow the steps to [configure a Slack connector](elasticsearch://reference/search-connectors/es-connectors-slack.md). This ingests your selected data into {{es}}.
-3. Follow the instructions to [add an index to Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#). Select the index you created while setting up your new connector.
+3. Follow the instructions to [add an index to Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#knowledge-base-add-knowledge-index). Select the index you created while setting up your new connector.
 
 ### Add your on-call rotation to Knowledge Base
 
@@ -48,7 +49,7 @@ If you have threat hunting playbooks stored in a GitHub repository, you can add 
 
 1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content connectors". Click **+ New Connector** to open the **Create a connector** interface.
 2. Follow the steps to [create a content connector](/solutions/security/get-started/content-connectors.md). During setup, select `GitHub`, then follow the steps to [configure a GitHub connector](elasticsearch://reference/search-connectors/es-connectors-github.md). This ingests your selected data into {{es}}.
-3. Follow the instructions to [add an index to Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#). Select the index you created while setting up your new connector.
+3. Follow the instructions to [add an index to Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#knowledge-base-add-knowledge-index). Select the index you created while setting up your new connector.
 
 ::::{note}
 The GitHub connector can only ingest issues, PRs and the following file types: `.markdown`, `.md`, `.rst`.
@@ -70,7 +71,7 @@ The following video demo starts with a potential threat identified using Attack 
 
 [![Add knowledge index video](https://play.vidyard.com/SGrcygEFBCEJRURGjR8sMh.jpg)](https://videos.elastic.co/watch/SGrcygEFBCEJRURGjR8sMh?)
 
-## Additional Resources
+## Additional resources
 
-- Learn more about [Knowledge Base](https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html)
-- Learn to [Ingest data with Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-connectors.html)
+- Learn more about [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md)
+- Learn to [Ingest data with Elastic connectors](elasticsearch://reference/search-connectors/index.md)

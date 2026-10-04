@@ -32,14 +32,18 @@ For more information, refer to [Knowledge Base](/solutions/security/ai/ai-assist
 Once you have chosen an alert to investigate:
 
 1. Click its **View details** button from the Alerts table.
-2. In the alert details flyout, click **Chat** to launch the AI assistant. Data related to the selected alert is automatically added to the prompt.
+2. In the alert details flyout, open AI Assistant. Data related to the selected alert is automatically added to the prompt.
+
+   * {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga` Select **Ask AI Assistant** in the flyout footer.
+   * {applies_to}`stack: ga =9.0` Select the **Chat** button in the flyout header.
+
 3. Click **Alert (from summary)** to view which alert fields will be shared with AI Assistant.
 
    :::{note}
    For more information about selecting which fields to send, and to learn about anonymizing your data, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md).
    :::
 
-4. (Optional) Click a quick prompt to use it as a starting point for your query, for example **Alert summarization**. Improve the quality of AI Assistant’s response by customizing the prompt and adding detail.
+4. Enter your prompt, or select a Quick Prompt to use it as a starting point for your query. {applies_to}`stack: ga =9.0` For example, select the **Alert summarization** Quick Prompt. Improve the quality of AI Assistant's response by customizing the prompt and adding detail.
 
    Once you’ve submitted your query, AI Assistant will process the information and provide a detailed response. Depending on your prompt and the alert data that you included, its response can include a thorough analysis of the alert that highlights key elements such as the nature of the potential threat, potential impact, and suggested response actions.
 
@@ -71,8 +75,8 @@ This section shows an example workflow for triaging a specific alert.
 
 ::::{step} Open Alert and Generate Initial Analysis
 1. From the **Alerts** table, click **View details**. 
-2. Click **Chat** to open AI Assistant. The alert information is automatically attached.
-3. Click the **Alert summarization** quick prompt. AI Assistant shared an initial alert assessment.
+2. Select **Ask AI Assistant** to open AI Assistant. The alert information is automatically attached. {applies_to}`stack: ga =9.0` In {{stack}} 9.0, select the **Chat** button in the flyout header instead.
+3. Ask AI Assistant to summarize the alert, for example, "Summarize this alert and assess its severity". {applies_to}`stack: ga =9.0` In {{stack}} 9.0, you can select the **Alert summarization** Quick Prompt instead. AI Assistant shares an initial alert assessment.
 ::::
 
 ::::{step} Assess Criticality and Context
