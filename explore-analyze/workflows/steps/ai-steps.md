@@ -18,7 +18,9 @@ products:
 AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution. All four AI step types reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the default model configured for the workflow is used.
 
 :::{note}
-{applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated` Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`; the other AI steps currently take `connector-id` only.
+:applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
+
+Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`; the other AI steps currently take `connector-id` only.
 :::
 
 ## Step types
