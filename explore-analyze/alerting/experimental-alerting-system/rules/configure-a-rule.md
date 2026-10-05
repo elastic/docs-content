@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Overview of configurable rule settings in the experimental alerting system: required settings (mode, query, schedule) and optional settings (severity, grouping, alert delay, recovery, no-data, artifacts)."
+description: "Overview of configurable rule settings, including mode, query, schedule, recovery, no-data handling, grouping, and related options."
 ---
 
 # Configure a rule in the {{alerting-v2-system}} [rule-settings]
@@ -20,6 +20,6 @@ Rules in the {{alerting-v2-system}} have required settings and several optional 
 | [Severity](configure-rule-severity.md) | Assign severity levels to alert episodes using a `severity` column in query output. | Optional |
 | [Grouping](configure-rule-grouping.md) | Track multiple subjects (hosts, services, users) as independent alert series in one rule. | Optional |
 | [Alert delay](configure-rule-alert-delay.md) | Reduce noise with delay modes for opening alert episodes. Only when matches are grouped into an alert episode. | Optional |
-| [Recovery condition](configure-rule-recovery.md) | Whether an alert episode closes automatically, and how much confirmation it needs before it does. Only when matches are grouped into an alert episode. | Optional |
-| [No-data handling](configure-no-data-handling.md) | What the rule records when the base query returns no results. Only when matches are grouped into an alert episode. | Optional |
+| [Recovery condition](configure-rule-recovery.md) | Whether an alert episode closes automatically, and how much confirmation it needs before it does. Only when matches are grouped into an alert episode. | {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` Required for rules that generate alert episodes <br><br> {applies_to}`stack: experimental =9.5` Optional |
+| [No-data handling](configure-no-data-handling.md) | What the rule records when the base query returns no results. Only when matches are grouped into an alert episode. | {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` Required for rules that generate alert episodes <br><br> {applies_to}`stack: experimental =9.5` Optional |
 | [Tags, runbooks, and dashboards](configure-rule-artifacts.md) | Labels, investigation guides, and linked dashboards attached to the rule. Tags and runbooks apply only when matches are grouped into an alert episode. Dashboards apply to any rule. | Optional |
