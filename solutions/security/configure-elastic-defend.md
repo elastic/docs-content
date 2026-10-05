@@ -29,6 +29,18 @@ products:
 
 In practice, you add the {{elastic-defend}} integration from the **Integrations** page, assign it to an {{agent}} policy, and deploy {{agent}} to your hosts. {{agent}} installs {{elastic-endpoint}}, which immediately begins monitoring the host according to your policy settings.
 
+## Data that {{elastic-defend}} collects [elastic-defend-data]
+
+{{agent}} with the {{elastic-defend}} integration ships these data sources to {{elastic-sec}}:
+
+* Process: Linux, macOS, Windows
+* Network: Linux, macOS, Windows
+* File: Linux, macOS, Windows
+* DNS: Windows
+* Registry: Windows
+* Dynamic-link library (DLL) and driver load: Windows
+* Security: Windows
+
 ## Where to start
 
 | Your goal | Start here |
