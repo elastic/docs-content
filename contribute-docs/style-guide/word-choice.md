@@ -21,6 +21,9 @@ Use the [Vale linter](/contribute-docs/vale-linter.md) to check for style issues
 
 ---
 
+:::{table}
+:filterable:
+
 | Word | Status | Usage notes |
 | ---- | ------ | ----------- |
 | **abort** | 🔴 Avoid | This word can be offensive. Use _shut down,_ _cancel,_ or _stop_ instead. |
@@ -68,3 +71,5 @@ Use the [Vale linter](/contribute-docs/vale-linter.md) to check for style issues
 | **utilize** | 🟠 Use with caution | Don't use _utilize_ when you mean _use_. |
 | **view** | 🟢 Preferred | Preferred over _see_ because _view_ is more inclusive. |
 | **whitelist** | 🔴 Avoid | Use _allowlist_ instead. |
+
+:::
