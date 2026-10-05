@@ -17,16 +17,16 @@ All FedRAMP deployments are hosted on AWS GovCloud (U.S.).
 
 Learn about the Elastic FedRAMP offerings:
 
- - [Differences from {{ech}}](#ec-fedramp-comparison)
+ - [Differences from {{ecloud}} and {{ech}}](#ec-fedramp-comparison)
  - [Get started with FedRAMP](#ec-fedramp-get-started)
  - [Limitations](#ec-fedramp-limitations)
  - [FedRAMP FAQ](#ec-fedramp-faq)
 
-## Differences from {{ech}} [ec-fedramp-comparison]
+## Differences from {{ecloud}} and {{ech}} [ec-fedramp-comparison]
 
-Most {{ech}} features are also available in FedRAMP authorized Cloud offerings. This table lists only the features and offering details that differ for {{fedramp-mod}} or {{fedramp-high}}.
+Most {{ecloud}} and {{ech}} features are also available in FedRAMP authorized Cloud offerings. This table lists only the features and offering details that differ for {{fedramp-mod}} or {{fedramp-high}}.
 
-| Feature | {{ech}} | {{fedramp-mod}} | {{fedramp-high}} |
+| Feature | {{ecloud}} and {{ech}} | {{fedramp-mod}} | {{fedramp-high}} |
 |--------------|-----------|--------|-----------|
 | Trial period | 14 days | 14 days | none |
 | Marketplace offering | AWS/GCP/Azure | AWS GovCloud | AWS GovCloud  |
@@ -39,7 +39,7 @@ Most {{ech}} features are also available in FedRAMP authorized Cloud offerings. 
 | [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Global coverage or optional U.S. persons on U.S. soil support available | U.S. persons on U.S. soil support |
 | [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | Email, Index, Webhook, Gen-AI, Bedrock, Gemini, Inference, Slack, Slack-API, PagerDuty | Email, Index, Webhook, Gen-AI, Bedrock, Gemini, Inference, Slack, Slack-API, PagerDuty |
 | [Private connectivity](/deploy-manage/security/private-connectivity.md) | Yes | Yes | No |
-| [AutoOps](/deploy-manage/monitor/autoops.md) | Yes | No | No |
+| [AutoOps](/deploy-manage/monitor/autoops.md) | Yes | Yes | No |
 | [Synthetic monitoring](/solutions/observability/synthetics/index.md) | Yes | No | No |
 | [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) | Yes | No | No |
 | [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md) | Yes | No | No |
@@ -49,6 +49,7 @@ Most {{ech}} features are also available in FedRAMP authorized Cloud offerings. 
 | [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |
 | [Multiple organization membership](/deploy-manage/cloud-organization/manage-multiple-organizations.md) | Yes | Yes | Yes, with [limitations](#ec-fedramp-multi-org) |
 | [{{ecloud}} audit trail](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md) | No | Yes | No |
+| [Cloud Connect](/deploy-manage/cloud-connect.md) | Yes | No | No |
 
 ## Get started with FedRAMP [ec-fedramp-get-started]
 

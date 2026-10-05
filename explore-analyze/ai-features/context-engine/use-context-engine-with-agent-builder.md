@@ -1,5 +1,5 @@
 ---
-navigation_title: "Use Context Engine with Agent Builder"
+navigation_title: "Agent Builder"
 description: Make an AI index available to an Agent Builder agent, configure source access, and test how the agent uses Knowledge Indicators.
 type: how-to
 applies_to:

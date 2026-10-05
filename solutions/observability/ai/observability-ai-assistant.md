@@ -1,5 +1,6 @@
 ---
 navigation_title: AI Assistant
+description: Understand, analyze, and interact with your Observability data using the Elastic AI Assistant. Decode errors, find performance bottlenecks, build queries, and visualize data.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
 applies_to:
@@ -24,7 +25,7 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 * **Contextual insights**: Embedded assistance throughout Elastic UIs that explains errors and messages with suggested remediation steps.
 * **Chat interface**: A conversational experience where you can ask questions and receive answers about your data. The assistant uses function calling to request, analyze, and visualize information based on your needs.
 
-The AI Assistant integrates with large language model (LLM) providers using [connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). Refer to the [LLM performance matrix for {{observability}}](./llm-performance-matrix.md) to find performance information for various models and use cases.
+The AI Assistant integrates with large language model (LLM) providers using [connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). Refer to the [LLM performance matrix for the {{observability}} AI Assistant](./llm-performance-matrix.md) to find performance information for various models and use cases.
 
 ## Use cases
 
@@ -105,7 +106,7 @@ The AI Assistant connects to one of these supported LLM providers:
    - Your authentication key or secret.
 
 ::::{admonition} Recommended models
-While the {{obs-ai-assistant}} is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/ai/llm-performance-matrix.md) to select models that perform well with your desired use cases.
+While the {{obs-ai-assistant}} is compatible with many different models, refer to the [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md) to select models that perform well with your desired use cases.
 
 ::::
 

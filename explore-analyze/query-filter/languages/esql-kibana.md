@@ -153,7 +153,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When your deployment or project has a configured large language model (LLM) connector, {{kib}} can use AI to help you author {{esql}}. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}. You don't need to configure a specific connection for the editor.
+When your deployment or project has a configured large language model (LLM), {{kib}} can use AI to help you author {{esql}}. The editor uses the model assigned to {{agent-builder}}'s **Fast models** feature, and falls back to the **Global model** setting if no fast model is assigned. Both accept an {{infer}} endpoint or a Generative AI connector. To view or change them, search for **Model management / Feature settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You don't need to configure a specific connection for the editor.
 
 Choose the entry point that matches what you want to do:
 
@@ -164,9 +164,9 @@ Choose the entry point that matches what you want to do:
 **Requirements**
 
 - For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
-- A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+- A configured LLM. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
-Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior. If no connector is available in the search bar, you're prompted to set one up.
+Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior. If no model is available, the editor's natural language mode prompts you to set one up.
 
 #### Generate a full query from natural language [esql-kibana-quick-search-nl]
 
