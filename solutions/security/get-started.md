@@ -36,7 +36,7 @@ Which areas you can use depends on your deployment and license:
 
 There's no single step that installs a SIEM. A working SIEM needs three things:
 
-1. **Data collection:** [{{agent}}](/reference/fleet/index.md), managed with {{fleet}}, collects data from your hosts. {applies_to}`stack: ga 9.5+, preview 9.0-9.4` {applies_to}`serverless: ga` On {{ecloud}}, [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) can also collect data from cloud sources without an agent.
+1. **Data collection:** [{{agent}}](/reference/fleet/index.md), managed with {{fleet}}, collects data from your hosts. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` On {{ecloud}}, [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) can also collect data from cloud sources without an agent.
 2. **Data sources:** Integrations bring in the logs, alerts, and findings that {{elastic-sec}} analyzes. Refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
 3. **Detection rules:** Rules search your data and create alerts. [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md), then [install Elastic's prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md). Refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
 
