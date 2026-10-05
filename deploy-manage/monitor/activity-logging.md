@@ -35,11 +35,11 @@ Query and performance logging helps you understand how queries perform and ident
 
 For search operations, query logging is the recommended approach because it captures end-to-end request duration across all query types with a single configuration. Slow logs measure shard-level execution time and are the only option for indexing operations.
 
-:::{tip}
-Activity logs record events for later analysis. For real-time visibility into running queries, use [Query activity](./query-activity.md). For real-time cluster health and performance monitoring, refer to the [monitoring tools](/deploy-manage/monitor.md) available for your deployment type.
-:::
-
 | Feature | Description | Availability |
 |---|---|---|
 | [](./logging-configuration/query-logs.md) | Log every search, {{esql}}, SQL, or EQL query for analysis and debugging. | {applies_to}`stack: ga` |
 | [](./logging-configuration/slow-logs.md) | Identify slow queries and indexing operations. | {applies_to}`stack: ga` |
+
+:::{tip}
+Activity logs record events for later analysis. For real-time visibility into running queries, use [Query activity](./query-activity.md). For real-time cluster health and performance monitoring, refer to the [monitoring tools](/deploy-manage/monitor.md) available for your deployment type.
+:::
