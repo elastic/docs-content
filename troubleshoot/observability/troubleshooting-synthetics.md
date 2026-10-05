@@ -114,15 +114,18 @@ To fix this issue, you can:
 
 ### Monitors on a {{private-location}} run more than once [synthetics-troubleshooting-duplicate-runs]
 
-If a monitor on a {{private-location}} reports more results than its schedule allows, more than one {{agent}} is running it. On a classic {{private-location}}, this happens when several {{agents}} are enrolled on the agent policy, and each agent runs every monitor in the location. Unenroll all but one agent from the agent policy.
+If a monitor on a {{private-location}} reports more results than its schedule allows, more than one {{agent}} is running it.
+
+On a classic {{private-location}}, this happens when several {{agents}} are enrolled on the same agent policy, because each agent runs every monitor in the location. To fix it, either:
+
+* Unenroll all but one agent from the agent policy.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Keep the agents enrolled and add an Enterprise license or trial. The location then becomes [scalable](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable) automatically and assigns each monitor to a single agent.
 
 #### Scalable {{private-location}}s [synthetics-troubleshooting-duplicate-runs-scalable]
 ```{applies_to}
 stack: ga 9.6+
 serverless: ga
 ```
-
-Instead of unenrolling the extra agents, use a [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable) with an Enterprise license. Each monitor then runs on one agent.
 
 A scalable {{private-location}} can still report extra results when:
 

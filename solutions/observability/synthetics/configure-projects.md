@@ -178,8 +178,6 @@ When `retry` is enabled (enabled by default), the journey attempts a second run 
 
 The Elastic global managed testing infrastructure does not currently set the timezone. For {{private-location}}s, the monitors will use the timezone of the host machine running the {{agent}}. This is not always desirable if you want to test how a web application behaves across different timezones. To specify what timezone to use when the monitor runs, you can use `playwrightOptions` on a per monitor or global basis.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable), a monitor can run on any {{agent}} enrolled on the location's agent policy, and it can move between agents. To keep the timezone consistent, set the same timezone on every agent's host, or set `timezoneId` as described in this section.
-
 To use a timezone and/or locale for all monitors in the Synthetics project, set [`locale` and/or `timezoneId`](https://playwright.dev/docs/emulation#locale%2D%2Dtimezone) in the configuration file:
 
 ```js
@@ -190,6 +188,10 @@ playwrightOptions: {
 ```
 
 To use a timezone and/or locale for a *specific* monitor, add these options to a journey using [`monitor.use`](/solutions/observability/synthetics/configure-individual-browser-monitors.md).
+
+:::{note}
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable), a monitor can run on any {{agent}} enrolled on the location's agent policy, and it can move between agents. To keep the timezone consistent, set the same timezone on every agent's host, or set `timezoneId` as described in this section.
+:::
 
 ### Device emulation [synthetics-config-device-emulation]
 
