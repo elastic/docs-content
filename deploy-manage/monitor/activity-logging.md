@@ -20,14 +20,24 @@ You can enable {{es}} and {{kib}} logging features to gain insight into {{stack}
 
 ## Audit logging
 
-Audit logging tracks security-related events such as authentication attempts, authorization decisions, and configuration changes.
+Audit logging tracks security-related events such as authentication attempts, authorization decisions, and configuration changes. 
+
+Stack audit logging records security events inside your cluster. Cloud audit trail records organization-level actions around your deployments. On FedRAMP environments, use both for full coverage.
 
 | Feature | Description | Availability |
 |---|---|---|
 | [](./stack-audit-logging.md) | Enable and configure audit logging for {{es}} and {{kib}} deployments. | {applies_to}`stack: ga` |
-| [](./cloud-audit-trail.md) | Audit organization-level actions such as deployment management, API key usage, and sign-in activity. | {applies_to}`ech: ga` {{fedramp-mod}} only |
+| [](./cloud-audit-trail.md) | Audit organization-level actions such as sign-in activity, deployment management, user and role changes, and API key usage. | {applies_to}`ech: ga` {{fedramp-mod}} only |
 
 ## Query and performance logging
+
+Query and performance logging helps you understand how queries perform and identify operations that need optimization. Use these logs to debug slow queries, audit search activity, and analyze indexing performance.
+
+For search operations, query logging is the recommended approach because it captures end-to-end request duration across all query types with a single configuration. Slow logs measure shard-level execution time and are the only option for indexing operations.
+
+:::{tip}
+Activity logs record events for later analysis. For real-time visibility into running queries, use [Query activity](./query-activity.md). For real-time cluster health and performance monitoring, refer to the [monitoring tools](/deploy-manage/monitor.md) available for your deployment type.
+:::
 
 | Feature | Description | Availability |
 |---|---|---|
