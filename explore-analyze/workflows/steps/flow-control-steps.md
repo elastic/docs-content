@@ -164,7 +164,7 @@ By default, five branches run at once and the first failure stops the step from 
                 file.hash.sha256: "{{ inputs.file_hash }}"
 ```
 
-A branch body must be a straight-line sequence of steps: no nested `if`, `switch`, `foreach`, or `while`, no `waitForInput` or `waitForApproval`, and no step-level `if`, `on-failure`, or `timeout`. Use `mode` and `branch-timeout` on the `parallel` step instead, and handle failures in a step that runs after it.
+A branch body is a straight-line sequence of steps. For where to put flow-control steps, human-in-the-loop steps, and step-level `if`, `on-failure`, and `timeout`, refer to [Branch body limitations](/explore-analyze/workflows/steps/parallel.md#workflows-parallel-branch-limits) on the Parallel step page.
 
 For the full parameter reference, both modes, and the output shape, refer to [Parallel step](/explore-analyze/workflows/steps/parallel.md).
 

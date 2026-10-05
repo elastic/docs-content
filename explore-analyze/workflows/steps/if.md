@@ -216,6 +216,8 @@ steps:
 A step-level `if` takes the same boolean and KQL expressions as the `if` step's `condition`, and you can set it on any step type, with two exceptions:
 
 * The `if` step itself. It already branches on its own `condition`, so setting a step-level `if` on it is a validation error.
-* A step inside a [`parallel`](/explore-analyze/workflows/steps/parallel.md) branch body. Set `if` on the `parallel` step to run or skip every branch together, or evaluate the condition in a step that runs before the `parallel` step.
+* A step inside a [`parallel`](/explore-analyze/workflows/steps/parallel.md) branch body. This limitation applies to the step-level `if` property only.
+  * To branch when you use `parallel`, use an `if` step outside the branch body, as described in [Branch body limitations](/explore-analyze/workflows/steps/parallel.md#workflows-parallel-branch-limits).
+  * Set `if` on the `parallel` step to run or skip every branch together, or check the condition in a step that runs before the `parallel` step.
 
 A step-level `if` expression and an `if` step's `condition` can each be up to 2,000 characters long. For a longer condition, compute the value in an earlier step, for example with [`data.set`](/explore-analyze/workflows/steps/data.md#data-set), and compare that shorter value instead.
