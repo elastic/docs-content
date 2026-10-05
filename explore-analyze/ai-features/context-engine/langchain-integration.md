@@ -1,5 +1,5 @@
 ---
-navigation_title: Query AI Indices with LangChain
+navigation_title: "LangChain"
 description: Wrap the Context Engine APIs as LangChain tools, so a LangChain agent can retrieve Knowledge Indicators from your AI Indices.
 type: how-to
 applies_to:
@@ -116,6 +116,12 @@ export OPENROUTER_API_KEY="sk-..."
 ## Step 2: Wrap the retrieval operations as tools
 
 Each tool wraps one endpoint. The docstrings are the only instructions the model gets about how and when to call them, so they carry the ordering and the constraints.
+
+The following API references define the request and response schemas used by the tools:
+
+- [List AI indices](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-context-engine-ai-index)
+- [Describe an AI index](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-context-engine-ai-index-aiindexid-describe)
+- [Query AI indices](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-context-engine-ai-index-query)
 
 Every request needs these headers:
 

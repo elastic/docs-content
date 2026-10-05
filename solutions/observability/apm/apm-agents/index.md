@@ -1,5 +1,6 @@
 ---
 navigation_title: APM agents
+description: Instrument Java, Node.js, Python, Ruby, Go, .NET, and PHP applications with Elastic APM agents to collect transactions, spans, errors, and metrics.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agents.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-elastic-apm-agents.html
