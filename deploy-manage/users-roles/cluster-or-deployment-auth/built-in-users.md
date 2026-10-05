@@ -30,7 +30,7 @@ The following built-in users are available:
 `elastic`
 :   A built-in [superuser](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-superuser).
 
-    Anyone who can log in as the `elastic` user has direct read-only access to restricted indices, such as `.security`. This user also has the ability to manage security and create roles with unlimited privileges.
+    Anyone who can log in as the `elastic` user has direct read-only access to restricted indices, such as `.security`. This user can also manage security and create roles with unlimited privileges.
 
 `kibana_system`
 :   The user {{kib}} uses to connect and communicate with {{es}}.

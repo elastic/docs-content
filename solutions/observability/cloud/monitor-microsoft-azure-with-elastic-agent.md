@@ -61,7 +61,7 @@ The [Azure REST API](https://learn.microsoft.com/en-us/rest/api/azure/) allows y
 5. Type a description of the secret and select an expiration. Click **Add** to create the client secret. Under **Value**, copy the secret value and save it (along with your client ID) for later.
 
     ::::{important}
-    This is your only chance to copy the secret value. You can’t retrieve this value after you leave this page!
+    This is your only chance to copy the secret value. You can’t retrieve this value after you leave this page.
 
     ::::
 
