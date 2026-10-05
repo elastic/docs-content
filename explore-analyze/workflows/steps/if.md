@@ -150,6 +150,8 @@ steps:
           message: "Normal severity"
 ```
 
+You can write the same check as a [boolean expression](#boolean-expressions) with `${{ }}` syntax, for example `condition: "${{ event.severity == 'critical' }}"`.
+
 ### Example: Check search results count
 
 This example checks the number of search results and processes them differently based on the count:
