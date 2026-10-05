@@ -28,6 +28,10 @@ You can also configure [{{kib}} task manager health monitoring](/deploy-manage/m
 For additional information about the available logging settings, refer to the [{{kib}} configuration reference](kibana://reference/configuration-reference/logging-settings.md).
 :::
 
+:::{tip}
+In self-managed deployments, you can [reload {{kib}} logging settings without restarting](/deploy-manage/deploy/self-managed/configure-kibana.md#reload-logging-settings) by sending a `SIGHUP` signal to the running process.
+:::
+
 ## Access {{kib}} logs
 
 The way that you access your logs differs depending on your deployment method.

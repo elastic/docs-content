@@ -3,8 +3,8 @@ navigation_title: Troubleshooting
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-troubleshooting.html
 applies_to:
-  stack: preview =9.0, beta 9.1-9.3, deprecated 9.4+
-  serverless: deprecated
+  stack: preview =9.0, beta 9.1-9.3, deprecated 9.4-9.5, removed 9.6+
+  serverless: unavailable
 products:
   - id: kibana
 ---

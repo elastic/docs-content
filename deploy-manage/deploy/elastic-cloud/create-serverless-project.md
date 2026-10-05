@@ -52,3 +52,8 @@ The steps to create a {{serverless-short}} project are the same regardless of wh
 If {{kib}} loads as a blank page, check that your firewall, proxy, or secure web gateway allows access to `kibana.estccdn.com` and `cloud.elastic.co`. For the full list of required domains, refer to [Browser access requirements](/deploy-manage/deploy/elastic-cloud.md#browser-access).
 :::
 
+## Next steps
+
+* [](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md): Get the {{es}} endpoint and API key that clients and tools need to connect to your project.
+* [](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure your project's features, add-ons, and other settings.
+
