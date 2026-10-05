@@ -40,7 +40,7 @@ The [Policies](/solutions/security/manage-elastic-defend/policies.md) page lists
 To configure those settings, refer to [Configure an integration policy for {{elastic-defend}}](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md). Related pages cover specific policy tasks:
 
 - [Configure updates for protection artifacts](/solutions/security/configure-elastic-defend/configure-updates-for-protection-artifacts.md): Control how {{elastic-defend}} receives the latest threat detections, malware models, and other protection artifacts.
-- [Configure Linux file system monitoring](/solutions/security/configure-elastic-defend/configure-linux-file-system-monitoring.md): Choose which file systems {{elastic-defend}} monitors on Linux hosts.
+- [Configure Linux file system monitoring](/solutions/security/configure-elastic-defend/configure-linux-file-system-monitoring.md): Set which file systems {{elastic-defend}} monitors on Linux hosts.
 - [Create an {{elastic-defend}} policy using the API](/solutions/security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md): Create and customize a policy without the UI.
 - [Remote output and {{ccs}}](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md): Send endpoint data to a separate cluster while still managing {{agents}} from your main deployment.
 - [Configure offline endpoints and air-gapped environments](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md): Keep protection artifacts up to date on hosts that can't reach Elastic's servers.

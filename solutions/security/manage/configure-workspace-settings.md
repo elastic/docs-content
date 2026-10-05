@@ -11,7 +11,7 @@ products:
 
 # Configure workspace settings
 
-Configure how the {{security-app}} is organized and which data it reads.
+Configure how you organize the {{security-app}} and which data it reads.
 
 - [Spaces and {{elastic-sec}}](/solutions/security/get-started/spaces-elastic-security.md): Organize Security content and permissions across {{kib}} spaces.
 - [{{data-sources-cap}} and {{elastic-sec}}](/solutions/security/get-started/data-views-elastic-security.md): Create and switch the {{data-sources}} that the {{security-app}} reads from.
