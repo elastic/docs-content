@@ -66,9 +66,9 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
 :   Creates or updates a visualization configuration based on a natural language description.
 
-<!-- Uncomment after kibana#288514 merges. Verified at PR head ca3e0ae: the tool is new in 9.6, has no experimental or feature-flag gate, is listed in the tools UI, and is assigned to discover-session (experimental) and discover-data-analysis (preview). TODO confirm lifecycle (preview or GA) with Melissa Alvarez; the code sets none.
+<!-- Uncomment after kibana#288514 merges. Verified at PR head f2ba24cd6 (2026-10-05): the tool is new in 9.6, has no experimental or feature-flag gate, is listed in the tools UI, is excluded from the MCP server (excludeFromMcp: true, added in 91c3ea459), and is assigned to discover-session (experimental) and discover-data-analysis (preview). TODO confirm lifecycle (preview or GA) with Melissa Alvarez; the code sets none.
 `platform.core.create_discover_session` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
-:   Creates or updates a **Discover** session from an {{esql}} query and shows the matching documents in an interactive [Discover table in the conversation](../agent-builder-discover-tables.md). Aggregating queries, such as queries with `STATS`, aren't supported. Use `platform.core.create_visualization` for those.
+:   Creates or updates a **Discover** table from an {{esql}} query and shows the matching documents in an interactive [Discover table in the conversation](../agent-builder-discover-tables.md). Aggregating queries, such as queries with `STATS` or `PROMQL`, aren't supported. Use `platform.core.create_visualization` for those. This tool isn't available through the [MCP server](../mcp-server.md).
 -->
 
 `platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4`

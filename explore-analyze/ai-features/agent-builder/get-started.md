@@ -146,7 +146,7 @@ Learn more in [Agent Chat](chat.md).
 
 Some {{agent-builder}} features are experimental and hidden by default. Turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}} to try them before they're generally available.
 
-On {{serverless-short}}, this setting is available in {{es-serverless}} and {{obs-serverless}} projects. It isn't available in {{sec-serverless}} projects.
+On {{serverless-short}}, this setting is available in {{es-serverless}}, {{es}} {{vectordb}}, and {{obs-serverless}} projects. It isn't available in {{sec-serverless}} projects.
 ::::
 
 ::::{step} Configure model (optional)
