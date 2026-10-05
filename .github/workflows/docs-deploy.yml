@@ -1,7 +1,7 @@
-name: docs-deploy
+name: "Preview: Deploy"
 on:
   workflow_run:
-    workflows: [docs-build]
+    workflows: ["Preview: Build"]
     types: [completed]
 permissions:
   contents: read

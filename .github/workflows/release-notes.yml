@@ -1,4 +1,4 @@
-name: Release notes
+name: "Release notes: Check"
 on:
   pull_request:
     types: [opened, synchronize, reopened, labeled, unlabeled]

@@ -1,4 +1,4 @@
-name: Triage & route issues
+name: "Issues: Route retired team labels"
 
 on:
   issues:
