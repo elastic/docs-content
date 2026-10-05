@@ -178,6 +178,25 @@ Each chart version defines default {{stack}} component versions. Unless explicit
 
 All examples in this section assume that your release was installed using the `eck-stack` Helm chart. Adapt the examples if you deployed the [individual charts](#k8s-eck-stack-individual-components) directly.
 
+### Helm 4 and Server-Side Apply [k8s-helm4-ssa]
+```{applies_to}
+eck: ga 3.6
+```
+
+Helm 4 applies chart renders through [Server-Side Apply](https://kubernetes.io/docs/reference/using-api/server-side-apply/) (SSA) by default. Under SSA, the Kubernetes API server tracks which manager owns each resource field.
+
+In ECK 3.0 through 3.5, the operator claimed ownership of fields that it did not need to manage, so Kubernetes might reject later Helm release upgrades with an error such as:
+
+```text
+UPGRADE FAILED: conflict with "elastic-operator" using elasticsearch.k8s.elastic.co/v1: .spec.nodeSets
+```
+
+Starting with ECK 3.6, the operator claims only the fields that it manages. Resources that earlier ECK versions managed can still carry the old field ownership. After you upgrade the ECK operator, run your usual `helm upgrade` command once with the `--force-conflicts` flag added, to give Helm back the ownership of the fields in your chart. Keep the same values and options that you used for your release, so that your configuration is preserved. Later upgrades do not need the flag and do not cause conflicts.
+
+::::{important}
+If you use an `ElasticsearchAutoscaler`, first remove the [fields that the autoscaler manages](/deploy-manage/autoscaling/autoscaling-in-eck.md#k8s-autoscaling-ssa) from your chart. Otherwise, the forced upgrade resets those fields to the values in your chart, the operator claims their ownership again, and later upgrades conflict.
+::::
+
 ### Upgrade to the latest version of the chart
 
 To upgrade an installed release named `es-kb-quickstart` to the latest version of the Helm chart, do the following:
