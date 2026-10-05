@@ -1,5 +1,5 @@
 ::::{warning}
-**Playground has been deprecated** as of version 9.4. Use [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) (generally available since 9.3) instead.
+**Playground was deprecated in Elastic Stack 9.4 and removed in 9.6.** It is unavailable in Elastic Serverless. Use [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) (generally available since 9.3) instead.
 
 With Agent Builder you can:
 

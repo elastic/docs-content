@@ -306,7 +306,7 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 :   Force overwrite of current configuration without prompting for confirmation. This flag is helpful when using automation software or scripted deployments.
 
     ::::{note}
-    If the {{agent}} is already installed on the host, using `--force` may result in unpredictable behavior with duplicate {{agent}}s appearing in {{fleet}}.
+    If the {{agent}} is already installed on the host, using `--force` might result in unpredictable behavior with duplicate {{agent}}s appearing in {{fleet}}.
     ::::
 
 
@@ -501,7 +501,7 @@ elastic-agent inspect components [--show-config]
     :   Display the input/output runtime specification for a component. By default, the runtime specification is hidden.
 
     `--variables-wait <duration>`
-    :   Wait the specified amount of time for variable discovery before computing the components model. This is useful when using dynamic providers like {{k8s}} or Docker that may need additional time to discover all available variables.
+    :   Wait the specified amount of time for variable discovery before computing the components model. This is useful when using dynamic providers like {{k8s}} or Docker that might need additional time to discover all available variables.
 
 
 ### Options [_options_4]
@@ -784,7 +784,7 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 :   Force overwrite of current configuration without prompting for confirmation. This flag is helpful when using automation software or scripted deployments.
 
     ::::{note}
-    If the {{agent}} is already installed on the host, using `--force` may result in unpredictable behavior with duplicate {{agent}}s appearing in {{fleet}}.
+    If the {{agent}} is already installed on the host, using `--force` might result in unpredictable behavior with duplicate {{agent}}s appearing in {{fleet}}.
     ::::
 
 
