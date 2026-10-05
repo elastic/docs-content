@@ -9,8 +9,9 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+navigation_title: Stack audit logging
 ---
-# Stack audit logging
+# Stack security event audit logging
 
 ::::{important}
 Audit logs are only available on certain [subscription levels](https://www.elastic.co/subscriptions).

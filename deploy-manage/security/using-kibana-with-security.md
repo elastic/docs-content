@@ -79,6 +79,6 @@ The following {{kib}} security features are not covered in this document because
 * [Session management](./kibana-session-management.md)
 * [Saved objects encryption](./secure-saved-objects.md)
 * [Secure settings](./secure-settings.md)
-* [Security events audit logging](./logging-configuration/security-event-audit-logging.md)
+* [Security events audit logging](/deploy-manage/monitor/stack-audit-logging.md)
 
 For a complete overview of available security features, refer to [](./secure-your-cluster-deployment.md).
