@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens gauge chart showing RAM consumption averages](/explore-analyze/images/gauge-chart-example.png)
 
-## Build a gauge chart with the point-and-click editor [build-a-gauge-chart]
+## Create a gauge chart [create-a-gauge-chart]
+
+### Create a gauge chart with the point-and-click editor [build-a-gauge-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a gauge chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -67,7 +70,7 @@ The chart preview updates to show a gauge with your metric value positioned with
 
 ::::::
 
-## Build a gauge chart with an {{esql}} query [build-a-gauge-chart-with-esql]
+### Create a gauge chart with an {{esql}} query [build-a-gauge-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

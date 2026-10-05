@@ -14,6 +14,8 @@ products:
 
 Learn how to index, update, retrieve, search, and delete documents in an {{es}} cluster using APIs.
 
+{applies_to}`stack: preview` {applies_to}`serverless: preview` The examples on this page use `curl`, but you can also use the [Elastic CLI](cli://index.md), which provides a command-line interface for {{es}} and {{kib}} APIs.
+
 ::::{tip}
 For a user interface to query, visualize, and manage your {{es}} data, try [{{kib}}](/explore-analyze/index.md). {{kib}} provides visualization tools, index management, and sample data sets you can use to explore its capabilities.
 ::::
