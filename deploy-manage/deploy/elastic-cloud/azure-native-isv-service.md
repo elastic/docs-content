@@ -23,7 +23,7 @@ The {{ecloud}} Azure Native Service allows you to deploy managed instances of th
 
 * **Integrated billing**
 
-    You are billed directly to your Azure account; no need to configure billing details in Elastic. See [Integrated billing](#ec-azure-integration-billing-summary) for details.
+    You are billed directly to your Azure account, so you don't need to configure billing details in Elastic. See [Integrated billing](#ec-azure-integration-billing-summary) for details.
 
 * **Easy consolidation of your Azure logs in Elastic**
 

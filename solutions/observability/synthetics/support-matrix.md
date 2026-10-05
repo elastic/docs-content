@@ -17,7 +17,7 @@ There are various components that make up the Synthetics solution, which are sup
 * **Notes**:
 
     * For creating and managing lightweight and browser monitors configured through the [{{synthetics-app}}](/solutions/observability/synthetics/create-monitors-ui.md)
-    * For reporting for lightweight and browser monitors configured through the [{{synthetics-app}}](/solutions/observability/synthetics/create-monitors-ui.md) and/or [{{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md)
+    * For reporting for lightweight and browser monitors configured through the [{{synthetics-app}}](/solutions/observability/synthetics/create-monitors-ui.md) or [{{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md)
 
 ## {{project-monitors-cap}} [_project_monitors_cap]
 
@@ -39,7 +39,7 @@ There are various components that make up the Synthetics solution, which are sup
     * For running lightweight and browser monitors from your self-managed infrastructure
     * Relies on the Synthetics integration 1.0.0 or above
 
-        * Any *inline* or *Zip URL* monitors configured with the beta Synthetics integration prior to 1.0.0, are not supported and will stop running in the future
+        * Any *inline* or *Zip URL* monitors configured with the beta Synthetics integration before 1.0.0, are not supported and will stop running in the future
 
     * Shipped as multiple `elastic-agent` variants:
 

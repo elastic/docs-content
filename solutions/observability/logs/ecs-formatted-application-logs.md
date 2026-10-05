@@ -307,7 +307,7 @@ To add the custom logs integration to your project:
         service.environment: your_service_environment <6>
     ```
 
-    1. Values from the decoded JSON object overwrite the fields that {{agent}} normally adds (type, source, offset, etc.) in case of conflicts.
+    1. Values from the decoded JSON object overwrite the fields that {{agent}} normally adds (such as type, source, and offset) in case of conflicts.
     2. {{agent}} adds an "error.message" and "error.type: json" key in case of JSON unmarshalling errors.
     3. {{agent}} will recursively de-dot keys in the decoded JSON, and expand them into a hierarchical object structure.
     4. By default, the decoded JSON is placed under a "json" key in the output document. When set to `true`, the keys are copied top level in the output document.
