@@ -1426,9 +1426,7 @@ The `url` object supports the following parameters:
 | `"%context%"` | When set to `true`, applies the dashboard filters to the query. |
 | `"%timefield%"` | The timestamp field to use for the dashboard time range. See [Apply the dashboard time range](#vega-esql-time-range). |
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
-| `"params"` | An array of named parameter objects to substitute into the query. |
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` On a dashboard, a variable control overrides a matching name in `params`. Refer to [Apply dashboard variable controls to {{esql}} data sources](#vega-esql-variable-controls).
+| `"params"` | An array of named parameter objects to substitute into the query. To use dashboard variable controls and set default values, refer to [Apply dashboard variable controls to {{esql}} data sources](#vega-esql-variable-controls). |
 
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
@@ -1541,11 +1539,42 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-On a dashboard, a [variable control](dashboard-controls.md#controls-scope-by-type) supplies the value for a variable when the control uses the same name. Write `?name` for a value, or `??name` for a field or function name. Each {{esql}} query in the spec runs with the control's current value when it references that variable, so the chart follows the selection.
+[Variable controls](add-variable-controls.md) bind interactive dashboard controls to variables in {{esql}} queries. A Vega visualization on a dashboard uses a control when the query of one of its {{esql}} data sources references the control's variable. If the spec has several {{esql}} data sources, each one uses only the controls that its own query references.
 
-When `params` includes the same name, the dashboard value is used. `params` still supplies a name that no control sets. When the query uses `?_tstart` or `?_tend`, the dashboard time range supplies those values even when `params` sets the same names.
+To reference a control, use its name in the query, as you do in other {{esql}} visualizations. The name starts with `?` for a value, or with `??` for a field or function. To create a control, refer to [Add variable controls](add-variable-controls.md#create-variable-control).
 
-In the **Visualize library** editor and in **Canvas**, the panel has no dashboard variable control. If the query references a variable and `params` does not include it, the visualization shows an error for an unknown query parameter.
+For example, a variable control named `?machineos` offers the operating systems in the sample web logs data. This spec shows the request count over time for the selected operating system:
+
+```json
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": {
+      "%type%": "esql",
+      "query": "FROM kibana_sample_data_logs | WHERE machine.os.keyword == ?machineos | STATS count = COUNT(*) BY bucket = DATE_TRUNC(2 hour, @timestamp) | SORT bucket" <1>
+    }
+  },
+  "mark": "line",
+  "encoding": {
+    "x": { "field": "bucket", "type": "temporal" },
+    "y": { "field": "count", "type": "quantitative" }
+  }
+}
+```
+
+1. `?machineos` is the variable of the control. When the selection changes, the query runs again with the new value.
+
+To give a variable a default value, add it to the `params` array of the `url` object. Use the variable name without the `?` prefix:
+
+```json
+"params": [
+  { "machineos": "ios" }
+]
+```
+
+On a dashboard, a control with the same name replaces the `params` value, and `params` still supplies the variables that no control sets. The **Visualize library** editor and **Canvas** don't have dashboard controls, so `params` is the only source of values there. If the query references a variable that `params` doesn't set, the visualization shows an error.
+
+A default in `params` lets the visualization render in the **Visualize library** editor. After you add the visualization to a dashboard, the control takes over.
 
 
 #### Access Elastic Map Service files [vega-esmfiles]
