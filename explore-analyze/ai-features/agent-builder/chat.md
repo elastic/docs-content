@@ -200,7 +200,74 @@ You can pin or unpin a conversation in either of the following ways:
 :width: 450px
 :::
 
+### Share a conversation [share-a-conversation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Conversations are private to you by default. As the owner of a conversation, you can share it with specific users or make it public. Users you share a conversation with can read its full history and continue it. For details about who can do what, refer to [Conversation access control](permissions.md#conversation-access-control).
+
+You can share a conversation in standalone mode only. The sharing button doesn't appear in [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode).
+
+To share a conversation:
+
+1. Open the conversation. The sharing button appears after you send the first message.
+2. In the conversation header, select the sharing button. It shows the {icon}`users` icon and the number of users with access, including you.
+3. Under **General access**, select **Restricted** (the default) to share with specific users, or **Public** to share with any user who can access the conversation's agent.
+4. If you selected **Restricted**, enter a name in **Search for users to add**, then select a user. The user appears under **Current members**. Members are listed alphabetically, after you as the **Author**.
+
+Your changes save immediately. If a change fails, the popover shows **Failed to update sharing settings** and reverts it.
+
+To remove a member, select **Remove member** next to their name. Switching to **Public** removes all members, and switching back to **Restricted** doesn't restore them.
+
+The user search includes users who can log in to the current space, but a member can open the conversation only if they can also access its agent. Users who have never logged in to {{kib}} can't be added.
+
+When a conversation is public, the sharing button shows the {icon}`globe` icon and **Public**.
+
+:::{image} images/agent-builder-share-conversation.png
+:screenshot:
+:alt: Sharing popover with General access set to Restricted, the owner listed as Author, and two members under Current members
+:width: 450px
+:::
+
+#### Conversations shared with you
+
+Conversations shared with you appear in the chat history panel with your own conversations, along with public conversations for agents you can access. The panel doesn't mark which conversations are shared. You can read the full history and send new messages.
+
+For a restricted conversation, select the sharing button to see the **Participants** list. Only the owner can add or remove members or change the access mode. Only the owner can rename or delete the conversation, though a user with full cluster privileges can also rename or delete a public one. Public conversations that you don't own don't show a sharing button.
+
+To see a conversation's details, select its title in the conversation header. **Visibility** shows **Public** for a public conversation and **Private** for any other conversation, whether or not it's shared. **Private** in the details and **Restricted** in the sharing popover refer to the same access mode, which the API calls `private`.
+
+:::{image} images/agent-builder-conversation-participants.png
+:screenshot:
+:alt: Participants popover showing the conversation owner labeled Author and the other members
+:width: 450px
+:::
+
+#### Post without running the agent
+
+In a shared conversation, you can post a message for the other participants without asking the agent to respond. In the chat input, change **Include agent** to **Skip agent**, then send your message. While **Skip agent** is selected, the input shows **Leaving a post to the team** and the model selector is hidden. The agent doesn't run.
+
+The selector appears only in shared conversations, for the owner and members alike. It resets to **Include agent** when you switch conversations. If a conversation stops being shared, new messages run the agent again.
+
+:::{image} images/agent-builder-skip-agent.png
+:screenshot:
+:alt: Chat input with Skip agent selected and the Leaving a post to the team header
+:width: 650px
+:::
+
+#### Updates from other participants
+
+An open shared conversation refreshes about every five seconds, so messages from other participants appear shortly after they're sent, not instantly. It doesn't refresh while the browser tab is in the background.
+
+The chat history panel doesn't refresh on a timer. A conversation that someone shares with you appears the next time the list refreshes, for example when you return to the browser tab or reload the page.
+
 ### Track conversation status
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
 The chat history panel shows the status of each conversation at a glance, so you can keep track of what your agents are doing across conversations:
 
@@ -208,8 +275,8 @@ The chat history panel shows the status of each conversation at a glance, so you
 |------|--------|---------|
 | ![In progress spinner](images/agent-builder-status-in-progress.svg "=20x20") | **In progress** | The agent is generating a response. |
 | ![Awaiting your input icon](images/agent-builder-status-awaiting.svg "=20x20") | **Awaiting your input** | The agent paused and needs you to respond before it can continue, for example to answer a [human-in-the-loop prompt](#human-in-the-loop-prompts). |
-| ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing. |
-| ![Error icon](images/agent-builder-status-error.svg "=20x20") | **Error** | The agent stopped because of an error. |
+| ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing. Read status is tracked for each user. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a [shared conversation](#share-a-conversation), any new message, including one posted with **Skip agent**, marks the conversation as unread for every participant who isn't viewing it. |
+| ![Error icon](images/agent-builder-status-error.svg "=20x20") | **Error** {applies_to}`stack: ga =9.5, removed 9.6+` {applies_to}`serverless: removed` | The agent stopped because of an error. |
 
 For example, the following chat history panel shows one conversation in progress and another with unread activity:
 
