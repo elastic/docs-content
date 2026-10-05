@@ -72,7 +72,7 @@ Follow these steps to migrate to a different instance configuration, replacing t
 3. Set the `instance_configuration_id` field of the {{es}} tier or stateless resource you want to migrate to the **Instance ID** of the instance configuration selected in step 1.
 4. If the `instance_configuration_version` field is defined for that {{es}} tier or stateless resource, remove it from the payload.
 
-    Following is the update that would be required to migrate the example above to the `gcp.es.datahot.n2.68x10x95` instance configuration:
+    Following is the update that would be required to migrate the previous example to the `gcp.es.datahot.n2.68x10x95` instance configuration:
 
     ```json
     {

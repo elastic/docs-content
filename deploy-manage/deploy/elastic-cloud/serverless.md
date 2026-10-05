@@ -55,7 +55,7 @@ This section covers the tasks you perform to create, configure, and manage serve
 
 ### Get started [get-started]
 
-Choose the project type that matches your use case, select a feature tier if your project type has one, then create the project.
+Choose the project type that matches your use case, select a feature tier if your project type has one, create the project, then connect to it.
 
 ::::::{stepper}
 
@@ -89,6 +89,12 @@ Not sure which to choose? Start with the {{es}} solution for general-purpose sea
 You choose the cloud provider and a [region](/deploy-manage/deploy/elastic-cloud/regions.md) during setup, which is the geographic location of the data center that hosts your project. The region determines where your data resides and affects latency relative to your clients, data sources, and other connected services. You cannot change the region after the project is created.
 
 A project's type is fixed after you create it, but you can create as many projects as you need. That means you can create one project of each type to [evaluate](/get-started/evaluate-elastic.md) them side by side, then delete the ones you don't keep.
+
+:::::
+
+:::::{step} Connect to your project
+
+To send data to your project or query it from your own applications, point your clients, tools, and data shippers at it. Find your [project connection details](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md): the {{es}} endpoint and an API key, which together authenticate every request. {{serverless-short}} does not support username and password authentication for these connections.
 
 :::::
 
