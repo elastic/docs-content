@@ -56,8 +56,13 @@ Use the {{es}} OTLP endpoint directly only in the following cases:
   Traces sent this way are stored without `elasticapm` enrichment or aggregated {{product.apm}} metrics, so the {{product.apm}} views that depend on them stay empty.
 
 :::{warning}
-The {{es}} OTLP endpoint handles many simultaneous clients no better than the [bulk API]({{es-apis}}operation/operation-bulk): don't send telemetry from many individual applications or pods to `/_otlp` at the same time.
-Point applications and pods at a gateway Collector or at the {{motlp}} instead, and let a small number of gateway Collector instances receive the client connections and batch records before writing to `/_otlp`.
+Don't send telemetry from applications or pods directly to `/_otlp`.
+As with the [bulk API]({{es-apis}}operation/operation-bulk), each client opens its own connections to {{es}} and sends its own small batches.
+Many direct clients mean many connections and many small requests, which {{es}} handles less efficiently than a few connections carrying larger batches.
+
+Send telemetry to a gateway Collector or to the {{motlp}} instead.
+A gateway Collector combines data from many clients into larger batches and writes them to `/_otlp` over a small number of connections.
+This limit is about the number of connections to {{es}}, not the number of applications you monitor.
 :::
 
 ## Advantages of OTLP ingest over Bulk API
