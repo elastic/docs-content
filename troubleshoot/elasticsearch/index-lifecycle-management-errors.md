@@ -252,7 +252,7 @@ Each entry below shows the message you'll see in the `ERROR` step, the cause, an
 ### Rollover errors [ilm-errors-rollover]
 
 ::::{tip}
-Problems with rollover aliases are a common cause of errors. You should consider using [data streams](/manage-data/data-store/data-streams.md) instead of managing rollover with aliases.
+Rollover aliases are a common cause of configuration errors. Consider using [data streams](/manage-data/data-store/data-streams.md) instead, which manage rollover automatically. Refer to our [{{ilm-init}} tutorials](/manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md) for help setting up rollover with either data streams or aliases.
 ::::
 
 These errors can occur when the [{{ilm-init}} rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) action runs:

@@ -569,9 +569,9 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
 
     ![{{kib}} single document view](/solutions/images/observability-monitor-java-app-kibana-single-document.png "")
 
-    You can see that a lot more data is indexed than just the event. There is information about the offset in the file, information about the component shipping the logs, the name of the shipper’s name in the output, and there is a `message` field containing log line contents.
+    You can see that a lot more data is indexed than the event itself. There is information about the offset in the file, information about the component shipping the logs, the name of the shipper’s name in the output, and there is a `message` field containing log line contents.
 
-    You can see there is a flaw in the request logging. If the user agent is `null`, something other than `null` is returned. Reading our logs is crucial; however, just indexing them gains us nothing.  To fix this, here is a new request logger.
+    You can see there is a flaw in the request logging. If the user agent is `null`, something other than `null` is returned. Reading our logs is crucial. However, indexing them alone gains us nothing.  To fix this, here is a new request logger.
 
     ```java
     Javalin app = Javalin.create(config -> {
@@ -584,7 +584,7 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
     });
     ```
 
-    You may also want to fix this in the logging message in the main handler.
+    You might also want to fix this in the logging message in the main handler.
 
     ```java
     static Handler mainHandler() {
