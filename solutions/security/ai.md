@@ -32,14 +32,14 @@ These security-specific AI capabilities build on Elastic's [platform-level AI in
 | Connect to an LLM provider | [LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md) |
 | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4` Install the Security MCP App to open interactive {{elastic-sec}} dashboards in Claude, Cursor, or another AI tool | [Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md) |
 
-## What this section covers [ai-section-organization]
+## Find AI features by task [ai-section-organization]
 
 - [Set up AI features](/solutions/security/ai/set-up-ai-features.md): Connect to an LLM, control access, select a chat experience, and turn on what each feature needs.
 - [Use AI](/solutions/security/ai/use-ai.md): Triage alerts, investigate threats, and write queries with {{agent-builder}}, Attack Discovery, and AI Assistant.
 - [Extend AI](/solutions/security/ai/extend-ai.md): Build AI features into your own workflows, or use them from external AI clients.
 - [Manage AI](/solutions/security/ai/manage-ai.md): Manage the Knowledge Base and the data that AI features can access.
 
-This section also covers the [Value report](/solutions/security/ai/ease/ease-value-report.md) and [Elastic AI SOC Engine](/solutions/security/ai/ease/ease-intro.md).
+To estimate the analyst time and cost that AI alert triage saves, refer to the [Value report](/solutions/security/ai/ease/ease-value-report.md). To add AI-powered triage to your existing SIEM, refer to [Elastic AI SOC Engine](/solutions/security/ai/ease/ease-intro.md).
 
 ## Interactive AI tools [interactive-ai-tools]
 
