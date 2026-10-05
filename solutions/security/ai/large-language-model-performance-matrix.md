@@ -82,7 +82,9 @@ Models from third-party LLM providers.
 
 ## Open-source models [_open_source_models]
 
-Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-llms-overview.md).
+Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-llms-overview.md), ranked by overall score.
+
+_Last measured in September 2026._
 
 :::{table}
 :matrix:
