@@ -14,7 +14,7 @@ description: Bring security data into Elastic Security. Start with an integratio
 
 # Ingest data to {{elastic-sec}} [security-ingest-data]
 
-Detection rules, Attack Discovery, and the rest of {{elastic-sec}} work on the data you bring in. Most security data comes in through integrations, so start there.
+Bring your security data into {{elastic-sec}} so detection rules, Attack Discovery, and other features can analyze it. Most security data comes in through integrations, so start there.
 
 ## Start with an integration [security-ingest-integrations]
 
@@ -22,7 +22,7 @@ Elastic has hundreds of integrations that collect data from security tools, clou
 
 Integrations collect data in one of two ways:
 
-- {applies_to}`stack: ga 9.5+, preview 9.0-9.4` {applies_to}`serverless: ga` **{{managed-integrations}}:** Elastic runs the collector for you, so there's nothing to install or maintain. You configure the connection to the source, for example with an API key or cloud credentials. {{managed-integrations}} are available on {{serverless-full}} projects and {{ech}} deployments. To learn more, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` **{{managed-integrations}}:** Elastic runs the collector for you, so there's nothing to install or maintain. You configure the connection to the source, for example with an API key or cloud credentials. {{managed-integrations}} are available on {{serverless-full}} projects and {{ech}} deployments. To learn more, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
 - **Integrations that use {{agent}}:** You install [{{agent}}](/reference/fleet/index.md) on the hosts you want to collect data from, and manage it with {{fleet}}.
 
 ## What integrations bring in [security-ingest-data-types]
@@ -38,7 +38,7 @@ Where data appears in {{elastic-sec}} depends on its type:
 
 Integrations also install assets such as dashboards and saved searches. Some, such as [behavioral detection integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations), also install detection rules and {{ml}} jobs.
 
-For the integrations that send alerts and findings to these pages, refer to [Integrations that power Findings and Alerts](/solutions/security/integrations/ingest-third-party-security-data.md). For threat intelligence, refer to [Threat intel integrations](/solutions/security/get-started/enable-threat-intelligence-integrations.md).
+For the integrations that send alerts and findings to the **Alerts** and **Findings** pages, refer to [Integrations that power Findings and Alerts](/solutions/security/integrations/ingest-third-party-security-data.md). For threat intelligence, refer to [Threat intel integrations](/solutions/security/get-started/enable-threat-intelligence-integrations.md).
 
 ## When no integration exists [security-ingest-no-integration]
 

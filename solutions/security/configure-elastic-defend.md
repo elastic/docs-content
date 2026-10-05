@@ -31,6 +31,8 @@ In practice, you add the {{elastic-defend}} integration from the **Integrations*
 
 ## Data that {{elastic-defend}} collects [elastic-defend-data]
 
+{{elastic-defend}} collects security data from each host it protects. To bring in data from other sources, refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
+
 {{agent}} with the {{elastic-defend}} integration ships these data sources to {{elastic-sec}}:
 
 * Process: Linux, macOS, Windows
