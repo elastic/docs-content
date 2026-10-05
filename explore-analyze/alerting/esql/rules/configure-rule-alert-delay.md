@@ -13,10 +13,10 @@ description: "Configure alert delay for rules that group matches into an alert e
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, alert delay corresponds to the following fields: 
+Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, alert delay corresponds to the following fields:
 
-*  {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` `state_transition.pending.count`, `state_transition.pending.timeframe`, and `state_transition.pending.operator`
-* {applies_to}`stack: experimental =9.5` `state_transition.pending_*` fields
+* {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` `state_transition.pending.count`, `state_transition.pending.timeframe`, and `state_transition.pending.operator`
+* {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` `state_transition.pending_*` fields
 
 ## When to configure alert delay [alert-delay-when-to-use]
 
@@ -46,21 +46,20 @@ Use the following fields to configure the Breaches and Duration modes. Timeframe
 | --- | --- | --- | --- |
 | `pending_count` | integer | 0–1000 | Number of consecutive breach evaluations required before the alert episode opens. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
 | `pending_timeframe` | duration | Any duration string | How long the condition must remain breached before the alert episode opens. Appears as **Active for** in Duration mode. |
-| `pending_operator` | string | `AND` or `OR` {applies_to}`stack: experimental =9.5`<br><br> `and` or `or` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` | Whether both `pending_count` and `pending_timeframe` must be met, or either one is enough, when both fields are set. |
+| `pending_operator` | string | `and` or `or` {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` <br><br> `AND` or `OR` {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` | Whether the rule requires both `pending_count` and `pending_timeframe`, or only one, when you set both. |
 
-
-To combine Breaches and Duration, set both `pending_count` and `pending_timeframe`, then use `pending_operator` to control how they interact. `and` requires both conditions before the alert episode opens. `or` opens it as soon as either one is met.
+To combine Breaches and Duration, set both `pending_count` and `pending_timeframe`, then use `pending_operator` to decide whether the alert episode opens after both conditions hold or after either one does.
 
 :::{note}
-Alert delay only controls the delay before an alert episode opens. For the matching delay before an alert episode closes, refer [](configure-rule-recovery.md#recovery-delay).
+Alert delay only controls the delay before an alert episode opens. For the matching delay before an alert episode closes, refer to [](configure-rule-recovery.md#recovery-delay).
 :::
 
-#### Field names in the YAML rule schema
+### Field names in the YAML rule schema
 
 The `pending_count`, `pending_timeframe`, and `pending_operator` fields map to the `state_transition.pending` fields in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). The YAML field name depends on your version:
 
-- {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` Nested under `state_transition.pending`. For example, `pending_count` is `state_transition.pending.count`. The `pending` object must set `count` or `timeframe`; `operator` is allowed only when both are set.
-- {applies_to}`stack: experimental =9.5` Prefixed with `state_transition.`. For example, `pending_count` is `state_transition.pending_count`.
+- {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` Nested under `state_transition.pending`. For example, `pending_count` is `state_transition.pending.count`. The `pending` object must set `count` or `timeframe`. You can set `operator` only when you set both.
+- {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` Prefixed with `state_transition.`. For example, `pending_count` is `state_transition.pending_count`.
 
 
 ## Examples
@@ -71,11 +70,11 @@ Create a rule that monitors CPU usage and runs every minute. A single high readi
 
 ### Require sustained breach before escalating
 
-Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `AND` (`and` on Stack 9.6+ and Serverless). The rule only fires when the error rate has breached on 5 consecutive evaluations and has been continuously elevated for at least 2 minutes. Either condition alone isn't enough.
+Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `and`. The rule fires only when the error rate has breached on 5 consecutive evaluations and has stayed elevated for at least 2 minutes. Either condition alone isn't enough.
 
 :::{note}
-:applies_to: stack: experimental 9.6+ :applies_to: serverless: ga
-In {{stack}} version 9.6 and in {{serverless-short}}, set `pending_operator` to `and` instead of `AND`.
+:applies_to: { stack: experimental =9.5, serverless: unavailable }
+Set `pending_operator` to `AND` instead.
 :::
 
 ## Related pages
