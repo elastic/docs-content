@@ -17,15 +17,15 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-In this tutorial, you follow the complete {{kib}} and {{agent-builder}} path from data already stored in {{es}} to a Knowledge Indicator that an agent can retrieve. You can use your own data or the {{kib}} sample ecommerce data.
+In this tutorial, you follow the complete {{kib}} and {{agent-builder}} path from data already stored in {{es}} to a Knowledge Indicator (KI) that an agent can retrieve. You can use your own data or the {{kib}} sample ecommerce data.
 
 Suppose an agent regularly answers questions about an {{es}} index. Without reusable context, it might first inspect the mapping, interpret the fields, and construct suitable queries. This tutorial generates an index metadata KI that gives the agent that orientation and query guidance up front.
 
 ## Tutorial outcome
 
-By the end of this tutorial, an {{agent-builder}} agent can retrieve an `index_metadata` Knowledge Indicator (KI). The KI explains what your selected {{es}} data contains, its limitations, and how to query it with verified {{esql}}.
+By the end of this tutorial, an {{agent-builder}} agent can retrieve an `index_metadata` KI. The KI explains what your selected {{es}} data contains, its limitations, and how to query it with verified {{esql}}.
 
-An automation, implemented as an [Elastic Workflow](/explore-analyze/workflows.md), generates the KI and can refresh it when the source changes.
+An automation, implemented as a workflow in [Elastic Workflows](/explore-analyze/workflows.md), generates the KI and can refresh it when the source changes.
 
 ## Before you begin
 
@@ -33,7 +33,7 @@ You need:
 
 - An {{stack}} 9.6 deployment with an Enterprise license, or an {{serverless-full}} project.
 - Permission to change Advanced Settings in the current Kibana space.
-- Permission to [create and run Workflows](/explore-analyze/workflows/get-started/setup.md) and manage {{context-engine}} AI indices.
+- Permission to [create and run workflows](/explore-analyze/workflows/get-started/setup.md) and manage {{context-engine}} AI indices.
 - Elasticsearch data that you can read. If you do not have suitable data, install the [**Sample eCommerce orders** data](https://www.elastic.co/docs/manage-data/ingest/sample-data#add-sample-data-sets), which creates the `kibana_sample_data_ecommerce` index.
 
 Starting with existing data matters. An AI index does not ingest source data by itself. Its sources identify the data that an automation can use to generate KIs.
@@ -89,10 +89,10 @@ For an AI index without an automation, {{agent-builder}} starts with an Index/Ta
 3. Review the proposal. Confirm that it identifies the intended source index and a suitable keyword field for grouping the data. For the ecommerce sample data, `category.keyword` is an appropriate grouping field.
 4. Approve the proposal when {{agent-builder}} asks whether to create the automation.
 
-{{agent-builder}} installs the Index/Table Metadata template and attaches the resulting Workflow to the AI index. The Workflow inspects the index mapping, samples documents, runs grounding aggregations, generates the KI, and verifies any {{esql}} that the KI contains. Installing the automation does not run it.
+{{agent-builder}} installs the Index/Table Metadata template and attaches the resulting workflow to the AI index. The workflow inspects the index mapping, samples documents, runs grounding aggregations, generates the KI, and verifies any {{esql}} that the KI contains. Installing the automation does not run it.
 
 :::{note}
-**Create automation** is the manual route. It opens a new, disabled Workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation Workflow yourself.
+**Create automation** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
 :::
 
 ## 5. Run the automation and inspect the KI
@@ -101,7 +101,7 @@ Run the automation and inspect its output:
 
 1. Ask {{agent-builder}} to run the automation.
 2. Confirm the run when prompted.
-3. Follow the execution link and confirm that the Workflow completes successfully.
+3. Follow the execution link and confirm that the workflow completes successfully.
 4. Return to the AI index in **Context**, then open **Knowledge Indicators**.
 5. Open the `index_metadata` KI and confirm that it describes the intended data, its limitations, and useful {{esql}} access patterns.
 
