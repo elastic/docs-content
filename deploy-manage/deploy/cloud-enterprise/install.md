@@ -47,7 +47,7 @@ After completing the prerequisites, proceed to configure your ECE hosts. This in
 ECE supports a [wide range of OS versions](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Below are some OS-specific instructions for preparing your hosts, though other versions follow a similar process. Choose the appropriate guide for your operating system and follow the instructions:
 
 * [Ubuntu 20.04 LTS (Focal Fossa) and Ubuntu 22.04 LTS (Jammy Jellyfish)](configure-host-ubuntu.md)
-* [Red Hat Enterprise Linux (RHEL) 8 and 9](configure-host-rhel.md)
+* [Red Hat Enterprise Linux (RHEL) 8, 9, and 10](configure-host-rhel.md)
 * [Rocky Linux 8 and 9](configure-host-rhel.md)
 * [SUSE Linux Enterprise Server (SLES) 12 SP5 and 15](configure-host-suse.md)
 
