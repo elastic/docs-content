@@ -133,7 +133,7 @@ Members are identified by their {{kib}} user profile ID, not by username. A user
 | Delete | Yes | No | No |
 | Change sharing | Yes | No | No |
 
-A superuser can also rename or delete a `public` conversation they do not own. This does not extend to `private` conversations, even ones shared with them, and it never includes changing who a conversation is shared with.
+A user whose role grants all {{kib}} application privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}, can also rename or delete a `public` conversation they do not own. This does not extend to `private` conversations, even ones shared with them, and it never includes changing who a conversation is shared with.
 
 ### Sharing does not bypass privileges
 

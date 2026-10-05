@@ -243,7 +243,7 @@ For a restricted conversation, click the sharing button to view the **Participan
 :width: 450px
 :::
 
-Only the owner can add or remove members, change the access mode, rename the conversation, or delete it. A superuser can also rename or delete a public conversation.
+Only the owner can add or remove members, change the access mode, rename the conversation, or delete it. A user whose role grants all {{kib}} application privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}, can also rename or delete a public conversation they don't own.
 
 To view a conversation's details, click its title in the conversation header. **Visibility** shows **Public** for a public conversation and **Private** for any other conversation, whether or not it's shared. **Private** in the details and **Restricted** in the sharing popover refer to the same access mode, which the API calls `private`.
 
@@ -277,7 +277,7 @@ The chat history panel shows the status of each conversation at a glance, so you
 |------|--------|---------|
 | ![In progress spinner](images/agent-builder-status-in-progress.svg "=20x20") | **In progress** | The agent is generating a response. |
 | ![Awaiting your input icon](images/agent-builder-status-awaiting.svg "=20x20") | **Awaiting your input** | The agent paused and needs you to respond before it can continue, for example to answer a [human-in-the-loop prompt](#human-in-the-loop-prompts). |
-| ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing.<br>{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Each user has their own read status. In a [shared conversation](#share-a-conversation), any new message, including one posted with **Skip agent**, marks the conversation as unread for every participant who isn't viewing it. |
+| ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing.<br>{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Each user has their own read status. In a [shared or public conversation](#share-a-conversation), any new message, including one posted with **Skip agent**, marks the conversation as unread for everyone who can open it and isn't viewing it. |
 | ![Error icon](images/agent-builder-status-error.svg "=20x20") | **Error** {applies_to}`stack: ga =9.5, removed 9.6+` {applies_to}`serverless: removed` | The agent stopped because of an error. |
 
 For example, the following chat history panel shows one conversation in progress and another with unread activity:

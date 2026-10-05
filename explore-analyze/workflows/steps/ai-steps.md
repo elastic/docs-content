@@ -220,7 +220,7 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
 | `attachments` | `with` | array | No | Attachments to provide to the agent. Each attachment has `{ id?, type, data?, origin?, hidden? }`. |
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The step ignores `public-conversation` if `create-conversation` isn't `true`, or if it continues an existing conversation instead of creating one. Neither case returns an error.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The step ignores `public-conversation` if `create-conversation` isn't `true`, or if it continues an existing conversation instead of creating one. Neither case returns an error.
 
 **Output shape:**
 
