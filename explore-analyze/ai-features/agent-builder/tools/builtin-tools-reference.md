@@ -66,6 +66,11 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
 :   Creates or updates a visualization configuration based on a natural language description.
 
+<!-- Uncomment after kibana#288514 merges. Verified at PR head ca3e0ae: the tool is new in 9.6, has no experimental or feature-flag gate, is listed in the tools UI, and is assigned to discover-session (experimental) and discover-data-analysis (preview). TODO confirm lifecycle (preview or GA) with Melissa Alvarez; the code sets none.
+`platform.core.create_discover_session` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Creates or updates a **Discover** session from an {{esql}} query and shows the matching documents in an interactive [Discover table in the conversation](../agent-builder-discover-tables.md). Aggregating queries, such as queries with `STATS`, aren't supported. Use `platform.core.create_visualization` for those.
+-->
+
 `platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4`
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 

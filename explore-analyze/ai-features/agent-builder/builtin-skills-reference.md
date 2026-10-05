@@ -54,12 +54,24 @@ $$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_t
 $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Analyzes {{esql}} query results in {{kib}} **Discover**, identifying patterns, trends, and anomalies by running aggregation queries against the full dataset. The skill receives the current query, columns, sample rows, and time range as an attachment, then runs 2 to 3 focused aggregation queries, renders an inline visualization for the main finding, and proposes drill-down queries. When the active [context-aware profile](/explore-analyze/discover/discover-get-started.md#context-aware-discover) is logs, metrics, or traces, the skill receives shape-specific guidance. For example, it uses the {{esql}} `TS` source command for time series metrics.
 
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you ask to see the current documents, the skill shows them in an interactive [Discover table in the conversation](agent-builder-discover-tables.md) instead of a chart.
+
     :::{dropdown} Assigned tools
-    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`
+    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`, `platform.core.create_discover_session` {applies_to}`stack: preview 9.6+`
 
     :::
 
     **How to activate:** Activates from the [standard activation methods](skills.md#how-skills-are-invoked) when the conversation is started from a Discover session tab that is in {{esql}} mode and has loaded results. The current query, columns, sample rows, and time range are automatically attached to the conversation, so the agent has the context it needs to run the analysis. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai) for the full workflow.
+
+$$$agent-builder-discover-session-skill$$$ `discover-session` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Shows {{es}} documents, events, or logs as an interactive **Discover** table in the conversation. Use when a user wants to see the matching rows rather than a chart or an aggregation. The skill generates an {{esql}} query and creates or updates a Discover session that renders inline in chat. Requests for charts, metrics, or trends still go to [`visualization-creation`](#agent-builder-visualization-creation-skill). Unlike [`discover-data-analysis`](#agent-builder-discover-data-analysis-skill), this skill doesn't need a conversation started from Discover. For the full workflow, refer to [Discover tables in chat](agent-builder-discover-tables.md).
+
+    :::{dropdown} Assigned tools
+    `platform.core.generate_esql`, `platform.core.create_discover_session`
+
+    :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
 
 $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Answers questions about {{agent-builder}} OpenTelemetry (OTel) traces and activity, including token usage, model and provider breakdowns, conversation and agent latency, tool-call volume, and error rates, and can help build dashboards from that trace data. The skill queries the {{agent-builder}} OTel traces with {{esql}} and is part of the default Elastic AI Agent.
