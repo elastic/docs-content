@@ -135,7 +135,7 @@ Activity logging records actions taken by users and systems, such as authenticat
 |---|---|---|
 | [](./monitor/stack-audit-logging.md) | Enable and configure audit logging for {{es}} and {{kib}} deployments. | {applies_to}`stack: ga` |
 | [](./monitor/cloud-audit-trail.md) | Audit organization-level actions such as sign-in activity, deployment management, user and role changes, and API key usage. | {applies_to}`ech: ga` {{fedramp-mod}} only |
-| [](./monitor/logging-configuration/query-logs.md) | Log every search, {{esql}}, SQL, or EQL query for analysis and debugging. | {applies_to}`stack: ga` |
+| [](./monitor/logging-configuration/query-logs.md) | Log every search, {{esql}}, SQL, or EQL query for analysis and debugging. | {applies_to}`stack: preview 9.4` |
 | [](./monitor/logging-configuration/slow-logs.md) | Identify slow queries and indexing operations. | {applies_to}`stack: ga` |
 
 ## Operational logging
@@ -143,4 +143,6 @@ Activity logging records actions taken by users and systems, such as authenticat
 stack: ga
 ```
 
-{{es}} and {{kib}} produce diagnostic logs as they run. Configure log levels, output format, and deprecation warnings. [Learn more](./monitor/logging-configuration.md).
+{{es}} and {{kib}} are able to produce diagnostic logs as they run. You can enable {{es}} and {{kib}} logging features to gain insight into {{stack}} operations and diagnose issues. 
+
+To configure these logs, including log levels, output format, and deprecation warning logging, refer to [](/deploy-manage/monitor/logging-configuration.md).

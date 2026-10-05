@@ -817,7 +817,8 @@ toc:
           - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/cloud-audit-trail.md
           - hidden: monitor/log-delivery.md
-          - hidden: monitor/log-delivery/audit-trail.md
+            children:
+              - hidden: monitor/log-delivery/audit-trail.md
       - file: monitor/logging-configuration.md
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md

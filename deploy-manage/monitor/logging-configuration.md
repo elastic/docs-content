@@ -27,7 +27,7 @@ The following logging features are available:
 
 ## For {{kib}} [extra-logging-features-kibana]
 
-Use Application and component logging to log messages related to running {{kib}}.
+Use application and component logging to log messages related to running {{kib}}.
 
 You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed, ECE, or ECK deployments, [configure advanced settings](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md) to customize logging behavior.
 
