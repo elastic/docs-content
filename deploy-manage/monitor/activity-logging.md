@@ -1,7 +1,6 @@
 ---
 applies_to:
-  serverless:
-  stack:
+  stack: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -13,16 +12,24 @@ products:
 ---
 # Activity logging
 
-Activity logging gives you visibility into what's happening in your Elastic environment. Use it to track security events, monitor query performance, and identify slow operations.
+Activity logging records actions taken by users and systems in your Elastic environment, such as authentication events, search queries, and configuration changes. Use these logs for security auditing, compliance, debugging, and performance investigation.
+
+:::{admonition} Looking for application and component logging? 
+You can enable {{es}} and {{kib}} logging features to gain insight into {{stack}} operations and diagnose issues. To configure these logs, refer to [](/deploy-manage/monitor/logging-configuration.md).
+:::
 
 ## Audit logging
 
 Audit logging tracks security-related events such as authentication attempts, authorization decisions, and configuration changes.
 
-* [](./stack-audit-logging.md): Enable and configure audit logging for {{es}} and {{kib}} deployments.
-* [](./cloud-audit-trail.md): Audit organization-level actions in {{fedramp-mod}} environments, such as deployment management, API key usage, and sign-in activity.
+| Feature | Description | Availability |
+|---|---|---|
+| [](./stack-audit-logging.md) | Enable and configure audit logging for {{es}} and {{kib}} deployments. | {applies_to}`stack: ga` |
+| [](./cloud-audit-trail.md) | Audit organization-level actions such as deployment management, API key usage, and sign-in activity. | {applies_to}`ech: ga` {{fedramp-mod}} only |
 
 ## Query and performance logging
 
-* [](./logging-configuration/query-logs.md): Log every search, {{esql}}, SQL, or EQL query for analysis and debugging.
-* [](./logging-configuration/slow-logs.md): Identify slow queries and indexing operations.
+| Feature | Description | Availability |
+|---|---|---|
+| [](./logging-configuration/query-logs.md) | Log every search, {{esql}}, SQL, or EQL query for analysis and debugging. | {applies_to}`stack: ga` |
+| [](./logging-configuration/slow-logs.md) | Identify slow queries and indexing operations. | {applies_to}`stack: ga` |

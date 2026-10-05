@@ -1,10 +1,6 @@
 ---
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: ga
   serverless: unavailable
 products:
   - id: elasticsearch
@@ -14,7 +10,7 @@ products:
   - id: cloud-kubernetes
   - id: elastic-stack
 ---
-# Security event audit logging
+# Stack audit logging
 
 ::::{important}
 Audit logs are only available on certain [subscription levels](https://www.elastic.co/subscriptions).

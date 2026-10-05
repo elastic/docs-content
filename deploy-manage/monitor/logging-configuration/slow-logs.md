@@ -3,9 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html
 applies_to:
   stack: ga
+navigation_title: Slow query and index logging
 ---
 
-# Slow query and index logging
+# Slow query and index logging in {{es}}
 
 :::{note}
 :applies_to: {"stack": "preview 9.4", "serverless": "unavailable"}

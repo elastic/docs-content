@@ -8,12 +8,12 @@ products:
   - id: cloud-enterprise
   - id: cloud-hosted
 ---
-# Logging
+# Operational logging
 
-You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events.
+You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations and diagnose issues.
 
-:::{tip}
-In {{ecloud}} {{fedramp-mod}} environments, you can also audit organization-level actions such as deployment management, API key usage, and sign-in activity. Refer to [](/deploy-manage/monitor/cloud-audit-trail.md).
+:::{admonition} Looking for audit, query, or slow logs?
+To track security events, query activity, and other user actions, refer to [](/deploy-mange/monitor/activity-logging.md).
 :::
 
 The following logging features are available:
@@ -23,18 +23,13 @@ The following logging features are available:
 * **Application and component logging**: Logs messages related to running {{es}}.
 
   You can [configure the log level for {{es}}](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md), and, in self-managed clusters, [configure underlying Log4j settings](/deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md) to customize logging behavior.
-* {applies_to}`stack: preview 9.4` {applies_to}`serverless: unavailable` [Query logging](/deploy-manage/monitor/logging-configuration/query-logs.md): Logs every search, {{esql}}, SQL or EQL query.
 * [Deprecation logging](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md): Deprecation logs record a message to the {{es}} log directory when you use deprecated {{es}} functionality. You can use the deprecation logs to update your application before upgrading {{es}} to a new major version.
-* [Audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md): Logs security-related events on your deployment.
-* [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md): Helps find and debug slow queries and indexing.
 
 ## For {{kib}} [extra-logging-features-kibana]
 
-* **Application and component logging**: Logs messages related to running {{kib}}.
+Use Application and component logging to log messages related to running {{kib}}.
 
-  You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed, ECE, or ECK deployments, [configure advanced settings](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md) to customize logging behavior.
-
-* [Audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md): Logs security-related events on your deployment.
+You can [configure the log level for {{kib}}](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md), and, in self-managed, ECE, or ECK deployments, [configure advanced settings](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md) to customize logging behavior.
 
 ## Access {{kib}} and {{es}} logs
 
