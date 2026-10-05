@@ -17,7 +17,7 @@ products:
 :::{include} context-engine/_snippets/hidden-docs-notice.md
 :::
 
-{{context-engine}} enables you to distill raw source data into context optimized for retrieval by agents and applications. This upfront investment reduces repeated source data scanning and interpretation, helping agents respond faster and use fewer model tokens. When you connect agent traces, you can use evidence from real agent behavior to create a continuous improvement loop: identify gaps, refine automations, and regenerate better context.
+{{context-engine}} enables you to distill raw source data into context optimized for retrieval by agents and applications. This upfront investment reduces repeated source data scanning and interpretation, helping agents respond faster and use fewer model tokens. When you connect agent traces, you can use evidence from real agent behavior to create a continuous improvement loop: identify gaps, refine automations, and generate improved context.
 
 ## {{context-engine}} use cases
 
