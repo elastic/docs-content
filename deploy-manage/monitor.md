@@ -131,5 +131,5 @@ You can configure several types of logs in {{stack}} that can help you to gain i
 
 Audit logging helps you track who did what in your Elastic environment.
 
-* To audit {{es}} and {{kib}} activity within a deployment, enable [](/deploy-manage/security/logging-configuration/security-event-audit-logging.md).
-* In {{fedramp-mod}} environments, you can also audit organization-level actions such as deployment management, API key usage, and sign-in activity. Refer to [](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md).
+* To audit {{es}} and {{kib}} activity within a deployment, enable [](/deploy-manage/monitor/stack-audit-logging.md).
+* In {{fedramp-mod}} environments, you can also audit organization-level actions such as deployment management, API key usage, and sign-in activity. Refer to [](/deploy-manage/monitor/cloud-audit-trail.md).

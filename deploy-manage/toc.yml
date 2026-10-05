@@ -549,15 +549,6 @@ toc:
             children:
               - file: security/k8s-secure-settings.md
           - file: security/secure-saved-objects.md
-          - file: security/logging-configuration/security-event-audit-logging.md
-            children:
-              - file: security/logging-configuration/enabling-audit-logs.md
-              - file: security/logging-configuration/configuring-audit-logs.md
-                children:
-                  - file: security/logging-configuration/logfile-audit-events-ignore-policies.md
-                  - file: security/logging-configuration/logfile-audit-output.md
-              - file: security/logging-configuration/auditing-search-queries.md
-              - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
       - file: security/secure-clients-integrations.md
       - file: security/httprest-clients-security.md
       - file: security/limitations.md
@@ -811,22 +802,33 @@ toc:
               - file: monitor/orchestrators/ece-monitoring-ece-access.md
               - file: monitor/orchestrators/ece-proxy-log-fields.md
               - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
+      - file: monitor/activity-logging.md
+        children:
+          - file: monitor/stack-audit-logging.md
+            children:
+              - file: monitor/stack-audit-logging/enabling-audit-logs.md
+              - file: monitor/stack-audit-logging/configuring-audit-logs.md
+                children:
+                  - file: monitor/stack-audit-logging/logfile-audit-events-ignore-policies.md
+                  - file: monitor/stack-audit-logging/logfile-audit-output.md
+              - file: monitor/stack-audit-logging/auditing-search-queries.md
+              - file: monitor/stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md
+          - file: monitor/logging-configuration/query-logs.md
+          - file: monitor/logging-configuration/slow-logs.md
+          - file: monitor/cloud-audit-trail.md
+          - hidden: monitor/log-delivery.md
+          - hidden: monitor/log-delivery/audit-trail.md
       - file: monitor/logging-configuration.md
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
           - file: monitor/logging-configuration/update-elasticsearch-logging-levels.md
-          - file: monitor/logging-configuration/query-logs.md
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
-          - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
               - file: monitor/logging-configuration/kibana-log-levels.md
               - file: monitor/logging-configuration/kib-advanced-logging.md
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
-      - hidden: monitor/log-delivery.md
-      - hidden: monitor/log-delivery/audit-trail.md
-      - file: monitor/log-delivery/cloud-audit-trail.md
   - file: kibana-reporting-configuration.md
   - file: kibana-custom-branding.md
   - file: cloud-organization.md
