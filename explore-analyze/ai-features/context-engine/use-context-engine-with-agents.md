@@ -1,5 +1,5 @@
 ---
-navigation_title: "Use Context Engine with agents"
+navigation_title: "Use with agents"
 description: Learn how agents and applications retrieve Knowledge Indicators from AI indices and use them to answer questions or find current source data.
 type: overview
 applies_to:
@@ -19,7 +19,7 @@ products:
 
 Agents use {{context-engine}} to retrieve reusable context from [AI indices](concepts.md#ai-indices) before spending time and model tokens interpreting source data. A [Knowledge Indicator (KI)](concepts.md#knowledge-indicators) can answer a question directly or give the agent tested guidance for finding current details in the source.
 
-You can use {{context-engine}} with an {{agent-builder}} agent, an agent built with another framework, or an application that calls the APIs directly.
+You can use {{context-engine}} with an {{agent-builder}} agent, an agent built with another framework, or an application that calls the [{{context-engine}} APIs](context-engine-api.md) directly.
 
 ## How retrieval works
 
@@ -40,7 +40,7 @@ Choose the integration that matches where you build and run the agent:
 | Approach | Use it when | How the agent or application accesses {{context-engine}} |
 |---|---|---|
 | [{{agent-builder}}](use-context-engine-with-agent-builder.md) | You want to build and run the agent in {{kib}}. | Assign one or more AI indices to the agent. {{agent-builder}} adds the {{context-engine}} retrieval tools and describes the assigned indices in the agent's instructions. |
-| [LangChain](langchain-integration.md) | You are building an agent with LangChain or LangGraph. | Load the {{context-engine}} tools through the {{agent-builder}} MCP server, or wrap the {{context-engine}} APIs as LangChain tools. |
+| [LangChain](langchain-integration.md) | You are building an agent with LangChain or LangGraph. | Wrap the {{context-engine}} APIs as LangChain tools in your application. |
 
 Both approaches list and describe AI indices before querying them. The agent only discovers AI indices that its credentials can read in the current {{kib}} space.
 

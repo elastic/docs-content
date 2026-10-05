@@ -12,9 +12,9 @@ products:
 
 # Connect your ECE, ECK, or self-managed cluster to AutoOps
 
-To use AutoOps with your ECE, ECK, or self-managed {{es}} cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your ECE, ECK, or self-managed cluster through [Cloud Connect](/deploy-manage/cloud-connect.md), you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}. The connection process takes about 10 minutes.
 
-The connection process takes about 10 minutes.
+Cloud Connect is not available in [FedRAMP authorized Cloud offerings](/deploy-manage/deploy/elastic-cloud/fedramp.md).
 
 :::{note}
 If you have an {{es}} cluster set up for local development or testing, you can connect it to AutoOps using Docker. Refer to [](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).

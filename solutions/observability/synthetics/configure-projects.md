@@ -189,6 +189,10 @@ playwrightOptions: {
 
 To use a timezone and/or locale for a *specific* monitor, add these options to a journey using [`monitor.use`](/solutions/observability/synthetics/configure-individual-browser-monitors.md).
 
+:::{note}
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` In a [scalable {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable), a monitor can run on any {{agent}} enrolled on the location's agent policy, and it can move between agents. To keep the timezone consistent, set the same timezone on every agent's host, or set `timezoneId` as described in this section.
+:::
+
 ### Device emulation [synthetics-config-device-emulation]
 
 Users can emulate a mobile device using the configuration file. The example configuration below runs tests in "Pixel 5" emulation mode.

@@ -30,7 +30,7 @@ In this tutorial, you learn how to:
 
 * download and run Ollama,
 * use ngrok to expose your local web server hosting Ollama over the internet
-* connect your local LLM to Playground
+* connect your local LLM to Agent Builder
 
 ## Download and run Ollama
 
@@ -111,14 +111,12 @@ Exposing a local endpoint to the internet can introduce security risks. Anyone w
    ```
    The response should be similar to the previous one.
 
-## Connecting the local LLM to Playground
+## Connect the local LLM to Agent Builder
+{applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga`
 
-::::{note}
-Playground has been deprecated as of version 9.4, but the connector setup procedure described here applies to [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) and other LLM use cases in Elastic.
-::::
+You can connect your locally hosted LLM to Elastic using the [OpenAI connector](kibana://reference/connectors-kibana/openai-action-type.md), provided that your model is compatible with the OpenAI API format.
 
-:::{include} /solutions/_snippets/connect-local-llm-to-playground.md
-:::
+To use the model with Agent Builder, follow the [local LLM setup guidance](/explore-analyze/ai-features/agent-builder/models.md#connect-a-local-llm).
 
 ## Using the local LLM with the {{infer}} API
 

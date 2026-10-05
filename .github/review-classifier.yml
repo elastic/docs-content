@@ -1,0 +1,31 @@
+# Rules for the review classifier (elastic/docs-actions review-classifier).
+# Reference and defaults: https://github.com/elastic/docs-actions/tree/main/review-classifier
+# The classifier reads this file from main. To test a change, push it to a branch and run
+# the "Review classification" workflow from that branch in dry-run mode.
+
+# Files that docs-builder excludes from the docset (docset.yml, exclude:).
+skip-paths: [README.md, AGENTS.md, AI.md, CLAUDE.md, GEMINI.md, 'changelog/**', 'releases/**']
+
+vale:
+  enabled: true
+  max-findings: 10
+
+# The values follow elastic/docs-content-internal#1943.
+triggers:
+  new-page: true
+  page-deleted: true
+  redirect-added: true
+  large-scope:
+    max-files: 5
+  images-changed:
+    min-images: 3
+  shared-snippet:
+    scope: top-level
+  substantial-change:
+    headings: true
+    thresholds: ['199:20', '500:10', '5']
+  applies-to-modified: true
+  external-link-added:
+    allowed-hosts: [elastic.co, '*.elastic.co', github.com/elastic]
+
+custom: []
