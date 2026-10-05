@@ -1385,3 +1385,6 @@ redirects:
 
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
+
+  # Related to https://github.com/elastic/platform-docs-team/issues/581
+  'explore-analyze/visualize/manage-panels.md': 'explore-analyze/visualize/visualize-library.md'

@@ -33,10 +33,6 @@ The following panel types support Discover drilldowns:
 
     On {{esql}} panels, {{kib}} turns the dashboard filters and the dashboard KQL or Lucene query into a `WHERE` clause in the panel's ES|QL query. **Discover** then uses that same context. {{kib}} drops a filter when ES|QL cannot express it. The **Explore in Discover** panel action applies the same translation.
 
-::::{tip}
-You can [open a visualization panel in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
-::::
-
 A drilldown is compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements).
 
 ## Create the drilldown [_create_the_discover_drilldown]
