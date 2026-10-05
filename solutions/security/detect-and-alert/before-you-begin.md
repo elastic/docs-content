@@ -18,7 +18,7 @@ Before you can create and run detection rules, turn on detections and make sure 
 These tasks are typically completed once when you first configure detection capabilities:
 
 - [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md): Enable the Detections feature for your deployment type. On {{serverless-short}}, detections are on by default.
-- [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md): Give users the cluster, index, and {{kib}} privileges they need for detection features. This page is part of [Access control](/solutions/security/manage/access-control.md), where you can return to it as your team changes.
+- [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md): Give users the cluster, index, and {{kib}} privileges they need for detection features. When your team changes, review these privileges again in [Access control](/solutions/security/manage/access-control.md).
 
 ## Related configuration
 

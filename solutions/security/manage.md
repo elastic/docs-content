@@ -12,7 +12,7 @@ products:
 
 # Manage {{elastic-sec}}
 
-Manage covers the administration you return to after setup, such as tuning policies, managing exceptions, and controlling who can use each feature. For one-time deployment tasks, refer to [Set up](/solutions/security/set-up.md).
+Keep {{elastic-sec}} running after setup. Tune policies, manage exceptions, and control who can use each feature. For one-time deployment tasks, refer to [Set up](/solutions/security/set-up.md).
 
 - [Manage {{elastic-defend}}](/solutions/security/manage-elastic-defend.md): Manage endpoints, policies, exceptions, and agents.
 - [Manage cloud workload protection](/solutions/security/manage/manage-cloud-workload-protection.md): Configure runtime protection for Linux VMs and Kubernetes workloads.

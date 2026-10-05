@@ -15,7 +15,7 @@ products:
 
 Elastic Security for Cloud helps you improve your cloud security posture by comparing your cloud configuration to best practices, and scanning for vulnerabilities.
 
-This page describes what each posture feature does and provides links to more information. To set up these features, refer to [Set up cloud security](/solutions/security/set-up/set-up-cloud-security.md).
+To set up these features, refer to [Set up cloud security](/solutions/security/set-up/set-up-cloud-security.md).
 
 
 ## Cloud Security Posture Management (CSPM) [_cloud_security_posture_management_cspm]

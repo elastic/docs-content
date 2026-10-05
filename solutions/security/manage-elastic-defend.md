@@ -37,7 +37,7 @@ The [Endpoints](/solutions/security/manage-elastic-defend/endpoints.md) page sho
 
 The [Policies](/solutions/security/manage-elastic-defend/policies.md) page lists all {{elastic-defend}} integration policies. From here, you can open a policy to adjust its protection levels, event collection settings, and advanced options.
 
-To configure those settings, refer to [Configure an integration policy for {{elastic-defend}}](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md). Related pages cover specific policy tasks:
+To configure those settings, refer to [Configure an integration policy for {{elastic-defend}}](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md). To change a specific part of a policy, refer to:
 
 - [Configure updates for protection artifacts](/solutions/security/configure-elastic-defend/configure-updates-for-protection-artifacts.md): Control how {{elastic-defend}} receives the latest threat detections, malware models, and other protection artifacts.
 - [Configure Linux file system monitoring](/solutions/security/configure-elastic-defend/configure-linux-file-system-monitoring.md): Set which file systems {{elastic-defend}} monitors on Linux hosts.

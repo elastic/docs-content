@@ -27,9 +27,9 @@ Set up the {{elastic-sec}} features that assess your cloud posture. After setup,
 ## Cloud Asset Discovery
 
 ```{applies_to}
-stack: preview 9.1
 serverless:
   security: preview
+stack: preview 9.1
 ```
 
 - [Set up Cloud Asset Discovery for AWS](/solutions/security/cloud/asset-disc-aws.md)

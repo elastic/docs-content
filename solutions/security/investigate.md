@@ -19,6 +19,8 @@ When {{elastic-sec}}'s [detection engine](/solutions/security/detect-and-alert.m
 
 Together, these tools let you move from a single alert to a complete picture of an incident without leaving {{kib}}. You can correlate events across data sources in [Timeline](/solutions/security/investigate/timeline.md), trace process execution chains with the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md), inspect running hosts with [Osquery](/solutions/security/investigate/osquery.md), and document findings in [cases](/solutions/security/investigate/security-cases.md) and [notes](/solutions/security/investigate/notes.md). [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) can help you interpret alerts, generate queries, and suggest next steps throughout your investigations.
 
+To act on what you find, such as isolating a host, refer to [Respond and contain](/solutions/security/respond-and-contain.md). To find where to start a hunt, review risk scores and findings in [Hunt and assess posture](/solutions/security/hunt-and-assess-posture.md).
+
 ## Where to start [investigation-where-to-start]
 
 | Your goal | Start here |

@@ -11,7 +11,7 @@ products:
 
 # Manage cloud workload protection
 
-Cloud workload protection detects and blocks threats on your cloud compute while it runs. Use these pages to configure protection after you deploy it. To deploy it, refer to [Set up](/solutions/security/set-up.md).
+Configure the runtime protection that detects and blocks threats on your Linux VMs and Kubernetes workloads. To deploy it first, refer to [Set up](/solutions/security/set-up.md). To review cloud configuration findings and benchmarks instead, refer to [Cloud Security](/solutions/security/cloud.md).
 
 ## Linux VMs
 
@@ -23,9 +23,9 @@ Cloud workload protection for VMs uses {{elastic-defend}} to detect and prevent 
 ## Kubernetes
 
 ```{applies_to}
-stack: beta 9.3
 serverless:
   security: beta
+stack: beta 9.3
 ```
 
 Cloud workload protection for Kubernetes uses the Defend for Containers (D4C) integration to identify, and optionally block, unexpected system behavior in Kubernetes containers.

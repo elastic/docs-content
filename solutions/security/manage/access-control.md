@@ -11,7 +11,7 @@ products:
 
 # Access control
 
-Each {{elastic-sec}} feature has its own privileges. Use these pages to give users the access they need, and return to them when your team or its responsibilities change.
+Give users the access they need for each {{elastic-sec}} feature. Each feature has its own privileges, so review them again when your team or its responsibilities change.
 
 - [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md)
 - [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md)
