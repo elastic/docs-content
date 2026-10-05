@@ -331,7 +331,7 @@ The following response indicates a successful operation.
 
 Explicit mappings are defined at index creation, and documents must conform to these mappings.
 You can also use the [update mapping API]({{es-apis}}operation/operation-indices-put-mapping).
-When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping, which allows you to combine explicit and dynamic mappings.
+When an index has the `dynamic` flag set to `true`, the mapping updates dynamically when you add new fields to documents, which allows you to combine explicit and dynamic mappings.
 Learn more about [managing and updating mappings](/manage-data/data-store/mapping.md#mapping-manage-update).
 ::::
 :::::
@@ -482,5 +482,4 @@ The following resources will help you understand {{es}} concepts better and dive
 * [Fundamentals of Elasticsearch](/manage-data/data-store.md)
 * [Search and filter with Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
 * [Search using ES|QL](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md)
-
 

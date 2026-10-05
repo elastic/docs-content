@@ -250,7 +250,7 @@ Smaller or "mini" model variants are not recommended for {{agent-builder}} as th
 - [External {{infer}}](/explore-analyze/elastic-inference/external.md)
 - [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md)
 - [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
-- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
+- [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md)
 - [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
 - [Limitations and known issues](limitations-known-issues.md)
 - [Get started](get-started.md)

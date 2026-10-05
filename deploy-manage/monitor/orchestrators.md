@@ -18,7 +18,9 @@ In this section, you'll learn how to enable monitoring of your orchestrator.
 * [ECE platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md): Learn about how ECE collects monitoring data for your installation in the `logging-and-metrics` deployment, and how to access monitoring data.
 
 :::{admonition} Monitoring {{ecloud}}
-Elastic monitors {{ecloud}} service metrics and performance as part of [our shared responsibility](https://www.elastic.co/cloud/shared-responsibility). We provide service availability information on our [service status page](/deploy-manage/cloud-organization/service-status.md).
+Elastic monitors {{ecloud}} service metrics and performance as part of [our shared responsibility](https://www.elastic.co/cloud/shared-responsibility). We provide service availability information on our [service status page](/deploy-manage/cloud-organization/service-status.md). 
+
+In {{fedramp-mod}} environments, you can also audit organization-level actions. Refer to [](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md).
 :::
 
 :::{note}
