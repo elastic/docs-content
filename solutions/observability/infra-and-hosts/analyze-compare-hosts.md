@@ -329,12 +329,7 @@ To learn more about roles, refer to [Assign user roles and privileges](/deploy-m
 
 ::::
 
-
-::::{important}
 You must have an active [{{agent}}](/reference/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration.
-
-::::
-
 
 The **Osquery** tab allows you to build SQL statements to query your host data. You can create and run live or saved queries against the {{agent}}. Osquery results are stored in {{es}} so that you can use the {{stack}} to search, analyze, and visualize your host metrics. To create saved queries and add scheduled query groups, refer to [Osquery](/solutions/security/investigate/osquery.md).
 
