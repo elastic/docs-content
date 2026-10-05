@@ -1,5 +1,5 @@
 ---
-navigation_title: "Evaluate and improve KIs"
+navigation_title: "Evaluate KIs"
 description: Inspect Knowledge Indicator content, provenance, freshness, and retrieval behavior, then refine the automation that generates it.
 type: how-to
 applies_to:
@@ -21,11 +21,15 @@ A useful Knowledge Indicator (KI) gives an agent accurate, relevant context with
 
 ## Before you begin
 
-You need an AI index that contains at least one generated KI. To create one and review the required access, follow [Get started with {{context-engine}}](quickstart.md).
+You need an AI index that contains at least one generated KI, the **Read** privilege for the **Context Engine** feature, and the `read` and `view_index_metadata` index privileges on its backing index (`ai-index-*`). To refine an AI index's sources or automations, you need the **All** privilege for the **Context Engine** feature. To create an AI index and generate a KI, follow [Get started with {{context-engine}}](quickstart.md).
 
 You can inspect and test KIs in a [managed AI index](concepts.md#managed-ai-indices), but you cannot refine its sources or automations. The owning Elastic integration maintains that configuration.
 
-## Open a Knowledge Indicator
+## Inspect Knowledge Indicators
+
+Inspect KIs interactively in {{kib}}, or query them programmatically when you are evaluating an automated integration.
+
+### Use the UI
 
 Follow these steps to inspect a generated KI:
 
@@ -34,6 +38,12 @@ Follow these steps to inspect a generated KI:
 3. Select the **Knowledge Indicators** tab.
 4. If the AI index contains several KI types, filter the list by type.
 5. Select a KI to expand its JSON document.
+
+### Use the API
+
+Use the [list AI indices API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-context-engine-ai-index) to find the AI index and its {{esql}} query target. You can also use the [describe AI index API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-context-engine-ai-index-aiindexid-describe) to inspect its fields, KI types, tags, and example queries.
+
+Run an {{esql}} query with the [query AI indices API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-context-engine-ai-index-query) to retrieve the KI or set of KIs you want to evaluate. Filter by fields such as `id`, `type`, or `tags`, and return the content, metadata, and provenance fields needed for the review.
 
 ## Review the KI document
 
@@ -104,11 +114,11 @@ Syntax and runtime verification show that a generated query parses and runs. The
 
 ## Check refresh behavior
 
-Follow these steps to verify that later automation runs update the intended KI:
+Use {{kib}} or the APIs to verify that later automation runs update the intended KI:
 
 1. Record the KI's `id`, `updated_at`, and provenance run ID.
-2. Run its automation again.
-3. Return to the **Knowledge Indicators** tab and open the KI.
+2. Run its automation again from the Workflows UI or with the [run workflow API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-workflows-workflow-id-run).
+3. Open the KI from the **Knowledge Indicators** tab, or retrieve it again with the query AI indices API.
 4. Confirm that the automation updated the KI with the same `id` instead of creating an unintended duplicate.
 5. Confirm that `updated_at`, provenance, and any source-dependent content reflect the latest run.
 
@@ -116,12 +126,14 @@ If the automation intentionally creates one KI per event or source document, mul
 
 ## Test how an agent uses the KI
 
-After you make the AI index available to an {{agent-builder}} agent:
+After you make the AI index available to an agent or application:
 
 1. Ask a question the KI can answer from its generated content.
 2. Ask a question that requires current details from the source.
-3. Inspect the reasoning and tool calls shown with each response. If trace collection is available, you can also [view the trace for the conversation round](/explore-analyze/ai-features/agent-builder/chat.md#view-traces).
+3. Inspect the retrieval, source queries, and other tool calls made for each response.
 4. Confirm that the agent retrieves the relevant KI, answers from it when appropriate, and queries the source only when it needs additional detail.
+
+With {{agent-builder}}, inspect the reasoning and tool calls shown with each response. If trace collection is available, you can also [view the trace for the conversation round](/explore-analyze/ai-features/agent-builder/chat.md#view-traces). For another agent framework or an application, inspect the equivalent client logs, traces, and API requests. Refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md) for the available integration routes.
 
 This test shows whether the KI reduces repeated source exploration. If the agent ignores the KI, retrieves an unrelated KI, or still performs broad source exploration, revise the AI index description, KI content and tags, source selection, or automation instructions.
 

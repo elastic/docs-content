@@ -1,5 +1,5 @@
 ---
-navigation_title: "Use Context Engine with agents"
+navigation_title: "Use with agents"
 description: Learn how agents and applications retrieve Knowledge Indicators from AI indices and use them to answer questions or find current source data.
 type: overview
 applies_to:
@@ -19,7 +19,7 @@ products:
 
 Agents use {{context-engine}} to retrieve reusable context from [AI indices](concepts.md#ai-indices) before spending time and model tokens interpreting source data. A [Knowledge Indicator (KI)](concepts.md#knowledge-indicators) can answer a question directly or give the agent tested guidance for finding current details in the source.
 
-You can use {{context-engine}} with an {{agent-builder}} agent, an agent built with another framework, or an application that calls the APIs directly.
+You can use {{context-engine}} with an {{agent-builder}} agent, an agent built with another framework, or an application that calls the [{{context-engine}} APIs](context-engine-api.md) directly.
 
 ## How retrieval works
 
