@@ -48,7 +48,6 @@ steps:
 
 :::{link-card}
 title: Plugins
-link: logstash-docs-md://lsr/input-plugins.md
 links:
   - label: Input plugins
     url: logstash-docs-md://lsr/input-plugins.md
@@ -60,7 +59,6 @@ links:
 
 :::{link-card}
 title: Grok parsing
-link: logstash-docs-md://lsr/plugins-filters-grok.md
 links:
   - label: Grok filter plugin
     url: logstash-docs-md://lsr/plugins-filters-grok.md
