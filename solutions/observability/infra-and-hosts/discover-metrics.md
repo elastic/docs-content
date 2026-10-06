@@ -31,7 +31,9 @@ To visualize your metrics data as charts:
   - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
   - The metric must be a time series metric. Gauge, counter, and histogram metrics are supported.
 
-    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Histogram metrics are charted using the 95th percentile by default, and support the [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md) and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md) field types. Metrics stored as the legacy [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) field type are also charted, but their percentiles are calculated assuming T-Digest encoding, so the chart shows a warning that the values might be approximate if the histogram was encoded differently.
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Histogram metrics are charted using the 95th percentile by default. Supported field types are [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md) and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md).
+
+    Metrics stored as the legacy [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) field type are also charted, but their percentiles are calculated assuming T-Digest encoding. If the histogram was encoded differently, the chart shows a warning that the values might be approximate.
 
 The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from Discover.
 
@@ -79,7 +81,9 @@ Use the search function to find and visualize specific metric data:
 
 Break down your metrics by dimensions to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` You can break down by up to five dimensions at a time. Each chart shows a separate line for every combination of the selected dimension values. The **Dimensions** control displays a badge with the number of dimensions you've selected, and you can select **Clear selection** to deselect them all. When you reach five, a message tells you that the maximum is selected, and you must deselect a dimension before you can add another.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` You can break down by up to five dimensions at a time. Each chart shows a separate line for every combination of the selected dimension values.
+
+The **Dimensions** control shows a badge with the number of selected dimensions. Select **Clear selection** to deselect them all. If you select five dimensions, you must deselect a dimension before you can add another.
 
 :::{note}
 Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If an expected dimension is missing, verify that the field is mapped as a `time_series_dimension` in your 
