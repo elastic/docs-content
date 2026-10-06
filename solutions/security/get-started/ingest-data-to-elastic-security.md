@@ -43,7 +43,7 @@ Most of the other methods in the [ingestion method table](#security-ingest-selec
 Before you add an integration, decide how it collects data. Integrations collect data in one of two ways:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` **{{managed-integrations}}:** Elastic runs the collector for you, so there's nothing to install or maintain. You connect to the source with credentials such as an API key. They're available on {{serverless-full}} projects and {{ech}} deployments. To learn more, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
-- **Integrations that use {{agent}}:** You install [{{agent}}](/reference/fleet/index.md) on the hosts you want to collect data from, and manage it with {{fleet}}. On self-managed deployments, you also deploy a [{{fleet-server}}](/reference/fleet/fleet-server.md) to connect {{agent}} to {{fleet}}.
+- **Integrations that use {{agent}}:** [{{agent}}](/reference/fleet/index.md) runs on hosts in your environment and collects the data, and you manage it with {{fleet}}. If you haven't set up {{agent}} yet, refer to [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md).
 
 ### Find and add an integration [security-ingest-add-integration]
 
@@ -97,7 +97,7 @@ Whichever method you use, confirm that your data reaches {{elastic-sec}}:
 
 - Search for the data in [Discover](/solutions/security/investigate/discover-security.md).
 - If you used an integration, open a dashboard that it installed. To find one, go to **Dashboards** and search for the integration's name.
-- Check that the data's fields map correctly to ECS on the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md).
+- Check that the fields in your data map correctly to ECS on the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md).
 
 If the data appears in Discover but not on {{elastic-sec}} pages, check that its indices are part of your [{{data-source}}](/solutions/security/get-started/data-views-elastic-security.md).
 
