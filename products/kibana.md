@@ -522,15 +522,6 @@ links:
 :::
 
 :::{link-card}
-title: Set up self-managed
-links:
-  - label: Configure (kibana.yml)
-    url: /deploy-manage/deploy/self-managed/configure-kibana.md
-  - label: Access Kibana
-    url: /deploy-manage/deploy/self-managed/access-kibana.md
-:::
-
-:::{link-card}
 title: Configuration and settings
 links:
   - label: Configuration reference
