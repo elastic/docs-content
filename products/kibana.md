@@ -137,6 +137,8 @@ links:
 :::{link-card}
 title: Find your way around
 links:
+  - label: Explore and analyze
+    url: /explore-analyze/index.md
   - label: The Kibana interface
     url: /explore-analyze/find-and-organize/kibana-interface.md
   - label: Find apps and objects
@@ -162,7 +164,9 @@ links:
   - label: Kibana API
     url: https://www.elastic.co/docs/api/doc/kibana
   - label: Serverless Kibana API
-    url: https://www.elastic.co/docs/api/doc/serverless-kibana
+    url: https://www.elastic.co/docs/api/doc/serverless
+  - label: Agent Builder MCP API
+    url: https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-mcp
 :::
 
 :::{link-card}
@@ -174,120 +178,19 @@ links:
     url: kibana://reference/advanced-settings.md
   - label: Security settings
     url: kibana://reference/configuration-reference/security-settings.md
+  - label: Command line tools
+    url: kibana://reference/commands.md
 :::
 ::::
+:::::
+
+:::::{explore}
+:id: use-kibana
+:title: Use Kibana
+:intro: Explore and visualize your data, query it, set up alerts, and work with AI features.
 
 ::::{card-group}
-:title: Deploy and manage
-:id: deploy
-
-:::{link-card}
-title: Managed on Elastic Cloud
-links:
-  - label: Create a Cloud Hosted deployment
-    url: /deploy-manage/deploy/elastic-cloud/cloud-hosted.md
-  - label: Access Kibana on Cloud Hosted
-    url: /deploy-manage/deploy/elastic-cloud/access-kibana.md
-  - label: Serverless
-    url: /deploy-manage/deploy/elastic-cloud/serverless.md
-:::
-
-:::{link-card}
-title: Self-orchestrated
-links:
-  - label: Elastic Cloud on Kubernetes (ECK)
-    url: /deploy-manage/deploy/cloud-on-k8s.md
-  - label: Kibana on ECK
-    url: /deploy-manage/deploy/cloud-on-k8s/kibana-configuration.md
-  - label: Elastic Cloud Enterprise (ECE)
-    url: /deploy-manage/deploy/cloud-enterprise.md
-  - label: Access Kibana on ECE
-    url: /deploy-manage/deploy/cloud-enterprise/access-kibana.md
-:::
-
-:::{link-card}
-title: Self-managed
-links:
-  - label: Install Kibana
-    url: /deploy-manage/deploy/self-managed/install-kibana.md
-  - label: Docker
-    url: /deploy-manage/deploy/self-managed/install-kibana-with-docker.md
-  - label: Configure (kibana.yml)
-    url: /deploy-manage/deploy/self-managed/configure-kibana.md
-:::
-
-:::{link-card}
-title: Maintain and monitor
-links:
-  - label: Run in production
-    url: /deploy-manage/production-guidance/kibana-in-production-environments.md
-  - label: Upgrade Kibana
-    url: /deploy-manage/upgrade/deployment-or-cluster.md
-  - label: Logging
-    url: /deploy-manage/monitor/logging-configuration/kibana-logging.md
-:::
-::::
-
-::::{card-group}
-:title: Manage data and Kibana
-:id: stack-management
-
-:::{link-card}
-title: Data and indices
-links:
-  - label: Index management
-    url: /manage-data/data-store/perform-index-operations.md
-  - label: Data streams
-    url: /manage-data/data-store/data-streams/manage-data-stream.md
-  - label: Transforms
-    url: /explore-analyze/transforms/transform-setup.md
-:::
-
-:::{link-card}
-title: Integrations and Fleet
-links:
-  - label: Integrations
-    url: /reference/fleet/manage-integrations.md
-  - label: Fleet
-    url: /reference/fleet/index.md
-  - label: Manage agents
-    url: /reference/fleet/manage-elastic-agents-in-fleet.md
-:::
-
-:::{link-card}
-title: Stack Monitoring
-links:
-  - label: Kibana monitoring data
-    url: /deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md
-  - label: Configure Stack Monitoring
-    url: /deploy-manage/monitor/stack-monitoring.md
-  - label: Stack monitoring alerts
-    url: /deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md
-:::
-
-:::{link-card}
-title: AutoOps
-links:
-  - label: AutoOps overview
-    url: /deploy-manage/monitor/autoops.md
-  - label: Compare with Stack Monitoring
-    url: /deploy-manage/monitor/autoops-vs-stack-monitoring.md
-:::
-
-:::{link-card}
-title: Spaces and saved objects
-links:
-  - label: Spaces
-    url: /deploy-manage/manage-spaces.md
-  - label: Manage saved objects
-    url: /explore-analyze/find-and-organize/saved-objects.md
-  - label: Tags
-    url: /explore-analyze/find-and-organize/tags.md
-:::
-::::
-
-::::{card-group}
-:title: Explore, visualize, and analyze
+:title: Explore, visualize, and analyze data
 :id: visualize
 
 :::{link-card}
@@ -312,12 +215,21 @@ links:
     url: /explore-analyze/dashboards.md
   - label: Get started with Dashboards
     url: /explore-analyze/dashboards/tutorials.md
+  - label: Create a dashboard
+    url: /explore-analyze/dashboards/create-dashboard.md
   - label: Ways to create a dashboard
     url: /explore-analyze/dashboards/building.md
-  - label: Add controls
-    url: /explore-analyze/visualize/dashboard-controls.md
   - label: Best practices
     url: /explore-analyze/dashboards/arrange-panels.md
+:::
+
+:::{link-card}
+title: Interact and share
+links:
+  - label: Add controls
+    url: /explore-analyze/visualize/dashboard-controls.md
+  - label: Drilldowns
+    url: /explore-analyze/dashboards/drilldowns.md
   - label: Reporting and sharing
     url: /explore-analyze/report-and-share.md
 :::
@@ -335,6 +247,8 @@ links:
     url: /explore-analyze/visualize/custom-visualizations-with-vega.md
   - label: Custom panels
     url: /explore-analyze/visualize/custom-panels.md
+  - label: Graph
+    url: /explore-analyze/visualize/graph.md
 :::
 
 :::{link-card}
@@ -354,8 +268,78 @@ links:
 ::::
 
 ::::{card-group}
+:title: Query data in Kibana
+:id: query-data
+
+:::{link-card}
+title: Query and filter
+links:
+  - label: Kibana Query Language (KQL)
+    url: /explore-analyze/query-filter/languages/kql.md
+  - label: KQL reference
+    url: elasticsearch://reference/query-languages/kql.md
+  - label: Lucene query syntax
+    url: /explore-analyze/query-filter/languages/lucene-query-syntax.md
+  - label: Query DSL
+    url: /explore-analyze/query-filter/languages/querydsl.md
+  - label: Elasticsearch SQL
+    url: /explore-analyze/query-filter/languages/sql.md
+  - label: Filter data
+    url: /explore-analyze/query-filter/filtering.md
+:::
+
+:::{link-card}
+title: ES|QL
+links:
+  - label: ES|QL in Kibana
+    url: /explore-analyze/query-filter/languages/esql-kibana.md
+  - label: ES|QL reference
+    url: elasticsearch://reference/query-languages/esql.md
+  - label: Functions and operators
+    url: elasticsearch://reference/query-languages/esql/esql-functions-operators.md
+:::
+
+:::{link-card}
+title: Developer tools
+links:
+  - label: Query tools
+    url: /explore-analyze/query-filter/tools.md
+  - label: Console
+    url: /explore-analyze/query-filter/tools/console.md
+  - label: Search Profiler
+    url: /explore-analyze/query-filter/tools/search-profiler.md
+  - label: Grok Debugger
+    url: /explore-analyze/query-filter/tools/grok-debugger.md
+  - label: Painless Lab
+    url: /explore-analyze/scripting/painless-lab.md
+:::
+
+:::{link-card}
+title: Search across clusters
+links:
+  - label: Cross-cluster search
+    url: /explore-analyze/cross-cluster-search.md
+  - label: Remote clusters
+    url: /deploy-manage/remote-clusters.md
+  - label: Cross-project search
+    url: /explore-analyze/cross-project-search.md
+  - label: Compare CCS and CPS
+    url: /explore-analyze/cross-project-search/cps-compared-to-ccs.md
+:::
+::::
+
+::::{card-group}
 :title: Alerting and incident response
 :id: alerting
+
+:::{link-card}
+title: Alerting systems
+links:
+  - label: Alerting overview
+    url: /explore-analyze/alerting.md
+  - label: Watcher
+    url: /explore-analyze/alerting/watcher.md
+:::
 
 :::{link-card}
 title: Kibana alerting
@@ -368,6 +352,8 @@ links:
     url: /explore-analyze/alerting/alerts/create-manage-rules.md
   - label: View alerts
     url: /explore-analyze/alerting/alerts/view-alerts.md
+  - label: Rule action variables
+    url: /explore-analyze/alerting/alerts/rule-action-variables.md
 :::
 
 :::{link-card}
@@ -394,12 +380,29 @@ links:
     url: kibana://reference/connectors-kibana/jira-action-type.md
   - label: PagerDuty
     url: kibana://reference/connectors-kibana/pagerduty-action-type.md
+  - label: Email
+    url: kibana://reference/connectors-kibana/email-action-type.md
+  - label: Microsoft Teams
+    url: kibana://reference/connectors-kibana/teams-action-type.md
 :::
 ::::
 
 ::::{card-group}
 :title: AI and Workflows
 :id: ai-automation
+
+:::{link-card}
+title: AI features
+links:
+  - label: AI-powered features
+    url: /explore-analyze/ai-features.md
+  - label: AI agent skills
+    url: /explore-analyze/ai-features/agent-skills.md
+  - label: Connect to LLMs
+    url: /explore-analyze/ai-features/llm-guides/llm-connectors.md
+  - label: Elastic Managed LLMs
+    url: kibana://reference/connectors-kibana/elastic-managed-llm.md
+:::
 
 :::{link-card}
 title: Agent Builder
@@ -410,8 +413,19 @@ links:
     url: /explore-analyze/ai-features/agent-builder/get-started.md
   - label: Agents
     url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
+  - label: Tools
+    url: /explore-analyze/ai-features/agent-builder/tools.md
   - label: Custom tools
     url: /explore-analyze/ai-features/agent-builder/tools/custom-tools.md
+:::
+
+:::{link-card}
+title: Models and MCP
+links:
+  - label: Models
+    url: /explore-analyze/ai-features/agent-builder/models.md
+  - label: MCP server
+    url: /explore-analyze/ai-features/agent-builder/mcp-server.md
 :::
 
 :::{link-card}
@@ -453,49 +467,176 @@ links:
     url: kibana://reference/connectors-kibana.md
 :::
 ::::
+:::::
+
+:::::{explore}
+:id: run-kibana
+:title: Set up and run Kibana
+:intro: Install Kibana, bring in data, manage the stack, and keep it secure.
 
 ::::{card-group}
-:title: Query data in Kibana
-:id: query-data
+:title: Install and deploy
+:id: deploy
 
 :::{link-card}
-title: Query languages
+title: Managed on Elastic Cloud
 links:
-  - label: Kibana Query Language (KQL)
-    url: /explore-analyze/query-filter/languages/kql.md
-  - label: ES|QL
-    url: /explore-analyze/query-filter/languages/esql-kibana.md
-  - label: Query DSL
-    url: /explore-analyze/query-filter/languages/querydsl.md
-  - label: Elasticsearch SQL
-    url: /explore-analyze/query-filter/languages/sql.md
+  - label: Create a Cloud Hosted deployment
+    url: /deploy-manage/deploy/elastic-cloud/cloud-hosted.md
+  - label: Access Kibana on Cloud Hosted
+    url: /deploy-manage/deploy/elastic-cloud/access-kibana.md
+  - label: Serverless
+    url: /deploy-manage/deploy/elastic-cloud/serverless.md
 :::
 
 :::{link-card}
-title: Developer tools
+title: Self-orchestrated
 links:
-  - label: Console
-    url: /explore-analyze/query-filter/tools/console.md
-  - label: Search Profiler
-    url: /explore-analyze/query-filter/tools/search-profiler.md
-  - label: Grok Debugger
-    url: /explore-analyze/query-filter/tools/grok-debugger.md
-  - label: Painless Lab
-    url: /explore-analyze/scripting/painless-lab.md
+  - label: Elastic Cloud on Kubernetes (ECK)
+    url: /deploy-manage/deploy/cloud-on-k8s.md
+  - label: Kibana on ECK
+    url: /deploy-manage/deploy/cloud-on-k8s/kibana-configuration.md
+  - label: Deploy Kibana on ECK
+    url: /deploy-manage/deploy/cloud-on-k8s/kibana-instance-quickstart.md
+  - label: Elastic Cloud Enterprise (ECE)
+    url: /deploy-manage/deploy/cloud-enterprise.md
+  - label: Access Kibana on ECE
+    url: /deploy-manage/deploy/cloud-enterprise/access-kibana.md
 :::
 
 :::{link-card}
-title: Search across clusters
+title: Install self-managed
 links:
-  - label: Cross-cluster search
-    url: /explore-analyze/cross-cluster-search.md
-  - label: Remote clusters
-    url: /deploy-manage/remote-clusters.md
-  - label: Cross-project search
-    url: /explore-analyze/cross-project-search.md
-  - label: Compare CCS and CPS
-    url: /explore-analyze/cross-project-search/cps-compared-to-ccs.md
+  - label: Install Kibana
+    url: /deploy-manage/deploy/self-managed/install-kibana.md
+  - label: Docker
+    url: /deploy-manage/deploy/self-managed/install-kibana-with-docker.md
+  - label: Windows
+    url: /deploy-manage/deploy/self-managed/install-kibana-on-windows.md
+  - label: Debian and Ubuntu
+    url: /deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md
+  - label: RPM
+    url: /deploy-manage/deploy/self-managed/install-kibana-with-rpm.md
+  - label: Linux and macOS archive
+    url: /deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md
 :::
+
+:::{link-card}
+title: Configuration and settings
+links:
+  - label: Configuration reference
+    url: kibana://reference/configuration-reference.md
+  - label: General
+    url: kibana://reference/configuration-reference/general-settings.md
+  - label: Alerting
+    url: kibana://reference/configuration-reference/alerting-settings.md
+  - label: Security
+    url: kibana://reference/configuration-reference/security-settings.md
+  - label: Advanced settings (UI)
+    url: kibana://reference/advanced-settings.md
+:::
+
+::::
+
+::::{card-group}
+:title: Get data in
+:id: get-data-in
+
+:::{link-card}
+title: Data and indices
+links:
+  - label: Index management
+    url: /manage-data/data-store/perform-index-operations.md
+  - label: Data streams
+    url: /manage-data/data-store/data-streams/manage-data-stream.md
+  - label: Transforms
+    url: /explore-analyze/transforms.md
+:::
+
+:::{link-card}
+title: Integrations and Fleet
+links:
+  - label: Integrations
+    url: /reference/fleet/manage-integrations.md
+  - label: Fleet
+    url: /reference/fleet/index.md
+  - label: Manage agents
+    url: /reference/fleet/manage-elastic-agents-in-fleet.md
+  - label: Agent policies
+    url: /reference/fleet/agent-policy.md
+:::
+
+:::{link-card}
+title: Elastic Agent
+links:
+  - label: Install Elastic Agent
+    url: /reference/fleet/install-elastic-agents.md
+  - label: Fleet Server
+    url: /reference/fleet/fleet-server.md
+  - label: Command reference
+    url: /reference/fleet/agent-command-reference.md
+:::
+
+::::
+
+::::{card-group}
+:title: Manage Kibana
+:id: manage-kibana
+
+:::{link-card}
+title: Monitor
+links:
+  - label: Kibana monitoring data
+    url: /deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md
+  - label: Configure Stack Monitoring
+    url: /deploy-manage/monitor/stack-monitoring.md
+  - label: Stack monitoring alerts
+    url: /deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md
+  - label: AutoOps overview
+    url: /deploy-manage/monitor/autoops.md
+  - label: Compare with Stack Monitoring
+    url: /deploy-manage/monitor/autoops-vs-stack-monitoring.md
+:::
+
+:::{link-card}
+title: Upgrade and maintain
+links:
+  - label: Run in production
+    url: /deploy-manage/production-guidance/kibana-in-production-environments.md
+  - label: Upgrade Kibana
+    url: /deploy-manage/upgrade/deployment-or-cluster.md
+  - label: Upgrade Assistant
+    url: /deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md
+  - label: Logging
+    url: /deploy-manage/monitor/logging-configuration/kibana-logging.md
+:::
+
+:::{link-card}
+title: Spaces, objects, and connectors
+links:
+  - label: Spaces
+    url: /deploy-manage/manage-spaces.md
+  - label: Manage saved objects
+    url: /explore-analyze/find-and-organize/saved-objects.md
+  - label: Tags
+    url: /explore-analyze/find-and-organize/tags.md
+  - label: Manage connectors
+    url: /deploy-manage/manage-connectors.md
+:::
+
+:::{link-card}
+title: Release notes
+links:
+  - label: Kibana
+    url: kibana://release-notes/index.md
+  - label: Known issues
+    url: kibana://release-notes/known-issues.md
+  - label: Breaking changes
+    url: kibana://release-notes/breaking-changes.md
+  - label: Deprecations
+    url: kibana://release-notes/deprecations.md
+:::
+
 ::::
 
 ::::{card-group}
@@ -509,6 +650,12 @@ links:
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md
   - label: Cloud organization authentication
     url: /deploy-manage/users-roles/cloud-organization.md
+  - label: Cloud SAML single sign-on
+    url: /deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md
+  - label: SAML
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/saml.md
+  - label: OpenID Connect
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md
 :::
 
 :::{link-card}
@@ -516,10 +663,17 @@ title: Authorize access
 links:
   - label: User roles
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md
+  - label: Kibana role management
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md
   - label: Serverless custom roles
     url: /deploy-manage/users-roles/serverless-custom-roles.md
   - label: Kibana privileges
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md
+:::
+
+:::{link-card}
+title: Control and audit access
+links:
   - label: Spaces
     url: /deploy-manage/manage-spaces.md
   - label: API keys
@@ -549,62 +703,21 @@ links:
     url: /troubleshoot/kibana.md
   - label: Alerts
     url: /troubleshoot/kibana/alerts.md
+  - label: Server not ready
+    url: /troubleshoot/kibana/error-server-not-ready.md
+  - label: Fleet and Agent problems
+    url: /troubleshoot/ingest/fleet/common-problems.md
 :::
 
 :::{link-card}
-title: Capture diagnostics
+title: Check server health
 links:
+  - label: Server status
+    url: /troubleshoot/kibana/access.md
   - label: Capture Kibana diagnostics
     url: /troubleshoot/kibana/capturing-diagnostics.md
   - label: Server logs
     url: /troubleshoot/kibana/using-kibana-server-logs.md
 :::
-::::
-
-::::{card-group}
-:title: Reference
-:id: reference
-
-:::{link-card}
-title: Configuration and settings
-links:
-  - label: Configuration reference
-    url: kibana://reference/configuration-reference.md
-  - label: General
-    url: kibana://reference/configuration-reference/general-settings.md
-  - label: Alerting
-    url: kibana://reference/configuration-reference/alerting-settings.md
-  - label: Security
-    url: kibana://reference/configuration-reference/security-settings.md
-  - label: Advanced settings (UI)
-    url: kibana://reference/advanced-settings.md
-:::
-
-:::{link-card}
-title: Release notes
-links:
-  - label: Kibana
-    url: kibana://release-notes/index.md
-  - label: Known issues
-    url: kibana://release-notes/known-issues.md
-  - label: Breaking changes
-    url: kibana://release-notes/breaking-changes.md
-  - label: Deprecations
-    url: kibana://release-notes/deprecations.md
-:::
-
-:::{link-card}
-title: Related release notes
-links:
-  - label: Elasticsearch
-    url: elasticsearch://release-notes/index.md
-  - label: Security
-    url: /release-notes/elastic-security/index.md
-  - label: Observability
-    url: /release-notes/elastic-observability/index.md
-  - label: Serverless
-    url: /release-notes/elastic-cloud-serverless/index.md
-:::
-
 ::::
 :::::
