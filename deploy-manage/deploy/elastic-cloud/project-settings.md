@@ -59,6 +59,19 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 | **Data Retention** | Data retention policies determine how long your project data is retained.<br>In {{serverless-full}} data retention policies are configured through [data streams](../../../manage-data/lifecycle/data-stream.md) and you can [specify different retention periods](../../../manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) for specific data streams in your project.<br><br> {{elastic-sec}} has two additional configuration settings that can be configured to manage your data retention.<br><br>**Maximum data retention period**<br><br>When enabled, this setting determines the maximum length of time that data can be retained in any data streams of this project.<br><br>Editing this setting replaces the data retention set for all data streams of the project that have a longer data retention defined. Data older than the new maximum retention period that you set is permanently deleted.<br><br> **Default data retention period**<br><br>When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.<br> |Elasticsearch<br>Observability<br>Security  |
 | **Project features** | Controls [feature tiers and add-on options](../../../deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons) for your {{elastic-sec}} project. | Security |
 
+### Configure the Search Boost Window
+
+For {{es-serverless}} projects, the Search Boost Window defaults to 7 days. To edit it:
+
+1. Open the project settings as described at the start of this page.
+2. In **Search AI Lake settings**, find **Search Boost Window** and click **Edit**.
+3. Select 3 or 7 days, or select **Enter custom value** and enter a value from 1 through 180 days.
+4. Click **Save**.
+
+During a trial, the maximum Search Boost Window is 7 days.
+
+The setting applies to time series data with a concrete `@timestamp` field. Data outside the window remains searchable, but it is no longer considered search-ready. Increasing the window keeps more data search-ready and can provide faster searches at a higher baseline resource cost. Decreasing it reduces the search-ready data volume and baseline cost, but searches over older data can have different latency.
+
 ## Project features and add-ons [project-features-add-ons]
 
 Project features and add-ons control which capabilities are available in your serverless project and how they are billed. What you can configure depends on your project type:
