@@ -21,7 +21,7 @@ The following concepts help you understand how {{context-engine}} turns source d
 
 - [AI indices](#ai-indices) group the configuration and generated context for a particular purpose.
 - [Sources](#sources) identify the raw data available to automations.
-- [Automations and Workflows](#automations-and-workflows) analyze sources and generate or refresh KIs.
+- [Automations and workflows](#automations-and-workflows) analyze sources and generate or refresh KIs.
 - [Knowledge Indicators (KIs)](#knowledge-indicators) are documents of reusable context generated from source data.
 - [Agents and applications](#agents-and-applications) retrieve and apply the generated context.
 - [Tools, system instructions, and skills](#tools-system-instructions-and-skills) cover the operations agents can perform and the guidance for using them.
@@ -46,13 +46,13 @@ A source is the data from which an [automation](#automations-and-workflows) gene
 - An {{esql}} source uses a query to select data from one or more {{es}} indices or data streams.
 - A connector source names a configured connector to an external system. Supported connectors include services such as Google Drive, GitHub, Jira, ServiceNow, and Slack, and cloud object stores. Refer to [Connectors in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/connectors.md) for more information about configuring connectors.
 
-An {{esql}} source can provide a small sample that grounds an automation proposal. The source query is not necessarily the only query the resulting Workflow runs. A Workflow can inspect mappings, take other samples, or calculate full-dataset aggregations. To add an {{esql}} source and review the generated Workflow, follow [Get started with {{context-engine}}](quickstart.md).
+Selecting an {{es}} index, data stream, or alias creates an {{esql}} source in the form `FROM <name>`. You can instead provide an advanced {{esql}} query to narrow the available data. How an automation uses that source depends on its workflow. The workflow can run the configured query, inspect an underlying index's mapping, take other samples, or calculate full-dataset aggregations.
 
 ## Automations and workflows
 
-An automation generates or refreshes [Knowledge Indicators (KIs)](#knowledge-indicators) from an [AI index's](#ai-indices) [sources](#sources). {{context-engine}} implements each automation as an [Elastic Workflow](/explore-analyze/workflows.md), which defines the operations and [instructions](#tools-system-instructions-and-skills) used to analyze the source and write the result.
+An automation generates or refreshes [Knowledge Indicators (KIs)](#knowledge-indicators) from an [AI index's](#ai-indices) [sources](#sources). {{context-engine}} implements each automation as a workflow in [Elastic Workflows](/explore-analyze/workflows.md). The workflow defines the operations and [instructions](#tools-system-instructions-and-skills) used to analyze the source and write the result.
 
-The Workflow can retrieve mappings, run {{esql}} samples and aggregations, generate structured content with an AI prompt, assemble the KI, verify generated queries, and write the KI when verification passes. You can inspect the Workflow to verify the scope of its queries and the evidence behind its output. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md) to understand its triggers, constants, steps, and execution lifecycle.
+The workflow can retrieve mappings, run {{esql}} samples and aggregations, generate structured content with an AI prompt, assemble the KI, verify generated queries, and write the KI when verification passes. You can inspect the workflow to verify the scope of its queries and the evidence behind its output. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md) to understand its triggers, constants, steps, and execution lifecycle.
 
 Passing syntax and runtime checks means that a generated query parses and runs. It does not confirm that the query's fields, grouping, or calculations answer the intended question. To review and run a generated automation, follow [Get started with {{context-engine}}](quickstart.md).
 
