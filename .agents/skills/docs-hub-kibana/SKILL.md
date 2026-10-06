@@ -49,9 +49,9 @@ Keep this order:
 4. Solutions (`id: solutions`)
 5. Explore Kibana (`id: explore`), with these card-groups in this order:
    - Quick links
-   - Deploy and manage
-   - Manage data and Kibana
-   - Explore, visualize, and analyze
+   - Install and deploy
+   - Manage Kibana and data
+   - Explore, visualize, and analyze data
    - Alerting and incident response
    - AI and Workflows
    - Query data in Kibana
@@ -59,7 +59,7 @@ Keep this order:
    - Troubleshoot
    - Reference
 
-Do not add a Developer tools section. Developer tools is one card inside Query data in Kibana. Machine learning is one card inside Explore, visualize, and analyze.
+Do not add a Developer tools section. Developer tools is one card inside Query data in Kibana. Machine learning is one card inside Explore, visualize, and analyze data.
 
 When three or more high-traffic pages share a theme and no card fits, add a card. When a card grows past what its siblings can balance, split it or move items. Keep card titles user-facing (for example "Check server health", not a list of page types).
 
@@ -115,13 +115,13 @@ Traffic sets the links. Balance sets how you arrange them. When a card passes si
 
 When a card is short next to longer siblings, add high-traffic pages that are unique to that card. Do not pad with overviews or pages already linked nearby.
 
-Do not add a link only to even the count. Leave a card short when it has only two real options (AutoOps overview and the Stack Monitoring comparison).
+Do not add a link only to even the count. Leave a card short when it has only two real options.
 
 ## Section rules
 
-**Deploy.** Order: Managed on Elastic Cloud, Self-orchestrated (ECK, ECE), Install self-managed, Set up self-managed, Maintain and monitor. Cloud Hosted links the deployment page and Access Kibana. ECK and ECE link the orchestrator page and the Kibana page, and ECK adds the Kibana quickstart. Serverless stays one link. Install self-managed is Install, Docker, and the top package pages by traffic (Windows, Debian and Ubuntu, Linux and macOS archive). Set up self-managed is Configure (kibana.yml) and Access Kibana. Self-managed-only pages belong in these two cards, not in cards that imply every deployment type. **Upgrade Kibana** links to `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types). Do not use `/deploy-manage/upgrade/deployment-or-cluster/kibana.md`. That page is self-managed only.
+**Install and deploy.** Order: Managed on Elastic Cloud, Self-orchestrated (ECK, ECE), Install self-managed, Set up self-managed. Cloud Hosted links the deployment page and Access Kibana. ECK and ECE link the orchestrator page and the Kibana page, and ECK adds the Kibana quickstart. Serverless stays one link. Install self-managed is Install, Docker, and the top package pages by traffic (Windows, Debian and Ubuntu, Linux and macOS archive). Set up self-managed is Configure (kibana.yml) and Access Kibana. Self-managed-only pages belong in these two cards, not in cards that imply every deployment type.
 
-**Manage data.** Data and indices links the Transforms landing page, not the setup page. Integrations and Fleet links Integrations, Fleet, Manage agents, and Agent policies. Elastic Agent links Install Elastic Agent, Fleet Server, and the command reference. Skip the Fleet air-gapped page. It applies to ECE and self-managed only. Spaces, objects, and connectors includes Manage connectors. Stack Monitoring and AutoOps are sibling cards. AutoOps links to the overview and the comparison with Stack Monitoring.
+**Manage Kibana and data.** Data and indices links the Transforms landing page, not the setup page. Integrations and Fleet links Integrations, Fleet, Manage agents, and Agent policies. Elastic Agent links Install Elastic Agent, Fleet Server, and the command reference. Skip the Fleet air-gapped page. It applies to ECE and self-managed only. Spaces, objects, and connectors includes Manage connectors. Monitor combines Stack Monitoring (Kibana monitoring data, configure, alerts) and AutoOps (overview, comparison with Stack Monitoring). Upgrade and maintain links Run in production, Upgrade Kibana, Upgrade Assistant, and Logging. **Upgrade Kibana** links to `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types). Do not use `/deploy-manage/upgrade/deployment-or-cluster/kibana.md`. That page is self-managed only.
 
 **Explore.** Dashboards links the overview, Get started, Create a dashboard, Ways to create, and Best practices. Interact and share links Add controls, Drilldowns, and Reporting and sharing (`/explore-analyze/report-and-share.md`). Visualizations includes Graph.
 

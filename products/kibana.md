@@ -184,7 +184,7 @@ links:
 ::::
 
 ::::{card-group}
-:title: Deploy and manage
+:title: Install and deploy
 :id: deploy
 
 :::{link-card}
@@ -236,23 +236,10 @@ links:
   - label: Access Kibana
     url: /deploy-manage/deploy/self-managed/access-kibana.md
 :::
-
-:::{link-card}
-title: Maintain and monitor
-links:
-  - label: Run in production
-    url: /deploy-manage/production-guidance/kibana-in-production-environments.md
-  - label: Upgrade Kibana
-    url: /deploy-manage/upgrade/deployment-or-cluster.md
-  - label: Upgrade Assistant
-    url: /deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md
-  - label: Logging
-    url: /deploy-manage/monitor/logging-configuration/kibana-logging.md
-:::
 ::::
 
 ::::{card-group}
-:title: Manage data and Kibana
+:title: Manage Kibana and data
 :id: stack-management
 
 :::{link-card}
@@ -291,7 +278,7 @@ links:
 :::
 
 :::{link-card}
-title: Stack Monitoring
+title: Monitor
 links:
   - label: Kibana monitoring data
     url: /deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md
@@ -299,15 +286,23 @@ links:
     url: /deploy-manage/monitor/stack-monitoring.md
   - label: Stack monitoring alerts
     url: /deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md
-:::
-
-:::{link-card}
-title: AutoOps
-links:
   - label: AutoOps overview
     url: /deploy-manage/monitor/autoops.md
   - label: Compare with Stack Monitoring
     url: /deploy-manage/monitor/autoops-vs-stack-monitoring.md
+:::
+
+:::{link-card}
+title: Upgrade and maintain
+links:
+  - label: Run in production
+    url: /deploy-manage/production-guidance/kibana-in-production-environments.md
+  - label: Upgrade Kibana
+    url: /deploy-manage/upgrade/deployment-or-cluster.md
+  - label: Upgrade Assistant
+    url: /deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md
+  - label: Logging
+    url: /deploy-manage/monitor/logging-configuration/kibana-logging.md
 :::
 
 :::{link-card}
@@ -325,7 +320,7 @@ links:
 ::::
 
 ::::{card-group}
-:title: Explore, visualize, and analyze
+:title: Explore, visualize, and analyze data
 :id: visualize
 
 :::{link-card}
