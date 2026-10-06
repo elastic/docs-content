@@ -15,7 +15,6 @@ products:
 
 When you query your data, {{es}} might return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
 
-
 ## Ensure the data stream, index, or alias exists [troubleshooting-searches-exists]
 
 {{es}} returns an `index_not_found_exception` when the data stream, index or alias you try to query does not exist. This can happen when you misspell the name or when the data has been indexed to a different data stream or index.
@@ -233,6 +232,9 @@ For static settings, you need to create a new index with the correct settings. N
 ```{applies_to}
 stack:
 ```
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 Start with [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md), which pinpoint the search requests that take too long to run. Once you've identified a slow request, determine where it comes from. How you do this depends on your version.
 

@@ -11,7 +11,7 @@ products:
 
 Any time that you start an instance of {{es}}, you are starting a *node*. A collection of connected nodes is called a [cluster](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md). If you are running a single node of {{es}}, then you have a cluster of one node. All nodes know about all the other nodes in the cluster and can forward client requests to the appropriate node.
 
-Each node performs one or more roles. Roles control the behavior of the node in the cluster.
+Each node performs one or more roles and also acts as a [coordinating node](#coordinating-node). Roles control the behavior of the node in the cluster.
 
 :::{admonition} Managing node roles for your deployment type
 ECH, ECE, ECK, and self-managed clusters all use node roles. However, the way that you set or change them depends on your deployment type.
@@ -92,20 +92,37 @@ The following is a list of the roles that a node can perform in a cluster. A nod
 * [Remote-eligible node](#remote-node) (`remote_cluster_client`): A node that is eligible to act as a remote client.
 * [Machine learning node](#ml-node-role) (`ml`): A node that can run {{ml-features}}. If you want to use {{ml-features}}, there must be at least one {{ml}} node in your cluster. For more information, see [Machine learning settings](../../deploy/self-managed/configure-elasticsearch.md) and [Machine learning in the {{stack}}](/explore-analyze/machine-learning.md).
 * [Transform node](#transform-node-role) (`transform`): A node that can perform transforms. If you want to use transforms, there must be at least one transform node in your cluster. For more information, see [Transforms settings](../../deploy/self-managed/configure-elasticsearch.md) and [*Transforming data*](../../../explore-analyze/transforms.md).
+* [Coordinating-only node](#coordinating-only-node-role)(` `): A node that acts as solely a [coordinating node](#coordinating-node), receiving requests from clients and coordinating their execution. This role is applied when an empty `node.roles` list is explicitly specified.
 
-::::{admonition} Coordinating node
-:class: note
 
-:name: coordinating-node
+### Coordinating node [coordinating-node]
 
-Requests like search requests or bulk-indexing requests may involve data held on different data nodes. A search request, for example, is executed in two phases which are coordinated by the node which receives the client request — the *coordinating node*.
+Every node can receive requests from clients and coordinate their execution. The node that receives each request is the coordinating node for that request. Coordination cannot be disabled and is not a role that you configure with `node.roles`.
 
-In the *scatter* phase, the coordinating node forwards the request to the data nodes which hold the data. Each data node executes the request locally and returns its results to the coordinating node. In the *gather* phase, the coordinating node reduces each data node’s results into a single global result set.
+Requests such as [search or bulk-indexing requests](/deploy-manage/distributed-architecture/reading-and-writing-documents.md) might involve data held on different data nodes. A search request, for example, runs in two phases. In the *scatter* phase, the coordinating node forwards the request to the data nodes that hold the data. Each data node runs the request locally and returns its results to the coordinating node. In the *gather* phase, the coordinating node reduces each data node's results into a single global result set.
 
-Every node is implicitly a coordinating node. This means that a node that has an explicit empty list of roles in the `node.roles` setting will only act as a coordinating node, which cannot be disabled. As a result, such a node needs to have enough memory and CPU in order to deal with the gather phase.
+Every node needs enough memory and CPU to handle its coordinating responsibilities, including the [search *gather* phase](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). Refer to [minimum size recommendations for production use](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-minimum-recommendations).
 
+
+#### Coordinating-only node [coordinating-only-node-role]
+
+If you configure an explicit empty list for `node.roles`, the node has no assigned roles and acts only as a coordinating node. A coordinating-only node routes requests, handles the [search *gather* phase](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model), and distributes bulk indexing. In this sense, coordinating-only nodes behave as smart load balancers.
+
+Coordinating-only nodes can benefit large clusters by offloading request coordination from data and master-eligible nodes. They join the cluster and receive the full [cluster state]({{es-apis}}operation/operation-cluster-state), like every other node, and use the cluster state to route requests directly to the appropriate places.
+
+::::{warning}
+Adding too many coordinating-only nodes to a cluster can increase the burden on the entire cluster because the [elected master node](/deploy-manage/distributed-architecture/discovery-cluster-formation.md) must await acknowledgment of cluster state updates from every node. Because data nodes can perform the same function, you should weigh the routing benefit of coordinating-only nodes against the added cluster overhead.
 ::::
 
+To create a coordinating-only node, set:
+
+```yaml
+node.roles: [ ]
+```
+
+::::{important}
+On {{ech}} and {{ece}}, coordinating instances are not coordinating-only nodes as defined in this section. They have the `ingest` and `remote_cluster_client` roles but no data role. If these instances process pipelines that use enrich processors, enrich lookups can significantly reduce ingest performance. Refer to [Ingest node](#node-ingest-node).
+::::
 
 
 ### Master-eligible node [master-node-role]
@@ -259,30 +276,16 @@ node.roles: [ data_frozen ]
 
 ### Ingest node [node-ingest-node]
 
-Ingest nodes can execute pre-processing pipelines, composed of one or more ingest processors. Depending on the type of operations performed by the ingest processors and the required resources, it may make sense to have dedicated ingest nodes, that will only perform this specific task.
+Ingest nodes can run [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md), which consist of one or more ingest processors. Depending on the operations performed by the ingest processors and their resource requirements, you might benefit from dedicated ingest nodes that perform only this task.
+
+:::{important}
+If you use the [enrich processor](/manage-data/ingest/transform-enrich/data-enrichment.md), colocate the `ingest` role with a data role to reduce the impact of enrich lookups on ingest performance. Refer to [Set up an enrich processor](/manage-data/ingest/transform-enrich/set-up-an-enrich-processor.md).
+:::
 
 To create a dedicated ingest node, set:
 
 ```yaml
 node.roles: [ ingest ]
-```
-
-
-### Coordinating only node [coordinating-only-node-role]
-
-If you take away the ability to be able to handle master duties, to hold data, and pre-process documents, then you are left with a *coordinating* node that can only route requests, handle the search reduce phase, and distribute bulk indexing. Essentially, coordinating only nodes behave as smart load balancers.
-
-Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state]({{es-apis}}operation/operation-cluster-state), like every other node, and they use the cluster state to route requests directly to the appropriate place(s).
-
-::::{warning}
-Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the elected master node must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.
-::::
-
-
-To create a dedicated coordinating node, set:
-
-```yaml
-node.roles: [ ]
 ```
 
 
