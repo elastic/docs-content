@@ -60,7 +60,7 @@ Let’s work through an example together. Consider a marketing analyst who wants
 Create a **Marketing** space for your marketing analysts to use.
 
 1. Go to the **Spaces** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create a space**.
+2. Select **Create space**.
 3. Give this space a unique name. For example: `Marketing`.
 4. Click **Create space**.
 
@@ -135,11 +135,6 @@ Verify that the user and role are working correctly.
 2. In the login screen, enter the username and password for the account you created.
 
     You’re taken into the `Marketing` space, and the main navigation shows only the **Dashboard** application.
-
-    :::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-test.png
-    :alt: Verifying access to dashboards
-    :screenshot:
-    :::
 
 
 
