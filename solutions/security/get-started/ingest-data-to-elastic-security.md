@@ -14,7 +14,7 @@ description: Bring security data into Elastic Security. Start with an integratio
 
 # Ingest data to {{elastic-sec}} [security-ingest-data]
 
-Bring your security data into {{elastic-sec}} so detection rules, Attack Discovery, and other features can analyze it. Most security data comes in through integrations. If you're new to {{elastic-sec}}, start with {{elastic-defend}} to protect your hosts and collect endpoint data, or with an integration for a security tool you already use.
+Bring your security data into {{elastic-sec}} so detection rules, Attack Discovery, and other features can analyze it. Most security data comes in through integrations. If you're new to {{elastic-sec}}, start with an integration for a security tool you already use. If you also want to protect your hosts and collect endpoint data, use {{elastic-defend}}.
 
 ## Select your ingestion method [security-ingest-select-method]
 
@@ -22,21 +22,17 @@ The method you use depends on what you want to protect or monitor, and on where 
 
 | Your goal | Start here |
 |---|---|
-| Protect your hosts and collect endpoint data | [Configure endpoint protection with {{elastic-defend}}](/solutions/security/configure-elastic-defend.md) |
 | Collect logs from your cloud, network, or identity tools | [Ingest data with an integration](#security-ingest-integrations) |
 | Bring in findings and alerts from the security tools you already use | [Integrations that power Findings and Alerts](/solutions/security/integrations/ingest-third-party-security-data.md) |
 | Add threat intelligence | [Threat intel integrations](/solutions/security/get-started/enable-threat-intelligence-integrations.md) |
 | Ingest data from a source that has no integration | [Automatic Import](/explore-analyze/ai-features/automatic-import.md) |
+| Protect your hosts and collect endpoint data | [Configure endpoint protection with {{elastic-defend}}](/solutions/security/configure-elastic-defend.md) |
 | Move rules and dashboards from Splunk, Microsoft Sentinel, or QRadar | [Automatic Migration](/solutions/security/get-started/automatic-migration.md), which also identifies the data sources your migrated rules need |
 | Send data with {{beats}}, {{ls}}, or a third-party collector | [Send data with {{beats}}, {{ls}}, or third-party collectors](#security-ingest-other-methods) |
 
-## Collect endpoint data with {{elastic-defend}} [security-ingest-endpoint-data]
-
-If you want to protect your hosts, start with {{elastic-defend}}. It can block threats on each host, and it collects endpoint data, such as process, network, and file events. When you deploy it, you select a preset that sets which threats it prevents and which events it collects. To learn what it collects and how to deploy it, refer to [Configure endpoint protection with {{elastic-defend}}](/solutions/security/configure-elastic-defend.md#elastic-defend-data).
-
 ## Ingest data with an integration [security-ingest-integrations]
 
-Most of the other methods in the [ingestion method table](#security-ingest-select-method) use an integration, including third-party security tools and threat intelligence. Elastic has hundreds of integrations that collect data from security tools, cloud services, identity providers, and operating systems.
+Most of the methods in the [ingestion method table](#security-ingest-select-method) use an integration, including third-party security tools and threat intelligence. Elastic has hundreds of integrations that collect data from security tools, cloud services, identity providers, and operating systems.
 
 ### Decide between managed and {{agent}} integrations [security-ingest-collection-methods]
 
@@ -74,6 +70,10 @@ Removed until verified: Integrations that power Findings and Alerts lists only S
 ## Ingest data from a source without an integration [security-ingest-no-integration]
 
 If you can't find an integration for your data source, such as an in-house application or a less common tool, you can create one with [Automatic Import](/explore-analyze/ai-features/automatic-import.md). It uses a large language model (LLM) to analyze a sample of your data and create a custom integration. The custom integration maps your data to the [Elastic Common Schema (ECS)](ecs://reference/index.md), so you can use it in {{elastic-sec}} like data from any other integration.
+
+## Collect endpoint data with {{elastic-defend}} [security-ingest-endpoint-data]
+
+If you also want to protect your hosts, use {{elastic-defend}}. It can block threats on each host, and it collects endpoint data, such as process, network, and file events. When you deploy it, you select a preset that sets which threats it prevents and which events it collects. To learn what it collects and how to deploy it, refer to [Configure endpoint protection with {{elastic-defend}}](/solutions/security/configure-elastic-defend.md#elastic-defend-data).
 
 ## Send data with {{beats}}, {{ls}}, or third-party collectors [security-ingest-other-methods]
 
