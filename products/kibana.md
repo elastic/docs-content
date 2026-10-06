@@ -637,19 +637,6 @@ links:
     url: kibana://release-notes/deprecations.md
 :::
 
-:::{link-card}
-title: Related release notes
-links:
-  - label: Elasticsearch
-    url: elasticsearch://release-notes/index.md
-  - label: Security
-    url: /release-notes/elastic-security/index.md
-  - label: Observability
-    url: /release-notes/elastic-observability/index.md
-  - label: Serverless
-    url: /release-notes/elastic-cloud-serverless/index.md
-:::
-
 ::::
 
 ::::{card-group}
