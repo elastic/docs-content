@@ -33,7 +33,7 @@ Traffic decides which links earn a place. Page rules decide how the page stays b
    - Link the page people land on, not its parent, when the two serve the same task and the child has clearly more traffic.
 6. **Correctness checks still win.** Skip a page when:
    - it is deprecated and a current alternative exists (for example Playground),
-   - its `applies_to` covers fewer deployments than the card implies (for example LDAP is self-managed, ECE, and ECK only, and `/deploy-manage/upgrade/deployment-or-cluster/kibana.md` is self-managed only),
+   - its `applies_to` covers fewer deployments than the card implies (for example LDAP is self-managed, ECE, and ECK only, and `/deploy-manage/upgrade/deployment-or-cluster/kibana.md` is self-managed only). A page that is only unavailable on Serverless (Graph, Watcher) can stay when its traffic is high and its own page states the limit. Note it in the PR body.
    - it duplicates another item in the same card.
 7. **Report.** In the PR body, list what you added with its traffic, and list high-traffic pages you skipped with the reason.
 
@@ -119,21 +119,21 @@ Do not add a link only to even the count. Leave a card short when it has only tw
 
 ## Section rules
 
-**Deploy.** Order: Managed on Elastic Cloud, Self-orchestrated (ECK, ECE), Self-managed, Maintain and monitor. Cloud Hosted links the deployment page and Access Kibana. ECK and ECE link the orchestrator page and the Kibana page. Serverless stays one link. Self-managed is Install, Docker, the top OS install pages by traffic (Windows, Debian and Ubuntu), and Configure. Link other packages only when the traffic check puts them above the threshold. **Upgrade Kibana** links to `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types). Do not use `/deploy-manage/upgrade/deployment-or-cluster/kibana.md`. That page is self-managed only.
+**Deploy.** Order: Managed on Elastic Cloud, Self-orchestrated (ECK, ECE), Install self-managed, Set up self-managed, Maintain and monitor. Cloud Hosted links the deployment page and Access Kibana. ECK and ECE link the orchestrator page and the Kibana page, and ECK adds the Kibana quickstart. Serverless stays one link. Install self-managed is Install, Docker, and the top package pages by traffic (Windows, Debian and Ubuntu, Linux and macOS archive). Set up self-managed is Configure (kibana.yml) and Access Kibana. Self-managed-only pages belong in these two cards, not in cards that imply every deployment type. **Upgrade Kibana** links to `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types). Do not use `/deploy-manage/upgrade/deployment-or-cluster/kibana.md`. That page is self-managed only.
 
-**Manage data.** Stack Monitoring and AutoOps are sibling cards. AutoOps links to the overview and the comparison with Stack Monitoring.
+**Manage data.** Data and indices links the Transforms landing page, not the setup page. Integrations and Fleet links Integrations, Fleet, Manage agents, and Agent policies. Elastic Agent links Install Elastic Agent, Fleet Server, and the command reference. Skip the Fleet air-gapped page. It applies to ECE and self-managed only. Spaces, objects, and connectors includes Manage connectors. Stack Monitoring and AutoOps are sibling cards. AutoOps links to the overview and the comparison with Stack Monitoring.
 
-**Dashboards.** Include Reporting and sharing (`/explore-analyze/report-and-share.md`).
+**Explore.** Dashboards links the overview, Get started, Create a dashboard, Ways to create, and Best practices. Interact and share links Add controls, Drilldowns, and Reporting and sharing (`/explore-analyze/report-and-share.md`). Visualizations includes Graph.
 
-**Secure Kibana.** Authenticate users links Kibana authentication, Cloud organization authentication, and the high-traffic realms that apply to every deployment type (SAML, OpenID Connect). Skip realms that are self-managed only, such as LDAP. Authorize access links user roles, serverless custom roles, Kibana privileges, spaces, API keys, and audit logging. Protect data links secure saved objects and Kibana and Elasticsearch mutual TLS.
+**Secure Kibana.** Authenticate users links Kibana authentication, Cloud organization authentication, Cloud SAML single sign-on, and the high-traffic realms that apply to every deployment type (SAML, OpenID Connect). Skip realms that are self-managed only, such as LDAP. Authorize access links user roles, Kibana role management, serverless custom roles, and Kibana privileges. Control and audit access links spaces, API keys, and audit logging. Protect data links secure saved objects and Kibana and Elasticsearch mutual TLS.
 
-**Alerting.** Three cards: Kibana alerting (classic), Alerting V2, Alerting connectors. In Alerting connectors, order the popular connectors by traffic (Slack, Email, Microsoft Teams, Jira, PagerDuty).
+**Alerting.** Four cards: Alerting systems (the alerting overview and Watcher), Kibana alerting (classic), Alerting V2, Alerting connectors. In Alerting connectors, order the popular connectors by traffic (Slack, Email, Microsoft Teams, Jira, PagerDuty).
 
-**AI and Workflows.** Five cards: AI features, Agent Builder, Workflows, AI Agent chat, Context connectors. AI features is the product-wide entry point: AI-powered features, AI agent skills, Connect to LLMs, and Elastic Managed LLMs. Agent Builder includes the MCP server guide. AI assistants in Kibana meets the traffic threshold but stays off the hub as an editorial choice. Confirm with the hub owner before you add it. Context connectors lead with three popular connectors, then View all.
+**AI and Workflows.** Six cards: AI features, Agent Builder, Models and MCP, Workflows, AI Agent chat, Context connectors. AI features is the product-wide entry point: AI-powered features, AI agent skills, Connect to LLMs, and Elastic Managed LLMs. Agent Builder links the overview, Get started, Agents, Tools, and Custom tools. Models and MCP links Models and the MCP server guide. AI assistants in Kibana meets the traffic threshold but stays off the hub as an editorial choice. Confirm with the hub owner before you add it. Context connectors lead with three popular connectors, then View all.
 
-**Query data.** Languages, Developer tools, Search across clusters (CCS, remote clusters, CPS). No query-languages overview item. Languages lists KQL, the KQL reference, Lucene, ES|QL, Query DSL, and SQL.
+**Query data.** Query and filter, ES|QL, Developer tools, Search across clusters (CCS, remote clusters, CPS). No query-languages overview item. Query and filter lists KQL, the KQL reference, Lucene, Query DSL, SQL, and Filter data. ES|QL lists ES|QL in Kibana, the ES|QL reference, and Functions and operators. Developer tools leads with the Query tools overview.
 
-**Troubleshoot.** Two cards of three links: Diagnose common issues (troubleshooting, Alerts, Server not ready) and Check server health (Server status, diagnostics, server logs).
+**Troubleshoot.** Two cards: Diagnose common issues (troubleshooting, Alerts, Server not ready, Fleet and Agent problems) and Check server health (Server status, diagnostics, server logs).
 
 ## Copy
 

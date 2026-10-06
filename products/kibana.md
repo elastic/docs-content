@@ -205,6 +205,8 @@ links:
     url: /deploy-manage/deploy/cloud-on-k8s.md
   - label: Kibana on ECK
     url: /deploy-manage/deploy/cloud-on-k8s/kibana-configuration.md
+  - label: Deploy Kibana on ECK
+    url: /deploy-manage/deploy/cloud-on-k8s/kibana-instance-quickstart.md
   - label: Elastic Cloud Enterprise (ECE)
     url: /deploy-manage/deploy/cloud-enterprise.md
   - label: Access Kibana on ECE
@@ -212,7 +214,7 @@ links:
 :::
 
 :::{link-card}
-title: Self-managed
+title: Install self-managed
 links:
   - label: Install Kibana
     url: /deploy-manage/deploy/self-managed/install-kibana.md
@@ -222,8 +224,17 @@ links:
     url: /deploy-manage/deploy/self-managed/install-kibana-on-windows.md
   - label: Debian and Ubuntu
     url: /deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md
+  - label: Linux and macOS archive
+    url: /deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md
+:::
+
+:::{link-card}
+title: Set up self-managed
+links:
   - label: Configure (kibana.yml)
     url: /deploy-manage/deploy/self-managed/configure-kibana.md
+  - label: Access Kibana
+    url: /deploy-manage/deploy/self-managed/access-kibana.md
 :::
 
 :::{link-card}
@@ -252,7 +263,7 @@ links:
   - label: Data streams
     url: /manage-data/data-store/data-streams/manage-data-stream.md
   - label: Transforms
-    url: /explore-analyze/transforms/transform-setup.md
+    url: /explore-analyze/transforms.md
 :::
 
 :::{link-card}
@@ -264,6 +275,19 @@ links:
     url: /reference/fleet/index.md
   - label: Manage agents
     url: /reference/fleet/manage-elastic-agents-in-fleet.md
+  - label: Agent policies
+    url: /reference/fleet/agent-policy.md
+:::
+
+:::{link-card}
+title: Elastic Agent
+links:
+  - label: Install Elastic Agent
+    url: /reference/fleet/install-elastic-agents.md
+  - label: Fleet Server
+    url: /reference/fleet/fleet-server.md
+  - label: Command reference
+    url: /reference/fleet/agent-command-reference.md
 :::
 
 :::{link-card}
@@ -287,7 +311,7 @@ links:
 :::
 
 :::{link-card}
-title: Spaces and saved objects
+title: Spaces, objects, and connectors
 links:
   - label: Spaces
     url: /deploy-manage/manage-spaces.md
@@ -295,6 +319,8 @@ links:
     url: /explore-analyze/find-and-organize/saved-objects.md
   - label: Tags
     url: /explore-analyze/find-and-organize/tags.md
+  - label: Manage connectors
+    url: /deploy-manage/manage-connectors.md
 :::
 ::::
 
@@ -324,12 +350,21 @@ links:
     url: /explore-analyze/dashboards.md
   - label: Get started with Dashboards
     url: /explore-analyze/dashboards/tutorials.md
+  - label: Create a dashboard
+    url: /explore-analyze/dashboards/create-dashboard.md
   - label: Ways to create a dashboard
     url: /explore-analyze/dashboards/building.md
-  - label: Add controls
-    url: /explore-analyze/visualize/dashboard-controls.md
   - label: Best practices
     url: /explore-analyze/dashboards/arrange-panels.md
+:::
+
+:::{link-card}
+title: Interact and share
+links:
+  - label: Add controls
+    url: /explore-analyze/visualize/dashboard-controls.md
+  - label: Drilldowns
+    url: /explore-analyze/dashboards/drilldowns.md
   - label: Reporting and sharing
     url: /explore-analyze/report-and-share.md
 :::
@@ -347,6 +382,8 @@ links:
     url: /explore-analyze/visualize/custom-visualizations-with-vega.md
   - label: Custom panels
     url: /explore-analyze/visualize/custom-panels.md
+  - label: Graph
+    url: /explore-analyze/visualize/graph.md
 :::
 
 :::{link-card}
@@ -368,6 +405,15 @@ links:
 ::::{card-group}
 :title: Alerting and incident response
 :id: alerting
+
+:::{link-card}
+title: Alerting systems
+links:
+  - label: Alerting overview
+    url: /explore-analyze/alerting.md
+  - label: Watcher
+    url: /explore-analyze/alerting/watcher.md
+:::
 
 :::{link-card}
 title: Kibana alerting
@@ -441,8 +487,17 @@ links:
     url: /explore-analyze/ai-features/agent-builder/get-started.md
   - label: Agents
     url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
+  - label: Tools
+    url: /explore-analyze/ai-features/agent-builder/tools.md
   - label: Custom tools
     url: /explore-analyze/ai-features/agent-builder/tools/custom-tools.md
+:::
+
+:::{link-card}
+title: Models and MCP
+links:
+  - label: Models
+    url: /explore-analyze/ai-features/agent-builder/models.md
   - label: MCP server
     url: /explore-analyze/ai-features/agent-builder/mcp-server.md
 :::
@@ -492,7 +547,7 @@ links:
 :id: query-data
 
 :::{link-card}
-title: Query languages
+title: Query and filter
 links:
   - label: Kibana Query Language (KQL)
     url: /explore-analyze/query-filter/languages/kql.md
@@ -500,17 +555,30 @@ links:
     url: elasticsearch://reference/query-languages/kql.md
   - label: Lucene query syntax
     url: /explore-analyze/query-filter/languages/lucene-query-syntax.md
-  - label: ES|QL
-    url: /explore-analyze/query-filter/languages/esql-kibana.md
   - label: Query DSL
     url: /explore-analyze/query-filter/languages/querydsl.md
   - label: Elasticsearch SQL
     url: /explore-analyze/query-filter/languages/sql.md
+  - label: Filter data
+    url: /explore-analyze/query-filter/filtering.md
+:::
+
+:::{link-card}
+title: ES|QL
+links:
+  - label: ES|QL in Kibana
+    url: /explore-analyze/query-filter/languages/esql-kibana.md
+  - label: ES|QL reference
+    url: elasticsearch://reference/query-languages/esql.md
+  - label: Functions and operators
+    url: elasticsearch://reference/query-languages/esql/esql-functions-operators.md
 :::
 
 :::{link-card}
 title: Developer tools
 links:
+  - label: Query tools
+    url: /explore-analyze/query-filter/tools.md
   - label: Console
     url: /explore-analyze/query-filter/tools/console.md
   - label: Search Profiler
@@ -546,6 +614,8 @@ links:
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md
   - label: Cloud organization authentication
     url: /deploy-manage/users-roles/cloud-organization.md
+  - label: Cloud SAML single sign-on
+    url: /deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md
   - label: SAML
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/saml.md
   - label: OpenID Connect
@@ -557,10 +627,17 @@ title: Authorize access
 links:
   - label: User roles
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md
+  - label: Kibana role management
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md
   - label: Serverless custom roles
     url: /deploy-manage/users-roles/serverless-custom-roles.md
   - label: Kibana privileges
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md
+:::
+
+:::{link-card}
+title: Control and audit access
+links:
   - label: Spaces
     url: /deploy-manage/manage-spaces.md
   - label: API keys
@@ -592,6 +669,8 @@ links:
     url: /troubleshoot/kibana/alerts.md
   - label: Server not ready
     url: /troubleshoot/kibana/error-server-not-ready.md
+  - label: Fleet and Agent problems
+    url: /troubleshoot/ingest/fleet/common-problems.md
 :::
 
 :::{link-card}
