@@ -113,14 +113,14 @@ You can configure the number of vertices that a search or expand operation adds 
 
 #### Block terms from the graph [graph-block-terms]
 
-Documents that match a blocked term are not allowed in the graph. To block a term, select its vertex and click the block icon {icon}`eye_slash` in the graph toolbar. For a list of blocked terms, open **Settings > Blocked terms**.
+Documents that match a blocked term are not allowed in the graph. To block a term, select its vertex and click the block icon {icon}`eye_slash` in the graph toolbar. For a list of blocked terms, open **Settings → Blocked terms**.
 
 
 #### Drill down into raw documents [graph-drill-down]
 
 With drilldowns, you can display additional information about a selected vertex in a new browser window. For example, you might configure a drilldown URL to perform a web search for the selected vertex term.
 
-Use the drilldown icon {icon}`info` in the graph toolbar to show the drilldown buttons for the selected vertices. To configure drilldowns, go to **Settings > Drilldowns**. See also [Disabling drilldown configuration](graph/graph-configuration.md#disable-drill-down).
+Use the drilldown icon {icon}`info` in the graph toolbar to show the drilldown buttons for the selected vertices. To configure drilldowns, go to **Settings → Drilldowns**. See also [Disabling drilldown configuration](graph/graph-configuration.md#disable-drill-down).
 
 
 #### Run and pause the layout [graph-run-layout]

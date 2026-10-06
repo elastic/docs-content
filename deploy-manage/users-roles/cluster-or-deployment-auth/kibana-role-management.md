@@ -117,7 +117,7 @@ To assign {{kib}} privileges to the role, click **Assign to space** in the {{kib
 :width: 650px
 :::
 
-Open the **Select spaces** control to specify whether to grant the role access to all spaces **All Spaces** or one or more individual spaces. If you select **All Spaces**, you can’t select individual spaces until you clear your selection.
+Open the **Select spaces** menu to specify whether to grant the role access to all spaces **All Spaces** or one or more individual spaces. If you select **All Spaces**, you can’t select individual spaces until you clear your selection.
 
 Use **Define privileges** to grant access to features. The default is **Customize**, which you can use to grant access to individual features. Otherwise, you can grant read and write access to all current and future features by selecting **All**, or grant read access to all current and future features by selecting **Read**.
 
@@ -151,7 +151,7 @@ Features are available to users when their roles grant access to the features, *
 
 ## Assigning different privileges to different spaces [_assigning_different_privileges_to_different_spaces]
 
-Using the same role, it’s possible to assign different privileges to different spaces. After you’ve added privileges, click **Assign to space**. If you’ve already added privileges for either **All Spaces** or an individual space, you will not be able to select these in the **Select spaces** control.
+Using the same role, it’s possible to assign different privileges to different spaces. After you’ve added privileges, click **Assign to space**. If you’ve already added privileges for either **All Spaces** or an individual space, you will not be able to select these in the **Select spaces** menu.
 
 Additionally, if you’ve already assigned privileges at **All Spaces**, you are only able to assign additional privileges to individual spaces. Similar to the behavior of multiple roles granting the union of all privileges, {{kib}} privileges are also a union. If you’ve already granted the user the **All** privilege at **All Spaces**, you’re not able to restrict the role to only the **Read** privilege at an individual space.
 
