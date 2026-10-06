@@ -36,12 +36,13 @@ The **GenAI Settings** page has the following settings:
 
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
+- **Agent Builder Traces**: Turn collection of Agent Builder conversation traces on or off, install a prebuilt dashboard, and choose what content traces capture. For details, refer to [Collect Agent Builder traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
 ::::
 ::::{applies-item} stack: ga 9.4+
 
 :::{image} /explore-analyze/images/genai-settings-stack.png
-:alt: GenAI Settings for Stack in 9.4
+:alt: GenAI Settings for Stack
 :screenshot:
 :::
 
@@ -50,6 +51,7 @@ The **GenAI Settings** page has the following settings:
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
+- **Agent Builder Traces**: {applies_to}`stack: ga 9.5` Turn collection of Agent Builder conversation traces on or off, install a prebuilt dashboard, and choose what content traces capture. For details, refer to [Collect Agent Builder traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
 ::::
 ::::{applies-item} stack: ga 9.2-9.3
