@@ -478,6 +478,8 @@ You can also reach the global agents list from the **Manage agents** button in t
 
 Agents can create and manage dashboards and visualizations directly in the conversation. To learn more, refer to [Dashboards and visualizations in chat](agent-builder-dashboards-and-visualizations.md).
 
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` Agents can also show matching documents in an interactive **Discover** table in the conversation. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
+
 ## Agent Chat API
 
 The Agent Chat API provides programmatic access to chat functionality through REST endpoints.
