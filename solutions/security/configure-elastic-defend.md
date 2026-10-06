@@ -31,17 +31,9 @@ In practice, you add the {{elastic-defend}} integration from the **Integrations*
 
 ## Data that {{elastic-defend}} collects [elastic-defend-data]
 
-{{elastic-defend}} collects security data from each host it protects. To bring in data from other sources, refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
+{{elastic-defend}} collects events from each host it protects, such as process, network, and file activity. The preset you select when you install it sets which event categories it collects, and you can change them later in the integration policy. For the categories available on each operating system, refer to [Event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection).
 
-{{agent}} with the {{elastic-defend}} integration ships these data sources to {{elastic-sec}}:
-
-* Process: Linux, macOS, Windows
-* Network: Linux, macOS, Windows
-* File: Linux, macOS, Windows
-* DNS: Windows
-* Registry: Windows
-* Dynamic-link library (DLL) and driver load: Windows
-* Security: Windows
+To bring in data from other sources, refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
 
 ## Where to start
 
