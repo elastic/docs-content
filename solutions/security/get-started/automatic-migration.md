@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate to Elastic Security
+navigation_title: Migrate
 applies_to:
   stack: preview =9.0, ga 9.1+
   serverless:
@@ -13,9 +13,9 @@ products:
   - id: elastic-stack
 ---
 
-# Automatic migration
+# Migrate to {{elastic-sec}} with Automatic Migration
 
-Automatic Migration helps you quickly migrate Microsoft Sentinel, Splunk, and QRadar assets to {{elastic-sec}}. The following asset types are supported:
+Move your detection rules and dashboards from Microsoft Sentinel, Splunk, or QRadar to {{elastic-sec}} without rebuilding them by hand. Automatic Migration translates them into {{elastic-sec}} rules and dashboards that you can review and edit. It supports the following asset types:
 
 * {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` Microsoft Sentinel rules
 * {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` Splunk Classic dashboards (v1.1)
