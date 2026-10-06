@@ -62,8 +62,8 @@ Set the following privileges for the SLO Editor role:
     :screenshot:
     :::
 
-4. In the **Kibana** section, click **Add Kibana privilege**.
-5. From the **Spaces** dropdown, either select any specific spaces you want the role to apply to, or select **All Spaces**.
+4. In the **Kibana** section, select **Assign to space**.
+5. In the **Select spaces** field, either select any specific spaces you want the role to apply to, or select **All Spaces**.
 6. Set **Observability → SLOs** to `All`.
 
     :::{image} /solutions/images/observability-slo-kibana-priv-all.png
@@ -71,7 +71,8 @@ Set the following privileges for the SLO Editor role:
     :screenshot:
     :::
 
-7. Click **Create Role** at the bottom of the page and assign the role to the relevant users.
+7. Select **Assign role**.
+8. Click **Create Role** at the bottom of the page and assign the role to the relevant users.
 
 
 ## Create an SLO Viewer role [slo-read-access]
@@ -85,8 +86,8 @@ Set the following privileges for the SLO Read role:
     :screenshot:
     :::
 
-2. In the **Kibana** section, click **Add Kibana privilege**.
-3. From the **Spaces** dropdown, either select any specific spaces you want the role to apply to, or select **All Spaces**.
+2. In the **Kibana** section, select **Assign to space**.
+3. In the **Select spaces** field, either select any specific spaces you want the role to apply to, or select **All Spaces**.
 4. Set **Observability → SLOs** to `Read`.
 
     :::{image} /solutions/images/observability-slo-kibana-priv-read.png
@@ -94,4 +95,5 @@ Set the following privileges for the SLO Read role:
     :screenshot:
     :::
 
-5. Click **Create Role** at the bottom of the page and assign the role to the relevant users.
+5. Select **Assign role**.
+6. Click **Create Role** at the bottom of the page and assign the role to the relevant users.

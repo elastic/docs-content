@@ -94,11 +94,11 @@ To create the role:
         You can add multiple patterns of indices, and grant different access levels to each. Click **Add index privilege** to grant additional access.
         ::::
 
-5. To grant access to dashboards in the `Marketing` space, locate the {{kib}} section, and click **Add {{kib}} privilege**:
+5. To grant access to dashboards in the `Marketing` space, locate the {{kib}} section, and select **Assign to space**:
 
-    1. From the **Spaces** dropdown, select the `Marketing` space.
+    1. In the **Select spaces** field, select the `Marketing` space.
     2. Expand the **Analytics** section, and select the **Read** privilege for **Dashboard**.
-    3. Click **Add {{kib}} privilege**.
+    3. Select **Assign role**.
 
 6. Click **Create role**.
 

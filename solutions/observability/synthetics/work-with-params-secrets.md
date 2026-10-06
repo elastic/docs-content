@@ -61,10 +61,11 @@ To add the **Can read global parameter values** {{kib}} privilege to a role:
 
 1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Edit an existing role or select **Create role**.
-1. From the **Kibana** section, select **Add Kibana privilege**.
+1. From the **Kibana** section, select **Assign to space**.
 1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
 2. Turn on **Customize sub-feature privileges**.
 3. Turn on **Can read global parameter values**.
+4. Select **Assign role**.
 
 Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for more on creating custom roles.
 
