@@ -137,6 +137,8 @@ links:
 :::{link-card}
 title: Find your way around
 links:
+  - label: Explore and analyze
+    url: /explore-analyze.md
   - label: The Kibana interface
     url: /explore-analyze/find-and-organize/kibana-interface.md
   - label: Find apps and objects
@@ -162,7 +164,7 @@ links:
   - label: Kibana API
     url: https://www.elastic.co/docs/api/doc/kibana
   - label: Serverless Kibana API
-    url: https://www.elastic.co/docs/api/doc/serverless-kibana
+    url: https://www.elastic.co/docs/api/doc/serverless
 :::
 
 :::{link-card}
@@ -174,6 +176,8 @@ links:
     url: kibana://reference/advanced-settings.md
   - label: Security settings
     url: kibana://reference/configuration-reference/security-settings.md
+  - label: Command line tools
+    url: kibana://reference/commands.md
 :::
 ::::
 
@@ -223,6 +227,8 @@ links:
     url: /deploy-manage/production-guidance/kibana-in-production-environments.md
   - label: Upgrade Kibana
     url: /deploy-manage/upgrade/deployment-or-cluster.md
+  - label: Upgrade Assistant
+    url: /deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant.md
   - label: Logging
     url: /deploy-manage/monitor/logging-configuration/kibana-logging.md
 :::
@@ -412,6 +418,8 @@ links:
     url: /explore-analyze/ai-features/agent-builder/agent-builder-agents.md
   - label: Custom tools
     url: /explore-analyze/ai-features/agent-builder/tools/custom-tools.md
+  - label: MCP server
+    url: /explore-analyze/ai-features/agent-builder/mcp-server.md
 :::
 
 :::{link-card}
@@ -463,6 +471,8 @@ title: Query languages
 links:
   - label: Kibana Query Language (KQL)
     url: /explore-analyze/query-filter/languages/kql.md
+  - label: Lucene query syntax
+    url: /explore-analyze/query-filter/languages/lucene-query-syntax.md
   - label: ES|QL
     url: /explore-analyze/query-filter/languages/esql-kibana.md
   - label: Query DSL
@@ -549,6 +559,8 @@ links:
     url: /troubleshoot/kibana.md
   - label: Alerts
     url: /troubleshoot/kibana/alerts.md
+  - label: Server not ready
+    url: /troubleshoot/kibana/error-server-not-ready.md
 :::
 
 :::{link-card}
