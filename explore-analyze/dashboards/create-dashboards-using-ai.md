@@ -42,6 +42,16 @@ Use {{agent-builder}} when you want to:
 
 Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
+### Enhance your dashboard with AI [enhance-dashboard-with-ai]
+```{applies_to}
+serverless: experimental
+stack: experimental 9.6+
+```
+
+If a dashboard already exists but needs tidying, select **Enhance** in the dashboard header while you edit it. An agent reviews what the {{esql}} panels measure, then asks whether to improve **Appearance only** or **Appearance and content**. **Appearance only** keeps every panel and query. **Appearance and content** can also add, change, replace, or remove panels. Both modes reset the chart presentation of {{esql}} visualizations to the defaults, which replaces any custom styling.
+
+For the requirements, how to undo the changes, and the full workflow, refer to [Enhance your dashboard with AI](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#enhance-dashboard). For the layout practices the agent applies, refer to [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout).
+
 ## {{product.kibana}} dashboards agent skill [dashboards-agent-skill]
 ```{applies_to}
 stack: preview 9.4+
