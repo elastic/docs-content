@@ -146,6 +146,8 @@ Replace `ai-index-ds-customer_support` and the selected fields with values retur
 
 The query operation applies the current {{kib}} space to the request and returns only documents visible in that space. Do not add a space condition to the {{esql}} query.
 
+By default, the query operation returns only active, unexpired KIs. For an AI index backed by a data stream, it also returns only the latest revision of each KI. To query deleted or expired KIs, add conditions that reference `governance.lifecycle.status` or `expires_at`. When a query references either field, the operation does not apply the corresponding default filter.
+
 ## Query with tools [query-with-tools]
 
 An agent can perform the retrieval sequence when its integration provides access to the list, describe, and query operations. How those operations become available depends on the integration:
@@ -181,5 +183,5 @@ Use the following table to resolve common retrieval problems:
 | An expected AI index is not listed. | The credential cannot read its backing index, or the AI index is registered in another space. | Check the credential's index privileges and the space targeted by the request. |
 | A query returns `Unknown index` for an AI index that was listed. | The AI index is registered, but its backing index does not exist yet. | Select an AI index that contains data. |
 | A query returns no rows even though the AI index contains data. | The request targets the wrong space, or the query contains its own space condition. | Target the correct space and remove any space condition from the query. |
-| The describe operation omits KI types or tags. | The credential cannot read the backing indices, or `type` and `tags` are not mapped as aggregatable keywords. | Check the index privileges and mappings. Other describe output remains available. |
+| The describe operation omits KI types or tags. | `type` or `tags` is not mapped as an aggregatable keyword field, or the AI index has no active, unexpired KIs. | Check the mappings, or run an automation to generate KIs. Other describe output remains available. |
 | The response is too large. | The result exceeds the 20 MB response limit. | Use `KEEP` to return only the required fields, lower the result limit, or aggregate the data with `STATS`. |
