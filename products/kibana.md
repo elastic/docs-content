@@ -138,7 +138,7 @@ links:
 title: Find your way around
 links:
   - label: Explore and analyze
-    url: /explore-analyze.md
+    url: /explore-analyze/index.md
   - label: The Kibana interface
     url: /explore-analyze/find-and-organize/kibana-interface.md
   - label: Find apps and objects
@@ -165,6 +165,8 @@ links:
     url: https://www.elastic.co/docs/api/doc/kibana
   - label: Serverless Kibana API
     url: https://www.elastic.co/docs/api/doc/serverless
+  - label: Agent Builder MCP API
+    url: https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-mcp
 :::
 
 :::{link-card}
@@ -216,6 +218,10 @@ links:
     url: /deploy-manage/deploy/self-managed/install-kibana.md
   - label: Docker
     url: /deploy-manage/deploy/self-managed/install-kibana-with-docker.md
+  - label: Windows
+    url: /deploy-manage/deploy/self-managed/install-kibana-on-windows.md
+  - label: Debian and Ubuntu
+    url: /deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md
   - label: Configure (kibana.yml)
     url: /deploy-manage/deploy/self-managed/configure-kibana.md
 :::
@@ -374,6 +380,8 @@ links:
     url: /explore-analyze/alerting/alerts/create-manage-rules.md
   - label: View alerts
     url: /explore-analyze/alerting/alerts/view-alerts.md
+  - label: Rule action variables
+    url: /explore-analyze/alerting/alerts/rule-action-variables.md
 :::
 
 :::{link-card}
@@ -400,12 +408,29 @@ links:
     url: kibana://reference/connectors-kibana/jira-action-type.md
   - label: PagerDuty
     url: kibana://reference/connectors-kibana/pagerduty-action-type.md
+  - label: Email
+    url: kibana://reference/connectors-kibana/email-action-type.md
+  - label: Microsoft Teams
+    url: kibana://reference/connectors-kibana/teams-action-type.md
 :::
 ::::
 
 ::::{card-group}
 :title: AI and Workflows
 :id: ai-automation
+
+:::{link-card}
+title: AI features
+links:
+  - label: AI-powered features
+    url: /explore-analyze/ai-features.md
+  - label: AI agent skills
+    url: /explore-analyze/ai-features/agent-skills.md
+  - label: Connect to LLMs
+    url: /explore-analyze/ai-features/llm-guides/llm-connectors.md
+  - label: Elastic Managed LLMs
+    url: kibana://reference/connectors-kibana/elastic-managed-llm.md
+:::
 
 :::{link-card}
 title: Agent Builder
@@ -471,6 +496,8 @@ title: Query languages
 links:
   - label: Kibana Query Language (KQL)
     url: /explore-analyze/query-filter/languages/kql.md
+  - label: KQL reference
+    url: elasticsearch://reference/query-languages/kql.md
   - label: Lucene query syntax
     url: /explore-analyze/query-filter/languages/lucene-query-syntax.md
   - label: ES|QL
@@ -519,6 +546,10 @@ links:
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md
   - label: Cloud organization authentication
     url: /deploy-manage/users-roles/cloud-organization.md
+  - label: SAML
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/saml.md
+  - label: OpenID Connect
+    url: /deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md
 :::
 
 :::{link-card}
@@ -564,8 +595,10 @@ links:
 :::
 
 :::{link-card}
-title: Capture diagnostics
+title: Check server health
 links:
+  - label: Server status
+    url: /troubleshoot/kibana/access.md
   - label: Capture Kibana diagnostics
     url: /troubleshoot/kibana/capturing-diagnostics.md
   - label: Server logs
