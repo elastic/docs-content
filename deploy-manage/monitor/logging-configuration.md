@@ -10,7 +10,7 @@ products:
 ---
 # Operational logging
 
-You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations and diagnose issues.
+You can configure several types of logs in {{stack}} that provide insight into operations and diagnose issues.
 
 :::{admonition} Looking for audit, query, or slow logs?
 To track security events, query activity, and other user actions, refer to [](/deploy-manage/monitor/activity-logging.md).

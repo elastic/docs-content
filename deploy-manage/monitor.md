@@ -126,11 +126,9 @@ Elastic monitors [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) service me
 ## Activity logging
 ```{applies_to}
 stack: ga
-deployment: 
-  ech: ga
 ```
 
-Activity logging records actions taken by users and systems, such as authentication events, search queries, and configuration changes. Use these logs for security auditing, compliance, and debugging.
+[Activity logging](./monitor/activity-logging.md) records actions taken by users and systems, such as authentication events, search queries, and configuration changes. Use these logs for security auditing, compliance, and debugging.
 
 | Feature | Description | Availability |
 |---|---|---|
