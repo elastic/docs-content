@@ -128,7 +128,7 @@ Elastic monitors [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) service me
 stack: ga
 ```
 
-[Activity logging](./monitor/activity-logging.md) records actions taken by users and systems, such as authentication events, search queries, and configuration changes. Use these logs for security auditing, compliance, and debugging.
+Activity logging records actions taken by users and systems, such as authentication events, search queries, and configuration changes. Use these logs for security auditing, compliance, and debugging.
 
 | Feature | Description | Availability |
 |---|---|---|
@@ -136,6 +136,8 @@ stack: ga
 | [](./monitor/cloud-audit-trail.md) | Audit organization-level actions such as sign-in activity, deployment management, user and role changes, and API key usage. | {applies_to}`ech: ga` {{fedramp-mod}} only |
 | [](./monitor/logging-configuration/query-logs.md) | Log every search, {{esql}}, SQL, or EQL query for analysis and debugging. | {applies_to}`stack: preview 9.4` |
 | [](./monitor/logging-configuration/slow-logs.md) | Identify slow queries and indexing operations. | {applies_to}`stack: ga` |
+
+For more information about these features, and when to use each one, refer to [](./monitor/activity-logging.md)
 
 ## Operational logging
 ```{applies_to}
