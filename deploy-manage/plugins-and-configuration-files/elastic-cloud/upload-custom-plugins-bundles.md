@@ -19,18 +19,17 @@ Uploaded files are stored in highly available object storage so {{ecloud}} does 
 
 ## Before you begin [ec_before_you_begin_7]
 
-The selected plugins/bundles are downloaded and provided when a node starts. Changing a plugin does not change it for nodes already running it. Refer to [Replace an extension](#ec-update-bundles-and-plugins).
+Before you upload your first custom plugin or bundle, review the following considerations:
 
-Custom plugins can add capabilities to your deployment, but they can also cause failures. Elastic does not guarantee that custom code will work correctly.
+* The selected plugins and bundles are downloaded and provided when a node starts. Changing a plugin does not change it for nodes already running it. Refer to [Replace an extension](#ec-update-bundles-and-plugins).
 
-::::{important}
-You cannot edit or delete a custom extension after it has been used in a deployment. To remove it from your deployment, you can disable the extension and update your deployment configuration.
-::::
+* Custom plugins can add capabilities to your deployment, but they can also cause failures. Elastic does not guarantee that custom code will work correctly.
 
+* You cannot edit or delete a custom extension after it has been used in a deployment. To remove it from your deployment, you can disable the extension and update your deployment configuration.
 
-Uploaded files cannot be bigger than 20MB for most subscription levels, for Platinum and Enterprise the limit is 8GB.
+* Your extension file size limit depends on your subscription level. For Platinum and Enterprise subscriptions, the limit is 8GB. For all other subscription levels, the limit is 20MB.
 
-It is important that plugins and dictionaries that you reference in mappings and configurations are available at all times. For example, if you try to upgrade {{es}} and de-select a dictionary that is referenced in your mapping, the new nodes will be unable to recover the cluster state and function. This is true even if the dictionary is referenced by an empty index you do not actually use.
+* It is important that plugins and dictionaries that you reference in mappings and configurations are available at all times. For example, if you try to upgrade {{es}} and de-select a dictionary that is referenced in your mapping, the new nodes will be unable to recover the cluster state and function. This is true even if the dictionary is referenced by an empty index you do not actually use.
 
 
 ## Prepare your files for upload [ec-prepare-custom-bundles]
@@ -171,69 +170,9 @@ To replace an extension with a new file version:
 
 Use the extensions API to upload plugins and bundles programmatically. You must use the API for extensions larger than 200MB; the Cloud UI supports uploads up to that size. You must also use the API for automation or when your ZIP file is not reachable from a public URL in a single request.
 
-Before you start, create an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). To manage extensions after upload, add them to a deployment, update metadata, or delete them. Refer to [Managing plugins and extensions through the API](manage-plugins-extensions-through-api.md). For the complete HTTP reference, see [Extensions API]({{cloud-apis}}group/endpoint-extensions).
+Before you start, create an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). You can then create an extension in one of two ways:
 
-### Upload from a local file [ec_method_1_use_http_post_to_create_metadata_and_then_upload_the_file_using_http_put]
+* [Stream the file from a download URL](manage-plugins-extensions-through-api.md#ec-extension-guide-create-option1), in a single request. This method is required for plugins larger than 200MB.
+* [Upload the file from a local file path](manage-plugins-extensions-through-api.md#ec-extension-guide-create-option2), by creating the extension metadata first and uploading the ZIP file in a second request.
 
-Create the extension metadata first, then upload the ZIP file in a second request.
-
-1. Create metadata:
-
-```text
-curl -XPOST \
--H "Authorization: ApiKey $EC_API_KEY" \
--H 'content-type:application/json' \
-https://api.elastic-cloud.com/api/v1/deployments/extensions \
--d'{
-  "name" : "synonyms-v1",
-  "description" : "The best synonyms ever",
-  "extension_type" : "bundle",
-  "version" : "7.*"
-}'
-```
-
-2.  Upload the file:
-
-```text
-curl -XPUT \
--H "Authorization: ApiKey $EC_API_KEY" \
-"https://api.elastic-cloud.com/api/v1/deployments/extensions/$extension_id" \
--T /tmp/synonyms.zip
-```
-
-If you are using a client that does not have native `application/zip` handling like `curl`, be sure to use the equivalent of the following with `content-type: multipart/form-data`:
-
-```text
-curl -XPUT \
--H 'Expect:' \
--H 'content-type: multipart/form-data' \
--H "Authorization: ApiKey $EC_API_KEY" \
-"https://api.elastic-cloud.com/api/v1/deployments/extensions/$extension_id" -F "file=@/tmp/synonyms.zip"
-```
-
-For example, using the Python `requests` module, the `PUT` request would be as follows:
-
-```text
-import requests
-files = {'file': open('/tmp/synonyms.zip','rb')}
-r = requests.put('https://api.elastic-cloud.com/api/v1/deployments/extensions/{}'.format(extension_id), files=files, headers= {'Authorization': 'ApiKey {}'.format(EC_API_KEY)})
-```
-
-
-### Upload from a download URL [ec_method_2_single_step_use_a_download_url_so_that_the_api_server_downloads_the_object_at_the_specified_url]
-
-When your ZIP is hosted at a publicly accessible URL, create the extension in one request. {{ecloud}} downloads and validates the file from the URL you provide. This method is required for plugins larger than 200MB.
-
-```text
-curl -XPOST \
--H "Authorization: ApiKey $EC_API_KEY" \
--H 'content-type:application/json' \
-https://api.elastic-cloud.com/api/v1/deployments/extensions \
--d'{
-  "name" : "anylysis_icu",
-  "description" : "Helpful description",
-  "extension_type" : "plugin",
-  "version" : "7.13.2",
-  "download_url": "https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-7.13.2.zip"
-}'
-```
+To add an extension to a deployment, update its metadata, or delete it afterwards using the {{ecloud}} API, refer to [](manage-plugins-extensions-through-api.md). For the complete HTTP reference, see [Extensions API]({{cloud-apis}}group/endpoint-extensions).

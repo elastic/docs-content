@@ -16,11 +16,7 @@ You can also add configuration files such as synonym dictionaries, SAML metadata
 
 Refer to [](/deploy-manage/plugins-and-configuration-files.md) for options that apply to other deployment types.
 
-## Choose an approach
-
-The approach depends on what you are adding. Plugins require a custom container image or an init container. Configuration files can be mounted from a ConfigMap or Secret.
-
-### Install plugins
+## Install {{es}} plugins [install-plugins]
 
 Custom container images and init containers install the same plugins. They differ in when the installation occurs: a custom image includes the plugins at build time, while an init container installs them each time a pod starts. This determines the infrastructure you need to maintain, how quickly nodes become ready, and whether node startup depends on network access.
 
@@ -30,11 +26,9 @@ With [init containers](init-containers-for-plugin-downloads.md), an init contain
 
 Use a custom image when reproducibility and predictable startup are priorities, such as in production environments. Use init containers when you need to iterate quickly, or when maintaining a container registry and build pipeline is not practical.
 
-### Add configuration files
+## Add configuration files [add-configuration-files]
 
 To make files such as synonym dictionaries, certificates, or SAML metadata available to {{es}}, [mount them from a ConfigMap or Secret](custom-configuration-files-plugins.md) using a volume and volume mount. This is the standard Kubernetes way to get files into a pod, and file content stays managed as Kubernetes objects, so updating a file means updating the ConfigMap or Secret instead of rebuilding an image. The trade-off is that you maintain those objects alongside your {{es}} manifests.
-
-This approach cannot install plugins. If you need both, combine it with a custom image or init containers.
 
 ## {{kib}} plugins
 
