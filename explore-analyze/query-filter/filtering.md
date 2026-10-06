@@ -48,7 +48,7 @@ When you enter the time range as text, the time filter interprets a single value
 | Date math | `now-15m`, `now/w`, and other [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) expressions. |
 | Preset labels | `Last 24 hours` or any other range listed under **Presets**. |
 
-If you enter a range with a rounding unit, such as `-1y/y`, the time filter adds **(rounded)** after its label. To learn what rounding does and when the suffix appears, refer to [Round relative time ranges](#round-relative-time-ranges).
+If you enter a range with an offset and a rounding unit, such as `-1y/y`, the time filter adds **(rounded)** after its label. To learn what rounding does and when the suffix appears, refer to [Round relative time ranges](#round-relative-time-ranges).
 
 The time filter can also give you the text for a range:
 
@@ -64,7 +64,7 @@ Optionally, you can:
     - Turn **Round relative time ranges** on or off to [round relative ranges automatically](#round-relative-time-ranges).
     - Under **Absolute time range**, select whether timestamps show **Minutes**, **Seconds**, or **Milliseconds**.
 
-- Save the current range as a preset for later reuse with {icon}`save`, or select **Save as preset** when applying a range from the **Calendar** or **Custom range** panels. Saving a preset also applies the range, and saved ranges appear under **Presets**. User-created presets are personal to your user profile, and you can save up to 40. To delete a user-created preset, point to it under **Presets** and select {icon}`trash` **Delete preset**. Ranges from the [**Time filter quick ranges**](kibana://reference/advanced-settings.md#timepicker-quickranges) advanced setting stay in the list, show the label configured for each range, and cannot be deleted.
+- Save the current range as a preset for later reuse with {icon}`save`, or select **Save as preset** when applying a range from the **Calendar** or **Custom range** panels. Saving a preset also applies the range, and saved ranges appear under **Presets**. User-created presets are personal to your user profile, and you can save up to 40. To delete a user-created preset, point to it under **Presets** and select {icon}`trash` **Delete preset**. Ranges from the [**Time filter quick ranges**](kibana://reference/advanced-settings.md#timepicker-quickranges) advanced setting stay in the list under the label configured for each range and cannot be deleted.
 
 - Step through time with the buttons next to the time range: **Previous** and **Next** shift the range backward or forward by its own duration, and **Zoom out** and **Zoom in** widen or narrow it.
 ::::
@@ -102,9 +102,9 @@ serverless: preview
 
 Rounding makes a relative range start or end on the edge of a time unit instead of at the exact offset from now. For example, `-1y` starts exactly one year ago, and `-1y/y` starts at the beginning of last year.
 
-To round a bound yourself, add a rounding unit after the offset. In `-1y/y`, the `/y` rounds the bound to a year. A rounded start moves down to the beginning of that unit, and a rounded end moves up to the end of it. The rounding unit uses the same syntax as [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math).
+To round the start or end of a range yourself, add a rounding unit after the offset. In `-1y/y`, the `/y` rounds the start to a year. A rounded start moves down to the beginning of that unit, and a rounded end moves up to the end of it. The rounding unit uses the same syntax as [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math).
 
-To round every relative range automatically, open {icon}`gear` **Settings** and turn on **Round relative time ranges**. The setting is off by default. When it's on, the time filter adds a rounding unit to each bound that has an offset and no rounding unit. The added unit depends on the unit of the offset:
+To round every relative range automatically, open {icon}`gear` **Settings** and turn on **Round relative time ranges**. The setting is off by default. When it's on, the time filter adds a rounding unit to each start or end that is a single offset from now and has no rounding unit. The added unit depends on the unit of the offset:
 
 | Offset unit | Rounds to | Example |
 | --- | --- | --- |
@@ -113,9 +113,11 @@ To round every relative range automatically, open {icon}`gear` **Settings** and 
 | Days | Hours | `-7d` becomes `-7d/h` |
 | Weeks, months, or years | Days | `-1y` becomes `-1y/d` |
 
-Bounds without an offset, such as `now`, stay as they are.
+A start or end without an offset, such as `now`, stays as it is.
 
-When a range is rounded, the time filter adds **(rounded)** after its label on the time filter button and in the **Presets** and **Recent** lists. For example, `-1y/y` shows Last 1 year (rounded), and `-1y` shows Last 1 year. A list entry shows the suffix only if its own range includes a rounding unit. As a result, turning on **Round relative time ranges** adds the suffix to the button for the range you apply, but not to list entries. Ranges that cover exactly one calendar day, week, month, or year, such as Today and Yesterday, don't get the suffix.
+When a range has an offset and a rounding unit, the time filter adds **(rounded)** after its label on the time filter button and in the **Presets** and **Recent** lists. For example, `-1y/y` shows Last 1 year (rounded), and `-1y` shows Last 1 year.
+
+A list entry shows the suffix only if its own range has an offset and a rounding unit. With **Round relative time ranges** on, the ranges you apply are saved with the added rounding unit, so they show the suffix in **Recent**. A preset whose own range has no rounding unit doesn't show it in **Presets**, but with the setting on, the button shows it after you select that preset. Ranges that cover exactly one calendar day, week, month, or year, such as Today and Yesterday, don't get the suffix.
 
 ## Additional filters [autocomplete-suggestions]
 
