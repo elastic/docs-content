@@ -515,6 +515,8 @@ links:
     url: /deploy-manage/deploy/self-managed/install-kibana-on-windows.md
   - label: Debian and Ubuntu
     url: /deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md
+  - label: RPM
+    url: /deploy-manage/deploy/self-managed/install-kibana-with-rpm.md
   - label: Linux and macOS archive
     url: /deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md
 :::
