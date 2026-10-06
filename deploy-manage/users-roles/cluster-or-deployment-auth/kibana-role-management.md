@@ -165,7 +165,7 @@ To view a summary of the privileges granted, click **View privilege summary**.
 1. Click **Assign to space**.
 2. In the **Select spaces** field, select an individual space.
 3. For **Define privileges**, leave the default selection of **Customize**.
-4. For the **Dashboard** and **Visualize library** features, select **All**.
+4. For the **Dashboard** and **Visualize library** features, select **All**. **Dashboard** alone gives read-only access to the visualizations on a dashboard, so **Visualize library** lets users create and edit them.
 5. Click **Assign role**.
 
 <br>
