@@ -40,11 +40,10 @@ Plugins are uploaded as ZIP files. You need to choose whether your uploaded file
 To prepare your files, create one of the following:
 
 Plugins
-:   A plugin is a ZIP file that contains a plugin descriptor file and binaries.
+:   Use a plugin to add functionality to {{es}}: a custom or third-party plugin that {{ech}} does not provide, or one that you write yourself.
 
-    The plugin descriptor file is called either `stable-plugin-descriptor.properties` for plugins built against the stable plugin API, or `plugin-descriptor.properties` for plugins built against the classic plugin API. A plugin ZIP file should only contain one plugin descriptor file.
-
-    {{es}} assumes that the uploaded ZIP file contains binaries. If it finds any source code, it fails with an error message, causing provisioning to fail. Make sure you upload binaries, and not source code.
+    :::{include} /deploy-manage/plugins-and-configuration-files/_snippets/plugin-structure.md
+    :::
 
     ::::{note}
     Plugins larger than 5GB should have the plugin descriptor file at the top of the archive. This order can be achieved by specifying at time of creating the ZIP file:
@@ -57,7 +56,12 @@ Plugins
 
 
 Bundles
-:   The entire content of a bundle is made available to the node by extracting to the {{es}} container’s `/app/config` directory. This is useful to make custom dictionaries available. Dictionaries should be placed in a `/dictionaries` folder in the root path of your ZIP file.
+:   Use a bundle to make configuration files, such as custom dictionaries or SAML metadata, available to every node.
+
+    :::{include} /deploy-manage/plugins-and-configuration-files/_snippets/bundle-structure.md
+    :::
+
+    Dictionaries are the exception. Place them in a `/dictionaries` folder in the root path of your ZIP file, and their contents are extracted directly to `/app/config` rather than to an `/app/config/dictionaries` subfolder.
 
     Here are some examples of bundles:
 
@@ -85,7 +89,7 @@ Bundles
     `dictionaries` is the only exception. Don't "correct" this to `dictionaries/synonyms.txt`.
     -->
     
-    The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the synonym token filter. Unlike other folders in a bundle, the contents of `dictionaries` are placed directly in the configuration directory rather than in a `dictionaries` subfolder.
+    The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the synonym token filter.
 
     To learn more about analyzing with synonyms, check [Synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
 

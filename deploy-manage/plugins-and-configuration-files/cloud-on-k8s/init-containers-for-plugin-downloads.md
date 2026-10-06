@@ -10,7 +10,7 @@ products:
 navigation_title: Init containers
 ---
 
-# Install plugins with init containers [k8s-init-containers-plugin-downloads]
+# Install plugins with init containers on {{eck}} [k8s-init-containers-plugin-downloads]
 
 Use an init container to run [`elasticsearch-plugin install`](elasticsearch://reference/elasticsearch-plugins/installation.md) before the main {{es}} container starts. Each new node repeats the download, so the pods need network access to reach the plugin source.
 
@@ -36,9 +36,7 @@ spec:
 For more information on how init containers behave in Kubernetes, refer to the [Kubernetes init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) documentation.
 
 :::{tip}
-You can also override the {{es}} container image to use your own image with the plugins already installed, as described in [Create custom 
-images](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md). For more information, refer to [Add plugins and 
-configuration files in {{eck}}](manage-plugins.md).
+You can also build the plugins into your own {{es}} image, as described in [Create custom images](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md). To compare that approach with init containers, refer to [Add plugins and configuration files in {{eck}}](manage-plugins.md).
 :::
 
 
@@ -76,5 +74,3 @@ spec:
             bin/elasticsearch-plugin install --batch repository-s3
             /bin/tini -- /usr/local/bin/docker-entrypoint.sh
 ```
-
-To compare this approach with a custom image or ConfigMaps, refer to [Add plugins and configuration files in {{eck}}](manage-plugins.md).

@@ -28,6 +28,6 @@ You can add plugins to a deployment in one of two ways, depending on whether {{e
 
 On {{ece}}, you reference a bundle ZIP from an HTTP or HTTPS URL rather than uploading the file. To prepare and attach a bundle, refer to [Add custom bundles and plugins](add-custom-bundles-plugins.md).
 
-## Include additional {{kib}} plugins
+## Include {{kib}} plugins
 
 Unlike {{ech}}, {{ece}} supports additional {{kib}} plugins in certain cases by including them in a custom {{kib}} Docker image and updating your stack pack. Refer to [Include additional {{kib}} plugins](ece-include-additional-kibana-plugin.md).
