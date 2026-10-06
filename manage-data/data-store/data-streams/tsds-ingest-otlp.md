@@ -14,7 +14,7 @@ products:
 
 {{es}} accepts [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp) metrics on `/_otlp/v1/metrics`, one of the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) paths.
 The endpoint is a native ingest API, like the [bulk API]({{es-apis}}operation/operation-bulk).
-To decide how to send OpenTelemetry metrics to {{es}}, refer to [When to use the {{es}} OTLP endpoint](/manage-data/ingest/otlp-endpoint.md#when-to-use).
+To decide whether to use the OTLP endpoint for OpenTelemetry metrics, refer to [When to use the {{es}} OTLP endpoint](/manage-data/ingest/otlp-endpoint.md#when-to-use).
 In most setups, applications send metrics to the {{motlp}} or to an [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) rather than to this endpoint.
 
 {{es}} stores metrics that arrive on `/_otlp/v1/metrics` as follows:
