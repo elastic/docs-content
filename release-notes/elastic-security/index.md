@@ -100,7 +100,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Keeps the Agent Builder `security.alerts` tool scoped to the current {{kib}} space [#276488]({{kib-pull}}276488).
 * Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
 * Increases the {{elastic-defend}} event buffer size.
-* Updates a `c-ares` dependency in {{elastic-defend}} on Linux to resolve [CVE-2024-25629](https://github.com/c-ares/c-ares/security/advisories/GHSA-mg26-v6qh-x48q). The gRPC-bundled `c-ares` snapshot (~1.19) is unchanged and is tracked separately pending a gRPC version upgrade.
 
 ## 9.5.3 [elastic-security-9.5.3-release-notes]
 
