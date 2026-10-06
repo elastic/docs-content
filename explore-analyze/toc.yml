@@ -279,6 +279,10 @@ toc:
                 children:
                   - file: ai-features/context-engine/use-context-engine-with-agent-builder.md
                   - file: ai-features/context-engine/langchain-integration.md
+                  - file: ai-features/context-engine/use-context-engine-with-claude-code.md
+                    # children:
+                    #   # Tracked by https://github.com/elastic/search-team/issues/16315.
+                    #   - file: ai-features/context-engine/send-claude-code-telemetry.md
           - file: ai-features/context-engine/context-engine-api.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
