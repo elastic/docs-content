@@ -87,7 +87,7 @@ When you create a custom role, click **Assign to space** to grant access to spec
 :screenshot:
 :::
 
-Open the **Select spaces** menu to specify whether to grant the role access to all spaces or one or more individual spaces. When you select **Customize**, you can choose either **All**, **Read** or **None** for access to each feature.
+Open the **Select spaces** field to specify whether to grant the role access to all spaces or one or more individual spaces. When you select **Customize**, you can choose either **All**, **Read** or **None** for access to each feature.
 
 All
 :   Grants full read-write access.
