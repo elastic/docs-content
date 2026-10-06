@@ -435,11 +435,13 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   context-engine: "Context Engine"
+  # AlertZero
   alertzero: "AlertZero"
   az-watch: "Watch"
   az-watches: "Watches"
   az-worker: "Worker"
   az-workers: "Workers"
+  # The product glossary calls this a "Proposal." The docs use "proposed action." Confirm before release.
   az-proposed-action: "proposed action"
   az-proposed-actions: "proposed actions"
   az-proposed-action-cap: "Proposed action"
@@ -448,6 +450,7 @@ subs:
   az-escalations: "escalations"
   az-escalation-cap: "Escalation"
   az-escalations-cap: "Escalations"
+  # Autonomy level names aren't final.
   az-manual: "Manual"
   az-assisted: "Assisted"
   az-supervised: "Supervised"
@@ -455,6 +458,8 @@ subs:
   az-detection-watch: "Detection Watch"
   az-hunt-watch: "Hunt Watch"
   az-forensics-watch: "Forensics Watch"
+  # Only Endpoint Analysis is locked. Add the other Worker names once they are. Their names and
+  # capitalization vary across sources, for example "Rule coverage" and "Rule Creation."
   az-endpoint-analysis: "Endpoint Analysis"
   kube-stack-version: 0.16.0
   helm-version: 4.3.0
