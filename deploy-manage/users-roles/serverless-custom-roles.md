@@ -80,7 +80,7 @@ Document-level and field-level security affords you even more granularity when i
 
 ## {{kib}} privileges [custom-roles-kib-privileges]
 
-When you create a custom role, select **Assign to space** to grant access to specific features. The features that are available vary depending on the project type. For example, in {{es-serverless}}:
+When you create a custom role, click **Assign to space** to grant access to specific features. The features that are available vary depending on the project type. For example, in {{es-serverless}}:
 
 :::{image} /deploy-manage/images/serverless-custom-roles-kibana-privileges.png
 :alt: Create a custom role and define {{kib}} privileges
@@ -101,7 +101,7 @@ None
 Some features have finer access control and you can optionally enable sub-feature privileges.
 
 ::::{admonition} New features
-As new features are added to {{serverless-full}}, roles that use the custom option do not automatically get access to the new features. You must manually update the roles.
+As new features are added to {{serverless-full}}, roles that use the **Customize** option do not automatically get access to the new features. You must manually update the roles.
 ::::
 
 ## Assign custom roles

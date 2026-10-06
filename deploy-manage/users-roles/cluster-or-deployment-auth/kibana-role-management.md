@@ -108,7 +108,7 @@ You can assign the same privileges, document-level, and field-level as for [loca
 
 ## {{kib}} privileges [adding_kibana_privileges]
 
-To assign {{kib}} privileges to the role, select **Assign to space** in the {{kib}} section.
+To assign {{kib}} privileges to the role, click **Assign to space** in the {{kib}} section.
 
 <br>
 :::{image} /deploy-manage/images/kibana-spaces-roles.png
@@ -121,14 +121,14 @@ Open the **Select spaces** control to specify whether to grant the role access t
 
 Use **Define privileges** to grant access to features. The default is **Customize**, which you can use to grant access to individual features. Otherwise, you can grant read and write access to all current and future features by selecting **All**, or grant read access to all current and future features by selecting **Read**.
 
-When you select **Customize**, you can choose either **All**, **Read** or **None** for access to each feature. As new features are added to {{kib}}, roles that use the custom option do not automatically get access to the new features. You must manually update the roles.
+When you select **Customize**, you can choose either **All**, **Read** or **None** for access to each feature. As new features are added to {{kib}}, roles that use the **Customize** option do not automatically get access to the new features. You must manually update the roles.
 
 ::::{note}
 **{{stack-monitor-app}}** relies on built-in roles to grant access. When a user is assigned the appropriate roles, the **{{stack-monitor-app}}** application is available; otherwise, it is not visible.
 ::::
 
 
-To apply your changes, select **Assign role**. The privilege shows up under the {{kib}} privileges section of the role.
+To apply your changes, click **Assign role**. The privilege shows up under the {{kib}} privileges section of the role.
 
 <br>
 :::{image} /deploy-manage/images/kibana-create-space-privilege.png
@@ -151,7 +151,7 @@ Features are available to users when their roles grant access to the features, *
 
 ## Assigning different privileges to different spaces [_assigning_different_privileges_to_different_spaces]
 
-Using the same role, it’s possible to assign different privileges to different spaces. After you’ve added privileges, select **Assign to space**. If you’ve already added privileges for either **All Spaces** or an individual space, you will not be able to select these in the **Select spaces** control.
+Using the same role, it’s possible to assign different privileges to different spaces. After you’ve added privileges, click **Assign to space**. If you’ve already added privileges for either **All Spaces** or an individual space, you will not be able to select these in the **Select spaces** control.
 
 Additionally, if you’ve already assigned privileges at **All Spaces**, you are only able to assign additional privileges to individual spaces. Similar to the behavior of multiple roles granting the union of all privileges, {{kib}} privileges are also a union. If you’ve already granted the user the **All** privilege at **All Spaces**, you’re not able to restrict the role to only the **Read** privilege at an individual space.
 
@@ -162,11 +162,11 @@ To view a summary of the privileges granted, click **View privilege summary**.
 
 ## Example 1: Grant all access to Dashboard at an individual space [_example_1_grant_all_access_to_dashboard_at_an_individual_space]
 
-1. Select **Assign to space**.
+1. Click **Assign to space**.
 2. In the **Select spaces** field, select an individual space.
 3. For **Define privileges**, leave the default selection of **Customize**.
 4. For the **Dashboard** and **Visualize library** features, select **All**.
-5. Select **Assign role**.
+5. Click **Assign role**.
 
 <br>
 :::{image} /deploy-manage/images/kibana-privilege-example-1.png
@@ -178,14 +178,14 @@ To view a summary of the privileges granted, click **View privilege summary**.
 
 ## Example 2: Grant all access to one space and read access to another [_example_2_grant_all_access_to_one_space_and_read_access_to_another]
 
-1. Select **Assign to space**.
+1. Click **Assign to space**.
 2. In the **Select spaces** field, select the first space.
 3. For **Define privileges**, select **All**.
-4. Select **Assign role**.
-5. Select **Assign to space**.
+4. Click **Assign role**.
+5. Click **Assign to space**.
 6. In the **Select spaces** field, select the second space.
 7. For **Define privileges**, select **Read**.
-8. Select **Assign role**.
+8. Click **Assign role**.
 
 <br>
 :::{image} /deploy-manage/images/kibana-privilege-example-2.png
@@ -196,14 +196,14 @@ To view a summary of the privileges granted, click **View privilege summary**.
 
 ## Example 3: Grant read access to all spaces and write access to an individual space [_example_3_grant_read_access_to_all_spaces_and_write_access_to_an_individual_space]
 
-1. Select **Assign to space**.
+1. Click **Assign to space**.
 2. In the **Select spaces** field, select **All Spaces**.
 3. For **Define privileges**, select **Read**.
-4. Select **Assign role**.
-5. Select **Assign to space**.
+4. Click **Assign role**.
+5. Click **Assign to space**.
 6. In the **Select spaces** field, select the individual space.
 7. For **Define privileges**, select **All**.
-8. Select **Assign role**.
+8. Click **Assign role**.
 
 <br>
 :::{image} /deploy-manage/images/kibana-privilege-example-3.png

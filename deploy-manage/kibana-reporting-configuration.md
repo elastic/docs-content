@@ -99,7 +99,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
 3. Add the {{kib}} privileges.
 
-    1. Select **Assign to space**.
+    1. Click **Assign to space**.
     2. In the **Select spaces** field, select one or more spaces.
     3. Click **Customize**, then click **Analytics**.
     4. For each application, select **All**, or to customize the privileges, select **Read** and **Customize sub-feature privileges**.
@@ -115,7 +115,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         :screenshot:
         :::
 
-    5. Select **Assign role**.
+    5. Click **Assign role**.
 
 4. Click **Create role**.
 5. Assign the reporting role to a user.
