@@ -30,7 +30,7 @@ The global header holds the following elements.
 
 | Element | What it does |
 |---|---|
-| {icon}`logo_elastic` logo | Opens the home page of your current space. The page depends on your solution view. |
+| {icon}`logo_elastic` logo | Opens the home page of your current space. |
 | Deployment/Project name and space information | Lets you navigate to other deployments or projects. |
 | Space selector | Switch between the spaces your roles allow. Where you find it depends on your deployment type and version. Refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md) for the steps. |
 | {icon}`cross_project_search` {{cps-cap}} scope selector | {applies_to}`stack: unavailable` {applies_to}`serverless: ga` Sets which linked projects your searches include. It appears only when other projects are linked to yours. Refer to [{{cps-cap}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). |
