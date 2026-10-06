@@ -129,7 +129,7 @@ Do not add a link only to even the count. Leave a card short when it has only tw
 
 **Alerting.** Three cards: Kibana alerting (classic), Alerting V2, Alerting connectors. In Alerting connectors, order the popular connectors by traffic (Slack, Email, Microsoft Teams, Jira, PagerDuty).
 
-**AI and Workflows.** Five cards: AI features, Agent Builder, Workflows, AI Agent chat, Context connectors. AI features is the product-wide entry point: AI-powered features, AI agent skills, Connect to LLMs, and Elastic Managed LLMs. Agent Builder includes the MCP server guide. Do not add the deprecated AI Assistant. Context connectors lead with three popular connectors, then View all.
+**AI and Workflows.** Five cards: AI features, Agent Builder, Workflows, AI Agent chat, Context connectors. AI features is the product-wide entry point: AI-powered features, AI agent skills, Connect to LLMs, and Elastic Managed LLMs. Agent Builder includes the MCP server guide. AI assistants in Kibana meets the traffic threshold but stays off the hub as an editorial choice. Confirm with the hub owner before you add it. Context connectors lead with three popular connectors, then View all.
 
 **Query data.** Languages, Developer tools, Search across clusters (CCS, remote clusters, CPS). No query-languages overview item. Languages lists KQL, the KQL reference, Lucene, ES|QL, Query DSL, and SQL.
 
