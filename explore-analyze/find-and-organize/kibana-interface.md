@@ -30,7 +30,7 @@ The global header holds the following elements.
 
 | Element | What it does |
 |---|---|
-| {icon}`logo_elastic` logo | Opens the home page of your current space. |
+| {icon}`logo_elastic` logo | Opens the home page of your current space. The page depends on your solution view. |
 | Deployment/Project name and space information | Lets you navigate to other deployments or projects. |
 | Space selector | Switch between the spaces your roles allow. Where you find it depends on your deployment type and version. Refer to [Select and switch Kibana spaces](/deploy-manage/choose-and-switch-spaces.md) for the steps. |
 | {icon}`cross_project_search` {{cps-cap}} scope selector | {applies_to}`stack: unavailable` {applies_to}`serverless: ga` Sets which linked projects your searches include. It appears only when other projects are linked to yours. Refer to [{{cps-cap}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). |
@@ -38,6 +38,8 @@ The global header holds the following elements.
 | {icon}`question` **Help menu** | Opens links to the documentation, to support, and to the connection details of your project or deployment. |
 | AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
 | Your avatar | Opens the user menu, where you can change your appearance and language preferences, customize your navigation menu, and log out. |
+
+{applies_to}`observability: ga` {applies_to}`stack: ga 9.3+` If an administrator sets a default route for the space, the {icon}`logo_elastic` logo opens that route instead. Refer to [Customize {{kib}}'s home page](/deploy-manage/manage-spaces.md#spaces-default-route).
 
 ## Navigation menu
 
