@@ -15,7 +15,13 @@ products:
 
 # AI steps [workflows-ai-steps]
 
-AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution. All four AI step types share a connector-based auth model: configure a generative AI connector in {{kib}}, then reference it by ID from a workflow step. When `connector-id` is omitted, the default connector configured for the workflow is used.
+AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution. All four AI step types reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the default model configured for the workflow is used.
+
+:::{note}
+:applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
+
+Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`; the other AI steps currently take `connector-id` only.
+:::
 
 ## Step types
 
@@ -48,7 +54,7 @@ Call an LLM with a prompt. Supports optional structured output through a JSON Sc
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `connector-id` | top level | string | No | The GenAI connector to use. Defaults to the workflow's default connector if omitted. |
+| `connector-id` | top level | string | No | The Generative AI connector to use. Defaults to the workflow's default connector if omitted. |
 | `prompt` | `with` | string | Yes | Prompt text. Supports Liquid templating. |
 | `systemPrompt` | `with` | string | No | System prompt sent before the user prompt. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
@@ -103,7 +109,7 @@ Classify input into one of a fixed set of categories. Optionally includes a rati
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `connector-id` | top level | string | No | GenAI connector to use. |
+| `connector-id` | top level | string | No | Generative AI connector to use. |
 | `input` | `with` | string, array, or object | Yes | Input to classify. |
 | `categories` | `with` | array of string or object | Yes | Allowed categories. At least one required. Each entry is a plain category-name string. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Each entry can also be an object with `name` and `description`. |
 | `instructions` | `with` | string | No | Guidance for the classifier. |
@@ -176,7 +182,7 @@ Summarize content with an LLM. Input can be a string, an array, or an object.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `connector-id` | top level | string | No | GenAI connector to use. |
+| `connector-id` | top level | string | No | Generative AI connector to use. |
 | `input` | `with` | string, array, or object | Yes | Content to summarize. |
 | `instructions` | `with` | string | No | Summary guidance. |
 | `maxLength` | `with` | number | No | Approximate maximum length (positive integer). |
@@ -205,7 +211,7 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `agent-id` | top level | string | No | Agent to invoke. Defaults to the built-in Elastic AI Agent. |
-| `connector-id` | top level | string | No | GenAI connector. Mutually exclusive with `inference-id`. |
+| `connector-id` {applies_to}`serverless: deprecated` {applies_to}`stack: deprecated 9.5+` | top level | string | No | Generative AI connector. Mutually exclusive with `inference-id`. Generative AI connectors are deprecated, so use `inference-id` for new workflows. |
 | `inference-id` | top level | string | No | Inference endpoint ID. Mutually exclusive with `connector-id`. |
 | `create-conversation` | top level | boolean | No | When `true`, persist the conversation for follow-up steps or later reference. |
 | `public-conversation` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | top level | boolean | No | When `true`, make the conversation this step creates public. Any user who can access the agent can read and continue the conversation and see it in their conversation list. Only applies when `create-conversation` is `true`. Defaults to `false` (private). Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
@@ -263,7 +269,7 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
 
 ## Related
 
-- [Configured AI connectors](/deploy-manage/manage-connectors.md): Set up the GenAI connector referenced by `connector-id`.
+- [Configured AI connectors](/deploy-manage/manage-connectors.md): Set up the Generative AI connector referenced by `connector-id`.
 - [Switch step](/explore-analyze/workflows/steps/switch.md): A common pairing: classify with `ai.classify`, then dispatch with `switch`.
 - [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Pair AI classifications with a reviewer gate for uncertain cases.
 - [{{agent-builder}} overview](/explore-analyze/ai-features/elastic-agent-builder.md): Concepts behind the agents referenced by `ai.agent`.
