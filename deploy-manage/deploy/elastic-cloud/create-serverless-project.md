@@ -57,3 +57,4 @@ If {{kib}} loads as a blank page, check that your firewall, proxy, or secure web
 * [](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md): Get the {{es}} endpoint and API key that clients and tools need to connect to your project.
 * [](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure your project's features, add-ons, and other settings.
 
+If you have data in another {{es}} deployment, follow [Migrate to an {{es-serverless}} project](migrate-to-serverless.md) to plan your migration.
