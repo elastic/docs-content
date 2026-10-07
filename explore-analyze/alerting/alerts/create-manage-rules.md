@@ -45,7 +45,7 @@ For more information on alerting concepts and the types of rules and connectors 
 
 ## {{cps-cap}} scope for rules [cps-scope-for-rules]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 

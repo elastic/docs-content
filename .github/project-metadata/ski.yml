@@ -1,0 +1,148 @@
+version: 1
+
+project:
+  owner: elastic
+  number: 1034
+  url: https://github.com/orgs/elastic/projects/1034
+
+eligibility:
+  repositories:
+    - elastic/docs-content
+    - elastic/docs-content-internal
+  required_labels:
+    - Team:SKI
+
+fields:
+  Area:
+    type: single_select
+    enabled: true
+    excluded_options:
+      - "[Deprecated] Kibana core"
+      - "[Deprecated] Observability"
+      - "[Deprecated] Security"
+    guidance: |
+      Set Area to the best-matching option when you have reasonable confidence. You do not need the only conceivable match, just the clear best fit. Use the option's own scope, not just its name. The issue rarely uses the exact option string, so match on what the option covers. A single Area can cover many pages, paths, or tasks in one product.
+
+      Option coverage (what each Area includes):
+      - Signals: OTel SDKs, APM, LLM Observability, Logs, Synthetics (including private locations and Synthetics settings), Metrics, Hosts, Infrastructure. Paths under solutions/observability/* are almost always Signals.
+      - Streams: anything ingest-related. Logstash reference and plugin docs (including filter plugins such as grok), ingest pipelines and processors, Fleet, Elastic Agent, EDOT, Beats, Kafka, APM Server, managed inputs, and the Streams UI.
+      - Kib: Core Analytics: Dashboards and visualizations, Discover, ES|QL in Kibana, Machine Learning UI.
+      - Kib: ResponseOps: Rules and alerts, maintenance windows, task manager, reporting and sharing.
+      - Kib: AI Framework: AI infra, Context engine, Agent Builder, Skills, connector framework, AI Assistant infrastructure.
+      - Kib: UX: Chrome and navigation.
+      - Nightshift: Significant events, RnA (including Kibana Alerting v2), SLOs, Code Intelligence.
+      - SIEM: threat detection, alert triage and investigation, entity analytics, security workflows, seamless data ingest for security, NotDayBreak, AlertZero.
+      - XDR: endpoint and cloud protection, endpoint management, and security integrations.
+      - Integrations: standalone Elastic integration and package docs that are not security-specific.
+      - Release notes: work that only adds or updates release notes.
+      - Cross-area: use only when the issue explicitly describes work spanning multiple products or areas.
+
+      Distinctions to get right:
+      - SIEM vs XDR: SIEM is detection, triage, and analytics. XDR is endpoint or cloud protection, endpoint management, and security integrations.
+      - Integrations vs XDR: general integration docs are Integrations. Security integrations are XDR.
+
+      Leave Area empty only when you genuinely cannot tell, or when two options are equally strong with no clear winner. Do not leave it empty just because the issue lists multiple documentation changes, and do not demand a perfect single match before setting it.
+
+  Feature:
+    type: single_select
+    enabled: true
+    excluded_options:
+      - Cross areas
+      - "Sec: General"
+      - "Kib: General"
+      - "Kib: Other"
+      - "Integrations: General"
+      - "Streams: General"
+      - "Signals: General"
+    guidance: |
+      Set Feature to the best-matching option when you have reasonable confidence, even if the issue never uses that option's exact name and even if a second option is loosely plausible. Pick the clear best fit rather than holding out for the only possible match. Several pages or tasks in one product are still one Feature.
+
+      Signals features:
+      - Signals: Synthetics: Synthetics, including private locations and Synthetics settings.
+      - Signals: Logs, Signals: Metrics, Signals: Traces, Signals: Integrations: the matching observability signal.
+
+      Streams features (use the scope, not just the name):
+      - Streams: Backend: Cloud pipelines execution engine, processors, Logstash (including the grok filter), indexing service.
+      - Streams: Agent Framework: Fleet Server, Elastic Agent, EDOT distribution, Beats, OTel as a data shipper.
+      - Streams: Central Mgmt: Fleet UI, integration UIs, OpAMP, OTel Collector management.
+      - Streams: Managed Inputs: managed push inputs, Cloud Forwarder, CSP pull inputs, queue management, APM Server.
+      - Streams: Managed Integrations: managed pull inputs framework and the Agentless execution layer.
+      - Streams: UI: the Streams UI (framework, pipelines, streamlang) and Canvas.
+
+      Kibana features:
+      - Kib: Dashboards, Kib: Discover, Kib: Visualizations, Kib: ES|QL, Kib: Machine Learning UI: the matching Core Analytics capability.
+      - Kib: ResponseOps: rules and alerts, maintenance windows, task manager.
+      - Kib: Reporting & Sharing: reporting and sharing.
+      - Kib: AI infra: AI infrastructure and the connector framework.
+      - Kib: Navigation: chrome and navigation.
+      - Kib: Release: Kibana release notes.
+
+      Security features:
+      - Sec: Detection Engine, Sec: Threat Hunting, Sec: Entity Analytics, Sec: AlertZero, Sec: Workflows, Sec: Response Ops, Sec: Gen AI: SIEM-side capabilities.
+      - Sec: Cloud, Sec: EDR Workflows & Endpoint, Sec: Integrations: XDR-side capabilities.
+
+      Other features:
+      - RnA: Kibana Alerting v2: response and alerting work under Nightshift.
+      - Skills: Agent Builder skills.
+      - AI: general AI capability when no more specific option fits.
+      - Guidelines: docs guidelines, standards, and process work.
+
+      Area <-> Feature consistency (set both when one is clear):
+      - Any "Signals: *" feature => Area Signals.
+      - Any "Streams: *" feature => Area Streams.
+      - Kib: AI infra => Area Kib: AI Framework. Skills => Area Kib: AI Framework.
+      - Kib: Dashboards, Discover, Visualizations, ES|QL, Machine Learning UI => Area Kib: Core Analytics.
+      - Kib: ResponseOps, Reporting & Sharing => Area Kib: ResponseOps.
+      - Kib: Navigation => Area Kib: UX.
+      - Sec: Detection Engine, Threat Hunting, Entity Analytics, AlertZero, Workflows, Response Ops, Gen AI => Area SIEM.
+      - Sec: Cloud, EDR Workflows & Endpoint, Integrations => Area XDR.
+      - RnA: Kibana Alerting v2 => Area Nightshift.
+
+      Leave Feature empty only when you truly cannot pick a best fit, when two specific options are equally strong, or when the sole fit is a general or other option.
+
+  Release:
+    type: single_select
+    enabled: true
+    guidance: >-
+      Set Release when the issue answers the release question with one current option, including n/a and TBD.
+      Treat "N/A", "n/a", and "not applicable" as n/a. Treat "TBD" and "to be determined" as TBD. If the issue's
+      release field or text says the release is N/A, set n/a; do not leave it empty. When the issue states a
+      version such as 9.4, 9.5, 9.6, 9.7, or 8.19, use it. Set serverless when the issue says the work is
+      serverless-only, including when the deployment method is "Elastic Cloud Serverless only". Do not infer a
+      release from the current date, a milestone, or a roadmap, and leave Release empty only when the issue never
+      answers the release question at all.
+
+  Serverless-pub:
+    type: date
+    enabled: true
+    guidance: >-
+      Set Serverless-pub when the issue states a serverless publication date or week. Use YYYY-MM-DD. When it says
+      "the week of <month> <day>" (year optional), always set the Tuesday of the Monday-Sunday week that contains
+      that day. If the year is omitted, use the year of the issue. Example: "the week of September 28" on a 2026
+      issue is 2026-09-29. This week-of conversion is required and safe; always apply it. Do not invent a date when
+      the issue names neither a date nor a week, and do not copy the docs-quest plus-seven-days rule onto a
+      free-text issue.
+
+  Content Type:
+    type: single_select
+    enabled: true
+    excluded_options:
+      - Other
+    guidance: |
+      Set Content Type when the request clearly matches one current option. Match on the option's meaning:
+      - Net-new: content that does not exist yet at all.
+      - Improvement: existing content that needs to be clearer, more accurate, more complete, or better organized.
+      - Bugfix: something is broken, such as a bad link, broken code sample, old screenshot, or formatting issue.
+      - UI copy: in-product text changes.
+      - Release Notes: adding or updating product release notes.
+      - Internal or Process: internal docs or process updates.
+
+      When one type is clearly primary, set it even if the issue mentions a minor secondary aspect. Leave Content
+      Type empty only when the work genuinely splits across types with no primary, or when Other is the only fit.
+
+  Requester:
+    type: single_select
+    enabled: false
+    guidance: >-
+      Keep Requester disabled until the team defines an explicit mapping from issue authors or
+      labels to the current Requester options (DQS, Community, Eng/Prod, Writer, Support, Other).

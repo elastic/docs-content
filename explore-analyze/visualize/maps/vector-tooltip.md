@@ -22,7 +22,7 @@ If more than one feature exists at a location, the tooltip displays the attribut
 
 ## Format tooltips [maps-vector-tooltip-formatting]
 
-You can format the attributes in a tooltip by adding [field formatters](../../find-and-organize/data-views.md#managing-fields) to your data view. You can use field formatters to round numbers, provide units, and even display images in your tooltip.
+You can format the attributes in a tooltip by adding [field formatters](../../find-and-organize/data-views/field-formatters.md) to your data view. You can use field formatters to round numbers, provide units, and even display images in your tooltip.
 
 
 ## Lock a tooltip at the current location [maps-vector-tooltip-locking]

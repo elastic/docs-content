@@ -65,7 +65,7 @@ The following table compares the two paths.
 ## Use tools with data from multiple projects [agent-builder-mcp-cps]
 ```{applies_to}
 stack: unavailable
-serverless: preview
+serverless: ga
 ```
 
 When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), tool calls use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the MCP URL. Requests without `/s/<space-name>` use the default space.

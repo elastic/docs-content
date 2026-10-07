@@ -8,7 +8,7 @@ features:
 # assembler-api-explorer feature flag is enabled (staging today). Production and
 # other environments ignore these declarations until the rollout completes.
 api:
-  # CloudFront remote specs — mirror https://d29hkgsdo66d1n.cloudfront.net/index.json.
+  # CloudFront remote specs - mirror https://d29hkgsdo66d1n.cloudfront.net/index.json.
   # No local spec files: each key fetches remotely on serve/build. Paths: /api/<key>/
   elasticsearch:
     - spec: elasticsearch.json
@@ -44,6 +44,21 @@ api:
       catalog:
         categories:
           - serverless
+  cloud:
+    - spec: cloud.json
+      product: cloud-hosted
+      repository: elastic/cloud
+  cloud-enterprise:
+    - spec: cloud-enterprise.json
+      product: cloud-enterprise
+      repository: elastic/cloud
+  cloud-billing:
+    - spec: cloud-billing.yaml
+      product: ess
+      repository: elastic/cloud
+      catalog:
+        categories:
+          - ess
   cloud-connect:
     - spec: cloud-connect.yml
       product: ess
@@ -88,6 +103,38 @@ cta:
       - "Simplified billing and MACC burndown"
       - "Manage resources from the Azure portal"
       - "Built-in logs and metrics forwarding"
+  observability:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=observability
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  security:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=security
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  search:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=search
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  vector:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=vector
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
 
 exclude:
   - 'README.md'
@@ -112,7 +159,9 @@ cross_links:
   - apm-aws-lambda
   - apm-k8s-attacher
   - apm-server
+  - autoops-insights
   - beats
+  - cli
   - cloud
   - cloud-on-k8s
   - curator
@@ -385,13 +434,18 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
+  context-engine: "Context Engine"
   kube-stack-version: 0.16.0
-  helm-version: 3.21.0
+  helm-version: 4.3.0
   ece-docker-images-8: 8.19.20
   ece-docker-images-9: 9.5.2
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
+  tsds: "time series data stream"
+  tsdses: "time series data streams"
+  tsds-cap: "Time series data stream"
+  tsds-init: "TSDS"
 release_notes:
   - product: cloud-serverless

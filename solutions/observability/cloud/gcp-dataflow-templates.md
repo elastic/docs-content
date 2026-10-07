@@ -27,23 +27,26 @@ Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=do
 
 This tutorial assumes the {{es}} cluster is already running.
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} stack: ga
+::::{applies-item} stack: ga
 For {{ech}} deployments, you need your **Cloud ID** and an **API Key**.
 
 To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments), go to the deployment’s **Overview** page.
 
 ![Cloud ID](/solutions/images/observability-monitor-gcp-cloud-id.png "")
-:::
+::::
 
-:::{applies-item} serverless: ga
+::::{applies-item} serverless: ga
 For {{obs-serverless}} projects, you need your **{{es}} endpoint URL** and an **API key**.
 
-To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+:::{include} /deploy-manage/deploy/elastic-cloud/_snippets/find-endpoint-serverless-console.md
 :::
 
+You can also copy the endpoint from {{kib}}, and create an API key. Refer to [](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md).
 ::::
+
+:::::
 
 Use {{kib}} to [create a Base64-encoded API key](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to authenticate on your deployment.
 
