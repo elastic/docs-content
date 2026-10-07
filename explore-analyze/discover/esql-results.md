@@ -27,11 +27,11 @@ To keep the chart or the table, [save the session or add it to a dashboard](#_ed
 
 Hover over a value in the results table, then filter for it or filter it out.
 
-- {icon}`plus_circle` **Filter for this** keeps that value. For example, ``WHERE `machine.os` == "ios"``.
-- {icon}`minus_circle` **Filter out this** excludes that value. For example, ``WHERE `machine.os` != "ios"``.
+- {icon}`plus_circle` **Filter for this** keeps that value. For example, ``WHERE `machine.os` == "osx"``.
+- {icon}`minus_circle` **Filter out this** excludes that value. For example, ``WHERE `machine.os` != "osx"``.
 
   :::{image} /explore-analyze/images/kibana-discover-esql-filter-out.png
-  :alt: The value ios in the machine.os column, with Filter out this available.
+  :alt: The value osx in the machine.os column, with Filter out this available.
   :screenshot:
   :width: 50%
   :::
@@ -46,7 +46,7 @@ Filtering for multi-value fields translates into `WHERE MV_CONTAINS` or `WHERE N
 **Result:** When you select **Filter for this** or **Filter out this**, Discover adds or completes a `WHERE` clause for that value, and the table shows the matching rows.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-filter-where.png
-:alt: An ES|QL query with a WHERE clause that excludes ios from machine.os.
+:alt: An ES|QL query with a WHERE clause that excludes osx from machine.os.
 :screenshot:
 :width: 70%
 :::
@@ -143,6 +143,7 @@ Add the parameters on `order_date`. The time filter then applies, and Discover s
 ```esql
 FROM kibana_sample_data_ecommerce
 | WHERE order_date >= ?_tstart AND order_date <= ?_tend
+| LIMIT 100
 ```
 
 :::{image} /explore-analyze/images/kibana-discover-esql-order-date.png
