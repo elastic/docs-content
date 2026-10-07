@@ -62,7 +62,7 @@ If you have unsaved edits that you want to keep, save the dashboard first. That 
 When you select **Enhance**, {{agent-builder}} runs the [`dashboards` skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboard-management-skill) on your dashboard. The agent then:
 
 1. Reads the dashboard and the field mappings of the indices behind its panels. This tells it what the dashboard measures, and what your data could show that the dashboard doesn't show yet.
-2. Proposes changes for each option, and asks which one you want.
+2. Proposes changes for appearance-only changes, or for a more complete content review, and asks which one you want.
 3. Applies the changes to the dashboard you have open.
 4. Checks the result against its plan, and summarizes its changes in the conversation.
 
