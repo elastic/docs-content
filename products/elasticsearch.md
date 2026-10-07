@@ -17,18 +17,18 @@ products:
 
 :::{get-started}
 title: Get started in 3 steps
-intro: Start a local development environment or a free Elastic Cloud trial, then run your first queries.
+intro: Start a free Elastic Cloud trial or a local development environment, then run your first queries.
 steps:
   - title: Run Elasticsearch
     options:
-      - label: Run locally
-        description: Spin up Elasticsearch on your machine for development with `start-local`.
-        code: curl -fsSL https://elastic.co/start-local | sh
-        language: sh
       - label: Try on Cloud
         description: Start a free Elastic Cloud trial. No local setup needed.
         url: https://cloud.elastic.co/registration
         url-label: Start a free trial
+      - label: Run locally
+        description: Spin up Elasticsearch on your machine for development with `start-local`.
+        code: curl -fsSL https://elastic.co/start-local | sh
+        language: sh
   - title: Ingest your data into Elasticsearch
     description: Send documents to Elasticsearch using the APIs, ingest pipelines, connectors, or a language client.
     link: /manage-data/ingest.md

@@ -20,14 +20,14 @@ title: Get started with Kibana
 steps:
   - title: Run Elasticsearch and Kibana
     options:
-      - label: Run locally
-        description: Spin up Elasticsearch and Kibana on your machine for development with `start-local`.
-        code: curl -fsSL https://elastic.co/start-local | sh
-        language: sh
       - label: Try on Cloud
         description: Start a free Elastic Cloud trial. No local setup needed.
         url: https://cloud.elastic.co/registration
         url-label: Start a free trial
+      - label: Run locally
+        description: Spin up Elasticsearch and Kibana on your machine for development with `start-local`.
+        code: curl -fsSL https://elastic.co/start-local | sh
+        language: sh
   - title: Add data in Kibana
     description: Upload a file, add an integration, or use sample data so you have something to explore.
     link: /manage-data/ingest.md
