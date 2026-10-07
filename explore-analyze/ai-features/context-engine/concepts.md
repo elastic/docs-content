@@ -51,7 +51,7 @@ You can add source data in the following ways:
 
 Internally, both an {{es}} selection and an advanced query are stored as {{esql}} sources. How an automation analyzes any source depends on its workflow.
 
-To add or update source data, refer to [Add and manage sources](../add-and-manage-sources.md). For an end-to-end example, follow the [{{context-engine}} quickstart](../quickstart.md).
+To add or update source data, refer to [Add and manage sources](/explore-analyze/ai-features/context-engine/add-and-manage-sources.md). For an end-to-end example, follow the [{{context-engine}} quickstart](/explore-analyze/ai-features/context-engine/quickstart.md).
 
 ## Automations and workflows
 
