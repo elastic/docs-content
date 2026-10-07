@@ -47,7 +47,7 @@ Stack audit logging records security events inside your cluster. Cloud audit tra
 Activity logs record events for later analysis. For real-time visibility into running queries, use [Query activity](./query-activity.md). For real-time cluster health and performance monitoring, refer to the [monitoring tools](/deploy-manage/monitor.md) available for your deployment type.
 :::
 
-## User activity logging
+## {{kib}} user activity logging
 ```{applies_to}
 stack: preview 9.5
 ```
