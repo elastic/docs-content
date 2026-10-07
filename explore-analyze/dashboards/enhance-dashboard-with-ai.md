@@ -72,7 +72,7 @@ Where the options differ is in what happens to your panels:
 - **Appearance only** keeps all your panels and their queries, your controls, and the time range. Visualizations that don't use {{esql}}, and other panels the agent can't edit, keep their current look. The agent only moves or resizes them.
 - **Appearance and content** also lets the agent add, change, or replace panels, change their queries, and add controls. The agent removes panels that duplicate another panel or don't fit the dashboard's purpose. When it can re-create a visualization that doesn't use {{esql}} in {{esql}}, it replaces that visualization.
 
-In both cases, the agent arranges panels using the practices described in [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout). You can apply the same practices when you arrange panels yourself.
+In both cases, the agent arranges panels using the best practices described in [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout). You can apply the same practices when you arrange panels yourself.
 
 ## Discard the changes [enhance-dashboard-discard]
 
