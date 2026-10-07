@@ -54,7 +54,7 @@ If you have unsaved edits that you want to keep, save the dashboard first. That 
    :alt: The enhanced dashboard, retitled and organized into Key metrics and Trends over time sections, with a City control. The chat beside it lists what the agent changed and added.
    :screenshot:
    :::
-5. Review the dashboard. If something isn't quite right, ask the agent for adjustments in the same conversation, for example to change a chart type or add a panel.
+5. Review the dashboard. If you want something different, ask the agent for adjustments in the same conversation, for example to change a chart type or add a panel.
 6. To keep the changes, save the dashboard. If you'd rather not keep them, [discard them](#enhance-dashboard-discard) instead.
 
 ## How the agent enhances a dashboard [enhance-dashboard-how-it-works]
