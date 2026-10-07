@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title description">
   <title id="title">How Context Engine turns source data into reusable context</title>
-  <desc id="description">Elasticsearch data and connected systems flow through automations implemented as Elastic Workflows. The automations create Knowledge Indicators and store them in an AI index. Agents retrieve these indicators and can use their guidance to query source data directly for additional or near-real-time information. People can review agent traces to find gaps, refine automations, and regenerate the indicators.</desc>
+  <desc id="description">Elasticsearch data and connected systems flow through automations implemented as Elastic Workflows. The automations create Knowledge Indicators and store them in an AI index. Agents retrieve these indicators and can use their guidance to query source data directly for more detailed or up-to-date information. People can review agent traces to find gaps, refine automations, and regenerate the indicators.</desc>
 
   <defs>
     <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">

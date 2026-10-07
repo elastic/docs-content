@@ -272,10 +272,13 @@ toc:
               - hidden: ai-features/context-engine/add-and-manage-sources.md
               - hidden: ai-features/context-engine/create-and-manage-automations.md
               - hidden: ai-features/context-engine/evaluate-and-improve-knowledge-indicators.md
-          - hidden: ai-features/context-engine/use-context-engine-with-agents.md
+          - hidden: ai-features/context-engine/use-an-ai-index.md
             children:
-              - hidden: ai-features/context-engine/use-context-engine-with-agent-builder.md
-              - hidden: ai-features/context-engine/langchain-integration.md
+              - hidden: ai-features/context-engine/retrieve-context-from-ai-index.md
+              - hidden: ai-features/context-engine/use-context-engine-with-agents.md
+                children:
+                  - hidden: ai-features/context-engine/use-context-engine-with-agent-builder.md
+                  - hidden: ai-features/context-engine/langchain-integration.md
           - hidden: ai-features/context-engine/context-engine-api.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
