@@ -38,6 +38,7 @@ You can open the full-screen chat, or open the chat beside the page you are on.
 - Find **Agents** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to open the [full-screen chat](standalone-and-flyout-modes.md#standalone-mode). You have more room to preview dashboards and read the agent's replies.
 - Select **AI Agent** in the header to keep the page you are on open, with the [chat beside it](standalone-and-flyout-modes.md#sidebar-mode).
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit a dashboard, select **Create with chat** to open that chat beside it with the dashboard attached. On an empty dashboard, the card includes pre-populated examples, and a blank **Open chat** option. When the dashboard already has panels, select **Add** → **Create with chat**.
+- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` To improve a dashboard you already built, select **Enhance** while you edit it. The chat opens beside the dashboard with the dashboard attached, and the agent tidies its text, layout, and chart styling. Refer to [Enhance a dashboard with AI](/explore-analyze/dashboards/enhance-dashboard-with-ai.md).
 
 ## How dashboards appear in chat
 
@@ -88,38 +89,6 @@ You can also continue chatting to refine the dashboard. For example, ask the age
 Individual visualizations display inline in the conversation when you ask for a single chart or metric. Inline visualizations are interactive: adjust the time range, or select a range directly on the chart to zoom in.
 ::::
 :::::
-
-## Enhance your dashboard with AI [enhance-dashboard]
-```{applies_to}
-serverless: experimental
-stack: experimental 9.6+
-```
-
-If a dashboard you built needs tidying, you can ask an agent to improve it instead of rebuilding it by hand. The agent determines what your panels measure, then improves how the dashboard looks and reads.
-
-**Enhance** appears in the dashboard header only when all of the following are true:
-
-- The dashboard is in **Edit** mode.
-- You have the **All** privilege for the **Dashboard** feature.
-- You have [access to {{agent-builder}}](permissions.md), and a [model](models.md) is configured.
-- At least one panel runs an {{esql}} query.
-
-To enhance a dashboard:
-
-1. In **Edit** mode, select **Enhance** in the dashboard header. A new conversation opens with the dashboard attached, and the agent starts right away.
-2. When the agent asks how to enhance the dashboard, select **Appearance only** or **Appearance and content**. If you skip the question, the agent applies **Appearance and content**.
-3. When the agent finishes, its changes appear in the dashboard you have open. Save the dashboard to keep them.
-
-The two modes differ in how much of the dashboard the agent can change:
-
-- **Appearance only** keeps every panel, query, control, and the time range. The agent rewrites the dashboard title, description, and text panels, and arranges the panels. It groups them into sections where that makes the dashboard clearer.
-- **Appearance and content** does the same, and also lets the agent add, change, replace, or remove panels, change panel queries, and add controls. The agent can remove panels that duplicate another panel or don't fit the dashboard's purpose.
-
-Both modes reset the chart presentation of your {{esql}} visualizations to the defaults, which replaces any custom styling. Apart from text panels, panels that aren't {{esql}} visualizations keep their current presentation. In **Appearance only** mode, the agent can only move or resize them. In **Appearance and content** mode, the agent can also replace such a panel with an {{esql}} visualization when it can re-create the panel in {{esql}}.
-
-To undo the changes, [reset the dashboard](/explore-analyze/dashboards/open-dashboard.md#reset-the-dashboard) to its last saved version. This also discards any unsaved edits you made yourself. The agent doesn't check the result visually, so review the dashboard before you save it.
-
-The agent applies layout practices that [Dashboard grid layout and best practices](/explore-analyze/dashboards/arrange-panels.md#dashboard-grid-layout) describes, such as a 48-column grid, panel sizes by chart type, and consistent row heights. You can use the same practices when you arrange panels yourself.
 
 ## Manage dashboards
 

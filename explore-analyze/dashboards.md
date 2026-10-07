@@ -37,6 +37,7 @@ Once you understand the basics, explore these common tasks:
 - [Build dashboards](dashboards/building.md): Learn the fundamentals of creating and configuring dashboards.
 - [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
 - [Create dashboards using AI](dashboards/create-dashboards-using-ai.md): Generate dashboards from natural language through chat with {{agent-builder}}.
+- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` [Enhance a dashboard with AI](dashboards/enhance-dashboard-with-ai.md): Let an {{agent-builder}} agent improve the text, layout, and chart styling of a dashboard you already built.
 - [Add dashboard controls](visualize/dashboard-controls.md): Enable interactive filtering with options lists, range sliders, time sliders, and ES|QL variable controls.
 - [Drilldowns](dashboards/drilldowns.md): Open another dashboard, a URL, or Discover from a panel.
 - [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning.

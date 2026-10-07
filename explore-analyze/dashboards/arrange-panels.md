@@ -29,7 +29,7 @@ To organize dashboard panels, you need the **All** privilege for the **Dashboard
 
 :::{tip}
 :applies_to: {"serverless": "experimental", "stack": "experimental 9.6+"}
-To have an agent apply layout practices like these to a dashboard you already built, [enhance it with AI](create-dashboards-using-ai.md#enhance-dashboard-with-ai).
+To have an agent apply layout practices like these to a dashboard you already built, [enhance it with AI](enhance-dashboard-with-ai.md).
 :::
 
 Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default.
