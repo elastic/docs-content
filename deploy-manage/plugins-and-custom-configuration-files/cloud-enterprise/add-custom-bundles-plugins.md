@@ -25,13 +25,13 @@ Before you reference a ZIP file, decide whether {{ece}} should treat it as a plu
 Plugins
 :   Use a plugin to add functionality to {{es}}: an official {{es}} plugin that is not provided with {{ece}}, a community-sourced plugin, or one that you write yourself.
 
-    :::{include} /deploy-manage/plugins-and-configuration-files/_snippets/plugin-structure.md
+    :::{include} /deploy-manage/plugins-and-custom-configuration-files/_snippets/plugin-structure.md
     :::
 
 Bundles
 :   Use a bundle to make configuration files, such as custom dictionaries, certificates, or SAML metadata, available to every {{es}} instance. Bundles are not installed as plugins.
 
-    :::{include} /deploy-manage/plugins-and-configuration-files/_snippets/bundle-structure.md
+    :::{include} /deploy-manage/plugins-and-custom-configuration-files/_snippets/bundle-structure.md
     :::
 
 ## Reference your files in your deployment [ece-reference-custom-bundle-plugin]

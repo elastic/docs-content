@@ -13,9 +13,9 @@ products:
 
 # Add plugins and bundles in {{ech}} [ec-adding-plugins]
 
-On {{ech}}, you extend the core functionality of {{es}} in two ways: you enable one of the plugins that {{ecloud}} provides, or you supply the file yourself. Anything you supply yourself is called an *extension* in the {{ecloud}} console and API, and comes in two forms: a custom *plugin*, which adds code to {{es}}, or a *bundle*, which packages configuration files that {{es}} reads at runtime, such as synonym dictionaries, SAML metadata, or certificates.
+On {{ech}}, you extend the core functionality of {{es}} in two ways: you enable one of the plugins that {{ecloud}} provides, or you supply the file yourself. Anything you supply yourself is called an *extension* in the {{ecloud}} console and API, and comes in two forms: a custom *plugin*, which adds code to {{es}}, or a *bundle*, which packages custom configuration files that {{es}} reads at runtime, such as synonym dictionaries, SAML metadata, or certificates.
 
-Refer to [](/deploy-manage/plugins-and-configuration-files.md) for options that apply to other deployment types.
+Refer to [](/deploy-manage/plugins-and-custom-configuration-files.md) for options that apply to other deployment types.
 
 ## Add plugins
 

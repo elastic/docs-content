@@ -3,26 +3,26 @@ applies_to:
   deployment:
     self: ga
 navigation_title: In self-managed
-description: Install Elasticsearch plugins on self-managed clusters with a Docker configuration file or the elasticsearch-plugin CLI, and place shared config files on each node.
+description: Install Elasticsearch plugins on self-managed clusters with a Docker configuration file or the elasticsearch-plugin CLI, and place custom configuration files on each node.
 products:
   - id: elasticsearch
 ---
 
-# Manage plugins and configuration files in a self-managed {{es}} cluster
+# Manage plugins and custom configuration files in a self-managed {{es}} cluster
 
-You can extend a self-managed cluster in two ways: with plugins, or with configuration files that {{es}} reads at runtime. {{es}} loads both from the local filesystem, so every node that needs them must have its own copy.
+You can extend a self-managed cluster in two ways: with plugins, or with custom configuration files that {{es}} reads at runtime. {{es}} loads both from the local filesystem, so every node that needs them must have its own copy.
 
 Plugins
 :   Use a [plugin](elasticsearch://reference/elasticsearch-plugins/index.md) to add code to {{es}}, such as a text analyzer, an ingest processor, or a discovery provider. Official plugins are installed by name at the version that matches your cluster, and community or custom plugins from a URL or a local ZIP file.
 
     How you install either one depends on how you run {{es}}: use a [declarative configuration file](#self-managed-plugins-docker) with the official Docker image, or the [`elasticsearch-plugin` CLI](#self-managed-plugins-cli) for package and archive installs.
 
-Configuration files
-:   Use a configuration file to give {{es}} data that it reads at runtime, such as a synonym dictionary, SAML metadata, or a certificate. Place these files in each node's [configuration directory](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location) and reference them from your settings by a path relative to that directory.
+Custom configuration files
+:   Use a custom configuration file to give {{es}} data that it reads at runtime, such as a synonym dictionary, SAML metadata, or a certificate. Place these files in each node's [configuration directory](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location) and reference them from your settings by a path relative to that directory.
 
     For example, a synonyms file saved as `analysis/synonym-set.txt` under the configuration directory is referenced as `"synonyms_path": "analysis/synonym-set.txt"` in a [synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md). Edits to that file reach a running cluster only when you [reload search analyzers]({{es-apis}}operation/operation-indices-reload-search-analyzers), and only if the filter sets `updateable` to `true`.
 
-Refer to [](/deploy-manage/plugins-and-configuration-files.md) for options that apply to other deployment types.
+Refer to [](/deploy-manage/plugins-and-custom-configuration-files.md) for options that apply to other deployment types.
 
 ## Install plugins with the Docker image [self-managed-plugins-docker]
 

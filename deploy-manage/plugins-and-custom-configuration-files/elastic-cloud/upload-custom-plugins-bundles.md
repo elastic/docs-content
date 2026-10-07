@@ -13,7 +13,7 @@ products:
 
 # Upload custom plugins and bundles
 
-Upload a ZIP file when you need a custom or third-party plugin that {{ech}} does not provide, or configuration files such as dictionaries and SAML metadata. In the {{ecloud}} console and API, these uploads are *extensions*.
+Upload a ZIP file when you need a custom or third-party plugin that {{ech}} does not provide, or custom configuration files such as dictionaries and SAML metadata. In the {{ecloud}} console and API, these uploads are *extensions*.
 
 Uploaded files are stored in highly available object storage so {{ecloud}} does not depend on third-party services, such as a public plugin repository, when provisioning nodes.
 
@@ -41,7 +41,7 @@ To prepare your files, create one of the following:
 Plugins
 :   Use a plugin to add functionality to {{es}}: a custom or third-party plugin that {{ech}} does not provide, or one that you write yourself.
 
-    :::{include} /deploy-manage/plugins-and-configuration-files/_snippets/plugin-structure.md
+    :::{include} /deploy-manage/plugins-and-custom-configuration-files/_snippets/plugin-structure.md
     :::
 
     ::::{note}
@@ -57,7 +57,7 @@ Plugins
 Bundles
 :   Use a bundle to make configuration files, such as custom dictionaries or SAML metadata, available to every node.
 
-    :::{include} /deploy-manage/plugins-and-configuration-files/_snippets/bundle-structure.md
+    :::{include} /deploy-manage/plugins-and-custom-configuration-files/_snippets/bundle-structure.md
     :::
 
     Dictionaries are the exception. Place them in a `/dictionaries` folder in the root path of your ZIP file, and their contents are extracted directly to `/app/config` rather than to an `/app/config/dictionaries` subfolder.

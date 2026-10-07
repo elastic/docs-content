@@ -13,7 +13,7 @@ products:
 
 On {{ece}}, you extend {{es}} with plugins that the platform provides, custom plugin or configuration bundles, and in certain cases, additional {{kib}} plugins.
 
-Refer to [](/deploy-manage/plugins-and-configuration-files.md) for options that apply to other deployment types.
+Refer to [](/deploy-manage/plugins-and-custom-configuration-files.md) for options that apply to other deployment types.
 
 ## Add {{es}} plugins
 

@@ -24,7 +24,7 @@ The process involves two main steps:
 
 Note the following restrictions:
 
-* These instructions have been tested for {{stack}} versions starting with 6.7.0 and may not work for earlier versions.
+* These instructions have been tested for {{stack}} versions starting with {{version.stack.base}} and may not work for earlier versions.
 * Plugins that you bundle yourself to be included in the {{stack}} are not covered by Elastic Customer Support and include no guarantee from Elastic.
 * After uploading a modified version of an {{stack}} pack, if you reapply the original stack the changes will be lost and new {{kib}} instances will use the original Docker image provided by Elastic.
 * The Dockerfile used in this example includes an optimization process that is relatively expensive and may require a machine with several GB of RAM to run successfully.
@@ -159,4 +159,3 @@ Follow these steps to update the {{stack}} pack zip files in your ECE setup to p
 
 1. If the custom Docker image is not available, make sure that the image has been uploaded to your Docker repository or loaded locally onto each ECE allocator.
 2. If the container takes a long time to start, the problem might be that the `reoptimize` step in the Dockerfile did not complete successfully.
-

@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-bundles-plugins.html
-description: Mount configuration files into Elasticsearch pods on ECK with ConfigMaps or Secrets.
+description: Mount custom configuration files into Elasticsearch pods on ECK with ConfigMaps or Secrets.
 applies_to:
   deployment:
     eck: all
@@ -10,14 +10,14 @@ products:
 navigation_title: ConfigMaps and Secrets
 ---
 
-# Add configuration files with ConfigMaps or Secrets [k8s-bundles-plugins]
+# Add custom configuration files with ConfigMaps or Secrets [k8s-bundles-plugins]
 
-On {{eck}}, configuration files such as synonym dictionaries, SAML metadata, or CA certificates are stored in a ConfigMap or Secret, then mounted into your {{es}} pods with volumes and volume mounts.
+On {{eck}}, custom configuration files such as synonym dictionaries, SAML metadata, or CA certificates are stored in a ConfigMap or Secret, then mounted into your {{es}} pods with volumes and volume mounts.
 
 This page walks through a synonyms file for the [synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md). You can use the same pattern for any other file you want to mount into the configuration directory of {{es}}, like adding CA certificates of external systems for example.
 
 ::::{note}
-ConfigMaps and Secrets are for configuration files only. They do not install plugins. To install plugins, use a [custom image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md) or [init containers](init-containers-for-plugin-downloads.md).
+ConfigMaps and Secrets are for custom configuration files only. They do not install plugins. To install plugins, use a [custom image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md) or [init containers](init-containers-for-plugin-downloads.md).
 ::::
 
 ## Create the ConfigMap or Secret [use-a-volume-and-volume-mount-together-with-a-configmap-or-secret]
