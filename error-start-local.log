@@ -1,0 +1,11 @@
+Error: docker compose up --wait command failed!
+Start-local version: 0.14.0
+Docker engine: Docker version 29.8.2, build 7fc2dff
+Docker compose: 5.5.1
+Elastic Stack version: 9.5.5
+Distribution: macOS
+Version: 26.6.2
+-- Logs of service es-local-dev:
+Created elasticsearch keystore in /usr/share/elasticsearch/config/elasticsearch.keystore
+-- Logs of service kibana-local-dev:
+-- Logs of service kibana-local-settings:

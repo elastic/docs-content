@@ -2,15 +2,6 @@
 applies_to:
   stack:
   serverless:
-products:
-  - id: elasticsearch
-  - id: kibana
-  - id: cloud-serverless
-  - id: serverless-vector-database
-  - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
-  - id: elastic-stack
 navigation_title: Set up
 description: Prepare Elasticsearch for search by selecting a deployment type, then connecting with an endpoint, API key, and language client.
 type: overview
