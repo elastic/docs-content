@@ -65,12 +65,12 @@ Because the agent tailors its changes to each dashboard, two runs on the same da
 
 ## What each option changes [enhance-dashboard-modes]
 
-Both options make the dashboard easier to read. The agent rewrites the dashboard title, description, and Markdown panels to match what the panels measure. It also rearranges the panels and groups them into sections where that helps. Your {{esql}} visualizations get the default chart styling, which replaces any custom styling you applied.
+Both options make the dashboard easier to read. The agent rewrites the dashboard title, description, and Markdown panels to match what the panels measure. It also rearranges the panels and groups them into sections where that helps.
 
-Where the options differ is in what happens to your panels:
+Where the options differ is in what happens to your visualizations and other panels:
 
-- **Appearance only** keeps all your panels and their queries, your controls, and the time range. Visualizations that don't use {{esql}}, and other panels the agent can't edit, keep their current look. The agent only moves or resizes them.
-- **Appearance and content** also lets the agent add, change, or replace panels, change their queries, and add controls. The agent removes panels that duplicate another panel or don't fit the dashboard's purpose. When it can re-create a visualization that doesn't use {{esql}} in {{esql}}, it replaces that visualization.
+- **Appearance only** keeps all your panels and their queries, your controls, and the time range. Your {{esql}} visualizations show the same data. The agent rewrites their titles and labels to match their queries, and replaces any custom styling with the default chart styling. Visualizations that don't use {{esql}}, and other panels the agent can't edit, keep their current look. The agent only moves or resizes them.
+- **Appearance and content** restyles your {{esql}} visualizations the same way, and can also change what they show, for example by changing their query or chart type. The agent can add panels and controls, and removes panels that duplicate another panel or don't fit the dashboard's purpose. When it can re-create a visualization that doesn't use {{esql}} in {{esql}}, it replaces that visualization.
 
 In both cases, the agent arranges panels using the practices described in [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout). You can apply the same practices when you arrange panels yourself.
 
