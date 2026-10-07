@@ -13,7 +13,7 @@ Install and configure an official {{es}} language client to connect to a project
 
 ## Connect to your project [connect-through-an-sdk-connect]
 
-Set the project endpoint and API key as environment variables:
+To get your {{es}} endpoint and API key, refer to [API key and endpoints](/solutions/search/set-up/api-key-and-endpoints.md). Set them as environment variables:
 
 :::::{tab-set}
 :group: operating-systems
