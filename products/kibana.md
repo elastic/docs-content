@@ -20,8 +20,8 @@ title: Get started with Kibana
 steps:
   - title: Run Elasticsearch and Kibana
     options:
-      - label: Try on Cloud
-        description: Start a free Elastic Cloud trial. No local setup needed.
+      - label: Try for free on Elastic Cloud
+        description: Get an Elastic Stack running in a few minutes with no setup needed.
         url: https://cloud.elastic.co/registration
         url-label: Start a free trial
       - label: Run locally
