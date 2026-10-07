@@ -9,6 +9,7 @@ products:
   - id: cloud-kubernetes
   - id: cloud-serverless
   - id: elastic-stack
+description: Find the right logging feature for audit, query, and performance investigation needs in your Elastic deployment.
 ---
 # Activity logging
 
