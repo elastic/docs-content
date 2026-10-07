@@ -50,9 +50,15 @@ Unless you override them, the init container inherits:
 
 ## Note when using Istio [istio-note]
 
-When using Istio, init containers do **not** have network access, because the Envoy sidecar that provides connectivity has not started yet. In this case, prefer a [custom container image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md).
+When using Istio, an init container typically has no network access, because the Envoy sidecar that provides connectivity has not started yet. The plugin download then fails. You have three options:
 
-If using a custom image is not practical, you can run the plugin install in the {{es}} container’s startup command before {{es}} starts. You may need to update that command if the entrypoint in the {{es}} image changes, which can cause failures during upgrades. The following is an example.
+* Allow the outbound ports that the init container needs, so that its traffic bypasses the sidecar. For a manifest that installs a plugin this way, refer to [Using init containers with Istio CNI](/deploy-manage/deploy/cloud-on-k8s/k8s-service-mesh-istio.md#k8s-service-mesh-istio-cni).
+* Use a [custom container image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md) that already includes the plugins, so that nothing is downloaded at startup.
+* Run the plugin install in the {{es}} container's startup command, as shown in the following section.
+
+## Install plugins from the {{es}} startup command [istio-startup-command]
+
+If allowing the ports and using a custom image are both impractical, you can run the plugin install in the {{es}} container’s startup command before {{es}} starts. You may need to update that command if the entrypoint in the {{es}} image changes, which can cause failures during upgrades. The following is an example.
 
 ```yaml
 spec:
