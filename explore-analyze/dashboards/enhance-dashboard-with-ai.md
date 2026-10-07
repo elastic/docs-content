@@ -1,6 +1,6 @@
 ---
 navigation_title: Enhance using AI
-description: Use Agent Builder to improve an existing Kibana dashboard. Choose appearance-only or content changes, review the result, and save or undo it.
+description: Use Agent Builder to improve an existing Kibana dashboard. Choose appearance-only or content changes, review the result, and save or discard it.
 applies_to:
   stack: experimental 9.6+
   serverless: experimental
@@ -11,14 +11,14 @@ type: how-to
 
 # Enhance a dashboard with AI [enhance-dashboard-with-ai]
 
-When a dashboard you built needs tidying, an {{agent-builder}} agent can improve it for you instead of you rebuilding it by hand. The agent determines what your panels measure, then rewrites the dashboard text, rearranges the panels, and applies the default chart styling. You review the result in the dashboard, then save it or undo it.
+When a dashboard you built needs tidying, an {{agent-builder}} agent can improve it for you instead of you rebuilding it by hand. The agent determines what your panels measure, then rewrites the dashboard text, rearranges the panels, and applies the default chart styling. You review the result in the dashboard, then save it or discard it.
 
 ## Before you begin [enhance-dashboard-requirements]
 
 - You need the **All** privilege for the **Dashboard** feature.
 - You need [access to {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md), with a [model](/explore-analyze/ai-features/agent-builder/models.md) configured.
 - The dashboard must have at least one panel that runs an {{esql}} query. Otherwise, **Enhance** doesn't appear.
-- If you have unsaved edits that you want to keep, save the dashboard first. Undoing the agent's changes returns the dashboard to its last saved version.
+- If you have unsaved edits that you want to keep, save the dashboard first. Discarding the agent's changes returns the dashboard to its last saved version.
 
 ## Enhance the dashboard [enhance-dashboard-steps]
 
@@ -52,7 +52,7 @@ When a dashboard you built needs tidying, an {{agent-builder}} agent can improve
    :screenshot:
    :::
 5. Review the changes in the dashboard.
-6. Save the dashboard to keep the changes. If you don't want them, [undo the changes](#enhance-dashboard-undo) instead.
+6. Save the dashboard to keep the changes. If you don't want them, [discard the changes](#enhance-dashboard-discard) instead.
 
 ## How the agent enhances a dashboard [enhance-dashboard-how-it-works]
 
@@ -74,9 +74,9 @@ The two options differ in how much of the dashboard the agent can change:
 
 For the layout practices the agent applies, refer to [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout).
 
-## Undo the changes [enhance-dashboard-undo]
+## Discard the changes [enhance-dashboard-discard]
 
-If you don't want to keep the agent's changes, [reset the dashboard](open-dashboard.md#reset-the-dashboard) before you save it. Resetting returns the dashboard to its last saved version, so it also discards any unsaved edits you made yourself. After you save, you can no longer revert the changes in one step.
+If you don't want to keep the agent's changes, open the **Save** menu and select **Reset changes** before you save. Resetting returns the dashboard to its last saved version, so it also discards any unsaved edits you made yourself. After you save, you can no longer discard the changes in one step. For details, refer to [Reset dashboard changes](open-dashboard.md#reset-the-dashboard).
 
 ## Next steps [enhance-dashboard-next-steps]
 
