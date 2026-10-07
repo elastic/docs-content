@@ -45,13 +45,13 @@ A source identifies data that an [automation](#automations-and-workflows) can us
 
 You can add source data in three ways:
 
-- **Elasticsearch index, data stream, or alias:** Select an Elasticsearch data object. Context Engine creates a source query in the form `FROM <name>`.
+- **{{es}} index, data stream, or alias:** Select an {{es}} data object. {{context-engine}} creates a source query in the form `FROM <name>`.
 - **Connector:** Select a configured connector to an external system, such as Google Drive or GitHub.
-- **Advanced ES|QL:** Write an ES|QL query when you need to select data from multiple Elasticsearch indices or narrow the records available to the automation.
+- **Advanced {{esql}}:** Write an {{esql}} query when you need to select data from multiple {{es}} indices or narrow the records available to the automation.
 
-Internally, both an Elasticsearch selection and an advanced query are stored as ES|QL sources. How an automation analyzes any source depends on its workflow.
+Internally, both an {{es}} selection and an advanced query are stored as {{esql}} sources. How an automation analyzes any source depends on its workflow.
 
-To add or update source data, refer to [Add and manage sources](../add-and-manage-sources.md). For an end-to-end example, follow the [Context Engine quickstart](../quickstart.md).
+To add or update source data, refer to [Add and manage sources](../add-and-manage-sources.md). For an end-to-end example, follow the [{{context-engine}} quickstart](../quickstart.md).
 
 ## Automations and workflows
 
