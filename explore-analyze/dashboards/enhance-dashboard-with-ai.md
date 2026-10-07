@@ -19,7 +19,7 @@ To enhance a dashboard, you need:
 
 - The **All** privilege for the **Dashboard** feature.
 - [Access to {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md), with a [model](/explore-analyze/ai-features/agent-builder/models.md) configured.
-- At least one panel on the dashboard that runs an {{esql}} query. **Enhance** appears only on dashboards that have one.
+- At least one panel on the dashboard that runs an {{esql}} query. The **Enhance** option appears only on dashboards that have one.
 
 If you have unsaved edits that you want to keep, save the dashboard first. That way, you can discard the agent's changes later without losing your own work.
 
