@@ -39,6 +39,8 @@ The global header holds the following elements.
 | AI assistant or agent | Opens the AI assistant or agent of your solution. Its label depends on which one your project or deployment offers. |
 | Your avatar | Opens the user menu, where you can change your appearance and language preferences, customize your navigation menu, and log out. |
 
+{applies_to}`observability: ga` {applies_to}`stack: ga 9.3+` If an administrator sets a default route for the space, the {icon}`logo_elastic` logo opens that route instead. Refer to [Customize {{kib}}'s home page](/deploy-manage/manage-spaces.md#spaces-default-route).
+
 ## Navigation menu
 
 The navigation menu lists the apps of your solution view. When a top-level item contains sub-items, selecting it opens the **secondary navigation** to its right.
