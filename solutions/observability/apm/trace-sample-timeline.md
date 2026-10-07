@@ -31,6 +31,11 @@ A [span](/solutions/observability/apm/spans.md) is the duration of a single even
 :screenshot:
 :::
 
+:::{note}
+:applies_to: { stack: ga 9.5+, serverless: ga }
+In the waterfall on an APM transaction details page, click **View error** or **View *x* errors** (if there is more than one). This opens the service's **Errors** page, where you can [investigate the related errors](/solutions/observability/apm/errors-ui.md#apm-errors-from-trace).
+:::
+
 ## Investigate [trace-sample-investigate]
 
 The trace sample timeline features an **Investigate** button which provides a quick way to jump to other areas of the Elastic Observability UI while maintaining the context of the currently selected trace sample. For example, quickly view:
