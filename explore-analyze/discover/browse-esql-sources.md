@@ -22,10 +22,13 @@ When you write a query in {{esql}} mode, the editor includes two browsers that h
 The browsers are:
 
 - **Data source browser**: lists the data sources of the following types that you can query: **Alias**, [**External data**](elasticsearch://reference/query-languages/esql/esql-data-federation.md), **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. The browser supports multi-select: you can add or remove several sources in one session, and sources already present in your query appear preselected. The browser inserts your selections into the `FROM` or `TS` command and keeps the existing sources. When the query starts with `TS`, only time series data sources are listed.
+
+  {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The browser also lists [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) with the **View** type.
+
 - **Fields browser**: lists fields for the data sources in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
-:applies_to: { serverless: preview, stack: preview 9.4+ }
+:applies_to: { stack: preview 9.4-9.5 }
 [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
 :::
 
