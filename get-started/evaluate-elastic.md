@@ -131,7 +131,7 @@ With your trial goal defined, follow this framework to build a PoC that demonstr
 
 ::::{tab-set}
 
-:::{tab-item} {{es}}
+:::{tab-item} Search
 
 - Reduce time to find information by X%.
 - Index and search Y documents with sub-second response times.
