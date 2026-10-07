@@ -603,6 +603,7 @@ toc:
                   - file: security/configure-elastic-defend/enable-access-for-macos.md
                   - file: security/configure-elastic-defend/deploy-on-macos-with-mdm.md
               - file: security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md
+              - file: security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md
           - file: security/set-up/set-up-cloud-security.md
             children:
               - file: security/cloud/get-started-with-cspm-for-aws.md
@@ -653,18 +654,19 @@ toc:
                   - file: security/configure-elastic-defend/configure-linux-file-system-monitoring.md
                   - file: security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md
                   - file: security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md
-              - file: security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md
-              - file: security/manage-elastic-defend/elastic-endpoint-exceptions.md
-              - file: security/manage-elastic-defend/trusted-applications.md
-              - file: security/manage-elastic-defend/trusted-devices.md
-              - file: security/manage-elastic-defend/event-filters.md
-              - file: security/manage-elastic-defend/host-isolation-exceptions.md
-              - file: security/manage-elastic-defend/blocklist.md
-              - file: security/manage-elastic-defend/exception-types-and-syntax.md
+              - file: security/manage-elastic-defend/endpoint-artifacts.md
+                children:
+                  - file: security/manage-elastic-defend/optimize-elastic-defend.md
+                  - file: security/manage-elastic-defend/elastic-endpoint-exceptions.md
+                  - file: security/manage-elastic-defend/trusted-applications.md
+                  - file: security/manage-elastic-defend/trusted-devices.md
+                  - file: security/manage-elastic-defend/event-filters.md
+                  - file: security/manage-elastic-defend/host-isolation-exceptions.md
+                  - file: security/manage-elastic-defend/blocklist.md
+                  - file: security/manage-elastic-defend/exception-types-and-syntax.md
               - file: security/manage-elastic-defend/endpoint-protection-rules.md
               - file: security/manage-elastic-defend/elastic-endpoint-self-protection-features.md
               - file: security/manage-elastic-defend/allowlist-elastic-endpoint-in-third-party-antivirus-apps.md
-              - file: security/manage-elastic-defend/optimize-elastic-defend.md
               - file: security/manage-elastic-defend/event-capture-elastic-defend.md
               - file: security/manage-elastic-defend/automatic-troubleshooting.md
               - file: security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md
@@ -683,10 +685,11 @@ toc:
               - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
               - file: security/detect-and-alert/detections-privileges.md
               - file: security/ai/attack-discovery/grant-access.md
-              - file: security/get-started/spaces-defend-faq.md
           - file: security/manage/configure-workspace-settings.md
             children:
               - file: security/get-started/spaces-elastic-security.md
+                children:
+                  - file: security/get-started/spaces-defend-faq.md
               - file: security/get-started/data-views-elastic-security.md
               - file: security/get-started/create-runtime-fields-in-elastic-security.md
       - file: security/ai.md

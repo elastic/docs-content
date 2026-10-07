@@ -28,6 +28,7 @@ Use the following settings to organize your workspace:
 | Your goal | Start here |
 |---|---|
 | Give teams separate rules, alerts, and cases | [Spaces and {{elastic-sec}}](/solutions/security/get-started/spaces-elastic-security.md) |
+| {applies_to}`stack: preview 9.1` Understand how spaces scope {{elastic-defend}} policies, artifacts, and response actions | [Spaces and {{elastic-defend}} FAQ](/solutions/security/get-started/spaces-defend-faq.md) |
 | Show data from custom indices, or switch the data that a page shows | [{{data-sources-cap}} and {{elastic-sec}}](/solutions/security/get-started/data-views-elastic-security.md) |
 | Add a calculated field to your alerts and events | [Create runtime fields in {{elastic-sec}}](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) |
 

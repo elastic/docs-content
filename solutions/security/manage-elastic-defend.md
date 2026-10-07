@@ -42,19 +42,11 @@ To configure those settings, refer to [Configure an integration policy for {{ela
 - [Configure updates for protection artifacts](/solutions/security/configure-elastic-defend/configure-updates-for-protection-artifacts.md): Control how {{elastic-defend}} receives the latest threat detections, malware models, and other protection artifacts.
 - [Configure Linux file system monitoring](/solutions/security/configure-elastic-defend/configure-linux-file-system-monitoring.md): Set which file systems {{elastic-defend}} monitors on Linux hosts.
 - [Create an {{elastic-defend}} policy using the API](/solutions/security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md): Create and customize a policy without the UI.
-- [Remote output and {{ccs}}](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md): Send endpoint data to a separate cluster while still managing {{agents}} from your main deployment.
 - [Configure offline endpoints and air-gapped environments](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md): Keep protection artifacts up to date on hosts that can't reach Elastic's servers.
 
-## Exceptions and filters
+## Endpoint artifacts
 
-Exceptions and filters let you tailor {{elastic-defend}} behavior to your environment, reducing noise without weakening protection.
-
-- [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md): Exclude known-good applications (such as other security tools) from {{elastic-defend}} monitoring to prevent performance issues and incompatibilities.
-- [Trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md): Allow specific external storage devices to connect to protected hosts, overriding device control settings.
-- [Event filters](/solutions/security/manage-elastic-defend/event-filters.md): Prevent high-volume or low-value endpoint events from being stored in {{es}}, reducing storage costs.
-- [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): Allow isolated hosts to communicate with specific IP addresses while remaining blocked from the rest of the network.
-- [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): Prevent specified applications from running on protected hosts, extending {{elastic-defend}}'s list of known-malicious processes.
-- [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md): Reduce false positives from [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) by preventing {{elastic-endpoint}} from generating alerts.
+[Endpoint artifacts](/solutions/security/manage-elastic-defend/endpoint-artifacts.md) let you tailor {{elastic-defend}} behavior to your environment, reducing noise without weakening protection. They include trusted applications, trusted devices, event filters, host isolation exceptions, blocklist entries, and {{elastic-endpoint}} exceptions. Each type changes a different behavior, so compare them in [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) before you create one.
 
 ## Protection and security
 
@@ -69,7 +61,6 @@ Exceptions and filters let you tailor {{elastic-defend}} behavior to your enviro
 
 Use these tools to diagnose issues, reduce resource usage, and understand how {{elastic-defend}} collects event data.
 
-- [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md): Resolve performance issues like excessive CPU usage, high storage consumption, or software incompatibilities by tuning endpoint artifacts and exceptions.
 - [Automatic troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md): Identify and resolve common issues that could prevent {{elastic-defend}} from working as intended, including policy response errors and third-party antivirus conflicts.
 - [Event capture and {{elastic-defend}}](/solutions/security/manage-elastic-defend/event-capture-elastic-defend.md): Understand how {{elastic-defend}} collects, aggregates, and deduplicates system event data to balance threat detection with storage and performance overhead.
 - [Troubleshoot {{elastic-defend}}](/troubleshoot/security/elastic-defend.md): Resolve common issues such as {{agent}} connectivity problems, policy failures, and malware prevention errors.

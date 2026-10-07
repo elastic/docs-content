@@ -32,7 +32,7 @@ Keep these points in mind when you create roles:
 | Give users access to endpoint management, response actions, and artifacts | [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) |
 | Give users access to detection rules, alerts, and exceptions | [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md) |
 | Give users access to Attack Discovery and its schedules | [Attack Discovery privileges](/solutions/security/ai/attack-discovery/grant-access.md) |
-| {applies_to}`stack: preview 9.1` Understand how spaces scope {{elastic-defend}} policies, artifacts, and response actions | [Spaces and {{elastic-defend}} FAQ](/solutions/security/get-started/spaces-defend-faq.md) |
+| {applies_to}`stack: preview 9.1` Check which privileges let users manage endpoint artifacts in each space | [Spaces and {{elastic-defend}} FAQ: RBAC](/solutions/security/get-started/spaces-defend-faq.md#spaces-security-faq-rbac) |
 | Check what you need for cloud security features | [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md) or [CNVM privilege requirements](/solutions/security/cloud/cnvm-privilege-requirements.md) |
 | Check what you need for entity analytics | [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md) |
 
