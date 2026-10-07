@@ -612,7 +612,7 @@ Applies switch tabs are minimally disruptive in many situations.
   Make the tab content as small as possible apart from the procedure itself.
 * Consider breaking up procedures into sets of procedures if only one section differs between contexts.
 
-**Example**: On the [Enable audit logging](https://www.elastic.co/docs/deploy-manage/security/logging-configuration/enabling-audit-logs#enable-audit-logging-procedure) page, we use applies switch tabs to show separate ordered lists outlining the workflow for each deployment type.
+**Example**: On the [Enable audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md#enable-audit-logging-procedure) page, we use applies switch tabs to show separate ordered lists outlining the workflow for each deployment type.
 
 ::::::{tab-set}
 
