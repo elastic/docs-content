@@ -21,7 +21,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 :::
 
 :::{image} /solutions/images/security-alert-page.png
-:alt: Alerts page overview
+:alt: Alerts page with Manage rules, filter controls, and Summary visualizations
 :screenshot:
 :::
 
@@ -75,16 +75,16 @@ Go to **Rules** → **{{siem-rules-ui}}**, then select a rule name. The rule det
 
 ## Edit drop-down filter controls [drop-down-filter-controls]
 
-Customize the filter controls above the Alerts table. By default, you can filter by **Status**, **Severity**, **User**, and **Host**.
+Customize the filter controls above the Alerts table. By default, you can filter by **Assignees**, **Status**, **Severity**, **User**, and **Host**.
 
 :::{image} /solutions/images/security-alert-page-dropdown-controls.png
-:alt: Alerts page with drop-down controls highlighted
+:alt: Alerts page filter controls with the Filter group menu showing Reset Controls and Edit Controls
 :screenshot:
 :::
 
 | Action | How to do it |
 |--------|--------------|
-| Edit controls | Click {icon}`boxes_horizontal` next to controls → **Edit Controls** |
+| Edit controls | Click the **Filter group menu** {icon}`boxes_horizontal` next to the controls → **Edit Controls** |
 | Reorder | Drag controls by their handle |
 | Remove | Hover over control → click **Remove control** |
 | Add | Click **Add Controls** (maximum 4) |

@@ -40,7 +40,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 1. Find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /solutions/images/security-endpoint-cloud-sec-integrations-page.png
-    :alt: Search result for "{{elastic-defend}}" on the Integrations page.
+    :alt: Integrations page filtered to Elastic Defend, including the Beta badge
     :screenshot:
     :::
 
