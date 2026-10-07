@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright Elastic Technologies Inc. and contributors
+# SPDX-License-Identifier: CC-BY-NC-ND-4.0
 """Verify that every Lens visualization API example in the chart docs still
 creates a working visualization.
 
