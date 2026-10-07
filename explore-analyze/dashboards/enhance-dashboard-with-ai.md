@@ -31,11 +31,12 @@ When a dashboard you built needs tidying, an {{agent-builder}} agent can improve
    :::
 
    A new conversation opens in the [chat beside the dashboard](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode), with the dashboard attached. The agent starts reviewing the dashboard right away.
-3. When the agent asks how to enhance the dashboard, choose an option. Each option describes what the agent plans to change in your dashboard.
+3. When the agent asks how to enhance the dashboard, choose an option. Each option lists the main changes the agent plans for your dashboard, so you can review them first.
 
    - **Appearance and content** improves how the dashboard looks and reads, and can also add, change, replace, or remove panels.
    - **Appearance only** keeps your panels and their queries, and improves how the dashboard looks and reads.
-   - To ask for something else, describe it in the **Be more specific** field.
+
+   To add your own instructions, such as panels to keep, type them in the **Be more specific** field.
 
    :::{image} /explore-analyze/images/dashboard-enhance-mode-question.png
    :alt: The agent's question, How would you like to enhance this dashboard, with the Appearance and content, Appearance only, and Be more specific options, and the Skip question and Submit buttons.
@@ -43,19 +44,25 @@ When a dashboard you built needs tidying, an {{agent-builder}} agent can improve
    :width: 450px
    :::
 
-   Then select **Submit**. If you select **Skip question**, the agent applies **Appearance and content**. For details, refer to [What each mode changes](#enhance-dashboard-modes).
+   Then select **Submit**. If you skip the question, or your instructions don't say which option you want, the agent applies **Appearance and content**. For details, refer to [What each option changes](#enhance-dashboard-modes).
 4. Wait for the agent to finish. The agent summarizes its changes in the conversation, and the changes appear in the dashboard you have open.
 
    :::{image} /explore-analyze/images/dashboard-enhance-result.png
    :alt: The enhanced dashboard, retitled and organized into Key metrics and Trends over time sections, with a City control. The chat beside it lists what the agent changed and added.
    :screenshot:
    :::
-5. Review the dashboard. The agent doesn't check the result visually.
+5. Review the changes in the dashboard.
 6. Save the dashboard to keep the changes. If you don't want them, [undo the changes](#enhance-dashboard-undo) instead.
 
-## What each mode changes [enhance-dashboard-modes]
+## How the agent enhances a dashboard [enhance-dashboard-how-it-works]
 
-The two modes differ in how much of the dashboard the agent can change:
+**Enhance** starts the [`dashboards` skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboard-management-skill) in a new conversation, with your dashboard attached. The agent first reads the dashboard and the field mappings of the indices its panels query. From these, it works out what the dashboard measures and what it's missing, and proposes changes for each option. After you choose, it applies the changes to the dashboard you have open, checks them against its plan, and reports what it did.
+
+The agent decides the changes for each dashboard, so two runs on the same dashboard can give different results. When the first run is done, you can keep improving the dashboard in the same conversation.
+
+## What each option changes [enhance-dashboard-modes]
+
+The two options differ in how much of the dashboard the agent can change:
 
 | | **Appearance only** | **Appearance and content** |
 |---|---|---|
@@ -74,10 +81,11 @@ If you don't want to keep the agent's changes, [reset the dashboard](open-dashbo
 ## Next steps [enhance-dashboard-next-steps]
 
 - Ask the agent for more changes in the same conversation, for example to change a chart type or add a panel. The changes appear in the dashboard you have open.
+- To enhance the dashboard again without the **Enhance** button, open a new conversation while you edit the dashboard. Then [type `/dashboards`](/explore-analyze/ai-features/agent-builder/skills.md) followed by your request, for example `/dashboards Enhance this dashboard, appearance only`. When your request says what to change, the agent doesn't ask which option to apply.
 - Fine-tune the layout yourself. Refer to [Organize dashboard panels](arrange-panels.md).
 
 ## Related pages [enhance-dashboard-related-pages]
 
 - [Dashboards and visualizations in {{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md)
 - [Create dashboards using AI](create-dashboards-using-ai.md)
-- [`dashboard-management` skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboard-management-skill)
+- [`dashboards` skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboard-management-skill)
