@@ -133,10 +133,11 @@ Activity logging records actions taken by users and systems, such as authenticat
 
 | Feature | Description | Availability |
 |---|---|---|
-| [](./monitor/stack-audit-logging.md) | Enable and configure audit logging for {{es}} and {{kib}} deployments. | {applies_to}`stack: ga` |
-| [](./monitor/cloud-audit-trail.md) | Audit organization-level actions such as sign-in activity, deployment management, user and role changes, and API key usage. | {applies_to}`ech: ga` {{fedramp-mod}} only |
 | [](./monitor/logging-configuration/query-logs.md) | Log every search, {{esql}}, SQL, or EQL query for analysis and debugging. | {applies_to}`stack: preview 9.4` |
 | [](./monitor/logging-configuration/slow-logs.md) | Identify slow queries and indexing operations. | {applies_to}`stack: ga` |
+| [](./monitor/stack-audit-logging.md) | Enable and configure audit logging for {{es}} and {{kib}} deployments. | {applies_to}`stack: ga` |
+| [](./monitor/cloud-audit-trail.md) | Audit organization-level actions such as sign-in activity, deployment management, user and role changes, and API key usage. | {applies_to}`ech: ga` {{fedramp-mod}} only |
+| [{{kib}} user activity](kibana://reference/user-activity.md) | Track user actions in {{kib}}, such as dashboard views, creation, and updates. | {applies_to}`stack: preview 9.5` |
 
 ## Operational logging
 ```{applies_to}

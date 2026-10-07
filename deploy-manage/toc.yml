@@ -804,6 +804,8 @@ toc:
               - file: monitor/orchestrators/ece-monitoring-ece-set-retention.md
       - file: monitor/activity-logging.md
         children:
+          - file: monitor/logging-configuration/query-logs.md
+          - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/stack-audit-logging.md
             children:
               - file: monitor/stack-audit-logging/enabling-audit-logs.md
@@ -813,9 +815,9 @@ toc:
                   - file: monitor/stack-audit-logging/logfile-audit-output.md
               - file: monitor/stack-audit-logging/auditing-search-queries.md
               - file: monitor/stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md
-          - file: monitor/logging-configuration/query-logs.md
-          - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/cloud-audit-trail.md
+          - title: "Kibana user activity"
+            crosslink: kibana://reference/user-activity.md
           - hidden: monitor/log-delivery.md
             children:
               - hidden: monitor/log-delivery/audit-trail.md
