@@ -82,7 +82,7 @@ $$$fully-mounted$$$
 Fully mounted index
 :   Fully caches the snapshotted index’s shards in the {{es}} cluster. {{ilm-init}} uses this option in the `hot` and `cold` phases.
 
-    Search performance for a fully mounted index is normally comparable to a regular index, since there is minimal need to access the snapshot repository. While recovery is ongoing, search performance may be slower than with a regular index because a search may need some data that has not yet been retrieved into the local cache. If that happens, {{es}} will eagerly retrieve the data needed to complete the search in parallel with the ongoing recovery. On-disk data is preserved across restarts, such that the node does not need to re-download data that is already stored on the node after a restart.
+    Search performance for a fully mounted index is normally comparable to a regular index, since there is minimal need to access the snapshot repository. While recovery is ongoing, search performance might be slower than with a regular index because a search might need some data that has not yet been retrieved into the local cache. If that happens, {{es}} will eagerly retrieve the data needed to complete the search in parallel with the ongoing recovery. On-disk data is preserved across restarts, such that the node does not need to re-download data that is already stored on the node after a restart.
 
     Indices managed by {{ilm-init}} are prefixed with `restored-` when fully mounted.
 
