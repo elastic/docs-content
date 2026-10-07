@@ -6,11 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_audit_logging.html
   - https://www.elastic.co/guide/en/cloud/current/ec-enable-logging-and-monitoring.html#ec-enable-audit-logs
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: ga
   serverless: unavailable
 products:
   - id: elasticsearch
