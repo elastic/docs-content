@@ -31,7 +31,7 @@ The following concepts help you understand how {{context-engine}} turns source d
 
 An AI index groups the metadata, [sources](#sources), [automations](#automations-and-workflows), optional [agent traces](#agent-traces), and {{es}} storage for a particular body of context. Its name and description help an [agent](#agents-and-applications) determine whether that context is relevant to a question. Its generated [Knowledge Indicators (KIs)](#knowledge-indicators) provide the context that agents and applications query.
 
-Creating an AI index does not ingest source data or generate knowledge. Sources define the data that its automations can analyze, and KIs are stored as the generated context. To plan and maintain one, refer to [Build and maintain an AI index](build-and-maintain-ai-index.md). For the complete UI-led example, follow [Get started with {{context-engine}}](quickstart.md).
+Creating an AI index does not ingest source data or generate knowledge. Sources define the data that its automations can analyze, and KIs are stored as the generated context. To create, update, or delete an AI index, refer to [Create and manage AI indices](create-and-manage-ai-indices.md). To plan and maintain one, refer to [Build and maintain an AI index](build-and-maintain-ai-index.md). For the complete UI-led example, follow the [{{context-engine}} quickstart](quickstart.md).
 
 ### Managed AI indices
 
@@ -46,7 +46,7 @@ A source is the data from which an [automation](#automations-and-workflows) gene
 - An {{esql}} source uses a query to select data from one or more {{es}} indices or data streams.
 - A connector source names a configured connector to an external system. Supported connectors include services such as Google Drive, GitHub, Jira, ServiceNow, and Slack, and cloud object stores. Refer to [Connectors in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/connectors.md) for more information about configuring connectors.
 
-Selecting an {{es}} index, data stream, or alias creates an {{esql}} source in the form `FROM <name>`. You can instead provide an advanced {{esql}} query to narrow the available data. How an automation uses that source depends on its workflow. The workflow can run the configured query, inspect an underlying index's mapping, take other samples, or calculate full-dataset aggregations.
+Selecting an {{es}} index, data stream, or alias creates an {{esql}} source in the form `FROM <name>`. You can instead provide an advanced {{esql}} query to narrow the available data. How an automation uses that source depends on its workflow. The workflow can run the configured query, inspect an underlying index's mapping, take other samples, or calculate full-dataset aggregations. To add or update source data, refer to [Add and manage sources](add-and-manage-sources.md). For an end-to-end example, follow the [{{context-engine}} quickstart](quickstart.md).
 
 ## Automations and workflows
 
@@ -54,7 +54,7 @@ An automation generates or refreshes [Knowledge Indicators (KIs)](#knowledge-ind
 
 The workflow can retrieve mappings, run {{esql}} samples and aggregations, generate structured content with an AI prompt, assemble the KI, verify generated queries, and write the KI when verification passes. You can inspect the workflow to verify the scope of its queries and the evidence behind its output. Refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md) to understand its triggers, constants, steps, and execution lifecycle.
 
-Passing syntax and runtime checks means that a generated query parses and runs. It does not confirm that the query's fields, grouping, or calculations answer the intended question. To review and run a generated automation, follow [Get started with {{context-engine}}](quickstart.md).
+Passing syntax and runtime checks means that a generated query parses and runs. It does not confirm that the query's fields, grouping, or calculations answer the intended question. To create, review, run, and schedule an automation, refer to [Create and manage automations](create-and-manage-automations.md). For an end-to-end example, follow the [{{context-engine}} quickstart](quickstart.md).
 
 ## Knowledge Indicators
 
@@ -68,19 +68,19 @@ The [generation strategy](build-and-maintain-ai-index.md#select-a-generation-str
 
 Agents and applications retrieve [KIs](#knowledge-indicators) from an [AI index](#ai-indices) as context. In {{agent-builder}}, you make an AI index available by adding it to an agent's configuration. Other agent frameworks and applications can use supported {{context-engine}} operations through Model Context Protocol (MCP) [tools](#tools-system-instructions-and-skills) or APIs.
 
-At retrieval time, an agent or application:
+At retrieval time, an agent or application lists the AI indices it can access, describes a relevant AI index, and queries it for KIs. For the available query modes and complete retrieval workflow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
-1. Lists the AI indices it can access and selects one that is relevant to the question.
-2. Describes that AI index to discover its fields, KI types, tags, and example queries.
-3. Queries the AI index for relevant KIs.
-
-To configure retrieval for an agent or application, refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md). For the built-in integration, follow [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
+To choose a retrieval or integration route, refer to [Use an AI index](use-an-ai-index.md). For the built-in integration, follow [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
 
 ## Tools, system instructions, and skills
 
 A tool is an operation an [agent](#agents-and-applications) can perform. MCP exposes tools to compatible clients, while APIs let applications call supported operations directly or wrap them as tools.
 
 System instructions and skills guide an agent in deciding when and how to use those operations. A skill packages reusable instructions and can associate them with tools and reference content, but it is not itself a tool, connection mechanism, or agent framework. Refer to the [{{context-engine}} entries in the built-in skills reference](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-context-engine-skills) for the skills that support context generation, evaluation, and retrieval.
+
+<!--
+To expose {{context-engine}} operations to compatible clients, refer to [Use {{context-engine}} through MCP and skills](use-context-engine-through-mcp-and-skills.md).
+-->
 
 ## Agent traces
 
@@ -91,3 +91,7 @@ Agent traces record how an [agent](#agents-and-applications) runs, including its
 Agent traces do not update KIs by themselves. Use their evidence to refine sources or automations, then regenerate and retest the KIs. This process turns repeated agent work into improvements to shared context instead of one-off changes to individual agent instructions.
 
 For information about trace collection, contents, privacy, and access, refer to [Collect {{agent-builder}} traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
+
+<!--
+To collect traces from Claude Code, refer to [Send Claude Code telemetry to Elastic](send-claude-code-telemetry.md).
+-->

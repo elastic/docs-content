@@ -88,6 +88,8 @@ Additional RUM goodies, like core vitals, and visitor breakdown by browser, loca
 
 Selecting a transaction group will bring you to the **transaction** details. This page is visually similar to the transaction overview, but it shows data from all transactions within the selected transaction group.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The transaction details also include a **Service map** panel scoped to the service. Refer to [](/solutions/observability/apm/service-map.md) for more information.
+
 :::{image} /solutions/images/observability-apm-transactions-overview.png
 :alt: Example view of response time distribution
 :screenshot:
