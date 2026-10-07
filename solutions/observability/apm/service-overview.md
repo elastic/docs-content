@@ -28,8 +28,6 @@ Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) b
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Each RED metric chart (**Latency**, **Throughput**, and **Failed transaction rate**) includes an **Open in Discover** button to explore the underlying trace data directly in Discover.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The overview also includes a **Service map** panel scoped to the service, showing how it connects to the rest of your architecture. Refer to [](/solutions/observability/apm/service-map.md) for more information.
-
 ## Time series and expected bounds comparison [service-time-comparison]
 
 For insight into the health of your services, you can compare how a service performs relative to a previous time frame or to the expected bounds from the corresponding {{anomaly-job}}. For example, has latency been slowly increasing over time, did the service experience a sudden spike, is the throughput similar to what the {{ml}} job expects — enabling a comparison can provide the answer.
@@ -55,6 +53,21 @@ Response times for the service. You can filter the **Latency** chart to display 
 
 :::{image} /solutions/images/observability-latency.png
 :alt: Service latency
+:screenshot:
+:::
+
+## Service map [service-overview-map]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The **Service map** panel shows the service’s upstream and downstream connections. Click **Explore in Service map** to open the full map with the service selected and the time range, environment, and KQL query preserved.
+
+For licensing requirements and map controls, refer to [](/solutions/observability/apm/service-map.md).
+
+:::{image} /solutions/images/observability-service-overview-contextual-map.jpg
+:alt: Service map panel in the service overview, showing upstream and downstream connections and map controls
 :screenshot:
 :::
 
