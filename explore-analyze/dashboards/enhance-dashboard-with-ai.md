@@ -25,14 +25,31 @@ When a dashboard you built needs tidying, an {{agent-builder}} agent can improve
 1. Open the dashboard in **Edit** mode.
 2. Select **Enhance** in the dashboard header.
 
+   :::{image} /explore-analyze/images/dashboard-enhance-button.png
+   :alt: Dashboard in edit mode with the Enhance button in the header and its tooltip, Improve the content and style of your dashboard using AI. The dashboard has a humidity metric, a pie chart, and a tag cloud, with empty space to the right.
+   :screenshot:
+   :::
+
    A new conversation opens in the [chat beside the dashboard](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode), with the dashboard attached. The agent starts reviewing the dashboard right away.
-3. When the agent asks how to enhance the dashboard, select a mode:
+3. When the agent asks how to enhance the dashboard, choose an option. Each option describes what the agent plans to change in your dashboard.
 
+   - **Appearance and content** improves how the dashboard looks and reads, and can also add, change, replace, or remove panels.
    - **Appearance only** keeps your panels and their queries, and improves how the dashboard looks and reads.
-   - **Appearance and content** does the same, and can also add, change, replace, or remove panels.
+   - To ask for something else, describe it in the **Be more specific** field.
 
-   If you skip the question, the agent applies **Appearance and content**. For details, refer to [What each mode changes](#enhance-dashboard-modes).
+   :::{image} /explore-analyze/images/dashboard-enhance-mode-question.png
+   :alt: The agent's question, How would you like to enhance this dashboard, with the Appearance and content, Appearance only, and Be more specific options, and the Skip question and Submit buttons.
+   :screenshot:
+   :width: 450px
+   :::
+
+   Then select **Submit**. If you select **Skip question**, the agent applies **Appearance and content**. For details, refer to [What each mode changes](#enhance-dashboard-modes).
 4. Wait for the agent to finish. The agent summarizes its changes in the conversation, and the changes appear in the dashboard you have open.
+
+   :::{image} /explore-analyze/images/dashboard-enhance-result.png
+   :alt: The enhanced dashboard, retitled and organized into Key metrics and Trends over time sections, with a City control. The chat beside it lists what the agent changed and added.
+   :screenshot:
+   :::
 5. Review the dashboard. The agent doesn't check the result visually.
 6. Save the dashboard to keep the changes. If you don't want them, [undo the changes](#enhance-dashboard-undo) instead.
 
