@@ -29,7 +29,7 @@ This method allows you to add the visualization of your Discover {{esql}} query 
 1. Next to the Discover visualization, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 
    :::{image} /explore-analyze/images/save-discover-viz-to-dashboard.png
-   :alt: Importing Discover visualization with controls into a dashboard
+   :alt: The Save visualization to dashboard button next to the Discover chart, with its tooltip.
    :width: 70%
    :screenshot:
    :::

@@ -22,7 +22,7 @@ Variable controls make your queries dynamic, so you don't need to keep several v
 You create a control while you write the query, from the editor's autocomplete menu.
 
 :::{image} /explore-analyze/images/variable-control-discover.png
-:alt: The Create variable control panel beside an ES|QL query, with Create control highlighted in the editor.
+:alt: The Create variable control panel beside an ES|QL query, with Create control in the editor's autocomplete menu.
 :screenshot:
 :width: 75%
 :::
@@ -36,7 +36,7 @@ You create a control while you write the query, from the editor's autocomplete m
 **Result:** The control appears for the query, and Discover inserts its variable where you created it.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-variable-control.png
-:alt: A Count by control set to geo.dest in Discover, with its list of fields open.
+:alt: A Count by control set to host.keyword in Discover, with its list of fields open.
 :screenshot:
 :width: 75%
 :::
