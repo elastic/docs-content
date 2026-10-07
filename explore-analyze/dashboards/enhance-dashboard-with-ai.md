@@ -26,14 +26,14 @@ If you have unsaved edits that you want to keep, save the dashboard first. That 
 ## Enhance the dashboard [enhance-dashboard-steps]
 
 1. Open the dashboard in **Edit** mode.
-2. In the dashboard header, select **Enhance**.
+2. In the application menu, select **Enhance**.
 
    :::{image} /explore-analyze/images/dashboard-enhance-button.png
-   :alt: Dashboard in edit mode with the Enhance button in the header and its tooltip, Improve the content and style of your dashboard using AI. The dashboard has a humidity metric, a pie chart, and a tag cloud, with empty space to the right.
+   :alt: Dashboard in edit mode with the Enhance button in the application menu and its tooltip, Improve the content and style of your dashboard using AI. The dashboard has a humidity metric, a pie chart, and a tag cloud, with empty space to the right.
    :screenshot:
    :::
 
-   The [chat opens beside the dashboard](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode) in a new conversation, with your dashboard attached, and the agent starts reviewing it right away.
+   The chat opens in the [sidebar](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode) in a new conversation, with your dashboard attached, and the agent starts reviewing it right away.
 3. When the agent asks how you'd like to enhance the dashboard, select the option that fits. Each option lists the main changes the agent plans for your dashboard, so you know what to expect before you decide.
 
    - **Appearance and content** improves how the dashboard looks and reads, and also lets the agent add, change, replace, or remove panels.
@@ -65,7 +65,7 @@ Because the agent tailors its changes to each dashboard, two runs on the same da
 
 ## What each option changes [enhance-dashboard-modes]
 
-Both options make the dashboard easier to read. The agent rewrites the dashboard title, description, and text panels to match what the panels measure. It also rearranges the panels and groups them into sections where that helps. Your {{esql}} visualizations get the default chart styling, which replaces any custom styling you applied.
+Both options make the dashboard easier to read. The agent rewrites the dashboard title, description, and Markdown panels to match what the panels measure. It also rearranges the panels and groups them into sections where that helps. Your {{esql}} visualizations get the default chart styling, which replaces any custom styling you applied.
 
 Where the options differ is in what happens to your panels:
 
@@ -76,7 +76,7 @@ In both cases, the agent arranges panels using the practices described in [Dashb
 
 ## Discard the changes [enhance-dashboard-discard]
 
-If you'd rather not keep the agent's changes, open the **Save** menu and select **Reset changes** before you save. Resetting returns the dashboard to its last saved version, so it also discards any unsaved edits of your own. Once you save, the changes become part of the dashboard, and you can no longer discard them in one step. To learn more, refer to [Reset dashboard changes](open-dashboard.md#reset-the-dashboard).
+If you'd rather not keep the agent's changes, select **Reset changes** from the menu next to **Save**, before you save. Resetting returns the dashboard to its last saved version, so it also discards any unsaved edits of your own. Once you save, the changes become part of the dashboard, and you can no longer discard them in one step. To learn more, refer to [Reset dashboard changes](open-dashboard.md#reset-the-dashboard).
 
 ## Next steps [enhance-dashboard-next-steps]
 
