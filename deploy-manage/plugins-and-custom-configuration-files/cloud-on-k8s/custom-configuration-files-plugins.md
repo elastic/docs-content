@@ -27,7 +27,7 @@ There are multiple ways to create and mount [ConfigMaps](https://kubernetes.io/d
 This example creates a ConfigMap named `synonyms` from a local file `my-synonyms.txt`, stored under the key `synonyms-elasticsearch.txt`:
 
 ```sh
-kubectl create configmap synonyms -n <namespace> --from-file=my-synonyms.txt=synonyms-elasticsearch.txt
+kubectl create configmap synonyms -n <namespace> --from-file=synonyms-elasticsearch.txt=my-synonyms.txt
 ```
 
 ::::{tip}

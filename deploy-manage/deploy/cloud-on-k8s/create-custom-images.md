@@ -22,7 +22,7 @@ You can create your own custom application images ({{eck_resources_list}}) inste
 2. Build the image with:
 
     ```sh subs=true
-    docker build --tag elasticsearch-icu:{{version.stack}}
+    docker build --tag elasticsearch-icu:{{version.stack}} .
     ```
 
 
