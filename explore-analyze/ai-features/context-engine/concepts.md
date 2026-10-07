@@ -43,7 +43,7 @@ Managed AI indices have a **Managed** badge in **Context**. Agents can discover 
 
 A source identifies data that an [automation](#automations-and-workflows) can use to generate [Knowledge Indicators (KIs)](#knowledge-indicators).
 
-You can add source data in three ways:
+You can add source data in the following ways:
 
 - **{{es}} index, data stream, or alias:** Select an {{es}} data object. {{context-engine}} creates a source query in the form `FROM <name>`.
 - **Connector:** Select a configured connector to an external system, such as Google Drive or GitHub.
