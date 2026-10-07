@@ -10,9 +10,9 @@ products:
 :icon: elasticsearch
 :title: Elasticsearch documentation hub
 :description: The distributed search and analytics engine at the heart of the Elastic platform. Index, search, and analyze data at any scale, build semantic and vector search experiences, and power applications. Run it as a managed service or in your own environment.
-:primary-action: [Get started](#get-started)
-:secondary-action: [What's new](#whats-new)
-:tertiary-action: [Explore Elasticsearch docs](#explore)
+:::
+
+:::{on-this-page}
 :::
 
 :::{get-started}
@@ -162,6 +162,7 @@ links:
 :::::{explore}
 :id: explore
 :title: Explore Elasticsearch
+:mode: first
 :intro: Find the Elasticsearch documentation you need, organized by task, from deploying and ingesting to searching, securing, and operating.
 
 ::::{card-group}

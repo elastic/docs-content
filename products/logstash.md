@@ -10,9 +10,9 @@ products:
 :icon: logstash
 :title: Logstash documentation hub
 :description: Real-time server-side data processing pipeline. Collect from many sources, transform and enrich events, and ship to Elasticsearch or other outputs.
-:primary-action: [Get started](#get-started)
-:secondary-action: [What's new](#whats-new)
-:tertiary-action: [Explore Logstash docs](#explore)
+:::
+
+:::{on-this-page}
 :::
 
 :::{get-started}
@@ -72,6 +72,7 @@ links:
 :::::{explore}
 :id: explore
 :title: Explore Logstash
+:mode: first
 :intro: Explore the Logstash documentation, from installing and building pipelines to parsing, securing, troubleshooting, and more.
 
 ::::{card-group}

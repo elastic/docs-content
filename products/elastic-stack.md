@@ -10,9 +10,9 @@ products:
 :icon: elastic-stack
 :title: Elastic Stack documentation hub
 :description: Elasticsearch, Kibana, Logstash, and Beats, also known as the Elastic Stack or ELK Stack, work together to ingest, store, search, and visualize data at scale. Run the stack as a managed service or in your own environment.
-:primary-action: [Get started](#get-started)
-:secondary-action: [What's new](#whats-new)
-:tertiary-action: [Explore Elastic Stack docs](#explore)
+:::
+
+:::{on-this-page}
 :::
 
 :::{get-started}
@@ -159,6 +159,7 @@ links:
 :::::{explore}
 :id: explore
 :title: Explore the Elastic Stack
+:mode: first
 :intro: Find documentation for deploying, upgrading, and operating the products that make up the stack.
 
 ::::{card-group}

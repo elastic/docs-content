@@ -10,9 +10,9 @@ products:
 :icon: kibana
 :title: Kibana documentation hub
 :description: The UI for the Elasticsearch platform. Explore and visualize your data, build dashboards, set up alerts, automate tasks with AI, and use purpose-built solutions for Search, Observability, and Security.
-:primary-action: [Get started](#get-started)
-:secondary-action: [What's new](#whats-new)
-:tertiary-action: [Explore Kibana docs](#explore)
+:::
+
+:::{on-this-page}
 :::
 
 :::{get-started}
@@ -127,7 +127,8 @@ links:
 
 :::::{explore}
 :id: explore
-:title: Explore Kibana
+:title: Explore Kibana docs
+:mode: first
 :intro: Find the Kibana app or task you need, whether you're querying data, building a dashboard, or managing the stack.
 
 ::::{card-group}
@@ -187,6 +188,7 @@ links:
 :::::{explore}
 :id: use-kibana
 :title: Use Kibana
+:level: 3
 :intro: Explore and visualize your data, query it, set up alerts, and work with AI features.
 
 ::::{card-group}
@@ -472,6 +474,7 @@ links:
 :::::{explore}
 :id: run-kibana
 :title: Set up and run Kibana
+:level: 3
 :intro: Install Kibana, bring in data, manage the stack, and keep it secure.
 
 ::::{card-group}
