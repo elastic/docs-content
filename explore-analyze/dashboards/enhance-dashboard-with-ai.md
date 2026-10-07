@@ -9,7 +9,7 @@ products:
 type: how-to
 ---
 
-# Enhance a dashboard with AI [enhance-dashboard-with-ai]
+# Enhance a {{kib}} dashboard with AI [enhance-dashboard-with-ai]
 
 If a dashboard you built feels cluttered or hard to read, you can let an {{agent-builder}} agent improve it instead of reworking it by hand. The agent looks at what your panels actually measure, then gives the dashboard clearer text, a tidier layout, and consistent chart styling. You can also let it fill the gaps, for example by adding the trends or breakdowns that your data supports. The changes stay unsaved until you review them and decide to keep them.
 
