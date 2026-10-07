@@ -38,8 +38,8 @@ Most of the methods in the [ingestion method table](#security-ingest-select-meth
 
 Before you add an integration, decide how it collects data. Integrations collect data in one of two ways:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` **{{managed-integrations}}:** Elastic runs the collector for you, so there's nothing to install or maintain. You connect to the source with credentials such as an API key. They're available on {{serverless-full}} projects and {{ech}} deployments. To learn more, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
-- **Integrations that use {{agent}}:** [{{agent}}](/reference/fleet/index.md) runs on hosts in your environment and collects the data, and you manage it with {{fleet}}. If you haven't set up {{agent}} yet, refer to [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` **{{managed-integrations}}:** On {{serverless-full}} projects and {{ech}} deployments, Elastic runs the collector for you, so there's nothing to install or maintain. {{managed-integrations}} pull data from cloud sources through an API, and you connect to the source with credentials such as an API key. To check whether your data source has an {{managed-integration}}, refer to the [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). For how they work, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
+- **Integrations that use {{agent}}:** You deploy, update, and scale [{{agent}}](/reference/fleet/index.md) yourself, and you manage it with {{fleet}}. Install it on the host you want to monitor, or on a host that collects data from remote sources such as syslog, cloud storage, or an API. If you haven't set up {{agent}} yet, refer to [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md).
 
 ### Find and add an integration [security-ingest-add-integration]
 
@@ -81,12 +81,14 @@ If you already use other tools to collect and ship data, you can send it to {{el
 
 * [{{beats}}](beats://reference/index.md) shippers installed on each system you want to monitor.
 * [{{ls}}](logstash://reference/index.md), which ingests, transforms, and ships data in any format.
-* Third-party collectors configured to ship data that conforms to ECS. [](/reference/security/fields-and-object-schemas/siem-field-reference.md) lists the ECS fields that {{elastic-sec}} uses.
+* Third-party collectors configured to ship data that conforms to ECS.
+
+{{elastic-sec}} relies on data that conforms to [ECS](ecs://reference/index.md). Most integrations map their data to ECS with ingest pipelines, and custom integrations that you create with Automatic Import map to ECS the same way. If you ship data another way, map it to ECS wherever you can. When all your sources use the same fields, detection rules, dashboards, and other {{elastic-sec}} features work with all your data. For the ECS fields that {{elastic-sec}} uses, refer to [](/reference/security/fields-and-object-schemas/siem-field-reference.md).
 
 {{elastic-sec}} reads data from a default set of index patterns, including `logs-*`, `filebeat-*`, and `winlogbeat-*`. Integrations write their logs to `logs-*` indices, and {{beats}} write to indices such as `filebeat-*`, so their data appears in {{elastic-sec}} without extra setup.
 
 ::::{important}
-If you ship data with a third-party collector, or with {{ls}} plugins that don't use {{agent}} or {{beats}}, you must map its fields to [ECS](ecs://reference/index.md). You must also add its index to the {{elastic-sec}} indices by updating the `securitySolution:defaultIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
+If you ship data with a third-party collector, or with {{ls}} plugins that don't use {{agent}} or {{beats}}, you must add its index to the {{elastic-sec}} indices by updating the `securitySolution:defaultIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 
 {{elastic-sec}} identifies hosts by the [`host.name`](ecs://reference/ecs-host.md) ECS field. If the same host sends data with different `host.name` values, it appears as more than one host.
 ::::
