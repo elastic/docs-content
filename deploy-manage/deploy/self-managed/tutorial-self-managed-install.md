@@ -377,7 +377,7 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
    Because of running the `elasticsearch-reconfigure-node` tool, certain settings have been updated. For example:
 
    * The `transport.host: 0.0.0.0` and `http.host: 0.0.0.0` settings are already uncommented.
-   * The `discovery_seed.hosts` setting has the host IP address of the first {{es}} node. As you add each new {{es}} node to the cluster, the `discovery_seed.hosts` setting contains an array of the IP addresses and port numbers to connect to each {{es}} node that was previously added to the cluster.
+   * The `discovery.seed_hosts` setting has the host IP address of the first {{es}} node. As you add each new {{es}} node to the cluster, the `discovery.seed_hosts` setting contains an array of the IP addresses and port numbers to connect to each {{es}} node that was previously added to the cluster.
 
 1. In the configuration file, uncomment the line `#cluster.name: my-application` and set it to match the name you specified on the first {{es}} node:
 
