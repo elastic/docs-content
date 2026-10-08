@@ -119,6 +119,7 @@ A relative value such as `-1y` is an offset from now. Adding `/` and a rounding 
 
 | Unit | Rounds to |
 | --- | --- |
+| `ms` | Millisecond |
 | `s` | Second |
 | `m` | Minute |
 | `h` | Hour |
@@ -127,9 +128,9 @@ A relative value such as `-1y` is an offset from now. Adding `/` and a rounding 
 | `M` | Month |
 | `y` | Year |
 
-A week starts on the day set in the **Day of week** [advanced setting](kibana://reference/advanced-settings.md).
+These units use [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) syntax, but the time filter accepts only the units in this table. A week starts on the day set in the **Day of week** [advanced setting](kibana://reference/advanced-settings.md).
 
-Rounding units are case-sensitive: `m` is the minute and `M` is the month. Words such as `/mo` or `/month` aren't accepted, so `-1y/M` is the entry that starts at the beginning of the month one year ago.
+Rounding units are case-sensitive: `m` is the minute and `M` is the month. Words such as `/mo` or `/month` aren't accepted, and neither is `/H`, so use `/h` for hours. The entry that starts at the beginning of the month one year ago is `-1y/M`.
 
 With `to` between a start and an end, you round both edges. If it's October 8, 2026, these ranges cover:
 
