@@ -1,8 +1,10 @@
 ---
 navigation_title: "Context Engine"
+description: Learn how AI indices, sources, automations, and Knowledge Indicators make context available to agents.
+type: overview
 applies_to:
-  stack: preview 9.6
-  serverless: preview
+  stack: experimental 9.6
+  serverless: experimental
 products:
   - id: elasticsearch
   - id: kibana
@@ -10,4 +12,92 @@ products:
   - id: security
 ---
 
-# Context Engine
+# {{context-engine}}
+
+:::{include} context-engine/_snippets/hidden-docs-notice.md
+:::
+
+{{context-engine}} enables you to distill raw source data into context optimized for retrieval by agents and applications. Without reusable context, agents can spend each run rediscovering which data to use, what it means, and how to query it. Building this context up front reduces repeated source data scanning and interpretation, helping agents respond faster and use fewer model tokens.
+
+Automations distill source data into Knowledge Indicators, which agents and applications retrieve from an AI index:
+
+:::{image} context-engine/images/context-engine-flow.svg
+:alt: Sources feed automations that generate Knowledge Indicators in an AI index. Agents retrieve the Knowledge Indicators and can use their guidance to query source data directly for more detailed or up-to-date information. Agent traces can reveal where the context needs improvement.
+:width: 100%
+:::
+
+## {{context-engine}} use cases
+
+{{context-engine}} is useful when agents repeatedly need to interpret large, complex, or changing bodies of data. For example, you can:
+
+- Turn technical documentation, policies, cases, or runbooks into reusable explanations, procedures, and limitations.
+- Give agents business definitions and verified query patterns for working with structured data.
+- Build context that develops across records, such as profiles of services, systems, accounts, or projects.
+- Surface significant findings or conditions without making every agent analyze all source records.
+
+These use cases share the same advantage: move recurring interpretation into an automation, reuse the resulting context across questions and agents, and improve it as agent traces reveal gaps.
+
+For example, consider an agent asked to summarize the issues affecting your largest customers. The agent still needs access to the account, support, and contract data that contains the answer. {{context-engine}} changes how much discovery and interpretation the agent must perform before it can use that data:
+
+| Without {{context-engine}} | With {{context-engine}} |
+| --- | --- |
+| Discover the relevant sources and inspect their structure during the agent run. | Retrieve KIs that describe the relevant sources and when to use them. |
+| Infer business meaning, relationships between customers, and known limitations. | Reuse context that automations generated from the source data. |
+| Develop and test queries before addressing the task. | Follow verified query guidance when source data must be queried directly. |
+| Repeat the same interpretation in later runs or other agents. | Refine the automation and regenerate its KIs so future runs can use the improvement. |
+
+## How {{context-engine}} works
+
+To build and use context with {{context-engine}}:
+
+:::::{stepper}
+
+::::{step} Create an AI index
+Create an [AI index](context-engine/concepts.md#ai-indices) for a defined area of context.
+::::
+
+::::{step} Add source data
+Add one or more [sources](context-engine/concepts.md#sources) that contain the relevant data.
+::::
+
+::::{step} Generate Knowledge Indicators
+Configure [automations](context-engine/concepts.md#automations-and-workflows), implemented as [Elastic Workflows](/explore-analyze/workflows.md), to generate and refresh [KIs](context-engine/concepts.md#knowledge-indicators) from those sources.
+::::
+
+::::{step} Make the context available
+Make the AI index available to an [agent or application](context-engine/concepts.md#agents-and-applications).
+::::
+
+::::{step} Configure context retrieval
+Configure the agent or application with the appropriate [tools and instructions](context-engine/concepts.md#tools-system-instructions-and-skills) to retrieve KIs as context and use KI guidance to query source data directly when more detailed or up-to-date information is required.
+::::
+
+::::{step} Evaluate and improve the context
+Review KIs and [agent traces](context-engine/concepts.md#agent-traces) to identify missing, misleading, or underused context. Refine the sources or automations, regenerate the KIs, and repeat as questions and source data change.
+::::
+
+:::::
+
+## {{context-engine}} quickstart
+
+Follow the [{{context-engine}} quickstart](context-engine/quickstart.md) to create an AI index from existing {{es}} data, generate your first KI, and test how an {{agent-builder}} agent uses it.
+
+## {{context-engine}} concepts
+
+Learn how AI indices, sources, automations, KIs, and agent access fit together in [{{context-engine}} concepts](context-engine/concepts.md).
+
+## Build and maintain an AI index
+
+Learn how to choose source data, select a KI generation strategy, review automations, and maintain useful context in [Build and maintain an AI index](context-engine/build-and-maintain-ai-index.md).
+
+## Use an AI index
+
+Learn how to retrieve context directly or through an agent or application in [Use an AI index](context-engine/use-an-ai-index.md).
+
+## Reference
+
+Use the [{{context-engine}} API guide](context-engine/context-engine-api.md) to find the available operations and links to the complete {{kib}} API reference.
+
+<!--
+Review [{{context-engine}} availability and limits](context-engine/availability-and-limits.md) for deployment support, requirements, and product limits.
+-->

@@ -47,6 +47,8 @@ When using GCP Private Service Connect, the following limitations apply:
 ```{include} _snippets/private-connectivity-limitations-ech.md
 ```
 
+* **Remote clusters with API key authentication:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic.
+
 ## Private Service Connect URIs [ec-private-service-connect-uris]
 
 Service Attachments are set up by Elastic in all supported GCP regions under the following URIs:
@@ -255,6 +257,8 @@ Use the alias you’ve set up as CNAME A record to access your deployment.
 
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for Elasticsearch and Kibana traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication is supported with the TLS certificate based security model (port `9400`). The API key based security model is not yet available over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for more information.
 
 To access the deployment:
 

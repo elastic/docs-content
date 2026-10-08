@@ -8,6 +8,7 @@ products:
   - id: "cloud-hosted"
   - id: "cloud-kubernetes"
   - id: "cloud-enterprise"
+navigation_title: Query logging
 ---
 
 # Query logging in {{es}}
@@ -155,7 +156,7 @@ The [`elasticsearch` Elastic Agent integration](https://www.elastic.co/docs/refe
 
 Install the assets from Fleet (or the integration's Assets tab) when you are ready to explore the indexed stream.
 
-Alternatively, [create a data view](/explore-analyze/find-and-organize/data-views.md) for `logs-elasticsearch.querylog-*` and use **Discover** to filter on `event.dataset: elasticsearch.querylog`.
+Alternatively, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for `logs-elasticsearch.querylog-*` and use **Discover** to filter on `event.dataset: elasticsearch.querylog`.
 
 ## Example query log entries
 

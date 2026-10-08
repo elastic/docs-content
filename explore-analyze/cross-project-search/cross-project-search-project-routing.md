@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
 description: Learn how to use project routing to limit cross-project search (CPS) queries to specific projects based on tag values.

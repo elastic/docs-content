@@ -138,7 +138,7 @@ One way to update the roles that are stored within the {{dfeed}} without changin
 ## {{cps-cap}} scope [ml-ad-cps-scope]
 ```{applies_to}
 stack: unavailable
-serverless: preview
+serverless: ga
 ```
 
 On {{serverless-full}} with [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), {{anomaly-jobs}} can search data across linked projects. Each job's scope is controlled by the `project_routing` field on its {{dfeed}}.

@@ -224,14 +224,14 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
 
    ::::
 
-2. To check if your {{agent}} is enrolled in {{fleet}}, go to **Management → {{fleet}} → Agents**.
+2. To check if your {{agent}} is enrolled in {{fleet}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**.
 
     :::{image} images/kibana-fleet-agents.png
     :alt: {{agent}}s {{fleet}} page
     :screenshot:
     :::
 
-3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specifically, `metrics-kubernetes.*`. If you can’t see these indexes, [create a {{data-source}}](/explore-analyze/find-and-organize/data-views.md) for them.
+3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specifically, `metrics-kubernetes.*`. If you can’t see these indexes, [create a {{data-source}}](/explore-analyze/find-and-organize/data-views/create-data-view.md) for them.
 4. To view predefined dashboards, either select **Analytics→Dashboard** or [install assets through an integration](/reference/fleet/view-integration-assets.md).
 
 

@@ -14,6 +14,8 @@ products:
 
 A backlogged task queue can lead to [rejected requests](/troubleshoot/elasticsearch/rejected-requests.md) or an [unhealthy cluster state](/troubleshoot/elasticsearch/red-yellow-cluster-status.md). Contributing factors can include [uneven or resource constrained hardware](/troubleshoot/elasticsearch/hotspotting.md#causes-hardware), a large number of tasks triggered at the same time, expensive tasks that are using [high CPU](/troubleshoot/elasticsearch/high-cpu-usage.md) or are inducing [high JVM](/troubleshoot/elasticsearch/high-jvm-memory-pressure.md), and long-running tasks.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 ## Diagnose a backlogged task queue [diagnose-task-queue-backlog] 
 

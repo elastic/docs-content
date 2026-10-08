@@ -171,7 +171,7 @@ Set the reindex `size` option to a value smaller than the `queue_capacity` for t
 
 ## View the results [ml-nlp-inference-discover]
 
-Before you can verify the results of the pipelines, you must [create {{data-sources}}](../../find-and-organize/data-views.md). Then you can explore your data in **Discover**:
+Before you can verify the results of the pipelines, you must [create {{data-sources}}](../../find-and-organize/data-views/create-data-view.md). Then you can explore your data in **Discover**:
 
 :::{image} /explore-analyze/images/machine-learning-ml-nlp-discover-ner.png
 :alt: A document from the NER pipeline in the Discover app

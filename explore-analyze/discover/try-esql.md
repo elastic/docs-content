@@ -423,7 +423,7 @@ FROM kibana_sample_data_logs
 ```
 
 ::::{tip}
-Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
+Pattern detection on text fields is also available outside {{esql}} from the **Patterns** view in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
 
 ### Add sparklines to patterns [esql-cascade-pattern-sparkline]

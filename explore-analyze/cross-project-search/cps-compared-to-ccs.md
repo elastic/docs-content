@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: ga
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
 description: Compare cross-project search (CPS) and cross-cluster search (CCS) syntax, behavior, and query patterns to help you transition from CCS to CPS.

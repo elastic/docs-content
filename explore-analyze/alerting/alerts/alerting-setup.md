@@ -154,7 +154,7 @@ If you want to use alerting rules with {{ccs}}, you must configure privileges fo
 ## {{cps-cap}} [kibana-alerting-cps]
 
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
