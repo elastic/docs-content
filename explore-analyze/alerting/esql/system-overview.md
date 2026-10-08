@@ -14,7 +14,7 @@ description: Kibana ES|QL alerting writes each match as a rule event, then eithe
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-{{alerting-v2-system-cap}} runs rules against your {{es}} data on a schedule, tracks each detected problem as an alert episode, and sends notifications through workflows.
+{{alerting-v2-system-cap}} runs rules against your {{es}} data on a schedule and writes each match as a rule event. Depending on the rule's configuration, {{kib}} either groups those events into an alert episode that can notify you through a workflow, or keeps them available for later analysis.
 
 This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](get-started/how-it-works.md).
 
