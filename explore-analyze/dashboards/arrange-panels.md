@@ -28,7 +28,7 @@ To organize dashboard panels, you need the **All** privilege for the **Dashboard
 ## Dashboard grid layout and best practices [dashboard-grid-layout]
 
 :::{tip}
-:applies_to: {"serverless": "experimental", "stack": "experimental 9.6+"}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6+"}
 To have an agent apply layout practices like these to a dashboard you already built, [enhance it with AI](enhance-dashboard-with-ai.md).
 :::
 

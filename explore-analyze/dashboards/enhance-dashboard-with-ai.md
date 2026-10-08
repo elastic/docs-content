@@ -2,8 +2,8 @@
 navigation_title: Enhance using AI
 description: Improve a Kibana dashboard you already built with an Agent Builder agent. Decide how much the agent can change, review the result, then keep or discard it.
 applies_to:
-  stack: experimental 9.6+
-  serverless: experimental
+  stack: preview 9.6+
+  serverless: preview
 products:
   - id: kibana
 type: how-to
@@ -17,7 +17,7 @@ If a dashboard you built feels cluttered or hard to read, you can let an {{agent
 
 To enhance a dashboard, you need:
 
-- The **All** privilege for the **Dashboard** feature.
+- Permission to edit dashboards, which is the **All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) for the **Dashboard** feature.
 - [Access to {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md), with a [model](/explore-analyze/ai-features/agent-builder/models.md) configured.
 - At least one panel on the dashboard that uses an {{esql}} query. Otherwise, the **Enhance** option is disabled.
 
@@ -26,7 +26,7 @@ If you have unsaved edits that you want to keep, save the dashboard first. That 
 ## Enhance the dashboard [enhance-dashboard-steps]
 
 1. Open the dashboard in **Edit** mode.
-2. In the application menu, select **Enhance**.
+2. In the application menu, next to the dashboard title, select **Enhance**.
 
    :::{image} /explore-analyze/images/dashboard-enhance-button.png
    :alt: Dashboard in edit mode with the Enhance button highlighted in the application menu, and its tooltip, Improve the content and style of your dashboard using AI. The dashboard has a humidity metric, a pie chart, and a tag cloud.
@@ -89,7 +89,7 @@ If you'd rather not keep the agent's changes, select **Reset changes** from the 
 
 ## Next steps [enhance-dashboard-next-steps]
 
-- To enhance the dashboard again later, you don't need the **Enhance** option. While you edit the dashboard, open a new conversation and enter [`/dashboards`](/explore-analyze/ai-features/agent-builder/skills.md) followed by your request, for example `/dashboards Enhance this dashboard, appearance only`. If your request already says what to change, the agent skips the question and gets to work.
+- You can enhance the same dashboard as many times as you want. You can also open a new conversation while you edit the dashboard, and enter [`/dashboards`](/explore-analyze/ai-features/agent-builder/skills.md) followed by your request, for example `/dashboards Enhance this dashboard, appearance only`. If your request already says what to change, the agent skips the question and gets to work.
 - To fine-tune the layout yourself, refer to [Organize dashboard panels](arrange-panels.md).
 
 ## Related pages [enhance-dashboard-related-pages]
