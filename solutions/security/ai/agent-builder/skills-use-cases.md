@@ -176,7 +176,7 @@ The Elastic AI Agent can use a variety of skills in one conversation. As your qu
 
 ### Alert to dashboard
 
-Start from a critical alert and end with a tracking dashboard. The [`alert-analysis`](#alert-triage-and-investigation) skill enriches the alert with related alerts, entity risk, and threat intelligence. The [`dashboards`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboards-skill) platform skill (`dashboard-management` in 9.5 and earlier) then creates a {{kib}} dashboard to track similar activity going forward.
+Start from a critical alert and end with a tracking dashboard. The [`alert-analysis`](#alert-triage-and-investigation) skill enriches the alert with related alerts, entity risk, and threat intelligence. The [`dashboards`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboards-skill) platform skill (`dashboard-management` in 9.4 and 9.5) then creates a {{kib}} dashboard to track similar activity going forward.
 
 1. **You:** What's the context on this critical alert? → `alert-analysis` activates, pulls related alerts sharing entities, checks entity risk scores, and correlates with {{elastic-sec}} Labs.
 2. **You:** Create a dashboard to track alerts like this going forward. → `dashboards` activates and composes a dashboard with filters matching the alert's rule, entities, and severity.

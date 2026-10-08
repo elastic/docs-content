@@ -16,7 +16,7 @@ products:
 
 Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [visualizations](/explore-analyze/visualize.md) directly in the conversation. Send a message like "create a dashboard to monitor host CPU and memory usage" and the agent builds a dashboard with {{esql}}-powered visualization panels.
 
-This functionality is powered by the built-in [`dashboards`](builtin-skills-reference.md#agent-builder-dashboards-skill) (`dashboard-management` in 9.5 and earlier) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, which access core or inline tools to create and edit dashboards and visualizations.
+This functionality is powered by the built-in [`dashboards`](builtin-skills-reference.md#agent-builder-dashboards-skill) (`dashboard-management` in 9.4 and 9.5) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, which access core or inline tools to create and edit dashboards and visualizations.
 
 :::{tip}
 For best results with {{esql}}-heavy dashboard generation, use a higher-tier model such as Claude 4.6 Opus. Current testing shows that Claude 4.6 Sonnet may require more corrections for generated dashboard queries.

@@ -31,7 +31,7 @@ The following concepts help you understand how {{context-engine}} turns source d
 
 An AI index groups the metadata, [sources](#sources), [automations](#automations-and-workflows), optional [agent traces](#agent-traces), and {{es}} storage for a particular body of context. Its name and description help an [agent](#agents-and-applications) determine whether that context is relevant to a question. Its generated [Knowledge Indicators (KIs)](#knowledge-indicators) provide the context that agents and applications query.
 
-Each AI index belongs to the {{kib}} space where it was created. Its ID is unique within that space, so different spaces can contain AI indices with the same ID.
+Each AI index that you create belongs to the {{kib}} space where you created it. Its ID is unique within that space, so different spaces can contain AI indices with the same ID.
 
 Creating an AI index does not ingest source data or generate knowledge. Sources define the data that its automations can analyze, and KIs are stored as the generated context. To create, update, or delete an AI index, refer to [Create and manage AI indices](create-and-manage-ai-indices.md). To plan and maintain one, refer to [Build and maintain an AI index](build-and-maintain-ai-index.md). For the complete UI-led example, follow the [{{context-engine}} quickstart](quickstart.md).
 
