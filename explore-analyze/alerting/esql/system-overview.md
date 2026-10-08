@@ -6,15 +6,15 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: Kibana ES|QL alerting writes each match as a rule event, then either groups those events into an alert episode with notifications or keeps them available for later analysis.
+description: Kibana Universal Alerting writes each match as a rule event, then either groups those events into an alert episode with notifications or keeps them available for later analysis.
 ---
 
-# {{alerting-v2-system-cap}} overview [system-overview]
+# Overview [system-overview]
 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-{{alerting-v2-system-cap}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and the system handles detection, tracking, and notification from there.
+{{alerting-v2-system-cap}} runs rules against your {{es}} data on a schedule and writes each match as a rule event. Depending on the rule's configuration, {{kib}} either groups those events into an alert episode that can notify you through a workflow, or keeps them available for later analysis.
 
 This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](get-started/how-it-works.md).
 
@@ -26,13 +26,9 @@ In {{alerting-v1-system}}, the term **alert** refers to a tracked occurrence of 
 
 {{alerting-v2-system-cap}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an [alert episode](alerts.md) and can notify. Events that aren't part of an alert episode remain available for later analysis.
 
-:::{image} /explore-analyze/images/basic-system-flow.png
-:alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping that event into an alert episode or keeping it with no episode for later analysis
-:::
-
 ## The building blocks
 
-The flowchart is the big picture. The five objects in this section are the pieces you'll create and configure: rules, rule events, alert episodes, action policies, and workflows.
+You create and configure three of the five building blocks: rules, action policies, and workflows. {{kib}} generates the other two, rule events and alert episodes, from your rules' matches.
 
 ### Rules
 
@@ -66,13 +62,7 @@ Refer to [Connect workflows](workflows-alerting.md) to learn more.
 
 ## How the pieces fit together [how-pieces-fit-together]
 
-The following diagram is a more detailed version of the same flow. It places the five objects on that path so you can see how they connect.
-
-:::{image} /explore-analyze/images/detailed-system-flow.png
-:alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping the event into an alert episode that an action policy can route to a workflow, or keeping the event with no episode for later analysis
-:::
-
-Every match still becomes a rule event. From there, the rule's configuration determines the next step:
+Every match becomes a rule event. From there, the rule's configuration determines the next step:
 
 * **Alert episode** - {{kib}} groups the event into an [alert episode](alerts.md). An action policy evaluates the alert episode and can invoke a workflow, which sends the notification or runs the automation.
 
@@ -80,9 +70,9 @@ Every match still becomes a rule event. From there, the rule's configuration det
 
 ## Get started or go deeper [system-overview-next-steps]
 
-- **New to {{alerting-v2-system}}?** [Get started](get-started.md) explains how the system works, defines key terms, and walks you through creating your first rule with a hands-on tutorial.
-- **Ready to turn it on?** [Set up {{alerting-v2-system}}](setup.md) lists the requirements and shows you how to turn the system on and off.
-- **Giving your team access?** [Manage](manage.md) covers the role privileges your team needs and the API keys that authorize rules, action policies, and workflows.
-- **Wondering what you can detect?** [Rules](rules.md) shows you how to define what to watch for in {{esql}}, and how to choose and configure the right creation path for your use case.
-- **Curious what happens when something breaks?** [Alerts](alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.
-- **Want the right people to know when it matters?** [Notifications and actions](notifications-actions.md) shows you how action policies decide when to invoke a workflow, and how workflows send the notification.
+- [Get started](get-started.md): Learn how the system works and its key terms, then create your first rule in a hands-on tutorial.
+- [Set up {{alerting-v2-system}}](setup.md): Check the requirements, then turn the system on or off.
+- [Manage](manage.md): Give your team the role privileges it needs, and manage the API keys that authorize rules, action policies, and workflows.
+- [Rules](rules.md): Define what to watch for in {{esql}}, and decide which creation path fits your use case.
+- [Alerts](alerts.md): Learn how alert episodes track a problem from first detection through recovery, and how to triage them.
+- [Notifications and actions](notifications-actions.md): Learn how action policies decide when to invoke a workflow, and how workflows send the notification.

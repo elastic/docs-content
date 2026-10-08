@@ -10,7 +10,7 @@ products:
   - id: kibana
   - id: cloud-serverless
   - id: cloud-hosted
-description: "Kibana standard alerting uses rules to check your data on a schedule, creates alerts when conditions are met, and runs actions through connectors."
+description: "Kibana Classic Alerting uses rules to check your data on a schedule, creates alerts when conditions are met, and runs actions through connectors."
 ---
 
 # {{alerting-v1-system-cap}} [alerts]

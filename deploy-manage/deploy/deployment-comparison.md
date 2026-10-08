@@ -22,7 +22,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
 | [Authentication](/deploy-manage/users-roles.md) | {{es}} realms | {{es}} realms, {{ecloud}} SSO | {{ecloud}} SSO only |
 | [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
-| [Audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) | Available | Available | No |
+| [Audit logging](/deploy-manage/monitor/activity-logging.md#audit-logging) | Available | Available | No |
 
 ## Infrastructure and cluster management
 
@@ -47,7 +47,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 
 | Feature/capability | Fully self-managed, ECE, ECK, ECH | {{serverless-short}} |
 |-------------------|-------------------------------|----------------------|
-| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for dashboards.<br><br>PDF and PNG are not available. |
+| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for Discover sessions and dashboards.<br><br>PDF and PNG are not available. |
 
 ## Data lifecycle
 
