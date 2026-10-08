@@ -29,7 +29,7 @@ To change {{es}} or {{kib}} settings in files such as `elasticsearch.yml` and `k
 
 ::::{admonition} {{serverless-full}} support
 This page applies to {{ech}}, {{ece}}, {{eck}}, and Elastic self-managed deployments only. 
-{{serverless-full}} projects do not support custom plugin or bundle uploads, including dictionary files used for synonyms, stop words, or [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md). 
+{{serverless-full}} projects do not support custom plugin or bundle uploads, including dictionary files used for synonyms, stop words, or [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md). The [core analysis plugins](elasticsearch://reference/elasticsearch-plugins/analysis-plugins.md#_core_analysis_plugins) are included by default. 
 
 If you use {{serverless-short}} and need to manage synonyms, use the [synonyms APIs]({{es-serverless-apis}}group/endpoint-synonyms) or refer to [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md). For how {{ech}} and Serverless differ on plugins, bundles, and dictionary options, see [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-custom-plugins-and-bundles).
 ::::
