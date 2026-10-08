@@ -8,7 +8,7 @@ products:
   - id: cloud-serverless
   - id: elasticsearch
   - id: cloud-hosted
-description: Compare Kibana standard alerting, Kibana ES|QL alerting, and Watcher by use case and deployment type to select the right tool for your monitoring needs.
+description: Compare Kibana Classic Alerting, Kibana Universal Alerting, and Watcher by use case and deployment type to select the right tool for your monitoring needs.
 ---
 
 # Compare alerting systems [compare-alerting-systems]

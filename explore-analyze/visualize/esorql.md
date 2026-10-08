@@ -1,5 +1,6 @@
 ---
 navigation_title: Visualizations (ES|QL query)
+description: Create Lens visualizations with an ES|QL query from Discover or a dashboard, then customize the chart, filters, and time series.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
 applies_to:
@@ -171,13 +172,13 @@ stack: ga 9.4
 serverless: ga
 ```
 
-{{esql}} visualizations support the following [drilldown types](../dashboards/drilldowns.md):
+{{esql}} visualizations support the following [drilldown types](../dashboards/drilldowns.md#drilldown-types):
 
-- **Dashboard** drilldowns: open another dashboard from a data point.
-- **URL** drilldowns: open an external URL from a data point.
-- {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Discover** drilldowns: open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
+- [Dashboard](../dashboards/create-dashboard-drilldown.md) drilldowns: Open another dashboard from a data point.
+- [URL](../dashboards/create-url-drilldown.md) drilldowns: Open an external URL from a data point.
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
-Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
+Drilldowns are compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](../dashboards/drilldowns.md#drilldowns-requirements).
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}

@@ -153,11 +153,11 @@ Check the following:
 
 * **Major version mismatches**
 
-	New major versions of frameworks may not yet be supported and can break auto-instrumentation.
+	New major versions of frameworks might not yet be supported and can break auto-instrumentation.
 
 * **Partial coverage**
 
-	Some scenarios may require manual instrumentation.
+	Some scenarios might require manual instrumentation.
 
 ### Resolution [res-framework]
 

@@ -488,3 +488,9 @@ Red Hat Enterprise Linux 8, 9, and 10, along with Rocky Linux 8 and 9, run {{ece
             ```
 
             A response of `200` confirms that containers can reach IPv6 endpoints.
+
+## Next steps
+
+Repeat these host configuration steps for every RHEL or Rocky Linux host that you want to use with {{ece}}.
+
+After configuring and verifying each host, continue to [Installation of ECE using Podman](fresh-installation-of-ece-using-podman-hosts.md) to install {{ece}}.

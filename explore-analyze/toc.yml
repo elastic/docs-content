@@ -252,6 +252,7 @@ toc:
             children:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
+              - file: ai-features/agent-builder/troubleshooting/pre-execution-workflow-disabled.md
           - file: ai-features/agent-builder/limitations-known-issues.md
           - file: ai-features/agent-builder/glossary.md
           - hidden: ai-features/agent-builder/connectors.md
@@ -262,8 +263,23 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md
       - hidden: ai-features/context-engine.md
-      - hidden: ai-features/context-engine/quickstart.md
-      - hidden: ai-features/context-engine/langchain-integration.md
+        children:
+          - hidden: ai-features/context-engine/quickstart.md
+          - hidden: ai-features/context-engine/concepts.md
+          - hidden: ai-features/context-engine/build-and-maintain-ai-index.md
+            children:
+              - hidden: ai-features/context-engine/create-and-manage-ai-indices.md
+              - hidden: ai-features/context-engine/add-and-manage-sources.md
+              - hidden: ai-features/context-engine/create-and-manage-automations.md
+              - hidden: ai-features/context-engine/evaluate-and-improve-knowledge-indicators.md
+          - hidden: ai-features/context-engine/use-an-ai-index.md
+            children:
+              - hidden: ai-features/context-engine/retrieve-context-from-ai-index.md
+              - hidden: ai-features/context-engine/use-context-engine-with-agents.md
+                children:
+                  - hidden: ai-features/context-engine/use-context-engine-with-agent-builder.md
+                  - hidden: ai-features/context-engine/langchain-integration.md
+          - hidden: ai-features/context-engine/context-engine-api.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
       - file: ai-features/llm-guides/llm-connectors.md
@@ -298,6 +314,11 @@ toc:
           - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
           - file: dashboards/drilldowns.md
+            children:
+              - file: dashboards/create-dashboard-drilldown.md
+              - file: dashboards/create-url-drilldown.md
+              - file: dashboards/create-discover-drilldown.md
+              - file: dashboards/manage-drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
       - file: dashboards/managing.md

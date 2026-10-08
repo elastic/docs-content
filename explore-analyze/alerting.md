@@ -11,7 +11,7 @@ products:
   - id: elasticsearch
   - id: cloud-hosted
 navigation_title: Alerting
-description: Watch your data and respond to conditions automatically with Elastic alerting. Compare Kibana standard alerting, Kibana ES|QL alerting, and Watcher to find the right fit.
+description: Watch your data and respond to conditions automatically with Elastic alerting. Compare Kibana Classic Alerting, Kibana Universal Alerting, and Watcher to find the right fit.
 ---
 
 # Alerting [alerting-overview]

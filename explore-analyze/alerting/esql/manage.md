@@ -9,7 +9,7 @@ products:
 description: "Use role privileges to control who can create rules and triage alert episodes, and see which API keys authorize rules, action policies, and workflows."
 ---
 
-# Manage [manage]
+# Manage the system [manage]
 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
