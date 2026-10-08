@@ -19,7 +19,7 @@ To enhance a dashboard, you need:
 
 - The **All** privilege for the **Dashboard** feature.
 - [Access to {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md), with a [model](/explore-analyze/ai-features/agent-builder/models.md) configured.
-- At least one panel on the dashboard that runs an {{esql}} query. The **Enhance** option appears only on dashboards that have one.
+- At least one panel on the dashboard that uses an {{esql}} query. Otherwise, the **Enhance** option is disabled.
 
 If you have unsaved edits that you want to keep, save the dashboard first. That way, you can discard the agent's changes later without losing your own work.
 
@@ -37,7 +37,7 @@ If you have unsaved edits that you want to keep, save the dashboard first. That 
 3. When the agent asks how you'd like to enhance the dashboard, select the option that fits. Each option lists the main changes the agent plans for your dashboard, so you know what to expect before you decide.
 
    - **Appearance and content** improves how the dashboard looks and reads, and also lets the agent add, change, replace, or remove panels.
-   - **Appearance only** keeps your panels and their queries as they are, and focuses on how the dashboard looks and reads.
+   - **Appearance only** keeps your visualizations and their queries as they are, and focuses on how the dashboard looks and reads.
 
    You can also give the agent your own instructions in the **Be more specific** field, for example to name panels it must keep.
 
@@ -47,7 +47,7 @@ If you have unsaved edits that you want to keep, save the dashboard first. That 
    :width: 450px
    :::
 
-   When you're ready, select **Submit**. If you skip the question, or your instructions don't say which option you want, the agent applies **Appearance and content**. To compare the two options in detail, refer to [What each option changes](#enhance-dashboard-modes).
+   When you're ready, select **Submit**. If you skip the question, or your instructions don't say which option you want, the agent applies **Appearance and content**. To learn what the agent does to each type of panel, refer to [How the agent handles each type of panel](#enhance-dashboard-panel-types).
 4. Wait while the agent works. When it's done, the agent summarizes its changes in the conversation, and you can see the result in the dashboard you have open.
 
    :::{image} /explore-analyze/images/dashboard-enhance-result.png
@@ -68,16 +68,20 @@ When you select **Enhance**, {{agent-builder}} runs the [`dashboards` skill](/ex
 
 Because the agent tailors its changes to each dashboard, two runs on the same dashboard can give different results.
 
-## What each option changes [enhance-dashboard-modes]
+## How the agent handles each type of panel [enhance-dashboard-panel-types]
 
-Both options rewrite the dashboard title, description, and Markdown panels to match what the panels measure.
+What the agent does to a panel depends on the type of panel and the option you select:
 
-- **Appearance only** keeps your panels and the data they show. The agent improves how they look, and how they're organized and sized on the dashboard.
-- **Appearance and content** does the same, and can also change what the dashboard shows. The agent can add, change, replace, or remove panels, and add controls.
+| Panel type | **Appearance only** | **Appearance and content** |
+|---|---|---|
+| {{esql}} visualizations | The agent applies the default chart styling, which replaces any custom styling. It also rewrites their titles and labels to match their queries. | Same as **Appearance only**. The agent can also change their query or chart type. |
+| Markdown panels | The agent rewrites them to describe what the dashboard measures, or removes them when they have nothing useful left to say. | Same as **Appearance only**. |
+| Vega visualizations and custom panels | The agent only moves or resizes them. Their look doesn't change. | Same as **Appearance only**. |
+| Other panels, such as visualizations that don't use {{esql}}, images, and links | The agent only moves or resizes them. | The agent replaces a visualization with an {{esql}} visualization when it can re-create it in {{esql}}. Otherwise, it only moves or resizes the panel. |
+| Panels that duplicate another panel or don't fit the dashboard's purpose | The agent keeps them. | The agent removes them. |
+| New panels and controls | The agent doesn't add any. | The agent adds panels that your data supports, such as a trend over time, and controls for useful fields. |
 
-Restyling replaces any custom styling on your {{esql}} visualizations. Panels that the agent can't restyle, such as visualizations that don't use {{esql}}, keep their current look.
-
-In both cases, the agent arranges panels using the best practices described in [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout). You can apply the same practices when you arrange panels yourself.
+In both options, the agent also rewrites the dashboard title and description to match what the panels measure, and keeps your time range. It arranges panels using the best practices described in [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout). You can apply the same practices when you arrange panels yourself.
 
 ## Discard the changes [enhance-dashboard-discard]
 
@@ -85,7 +89,7 @@ If you'd rather not keep the agent's changes, select **Reset changes** from the 
 
 ## Next steps [enhance-dashboard-next-steps]
 
-- To enhance the dashboard again later, you don't need the **Enhance** button. While you edit the dashboard, open a new conversation and enter [`/dashboards`](/explore-analyze/ai-features/agent-builder/skills.md) followed by your request, for example `/dashboards Enhance this dashboard, appearance only`. If your request already says what to change, the agent skips the question and gets to work.
+- To enhance the dashboard again later, you don't need the **Enhance** option. While you edit the dashboard, open a new conversation and enter [`/dashboards`](/explore-analyze/ai-features/agent-builder/skills.md) followed by your request, for example `/dashboards Enhance this dashboard, appearance only`. If your request already says what to change, the agent skips the question and gets to work.
 - To fine-tune the layout yourself, refer to [Organize dashboard panels](arrange-panels.md).
 
 ## Related pages [enhance-dashboard-related-pages]
