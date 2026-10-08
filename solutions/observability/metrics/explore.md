@@ -25,8 +25,8 @@ Pick a language based on what you ingested and what you want to do:
 
 | If you want to | Use |
 |---|---|
-| Run time-series queries over OpenTelemetry (OTel) or Prometheus remote write metrics, including counters, rates, and time buckets | [{{esql}} with time-series (TS) mode](#metrics-query-esql-ts) {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` |
-| Reuse existing Prometheus queries, alerting rules, or Grafana dashboards | [PromQL](#metrics-query-promql) {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` |
+| Run time-series queries over OpenTelemetry (OTel) or Prometheus remote write metrics, including counters, rates, and time buckets | {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` [{{esql}} with time-series (TS) mode](#metrics-query-esql-ts) |
+| Reuse existing Prometheus queries, alerting rules, or Grafana dashboards | {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` [PromQL](#metrics-query-promql) |
 
 ### {{esql}} for metrics [metrics-query-esql]
 
@@ -67,8 +67,8 @@ serverless: ga
 
 {{es}} runs PromQL in two ways:
 
-- A Prometheus-compatible HTTP API under the `/_prometheus/` prefix, for Grafana and other Prometheus clients. Refer to [PromQL HTTP API](elasticsearch://reference/query-languages/promql/promql-http-api.md).
-- The `PROMQL` source command inside {{esql}}, so you can post-process PromQL results with {{esql}} commands. Refer to [`PROMQL` command](elasticsearch://reference/query-languages/esql/commands/promql.md).
+- A Prometheus-compatible HTTP API under the `/_prometheus/` prefix, for Grafana and other Prometheus clients. Refer to [PromQL HTTP API](elasticsearch://reference/query-languages/promql/promql-http-api.md) for the endpoints.
+- The `PROMQL` source command inside {{esql}}, so you can post-process PromQL results with {{esql}} commands. Refer to [`PROMQL` command](elasticsearch://reference/query-languages/esql/commands/promql.md) for the syntax.
 
 Metrics ingested with Prometheus remote write are stored as `metrics.<metric_name>` with Prometheus labels as `labels.<label_name>`. PromQL uses the original Prometheus metric and label names. {{esql}} uses the {{es}} field names. For the mapping table, refer to [Data mapping](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#data-mapping).
 

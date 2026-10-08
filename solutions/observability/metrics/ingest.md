@@ -22,7 +22,7 @@ Classic Elastic components, such as {{agent}} integrations, {{metricbeat}}, and 
 
 ## Ingest with OpenTelemetry (recommended) [metrics-ingest-otlp]
 
-{{edot}} is the distribution that Elastic supports and recommends, and the [quickstarts](/solutions/observability/metrics/get-started.md) use it. You don't need {{edot}} to send OpenTelemetry metrics: any OTLP-compatible SDK or Collector can send to the endpoints in this section. The endpoint depends on your deployment type.
+{{edot}} is the distribution that Elastic supports and recommends, and the [quickstarts](/solutions/observability/metrics/get-started.md) use it. The endpoint depends on your deployment type.
 
 :::::{applies-switch}
 
@@ -38,7 +38,7 @@ The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}} or
 ::::{applies-item} { self:, ece:, eck: }
 Run {{agent}} in OTel mode as a gateway. The Managed OTLP Endpoint isn't available for self-managed {{stack}}, {{ece}}, or {{eck}} deployments. The gateway exposes an OTLP endpoint that your EDOT SDKs and edge collectors send to, and it writes to {{es}} with the `elasticsearch` exporter. For gateway versus edge setup, refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
 
-{applies_to}`stack: ga 9.2+` {{es}} also accepts OTLP/HTTP on `/_otlp/v1/metrics` from a gateway Collector. Use it when that gateway prefers the OTLP/HTTP exporter over the `elasticsearch` exporter. Don't send applications or pods directly to `/_otlp`. Metrics land in a time series data stream (TSDS) through built-in index templates. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) and [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md).
+{applies_to}`stack: ga 9.2+` {{es}} also accepts OTLP/HTTP on `/_otlp/v1/metrics` from a gateway Collector. Use it when that gateway prefers the OTLP/HTTP exporter over the `elasticsearch` exporter. Don't send applications or pods directly to `/_otlp`. Metrics land in a time series data stream (TSDS) through built-in index templates. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) for how metrics are stored and to [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) for request details.
 ::::
 
 :::::
@@ -61,11 +61,11 @@ serverless: preview
 
 Some services have two tiles in the {{kib}} {{integrations}} UI, for example **Nginx** and **Nginx (OpenTelemetry)**. The **(OpenTelemetry)** tile is an OpenTelemetry input package: a {{fleet}}-managed {{agent}} runs the matching OTel Collector receiver, stores the data with OpenTelemetry semantic conventions, and {{kib}} installs the matching OpenTelemetry content pack with dashboards. The other tile is the ECS integration.
 
-Pick the ECS tile when you need the integration's ECS dashboards and alerts. Pick the OpenTelemetry tile when you standardize on the OpenTelemetry schema and manage agents with {{fleet}}. OpenTelemetry input packages run only on {{agent}} in default mode, not on {{agent}} in OTel mode. Refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md).
+Pick the ECS tile when you need the integration's ECS dashboards and alerts. Pick the OpenTelemetry tile when you standardize on the OpenTelemetry schema and manage agents with {{fleet}}. OpenTelemetry input packages run only on {{agent}} in default mode, not on {{agent}} in OTel mode. Refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md) for how to set up an OpenTelemetry input package.
 
 ### {{metricbeat}} [metrics-ingest-metricbeat]
 
-{{metricbeat}} is the standalone {{beats}} shipper for metrics. It writes ECS documents and isn't deprecated, but new setups use {{agent}}: in OTel mode for the OpenTelemetry schema, or with integrations for ECS. If you already run {{metricbeat}}, refer to [Move from {{metricbeat}} or {{agent}} integrations](/solutions/observability/metrics/migrate.md#metrics-migrate-metricbeat).
+{{metricbeat}} is the standalone {{beats}} shipper for metrics. It writes ECS documents and isn't deprecated, but new setups use {{agent}}: in OTel mode for the OpenTelemetry schema, or with integrations for ECS. If you already run {{metricbeat}}, refer to [Move from {{metricbeat}} or {{agent}} integrations](/solutions/observability/metrics/migrate.md#metrics-migrate-metricbeat) for how to switch to OpenTelemetry.
 
 ### {{ls}} [metrics-ingest-logstash]
 
@@ -75,11 +75,13 @@ If your {{agent}} integrations already send through {{ls}}, keep that setup by u
 
 Elastic accepts Prometheus metrics in three ways:
 
-- **Prometheus remote write.** Recommended when Prometheus already scrapes your targets. Add a `remote_write` target and keep your scrape configurations unchanged. Any client that sends Prometheus remote write 1.0 works, including Prometheus and Grafana Alloy. Keep clients on remote write 1.0: the endpoint accepts 2.0 requests but discards their samples without returning an error. Metrics keep their Prometheus names and land in a TSDS.
+- **Prometheus remote write.** Recommended when Prometheus already scrapes your targets. Add a `remote_write` target and keep your scrape configurations unchanged. Any client that sends Prometheus remote write 1.0 works, including Prometheus and Grafana Alloy. Keep clients on remote write 1.0: the endpoint accepts 2.0 requests but discards their samples without returning an error. Metrics keep their Prometheus names and land in a [TSDS](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#index-template).
 - **OpenTelemetry Collector.** Scrape targets with the `prometheus` receiver in {{agent}} in OTel mode or another Collector, and export OTLP to the endpoints in [Ingest with OpenTelemetry](#metrics-ingest-otlp). Use this when you're retiring Prometheus rather than keeping it. The Collector's `prometheusremotewrite` exporter also works against the remote write endpoint, but it rewrites metric names with Prometheus suffixes and underscores, and the endpoint drops the native histograms it produces for OpenTelemetry exponential histograms. Use it only when you can't change the exporter.
-- **{{agent}} Prometheus integration.** Scrapes exporters or a Prometheus server's federation endpoint, receives remote write on the agent, or runs PromQL queries against a Prometheus server. It stores ECS documents under `prometheus.*` and isn't deprecated. Use it when you need the ECS schema or {{fleet}} management. Refer to the [Prometheus integration](https://www.elastic.co/docs/reference/integrations/prometheus).
+- **{{agent}} Prometheus integration.** Scrapes exporters or a Prometheus server's federation endpoint, receives remote write on the agent, or runs PromQL queries against a Prometheus server. It stores ECS documents under `prometheus.*` and isn't deprecated. Use it when you need the ECS schema or {{fleet}} management. Refer to the [Prometheus integration](https://www.elastic.co/docs/reference/integrations/prometheus) for setup instructions.
 
-Not supported: {{es}} doesn't implement Prometheus remote read or the federation endpoint, and the Managed OTLP Endpoint and {{apm-server-or-mis}} don't accept remote write.
+:::{note}
+{{es}} doesn't implement Prometheus remote read or the federation endpoint, and the Managed OTLP Endpoint and {{apm-server-or-mis}} don't accept remote write.
+:::
 
 The remote write endpoint depends on your deployment:
 

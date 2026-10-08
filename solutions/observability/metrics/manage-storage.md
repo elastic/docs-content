@@ -16,7 +16,7 @@ products:
 Metrics data grows quickly. This page walks you through choosing a storage strategy that keeps costs down while retaining the history you still need: confirm your metrics land in a time series data stream (TSDS), then apply the lifecycle settings that match your requirements. Work through the sections in order:
 
 1. [Store metrics in a TSDS](#metrics-manage-storage-tsds). The OpenTelemetry Protocol (OTLP) and Prometheus remote write ingest paths do this by default.
-2. [Check metric temporality](#metrics-manage-storage-temporality) so rates and aggregations stay correct. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+2. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [Check metric temporality](#metrics-manage-storage-temporality) so rates and aggregations stay correct.
 3. [Downsample aging metrics](#metrics-manage-storage-downsampling) to keep long-term trends at a fraction of the storage cost.
 4. [Keep cardinality under control](#metrics-manage-storage-cardinality) so an extra label doesn't multiply your series count.
 5. [Choose a retention policy](#metrics-manage-storage-retention): a data stream lifecycle or an {{ilm}} ({{ilm-init}}) policy.
@@ -27,8 +27,8 @@ A time series data stream (TSDS) is an {{es}} data stream with `index.mode` set 
 
 Naming a data stream `metrics-*` doesn't make it a TSDS. The index template that matches the data stream must set `index.mode: time_series`. Elastic's built-in templates do this for the OpenTelemetry Protocol (OTLP) and Prometheus remote write paths, so you don't create templates yourself:
 
-- OTLP metrics from the Managed OTLP Endpoint, {{agent}} in OTel mode, and the {{es}} OTLP/HTTP endpoint land in `metrics-*.otel-*` data streams (`metrics-generic.otel-default` by default). To extend the mappings, use the `metrics-otel@custom` component template. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md).
-- Prometheus remote write metrics land in `metrics-*.prometheus-*` data streams (`metrics-generic.prometheus-default` by default) through the built-in template for that pattern. To extend the mappings, use the `metrics-prometheus@custom` component template. Refer to [Index template](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#index-template).
+- OTLP metrics from the Managed OTLP Endpoint, {{agent}} in OTel mode, and the {{es}} OTLP/HTTP endpoint land in `metrics-*.otel-*` data streams (`metrics-generic.otel-default` by default). To extend the mappings, use the `metrics-otel@custom` component template. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) for how that path stores metrics.
+- Prometheus remote write metrics land in `metrics-*.prometheus-*` data streams (`metrics-generic.prometheus-default` by default) through the built-in template for that pattern. To extend the mappings, use the `metrics-prometheus@custom` component template. Refer to [Index template](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#index-template) for the template that creates those data streams.
 - {{agent}} integrations store metrics as a TSDS when the integration enables it.
 
 Choose a TSDS when you add metrics in near real time and in `@timestamp` order. For logs or traces, use a logs data stream or a regular data stream instead.
@@ -63,9 +63,9 @@ In a TSDS, every new combination of dimension values is a new series, so review 
 
 Retention is how long metrics stay in {{es}}, when backing indices roll over, and when old data is deleted. Pick the mechanism that matches your deployment and requirements:
 
-{applies_to}`serverless: unavailable` Use {{ilm-cap}} ({{ilm-init}}) when you want metrics to move through hot, warm, cold, frozen, and delete phases as they age. {{ilm-init}} automates those actions with policies and is available on the {{stack}} only. Refer to [{{ilm-cap}}](/manage-data/lifecycle/index-lifecycle-management.md) for policy phases and how to apply them.
+- {applies_to}`serverless: unavailable` Use {{ilm-cap}} ({{ilm-init}}) when you want metrics to move through hot, warm, cold, frozen, and delete phases as they age. {{ilm-init}} automates those actions with policies and is available on the {{stack}} only. Refer to [{{ilm-cap}}](/manage-data/lifecycle/index-lifecycle-management.md) for policy phases and how to apply them.
 
-Use a data stream lifecycle when you only need rollover, retention, and downsampling, set on the data stream itself. It's available on the {{stack}} and is the retention option for {{serverless-short}}. Refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) for how to set retention on the data stream.
+- Use a data stream lifecycle when you only need rollover, retention, and downsampling, set on the data stream itself. It's available on the {{stack}} and is the retention option for {{serverless-short}}. Refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) for how to set retention on the data stream.
 
 ## Related pages [metrics-manage-storage-related]
 

@@ -15,7 +15,7 @@ products:
 
 Elastic supports migration paths from Prometheus and Datadog. Because Elastic accepts OpenTelemetry Protocol (OTLP) and Prometheus remote write, you can run Elastic alongside your existing setup and migrate gradually, without switching everything at once.
 
-If you collect metrics with {{metricbeat}} or {{agent}} integrations and want to move to OpenTelemetry, refer to [Move from {{metricbeat}} or {{agent}} integrations](#metrics-migrate-metricbeat).
+If you collect metrics with {{metricbeat}} or {{agent}} integrations and want to move to OpenTelemetry, refer to [Move from {{metricbeat}} or {{agent}} integrations](#metrics-migrate-metricbeat) for the migration steps.
 
 ## Before you begin [metrics-migrate-prereqs]
 
@@ -131,13 +131,15 @@ For the Elastic OTLP destination, refer to [Ingest metrics](/solutions/observabi
 
 Checks that the Datadog Agent scrapes itself, such as host CPU and memory or Kubernetes state, are Datadog-native, not OTLP. To bring those metrics into Elastic, collect them with Elastic instead of forwarding data from the Datadog Agent.
 
-For the OpenTelemetry schema, follow an {{edot}} quickstart for your hosts or cluster: [Get started with metrics](/solutions/observability/metrics/get-started.md). For Elastic Common Schema (ECS) field names and existing Elastic integrations, use {{agent}} integrations: [Ingest with {{agent}} integrations](/solutions/observability/metrics/ingest.md#metrics-ingest-agent-integrations).
+For the OpenTelemetry schema, follow an {{edot}} quickstart for your hosts or cluster: [Get started with metrics](/solutions/observability/metrics/get-started.md). 
+
+For Elastic Common Schema (ECS) field names and existing Elastic integrations, use {{agent}} integrations: [Ingest with {{agent}} integrations](/solutions/observability/metrics/ingest.md#metrics-ingest-agent-integrations).
 
 ### Recreate dashboards and monitors [metrics-migrate-datadog-assets]
 
 Elastic has no built-in import for Datadog dashboards and monitors. After metrics are in Elastic, rebuild the views and alerts you still need:
 
-- Explore and chart the new field names. Refer to [Explore metrics](/solutions/observability/metrics/explore.md).
+- Explore and chart the new field names. Refer to [Explore metrics](/solutions/observability/metrics/explore.md) for how to query and chart them.
 - Recreate monitors with a [custom threshold rule](/solutions/observability/incident-management/create-custom-threshold-rule.md), or with an [inventory rule](/solutions/observability/incident-management/create-an-inventory-rule.md) for resource-centric checks.
 
 Metric names and tags from Datadog don't match OpenTelemetry semantic conventions or ECS one-for-one. Confirm each chart and rule against the fields you ingested before you stop Datadog.
