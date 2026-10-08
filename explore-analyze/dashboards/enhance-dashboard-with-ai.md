@@ -17,7 +17,7 @@ If a dashboard you built feels cluttered or hard to read, you can let an {{agent
 
 To enhance a dashboard, you need:
 
-- Permission to edit dashboards, which is the **All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) for the **Dashboard** feature.
+- Permission to edit dashboards: Your role must have the **All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) for the **Dashboard** feature.
 - [Access to {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md), with a [model](/explore-analyze/ai-features/agent-builder/models.md) configured.
 - At least one panel on the dashboard that uses an {{esql}} query. Otherwise, the **Enhance** option is disabled.
 
