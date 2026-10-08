@@ -27,7 +27,7 @@ macOS is supported for development purposes only and is not covered under the su
 
 ### Linux [install-linux64]
 
-The Linux archive for {{kib}} {{version.stack}} can be downloaded and installed as follows:
+The Linux archive for {{kib}} can be downloaded and installed as follows:
 
 ::::{tab-set}
 :group: docker-kib
@@ -100,7 +100,7 @@ cd kibana-<SPECIFIC.VERSION.NUMBER>/ <2>
 ::::{admonition} macOS Gatekeeper warnings
 :class: important
 
-Apple’s rollout of stricter notarization requirements affected the notarization of the {{version.stack}} {{kib}} artifacts. If macOS displays a dialog when you first run {{kib}} that interrupts it, you will need to take an action to allow it to run.
+Apple’s rollout of stricter notarization requirements affected the notarization of {{kib}} artifacts. If macOS displays a dialog when you first run {{kib}} that interrupts it, you will need to take an action to allow it to run.
 
 To prevent Gatekeeper checks on the {{kib}} files, run the following command on the downloaded `.tar.gz` archive or the directory to which was extracted:
 

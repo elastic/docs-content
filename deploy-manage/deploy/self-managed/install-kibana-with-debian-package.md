@@ -78,7 +78,7 @@ Examine `/etc/apt/sources.list.d/kibana-9.x.list` for the duplicate entry or loc
 
 ### Download and install the Debian package manually [install-deb]
 
-The Debian package for {{kib}} {{version.stack}} can be downloaded from the website and installed as follows:
+The Debian package for {{kib}} can be downloaded from the website and installed as follows:
 
 ::::{tab-set}
 

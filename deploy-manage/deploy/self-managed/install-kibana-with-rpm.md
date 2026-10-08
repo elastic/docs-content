@@ -67,7 +67,7 @@ sudo zypper install kibana <3>
 
 ### Download and install the RPM manually [install-rpm]
 
-The RPM for {{kib}} {{version.stack}} can be downloaded from the website and installed as follows:
+The RPM for {{kib}} can be downloaded from the website and installed as follows:
 
 ::::{tab-set}
 

@@ -114,7 +114,7 @@ cd elasticsearch-<SPECIFIC.VERSION.NUMBER>/ <2>
 ::::{admonition} macOS Gatekeeper warnings
 :class: important
 
-Apple’s rollout of stricter notarization requirements affected the notarization of the {{version.stack}} {{es}} artifacts. If macOS displays a dialog when you first run {{es}} that interrupts it, then you need to take an action to allow it to run.
+Apple’s rollout of stricter notarization requirements affected the notarization of {{es}} artifacts. If macOS displays a dialog when you first run {{es}} that interrupts it, then you need to take an action to allow it to run.
 
 To prevent Gatekeeper checks on the {{es}} files, run the following command on the downloaded `.tar.gz` archive or the directory to which it was extracted:
 
