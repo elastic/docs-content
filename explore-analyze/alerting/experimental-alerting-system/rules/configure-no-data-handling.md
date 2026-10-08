@@ -63,7 +63,7 @@ Create a rule that monitors infrastructure CPU. Configure the no-data strategy a
 
 ### Close the alert episode when a queue empties out
 
-Create a rule that monitors how many jobs are waiting in a queue and opens an alert episode when the backlog gets too large. Configure the no-data strategy as **Recover immediately** (`recover`) so that once the queue is empty and the query has nothing to return, the alert episode closes on the next run.
+Create a rule that monitors how many jobs are waiting in a queue and opens an alert episode when the backlog gets too large. Configure the no-data strategy as **Recover immediately** (or **Recover** in earlier versions) so that once the queue is empty and the query has nothing to return, the alert episode closes.
 
 ## Related pages
 
