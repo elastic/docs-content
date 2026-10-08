@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens mosaic chart showing response status by operating system](/explore-analyze/images/mosaic-chart-example.png)
 
-## Build a mosaic chart with the point-and-click editor [build-a-mosaic-chart]
+## Create a mosaic chart [create-a-mosaic-chart]
+
+### Create a mosaic chart with the point-and-click editor [build-a-mosaic-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a mosaic chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -62,7 +65,7 @@ The chart preview updates to show a grid of rectangles. Column widths represent 
 
 ::::::
 
-## Build a mosaic chart with an {{esql}} query [build-a-mosaic-chart-with-esql]
+### Create a mosaic chart with an {{esql}} query [build-a-mosaic-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

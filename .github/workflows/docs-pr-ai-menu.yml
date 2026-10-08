@@ -115,17 +115,47 @@ jobs:
             });
             const isForkPR = pullRequest.head.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`;
             if (isForkPR) {
-              let isOrgMember = false;
-              try {
-                const { status } = await github.rest.orgs.checkMembershipForUser({
-                  org: context.repo.owner,
-                  username: context.actor,
-                });
-                isOrgMember = status === 204;
-              } catch {
-                isOrgMember = false;
+              // GITHUB_TOKEN cannot see private org membership, so
+              // checkMembershipForUser returns 404 for Elastic members and the
+              // review is skipped. Repository permission is visible to this
+              // token and still blocks outside contributors with read access.
+              // The legacy `permission` field folds `maintain` into `write`
+              // and `triage` into `read`, so checking admin and write covers
+              // maintainers too.
+              let permission = 'none';
+              let lookupFailed = false;
+              for (let attempt = 1; attempt <= 3; attempt++) {
+                try {
+                  const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    username: context.actor,
+                  });
+                  permission = data.permission;
+                  lookupFailed = false;
+                  break;
+                } catch (error) {
+                  // 404 means the actor is not a collaborator: no retry needed.
+                  if (error.status === 404) {
+                    lookupFailed = false;
+                    break;
+                  }
+                  lookupFailed = true;
+                  core.warning(
+                    `Fork PR: could not read repository permission for ${context.actor} (attempt ${attempt}/3): ${error.status || error.message}`
+                  );
+                }
               }
-              if (!isOrgMember) {
+              const allowed = ['admin', 'write'].includes(permission);
+              if (!allowed) {
+                const reason = lookupFailed
+                  ? `the repository permission lookup failed for ${context.actor}. Uncheck and check the box again to retry.`
+                  : `${context.actor} needs write access to start a docs review from a fork pull request (repository permission: ${permission}).`;
+                core.warning(`Fork PR: skipping docs review because ${reason}`);
+                await core.summary
+                  .addHeading('Docs review skipped', 3)
+                  .addRaw(`Skipped because ${reason}`, true)
+                  .write();
                 core.setOutput('docs_review_triggered', 'false');
                 return;
               }

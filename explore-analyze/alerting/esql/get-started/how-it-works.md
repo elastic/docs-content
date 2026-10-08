@@ -9,7 +9,7 @@ products:
 description: A detailed walkthrough of how a rule's configuration determines whether matches open an alert episode or remain available for later analysis, and how those paths drive action policies and workflows.
 ---
 
-# How it works [how-it-works]
+# How the system works [how-it-works]
 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
