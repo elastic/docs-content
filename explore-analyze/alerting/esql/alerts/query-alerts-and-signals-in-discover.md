@@ -5,34 +5,31 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alert episodes."
+description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alerts."
 ---
 
 # Query alert history in Discover [query-alert-history-discover]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-The **Alerts** page shows current alert episode state. To open it:
+In {{alerting-v2-system}}, the **Alerts** page shows the current state of alerts. To open it:
 
 * {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Alerts**, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Alerts**.
 
 Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 
-For events with `type: signal`, including basic queries and using them as input to a rule that opens an alert episode, refer to [Query rule events](query-signals.md).
+For events with `type: signal`, including basic queries and using them as input to a rule that opens an alert, refer to [Query rule events](query-signals.md).
 
 Use the following table to jump to the query you need:
 
 | Query | What it returns | Stream |
 |---|---|---|
-| [Reconstruct the lifecycle of a specific alert episode](#replay-episode) | Every evaluation for one alert episode, in chronological order | `.rule-events` |
-| [Find all currently active alert episodes](#find-active-episodes) | One row per alert episode currently in `active` state | `.rule-events` |
+| [Reconstruct the lifecycle of a specific alert](#replay-episode) | Every evaluation for one alert, in chronological order | `.rule-events` |
+| [Find all currently active alerts](#find-active-episodes) | One row per alert currently in `active` state | `.rule-events` |
 | [List all breaches for a specific rule](#list-rule-breaches) | Every evaluation where a rule's condition was met | `.rule-events` |
 | [Identify evaluation gaps](#identify-no-data) | Recent `no_data` rows that may point to a pipeline issue | `.rule-events` |
-| [View the full triage history for an alert episode](#full-triage-history) | Every action taken on one alert episode, in chronological order | `.alert-actions` |
-| [Find all acknowledgments in a time window](#find-acknowledgments) | Every acknowledgment action across all alert episodes | `.alert-actions` |
-| [Check alert episode assignment state](#check-assignments) | Every assignment action and who it was assigned to | `.alert-actions` |
+| [View the full triage history for an alert](#full-triage-history) | Every action taken on one alert, in chronological order | `.alert-actions` |
+| [Find all acknowledgments in a time window](#find-acknowledgments) | Every acknowledgment action across all alerts | `.alert-actions` |
+| [Check alert assignment state](#check-assignments) | Every assignment action and who it was assigned to | `.alert-actions` |
 | [Audit dispatcher outcomes for a rule](#audit-dispatcher-outcomes) | Notified, suppressed, and unmatched outcomes for a rule | `.alert-actions` |
 | [Find snoozed series](#find-snoozed-series) | Active and historical snoozes, including who set them and when they expire | `.alert-actions` |
 | [Trace the full story of an incident](#trace-incident) | Both streams filtered or joined together for a complete incident timeline | Both |
@@ -46,41 +43,41 @@ Before you can query alert history in Discover, add the alert data streams as da
 3. Give your data view a name, for example `.rule-events` or `.alert-actions`.
 4. In the **Index pattern** field, enter the data stream name:
    - `.ds-.rule-events-*` for rule evaluation history.
-   - `.ds-.alert-actions-*` for triage actions recorded on alert episodes.
+   - `.ds-.alert-actions-*` for triage actions recorded on alerts.
 5. Open the **Timestamp field** dropdown and select `@timestamp`.
 6. Select **Save data view to Kibana**.
 
 For more details on data view options, refer to [Data views](../../../find-and-organize/data-views.md).
 
-## Query alert episode history [query-episode-signal-history]
+## Query alert history [query-episode-signal-history]
 
-{{kib}} writes one [rule event](../rules/rule-event-field-reference.md) to `.rule-events` for each matching row of a scheduled rule run. {{kib}} never overwrites these events, which means you can reconstruct the full history of any alert episode by querying all events that share the same `episode.id`. The following sections provide example queries for common scenarios.
+{{kib}} writes one [rule event](../rules/rule-event-field-reference.md) to `.rule-events` for each matching row of a scheduled rule run. {{kib}} never overwrites these events, which means you can reconstruct the full history of any alert by querying all events that share the same `episode.id`. The following sections provide example queries for common scenarios.
 
-### Reconstruct the lifecycle of a specific alert episode [replay-episode]
+### Reconstruct the lifecycle of a specific alert [replay-episode]
 
-Use the alert episode's `episode.id` to pull all of its evaluations in chronological order. This shows exactly how that one alert episode moved through its lifecycle states from open to close, without mixing in other alert episodes from the same series.
+Use the alert's `episode.id` to pull all of its evaluations in chronological order. This shows exactly how that one alert moved through its lifecycle states from open to close, without mixing in other alerts from the same series.
 
 ```esql
 FROM .rule-events
-// Scope to a single alert episode by its ID
-| WHERE episode.id == "<episode-id>"
+// Scope to a single alert by its ID
+| WHERE episode.id == "<alert-id>"
 // Sort oldest-first to read the progression forward in time
 | SORT @timestamp ASC
 // Keep the fields most relevant to reading the lifecycle sequence
 | KEEP @timestamp, status, episode.id, episode.status, episode.status_count
 ```
 
-To pull evaluations across every alert episode in a series instead, filter by `group_hash` in place of `episode.id`.
+To pull evaluations across every alert in a series instead, filter by `group_hash` in place of `episode.id`.
 
-### Find all currently active alert episodes [find-active-episodes]
+### Find all currently active alerts [find-active-episodes]
 
-Returns one row for each alert episode currently in `active` state, along with the timestamp of its most recent evaluation.
+Returns one row for each alert currently in `active` state, along with the timestamp of its most recent evaluation.
 
 ```esql
 FROM .rule-events
-// Only include rows where the alert episode lifecycle state is active
+// Only include rows where the alert lifecycle state is active
 | WHERE episode.status == "active"
-// Deduplicate to one row per alert episode, showing the most recent evaluation
+// Deduplicate to one row per alert, showing the most recent evaluation
 | STATS latest = MAX(@timestamp) BY episode.id, group_hash
 ```
 
@@ -110,25 +107,27 @@ FROM .rule-events
 
 ## Query triage and action history [query-triage-action-history]
 
-{{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an alert episode. Use it to audit who did what, measure acknowledgment response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
+{{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an alert. Use it to audit who did what, measure acknowledgment response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
 
-### View the full triage history for an alert episode [full-triage-history]
+{applies_to}`stack: experimental =9.5` In {{stack}} 9.5, `.alert-actions` stores the alert ID and status as `episode_id` and `episode_status`. Replace `alert_id` and `alert_status` with those names in the following queries.
 
-Returns all actions recorded for a single alert episode in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved.
+### View the full triage history for an alert [full-triage-history]
+
+Returns all actions recorded for a single alert in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved.
 
 ```esql
 FROM .alert-actions
-// Scope to a single alert episode by its ID
-| WHERE episode_id == "<episode-id>"
+// Scope to a single alert by its ID
+| WHERE alert_id == "<alert-id>"
 // Sort oldest-first to read the response sequence forward in time
 | SORT @timestamp ASC
 // Keep the fields most relevant to understanding what happened and who did it
-| KEEP @timestamp, action_type, actor, episode_status, reason
+| KEEP @timestamp, action_type, actor, alert_status, reason
 ```
 
 ### Find all acknowledgments in a time window [find-acknowledgments]
 
-Returns every acknowledgment action across all alert episodes. Useful for tracking team response activity or measuring time-to-acknowledge trends.
+Returns every acknowledgment action across all alerts. Useful for tracking team response activity or measuring time-to-acknowledge trends.
 
 ```esql
 FROM .alert-actions
@@ -137,21 +136,21 @@ FROM .alert-actions
 | SORT @timestamp DESC
 ```
 
-### Check alert episode assignment state [check-assignments]
+### Check alert assignment state [check-assignments]
 
-Returns all assign actions, showing which alert episodes carry an assignment and to whom. Use this to audit ownership or find unacknowledged handoffs.
+Returns all assign actions, showing which alerts carry an assignment and to whom. Use this to audit ownership or find unacknowledged handoffs.
 
 ```esql
 FROM .alert-actions
 // Filter to assignment actions only
 | WHERE action_type == "assign"
-// Return the fields that identify the alert episode, who assigned it, and the target user
-| KEEP @timestamp, episode_id, actor, assignee_uid
+// Return the fields that identify the alert, who assigned it, and the target user
+| KEEP @timestamp, alert_id, actor, assignee_uid
 ```
 
 ### Audit dispatcher outcomes for a rule [audit-dispatcher-outcomes]
 
-Returns all dispatcher decisions for a rule, covering alert episodes that were notified, suppressed due to throttling, or didn't match to any action policy.
+Returns all dispatcher decisions for a rule, covering alerts that were notified, suppressed due to throttling, or didn't match to any action policy.
 
 ```esql
 FROM .alert-actions
@@ -169,15 +168,15 @@ FROM .alert-actions
 // Filter to snooze actions only
 | WHERE action_type == "snooze"
 // Return the fields needed to identify the series, the actor, and the expiry time
-| KEEP @timestamp, group_hash, episode_id, expiry, actor
+| KEEP @timestamp, group_hash, alert_id, expiry, actor
 ```
 
 ## Trace the full story of an incident [trace-incident]
 
-To get the complete picture of an incident, filter both streams by the same identifier. Both streams share `group_hash` as a flat keyword, making it the most reliable join key. `episode.id` in `.rule-events` and `episode_id` in `.alert-actions` hold the same value but use different naming conventions: dot-notation in `.rule-events` and flat snake_case in `.alert-actions`.
+To get the complete picture of an incident, filter both streams by the same identifier. Both streams share `group_hash` as a flat keyword, making it the most reliable join key. `episode.id` in `.rule-events` and `alert_id` in `.alert-actions` hold the same value but use different naming conventions: dot-notation in `.rule-events` and flat snake_case in `.alert-actions`.
 
 :::{note}
-Filter by `episode_id` to return user actions (`ack`, `assign`, `deactivate`, and similar) and notifications for one alert episode. Dispatcher-level entries might be missing because system-written action types (`fire`, `suppress`, `unmatched`, `notified`) key to `group_hash` and might not carry an `episode_id`. Filter by `group_hash` to include the complete dispatcher history.
+Filter by `alert_id` to return user actions (`ack`, `assign`, `deactivate`, and similar) and notifications for one alert. Dispatcher-level entries might be missing because system-written action types (`fire`, `suppress`, `unmatched`, `notified`) key to `group_hash` and might not carry an `alert_id`. Filter by `group_hash` to include the complete dispatcher history.
 :::
 
 1. Run a `.rule-events` query to find the `episode.id` or `group_hash` you care about.
@@ -185,24 +184,24 @@ Filter by `episode_id` to return user actions (`ack`, `assign`, `deactivate`, an
 
 ```esql
 FROM .alert-actions
-// Use group_hash to include dispatcher actions that may not carry an episode_id
+// Use group_hash to include dispatcher actions that may not carry an alert_id
 | WHERE group_hash == "<group-hash>"
 | SORT @timestamp ASC
-| KEEP @timestamp, action_type, actor, episode_id, reason
+| KEEP @timestamp, action_type, actor, alert_id, reason
 ```
 
 If you need to join both streams in a single query, use `LOOKUP JOIN`. This requires configuring `.alert-actions` as a lookup index, which is an extra setup step beyond standard Discover analysis:
 
 ```esql
 FROM .rule-events
-// Only include rows that belong to an alert episode (events with type: signal have no episode.id)
+// Only include rows that belong to an alert (events with type: signal have no episode.id)
 | WHERE episode.id IS NOT NULL
 // Rename to match the join key naming convention in .alert-actions
-| EVAL episode_id = episode.id
+| EVAL alert_id = episode.id
 // Join with .alert-actions to surface triage actions alongside evaluation data
-| LOOKUP JOIN .alert-actions ON episode_id
+| LOOKUP JOIN .alert-actions ON alert_id
 | KEEP @timestamp, status, action_type, actor
 | SORT @timestamp DESC
 ```
 
-For most exploratory analysis, running separate queries filtered by `group_hash` is simpler and avoids the `episode_id` optionality issue.
+For most exploratory analysis, running separate queries filtered by `group_hash` is simpler and avoids the `alert_id` optionality issue.

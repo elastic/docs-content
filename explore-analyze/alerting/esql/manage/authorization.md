@@ -11,10 +11,7 @@ description: "Learn which credentials authorize rule, action policy, and workflo
 
 # Rule, action policy, and workflow authorization [experimental-alerting-authorization]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-{{kib}} authorizes rules, action policies, and workflows differently. Use this page to understand which credential applies to each operation, diagnose authorization errors, and keep credentials current.
+{{alerting-v2-system-cap}} authorizes rules, action policies, and workflows differently. Use this page to understand which credential applies to each operation, diagnose authorization errors, and keep credentials current.
 
 ## Which key authorizes each operation [key-per-operation]
 
@@ -30,7 +27,7 @@ The type of operation determines which credential authorizes it.
 
 Authorizing a workflow run happens in three steps, and each step uses a different credential:
 
-1. The action policy checks alert episodes against its match conditions. This step runs as an internal system process and doesn't use a stored credential.
+1. The action policy checks alerts against its match conditions. This step runs as an internal system process and doesn't use a stored credential.
 2. Once a match is found, the policy schedules the workflow using its own stored API key, captured from the user who last saved the policy.
 3. The workflow then runs its steps using its own separate stored API key, not the policy's. Refer to [How steps use the API key](/explore-analyze/workflows/authorization.md#workflows-authorization-scope) for how a workflow's key applies across its steps.
 

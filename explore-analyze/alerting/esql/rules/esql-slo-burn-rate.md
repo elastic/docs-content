@@ -10,10 +10,7 @@ description: "Detect SLO error budget burn across multiple time windows using ES
 
 # SLO burn rate detection [slo-burn-rate-query]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-An SLO burn rate query answers a specific question: are you consuming your error budget faster than you can afford to? It calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
+An SLO burn rate query in a {{alerting-v2-system}} rule answers a specific question: are you consuming your error budget faster than you can afford to? It calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
 
 ## Single-tier query
 
@@ -75,7 +72,7 @@ FROM metrics-*
 
 The rule's lookback window must cover the longest window in the query. In this example that's 3 days, driven by the 6-hour window pair.
 
-The `severity` column in `KEEP` maps directly to the `severity` field on each resulting alert episode. For accepted values and matching rules, refer to [Severity](configure-rule-severity.md).
+The `severity` column in `KEEP` maps directly to the `severity` field on each resulting alert. For accepted values and matching rules, refer to [Severity](configure-rule-severity.md).
 
 ## Related pages
 

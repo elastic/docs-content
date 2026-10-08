@@ -10,10 +10,7 @@ description: "Search, filter, and bulk-manage rules. Use inline editing, the rul
 
 # View and manage rules [manage-rules]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-After you create rules, use the **Rules** page to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
+After you create {{alerting-v2-system}} rules, use the **Rules** page to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
 
 To open the **Rules** page:
 
@@ -34,7 +31,7 @@ Use inline edit when you need to adjust metadata or scheduling settings quickly 
 
 ## Inspect a rule with the summary flyout [rule-summary-flyout]
 
-To inspect a rule without navigating away from the **Rules** page, select the expand icon on any row. The rule summary flyout opens alongside the list and shows a snapshot of the rule: its status, last run time, recent alert episode activity, and quick actions such as enable, disable, and snooze.
+To inspect a rule without navigating away from the **Rules** page, select the expand icon on any row. The rule summary flyout opens alongside the list and shows a snapshot of the rule: its status, last run time, recent alert activity, and quick actions such as enable, disable, and snooze.
 
 Use the flyout when you want to confirm a rule is healthy or take a quick action without committing to a full page load. To open the complete rule configuration with all settings and edit controls, select the rule name in the table row or in the flyout header.
 
@@ -42,7 +39,7 @@ Use the flyout when you want to confirm a rule is healthy or take a quick action
 
 The rule details page is organized into tabs that let you review a rule's configuration and activity history.
 
-- **Overview**: For rules that group matches into an alert episode, this tab shows a color-coded activity timeline per series, summary statistics, and a link to matching alert episodes on the **Alerts** page. Every rule also has an **Artifacts** section for linked dashboards and (if your role can read them) linked action policies.
+- **Overview**: For rules that group matches into an alert, this tab shows a color-coded activity timeline per series, summary statistics, and a link to matching alerts on the **Alerts** page. Every rule also has an **Artifacts** section for linked dashboards and (if your role can read them) linked action policies.
 - **Conditions**: The rule's base query, alert condition, schedule, lookback, grouping, and recovery settings.
 - **Runbook**: The rule's investigation guide, if one has been added. Use it to document steps for diagnosing or responding to alerts produced by this rule.
 
@@ -56,4 +53,4 @@ Use **Disable** when you want the rule to stop running entirely until you re-ena
 
 - [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.
 - [Review rule execution history](review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
-- [View and manage alerts](../alerts/view-and-manage-alerts.md): Triage and investigate the alert episodes a rule produces.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Triage and investigate the alerts a rule produces.

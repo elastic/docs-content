@@ -10,10 +10,7 @@ description: "Write your first ES|QL rule query. Covers the minimum query struct
 
 # Your first rule query [first-rule-query]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-If you're new to {{esql}} or to writing rules, this page shows the simplest query structure that a rule needs. It requires only a basic familiarity with your data.
+If you're new to {{esql}} or to writing rules, this page shows the simplest query structure that a {{alerting-v2-system}} rule needs. It requires only a basic familiarity with your data.
 
 ## The simplest rule query
 

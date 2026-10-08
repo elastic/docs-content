@@ -10,10 +10,7 @@ description: "YAML rule definitions support fields for detection mode, schedule,
 
 # YAML rule schema reference [yaml-rule-schema-reference]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-This page lists valid fields for YAML rule definitions. For authoring guidance, refer to [Create an {{esql}} rule](create-esql-rule.md).
+This page lists valid fields for {{alerting-v2-system}} YAML rule definitions. For authoring guidance, refer to [Create an {{esql}} rule](create-esql-rule.md).
 
 ## Base rule fields
 
@@ -21,7 +18,7 @@ These four fields are required on every rule, regardless of format or mode. The 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `kind` | string | `alert` or `signal` | Whether the rule tracks ongoing alert episodes (`alert`) or records point-in-time observations (`signal`). Set when the rule is created and can't be modified when editing the rule. |
+| `kind` | string | `alert` or `signal` | Whether the rule tracks ongoing alerts (`alert`) or records point-in-time observations (`signal`). Set when the rule is created and can't be modified when editing the rule. |
 | `metadata.name` | string | Any string | The name of the rule. Max 256 characters. |
 | `schedule.every` | duration | Any duration string | How often the rule runs. For example: `5s`, `1m`, `5m`. Minimum interval applies. |
 | `query.format` | string | `composed` or `standalone` | The query structure the rule uses. `standalone` means each condition (breach, recovery, no-data) is a separate, self-contained ES\|QL query. `composed` means you write one base query and each condition is a pipe segment appended to it. The UI always creates `standalone` rules. |
@@ -67,11 +64,11 @@ These fields control how far back each evaluation looks and which timestamp fiel
 
 ## Recovery strategy [recovery-strategy]
 
-The `recovery_strategy` field is optional. When omitted, the rule emits no recovery events and active alert episodes don't close automatically.
+The `recovery_strategy` field is optional. When omitted, the rule emits no recovery events and active alerts don't close automatically.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `recovery_strategy` | string | `no_breach`, `query`, or `none` | How recovery is detected. <br><br> -`no_breach`: Recovers an alert episode when its active group no longer appears in the breach results. <br> - `query`: Evaluates a separate recovery query defined in `query.recovery.segment` (composed) or `query.recovery.query` (standalone) <br> - `none`: Turns off recovery. |
+| `recovery_strategy` | string | `no_breach`, `query`, or `none` | How recovery is detected. <br><br> -`no_breach`: Recovers an alert when its active group no longer appears in the breach results. <br> - `query`: Evaluates a separate recovery query defined in `query.recovery.segment` (composed) or `query.recovery.query` (standalone) <br> - `none`: Turns off recovery. |
 
 :::{note}
 Rules with `kind: signal` must omit `recovery_strategy` or set it to `none`. Any other value fails validation.
@@ -79,20 +76,20 @@ Rules with `kind: signal` must omit `recovery_strategy` or set it to `none`. Any
 
 ## State transition fields [state-transition-fields]
 
-Only valid when `kind: alert`. Controls how many consecutive detections are required before an alert episode becomes active or recovers.
+Only valid when `kind: alert`. Controls how many consecutive detections are required before an alert becomes active or recovers.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `state_transition.pending_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before becoming active. |
-| `state_transition.pending_count` | integer | Integer, 0–1000 | Number of consecutive breaches required before the alert episode becomes active. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
-| `state_transition.pending_timeframe` | duration | Any duration string | How long the condition must remain continuously breached before the alert episode becomes active. For example: `5m`. |
+| `state_transition.pending_count` | integer | Integer, 0–1000 | Number of consecutive breaches required before the alert becomes active. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
+| `state_transition.pending_timeframe` | duration | Any duration string | How long the condition must remain continuously breached before the alert becomes active. For example: `5m`. |
 | `state_transition.recovering_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before recovering. |
-| `state_transition.recovering_count` | integer | Integer, 0–1000 | Number of consecutive clear evaluations required before the alert episode recovers. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
-| `state_transition.recovering_timeframe` | duration | Any duration string | How long the condition must remain continuously non-breaching before the alert episode recovers. For example: `5m`. |
+| `state_transition.recovering_count` | integer | Integer, 0–1000 | Number of consecutive clear evaluations required before the alert recovers. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
+| `state_transition.recovering_timeframe` | duration | Any duration string | How long the condition must remain continuously non-breaching before the alert recovers. For example: `5m`. |
 
 ## Grouping fields
 
-Use grouping to split a rule's detections into independent series, one per unique combination of field values. This lets a single rule track multiple subjects without creating a separate rule for each, for example, tracking CPU usage per host. Each series maintains its own alert episode lifecycle.
+Use grouping to split a rule's detections into independent series, one per unique combination of field values. This lets a single rule track multiple subjects without creating a separate rule for each, for example, tracking CPU usage per host. Each series maintains its own alert lifecycle.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|

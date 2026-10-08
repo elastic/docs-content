@@ -10,20 +10,17 @@ description: "Monitor action policy dispatch activity from the execution history
 
 # Review action policy execution history [review-action-policy-execution-history]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
+In {{alerting-v2-system}}, action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
 
-Action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
-
-Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alert episodes it processed:
+Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alerts it processed:
 
 | Column | Description |
 |---|---|
 | **Timestamp** | When the dispatcher ran. |
 | **Policy** | The action policy that was evaluated. |
-| **Outcome** | Whether the dispatcher acted on the alert episode: `dispatched`, `throttled`, or `unmatched`. Definitions are in [Dispatch outcomes](#dispatch-outcomes). |
-| **Rules** | The rule whose alert episodes the action policy processed. |
-| **Episodes** | The number of alert episodes processed in this run. |
+| **Outcome** | Whether the dispatcher acted on the alert: `dispatched`, `throttled`, or `unmatched`. Definitions are in [Dispatch outcomes](#dispatch-outcomes). |
+| **Rules** | The rule whose alerts the action policy processed. |
+| **Alerts** | The number of alerts processed in this run. |
 | **Action groups** | The number of action groups involved. |
 | **Workflows** | The workflows invoked, if any. |
 
@@ -44,14 +41,14 @@ After each dispatcher run, {{kib}} records one of three outcomes for each action
 
 | Outcome | What it means |
 |---|---|
-| `dispatched` | The dispatcher invoked a workflow for the alert episode. |
-| `throttled` | The alert episode matched an action policy but was rate-limited by the frequency setting, so no workflow ran. This is expected behavior, not an error. |
-| `unmatched` | No action policy matched the alert episode. No workflow ran. |
+| `dispatched` | The dispatcher invoked a workflow for the alert. |
+| `throttled` | The alert matched an action policy but was rate-limited by the frequency setting, so no workflow ran. This is expected behavior, not an error. |
+| `unmatched` | No action policy matched the alert. No workflow ran. |
 
 `unmatched` is recorded in the event log but isn't available as an outcome filter in the execution history. To find those records, open Discover and query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
 
 :::{note}
-Alert episodes that are acknowledged, snoozed, marked inactive, or covered by a [maintenance window](../../alerts/maintenance-windows.md) are excluded before the dispatcher runs and don't appear in the execution history.
+Alerts that are acknowledged, snoozed, marked inactive, or covered by a [maintenance window](../../alerts/maintenance-windows.md) are excluded before the dispatcher runs and don't appear in the execution history.
 :::
 
 ## Event-log outcomes and .alert-actions action types [outcome-vocab-mapping]
@@ -62,16 +59,16 @@ The `dispatched`, `throttled`, and `unmatched` outcomes are the **event-log term
 |---|---|---|
 | `dispatched` | `notified` | Policy matched, frequency cleared, workflow invoked. |
 | `throttled` | `suppress` | Policy matched but frequency limit not yet cleared. No workflow invoked. |
-| `unmatched` | `unmatched` | No action policy matched the alert episode. No workflow invoked. |
+| `unmatched` | `unmatched` | No action policy matched the alert. No workflow invoked. |
 
-`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`, `resolve`, `unresolve`) and the `fire` action type, which marks that an alert episode opened or continued. These have no event-log counterpart in this context, because they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
+`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`, `resolve`, `unresolve`) and the `fire` action type, which marks that an alert opened or continued. These have no event-log counterpart in this context, because they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
 
 :::{note}
-`suppress` in `.alert-actions` means the same thing as `throttled` in the event log: the action policy matched but the frequency setting hadn't cleared yet, so no notification was sent. It's unrelated to the eligibility gate that excludes acknowledged, snoozed, or maintenance-window alert episodes before the dispatcher runs.
+`suppress` in `.alert-actions` means the same thing as `throttled` in the event log: the action policy matched but the frequency setting hadn't cleared yet, so no notification was sent. It's unrelated to the eligibility gate that excludes acknowledged, snoozed, or maintenance-window alerts before the dispatcher runs.
 :::
 
 ## Related pages
 
 - [Manage action policies](manage-action-policies.md): Enable, disable, snooze, or rotate API keys for your action policies.
 - [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
-- [About action policies](about-action-policies.md): Understand how the dispatcher evaluates action policies against alert episodes.
+- [About action policies](about-action-policies.md): Understand how the dispatcher evaluates action policies against alerts.

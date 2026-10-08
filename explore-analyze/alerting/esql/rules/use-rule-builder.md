@@ -10,10 +10,7 @@ description: "Create rules by selecting a rule type and configuring it through a
 
 # Create a rule using the rule builder [use-rule-builder]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-The rule builder lets you create a rule by selecting a rule type and configuring it through structured inputs, instead of writing {{esql}} directly. Behind the scenes, the rule builder generates the {{esql}} query for you from the data source, aggregation, filters, and alert conditions you set.
+The {{alerting-v2-system}} rule builder lets you create a rule by selecting a rule type and configuring it through structured inputs, instead of writing {{esql}} directly. Behind the scenes, the rule builder generates the {{esql}} query for you from the data source, aggregation, filters, and alert conditions you set.
 
 To create a rule, open the **Rules** page:
 
