@@ -2,7 +2,7 @@
 navigation_title: Schedule and lookback
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How the execution interval and lookback window control when a rule evaluates and how much data it covers each time."

@@ -2,7 +2,7 @@
 navigation_title: Grouping
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Configure rule grouping to track multiple subjects as independent alert series."

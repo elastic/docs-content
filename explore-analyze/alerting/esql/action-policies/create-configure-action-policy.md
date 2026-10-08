@@ -2,7 +2,7 @@
 navigation_title: Create an action policy
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Create action policies to route alert episodes to workflows. Set the policy scope with rule tags or KQL, then batching and notification frequency."
@@ -25,7 +25,7 @@ To narrow the scope of an action policy, filter by [rule tags](#filter-by-rule-t
 
 ### Filter by rule tags [filter-by-rule-tags]
 ```{applies_to}
-serverless: experimental
+serverless: ga
 stack: experimental 9.6+
 ```
 
@@ -44,7 +44,7 @@ To narrow the scope further, add a [match conditions expression](#filter-with-kq
 
 Add a **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression to narrow the policy to the alert episodes whose fields match it. For example, `severity: "critical"` applies the policy to critical alert episodes only. For the fields you can use, refer to [Match conditions fields](action-policy-reference.md#action-policy-matcher-fields).
 
-{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` On a new action policy, **Match conditions** is hidden until you expand **Advanced matching**.
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` On a new action policy, **Match conditions** is hidden until you expand **Advanced matching**.
 
 ## Add tags to categorize the action policy [policy-tags]
 ```{applies_to}
@@ -92,7 +92,7 @@ If the workflow doesn't exist yet, select **Create a workflow** to build it in t
 
 ### Create an email or Slack workflow [inline-email-slack-workflow]
 ```{applies_to}
-serverless: experimental
+serverless: ga
 stack: experimental 9.6+
 ```
 
@@ -122,7 +122,7 @@ The list also indicates why each policy applies.
 
 ::::{applies-switch}
 
-:::{applies-item} { serverless: experimental, stack: experimental 9.6+ }
+:::{applies-item} { serverless: ga, stack: experimental 9.6+ }
 Each entry shows the connector types its workflows use, along with a badge or icon:
 
 * A **Catch-all** badge means the policy has an empty scope, so it applies to alert episodes from every rule.

@@ -2,7 +2,7 @@
 navigation_title: Re-notification
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "How to configure action policies so a workflow re-notifies when an alert episode stays active without a status change."

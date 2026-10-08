@@ -2,7 +2,7 @@
 navigation_title: Glossary
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
   - id: cloud-serverless

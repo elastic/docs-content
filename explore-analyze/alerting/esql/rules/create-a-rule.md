@@ -2,7 +2,7 @@
 navigation_title: Create a rule
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Create rules using the ES|QL editor, AI Agent, rule builder, or directly from a Discover session."

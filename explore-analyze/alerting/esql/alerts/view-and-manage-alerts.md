@@ -2,7 +2,7 @@
 navigation_title: View and manage alerts
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Monitor alert episodes using KPI panels, a histogram, and filter controls. Triage and investigate alert episodes from the same interface."

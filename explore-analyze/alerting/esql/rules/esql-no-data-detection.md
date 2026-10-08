@@ -2,7 +2,7 @@
 navigation_title: No-data detection
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental
+  serverless: ga
 products:
   - id: kibana
 description: "Detect silent hosts and stopped data sources using ES|QL last-seen queries."
