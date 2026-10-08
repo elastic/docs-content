@@ -48,7 +48,7 @@ When you enter the time range as text, the time filter interprets a single value
 | Date math | `now-15m`, `now/w`, and other [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) expressions. |
 | Preset labels | `Last 24 hours` or any other range listed under **Presets**. |
 
-If you enter a range with an offset and a rounding unit, such as `-1y/y`, the time filter adds **(rounded)** after its label. To learn what rounding does and when the suffix appears, refer to [Round relative time ranges](#round-relative-time-ranges).
+To start or end a range on a clean boundary, such as the start of a month, add a rounding unit, as in `-1y/M`. The time filter then adds **(rounded)** after the label. To learn how rounding works, refer to [Start or end a range on a clean boundary](#round-relative-time-ranges).
 
 The time filter can also give you the text for a range:
 
@@ -94,13 +94,13 @@ Using the time filter, you can configure a refresh rate to periodically resubmit
 
 To manually resubmit a search, click the **Refresh** button. This is useful when you use Kibana to view the underlying data.
 
-### Round relative time ranges [round-relative-time-ranges]
+### Start or end a range on a clean boundary [round-relative-time-ranges]
 ```{applies_to}
 stack: preview 9.5+
 serverless: preview
 ```
 
-Round a relative range when you want it to start or end on a clean boundary, such as the start of a day, month, or year, instead of at an exact offset from now. Enter these values directly in the time filter. A single value runs from that point to now. For example, if it's October 8, 2026 at 13:09, these entries give different start times:
+Round a relative range to make it start or end on a clean boundary, such as the start of a day, month, or year, instead of at an exact offset from now. You can enter rounded ranges directly in the time filter. A single value runs from that point to now. For example, if it's October 8, 2026 at 13:09, these entries give different start times:
 
 | You enter | The range starts at |
 | --- | --- |
@@ -147,14 +147,14 @@ The unit that the time filter adds depends on the unit of the offset:
 
 A start or end without an offset, such as `now`, stays as it is.
 
-#### Understand the (rounded) label
+#### Find out why a range says (rounded)
 
-When a range has an offset and a rounding unit, the time filter adds **(rounded)** after its label on the time filter button and in the **Presets** and **Recent** lists. The label describes the offset, not the rounded start. For example, `-1y` shows Last 1 year, and `-1y/y` shows Last 1 year (rounded) even though it starts on January 1 of last year.
+If a range label says **(rounded)**, the start or end has an offset and a rounding unit. You typed the unit, or the **Round relative time ranges** setting added it. The time filter shows the suffix after the label on the time filter button and in the **Presets** and **Recent** lists. The label describes the offset, not the rounded start. For example, `-1y` shows Last 1 year, and `-1y/y` shows Last 1 year (rounded) even though it starts on January 1 of last year.
 
 Whether the suffix appears depends on the range behind each entry:
 
 - In **Presets**, an entry shows the suffix only if its own range has an offset and a rounding unit.
-- In **Recent**, an entry shows the suffix if it was saved with a rounding unit. With **Round relative time ranges** on, the ranges you apply are saved with the added rounding unit.
+- In **Recent**, an entry shows the suffix if it was saved with a rounding unit. With **Round relative time ranges** on, the time filter saves the ranges you apply with the added rounding unit.
 - On the time filter button, a preset that has no rounding unit shows the suffix after you select it if the setting is on.
 
 A range that covers one whole period, such as Today (`now/d`) or Yesterday (`-1d/d to -1d/d`), doesn't get the suffix because its label already says so. To qualify, the start and end must be identical and the rounding unit must match the offset unit. A range such as `-1y/M to -1y/M` still gets the suffix, because its rounding unit differs from its offset unit.
