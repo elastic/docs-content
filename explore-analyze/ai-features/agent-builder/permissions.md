@@ -149,8 +149,6 @@ Access to the agent is checked every time a conversation is read, and this appli
 
 Managing sharing needs only the `Read` privilege plus ownership. There is no separate sharing privilege, and no write privilege is involved.
 
-To see the names of other participants, a user also needs a {{kib}} privilege that allows looking up user profiles, such as `Read` for **Dashboard**. The `agentBuilder` privilege doesn't include it. Without it, the participant list in the sharing popover is empty, and messages from other users show their username instead of their name.
-
 When a user cannot access a conversation, {{agent-builder}} reports it as not found rather than as a permissions error. This is deliberate, so that users cannot detect the existence of conversations they cannot read.
 
 To share a conversation, use the [sharing button in Agent Chat](chat.md#share-a-conversation) or the [{{kib}} API](kibana-api.md#update-conversation-access-control).

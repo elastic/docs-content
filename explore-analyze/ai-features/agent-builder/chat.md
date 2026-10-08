@@ -217,12 +217,6 @@ To share a conversation:
 3. Under **General access**, select **Restricted** (the default) to share with specific users, or **Public** to share with any user who can access the conversation's agent.
 4. If you selected **Restricted**, enter a name in the **Search for users to add** field, then select a user. The user appears under **Current members**, listed alphabetically after you, the **Author**.
 
-:::{image} images/agent-builder-share-conversation.png
-:screenshot:
-:alt: Sharing popover with General access set to Restricted, the owner listed as Author, and two members under Current members
-:width: 450px
-:::
-
 Your changes save immediately. If a change fails, the popover shows the error "Failed to update sharing settings" and reverts the change.
 
 The user search includes users who can log in to the current space, but a member can open the conversation only if they can also access its agent. You can't add users who have never logged in to {{kib}}.
@@ -231,11 +225,23 @@ To remove a member, click the **Remove member** icon {icon}`cross` next to their
 
 When a conversation is public, the sharing button shows the {icon}`globe` icon and **Public**.
 
+The following example shows a restricted conversation shared with two users:
+
+:::{image} images/agent-builder-share-conversation.png
+:screenshot:
+:alt: Sharing popover with General access set to Restricted, the owner listed as Author, and two members under Current members
+:width: 450px
+:::
+
 #### Conversations shared with you
 
-Conversations shared with you appear in the chat history panel with your own conversations, along with public conversations for agents you can access. The panel lists conversations for the selected agent only, so select the conversation's agent to find it. The panel doesn't mark which conversations are shared. You can read the full history and send new messages.
+Conversations shared with you appear in the chat history panel with your own conversations, along with public conversations for agents you can access. The panel lists conversations for the selected agent only, so select the conversation's agent to find it. You can read the full history and send new messages.
 
-For a restricted conversation, click the sharing button to view the **Participants** list. Public conversations that you don't own don't show a sharing button.
+Only the owner can add or remove members, change the access mode, rename the conversation, or delete it. A user whose role grants all {{kib}} application privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}, can also rename or delete a public conversation they don't own. This doesn't give them access to private conversations. Like any other user, they can open a private conversation only if they own it or it's shared with them.
+
+To view a conversation's details, click its title in the conversation header. **Visibility** shows **Private** if only the owner can access the conversation, **Restricted** if it's shared with specific users, or **Public** if any user who can access the agent can open it. In the sharing popover, both **Private** and **Restricted** conversations appear under **Restricted**, which the API calls `private`.
+
+For a restricted conversation, click the sharing button to view the **Participants** list. Public conversations that you don't own don't show a sharing button. The following example shows the **Participants** list as a member sees it:
 
 :::{image} images/agent-builder-conversation-participants.png
 :screenshot:
@@ -243,15 +249,13 @@ For a restricted conversation, click the sharing button to view the **Participan
 :width: 450px
 :::
 
-Only the owner can add or remove members, change the access mode, rename the conversation, or delete it. A user whose role grants all {{kib}} application privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}, can also rename or delete a public conversation they don't own.
-
-To view a conversation's details, click its title in the conversation header. **Visibility** shows **Public** for a public conversation and **Private** for any other conversation, whether or not it's shared. **Private** in the details and **Restricted** in the sharing popover refer to the same access mode, which the API calls `private`.
-
 #### Post without running the agent
 
-In a shared or public conversation, you can post a message for the other participants without asking the agent to respond. In the chat input, click **Include agent**, select **Skip agent**, then send your message. While **Skip agent** is selected, the input shows **Leaving a post to the team** and the model selector doesn't appear. The agent doesn't run.
+In a shared or public conversation, you can post a message for the other participants without asking the agent to respond. In the chat input, click **Include agent**, select **Skip agent**, then send your message. While **Skip agent** is selected, the input shows **Leaving a post to the team** and the model selector doesn't appear. The agent doesn't respond, but your message is saved to the conversation and included in the agent's context the next time it runs.
 
-The selector appears only in shared and public conversations, for everyone who can open them. It doesn't appear if the conversation's agent was deleted. Your choice applies only to the current conversation. If a conversation stops being shared, new messages run the agent again.
+The selector appears only in shared and public conversations, for everyone who can open them. Your choice applies only to the current conversation. If a conversation stops being shared, new messages run the agent again.
+
+The following example shows the chat input with **Skip agent** selected:
 
 :::{image} images/agent-builder-skip-agent.png
 :screenshot:
