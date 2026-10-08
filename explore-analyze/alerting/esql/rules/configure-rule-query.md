@@ -10,10 +10,7 @@ description: "How to structure the ES|QL detection query for a rule: the base qu
 
 # {{esql}} query [esql-query-rule]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-Every rule uses an {{esql}} query to define what to evaluate. The query consists of a base query that shapes and filters the data and an optional alert condition that determines which rows become alert events. For more advanced use cases, the query also supports [dynamic values](#dynamic-query-values) for filtering by the evaluation window or setting configurable thresholds through the rule form.
+Every {{alerting-v2-system}} rule uses an {{esql}} query to define what to evaluate. The query consists of a base query that shapes and filters the data and an optional alert condition that determines which rows become alert events. For more advanced use cases, the query also supports [dynamic values](#dynamic-query-values) for filtering by the evaluation window or setting configurable thresholds through the rule form.
 
 ## Base query [query-base]
 

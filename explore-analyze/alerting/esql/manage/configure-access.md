@@ -11,10 +11,7 @@ description: "Kibana feature privileges and Elasticsearch index privileges neede
 
 # Configure access [access]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-To create rules, triage alert episodes, and configure notifications, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
+To create rules, triage alerts, and configure notifications in {{alerting-v2-system}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
 
 This page is organized by user activity. Most privileges are set under the **Alerting V2** category in {{kib}} role management. Exceptions are noted in each section.
 
@@ -30,7 +27,7 @@ The following table shows the minimum privileges required for each activity. Hig
 |---|---|
 | Author and manage rules | **Rules: All** (under **Alerting V2**) |
 | Monitor rule execution | **Execution history: Read** (under **Alerting V2**) |
-| Triage alert episodes | **Alerts: All** (under **Alerting V2**) |
+| Triage alerts | **Alerts: All** (under **Alerting V2**) |
 | Configure notifications | **Action Policies: All** (under **Alerting V2**) + **Workflows: Read** (under **Analytics > Workflows**) |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics > Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics > Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
@@ -63,12 +60,12 @@ The **Execution history** privilege controls who can view rule execution history
 
 ## Triage alerts [alerting-triage-privileges]
 
-The **Alerts** privilege controls who can take triage actions on alert episodes.
+The **Alerts** privilege controls who can take triage actions on alerts.
 
 | Level | What you can do |
 |---|---|
-| **All** | Acknowledge, snooze, assign, tag, activate, and deactivate alert episodes |
-| **Read** | View alert episodes |
+| **All** | Acknowledge, snooze, assign, tag, activate, and deactivate alerts |
+| **Read** | View alerts |
 
 :::{note}
 Granting **Alerts: All** or **Alerts: Read** also gives the role direct Elasticsearch `read` access to `.rule-events` and `.alert-actions`, scoped to that role's spaces. This is bundled into the privilege — no separate custom role or index privilege is needed to query these data streams in Discover.
@@ -80,7 +77,7 @@ These privileges control who can set up the action policies that invoke workflow
 
 ### Action policies [action-policy-management]
 
-The **Action Policies** privilege controls who can manage the action policies that invoke workflows for alert episodes.
+The **Action Policies** privilege controls who can manage the action policies that invoke workflows for alerts.
 
 | Level | What you can do |
 |---|---|
@@ -100,9 +97,9 @@ Action policies invoke workflows, which send notifications. The **Workflows** pr
 | **All** | Create and edit workflows; view and select existing workflows in action policies |
 | **Read** | View and select existing workflows in action policies |
 
-## Query rule output and alert episode data [alerting-data-investigation-privileges]
+## Query rule output and alert data [alerting-data-investigation-privileges]
 
-The {{alerting-v2-system}} writes rule output and alert episode data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
+{{alerting-v2-system-cap}} writes rule output and alert data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
 
 ### {{kib}} feature access
 
@@ -129,6 +126,6 @@ For `.rule-events` and `.alert-actions`, {{es}} `read` access is bundled into th
 
 With access configured, you're ready to:
 
-- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, set whether matches are grouped into an alert episode, and configure grouping and thresholds.
+- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, set whether matches are grouped into an alert, and configure grouping and thresholds.
 - [Set up workflows](../notifications-actions.md): Configure the automation objects that deliver notifications — email, Slack, webhook, and so on.
-- [Create action policies](../action-policies/create-configure-action-policy.md): Define which alert episodes invoke a workflow, how often, and under what conditions.
+- [Create action policies](../action-policies/create-configure-action-policy.md): Define which alerts invoke a workflow, how often, and under what conditions.
