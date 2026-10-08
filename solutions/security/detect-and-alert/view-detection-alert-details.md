@@ -145,6 +145,11 @@ The **Session view** flyout shows the Linux session's process activity in a tree
 
 The **Analyzer** flyout shows the full process tree for the alert, including ancestor and descendant processes, and related file, network, and registry events. Refer to [Visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md) to learn more.
 
+::::{note}
+:applies_to: {stack: ga 9.2+, serverless: unavailable}
+By default, the process tree includes events stored in [cold and frozen tiers](/manage-data/lifecycle/data-tiers.md), which can make it slow to load. A {{kib}} administrator can exclude those tiers with the `securitySolution:excludeColdAndFrozenTiersInAnalyzer` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings). The Analyzer preview shows **Cold/Frozen tiers on** when the process tree includes those events. When it shows **Cold/Frozen tiers off**, the process tree omits them.
+::::
+
 ### Graph [graph-view]
 ```yaml {applies_to}
 stack: preview 9.4+
@@ -238,6 +243,11 @@ The overview displays counts for each correlation type. Click **Correlations** t
 ### Prevalence [prevalence-overview]
 
 The Prevalence overview shows whether data from the alert was frequently observed on other host events from the last 30 days. Prevalence calculations use values from the alert's highlighted fields. Highlighted field values that are observed on less than 10% of hosts in your environment are considered uncommon (not prevalent) and are listed individually in the Prevalence overview. Highlighted field values that are observed on more than 10% of hosts in your environment are considered common (prevalent) and are described as frequently observed in the Prevalence overview.
+
+::::{note}
+:applies_to: {stack: ga 9.2+, serverless: unavailable}
+By default, prevalence calculations include data stored in [cold and frozen tiers](/manage-data/lifecycle/data-tiers.md), which can make prevalence slow to load. A {{kib}} administrator can exclude those tiers with the `securitySolution:excludeColdAndFrozenTiersInPrevalence` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings). The Prevalence overview shows **Cold/Frozen tiers on** when prevalence includes that data. When it shows **Cold/Frozen tiers off**, counts and percentages come from the remaining tiers only. The Prevalence flyout also explains the current state in a callout that you can dismiss.
+::::
 
 #### Prevalence flyout [expanded-prevalence-view]
 
