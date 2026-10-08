@@ -35,7 +35,7 @@ For more detail about how agents communicate their status to {{fleet}}, refer to
 
 ## View agent status overview [view-agent-status]
 
-To view the overall status of your {{fleet}}-managed agents, in {{kib}}, go to **Management → {{fleet}} → Agents**.
+To view the overall status of your {{fleet}}-managed agents, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Agents** tab.
 
 :::{image} images/kibana-fleet-agents.png
 :alt: Agents tab showing status of each {{agent}}
@@ -66,7 +66,7 @@ This diagram shows the flow of {{agent}} statuses:
 :alt: Diagram showing the flow of Fleet Agent statuses
 :::
 
-To filter the list of agents by status, click the **Status** dropdown and select one or more statuses.
+To filter the list of agents by status, click **Status**, then select one or more statuses.
 
 :::{image} images/agent-status-filter.png
 :alt: Agent Status dropdown with multiple statuses selected
@@ -87,23 +87,21 @@ In {{fleet}}, you can access the detailed status of an individual agent and the 
 1. In {{fleet}}, open the **Agents** tab.
 2. In the **Host** column, click the agent’s name.
 
-On the **Agent details** tab, the **Overview** pane shows details about the agent and its performance, including its memory and CPU usage, last activity time, and last checkin message. To access metrics visualizations, you can also [View the {{agent}} metrics dashboard](#view-agent-metrics).
+On the **Agent details** tab, the **Overview** section shows the agent's CPU and memory usage, status, last activity and check-in message, policy, version, host, outputs, logging level, privilege mode, platform, monitoring settings, tags, and FIPS mode. To access metrics visualizations, you can also [view the {{agent}} metrics dashboard](#view-agent-metrics).
 
 :::{image} images/agent-detail-overview.png
-:alt: Agent details overview pane with various metrics
+:alt: Agent details Overview section with resource usage, status, policy, outputs, and monitoring settings
+:screenshot:
 :::
 
-The **Integrations** pane shows the status of the integrations that have been added to the agent policy. Expand any integration to view its health status. Any errors or warnings are displayed as alerts.
+The **Integrations** section lists the integrations in the agent policy. Expand an integration, then expand **Inputs** or **Outputs** to view component health.
 
 :::{image} images/agent-detail-integrations-health.png
-:alt: Agent details integrations pane with health status
+:alt: Integrations section with expanded input health
+:screenshot:
 :::
 
-To gather more detail about a particular error or warning, from the **Actions** menu select **View agent JSON**. The JSON contains all of the raw agent data tracked by Fleet.
-
-::::{note}
-Currently, the **Integrations** pane shows the health status only for agent inputs. Health status is not yet available for agent outputs.
-::::
+To gather more detail about a particular error or warning, select **Actions → Maintenance and diagnostics → View agent JSON**. The JSON contains all of the raw agent data tracked by Fleet.
 
 
 
@@ -264,14 +262,14 @@ stack: ga 9.2+
 ```
 
 {{agent}} provides [out-of-the-box alert rules](/reference/fleet/alert-templates.md) to simplify monitoring the health of agents.
-Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.  
+Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.
 
 ## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status  [fleet-alerting]
 ```{applies_to}
 stack: ga 9.0-9.1
 ```
 :::{tip}
-For versions 9.2.0 and later, {{agent}} includes out-of-the-box alert rules for the most common health checks. Check out [Elastic Agent built-in alerts](/reference/fleet/alert-templates.md). 
+For versions 9.2.0 and later, {{agent}} includes out-of-the-box alert rules for the most common health checks. Check out [Elastic Agent built-in alerts](/reference/fleet/alert-templates.md).
 :::
 
 You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerting.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
@@ -313,6 +311,26 @@ Data stream
     * `fleet.agent.version` - A keyword field containing the version number
     * `fleet.agent.count` - A count of agents on the specified version
 
+
+Data stream
+:   `logs-elastic_agent.status_change`
+
+    ```{applies_to}
+    stack: ga 9.3+
+    ```
+
+    This data stream contains agent status changes (for example, `online`, `offline`, `updating`, `unenrolled`) and can be used to produce custom alerts. Some {{agent}} integrations also ship with [alerting rule templates](/reference/fleet/alerting-rule-templates.md) that use this data stream.
+
+    **Fields**
+
+    * `@timestamp` — The time the status change was recorded
+    * `agent.id` — The unique identifier of the agent
+    * `status` — The agent's current status (`online`, `offline`, `error`, `degraded`, `inactive`, `enrolling`, `unenrolling`, `unenrolled`, `updating`, `uninstalled`, `orphaned`)
+    * `policy_id` — The policy the agent is enrolled in
+    * `policy_namespace` — The namespace of the agent policy
+    * `hostname` — The hostname of the agent's host
+    * `space_id` — The {{kib}} space or spaces the agent belongs to
+    * `agentless` — Is `true` if the agent runs in an agentless policy
 
 
 ### Example: Enable an alert for offline {{agent}}s [fleet-alerting-example]

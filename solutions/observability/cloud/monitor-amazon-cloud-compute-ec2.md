@@ -147,7 +147,7 @@ Here are the key network metrics you should monitor and what to look for:
 `aws.ec2.metrics.NetworkIn.rate` & `aws.ec2.metrics.NetworkOut.rate`
 :   These metrics report network throughput, in bytes, of your EC2 instance. Any network drops or fluctuations can potentially be correlated to the application metrics to find the root cause of possible issues. Any throughput limit may indicate that the instance type may be mismatched with the application needs, especially for data intensive applications.
 
-    When looking at a set of EC2 instance data, if you see a considerable difference in network traffic load, you may require a load balancer to distribute the load more evenly across the related instances and be able to achieve better performance.
+    When looking at a set of EC2 instance data, if you see a considerable difference in network traffic load, you might require a load balancer to distribute the load more evenly across the related instances and be able to achieve better performance.
 
 
 
