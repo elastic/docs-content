@@ -43,7 +43,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Before blocking or alerting on malware files, {{elastic-endpoint}} reaches out to an Elastic cloud service ([https://cloud.security.elastic.co](https://cloud.security.elastic.co)) to see if the alert is a known false positive. Use this setting to disable this feature.
 
     ::::{note}
-    Disabling cloud lookup for alerts may result in higher false positive rates.
+    Disabling cloud lookup for alerts might result in higher false positive rates.
     ::::
 
 
@@ -52,7 +52,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include MD5 hashes in alerts. Even if set to false, MD5 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate MD5 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, MD5 hashes were always included.
+    {{elastic-endpoint}} doesn't generate MD5 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing. Starting with 8.18, users are opted out by default. Before 8.16, MD5 hashes were always included.
 
 
 `[linux,mac,windows].advanced.alerts.hash.sha1`
@@ -60,7 +60,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include SHA-1 hashes in alerts. Even if set to `false`, SHA-1 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate SHA-1 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, SHA-1 hashes were always included.
+    {{elastic-endpoint}} doesn't generate SHA-1 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing. Starting with 8.18, users are opted out by default. Before 8.16, SHA-1 hashes were always included.
 
 
 `windows.advanced.alerts.rollback.self_healing.enabled`
@@ -115,7 +115,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     {{elastic-endpoint}} has various features that require use of cloud services. Each of those features has an individual advanced setting that allows users to disable it. This setting provides an alternative way to disable features that need cloud services in a way that inherently disables all future cloud service features by default.
 
     ::::{warning}
-    Disabling cloud services may reduce protection efficacy and increase false positive rates.
+    Disabling cloud services might reduce protection efficacy and increase false positive rates.
     ::::
 
 
@@ -318,7 +318,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include ancestor process entity IDs in all event types; by default they are only included in alerts and process events. Default: `false`.*
 
-    Prior to 8.15, {{elastic-endpoint}} included `process.ancestry` in all event documents. This field helps render the event analyzer more quickly and is primarily needed for process events. In 8.15, this was changed to limit data volume.
+    Before 8.15, {{elastic-endpoint}} included `process.ancestry` in all event documents. This field helps render the event analyzer more quickly and is primarily needed for process events. In 8.15, this was changed to limit data volume.
 
 
 `windows.advanced.events.api`
@@ -329,7 +329,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable API event collection, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling API event collection may break other {{elastic-endpoint}} features.
+    Disabling API event collection might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -484,7 +484,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *Attempt to include `file.hash.sha256` in file events. Hashing is asynchronous, best-effort, and not guaranteed to succeed, especially on network drives. Warning: file hashing will increase Endpoint's CPU and I/O, and may adversely affect system responsiveness. Warning: Event processing will be delayed due to the time spent hashing, which will interfere with malicious behavior and ransomware protections and potentially allow threats to inflict additional damage. Set to `off` to disable this feature. Set to `0` to hash all files up to 1 GiB. Otherwise, this sets the maximum to-be-hashed file size in MiB. Default: `off`.*
 
     ::::{note}
-    Enabling file hashing may increase CPU and IO use, decrease system responsiveness, and interfere with malicious behavior and ransomware protections.
+    Enabling file hashing might increase CPU and IO use, decrease system responsiveness, and interfere with malicious behavior and ransomware protections.
     ::::
 
 
@@ -499,7 +499,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include MD5 hashes in processes and libraries in events. Even if set to `false`, MD5 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate MD5 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, MD5 hashes were always included.
+    {{elastic-endpoint}} doesn't generate MD5 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing. Starting with 8.18, users are opted out by default. Before 8.16, MD5 hashes were always included.
 
 
 `[linux,mac,windows].advanced.events.hash.sha1`
@@ -507,7 +507,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include SHA-1 hashes in processes and libraries in events. Even if set to `false`, SHA-1 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate SHA-1 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, SHA-1 hashes were always included.
+    {{elastic-endpoint}} doesn't generate SHA-1 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing. Starting with 8.18, users are opted out by default. Before 8.16, SHA-1 hashes were always included.
 
 
 `[linux,mac,windows].advanced.events.hash.sha256`
@@ -515,7 +515,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include SHA-256 hashes in processes and libraries in events. Even if set to `false`, SHA-256 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} doesn't generate SHA-256 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-256 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, SHA-256 hashes were always included.
+    {{elastic-endpoint}} doesn't generate SHA-256 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-256 hashing. Starting with 8.18, users are opted out by default. Before 8.16, SHA-256 hashes were always included.
 
 
 `mac.advanced.events.image_load`
@@ -526,7 +526,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable image load events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling image load events may break other {{elastic-endpoint}} features.
+    Disabling image load events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -561,7 +561,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Maximum number of process ancestry entries to include in process events. For 8.14 and earlier, default: `20`. For 8.15 and later, default: `5`.*
 
-    Use this setting to control how many ancestor processes {{elastic-endpoint}} includes in the `process.ancestry` field. Prior to 8.15, this field contained the last 20 ancestor processes; starting with 8.15, it was reduced to the last 5, to limit data volume.
+    Use this setting to control how many ancestor processes {{elastic-endpoint}} includes in the `process.ancestry` field. Before 8.15, this field contained the last 20 ancestor processes. Starting with 8.15, it was reduced to the last 5, to limit data volume.
 
 
 `windows.advanced.events.process.creation_flags`
@@ -690,7 +690,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable kernel asynchronous image load events, even if other {{elastic-endpoint}} features require them.
 
     ::::{important}
-    Disabling the monitoring of asynchronous image load events may negatively impact the functionality of other {{elastic-endpoint}} features.
+    Disabling the monitoring of asynchronous image load events might negatively impact the functionality of other {{elastic-endpoint}} features.
     ::::
 
 
@@ -728,7 +728,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable file access events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling file access events may break other {{elastic-endpoint}} features.
+    Disabling file access events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -740,7 +740,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable kernel file open events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling file open events may break other {{elastic-endpoint}} features.
+    Disabling file open events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -752,7 +752,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable kernel file write events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling file write events may break other {{elastic-endpoint}} features.
+    Disabling file write events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -776,7 +776,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable kernel network events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling network events may break other {{elastic-endpoint}} features.
+    Disabling network events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -836,7 +836,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable kernel process events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling process events may break other {{elastic-endpoint}} features.
+    Disabling process events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -848,7 +848,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable process and thread handle events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling process and thread handle events may break other {{elastic-endpoint}} features.
+    Disabling process and thread handle events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -860,7 +860,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable registry modification events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling registry modification events may break other {{elastic-endpoint}} features.
+    Disabling registry modification events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -878,7 +878,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable synchronous image load events, even if other {{elastic-endpoint}} features require them.
 
     :::{warning}
-    Disabling synchronous image load events may break other {{elastic-endpoint}} features.
+    Disabling synchronous image load events might break other {{elastic-endpoint}} features.
     :::
 
 
@@ -1077,7 +1077,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Include full `host.*` fieldset information in events. When `false`, only `id`, `name`, and `os` are included. Warning: `true` will increase event size. For 8.17 and earlier, default: `true`. For 8.18 and later, default: `false`.*
 
-    {{elastic-endpoint}} only includes minimal information in the host fieldset in each event. Use this setting to also include extended information from the `alerts` and `metrics-*` documents. This setting was made available in 8.16; starting with 8.18, this behavior is disabled by default. Prior to 8.16, full `host` information was always included.
+    {{elastic-endpoint}} only includes minimal information in the host fieldset in each event. Use this setting to also include extended information from the `alerts` and `metrics-*` documents. This setting was made available in 8.16. Starting with 8.18, this behavior is off by default. Before 8.16, full `host` information was always included.
 
 
 `linux.advanced.tty_io.max_event_interval_seconds`

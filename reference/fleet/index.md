@@ -47,7 +47,8 @@ Looking for a general guide that explores all of your options for ingesting data
 {{kib}} provides a web-based UI to add and manage integrations. You can browse a unified view of available integrations that shows both {{agent}} and {{beats}} integrations.
 
 :::{image} images/integrations.png
-:alt: Integrations page
+:alt: Integrations catalog with package categories and available integrations
+:screenshot:
 :::
 
 ## {{agent}} policies [configuring-integrations]
@@ -55,7 +56,8 @@ Looking for a general guide that explores all of your options for ingesting data
 Agent policies specify which integrations you want to run and on which hosts. You can apply an {{agent}} policy to multiple agents, making it even easier to manage configuration at scale.
 
 :::{image} images/add-integration.png
-:alt: Add integration page
+:alt: Add Nginx integration form with log collection settings
+:screenshot:
 :::
 
 When you add an integration, you configure inputs for logs and metrics, such as the path to your Nginx access logs. When you're done, you save the integration to an {{agent}} policy. The next time enrolled agents check in, they receive the update. Having the policies automatically deployed is more convenient than doing it yourself by using SSH, Ansible playbooks, or some other tool.
@@ -85,7 +87,8 @@ You can find more information about running the above mentioned resources in air
 You can see the state of all your {{agents}} in {{fleet}}. On the **Agents** page, you can see which agents are healthy or unhealthy, and the last time they checked in. You can also see the version of the {{agent}} binary and policy.
 
 :::{image} images/kibana-fleet-agents.png
-:alt: Agents page
+:alt: Fleet Agents page with status summary, filters, and agent details
+:screenshot:
 :::
 
 {{fleet}} in {{kib}} enables you to manage {{agent}} installations in standalone or {{fleet}} mode.
@@ -97,11 +100,6 @@ Standalone mode requires you to manually configure and manage the agent locally.
 * A central place to configure and monitor your {{agents}}.
 * Ability to trigger {{agent}} binary and policy upgrades remotely.
 * An overview of the data ingest in your {{es}} cluster.
-
-:::{image} images/fleet-start.png
-:alt: {{fleet}} app in {{kib}}
-:screenshot:
-:::
 
 {{fleet}} serves as the communication channel back to the {{agents}}. Agents check in for the latest updates on a regular basis. You can have any number of agents enrolled into each agent policy, which allows you to scale up to thousands of hosts.
 

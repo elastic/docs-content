@@ -1257,6 +1257,98 @@ redirects:
     anchors:
       '': 'configure-privileges-for-ccs'
 
+  # kNN search page restructure: anchors moved to child pages
+  'solutions/search/vector/knn.md':
+    to: 'solutions/search/vector/knn.md'
+    anchors:
+      'choosing-between-approximate-and-exact-knn': 'knn-methods'
+      'knn-search-examples': 'knn-search-examples'
+      'knn-build-query-vector': 'knn-build-query-vector'
+      'knn-semantic-search': 'knn-semantic-search'
+      'knn-lookup-similar-documents': 'knn-lookup-similar-documents'
+    many:
+      - to: 'solutions/search/vector/knn/approximate-knn.md'
+        anchors:
+          'approximate-knn': 'approximate-knn'
+          'knn-methods-approximate': 'approximate-knn'
+          'knn-indexing-considerations': 'knn-indexing-considerations'
+          'approximate-knn-limitations': 'approximate-knn'
+      - to: 'solutions/search/vector/knn/exact-knn.md'
+        anchors:
+          'exact-knn': 'exact-knn'
+          'knn-methods-exact': 'exact-knn'
+      - to: 'solutions/search/vector/knn/optimize-performance-accuracy.md'
+        anchors:
+          'tune-approximate-knn-for-speed-accuracy': 'tune-approximate-knn-for-speed-accuracy'
+          'approximate-knn-using-byte-vectors': 'approximate-knn-using-byte-vectors'
+          'knn-search-quantized-example': 'knn-search-quantized-example'
+          'knn-search-bfloat16': 'knn-search-bfloat16'
+          'dense-vector-knn-search-rescoring': 'dense-vector-knn-search-rescoring'
+          'the-rescore_vector-option': 'the-rescore_vector-option'
+          'the-on_disk_rescore-option': 'the-on_disk_rescore-option'
+          'dense-vector-knn-search-rescoring-rescore-additional': 'dense-vector-knn-search-rescoring-rescore-additional'
+          'dense-vector-knn-search-rescoring-rescore-section': 'dense-vector-knn-search-rescoring-rescore-section'
+          'dense-vector-knn-search-rescoring-script-score': 'dense-vector-knn-search-rescoring-script-score'
+      - to: 'solutions/search/vector/knn/approximate-knn-query-examples.md'
+        anchors:
+          '_combine_approximate_knn_with_other_features': 'combine_approximate_knn_with_other_features'
+          'combine_approximate_knn_with_other_features': 'combine_approximate_knn_with_other_features'
+          'knn-similarity-search': 'knn-similarity-search'
+          '_search_multiple_knn_fields': '_search_multiple_knn_fields'
+      - to: 'solutions/search/vector/knn/filtered-knn-search.md'
+        anchors:
+          'knn-search-filter-example': 'knn-search-filter-example'
+          'approximate-knn-search-and-filtering': 'filtering-behavior-and-performance'
+      - to: 'solutions/search/vector/knn/nested-knn-search.md'
+        anchors:
+          'nested-knn-search': 'nested-knn-search'
+          'nested-knn-search-filtering': 'nested-knn-search-filtering'
+          'nested-knn-search-filtering-nested-metatadata': 'nested-knn-search-filtering-nested-metatadata'
+          'nested-knn-search-filtering-sibling': 'nested-knn-search-filtering-sibling'
+          'nested-knn-search-inner-hits': 'nested-knn-search-inner-hits'
+          'nested-knn-search-chunked-content': 'nested-knn-search-chunked-content'
+          'create-the-index-mapping': 'nested-knn-search-chunked-content'
+          'index-the-documents': 'nested-knn-search-chunked-content'
+          'run-the-search-query': 'nested-knn-search-chunked-content'
+
+  # Query vector examples moved to the shared kNN page
+  'solutions/search/vector/knn/approximate-knn-query-examples.md':
+    to: 'solutions/search/vector/knn/approximate-knn-query-examples.md'
+    many:
+      - to: 'solutions/search/vector/knn.md'
+        anchors:
+          'knn-build-query-vector': 'knn-build-query-vector'
+          'knn-semantic-search': 'knn-semantic-search'
+          'knn-lookup-similar-documents': 'knn-lookup-similar-documents'
+      - to: 'solutions/search/vector/knn/filtered-knn-search.md'
+        anchors:
+          'knn-search-filter-example': 'knn-search-filter-example'
+          'knn-prefilter-vs-postfilter': 'knn-prefilter-vs-postfilter'
+          'filtering-behavior-and-performance': 'filtering-behavior-and-performance'
+
+  # Approximate kNN query examples: page renamed and content reorganized
+  'solutions/search/vector/knn/build-search-queries.md':
+    to: 'solutions/search/vector/knn/approximate-knn-query-examples.md'
+    many:
+      - to: 'solutions/search/vector/knn.md'
+        anchors:
+          'knn-build-query-vector': 'knn-build-query-vector'
+          'knn-semantic-search': 'knn-semantic-search'
+          'knn-lookup-similar-documents': 'knn-lookup-similar-documents'
+      - to: 'solutions/search/vector/knn/filtered-knn-search.md'
+        anchors:
+          'knn-search-filter-example': 'knn-search-filter-example'
+          'knn-prefilter-vs-postfilter': 'knn-prefilter-vs-postfilter'
+          'filtering-behavior-and-performance': 'filtering-behavior-and-performance'
+          'approximate-knn-search-and-filtering': 'filtering-behavior-and-performance'
+      - to: 'solutions/search/vector/knn/nested-knn-search.md'
+        anchors:
+          'nested-knn-search': 'nested-knn-search'
+          'nested-knn-search-filtering': 'nested-knn-search-filtering'
+          'nested-knn-search-filtering-nested-metatadata': 'nested-knn-search-filtering-nested-metatadata'
+          'nested-knn-search-filtering-sibling': 'nested-knn-search-filtering-sibling'
+          'nested-knn-search-inner-hits': 'nested-knn-search-inner-hits'
+          'nested-knn-search-chunked-content': 'nested-knn-search-chunked-content'
   # Related to https://github.com/elastic/docs-content/pull/7151
   'deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md':
     to: 'deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md'
@@ -1270,6 +1362,13 @@ redirects:
     to: 'reference/fleet/managed-content.md'
     anchors:
       'managed-integrations-content':
+
+  # Fleet: folded the environment variables stub into the integration policy scaling guide
+  # related to https://github.com/elastic/docs-content/issues/2166
+  'reference/fleet/fleet-agent-environment-variables.md':
+    to: 'reference/fleet/scale-integration-policies.md'
+    anchors:
+      'fleet-agent-environment-variables': 'reuse-one-integration-policy-with-variables'
 
   # Jina on-prem deployment content moved back to ml-nlp-jina.md
   'explore-analyze/machine-learning/nlp/ml-nlp-jina-on-prem.md':
@@ -1315,6 +1414,47 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
+
+  # Plugins and bundles hub: move deployment-specific plugin pages under deploy-manage/plugins-and-custom-configuration-files/ issue: https://github.com/elastic/docs-content-internal/issues/1075
+  # Headings renamed on the same page: '## Plugins' -> '## Add {{es}} plugins', '## Bundles' -> '## Add configuration bundles'.
+  # 'ec-adding-plugins' and 'manage-through-the-api' are unchanged and pass through.
+  'deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md':
+    to: 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/add-plugins-extensions.md'
+    many:
+      - to: 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/add-plugins-extensions.md'
+        anchors:
+          'plugins': 'add-es-plugins'
+          'bundles': 'add-configuration-bundles'
+  'deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-ech.md': 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/add-plugins-provided-with-ech.md'
+  'deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md': 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md'
+  'deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md': 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/manage-plugins-extensions-through-api.md'
+  # Page split: the old page's content became 'add-plugins-provided-with-ece.md', while 'add-plugins.md'
+  # is now a hub. Anchor-less requests land on the hub; the old anchors follow the content.
+  'deploy-manage/deploy/cloud-enterprise/add-plugins.md':
+    to: 'deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/add-plugins.md'
+    many:
+      - to: 'deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/add-plugins-provided-with-ece.md'
+        anchors:
+          'ece-adding-plugins':
+          'add-plugins-when-creating-a-new-ece-deployment': 'add-plugins-when-creating-a-new-ece-deployment'
+          'add-plugins-to-an-existing-ece-deployment': 'add-plugins-to-an-existing-ece-deployment'
+  'deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/add-custom-bundles-plugins.md'
+  'deploy-manage/deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/ece-include-additional-kibana-plugin.md'
+  # Page split: the init-container sections (including 'istio-note') moved to the init containers page and the
+  # custom image section moved to create-custom-images.md. 'k8s-bundles-plugins' and
+  # 'use-a-volume-and-volume-mount-together-with-a-configmap-or-secret' still exist on the target and pass through.
+  'deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md':
+    to: 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md'
+    many:
+      - to: 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md'
+        anchors:
+          'istio-note': 'istio-note'
+          'use-init-containers-for-plugins-installation':
+      - to: 'deploy-manage/deploy/cloud-on-k8s/create-custom-images.md'
+        anchors:
+          'create-a-custom-image':
+  'deploy-manage/deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md'
+  'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-plugins.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/k8s-kibana-plugins.md'
   # related to https://github.com/elastic/docs-content/issues/7709
   'solutions/elasticsearch-solution-project/search-connection-details.md':
     to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
@@ -1328,5 +1468,34 @@ redirects:
       '_serverless_deployments': 'find-endpoint-cloud-self-managed'
       'find-cloud-id-serverless': 'find-endpoint-cloud-self-managed'
       'create-an-api-key-serverless': 'create-an-api-key-cloud-self-managed'
+
+  # Move Elastic Cloud Serverless FAQ to a child page
+  'deploy-manage/deploy/elastic-cloud/serverless.md':
+    to: 'deploy-manage/deploy/elastic-cloud/serverless.md'
+    many:
+    - to: 'deploy-manage/deploy/elastic-cloud/serverless-faq.md'
+      anchors:
+        'general-what-is-serverless-elastic-answers-to-common-serverless-questions':
+        'pricing-and-availability': 'pricing-and-availability'
+        'data-management': 'data-management'
+        'security-compliance-and-access': 'security-compliance-and-access'
+        'project-lifecycle-and-support': 'project-lifecycle-and-support'
+    - to: 'deploy-manage/cloud-organization/service-status.md'
+      anchors:
+        'general-serverless-status':
+    - to: 'deploy-manage/deploy/elastic-cloud/serverless.md'
+      anchors:
+        'serverless-overview': 'how-serverless-works'
+
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
+
+  # Related to monitoring logging IA restructure
+  'deploy-manage/security/logging-configuration/security-event-audit-logging.md': 'deploy-manage/monitor/stack-audit-logging.md'
+  'deploy-manage/security/logging-configuration/enabling-audit-logs.md': 'deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md'
+  'deploy-manage/security/logging-configuration/configuring-audit-logs.md': 'deploy-manage/monitor/stack-audit-logging/configuring-audit-logs.md'
+  'deploy-manage/security/logging-configuration/logfile-audit-events-ignore-policies.md': 'deploy-manage/monitor/stack-audit-logging/logfile-audit-events-ignore-policies.md'
+  'deploy-manage/security/logging-configuration/logfile-audit-output.md': 'deploy-manage/monitor/stack-audit-logging/logfile-audit-output.md'
+  'deploy-manage/security/logging-configuration/auditing-search-queries.md': 'deploy-manage/monitor/stack-audit-logging/auditing-search-queries.md'
+  'deploy-manage/security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md': 'deploy-manage/monitor/stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md'
+  'deploy-manage/monitor/log-delivery/cloud-audit-trail.md': 'deploy-manage/monitor/cloud-audit-trail.md'
