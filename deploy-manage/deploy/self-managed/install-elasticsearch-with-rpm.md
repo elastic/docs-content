@@ -1,12 +1,14 @@
 ---
 navigation_title: Install with RPM package
+description: Install Elasticsearch on RPM-based systems like Red Hat and CentOS using the RPM repository or a downloaded .rpm package.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
 applies_to:
   deployment:
-    self:
+    self: ga
 products:
   - id: elasticsearch
+type: how-to
 sub:
   es-conf: /etc/elasticsearch
   slash: /

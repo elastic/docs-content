@@ -5,9 +5,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
 applies_to:
   deployment:
-    self:
+    self: ga
 products:
   - id: elasticsearch
+type: how-to
 sub:
   es-conf: "%ES_HOME%\\config"
   slash: \

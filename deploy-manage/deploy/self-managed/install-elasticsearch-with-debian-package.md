@@ -5,7 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
 applies_to:
   deployment:
-    self:
+    self: ga
+type: how-to
 products:
   - id: elasticsearch
 sub:
@@ -63,7 +64,7 @@ You have several options for installing the {{es}} Debian package:
 
 2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-9.x.list`:
 
-    ```sh subs=true
+    ```sh
     echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
     ```
 
@@ -105,7 +106,7 @@ These instructions do not use `add-apt-repository` for several reasons:
 :::{warning}
 If two entries exist for the same {{es}} repository, you will see an error like this during `apt-get update`:
 
-```text subs=true
+```text
 Duplicate sources.list entry https://artifacts.elastic.co/packages/9.x/apt/ ...
 ```
 
