@@ -946,13 +946,6 @@ redirects:
   'explore-analyze/alerting/experimental-alerting-system/rules/yaml-rule-schema-reference.md': 'explore-analyze/alerting/esql/rules/yaml-rule-schema-reference.md'
   'explore-analyze/alerting/experimental-alerting-system/workflows-alerting.md': 'explore-analyze/alerting/esql/workflows-alerting.md'
 
-# Related to reorganizing the experimental alerting system pages into Get started, Set up, and Manage
-  'explore-analyze/alerting/esql/authorization.md': 'explore-analyze/alerting/esql/manage/authorization.md'
-  'explore-analyze/alerting/esql/get-started/configure-access.md': 'explore-analyze/alerting/esql/manage/configure-access.md'
-  'explore-analyze/alerting/esql/get-started/setup.md': 'explore-analyze/alerting/esql/setup.md'
-  'explore-analyze/alerting/esql/glossary.md': 'explore-analyze/alerting/esql/get-started/glossary.md'
-  'explore-analyze/alerting/esql/how-it-works.md': 'explore-analyze/alerting/esql/get-started/how-it-works.md'
-
 # Related to cases and alerting documentation restructuring
   # Main pages
   'explore-analyze/alerts-cases.md': 'explore-analyze/alerting.md'
