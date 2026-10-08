@@ -90,6 +90,27 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :screenshot:
 :::
 
+### Attach images to a message
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram. Pasting is the only way to attach an image. Dragging a file onto the input and selecting one from a file picker aren't supported.
+
+To attach an image, copy it to your clipboard, then press {kbd}`ctrl|cmd+v` in the chat input. A chip with the file name appears in the message text, and a thumbnail appears above the input. To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`.
+
+:::{image} images/agent-builder-image-attachment.png
+:alt: Chat input with an image thumbnail attached, a file chip in the message text, and the model selector below
+:width: 650px
+:screenshot:
+:::
+
+You can attach up to 10 images to a single message. Each image must be a PNG or JPEG file no larger than 3.5 MB. You can't submit the message until all attached images finish uploading.
+
+After you submit the message, the image appears in the conversation history, and the agent can refer to it in later messages in the same conversation.
+
 ### Chat with data from multiple projects [agent-builder-cps-scope]
 ```{applies_to}
 stack: unavailable

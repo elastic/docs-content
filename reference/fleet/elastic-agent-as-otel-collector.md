@@ -220,5 +220,5 @@ The automatic asset installation from OTel content packages currently works only
 
 :::{dropdown} Will there be a separate operating system support matrix?
 
-No, the [Elastic system support matrix](https://www.elastic.co/support/matrix) does not change. Where Elastic does not provide {{agent}} support for a specific operating system, you can deploy a third-party OpenTelemetry Collector supported by that vendor and send data to Elastic. For example, Red Hat provides an OTel Collector for OpenShift that can be configured to send data to Elastic. The same configuration can also be used with {{agent}} on operating systems that Elastic supports.
+No, the [Elastic system support matrix](https://www.elastic.co/support/matrix) does not change. Where Elastic does not provide {{agent}} support for a specific operating system, you can deploy a third-party OpenTelemetry Collector supported by that vendor and send data to Elastic. The same configuration can also be used with {{agent}} on operating systems that Elastic supports.
 :::
