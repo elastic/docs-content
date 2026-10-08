@@ -18,7 +18,7 @@ Events with `type: signal` don't belong to an [alert episode](../alerts.md), so 
 ## Before you begin
 
 - You have events with `type: signal` in `.rule-events` to query.
-- Your role can query `.rule-events` in Discover. For privilege details, refer to [Configure access](../get-started/configure-access.md#alerting-data-investigation-privileges).
+- Your role can query `.rule-events` in Discover. For privilege details, refer to [Configure access](../manage/configure-access.md#alerting-data-investigation-privileges).
 
 ## Key fields for these queries [signal-key-fields]
 

@@ -21,8 +21,8 @@ This page lists the requirements and shows you how to turn the system on and off
 You'll need the following to create rules and send notifications.
 
 - **Data in Elasticsearch**: Rules can only detect conditions in data that already exists. Make sure the indices or data streams your rules will query are populated before creating rules. Refer to [Ingest your data](/manage-data/ingest.md) for options.
-- **A space selected**: Rules, [action policies](../action-policies/about-action-policies.md), and the privileges that control them are all space-scoped. Decide which space you'll work in before setting things up. Refer to [Manage spaces](/deploy-manage/manage-spaces.md) to create or switch spaces.
-- **Connectors configured** (required for notifications): [Workflows](../workflows-alerting.md) send notifications and require at least one [connector](/deploy-manage/manage-connectors.md), for example, Slack, email, or PagerDuty. [Action policies](../action-policies/about-action-policies.md) invoke those workflows.
+- **A space selected**: Rules, [action policies](action-policies/about-action-policies.md), and the privileges that control them are all space-scoped. Decide which space you'll work in before setting things up. Refer to [Manage spaces](/deploy-manage/manage-spaces.md) to create or switch spaces.
+- **Connectors configured** (required for notifications): [Workflows](workflows-alerting.md) send notifications and require at least one [connector](/deploy-manage/manage-connectors.md), for example, Slack, email, or PagerDuty. [Action policies](action-policies/about-action-policies.md) invoke those workflows.
 - **Enterprise license** (Stack deployments only, required for notifications): Workflows-based notifications require an Enterprise license. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 
 ## Turn on the system [alerting-setup-turn-on]
@@ -52,5 +52,5 @@ Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but does n
 
 After turning on the system:
 
-- [Configure access](configure-access.md) to create or update a role with access to the {{alerting-v2-system}} features and the data streams they write to.
-- [Create your first rule](create-your-first-rule.md) to load sample data, write a detection query, and observe the alert lifecycle.
+- [Configure access](manage/configure-access.md) to create or update a role with access to the {{alerting-v2-system}} features and the data streams they write to.
+- [Create your first rule](get-started/create-your-first-rule.md) to load sample data, write a detection query, and observe the alert lifecycle.
