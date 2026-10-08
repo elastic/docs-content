@@ -48,7 +48,7 @@ When you enter the time range as text, the time filter interprets a single value
 | Date math | `now-15m`, `now/w`, and other [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) expressions. |
 | Preset labels | `Last 24 hours` or any other range listed under **Presets**. |
 
-To start or end a range on a clean boundary, such as the start of a month, add a rounding unit, as in `-1y/M`. The time filter then adds **(rounded)** after the label. To learn how rounding works, refer to [Start or end a range on a clean boundary](#round-relative-time-ranges).
+A rounding unit makes a range start or end at the edge of a day, month, or year. For example, `-1y/M` starts at the beginning of the month one year ago, and the time filter adds **(rounded)** after the label. For more examples, refer to [Round a range to whole days, months, or years](#round-relative-time-ranges).
 
 The time filter can also give you the text for a range:
 
@@ -94,13 +94,13 @@ Using the time filter, you can configure a refresh rate to periodically resubmit
 
 To manually resubmit a search, click the **Refresh** button. This is useful when you use Kibana to view the underlying data.
 
-### Start or end a range on a clean boundary [round-relative-time-ranges]
+### Round a range to whole days, months, or years [round-relative-time-ranges]
 ```{applies_to}
 stack: preview 9.5+
 serverless: preview
 ```
 
-Round a relative range to make it start or end on a clean boundary, such as the start of a day, month, or year, instead of at an exact offset from now. You can enter rounded ranges directly in the time filter. A single value runs from that point to now. For example, if it's October 8, 2026 at 13:09, these entries give different start times:
+With rounding, a relative range starts or ends at the edge of a day, month, or year instead of at an exact time. For example, if it's October 8, 2026 at 13:09, a range that reaches back one year starts at a different point depending on how you round it. You can enter each of these values directly in the time filter, and a single value runs from that point to now.
 
 | You enter | The range starts at |
 | --- | --- |
@@ -111,7 +111,7 @@ Round a relative range to make it start or end on a clean boundary, such as the 
 
 #### Round the start or end of a range
 
-To round a start or end yourself, add `/` and a rounding unit after the offset. A rounded start moves down to the beginning of the unit, and a rounded end moves up to the end of it. The time filter accepts these rounding units:
+Adding `/` and a rounding unit after an offset moves a start back to the beginning of that unit and an end forward to the end of it. The time filter accepts these rounding units:
 
 | Unit | Rounds to |
 | --- | --- |
@@ -123,9 +123,9 @@ To round a start or end yourself, add `/` and a rounding unit after the offset. 
 | `M` | Month |
 | `y` | Year |
 
-Rounding units are case-sensitive: `m` rounds to the minute and `M` rounds to the month. The time filter doesn't accept words such as `/mo` or `/month`, so enter `-1y/M` to start at the beginning of the month one year ago.
+Rounding units are case-sensitive: `m` is the minute and `M` is the month. The time filter doesn't accept words such as `/mo` or `/month`, so `-1y/M` is how you start at the beginning of the month one year ago.
 
-To round both bounds, separate the start and the end with `to`. If it's October 8, 2026, these ranges cover:
+With `to` between a start and an end, you round both edges. If it's October 8, 2026, these ranges cover:
 
 | You enter | The range covers |
 | --- | --- |
@@ -134,9 +134,9 @@ To round both bounds, separate the start and the end with `to`. If it's October 
 
 #### Round every relative range automatically
 
-If you don't want to type a rounding unit each time, open the time filter, select {icon}`gear` **Settings**, and turn on **Round relative time ranges**. The setting is off by default. When it's on, the time filter adds a rounding unit to each start or end that is a single offset from now and has no rounding unit. For example, `-7d` becomes `-7d/h`, so the range starts at the beginning of the hour instead of at the exact time. The time filter keeps rounding that you typed, so `-7d/M` stays as it is.
+With **Round relative time ranges** turned on, the time filter rounds relative ranges for you, so you don't type a rounding unit each time. The setting is off by default. To turn it on, select {icon}`gear` **Settings** in the time filter.
 
-The unit that the time filter adds depends on the unit of the offset:
+When the setting is on, the time filter adds a rounding unit to each start or end that is a single offset from now and has no rounding unit. For example, `-7d` becomes `-7d/h`, so the range starts at the beginning of the hour instead of at the exact time. A rounding unit that you typed stays as it is, so `-7d/M` doesn't change. The unit that the time filter adds depends on the unit of the offset:
 
 | Offset unit | Rounds to | Example |
 | --- | --- | --- |
