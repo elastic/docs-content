@@ -41,12 +41,17 @@ Managed AI indices have a **Managed** badge in **Context**. Agents can discover 
 
 ## Sources
 
-A source is the data from which an [automation](#automations-and-workflows) generates [Knowledge Indicators (KIs)](#knowledge-indicators). {{context-engine}} supports two source types:
+A source identifies data that an [automation](#automations-and-workflows) can use to generate [Knowledge Indicators (KIs)](#knowledge-indicators).
 
-- An {{esql}} source uses a query to select data from one or more {{es}} indices or data streams.
-- A connector source names a configured connector to an external system. Supported connectors include services such as Google Drive, GitHub, Jira, ServiceNow, and Slack, and cloud object stores. Refer to [Connectors in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/connectors.md) for more information about configuring connectors.
+You can add source data in the following ways:
 
-Selecting an {{es}} index, data stream, or alias creates an {{esql}} source in the form `FROM <name>`. You can instead provide an advanced {{esql}} query to narrow the available data. How an automation uses that source depends on its workflow. The workflow can run the configured query, inspect an underlying index's mapping, take other samples, or calculate full-dataset aggregations. To add or update source data, refer to [Add and manage sources](add-and-manage-sources.md). For an end-to-end example, follow the [{{context-engine}} quickstart](quickstart.md).
+- **{{es}} index, data stream, or alias:** Select an {{es}} data object. {{context-engine}} creates a source query in the form `FROM <name>`.
+- **Connector:** Select a configured connector to an external system, such as Google Drive or GitHub.
+- **Advanced {{esql}}:** Write an {{esql}} query when you need to select data from multiple {{es}} indices or narrow the records available to the automation.
+
+Internally, both an {{es}} selection and an advanced query are stored as {{esql}} sources. How an automation analyzes any source depends on its workflow.
+
+To add or update source data, refer to [Add and manage sources](/explore-analyze/ai-features/context-engine/add-and-manage-sources.md). For an end-to-end example, follow the [{{context-engine}} quickstart](/explore-analyze/ai-features/context-engine/quickstart.md).
 
 ## Automations and workflows
 
