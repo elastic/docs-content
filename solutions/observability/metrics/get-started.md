@@ -43,43 +43,51 @@ To send **custom application metrics** instead of infrastructure metrics, follow
 ::::::{step} Explore and query your data
 :anchor: metrics-get-started-explore
 
-After metrics are flowing, confirm they arrived and run your first query in {{kib}}:
+After metrics are flowing, confirm they arrived and open the first metric in {{kib}}.
 
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+**Discover** shows one metric at a time. Use it to view how that metric changes over time and to break it down by a dimension such as the host name.
+
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select {icon}`code` **{{esql}}** to switch to {{esql}} mode, then run a `TS` query to select your metrics data:
+2. Select {icon}`code` **{{esql}}** to switch to {{esql}} mode, then run:
 
     ```esql
     TS metrics-*
     ```
 
-3. Search the chart grid for a metric your quickstart collects, for example `system.cpu.utilization`, then break it down by a dimension such as the host name, or add its chart to a dashboard.
+    `TS` queries time-series metrics. `metrics-*` matches your metrics data streams, including the streams from the quickstart. Discover opens the result as a chart grid of the available metrics.
 
-For the full workflow, refer to [Explore metrics data with Discover in {{kib}}](/solutions/observability/infra-and-hosts/discover-metrics.md).
+3. Search the chart grid for a metric your quickstart collects, for example `system.cpu.utilization`. Break the metric down by a dimension such as the host name, or select **Copy to dashboard** to save the chart.
+
+For the full workflow, refer to [](/solutions/observability/infra-and-hosts/discover-metrics.md).
 ::::
 
 ::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
+**Metrics Explorer** charts one metric over time. You can compare it with related metrics and break it down by a field.
+
 1. Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Metrics Explorer**.
 2. Search for a metric your quickstart collects, for example `system.cpu.utilization`.
 3. Visualize or aggregate the metric data, and add the chart to a dashboard.
 
-For the Metrics Explorer workflow, refer to [Explore infrastructure metrics over time](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md).
+For the Metrics Explorer workflow, refer to [](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md).
 ::::
 
 :::::
 
-To view infrastructure health by resource, such as hosts or pods, rather than by metric, use the **Infrastructure inventory** and **Hosts** views. For all the ways to query, visualize, and alert on metrics, refer to [Explore metrics](/solutions/observability/metrics/explore.md).
+A dashboard stores that chart so you can return to it or share it. To check the health of a resource, such as a host or a pod, open **Infrastructure inventory**. It groups the resources you monitor, such as hosts, pods, and containers, and shows a metric for each one. Open **Hosts** to compare host metrics side by side.
+
+For other ways to query, visualize, and alert on metrics, refer to [](/solutions/observability/metrics/explore.md).
 ::::::
 
 :::::::
 
 ## Next steps [metrics-get-started-next]
 
-The quickstart gets one source flowing. Before you roll metrics out across your infrastructure:
+A quickstart gets one source flowing. Before you roll metrics out across your infrastructure:
 
-- **Choose a data model.** Decide whether to standardize on the OpenTelemetry schema (recommended) or Elastic Common Schema (ECS). The ingest path you use determines the schema, the schema determines your metric field names, and the field names determine which prebuilt dashboards work and how your queries and alerts are written. Changing it later means rewriting those assets, so settle it early, while you only have one source to migrate. Refer to [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md).
+- **Choose a data model.** Decide whether to standardize on the OpenTelemetry schema (recommended) or Elastic Common Schema (ECS). The ingest path you use determines the schema, the schema determines your metric field names, and the field names determine which prebuilt dashboards work and how your queries and alerts are written. Changing it later means rewriting those assets, so settle it early, while you only have one source to migrate. Refer to [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md) for more information.
 - **Add more sources.** Send metrics using any OTLP-compatible client, Prometheus remote write, or {{agent}} integrations for specific services such as Nginx, PostgreSQL, or Redis. For path-by-path configuration, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
-- **Migrate an existing stack.** If you're moving from Prometheus or Datadog, you can run both systems side by side and switch over gradually. Refer to [Migrate metrics to Elastic](/solutions/observability/metrics/migrate.md).
-- **Manage storage and retention.** Metrics volume grows faster than most teams expect, and cardinality is the usual cause. Before your setup becomes production-critical, set up downsampling and retention so storage costs stay predictable. Refer to [Manage metrics storage](/solutions/observability/metrics/manage-storage.md).
+- **Migrate an existing stack.** If you're moving from Prometheus or Datadog, you can run both systems side by side and switch over gradually. Refer to [Migrate metrics to Elastic](/solutions/observability/metrics/migrate.md) for more information.
+- **Manage storage and retention.** Metrics volume grows faster than most teams expect, and cardinality is the usual cause. Before your setup becomes production-critical, set up downsampling and retention so storage costs stay predictable. Refer to [Manage metrics storage](/solutions/observability/metrics/manage-storage.md) for more information.
