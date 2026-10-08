@@ -38,7 +38,7 @@ The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}} or
 ::::{applies-item} { self:, ece:, eck: }
 Run {{agent}} in OTel mode as a gateway. The Managed OTLP Endpoint isn't available for self-managed {{stack}}, {{ece}}, or {{eck}} deployments. The gateway exposes an OTLP endpoint that your EDOT SDKs and edge collectors send to, and it writes to {{es}} with the `elasticsearch` exporter. For gateway versus edge setup, refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
 
-{applies_to}`stack: ga 9.2+` {{es}} also accepts OTLP/HTTP directly on `/_otlp/v1/metrics`. Use it when an application exports OTLP natively and you don't want to run a Collector. Metrics land in a time series data stream (TSDS) through built-in index templates. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) and [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md).
+{applies_to}`stack: ga 9.2+` {{es}} also accepts OTLP/HTTP on `/_otlp/v1/metrics` from a gateway Collector. Use it when that gateway prefers the OTLP/HTTP exporter over the `elasticsearch` exporter. Don't send applications or pods directly to `/_otlp`. Metrics land in a time series data stream (TSDS) through built-in index templates. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) and [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md).
 ::::
 
 :::::

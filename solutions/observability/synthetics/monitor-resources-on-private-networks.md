@@ -167,9 +167,7 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 If you upgraded from a version that allowed cross-space agent policy selection, any private location that references an agent policy from a different space will show **Policy not found in the current space** in the UI. To resolve this, reassign the private location to an agent policy in the same space, or create a new agent policy in the current space and re-enroll the {{agent}}.
 ::::
 
-::::{important}
-It is not currently possible to use custom CAs for synthetics browser tests in private locations without following a workaround. To learn more about the workaround, refer to the following GitHub issue: [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).
-::::
+Using custom CAs for synthetics browser tests in private locations is not currently possible without a workaround. To learn more, refer to the GitHub issue [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).
 
 ## Monitor integration health [synthetics-private-location-health]
 
@@ -254,7 +252,7 @@ About once a minute, Synthetics checks the health of every agent in the pool and
 * **Recovery and new agents**: After a recovered or newly enrolled agent has been healthy for 3 minutes, Synthetics moves only as many monitors to it as needed to balance the pool.
 * **No healthy agents**: If no agent in the pool is healthy, monitors keep their assignments and don't run until an agent recovers.
 
-To stop these adjustments for every scalable {{private-location}}, turn off **Rebalance private location shards** in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced).
+To stop these adjustments for every scalable {{private-location}}, turn off **Rebalance private location shards** in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
 
 ::::{warning}
 Turning off **Rebalance private location shards** removes the agent assignment from every monitor in every scalable {{private-location}}. Each monitor then runs on every agent enrolled on its location's agent policy, which duplicates test runs. When you turn the switch back on, Synthetics reassigns the monitors right away.

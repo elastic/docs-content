@@ -20,11 +20,13 @@ Whether you operate {{es}} on your own infrastructure or on {{k8s}} with {{eck}}
 - Review [{{es}} data tiers](/manage-data/lifecycle/data-tiers.md) so you match tiers to your workload.
 - Understand how [node roles](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md) map to hardware and allocation for each tier.
 
-## Assign data tier roles on self-managed hosts [configure-data-tier-self-managed]
-```{applies_to}
-deployment:
-  self: ga
-```
+## Assign data tier roles [configure-data-tier-self-managed]
+
+The configuration steps for assigning data tier roles depend on your deployment type.
+
+:::::{applies-switch}
+
+::::{applies-item} self:
 
 1. For each node, decide which data tier or tiers it should participate in (for example `data_hot`, `data_warm`, `data_cold`, `data_frozen`, or `data_content`).
 2. Set `node.roles` in that node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) to include the corresponding `data_*` roles (and any other roles the node should have, such as `ingest` or `master`).
@@ -36,15 +38,13 @@ For example, the highest-performance nodes in a cluster might be assigned to bot
 node.roles: ["data_hot", "data_content"]
 ```
 
-::::{note}
+:::{note}
 We recommend you use [dedicated nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-frozen-node) in the frozen tier.
+:::
+
 ::::
 
-## Assign data tier roles in {{eck}}
-```{applies_to}
-deployment:
-  eck: ga
-```
+::::{applies-item} eck:
 
 In {{eck}}, a node set is a group of {{es}} pods that share one configuration. In the {{es}} manifest, set `node.roles` in that node set's `config` field (`spec.nodeSets[].config`). Use the same settings you would put in `elasticsearch.yml` on a self-managed host, and include a `data_*` role for each tier those pods should join.
 
@@ -61,10 +61,13 @@ spec:
 
 Some settings are [managed by {{eck}}](/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck.md); avoid overriding those. For the full mapping between manifest structure and {{es}} configuration, see [Node configuration](/deploy-manage/deploy/cloud-on-k8s/node-configuration.md).
 
-
 :::{note}
- On {{eck}}, node set and scaling changes try to relocate shards from nodes that are removed, subject to allocation rules, capacity, and [disk watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) on the destination nodes. For more information, refer to the [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) documentation.
+On {{eck}}, node set and scaling changes try to relocate shards from nodes that are removed, subject to allocation rules, capacity, and [disk watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) on the destination nodes. For more information, refer to the [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) documentation.
 :::
+
+::::
+
+:::::
 
 ## Remove a data tier [remove-data-tier-self-managed-eck]
 
