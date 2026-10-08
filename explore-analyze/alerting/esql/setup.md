@@ -24,43 +24,40 @@ You'll need the following to create rules and send notifications.
 
 ## Turn on the system [alerting-setup-turn-on]
 
+{{alerting-v2-system-cap}} is controlled by the [`alerting:v2:enabled`](kibana://reference/advanced-settings.md#alerting-v2-enabled) advanced setting in {{kib}}. This is a global setting, so turning it on makes {{alerting-v2-system}} available in every space, even though the rules and action policies you create in it are space-scoped.
+
 :::::{applies-switch}
 ::::{applies-item} { "serverless": "ga", "stack": "experimental 9.6+" }
-{{alerting-v2-system-cap}} is on by default, so there's nothing to turn on.
+The setting is on by default. If someone turned it off, it stays off, including after an upgrade from 9.5. To turn it back on:
+
+1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select the **Global Settings** tab, then turn on **Alerting V2**.
+3. To confirm {{alerting-v2-system}} is accessible in your space, go to **Alerting** > **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 ::::
 
 ::::{applies-item} stack: experimental =9.5
-{{alerting-v2-system-cap}} is controlled by the [`alerting:v2:enabled`](kibana://reference/advanced-settings.md#alerting-v2-enabled) advanced setting in {{kib}}. This is a global setting, so turning it on makes {{alerting-v2-system}} available in every space, even though the rules and action policies you create in it are space-scoped.
+The setting is off by default. To turn it on:
 
 1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **Global Settings** tab, then turn on **Alerting V2**.
 3. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md) to confirm {{alerting-v2-system}} is accessible in your space.
-
-If the menu item doesn't appear immediately, refresh the page and search again. It might take a moment for the UI to reflect the updated setting.
 ::::
 :::::
 
+If the menu item doesn't appear immediately, refresh the page and search again. It might take a moment for the UI to reflect the updated setting.
+
 ## Turn off the system [alerting-setup-turn-off]
 
-:::::{applies-switch}
-::::{applies-item} serverless: ga
-Elastic manages {{alerting-v2-system}} in {{serverless-short}} projects. To turn it off, [contact Elastic support](/troubleshoot/index.md#contact-us).
-::::
-
-::::{applies-item} stack: experimental 9.6+
-To turn off {{alerting-v2-system}}, set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}. This removes the {{alerting-v2-system}} UI and APIs, and stops rules and action policies from running.
-::::
-
-::::{applies-item} stack: experimental =9.5
 To turn off {{alerting-v2-system}}, go to the **Advanced Settings** page, select the **Global Settings** tab, and turn off **Alerting V2**.
 
 Turning off the setting does not delete any data. {{kib}} retains your rules and action policies as saved objects, and keeps existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the {{alerting-v2-system}} UI.
 
 :::{important}
-Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running. To stop both, set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
+Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running. To stop both:
+
+- {applies_to}`stack: experimental 9.5+` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
+- {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us).
 :::
-::::
-:::::
 
 ## Try experimental features in a space [alerting-setup-experimental-features]
 
