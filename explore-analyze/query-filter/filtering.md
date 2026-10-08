@@ -113,7 +113,7 @@ For example, if it's October 8, 2026 at 13:09, a range that reaches back one yea
 
 You can enter each of these values directly in the time filter, and a single value runs from that point to now.
 
-#### Round a range yourself
+#### Round a time range manually
 
 A relative value such as `-1y` is an offset from now. Adding `/` and a rounding unit to an offset moves a start back to the beginning of that unit and an end forward to the end of it. The time filter accepts these rounding units:
 
@@ -139,7 +139,7 @@ With `to` between a start and an end, you round both edges. If it's October 8, 2
 | `-7d/d to -1d/d` | The last 7 full days, from October 1 at 00:00 through October 7 at 23:59 |
 | `-1y/M to -1y/M` | The whole month one year ago, October 2025 in this example |
 
-#### Round every relative range automatically
+#### Round every relative time range automatically
 
 An option exists to round relative time ranges automatically, so you don't have to add a rounding unit each time. The option is off by default. To turn it on, select {icon}`gear` **Settings** in the time filter, then turn on **Round relative time ranges**.
 
