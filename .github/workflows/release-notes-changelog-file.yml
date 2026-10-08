@@ -1,0 +1,17 @@
+name: Release notes changelog file
+on:
+  workflow_run:
+    workflows: [Release notes]
+    types: [completed]
+permissions: {}
+jobs:
+  changelog-file:
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+      packages: read
+      actions: write
+    uses: elastic/docs-actions/.github/workflows/release-notes-changelog-file.yml@v1
+    with:
+      config: changelog.yml

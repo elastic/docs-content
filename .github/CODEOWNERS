@@ -10,9 +10,13 @@
 # The docs
 /cloud-account/                             @elastic/admin-docs
 /deploy-manage/                             @elastic/admin-docs
+/deploy-manage/deploy/cloud-enterprise/ece-install-offline-images.md @elastic/admin-docs @elastic/control-plane-hosted-applications
+/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md @elastic/admin-docs @elastic/control-plane-hosted-applications
 
 /explore-analyze/                           @elastic/ski-docs
 /explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
+/explore-analyze/ai-features/context-engine.md @elastic/developer-docs
+/explore-analyze/ai-features/context-engine/ @elastic/developer-docs
 /explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/ski-docs
 /explore-analyze/machine-learning/          @elastic/developer-docs @elastic/ski-docs
 /explore-analyze/query-filter/              @elastic/developer-docs @elastic/ski-docs
