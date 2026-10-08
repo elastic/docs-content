@@ -10,10 +10,7 @@ description: "Write ES|QL threshold queries for rules. Covers single-series and 
 
 # Threshold queries [esql-threshold-queries]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-A threshold query aggregates your data first, then applies an alert condition to the result. Use this pattern when a single matching event isn't enough to warrant an alert. You want to know whether a metric (count, rate, average) has crossed a limit over a time window.
+A threshold query in a {{alerting-v2-system}} rule aggregates your data first, then applies an alert condition to the result. Use this pattern when a single matching event isn't enough to warrant an alert. You want to know whether a metric (count, rate, average) has crossed a limit over a time window.
 
 This page covers two variants: a single-series threshold that produces one result for all your data, and a grouped threshold that tracks each subject (host, service, user) independently.
 
@@ -48,7 +45,7 @@ FROM metrics-*
 | KEEP host.name, avg_cpu
 ```
 
-Without the `BY host.name` clause, the query would produce a single average across all hosts combined. A cluster-wide spike might push the average above the threshold even if no single host is the problem. Grouping by host gives each host its own alert episode with its own lifecycle. If host A recovers but host B stays critical, those are tracked separately.
+Without the `BY host.name` clause, the query would produce a single average across all hosts combined. A cluster-wide spike might push the average above the threshold even if no single host is the problem. Grouping by host gives each host its own alert with its own lifecycle. If host A recovers but host B stays critical, those are tracked separately.
 
 The `BY` fields you use here must match the grouping configuration in the rule. Refer to [Rule grouping](configure-rule-grouping.md) for how to align them.
 

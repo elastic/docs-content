@@ -10,10 +10,7 @@ description: "How Agent Builder creates rules and action policies using the rule
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the rule management skill resolves the data source and proposes a fully configured rule.
+Use {{agent-builder}} to create and configure {{alerting-v2-system}} rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the rule management skill resolves the data source and proposes a fully configured rule.
 
 ## Requirements [create-ai-agent-requirements]
 
@@ -69,12 +66,12 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating workflows and action policies.
 
 :::{note}
-Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, the skill explains the limitation. If the rule is still a draft in the conversation, the skill changes it so matches open alert episodes before you save it. If the rule is already saved, that setting can't change, so the skill offers to create a new rule with the same query and schedule that opens alert episodes, then set up notifications on that rule.
+Action policies invoke workflows for alerts only. If you ask the agent to set up notifications for a rule that doesn't open alerts, the skill explains the limitation. If the rule is still a draft in the conversation, the skill changes it so matches open alerts before you save it. If the rule is already saved, that setting can't change, so the skill offers to create a new rule with the same query and schedule that opens alerts, then set up notifications on that rule.
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
-- **Action Policies** - Action policies are the gating mechanism. {{kib}} evaluates them against the rule's alert episodes and invokes the workflow for the episodes they apply to. When you create an action policy with a rule, the policy applies to that rule's alert episodes.
-    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` If the rule already has a [tag](configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, the agent selects that tag. Otherwise, it adds a `notify-<rule-name>` tag in lowercase with hyphens (for example, `notify-high-cpu-prod`). The policy also applies to alert episodes from any other rule with that tag.
+- **Action Policies** - Action policies are the gating mechanism. {{kib}} evaluates them against the rule's alerts and invokes the workflow for the alerts they apply to. When you create an action policy with a rule, the policy applies to that rule's alerts.
+    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` If the rule already has a [tag](configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, the agent selects that tag. Otherwise, it adds a `notify-<rule-name>` tag in lowercase with hyphens (for example, `notify-high-cpu-prod`). The policy also applies to alerts from any other rule with that tag.
     * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` The action policy references the rule by ID.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.

@@ -1,19 +1,16 @@
 ---
-navigation_title: Alert delay (alert episodes only)
+navigation_title: Alert delay
 applies_to:
   stack: experimental 9.5+
   serverless: ga
 products:
   - id: kibana
-description: "Configure alert delay for rules that group matches into an alert episode, to reduce noise from brief spikes before the alert episode opens."
+description: "Configure alert delay for rules that group matches into an alert, to reduce noise from brief spikes before the alert opens."
 ---
 
 # Alert delay [alert-delay]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-Alert delay is an optional setting for rules that group matches into an alert episode. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, alert delay corresponds to the following fields:
+Alert delay is an optional setting for {{alerting-v2-system}} rules that group matches into an alert. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change. In YAML, alert delay corresponds to the following fields:
 
 * {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` `state_transition.pending.count`, `state_transition.pending.timeframe`, and `state_transition.pending.operator`
 * {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` `state_transition.pending_*` fields
@@ -28,15 +25,15 @@ Configure alert delay when:
 Leave alert delay set to **Immediate** when:
 
 * Any single breach warrants immediate attention and you cannot tolerate the added latency of waiting for consecutive evaluations.
-* The rule records matches without grouping them into an alert episode.
+* The rule records matches without grouping them into an alert.
 
 ## Alert delay modes
 
 | Mode | Behavior | When to use |
 | --- | --- | --- |
-| Immediate | Opens an alert episode as soon as the threshold is breached on the first evaluation. | Use when any single breach warrants attention and latency matters. |
-| Breaches | Opens an alert episode after the threshold is breached a set number of times in a row. | Use when brief spikes are normal and you only want to act after the condition keeps firing—a single breach on its own isn't enough. |
-| Duration | Opens an alert episode after the threshold has been continuously breached for a set time. | Use when duration of the problem matters more than how many evaluations caught it, for example sustained high CPU rather than a momentary spike. |
+| Immediate | Opens an alert as soon as the threshold is breached on the first evaluation. | Use when any single breach warrants attention and latency matters. |
+| Breaches | Opens an alert after the threshold is breached a set number of times in a row. | Use when brief spikes are normal and you only want to act after the condition keeps firing—a single breach on its own isn't enough. |
+| Duration | Opens an alert after the threshold has been continuously breached for a set time. | Use when duration of the problem matters more than how many evaluations caught it, for example sustained high CPU rather than a momentary spike. |
 
 ## Alert delay fields
 
@@ -44,14 +41,14 @@ Use the following fields to configure the Breaches and Duration modes. Timeframe
 
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
-| `pending_count` | integer | 0–1000 | {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` Number of consecutive breaching evaluations the alert episode spends in the pending phase. It opens on the next breach, so `3` opens it on the 4th consecutive breach. <br><br> {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` Number of consecutive breach evaluations required before the alert episode opens. <br><br> Appears as **Consecutive breaches** in Breaches mode. Set to `0` to skip the pending phase and transition directly to active on the first breach. {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` If you also set `pending_timeframe` with `pending_operator` set to `and`, a count of `0` still waits for the timeframe. |
-| `pending_timeframe` | duration | Any duration string | How long the condition must remain breached before the alert episode opens. Appears as **Active for** in Duration mode. |
+| `pending_count` | integer | 0–1000 | {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` Number of consecutive breaching evaluations the alert spends in the pending phase. It opens on the next breach, so `3` opens it on the 4th consecutive breach. <br><br> {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` Number of consecutive breach evaluations required before the alert opens. <br><br> Appears as **Consecutive breaches** in Breaches mode. Set to `0` to skip the pending phase and transition directly to active on the first breach. {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` If you also set `pending_timeframe` with `pending_operator` set to `and`, a count of `0` still waits for the timeframe. |
+| `pending_timeframe` | duration | Any duration string | How long the condition must remain breached before the alert opens. Appears as **Active for** in Duration mode. |
 | `pending_operator` | string | `and` or `or` {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` <br><br> `AND` or `OR` {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` | Whether the rule requires both `pending_count` and `pending_timeframe`, or only one, when you set both. |
 
-To combine Breaches and Duration, set both `pending_count` and `pending_timeframe`, then use `pending_operator` to decide whether the alert episode opens after both conditions hold or after either one does.
+To combine Breaches and Duration, set both `pending_count` and `pending_timeframe`, then use `pending_operator` to decide whether the alert opens after both conditions hold or after either one does.
 
 :::{note}
-Alert delay only controls the delay before an alert episode opens. For the matching delay before an alert episode closes, refer to [](configure-rule-recovery.md#recovery-delay).
+Alert delay only controls the delay before an alert opens. For the matching delay before an alert closes, refer to [](configure-rule-recovery.md#recovery-delay).
 :::
 
 ### Field names in the YAML rule schema
@@ -66,7 +63,7 @@ The `pending_count`, `pending_timeframe`, and `pending_operator` fields map to t
 
 ### Ignore brief CPU spikes
 
-Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so a brief spike doesn't open an alert episode. The alert episode opens on the 4th consecutive breach {applies_to}`{ serverless: ga, stack: experimental 9.6+ }`, or the 3rd {applies_to}`{ stack: experimental =9.5, serverless: unavailable }`, so the condition has to hold for several minutes in a row. This filters out noise without losing real signals.
+Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so a brief spike doesn't open an alert. The alert opens on the 4th consecutive breach {applies_to}`{ serverless: ga, stack: experimental 9.6+ }`, or the 3rd {applies_to}`{ stack: experimental =9.5, serverless: unavailable }`, so the condition has to hold for several minutes in a row. This filters out noise without losing real signals.
 
 ### Require sustained breach before escalating
 
@@ -80,4 +77,4 @@ Set `pending_operator` to `AND` instead.
 ## Related pages
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
-- [Recovery condition](configure-rule-recovery.md#recovery-delay): The equivalent delay before an alert episode closes.
+- [Recovery condition](configure-rule-recovery.md#recovery-delay): The equivalent delay before an alert closes.

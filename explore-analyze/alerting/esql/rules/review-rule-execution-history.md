@@ -10,10 +10,7 @@ description: "Use the Execution History page to monitor rule execution outcomes 
 
 # Review rule execution history [review-rule-execution-history]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-Rule execution history gives you a cross-rule, filterable log of every rule run in the space, so you can confirm rules are running on schedule or spot patterns that aren't visible when looking at individual rules, such as a cluster of failures at the same timestamp that points to a shared dependency issue.
+Rule execution history gives you a cross-rule, filterable log of every {{alerting-v2-system}} rule run in the space, so you can confirm rules are running on schedule or spot patterns that aren't visible when looking at individual rules, such as a cluster of failures at the same timestamp that points to a shared dependency issue.
 
 Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Rules** tab, which lists the following for each rule evaluation:
 
@@ -29,6 +26,6 @@ Use the outcome filter to view only successful or failed executions. Filtering i
 
 ## Related pages
 
-- [Review action policy execution history](../action-policies/review-action-policy-execution-history.md): Monitor dispatcher outcomes for the notifications a rule's alert episodes trigger.
+- [Review action policy execution history](../action-policies/review-action-policy-execution-history.md): Monitor dispatcher outcomes for the notifications a rule's alerts trigger.
 - [View and manage rules](view-manage-rules.md): Find the rule behind a specific execution and inspect or edit it.
 - [Rule events](rule-event-field-reference.md): Understand the underlying `.rule-events` documents {{kib}} writes on each execution.

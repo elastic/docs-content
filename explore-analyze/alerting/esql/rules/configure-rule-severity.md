@@ -5,15 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "Assign severity levels to alert episodes using a severity column in ES|QL query output."
+description: "Assign severity levels to alerts using a severity column in ES|QL query output."
 ---
 
 # Severity [rule-severity]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-Severity is an optional rule setting that assigns an urgency level to each alert episode, so you can triage and route alert episodes differently depending on how serious they are. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
+Severity is an optional {{alerting-v2-system}} rule setting that assigns an urgency level to each alert, so you can triage and route alerts differently depending on how serious they are. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
 
 | Value | Description | Urgency |
 | --- | --- | --- |
@@ -27,8 +24,8 @@ Severity is an optional rule setting that assigns an urgency level to each alert
 
 Configure severity when:
 
-* You want to route different urgency levels to different notification channels, for example, send `critical` alert episodes to an on-call channel and `low` alert episodes to a review queue.
-* You want to filter alert episodes by urgency on the **Alerts** page to help triage during incidents.
+* You want to route different urgency levels to different notification channels, for example, send `critical` alerts to an on-call channel and `low` alerts to a review queue.
+* You want to filter alerts by urgency on the **Alerts** page to help triage during incidents.
 * The rule's detection logic can meaningfully distinguish between urgency levels through a computed metric, such as burn rate, error count, or latency percentile.
 
 Skip severity when:
@@ -41,11 +38,11 @@ Skip severity when:
 Keep the following in mind when configuring severity.
 
 - **Matching is case-insensitive** - `critical`, `Critical`, and `CRITICAL` are all treated the same. You can use any casing in your `EVAL` expression.
-- **Unrecognized values are silently ignored** - If the `severity` column contains a value that doesn't match one of the five levels, the alert episode is still created but `severity` is not set. If severity isn't appearing as expected, check the exact string your query is producing.
-- **Severity only applies to breached events** - `recovered` and `no_data` events don't carry a severity value. Action policy matchers that filter by severity only match open alert episodes.
+- **Unrecognized values are silently ignored** - If the `severity` column contains a value that doesn't match one of the five levels, the alert is still created but `severity` is not set. If severity isn't appearing as expected, check the exact string your query is producing.
+- **Severity only applies to breached events** - `recovered` and `no_data` events don't carry a severity value. Action policy matchers that filter by severity only match open alerts.
 - **Events with `type: signal` can also store severity** - They include `severity` when the query emits a recognized value. Action policy matchers that filter by severity don't apply to these events.
-- **Severity can change during an alert episode** - An alert episode can escalate or de-escalate without reopening. Action policy matching picks up the new value on the next dispatcher cycle. Refer to [Manage severity escalation notifications](../action-policies/severity-escalation.md) for routing examples.
-- **The `severity` field is available in action policy matchers** - Once set, the value is stored on the alert episode and can be used to route alert episodes by urgency — for example, invoking an on-call workflow for `critical` alert episodes while `low` alert episodes invoke a review-queue workflow. Refer to [Field reference](../alerts/field-reference.md) for the full field reference.
+- **Severity can change during an alert** - An alert can escalate or de-escalate without reopening. Action policy matching picks up the new value on the next dispatcher cycle. Refer to [Manage severity escalation notifications](../action-policies/severity-escalation.md) for routing examples.
+- **The `severity` field is available in action policy matchers** - Once set, the value is stored on the alert and can be used to route alerts by urgency — for example, invoking an on-call workflow for `critical` alerts while `low` alerts invoke a review-queue workflow. Refer to [Field reference](../alerts/field-reference.md) for the full field reference.
 
 ## Examples
 
@@ -53,7 +50,7 @@ Keep the following in mind when configuring severity.
 
 Create a rule that alerts when a service logs more than 100 5xx errors in the lookback window. Every breach of this rule is equally urgent, so assign a fixed severity rather than computing it dynamically. The `EVAL` command adds a constant `severity` column to every row the query returns.
 
-Every breach from this rule produces a `critical` alert episode.
+Every breach from this rule produces a `critical` alert.
 
 ```esql
 FROM logs-*

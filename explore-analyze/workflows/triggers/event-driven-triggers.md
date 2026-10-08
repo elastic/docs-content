@@ -20,7 +20,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 - **Entity store triggers** — Fire when an entity's asset criticality or risk score changes in the entity store. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
-- **Alert episode lifecycle triggers** — Fire on specific alert episode events in {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
+- **Alert lifecycle triggers** — Fire on specific alert events in {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
 - **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
 
 
@@ -450,7 +450,7 @@ triggers:
       condition: 'event.score >= 70'
 ```
 
-## Alert episode lifecycle triggers in {{alerting-v2-system}} [alert-episode-lifecycle-triggers-event-driven]
+## Alert lifecycle triggers in {{alerting-v2-system}} [alert-episode-lifecycle-triggers-event-driven]
 
 ```{applies_to}
 stack: experimental 9.5+
@@ -461,21 +461,23 @@ serverless: ga
 These triggers are available only when {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
 :::
 
-Alert episode lifecycle triggers fire on specific alert episode events in {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per event. There is no polling interval or frequency gate.
+Alert lifecycle triggers fire on specific alert events in {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per event. There is no polling interval or frequency gate.
 
 ### Available triggers [alert-episode-lifecycle-triggers-available]
 
-| Trigger ID | When it fires |
-|---|---|
-| `alerting.episodeActivated` | An alert episode transitions to the active state. |
-| `alerting.episodeDeactivated` | An alert episode is manually deactivated or recovers. |
-| `alerting.episodeSnoozed` | An alert episode is snoozed. |
-| `alerting.episodeUnsnoozed` | An alert episode is unsnoozed. |
-| `alerting.episodeAcked` | An alert episode is acknowledged. |
-| `alerting.episodeUnacked` | An alert episode acknowledgment is removed. |
-| `alerting.episodeAssigned` | An alert episode is assigned to a user. |
-| `alerting.episodeUnassigned` | An alert episode assignment is removed. |
-| `alerting.episodeTagged` | A tag is applied to an alert episode. |
+The trigger IDs changed after {{stack}} 9.5. If you upgrade, update workflows that use the earlier IDs, because they stop firing until you switch them to the matching current ID.
+
+| Trigger ID {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Trigger ID {applies_to}`stack: experimental =9.5` | When it fires |
+|---|---|---|
+| `alerting.actions.alertActivated` | `alerting.episodeActivated` | An alert transitions to the active state. |
+| `alerting.actions.alertDeactivated` | `alerting.episodeDeactivated` | An alert is manually deactivated or recovers. |
+| `alerting.actions.alertSnoozed` | `alerting.episodeSnoozed` | An alert is snoozed. |
+| `alerting.actions.alertUnsnoozed` | `alerting.episodeUnsnoozed` | An alert is unsnoozed. |
+| `alerting.actions.alertAcked` | `alerting.episodeAcked` | An alert is acknowledged. |
+| `alerting.actions.alertUnacked` | `alerting.episodeUnacked` | An alert acknowledgment is removed. |
+| `alerting.actions.alertAssigned` | `alerting.episodeAssigned` | An alert is assigned to a user. |
+| `alerting.actions.alertUnassigned` | `alerting.episodeUnassigned` | An alert assignment is removed. |
+| `alerting.actions.alertTagged` | `alerting.episodeTagged` | A tag is applied to an alert. |
 
 ### Event payload [alert-episode-lifecycle-triggers-event]
 
@@ -483,8 +485,9 @@ All lifecycle triggers include these common fields in the event payload.
 
 | `event.*` field | Contains |
 |---|---|
-| `event.episodeId` | Unique identifier of the alert episode. |
-| `event.ruleId` | ID of the rule that produced the alert episode. |
+| `event.alertId` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Unique identifier of the alert. |
+| `event.episodeId` {applies_to}`stack: experimental =9.5` | Unique identifier of the alert. Replaced by `event.alertId` in later versions. |
+| `event.ruleId` | ID of the rule that produced the alert. |
 | `event.spaceId` | ID of the {{kib}} space where the event occurred. |
 
 Reference these fields with Liquid templating in workflow steps:
@@ -494,10 +497,10 @@ Reference these fields with Liquid templating in workflow steps:
   type: console
   with:
     message: |
-      Alert episode {{ event.episodeId }} from rule {{ event.ruleId }} changed state.
+      Alert {{ event.alertId }} from rule {{ event.ruleId }} changed state.
 ```
 
-Use these fields to write workflow conditions that scope the automation to specific rules or alert episodes. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alert episodes from a specific rule.
+Use these fields to write workflow conditions that scope the automation to specific rules or alerts. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alerts from a specific rule.
 
 ## {{alerting-v2-system-cap}} rule lifecycle triggers [alerting-rule-lifecycle-triggers-event-driven]
 
@@ -512,7 +515,7 @@ These triggers are available only when {{alerting-v2-system}} is enabled. If it 
 
 {{alerting-v2-system-cap}} rule lifecycle triggers fire when rules are created, updated, deleted, enabled, or disabled in {{alerting-v2-system}}. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
 
-Rule lifecycle triggers are part of {{alerting-v2-system}} and fire independently of alert episodes.
+Rule lifecycle triggers are part of {{alerting-v2-system}} and fire independently of alerts.
 
 ### Available triggers [alerting-rule-lifecycle-triggers-available]
 
@@ -656,4 +659,4 @@ To reuse the data from an earlier run instead of a fresh event, select **Histori
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): See what triggered each run and inspect the event payload.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
-- [Connect workflows to {{alerting-v2-system}}](../../alerting/esql/workflows-alerting.md): Full reference for alert episode lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.
+- [Connect workflows to {{alerting-v2-system}}](../../alerting/esql/workflows-alerting.md): Full reference for alert lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.

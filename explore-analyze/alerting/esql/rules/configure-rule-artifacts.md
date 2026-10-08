@@ -10,18 +10,15 @@ description: "Add tags, runbooks, and related dashboards to rules, for filtering
 
 # Tags, runbooks, and dashboards [rule-artifacts]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-Tags, runbooks, and related dashboards are optional artifacts you attach to a rule. Decide when each one is worth adding, then attach tags and runbooks in the rule form or link dashboards from the rule details page.
+Tags, runbooks, and related dashboards are optional artifacts you attach to a {{alerting-v2-system}} rule. Decide when each one is worth adding, then attach tags and runbooks in the rule form or link dashboards from the rule details page.
 
 ## When to add artifacts [artifacts-when-to-use]
 
 Tags
-:   Free-form labels for filtering and organization. Add them to filter alert episodes on the **Alerts** page, to scope action policies by ownership or category, or to mark which team owns a rule.
+:   Free-form labels for filtering and organization. Add them to filter alerts on the **Alerts** page, to scope action policies by ownership or category, or to mark which team owns a rule.
 
     * {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` An action policy's [**Rule tags**](../action-policies/create-configure-action-policy.md#filter-by-rule-tags) control covers every rule that carries at least one of the tags you select.
-    * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` Alert episodes inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
+    * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` Alerts inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
 
 Runbooks
 :   An investigation guide stored with the rule. Add one when responders who don't know the service need triage steps next to the alert, or when the response should stay consistent.
@@ -29,7 +26,7 @@ Runbooks
 Dashboards
 :   {{kib}} dashboards linked from the rule details page. Link one when responders should open the same investigation view each time the rule fires. Prefer a dashboard artifact over a URL in the runbook. You can link dashboards on any rule, including rules that only record matches.
 
-Skip tags and runbooks when the rule doesn't open [alert episodes](configure-rule-mode.md), or when it isn't in production yet. Skip dashboards when no dashboard covers the condition, or when dashboards aren't available.
+Skip tags and runbooks when the rule doesn't open [alerts](configure-rule-mode.md), or when it isn't in production yet. Skip dashboards when no dashboard covers the condition, or when dashboards aren't available.
 
 ## Add tags and runbooks to a rule [add-tags-runbooks]
 
@@ -70,7 +67,7 @@ Tags let you filter alerts by team, environment, or severity tier. For a checkou
 - `env:production`
 - `sev:p1`
 
-On-call engineers can then narrow the **Alerts** page to rules their team owns without scanning every active alert episode.
+On-call engineers can then narrow the **Alerts** page to rules their team owns without scanning every active alert.
 
 ### Add a runbook with triage steps
 
@@ -88,11 +85,11 @@ Triage steps:
 
 ### Link the dashboard a responder needs first
 
-For the same checkout rule, link the dashboard that breaks down checkout errors by region and endpoint. A responder who opens the rule from an alert episode can go straight to it from **Artifacts**, instead of searching **Dashboards** for the right one mid-incident.
+For the same checkout rule, link the dashboard that breaks down checkout errors by region and endpoint. A responder who opens the rule from an alert can go straight to it from **Artifacts**, instead of searching **Dashboards** for the right one mid-incident.
 
 ## Related pages
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
 - [View and manage rules](view-manage-rules.md): Filter the rules list by tag, and review a rule's runbook and linked dashboards on the rule details page.
-- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by tag to narrow alert episodes to your team's rules.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by tag to narrow alerts to your team's rules.
 - [YAML rule schema reference](yaml-rule-schema-reference.md): Artifact field names, types, and limits.
