@@ -94,7 +94,7 @@ Operate an automation from the Workflows UI:
 After a successful run, return to the AI index's **Knowledge Indicators** tab and confirm that the expected KIs were created or updated.
 
 :::{tip}
-To make the generated KIs available to an {{agent-builder}} agent, open **Manage components → Agents**, create or edit an agent, and add the AI index in its settings. For the complete setup and testing flow, refer to [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
+To steer an {{agent-builder}} agent toward the generated KIs, open **Manage components → Agents**, create or edit an agent, and add the AI index in its settings. For the complete setup and testing flow, refer to [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
 :::
 
 ## Detach or delete an automation
