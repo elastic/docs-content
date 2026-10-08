@@ -177,7 +177,7 @@ Set `no_data` on every rule with `kind: alert`. Omit `no_data` when `kind` is `s
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `no_data.strategy` | string | `ignore`, `keep_last`, `resolve`, or `alert` | What the rule does when a group has no data. <br><br> - `ignore`: Does not check whether a group still has data. Missing groups do not produce `no_data` events. The rule form calls this **Do nothing**. <br> - `keep_last`: Holds the alert episode's current status when the rule finds no data. The rule form calls this **Keep last known status**. <br> - `resolve`: Closes the alert episode the first time the rule finds no data for that group. The rule form calls this **Recover immediately**. <br> - `alert`: Marks an existing alert episode active when the rule finds no data. It does not open an alert episode for a group that has not breached. Create and update requests reject `alert`. |
+| `no_data.strategy` | string | `ignore`, `keep_last`, `resolve`, or `alert` | What the rule does when a group has no data. <br><br> - `ignore`: Does not check whether a group still has data. Missing groups do not produce `no_data` events. The rule form calls this **Do nothing**. <br> - `keep_last`: Holds the alert episode's current status when the rule finds no data. The rule form calls this **Keep last known status**. <br> - `resolve`: Closes the alert episode the first time the rule finds no data for that group. The alert episode skips the recovering phase, so `state_transition.recovering` doesn't apply. The rule form calls this **Recover immediately**. <br> - `alert`: Marks an existing alert episode active when the rule finds no data. It does not open an alert episode for a group that has not breached. Create and update requests reject `alert`. |
 | `no_data.query` | ES\|QL string | A full query, including `FROM` | Optional presence query. Allowed when `no_data.strategy` is `keep_last`, `resolve`, or `alert`. If you omit it, the rule uses `query.base` as the presence query, and the rule must set `query.breach`. Do not set `no_data.query` when the strategy is `ignore`. |
 
 :::{note}
@@ -192,7 +192,7 @@ Use `no_data_strategy` to control what the rule does when an evaluation returns 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `no_data_strategy` | string | `emit`, `last_known_status`, `recover`, or `none` | Optional. What happens when the rule evaluates and returns no results. `emit` records a no-data event. `last_known_status` holds the last known status. `recover` forces recovery. `none` disables no-data detection. |
+| `no_data_strategy` | string | `emit`, `last_known_status`, `recover`, or `none` | Optional. What happens when the rule evaluates and returns no results. `emit` records a no-data event. `last_known_status` holds the last known status. `recover` recovers the alert episode through the recovering phase, so the `state_transition.recovering_*` fields apply. The rule form calls this **Recover**. `none` disables no-data detection. |
 
 :::{note}
 No-data detection is only supported with `query.format: standalone`. Setting `no_data_strategy` to any active value on a `composed` rule has no effect because `query.no_data.query` can only be defined on a standalone query. Rules with `kind: signal` must omit `no_data_strategy` or set it to `none`.

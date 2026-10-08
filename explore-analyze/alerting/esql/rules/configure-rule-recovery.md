@@ -53,6 +53,8 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 | Recoveries | Closes the alert episode after the rule detects recovery a set number of times in a row. |
 | Duration | Closes the alert episode after recovery has held continuously for a set time. |
 
+{applies_to}`{ serverless: ga, stack: experimental 9.6+ }` Recovery delay applies only when the recovery strategy recovers the alert episode. An alert episode that closes through [no-data handling](configure-no-data-handling.md) with **Recover immediately** skips the recovering phase, so the delay doesn't apply to it.
+
 ## When to configure recovery delay [recovery-delay-when-to-use]
 
 Keep **Immediate** when a single non-breaching evaluation gives you enough confidence that the problem is over.

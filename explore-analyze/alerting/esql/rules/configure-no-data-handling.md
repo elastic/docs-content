@@ -57,7 +57,7 @@ Select one of the following options. If you're editing YAML directly, use the va
 | Option | `no_data.strategy` value {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` | `no_data_strategy` value {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` | Description |
 | --- | --- | --- | --- |
 | **Keep last known status** | `keep_last` | `last_known_status` | Hold the alert episode's current status when the rule finds no data for the group. An active alert episode stays active, and a recovered one stays recovered. |
-| **Recover immediately** | `resolve` | `recover` | Close the alert episode the first time the rule finds no data for the group. |
+| **Recover immediately** {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` <br><br> **Recover** {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` | `resolve` | `recover` | {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` Close the alert episode the first time the rule finds no data for the group. The alert episode skips the recovering phase, so [recovery delay](configure-rule-recovery.md#recovery-delay) doesn't apply. <br><br> {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` Recover the alert episode when the rule finds no data for the group. The alert episode goes through the recovering phase, so [recovery delay](configure-rule-recovery.md#recovery-delay) applies. |
 | **Do nothing** | `ignore` | `none` | Skip the no-data check. The rule's recovery strategy decides what happens to a group that stops appearing, even if its data source stopped reporting. <br><br> Use this option when your data source reports on every evaluation, so a gap in data means a genuine recovery. It's also a safe choice while you're still tuning the rule and don't yet know how it behaves when data is absent. |
 
 :::{note}
@@ -80,7 +80,7 @@ Create a rule that monitors infrastructure CPU. Set the no-data strategy to **Ke
 
 ### Close the alert episode when a queue empties out
 
-Create a rule that monitors how many jobs are waiting in a queue and opens an alert episode when the backlog gets too large. Set the no-data strategy to **Recover immediately**. When the queue is empty and the query returns nothing, the alert episode closes.
+Create a rule that monitors how many jobs are waiting in a queue and opens an alert episode when the backlog gets too large. Set the no-data strategy to **Recover immediately** {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` or **Recover** {applies_to}`{ stack: experimental =9.5, serverless: unavailable }`. When the queue is empty and the query returns nothing, the alert episode closes.
 
 ## Related pages
 
