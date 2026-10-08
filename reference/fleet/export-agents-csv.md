@@ -25,7 +25,7 @@ You need the following privileges:
 
 1. In {{kib}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**.
 2. Optional: Filter and sort the list to match the agents you want to export.
-3. Select the agents to export. You cannot select agents on hosted policies. 
+3. Select the agents to export. You cannot select agents on [hosted policies](/reference/fleet/agent-policy.md#agent-policy-types).
    
    To export every agent that matches the current filters, use the checkbox in the table header to select all rows.
 
