@@ -13,7 +13,12 @@ description: "Search, filter, and bulk-manage rules. Use inline editing, the rul
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-After you create rules, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules** to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
+After you create rules, use the **Rules** page to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
+
+To open the **Rules** page:
+
+* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Rules**, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Rules**.
 
 ## Find and filter rules [find-filter-rules]
 

@@ -15,7 +15,10 @@ description: "Create action policies to route alert episodes to workflows. Set t
 
 An action policy connects alert episodes to the [workflows](../../../workflows.md) that respond to them. To create one, you set which alert episodes the policy applies to, how those episodes batch into notifications, how often a workflow can run, and which workflows to invoke.
 
-To start, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
+To start, open the **Action Policies** page:
+
+* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Action Policies**, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Action Policies**.
 
 ## Specify the action policy scope [matcher]
 

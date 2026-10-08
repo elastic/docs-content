@@ -13,7 +13,12 @@ description: "Take triage actions on alert episodes. Acknowledge, snooze, resolv
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-From the **Alerts** page (find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**), you can take the following triage actions on alert episodes individually or in bulk. For deeper investigation of a specific alert episode, refer to [Investigate alert episodes](investigate-alert-episodes.md).
+To open the **Alerts** page:
+
+* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Alerts**, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Alerts**.
+
+From the **Alerts** page, you can take the following triage actions on alert episodes individually or in bulk. For deeper investigation of a specific alert episode, refer to [Investigate alert episodes](investigate-alert-episodes.md).
 
 ## Track review status [track-review-status]
 

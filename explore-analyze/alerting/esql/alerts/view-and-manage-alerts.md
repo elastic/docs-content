@@ -13,7 +13,10 @@ description: "Monitor alert episodes using KPI panels, a histogram, and filter c
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-Use the **Alerts** page to monitor alert episodes with KPI panels, a histogram, and filters. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**.
+Use the **Alerts** page to monitor alert episodes with KPI panels, a histogram, and filters. To open it:
+
+* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Alerts**, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Alerts**.
 
 For triage actions (acknowledge, snooze, resolve, activate, and tag), refer to [Triage alert episodes](triage-alert-episodes.md). For alert episode lifecycle history, related alert episodes, and assignment, refer to [Investigate alert episodes](investigate-alert-episodes.md).
 

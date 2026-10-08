@@ -46,7 +46,10 @@ Events with `type: alert` carry `episode.id`, `episode.status`, and `episode.sta
 
 The first event opens the alert episode. Later events from later runs advance it through lifecycle states until the condition clears. Because events are never overwritten, `episode.status` on a given event is the lifecycle stage at that evaluation, not a live field that {{kib}} updates later. To replay an alert episode, query every event with that `episode.id`.
 
-Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view the current state of each alert episode.
+To view the current state of each alert episode, open the **Alerts** page:
+
+* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Alerts**, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Alerts**.
 
 ## Query `.rule-events` to replay an alert episode [query-rule-events]
 
