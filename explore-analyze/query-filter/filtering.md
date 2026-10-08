@@ -134,7 +134,7 @@ To round both bounds, separate the start and the end with `to`. If it's October 
 
 #### Round every relative range automatically
 
-If you don't want to type a rounding unit each time, open {icon}`gear` **Settings** and turn on **Round relative time ranges**. The setting is off by default. When it's on, the time filter adds a rounding unit to each start or end that is a single offset from now and has no rounding unit. For example, `-7d` becomes `-7d/h`, so the range starts at the beginning of the hour instead of at the exact time. The time filter keeps rounding that you typed, so `-7d/M` stays as it is.
+If you don't want to type a rounding unit each time, open the time filter, select {icon}`gear` **Settings**, and turn on **Round relative time ranges**. The setting is off by default. When it's on, the time filter adds a rounding unit to each start or end that is a single offset from now and has no rounding unit. For example, `-7d` becomes `-7d/h`, so the range starts at the beginning of the hour instead of at the exact time. The time filter keeps rounding that you typed, so `-7d/M` stays as it is.
 
 The unit that the time filter adds depends on the unit of the offset:
 
