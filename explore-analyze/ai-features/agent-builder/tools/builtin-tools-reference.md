@@ -73,7 +73,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This tool isn't available through the [MCP server](../mcp-server.md).
 
-    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
+    **Prerequisites:** In 9.4 and 9.5, the `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on. Starting in 9.6, the tool is available without it.
 
 `platform.core.list_inference_endpoints` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   Lists the chat completion models available to agents, with their IDs, names, and types. Includes [{{infer}} endpoints](../models.md#add-an-inference-endpoint) with the `chat_completion` task type, and [Generative AI connectors](../models.md#configure-a-connector), which are deprecated. {{infer-cap}} endpoints with other task types, such as `text_embedding` and `rerank`, are excluded.
@@ -138,7 +138,7 @@ The following tools manage file attachments in conversations:
 
 ### Cases tools
 
-Cases tools search and manage [cases](/explore-analyze/cases.md) for tracking and managing issues. Access follows the current user's Cases privileges.
+Cases tools search and manage [cases](/explore-analyze/cases.md) for tracking and managing issues. Access follows the current user's Cases privileges. On {{serverless-short}}, cases tools are available in {{observability}} and {{elastic-sec}} projects. Starting in 9.6, they're not available in spaces that use the {{es}} solution view.
 
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves [cases](/explore-analyze/cases.md).
@@ -150,11 +150,13 @@ Cases tools search and manage [cases](/explore-analyze/cases.md) for tracking an
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This tool isn't available through the [MCP server](../mcp-server.md).
 
-`platform.core.cases.get_attachments` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+$$$agent-builder-cases-get-attachments-tool$$$ `platform.core.cases.get_attachments` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 :   Retrieves all comments, alerts, and events attached to a case.
 
-`platform.core.cases.manage_attachments` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
-:   Adds comments to a case and links alerts and events to it. Also supports adding several attachments in one call, including saved objects such as dashboards and visualizations. This tool isn't available through the [MCP server](../mcp-server.md).
+$$$agent-builder-cases-manage-attachments-tool$$$ `platform.core.cases.manage_attachments` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Adds comments to a case and links alerts and events to it. Also supports adding several attachments in one call, including saved objects such as dashboards and visualizations.
+
+    This tool isn't available through the [MCP server](../mcp-server.md).
 
 `platform.core.cases.observables` {applies_to}`stack: preview 9.5`
 :   Manages case observables such as IP addresses, domains, file hashes, URLs, emails, and registry keys.
@@ -164,7 +166,7 @@ Cases tools search and manage [cases](/explore-analyze/cases.md) for tracking an
 The following cases tool was available in 9.5 and was removed in 9.6:
 
 `platform.core.cases.attachments` {applies_to}`stack: preview 9.5, removed 9.6` {applies_to}`serverless: removed`
-:   Managed case attachments, including adding comments, linking alerts, linking events, and listing existing attachments. Replaced by `get_attachments` for reading attachments and by `manage_attachments` for adding them. Agents and skills that use this tool automatically get both replacement tools added when {{kib}} starts, so you don't need to update them in the UI. If you create or update agents or skills through the API, remove `platform.core.cases.attachments` from the tool list. Requests that include it fail because the tool no longer exists.
+:   Managed case attachments, including adding comments, linking alerts, linking events, and listing existing attachments. Replaced by [`platform.core.cases.get_attachments`](#agent-builder-cases-get-attachments-tool) for reading attachments and by [`platform.core.cases.manage_attachments`](#agent-builder-cases-manage-attachments-tool) for adding them. Agents and skills that use this tool automatically get both replacement tools added when {{kib}} starts, so they keep working without changes. The old tool ID stays in their saved configuration. Before you update one of these agents or skills, including through the API, remove `platform.core.cases.attachments` from its tool list. Requests that include it fail because the tool no longer exists.
 
 ### Workflows tools
 ```{applies_to}

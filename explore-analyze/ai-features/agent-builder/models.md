@@ -115,6 +115,8 @@ This routing is automatic and cannot be turned off. You do not need to configure
 
 {{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as {{esql}} query generation and conversation title generation.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` When the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) is turned on, the fast model also selects the [skills](skills.md) that are relevant to each request.
+
 ### Fast model availability by deployment type
 
 On {{serverless-full}} projects and {{ech}} deployments, the fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup. Claude Haiku 4.5 is one example. The latency improvement is most noticeable on {{serverless-full}}.
