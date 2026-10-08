@@ -21,7 +21,7 @@ sub:
 
 # Install {{es}} with a Debian package [deb]
 
-The Debian package for {{es}} can be [downloaded from our website](#install-deb) or from our [APT repository](#deb-repo). It can be used to install {{es}} on any Debian-based system such as Debian and Ubuntu.
+You can install {{es}} on any Debian-based system such as Debian and Ubuntu using the Debian package. [Download it from our website](#install-deb) or install it from the [APT repository](#deb-repo).
 
 :::{include} _snippets/trial.md
 :::
@@ -118,7 +118,7 @@ Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry
 
 ### Download and install the Debian package manually [install-deb]
 
-The Debian package for {{es}} can be downloaded from the website and installed as follows:
+You can also download and install the {{es}} Debian package manually:
 
 ::::{tab-set}
 
@@ -244,7 +244,7 @@ The Debian package places config files, logs, and the data directory in the appr
 | data | The location of the data files of each index / shard allocated    on the node. | `/var/lib/elasticsearch` | [`path.data`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | jdk | The bundled Java Development Kit used to run {{es}}. Can    be overridden by setting the `ES_JAVA_HOME` environment variable    in `/etc/default/elasticsearch`. | `/usr/share/elasticsearch/jdk` |  |
 | logs | Log files location. | `/var/log/elasticsearch` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
-| plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/elasticsearch/plugins` |  |
+| plugins | Plugin files location. Each plugin has its own subdirectory. | `/usr/share/elasticsearch/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
 
 ## Next steps [_next_steps]
