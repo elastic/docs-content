@@ -12,6 +12,7 @@ sub:
   slash: /
   distro: RPM
   export: export
+  escape: \
   pkg-conf: /etc/sysconfig/elasticsearch
   build-type: rpm
 ---

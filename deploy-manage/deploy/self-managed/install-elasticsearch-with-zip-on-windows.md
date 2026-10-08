@@ -162,7 +162,7 @@ You can install {{es}} as a service that runs in the background or starts automa
     ```
 
     ::::{note}
-    TLS is not enabled or configured when you start {{es}} as a service.
+    Security auto-configuration only runs when you start {{es}} from the command line for the first time. TLS is not configured when you start {{es}} as a service.
     ::::
 
 3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
@@ -248,7 +248,7 @@ Most changes, like JVM settings, made through the manager GUI require a restart 
 :::
 
 :::{note}
-If you started {{es}} as a Windows service, TLS is not enabled by default. Use `http://localhost:9200` instead and omit the `--cacert` flag:
+If you started {{es}} as a Windows service, TLS is not configured automatically. Security auto-configuration only runs when you start {{es}} from the command line for the first time. Use `http://localhost:9200` instead and omit the `--cacert` flag:
 
 ```sh
 curl -u elastic:$ELASTIC_PASSWORD http://localhost:9200
