@@ -10,21 +10,18 @@ description: "How to configure the no-data strategy for rules: hold the last kno
 
 # No-data handling [no-data-handling]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-No-data handling is an optional setting for rules that group matches into an alert episode. Use `no_data_strategy` to control what the rule does when it can't tell whether an alert episode has genuinely recovered or the data just stopped showing up. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
+No-data handling is an optional setting for {{alerting-v2-system}} rules that group matches into an alert. Use `no_data_strategy` to control what the rule does when it can't tell whether an alert has genuinely recovered or the data just stopped showing up. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
 
 ## How no-data handling fits into recovery [no-data-and-recovery]
 
-When a breached group stops matching, the rule re-runs the [base query](configure-rule-query.md#query-base) to confirm the group is actually gone before recovering the alert episode:
+When a breached group stops matching, the rule re-runs the [base query](configure-rule-query.md#query-base) to confirm the group is actually gone before recovering the alert:
 
 * **Group still there** - The base query still returns the group, confirming this is a genuine [recovery](configure-rule-recovery.md) rather than a data gap.
 * **Group missing too** - The base query returns nothing for the group either, so the rule can't tell whether the problem actually cleared up or the data source just stopped reporting. What happens next depends on how you've configured `no_data_strategy`.
 
 The check described above is part of the recovery process, so it only runs when `recovery_strategy` is **Default** or **Custom recovery**.
 
-If `recovery_strategy` is **No recovery** instead, alert episodes stay open until someone closes them manually, the base-query check above doesn't run, and `no_data_strategy` has no effect.
+If `recovery_strategy` is **No recovery** instead, alerts stay open until someone closes them manually, the base-query check above doesn't run, and `no_data_strategy` has no effect.
 
 ## No-data strategy options [no-data-strategy-options]
 
@@ -32,7 +29,7 @@ Choose one of the following options. Each maps to a `no_data_strategy` value if 
 
 | Option | `no_data_strategy` value | Description |
 | --- | --- | --- |
-| Keep last status | `last_known_status` | Hold the last known lifecycle state. An active breach stays active and a recovered alert episode stays recovered. |
+| Keep last status | `last_known_status` | Hold the last known lifecycle state. An active breach stays active and a recovered alert stays recovered. |
 | Recover | `recover` | Treat absence as recovery. |
 | Do nothing | `none` | Skip the no-data check. An empty result is treated the same as **Recover**, but the rule doesn't confirm that the data pipeline is actually working. |
 
@@ -59,9 +56,9 @@ Do not configure `no_data_strategy`, or set it to **Do nothing**, when:
 
 Create a rule that monitors infrastructure CPU. Configure the no-data strategy as **Keep last status** (`last_known_status`) so that if the metrics collection agent ever stops sending data, an active CPU breach doesn't auto-recover just because the query returned nothing. Instead, the rule holds the alert in its current state until data resumes.
 
-### Close the alert episode when a queue empties out
+### Close the alert when a queue empties out
 
-Create a rule that monitors how many jobs are waiting in a queue and opens an alert episode when the backlog gets too large. Configure the no-data strategy as **Recover** (`recover`) so that once the queue is empty and the query has nothing to return, the alert episode closes.
+Create a rule that monitors how many jobs are waiting in a queue and opens an alert when the backlog gets too large. Configure the no-data strategy as **Recover** (`recover`) so that once the queue is empty and the query has nothing to return, the alert closes.
 
 ## Related pages
 

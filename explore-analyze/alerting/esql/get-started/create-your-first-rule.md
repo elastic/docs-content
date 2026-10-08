@@ -11,10 +11,7 @@ description: "Step-by-step tutorial for creating an ES|QL rule, covering alert d
 
 # Create a rule and observe the alert lifecycle [create-first-rule]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-In this tutorial, you'll create a rule to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert episode, how it tracks that alert episode over time, and how it closes automatically when things return to normal, without any manual intervention.
+In this tutorial, you'll create a {{alerting-v2-system}} rule to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert, how it tracks that alert over time, and how it closes automatically when things return to normal, without any manual intervention.
 
 Here's what you'll do:
 
@@ -22,7 +19,7 @@ Here's what you'll do:
 2. **Write a detection query** - Use the query sandbox to build and preview an {{esql}} query that computes P95 latency and flags breaches. The sandbox lets you verify the logic before the rule ever runs.
 3. **Configure the rule** - Set the alert condition, schedule, lookback window, and recovery behavior. You'll see how each setting shapes the alert lifecycle.
 4. **Confirm the rule is running** - Check the **Execution history** page to see that the rule is evaluating on schedule and its runs are succeeding.
-5. **Watch the alert episode open and recover** - Open the alert episode's details page to watch the alert episode move from `pending` to `active` as the breach persists, then trigger the recovery condition directly to see it close.
+5. **Watch the alert open and recover** - Open the alert's details page to watch the alert move from `pending` to `active` as the breach persists, then trigger the recovery condition directly to see it close.
 
 ## Requirements [create-rule-requirements]
 
@@ -40,7 +37,7 @@ Before you start, make sure you have the following:
   | Task | Required privilege |
   |---|---|
   | Create and manage rules | **Rules: All** (under **Alerting**) |
-  | View and triage alert episodes | **Alerts: All** (under **Alerting**); also automatically grants {{es}} `read` access to `.rule-events` and `.alert-actions` |
+  | View and triage alerts | **Alerts: All** (under **Alerting**); also automatically grants {{es}} `read` access to `.rule-events` and `.alert-actions` |
   | Review execution history | **Execution history: Read** (under **Alerting**) |
   | Create the tutorial index and load sample data | `create_index` and `write` index privileges on `checkout-service-logs` |
 
@@ -307,7 +304,7 @@ Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore
 
 The query you applied from the sandbox auto-fills **Mode**, **Time field**, and **Group fields**. Set the remaining fields:
 
-- **Alert delay**: `Breaches: 2` (The breach must persist across 2 consecutive evaluations before the alert episode moves to `active`.)
+- **Alert delay**: `Breaches: 2` (The breach must persist across 2 consecutive evaluations before the alert moves to `active`.)
 - **Schedule**: `Every 5 minutes`
 - **Lookback Window**: `Last 45 minutes` (Ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.)
 
@@ -322,7 +319,7 @@ Confirm the default settings:
 - **Recovery**: `Default recovery`
 - **Recovery delay**: `Immediate` (no delay, recovers on first non-breach)
 
-These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run finds that the service's P95 latency is back under the 2-second threshold, the alert episode will close.
+These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run finds that the service's P95 latency is back under the 2-second threshold, the alert will close.
 
 Select **Next**.
 
@@ -375,9 +372,9 @@ Confirm the **Response** column shows `success` and the **Timestamp** matches a 
 
 :::::
 
-## Observe the alert episode lifecycle [observe-episode-lifecycle]
+## Observe the alert lifecycle [observe-episode-lifecycle]
 
-With the rule running, you can watch the full alert lifecycle play out on the **Alerts** page and in the alert episode's details page. It stays active until the recovery condition is met.
+With the rule running, you can watch the full alert lifecycle play out on the **Alerts** page and in the alert's details page. It stays active until the recovery condition is met.
 
 :::::{stepper}
 
@@ -387,21 +384,21 @@ Open **Alerting V2 preview** using the navigation menu or the [global search fie
 
 ::::
 
-::::{step} Find the alert episode
+::::{step} Find the alert
 
-The degraded window starts at 16 minutes past the hour. Once the current UTC time passes that point, wait for two rule evaluations (about 10 minutes). An alert episode then appears and moves from `pending` to `active`.
+The degraded window starts at 16 minutes past the hour. Once the current UTC time passes that point, wait for two rule evaluations (about 10 minutes). An alert then appears and moves from `pending` to `active`.
 
 ::::
 
-::::{step} Inspect the alert episode details
+::::{step} Inspect the alert details
 
-Select the alert episode to open its details. Use the metric trend to see how P95 latency compared to the threshold over the alert episode's lifetime, and confirm the grouping value (`checkout`) that triggered it.
+Select the alert to open its details. Use the metric trend to see how P95 latency compared to the threshold over the alert's lifetime, and confirm the grouping value (`checkout`) that triggered it.
 
 ::::
 
 ::::{step} Force recovery
 
-Run the following in **Dev Tools** to rewrite the degraded documents' `latency_ms` values to a healthy level. This triggers the rule's recovery condition directly, so you see the alert episode close because the condition resolved.
+Run the following in **Dev Tools** to rewrite the degraded documents' `latency_ms` values to a healthy level. This triggers the rule's recovery condition directly, so you see the alert close because the condition resolved.
 
 ```json
 POST checkout-service-logs/_update_by_query
@@ -415,7 +412,7 @@ POST checkout-service-logs/_update_by_query
 }
 ```
 
-Wait for the next scheduled run (within 5 minutes), then go to the **Alerts** page and open the alert episode's details again to confirm it moved to `inactive`.
+Wait for the next scheduled run (within 5 minutes), then go to the **Alerts** page and open the alert's details again to confirm it moved to `inactive`.
 
 ::::
 
@@ -426,12 +423,12 @@ Wait for the next scheduled run (within 5 minutes), then go to the **Alerts** pa
 By completing this tutorial, you learned:
 
 - **Rules** - A rule's schedule and lookback window control how often it evaluates and how much history each evaluation considers.
-- **Severity tiers** - An {{esql}} `CASE()` expression can classify each breach by severity, and those labels are recorded in `.rule-events` and shown on the alert episode's details page.
-- **Episode lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an alert episode opens, so transient spikes don't trigger it.
-- **Automatic recovery** - With default recovery, an alert episode closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
+- **Severity tiers** - An {{esql}} `CASE()` expression can classify each breach by severity, and those labels are recorded in `.rule-events` and shown on the alert's details page.
+- **Alert lifecycle** - **Alert delay** requires a breach to persist across consecutive evaluations before an alert opens, so transient spikes don't trigger it.
+- **Automatic recovery** - With default recovery, an alert closes as soon as a scheduled run finds the alert condition is no longer met, which is exactly what happened right after rewriting the latency values.
 
 ## What to do next with your rule [create-rule-next-steps]
 
 - **Ready to manage the rule you just created?** [View and manage rules](../rules/view-manage-rules.md) shows you how to enable, disable, clone, and bulk-manage rules from the **Rules** page.
 - **Want to explore more configuration options?** [Configure a rule](../rules/configure-a-rule.md) covers grouping, tags, no-data handling, and more.
-- **Ready to notify your team the next time an alert episode opens?** [Notifications and actions](../notifications-actions.md) shows you how action policies decide when to invoke a workflow, and how workflows send the notification.
+- **Ready to notify your team the next time an alert opens?** [Notifications and actions](../notifications-actions.md) shows you how action policies decide when to invoke a workflow, and how workflows send the notification.

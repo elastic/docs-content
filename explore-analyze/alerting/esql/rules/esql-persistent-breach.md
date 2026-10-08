@@ -10,10 +10,7 @@ description: "Detect conditions that persist across consecutive time buckets usi
 
 # Persistent breach detection [persistent-breach]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-A persistent breach condition detects a metric that stays above a threshold across several consecutive time buckets, for example CPU above 90% in all 10 of the last 10 five-minute windows. This filters out transient spikes and fires only when a problem has been sustained.
+A persistent breach condition in a {{alerting-v2-system}} rule detects a metric that stays above a threshold across several consecutive time buckets, for example CPU above 90% in all 10 of the last 10 five-minute windows. This filters out transient spikes and fires only when a problem has been sustained.
 
 {{esql}} can express this with bucket counting:
 
@@ -50,4 +47,4 @@ Design the query so that gaps in reporting produce the behavior you want before 
 ## Related pages
 
 - [{{esql}} query patterns](esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
-- [Alert delay](configure-rule-alert-delay.md): A setting-based alternative for requiring consecutive breaches before an alert episode opens.
+- [Alert delay](configure-rule-alert-delay.md): A setting-based alternative for requiring consecutive breaches before an alert opens.
