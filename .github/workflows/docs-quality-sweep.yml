@@ -1,4 +1,4 @@
-name: Docs quality sweep
+name: "Sweep: All"
 # Master dispatcher. Fans out to seven independent sub-workflows via
 # `gh workflow run`. We can't use `workflow_call` here because gh-aw
 # v0.71.x compiles a single artifact prefix per orchestrator run

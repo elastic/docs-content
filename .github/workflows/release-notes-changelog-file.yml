@@ -1,7 +1,7 @@
-name: Release notes changelog file
+name: "Release notes: Changelog file"
 on:
   workflow_run:
-    workflows: [Release notes]
+    workflows: ["Release notes: Check"]
     types: [completed]
 permissions: {}
 jobs:

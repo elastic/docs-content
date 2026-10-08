@@ -1,4 +1,4 @@
-name: Docs AI menu
+name: "Issues: AI actions menu"
 
 on:
   issues:

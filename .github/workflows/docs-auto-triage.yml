@@ -1,4 +1,4 @@
-name: Docs Auto Triage
+name: "Issues: Auto-triage (labels)"
 on:
   issues:
     types: [opened]

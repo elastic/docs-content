@@ -1,4 +1,4 @@
-name: Label Community Issues
+name: "Issues: Label community reports"
 
 on:
   issues:

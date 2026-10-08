@@ -1,4 +1,4 @@
-name: Update Kube Stack Version
+name: "Scheduled: Update kube-stack version"
 
 on:
   schedule:
