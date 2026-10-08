@@ -41,7 +41,7 @@ Use the following fields to configure the Breaches and Duration modes. Timeframe
 
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
-| `pending_count` | integer | 0–1000 | Number of consecutive breach evaluations required before the alert episode opens. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
+| `pending_count` | integer | 0–1000 | {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` Number of consecutive breaching evaluations the alert episode spends in the pending phase. It opens on the next breach, so `3` opens it on the 4th consecutive breach. <br><br> {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` Number of consecutive breach evaluations required before the alert episode opens. <br><br> Appears as **Consecutive breaches** in Breaches mode. Set to `0` to skip the pending phase and transition directly to active on the first breach. {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` If you also set `pending_timeframe` with `pending_operator` set to `and`, a count of `0` still waits for the timeframe. |
 | `pending_timeframe` | duration | Any duration string | How long the condition must remain breached before the alert episode opens. Appears as **Active for** in Duration mode. |
 | `pending_operator` | string | `and` or `or` {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` <br><br> `AND` or `OR` {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` | Whether the rule requires both `pending_count` and `pending_timeframe`, or only one, when you set both. |
 
@@ -63,11 +63,11 @@ The `pending_count`, `pending_timeframe`, and `pending_operator` fields map to t
 
 ### Ignore brief CPU spikes
 
-Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an alert episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
+Create a rule that monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so a brief spike doesn't open an alert episode. The alert episode opens on the 4th consecutive breach {applies_to}`{ serverless: ga, stack: experimental 9.6+ }`, or the 3rd {applies_to}`{ stack: experimental =9.5, serverless: unavailable }`, so the condition has to hold for several minutes in a row. This filters out noise without losing real signals.
 
 ### Require sustained breach before escalating
 
-Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `and`. The rule fires only when the error rate has breached on 5 consecutive evaluations and has stayed elevated for at least 2 minutes. Either condition alone isn't enough.
+Create a rule that monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `and`. The rule fires only when the error rate has stayed elevated for at least 2 minutes and has breached on 6 consecutive evaluations {applies_to}`{ serverless: ga, stack: experimental 9.6+ }`, or 5 {applies_to}`{ stack: experimental =9.5, serverless: unavailable }`. Either condition alone isn't enough.
 
 :::{note}
 :applies_to: { stack: experimental =9.5, serverless: unavailable }
