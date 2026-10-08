@@ -19,6 +19,4 @@ jobs:
       (startsWith(github.event.comment.body, '/scope') &&
        github.event.issue.pull_request == null)
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-scope.lock.yml@v1
-    with:
-      project-instructions-path: .github/scope-instructions.md
     secrets: inherit
