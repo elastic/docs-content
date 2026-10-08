@@ -32,11 +32,9 @@ The **Add Elastic rules** page applies your tag or search filter before it deter
 **Workaround**<br>
 If the **Rule Updates** tab appears immediately after you install prebuilt rules, [update those rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md) to the latest version.
 
-% Uncomment after 9.4.8 and 9.5.5 ship.
+**Resolved**<br>
 
-% **Resolved**<br>
-
-% Resolved in {{stack}} 9.4.8 and 9.5.5. There's no fix for 9.3.x, so upgrade to one of these versions.
+Resolved in {{stack}} 9.4.8 and 9.5.5. There's no fix for 9.3.x, so upgrade to one of these versions.
 
 :::
 

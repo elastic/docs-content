@@ -1,5 +1,6 @@
 ---
 navigation_title: Manage through API
+description: Create, update, enable, and delete Elastic Cloud Hosted plugins and bundles programmatically with the Elastic Cloud API.
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-plugins-guide.html
 applies_to:
@@ -9,9 +10,9 @@ products:
   - id: cloud-hosted
 ---
 
-# Manage plugins and extensions through the API [ec-plugins-guide]
+# Manage plugins and extensions through the {{ecloud}} API [ec-plugins-guide]
 
-This guide provides a full list of tasks for managing [plugins and extensions](add-plugins-extensions.md) in {{ecloud}}, using the API.
+This guide provides a full list of tasks for managing [plugins and extensions](add-plugins-extensions.md) with the {{ecloud}} API. For the complete HTTP reference, refer to [Extensions API]({{cloud-apis}}group/endpoint-extensions).
 
 * [Create an extension](#ec-extension-guide-create)
 * [Add an extension to a deployment plan](#ec-extension-guide-add-plan)
@@ -29,8 +30,8 @@ This guide provides a full list of tasks for managing [plugins and extensions](a
 
 There are two methods to create an extension. You can:
 
-1. Stream the file from a publicly-accessible download URL.
-2. Upload the file from a local file path.
+* [Stream the file from a publicly-accessible download URL](#ec-extension-guide-create-option1).
+* [Upload the file from a local file path](#ec-extension-guide-create-option2).
 
 ::::{note}
 For plugins larger than 200MB the download URL option **must** be used. Plugins larger than 8GB cannot be uploaded with either method.
@@ -39,12 +40,12 @@ For plugins larger than 200MB the download URL option **must** be used. Plugins 
 
 These two examples are for the `plugin` extension type. For bundles, change `extension_type` to `bundle`.
 
-For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](elasticsearch://extend/index.md) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an {{es}} plugin; otherwise the plugin will be rejected by the API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
+For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](elasticsearch://extend/index.md) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an {{es}} plugin; otherwise the plugin will be rejected by the {{ecloud}} API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
 
 For bundles, we recommend setting `version` using wildcard notation that matches the major version of the {{es}} deployment. For example, if {{es}} is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 8.x versions of {{es}}.
 
 $$$ec-extension-guide-create-option1$$$
-**Option 1: Stream the file from a publicly-accessible download URL**
+**Stream the file from a publicly-accessible download URL**
 
 ```sh
 curl -X POST \
@@ -62,7 +63,7 @@ curl -X POST \
 The single POST request creates an extension with the metadata, validates, and streams the file from the `download_url` specified. The accepted protocols for `download_url` are `http` and `https`.
 
 ::::{note}
-The `download_url` must be directly and publicly accessible. There is currently no support for redirection or authentication unless it contains security credentials/tokens expected by your HTTP service as part of the URL. Otherwise, use the following Option 2 to upload the file from a local path.
+The `download_url` must be directly and publicly accessible. There is currently no support for redirection or authentication unless it contains security credentials/tokens expected by your HTTP service as part of the URL. Otherwise, [upload the file from a local file path](#ec-extension-guide-create-option2) instead.
 ::::
 
 
@@ -72,7 +73,7 @@ When the file is larger than 5GB, the request may timeout after 2-5 minutes, but
 
 
 $$$ec-extension-guide-create-option2$$$
-**Option 2: Upload the file from a local file path**
+**Upload the file from a local file path**
 
 This option requires a two step process. First, create the metadata for the extension:
 
@@ -111,6 +112,14 @@ curl -v -X PUT "https://api.elastic-cloud.com/api/v1/deployments/extensions/EXTE
 ::::{note}
 When using curl, always use the `-T` option.  DO NOT use `-F` (we have seen inconsistency in curl behavior across systems; using `-F` can result in partially uploaded or truncated files).
 ::::
+
+If your client does not have native `application/zip` handling, send the file as `multipart/form-data` instead. For example, using the Python `requests` module:
+
+```python
+import requests
+files = {'file': open('/tmp/custom-plugin-8.4.3.zip','rb')}
+r = requests.put('https://api.elastic-cloud.com/api/v1/deployments/extensions/{}'.format(extension_id), files=files, headers= {'Authorization': 'ApiKey {}'.format(CLOUD_API_KEY)})
+```
 
 
 The above PUT request uploads the file from the local path specified. This request is synchronous. An HTTP 200 response indicates that the file has been successfully uploaded and is ready for use.
@@ -234,7 +243,7 @@ For example, the previous call returns:
 
 To update the name of an existing extension, simply update the name field without uploading a new file. You do not have to specify the `download_url` when only making metadata changes to an extension.
 
-Example using the [Option 1](#ec-extension-guide-create-option1) create an extension method:
+Example for an extension created by [streaming from a download URL](#ec-extension-guide-create-option1):
 
 ```sh
 curl -X POST \
@@ -248,7 +257,7 @@ curl -X POST \
 }'
 ```
 
-Example using the [Option 2](#ec-extension-guide-create-option2) create an extension method:
+Example for an extension created by [uploading from a local file path](#ec-extension-guide-create-option2):
 
 ```sh
 curl -X POST \
@@ -276,7 +285,7 @@ For bundles, we recommend setting `version` using wildcard notation that matches
 
 For example, if the bundle was previously uploaded with the version `8.4.2`, simply update the version field. You no longer have to specify the `download_url` when only making metadata changes to a bundle.
 
-Example using the [Option 1](#ec-extension-guide-create-option1) create an extension method:
+Example for an extension created by [streaming from a download URL](#ec-extension-guide-create-option1):
 
 ```sh
 curl -X POST \
@@ -290,7 +299,7 @@ curl -X POST \
 }'
 ```
 
-Example using the [Option 2](#ec-extension-guide-create-option2) create an extension method:
+Example for an extension created by [uploading from a local file path](#ec-extension-guide-create-option2):
 
 ```sh
 curl -X POST \
@@ -318,7 +327,7 @@ You may want to update an uploaded file for an existing extension without perfor
 
 This example is for the `plugin` extension type. For bundles, change `extension_type` to `bundle`.
 
-If you used [Option 1](#ec-extension-guide-create-option1) to create the extension, simply re-run the POST request with the `download_url` pointing to the location of your updated extension file.
+If you created the extension by [streaming from a download URL](#ec-extension-guide-create-option1), simply re-run the POST request with the `download_url` pointing to the location of your updated extension file.
 
 ```sh
 curl -X POST \
@@ -333,7 +342,7 @@ curl -X POST \
 }'
 ```
 
-If you used [Option 2](#ec-extension-guide-create-option2) to create the extension, simply re-run the PUT request with the `file` parameter pointing to the location of your updated extension file.
+If you created the extension by [uploading from a local file path](#ec-extension-guide-create-option2), simply re-run the PUT request with the `file` parameter pointing to the location of your updated extension file.
 
 ```sh
 curl -v -X PUT "https://api.elastic-cloud.com/api/v1/deployments/extensions/EXTENSION_ID" \
