@@ -127,12 +127,14 @@ Only valid when `kind` is `alert`. `pending` and `recovering` are optional. If y
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `state_transition.pending.count` | integer | Integer, 0–1000 | Consecutive matches required before the alert episode becomes active. Set to `0` to open it on the first match. |
+| `state_transition.pending.count` | integer | Integer, 0–1000 | Consecutive matches the alert episode spends in `pending`. It becomes active on the next match, so `2` opens it on the third consecutive match. Set to `0` to open it on the first match. |
 | `state_transition.pending.timeframe` | duration | Any duration string | How long the condition must hold before the alert episode becomes active, for example `5m`. |
 | `state_transition.pending.operator` | string | `and` or `or` | If you set both `count` and `timeframe`, `and` requires both and `or` requires either. |
-| `state_transition.recovering.count` | integer | Integer, 0–1000 | Consecutive recoveries required before the alert episode becomes inactive. Set to `0` to close it on the first recovery. |
+| `state_transition.recovering.count` | integer | Integer, 0–1000 | Consecutive recoveries the alert episode spends in `recovering`. It becomes inactive on the next recovery, so `2` closes it on the third consecutive recovery. Set to `0` to close it on the first recovery. |
 | `state_transition.recovering.timeframe` | duration | Any duration string | How long the condition must hold before the alert episode becomes inactive, for example `5m`. |
 | `state_transition.recovering.operator` | string | `and` or `or` | If you set both `count` and `timeframe`, `and` requires both and `or` requires either. |
+
+A `count` of `0` skips the phase only when there's no `timeframe`, or when `operator` is `or`. With `and`, the phase still waits for `timeframe`.
 
 :::{note}
 The API rejects `state_transition.recovering` when `recovery.strategy` is `manual`.

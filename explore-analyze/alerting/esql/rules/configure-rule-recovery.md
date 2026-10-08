@@ -66,7 +66,7 @@ Add a recovery delay when:
 
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
-| `recovering_count` | integer | 0–1000 | Number of consecutive non-breaching evaluations required before the alert episode closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
+| `recovering_count` | integer | 0–1000 | {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` Number of consecutive non-breaching evaluations the alert episode spends in the recovering phase. It closes on the next non-breaching evaluation, so `3` closes it on the 4th. <br><br> {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` Number of consecutive non-breaching evaluations required before the alert episode closes. <br><br> Set to `0` to skip the recovering phase and transition directly to inactive on recovery. {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` If you also set `recovering_timeframe` with `recovering_operator` set to `and`, a count of `0` still waits for the timeframe. |
 | `recovering_timeframe` | duration | Any duration string | How long the condition must remain non-breaching before the alert episode closes. |
 | `recovering_operator` | string | `and` or `or` {applies_to}`{ serverless: ga, stack: experimental 9.6+ }` <br><br> `AND` or `OR` {applies_to}`{ stack: experimental =9.5, serverless: unavailable }` | Whether the rule requires both `recovering_count` and `recovering_timeframe`, or only one, when you set both. |
 
@@ -91,7 +91,7 @@ Create a rule that detects a potential security incident. Even after the query s
 
 ### Require consecutive recoveries before closing an alert episode
 
-Create a rule that monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3` to require 3 consecutive non-breaching evaluations before closing the alert episode. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
+Create a rule that monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3`. The alert episode closes on the 4th consecutive non-breaching evaluation {applies_to}`{ serverless: ga, stack: experimental 9.6+ }`, or the 3rd {applies_to}`{ stack: experimental =9.5, serverless: unavailable }`. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
 
 ## Related pages
 
