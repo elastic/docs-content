@@ -28,3 +28,5 @@ Keys created here don't expire unless you add an expiration date.
 ::::
 
 :::::
+
+For key types, privileges, and expiration options, refer to [](/deploy-manage/api-keys.md).

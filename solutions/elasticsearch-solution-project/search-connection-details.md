@@ -22,8 +22,11 @@ To create an API key, you need the `manage_api_key` or the `manage_own_api_key` 
 
 ## Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
 
-::::{include} _snippets/find-elasticsearch-endpoint.md
-::::
+:::{include} /solutions/elasticsearch-solution-project/_snippets/deployment-tab-legend.md
+:::
+
+:::{include} /solutions/elasticsearch-solution-project/_snippets/find-elasticsearch-endpoint.md
+:::
 
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
@@ -53,10 +56,8 @@ To skip {{kib}}, select **Hosted** in the {{ecloud}} Console, open your deployme
 
 ## Create an API key [create-an-api-key-cloud-self-managed]
 
-::::{include} _snippets/create-an-api-key.md
-::::
-
-For key types, privileges, and expiration options, refer to [](/deploy-manage/api-keys.md).
+:::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
+:::
 
 ## Test your connection [elasticsearch-get-started-test-connection]
 

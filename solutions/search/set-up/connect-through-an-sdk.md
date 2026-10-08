@@ -11,7 +11,10 @@ type: how-to
 
 Install and configure an official {{es}} language client to connect to a project or cluster.
 
-## Connect to your project [connect-through-an-sdk-connect]
+:::::::{stepper}
+
+::::::{step} Connect to your project
+:anchor: connect-through-an-sdk-connect
 
 To get your {{es}} endpoint and API key, refer to [API key and endpoints](/solutions/search/set-up/api-key-and-endpoints.md). Set them as environment variables:
 
@@ -44,7 +47,10 @@ $Env:ES_API_KEY = "YOUR_API_KEY"
 
 :::::
 
-## Install and initialize a client [connect-through-an-sdk-install]
+::::::
+
+::::::{step} Install and initialize a client
+:anchor: connect-through-an-sdk-install
 
 Install the client for your language. For a list of available clients, refer to [{{es}} clients](/reference/elasticsearch-clients/index.md).
 
@@ -290,7 +296,10 @@ func main() {
 
 :::::
 
-## Verify your connection [connect-through-an-sdk-verify]
+::::::
+
+::::::{step} Verify your connection
+:anchor: connect-through-an-sdk-verify
 
 To verify your connection, create an index, index some sample data, and check the document count.
 
@@ -900,6 +909,13 @@ countRes.Body.Close()
 
 The response returns a count of 5, which confirms that all five books were indexed.
 
-## Next steps [connect-through-an-sdk-next]
+::::::
+
+::::::{step} Next steps
+:anchor: connect-through-an-sdk-next
 
 {{es}} is up and running, and you have already indexed a small sample dataset. Next, learn how to ingest your own data at scale in [](/solutions/search/ingest-for-search.md).
+
+::::::
+
+:::::::

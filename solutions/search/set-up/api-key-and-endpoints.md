@@ -11,19 +11,22 @@ type: how-to
 
 To connect a client to {{es}} for search, you need the endpoint URL and an API key. The steps depend on where your deployment runs.
 
+:::{include} /solutions/elasticsearch-solution-project/_snippets/deployment-tab-legend.md
+:::
+
 ## Find your {{es}} endpoint [find-your-elasticsearch-endpoint]
 
-::::{include} /solutions/elasticsearch-solution-project/_snippets/find-elasticsearch-endpoint.md
-::::
+:::{include} /solutions/elasticsearch-solution-project/_snippets/find-elasticsearch-endpoint.md
+:::
 
-## Create an API key [create-an-api-key]
+## Get your API key [get-your-api-key]
 
-To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege.
+If you just created an {{es}} {{vectordb}} project or an {{es}} project, a generated API key is on the **Getting started** {icon}`rocket` page.
 
-::::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
-::::
+Otherwise, create an API key:
 
-For key types, privileges, and expiration options, refer to [](/deploy-manage/api-keys.md).
+:::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
+:::
 
 ## Next step [api-key-and-endpoints-next]
 
