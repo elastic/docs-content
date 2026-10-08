@@ -13,6 +13,7 @@ sub:
   distro: RPM
   export: export
   pkg-conf: /etc/sysconfig/elasticsearch
+  build-type: rpm
 ---
 
 # Install {{es}} with RPM [rpm]

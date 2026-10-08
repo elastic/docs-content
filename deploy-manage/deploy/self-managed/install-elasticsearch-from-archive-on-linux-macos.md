@@ -13,6 +13,7 @@ sub:
   export: "export "
   escape: \
   auto: " -d"
+  build-type: tar
 ---
 
 # Install {{es}} from archive on Linux or MacOS [targz]

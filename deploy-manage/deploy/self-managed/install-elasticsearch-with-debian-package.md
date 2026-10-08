@@ -1,5 +1,6 @@
 ---
 navigation_title: Install with Debian package
+description: Install Elasticsearch on Debian-based systems using the APT repository or a downloaded .deb package.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
 applies_to:
@@ -14,6 +15,7 @@ sub:
   export: "export "
   escape: \
   pkg-conf: /etc/default/elasticsearch
+  build-type: deb
 ---
 
 # Install {{es}} with a Debian package [deb]
@@ -53,7 +55,7 @@ You have several options for installing the {{es}} Debian package:
 
 ### Install from the APT repository [deb-repo]
 
-1. You may need to install the `apt-transport-https` package on Debian before proceeding:
+1. You might need to install the `apt-transport-https` package on Debian before proceeding:
 
     ```sh
     sudo apt-get install apt-transport-https
@@ -92,7 +94,7 @@ These instructions do not use `add-apt-repository` for several reasons:
 
 1. `add-apt-repository` adds entries to the system `/etc/apt/sources.list` file rather than a clean per-repository file in `/etc/apt/sources.list.d`.
 2. `add-apt-repository` is not part of the default install on many distributions and requires a number of non-default dependencies.
-3. Older versions of `add-apt-repository` always add a `deb-src` entry which will cause errors because we do not provide a source package. If you have added the `deb-src` entry, you will see an error like the following until you delete the `deb-src` line:
+3. Earlier versions of `add-apt-repository` always add a `deb-src` entry which will cause errors because we do not provide a source package. If you have added the `deb-src` entry, you will see an error like the following until you delete the `deb-src` line:
 
     ```text
     Unable to find expected entry 'main/source/Sources' in Release file
@@ -107,7 +109,7 @@ If two entries exist for the same {{es}} repository, you will see an error like 
 Duplicate sources.list entry https://artifacts.elastic.co/packages/9.x/apt/ ...
 ```
 
-Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
+Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry or locate the duplicate entry among the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
 :::
 
 :::{include} _snippets/skip-set-kernel-params.md
@@ -198,7 +200,7 @@ sudo dpkg -i elasticsearch-<SPECIFIC.VERSION.NUMBER>-amd64.deb
 
 ## Step 8 (Multi-node clusters only): Update the config files [update-config-files]
 
-If you are deploying a multi-node cluster, then the `elasticsearch-reconfigure-node` tool adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+If you are deploying a multi-node cluster, then the `elasticsearch-reconfigure-node` tool adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
 
 :::{note}
 Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
