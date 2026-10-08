@@ -10,10 +10,7 @@ description: "Use ES|QL in Discover to query signal events. Filter .rule-events 
 
 # Use Discover to query rule events [query-rule-events-discover]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-Events with `type: signal` don't belong to an [alert episode](../alerts.md), so they don't appear on the **Alerts** page. In **Discover**, filter `.rule-events` to those events to review detection history, save it for investigations, or use it as input to a rule that opens an alert episode.
+In {{alerting-v2-system}}, events with `type: signal` don't belong to an [alert](../alerts.md), so they don't appear on the **Alerts** page. In **Discover**, filter `.rule-events` to those events to review detection history, save it for investigations, or use it as input to a rule that opens an alert.
 
 ## Before you begin
 
@@ -65,7 +62,7 @@ FROM .rule-events
 
 ### Correlate events in a follow-on rule [correlate-signals-alert-rule]
 
-Events with `type: signal` are useful for investigation, and as input to a rule that watches accumulated events and opens an alert episode. For example, one rule records administrator API calls. A separate rule queries those events and opens an alert episode only when call volume spikes.
+Events with `type: signal` are useful for investigation, and as input to a rule that watches accumulated events and opens an alert. For example, one rule records administrator API calls. A separate rule queries those events and opens an alert only when call volume spikes.
 
 Create a rule whose query reads from `.rule-events`, filters to the first rule's events with `type: signal`, and applies a threshold:
 
@@ -79,7 +76,7 @@ FROM .rule-events
 | WHERE event_count > 10
 ```
 
-When this follow-on rule finds a match, {{kib}} writes a rule event with `type: alert`. An action policy can evaluate the alert episode and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
+When this follow-on rule finds a match, {{kib}} writes a rule event with `type: alert`. An action policy can evaluate the alert and invoke a workflow. The first rule keeps recording without paging anyone on every individual call.
 
 :::{tip}
 You can also correlate events from more than one rule in a single query, for example combining administrator API call events with error-rate events, so neither source pages on its own.
@@ -97,5 +94,5 @@ Because `.rule-events` is append-only, dashboards show the full history retained
 
 ## Related pages
 
-- [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether {{kib}} opens an alert episode or keeps matches available for later analysis.
-- [Query alert history in Discover](query-alerts-and-signals-in-discover.md): Alert episode lifecycle, triage history, and incident-tracing queries.
+- [Rule mode](../rules/configure-rule-mode.md): How configuration determines whether {{kib}} opens an alert or keeps matches available for later analysis.
+- [Query alert history in Discover](query-alerts-and-signals-in-discover.md): Alert lifecycle, triage history, and incident-tracing queries.

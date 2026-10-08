@@ -27,7 +27,7 @@ stack: experimental 9.5+
 serverless: ga
 ```
 
-You write an {{esql}} query that defines what to watch for, decide whether matches are tracked as [alert episodes](alerting/esql/alerts.md) or recorded as rule events for later analysis, and control notifications through action policies that handle routing, frequency, and notification batching. {{alerting-v2-system-cap}} also adds alert episode lifecycle tracking, per-series snooze, queryable rule event history, and rules that can correlate those events for escalation. It is a strong fit when you want full control over what data travels with each detection and how your team is notified.
+You write an {{esql}} query that defines what to watch for, decide whether matches are tracked as [alerts](alerting/esql/alerts.md) or recorded as rule events for later analysis, and control notifications through action policies that handle routing, frequency, and notification batching. {{alerting-v2-system-cap}} also adds alert lifecycle tracking, per-series snooze, queryable rule event history, and rules that can correlate those events for escalation. It is a strong fit when you want full control over what data travels with each detection and how your team is notified.
 
 :::{note}
 {{alerting-v2-system-cap}} runs next to {{alerting-v1-system}} on {{serverless-full}} and {{stack}} 9.5 and later. You don't have to move everything at once. You can copy or rebuild rules when you're ready, and your existing {{alerting-v1-system}} rules won't be affected.

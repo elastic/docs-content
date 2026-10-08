@@ -10,12 +10,9 @@ description: "Configure rule grouping to track multiple subjects as independent 
 
 # Rule grouping [rule-grouping]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
+Rule grouping is an optional {{alerting-v2-system}} setting that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 
-Rule grouping is an optional setting that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
-
-When matches are grouped into alert episodes, each group becomes its own alert episode with an independent lifecycle. One group can be active while another has recovered, and notifications apply per alert episode, not across all groups combined. Snooze state is also per series. Snoozing one group doesn't affect other groups tracked by the same rule.
+When matches are grouped into alerts, each group becomes its own alert with an independent lifecycle. One group can be active while another has recovered, and notifications apply per alert, not across all groups combined. Snooze state is also per series. Snoozing one group doesn't affect other groups tracked by the same rule.
 
 ## When to configure grouping [grouping-when-to-use]
 
@@ -30,7 +27,7 @@ Skip grouping when:
 * Your query does not use a `BY` clause. Grouping requires `BY` columns in the query output to be meaningful.
 * You intentionally want a single alert series for the rule regardless of how many subjects match. An example is a rule that fires when any host in a cluster is down and the individual host identity doesn't matter for the notification.
 
-Rule grouping controls how alert series are created. Notification grouping, configured on an action policy, controls how those alert episodes are batched into messages. These are separate settings.
+Rule grouping controls how alert series are created. Notification grouping, configured on an action policy, controls how those alerts are batched into messages. These are separate settings.
 
 ## Configure grouping fields [grouping-fields-config]
 

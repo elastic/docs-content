@@ -9,12 +9,9 @@ products:
 description: "License, connector, data, and space requirements, plus how to turn the system on and off."
 ---
 
-# Set up the system [setup]
+# Set up [setup]
 
-:::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
-:::
-
-This page lists the requirements and shows you how to turn the system on and off.
+This page lists the requirements and shows you how to turn {{alerting-v2-system}} on and off.
 
 ## Before you use the system [alerting-setup-requirements]
 
