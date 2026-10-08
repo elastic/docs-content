@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: Kibana ES|QL alerting writes each match as a rule event, then either groups those events into an alert episode with notifications or keeps them available for later analysis.
+description: Kibana Universal Alerting writes each match as a rule event, then either groups those events into an alert episode with notifications or keeps them available for later analysis.
 ---
 
 # Overview [system-overview]
