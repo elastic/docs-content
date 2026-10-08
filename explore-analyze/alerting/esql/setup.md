@@ -48,7 +48,7 @@ Elastic manages {{alerting-v2-system}} in {{serverless-short}} projects. To turn
 ::::
 
 ::::{applies-item} stack: experimental 9.6+
-To turn off {{alerting-v2-system}}, set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md), then restart {{kib}}. This removes the {{alerting-v2-system}} UI and APIs, and stops rules and action policies from running.
+To turn off {{alerting-v2-system}}, set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}. This removes the {{alerting-v2-system}} UI and APIs, and stops rules and action policies from running.
 ::::
 
 ::::{applies-item} stack: experimental =9.5
@@ -57,7 +57,7 @@ To turn off {{alerting-v2-system}}, go to the **Advanced Settings** page, select
 Turning off the setting does not delete any data. {{kib}} retains your rules and action policies as saved objects, and keeps existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the {{alerting-v2-system}} UI.
 
 :::{important}
-Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but does not stop rules and action policies from running. To stop both, set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md).
+Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running. To stop both, set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
 :::
 ::::
 :::::
@@ -102,7 +102,7 @@ To show the **Alerts (V1)** page:
 
 ## Next steps [alerting-setup-next-steps]
 
-After you meet the requirements:
+After you meet the requirements and the system is on:
 
 - [Configure access](manage/configure-access.md) to create or update a role with access to the {{alerting-v2-system}} features and the data streams they write to.
 - [Create your first rule](get-started/create-your-first-rule.md) to load sample data, write a detection query, and observe the alert lifecycle.
