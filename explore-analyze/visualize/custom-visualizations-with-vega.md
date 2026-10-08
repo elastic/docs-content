@@ -1539,7 +1539,7 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-[Variable controls](add-variable-controls.md) bind interactive dashboard controls to variables in {{esql}} queries. A Vega visualization on a dashboard uses a control when the query of one of its {{esql}} data sources references the control's variable. If the spec has several {{esql}} data sources, each one uses only the controls that its own query references.
+To make a Vega visualization react to a dashboard control, reference the control's name in the query of one of its {{esql}} data sources. [Variable controls](add-variable-controls.md) bind interactive controls to variables in {{esql}} queries, so when the selection changes, the query runs again with the new value. If the spec has several {{esql}} data sources, each one uses only the controls that its own query references.
 
 To reference a control, use its name in the query, as you do in other {{esql}} visualizations. The name starts with `?` for a value, or with `??` for a field or function. To create a control, refer to [Add variable controls](add-variable-controls.md#create-variable-control).
 
@@ -1562,7 +1562,7 @@ For example, a variable control named `?machineos` offers the operating systems 
 }
 ```
 
-1. `?machineos` is the variable of the control. When the selection changes, the query runs again with the new value.
+1. `?machineos` is the name of the control.
 
 To give a variable a default value, add it to the `params` array of the `url` object. Use the variable name without the `?` prefix:
 
@@ -1572,7 +1572,7 @@ To give a variable a default value, add it to the `params` array of the `url` ob
 ]
 ```
 
-On a dashboard, a control with the same name replaces the `params` value, and `params` still supplies the variables that no control sets. The **Visualize library** editor and **Canvas** don't have dashboard controls, so `params` is the only source of values there. If the query references a variable that `params` doesn't set, the visualization shows an error.
+On a dashboard, a control whose name matches a `params` key replaces that value, and `params` still supplies the variables that no control sets. The **Visualize library** editor and **Canvas** don't have dashboard controls, so `params` is the only source of values there. If the query references a variable that `params` doesn't set, the visualization shows an error.
 
 A default in `params` lets the visualization render in the **Visualize library** editor. After you add the visualization to a dashboard, the control takes over.
 

@@ -13,6 +13,8 @@ products:
 
 Variable controls bind interactive controls to variables in your {{esql}} visualization queries. Unlike the standard [dashboard controls](dashboard-controls.md) that filter using data view fields, variable controls work directly with {{esql}} queries to enable dynamic filtering, grouping, and function selection.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To make a Vega visualization react to a variable control, refer to [Apply dashboard variable controls to {{esql}} data sources](custom-visualizations-with-vega.md#vega-esql-variable-controls).
+
 :::{note}
 :applies_to: {"stack": "ga 9.0-9.1"}
 In versions 9.0 and 9.1, variable controls are called {{esql}} controls.
