@@ -115,7 +115,7 @@ You can enter each of these values directly in the time filter, and a single val
 
 #### Round a time range manually
 
-A relative value such as `-1y` is an offset from now. Adding `/` and a rounding unit to an offset moves a start back to the beginning of that unit and an end forward to the end of it. The time filter accepts these rounding units:
+A relative value such as `-1y` is an offset from the current date and time. Adding `/` and a rounding unit to an offset moves a start back to the beginning of that unit and an end forward to the end of it. The time filter accepts these rounding units:
 
 | Unit | Rounds to |
 | --- | --- |
