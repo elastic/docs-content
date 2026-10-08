@@ -75,7 +75,7 @@ Migrating to {{edot}} changes how your data is stored in {{es}}, which affects e
 
 - Custom span and transaction attributes move from `labels.*` and `numeric_labels.*` (dots replaced by underscores) to `attributes.*` (dots preserved). For example, `labels.customer_id` becomes `attributes.customer.id`.
 - Resource attributes such as host name and service name move under `resource.attributes.*`. Many remain queryable with their ECS names (for example, `service.name`), but alias coverage isn't complete.
-- Data streams change from `apm.app.<service>` to `generic.otel`.
+- Data streams change. Classic {{product.apm}} writes to signal-specific streams such as `traces-apm*`, `metrics-apm.app.*`, and `logs-apm.app.*`. OTel-native data goes to `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default` by default, and routing is configurable.
 - Runtime metric names change. For Java, `jvm.memory.heap.used` becomes `jvm.memory.used` filtered by `jvm.memory.type = heap`. Dashboards that target the old names don't show the relevant data.
 
 For a complete comparison of field names and storage structures, refer to [OpenTelemetry data streams compared to classic {{product.apm}}](opentelemetry://reference/compatibility/data-streams.md).
@@ -142,7 +142,13 @@ How you switch logs and metrics depends on whether you collect with {{fleet}}-ma
 
 ### If you use {{agent}} ({{fleet}}-managed) [switch-to-otel-fleet]
 
-If you use {{fleet}}-managed {{agent}} to collect logs and metrics, you don't need to replace your setup to get the benefits of the OTel architecture. Starting with {{agent}} 9.2, {{agent}} runs an embedded OTel Collector. Beat inputs are migrated to run as _Beat receivers_ inside that Collector incrementally across releases (self-monitoring data in 9.2, some metrics inputs in 9.3, all metrics inputs in 9.4). Log inputs continue to use the previous architecture until a future release.
+If you use {{fleet}}-managed {{agent}} to collect logs and metrics, you don't need to replace your setup to get the benefits of the OTel architecture. Starting with {{agent}} 9.2, {{agent}} runs an embedded OTel Collector. Beat inputs migrate to run as _Beat receivers_ inside that Collector incrementally across releases:
+
+- {applies_to}`stack: ga 9.2+` Agent self-monitoring data uses Beat receivers by default.
+- {applies_to}`stack: ga 9.3+` Some metrics inputs use Beat receivers by default.
+- {applies_to}`stack: ga 9.4+` All metrics inputs use Beat receivers by default.
+
+Log inputs continue to use the previous architecture until a future release.
 
 What this means in practice:
 
@@ -152,7 +158,7 @@ What this means in practice:
 
 For a practical reference on the {{agent}} OTel architecture, the Beat receiver rollout across versions, and the collector type comparison, refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md).
 
-For OTel-native collection through {{agent}} integrations (preview), refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md).
+{applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` For OTel-native collection through {{agent}} integrations, refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md).
 
 ### If you use {{beats}} directly [switch-to-otel-beats]
 
@@ -235,7 +241,7 @@ Remove your previous {{apm-agent}} configuration, including environment variable
 
 ::::{step} Update saved searches, dashboards, and alerts
 
-Review and update {{kib}} saved searches, dashboards, and alerts that referenced classic {{product.apm}} field names (`labels.*`, `numeric_labels.*`, `apm.app.*` data streams).
+Review and update {{kib}} saved searches, dashboards, and alerts that referenced classic {{product.apm}} field names (`labels.*`, `numeric_labels.*`) or data streams (`traces-apm*`, `metrics-apm*`, `logs-apm*`).
 
 ::::
 
