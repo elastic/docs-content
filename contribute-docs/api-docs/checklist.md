@@ -13,7 +13,7 @@ Use this checklist to verify the quality, completeness, and consistency of your 
 ## Structure, organization, and metadata
 - Include required [OpenAPI document info](./organize-annotate.md#add-openapi-document-info)
 - Include [OpenAPI specification version](./organize-annotate.md#add-openapi-specification-version)
-- Define unique [operation identifiers](./organize-annotate.md#add-operation-identifiers) using camelCase
+- Define unique [operation identifiers](./organize-annotate.md#add-operation-identifiers)
 - Use consistent [tags](./organize-annotate.md#group-apis-with-tags) to group related operations
 - Document [API lifecycle status](./organize-annotate.md#specify-api-lifecycle-status) (availability, stability, version information)
 - Mark deprecated APIs and properties with appropriate notices

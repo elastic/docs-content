@@ -28,7 +28,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Bar chart showing sales by category with different layouts](../../images/stacked-bar-chart.png)
 
-## Build a bar chart with the point-and-click editor [build-a-bar-chart]
+## Create a bar chart [create-a-bar-chart]
+
+### Create a bar chart with the point-and-click editor [build-a-bar-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -36,6 +38,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a bar chart:
 
 :::::{stepper}
+:toc: false
 
 ::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -69,7 +72,7 @@ Refer to [](#settings) for all data configuration options for your bar chart.
 
 :::::
 
-## Build a bar chart with an {{esql}} query [build-a-bar-chart-with-esql]
+### Create a bar chart with an {{esql}} query [build-a-bar-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

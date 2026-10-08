@@ -32,6 +32,13 @@ $$$a2a-server$$$
 A2A server
 :   The {{agent-builder}} endpoint that exposes agents to external A2A clients. Use it to integrate {{agent-builder}} agents with third-party agent frameworks. See [](a2a-server.md).
 
+$$$access-control$$$
+$$$visibility$$$
+Access control
+:   A custom agent's sharing setting that controls who can view and edit it. The levels, from least to most restrictive, are **Public** (anyone can view and edit), **Shared** (anyone can view; only the owner or an administrator can edit), and **Private** (only the owner or an administrator). See [](custom-agents.md#access-control-settings).
+
+    {applies_to}`stack: ga =9.4` This setting is labeled **Visibility**.
+
 $$$agent$$$
 Agent
 :   A capability that iteratively uses a large language model (LLM), system context, and a set of tools and skills to complete a task. Each agent translates a user's natural language request into a sequence of tool calls and reasoning steps to answer questions, take actions, or support workflows. {{agent-builder}} ships with built-in agents and lets you create custom agents. See [](agent-builder-agents.md#how-agents-work).
@@ -118,7 +125,7 @@ Conversation history
 
 $$$custom-agent$$$
 Custom agent
-:   An agent you create with your own system prompt, tools, skills, and visibility settings. Custom agents are space-aware and exist only in the {{kib}} space where they were created. See [](custom-agents.md#create-a-custom-agent).
+:   An agent you create with your own system prompt, tools, skills, and access control settings. Custom agents are space-aware and exist only in the {{kib}} space where they were created. See [](custom-agents.md#create-a-custom-agent).
 
 $$$custom-instructions$$$
 Custom instructions
@@ -181,8 +188,8 @@ Flyout mode
 ## G
 
 $$$generative-ai-connector$$$
-Generative AI connector
-:   A {{kib}} connector that connects {{agent-builder}} to an LLM provider such as OpenAI, Anthropic, Amazon Bedrock, Google Gemini, or Azure OpenAI. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. See [](models.md#configure-a-connector).
+Generative AI connector {applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated`
+:   A {{kib}} connector that connects {{agent-builder}} to an LLM provider. The connector types are OpenAI (which also covers Azure OpenAI and OpenAI-compatible providers), Amazon Bedrock, Google Gemini, and AI Connector. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. Deprecated in favor of the [](#inference-endpoint). See [](models.md#configure-a-connector).
 
 $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
@@ -242,7 +249,7 @@ MCP tool {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
 $$$model$$$
 Model
-:   The LLM that an agent uses to reason and produce responses. {{agent-builder}} can use Elastic Managed LLMs, third-party models accessed through an [](#inference-endpoint), or models accessed through a [](#generative-ai-connector). See [](models.md#use-additional-models).
+:   The LLM that an agent uses to reason and produce responses. {{agent-builder}} can use Elastic Managed LLMs or third-party models accessed through an [](#inference-endpoint). Models accessed through a [](#generative-ai-connector) are also supported, but that mechanism is deprecated. See [](models.md#use-additional-models).
 
 $$$model-selector$$$
 Model selector
@@ -250,7 +257,7 @@ Model selector
 
 $$$monitor-inference$$$
 `monitor_inference`
-:   The {{es}} cluster privilege required when an agent uses an AI connector that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [](permissions.md#es-privileges).
+:   The {{es}} cluster privilege required when an agent uses a model that calls the {{es}} Inference API, such as an [](#inference-endpoint) or the Elastic Managed LLM. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege when the selected model routes through the Inference API. See [](permissions.md#es-privileges).
 
 ## O
 
@@ -333,12 +340,6 @@ Token
 $$$tool$$$
 Tool
 :   A modular function an agent can call to search, retrieve, or manipulate {{es}} data. Tools are the primary mechanism for grounding agent capabilities in your data. {{agent-builder}} provides built-in tools; you can also create custom tools of four types: {{esql}}, index search, MCP, and workflow. See [](tools.md#how-agents-use-tools).
-
-## V
-
-$$$visibility$$$
-Visibility
-:   A custom agent's sharing setting that controls who can see and edit it. Options are **Public** (anyone in the space), **Shared** (anyone can view; only owners and admins can edit), and **Private** (only owners and admins). See [](custom-agents.md#visibility-settings).
 
 ## W
 
