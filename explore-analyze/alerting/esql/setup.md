@@ -55,7 +55,7 @@ serverless: experimental
 stack: experimental 9.6+
 ```
 
-To try features of {{alerting-v2-system}} that are still experimental, turn on the [**Alerting V2: Experimental Features**](kibana://reference/advanced-settings.md#alerting-v2-experimentalfeatures) advanced setting. The setting is off by default and applies only to the space where you turn it on.
+To try features of {{alerting-v2-system}} that are still experimental, turn on the **Alerting V2: Experimental Features** advanced setting (`alerting:v2:experimentalFeatures`). The setting is off by default and applies only to the space where you turn it on.
 
 When the setting is on, you can:
 
@@ -77,7 +77,7 @@ serverless:
 stack: experimental 9.6+
 ```
 
-When {{alerting-v2-system}} is on, the Observability solution navigation replaces the **Alerts** link with an **Alerting** menu. By default, the menu has no link to the Observability alerts page that shows alerts from {{alerting-v1-system}} rules. To add the link, turn on the [**Show V1 Observability alerts table**](kibana://reference/advanced-settings.md#alerting-v1-showv1observabilityalertstable) advanced setting in the space. The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results.
+When {{alerting-v2-system}} is on, the Observability solution navigation replaces the **Alerts** link with an **Alerting** menu. By default, the menu has no link to the Observability alerts page that shows alerts from {{alerting-v1-system}} rules. To add the link, turn on the **Show V1 Observability alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`) in the space. The setting is off by default. The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results.
 
 To show the **Alerts (V1)** page:
 
