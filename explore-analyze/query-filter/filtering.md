@@ -2,6 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-concepts-analysts.html
   - https://www.elastic.co/guide/en/kibana/current/set-time-filter.html
+description: Filter data in Kibana with the time filter and structured filters. Set absolute or relative time ranges, round them to whole days or months, and refine searches in most apps.
+type: overview
 applies_to:
   stack: ga
   serverless: ga
@@ -48,7 +50,7 @@ When you enter the time range as text, the time filter interprets a single value
 | Date math | `now-15m`, `now/w`, and other [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) expressions. |
 | Preset labels | `Last 24 hours` or any other range listed under **Presets**. |
 
-A rounding unit makes a range start or end at the edge of a day, month, or year. For example, `-1y/M` starts at the beginning of the month one year ago, and the time filter adds **(rounded)** after the label. For more examples, refer to [Round a range to whole days, months, or years](#round-relative-time-ranges).
+A rounding unit makes a range start or end at the edge of a day, month, or year. For example, `-1y/M` starts at the beginning of the month one year ago, and the time filter adds a **(rounded)** suffix after the label. For more examples, refer to [Round a range to whole days, months, or years](#round-relative-time-ranges).
 
 The time filter can also give you the text for a range:
 
@@ -102,6 +104,8 @@ serverless: preview
 
 With rounding, a relative range starts or ends at the edge of a day, month, or year instead of at an exact time.
 
+Rounding is useful when you want whole days, weeks, months, or years instead of a window that shifts with the time you open it. If you round both ends of a range to the day, for example, the range covers the same full days whenever you open it that day.
+
 For example, if it's October 8, 2026 at 13:09, a range that reaches back one year starts at a different point depending on how you round it:
 
 | You enter | The range starts at |
@@ -111,11 +115,11 @@ For example, if it's October 8, 2026 at 13:09, a range that reaches back one yea
 | `-1y/M` | October 1, 2025, 00:00 |
 | `-1y/y` | January 1, 2025, 00:00 |
 
-You can enter each of these values directly in the time filter, and a single value runs from that point to now.
+Each of these is a relative time, as described in [Time filter](#set-time-filter). Like any single value, it runs from that point to now.
 
-#### Round a time range manually
+#### Syntax for rounding time ranges
 
-A relative value such as `-1y` is an offset from the current date and time. Adding `/` and a rounding unit to an offset moves a start back to the beginning of that unit and an end forward to the end of it. The time filter accepts these rounding units:
+A relative value such as `-1y` is an offset from the current date and time. If you add `/` and a rounding unit to an offset, a start moves back to the beginning of that unit and an end moves forward to the end of it. The time filter accepts these rounding units:
 
 | Unit | Rounds to |
 | --- | --- |
@@ -130,23 +134,26 @@ A relative value such as `-1y` is an offset from the current date and time. Addi
 
 These units use [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) syntax, but the time filter accepts only the units in this table. A week starts on the day set in the **Day of week** [advanced setting](kibana://reference/advanced-settings.md).
 
-Rounding units are case-sensitive: `m` is the minute and `M` is the month. Words such as `/mo` or `/month` aren't accepted, and neither is `/H`, so use `/h` for hours. The entry that starts at the beginning of the month one year ago is `-1y/M`.
+Rounding units are case-sensitive: `m` is the minute and `M` is the month. The time filter doesn't accept words such as `/mo` or `/month`. It doesn't accept `/H` either, so use `/h` for hours. The entry that starts at the beginning of the month one year ago is `-1y/M`.
 
 With `to` between a start and an end, you round both edges. If it's October 8, 2026, these ranges cover:
 
 | You enter | The range covers |
 | --- | --- |
 | `-7d/d to -1d/d` | The last 7 full days, from October 1 at 00:00 through October 7 at 23:59 |
+| `-1M/M to -1M/M` | The whole month before this one, September 2026 in this example |
 | `-1y/M to -1y/M` | The whole month one year ago, October 2025 in this example |
 
-#### Round every relative time range automatically
+#### Automatic rounding of relative time ranges
 
-An option exists to round relative time ranges automatically, so you don't have to add a rounding unit each time. The option is off by default. To turn it on, select {icon}`gear` **Settings** in the time filter, then turn on **Round relative time ranges**.
+To round relative ranges without typing a rounding unit each time, select {icon}`gear` **Settings** in the time filter, then turn on **Round relative time ranges**. The option is off by default.
 
 When the setting is on:
 
 - A rounding unit that you set manually stays as it is, so `-7d/M` doesn't change.
-- The time filter adds a rounding unit to each start or end that is a single offset from now and has no rounding unit. For example, `-7d` becomes `-7d/h`, so the range starts at the beginning of the hour instead of at the exact time. The unit that the time filter adds depends on the unit of the offset:
+- The time filter adds a rounding unit to a start or end such as `-7d` or `-1y` that has none. For example, `-7d` becomes `-7d/h`, so the range starts at the beginning of the hour instead of at the exact time.
+
+The unit that the time filter adds depends on the unit of the offset:
 
 | Offset unit | Rounds to | Example |
 | --- | --- | --- |
@@ -159,17 +166,19 @@ A start or end without an offset, such as `now`, stays as it is.
 
 #### Why does a range say (rounded)?
 
-If a range label has a **(rounded)** mention, the start or end has an offset and a rounding unit. This can happen when:
+A range label ends with **(rounded)** when its start or end has an offset and a rounding unit. This can happen when:
 
-- The range comes from a preset that includes a rounding unit. By default, Last 24 hours, Last 3 days, Last 7 days, Last 30 days, Last 90 days, and Last 1 year do. Presets such as Last 15 minutes don't.
-- The range includes a rounding unit that was entered manually, as in `-1y/M`.
+- The range comes from a preset that includes a rounding unit. In the default presets, **Last 24 hours**, **Last 3 days**, **Last 7 days**, **Last 30 days**, **Last 90 days**, and **Last 1 year** include one. **Last 24 hours** rounds to the hour, and the others round to the day. Presets such as **Last 15 minutes** don't.
+- The range includes a rounding unit typed in the time filter, as in `-1y/M`.
 - The **Round relative time ranges** setting added a rounding unit.
 
-The mention appears after the label on the time filter button and in the **Presets** and **Recent** lists. The label describes the offset, not the rounded start. For example, `-1y` shows Last 1 year, and `-1y/y` shows Last 1 year (rounded) even though it starts on January 1 of last year.
+The suffix appears after the label on the time filter button and in the **Presets** and **Recent** lists. The label describes the offset, not the rounded start. For example, `-1y` shows **Last 1 year**, and `-1y/y` shows **Last 1 year (rounded)** even though, if it's October 8, 2026, it starts on January 1, 2025.
 
-With the setting on, the ranges you apply show the mention in **Recent**, because the time filter saves them with the added rounding unit. A preset that has no rounding unit doesn't show the mention in **Presets**, but the button shows it after you select that preset.
+The suffix isn't a warning. It reminds you that the range doesn't start or end at the exact time its label says. To avoid it, enter the range without a rounding unit, such as `-1y`, and keep **Round relative time ranges** off.
 
-A range that covers one whole period doesn't get the mention, because its label already says what it covers. Today (`now/d`) and Yesterday (`-1d/d to -1d/d`) are examples. This only applies when the start and end are identical and the offset and the rounding use the same unit. For example, `-1y/M to -1y/M` still gets the mention, because the offset uses years and the rounding uses months.
+With the setting on, the ranges you apply show the suffix in **Recent**, because the time filter saves them with the added rounding unit. A preset that has no rounding unit doesn't show the suffix in **Presets**, but the time filter button shows it after you select that preset.
+
+Some ranges never get the suffix. **Today** (`now/d`) has a rounding unit but no offset. **Yesterday** (`-1d/d to -1d/d`) has an offset, but it covers one whole day and its label already says so. A range gets this exemption only when the start and end are identical and the offset and rounding unit use the same unit. For example, `-1y/M to -1y/M` still gets the suffix, because the offset uses years and the rounding uses months.
 
 ## Additional filters [autocomplete-suggestions]
 
