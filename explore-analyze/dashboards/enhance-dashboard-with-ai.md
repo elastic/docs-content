@@ -29,7 +29,7 @@ If you have unsaved edits that you want to keep, save the dashboard first. That 
 2. In the application menu, select **Enhance**.
 
    :::{image} /explore-analyze/images/dashboard-enhance-button.png
-   :alt: Dashboard in edit mode with the Enhance button in the application menu and its tooltip, Improve the content and style of your dashboard using AI. The dashboard has a humidity metric, a pie chart, and a tag cloud.
+   :alt: Dashboard in edit mode with the Enhance button highlighted in the application menu, and its tooltip, Improve the content and style of your dashboard using AI. The dashboard has a humidity metric, a pie chart, and a tag cloud.
    :screenshot:
    :::
 
