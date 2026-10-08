@@ -71,9 +71,9 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4`
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This tool isn't available through the [MCP server](../mcp-server.md).
-
     **Prerequisites:** In 9.4 and 9.5, the `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on. Starting in 9.6, the tool is available without it.
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This tool isn't available through the [MCP server](../mcp-server.md).
 
 `platform.core.list_inference_endpoints` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   Lists the chat completion models available to agents, with their IDs, names, and types. Includes [{{infer}} endpoints](../models.md#add-an-inference-endpoint) with the `chat_completion` task type, and [Generative AI connectors](../models.md#configure-a-connector), which are deprecated. {{infer-cap}} endpoints with other task types, such as `text_embedding` and `rerank`, are excluded.
@@ -166,7 +166,9 @@ $$$agent-builder-cases-manage-attachments-tool$$$ `platform.core.cases.manage_at
 The following cases tool was available in 9.5 and was removed in 9.6:
 
 `platform.core.cases.attachments` {applies_to}`stack: preview 9.5, removed 9.6` {applies_to}`serverless: removed`
-:   Managed case attachments, including adding comments, linking alerts, linking events, and listing existing attachments. Replaced by [`platform.core.cases.get_attachments`](#agent-builder-cases-get-attachments-tool) for reading attachments and by [`platform.core.cases.manage_attachments`](#agent-builder-cases-manage-attachments-tool) for adding them. Agents and skills that use this tool automatically get both replacement tools added when {{kib}} starts, so they keep working without changes. The old tool ID stays in their saved configuration. Before you update one of these agents or skills, including through the API, remove `platform.core.cases.attachments` from its tool list. Requests that include it fail because the tool no longer exists.
+:   Managed case attachments, including adding comments, linking alerts, linking events, and listing existing attachments. Replaced by [`platform.core.cases.get_attachments`](#agent-builder-cases-get-attachments-tool) for reading attachments and by [`platform.core.cases.manage_attachments`](#agent-builder-cases-manage-attachments-tool) for adding them.
+
+    When {{kib}} starts, it automatically adds both replacement tools to agents and skills that use this tool, so they keep working without changes. However, the old tool ID stays in their saved configuration. Before you update one of these agents or skills, including through the API, remove `platform.core.cases.attachments` from its tool list. Requests that include it fail because the tool no longer exists.
 
 ### Workflows tools
 ```{applies_to}
@@ -441,7 +443,7 @@ PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
 
 Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active. Because they are scoped to a skill rather than assignable on their own, they are not listed among the namespaced tools in this reference. For example:
 
-- The [`dashboards`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill (`dashboard-management` in 9.5 and earlier) includes an inline tool for generating and updating dashboards.
+- The [`dashboards`](../builtin-skills-reference.md#agent-builder-dashboards-skill) skill (`dashboard-management` in 9.5 and earlier) includes an inline tool for generating and updating dashboards.
 - The `rule-management` skill includes the `platform.alerting.manage_rule` and `platform.alerting.manage_action_policy` tools for composing and modifying alerting rules and their action policies.
 - The `alert-triage` skill includes the `security.alert-triage` tool for prioritizing the alert queue.
 

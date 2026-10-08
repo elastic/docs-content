@@ -80,7 +80,7 @@ curl -X GET "${KIBANA_URL}/api/context_engine/ai_index" \
 
 Use each entry's `description` to determine whether the AI index is relevant. Keep its `id` for the describe request. The response also contains `dest.value`, which is the exact {{esql}} target for the AI index.
 
-The list includes only AI indices registered in the space targeted by the request. An AI index is omitted when the caller cannot read its backing index. It can still appear before an automation has written any KIs to its backing index.
+The list includes only AI indices registered in the space that the request targets. An AI index is omitted when the caller cannot read its backing index. It can still appear before an automation has written any KIs to its backing index.
 
 ### 2. Describe an AI index
 
