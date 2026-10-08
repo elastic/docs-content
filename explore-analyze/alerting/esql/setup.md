@@ -59,17 +59,17 @@ To try features of {{alerting-v2-system}} that are still experimental, turn on t
 
 When the setting is on, you can:
 
-- Chain rules to detect multi-step alert patterns, using **Build a sequence (Experimental)** on the **Rules** page.
-- Create rules and action policies with {{agent-builder}}, using **Create with agent (Experimental)** on the **Rules** and **Action Policies** pages. For the other requirements, refer to [Create rules and action policies with {{agent-builder}}](rules/create-rules-action-policies-agent-builder.md).
+- On the **Rules** page, use **Build a sequence (Experimental)** to chain rules that detect multi-step alert patterns.
+- On the **Rules** and **Action Policies** pages, use **Create with agent (Experimental)** to create rules and action policies with {{agent-builder}}. For the requirements of this option, refer to [Create rules and action policies with {{agent-builder}}](rules/create-rules-action-policies-agent-builder.md).
 
 To turn on experimental features:
 
-1. Open the space where you want to use the features.
+1. Switch to the space where you want to use the features.
 2. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Select the **Space Settings** tab, then turn on **Alerting V2: Experimental Features**.
 4. Save your changes, then reload {{kib}}.
 
-## Show the V1 alerts page in Observability [alerting-setup-v1-alerts-page]
+## Show the Alerts (V1) page in Observability [alerting-setup-v1-alerts-page]
 
 ```yaml {applies_to}
 serverless:
@@ -77,11 +77,11 @@ serverless:
 stack: experimental 9.6+
 ```
 
-When {{alerting-v2-system}} is on, the Observability navigation replaces the **Alerts** link with an **Alerting** menu. By default, the menu has no link to the alerts page for {{alerting-v1-system}} rules. To add one, turn on the [**Show V1 Observability alerts table**](kibana://reference/advanced-settings.md#alerting-v1-showv1observabilityalertstable) advanced setting in the space. **Alerts (V1)** then appears in the **Alerting** menu and in global search, and opens a page that shows only alerts from {{alerting-v1-system}} rules.
+When {{alerting-v2-system}} is on, the Observability solution navigation replaces the **Alerts** link with an **Alerting** menu. By default, the menu has no link to the Observability alerts page that shows alerts from {{alerting-v1-system}} rules. To add the link, turn on the [**Show V1 Observability alerts table**](kibana://reference/advanced-settings.md#alerting-v1-showv1observabilityalertstable) advanced setting in the space. The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results.
 
-To show the V1 alerts page:
+To show the **Alerts (V1)** page:
 
-1. Open the space where you want the page.
+1. Switch to the space where you want the page.
 2. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Select the **Space Settings** tab, then turn on **Show V1 Observability alerts table**.
 4. Save your changes, then reload {{kib}}.
