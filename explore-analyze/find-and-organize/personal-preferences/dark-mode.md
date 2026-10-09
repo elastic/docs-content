@@ -26,7 +26,7 @@ If you haven't saved a color mode preference, Kibana applies a default color mod
 2. Select **Appearance**.
    
    :::{note}
-   On self-managed deployments of {{kib}}, this option is located on your profile page. To access it, select **Edit profile** from the header's user menu.
+   If you don't sign in with your {{ecloud}} account, for example you use a username and password or a self-managed deployment, this option is on your profile page. To access it, select **Edit profile** from the header's user menu.
    :::
 
 3. Choose a color mode:
