@@ -54,7 +54,7 @@ Before creating a dashboard, ensure you have:
         * **Store time with dashboard** — Saves the specified time filter.
         * **Use margins between panels** — Adds a margin of space between each panel.
         * **Show panel titles** — Displays the titles in the panel headers.
-        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Show panel borders** — Displays a border around each panel. Turn off for a cleaner look. Individual panels can override this setting from their own settings.
+        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Show panel borders** — Displays a border around each panel. Turn off for a cleaner look. Individual panels can [override this setting](arrange-panels.md#customize-panel-settings) from their own settings.
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.
@@ -88,4 +88,14 @@ Before creating a dashboard, ensure you have:
 ## Create a dashboard with {{agent-builder}}
 
 You can also create dashboards through natural language chat with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/chat.md) agents. Describe what you want to visualize and the agent builds a dashboard with {{esql}}-powered visualization panels. You can iterate on the dashboard in conversation before saving it. To learn more, refer to [Dashboards and visualizations in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
+
+## Remove a panel from a dashboard [remove-panel]
+
+If a panel no longer belongs on a dashboard, you can remove it without affecting any other dashboard.
+
+1. In the application menu, select **Edit**.
+2. Hover over the panel, open the panel menu {icon}`boxes_vertical`, and select **Remove**.
+3. Save the dashboard.
+
+If the panel came from the [Visualize library](../visualize/visualize-library.md), it stays in the library and on every other dashboard that uses it. If you created the panel directly on the dashboard, removing it deletes it. To keep a copy, [save the panel to the library](../visualize/visualize-library.md#save-to-visualize-library) before you remove it.
 

@@ -420,6 +420,8 @@ When your visualization includes one data view, you can open and explore the vis
 
 To get started, click **Explore data in Discover** in the toolbar.
 
+To open the data behind a visualization that's already on a dashboard, refer to [Open the data behind a panel in Discover](../dashboards/using.md#explore-panel-data-in-discover).
+
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 
 

@@ -19,6 +19,7 @@ This page covers:
 - [Layout examples](#dashboard-layout-examples)
 - [Collapsible sections](#collapsible-sections)
 - [Moving and resizing panels](#resizing-containers)
+- [Customizing a panel's title, description, and border](#customize-panel-settings)
 - [Copying and duplicating panels](#duplicate-panels)
 
 ## Requirements [arrange-panels-requirements]
@@ -169,6 +170,25 @@ To resize a panel:
 :::{tip}
 While moving or resizing a panel, you can cancel the action at any time by pressing `Escape`.
 :::
+
+## Customize a panel's title, description, and border [customize-panel-settings]
+
+A clear title and a cleaner header help viewers read a dashboard faster. You can give one panel its own title and description, hide its title, or remove its border. To set the default for every panel at once, use the display options in the dashboard **Settings**, as described in [Create a dashboard](create-dashboard.md).
+
+1. In the application menu, select **Edit**.
+2. Hover over the panel, open the panel menu {icon}`boxes_vertical`, and select **Settings**.
+3. In the **Settings** flyout, change the options you need:
+
+    * **Show title**: Turn off to hide the panel title.
+    * **Title** and **Description**: Enter your own text. Select **Reset to default** to go back to the original text.
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Show panel border**: Turn off to remove the border from this panel, even if the dashboard shows borders by default.
+
+4. Select **Apply**.
+5. Save the dashboard.
+
+The panel shows your changes as soon as you select **Apply**, and the dashboard keeps them when you save it.
+
+The same flyout lets you [apply a custom time range to the panel](using.md#_apply_a_custom_time_range_to_a_panel).
 
 ## Copy and duplicate panels [duplicate-panels]
 

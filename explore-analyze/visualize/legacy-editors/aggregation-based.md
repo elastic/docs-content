@@ -145,6 +145,8 @@ You can open the following aggregation-based visualizations in **Lens**:
 
 To get started, click **Edit visualization in Lens** in the toolbar.
 
+You can also convert an aggregation-based visualization that's already on a dashboard. In **Edit** mode, open the panel menu {icon}`boxes_vertical` and select **Convert to Lens**. The option appears only when {{kib}} can convert the visualization's configuration, and you need at least **Read** access to the **Visualize library** feature. **Lens** opens with the converted visualization. To replace the panel with it, select **Save and return**.
+
 For more information, check out [Create visualizations with Lens](../lens.md).
 
 
