@@ -13,7 +13,7 @@ products:
 
 # Event capture and {{elastic-defend}} [endpoint-event-capture]
 
-{{elastic-defend}} collects selective data on system activities in order to detect and prevent as many threats as possible, while balancing storage and performance overhead. To that end, {{elastic-defend}} isn’t designed to provide a complete capture of all system events. The event data that {{elastic-defend}} generates might be aggregated, truncated, or deduplicated as needed to optimize threat detection and prevention. To select which event categories {{elastic-defend}} collects on each operating system, refer to [Event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection).
+{{elastic-defend}} collects selective data on system activities in order to detect and prevent as many threats as possible, while balancing storage and performance overhead. To that end, {{elastic-defend}} isn’t designed to provide a complete capture of all system events. The event data that {{elastic-defend}} generates might be aggregated, truncated, or deduplicated as needed to optimize threat detection and prevention.
 
 You can supplement {{elastic-defend}}'s protection capabilities with additional [Elastic integrations](https://docs.elastic.co/en/integrations) and tools that provide more visibility and historical data. Consult the following sections to expand data collection for specific system events.
 

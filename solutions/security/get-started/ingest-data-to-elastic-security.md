@@ -14,7 +14,7 @@ description: Bring security data into Elastic Security. Start with an integratio
 
 # Ingest data to {{elastic-sec}} [security-ingest-data]
 
-Bring your security data into {{elastic-sec}} so detection rules, Attack Discovery, and other features can analyze it. Most security data comes in through integrations. If you're new to {{elastic-sec}}, start with an integration for a security tool you already use. If you also want to protect your hosts and collect endpoint data, use {{elastic-defend}}.
+Bring your security data into {{elastic-sec}} so its analytics, including detection, investigation, and threat hunting, can work across all of it. {{elastic-sec}} can ingest data from anywhere, using native Elastic ingest tools as well as [third-party tools](#security-ingest-other-methods) such as Cribl and Kafka. The most common way to get data in is with integrations, which connect to hundreds of common security tools. Integrations handle both ingesting your events and normalizing them to the [Elastic Common Schema (ECS)](ecs://reference/index.md).
 
 ## Select your ingestion method [security-ingest-select-method]
 
@@ -32,20 +32,20 @@ The method you use depends on what you want to protect or monitor, and on where 
 
 ## Ingest data with an integration [security-ingest-integrations]
 
-Elastic has hundreds of integrations that collect data from security tools, cloud services, identity providers, and operating systems. Most goals in the [ingestion method table](#security-ingest-select-method) start with one, including findings from third-party security tools and threat intelligence. Before you add an integration, decide how it collects data, whether you also want {{elastic-defend}} to protect your hosts, and [which data you need](#security-ingest-data-types).
+Elastic has hundreds of integrations that collect data from security tools, cloud services, identity providers, and operating systems. Integrations collect data in different ways, including APIs, syslog, cloud storage such as Amazon S3, and log files. Many include dashboards, so you can explore and visualize the data right away. Many also have related detection rules in {{elastic-sec}}, so you can start detecting threats as soon as the data arrives.
+
+Each integration has its own documentation with setup steps and configuration options. To find the one for your source, refer to [Elastic integrations](integration-docs://reference/index.md). Most goals in the [ingestion method table](#security-ingest-select-method) start with an integration, including findings from third-party security tools and threat intelligence.
 
 ### Decide between managed and {{agent}} integrations [security-ingest-collection-methods]
 
-Use the following table to decide how each integration collects data. An integration that's available as an {{managed-integration}} can also run on {{agent}}, so for those sources, pick the option that fits how much infrastructure you want to manage:
+On {{serverless-full}} projects and {{ech}} deployments, use an {{managed-integration}} whenever one is available for your source. It's the easiest way to get data in, because Elastic runs the collector for you and you only provide credentials. Not every integration is available as an {{managed-integration}}, so check the [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md) first. For other sources, and on self-managed deployments, use an integration that runs on {{agent}}.
+
+The following table compares the two types of integration:
 
 | Integration type | Who runs the collector | Data sources | To get started |
 |---|---|---|---|
 | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) | Elastic, on {{serverless-full}} projects and {{ech}} deployments. You only provide credentials, such as an API key. | Cloud services, through an API | Check whether your source has an {{managed-integration}} in the [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). |
 | Integrations that use [{{agent}}](/reference/fleet/index.md) | You. You install, update, and scale {{agent}} with {{fleet}}. | The host where {{agent}} runs, or remote sources such as syslog, cloud storage, or an API | [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md). |
-
-### Decide whether you need {{elastic-defend}} [security-ingest-endpoint-data]
-
-If you want to protect your hosts as well as collect data from them, add {{elastic-defend}}, an integration that runs on {{agent}}. It can block threats on each host, and it collects endpoint data, such as process, network, and file events. To learn what it collects, refer to [Configure endpoint protection with {{elastic-defend}}](/solutions/security/configure-elastic-defend.md#elastic-defend-data).
 
 ### What you can do with each type of data [security-ingest-data-types]
 
@@ -53,10 +53,11 @@ You don't need every type of data to get started. Start with the data for the ta
 
 | Data type | What you can do with it | How to get it |
 |---|---|---|
-| Logs and events | Spot threats and find out what happened across your tools and services. Detection rules alert you to suspicious activity, and you can investigate events in [Timeline](/solutions/security/investigate/timeline.md) and [Discover](/solutions/security/investigate/discover-security.md) and monitor them on the dashboards that integrations install. | Add the integration for each tool or service that produces the logs. To also find unusual activity with {{ml}}, add [behavioral detection integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations). |
+| Logs and events | Give the analytics and AI features in {{elastic-sec}} the context to detect threats and work out what happened across your environment. [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) groups related alerts into attack narratives, and [AI Assistant](/solutions/security/ai/triage-alerts.md) helps you interpret and prioritize alerts. Detection rules, {{ml}}, and dashboards turn the data into signals right away. You can also investigate events yourself in [Timeline](/solutions/security/investigate/timeline.md) and [Discover](/solutions/security/investigate/discover-security.md). | Add the integration for each tool or service that produces the logs. Many integrations come with related detection rules, so you can start detecting threats as soon as the data arrives. To also find unusual activity with {{ml}}, add [behavioral detection integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations). |
 | Posture and vulnerability findings | Find the cloud resources that fail security guidelines and the hosts with known vulnerabilities, so you can decide what to fix first. When you investigate an alert, the same findings show whether the host or user involved has misconfigurations or vulnerabilities. Review them on the [Findings](/solutions/security/cloud/findings-page.md) page. | Add one of the [integrations that power Findings and Alerts](/solutions/security/integrations/ingest-third-party-security-data.md). |
 | Threat intelligence | Find out when activity in your environment involves known malicious IP addresses, domains, or files. [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md) create an alert when your events match an indicator, and you can review each indicator on the [Indicators](/solutions/security/investigate/indicators-of-compromise.md) page. | Add a [threat intel integration](/solutions/security/get-started/enable-threat-intelligence-integrations.md). |
-| Endpoint data from {{elastic-defend}} | Find out how a threat started on a host and what it did next. When {{elastic-defend}} detects or blocks a threat, its [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) create an alert for you to triage. To see the processes that led to the alert, open it in the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md). | [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md). To also review process sessions in [Session View](/solutions/security/investigate/session-view.md), select **Collect session data** in the [integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection). |
+| Endpoint protection with {{elastic-defend}} | Prevent threats on your hosts and find out how an attack unfolded. {{elastic-defend}} is Elastic's endpoint protection. It blocks malware, ransomware, and other malicious behavior, and it collects endpoint data for investigation. When {{elastic-defend}} detects or blocks a threat, its [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) create an alert for you to triage. To see the processes that led to the alert, open it in the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md). | [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md). To also review process sessions in [Session View](/solutions/security/investigate/session-view.md), select **Collect session data** in the [integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection). |
+| Endpoint data from other tools | Bring alerts and telemetry from the endpoint security tools you already use, such as CrowdStrike, Microsoft Defender for Endpoint, and SentinelOne, into the same place as the rest of your security data. The analytics and AI features in {{elastic-sec}} can then correlate endpoint activity with identity, cloud, and network data. | Add the integration for your endpoint tool. To find it, refer to [Elastic integrations](integration-docs://reference/index.md). |
 
 ### Find and add an integration [security-ingest-add-integration]
 
@@ -73,8 +74,6 @@ After you decide how to collect your data and which data you need, add the integ
 4. On the integration's page, select **Add** followed by the integration's name, such as **Add Okta**. Then follow the prompts to configure the integration.
 
    When you add {{elastic-defend}}, you select a preset and an {{agent}} policy, then install {{agent}} on each host you want to protect. For the full procedure, refer to [Install the {{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
-
-For the settings and requirements of each integration, refer to its documentation in [Elastic integrations](integration-docs://reference/index.md).
 
 ## Ingest data from a source without an integration [security-ingest-no-integration]
 
