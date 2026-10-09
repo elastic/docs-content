@@ -1,4 +1,5 @@
 ---
+description: Learn how to observe your Kubernetes deployments with Elastic Observability, from cluster and workload metrics to logs and application performance data.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-kubernetes.html
 applies_to:
@@ -139,7 +140,7 @@ You have the following options for collecting Kubernetes logs:
 
 Collecting metrics from the kubelet API is on by default. Kubelet is an agent that runs on each Kubernetes node that is key to managing individual pods and the nodes that host them. For more information on kubelet, refer to the Kubernetes [kubelet docs](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/).
 
-{{agent}} along with the Kubernetes integration can collect metrics from the kubelet API to gather important information about the state of your Kubernetes nodes, pods, containers, and other resources. paleExpand the following list to see all available metrics from the kubelet API.
+{{agent}} along with the Kubernetes integration can collect metrics from the kubelet API to gather important information about the state of your Kubernetes nodes, pods, containers, and other resources. Expand the following list to see all available metrics from the kubelet API.
 
 ::::{dropdown} Expand to see available metrics from the kubelet API
 **Container metrics**
@@ -287,13 +288,13 @@ From here, update the `add_resource_metadata` block to configure enrichment:
 ```yaml
 add_resource_metadata:
   namespace:
-   enabled: true
+    enabled: true
     #use_regex_include: false
     include_labels: ["namespacelabel1"]
     #use_regex_exclude: false
     #exclude_labels: ["namespacelabel2"]
   node:
-   enabled: true
+    enabled: true
     #use_regex_include: false
     include_labels: ["nodelabel2"]
     include_annotations: ["nodeannotation1"]
@@ -325,7 +326,7 @@ Provide the following information to collect `kube-apiserver` metrics:
 :   When on (default behavior), only the {{agent}} that holds the leadership lock will retrieve metrics from the `kube-apiserver`. This prevents duplicate data in multi-node Kubernetes clusters.
 
 **Period**
-:   How frequently to poll the `kube-state-metrics` for metrics. The default is every 30 seconds.
+:   How frequently to poll the `kube-apiserver` for metrics. The default is every 30 seconds.
 
 **SSL Certificate Authorities**
 :   The path to the certificate authority (CA) bundle used to verify the Kubernetes API server’s TLS certificate.
@@ -346,7 +347,7 @@ Provide the following information to collect Kubernetes Proxy metrics:
 :   The address where `kube-proxy` is running. Port 10249 is the default.
 
 **Period**
-:   How frequently to poll the `kube-state-metrics` for metrics. The default is every 10 seconds.
+:   How frequently to poll the `kube-proxy` for metrics. The default is every 10 seconds.
 
 
 ### Collect Kubernetes metrics from Kubernetes scheduler [monitor-kubernetes-integration-k8s-scheduler]
@@ -388,7 +389,7 @@ Provide the following information to collect `kube-controller-manager` metrics:
 :   The file path to the token used to authenticate with the `kube-controller-manager`.
 
 **Hosts**
-:   The address and port of the `kube-controller-manager` from which the integration should collect metrics. Port 10259 is the default.
+:   The address and port of the `kube-controller-manager` from which the integration should collect metrics. Port 10257 is the default.
 
 **Period**
 :   How frequently to poll the `kube-controller-manager` for metrics. The default is every 10 seconds.
@@ -511,7 +512,16 @@ On the **Infrastructure inventory** page, you can switch between different views
 
 For more on using the Inventory page, refer to [View infrastructure metrics by resource type](view-infrastructure-metrics-by-resource-type.md).
 
-On the **Metrics Explorer** page, you can group and analyze metrics for the resources that you are monitoring.
+You can also explore and group metrics for monitored resources:
+
+:::::{applies-switch}
+
+::::{applies-item} stack: ga 9.4+
+Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Refer to [Explore metrics data with Discover](discover-metrics.md) for the metrics workflow.
+::::
+
+::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
+Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Metrics Explorer**.
 
 :::{image} /solutions/images/observability-monitor-k8s-metrics-explorer.png
 :alt: Metrics dashboard that shows CPU usage for Kubernetes pods
@@ -519,6 +529,9 @@ On the **Metrics Explorer** page, you can group and analyze metrics for the reso
 :::
 
 For more on using the **Metrics Explorer** page, refer to [Explore infrastructure metrics over time](explore-infrastructure-metrics-over-time.md).
+::::
+
+:::::
 
 
 ### View Kubernetes logs [monitor-k8s-explore-logs]
@@ -1032,7 +1045,7 @@ Configure the agent using environment variables:
 
 ### Step 4: Configure Kubernetes data [_step_4_configure_kubernetes_data]
 
-In most instances, APM agents automatically read Kubernetes data from inside the container and send it to APM Server. If this is not the case, or if you wish to override this data, you can set environment variables for the agents to read. These environment variable are set via the [Downward API](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#the-downward-api) in your Kubernetes pod spec:
+In most instances, APM agents automatically read Kubernetes data from inside the container and send it to APM Server. If this is not the case, or if you wish to override this data, you can set environment variables for the agents to read. These environment variables are set using the [Downward API](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#the-downward-api) in your Kubernetes pod spec:
 
 ```yaml
       # ...

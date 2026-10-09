@@ -27,3 +27,5 @@ In most setups, applications send metrics to the {{motlp}} or to an [{{agent}} i
 * {applies_to}`stack: ga 9.5+` The endpoint preserves the [temporality](/manage-data/data-store/data-streams/metric-temporality.md) of each metric in a `temporality` dimension, so {{esql}} time series queries and downsampling interpret counters and histograms correctly.
 
 For request details, authentication, and limitations, refer to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) reference.
+
+For an overview of all metrics ingest paths, including how this endpoint fits alongside the Managed OTLP Endpoint and {{agent}} integrations, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp).

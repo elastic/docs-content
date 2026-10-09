@@ -46,7 +46,7 @@ For most users, one of the following higher-level ingestion paths is recommended
 
 Use {{motlp}} if it's available in your deployment, even when an application can target the {{es}} OTLP endpoint directly.
 
-For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [{{edot}} reference architecture](opentelemetry://reference/architecture/index.md).
+For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [{{edot}} reference architecture](opentelemetry://reference/architecture/index.md). For how the endpoint fits into the {{observability}} metrics workflows, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp).
 
 Use the {{es}} OTLP endpoint directly only in the following cases:
 

@@ -142,6 +142,7 @@ Refer to [LLM observability](/solutions/observability/applications/llm-observabi
 After you've onboarded your data, you can explore it in the following Elastic {{observability}} UIs, or query it using [query languages](elasticsearch://reference/query-languages/index.md).
 
 - [Explore your logs](/solutions/observability/logs/explore-logs.md) in the Logs UI.
+- [Explore metrics](/solutions/observability/metrics/explore.md) from any source with {{esql}}, PromQL, and {{kib}} visualizations.
 - [Analyze infrastructure and host metrics](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) in the Infrastructure UI.
 - [View and analyze APM data](/solutions/observability/apm/view-analyze-data.md) in the Applications UI.
 - Use the [Elastic Query Language ({{esql}})](/explore-analyze/discover/try-esql.md) to search and filter your data.
