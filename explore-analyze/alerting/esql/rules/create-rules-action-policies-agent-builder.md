@@ -32,10 +32,7 @@ Before you start, make sure you have the following:
 
 ### Start a proposal [ai-agent-start-proposal]
 
-To create a rule, open the **Rules** page:
-
-- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Rules**, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-- {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Rules**.
+To create a rule, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
 

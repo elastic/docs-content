@@ -10,10 +10,7 @@ description: "Take triage actions on alerts. Acknowledge, snooze, resolve, activ
 
 # Triage alerts [triage-alert-episodes]
 
-To open the **Alerts** page in {{alerting-v2-system}}:
-
-* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Alerts**, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Alerts**.
+To open the **Alerts** page in {{alerting-v2-system}}, go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 From the **Alerts** page, you can take the following triage actions on alerts individually or in bulk. For deeper investigation of a specific alert, refer to [Investigate alerts](investigate-alert-episodes.md).
 
