@@ -236,7 +236,7 @@ You can view it in more detail and edit it by clicking the filter.
 
 If a panel raises a question that the dashboard can't answer, you can open the data behind it in **Discover** and work with the individual documents. The option to use depends on the panel type. For all of them, you need at least **Read** access to the **Discover** feature.
 
-* **Lens visualizations**: Open the panel menu and select **Explore in Discover**. **Discover** opens with the panel's data, and with the dashboard's filters, query, and time range applied. On {{esql}} panels, {{kib}} turns the dashboard filters and query into a `WHERE` clause and drops filters that {{esql}} can't express.
+* **Visualizations**: Open the panel menu and select **Explore in Discover**. **Discover** opens with the panel's data, and with the dashboard's filters, query, and time range applied. On {{esql}} panels, {{kib}} turns the dashboard filters and query into a `WHERE` clause and drops filters that {{esql}} can't express.
 
     The option doesn't appear when {{kib}} can't trace a chart back to one set of documents, for example when the chart has several data layers or a time shift. While you edit a visualization, you can also [explore its data in Discover](../visualize/lens.md#explore-lens-data-in-discover) from the editor toolbar.
 
@@ -244,7 +244,7 @@ If a panel raises a question that the dashboard can't answer, you can open the d
 
 * {applies_to}`stack: ga` {applies_to}`serverless: unavailable` **Other panels that use one data view**: In view mode, open the panel menu and select **Explore underlying data**. **Discover** opens with the filters, query, and time range of the dashboard and the panel.
 
-    If you don't see this option, it isn't turned on. By default, {{kib}} doesn't offer it. Administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-context) to `true` in the {{kib}} settings. Refer to [Stack settings](/deploy-manage/stack-settings.md).
+    If you don't see this option, it might not be turned on. By default, {{kib}} doesn't offer it. Administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-context) to `true` in the {{kib}} settings. Refer to [Stack settings](/deploy-manage/stack-settings.md).
 
     {applies_to}`self: ga` To open only the documents behind one data series, select a value in the chart, or drag over a time range, then select **Explore underlying data** in the menu that opens. This option isn't available on maps. By default, {{kib}} doesn't offer it either. On self-managed deployments, administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInChart.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-chart) to `true` in `kibana.yml`.
 
