@@ -30,7 +30,7 @@ You can change a panel from one kind to the other. Save a dashboard panel to the
 
 ## Manage the library [visualize-library-manage]
 
-The library holds the panel types in the following table and your annotation groups.
+In the library, you can browse the panel types in the following table, create visualizations, and manage annotation groups.
 
 ### Panel types you can save to the library [visualize-library-what-you-can-save]
 
@@ -60,13 +60,24 @@ Where you open the library depends on your deployment and version.
   - In the Classic view, on the **Dashboards** page, select the **Visualizations** tab, or select **Visualize library** in the navigation menu.
 - {applies_to}`stack: ga 9.0-9.3` Select **Visualize library** in the navigation menu, or search for it in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+### Create a visualization from the library [visualize-library-create]
+
+To build a visualization before you add it to any dashboard, open the library and select **Create visualization**. Then choose the type of visualization to build. For the steps to build each type, refer to its page:
+
+* [Lens](lens.md)
+* [Maps](maps.md)
+* [Vega](custom-visualizations-with-vega.md)
+* [Aggregation-based](legacy-editors/aggregation-based.md) and [TSVB](legacy-editors/tsvb.md): Legacy visualizations that you find on the **Legacy** tab of the dialog.
+
+You can't create links panels, Markdown panels, or Discover sessions from the library.
+
 ### Annotation groups [visualize-library-annotation-groups]
 
 Annotation groups mark events such as deployments on your charts. You can reuse the same group on more than one Lens visualization. Annotation groups are not dashboard panels. To manage them, select the **Annotation groups** tab. To create a group and add it to a chart, refer to [Add annotations](lens.md#add-annotations). When you save a change to a group, every visualization that uses the group shows it.
 
 ## Use library panels on dashboards [visualize-library-use-on-dashboards]
 
-Saving, adding, and unlinking library panels are panel actions on a dashboard. Panel actions are in the panel menu {icon}`boxes_vertical`, which appears when you hover over a panel.
+To save a panel to the library or unlink it, use the panel menu {icon}`boxes_vertical`, which appears when you hover over a panel. To add a panel from the library, use the options for adding panels to the dashboard instead.
 
 ### Save a dashboard panel to the library [save-to-visualize-library]
 
