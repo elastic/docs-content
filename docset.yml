@@ -140,6 +140,7 @@ exclude:
   - 'README.md'
   - 'AGENTS.md'
   - 'AI.md'
+  - '.agents/**'
   - 'CLAUDE.md'
   - 'GEMINI.md'
   - 'changelog/**'
@@ -223,6 +224,11 @@ toc:
   - file: archive.md
   - file: versions.md
   - hidden: 404.md
+  # Hub pages: published and linkable, not in the nav yet.
+  - hidden: products/elastic-stack.md
+  - hidden: products/elasticsearch.md
+  - hidden: products/kibana.md
+  - hidden: products/logstash.md
 
 subs:
   subscriptions:   "https://www.elastic.co/subscriptions"
