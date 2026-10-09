@@ -13,7 +13,7 @@ products:
 
 # Reuse panels from the Visualize library [visualize-library]
 
-The **Visualize library** is where you keep panels that you want to use on more than one dashboard. Depending on your version and navigation, you open it as a **Visualizations** tab on the **Dashboards** page or as a separate **Visualize library** page.
+The **Visualize library** is where you build a visualization before you tie it to a dashboard, and where you keep panels that you want to use on more than one dashboard. Depending on your version and navigation, you open it as a **Visualizations** tab on the **Dashboards** page or as a separate **Visualize library** page.
 
 ## Library panels and dashboard panels [visualize-library-vs-dashboard-panels]
 
