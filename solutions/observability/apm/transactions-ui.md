@@ -148,6 +148,12 @@ All of this data is stored in documents in {{es}}. Depending on your version, cl
 
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **View full trace** to open a flyout showing the complete trace timeline (all spans and transactions from the same distributed trace) without leaving the {{product.apm}} UI.
 
+:::{tip}
+:applies_to: { stack: ga 9.6+, serverless: ga }
+
+You can also open transaction details and the full trace from a service flyout in **Discover** or the **Service map**. Follow the [investigation flyout workflow](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts) to inspect individual spans or errors and use **Back** to return through the flyouts.
+:::
+
 **Trace sample logs**
 
 The **Logs** tab displays logs related to the sampled trace.
