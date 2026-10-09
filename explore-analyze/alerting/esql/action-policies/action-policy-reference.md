@@ -28,8 +28,8 @@ Use the following fields in the **Match conditions** expression to filter which 
 | `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alerts from a specific host in a host-based rule. |
 
 :::{note}
-:applies_to: {"serverless": "experimental", "stack": "experimental 9.6+"}
-To apply a policy to alerts from a set of rules, select those rules' tags in **Rule tags**. To learn more, refer to [Filter by rule tags](create-configure-action-policy.md#filter-by-rule-tags).
+:applies_to: {"serverless": "ga", "stack": "experimental 9.6+"}
+To apply a policy to alerts from a set of rules, give the policy and those rules the same routing tag. **Match conditions** can't select alerts by the rule's ID, name, or tags. To learn more, refer to [Apply the policy to alerts from specific rules](create-configure-action-policy.md#routing-tags).
 :::
 
 ### Rule fields [action-policy-matcher-rule-fields]
@@ -45,6 +45,10 @@ In addition to the alert fields, you can use the following fields in the **Match
 | `rule.id` | Unique identifier of the rule that generated the alert. | `rule.id: "rule-001"` <br> Match alerts from one specific rule. |
 | `rule.name` | Display name of the rule. | `rule.name: "High CPU"` <br> Match alerts from rules with this display name. |
 | `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match alerts from all rules with this tag. |
+
+:::{important}
+After you upgrade from this version, action policies whose **Match conditions** use these rule fields, `episode_id`, or `episode_status` no longer select the alerts you expect. {{kib}} keeps the expression and doesn't show an error. A condition such as `rule.tags: "checkout"` stops matching any alert, so the policy stops invoking its workflows. A negated condition such as `NOT rule.tags: "checkout"` matches every alert. To fix these policies after you upgrade, add the same routing tag to each policy and its rules, and replace `episode_id` and `episode_status` with `alert_id` and `alert_status`.
+:::
 
 ## Notify per options [action-policy-notification-grouping]
 

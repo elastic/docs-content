@@ -73,7 +73,7 @@ Action policies invoke workflows for alerts only. If you ask the agent to set up
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
 - **Action Policies** - Action policies are the gating mechanism. {{kib}} evaluates them against the rule's alerts and invokes the workflow for the alerts they apply to. When you create an action policy with a rule, the policy applies to that rule's alerts.
-    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` If the rule already has a [tag](configure-rule-artifacts.md#add-tags-runbooks) that no other rule uses, the agent selects that tag. Otherwise, it adds a `notify-<rule-name>` tag in lowercase with hyphens (for example, `notify-high-cpu-prod`). The policy also applies to alerts from any other rule with that tag.
+    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` The agent links the policy to the rule with a [routing tag](../action-policies/create-configure-action-policy.md#routing-tags). If the rule already has a routing tag that no other rule uses, the agent can reuse it. Otherwise, it adds a `notify-<rule-name>` routing tag in lowercase with hyphens (for example, `notify-high-cpu-prod`) to the rule and the policy. The policy also applies to alerts from any other rule with that routing tag.
     * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` The action policy references the rule by ID.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.

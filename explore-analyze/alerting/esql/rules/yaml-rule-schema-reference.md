@@ -52,6 +52,7 @@ These optional fields add descriptive information to a rule for identification, 
 | `metadata.description` | string | Any string | Optional description of what the rule monitors. Max 1,024 characters. |
 | `metadata.owner` | string | Any string | Team or person responsible for the rule. Max 256 characters. |
 | `metadata.tags` | array of strings | Array of strings | Labels for filtering and organization. Max 20 tags, each max 128 characters. |
+| `metadata.routing_tags` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | array of strings | Array of strings | Tags that link the rule's alerts to action policies. An action policy applies when it has at least one of these tags. Only valid when `kind: alert`. Max 20 tags, each max 128 characters. To learn more, refer to [Link a rule to action policies](../action-policies/create-configure-action-policy.md#policies-that-match-a-rule). |
 
 ## Schedule fields
 

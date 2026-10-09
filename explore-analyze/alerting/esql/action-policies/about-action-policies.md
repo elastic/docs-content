@@ -19,9 +19,11 @@ This page explains how rules and action policies work together, the gates an ale
 
 ## How rules and action policies work together [rules-and-action-policies]
 
-A rule detects a condition and opens alerts. The rule doesn't automatically reference an action policy, and an action policy doesn't instantly link to a rule. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert, and invokes a workflow for the ones that pass every gate.
+A rule detects a condition and opens alerts. The rule and the action policy don't reference each other by ID. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert, and invokes a workflow for the ones that pass every gate.
 
 Because of that separation, a single action policy can apply to alerts from many rules. An action policy scoped to `severity: "critical"` applies to every critical alert, regardless of which rule produced it. The separation also means you change notification routing by editing the action policy, without touching the rule.
+
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` To apply an action policy to specific rules, give the policy and those rules the same routing tag. A policy applies to alerts from every rule that has at least one of its routing tags, including rules you tag after you create the policy. The link doesn't depend on the rule's ID, name, or rule tags. You can rename a rule or reorganize its rule tags without changing which policies apply.
 
 To control which of those alerts an action policy applies to, set its [scope](create-configure-action-policy.md#matcher). An action policy with an empty scope applies to all of them.
 
@@ -32,7 +34,7 @@ A workflow runs only when the alert passes every gate. {{kib}} checks the gates 
 | Gate | What it checks |
 |------|----------------|
 | Alert eligibility | Whether the alert is acknowledged, snoozed, resolved, or in a maintenance window. Any of these stops it. |
-| Policy scope {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Whether the alert's rule carries at least one of the selected rule tags, and whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If both are set on the policy, they both have to pass. An empty scope passes every eligible alert in the space. |
+| Policy scope {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Whether the alert's rule has at least one of the policy's [routing tags](create-configure-action-policy.md#routing-tags), and whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If both are set on the policy, they both have to pass. An empty scope passes every eligible alert in the space. |
 | Match conditions {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` | Whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. An empty expression passes every eligible alert in the space. |
 | Frequency | Whether a workflow already ran for the alert's notification group within the policy's frequency interval. If it did, the alert waits. |
 
