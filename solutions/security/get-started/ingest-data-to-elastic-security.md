@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Bring security data into Elastic Security. Start with an integration, use Automatic Import when none exists, or send data with Beats, Logstash, or a third-party collector.
+description: Bring security data into Elastic Security. Start with an integration, build a custom integration when none exists, or send data with Beats, Logstash, or a third-party collector.
 ---
 
 # Ingest data to {{elastic-sec}} [security-ingest-data]
@@ -26,7 +26,7 @@ The method you use depends on what you want to protect or monitor, and on where 
 | Bring in findings from the security tools you already use | [Integrations that power Findings and Alerts](/solutions/security/integrations/ingest-third-party-security-data.md) |
 | Add threat intelligence | [Threat intel integrations](/solutions/security/get-started/enable-threat-intelligence-integrations.md) |
 | Protect your hosts and collect endpoint data | [Configure endpoint protection with {{elastic-defend}}](/solutions/security/configure-elastic-defend.md) |
-| Ingest data from a source that has no integration | [Automatic Import](/explore-analyze/ai-features/automatic-import.md) |
+| Ingest data from a source that has no integration | [Build a custom integration](#security-ingest-no-integration) with Automatic Import or Elastic integration skills |
 | Move rules and dashboards from Splunk, Microsoft Sentinel, or QRadar | [Automatic Migration](/solutions/security/get-started/automatic-migration.md), which also identifies the data sources your migrated rules need |
 | Send data with {{beats}}, {{ls}}, or a third-party collector | [Send data with {{beats}}, {{ls}}, or third-party collectors](#security-ingest-other-methods) |
 
@@ -77,7 +77,12 @@ After you decide how to collect your data and which data you need, add the integ
 
 ## Ingest data from a source without an integration [security-ingest-no-integration]
 
-If you can't find an integration for your data source, such as an in-house application or a less common tool, you can create one with [Automatic Import](/explore-analyze/ai-features/automatic-import.md). It uses a large language model (LLM) to analyze a sample of your data and create a custom integration. The custom integration maps your data to the [Elastic Common Schema (ECS)](ecs://reference/index.md), so you can use it in {{elastic-sec}} like data from any other integration.
+If you can't find an integration for your data source, such as an in-house application or a less common tool, you can create a custom integration. Elastic offers two ways to build one, and both use a large language model (LLM). Either way, the custom integration maps your data to the [Elastic Common Schema (ECS)](ecs://reference/index.md), so you can use it in {{elastic-sec}} like data from any other integration.
+
+| Option | How you build the integration | Use it when | What you need |
+|---|---|---|---|
+| [Automatic Import](/explore-analyze/ai-features/automatic-import.md) | In {{kib}}, without writing code. You provide a sample of your data, and the LLM maps it to ECS and creates the integration. | You want a working integration quickly, and the integration can collect your data through a method that Automatic Import supports, such as files, cloud storage, Kafka, TCP, or UDP. | An [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), and an Enterprise subscription or the Security Analytics Complete project feature tier. For details, refer to the [Automatic Import requirements](/explore-analyze/ai-features/automatic-import.md#automatic-import-requirements). |
+| [Elastic integration skills](https://github.com/elastic/integration-skills) | In the AI coding environment you already use, such as Cursor, Claude Code, or Codex. Agent workflows research your data source, then build and test the integration package. | The integration must collect data from an HTTP API, or you want full control over the package, including its ingest pipelines, field mappings, dashboards, and tests. | Experience building integration packages, and the tools that the skills run, such as Docker and the `elastic-package` CLI. The skills are in beta, so expect them to change. |
 
 ## Send data with {{beats}}, {{ls}}, or third-party collectors [security-ingest-other-methods]
 
