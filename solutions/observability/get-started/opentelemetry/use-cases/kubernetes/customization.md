@@ -32,7 +32,9 @@ The following table lists common parameters that might be relevant for your use 
 
 For more information on all available parameters and their meaning, refer to:
 
-* The provided `values.yaml`, which includes the default settings for the {{edot}} installation.
+* The provided `values.yaml` for your deployment type, which includes the default settings for the {{edot}} installation:
+  * [Direct ingestion values file](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/values.yaml) — for self-managed {{stack}}, {{ece}}, and {{eck}}
+  * [Managed OTLP values file](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml) — for {{serverless-full}} and {{ech}}
 * The official OpenTelemetry `kube-stack` Helm chart [values file](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/values.yaml), with explanations of all parameters.
 
 ## Cert-manager integrated installation
@@ -47,9 +49,9 @@ Follow any of the following options to install the `opentelemetry-kube-stack` He
 
 ### Install using the CLI
 
-Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command.
+Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command. Replace the `--values` URL with the values file for your deployment type — refer to [Operator installation](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md#manual-deployment) for the correct URL.
 
-For example:
+For example, for a self-managed deployment:
 
 ```bash subs=true
 helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
