@@ -11,18 +11,15 @@ description: Prerequisites and initial setup tasks before creating and running d
 
 # Before you begin
 
-Before you can create and run detection rules, confirm that your environment meets the infrastructure requirements and that your users have the necessary privileges. Some tasks only need to be done once during initial setup, while others should be revisited as your environment evolves. If you're new to {{elastic-sec}} detections, check out [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md) for an overview of how rules work.
+Before you can create and run detection rules, turn on detections and make sure your users have the privileges they need. If you're new to {{elastic-sec}} detections, check out [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md) for an overview of how rules work.
 
 ## One-time setup
 
 These tasks are typically completed once when you first configure detection capabilities:
 
 - [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md): Enable the Detections feature for your deployment type. On {{serverless-short}}, detections are on by default.
-- [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md): Understand the cluster, index, and {{kib}} privileges required for detection features, and review predefined roles and the authorization model.
+- [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md): Give users the cluster, index, and {{kib}} privileges they need for detection features. When your team changes, review these privileges again in [Access control](/solutions/security/manage/access-control.md).
 
-## Revisit as your environment changes
+## Related configuration
 
-You might need to revisit the following as you onboard new data sources, add users, or expand your detection coverage:
-
-- [User roles and privileges](/solutions/security/detect-and-alert/detections-privileges.md): As your team grows or responsibilities shift, review and update role assignments to ensure analysts have the access they need.
-- [Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md): Revisit {{ccs}} setup, data tier exclusions, and index mode settings when you add new clusters, change data retention policies, or onboard data sources that use different index configurations.
+[Advanced data source configuration](/solutions/security/detect-and-alert/advanced-data-source-configuration.md) covers {{ccs}} setup, data tier exclusions, and index mode settings. Revisit it when you add clusters, change data retention policies, or onboard data sources that use different index configurations.
