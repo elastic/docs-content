@@ -14,7 +14,7 @@ Creating an {{esql}} rule in {{alerting-v2-system}} lets you write the detection
 
 To create a rule, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-When choosing a creation path, select the one that lets you write {{esql}} directly.
+Then select the creation path that lets you write {{esql}} directly.
 
 Once you're in that flow, there are two ways to define the rule:
 
