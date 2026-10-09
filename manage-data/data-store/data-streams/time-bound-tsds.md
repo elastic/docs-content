@@ -21,8 +21,8 @@ Unlike regular data streams that write only to the most recent backing index, {{
 Each {{tsds-init}} backing index has a range of `@timestamp` values that it accepts, which are tracked in index settings.
 When the {{tsds-init}} is created, the first backing index has the following range:
 
-- Its [`index.time_series.start_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-start-time), which is the earliest accepted timestamp (inclusive), is set to `now` minus the [`index.look_back_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-look-back-time).
-- Its [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time), which is the latest accepted timestamp (exclusive), is set to `now` plus [`index.look_ahead_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-look-ahead-time).
+- Its earliest accepted timestamp (inclusive), which is set to `now` minus the [`index.look_back_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-look-back-time) and stored in [`index.time_series.start_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-start-time).
+- Its latest accepted timestamp (exclusive), which is set to `now` plus [`index.look_ahead_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-look-ahead-time) and stored in [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time).
 
 Thereafter, {{es}} automatically configures the settings for backing indices as part of the index creation and [rollover](/manage-data/lifecycle/index-lifecycle-management/rollover.md) process.
 Each new backing index starts at the previous index's `end_time` and extends further ahead using `look_ahead_time`.
