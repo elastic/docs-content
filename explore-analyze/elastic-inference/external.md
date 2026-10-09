@@ -55,3 +55,4 @@ Alternatively, you can use [{{infer}} APIs]({{es-apis}}group/endpoint-inference)
    For example, [create a JinaAI inference endpoint]({{es-apis}}operation/operation-inference-put-jinaai).
 1. Select **Save** to create the endpoint.
 
+{applies_to}`{ deployment: { self: ga, ece: ga, eck: ga } }` If your model provider uses a TLS certificate signed by a private or internal certificate authority, refer to [Use a private certificate authority with external {{infer}} endpoints](/explore-analyze/elastic-inference/external-inference-private-ca.md).
