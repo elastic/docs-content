@@ -32,7 +32,6 @@ For color mode, contrast, language, and space at login, where you open the prefe
 * If you sign in with your {{ecloud}} account, open the user menu in the global header and select the item for the preference, such as **Appearance** or **Language**.
 * If you sign in any other way, for example with a username and password or on a self-managed deployment, select **Edit profile** from the user menu in the global header. Your profile page has a section for each preference.
 
-You can reorder and hide apps in the navigation menu of any space that uses a solution view (**Search**, **Observability**, or **Security**). To start, open **Customize navigation** from **More** in the navigation menu. Spaces that use the **Classic** solution view don't offer this option. A space you haven't customized keeps its default layout. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md) for the steps.
 
 ## Settings that apply to everyone
 
