@@ -46,7 +46,7 @@ To discard all of your customizations and return to the space's default layout, 
 
 Adjust other Kibana settings to your own preferences:
 
-* [Personal preferences in Kibana](/explore-analyze/find-and-organize/personal-preferences.md)
+* [](/explore-analyze/find-and-organize/personal-preferences.md)
 * [Use dark mode in Kibana](/explore-analyze/find-and-organize/personal-preferences/dark-mode.md)
 * [Use high-contrast mode in Kibana](/explore-analyze/find-and-organize/personal-preferences/high-contrast.md)
 
