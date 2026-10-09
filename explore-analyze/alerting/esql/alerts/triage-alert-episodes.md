@@ -5,7 +5,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "Take triage actions on alerts. Acknowledge, snooze, resolve, activate, deactivate, tag, and assign alerts individually or in bulk."
+description: "Take triage actions on alerts. Acknowledge, snooze, resolve, reopen, tag, and assign alerts individually or in bulk."
 ---
 
 # Triage alerts [triage-alert-episodes]
@@ -43,23 +43,13 @@ Close an alert once the underlying problem is fixed, or reopen it if it turns ou
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|
-| Resolve | Closes the alert. | The underlying problem is fixed and the alert should be closed. | Series |
-| Unresolve | Reopens a resolved alert. | The problem has recurred or was closed prematurely. | Series |
+| Resolve | Closes the alert immediately, without waiting for the rule to detect recovery. Action policies stop sending notifications for the alert. | The underlying problem is fixed and the alert should be closed. | Alert |
+| Unresolve | Reopens a closed alert and keeps it `active`. The rule no longer closes the alert automatically. | The problem has recurred or the alert was closed prematurely, and you want it to stay open until someone confirms the fix. | Alert |
 
-## Override the automatic lifecycle [override-automatic-lifecycle]
+Resolving and unresolving also change how the rule treats the series on later runs:
 
-Take manual control of an alert's lifecycle state. 
-
-| Action | Description | When to use | Scope |
-|---|---|---|---|
-| Activate | Manually moves the alert to `active` state without waiting to meet the activation threshold. | Another signal already confirms the problem, or the metric recovered but the problem persists. | Alert |
-| Deactivate | Returns a manually activated alert to normal behavior. | You want to restore automatic recovery behavior for a previously activated alert. | Alert |
-
-:::{note}
-**Activate** ignores automatic recoveries once triggered. The alert stays open until you manually close it with Resolve or Deactivate.
-
-**Deactivate** resumes automatic recovery detection. The alert can close on its own the next time the rule evaluates as recovered, but deactivating alone doesn't close the current alert.
-:::
+* **After you resolve an alert**, the rule doesn't reopen it. If the rule's condition still matches on its next run, a new alert starts for the series. The new alert follows the normal lifecycle, and action policies can send notifications for it.
+* **After you unresolve an alert**, the alert stays `active` on every run, even when the rule's condition recovers. It closes only when you resolve it again.
 
 ## Organize and assign alerts [organize-and-assign-episodes]
 

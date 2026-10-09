@@ -64,7 +64,7 @@ The **Alerts** privilege controls who can take triage actions on alerts.
 
 | Level | What you can do |
 |---|---|
-| **All** | Acknowledge, snooze, assign, tag, activate, and deactivate alerts |
+| **All** | Acknowledge, unacknowledge, snooze, unsnooze, resolve, unresolve, tag, and assign alerts |
 | **Read** | View alerts |
 
 :::{note}

@@ -76,10 +76,8 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 | `tag` | user | Added tags |
 | `snooze` | user | Snoozed until `expiry` |
 | `unsnooze` | user | Removed the snooze |
-| `activate` | user | Manually activated the alert |
-| `deactivate` | user | Manually deactivated the alert, resuming automatic recovery without closing it |
-| `resolve` | user | Closed the alert |
-| `unresolve` | user | Reopened a resolved alert |
+| `activate` | user | Reopened a closed alert (the **Unresolve** action) |
+| `deactivate` | user | Closed the alert (the **Resolve** action) |
 | `fire` | system | Alert opened or continued |
 | `notified` | system | Workflow invoked |
 | `suppress` | system | Notification throttled by the frequency limit |
