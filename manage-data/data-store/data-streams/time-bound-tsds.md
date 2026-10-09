@@ -110,4 +110,4 @@ The following {{ilm}} [actions](elasticsearch://reference/elasticsearch/index-li
 - [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
 - [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md), which might revert the read-only status at the end of the action
 
-{{ilm-cap}} will **not** proceed with running these actions until [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
+{{ilm-cap}} doesn't run these actions until [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
