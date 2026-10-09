@@ -67,7 +67,7 @@ Use the **Open in Discover** action to view the full source documents instead of
 
 If the rule has a runbook attached, you can view it directly from the alert to follow the documented triage steps.
 
-## Investigate {{alerting-v1-system}} alerts [investigate-classic-alerts]
+## Investigate alerts from {{alerting-v1-system}} [investigate-classic-alerts]
 ```{applies_to}
 serverless: ga
 stack: experimental 9.6+

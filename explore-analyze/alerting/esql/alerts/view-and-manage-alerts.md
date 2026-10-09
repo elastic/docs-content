@@ -12,31 +12,9 @@ description: "Monitor alerts using KPI panels, a histogram, and filter controls,
 
 In {{alerting-v2-system}}, use the **Alerts** page to monitor alerts with KPI panels, a histogram, and filters. To open it, go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-For triage actions (acknowledge, snooze, resolve, activate, and tag), refer to [Triage alerts](triage-alert-episodes.md). For alert lifecycle history, related alerts, and assignment, refer to [Investigate alerts](investigate-alert-episodes.md).
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` The page also lists alerts from {{alerting-v1-system}} rules, so you can monitor and triage alerts from both systems in one table. Refer to [View alerts from both alerting systems](#alerts-from-both-systems).
 
-## View alerts from both alerting systems [alerts-from-both-systems]
-```{applies_to}
-serverless: ga
-stack: experimental 9.6+
-```
-
-The **Alerts** page lists alerts from {{alerting-v1-system}} rules next to alerts from {{alerting-v2-system}} rules, so you can triage both in one table. The **Source** column shows where each alert comes from: **Classic** for {{alerting-v1-system}} or **Universal** for {{alerting-v2-system}}.
-
-The table includes {{alerting-v1-system}} alerts from these rule types:
-
-- **Observability rules**: APM, Synthetics, Uptime, Metric threshold, Inventory, Log threshold, SLO burn rate, and Custom threshold
-- **Stack rules**: {{es}} query, Index threshold, Tracking containment, Transform health, and Anomaly detection
-
-You see a {{alerting-v1-system}} alert only if your role can view alerts from its rule type. For the privileges, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
-
-Some parts of the page work differently for {{alerting-v1-system}} alerts:
-
-- **Status**: An active alert shows as **Active**. A recovered or [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status) alert shows as **Inactive**. These alerts are never **Pending** or **Recovering**, so filtering by either status leaves them out.
-- **Flapping**: A **Flapping** icon appears in the **Status** column while an alert is [flapping](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details).
-- **Assignee**: You can't assign these alerts. Filtering by **Assignee** leaves them out, and the KPI panels always count them as unassigned.
-- **Search**: A query matches each alert's own fields. For example, a query on `kibana.alert.rule.name` matches {{alerting-v1-system}} alerts but not {{alerting-v2-system}} alerts.
-
-The KPI panels and the histogram count alerts from both systems. To act on {{alerting-v1-system}} alerts from this page, refer to [Triage {{alerting-v1-system}} alerts](triage-alert-episodes.md#triage-classic-alerts).
+For triage actions (acknowledge, snooze, resolve, and tag), refer to [Triage alerts](triage-alert-episodes.md). For alert lifecycle history, related alerts, and assignment, refer to [Investigate alerts](investigate-alert-episodes.md).
 
 ## Space scoping [episode-space-isolation]
 
@@ -67,3 +45,36 @@ Use the following controls on the **Alerts** page to narrow the alert list:
 :::{tip}
 Narrow the time range when filters return too many results or tag options need refreshing.
 :::
+
+## View alerts from both alerting systems [alerts-from-both-systems]
+```{applies_to}
+serverless: ga
+stack: experimental 9.6+
+```
+
+The **Source** column shows where each alert comes from: **Universal** for {{alerting-v2-system}} or **Classic** for {{alerting-v1-system}}. The table includes {{alerting-v1-system}} alerts from these rule types:
+
+- **Observability rules**: APM, Synthetics, Uptime, Metric threshold, Inventory, Log threshold, SLO burn rate, and Custom threshold
+- **Stack rules**: {{es}} query, Index threshold, Tracking containment, Transform health, and Anomaly detection
+
+You see a {{alerting-v1-system}} alert only if your role can view alerts from its rule type. For the privileges, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+
+Most of the page works the same for alerts from both sources:
+
+| Page feature | Universal | Classic |
+|---|:---:|:---:|
+| Counted in the KPI panels and histogram | ✓ | ✓ |
+| **Rule**, **Severity**, **Alert tags**, and **Search** controls | ✓ | ✓ |
+| **Active** and **Inactive** statuses | ✓ | ✓ |
+| **Pending** and **Recovering** statuses | ✓ | — |
+| **Warning**, **Minor**, and **Major** severity levels | — | ✓ |
+| [**Flapping**](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details) icon in the **Status** column | — | ✓ |
+| **Assignee** filter | ✓ | — |
+
+These details explain how {{alerting-v1-system}} alerts appear in the results:
+
+- A recovered or [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status) alert shows as **Inactive**.
+- You can't assign these alerts, so the KPI panels always count them as unassigned.
+- A search matches each alert's own fields. For example, a query on `kibana.alert.rule.name` matches {{alerting-v1-system}} alerts but not {{alerting-v2-system}} alerts.
+
+To act on {{alerting-v1-system}} alerts from this page, refer to [Triage {{alerting-v1-system}} alerts](triage-alert-episodes.md#triage-classic-alerts).

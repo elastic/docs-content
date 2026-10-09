@@ -5,14 +5,34 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "Take triage actions on alerts. Acknowledge, snooze, resolve, activate, deactivate, tag, and assign alerts individually or in bulk."
+description: "Take triage actions on alerts. Acknowledge, snooze, resolve, reopen, tag, and assign alerts individually or in bulk."
 ---
 
 # Triage alerts [triage-alert-episodes]
 
 To open the **Alerts** page in {{alerting-v2-system}}, go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From the **Alerts** page, you can take the following triage actions on alerts individually or in bulk. For deeper investigation of a specific alert, refer to [Investigate alerts](investigate-alert-episodes.md).
+From the **Alerts** page, you can take triage actions on alerts individually or in bulk. For deeper investigation of a specific alert, refer to [Investigate alerts](investigate-alert-episodes.md).
+
+## What you can do by alert source [triage-actions-by-source]
+```{applies_to}
+serverless: ga
+stack: experimental 9.6+
+```
+
+The **Alerts** page lists [alerts from both alerting systems](view-and-manage-alerts.md#alerts-from-both-systems). The **Source** column shows where each alert comes from, and the source determines which actions you can take:
+
+| Action | Universal | Classic |
+|---|:---:|:---:|
+| Acknowledge, Unacknowledge | ✓ | ✓ |
+| Snooze, Unsnooze | ✓ | ✓ |
+| Resolve | ✓ | ✓ |
+| Unresolve | ✓ | — |
+| Edit alert tags | ✓ | ✓ |
+| Edit assignee | ✓ | — |
+| Open in Discover | ✓ | — |
+
+On a {{alerting-v1-system}} alert, some actions have different results, and your role needs extra privileges. Refer to [Triage {{alerting-v1-system}} alerts](#triage-classic-alerts).
 
 ## Track review status [track-review-status]
 
@@ -40,23 +60,12 @@ Close an alert once the underlying problem is fixed, or reopen it if it turns ou
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|
-| Resolve | Closes the alert. | The underlying problem is fixed and the alert should be closed. | Series |
-| Unresolve | Reopens a resolved alert. | The problem has recurred or was closed prematurely. | Series |
+| Resolve | Closes the alert immediately, without waiting for the rule to detect recovery. | The underlying problem is fixed and the alert should be closed. | Alert |
+| Unresolve | Reopens an inactive alert as active. It continues as the same alert instead of opening a new one. | The problem has recurred, or the alert closed while the problem persists. | Alert |
 
-## Override the automatic lifecycle [override-automatic-lifecycle]
+$$$override-automatic-lifecycle$$$
 
-Take manual control of an alert's lifecycle state. 
-
-| Action | Description | When to use | Scope |
-|---|---|---|---|
-| Activate | Manually moves the alert to `active` state without waiting to meet the activation threshold. | Another signal already confirms the problem, or the metric recovered but the problem persists. | Alert |
-| Deactivate | Returns a manually activated alert to normal behavior. | You want to restore automatic recovery behavior for a previously activated alert. | Alert |
-
-:::{note}
-**Activate** ignores automatic recoveries once triggered. The alert stays open until you manually close it with Resolve or Deactivate.
-
-**Deactivate** resumes automatic recovery detection. The alert can close on its own the next time the rule evaluates as recovered, but deactivating alone doesn't close the current alert.
-:::
+An alert you unresolve stays active until you resolve it again, even when the rule detects recovery. Resolving it hands the lifecycle back to the rule, so later alerts for the series open and recover on their own.
 
 ## Organize and assign alerts [organize-and-assign-episodes]
 
@@ -75,28 +84,24 @@ Go to Discover to inspect the data behind an alert.
 |---|---|---|---|
 | Open in Discover | Opens the rule's base {{esql}} query scoped to the time window around when the alert opened. | You want to verify what data the rule was evaluating or investigate whether the condition is a genuine problem. | Alert |
 
-## Triage {{alerting-v1-system}} alerts [triage-classic-alerts]
+## Triage alerts from {{alerting-v1-system}} [triage-classic-alerts]
 ```{applies_to}
 serverless: ga
 stack: experimental 9.6+
 ```
 
-The **Alerts** page also lists [alerts from {{alerting-v1-system}} rules](view-and-manage-alerts.md#alerts-from-both-systems), which show **Classic** in the **Source** column. You can take most of the same actions on them, individually or in bulk. Each action uses the matching {{alerting-v1-system}} feature, so the results differ from those for {{alerting-v2-system}} alerts:
+To act on {{alerting-v1-system}} alerts from the **Alerts** page, your role needs two sets of privileges:
+
+- The {{alerting-v2-system}} **Alerts** privilege set to **All**. With **Read**, you can't triage {{alerting-v1-system}} alerts from this page. Refer to [Configure access](../manage/configure-access.md#alerting-triage-privileges).
+- The {{alerting-v1-system}} privileges for the alert's rule type. Refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+
+Each action on a {{alerting-v1-system}} alert uses the matching {{alerting-v1-system}} feature, so the result differs from the same action on a {{alerting-v2-system}} alert:
 
 | Action | What happens to a {{alerting-v1-system}} alert |
 |---|---|
 | Acknowledge, Unacknowledge | Adds or removes the [acknowledged](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) marker. The alert's notifications keep running. Acknowledging a {{alerting-v2-system}} alert [stops its notifications](../action-policies/reduce-notification-noise.md#silencing-mechanisms). |
-| Snooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) this alert only. Other alerts from the same rule keep running their actions. The snooze lasts until the time you set, or until you unsnooze the alert if you select **Indefinitely**. Condition-based snooze isn't available on this page. |
-| Unsnooze | Ends the snooze, so the alert's actions run again. |
+| Snooze, Unsnooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) or unsnoozes this alert only. Other alerts from the same rule keep running their actions. A snooze lasts until the time you set, or until you unsnooze the alert if you select **Indefinitely**. Condition-based snooze isn't available on this page. |
 | Resolve | Marks the alert as [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status). Its status changes to **Inactive**, its actions stop, and its status no longer updates. You can't undo this. |
-| Edit alert tags | Adds or removes tags on this alert only. |
+| Edit alert tags | Adds or removes tags on this alert only, not on every alert in its series. |
 
-Some actions aren't available for {{alerting-v1-system}} alerts on this page:
-
-- **Unresolve**, **Edit assignee**, and **Open in Discover** work only on {{alerting-v2-system}} alerts.
-- You can't add the alert to a case. To add a {{alerting-v1-system}} alert from an Observability rule to a case, use the **Alerts (V1)** page instead. To show that page, turn on the **Show V1 Observability alerts table** advanced setting in the space.
-
-To act on {{alerting-v1-system}} alerts from this page, your role needs two sets of privileges:
-
-- The {{alerting-v2-system}} **Alerts** privilege set to **All**. With **Read**, you can't triage {{alerting-v1-system}} alerts from this page. Refer to [Configure access](../manage/configure-access.md#alerting-triage-privileges).
-- The {{alerting-v1-system}} privileges for the alert's rule type. Refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+You can't add a {{alerting-v1-system}} alert to a case from this page. To add one from an Observability rule, use the **Alerts (V1)** page instead. To show that page, turn on the **Show V1 Observability alerts table** advanced setting in the space.
