@@ -24,7 +24,7 @@ A panel is either a library panel or a dashboard panel. The difference is where 
     You might also see this called a by-reference panel, because every dashboard points to the one copy in the library.
 * **Dashboard panels** are saved only with the dashboard where you created them. An edit changes that dashboard and nothing else. Use a dashboard panel for a chart that only one dashboard needs. If you remove a dashboard panel, it is deleted.
 
-    You might also see this called a by-value panel, because each dashboard holds its own copy.
+    You might also see this called a by-value panel, because the dashboard holds the full definition of the panel.
 
 You can change a panel from one kind to the other. Save a dashboard panel to the library to share it, or unlink a library panel to give a dashboard its own copy.
 
