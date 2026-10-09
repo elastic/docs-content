@@ -28,7 +28,7 @@ You need the following privileges:
 2. Optional: Filter and sort the list to match the agents you want to export.
 3. Select the agents to export. You cannot select agents on [hosted policies](/reference/fleet/agent-policy.md#agent-policy-types).
 
-   To export every agent that matches the current filters, select the checkbox in the table header to select all rows on the current page, then click **Select everything on all pages**. The link appears when more selectable agents match the filters than fit on one page.
+   To export every agent that matches the current filters, use the checkbox in the table header, then click **Select everything on all pages**. The link appears when more selectable agents match the filters than fit on one page.
 
 4. From the **Actions** menu, select the export action:
    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` **Maintenance and diagnostics** → **Export _x_ agents as CSV**
