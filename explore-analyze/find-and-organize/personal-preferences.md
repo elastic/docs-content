@@ -16,7 +16,6 @@ You can change how {{kib}} looks and behaves for you without affecting anyone el
 
 ## Preferences you can set
 
-Each preference applies either in all your spaces or in each space separately. Select a preference to see how to change it.
 
 | Preference | What you can do | Where it applies |
 |---|---|---|
