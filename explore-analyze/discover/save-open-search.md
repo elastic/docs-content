@@ -8,7 +8,7 @@ applies_to:
 type: how-to
 products:
   - id: kibana
-description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
+description: Save Discover sessions to reuse queries, filters, and views. Add sessions to dashboards, or use them to build visualizations.
 ---
 
 # Save a Discover session for reuse [save-open-search]
@@ -37,7 +37,7 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
     3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
 2. Select **Save**.
-3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
+3. To reload your search results in **Discover**, select **Open session** in the application menu, and select the saved Discover session.
 
 A Discover session stores the following elements for each of its tabs:
 
@@ -45,7 +45,7 @@ A Discover session stores the following elements for each of its tabs:
 - The query text and filters
 - The {{data-source}}
 - If you turned on **Store time with Discover session**, the selected time filter and refresh interval
-- The current view of **Discover**, including the document table layout, the chart, and any {{esql}} [variable controls](try-esql.md#add-variable-control)
+- The current view of **Discover**, including the document table layout, the chart, and any {{esql}} [variable controls](esql-variable-controls.md)
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The **JSON** view of the document table, including how each tree is displayed. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting in {{esql}} mode. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 
@@ -116,14 +116,14 @@ You need permission to view and create dashboards.
 #### In {{esql}} mode [add-discover-visualization-esql]
 
 1. In Discover, run an {{esql}} query that produces a chart.
-2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** depending on the version you're using).
+2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 3. Enter a title for the panel, and optionally a description.
 4. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 5. Select **Save and go to dashboard**.
 
 :::{note}
 :applies_to: stack: ga =9.2
-In that version, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. To preserve them, follow [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) instead.
+In that version, if your {{esql}} query defines [variable controls](esql-variable-controls.md), they aren't added to the dashboard when using this method. To preserve them, follow [Import a Discover query along with its controls into a dashboard](esql-variable-controls.md#import-discover-query-with-controls) instead.
 :::
 
 #### In classic mode [add-discover-visualization-classic]
@@ -176,7 +176,7 @@ From Discover, save the entire Discover session, including all its tabs, columns
 
 ::::{applies-switch}
 
-:::{applies-item} {"stack": "ga 9.5", "serverless": "ga"}
+:::{applies-item} { serverless: ga, stack: ga 9.5+ }
 When you save a Discover session, it is saved to the library. The **Add to dashboard** option of the dialog lets you choose whether to also add it as a panel on a dashboard:
 
 - **Existing**: The session is also added as a panel on a dashboard you choose.
@@ -188,7 +188,7 @@ If the session has multiple tabs, you can [choose which tab the panel displays](
 Follow the steps under [Save a Discover session](#_save_a_discover_session), and select the **Add to dashboard** option that matches what you want.
 :::
 
-:::{applies-item} {"stack": "ga 9.0-9.4"}
+:::{applies-item} stack: ga 9.0-9.4
 Saving from Discover saves the session to the library only. To put it on a dashboard, follow the steps under [Save a Discover session](#_save_a_discover_session), then [add the session from the dashboard library](#add-discover-session-from-library).
 :::
 
@@ -202,7 +202,7 @@ This option requires that the session has already been [saved to the library](#_
 
 1. Go to **Dashboards**.
 2. Open or create the dashboard, then switch to **Edit** mode if necessary.
-3. Depending on the version you're using, select **Add from library**, or **Add** > **From library**.
+3. Depending on the version you're using, select **Add from library**, or **Add** → **From library**.
 4. From the **Types** dropdown, select **Discover session**.
 5. Select the Discover session that you want to add, then select **X** to close the list.
 
@@ -267,4 +267,5 @@ A Discover session panel displays one tab at a time. When the underlying session
 
 - [Explore fields and data with Discover](discover-get-started.md)
 - [Create a dashboard](../dashboards/create-dashboard.md)
-- [Using ES|QL](try-esql.md)
+- [Get started with {{esql}} in Discover](try-esql.md)
+- [Use Discover with {{esql}}](use-esql.md)

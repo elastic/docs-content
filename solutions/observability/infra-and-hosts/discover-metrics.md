@@ -2,7 +2,7 @@
 applies_to:
   stack: ga 9.4+, preview 9.2-9.3
   serverless: ga
-description: Make the most of Discover to explore metrics data.
+description: Explore metrics data in Discover with an automatic grid of charts. Search, filter, and break down metrics by dimension, then add them to dashboards.
 products:
   - id: observability
   - id: security
@@ -35,7 +35,7 @@ To visualize your metrics data as charts:
 
     Metrics stored as the legacy [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) field type are also charted, but their percentiles are calculated assuming T-Digest encoding. If the histogram was encoded differently, the chart shows a warning that the values might be approximate.
 
-The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from Discover.
+The dedicated metrics view is only available in ES|QL mode. To switch, select {icon}`code` **Query in ES|QL** in the Discover application menu.
 
 You can also query a specific index:
 
