@@ -28,11 +28,13 @@ Thereafter, {{es}} automatically configures the settings for backing indices as 
 Each new backing index starts at the previous index's `end_time` and extends further ahead using `look_ahead_time`.
 
 When you add a document to the TSDS, {{es}} routes it to the appropriate backing index based on its `@timestamp` value.
-This means a TSDS can write to multiple backing indices simultaneously, not only the most recent one.
+For example:
 
 :::{image} /manage-data/images/elasticsearch-reference-time-bound-indices.svg
 :alt: Time bound indices
 :::
+
+This means a TSDS can write to multiple backing indices simultaneously, not only the most recent one.
 
 Late-arriving data can still be indexed into an older backing index, as long as that index exists, remains writable, and its accepted time range includes the timestamp.
 To inspect the accepted time ranges of TSDS backing indices, use the [get data stream API]({{es-apis}}operation/operation-indices-get-data-stream):
@@ -43,20 +45,6 @@ GET _data_stream/my-tsds
 
 By default, if no existing backing index can accept a document's `@timestamp`, {{es}} rejects the document.
 {{es}} does not create missing past backing indices unless you [turn on past index creation](#tsds-past-index-creation).
-
-## {{ilm-cap}} implications
-
-Writes might be rejected even when a timestamp fits the accepted time range of a backing index.
-The following {{ilm}} [actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) can affect the writable time range, either because they make a backing index read-only or remove it:
-
-- [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md)
-- [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
-- [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md)
-- [Read only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
-- [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
-- [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md), which might revert the read-only status at the end of the action
-
-{{ilm-cap}} will **not** proceed with running these actions until [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
 
 ## Past index creation [tsds-past-index-creation]
 ```{applies_to}
@@ -85,7 +73,7 @@ For guidance on loading historical data, refer to [Load historical data into a T
 
 ## Dimension-based routing [dimension-based-routing]
 
-In addition to time-based routing, time series data streams use dimension-based routing to determine which shard to route data to. Documents with the same dimensions are routed to the same shards, using one of two strategies:
+In addition to time-based routing, {{tsdses}} use dimension-based routing to determine which shard to route data to. Documents with the same dimensions are routed to the same shards, using one of two strategies:
 
 **Index dimensions** {applies_to}`stack: ga 9.2` {applies_to}`serverless: all`
 :    Routing based on the internally managed `index.dimensions` setting.
@@ -108,3 +96,17 @@ or manually set the [`index.routing_path`](elasticsearch://reference/elasticsear
 Documents with the same dimension values are routed to the same shard, improving compression and query performance for time series data.
 
 The `index.routing_path` setting supports wildcards (for example, `dim.*`) and can dynamically match new fields.
+
+## {{ilm-cap}} implications
+
+Writes might be rejected even when a timestamp fits the accepted time range of a backing index.
+The following {{ilm}} [actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) can affect the writable time range, either because they make a backing index read-only or remove it:
+
+- [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md)
+- [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
+- [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md)
+- [Read only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
+- [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
+- [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md), which might revert the read-only status at the end of the action
+
+{{ilm-cap}} will **not** proceed with running these actions until [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
