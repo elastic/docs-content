@@ -1564,13 +1564,15 @@ For example, a variable control named `?machineos` offers the operating systems 
 
 1. `?machineos` is the name of the control.
 
-To give a variable a default value, add it to the `params` array of the `url` object. Use the variable name without the `?` prefix:
+To give a variable a default value, add it to the `params` array of the `url` object. Use the variable name without the `?` or `??` prefix:
 
 ```json
 "params": [
   { "machineos": "ios" }
 ]
 ```
+
+A `??` variable takes a default the same way. For example, `{ "field": "bytes" }` sets a default for a `??field` variable that selects a field.
 
 On a dashboard, a control whose name matches a `params` key replaces that value, and `params` still supplies the variables that no control sets. The **Visualize library** editor and **Canvas** don't have dashboard controls, so `params` is the only source of values there. If the query references a variable that `params` doesn't set, the visualization shows an error.
 
