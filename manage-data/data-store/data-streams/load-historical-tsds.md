@@ -16,6 +16,15 @@ To import historical data into an existing {{tsds-init}}, enable the [data_strea
 The documents must fall within the [eligible write window](/manage-data/data-store/data-streams/time-bound-tsds.md#tsds-past-index-creation). This is the period of time between "current" and the data stream retention limit or the first occurrence of a lifecycle action that makes a backing index read-only, whichever occurs first.
 Write-time deduplication and {{tsds-init}} storage optimizations apply to historical data the same way they apply to live data.
 
+## Before you begin
+
+Loading months of historical data can trigger significant storage use, force merge activity, and lifecycle processing in parallel.
+Verify that your cluster has enough available resources before you start.
+
+When you enable a lifecycle on a data stream with many indices that qualify for downsampling, data stream lifecycle can queue multiple downsampling operations at once.
+To limit concurrent downsampling per data stream, configure the [`data_streams.lifecycle.downsampling.max_indices_in_progress`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-downsampling-max-indices-in-progress) cluster setting.
+For details, refer to [Downsample with a data stream lifecycle](/manage-data/data-store/data-streams/run-downsampling.md#downsample-with-a-data-stream-lifecycle).
+
 :::{note}
 Users who trigger past index creation need the `auto_configure` index privilege.
 For details, refer to [Secure a {{tsds-init}}](/manage-data/data-store/data-streams/set-up-tsds.md#secure-tsds).
@@ -126,15 +135,6 @@ GET metrics-*/_search
 ::::
 :::::
 Delete historical data streams manually when their data is no longer needed.
-
-## Protect the cluster during large loads
-
-Loading months of historical data can trigger significant storage use, force merge activity, and lifecycle processing in parallel.
-Verify that your cluster has enough available resources before you start.
-
-When you enable a lifecycle on a data stream with many indices that qualify for downsampling, data stream lifecycle can queue multiple downsampling operations at once.
-To limit concurrent downsampling per data stream, configure the [`data_streams.lifecycle.downsampling.max_indices_in_progress`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-downsampling-max-indices-in-progress) cluster setting.
-For details, refer to [Downsample with a data stream lifecycle](/manage-data/data-store/data-streams/run-downsampling.md#downsample-with-a-data-stream-lifecycle).
 
 ## Limitations
 
