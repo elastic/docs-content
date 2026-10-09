@@ -11,6 +11,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+description: Set up your first Elastic Observability deployment, collect data from your infrastructure and applications, and explore it.
 ---
 
 # Get started with Elastic {{observability}} [observability-get-started]
@@ -144,7 +145,7 @@ After you've onboarded your data, you can explore it in the following Elastic {{
 - [Explore your logs](/solutions/observability/logs/explore-logs.md) in the Logs UI.
 - [Analyze infrastructure and host metrics](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) in the Infrastructure UI.
 - [View and analyze APM data](/solutions/observability/apm/view-analyze-data.md) in the Applications UI.
-- Use the [Elastic Query Language ({{esql}})](/explore-analyze/discover/try-esql.md) to search and filter your data.
+- Use the [Elasticsearch Query Language ({{esql}})](/explore-analyze/discover/try-esql.md) to search and filter your data.
 
 ::::::
 

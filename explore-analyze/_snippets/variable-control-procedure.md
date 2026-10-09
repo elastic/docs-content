@@ -1,11 +1,5 @@
 1. While you edit your {{esql}} query, the autocomplete menu suggests adding a control when relevant or when you type `?` in the query. Select **Create control**.
 
-   :::{image} /explore-analyze/images/esql-visualization-control-suggestion.png
-   :alt: ES|QL query prompting to add a control
-   :width: 40%
-   :screenshot:
-   :::
-
 2. A flyout opens to let you configure the control. Specify:
 
     * The type of the control:
@@ -18,10 +12,10 @@
 
     * The name of the control. You use this name to reference the control in {{esql}} queries.
       * Start the name with `?` for options that are static values.
-      * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1` Start the name with `??` for options that are fields or functions.
+      * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1+` Start the name with `??` for options that are fields or functions.
     * The values users can select. You can add multiple values from suggested fields or type in custom values. If you selected **Values from a query**, write an {{esql}} query instead.
     * The label of the control. This is the label displayed in **Discover** or in the dashboard.
-    * {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview` Whether the control allows a single selection or multiple selections. Multiple selections require using the [`MV_CONTAINS` or `MV_INTERSECTS`](#esql-multi-values-controls) functions in your query.
+    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` Whether the control allows a single selection or multiple selections. Multiple selections require using the [`MV_CONTAINS` or `MV_INTERSECTS`](#esql-multi-values-controls) functions in your query.
 
 3. Save the control.
 

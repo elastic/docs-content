@@ -25,7 +25,7 @@ You need:
 
 - {{context-engine}} enabled in the current {{kib}} space.
 - Experimental features enabled in {{agent-builder}}. The {{context-engine}} retrieval tools are not attached to an agent unless both settings are on.
-- An AI index that contains at least one KI. To create one, follow [Get started with {{context-engine}}](quickstart.md).
+- An AI index that contains at least one KI. To create one, follow the [{{context-engine}} quickstart](quickstart.md).
 - Access to create or edit an {{agent-builder}} agent and read the AI index.
 - Access to the underlying data and an appropriate agent tool if the agent must query source data.
 
@@ -41,7 +41,7 @@ You can assign an AI index while [creating a custom agent](/explore-analyze/ai-f
 
 The list contains AI indices registered in the current space that you can access. Some agent types also include default AI indices supplied by Elastic. Default AI indices apply automatically and cannot be removed from the agent.
 
-## Understand what the assignment provides
+## What the assignment provides
 
 When an agent has at least one AI index, {{agent-builder}} automatically gives it three dedicated {{context-engine}} tools:
 
