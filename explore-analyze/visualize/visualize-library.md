@@ -3,7 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/visualize-library.html
   - https://www.elastic.co/guide/en/kibana/current/manage-panels.html
 navigation_title: Visualize library
-description: Save a panel to the Visualize library to reuse it on several dashboards. Learn how library panels differ from dashboard panels and how to unlink one.
+type: how-to
+description: Create visualizations in the Visualize library and save panels to reuse them on several dashboards. Learn how to add a library panel and unlink it.
 applies_to:
   stack: ga
   serverless: ga
@@ -13,16 +14,17 @@ products:
 
 # Reuse panels from the Visualize library [visualize-library]
 
-The **Visualize library** is where you build a visualization before you tie it to a dashboard, and where you keep panels that you want to use on more than one dashboard. Depending on your version and navigation, you open it as a **Visualizations** tab on the **Dashboards** page or as a separate **Visualize library** page.
+Use the **Visualize library** to reuse one panel on several dashboards, to build a visualization before you tie it to a dashboard, and to give one dashboard its own copy of a shared panel. Depending on your version and navigation, you open the library as a **Visualizations** tab on the **Dashboards** page or as a separate **Visualize library** page.
 
 ## Before you begin [visualize-library-before-you-begin]
 
 ### Permissions [visualize-library-permissions]
 
-The privileges you need depend on what you do:
+The privileges you need depend on the task:
 
-* To open the library and create visualizations, you need the **Visualize library** privilege in {{product.kibana}}.
-* To add, save, or unlink library panels on a dashboard, you need the **Visualize library** and **Dashboard** privileges. You also need any privilege that the panel type requires, such as **Maps** for maps or **Discover** for Discover sessions.
+* To open the library, you need the **Read** privilege for the **Visualize library** feature in {{product.kibana}}. To create visualizations in the library, you need the **All** privilege.
+* To add a library panel to a dashboard or unlink one, you need the **All** privilege for the **Dashboard** feature.
+* To save a dashboard panel to the library, you need the **All** privilege for the **Dashboard** feature, plus the **All** privilege for the feature that owns the panel type. Lens, Vega, and legacy visualizations belong to **Visualize library**, maps belong to **Maps**, and Discover sessions belong to **Discover**. Links panels and Markdown panels need no privilege beyond **Dashboard**.
 
 ### Library panels and dashboard panels [visualize-library-vs-dashboard-panels]
 
@@ -43,11 +45,11 @@ Unless the remarks say otherwise, a panel type in this table appears in the **Vi
 
 | Panel type | Remarks |
 | --- | --- |
-| [Lens](lens.md) visualizations | Lens visualizations based on an {{esql}} query are not supported. |
+| [Lens](lens.md) visualizations | Lens visualizations based on an {{esql}} query are not supported. The **Save to library** action isn't available for them. |
 | [Maps](maps.md) |  |
 | [Links](link-panels.md) panels | You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
 | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
-| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, then add it from the library. |
+| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, or create it on a dashboard and save it to the library. |
 | Vega visualizations |  |
 | Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) |  |
 
@@ -61,7 +63,7 @@ In the library, you can create visualizations and manage annotation groups.
 
 $$$visualize-library-visualizations$$$
 
-Where you open the library depends on your deployment and version.
+To browse your saved visualizations or build a new one, open the library. Where you open it depends on your deployment and version.
 
 - {applies_to}`serverless: ga` On the **Dashboards** page, select the **Visualizations** tab.
 - {applies_to}`stack: ga 9.4` Open the library from one of these places:
@@ -69,14 +71,22 @@ Where you open the library depends on your deployment and version.
   - In the Classic view, on the **Dashboards** page, select the **Visualizations** tab, or select **Visualize library** in the navigation menu.
 - {applies_to}`stack: ga 9.0-9.3` Select **Visualize library** in the navigation menu, or search for it in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+The library opens on the list of your saved visualizations.
+
 ### Create a visualization from the library [visualize-library-create]
 
-To build a visualization before you add it to any dashboard, open the library and select **Create visualization**. Then choose the type of visualization to build. For the steps to build each type, refer to its page:
+To build a visualization before you add it to any dashboard, create it from the library.
 
-* [Lens](lens.md)
-* [Maps](maps.md)
-* [Vega](custom-visualizations-with-vega.md)
-* [Aggregation-based](legacy-editors/aggregation-based.md) and [TSVB](legacy-editors/tsvb.md): Legacy visualizations that you find on the **Legacy** tab of the dialog.
+1. [Open the library](#visualize-library-access).
+2. Select **Create visualization**.
+3. Choose the type of visualization to build. For the steps to build each type, refer to its page:
+
+   * [Lens](lens.md)
+   * [Maps](maps.md)
+   * [Vega](custom-visualizations-with-vega.md)
+   * [Aggregation-based](legacy-editors/aggregation-based.md) and [TSVB](legacy-editors/tsvb.md): Legacy visualizations that you find on the **Legacy** tab of the dialog.
+
+After you save the visualization, it appears in the library and you can add it to any dashboard.
 
 You can't create links panels, Markdown panels, or Discover sessions from the library.
 
@@ -99,6 +109,7 @@ To use a library panel on another dashboard, add it from the library. The new pa
    - {applies_to}`stack: ga 9.0-9.1` Select **Add from library**.
 
 3. Select the panel to add.
+4. Save the dashboard.
 
 The panel appears on the dashboard and shows the library copy.
 
@@ -110,6 +121,7 @@ To reuse a dashboard panel on other dashboards, save it to the library.
 2. Hover over the panel, then select the {icon}`boxes_vertical` panel menu.
 3. Select **Save to library**.
 4. Enter a title, then select **Save**.
+5. Save the dashboard.
 
 The panel on this dashboard is now a library panel. When you save a later edit, every dashboard that uses the panel shows that edit.
 
@@ -120,6 +132,7 @@ To change a library panel on one dashboard only, unlink it from the library on t
 1. Open the dashboard and select **Edit**.
 2. Hover over the panel, then select the {icon}`boxes_vertical` panel menu.
 3. Select **Unlink from library**.
+4. Save the dashboard.
 
 The panel is now a dashboard panel. Edits you make from now on apply to this dashboard only. The library copy and the other dashboards stay as they are.
 
