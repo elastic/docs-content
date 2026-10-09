@@ -90,12 +90,8 @@ Restart each node before the plugin becomes available. Plugins that contribute c
 
 Plugins are built for a specific version of {{es}} and must be reinstalled each time you upgrade the cluster. Text analysis plugins created with the [stable plugin API](elasticsearch://extend/creating-stable-plugins.md) are the exception.
 
-If a plugin is critical to your cluster, add it to the [`plugin.mandatory`](elasticsearch://reference/elasticsearch-plugins/mandatory-plugins.md) setting in `elasticsearch.yml` so that a node refuses to start when the plugin is missing.
+If a plugin is critical to your cluster, add it to the [`plugin.mandatory`](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#mandatory-plugins) setting in `elasticsearch.yml` so that a node refuses to start when the plugin is missing.
 
 ## Reference
 
-For the full `elasticsearch-plugin` command surface, refer to the following pages:
-
-* [Listing, removing, and updating installed plugins](elasticsearch://reference/elasticsearch-plugins/listing-removing-updating.md)
-* [Other command line parameters](elasticsearch://reference/elasticsearch-plugins/_other_command_line_parameters.md): batch mode, proxy settings, custom config directories, and exit codes
-* [Custom URL or file system](elasticsearch://reference/elasticsearch-plugins/plugin-management-custom-url.md): self-signed certificates and platform-specific paths
+For the full `elasticsearch-plugin` command surface, including listing and updating installed plugins, batch mode, proxy settings, custom config directories, exit codes, and installing from a URL or local file, refer to [`elasticsearch-plugin`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-plugin.md).
