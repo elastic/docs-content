@@ -26,21 +26,18 @@ You can change a panel from one kind to the other. Save a dashboard panel to the
 
 ## Panel types you can save [visualize-library-what-you-can-save]
 
-Panel types that are not in this table are saved only with the dashboard they belong to. You cannot add them to the library.
-
 Unless the remarks say otherwise, a panel type in this table appears in the **Visualizations** tab and when you add a panel from the library to a dashboard.
 
 | Panel type | Remarks |
 | --- | --- |
 | [Lens](lens.md) visualizations | Lens visualizations based on an {{esql}} query are not supported. |
 | [Maps](maps.md) |  |
-| [Links](link-panels.md) panels | You can't create a links panel from the library. Create it on a dashboard, then save it to the library. |
-| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them from the library. |
-| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them from the library. |
+| [Links](link-panels.md) panels | You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
+| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, then add it from the library. |
 | Vega visualizations |  |
-| [Aggregation-based](legacy-editors/aggregation-based.md) visualizations |  |
-| [TSVB](legacy-editors/tsvb.md) visualizations |  |
-| [Timelion](legacy-editors/timelion.md) visualizations |  |
+| Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) |  |
+| Any other panel type | Not supported by the library. These panels are saved only with the dashboard they belong to. |
 
 ## Open the library [visualize-library-access]
 
