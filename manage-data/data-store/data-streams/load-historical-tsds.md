@@ -9,7 +9,7 @@ type: how-to
 
 # Load historical data into a {{tsds}} [load-historical-tsds]
 
-By default, a {{tsds-cap}} ({{tsds-init}}) works well for continuous, near-real-time ingestion.
+By default, a {{tsds}} ({{tsds-init}}) works well for continuous, near-real-time ingestion.
 Only documents with `@timestamp` values that fall inside the time range of existing backing indices are accepted.
 
 To import historical data into an existing {{tsds-init}}, enable the [data_stream.past_tsdb_index_creation_enabled](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#time-series-data-stream) cluster setting. You can then use the same APIs you use for live data.
