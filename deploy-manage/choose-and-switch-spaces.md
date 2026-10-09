@@ -80,5 +80,6 @@ The next time you log in, {{kib}} follows this preference. If the preference is 
 
 ## Related pages
 
+- [Personal preferences in {{kib}}](/explore-analyze/find-and-organize/personal-preferences.md)
 - [Spaces](/deploy-manage/manage-spaces.md)
 - [The {{kib}} interface](/explore-analyze/find-and-organize/kibana-interface.md)

@@ -40,6 +40,7 @@ On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, administrators can e
 
 ## Related pages
 
+- [Personal preferences in {{kib}}](/explore-analyze/find-and-organize/personal-preferences.md)
 - [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md)
 - [Use dark mode in {{kib}}](dark-mode.md)
 - [Use high-contrast mode in {{kib}}](high-contrast.md)
