@@ -2,17 +2,12 @@
 navigation_title: Knowledge Indicators
 description: Knowledge Indicators automatically extract structured facts about services, infrastructure, and dependencies from raw log data in Streams, and generate ES|QL alerting rules that feed the Significant Events pipeline.
 applies_to:
-  serverless: preview
-  stack: preview 9.4+
+  serverless:
+    observability: preview
 products:
   - id: observability
-  - id: elasticsearch
   - id: kibana
   - id: cloud-serverless
-  - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
-  - id: elastic-stack
 ---
 
 # Knowledge Indicators [sig-events-ki]
@@ -23,23 +18,21 @@ Rather than a static configuration, this knowledge accumulates over time, automa
 
 To access Knowledge Indicators, open **Significant Events** from the Streams main page and select the **Knowledge Indicators** tab.
 
-:::{admonition} Requirements
-To use this feature, you need a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
-:::
-
 ## Generate KIs [sig-events-ki-generate]
 
-You can trigger KI extraction on demand or set up continuous extraction at a specific interval.
+You can trigger KI extraction on demand or set up continuous KI onboarding at a specific interval.
 
 On demand
 :   From the **Significant Events** page, select the streams you want to generate KIs for and select **Generate**.
 
-Continuous extraction
-:   When enabled, continuous extraction runs automatically on managed streams at the interval you configure. Continuous extraction is off by default. To enable it:
+Continuous KI onboarding
+:   When enabled, KI onboarding runs automatically on managed streams at the configured interval. Continuous KI onboarding is off by default. To enable it:
 
-    1. From the **Streams** main page, select **Significant Events** → **Settings**.
-    1. Under **Continuous KI extraction**, turn on **Enable continuous KI extraction**.
-    1. Set the **Extraction interval** in hours, and list any **Excluded streams** to skip during continuous extraction.
+    1. Open the Significant Events settings.
+    1. Under **Continuous KI onboarding**, turn on **Enable continuous KI onboarding**.
+    1. Set the **Onboarding interval (hours)**, the minimum number of hours between onboarding runs for a given stream. Set it to `0` for no cooldown between runs.
+
+    Continuous KI onboarding covers the streams that match the index patterns in the **Data sources** section of the settings, plus query streams, which are always eligible regardless of index patterns.
 
 ## How KI extraction works [sig-events-ki-extraction]
 
@@ -187,27 +180,27 @@ When you promote a query KI, it becomes an alerting rule that runs its {{esql}} 
 
 The Significant Events pipeline picks up from there. A Detection workflow runs change point aggregation against those per-rule counts and writes a document to `.significant_events-detections` when statistically significant shifts are found. A Discovery workflow then uses an LLM to process those documents.
 
-## Continuous extraction [sig-events-ki-continuous]
+## Continuous KI onboarding [sig-events-ki-continuous]
 
-When continuous extraction is enabled, a workflow runs every 35 minutes and processes up to five eligible streams per run. A stream is eligible if:
+When continuous KI onboarding is enabled, a workflow runs every 35 minutes and processes up to five eligible streams per run. A stream is eligible if:
 
-- It is a wired, classic, or query stream that matches the configured Significant Events index patterns
+- It matches the configured index patterns, or a query stream (query streams are always eligible, regardless of index patterns)
 - No feature identification is currently running for it
 - No feature identification task is currently running for it
-- Enough time has elapsed since its last extraction (controlled by the **Extraction interval** setting, default 12 hours)
+- Enough time has elapsed since its last extraction (controlled by the **Onboarding interval (hours)** setting, default 12 hours)
 
 Streams that have never been processed are always prioritized. Among remaining candidates, streams with the oldest last-completed extraction run are processed first.
 
-The continuous extraction workflow has a 34-minute timeout (one minute shorter than the 35-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
+The continuous onboarding workflow has a 34-minute timeout (one minute shorter than the 35-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
 
-Toggling continuous extraction off cancels any in-flight extraction tasks and disables the workflow. Re-enabling turns it back on. Already-extracted KIs are preserved throughout.
+Turning off continuous KI onboarding cancels any in-flight extraction tasks and disables the workflow. Re-enabling turns it back on. Already-extracted KIs are preserved throughout.
 
-### Continuous extraction settings
+### Continuous KI onboarding settings
 
 | Setting | Default | Description |
 |---|---|---|
-| `observability:streamsContinuousKiExtractionEnabled` | `false` | Enables or disables continuous extraction |
-| `observability:streamsContinuousKiExtractionIntervalHours` | `12` | Minimum hours between extraction runs for a single stream |
+| `observability:streamsContinuousKiExtractionEnabled` | `false` | Enables or disables continuous KI onboarding |
+| `observability:streamsContinuousKiExtractionIntervalHours` | `12` | Minimum hours between onboarding runs for a single stream. `0` means no cooldown between runs |
 
 These settings are only modifiable through the Significant Events Settings page.
 

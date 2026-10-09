@@ -2,17 +2,12 @@
 navigation_title: Operator guide
 description: System impact, cost drivers, and operational procedures for cluster operators running Significant Events.
 applies_to:
-  serverless: experimental
-  stack: experimental 9.5+
+  serverless:
+    observability: preview
 products:
   - id: observability
-  - id: elasticsearch
   - id: kibana
   - id: cloud-serverless
-  - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
-  - id: elastic-stack
 ---
 
 # Operator guide [sig-events-operator]
@@ -22,12 +17,14 @@ Use this guide to understand how Significant Events affects your cluster and how
 - [What runs where](#sig-events-op-components): Which components run on {{kib}}, {{es}}, and Workflows
 - [System impact](#sig-events-op-impact): Query load, pipeline lag, memory, and storage growth
 - [Cost drivers](#sig-events-op-costs): LLM call sites and token usage by phase
-- [Disable and re-enable](#sig-events-op-disable): How to stop the pipeline or pause Knowledge Indicator (KI) refresh
+- [Pause and resume](#sig-events-op-disable): How to pause Significant Events activity or stop Knowledge Indicator (KI) refresh
 - [Recovery procedures](#sig-events-op-recovery): Symptoms and actions for common degraded states
 
 ## What runs where [sig-events-op-components]
 
 The following table shows each pipeline component, where it runs, what triggers it, and what it reads and writes:
+
+<!-- DRAFT NOTE: It seems nothing defines or writes to `.significant_events-discoveries`. Need to verify if it was retired. -->
 
 | Component | Uses | Trigger | Reads | Writes |
 |---|---|---|---|---|
@@ -35,8 +32,7 @@ The following table shows each pipeline component, where it runs, what triggers 
 | KI query generation | Workflow | On-demand | Features + existing queries | Query KI assets |
 | Alerting rule execution | {{kib}} alerting → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
 | Detection Workflow | Workflows | Cron 10m | `.rule-events` | `.significant_events-detections` |
-| Discovery Workflow | Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries` |
-| Triage workflow | {{kib}} Workflows + Agent Builder | Cron 10m | `.significant_events-discoveries` | `.significant_events-events` |
+| Discovery Workflow | Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries`, `.rule-events` |
 
 ## System impact [sig-events-op-impact]
 
@@ -73,9 +69,10 @@ Significant Events writes to the following data streams:
 |---|---|---|
 | `.significant_events-detections` | Detection Workflow | Append-only; one document per observed state transition per rule |
 | `.significant_events-discoveries` | Discovery agent | Append-only; one document per discovery state change |
-| `.significant_events-events` | Judge | Append-only; one document per Significant Event state change |
 
-The `.significant_events-detections` and `.significant_events-discoveries` data streams use DSL with a default 90-day retention (the events data stream currently has no default retention configured). You can override retention per stream using the DSL API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
+The Discovery agent writes Significant Events as alert documents to `.rule-events`, the same index that holds rule execution results, so you can manage and route them like any other alert.
+
+The `.significant_events-detections` data stream uses DSL with a default 90-day retention. You can override retention using the DSL API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
 
 ## Cost drivers [sig-events-op-costs]
 
@@ -85,27 +82,30 @@ LLM costs scale with the number of streams, the number of promoted rules, and wh
 |---|---|---|
 | Feature identification | Per stream onboarding + optional continuous (up to 5 streams per 35-minute run) | Highest token volume; uses a fast classification model |
 | Query generation | Per stream after features exist | Medium; requires reasoning and ES\|QL validation |
-| Discovery agent | ~10 min cycles when unprocessed detections exist | Bursty; scales with the number of active alerting rules firing |
-| Judge agent | Sync on new discoveries; stale re-review ~10 min | Lower frequency; scales with the number of open discoveries |
+| Discovery agent (including triage) | ~10 min cycles when unprocessed detections exist | Bursty; scales with the number of active alerting rules firing |
 
 Continuous extraction is the largest cost multiplier. When enabled, feature identification runs on a recurring schedule across all eligible streams. Enabling it on a large number of streams significantly increases token consumption.
 
-<!-- Billing policy still needs to be defined/documented -->
+### Daily run limits [sig-events-op-cost-limits]
 
-## Disable and re-enable [sig-events-op-disable]
+Deployment-wide daily run limits cap how many scheduled runs each activity can start per UTC day, so scheduled automation can't consume an unbounded token budget. When a limit is reached, new scheduled runs in that category can be denied until the UTC day resets. The limits apply only to scheduled automation: manual runs are never limited.
 
-### Disable Significant Events entirely
+## Pause and resume [sig-events-op-disable]
 
-Set `observability:streamsSigEventsScheduledDiscoveryEnabled` to `false` in {{kib}} settings. This stops the detection, discovery, and triage workflows.
+You can pause all Significant Events activity from the settings page. Managing these settings requires the manage engines privilege.
+
+Select **Pause Significant Events activity** to stop scheduled discovery, continuous onboarding, detections, investigations, and the alerting rules backing knowledge indicator queries. The pause applies across the entire deployment — every {{kib}} space — not only the current space. Existing data is kept.
+
+Resuming restores the managed workflows and rules that pause disabled, and turns scheduled discovery and continuous onboarding back on only if they were enabled before the pause.
 
 ### Stop background KI refresh only
 
-To stop continuous extraction without disabling Significant Events:
+To stop continuous onboarding without pausing Significant Events:
 
-1. Select **Significant Events** → **Settings**.
-2. Under **Continuous KI extraction**, turn off **Enable continuous KI extraction**.
+1. Go to the Significant Events settings.
+2. Under **Continuous KI onboarding**, turn off **Enable continuous KI onboarding**.
 
-Turning off continuous extraction cancels all in-flight feature identification tasks and turns off the continuous extraction workflow. Already-extracted KIs are not deleted. Manually-triggered extractions continue to work.
+Already-extracted KIs are not deleted, and manually-triggered extractions continue to work.
 
 
 ## Recovery procedures [sig-events-op-recovery]
@@ -114,7 +114,7 @@ Turning off continuous extraction cancels all in-flight feature identification t
 
 **Symptom**: Continuous extraction appears to be running continuously or processing streams more frequently than expected.
 
-**Action**: Check the continuous extraction setting. If enabled, check the number of streams eligible for extraction — more streams means more runs per cycle.
+**Action**: Check the **Continuous KI onboarding** setting. If enabled, check the number of streams eligible for extraction — more streams means more runs per cycle.
 
 ### High LLM cost
 
@@ -122,17 +122,18 @@ Turning off continuous extraction cancels all in-flight feature identification t
 
 **Action**:
 
-1. Disable continuous extraction first — this is the primary cost multiplier.
+1. Turn off **Enable continuous KI onboarding** first — this is the primary cost multiplier.
 2. Check how many streams are eligible for continuous extraction.
 
 ### Incidents not clearing
 
 **Symptom**: A Significant Event remains open after the underlying condition appears to have resolved.
 
-**Action**: This is expected behavior. The judge agent must independently verify that the underlying condition has resolved. Detections clearing alone is not sufficient.
+**Action**: This is expected behavior. The Discovery agent must verify that the underlying condition has resolved. Detections clearing alone is not sufficient.
 
 ## Learn more [sig-events-operator-learn-more]
 
 - [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
+- [Elastic nightshift](../../nightshift/nightshift.md): Get an overview of Elastic nightshift and its requirements
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work

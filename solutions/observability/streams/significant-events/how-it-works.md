@@ -2,17 +2,12 @@
 navigation_title: How it works
 description: Pipeline internals for engineers and adopters — KI extraction, rule generation, detection, discovery, storage model, and ES|QL traceability.
 applies_to:
-  serverless: experimental
-  stack: experimental 9.5+
+  serverless:
+    observability: preview
 products:
   - id: observability
-  - id: elasticsearch
   - id: kibana
   - id: cloud-serverless
-  - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
-  - id: elastic-stack
 ---
 
 # How Significant Events works [sig-events-how-it-works]
@@ -24,7 +19,7 @@ The pipeline has four sequential phases, each building on the outputs of the pre
 - [Phase 1: Knowledge Indicators (KIs) extraction](#sig-events-hiw-ki): LLM and programmatic analysis of stream logs
 - [Phase 2: Rule generation](#sig-events-hiw-rules): LLM generates detection rules using KIs as input
 - [Phase 3: Rule execution](#sig-events-hiw-execution): Alerting framework runs promoted rules continuously
-- [Phase 4: Discovery](#sig-events-hiw-discovery): Detection, discovery, and triage workflows convert alert signals into confirmed Significant Events
+- [Phase 4: Discovery](#sig-events-hiw-discovery): Detection and discovery workflows convert alert signals into confirmed Significant Events
 
 ## Phase 1: KI extraction [sig-events-hiw-ki]
 
@@ -64,11 +59,10 @@ The 7-minute lookback on a 5-minute cadence means adjacent runs cover the same m
 
 ## Phase 4: Discovery [sig-events-hiw-discovery]
 
-Discovery converts raw alert signals into confirmed Significant Events. It runs as three sequenced workflows (detection, discovery, and triage) coordinated by an Orchestrator workflow.
+Discovery converts raw alert signals into confirmed Significant Events in two stages:
 
 - [Detection Workflow](#sig-events-hiw-detection): Change point aggregation per alerting rule, written to the detections index
-- [Discovery Workflow](#sig-events-hiw-discovery-agent): Discovery agent generates hypotheses, written to the discoveries index
-- [Triage Workflow](#sig-events-hiw-triage): Judge agent independently verifies and promotes, written to the events index
+- [Discovery Workflow](#sig-events-hiw-discovery-agent): Discovery agent generates hypotheses, performs triage, and promotes confirmed Significant Events
 
 ### Detection [sig-events-hiw-detection]
 
@@ -78,13 +72,9 @@ Change point detection is per-rule. A stream can have many independent rules, an
 
 ### Discovery agent [sig-events-hiw-discovery-agent]
 
-A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent is a hypothesis agent. It reads detection signals and produces structured discovery documents describing what is happening. Its scope is observation only, describing the anomaly, not prescribing remediation.
+A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent reads detection signals, produces structured discovery documents describing what is happening, and performs triage on its own findings: it verifies each hypothesis and sets the event status to open (page on-call), closed (confirmed settled), or dismissed (low severity and low confidence). Status transitions are written as new documents to the events index.
 
-### Triage and the Judge agent [sig-events-hiw-triage]
-
-The Triage workflow reads unassessed discovery documents and calls the Judge agent. The Judge agent independently verifies the Discovery agent's hypothesis and sets the event status to open (page on-call), closed (confirmed settled), or dismissed (low severity and low confidence). The Judge agent runs in a separate invocation with no shared state. It receives the Discovery agent's output as input but is explicitly instructed to treat it as a hypothesis to challenge, not a conclusion to ratify. Status transitions are written as new documents to the events index.
-
-The two-agent design is intended to prevent a single agent that both investigates and judges from confirming its own hypothesis.
+Significant Events are also written as alerts, so they can be managed, routed, and acted on like any other Elastic alert.
 
 ## {{esql}} traceability [sig-events-hiw-traceability]
 
