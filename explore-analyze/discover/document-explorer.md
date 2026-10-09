@@ -17,8 +17,8 @@ description: Customize the Discover document table, chart, and sidebar. Adjust c
 Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
 :::
 
-:::{image} /explore-analyze/images/kibana-hello-field.png
-:alt: A view of the Discover app
+:::{image} /explore-analyze/images/kibana-discover-esql-errors.png
+:alt: Discover in {{esql}} mode, with a query, a chart of errors over time, and the results table
 :screenshot:
 :::
 

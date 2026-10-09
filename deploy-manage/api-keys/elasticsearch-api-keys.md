@@ -25,7 +25,10 @@ To create equivalent keys for {{serverless-full}} projects, refer to [](serverle
 
 To manage API keys in {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-![API Keys UI](/deploy-manage/images/kibana-api-keys.png "")
+:::{image} /deploy-manage/images/kibana-api-keys.png
+:alt: API Keys UI
+:screenshot:
+:::
 
 
 ## Security privileges [api-keys-security-privileges]
@@ -54,7 +57,10 @@ The following are available to create an API key:
   1. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
   2. Select **Create API key**.
 
-![Create API Key UI](/deploy-manage/images/kibana-create-user-api-key.png "")
+:::{image} /deploy-manage/images/kibana-create-user-api-key.png
+:alt: Create API Key UI
+:screenshot:
+:::
 
 From the **Create API key** pane, you can configure your new key:
   1. Choose to create either a user or a cross-cluster API key.

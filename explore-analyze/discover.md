@@ -13,8 +13,8 @@ description: Use Discover to search and filter documents, analyze field structur
 
 **Discover** is the primary tool for exploring your {{product.elasticsearch}} data in {{product.kibana}}. Search and filter documents, analyze field structures, visualize patterns, and save findings to reuse later or share with dashboards. Whether investigating issues, analyzing trends, or validating data quality, **Discover** offers a flexible interface for understanding your data.
 
-:::{image} /explore-analyze/images/kibana-hello-field.png
-:alt: A view of the Discover app
+:::{image} /explore-analyze/images/kibana-discover-esql-errors.png
+:alt: Discover in {{esql}} mode, with a query, a chart of errors over time, and the results table
 :screenshot:
 :::
 

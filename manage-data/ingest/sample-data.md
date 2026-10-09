@@ -35,11 +35,6 @@ To install sample data sets, you need `all` {{kib}} privileges for **Integration
 :applies_to: stack: ga 9.0-9.3
 
 In versions 9.0 to 9.3, you must first expand the **Other sample data sets** section to see the available sample data sets.
-
-:::{image} /manage-data/images/sample-data-sets.png
-:alt: Sample data sets in versions 9.0 to 9.3
-:screenshot:
-:::
 ::::
 
 ## Run the makelogs script

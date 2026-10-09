@@ -75,7 +75,7 @@ Such changes aren’t guaranteed to solve the issue, but give the functionality 
 
 The listing of reports in **Stack Management > Reporting** allows you to inspect the query used for CSV export. It can be helpful to see the raw responses from Elasticsearch, or determine if there are performance improvements to be gained by changing the way you query the data.
 
-1. Go to **Stack Management > Reporting** and click the info icon next to a report.
+1. Go to **Stack Management → Reporting**. From the actions menu for a report, select **View report info**.
 2. In the footer of the report flyout, click **Actions**.
 3. Click **Inspect query in Console** in the **Actions** menu.
 4. This will open the **Console** application, pre-filled with the queries used to generate the CSV export.
