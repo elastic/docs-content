@@ -15,7 +15,16 @@ products:
 
 The **Visualize library** is where you build a visualization before you tie it to a dashboard, and where you keep panels that you want to use on more than one dashboard. Depending on your version and navigation, you open it as a **Visualizations** tab on the **Dashboards** page or as a separate **Visualize library** page.
 
-## Library panels and dashboard panels [visualize-library-vs-dashboard-panels]
+## Before you begin [visualize-library-before-you-begin]
+
+### Permissions [visualize-library-permissions]
+
+The privileges you need depend on what you do:
+
+* To open the library and create visualizations, you need the **Visualize library** privilege in {{product.kibana}}.
+* To add, save, or unlink library panels on a dashboard, you need the **Visualize library** and **Dashboard** privileges. You also need any privilege that the panel type requires, such as **Maps** for maps or **Discover** for Discover sessions.
+
+### Library panels and dashboard panels [visualize-library-vs-dashboard-panels]
 
 A panel is either a library panel or a dashboard panel. The difference is where {{kib}} stores it.
 
@@ -27,10 +36,6 @@ A panel is either a library panel or a dashboard panel. The difference is where 
     You might also see this called a by-value panel, because the dashboard holds the full definition of the panel.
 
 You can change a panel from one kind to the other. [Save a dashboard panel to the library](#save-to-visualize-library) to share it, or [unlink a library panel](#unlink-library-panel) to give a dashboard its own copy.
-
-## Manage the library [visualize-library-manage]
-
-In the library, you can browse the panel types in the following table, create visualizations, and manage annotation groups.
 
 ### Panel types you can save to the library [visualize-library-what-you-can-save]
 
@@ -47,6 +52,10 @@ Unless the remarks say otherwise, a panel type in this table appears in the **Vi
 | Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) |  |
 
 The library doesn't support other panel types. These panels are saved only with the dashboard they belong to.
+
+## Manage the library [visualize-library-manage]
+
+In the library, you can create visualizations and manage annotation groups.
 
 ### Open the library [visualize-library-access]
 
