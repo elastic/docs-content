@@ -2,11 +2,13 @@
 navigation_title: Visualizations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
+description: Build charts, tables, and metrics in Kibana with Lens. Add fields, use formulas and annotations, and save the result to a dashboard or the Visualize library.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Lens visualizations [lens]

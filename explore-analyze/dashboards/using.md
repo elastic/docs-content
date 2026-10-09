@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Exploring dashboards [_use_and_filter_dashboards]

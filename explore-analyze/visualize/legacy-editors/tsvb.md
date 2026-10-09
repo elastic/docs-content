@@ -1,4 +1,5 @@
 ---
+description: Build time series visualizations with TSVB in Kibana, set up series and chart options, convert them to Lens, and add them to a dashboard.
 applies_to:
   stack: ga
   serverless: unavailable
@@ -8,6 +9,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+type: how-to
 ---
 
 # TSVB [tsvb-panel]

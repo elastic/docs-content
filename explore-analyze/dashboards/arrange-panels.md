@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Organize dashboard panels [arrange-panels]

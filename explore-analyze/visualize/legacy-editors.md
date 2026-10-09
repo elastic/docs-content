@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/legacy-editors.html
+description: Find out which legacy visualization editors you can still use in Kibana, how to open them, and why to use Lens instead.
 applies_to:
   stack: ga
   serverless: unavailable
 products:
   - id: kibana
+type: overview
 ---
 
 # Legacy editors [legacy-editors]

@@ -1,4 +1,5 @@
 ---
+description: Create aggregation-based visualizations such as bar, line, and pie charts in Kibana, convert them to Lens, and add them to a dashboard.
 applies_to:
   stack: ga
   serverless: unavailable
@@ -8,6 +9,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+type: how-to
 ---
 
 # Aggregation-based [add-aggregation-based-visualization-panels]
