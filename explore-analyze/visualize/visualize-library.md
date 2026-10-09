@@ -79,7 +79,7 @@ To build a visualization before you add it to any dashboard, create it from the 
 
 1. [Open the library](#visualize-library-access).
 2. Select **Create visualization**.
-3. Choose the type of visualization to build. For the steps to build each type, refer to its page:
+3. Select the type of visualization to build. For the steps to build each type, refer to its page:
 
    * [Lens](lens.md)
    * [Maps](maps.md)
@@ -92,7 +92,7 @@ You can't create links panels, Markdown panels, or Discover sessions from the li
 
 ### Annotation groups [visualize-library-annotation-groups]
 
-Annotation groups mark events such as deployments on your charts. You can reuse the same group on more than one Lens visualization. Annotation groups are not dashboard panels. To manage them, select the **Annotation groups** tab. To create a group and add it to a chart, refer to [Add annotations](lens.md#add-annotations). When you save a change to a group, every visualization that uses the group shows it.
+Annotation groups mark events such as deployments on your charts. You can reuse the same group on more than one Lens visualization. Annotation groups aren't dashboard panels. To manage them, select the **Annotation groups** tab. To create a group and add it to a chart, refer to [Add annotations](lens.md#add-annotations). When you save a change to a group, every visualization that uses the group shows it.
 
 ## Use library panels on dashboards [visualize-library-use-on-dashboards]
 
@@ -105,7 +105,7 @@ To use a library panel on another dashboard, add it from the library. The new pa
 1. Open the dashboard and select **Edit**.
 2. Open the library picker:
 
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` Select **Add**, then **From library**.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` Select **Add** → **From library**.
    - {applies_to}`stack: ga 9.0-9.1` Select **Add from library**.
 
 3. Select the panel to add.

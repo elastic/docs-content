@@ -224,7 +224,7 @@ You need permission to access Discover, and the dashboard must be in **Edit** mo
 
 ### Manage Discover session panels on a dashboard [manage-discover-session-panels]
 
-To go from a session panel back to **Discover** without editing the panel, refer to [Open the data behind a panel in Discover](../dashboards/using.md#explore-panel-data-in-discover).
+To open the session behind a panel in **Discover** without editing the panel, refer to [Open the data behind a panel in Discover](../dashboards/using.md#explore-panel-data-in-discover).
 
 #### Save panel edits as a new Discover session [discover-session-save-as-from-dashboard]
 ```{applies_to}
