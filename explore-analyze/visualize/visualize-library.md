@@ -14,7 +14,7 @@ products:
 
 # Reuse panels from the Visualize library [visualize-library]
 
-Use the **Visualize library** to reuse one panel on several dashboards, to build a visualization before you tie it to a dashboard, and to give one dashboard its own copy of a shared panel. Depending on your version and navigation, you open the library as a **Visualizations** tab on the **Dashboards** page or as a separate **Visualize library** page.
+A panel is a chart, map, or other block of content on a dashboard. The **Visualize library** is where you save panels so that several dashboards can reuse them. Use it to share one panel across dashboards, to build a visualization before you tie it to a dashboard, and to give one dashboard its own copy of a shared panel. To find the library, refer to [Open the library](#visualize-library-access).
 
 ## Before you begin [visualize-library-before-you-begin]
 
@@ -24,7 +24,7 @@ The privileges you need depend on the task:
 
 * To open the library, you need the **Read** privilege for the **Visualize library** feature in {{product.kibana}}. To create visualizations in the library, you need the **All** privilege.
 * To add a library panel to a dashboard or unlink one, you need the **All** privilege for the **Dashboard** feature.
-* To save a dashboard panel to the library, you need the **All** privilege for the **Dashboard** feature, plus the **All** privilege for the feature that owns the panel type. Lens, Vega, and legacy visualizations belong to **Visualize library**, maps belong to **Maps**, and Discover sessions belong to **Discover**. Links panels and Markdown panels need no privilege beyond **Dashboard**.
+* To save a dashboard panel to the library, you need the **All** privilege for the **Dashboard** feature, plus the **All** privilege for the feature behind the panel type. Lens, Vega, and legacy visualizations belong to **Visualize library**, maps belong to **Maps**, and Discover sessions belong to **Discover**. Links panels and Markdown panels need no privilege beyond **Dashboard**.
 
 ### Library panels and dashboard panels [visualize-library-vs-dashboard-panels]
 
@@ -55,15 +55,17 @@ Unless the remarks say otherwise, a panel type in this table appears in the **Vi
 
 The library doesn't support other panel types. These panels are saved only with the dashboard they belong to.
 
-## Manage the library [visualize-library-manage]
+## Open the library and create visualizations [visualize-library-manage]
 
-In the library, you can create visualizations and manage annotation groups.
+In the library, you can create visualizations and manage annotation groups, which are saved sets of chart annotations.
 
 ### Open the library [visualize-library-access]
 
 $$$visualize-library-visualizations$$$
 
 To browse your saved visualizations or build a new one, open the library. Where you open it depends on your deployment and version.
+
+The navigation you see depends on the solution view of your space: **Classic**, **Search**, **Observability**, or **Security**. To check the solution view of a space, refer to [Manage spaces](/deploy-manage/manage-spaces.md). In {{serverless-full}}, every project uses a solution view.
 
 - {applies_to}`serverless: ga` On the **Dashboards** page, select the **Visualizations** tab.
 - {applies_to}`stack: ga 9.4+` Open the library from one of these places:
@@ -90,13 +92,11 @@ After you save the visualization, it appears in the library and you can add it t
 
 You can't create links panels, Markdown panels, or Discover sessions from the library.
 
-### Annotation groups [visualize-library-annotation-groups]
+### Reuse annotations across charts with annotation groups [visualize-library-annotation-groups]
 
 Annotation groups mark events such as deployments on your charts. You can reuse the same group on more than one Lens visualization. Annotation groups aren't dashboard panels. To manage them, select the **Annotation groups** tab. To create a group and add it to a chart, refer to [Add annotations](lens.md#add-annotations). When you save a change to a group, every visualization that uses the group shows it.
 
 ## Use library panels on dashboards [visualize-library-use-on-dashboards]
-
-To add a panel from the library, use the options for adding panels to the dashboard. To save a panel to the library or unlink it, use the panel menu {icon}`boxes_vertical`, which appears when you hover over a panel.
 
 ### Add a panel from the library to a dashboard [add-a-library-panel]
 
