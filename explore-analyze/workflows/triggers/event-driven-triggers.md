@@ -20,7 +20,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 - **Entity store triggers** — Fire when an entity's asset criticality or risk score changes in the entity store. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
-- **Alert lifecycle triggers** — Fire on specific alert events in {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
+- **Alert lifecycle triggers** — Fire when a user takes a triage action on an alert in {{alerting-v2-system}}, such as resolving, assigning, acknowledging, or snoozing it. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
 - **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
 
 
@@ -469,8 +469,8 @@ The trigger IDs changed after {{stack}} 9.5. If you upgrade, update workflows th
 
 | Trigger ID {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Trigger ID {applies_to}`stack: experimental =9.5` | When it fires |
 |---|---|---|
-| `alerting.actions.alertActivated` | `alerting.episodeActivated` | An alert transitions to the active state. |
-| `alerting.actions.alertDeactivated` | `alerting.episodeDeactivated` | An alert is manually deactivated or recovers. |
+| `alerting.actions.alertActivated` | `alerting.episodeActivated` | A user unresolves an alert. |
+| `alerting.actions.alertDeactivated` | `alerting.episodeDeactivated` | A user resolves an alert. |
 | `alerting.actions.alertSnoozed` | `alerting.episodeSnoozed` | An alert is snoozed. |
 | `alerting.actions.alertUnsnoozed` | `alerting.episodeUnsnoozed` | An alert is unsnoozed. |
 | `alerting.actions.alertAcked` | `alerting.episodeAcked` | An alert is acknowledged. |
@@ -478,6 +478,8 @@ The trigger IDs changed after {{stack}} 9.5. If you upgrade, update workflows th
 | `alerting.actions.alertAssigned` | `alerting.episodeAssigned` | An alert is assigned to a user. |
 | `alerting.actions.alertUnassigned` | `alerting.episodeUnassigned` | An alert assignment is removed. |
 | `alerting.actions.alertTagged` | `alerting.episodeTagged` | A tag is applied to an alert. |
+
+These triggers fire only when a user takes the action, either in the UI or through the API. They don't fire when an alert becomes active or recovers based on rule evaluations. To run a workflow when an alert's status changes automatically, use an action policy instead. For a comparison, refer to [When to use action policies or lifecycle triggers](../../alerting/esql/workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
 
 ### Event payload [alert-episode-lifecycle-triggers-event]
 

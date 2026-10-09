@@ -105,7 +105,7 @@ Event-driven triggers run workflows when a platform event occurs:
 * **`workflows.failed`** fires when another workflow's execution fails {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`.
 * **Cases triggers** fire when cases change {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. The family includes `cases.caseCreated`, `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`.
 * **Entity store triggers** fire when an entity's asset criticality or risk score changes in the entity store {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. The family includes `entityStore.entityAssetCriticalityUpdated` and `entityStore.entityRiskScoreChanged`.
-* **Alert lifecycle triggers** fire on specific alert events in {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
+* **Alert lifecycle triggers** fire when a user takes a triage action on an alert in {{alerting-v2-system}}, such as resolving, assigning, acknowledging, or snoozing it. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
 * **{{alerting-v2-system-cap}} rule lifecycle triggers** fire when rules in {{alerting-v2-system}} are created, updated, deleted, or have their status changed. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
 
 Use event-driven triggers for:
