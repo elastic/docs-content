@@ -26,7 +26,7 @@ A panel is either a library panel or a dashboard panel. The difference is where 
 
     You might also see this called a by-value panel, because the dashboard holds the full definition of the panel.
 
-You can change a panel from one kind to the other. Save a dashboard panel to the library to share it, or unlink a library panel to give a dashboard its own copy.
+You can change a panel from one kind to the other. [Save a dashboard panel to the library](#save-to-visualize-library) to share it, or [unlink a library panel](#unlink-library-panel) to give a dashboard its own copy.
 
 ## Manage the library [visualize-library-manage]
 
