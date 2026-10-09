@@ -67,10 +67,10 @@ This personal preference is on by default. It controls whether {{kib}} opens you
 
 1. Open the user menu from the header.
 
-2. Open the space preference settings. The menu item depends on your deployment:
+2. Open the space preference settings. The menu item depends on how you sign in:
 
-   * {applies_to}`ech: ga` {applies_to}`serverless: ga` Select **Spaces preferences**.
-   * {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` Select **Edit profile**.
+   * If you sign in with your {{ecloud}} account, select **Spaces preferences**.
+   * If you sign in any other way, for example with a username and password or on a self-managed deployment, select **Edit profile**.
 
 3. Turn **Remember last selected space** on or off.
 
@@ -80,5 +80,6 @@ The next time you log in, {{kib}} follows this preference. If the preference is 
 
 ## Related pages
 
+- [](/explore-analyze/find-and-organize/personal-preferences.md)
 - [Spaces](/deploy-manage/manage-spaces.md)
 - [The {{kib}} interface](/explore-analyze/find-and-organize/kibana-interface.md)

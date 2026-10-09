@@ -24,8 +24,7 @@ If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your 
 2. Select **Language**.
 
    :::{note}
-   :applies_to: { self: , ece: , eck: }
-   On self-managed, {{ece}}, and {{eck}} deployments of {{kib}}, this option is located on your profile page. To access it, select **Edit profile** from the header's user menu, then find the **Language** section.
+   If you don't sign in with your {{ecloud}} account, for example you use a username and password or a self-managed deployment, this option is on your profile page. To access it, select **Edit profile** from the header's user menu, then find the **Language** section.
    :::
 
 3. Select your preferred language from the **Display language** menu.
@@ -40,6 +39,7 @@ On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, administrators can e
 
 ## Related pages
 
+- [](/explore-analyze/find-and-organize/personal-preferences.md)
 - [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md)
 - [Use dark mode in {{kib}}](dark-mode.md)
 - [Use high-contrast mode in {{kib}}](high-contrast.md)

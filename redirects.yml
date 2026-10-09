@@ -1499,3 +1499,7 @@ redirects:
   'deploy-manage/security/logging-configuration/auditing-search-queries.md': 'deploy-manage/monitor/stack-audit-logging/auditing-search-queries.md'
   'deploy-manage/security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md': 'deploy-manage/monitor/stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md'
   'deploy-manage/monitor/log-delivery/cloud-audit-trail.md': 'deploy-manage/monitor/cloud-audit-trail.md'
+  # related to https://github.com/elastic/docs-content/issues/7421
+  'cloud-account/change-interface-language.md': 'explore-analyze/find-and-organize/personal-preferences/change-interface-language.md'
+  'cloud-account/dark-mode.md': 'explore-analyze/find-and-organize/personal-preferences/dark-mode.md'
+  'cloud-account/high-contrast.md': 'explore-analyze/find-and-organize/personal-preferences/high-contrast.md'
