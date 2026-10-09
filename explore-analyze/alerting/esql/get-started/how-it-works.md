@@ -67,7 +67,7 @@ After a few weeks, the accumulated events become useful in two ways. The team ca
 
 ## Related pages
 
-- [Set up {{alerting-v2-system}}](../setup.md): Review the requirements and the steps to turn the system on or off.
+- [Set up {{alerting-v2-system}}](../setup.md): Check the requirements and turn the system on or off.
 - [Create your first rule](create-your-first-rule.md): Load sample data, create a rule, and observe the alert lifecycle.
 - [Rules](../rules.md): What rules detect, how action policies invoke workflows, and how to select a creation path.
 - [Notifications and actions](../notifications-actions.md): Set up action policies that invoke workflows for the alerts they apply to.

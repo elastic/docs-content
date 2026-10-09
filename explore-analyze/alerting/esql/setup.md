@@ -28,11 +28,11 @@ You'll need the following to create rules and send notifications.
 
 :::::{applies-switch}
 ::::{applies-item} { "serverless": "ga", "stack": "experimental 9.6+" }
-The setting is on by default. If someone turned it off, it stays off, including after an upgrade from 9.5. To turn it back on:
+The setting is on by default, so you can use {{alerting-v2-system}} without extra setup. If you turned the setting off, it stays off, even after an upgrade. To turn it back on:
 
 1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **Global Settings** tab, then turn on **Alerting V2**.
-3. To confirm {{alerting-v2-system}} is accessible in your space, go to **Alerting** > **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. To confirm {{alerting-v2-system}} is accessible in your space, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 ::::
 
 ::::{applies-item} stack: experimental =9.5
@@ -40,11 +40,13 @@ The setting is off by default. To turn it on:
 
 1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **Global Settings** tab, then turn on **Alerting V2**.
-3. Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md) to confirm {{alerting-v2-system}} is accessible in your space.
+3. Go to **Alerting V2 Preview** in the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to confirm {{alerting-v2-system}} is accessible in your space.
 ::::
 :::::
 
-If the menu item doesn't appear immediately, refresh the page and search again. It might take a moment for the UI to reflect the updated setting.
+:::{tip}
+If {{alerting-v2-system}} doesn't appear in the navigation menu or global search after you turn on the setting, reload {{kib}} and check again.
+:::
 
 ## Turn off the system [alerting-setup-turn-off]
 
@@ -55,8 +57,8 @@ Turning off the setting does not delete any data. {{kib}} retains your rules and
 :::{important}
 Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running. To stop both:
 
+- {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us) to stop them.
 - {applies_to}`stack: experimental 9.5+` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
-- {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us).
 :::
 
 ## Try experimental features in a space [alerting-setup-experimental-features]
