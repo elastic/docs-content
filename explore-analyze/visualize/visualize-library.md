@@ -51,7 +51,7 @@ Unless the remarks say otherwise, a panel type in this table appears in the **Vi
 | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
 | [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, or create it on a dashboard and save it to the library. |
 | Vega visualizations |  |
-| Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) | You can't create them in {{serverless-short}} projects. |
+| {applies_to}`serverless: unavailable` Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) |  |
 
 The library doesn't support other panel types. These panels are saved only with the dashboard they belong to.
 
