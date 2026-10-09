@@ -1,5 +1,5 @@
 ---
-navigation_title: Investigate entities
+navigation_title: Review entity risk
 description: Investigate high-risk entities using the Entity analytics page and the entity details flyout, including risk summaries, resolution groups, and graph views.
 applies_to:
   stack: ga
