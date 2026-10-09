@@ -5,7 +5,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "Create action policies to route alerts to workflows. Set the policy scope with routing tags or KQL, then batching and notification frequency."
+description: "Create action policies to route alerts to workflows. Scope policies with routing tags or a KQL expression, set batching and frequency, and link rules to policies with matching routing tags."
 ---
 
 # Create an action policy [create-action-policy]
@@ -18,7 +18,9 @@ To start, go to **Alerting** → **Action Policies** in the Observability naviga
 
 The policy's scope decides which alerts it applies to, and [frequency](#reduce-noise-grouping) decides how often the policy invokes a workflow for an alert in scope. Leave the scope empty and the policy applies to every alert in the space that [passes the eligibility check](about-action-policies.md#action-policy-gates). Rule events that aren't part of an alert (`type: signal`) stay in `.rule-events`, so the action policy scope doesn't include them.
 
-To narrow the scope of an action policy, use [routing tags](#routing-tags), a [KQL expression](#filter-with-kql-expression), or both. If you use both, the alert's rule has to have one of the routing tags and the alert has to match the expression.
+To narrow the scope of an action policy, use a [KQL expression](#filter-with-kql-expression).
+
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` You can also use [routing tags](#routing-tags), on their own or with an expression. If you use both, the alert's rule has to have at least one of the routing tags and the alert has to match the expression.
 
 ### Apply the policy to alerts from specific rules [routing-tags]
 ```{applies_to}
@@ -28,7 +30,7 @@ stack: experimental 9.6+
 
 To apply an action policy to a rule's alerts, give the policy and the rule the same routing tag. The policy applies to alerts from every rule that has at least one of its routing tags. If you add the tag to another rule later, the policy also applies to that rule's alerts, and you don't need to edit the policy.
 
-In **Routing tags**, select or type the tags for the policy. The list recommends the routing tags that your rules already use, most-used first. You can also add a tag that no rule has yet. A policy can have up to 50 routing tags, each up to 128 characters. Matching is exact and case-sensitive, so `checkout` doesn't match `Checkout`.
+In **Routing tags**, select or enter the tags for the policy. The list recommends the routing tags that your rules already use, most-used first. You can also add a tag that no rule has yet. A policy can have up to 50 routing tags, each up to 128 characters. Matching is exact and case-sensitive, so `checkout` doesn't match `Checkout`.
 
 Routing tags are separate from the rule's **Tags** field. Rule tags label and filter rules, and they don't affect which action policies apply. To add routing tags to a rule, refer to [Link a rule to action policies](#policies-that-match-a-rule).
 
@@ -45,7 +47,7 @@ To narrow the scope further, add a [match conditions expression](#filter-with-kq
 
 Add a **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression to narrow the policy to the alerts whose fields match it. For example, `severity: "critical"` applies the policy to critical alerts only. For the fields you can use, refer to [Match conditions fields](action-policy-reference.md#action-policy-matcher-fields).
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` On a new action policy, **Match conditions** is hidden until you expand **Advanced matching**. The expression checks fields stored on each alert, so it can't select alerts by the rule's ID, name, or tags. To apply the policy to specific rules, use [routing tags](#routing-tags).
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` On a new action policy, expand **Advanced matching** to show **Match conditions**. The expression can use only the [match conditions fields](action-policy-reference.md#action-policy-matcher-fields), so it can't select alerts by the rule's ID, name, or tags. To apply the policy to specific rules, use [routing tags](#routing-tags).
 
 ## Add tags to categorize the action policy [policy-tags]
 ```{applies_to}
@@ -117,7 +119,7 @@ If you don't have a workflow ready, set up an email or Slack notification while 
 
 ## Link a rule to action policies [policies-that-match-a-rule]
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` To link a rule to an action policy, add one of the policy's routing tags to the rule. When you create or edit the rule, go to the **Actions** step, then add tags in **Routing tags**, under **Action policies**. As you type, each suggestion shows how many action policies use that tag. A rule can have up to 20 routing tags, each up to 128 characters. The link takes effect when you save the rule. To set routing tags in a YAML rule definition, use [`metadata.routing_tags`](../rules/yaml-rule-schema-reference.md#metadata-fields).
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` To link a rule to an action policy, add one of the policy's routing tags to the rule. When you create or edit the rule, go to the **Actions** step, then add tags in **Routing tags**, under **Action policies**. As you enter a tag, each suggestion shows how many action policies use it. A rule can have up to 20 routing tags, each up to 128 characters. The link takes effect when you save the rule. To set routing tags in a YAML rule definition, use [`metadata.routing_tags`](../rules/yaml-rule-schema-reference.md#metadata-fields).
 
 {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Only rules that open alerts have the **Actions** step. A rule that only writes rule events (`type: signal`) can't have routing tags, because action policies don't evaluate those events.
 
@@ -131,7 +133,7 @@ The list also indicates why each policy applies.
 To add a policy without leaving the rule, select **Create action policy** in **Applied policies**, then give the new policy one of the rule's routing tags. Each entry in **Applied policies** shows the connector types its workflows use, along with a badge or icon:
 
 * A **Catch-all** badge means the policy has no routing tags and no expression, so it applies to alerts from every rule.
-* A tag icon means the rule and the policy share routing tags. The tooltip lists them under **Matching routing tags**.
+* A tag icon ({icon}`tag`) means the rule and the policy share routing tags. The tooltip lists them under **Matching routing tags**.
 * An **Expression** badge means the policy also has a KQL expression. {{kib}} evaluates that expression against alert data when the policy runs, so the list can't confirm it in advance. A policy scoped by an expression alone doesn't appear in the list at all, but it can still apply once the rule opens an alert.
 :::
 

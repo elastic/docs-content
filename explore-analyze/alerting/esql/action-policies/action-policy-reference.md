@@ -47,7 +47,12 @@ In addition to the alert fields, you can use the following fields in the **Match
 | `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match alerts from all rules with this tag. |
 
 :::{important}
-After you upgrade from this version, action policies whose **Match conditions** use these rule fields, `episode_id`, or `episode_status` no longer select the alerts you expect. {{kib}} keeps the expression and doesn't show an error. A condition such as `rule.tags: "checkout"` stops matching any alert, so the policy stops invoking its workflows. A negated condition such as `NOT rule.tags: "checkout"` matches every alert. To fix these policies after you upgrade, add the same routing tag to each policy and its rules, and replace `episode_id` and `episode_status` with `alert_id` and `alert_status`.
+When you upgrade to a later version, action policies whose **Match conditions** use `rule.id`, `rule.name`, `rule.tags`, `episode_id`, or `episode_status` no longer select the alerts you expect. {{kib}} keeps the expression and doesn't show an error. A condition such as `rule.tags: "checkout"` stops matching any alert, so the policy stops invoking its workflows. A negated condition such as `NOT rule.tags: "checkout"` matches every alert.
+
+To fix these policies after you upgrade:
+
+1. Add the same routing tag to each policy and to its rules.
+2. Replace `episode_id` and `episode_status` with `alert_id` and `alert_status`.
 :::
 
 ## Notify per options [action-policy-notification-grouping]
