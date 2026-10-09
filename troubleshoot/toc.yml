@@ -108,6 +108,7 @@ toc:
       - file: kibana/task-manager.md
       - file: kibana/maps.md
       - file: kibana/graph.md
+      - file: kibana/discover-dashboards-no-data-screen.md
       - file: kibana/migration-failures.md
       - file: kibana/capturing-diagnostics.md
   - file: observability.md

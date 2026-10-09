@@ -27,6 +27,8 @@ Before creating a dashboard, ensure you have:
 * [Data indexed into {{product.elasticsearch}}](/manage-data/ingest.md) and at least one [data view](../find-and-organize/data-views.md) configured
 * **All** privilege for the **Dashboard** feature in {{product.kibana}}
 
+If **Dashboards** asks you to add data or create a data view instead of opening, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
+
 ## Create a new dashboard [create-dashboard-steps]
 
 1. Open the **Dashboards** page in {{product.kibana}}.
