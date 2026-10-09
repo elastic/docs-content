@@ -44,8 +44,10 @@ GET _data_stream/my-tsds
 By default, if no existing backing index can accept a document's `@timestamp`, {{es}} rejects the document.
 {{es}} does not create missing past backing indices unless you [turn on past index creation](#tsds-past-index-creation).
 
-::::{tip}
-Writes might still be rejected even when a timestamp fits the accepted time range of a backing index. The following [actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) can affect the writable time range, either because they make a backing index read-only or remove it:
+## {{ilm-cap}} implications
+
+Writes might be rejected even when a timestamp fits the accepted time range of a backing index.
+The following {{ilm}} [actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) can affect the writable time range, either because they make a backing index read-only or remove it:
 
 - [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md)
 - [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
@@ -55,7 +57,6 @@ Writes might still be rejected even when a timestamp fits the accepted time rang
 - [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md), which might revert the read-only status at the end of the action
 
 {{ilm-cap}} will **not** proceed with running these actions until [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
-::::
 
 ## Past index creation [tsds-past-index-creation]
 ```{applies_to}

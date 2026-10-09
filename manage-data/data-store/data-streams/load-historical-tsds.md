@@ -93,6 +93,8 @@ Index historical data into the historical data stream while current data continu
 Historical data must fit on the target tier as a whole before you enable data stream lifecycle.
 If you're importing a large data set, split it into batches.
 Each batch should fit within available disk space at indexing time.
+
+For an example of how to check disk space with the [cat allocation API]({{es-apis}}operation/operation-cat-allocation), refer to [Estimate the amount of required disk capacity](/troubleshoot/elasticsearch/increase-capacity-data-node.md#estimate-required-capacity).
 :::
 ::::
 
