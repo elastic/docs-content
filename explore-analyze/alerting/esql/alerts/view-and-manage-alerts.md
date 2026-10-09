@@ -66,10 +66,10 @@ Most of the page works the same for alerts from both sources:
 | Counted in the KPI panels and histogram | ✓ | ✓ |
 | **Rule**, **Severity**, **Alert tags**, and **Search** controls | ✓ | ✓ |
 | **Active** and **Inactive** statuses | ✓ | ✓ |
-| **Pending** and **Recovering** statuses | ✓ | — |
-| **Warning**, **Minor**, and **Major** severity levels | — | ✓ |
-| [**Flapping**](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details) icon in the **Status** column | — | ✓ |
-| **Assignee** filter | ✓ | — |
+| **Pending** and **Recovering** statuses | ✓ | ✗ |
+| **Warning**, **Minor**, and **Major** severity levels | ✗ | ✓ |
+| [**Flapping**](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details) icon in the **Status** column | ✗ | ✓ |
+| **Assignee** filter | ✓ | ✗ |
 
 A few results differ for {{alerting-v1-system}} alerts:
 
