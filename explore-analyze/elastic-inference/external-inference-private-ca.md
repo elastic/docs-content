@@ -24,7 +24,9 @@ PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderExce
 The `xpack.inference.elastic.http.ssl.*` settings apply only to the Elastic {{infer-cap}} Service (EIS). They have no effect on external {{infer}} services.
 :::
 
-Before you start, keep the following in mind:
+## Before you begin [inference-private-ca-before-you-begin]
+
+Keep the following in mind before you change the trust store:
 
 - The trust store applies to the whole node. Every outbound TLS connection that uses the default JVM trust store trusts your CA, not only {{infer}} endpoints.
 - Add the CA on every node in the cluster. Any node can send {{infer}} requests, so a missing CA on one node causes intermittent failures.
