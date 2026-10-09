@@ -63,9 +63,11 @@ Close an alert once the underlying problem is fixed, or reopen it if it turns ou
 | Resolve | Closes the alert immediately, without waiting for the rule to detect recovery. | The underlying problem is fixed and the alert should be closed. | Alert |
 | Unresolve | Reopens an inactive alert as active. It continues as the same alert instead of opening a new one. | The problem has recurred, or the alert closed while the problem persists. | Alert |
 
+After you resolve an alert, its notifications stop and the rule doesn't reopen it. If the rule's condition still matches on its next run, a new alert starts for the series. The new alert follows the normal lifecycle, and action policies can send notifications for it.
+
 $$$override-automatic-lifecycle$$$
 
-An alert you unresolve stays active until you resolve it again, even when the rule detects recovery. Resolving it hands the lifecycle back to the rule, so later alerts for the series open and recover on their own.
+An alert you unresolve stays active on every rule run, even when the rule detects recovery. It closes only when you resolve it again.
 
 ## Organize and assign alerts [organize-and-assign-episodes]
 
