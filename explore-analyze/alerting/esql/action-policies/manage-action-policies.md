@@ -12,7 +12,7 @@ description: "Manage action policies: turn them on or off, snooze them so they d
 
 This page covers how to view action policy details in {{alerting-v2-system}}, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
 
-To find your action policies, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
+To view your action policies, go to **Alerting** → **Action Policies** in the Observability navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## View and edit an action policy
 
@@ -46,4 +46,4 @@ On the action policies list, select one or more action policies to enable, disab
 
 - [Create and configure an action policy](create-configure-action-policy.md): Set up or update the action policies you manage here.
 - [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.
-- [Reduce notification noise](reduce-notification-noise.md): Silence alerts with acknowledgment, snooze, or deactivation.
+- [Reduce notification noise](reduce-notification-noise.md): Silence alerts by acknowledging, snoozing, or resolving them.

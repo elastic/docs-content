@@ -10,7 +10,9 @@ description: "Search, filter, and bulk-manage rules. Use inline editing, the rul
 
 # View and manage rules [manage-rules]
 
-After you create {{alerting-v2-system}} rules, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules** to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
+After you create {{alerting-v2-system}} rules, use the **Rules** page to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
+
+To open the **Rules** page, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Find and filter rules [find-filter-rules]
 

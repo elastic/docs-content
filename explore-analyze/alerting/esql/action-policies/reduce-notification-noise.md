@@ -5,7 +5,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "How to reduce notification noise using acknowledge, snooze, and deactivate to silence alerts."
+description: "Silence alert notifications by acknowledging, snoozing, or resolving alerts, or with a maintenance window."
 ---
 
 # Reduce notification noise [reduce-notification-noise]
@@ -22,7 +22,7 @@ The following mechanisms let you silence notifications, each at a different scop
 |---|---|---|
 | Acknowledge | Per alert | You're actively investigating a breach and want to silence notifications for it without closing the alert. Clear the acknowledgment when you're done to restore notifications. |
 | Snooze | Per series (group) | You want to quiet an entire alert series for a defined period, for example, during a known noisy window for a specific host. Snooze expires automatically at the end of the duration. |
-| Deactivate | Per alert | You manually [activated](../alerts/triage-alert-episodes.md) an alert and now want to return it to normal automatic recovery behavior. Deactivating doesn't close the alert. It resumes automatic recovery detection, so the alert closes on its own the next time the rule evaluates as recovered. |
+| [Resolve](../alerts/triage-alert-episodes.md#close-and-reopen-episodes) | Per alert | You've fixed the underlying problem and want to close the alert without waiting for the rule to detect recovery. Resolving closes the alert and stops its notifications. If the rule's condition still matches on its next run, a new alert starts for the series, and action policies can send notifications for it. |
 | [Maintenance window](../../alerts/maintenance-windows.md) | All action policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active action policies stop dispatching; rule evaluation and alert recording continue. Maintenance windows are configured separately from action policies. |
 
 ### Snooze scope [snooze-scope]
@@ -37,4 +37,4 @@ Snoozing an alert differs from snoozing an action policy. When you snooze an act
 
 - [About action policies](about-action-policies.md): Understand how the eligibility, scope, and frequency gates work after silencing.
 - [Create and configure an action policy](create-configure-action-policy.md): Set up the action policies that run after alert silencing checks pass.
-- [Triage alerts](../alerts/triage-alert-episodes.md): Acknowledge, snooze, or deactivate alerts from the **Alerts** page.
+- [Triage alerts](../alerts/triage-alert-episodes.md): Acknowledge, snooze, or resolve alerts from the **Alerts** page.

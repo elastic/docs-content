@@ -43,7 +43,7 @@ Both are stored with the rule, so they take effect only after you save the rule.
 
 To link dashboards, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../manage/configure-access.md#alerting-manage-rules-privileges). Linked dashboards appear in the **Dashboards** subsection of the **Artifacts** section on the rule details page.
 
-1. Find **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), go to **Rules**, then select the rule.
+1. Go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the rule.
 2. On the **Overview** tab, expand **Artifacts**.
 3. In the **Dashboards** section:
    * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` Select **Attach related dashboards**. Search for a dashboard. Results are grouped into **Attached** and **Other dashboards**. Select the dashboards to link, then select **Save**. This updates the rule right away.

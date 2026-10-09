@@ -18,7 +18,7 @@ This page introduces the five objects in the system and how they connect. Use it
 :::{note}
 Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md). Both systems use the term **alert**, but they create and track alerts differently, so the APIs and instructions for one system don't apply to the other.
 
-{applies_to}`stack: experimental =9.5` In {{stack}} 9.5, the {{alerting-v2-system}} UI calls an alert an **alert episode**. For example, the **Notify per** option for one notification per alert is **Episode** instead of **Alert**.
+{applies_to}`stack: experimental =9.5` In {{stack}} 9.5, the {{alerting-v2-system}} pages, such as **Rules**, **Alerts**, and **Action Policies**, are under **Alerting V2 Preview** in **Stack Management** instead of under **Alerting** in the Observability navigation menu. The UI also calls an alert an **alert episode**. For example, the **Notify per** option for one notification per alert is **Episode** instead of **Alert**.
 :::
 
 ## The core idea [core-idea]
