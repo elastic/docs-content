@@ -77,18 +77,7 @@ Annotation groups mark events such as deployments on your charts. You can reuse 
 
 ## Use library panels on dashboards [visualize-library-use-on-dashboards]
 
-To save a panel to the library or unlink it, use the panel menu {icon}`boxes_vertical`, which appears when you hover over a panel. To add a panel from the library, use the options for adding panels to the dashboard instead.
-
-### Save a dashboard panel to the library [save-to-visualize-library]
-
-To reuse a dashboard panel on other dashboards, save it to the library.
-
-1. Open the dashboard and select **Edit**.
-2. Hover over the panel, then select the {icon}`boxes_vertical` panel menu.
-3. Select **Save to library**.
-4. Enter a title, then select **Save**.
-
-The panel on this dashboard is now a library panel. When you save a later edit, every dashboard that uses the panel shows that edit.
+To add a panel from the library, use the options for adding panels to the dashboard. To save a panel to the library or unlink it, use the panel menu {icon}`boxes_vertical`, which appears when you hover over a panel.
 
 ### Add a panel from the library to a dashboard [add-a-library-panel]
 
@@ -103,6 +92,17 @@ To use a library panel on another dashboard, add it from the library. The new pa
 3. Select the panel to add.
 
 The panel appears on the dashboard and shows the library copy.
+
+### Save a dashboard panel to the library [save-to-visualize-library]
+
+To reuse a dashboard panel on other dashboards, save it to the library.
+
+1. Open the dashboard and select **Edit**.
+2. Hover over the panel, then select the {icon}`boxes_vertical` panel menu.
+3. Select **Save to library**.
+4. Enter a title, then select **Save**.
+
+The panel on this dashboard is now a library panel. When you save a later edit, every dashboard that uses the panel shows that edit.
 
 ### Change a library panel on one dashboard only [unlink-library-panel]
 
