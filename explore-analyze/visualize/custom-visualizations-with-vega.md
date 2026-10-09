@@ -1535,8 +1535,8 @@ The following example creates a line chart of document counts over time. It wire
 
 #### Apply dashboard variable controls to {{esql}} data sources [vega-esql-variable-controls]
 ```{applies_to}
-serverless: ga
-stack: ga 9.6+
+serverless: preview
+stack: preview 9.6
 ```
 
 To make a Vega visualization react to a dashboard control, reference the control's name in the query of one of its {{esql}} data sources. [Variable controls](add-variable-controls.md) bind interactive controls to variables in {{esql}} queries, so when the selection changes, the query runs again with the new value. If the spec has several {{esql}} data sources, each one uses only the controls that its own query references.

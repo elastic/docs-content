@@ -68,7 +68,7 @@ Different control types target different panels:
 * **Variable controls** affect only the visualizations whose query references the control's variable. They don't filter other panels. Variable controls work with:
 
   * [{{esql}} visualizations](esorql.md)
-  * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Vega visualizations](custom-visualizations-with-vega.md#vega-esql-variable-controls)
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6` [Vega visualizations](custom-visualizations-with-vega.md#vega-esql-variable-controls)
 
   :::{tip}
   :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
