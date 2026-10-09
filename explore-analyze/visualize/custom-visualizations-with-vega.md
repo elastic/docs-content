@@ -1566,7 +1566,7 @@ For example, a variable control named `?machineos` offers the operating systems 
 1. `?machineos` is the name of the control.
 2. Optional. Sets a default value for the variable. Use its name without the `?` or `??` prefix.
 
-A `??` variable takes a default the same way. For example, `{ "field": "bytes" }` sets a default for a `??field` variable that selects a field.
+A `??` variable takes a default the same way. For example, `{ "field": "bytes" }` sets a default for `??field`.
 
 On a dashboard, a control whose name matches a `params` key replaces that value, and `params` still supplies the variables that no control sets. The **Visualize library** editor and **Canvas** don't have dashboard controls, so `params` is the only source of values there. If the query references a variable that `params` doesn't set, the visualization shows an error.
 
