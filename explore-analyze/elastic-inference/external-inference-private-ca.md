@@ -81,7 +81,7 @@ Using a separate trust store, rather than importing your CA into the bundled `ca
 :::{tip}
 If you run {{es}} in Docker, you can instead build a custom image that adds your CA to the operating system trust anchors. In the official images, the JDK `cacerts` file links to the operating system trust bundle, so the JVM picks up the change:
 
-```dockerfile
+```dockerfile subs=true
 FROM docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
 USER root
 COPY ca.crt /etc/pki/ca-trust/source/anchors/my-internal-ca.crt
