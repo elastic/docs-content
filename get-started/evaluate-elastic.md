@@ -30,8 +30,8 @@ By the end of this guide, you'll have a structured trial plan, clear evaluation 
 
 To complete each step of your evaluation, your {{ecloud}} trial provides full access to the following Elastic capabilities: 
 
-- All features available in the [Search](/solutions/search.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
-- {applies_to}`ech: unavailable` The [{{es}} {{vectordb}}](/solutions/vector-database.md) {{serverless-short}} project type for embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval.
+- All features available in the [{{es}}](/solutions/elasticsearch-solution-project.md), [{{observability}}](/solutions/observability.md), and [Security](/solutions/security.md) solutions, depending on your choice of deployment and project type.
+- The [{{es}} {{vectordb}}](/solutions/vector-database.md) project type for embedding-driven workloads such as semantic search, RAG, and AI-powered retrieval. This project type is available only on {{serverless-short}}.
 - Integrations to ingest your data using the method that best suits your use case.
 - {{ml-cap}} features to evaluate anomaly detection results and search relevance, and explore visualization tools from our trained models.
 - Advanced analytics to test {{es}} as a vector database for building modern GenAI and semantic search applications.
@@ -68,11 +68,13 @@ Document your trial goal now. This clarity will guide your use case selection an
 
 With your trial goal in mind, identify which Elastic solution best addresses your challenge. Elastic can support many workloads, but a focused trial generates more precise results. You can always expand to additional use cases after establishing initial success.
 
-| Your challenge | Primary use case |
+{{es}}, {{observability}}, and Security are [solutions](/solutions/index.md) available on both {{ech}} and {{serverless-short}}. {{es}} {{vectordb}} is an additional project type available only on {{serverless-short}}.
+
+| Your challenge | What to use |
 |----------------|-----------------|
-| Users struggle to find relevant information across systems | [Search](/solutions/search.md) |
-| Build your first search application | [Search](/solutions/search.md) |
-| Build embedding-driven workloads such as semantic search, RAG, or AI-powered retrieval | [{{es}} {{vectordb}}](/solutions/vector-database.md) {applies_to}`stack: unavailable` |
+| Users struggle to find relevant information across systems | [{{es}}](/solutions/elasticsearch-solution-project.md) |
+| Build your first search application | [{{es}}](/solutions/elasticsearch-solution-project.md) |
+| Build embedding-driven workloads such as semantic search, RAG, or AI-powered retrieval | [{{es}}](/solutions/elasticsearch-solution-project.md) on {{ech}} <br> <br>[{{es}} {{vectordb}}](/solutions/vector-database.md) on {{serverless-short}} |
 | Limited visibility into application performance or system health | [Observability](/solutions/observability.md) |
 | Slow incident response and troubleshooting | [Observability](/solutions/observability.md) |
 | Identify unknown unknowns through logs, traces, and metrics | [Observability](/solutions/observability.md) |
@@ -81,7 +83,9 @@ With your trial goal in mind, identify which Elastic solution best addresses you
 | Compliance requires centralized security monitoring | [Security](/solutions/security.md) |
 
 :::{tip}
-Not sure whether to evaluate Search on an {{es}} project or a {{vectordb}} project?  Both support [vector search](/solutions/search/vector.md). Start with {{vectordb}} when building hybrid or similarity search as the primary workload. Choose the {{es}} project only if you need features {{vectordb}} doesn't support, such as log and time series data, custom models on ML nodes, or search applications. Refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
+:applies_to: serverless: ga
+
+Not sure which project type to evaluate? Both the {{es}} and {{es}} {{vectordb}} project types support [vector search](/solutions/search/vector.md). Evaluate {{vectordb}} when embeddings and similarity search are the primary workload. Evaluate {{es}} when you also need mixed lexical, time series, and analytics workloads, custom models on ML nodes, or search applications. For a full comparison, refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
 :::
 
 ### Choose your deployment type
@@ -187,7 +191,7 @@ Once data is flowing, use the trial to validate the features that will determine
 
 ::::{tab-set}
 
-:::{tab-item} Search
+:::{tab-item} {{es}}
 
 | Feature | Why it matters | How to try it |
 |---------|----------------|---------------|
@@ -285,7 +289,7 @@ We recommend the following activities for each use case:
 
 ::::{tab-set}
 
-:::{tab-item} Search
+:::{tab-item} {{es}}
 
 Follow the steps in [](/solutions/search/get-started.md), which include:
   
@@ -387,7 +391,7 @@ After proving value with one use case:
 
 Continue exploring Elastic's capabilities:
 
-- **[Solutions overview](/solutions/index.md)**: Deep dive into Search, {{vectordb}}, Observability, and Security capabilities.
+- **[Solutions overview](/solutions/index.md)**: Deep dive into {{es}}, {{vectordb}}, Observability, and Security capabilities.
 - **[Deploy and manage](/deploy-manage/index.md)**: Comprehensive deployment and operational guidance.
 - **[Manage data](/manage-data/index.md)**: Learn about data ingestion, storage, and lifecycle management.
 - **[Explore and analyze](/explore-analyze/index.md)**: Master {{kib}}'s visualization and analysis tools.

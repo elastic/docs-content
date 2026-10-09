@@ -67,7 +67,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **CSV download** — Generate and download CSV files of Lens visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
 * **Export JSON**
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
     * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
 
 :::{tip}
@@ -90,7 +90,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
     :::
 
     :::{dropdown} CSV
-    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
+    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/esql-variable-controls.md), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
     * Certain [limitations apply](#csv-limitations).
     :::
 

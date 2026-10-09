@@ -20,7 +20,7 @@ In this section, you'll learn how to enable monitoring of your orchestrator.
 :::{admonition} Monitoring {{ecloud}}
 Elastic monitors {{ecloud}} service metrics and performance as part of [our shared responsibility](https://www.elastic.co/cloud/shared-responsibility). We provide service availability information on our [service status page](/deploy-manage/cloud-organization/service-status.md). 
 
-In {{fedramp-mod}} environments, you can also audit organization-level actions. Refer to [](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md).
+In {{fedramp-mod}} environments, you can also audit organization-level actions. Refer to [](/deploy-manage/monitor/cloud-audit-trail.md).
 :::
 
 :::{note}
