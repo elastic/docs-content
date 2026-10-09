@@ -28,12 +28,11 @@ There are two ways to extend {{es}}:
 To change {{es}} or {{kib}} settings in files such as `elasticsearch.yml` and `kibana.yml`, refer to [](/deploy-manage/stack-settings.md) instead.
 
 ::::{admonition} {{serverless-full}} support
-This page applies to {{ech}}, {{ece}}, {{eck}}, and Elastic self-managed deployments only. 
-{{serverless-full}} projects do not support custom plugin or bundle uploads, including dictionary files used for synonyms, stop words, or [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md). The [core analysis plugins](elasticsearch://reference/elasticsearch-plugins/analysis-plugins.md#_core_analysis_plugins) are included by default. 
+You cannot upload custom plugins, bundles, or dictionary files such as synonyms, stop words, or [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md) to {{serverless-full}} projects. Instead:
 
-If you use {{serverless-short}} and need to manage synonyms, use the [synonyms APIs]({{es-serverless-apis}}group/endpoint-synonyms) or refer to [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md). For how {{ech}} and Serverless differ on plugins, bundles, and dictionary options, see [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-custom-plugins-and-bundles).
+* The [core analysis plugins](elasticsearch://reference/elasticsearch-plugins/analysis-plugins.md#_core_analysis_plugins) are included by default. Their analyzers can be [specified](/manage-data/data-store/text-analysis/specify-an-analyzer.md) like any built-in analyzer.
+* To manage synonyms, use the [synonyms APIs]({{es-serverless-apis}}group/endpoint-synonyms) or refer to [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md).
 ::::
-
 
 ## Manage plugins and custom configuration files by deployment type [plugins-by-deployment-type]
 
