@@ -110,7 +110,7 @@ FROM .rule-events
 
 ### View the full triage history for an alert [full-triage-history]
 
-Returns all actions recorded for a single alert in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved.
+Returns all actions recorded for a single alert in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved. The **Resolve** action writes `deactivate`, and **Unresolve** writes `activate`.
 
 ```esql
 FROM .alert-actions

@@ -62,9 +62,11 @@ The **Execution history** privilege controls who can view rule execution history
 
 The **Alerts** privilege controls who can take triage actions on alerts.
 
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` To triage {{alerting-v1-system}} alerts from the **Alerts** page, a role needs **All** and the {{alerting-v1-system}} privileges for each alert's rule type. Refer to [Triage alerts from {{alerting-v1-system}}](../alerts/triage-alert-episodes.md#triage-classic-alerts).
+
 | Level | What you can do |
 |---|---|
-| **All** | Acknowledge, snooze, assign, tag, activate, and deactivate alerts |
+| **All** | Acknowledge, unacknowledge, snooze, unsnooze, resolve, unresolve, tag, and assign alerts |
 | **Read** | View alerts |
 
 :::{note}
