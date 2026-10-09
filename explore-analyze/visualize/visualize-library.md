@@ -43,7 +43,8 @@ Unless the remarks say otherwise, a panel type in this table appears in the **Vi
 | [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, then add it from the library. |
 | Vega visualizations |  |
 | Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) |  |
-| Any other panel type | Not supported by the library. These panels are saved only with the dashboard they belong to. |
+
+The library doesn't support other panel types. These panels are saved only with the dashboard they belong to.
 
 ### Open the library [visualize-library-access]
 
