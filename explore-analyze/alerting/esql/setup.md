@@ -70,7 +70,7 @@ To turn on experimental features:
 
 ```yaml {applies_to}
 serverless:
-  observability: experimental
+  observability: ga
 stack: experimental 9.6+
 ```
 
