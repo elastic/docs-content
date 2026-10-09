@@ -12,6 +12,8 @@ description: "Investigate alerts. Understand what triggered an alert, assess met
 
 From the **Alerts** page in {{alerting-v2-system}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate {{alerting-v1-system}} alerts](#investigate-classic-alerts).
+
 ## Understand the trigger and scope [understand-trigger]
 
 Each alert includes key context to answer the first questions in any investigation:
@@ -66,17 +68,16 @@ Use the **Open in Discover** action to view the full source documents instead of
 If the rule has a runbook attached, you can view it directly from the alert to follow the documented triage steps.
 
 ## Investigate {{alerting-v1-system}} alerts [investigate-classic-alerts]
-
 ```{applies_to}
 serverless: ga
 stack: experimental 9.6+
 ```
 
-The details on this page, such as the trend chart and related alerts, are available only for {{alerting-v2-system}} alerts. Selecting a {{alerting-v1-system}} alert, which shows **Classic** in the **Source** column, opens a flyout with two tabs:
+Selecting a {{alerting-v1-system}} alert, which shows **Classic** in the **Source** column, opens a simpler flyout without the trend chart, timeline, or related alerts. The flyout has two tabs:
 
 - **Overview**: The alert's status, rule, severity, reason, start time, last update, duration, and the rule's tags.
 - **Fields**: Every field stored on the alert, such as `kibana.alert.rule.rule_type_id` for the rule type.
 
 The **Take action** menu in the flyout has the same actions as the table. For details, refer to [Triage {{alerting-v1-system}} alerts](triage-alert-episodes.md#triage-classic-alerts).
 
-Alerts from Observability rules also have a details page in {{observability}}. To open it, select **View details**, which is in the **Take action** menu when you can take actions on the alert.
+Alerts from Observability rules also have a details page in {{observability}}. To open it, select **Take action** → **View details**.
