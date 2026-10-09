@@ -60,7 +60,7 @@ Close an alert once the underlying problem is fixed, or reopen it if it turns ou
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|
-| Resolve | Closes the alert immediately, without waiting for the rule to detect recovery. | The underlying problem is fixed and the alert should be closed. | Alert |
+| Resolve | Closes the alert immediately, without waiting for the rule to detect recovery. | You've fixed the underlying problem and want to close the alert. | Alert |
 | Unresolve | Reopens an inactive alert as active. It continues as the same alert instead of opening a new one. | The problem has recurred, or the alert closed while the problem persists. | Alert |
 
 After you resolve an alert, its notifications stop and the rule doesn't reopen it. If the rule's condition still matches on its next run, a new alert starts for the series. The new alert follows the normal lifecycle, and action policies can send notifications for it.
@@ -75,7 +75,7 @@ Add context to an alert for filtering, routing, or ownership.
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|
-| Edit alert tags (**Edit Tags** in earlier versions) | Adds or removes tags on the alert. | You want to categorize alerts for routing, filtering, or reporting. | Series |
+| Edit alert tags or Edit Tags (depending on your {{stack}} version) | Adds or removes tags on the alert. | You want to categorize alerts for routing, filtering, or reporting. | Series |
 | Edit assignee | Assigns the alert to a specific user. | You want to establish clear ownership during investigation or prevent duplicate work. | Alert |
 
 ## Investigate the underlying data [investigate-underlying-data]
@@ -101,9 +101,9 @@ Each action on a {{alerting-v1-system}} alert uses the matching {{alerting-v1-sy
 
 | Action | What happens to a {{alerting-v1-system}} alert |
 |---|---|
-| Acknowledge, Unacknowledge | Adds or removes the [acknowledged](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) marker. The alert's notifications keep running. Acknowledging a {{alerting-v2-system}} alert [stops its notifications](../action-policies/reduce-notification-noise.md#silencing-mechanisms). |
-| Snooze, Unsnooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) or unsnoozes this alert only. Other alerts from the same rule keep running their actions. A snooze lasts until the time you set, or until you unsnooze the alert if you select **Indefinitely**. Condition-based snooze isn't available on this page. |
-| Resolve | Marks the alert as [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status). Its status changes to **Inactive**, its actions stop, and its status no longer updates. You can't undo this. |
+| Acknowledge, Unacknowledge | Adds or removes the [acknowledged](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) marker. The alert keeps sending notifications. Acknowledging a {{alerting-v2-system}} alert [stops its notifications](../action-policies/reduce-notification-noise.md#silencing-mechanisms). |
+| Snooze, Unsnooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) or unsnoozes this alert only. Other alerts from the same rule keep sending notifications. A snooze lasts until the time you set. If you select **Indefinitely**, the snooze lasts until you unsnooze the alert. This page doesn't offer **Condition based** snooze, which the {{alerting-v1-system}} alerts pages do. |
+| Resolve | Marks the alert as [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status). Its status changes to **Inactive**, its notifications stop, and its status no longer updates. You can't undo this. |
 | Edit alert tags | Adds or removes tags on this alert only, not on every alert in its series. |
 
-You can't add a {{alerting-v1-system}} alert to a case from this page. To add one from an Observability rule, use the **Alerts (V1)** page instead. To show that page, turn on the **Show V1 Observability alerts table** advanced setting in the space.
+To add a {{alerting-v1-system}} alert from an Observability rule to a case, turn on the **Show V1 Observability alerts table** advanced setting in the space, then add the alert from the **Alerts (V1)** page. You can't add {{alerting-v1-system}} alerts to cases from the **Alerts** page.

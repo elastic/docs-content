@@ -73,7 +73,7 @@ serverless: ga
 stack: experimental 9.6+
 ```
 
-Selecting a {{alerting-v1-system}} alert, which shows **Classic** in the **Source** column, opens a simpler flyout without the trend chart, timeline, or related alerts. The flyout has two tabs:
+When you select an alert with **Classic** in the **Source** column, a simpler flyout opens. It doesn't have the trend chart, timeline, or related alerts, and it has two tabs:
 
 - **Overview**: The alert's status, rule, severity, reason, start time, last update, duration, and the rule's tags.
 - **Fields**: Every field stored on the alert, such as `kibana.alert.rule.rule_type_id` for the rule type.

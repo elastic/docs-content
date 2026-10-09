@@ -5,7 +5,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "How to reduce notification noise using acknowledge, snooze, and resolve to silence alerts."
+description: "Silence alert notifications by acknowledging, snoozing, or resolving alerts, or with a maintenance window."
 ---
 
 # Reduce notification noise [reduce-notification-noise]
@@ -22,7 +22,7 @@ The following mechanisms let you silence notifications, each at a different scop
 |---|---|---|
 | Acknowledge | Per alert | You're actively investigating a breach and want to silence notifications for it without closing the alert. Clear the acknowledgment when you're done to restore notifications. |
 | Snooze | Per series (group) | You want to quiet an entire alert series for a defined period, for example, during a known noisy window for a specific host. Snooze expires automatically at the end of the duration. |
-| [Resolve](../alerts/triage-alert-episodes.md#close-and-reopen-episodes) | Per alert | You've fixed the underlying problem and want to close the alert without waiting for the rule to detect recovery. Resolving closes the alert and stops its notifications. If the rule's condition still matches on its next run, a new alert starts for the series, and that alert isn't silenced. |
+| [Resolve](../alerts/triage-alert-episodes.md#close-and-reopen-episodes) | Per alert | You've fixed the underlying problem and want to close the alert without waiting for the rule to detect recovery. Resolving closes the alert and stops its notifications. If the rule's condition still matches on its next run, a new alert starts for the series, and action policies can send notifications for it. |
 | [Maintenance window](../../alerts/maintenance-windows.md) | All action policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active action policies stop dispatching; rule evaluation and alert recording continue. Maintenance windows are configured separately from action policies. |
 
 ### Snooze scope [snooze-scope]
