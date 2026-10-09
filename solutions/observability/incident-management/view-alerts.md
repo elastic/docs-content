@@ -24,7 +24,7 @@ The **Alerts** page provides a central view of all alerts across your Elastic {{
 
 ## Required permissions [_required_permissions]
 
-To view {{observability}} alerts and perform per-alert actions such as snooze, unsnooze, and acknowledge, assign the **Observability Alerts** feature privilege (`All` for full access, or `Read` for view and snooze state only). Assign this through {{kib}} roles on the {{stack}}, or through a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) on serverless. For more information, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+To view {{observability}} alerts and perform per-alert actions such as snooze, unsnooze, and acknowledge, assign the **Observability Alerts** [feature privilege](/solutions/observability/get-started/observability-kibana-privileges.md) (`All` for full access, or `Read` for view and snooze state only). Assign this through {{kib}} roles on the {{stack}}, or through a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) on serverless. For more information, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 
 ## Filter and customize the alerts table [observability-view-alerts-work-with-table]
 
