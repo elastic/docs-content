@@ -21,7 +21,7 @@ These tools summarize the data that your other {{elastic-sec}} features collect.
 Each tool shows a different view of your risk:
 
 - **Dashboards**: Give you a summary of alerts, cloud posture, entity risk, rule health, and data quality. Use them to see trends and to find the area that needs attention.
-- **Cloud Security**: Findings show which cloud and Kubernetes resources fail Center for Internet Security (CIS) benchmark checks, and which cloud workloads have known vulnerabilities. Cloud Security Posture Management (CSPM) and Kubernetes Security Posture Management (KSPM) find the misconfigurations, and Cloud Native Vulnerability Management (CNVM) finds the vulnerabilities. Each misconfiguration finding includes steps to fix it.
+- **Cloud Security**: Findings show which cloud and Kubernetes resources fail Center for Internet Security (CIS) benchmark checks, and which AWS EC2 Linux workloads have known vulnerabilities. Cloud Security Posture Management (CSPM) and Kubernetes Security Posture Management (KSPM) find the misconfigurations, and Cloud Native Vulnerability Management (CNVM) finds the vulnerabilities. Each misconfiguration finding includes steps to fix it.
 - **Entity analytics**: Scores the risk of each host, user, and service, based on its detection alerts and its asset criticality. It also uses {{ml}} to find unusual behavior. Use it to find the entities to investigate first.
 
 ## Where to start
@@ -30,7 +30,7 @@ Each tool shows a different view of your risk:
 |---|---|
 | See a summary of alerts, posture, and risk in your environment | [Dashboards](/solutions/security/dashboards.md) → [Overview dashboard](/solutions/security/dashboards/overview-dashboard.md) |
 | Find and fix misconfigured cloud and Kubernetes resources | [Cloud Security](/solutions/security/cloud.md) → [CSPM findings](/solutions/security/cloud/findings-page.md) or [KSPM findings](/solutions/security/cloud/findings-page-2.md) |
-| Find known vulnerabilities in your cloud workloads | [CNVM findings](/solutions/security/cloud/findings-page-3.md) |
+| Find known vulnerabilities on AWS EC2 Linux workloads | [Cloud Native Vulnerability Management](/solutions/security/cloud/cloud-native-vulnerability-management.md) → [CNVM findings](/solutions/security/cloud/findings-page-3.md) |
 | Find the hosts, users, and services with the highest risk | [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) → [View and analyze risk score data](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md) |
 | Find unusual behavior with {{ml}} | [Advanced behavioral detections](/solutions/security/advanced-entity-analytics/advanced-behavioral-detections.md) |
 | Check that your detection rules and data are healthy | [Detection rule monitoring dashboard](/solutions/security/dashboards/detection-rule-monitoring-dashboard.md) → [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md) |

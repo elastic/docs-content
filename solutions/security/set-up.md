@@ -21,8 +21,8 @@ After setup, each feature sends its data to {{elastic-sec}}, where you can revie
 Each protection covers a different part of your environment, so the features you set up depend on what you run:
 
 - **{{elastic-defend}}**: Protects Windows, macOS, and Linux hosts, including Linux VMs in the cloud. It runs on {{agent}}, which you install on each host. It can detect or block malware, ransomware, and malicious behavior.
-- **Cloud security**: Checks your cloud accounts and Kubernetes clusters against security best practices, list your cloud assets, and scan your cloud workloads for known vulnerabilities.
-- **Defend for Containers**: Detects, and can block, unexpected behavior inside running Kubernetes containers.
+- **Cloud security**: Checks your cloud accounts and Kubernetes clusters against security best practices, lists your cloud assets, and scans your AWS EC2 Linux workloads for known vulnerabilities.
+- {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` **Defend for Containers**: Detects, and can block, unexpected behavior inside running Kubernetes containers.
 
 ## Where to start
 

@@ -36,7 +36,7 @@ In practice, you add the {{elastic-defend}} integration from the **Integrations*
 | Deploy {{elastic-defend}} for the first time | [Requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) → [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md) |
 | Deploy to macOS hosts without user prompts | [Deploy on macOS with MDM](/solutions/security/configure-elastic-defend/deploy-on-macos-with-mdm.md) |
 | Set up endpoints in restricted networks | [Configure offline endpoints and air-gapped environments](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md) |
-| {applies_to}`stack: ga 9.5+` Store endpoint data in a different cluster from the one that manages your {{agents}} | [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md) |
+| {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Store endpoint data in a different cluster from the one that manages your {{agents}} | [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md) |
 | Tune protection, manage privileges, or remove agents after deployment | [Manage {{elastic-defend}}](/solutions/security/manage-elastic-defend.md) |
 
 ## Next steps

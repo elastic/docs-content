@@ -30,7 +30,7 @@ Cloud workload protection uses one integration for VMs and another for Kubernete
 | Add environment variables to the process data that {{agent}} collects | [Capture environment variables](/solutions/security/cloud/capture-environment-variables.md) |
 | {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` Learn how D4C protects Kubernetes containers, and which platforms it supports | [Cloud workload protection for Kubernetes](/solutions/security/cloud/d4c/d4c-overview.md) |
 | {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` Allow expected container behavior and block drift | [Container workload protection policies](/solutions/security/cloud/d4c/d4c-policies.md) |
-| {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` Monitor your Kubernetes clusters and workloads | [Kubernetes dashboard](/solutions/security/cloud/d4c/kubernetes-dashboard.md) |
+| {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` Monitor your Kubernetes clusters and workloads | [Kubernetes dashboard](/solutions/security/dashboards/kubernetes-dashboard.md) |
 
 ## Next steps
 

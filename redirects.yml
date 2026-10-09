@@ -1385,3 +1385,10 @@ redirects:
 
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
+
+  # Related to https://github.com/elastic/docs-content/pull/8651
+  # Remove duplicate Security dashboard pages
+  'solutions/security/cloud/cnvm-dashboard.md': 'solutions/security/dashboards/cloud-native-vulnerability-management-dashboard.md'
+  'solutions/security/cloud/cspm-dashboard.md': 'solutions/security/dashboards/cloud-security-posture-dashboard.md'
+  'solutions/security/cloud/d4c/kubernetes-dashboard.md': 'solutions/security/dashboards/kubernetes-dashboard.md'
+  'solutions/security/cloud/kspm-dashboard.md': 'solutions/security/dashboards/cloud-security-posture-dashboard.md'

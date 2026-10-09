@@ -679,7 +679,8 @@ toc:
               - file: security/cloud/d4c/d4c-overview.md
                 children:
                   - file: security/cloud/d4c/d4c-policies.md
-                  - file: security/cloud/d4c/kubernetes-dashboard.md
+                  - title: "Kubernetes dashboard"
+                    crosslink: docs-content://solutions/security/dashboards/kubernetes-dashboard.md
           - file: security/manage/access-control.md
             children:
               - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
@@ -824,19 +825,22 @@ toc:
                 children:
                   - file: security/cloud/findings-page.md
                   - file: security/cloud/benchmarks.md
-                  - file: security/cloud/cspm-dashboard.md
+                  - title: "Cloud Security Posture dashboard"
+                    crosslink: docs-content://solutions/security/dashboards/cloud-security-posture-dashboard.md
                   - file: security/cloud/cspm-frequently-asked-questions-faq.md
               - file: security/cloud/kubernetes-security-posture-management.md
                 children:
                   - file: security/cloud/findings-page-2.md
                   - file: security/cloud/kspm-benchmarks.md
-                  - file: security/cloud/kspm-dashboard.md
+                  - title: "Cloud Security Posture dashboard"
+                    crosslink: docs-content://solutions/security/dashboards/cloud-security-posture-dashboard.md
                   - file: security/cloud/kspm-frequently-asked-questions.md
               - file: security/cloud/asset-disc.md
               - file: security/cloud/cloud-native-vulnerability-management.md
                 children:
                   - file: security/cloud/findings-page-3.md
-                  - file: security/cloud/cnvm-dashboard.md
+                  - title: "CNVM dashboard"
+                    crosslink: docs-content://solutions/security/dashboards/cloud-native-vulnerability-management-dashboard.md
                   - file: security/cloud/cnvm-frequently-asked-questions-faq.md
           - file: security/advanced-entity-analytics.md
             children:

@@ -11,7 +11,7 @@ products:
 
 # Set up cloud security
 
-{{elastic-sec}}'s cloud security features find risks in your cloud accounts and Kubernetes clusters. They check your configuration against security best practices, list your cloud assets, and scan your cloud workloads for known vulnerabilities.
+{{elastic-sec}}'s cloud security features find risks in your cloud accounts and Kubernetes clusters. They check your configuration against security best practices, list your cloud assets, and scan your AWS EC2 Linux workloads for known vulnerabilities.
 
 You set up each feature by adding its integration and connecting it to your cloud provider or cluster. After setup, each integration sends its results to {{elastic-sec}}, where you can review them in [Cloud Security](/solutions/security/cloud.md).
 
@@ -32,7 +32,7 @@ Each feature answers a different question about your cloud environment:
 | Give users access to view or manage CSPM data | [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md) |
 | Check your Kubernetes clusters for misconfigurations | [Get started with KSPM](/solutions/security/cloud/get-started-with-kspm.md) |
 | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1` List the resources in your cloud accounts | [Cloud Asset Discovery for AWS](/solutions/security/cloud/asset-disc-aws.md), [Cloud Asset Discovery for GCP](/solutions/security/cloud/asset-disc-gcp.md), or [Cloud Asset Discovery for Azure](/solutions/security/cloud/asset-disc-azure.md) |
-| Scan your cloud workloads for known vulnerabilities | [Get started with CNVM](/solutions/security/cloud/get-started-with-cnvm.md) → [CNVM privilege requirements](/solutions/security/cloud/cnvm-privilege-requirements.md) |
+| Scan your AWS EC2 Linux workloads for known vulnerabilities | [Get started with CNVM](/solutions/security/cloud/get-started-with-cnvm.md) → [CNVM privilege requirements](/solutions/security/cloud/cnvm-privilege-requirements.md) |
 | Turn on cloud security features in a {{serverless-short}} project | [Enable cloud security features in {{serverless-short}}](/solutions/security/cloud/enable-cloud-security-features.md) |
 
 ## Next steps
