@@ -175,7 +175,7 @@ For {{eck}} deployments, refer to the [ECK storage recommendations](/deploy-mana
 ::::
 
 ## Indexing buffer size [_indexing_buffer_size]
-```yaml {applies_to}
+```{applies_to}
 deployment:
   self: all
 ```
@@ -186,7 +186,7 @@ The default is `10%` which is often plenty: for example, if you give the JVM 10G
 
 
 ## Use {{ccr}} to prevent searching from stealing resources from indexing [_use_ccr_to_prevent_searching_from_stealing_resources_from_indexing]
-```yaml {applies_to}
+```{applies_to}
 stack: ga
 ```
 
