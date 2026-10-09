@@ -29,6 +29,6 @@ You can change the interface contrast mode of Kibana to improve visibility and r
 
 ## Related pages
 
-- [Personal preferences in {{kib}}](/explore-analyze/find-and-organize/personal-preferences.md)
+- [](/explore-analyze/find-and-organize/personal-preferences.md)
 - [Use dark mode in {{kib}}](dark-mode.md)
 - [Change the interface language in {{kib}}](change-interface-language.md)

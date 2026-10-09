@@ -45,6 +45,6 @@ If you haven't saved a color mode preference, Kibana applies a default color mod
 
 ## Related pages
 
-- [Personal preferences in {{kib}}](/explore-analyze/find-and-organize/personal-preferences.md)
+- [](/explore-analyze/find-and-organize/personal-preferences.md)
 - [Use high-contrast mode in {{kib}}](high-contrast.md)
 - [Change the interface language in {{kib}}](change-interface-language.md)
