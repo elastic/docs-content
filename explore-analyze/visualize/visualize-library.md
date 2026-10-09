@@ -26,19 +26,21 @@ You can change a panel from one kind to the other. Save a dashboard panel to the
 
 ## Panel types you can save [visualize-library-what-you-can-save]
 
-You can add any panel type in this table to the library and reuse it on other dashboards. Panel types that are not in the table are saved only with the dashboard they belong to.
+Panel types that are not in this table are saved only with the dashboard they belong to. You cannot add them to the library.
 
-| Panel type | Listed in the **Visualizations** tab |
+Unless the remarks say otherwise, a panel type in this table appears in the **Visualizations** tab and when you add a panel from the library to a dashboard.
+
+| Panel type | Remarks |
 | --- | --- |
-| [Lens](lens.md) visualizations that use a data view | Yes |
-| [Maps](maps.md) | Yes |
-| [Links](link-panels.md) panels | Yes |
-| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | No |
-| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | No |
-| Vega visualizations | Yes |
-| [Aggregation-based](legacy-editors/aggregation-based.md) visualizations | Yes |
-| [TSVB](legacy-editors/tsvb.md) visualizations | Yes |
-| [Timelion](legacy-editors/timelion.md) visualizations | Yes |
+| [Lens](lens.md) visualizations | Lens visualizations based on an {{esql}} query are not supported. |
+| [Maps](maps.md) |  |
+| [Links](link-panels.md) panels | You can't create a links panel from the library. Create it on a dashboard, then save it to the library. |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them from the library. |
+| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them from the library. |
+| Vega visualizations |  |
+| [Aggregation-based](legacy-editors/aggregation-based.md) visualizations |  |
+| [TSVB](legacy-editors/tsvb.md) visualizations |  |
+| [Timelion](legacy-editors/timelion.md) visualizations |  |
 
 ## Open the library [visualize-library-access]
 
