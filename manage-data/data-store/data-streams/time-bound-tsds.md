@@ -48,7 +48,7 @@ By default, if no existing backing index can accept a document's `@timestamp`, {
 
 ## Past index creation [tsds-past-index-creation]
 ```{applies_to}
-stack: ga 9.5
+stack: ga 9.5+
 ```
 
 {{es}} can automatically create missing past backing indices for an existing {{tsds}} while indexing documents that fall within the eligible write window.
