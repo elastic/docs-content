@@ -77,4 +77,4 @@ These details explain how {{alerting-v1-system}} alerts appear in the results:
 - You can't assign these alerts, so the KPI panels always count them as unassigned.
 - A search matches each alert's own fields. For example, a query on `kibana.alert.rule.name` matches {{alerting-v1-system}} alerts but not {{alerting-v2-system}} alerts.
 
-To act on {{alerting-v1-system}} alerts from this page, refer to [Triage {{alerting-v1-system}} alerts](triage-alert-episodes.md#triage-classic-alerts).
+To act on {{alerting-v1-system}} alerts from this page, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).

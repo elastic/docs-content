@@ -12,7 +12,7 @@ description: "Investigate alerts. Understand what triggered an alert, assess met
 
 From the **Alerts** page in {{alerting-v2-system}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate {{alerting-v1-system}} alerts](#investigate-classic-alerts).
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system}}](#investigate-classic-alerts).
 
 ## Understand the trigger and scope [understand-trigger]
 
@@ -78,6 +78,6 @@ Selecting a {{alerting-v1-system}} alert, which shows **Classic** in the **Sourc
 - **Overview**: The alert's status, rule, severity, reason, start time, last update, duration, and the rule's tags.
 - **Fields**: Every field stored on the alert, such as `kibana.alert.rule.rule_type_id` for the rule type.
 
-The **Take action** menu in the flyout has the same actions as the table. For details, refer to [Triage {{alerting-v1-system}} alerts](triage-alert-episodes.md#triage-classic-alerts).
+The **Take action** menu in the flyout has the same actions as the table. For details, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
 
 Alerts from Observability rules also have a details page in {{observability}}. To open it, select **Take action** → **View details**.

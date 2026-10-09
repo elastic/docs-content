@@ -32,7 +32,7 @@ The **Alerts** page lists [alerts from both alerting systems](view-and-manage-al
 | Edit assignee | ✓ | — |
 | Open in Discover | ✓ | — |
 
-On a {{alerting-v1-system}} alert, some actions have different results, and your role needs extra privileges. Refer to [Triage {{alerting-v1-system}} alerts](#triage-classic-alerts).
+On a {{alerting-v1-system}} alert, some actions have different results, and your role needs extra privileges. Refer to [Triage alerts from {{alerting-v1-system}}](#triage-classic-alerts).
 
 ## Track review status [track-review-status]
 
