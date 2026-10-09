@@ -18,7 +18,7 @@ Before you start, make sure you have the following:
 
 - **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
 - **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
-- {applies_to}`serverless: experimental` **The `alerting:v2:experimentalFeatures` advanced setting turned on** - In **Advanced Settings**, go to the **Space Settings** tab and turn on **Alerting V2: Experimental Features**. It's off by default and applies only to the current space.
+- {applies_to}`serverless: experimental` **The `alerting:v2:experimentalFeatures` advanced setting turned on** - The setting is off by default and applies only to the space where you turn it on. To turn it on, refer to [Try experimental features in a space](../setup.md#alerting-setup-experimental-features).
 - **The required privileges** - Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must include the following:
 
   | To... | Required privilege |

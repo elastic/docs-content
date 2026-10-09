@@ -68,21 +68,21 @@ serverless: experimental
 stack: experimental 9.6+
 ```
 
-To try features of {{alerting-v2-system}} that are still experimental, turn on the **Alerting V2: Experimental Features** advanced setting (`alerting:v2:experimentalFeatures`). The setting is off by default and applies only to the space where you turn it on.
+To try features of {{alerting-v2-system}} that are still experimental, turn on the **Universal Alerting experimental features** advanced setting (`alerting:v2:experimentalFeatures`). The setting is off by default and applies only to the space where you turn it on.
 
 When the setting is on, you can:
 
-- On the **Rules** page, use **Build a sequence (Experimental)** to chain rules that detect multi-step alert patterns.
-- On the **Rules** and **Action Policies** pages, use **Create with agent (Experimental)** to create rules and action policies with {{agent-builder}}. For the requirements of this option, refer to [Create rules and action policies with {{agent-builder}}](rules/create-rules-action-policies-agent-builder.md).
+- Detect multi-step alert patterns by chaining rules into a sequence. On the **Rules** page, select **Build a sequence (Experimental)**.
+- Create rules and action policies by describing them to {{agent-builder}} in natural language. Select **Create rule** → **Create with agent (Experimental)** on the **Rules** page, or **Create policy** → **Create with agent (Experimental)** on the **Action Policies** page. {{agent-builder}} has [its own requirements](rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
 
 To turn on experimental features:
 
 1. Switch to the space where you want to use the features.
 2. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-3. Select the **Space Settings** tab, then turn on **Alerting V2: Experimental Features**.
-4. Save your changes, then reload {{kib}}.
+3. Select the **Space Settings** tab, then turn on **Universal Alerting experimental features**.
+4. Select **Save changes**, then reload {{kib}}.
 
-## Show the Alerts (V1) page in Observability [alerting-setup-v1-alerts-page]
+## Keep the Observability alerts page for {{alerting-v1-system}} [alerting-setup-v1-alerts-page]
 
 ```yaml {applies_to}
 serverless:
@@ -90,14 +90,16 @@ serverless:
 stack: experimental 9.6+
 ```
 
-When {{alerting-v2-system}} is on, the Observability solution navigation replaces the **Alerts** link with an **Alerting** menu. By default, the menu has no link to the Observability alerts page that shows alerts from {{alerting-v1-system}} rules. To add the link, turn on the **Show V1 Observability alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`) in the space. The setting is off by default. The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results.
+To keep using the Observability alerts page that lists only alerts from {{alerting-v1-system}} rules, turn on the **Show V1 Observability alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`). The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results. The setting is off by default and applies only to the space where you turn it on.
+
+When {{alerting-v2-system}} is on, an **Alerting** menu replaces the Observability **Alerts** link. Its **Alerts** page lists alerts from both systems, with or without this setting.
 
 To show the **Alerts (V1)** page:
 
 1. Switch to the space where you want the page.
 2. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Select the **Space Settings** tab, then turn on **Show V1 Observability alerts table**.
-4. Save your changes, then reload {{kib}}.
+4. Select **Save changes**, then reload {{kib}}.
 
 ## Next steps [alerting-setup-next-steps]
 
