@@ -51,7 +51,7 @@ Unless the remarks say otherwise, a panel type in this table appears in the **Vi
 | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
 | [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, or create it on a dashboard and save it to the library. |
 | Vega visualizations |  |
-| Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) |  |
+| Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) | You can't create them in {{serverless-short}} projects. |
 
 The library doesn't support other panel types. These panels are saved only with the dashboard they belong to.
 
@@ -84,7 +84,7 @@ To build a visualization before you add it to any dashboard, create it from the 
    * [Lens](lens.md)
    * [Maps](maps.md)
    * [Vega](custom-visualizations-with-vega.md)
-   * [Aggregation-based](legacy-editors/aggregation-based.md) and [TSVB](legacy-editors/tsvb.md): Legacy visualizations that you find on the **Legacy** tab of the dialog.
+   * {applies_to}`stack: ga` {applies_to}`serverless: unavailable` [Aggregation-based](legacy-editors/aggregation-based.md) and [TSVB](legacy-editors/tsvb.md): Legacy visualizations that you find on the **Legacy** tab of the dialog.
 
 After you save the visualization, it appears in the library and you can add it to any dashboard.
 
