@@ -1551,7 +1551,8 @@ For example, a variable control named `?machineos` offers the operating systems 
   "data": {
     "url": {
       "%type%": "esql",
-      "query": "FROM kibana_sample_data_logs | WHERE machine.os.keyword == ?machineos | STATS count = COUNT(*) BY bucket = DATE_TRUNC(2 hour, @timestamp) | SORT bucket" <1>
+      "query": "FROM kibana_sample_data_logs | WHERE machine.os.keyword == ?machineos | STATS count = COUNT(*) BY bucket = DATE_TRUNC(2 hour, @timestamp) | SORT bucket", <1>
+      "params": [ { "machineos": "ios" } ] <2>
     }
   },
   "mark": "line",
@@ -1563,14 +1564,7 @@ For example, a variable control named `?machineos` offers the operating systems 
 ```
 
 1. `?machineos` is the name of the control.
-
-To give a variable a default value, add it to the `params` array of the `url` object. Use the variable name without the `?` or `??` prefix:
-
-```json
-"params": [
-  { "machineos": "ios" }
-]
-```
+2. Optional. Sets a default value for the variable. Use its name without the `?` or `??` prefix.
 
 A `??` variable takes a default the same way. For example, `{ "field": "bytes" }` sets a default for a `??field` variable that selects a field.
 
