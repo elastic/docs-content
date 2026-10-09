@@ -1,5 +1,6 @@
 ---
 navigation_title: "Time-bound indices"
+description: Time series data streams route each document by timestamp with time-bound backing indices. Dimension-based routing keeps documents that share dimensions on the same shard.
 applies_to:
   stack: ga
   serverless:
