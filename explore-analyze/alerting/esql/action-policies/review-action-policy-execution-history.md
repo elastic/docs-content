@@ -61,7 +61,7 @@ The `dispatched`, `throttled`, and `unmatched` outcomes are the **event-log term
 | `throttled` | `suppress` | Policy matched but frequency limit not yet cleared. No workflow invoked. |
 | `unmatched` | `unmatched` | No action policy matched the alert. No workflow invoked. |
 
-`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`, `resolve`, `unresolve`) and the `fire` action type, which marks that an alert opened or continued. These have no event-log counterpart in this context, because they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
+`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`) and the `fire` action type, which marks that an alert opened or continued. These have no event-log counterpart in this context, because they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
 
 :::{note}
 `suppress` in `.alert-actions` means the same thing as `throttled` in the event log: the action policy matched but the frequency setting hadn't cleared yet, so no notification was sent. It's unrelated to the eligibility gate that excludes acknowledged, snoozed, or maintenance-window alerts before the dispatcher runs.
