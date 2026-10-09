@@ -1,7 +1,7 @@
 ---
 navigation_title: "Load historical data"
 applies_to:
-  stack: ga 9.5
+  stack: ga 9.5+
 products:
   - id: elasticsearch
 ---

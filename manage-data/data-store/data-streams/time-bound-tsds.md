@@ -62,17 +62,20 @@ Writes might still be rejected even when a timestamp fits the accepted time rang
 stack: ga 9.5
 ```
 
-In addition to accepted time ranges for each backing index, a {{tsds}} has an _eligible write window_.
-It is the period of time that extends from the present back to whichever comes first:
+{{es}} can automatically create missing past backing indices for an existing {{tsds}} while indexing documents that fall within the eligible write window.
+To enable this, set the [`data_stream.past_tsdb_index_creation_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#time-series-data-stream) cluster setting to `true`.
+
+The _eligible write window_ is the period of time that extends from the present back to whichever comes first:
 
 - the first lifecycle action that makes a backing index read-only (such as [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) or a {{search-snap}} transition), or
 - the data stream retention limit (configured in a [data stream lifecycle](/manage-data/lifecycle/data-stream.md), for example)
 
-{{es}} can 
-automatically create missing past backing indices for an existing {{tsds}} while indexing documents that fall within the eligible write window. To enable this, set the [`data_stream.past_tsdb_index_creation_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#time-series-data-stream) cluster setting to `true`.
-
 Timestamps outside the eligible write window or in the future are still rejected.
 If a [failure store](/manage-data/data-store/data-streams/failure-store.md) is enabled, rejected timestamp failures can be redirected there.
+
+Each new past backing index covers a configurable time interval.
+Use the [`data_streams.past_tsdb_index_interval`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#time-series-data-stream) cluster setting to control the interval.
+When the gap between existing indices is up to 1.3 times the configured interval, {{es}} might create a single bridging index instead of many small indices.
 
 :::{admonition} Lifecycle age for past indices
 
@@ -80,11 +83,6 @@ Past backing indices hold old data but are new indices.
 {{es}} sets [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) from `index.time_series.end_time` so that data stream lifecycle and [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) treat the index age based on the data it contains, not when the index was created.
 
 :::
-
-Each new past backing index covers a configurable time interval.
-Use the [`data_streams.past_tsdb_index_interval`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#time-series-data-stream) cluster setting to control the interval.
-
-When the gap between existing indices is up to 1.3 times the configured interval, {{es}} might create a single bridging index instead of many small indices.
 
 For guidance on loading historical data, refer to [Load historical data into a TSDS](/manage-data/data-store/data-streams/load-historical-tsds.md).
 
