@@ -2,11 +2,13 @@
 navigation_title: Visualizations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
+description: Build charts, tables, and metrics in Kibana with Lens. Add fields, use formulas and annotations, and save the result to a dashboard or the Visualize library.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Lens visualizations [lens]
@@ -419,6 +421,8 @@ In the legend, click the field, then choose one of the following options:
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
 
 To get started, click **Explore data in Discover** in the toolbar.
+
+To open the data behind a visualization that's already on a dashboard, refer to [Open the data behind a panel in Discover](../dashboards/using.md#explore-panel-data-in-discover).
 
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 

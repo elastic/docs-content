@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Exploring dashboards [_use_and_filter_dashboards]
@@ -26,6 +27,7 @@ This page covers the main ways to explore dashboard data: using Kibana Query Lan
 * **Controls**, that dashboard creators can add to help viewers filter on specific values.
 * **Filter pills**, that you can add and combine by clicking on specific parts of the dashboard visualizations, or by defining conditions manually from the filter editor. The filter editor is a good alternative if you’re not comfortable with using KQL expressions in the main query bar.
 * View the data of a panel and the requests used to build it.
+* Open the data behind a panel in **Discover**.
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
@@ -230,6 +232,24 @@ This action is possible for all charts created using **Lens** or {{esql}}. It is
 When a custom time range is active for a single panel, it is indicated in the panel’s header.
 
 You can view it in more detail and edit it by clicking the filter.
+
+### Open the data behind a panel in Discover [explore-panel-data-in-discover]
+
+If a panel raises a question that the dashboard can't answer, you can open the data behind it in **Discover** and work with the individual documents. The option to use depends on the panel type. For all of them, you need at least **Read** access to the **Discover** feature.
+
+* **Visualizations**: Open the panel menu and select **Explore in Discover**. **Discover** opens with the panel's data, and with the dashboard's filters, query, and time range applied. On {{esql}} panels, {{kib}} turns the dashboard filters and query into a `WHERE` clause and drops filters that {{esql}} can't express.
+
+    The option doesn't appear when {{kib}} can't trace a chart back to one set of documents, for example when the chart has several data layers or a time shift. While you edit a visualization, you can also [explore its data in Discover](../visualize/lens.md#explore-lens-data-in-discover) from the editor toolbar.
+
+* **Discover sessions**: In view mode, open the panel menu and select **Open in Discover**. **Discover** opens the session on the tab that the panel displays. If the session exists only on the dashboard, **Discover** opens with the panel's query, filters, and columns instead.
+
+* {applies_to}`stack: ga` {applies_to}`serverless: unavailable` **Other panels that use one data view**: In view mode, open the panel menu and select **Explore underlying data**. **Discover** opens with the filters, query, and time range of the dashboard and the panel.
+
+    If you don't see this option, it might not be turned on. By default, {{kib}} doesn't offer it. Administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-context) to `true` in the {{kib}} settings. Refer to [Stack settings](/deploy-manage/stack-settings.md).
+
+* {applies_to}`self: ga` **One value or time range in a chart**: Select a value in the chart, or drag across a time range, then select **Explore underlying data** in the menu that opens. **Discover** opens with the same filters, query, and time range as the panel, narrowed to the value or time range that you selected. The option isn't available on maps.
+
+    This option is separate from the **Explore underlying data** option in the panel menu, and each one has its own setting. If you don't see it, it might not be turned on. By default, {{kib}} doesn't offer it. On self-managed deployments, administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInChart.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-chart) to `true` in `kibana.yml`.
 
 ### View and edit the visualization configuration
 ```{applies_to}
