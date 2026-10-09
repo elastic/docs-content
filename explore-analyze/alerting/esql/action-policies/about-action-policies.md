@@ -21,7 +21,7 @@ This page explains how rules and action policies work together, the gates an ale
 
 A rule detects a condition and opens alerts. A rule doesn't store which action policies apply to its alerts. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert, and invokes a workflow for the ones that pass every gate.
 
-Because of that separation, a single action policy can apply to alerts from many rules. An action policy scoped to `severity: "critical"` applies to every critical alert, regardless of which rule produced it. The separation also means you change notification routing by editing the action policy, without touching the rule.
+Because of that separation, a single action policy can apply to alerts from many rules. An action policy scoped to `severity: "critical"` applies to every critical alert, regardless of which rule produced it. The separation also means you change how alerts are routed by editing the action policy, not the rule's detection logic.
 
 To narrow which alerts an action policy applies to, set its [scope](create-configure-action-policy.md#matcher). An action policy with an empty scope applies to every eligible alert in the space.
 

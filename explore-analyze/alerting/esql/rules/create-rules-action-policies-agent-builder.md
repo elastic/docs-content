@@ -82,7 +82,7 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 The three objects have a dependency chain that determines the order in which they must be saved:
 
-1. **Rule** - Save the rule first, so the action policy can link to it.
+1. **Rule** - Save the rule first. The link between the rule and the action policy takes effect only after the rule is saved.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 

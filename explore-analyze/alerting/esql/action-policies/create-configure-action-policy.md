@@ -32,7 +32,7 @@ To apply an action policy to a rule's alerts, give the policy and the rule the s
 
 In **Routing tags**, select or enter the tags for the policy. The list recommends the routing tags that your rules already use, most-used first. You can also add a tag that no rule has yet. A policy can have up to 50 routing tags, each up to 128 characters. Matching is exact and case-sensitive, so `checkout` doesn't match `Checkout`.
 
-Routing tags are separate from the rule's **Tags** field. Rule tags label and filter rules, and they don't affect which action policies apply. To add routing tags to a rule, refer to [Link a rule to action policies](#policies-that-match-a-rule).
+Routing tags are separate from the rule's **Tags** field. Rule tags label and filter rules, and they don't affect which action policies apply. To add routing tags to a rule, refer to [Add routing tags to a rule](#add-routing-tags).
 
 | To apply the policy to | How to configure it |
 |---|---|
@@ -119,9 +119,22 @@ If you don't have a workflow ready, set up an email or Slack notification while 
 
 ## Link a rule to action policies [policies-that-match-a-rule]
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` To link a rule to an action policy, add one of the policy's routing tags to the rule. When you create or edit the rule, go to the **Actions** step, then add tags in **Routing tags**, under **Action policies**. As you enter a tag, each suggestion shows how many action policies use it. A rule can have up to 20 routing tags, each up to 128 characters. The link takes effect when you save the rule. To set routing tags in a YAML rule definition, use [`metadata.routing_tags`](../rules/yaml-rule-schema-reference.md#metadata-fields).
+### Add routing tags to a rule [add-routing-tags]
+```{applies_to}
+serverless: ga
+stack: experimental 9.6+
+```
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Only rules that open alerts have the **Actions** step. A rule that only writes rule events (`type: signal`) can't have routing tags, because action policies don't evaluate those events.
+To link a rule to an action policy, add one of the policy's routing tags to the rule. Only rules that open alerts can have routing tags. A rule that only writes rule events (`type: signal`) can't, because action policies don't evaluate those events.
+
+1. Create or edit the rule, then go to the **Actions** step.
+2. Under **Action policies**, add tags in **Routing tags**. As you enter a tag, each suggestion shows how many action policies use it. A rule can have up to 20 routing tags, each up to 128 characters.
+3. Check **Applied policies**. The policy appears with a tag icon ({icon}`tag`), and its tooltip lists the shared tag under **Matching routing tags**.
+4. Save the rule. The link takes effect when you save.
+
+To set routing tags in a YAML rule definition, use [`metadata.routing_tags`](../rules/yaml-rule-schema-reference.md#metadata-fields).
+
+### Check which policies apply to a rule [check-applied-policies]
 
 When you create or edit a rule that opens alerts, the **Actions** step lists the policies that apply to those alerts under **Action policies**. Select a policy's name to open it for editing in a new tab.
 

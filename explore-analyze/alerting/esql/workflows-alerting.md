@@ -18,7 +18,7 @@ This page covers how action policies drive workflow invocations at runtime, the 
 
 {{alerting-v2-system-cap}} connects to workflows through two pathways. Both require an alert.
 
-- **Action Policies** - Action policies evaluate eligible alerts on a continuous schedule and invoke workflows based on match conditions and frequency settings.
+- **Action Policies** - Action policies evaluate eligible alerts on a continuous schedule and invoke workflows based on their scope and frequency settings.
 - **Alert lifecycle triggers** - Lifecycle triggers invoke workflows when a user takes a triage action on an alert, such as resolving, assigning, or acknowledging it.
 
 ### Action policies [action-policy-driven-workflows]
@@ -38,7 +38,7 @@ If you're unsure whether to use lifecycle triggers or action policies, the follo
 | | Action policies | Lifecycle triggers |
 |---|---|---|
 | **How they run** | Evaluate alerts on a continuous schedule | React immediately to a specific event |
-| **Frequency control** | Apply eligibility, match condition, and frequency gates | Fire exactly once per event, no gates to configure |
+| **Frequency control** | Apply eligibility, scope, and frequency gates | Fire exactly once per event, no gates to configure |
 | **Best for** | Recurring notifications and escalation logic that runs as long as a problem persists | One-shot automations, such as opening a ticket when a user assigns an alert or posting a message when a user resolves it |
 
 ## Related pages

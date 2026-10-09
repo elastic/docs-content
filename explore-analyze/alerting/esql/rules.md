@@ -21,7 +21,7 @@ Use this page to understand what a rule does, why notifications are sent by work
 
 Rules define *what* to detect. Action policies match alerts from any rule and decide whether and when to invoke a workflow. The workflow sends the notification.
 
-This separation means you can update how alerts are routed to workflows without touching a rule, and have multiple action policies respond to the same alert independently.
+This separation means you can update how alerts are routed to workflows without changing a rule's detection logic, and have multiple action policies respond to the same alert independently.
 
 ## Create, configure, and manage rules [rules-next-steps]
 

@@ -49,7 +49,7 @@ Refer to [Alerts](alerts.md) to learn more.
 
 ### Action policies
 
-An action policy decides whether and when to invoke a workflow for an alert. You configure that on the policy, not on the rule, so you can change routing without editing each rule. The workflow sends the notification.
+An action policy decides whether and when to invoke a workflow for an alert. You configure that on the policy, not on the rule, so you can change notifications without changing what each rule detects. The workflow sends the notification.
 
 Refer to [Notifications and actions](notifications-actions.md) to learn more.
 
