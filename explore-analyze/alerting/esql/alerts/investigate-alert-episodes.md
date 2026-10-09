@@ -64,3 +64,19 @@ Use the **Open in Discover** action to view the full source documents instead of
 ## Access the response runbook [access-runbook]
 
 If the rule has a runbook attached, you can view it directly from the alert to follow the documented triage steps.
+
+## Investigate {{alerting-v1-system}} alerts [investigate-classic-alerts]
+
+```{applies_to}
+serverless: ga
+stack: experimental 9.6+
+```
+
+The details on this page, such as the trend chart and related alerts, are available only for {{alerting-v2-system}} alerts. Selecting a {{alerting-v1-system}} alert, which shows **Classic** in the **Source** column, opens a flyout with two tabs:
+
+- **Overview**: The alert's status, rule, severity, reason, start time, last update, duration, and the rule's tags.
+- **Fields**: Every field stored on the alert, such as `kibana.alert.rule.rule_type_id` for the rule type.
+
+The **Take action** menu in the flyout has the same actions as the table. For details, refer to [Triage {{alerting-v1-system}} alerts](triage-alert-episodes.md#triage-classic-alerts).
+
+Alerts from Observability rules also have a details page in {{observability}}. To open it, select **View details**, which is in the **Take action** menu when you can take actions on the alert.

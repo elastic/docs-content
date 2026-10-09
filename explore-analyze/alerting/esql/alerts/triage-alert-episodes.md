@@ -67,7 +67,7 @@ Add context to an alert for filtering, routing, or ownership.
 
 | Action | Description | When to use | Scope |
 |---|---|---|---|
-| Edit tags | Adds or removes tags on the alert. | You want to categorize alerts for routing, filtering, or reporting. | Series |
+| Edit alert tags | Adds or removes tags on the alert. {applies_to}`stack: experimental =9.5` In {{stack}} 9.5, this action is named **Edit Tags**. | You want to categorize alerts for routing, filtering, or reporting. | Series |
 | Edit assignee | Assigns the alert to a specific user. | You want to establish clear ownership during investigation or prevent duplicate work. | Alert |
 
 ## Investigate the underlying data [investigate-underlying-data]
@@ -77,3 +77,27 @@ Go to Discover to inspect the data behind an alert.
 | Action | Description | When to use | Scope |
 |---|---|---|---|
 | Open in Discover | Opens the rule's base {{esql}} query scoped to the time window around when the alert opened. | You want to verify what data the rule was evaluating or investigate whether the condition is a genuine problem. | Alert |
+
+## Triage {{alerting-v1-system}} alerts [triage-classic-alerts]
+
+```{applies_to}
+serverless: ga
+stack: experimental 9.6+
+```
+
+The **Alerts** page also lists [alerts from {{alerting-v1-system}} rules](view-and-manage-alerts.md#alerts-from-both-systems), which show **Classic** in the **Source** column. You can take most of the same actions on them, individually or in bulk. Each action uses the matching {{alerting-v1-system}} feature, so the results differ from {{alerting-v2-system}} alerts:
+
+| Action | What happens to a {{alerting-v1-system}} alert |
+|---|---|
+| Acknowledge, Unacknowledge | Adds or removes the [acknowledged](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) mark. Unlike acknowledging a {{alerting-v2-system}} alert, it doesn't stop the alert's notifications. |
+| Snooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) this alert only. Other alerts from the same rule keep running their actions. The snooze lasts until the time you choose, or until you unsnooze the alert if you select **Indefinitely**. Condition-based snooze isn't available on this page. |
+| Unsnooze | Ends the snooze, so the alert's actions run again. |
+| Resolve | Marks the alert as [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status). Its status changes to **Inactive**, its actions stop, and its status no longer updates. You can't undo this. |
+| Edit alert tags | Adds or removes tags on the alert, the same as for {{alerting-v2-system}} alerts. |
+
+Some actions aren't available for {{alerting-v1-system}} alerts on this page:
+
+- **Unresolve**, **Edit assignee**, and **Open in Discover**, which work only on {{alerting-v2-system}} alerts.
+- Adding the alert to a case. To add a {{alerting-v1-system}} alert from an Observability rule to a case, use the **Alerts (V1)** page instead. To show that page, turn on the **Show V1 Observability alerts table** [advanced setting](../setup.md).
+
+To take any action on the page, including on {{alerting-v1-system}} alerts, your role needs the {{alerting-v2-system}} **Alerts** privilege set to **All**. Without it, the actions are hidden. Refer to [Configure access](../manage/configure-access.md#alerting-triage-privileges). Each action on a {{alerting-v1-system}} alert also needs the privileges that the alert's rule type requires in {{alerting-v1-system}}, as described in [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
