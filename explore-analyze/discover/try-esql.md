@@ -144,8 +144,8 @@ Because `WHERE` removes results, it changes both the table and the chart.
 You can also filter from the table, so you don't need to enter the field name and value. Hover over a value, then select **Filter for this** or **Filter out this**, and Discover writes the `WHERE` line for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
 :::{tip}
-:applies_to: { serverless: preview, stack: preview 9.6+ }
-If you know KQL, you can also filter from the search bar above the editor, which shows **Filter using KQL**. When you submit a KQL query there, Discover replaces your whole query with a `FROM` command for the same data sources and a `WHERE KQL()` line that contains your KQL query. Commands such as `KEEP` are removed, so to keep building on your query, use `WHERE`.
+:applies_to: { serverless: preview, stack: preview 9.3+ }
+If you know KQL, you can also filter from the editor's [search bar](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search). When you submit a KQL query there, Discover replaces your whole query with a `FROM` command and a `WHERE KQL()` line that contains your KQL query. Commands such as `KEEP` are removed, so to keep building on your query, use `WHERE`.
 :::
 
 ::::
