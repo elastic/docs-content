@@ -77,12 +77,8 @@ Each new past backing index covers a configurable time interval.
 Use the [`data_streams.past_tsdb_index_interval`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#time-series-data-stream) cluster setting to control the interval.
 When the gap between existing indices is up to 1.3 times the configured interval, {{es}} might create a single bridging index instead of many small indices.
 
-:::{admonition} Lifecycle age for past indices
-
 Past backing indices hold old data but are new indices.
 {{es}} sets [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) from `index.time_series.end_time` so that data stream lifecycle and [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) treat the index age based on the data it contains, not when the index was created.
-
-:::
 
 For guidance on loading historical data, refer to [Load historical data into a TSDS](/manage-data/data-store/data-streams/load-historical-tsds.md).
 
