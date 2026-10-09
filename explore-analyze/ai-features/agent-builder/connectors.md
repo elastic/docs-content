@@ -15,7 +15,7 @@ products:
 # Connectors in {{agent-builder}}
 
 :::{note}
-:applies_to: stack: preview 9.4+, serverless: preview
+:applies_to: stack: preview 9.4-9.5
 
 The connectors library is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::

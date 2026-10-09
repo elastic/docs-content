@@ -43,8 +43,12 @@ $$$agent-builder-visualization-creation-skill$$$ `visualization-creation` {appli
 $$$agent-builder-graph-creation-skill$$$ `graph-creation` {applies_to}`stack: ga 9.4+`
 :   Creates graph attachments by transforming relationship data into nodes and edges rendered inline in the conversation. Use for topology, dependency, or entity-link visualizations.
 
-$$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_to}`stack: preview =9.4, ga 9.5+`
+$$$agent-builder-dashboard-management-skill$$$ $$$agent-builder-dashboards-skill$$$ `dashboards` {applies_to}`stack: preview =9.4, ga 9.5+`
 :   Composes and updates in-memory {{kib}} dashboards. Use when a user asks to find, create, or modify a dashboard, add or remove panels, or edit existing panel visualizations.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` This skill was previously named `dashboard-management`. If a custom agent that doesn't have **Elastic capabilities** turned on lists `dashboard-management`, change it to `dashboards`. Otherwise, the agent stops loading the skill without reporting an error. To retrieve the skill through the API, use `GET /api/agent_builder/skills/dashboards`.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If you created a custom skill with the ID `dashboards` before the rename, the built-in skill takes precedence over it. To keep using your custom skill, re-create it with a different ID.
 
     :::{dropdown} Assigned tools
     A skill-scoped inline tool for generating and updating dashboards.
@@ -99,7 +103,9 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 :   Manages investigation and incident cases across {{elastic-sec}}, {{observability}}, and Stack Management. Covers creating, updating, searching, and enriching cases with comments, alerts, events, and observables such as indicators of compromise.
 
     :::{dropdown} Assigned tools
-    `platform.core.cases`, `platform.core.cases.manage`, `platform.core.cases.attachments`, `platform.core.cases.observables`
+    `platform.core.cases`, `platform.core.cases.manage`, `platform.core.cases.get_attachments`, `platform.core.cases.manage_attachments`, `platform.core.cases.observables`, `platform.core.cases.find_templates`
+
+    In 9.5, the skill uses `platform.core.cases.attachments` instead of `platform.core.cases.get_attachments` and `platform.core.cases.manage_attachments`.
 
     :::
 
