@@ -1426,7 +1426,7 @@ The `url` object supports the following parameters:
 | `"%context%"` | When set to `true`, applies the dashboard filters to the query. |
 | `"%timefield%"` | The timestamp field to use for the dashboard time range. See [Apply the dashboard time range](#vega-esql-time-range). |
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
-| `"params"` | An array of named parameter objects to substitute into the query. |
+| `"params"` | An array of named parameter objects to substitute into the query. Use it to give a query parameter a fixed value, or a default value for a [dashboard variable control](#vega-esql-variable-controls). |
 
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
