@@ -26,19 +26,19 @@ You can change a panel from one kind to the other. Save a dashboard panel to the
 
 ## Panel types you can save [visualize-library-what-you-can-save]
 
-Panel types that are not in this table are saved only with the dashboard they belong to. You cannot add them to the library.
+You can add any panel type in this table to the library and reuse it on other dashboards. Panel types that are not in the table are saved only with the dashboard they belong to.
 
-| Panel type | Where it appears in the library |
+| Panel type | Listed in the **Visualizations** tab |
 | --- | --- |
-| [Lens](lens.md) visualizations that use a data view | **Visualizations** tab and **From library** |
-| [Maps](maps.md) | **Visualizations** tab and **From library** |
-| [Links](link-panels.md) panels | **Visualizations** tab and **From library** |
-| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | **From library** only |
-| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | **From library** only |
-| Vega visualizations | **Visualizations** tab and **From library** |
-| [Aggregation-based](legacy-editors/aggregation-based.md) visualizations | **Visualizations** tab and **From library** |
-| [TSVB](legacy-editors/tsvb.md) visualizations | **Visualizations** tab and **From library** |
-| [Timelion](legacy-editors/timelion.md) visualizations | **Visualizations** tab and **From library** |
+| [Lens](lens.md) visualizations that use a data view | Yes |
+| [Maps](maps.md) | Yes |
+| [Links](link-panels.md) panels | Yes |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | No |
+| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | No |
+| Vega visualizations | Yes |
+| [Aggregation-based](legacy-editors/aggregation-based.md) visualizations | Yes |
+| [TSVB](legacy-editors/tsvb.md) visualizations | Yes |
+| [Timelion](legacy-editors/timelion.md) visualizations | Yes |
 
 ## Open the library [visualize-library-access]
 
@@ -75,7 +75,7 @@ To use a library panel on another dashboard, add it from the library. The new pa
 
 3. Select the panel to add.
 
-The panel appears on the dashboard. If you add the same panel to a second dashboard, both dashboards show the library copy. After you save an edit on one dashboard, the other dashboard shows that edit.
+The panel appears on the dashboard and shows the library copy.
 
 ## Change a library panel on one dashboard only [unlink-library-panel]
 
