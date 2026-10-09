@@ -19,7 +19,8 @@ Download the {{fleet}} **Agents** list as a CSV file to share or review it outsi
 You need the following privileges:
 
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` The **Generate reports** {{fleet}} sub-feature privilege, and at least `Read` access for **Agents**. Refer to [{{fleet}} privileges and available actions](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features-table).
-* {applies_to}`stack: ga 9.0-9.3` [Reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access), and read access to the `.fleet-agents` index.
+* {applies_to}`stack: ga 9.0-9.3` The `read` index privilege for the `.fleet-agents` index.
+* [Reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access), which let you view and download the generated report.
 
 ## Export the agents list [export-agents-csv-steps]
 
