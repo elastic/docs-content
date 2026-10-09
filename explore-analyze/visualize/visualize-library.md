@@ -20,9 +20,11 @@ The **Visualize library** is where you build a visualization before you tie it t
 A panel is either a library panel or a dashboard panel. The difference is where {{kib}} stores it.
 
 * **Library panels** are saved in the library. Every dashboard that uses a library panel shows the same panel, so an edit you save appears on all of them. Use a library panel when the same chart belongs on several dashboards, for example an error-rate chart that appears on both a team dashboard and an executive dashboard.
+
+    You might also see this called a by-reference panel, because every dashboard points to the one copy in the library.
 * **Dashboard panels** are saved only with the dashboard where you created them. An edit changes that dashboard and nothing else. Use a dashboard panel for a chart that only one dashboard needs. If you remove a dashboard panel, it is deleted.
 
-You might also see these called by-reference panels (library panels, because every dashboard points to the one copy in the library) and by-value panels (dashboard panels, because each dashboard holds its own copy).
+    You might also see this called a by-value panel, because each dashboard holds its own copy.
 
 You can change a panel from one kind to the other. Save a dashboard panel to the library to share it, or unlink a library panel to give a dashboard its own copy.
 
