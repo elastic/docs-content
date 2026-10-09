@@ -24,7 +24,7 @@ A panel is either a library panel or a dashboard panel. The difference is where 
 
 You can change a panel from one kind to the other. Save a dashboard panel to the library to share it, or unlink a library panel to give a dashboard its own copy.
 
-## Panel types you can save [visualize-library-what-you-can-save]
+## Panel types you can save to the library [visualize-library-what-you-can-save]
 
 Unless the remarks say otherwise, a panel type in this table appears in the **Visualizations** tab and when you add a panel from the library to a dashboard.
 
@@ -51,7 +51,7 @@ Where you open the library depends on your deployment and version.
   - In the Classic view, on the **Dashboards** page, select the **Visualizations** tab, or select **Visualize library** in the navigation menu.
 - {applies_to}`stack: ga 9.0-9.3` Select **Visualize library** in the navigation menu, or search for it in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-## Save a panel to the library [save-to-visualize-library]
+## Save a dashboard panel to the library [save-to-visualize-library]
 
 To reuse a dashboard panel, save it to the library. Panel actions are in the panel menu {icon}`boxes_vertical`, which appears when you hover over a panel.
 
@@ -62,7 +62,7 @@ To reuse a dashboard panel, save it to the library. Panel actions are in the pan
 
 The panel on this dashboard is now a library panel. When you save a later edit, every dashboard that uses the panel shows that edit.
 
-## Add a panel from the library [add-a-library-panel]
+## Add a panel from the library to a dashboard [add-a-library-panel]
 
 To use a library panel on another dashboard, add it from the library. The new panel stays linked to the library copy.
 
@@ -78,11 +78,13 @@ The panel appears on the dashboard and shows the library copy.
 
 ## Change a library panel on one dashboard only [unlink-library-panel]
 
-When you need to change a library panel, but only on one dashboard, unlink the panel from the library on that dashboard. Unlinking turns the panel into a dashboard panel. The library copy and the other dashboards stay as they are, and any edit you make from now on applies to this dashboard only.
+To change a library panel on one dashboard only, unlink it from the library on that dashboard.
 
 1. Open the dashboard and select **Edit**.
 2. Hover over the panel, then select the {icon}`boxes_vertical` panel menu.
 3. Select **Unlink from library**.
+
+The panel is now a dashboard panel. Edits you make from now on apply to this dashboard only. The library copy and the other dashboards stay as they are.
 
 ## Annotation groups [visualize-library-annotation-groups]
 
