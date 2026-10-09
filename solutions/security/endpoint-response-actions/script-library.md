@@ -30,7 +30,7 @@ To access the script library, find **Script library** in the navigation menu or 
 
       Other script formats, such as Python (`.py`), are not natively supported. To run a script in an unsupported format, include it in a ZIP archive together with a supported launcher script (for example, a `.ps1` file that calls the Python script), then upload the archive and set the launcher as the **Path to executable file**.
   
-      The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxEndpointScriptFileSize` setting. 
+      The file size maximum is configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxEndpointScriptFileSize` setting. For the default value, refer to [Security Solution settings in {{kib}}](kibana://reference/configuration-reference/security-solution-settings.md#elastic-defend-settings).
 
         ::::{note}
         Duplicate files are not allowed. If you upload a file with the same SHA256 hash as an existing script, the upload is rejected and an error message identifies the existing script.

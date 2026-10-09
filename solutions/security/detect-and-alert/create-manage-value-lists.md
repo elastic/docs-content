@@ -124,14 +124,4 @@ You can also edit value lists while creating and managing exceptions that use va
 
 ## Configure upload limits [adv-list-settings]
 
-You can configure limits for uploading value lists to {{elastic-sec}} by editing your [`kibana.yml`](/deploy-manage/stack-settings.md) [configuration file](kibana://reference/configuration-reference/general-settings.md) or your {{kib}} cloud instance.
-
-`xpack.lists.maxImportPayloadBytes`
-:   Maximum bytes allowed for uploading value lists. Default: `9000000`. Maximum: `100000000`.
-
-    For every 10 megabytes, reserve an additional 1 gigabyte of RAM for {{kib}}. For example, a {{kib}} instance with 2 GB of RAM can support up to 20 MB (`20000000`).
-
-`xpack.lists.importBufferSize`
-:   Buffer size for uploading value lists. Default: `1000`.
-
-    Increase this value to improve throughput (uses more memory), or decrease it to reduce memory usage (slower uploads).
+You can change the limits for uploading value lists to {{elastic-sec}} with the `xpack.lists.maxImportPayloadBytes` and `xpack.lists.importBufferSize` settings in your [`kibana.yml`](/deploy-manage/stack-settings.md) file. For details and default values, refer to [Security Solution settings in {{kib}}](kibana://reference/configuration-reference/security-solution-settings.md#value-lists-settings).
