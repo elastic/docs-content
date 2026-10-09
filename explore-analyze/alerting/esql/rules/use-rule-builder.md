@@ -14,7 +14,7 @@ The {{alerting-v2-system}} rule builder lets you create a rule by selecting a ru
 
 To create a rule, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-When choosing a creation path, select the one in the rule builder section.
+Then select the creation path in the rule builder section.
 
 :::{note}
 The rule builder differs from the **Rule form** described in [Create an {{esql}} rule](create-esql-rule.md). The Rule form is for writing an {{esql}} query directly, with a live preview of results. The rule builder instead has you select a rule type, then fills in the query for you based on the structured inputs you provide for that type.
