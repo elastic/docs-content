@@ -19,7 +19,7 @@ products:
 
 An agent that retrieves context from an AI index might also need tools and permissions to query source data when a [Knowledge Indicator (KI)](concepts.md#knowledge-indicators) points to current details. This page explains how to provide that access, tell the agent when to use the AI index, and test the integration. For the list, describe, and query sequence itself, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
-For implementation steps, follow the guide for [{{agent-builder}}](use-context-engine-with-agent-builder.md) or [LangChain and LangGraph](langchain-integration.md).
+For implementation steps, follow the guide for [{{agent-builder}}](use-context-engine-with-agent-builder.md), [LangChain and LangGraph](langchain-integration.md), or [Claude Code](use-context-engine-with-claude-code.md).
 
 ## Provide access to context and source data
 
