@@ -173,7 +173,7 @@ While moving or resizing a panel, you can cancel the action at any time by press
 
 ## Customize a panel's title, description, and border [customize-panel-settings]
 
-A clear title and a cleaner header help viewers read a dashboard faster. You can give one panel its own title and description, hide its title, or remove its border. To set the default for every panel at once, use the display options in the dashboard **Settings**, as described in [Create a dashboard](create-dashboard.md).
+A clear title and a cleaner header help viewers read a dashboard faster. You can give one panel its own title and description, or hide its title. To set the default for every panel at once, use the display options in the dashboard **Settings**, as described in [Create a dashboard](create-dashboard.md).
 
 1. In the application menu, select **Edit**.
 2. Hover over the panel, open the panel menu {icon}`boxes_vertical`, and select **Settings**.
@@ -181,7 +181,7 @@ A clear title and a cleaner header help viewers read a dashboard faster. You can
 
     * **Show title**: Turn off to hide the panel title.
     * **Title** and **Description**: Enter your own text. Select **Reset to default** to go back to the original text.
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Show panel border**: Turn off to remove the border from this panel, even if the dashboard shows borders by default.
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Show panel border**: Turn off to remove the border from this panel, even if the dashboard shows borders by default.
 
 4. Select **Apply**.
 5. Save the dashboard.

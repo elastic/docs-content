@@ -48,7 +48,7 @@ Unless the remarks say otherwise, a panel type in this table appears in the **Vi
 | [Lens](lens.md) visualizations | Lens visualizations based on an {{esql}} query are not supported. The **Save to library** action isn't available for them. |
 | [Maps](maps.md) |  |
 | [Links](link-panels.md) panels | You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
-| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` [Markdown](text-panels.md#markdown-library-reuse) panels | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Markdown](text-panels.md#markdown-library-reuse) panels | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
 | [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, or create it on a dashboard and save it to the library. |
 | Vega visualizations |  |
 | {applies_to}`serverless: unavailable` Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) |  |
@@ -66,7 +66,7 @@ $$$visualize-library-visualizations$$$
 To browse your saved visualizations or build a new one, open the library. Where you open it depends on your deployment and version.
 
 - {applies_to}`serverless: ga` On the **Dashboards** page, select the **Visualizations** tab.
-- {applies_to}`stack: ga 9.4` Open the library from one of these places:
+- {applies_to}`stack: ga 9.4+` Open the library from one of these places:
   - In a solution view, on the **Dashboards** page, select the **Visualizations** tab.
   - In the Classic view, on the **Dashboards** page, select the **Visualizations** tab, or select **Visualize library** in the navigation menu.
 - {applies_to}`stack: ga 9.0-9.3` Select **Visualize library** in the navigation menu, or search for it in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -105,7 +105,7 @@ To use a library panel on another dashboard, add it from the library. The new pa
 1. Open the dashboard and select **Edit**.
 2. Open the library picker:
 
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` Select **Add**, then **From library**.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` Select **Add**, then **From library**.
    - {applies_to}`stack: ga 9.0-9.1` Select **Add from library**.
 
 3. Select the panel to add.
@@ -139,6 +139,6 @@ The panel is now a dashboard panel. Edits you make from now on apply to this das
 ## Related pages [visualize-library-related]
 
 - [Create a dashboard from the {{kib}} UI](../dashboards/create-dashboard.md)
-- [Save and reuse Markdown panels across dashboards](text-panels.md#markdown-library-reuse)
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Save and reuse Markdown panels across dashboards](text-panels.md#markdown-library-reuse)
 - [Add a Discover session from the library](../discover/save-open-search.md#add-discover-session-from-library)
 - [Add a links panel from the library](link-panels.md#add-links-panel-from-library)
