@@ -63,6 +63,23 @@ The `add_cloud_metadata` processor supports SSL options to configure the http cl
 For more information, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options).
 
 
+### Control Azure credential selection
+
+After the Azure provider detects an Azure Virtual Machine (VM), the processor automatically makes a best-effort Azure Resource Manager lookup for the name and ID of the Azure Kubernetes Service (AKS) cluster. These fields are optional, but the processor attempts the lookup even when the VM is not an AKS node. Because inputs that collect logs and metrics enable this processor by default, the lookup can occur without an explicit processor configuration.
+
+If `TENANT_ID`, `CLIENT_ID`, and `CLIENT_SECRET` are all present, the processor uses an explicit client secret. Otherwise, it uses the Azure SDK for Go `DefaultAzureCredential` chain. Depending on the {{agent}} version, development-focused credentials in the bundled default chain may start Azure CLI, Azure Developer CLI, or Azure PowerShell on Windows.
+
+{applies_to}`stack: ga 9.1+` `AzurePowerShellCredential` is also in the chain. When included, it starts PowerShell with an encoded command.
+
+{applies_to}`stack: ga 9.1+` To exclude development credentials in production, set `AZURE_TOKEN_CREDENTIALS=prod` in the {{agent}} process environment and restart {{agent}}. This setting retains `EnvironmentCredential`, `WorkloadIdentityCredential`, and `ManagedIdentityCredential`. For details, refer to Microsoft's guidance on [excluding a credential type category](https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#exclude-a-credential-type-category). On Windows, follow the [Windows service environment procedure](/reference/fleet/host-proxy-env-vars.md#where-to-set-proxy-env-vars) to set the variable and restart {{agent}}.
+
+::::{note}
+:applies_to: stack: ga 9.1+
+
+`AZURE_TOKEN_CREDENTIALS` applies to every component in the {{agent}} process that uses `DefaultAzureCredential`. It does not stop Azure metadata collection or the AKS lookup, and credentials that remain in the chain can still send requests to Azure Resource Manager. To stop Azure metadata collection, exclude `azure` from the processor's `providers` setting. This also removes basic Azure VM metadata.
+::::
+
+
 ## Provider-specific metadata examples [provider-specific-examples]
 
 The following sections show examples for each of the supported providers.
