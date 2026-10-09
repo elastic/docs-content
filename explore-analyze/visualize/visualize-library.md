@@ -22,9 +22,15 @@ A panel is either a library panel or a dashboard panel. The difference is where 
 * **Library panels** are saved in the library. Every dashboard that uses a library panel shows the same panel, so an edit you save appears on all of them. Use a library panel when the same chart belongs on several dashboards, for example an error-rate chart that appears on both a team dashboard and an executive dashboard.
 * **Dashboard panels** are saved only with the dashboard where you created them. An edit changes that dashboard and nothing else. Use a dashboard panel for a chart that only one dashboard needs. If you remove a dashboard panel, it is deleted.
 
+You might also see these called by-reference panels (library panels, because every dashboard points to the one copy in the library) and by-value panels (dashboard panels, because each dashboard holds its own copy).
+
 You can change a panel from one kind to the other. Save a dashboard panel to the library to share it, or unlink a library panel to give a dashboard its own copy.
 
-## Panel types you can save to the library [visualize-library-what-you-can-save]
+## Manage the library [visualize-library-manage]
+
+The library holds the panel types in the following table and your annotation groups.
+
+### Panel types you can save to the library [visualize-library-what-you-can-save]
 
 Unless the remarks say otherwise, a panel type in this table appears in the **Visualizations** tab and when you add a panel from the library to a dashboard.
 
@@ -39,7 +45,7 @@ Unless the remarks say otherwise, a panel type in this table appears in the **Vi
 | Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) |  |
 | Any other panel type | Not supported by the library. These panels are saved only with the dashboard they belong to. |
 
-## Open the library [visualize-library-access]
+### Open the library [visualize-library-access]
 
 $$$visualize-library-visualizations$$$
 
@@ -51,9 +57,17 @@ Where you open the library depends on your deployment and version.
   - In the Classic view, on the **Dashboards** page, select the **Visualizations** tab, or select **Visualize library** in the navigation menu.
 - {applies_to}`stack: ga 9.0-9.3` Select **Visualize library** in the navigation menu, or search for it in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-## Save a dashboard panel to the library [save-to-visualize-library]
+### Annotation groups [visualize-library-annotation-groups]
 
-To reuse a dashboard panel, save it to the library. Panel actions are in the panel menu {icon}`boxes_vertical`, which appears when you hover over a panel.
+Annotation groups mark events such as deployments on your charts. You can reuse the same group on more than one Lens visualization. Annotation groups are not dashboard panels. To manage them, select the **Annotation groups** tab. To create a group and add it to a chart, refer to [Add annotations](lens.md#add-annotations). When you save a change to a group, every visualization that uses the group shows it.
+
+## Use library panels on dashboards [visualize-library-use-on-dashboards]
+
+Saving, adding, and unlinking library panels are panel actions on a dashboard. Panel actions are in the panel menu {icon}`boxes_vertical`, which appears when you hover over a panel.
+
+### Save a dashboard panel to the library [save-to-visualize-library]
+
+To reuse a dashboard panel on other dashboards, save it to the library.
 
 1. Open the dashboard and select **Edit**.
 2. Hover over the panel, then select the {icon}`boxes_vertical` panel menu.
@@ -62,7 +76,7 @@ To reuse a dashboard panel, save it to the library. Panel actions are in the pan
 
 The panel on this dashboard is now a library panel. When you save a later edit, every dashboard that uses the panel shows that edit.
 
-## Add a panel from the library to a dashboard [add-a-library-panel]
+### Add a panel from the library to a dashboard [add-a-library-panel]
 
 To use a library panel on another dashboard, add it from the library. The new panel stays linked to the library copy.
 
@@ -76,7 +90,7 @@ To use a library panel on another dashboard, add it from the library. The new pa
 
 The panel appears on the dashboard and shows the library copy.
 
-## Change a library panel on one dashboard only [unlink-library-panel]
+### Change a library panel on one dashboard only [unlink-library-panel]
 
 To change a library panel on one dashboard only, unlink it from the library on that dashboard.
 
@@ -85,10 +99,6 @@ To change a library panel on one dashboard only, unlink it from the library on t
 3. Select **Unlink from library**.
 
 The panel is now a dashboard panel. Edits you make from now on apply to this dashboard only. The library copy and the other dashboards stay as they are.
-
-## Annotation groups [visualize-library-annotation-groups]
-
-Annotation groups mark events such as deployments on your charts. You can reuse the same group on more than one Lens visualization. Annotation groups are not dashboard panels. To manage them, select the **Annotation groups** tab. To create a group and add it to a chart, refer to [Add annotations](lens.md#add-annotations). When you save a change to a group, every visualization that uses the group shows it.
 
 ## Related pages [visualize-library-related]
 
