@@ -53,7 +53,7 @@ You don't need every type of data to get started. Start with the data for the ta
 
 ### Decide between managed and {{agent}} integrations [security-ingest-collection-methods]
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` On {{serverless-full}} projects and {{ech}} deployments, use an {{managed-integration}} whenever one is available for your source. It's the easiest way to get data in, because Elastic runs and maintains the collector for you. Not every integration is available as an {{managed-integration}}, so check the [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md) first.
+On {{serverless-full}} projects and {{ech}} deployments, use an {{managed-integration}} whenever one is available for your source. It's the easiest way to get data in, because Elastic runs and maintains the collector for you. Not every integration is available as an {{managed-integration}}, so check the [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md) first.
 
 For other sources, and on self-managed deployments, use an integration that runs on {{agent}}. The following table compares the two types of integration:
 
