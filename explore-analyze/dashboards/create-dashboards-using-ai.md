@@ -35,10 +35,10 @@ Use {{agent-builder}} when you want to:
 - Go from a question to a working dashboard without writing API requests or learning the schema
 - Explore an unfamiliar data source by asking the agent to surface and visualize key fields
 - Prototype a dashboard through conversation, then save it when you are satisfied
+- {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Build layouts that other panel types can't express, with [custom panels](/explore-analyze/visualize/custom-panels.md) made from an HTML template and an optional {{esql}} query
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Improve the text, layout, and chart styling of a dashboard you already built, by [enhancing it with AI](enhance-dashboard-with-ai.md)
 
 {{agent-builder}} generates ES|QL-powered visualizations, [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md), markdown panels, collapsible sections, and interactive [filter controls](/explore-analyze/visualize/dashboard-controls.md).
-
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Agents can also create [custom panels](/explore-analyze/visualize/custom-panels.md) from an HTML template and an optional {{esql}} query, for layouts that other panel types can't express.
 
 Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
