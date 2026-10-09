@@ -53,12 +53,13 @@ Add a custom pipeline to an integration from the **Edit integration** workflow. 
 1. In {{kib}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agent policies**.
 2. Select the {{agent}} policy that includes the integration you want to edit.
 3. Find the integration in the list of integrations for the policy.
-4. In the **Actions** column, open the {icon}`ellipsis` actions menu and select **Edit integration**.
-
+4. From the integration's {icon}`ellipsis` actions menu, select **Edit integration**.
 
 ### Select a data stream [_select_a_data_stream]
 
 Most integrations write to multiple data streams. You’ll need to add the custom pipeline to each data stream individually.
+
+The custom pipeline is named after the data stream, so any change to it applies to every policy that uses this integration and writes to the same data stream.
 
 1. Find the first data stream you wish to edit and select **Change defaults**. For this tutorial, find the data stream configuration titled, **Collect metrics from System instances**.
 2. Scroll to **System cpu metrics** and expand **Advanced options**.
@@ -66,8 +67,6 @@ Most integrations write to multiple data streams. You’ll need to add the custo
 4. Below the default pipeline, select **Add custom pipeline**. This takes you to the **Create pipeline** workflow, with the pipeline name already set to `metrics-system.cpu@custom`.
 
     If the data stream already has a custom pipeline, **Add custom pipeline** doesn't appear. Instead, the custom pipeline is listed below the default pipeline. Select {icon}`pencil` **Edit pipeline** to add the processor from the next section to the existing custom pipeline.
-
-Ingest pipelines are shared by all policies of the same integration. Any changes you make to the custom pipeline apply to every policy for this integration that writes to the same data stream.
 
 
 ### Add the pipeline [_add_the_pipeline]
@@ -79,7 +78,7 @@ Add the pipeline you created in step one.
     * Processor: "Pipeline"
     * Pipeline name: "add_field"
 
-2. Click **Create pipeline** to return to the **Edit integration** page.
+2. Click **Create pipeline** to return to the **Edit integration** page. If you're editing an existing custom pipeline, click **Save pipeline** instead.
 
 After saving, note the name of the custom ingest pipeline. In this tutorial, it’s `metrics-system.cpu@custom`. The name follows the pattern `<type>-<dataset>@custom`:
 
@@ -140,7 +139,7 @@ In the **Edit integration** workflow, return to **Collect metrics from System in
     * Field type: `Boolean`
 
 4. Click **Add field**.
-5. Click **Review** to fast-forward to the review step and click **Save component template** to return to the **Edit integration** workflow.
+5. Click **Review** to fast-forward to the review step and click **Create component template** to return to the **Edit integration** workflow. If you're editing an existing custom component template, click **Save component template** instead.
 6. To apply the new mapping immediately, roll over the data stream. You can do this with the rollover API, for example:
 
     ```console
