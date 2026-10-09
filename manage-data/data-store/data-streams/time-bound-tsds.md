@@ -9,6 +9,7 @@ applies_to:
     vectordb: unavailable
 products:
   - id: elasticsearch
+type: overview
 ---
 
 # Time-bound indices and dimension-based routing [time-bound-indices]

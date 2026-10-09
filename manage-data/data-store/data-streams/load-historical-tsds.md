@@ -4,6 +4,7 @@ applies_to:
   stack: ga 9.5+
 products:
   - id: elasticsearch
+type: how-to
 ---
 
 # Load historical data into a {{tsds}} [load-historical-tsds]
