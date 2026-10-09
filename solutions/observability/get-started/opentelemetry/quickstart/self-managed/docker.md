@@ -1,21 +1,23 @@
 ---
 navigation_title: Docker
-description: Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment to collect host metrics, logs and application traces.
+description: Learn how to set up Elastic Agent and EDOT SDKs in a Docker environment to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
-  serverless:
-    observability:
-  product:
-    edot_collector: ga
+  deployment:
+    self: ga
 products:
-  - id: cloud-serverless
   - id: observability
   - id: edot-collector
 ---
 
 # Quickstart for Docker on self-managed deployments
 
-Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Docker environment to collect host metrics, logs, and application traces.
+
+## Prerequisites
+
+- A self-managed {{stack}} deployment running version 9.0 or later.
+- [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on the host.
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege to create the API key.
 
 ## Guided setup
 
@@ -30,7 +32,27 @@ Follow these steps to deploy the {{agent}} and EDOT SDKs in Docker.
 
 ::::{step} Create the config file
 
-Create the `otel-collector-config.yml` file with your {{agent}} configuration. Refer to the [configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md).
+Create an {{agent}} configuration file. This example uses the filename `otel-collector-config.yml`.
+
+Start from the [logs, metrics, and traces sample for direct ingestion into {{es}}](https://github.com/elastic/elastic-agent/blob/v{{version.edot_collector}}/internal/edot/samples/linux/logs_metrics_traces.yml). The sample is written for a host process, so adapt it for the Compose mounts in this quickstart:
+
+1. In `file_log/platformlogs`, set `include` to `[/hostfs/var/log/*.log]`.
+2. In `hostmetrics/system`, set `root_path: /hostfs`.
+3. Add a `docker_stats` receiver and a pipeline that exports those metrics:
+
+   ```yaml
+   receivers:
+     docker_stats: {}
+
+   service:
+     pipelines:
+       metrics/docker:
+         receivers: [docker_stats]
+         processors: [resourcedetection]
+         exporters: [elasticsearch/otel]
+   ```
+
+Keep the other receivers, processors, exporters, and pipelines from the sample. For details about the pipelines, refer to [Direct ingestion into {{es}}](elastic-agent://reference/edot-collector/config/default-config-standalone.md#direct-ingestion-into-elasticsearch).
 ::::
 
 ::::{step} Retrieve your settings
@@ -40,7 +62,7 @@ Retrieve your [{{es}} endpoint](/solutions/elasticsearch-solution-project/search
 
 ::::{step} Create the .env file
 
-Create an `.env` file with the following content. Replace the placeholder values with your Elastic Cloud credentials:
+Create a `.env` file with the following content. Replace the placeholder values with your {{es}} endpoint and API key:
 
 ```bash subs=true
 HOST_FILESYSTEM=/
@@ -50,7 +72,7 @@ COLLECTOR_CONTRIB_IMAGE=elastic/elastic-agent:{{version.edot_collector}}
 ELASTIC_API_KEY=<your_api_key_here>
 ELASTIC_ENDPOINT=<your_endpoint_here>
 OTEL_COLLECTOR_CONFIG=/path/to/otel-collector-config.yml
-   ```
+```
 ::::
 
 ::::{step} Create the compose file
@@ -67,7 +89,7 @@ services:
         limits:
           memory: 1.5G
     restart: unless-stopped
-    command: ["--config", "/etc/otelcol-config.yml" ]
+    command: ["--config", "/etc/otelcol-config.yml"]
     network_mode: host
     user: 0:0
     volumes:
@@ -106,18 +128,29 @@ instrument your target applications following the setup instructions:
 - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 
 Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+
+:::{tip}
+:applies_to: stack: preview 9.1+
+Enable central configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [Central configuration for EDOT SDKs](opentelemetry://reference/central-configuration.md).
+:::
 ::::
 
 ::::{step} Install the content packs
 
-Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration and the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
+
+1. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+2. Search for **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)**, open the integration, and select **Install Docker OpenTelemetry Assets**.
+
+If an integration doesn't appear in the search results, turn on **Display beta integrations**.
 
 ::::
 
 
 ::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 ::::
 :::::
