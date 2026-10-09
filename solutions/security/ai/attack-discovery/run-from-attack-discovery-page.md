@@ -16,7 +16,7 @@ This page describes how to run Attack Discovery from the **Attack Discovery** pa
 
 :::{note}
 :applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
-Configure and run Attack Discovery from the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
+By default, the **Attacks** view replaces the Attack Discovery page, so you [configure and run Attack Discovery from the **Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). This page applies if you use the Elastic AI SOC Engine (EASE) tier, where the **Attacks** view is unavailable, or if you've turned off the [`securitySolution:enableAlertsAndAttacksAlignment`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting.
 :::
 
 ## Set up Attack Discovery [set-up-attack-discovery]
