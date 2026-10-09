@@ -12,10 +12,7 @@ description: "Manage action policies: turn them on or off, snooze them so they d
 
 This page covers how to view action policy details in {{alerting-v2-system}}, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
 
-To find your action policies, open the **Action Policies** page:
-
-* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Action Policies**, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Action Policies**.
+To view your action policies, go to **Alerting** → **Action Policies** in the Observability navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## View and edit an action policy
 

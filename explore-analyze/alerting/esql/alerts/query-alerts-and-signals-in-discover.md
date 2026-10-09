@@ -10,10 +10,7 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 # Query alert history in Discover [query-alert-history-discover]
 
-In {{alerting-v2-system}}, the **Alerts** page shows the current state of alerts. To open it:
-
-* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Alerts**, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Alerts**.
+In {{alerting-v2-system}}, the **Alerts** page shows the current state of alerts. To open it, go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 

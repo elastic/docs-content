@@ -17,9 +17,7 @@ Convert an {{esql}} query you've already built in Discover directly into a {{ale
 Two paths lead to Discover-based rule creation:
 
 - **Discover Alerts menu**: When you're in Discover with an active {{esql}} query and {{alerting-v2-system}} is enabled, the Alerts menu includes a **Create ES|QL rule** option. The rule creation flyout opens pre-populated with the current query. This path is only available in ES|QL mode.
-- **Rules page**: When choosing a creation path on the **Rules** page, select the one that opens a flyout embedding a live Discover session, so you can compose and test the query before saving the rule. To open the **Rules** page:
-  * {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Rules**, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-  * {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Rules**.
+- **Rules page**: When choosing a creation path on the **Rules** page, select the one that opens a flyout embedding a live Discover session, so you can compose and test the query before saving the rule. To open the **Rules** page, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## How it works [discover-rule-flow]
 

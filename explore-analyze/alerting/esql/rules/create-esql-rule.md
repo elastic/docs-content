@@ -12,10 +12,7 @@ description: "Write ES|QL detection queries for rules using the rule form or YAM
 
 Creating an {{esql}} rule in {{alerting-v2-system}} lets you write the detection query directly instead of going through the rule builder's structured inputs.
 
-To create a rule, open the **Rules** page:
-
-* {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` In the Observability navigation menu, go to **Alerting** > **Rules**, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-* {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu or global search, then go to **Rules**.
+To create a rule, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 When choosing a creation path, select the one that lets you write {{esql}} directly.
 
