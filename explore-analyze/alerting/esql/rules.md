@@ -17,7 +17,7 @@ In {{alerting-v2-system}}, a rule is where detection starts. It points {{kib}} a
 
 ## Workflows on action policies send notifications [rules-dont-control-notifications]
 
-A rule doesn't send notifications. [Action policies](action-policies/about-action-policies.md) match alerts from any rule and invoke a workflow, which sends the notification. Because routing lives on the policy, you can change it without editing a rule, and several policies can respond to the same alert independently.
+A rule doesn't send notifications. [Action policies](action-policies/about-action-policies.md) match alerts from any rule and invoke a workflow, which sends the notification. You can change how policies route alerts without changing a rule's detection logic, and several policies can respond to the same alert independently.
 
 ## Create, configure, and manage rules [rules-next-steps]
 

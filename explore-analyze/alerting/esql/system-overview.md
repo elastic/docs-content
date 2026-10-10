@@ -26,7 +26,7 @@ You create and configure rules, action policies, and workflows. {{kib}} generate
 - [Rules](rules.md): Define what to watch for in your data and how often to check.
 - [Rule events](rules/rule-event-field-reference.md): Record each match as a document in `.rule-events`.
 - [Alerts](alerts.md): Track one problem from first detection through recovery, so you triage one lifecycle per problem.
-- [Action policies](notifications-actions.md): Decide whether and when to invoke a workflow for an alert. You configure this on the policy, not on the rule, so you can change routing without editing each rule.
+- [Action policies](notifications-actions.md): Decide whether and when to invoke a workflow for an alert. You configure this on the policy, so you can change notifications without changing what each rule detects.
 - [Workflows](workflows-alerting.md): Send the notification or run the automation, for example posting to Slack, sending an email, or calling a webhook.
 
 ## How the pieces fit together [how-pieces-fit-together]
