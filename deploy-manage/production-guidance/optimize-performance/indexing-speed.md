@@ -48,6 +48,8 @@ As a starting point, use these batch sizes based on average document size:
 
 Adjust proportionally for other document sizes. There is no one-size-fits-all setting. Test different batch sizes and thread counts to find the optimal configuration for your workload.
 
+Reindexing also uses bulk requests internally, with a default batch size of 1,000 documents. To tune it, set the `size` field in the `source` object of your [reindex request](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md) so that each batch stays around 4 MB.
+
 ### Use multiple workers/threads to send data to {{es}} [multiple-workers-threads]
 
 A single thread sending bulk requests is unlikely to be able to max out the indexing capacity of an {{es}} cluster. In order to use all resources of the cluster, you should send data from multiple threads or processes. In addition to making better use of the resources of the cluster, this should help reduce the cost of each fsync.
@@ -58,9 +60,14 @@ Make sure to watch for `TOO_MANY_REQUESTS (429)` response codes (`EsRejectedExec
 
 Similarly to sizing bulk requests, only testing can tell what the optimal number of workers is. This can be tested by progressively increasing the number of workers until either I/O or CPU is saturated on the cluster.
 
-:::{note}
-In {{serverless-full}}, avoid starting your client at maximum parallelism. Instead, increase the number of client threads or workers in steps, for example 1, 2, 4, 8, 16, 32, while monitoring throughput and error rates. {{serverless-full}} scales resources automatically in response to demand, and sudden large spikes can cause temporary backpressure or transient errors while scaling catches up. A gradual ramp-up allows the platform to scale more efficiently and can result in faster overall job completion. For large-scale operations, doubling throughput approximately every 30 minutes is a reasonable starting point. Optimal settings vary by workload.
-:::
+### Ramp up concurrency gradually [ramp-up-concurrency]
+```{applies_to}
+serverless: ga
+```
+
+When you run a large indexing or reindexing job, avoid starting your client at maximum parallelism. Instead, increase the number of client threads or workers in steps, for example 1, 2, 4, 8, 16, 32, while monitoring throughput and error rates.
+
+{{serverless-full}} scales resources automatically in response to demand, and sudden large spikes can cause temporary backpressure or transient errors while scaling catches up. A gradual ramp-up allows the platform to scale more efficiently and can result in faster overall job completion. For large-scale operations, doubling throughput approximately every 30 minutes is a reasonable starting point. Optimal settings vary by workload.
 
 ### Use resiliency patterns [use-resiliency-patterns]
 
@@ -95,6 +102,8 @@ PUT /my-index-000001/_settings
 % TEST[setup:my_index]
 
 While refresh is disabled, your newly indexed documents will not be visible to search operations. Only re-enable refreshing after your bulk indexing is complete and you need the data to be searchable.
+
+This also applies when you reindex into a new index, including in {{serverless-full}}. Disable refresh on the destination index before you start, then restore it after the reindex finishes and just before you switch an alias to the new index.
 
 To restore the refresh interval, run the following request with your desired value:
 
