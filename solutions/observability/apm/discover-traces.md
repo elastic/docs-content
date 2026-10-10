@@ -10,7 +10,7 @@ products:
 # Explore traces in Discover [explore-traces-discover]
 
 :::{important}
-This functionality is experimental. It might change or be removed at any time.
+Except for the [investigation flyouts](#investigate-with-flyouts), the functionality described on this page is experimental. It might change or be removed at any time.
 :::
 
 **Discover** offers a dedicated experience for exploring trace data. When **Discover** detects data in `traces-*` indices, it automatically enables features that help you investigate distributed traces more effectively. The traces experience includes a preselected set of trace fields in the data grid, a structured overview of each document's key attributes, latency comparisons for similar spans, and a waterfall visualization of the full trace timeline.
@@ -84,6 +84,31 @@ Select {icon}`expand` in any row to open the document detail panel. The **Overvi
 :alt: The Overview tab in the document detail panel showing span attributes including Trace ID, Service name, Duration as a percentage of trace, and a latency chart in the Similar spans section.
 :screenshot:
 :::
+
+### Investigate a service with flyouts [investigate-with-flyouts]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Investigate a service, transaction, trace, and individual span or error in a series of flyouts without leaving **Discover**. Opening a service flyout requires access to {{product.apm}}.
+
+1. Open a trace document's **Overview** tab and click the **Service name** value (`service.name`). The service flyout opens with the service's key metrics.
+2. In the service flyout's **Overview** tab, click a transaction name in the **Transactions** table. The transaction flyout shows its metrics, latency distribution, and trace samples.
+3. Under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available.
+4. Click a span or transaction in the full trace waterfall to inspect its document. To inspect its errors, click **View error** or **View *n* errors**.
+
+Use **Back** to return to the previous flyout.
+
+Services with unprocessed OpenTelemetry data show key metrics but don't have a **Transactions** table, so the transaction drill-down is unavailable. You can still inspect their spans through the document's [expanded trace timeline](#expanded-trace-timeline).
+
+#### Filters in investigation flyouts [investigation-flyout-filters]
+
+The service flyout opens with the document's environment and the time range selected in **Discover**. It doesn't inherit the Discover query or filter pills.
+
+The transaction flyout follows changes to the service flyout's **Environment**, **Transaction type**, and time range.
+
+If a change excludes the selected transaction, the transaction flyout keeps showing the previous data and displays a warning. Check **Environment**, **Transaction type**, and **Date range** in the transaction summary to see which filters apply. When the transaction matches again, the flyout resumes using the service flyout's filters.
 
 ### Similar spans [similar-spans]
 

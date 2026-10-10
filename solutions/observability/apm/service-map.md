@@ -82,6 +82,18 @@ When you select an instrumented service node (circle shape), a **service flyout*
 :screenshot:
 :::
 
+### Investigate transactions and traces [service-map-investigate-traces]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Click a service node to open its flyout. In the **Overview** tab, click a transaction name in the **Transactions** table to open the transaction details in another flyout.
+
+Under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available. From the full trace, inspect individual spans and errors, then use **Back** to return to the previous flyout without leaving the map.
+
+The transaction flyout follows the service flyout's environment, transaction type, and time range. If the transaction no longer matches those filters, it displays the previous data with a warning. For the full workflow and filter behavior, refer to [Investigate a service with flyouts](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts).
+
 ## Anomaly detection with machine learning [service-map-anomaly-detection]
 
 You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transaction durations within the selected service. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
