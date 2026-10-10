@@ -77,6 +77,8 @@ To act on alerts with **Classic** in the **Source** column, your role needs two 
 - The {{alerting-v2-system}} **Alerts** privilege set to **All**. With **Read**, you can't triage {{alerting-v1-system}} alerts from the **Alerts** page. Refer to [Configure access](../manage/configure-access.md#alerting-triage-privileges).
 - The {{alerting-v1-system}} privileges for the alert's rule type. Refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 
+### How actions affect alerts from {{alerting-v1-system}} [classic-triage-action-results]
+
 You can't unresolve or assign {{alerting-v1-system}} alerts, or open them in Discover. The other actions use the matching {{alerting-v1-system}} feature, so the result differs from the same action on a {{alerting-v2-system}} alert:
 
 | Action | What happens to a {{alerting-v1-system}} alert |
@@ -86,4 +88,6 @@ You can't unresolve or assign {{alerting-v1-system}} alerts, or open them in Dis
 | Resolve | Marks the alert as [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status). Its status changes to **Inactive**, its notifications stop, and its status no longer updates. You can't undo this. |
 | Edit alert tags | Adds or removes tags on this alert only, not on every alert in its series. |
 
-To add a {{alerting-v1-system}} alert from an Observability rule to a case, turn on the **Show V1 Observability alerts table** advanced setting in the space, then add the alert from the **Alerts (V1)** page. You can't add {{alerting-v1-system}} alerts to cases from the **Alerts** page.
+### Add alerts from {{alerting-v1-system}} to a case [classic-alerts-to-cases]
+
+To add a {{alerting-v1-system}} alert from an Observability rule to a case, turn on the [**Show V1 Observability alerts table**](../setup.md#alerting-setup-v1-alerts-page) advanced setting in the space, then add the alert from the **Alerts (V1)** page. You can't add {{alerting-v1-system}} alerts to cases from the **Alerts** page.

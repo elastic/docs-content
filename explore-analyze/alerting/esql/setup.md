@@ -51,11 +51,15 @@ To turn off {{alerting-v2-system}}, go to the **Advanced Settings** page, select
 Turning off the setting does not delete any data. {{kib}} retains your rules and action policies as saved objects, and keeps existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the {{alerting-v2-system}} UI.
 
 :::{important}
-Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running. To stop both:
+Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running.
+:::
+
+### Stop rules and action policies from running [alerting-setup-stop-execution]
+
+How you stop rules and action policies depends on your deployment:
 
 - {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us) to stop them.
 - {applies_to}`stack: experimental 9.5+` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
-:::
 
 ## Try experimental features in a space [alerting-setup-experimental-features]
 
