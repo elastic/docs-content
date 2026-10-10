@@ -958,7 +958,10 @@ redirects:
   'explore-analyze/alerting/experimental-alerting-system/action-policies/about-action-policies.md': 'explore-analyze/alerting/esql/action-policies/about-action-policies.md'
   'explore-analyze/alerting/experimental-alerting-system/action-policies/action-policy-reference.md': 'explore-analyze/alerting/esql/action-policies/action-policy-reference.md'
   'explore-analyze/alerting/experimental-alerting-system/action-policies/common-action-policy-scenarios.md': 'explore-analyze/alerting/esql/action-policies/common-action-policy-scenarios.md'
-  'explore-analyze/alerting/experimental-alerting-system/action-policies/create-configure-action-policy.md': 'explore-analyze/alerting/esql/action-policies/create-configure-action-policy.md'
+  'explore-analyze/alerting/experimental-alerting-system/action-policies/create-configure-action-policy.md':
+    to: 'explore-analyze/alerting/esql/action-policies/create-configure-action-policy.md'
+    anchors:
+      'filter-by-rule-tags': 'routing-tags'
   'explore-analyze/alerting/experimental-alerting-system/action-policies/manage-action-policies.md': 'explore-analyze/alerting/esql/action-policies/manage-action-policies.md'
   'explore-analyze/alerting/experimental-alerting-system/action-policies/re-notification.md': 'explore-analyze/alerting/esql/action-policies/re-notification.md'
   'explore-analyze/alerting/experimental-alerting-system/action-policies/reduce-notification-noise.md': 'explore-analyze/alerting/esql/action-policies/reduce-notification-noise.md'

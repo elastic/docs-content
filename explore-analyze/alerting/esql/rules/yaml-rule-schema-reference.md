@@ -45,13 +45,14 @@ Use `standalone` when conditions need full independence. Each query can target d
 
 ## Metadata fields
 
-These optional fields add descriptive information to a rule for identification, ownership, and filtering. None affect rule evaluation behavior.
+These optional fields add descriptive information to a rule for identification, ownership, and filtering, and link the rule to action policies. None affect rule evaluation behavior.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `metadata.description` | string | Any string | Optional description of what the rule monitors. Max 1,024 characters. |
 | `metadata.owner` | string | Any string | Team or person responsible for the rule. Max 256 characters. |
 | `metadata.tags` | array of strings | Array of strings | Labels for filtering and organization. Max 20 tags, each max 128 characters. |
+| `metadata.routing_tags` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | array of strings | Array of strings | Tags that link the rule's alerts to action policies. An action policy applies when it has at least one of these tags. Only valid when `kind: alert`. Max 20 tags, each max 128 characters. To learn more, refer to [Add routing tags to a rule](../action-policies/create-configure-action-policy.md#add-routing-tags). |
 
 ## Schedule fields
 

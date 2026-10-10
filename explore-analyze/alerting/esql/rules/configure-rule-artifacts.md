@@ -15,9 +15,9 @@ Tags, runbooks, and related dashboards are optional artifacts you attach to a {{
 ## When to add artifacts [artifacts-when-to-use]
 
 Tags
-:   Free-form labels for filtering and organization. Add them to filter alerts on the **Alerts** page, to scope action policies by ownership or category, or to mark which team owns a rule.
+:   Free-form labels for filtering and organization. Add them to filter alerts on the **Alerts** page or to mark which team owns a rule.
 
-    * {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` An action policy's [**Rule tags**](../action-policies/create-configure-action-policy.md#filter-by-rule-tags) control covers every rule that carries at least one of the tags you select.
+    * {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Tags don't affect which action policies apply. To link a rule to action policies, add [routing tags](../action-policies/create-configure-action-policy.md#add-routing-tags) in the **Actions** step instead.
     * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` Alerts inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
 
 Runbooks
