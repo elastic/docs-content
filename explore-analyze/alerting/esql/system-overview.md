@@ -11,9 +11,9 @@ description: Kibana Universal Alerting writes each match as a rule event, then e
 
 # Overview [system-overview]
 
-{{alerting-v2-system-cap}} runs rules against your {{es}} data on a schedule and writes each match as a rule event. Depending on the rule's configuration, {{kib}} either groups those events into an alert that can notify you through a workflow, or keeps them available for later analysis.
+Use {{alerting-v2-system}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
 
-This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](get-started/how-it-works.md).
+This page introduces the five building blocks of the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](get-started/how-it-works.md).
 
 :::{note}
 Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md). Both systems use the term **alert**, but they create and track alerts differently, so the APIs and instructions for one system don't apply to the other.
@@ -27,7 +27,7 @@ Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} ove
 
 ## The building blocks
 
-You create and configure three of the five building blocks: rules, action policies, and workflows. {{kib}} generates the other two, rule events and alerts, from your rules' matches.
+You create and configure rules, action policies, and workflows. {{kib}} generates the other two building blocks, rule events and alerts, from your rules' matches.
 
 ### Rules
 

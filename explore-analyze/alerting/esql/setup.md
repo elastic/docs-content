@@ -11,7 +11,7 @@ description: "License, connector, data, and space requirements, plus how to turn
 
 # Set up [setup]
 
-This page lists the requirements and shows you how to turn {{alerting-v2-system}} on and off.
+Check the requirements for {{alerting-v2-system}}, turn it on or off for all spaces, and turn on optional features in the spaces where you want them.
 
 ## Before you use the system [alerting-setup-requirements]
 
@@ -90,9 +90,9 @@ serverless:
 stack: experimental 9.6+
 ```
 
-To keep using the Observability alerts page that lists only alerts from {{alerting-v1-system}} rules, turn on the **Show V1 Observability alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`). The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results. The setting is off by default and applies only to the space where you turn it on.
+When {{alerting-v2-system}} is on, an **Alerting** menu replaces the Observability **Alerts** link. Its **Alerts** page lists alerts from both systems, even if you keep the old page.
 
-When {{alerting-v2-system}} is on, an **Alerting** menu replaces the Observability **Alerts** link. Its **Alerts** page lists alerts from both systems, with or without this setting.
+To keep using the Observability alerts page that lists only alerts from {{alerting-v1-system}} rules, turn on the **Show V1 Observability alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`). The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results. The setting is off by default and applies only to the space where you turn it on.
 
 To show the **Alerts (V1)** page:
 

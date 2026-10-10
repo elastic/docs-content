@@ -17,11 +17,11 @@ products:
 
 Event-driven triggers let workflows react to events elsewhere in {{kib}}. The following trigger families are available:
 
-- **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
-- **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
-- **Entity store triggers** — Fire when an entity's asset criticality or risk score changes in the entity store. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
-- **Alert lifecycle triggers** — Fire when a user takes a triage action on an alert in {{alerting-v2-system}}, such as resolving, assigning, acknowledging, or snoozing it. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
-- **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: ga`
+- **`workflows.failed`**: Fires when another workflow's execution fails. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4`
+- **Cases triggers**: Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+`
+- **Entity store triggers**: Fire when an entity's asset criticality or risk score changes in the entity store. {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+`
+- **Alert lifecycle triggers**: Fire when a user takes a triage action on an alert in {{alerting-v2-system}}, such as resolving, assigning, acknowledging, or snoozing it. {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.5+`
+- **{{alerting-v2-system-cap}} rule lifecycle triggers**: Fire when rules are created, updated, deleted, enabled, or disabled in {{alerting-v2-system}}. {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.5+`
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -453,8 +453,8 @@ triggers:
 ## Alert lifecycle triggers in {{alerting-v2-system}} [alert-episode-lifecycle-triggers-event-driven]
 
 ```{applies_to}
-stack: experimental 9.5+
 serverless: ga
+stack: experimental 9.5+
 ```
 
 :::{note}
@@ -507,8 +507,8 @@ Use these fields to write workflow conditions that scope the automation to speci
 ## {{alerting-v2-system-cap}} rule lifecycle triggers [alerting-rule-lifecycle-triggers-event-driven]
 
 ```{applies_to}
-stack: experimental 9.5+
 serverless: ga
+stack: experimental 9.5+
 ```
 
 :::{note}
@@ -661,4 +661,4 @@ To reuse the data from an earlier run instead of a fresh event, select **Histori
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): See what triggered each run and inspect the event payload.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
-- [Connect workflows to {{alerting-v2-system}}](../../alerting/esql/workflows-alerting.md): Full reference for alert lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.
+- [Connect workflows to {{alerting-v2-system}}](../../alerting/esql/workflows-alerting.md): Learn how action policies invoke workflows for alerts, and when to use lifecycle triggers instead.

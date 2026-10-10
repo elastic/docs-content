@@ -10,9 +10,9 @@ description: "Take triage actions on alerts. Acknowledge, snooze, resolve, reope
 
 # Triage alerts [triage-alert-episodes]
 
-To open the **Alerts** page in {{alerting-v2-system}}, go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Use the **Alerts** page in {{alerting-v2-system}} to triage alerts individually or in bulk. You can mark alerts as seen, silence their notifications, close or reopen them, and tag or assign them. To open the page, go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From the **Alerts** page, you can take triage actions on alerts individually or in bulk. For deeper investigation of a specific alert, refer to [Investigate alerts](investigate-alert-episodes.md).
+For deeper investigation of a specific alert, refer to [Investigate alerts](investigate-alert-episodes.md).
 
 ## What you can do by alert source [triage-actions-by-source]
 ```{applies_to}
@@ -27,10 +27,10 @@ The **Alerts** page lists [alerts from both alerting systems](view-and-manage-al
 | Acknowledge, Unacknowledge | ✓ | ✓ |
 | Snooze, Unsnooze | ✓ | ✓ |
 | Resolve | ✓ | ✓ |
-| Unresolve | ✓ | — |
+| Unresolve | ✓ | ✗ |
 | Edit alert tags | ✓ | ✓ |
-| Edit assignee | ✓ | — |
-| Open in Discover | ✓ | — |
+| Edit assignee | ✓ | ✗ |
+| Open in Discover | ✓ | ✗ |
 
 On a {{alerting-v1-system}} alert, some actions have different results, and your role needs extra privileges. Refer to [Triage alerts from {{alerting-v1-system}}](#triage-classic-alerts).
 
@@ -94,7 +94,7 @@ stack: experimental 9.6+
 
 To act on {{alerting-v1-system}} alerts from the **Alerts** page, your role needs two sets of privileges:
 
-- The {{alerting-v2-system}} **Alerts** privilege set to **All**. With **Read**, you can't triage {{alerting-v1-system}} alerts from this page. Refer to [Configure access](../manage/configure-access.md#alerting-triage-privileges).
+- The {{alerting-v2-system}} **Alerts** privilege set to **All**. With **Read**, you can't triage {{alerting-v1-system}} alerts from the **Alerts** page. Refer to [Configure access](../manage/configure-access.md#alerting-triage-privileges).
 - The {{alerting-v1-system}} privileges for the alert's rule type. Refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 
 Each action on a {{alerting-v1-system}} alert uses the matching {{alerting-v1-system}} feature, so the result differs from the same action on a {{alerting-v2-system}} alert:
@@ -102,7 +102,7 @@ Each action on a {{alerting-v1-system}} alert uses the matching {{alerting-v1-sy
 | Action | What happens to a {{alerting-v1-system}} alert |
 |---|---|
 | Acknowledge, Unacknowledge | Adds or removes the [acknowledged](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) marker. The alert keeps sending notifications. Acknowledging a {{alerting-v2-system}} alert [stops its notifications](../action-policies/reduce-notification-noise.md#silencing-mechanisms). |
-| Snooze, Unsnooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) or unsnoozes this alert only. Other alerts from the same rule keep sending notifications. A snooze lasts until the time you set. If you select **Indefinitely**, the snooze lasts until you unsnooze the alert. This page doesn't offer **Condition based** snooze, which the {{alerting-v1-system}} alerts pages do. |
+| Snooze, Unsnooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) or unsnoozes this alert only. Other alerts from the same rule keep sending notifications. A snooze lasts until the time you set. If you select **Indefinitely**, the snooze lasts until you unsnooze the alert. For **Condition based** snooze, use the {{alerting-v1-system}} alerts pages. |
 | Resolve | Marks the alert as [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status). Its status changes to **Inactive**, its notifications stop, and its status no longer updates. You can't undo this. |
 | Edit alert tags | Adds or removes tags on this alert only, not on every alert in its series. |
 

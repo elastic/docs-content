@@ -10,7 +10,7 @@ description: "Query alerting data in Discover with .rule-events and .alert-actio
 
 # Rule event and alert action field reference [field-reference]
 
-This page documents the fields that {{alerting-v2-system}} writes to the two data streams that back rule output and triage data:
+{{alerting-v2-system-cap}} writes rule output and triage data to two data streams:
 
 - **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). Events with `type: signal` and events that belong to an alert (`type: alert`) share this stream and most fields. The `episode.*` fields appear only on events with `type: alert`.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an alert, including all `action_type` values.
@@ -36,9 +36,9 @@ The **`signal`** and **`alert`** columns show which `type` values include the fi
 | `data` | flattened | ✅ | ✅ | Rule-defined payload from the source query. |
 | `source` | keyword | ✅ | ✅ | Source that produced the event. |
 | `space_id` | keyword | ✅ | ✅ | {{kib}} space where the rule lives. |
-| `episode.id` | keyword | — | ✅ | ID of the alert this event belongs to. Events that share this value are the same alert. |
-| `episode.status` | keyword | — | ✅ | Lifecycle state of the alert at this evaluation. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
-| `episode.status_count` | long | — | ✅ | Count of consecutive evaluations in the current `episode.status`. Set only for `pending` or `recovering`. |
+| `episode.id` | keyword | ❌ | ✅ | ID of the alert this event belongs to. Events that share this value are the same alert. |
+| `episode.status` | keyword | ❌ | ✅ | Lifecycle state of the alert at this evaluation. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
+| `episode.status_count` | long | ❌ | ✅ | Count of consecutive evaluations in the current `episode.status`. Set only for `pending` or `recovering`. |
 
 ## `.alert-actions` field schema [alert-actions-field-schema]
 
