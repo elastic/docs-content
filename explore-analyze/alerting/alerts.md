@@ -19,8 +19,8 @@ description: "Kibana Classic Alerting uses rules to check your data on a schedul
 
 :::{note}
 :applies_to: {"serverless": "ga", "stack": "experimental 9.5+"}
-Looking for {{alerting-v2-system}}? It writes each match as a [rule event](esql/rules/rule-event-field-reference.md), then groups those events into [alerts](esql/alerts.md) or leaves them available for [later analysis](esql/alerts/query-signals.md). Start with the [{{alerting-v2-system-cap}} overview](esql/system-overview.md). Both systems use the term **alert**, but they create and track alerts differently, so the APIs and instructions for one system don't apply to the other.
-::::
+Looking for {{alerting-v2-system}}? Start with the [{{alerting-v2-system-cap}} overview](esql/system-overview.md). Both systems use the term **alert**, but they create and track alerts differently, so the APIs and instructions for one system don't apply to the other.
+:::
 
 ## {{rules-ui}} [rules]
 

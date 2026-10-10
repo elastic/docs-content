@@ -10,7 +10,7 @@ description: "How to configure action policies so a workflow re-notifies when an
 
 # Re-notify for persistently active alerts [re-notification]
 
-Use this page to configure a {{alerting-v2-system}} action policy so a workflow keeps running while an alert stays active without a status change.
+Configure a {{alerting-v2-system}} action policy so a workflow keeps running while an alert stays active without a status change.
 
 The `On status change` frequency option invokes a workflow once for each status transition, for example when an alert activates or resolves. This is efficient for reducing noise from rules in {{alerting-v2-system}}, but a persistently active alert that only changes in severity doesn't cause another invocation.
 

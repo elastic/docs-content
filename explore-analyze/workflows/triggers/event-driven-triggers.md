@@ -461,7 +461,9 @@ stack: experimental 9.5+
 These triggers are available only when {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
 :::
 
-Alert lifecycle triggers fire on specific alert events in {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per event. There is no polling interval or frequency gate.
+Alert lifecycle triggers run a workflow when a user acts on an alert in {{alerting-v2-system}}, either in the UI or through the API. They don't fire when an alert becomes active or recovers based on rule evaluations. To run a workflow when an alert's status changes automatically, use an action policy instead. For a comparison, refer to [When to use action policies or lifecycle triggers](../../alerting/esql/workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
+
+Each trigger fires exactly once per event. To subscribe a workflow, add the trigger ID to its `triggers` block, as with other event-driven triggers.
 
 ### Available triggers [alert-episode-lifecycle-triggers-available]
 
@@ -478,8 +480,6 @@ The trigger IDs changed after {{stack}} 9.5. If you upgrade, update workflows th
 | `alerting.actions.alertAssigned` | `alerting.episodeAssigned` | An alert is assigned to a user. |
 | `alerting.actions.alertUnassigned` | `alerting.episodeUnassigned` | An alert assignment is removed. |
 | `alerting.actions.alertTagged` | `alerting.episodeTagged` | A tag is applied to an alert. |
-
-These triggers fire only when a user takes the action, either in the UI or through the API. They don't fire when an alert becomes active or recovers based on rule evaluations. To run a workflow when an alert's status changes automatically, use an action policy instead. For a comparison, refer to [When to use action policies or lifecycle triggers](../../alerting/esql/workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
 
 ### Event payload [alert-episode-lifecycle-triggers-event]
 

@@ -10,8 +10,8 @@ description: "Common action policy scenarios, including routing by severity, man
 
 # Examples and common scenarios for action policies [common-action-policy-scenarios]
 
-This page covers common situations you encounter when setting up action policies in {{alerting-v2-system}} and explains how to configure them to get the behavior you expect.
+Configure action policies in {{alerting-v2-system}} for these common situations:
 
-- [Route alerts by severity](route-by-severity.md) describes how to direct critical and non-critical alerts to different workflows based on severity level.
-- [Manage severity escalation notifications](severity-escalation.md) explains how action policies match and re-match alerts as severity shifts, and how to control which notifications fire.
-- [Re-notify for persistently active alerts](re-notification.md) covers how to configure action policies so a workflow sends follow-up notifications when an alert stays active without a status change.
+- [Route alerts by severity](route-by-severity.md): Send critical and non-critical alerts to different workflows.
+- [Manage severity escalation notifications](severity-escalation.md): Control which notifications fire as an alert's severity changes.
+- [Re-notify for persistently active alerts](re-notification.md): Send follow-up notifications while an alert stays active without a status change.

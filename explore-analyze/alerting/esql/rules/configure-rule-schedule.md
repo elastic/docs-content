@@ -10,7 +10,7 @@ description: "How the execution interval and lookback window control when a rule
 
 # Schedule and lookback [schedule-lookback]
 
-Schedule is a required setting for {{alerting-v2-system}} rules, and lookback is optional but strongly recommended. Together they control how often a rule runs and how far back it looks when evaluating data. This page describes both fields, lists the accepted values and bounds, and includes guidance on choosing appropriate values for different monitoring scenarios.
+Schedule is a required setting for {{alerting-v2-system}} rules, and lookback is optional but strongly recommended. Together they control how often a rule runs and how far back it looks when evaluating data.
 
 Both fields accept duration strings such as `30s`, `5m`, `2h`, or `7d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 

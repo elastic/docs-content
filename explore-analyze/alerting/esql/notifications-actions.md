@@ -10,11 +10,9 @@ description: "How to set up notifications and actions for rules. Action policies
 
 # Notifications and actions [notifications-actions]
 
-Use this page to set up notifications and actions for alerts in {{alerting-v2-system}}. Build a workflow that sends a notification or runs automation, then create an action policy that invokes it. Rule events that aren't part of an alert (`type: signal`) stay in `.rule-events`. Both action policies and lifecycle triggers require an alert. For how those connections work at runtime, refer to [Connect workflows](workflows-alerting.md).
+To notify people or run automation for an alert in {{alerting-v2-system}}, build a workflow and create an action policy that invokes it. Action policies act only on alerts, so the rule's [mode](rules/configure-rule-mode.md) must be **Detect and respond** or **Alert** (depending on your {{stack}} version).
 
-:::{note}
-To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
-:::
+Before you start, check the [notification requirements](setup.md#alerting-setup-requirements) and make sure your role has [access to workflows](manage/configure-access.md#alerting-workflows-access).
 
 ## Send notifications or trigger an action
 
@@ -24,11 +22,9 @@ To send a notification or trigger an action from a rule in {{alerting-v2-system}
 
 2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alerts to that workflow. The action policy controls which alerts qualify, how they batch, and how often it invokes the workflow.
 
-   For actions that fire exactly once in response to a specific alert event (such as opening a ticket when an alert is assigned) use an [alert lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of action policies and lifecycle triggers.
+   To run a workflow when a user acts on an alert, such as opening a ticket when someone assigns it, use an [alert lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead. For a comparison, refer to [Connect workflows](workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
 
 ## What to do next with action policies [notifications-actions-next-steps]
-
-From here, you can learn how action policies work and start creating your own.
 
 - [About action policies](action-policies/about-action-policies.md): Understand how action policies evaluate and gate alerts.
 - [Create an action policy](action-policies/create-configure-action-policy.md): Configure match conditions, grouping, frequency, and destinations.

@@ -10,9 +10,7 @@ description: "Silence alert notifications by acknowledging, snoozing, or resolvi
 
 # Reduce notification noise [reduce-notification-noise]
 
-{{alerting-v2-system-cap}} has several mechanisms that can silence notifications for an alert. When an alert is silenced, the dispatcher stops processing it before it evaluates any action policy against it.
-
-This page covers when to use each silencing mechanism and how the scope of an alert snooze differs from the scope of an action policy snooze. For an overview of where this fits in the full dispatch cycle, refer to [About action policies](about-action-policies.md).
+{{alerting-v2-system-cap}} has several mechanisms that can silence notifications for an alert. When an alert is silenced, the dispatcher stops processing it before it evaluates any action policy against it. For where this fits in the full dispatch cycle, refer to [About action policies](about-action-policies.md).
 
 ## Silencing mechanisms [silencing-mechanisms]
 

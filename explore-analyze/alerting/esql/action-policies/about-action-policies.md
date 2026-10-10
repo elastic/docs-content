@@ -15,8 +15,6 @@ description: "Action policies decide whether and when an alert invokes a workflo
 
 In {{alerting-v2-system}}, an action policy is the gating layer between an alert and a workflow. It decides whether and when to invoke a workflow by running the alert through a sequence of gates, and a workflow runs only once the alert clears every gate.
 
-This page explains how rules and action policies work together, the gates an alert must pass, and how the dispatcher evaluates them.
-
 ## How rules and action policies work together [rules-and-action-policies]
 
 A rule detects a condition and opens alerts. The rule doesn't automatically reference an action policy, and an action policy doesn't instantly link to a rule. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert, and invokes a workflow for the ones that pass every gate.

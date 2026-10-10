@@ -10,7 +10,7 @@ description: "How to manage notifications when alert severity changes, including
 
 # Manage severity escalation notifications [severity-escalation]
 
-Use this page to control when {{alerting-v2-system}} runs a workflow as an alert's severity changes, including first-time matches, duplicate invocations, and de-escalation. Not every severity change invokes a workflow. The outcome depends on whether the action policy has already matched the alert and which frequency option you've selected.
+Not every severity change in {{alerting-v2-system}} invokes a workflow. The outcome depends on whether the action policy has already matched the alert and which frequency option you've selected. You can control what happens on first-time matches, duplicate invocations, and de-escalation.
 
 ## Notify when an alert escalates into a new severity threshold
 
