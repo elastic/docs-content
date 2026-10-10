@@ -60,11 +60,13 @@ Skip the alert condition when:
 
 ## Use dynamic values in your rule query [dynamic-query-values]
 
-{{esql}} rule queries support two kinds of parameters that make queries more dynamic. The executor injects time bounds automatically, and you define form variables when creating a rule. You don't need either to write a working rule, but they're useful for scoping queries precisely to the evaluation window or making thresholds configurable without editing the query.
+{{esql}} rule queries support two kinds of parameters that make queries more dynamic. The executor injects time bounds automatically, and you define form variables when creating a rule. You don't need either to write a working rule, but they're useful for referencing the evaluation window in a query or making thresholds configurable without editing the query.
 
 ### Filter your query to the evaluation window (`?_tstart` and `?_tend`) [time-bound-parameters]
 
-`?_tstart` and `?_tend` are reserved parameter names that the rule executor binds automatically on every evaluation. They hold the start and end timestamps of the lookback window, so you can scope a query to exactly the period the rule is evaluating.
+`?_tstart` and `?_tend` are reserved parameter names that the rule executor binds automatically on every evaluation. They hold the start and end timestamps of the lookback window.
+
+The rule already limits its queries to the lookback window on the rule's time field (`@timestamp` by default), so you only need these parameters when the query uses the window's start or end directly.
 
 ```esql
 FROM logs-*
@@ -92,8 +94,6 @@ FROM logs-*
 | WHERE error_count > 0
 | KEEP service.name, error_count
 ```
-
-If you omit the time filter, the query scans the full index on every evaluation, which increases query cost and can return stale matches from earlier runs.
 
 ### Using a form variable for a configurable threshold
 

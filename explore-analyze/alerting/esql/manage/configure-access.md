@@ -29,6 +29,7 @@ The following table shows the minimum privileges for each activity. Higher privi
 | Monitor rule execution | **Execution history: Read** (under **Alerting V2**) |
 | Triage alerts | **Alerts: All** (under **Alerting V2**) |
 | Configure notifications | **Action Policies: All** (under **Alerting V2**) + **Workflows: Read** (under **Analytics** → **Workflows**) |
+| Create rules and action policies with {{agent-builder}} {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
@@ -57,14 +58,26 @@ The **Execution history** privilege controls who can view rule execution history
 
 The **Alerts** privilege controls who can take triage actions on alerts.
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` To triage {{alerting-v1-system}} alerts from the **Alerts** page, a role needs **All** and the {{alerting-v1-system}} privileges for each alert's rule type. Refer to [Triage alerts from {{alerting-v1-system}}](../alerts/triage-alert-episodes.md#triage-classic-alerts).
-
 | Level | What you can do |
 |---|---|
 | **All** | Acknowledge, unacknowledge, snooze, unsnooze, resolve, unresolve, tag, and assign alerts |
 | **Read** | View alerts |
 
 Both levels also grant read access to the alert data streams. Refer to [{{es}} index access](#alerting-index-access).
+
+### Alerts from {{alerting-v1-system}} [alerting-classic-alert-privileges]
+
+```{applies_to}
+serverless: ga
+stack: experimental 9.6+
+```
+
+The **Alerts** page also lists {{alerting-v1-system}} alerts. Your role's {{alerting-v1-system}} privileges for each alert's rule type decide which of these alerts you can see and act on:
+
+- **To view an alert**: Your role must be able to view alerts from the alert's rule type in {{alerting-v1-system}}.
+- **To triage an alert**: Your role needs **Alerts: All** and the {{alerting-v1-system}} privileges for the alert's rule type. With **Alerts: Read**, you can't triage {{alerting-v1-system}} alerts from the **Alerts** page.
+
+For the {{alerting-v1-system}} privileges, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules). To learn how each triage action affects these alerts, refer to [Triage alerts from {{alerting-v1-system}}](../alerts/triage-alert-episodes.md#triage-classic-alerts).
 
 ## Configure notifications [alerting-notifications-privileges]
 
@@ -91,6 +104,22 @@ Action policies invoke workflows, which send notifications. The **Workflows** pr
 |---|---|
 | **All** | Create and edit workflows; view and select existing workflows in action policies |
 | **Read** | View and select existing workflows in action policies |
+
+## Create rules and action policies with {{agent-builder}} [alerting-agent-builder-privileges]
+
+```{applies_to}
+serverless: experimental
+stack: experimental 9.5+
+```
+
+To create rules and action policies with [{{agent-builder}}](../rules/create-rules-action-policies-agent-builder.md), your role needs these privileges:
+
+| To... | Minimum required |
+|---|---|
+| Access and use {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) |
+| Save the rule | **Rules: All** (under **Alerting V2**) |
+| Save the action policy | **Action Policies: All** (under **Alerting V2**) |
+| Select or create the workflow destination | **Workflows: Read** to select an existing workflow, or **Workflows: All** to create one (under **Analytics** → **Workflows**) |
 
 ## Query rule output and alert data [alerting-data-investigation-privileges]
 

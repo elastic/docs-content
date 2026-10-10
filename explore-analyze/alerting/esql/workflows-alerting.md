@@ -22,9 +22,14 @@ In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens i
 
 ### Alert lifecycle triggers [alert-episode-lifecycle-triggers]
 
+```{applies_to}
+serverless: preview
+stack: experimental 9.5+
+```
+
 Lifecycle triggers are [event-driven triggers](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a user [resolves, assigns, acknowledges, or snoozes](alerts/triage-alert-episodes.md) an alert, with no scheduling or gating. Each action emits a named trigger event, such as `alerting.actions.alertAssigned`.
 
-Lifecycle triggers don't fire on [automatic status changes](alerts.md#alert-episode-lifecycle), such as when an alert becomes active or recovers based on rule evaluations. To respond to those changes, use an action policy. For the full list of trigger IDs, including the earlier IDs used in {{stack}} 9.5, refer to [Alert lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-available).
+Lifecycle triggers don't fire on [automatic status changes](alerts.md#alert-episode-lifecycle), such as when an alert becomes active or recovers based on rule evaluations. To respond to those changes, use an action policy. For the full list of trigger IDs, refer to [Alert lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-available).
 
 ### When to use action policies or lifecycle triggers [when-to-use-action-policies-lifecycle-triggers]
 

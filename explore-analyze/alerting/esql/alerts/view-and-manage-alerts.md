@@ -5,7 +5,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "Monitor alerts, including alerts from Kibana Classic Alerting rules, with KPI panels, a histogram, and filters. Triage and investigate alerts from the same page."
+description: "Monitor alerts with KPI panels, a histogram, and filters. Triage and investigate alerts from the same page."
 ---
 
 # View and manage alerts [view-manage-alerts]
@@ -56,7 +56,7 @@ To tell alerts from the two systems apart, check the **Source** column: **Univer
 
 ### Which alerts from {{alerting-v1-system}} appear [classic-alerts-included]
 
-You see a {{alerting-v1-system}} alert only if your role can view alerts from its rule type. For the privileges, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+You see a {{alerting-v1-system}} alert only if your role can view alerts from its rule type. For the privileges, refer to [Configure access](../manage/configure-access.md#alerting-classic-alert-privileges).
 
 The table includes {{alerting-v1-system}} alerts from these rule types:
 

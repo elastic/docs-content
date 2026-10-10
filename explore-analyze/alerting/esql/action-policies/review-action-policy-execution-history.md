@@ -48,7 +48,7 @@ After each dispatcher run, {{kib}} records one of three outcomes for each action
 `unmatched` is recorded in the event log but isn't available as an outcome filter in the execution history. To find those records, open Discover and query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
 
 :::{note}
-Alerts that are acknowledged, snoozed, marked inactive, or covered by a [maintenance window](../../alerts/maintenance-windows.md) are excluded before the dispatcher runs and don't appear in the execution history.
+Alerts that are acknowledged, snoozed, resolved, or covered by a [maintenance window](../../alerts/maintenance-windows.md) fail the eligibility check, so the dispatcher doesn't evaluate action policies for them. They don't appear in the execution history.
 :::
 
 ## Event-log outcomes and .alert-actions action types [outcome-vocab-mapping]
@@ -57,14 +57,14 @@ The `dispatched`, `throttled`, and `unmatched` outcomes are the **event-log term
 
 | Event-log outcome (`event.action`) | `.alert-actions` `action_type` | Meaning |
 |---|---|---|
-| `dispatched` | `notified` | Policy matched, frequency cleared, workflow invoked. |
+| `dispatched` | `fire` and `notified` | Policy matched, frequency cleared, workflow invoked. `fire` records each dispatched alert, and `notified` records each workflow invocation. |
 | `throttled` | `suppress` | Policy matched but frequency limit not yet cleared. No workflow invoked. |
 | `unmatched` | `unmatched` | No action policy matched the alert. No workflow invoked. |
 
-`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`) and the `fire` action type, which marks that an alert opened or continued. These have no event-log counterpart in this context, because they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
+`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`). These have no event-log counterpart, because they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
 
 :::{note}
-`suppress` in `.alert-actions` means the same thing as `throttled` in the event log: the action policy matched but the frequency setting hadn't cleared yet, so no notification was sent. It's unrelated to the eligibility gate that excludes acknowledged, snoozed, resolved, or maintenance-window alerts before the dispatcher runs.
+`suppress` in `.alert-actions` covers more than `throttled` does in the event log. The dispatcher also writes `suppress` for alerts that fail the eligibility check, and those alerts don't appear in the event log. To tell the cases apart, check the `reason` field: `suppressed by throttled policy <policy ID>` for throttling, or `ack`, `snooze`, `deactivate`, or `maintenance_window:<window ID>` for eligibility.
 :::
 
 ## Related pages

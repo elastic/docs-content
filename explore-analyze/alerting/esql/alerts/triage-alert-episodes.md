@@ -55,7 +55,7 @@ Add context to an alert for filtering, routing, or ownership.
 
 | Action | Description | Scope |
 |---|---|---|
-| Edit alert tags or Edit Tags (depending on your {{stack}} version) | Adds or removes tags on the alert. | Series |
+| Edit alert tags or Edit Tags (depending on your {{stack}} version) | Adds or removes tags on the alert. | {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alert<br>{applies_to}`stack: experimental =9.5` Series |
 | Edit assignee | Assigns the alert to a specific user, so others know who owns the investigation. | Alert |
 
 ## Investigate the underlying data [investigate-underlying-data]
@@ -72,21 +72,18 @@ serverless: ga
 stack: experimental 9.6+
 ```
 
-To act on alerts with **Classic** in the **Source** column, your role needs two sets of privileges:
-
-- The {{alerting-v2-system}} **Alerts** privilege set to **All**. With **Read**, you can't triage {{alerting-v1-system}} alerts from the **Alerts** page. Refer to [Configure access](../manage/configure-access.md#alerting-triage-privileges).
-- The {{alerting-v1-system}} privileges for the alert's rule type. Refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
+To act on alerts with **Classic** in the **Source** column, your role needs [privileges in both alerting systems](../manage/configure-access.md#alerting-classic-alert-privileges).
 
 ### How actions affect alerts from {{alerting-v1-system}} [classic-triage-action-results]
 
-You can't unresolve or assign {{alerting-v1-system}} alerts, or open them in Discover. The other actions use the matching {{alerting-v1-system}} feature, so the result differs from the same action on a {{alerting-v2-system}} alert:
+You can't unresolve or assign {{alerting-v1-system}} alerts, or open them in Discover. The other actions use the matching {{alerting-v1-system}} feature, so some results differ from the same action on a {{alerting-v2-system}} alert:
 
 | Action | What happens to a {{alerting-v1-system}} alert |
 |---|---|
 | Acknowledge, Unacknowledge | Adds or removes the [acknowledged](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) marker. Unlike a {{alerting-v2-system}} alert, the alert keeps sending notifications. |
 | Snooze, Unsnooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) or unsnoozes this alert only. Other alerts from the same rule keep sending notifications. A snooze lasts until the time you set. If you select **Indefinitely**, the snooze lasts until you unsnooze the alert. For **Condition based** snooze, use the {{alerting-v1-system}} alerts pages. |
 | Resolve | Marks the alert as [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status). Its status changes to **Inactive**, its notifications stop, and its status no longer updates. You can't undo this. |
-| Edit alert tags | Adds or removes tags on this alert only, not on every alert in its series. |
+| Edit alert tags | Adds or removes tags on the alert. |
 
 ### Add alerts from {{alerting-v1-system}} to a case [classic-alerts-to-cases]
 

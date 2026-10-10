@@ -31,6 +31,12 @@ The setting's default depends on your version:
 - {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` The setting is on by default, so you can use {{alerting-v2-system}} without extra setup. If you turned the setting off, it stays off, even after an upgrade.
 - {applies_to}`stack: experimental =9.5` The setting is off by default.
 
+<!-- TODO: Verify with eng before publishing. kibana#294597 renamed the label of the
+     alerting:v2:enabled setting on the Advanced Settings page from "Alerting V2" to
+     "Universal Alerting" on serverless and 9.6+. Stack 9.5 still shows "Alerting V2".
+     If confirmed, change step 2 below and the "Turn off the system" section to
+     "**Universal Alerting** or **Alerting V2** (depending on your Stack version)". -->
+
 To turn on the setting:
 
 1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -45,6 +51,10 @@ If {{alerting-v2-system}} doesn't appear in the navigation menu or global search
 :::
 
 ## Turn off the system [alerting-setup-turn-off]
+
+<!-- TODO: Verify with eng before publishing. Same setting label question as in
+     "Turn on the system": "Universal Alerting" on serverless and 9.6+ (kibana#294597)
+     versus "Alerting V2" on 9.5. -->
 
 To turn off {{alerting-v2-system}}, go to the **Advanced Settings** page, select the **Global Settings** tab, and turn off **Alerting V2**.
 
