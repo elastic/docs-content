@@ -25,7 +25,7 @@ Use the following table to choose a solution or project type when you need solut
 
 | Your use case | What to use | Description |
 | --- | --- | --- |
-| Building search-powered applications | 1. [Elasticsearch solution](/solutions/elasticsearch-solution-project.md)<br><br> 2. [{{es}} {{vectordb}}](/solutions/vector-database.md) {applies_to}`stack: unavailable` | 1. Additional UI tools that complement the core search features<br><br>2. Dedicated {{serverless-full}} project type for AI-powered retrieval (RAG, recommendations, semantic and hybrid search) with vector-tuned defaults |
+| Building search-powered applications | 1. [Elasticsearch solution](/solutions/elasticsearch-solution-project.md)<br><br> 2. [{{es}} {{vectordb}}](/solutions/vector-database.md) | 1. Additional UI tools that complement the core search features<br><br>2. Dedicated {{serverless-full}} project type for AI-powered retrieval (RAG, recommendations, semantic and hybrid search) with vector-tuned defaults |
 | Monitoring applications or infrastructure | [Observability solution](/solutions/observability.md) | Monitor and troubleshoot with logs, metrics, and traces |
 | Protecting against threats | [Security solution](/solutions/security.md) | Detect and respond to security threats |
 
