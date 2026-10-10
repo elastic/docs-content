@@ -10,21 +10,17 @@ products:
   - id: kibana
   - id: cloud-serverless
   - id: cloud-hosted
-description: "Overview of Kibana alerting: rules, alerts, actions, connectors, and how they work together."
+description: "Kibana Classic Alerting uses rules to check your data on a schedule, creates alerts when conditions are met, and runs actions through connectors."
 ---
 
-# {{kib}} alerting [alerts]
+# {{alerting-v1-system-cap}} [alerts]
 
-{{kib}} alerting is the built-in alerting system in {{kib}}. It lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
+{{alerting-v1-system-cap}} lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
 
 :::{note}
-:applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
-Looking for the {{alerting-v2-system}} built on {{esql}}? That system writes each match as a [rule event](experimental-alerting-system/rules/rule-event-field-reference.md), then groups those events into [alert episodes](experimental-alerting-system/alerts.md) or leaves them available for [later analysis](experimental-alerting-system/alerts/query-signals.md). Start with the [{{alerting-v2-system-cap}} overview](system-overview.md).
-::::
-
-:::{important}
-In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. The two terms describe similar ideas in different systems and are not interchangeable.
-::::
+:applies_to: {"serverless": "ga", "stack": "experimental 9.5+"}
+Looking for {{alerting-v2-system}}? Start with the [{{alerting-v2-system-cap}} overview](esql/system-overview.md). Both systems use the term **alert**, but they create and track alerts differently, so the APIs and instructions for one system don't apply to the other.
+:::
 
 ## {{rules-ui}} [rules]
 

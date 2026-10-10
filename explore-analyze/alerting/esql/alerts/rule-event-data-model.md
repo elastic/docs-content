@@ -1,0 +1,53 @@
+---
+navigation_title: How Kibana stores rule events
+applies_to:
+  stack: experimental 9.5+
+  serverless: ga
+products:
+  - id: kibana
+description: "Kibana stores rule events in .rule-events. The episode.* lifecycle fields apply only to type alert. Triage actions go to .alert-actions."
+---
+
+# How {{kib}} stores rule events [rule-event-data-model]
+
+{{alerting-v2-system-cap}} writes **rule events** to `.rule-events`. For what a rule event is and how events belong to an [alert](../alerts.md), refer to [Rule events](../rules/rule-event-field-reference.md).
+
+## What `type` records on each event [how-rule-mode-determines-output]
+
+Every time a rule finds a match, {{kib}} writes a rule event to `.rule-events`. The event's `type` is either `signal` or `alert`:
+
+| `type` | What the event represents |
+| --- | --- |
+| `signal` | Queryable in Discover for later analysis. No `episode.*` fields. |
+| `alert` | One evaluation in an [alert](../alerts.md). Events that share `episode.id` belong to the same alert. |
+
+:::{note}
+Rule events with `type: signal` stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers.
+:::
+
+## Shared index and schema [shared-index-and-schema]
+
+Events with `type: signal` and events with `type: alert` share `.rule-events` and many of the same fields, including `data`, the payload from your rule's query. Filter with `WHERE type == "signal"` or `WHERE type == "alert"`.
+
+Only `type: alert` events carry the `episode.*` fields that track lifecycle state (`episode.id`, `episode.status`, `episode.status_count`). Query those events by `episode.id` to replay an alert. Events with `type: signal` don't include `episode.*` fields.
+
+For the full field list, including field types and which fields apply to each `type`, refer to [Field reference](field-reference.md#rule-events-field-schema).
+
+## How {{kib}} records evaluation and triage data [how-kib-records-evaluation-triage-data]
+
+{{kib}} writes rule output to the following append-only data streams, both managed through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md) and queryable with {{esql}} in Discover:
+
+- **`.rule-events`** - {{kib}} writes one rule event per matching row, per run, and never overwrites them. When {{kib}} tracks an alert, it can also write `recovered` and `no_data` events. This stream holds events with `type: signal` and events with `type: alert`.
+- **`.alert-actions`** - Records every triage action taken on an alert (for example, acknowledge, snooze, and resolve). Only alerts produce documents here.
+
+<!-- TODO: Verify with eng before publishing. The .alert-actions bullet above covers only
+     triage actions, but the dispatcher also writes fire, notified, suppress, and unmatched
+     documents to this stream when it evaluates action policies (store_actions_step.ts),
+     identified by group_hash. Confirm the intended description, then update the bullet to
+     match Field reference → Action type values (field-reference.md#action-type-values). -->
+
+## Related pages
+
+- [Rule events](../rules/rule-event-field-reference.md): What a rule event is and how `type` relates to rule `kind`.
+- [Query rule events](query-signals.md): Query examples for events with `type: signal`.
+- [Query alert history in Discover](query-alerts-and-signals-in-discover.md): Alert lifecycle and triage queries.

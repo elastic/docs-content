@@ -1,0 +1,85 @@
+---
+navigation_title: Investigate alerts
+applies_to:
+  stack: experimental 9.5+
+  serverless: ga
+products:
+  - id: kibana
+description: "Investigate alerts. Understand what triggered an alert, assess metric behavior, find related alerts, review responders, and inspect underlying data."
+---
+
+# Investigate alerts [investigate-alert-episodes]
+
+From the **Alerts** page in {{alerting-v2-system}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
+
+{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system}}](#investigate-classic-alerts).
+
+## Understand the trigger and scope [understand-trigger]
+
+Each alert includes key context to answer the first questions in any investigation:
+
+- **Grouping** - The value of the `BY` clause that identifies this alert's group, such as a hostname or service name. Use it to confirm which entity the rule is firing on.
+- **Triggered** - When the alert opened.
+- **Duration** - How long the alert has been active.
+- **Assignee** - Who currently owns the alert, if anyone. To assign or reassign the alert, refer to [Triage alerts](triage-alert-episodes.md).
+
+The **Rule overview** section shows the rule name, type, and status alongside a snippet of its {{esql}} query. Select **View rule details** to open the full rule configuration and confirm exactly what condition the rule evaluates.
+
+## Assess the metric behavior [assess-metric-behavior]
+
+Each alert shows a trend chart comparing the evaluated metric against the rule's threshold conditions over the alert's lifetime. Use it to understand how far the metric exceeded the threshold, whether the breach was escalating or stabilizing, and when it peaked.
+
+When a rule includes multiple threshold conditions:
+
+- Conditions that compare the **same metric** appear together, with each threshold represented separately.
+- Conditions that compare **different metrics** appear in separate views, one for each metric.
+
+This chart appears only for rules that group matches into an alert and whose query contains extractable threshold comparisons.
+
+The alert timeline shows its full duration as a horizontal bar, from when it was triggered to its most recent evaluation or close time.
+
+## Check for related or recurring alerts [related-episodes]
+
+Related alerts from the same rule are grouped to help you answer whether this is an isolated incident or part of a larger pattern:
+
+- **Same alert group** - Alerts for this rule that share the same group as the current alert (same `group_hash`). A long list here suggests the underlying condition isn't being fully resolved between alerts.
+- **Other groups for this rule** - Alerts from the same rule firing on different entities (different `group_hash`). Use this to gauge how broadly the rule is triggering across your environment.
+
+## Review who has responded [review-responders]
+
+Each alert tracks who performed the most recent response action of each type, so you can avoid duplicating work or missing a step someone else already handled:
+
+- **Acknowledged by** - The user who most recently acknowledged the alert.
+- **Resolved by** - The user who most recently resolved the alert.
+- **Snoozed by** - The user who snoozed the alert, shown together with the **Snoozed until** time.
+
+These rows only appear when the alert is in the corresponding state. System-generated actions display as **System**.
+
+## Inspect the underlying data [inspect-data]
+
+Each alert includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
+
+:::{tip}
+Use the **Open in Discover** action to view the full source documents instead of these computed values. The action runs the rule's base query in Discover, aligned with the alert's timeframe. Once there, adjust the query to see what you need. For example, remove the aggregation to return source documents instead of aggregated output.
+:::
+
+## Access the response runbook [access-runbook]
+
+If the rule has a runbook attached, you can view it directly from the alert to follow the documented triage steps.
+
+## Investigate alerts from {{alerting-v1-system}} [investigate-classic-alerts]
+```{applies_to}
+serverless: ga
+stack: experimental 9.6+
+```
+
+Select an alert with **Classic** in the **Source** column to open its details flyout, then use its tabs to check the alert:
+
+- **Overview**: Check the alert's status, severity, reason, and timing, along with its rule and the rule's tags.
+- **Fields**: Look up any value stored on the alert, such as the rule type in `kibana.alert.rule.rule_type_id`.
+
+Trend charts, timelines, and related alerts are available only for {{alerting-v2-system}} alerts.
+
+To triage the alert from the flyout, use the **Take action** menu. It has the same actions as the alerts table on the **Alerts** page. For details, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
+
+Alerts from Observability rules also have a details page in {{observability}}. To open it, select **Take action** → **View details**.

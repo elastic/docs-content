@@ -1,0 +1,33 @@
+---
+navigation_title: Create from Discover
+applies_to:
+  stack: experimental 9.5+
+  serverless: ga
+products:
+  - id: kibana
+description: "Convert an ES|QL query from a Discover session into a rule, with the query pre-filled and a preview panel for verifying grouping."
+---
+
+# Create a rule from Discover [create-from-discover]
+
+Convert an {{esql}} query you've already built in Discover directly into a {{alerting-v2-system}} rule, without rewriting it. Because you test the query against live data in Discover first, you know it returns the shape you expect before the rule is ever saved.
+
+## Entry points [discover-rule-entry-points]
+
+Two paths lead to Discover-based rule creation:
+
+- **Discover Alerts menu**: When you're in Discover with an active {{esql}} query and {{alerting-v2-system}} is enabled, the Alerts menu includes a **Create ES|QL rule** option. The rule creation flyout opens pre-populated with the current query. This path is only available in ES|QL mode.
+- **Rules page**: To open the **Rules** page, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the creation path that opens a flyout with a live Discover session, so you can write and test the query before you save the rule.
+
+## How it works [discover-rule-flow]
+
+When you trigger rule creation from Discover, your {{esql}} query pre-fills the **Create ES|QL rule** form. The rule creation form also shows a preview panel that reflects how your query partitions results into alert series. If your query uses a `BY` clause, the preview shows the series that would be evaluated on each run, letting you verify grouping logic against live data before committing to a schedule.
+
+The rule creation flyout supports both a step-by-step form and a YAML editor. You can switch between them at any point. Edits are preserved when you return to the form view. The YAML editor includes {{esql}} autocomplete in the query field.
+
+For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).
+
+## Related pages
+
+- [Create a rule](create-a-rule.md): Compare this creation path with the others.
+- [{{esql}} query patterns](esql-query-patterns.md): Query examples ranging from a basic event filter to SLO burn rate and persistent breach detection.
