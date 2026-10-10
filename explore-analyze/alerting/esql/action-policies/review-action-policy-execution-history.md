@@ -57,14 +57,14 @@ The `dispatched`, `throttled`, and `unmatched` outcomes are the **event-log term
 
 | Event-log outcome (`event.action`) | `.alert-actions` `action_type` | Meaning |
 |---|---|---|
-| `dispatched` | `fire` and `notified` | Policy matched, frequency cleared, workflow invoked. `fire` records each dispatched alert, and `notified` records each workflow invocation. |
+| `dispatched` | `fire` and `notified` | Policy matched, frequency cleared, workflow invoked. {{kib}} writes `fire` for each dispatched alert and `notified` for each workflow invocation. |
 | `throttled` | `suppress` | Policy matched but frequency limit not yet cleared. No workflow invoked. |
 | `unmatched` | `unmatched` | No action policy matched the alert. No workflow invoked. |
 
 `.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`). These have no event-log counterpart, because they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
 
 :::{note}
-`suppress` in `.alert-actions` covers more than `throttled` does in the event log. The dispatcher also writes `suppress` for alerts that fail the eligibility check, and those alerts don't appear in the event log. To tell the cases apart, check the `reason` field: `suppressed by throttled policy <policy ID>` for throttling, or `ack`, `snooze`, `deactivate`, or `maintenance_window:<window ID>` for eligibility.
+The `suppress` action type covers more than the `throttled` outcome does, because the dispatcher also writes `suppress` for alerts that fail the eligibility check. To tell the cases apart, check the `reason` field. Throttled alerts have `suppressed by throttled policy <policy ID>`, and alerts that failed the eligibility check have `ack`, `snooze`, `deactivate`, or `maintenance_window:<window ID>`.
 :::
 
 ## Related pages

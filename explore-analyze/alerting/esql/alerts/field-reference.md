@@ -61,7 +61,7 @@ When a user or the system records an action on an alert, {{kib}} writes a docume
 | `action_group_id` | keyword | The action group the alert belonged to at the time of this action. |
 | `source` | keyword | Source that triggered the action. |
 | `tags` | keyword[] | Tag values written by `tag` actions. |
-| `reason` | text | Reason provided for `activate` or `deactivate` actions. For system-written types, why the dispatcher wrote the document, such as the policy that dispatched or throttled the alert. |
+| `reason` | text | Reason provided for `activate` or `deactivate` actions. For system-written types, it records why the dispatcher wrote the document, such as the policy that dispatched or throttled the alert. |
 | `space_id` | keyword | {{kib}} space where the alert lives. |
 
 ### Action type values [action-type-values]
@@ -78,9 +78,9 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 | `unsnooze` | user | Removed the snooze |
 | `activate` | user | Set the alert to active and held it there until a `deactivate` action. **Unresolve** in the UI writes this type. |
 | `deactivate` | user | Closed the alert. **Resolve** in the UI writes this type. |
-| `fire` | system | An action policy dispatched the alert to its workflow. `reason` names the policy. |
+| `fire` | system | An action policy dispatched the alert to its workflow. The `reason` field names the policy. |
 | `notified` | system | Workflow invoked. One document per invocation, which can cover several alerts. |
-| `suppress` | system | No workflow ran for the alert, either because the alert was acknowledged, snoozed, resolved, or in a maintenance window, or because an action policy's frequency limit hadn't cleared. `reason` says which. |
+| `suppress` | system | No workflow ran for the alert, either because the alert was acknowledged, snoozed, resolved, or in a maintenance window, or because an action policy's frequency limit hadn't cleared. The `reason` field says which. |
 | `unmatched` | system | No action policy matched the alert |
 
 ## Related pages

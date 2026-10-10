@@ -106,7 +106,7 @@ Event-driven triggers run workflows when a platform event occurs:
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Cases triggers** fire when cases change. The family includes `cases.caseCreated`, `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers** fire when an entity's asset criticality or risk score changes in the entity store. The family includes `entityStore.entityAssetCriticalityUpdated` and `entityStore.entityRiskScoreChanged`.
 * {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Alert lifecycle triggers in {{alerting-v2-system}}** fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
-* {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Rule lifecycle triggers in {{alerting-v2-system}}** fire when a rule is created, updated, deleted, enabled, or disabled. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`.
+* {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Rule lifecycle triggers in {{alerting-v2-system}}** fire when someone creates, updates, deletes, enables, or disables a rule. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`.
 
 Use event-driven triggers for:
 

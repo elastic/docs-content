@@ -21,7 +21,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Cases triggers**: Fire when cases change (created, updated, status changed, attachments added, comments added).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers**: Fire when an entity's asset criticality or risk score changes in the entity store.
 - {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
-- {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when a rule is created, updated, deleted, enabled, or disabled.
+- {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -517,7 +517,7 @@ stack: experimental 9.5+
 These triggers are available only when {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
 :::
 
-Rule lifecycle triggers run a workflow when a rule in {{alerting-v2-system}} is created, updated, deleted, enabled, or disabled. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
+Rule lifecycle triggers run a workflow when someone creates, updates, deletes, enables, or disables a rule in {{alerting-v2-system}}. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
 
 Rule lifecycle triggers fire independently of alerts.
 
