@@ -10,7 +10,7 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 # Query alert history in Discover [query-alert-history-discover]
 
-To see the current state of alerts in {{alerting-v2-system}}, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts**. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
+In {{alerting-v2-system}}, use {{esql}} in Discover to replay how an incident unfolded, see who acknowledged or snoozed an alert, measure time-to-acknowledge trends, or correlate alert history with other data in your environment. To check the current state of alerts instead, use the [**Alerts** page](view-and-manage-alerts.md).
 
 For events with `type: signal`, including basic queries and using them as input to a rule that opens an alert, refer to [Query rule events](query-signals.md).
 
@@ -108,7 +108,7 @@ FROM .rule-events
 
 ### View the full triage history for an alert [full-triage-history]
 
-Returns all actions recorded for a single alert in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved.
+Returns all actions recorded for a single alert in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved. The **Resolve** action writes `deactivate`, and **Unresolve** writes `activate`.
 
 ```esql
 FROM .alert-actions

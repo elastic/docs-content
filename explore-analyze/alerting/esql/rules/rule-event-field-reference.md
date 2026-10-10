@@ -10,7 +10,7 @@ description: "Rule events are the append-only documents Kibana writes to .rule-e
 
 # Understand rule events [rule-reference]
 
-This page explains what {{alerting-v2-system}} writes to `.rule-events`, how `type` relates to [alerts](../alerts.md), and how to query that history. For the stored schema, refer to [How {{kib}} stores rule events](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
+{{alerting-v2-system-cap}} writes a rule event to `.rule-events` for each match. An event's `type` determines whether it belongs to an [alert](../alerts.md), and you can query the full history. For the stored schema, refer to [How {{kib}} stores rule events](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
@@ -43,7 +43,7 @@ Events with `type: alert` carry `episode.id`, `episode.status`, and `episode.sta
 
 The first event opens the alert. Later events from later runs advance it through lifecycle states until the condition clears. Because events are never overwritten, `episode.status` on a given event is the lifecycle stage at that evaluation, not a live field that {{kib}} updates later. To replay an alert, query every event with that `episode.id`.
 
-Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Alerts** to view the current state of each alert.
+To view the current state of each alert, go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Query `.rule-events` to replay an alert [query-rule-events]
 

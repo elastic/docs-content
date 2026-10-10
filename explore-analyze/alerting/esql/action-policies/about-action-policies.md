@@ -15,13 +15,11 @@ description: "Action policies decide whether and when an alert invokes a workflo
 
 In {{alerting-v2-system}}, an action policy is the gating layer between an alert and a workflow. It decides whether and when to invoke a workflow by running the alert through a sequence of gates, and a workflow runs only once the alert clears every gate.
 
-This page explains how rules and action policies work together, the gates an alert must pass, and how the dispatcher evaluates them.
-
 ## How rules and action policies work together [rules-and-action-policies]
 
 A rule detects a condition and opens alerts. The rule doesn't automatically reference an action policy, and an action policy doesn't instantly link to a rule. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert, and invokes a workflow for the ones that pass every gate.
 
-Because of that separation, a single action policy can apply to alerts from many rules. An action policy scoped to `severity: "critical"` applies to every critical alert, regardless of which rule produced it. The separation also means you change notification routing by editing the action policy, without touching the rule.
+Because of that separation, a single action policy can apply to alerts from many rules. An action policy scoped to `severity: "critical"` applies to every critical alert, regardless of which rule produced it. The separation also means you change how alerts are routed by editing the action policy, not the rule's detection logic.
 
 To control which of those alerts an action policy applies to, set its [scope](create-configure-action-policy.md#matcher). An action policy with an empty scope applies to all of them.
 
@@ -31,7 +29,7 @@ A workflow runs only when the alert passes every gate. {{kib}} checks the gates 
 
 | Gate | What it checks |
 |------|----------------|
-| Alert eligibility | Whether the alert is acknowledged, snoozed, or in a maintenance window. Any of these stops it. |
+| Alert eligibility | Whether the alert is acknowledged, snoozed, resolved, or in a maintenance window. Any of these stops it. |
 | Policy scope {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Whether the alert's rule carries at least one of the selected rule tags, and whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If both are set on the policy, they both have to pass. An empty scope passes every eligible alert in the space. |
 | Match conditions {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` | Whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. An empty expression passes every eligible alert in the space. |
 | Frequency | Whether a workflow already ran for the alert's notification group within the policy's frequency interval. If it did, the alert waits. |
@@ -61,4 +59,4 @@ If an action policy already applied to an alert, a severity change does not re-t
 - [Create and configure an action policy](create-configure-action-policy.md): Set up policy scope, grouping, frequency, and workflow destinations.
 - [Manage action policies](manage-action-policies.md): Enable, disable, snooze, edit, or delete your action policies.
 - [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
-- [Reduce notification noise](reduce-notification-noise.md): Acknowledge, snooze, or deactivate alerts so they stop at the eligibility gate.
+- [Reduce notification noise](reduce-notification-noise.md): Acknowledge, snooze, or resolve alerts so they stop at the eligibility gate.

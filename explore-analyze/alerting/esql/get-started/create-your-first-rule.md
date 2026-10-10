@@ -30,18 +30,9 @@ Before you start, make sure you have the following:
   - **{{ech}}** - An {{ech}} deployment running version 9.5 or later. Refer to [Create an Elastic Cloud hosted deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) if you don't have one. {applies_to}`stack: experimental 9.5`
   - **Self-managed** - An {{stack}} deployment running version 9.5 or later. Refer to the [local development quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) if you don't have one. {applies_to}`stack: experimental 9.5`
 
-- **{{alerting-v2-system-cap}} enabled**: {{alerting-v2-system-cap}} must be turned on in your space before you can use any of its features. Refer to [Set up {{alerting-v2-system}}](../setup.md) for instructions.
+- **{{alerting-v2-system-cap}} turned on**: If {{alerting-v2-system}} is off, turn it on as described in [Set up {{alerting-v2-system}}](../setup.md#alerting-setup-turn-on).
 
-- **The required access**: Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must give you access to:
-
-  | Task | Required privilege |
-  |---|---|
-  | Create and manage rules | **Rules: All** (under **Alerting**) |
-  | View and triage alerts | **Alerts: All** (under **Alerting**); also automatically grants {{es}} `read` access to `.rule-events` and `.alert-actions` |
-  | Review execution history | **Execution history: Read** (under **Alerting**) |
-  | Create the tutorial index and load sample data | `create_index` and `write` index privileges on `checkout-service-logs` |
-
-  For the full breakdown of {{alerting-v2-system}} privileges, refer to [Configure access](../manage/configure-access.md).
+- **The required access**: Your role needs the privileges to create rules, triage alerts, and review execution history. Refer to [Configure access](../manage/configure-access.md#alerting-quick-reference). To create the tutorial index and load the sample data, your role also needs the `create_index` and `write` index privileges on `checkout-service-logs`.
 
 ## Prepare your environment [prepare-your-environment]
 
@@ -269,7 +260,9 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 ::::{step} Open the rule form
 
-Go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**, create a new rule, then select **Create ES|QL rule** to open the rule authoring flyout.
+Go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+Then create a new rule, and select **Create ES|QL rule** to open the rule authoring flyout.
 
 ::::
 
@@ -380,7 +373,7 @@ With the rule running, you can watch the full alert lifecycle play out on the **
 
 ::::{step} Open the Alerts page
 
-Open **Alerting V2 preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
+Go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::
 

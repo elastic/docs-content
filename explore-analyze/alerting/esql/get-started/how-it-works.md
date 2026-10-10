@@ -11,11 +11,11 @@ description: A detailed walkthrough of how a rule's configuration determines whe
 
 # How the system works [how-it-works]
 
-This page walks through what happens at each step after a {{alerting-v2-system}} rule runs on its schedule. Both paths begin the same way: {{kib}} writes a [rule event](../rules/rule-event-field-reference.md) for each matching row. The rule's configuration determines whether those events belong to an [alert](../alerts.md). Use this page to understand how the different components of {{alerting-v2-system}} interact.
+Each time a {{alerting-v2-system}} rule runs, {{kib}} writes a [rule event](../rules/rule-event-field-reference.md) for each matching row. The rule's [mode](../rules/configure-rule-mode.md) determines what happens next. The events either belong to an [alert](../alerts.md) that can send notifications, or stay available for later analysis.
 
 ## Rule opens an alert [how-alert-mode-works]
 
-When {{kib}} tracks matches as an [alert](../alerts.md), it writes each match as a rule event (`type: alert`) with `episode.*` fields. Events that share `episode.id` belong to the same alert. Each new event can advance the alert's lifecycle state. An action policy sits between the alert and a workflow, deciding whether and when to invoke it.
+In this path, each rule event (`type: alert`) carries `episode.*` fields, and events that share `episode.id` belong to the same alert:
 
 | Step | Actor | Action |
 |------|-------|--------|
@@ -29,45 +29,23 @@ When {{kib}} tracks matches as an [alert](../alerts.md), it writes each match as
 | 8 | Dispatcher | Evaluates the recovery event and invokes a workflow if conditions are met |
 | 9 | Workflow | Sends the recovery notification |
 
-:::{note}
-Steps 4–6 and 8–9 run on a separate background process that polls roughly every 5 seconds. Action policy evaluation is not triggered synchronously by the rule's own execution. There is always at least one dispatcher polling cycle between a rule run and any resulting notification.
-:::
+Steps 4–6 and 8–9 run in a separate background process, the dispatcher, which polls about every 5 seconds. At least one polling cycle passes between a rule run and any notification it causes.
 
-### Example: Latency monitoring
-
-An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates a rule that opens an alert:
-
-1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
-2. The first check where p95 exceeds 2 seconds opens an alert in `pending`. A second consecutive breach moves it to `active`.
-3. {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` An action policy scoped to the `checkout` rule tag invokes an on-call workflow that sends a Slack message.
-
-   {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` An action policy scoped with `rule.tags: "checkout"` invokes an on-call workflow that sends a Slack message.
-
-The engineer investigates, fixes a slow query, and the alert recovers automatically.
+For a minute-by-minute example of an alert moving through these states, refer to [Alert lifecycle states](../alerts.md#alert-episode-lifecycle).
 
 ## Rule writes events for later analysis [how-signal-mode-works]
 
-{{kib}} writes a rule event (`type: signal`) to `.rule-events` for each match. These events stay in `.rule-events`. They don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers. They accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to a follow-on rule that opens an alert. For query examples, dashboards, and correlation patterns, refer to [Query rule events](../alerts/query-signals.md).
-
-| Step | Actor | Action |
-|------|-------|--------|
-| 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
-| 2 | {{kib}} | Query returns results → Writes one rule event per matching row to `.rule-events` (`type: signal`) |
-| 3 | {{kib}} | Keeps the event available for later analysis. It doesn't go to a policy or workflow |
+In this path, each rule event (`type: signal`) stays in `.rule-events`. These events don't appear on the **Alerts** page and aren't evaluated by action policies or lifecycle triggers. They're immediately queryable in Discover, and they can feed a follow-on rule that opens an alert. For query examples, dashboards, and correlation patterns, refer to [Query rule events](../alerts/query-signals.md).
 
 ### Example: Tracking administrator API calls
 
-A security team wants to track calls to a rarely-used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a rule that records matches without opening an alert:
-
-1. The rule runs an {{esql}} query on a schedule, checking for calls to the administrator API endpoint.
-2. Each time the query returns results, {{kib}} writes a rule event (`type: signal`) to `.rule-events`.
-3. The events accumulate silently and are immediately queryable in Discover.
+A security team wants to track calls to a rarely used administrator API endpoint, but individual calls aren't suspicious enough to page anyone. The team creates a rule that records each call as a rule event without opening an alert.
 
 After a few weeks, the accumulated events become useful in two ways. The team can write a follow-on rule that opens an alert and combines admin API calls with other events (such as a spike in error rates) to catch correlated activity that neither source would surface on its own. When an outage happens, the team can query that history as evidence directly in Discover, without reconstructing the original query or worrying that the source data has become stale.
 
 ## Related pages
 
-- [Set up {{alerting-v2-system}}](../setup.md): Review the requirements and turn on the system.
+- [Set up {{alerting-v2-system}}](../setup.md): Check the requirements and turn the system on or off.
 - [Create your first rule](create-your-first-rule.md): Load sample data, create a rule, and observe the alert lifecycle.
 - [Rules](../rules.md): What rules detect, how action policies invoke workflows, and how to select a creation path.
 - [Notifications and actions](../notifications-actions.md): Set up action policies that invoke workflows for the alerts they apply to.

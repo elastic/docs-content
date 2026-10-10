@@ -18,21 +18,16 @@ Before you start, make sure you have the following:
 
 - **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
 - **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
-- {applies_to}`serverless: experimental` **The `alerting:v2:experimentalFeatures` advanced setting turned on** - In **Advanced Settings**, go to the **Space Settings** tab and turn on **Alerting V2: Experimental Features**. It's off by default and applies only to the current space.
-- **The required privileges** - Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must include the following:
-
-  | To... | Required privilege |
-  |---|---|
-  | Access and use {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) |
-  | Save the rule | **Rules: All** (under **Alerting**) |
-  | Save the action policy | **Action Policies: All** (under **Alerting**) |
-  | Select or create the workflow destination | **Workflows: Read** to select an existing workflow; **Workflows: All** to create one (under **Analytics > Workflows**) |
+- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` **The `alerting:v2:experimentalFeatures` advanced setting turned on** - The setting is off by default and applies only to the space where you turn it on. To turn it on, refer to [Try experimental features in a space](../setup.md#alerting-setup-experimental-features).
+- **The required privileges** - Your role needs the [privileges to use {{agent-builder}} and save rules and action policies](../manage/configure-access.md#alerting-agent-builder-privileges).
 
 ## Propose and save a rule [ai-agent-rule-proposal]
 
 ### Start a proposal [ai-agent-start-proposal]
 
-To create a rule, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**. When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
+To create a rule, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+Then select the creation path that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
 
 The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the {{alerting-v2-system}} data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
 

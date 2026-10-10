@@ -10,36 +10,36 @@ description: "How action policies and alert lifecycle triggers invoke workflows,
 
 # Connect workflows [connect-workflows]
 
-In {{alerting-v2-system}}, [workflows](../../workflows.md) are the delivery layer that defines what happens in response to an alert, such as sending a message, calling a webhook, or triggering an automation. Workflows connect the alerting system to your incident-response tools.
-
-This page covers how action policies drive workflow invocations at runtime, the available alert lifecycle triggers, and when to use each pathway.
+In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens in response to an alert, such as sending a message, calling a webhook, or opening a ticket.
 
 ## How the alerting system connects to workflows [connection-pathways]
 
-{{alerting-v2-system-cap}} connects to workflows through two pathways. Both require an alert.
-
-- **Action Policies** - Action policies evaluate eligible alerts on a continuous schedule and invoke workflows based on match conditions and frequency settings.
-- **Alert lifecycle triggers** - Workflows are invoked when a specific event occurs on an alert, such as when the alert is activated, assigned, or deactivated.
+{{alerting-v2-system-cap}} starts workflows in two ways: through action policies and through alert lifecycle triggers. Both require an alert.
 
 ### Action policies [action-policy-driven-workflows]
 
-{{kib}} evaluates action policies against alerts on a continuous schedule and invokes a workflow when an alert meets a policy's conditions. After a rule runs, the system routes each alert through the eligibility, scope, and frequency gates before invoking a workflow. For the step-by-step evaluation sequence, refer to [How the dispatcher evaluates action policies](action-policies/about-action-policies.md#how-action-policies-evaluated).
+{{kib}} evaluates action policies against alerts on a continuous schedule. When an alert passes a policy's eligibility, scope, and frequency gates, {{kib}} invokes the policy's workflow. For the step-by-step evaluation sequence, refer to [How the dispatcher evaluates action policies](action-policies/about-action-policies.md#how-action-policies-evaluated).
 
 ### Alert lifecycle triggers [alert-episode-lifecycle-triggers]
 
-Lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a specific event occurs on an alert, with no scheduling or gating.
+```{applies_to}
+serverless: preview
+stack: experimental 9.5+
+```
 
-When an alert is [activated](alerts.md#alert-episode-lifecycle), or [assigned, acknowledged, or snoozed](alerts/triage-alert-episodes.md), {{alerting-v2-system}} emits a named trigger event (such as `alerting.actions.alertAssigned` or `alerting.actions.alertAcked`) and any workflow attached to it runs immediately. For the full list of trigger IDs, including the earlier IDs used in {{stack}} 9.5, refer to [Alert lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-available).
+Lifecycle triggers are [event-driven triggers](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a user [resolves, assigns, acknowledges, or snoozes](alerts/triage-alert-episodes.md) an alert, with no scheduling or gating. Each action emits a named trigger event, such as `alerting.actions.alertAssigned` (`alerting.episodeAssigned` in earlier versions).
+
+Lifecycle triggers don't fire on [automatic status changes](alerts.md#alert-episode-lifecycle), such as when an alert becomes active or recovers based on rule evaluations. To respond to those changes, use an action policy. For the full list of trigger IDs, refer to [Alert lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-available).
 
 ### When to use action policies or lifecycle triggers [when-to-use-action-policies-lifecycle-triggers]
 
-If you're unsure whether to use lifecycle triggers or action policies, the following table compares when each option is a good fit. Both can run different workflows simultaneously and coexist without conflict.
+You can use both at the same time. Each runs its own workflows without conflict.
 
 | | Action policies | Lifecycle triggers |
 |---|---|---|
 | **How they run** | Evaluate alerts on a continuous schedule | React immediately to a specific event |
-| **Frequency control** | Apply eligibility, match condition, and frequency gates | Fire exactly once per event, no gates to configure |
-| **Best for** | Recurring notifications and escalation logic that runs as long as a problem persists | One-shot automations, such as opening a ticket when an alert is assigned or posting a message when it's deactivated |
+| **Frequency control** | Apply eligibility, scope, and frequency gates | Fire exactly once per event, no gates to configure |
+| **Best for** | Recurring notifications and escalation logic that runs as long as a problem persists | One-shot automations, such as opening a ticket when a user assigns an alert or posting a message when a user resolves it |
 
 ## Related pages
 

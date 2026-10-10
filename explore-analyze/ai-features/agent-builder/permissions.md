@@ -92,8 +92,8 @@ Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
 ## Conversation access control [conversation-access-control]
 
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
 The {{kib}} privileges described above control who can use {{agent-builder}} at all. Individual conversations have a second layer of access control on top of that, so the owner of a conversation can decide who else can read it.
@@ -133,7 +133,7 @@ Members are identified by their {{kib}} user profile ID, not by username. A user
 | Delete | Yes | No | No |
 | Change sharing | Yes | No | No |
 
-A user with full cluster privileges, such as a superuser, can also rename or delete a `public` conversation they do not own. This does not extend to `private` conversations, even ones shared with them, and it never includes changing who a conversation is shared with.
+A user whose role grants all {{kib}} application privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}, can also rename or delete a `public` conversation they do not own. This does not extend to `private` conversations, even ones shared with them, and it never includes changing who a conversation is shared with.
 
 ### Sharing does not bypass privileges
 
@@ -151,7 +151,7 @@ Managing sharing needs only the `Read` privilege plus ownership. There is no sep
 
 When a user cannot access a conversation, {{agent-builder}} reports it as not found rather than as a permissions error. This is deliberate, so that users cannot detect the existence of conversations they cannot read.
 
-To share a conversation, use the [{{kib}} API](kibana-api.md#update-conversation-access-control).
+To share a conversation, use the [sharing button in Agent Chat](chat.md#share-a-conversation) or the [{{kib}} API](kibana-api.md#update-conversation-access-control).
 
 ## Configure access
 

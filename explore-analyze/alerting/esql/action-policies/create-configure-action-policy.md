@@ -12,7 +12,7 @@ description: "Create action policies to route alerts to workflows. Set the polic
 
 In {{alerting-v2-system}}, an action policy connects alerts to the [workflows](../../../workflows.md) that respond to them. To create one, you set which alerts the policy applies to, how those alerts batch into notifications, how often a workflow can run, and which workflows to invoke.
 
-To start, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Action Policies**.
+To start, go to **Alerting** → **Action Policies** in the Observability navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Specify the action policy scope [matcher]
 
