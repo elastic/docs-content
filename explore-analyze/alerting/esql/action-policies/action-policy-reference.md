@@ -10,7 +10,7 @@ description: "Grouping modes, frequency options, dispatch outcomes, and match co
 
 # Action policy reference [action-policy-reference]
 
-This page is a reference for {{alerting-v2-system}} action policy match condition fields, grouping modes, frequency options, and dispatch outcomes. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
+Look up the match condition fields, grouping modes, frequency options, and dispatch outcomes for {{alerting-v2-system}} action policies. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
 
 ## Match conditions fields [action-policy-matcher-fields]
 

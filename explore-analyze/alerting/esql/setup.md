@@ -11,7 +11,7 @@ description: "License, connector, data, and space requirements, plus how to turn
 
 # Set up [setup]
 
-This page lists the requirements and shows you how to turn {{alerting-v2-system}} on and off.
+Check the requirements for {{alerting-v2-system}}, turn it on or off for all spaces, and turn on optional features in the spaces where you want them.
 
 ## Before you use the system [alerting-setup-requirements]
 
@@ -26,23 +26,25 @@ You'll need the following to create rules and send notifications.
 
 {{alerting-v2-system-cap}} is controlled by the [`alerting:v2:enabled`](kibana://reference/advanced-settings.md#alerting-v2-enabled) advanced setting in {{kib}}. This is a global setting, so turning it on makes {{alerting-v2-system}} available in every space, even though the rules and action policies you create in it are space-scoped.
 
-:::::{applies-switch}
-::::{applies-item} { "serverless": "ga", "stack": "experimental 9.6+" }
-The setting is on by default, so you can use {{alerting-v2-system}} without extra setup. If you turned the setting off, it stays off, even after an upgrade. To turn it back on:
+The setting's default depends on your version:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` The setting is on by default, so you can use {{alerting-v2-system}} without extra setup. If you turned the setting off, it stays off, even after an upgrade.
+- {applies_to}`stack: experimental =9.5` The setting is off by default.
+
+<!-- TODO: Verify with eng before publishing. kibana#294597 renamed the label of the
+     alerting:v2:enabled setting on the Advanced Settings page from "Alerting V2" to
+     "Universal Alerting" on serverless and 9.6+. Stack 9.5 still shows "Alerting V2".
+     If confirmed, change step 2 below and the "Turn off the system" section to
+     "**Universal Alerting** or **Alerting V2** (depending on your Stack version)". -->
+
+To turn on the setting:
 
 1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **Global Settings** tab, then turn on **Alerting V2**.
-3. To confirm {{alerting-v2-system}} is accessible in your space, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-::::
+3. Confirm that {{alerting-v2-system}} is accessible in your space:
 
-::::{applies-item} stack: experimental =9.5
-The setting is off by default. To turn it on:
-
-1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the **Global Settings** tab, then turn on **Alerting V2**.
-3. Go to **Alerting V2 Preview** in the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to confirm {{alerting-v2-system}} is accessible in your space.
-::::
-:::::
+   - {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+   - {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu, or find it using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{tip}
 If {{alerting-v2-system}} doesn't appear in the navigation menu or global search after you turn on the setting, reload {{kib}} and check again.
@@ -50,16 +52,24 @@ If {{alerting-v2-system}} doesn't appear in the navigation menu or global search
 
 ## Turn off the system [alerting-setup-turn-off]
 
+<!-- TODO: Verify with eng before publishing. Same setting label question as in
+     "Turn on the system": "Universal Alerting" on serverless and 9.6+ (kibana#294597)
+     versus "Alerting V2" on 9.5. -->
+
 To turn off {{alerting-v2-system}}, go to the **Advanced Settings** page, select the **Global Settings** tab, and turn off **Alerting V2**.
 
 Turning off the setting does not delete any data. {{kib}} retains your rules and action policies as saved objects, and keeps existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the {{alerting-v2-system}} UI.
 
 :::{important}
-Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running. To stop both:
+Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running.
+:::
+
+### Stop rules and action policies from running [alerting-setup-stop-execution]
+
+How you stop rules and action policies depends on your deployment:
 
 - {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us) to stop them.
 - {applies_to}`stack: experimental 9.5+` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
-:::
 
 ## Try experimental features in a space [alerting-setup-experimental-features]
 
@@ -90,9 +100,9 @@ serverless:
 stack: experimental 9.6+
 ```
 
-To keep using the Observability alerts page that lists only alerts from {{alerting-v1-system}} rules, turn on the **Show V1 Observability alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`). The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results. The setting is off by default and applies only to the space where you turn it on.
+When {{alerting-v2-system}} is on, an **Alerting** menu replaces the Observability **Alerts** link. Its **Alerts** page lists alerts from both systems, even if you keep the old page.
 
-When {{alerting-v2-system}} is on, an **Alerting** menu replaces the Observability **Alerts** link. Its **Alerts** page lists alerts from both systems, with or without this setting.
+To keep using the Observability alerts page that lists only alerts from {{alerting-v1-system}} rules, turn on the **Show V1 Observability alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`). The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results. The setting is off by default and applies only to the space where you turn it on.
 
 To show the **Alerts (V1)** page:
 

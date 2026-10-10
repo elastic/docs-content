@@ -11,9 +11,7 @@ description: Kibana Universal Alerting writes each match as a rule event, then e
 
 # Overview [system-overview]
 
-{{alerting-v2-system-cap}} runs rules against your {{es}} data on a schedule and writes each match as a rule event. Depending on the rule's configuration, {{kib}} either groups those events into an alert that can notify you through a workflow, or keeps them available for later analysis.
-
-This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](get-started/how-it-works.md).
+Use {{alerting-v2-system}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
 
 :::{note}
 Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md). Both systems use the term **alert**, but they create and track alerts differently, so the APIs and instructions for one system don't apply to the other.
@@ -21,51 +19,26 @@ Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} ove
 {applies_to}`stack: experimental =9.5` In {{stack}} 9.5, the {{alerting-v2-system}} pages, such as **Rules**, **Alerts**, and **Action Policies**, are under **Alerting V2 Preview** in **Stack Management** instead of under **Alerting** in the Observability navigation menu. The UI also calls an alert an **alert episode**. For example, the **Notify per** option for one notification per alert is **Episode** instead of **Alert**.
 :::
 
-## The core idea [core-idea]
-
-{{alerting-v2-system-cap}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an [alert](alerts.md) and can notify. Events that aren't part of an alert remain available for later analysis.
-
 ## The building blocks
 
-You create and configure three of the five building blocks: rules, action policies, and workflows. {{kib}} generates the other two, rule events and alerts, from your rules' matches.
+You create and configure rules, action policies, and workflows. {{kib}} generates the other two building blocks, rule events and alerts, from your rules' matches.
 
-### Rules
-
-A rule defines what to watch for in your data and how often to check. On each run, {{kib}} writes matches as [rule events](rules/rule-event-field-reference.md).
-
-Refer to [Rules](rules.md) to learn more.
-
-### Rule events
-
-A rule event is the document {{kib}} writes to `.rule-events` for each match.
-
-Refer to [Rule events](rules/rule-event-field-reference.md) to learn more.
-
-### Alerts
-
-An [alert](alerts.md) tracks one problem from first detection through recovery, so you triage one lifecycle per problem.
-
-Refer to [Alerts](alerts.md) to learn more.
-
-### Action policies
-
-An action policy decides whether and when to invoke a workflow for an alert. You configure that on the policy, not on the rule, so you can change notifications without changing what each rule detects. The workflow sends the notification.
-
-Refer to [Notifications and actions](notifications-actions.md) to learn more.
-
-### Workflows
-
-A workflow sends the notification or runs the automation, for example posting to Slack, sending an email, or calling a webhook.
-
-Refer to [Connect workflows](workflows-alerting.md) to learn more.
+- [Rules](rules.md): Define what to watch for in your data and how often to check.
+- [Rule events](rules/rule-event-field-reference.md): Record each match as a document in `.rule-events`.
+- [Alerts](alerts.md): Track one problem from first detection through recovery, so you triage one lifecycle per problem.
+- [Action policies](notifications-actions.md): Decide whether and when to invoke a workflow for an alert. You configure this on the policy, so you can change notifications without changing what each rule detects.
+- [Workflows](workflows-alerting.md): Send the notification or run the automation, for example posting to Slack, sending an email, or calling a webhook.
 
 ## How the pieces fit together [how-pieces-fit-together]
 
-Every match becomes a rule event. From there, the rule's configuration determines the next step:
+$$$core-idea$$$
 
-* **Alert** - {{kib}} groups the event into an [alert](alerts.md). An action policy evaluates the alert and can invoke a workflow, which sends the notification or runs the automation.
+A rule evaluates your data on a schedule, and {{kib}} writes each match as a rule event. The rule's configuration determines the next step:
 
-* **No alert** - The event stays in `.rule-events` for later analysis. You can [query it in Discover](alerts/query-signals.md), build dashboards, or feed it into another rule. Rule events that aren't part of an alert (`type: signal`) don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers.
+- **Alert**: {{kib}} groups the event into an alert. An action policy evaluates the alert and can invoke a workflow, which sends the notification or runs the automation.
+- **No alert**: The event stays in `.rule-events` for later analysis. You can [query it in Discover](alerts/query-signals.md), build dashboards, or feed it into another rule. These events (`type: signal`) don't appear on the **Alerts** page and aren't evaluated by action policies or lifecycle triggers.
+
+For a step-by-step walkthrough of what happens after a rule runs, refer to [How it works](get-started/how-it-works.md).
 
 ## Get started or go deeper [system-overview-next-steps]
 

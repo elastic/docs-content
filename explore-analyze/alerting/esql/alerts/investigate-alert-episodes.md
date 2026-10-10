@@ -73,11 +73,13 @@ serverless: ga
 stack: experimental 9.6+
 ```
 
-When you select an alert with **Classic** in the **Source** column, a simpler flyout opens. It doesn't have the trend chart, timeline, or related alerts, and it has two tabs:
+Select an alert with **Classic** in the **Source** column to open its details flyout, then use its tabs to check the alert:
 
-- **Overview**: The alert's status, rule, severity, reason, start time, last update, duration, and the rule's tags.
-- **Fields**: Every field stored on the alert, such as `kibana.alert.rule.rule_type_id` for the rule type.
+- **Overview**: Check the alert's status, severity, reason, and timing, along with its rule and the rule's tags.
+- **Fields**: Look up any value stored on the alert, such as the rule type in `kibana.alert.rule.rule_type_id`.
 
-The **Take action** menu in the flyout has the same actions as the table. For details, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
+Trend charts, timelines, and related alerts are available only for {{alerting-v2-system}} alerts.
+
+To triage the alert from the flyout, use the **Take action** menu. It has the same actions as the alerts table on the **Alerts** page. For details, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
 
 Alerts from Observability rules also have a details page in {{observability}}. To open it, select **Take action** → **View details**.

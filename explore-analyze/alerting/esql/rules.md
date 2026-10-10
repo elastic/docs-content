@@ -13,19 +13,13 @@ description: "Rules define what to detect using ES|QL. Each match is written as 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-In {{alerting-v2-system}}, a rule is where detection starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten. Alerts (and any notifications) come from events that are grouped into an alert.
-
-Use this page to understand what a rule does, why notifications are sent by workflows on action policies rather than on the rule, and to find the right path to create, configure, or manage a rule.
+In {{alerting-v2-system}}, a rule is where detection starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten.
 
 ## Workflows on action policies send notifications [rules-dont-control-notifications]
 
-Rules define *what* to detect. Action policies match alerts from any rule and decide whether and when to invoke a workflow. The workflow sends the notification.
-
-This separation means you can update how alerts are routed to workflows without changing a rule's detection logic, and have multiple action policies respond to the same alert independently.
+A rule doesn't send notifications. [Action policies](action-policies/about-action-policies.md) match alerts from any rule and invoke a workflow, which sends the notification. You can change how policies route alerts without changing a rule's detection logic, and several policies can respond to the same alert independently.
 
 ## Create, configure, and manage rules [rules-next-steps]
-
-Use these pages to create a rule, change its settings, or manage existing rules.
 
 - [Create a rule](rules/create-a-rule.md): Compare creation paths and select the one that fits your workflow.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.

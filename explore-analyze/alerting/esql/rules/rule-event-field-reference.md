@@ -10,7 +10,7 @@ description: "Rule events are the append-only documents Kibana writes to .rule-e
 
 # Understand rule events [rule-reference]
 
-This page explains what {{alerting-v2-system}} writes to `.rule-events`, how `type` relates to [alerts](../alerts.md), and how to query that history. For the stored schema, refer to [How {{kib}} stores rule events](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
+{{alerting-v2-system-cap}} writes a rule event to `.rule-events` for each match. An event's `type` determines whether it belongs to an [alert](../alerts.md), and you can query the full history. For the stored schema, refer to [How {{kib}} stores rule events](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.

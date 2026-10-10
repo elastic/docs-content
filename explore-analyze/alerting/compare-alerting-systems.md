@@ -23,7 +23,7 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 
 | Goal | Suggested system | Availability |
 |---|---|---|
-| Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{alerting-v1-system-cap}}](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
+| Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{alerting-v1-system-cap}}](alerts.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga` |
 | Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.5+` |
 | Record matches as rule events with `type: signal` for later analysis, without sending notifications | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.5+` |
 | Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.5+` |

@@ -30,7 +30,7 @@ Skip tags and runbooks when the rule doesn't open [alerts](configure-rule-mode.m
 
 ## Add tags and runbooks to a rule [add-tags-runbooks]
 
-To add tags or a runbook, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../manage/configure-access.md#alerting-manage-rules-privileges).
+To add tags or a runbook, your role needs the [privileges to manage rules](../manage/configure-access.md#alerting-manage-rules-privileges).
 
 Tags and runbooks are part of the rule definition, so you set them in the rule form when you create or edit a rule:
 
@@ -41,12 +41,12 @@ Both are stored with the rule, so they take effect only after you save the rule.
 
 ## Link dashboards to a rule [attach-dashboards]
 
-To link dashboards, your role needs **Rules: All** (under **Alerting**). Refer to [Configure access](../manage/configure-access.md#alerting-manage-rules-privileges). Linked dashboards appear in the **Dashboards** subsection of the **Artifacts** section on the rule details page.
+To link dashboards, your role needs the [privileges to manage rules](../manage/configure-access.md#alerting-manage-rules-privileges). Linked dashboards appear in the **Dashboards** subsection of the **Artifacts** section on the rule details page.
 
 1. Go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the rule.
 2. On the **Overview** tab, expand **Artifacts**.
 3. In the **Dashboards** section:
-   * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: ga` Select **Attach related dashboards**. Search for a dashboard. Results are grouped into **Attached** and **Other dashboards**. Select the dashboards to link, then select **Save**. This updates the rule right away.
+   * {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Select **Attach related dashboards**. Search for a dashboard. Results are grouped into **Attached** and **Other dashboards**. Select the dashboards to link, then select **Save**. This updates the rule right away.
    * {applies_to}`stack: experimental =9.5` Select **Manage linked dashboards**. In **Related dashboards**, search for a dashboard and select it, then save the rule.
 
 To remove a link, select the remove icon next to the dashboard, then select **Remove** to confirm. Removing a link updates the rule right away. This removes the link only. The dashboard itself is unaffected.

@@ -32,16 +32,7 @@ Before you start, make sure you have the following:
 
 - **{{alerting-v2-system-cap}} turned on**: If {{alerting-v2-system}} is off, turn it on as described in [Set up {{alerting-v2-system}}](../setup.md#alerting-setup-turn-on).
 
-- **The required access**: Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must give you access to:
-
-  | Task | Required privilege |
-  |---|---|
-  | Create and manage rules | **Rules: All** (under **Alerting**) |
-  | View and triage alerts | **Alerts: All** (under **Alerting**); also automatically grants {{es}} `read` access to `.rule-events` and `.alert-actions` |
-  | Review execution history | **Execution history: Read** (under **Alerting**) |
-  | Create the tutorial index and load sample data | `create_index` and `write` index privileges on `checkout-service-logs` |
-
-  For the full breakdown of {{alerting-v2-system}} privileges, refer to [Configure access](../manage/configure-access.md).
+- **The required access**: Your role needs the privileges to create rules, triage alerts, and review execution history. Refer to [Configure access](../manage/configure-access.md#alerting-quick-reference). To create the tutorial index and load the sample data, your role also needs the `create_index` and `write` index privileges on `checkout-service-logs`.
 
 ## Prepare your environment [prepare-your-environment]
 

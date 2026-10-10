@@ -10,7 +10,7 @@ description: "How rule mode determines whether Kibana opens an alert or keeps ma
 
 # Rule mode [rule-mode]
 
-Rule mode decides what happens when a {{alerting-v2-system}} rule finds a match. The match can raise an alert that your team triages and gets notified about, or it can become a record that you query later. Use this page to see what each mode does, when to use it, and how to set it.
+Rule mode decides what happens when a {{alerting-v2-system}} rule finds a match. The match can raise an alert that your team triages and gets notified about, or it can become a record that you query later.
 
 ## What each rule mode does [rule-mode-options]
 
