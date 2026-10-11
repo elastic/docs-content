@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How Agent Builder creates rules and action policies in the experimental alerting system using the rule management skill, what the agent produces, and the save-order dependency."
+description: "Create rules and action policies in the experimental alerting system with Agent Builder. Describe what to monitor in natural language, review the proposal, and save in dependency order."
 ---
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
 
-Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the rule management skill resolves the data source and proposes a fully configured rule.
+Use {{agent-builder}} to create and configure rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the [`rule-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-rule-management-skill) skill resolves the data source and proposes a fully configured rule.
 
 ## Requirements [create-ai-agent-requirements]
 
@@ -23,17 +23,17 @@ Before you start, make sure you have the following:
   | To... | Required privilege |
   |---|---|
   | Access and use {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) |
-  | Save the rule | **Rules: All** (under **Alerting**) |
-  | Save the action policy | **Action Policies: All** (under **Alerting**) |
+  | Save the rule | **Rules: All** (under **Alerting V2**) |
+  | Save the action policy | **Action Policies: All** (under **Alerting V2**) |
   | Select or create the workflow destination | **Workflows: Read** to select an existing workflow; **Workflows: All** to create one (under **Analytics > Workflows**) |
 
 ## Propose and save a rule [ai-agent-rule-proposal]
 
 ### Start a proposal [ai-agent-start-proposal]
 
-To create a rule, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**. When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
+To create a rule, go to **Alerting V2 Preview** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**. When choosing a creation path, select the one that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the [`rule-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-rule-management-skill) skill configured.
 
-The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the {{alerting-v2-system}} data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
+The `rule-management` skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the {{alerting-v2-system}} data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
 
 ### Review the proposal [ai-agent-review-proposal]
 
@@ -62,10 +62,17 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 
 ## Set up notifications [ai-agent-notification-setup]
 
-After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating workflows and action policies.
+After a rule is saved, you can ask the agent to configure notifications. The agent creates the workflows and action policies needed to deliver them.
+
+{applies_to}`stack: experimental =9.5` The [`rule-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-rule-management-skill) skill creates the action policies itself.
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The [`action-policy-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-action-policy-management-skill) skill creates action policies. After the `rule-management` skill proposes a complete rule, it offers to set up notifications and then passes the request to `action-policy-management`.
 
 :::{note}
-Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, the skill explains the limitation. If the rule is still a draft in the conversation, the skill changes it so matches open alert episodes before you save it. If the rule is already saved, that setting can't change, so the skill offers to create a new rule with the same query and schedule that opens alert episodes, then set up notifications on that rule.
+Action policies invoke workflows for alert episodes only. If you ask the agent to set up notifications for a rule that doesn't open alert episodes, it explains the limitation and offers a way forward:
+
+- **Unsaved rule** - The agent changes the draft so that matches open alert episodes, then you save it.
+- **Saved rule** - Whether a rule opens alert episodes can't change after you save it, so the agent offers to create a new rule with the same query and schedule that does, and to set up notifications on that one.
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
@@ -77,11 +84,11 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 ### Save order [save-order-ai-agent]
 
-The three objects have a dependency chain that determines the order in which they must be saved:
+The three objects have a dependency chain that determines the order in which to save them:
 
 1. **Rule** - Save the rule first, so the action policy can link to it.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
-3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
+3. **Action policy** - You can't save the action policy until its workflow exists: {{kib}} disables **Create policy** while a workflow destination is still a draft. Nothing stops you from saving the policy before the rule, but the policy doesn't apply to the rule's alert episodes until the rule is saved.
 
 :::{note}
 :applies_to: {"stack": "removed 9.6+, experimental =9.5", "serverless": "unavailable"}
