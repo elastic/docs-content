@@ -57,7 +57,7 @@ $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {appli
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you ask to see the documents, the skill can also show them in an interactive [Discover table in the conversation](agent-builder-discover-tables.md).
 
     :::{dropdown} Assigned tools
-    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`, `platform.core.create_discover_session` {applies_to}`stack: preview 9.6+`
+    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`, `platform.core.create_discover_session` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 
     :::
 

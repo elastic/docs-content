@@ -24,7 +24,7 @@ If you start the conversation from **Discover** in {{esql}} mode, the [`discover
 
 ## Before you begin
 
-- Turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional). The `discover-session` skill is hidden until you do. This setting isn't available in {{sec-serverless}} projects.
+- Turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional). The `discover-session` skill is hidden until you do.
 - Use the default Elastic AI Agent, or a custom agent that has [Elastic capabilities](agent-builder-agents.md#elastic-capabilities) turned on or the `discover-session` skill assigned.
 - To open the table in **Discover**, you need the **Read** or **All** privilege for **Discover**.
 - To save the table to a dashboard, you need the **All** privilege for **Dashboard**.
