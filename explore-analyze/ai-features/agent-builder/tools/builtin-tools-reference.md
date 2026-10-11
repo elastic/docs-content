@@ -18,11 +18,11 @@ products:
 
 This page lists all built-in tools available in {{agent-builder}}, grouped by [namespace](custom-tools.md#protected-namespaces). Built-in tools are read-only: you can't modify or delete them.
 
-Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `platform.sig_events`, `platform.workflows`, `observability`, `security`) reflect this scoping.
+Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `platform.sig_events`, `platform.workflows`, `observability`, `security`) reflect this scoping. The [HTTP API tools](#http-api-tools) have no prefix.
 
 Some tools are in technical preview or require a license, an [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), or an experimental feature flag before they become available. These requirements are called out in each tool's entry.
 
-[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. You can also assign any available built-in tool to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create.
+[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are preconfigured with relevant tools. You can also assign any available built-in tool to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create, except the HTTP API tools, which every agent has automatically.
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
@@ -422,6 +422,36 @@ PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
 
 `security.pci_field_mapper` {applies_to}`stack: preview 9.5`
 :   Inspects non-ECS index fields and suggests mappings to ECS fields for PCI queries. Use when scope discovery reports low ECS coverage.
+
+## HTTP API tools
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+HTTP API tools let agents look up and call {{es}} and {{kib}} HTTP APIs from a built-in set of supported API operations. Every agent has these tools automatically, and they don't appear on the **Tools** page. You can't assign them to an agent or remove them from one, and turning off [Elastic capabilities](../agent-builder-agents.md#elastic-capabilities) doesn't remove them. Their IDs have no prefix such as `platform.core`. You see these tools when you [inspect an agent's tool calls](../chat.md#inspect-tool-calls-and-reasoning) and when `execute_api` asks you to confirm a change.
+
+The tools send requests with the privileges of the current user or API key, so an agent can call only the APIs that the user or API key is allowed to call. {{kib}} API calls run in the current space. To learn more, refer to [Permissions and access control](../permissions.md#how-permissions-work).
+
+`describe_api` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Returns the specification of an API operation, given the operation's identifier and whether it's an {{es}} or {{kib}} API. The specification includes the HTTP method, the path, a description, the parameter schema, and whether `execute_api` asks for confirmation before calling the operation. The tool summarizes large nested types, and the agent can expand them with `describe_api_type`.
+
+`describe_api_type` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Returns the full schema of a type that `describe_api` summarized.
+
+`execute_api` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Calls an {{es}} or {{kib}} API operation and returns the raw response body. The tool truncates oversized responses, so the agent narrows results with parameters such as filters, size limits, or field selections.
+
+    Before each call to an operation that can change or delete data, `execute_api` asks you to confirm. Confirmation covers most write and delete operations, such as bulk indexing, document updates, and index deletion. Read operations, including searches, run without a prompt, and so do some operations that only create something new, such as creating an index or an API key. Whether an operation prompts depends on the operation, not on its HTTP method. To learn what the prompt shows, refer to [Confirm a change](../chat.md#confirm-a-change).
+
+    In runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) and sub-agent runs, {{agent-builder}} declines the call unless the operation was approved in advance for that run. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+
+`discover_apis` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Lists the API operations available on {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.
+
+    **Prerequisites:** Turn on the `agentBuilder:apiDiscovery` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (**Elastic Agent Builder: API Discovery**) in each {{kib}} space where you want agents to use it. It's off by default.
+
+When API discovery is off, an agent can call only operations whose identifier it already knows. To have an agent use a specific operation, include the operation's identifier in the agent's instructions or in your message. {{es}} identifiers combine the API group and the operation name, separated by a period, such as `indices.create` or `cluster.health`. Operations that don't belong to a group use only the name, such as `bulk`. {{kib}} identifiers combine the API group with a name based on the operation ID in the [{{kib}} API reference]({{kib-apis}}), such as `dashboards.create-dashboard` or `alerting.delete-alerting-rule-id`.
 
 ## Inline tools
 

@@ -102,6 +102,8 @@ The **Enable Elastic capabilities** toggle controls whether an agent is automati
 
 This toggle is available for all agents, both built-in and custom.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The toggle doesn't affect the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools), which every agent has.
+
 ### Default settings
 
 - **Built-in agents**: Elastic capabilities are **enabled** by default. Disable if you want to limit the agent to a specific set of tools and skills.
