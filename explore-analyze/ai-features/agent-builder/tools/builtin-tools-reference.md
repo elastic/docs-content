@@ -437,12 +437,12 @@ The tools send requests with the privileges of the current user or API key, so a
 :   Returns the specification of an API operation, given the operation's identifier and whether it's an {{es}} or {{kib}} API. The specification includes the HTTP method, the path, a description, the parameter schema, and whether `execute_api` asks for confirmation before calling the operation. The tool summarizes large nested types, and the agent can expand them with `describe_api_type`.
 
 `describe_api_type` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-:   Returns the full schema of a type that `describe_api` summarized.
+:   Returns the schemas of one or more types that `describe_api` summarized.
 
 `execute_api` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   Calls an {{es}} or {{kib}} API operation and returns the raw response body. The tool truncates oversized responses, so the agent narrows results with parameters such as filters, size limits, or field selections.
 
-    Before each call to an operation that can change or delete data, `execute_api` asks you to confirm. Confirmation covers most write and delete operations, such as bulk indexing, document updates, and index deletion. Read operations, including searches, run without a prompt, and so do some operations that only create something new, such as creating an index or an API key. Whether an operation prompts depends on the operation, not on its HTTP method. To learn what the prompt shows, refer to [Confirm a change](../chat.md#confirm-a-change).
+    Before each call to an operation that can change or delete existing data, `execute_api` asks you to confirm. Confirmation covers most write and delete operations, such as bulk indexing, document updates, and index deletion. Read operations, including searches, run without a prompt, and so do some operations that only create something new, such as creating an index or an API key. Whether an operation prompts depends on the operation, not on its HTTP method. To learn what the prompt shows, refer to [Confirm a change](../chat.md#confirm-a-change).
 
     In runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) and sub-agent runs, {{agent-builder}} declines the call unless the operation was approved in advance for that run. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 

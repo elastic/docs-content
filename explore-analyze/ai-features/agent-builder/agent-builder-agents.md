@@ -106,7 +106,7 @@ This toggle is available for all agents, both built-in and custom.
 
 ### Default settings
 
-- **Built-in agents**: Elastic capabilities are **enabled** by default. Disable if you want to limit the agent to a specific set of tools and skills.
+- **Built-in agents**: Elastic capabilities are **enabled** by default. Disable if you want to limit the agent to the tools and skills you assign. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent keeps the HTTP API tools.
 - **Custom agents**: Elastic capabilities are **disabled** by default. Enable if you want the agent to have access to all current and future Elastic-built tools, skills, and plugins.
 
 To review which tools and skills are active, open the agent's **Tools** or **Skills** tab after enabling the toggle. Elastic-provided items are marked with a lock icon.
