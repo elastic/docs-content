@@ -9,7 +9,7 @@ type: overview
 
 # Choose a deployment type [choose-a-deployment-type]
 
-{{es}} runs on several deployment types, and each type fits different operational needs. The type you select sets who operates the cluster, how usage is billed, and which {{kib}} search tools you can use. This page helps you select the deployment type that fits your needs.
+{{es}} is at the core of every Elastic deployment type. The deployment type you choose determines who manages the infrastructure, how usage is billed, and which {{kib}} search tools are available. Use this page to compare the options and find the best fit for your operational needs.
 
 :::::{stepper}
 
