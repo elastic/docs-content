@@ -20,6 +20,8 @@ When you open **Discover** or **Dashboards**, you see one of the following scree
 - A **How do you want to explore your data?** screen with a **Create a data view** card and a **Query your data with ES|QL** card.
 - A card that asks you to add data. The card is titled **Add integrations**, or **Add data** in some serverless projects. If you can't add integrations, the card is titled **Contact your administrator**.
 
+In 9.0 and 9.1, the first screen is titled **How do you want to explore your Elasticsearch data?**.
+
 ## Diagnosis
 
 {{kib}} runs its checks with your own permissions, in your current [space](/deploy-manage/manage-spaces.md). Data you can't access, and data views in another space, count as missing.
@@ -64,7 +66,7 @@ Use the option that matches the screen you see.
 If you see **How do you want to explore your data?**, {{es}} has data that you can explore in either of the following ways:
 
 - To explore the data with a data view, select **Create data view** on the **Create a data view** card and define the data view. When you save it, the screen closes and the app opens, in **Discover** or in **Dashboards**. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md).
-- To query the data without a data view, select **Try ES|QL** on the **Query your data with ES|QL** card. In **Discover**, this opens {{esql}} mode. In **Dashboards**, this opens a new dashboard with a chart built from an {{esql}} query on your data. Refer to [](/explore-analyze/discover/try-esql.md).
+- To query the data without a data view, select **Try ES|QL** on the **Query your data with ES|QL** card. {{kib}} picks an index for the starting query: `logs*` if the name of a local index starts with `logs`, otherwise the first index it finds. In **Discover**, this opens {{esql}} mode with a query on that index. In **Dashboards**, this opens a new dashboard with a chart built from a query on that index. Refer to [](/explore-analyze/discover/try-esql.md).
 
 If **Create data view** is unavailable, your role can't create data views. Ask an administrator for the required permissions.
 
@@ -72,7 +74,8 @@ If **Create data view** is unavailable, your role can't create data views. Ask a
 
 If you see **Add integrations**, **Add data**, or **Contact your administrator**, {{kib}} found no data and no data view. The **Contact your administrator** card has no button, because your role can't add integrations.
 
-- To add data, select **Browse integrations** on the card. After the data arrives, return to **Discover** or **Dashboards**. If you now see **How do you want to explore your data?**, follow the steps in the previous section. For other ways to ingest data, refer to [](/manage-data/ingest.md).
+- To add data, select **Browse integrations** on the card. In 9.0 and 9.1, the button is labeled **Add integrations**. After the data arrives, return to **Discover** or **Dashboards**. If you now see **How do you want to explore your data?**, follow the steps in the previous section. For other ways to ingest data, refer to [](/manage-data/ingest.md).
+- If you expect data from an agent, Logstash, or another source, check that {{es}} received it. In **{{index-manage-app}}**, look for the index on the **Indices** tab or the data stream on the **Data Streams** tab. If it isn't listed, check your ingest pipeline and then your role. Refer to [](/manage-data/data-store/perform-index-operations.md).
 - If you expect data to be there, make sure you're in the {{kib}} space that contains your data views and dashboards.
 - If the data is in {{es}} but you still see the screen, ask an administrator to confirm that your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) gives you access to the indices.
 - If your data is in an index whose name starts with a dot, create a data view for it on the **Data Views** management page. A data view is enough for **Discover** and **Dashboards** to open. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md).
