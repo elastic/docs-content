@@ -225,6 +225,7 @@ stack: ga 9.6
 
 [Exemplars](https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars) are individual observations that Prometheus can attach to a time series, such as a histogram bucket observation together with the trace ID of the request that produced it.
 The remote write endpoint stores the exemplars included in a `WriteRequest`, so you can navigate from a metric to a trace that contributed to it.
+Exemplars are only stored when you send remote write requests directly to the {{es}} endpoint. The [managed Prometheus remote write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) doesn't forward exemplars yet.
 
 {{es}} stores exemplars in a time series data stream named after the metrics data stream of their time series: exemplars of time series routed to `metrics-<dataset>.prometheus-<namespace>` are written to `exemplars-<dataset>.prometheus-<namespace>`.
 [Routing](#send-data-to-different-data-streams) by URL path or by labels applies to exemplars in the same way as to samples.
@@ -263,7 +264,6 @@ If you don't need exemplars, or want to avoid the additional storage, turn it of
 Prefer stopping exemplars at the source: it works on every deployment type and saves the bandwidth and processing of sending data that is discarded anyway.
 
 * **Stop sending exemplars (preferred)**: In Prometheus, remove `send_exemplars: true` from the remote write target or set it to `false`, which is the default.
-  In Grafana Alloy, set `send_exemplars = false` in the `endpoint` block of the `prometheus.remote_write` component.
 
 :::{include} /manage-data/_snippets/turn-off-exemplar-ingestion.md
 :::
