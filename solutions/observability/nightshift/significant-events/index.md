@@ -12,15 +12,15 @@ products:
 
 # Significant Events [streams-sig-events-overview]
 
-Significant Events continuously converts raw log data into a ranked feed of incidents. The pipeline moves from broad to narrow. Many alerts fire, an AI agent narrows these down into findings, and the most important ones are surfaced as Significant Events.
+Significant Events continuously converts raw log data into a ranked feed of incidents. The pipeline moves from broad to narrow. Many alerts fire, an AI agent narrows these down into findings, and the most important ones are surfaced as significant events.
 
-For example: you onboard a stream, Significant Events extracts what's in it ("this stream contains a Python gRPC service called `recommendationservice` running on GKE"), generates targeted detection rules ("detect gRPC connection failures"), and runs those rules continuously. Results flow through discovery and surface as correlated Significant Events across your entire environment.
+For example, you onboard a stream, Significant Events extracts what's in it ("this stream contains a Python gRPC service called `recommendationservice` running on GKE"), generates targeted detection rules ("detect gRPC connection failures"), and runs those rules continuously. Results flow through discovery and surface as correlated significant events across your entire environment.
 
 ## Before you get started [sig-events-prerequisites]
 
 Significant Events requires an {{obs-serverless}} project on the Complete tier. Elastic nightshift runs on {{serverless-full}} during the private preview.
 
-Significant Events uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) for LLM calls. You don't need to configure an LLM connector or select a model.
+Significant Events uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) for large language model (LLM) calls. You don't need to configure an LLM connector or select a model.
 
 ## How the pipeline works [sig-events-pipeline]
 
@@ -49,4 +49,4 @@ Refer to the following pages for more information on Significant Events:
 - [Operator guide](./operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
-- [Elastic nightshift](../nightshift.md): Use the Elastic nightshift UI to triage and investigate Significant Events
+- [Elastic nightshift](../nightshift.md): Use the Elastic nightshift UI to triage and investigate significant events

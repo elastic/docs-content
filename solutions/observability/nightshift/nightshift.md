@@ -10,12 +10,12 @@ products:
 
 # Elastic nightshift AI SRE
 
-Elastic nightshift AI SRE is built into {{observability}} to find, investigate, and fix production problems alongside your team. It helps monitor your systems, lets you start investigations from your alerts and Significant Events to find likely causes, and helps remediate incidents.
+Elastic nightshift AI SRE is built into {{observability}} to find, investigate, and fix production problems alongside your team. It helps monitor your systems, lets you start investigations from your alerts and significant events to find likely causes, and helps remediate incidents.
 
 Elastic nightshift is made up of the following engines, which work together to detect problems in your systems and investigate them:
 
 1. **Detection engine**: Learns your systems, then tells you when something worth knowing has happened. Elastic nightshift extracts [Knowledge Indicators](./significant-events/knowledge-indicators.md) from your data, such as which services are running, what infrastructure they use, and how they depend on each other. It generates detection rules from them and runs those rules continuously. When rule firings add up to something meaningful, it surfaces a [significant event](./significant-events/index.md) as an alert, so you can manage and route it like any other Elastic alert.
-2. **Investigation engine**: Works out what's behind an alert. You can start an [investigation](./investigations.md) from an alert, a Significant Event, or the home page. The investigation gathers evidence from your data and from what Elastic nightshift knows about your systems, determines the likely cause, and reports its findings with proposed actions.
+2. **Investigation engine**: Works out what's behind an alert. You can start an [investigation](./investigations.md) from an alert, a significant event, or the home page. The investigation gathers evidence from your data and from what Elastic nightshift knows about your systems, determines the likely cause, and reports its findings with proposed actions.
 3. **Context engine**: The shared knowledge layer the other engines draw on. It stores what Elastic nightshift knows about your systems, including the Knowledge Indicators that detection produces, and makes that knowledge available when an investigation starts. Through [Context](./memory.md), you can review and correct that knowledge at any time, and add knowledge of your own for investigations to use.
 
 ## Requirements [nightshift-requirements]

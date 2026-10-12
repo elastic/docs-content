@@ -16,7 +16,7 @@ Use this guide to understand how Significant Events affects your cluster and how
 
 - [What runs where](#sig-events-op-components): Which components run on {{kib}}, {{es}}, and Workflows
 - [System impact](#sig-events-op-impact): Query load, pipeline lag, memory, and storage growth
-- [Cost drivers](#sig-events-op-costs): LLM call sites and token usage by phase
+- [Cost drivers](#sig-events-op-costs): Large language model (LLM) call sites and token usage by phase
 - [Pause and resume](#sig-events-op-disable): How to pause Significant Events activity or stop Knowledge Indicator (KI) refresh
 - [Recovery procedures](#sig-events-op-recovery): Symptoms and actions for common degraded states
 
@@ -50,7 +50,7 @@ The following table provides illustrative estimates of how long each phase takes
 |---|---|
 | First detection | ~10 min |
 | Discovery | ~10 min after detection |
-| New Significant Event | Sync with discovery |
+| New significant event | Sync with discovery |
 | Stale re-review | Up to ~10 min |
 
 **{{kib}} memory**
@@ -70,9 +70,9 @@ Significant Events writes to the following data streams:
 | `.significant_events-detections` | Detection Workflow | Append-only; one document per observed state transition per rule |
 | `.significant_events-discoveries` | Discovery agent | Append-only; one document per discovery state change |
 
-The Discovery agent writes Significant Events as alert documents to `.rule-events`, the same index that holds rule execution results, so you can manage and route them like any other alert.
+The Discovery agent writes significant events as alert documents to `.rule-events`, the same index that holds rule execution results, so you can manage and route them like any other alert.
 
-The `.significant_events-detections` data stream uses DSL with a default 90-day retention. You can override retention using the DSL API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
+The `.significant_events-detections` data stream uses a data stream lifecycle (DSL) with a default 90-day retention. You can override retention using the data stream lifecycle API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
 
 ## Cost drivers [sig-events-op-costs]
 
@@ -84,7 +84,7 @@ LLM costs scale with the number of streams, the number of promoted rules, and wh
 | Query generation | Per stream after features exist | Medium; requires reasoning and ES\|QL validation |
 | Discovery agent (including triage) | ~10 min cycles when unprocessed detections exist | Bursty; scales with the number of active alerting rules firing |
 
-Continuous extraction is the largest cost multiplier. When enabled, feature identification runs on a recurring schedule across all eligible streams. Enabling it on a large number of streams significantly increases token consumption.
+Continuous extraction is the largest cost multiplier. When enabled, feature identification runs on a recurring schedule across all eligible streams. Enabling it on many streams significantly increases token consumption.
 
 ### Daily run limits [sig-events-op-cost-limits]
 
@@ -92,7 +92,7 @@ Deployment-wide daily run limits cap how many scheduled runs each activity can s
 
 ## Pause and resume [sig-events-op-disable]
 
-You can pause all Significant Events activity from the settings page. Managing these settings requires the manage engines privilege.
+To pause all Significant Events activity, select **Show all events** from the Elastic nightshift home page and select **Settings**. Managing these settings requires the manage engines privilege.
 
 Select **Pause Significant Events activity** to stop scheduled discovery, continuous onboarding, detections, investigations, and the alerting rules backing knowledge indicator queries. The pause applies across the entire deployment — every {{kib}} space — not only the current space. Existing data is kept.
 
@@ -102,10 +102,10 @@ Resuming restores the managed workflows and rules that pause disabled, and turns
 
 To stop continuous onboarding without pausing Significant Events:
 
-1. Go to the Significant Events settings.
+1. Select **Show all events** from the Elastic nightshift home page and select **Settings**.
 2. Under **Continuous KI onboarding**, turn off **Enable continuous KI onboarding**.
 
-Already-extracted KIs are not deleted, and manually-triggered extractions continue to work.
+Already-extracted KIs aren't deleted, and manually triggered extractions continue to work.
 
 
 ## Recovery procedures [sig-events-op-recovery]
@@ -127,9 +127,9 @@ Already-extracted KIs are not deleted, and manually-triggered extractions contin
 
 ### Incidents not clearing
 
-**Symptom**: A Significant Event remains open after the underlying condition appears to have resolved.
+**Symptom**: A significant event remains open after the underlying condition appears to have resolved.
 
-**Action**: This is expected behavior. The Discovery agent must verify that the underlying condition has resolved. Detections clearing alone is not sufficient.
+**Action**: This is expected behavior. The Discovery agent must verify that the underlying condition has resolved. Detections clearing alone isn't sufficient.
 
 ## Learn more [sig-events-operator-learn-more]
 
