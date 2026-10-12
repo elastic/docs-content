@@ -20,7 +20,7 @@ Your endpoint details are on your project's page in the {{ecloud}} Console.
     :width: 50%
     :::
 
-If your project runs on AWS, the panel also lists an **AWS PrivateLink endpoint**. Use it only when you connect through AWS PrivateLink. To learn more, refer to [](/deploy-manage/security/private-connectivity-aws.md).
+If your project runs on AWS and AWS PrivateLink is set up, the panel also lists an **AWS PrivateLink endpoint**. Use it only when you connect through AWS PrivateLink. To learn more, refer to [](/deploy-manage/security/private-connectivity-aws.md).
 
 :::{tip}
 You can also find your endpoint details in {{kib}}. From the **Help menu** {icon}`question` or the project selector in the header, select **Connection details**, then copy the **{{es}} endpoint** from the **Endpoints** tab.

@@ -3,7 +3,7 @@ applies_to:
   stack:
   serverless:
 navigation_title: Choose a deployment type
-description: Select an Elasticsearch deployment model for search, compare Serverless project types, and start a deployment.
+description: Select an Elasticsearch deployment model for search, get it running, and try a search quickstart.
 type: overview
 ---
 
@@ -13,13 +13,13 @@ type: overview
 
 :::::{stepper}
 
-::::{step} Select a deployment model
+::::{step} Choose a deployment and get {{es}} running
 
 You can choose from several deployment options for your search use cases with Elastic, including self-managed deployments, {{ech}}, and {{serverless-short}} projects.
 
 1. Use the [](/deploy-manage/deploy/deployment-comparison.md) to learn how security, cluster management, monitoring, and data lifecycle differ. Choose the one that best fits your needs.
 
-2. If you go with {{serverless-short}}, compare {{es-serverless}} and {{es}} {{vectordb}}:
+2. If you go with {{serverless-short}}, compare {{es-serverless}} and {{es}} {{vectordb}} by use case:
 
 :::{include} _snippets/serverless-project-type-comparison.md
 :::
@@ -28,16 +28,25 @@ You can choose from several deployment options for your search use cases with El
 For most search workloads using vectors, the recommended option is a {{serverless-short}} {{es}} {{vectordb}} project. [Sign up for a free trial](https://cloud.elastic.co/registration?onboarding_token=vector).
 :::
 
+After you select a type, use the matching guide to get {{es}} running:
+
+* {{serverless-short}}:
+  * [{{es}} {{vectordb}}](/solutions/vector-database/get-started.md)
+  * [{{es}} project](/solutions/elasticsearch-solution-project/get-started.md)
+* [Self-managed](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md)
+* [{{ece}}](/deploy-manage/deploy/cloud-enterprise/create-deployment.md)
+* [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md#eck-quickstart)
+* [{{ech}}](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md)
+
 ::::
 
-::::{step} Start a deployment
+::::{step} Try a quickstart
 
-After you have selected a deployment type, use the following guides to start a deployment:
+These quickstarts show how to use {{es}} for search. They work on any deployment type:
 
-* [](/solutions/vector-database/get-started.md)
-* [](/solutions/elasticsearch-solution-project/get-started.md)
-* [](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md)
-* [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md)
+* [](/solutions/search/get-started/index-basics.md): create an index, add documents, and run a search
+* [](/solutions/search/get-started/keyword-search-python.md): build a search query with Python
+* [](/solutions/search/get-started/semantic-search.md): run a semantic search with the `semantic_text` field type
 
 ::::
 

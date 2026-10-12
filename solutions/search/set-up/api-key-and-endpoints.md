@@ -9,7 +9,7 @@ type: how-to
 
 # Get your API key and endpoints [get-your-api-key-and-endpoints]
 
-To connect a client to {{es}} for search, you need the endpoint URL and an API key. The steps depend on where your deployment runs.
+Find the endpoint URL and an API key. You need them to connect a client to {{es}} for search. The steps depend on where your deployment runs.
 
 :::{include} /solutions/elasticsearch-solution-project/_snippets/deployment-tab-legend.md
 :::
