@@ -17,7 +17,7 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-When you assign an [AI index](concepts.md#ai-indices) to an {{agent-builder}} agent, the agent can retrieve [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) during a conversation. It can answer from a KI or use the KI's guidance to query source data when the question requires current details.
+When you assign an [AI index](concepts.md#ai-indices) to an {{agent-builder}} agent, the agent can retrieve [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) during a conversation. If the AI index has [memory](concepts.md#memory) enabled, the agent can also save useful task context and retrieve it in later conversations.
 
 ## Before you begin
 
@@ -43,13 +43,15 @@ The list contains AI indices registered in the current space that you can access
 
 ## What the assignment provides
 
-When an agent has at least one AI index, {{agent-builder}} automatically gives it three dedicated {{context-engine}} tools:
+When an agent has at least one AI index, {{agent-builder}} automatically gives it three dedicated {{context-engine}} retrieval tools:
 
 - `platform.context_engine.list_ai_indices` lists the accessible AI indices and their query targets.
 - `platform.context_engine.describe_ai_index` returns the selected AI index's purpose, fields, KI types, tags, and example queries.
 - `platform.context_engine.query_ai_indices` runs an {{esql}} query against AI indices with the current space applied automatically.
 
-{{agent-builder}} also adds the available AI indices and retrieval guidance to the agent's system instructions. You do not need to add the three tools manually or repeat their sequence in custom instructions.
+If an assigned AI index has [memory](concepts.md#memory) enabled, {{agent-builder}} also gives the agent `platform.context_engine.remember` and `platform.context_engine.forget`. These tools let it save useful task context and exclude obsolete memories from later retrieval. To configure and test memory, refer to [Save and retrieve memories with {{context-engine}}](save-and-retrieve-memories.md).
+
+{{agent-builder}} also adds the available AI indices and retrieval guidance to the agent's system instructions. You do not need to add these tools manually or repeat their sequence in custom instructions.
 
 The assignment provides access to KIs, not to the original source data. If a KI contains an {{esql}} pattern for retrieving current details, the agent also needs a source-query tool such as `platform.core.execute_esql` and permission to read the source indices. For a custom agent, you can enable built-in Elastic capabilities or assign only the source tools required for its task.
 
