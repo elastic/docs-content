@@ -20,6 +20,8 @@ type: overview
 
 The [`_search` endpoint]({{es-apis}}operation/operation-search) accepts queries written in Query DSL syntax.
 
+To look up a specific query type and its parameters, refer to the [Query DSL reference](elasticsearch://reference/query-languages/querydsl.md).
+
 Query DSL is one of several query languages in {{es}}. To compare it with {{esql}} and retrievers, refer to [Build your search queries](/solutions/search/querying-for-search.md). For all query languages, refer to [Query languages](/explore-analyze/query-filter/languages.md).
 
 
