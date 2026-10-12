@@ -225,7 +225,7 @@ $$$agent-builder-connector-authoring-skill$$$ `connector-authoring` {applies_to}
 
     :::
 
-    {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` This skill adds the connector to the connectors library but doesn't assign it to an agent. To let an agent use the new connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library but doesn't assign it to an agent. To let an agent use the new connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
 
 ## Observability skills
 ```{applies_to}

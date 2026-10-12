@@ -26,33 +26,13 @@ The {{agent-builder}} connectors library lets you configure action-based connect
 {{agent-builder}} connectors leverage the underlying {{kib}} [Stack connectors](/deploy-manage/manage-connectors.md) framework to securely store credentials and manage integrations. However, they are distinct from [Generative AI connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which are used exclusively to configure external LLM providers and are deprecated. {{agent-builder}} connectors are not affected by that deprecation.
 :::
 
-::::{applies-switch}
-
-:::{applies-item} { stack: preview 9.6+, serverless: preview }
-Connectors are managed per {{kib}} space from **Manage components** → **Connectors** and assigned to each agent. Individual connector types in the catalog can be marked **Technical preview**.
-:::
-
-:::{applies-item} { stack: preview 9.4-9.5 }
-Connectors are managed per {{kib}} space from **Manage components** → **Connectors**. By default, any agent can use any connector in the space. Individual connector types in the catalog can be marked **Technical preview**.
-:::
-
-::::
+You manage connectors per {{kib}} space from **Manage components** → **Connectors**. Individual connector types in the catalog can be marked **Technical preview**.
 
 ## How agents use connectors
 
-::::{applies-switch}
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` An agent can only run the connectors assigned to it. Agents look up connectors and load their sub-actions and parameter schemas at run time through the built-in `connector-discovery` [skill](skills.md), which **Enable Elastic capabilities** includes. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
 
-:::{applies-item} { stack: preview 9.6+, serverless: preview }
-An agent can only run the connectors assigned to it. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
-
-Agents look up connectors and load their sub-actions and parameter schemas at run time through the built-in `connector-discovery` [skill](skills.md). **Enable Elastic capabilities** includes this skill. If the toggle is off for an agent, assign the skill to the agent yourself.
-:::
-
-:::{applies-item} { stack: preview 9.4-9.5 }
-Unlike standalone tools, {{agent-builder}} connectors don't require manual assignment to agents by default. {{kib}} makes connector capabilities natively available during conversations through a dynamic schema-attachment model.
-:::
-
-::::
+{applies_to}`stack: preview 9.4-9.5` Unlike standalone tools, connectors don't need to be assigned to agents by default: any agent can use any connector in the space.
 
 When an agent needs to interact with an external system, it automatically reads the schemas of the connectors available to it. It then uses a built-in system tool (`platform.core.execute_connector_sub_action`) to independently format API payloads and run specific sub-actions (for example, looking up a Slack channel ID or searching AlienVault OTX for threat intelligence) without any manual tool mapping.
 
@@ -60,9 +40,9 @@ When an agent needs to interact with an external system, it automatically reads 
 
 To register a new connector:
 
-1. In the left sidebar, select **Manage components** → **Connectors** to open the **Connectors library**.
+1. In the sidebar, select **Manage components** → **Connectors** to open the **Connectors library**.
 2. Select **Create connector**.
-3. Choose a connector type from the catalog.
+3. Select a connector type from the catalog.
 4. Provide the required configuration.
 5. Select **Save**.
 
@@ -70,7 +50,7 @@ The configured connector appears in the library.
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use the connector, [assign it to the agent](#assign-connectors-to-an-agent).
 
-{applies_to}`stack: preview 9.4-9.5` By default, the connector is immediately available for your agents to use dynamically.
+{applies_to}`stack: preview 9.4-9.5` By default, any agent can use the connector immediately.
 
 ## Assign connectors to an agent [assign-connectors-to-an-agent]
 
@@ -81,17 +61,15 @@ serverless: preview
 
 An agent can only use the connectors you assign to it, and new agents start with none. You assign connectors from the agent after you save it.
 
-To assign connectors, you need permission to edit the agent and the **Actions and Connectors: All** {{kib}} privilege.
+To assign connectors, you need permission to edit the agent and the **Actions and Connectors: All** {{kib}} privilege. If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill. Without it, the agent can't find its connectors.
 
 To assign a connector to an agent:
 
 1. Select the agent. Then, in the sidebar under **Customize**, select **Connectors**.
 2. Select **Add connector**.
-3. Choose one of the following:
+3. Select one of the following:
    - **From library**: Assign connectors that already exist in the connectors library.
    - **Create new connector**: Configure a new connector. It's added to the library and assigned to the agent.
-
-If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill. Without it, the agent can't find its connectors.
 
 To unassign a connector, remove it from the agent's **Connectors** page. The connector stays in the library, and other agents it's assigned to can still use it.
 

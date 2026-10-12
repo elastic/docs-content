@@ -75,7 +75,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 
-    {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` The tool only runs connectors [assigned to the agent](../connectors.md#assign-connectors-to-an-agent). Calls to other connectors fail with an error.
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool only runs connectors [assigned to the agent](../connectors.md#assign-connectors-to-an-agent). Calls to other connectors fail with an error.
 
     **Prerequisites:** {applies_to}`stack: preview 9.4-9.5` The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
 
