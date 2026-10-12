@@ -691,7 +691,7 @@ links:
   - label: API keys
     url: /deploy-manage/api-keys.md
   - label: Audit logging
-    url: /deploy-manage/security/logging-configuration/security-event-audit-logging.md
+    url: /deploy-manage/monitor/stack-audit-logging.md
 :::
 
 :::{link-card}

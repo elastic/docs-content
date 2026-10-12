@@ -572,7 +572,7 @@ links:
   - label: Field and document-level security
     url: /deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
   - label: Audit logging
-    url: /deploy-manage/security/logging-configuration/security-event-audit-logging.md
+    url: /deploy-manage/monitor/stack-audit-logging.md
 :::
 
 ::::
