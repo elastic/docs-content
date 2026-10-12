@@ -151,9 +151,9 @@ Each engine reports one of the following statuses:
 | --- | --- |
 | `installing` | The engine is being set up for the first time. |
 | `started` | The engine is running and extracting entities on schedule. |
-| `stopped` | The engine is paused; extraction is not running. |
+| `stopped` | The engine is paused, and extraction is not running. |
 | `updating` | A configuration change is being applied. |
-| `error` | The engine encountered a failure. Check the component health indicators on the Engine Status tab for details. |
+| `error` | The engine encountered a failure. Check the component health indicators on the **Engine Status** tab for details. |
 
 ## Supported integrations [entity-store-integrations]
 ```yaml {applies_to}
@@ -258,13 +258,6 @@ A process might be **unhealthy** if:
 
 If log extraction appears slow, you can modify the following log extraction configuration settings to balance freshness, coverage, and query cost. Use the [update entity store API]({{kib-apis}}operation/operation-put-security-entity-store) to apply these settings.
 
-#### `docsLimit`
-
-Use `docsLimit` to control how many entities can be processed in one extraction page.
-
-* Lower it if {{kib}} is consuming too much memory.
-* Default: `10000` entities.
-
 #### `additionalIndexPatterns`
 
 Use `additionalIndexPatterns` to include index patterns that fall outside the [default {{elastic-sec}} data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security).
@@ -272,6 +265,13 @@ Use `additionalIndexPatterns` to include index patterns that fall outside the [d
 * Use this if you have entity-bearing data in indices not covered by the default data view.
 * Accepts an array of index pattern strings.
 * Default: empty (only the default data view is scanned).
+
+#### `docsLimit`
+
+Use `docsLimit` to control how many entities can be processed in one extraction page.
+
+* Lower it if {{kib}} is consuming too much memory.
+* Default: `10000` entities.
 
 #### `excludedIndexPatterns`
 
@@ -285,7 +285,9 @@ Use `excludedIndexPatterns` to exclude specific index patterns from log extracti
 Use `frequency` to control how often extraction runs.
 
 * Decrease frequency if extraction is healthy but too resource-intensive and {{es}} CPU utilization is too high. The minimum supported value is `30s`.
-* Default: `1m`. The `service` entity type defaults to `10m`.
+* Default: `1m`. For the `service` entity type, the default differs depending on your version:
+  * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `service` entity type defaults to `10m`.
+  * {applies_to}`stack: ga 9.4-9.5` The `service` entity type defaults to `1m`.
 
 #### `maxLogsPerPage`
 
