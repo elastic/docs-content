@@ -181,6 +181,4 @@ Certain types of queries generally run slowly because of the way they are implem
 
 {applies_to}`serverless: unavailable` To block these queries, set `search.allow_expensive_queries` to `false` with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). This requires the `manage` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The setting is dynamic, so the change applies without a restart. While it is `false`, {{es}} rejects the listed queries with an error instead of running them. The default is `true`.
 
-On serverless, you can't change this setting, and {{es}} allows these queries.
-
 To browse every query type, refer to the [Query DSL reference](elasticsearch://reference/query-languages/querydsl.md). To run and test searches, refer to [Build your search queries](/solutions/search/querying-for-search.md).
