@@ -17,7 +17,6 @@ products:
 
 :::{get-started}
 title: Get started with Elasticsearch
-intro: Start a free Elastic Cloud trial or a local development environment, then run your first queries.
 steps:
   - title: Run Elasticsearch
     options:

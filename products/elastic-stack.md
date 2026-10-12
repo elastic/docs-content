@@ -17,7 +17,6 @@ products:
 
 :::{get-started}
 title: Get started with the Elastic Stack
-intro: Start a free Elastic Cloud trial or a local development environment, then ingest data and explore it in Kibana.
 steps:
   - title: Run Elasticsearch and Kibana
     options:

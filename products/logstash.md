@@ -17,7 +17,6 @@ products:
 
 :::{get-started}
 title: Get started with Logstash
-intro: Download Logstash, create a pipeline, and run it locally.
 steps:
   - title: Download Logstash
     description: Get the binary for your platform and unzip it. You need a JDK (Java 21) before you run.
