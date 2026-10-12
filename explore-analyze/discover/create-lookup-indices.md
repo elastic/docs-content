@@ -48,7 +48,8 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
    - **Upload a CSV file up to 500 MB**. When you upload a file, you can preview its data, inspect its contents, and review any detected issues before importing it. Refer to [](#esql-lookup-index-from-file) for more details.
    - **Add data manually**. You can add fields and populate data directly. When adding a field, you must set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
      :::{note}
-     Some {{es}} data types aren't supported in {{kib}}.
+     :applies_to: { serverless: preview, stack: preview 9.3+ }
+     {{esql}} doesn't support some types in the field type list, such as `binary` and `rank_feature`. A query that uses a field of an unsupported type returns an error. `LOOKUP JOIN` also doesn't support some other types, such as `unsigned_long` and `geo_point`. Before you select a type, check the [types that {{esql}} doesn't support](elasticsearch://reference/query-languages/esql/limitations.md#_unsupported_types) and the [additional types that `LOOKUP JOIN` doesn't support](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#unsupported-types).
      :::
    - **Combine both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
 
