@@ -1,4 +1,5 @@
 ---
+description: Explore log data in Discover with a dedicated logs experience. Search and filter logs, inspect field structure, and surface findings in visualizations and dashboards.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/explore-logs.html
   - https://www.elastic.co/guide/en/serverless/current/observability-discover-and-explore-logs.html

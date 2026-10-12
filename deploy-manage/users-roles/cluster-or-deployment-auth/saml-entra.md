@@ -109,7 +109,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
                 description: "Log in with Microsoft Entra ID"
             ```
 
-            The configuration values used in the example above are:
+            The configuration values used in the previous example are:
 
             `xpack.security.authc.providers`
             :   Add `saml` provider to instruct {{kib}} to use SAML SSO as the authentication method.

@@ -14,10 +14,6 @@ products:
 
 A region is where a cloud service provider's data center hosts your deployments or clusters. 
 
-::::{note}
-AutoOps is not available in any region for GovCloud customers yet. GovCloud availability is coming soon.
-::::
-
 ## AutoOps for {{ECH}} regions [autoops-for-ech-regions]
 
 [AutoOps for {{ECH}}](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) is set up and enabled automatically in the following regions:
@@ -45,6 +41,7 @@ AutoOps is not available in any region for GovCloud customers yet. GovCloud avai
 | sa-east-1 | South America (São Paulo) |
 | us-east-1 | US East (N. Virginia) |
 | us-east-2 | US East (Ohio) |
+| us-gov-east-1 | AWS GovCloud (US-East) |
 | us-west-1 | US West (N. California) |
 | us-west-2 | US West (Oregon) |
 

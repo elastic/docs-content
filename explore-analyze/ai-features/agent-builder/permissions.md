@@ -58,7 +58,7 @@ Tools execute {{es}} requests with the privileges of the current user or API key
 
 | Scope | Privilege | When to use it |
 | --- | --- | --- |
-| Cluster | `monitor_inference` | Required when an agent uses an AI connector that calls the {{es}} Inference API, including the Elastic default LLM, or when a tool uses the Inference API to generate queries from natural language. The built-in `search` and `generate_esql` tools and [index search tools](tools/index-search-tools.md) use this API. This privilege is not required for other {{kib}} GenAI connectors. |
+| Cluster | `monitor_inference` | Required when an agent uses a model that calls the {{es}} Inference API. This includes {{infer}} endpoints, the Elastic Managed LLM, and the **AI Connector** connector type. Tools that use the selected model, such as the built-in `search` and `generate_esql` tools and [index search tools](tools/index-search-tools.md), also need it in that case. This privilege is not required for the OpenAI, Amazon Bedrock, and Google Gemini connectors, which call the provider directly rather than through {{es}}. |
 | Indices | `read` | Required for tools that query index data. Limit the assigned index patterns to the data the user or client needs. |
 | Indices | `view_index_metadata` | Required for tools that inspect index mappings. The built-in `search` tool and index search tools might use this capability internally. |
 
@@ -92,8 +92,8 @@ Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
 ## Conversation access control [conversation-access-control]
 
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
 The {{kib}} privileges described above control who can use {{agent-builder}} at all. Individual conversations have a second layer of access control on top of that, so the owner of a conversation can decide who else can read it.
@@ -133,7 +133,7 @@ Members are identified by their {{kib}} user profile ID, not by username. A user
 | Delete | Yes | No | No |
 | Change sharing | Yes | No | No |
 
-A user with full cluster privileges, such as a superuser, can also rename or delete a `public` conversation they do not own. This does not extend to `private` conversations, even ones shared with them, and it never includes changing who a conversation is shared with.
+A user whose role grants all {{kib}} application privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}, can also rename or delete a `public` conversation they do not own. This does not extend to `private` conversations, even ones shared with them, and it never includes changing who a conversation is shared with.
 
 ### Sharing does not bypass privileges
 
@@ -151,7 +151,7 @@ Managing sharing needs only the `Read` privilege plus ownership. There is no sep
 
 When a user cannot access a conversation, {{agent-builder}} reports it as not found rather than as a permissions error. This is deliberate, so that users cannot detect the existence of conversations they cannot read.
 
-To share a conversation, use the [{{kib}} API](kibana-api.md#update-conversation-access-control).
+To share a conversation, use the [sharing button in Agent Chat](chat.md#share-a-conversation) or the [{{kib}} API](kibana-api.md#update-conversation-access-control).
 
 ## Configure access
 

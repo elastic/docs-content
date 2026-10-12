@@ -41,7 +41,7 @@ Refer to [Archived settings](/deploy-manage/upgrade/deployment-or-cluster/archiv
 ::::
 
 ::::{step} Verify plugin compatibility
-If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
+If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to. How you install and update plugins and custom configuration files depends on your deployment type, as described in [](/deploy-manage/plugins-and-custom-configuration-files.md).
 ::::
 
 ::::{step} Create a snapshot for backup

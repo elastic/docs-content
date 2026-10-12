@@ -55,7 +55,7 @@ By default, all Osquery Manager integrations share the same Osquery configuratio
 4. From the **Edit Osquery Manager integration** page, expand the **Advanced** section.
 5. Edit the **Osquery config** JSON field to apply your preferred Osquery configuration. Note the following:
 
-    * The field may already have content if you’ve scheduled packs for this agent policy. To keep these packs scheduled, do not remove the `packs` section. The `shard` field value is the percentage of agents in the policy using the pack.
+    * The field might already have content if you’ve scheduled packs for this agent policy. To keep these packs scheduled, do not remove the `packs` section. The `shard` field value is the percentage of agents in the policy using the pack.
     * Refer to the [Osquery documentation](https://osquery.readthedocs.io/en/stable/) for configuration options.
     * Some fields are protected and cannot be set. A warning is displayed with details about which fields should be removed.
     * (Optional) To load a full configuration file, drag and drop an Osquery `.conf` file into the area at the bottom of the page.

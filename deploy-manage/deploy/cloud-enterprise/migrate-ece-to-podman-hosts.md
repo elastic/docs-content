@@ -471,7 +471,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
             ```
 
         * The ECE version of the additional host must be the same as the version used in step 2. Use `--cloud-enterprise-version VERSION_NAME` to specify the correct version.
-        * To easily identify the podman allocator, apply a tag to the additional host, for example `containerengine:podman`. The podman allocator is needed as the “target allocator” when you later move instances from the Docker allocator to the podman allocator.  For example, use `--allocator-tags containerengine:podman`.
+        * To identify the podman allocator, apply a tag to the additional host, for example `containerengine:podman`. The podman allocator is needed as the “target allocator” when you later move instances from the Docker allocator to the podman allocator.  For example, use `--allocator-tags containerengine:podman`.
         * Make sure to apply the roles as copied in step 5 to the additional host. The value for the `--roles` flag is a single string.
 
             For **example 1** in step 4, use `--roles "allocator"`

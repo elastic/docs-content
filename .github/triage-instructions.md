@@ -3,6 +3,11 @@
 These instructions tell TriageBot which of this repository's existing labels applies when. They
 never add labels to the menu. Apply only labels that already exist in this repository.
 
+## Label scope
+
+Do not apply the `bug`, `enhancement`, `question`, or `documentation` labels. This repository does
+not use issue type labels during triage. Skip type classification for every issue.
+
 ## Team ownership
 
 This repository routes issues to exactly three team labels:
@@ -19,8 +24,15 @@ them. Never select a retired team label. Select at most one team label.
 | Team label | Owns | Keywords and paths |
 |---|---|---|
 | `Team:SKI` | Kibana, Observability, Security, and data ingestion docs | Kibana, dashboards, visualizations, Discover, Lens, maps, Canvas, alerting, rules, cases; Observability, APM, OpenTelemetry, synthetics, SLOs; Security, SIEM, endpoint security, detection rules, security analytics; Fleet, Elastic Agent, Beats, Logstash, integrations, data streams. Paths: `explore-analyze/` (default), `manage-data/ingest/` (except for `manage-data/ingest/ingesting-data-from-applications`, `manage-data/ingest/sample-data`, and `manage-data/ingest/transform-enrich`), `solutions/observability/`, `solutions/security/`, `reference/apm-agents/`, `reference/fleet/`, `reference/ingestion-tools/`, `reference/kibana/`, `reference/observability/`, `reference/security/`, `troubleshoot/ingest/`, `troubleshoot/observability/`, `troubleshoot/security/`, `release-notes/elastic-observability/`, `release-notes/elastic-security/` |
-| `Team:Admin` | Cluster administration, data management, deployment docs | Cluster management, index management, authentication, roles, API keys, network security, cluster security, snapshots, ILM, data lifecycle, CCR, licensing, subscriptions, upgrades, stack monitoring, Elastic Cloud, ECH, ECE, ECK, serverless deployment, ingest pipelines, ingest node, ingest processors, enrich processor. Elasticsearch cluster, node, snapshot, security, and index management APIs, including cat APIs and stats APIs. Paths: `deploy-manage/`, `cloud-account/`, `manage-data/` (except `manage-data/ingest/`), `serverless/`, `explore-analyze/scripting/`, `troubleshoot/deployments/`, `troubleshoot/elasticsearch/`, `troubleshoot/kibana/` |
+| `Team:Admin` | Cluster administration, data management, deployment, and platform audit docs | Cluster management, index management, authentication, roles, API keys, network security, cluster security, snapshots, ILM, data lifecycle, CCR, licensing, subscriptions, upgrades, stack monitoring, Elastic Cloud, ECH, ECE, ECK, serverless deployment, audit logging, audit trails, log delivery, ingest pipelines, ingest node, ingest processors, enrich processor. Elasticsearch cluster, node, snapshot, security, and index management APIs, including cat APIs and stats APIs. Paths: `deploy-manage/`, `cloud-account/`, `manage-data/` (except `manage-data/ingest/`), `serverless/`, `explore-analyze/scripting/`, `troubleshoot/deployments/`, `troubleshoot/elasticsearch/`, `troubleshoot/kibana/` |
 | `Team:Developer` | Elasticsearch developer and Search solution docs | Elasticsearch search, query, inference, and ML APIs; ES\|QL, query DSL, search features, relevance, vector search, semantic search, inference APIs, machine learning, transforms, connectors, clients, search applications, cross-cluster search. Paths: `solutions/search/`, `reference/elasticsearch-clients/`, `reference/machine-learning/`, `explore-analyze/ai-features/agent-builder/`, `explore-analyze/cross-cluster-search/`, `explore-analyze/cross-project-search/`, `explore-analyze/transforms/`, `manage-data/data-store`, `manage-data/ingest/ingesting-data-from-applications`, `manage-data/ingest/sample-data` |
+
+Determine ownership from the affected feature, path, and requested work. Do not route an issue
+from a navigation section name or repeated keyword alone. For example, a mention of the Security
+section does not by itself make an issue `Team:SKI`.
+
+Platform and deployment audit logging, audit trails, and log delivery belong to `Team:Admin`.
+Security solution features, such as SIEM and detection rules, belong to `Team:SKI`.
 
 ### Resolving CODEOWNERS entries
 
