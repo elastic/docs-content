@@ -33,7 +33,7 @@ Requirements depend on what you want to do:
     - Permission to edit and run workflows.
     - {{es}} write access to the backing index. If an operation creates the backing index, you also need permission to create it.
 
-You can inspect KIs in a [managed AI index](concepts.md#managed-ai-indices), but its owning Elastic integration controls their lifecycle.
+You can inspect KIs in a [managed AI index](concepts.md#managed-ai-indices), but you cannot manage them directly. The Elastic feature that provides the AI index controls their lifecycle.
 
 ## Inspect a KI in {{kib}}
 
@@ -82,7 +82,7 @@ How you change a KI depends on how it was created and whether the change must su
 | A workflow maintains a long-lived KI across runs | Use `context-engine.updateKi` with a stable KI ID. |
 | A workflow must write a new KI | Use `context-engine.createKi`. |
 | A KI must no longer be retrieved | Use `context-engine.deleteKi`, then update its automation if another run would recreate it. |
-| The KI belongs to a managed AI index | Do not change it directly. The owning Elastic integration manages it. |
+| The KI belongs to a managed AI index | Do not change it directly. The Elastic feature that provides the AI index manages its KIs. |
 
 Changing the automation is the preferred way to correct generated content because later runs reproduce the improvement. A direct update is appropriate when updating the KI is part of the workflow's intended design.
 

@@ -35,7 +35,7 @@ Creating an AI index does not ingest source data or generate knowledge. Sources 
 
 ### Managed AI indices
 
-A managed AI index is a built-in AI index supplied by an Elastic integration. The owning Elastic feature defines its configuration and supplies its [KIs](#knowledge-indicators), giving [agents](#agents-and-applications) access to product-provided context without requiring you to configure its [sources](#sources) or [automations](#automations-and-workflows).
+A managed AI index is a built-in AI index supplied and maintained by an Elastic feature. That feature defines its configuration and supplies its [KIs](#knowledge-indicators), giving [agents](#agents-and-applications) access to product-provided context without requiring you to configure its [sources](#sources) or [automations](#automations-and-workflows).
 
 Managed AI indices have a **Managed** badge in **Context**. Agents can discover and query them in the same way as user-created AI indices, subject to the same access checks. You can open a managed AI index and inspect its KIs, but you cannot edit its description, sources, automations, or [agent traces](#agent-traces), or delete it. To build context for your own use case, create a user-created AI index instead.
 

@@ -19,7 +19,7 @@ products:
 
 Building a useful AI index starts with decisions about its purpose, source data, Knowledge Indicator (KI) granularity, and refresh schedule. Use this page to plan those decisions before creating or revising an automation.
 
-This page covers AI indices that you create and maintain. Elastic integrations can also supply [managed AI indices](concepts.md#managed-ai-indices) whose configuration is read-only.
+This page covers AI indices that you create and maintain. Elastic features can also supply [managed AI indices](concepts.md#managed-ai-indices) whose configuration is read-only.
 
 For a UI-led example that creates and tests an AI index, follow the [{{context-engine}} quickstart](quickstart.md).
 
