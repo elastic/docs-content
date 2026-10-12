@@ -41,7 +41,7 @@ You can also filter data using Query DSL. Filters enable you to include or exclu
 
 [Aggregations](../aggregations.md) are the primary tool for analyzing {{es}} data using Query DSL. Aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends.
 
-Because aggregations use the same data structures as search, they are also fast. This enables you to analyze and visualize your data in real time. You can search documents, filter results, and perform analytics at the same time, on the same data, in a single request. That means aggregations are calculated in the context of the search query.
+Because aggregations use the same data structures as search, they are also fast. This enables you to analyze and visualize your data in real time. You can search documents, filter results, and perform analytics at the same time, on the same data, in a single request. That means {{es}} calculates aggregations in the context of the search query.
 
 The following aggregation types are available:
 
@@ -58,9 +58,9 @@ Think of the Query DSL as an AST (Abstract Syntax Tree) of queries, consisting o
 
 **Leaf query clauses**: Leaf query clauses look for a particular value in a particular field, such as the [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [`term`](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) or [`range`](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) queries. You can use these queries by themselves.
 
-**Compound query clauses**: Compound query clauses wrap other leaf **or** compound queries and are used to combine multiple queries in a logical fashion (such as the [`bool`](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) or [`dis_max`](elasticsearch://reference/query-languages/query-dsl/query-dsl-dis-max-query.md) query), or to alter their behavior (such as the [`constant_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-constant-score-query.md) query).
+**Compound query clauses**: Compound query clauses wrap other leaf **or** compound queries to combine multiple queries logically (such as the [`bool`](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) or [`dis_max`](elasticsearch://reference/query-languages/query-dsl/query-dsl-dis-max-query.md) query) or to alter their behavior (such as the [`constant_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-constant-score-query.md) query).
 
-Query clauses behave differently depending on whether they are used in [query context or filter context](#query-filter-context).
+Query clauses behave differently depending on whether you use them in [query context or filter context](#query-filter-context).
 
 ## Query and filter context [query-filter-context]
 
@@ -68,7 +68,7 @@ Query clauses behave differently depending on whether they are used in [query co
 
 By default, {{es}} sorts matching search results by **relevance score**, which measures how well each document matches a query.
 
-The relevance score is a positive floating point number, returned in the `_score` metadata field of the [search]({{es-apis}}operation/operation-search) API. The higher the `_score`, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether the query clause is run in a **query** or **filter** context.
+The relevance score is a positive floating point number, returned in the `_score` metadata field of the [search]({{es-apis}}operation/operation-search) API. The higher the `_score`, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether you use the query clause in a **query** or **filter** context.
 
 
 ### Query context [query-context]
@@ -86,7 +86,7 @@ A query clause in filter context is called a filter. A filter answers the binary
 2. **Performance**: Because filters don’t compute relevance scores, they run faster than query clauses in query context.
 3. **Caching**: {{es}} automatically caches frequently used filters, speeding up subsequent search performance.
 4. **Resource efficiency**: Filters consume less CPU resources compared to full-text queries.
-5. **Query combination**: Filters can be combined with scored queries to refine result sets efficiently.
+5. **Query combination**: You can combine filters with scored queries to refine result sets efficiently.
 
 Filters are particularly effective for querying structured data and implementing "must have" criteria in complex searches.
 
