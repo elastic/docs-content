@@ -27,6 +27,7 @@ For guidance that applies to every agent integration, refer to [Configure agents
 
 You need:
 
+- An {{stack}} 9.6 deployment with an Enterprise license, or an {{serverless-full}} project.
 - Claude Code installed.
 - Node.js 22.12.0 or later to install the Elastic CLI.
 - `contextEngine:enabled` turned on in the {{kib}} space you want to query.
@@ -89,11 +90,11 @@ Install the [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plug
 Tracked by https://github.com/elastic/search-team/issues/16314. Replace this comment with the supported installation steps after the skill is publicly available and its distribution through the Elastic plugin for Claude is confirmed.
 -->
 
-In Claude Code, run `/skills` and confirm that `kibana-context-engine` is available.
+After installing or updating the skill, start a new Claude Code session. Run `/skills` and confirm that `kibana-context-engine` is available.
 
 ## Retrieve context
 
-Start a new Claude Code session so the newly installed skill is available, then ask a question covered by one of your AI indices. Tell Claude Code to use {{context-engine}} if you want to exercise the integration explicitly. For example:
+Ask a question covered by one of your AI indices. Tell Claude Code to use {{context-engine}} if you want to exercise the integration explicitly. For example:
 
 ```text
 Use Context Engine to explain <subject covered by your AI index>. Tell me which AI index and Knowledge Indicators you used.
