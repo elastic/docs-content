@@ -36,6 +36,6 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 - [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
 - [Investigations](./investigations.md): Learn how Elastic nightshift investigates problems and how to read the results
-- [How Significant Events works](../streams/significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
-- [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
-- [Operator guide](../streams/significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
+- [How Significant Events works](./significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
+- [Knowledge Indicators](./significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
+- [Operator guide](./significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures

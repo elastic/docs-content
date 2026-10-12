@@ -106,12 +106,12 @@ redirects:
   'solutions/observability/streams/management/extract/set.md': 'solutions/observability/streams/processors/set.md'
   'solutions/observability/streams/management/extract/trim.md': 'solutions/observability/streams/processors/trim.md'
   'solutions/observability/streams/management/extract/uppercase.md': 'solutions/observability/streams/processors/uppercase.md'
-  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
   'solutions/observability/streams/management/partitioning.md': 'solutions/observability/streams/organize-your-data.md'
   'solutions/observability/streams/management/retention.md': 'solutions/observability/streams/configure-retention.md'
   'solutions/observability/streams/management/schema.md': 'solutions/observability/streams/map-fields.md'
-  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
-  'solutions/observability/streams/knowledge-indicators.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
   'solutions/observability/streams/management/streamlang.md': 'solutions/observability/streams/streamlang.md'
 
   # Related to https://github.com/elastic/docs-content/pull/1069
@@ -1426,3 +1426,9 @@ redirects:
 
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
+
+  # Related to https://github.com/elastic/docs-content/pull/8717
+  'solutions/observability/streams/significant-events/index.md': 'solutions/observability/nightshift/significant-events/index.md'
+  'solutions/observability/streams/significant-events/how-it-works.md': 'solutions/observability/nightshift/significant-events/how-it-works.md'
+  'solutions/observability/streams/significant-events/operator-guide.md': 'solutions/observability/nightshift/significant-events/operator-guide.md'
+  'solutions/observability/streams/significant-events/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
