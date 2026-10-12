@@ -9,6 +9,7 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+  - id: kibana
 type: overview
 ---
 
