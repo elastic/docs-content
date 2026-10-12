@@ -51,7 +51,7 @@ actions, project-level ES and Kibana activity, and serverless project
 management in a single stream.
 -->
 
-To audit {{es}} and {{kib}} activity within a deployment, enable [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) on the deployment directly.
+To audit {{es}} and {{kib}} activity within a deployment, enable [audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md) on the deployment directly.
 :::
 
 ## Requirements

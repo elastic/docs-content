@@ -3,11 +3,7 @@ navigation_title: Elasticsearch audit events ignore policies
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/audit-log-ignore-policy.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: ga
   serverless: unavailable
 products:
   - id: elasticsearch

@@ -1,10 +1,6 @@
 ---
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: ga
   serverless: unavailable
 products:
   - id: elasticsearch
