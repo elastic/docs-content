@@ -25,7 +25,7 @@ You can choose from several deployment options for your search use cases with El
 :::
 
 :::{tip}
-For most search workloads using vectors, the recommended option is a {{serverless-short}} {{es}} {{vectordb}} project. [Start your {{es}} {{vectordb}} project](https://cloud.elastic.co/registration?onboarding_token=vector).
+For most search workloads using vectors, the recommended option is a {{serverless-short}} {{es}} {{vectordb}} project. [Sign up for a free trial](https://cloud.elastic.co/registration?onboarding_token=vector).
 :::
 
 ::::
