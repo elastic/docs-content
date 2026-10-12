@@ -24,8 +24,6 @@ Use this guide to understand how Significant Events affects your cluster and how
 
 The following table shows each pipeline component, where it runs, what triggers it, and what it reads and writes:
 
-<!-- DRAFT NOTE: It seems nothing defines or writes to `.significant_events-discoveries`. Need to verify if it was retired. -->
-
 | Component | Uses | Trigger | Reads | Writes |
 |---|---|---|---|---|
 | KI feature identification | Task Manager + Workflow | On-demand / continuous extraction | Stream logs | `.significant_events-knowledge_indicators` |
