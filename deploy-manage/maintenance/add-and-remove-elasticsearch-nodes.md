@@ -57,12 +57,12 @@ When you need to remove a node from an {{es}} cluster, you must first empty the 
 If the node to remove is a master-eligible node, review the [master-eligible node considerations](#modules-discovery-removing-nodes) before proceeding and do not remove multiple master-eligible nodes at the same time.
 :::
 
-1. Optional: Stop indexing and perform a synced flush:
+1. Optional: Stop indexing and perform a flush:
 
-    If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a synced flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
+    If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a flush, run the following command:
 
     ```console
-    POST /_flush/synced
+    POST /_flush
     ```
 
 2. Retrieve the node name:
