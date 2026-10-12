@@ -26,49 +26,31 @@ You'll need the following to create rules and send notifications.
 
 {{alerting-v2-system-cap}} is controlled by the [`alerting:v2:enabled`](kibana://reference/advanced-settings.md#alerting-v2-enabled) advanced setting in {{kib}}. This is a global setting, so turning it on makes {{alerting-v2-system}} available in every space, even though the rules and action policies you create in it are space-scoped.
 
-The setting's default depends on your version:
+The setting's default state depends on your version:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` The setting is on by default, so you can use {{alerting-v2-system}} without extra setup. If you turned the setting off, it stays off, even after an upgrade.
+- {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` The setting is on by default. If you turned the setting off, it stays off, even after an upgrade.
 - {applies_to}`stack: experimental =9.5` The setting is off by default.
-
-<!-- TODO: Verify with eng before publishing. kibana#294597 renamed the label of the
-     alerting:v2:enabled setting on the Advanced Settings page from "Alerting V2" to
-     "Universal Alerting" on serverless and 9.6+. Stack 9.5 still shows "Alerting V2".
-     If confirmed, change step 2 below and the "Turn off the system" section to
-     "**Universal Alerting** or **Alerting V2** (depending on your Stack version)". -->
 
 To turn on the setting:
 
 1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the **Global Settings** tab, then turn on **Alerting V2**.
-3. Confirm that {{alerting-v2-system}} is accessible in your space:
+2. Select the **Global Settings** tab, turn on `alerting:v2:enabled`, save the change, then refresh the page.
+3. Confirm that {{alerting-v2-system}} is accessible in your space. Find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or go to:
 
-   - {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-   - {applies_to}`stack: experimental =9.5` Go to **Alerting V2 Preview** in the navigation menu, or find it using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-:::{tip}
-If {{alerting-v2-system}} doesn't appear in the navigation menu or global search after you turn on the setting, reload {{kib}} and check again.
-:::
+   - {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` **Alerting** → **Rules** in the {{observability}} navigation menu
+   - {applies_to}`stack: experimental =9.5` **Stack Management** → **Alerting V2 Preview** → **Rules**
 
 ## Turn off the system [alerting-setup-turn-off]
 
-<!-- TODO: Verify with eng before publishing. Same setting label question as in
-     "Turn on the system": "Universal Alerting" on serverless and 9.6+ (kibana#294597)
-     versus "Alerting V2" on 9.5. -->
+To turn off {{alerting-v2-system}}, go to the **Advanced Settings** page, select the **Global Settings** tab, and turn off `alerting:v2:enabled`.
 
-To turn off {{alerting-v2-system}}, go to the **Advanced Settings** page, select the **Global Settings** tab, and turn off **Alerting V2**.
-
-Turning off the setting does not delete any data. {{kib}} retains your rules and action policies as saved objects, and keeps existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the {{alerting-v2-system}} UI.
-
-:::{important}
-Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but doesn't stop rules and action policies from running.
-:::
+Turning off the setting hides the {{alerting-v2-system}} UI and turns off its APIs, but it doesn't delete any data. {{kib}} keeps your rules and action policies as saved objects, along with existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the UI and APIs.
 
 ### Stop rules and action policies from running [alerting-setup-stop-execution]
 
-How you stop rules and action policies depends on your deployment:
+Turning off the setting doesn't stop rules and action policies from running. To stop them, use the option for your deployment:
 
-- {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us) to stop them.
+- {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us).
 - {applies_to}`stack: experimental 9.5+` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
 
 ## Try experimental features in a space [alerting-setup-experimental-features]

@@ -12,7 +12,11 @@ description: "Create action policies to route alerts to workflows. Set the polic
 
 In {{alerting-v2-system}}, an action policy connects alerts to the [workflows](../../../workflows.md) that respond to them. To create one, you set which alerts the policy applies to, how those alerts batch into notifications, how often a workflow can run, and which workflows to invoke.
 
-To start, go to **Alerting** → **Action Policies** in the Observability navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To start, go to **Alerting** → **Action Policies** in the {{observability}} navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::{note}
+To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
+:::
 
 ## Specify the action policy scope [matcher]
 

@@ -14,14 +14,17 @@ description: Kibana Universal Alerting writes each match as a rule event, then e
 Use {{alerting-v2-system}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
 
 :::{note}
-Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md). Both systems use the term **alert**, but they create and track alerts differently, so the APIs and instructions for one system don't apply to the other.
+Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
+:::
 
-{applies_to}`stack: experimental =9.5` In {{stack}} 9.5, the {{alerting-v2-system}} pages, such as **Rules**, **Alerts**, and **Action Policies**, are under **Alerting V2 Preview** in **Stack Management** instead of under **Alerting** in the Observability navigation menu. The UI also calls an alert an **alert episode**. For example, the **Notify per** option for one notification per alert is **Episode** instead of **Alert**.
+:::{admonition} Where to find {{alerting-v2-system}} pages in each version
+- {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Go to **Alerting** in the {{observability}} navigation menu.
+- {applies_to}`stack: experimental =9.5` Go to **Stack Management** → **Alerting V2 Preview**. The UI also calls an alert an **alert episode**. For example, the **Notify per** option for one notification per alert is **Episode** instead of **Alert**.
 :::
 
 ## The building blocks
 
-You create and configure rules, action policies, and workflows. {{kib}} generates the other two building blocks, rule events and alerts, from your rules' matches.
+In {{alerting-v2-system}}, you create and configure rules, action policies, and workflows. {{kib}} generates the other two building blocks, rule events and alerts, from your rules' matches.
 
 - [Rules](rules.md): Define what to watch for in your data and how often to check.
 - [Rule events](rules/rule-event-field-reference.md): Record each match as a document in `.rule-events`.

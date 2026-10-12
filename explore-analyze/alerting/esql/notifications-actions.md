@@ -12,7 +12,9 @@ description: "How to set up notifications and actions for rules. Action policies
 
 To notify people or run automation for an alert in {{alerting-v2-system}}, build a workflow and create an action policy that invokes it. Action policies act only on alerts, so the rule's [mode](rules/configure-rule-mode.md) must be **Detect and respond** or **Alert** (depending on your {{stack}} version).
 
-Before you start, check the [notification requirements](setup.md#alerting-setup-requirements) and make sure your role has [access to workflows](manage/configure-access.md#alerting-workflows-access).
+:::{note}
+To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
+:::
 
 ## Send notifications or trigger an action
 

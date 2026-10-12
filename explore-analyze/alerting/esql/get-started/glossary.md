@@ -17,7 +17,7 @@ These terms appear throughout the {{alerting-v2-system}} documentation.
 :   A configuration that controls which alerts invoke a workflow and how often. A single action policy can apply to alerts from one rule, several rules, or every rule in the space. To learn more, refer to [Notifications and actions](../notifications-actions.md).
 
 **Alert**
-:   The complete record of one problem, from first detection to recovery, moving through states (pending, active, recovering, inactive). An alert is the grouping of [rule events](../rules/rule-event-field-reference.md) that share `episode.id`. {applies_to}`stack: experimental =9.5` In {{stack}} 9.5, the UI calls an alert an **alert episode**. To learn more, refer to [Alerts](../alerts.md).
+:   The complete record of one problem, from first detection to recovery, moving through states (pending, active, recovering, inactive). An alert is the grouping of [rule events](../rules/rule-event-field-reference.md) that share `episode.id`. To learn more, refer to [Alerts](../alerts.md).
 
 **Breach**
 :   A matching row from a rule run. {{kib}} writes each breach as a [rule event](../rules/rule-event-field-reference.md). To learn more, refer to [{{esql}} query](../rules/configure-rule-query.md).

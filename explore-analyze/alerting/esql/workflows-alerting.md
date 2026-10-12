@@ -31,6 +31,10 @@ Lifecycle triggers are [event-driven triggers](../../workflows/triggers/event-dr
 
 Lifecycle triggers don't fire on [automatic status changes](alerts.md#alert-episode-lifecycle), such as when an alert becomes active or recovers based on rule evaluations. To respond to those changes, use an action policy. For the full list of trigger IDs, refer to [Alert lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-available).
 
+:::{note}
+To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
+:::
+
 ### When to use action policies or lifecycle triggers [when-to-use-action-policies-lifecycle-triggers]
 
 You can use both at the same time. Each runs its own workflows without conflict.
