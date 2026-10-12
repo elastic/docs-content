@@ -60,34 +60,6 @@ Think of the Query DSL as an AST (Abstract Syntax Tree) of queries, consisting o
 
 Query clauses behave differently depending on whether they are used in [query context or filter context](#query-filter-context).
 
-## Limit expensive queries
-
-$$$query-dsl-allow-expensive-queries$$$
-
-Certain types of queries generally run slowly because of the way they are implemented, which can affect the stability of the cluster. These queries fall into the following categories:
-
- - Queries that need to do linear scans to identify matches:
-
-    - [`script` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md)
-    - queries on [numeric](elasticsearch://reference/elasticsearch/mapping-reference/number.md), [date](elasticsearch://reference/elasticsearch/mapping-reference/date.md), [boolean](elasticsearch://reference/elasticsearch/mapping-reference/boolean.md), [ip](elasticsearch://reference/elasticsearch/mapping-reference/ip.md), [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields that are not indexed but have [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) enabled
-
- - Queries that have a high up-front cost:
-
-    - [`fuzzy` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-fuzzy-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
-    - [`regexp` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-regexp-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
-    - [`prefix` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-prefix-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields, and on [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) fields that have [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) enabled when the prefix has from `min_chars` minus 1 to `max_chars` characters)
-    - [`wildcard` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-wildcard-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
-    - [`range` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) on [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields
-
- - [Joining queries](elasticsearch://reference/query-languages/query-dsl/joining-queries.md)
- - Queries on [runtime fields](/manage-data/data-store/mapping/runtime-fields.md)
- - Queries that might have a high per-document cost:
-
-    - [`script_score` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md)
-    - [`percolate` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-percolate-query.md)
-
-{applies_to}`stack: ga` {applies_to}`serverless: unavailable` To block these queries, set `search.allow_expensive_queries` to `false` with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). The setting is dynamic, so the change applies without a restart. While it is `false`, {{es}} rejects the listed queries with an error instead of running them. The default is `true`.
-
 ## Query and filter context [query-filter-context]
 
 ### Relevance scores [relevance-scores]
@@ -178,5 +150,33 @@ Use query clauses in query context for conditions that should affect the score o
 ::::{warning}
 Scores calculated for queries in query context are single precision floating point numbers, which have only 24 bits for significand’s precision. Score calculations that exceed the significand’s precision lose precision when converted to floats.
 ::::
+
+## Limit expensive queries
+
+$$$query-dsl-allow-expensive-queries$$$
+
+Certain types of queries generally run slowly because of the way they are implemented, which can affect the stability of the cluster. These queries fall into the following categories:
+
+ - Queries that need to do linear scans to identify matches:
+
+    - [`script` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md)
+    - queries on [numeric](elasticsearch://reference/elasticsearch/mapping-reference/number.md), [date](elasticsearch://reference/elasticsearch/mapping-reference/date.md), [boolean](elasticsearch://reference/elasticsearch/mapping-reference/boolean.md), [ip](elasticsearch://reference/elasticsearch/mapping-reference/ip.md), [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields that are not indexed but have [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) enabled
+
+ - Queries that have a high up-front cost:
+
+    - [`fuzzy` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-fuzzy-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`regexp` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-regexp-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`prefix` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-prefix-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields, and on [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) fields that have [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) enabled when the prefix has from `min_chars` minus 1 to `max_chars` characters)
+    - [`wildcard` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-wildcard-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`range` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) on [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields
+
+ - [Joining queries](elasticsearch://reference/query-languages/query-dsl/joining-queries.md)
+ - Queries on [runtime fields](/manage-data/data-store/mapping/runtime-fields.md)
+ - Queries that might have a high per-document cost:
+
+    - [`script_score` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md)
+    - [`percolate` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-percolate-query.md)
+
+{applies_to}`serverless: unavailable` To block these queries, set `search.allow_expensive_queries` to `false` with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). This requires the `manage` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The setting is dynamic, so the change applies without a restart. While it is `false`, {{es}} rejects the listed queries with an error instead of running them. The default is `true`.
 
 To browse every query type, refer to the [Query DSL reference](elasticsearch://reference/query-languages/querydsl.md). To run and test searches, refer to [Build your search queries](/solutions/search/querying-for-search.md).
