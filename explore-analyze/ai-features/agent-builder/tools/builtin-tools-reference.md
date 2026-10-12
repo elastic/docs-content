@@ -239,7 +239,7 @@ The following streams tools were available in 9.4 and were removed in 9.5:
 stack: preview 9.5
 ```
 
-Significant events tools search, create, and manage significant events and [Knowledge Indicators](/solutions/observability/streams/significant-events/knowledge-indicators.md) for [Streams](/solutions/observability/streams/streams.md).
+Significant events tools search, create, and manage significant events and [Knowledge Indicators](/solutions/observability/streams/knowledge-indicators.md) for [Streams](/solutions/observability/streams/streams.md).
 
 **Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions).
 
