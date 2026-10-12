@@ -16,19 +16,19 @@ Knowledge Indicators (KIs) are structured facts that Elastic extracts from your 
 
 Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like the [Significant Events detection pipeline](./how-it-works.md), topology maps, AI agent investigations, and dashboards.
 
-To access Knowledge Indicators, open **Significant Events** from the Streams main page and select the **Knowledge Indicators** tab.
+To access Knowledge Indicators, select **Show all events** from the Elastic nightshift main page and select the **Knowledge Indicators** tab.
 
 ## Generate KIs [sig-events-ki-generate]
 
 You can trigger KI extraction on demand or set up continuous KI onboarding at a specific interval.
 
 On demand
-:   From the **Significant Events** page, select the streams you want to generate KIs for and select **Generate**.
+:   From the **Significant Events** tab on the **Management** page, select the streams you want to generate KIs for and select **Generate**.
 
 Continuous KI onboarding
 :   When enabled, KI onboarding runs automatically on managed streams at the configured interval. Continuous KI onboarding is off by default. To enable it:
 
-    1. Open the Significant Events settings.
+    1. Open the Elastic nightshift settings.
     1. Under **Continuous KI onboarding**, turn on **Enable continuous KI onboarding**.
     1. Set the **Onboarding interval (hours)**, the minimum number of hours between onboarding runs for a given stream. Set it to `0` for no cooldown between runs.
 
@@ -202,7 +202,7 @@ Turning off continuous KI onboarding cancels any in-flight extraction tasks and 
 | `observability:streamsContinuousKiExtractionEnabled` | `false` | Enables or disables continuous KI onboarding |
 | `observability:streamsContinuousKiExtractionIntervalHours` | `12` | Minimum hours between onboarding runs for a single stream. `0` means no cooldown between runs |
 
-These settings are only modifiable through the Significant Events Settings page.
+These settings are only modifiable through the Elastic nightshift **Settings** page.
 
 ## KI lifecycle and maintenance [sig-events-ki-lifecycle]
 

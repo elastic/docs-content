@@ -2,7 +2,7 @@
 applies_to:
   serverless:
     observability: preview
-description: Elastic nightshift provides automated investigations and on-call assistance for Elastic Observability, triggered by your alerts.
+description: Elastic nightshift provides automated investigations and on-call assistance for Elastic Observability, triggered from your alerts and significant events.
 products:
   - id: observability
   - id: cloud-serverless
@@ -10,7 +10,7 @@ products:
 
 # Elastic nightshift AI SRE
 
-Elastic nightshift AI SRE is built into {{observability}} to find, investigate, and fix production problems alongside your team. It helps monitor your systems, watches your alerts and Significant Events, investigates likely causes, and helps remediate incidents.
+Elastic nightshift AI SRE is built into {{observability}} to find, investigate, and fix production problems alongside your team. It helps monitor your systems, lets you start investigations from your alerts and Significant Events to find likely causes, and helps remediate incidents.
 
 Elastic nightshift is made up of the following engines, which work together to detect problems in your systems and investigate them:
 
