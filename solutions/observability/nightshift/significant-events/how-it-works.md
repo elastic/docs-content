@@ -72,7 +72,7 @@ Change point detection is per-rule. A stream can have many independent rules, an
 
 ### Discovery agent [sig-events-hiw-discovery-agent]
 
-A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent reads detection signals, produces structured discovery documents describing what is happening, and performs triage on its own findings: it verifies each hypothesis and sets the event status to open (page on-call), closed (confirmed settled), or dismissed (low severity and low confidence). Status transitions are written as new documents to the events index.
+A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent reads detection signals, produces structured discovery documents describing what is happening, and performs triage on its own findings: it verifies each hypothesis and sets the event status to open (page on-call), closed (confirmed settled), or dismissed (low severity and low confidence). Status transitions are written as alert documents to `.rule-events`.
 
 Significant events are also written as alerts, so they can be managed, routed, and acted on like any other Elastic alert.
 
@@ -85,9 +85,9 @@ Significant events are also written as alerts, so they can be managed, routed, a
 | Knowledge Indicators | `FROM .significant_events-knowledge_indicators` |
 | Alert documents (rule execution results) | `FROM .rule-events` |
 | Detection state per rule | `FROM .significant_events-detections` |
-| Significant events | `FROM .significant_events-events` |
+| Significant events | `FROM .rule-events` |
 
-**Traceability**: To trace a significant event back to its origin, use `event_id` as the durable key linking events to detections. From the events index, use `signals[].metadata.detection_id` to reach the detection document in `.significant_events-detections`, and `signals[].metadata.rule_uuid` to reach the alerting rule in `.rule-events`.
+**Traceability**: Significant-event alert documents are stored in `.rule-events`. Use `group_hash` to group versions of the same event. Queries must filter to alert documents from the Significant Events source.
 
 ## Learn more [sig-events-hiw-learn-more]
 
