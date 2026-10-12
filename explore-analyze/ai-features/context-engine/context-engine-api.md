@@ -41,4 +41,4 @@ The following operations are available:
 | [Delete an AI index](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-context-engine-ai-index-aiindexid) | `DELETE /api/context_engine/ai_index/{aiIndexId}` |
 | [Describe an AI index](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-context-engine-ai-index-aiindexid-describe) | `GET /api/context_engine/ai_index/{aiIndexId}/_describe` |
 
-For task-oriented examples, refer to [Create and manage AI indices](create-and-manage-ai-indices.md), [Add and manage sources](add-and-manage-sources.md), and [Query AI indices from LangChain](langchain-integration.md).
+For task-oriented examples, refer to [Create and manage AI indices](create-and-manage-ai-indices.md), [Add and manage sources](add-and-manage-sources.md), and [Retrieve context from an AI index](retrieve-context-from-ai-index.md).

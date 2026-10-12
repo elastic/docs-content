@@ -1,6 +1,6 @@
 ---
-navigation_title: "Get started"
-description: Step-by-step tutorial for creating reusable context from existing Elasticsearch data and testing it with an Agent Builder agent.
+navigation_title: "Quickstart"
+description: Hands-on tutorial for creating reusable context from existing Elasticsearch data and testing it with an Agent Builder agent.
 type: tutorial
 applies_to:
   stack: experimental 9.6
@@ -12,7 +12,7 @@ products:
   - id: security
 ---
 
-# Get started with {{context-engine}}
+# {{context-engine}} quickstart
 
 :::{include} _snippets/hidden-docs-notice.md
 :::
@@ -143,4 +143,4 @@ After completing this tutorial, you can:
 - [Add or refine sources](add-and-manage-sources.md) to control the data that automations analyze.
 - [Create, run, and schedule automations](create-and-manage-automations.md) that generate other kinds of KIs.
 - [Evaluate and improve the generated KIs](evaluate-and-improve-knowledge-indicators.md).
-- [Use the AI index with another agent or application](use-context-engine-with-agents.md).
+- [Use the AI index](use-an-ai-index.md) through APIs or another agent integration.

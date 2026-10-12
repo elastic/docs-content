@@ -649,6 +649,69 @@ redirects:
 
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+  # related to https://github.com/elastic/docs-content/issues/4890
+  'explore-analyze/discover/try-esql.md':
+    to: 'explore-analyze/discover/try-esql.md'
+    many:
+      - to: 'explore-analyze/discover/switch-esql-mode.md'
+        anchors:
+          'revert-to-classic-mode': 'revert-to-classic-mode'
+      - to: 'explore-analyze/discover/browse-esql-sources.md'
+        anchors:
+          'discover-esql-resource-browsers': 'discover-esql-resource-browsers'
+      - to: 'explore-analyze/discover/esql-results.md'
+        anchors:
+          'esql-kibana-results-table': 'esql-kibana-results-table'
+          'esql-kibana-results-table-limitations': 'esql-kibana-results-table-limitations'
+          '_sorting': '_sorting'
+          '_esql_and_time_series_data': '_esql_and_time_series_data'
+          '_edit_the_esql_visualization': '_edit_the_esql_visualization'
+          'refine-esql-query-from-table': 'refine-esql-query-from-table'
+          'refine-an-esql-query-by-interacting-with-the-results-table': 'refine-esql-query-from-table'
+      - to: 'explore-analyze/discover/esql-variable-controls.md'
+        anchors:
+          'add-variable-control': 'add-variable-control'
+          'esql-multi-values-controls': 'esql-multi-values-controls'
+          'import-discover-query-with-controls': 'import-discover-query-with-controls'
+          'edit-a-variable-control': 'edit-a-variable-control'
+      - to: 'explore-analyze/discover/create-lookup-indices.md'
+        anchors:
+          'discover-esql-lookup-join': 'discover-esql-lookup-join'
+          'create-lookup-esql': 'create-lookup-esql'
+          'esql-lookup-index-from-file': 'esql-lookup-index-from-file'
+          'view-edit-lookup-esql': 'view-edit-lookup-esql'
+          'discover-esql-lookup-editor-limitations': 'discover-esql-lookup-editor-limitations'
+          'reset-the-lookup-index-configuration': 'reset-the-lookup-index-configuration'
+      - to: 'explore-analyze/discover/inspect-grouped-stats.md'
+        anchors:
+          'esql-cascade-layout': 'esql-cascade-layout'
+          'esql-cascade-pattern-sparkline': 'esql-cascade-pattern-sparkline'
+          'pattern-rendering': 'pattern-rendering'
+          'grouped-row-actions': 'grouped-row-actions'
+          'opt-out-of-the-grouped-layout': 'opt-out-of-the-grouped-layout'
+  'explore-analyze/discover/use-esql.md':
+    to: 'explore-analyze/discover/use-esql.md'
+    many:
+      - to: 'explore-analyze/discover/switch-esql-mode.md'
+        anchors:
+          'switch-discover-query-mode': 'switch-discover-query-mode'
+          'revert-to-classic-mode': 'revert-to-classic-mode'
+      - to: 'explore-analyze/discover/browse-esql-sources.md'
+        anchors:
+          'discover-esql-resource-browsers': 'discover-esql-resource-browsers'
+      - to: 'explore-analyze/discover/esql-results.md'
+        anchors:
+          'esql-kibana-results-table': 'esql-kibana-results-table'
+          'esql-kibana-results-table-limitations': 'esql-kibana-results-table-limitations'
+          '_sorting': '_sorting'
+          '_esql_and_time_series_data': '_esql_and_time_series_data'
+          '_edit_the_esql_visualization': '_edit_the_esql_visualization'
+          'refine-esql-query-from-table': 'refine-esql-query-from-table'
+      - to: 'explore-analyze/discover/esql-variable-controls.md'
+        anchors:
+          'add-variable-control': 'add-variable-control'
+          'esql-multi-values-controls': 'esql-multi-values-controls'
+          'import-discover-query-with-controls': 'import-discover-query-with-controls'
 
 # Related to https://github.com/elastic/docs-content/pull/3493
   'solutions/security/cloud/ingest-third-party-cloud-security-data.md': 'solutions/security/integrations/ingest-third-party-security-data.md'
@@ -1351,6 +1414,47 @@ redirects:
         anchors:
           'attacks-next-steps': 'manage-saved-discoveries'
   'solutions/security/ai/triage-attack-discovery-findings.md': 'solutions/security/ai/attack-discovery/triage-attack-discovery-findings.md'
+
+  # Plugins and bundles hub: move deployment-specific plugin pages under deploy-manage/plugins-and-custom-configuration-files/ issue: https://github.com/elastic/docs-content-internal/issues/1075
+  # Headings renamed on the same page: '## Plugins' -> '## Add {{es}} plugins', '## Bundles' -> '## Add configuration bundles'.
+  # 'ec-adding-plugins' and 'manage-through-the-api' are unchanged and pass through.
+  'deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md':
+    to: 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/add-plugins-extensions.md'
+    many:
+      - to: 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/add-plugins-extensions.md'
+        anchors:
+          'plugins': 'add-es-plugins'
+          'bundles': 'add-configuration-bundles'
+  'deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-ech.md': 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/add-plugins-provided-with-ech.md'
+  'deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md': 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md'
+  'deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md': 'deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/manage-plugins-extensions-through-api.md'
+  # Page split: the old page's content became 'add-plugins-provided-with-ece.md', while 'add-plugins.md'
+  # is now a hub. Anchor-less requests land on the hub; the old anchors follow the content.
+  'deploy-manage/deploy/cloud-enterprise/add-plugins.md':
+    to: 'deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/add-plugins.md'
+    many:
+      - to: 'deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/add-plugins-provided-with-ece.md'
+        anchors:
+          'ece-adding-plugins':
+          'add-plugins-when-creating-a-new-ece-deployment': 'add-plugins-when-creating-a-new-ece-deployment'
+          'add-plugins-to-an-existing-ece-deployment': 'add-plugins-to-an-existing-ece-deployment'
+  'deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/add-custom-bundles-plugins.md'
+  'deploy-manage/deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/ece-include-additional-kibana-plugin.md'
+  # Page split: the init-container sections (including 'istio-note') moved to the init containers page and the
+  # custom image section moved to create-custom-images.md. 'k8s-bundles-plugins' and
+  # 'use-a-volume-and-volume-mount-together-with-a-configmap-or-secret' still exist on the target and pass through.
+  'deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md':
+    to: 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md'
+    many:
+      - to: 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md'
+        anchors:
+          'istio-note': 'istio-note'
+          'use-init-containers-for-plugins-installation':
+      - to: 'deploy-manage/deploy/cloud-on-k8s/create-custom-images.md'
+        anchors:
+          'create-a-custom-image':
+  'deploy-manage/deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md'
+  'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-plugins.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/k8s-kibana-plugins.md'
   # related to https://github.com/elastic/docs-content/issues/7709
   'solutions/elasticsearch-solution-project/search-connection-details.md':
     to: 'solutions/elasticsearch-solution-project/search-connection-details.md'
@@ -1385,3 +1489,19 @@ redirects:
 
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
+
+  # Related to https://github.com/elastic/docs-content/pull/8651
+  # Remove duplicate Security dashboard pages
+  'solutions/security/cloud/cnvm-dashboard.md': 'solutions/security/dashboards/cloud-native-vulnerability-management-dashboard.md'
+  'solutions/security/cloud/cspm-dashboard.md': 'solutions/security/dashboards/cloud-security-posture-dashboard.md'
+  'solutions/security/cloud/d4c/kubernetes-dashboard.md': 'solutions/security/dashboards/kubernetes-dashboard.md'
+  'solutions/security/cloud/kspm-dashboard.md': 'solutions/security/dashboards/cloud-security-posture-dashboard.md'
+  # Related to monitoring logging IA restructure
+  'deploy-manage/security/logging-configuration/security-event-audit-logging.md': 'deploy-manage/monitor/stack-audit-logging.md'
+  'deploy-manage/security/logging-configuration/enabling-audit-logs.md': 'deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md'
+  'deploy-manage/security/logging-configuration/configuring-audit-logs.md': 'deploy-manage/monitor/stack-audit-logging/configuring-audit-logs.md'
+  'deploy-manage/security/logging-configuration/logfile-audit-events-ignore-policies.md': 'deploy-manage/monitor/stack-audit-logging/logfile-audit-events-ignore-policies.md'
+  'deploy-manage/security/logging-configuration/logfile-audit-output.md': 'deploy-manage/monitor/stack-audit-logging/logfile-audit-output.md'
+  'deploy-manage/security/logging-configuration/auditing-search-queries.md': 'deploy-manage/monitor/stack-audit-logging/auditing-search-queries.md'
+  'deploy-manage/security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md': 'deploy-manage/monitor/stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md'
+  'deploy-manage/monitor/log-delivery/cloud-audit-trail.md': 'deploy-manage/monitor/cloud-audit-trail.md'
