@@ -37,19 +37,28 @@ To decide whether you have a data view, {{kib}} only checks that one exists in t
 
 ### What Discover needs to open
 
-**Discover** opens when either of the following is true:
+% TODO: Uncomment this block and delete the live text that follows it when {{esql}} data federation releases.
+% The serverless tag follows the {{es}} data federation page, which says serverless is unavailable.
+%
+% **Discover** opens when either of the following is true:
+%
+% - A data view exists in the current space.
+% - {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` At least one [{{esql}} data federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists.
+%
+% If {{es}} has data but none of these conditions is true, **Discover** shows the **How do you want to explore your data?** screen. **Discover** still opens when you use a link or a saved Discover session that contains an {{esql}} query.
 
-- A data view exists in the current space.
-- {applies_to}`stack: experimental 9.6+` At least one [{{esql}} data federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists.
-
-If {{es}} has data but none of these conditions is true, **Discover** shows the **How do you want to explore your data?** screen. **Discover** still opens when you use a link or a saved Discover session that contains an {{esql}} query.
+**Discover** opens when a data view exists in the current space. If {{es}} has data but no data view exists, **Discover** shows the **How do you want to explore your data?** screen. **Discover** still opens when you use a link or a saved Discover session that contains an {{esql}} query.
 
 ### What Dashboards needs to open
+
+% TODO: When {{esql}} data federation releases, add this bullet to the list after the data view bullet.
+% The serverless tag follows the {{es}} data federation page, which says serverless is unavailable.
+%
+% - {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` At least one [{{esql}} data federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists.
 
 **Dashboards** opens when any of the following is true:
 
 - A data view exists in the current space.
-- {applies_to}`stack: experimental 9.6+` At least one [{{esql}} data federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists.
 - You have unsaved changes on a new dashboard in your current browser session.
 - At least one saved dashboard exists in the current space.
 
