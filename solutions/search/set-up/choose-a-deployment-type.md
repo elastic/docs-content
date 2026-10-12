@@ -15,7 +15,7 @@ type: overview
 
 ::::{step} Select a deployment model
 
-Elastic supports the following deployment types for search: self-managed, {{ece}} (ECE), {{eck}} (ECK), {{ech}} (ECH), and {{serverless-short}} (an {{es}} {{vectordb}} project or an {{es}} project).
+You can choose from several deployment options for your search use cases with Elastic, including self-managed deployments, {{ech}}, and {{serverless-short}} projects.
 
 1. Use the [](/deploy-manage/deploy/deployment-comparison.md) to learn how security, cluster management, monitoring, and data lifecycle differ. Choose the one that best fits your needs.
 
