@@ -72,12 +72,12 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
 :   Creates or updates a visualization configuration based on a natural language description.
 
-`platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4`
+`platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 
     {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview` The tool only runs connectors [assigned to the agent](../connectors.md#assign-connectors-to-an-agent). Calls to other connectors fail with an error.
 
-    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
+    **Prerequisites:** {applies_to}`stack: preview 9.4-9.5` The `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on.
 
 `platform.core.list_inference_endpoints` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   Lists the chat completion models available to agents, with their IDs, names, and types. Includes [{{infer}} endpoints](../models.md#add-an-inference-endpoint) with the `chat_completion` task type, and [Generative AI connectors](../models.md#configure-a-connector), which are deprecated. {{infer-cap}} endpoints with other task types, such as `text_embedding` and `rerank`, are excluded.

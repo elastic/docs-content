@@ -72,7 +72,7 @@ $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: prev
     **Prerequisites:** Controlled by the `agentBuilder:tracing:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is on by default.
 
 $$$agent-builder-connector-discovery-skill$$$ `connector-discovery` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
-:   Finds and runs the [connectors](connectors.md) assigned to the agent. Use when a request involves an external service, such as creating a GitHub issue or sending a Slack message, or when a user asks what the agent can connect to. Agents need this skill to use their connectors. **Enable Elastic capabilities** includes it. If the toggle is off, assign the skill to the agent yourself.
+:   Looks up [connectors](connectors.md) and their sub-actions, and runs the connectors assigned to the agent. Use when a request involves an external service, such as creating a GitHub issue or sending a Slack message, or when a user asks what the agent can connect to. Agents need this skill to find their connectors. **Enable Elastic capabilities** includes it. If the toggle is off, assign the skill to the agent yourself.
 
     :::{dropdown} Assigned tools
     `platform.core.execute_connector_sub_action`, plus internal tools to list the agent's connectors and load a connector's sub-actions.
