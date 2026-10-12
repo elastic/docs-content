@@ -161,7 +161,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The entity store creates user, host, service, and generic entities from data in supported source indices (mainly the [Security default data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security)) when the incoming events include the ECS fields needed to identify those entities. Any integration that populates standard ECS identity fields — such as `host.*`, `user.*`, `service.*`, and related `event.*` fields — can contribute to entity creation, as long as the data contains enough information for the entity store to identify and build the entity. Generic entities represent cloud and orchestrator resources (such as AWS ARNs, Azure resource IDs, and Kubernetes pods) and require the `entity.id` field populated by CSP integrations.
+The entity store creates user, host, and service entities from data in supported source indices (mainly the [Security default data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security)) when the incoming events include the ECS fields needed to identify those entities. Any integration that populates standard ECS identity fields — such as `host.*`, `user.*`, `service.*`, and related `event.*` fields — can contribute to entity creation, as long as the data contains enough information for the entity store to identify and build the entity.
 
 Examples of supported integrations include:
 
@@ -235,12 +235,6 @@ An endpoint alert includes `user.name: jdoe` and `host.name: prod-web-01` but no
 
 A service entity is created when a document contains `service.name`. The entity store derives the service EUID from `service.name` alone, so any event carrying that field — regardless of source integration — contributes to service entity creation.
 
-### Generic entities [entity-store-generic-creation]
-
-A generic entity represents a cloud or orchestrator resource (such as an AWS ARN, Azure resource ID, GCP resource name, or Kubernetes pod). It is created when a document contains the `entity.id` field, which CSP integrations (such as CSPM and KSPM) populate automatically. Deployments without CSP integrations do not produce generic entities.
-
-Generic entities are used by the entity graph and Asset Inventory, but are not eligible for risk scoring.
-
 ## Troubleshoot entity store performance [entity-store-troubleshoot]
 ```yaml {applies_to}
 stack: ga 9.4+
@@ -291,7 +285,7 @@ Use `excludedIndexPatterns` to exclude specific index patterns from log extracti
 Use `frequency` to control how often extraction runs.
 
 * Decrease frequency if extraction is healthy but too resource-intensive and {{es}} CPU utilization is too high. The minimum supported value is `30s`.
-* Default: `1m`. The `service` entity type defaults to `10m` and the `generic` entity type to `30m`.
+* Default: `1m`. The `service` entity type defaults to `10m`.
 
 #### `maxLogsPerPage`
 
