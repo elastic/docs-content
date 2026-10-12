@@ -4,6 +4,8 @@ applies_to:
     self: ga
 navigation_title: In self-managed
 description: Install Elasticsearch plugins on self-managed clusters with a Docker configuration file or the elasticsearch-plugin CLI, and place custom configuration files on each node.
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/plugins/current/manage-plugins-using-configuration-file.html
 products:
   - id: elasticsearch
 ---
@@ -43,6 +45,15 @@ plugins:
 ```
 
 This example installs the official `analysis-icu` and `repository-azure` plugins, and one unofficial plugin. Every plugin must provide an `id`. Unofficial plugins must also provide a `location`, typically a URL, although Maven coordinates are also supported. The name of the downloaded plugin must match its `id`.
+
+{{es}} respects the [standard Java proxy system properties](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html) when it downloads plugins. To use a specific HTTP proxy instead, set `proxy` in the same file:
+
+```yaml
+plugins:
+  - id: custom-mapper
+    location: <EXAMPLE_URL>/archive/custom-mapper-1.0.0.zip
+proxy: proxy.example.com:8443
+```
 
 Each time the container starts, {{es}} compares this list against the plugins currently installed and adds or removes plugins so that the running set matches the file. Official plugins are also upgraded when you upgrade {{es}}. To change the set of plugins, edit the file and restart the container.
 
