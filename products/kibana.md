@@ -580,6 +580,15 @@ links:
     url: /reference/fleet/agent-command-reference.md
 :::
 
+:::{link-card}
+title: OpenTelemetry
+links:
+  - label: Elastic Agent as an OpenTelemetry Collector
+    url: elastic-agent://reference/edot-collector/index.md
+  - label: EDOT SDKs
+    url: opentelemetry://reference/edot-sdks/index.md
+:::
+
 ::::
 
 ::::{card-group}

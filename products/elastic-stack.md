@@ -42,18 +42,26 @@ steps:
 ::::{card-group}
 :title: What's new
 :id: whats-new
-:intro: Release notes for Elasticsearch, Kibana, Elastic Agent, Logstash, and Beats.
+:intro: Release notes for Elasticsearch, Kibana, Elastic Agent, Logstash, and Beats. Elasticsearch and Kibana also have a Serverless changelog.
 
 :::{link-card}
 title: Elasticsearch
-link: elasticsearch://release-notes/index.md
 icon: elasticsearch
+links:
+  - label: Serverless changelog
+    url: /release-notes/elastic-cloud-serverless/index.md
+  - label: Stack release notes
+    url: elasticsearch://release-notes/index.md
 :::
 
 :::{link-card}
 title: Kibana
-link: kibana://release-notes/index.md
 icon: kibana
+links:
+  - label: Serverless changelog
+    url: /release-notes/elastic-cloud-serverless/index.md
+  - label: Stack release notes
+    url: kibana://release-notes/index.md
 :::
 
 :::{link-card}
@@ -230,12 +238,21 @@ links:
 :::
 
 :::{link-card}
-title: Beats and OpenTelemetry
+title: Beats
 links:
-  - label: Beats
+  - label: Beats reference
     url: beats://reference/index.md
+:::
+
+:::{link-card}
+title: OpenTelemetry
+links:
   - label: Elastic Distributions of OpenTelemetry
     url: opentelemetry://reference/index.md
+  - label: Elastic Agent as an OpenTelemetry Collector
+    url: elastic-agent://reference/edot-collector/index.md
+  - label: EDOT SDKs
+    url: opentelemetry://reference/edot-sdks/index.md
 :::
 ::::
 
