@@ -1318,7 +1318,7 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}"
 
 ::::
 
-**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 
 This example uses the [update conversation access control API]({{kib-apis}}operation/operation-put-agent-builder-conversations-conversation-id-access-control).
 
