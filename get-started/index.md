@@ -1,4 +1,5 @@
 ---
+navigation_title: Elastic fundamentals
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html
@@ -17,7 +18,7 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
   training resources to get started.
 ---
 
-# Elastic fundamentals
+# {{es}} fundamentals
 
 Elastic fundamentals is your starting point for understanding the Elastic platform. This section covers the core concepts of the Elastic Stack, explains the available deployment options, and links to training and glossary resources so you can get productive quickly.
 
