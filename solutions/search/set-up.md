@@ -9,7 +9,7 @@ type: overview
 
 # Set up Elasticsearch for search [set-up-elasticsearch-for-search]
 
-This section covers where {{es}} runs for a search application and how you connect to it. Refer to the following pages to set up your {{es}} deployment:
+This section covers where {{es}} runs and how you connect to it. Refer to the following pages to set up your {{es}} deployment:
 
 * [](/solutions/search/set-up/choose-a-deployment-type.md): Compare deployment types and select one for your search workload.
 * [](/solutions/search/set-up/api-key-and-endpoints.md): Find the {{es}} endpoint and create an API key for search.
