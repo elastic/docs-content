@@ -67,6 +67,7 @@ links:
 :::{link-card}
 title: Elastic Agent
 link: elastic-agent://release-notes/index.md
+icon: elastic-agent
 :::
 
 :::{link-card}
@@ -78,6 +79,7 @@ icon: logstash
 :::{link-card}
 title: Beats
 link: beats://release-notes/index.md
+icon: beats
 :::
 ::::
 
