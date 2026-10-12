@@ -32,7 +32,7 @@ You manage connectors per {{kib}} space from **Manage components** → **Connect
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` An agent can only run the connectors assigned to it. Agents look up connectors and load their sub-actions and parameter schemas at run time through the built-in `connector-discovery` [skill](skills.md), which **Enable Elastic capabilities** includes. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
 
-{applies_to}`stack: preview 9.4-9.5` Unlike standalone tools, connectors don't need to be assigned to agents by default: any agent can use any connector in the space.
+{applies_to}`stack: preview 9.4-9.5` Unlike standalone tools, connectors don't need to be assigned to agents: any agent can use any connector in the space.
 
 When an agent needs to interact with an external system, it automatically reads the schemas of the connectors available to it. It then uses a built-in system tool (`platform.core.execute_connector_sub_action`) to independently format API payloads and run specific sub-actions (for example, looking up a Slack channel ID or searching AlienVault OTX for threat intelligence) without any manual tool mapping.
 
@@ -50,7 +50,7 @@ The configured connector appears in the library.
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use the connector, [assign it to the agent](#assign-connectors-to-an-agent).
 
-{applies_to}`stack: preview 9.4-9.5` By default, any agent can use the connector immediately.
+{applies_to}`stack: preview 9.4-9.5` Any agent can use the connector immediately.
 
 ## Assign connectors to an agent [assign-connectors-to-an-agent]
 
@@ -61,7 +61,7 @@ serverless: preview
 
 An agent can only use the connectors you assign to it, and new agents start with none. You assign connectors from the agent after you save it.
 
-To assign connectors, you need permission to edit the agent and the **Actions and Connectors: All** {{kib}} privilege. If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill. Without it, the agent can't find its connectors.
+To assign connectors in {{kib}}, you need permission to edit the agent and the **Actions and Connectors: All** {{kib}} privilege. If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill. Without it, the agent can't find its connectors.
 
 To assign a connector to an agent:
 
@@ -79,7 +79,9 @@ Agents that were never assigned connectors can't use any. This includes:
 - The built-in **Elastic AI Agent**.
 - Agents created with the [Agents API](kibana-api.md#agents-apis) without `connector_ids`.
 - {applies_to}`stack: preview 9.6+` Agents created in 9.4 or 9.5 without a connector list. In those versions, these agents could use any connector. After you upgrade, assign connectors to them.
-- {applies_to}`serverless: preview` Agents created before connector assignment was introduced. Previously, these agents could use any connector. Assign connectors to them.
+- {applies_to}`serverless: preview` Existing agents without a connector list, including agents created before new agents started with an empty list. Previously, these agents could use any connector. Assign connectors to them.
+
+Agents that already had a connector list in 9.5 or on {{serverless-short}} can now run only the connectors in that list. Previously, the list limited which connectors an agent could discover, not which ones it could run. Check these agents and assign any connectors they still need.
 :::
 
 ## Authorize connector access from chat
