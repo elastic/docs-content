@@ -67,7 +67,7 @@ A Knowledge Indicator (KI) is a document that records reusable context derived f
 
 Unlike a cached answer to one request, a KI can support different questions and multiple agents. When evaluation reveals a gap, improve the source or automation and regenerate the KI so the correction is available to future retrievals.
 
-The [generation strategy](build-and-maintain-ai-index.md#select-a-generation-strategy) determines how an automation divides source data into KIs and how much information each KI contains. To examine a generated KI and evaluate its usefulness, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
+The [generation strategy](build-and-maintain-ai-index.md#select-a-generation-strategy) determines how an automation divides source data into KIs and how much information each KI contains. To find, inspect, create, update, or delete KIs, refer to [Inspect and manage Knowledge Indicators](inspect-and-manage-knowledge-indicators.md). To evaluate whether generated KIs meet an agent's needs, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
 ## Agents and applications
 
