@@ -588,7 +588,6 @@ toc:
               - file: security/get-started/get-started-endpoint-security.md
               - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
-          - file: security/get-started/security-kibana-privileges.md
           - file: security/get-started/elastic-security-ui.md
           - file: security/security-serverless-feature-tiers.md
       - file: security/get-started/automatic-migration.md
@@ -684,6 +683,7 @@ toc:
                     crosslink: docs-content://solutions/security/dashboards/kubernetes-dashboard.md
           - file: security/manage/access-control.md
             children:
+              - file: security/manage/security-kibana-privileges.md
               - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
               - file: security/detect-and-alert/detections-privileges.md
               - file: security/ai/attack-discovery/grant-access.md

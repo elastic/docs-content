@@ -1067,6 +1067,10 @@ redirects:
   'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/managed-integrations/managed-integrations.md'
   'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/managed-integrations/cloud-connector-deployment.md'
 
+# Related to https://github.com/elastic/docs-content-internal/issues/1986 and https://github.com/elastic/docs-content-internal/issues/1702
+# Moved the Security Kibana privileges catalog from Get started to Access control
+  'solutions/security/get-started/security-kibana-privileges.md': 'solutions/security/manage/security-kibana-privileges.md'
+
 # Moved Explore pages (Hosts, Network, Users) into Entity analytics section
   'solutions/security/explore.md': 'solutions/security/advanced-entity-analytics.md'
   'solutions/security/explore/hosts-page.md': 'solutions/security/advanced-entity-analytics/hosts-page.md'
