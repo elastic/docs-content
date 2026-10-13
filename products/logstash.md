@@ -19,19 +19,19 @@ products:
 title: Get started with Logstash
 steps:
   - title: Download Logstash
-    description: Get the binary for your platform and unzip it. You need a JDK (Java 21) before you run.
+    description: Get the binary for your platform. You need a JDK (Java 21) to run it.
     link: https://www.elastic.co/downloads/logstash
     link-label: Download Logstash
   - title: Create your first pipeline
-    description: Write a config with an input, optional filters, and an output. A common first pipeline is stdin to Elasticsearch and stdout.
+    description: Write a config with an input, optional filters, and an output.
     link: logstash://reference/creating-logstash-pipeline.md
     link-label: Create a pipeline
   - title: Run Logstash
-    description: Start Logstash with your config file from the command line.
+    description: Start Logstash with your config file.
     link: logstash://reference/running-logstash-command-line.md
     link-label: Run from the command line
   - title: Parse real logs
-    description: Follow a full example that collects logs, parses fields, and ships them to Elasticsearch.
+    description: Follow a full example, from raw logs to Elasticsearch.
     link: logstash://reference/advanced-pipeline.md
     link-label: Parsing logs tutorial
 :::
@@ -41,7 +41,7 @@ steps:
 :::
 
 ::::{card-group}
-:title: Popular topics
+:title: Popular topics in Logstash
 :id: popular
 :intro: Logstash has a rich collection of input, filter, codec, and output plugins. Use the Grok filter plugin to parse arbitrary text and structure it.
 

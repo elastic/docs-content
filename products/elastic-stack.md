@@ -28,62 +28,90 @@ steps:
         description: Spin up Elasticsearch and Kibana on your machine for development with `start-local`.
         code: curl -fsSL https://elastic.co/start-local | sh
         language: sh
-  - title: Ingest your data
-    description: Send documents to Elasticsearch using the APIs, ingest pipelines, Elastic Agent, Logstash, or a language client.
+  - title: Add your data
+    description: Bring in your data with Elastic Agent, a language client, or a connector.
     link: /manage-data/ingest.md
-    link-label: Ingest your data
+    link-label: See ingest options
   - title: Explore and visualize
-    description: Open Discover, then build your first chart and dashboard.
+    description: Query your data in Discover, or start building charts.
     link: /explore-analyze/kibana-data-exploration-learning-tutorial.md
     link-label: Start the tutorial
 :::
 
 ::::{card-group}
-:title: What's new
-:id: whats-new
-:intro: Release notes for Elasticsearch, Kibana, Elastic Agent, Logstash, and Beats. Elasticsearch and Kibana also have a Serverless changelog.
+:title: Elastic Stack components
+:id: components
+:intro: The Elastic Stack, also known as the ELK Stack, is made of Elasticsearch, Kibana, Logstash, Elastic Agent, and Beats. They power [Elastic solutions](#solutions), and you have several ways to [deploy and manage them](#deploy).
 
 :::{link-card}
 title: Elasticsearch
 icon: elasticsearch
 links:
-  - label: Serverless changelog
-    url: /release-notes/elastic-cloud-serverless/index.md
-  - label: Stack release notes
+  - label: Elasticsearch docs hub
+    url: /products/elasticsearch.md
+  - label: Release notes
     url: elasticsearch://release-notes/index.md
+  - label: Serverless release notes
+    url: /release-notes/elastic-cloud-serverless/index.md
+  - label: Elasticsearch reference
+    url: elasticsearch://reference/index.md
 :::
 
 :::{link-card}
 title: Kibana
 icon: kibana
 links:
-  - label: Serverless changelog
-    url: /release-notes/elastic-cloud-serverless/index.md
-  - label: Stack release notes
+  - label: Kibana docs hub
+    url: /products/kibana.md
+  - label: Release notes
     url: kibana://release-notes/index.md
-:::
-
-:::{link-card}
-title: Elastic Agent
-link: elastic-agent://release-notes/index.md
-icon: elastic-agent
+  - label: Serverless release notes
+    url: /release-notes/elastic-cloud-serverless/index.md
+  - label: Kibana reference
+    url: kibana://reference/index.md
 :::
 
 :::{link-card}
 title: Logstash
-link: logstash://release-notes/index.md
 icon: logstash
+links:
+  - label: Logstash docs hub
+    url: /products/logstash.md
+  - label: Release notes
+    url: logstash://release-notes/index.md
+  - label: Logstash reference
+    url: logstash://reference/index.md
+:::
+
+:::{link-card}
+title: Elastic Agent
+icon: elastic-agent
+links:
+  - label: Fleet and Elastic Agent
+    url: /reference/fleet/index.md
+  - label: Release notes
+    url: elastic-agent://release-notes/index.md
+  - label: Elastic Agent as an OpenTelemetry Collector
+    url: elastic-agent://reference/edot-collector/index.md
 :::
 
 :::{link-card}
 title: Beats
-link: beats://release-notes/index.md
 icon: beats
+links:
+  - label: Beats reference
+    url: beats://reference/index.md
+  - label: Release notes
+    url: beats://release-notes/index.md
+  - label: Filebeat
+    url: beats://reference/filebeat/index.md
+  - label: Metricbeat
+    url: beats://reference/metricbeat/index.md
 :::
 ::::
 
 ::::{card-group}
-:title: Solutions
+:title: Elastic solutions
 :id: solutions
 :variant: solutions
 :intro: Solutions are packages of Elastic capabilities optimized for certain use cases. All solutions include the core storage, querying, and analytics capabilities of Elasticsearch and Kibana.
@@ -165,11 +193,85 @@ links:
 :::
 ::::
 
+::::{card-group}
+:title: Deploy your Elastic Stack
+:id: deploy
+:intro: Choose where to run the Elastic Stack: as a managed service, on Kubernetes, or on your own hosts. [Compare deployment types](/deploy-manage/deploy/deployment-comparison.md).
+
+:::{link-card}
+title: Serverless
+description: Fully managed projects. Elastic runs the infrastructure and the upgrades.
+links:
+  - label: Overview
+    url: /deploy-manage/deploy/elastic-cloud/serverless.md
+  - label: Create a project
+    url: /deploy-manage/deploy/elastic-cloud/create-serverless-project.md
+  - label: Project settings
+    url: /deploy-manage/deploy/elastic-cloud/project-settings.md
+:::
+
+:::{link-card}
+title: Elastic Cloud Hosted
+description: Managed deployments on AWS, Azure, or Google Cloud, with version control.
+links:
+  - label: Overview
+    url: /deploy-manage/deploy/elastic-cloud/cloud-hosted.md
+  - label: Create a deployment
+    url: /deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md
+  - label: Configure a deployment
+    url: /deploy-manage/deploy/elastic-cloud/configure.md
+  - label: Upgrade
+    url: /deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md
+:::
+
+:::{link-card}
+title: Elastic Cloud on Kubernetes
+description: Run the stack on your own Kubernetes clusters with the ECK operator.
+links:
+  - label: Overview
+    url: /deploy-manage/deploy/cloud-on-k8s.md
+  - label: Install ECK
+    url: /deploy-manage/deploy/cloud-on-k8s/install.md
+  - label: Configure ECK
+    url: /deploy-manage/deploy/cloud-on-k8s/configure.md
+  - label: Upgrade
+    url: /deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md
+:::
+
+:::{link-card}
+title: Elastic Cloud Enterprise
+description: Run your own Elastic Cloud on any infrastructure.
+links:
+  - label: Overview
+    url: /deploy-manage/deploy/cloud-enterprise.md
+  - label: Install ECE
+    url: /deploy-manage/deploy/cloud-enterprise/install.md
+  - label: Configure ECE
+    url: /deploy-manage/deploy/cloud-enterprise/configure.md
+  - label: Upgrade
+    url: /deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md
+:::
+
+:::{link-card}
+title: Self-managed
+description: Install and operate the stack yourself on your own hosts.
+links:
+  - label: Overview
+    url: /deploy-manage/deploy/self-managed.md
+  - label: Install Elasticsearch
+    url: /deploy-manage/deploy/self-managed/installing-elasticsearch.md
+  - label: Configure Elasticsearch
+    url: /deploy-manage/deploy/self-managed/configure-elasticsearch.md
+  - label: Upgrade
+    url: /deploy-manage/upgrade/deployment-or-cluster/self-managed.md
+:::
+::::
+
 :::::{explore}
 :id: explore
 :title: Explore the Elastic Stack
 :mode: first
-:intro: Find documentation for deploying, upgrading, and operating the products that make up the stack.
+:intro: Find documentation for upgrading, monitoring, and securing the Elastic Stack.
 
 ::::{card-group}
 :title: Quick links
@@ -193,116 +295,6 @@ links:
     url: /deploy-manage/deploy/self-managed/local-development-installation-quickstart.md
   - label: Ingest your data
     url: /manage-data/ingest.md
-:::
-::::
-
-::::{card-group}
-:title: Elastic Stack components
-:id: components
-
-:::{link-card}
-title: Elasticsearch
-links:
-  - label: Elasticsearch docs hub
-    url: /products/elasticsearch.md
-  - label: How Elasticsearch fits in the stack
-    url: /get-started/the-stack.md#stack-components-elasticsearch
-:::
-
-:::{link-card}
-title: Kibana
-links:
-  - label: Kibana docs hub
-    url: /products/kibana.md
-  - label: How Kibana fits in the stack
-    url: /get-started/the-stack.md#stack-components-kibana
-:::
-
-:::{link-card}
-title: Elastic Agent
-links:
-  - label: Fleet and Elastic Agent
-    url: /reference/fleet/index.md
-  - label: Integrations
-    url: /reference/fleet/manage-integrations.md
-  - label: Install Elastic Agent
-    url: /reference/fleet/install-elastic-agents.md
-:::
-
-:::{link-card}
-title: Logstash
-links:
-  - label: Logstash docs hub
-    url: /products/logstash.md
-  - label: How Logstash fits in the stack
-    url: /get-started/the-stack.md#stack-components-logstash
-:::
-
-:::{link-card}
-title: Beats
-links:
-  - label: Beats reference
-    url: beats://reference/index.md
-:::
-
-:::{link-card}
-title: OpenTelemetry
-links:
-  - label: Elastic Distributions of OpenTelemetry
-    url: opentelemetry://reference/index.md
-  - label: Elastic Agent as an OpenTelemetry Collector
-    url: elastic-agent://reference/edot-collector/index.md
-  - label: EDOT SDKs
-    url: opentelemetry://reference/edot-sdks/index.md
-:::
-::::
-
-::::{card-group}
-:title: Deploy and install
-:id: deploy
-
-:::{link-card}
-title: Plan your deployment
-links:
-  - label: Production guidance
-    url: /deploy-manage/production-guidance.md
-  - label: Reference architectures
-    url: /deploy-manage/reference-architectures.md
-:::
-
-:::{link-card}
-title: Elastic Cloud
-links:
-  - label: Elastic Cloud overview
-    url: /deploy-manage/deploy/elastic-cloud.md
-  - label: Elastic Cloud Hosted
-    url: /deploy-manage/deploy/elastic-cloud/cloud-hosted.md
-  - label: Serverless
-    url: /deploy-manage/deploy/elastic-cloud/serverless.md
-  - label: Start a free trial
-    url: https://cloud.elastic.co/registration
-:::
-
-:::{link-card}
-title: Self-managed
-links:
-  - label: Install Elasticsearch
-    url: /deploy-manage/deploy/self-managed/installing-elasticsearch.md
-  - label: Install Kibana
-    url: /deploy-manage/deploy/self-managed/install-kibana.md
-  - label: Install Logstash
-    url: logstash://reference/installing-logstash.md
-  - label: Install Elastic Agent
-    url: /reference/fleet/install-elastic-agents.md
-:::
-
-:::{link-card}
-title: Orchestrators
-links:
-  - label: Elastic Cloud on Kubernetes (ECK)
-    url: /deploy-manage/deploy/cloud-on-k8s.md
-  - label: Elastic Cloud Enterprise (ECE)
-    url: /deploy-manage/deploy/cloud-enterprise.md
 :::
 ::::
 

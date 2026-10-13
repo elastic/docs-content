@@ -43,7 +43,7 @@ steps:
 :::
 
 ::::{card-group}
-:title: Solutions
+:title: Elastic solutions
 :id: solutions
 :variant: solutions
 :intro: Solutions are packages of Elastic capabilities optimized for certain use cases. All solutions include the core storage, querying, and analytics capabilities of Elasticsearch and Kibana.

@@ -28,12 +28,12 @@ steps:
         description: Spin up Elasticsearch and Kibana on your machine for development with `start-local`.
         code: curl -fsSL https://elastic.co/start-local | sh
         language: sh
-  - title: Add data in Kibana
-    description: Upload a file, add an integration, or use sample data so you have something to explore.
+  - title: Add your data
+    description: Bring in your data with Elastic Agent, a language client, or a connector.
     link: /manage-data/ingest.md
     link-label: See ingest options
   - title: Explore and visualize
-    description: Open Discover, then build your first chart and dashboard.
+    description: Query your data in Discover, or start building charts.
     link: /explore-analyze/kibana-data-exploration-learning-tutorial.md
     link-label: Start the tutorial
 :::
@@ -43,7 +43,7 @@ steps:
 :::
 
 ::::{card-group}
-:title: Solutions
+:title: Elastic solutions
 :id: solutions
 :variant: solutions
 :intro: Solutions are packages of Elastic capabilities optimized for certain use cases. All solutions include the core storage, querying, and analytics capabilities of Elasticsearch and Kibana.
