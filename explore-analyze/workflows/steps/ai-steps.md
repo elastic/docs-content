@@ -3,7 +3,7 @@ navigation_title: AI
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Reference for the AI step types that bring LLM calls, agents, and agent conversations into workflows.
+description: Call LLMs, run Agent Builder agents, and add context to agent conversations from workflows with AI steps. This reference lists each step's parameters, output, and examples.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,9 +15,11 @@ products:
 
 # AI steps [workflows-ai-steps]
 
-AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` They also let workflows create {{agent-builder}} conversations and add content to them without running an agent.
+AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution.
 
-The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the default model configured for the workflow is used.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also create {{agent-builder}} conversations and add content to them without running an agent.
+
+The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID in the step. Configure a Generative AI connector in {{kib}} and pass its ID in `connector-id`. For [`ai.agent`](#ai-agent), you can instead pass an {{infer}} endpoint ID in `inference-id`. If you omit both, the step uses the default model configured for the workflow.
 
 :::{note}
 :applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
@@ -285,10 +287,12 @@ All parameters go in the `with` block and use `snake_case`.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `agent_id` | `with` | string | No | Agent to associate with the conversation. Defaults to the built-in Elastic AI Agent. The step fails if the agent doesn't exist or the user who authorizes the run can't use it. |
-| `conversation_id` | `with` | string (UUID) | No | ID to give the conversation. Must be a UUID. Generated if omitted. If a conversation with this ID already exists, the step fails. |
-| `title` | `with` | string | No | Conversation title. Defaults to `New conversation`. |
-| `access_control` | `with` | object | No | Who can access the conversation. Takes `access_mode` (`private` or `public`) and, for private conversations, optional `entries` (up to 100). Each entry adds a member and has the shape `{ type: user, id: <user profile UID>, role: member }`. Defaults to private. Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
+| `agent_id` | `with` | string | No | Agent to associate with the conversation. Defaults to the built-in Elastic AI Agent. The step fails if the agent doesn't exist or the user whose privileges authorize the run can't use it. |
+| `conversation_id` | `with` | string (UUID) | No | ID for the new conversation. Must be a UUID. Generated if omitted. The step fails if a conversation with this ID already exists. |
+| `title` | `with` | string | No | Conversation title, up to 500 characters. Defaults to `New conversation`. |
+| `access_control` | `with` | object | No | Who can access the conversation. Defaults to private. Takes `access_mode` (`private` or `public`) and optional `entries` (up to 100). Each entry adds a member and has the shape `{ type: user, id: <user profile UID>, role: member }`. Entries are allowed only for private conversations. The step fails if you set `access_mode: public` with any entries. Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
+| `template_id` | `with` | string | No | ID of a conversation template to apply. The template sets default metadata for the conversation. |
+| `metadata` | `with` | object | No | Initial metadata values. Requires `template_id`, and each key must be defined by the template. Up to 100 keys. Each value can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each). |
 
 **Output shape:**
 
@@ -296,6 +300,8 @@ All parameters go in the `with` block and use `snake_case`.
 |---|---|---|
 | `conversation_id` | string | Always. |
 | `agent_id` | string | Always. |
+| `template_id` | string | When `template_id` is set. |
+| `metadata` | object | Always. The conversation metadata after template defaults and your `metadata` values are applied. Empty if no template is used. |
 
 If you set `agent_id`, set the same agent in `agent-id` on any [`ai.agent`](#ai-agent) step that continues the conversation. Otherwise, `ai.agent` runs the default Elastic AI Agent, not the agent you set when you created the conversation.
 
@@ -320,8 +326,8 @@ All parameters go in the `with` block and use `snake_case`.
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `conversation_id` | `with` | string | Yes | Conversation to add the event to. |
-| `type` | `with` | string | Yes | Event type. Use `text_note` to add a note. Built-in conversation event types, such as user messages, are rejected. |
-| `data` | `with` | object | Depends on `type` | Event payload. Its shape depends on `type`. Required for `text_note`: set `text` (required, up to 1,000 characters) and optionally `title` (up to 256 characters). Neither field can be an empty string. |
+| `type` | `with` | string | Yes | Event type, up to 256 characters. Use `text_note` to add a note. Internal event types, such as user messages, are rejected. To add a user message, use [`ai.conversation.add_user_message`](#ai-conversation-add-user-message). |
+| `data` | `with` | object | Depends on `type` | Event payload, whose shape depends on `type`. Required for `text_note`: set `text` (up to 1,000 characters) and, optionally, `title` (up to 256 characters). Neither field can be an empty string. Other fields in `data` are ignored. |
 
 **Output shape:**
 
@@ -332,10 +338,10 @@ All parameters go in the `with` block and use `snake_case`.
 | `type` | string | Always. |
 | `created_at` | string | Always. ISO 8601 timestamp. |
 
-If the event type is unknown or `data` doesn't match the type, the step fails and adds nothing. Events can't be updated or removed after you add them.
+If the event type is unknown or `data` doesn't match the type, the step fails and adds nothing. You can't update or remove an event after you add it.
 
 :::{note}
-Events are attributed to the user whose privileges authorize the workflow run, not to the workflow. That user must own the conversation or be a member of it, or the conversation must be public. Otherwise, the step fails. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
+Events are attributed to the user whose privileges authorize the run, not to the workflow. That user must own the conversation or be a member of it, or the conversation must be public. The user must also be able to use the conversation's agent. Otherwise, the step fails. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
 :::
 
 ### Example: Add a note, then summarize
@@ -369,21 +375,21 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Add a user message to an existing {{agent-builder}} conversation without running the agent. The message becomes part of the conversation context, so the agent reads it the next time it runs on the conversation.
+Add a user message to an existing {{agent-builder}} conversation without running the agent. The agent reads the message the next time it runs on the conversation.
 
 All parameters go in the `with` block and use `snake_case`.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `conversation_id` | `with` | string | Yes | Conversation to add the message to. The conversation must already exist. To create one, use [`ai.conversation.create`](#ai-conversation-create). |
-| `message` | `with` | string | Yes | Message text. Can't be blank. |
+| `message` | `with` | string | Yes | Message text. Can't be empty or contain only whitespace. |
 
 **Output shape:** `{ conversation_id: string }`.
 
-The step doesn't accept attachments.
+Unlike `ai.agent`, this step doesn't accept attachments.
 
 :::{note}
-Messages are attributed to the user whose privileges authorize the workflow run, not to the workflow. That user must own the conversation or be a member of it, or the conversation must be public. Otherwise, the step fails. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
+Messages are attributed to the user whose privileges authorize the run, not to the workflow. That user must own the conversation or be a member of it, or the conversation must be public. The user must also be able to use the conversation's agent. Otherwise, the step fails. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
 :::
 
 ```yaml
@@ -400,4 +406,4 @@ Messages are attributed to the user whose privileges authorize the workflow run,
 - [Switch step](/explore-analyze/workflows/steps/switch.md): A common pairing: classify with `ai.classify`, then dispatch with `switch`.
 - [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Pair AI classifications with a reviewer gate for uncertain cases.
 - [{{agent-builder}} overview](/explore-analyze/ai-features/elastic-agent-builder.md): Concepts behind the agents referenced by `ai.agent`.
-- [{{agent-builder}} conversation APIs](/explore-analyze/ai-features/agent-builder/kibana-api.md#add-conversation-events): Add events to a conversation through the API.
+- [Add events to a conversation with the API](/explore-analyze/ai-features/agent-builder/kibana-api.md#add-conversation-events): Add the same events from outside a workflow.
