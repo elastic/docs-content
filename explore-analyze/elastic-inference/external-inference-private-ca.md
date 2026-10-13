@@ -1,5 +1,5 @@
 ---
-navigation_title: Use a private CA
+navigation_title: Trust a private CA
 description: Connect external inference endpoints to model providers that use a private or internal certificate authority by adding the CA to the Elasticsearch JVM trust store.
 applies_to:
   deployment:
@@ -10,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Use a private certificate authority with external {{infer}} endpoints [inference-private-ca]
+# Trust a private certificate authority for external {{infer}} endpoints [inference-private-ca]
 
 If your model provider presents a TLS certificate signed by a private or internal certificate authority (CA), {{es}} rejects the connection. Because {{es}} sends a test request when you create an endpoint, the error appears as soon as you try to save it:
 
@@ -26,6 +26,8 @@ The `xpack.inference.elastic.http.ssl.*` settings apply only to the Elastic {{in
 
 ## Before you begin [inference-private-ca-before-you-begin]
 
+Have the CA certificate that signed the TLS certificate of your model provider available in PEM format.
+
 Keep the following in mind before you change the trust store:
 
 - The trust store applies to the whole node. Every outbound TLS connection that uses the default JVM trust store trusts your CA, not only {{infer}} endpoints.
@@ -39,6 +41,8 @@ Keep the following in mind before you change the trust store:
 
 ::::{applies-item} deployment: { self: ga }
 Create a dedicated trust store that contains the default public CAs plus your own CA, then point the JVM at it.
+
+Using a separate trust store, rather than importing your CA into the bundled `cacerts` file directly, means your change survives upgrades. Each {{es}} upgrade ships a new JDK that replaces the bundled `cacerts` file.
 
 :::{warning}
 The custom trust store replaces the default JVM trust store. Start from a copy of the bundled JDK's `cacerts` file, as shown in the following steps. A trust store that contains only your CA breaks every other TLS connection the node makes, such as connections to snapshot repositories and EIS.
@@ -77,8 +81,6 @@ The custom trust store replaces the default JVM trust store. Start from a copy o
 
 1. Make sure the `elasticsearch` user can read the trust store file.
 1. Repeat these steps on every node, then restart each node.
-
-Using a separate trust store, rather than importing your CA into the bundled `cacerts` file directly, means your change survives upgrades. Each {{es}} upgrade ships a new JDK that replaces the bundled `cacerts` file.
 
 :::{tip}
 If you run {{es}} in Docker, you can instead build a custom image that adds your CA to the operating system trust anchors. In the official images, the JDK `cacerts` file links to the operating system trust bundle, so the JVM picks up the change:
