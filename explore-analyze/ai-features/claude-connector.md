@@ -120,5 +120,6 @@ This limitation comes from how Claude manages directory connectors, and might ch
 
 - [](/explore-analyze/ai-features/agent-builder/mcp-server.md)
 - [](/deploy-manage/app-connections/oauth-clients.md)
+- [](/deploy-manage/app-connections/create-oauth-client.md)
 - [](/deploy-manage/app-connections/connect-mcp-host.md)
 - [](claude-plugin.md)
