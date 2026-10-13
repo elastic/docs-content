@@ -22,8 +22,8 @@ A dashboard is composed of one or more **panels** that you arrange to tell your 
 
 New to dashboards? These hands-on examples walk you through creating your first dashboards using sample data:
 
-- [Example: website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns.
-- [Example: time series from eCommerce data](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using eCommerce data.
+- [Example: Website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns.
+- [Example: Time series from eCommerce data](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using eCommerce data.
 
 
 ## Work with dashboards [work-with-dashboards]
@@ -34,7 +34,7 @@ Once you understand the basics, explore these common tasks:
 - [Filter a dashboard](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights.
 
 **Build and customize dashboards**
-- [Ways to build a dashboard](dashboards/building.md): Choose between the UI, REST APIs, and AI to build a dashboard.
+- [Ways to build a dashboard](dashboards/building.md): Compare the UI, REST APIs, and AI approaches to find the one that fits how you work.
 - [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
 - [Create dashboards using AI](dashboards/create-dashboards-using-ai.md): Generate dashboards from natural language through chat with {{agent-builder}}.
 - [Add dashboard controls](visualize/dashboard-controls.md): Enable interactive filtering with options lists, range sliders, time sliders, and ES|QL variable controls.
