@@ -1,6 +1,6 @@
 ---
 navigation_title: Dashboards
-description: Visualize and share insights from your Elasticsearch data using interactive panels, charts, maps, and custom filters.
+description: Kibana dashboards turn your Elasticsearch data into interactive charts, maps, and filters. Start with dashboard examples, then build and share your own.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/dashboard.html
 applies_to:
@@ -10,20 +10,20 @@ products:
   - id: kibana
 ---
 
-# Dashboards [dashboard]
+# {{kib}} dashboards [dashboard]
 
-**Dashboards** provide the primary way to visualize and share insights from your {{es}} data. They allow you to build interactive displays that combine multiple visualizations, metrics, and controls into a single view that helps you and your team monitor trends, investigate issues, and make data-driven decisions.
+{{kib}} **dashboards** provide the primary way to visualize and share insights from your {{es}} data. They allow you to build interactive displays that combine multiple visualizations, metrics, and controls into a single view that helps you and your team monitor trends, investigate issues, and make data-driven decisions.
 
 A dashboard is composed of one or more **panels** that you arrange to tell your data story. Each panel can display visualizations such as charts, tables, metrics, and maps, static annotations like text or images, or specialized views for {{ml}} or {{observability}} data.
 
 ![Example dashboard](/explore-analyze/images/kibana-dashboard-overview.png "")
 
-## Get started with dashboards [get-started-with-dashboards]
+## Get started with dashboard examples [get-started-with-dashboards]
 
-New to dashboards? Start with these hands-on tutorials that walk you through creating your first dashboards using sample data:
+New to dashboards? These hands-on examples walk you through creating your first dashboards using sample data:
 
-- [Create a simple dashboard to monitor website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns.
-- [Create a dashboard with time series charts](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using eCommerce data.
+- [Example: website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns.
+- [Example: time series from ecommerce data](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using eCommerce data.
 
 
 ## Work with dashboards [work-with-dashboards]
