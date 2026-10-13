@@ -100,7 +100,13 @@ Upload a custom JVM trust store as a bundle and add it to your deployment. For t
 ::::
 
 ::::{applies-item} deployment: { eck: ga }
-Store a custom JVM trust store in a Kubernetes secret, mount it into the {{es}} Pods, and point the JVM at it with the `ES_JAVA_OPTS` environment variable. For an example, refer to [Use S3-compatible services](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md#k8s-s3-compatible). The same steps apply to {{infer}} endpoints.
+Store a custom JVM trust store in a Kubernetes Secret, mount it into the {{es}} Pods, and configure the JVM to use it with the `ES_JAVA_OPTS` environment variable.
+
+The closest example is [Use S3-compatible services](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md#k8s-s3-compatible), which sets up a custom trust store for a snapshot repository. To adapt it for {{infer}} endpoints:
+
+- Follow steps 1 to 4 to build the trust store and store it in a Secret. In step 2, use the CA certificate of your model provider.
+- In step 6, add only the trust store volume, the volume mount, and the `ES_JAVA_OPTS` environment variable. Leave out `secureSettings`.
+- Skip step 5 and step 7, which set up the snapshot repository.
 ::::
 
 :::::
