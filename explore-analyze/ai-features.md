@@ -181,3 +181,5 @@ serverless: ga
 [AI agent skills for Elastic](/explore-analyze/ai-features/agent-skills.md) provides official, open-source skill packages that help AI coding agents perform Elastic-specific tasks. Skills are built on the Agent Skills open standard, and include guidance for tasks like working with {{es}} APIs, {{kib}} workflows, and {{observability}} and {{elastic-sec}} use cases.
 
 For Claude users, the [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md) is the recommended way to install these skills. The plugin bundles all Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit.
+
+{applies_to}`serverless: ga` To let Claude work with the data in an {{serverless-full}} project, add the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md) from the Claude directory. It gives Claude access to your project's [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md).

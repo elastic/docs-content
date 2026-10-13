@@ -41,6 +41,8 @@ When using a custom {{kib}} Space, include the space name in the endpoint path:
 You can copy your MCP server URL directly in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
 :::
 
+{applies_to}`serverless: ga` If you're setting up the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md), enter this URL as the connector's **Server URL**. {{kib}} also shows this URL when you [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md) for the connector.
+
 ## Authentication and configuration [mcp-server-authentication]
 
 External MCP hosts need credentials to reach the MCP server endpoint. The way that you configure your MCP server depends on your authentication method. Choose API keys or OAuth 2.1 based on your deployment type and use case.
@@ -79,3 +81,4 @@ When you have projects [linked](/deploy-manage/cross-project-search-config/cps-c
 - [](programmatic-access.md)
 - [Create API keys for {{agent-builder}} APIs](api-keys.md)
 - [](/deploy-manage/app-connections/oauth-clients.md)
+- [](/explore-analyze/ai-features/claude-connector.md)

@@ -24,6 +24,10 @@ In the {{kib}} UI, OAuth clients are labeled **MCP clients**. The button and men
 
 You can also [edit an existing client](#edit-oauth-client) to change its name, logo, or redirect URIs without replacing its credentials.
 
+:::{tip}
+If you're creating a client for the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md), select **Remote** as the redirect URI type, enter `https://claude.ai/api/mcp/auth_callback` as the redirect URI, and select **Generate confidential MCP client**. Then enter the client ID, client secret, and MCP server URL in the connector's **Connect** dialog in Claude.
+:::
+
 ## Before you begin [create-oauth-client-before-you-begin]
 
 Before you create an OAuth client:
@@ -133,3 +137,4 @@ You can also share these values so that other people connect the same client in 
 - [](oauth-clients.md)
 - [](revoke-oauth-client.md)
 - [](manage-app-connections.md)
+- [](/explore-analyze/ai-features/claude-connector.md)
