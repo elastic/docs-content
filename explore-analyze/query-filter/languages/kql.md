@@ -1,5 +1,6 @@
 ---
 meta_title: KQL - Kibana
+navigation_title: KQL
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kuery-query.html
 applies_to:
