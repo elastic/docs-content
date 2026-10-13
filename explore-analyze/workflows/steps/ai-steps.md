@@ -19,7 +19,11 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also create {{agent-builder}} conversations and add content to them without running an agent.
 
-The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID in the step. Configure a Generative AI connector in {{kib}} and pass its ID in `connector-id`. For [`ai.agent`](#ai-agent), you can instead pass an {{infer}} endpoint ID in `inference-id`. If you omit both, the step uses the default model configured for the workflow.
+The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID in the step. Configure a Generative AI connector in {{kib}} and pass its ID in `connector-id`. For [`ai.agent`](#ai-agent), you can instead pass an {{infer}} endpoint ID in `inference-id`.
+
+If you omit both, `ai.prompt`, `ai.classify`, and `ai.summarize` use the [default AI connector](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#genai-settings), and `ai.agent` uses the same model that {{agent-builder}} would use for the agent. Refer to [Model configuration in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md).
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` If a model is set for `ai.prompt`, `ai.classify`, or `ai.summarize` in [**Feature Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#feature-settings), that step uses it instead of the default AI connector.
 
 :::{note}
 :applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
@@ -37,7 +41,7 @@ Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}
 - [`ai.conversation.add_event`](#ai-conversation-add-event): Add an event, such as a note, to a conversation without running the agent. {applies_to}`stack: ga 9.6+`
 - [`ai.conversation.add_user_message`](#ai-conversation-add-user-message): Add a user message to a conversation without running the agent. {applies_to}`stack: ga 9.6+`
 
-`connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most AI parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`).
+For `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). The conversation steps have no top-level fields and use `snake_case` inside `with`.
 
 ::::{applies-switch}
 :::{applies-item} { stack: ga 9.5, serverless: ga }
@@ -61,7 +65,7 @@ Call an LLM with a prompt. Supports optional structured output through a JSON Sc
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `connector-id` | top level | string | No | The Generative AI connector to use. Defaults to the workflow's default connector if omitted. |
+| `connector-id` | top level | string | No | The Generative AI connector to use. If omitted, the step uses the default model described at the start of this page. |
 | `prompt` | `with` | string | Yes | Prompt text. Supports Liquid templating. |
 | `systemPrompt` | `with` | string | No | System prompt sent before the user prompt. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
