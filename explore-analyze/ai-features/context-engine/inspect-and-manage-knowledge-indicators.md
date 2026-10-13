@@ -109,18 +109,26 @@ The following example uses a custom verifier workflow. First create and enable t
   type: context-engine.createKi
   with:
     ai_index_id: "support-context"
-    ki_id: "support-case-patterns"
+    ki_id: "account-123-support-connection-456-cases"
     verifiers:
       - workflow_id: "YOUR_VERIFIER_WORKFLOW_ID"
     ki:
       type: "support.recurring_issue"
       title: "Recurring support case patterns"
       description: "Patterns found across the support cases analyzed by the workflow."
-      content: "The reviewed cases show recurring configuration and capacity issues."
+      content: "The cases in this support connection describe configuration and capacity issues. Use this context when investigating recurring support problems for this account."
+      attributes:
+        account_id: "account-123"
+        connection_id: "support-connection-456"
+        object_id: "cases"
       tags:
         - "support"
         - "recurring-issue"
 ```
+
+Use `attributes` for structured identifiers that you need to filter on, such as the account, connection, and object represented by a KI. Use `content` to explain what the source contains and when it is useful. These attribute names are examples for this use case, not required KI fields. Storing an account or user identifier does not itself restrict access to the KI.
+
+When one workflow writes KIs for multiple accounts or connections, give each logical KI a distinct, stable `ki_id`. The example combines the account, connection, and object identifiers so that later runs address the same KI without replacing another account's context.
 
 For an index-backed AI index, another create operation with the same `ki_id` replaces the document. For a data-stream-backed AI index, it appends a revision.
 
@@ -188,7 +196,7 @@ Use `context-engine.updateKi` to change selected fields of an existing KI. Field
   type: context-engine.updateKi
   with:
     ai_index_id: "support-context"
-    ki_id: "support-case-patterns"
+    ki_id: "account-123-support-connection-456-cases"
     ki:
       description: "Reviewed patterns found across recent support cases."
       tags:
@@ -210,7 +218,7 @@ Use `context-engine.deleteKi` to prevent a KI from appearing in normal retrieval
   type: context-engine.deleteKi
   with:
     ai_index_id: "support-context"
-    ki_id: "support-case-patterns"
+    ki_id: "account-123-support-connection-456-cases"
 ```
 
 For an index-backed AI index, the step removes the document. For a data-stream-backed AI index, it marks the KI as deleted and preserves its revisions. A deleted KI can therefore remain visible in the inspection UI with the **Deleted** status.
@@ -229,5 +237,6 @@ After the workflow runs, confirm the intended outcome:
 2. Open the AI index's **Knowledge Indicators** tab.
 3. Find the KI by its title and type, then open its details.
 4. Confirm that its ID, content, update time, status, and provenance match the workflow run.
+5. If the KI includes identifying attributes, confirm that they match the intended account, connection, and source object.
 
 If the workflow completed but the expected KI was not written, inspect any configured verifier results. Verification failure prevents `context-engine.createKi` from writing the KI.
