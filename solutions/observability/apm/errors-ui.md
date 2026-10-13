@@ -18,7 +18,7 @@ Use the **Errors** page to investigate exceptions and logged errors from your se
 
 Returning an HTTP 5xx status code alone doesn't create an exception or an error event. An exception or logged error must also be captured to appear on this page.
 
-For OpenTelemetry exception logs that aren't grouped as APM errors, refer to [Errors from logs](#apm-errors-from-logs).
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For OpenTelemetry exception logs that aren't grouped as APM errors, refer to [Errors from logs](#apm-errors-from-logs).
 
 ## APM errors [apm-error-groups]
 
@@ -41,6 +41,8 @@ stack: ga 9.5+
 serverless: ga
 ```
 
+The **Errors from logs** section is available in {{stack}} 9.5.5 and later.
+
 The **APM errors** section contains error groups and charts. The **Errors from logs** section lists OpenTelemetry exception logs that haven't been processed into APM error documents. Each row is an individual log with its exception message, type, and occurrence time. These logs have no error group and don't contribute to the APM error counts or charts.
 
 Use the page's Kibana Query Language (KQL) search bar and time range to filter both **APM errors** and **Errors from logs**. The **APM errors** section is hidden when it has no errors to display and matching exception logs are available.
@@ -55,6 +57,8 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-In the [trace waterfall](/solutions/observability/apm/trace-sample-timeline.md) on an APM transaction details page, click **View error** or **View *x* errors** (if there is more than one). This opens the service's **Errors** page. The page's KQL query filters by the trace ID and the selected span or transaction ID, whether the errors are APM errors, OpenTelemetry exception logs, or both.
+Waterfall error navigation to the **Errors** page is available in {{stack}} 9.5.5 and later.
+
+In the [trace waterfall](/solutions/observability/apm/trace-sample-timeline.md) in APM, for example on a transaction details page, click **View error**, or **View *x* errors** if there is more than one. This opens the service's **Errors** page. For mobile services, it opens the **Errors & crashes** page instead. The page's KQL query filters by the trace ID and the selected span or transaction ID, whether the errors are APM errors, OpenTelemetry exception logs, or both.
 
 Clear the KQL query to explore errors across the service within the selected time range.
