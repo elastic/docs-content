@@ -55,7 +55,7 @@ Each of the following privileges controls access to a different part of {{observ
 :::{note}
 :applies_to: {"serverless": "ga"}
 
-In {{serverless-short}}, the **Observability** group also includes privileges that belong to the **Analytics** or **Management** groups in {{stack}}, such as Dashboards, Discover, Machine Learning, Workflows Management, Agent Builder, and Context Engine. Which ones appear depends on your [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md). For those privileges, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+In {{serverless-short}}, the **Observability** group also includes privileges that belong to the [**Analytics** group](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-analytics) or [**Management** group](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management) in {{stack}}, such as Dashboards, Discover, Machine Learning, Workflows Management, Agent Builder, and Context Engine. Which ones appear depends on your [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 :::
 
 ## APM and User Experience sub-feature privileges
