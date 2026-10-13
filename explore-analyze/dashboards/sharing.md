@@ -10,7 +10,7 @@ products:
 type: how-to
 ---
 
-# Export {{kib}} dashboards [share-the-dashboard]
+# Export and share {{kib}} dashboards [share-the-dashboard]
 
 You can export a {{kib}} dashboard as PDF, PNG, CSV, or JSON for reporting, backup, or reuse, and share it with others:
 
