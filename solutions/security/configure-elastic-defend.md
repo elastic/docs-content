@@ -29,16 +29,21 @@ products:
 
 In practice, you add the {{elastic-defend}} integration from the **Integrations** page, assign it to an {{agent}} policy, and deploy {{agent}} to your hosts. {{agent}} installs {{elastic-endpoint}}, which immediately begins monitoring the host according to your policy settings.
 
+## Data that {{elastic-defend}} collects [elastic-defend-data]
+
+{{elastic-defend}} collects events from each host it protects, such as process, network, and file activity. The preset you select when you install it sets which event categories it collects, and you can change them later in the integration policy. For the categories available on each operating system, refer to [Event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection).
+
+To bring in data from other sources, refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
+
 ## Where to start
 
 | Your goal | Start here |
 |---|---|
 | Deploy {{elastic-defend}} for the first time | [Requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) → [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md) |
-| Configure protection and event collection settings | [Configure an integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md) |
-| Control which users can access {{elastic-defend}} features | [Feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) |
+| Deploy to macOS hosts without user prompts | [Deploy on macOS with MDM](/solutions/security/configure-elastic-defend/deploy-on-macos-with-mdm.md) |
 | Set up endpoints in restricted networks | [Configure offline endpoints and air-gapped environments](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md) |
-| Send endpoint data to a remote {{es}} output | [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md) |
-| Remove {{agent}} from a host | [Uninstall {{agent}}](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md) |
+| {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Store endpoint data in a different cluster from the one that manages your {{agents}} | [Use {{elastic-defend}} with a remote {{es}} output](/solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md) |
+| Tune protection, manage privileges, or remove agents after deployment | [Manage {{elastic-defend}}](/solutions/security/manage-elastic-defend.md) |
 
 ## Next steps
 

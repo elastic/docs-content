@@ -8,6 +8,7 @@ products:
   - id: "cloud-hosted"
   - id: "cloud-kubernetes"
   - id: "cloud-enterprise"
+navigation_title: Query logging
 ---
 
 # Query logging in {{es}}
