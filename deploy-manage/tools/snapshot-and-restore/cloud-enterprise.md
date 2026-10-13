@@ -34,13 +34,12 @@ To register snapshot repositories in ECE directly at the deployment level, follo
 * AWS S3
 * Azure Blob Storage
 * Google Cloud Storage
-* MinIO S3
 
 ::::{note}
 * No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
 * If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.
-* Elastic supports [MinIO](https://www.min.io/) in {{ece}} and {{es}}, as long as the storage behaves compatibly with AWS S3. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch) for more guidance.
-* Elastic does not recommend MinIO as it is no longer maintained.
+* Elastic permits use of storage that is fully compatible with AWS S3. Elastic does not support the storage itself.
+* While users can use [MinIO](https://www.min.io/), Elastic does not recommend it, as it is no longer maintained. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch) and the [MinIO self-managed repository](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md) guide.
 * Configuring and troubleshooting MinIO beyond the documented ECE repository setup is out of the Elastic support scope.
 ::::
 
@@ -58,7 +57,6 @@ The following guides provide instructions on adding a snapshot repository in ECE
 * [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [MinIO](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 ## Edit snapshot repository configurations [ece_edit_snapshot_repository_configurations]
 
