@@ -100,7 +100,9 @@ The following examples show the inputs for each operation.
 
 ### Create a KI
 
-Use `context-engine.createKi` to write a KI. Set `ki_id` to a stable value when later runs must address the same logical KI.
+Use `context-engine.createKi` with `verifiers` to check a KI before writing it. This is the recommended approach when a KI must pass verification before it becomes available for retrieval. Set `ki_id` to a stable value when later runs must address the same logical KI.
+
+The following example uses a custom verifier workflow. First create and enable the verifier described in [Add a custom verifier](#add-custom-ki-verifier), then replace `YOUR_VERIFIER_WORKFLOW_ID` with its workflow ID.
 
 ```yaml
 - name: create_ki
@@ -108,6 +110,8 @@ Use `context-engine.createKi` to write a KI. Set `ki_id` to a stable value when 
   with:
     ai_index_id: "support-context"
     ki_id: "support-case-patterns"
+    verifiers:
+      - workflow_id: "YOUR_VERIFIER_WORKFLOW_ID"
     ki:
       type: "support.recurring_issue"
       title: "Recurring support case patterns"
@@ -120,7 +124,60 @@ Use `context-engine.createKi` to write a KI. Set `ki_id` to a stable value when 
 
 For an index-backed AI index, another create operation with the same `ki_id` replaces the document. For a data-stream-backed AI index, it appends a revision.
 
-The step returns the created document's `id`. If you configure verifiers and any verifier fails, the step does not write the KI and the output has no `id`.
+When verification passes, the step writes the KI and returns its `id` and the `verification` results. If any verifier fails, the step returns `verification.passed: false` without an `id` and does not write the KI. Inspect `verification.results` for the outcome of each verifier. A completed step does not by itself mean that a KI was written.
+
+For KIs that contain ES|QL, you can also add the built-in `esql-valid-syntax` and `esql-valid-runtime` verifiers. Parsing and running a query does not establish that it answers the intended question.
+
+### Add a custom verifier [add-custom-ki-verifier]
+
+A custom verifier is a workflow that receives the candidate KI as `inputs.ki` and returns a boolean `passed` result, with an optional `reason`. Create and enable the workflow in the same Kibana space as the calling workflow. Use its workflow ID in the `verifiers` list.
+
+For example, this verifier rejects a KI when its `content` field is missing or empty:
+
+```yaml
+name: Check KI content
+enabled: true
+triggers:
+  - type: manual
+inputs:
+  - name: ki
+    type: object
+    required: true
+outputs:
+  - name: passed
+    type: boolean
+  - name: reason
+    type: string
+steps:
+  - name: check_content
+    type: if
+    condition: 'inputs.ki.content: * and not inputs.ki.content: ""'
+    steps:
+      - name: accept_ki
+        type: workflow.output
+        with:
+          passed: true
+          reason: "The KI has content."
+    else:
+      - name: reject_ki
+        type: workflow.output
+        with:
+          passed: false
+          reason: "The KI content is missing or empty."
+```
+
+Test the verifier with a KI that contains content and one that does not. Confirm that it returns `passed: true` and `passed: false`, respectively. This example checks only whether content is present. Add checks appropriate to your use case to assess the generated information.
+
+For the workflow input and output contract, refer to [Compose workflows from reusable parts](/explore-analyze/workflows/authoring-techniques/compose-workflows.md).
+
+### Run verification separately
+
+Use `context-engine.verifyKi` when your workflow needs to decide what to do with verification results independently of writing a KI. For example:
+
+- Verify a candidate before creation, inspect the results, and intentionally write it even if a check fails. In this case, call `context-engine.createKi` without `verifiers` after applying your workflow's decision logic.
+- Retrieve existing KIs in a separate workflow, verify them, and use `context-engine.deleteKi` to remove those that fail the required checks.
+
+The step accepts the KI document and the same `verifiers` list as `context-engine.createKi`. It returns `passed` and `results` without writing, updating, or deleting the KI. Your workflow must explicitly perform any subsequent action.
 
 ### Update a KI
 
