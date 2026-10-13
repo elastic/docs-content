@@ -11,31 +11,4 @@
 
   On {{serverless-full}}, cluster settings can't be changed. Stop sending exemplars at the source instead, as described in the previous option, or, if you can't change the sender, drop them with an ingest pipeline.
 
-* **Drop exemplars with an ingest pipeline**: If you can't change the sender or the cluster setting, create an ingest pipeline with a [drop processor](elasticsearch://reference/enrich-processor/drop-processor.md) and make it the default pipeline of all exemplar data streams through the `exemplars@custom` component template. Exemplars are still sent to {{es}}, but are discarded before they are indexed. This approach works on all deployment types, including {{serverless-short}}.
-
-  ```console
-  PUT _ingest/pipeline/drop-exemplars
-  {
-    "processors": [
-      { "drop": {} }
-    ]
-  }
-
-  PUT _component_template/exemplars@custom
-  {
-    "template": {
-      "settings": {
-        "index.default_pipeline": "drop-exemplars"
-      }
-    }
-  }
-  ```
-
-  The component template only applies to backing indices created after the change. To also stop existing exemplar data streams from indexing new exemplars, set the pipeline on them directly:
-
-  ```console
-  PUT exemplars-*/_settings
-  {
-    "index.default_pipeline": "drop-exemplars"
-  }
-  ```
+* **Drop exemplars with an ingest pipeline**: If you can't change the sender or the cluster setting, create an [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) with a [drop processor](elasticsearch://reference/enrich-processor/drop-processor.md) and set it as the `index.default_pipeline` of all exemplar data streams through the `exemplars@custom` component template. Exemplars are still sent to {{es}}, but are discarded before they are indexed. This approach works on all deployment types, including {{serverless-short}}. Because component templates only apply to backing indices created after the change, also update the index settings of any existing exemplar data streams.
