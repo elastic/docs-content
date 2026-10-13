@@ -274,9 +274,9 @@ To customize exemplar data streams, for example to change their lifecycle, use t
 
 Exemplar ingestion is enabled by default.
 If you don't need exemplars, or want to avoid the additional storage, turn it off in one of the following ways.
-Prefer stopping exemplars at the source: it works on every deployment type and saves the bandwidth and processing of sending data that is discarded anyway.
 
-* **Stop sending exemplars (preferred)**: Configure the sender so exemplars never leave your infrastructure.
+* **Stop sending exemplars at the source (preferred)**: Configure the sender so exemplars never leave your infrastructure. This works on every deployment type and saves bandwidth and processing by avoiding sending data that would be discarded anyway.
+
   OpenTelemetry SDKs stop recording exemplars when you set the [`OTEL_METRICS_EXEMPLAR_FILTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exemplar) environment variable to `always_off`.
   In an OpenTelemetry Collector, remove exemplars from all data points with the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor) and add it to your metrics pipeline:
 
