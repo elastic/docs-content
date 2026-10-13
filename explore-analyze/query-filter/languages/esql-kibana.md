@@ -129,32 +129,27 @@ serverless: preview
 stack: preview 9.3+
 ```
 
-The {{esql}} editor includes a search bar that builds a query from text you enter, so you can filter data without writing the full {{esql}} syntax.
+The {{esql}} editor includes a search bar that builds a query from text you enter, so you can filter data without writing the full {{esql}} syntax. To open it, click the search icon, which is {icon}`magnify`, or {icon}`magnify_sparkles` with the Enterprise license that [AI features](#esql-kibana-ai-assistance) require. Where you find the icon and when the search bar closes depend on your version:
 
-Where you find the search bar depends on where you are:
-
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` In **Discover** and on dashboards, the search bar is in the query bar. When you edit a visualization, a map layer, or an alerting rule, click the search icon in the editor footer. The tooltip is **Search your data using KQL**, or **Search your data using KQL or natural language** when natural language mode is available.
-- {applies_to}`stack: preview 9.4-9.5` {applies_to}`serverless: unavailable` In **Discover** and on dashboards, click the search icon in the query bar. When you edit a visualization, a map layer, or an alerting rule, click the search icon in the editor. You can also press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux).
-- {applies_to}`stack: preview =9.3` {applies_to}`serverless: unavailable` Press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) in the editor. This works in **Discover**, on dashboards, and when you edit a visualization, a map layer, or an alerting rule.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` In **Discover** and on dashboards, the search bar is always visible. When you edit a visualization, a map layer, or an alerting rule, the icon is in the editor footer. The search bar closes when you select the editor.
+- {applies_to}`stack: preview 9.3-9.5` The icon is in the editor. You can also press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). The search bar closes when you select the editor or start entering text in it.
 
 The search bar offers two modes:
 
 - **KQL**: Filter your data with free text or [KQL](kql.md) syntax, as described in this section.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Natural language**: Describe the query you want in plain language and let an AI agent generate it for you. Refer to [Generate a full query from natural language](#esql-kibana-quick-search-nl).
 
-What happens to the search bar after you open it also depends on your version:
-
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` In **Discover** and on dashboards, the search bar stays in the query bar. When you edit a visualization, a map layer, or an alerting rule, it closes when you select the editor.
-- {applies_to}`stack: preview 9.3-9.5` {applies_to}`serverless: unavailable` The search bar closes when you start entering text in the editor or select outside it.
-
-The search bar uses the data sources already named in the editor. In **Discover**, on dashboards, and when you edit a visualization, a map layer, or an alerting rule, the search does one of two things. If the editor query has no source command, nothing changes. Otherwise the editor replaces the query, as the following steps describe.
-
 To filter your data with KQL:
 
-1. Make sure the query in the editor names the data sources to search, for example `FROM logs-*`.
-2. Enter the text you want to search for as free text or using [KQL](kql.md) syntax.
-3. Submit your search by pressing {kbd}`enter`. The editor replaces the query with the source command already in the editor (`TS` if the query starts with `TS`, otherwise `FROM`), the data sources from that command, and a `WHERE KQL()` command that contains the text you entered. Commands such as `KEEP` are removed. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
-4. Refine your query with any other {{esql}} command or function that you need.
+1. If the search bar isn't already open, open it ({icon}`magnify` or {icon}`magnify_sparkles`).
+2. Set the data sources to search:
+
+   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Make sure the query in the editor names the data sources, for example `FROM logs-*`. If the query names none, submitting the search does nothing.
+   - {applies_to}`stack: preview 9.3-9.5` Select the data sources to search. The list starts with the data sources named in the editor.
+
+3. Enter the text you want to search for as free text or using [KQL](kql.md) syntax.
+4. Submit your search by pressing {kbd}`enter`. The editor replaces the query with a source command for those data sources and a `WHERE KQL()` command that contains the text you entered. The source command is `TS` if the query in the editor starts with `TS`, otherwise `FROM`. Commands such as `KEEP` are removed. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
+5. Refine your query with any other {{esql}} command or function that you need.
 
 ![Search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
 
@@ -178,13 +173,16 @@ Choose the entry point that matches what you want to do:
 - For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
 - A configured LLM. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
-Without an Enterprise license, the AI prompts and actions don't appear, and the editor uses only its standard autocomplete behavior. With a license but no configured model, natural language mode doesn't appear in the search bar. The comment hints and **Fix with AI** still appear, and using them shows a **No AI connector available.** notification.
+Without an Enterprise license, the AI prompts and actions don't appear, and the editor uses only its standard autocomplete behavior. With a license but no configured model, the comment hints and **Fix with AI** still appear, and using them shows a **No AI connector available.** notification. Natural language mode in the search bar behaves differently depending on your version:
+
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Natural language mode doesn't appear.
+- {applies_to}`stack: preview =9.5` Natural language mode appears, and selecting it shows a link to set up a connector.
 
 #### Generate a full query from natural language [esql-kibana-quick-search-nl]
 
 Not sure how to write an {{esql}} query? Describe what you want from your data in natural language and a specialized AI agent writes the query for you.
 
-1. Open the search bar.
+1. If the search bar isn't already open, open it ({icon}`magnify_sparkles`).
 2. From the mode selector, select **Natural language**.
 3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
 4. Press **Enter** to submit your request. The editor replaces or updates the current query, runs it, and saves it to your [query history](#esql-kibana-query-history).
@@ -264,8 +262,12 @@ The {{esql}} editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-lan
 In **Discover**, `LOOKUP JOIN` commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/create-lookup-indices.md).
 
 #### Cross-cluster and cross-project lookup joins
+```{applies_to}
+serverless: ga
+stack: ga 9.2
+```
 
-{applies_to}`stack: ga 9.2` {applies_to}`serverless: unavailable` Remote lookup joins work in [cross-cluster](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) queries. By default, {{esql}} resolves the lookup index on every remote cluster in the query, and each cluster joins against its own local index with that name.
+Remote lookup joins are supported in [cross-cluster](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) and [cross-project](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) queries. By default, {{esql}} resolves the lookup index on every remote cluster or project in the query, and each one joins against its own local index with that name.
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To join against a lookup index on the local cluster or origin project when that index is missing from one or more clusters or projects in the query, use [`LOOKUP JOIN` coordinator mode](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#coordinator-mode).
 
@@ -333,15 +335,17 @@ stack: ga 9.4
 2. Search for **Time zone** (`dateFormat:tz`).
 3. Set it to **Browser** to use your browser's timezone, or choose a specific timezone such as **UTC** or **America/New_York**.
 
-This setting doesn't apply when you edit an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md). Those rules don't send the **Time zone** setting with the query. A rule uses UTC unless its query includes [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md).
-
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` If an administrator set the `esql.query.settings.time_zone` cluster setting, and the rule query doesn't include `SET time_zone`, the rule uses that cluster setting instead of UTC.
-
-`SET time_zone` changes how {{es}} computes dates for the rule. It doesn't change how **Discover**, dashboards, or **Maps** display timestamps.
-
 :::{important}
 Avoid `SET time_zone` in **Discover**, dashboards, and **Maps**. `SET time_zone` changes how dates are computed by {{es}}, but {{kib}} still displays timestamps following the timezone defined in its `dateFormat:tz` advanced setting, which can produce confusing results.
 :::
+
+#### Timezone in {{es}} query rules
+
+When you edit an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that uses {{esql}}, the **Time zone** (`dateFormat:tz`) setting doesn't apply, because the rule sends its query to {{es}} without a timezone. To control the timezone a rule uses, add [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md) to the rule query. {{es}} picks the first timezone that applies from this list:
+
+1. `SET time_zone` in the rule query.
+2. {applies_to}`stack: ga 9.6+` The `esql.query.settings.time_zone` cluster setting, if an administrator set it.
+3. UTC.
 
 
 
@@ -387,7 +391,7 @@ You can then:
 :::{note}
 The maximum number of queries in the history depends on the version you're using:
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` The query history can keep up to 50 KB of queries, which represents about 200 large queries, or about 300 short queries.
-- {applies_to}`stack: ga 9.0-9.1` {applies_to}`serverless: unavailable` The query history keeps your 20 most recent queries.
+- {applies_to}`stack: ga 9.0-9.1` The query history keeps your 20 most recent queries.
 :::
 
 ### Starred queries [esql-kibana-starred-queries]
@@ -468,12 +472,9 @@ The {{esql}} editor autocompletes the setting name and its accepted values. Once
 
 The first time a query references an unmapped field, the editor shows a warning so you can confirm the reference is intentional and not a typo. After a `KEEP` or `STATS` command that limits the available columns, references to unmapped fields downstream are flagged as errors.
 
-:::{note}
-`LOAD` doesn't load subfields of `flattened` fields. How `LOAD` works with other commands and with multiple indices depends on your version:
+`LOAD` doesn't support every command and field type. For example, it doesn't load subfields of `flattened` fields, and it doesn't work with `PROMQL`. For the full list, refer to [Other restrictions](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md#esql-unmapped-fields-other-restrictions).
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` `LOAD` works in queries that use `FORK`, `LOOKUP JOIN`, subqueries, views, or full-text search functions. To load an unmapped field in a full-text search function, use an explicit `to_text`. When querying multiple indices, a field that has the same non-keyword type in the indices where it's mapped keeps that type. If {{es}} can convert `keyword` values to that type, it converts the values loaded from `_source`. Otherwise, for example for `text` fields, the field is `null` for rows from indices where it's unmapped.
-- {applies_to}`stack: preview =9.4` {applies_to}`serverless: unavailable` `LOAD` doesn't work in queries that use `FORK`, `LOOKUP JOIN`, subqueries, views, or full-text search functions. When querying multiple indices, fields that have a non-keyword type in some indices but are unmapped in others need an explicit cast (for example, `my_field::integer` or `TO_INTEGER(my_field)`) unless referenced in a `KEEP` or `DROP` command.
-:::
+{applies_to}`stack: preview =9.4` `LOAD` also doesn't work in queries that use `FORK`, `LOOKUP JOIN`, subqueries, views, or full-text search functions. When querying multiple indices, fields that have a non-keyword type in some indices but are unmapped in others need an explicit cast (for example, `my_field::integer` or `TO_INTEGER(my_field)`) unless referenced in a `KEEP` or `DROP` command.
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/get-data-in.md#get-data-in-wired) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/get-data-in.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
 
