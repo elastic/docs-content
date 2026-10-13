@@ -88,9 +88,9 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Click a service node to open its flyout. In the **Overview** tab, click a transaction name in the **Transactions** table to open the transaction details in another flyout.
+Click a service node to open its flyout. On the service flyout's **Overview** tab, scroll to **Transactions** and click a transaction name to open the transaction details in another flyout.
 
-Under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available. From the full trace, inspect individual spans and errors, then use **Back** to return to the previous flyout without leaving the map.
+In the transaction flyout, under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available. From the full trace, inspect individual spans and errors, then use **Back** to return to the previous flyout without leaving the map.
 
 The transaction flyout follows the service flyout's environment, transaction type, and time range. If the transaction no longer matches those filters, it displays the previous data with a warning. For the full workflow and filter behavior, refer to [Investigate a service with flyouts](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts).
 

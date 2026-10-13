@@ -93,10 +93,13 @@ serverless: ga
 
 Investigate a service, transaction, trace, and individual span or error in a series of flyouts without leaving **Discover**. Opening a service flyout requires access to {{product.apm}}.
 
-1. Open a trace document's **Overview** tab and click the **Service name** value (`service.name`). The service flyout opens with the service's key metrics.
-2. In the service flyout's **Overview** tab, click a transaction name in the **Transactions** table. The transaction flyout shows its metrics, latency distribution, and trace samples.
-3. Under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available.
-4. Click a span or transaction in the full trace waterfall to inspect its document. To inspect its errors, click **View error** or **View *n* errors**.
+First, [load trace data](#load-trace-data) in **Discover**.
+
+1. Click **View details** {icon}`expand` in a transaction or span's row to open the document detail panel.
+2. On the document's **Overview** tab, click the **Service name** value (`service.name`). The service flyout opens with the service's key metrics.
+3. On the service flyout's **Overview** tab, scroll to **Transactions** and click a transaction name. The transaction flyout shows its metrics, latency distribution, and trace samples.
+4. In the transaction flyout, under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available.
+5. Click a span or transaction in the full trace waterfall to inspect its document. If it has associated errors, click **View error** or **View *n* errors** in its waterfall row.
 
 Use **Back** to return to the previous flyout.
 

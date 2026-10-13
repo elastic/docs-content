@@ -151,7 +151,7 @@ All of this data is stored in documents in {{es}}. Depending on your version, cl
 :::{tip}
 :applies_to: { stack: ga 9.6+, serverless: ga }
 
-You can also open transaction details and the full trace from a service flyout in **Discover** or the **Service map**. Follow the [investigation flyout workflow](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts) to inspect individual spans or errors and use **Back** to return through the flyouts.
+You can also open transaction details and the full trace from a service flyout in **Discover** or the **Service map**. Follow the [investigation flyout workflow](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts) to inspect individual spans or errors.
 :::
 
 **Trace sample logs**
