@@ -3,6 +3,7 @@ redirects:
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   # related to https://github.com/elastic/docs-content/issues/7502
   'explore-analyze/find-and-organize/data-views.md':
+    to: 'explore-analyze/find-and-organize/data-views.md'
     many:
       - to: 'explore-analyze/find-and-organize/data-views/create-data-view.md'
         anchors:
@@ -1511,3 +1512,8 @@ redirects:
   'solutions/observability/streams/significant-events/how-it-works.md': 'solutions/observability/nightshift/significant-events/how-it-works.md'
   'solutions/observability/streams/significant-events/operator-guide.md': 'solutions/observability/nightshift/significant-events/operator-guide.md'
   'solutions/observability/streams/significant-events/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
+  
+  # related to https://github.com/elastic/docs-content/issues/7421
+  'cloud-account/change-interface-language.md': 'explore-analyze/find-and-organize/personal-preferences/change-interface-language.md'
+  'cloud-account/dark-mode.md': 'explore-analyze/find-and-organize/personal-preferences/dark-mode.md'
+  'cloud-account/high-contrast.md': 'explore-analyze/find-and-organize/personal-preferences/high-contrast.md'

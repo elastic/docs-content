@@ -27,7 +27,7 @@ stack: preview 9.3
 
 * To access the **Value report** page, your subscription must include AI-powered features. For {{sec-serverless}}, this means you need either the Elastic AI SOC Engine (EASE) or Security Analytics Complete [feature tier](https://www.elastic.co/pricing/serverless-security).
 
-* To access the **Value report** page, you need the **SOC Management** Security sub-feature [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). 
+* To access the **Value report** page, you need the **SOC Management** Security sub-feature [{{kib}} privilege](/solutions/security/get-started/security-kibana-privileges.md#security-sub-feature-privileges). 
 
 ![value report RBAC setting](/solutions/images/security-value-report-rbac.png "=50%")
 
