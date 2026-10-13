@@ -27,7 +27,7 @@ Your role needs these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or
 | {applies_to}`stack: ga 9.1-9.2` | `All` for **Security > Attack discovery**, and at least `Read` for **Security** |
 | {applies_to}`stack: ga =9.0` | `All` for **Security > Attack discovery** |
 
-For details on Attack discovery sub-feature privileges, refer to [Attack discovery sub-feature privileges](/solutions/security/get-started/security-kibana-privileges.md#attack-discovery-sub-feature-privileges).
+For details on Attack discovery sub-feature privileges, refer to [Attack discovery sub-feature privileges](/solutions/security/manage/security-kibana-privileges.md#attack-discovery-sub-feature-privileges).
 
 ## Index privileges [ad-index-privileges]
 
@@ -71,7 +71,7 @@ When you turn on [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://re
 |---|---|
 | Monitor runs in **Generations** and open workflow execution details | `read` for **Analytics → Workflows** |
 | Generate discoveries (manual or scheduled) | `read` and `execute` for **Analytics → Workflows** |
-| Create, edit, or enable schedules | `read` and `execute` for **Analytics → Workflows**, plus [**Schedules** → **Allow changes**](/solutions/security/get-started/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) |
-| Deactivate or delete schedules | [**Schedules** → **Allow changes**](/solutions/security/get-started/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) only |
+| Create, edit, or enable schedules | `read` and `execute` for **Analytics → Workflows**, plus [**Schedules** → **Allow changes**](/solutions/security/manage/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) |
+| Deactivate or delete schedules | [**Schedules** → **Allow changes**](/solutions/security/manage/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) only |
 
 Granting `All` for **Analytics → Workflows** includes `read` and `execute`. For finer-grained access, use Workflows [sub-feature privileges](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).
