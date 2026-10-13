@@ -1,4 +1,5 @@
 ---
+navigation_title: Export and share dashboards
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
 description: Export a Kibana dashboard as PDF, PNG, CSV, or JSON. You can also share a link with your team or embed the dashboard in a webpage.
