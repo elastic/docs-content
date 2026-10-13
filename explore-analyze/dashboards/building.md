@@ -12,7 +12,7 @@ type: overview
 
 # Ways to build a dashboard [create-dashboards]
 
-You can build a dashboard from the UI, with REST APIs, or with AI. Use the following table to find the approach that fits how you work, then follow the link to get started. To learn what a dashboard is, refer to [{{kib}} dashboards](../dashboards.md).
+You can build a dashboard from the UI, with REST APIs, or with AI. Use the following table to find the approach that fits how you work, then follow the link to get started. To learn what a dashboard is, refer to [](../dashboards.md).
 
 | Approach | When to use this | What you get |
 |---|---|---|

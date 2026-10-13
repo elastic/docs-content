@@ -31,10 +31,10 @@ New to dashboards? These hands-on examples walk you through creating your first 
 Once you understand the basics, explore these common tasks:
 
 **Explore and interact**
-- [Filter a dashboard](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights.
+- [](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights.
 
 **Build and customize dashboards**
-- [Ways to build a dashboard](dashboards/building.md): Compare the UI, REST APIs, and AI approaches to find the one that fits how you work.
+- [](dashboards/building.md): Compare the UI, REST APIs, and AI approaches to find the one that fits how you work.
 - [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
 - [Create dashboards using AI](dashboards/create-dashboards-using-ai.md): Generate dashboards from natural language through chat with {{agent-builder}}.
 - [Add dashboard controls](visualize/dashboard-controls.md): Enable interactive filtering with options lists, range sliders, time sliders, and ES|QL variable controls.

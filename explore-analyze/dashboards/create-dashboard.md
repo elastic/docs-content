@@ -13,7 +13,7 @@ type: how-to
 
 # Create a dashboard from the {{kib}} UI [create-dashboard]
 
-To build a dashboard panel by panel in {{product.kibana}}, start with an empty dashboard, add your content, and save it. If you're new to dashboards, refer to [{{product.kibana}} dashboards](../dashboards.md) to learn what a dashboard is and to see examples.
+To build a dashboard panel by panel in {{product.kibana}}, start with an empty dashboard, add your content, and save it. If you're new to dashboards, refer to [](../dashboards.md) to learn what a dashboard is and to see examples.
 
 :::{tip} - New ways to create dashboards
 :applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
