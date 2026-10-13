@@ -3,6 +3,7 @@ redirects:
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   # related to https://github.com/elastic/docs-content/issues/7502
   'explore-analyze/find-and-organize/data-views.md':
+    to: 'explore-analyze/find-and-organize/data-views.md'
     many:
       - to: 'explore-analyze/find-and-organize/data-views/create-data-view.md'
         anchors:
