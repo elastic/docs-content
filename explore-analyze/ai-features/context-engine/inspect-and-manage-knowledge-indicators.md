@@ -47,7 +47,7 @@ The KI detail view shows the generated content and the metadata that identifies 
 6. On the **Content** tab, review its generated content and metadata.
 7. Select the **Document** tab to inspect the complete stored document.
 
-Confirm that the title, type, status, timestamps, and provenance identify the KI and the workflow run you expected.
+Confirm that the title, type, status, and timestamps identify the KI you expected. The KI workflow steps automatically record provenance, including the workflow ID and run ID. Inspect these fields on the **Document** tab when you need to trace a KI to the workflow run that wrote it; you do not need to populate them yourself.
 
 The detail view is read-only. To assess whether the content is accurate and useful to an agent, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
