@@ -115,7 +115,12 @@ This routing is automatic and cannot be turned off. You do not need to configure
 
 {{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as {{esql}} query generation and conversation title generation.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` When the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) is turned on, the fast model also selects the [skills](skills.md#how-skills-are-invoked) that are relevant to each message. This happens only when the fast model is different from the model the conversation uses. Otherwise, the agent receives its full list of skills.
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The fast model also selects the [skills](skills.md#how-skills-are-invoked) that are relevant to each message, but only when both of the following are true:
+
+- The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) is turned on.
+- A fast model is available that's different from the model the conversation uses.
+
+Otherwise, the agent receives its full list of skills.
 
 ### Fast model availability by deployment type
 
