@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Filter a dashboard [_use_and_filter_dashboards]
+# Inspect and filter a dashboard [_use_and_filter_dashboards]
 
 To focus a dashboard on specific data or a specific period, filter it with a {{kib}} Query Language (KQL) query, filter pills, a time range, or dashboard controls. These options help you drill into your data, compare metrics across different dimensions, and find the insights that matter to your analysis.
 
