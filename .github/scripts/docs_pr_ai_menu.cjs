@@ -74,6 +74,12 @@ function getStatusText(workflowState, workflowStatus) {
     return `Status: needs attention.${progressLink}`;
   }
 
+  // A refresh without an override, for example after a push, must not reset a finished run to "queued".
+  const existingStatus = workflowState?.statusText;
+  if (workflowState?.selected && existingStatus && !/^Status: (not started|queued)\./.test(existingStatus)) {
+    return existingStatus;
+  }
+
   if (workflowState?.selected) {
     return 'Status: queued.';
   }
