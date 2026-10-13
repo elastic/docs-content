@@ -62,7 +62,10 @@ When a platform-level repository is associated with a deployment, the `found-sna
 * [MinIO](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 :::{note}
-No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
+* No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}. 
+* Elastic supports [MinIO](https://www.min.io/) in {{ece}} and {{es}}, as long as the storage behaves compatibly with AWS S3. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch) for more guidance. 
+* Elastic does not recommend MinIO as it is no longer maintained.
+* Configuring and troubleshooting MinIO beyond the documented ECE repository setup is out of the Elastic support scope.
 :::
 
 For more details, refer to [Managing snapshot repositories in {{ece}}](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).

@@ -37,7 +37,11 @@ To register snapshot repositories in ECE directly at the deployment level, follo
 * MinIO S3
 
 ::::{note}
-No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
+* No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
+* If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.
+* Elastic supports [MinIO](https://www.min.io/) in {{ece}} and {{es}}, as long as the storage behaves compatibly with AWS S3. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch) for more guidance.
+* Elastic does not recommend MinIO as it is no longer maintained.
+* Configuring and troubleshooting MinIO beyond the documented ECE repository setup is out of the Elastic support scope.
 ::::
 
 
@@ -46,11 +50,6 @@ For more details about how snapshots are used with {{es}}, check [Snapshot and R
 * [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)
 * [Microsoft Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
 * [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/)
-
-::::{tip}
-If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.  We suggest that you use [MinIO](https://www.minio.io/). For our installation notes, check [Snapshotting to MinIO On-Premise Storage](minio-on-premise-repository.md).
-::::
-
 
 ## Add snapshot repository configurations [ece-manage-repositories-add]
 
