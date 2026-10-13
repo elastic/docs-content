@@ -124,7 +124,7 @@ Ask the agent to forget a memory when its information is no longer valid or usef
 3. Start another conversation and repeat the recall question.
 4. Confirm that the forgotten memory is not returned.
 
-Forgetting a memory marks it as deleted so it is excluded from later retrieval. It does not remove the stored document from {{es}}.
+Forgetting a memory marks it as deleted so standard memory retrieval excludes it. It does not remove the stored document from {{es}}.
 
 ## Memory access and lifecycle
 
@@ -134,11 +134,15 @@ Memory has the following access and retention behavior:
 - The AI index registry and agent assignment are scoped to a {{kib}} space. The {{context-engine}} tools discover and query AI indices registered in the current space.
 - Space access does not grant access to an AI index's backing {{es}} index. Reading and writing memories also requires the corresponding {{es}} index privileges.
 - `memory.session_fact` records a granular fact learned during a task. `memory.session` records a broader synthesis of what was tried, what worked, and what to do differently.
-- A memory expires 90 days after it is written by default. The remember tool can set another expiration time or create a non-expiring memory.
+- A memory expires 90 days after it is written by default. The remember tool can set another expiration time or create a non-expiring memory. Expiration excludes a memory from standard retrieval but does not delete its stored documents.
 - The remember tool can revise a memory by writing the same memory ID. It does not automatically detect or merge duplicate memories.
 - The forget tool creates a deletion tombstone. Forgotten memories remain stored but are excluded from retrieval.
 - Disabling memory for an AI index prevents agents from writing, revising, or forgetting memories in that index, but it does not delete stored memories. If none of an agent's assigned AI indices have memory enabled, {{agent-builder}} does not add the memory tools.
 - Agent traces do not create memories automatically.
+
+:::{important}
+Expired and forgotten memories remain in the AI index. A user with direct access to the backing {{es}} target can still find them, as can an AI index query that explicitly includes expired or deleted documents. If you must remove a memory permanently, delete all its stored documents from the backing target. This requires the `delete` or `write` index privilege.
+:::
 
 ## Troubleshoot memory
 
