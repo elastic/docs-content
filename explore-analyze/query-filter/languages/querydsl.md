@@ -21,6 +21,8 @@ type: overview
 
 The [`_search` endpoint]({{es-apis}}operation/operation-search) accepts queries written in Query DSL syntax.
 
+In {{kib}}, you can send Query DSL requests from [Console](/explore-analyze/query-filter/tools/console.md). In Discover, you can also write a filter as Query DSL: select **Add filter**, then **Edit as Query DSL**.
+
 To look up a specific query type and its parameters, refer to the [Query DSL reference](elasticsearch://reference/query-languages/querydsl.md).
 
 Query DSL is one of several query languages in {{es}}. To compare it with {{esql}} and retrievers, refer to [Build your search queries](/solutions/search/querying-for-search.md). For all query languages, refer to [Query languages](/explore-analyze/query-filter/languages.md).
@@ -158,31 +160,11 @@ Scores calculated for queries in query context are single precision floating poi
 
 $$$query-dsl-allow-expensive-queries$$$
 
-Certain types of queries generally run slowly because of the way they are implemented, which can affect the stability of the cluster. These queries fall into the following categories:
-
- - Queries that need to do linear scans to identify matches:
-
-    - [`script` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md)
-    - queries on [numeric](elasticsearch://reference/elasticsearch/mapping-reference/number.md), [date](elasticsearch://reference/elasticsearch/mapping-reference/date.md), [boolean](elasticsearch://reference/elasticsearch/mapping-reference/boolean.md), [ip](elasticsearch://reference/elasticsearch/mapping-reference/ip.md), [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields that are not indexed but have [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) enabled
-
- - Queries that have a high up-front cost:
-
-    - [`fuzzy` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-fuzzy-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
-    - [`regexp` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-regexp-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
-    - [`prefix` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-prefix-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields, and on [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) fields that have [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) enabled when the prefix has from `min_chars` minus 1 to `max_chars` characters)
-    - [`wildcard` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-wildcard-query.md) (except on [`wildcard`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
-    - [`range` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) on [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) fields
-
- - [Joining queries](elasticsearch://reference/query-languages/query-dsl/joining-queries.md)
- - Queries on [runtime fields](/manage-data/data-store/mapping/runtime-fields.md)
- - Queries that might have a high per-document cost:
-
-    - [`script_score` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md)
-    - [`percolate` queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-percolate-query.md)
+Certain types of queries generally run slowly because of the way they are implemented, which can affect the stability of the cluster. Examples are `script` queries, joining queries, and queries on [runtime fields](/manage-data/data-store/mapping/runtime-fields.md). For the full list and the exceptions, refer to [Allow expensive queries](elasticsearch://reference/query-languages/querydsl.md#query-dsl-allow-expensive-queries) in the Query DSL reference.
 
 {{es}} runs these queries by default. Whether you can block them depends on your deployment:
 
 * {applies_to}`serverless: ga` You can't block these queries. The `search.allow_expensive_queries` setting isn't configurable.
-* {applies_to}`stack: ga` To block these queries, set `search.allow_expensive_queries` to `false` with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). This requires the `manage` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The setting is dynamic, so the change applies without a restart. While it is `false`, a search that includes one of the listed queries fails with an error that names the setting, instead of running.
+* {applies_to}`stack: ga` To block these queries, set `search.allow_expensive_queries` to `false` with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). This requires the `manage` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The setting is dynamic, so the change applies without a restart. While it is `false`, a search that includes one of the listed queries returns an error that names the setting, instead of running.
 
 To browse every query type, refer to the [Query DSL reference](elasticsearch://reference/query-languages/querydsl.md). To run and test searches, refer to [Build your search queries](/solutions/search/querying-for-search.md).
