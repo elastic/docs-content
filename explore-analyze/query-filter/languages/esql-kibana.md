@@ -48,7 +48,7 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 
 ### Query structure [esql-kibana-query-bar]
 
-After any [`SET` statements](#esql-kibana-set), every {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands) that retrieves data:
+After any [`SET` statements](#esql-kibana-set), every {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-source-commands) that retrieves data:
 
 - [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) allows you to define the data sources to query by specifying data streams, [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md), indices, or aliases.
 - [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) is optimized for querying time series data streams.
@@ -129,10 +129,10 @@ serverless: preview
 stack: preview 9.3+
 ```
 
-The {{esql}} editor includes a search bar that builds a query from text you enter, so you can filter data without writing the full {{esql}} syntax. To open it, click the search icon, which is {icon}`magnify`, or {icon}`magnify_sparkles` with the Enterprise license that [AI features](#esql-kibana-ai-assistance) require. Where you find the icon and when the search bar closes depend on your version:
+The {{esql}} editor includes a search bar that builds a query from text you enter, so you can filter data without writing the full {{esql}} syntax. To open it, click the search icon, which is {icon}`magnify`, or {icon}`magnify_sparkles` when your license includes [AI features](#esql-kibana-ai-assistance). Where you find the icon depends on your deployment and version:
 
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` In **Discover** and on dashboards, the search bar is always visible. When you edit a visualization, a map layer, or an alerting rule, the icon is in the editor footer. The search bar closes when you select the editor.
-- {applies_to}`stack: preview 9.3-9.5` The icon is in the editor. You can also press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). The search bar closes when you select the editor or start entering text in it.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` In **Discover** and on dashboards, the search bar is always visible. When you edit a visualization, a map layer, or an alerting rule, the icon is in the editor footer.
+- {applies_to}`stack: preview 9.3-9.5` The icon is in the editor. You can also press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux).
 
 The search bar offers two modes:
 
@@ -148,7 +148,7 @@ To filter your data with KQL:
    - {applies_to}`stack: preview 9.3-9.5` Select the data sources to search. The list starts with the data sources named in the editor.
 
 3. Enter the text you want to search for as free text or using [KQL](kql.md) syntax.
-4. Submit your search by pressing {kbd}`enter`. The editor replaces the query with a source command for those data sources and a `WHERE KQL()` command that contains the text you entered. The source command is `TS` if the query in the editor starts with `TS`, otherwise `FROM`. Commands such as `KEEP` are removed. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
+4. Submit your search by pressing {kbd}`enter`. The editor replaces the query with a source command for those data sources and a `WHERE KQL()` command that contains the text you entered. The source command is `TS` if the query in the editor starts with `TS`, otherwise `FROM`. Because the editor replaces the whole query, any other commands in it, such as `KEEP`, are removed. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
 5. Refine your query with any other {{esql}} command or function that you need.
 
 ![Search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
@@ -173,9 +173,9 @@ Choose the entry point that matches what you want to do:
 - For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
 - A configured LLM. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
-Without an Enterprise license, the AI prompts and actions don't appear, and the editor uses only its standard autocomplete behavior. With a license but no configured model, the comment hints and **Fix with AI** still appear, and using them shows a **No AI connector available.** notification. Natural language mode in the search bar behaves differently depending on your version:
+Without an Enterprise license, the AI prompts and actions don't appear, and the editor uses only its standard autocomplete behavior. With a license but no configured model, the comment hints and **Fix with AI** still appear, and using them shows a **No AI connector available.** notification. Natural language mode in the search bar also needs a model. What you see without one depends on your version:
 
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Natural language mode doesn't appear.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Natural language mode doesn't appear until you configure a model.
 - {applies_to}`stack: preview =9.5` Natural language mode appears, and selecting it shows a link to set up a connector.
 
 #### Generate a full query from natural language [esql-kibana-quick-search-nl]
@@ -341,7 +341,7 @@ Avoid `SET time_zone` in **Discover**, dashboards, and **Maps**. `SET time_zone`
 
 #### Timezone in {{es}} query rules
 
-When you edit an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that uses {{esql}}, the **Time zone** (`dateFormat:tz`) setting doesn't apply, because the rule sends its query to {{es}} without a timezone. To control the timezone a rule uses, add [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md) to the rule query. {{es}} picks the first timezone that applies from this list:
+In an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that uses {{esql}}, the **Time zone** (`dateFormat:tz`) setting doesn't apply, because the rule sends its query to {{es}} without a timezone. To control the timezone a rule uses, add [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md) to the rule query. {{es}} uses the first of these that applies:
 
 1. `SET time_zone` in the rule query.
 2. {applies_to}`stack: ga 9.6+` The `esql.query.settings.time_zone` cluster setting, if an administrator set it.
