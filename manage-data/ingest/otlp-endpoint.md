@@ -247,6 +247,7 @@ Note that cumulative temporality for histograms is only supported if `xpack.otel
 * **Delivery guarantees:** {{es}} can only acknowledge an OTLP request as a whole, not on a per-record basis.
   If part of a request fails, the client retries the entire batch, which can produce duplicate logs or trace spans.
   Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
+  
   {applies_to}`stack: ga 9.6+` Metric points that are already indexed are not counted as rejected.
   Instead, the [partial success](https://opentelemetry.io/docs/specs/otlp/#partial-success) response reports them as skipped duplicates in its error message.
   A metric point with a different value but the same dimensions and timestamp as an already indexed one is also skipped this way.
