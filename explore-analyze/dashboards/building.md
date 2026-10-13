@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboards.html
-description: Decide whether to build a dashboard from the UI, with REST APIs, or with AI tools, based on how you work and what you need to automate.
+description: Decide whether to build a Kibana dashboard from the UI, with REST APIs, or with AI tools, based on how you work and what you need to automate.
 applies_to:
   stack: ga
   serverless: ga
