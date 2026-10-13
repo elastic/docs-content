@@ -60,7 +60,11 @@ The following table compares the two paths.
 | Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
 | Credential lifetime | Long-lived until the key expires or is revoked | Short-lived tokens, refreshed automatically unless revoked. Require a new connection if unused for 30+ days. |
 | Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
-| {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Full tool catalog, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
+| {{agent-builder}} tools through MCP | Built-in and custom tools, including [Elastic Workflows](/explore-analyze/workflows.md) | Built-in and custom tools, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some built-in tools aren't available through the MCP server, mostly because they return results that only {{agent-builder}} chat can use, such as `platform.core.create_visualization` and most [cases tools](tools/builtin-tools-reference.md#cases-tools). The [built-in tools reference](tools/builtin-tools-reference.md) notes which of the documented tools aren't available.
+
+In 9.2 to 9.5, the MCP server doesn't exclude any built-in tools.
 
 ## Use tools with data from multiple projects [agent-builder-mcp-cps]
 ```{applies_to}

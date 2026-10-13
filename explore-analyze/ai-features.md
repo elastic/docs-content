@@ -93,14 +93,16 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Model Context Protocol (MCP) servers
 
-Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ deployments and Serverless projects, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
+Elastic offers two MCP server options for connecting agents to your {{es}} data. The {{agent-builder}} MCP server is the recommended approach for {{es}} 9.2+ deployments and {{serverless-short}} projects, offering access to built-in and custom tools. For older {{es}} versions without {{agent-builder}}, you can use the `mcp-elasticsearch` server, which has a limited tool set.
 
 #### {{agent-builder}} MCP server
 ```{applies_to}
-stack: preview 9.2
-elasticsearch: preview
+stack: preview =9.2, ga 9.3+
+serverless: ga
 ```
-Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes all built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
+Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some built-in tools aren't available through the MCP server. For details, refer to [Authentication and configuration](/explore-analyze/ai-features/agent-builder/mcp-server.md#mcp-server-authentication).
 
 #### {{es}} MCP server
 ```{applies_to}
