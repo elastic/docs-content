@@ -63,13 +63,8 @@ PUT /api/security/role/my_kibana_role
 
 Assigning a feature privilege grants access to a specific feature. For each feature, select the type of access you want to allow:
 
-% TODO: Replace this list with the shared snippet once https://github.com/elastic/docs-content/pull/8281 merges:
-% :::{include} /deploy-manage/_snippets/feature-privilege-access-levels.md
-% :::
-
-* **All**: Users have full access to the feature, which includes performing all available actions and managing configuration.
-* **Read**: Users can view the feature, but can't perform any actions or manage configuration.
-* **None**: Users can't access or view the feature.
+:::{include} /deploy-manage/_snippets/feature-privilege-access-levels.md
+:::
 
 :::{note}
 Some features don't have a **Read** privilege.
@@ -77,10 +72,9 @@ Some features don't have a **Read** privilege.
 
 In role management, features are organized into the following groups.
 
-% TODO: Three rows in the following table should link out to their catalogs once those are published.
+% TODO: Two rows in the following table should link out to their catalogs once those are published.
 % TODO: Elasticsearch row: link to the Elasticsearch catalog (issue 1704).
 % TODO: Observability row: link to the Observability catalog (issue 1703).
-% TODO: Security row: link to /solutions/security/get-started/security-kibana-privileges.md once https://github.com/elastic/docs-content/pull/8281 merges.
 
 :::{table}
 :widths: description
@@ -91,7 +85,7 @@ In role management, features are organized into the following groups.
 | **Alerting V2** {applies_to}`stack: experimental 9.5+` | Privileges for the {{alerting-v2-system}}. Refer to [Configure access to the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md). <br> {applies_to}`stack: experimental =9.5` Before 9.5.4, this group is called **Alerting**. |
 | **Elasticsearch** | Privileges for {{es}} features. |
 | **Observability** | Privileges for Elastic {{observability}} features. |
-| **Security** | Privileges for {{elastic-sec}} features. |
+| **Security** | Privileges for {{elastic-sec}} features. Refer to [Security {{kib}} privileges](/solutions/security/get-started/security-kibana-privileges.md). |
 | **Management** | Privileges for the features you use to administer {{kib}} and your data. Refer to [Privileges in the Management group](#kibana-privileges-management). |
 :::
 

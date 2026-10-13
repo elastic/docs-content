@@ -89,13 +89,8 @@ When you create a custom role, click **Add {{kib}} privilege** to grant access t
 
 Open the **Spaces** selection control to specify whether to grant the role access to all spaces or one or more individual spaces. When using the **Customize by feature** option, you can choose either **All**, **Read** or **None** for access to each feature.
 
-% TODO: Replace this list with the shared snippet once https://github.com/elastic/docs-content/pull/8281 merges:
-% :::{include} /deploy-manage/_snippets/feature-privilege-access-levels.md
-% :::
-
-* **All**: Users have full access to the feature, which includes performing all available actions and managing configuration.
-* **Read**: Users can view the feature, but can't perform any actions or manage configuration.
-* **None**: Users can't access or view the feature.
+:::{include} /deploy-manage/_snippets/feature-privilege-access-levels.md
+:::
 
 Some features have finer access control and you can optionally enable sub-feature privileges.
 
