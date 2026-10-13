@@ -261,9 +261,8 @@ remote_write:
 
 Exemplar ingestion is enabled by default.
 If you don't need exemplars, or want to avoid the additional storage, turn it off in one of the following ways.
-Prefer stopping exemplars at the source: it works on every deployment type and saves the bandwidth and processing of sending data that is discarded anyway.
 
-* **Stop sending exemplars (preferred)**: In Prometheus, remove `send_exemplars: true` from the remote write target or set it to `false`, which is the default.
+* **Stop sending exemplars at the source (preferred)**: In Prometheus, remove `send_exemplars: true` from the remote write target or set it to `false`, which is the default. This works on every deployment type and saves bandwidth and processing by avoiding sending data that would be discarded anyway.
 
 :::{include} /manage-data/_snippets/turn-off-exemplar-ingestion.md
 :::
