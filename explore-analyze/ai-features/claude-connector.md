@@ -57,11 +57,9 @@ Install both to have Claude follow Elastic best practices while working with you
 ::::::{stepper}
 
 :::::{step} Create an OAuth client in your project
-In your {{serverless-short}} project, [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md) with the following settings:
-
-- **Redirect URI type**: **Remote**
-- **Redirect URI**: `https://claude.ai/api/mcp/auth_callback`
-- **Generate confidential MCP client**: selected
+In your {{serverless-short}} project, [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md), and select **Generate confidential MCP client**.
+Add the redirect URIs for the Claude apps you connect from.
+For the redirect URI that each Claude app uses, refer to [](/deploy-manage/app-connections/connect-mcp-host.md).
 
 Copy the **Client ID**, **Client secret**, and **MCP server URL** from the **Copy server details** dialog.
 {{kib}} shows the client secret only once.

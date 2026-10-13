@@ -104,6 +104,8 @@ Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP s
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some built-in tools aren't available through the MCP server. For details, refer to [Authentication and configuration](/explore-analyze/ai-features/agent-builder/mcp-server.md#mcp-server-authentication).
 
+{applies_to}`serverless: ga` To connect Claude to the MCP server of an {{serverless-full}} project, you can add the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md) from the Claude directory.
+
 #### {{es}} MCP server
 ```{applies_to}
 stack: deprecated 9.2
@@ -181,5 +183,3 @@ serverless: ga
 [AI agent skills for Elastic](/explore-analyze/ai-features/agent-skills.md) provides official, open-source skill packages that help AI coding agents perform Elastic-specific tasks. Skills are built on the Agent Skills open standard, and include guidance for tasks like working with {{es}} APIs, {{kib}} workflows, and {{observability}} and {{elastic-sec}} use cases.
 
 For Claude users, the [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md) is the recommended way to install these skills. The plugin bundles all Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit.
-
-{applies_to}`serverless: ga` To let Claude work with the data in an {{serverless-full}} project, add the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md) from the Claude directory. It gives Claude access to your project's [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md).
