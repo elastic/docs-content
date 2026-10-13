@@ -1,4 +1,5 @@
 ---
+navigation_title: Data views
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/data-views.html
   - https://www.elastic.co/guide/en/serverless/current/data-views.html
