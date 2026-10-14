@@ -6,12 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Explore data in Discover with sample or your own data. Select a data view, filter documents, analyze fields, and create visualizations.
+description: Tutorial for exploring sample data or your own data in Discover. Select a data view, filter documents, analyze fields, and create visualizations.
 ---
 
 # Explore fields and data with Discover [discover-get-started]
 
-Learn how to explore your {{product.elasticsearch}} data using **Discover**. This tutorial walks you through selecting {{data-sources}}, filtering documents, analyzing field structures, and creating visualizations from your data.
+In this tutorial, you load data into **Discover**, explore its fields, filter documents, and create visualizations. You can follow along with the {{kib}} [sample data](/manage-data/ingest/sample-data.md) or your own data. To learn what **Discover** is and what else it can do, refer to the [Discover overview](../discover.md).
 
 ## Context-aware data exploration [context-aware-discover]
 
