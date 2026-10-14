@@ -152,8 +152,6 @@ To filter your data with KQL:
 4. Submit your search by pressing {kbd}`enter`. The editor replaces the query with a source command for those data sources and a `WHERE KQL()` command that contains the text you entered. The source command is `TS` if the query in the editor starts with `TS`, otherwise `FROM`. Because the editor replaces the whole query, any other commands in it, such as `KEEP`, are removed. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
 5. Refine your query with any other {{esql}} command or function that you need.
 
-![Search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
-
 
 ### Write and fix queries with AI [esql-kibana-ai-assistance]
 ```{applies_to}
