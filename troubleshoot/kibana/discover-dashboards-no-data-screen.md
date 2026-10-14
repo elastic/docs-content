@@ -11,7 +11,7 @@ products:
 
 # Discover or Dashboards asks you to add data or create a data view [discover-dashboards-no-data-screen]
 
-Instead of the app, **Discover** or **Dashboards** shows a screen that asks you to add data or create a data view. This can happen even when {{es}} already holds data.
+Instead of the app, **Discover** or **Dashboards** shows a screen that asks you to add data or create a data view. This can happen even when {{es}} already holds data. A [data view](/explore-analyze/find-and-organize/data-views.md) tells {{kib}} which {{es}} data to explore, such as indices, data streams, or aliases.
 
 ## Symptoms
 
@@ -80,7 +80,7 @@ If you expect data views or dashboards to be there, switch to the {{kib}} space 
 The remaining steps need privileges that not every role has, such as access to integrations, to {{es}} indices, or to data view management. If your role doesn't allow a step, ask an administrator to do it or to update your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 - To add data, select **Browse integrations** on the card (**Add integrations** in earlier versions). The **Contact your administrator** card has no button, because your role can't add integrations. After the data arrives, return to **Discover** or **Dashboards**. If you now see **How do you want to explore your data?**, follow the steps in the previous section. For other ways to ingest data, refer to [](/manage-data/ingest.md).
-- If you expect data from an agent, Logstash, or another source, check that {{es}} received it. In **{{index-manage-app}}**, look for the index on the **Indices** tab or the data stream on the **Data Streams** tab. If it isn't listed, check your ingest pipeline. If it is listed but you still see the screen, check that your role gives you access to the index. Refer to [](/manage-data/data-store/perform-index-operations.md).
+- If you expect data from an agent, Logstash, or another source, check that {{es}} received it. In **{{index-manage-app}}**, look for the index on the **Indices** tab or the data stream on the **Data Streams** tab. You can also run `GET _cat/indices?v` in the [{{kib}} console](/explore-analyze/query-filter/tools/console.md) to list indices. If it isn't listed, check your ingest pipeline. If it is listed but you still see the screen, check that your role gives you access to the index. Refer to [](/manage-data/data-store/perform-index-operations.md).
 - If your data is in an index whose name starts with a dot, create a data view for it on the **Data Views** management page. A data view is enough for **Discover** and **Dashboards** to open. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md).
 
 ## Resources
