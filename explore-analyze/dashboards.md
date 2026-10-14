@@ -10,7 +10,7 @@ products:
   - id: kibana
 ---
 
-# Dashboards [dashboard]
+# {{kib}} dashboards [dashboard]
 
 **Dashboards** provide the primary way to visualize and share insights from your {{es}} data. They allow you to build interactive displays that combine multiple visualizations, metrics, and controls into a single view that helps you and your team monitor trends, investigate issues, and make data-driven decisions.
 
