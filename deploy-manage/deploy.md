@@ -10,7 +10,7 @@ products:
   - id: elastic-stack
 ---
 
-# Deploy {{stack}}
+# Elastic deployment options
 
 Whether you're planning to use Elastic's pre-built solutions or Serverless projects, build your own applications with {{es}}, or analyze your data using {{kib}} tools, you need to deploy Elastic first.
 
