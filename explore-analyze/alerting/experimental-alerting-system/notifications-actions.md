@@ -10,7 +10,7 @@ description: "How to set up notifications and actions for rules in the experimen
 
 # Notifications and actions for the {{alerting-v2-system}} [notifications-actions]
 
-Use this page to set up notifications and actions for alert episodes. Build a workflow that sends a notification or runs automation, then create an action policy that invokes it. Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`. Both action policies and lifecycle triggers require an alert episode. For how those connections work at runtime, refer to [Connect workflows](workflows-alerting.md).
+Use this page to set up notifications and actions for alert episodes. Build a workflow that sends a notification or runs automation, then create an action policy that invokes it. Rule events that aren't part of an alert episode (`type: signal`) stay in `.rule-events`. Action policies and alert episode lifecycle triggers both require an alert episode. For how those connections work at runtime, refer to [Connect workflows](workflows-alerting.md).
 
 :::{note}
 To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
@@ -25,6 +25,11 @@ To send a notification or trigger an action from a rule in the {{alerting-v2-sys
 2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alert episodes to that workflow. The action policy controls which alert episodes qualify, how they batch, and how often it invokes the workflow.
 
    For actions that fire exactly once in response to a specific alert episode event (such as opening a ticket when an alert episode is assigned) use an [alert episode lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of action policies and lifecycle triggers.
+
+:::{note}
+:applies_to: {"stack": "experimental 9.6+", "serverless": "experimental"}
+To act on a rule's own execution rather than on an alert episode, use a [rule execution trigger](../../workflows/triggers/event-driven-triggers.md#alerting-rule-execution-triggers-event-driven). `alerting.ruleEventsGenerated` fires when an execution writes at least one rule event, and `alerting.ruleExecutionFailed` fires when an execution throws an error, which is how you find out that a rule itself stopped working. Neither needs an alert episode, so they also cover rules whose `kind` is `signal`.
+:::
 
 ## What to do next with action policies [notifications-actions-next-steps]
 
