@@ -43,6 +43,22 @@ Related alert episodes from the same rule are grouped to help you answer whether
 - **Same alert group** - Alert episodes for this rule that share the same group as the current alert episode (same `group_hash`). A long list here suggests the underlying condition isn't being fully resolved between alert episodes.
 - **Other groups for this rule** - Alert episodes from the same rule firing on different entities (different `group_hash`). Use this to gauge how broadly the rule is triggering across your environment.
 
+## Spot a flapping alert episode [flapping]
+```{applies_to}
+serverless: experimental
+stack: experimental 9.6+
+```
+
+A **Flapping** badge next to an alert episode's status means the alert episode keeps changing between `active` and `recovering` instead of holding or resolving. Select the badge to see why {{kib}} applied it.
+
+{{kib}} applies the badge when the alert episode changed between `active` and `recovering` at least 4 times in its last 20 rule events. Changes into or out of `pending` and `inactive` don't count. {{kib}} checks an alert episode only after it has 20 rule events, so a short-lived alert episode never shows the badge.
+
+Flapping usually means that the alert condition sits too close to the metric's normal variation, or that the rule runs faster than the metric settles. To reduce flapping, add a [custom recovery condition](../rules/configure-rule-recovery.md) that requires the metric to move a safe margin back from the alert threshold. The alert episode then stays `active` until the recovery condition matches, instead of recovering as soon as the alert condition stops matching.
+
+:::{note}
+**Flapping** is a badge, not a lifecycle state. The alert episode remains `active` or `recovering`, action policies still match it on that status, and the badge neither suppresses nor delays notifications.
+:::
+
 ## Review who has responded [review-responders]
 
 Each alert episode tracks who performed the most recent response action of each type, so you can avoid duplicating work or missing a step someone else already handled:
