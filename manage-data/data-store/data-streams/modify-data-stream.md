@@ -529,15 +529,23 @@ POST /_data_stream/_modify
 {
   "actions": [
     {
-      "add_backing_index": {
+      "add_backing_index": { <1>
         "data_stream": "my-data-stream",
         "index": "new-index"
       },
-      "remove_backing_index": {
+      "remove_backing_index": { <2>
         "data_stream": "my-data-stream",
         "index": "old-index"
+      },
+      "delete_backing_index": { <3>
+        "data_stream": "my-data-stream",
+        "index": "reduntant-index
       }
     }
   ]
 }
 ```
+
+1. Adds an index to the data stream's backing indices
+2. Remove and keep an index from the data stream's backing indices
+3. Remove and delete an index from the data stream's backing indices {applies_to}`stack: ga 9.5+`
