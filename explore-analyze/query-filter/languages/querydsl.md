@@ -1,6 +1,6 @@
 ---
 navigation_title: Query DSL
-description: Learn how Query DSL runs full-text, semantic, and filtered searches and aggregations in {{es}}, and how query context and filter context differ.
+description: Learn how Query DSL runs full-text, semantic, and filtered searches and aggregations in Elasticsearch, and how query context and filter context differ.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html
