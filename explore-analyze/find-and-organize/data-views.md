@@ -15,7 +15,7 @@ products:
 
 # {{kib}} data views
 
-A {{data-source}} is a saved object that tells {{kib}} which {{es}} indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md) to query. {{kib}} used to call a {{data-source}} an index pattern. You still see that name in the **Index pattern** field, where you enter the sources that a {{data-source}} matches.
+A {{data-source}} is a saved object that tells {{kib}} which {{es}} indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md) to query. {{kib}} used to call a {{data-source}} an index pattern. When you [create a data view](data-views/create-data-view.md), you still see that name in the **Index pattern** field, where you enter the sources that the {{data-source}} matches.
 
 Analytics features such as **Discover** and **Lens** use a {{data-source}} to access your data. For example, a {{data-source}} can point to your log data from yesterday, or to all indices that contain your data.
 
