@@ -59,7 +59,7 @@ Select the data you want to explore, and then specify the time range in which to
 
    You can also [use {{esql}}](try-esql.md), which lets you query any data you have in {{es}} without specifying a {{data-source}} first.
 
-   If **Discover** asks you to add data or create a {{data-source}} instead of opening, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
+   If **Discover** asks you to add data or create a {{data-source}} instead of opening and you're not sure of what to do next, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png

@@ -57,9 +57,12 @@ If {{es}} has data but none of these conditions is true, **Discover** shows the 
 
 ## Resolution
 
-Use the option that matches the screen you see.
+Use the option that matches the screen you see:
 
-### Create a data view or query without one
+- If you see **How do you want to explore your data?**, [create a data view or query without one](#create-data-view-or-query).
+- If you see **Add integrations**, **Add data**, or **Contact your administrator**, [add data or find out why you can't see it](#add-data-or-find-missing-data).
+
+### Create a data view or query without one [create-data-view-or-query]
 
 If you see **How do you want to explore your data?**, {{es}} has data that you can explore in either of the following ways:
 
@@ -68,7 +71,7 @@ If you see **How do you want to explore your data?**, {{es}} has data that you c
 
 If **Create data view** is unavailable, your role can't create data views. Ask an administrator to create one or to update your role.
 
-### Add data or find out why you can't see it
+### Add data or find out why you can't see it [add-data-or-find-missing-data]
 
 If you see **Add integrations**, **Add data**, or **Contact your administrator**, {{kib}} found no data that you can access and no data view in the current space.
 
