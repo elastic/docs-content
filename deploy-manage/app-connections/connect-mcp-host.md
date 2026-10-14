@@ -91,6 +91,8 @@ The server is now configured. Start a Claude Code session. The OAuth authorizati
 :::::
 
 :::::{dropdown} Claude desktop app
+:name: connect-claude-desktop
+
 The Claude desktop app supports OAuth natively, so no additional adapter is required.
 
 To configure the Claude desktop app:
@@ -156,6 +158,7 @@ The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed
 :::::
 
 :::::{dropdown} claude.ai
+:name: connect-claude-ai
 
 The Claude web interface (https://claude.ai) supports OAuth natively, so no additional adapter is required.
 
