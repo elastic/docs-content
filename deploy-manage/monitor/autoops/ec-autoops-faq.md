@@ -43,6 +43,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Can I use macOS to set up AutoOps for my ECE, ECK, or self-managed clusters?](#macos-install)
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 * [Do I have to install {{agent}} separately for each node in my cluster?](#agent-nodes)
+* [Can I run multiple {{agent}} instances for the same cluster to ensure high availability?](#agent-high-availability)
 * [Do I have to re-run the installation wizard to connect more clusters?](#connect-more-clusters)
 
 **Collected metrics and data in AutoOps for ECE, ECK, or self-managed clusters**
@@ -142,6 +143,11 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
 
 $$$agent-nodes$$$ **Do I have to install {{agent}} separately for each node in my cluster?**
 :    No, to run AutoOps in your ECE, ECK, or self-managed environment, you only have to install the agent once per cluster.
+
+$$$agent-high-availability$$$ **Can I run multiple {{agent}} instances for the same cluster to ensure high availability?**
+:   No, high availability configurations for the agent are not currently supported in AutoOps. This applies to both active-active setups, where multiple agents collect and ship metrics from the same cluster at the same time, and active-passive setups, where a standby agent automatically takes over if the primary agent fails. 
+
+    Each cluster must be connected through a single, dedicated {{agent}}, and running additional agents against the same cluster can result in duplicate or inconsistent metrics.
 
 $$$connect-more-clusters$$$**Do I have to re-run the installation wizard to connect more clusters?**
 :   Not necessarily. Refer to [Connect additional clusters](../autoops/cc-connect-self-managed-to-autoops.md#connect-additional-clusters) for more information.
