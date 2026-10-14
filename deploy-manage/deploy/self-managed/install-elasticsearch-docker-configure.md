@@ -130,7 +130,7 @@ When you upgrade your cluster to a newer version, {{es}} will attempt to automat
 
 ## Using custom Docker images [_c_customized_image]
 
-In some environments, it might make more sense to prepare a custom image that contains your configuration. A `Dockerfile` to achieve this might be as simple as:
+In some environments, it might make more sense to prepare a custom image that contains your configuration. You can use the same approach to [install plugins](#docker-custom-image-plugins) into the image. A `Dockerfile` to achieve this might be as simple as:
 
 ::::{tab-set}
 :group: docker
@@ -159,12 +159,38 @@ docker build --tag=elasticsearch-custom .
 docker run -ti -v /usr/share/elasticsearch/data elasticsearch-custom
 ```
 
-Some plugins require additional security permissions. You must explicitly accept them either by:
+### Install plugins in a custom image [docker-custom-image-plugins]
+
+A custom image is also a way to install {{es}} plugins. The plugin is built into the image, so every container started from it already has the plugin available and you don't have to install it again when a container is recreated. For example, to build an image that includes the [ICU analysis plugin](elasticsearch://reference/elasticsearch-plugins/analysis-icu.md):
+
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
+```sh subs=true
+FROM docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
+RUN bin/elasticsearch-plugin install --batch analysis-icu
+```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```sh subs=true
+FROM docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
+RUN bin/elasticsearch-plugin install --batch analysis-icu
+```
+:::
+::::
+
+This example uses `--batch` because some plugins request security permissions beyond those granted by default, and the installer prompts for confirmation before it grants them. You must explicitly accept those permissions either by:
 
 * Attaching a `tty` when you run the Docker image and allowing the permissions when prompted.
 * Inspecting the security permissions and accepting them (if appropriate) by adding the `--batch` flag to the plugin install command.
 
 For more information, refer to the [`elasticsearch-plugin` command line parameters](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-plugin.md#elasticsearch-plugin-parameters).
+
+Building plugins into the image is not the only option. If you'd rather change the set of plugins without rebuilding, declare them in an [`elasticsearch-plugins.yml` configuration file](/deploy-manage/plugins-and-custom-configuration-files/self-managed/manage-plugins.md#self-managed-plugins-docker) instead, and {{es}} reconciles the installed plugins with that file each time the container starts. The `elasticsearch-plugin install` and `remove` commands are disabled while that file is present, so use one approach or the other.
 
 
 ## Troubleshoot Docker errors for {{es}} [troubleshoot-docker-errors]
