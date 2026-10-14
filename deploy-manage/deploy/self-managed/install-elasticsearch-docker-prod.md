@@ -13,7 +13,6 @@ products:
 
 The following requirements and recommendations apply when running {{es}} in Docker in production, including some guidelines outlined in [](/deploy-manage/deploy/self-managed/important-system-configuration.md).
 
-The following requirements and recommendations apply when running {{es}} in Docker in production.
 
 ## Set `vm.max_map_count` [_set_vm_max_map_count]
 
