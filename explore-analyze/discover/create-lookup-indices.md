@@ -49,9 +49,7 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
    - **Add data manually**. You can add fields and populate data directly. When adding a field, you must set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
      :::{note}
      :applies_to: { serverless: preview, stack: preview 9.3+ }
-     The field type list offers a subset of the {{es}} data types. You can't select types such as `object`, `nested`, `alias`, and `scaled_float` when you add a field.
-
-     {{esql}} doesn't support some of the listed types, such as `binary` and `rank_feature`, and a query that uses a field of one of those types returns an error. `LOOKUP JOIN` doesn't support some others, such as `unsigned_long` and `geo_point`. Before you select a type, check the [types that {{esql}} doesn't support](elasticsearch://reference/query-languages/esql/limitations.md#_unsupported_types) and the [additional types that `LOOKUP JOIN` doesn't support](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#unsupported-types).
+     The field type list offers only some {{es}} data types. If a type isn't in the list, the editor doesn't support it. For example, you can't select `object`, `nested`, `alias`, or `scaled_float`.
      :::
    - **Combine both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
 
