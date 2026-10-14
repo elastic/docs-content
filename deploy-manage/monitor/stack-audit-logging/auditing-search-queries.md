@@ -26,7 +26,7 @@ You can apply this setting through [cluster update settings API]({{es-apis}}oper
 No filtering is performed when auditing, so sensitive data might be audited in plain text when audit events include the request body. Also, the request body can contain malicious content that can break a parser consuming the audit logs.
 ::::
 
-The request body is printed as an escaped JSON string value (RFC 4627) to the `request.body` event attribute.
+{{es}} writes the request body as an escaped JSON string value (RFC 4627) to the `request.body` event attribute in the audit log. If you collect audit logs with the {{es}} integration or the Filebeat {{es}} module, the ingest pipeline maps this attribute to the Elastic Common Schema (ECS) field `http.request.body.content` in indexed documents.
 
 Not all events contain the `request.body` attribute, even when the above setting is toggled. The ones that do are:
 
