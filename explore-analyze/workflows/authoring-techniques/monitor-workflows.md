@@ -73,6 +73,23 @@ To review past runs, select the **Executions** tab, then select each run to see 
 
 To start a new test run with data from a past execution, open the workflow in the editor and follow [Reuse data from a previous run](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input-historical). After a run from the editor finishes, you can also click the **Run again** icon {icon}`refresh` in the execution panel to open the **Test workflow** dialog with that run already selected.
 
+## Private workflow execution data [workflows-private-execution-data]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+[Workflow access control](/explore-analyze/workflows/authorization.md#workflows-access-control) restricts execution history in the Workflows UI and APIs. It does not restrict queries of the `.workflows-executions*` and `.workflows-step-executions*` Elasticsearch indices. This is a known technical preview limitation, with workflow ACL enforcement for queryable execution data planned as follow-up work.
+
+The **Read Workflow Execution** privilege, included in Workflows **Read**, grants access to selected execution and step fields in the permitted space. These fields include status, timestamps, duration, execution identity, trigger, step ID, and step type. The grant also filters managed workflows according to the user's managed-execution privileges. It does not check the workflow owner or access list. No separate Elasticsearch index privilege is needed for this grant.
+
+This applies to the **Workflow executions** and **Workflow step executions** data views, and to queries through Discover, Lens, ES|QL, or the Elasticsearch API. For example, Alice makes a workflow private and does not share it with Bob. Bob cannot open that workflow or its history through Workflows, but he can query the permitted execution fields if he has **Read Workflow Execution** in the space.
+
+:::{warning}
+Do not rely on private workflow access to keep execution data confidential from users who can query these indices. The default execution-data grant excludes workflow definitions, inputs, outputs, errors, and logs. Separate Elasticsearch index privileges can provide broader access, including fields or spaces excluded by that default grant.
+:::
+
 ## Troubleshoot errors [workflows-troubleshoot-errors]
 
 When a workflow fails, open the failed execution from the **Executions** tab, then find the step with the error indicator. Expand the step to view the error message and to learn more about the root cause, such the input that caused the failure. After fixing an error, save the workflow before running it again.  
