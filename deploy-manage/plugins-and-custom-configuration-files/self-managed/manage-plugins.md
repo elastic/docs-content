@@ -57,7 +57,7 @@ proxy: proxy.example.com:8443
 
 Each time the container starts, {{es}} compares this list against the plugins currently installed and adds or removes plugins so that the running set matches the file. Official plugins are also upgraded when you upgrade {{es}}. To change the set of plugins, edit the file and restart the container.
 
-To place `elasticsearch-plugins.yml` in the container's configuration directory, bind-mount the file. For an example, refer to [Bind-mount {{es}} configuration files](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#docker-config-bind-mount).
+To place `elasticsearch-plugins.yml` in the container's configuration directory, you can bind-mount the file. For an example, refer to [Bind-mount {{es}} configuration files](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#docker-config-bind-mount).
 
 ::::{important}
 Do not run `elasticsearch-plugin install` or `elasticsearch-plugin remove` while the configuration file is present. Both commands are disabled.
