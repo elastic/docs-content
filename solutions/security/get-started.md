@@ -12,7 +12,39 @@ products:
 
 # Get started with {{elastic-sec}} [getting-started]
 
-New to {{elastic-sec}}? Follow the instructions in this topic to get started. Then, review the rest of the Get Started section to learn how to use the UI, review requirements, and discover more about our security features.
+New to {{elastic-sec}}? Start with what it protects and how its parts fit together, then follow the steps to deploy it and bring in your data.
+
+## What {{elastic-sec}} protects [security-what-it-protects]
+
+{{elastic-sec}} covers four areas. You can use them together or start with one:
+
+| Area | What it does | Start here |
+|---|---|---|
+| SIEM detection and response | Collects security data from across your environment, detects threats with rules and {{ml}}, and helps you investigate and respond. | [Detect and respond to threats with SIEM](/solutions/security/get-started/get-started-detect-with-siem.md) |
+| Endpoint protection | Prevents and detects malware, ransomware, and malicious behavior on Windows, macOS, and Linux hosts with {{elastic-defend}}. | [Protect your hosts with endpoint security](/solutions/security/get-started/get-started-endpoint-security.md) |
+| Cloud posture | Checks your cloud and Kubernetes configurations against security benchmarks, and scans cloud workloads for vulnerabilities. | [Secure your cloud assets with cloud security posture management](/solutions/security/get-started/get-started-cloud-security.md) |
+| Cloud workload protection | Detects and blocks threats on cloud VMs and Kubernetes containers while they run. | [Cloud workload protection for VMs](/solutions/security/cloud/cloud-workload-protection-for-vms.md) |
+
+For a full list of use cases and core concepts, refer to the [{{elastic-sec}} overview](/solutions/security.md).
+
+Which areas you can use depends on your deployment and license:
+
+- {applies_to}`serverless: ga` In {{sec-serverless}}, the Security Analytics feature tiers include SIEM detection and response, with optional add-ons for endpoint protection and cloud protection. The Elastic AI SOC Engine (EASE) tier adds AI-powered threat hunting and alert triage to a third-party SIEM. Refer to [Serverless feature tiers](/solutions/security/security-serverless-feature-tiers.md).
+- {applies_to}`stack: ga` In {{stack}} deployments, the features you can use depend on your [subscription](https://www.elastic.co/pricing).
+
+## How a SIEM comes together [security-siem-pieces]
+
+There's no single step that installs a SIEM. A working SIEM needs three things:
+
+1. **Data collection:** [{{agent}}](/reference/fleet/index.md), managed with {{fleet}}, collects data from your hosts. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` On {{ecloud}}, [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) can also collect data from cloud sources without an agent.
+2. **Data sources:** Integrations bring in the logs, alerts, and findings that {{elastic-sec}} analyzes. Refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
+3. **Detection rules:** Rules search your data and create alerts. [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md), then [install Elastic's prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md). Refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
+
+## Coming from another SIEM [security-coming-from-siem]
+
+If you're moving from Splunk, QRadar, or Microsoft Sentinel, [Automatic Migration](/solutions/security/get-started/automatic-migration.md) can translate your existing rules, and Splunk dashboards, into {{elastic-sec}}. Supported sources and assets vary by version.
+
+## Get started in three steps [security-get-started-steps]
 
 ::::::{{stepper}}
 :::::{{step}} Choose your deployment type   
