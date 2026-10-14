@@ -1101,12 +1101,12 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse/async" \
 
 **Example:** Route a request to a specific model {applies_to}`stack: ga 9.4+`
 
-By default, an agent uses its configured model. To override the model for a single request, pass either `connector_id` or `inference_id` in the request body:
+By default, a request uses the default model for {{agent-builder}}, as set on the **Feature settings** page. To override the model for a single request, pass either `connector_id` or `inference_id` in the request body:
 
-* `inference_id` takes an [{{infer}} endpoint](models.md#add-an-inference-endpoint) ID.
-* `connector_id` takes a [connector](models.md#configure-a-connector) ID.
+* `inference_id` takes an [{{infer}} endpoint](models.md#add-an-inference-endpoint) ID. Use this parameter for new integrations.
+* `connector_id` takes a [connector](models.md#configure-a-connector) ID. Generative AI connectors are deprecated.
 
-Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the agent uses its default model.
+Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error.
 
 ::::{tab-set}
 :group: api-examples
@@ -1318,7 +1318,7 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}"
 
 ::::
 
-**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 
 This example uses the [update conversation access control API]({{kib-apis}}operation/operation-put-agent-builder-conversations-conversation-id-access-control).
 

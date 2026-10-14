@@ -22,10 +22,6 @@ permissions:
   pull-requests: read
   copilot-requests: write
 
-concurrency:
-  group: docs-project-metadata-${{ inputs.issue-url || github.event.issue.html_url }}
-  cancel-in-progress: false
-
 jobs:
   prepare:
     if: >-
@@ -36,6 +32,12 @@ jobs:
        (contains(github.event.issue.labels.*.name, 'Team:SKI') ||
         contains(github.event.issue.labels.*.name, 'Team:Admin') ||
         contains(github.event.issue.labels.*.name, 'Team:Developer')))
+    # Job-level concurrency: runs for other labels are skipped before they join the group,
+    # so they can't cancel a pending team-label run. Routing reads the current labels,
+    # so whichever queued run survives still sees every team label.
+    concurrency:
+      group: docs-project-metadata-route-${{ inputs.issue-url || github.event.issue.html_url }}
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     outputs:
       issue-url: ${{ inputs.issue-url || github.event.issue.html_url }}
@@ -95,6 +97,9 @@ jobs:
   run:
     needs: prepare
     if: needs.prepare.outputs.enrich == 'true'
+    concurrency:
+      group: docs-project-metadata-enrich-${{ needs.prepare.outputs.issue-url }}
+      cancel-in-progress: false
     uses: elastic/docs-actions/.github/workflows/gh-aw-project-metadata.lock.yml@v1
     with:
       issue-url: ${{ needs.prepare.outputs.issue-url }}
