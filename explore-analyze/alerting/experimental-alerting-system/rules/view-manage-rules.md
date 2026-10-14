@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Search, filter, and bulk-manage rules in the experimental alerting system. Use inline editing, the rule summary flyout, and the rule details page to manage rules."
+description: "Search, filter, and bulk-manage rules in the experimental alerting system. Use inline editing, the rule summary flyout, and the rule details page to manage rules and rotate their API keys."
 ---
 
 # View and manage rules in the {{alerting-v2-system}} [manage-rules]
@@ -17,6 +17,8 @@ After you create rules in the {{alerting-v2-system}}, go to **Alerting V2 Previe
 Use the search bar to find rules by name or description. Each space-separated term is matched independently using prefix matching. Tags and grouping fields appear in results but aren't searchable.
 
 Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort, or use bulk actions to enable, disable, or delete multiple rules at once.
+
+{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` You can also use bulk actions to [rotate the API keys](#rotate-rule-api-key) of multiple rules at once.
 
 ## Edit a rule inline [quick-edit-rule]
 
@@ -40,12 +42,40 @@ The rule details page is organized into tabs that let you review a rule's config
 
 Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, or delete it.
 
+{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` To replace the rule's API key, select **Update API key** from the actions menu. Refer to [Rotate a rule's API key](#rotate-rule-api-key).
+
 ## Disable or snooze a rule [disable-snooze-rule]
 
 Use **Disable** when you want the rule to stop running entirely until you re-enable it. Snoozing is different: the rule keeps evaluating, but you suppress notifications or quiet a specific series or action policy.
+
+## Rotate a rule's API key [rotate-rule-api-key]
+```{applies_to}
+serverless: experimental
+stack: experimental 9.6+
+```
+
+Rotating a rule's API key replaces the key that the rule uses to query your data with a new key based on your credentials, without editing the rule. The current key comes from the user who last saved the rule and doesn't expire on its own, so the rule can keep running with access that user has since lost.
+
+Before you rotate a key, check two things:
+
+- **Your own access.** The new key carries your access, so the rule can reach only the data that you can reach. If your access is narrower than that of the user who last saved the rule, the rule can fail or miss data on its next run.
+- **The rule's state.** You can rotate the key only for an enabled rule. For a disabled rule, **Update API key** is unavailable until you enable the rule. If the rule is running when you confirm, {{kib}} skips it, so try again after the run finishes.
+
+To rotate a key, select **Update API key**, then confirm. {{kib}} generates the new key, invalidates the previous one, and keeps the rule's schedule and enabled state. After the rotation, **Last updated by** on the rule details page shows your name.
+
+You can select **Update API key** from any of these places:
+
+- The rule details page
+- A row's actions menu on the **Rules** page
+- The rule summary flyout
+- The bulk actions menu on the **Rules** page
+
+When you rotate keys in bulk, {{kib}} lists any rule it couldn't update in the notification and rotates the rest.
 
 ## Related pages
 
 - [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.
 - [Review rule execution history](review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Triage and investigate the alert episodes a rule produces.
+- [Rule, action policy, and workflow authorization](../authorization.md): Understand which credential authorizes each operation and how to fix authorization errors.
+- [Manage action policies](../action-policies/manage-action-policies.md): Rotate an action policy's API key, which is separate from a rule's.
