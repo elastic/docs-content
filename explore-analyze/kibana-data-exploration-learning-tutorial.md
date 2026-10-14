@@ -44,8 +44,10 @@ Before you can explore and visualize, you need data in {{es}}. In this tutorial 
 
 1. Open the **Integrations** page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the list of integrations, select **Sample Data**.
-3. On the page that opens, select **Other sample data sets**.
-4. On the **Sample web logs** card, select **Add data**.
+3. Install the **Sample web logs** data set:
+
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` On the **Sample web logs** card, select **Install data**.
+   - {applies_to}`stack: ga 9.0-9.3` Select **Other sample data sets**, then on the **Sample web logs** card, select **Add data**.
 
 The sample data is loaded into the `kibana_sample_data_logs` index. It includes web server access logs with fields like `@timestamp`, `clientip`, `response`, `bytes`, `url`, `extension`, and `geo.src`.
 
@@ -66,8 +68,8 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 1. From the navigation menu, go to **Discover**.
 2. Switch to {{esql}} mode. You can do this from:
 
-   - {icon}`code` **{{esql}}** or **Try {{esql}}** in the application menu.
-   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+   - {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier versions) in the application menu.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
 **Result:** The query bar changes to an {{esql}} editor where you can write piped queries.
 :::::
@@ -88,14 +90,14 @@ FROM kibana_sample_data_logs <1>
 
 You can add more {{esql}} commands and functions to control the results of the query. For example, a `| LIMIT` command to cap the number of rows returned (the default is 1,000). Refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) for the full list of commands.
 
-**Result:** The results table displays the most recent web log entries with only the fields you selected. To discover which fields are available, browse the field list in the sidebar.
+**Result:** The results table displays the most recent web log entries with only the fields you selected. Because the query uses `KEEP`, Discover doesn't show the chart of results over time. It shows a chart built from the columns you keep only when they suit one, and these four don't. To discover which fields are available, browse the field list in the sidebar.
 
 :::{tip}
 **No results?** The time range filter defaults to the last 15 minutes. Sample data timestamps are relative to when you loaded the dataset, so you may need to select a wider range, such as **Last 90 days**, or more, to see results.
 :::
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-first-query.png
-:alt: Discover showing an ES|QL query with results table and histogram
+:alt: Discover showing an ES|QL query that keeps four fields and sorts by timestamp, with a results table of those four columns
 :screenshot:
 :::
 
@@ -105,7 +107,7 @@ You can add more {{esql}} commands and functions to control the results of the q
 
 The results table gives you an overview, but sometimes you need the full details of a single event. To inspect a document:
 
-1. Select the expand icon ({icon}`expand`) on any row in the results table. A flyout opens.
+1. Select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier {{stack}} versions) on any row in the results table. A flyout opens.
 2. The flyout shows the fields returned by your query in a detailed view. Use the **Table** tab to see field names and values, or the **JSON** tab to see the raw document.
 3. Use the navigation arrows at the top of the flyout to move between documents without closing it. This is useful when you need to compare consecutive events or trace a sequence.
 
@@ -128,7 +130,9 @@ FROM kibana_sample_data_logs
 1. Excludes rows where the HTTP response code is missing.
 2. Groups rows by response code and counts events in each group.
 
-**Result:** The table shows the HTTP response codes ranked by frequency. A chart appears above the table to visualize the aggregation, so you can see at a glance how traffic breaks down by status (200, 404, 503, and so on). A three-line query turned thousands of raw log entries into a ranked breakdown with a chart. Notice that the field list in the sidebar now only shows the fields produced by the query (`event_count` and `response`), reflecting the narrower result set.
+**Result:** The table lists each HTTP response code with its event count. A chart appears above the table to visualize the aggregation, so you can see at a glance how traffic breaks down by status (200, 404, 503, and so on). A three-line query turned thousands of raw log entries into a breakdown with a chart. Notice that the field list in the sidebar now only shows the fields produced by the query (`event_count` and `response`), reflecting the narrower result set.
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Discover shows each response code as a group that you can expand to see the documents behind it. Refer to [Inspect grouped STATS results in Discover](discover/inspect-grouped-stats.md).
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-aggregation.png
 :alt: Discover showing a STATS aggregation with HTTP response codes ranked by event count
@@ -325,7 +329,7 @@ Each one follows the same workflow you have used so far: create a visualization,
 
 You can fine-tune any Lens panel without leaving the dashboard. Try it on the **Requests by file extension** panel:
 
-1. Hover over the panel and select {icon}`pencil` **Edit visualization configuration**. A **Configuration** flyout opens on the right side of the panel.
+1. Hover over the panel and select {icon}`pencil` **Edit visualization**. A **Configuration** flyout opens on the right side of the panel.
 2. In the flyout, select the **Horizontal axis** configuration.
 3. Expand **Advanced**, then in the **Include values** field, enter `.+` and select **Use regular expression**. This regular expression matches any non-empty string, which filters out documents where the extension field is blank. The panel updates immediately to reflect the change.
 4. Select **Back**, then **Apply and close**.
