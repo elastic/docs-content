@@ -130,7 +130,7 @@ When you upgrade your cluster to a newer version, {{es}} will attempt to automat
 
 ## Using custom Docker images [_c_customized_image]
 
-In some environments, it might make more sense to prepare a custom image that contains your configuration. You can use the same approach to [install plugins](#docker-custom-image-plugins) into the image. A `Dockerfile` to achieve this might be as simple as:
+In some environments, it might make more sense to prepare a custom image that contains your configuration. You can use the same approach to [install plugins](#docker-custom-image-plugins) into the image. The following is an example of a `Dockerfile` that achieves that:
 
 ::::{tab-set}
 :group: docker
@@ -190,7 +190,7 @@ This example uses `--batch` because some plugins request security permissions be
 
 For more information, refer to the [`elasticsearch-plugin` command line parameters](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-plugin.md#elasticsearch-plugin-parameters).
 
-Building plugins into the image is not the only option. If you'd rather change the set of plugins without rebuilding, declare them in an [`elasticsearch-plugins.yml` configuration file](/deploy-manage/plugins-and-custom-configuration-files/self-managed/manage-plugins.md#self-managed-plugins-docker) instead, and {{es}} reconciles the installed plugins with that file each time the container starts. The `elasticsearch-plugin install` and `remove` commands are disabled while that file is present, so use one approach or the other.
+Building plugins into the image is not the only option. If you'd rather change the set of plugins without rebuilding, declare them in an [`elasticsearch-plugins.yml` configuration file](/deploy-manage/plugins-and-custom-configuration-files/self-managed/manage-plugins.md#self-managed-plugins-docker) instead, and {{es}} reconciles the installed plugins with that file each time the container starts. The `elasticsearch-plugin install` and `remove` commands are deactivated while that file is present, so use one approach or the other.
 
 
 ## Troubleshoot Docker errors for {{es}} [troubleshoot-docker-errors]
