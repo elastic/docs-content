@@ -1,4 +1,6 @@
 ---
+meta_title: KQL - Kibana
+navigation_title: KQL
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kuery-query.html
 applies_to:
@@ -10,7 +12,7 @@ type: overview
 description: Filter documents in Kibana with KQL. Match fields, ranges, wildcards, and boolean conditions in Discover, dashboards, and other Kibana apps.
 ---
 
-# KQL [kuery-query]
+# {{kib}} Query Language (KQL) syntax [kuery-query]
 
 The {{kib}} Query Language (KQL) is a text-based query language for filtering data.
 
