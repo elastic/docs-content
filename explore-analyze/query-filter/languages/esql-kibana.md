@@ -9,6 +9,7 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+type: overview
 ---
 
 # Use ES|QL in the {{kib}} UI [esql-kibana]
