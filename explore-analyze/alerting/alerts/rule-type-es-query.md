@@ -98,6 +98,31 @@ When you create an {{es}} query rule, your choice of query type affects the info
 
    For example, if you select **All**, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} page.
 
+### Set the timezone for an {{esql}} query [rule-type-es-query-esql-timezone]
+```{applies_to}
+serverless: ga
+stack: ga 9.4
+```
+
+Date and time functions in an {{esql}} rule query, such as `DATE_EXTRACT`, depend on a timezone. The **Time zone** (`dateFormat:tz`) advanced setting that {{kib}} applies in Discover, dashboards, and Maps doesn't apply to rules, because a rule sends its query to {{es}} without a timezone. Refer to [Timezone handling](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-timezone) for how {{kib}} chooses the timezone elsewhere.
+
+To choose a timezone for a rule, add [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md) at the start of the rule query. For example, to alert on hosts that transfer more than 200,000 bytes during business hours in Tokyo:
+
+```esql
+SET time_zone="Asia/Tokyo";
+FROM kibana_sample_data_logs
+| WHERE DATE_EXTRACT("hour_of_day", @timestamp) >= 9
+    AND DATE_EXTRACT("hour_of_day", @timestamp) < 17
+| STATS total_bytes = SUM(bytes) BY host
+| WHERE total_bytes > 200000
+```
+
+{{es}} uses the first of these that applies:
+
+1. `SET time_zone` in the rule query.
+2. {applies_to}`stack: ga 9.6+` The `esql.query.settings.time_zone` cluster setting, if an administrator set it.
+3. UTC.
+
 ## Test your query [_test_your_query]
 
 Use the **Test query** feature to verify that your query is valid.

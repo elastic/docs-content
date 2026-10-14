@@ -339,13 +339,7 @@ stack: ga 9.4
 Avoid `SET time_zone` in **Discover**, dashboards, and **Maps**. `SET time_zone` changes how dates are computed by {{es}}, but {{kib}} still displays timestamps following the timezone defined in its `dateFormat:tz` advanced setting, which can produce confusing results.
 :::
 
-#### Timezone in {{es}} query rules
-
-In an [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md) that uses {{esql}}, the **Time zone** (`dateFormat:tz`) setting doesn't apply, because the rule sends its query to {{es}} without a timezone. To control the timezone a rule uses, add [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md) to the rule query. {{es}} uses the first of these that applies:
-
-1. `SET time_zone` in the rule query.
-2. {applies_to}`stack: ga 9.6+` The `esql.query.settings.time_zone` cluster setting, if an administrator set it.
-3. UTC.
+{{es}} query rules that use {{esql}} don't use the **Time zone** setting. They run in UTC unless the rule query or the cluster sets a timezone. To control the timezone for a rule, refer to [Set the timezone for an {{esql}} query](/explore-analyze/alerting/alerts/rule-type-es-query.md#rule-type-es-query-esql-timezone).
 
 
 
