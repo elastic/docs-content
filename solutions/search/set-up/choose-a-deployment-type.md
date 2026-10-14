@@ -15,18 +15,11 @@ type: overview
 
 ::::{step} Choose a deployment and get {{es}} running
 
-You can choose from several deployment options for your search use cases with Elastic, including self-managed deployments, {{ech}}, and {{serverless-short}} projects.
+- For most search workloads, the recommended option is a {{serverless-short}} {{es}} {{vectordb}} project. [Sign up for a free trial](https://cloud.elastic.co/registration?onboarding_token=vector).
 
-1. Use the [](/deploy-manage/deploy/deployment-comparison.md) to learn how security, cluster management, monitoring, and data lifecycle differ. Choose the one that best fits your needs.
+- If you have logs, events, or other time series data, the recommended option is an {{es}} project. Use it for data that is written continuously and queried by time range, such as application logs or metrics.
 
-2. If you go with {{serverless-short}}, compare {{es-serverless}} and {{es}} {{vectordb}} by use case:
-
-:::{include} _snippets/serverless-project-type-comparison.md
-:::
-
-:::{tip}
-For most search workloads using vectors, the recommended option is a {{serverless-short}} {{es}} {{vectordb}} project. [Sign up for a free trial](https://cloud.elastic.co/registration?onboarding_token=vector).
-:::
+- You can also compare the other deployment types and choose the one that best fits your operational needs. The [deployment comparison](/deploy-manage/deploy/deployment-comparison.md) shows how security, cluster management, monitoring, and data lifecycle differ.
 
 After you select a type, use the matching guide to get {{es}} running:
 

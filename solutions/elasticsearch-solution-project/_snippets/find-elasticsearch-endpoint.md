@@ -4,47 +4,85 @@ This snippet is in use in the following locations:
 - solutions/search/set-up/api-key-and-endpoints.md
 -->
 
-:::::{applies-switch}
+:::::::{applies-switch}
 
-::::{applies-item} serverless: ga
-Your endpoint details are on your project's page in the {{ecloud}} Console.
+::::::{applies-item} serverless: ga
+Copy the {{es}} endpoint from {{kib}} or the {{ecloud}} Console.
+
+:::::{tab-set}
+
+::::{tab-item} {{kib}}
+
+1. Open {{kib}} for your project.
+2. From the **Help menu** {icon}`question` or the project selector in the header, select **Connection details**.
+3. On the **Endpoints** tab, copy the **{{es}} endpoint**.
+
+:::{image} /solutions/images/kibana-connection-details-endpoints.png
+:alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
+:screenshot:
+:width: 50%
+:::
+
+::::
+
+::::{tab-item} {{ecloud}} Console
 
 1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select **Serverless**.
 2. Find your project and select **Manage**.
 3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
 4. Copy the **Endpoint** value.
 
-    :::{image} /solutions/images/cloud-console-serverless-endpoint.png
-    :alt: The Elasticsearch panel on a Serverless project page in the Elastic Cloud Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
-    :screenshot:
-    :width: 50%
-    :::
+:::{image} /solutions/images/cloud-console-serverless-endpoint.png
+:alt: The Elasticsearch panel on a Serverless project page in the Elastic Cloud Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
+:screenshot:
+:width: 50%
+:::
 
 If your project runs on AWS and AWS PrivateLink is set up, the panel also lists an **AWS PrivateLink endpoint**. Use it only when you connect through AWS PrivateLink. To learn more, refer to [](/deploy-manage/security/private-connectivity-aws.md).
 
-:::{tip}
-You can also find your endpoint details in {{kib}}. From the **Help menu** {icon}`question` or the project selector in the header, select **Connection details**, then copy the **{{es}} endpoint** from the **Endpoints** tab.
-:::
 ::::
 
-::::{applies-item} ech: ga
-Your endpoint details are on your deployment's page in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+:::::
 
-1. In the {{ecloud}} Console, select **Hosted**.
+::::::
+
+::::::{applies-item} ech: ga
+Copy the {{es}} endpoint from {{kib}} or the {{ecloud}} Console.
+
+:::::{tab-set}
+
+::::{tab-item} {{kib}}
+
+1. Open {{kib}} for your deployment.
+2. From the **Help menu** {icon}`question`, select **Connection details**.
+3. On the **Endpoints** tab, copy the **{{es}} endpoint**.
+
+:::{image} /solutions/images/kibana-connection-details-endpoints.png
+:alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
+:screenshot:
+:width: 50%
+:::
+
+::::
+
+::::{tab-item} {{ecloud}} Console
+
+1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select **Hosted**.
 2. Select your deployment.
 3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
 4. Copy the **Endpoint** value.
 
-    :::{image} /solutions/images/cloud-console-hosted-endpoint.png
-    :alt: The Elasticsearch panel on a hosted deployment page in the Elastic Cloud Console, showing the Endpoint value with a copy button
-    :screenshot:
-    :width: 50%
-    :::
-
-:::{tip}
-You can also find your endpoint details in {{kib}}. From the **Help menu** {icon}`question`, select **Connection details**, then copy the **{{es}} endpoint** from the **Endpoints** tab.
+:::{image} /solutions/images/cloud-console-hosted-endpoint.png
+:alt: The Elasticsearch panel on a hosted deployment page in the Elastic Cloud Console, showing the Endpoint value with a copy button
+:screenshot:
+:width: 50%
 :::
+
 ::::
+
+:::::
+
+::::::
 
 ::::{applies-item} ece: ga
 Your endpoint details are in the **Connection details** panel in {{kib}}.
@@ -89,4 +127,4 @@ kubectl get svc
 To reach the cluster from outside, expose the service and use its external address. Refer to [Access the endpoint](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-request-elasticsearch-endpoint) for both cases, including how to retrieve the certificate authority (CA) certificate.
 ::::
 
-:::::
+:::::::

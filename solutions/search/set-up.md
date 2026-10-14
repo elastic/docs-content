@@ -11,6 +11,6 @@ type: overview
 
 This section covers where {{es}} runs and how you connect to it. Refer to the following pages to set up your {{es}} deployment:
 
-* [](/solutions/search/set-up/choose-a-deployment-type.md): Compare deployment types, start one, and try a search quickstart.
-* [](/solutions/search/set-up/api-key-and-endpoints.md): Find the {{es}} endpoint and create an API key for search.
-* [](/solutions/search/set-up/connect-through-an-sdk.md): Install an official language client and connect it to your deployment.
+1. [](/solutions/search/set-up/choose-a-deployment-type.md): Compare deployment types, start one, and try a search quickstart.
+2. [](/solutions/search/set-up/api-key-and-endpoints.md): Find the {{es}} endpoint and create an API key for search.
+3. [](/solutions/search/set-up/connect-through-an-sdk.md): Install an official language client and connect it to your deployment.

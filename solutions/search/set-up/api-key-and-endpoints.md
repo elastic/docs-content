@@ -14,12 +14,18 @@ Find the endpoint URL and an API key. You need them to connect a client to {{es}
 :::{include} /solutions/elasticsearch-solution-project/_snippets/deployment-tab-legend.md
 :::
 
-## Find your {{es}} endpoint [find-your-elasticsearch-endpoint]
+:::::::::{stepper}
+
+::::::::{step} Find your {{es}} endpoint
+:anchor: find-your-elasticsearch-endpoint
 
 :::{include} /solutions/elasticsearch-solution-project/_snippets/find-elasticsearch-endpoint.md
 :::
 
-## Get your API key [get-your-api-key]
+::::::::
+
+::::::::{step} Get your API key
+:anchor: get-your-api-key
 
 If you just created an {{es}} {{vectordb}} project or an {{es}} project, a generated API key is on the **Getting started** {icon}`rocket` page.
 
@@ -28,6 +34,13 @@ Otherwise, create an API key:
 :::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
 :::
 
-## Next step [api-key-and-endpoints-next]
+::::::::
+
+::::::::{step} Next step
+:anchor: api-key-and-endpoints-next
 
 After you have an endpoint and an API key, connect a language client in [](/solutions/search/set-up/connect-through-an-sdk.md).
+
+::::::::
+
+:::::::::

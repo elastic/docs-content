@@ -6,8 +6,8 @@ This snippet is in use in the following locations:
 
 The deployment tabs mean the following:
 
-* **Self-managed**: a cluster you install and manage.
-* **ECE**: {{ece}}.
-* **ECK**: {{eck}}.
-* **ECH**: {{ech}}.
 * **Serverless**: an {{es}} {{vectordb}} project or an {{es}} project.
+* **ECH**: {{ech}}.
+* **ECE**: {{ece}}.
+* **Self-managed**: a cluster you install and manage.
+* **ECK**: {{eck}}.
