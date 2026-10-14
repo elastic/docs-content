@@ -129,9 +129,9 @@ serverless: preview
 stack: preview 9.3+
 ```
 
-The {{esql}} editor includes a search bar that builds a query from text you enter, so you can filter data without writing the full {{esql}} syntax.
+The {{esql}} editor includes a search bar that builds a query from text you enter, so you can filter data without writing the full {{esql}} syntax. How you open it depends on your version:
 
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` In **Discover** and on dashboards, the search bar is always visible. When you edit a visualization, a map layer, or an alerting rule, the icon is in the editor footer.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` In **Discover** and on dashboards, the search bar is always visible. When you edit a visualization, a map layer, or an alerting rule, the search icon is in the editor footer.
 - {applies_to}`stack: preview 9.3-9.5` Look for the search icon in the editor, which is {icon}`magnify`, or {icon}`magnify_sparkles` when your license includes [AI features](#esql-kibana-ai-assistance). You can also press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux).
 
 The search bar offers two modes:
@@ -466,10 +466,10 @@ The {{esql}} editor autocompletes the setting name and its accepted values. Once
 
 The first time a query references an unmapped field, the editor shows a warning so you can confirm the reference is intentional and not a typo. After a `KEEP` or `STATS` command that limits the available columns, references to unmapped fields downstream are flagged as errors.
 
-`LOAD` doesn't support every command and field type. For example, it doesn't load subfields of `flattened` fields, and it doesn't work with `PROMQL`. For the full list, refer to [Other restrictions](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md#esql-unmapped-fields-other-restrictions). These version-specific details also apply:
+`LOAD` doesn't support every command and field type. For example, it doesn't load subfields of `flattened` fields, and it doesn't work with `PROMQL`. For the full list, refer to [Other restrictions](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md#esql-unmapped-fields-other-restrictions). Two more details depend on your version:
 
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/get-data-in.md#get-data-in-wired) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/get-data-in.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
-- {applies_to}`stack: preview =9.4` `LOAD` also doesn't work in queries that use `FORK`, `LOOKUP JOIN`, subqueries, views, or full-text search functions. When querying multiple indices, fields that have a non-keyword type in some indices but are unmapped in others need an explicit cast (for example, `my_field::integer` or `TO_INTEGER(my_field)`) unless referenced in a `KEEP` or `DROP` command.
+- {applies_to}`stack: preview =9.4` `LOAD` doesn't work in queries that use `FORK`, `LOOKUP JOIN`, subqueries, views, or full-text search functions. When querying multiple indices, fields that have a non-keyword type in some indices but are unmapped in others need an explicit cast (for example, `my_field::integer` or `TO_INTEGER(my_field)`) unless referenced in a `KEEP` or `DROP` command.
 
 For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
 
