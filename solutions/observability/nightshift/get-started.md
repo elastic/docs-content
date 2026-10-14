@@ -31,7 +31,6 @@ To start an investigation:
 1. Enter or paste what you want to investigate in the text box. The more context you provide, the better.
 1. Select **Investigate**.
 
-<!-- Where does the investigation actually appear? -->
 The investigation appears on the home page, where you can open it to follow its progress and read the results.
 
 ## Investigate an alert [nightshift-get-started-alert]
@@ -47,7 +46,7 @@ Investigations from an alert work only with alerts created by [{{kib}} alerting]
 To run an investigation from the **Alerts** table:
 
 1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Find the alert you want to investigate and open the {icon}`boxes_vertical` **More actions** menu {icon}`boxes_vertical`, then select {icon}`inspect` **Investigate**.
+1. Find the alert you want to investigate and open the {icon}`boxes_vertical` **More actions** menu, then select {icon}`inspect` **Investigate**.
 1. After the investigation starts, select **View investigation**.
 
 When the investigation finishes, it explains what happened and how to fix it.
