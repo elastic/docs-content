@@ -12,7 +12,7 @@ products:
 
 # Manage discoveries from the Attacks view [attacks-page]
 
-The **Attacks** view brings Attack Discovery findings together with their related alerts. Open it at **Detections** → **Views** → **Attacks**. 
+The **Attacks** view brings Attack Discovery findings together with their related alerts. Find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 This page covers how to filter and search attacks, tell manually generated and scheduled attacks apart, review linked alerts, and take triage actions.
 
@@ -21,7 +21,7 @@ This page covers how to filter and search attacks, tell manually generated and s
 At the top of the **Attacks** view, overview visualizations summarize activity. The **Summary** tab shows the total number of attacks detected and attack volume over time. The **Trends**, **Count**, and **Treemap** tabs describe alerts associated with those attacks.
 
 ::::{image} /solutions/images/security-attacks-page-ov.png
-:alt: Overview of the Attacks view showing the Summary tab
+:alt: Attacks view with Summary visualizations, Type, Assignees, Connector, and Status filters, and Generations, Run, and Schedule controls
 :screenshot:
 ::::
 
@@ -89,7 +89,7 @@ Use the controls at the top of the Attacks table to narrow results:
 | Status filter | Filter by [status](#attacks-manage): **Open**, **Acknowledged**, or **Closed**. |
 | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Type filter | Show **Scheduled** attacks, **Manually generated** attacks, or both. |
 | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Connector filter | Filter attacks by the LLM connector that generated them. |
-| Assignees filter | Click **Filter by assignees** to show only attacks or alerts [assigned](#attacks-manage) to specific users. |
+| Assignees filter | Click **Assignees** to show only attacks or alerts [assigned](#attacks-manage) to specific users. |
 | Sort | Use the **Sort by** menu to sort by **Most recent**, **Least recent**, **Most alerts**, or **Least alerts**. |
 
 :::{note}

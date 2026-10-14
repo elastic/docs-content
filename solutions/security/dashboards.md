@@ -14,18 +14,20 @@ navigation_title: Dashboards
 
 # {{elastic-sec}} dashboards
 
-The {{security-app}}'s default dashboards provide useful visualizations of your security environment. To view them in {{elastic-sec}}, select **Dashboards** from the navigation menu. From the Dashboards page, you can access the default dashboards, as well as create and access custom dashboards.
+The {{security-app}}'s default dashboards provide useful visualizations of your security environment. Find **Dashboards** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the Dashboards page, you can open the default **Security views**, and create or open custom dashboards.
 
 To create a new custom dashboard, click **Create Dashboard**. You can control which custom dashboards appear in the table:
 
 * Use the text search field to filter by name or description.
 * Use the **Tags** menu to filter by tag.
-* Click a custom dashboard’s tags to toggle filtering for each tag.
+* Use the **Created by** menu to filter by creator.
+* Click a custom dashboard's tags to toggle filtering for each tag.
 
 To create a new tag or edit existing tags, open the **Tags** menu and click **Manage tags**.
 
 :::{image} /solutions/images/security-dashboards-landing-page.png
-:alt: The dashboards landing page
+:alt: Dashboards landing page with Security views and custom dashboards
+:screenshot:
 :::
 
 Refer to documentation for the other {{elastic-sec}} dashboards to learn more about them. For more information about creating custom dashboards, refer to [Create your first Kibana dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md).

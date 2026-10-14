@@ -41,7 +41,7 @@ You can also use [value lists](create-manage-value-lists.md) to define exception
 If you want an exception to apply to multiple rules, you can add an exception to a shared exception list. Shared exception lists allow you to group exceptions together and then associate them with multiple rules. Refer to [Create and manage shared exception lists](create-manage-shared-exception-lists.md) to learn more.
 
 :::{image} /solutions/images/security-rule-exceptions-page.png
-:alt: Shared Exception Lists page
+:alt: Shared Exception Lists page with Import exception list, Create shared exception list, and the endpoint exceptions callout
 :screenshot:
 :::
 

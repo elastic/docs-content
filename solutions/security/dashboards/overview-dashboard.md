@@ -16,7 +16,8 @@ products:
 The Overview dashboard provides a high-level snapshot of alerts and events. It helps you assess overall system health and find anomalies that may require further investigation.
 
 :::{image} /solutions/images/security-overview-pg.png
-:alt: Overview dashboard
+:alt: Overview dashboard showing the Alert trend and Events histograms
+:screenshot:
 :::
 
 
