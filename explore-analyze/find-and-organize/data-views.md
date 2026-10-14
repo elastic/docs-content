@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/data-views.html
   - https://www.elastic.co/guide/en/serverless/current/data-views.html
   - https://www.elastic.co/guide/en/kibana/current/managing-data-views.html
-description: A Kibana data view selects Elasticsearch indices, data streams, or aliases for Discover, Lens, and other analytics features. Create one yourself, or use one created automatically or managed by Elastic.
+description: Kibana data views select which indices you explore. Kibana used to call these index patterns.
 applies_to:
   stack: ga
   serverless: ga
@@ -15,7 +15,9 @@ products:
 
 # {{kib}} data views
 
-A {{data-source}} tells {{kib}} which {{es}} indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md) to query. Analytics features such as **Discover** and **Lens** use a {{data-source}} to access your data. For example, a {{data-source}} can point to your log data from yesterday, or to all indices that contain your data.
+A {{data-source}} is a saved object that tells {{kib}} which {{es}} indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md) to query. {{kib}} used to call a {{data-source}} an index pattern. You still see that name in the **Index pattern** field, where you enter the sources that a {{data-source}} matches.
+
+Analytics features such as **Discover** and **Lens** use a {{data-source}} to access your data. For example, a {{data-source}} can point to your log data from yesterday, or to all indices that contain your data.
 
 ::::{note}
 In some apps, you can query {{es}} with [{{esql}}](elasticsearch://reference/query-languages/esql.md) instead. {{esql}} doesn't require a {{data-source}}.
