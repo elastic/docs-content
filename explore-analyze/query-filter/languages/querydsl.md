@@ -160,7 +160,7 @@ Scores calculated for queries in query context are single precision floating poi
 
 $$$query-dsl-allow-expensive-queries$$$
 
-Certain types of queries generally run slowly because of the way they are implemented, which can affect the stability of the cluster. Examples are `script` queries, joining queries, and queries on [runtime fields](/manage-data/data-store/mapping/runtime-fields.md). For the full list and the exceptions, refer to [Limit expensive queries](elasticsearch://reference/query-languages/querydsl.md#query-dsl-allow-expensive-queries) in the Query DSL reference.
+Some query types are resource-intensive, which can slow searches and affect cluster stability. Examples are `script` queries, joining queries, and queries on [runtime fields](/manage-data/data-store/mapping/runtime-fields.md). For the full list and the exceptions, refer to [Limit expensive queries](elasticsearch://reference/query-languages/querydsl.md#query-dsl-allow-expensive-queries) in the Query DSL reference.
 
 {{es}} runs these queries by default. Whether you can block them depends on your deployment:
 
