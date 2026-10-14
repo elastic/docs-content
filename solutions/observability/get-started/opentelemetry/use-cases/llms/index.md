@@ -44,3 +44,13 @@ Select the environment and target system from the [quick start overview](/soluti
 See the [Configuration section in the corresponding EDOT SDK](opentelemetry://reference/edot-sdks/index.md) to turn on or off specific instrumentations and check which instrumentation is active by default.
 
 When you complete the setup and configuration of the EDOT SDK and there is a workload on your application, start checking for telemetry data in {{kib}}. If there's no data showing up, see the troubleshooting of the corresponding EDOT SDK.
+
+## View GenAI spans in {{kib}} [llm-view-genai-spans]
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+After your application sends trace data, open **Discover** and [load trace data](/solutions/observability/apm/discover-traces.md#load-trace-data). Select a time range that includes a model call, open the span's document details, and select **GenAI**. The tab shows model details and token usage, along with prompts and responses when your instrumentation records them.
+
+Refer to [Inspect GenAI spans](/solutions/observability/apm/discover-traces.md#genai-span-details) for the full workflow. You can also inspect model calls and token counts in the [trace waterfall](/solutions/observability/apm/trace-sample-timeline.md#genai-trace-waterfall).
