@@ -529,9 +529,11 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 :::
 
 **Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   View and manage the agent builder connectors library, which gives agents access to external data sources and systems. 
+:   View and manage the {{agent-builder}} connectors library, which gives agents access to external data sources and systems. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use a connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
 
 :::{note}
+:applies_to: stack: preview 9.4-9.5
+
 The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
