@@ -450,6 +450,78 @@ triggers:
       condition: 'event.score >= 70'
 ```
 
+## Security triggers [security-triggers-event-driven]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Security triggers fire when {{elastic-sec}} detection alerts, attack discoveries, or document notes change. Use them to react to triage activity without polling the {{elastic-sec}} APIs.
+
+:::{note}
+These triggers fire on detection alerts and attack discoveries. They don't fire on the alert episodes of the {{alerting-v2-system}}. Refer to [](#alert-episode-lifecycle-triggers-event-driven) for those.
+:::
+
+**Shared schema.** Every security trigger takes the same two parameters: `type` at the top level, set to the trigger ID, and an optional `condition` under `on`, which is a KQL predicate evaluated against the `event` payload.
+
+**Batched events.** The alert and attack discovery triggers fire once per bulk operation rather than once per affected item, so `event.alertIds` and `event.attackIds` are arrays. Both are capped at 10,000 entries, and `event.truncated` is `true` when the payload was capped. For the status triggers, that means more than 10,000 items were affected. For the tags and assignees triggers, it also means more than 100 tags or assignees were supplied in one operation, or that a tag value or assignee UID exceeded its length limit. Treat `event.truncated` as a signal to re-query the affected items rather than to trust the array. To act on each item in an untruncated payload, iterate the array with a `foreach` step.
+
+The note triggers carry a single `event.noteId` instead of an array, so they have no truncation field. Both fire only for notes attached to a document: investigation guide notes and Timeline-level notes don't fire them.
+
+### `security.alertStatusChanged` [security-alertstatuschanged-trigger]
+
+Fires after the workflow status of a batch of detection alerts changes. The payload carries `event.alertIds`, `event.status` with the new status, `event.previousStatuses`, and `event.truncated`.
+
+Statuses are `open`, `acknowledged`, `in-progress`, and `closed`. Each entry in `event.previousStatuses` pairs an `id` with the `previousStatus` that alert held.
+
+```yaml
+triggers:
+  - type: security.alertStatusChanged
+    on:
+      condition: 'event.status: "acknowledged"'
+```
+
+### `security.alertTagsChanged` [security-alerttagschanged-trigger]
+
+Fires after tags are added to or removed from a batch of detection alerts. The payload carries `event.alertIds`, `event.tagsAdded`, `event.tagsRemoved`, and `event.truncated`.
+
+```yaml
+triggers:
+  - type: security.alertTagsChanged
+    on:
+      condition: 'event.tagsAdded: "escalated"'
+```
+
+### `security.alertAssigneesChanged` [security-alertassigneeschanged-trigger]
+
+Fires after assignees are added to or removed from a batch of detection alerts. The payload carries `event.alertIds`, `event.assigneesAdded`, `event.assigneesRemoved`, and `event.truncated`.
+
+### `security.attackStatusChanged` [security-attackstatuschanged-trigger]
+
+Fires after the workflow status of a batch of attack discoveries changes. The payload carries `event.attackIds`, `event.status`, `event.previousStatuses`, and `event.truncated` — the same shape as [`security.alertStatusChanged`](#security-alertstatuschanged-trigger), with attack discovery IDs in place of alert IDs.
+
+### `security.attackTagsChanged` [security-attacktagschanged-trigger]
+
+Fires after tags are added to or removed from a batch of attack discoveries. The payload carries `event.attackIds`, `event.tagsAdded`, `event.tagsRemoved`, and `event.truncated`.
+
+### `security.attackAssigneesChanged` [security-attackassigneeschanged-trigger]
+
+Fires after assignees are added to or removed from a batch of attack discoveries. The payload carries `event.attackIds`, `event.assigneesAdded`, `event.assigneesRemoved`, and `event.truncated`.
+
+### `security.noteCreated` [security-notecreated-trigger]
+
+Fires after a note is created on a document. The payload carries `event.noteId`, `event.createdBy` with the username of the note's author, and `event.documentId` with the ID of the document the note is attached to.
+
+```yaml
+triggers:
+  - type: security.noteCreated
+```
+
+### `security.noteUpdated` [security-noteupdated-trigger]
+
+Fires after the text of an existing note is updated. The payload carries `event.noteId`, `event.updatedBy`, and `event.documentId`.
+
 ## {{alerting-v2-system-cap}} alert episode lifecycle triggers [alert-episode-lifecycle-triggers-event-driven]
 
 ```{applies_to}
