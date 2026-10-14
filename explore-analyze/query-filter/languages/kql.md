@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: kibana
 type: overview
-description: Filter documents in Kibana with KQL. Match fields, ranges, wildcards, and boolean conditions in Discover, dashboards, and other Kibana apps.
+description: Kibana Query Language (KQL) filters documents in Kibana. It does not aggregate or sort.
 ---
 
 # {{kib}} Query Language (KQL) syntax [kuery-query]
