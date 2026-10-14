@@ -160,11 +160,13 @@ Scores calculated for queries in query context are single precision floating poi
 
 $$$query-dsl-allow-expensive-queries$$$
 
-Some query types are resource-intensive, which can slow searches and affect cluster stability. Examples are `script` queries, joining queries, and queries on [runtime fields](/manage-data/data-store/mapping/runtime-fields.md). For the full list and the exceptions, refer to [Limit expensive queries](elasticsearch://reference/query-languages/querydsl.md#query-dsl-allow-expensive-queries) in the Query DSL reference.
+Some query types are resource-intensive, which can slow searches and affect cluster stability. Examples are `script` queries, joining queries, and queries on [runtime fields](/manage-data/data-store/mapping/runtime-fields.md).
 
 {{es}} runs these queries by default. Whether you can block them depends on your deployment:
 
 * {applies_to}`serverless: ga` You can't block these queries. The `search.allow_expensive_queries` setting isn't configurable.
-* {applies_to}`stack: ga` To block these queries, set `search.allow_expensive_queries` to `false` with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). This requires the `manage` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The setting is dynamic, so the change applies without a restart. While it is `false`, a search that includes one of the listed queries returns an error that names the setting, instead of running.
+* {applies_to}`stack: ga` To block these queries, set `search.allow_expensive_queries` to `false` with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings).
+
+For the full list of queries and the details of blocking them, refer to [Limit expensive queries](elasticsearch://reference/query-languages/querydsl.md#query-dsl-allow-expensive-queries) in the Query DSL reference.
 
 To browse every query type, refer to the [Query DSL reference](elasticsearch://reference/query-languages/querydsl.md). To run and test searches, refer to [Build your search queries](/solutions/search/querying-for-search.md).
