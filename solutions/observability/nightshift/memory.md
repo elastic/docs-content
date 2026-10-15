@@ -34,6 +34,7 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-memory-nav]
 
+- [Get started with Elastic nightshift](./get-started.md): Start an investigation and review the results
 - [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
 - [Investigations](./investigations.md): Learn how Elastic nightshift investigates problems and how to read the results
 - [How Significant Events works](./significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
