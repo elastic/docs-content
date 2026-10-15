@@ -294,6 +294,8 @@ For example, the following chat history panel shows one conversation in progress
 
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
+The agent's progress appears only in the browser tab where you sent the message or answered a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. The agent keeps working if you reload the page or open the conversation in another tab, but the conversation doesn't show **In progress** there, and the agent's steps and response don't appear until the agent finishes. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The same applies if you close the sidebar, open the conversation in the other [chat mode](standalone-and-flyout-modes.md), or go to another app from standalone mode.
+
 ### Inspect tool calls and reasoning
 
 ::::{note}
@@ -310,7 +312,29 @@ Agent responses show reasoning, tool calls, tool results, and the final response
 :width: 650px
 :::
 
-Tool call events show whether a tool is still running or has returned a response. Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
+Tool call events show whether a tool is still running or has returned a response.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+Select a tool call to open a flyout with its details. When the agent runs several tools in a row, the calls are grouped, for example **3 tools ran**. Expand the group, then select a tool call.
+
+The flyout title shows the tool ID. The flyout has the following sections:
+
+- **Parameters**: The parameters the agent sent to the tool.
+- **Execution**: Progress messages from the tool while it runs. This section appears only for tools that report progress and for sub-agent calls. For a sub-agent call, select **Sub-agent execution** to view the sub-agent's steps and response.
+- **Result**: What the tool returned, including any error. This section appears after the tool returns.
+
+:::
+
+:::{applies-item} stack: ga =9.5
+
+Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
+
+:::
+
+::::
 
 After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
@@ -320,7 +344,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
+Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`chart_waterfall`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
 
 The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
 
