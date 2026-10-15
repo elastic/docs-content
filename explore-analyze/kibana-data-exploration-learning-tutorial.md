@@ -68,7 +68,7 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 1. From the navigation menu, go to **Discover**.
 2. Switch to {{esql}} mode. You can do this from:
 
-   - {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier versions) in the application menu.
+   - {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) in the application menu.
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
 **Result:** The query bar changes to an {{esql}} editor where you can write piped queries.
@@ -90,7 +90,7 @@ FROM kibana_sample_data_logs <1>
 
 You can add more {{esql}} commands and functions to control the results of the query. For example, a `| LIMIT` command to cap the number of rows returned (the default is 1,000). Refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) for the full list of commands.
 
-**Result:** The results table displays the most recent web log entries with only the fields you selected. Because the query uses `KEEP`, Discover doesn't show the chart of results over time. It shows a chart built from the columns you keep only when they suit one, and these four don't. To discover which fields are available, browse the field list in the sidebar.
+**Result:** The results table displays the most recent web log entries with only the fields you selected. Because the query uses `KEEP`, Discover doesn't show the chart of results over time. Instead, it can show a chart based on the columns you keep, when those columns suit one. To discover which fields are available, browse the field list in the sidebar.
 
 :::{tip}
 **No results?** The time range filter defaults to the last 15 minutes. Sample data timestamps are relative to when you loaded the dataset, so you may need to select a wider range, such as **Last 90 days**, or more, to see results.
