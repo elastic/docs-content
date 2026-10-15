@@ -62,7 +62,7 @@ Optionally, you can:
     - Turn **Round relative time ranges** on or off.
     - Under **Absolute time range**, select whether timestamps show **Minutes**, **Seconds**, or **Milliseconds**.
 
-- Save the current range as a preset for later reuse with {icon}`save`, or select **Save as preset** when applying a range from the **Calendar** or **Custom range** panels. Saving a preset also applies the range, and saved ranges appear under **Presets**. Presets are personal to your user profile, and you can save up to 40. To delete one, point to it under **Presets** and select {icon}`trash` **Delete preset**.
+- Save the current range as a preset for later reuse with {icon}`save`, or select **Save as preset** when applying a range from the **Calendar** or **Custom range** panels. Saving a preset also applies the range, and saved ranges appear under **Presets**. User-created presets are personal to your user profile, and you can save up to 40. To delete a user-created preset, point to it under **Presets** and select {icon}`trash` **Delete preset**. Ranges from the [**Time filter quick ranges**](kibana://reference/advanced-settings.md#timepicker-quickranges) advanced setting stay in the list and cannot be deleted.
 
 - Step through time with the buttons next to the time range: **Previous** and **Next** shift the range backward or forward by its own duration, and **Zoom out** and **Zoom in** widen or narrow it.
 ::::

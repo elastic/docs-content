@@ -23,15 +23,14 @@ The `semantic_text` field type simplifies the {{infer}} workflow by providing {{
 
 We recommend using the `semantic_text` workflow for [semantic search](../semantic-search.md) in the {{stack}}. When you need more control over indexing and query settings, you can use the complete {{infer}} workflow instead (refer to [Semantic search with the Inference API](semantic-search-inference.md) for details).
 
-This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), but you can use any service and model supported by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md).
+This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 
 ## Requirements [semantic-text-requirements]
 
-- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects.
-::::{note}
-You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
-::::
-- To use the `semantic_text` field type with an {{infer}} service other than Elastic {{infer-cap}} Service, you must create an inference endpoint using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put).
+- When using [EIS](/explore-analyze/elastic-inference/eis.md): Access to EIS, which is enabled by default on {{ech}} and {{serverless-short}} and [available for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md), or another service supported by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md). To use a service other than EIS, create an {{infer}} endpoint with the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put).
+- A running {{es}} cluster.
+  - When not using ML-nodes: On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector).
+  - When using ML-nodes: The **Using ML-nodes** examples require an [{{es}} project](/solutions/elasticsearch-solution-project.md).
 
 :::{tip}
 To run the `curl` examples in this tutorial, set the following environment variables:

@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
 description: Learn how to use project routing to limit cross-project search (CPS) queries to specific projects based on tag values.
@@ -16,6 +16,12 @@ When you use project routing, the routing decision is made before the search req
 Based on the specified tags, {{cps}} determines which projects the query is sent to, and the search is performed only on those projects.
 
 For an overview of {{cps}} concepts, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md). For details on available tags, refer to [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md).
+
+:::{note}
+{{anomaly-detect-cap}} jobs also use `project_routing`, but as a stored configuration rather than a per-query parameter. For details, refer to [{{cps-cap}} scope for {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
+:::
+
+## Using the project_routing parameter
 
 The `project_routing` parameter is available on all {{cps-init}}-enabled endpoints. Refer to the [supported APIs](/explore-analyze/cross-project-search.md#cps-supported-apis) for a full list of endpoints.
 

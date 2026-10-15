@@ -6,7 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Step-by-step tutorial for exploring data with Discover by selecting data views, filtering documents, analyzing fields, and creating visualizations using sample or your own data.
+description: Explore data in Discover with sample or your own data. Select a data view, filter documents, analyze fields, and create visualizations.
 ---
 
 # Explore fields and data with Discover [discover-get-started]
@@ -57,7 +57,7 @@ Select the data you want to explore, and then specify the time range in which to
    ::::{tip}
    By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
-   You can also [use {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
+   You can also [use {{esql}}](try-esql.md), which lets you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -67,7 +67,10 @@ Select the data you want to explore, and then specify the time range in which to
    :::
 
 3. If needed, adjust the [time range](../query-filter/filtering.md), for example by setting it to the **Last 7 days**.
-    The range selection is based on the default time field in your data view. If you are using the sample data, this value was set when the data view was created. If you are using your own data view, and it does not have a time field, the range selection is not available.
+    The range selection is based on the default time field in your data view. If you are using the sample data, this value was set when the data view was created. If you are using your own data view and it does not have a time field:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The time filter stays visible, shows **All time**, and cannot be changed.
+    - {applies_to}`stack: ga 9.0-9.5` The range selection is not available.
 
 
 **Discover** is populated with your data and you can view various areas with different information:
@@ -99,7 +102,10 @@ You can later filter the data that shows in the chart and in the table by specif
 
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
 
-   When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Organize the query results](try-esql.md#esql-kibana-results-table).
+   When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
+
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
+
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
 4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
@@ -114,7 +120,7 @@ What happens if you forgot to define an important value as a separate field? Or,
 2. Select the **Type** of the new field.
 3. **Name** the field. Name it in a way that corresponds to the way other fields of the data view are named. You can set a custom label and description for the field to make it more recognizable in your data view.
 4. Define the value that you want the field to show. By default, the field value is retrieved from the source data if it already contains a field with the same name. You can customize this with the following options:
-   - **Set value**: Define a script that will determine the value to show for the field. For more information on adding fields and Painless scripting language examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
+   - **Set value**: Define a script that will determine the value to show for the field. For more information on adding fields and Painless scripting language examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
    - **Set format**: Set your preferred format for displaying the value. Changing the format can affect the value and prevent highlighting in Discover.
 
 5. In the advanced settings, you can adjust the field popularity to make it appear higher or lower in the fields list. By default, Discover orders popular fields from most selected to least selected.
@@ -219,13 +225,17 @@ The content is copied to your clipboard in the selected format. Fields that are 
 You can copy the content of a single cell to your clipboard from the quick actions that appear when hovering over the cell.
 :::
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, you can also copy a field, a nested object, or the whole document from the tree. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
+
 
 ### Explore individual result or document details in depth [look-inside-a-document]
 
 $$$document-explorer-expand-documents$$$
 Dive into an individual document to view its fields and the documents that occurred before and after it.
 
-1. In the document table, click the expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") to show document details.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To filter or copy values in the table without opening the flyout, switch **View mode** to **JSON**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
+
+1. In the document table, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier {{stack}} versions) to show document details.
 
     ![Table view with document expanded](/explore-analyze/images/kibana-document-table-expanded.png "")
 
@@ -239,8 +249,14 @@ Dive into an individual document to view its fields and the documents that occur
    You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
-3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
-4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**.
+3. To navigate to a view of the document that you can bookmark and share, select **View single document**. This action isn't available in {{esql}} mode.
+4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**. This action isn't available in {{esql}} mode.
+
+::::{tip}
+:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
+
+To copy a link that reopens this document, select {icon}`link` **Copy link** in the flyout header. Refer to [Share a link to a document](#share-a-document-link).
+::::
 
 
 ## Search and filter data [search-in-discover]
@@ -293,10 +309,7 @@ For example, exclude results from the ecommerce sample data view where day of we
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
-You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
-If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to ES|QL `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
+You can switch between ES|QL and classic mode at any time. To learn what happens to your query and filters when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md).
 
 In ES|QL mode, the **Documents** tab is named **Results**.
 
@@ -307,7 +320,7 @@ Partial results appear when an {{esql}} query:
 - {applies_to}`stack: ga 9.3+` is canceled.
 :::
 
-Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
+Learn more about how to use ES|QL queries in [Get started with {{esql}} in Discover](try-esql.md) and [Use Discover with {{esql}}](use-esql.md).
 
 ### Cancel a running query [cancel-query-in-discover]
 
@@ -374,8 +387,8 @@ To keep all your tabs for later, you can [Save your Discover session](#save-disc
 
 ### Run long-running queries in the background
 ```{applies_to}
-stack: ga 9.2
-serverless: unavailable
+serverless: preview
+stack: preview 9.2
 ```
 
 You can send your long-running KQL or {{esql}} queries to the background from **Discover** and let them run while you continue exploring your data. Refer to [Run queries in the background](/explore-analyze/discover/background-search.md).
@@ -392,9 +405,49 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 5. Select **Save**.
 
 
-### Share your Discover session [share-your-findings]
+### Share your findings [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+You can share the current view, show the results on a dashboard, export the session, or copy a link that reopens a specific document.
+
+- Select {icon}`share` **Share** in the application menu to copy a link to the current view. For the link options, refer to [Reporting and sharing](../report-and-share.md).
+- To show the results on a dashboard, add the session, its chart, or its table, to the dashboard. Refer to [Use Discover sessions in dashboards](save-open-search.md#_add_search_results_to_a_dashboard).
+- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Refer to [Reporting and sharing](../report-and-share.md#manually-generate-reports).
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
+
+In classic mode, select {icon}`maximize` **View details** on a row, then select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).
+
+#### Share a link to a document [share-a-document-link]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+When you are investigating a result, copy a link that reopens **Discover** with that document's flyout open. Recipients land on the same document instead of only the surrounding query.
+
+1. In the document table, select {icon}`maximize` **View details** on the document's row.
+2. In the flyout header, select {icon}`link` **Copy link**.
+
+   :::{image} /explore-analyze/images/kibana-discover-copy-document-link.png
+   :alt: Copy link tooltip in the flyout header
+   :screenshot:
+   :width: 400px
+   :::
+
+Opening the link brings back the same flyout.
+
+The link uses the absolute time range of the results on screen, so the document stays in that range.
+
+After you expand a grouped {{esql}} result and select a nested document, **Copy link** reopens that document in the default layout and keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
+
+When **Copy link** can copy the open document, **Share** includes that document. The session link opens **Discover** with the same flyout. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
+
+If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the document before copying the link. For example:
+
+```esql
+FROM kibana_sample_data_logs METADATA _id, _index
+```
+
+If the query transforms rows, such as with `STATS` or `KEEP`, you cannot copy a link to an individual result. **Copy link** stays available and shows a warning. If `_id` and `_index` are missing, **Copy link** stays available and warns you to add `METADATA _id, _index`.
 
 
 ## Analyze your data with AI [analyze-with-ai]
@@ -405,7 +458,7 @@ serverless: preview
 
 **Discover** integrates with [{{agent-builder}}](../ai-features/elastic-agent-builder.md) to provide AI-powered analysis of your {{esql}} query results. The [`discover-data-analysis` skill](../ai-features/agent-builder/builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) runs aggregation queries against the full dataset behind your current view, renders a chart for the main finding, and proposes drill-down queries you can run in a new tab.
 
-This feature is available only when **Discover** is in [{{esql}} mode](/explore-analyze/discover/try-esql.md). To write or fix the query itself with AI, use the [AI assistance in the {{esql}} editor](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
+This feature is available only when **Discover** is in [{{esql}} mode](use-esql.md). To write or fix the query itself with AI, use the [AI assistance in the {{esql}} editor](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
 
 To start an analysis:
 

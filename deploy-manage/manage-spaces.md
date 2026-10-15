@@ -129,7 +129,7 @@ You can access the **Advanced Settings** management page in the navigation menu 
 
 ## Set a scope for {{cps}} [cps-default-search-scope]
 ```{applies_to}
-serverless: preview
+serverless: ga
 ```
 
 If your organization uses [{{cps}}](/explore-analyze/cross-project-search.md) ({{cps-init}}) in {{serverless-full}}, you can set the {{cps-init}} scope for each space. This setting determines the default scope for cross-project searches: origin only, or origin + all linked projects. 

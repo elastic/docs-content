@@ -91,13 +91,15 @@ If your organization’s deployments already trust each other by default, you ca
     * Trust no deployment - No deployment in this {{ece}} environment is trusted.
 
     ::::{note}
-    When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described below.
+    When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described in [Using the API](#ece-trust-using-the-api).
     ::::
 
 
 1. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect 2 deployments successfully when both of them trust each other.
 
 ::::{dropdown} Using the API
+:name: ece-trust-using-the-api
+
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
 ::::{include} /deploy-manage/_snippets/curl-k-ece.md

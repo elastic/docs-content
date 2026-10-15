@@ -64,6 +64,8 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --version '{{kube-stack-version}}'
 ```
 
+{applies_to}`edot_collector: ga 9.5.5+` On OpenShift, add the OpenShift values file after the base values file. Refer to [Deploy on OpenShift](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md#k8s-edot-deployment-openshift).
+
 ::::
 
 ::::{step} Auto-instrument applications

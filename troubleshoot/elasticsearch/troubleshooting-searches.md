@@ -15,7 +15,6 @@ products:
 
 When you query your data, {{es}} might return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
 
-
 ## Ensure the data stream, index, or alias exists [troubleshooting-searches-exists]
 
 {{es}} returns an `index_not_found_exception` when the data stream, index or alias you try to query does not exist. This can happen when you misspell the name or when the data has been indexed to a different data stream or index.
@@ -234,11 +233,14 @@ For static settings, you need to create a new index with the correct settings. N
 stack:
 ```
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 Start with [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md), which pinpoint the search requests that take too long to run. Once you've identified a slow request, determine where it comes from. How you do this depends on your version.
 
 {applies_to}`stack: preview 9.4` Use [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to determine the query source. A single configuration captures end-to-end request duration across all query types, including Query DSL, {{esql}}, EQL, and SQL.
 
-If you can't use query logging, enable [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) instead to determine the query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
+If you can't use query logging, enable [audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md) instead to determine the query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
 ```yaml
 xpack.security.audit.enabled: true

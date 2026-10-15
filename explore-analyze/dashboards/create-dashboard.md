@@ -58,7 +58,7 @@ Before creating a dashboard, ensure you have:
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.
-        * {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard** — Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when anyone opens it.
+        * {applies_to}`serverless: ga` {applies_to}`stack: unavailable` **Store CPS scope with dashboard** — Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when anyone opens it.
 
     3. Click **Apply**.
        
@@ -69,7 +69,7 @@ Before creating a dashboard, ensure you have:
     - **Title** and **Description**: Give the dashboard a meaningful name and description so you and others can find it later.
     - **Tags**: Add [tags](../find-and-organize/tags.md) to organize and categorize the dashboard.
     - **Store time with dashboard**: Saves the current time filter with the dashboard.
-    - {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard**: Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when opened. When this option is not active, the dashboard opens with the {{cps-init}} scope currently active for the session.
+    - {applies_to}`serverless: ga` {applies_to}`stack: unavailable` **Store CPS scope with dashboard**: Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when opened. When this option is not active, the dashboard opens with the {{cps-init}} scope currently active for the session.
     - {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` **Permissions**: Control who can access the dashboard. You can share with one of the following permissions:
       - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
       - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it.

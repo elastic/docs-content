@@ -250,7 +250,7 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 
 * **Data views**: For rules that use a {{kib}} data view as a data source, the exported file contains the associated `data_view_id`, but does *not* include any other data view configuration. To export/import between {{kib}} spaces, first use the [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-share-to-space) UI to share the data view with the destination space.
 
-    To import into a different {{stack}} deployment, the destination cluster must include a data view with a matching data view ID (configured in the [data view’s advanced settings](/explore-analyze/find-and-organize/data-views.md)). Alternatively, after importing, you can manually reconfigure the rule to use an appropriate data view in the destination system.
+    To import into a different {{stack}} deployment, the destination cluster must include a data view with a matching data view ID (configured in the [data view’s advanced settings](/explore-analyze/find-and-organize/data-views/create-data-view.md)). Alternatively, after importing, you can manually reconfigure the rule to use an appropriate data view in the destination system.
 
 * **Actions and connectors**: Rule actions and connectors are included in the exported file, but sensitive information about the connector (such as authentication credentials) *is not* included. You must re-add missing connector details after importing detection rules.
 

@@ -50,7 +50,7 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 |--------|-------------------|
 | Access the **Workflows** page | `All` or `Read` for **Analytics → Workflows** |
 | Fully manage workflows | `All` for **Analytics → Workflows** |
-| Grant access to specific workflow actions | Set sub-feature privileges for **Analytics → Workflows** |
+| Grant access to specific workflow actions | [Set sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) for **Analytics → Workflows** |
 
 ## Show managed workflows [workflows-managed-visibility]
 
@@ -72,13 +72,7 @@ When the setting is on and your role includes the [managed workflow read privile
 
 ### Managed workflow privileges [workflows-managed-privileges]
 
-Managed workflow access uses additive [sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#_sub_feature_privileges) under **Analytics → Workflows → Managed Workflows Actions**:
-
-| Action | Required privilege |
-|--------|-------------------|
-| View managed workflow definitions | **Read managed workflows** |
-| View executions for managed workflows | **Read managed workflow execution** |
-| Configure the [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) settings | **Update managed workflows** |
+Managed workflow access uses additive [sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#_sub_feature_privileges) under **Analytics → Workflows → Managed Workflows Actions**. For the full list, refer to [Workflows sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures).
 
 ## Enable the Template library [workflows-templates-enable]
 
@@ -87,7 +81,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-The [Template library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default. If **Template library** doesn't appear in the Workflows navigation, have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) on {{stack}} or {{serverless-short}}. This is a global setting, so it applies to all spaces:
+The [Template library](/explore-analyze/workflows/templates/start-from-a-template.md) is turned off by default. If **Template library** doesn't appear in the Workflows navigation, have an administrator run the following request from [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md) on {{stack}} or {{serverless-short}}:
 
 ```json
 POST kbn:/internal/kibana/global_settings
@@ -99,10 +93,10 @@ POST kbn:/internal/kibana/global_settings
 ```
 
 :::{note}
-The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice. There is currently no public equivalent.
+The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice.
 :::
 
-When the request returns HTTP 200 and `workflowsManagement:library:enabled` has `"userValue": true`, reload the page. **Template library** appears in the Workflows navigation.
+When the request returns HTTP 200 and `workflowsManagement:library:enabled` has `"userValue": true`, reload the page. **Template library** appears in the Workflows navigation. Note that the `workflowsManagement:library:enabled` setting is global, so turning it on applies to all spaces.
 
 ## What's next [workflows-what-next]
 

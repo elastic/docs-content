@@ -12,13 +12,13 @@ description: "Monitor action policy dispatch activity from the execution history
 
 Action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
 
-Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Policies** tab. Each row covers one dispatcher run for each action policy evaluated against a rule:
+Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alert episodes it processed:
 
 | Column | Description |
 |---|---|
 | **Timestamp** | When the dispatcher ran. |
 | **Policy** | The action policy that was evaluated. |
-| **Outcome** | Whether the dispatcher acted on the episode: `dispatched`, `throttled`, or `unmatched`. Definitions are in [Dispatch outcomes](#dispatch-outcomes). |
+| **Outcome** | Whether the dispatcher acted on the alert episode: `dispatched`, `throttled`, or `unmatched`. Definitions are in [Dispatch outcomes](#dispatch-outcomes). |
 | **Rules** | The rule whose alert episodes the action policy processed. |
 | **Episodes** | The number of alert episodes processed in this run. |
 | **Action groups** | The number of action groups involved. |
@@ -48,23 +48,23 @@ After each dispatcher run, {{kib}} records one of three outcomes for each action
 `unmatched` is recorded in the event log but isn't available as an outcome filter in the execution history. To find those records, open Discover and query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
 
 :::{note}
-Episodes that are acknowledged, snoozed, marked inactive, or covered by a [maintenance window](../../alerts/maintenance-windows.md) are excluded before the dispatcher runs and don't appear in the execution history.
+Alert episodes that are acknowledged, snoozed, marked inactive, or covered by a [maintenance window](../../alerts/maintenance-windows.md) are excluded before the dispatcher runs and don't appear in the execution history.
 :::
 
 ## Event-log outcomes and .alert-actions action types [outcome-vocab-mapping]
 
-The three outcomes above (`dispatched`, `throttled`, `unmatched`) are the **event-log terms** written to `.kibana-event-log-*`. The `.alert-actions` data stream records the same events using different terms. The mapping is:
+The `dispatched`, `throttled`, and `unmatched` outcomes are the **event-log terms** written to `.kibana-event-log-*`. The `.alert-actions` data stream records the same events using different terms. The mapping is:
 
 | Event-log outcome (`event.action`) | `.alert-actions` `action_type` | Meaning |
 |---|---|---|
 | `dispatched` | `notified` | Policy matched, frequency cleared, workflow invoked. |
-| `throttled` | `suppress` | Policy matched but frequency limit not yet cleared; no workflow invoked. |
-| `unmatched` | `unmatched` | No action policy matched the episode; no workflow invoked. |
+| `throttled` | `suppress` | Policy matched but frequency limit not yet cleared. No workflow invoked. |
+| `unmatched` | `unmatched` | No action policy matched the alert episode. No workflow invoked. |
 
-`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`, `resolve`, `unresolve`) and the `fire` action type, which marks that an episode opened or continued. These have no event-log counterpart in this context — they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
+`.alert-actions` also records triage actions (`ack`, `unack`, `assign`, `tag`, `snooze`, `unsnooze`, `activate`, `deactivate`, `resolve`, `unresolve`) and the `fire` action type, which marks that an alert episode opened or continued. These have no event-log counterpart in this context, because they aren't dispatcher outcomes. For the full field reference, refer to [Action type values](../alerts/field-reference.md#action-type-values).
 
 :::{note}
-`suppress` in `.alert-actions` means the same thing as `throttled` in the event log: the action policy matched but the frequency setting hadn't cleared yet, so no notification was sent. It's unrelated to the eligibility gate that excludes acknowledged, snoozed, or maintenance-window episodes before the dispatcher runs.
+`suppress` in `.alert-actions` means the same thing as `throttled` in the event log: the action policy matched but the frequency setting hadn't cleared yet, so no notification was sent. It's unrelated to the eligibility gate that excludes acknowledged, snoozed, or maintenance-window alert episodes before the dispatcher runs.
 :::
 
 ## Related pages

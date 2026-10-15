@@ -24,11 +24,11 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
-* [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
+* [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 * [Node count and size](#ec-node-count-size)
-* [Repository analysis API is unavailable in {{ecloud}}](#ec-repository-analyis-unavailable)
+* [Repository analysis API](#ec-repository-analyis-unavailable)
 * [Service status](#ec-service-status)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
@@ -38,6 +38,14 @@ For limitations related to logging and monitoring, check the [Restrictions and l
 To learn more about the features that are supported by {{ecloud}}, check [{{ecloud}} Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
 
 ## Stack versions [ec-stack-versions]
+
+* Due to a known issue, {{es}} 8.17.0 through 8.17.4, 8.18.0, and 9.0.0 through 9.0.1 might experience significant vector search performance degradation on Ubuntu 24.04. An interaction between Multi-Gen LRU (MGLRU) and Lucene read-advice behavior can cause excessive page faults and I/O during vector operations. In preparation for the end of support for Ubuntu 22.04, Elastic begins an incremental upgrade of the underlying {{ech}} infrastructure to Ubuntu 24.04 starting on December 7, 2026. If you run an affected version, upgrade before that date:
+  * 8.17.0 through 8.17.4: upgrade to 8.17.5 or later
+  * 8.18.0: upgrade to 8.18.1 or later
+  * 9.0.0 through 9.0.1: upgrade to 9.0.4 or later
+
+  We recommend upgrading to one of the currently available versions shown in the Cloud console.
+  If you need to upgrade to an older 8.x or 9.x minor version that is not shown, contact Elastic Support.
 
 * Due to a known issue, {{es}} 9.5.0, 9.5.1, and 9.5.2 can fail to fully replicate some bulk index operations from a primary shard when the node exceeds its indexing pressure limit. This can cause replica data to diverge from the primary. Version 9.5.2 is unavailable for new deployments and upgrades. Review [this KB article](https://support.elastic.co/knowledge/c56aad67) for more guidance on the known issue.
 
@@ -108,6 +116,7 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 ```
 ```{include} /deploy-manage/security/_snippets/aws-privatelink-cloud-id-limitation.md
 ```
+* **Remote clusters with API key authentication over GCP Private Service Connect:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic over GCP PSC.
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 
@@ -126,7 +135,11 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 
 * If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has network security enabled is not currently supported.
 
-## Restoring a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
+## Restore a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
+
+When you restore a snapshot from one deployment to another, consider the limitations for {{kib}} data, the default snapshot repository, and {{search-snaps}}.
+
+### {{kib}} data [ec-restore-across-deployments-kibana-data]
 
 {{kib}} does not currently support restoring a snapshot of their indices across {{ecloud}} deployments.
 
@@ -134,10 +147,19 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 * Currently, there is not a way to retrieve the values of {{kib}} encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, {{kib}} will not be able to decrypt the data required for some features to function properly in the target deployment.
 * If you have already restored a snapshot across deployments and now have broken {{kib}} saved objects in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
 
-A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same region. If you need to restore snapshots across regions, create the destination deployment, connect to the [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md), and then [restore from a snapshot](../../tools/snapshot-and-restore/restore-snapshot.md).
+### Restore data across organizations or regions [ec-migrate-deployment-another-region-or-organization]
+
+You can restore snapshots from the default `found-snapshots` repository only to deployments in the same {{ecloud}} organization and region. To restore data to a deployment in a different organization or region, you can use a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types):
+
+1. On the source deployment, register a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types) and take a snapshot.
+1. Create the destination deployment in the desired organization or region, and register that [same repository as read-only](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
+1. [Restore the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster) on the destination deployment.
+
+These steps restore {{es}} data but do not address the [limitations for {{kib}} data](#ec-restore-across-deployments-kibana-data).
+
+### {{search-snaps-cap}}
 
 When restoring from a deployment that’s using searchable snapshots, you must not delete the snapshots in the source deployment even after they are successfully restored in the destination deployment. Refer to [Restore snapshots containing searchable snapshots indices across clusters](../../tools/snapshot-and-restore/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md) for more information.
-
 
 ## Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot [ec-migrate-elastic-agent]
 
@@ -162,9 +184,9 @@ To make a seamless migration, after restoring from a snapshot there are some add
   This limitation does not apply when using the API for manual scaling or autoscaling. If you require additional capacity, you can use the [Elastic Cloud API](cloud://reference/cloud-hosted/ec-api-restful.md) to scale up or configure the maximum size for autoscaling, in a self-sufficient way. Refer to the [Update a deployment](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_update_a_deployment) example to learn how to make a deployment update request using the API.
 * Apart from the maximum node count configurable in the {{ecloud}} console UI, there are other service limits based on each instance configuration. These service limits are typically greater than 32. For more details, please [contact Elastic support for assistance](/troubleshoot/index.md).
 
-## Repository analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
+## Repository analysis API [ec-repository-analyis-unavailable]
 
-* The {{es}} [Repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+* On {{es}} version 8.14 and earlier, an [operator privilege](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) is required to call the [Repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze). From {{es}} version 8.15 and onwards, this is no longer required.
 
 ## Service status [ec-service-status]
 

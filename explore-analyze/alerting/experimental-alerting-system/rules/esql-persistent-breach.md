@@ -47,4 +47,4 @@ Design the query so that gaps in reporting produce the behavior you want before 
 ## Related pages
 
 - [{{esql}} query patterns](esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
-- [Alert delay](configure-rule-alert-delay.md): A setting-based alternative for requiring consecutive breaches before an episode opens.
+- [Alert delay](configure-rule-alert-delay.md): A setting-based alternative for requiring consecutive breaches before an alert episode opens.

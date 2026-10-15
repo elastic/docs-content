@@ -102,6 +102,8 @@ The **Enable Elastic capabilities** toggle controls whether an agent is automati
 
 This toggle is available for all agents, both built-in and custom.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This toggle doesn't assign [connectors](connectors.md), but it includes the `connector-discovery` skill that agents need to find their assigned connectors. You assign connectors to each agent separately, and agents start with none, including the built-in **Elastic AI Agent**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
+
 ### Default settings
 
 - **Built-in agents**: Elastic capabilities are **enabled** by default. Disable if you want to limit the agent to a specific set of tools and skills.

@@ -20,6 +20,8 @@ This page focuses on semantic search for text in {{es}}. For multimodal search a
 
 Semantic search uses [{{nlp}} (NLP)](/explore-analyze/machine-learning/nlp.md) models and [vector search](vector.md) to find results based on meaning, not just keywords. This page covers the managed workflows available in {{es}} for implementing semantic search on text.
 
+On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+
 For the foundational concepts behind vector search, refer to [Vector search in {{es}}](vector.md). To compare semantic search with lower-level vector search and decide which path fits your project, refer to [Semantic search and vector search](vector.md#semantic-search-vs-vector-search). To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and {{infer}} endpoints, refer to the [Elastic {{infer-cap}} overview](../../explore-analyze/elastic-inference.md) page. To explore AI-powered features across the {{stack}}, refer to [AI-powered features](/explore-analyze/ai-features.md).
 
 ## Overview of semantic search workflows [semantic-search-workflows-overview]

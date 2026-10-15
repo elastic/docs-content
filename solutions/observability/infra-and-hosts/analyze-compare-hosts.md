@@ -167,7 +167,7 @@ Refer to [Host metrics](../../../reference/observability/observability-host-metr
 
 ## View host details [view-host-details]
 
-Without leaving the **Hosts** page, you can view enhanced metrics relating to each host running in your infrastructure. In the list of hosts, find the host you want to monitor, then click the **Toggle dialog with details** icon ![expand icon](/solutions/images/serverless-expand-icon.png "") to display the host details overlay.
+Without leaving the **Hosts** page, you can view enhanced metrics relating to each host running in your infrastructure. In the list of hosts, find the host you want to monitor, then select the **View details** icon {icon}`expand` (**Toggle dialog with details** in earlier {{stack}} versions) to display the host details overlay.
 
 {applies_to}`{stack: "ga 9.2", serverless: "ga"}` The host details overlay adapts according to the [selected schema](#host-schema-selector). When viewing host data collected using OpenTelemetry, you see the following differences:
 
@@ -329,12 +329,7 @@ To learn more about roles, refer to [Assign user roles and privileges](/deploy-m
 
 ::::
 
-
-::::{important}
 You must have an active [{{agent}}](/reference/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration.
-
-::::
-
 
 The **Osquery** tab allows you to build SQL statements to query your host data. You can create and run live or saved queries against the {{agent}}. Osquery results are stored in {{es}} so that you can use the {{stack}} to search, analyze, and visualize your host metrics. To create saved queries and add scheduled query groups, refer to [Osquery](/solutions/security/investigate/osquery.md).
 

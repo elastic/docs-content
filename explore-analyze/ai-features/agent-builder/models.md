@@ -1,6 +1,6 @@
 ---
 navigation_title: "Models"
-description: "Learn how to configure LLMs in Agent Builder, including Elastic Managed LLMs using EIS and custom connectors for OpenAI, Claude, and Gemini."
+description: "Learn how to configure LLMs in Agent Builder, including Elastic Managed LLMs using EIS and inference endpoints for providers such as OpenAI, Claude, and Gemini."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -39,7 +39,7 @@ Learn more about [Elastic Managed LLMs](kibana://reference/connectors-kibana/ela
 These deployments do not include a preconfigured model. To use {{agent-builder}}, you have two options:
 
 - [Connect to the Elastic {{infer-cap}} Service (EIS) using Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md) (recommended) {applies_to}`stack: ga 9.3+`
-- [Configure your own model](#use-additional-models) using an {{infer}} endpoint or a Generative AI connector
+- [Configure your own model](#use-additional-models) using an {{infer}} endpoint, or a Generative AI connector {applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated`
 
 :::
 
@@ -64,12 +64,12 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-When you call an agent through the [Converse API](kibana-api.md#chat-and-conversations), you can override the agent's configured model for that request. Pass one of the following in the request body:
+When you call an agent through the [Converse API](kibana-api.md#chat-and-conversations), you can override the model used for that request. Pass one of the following in the request body:
 
-* `inference_id`: the ID of an [{{infer}} endpoint](#add-an-inference-endpoint).
-* `connector_id`: the ID of a [connector](#configure-a-connector).
+* `inference_id`: the ID of an [{{infer}} endpoint](#add-an-inference-endpoint). Use this parameter for new integrations.
+* `connector_id`: the ID of a [connector](#configure-a-connector). Generative AI connectors are deprecated.
 
-Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the agent uses its default model.
+Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the request uses the default model for {{agent-builder}}, as set on the **Feature settings** page.
 
 For an example request, refer to [Route a request to a specific model](kibana-api.md#chat-and-conversations).
 
@@ -115,6 +115,13 @@ This routing is automatic and cannot be turned off. You do not need to configure
 
 {{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as {{esql}} query generation and conversation title generation.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The fast model also selects the [skills](skills.md#how-skills-are-invoked) that are relevant to each message, but only when both of the following are true:
+
+- The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) is turned on.
+- A fast model is available that's different from the model the conversation uses.
+
+Otherwise, the agent receives its full list of skills.
+
 ### Fast model availability by deployment type
 
 On {{serverless-full}} projects and {{ech}} deployments, the fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup. Claude Haiku 4.5 is one example. The latency improvement is most noticeable on {{serverless-full}}.
@@ -159,6 +166,18 @@ If you prefer not to use the UI, you can also create endpoints with the {{infer}
 
 ### Configure a connector
 
+```{applies_to}
+stack: ga 9.3-9.4, deprecated 9.5
+serverless: deprecated
+```
+
+::::{important}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+Generative AI connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
+
+In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new models, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
+::::
+
 To use additional models that aren't preconfigured, create a connector for your model provider.
 
 1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -183,14 +202,18 @@ To learn about preconfigured connectors, refer to [preconfigured connectors](kib
 You can create either an {{infer}} endpoint or a connector through the API:
 
 - Create an {{infer}} endpoint with the [{{infer}} APIs]({{es-apis}}group/endpoint-inference).
-- Create a connector with the [Connectors API]({{kib-apis}}/operation/operation-post-actions-connector-id). Works on all deployments.
+- Create a connector with the [Connectors API]({{kib-apis}}/operation/operation-post-actions-connector-id). Works on all deployments. {applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated`
 
 ### Connect a local LLM
 
-You can connect a locally hosted LLM to Elastic using the OpenAI connector. This requires your local LLM to be compatible with the OpenAI API format.
+You can connect a locally hosted LLM to Elastic. This requires your local LLM to be compatible with the OpenAI API format.
 
+[Add an {{infer}} endpoint](#add-an-inference-endpoint) that uses the `openai` service and points at your local LLM. For an example request, refer to [Using OpenAI compatible models with the {{infer-cap}} API](/solutions/search/semantic-search/using-openai-compatible-models.md).
 
-For detailed setup instructions, refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai-action-type.md).
+:::{note}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+Earlier versions used the OpenAI connector for this. That connector is deprecated. For setup instructions, refer to the [OpenAI connector documentation](kibana://reference/connectors-kibana/openai-action-type.md).
+:::
 
 ## Model requirements
 
@@ -250,7 +273,7 @@ Smaller or "mini" model variants are not recommended for {{agent-builder}} as th
 - [External {{infer}}](/explore-analyze/elastic-inference/external.md)
 - [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md)
 - [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
-- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
+- [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md)
 - [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
 - [Limitations and known issues](limitations-known-issues.md)
 - [Get started](get-started.md)

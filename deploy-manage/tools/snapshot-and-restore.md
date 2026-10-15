@@ -55,7 +55,7 @@ The default policy and repository are used when:
 - Restoring a snapshot to a different deployment
 - Taking automated snapshots in case of deployment changes
 
-In {{ech}}, you can [restore snapshots](snapshot-and-restore/restore-snapshot.md) across clusters, but only within the same region.
+In {{ech}}, a snapshot in the default `found-snapshots` repository can be restored to another deployment only when both deployments are in the same organization and the same region. To move data across different regions or organizations using a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), refer to [](../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization).
 
 For API-driven deployment linking of platform-managed snapshots, refer to [Manage snapshot repositories in {{ech}}](snapshot-and-restore/elastic-cloud-hosted.md#register-snapshot-repos-ech).
 
@@ -141,6 +141,10 @@ Each snapshot is **logically independent**. When you delete a snapshot, {{es}} o
 A snapshot copies segments from an index’s primary shards. When you start a snapshot, {{es}} immediately starts copying the segments of any available primary shards. If a shard is starting or relocating, {{es}} will wait for these processes to complete before copying the shard’s segments. If one or more primary shards aren’t available, the snapshot attempt fails.
 
 Once a snapshot begins copying a shard’s segments, {{es}} won’t move the shard to another node, even if rebalancing or shard allocation settings would typically trigger reallocation. {{es}} will only move the shard after the snapshot finishes copying the shard’s data.
+
+By default, if a shard is currently being restored from another snapshot when a new snapshot starts, {{es}} waits for the restore to complete before copying that shard’s segments.
+
+{applies_to}`stack: ga 9.6+` When `partial` is set to `true` in the snapshot request, {{es}} skips the shard instead of waiting, allowing the snapshot to make progress even when some shards are unavailable. The resulting snapshot is marked as partial and does not contain data for the skipped shard.
 
 ### Snapshot start and stop times
 

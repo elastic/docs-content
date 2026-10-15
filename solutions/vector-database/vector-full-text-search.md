@@ -17,7 +17,7 @@ Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/el
 
 ## Create a Vector Database project [vector-full-text-search-create-project]
 
-Create a free [{{es}} Vector Database project](https://cloud.elastic.co/projects/create/elasticsearch?use_case=vector_search). It's serverless and built for search and vector workloads, so you don't need to size or manage a cluster.
+Create a free [{{es}} Vector Database project](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). It's serverless and built for search and vector workloads, so you don't need to size or manage a cluster.
 
 The project takes about a minute to start. The **Getting started** page then displays the **Project endpoint** and a generated API key. Copy both values.
 

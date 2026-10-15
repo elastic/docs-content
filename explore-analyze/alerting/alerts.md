@@ -19,7 +19,7 @@ description: "Overview of Kibana alerting: rules, alerts, actions, connectors, a
 
 :::{note}
 :applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
-To learn about the {{alerting-v2-system}} built on {{esql}}, refer to the [{{alerting-v2-system-cap}} overview](system-overview.md).
+Looking for the {{alerting-v2-system}} built on {{esql}}? That system writes each match as a [rule event](experimental-alerting-system/rules/rule-event-field-reference.md), then groups those events into [alert episodes](experimental-alerting-system/alerts.md) or leaves them available for [later analysis](experimental-alerting-system/alerts/query-signals.md). Start with the [{{alerting-v2-system-cap}} overview](system-overview.md).
 ::::
 
 :::{important}

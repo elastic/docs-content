@@ -58,7 +58,7 @@ If successful, the API will return additional details that will need to be provi
 
 Update your SAML 2 application in Okta to use the values returned in the **User authentication** page.
 
-1. Set the single sign-on URL to the **SSO Login URL**.
+1. Set the single sign-on URL to the **Service provider ACS URL**.
 2. Set the audience URI (SP entity ID) to the **Service provider Entity ID**.
 3. Optional: Fill in other details using information from the metadata file available at the **metadata URL**.
 
