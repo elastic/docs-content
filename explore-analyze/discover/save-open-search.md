@@ -54,7 +54,7 @@ If the saved Discover session is associated with a different {{data-source}} tha
 
 ## Export Discover session results as CSV [export-discover-session-csv]
 
-To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file. To start, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**, then generate the report. Refer to [Export as a file](../report-and-share.md#manually-generate-reports).
+To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file. To start, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**, then generate the report.
 
 Some limits apply to the exported data. A report contains only the rows up to the first limit that it reaches, either a row limit or a file size limit. The limits depend on where you run {{kib}}, on your {{kib}} version, and on the query mode of the tab you export. Classic mode uses data views with KQL or Lucene.
 
@@ -84,6 +84,8 @@ To change the limits, use the `xpack.reporting.csv.maxSizeBytes` setting and, in
 ::::
 
 If you need more rows than the limit allows, use filters to create several smaller reports, or query {{es}} directly. Refer to [CSV report limitations](../report-and-share.md#csv-limitations).
+
+To generate the same export automatically, from a script, {{watcher}}, or on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
 
 ## Export a Discover session as JSON [export-discover-session-json]
 ```{applies_to}
