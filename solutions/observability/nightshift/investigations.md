@@ -20,7 +20,7 @@ Elastic nightshift is in private preview and isn't enabled by default. To reques
 
 Investigations start in the following ways:
 
-- **From an alert**: Select **Investigate** on an alert, from the alert details or the alerts table, to start an ad hoc investigation into it. If the alert already has one, select **View investigation** to open it. Triggering investigations this way isn't supported for alerts created by [{{alerting-v2-system}}](/explore-analyze/alerting/system-overview.md). After you trigger an investigation, you can also find and track it from the Elastic nightshift [home page](./nightshift.md).
+- **From an alert**: Select **Investigate** on an alert, from the alert details or the alerts table, to start an ad hoc investigation into it. If the alert already has one, select **View investigation** to open it. This works only for alerts created by [{{kib}} alerting](/explore-analyze/alerting/alerts.md), not for alerts created by the [{{alerting-v2-system}}](/explore-analyze/alerting/system-overview.md). After you trigger an investigation, you can also find and track it from the Elastic nightshift [home page](./nightshift.md).
 - **From a significant event**: Open a significant event's details and select **Run investigation** to start an investigation manually.
 - **From the home page**: Select **Start investigation** on the home page and enter a prompt to start a manual investigation.
 
@@ -59,6 +59,7 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-investigations-nav]
 
+- [Get started with Elastic nightshift](./get-started.md): Start an investigation and review the results
 - [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
 - [Context](./memory.md): Learn how Elastic nightshift stores and uses system knowledge to improve investigation quality over time
 - [How Significant Events works](./significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
