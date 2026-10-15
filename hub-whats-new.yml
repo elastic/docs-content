@@ -21,6 +21,14 @@ products:
       label: Upgrade Elasticsearch
       url: /deploy-manage/upgrade/deployment-or-cluster.md
     items:
+      - title: Columnar index mode
+        description: Store each field once in a column store, with no inverted index by default, for a smaller footprint. Technical preview.
+        link: /manage-data/data-store/columnar.md
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Storage
+        featured: true
       - title: Cross-project search
         description: Query data across several Serverless projects without moving or copying it, from Discover, ES|QL, dashboards, and alerting. Generally available.
         link: /explore-analyze/cross-project-search.md
@@ -39,14 +47,6 @@ products:
         availability:
           - Serverless
         tag: ES|QL
-      - title: Columnar index mode
-        description: Store each field once in a column store, with no inverted index by default, for a smaller footprint. Technical preview.
-        link: /manage-data/data-store/columnar.md
-        availability:
-          - '9.5'
-          - Serverless
-        tag: Storage
-        featured: true
       - title: Native Prometheus and PromQL
         description: Query Prometheus metrics with PromQL in Elasticsearch, generally available.
         link: elasticsearch://reference/query-languages/promql.md
@@ -67,6 +67,14 @@ products:
       label: Upgrade Kibana
       url: /deploy-manage/upgrade/deployment-or-cluster.md
     items:
+      - title: Dashboards and Visualizations APIs
+        description: Create, update, and manage dashboards and visualizations in code. Generally available.
+        link: /explore-analyze/dashboards/create-dashboards-programmatically.md
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Dashboards
+        featured: true
       - title: Custom panels for dashboards
         description: Add HTML panels to a dashboard with Liquid templates and ES|QL queries, or generate them in Agent Builder chat. Technical preview.
         link: /explore-analyze/visualize/custom-panels.md
@@ -79,14 +87,6 @@ products:
         availability:
           - Serverless
         tag: Agent Builder
-      - title: Dashboards and Visualizations APIs
-        description: Create, update, and manage dashboards and visualizations in code. Generally available.
-        link: /explore-analyze/dashboards/create-dashboards-programmatically.md
-        availability:
-          - '9.5'
-          - Serverless
-        tag: Dashboards
-        featured: true
       - title: Dashboards in Agent Builder chat
         description: Build dashboards from chat, create skills, and add dashboard controls without leaving the conversation. Generally available.
         link: /explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
