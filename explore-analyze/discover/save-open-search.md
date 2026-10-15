@@ -61,28 +61,27 @@ Some limits apply to the exported data. A report contains only the rows up to th
 ::::{applies-switch}
 
 :::{applies-item} serverless: ga
-* In {{esql}} mode, the limits are 10,000 rows or 250 MB, whichever comes first.
-* In classic mode, the limits are 100,000 rows or 250 MB, whichever comes first.
+* **Classic mode:** 100,000 rows or 250 MB, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
+* **{{esql}} mode:** 10,000 rows or 250 MB, whichever comes first, because {{es}} caps the rows that an {{esql}} query returns at 10,000. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so the {{kib}} limit of 100,000 rows counts instead. A `LIMIT` in your query can make the row limit lower. The report doesn't warn you when it stops. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
 
 You can't change these limits.
 :::
 
 :::{applies-item} stack: ga 9.3+
-In both modes, the limits are 10,000 rows or 250 MB by default, whichever comes first.
+* **Classic mode:** 10,000 rows or 250 MB by default, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
+* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The row limit is the lower of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is also 10,000 by default. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so only the {{kib}} limit counts. A `LIMIT` in your query can make the row limit lower. The report doesn't warn you when it stops. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+
+To change the limits, use the `xpack.reporting.csv.maxRows` and `xpack.reporting.csv.maxSizeBytes` settings. Higher limits can affect performance. In {{esql}} mode, you also need to raise the {{es}} cap with `esql.query.result_truncation_max_size`. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
 :::
 
 :::{applies-item} stack: ga 9.0-9.2
-* In {{esql}} mode, the limits are 10,000 rows or 250 MB by default, whichever comes first. The row limit comes from {{es}}.
-* In classic mode, the limit is 250 MB by default. There is no row limit.
+* **Classic mode:** 250 MB by default. There is no row limit.
+* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The row limit is the {{es}} cap on the rows that an {{esql}} query returns. A `LIMIT` in your query can make it lower. The report doesn't warn you when it stops. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+
+To change the limits, use the `xpack.reporting.csv.maxSizeBytes` setting and, in {{esql}} mode, the `esql.query.result_truncation_max_size` setting. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
 :::
 
 ::::
-
-In {{esql}} mode, the row limit is the lower of the {{kib}} limit and the {{es}} limit on the rows that a query returns. A `LIMIT` in your query can make it lower. For queries that start with `TS` or `PROMQL`, the {{es}} limit is 10,000,000 rows by default, so the {{kib}} limit counts instead. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows). The report doesn't warn you when it stops.
-
-In classic mode, when the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
-
-In self-managed and {{ech}} deployments, you can change the {{kib}} limits with the `xpack.reporting.csv.maxRows` setting (9.3 and later) and the `xpack.reporting.csv.maxSizeBytes` setting, but higher limits can affect performance. To raise the row limit in {{esql}} mode above 10,000, you also need to raise the {{es}} limit. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
 
 If you need more rows than the limit allows, use filters to create several smaller reports, or query {{es}} directly. Refer to [CSV report limitations](../report-and-share.md#csv-limitations).
 
