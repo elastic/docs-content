@@ -72,9 +72,7 @@ Some features don't have a **Read** privilege.
 
 In role management, features are organized into the following groups.
 
-% TODO: Two rows in the following table should link out to their catalogs once those are published.
 % TODO: Elasticsearch row: link to the Elasticsearch catalog (issue 1704).
-% TODO: Observability row: link to the Observability catalog (issue 1703).
 
 :::{table}
 :widths: description
@@ -84,7 +82,7 @@ In role management, features are organized into the following groups.
 | **Analytics** | Privileges for the features you use to explore and visualize data. Refer to [Privileges in the Analytics group](#kibana-privileges-analytics). |
 | **Alerting V2** {applies_to}`stack: experimental 9.5+` | Privileges for the {{alerting-v2-system}}. Refer to [Configure access to the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md). <br> {applies_to}`stack: experimental =9.5` Before 9.5.4, this group is called **Alerting**. |
 | **Elasticsearch** | Privileges for {{es}} features. |
-| **Observability** | Privileges for Elastic {{observability}} features. |
+| **Observability** | Privileges for Elastic {{observability}} features. Refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md). |
 | **Security** | Privileges for {{elastic-sec}} features. Refer to [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md). |
 | **Management** | Privileges for the features you use to administer {{kib}} and your data. Refer to [Privileges in the Management group](#kibana-privileges-management). |
 :::
