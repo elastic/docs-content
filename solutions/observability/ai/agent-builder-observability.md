@@ -56,6 +56,36 @@ When you chat with the agent from a Synthetics monitor detail page, it automatic
 - Configured locations (public and private)
 - Tags
 
+### Alert context [observability-agent-alert-context]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+When you click **Add to chat** on an {{observability}} alert detail page, the new conversation includes an `observability.alert` attachment. The attachment identifies the selected alert so the agent can retrieve its full details, including the rule, status, reason, and related entities, using your permissions.
+
+The conversation automatically starts with `Investigate this alert`. Follow the steps to [start an AI investigation from an alert](/solutions/observability/incident-management/view-alerts.md#observability-alert-ai-investigation).
+
+### Service map context [observability-agent-service-map-context]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+When you click **Investigate map** on the full **Service map** page, the new conversation includes a **Service map context** attachment (`observability.service-map-context`). It captures these settings from the view:
+
+- Time range
+- Selected environment
+- KQL query
+- Selected service group
+- Highlighted services
+
+The attachment contains the view settings, not a snapshot of the map data. The agent retrieves data for the investigation and prioritizes highlighted services.
+
+The service group is included as context but does not restrict the investigation's data queries to that group. The environment and KQL query filter service health information, but the topology can include connections from other environments.
+
+For the entry point and the investigation's findings, refer to [Investigate the service map with AI](/solutions/observability/apm/service-map.md#service-map-ai-investigation).
+
 :::
 
 :::{applies-item} stack: preview =9.3, removed =9.4
@@ -67,6 +97,21 @@ By default it includes some of the [platform core tools](/explore-analyze/ai-fea
 :::
 
 ::::
+
+## Requirements for alert and service map investigations [observability-agent-investigation-requirements]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The **Add to chat** and **Investigate map** actions require:
+
+- An Enterprise license on the {{stack}}, or the [Observability Complete feature tier](/solutions/observability/observability-serverless-feature-tiers.md#obs-subscription-features) on {{obs-serverless}}.
+- The [Agent Builder chat experience](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+- An available model through a supported inference endpoint or Generative AI connector, including preconfigured models. Refer to [Model configuration](/explore-analyze/ai-features/agent-builder/models.md).
+- [Permission to use Agent Builder](/explore-analyze/ai-features/agent-builder/permissions.md) and read the data you want to investigate.
+
+If an action is missing, check these requirements with your administrator.
 
 ## Use Agent Builder and Workflows together
 

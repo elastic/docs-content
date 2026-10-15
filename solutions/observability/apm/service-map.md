@@ -82,6 +82,20 @@ When you select an instrumented service node (circle shape), a **service flyout*
 :screenshot:
 :::
 
+## Investigate the service map with AI [service-map-ai-investigation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Use {{agent-builder}} to identify problem services and understand how they connect. Before you start, check the [requirements for AI investigations](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements).
+
+On the full **Service map** page, set the time range and filters for your investigation, then click **Investigate map** in the map toolbar. {{agent-builder}} opens a new conversation with a **Service map context** attachment and automatically sends an investigation request. The button is not available on maps embedded in alert detail pages or dashboards.
+
+The agent prioritizes findings by severity, including active alerts, violated or degrading SLOs, {{ml}} anomalies, unusual error rates or latency, and isolated services. It explains the service connections and links to affected services and their alerts.
+
+The attachment includes the time range, environment, KQL query, service group, and highlighted services. Some settings do not restrict every part of the investigation. Refer to [Service map context](/solutions/observability/ai/agent-builder-observability.md#observability-agent-service-map-context) for the scope and limitations.
+
 ## Anomaly detection with machine learning [service-map-anomaly-detection]
 
 You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transaction durations within the selected service. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
