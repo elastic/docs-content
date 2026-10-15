@@ -32,7 +32,7 @@ description: Use Discover to search and filter documents, analyze field structur
 **Save and share**
 : Export the results of a saved session to CSV, save sessions to reuse later, add them to dashboards, or share them with your team. To export, refer to [Export as a file](report-and-share.md#manually-generate-reports). You can also generate reports and create alerts based on your searches.
 
-  {applies_to}`stack: ga 9.3+` CSV exports are limited to 10,000 rows by default.
+  {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` Large CSV exports stop at a row limit. To see the limit for your deployment and what to do when you reach it, refer to [CSV report limitations](report-and-share.md#csv-limitations).
 
 ## Get started
 
