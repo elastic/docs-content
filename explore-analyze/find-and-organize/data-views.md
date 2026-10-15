@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/data-views.html
   - https://www.elastic.co/guide/en/serverless/current/data-views.html
   - https://www.elastic.co/guide/en/kibana/current/managing-data-views.html
-description: A Kibana data view (formerly index pattern) selects the Elasticsearch indices, data streams, or aliases that Discover, Lens, and other analytics features query.
+description: Use a Kibana data view (formerly index pattern) to choose the Elasticsearch indices, data streams, or aliases that Discover, Lens, and other apps query.
 applies_to:
   stack: ga
   serverless: ga
@@ -31,7 +31,7 @@ A {{data-source}} in your space is created automatically or by you.
     Installing an Elastic integration through Fleet also creates {{data-sources}}. Those {{data-sources}} are [managed by Elastic](#managed-data-views).
 
 **Created by you**
-:   For your own data, you often need to create the {{data-source}} yourself. In the creation form, the **Index pattern** field is where you enter which indices, data streams, or aliases to match. Refer to [Create a data view](data-views/create-data-view.md).
+:   For your own data, you often need to create the {{data-source}} yourself. In the **Index pattern** field of the creation form, enter the indices, data streams, or aliases to match. Refer to [Create a data view](data-views/create-data-view.md).
 
 To see which {{data-sources}} already exist in your space, open the data view menu in **Discover** or **Lens**, or go to the **Data Views** management page.
 
