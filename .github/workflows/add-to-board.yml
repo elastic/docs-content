@@ -9,14 +9,12 @@ permissions:
   contents: read
 
 jobs:
+  # Active SKI/Admin/Developer routes run before enrichment in docs-project-metadata.yml.
   route:
     runs-on: ubuntu-latest
     if: |
       github.event.label.name == 'Team:Ingest' ||
       github.event.label.name == 'Team:Experience' ||
-      github.event.label.name == 'Team:SKI' ||
-      github.event.label.name == 'Team:Admin' ||
-      github.event.label.name == 'Team:Developer' ||
       github.event.label.name == 'Team:DocsEng' ||
       github.event.label.name == 'Team:Platform' ||
       github.event.label.name == 'Team:Projects' ||
@@ -28,7 +26,6 @@ jobs:
         {
           "Team:Ingest":      "1034",
           "Team:Experience":  "1034",
-          "Team:SKI":         "1034",
           "Team:DocsEng":     "1625",
           "Team:Platform":    "1232",
           "Team:Projects":    "1415",

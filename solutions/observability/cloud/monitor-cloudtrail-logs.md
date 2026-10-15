@@ -73,7 +73,7 @@ To export CloudTrail logs to CloudWatch, you must set up a **trail** through the
 6. Review the attributes and log events you have specified in the previous steps and click **Create trail**.
 7. Verify everything is working as expected.
 
-    Open the log group you just created on CloudWatch and make sure there are events from the CloudTrail you have just created.
+    Open the log group you created on CloudWatch and make sure there are events from the CloudTrail you created.
 
     :::{image} /solutions/images/observability-firehose-verify-events-cloudwatch.png
     :alt: Verify events in CloudWatch

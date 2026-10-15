@@ -22,13 +22,14 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 ## Requirements
 
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
+- Most features require at least one working large language model (LLM). To learn about connecting to an LLM, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
 
 ## Model selection and tested performance [model-selection-tested-performance]
 
 Elastic publishes tested model ratings and recommendations for chat and connector-based generative AI features including AI Assistant, {{agent-builder}}, and related workflows. Refer to:
 
-- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) and [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md) summarize model performance for those solutions' AI-powered features.
+- [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md): tested model ratings for the {{observability}} AI Assistant.
+- [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md): tested model ratings for {{elastic-sec}} AI-powered features.
 - [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models): models that work well with {{agent-builder}}.
 
 Other AI capabilities on this page—such as {{infer-cap}}, NLP and embedding models, and search ranking—use different model types and evaluation criteria. Refer to each feature's documentation for model choice; Elastic doesn't publish consolidated LLM performance matrices for every platform feature.
@@ -92,14 +93,16 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### Model Context Protocol (MCP) servers
 
-Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ deployments and Serverless projects, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
+Elastic offers two MCP server options for connecting agents to your {{es}} data. The {{agent-builder}} MCP server is the recommended approach for {{es}} 9.2+ deployments and {{serverless-short}} projects, offering access to built-in and custom tools. For older {{es}} versions without {{agent-builder}}, you can use the `mcp-elasticsearch` server, which has a limited tool set.
 
 #### {{agent-builder}} MCP server
 ```{applies_to}
-stack: preview 9.2
-elasticsearch: preview
+stack: preview =9.2, ga 9.3+
+serverless: ga
 ```
-Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes all built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
+Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some built-in tools aren't available through the MCP server. For details, refer to [Authentication and configuration](/explore-analyze/ai-features/agent-builder/mcp-server.md#mcp-server-authentication).
 
 #### {{es}} MCP server
 ```{applies_to}
@@ -111,7 +114,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ## AI-powered features in {{observability}}
 
-{{observability}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{observability}} use cases, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md).
+{{observability}}'s AI-powered features all require a [configured LLM](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any model that's configured in your environment. The model you select for one feature does not affect which model any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for the {{observability}} AI Assistant, refer to the [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md).
 
 ### AI assistant for {{observability}}
 
@@ -132,7 +135,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ## AI-powered features in {{elastic-sec}} [security-features]
 
-{{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{elastic-sec}} use cases, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
+{{elastic-sec}}'s AI-powered features all require a [configured LLM](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any model that's configured in your environment. The model you select for one feature does not affect which model any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{elastic-sec}} use cases, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 
 ### AI Assistant for Security
 
@@ -176,3 +179,5 @@ serverless: ga
 ## AI agent skills
 
 [AI agent skills for Elastic](/explore-analyze/ai-features/agent-skills.md) provides official, open-source skill packages that help AI coding agents perform Elastic-specific tasks. Skills are built on the Agent Skills open standard, and include guidance for tasks like working with {{es}} APIs, {{kib}} workflows, and {{observability}} and {{elastic-sec}} use cases.
+
+For Claude users, the [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md) is the recommended way to install these skills. The plugin bundles all Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit.
