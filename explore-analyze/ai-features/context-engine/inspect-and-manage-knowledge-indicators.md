@@ -51,7 +51,7 @@ Confirm that the title, type, status, and timestamps identify the KI you expecte
 
 The detail view is read-only. To assess whether the content is accurate and useful to an agent, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
-<!-- Verify labels and add a screenshot after elastic/kibana#295749 and the planned follow-up KI visualization changes land.
+<!-- Verify labels and add a screenshot after elastic/kibana#297691 and the planned follow-up KI visualization changes land.
 
 The following image shows the Knowledge Indicators table and its type filter:
 
