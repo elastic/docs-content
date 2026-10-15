@@ -90,7 +90,7 @@ FROM kibana_sample_data_logs <1>
 
 You can add more {{esql}} commands and functions to control the results of the query. For example, a `| LIMIT` command to cap the number of rows returned (the default is 1,000). Refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) for the full list of commands.
 
-**Result:** The results table displays the most recent web log entries with only the fields you selected. Because the query uses `KEEP`, Discover doesn't show the chart of results over time. Instead, it can show a chart based on the columns you keep, when those columns suit one. To discover which fields are available, browse the field list in the sidebar.
+**Result:** The results table displays the most recent web log entries with only the fields you selected. Because the query uses `KEEP`, Discover doesn't show the chart of results over time. Instead, it shows a chart based on the columns you keep only when those columns suit one, so it's normal if no chart appears. To discover which fields are available, browse the field list in the sidebar.
 
 :::{tip}
 **No results?** The time range filter defaults to the last 15 minutes. Sample data timestamps are relative to when you loaded the dataset, so you may need to select a wider range, such as **Last 90 days**, or more, to see results.
@@ -132,7 +132,7 @@ FROM kibana_sample_data_logs
 
 **Result:** The table lists each HTTP response code with its event count. A chart appears above the table to visualize the aggregation, so you can see at a glance how traffic breaks down by status (200, 404, 503, and so on). A three-line query turned thousands of raw log entries into a breakdown with a chart. Notice that the field list in the sidebar now only shows the fields produced by the query (`event_count` and `response`), reflecting the narrower result set.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Discover shows each response code as a group that you can expand to see the documents behind it. Refer to [Inspect grouped STATS results in Discover](discover/inspect-grouped-stats.md).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Instead of a flat table, Discover shows each response code as a group that you can expand to see the documents behind it. To return to a flat table, open the **Group by** menu and select **none**. Refer to [Inspect grouped STATS results in Discover](discover/inspect-grouped-stats.md).
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-aggregation.png
 :alt: Discover showing a STATS aggregation with HTTP response codes ranked by event count
