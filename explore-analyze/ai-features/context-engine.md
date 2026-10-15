@@ -22,7 +22,7 @@ products:
 Automations distill source data into Knowledge Indicators, which agents and applications retrieve from an AI index:
 
 :::{image} context-engine/images/context-engine-flow.svg
-:alt: Sources feed automations that generate Knowledge Indicators in an AI index. Agents retrieve the Knowledge Indicators and can use their guidance to query source data directly for additional or near-real-time information. Agent traces can reveal where the context needs improvement.
+:alt: Sources feed automations that generate Knowledge Indicators in an AI index. Agents retrieve the Knowledge Indicators and can use their guidance to query source data directly for more detailed or up-to-date information. Agent traces can reveal where the context needs improvement.
 :width: 100%
 :::
 
@@ -69,7 +69,7 @@ Make the AI index available to an [agent or application](context-engine/concepts
 ::::
 
 ::::{step} Configure context retrieval
-Configure the agent or application with the appropriate [tools and instructions](context-engine/concepts.md#tools-system-instructions-and-skills) to retrieve KIs as context and use their guidance to query source data for additional or near-real-time information.
+Configure the agent or application with the appropriate [tools and instructions](context-engine/concepts.md#tools-system-instructions-and-skills) to retrieve KIs as context and use KI guidance to query source data directly when more detailed or up-to-date information is required.
 ::::
 
 ::::{step} Evaluate and improve the context
@@ -78,9 +78,9 @@ Review KIs and [agent traces](context-engine/concepts.md#agent-traces) to identi
 
 :::::
 
-## Get started with {{context-engine}}
+## {{context-engine}} quickstart
 
-Follow [Get started with {{context-engine}}](context-engine/quickstart.md) to create an AI index from existing {{es}} data, generate your first KI, and test how an {{agent-builder}} agent uses it.
+Follow the [{{context-engine}} quickstart](context-engine/quickstart.md) to create an AI index from existing {{es}} data, generate your first KI, and test how an {{agent-builder}} agent uses it.
 
 ## {{context-engine}} concepts
 
@@ -90,6 +90,14 @@ Learn how AI indices, sources, automations, KIs, and agent access fit together i
 
 Learn how to choose source data, select a KI generation strategy, review automations, and maintain useful context in [Build and maintain an AI index](context-engine/build-and-maintain-ai-index.md).
 
-## Use {{context-engine}} with agents and applications
+## Use an AI index
 
-Learn how to [use {{context-engine}} with agents and applications](context-engine/use-context-engine-with-agents.md), including {{agent-builder}} agents and agents built with LangChain.
+Learn how to retrieve context directly or through an agent or application in [Use an AI index](context-engine/use-an-ai-index.md).
+
+## Reference
+
+Use the [{{context-engine}} API guide](context-engine/context-engine-api.md) to find the available operations and links to the complete {{kib}} API reference.
+
+<!--
+Review [{{context-engine}} availability and limits](context-engine/availability-and-limits.md) for deployment support, requirements, and product limits.
+-->
