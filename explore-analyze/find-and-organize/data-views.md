@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/data-views.html
   - https://www.elastic.co/guide/en/serverless/current/data-views.html
   - https://www.elastic.co/guide/en/kibana/current/managing-data-views.html
-description: Use a Kibana data view (formerly index pattern) to choose the Elasticsearch indices, data streams, or aliases that Discover, Lens, and other apps query.
+description: Use a Kibana data view (formerly Kibana index pattern) to choose the Elasticsearch indices, data streams, or aliases that Discover, Lens, and other apps query.
 applies_to:
   stack: ga
   serverless: ga
