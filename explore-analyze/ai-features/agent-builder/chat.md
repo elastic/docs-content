@@ -324,9 +324,9 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-To stop the agent while it responds, click the **Stop** icon {icon}`stop_filled` in the chat input. **Stop** replaces the send button after the agent starts working on your message.
+To stop the agent while it responds, click the **Stop** icon {icon}`stop_filled` in the chat input. **Stop** replaces the **Submit** icon after the agent starts working on your message.
 
-**Stop** is available only in the browser tab where you sent the message or responded to a [human-in-the-loop prompt](#human-in-the-loop-prompts). You can't stop a response that's already running if you reload the page or open the conversation in another tab, or if someone else started it in a [shared conversation](#share-a-conversation).
+**Stop** is available only in the chat where you sent the message or responded to a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. If you reload the page, close the sidebar, leave the standalone chat, or open the conversation in another tab or [chat mode](standalone-and-flyout-modes.md), you can't stop a response that's already running. You also can't stop a response that someone else started in a [shared conversation](#share-a-conversation).
 
 When you stop a response, the conversation keeps your message, its attachments, and the steps the agent has taken so far, but discards any partial answer. Your message doesn't return to the chat input. The response ends with **Response stopped by** and the name of the user who stopped it. If {{kib}} stops the response, for example when it runs for more than 20 minutes, the response ends with **Response stopped** instead.
 
