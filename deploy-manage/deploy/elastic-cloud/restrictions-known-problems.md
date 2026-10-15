@@ -25,7 +25,6 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
 * [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
-* [Migrate a deployment to another organization or region](#ec-migrate-deployment-another-region-or-organization)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 * [Node count and size](#ec-node-count-size)
@@ -138,24 +137,29 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 
 ## Restore a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
 
+When you restore a snapshot from one deployment to another, consider the limitations for {{kib}} data, the default snapshot repository, and {{search-snaps}}.
+
+### {{kib}} data [ec-restore-across-deployments-kibana-data]
+
 {{kib}} does not currently support restoring a snapshot of their indices across {{ecloud}} deployments.
 
 * [{{kib}} uses encryption keys](/deploy-manage/security/secure-your-cluster-deployment.md) in various places, ranging from encrypting data in some areas of reporting, alerts, actions, connector tokens, ingest outputs used in Fleet and Synthetics monitoring to user sessions.
 * Currently, there is not a way to retrieve the values of {{kib}} encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, {{kib}} will not be able to decrypt the data required for some features to function properly in the target deployment.
 * If you have already restored a snapshot across deployments and now have broken {{kib}} saved objects in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
 
-When restoring from a deployment that’s using searchable snapshots, you must not delete the snapshots in the source deployment even after they are successfully restored in the destination deployment. Refer to [Restore snapshots containing searchable snapshots indices across clusters](../../tools/snapshot-and-restore/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md) for more information.
+### Restore data across organizations or regions [ec-migrate-deployment-another-region-or-organization]
 
-
-## Migrate a deployment to another organization or region [ec-migrate-deployment-another-region-or-organization]
-
-A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same organization and the same region. To copy data across regions or organizations, use a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types):
+You can restore snapshots from the default `found-snapshots` repository only to deployments in the same {{ecloud}} organization and region. To restore data to a deployment in a different organization or region, you can use a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types):
 
 1. On the source deployment, register a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types) and take a snapshot.
 1. Create the destination deployment in the desired organization or region, and register that [same repository as read-only](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
 1. [Restore the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster) on the destination deployment.
 
-These steps do not apply to {{kib}}. Refer to [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments) section.
+These steps restore {{es}} data but do not address the [limitations for {{kib}} data](#ec-restore-across-deployments-kibana-data).
+
+### {{search-snaps-cap}}
+
+When restoring from a deployment that’s using searchable snapshots, you must not delete the snapshots in the source deployment even after they are successfully restored in the destination deployment. Refer to [Restore snapshots containing searchable snapshots indices across clusters](../../tools/snapshot-and-restore/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md) for more information.
 
 ## Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot [ec-migrate-elastic-agent]
 
