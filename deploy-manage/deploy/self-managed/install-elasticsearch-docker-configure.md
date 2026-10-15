@@ -36,7 +36,7 @@ You can override the default command for the image to pass {{es}} configuration 
 docker run <various parameters> bin/elasticsearch -Ecluster.name=mynewclustername
 ```
 
-While bind-mounting your configuration files is usually the preferred method in production, you can also [create a custom Docker image](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image) that contains your configuration or has plugins already installed..
+While bind-mounting your configuration files is usually the preferred method in production, you can also [create a custom Docker image](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image) that contains your configuration or has plugins already installed.
 
 ## Bind-mount {{es}} configuration files [docker-config-bind-mount]
 

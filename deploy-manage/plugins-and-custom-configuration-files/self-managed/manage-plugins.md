@@ -60,7 +60,7 @@ Each time the container starts, {{es}} compares this list against the plugins cu
 To place `elasticsearch-plugins.yml` in the container's configuration directory, you can bind-mount the file. For an example, refer to [Bind-mount {{es}} configuration files](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#docker-config-bind-mount).
 
 ::::{important}
-Do not run `elasticsearch-plugin install` or `elasticsearch-plugin remove` while the configuration file is present. Both commands are disabled.
+Do not run `elasticsearch-plugin install` or `elasticsearch-plugin remove` while the configuration file is present. Both commands are deactivated.
 ::::
 
 ## Install plugins with the `elasticsearch-plugin` CLI [self-managed-plugins-cli]
