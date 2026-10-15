@@ -21,12 +21,18 @@ products:
       label: Upgrade Elasticsearch
       url: /deploy-manage/upgrade/deployment-or-cluster.md
     items:
+      - title: Vector database project type
+        description: Run vector workloads on a Serverless project with vector-tuned defaults, inference access, and pricing built for embeddings.
+        link: /solutions/vector-database.md
+        availability:
+          - Serverless
+        tag: Vector search
       - title: Columnar index mode
         description: Store each field once in a column store, with no inverted index by default, for a smaller footprint. Technical preview.
         link: /manage-data/data-store/columnar.md
         availability:
-          - Serverless
           - '9.5'
+          - Serverless
         tag: Storage
         featured: true
       - title: VectorDB index mode
@@ -39,8 +45,8 @@ products:
         description: Query Prometheus metrics with PromQL in Elasticsearch, generally available.
         link: elasticsearch://reference/query-languages/promql.md
         availability:
-          - Serverless
           - '9.5'
+          - Serverless
         tag: Metrics
       - title: DLM frozen tier
         description: Move aging data stream backing indices to the frozen tier as searchable snapshots, without an ILM policy.
@@ -48,13 +54,6 @@ products:
         availability:
           - '9.5'
         tag: Data lifecycle
-      - title: Flattened fields in ES|QL
-        description: Query flattened fields and extract sub-fields with FIELD_EXTRACT. Technical preview.
-        link: elasticsearch://reference/elasticsearch/mapping-reference/flattened.md
-        availability:
-          - Serverless
-          - '9.5'
-        tag: ES|QL
 
   kibana:
     title: What's new in Kibana
@@ -69,6 +68,12 @@ products:
       label: Upgrade Kibana
       url: /deploy-manage/upgrade/deployment-or-cluster.md
     items:
+      - title: Custom panels for dashboards
+        description: Add HTML panels to a dashboard with Liquid templates and ES|QL queries, or generate them in Agent Builder chat. Technical preview.
+        link: /explore-analyze/visualize/custom-panels.md
+        availability:
+          - Serverless
+        tag: Dashboards
       - title: Dashboards and Visualizations APIs
         description: Create, update, and manage dashboards and visualizations in code. Generally available.
         link: /explore-analyze/dashboards/create-dashboards-programmatically.md
@@ -98,13 +103,6 @@ products:
           - '9.5'
           - Serverless
         tag: Workflows
-      - title: Case analytics
-        description: Analyze cases, activity, and attachments through dedicated indices and a prebuilt Case Analytics data view.
-        link: /explore-analyze/cases/case-analytics.md
-        availability:
-          - '9.5'
-          - Serverless
-        tag: Cases
 
   logstash:
     title: What's new in Logstash
