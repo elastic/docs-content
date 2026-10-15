@@ -203,7 +203,7 @@ You can connect a locally hosted LLM to Elastic. This requires your local LLM to
 
 [Add an {{infer}} endpoint](#add-an-inference-endpoint) that uses the `openai` service and points at your local LLM. For an example request, refer to [Using OpenAI compatible models with the {{infer-cap}} API](/solutions/search/semantic-search/using-openai-compatible-models.md).
 
-If your LLM is served over HTTPS with a certificate signed by a private or internal certificate authority, refer to [Trust a private certificate authority for external {{infer}} endpoints](/explore-analyze/elastic-inference/external-inference-private-ca.md).
+{applies_to}`{ deployment: { self: ga, ece: ga, eck: ga } }` If your LLM is served over HTTPS with a certificate signed by a private or internal certificate authority, refer to [Trust a private certificate authority for external {{infer}} endpoints](/explore-analyze/elastic-inference/external-inference-private-ca.md).
 
 :::{note}
 :applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
