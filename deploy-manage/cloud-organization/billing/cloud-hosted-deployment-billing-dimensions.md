@@ -69,7 +69,7 @@ Data transfer out of deployments and between nodes of the cluster is hard to con
 The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster. [Oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Note that creating snapshots generates inter-node data transfer. The *storage* cost of snapshots is detailed later in this document.
 
 :::{note}
-Using a single {{es}} node in a single availability zone to avoid shards moving caused data transfer cost is not recommended. A cluster that only has a single availability zone is not highly available, and has a risk of data loss. For production, use at least two availability zones. Review [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) for more guidance.
+Using a single {{es}} node in a single availability zone to avoid shards moving caused data transfer cost is not recommended. A cluster that only has a single node or a single availability zone is not highly available, and has a risk of data loss. For production, use at least two availability zones. Review [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) for more guidance.
 :::
 
 The exact root cause of unusual data transfer is not always something we can identify as it can have many causes, some of which are out of our control and not associated with Cloud configuration changes.  It may help to [enable monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) and examine index and shard activity on your cluster.
