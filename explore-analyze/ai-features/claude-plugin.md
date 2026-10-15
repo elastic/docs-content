@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic plugin for Claude
+navigation_title: Elastic Claude plugin
 description: "Install the official Elastic plugin for Claude to give the Claude AI assistant specialized skills, MCP server access, and Elastic Stack knowledge in any Claude environment."
 type: overview
 applies_to:

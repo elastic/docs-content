@@ -1,6 +1,6 @@
 ---
-navigation_title: Elastic connector for Claude
-description: "Add the Elastic Cloud Serverless connector from the Claude directory so Claude can search and analyze your project data through the Agent Builder MCP server."
+navigation_title: Elastic Serverless Claude connector
+description: "The official Elastic Cloud Serverless connector enables Claude to search and analyze your Elastic Cloud Serverless project data using the Agent Builder MCP server."
 type: overview
 applies_to:
   serverless: ga
@@ -32,7 +32,7 @@ After you set up the connector, you can ask Claude to work with the data in your
 The tools available to Claude are the [{{agent-builder}} tools](/explore-analyze/ai-features/agent-builder/tools.md) that your project exposes through the MCP server.
 The exact set depends on your project type and on any custom tools you've created.
 
-## How the connector relates to the Elastic plugin for Claude
+## How Claude connector and plugin work together
 
 The connector and the [Elastic plugin for Claude](claude-plugin.md) complement each other:
 
