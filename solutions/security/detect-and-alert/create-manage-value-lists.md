@@ -123,5 +123,8 @@ You can also edit value lists while creating and managing exceptions that use va
     - Click the **Remove value list** icon {icon}`trash` to delete the value list.
 
 ## Configure upload limits [adv-list-settings]
+```yaml {applies_to}
+serverless: unavailable
+```
 
 You can change the limits for uploading value lists to {{elastic-sec}} with the `xpack.lists.maxImportPayloadBytes` and `xpack.lists.importBufferSize` settings in your [`kibana.yml`](/deploy-manage/stack-settings.md) file. For details and default values, refer to [Security Solution settings in {{kib}}](kibana://reference/configuration-reference/security-solution-settings.md#value-lists-settings).
