@@ -284,8 +284,6 @@ The chat history panel shows the status of each conversation at a glance, so you
 | ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing.<br>{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Each user has their own read status. In a [shared or public conversation](#share-a-conversation), any new message, including one posted with **Skip agent**, marks the conversation as unread for everyone who can open it and isn't viewing it. |
 | ![Error icon](images/agent-builder-status-error.svg "=20x20") | **Error** {applies_to}`stack: ga =9.5, removed 9.6+` {applies_to}`serverless: removed` | The agent stopped because of an error. |
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` There's no status for stopped or failed responses. If a response stops or fails while you're in another conversation, that conversation shows as **Unread**, like any other new activity. To view the error, open the conversation. For more information, refer to [Stopped and failed responses](#stopped-and-failed-responses).
-
 For example, the following chat history panel shows one conversation in progress and another with unread activity:
 
 :::{image} images/agent-builder-conversation-status.png
@@ -294,12 +292,14 @@ For example, the following chat history panel shows one conversation in progress
 :width: 450px
 :::
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` There's no status for stopped or failed responses. If a response stops or fails in a conversation you aren't viewing, that conversation shows as **Unread**, like any other new activity. To see the stopped response or the error, open the conversation. For more information, refer to [Stopped and failed responses](#stopped-and-failed-responses).
+
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
 ### Inspect tool calls and reasoning
 
 ::::{note}
-:applies_to: stack: ga 9.5+, serverless: ga
+:applies_to: { stack: ga 9.5+, serverless: ga }
 
 Inline reasoning events replace the [Reasoning panel](glossary.md#reasoning-panel).
 ::::
@@ -314,6 +314,8 @@ Agent responses show reasoning, tool calls, tool results, and the final response
 
 Tool call events show whether a tool is still running or has returned a response. Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If a response [stops or fails](#stopped-and-failed-responses) before a tool call returns, the tool call shows as stopped.
+
 After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
 ### Stopped and failed responses [stopped-and-failed-responses]
@@ -322,15 +324,17 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-To stop the agent while it responds, select **Stop** in the chat input. The **Stop** button takes the place of the send button after the agent starts working on your message.
+To stop the agent while it responds, click the **Stop** icon {icon}`stop_filled` in the chat input. **Stop** replaces the send button after the agent starts working on your message.
 
-When you stop a response, the conversation keeps your message, its attachments, and the steps the agent has taken so far. Any part of the answer the agent was still writing is discarded. The response ends with **Response stopped by** and the name of the user who stopped it. If {{kib}} stopped the response, for example after a timeout, it ends with **Response stopped**. Your message doesn't return to the chat input.
+**Stop** is available only in the browser tab where you sent the message or responded to a [human-in-the-loop prompt](#human-in-the-loop-prompts). You can't stop a response that's already running if you reload the page or open the conversation in another tab, or if someone else started it in a [shared conversation](#share-a-conversation).
+
+When you stop a response, the conversation keeps your message, its attachments, and the steps the agent has taken so far, but discards any partial answer. Your message doesn't return to the chat input. The response ends with **Response stopped by** and the name of the user who stopped it. If {{kib}} stops the response, for example when it runs for more than 20 minutes, the response ends with **Response stopped** instead.
 
 If an error interrupts the agent, the response ends with **An error occurred**. Select it to expand the error details.
 
-Stopped and failed responses stay in the conversation when you reload the page or open another conversation. Tool calls that didn't finish show as stopped. These responses don't include the response metadata menu or the **View Trace** icon.
+Stopped and failed responses stay in the conversation when you reload the page or open another conversation. These responses don't include the **Copy response** icon, the response metadata menu, or the [View Trace icon](#view-traces).
 
-There's no option to retry a response. To try again or change your request, send a new message. The agent can see the steps from the stopped or failed response, and the error if there was one.
+There's no option to retry a response. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
 
 ### View traces for a conversation round [view-traces]
 ```{applies_to}
@@ -344,7 +348,9 @@ The flyout is titled with the trace id and reports the span count and total dura
 
 Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
 
-The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon does not appear.
+The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon doesn't appear.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The icon also doesn't appear on [stopped or failed responses](#stopped-and-failed-responses), even when the round has a trace.
 
 To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
 
