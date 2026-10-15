@@ -199,7 +199,7 @@ links:
 :intro: Choose where to run the Elastic Stack: as a managed service, on Kubernetes, or on your own hosts. [Compare deployment types](/deploy-manage/deploy/deployment-comparison.md).
 
 :::{link-card}
-title: Serverless
+title: Elastic Cloud Serverless
 description: Fully managed projects. Elastic runs the infrastructure and the upgrades.
 links:
   - label: Overview
