@@ -135,7 +135,7 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
-CSV reports also stop at a row limit. To find the limit for your deployment and how it works in Discover, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
+In Discover, a CSV report stops at a row limit. To find the limit for your deployment and how it works in each query mode, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
 
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
