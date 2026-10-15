@@ -15,7 +15,7 @@ products:
 
 # {{kib}} data views
 
-A {{data-source}} (formerly *index pattern*) tells {{kib}} which {{es}} indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md) to query. Analytics features such as **Discover** and **Lens** use a {{data-source}} to access your data. For example, a {{data-source}} can point to your log data from yesterday, or to all indices that contain your data.
+A {{data-source}} (formerly *{{kib}} index pattern*) tells {{kib}} which {{es}} indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md) to query. Analytics features such as **Discover** and **Lens** use a {{data-source}} to access your data. For example, a {{data-source}} can point to your log data from yesterday, or to all indices that contain your data.
 
 ::::{note}
 In some apps, you can query {{es}} with [{{esql}}](elasticsearch://reference/query-languages/esql.md) instead. {{esql}} doesn't require a {{data-source}}.
