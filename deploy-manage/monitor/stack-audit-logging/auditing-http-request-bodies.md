@@ -41,7 +41,7 @@ Request bodies can contain sensitive data. Although {{es}} filters credentials f
 How {{es}} records the request body depends on its content type:
 
 `request.body`
-:   For request bodies that {{es}} can represent as JSON, contains the full body as an escaped JSON string. {{es}} converts supported structured formats, such as YAML, to JSON.
+:   For request bodies that {{es}} can represent as JSON, contains the full body as an escaped JSON string. {{es}} converts supported structured formats, such as YAML, to JSON. If you collect audit logs with the {{es}} integration or the {{filebeat}} {{es}} module, the ingest pipeline maps `request.body` to the {{product.ecs}} field `http.request.body.content` in indexed documents.
 
 `request.raw_body` {applies_to}`stack: ga 9.4`
 :   Contains the request body as a Base64-encoded string when {{es}} can't represent it as JSON, such as for Protobuf telemetry payloads. {{es}} emits this field instead of `request.body`. The audit event records the content type in `request.raw_body_content_type`. If the request specifies a content encoding, the audit event records it in `request.raw_body_content_encoding`.
