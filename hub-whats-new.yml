@@ -73,37 +73,37 @@ products:
         description: Create, update, and manage dashboards and visualizations in code. Generally available.
         link: /explore-analyze/dashboards/create-dashboards-programmatically.md
         availability:
-          - Serverless
           - '9.5'
+          - Serverless
         tag: Dashboards
         featured: true
       - title: Dashboards in Agent Builder chat
         description: Build dashboards from chat, create skills, and add dashboard controls without leaving the conversation. Generally available.
         link: /explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
         availability:
-          - Serverless
           - '9.5'
+          - Serverless
         tag: Agent Builder
       - title: Fast mode for ES|QL STATS
         description: Run eligible STATS queries in Discover and Dashboards on a sampled dataset, then extrapolate to full scale.
         link: elasticsearch://reference/query-languages/esql/esql-query-approximation.md
         availability:
-          - Serverless
           - '9.5'
+          - Serverless
         tag: ES|QL
       - title: Workflows version history
         description: Every save records a version you can compare and restore. Generally available.
         link: /explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history
         availability:
-          - Serverless
           - '9.5'
+          - Serverless
         tag: Workflows
       - title: Case analytics
         description: Analyze cases, activity, and attachments through dedicated indices and a prebuilt Case Analytics data view.
         link: /explore-analyze/cases/case-analytics.md
         availability:
-          - Serverless
           - '9.5'
+          - Serverless
         tag: Cases
 
   logstash:
