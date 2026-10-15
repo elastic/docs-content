@@ -21,12 +21,24 @@ products:
       label: Upgrade Elasticsearch
       url: /deploy-manage/upgrade/deployment-or-cluster.md
     items:
+      - title: Cross-project search
+        description: Query data across several Serverless projects without moving or copying it, from Discover, ES|QL, dashboards, and alerting. Generally available.
+        link: /explore-analyze/cross-project-search.md
+        availability:
+          - Serverless
+        tag: Search
       - title: Vector database project type
         description: Run vector workloads on a Serverless project with vector-tuned defaults, inference access, and pricing built for embeddings.
         link: /solutions/vector-database.md
         availability:
           - Serverless
         tag: Vector search
+      - title: ES|QL HIGHLIGHT command
+        description: Show which terms matched a full-text query by wrapping them in highlight tags in your ES|QL results. Generally available.
+        link: elasticsearch://reference/query-languages/esql/commands/highlight.md
+        availability:
+          - Serverless
+        tag: ES|QL
       - title: Columnar index mode
         description: Store each field once in a column store, with no inverted index by default, for a smaller footprint. Technical preview.
         link: /manage-data/data-store/columnar.md
@@ -35,12 +47,6 @@ products:
           - Serverless
         tag: Storage
         featured: true
-      - title: VectorDB index mode
-        description: Apply vector-search defaults with a single index setting.
-        link: /solutions/search/vector.md#vector-index-mode
-        availability:
-          - '9.5'
-        tag: Vector search
       - title: Native Prometheus and PromQL
         description: Query Prometheus metrics with PromQL in Elasticsearch, generally available.
         link: elasticsearch://reference/query-languages/promql.md
@@ -48,13 +54,6 @@ products:
           - '9.5'
           - Serverless
         tag: Metrics
-      - title: DLM frozen tier
-        description: Move aging data stream backing indices to the frozen tier as searchable snapshots, without an ILM policy.
-        link: /manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md
-        availability:
-          - '9.5'
-        tag: Data lifecycle
-
   kibana:
     title: What's new in Kibana
     id: whats-new
@@ -74,6 +73,12 @@ products:
         availability:
           - Serverless
         tag: Dashboards
+      - title: Share Agent Builder conversations
+        description: Share a conversation with specific people or make it public, so others can read the full history and continue it. Generally available.
+        link: /explore-analyze/ai-features/agent-builder/chat.md#share-a-conversation
+        availability:
+          - Serverless
+        tag: Agent Builder
       - title: Dashboards and Visualizations APIs
         description: Create, update, and manage dashboards and visualizations in code. Generally available.
         link: /explore-analyze/dashboards/create-dashboards-programmatically.md
@@ -89,13 +94,6 @@ products:
           - '9.5'
           - Serverless
         tag: Agent Builder
-      - title: Fast mode for ES|QL STATS
-        description: Run eligible STATS queries in Discover and Dashboards on a sampled dataset, then extrapolate to full scale.
-        link: elasticsearch://reference/query-languages/esql/esql-query-approximation.md
-        availability:
-          - '9.5'
-          - Serverless
-        tag: ES|QL
       - title: Workflows version history
         description: Every save records a version you can compare and restore. Generally available.
         link: /explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history
@@ -122,6 +120,12 @@ products:
           - '9.5'
         tag: Monitoring
         featured: true
+      - title: Kafka integration plugin 12
+        description: The plugin now uses Kafka client 4.x, supports an opt-in consumer group protocol, and drops two partitioner options. Review the breaking changes before you upgrade.
+        link: logstash-docs-md://lsr/plugins-integrations-kafka.md
+        availability:
+          - '9.5'
+        tag: Integrations
       - title: TLS certificate auto-reload
         description: Pipelines reload when TLS certificates rotate on disk, without a full pipeline restart.
         link: logstash://reference/reloading-config.md
