@@ -135,15 +135,12 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
-A CSV report of a Discover session stops at a row limit. If the results have more rows than the limit, the report contains only the first rows, up to the limit. The {{kib}} limit depends on where you run {{kib}}:
+A CSV report stops at a row limit. If the results have more rows than the limit, the report contains only the first rows, up to the limit. The limit depends on where you run {{kib}}:
 
 * {applies_to}`serverless: ga` The limit is 100,000 rows.
 * {applies_to}`stack: ga 9.3+` The limit is 10,000 rows by default. In self-managed and {{ech}} deployments, you can change it with the `xpack.reporting.csv.maxRows` setting, but a higher limit can affect performance. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
 
-The row limit applies in both of Discover's query modes, with these differences:
-
-* In Discover's {{esql}} mode, the {{kib}} limit applies, and {{es}} also limits the rows that an {{esql}} query returns to 10,000 by default. The lower of the two limits counts, so an {{esql}} report stops at 10,000 rows by default, even on serverless and even if the query has a higher `LIMIT`. The report doesn't warn you when it stops. Refer to [Row and column limits](discover/esql-results.md#esql-kibana-results-table-limitations).
-* In Discover's classic mode (data views with KQL or Lucene), only the {{kib}} limit applies. When the results reach it, the export flyout warns you before you generate the report, and the report completes with a warning.
+For how the limit works in Discover's {{esql}} mode and classic mode, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
 
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 

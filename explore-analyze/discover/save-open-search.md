@@ -52,6 +52,15 @@ A Discover session stores the following elements for each of its tabs:
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
 
+## Export Discover session results as CSV [export-discover-session-csv]
+
+To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file. To start, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**, then generate the report. Refer to [Export as a file](../report-and-share.md#manually-generate-reports).
+
+A CSV report stops at a row limit, and the file contains only the first rows, up to the limit. The {{kib}} limit depends on where you run {{kib}}. Refer to [CSV report limitations](../report-and-share.md#csv-limitations). The query mode of the tab you export also affects the limit:
+
+* In {{esql}} mode, {{es}} also limits the rows that an {{esql}} query returns to 10,000 by default. The lower of the two limits counts, so an {{esql}} report stops at 10,000 rows by default, even on serverless and even if the query has a higher `LIMIT`. The report doesn't warn you when it stops. Refer to [Row and column limits](esql-results.md#esql-kibana-results-table-limitations).
+* In classic mode (data views with KQL or Lucene), only the {{kib}} limit applies. When the results reach it, the export flyout warns you before you generate the report, and the report completes with a warning.
+
 ## Export a Discover session as JSON [export-discover-session-json]
 ```{applies_to}
 serverless: preview
