@@ -16,7 +16,7 @@ products:
 
 # Manage your subscription
 
-When you decide to add your credit card and become a paying customer, you can choose a subscription level.
+When you become a paying customer, either by using a credit card, an annual contract, or paying via a Marketplace, you can choose a subscription level.
 
 Depending on whether you're using {{ech}} deployment or {{serverless-full}} projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
 
@@ -42,6 +42,12 @@ To change your subscription level:
 * Changing to a higher subscription level takes place immediately. Moving to a lower subscription level takes effect 30 days after you most recently changed to a higher subscription level. In the interim, you pay the current rate. If you haven’t performed a self-service change in the past 30 days, then the change to the lower subscription level is immediate.
 * **Cloud Standard** is not available for customers on the prepaid consumption billing model.
 ::::
+
+
+## Change your payment method
+
+* If you are paying via credit card, you can update your card details in the [cloud console](https://cloud.elastic.co/billing/)
+* If you are paying through GCP Marketplace, follow the [specific instructions](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/google-cloud-platform-marketplace#ec-billing-gcp-account-change)
 
 ### Feature usage notifications [ec_feature_usage_notifications]
 
