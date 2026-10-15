@@ -142,8 +142,8 @@ A CSV report of a Discover session stops at a row limit. If the results have mor
 
 The row limit applies in both of Discover's query modes, with these differences:
 
-* In Discover's classic mode (data views with KQL or Lucene), only the {{kib}} limit applies. When the results reach it, the export flyout warns you before you generate the report, and the report completes with a warning.
 * In Discover's {{esql}} mode, the {{kib}} limit applies, and {{es}} also limits the rows that an {{esql}} query returns to 10,000 by default. The lower of the two limits counts, so an {{esql}} report stops at 10,000 rows by default, even on serverless and even if the query has a higher `LIMIT`. The report doesn't warn you when it stops. Refer to [Row and column limits](discover/esql-results.md#esql-kibana-results-table-limitations).
+* In Discover's classic mode (data views with KQL or Lucene), only the {{kib}} limit applies. When the results reach it, the export flyout warns you before you generate the report, and the report completes with a warning.
 
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
