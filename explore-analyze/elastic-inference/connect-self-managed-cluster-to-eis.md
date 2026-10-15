@@ -1,5 +1,5 @@
 ---
-navigation_title: EIS for ECE, ECK, and self-managed clusters
+navigation_title: "EIS for {{ece}}, {{eck}}, and self-managed clusters"
 applies_to:
   deployment:
     self:
@@ -9,12 +9,12 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
-description: Use Elastic Inference Service (EIS) with your ECE, ECK, and self-managed clusters through Cloud Connect.
+description: "Use Elastic Inference Service (EIS) with your {{ece}}, {{eck}}, and self-managed clusters through Cloud Connect."
 ---
 
-# Elastic {{infer-cap}} Service for ECE, ECK, and self-managed clusters
+# Elastic {{infer-cap}} Service for {{ece}}, {{eck}}, and self-managed clusters
 
-[Elastic {{infer-cap}} Service (EIS)](eis.md) is available with zero setup on Elastic Cloud Hosted and Serverless deployments. To use EIS with ECE, ECK, or self-managed clusters, you can use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your ECE, ECK, or self-managed cluster without having to install and maintain their infrastructure yourself.
+[Elastic {{infer-cap}} Service (EIS)](eis.md) is available with zero setup on {{ech}} and {{serverless-short}} deployments. To use EIS with {{ece}}, {{eck}}, or self-managed clusters, you can use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your {{ece}}, {{eck}}, or self-managed cluster without having to install and maintain their infrastructure yourself.
 
 You can use EIS to enable features such as:
 
@@ -27,7 +27,7 @@ For a full list of EIS-powered features, refer to [AI features powered by EIS](/
 
 ## Prerequisites
 
-Before you can use EIS with an ECE, ECK, or self-managed cluster, ensure you meet the following requirements:
+Before you can use EIS with an {{ece}}, {{eck}}, or self-managed cluster, ensure you meet the following requirements:
 
 * Your cluster runs {{es}} 9.3 or later.
 * Your cluster has an [Enterprise self-managed license]({{subscriptions}}) or an [active self-managed trial license](https://cloud.elastic.co/registration).
@@ -38,7 +38,7 @@ Before you can use EIS with an ECE, ECK, or self-managed cluster, ensure you mee
 
 :::::::{stepper}
 ::::::{step} Open Cloud Connect
-In {{kib}} on your ECE, ECK, or self-managed cluster, navigate to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+In {{kib}} on your {{ece}}, {{eck}}, or self-managed cluster, navigate to the **Cloud Connect** page using the [search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/cloud-connect-eis.png
 :screenshot:
