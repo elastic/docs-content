@@ -39,7 +39,9 @@ Integration testing
 
 A cluster is eligible as a destination for a snapshot restore if it meets these criteria:
 
-- Within {{ech}}, when using the built-in `found-snapshots` repository, the source and destination deployments must belong to the same {{ecloud}} organization and region. For example, a snapshot taken in `eu-west-1` cannot be restored to `us-east-1`. To restore snapshots across regions or organizations in {{ech}} using a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), refer to [](../../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization). Within {{ece}}, this restriction does not apply because an {{ece}} environment represents a single region and does not have organizations.
+- Within {{ech}}, when using the built-in `found-snapshots` repository, the source and destination deployments must belong to the same {{ecloud}} organization and region. For example, a snapshot taken in `eu-west-1` cannot be restored to `us-east-1`. To restore snapshots across regions or organizations in {{ech}} using a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), refer to [](../../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization). 
+
+  Within {{ece}}, this restriction does not apply because an {{ece}} environment represents a single region and does not have organizations.
 - The destination cluster is able to read the indices. You can generally restore to your {{es}} cluster snapshots of indices created back to the previous major version, but refer to the [version compatibility matrix](../snapshot-and-restore.md#snapshot-restore-version-compatibility) for all the details.
 
 The list of available snapshots can be found in the `found-snapshots` repository.
