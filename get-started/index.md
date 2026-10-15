@@ -1,5 +1,4 @@
 ---
-navigation_title: Elastic fundamentals
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html
