@@ -56,23 +56,31 @@ If the saved Discover session is associated with a different {{data-source}} tha
 
 To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file. To start, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**, then generate the report. Refer to [Export as a file](../report-and-share.md#manually-generate-reports).
 
-Some limits apply to the exported data. A report contains only the rows up to the first limit that it reaches, either a row limit or a file size limit. The limits depend on the query mode of the tab you export, on where you run {{kib}}, and on your {{kib}} version.
+Some limits apply to the exported data. A report contains only the rows up to the first limit that it reaches, either a row limit or a file size limit. The limits depend on where you run {{kib}}, on your {{kib}} version, and on the query mode of the tab you export. Classic mode uses data views with KQL or Lucene.
 
-In {{esql}} mode:
+::::{applies-switch}
 
-* {applies_to}`serverless: ga` 10,000 rows or 250 MB, whichever comes first. You can't change these limits.
-* {applies_to}`stack: ga 9.3+` 10,000 rows or 250 MB by default, whichever comes first.
-* In earlier versions, 10,000 rows or 250 MB by default, whichever comes first. The row limit comes from {{es}}.
+:::{applies-item} serverless: ga
+* In {{esql}} mode, the limits are 10,000 rows or 250 MB, whichever comes first.
+* In classic mode, the limits are 100,000 rows or 250 MB, whichever comes first.
 
-The row limit is the lower of the {{kib}} limit and the {{es}} limit on the rows that a query returns. A `LIMIT` in your query can make it lower. For queries that start with `TS` or `PROMQL`, the {{es}} limit is 10,000,000 rows by default, so the {{kib}} limit counts instead: 100,000 rows on serverless and 10,000 by default on stack 9.3 and later. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows). The report doesn't warn you when it stops.
+You can't change these limits.
+:::
 
-In classic mode (data views with KQL or Lucene):
+:::{applies-item} stack: ga 9.3+
+In both modes, the limits are 10,000 rows or 250 MB by default, whichever comes first.
+:::
 
-* {applies_to}`serverless: ga` 100,000 rows or 250 MB, whichever comes first. You can't change these limits.
-* {applies_to}`stack: ga 9.3+` 10,000 rows or 250 MB by default, whichever comes first.
-* In earlier versions, 250 MB by default. There is no row limit.
+:::{applies-item} stack: ga 9.0-9.2
+* In {{esql}} mode, the limits are 10,000 rows or 250 MB by default, whichever comes first. The row limit comes from {{es}}.
+* In classic mode, the limit is 250 MB by default. There is no row limit.
+:::
 
-When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
+::::
+
+In {{esql}} mode, the row limit is the lower of the {{kib}} limit and the {{es}} limit on the rows that a query returns. A `LIMIT` in your query can make it lower. For queries that start with `TS` or `PROMQL`, the {{es}} limit is 10,000,000 rows by default, so the {{kib}} limit counts instead. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows). The report doesn't warn you when it stops.
+
+In classic mode, when the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
 
 In self-managed and {{ech}} deployments, you can change the {{kib}} limits with the `xpack.reporting.csv.maxRows` setting (9.3 and later) and the `xpack.reporting.csv.maxSizeBytes` setting, but higher limits can affect performance. To raise the row limit in {{esql}} mode above 10,000, you also need to raise the {{es}} limit. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
 
