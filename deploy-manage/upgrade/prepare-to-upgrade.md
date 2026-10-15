@@ -714,7 +714,7 @@ POST _transform/my-transform/_update
 
     ```json
     {
-      "my-destination-index":: {
+      "my-destination-index": {
         "settings": {
           "index": {
             "number_of_replicas": "1",
