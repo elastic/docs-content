@@ -25,8 +25,8 @@ products:
         description: Store each field once in a column store, with no inverted index by default, for a smaller footprint. Technical preview.
         link: /manage-data/data-store/columnar.md
         availability:
-          - '9.5'
           - Serverless
+          - '9.5'
         tag: Storage
         featured: true
       - title: VectorDB index mode
@@ -39,8 +39,8 @@ products:
         description: Query Prometheus metrics with PromQL in Elasticsearch, generally available.
         link: elasticsearch://reference/query-languages/promql.md
         availability:
-          - '9.5'
           - Serverless
+          - '9.5'
         tag: Metrics
       - title: DLM frozen tier
         description: Move aging data stream backing indices to the frozen tier as searchable snapshots, without an ILM policy.
@@ -52,8 +52,8 @@ products:
         description: Query flattened fields and extract sub-fields with FIELD_EXTRACT. Technical preview.
         link: elasticsearch://reference/elasticsearch/mapping-reference/flattened.md
         availability:
-          - '9.5'
           - Serverless
+          - '9.5'
         tag: ES|QL
 
   kibana:
@@ -73,37 +73,37 @@ products:
         description: Create, update, and manage dashboards and visualizations in code. Generally available.
         link: /explore-analyze/dashboards/create-dashboards-programmatically.md
         availability:
-          - '9.5'
           - Serverless
+          - '9.5'
         tag: Dashboards
         featured: true
       - title: Dashboards in Agent Builder chat
         description: Build dashboards from chat, create skills, and add dashboard controls without leaving the conversation. Generally available.
         link: /explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
         availability:
-          - '9.5'
           - Serverless
+          - '9.5'
         tag: Agent Builder
       - title: Fast mode for ES|QL STATS
         description: Run eligible STATS queries in Discover and Dashboards on a sampled dataset, then extrapolate to full scale.
         link: elasticsearch://reference/query-languages/esql/esql-query-approximation.md
         availability:
-          - '9.5'
           - Serverless
+          - '9.5'
         tag: ES|QL
       - title: Workflows version history
         description: Every save records a version you can compare and restore. Generally available.
         link: /explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history
         availability:
-          - '9.5'
           - Serverless
+          - '9.5'
         tag: Workflows
       - title: Case analytics
         description: Analyze cases, activity, and attachments through dedicated indices and a prebuilt Case Analytics data view.
         link: /explore-analyze/cases/case-analytics.md
         availability:
-          - '9.5'
           - Serverless
+          - '9.5'
         tag: Cases
 
   logstash:
