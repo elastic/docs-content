@@ -411,7 +411,7 @@ You can share the current view, show the results on a dashboard, export the sess
 
 - Select {icon}`share` **Share** in the application menu to copy a link to the current view. For the link options, refer to [Reporting and sharing](../report-and-share.md).
 - To show the results on a dashboard, add the session, its chart, or its table, to the dashboard. Refer to [Use Discover sessions in dashboards](save-open-search.md#_add_search_results_to_a_dashboard).
-- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Refer to [Reporting and sharing](../report-and-share.md#manually-generate-reports).
+- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. For the steps and the row limit, refer to [](save-open-search.md#export-discover-session-csv).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
 
 In classic mode, select {icon}`maximize` **View details** on a row, then select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).

@@ -63,7 +63,7 @@ A CSV report stops at a row limit, and the file contains only the first rows, up
 
 The query mode of the tab you export also affects the limit:
 
-* In {{esql}} mode, {{es}} also limits the rows that an {{esql}} query returns, to 10,000 by default, or to 10,000,000 for queries that start with `TS` or `PROMQL`. The lower of the two limits counts. For other queries, the report stops at 10,000 rows by default, even on serverless and even if the query has a higher `LIMIT`. The report doesn't warn you when it stops. Refer to [Row and column limits](esql-results.md#esql-kibana-results-table-limitations).
+* In {{esql}} mode, {{es}} also limits the rows that an {{esql}} query returns, to 10,000 by default, or to 10,000,000 for queries that start with `TS` or `PROMQL`. The lower of the two limits counts. For other queries, the report stops at 10,000 rows by default, even on serverless and even if the query has a higher `LIMIT`. The report doesn't warn you when it stops. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
 * In classic mode (data views with KQL or Lucene), only the {{kib}} limit applies. When the results reach it, the export flyout warns you before you generate the report, and the report completes with a warning.
 
 In both modes, the file is also truncated at 250 MB by default. With wide rows, this can happen before the row limit. In self-managed and {{ech}} deployments, you can change the size limit with the `xpack.reporting.csv.maxSizeBytes` setting.
@@ -76,7 +76,7 @@ serverless: preview
 stack: preview 9.6+
 ```
 
-Export the session as JSON to inspect its definition, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**.
+Export the session as JSON to inspect its definition, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows, refer to [](#export-discover-session-csv).
 
 1. In **Discover**, in the application menu, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**.
 2. Set what the JSON includes:
