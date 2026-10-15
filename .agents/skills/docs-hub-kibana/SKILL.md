@@ -7,7 +7,7 @@ description: Maintain and update the Kibana product hub at products/kibana.md. U
 
 Edit `products/kibana.md` only. Do not invent a second Kibana hub. For What's new cards, use `docs-hub-whats-new` and `hub-whats-new.yml`. Do not edit the `{whats-new}` block beyond `:product: kibana`.
 
-Other hubs (`products/elasticsearch.md`, `products/elastic-stack.md`, `products/logstash.md`) are out of scope unless the user asks to extend this skill. The Solutions card-group is the exception: keep the same block on the Elasticsearch and Elastic Stack hubs.
+Other hubs (`products/elasticsearch.md`, `products/elastic-stack.md`, `products/logstash.md`) are out of scope unless the user asks to extend this skill. The "Elastic solutions" card-group is the exception: keep the same block on the Elasticsearch and Elastic Stack hubs. The Get started section is the other exception: the Kibana and Elastic Stack hubs use identical steps, so change both together.
 
 ## Before you edit
 
@@ -46,7 +46,7 @@ Keep this order:
 1. `{hero}`
 2. `{get-started}`
 3. `{whats-new}`
-4. Solutions (`id: solutions`)
+4. Elastic solutions (`id: solutions`)
 5. Three `{explore}` blocks, in this order. Each block has its own H2 title and intro, and each card-group inside becomes an accordion.
    - Explore Kibana (`id: explore`, the hero jump target): Quick links
    - Use Kibana (`id: use-kibana`, tasks for people who work with data):
@@ -71,13 +71,16 @@ When three or more high-traffic pages share a theme and no card fits, add a card
 
 - Title: `Get started with Kibana`.
 - No `intro`. The steps carry the story.
-- Keep three steps. The first step may fork Local | Cloud as one numbered step with `options`.
+- Keep three steps. The first step forks Local | Cloud as one numbered step with `options`.
+- Step 2 is "Add your data": "Bring in your data with Elastic Agent, a language client, or a connector." The link is `/manage-data/ingest.md` with the label "See ingest options".
+- Step 3 is "Explore and visualize": "Query your data in Discover, or start building charts." The link is `/explore-analyze/kibana-data-exploration-learning-tutorial.md` with the label "Start the tutorial".
+- The Elastic Stack hub uses the same three steps, with the same words and links. Only its section title differs ("Get started with the Elastic Stack"). Copy any change to `products/elastic-stack.md`. The Elasticsearch hub keeps its own steps.
 
 Visual experiments for this block live in docs-builder, not in this file.
 
-## Solutions
+## Elastic solutions
 
-The same Solutions card-group is on `products/elasticsearch.md` and `products/elastic-stack.md`, after What's new. When you change this block, copy the change to those two pages.
+The H2 is "Elastic solutions" on every hub that has the section. The same card-group is on `products/elasticsearch.md` and `products/elastic-stack.md`. On the Elastic Stack hub it follows the "Elastic Stack components" section and precedes "Deploy your Elastic Stack". When you change this block, copy the change to those two pages. The `solutions` anchor stays the same, and the Stack components intro links to it.
 
 Card order: Elasticsearch, Vector Database, Observability, Security.
 
@@ -143,6 +146,8 @@ Do not add a link only to even the count. Leave a card short when it has only tw
 
 Second person, present tense, active voice. Sentence case. No em dashes. No "click" or "choose".
 
+A card-group `:intro:` can hold inline links, for example `[Elastic solutions](#solutions)` or a `.md` path. The builder resolves them. Use `#anchor` for a section on the same page.
+
 Section intros speak to the reader. Do not restate the heading, and do not use phrases such as "purpose-built experiences" or "apps and capabilities that help you understand and act on your data."
 
 ## What not to do
@@ -151,7 +156,7 @@ Section intros speak to the reader. Do not restate the heading, and do not use p
 - Do not make card titles clickable.
 - Do not shuffle categories or cards without a traffic or balance reason. State the reason in the PR body.
 - Do not remove a link because it has low traffic.
-- Do not refresh What's new items here. Use `docs-hub-whats-new`.
+- Do not refresh What's new items here. Use `docs-hub-whats-new`. That includes the `availability` of each card and the Serverless-only cards.
 - Do not invent icons or screenshots.
 - Do not land get-started visual prototypes in this repo.
 - Do not put deprecated first-stop features on hub cards.

@@ -8,7 +8,7 @@ description: Refresh the What's new cards on Elastic product hub pages. Use when
 
 Update `hub-whats-new.yml` at the docs-content repo root. Hub pages render that file with `{whats-new}` and `:product: elasticsearch`, `kibana`, or `logstash`.
 
-The Elastic Stack hub does not use this file. It links to the Elasticsearch, Kibana, Elastic Agent, Logstash, and Beats release notes with a regular `{card-group}`. The Elasticsearch and Kibana cards have no title link. Each lists a Serverless changelog link and a Stack release notes link. Neither link names a version, so a Stack release does not change them. Solution release notes stay in the Solutions section. Do not add a description that only repeats the card title.
+The Elastic Stack hub does not use this file. Its "Elastic Stack components" section is a regular `{card-group}` with one card each for Elasticsearch, Kibana, Logstash, Elastic Agent, and Beats. Each card links to the product hub or home page, the release notes, and the reference. The release notes links do not name a version, so a Stack release does not change them. Solution release notes stay in the Elastic solutions section. Do not add a description that only repeats the card title.
 
 ## When to run
 
@@ -34,13 +34,16 @@ Schema: [what's new directive](https://elastic.github.io/docs-builder/syntax/wha
 For each of `elasticsearch`, `kibana`, and `logstash`:
 
 - Keep `id: whats-new` so the hub hero can jump to the panel.
+- Set `intro` to `Highlights from recent releases.` The panel mixes cards from stack releases and from Serverless, so the intro names neither.
 - Add two `release-links` entries when the product has a stack stream and a serverless stream:
-  - Stack minor label (for example `9.5`) pointing at that minor's `.0` heading, for example `kibana://release-notes/index.md#kibana-9.5.0-release-notes`.
+  - The label is the substitution `'{{version.stack}}'`, so a patch release does not mean editing the file. Point it at the top of the release notes page, for example `kibana://release-notes/index.md`. Do not link to a `.0` heading.
   - `Serverless` pointing at `/release-notes/elastic-cloud-serverless/index.md`.
-- If the product has only a stack stream, one `release-links` entry is enough.
+- If the product has only a stack stream, as Logstash does, one `release-links` entry is enough.
 - One `upgrade-link` pointing at that product's upgrade page. For Kibana, use `/deploy-manage/upgrade/deployment-or-cluster.md` (all deployment types), not the self-managed Kibana upgrade page. The label can still be `Upgrade Kibana`.
-- Four or five `items`. Mark **one** item `featured: true`.
-- `date` is the minor version, for example `9.5`.
+- Exactly five `items`. Mark **one** item `featured: true`. The panel grid has three columns and the featured card takes two, so five cards fill every row. Four or six leave a short last row.
+- `availability` is a list that says where the feature is available, taken from the `applies_to` tags on the page the card links to. Use `'9.5'` for a feature in the stack minor and `Serverless` for a feature on Serverless. When a card has both, write the stack version first, as in `'9.5'` then `Serverless`. Do not use `date`. It is only a fallback for an item with no availability.
+- Serverless ships between stack releases, so a feature can be Serverless only. Put those cards first, with `availability: [Serverless]`. Confirm the page is tagged for Serverless and for no released stack version, or that its stack tag starts in a later version, for example `serverless: preview` with `stack: preview 9.6+`. Take candidates from the [Serverless changelog](https://www.elastic.co/docs/release-notes/elastic-cloud-serverless), and keep only features that have a documentation page to link to. A Serverless-only card is not a requirement. If no documented feature qualifies, do not add one.
+- When a feature is in preview on the stack and generally available on Serverless, or the reverse, it is not Serverless only. Give it both entries and state the difference in the `description`.
 - `tag` is a short category (Storage, Dashboards, Monitoring).
 - `title` and `description` are sentence case, present tense, second person or impersonal. No em dashes. Do not use "click" or "choose".
 - Say "Generally available" or "Technical preview" in the description when the release notes do.
@@ -69,4 +72,4 @@ If a highlight has no documentation page yet, link to the product release notes 
 
 Title: `Refresh hub What's new cards for <version>`.
 
-Body must list the items you kept, the sources you read (release notes URLs and blog URL), and any pending links.
+Body must list the items you kept, the sources you read (release notes URLs, blog URL, and the Serverless changelog when you added a Serverless-only card), the `applies_to` tag you used for each `availability`, and any pending links.
