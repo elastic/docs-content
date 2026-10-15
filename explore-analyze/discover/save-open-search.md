@@ -83,7 +83,9 @@ To change the limits, use the `xpack.reporting.csv.maxSizeBytes` setting and, in
 
 ::::
 
-If you need more rows than the limit allows, use filters to create several smaller reports, or query {{es}} directly. Refer to [CSV report limitations](../report-and-share.md#csv-limitations).
+If you need more rows than the limit allows, use filters to create several smaller reports, or query {{es}} directly.
+
+An export can also time out or return incomplete data for reasons unrelated to these limits, such as slow storage, an unavailable shard, or high network latency. For the common causes, refer to [CSV report limitations](../report-and-share.md#csv-limitations).
 
 To generate the same export automatically, from a script, {{watcher}}, or on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
 
