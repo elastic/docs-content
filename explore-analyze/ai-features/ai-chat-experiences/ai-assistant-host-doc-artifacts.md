@@ -59,7 +59,7 @@ Download the ZIP files from [kibana-knowledge-base-artifacts.elastic.co](https:/
 
 ::::{step} Upload the ZIP files to your bucket
 
-Upload all ZIP files to the bucket root so they share a single HTTPS base path. You add the listing XML in the next step.
+Upload all ZIP files to the bucket root so they share a single HTTPS base path.
 
 ::::
 
