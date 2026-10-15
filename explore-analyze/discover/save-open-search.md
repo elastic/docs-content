@@ -56,7 +56,7 @@ If the saved Discover session is associated with a different {{data-source}} tha
 
 To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file. To start, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**, then generate the report.
 
-Your CSV file might not contain every row of your results. The export stops at the first limit that it reaches, either a number of rows or a file size. Classic mode uses data views with KQL or Lucene.
+Your CSV file might not contain every row of your results. The export stops at the first limit that it reaches, either a number of rows or a file size.
 
 ::::{applies-switch}
 
