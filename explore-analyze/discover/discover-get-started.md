@@ -6,7 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Follow this tutorial to explore sample data or your own data in Discover. Select a data view, filter documents, analyze fields, and create visualizations.
+description: Follow this tutorial to learn how to explore your data in Discover. Filter documents, analyze fields, and create visualizations with sample data or your own.
 ---
 
 # Explore fields and data with Discover [discover-get-started]
