@@ -93,7 +93,7 @@ RUN update-ca-trust extract
 USER elasticsearch
 ```
 
-For `-wolfi` images, use `update-ca-certificates` instead of `update-ca-trust extract`.
+For `-wolfi` images, copy the certificate to `/usr/local/share/ca-certificates/` and run `update-ca-certificates` instead of `update-ca-trust extract`.
 :::
 ::::
 
