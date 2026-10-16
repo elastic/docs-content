@@ -229,6 +229,7 @@ Exemplars are only stored when you send remote write requests directly to the {{
 
 {{es}} stores exemplars in a time series data stream named after the metrics data stream of their time series: exemplars of time series routed to `metrics-<dataset>.prometheus-<namespace>` are written to `exemplars-<dataset>.prometheus-<namespace>`.
 [Routing](#send-data-to-different-data-streams) by URL path or by labels applies to exemplars in the same way as to samples.
+
 Each exemplar is stored as its own document:
 
 | Prometheus concept | {{es}} field | Description |
