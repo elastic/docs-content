@@ -11,6 +11,10 @@ type: how-to
 
 Install and configure an official {{es}} language client to connect to a project or cluster.
 
+:::{note}
+To try things out without installing a client, you can also work with {{es}} data in the {{kib}} [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md).
+:::
+
 :::::::{stepper}
 
 ::::::{step} Connect to your project
