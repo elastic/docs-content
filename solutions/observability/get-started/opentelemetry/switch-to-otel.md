@@ -42,7 +42,7 @@ Switching to {{edot}} brings several advantages over classic Elastic {{product.a
 - Use standardized OpenTelemetry APIs and conventions, which means you're not tied to a single vendor's instrumentation API.
 - Leverage the OpenTelemetry community's growing library of instrumentation packages.
 - Use a single {{agent}} instance to run OTel-native receivers alongside existing Beat-based inputs, collecting traces, metrics, and logs through one process.
-- Optimize storage. OTel-native data is stored in LogsDB (logs and traces) and Time Series Data Streams (metrics), which are designed for scalable observability workloads.
+- Optimize storage. OTel-native data is stored in LogsDB (logs and traces) and {{tsdses}} (metrics), which are designed for scalable observability workloads.
 
 ### What you lose or trade off [switch-to-otel-tradeoffs]
 
@@ -90,16 +90,16 @@ Replace each classic {{apm-agent}} with the corresponding EDOT SDK. Dedicated mi
 |---|---|---|
 | Java | [Migrate to EDOT Java](elastic-otel-java://reference/edot-java/migration.md) | Breakdown metrics, span compression, and remote attach not available. JVM runtime metric names changed. LDAP client instrumentation missing. Micrometer off by default. |
 | Python | [Migrate to EDOT Python](elastic-otel-python://reference/edot-python/migration.md) | Breakdown metrics and span compression not available. Custom {{aws}} Lambda layer not available. Several libraries missing (`aiobotocore`, `Sanic`, `pyodbc`, and others). No structlog integration. |
-| Node.js | [Migrate to EDOT Node.js](elastic-otel-node://reference/edot-node/migration.md) | Requires Node.js ^18.19.0 \|\| >=20.6.0 (classic agent supports >=14.17.0). No built-in {{aws}} Lambda or Azure Functions instrumentation. Span compression not available. |
+| Node.js | [Migrate to EDOT Node.js](elastic-otel-node://reference/edot-node/migration.md) | Requires Node.js >=22.15.0 (classic agent supports >=14.17.0). No built-in {{aws}} Lambda or Azure Functions instrumentation. Span compression not available. |
 | .NET | [Migrate to EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/migration.md) | Stacktrace capture and span compression not available. Central configuration available since EDOT .NET 1.4.0; configuration changes apply at startup, not at runtime. |
 | PHP | [Migrate to EDOT PHP](elastic-otel-php://reference/edot-php/migration.md) | Span compression, breakdown metrics, `capture_errors`, and `sanitize_field_names` not available. |
 | iOS | No dedicated guide | Use the [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md) setup docs to replace the classic Elastic iOS {{apm-agent}}. |
 | Android | No dedicated guide | Use the [EDOT Android](apm-agent-android://reference/edot-android/index.md) setup docs to replace the classic Elastic Android {{apm-agent}}. |
 | Browser / RUM | No dedicated guide | {applies_to}`edot_browser: preview` Use the [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md) setup docs. For production RUM, continue using the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md). |
 
-### If you use contrib OpenTelemetry SDKs or Jaeger [switch-to-otel-upstream]
+### If you use upstream OpenTelemetry SDKs or Jaeger [switch-to-otel-upstream]
 
-If your applications already use contrib (upstream) OpenTelemetry SDKs that send data to the {{apm-server}} OTLP intake, you don't need to change your instrumentation. That intake is a legacy path: point your OTLP exporter at the {{motlp}} or an {{agent}} gateway instead, as described in [Ingestion path change](#switch-to-otel-ingestion). You can optionally move to the corresponding EDOT SDK to get Elastic support and opinionated defaults.
+If your applications already use upstream OpenTelemetry SDKs that send data to the {{apm-server}} OTLP intake, you don't need to change your instrumentation. That intake is a legacy path: point your OTLP exporter at the {{motlp}} or an {{agent}} gateway instead, as described in [Ingestion path change](#switch-to-otel-ingestion). You can optionally move to the corresponding EDOT SDK to get Elastic support and features such as central configuration.
 
 If you send traces through the deprecated [Jaeger integration](../../apm/ingest/jaeger.md), migrate your applications to OpenTelemetry SDKs. Jaeger clients are deprecated upstream in favor of OpenTelemetry.
 
@@ -216,6 +216,8 @@ You can run classic and EDOT instrumentation in parallel during a phased rollout
 ### Running both agents during transition [switch-to-otel-parallel]
 
 You can run a classic {{apm-agent}} and an EDOT SDK simultaneously during a phased rollout, as long as they serve different service instances or use distinct `OTEL_SERVICE_NAME` values. Both ingestion paths ({{apm-server}} for classic agents, and the {{motlp}} or {{agent}} in OTel mode for EDOT SDKs) can be active at the same time, so you can migrate one service at a time and verify before switching the rest.
+
+You can also mix instrumentation across components. For example, instrument your backend services with EDOT SDKs while keeping the classic Elastic {{product.apm}} browser agent for production RUM. Distributed tracing still connects the frontend and backend traces.
 
 :::{note}
 Don't run both a classic {{apm-agent}} and an EDOT SDK inside the same process instance. Use one or the other per service instance.
