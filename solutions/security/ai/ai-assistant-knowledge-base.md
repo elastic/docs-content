@@ -32,7 +32,7 @@ We strongly recommend you [enable autoscaling](/deploy-manage/autoscaling.md#clu
 
 ## Role-based access control (RBAC) for Knowledge Base [knowledge-base-rbac]
 
-The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant and access its settings. To grant its sub-feature privileges individually, turn on **Customize sub-feature privileges**. For the full list, refer to [Elastic AI Assistant sub-feature privileges](/solutions/security/get-started/security-kibana-privileges.md#elastic-ai-assistant-sub-feature-privileges).
+The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant and access its settings. To grant its sub-feature privileges individually, turn on **Customize sub-feature privileges**. For the full list, refer to [Elastic AI Assistant sub-feature privileges](/solutions/security/manage/security-kibana-privileges.md#elastic-ai-assistant-sub-feature-privileges).
 
 :::{image} /solutions/images/security-knowledge-base-rbac.png
 :alt: Knowledge base's RBAC settings

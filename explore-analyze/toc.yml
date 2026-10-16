@@ -48,6 +48,8 @@ toc:
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/external.md
+        children:
+          - file: elastic-inference/external-inference-private-ca.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
@@ -287,6 +289,7 @@ toc:
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
       - file: ai-features/claude-plugin.md
+      - file: ai-features/claude-connector.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:
           - file: ai-features/llm-guides/connect-to-azure-openai.md
