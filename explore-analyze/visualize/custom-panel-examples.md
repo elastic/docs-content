@@ -1138,24 +1138,31 @@ FROM kibana_sample_data_logs
 :::{dropdown} Template
 ```html
 <style>
-  body { margin: 0; padding: 12px; font-family: Inter, system-ui, sans-serif; color: var(--cc-color-text); background: var(--cc-color-background); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-  .card { background: var(--cc-color-surface); border-radius: 8px; padding: 16px; }
-  .title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-  .desc { font-size: 13px; opacity: 0.8; margin-bottom: 12px; }
-  a.open { color: var(--cc-color-primary); font-weight: 600; text-decoration: underline; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--cc-space-m); }
+  .card { --accent: var(--cc-color-primary); display: flex; flex-direction: column; align-items: flex-start; background: var(--cc-color-surface); border: 1px solid var(--cc-color-border); border-top: 3px solid var(--accent); border-radius: var(--cc-radius); padding: var(--cc-space-l); }
+  .card.discover { --accent: var(--cc-color-accent); }
+  .icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-bottom: var(--cc-space-m); border-radius: 50%; color: var(--accent); background: color-mix(in srgb, var(--accent) 15%, transparent); }
+  .title { margin: 0 0 var(--cc-space-xs); font-size: 16px; font-weight: 600; }
+  .desc { margin: 0 0 var(--cc-space-m); font-size: 13px; opacity: 0.8; }
+  .open { margin-top: auto; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; text-decoration: none; color: var(--accent); background: color-mix(in srgb, var(--accent) 15%, transparent); }
 </style>
 {% assign requests = rows[0]["requests"].value %}
 <div class="grid">
   <div class="card">
-    <div class="title">Dashboards</div>
-    <div class="desc">Browse all dashboards in this space.</div>
-    <a class="open" href="/app/dashboards">Open dashboards</a>
+    <div class="icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
+    </div>
+    <h3 class="title">Dashboards</h3>
+    <p class="desc">Browse and open your saved dashboards.</p>
+    <a class="open" href="/app/dashboards">Open &rarr;</a>
   </div>
-  <div class="card">
-    <div class="title">Discover</div>
-    <div class="desc">{{ requests }} web requests in the selected time range.</div>
-    <a class="open" href="/app/discover">Open Discover</a>
+  <div class="card discover">
+    <div class="icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l5 5"/></svg>
+    </div>
+    <h3 class="title">Discover</h3>
+    <p class="desc">Explore the {{ requests }} web requests in the selected time range.</p>
+    <a class="open" href="/app/discover">Open &rarr;</a>
   </div>
 </div>
 ```
