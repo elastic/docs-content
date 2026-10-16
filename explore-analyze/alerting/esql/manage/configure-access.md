@@ -123,7 +123,7 @@ To create rules and action policies with [{{agent-builder}}](../rules/create-rul
 
 ## Query rule output and alert data [alerting-data-investigation-privileges]
 
-{{alerting-v2-system-cap}} writes rule output and alert data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
+{{alerting-v2-system-cap}} writes rule output and alert data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access to Discover. For rule events and alert actions, the **Alerts** privilege also provides the {{es}} index access you need. Dispatch outcomes need a custom role.
 
 ### {{kib}} feature access
 
@@ -131,12 +131,14 @@ Set Discover privileges under **Analytics** → **Discover** in {{kib}} role man
 
 ### {{es}} index access [alerting-index-access]
 
-Granting **Alerts: All** or **Alerts: Read** also gives the role {{es}} `read` access to `.rule-events` and `.alert-actions` in the role's spaces, so you don't need a custom role for them. For `.kibana-event-log-*`, you still need a custom role.
+Granting **Alerts: All** or **Alerts: Read** also gives the role {{es}} `read` access to `.rule-events` and `.alert-actions`, limited to the spaces where the role has the privilege. You don't need a custom role to query them in those spaces. For `.kibana-event-log-*`, you need a custom role.
+
+To query `.rule-events` or `.alert-actions` across every space, grant `read` on the index in a custom role. A direct index `read` grant isn't limited by space, so the role can read data from all spaces.
 
 | Data source | What it stores | How to grant access |
 |---|---|---|
-| `.rule-events` | One [rule event](../rules/rule-event-field-reference.md) per matching row, per run | Automatic. If access is missing, grant `read` using a custom role as a fallback. |
-| `.alert-actions` | User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [field reference](../alerts/field-reference.md). | Automatic. If access is missing, grant `read` using a custom role as a fallback. |
+| `.rule-events` | One [rule event](../rules/rule-event-field-reference.md) per matching row, per run | Included with the **Alerts** privilege, limited to the role's spaces. To query every space, use a custom role with `read` index privilege. |
+| `.alert-actions` | User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [field reference](../alerts/field-reference.md). | Included with the **Alerts** privilege, limited to the role's spaces. To query every space, use a custom role with `read` index privilege. |
 | `.kibana-event-log-*` | Action policy dispatch outcomes written by the dispatcher: `dispatched`, `throttled`, and `unmatched` | Custom role with `read` index privilege |
 
 ## Set up rules and notifications [alerting-access-next-steps]
