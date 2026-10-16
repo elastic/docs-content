@@ -81,13 +81,13 @@ To target a non-default {{kib}} space, include `/s/<space-id>` in the {{kib}} UR
 The `kibana-context-engine` skill supplies the retrieval procedure and the Elastic CLI commands that Claude Code needs.
 
 :::{note}
-The skill is not yet publicly available. This draft will be updated with its supported installation path before publication.
+Elastic publishes its public skills through the [Elastic agent skills repository](https://github.com/elastic/agent-skills) and bundles them in the [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md). The `kibana-context-engine` skill is not yet included in either public distribution. This draft will be updated with its supported installation path before publication.
 :::
 
 <!--
 Install the [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md), which includes the `kibana-context-engine` skill.
 
-Tracked by https://github.com/elastic/search-team/issues/16314. Replace this comment with the supported installation steps after the skill is publicly available and its distribution through the Elastic plugin for Claude is confirmed.
+Tracked by https://github.com/elastic/search-team/issues/16314. Replace this comment with the supported installation steps after the skill is published and its inclusion in the Elastic plugin for Claude is confirmed.
 -->
 
 After installing or updating the skill, start a new Claude Code session. Run `/skills` and confirm that `kibana-context-engine` is available.
@@ -137,6 +137,11 @@ Use the following table to resolve common setup and retrieval problems:
 | `elastic kb context-engine` is not a recognized command. | Update the Elastic CLI to version 0.7.0 or later. |
 
 For additional API-level failures, refer to [Troubleshoot retrieval](retrieve-context-from-ai-index.md#troubleshoot-retrieval).
+
+## Related Claude integrations
+
+- The [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md) installs public Elastic agent skills and connects Claude to the Elastic Docs MCP server. It does not connect Claude to your deployment data.
+- The [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md) connects Claude on the web or desktop to the {{agent-builder}} MCP server for a {{serverless-full}} project. This is a separate access path from the local skill and Elastic CLI described on this page.
 
 <!--
 ## Next step
