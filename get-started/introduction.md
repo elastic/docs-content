@@ -10,7 +10,7 @@ applies_to:
   serverless:
 ---
 
-# Solutions overview [introduction]
+# Elastic solutions overview [introduction]
 
 Elastic offers four search-powered solution and project types, all built on an open source, extensible [platform](/get-started/the-stack.md): {{es}}, {{es}} {{vectordb}}, Elastic {{observability}}, and {{elastic-sec}}.
 
