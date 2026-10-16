@@ -82,8 +82,6 @@ Select **Add destination**. Then open the destination's **More actions** menu an
     | SORT @timestamp DESC
     ```
 
-    % TODO(test): Confirm the data stream and field names on test data, and whether `claude-platform` also appears as a service in the Applications UI.
-
     The test span from the previous section is named `anthropic.test`.
 
 The main spans that the Claude Platform sends are:
@@ -97,7 +95,7 @@ The main spans that the Claude Platform sends are:
 
 To group the spans of one Managed Agents session across traces, filter on `anthropic.session.id`. For every span and attribute, refer to the [OpenTelemetry span reference](https://platform.claude.com/docs/en/api/opentelemetry/spans) in the Anthropic documentation.
 
-## Send Claude SDK spans toe Elastic from your application [send-sdk-spans]
+## Send Claude SDK spans to Elastic from your application [send-sdk-spans]
 
 To see the work your application does around each Claude API request in the same trace, send the Claude SDK spans to Elastic too. The following Python example configures the exporter with the standard OpenTelemetry environment variables, the same way you configure any OpenTelemetry SDK for the {{motlp}}.
 
@@ -161,10 +159,6 @@ FROM traces-*
     output_tokens = SUM(attributes.gen_ai.usage.output_tokens)
   BY attributes.gen_ai.request.model
 ```
-
-% TODO: This ES|QL query isn't tested, it should either be tested or replaced with a query from testing.
-
-% TODO(devs): We could add a Troubleshooting section based on findings from end-to-end testing.
 
 ## Related pages
 
