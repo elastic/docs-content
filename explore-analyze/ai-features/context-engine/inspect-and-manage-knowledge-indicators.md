@@ -102,7 +102,7 @@ The following examples show the inputs for each operation.
 
 Use `context-engine.createKi` with `verifiers` to check a KI before writing it. This is the recommended approach when a KI must pass verification before it becomes available for retrieval. Set `ki_id` to a stable value when later runs must address the same logical KI.
 
-The following example uses a custom verifier workflow. First create and enable the verifier described in [Add a custom verifier](#add-custom-ki-verifier), then replace `YOUR_VERIFIER_WORKFLOW_ID` with its workflow ID.
+The following example combines the built-in `esql-valid-syntax` verifier with a custom verifier workflow. `check-ki-content` is the name of the workflow defined in [Add a custom verifier](#add-custom-ki-verifier). Create and enable that workflow before running this step.
 
 ```yaml
 - name: create_ki
@@ -111,7 +111,8 @@ The following example uses a custom verifier workflow. First create and enable t
     ai_index_id: "support-context"
     ki_id: "account-123-support-connection-456-cases"
     verifiers:
-      - workflow_id: "YOUR_VERIFIER_WORKFLOW_ID"
+      - "esql-valid-syntax"
+      - workflow_id: "check-ki-content"
     ki:
       type: "support.recurring_issue"
       title: "Recurring support case patterns"
@@ -138,12 +139,12 @@ For KIs that contain ES|QL, you can also add the built-in `esql-valid-syntax` an
 
 ### Add a custom verifier [add-custom-ki-verifier]
 
-A custom verifier is a workflow that receives the candidate KI as `inputs.ki` and returns a boolean `passed` result, with an optional `reason`. Create and enable the workflow in the same Kibana space as the calling workflow. Use its workflow ID in the `verifiers` list.
+A custom verifier is a workflow that receives the candidate KI as `inputs.ki` and returns a boolean `passed` result, with an optional `reason`. Create and enable the workflow in the same Kibana space as the calling workflow. Use the workflow's `name` value as its `workflow_id` in the `verifiers` list.
 
 For example, this verifier rejects a KI when its `content` field is missing or empty:
 
 ```yaml
-name: Check KI content
+name: check-ki-content
 enabled: true
 triggers:
   - type: manual
