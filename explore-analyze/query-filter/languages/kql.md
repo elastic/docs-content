@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: kibana
 type: overview
-description: Use Kibana Query Language (KQL) to filter documents in Discover, dashboards, and other Kibana apps by value, range, wildcard, or boolean condition.
+description: Kibana Query Language (KQL) is a language for filtering data in Kibana. Learn KQL syntax for field values, ranges, wildcards, and combined conditions.
 ---
 
 # {{kib}} Query Language (KQL) syntax [kuery-query]
