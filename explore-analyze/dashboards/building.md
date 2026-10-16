@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboards.html
-description: Choose how to create Kibana dashboards — from the UI, programmatically using REST APIs, or using AI-powered tools — and find the right starting point for your workflow.
+description: Decide whether to build a Kibana dashboard from the UI, with REST APIs, or with AI tools, based on how you work and what you need to automate.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,11 +10,9 @@ products:
 type: overview
 ---
 
-# Building dashboards [create-dashboards]
+# Ways to build a dashboard [create-dashboards]
 
-{{product.kibana}} offers many ways to build powerful dashboards that help you visualize and keep track of the most important information in your {{product.elasticsearch}} data. Combine multiple visualizations, metrics, and interactive elements into a cohesive view that tells your data story and enables rapid decision-making.
-
-Use the following table to find the right approach for building your dashboards, then follow the link to get started.
+You can build a dashboard from the UI, with REST APIs, or with AI. Use the following table to find the approach that fits how you work, then follow the link to get started. To learn what a dashboard is, refer to [](../dashboards.md).
 
 | Approach | When to use this | What you get |
 |---|---|---|
