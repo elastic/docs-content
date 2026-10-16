@@ -24,7 +24,6 @@ When you assign an [AI index](concepts.md#ai-indices) to an {{agent-builder}} ag
 You need:
 
 - {{context-engine}} enabled in the current {{kib}} space.
-- Experimental features enabled in {{agent-builder}}. The `ki-retrieval` skill is not included unless both settings are on.
 - An AI index that contains at least one KI. To create one, follow the [{{context-engine}} quickstart](quickstart.md).
 - Access to create or edit an {{agent-builder}} agent and read the AI index.
 - Access to the underlying data and an appropriate agent tool if the agent must query source data.
@@ -43,7 +42,7 @@ The list contains AI indices registered in the current space that you can access
 
 ## How retrieval is provided
 
-With both settings enabled, {{agent-builder}} automatically includes the `ki-retrieval` skill for chat agents. You cannot remove the skill from an individual agent. When the agent loads the skill, it receives three dedicated {{context-engine}} retrieval tools:
+When {{context-engine}} is enabled, {{agent-builder}} automatically includes the `ki-retrieval` skill for chat agents. You cannot remove the skill from an individual agent. When the agent loads the skill, it receives three dedicated {{context-engine}} retrieval tools:
 
 - `platform.context_engine.list_ai_indices` lists the accessible AI indices and their query targets.
 - `platform.context_engine.describe_ai_index` returns the selected AI index's purpose, fields, KI types, tags, and example queries.

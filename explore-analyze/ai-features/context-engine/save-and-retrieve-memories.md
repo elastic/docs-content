@@ -29,7 +29,6 @@ You need:
 
 - An {{stack}} 9.6 deployment with an Enterprise license, or an {{serverless-full}} project.
 - {{context-engine}} enabled in the current {{kib}} space.
-- Experimental features enabled in {{agent-builder}}.
 - Permission to change global [Advanced Settings](kibana://reference/advanced-settings.md).
 - The **All** privilege for the **Context Engine** feature.
 - Permission to create or edit a custom {{agent-builder}} agent.
@@ -67,7 +66,7 @@ Assign the memory-enabled AI index to a custom agent:
 4. In **AI Indices**, select the memory-enabled AI index under **Additional indices**.
 5. Save the agent, then start a new conversation with it.
 
-With {{context-engine}} and experimental {{agent-builder}} features enabled, {{agent-builder}} automatically includes the `ki-retrieval` skill for chat agents. When the agent loads the skill, it receives the following retrieval tools:
+With {{context-engine}} enabled, {{agent-builder}} automatically includes the `ki-retrieval` skill for chat agents. When the agent loads the skill, it receives the following retrieval tools:
 
 - `platform.context_engine.list_ai_indices`
 - `platform.context_engine.describe_ai_index`
@@ -154,7 +153,7 @@ The following issues are specific to memory setup and retrieval:
 
 | Problem | What to check |
 | --- | --- |
-| The memory controls, skill, or tools are unavailable. | Confirm that **Context Engine memory** is enabled under **Global Settings**, {{context-engine}} is enabled in the current space, and experimental features are enabled in {{agent-builder}}. Changes to the {{context-engine}} setting can take up to five minutes to affect the skill. |
+| The memory controls, skill, or tools are unavailable. | Confirm that **Context Engine memory** is enabled under **Global Settings** and that {{context-engine}} is enabled in the current space. Changes to the {{context-engine}} setting can take up to five minutes to affect the skill. |
 | The agent cannot save or forget a memory. | Confirm that memory is enabled for the assigned AI index and that the user has the **All** privilege for **Context Engine** and `write` access to the backing index. |
 | The agent uses the wrong AI index. | Assign only the relevant AI indices and make each index's name and description specific to the context it contains. |
 | A new conversation does not retrieve a memory. | Confirm that the memory has not expired or been forgotten, and that the same AI index is assigned to the agent. |
