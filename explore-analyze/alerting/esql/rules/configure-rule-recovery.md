@@ -14,19 +14,41 @@ Recovery condition settings are optional for {{alerting-v2-system}} rules that g
 
 ## Recovery strategy [recovery-strategy-options]
 
-Choose one of the following options. Each maps to a `recovery_strategy` value if you're editing YAML directly.
+Choose one of the following options in the **Recovery** field. Each maps to a recovery strategy value if you're editing YAML directly.
+
+:::::{applies-switch}
+
+::::{applies-item} { serverless: ga, stack: ga 9.6+ }
+
+| Option | `recovery.strategy` value | Description |
+| --- | --- | --- |
+| Default recovery | `no_breach` | Recovers an alert when its group no longer breaches. If you set **No data behavior** to anything other than **Do nothing**, {{kib}} also checks that the group still has data. That confirms the group is actually healthy, not just missing from the data. This is the default and covers most rules. |
+| Custom recovery | `condition` | Recovers an alert when the base query plus a separate recovery condition returns the group. This option requires an alert condition. Without one, every row of the base query already breaches and the alert could never recover. |
+| No recovery | `manual` | Turns off automatic recovery. Alerts stay open until closed manually. |
+
+The rule form doesn't offer the `query` strategy, which evaluates an independent recovery query with its own `FROM` clause. To use it, set it in YAML. Refer to the [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-strategy).
+
+:::{note}
+If you omit `recovery` in the YAML editor of the rule form, {{kib}} uses **Default recovery**.
+:::
+::::
+
+::::{applies-item} stack: experimental =9.5
 
 | Option | `recovery_strategy` value | Description |
 | --- | --- | --- |
-| Default | `no_breach` | Recovers an alert when its group no longer breaches and the base query (without the alert condition) still returns that group. That confirms the group is actually healthy, not just missing from the data. This is the default and covers most rules. |
-| Custom recovery | `query` | Evaluates a separate recovery condition. A match recovers the alert. No match falls back to the same base-query check as **Default**. |
+| Default recovery | `no_breach` | Recovers an alert when its group no longer breaches and the base query (without the alert condition) still returns that group. That confirms the group is actually healthy, not just missing from the data. This is the default and covers most rules. |
+| Custom recovery | `query` | Evaluates a separate recovery condition. A match recovers the alert. No match falls back to the same base-query check as **Default recovery**. |
 | No recovery | `none` | Turns off automatic recovery entirely. Alerts stay open until closed manually. With recovery turned off, no-data handling doesn't run either. |
 
 :::{note}
 An unset `recovery_strategy` behaves the same as **No recovery**, but unset usually means the setting was overlooked rather than a deliberate choice.
 :::
+::::
 
-An empty base query result triggers [no-data handling](configure-no-data-handling.md) for rules using **Default** or **Custom recovery**.
+:::::
+
+An empty base query result triggers [no-data handling](configure-no-data-handling.md) for rules using **Default recovery** or **Custom recovery**.
 
 ### When to change the recovery strategy [recovery-strategy-when-to-use]
 
@@ -38,7 +60,7 @@ Choose **No recovery** when:
 
 * Alerts for this rule should never close automatically, because closing should always be a deliberate decision, such as for a security investigation that isn't necessarily resolved just because the query stopped matching.
 
-Leave the recovery strategy set to **Default** when:
+Leave the recovery strategy set to **Default recovery** when:
 
 * The breach condition no longer matching is a reliable enough signal that the problem is resolved. This covers most rules.
 
@@ -54,6 +76,25 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 
 ### Recovery delay fields
 
+:::::{applies-switch}
+
+::::{applies-item} { serverless: ga, stack: ga 9.6+ }
+
+| Field | Type | Accepted values | Description |
+| --- | --- | --- | --- |
+| `state_transition.recovering.count` | integer | 0–1000 | Consecutive recoveries the alert spends in `recovering` before it becomes `inactive` on the next recovery. Set to `0` to close the alert on the first recovery. |
+| `state_transition.recovering.timeframe` | duration | Any duration string | How long the condition must remain non-breaching before the alert closes. |
+| `state_transition.recovering.operator` | string | `and` or `or` | When you set both `count` and `timeframe`, controls whether both must be satisfied (`and`) or either one is enough (`or`). Defaults to `or`. |
+
+Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
+
+A rule with **No recovery** (`manual`) can't set `state_transition.recovering`, because a recovery delay has no effect when alerts never recover on their own.
+
+You can combine Recoveries and Duration by setting both `count` and `timeframe`. Use `operator: and` to require both conditions before the alert closes, or `operator: or` if either condition alone is enough. For field details, refer to the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields).
+::::
+
+::::{applies-item} stack: experimental =9.5
+
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
 | `recovering_count` | integer | 0–1000 | Number of consecutive non-breaching evaluations required before the alert closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
@@ -67,6 +108,9 @@ In the YAML rule schema, these fields are prefixed with `state_transition.`. For
 :::
 
 You can combine Recoveries and Duration by setting both `recovering_count` and `recovering_timeframe`. Use `recovering_operator: AND` to require both conditions before the alert closes, or `recovering_operator: OR` if either condition alone is enough.
+::::
+
+:::::
 
 ## Examples
 
@@ -80,7 +124,7 @@ Create a rule that detects a potential security incident. Even after the query s
 
 ### Require consecutive recoveries before closing an alert
 
-Create a rule that monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3` to require 3 consecutive non-breaching evaluations before closing the alert. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
+Create a rule that monitors database connection pool saturation. After the condition clears, set the recovery delay mode to **Recoveries** and **Consecutive recoveries** to `3` to require 3 consecutive non-breaching evaluations before closing the alert. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
 
 ## Related pages
 
