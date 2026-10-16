@@ -1,6 +1,6 @@
 ---
 navigation_title: Examples
-description: Ready-to-use custom panel templates for Kibana dashboards, from a Sankey diagram to navigation cards, with the ES|QL queries that feed them.
+description: Ready-to-use custom panel examples for Kibana dashboards, each with its ES|QL query, Liquid template, and screenshot, from a Sankey diagram to a status board.
 applies_to:
   stack: preview 9.6+
   serverless: preview
@@ -1123,7 +1123,7 @@ FROM kibana_sample_data_ecommerce
 ```
 :::
 
-## Navigation cards [custom-panel-examples-navigation]
+## Link to dashboards or Discover [custom-panel-examples-links]
 
 Cards that open dashboards or **Discover**, with a live value on the card that leads to the data behind it. The links follow the rules in [Link to dashboards and Discover](custom-panels.md#custom-panels-links). Links don't open in **Run preview**, so save the dashboard to try them. Sample data: **Sample web logs**.
 
