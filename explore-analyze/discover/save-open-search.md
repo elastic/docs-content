@@ -61,7 +61,7 @@ Your CSV file might not contain every row of your results. The export stops at t
 ::::{applies-switch}
 
 :::{applies-item} serverless: ga
-* **{{esql}} mode:** 10,000 rows or 250 MB, whichever comes first, because {{es}} caps the rows that an {{esql}} query returns at 10,000. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so the {{kib}} limit of 100,000 rows counts instead. A `LIMIT` in your query can make the row limit lower. The report doesn't warn you when it stops. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **{{esql}} mode:** 10,000 rows or 250 MB, whichever comes first, because {{es}} caps the rows that an {{esql}} query returns at 10,000. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so the {{kib}} limit of 100,000 rows counts instead. A `LIMIT` in your query can make the row limit lower. The report doesn't warn you when it hits the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
 * **Classic mode:** 100,000 rows or 250 MB, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
 
 You can't change the limits in either mode.
