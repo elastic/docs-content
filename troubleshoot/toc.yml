@@ -53,6 +53,8 @@ toc:
               - file: elasticsearch/diagnosing-invalid-repositories.md
           - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
+        children:
+          - file: elasticsearch/troubleshooting-search-relevance.md
       - file: elasticsearch/start-ilm.md
       - file: elasticsearch/index-lifecycle-management-errors.md
       - file: elasticsearch/file-based-recovery.md
