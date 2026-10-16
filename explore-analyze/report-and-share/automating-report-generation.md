@@ -12,7 +12,7 @@ products:
 
 Generate PDF, PNG, and CSV reports automatically instead of exporting them by hand each time. Available methods and export formats vary by deployment type. Choose the approach that fits your workflow:
 
-* **[Trigger reports with a POST URL](#create-a-post-url)**: Trigger a report from a script or {{watcher}}.
+* {applies_to}`serverless: unavailable` **[Trigger reports with a POST URL](#create-a-post-url)**: Trigger a report from a script or {{watcher}}.
 * **[Schedule and share reports](#schedule-report-generation)**: Set up a recurring schedule in {{kib}} that generates and emails reports at an interval you choose.
 
 :::{note}
@@ -23,13 +23,13 @@ If you have a cross-cluster search environment and want to generate reports from
 :::
 
 ## Create a POST URL [create-a-post-url]
+```{applies_to}
+serverless: unavailable
+```
 
 Create the POST URL that triggers a report to generate PDF and CSV reports.
 
 ### PDF and PNG reports [pdf-png-post-url]
-```{applies_to}
-serverless: unavailable
-```
 
 To create the POST URL for PDF reports:
 
@@ -53,6 +53,9 @@ To create the POST URL for CSV reports:
 
 
 ## Use Watcher [use-watcher]
+```{applies_to}
+serverless: unavailable
+```
 
 To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 
@@ -111,6 +114,9 @@ For more information about configuring watches, refer to [How Watcher works](../
 
 
 ## Use a script [use-a-script]
+```{applies_to}
+serverless: unavailable
+```
 
 To automatically generate reports from a script, make a request to the `POST` URL. The request returns a JSON and contains a `path` property with a URL that you use to download the report. Use the `GET` method in the HTTP request to download the report.
 
@@ -153,6 +159,9 @@ An example response for a successfully queued report:
 
 
 ## HTTP response codes [reporting-response-codes]
+```{applies_to}
+serverless: unavailable
+```
 
 The response payload of a request to generate a report includes the path to download a report. The API to download a report uses HTTP response codes to give feedback. In automation, this helps external systems track the various possible job states:
 
@@ -168,6 +177,9 @@ The response payload of a request to generate a report includes the path to down
 
 
 ## Deprecated report URLs [deprecated-report-urls]
+```{applies_to}
+serverless: unavailable
+```
 
 If you experience issues with the deprecated report URLs after you upgrade {{kib}}, regenerate the POST URL for your reports.
 
@@ -266,7 +278,7 @@ Save time by setting up a recurring task that automatically generates reports an
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
-{applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
 
 ### Manage schedules [manage-report-schedules]
 
@@ -274,7 +286,7 @@ To manage a schedule, you can take the following actions from the **Schedules** 
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.3+
+:::{applies-item} {serverless: ga, stack: ga 9.3+}
 - **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page.
 - **Enable schedule**: Restart a disabled schedule.
 - **Edit schedule config**: Modify an existing schedule.
