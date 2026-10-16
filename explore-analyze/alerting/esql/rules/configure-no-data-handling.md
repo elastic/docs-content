@@ -12,9 +12,10 @@ description: "How to configure the no-data strategy for rules: hold the last kno
 
 No-data handling is an optional setting for {{alerting-v2-system}} rules that group matches into an alert. It controls what the rule does when it can't tell whether an alert has genuinely recovered or the data just stopped showing up. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting. In the rule form, the setting is **No data behavior**.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In YAML, use the `no_data` object.
+In YAML, set no-data handling with these settings:
 
-{applies_to}`stack: experimental =9.5` In YAML, use the `no_data_strategy` field.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The `no_data` object.
+* {applies_to}`stack: experimental =9.5` The `no_data_strategy` field.
 
 ## How no-data handling fits into recovery [no-data-and-recovery]
 

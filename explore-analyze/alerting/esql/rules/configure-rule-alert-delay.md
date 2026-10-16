@@ -12,9 +12,10 @@ description: "Configure alert delay for rules that group matches into an alert, 
 
 Alert delay is an optional setting for {{alerting-v2-system}} rules that group matches into an alert. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In YAML, this corresponds to the `state_transition.pending` object.
+In YAML, alert delay corresponds to these settings:
 
-{applies_to}`stack: experimental =9.5` In YAML, this corresponds to the `state_transition.pending_*` fields.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The `state_transition.pending` object.
+* {applies_to}`stack: experimental =9.5` The `state_transition.pending_*` fields.
 
 ## When to configure alert delay [alert-delay-when-to-use]
 
