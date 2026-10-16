@@ -393,7 +393,7 @@ By default, the first tab you see when you open **Discover** and a duplicated ta
 To start a search in a new tab, use the option that matches its query mode:
 
 - **Classic mode:** The tab shows **Start searching**. Select **Refresh data** to load results for the current query, or enter a different query and submit it. To write the query in {{esql}} instead, select **Query in ES|QL**.
-- **{{esql}} mode:** The tab lists **Recommended queries** for its data source. To run one, hover over it and select the {icon}`play` **Run query** icon. You can also write your own query in the editor and run it.
+- **{{esql}} mode:** The tab lists **Recommended queries** for its data source. To run one, hover over or focus on it and select the {icon}`play` **Run query** icon. You can also write your own query in the editor and run it.
 
 After the first search, the tab shows results and the list of fields. Switching between classic and {{esql}} mode before the first search doesn't start a search.
 
