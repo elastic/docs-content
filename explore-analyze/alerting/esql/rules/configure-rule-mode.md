@@ -54,7 +54,7 @@ To record matches without opening alerts or triggering notifications, create a r
 
 ### Route critical alerts to an on-call workflow
 
-You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule so each breach opens a tracked alert that action policies can route to a workflow. The rule's alerts appear on the **Alerts** page and are visible to any action policy whose KQL matcher matches the alert fields.
+You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule so each breach opens a tracked alert that action policies can route to a workflow. The rule's alerts appear on the **Alerts** page, and any action policy whose scope matches them can invoke a workflow.
 
 ## Related pages
 
