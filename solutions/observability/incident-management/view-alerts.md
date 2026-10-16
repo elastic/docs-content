@@ -86,6 +86,8 @@ For **{{product.apm}} anomaly** alerts specifically, the alert detail page also 
 :screenshot:
 :::
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` For **low transaction count** anomaly alerts, **Throughput** is the primary chart and displays the anomaly badge. **Latency** and **Failed transaction rate** are secondary charts.
+
 ## Review related alerts [observability-view-alerts-find-related-alerts]
 ```{applies_to}
 stack: ga 9.1+
