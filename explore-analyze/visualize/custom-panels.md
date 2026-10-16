@@ -213,7 +213,7 @@ There is no dedicated property for a healthy or success state. For a three-state
 
 ### Link to dashboards and Discover [custom-panels-links]
 
-To turn a panel into a navigation hub, add standard HTML links to the template. For example, a set of cards can open related dashboards or **Discover**. A link opens its target in the current browser tab. If you generate the panel with chat, you can ask for these links in your prompt.
+To turn a panel into a navigation hub, add standard HTML links to the template. For example, a set of cards can open related dashboards or **Discover**, as in the [Navigation cards](custom-panel-examples.md#custom-panel-examples-navigation) example. A link opens its target in the current browser tab. If you generate the panel with chat, you can ask for these links in your prompt.
 
 A custom panel link opens exactly the path you write. It doesn't carry the dashboard's time range, query, or filters, and it can't open an external site. For links that do, or for a plain list of links, use a [Links panel](link-panels.md).
 
