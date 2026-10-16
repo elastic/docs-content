@@ -44,9 +44,7 @@ In the Claude Console, open the [OpenTelemetry settings](https://platform.claude
 ::::{step} Select Elastic
 For **Provider**, select **Elastic**. Optionally, enter a **Name** for the destination, such as `Elastic production`.
 
-% TODO(test): Replace with the exact field labels from the Elastic provider form, and say whether to paste the raw encoded API key or `ApiKey <key>`.
-
-Enter your {{motlp}} endpoint and your API key.
+Enter your {{motlp}} endpoint, then set the header `Authorization` to ApiKey and add the encoded key.
 ::::
 
 ::::{step} Choose a content mode
@@ -79,10 +77,14 @@ Select **Add destination**. Then open the destination's **More actions** menu an
     ```esql
     FROM traces-*
     | WHERE service.name == "claude-platform"
-    | SORT @timestamp DESC
     ```
 
-    The test span from the previous section is named `anthropic.test`.
+    To find the test span from the previous section, run:
+
+    ```esql
+    FROM traces-*
+    | WHERE service.name == "claude-platform" AND span.name == "anthropic.test"
+    ```
 
 The main spans that the Claude Platform sends are:
 
@@ -109,12 +111,10 @@ To see the work your application does around each Claude API request in the same
 
     ```bash
     export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
-    export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <api-key>"
-    export OTEL_SERVICE_NAME="<your-service-name>"
-    export ANTHROPIC_OPEN_TELEMETRY_TRACES_CONTENT_MODE="content"
+    export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <encoded-api-key>"
     ```
 
-    The exporter adds `/v1/traces` to the endpoint. Setting `ANTHROPIC_OPEN_TELEMETRY_TRACES_CONTENT_MODE` to `content` includes prompts and responses in the SDK spans. Leave it unset to send metadata only.
+    The exporter adds `/v1/traces` to the endpoint. The header value needs the space after `ApiKey`.
 
 3. In your application, register a tracer provider before you create the Claude client:
 
@@ -122,21 +122,25 @@ To see the work your application does around each Claude API request in the same
     from anthropic import Anthropic
     from opentelemetry import trace
     from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+    from opentelemetry.sdk.resources import SERVICE_NAME, Resource
     from opentelemetry.sdk.trace import TracerProvider
     from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
-    # The exporter reads its endpoint, headers, and service name from the OTEL_* variables.
-    tracer_provider = TracerProvider()
-    tracer_provider.add_span_processor(BatchSpanProcessor(OTLPSpanExporter()))
-    trace.set_tracer_provider(tracer_provider)
+    # The exporter reads the endpoint and headers from the OTEL_* variables.
+    provider = TracerProvider(resource=Resource.create({SERVICE_NAME: "<your-service-name>"}))
+    provider.add_span_processor(BatchSpanProcessor(OTLPSpanExporter()))
+    trace.set_tracer_provider(provider)
 
-    # The Claude client uses the registered tracer provider.
-    claude = Anthropic()
+    # Use "metadata_only" to leave prompts and responses out of the SDK spans.
+    client = Anthropic(
+        open_telemetry={
+            "tracer_provider": provider,
+            "traces": {"content_mode": "content"},
+        }
+    )
     ```
 
 When you call the SDK inside one of your own spans, the SDK sends the trace context to the API, and the API spans nest under your application's spans in one trace. For other languages and SDK options, refer to [Use OpenTelemetry with the Claude SDK](https://platform.claude.com/docs/en/manage-claude/opentelemetry/sdk) in the Anthropic documentation.
-
-% TODO(test): This python example needs to be tested or replaced with an example that we've created (This was AI generated).
 
 ## Avoid counting tokens twice [count-tokens]
 
