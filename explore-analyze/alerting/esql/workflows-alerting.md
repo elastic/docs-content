@@ -1,7 +1,7 @@
 ---
 navigation_title: Connect workflows
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -24,7 +24,7 @@ In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens i
 
 ```{applies_to}
 serverless: preview
-stack: experimental 9.5+
+stack: ga 9.6+, experimental =9.5
 ```
 
 Lifecycle triggers are [event-driven triggers](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a user [resolves, assigns, acknowledges, or snoozes](alerts/triage-alert-episodes.md) an alert, with no scheduling or gating. Each action emits a named trigger event, such as `alerting.actions.alertAssigned` (`alerting.episodeAssigned` in earlier versions).

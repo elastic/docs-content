@@ -1,7 +1,7 @@
 ---
 navigation_title: Configure access
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -69,7 +69,7 @@ Both levels also grant read access to the alert data streams. Refer to [{{es}} i
 
 ```{applies_to}
 serverless: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 The **Alerts** page also lists {{alerting-v1-system}} alerts. Your role's {{alerting-v1-system}} privileges for each alert's rule type decide which of these alerts you can see and act on:

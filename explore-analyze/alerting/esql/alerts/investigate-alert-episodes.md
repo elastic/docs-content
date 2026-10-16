@@ -1,7 +1,7 @@
 ---
 navigation_title: Investigate alerts
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -12,7 +12,7 @@ description: "Investigate alerts. Understand what triggered an alert, assess met
 
 From the **Alerts** page in {{alerting-v2-system}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system}}](#investigate-classic-alerts).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system}}](#investigate-classic-alerts).
 
 ## Understand the trigger and scope [understand-trigger]
 
@@ -70,7 +70,7 @@ If the rule has a runbook attached, you can view it directly from the alert to f
 ## Investigate alerts from {{alerting-v1-system}} [investigate-classic-alerts]
 ```{applies_to}
 serverless: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 Select an alert with **Classic** in the **Source** column to open its details flyout, then use its tabs to check the alert:

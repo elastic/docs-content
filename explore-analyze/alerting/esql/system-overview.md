@@ -1,7 +1,7 @@
 ---
 navigation_title: "{{alerting-v2-system-cap}}"
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -18,7 +18,7 @@ Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} ove
 :::
 
 :::{admonition} Where to find {{alerting-v2-system}} pages in each version
-- {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Go to **Alerting** in the {{observability}} navigation menu.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Go to **Alerting** in the {{observability}} navigation menu.
 - {applies_to}`stack: experimental =9.5` Go to **Stack Management** → **Alerting V2 Preview**. The UI also calls an alert an **alert episode**. For example, the **Notify per** option for one notification per alert is **Episode** instead of **Alert**.
 :::
 

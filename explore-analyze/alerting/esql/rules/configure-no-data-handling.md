@@ -1,7 +1,7 @@
 ---
 navigation_title: No-data handling
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana

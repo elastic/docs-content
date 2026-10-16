@@ -1,7 +1,7 @@
 ---
 navigation_title: About action policies
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -34,7 +34,7 @@ A workflow runs only when the alert passes every gate. {{kib}} checks the gates 
 | Gate | What it checks |
 |------|----------------|
 | Alert eligibility | Whether the alert is acknowledged, snoozed, resolved, or in a maintenance window. Any of these stops it. |
-| Policy scope {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Whether the alert's rule carries at least one of the selected rule tags, and whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If both are set on the policy, they both have to pass. An empty scope passes every eligible alert in the space. |
+| Policy scope {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Whether the alert's rule carries at least one of the selected rule tags, and whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If both are set on the policy, they both have to pass. An empty scope passes every eligible alert in the space. |
 | Match conditions {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` | Whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. An empty expression passes every eligible alert in the space. |
 | Frequency | Whether a workflow already ran for the alert's notification group within the policy's frequency interval. If it did, the alert waits. |
 

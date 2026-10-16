@@ -1,7 +1,7 @@
 ---
 navigation_title: Triage alerts
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -55,7 +55,7 @@ Add context to an alert for filtering, routing, or ownership.
 
 | Action | Description | Scope |
 |---|---|---|
-| Edit alert tags or Edit Tags (depending on your {{stack}} version) | Adds or removes tags on the alert. | {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alert<br>{applies_to}`stack: experimental =9.5` Series |
+| Edit alert tags or Edit Tags (depending on your {{stack}} version) | Adds or removes tags on the alert. | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Alert<br>{applies_to}`stack: experimental =9.5` Series |
 | Edit assignee | Assigns the alert to a specific user, so others know who owns the investigation. | Alert |
 
 ## Investigate the underlying data [investigate-underlying-data]
@@ -69,7 +69,7 @@ Go to Discover to check whether the data behind an alert shows a genuine problem
 ## Triage alerts from {{alerting-v1-system}} [triage-classic-alerts]
 ```{applies_to}
 serverless: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 To act on alerts with **Classic** in the **Source** column, your role needs [privileges in both alerting systems](../manage/configure-access.md#alerting-classic-alert-privileges).

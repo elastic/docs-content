@@ -1,7 +1,7 @@
 ---
 navigation_title: Set up
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -28,7 +28,7 @@ You'll need the following to create rules and send notifications.
 
 The setting's default state depends on your version:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` The setting is on by default. If you turned the setting off, it stays off, even after an upgrade.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The setting is on by default. If you turned the setting off, it stays off, even after an upgrade.
 - {applies_to}`stack: experimental =9.5` The setting is off by default.
 
 To turn on the setting:
@@ -37,7 +37,7 @@ To turn on the setting:
 2. Select the **Global Settings** tab, turn on `alerting:v2:enabled`, save the change, then refresh the page.
 3. Confirm that {{alerting-v2-system}} is accessible in your space. Find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or go to:
 
-   - {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` **Alerting** → **Rules** in the {{observability}} navigation menu
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Alerting** → **Rules** in the {{observability}} navigation menu
    - {applies_to}`stack: experimental =9.5` **Stack Management** → **Alerting V2 Preview** → **Rules**
 
 ## Turn off the system [alerting-setup-turn-off]
@@ -51,7 +51,7 @@ Turning off the setting hides the {{alerting-v2-system}} UI and turns off its AP
 Turning off the setting doesn't stop rules and action policies from running. To stop them, use the option for your deployment:
 
 - {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us).
-- {applies_to}`stack: experimental 9.5+` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
+- {applies_to}`stack: ga 9.6+, experimental =9.5` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
 
 ## Try experimental features in a space [alerting-setup-experimental-features]
 
@@ -79,7 +79,7 @@ To turn on experimental features:
 ```yaml {applies_to}
 serverless:
   observability: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 When {{alerting-v2-system}} is on, an **Alerting** menu replaces the Observability **Alerts** link. Its **Alerts** page lists alerts from both systems, even if you keep the old page.
