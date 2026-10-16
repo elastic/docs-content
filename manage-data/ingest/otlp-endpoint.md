@@ -253,6 +253,7 @@ stack: ga 9.6
 The OTLP endpoint stores the exemplars that arrive with metric data points on `/_otlp/v1/metrics`, so you can navigate from a metric to a trace that contributed to it.
 
 {{es}} stores exemplars in dedicated [time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) named after the metrics data stream of their data point: exemplars of metrics in `metrics-<dataset>.otel-<namespace>` are written to `exemplars-<dataset>.otel-<namespace>`.
+
 Each exemplar is stored as its own document with the following fields:
 
 | Field | Description |
