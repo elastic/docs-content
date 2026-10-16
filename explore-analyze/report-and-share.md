@@ -172,7 +172,9 @@ serverless: unavailable
 ::::{note}
 :name: reporting-on-cloud-resource-requirements
 
-For {{ech}} deployments, {{kib}} instances require a minimum of 2 GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
+For {{ech}} deployments, {{kib}} instances require a minimum of 2 GB RAM to generate PDF or PNG reports. For large dashboards or dashboards showing panels with complex queries, we recommend a minimum of 4 GB RAM.
+
+To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
 ::::
 
 

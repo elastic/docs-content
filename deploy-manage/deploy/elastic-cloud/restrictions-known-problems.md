@@ -28,7 +28,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 * [Node count and size](#ec-node-count-size)
-* [Repository analysis API is unavailable in {{ecloud}}](#ec-repository-analyis-unavailable)
+* [Repository analysis API](#ec-repository-analyis-unavailable)
 * [Service status](#ec-service-status)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
@@ -184,9 +184,9 @@ To make a seamless migration, after restoring from a snapshot there are some add
   This limitation does not apply when using the API for manual scaling or autoscaling. If you require additional capacity, you can use the [Elastic Cloud API](cloud://reference/cloud-hosted/ec-api-restful.md) to scale up or configure the maximum size for autoscaling, in a self-sufficient way. Refer to the [Update a deployment](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_update_a_deployment) example to learn how to make a deployment update request using the API.
 * Apart from the maximum node count configurable in the {{ecloud}} console UI, there are other service limits based on each instance configuration. These service limits are typically greater than 32. For more details, please [contact Elastic support for assistance](/troubleshoot/index.md).
 
-## Repository analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
+## Repository analysis API [ec-repository-analyis-unavailable]
 
-* The {{es}} [Repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+* On {{es}} version 8.14 and earlier, an [operator privilege](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) is required to call the [Repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze). From {{es}} version 8.15 and onwards, this is no longer required.
 
 ## Service status [ec-service-status]
 
