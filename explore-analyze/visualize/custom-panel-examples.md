@@ -1,6 +1,6 @@
 ---
 navigation_title: Examples
-description: Ready-to-use custom panel examples for Kibana dashboards, each with its ES|QL query, Liquid template, and screenshot, from a Sankey diagram to a status board.
+description: Ready-to-use custom panel templates for Kibana dashboards, from a Sankey diagram to navigation cards, with the ES|QL queries that feed them.
 applies_to:
   stack: preview 9.6+
   serverless: preview
