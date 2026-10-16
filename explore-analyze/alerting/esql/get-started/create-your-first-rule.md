@@ -27,8 +27,8 @@ Before you start, make sure you have the following:
 
 - **One of the following deployment types**:
   - **{{serverless-short}}** - A {{serverless-full}} project. [Create a serverless project](/deploy-manage/deploy/elastic-cloud/serverless.md) if you don't have one.
-  - **{{ech}}** - An {{ech}} deployment running version 9.5 or later. Refer to [Create an Elastic Cloud hosted deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) if you don't have one. {applies_to}`stack: experimental 9.5`
-  - **Self-managed** - An {{stack}} deployment running version 9.5 or later. Refer to the [local development quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) if you don't have one. {applies_to}`stack: experimental 9.5`
+  - **{{ech}}** - An {{ech}} deployment running version 9.5 or later. Refer to [Create an Elastic Cloud hosted deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) if you don't have one.
+  - **Self-managed** - An {{stack}} deployment running version 9.5 or later. Refer to the [local development quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) if you don't have one.
 
 - **{{alerting-v2-system-cap}} turned on**: If {{alerting-v2-system}} is off, turn it on as described in [Set up {{alerting-v2-system}}](../setup.md#alerting-setup-turn-on).
 
