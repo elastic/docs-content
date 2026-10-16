@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_import_dashboards.html
-description: Import a Kibana dashboard exported from another space, instance, deployment, or project, using the Dashboards API or the Saved Objects API.
+description: Import a dashboard exported from another Kibana space, instance, deployment, or project, using the Dashboards app, the Dashboards API, or Saved Objects.
 type: how-to
 applies_to:
   stack: ga
@@ -14,10 +14,39 @@ products:
 
 Import a dashboard that was exported from another {{product.kibana}} space, instance, deployment, or project. How you import it depends on the format it was exported in. Refer to [](sharing.md#export-dashboards) for the export options, then use the matching import method:
 
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **JSON**: import it with **Import dashboard** in the **Dashboards** app.
 - {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **JSON**: import it with the [Dashboards API](create-dashboards-programmatically.md). This is the recommended method.
 - **NDJSON**: import it with the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects), or from the **Saved Objects** page.
 
 ::::::{tab-set}
+
+:::::{tab-item} JSON (Dashboards app)
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Recreate a dashboard from its JSON file without writing an API request. {{kib}} checks the file as soon as you select it, so you can see what it removes and what the dashboard depends on before you import.
+
+**Prerequisites**
+
+- A dashboard JSON file of 1 MB or less, created with **Export JSON**. Refer to [](sharing.md#export-dashboard-json) to produce it.
+- **All** privilege for the **Dashboard** feature in {{product.kibana}}. Without it, **Import dashboard** doesn't appear.
+
+**Import the file**
+
+1. Go to **Dashboards**.
+2. From the application menu, select **Import dashboard**.
+3. In the **Import dashboard** flyout, use **Select a JSON file** to choose your file. If {{kib}} shows an error, select a different file. If it shows a warning, review it, then continue.
+4. Select **Import**.
+
+{{kib}} creates a new dashboard, closes the flyout, shows a confirmation message, and refreshes the list of dashboards. It never updates an existing dashboard, so importing the same file again creates another dashboard.
+
+**Messages after you select a file**
+
+- **The selected file is too large. The maximum size is 1 MB.** Select a smaller file. **Import** stays unavailable.
+- **The selected file does not contain valid JSON.** Select a different file. **Import** stays unavailable.
+- **The file could not be imported.** {{kib}} can't validate the file, for example because it isn't a full dashboard definition created with **Export JSON**. **Import** stays unavailable.
+- **Unsupported properties were removed.** The file includes panel types or properties that the Dashboards API doesn't support. {{kib}} leaves them out of the imported dashboard. Select **Show details** to see what it removed. **Import** stays available.
+- **Review import warnings.** The file references related items, such as data views, tags, or library visualizations. {{kib}} imports only the dashboard. Select **Show details** to see each item's type and ID, and make sure these items exist in the space or cluster where you import. This warning also lists any removed properties. **Import** stays available.
+
+:::::
 
 :::::{tab-item} JSON (Dashboards API)
 
