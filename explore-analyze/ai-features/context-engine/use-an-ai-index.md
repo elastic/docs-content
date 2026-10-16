@@ -29,10 +29,7 @@ Use the following guides to retrieve context through an agent or application:
 | Configure and test an agent that uses an AI index | [Configure agents to use an AI index](use-context-engine-with-agents.md) |
 | Use an AI index with an {{agent-builder}} agent | [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md) |
 | Query an AI index from LangChain or LangGraph | [Query AI indices from LangChain](langchain-integration.md) |
-
-<!--
 | Use an AI index from Claude Code with the {{context-engine}} skill and the `elastic` CLI | [Use {{context-engine}} with Claude Code](use-context-engine-with-claude-code.md) |
--->
 
 ## How retrieval works
 

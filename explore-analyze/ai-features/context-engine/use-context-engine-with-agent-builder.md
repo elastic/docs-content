@@ -17,7 +17,11 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-When you assign an [AI index](concepts.md#ai-indices) to an {{agent-builder}} agent, the agent can retrieve [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) during a conversation. It can answer from a KI or use the KI's guidance to query source data when the question requires current details.
+Use {{context-engine}} with {{agent-builder}} to give an agent access to context distilled from your organization's data. By retrieving relevant [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) from an [AI index](concepts.md#ai-indices) instead of repeatedly discovering and interpreting source data, the agent can complete tasks faster and use fewer model tokens.
+
+Assigning an AI index to an {{agent-builder}} agent automatically adds the {{context-engine}} retrieval tools and instructions. A retrieved KI can answer a question directly or guide the agent to current details in the source data.
+
+For guidance that applies to every agent integration, refer to [Configure agents to use an AI index](use-context-engine-with-agents.md). For the list, describe, and query flow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
 ## Before you begin
 
