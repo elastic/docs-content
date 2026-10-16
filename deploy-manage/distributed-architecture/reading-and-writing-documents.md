@@ -61,7 +61,7 @@ Reads in {{es}} can be very lightweight lookups by ID or a heavy search request 
 
 When a read request is received by a node, that node is responsible for forwarding it to the nodes that hold the relevant shards, collating the responses, and responding to the client. We call that node the *coordinating node* for that request.
 
-:::{image} /deploy-manage/images/elasticsearch-reference-data_processing_flow-search.png
+:::{image} /deploy-manage/images/elasticsearch-reference-data_processing_flow-read.png
 :alt: An example of a basic read model.
 :::
 
