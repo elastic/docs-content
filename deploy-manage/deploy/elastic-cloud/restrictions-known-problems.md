@@ -25,11 +25,10 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
 * [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
-* [Migrate a deployment to another organization or region](#ec-migrate-deployment-another-region-or-organization)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 * [Node count and size](#ec-node-count-size)
-* [Repository analysis API is unavailable in {{ecloud}}](#ec-repository-analyis-unavailable)
+* [Repository analysis API](#ec-repository-analyis-unavailable)
 * [Service status](#ec-service-status)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
@@ -138,24 +137,29 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 
 ## Restore a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
 
+When you restore a snapshot from one deployment to another, consider the limitations for {{kib}} data, the default snapshot repository, and {{search-snaps}}.
+
+### {{kib}} data [ec-restore-across-deployments-kibana-data]
+
 {{kib}} does not currently support restoring a snapshot of their indices across {{ecloud}} deployments.
 
 * [{{kib}} uses encryption keys](/deploy-manage/security/secure-your-cluster-deployment.md) in various places, ranging from encrypting data in some areas of reporting, alerts, actions, connector tokens, ingest outputs used in Fleet and Synthetics monitoring to user sessions.
 * Currently, there is not a way to retrieve the values of {{kib}} encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, {{kib}} will not be able to decrypt the data required for some features to function properly in the target deployment.
 * If you have already restored a snapshot across deployments and now have broken {{kib}} saved objects in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
 
-When restoring from a deployment that’s using searchable snapshots, you must not delete the snapshots in the source deployment even after they are successfully restored in the destination deployment. Refer to [Restore snapshots containing searchable snapshots indices across clusters](../../tools/snapshot-and-restore/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md) for more information.
+### Restore data across organizations or regions [ec-migrate-deployment-another-region-or-organization]
 
-
-## Migrate a deployment to another organization or region [ec-migrate-deployment-another-region-or-organization]
-
-A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same organization and the same region. To copy data across regions or organizations, use a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types):
+You can restore snapshots from the default `found-snapshots` repository only to deployments in the same {{ecloud}} organization and region. To restore data to a deployment in a different organization or region, you can use a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types):
 
 1. On the source deployment, register a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types) and take a snapshot.
 1. Create the destination deployment in the desired organization or region, and register that [same repository as read-only](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
 1. [Restore the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster) on the destination deployment.
 
-These steps do not apply to {{kib}}. Refer to [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments) section.
+These steps restore {{es}} data but do not address the [limitations for {{kib}} data](#ec-restore-across-deployments-kibana-data).
+
+### {{search-snaps-cap}}
+
+When restoring from a deployment that’s using searchable snapshots, you must not delete the snapshots in the source deployment even after they are successfully restored in the destination deployment. Refer to [Restore snapshots containing searchable snapshots indices across clusters](../../tools/snapshot-and-restore/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md) for more information.
 
 ## Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot [ec-migrate-elastic-agent]
 
@@ -180,9 +184,9 @@ To make a seamless migration, after restoring from a snapshot there are some add
   This limitation does not apply when using the API for manual scaling or autoscaling. If you require additional capacity, you can use the [Elastic Cloud API](cloud://reference/cloud-hosted/ec-api-restful.md) to scale up or configure the maximum size for autoscaling, in a self-sufficient way. Refer to the [Update a deployment](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_update_a_deployment) example to learn how to make a deployment update request using the API.
 * Apart from the maximum node count configurable in the {{ecloud}} console UI, there are other service limits based on each instance configuration. These service limits are typically greater than 32. For more details, please [contact Elastic support for assistance](/troubleshoot/index.md).
 
-## Repository analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
+## Repository analysis API [ec-repository-analyis-unavailable]
 
-* The {{es}} [Repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+* On {{es}} version 8.14 and earlier, an [operator privilege](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) is required to call the [Repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze). From {{es}} version 8.15 and onwards, this is no longer required.
 
 ## Service status [ec-service-status]
 

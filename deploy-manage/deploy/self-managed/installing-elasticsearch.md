@@ -1,4 +1,6 @@
 ---
+navigation_title: Install {{es}}
+meta_title: Install Elasticsearch
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
@@ -11,7 +13,7 @@ products:
   - id: elasticsearch
 ---
 
-# Install {{es}}
+# Self-managed {{es}} installation
 
 % will be fixed
 
