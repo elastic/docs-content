@@ -16,11 +16,12 @@ Limits are applied on a per model basis per organization. This means that usage 
 
 Where both a requests-per-minute and a tokens-per-minute limit apply, whichever limit is reached first takes effect.
 
-## Chat models [eis-rate-limits-chat]
+## Generative models [eis-rate-limits-chat]
 
 | Model                                              | Requests/minute | Notes                   |
 |----------------------------------------------------|-----------------|-------------------------|
 | Elastic Managed LLMs {applies_to}`stack: ga 9.3+`  | 2,000           | No rate limit on tokens |
+| Jina OCR v1                                        | 2,000           | No rate limit on tokens |
 
 ## Embedding models [eis-rate-limits-embeddings]
 

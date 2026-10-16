@@ -389,6 +389,8 @@ If the agent answers without calling the tools, or queries a target that describ
 
 Set `KIBANA_SPACE` to the space ID before creating the client, so requests go to `/s/{space_id}/api/context_engine`. The API key needs the {{context-engine}} feature privilege in that space, and `contextEngine:enabled` has to be on there.
 
+Each AI Index belongs to one space, so the list tool returns only the AI Indices in the space that the client targets. The same AI Index ID can refer to different AI Indices in different spaces.
+
 To read from several spaces in one agent, build one client per space and register a separate set of tools for each.
 
 For common access and retrieval failures, refer to [Troubleshoot retrieval](retrieve-context-from-ai-index.md#troubleshoot-retrieval).

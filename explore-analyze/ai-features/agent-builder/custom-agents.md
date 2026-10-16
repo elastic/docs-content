@@ -90,6 +90,8 @@ stack: ga 9.4+
 
 Optionally enable the **Enable Elastic capabilities** toggle to automatically assign all Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins to your agent. This toggle is disabled by default for custom agents.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This toggle doesn't assign [connectors](connectors.md). You assign connectors after you save the agent.
+
 For more information, refer to [Elastic capabilities](agent-builder-agents.md#elastic-capabilities).
 
 :::::
@@ -177,6 +179,20 @@ Select **Save** to create your agent, or **Save and chat** to create the agent a
 :alt: Save and Save and chat buttons
 :width: 270px
 :::
+
+:::::
+
+:::::{step} Assign connectors (optional)
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+New agents start with no connectors. To let your agent reach external systems, assign connectors after you save the agent: select the agent, then in the sidebar under **Customize**, select **Connectors**, then select **Add connector**.
+
+If you left **Enable Elastic capabilities** off, also assign the built-in `connector-discovery` skill on the agent's **Skills** page. Without it, the agent can't find its connectors.
+
+For more information, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
 
 :::::
 ::::::
