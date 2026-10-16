@@ -33,10 +33,11 @@ Import a dashboard that was exported from another {{product.kibana}} space, inst
 
 1. Go to **Dashboards**.
 2. From the application menu, select **Import dashboard**.
-3. In the **Import dashboard** flyout, use **Select a JSON file** to choose your file. If {{kib}} shows an error, select a different file. If it shows a warning, review it, then continue.
-4. Select **Import**.
+3. In the **Import dashboard** flyout, select your file under **Select a JSON file**. {{kib}} checks the file right away.
+4. Review any messages in the flyout. If {{kib}} shows an error, select a different file. If it shows a warning, review it before you continue.
+5. Select **Import**.
 
-{{kib}} creates a new dashboard, closes the flyout, shows a confirmation message, and refreshes the list of dashboards. It never updates an existing dashboard, so importing the same file again creates another dashboard.
+{{kib}} creates a new dashboard, closes the flyout, shows a confirmation message, and refreshes the list of dashboards so the new dashboard appears. It never updates an existing dashboard, so importing the same file again creates another dashboard.
 
 **Messages after you select a file**
 
