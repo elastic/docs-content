@@ -18,7 +18,7 @@ To silence, close, or tag alerts, refer to [Triage alerts](triage-alert-episodes
 
 ## Space scoping [episode-space-isolation]
 
-Alerts belong to the current {{kib}} space and aren't visible in other spaces.
+Alerts belong to the current {{kib}} space, and the alerting pages list only that space's alerts. If you have access to several spaces, or direct access to the underlying alert indices, you can see alerts from other spaces, for example in Discover.
 
 ## Monitor alert health and trends [monitor-alert-trends]
 
