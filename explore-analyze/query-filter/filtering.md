@@ -150,7 +150,7 @@ To round relative ranges without typing a rounding unit each time, select {icon}
 
 When the setting is on:
 
-- A rounding unit that you set manually stays as it is, so `-7d/M` doesn't change.
+- A rounding unit that you set manually stays as it is, so if you set `-7d/M`, it doesn't change.
 - The time filter adds a rounding unit to a start or end such as `-7d` or `-1y` that has none. For example, `-7d` becomes `-7d/h`, so the range starts at the beginning of the hour instead of at the exact time.
 
 The unit that the time filter adds depends on the unit of the offset:
