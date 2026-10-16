@@ -43,7 +43,7 @@ Authenticate with an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md
 | Data | Required `names` patterns |
 | --- | --- |
 | Metric samples | `metrics-*.prometheus-*` |
-| [Exemplars](#exemplars) {applies_to}`stack: ga 9.6+` | `exemplars-*.prometheus-*` |
+| {applies_to}`stack: ga 9.6+` [Exemplars](#exemplars) | `exemplars-*.prometheus-*` |
 
 For example, an API key role descriptor that allows ingesting metrics and exemplars:
 
