@@ -3,7 +3,7 @@ navigation_title: AI
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Reference for the four AI step types (prompt, classify, summarize, and agent) that bring LLM calls into workflows.
+description: Call LLMs, run Agent Builder agents, and add context to agent conversations from workflows with AI steps. This reference lists each step's parameters, output, and examples.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,7 +15,15 @@ products:
 
 # AI steps [workflows-ai-steps]
 
-AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution. All four AI step types reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the default model configured for the workflow is used.
+AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also create {{agent-builder}} conversations and add content to them without running an agent.
+
+The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID in the step. Configure a Generative AI connector in {{kib}} and pass its ID in `connector-id`. For [`ai.agent`](#ai-agent), you can instead pass an {{infer}} endpoint ID in `inference-id`.
+
+If you omit both, `ai.prompt`, `ai.classify`, and `ai.summarize` use the [default AI connector](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#genai-settings), and `ai.agent` uses the same model that {{agent-builder}} would use for the agent. Refer to [Model configuration in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md).
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` If a model is set for `ai.prompt`, `ai.classify`, or `ai.summarize` in [**Feature Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#feature-settings), that step uses it instead of the default AI connector.
 
 :::{note}
 :applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
@@ -29,8 +37,11 @@ Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}
 - [`ai.classify`](#ai-classify): Classify input into a fixed set of categories. {applies_to}`stack: ga 9.4+`
 - [`ai.summarize`](#ai-summarize): Generate a summary of the provided content. {applies_to}`stack: ga 9.4+`
 - [`ai.agent`](#ai-agent): Invoke an {{agent-builder}} agent as a workflow step. {applies_to}`stack: preview 9.3, ga 9.4+`
+- [`ai.conversation.create`](#ai-conversation-create): Create an empty {{agent-builder}} conversation. {applies_to}`stack: ga 9.6+`
+- [`ai.conversation.add_event`](#ai-conversation-add-event): Add an event, such as a note, to a conversation without running the agent. {applies_to}`stack: ga 9.6+`
+- [`ai.conversation.add_user_message`](#ai-conversation-add-user-message): Add a user message to a conversation without running the agent. {applies_to}`stack: ga 9.6+`
 
-`connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most AI parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`).
+For `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). The conversation steps have no top-level fields and use `snake_case` inside `with`.
 
 ::::{applies-switch}
 :::{applies-item} { stack: ga 9.5, serverless: ga }
@@ -54,7 +65,7 @@ Call an LLM with a prompt. Supports optional structured output through a JSON Sc
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `connector-id` | top level | string | No | The Generative AI connector to use. Defaults to the workflow's default connector if omitted. |
+| `connector-id` | top level | string | No | The Generative AI connector to use. If omitted, the step uses the default model described at the start of this page. |
 | `prompt` | `with` | string | Yes | Prompt text. Supports Liquid templating. |
 | `systemPrompt` | `with` | string | No | System prompt sent before the user prompt. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
@@ -267,9 +278,136 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
     message: "Apply the recommended action and report back."
 ```
 
+## `ai.conversation.create` [ai-conversation-create]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Create an empty {{agent-builder}} conversation without sending a message. Use the returned `conversation_id` in later steps, such as [`ai.conversation.add_event`](#ai-conversation-add-event), [`ai.conversation.add_user_message`](#ai-conversation-add-user-message), or [`ai.agent`](#ai-agent).
+
+All parameters go in the `with` block and use `snake_case`.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `agent_id` | `with` | string | No | Agent to associate with the conversation. Defaults to the built-in Elastic AI Agent. The step fails if the agent doesn't exist or the user whose privileges authorize the run can't use it. |
+| `conversation_id` | `with` | string (UUID) | No | ID for the new conversation. Must be a UUID. Generated if omitted. The step fails if a conversation with this ID already exists. |
+| `title` | `with` | string | No | Conversation title, up to 500 characters. Defaults to `New conversation`. |
+| `access_control` | `with` | object | No | Who can access the conversation. Defaults to private. Takes `access_mode` (`private` or `public`) and optional `entries` (up to 100). Each entry adds a member and has the shape `{ type: user, id: <user profile UID>, role: member }`. Entries are allowed only for private conversations. The step fails if you set `access_mode: public` with any entries. Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
+| `template_id` | `with` | string | No | ID of a conversation template to apply. The template sets default metadata for the conversation. |
+| `metadata` | `with` | object | No | Initial metadata values. Requires `template_id`, and each key must be defined by the template. Up to 100 keys. Each value can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each). |
+
+**Output shape:**
+
+| Field | Type | Presence |
+|---|---|---|
+| `conversation_id` | string | Always. |
+| `agent_id` | string | Always. |
+| `template_id` | string | When `template_id` is set. |
+| `metadata` | object | Always. The conversation metadata after template defaults and your `metadata` values are applied. Empty if no template is used. |
+
+If you set `agent_id`, set the same agent in `agent-id` on any [`ai.agent`](#ai-agent) step that continues the conversation. Otherwise, `ai.agent` runs the default Elastic AI Agent, not the agent you set when you created the conversation.
+
+```yaml
+- name: create_conversation
+  type: ai.conversation.create
+  with:
+    title: "Checkout incident"
+```
+
+## `ai.conversation.add_event` [ai-conversation-add-event]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Add an event to an {{agent-builder}} conversation without running the agent. The agent reads the event the next time it runs on the conversation. The step works the same way as the [add events to a conversation API](/explore-analyze/ai-features/agent-builder/kibana-api.md#add-conversation-events).
+
+All parameters go in the `with` block and use `snake_case`.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `conversation_id` | `with` | string | Yes | Conversation to add the event to. |
+| `type` | `with` | string | Yes | Event type, up to 256 characters. Use `text_note` to add a note. Internal event types, such as user messages, are rejected. To add a user message, use [`ai.conversation.add_user_message`](#ai-conversation-add-user-message). |
+| `data` | `with` | object | Depends on `type` | Event payload, whose shape depends on `type`. Required for `text_note`: set `text` (up to 1,000 characters) and, optionally, `title` (up to 256 characters). Neither field can be an empty string. Other fields in `data` are ignored. |
+
+**Output shape:**
+
+| Field | Type | Presence |
+|---|---|---|
+| `conversation_id` | string | Always. |
+| `event_id` | string | Always. |
+| `type` | string | Always. |
+| `created_at` | string | Always. ISO 8601 timestamp. |
+
+If the event type is unknown or `data` doesn't match the type, the step fails and adds nothing. You can't update or remove an event after you add it.
+
+:::{note}
+Events are attributed to the user whose privileges authorize the run, not to the workflow. That user must own the conversation or be a member of it, or the conversation must be public. The user must also be able to use the conversation's agent. Otherwise, the step fails. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
+:::
+
+### Example: Add a note, then summarize
+
+```yaml
+- name: create_conversation
+  type: ai.conversation.create
+  with:
+    title: "Checkout incident"
+
+- name: add_update
+  type: ai.conversation.add_event
+  with:
+    conversation_id: "{{ steps.create_conversation.output.conversation_id }}"
+    type: text_note
+    data:
+      title: "Status update"
+      text: "Checkout service latency is back to normal."
+
+- name: summarize
+  type: ai.agent
+  with:
+    conversation_id: "{{ steps.create_conversation.output.conversation_id }}"
+    message: "Summarize the status updates in this conversation."
+```
+
+## `ai.conversation.add_user_message` [ai-conversation-add-user-message]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Add a user message to an existing {{agent-builder}} conversation without running the agent. The agent reads the message the next time it runs on the conversation.
+
+All parameters go in the `with` block and use `snake_case`.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `conversation_id` | `with` | string | Yes | Conversation to add the message to. The conversation must already exist. To create one, use [`ai.conversation.create`](#ai-conversation-create). |
+| `message` | `with` | string | Yes | Message text. Can't be empty or contain only whitespace. |
+
+**Output shape:** `{ conversation_id: string }`.
+
+Unlike `ai.agent`, this step doesn't accept attachments.
+
+:::{note}
+Messages are attributed to the user whose privileges authorize the run, not to the workflow. That user must own the conversation or be a member of it, or the conversation must be public. The user must also be able to use the conversation's agent. Otherwise, the step fails. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
+:::
+
+```yaml
+- name: add_alert
+  type: ai.conversation.add_user_message
+  with:
+    conversation_id: "{{ steps.create_conversation.output.conversation_id }}"
+    message: "A new alert fired: {{ event.alerts[0]._id }}"
+```
+
 ## Related
 
 - [Configured AI connectors](/deploy-manage/manage-connectors.md): Set up the Generative AI connector referenced by `connector-id`.
 - [Switch step](/explore-analyze/workflows/steps/switch.md): A common pairing: classify with `ai.classify`, then dispatch with `switch`.
 - [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Pair AI classifications with a reviewer gate for uncertain cases.
 - [{{agent-builder}} overview](/explore-analyze/ai-features/elastic-agent-builder.md): Concepts behind the agents referenced by `ai.agent`.
+- [Add events to a conversation with the API](/explore-analyze/ai-features/agent-builder/kibana-api.md#add-conversation-events): Add the same events from outside a workflow.
