@@ -99,7 +99,7 @@ By default, a snapshot of a cluster contains the cluster state, all regular data
 - [Stored scripts](/explore-analyze/scripting/modules-scripting-store-and-retrieve.md)
 - For snapshots taken after 7.12.0, [feature states](#feature-state)
 
-You can also take snapshots of only specific data streams or indices in the cluster. A snapshot that includes a data stream or index automatically includes its aliases. When you restore a snapshot, you can choose whether to restore these aliases.
+The `include_global_state` option controls whether a snapshot includes the cluster state. You can also take snapshots of only specific data streams or indices in the cluster. A snapshot that includes a data stream or index automatically includes its aliases. When you restore a snapshot, you can choose whether to restore these aliases.
 
 Snapshots don’t contain or back up:
 
