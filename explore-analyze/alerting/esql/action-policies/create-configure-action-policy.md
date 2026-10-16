@@ -1,7 +1,7 @@
 ---
 navigation_title: Create an action policy
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -12,7 +12,11 @@ description: "Create action policies to route alerts to workflows. Scope policie
 
 In {{alerting-v2-system}}, an action policy connects alerts to the [workflows](../../../workflows.md) that respond to them. To create one, you set which alerts the policy applies to, how those alerts batch into notifications, how often a workflow can run, and which workflows to invoke.
 
-To start, go to **Alerting** → **Action Policies** in the Observability navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To start, go to **Alerting** → **Action Policies** in the {{observability}} navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::{note}
+To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
+:::
 
 ## Specify the action policy scope [matcher]
 
@@ -20,12 +24,12 @@ The policy's scope decides which alerts it applies to, and [frequency](#reduce-n
 
 To narrow the scope of an action policy, use a [KQL expression](#filter-with-kql-expression).
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` You can also use [routing tags](#routing-tags), on their own or with an expression. If you use both, the alert's rule has to have at least one of the routing tags and the alert has to match the expression.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` You can also use [routing tags](#routing-tags), on their own or with an expression. If you use both, the alert's rule has to have at least one of the routing tags and the alert has to match the expression.
 
 ### Apply the policy to alerts from specific rules [routing-tags]
 ```{applies_to}
 serverless: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 To apply an action policy to a rule's alerts, give the policy and the rule the same routing tag. The policy applies to alerts from every rule that has at least one of its routing tags. If you add the tag to another rule later, the policy also applies to that rule's alerts, and you don't need to edit the policy.
@@ -47,7 +51,7 @@ To narrow the scope further, add a [match conditions expression](#filter-with-kq
 
 Add a **Match conditions** [KQL](../../../query-filter/languages/kql.md) expression to narrow the policy to the alerts whose fields match it. For example, `severity: "critical"` applies the policy to critical alerts only. For the fields you can use, refer to [Match conditions fields](action-policy-reference.md#action-policy-matcher-fields).
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` On a new action policy, expand **Advanced matching** to show **Match conditions**. The expression can use only the [match conditions fields](action-policy-reference.md#action-policy-matcher-fields), so it can't select alerts by the rule's ID, name, or tags. To apply the policy to specific rules, use [routing tags](#routing-tags).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` On a new action policy, expand **Advanced matching** to show **Match conditions**. The expression can use only the [match conditions fields](action-policy-reference.md#action-policy-matcher-fields), so it can't select alerts by the rule's ID, name, or tags. To apply the policy to specific rules, use [routing tags](#routing-tags).
 
 ## Add tags to categorize the action policy [policy-tags]
 ```{applies_to}
@@ -96,7 +100,7 @@ If the workflow doesn't exist yet, select **Create a workflow** to build it in t
 ### Create an email or Slack workflow [inline-email-slack-workflow]
 ```{applies_to}
 serverless: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 If all the action policy needs to do is send an email or post a Slack message, build that workflow in the action policy itself:
@@ -119,10 +123,12 @@ If you don't have a workflow ready, set up an email or Slack notification while 
 
 ## Link a rule to action policies [policies-that-match-a-rule]
 
+To send a rule's alerts through an action policy that uses routing tags, add one of the policy's tags to the rule. To confirm which policies apply to a rule, check the rule's applied policies.
+
 ### Add routing tags to a rule [add-routing-tags]
 ```{applies_to}
 serverless: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 To link a rule to an action policy, add one of the policy's routing tags to the rule. Only rules that open alerts can have routing tags. A rule that only writes rule events (`type: signal`) can't, because action policies don't evaluate those events.
@@ -142,7 +148,7 @@ The list also indicates why each policy applies.
 
 ::::{applies-switch}
 
-:::{applies-item} { serverless: ga, stack: experimental 9.6+ }
+:::{applies-item} { serverless: ga, stack: ga 9.6+ }
 To add a policy without leaving the rule, select **Create action policy** in **Applied policies**, then give the new policy one of the rule's routing tags. Each entry in **Applied policies** shows the connector types its workflows use, along with a badge or icon:
 
 * A **Catch-all** badge means the policy has no routing tags and no expression, so it applies to alerts from every rule.

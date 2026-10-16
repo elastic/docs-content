@@ -1,7 +1,7 @@
 ---
 navigation_title: About action policies
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -15,6 +15,10 @@ description: "Action policies decide whether and when an alert invokes a workflo
 
 In {{alerting-v2-system}}, an action policy is the gating layer between an alert and a workflow. It decides whether and when to invoke a workflow by running the alert through a sequence of gates, and a workflow runs only once the alert clears every gate.
 
+:::{note}
+To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
+:::
+
 ## How rules and action policies work together [rules-and-action-policies]
 
 A rule detects a condition and opens alerts. A rule doesn't store which action policies apply to its alerts. Instead, {{kib}} evaluates each action policy in the space against every [eligible](#action-policy-gates) alert, and invokes a workflow for the ones that pass every gate.
@@ -23,7 +27,7 @@ Because of that separation, a single action policy can apply to alerts from many
 
 To narrow which alerts an action policy applies to, set its [scope](create-configure-action-policy.md#matcher). An action policy with an empty scope applies to every eligible alert in the space.
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` To apply an action policy to specific rules, give the policy and those rules the same [routing tag](create-configure-action-policy.md#routing-tags). A policy applies to alerts from every rule that has at least one of its routing tags, including rules you tag after you create the policy. The link doesn't depend on the rule's ID, name, or rule tags. You can rename a rule or reorganize its rule tags without changing which policies apply.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To apply an action policy to specific rules, give the policy and those rules the same [routing tag](create-configure-action-policy.md#routing-tags). A policy applies to alerts from every rule that has at least one of its routing tags, including rules you tag after you create the policy. The link doesn't depend on the rule's ID, name, or rule tags. You can rename a rule or reorganize its rule tags without changing which policies apply.
 
 ## How action policies gate alerts [action-policy-gates]
 
@@ -32,7 +36,7 @@ A workflow runs only when the alert passes every gate. {{kib}} checks the gates 
 | Gate | What it checks |
 |------|----------------|
 | Alert eligibility | Whether the alert is acknowledged, snoozed, resolved, or in a maintenance window. Any of these stops it. |
-| Policy scope {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Whether the alert's rule has at least one of the policy's [routing tags](create-configure-action-policy.md#routing-tags), and whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If the policy has both, the alert has to pass both. An empty scope passes every eligible alert in the space. |
+| Policy scope {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Whether the alert's rule has at least one of the policy's [routing tags](create-configure-action-policy.md#routing-tags), and whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. If the policy has both, the alert has to pass both. An empty scope passes every eligible alert in the space. |
 | Match conditions {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` | Whether the alert matches the policy's [KQL](../../../query-filter/languages/kql.md) expression. An empty expression passes every eligible alert in the space. |
 | Frequency | Whether a workflow already ran for the alert's notification group within the policy's frequency interval. If it did, the alert waits. |
 

@@ -1,7 +1,7 @@
 ---
 navigation_title: Action policy reference
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -18,9 +18,9 @@ Use the following fields in the **Match conditions** expression to filter which 
 
 | Field | Description | Example |
 |---|---|---|
-| `alert_id` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Unique identifier of the alert. | `alert_id: "alert-001"` <br> Match a specific alert by ID. |
+| `alert_id` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Unique identifier of the alert. | `alert_id: "alert-001"` <br> Match a specific alert by ID. |
 | `episode_id` {applies_to}`stack: experimental =9.5` | Unique identifier of the alert. Replaced by `alert_id` in later versions. | `episode_id: "ep-001"` <br> Match a specific alert by ID. |
-| `alert_status` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | Current lifecycle status of the alert. One of `inactive`, `pending`, `active`, or `recovering`. | `alert_status: "active"` <br> Match only active alerts. |
+| `alert_status` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Current lifecycle status of the alert. One of `inactive`, `pending`, `active`, or `recovering`. | `alert_status: "active"` <br> Match only active alerts. |
 | `episode_status` {applies_to}`stack: experimental =9.5` | Current lifecycle status of the alert. Replaced by `alert_status` in later versions. | `episode_status: "active"` <br> Match only active alerts. |
 | `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery, so a severity-scoped policy applies only to open alerts. Severity can change during an alert without reopening it. The action policy picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority alerts to a dedicated workflow. |
 | `group_hash` | Stable hash identifying the alert series the alert belongs to. | `group_hash: "abc123"` <br> Match all alerts in a specific alert series. |
@@ -28,7 +28,7 @@ Use the following fields in the **Match conditions** expression to filter which 
 | `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match alerts from a specific host in a host-based rule. |
 
 :::{note}
-:applies_to: {"serverless": "ga", "stack": "experimental 9.6+"}
+:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
 To apply a policy to alerts from a set of rules, give the policy and those rules the same routing tag. **Match conditions** can't select alerts by the rule's ID, name, or tags. To learn more, refer to [Apply the policy to alerts from specific rules](create-configure-action-policy.md#routing-tags).
 :::
 

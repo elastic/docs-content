@@ -88,6 +88,7 @@ The following ports need to be open for containers communicating with the host o
 | 2180 | ZooKeeper admin port | All roles |
 | 2375 | Docker admin port | All roles |
 | 2191-2199 | Debug ports | Director |
+| 2898-2908, 3191-3201, 3898-3908 | {applies_to}`ece: ga 4.3` Reserved for ZooKeeper. Published by the ZooKeeper container but not in use. Not required between hosts. | Director |
 | 5000-5010 | Java Virtual Machine (JVM)/debug ports | All roles |
 | 8080-8084 | Health/monitoring ports | All roles |
 | 9000, 9043 | Internal proxy use | Proxy |

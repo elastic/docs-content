@@ -1,7 +1,7 @@
 ---
 navigation_title: Create from Discover
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -17,7 +17,7 @@ Convert an {{esql}} query you've already built in Discover directly into a {{ale
 Two paths lead to Discover-based rule creation:
 
 - **Discover Alerts menu**: When you're in Discover with an active {{esql}} query and {{alerting-v2-system}} is enabled, the Alerts menu includes a **Create ES|QL rule** option. The rule creation flyout opens pre-populated with the current query. This path is only available in ES|QL mode.
-- **Rules page**: To open the **Rules** page, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the creation path that opens a flyout with a live Discover session, so you can write and test the query before you save the rule.
+- **Rules page**: To open the **Rules** page, go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the creation path that opens a flyout with a live Discover session, so you can write and test the query before you save the rule.
 
 ## How it works [discover-rule-flow]
 

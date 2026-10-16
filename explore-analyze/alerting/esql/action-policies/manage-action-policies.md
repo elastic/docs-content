@@ -1,7 +1,7 @@
 ---
 navigation_title: Manage action policies
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -12,7 +12,7 @@ description: "Manage action policies: turn them on or off, snooze them so they d
 
 After you create action policies in {{alerting-v2-system}}, you can view and edit their details, enable or disable them, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
 
-To view your action policies, go to **Alerting** → **Action Policies** in the Observability navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To view your action policies, go to **Alerting** → **Action Policies** in the {{observability}} navigation menu, or find **Action Policies** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## View and edit an action policy
 
@@ -20,7 +20,7 @@ The action policy list shows who created and last updated each policy, along wit
 
 Deleting a rule doesn't delete the action policies that applied to its alerts. Delete those policies separately when no remaining rule needs them.
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` To check which alerts a policy applies to, open the policy and read **Policy scope**. It lists the policy's [routing tags](create-configure-action-policy.md#routing-tags) and query. A policy with neither shows **This policy matches all alerts.** To list the rules that open alerts and have at least one of the policy's routing tags, select **See all affected rules**.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To check which alerts a policy applies to, open the policy and read **Policy scope**. It lists the policy's [routing tags](create-configure-action-policy.md#routing-tags) and query. A policy with neither shows **This policy matches all alerts.** To list the rules that open alerts and have at least one of the policy's routing tags, select **See all affected rules**.
 
 ## Enable, disable, and snooze an action policy
 

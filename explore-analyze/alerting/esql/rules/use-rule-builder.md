@@ -1,7 +1,7 @@
 ---
 navigation_title: Create rules using the rule builder
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -12,7 +12,7 @@ description: "Create rules by selecting a rule type and configuring it through a
 
 The {{alerting-v2-system}} rule builder lets you create a rule by selecting a rule type and configuring it through structured inputs, instead of writing {{esql}} directly. Behind the scenes, the rule builder generates the {{esql}} query for you from the data source, aggregation, filters, and alert conditions you set.
 
-To create a rule, go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To create a rule, go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Then select the creation path in the rule builder section.
 

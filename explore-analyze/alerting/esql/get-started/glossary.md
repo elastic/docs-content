@@ -1,7 +1,7 @@
 ---
 navigation_title: Glossary
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -17,7 +17,7 @@ These terms appear throughout the {{alerting-v2-system}} documentation.
 :   A configuration that controls which alerts invoke a workflow and how often. A single action policy can apply to alerts from one rule, several rules, or every rule in the space. To learn more, refer to [Notifications and actions](../notifications-actions.md).
 
 **Alert**
-:   The complete record of one problem, from first detection to recovery, moving through states (pending, active, recovering, inactive). An alert is the grouping of [rule events](../rules/rule-event-field-reference.md) that share `episode.id`. {applies_to}`stack: experimental =9.5` In {{stack}} 9.5, the UI calls an alert an **alert episode**. To learn more, refer to [Alerts](../alerts.md).
+:   The complete record of one problem, from first detection to recovery, moving through states (pending, active, recovering, inactive). An alert is the grouping of [rule events](../rules/rule-event-field-reference.md) that share `episode.id`. To learn more, refer to [Alerts](../alerts.md).
 
 **Breach**
 :   A matching row from a rule run. {{kib}} writes each breach as a [rule event](../rules/rule-event-field-reference.md). To learn more, refer to [{{esql}} query](../rules/configure-rule-query.md).
@@ -31,7 +31,7 @@ These terms appear throughout the {{alerting-v2-system}} documentation.
 **Notification**
 :   The message or action a workflow sends (such as a Slack message, an email, or a webhook call) when an alert matches an action policy or a lifecycle trigger fires. To learn more, refer to [How the dispatcher evaluates action policies](../action-policies/about-action-policies.md#how-action-policies-evaluated).
 
-**Routing tag** {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+`
+**Routing tag** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+`
 :   A tag that links rules to an action policy. When a rule and an action policy share a routing tag, the policy applies to that rule's alerts. Routing tags are separate from rule tags, which only label and filter rules. To learn more, refer to [Apply the policy to alerts from specific rules](../action-policies/create-configure-action-policy.md#routing-tags).
 
 **Rule**

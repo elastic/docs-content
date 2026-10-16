@@ -1,7 +1,7 @@
 ---
 navigation_title: Route by severity
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana

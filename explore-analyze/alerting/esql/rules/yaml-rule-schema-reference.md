@@ -1,7 +1,7 @@
 ---
 navigation_title: YAML rule schema reference
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -52,7 +52,7 @@ These optional fields add descriptive information to a rule for identification, 
 | `metadata.description` | string | Any string | Optional description of what the rule monitors. Max 1,024 characters. |
 | `metadata.owner` | string | Any string | Team or person responsible for the rule. Max 256 characters. |
 | `metadata.tags` | array of strings | Array of strings | Labels for filtering and organization. Max 20 tags, each max 128 characters. |
-| `metadata.routing_tags` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | array of strings | Array of strings | Tags that link the rule's alerts to action policies. An action policy applies when it has at least one of these tags. Only valid when `kind: alert`. Max 20 tags, each max 128 characters. To learn more, refer to [Add routing tags to a rule](../action-policies/create-configure-action-policy.md#add-routing-tags). |
+| `metadata.routing_tags` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | array of strings | Array of strings | Tags that link the rule's alerts to action policies. An action policy applies when it has at least one of these tags. Only valid when `kind: alert`. Max 20 tags, each max 128 characters. To learn more, refer to [Add routing tags to a rule](../action-policies/create-configure-action-policy.md#add-routing-tags). |
 
 ## Schedule fields
 
@@ -118,16 +118,16 @@ The `artifacts` array is optional and accepts up to 100 entries. Every artifact 
 |---|---|---|---|
 | `artifacts[].id` | string | Any string | Artifact identifier. Required. Max 256 characters. |
 | `artifacts[].type` | string | Any string | Use `runbook` or `dashboard`. Other strings are allowed. Max 128 characters. |
-| `artifacts[].data` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
-| `artifacts[].data.content` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |
-| `artifacts[].data.dashboard_id` {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` | string | Non-empty string | ID of the dashboard to link. Required when `type` is `dashboard`. Max 1,024 characters. |
+| `artifacts[].data` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
+| `artifacts[].data.content` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |
+| `artifacts[].data.dashboard_id` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | string | Non-empty string | ID of the dashboard to link. Required when `type` is `dashboard`. Max 1,024 characters. |
 | `artifacts[].value` {applies_to}`stack: experimental =9.5` | string | Any string | Required. Runbook Markdown (max 50,000 characters) or a dashboard ID (max 1,024 characters). |
 
 The following example attaches a runbook and a dashboard to the same rule.
 
 ::::{applies-switch}
 
-:::{applies-item} { serverless: ga, stack: experimental 9.6+ }
+:::{applies-item} { serverless: ga, stack: ga 9.6+ }
 
 ```yaml
 artifacts:

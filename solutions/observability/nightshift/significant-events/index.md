@@ -2,30 +2,25 @@
 navigation_title: Significant Events
 description: Significant Events automatically correlates signals from your log streams into prioritized incidents using a combination of deterministic detection and AI-powered investigation.
 applies_to:
-  serverless: experimental
-  stack: experimental 9.5+
+  serverless:
+    observability: preview
 products:
   - id: observability
-  - id: elasticsearch
   - id: kibana
   - id: cloud-serverless
-  - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
-  - id: elastic-stack
 ---
 
 # Significant Events [streams-sig-events-overview]
 
-Significant Events continuously converts raw log data into a ranked feed of incidents. The pipeline moves from broad to narrow. Many alerts fire, an AI agent narrows these down into findings, and the most important ones are surfaced as Significant Events.
+Significant Events continuously converts raw log data into a ranked feed of incidents. The pipeline moves from broad to narrow. Many alerts fire, an AI agent narrows these down into findings, and the most important ones are surfaced as significant events.
 
-For example: you onboard a stream, Significant Events extracts what's in it ("this stream contains a Python gRPC service called `recommendationservice` running on GKE"), generates targeted detection rules ("detect gRPC connection failures"), and runs those rules continuously. Results flow through discovery and surface as correlated Significant Events across your entire environment.
+For example, you onboard a stream, Significant Events extracts what's in it ("this stream contains a Python gRPC service called `recommendationservice` running on GKE"), generates targeted detection rules ("detect gRPC connection failures"), and runs those rules continuously. Results flow through discovery and surface as correlated significant events across your entire environment.
 
 ## Before you get started [sig-events-prerequisites]
 
-Significant Events requires an **Enterprise license** or an active Enterprise trial.
+Elastic nightshift and Significant Events require an {{obs-serverless}} project on the Complete tier.
 
-To use Significant Events you also need a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md), which routes LLM calls.
+Significant Events uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) for large language model (LLM) calls. You don't need to configure an LLM connector or select a model.
 
 ## How the pipeline works [sig-events-pipeline]
 
@@ -45,7 +40,7 @@ Promoted rules execute on a specified schedule against stream logs and record a 
 
 ### 4. Discovery [sig-events-phase-discovery]
 
-Two agents run in sequence. The [Discovery agent](./how-it-works.md#sig-events-hiw-discovery-agent) reads detection records, correlates signals across rules and streams, and writes discovery records. The [Judge agent](./how-it-works.md#sig-events-hiw-triage) independently verifies each discovery and sets its status to open, closed, or dismissed.
+The [Discovery agent](./how-it-works.md#sig-events-hiw-discovery-agent) reads detection records, correlates signals across rules and streams, verifies its own findings, and sets each event's status to open, closed, or dismissed. Significant events are also written as alerts, so you can manage and route them like any other Elastic alert.
 
 ## Learn more [sig-events-nav]
 
@@ -54,4 +49,4 @@ Refer to the following pages for more information on Significant Events:
 - [Operator guide](./operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
-- [Nightshift](../../nightshift/nightshift.md): Use the Nightshift UI to triage and investigate Significant Events
+- [Elastic nightshift](../nightshift.md): Use the Elastic nightshift UI to triage and investigate significant events

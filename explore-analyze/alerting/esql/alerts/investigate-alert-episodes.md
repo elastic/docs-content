@@ -1,7 +1,7 @@
 ---
 navigation_title: Investigate alerts
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -12,7 +12,7 @@ description: "Investigate alerts. Understand what triggered an alert, assess met
 
 From the **Alerts** page in {{alerting-v2-system}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 
-{applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system}}](#investigate-classic-alerts).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system}}](#investigate-classic-alerts).
 
 ## Understand the trigger and scope [understand-trigger]
 
@@ -27,14 +27,14 @@ The **Rule overview** section shows the rule name, type, and status alongside a 
 
 ## Assess the metric behavior [assess-metric-behavior]
 
-Each alert shows a trend chart comparing the evaluated metric against the rule's threshold conditions over the alert's lifetime. Use it to understand how far the metric exceeded the threshold, whether the breach was escalating or stabilizing, and when it peaked.
+If a rule's query compares a metric to a threshold, as a rule created with the threshold builder does, each of its alerts shows a trend chart. The chart compares the evaluated metric against the threshold conditions over the alert's lifetime. Use it to understand how far the metric exceeded the threshold, whether the breach was escalating or stabilizing, and when it peaked.
 
 When a rule includes multiple threshold conditions:
 
 - Conditions that compare the **same metric** appear together, with each threshold represented separately.
 - Conditions that compare **different metrics** appear in separate views, one for each metric.
 
-This chart appears only for rules that group matches into an alert and whose query contains extractable threshold comparisons.
+Rules with other query shapes, and rules that don't group matches into an alert, don't show the chart.
 
 The alert timeline shows its full duration as a horizontal bar, from when it was triggered to its most recent evaluation or close time.
 
@@ -70,7 +70,7 @@ If the rule has a runbook attached, you can view it directly from the alert to f
 ## Investigate alerts from {{alerting-v1-system}} [investigate-classic-alerts]
 ```{applies_to}
 serverless: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 Select an alert with **Classic** in the **Source** column to open its details flyout, then use its tabs to check the alert:

@@ -1,7 +1,7 @@
 ---
 navigation_title: Create your first rule
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -260,7 +260,7 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 ::::{step} Open the rule form
 
-Go to **Alerting** → **Rules** in the Observability navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Then create a new rule, and select **Create ES|QL rule** to open the rule authoring flyout.
 
@@ -373,7 +373,7 @@ With the rule running, you can watch the full alert lifecycle play out on the **
 
 ::::{step} Open the Alerts page
 
-Go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::
 

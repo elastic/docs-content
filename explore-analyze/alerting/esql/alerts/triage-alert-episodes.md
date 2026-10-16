@@ -1,7 +1,7 @@
 ---
 navigation_title: Triage alerts
 applies_to:
-  stack: experimental 9.5+
+  stack: ga 9.6+, experimental =9.5
   serverless: ga
 products:
   - id: kibana
@@ -10,7 +10,7 @@ description: "Take triage actions on alerts. Acknowledge, snooze, resolve, reope
 
 # Triage alerts [triage-alert-episodes]
 
-Use the **Alerts** page in {{alerting-v2-system}} to triage alerts individually or in bulk. You can mark alerts as seen, silence their notifications, close or reopen them, and tag or assign them. To open the page, go to **Alerting** → **Alerts** in the Observability navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Use the **Alerts** page in {{alerting-v2-system}} to triage alerts individually or in bulk. You can mark alerts as seen, silence their notifications, close or reopen them, and tag or assign them. To open the page, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 For deeper investigation of a specific alert, refer to [Investigate alerts](investigate-alert-episodes.md).
 
@@ -55,7 +55,7 @@ Add context to an alert for filtering, routing, or ownership.
 
 | Action | Description | Scope |
 |---|---|---|
-| Edit alert tags or Edit Tags (depending on your {{stack}} version) | Adds or removes tags on the alert. | {applies_to}`serverless: ga` {applies_to}`stack: experimental 9.6+` Alert<br>{applies_to}`stack: experimental =9.5` Series |
+| Edit alert tags or Edit Tags (depending on your {{stack}} version) | Adds or removes tags on the alert. | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Alert<br>{applies_to}`stack: experimental =9.5` Series |
 | Edit assignee | Assigns the alert to a specific user, so others know who owns the investigation. | Alert |
 
 ## Investigate the underlying data [investigate-underlying-data]
@@ -69,7 +69,7 @@ Go to Discover to check whether the data behind an alert shows a genuine problem
 ## Triage alerts from {{alerting-v1-system}} [triage-classic-alerts]
 ```{applies_to}
 serverless: ga
-stack: experimental 9.6+
+stack: ga 9.6+
 ```
 
 To act on alerts with **Classic** in the **Source** column, your role needs [privileges in both alerting systems](../manage/configure-access.md#alerting-classic-alert-privileges).
@@ -87,4 +87,6 @@ You can't unresolve or assign {{alerting-v1-system}} alerts, or open them in Dis
 
 ### Add alerts from {{alerting-v1-system}} to a case [classic-alerts-to-cases]
 
-To add a {{alerting-v1-system}} alert from an Observability rule to a case, turn on the [**Show V1 Observability alerts table**](../setup.md#alerting-setup-v1-alerts-page) advanced setting in the space, then add the alert from the **Alerts (V1)** page. You can't add {{alerting-v1-system}} alerts to cases from the **Alerts** page.
+To add a {{alerting-v1-system}} alert from an Observability rule to a case, turn on the [**Classic Alerting: Show Classic Alerts table**](../setup.md#alerting-setup-v1-alerts-page) advanced setting in the space, then add the alert from the **Alerts (Classic)** page.
+
+{applies_to}`serverless: ga` You can't add {{alerting-v1-system}} alerts to cases from the **Alerts** page.
