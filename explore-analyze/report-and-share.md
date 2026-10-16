@@ -65,7 +65,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **CSV reports** — Generate CSV reports of saved Discover sessions.
 * **CSV download** — Generate and download CSV files of Lens visualizations.
-* **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
+* **Download as JSON** {applies_to}`serverless: unavailable` — Generate and download JSON files of **Canvas** workpads.
 * **Export JSON**
     * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
     * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
@@ -153,6 +153,9 @@ For the most reliable configuration of PDF/PNG {{report-features}}, consider ins
 
 
 ## Create JSON files [download-as-json]
+```{applies_to}
+serverless: unavailable
+```
 
 Create and share JSON files for workpads.
 
