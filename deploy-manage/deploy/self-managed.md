@@ -1,4 +1,5 @@
 ---
+navigation_title: Self-managed cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/dependencies-versions.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-stack-demo-self.html
@@ -9,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Self-managed cluster
+# Self-managed {{es}} cluster
 
 If you want to install Elastic on your own premises without the assistance of an [orchestrator](/deploy-manage/deploy.md#about-orchestration), then you can deploy a self-managed cluster. If you deploy a self-managed cluster, then you have complete control and responsibility over every aspect of your Elastic deployment.
 
