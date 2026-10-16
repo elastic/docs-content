@@ -3,6 +3,7 @@ redirects:
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   # related to https://github.com/elastic/docs-content/issues/7502
   'explore-analyze/find-and-organize/data-views.md':
+    to: 'explore-analyze/find-and-organize/data-views.md'
     many:
       - to: 'explore-analyze/find-and-organize/data-views/create-data-view.md'
         anchors:
@@ -106,12 +107,12 @@ redirects:
   'solutions/observability/streams/management/extract/set.md': 'solutions/observability/streams/processors/set.md'
   'solutions/observability/streams/management/extract/trim.md': 'solutions/observability/streams/processors/trim.md'
   'solutions/observability/streams/management/extract/uppercase.md': 'solutions/observability/streams/processors/uppercase.md'
-  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
   'solutions/observability/streams/management/partitioning.md': 'solutions/observability/streams/organize-your-data.md'
   'solutions/observability/streams/management/retention.md': 'solutions/observability/streams/configure-retention.md'
   'solutions/observability/streams/management/schema.md': 'solutions/observability/streams/map-fields.md'
-  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
-  'solutions/observability/streams/knowledge-indicators.md': 'solutions/observability/streams/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
   'solutions/observability/streams/management/streamlang.md': 'solutions/observability/streams/streamlang.md'
 
   # Related to https://github.com/elastic/docs-content/pull/1069
@@ -1066,6 +1067,10 @@ redirects:
   'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/managed-integrations/managed-integrations.md'
   'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/managed-integrations/cloud-connector-deployment.md'
 
+# Related to https://github.com/elastic/docs-content-internal/issues/1986 and https://github.com/elastic/docs-content-internal/issues/1702
+# Moved the Security Kibana privileges catalog from Get started to Access control
+  'solutions/security/get-started/security-kibana-privileges.md': 'solutions/security/manage/security-kibana-privileges.md'
+
 # Moved Explore pages (Hosts, Network, Users) into Entity analytics section
   'solutions/security/explore.md': 'solutions/security/advanced-entity-analytics.md'
   'solutions/security/explore/hosts-page.md': 'solutions/security/advanced-entity-analytics/hosts-page.md'
@@ -1489,7 +1494,7 @@ redirects:
 
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
-
+  
   # Related to https://github.com/elastic/docs-content/pull/8651
   # Remove duplicate Security dashboard pages
   'solutions/security/cloud/cnvm-dashboard.md': 'solutions/security/dashboards/cloud-native-vulnerability-management-dashboard.md'
@@ -1505,3 +1510,14 @@ redirects:
   'deploy-manage/security/logging-configuration/auditing-search-queries.md': 'deploy-manage/monitor/stack-audit-logging/auditing-search-queries.md'
   'deploy-manage/security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md': 'deploy-manage/monitor/stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md'
   'deploy-manage/monitor/log-delivery/cloud-audit-trail.md': 'deploy-manage/monitor/cloud-audit-trail.md'
+  
+  # Related to https://github.com/elastic/docs-content/pull/8717
+  'solutions/observability/streams/significant-events/index.md': 'solutions/observability/nightshift/significant-events/index.md'
+  'solutions/observability/streams/significant-events/how-it-works.md': 'solutions/observability/nightshift/significant-events/how-it-works.md'
+  'solutions/observability/streams/significant-events/operator-guide.md': 'solutions/observability/nightshift/significant-events/operator-guide.md'
+  'solutions/observability/streams/significant-events/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
+  
+  # related to https://github.com/elastic/docs-content/issues/7421
+  'cloud-account/change-interface-language.md': 'explore-analyze/find-and-organize/personal-preferences/change-interface-language.md'
+  'cloud-account/dark-mode.md': 'explore-analyze/find-and-organize/personal-preferences/dark-mode.md'
+  'cloud-account/high-contrast.md': 'explore-analyze/find-and-organize/personal-preferences/high-contrast.md'
