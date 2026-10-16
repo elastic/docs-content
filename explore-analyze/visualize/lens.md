@@ -316,9 +316,9 @@ From the annotation panel, you can choose the type of placement and adjust the i
       2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
       3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
 
-    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search). To create custom query annotations:
+    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md). To create custom query annotations:
       1. Select **Custom query**.
-      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
+      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md).
       3. Select the **Target date field**.
 
 **Appearance**
