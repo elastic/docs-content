@@ -45,6 +45,17 @@ Optimize your end-user experience and your application QA strategy based on your
 :screenshot:
 :::
 
+## Service map [mobile-service-map]
+```{applies_to}
+stack: ga 9.6+
+```
+
+The **Service map** panel shows the mobile service’s upstream and downstream connections. It uses the selected time range, environment, and filters (including device, operating system version, app version, and network connection type).
+
+In the **Service map** panel, click **Explore in Service map** to open the full map with the service selected and the filters preserved.
+
+For licensing requirements and map controls, refer to [](/solutions/observability/apm/service-map.md).
+
 ## Throughput and transactions [mobile-throughput-transactions]
 
 The **Throughput** chart visualizes the average number of transactions per minute for the selected service.
