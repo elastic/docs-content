@@ -27,14 +27,14 @@ The **Rule overview** section shows the rule name, type, and status alongside a 
 
 ## Assess the metric behavior [assess-metric-behavior]
 
-Each alert shows a trend chart comparing the evaluated metric against the rule's threshold conditions over the alert's lifetime. Use it to understand how far the metric exceeded the threshold, whether the breach was escalating or stabilizing, and when it peaked.
+If a rule's query compares a metric to a threshold, as a rule created with the threshold builder does, each of its alerts shows a trend chart. The chart compares the evaluated metric against the threshold conditions over the alert's lifetime. Use it to understand how far the metric exceeded the threshold, whether the breach was escalating or stabilizing, and when it peaked.
 
 When a rule includes multiple threshold conditions:
 
 - Conditions that compare the **same metric** appear together, with each threshold represented separately.
 - Conditions that compare **different metrics** appear in separate views, one for each metric.
 
-This chart appears only for rules that group matches into an alert and whose query contains extractable threshold comparisons.
+Rules with other query shapes, and rules that don't group matches into an alert, don't show the chart.
 
 The alert timeline shows its full duration as a horizontal bar, from when it was triggered to its most recent evaluation or close time.
 
