@@ -386,16 +386,16 @@ serverless: preview
 stack: preview 9.6+
 ```
 
-A tab you open with the {icon}`plus` icon doesn't search until you tell it to. In that tab, auto-refresh is paused and the list of fields stays hidden until you search.
+A tab you open with the {icon}`plus` icon doesn't search until you tell it to. In that tab, automatic refresh stays paused until you turn **Refresh every** back on in the [time filter](../query-filter/filtering.md) settings, and the list of fields stays hidden until the first search.
 
-By default, the first tab you see when you open **Discover** searches right away. A duplicated tab keeps the query and the auto-refresh setting of the tab you copied.
+By default, the first tab you see when you open **Discover** and a duplicated tab search right away. A duplicated tab also keeps the query and the automatic refresh setting of the tab you copied.
 
-To start a search, use the option that matches the tab's query mode:
+To start a search in a new tab, use the option that matches its query mode:
 
 - **Classic mode:** The tab shows **Start searching**. Select **Refresh data** to load results for the current query, or enter a different query and submit it. To write the query in {{esql}} instead, select **Query in ES|QL**.
-- **{{esql}} mode:** The tab lists **Recommended queries** for its data source. To run one, hover over it and select the {icon}`play` **Run query** icon. You can also write your own query in the editor.
+- **{{esql}} mode:** The tab lists **Recommended queries** for its data source. To run one, hover over it and select the {icon}`play` **Run query** icon. You can also write your own query in the editor and run it.
 
-Switching between classic and {{esql}} mode in a tab that hasn't searched yet doesn't start a search.
+After the first search, the tab shows results and the list of fields. Switching between classic and {{esql}} mode before the first search doesn't start a search.
 
 ### Inspect your Discover queries
 
