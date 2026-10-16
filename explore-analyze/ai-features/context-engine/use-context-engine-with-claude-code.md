@@ -141,7 +141,7 @@ For additional API-level failures, refer to [Troubleshoot retrieval](retrieve-co
 ## Related Claude integrations
 
 - The [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md) installs public Elastic agent skills and connects Claude to the Elastic Docs MCP server. It does not connect Claude to your deployment data.
-- The [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md) connects Claude on the web or desktop to the {{agent-builder}} MCP server for a {{serverless-full}} project. This is a separate access path from the local skill and Elastic CLI described on this page.
+- {applies_to}`serverless: experimental` The [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md) connects Claude on the web or desktop to the {{agent-builder}} MCP server for a {{serverless-full}} project. This is a separate access path from the local skill and Elastic CLI described on this page.
 
 <!--
 ## Next step

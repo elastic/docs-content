@@ -21,7 +21,7 @@ An agent that retrieves context from an AI index might also need tools and permi
 
 For implementation steps, follow the guide for [{{agent-builder}}](use-context-engine-with-agent-builder.md), [LangChain and LangGraph](langchain-integration.md), or [Claude Code](use-context-engine-with-claude-code.md).
 
-To connect Claude on the web or desktop to {{agent-builder}} tools over MCP, use the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md). The connector is a separate access path from the Claude Code skill and Elastic CLI.
+{applies_to}`serverless: experimental` To connect Claude on the web or desktop to {{agent-builder}} tools over MCP, use the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md). The connector is a separate access path from the Claude Code skill and Elastic CLI.
 
 ## Provide access to context and source data
 

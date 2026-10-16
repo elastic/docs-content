@@ -149,7 +149,7 @@ By default, the query operation returns only active, unexpired KIs. For an AI in
 An agent can perform the retrieval sequence when its integration provides access to the list, describe, and query operations. How those operations become available depends on the integration:
 
 - With [{{agent-builder}}](use-context-engine-with-agent-builder.md), assign an AI index to an agent. {{agent-builder}} automatically adds the three tools and retrieval instructions.
-- With the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md), Claude on the web or desktop can use the {{context-engine}} tools that a {{serverless-full}} project exposes through the {{agent-builder}} MCP server. The available tools depend on the project configuration and the user's permissions.
+- {applies_to}`serverless: experimental` With the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md), Claude on the web or desktop can use the {{context-engine}} tools that a {{serverless-full}} project exposes through the {{agent-builder}} MCP server. The available tools depend on the project configuration and the user's permissions.
 - With [LangChain](langchain-integration.md), wrap the three {{context-engine}} API operations as LangChain tools, then provide them to the agent with instructions that establish their order.
 - With [Claude Code](use-context-engine-with-claude-code.md), install the {{context-engine}} skill and the Elastic CLI. The skill teaches Claude Code to perform the same sequence through CLI commands that call the {{context-engine}} APIs.
 
