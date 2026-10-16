@@ -221,6 +221,7 @@ Custom dynamic templates are merged with the built-in ones. The built-in counter
 ## Exemplars [exemplars]
 ```{applies_to}
 stack: ga 9.6
+serverless: ga
 ```
 
 [Exemplars](https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars) are individual observations that Prometheus can attach to a time series, such as a histogram bucket observation together with the trace ID of the request that produced it.
