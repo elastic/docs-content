@@ -1127,6 +1127,11 @@ FROM kibana_sample_data_ecommerce
 
 Cards that open dashboards or **Discover**, with a live value on the card that leads to the data behind it. The links follow the rules in [Link to dashboards and Discover](custom-panels.md#custom-panels-links). Links don't open in **Run preview**, so save the dashboard to try them. Sample data: **Sample web logs**.
 
+:::{image} /explore-analyze/images/custom-panels-example-navigation.png
+:alt: Two cards, Dashboards and Discover, each with a round icon, a description, and an Open button
+:screenshot:
+:::
+
 :::{dropdown} Query
 ```esql
 FROM kibana_sample_data_logs
