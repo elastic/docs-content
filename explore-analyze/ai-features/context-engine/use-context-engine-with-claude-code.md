@@ -38,14 +38,14 @@ You need:
 
 ## Install the Elastic CLI
 
-Install the latest [Elastic CLI](cli://cli/installation.md) globally so Claude Code can run it from its shell environment:
+Install [Elastic CLI](cli://cli/installation.md) 0.7.0 or later globally so Claude Code can run it from its shell environment:
 
 ```bash
 npm install -g @elastic/cli@latest
 elastic --version
 ```
 
-The Elastic CLI is in technical preview. Install a version that includes the {{context-engine}} command group.
+The Elastic CLI is in technical preview. The {{context-engine}} command group is available in version 0.7.0 and later.
 
 ## Confirm the {{context-engine}} commands
 
@@ -134,7 +134,7 @@ Use the following table to resolve common setup and retrieval problems:
 | --- | --- |
 | Claude Code does not load `kibana-context-engine`. | Confirm that the skill is installed in a location Claude Code discovers, then start a new session and run `/skills`. |
 | `elastic` is not found. | Install the CLI globally and confirm that its executable is on the `PATH` available to Claude Code. |
-| `elastic kb context-engine` is not a recognized command. | Update the Elastic CLI to a version that contains the {{context-engine}} commands. |
+| `elastic kb context-engine` is not a recognized command. | Update the Elastic CLI to version 0.7.0 or later. |
 
 For additional API-level failures, refer to [Troubleshoot retrieval](retrieve-context-from-ai-index.md#troubleshoot-retrieval).
 
