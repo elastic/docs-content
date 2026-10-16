@@ -14,17 +14,29 @@ description: Use Kibana Query Language (KQL) to filter data in Discover, dashboa
 
 # {{kib}} Query Language (KQL) [kuery-query]
 
-The {{kib}} Query Language (KQL) is a text-based query language for filtering data. Enter a KQL query in the query bar of Discover, dashboards, and other {{kib}} apps to see only the documents that match.
+{{kib}} Query Language (KQL) is a text-based language for filtering data in {{kib}}. Enter a KQL query in the query bar of **Discover**, dashboards, and other {{kib}} apps to narrow the data down to the documents you care about. You can start with plain text and add field conditions when you need more precision.
 
-* KQL only filters data. It does not aggregate, transform, or sort data.
-* KQL is different from the [Lucene query language](lucene-query-syntax.md). Lucene has a different feature set.
+## When to use KQL [kql-when-to-use]
 
-To compare KQL with Query DSL, {{esql}}, and other languages, refer to [Query languages](../languages.md).
+Use KQL when you want to:
 
+* Search all fields for a word or phrase.
+* Find documents where a field exists, matches a value, or falls in a range.
+* Combine, exclude, or group conditions with `and`, `or`, and `not`.
 
-## Semi-structured search [semi-structured-search]
+KQL only filters data. It does not aggregate, transform, or sort data. For those tasks, use a language such as {{esql}}.
 
-Combine free text search with field-based search using KQL. Enter a term to match across all fields. Start typing a field name to get suggestions for fields and operators.
+## How KQL works [kql-how-it-works]
+
+A KQL condition is a field name, an operator, and a value, such as `http.request.method: GET`. If you leave out the field name, KQL searches all fields. As you type in the query bar, {{kib}} suggests fields, operators, and values.
+
+KQL is the default language in the query bar of dashboards and of **Discover** in classic mode. In **Discover**, the query bar also accepts the [Lucene query language](lucene-query-syntax.md), which has a different feature set.
+
+## Combine free text with field-based search [semi-structured-search]
+
+To search across all fields, enter a term. To narrow the results, start typing a field name and select a suggested field and operator. You can mix both in one query.
+
+These examples show common patterns:
 
 | Query type | Example |
 | --- | --- |
@@ -34,9 +46,13 @@ Combine free text search with field-based search using KQL. Enter a term to matc
 | Range query | `account_number >= 100 and items_sold <= 200` |
 | Wildcard query | `machine.os:win*` |
 
-To match any of several values on one field, use parentheses and `OR`. For the full syntax, refer to [Combining multiple queries](elasticsearch://reference/query-languages/kql.md#_combining_multiple_queries).
+## Next steps [kql-next-steps]
 
+* [KQL syntax reference](elasticsearch://reference/query-languages/kql.md): Look up how to match values, ranges, and wildcards, negate or combine conditions, and query multiple or nested fields.
+* [Search and filter data in Discover](../../discover/discover-get-started.md#search-in-discover): Try KQL on your own data.
+* [Search and filter your dashboard data](../../dashboards/using.md#search-or-filter-your-data): Use the query bar to focus a dashboard.
 
-## Look up the full KQL syntax [kql-full-syntax]
+## Related pages [kql-related-pages]
 
-To see how to match values, ranges, and wildcards, negate or combine conditions, and query multiple or nested fields, refer to the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md).
+* [Query languages](../languages.md): Compare KQL with Query DSL, {{esql}}, and other languages.
+* [Lucene query syntax in {{kib}}](lucene-query-syntax.md)
