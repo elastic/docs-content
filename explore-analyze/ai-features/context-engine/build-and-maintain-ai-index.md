@@ -1,5 +1,5 @@
 ---
-navigation_title: "Build and maintain an AI index"
+navigation_title: "Build an AI index"
 description: Plan the sources, Knowledge Indicators, automations, and refresh behavior for an AI index.
 type: overview
 applies_to:
@@ -21,7 +21,7 @@ Building a useful AI index starts with decisions about its purpose, source data,
 
 This page covers AI indices that you create and maintain. Elastic integrations can also supply [managed AI indices](concepts.md#managed-ai-indices) whose configuration is read-only.
 
-For a UI-led example that creates and tests an AI index, follow [Get started with {{context-engine}}](quickstart.md).
+For a UI-led example that creates and tests an AI index, follow the [{{context-engine}} quickstart](quickstart.md).
 
 ## Define the AI index's purpose
 
@@ -29,13 +29,17 @@ Start with the recurring questions that the AI index should help answer. Use the
 
 Give the AI index a name and description that distinguish it from other available context. Agents use this metadata to decide whether the AI index is relevant before they retrieve its KIs.
 
+To create, update, or delete one, refer to [Create and manage AI indices](create-and-manage-ai-indices.md).
+
 ## Select source data
 
-Source selection controls what an automation can analyze. An {{esql}} source represents the complete query result, which can combine or filter data from multiple {{es}} indices. Connector sources make data outside {{es}} available to an automation.
+Source selection identifies the data that an AI index is intended to use and informs automation suggestions. An {{esql}} source can combine or filter data from multiple {{es}} indices. Connector sources identify data outside {{es}}.
 
 Start with a source whose result represents the data you want the automation to analyze. Confirm that it contains the information needed for the KIs you want to generate, and record any filters, sampling, or freshness limits that affect interpretation.
 
 Avoid adding data only because it is available. Unrelated records increase the work required to generate and retrieve context and make the boundaries of resulting claims harder to understand.
+
+To update the source selection, refer to [Add and manage sources](add-and-manage-sources.md).
 
 ## Select a generation strategy
 
@@ -65,7 +69,7 @@ KIs can reduce the time and model tokens agents spend exploring source data. Whe
 
 ## Review an automation before running it
 
-When {{agent-builder}} suggests an automation, review the proposal before you confirm it. Check:
+Review an automation before its first run, whether {{agent-builder}} suggested it or you authored it through the Workflows UI or APIs. For an {{agent-builder}} suggestion, review the proposal before you confirm it. Check:
 
 - Which sources and additional queries the Workflow reads.
 - Which KI generation strategy and type it uses.
@@ -75,6 +79,8 @@ When {{agent-builder}} suggests an automation, review the proposal before you co
 
 Reviewing these decisions before the first run limits unnecessary model calls and makes the resulting context easier to evaluate.
 
+To create and operate the Workflow, refer to [Create and manage automations](create-and-manage-automations.md).
+
 ## Plan inspection and maintenance
 
 After an automation runs, inspect its KIs for accuracy, useful interpretation, source limitations, and stable identifiers. Test the context with recurring questions, questions that require current source data, and questions outside the AI index's scope.
@@ -83,4 +89,4 @@ Where [agent traces](concepts.md#agent-traces) are available, look for empty ret
 
 Use those observations to revise the AI index description, source coverage, generation strategy, automation instructions, or refresh schedule. Run the automation again and compare the resulting KIs and agent behavior. Improving the automation makes the change repeatable for later runs and for every agent that uses the AI index. For a structured review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
-For definitions of the objects involved, refer to [{{context-engine}} concepts](concepts.md). To make the resulting context available to an agent or application, refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md).
+For definitions of the objects involved, refer to [{{context-engine}} concepts](concepts.md). To make the resulting context available to an agent or application, refer to [Use an AI index](use-an-ai-index.md).

@@ -18,3 +18,32 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       GH_AW_GITHUB_TOKEN: ${{ secrets.GH_AW_GITHUB_TOKEN }}
       GH_AW_GITHUB_MCP_SERVER_TOKEN: ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN }}
+
+  dispatch-project-metadata:
+    needs: run
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      issues: read
+    steps:
+      # Labels that triage applies with GITHUB_TOKEN do not start the `labeled` trigger,
+      # but workflow_dispatch runs started with GITHUB_TOKEN do.
+      - name: Start project metadata workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          # Wait briefly for the team label, in case the label write is not visible yet.
+          for attempt in 1 2 3 4 5 6; do
+            if gh issue view "$ISSUE_URL" --json labels --jq '.labels[].name' |
+              grep -qE '^Team:(SKI|Admin|Developer)$'; then
+              gh workflow run docs-project-metadata.yml --ref "$DEFAULT_BRANCH" \
+                -f issue-url="$ISSUE_URL" -f dry-run=false
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "No team label after 30 seconds; project metadata not started." >> "$GITHUB_STEP_SUMMARY"

@@ -28,7 +28,7 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
     ```
     **Resolution:**
 
-    In order to initiate a SAML authentication, {{kib}} needs to know which SAML realm it should use from the ones that are configured in {{es}}. You can use the `xpack.security.authc.providers.saml.<provider-name>.realm` setting to explicitly set the SAML realm name in {{kib}}. It must match the name of the SAML realm that is configured in {{es}}.
+    To initiate a SAML authentication, {{kib}} needs to know which SAML realm it should use from the ones that are configured in {{es}}. You can use the `xpack.security.authc.providers.saml.<provider-name>.realm` setting to explicitly set the SAML realm name in {{kib}}. It must match the name of the SAML realm that is configured in {{es}}.
 
     If you get an error like the one above, it possibly means that the value of `xpack.security.authc.providers.saml.<provider-name>.realm` in your {{kib}} configuration is wrong. Verify that it matches the name of the configured realm in {{es}}, which is the string after `xpack.security.authc.realms.saml.` in your {{es}} configuration.
 
@@ -49,7 +49,7 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
 
     To resolve this issue, ensure that both the saml realm in {{es}} and the IdP are configured with the same string for the SAML Entity ID of the Service Provider.
 
-    In the {{es}} log, just before the exception message (above), there will also be one or more `INFO` level messages of the form
+    In the {{es}} log, immediately before the exception message (above), there will also be one or more `INFO` level messages of the form
 
     ```
     Audience restriction
@@ -61,7 +61,7 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
     This log message can assist in determining the difference between the value that was received from the IdP and the value at has been configured in {{es}}. The text in parentheses that describes the difference between the two audience identifiers will only be shown if the two strings are considered to be similar.
 
     ::::{tip}
-    These strings are compared as case-sensitive strings and not as canonicalized URLs even when the values are URL-like. Be mindful of trailing slashes, port numbers, etc.
+    These strings are compared as case-sensitive strings and not as canonicalized URLs even when the values are URL-like. Be mindful of differences such as trailing slashes and port numbers.
     ::::
 
 3. **Symptoms:**
@@ -122,7 +122,7 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
     ```
     **Resolution:**
 
-    This error indicates that the SAML metadata for your Identity Provider do not contain a `<SingleSignOnService>` endpoint with binding of HTTP-Redirect (urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect). {{es}} supports only the `HTTP-Redirect` binding for SAML authentication requests (and it doesn’t support the `HTTP-POST` binding). Consult your IdP administrator in order to enable at least one `<SingleSignOnService>` supporting `HTTP-Redirect` binding and update your IdP SAML Metadata.
+    This error indicates that the SAML metadata for your Identity Provider do not contain a `<SingleSignOnService>` endpoint with binding of HTTP-Redirect (urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect). {{es}} supports only the `HTTP-Redirect` binding for SAML authentication requests (and it doesn’t support the `HTTP-POST` binding). Consult your IdP administrator to enable at least one `<SingleSignOnService>` supporting `HTTP-Redirect` binding and update your IdP SAML Metadata.
 
 7. **Symptoms:**
 
@@ -154,14 +154,14 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
     ```
     **Resolution:**
 
-    This means that {{es}} failed to validate the digital signature of the SAML message that the Identity Provider sent. {{es}} uses the public key of the Identity Provider that is included in the SAML metadata, in order to validate the signature that the IdP has created using its corresponding private key. Failure to do so, can have a number of causes:
+    This means that {{es}} failed to validate the digital signature of the SAML message that the Identity Provider sent. {{es}} uses the public key of the Identity Provider that is included in the SAML metadata to validate the signature that the IdP has created using its corresponding private key. Failure to do so, can have a number of causes:
 
     1. As the error message indicates, the most common cause is that the wrong metadata file is used and as such the public key it contains doesn’t correspond to the private key the Identity Provider uses.
     2. The configuration of the Identity Provider has changed or the key has been rotated and the metadata file that {{es}} is using has not been updated.
     3. The SAML Response has been altered in transit and the signature cannot be validated even though the correct key is used.
 
     ::::{note}
-    The private keys and public keys and self-signed X.509 certificates that are used in SAML for digital signatures as described above have no relation to the keys and certificates that are used for TLS either on the transport or the http layer. A failure such as the one described above has nothing to do with your `xpack.ssl` related configuration.
+    The private keys and public keys and self-signed X.509 certificates that are used in SAML for digital signatures have no relation to the keys and certificates that are used for TLS either on the transport or the HTTP layer. A signature validation failure has nothing to do with your `xpack.ssl` related configuration.
     ::::
 
 9. **Symptoms:**
@@ -181,7 +181,7 @@ This topic describes troubleshooting SAML SSO at the deployment or cluster level
     ```
     **Resolution:** This error indicates that {{es}} received a SAML response tied to a particular SAML request, but {{kib}} didn’t explicitly specify ID of that request. This usually means that {{kib}} cannot find the user session where it previously stored the SAML request ID.
 
-    To resolve this issue, ensure that in your {{kib}} configuration `xpack.security.sameSiteCookies` is not set to `Strict`. Depending on your configuration, you may be able to rely on the default value or explicitly set the value to `None`.
+    To resolve this issue, ensure that in your {{kib}} configuration `xpack.security.sameSiteCookies` is not set to `Strict`. Depending on your configuration, you might be able to rely on the default value or explicitly set the value to `None`.
 
     For further information, read [MDN SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
 
