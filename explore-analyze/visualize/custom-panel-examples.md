@@ -1125,7 +1125,7 @@ FROM kibana_sample_data_ecommerce
 
 ## Link to dashboards or Discover [custom-panel-examples-links]
 
-Cards that open dashboards or **Discover**, with a live value on the card that leads to the data behind it. The links follow the rules in [Link to dashboards and Discover](custom-panels.md#custom-panels-links). Links don't open in **Run preview**, so save the dashboard to try them. Sample data: **Sample web logs**.
+Cards that open dashboards or **Discover**, with a live value on the **Discover** card. The links follow the rules in [Link to dashboards and Discover](custom-panels.md#custom-panels-links). Links don't open in **Run preview**, so save the dashboard to try them. Sample data: **Sample web logs**.
 
 :::{image} /explore-analyze/images/custom-panels-example-navigation.png
 :alt: Two cards, Dashboards and Discover, each with a round icon, a description, and an Open button
@@ -1166,7 +1166,7 @@ FROM kibana_sample_data_logs
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l5 5"/></svg>
     </div>
     <h3 class="title">Discover</h3>
-    <p class="desc">Explore the {{ requests }} web requests in the selected time range.</p>
+    <p class="desc">Explore the {{ requests }} web requests in the dashboard's time range.</p>
     <a class="open" href="/app/discover">Open &rarr;</a>
   </div>
 </div>
