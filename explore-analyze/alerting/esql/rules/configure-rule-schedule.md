@@ -8,7 +8,7 @@ products:
 description: "How the execution interval and lookback window control when a rule evaluates and how much data it covers each time."
 ---
 
-# Schedule and lookback [schedule-lookback]
+# Schedule and lookback in {{alerting-v2-system}} [schedule-lookback]
 
 Schedule is a required setting for {{alerting-v2-system}} rules, and lookback is optional but strongly recommended. Together they control how often a rule runs and how far back it looks when evaluating data.
 

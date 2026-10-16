@@ -8,7 +8,7 @@ products:
 description: "Write your first ES|QL rule query. Covers the minimum query structure and how to adapt it to your data."
 ---
 
-# Your first rule query [first-rule-query]
+# Your first {{alerting-v2-system}} rule query [first-rule-query]
 
 If you're new to {{esql}} or to writing rules, start with the simplest query structure that a {{alerting-v2-system}} rule needs. You only need a basic familiarity with your data.
 

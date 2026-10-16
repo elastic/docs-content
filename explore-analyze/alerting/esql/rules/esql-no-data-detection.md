@@ -8,7 +8,7 @@ products:
 description: "Detect silent hosts and stopped data sources using ES|QL last-seen queries."
 ---
 
-# No-data detection [no-data-esql-query]
+# No-data detection in {{alerting-v2-system}} [no-data-esql-query]
 
 No-data detection in {{alerting-v2-system}} identifies sources that have gone silent, such as a host that stopped reporting metrics. A silent host produces no rows at all, so a threshold query has nothing to evaluate a condition against.
 

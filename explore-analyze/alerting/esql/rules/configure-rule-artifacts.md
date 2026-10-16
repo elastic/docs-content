@@ -8,7 +8,7 @@ products:
 description: "Add tags, runbooks, and related dashboards to rules, for filtering, triage context, and investigation dashboards."
 ---
 
-# Tags, runbooks, and dashboards [rule-artifacts]
+# Tags, runbooks, and dashboards in {{alerting-v2-system}} [rule-artifacts]
 
 Tags, runbooks, and related dashboards are optional artifacts you attach to a {{alerting-v2-system}} rule. Decide when each one is worth adding, then attach tags and runbooks in the rule form or link dashboards from the rule details page.
 

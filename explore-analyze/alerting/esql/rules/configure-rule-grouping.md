@@ -8,7 +8,7 @@ products:
 description: "Configure rule grouping to track multiple subjects as independent alert series."
 ---
 
-# Rule grouping [rule-grouping]
+# Rule grouping in {{alerting-v2-system}} [rule-grouping]
 
 Rule grouping is an optional {{alerting-v2-system}} setting that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 

@@ -8,7 +8,7 @@ products:
 description: "Write ES|QL detection queries for rules using the rule form or YAML editor, with a live query sandbox for previewing results."
 ---
 
-# Create an {{esql}} rule [create-esql-rule]
+# Create an {{esql}} rule in {{alerting-v2-system}} [create-esql-rule]
 
 Creating an {{esql}} rule in {{alerting-v2-system}} lets you write the detection query directly instead of going through the rule builder's structured inputs.
 

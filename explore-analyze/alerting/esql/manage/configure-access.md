@@ -9,7 +9,7 @@ products:
 description: "Kibana feature privileges and Elasticsearch index privileges needed to manage rules, action policies, and alerts."
 ---
 
-# Configure access [access]
+# Configure access to {{alerting-v2-system}} [access]
 
 To create rules, triage alerts, and configure notifications in {{alerting-v2-system}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
 

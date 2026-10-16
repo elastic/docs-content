@@ -9,7 +9,7 @@ products:
 description: A detailed walkthrough of how a rule's configuration determines whether matches open an alert or remain available for later analysis, and how those paths drive action policies and workflows.
 ---
 
-# How the system works [how-it-works]
+# How {{alerting-v2-system}} works [how-it-works]
 
 Each time a {{alerting-v2-system}} rule runs, {{kib}} writes a [rule event](../rules/rule-event-field-reference.md) for each matching row. The rule's [mode](../rules/configure-rule-mode.md) determines what happens next. The events either belong to an [alert](../alerts.md) that can send notifications, or stay available for later analysis.
 
