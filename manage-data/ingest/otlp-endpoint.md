@@ -279,6 +279,7 @@ If you don't need exemplars, or want to avoid the additional storage, turn it of
 * **Stop sending exemplars at the source (preferred)**: Configure the sender so exemplars never leave your infrastructure. This works on every deployment type and saves bandwidth and processing by avoiding sending data that would be discarded anyway.
 
   OpenTelemetry SDKs stop recording exemplars when you set the [`OTEL_METRICS_EXEMPLAR_FILTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exemplar) environment variable to `always_off`.
+  
   In an OpenTelemetry Collector, remove exemplars from all data points with the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor) and add it to your metrics pipeline:
 
   ```yaml
