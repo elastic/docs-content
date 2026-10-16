@@ -215,6 +215,8 @@ There is no dedicated property for a healthy or success state. For a three-state
 
 To turn a panel into a navigation hub, add standard HTML links to the template. For example, a set of cards can open related dashboards or **Discover**. A link opens its target in the current browser tab. If you generate the panel with chat, you can ask for these links in your prompt.
 
+A custom panel link opens exactly the path you write. It doesn't carry the dashboard's time range, query, or filters, and it can't open an external site. For links that do, or for a plain list of links, use a [Links panel](link-panels.md).
+
 A link works when its `href` is a {{kib}} path to dashboards or **Discover**, that is, a path that starts with `/app/dashboards` or `/app/discover`. Don't include a host, a protocol, or a base path. For example:
 
 - `/app/dashboards#/view/<dashboard-id>` opens a dashboard. You can copy the ID from the dashboard's URL.

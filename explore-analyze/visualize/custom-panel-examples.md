@@ -1123,6 +1123,44 @@ FROM kibana_sample_data_ecommerce
 ```
 :::
 
+## Navigation cards [custom-panel-examples-navigation]
+
+Cards that open dashboards or **Discover**, with a live value on the card that leads to the data behind it. The links follow the rules in [Link to dashboards and Discover](custom-panels.md#custom-panels-links). Links don't open in **Run preview**, so save the dashboard to try them. Sample data: **Sample web logs**.
+
+:::{dropdown} Query
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS requests = COUNT(*)
+```
+:::
+
+:::{dropdown} Template
+```html
+<style>
+  body { margin: 0; padding: 12px; font-family: Inter, system-ui, sans-serif; color: var(--cc-color-text); background: var(--cc-color-background); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .card { background: var(--cc-color-surface); border-radius: 8px; padding: 16px; }
+  .title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .desc { font-size: 13px; opacity: 0.8; margin-bottom: 12px; }
+  a.open { color: var(--cc-color-primary); font-weight: 600; text-decoration: underline; }
+</style>
+{% assign requests = rows[0]["requests"].value %}
+<div class="grid">
+  <div class="card">
+    <div class="title">Dashboards</div>
+    <div class="desc">Browse all dashboards in this space.</div>
+    <a class="open" href="/app/dashboards">Open dashboards</a>
+  </div>
+  <div class="card">
+    <div class="title">Discover</div>
+    <div class="desc">{{ requests }} web requests in the selected time range.</div>
+    <a class="open" href="/app/discover">Open Discover</a>
+  </div>
+</div>
+```
+:::
+
 ## Related pages [custom-panel-examples-related-pages]
 
 - [Custom panels for {{kib}} dashboards](custom-panels.md)
