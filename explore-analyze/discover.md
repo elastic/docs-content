@@ -30,7 +30,7 @@ description: Use Discover to search and filter documents, analyze field structur
 : Create quick visualizations from aggregatable fields, or use {{esql}} to build charts directly from your queries.
 
 **Save and share**
-: Export the results of a saved session to CSV, save sessions to reuse later, add them to dashboards, or share them with your team. To export, refer to [Export as a file](report-and-share.md#manually-generate-reports). You can also generate reports and create alerts based on your searches.
+ Save your Discover session sessions to reuse later, add them to dashboards, or share them with your team. To export, refer to [Export as a file](report-and-share.md#manually-generate-reports). You can also generate reports, create alerts and export CSV based on your searches.
 
    Large CSV exports can hit some limits. To see the limits for your deployment, how it differs between query modes, and what to do when you reach it, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
 
