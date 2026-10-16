@@ -386,9 +386,9 @@ serverless: preview
 stack: preview 9.6+
 ```
 
-A tab you open with the {icon}`plus` icon doesn't search until you tell it to. In that tab, automatic refresh stays paused until you turn **Refresh every** back on in the [time filter](../query-filter/filtering.md) settings, and the list of fields stays hidden until the first search.
+A tab you open with the {icon}`plus` icon doesn't search until you tell it to. In that tab, automatic refresh stays paused until you turn on **Refresh every** in the [time filter](../query-filter/filtering.md#set-time-filter) settings, and the list of fields stays hidden until the first search.
 
-By default, the first tab you see when you open **Discover** and a duplicated tab search right away. A duplicated tab also keeps the query and the automatic refresh setting of the tab you copied.
+By default, the first tab you see when you open **Discover** searches right away. A duplicated tab searches right away too, and it keeps the query and the automatic refresh setting of the tab you copied.
 
 To start a search in a new tab, use the option that matches its query mode:
 
