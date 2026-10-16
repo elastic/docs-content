@@ -93,6 +93,64 @@ Elastic nightshift proposes actions you can take to mitigate or fix the problem.
 1. Review the proposed action, and make the changes if they make sense.
 1. Select **I applied** to confirm that you've applied the action.
 
+## Connect GitHub [nightshift-get-started-github]
+
+GitHub holds the source of truth for the code behind your systems, and often your runbooks, architecture diagrams, and Helm charts too. Connect GitHub to give Elastic nightshift more information to investigate problems with your systems.
+
+1. Find **Connectors** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Create a new connector and select **GitHub**.
+1. Enter your credentials. Use a fine-grained personal access token, which lets you limit access to specific repositories.
+
+## Manage what Elastic nightshift knows about your systems [nightshift-get-started-knowledge]
+
+Elastic nightshift learns about your systems every time it runs an investigation. Storing what it learns as knowledge makes future investigations more accurate and uses fewer tokens. You can view this knowledge, correct it, and add your own.
+
+### View what Elastic nightshift knows [nightshift-get-started-knowledge-view]
+
+Open the **Knowledge** page. It has two tabs for what Elastic nightshift knows:
+
+- **Cortex**: A breakdown of what Elastic nightshift knows about your systems, organized by type, such as services, runbooks, postmortems, and queries. Each page shows its type and whether it's established or tentative.
+- **Memory**: The individual memories Elastic nightshift has learned.
+
+### Edit, archive, or delete knowledge [nightshift-get-started-knowledge-edit]
+
+If something isn't correct or useful, you can change it.
+
+In **Cortex**:
+
+- To stop Elastic nightshift from using a page, open the page and select **Archive**.
+- To change a page yourself, open it and select **Edit**. Elastic nightshift doesn't change a page you edit manually.
+- To change a page and let Elastic nightshift keep updating it as it learns, ask the Elastic AI Agent to make the change instead.
+
+In **Memory**:
+
+- To stop Elastic nightshift from using a memory, open it and select **Archive**. Select **Restore** to use it again.
+- To remove a memory permanently, select **Delete**.
+
+### Tell Elastic nightshift about your systems [nightshift-get-started-knowledge-add]
+
+Provide Elastic nightshift with information about your systems before it runs an investigation. This helps future investigations know where to look and what to do.
+
+To create a Cortex page yourself:
+
+1. From **Knowledge**, select the **Cortex** tab.
+1. Select **New page** {icon}`plus`.
+1. In the **New Cortex page** dialog, select a **Type**. Enter a **Slug**, using lowercase words separated by hyphens, such as `checkout-latency-p99`, and a **Title**.
+1. Select **Create**, then open the page and select **Edit** to add your content.
+
+Elastic nightshift prioritizes a page you create over other knowledge it has about your systems. It can't change that page over time.
+
+To create knowledge that Elastic nightshift can keep updating as it learns from investigations, ask the Elastic AI Agent to create it:
+
+1. Select **AI Agent**.
+1. Ask the agent to create entries about your systems. For example:
+   - Ask it to create a service entry for your service and tell it where to look in GitHub. [Connect GitHub](#nightshift-get-started-github) first.
+   - Tell it where to find your runbooks.
+   - Tell it anything you would want an on-call engineer to know.
+1. When the agent asks for permission to write to Cortex, select **Approve**.
+
+You can't manually create memories, only Elastic nightshift can.
+
 ## Next steps [nightshift-get-started-next]
 
 - [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
