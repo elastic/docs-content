@@ -150,6 +150,9 @@ toc:
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/customization.md
               - folder: observability/get-started/opentelemetry/use-cases/llms
+                file: index.md
+                children:
+                  - hidden: send-claude-platform-traces.md
               - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:

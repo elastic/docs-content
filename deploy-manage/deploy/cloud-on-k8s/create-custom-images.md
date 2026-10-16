@@ -52,7 +52,7 @@ If your custom images follow the naming convention adopted by the official image
 
 For more information, check the following references:
 
-* [{{es}} documentation on Using custom Docker images](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image)
+* [{{es}} documentation on building a custom Docker image](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image)
 * [Google Container Registry](https://cloud.google.com/container-registry/docs/how-to)
 * [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/)
 * [Amazon Elastic Container Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
