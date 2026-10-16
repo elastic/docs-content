@@ -87,4 +87,6 @@ You can't unresolve or assign {{alerting-v1-system}} alerts, or open them in Dis
 
 ### Add alerts from {{alerting-v1-system}} to a case [classic-alerts-to-cases]
 
-To add a {{alerting-v1-system}} alert from an Observability rule to a case, turn on the [**Show V1 Observability alerts table**](../setup.md#alerting-setup-v1-alerts-page) advanced setting in the space, then add the alert from the **Alerts (V1)** page. You can't add {{alerting-v1-system}} alerts to cases from the **Alerts** page.
+To add a {{alerting-v1-system}} alert from an Observability rule to a case, turn on the [**Classic Alerting: Show Classic Alerts table**](../setup.md#alerting-setup-v1-alerts-page) advanced setting in the space, then add the alert from the **Alerts (Classic)** page.
+
+{applies_to}`serverless: ga` You can't add {{alerting-v1-system}} alerts to cases from the **Alerts** page.

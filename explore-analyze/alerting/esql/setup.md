@@ -60,7 +60,7 @@ serverless: experimental
 stack: experimental 9.6+
 ```
 
-To try features of {{alerting-v2-system}} that are still experimental, turn on the **Universal Alerting experimental features** advanced setting (`alerting:v2:experimentalFeatures`). The setting is off by default and applies only to the space where you turn it on.
+To try features of {{alerting-v2-system}} that are still experimental, turn on the **Universal Alerting: Experimental Features** advanced setting (`alerting:v2:experimentalFeatures`). The setting is off by default and applies only to the space where you turn it on.
 
 When the setting is on, you can:
 
@@ -71,7 +71,7 @@ To turn on experimental features:
 
 1. Switch to the space where you want to use the features.
 2. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-3. Select the **Space Settings** tab, then turn on **Universal Alerting experimental features**.
+3. Select the **Space Settings** tab, then turn on **Universal Alerting: Experimental Features**.
 4. Select **Save changes**, then reload {{kib}}.
 
 ## Keep the Observability alerts page for {{alerting-v1-system}} [alerting-setup-v1-alerts-page]
@@ -84,13 +84,13 @@ stack: ga 9.6+
 
 When {{alerting-v2-system}} is on, an **Alerting** menu replaces the Observability **Alerts** link. Its **Alerts** page lists alerts from both systems, even if you keep the old page.
 
-To keep using the Observability alerts page that lists only alerts from {{alerting-v1-system}} rules, turn on the **Show V1 Observability alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`). The page then appears as **Alerts (V1)** in the **Alerting** menu and in global search results. The setting is off by default and applies only to the space where you turn it on.
+To keep using the Observability alerts page that lists only alerts from {{alerting-v1-system}} rules, turn on the **Classic Alerting: Show Classic Alerts table** advanced setting (`alerting:v1:showV1ObservabilityAlertsTable`). The page then appears as **Alerts (Classic)** in the **Alerting** menu and in global search results. The setting is off by default and applies only to the space where you turn it on.
 
-To show the **Alerts (V1)** page:
+To show the **Alerts (Classic)** page:
 
 1. Switch to the space where you want the page.
 2. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-3. Select the **Space Settings** tab, then turn on **Show V1 Observability alerts table**.
+3. Select the **Space Settings** tab, then turn on **Classic Alerting: Show Classic Alerts table**.
 4. Select **Save changes**, then reload {{kib}}.
 
 ## Next steps [alerting-setup-next-steps]
