@@ -8,7 +8,7 @@ products:
 description: "How to route alerts to different workflows based on severity level."
 ---
 
-# Route alerts by severity [route-by-severity]
+# Route alerts by severity in {{alerting-v2-system}} [route-by-severity]
 
 To send critical and non-critical alerts to different workflows in {{alerting-v2-system}}, scope one action policy per severity.
 

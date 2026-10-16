@@ -8,7 +8,7 @@ products:
 description: "Write ES|QL threshold queries for rules. Covers single-series and grouped rules using STATS aggregation."
 ---
 
-# Threshold queries [esql-threshold-queries]
+# Threshold queries in {{alerting-v2-system}} [esql-threshold-queries]
 
 A threshold query in a {{alerting-v2-system}} rule aggregates your data first, then applies an alert condition to the result. Use this pattern when a single matching event isn't enough to warrant an alert. You want to know whether a metric (count, rate, average) has crossed a limit over a time window.
 

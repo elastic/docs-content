@@ -8,7 +8,7 @@ products:
 description: "How to configure action policies so a workflow re-notifies when an alert stays active without a status change."
 ---
 
-# Re-notify for persistently active alerts [re-notification]
+# Re-notify for persistently active alerts in {{alerting-v2-system}} [re-notification]
 
 Configure a {{alerting-v2-system}} action policy so a workflow keeps running while an alert stays active without a status change.
 

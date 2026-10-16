@@ -8,7 +8,7 @@ products:
 description: "Monitor alerts with KPI panels, a histogram, and filters. Triage and investigate alerts from the same page."
 ---
 
-# View and manage alerts [view-manage-alerts]
+# View and manage alerts in {{alerting-v2-system}} [view-manage-alerts]
 
 In {{alerting-v2-system}}, use the **Alerts** page to monitor alerts with KPI panels, a histogram, and filters. To open it, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 

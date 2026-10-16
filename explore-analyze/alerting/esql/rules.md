@@ -8,7 +8,7 @@ products:
 description: "Rules define what to detect using ES|QL. Each match is written as a rule event. The rule's configuration determines whether those events are grouped into an alert."
 ---
 
-# Rules [rules]
+# Rules in {{alerting-v2-system}} [rules]
 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::

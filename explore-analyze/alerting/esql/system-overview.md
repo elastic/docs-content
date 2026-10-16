@@ -9,7 +9,7 @@ products:
 description: Kibana Universal Alerting writes each match as a rule event, then either groups those events into an alert with notifications or keeps them available for later analysis.
 ---
 
-# Overview [system-overview]
+# {{alerting-v2-system-cap}} overview [system-overview]
 
 Use {{alerting-v2-system}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
 

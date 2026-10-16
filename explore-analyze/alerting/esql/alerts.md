@@ -8,7 +8,7 @@ products:
 description: "Alerts track a problem from first detection through recovery. Alerts belong to a series that groups recurrences of the same condition."
 ---
 
-# Alerts [alerts]
+# Alerts in {{alerting-v2-system}} [alerts]
 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::

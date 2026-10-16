@@ -9,7 +9,7 @@ products:
 description: "Step-by-step tutorial for creating an ES|QL rule, covering alert delay, .rule-events evaluation history, and default recovery behavior."
 ---
 
-# Create a rule and observe the alert lifecycle [create-first-rule]
+# Create a rule in {{alerting-v2-system}} and observe the alert lifecycle [create-first-rule]
 
 In this tutorial, you'll create a {{alerting-v2-system}} rule to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert, how it tracks that alert over time, and how it closes automatically when things return to normal, without any manual intervention.
 

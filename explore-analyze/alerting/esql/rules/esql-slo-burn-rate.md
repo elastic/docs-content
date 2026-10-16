@@ -8,7 +8,7 @@ products:
 description: "Detect SLO error budget burn across multiple time windows using ES|QL conditional aggregation."
 ---
 
-# SLO burn rate detection [slo-burn-rate-query]
+# SLO burn rate detection in {{alerting-v2-system}} [slo-burn-rate-query]
 
 An SLO burn rate query in a {{alerting-v2-system}} rule answers a specific question: are you consuming your error budget faster than you can afford to? It calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
 

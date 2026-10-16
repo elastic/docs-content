@@ -9,7 +9,7 @@ products:
 description: Definitions of key terms used throughout the documentation, such as alert, action policy, and rule event.
 ---
 
-# Glossary [glossary]
+# {{alerting-v2-system-cap}} glossary [glossary]
 
 These terms appear throughout the {{alerting-v2-system}} documentation.
 

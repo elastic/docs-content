@@ -8,7 +8,7 @@ products:
 description: "YAML rule definitions support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."
 ---
 
-# YAML rule schema reference [yaml-rule-schema-reference]
+# YAML rule schema reference for {{alerting-v2-system}} [yaml-rule-schema-reference]
 
 {{alerting-v2-system-cap}} YAML rule definitions accept the following fields. For authoring guidance, refer to [Create an {{esql}} rule](create-esql-rule.md).
 

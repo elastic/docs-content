@@ -8,7 +8,7 @@ products:
 description: "Create rules by selecting a rule type and configuring it through a guided form that generates ES|QL automatically."
 ---
 
-# Create a rule using the rule builder [use-rule-builder]
+# Create a rule in {{alerting-v2-system}} using the rule builder [use-rule-builder]
 
 The {{alerting-v2-system}} rule builder lets you create a rule by selecting a rule type and configuring it through structured inputs, instead of writing {{esql}} directly. Behind the scenes, the rule builder generates the {{esql}} query for you from the data source, aggregation, filters, and alert conditions you set.
 

@@ -8,7 +8,7 @@ products:
 description: "How action policies and alert lifecycle triggers invoke workflows, and when to use each."
 ---
 
-# Connect workflows [connect-workflows]
+# Connect workflows to {{alerting-v2-system}} [connect-workflows]
 
 In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens in response to an alert, such as sending a message, calling a webhook, or opening a ticket.
 

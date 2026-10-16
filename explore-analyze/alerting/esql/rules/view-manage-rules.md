@@ -8,7 +8,7 @@ products:
 description: "Search, filter, and bulk-manage rules. Use inline editing, the rule summary flyout, and the rule details page to manage rules."
 ---
 
-# View and manage rules [manage-rules]
+# View and manage rules in {{alerting-v2-system}} [manage-rules]
 
 After you create {{alerting-v2-system}} rules, use the **Rules** page to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
 

@@ -9,7 +9,7 @@ products:
 description: "License, connector, data, and space requirements, plus how to turn the system on and off."
 ---
 
-# Set up [setup]
+# Set up {{alerting-v2-system}} [setup]
 
 Check the requirements for {{alerting-v2-system}}, turn it on or off for all spaces, and turn on optional features in the spaces where you want them.
 

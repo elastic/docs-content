@@ -8,7 +8,7 @@ products:
 description: "How to set up notifications and actions for rules. Action policies invoke workflows, which send the notification."
 ---
 
-# Notifications and actions [notifications-actions]
+# Notifications and actions in {{alerting-v2-system}} [notifications-actions]
 
 To notify people or run automation for an alert in {{alerting-v2-system}}, build a workflow and create an action policy that invokes it. Action policies act only on alerts, so the rule's [mode](rules/configure-rule-mode.md) must be **Detect and respond** or **Alert** (depending on your {{stack}} version).
 
