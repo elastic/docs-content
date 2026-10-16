@@ -3,7 +3,7 @@ navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
-description: Overview of the ES|QL editor in Kibana, including query structure, editor tools, AI assistance, time filtering, variables, and query management.
+description: Write and run ES|QL queries in Kibana with the editor in Discover, dashboards, and alerting. Covers autocomplete, AI assistance, time filters, and variables.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,11 +11,11 @@ products:
   - id: elasticsearch
 ---
 
-# Use ES|QL in the {{kib}} UI [esql-kibana]
+# Use {{esql}} in {{kib}} [esql-kibana]
 
-The {{esql}} editor lets you write, run, and manage [{{esql}}](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) queries across {{kib}}. Use it to query and aggregate your data, create visualizations, and set up alerts.
+Use the {{esql}} editor in {{kib}} to query and aggregate your data in [Discover](/explore-analyze/discover/use-esql.md). You can also use it to build visualizations on [dashboards](/explore-analyze/visualize/esorql.md) and to create [{{es}} query rules](/explore-analyze/alerting/alerts/rule-type-es-query.md) for alerting. Some editor tools are available only in **Discover**.
 
-Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+To look up commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
