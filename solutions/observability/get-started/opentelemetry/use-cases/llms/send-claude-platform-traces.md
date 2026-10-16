@@ -144,7 +144,7 @@ Some Claude Platform spans report the same token usage, so summing usage across 
 
 * **Messages API requests**: Sum the `anthropic.model_request` spans, plus any `anthropic.compaction` spans. Don't also sum the `anthropic.messages.create` span, which reports the same tokens.
 * **Managed Agents sessions**: Sum the `anthropic.model_request` and `anthropic.session.outcome_evaluation` spans.
-* **SDK spans**: If you also send SDK spans, a Messages API request has two `anthropic.messages.create` spans with the same usage: one from the SDK, with span kind `CLIENT`, and one from the API, with span kind `SERVER`. Count the API spans.
+* **SDK spans**: If you also send SDK spans, each Messages API request has two `anthropic.messages.create` spans that report the same usage. Count only the API span, which has span kind `SERVER`, and skip the SDK span, which has span kind `CLIENT`.
 
 Input token counts already include tokens read from and written to the prompt cache, so don't add the cache attributes to them. Anthropic can deliver the same span more than once, so count each span once by its trace ID and span ID. For details, refer to [Counting tokens](https://platform.claude.com/docs/en/manage-claude/opentelemetry#count-tokens) in the Anthropic documentation.
 
