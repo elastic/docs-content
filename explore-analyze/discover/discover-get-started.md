@@ -380,6 +380,23 @@ To manage and organize your tabs, you can:
 
 To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 
+#### Start a search in a new tab
+```{applies_to}
+serverless: preview
+stack: preview 9.6+
+```
+
+A tab you open with the {icon}`plus` icon doesn't search until you tell it to. In that tab, auto-refresh is paused and the list of fields stays hidden until you search.
+
+By default, the first tab you see when you open **Discover** searches right away. A duplicated tab keeps the query and the auto-refresh setting of the tab you copied.
+
+To start a search, use the option that matches the tab's query mode:
+
+- **Classic mode:** The tab shows **Start searching**. Select **Refresh data** to load results for the current query, or enter a different query and submit it. To write the query in {{esql}} instead, select **Query in ES|QL**.
+- **{{esql}} mode:** The tab lists **Recommended queries** for its data source. To run one, hover over it and select the {icon}`play` **Run query** icon. You can also write your own query in the editor.
+
+Switching between classic and {{esql}} mode in a tab that hasn't searched yet doesn't start a search.
+
 ### Inspect your Discover queries
 
 :::{include} ../_snippets/inspect-request.md
