@@ -235,9 +235,11 @@ The following models are known to work well with {{agent-builder}}. These catego
 
 | Category | Model examples | Use cases | Trade-offs |
 |---|---|---|---|
-| Extended reasoning | - Gemini 3.1 Pro <br>- Claude 4.6 Opus | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
+| Extended reasoning | - Gemini 3.1 Pro\* <br>- Claude 4.6 Opus | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
 | Balanced performance | - GPT-5.2 <br>- Claude 4.6 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
-| High throughput | - Claude 4.5 Haiku <br>- Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+| High throughput | - Claude 4.5 Haiku <br>- Gemini 3.0 Flash\* | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+
+{applies_to}`stack: ga 9.4-9.5` \* Gemini 3.1 Pro and Gemini 3.0 Flash are supported through the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). They cannot complete tool calls through a Google Vertex AI {{infer}} endpoint. Use a Gemini 2.x model on that endpoint, such as `gemini-2.5-flash`. For the error text and how to change the model, refer to [](troubleshooting/gemini-3-vertex-tool-calls.md).
 
 :::{note}
 {{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model for low-effort tasks](#fast-model).
