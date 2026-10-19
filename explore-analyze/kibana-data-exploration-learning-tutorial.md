@@ -66,10 +66,7 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 :::::{step} Open Discover and switch to {{esql}}
 
 1. From the navigation menu, go to **Discover**.
-2. Switch to {{esql}} mode. You can do this from:
-
-   - {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) in the application menu.
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+2. In the application menu, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) to switch to {{esql}} mode.
 
 **Result:** The query bar changes to an {{esql}} editor where you can write piped queries.
 :::::
