@@ -38,7 +38,7 @@ You need:
 
 Memory must be enabled globally before you can enable it for an AI index:
 
-1. In {{kib}}, open **Stack Management → Advanced Settings**.
+1. In {{kib}}, open **Stack Management** → **Advanced Settings**.
 2. Select the **Global Settings** tab.
 3. Search for **Context Engine memory**.
 4. Turn on **Context Engine memory** (`contextEngine:memoryEnabled`).
@@ -51,7 +51,7 @@ You can enable memory when you create an AI index or on an existing user-created
 
 1. Open **Context** from the {{kib}} navigation.
 2. Create an AI index, or open an existing AI index that you can edit.
-3. In **Memory**, confirm that **Enable memory** is on. It is on by default for a new AI index when the global memory setting is enabled.
+3. In **Memory**, confirm that **Enable memory** is on. When the global memory setting is enabled, memory is on by default for user-created AI indices, including existing ones.
 4. Confirm that the AI index description identifies the task context that belongs in the index and the questions it should support.
 
 An AI index can contain both automation-generated [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) and agent-written memories. You cannot enable memory for a managed AI index in {{kib}}. Memory writes are not supported for an AI index whose destination is an index pattern.
@@ -137,14 +137,14 @@ Memory has the following access and retention behavior:
 - The AI index registry and agent assignment are scoped to a {{kib}} space. The {{context-engine}} tools discover and query AI indices registered in the current space.
 - Space access does not grant access to an AI index's backing {{es}} index. Reading and writing memories also requires the corresponding {{es}} index privileges.
 - `memory.session_fact` records a granular fact learned during a task. `memory.session` records a broader synthesis of what was tried, what worked, and what to do differently.
-- A memory expires 90 days after it is written by default. The remember tool can set another expiration time or create a non-expiring memory. Expiration excludes a memory from standard retrieval but does not delete its stored documents.
+- By default, a memory expires 90 days after it is last written. The remember tool can set another expiration time or create a non-expiring memory. Expiration excludes a memory from standard retrieval but does not delete its stored documents.
 - The remember tool can revise a memory by writing the same memory ID. It does not automatically detect or merge duplicate memories.
 - The forget tool creates a deletion tombstone. Forgotten memories remain stored but are excluded from retrieval.
 - Disabling memory for an AI index prevents agents from writing, revising, or forgetting memories in that index, but it does not delete stored memories. If none of an agent's assigned AI indices have memory enabled, {{agent-builder}} does not add the memory tools.
 - Agent traces do not create memories automatically.
 
 :::{important}
-Expired and forgotten memories remain in the AI index. A user with direct access to the backing {{es}} target can still find them, as can an AI index query that explicitly includes expired or deleted documents. If you must remove a memory permanently, delete all its stored documents from the backing target. This requires the `delete` or `write` index privilege.
+Expired and forgotten memories remain in the AI index. A user with direct access to the backing {{es}} target can still find them. An AI index query can also return them when it [explicitly includes expired or deleted documents](retrieve-context-from-ai-index.md#query-with-apis). If you must remove a memory permanently, delete all its stored documents from the backing target. This requires the `delete` or `write` index privilege.
 :::
 
 ## Troubleshoot memory
