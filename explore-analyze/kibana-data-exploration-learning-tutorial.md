@@ -132,7 +132,7 @@ FROM kibana_sample_data_logs
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Instead of a flat table, Discover shows each response code as a group that you can expand to see the documents behind it. To return to a flat table, open the **Group by** menu and select **none**. Refer to [Inspect grouped STATS results in Discover](discover/inspect-grouped-stats.md).
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-aggregation.png
-:alt: Discover showing a STATS aggregation with HTTP response codes ranked by event count
+:alt: Discover showing a STATS aggregation as a bar chart of event count by response code, with the response codes listed as expandable groups
 :screenshot:
 :::
 :::::
@@ -147,7 +147,7 @@ The aggregation query produced a chart showing event counts by response code. Yo
 4. Select **Save and go to dashboard**.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-save-to-dashboard.png
-:alt: Save visualization dialog with "Add to dashboard" set to New
+:alt: The Discover chart with the Save visualization to dashboard button highlighted and its tooltip showing
 :screenshot:
 :::
 
@@ -231,7 +231,7 @@ A dashboard often starts with a row of metrics for key numbers at a glance. Usin
 5. Add a reference line to give the chart visual context:
    1. Select the **Add layer** icon {icon}`plus_square`, then select **Reference lines**.
    2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart. The value is only an example, so you can enter a different one.
-   3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic`.
+   3. Set the color to red. In **Name**, enter a label such as `High traffic`, then set **Text decoration** to **Name**.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-line-chart-lens.png
 :alt: Lens editor showing a line chart of count of records over time with a reference line
@@ -366,7 +366,7 @@ For a panel sizing reference with recommended widths and heights for each chart 
 To reduce clutter, consider hiding redundant axis titles. For example, on a bar chart the x-axis title may not add value when the panel title already describes the data. To hide it, edit the panel in Lens, open the {icon}`brush` **Style** panel, then under **Bottom axis**, set **Axis title** to **None**.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
-:alt: A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom
+:alt: A dashboard with metric panels, time series charts, bar charts, a pie chart, a treemap, and a table of recent events
 :screenshot:
 :::
 
