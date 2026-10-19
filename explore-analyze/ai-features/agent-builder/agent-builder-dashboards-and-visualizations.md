@@ -86,10 +86,10 @@ Select **Save** to [save the dashboard](#save-a-dashboard) as a {{kib}} saved ob
 You can also continue chatting to refine the dashboard. For example, ask the agent to add panels, change chart types, update metrics, or rearrange the layout.
 
 Individual visualizations display inline in the conversation when you ask for a single chart or metric. Inline visualizations are interactive: adjust the time range, or select a range directly on the chart to zoom in.
-
-{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To see the matching documents instead of a chart, ask the agent to show them in a table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 ::::
 :::::
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To see the matching documents instead of a chart, turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) and ask the agent to show them in a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
 ## Manage dashboards
 
@@ -148,5 +148,6 @@ Agents can create and manage the following panel types:
 
 - [Dashboards](/explore-analyze/dashboards.md)
 - [Chat with {{agent-builder}} agents](chat.md)
+- [Discover tables in chat](agent-builder-discover-tables.md)
 - [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
 - [Agent Builder traces overview dashboard](agent-traces-dashboard.md): a prebuilt, managed dashboard for monitoring agent activity from trace data

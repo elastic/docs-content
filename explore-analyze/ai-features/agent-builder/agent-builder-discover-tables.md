@@ -12,13 +12,13 @@ products:
   - id: cloud-serverless
 ---
 
-# Show documents in a Discover table in {{agent-builder}} chat
+# Discover tables in {{agent-builder}} chat
 
 When you ask an agent to show matching documents, events, or logs, it can display them in an interactive **Discover** table directly in the conversation. You can inspect individual documents, change the time range, open the results in **Discover**, or save the table to a dashboard without leaving the chat.
 
-This functionality is powered by the built-in [`discover-session`](builtin-skills-reference.md#agent-builder-discover-session-skill) skill. Requests for charts, metrics, trends, or aggregated summaries still produce a [Lens visualization](agent-builder-dashboards-and-visualizations.md).
+This functionality is powered by the built-in [`discover-session`](builtin-skills-reference.md#agent-builder-discover-session-skill) skill. Requests for charts, metrics, trends, or aggregated summaries produce a [Lens visualization](agent-builder-dashboards-and-visualizations.md).
 
-If you start the conversation from **Discover** in {{esql}} mode, the [`discover-data-analysis`](builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) skill can also show the current documents in a table in chat, without the experimental setting. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you start the conversation from **Discover** in {{esql}} mode, the [`discover-data-analysis`](builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) skill can also show the current documents in a **Discover** table in chat, without the experimental setting. To get the table, ask for a **Discover** table explicitly. Otherwise, the agent might answer with a plain text table. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
 
 ## Before you begin
 
@@ -37,7 +37,7 @@ Show me error and warning logs from logs-* for the last hour in a document table
 
 To get a chart instead of a table, ask for one. For example, `Chart error logs over time` produces a Lens visualization.
 
-The table supports {{esql}} queries only. The agent can't use aggregating queries, such as queries with `STATS` or `PROMQL`, for a table. It creates a visualization for those instead.
+The table supports {{esql}} queries only. The agent can't use aggregating queries, such as queries with `STATS` or `PROMQL`, for a table. Ask for a chart instead.
 
 ## Work with the table
 
@@ -61,7 +61,7 @@ To keep the first table and add another, ask for a new table. If the conversatio
 
 ## Open the table in Discover
 
-Select **Open in Discover** to continue in the full **Discover** app. **Discover** opens in a new tab with the same {{esql}} query, time range, columns, and sort order as the table.
+Select **Open in Discover** to continue in the full **Discover** app. **Discover** opens in a new **Discover** tab with the same {{esql}} query, time range, columns, and sort order as the table.
 
 This button appears only if you have the **Read** or **All** privilege for **Discover**.
 
@@ -70,7 +70,7 @@ This button appears only if you have the **Read** or **All** privilege for **Dis
 Add the table to a new or existing dashboard as a panel. This works like [saving a table to a dashboard from Discover](/explore-analyze/discover/save-open-search.md#save-table-to-dashboard).
 
 1. In the table toolbar, select {icon}`add_to_dashboard` **Save table to dashboard**.
-2. Enter a title for the panel, and optionally a description.
+2. Enter or edit the title for the panel, and optionally add a description.
 3. In **Add to dashboard**, select **Existing** to choose a dashboard from the list, or **New** to create one.
 4. Select **Save and go to dashboard**. The dashboard opens in edit mode with the table added as a panel.
 5. Save the dashboard to keep the panel.
@@ -81,10 +81,11 @@ If you don't have the **All** privilege for **Dashboard**, the button is disable
 
 ## Limitations
 
-The following aren't available yet:
+The table doesn't support:
 
 - Saving the table as a **Discover** session, or attaching an existing **Discover** session to the conversation.
-- Classic **Discover** sessions that use KQL, and a filter bar in the table.
+- KQL queries or classic **Discover** sessions.
+- A filter bar.
 - Adding **Discover** tables to dashboards that the agent creates. You can still save a table to a dashboard yourself.
 
 ## Related pages
