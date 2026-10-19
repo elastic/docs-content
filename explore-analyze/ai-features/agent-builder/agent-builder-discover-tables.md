@@ -49,9 +49,17 @@ The table works like a compact version of the **Discover** document table:
 - **Columns**: Use the column selector in the table toolbar to change which columns are shown. Your column changes carry over when you open the table in **Discover** or save it to a dashboard.
 - **Horizontal scrolling**: Scroll sideways to see more columns in the narrow chat area.
 
-<!-- Screenshot to add: compact inline table with the logs profile, local time picker, and horizontal scroll, at chat width (max 768px). Images are in the kibana#288514 description. -->
+:::{image} images/agent-builder-discover-table-inline.png
+:screenshot:
+:alt: Discover table of error and warning logs in an Agent Builder conversation, with the Open in Discover button, a Last 1 hour time picker, the Columns selector, and a Summary column showing service and host badges
+:::
 
-<!-- Screenshot to add: overlay document flyout opened with **View details**. Available in the kibana#288514 description. -->
+When you select **View details**, the document opens in a flyout over the conversation:
+
+:::{image} images/agent-builder-discover-table-flyout.png
+:screenshot:
+:alt: Document flyout over the conversation showing the Log overview tab with the log message, an error badge, service name, host name, and stream
+:::
 
 ## Refine the table with follow-up prompts
 
