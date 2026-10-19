@@ -105,11 +105,11 @@ GitHub holds the source of truth for the code behind your systems, and often you
 
 Elastic nightshift learns about your systems every time it runs an investigation. Storing what it learns as knowledge makes future investigations more accurate and uses fewer tokens. You can view this knowledge, correct it, and add your own.
 
-### View what Elastic nightshift knows [nightshift-get-started-knowledge-view]
+### View Elastic nightshift knowledge [nightshift-get-started-knowledge-view]
 
-From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs hold what Elastic nightshift knows:
+From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs contain what Elastic nightshift knows about your system:
 
-- **Cortex**: A breakdown of what Elastic nightshift knows about your systems, organized by type, such as services, runbooks, postmortems, and queries. Each page shows its type and whether it's established or tentative.
+- **Cortex**: A breakdown of what Elastic nightshift knows about your systems, organized by type, such as services, runbooks, postmortems, and queries. Each page shows the type and whether it's established or tentative.
 - **Memory**: The individual memories Elastic nightshift has learned.
 
 ### Edit, archive, or delete knowledge [nightshift-get-started-knowledge-edit]
@@ -129,18 +129,18 @@ In **Memory**:
 
 ### Tell Elastic nightshift about your systems [nightshift-get-started-knowledge-add]
 
-Provide Elastic nightshift with information about your systems before it runs an investigation. This helps future investigations know where to look and what to do.
+Using Cortex, you can provide Elastic nightshift with information about your systems before it runs an investigation. This helps future investigations know where to look and what to do. Memories are only created by Elastic nightshift. You can't manually create a memory.
 
-To create a Cortex page yourself:
+To manually create a Cortex page that only you can modify (Elastic nightshift can't update these pages):
 
 1. From **Knowledge**, select the **Cortex** tab.
 1. Select **New page** {icon}`plus`.
 1. In the **New Cortex page** dialog, select a **Type**. Enter a **Slug**, using lowercase words separated by hyphens, such as `checkout-latency-p99`, and a **Title**.
 1. Select **Create**, then open the page and select **Edit** to add your content.
 
-Elastic nightshift prioritizes a page you create over other knowledge it has about your systems. It can't change that page over time.
+Elastic nightshift prioritizes a page you create over other knowledge it has about your systems.
 
-To create knowledge that Elastic nightshift can keep updating as it learns from investigations, ask the Elastic AI Agent to create it:
+To create a Cortex page that Elastic nightshift can update as it learns, ask the Elastic AI Agent to create it:
 
 1. Select **AI Agent**.
 1. Ask the agent to create entries about your systems. For example:
@@ -148,8 +148,6 @@ To create knowledge that Elastic nightshift can keep updating as it learns from 
    - Tell it where to find your runbooks.
    - Tell it anything you would want an on-call engineer to know.
 1. When the agent asks for permission to write to Cortex, select **Approve**.
-
-You can't manually create memories, only Elastic nightshift can.
 
 ## Next steps [nightshift-get-started-next]
 
