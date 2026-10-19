@@ -472,7 +472,7 @@ To start an analysis:
 
 You can also ask the agent for follow-up analyses, including correlations between fields, time-over-time comparisons, and field statistics for specific columns.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To see the current documents without leaving the conversation, ask the agent to show them in a **Discover** table. The agent can display them in an interactive table in the chat. Refer to [Discover tables in chat](../ai-features/agent-builder/agent-builder-discover-tables.md).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To see the current documents without leaving the conversation, ask the agent to show them in an interactive **Discover** table. Refer to [Discover tables in chat](../ai-features/agent-builder/agent-builder-discover-tables.md).
 
 ### Context-aware deep analysis
 
