@@ -12,7 +12,7 @@ products:
 description: Semantic search for text in Elasticsearch using NLP models and vector embeddings, including semantic_text and Inference API workflows.
 ---
 
-# Semantic search for text [semantic-search]
+# Semantic search in {{es}} [semantic-search]
 
 :::{note}
 This page focuses on semantic search for text in {{es}}. For multimodal search across text, images, audio, video, and documents, refer to [Multimodal search](multimodal-search.md). For detailed information about lower-level vector search implementations, refer to [vector search](vector.md).

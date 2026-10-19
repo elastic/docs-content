@@ -29,15 +29,15 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 Elastic's LLM integrations now support the most widely adopted models, including Anthropic, OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which type of data, logs or metrics, you can collect.
 
-| **LLM or agentic AI platform**  | **Metrics** | **Logs** | 
+| **LLM or agentic AI platform**  | **Metrics** | **Logs** |
 |--------|------------|------------|
-| [Amazon Bedrock](integration-docs://reference/aws_bedrock.md)| ✅ | ✅ |  
-| [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |  
+| [Amazon Bedrock](integration-docs://reference/aws_bedrock.md)| ✅ | ✅ |
+| [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |
 | Anthropic ([Metrics](integration-docs://reference/anthropic_metrics.md) / [Logs](integration-docs://reference/anthropic.md)) | ✅ | ✅ |
-| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ | 
-| [Azure OpenAI](integration-docs://reference/azure_openai.md)| ✅ | ✅ | 
-| [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ | 
-| [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 | 
+| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ |
+| [Azure OpenAI](integration-docs://reference/azure_openai.md)| ✅ | ✅ |
+| [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ |
+| [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 |
 
 
 ## LLM and agentic AI application observability with APM (distributed tracing)

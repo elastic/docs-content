@@ -36,9 +36,9 @@ You can override the default command for the image to pass {{es}} configuration 
 docker run <various parameters> bin/elasticsearch -Ecluster.name=mynewclustername
 ```
 
-While bind-mounting your configuration files is usually the preferred method in production, you can also [create a custom Docker image](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image) that contains your configuration.
+While bind-mounting your configuration files is usually the preferred method in production, you can also [create a custom Docker image](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image) that contains your configuration or has plugins already installed.
 
-## Mounting {{es}} configuration files [docker-config-bind-mount]
+## Bind-mount {{es}} configuration files [docker-config-bind-mount]
 
 Create custom config files and bind-mount them over the corresponding files in the Docker image. For example, to bind-mount `custom_elasticsearch.yml` with `docker run`, specify:
 
@@ -128,44 +128,41 @@ If you’ve already created the keystore and don’t need to update it, you can 
 
 When you upgrade your cluster to a newer version, {{es}} will attempt to automatically upgrade the `elasticsearch.keystore` file to match. However, bind-mounted files are read-only, so {{es}} cannot automatically upgrade a bind-mounted `elasticsearch.keystore` file. Instead, if you are bind-mounting the `elasticsearch.keystore` file directly, you must use the `bin/elasticsearch-keystore upgrade` command to manually upgrade each node's keystore when you upgrade that node.
 
-## Using custom Docker images [_c_customized_image]
+## Build a custom Docker image [_c_customized_image]
 
-In some environments, it might make more sense to prepare a custom image that contains your configuration. A `Dockerfile` to achieve this might be as simple as:
+In some environments, it might make more sense to prepare a custom image that contains your configuration or has certain plugins already installed.
 
-::::{tab-set}
-:group: docker
-:::{tab-item} Latest
-:sync: latest
+The following `Dockerfile` example copies a configuration file into the image:
+
 ```sh subs=true
-FROM docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
+FROM docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}} <1>
 COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
 ```
-:::
+1. To build the custom image from a different {{es}} version, replace the version tag in the `FROM` instruction.
 
-:::{tab-item} Specific version
-:sync: specific
-Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
-```sh subs=true
-FROM docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
-COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
-```
-:::
-::::
+You can include plugins in a custom image in the following ways:
 
-You could then build and run the image with:
+* To install a plugin when you build the image, add the following instruction to your `Dockerfile`. This example installs the [ICU analysis plugin](elasticsearch://reference/elasticsearch-plugins/analysis-icu.md):
+
+  ```sh
+  RUN bin/elasticsearch-plugin install --batch analysis-icu <1>
+  ```
+  1. `--batch` installs the plugin non-interactively. Some plugins request additional security permissions, so inspect the requested permissions before using this option. For more information, refer to the [`elasticsearch-plugin` command line parameters](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-plugin.md#elasticsearch-plugin-parameters).
+
+* To manage plugins declaratively, create an `elasticsearch-plugins.yml` file as described in [Install plugins with the Docker image](/deploy-manage/plugins-and-custom-configuration-files/self-managed/manage-plugins.md#self-managed-plugins-docker), then copy it into the configuration directory:
+
+  ```sh
+  COPY --chown=elasticsearch:elasticsearch elasticsearch-plugins.yml /usr/share/elasticsearch/config/
+  ```
+
+When `elasticsearch-plugins.yml` is present, {{es}} reconciles the installed plugins with the file each time the container starts. It removes any plugin that is installed in the image but not listed in the file, and it deactivates the `elasticsearch-plugin install` and `remove` commands, so use one approach or the other.
+
+After you finish customizing the `Dockerfile`, build and run the image:
 
 ```sh
 docker build --tag=elasticsearch-custom .
-docker run -ti -v /usr/share/elasticsearch/data elasticsearch-custom
+docker run -ti -v esdata:/usr/share/elasticsearch/data elasticsearch-custom
 ```
-
-Some plugins require additional security permissions. You must explicitly accept them either by:
-
-* Attaching a `tty` when you run the Docker image and allowing the permissions when prompted.
-* Inspecting the security permissions and accepting them (if appropriate) by adding the `--batch` flag to the plugin install command.
-
-For more information, refer to the [`elasticsearch-plugin` command line parameters](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-plugin.md#elasticsearch-plugin-parameters).
-
 
 ## Troubleshoot Docker errors for {{es}} [troubleshoot-docker-errors]
 
