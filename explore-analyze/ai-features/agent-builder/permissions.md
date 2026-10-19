@@ -30,7 +30,7 @@ An {{agent-builder}} request is allowed only when the user or client has access 
 
 Not every operation requires every privilege. For example, a tool that queries an index requires index privileges, while `monitor_inference` is required only when an agent or tool calls the {{es}} Inference API.
 
-### HTTP API tool privileges [#http-api-tool-privileges]
+### HTTP API tool privileges [http-api-tool-privileges]
 ```{applies_to}
 stack: ga 9.6+
 serverless: ga
@@ -62,7 +62,7 @@ In the role management UI, {{kib}} displays human-readable privilege names. Role
 | **Workflows > Workflows Actions: Execute** | `feature_workflowsManagement.workflow_execute` | Run workflows. Also include **Workflows: Read** when the user or client must inspect workflows. |
 | **Workflows: All** | `feature_workflowsManagement.all` | Create, update, delete, run, and read workflows and their executions. |
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Through the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools), agents can also use any other {{kib}} feature privileges that the user or API key has, not only the privileges in this table.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Through the [HTTP API tools](#http-api-tool-privileges), agents can also use any other {{kib}} feature privileges that the user or API key has, not only the privileges in this table.
 
 Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
@@ -76,7 +76,7 @@ Tools execute {{es}} requests with the privileges of the current user or API key
 | Indices | `read` | Required for tools that query index data. Limit the assigned index patterns to the data the user or client needs. |
 | Indices | `view_index_metadata` | Required for tools that inspect index mappings. The built-in `search` tool and index search tools might use this capability internally. |
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools) can call any supported {{es}} API that the user or API key has privileges for, not only the operations covered in this table.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [HTTP API tools](#http-api-tool-privileges) can call any supported {{es}} API that the user or API key has privileges for, not only the operations covered in this table.
 
 Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html#privileges-list-cluster) and [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 

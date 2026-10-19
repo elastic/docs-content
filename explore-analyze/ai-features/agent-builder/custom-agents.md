@@ -133,7 +133,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-By default, the agent asks for [confirmation](chat.md#confirm-an-api-operation) before each call to an {{es}} or {{kib}} API operation that can change or delete existing data. You can auto-approve selected operations so the agent can call them without asking.
+By default, the agent's [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) asks for [confirmation](chat.md#confirm-an-api-operation) before each call to an {{es}} or {{kib}} API operation that can change or delete existing data. You can auto-approve selected operations so the agent can call them without asking.
 
 In the **Settings** tab, find **Auto-approved APIs** and select operations under **Elasticsearch APIs** or **Kibana APIs**. Each list shows only operations that require confirmation. Search by identifier or description.
 

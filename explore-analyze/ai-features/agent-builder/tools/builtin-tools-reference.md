@@ -468,12 +468,14 @@ The tools send requests with the privileges of the current user or API key, so a
 
     Before each call to an operation that can change or delete existing data, `execute_api` requests confirmation unless the agent's **Auto-approved APIs** setting includes the operation. For prompt behavior and exceptions, refer to [Confirm an API operation](../chat.md#confirm-an-api-operation). To configure auto-approval, refer to [Auto-approve API operations](../custom-agents.md#auto-approve-api-operations-optional).
 
-    In runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) and sub-agent runs, {{agent-builder}} declines the call unless the agent auto-approves the operation or the operation was approved in advance for that run: by the parent agent for a sub-agent, or through the `approvals` option of the `ai.agent` step. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+    In runs where no one can respond to a prompt, such as workflow `ai.agent` steps and sub-agent runs, `execute_api` declines these operations unless they were approved in advance. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 `discover_apis` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 :   Lists the supported API operations for {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.
 
-### API discovery [#api-discovery]
+    **Prerequisites:** Turn on [API discovery](#api-discovery).
+
+### API discovery [api-discovery]
 ```{applies_to}
 stack: preview 9.6+
 serverless: preview
@@ -481,9 +483,9 @@ serverless: preview
 
 To make `discover_apis` available, turn on the `agentBuilder:apiDiscovery` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (**Elastic Agent Builder: API Discovery**) in each {{kib}} space where you want agents to use it. It's off by default.
 
-When API discovery is off, an agent can call only operations whose identifier it already knows. You can supply an identifier in the agent's instructions or in your message.
+When API discovery is off, an agent can call only operations whose identifier it already knows. You can supply an identifier in the agent's instructions or [in your message](../chat.md#call-a-specific-api-operation).
 
-### API operation identifiers [#api-operation-identifiers]
+### API operation identifiers [api-operation-identifiers]
 
 Identifier formats depend on the service:
 
