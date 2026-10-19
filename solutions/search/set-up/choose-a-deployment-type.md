@@ -15,24 +15,21 @@ type: overview
 
 ::::{step} Choose a deployment and get {{es}} running
 
-Select a deployment type below to get {{es}} running.
+Get {{es}} running in a few minutes.
 
-**Quick start options**
+**Try for free on {{ecloud}}**
 
-* **[{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md)**: Includes {{serverless-full}} and {{ech}}. Both run on {{ecloud}}, in the cloud provider and region of your choice.
-  * **[{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)**: Includes the {{es}} {{vectordb}} project and the {{es}} project. Elastic scales and upgrades the project, so you can focus on your data:
-    * **[{{es}} {{vectordb}} project](/solutions/vector-database/get-started.md)**: For most search workloads, this is the recommended option. It is optimized for vector workloads and uses a vector-tuned default configuration, with a hardware profile suited to embeddings. Sign up for a [14-day free trial](https://cloud.elastic.co/registration?onboarding_token=vector).
-    * **[{{es}} project](/solutions/elasticsearch-solution-project/get-started.md)**: If you have logs, events, time series, or telemetry data, this is the recommended option. Use it for data that is written continuously and queried by time range, such as telemetry data, application logs, or metrics. Sign up for a [14-day free trial](https://cloud.elastic.co/serverless-registration).
-  * **[{{ech}}](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md)**: You size, scale, and upgrade the cluster yourself, and you select the hardware profile it runs on. Sign up for a [14-day free trial](https://cloud.elastic.co/registration).
+
+* **[{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)**: Elastic automatically scales and upgrades the project.
+  * **[{{es}} {{vectordb}} project](/solutions/vector-database/get-started.md)**: For most search workloads, this is the recommended option. It is optimized for vector workloads, such as [RAG](/solutions/search/rag.md), [recommendations](/solutions/search/vector/vector-search-use-cases.md#discovery-and-recommendations), and [multimodal search](/solutions/search/multimodal-search.md). Sign up for a [14-day free trial](https://cloud.elastic.co/registration?onboarding_token=vector).
+  * **[{{es}} project](/solutions/elasticsearch-solution-project/get-started.md)**: If you have logs, events, time series, or telemetry data, choose this project type. Use it for data that is written continuously and queried by time range, such as telemetry data, application logs, or metrics. Sign up for a [14-day free trial](https://cloud.elastic.co/serverless-registration).
+* **[{{ech}}](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md)**: You size, scale, and upgrade the cluster yourself, and you select the hardware profile it runs on. Sign up for a [14-day free trial](https://cloud.elastic.co/registration).
+
+**Run locally**
+
 * **[Local development](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md)**: Get started quickly with {{es}} and {{kib}} in Docker for local development and testing. Refer to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
-**Advanced options**
-
-* **[Self-managed](/deploy-manage/deploy/self-managed.md)**: Install, configure, and run Elastic on your own premises.
-* **[{{ece}}](/deploy-manage/deploy/cloud-enterprise/create-deployment.md)**: Deploy {{ecloud}} on public or private clouds, virtual machines, or your own premises.
-* **[{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md#eck-quickstart)**: Deploy {{ecloud}} on Kubernetes.
-
-For a detailed comparison of all available deployment types, refer to the [deployment comparison](/deploy-manage/deploy/deployment-comparison.md).
+Elastic also offers other deployment types. Refer to the [deployment comparison](/deploy-manage/deploy/deployment-comparison.md) to learn about them in detail.
 
 If {{es}} is running, try a quickstart tutorial to index data and run a search in a few minutes.
 
