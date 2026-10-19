@@ -29,7 +29,9 @@ Get {{es}} running in a few minutes.
 
 * **[Local development](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md)**: Get started quickly with {{es}} and {{kib}} in Docker for local development and testing. Refer to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
-Elastic also offers other deployment types. Refer to the [deployment comparison](/deploy-manage/deploy/deployment-comparison.md) to learn about them in detail.
+:::{tip}
+Elastic also offers other deployment types. Refer to the [deployment comparison](/deploy-manage/deploy/deployment-comparison.md) to learn more.
+:::
 
 If {{es}} is running, try a quickstart tutorial to index data and run a search in a few minutes.
 
