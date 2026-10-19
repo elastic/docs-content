@@ -52,6 +52,8 @@ This takes you to the chat GUI:
 
 Use the text input area to chat with an agent in real time. Check the agent selector to see which agent is active. To switch agents, refer to [Select a different agent](#select-a-different-agent).
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` A message can contain up to 100,000 characters. If a message exceeds the limit, a **Message is too long** warning appears below the input, and you can't send the message until you shorten it. Pasted images and commands count toward the limit by their underlying text, which is longer than what the input displays, so the character count can be higher than the visible text.
+
 :::{image} images/agent-builder-chat-input.png
 :screenshot:
 :alt: Text input area for chatting with agents
