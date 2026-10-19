@@ -181,23 +181,24 @@ Before adding more panels, save your dashboard so you don't lose your work:
 
 1. Create the visualization:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the toolbar.
    - {applies_to}`stack: ga 9.0-9.1` Select **Create visualization**.
 
-2. Once in the Lens editor, switch the visualization type to **Metric**.
-3. From the **Available fields** list on the left, drag **bytes** to the **Primary metric** area. Lens selects the **Median** aggregation automatically.
-4. Select the "Median of bytes" **Primary metric** that we just added, then go to the **Appearance** section and configure the following:
+2. Make sure the **Kibana Sample Data Logs** {{data-source}} is selected. If another one is selected, switch to **Kibana Sample Data Logs** so the fields in the next steps are available.
+3. Once in the Lens editor, switch the visualization type to **Metric**.
+4. From the **Available fields** list on the left, drag **bytes** to the **Primary metric** area. Lens selects the **Median** aggregation automatically.
+5. Select the "Median of bytes" **Primary metric** that we just added, then go to the **Appearance** section and configure the following:
    - **Name**: `Median response size`
    - **Value format**: `Bytes (1024)`
    - **Background chart** (or **Supporting visualization**): `Line`. A sparkline appears behind the number, showing how the median changes over the selected time range.
-   - **Color by value** (or **Color mode**): `Dynamic`. Set three color stops: green at `0`, yellow at `6000`, and red at `10000`. With these thresholds, the panel color reflects whether the median response size is small (under 6 KB), moderate, or large (over 10 KB).
+   - **Mode** (**Color mode** or **Color by value** in earlier versions): `Dynamic`. Set three color stops: green at `0`, yellow at `6000`, and red at `10000`. With these thresholds, the panel color reflects whether the median response size is small (under 6 KB), moderate, or large (over 10 KB).
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-metric-lens.png
 :alt: Lens editor showing a metric panel with median response size, background sparkline, and dynamic coloring
 :screenshot:
 :::
 
-5. Select **Close**, then select **Save and return**.
+6. Select **Close**, then select **Save and return**.
 
 
 **Result:** A metric panel appears on the dashboard showing the median response size in a human-readable format (for example, 5.6 KB instead of 5,748), with a background sparkline for context.
@@ -216,7 +217,7 @@ A dashboard often starts with a row of metrics for key numbers at a glance. Usin
 
 1. Create the visualization:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the toolbar.
    - {applies_to}`stack: ga 9.0-9.1` Select **Create visualization**.
 
 2. Once in the Lens editor, switch the visualization type to **Line**.
@@ -254,7 +255,7 @@ To compare trends, create additional time series. For example, create a **Respon
 
 1. Create the visualization:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the toolbar.
    - {applies_to}`stack: ga 9.0-9.1` Select **Create visualization**.
 
 2. Make sure the correct {{data-source}} is selected (for example, `kibana_sample_data_logs`).
@@ -283,7 +284,7 @@ You can also add panels powered by {{esql}} queries directly from the dashboard.
 
 1. Add a new panel:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**, depending on your {{kib}} version.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Create visualization (query)** (**Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations** in earlier versions).
    - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu, then select **{{esql}}** under **Visualizations**.
 
 2. Enter the following query and run it:
@@ -1041,7 +1042,7 @@ One of {{kib}}'s strengths is how you can move between exploring raw data and vi
 :   Select {icon}`pencil` on any panel to open the inline **Configuration** flyout. For deeper changes, select **Edit in Lens** in the flyout to switch to the full editor, then **Save and return** to go back to the dashboard.
 
 **Add a new visualization directly from a dashboard**
-:   From a dashboard, select **Add**, then select **Visualization** to open the Lens editor, or **Visualization (query)** to create a chart from an {{esql}} query without going through Discover first.
+:   From a dashboard, select **Add**, then select **Create visualization** (**Visualization** in earlier versions) to open the Lens editor, or **Create visualization (query)** (**Visualization (query)** in earlier versions) to create a chart from an {{esql}} query without going through Discover first.
 
 :::{tip}
 This back-and-forth workflow is especially useful when investigating anomalies: spot something unusual on a dashboard, jump to Discover to examine the raw events, refine your query, then save an updated visualization back to the dashboard.
