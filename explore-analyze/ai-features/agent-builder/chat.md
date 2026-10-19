@@ -326,15 +326,26 @@ serverless: ga
 
 To stop the agent while it responds, click the **Stop** icon {icon}`stop_filled` in the chat input. **Stop** replaces the **Submit** icon after the agent starts working on your message.
 
-**Stop** is available only in the chat where you sent the message or responded to a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. If you reload the page, close the sidebar, leave the standalone chat, or open the conversation in another tab or [chat mode](standalone-and-flyout-modes.md), you can't stop a response that's already running. You also can't stop a response that someone else started in a [shared conversation](#share-a-conversation).
+**Stop** is available only in the chat where you sent the message or responded to a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. You can't stop a response that's already running if you:
 
-When you stop a response, the conversation keeps your message, its attachments, and the steps the agent has taken so far, but discards any partial answer. Your message doesn't return to the chat input. The response ends with **Response stopped by** and the name of the user who stopped it. If {{kib}} stops the response, for example when it runs for more than 20 minutes, the response ends with **Response stopped** instead.
+- Reload the page.
+- Close the sidebar or leave the standalone chat.
+- Open the conversation in another tab or [chat mode](standalone-and-flyout-modes.md).
+- Didn't start the response yourself, for example in a [shared conversation](#share-a-conversation).
 
-If an error interrupts the agent, the response ends with **An error occurred**. Select it to expand the error details.
+When you stop a response, the conversation keeps your message, its attachments, and the steps the agent has taken so far, but discards any partial answer. Your message doesn't return to the chat input.
 
-Stopped and failed responses stay in the conversation when you reload the page or open another conversation. These responses don't include the **Copy response** icon, the response metadata menu, or the [View Trace icon](#view-traces).
+The end of the response shows why it ended:
 
-There's no option to retry a response. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
+- **Response stopped by** and a user name: That user stopped the response.
+- **Response stopped**: {{kib}} stopped the response, for example because it ran for more than 20 minutes.
+- **An error occurred**: An error interrupted the agent. Select it to expand the error details.
+
+Stopped and failed responses:
+
+- Stay in the conversation when you reload the page or open another conversation.
+- Don't include the **Copy response** icon, the response metadata menu, or the [View Trace icon](#view-traces).
+- Can't be retried. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
 
 ### View traces for a conversation round [view-traces]
 ```{applies_to}
