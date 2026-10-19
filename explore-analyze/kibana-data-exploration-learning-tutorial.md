@@ -230,8 +230,8 @@ A dashboard often starts with a row of metrics for key numbers at a glance. Usin
 
 5. Add a reference line to give the chart visual context:
    1. Select the **Add layer** icon {icon}`plus_square`, then select **Reference lines**.
-   2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart.
-   3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic` and select **Fill below** to shade the area under the line.
+   2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart. The value is only an example, so you can enter a different one.
+   3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic`.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-line-chart-lens.png
 :alt: Lens editor showing a line chart of count of records over time with a reference line
