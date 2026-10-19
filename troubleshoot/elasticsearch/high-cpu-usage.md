@@ -31,14 +31,14 @@ Refer to the sections below to troubleshoot degraded CPU performance.
 To check the CPU usage per node, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes):
 
 ```console
-GET _cat/nodes?v=true&s=cpu:desc&h=name,role,master,cpu,load*,allocated_processors
+GET _cat/nodes?v=true&s=cpu:desc&h=name,role,master,cpu,load*,available_processors
 ```
 
 The reported metrics are:
 
 * `cpu`: the instantaneous percentage of system CPU usage
 * `load_1m`, `load_5m`, and `load_15m`: the average amount of processes waiting for the designated time interval
-* `allocated_processors`: number of processors allocated to the node {applies_to}`stack: ga 9.3`
+* `available_processors`: number of processors available to the node {applies_to}`stack: ga 9.3`
 
 For more detail, refer to the [node statistics]({{es-apis}}operation/operation-nodes-stats) API documentation.
 
