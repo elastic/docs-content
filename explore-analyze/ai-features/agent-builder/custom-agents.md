@@ -133,15 +133,19 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-By default, the agent's [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) asks for confirmation before each call to an {{es}} or {{kib}} API operation that can change or delete existing data. To let the agent call some of these operations without asking, select them in the **Auto-approved APIs** section of the **Settings** tab, under **Elasticsearch APIs** or **Kibana APIs**. For each service, you can select:
+By default, the agent's [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) asks for confirmation before each call to an {{es}} or {{kib}} API operation that can change or delete existing data. To let the agent call some of these operations without asking, select them in the **Auto-approved APIs** section of the **Settings** tab, under **Elasticsearch APIs** or **Kibana APIs**. Each list shows only operations that ask for confirmation, and you can search it by identifier or description. For each service, you can select:
 
 * `*` to approve every such operation on that service.
 * A group, such as `indices.*`, to approve every such operation in the group.
 * Individual operations, such as `indices.delete`.
 
+Some {{es}} operations, such as `bulk` and `delete_by_query`, don't belong to a group. To approve them, select them individually or select `*`.
+
 The approval applies to every run of the agent and to the sub-agents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
 
 Only the owner, a user with **Manager** access, or an administrator can change the auto-approved APIs. For the **Elastic AI Agent**, only an administrator can change them.
+
+To change the auto-approved APIs of an existing agent, you can also select **Edit agent settings** on the agent's **Overview** page. To set them with the [Agents API](kibana-api.md#agents-apis), use `configuration.approvals.auto_approved_apis`, with an `elasticsearch` list and a `kibana` list of operations, groups, or `*`.
 
 :::::
 
@@ -315,7 +319,7 @@ Each user you add gets one of three access levels. These are separate from the a
 :   Can find, view, and run the agent.
 
 **Editor**
-:   Everything a **User** can do, plus editing the agent's configuration.
+:   Everything a **User** can do, plus editing the agent's configuration, except its {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [auto-approved APIs](#auto-approve-api-operations-optional).
 
 **Manager**
 :   Everything an **Editor** can do, plus deleting the agent and managing who has access to it.

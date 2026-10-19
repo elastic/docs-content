@@ -458,24 +458,24 @@ HTTP API tools let agents look up and call {{es}} and {{kib}} HTTP APIs from a b
 The tools send requests with the privileges of the current user or API key, so an agent can call only the APIs that the user or API key is allowed to call. {{kib}} API calls run in the current space. To learn more, refer to [Permissions and access control](../permissions.md#how-permissions-work).
 
 `describe_api` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-:   Returns the specification of an API operation, given the operation's identifier and whether it's an {{es}} or {{kib}} API. The specification includes the HTTP method, the path, a description, the parameter schema, and whether `execute_api` asks for confirmation before calling the operation. The tool summarizes large nested types, and the agent can expand them with `describe_api_type`.
+:   Returns the specification of an API operation, given the operation's identifier and whether it's an {{es}} or {{kib}} API. The specification includes the HTTP method, the path, a description, the parameter schema, and whether the operation can change or delete existing data, which determines whether `execute_api` asks for confirmation before calling it. The tool summarizes large nested types, and the agent can expand them with `describe_api_type`.
 
 `describe_api_type` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   Returns the schemas of one or more types that `describe_api` summarized.
 
 `execute_api` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-:   Calls an {{es}} or {{kib}} API operation and returns the raw response body. The tool truncates oversized responses, so the agent narrows results with parameters such as filters, size limits, or field selections.
+:   Calls an {{es}} or {{kib}} API operation and returns the raw response body. {{agent-builder}} truncates oversized responses before the agent sees them, so the agent narrows results with parameters such as filters, size limits, or field selections.
 
     Before each call to an operation that can change or delete existing data, `execute_api` asks you to confirm, unless the agent's **Auto-approved APIs** setting includes the operation. To learn how to set it, refer to [Auto-approve API operations](../custom-agents.md#auto-approve-api-operations-optional). Confirmation covers most write and delete operations, such as bulk indexing, document updates, and index deletion. Read operations, including searches, run without a prompt, and so do some operations that only create something new, such as creating an index or an API key. Whether an operation prompts depends on the operation, not on its HTTP method. To learn what the prompt shows, refer to [Confirm a change](../chat.md#confirm-a-change).
 
-    In runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) and sub-agent runs, {{agent-builder}} declines the call unless the agent auto-approves the operation or the operation was approved in advance for that run. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+    In runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) and sub-agent runs, {{agent-builder}} declines the call unless the agent auto-approves the operation or the operation was approved in advance for that run: by the parent agent for a sub-agent, or through the `approvals` option of the `ai.agent` step. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 `discover_apis` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
-:   Lists the API operations available on {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.
+:   Lists the supported API operations for {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.
 
     **Prerequisites:** Turn on the `agentBuilder:apiDiscovery` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (**Elastic Agent Builder: API Discovery**) in each {{kib}} space where you want agents to use it. It's off by default.
 
-When API discovery is off, an agent can call only operations whose identifier it already knows. To have an agent use a specific operation, include the operation's identifier in the agent's instructions or in your message. {{es}} identifiers combine the API group and the operation name, separated by a period, such as `indices.create` or `cluster.health`. Operations that don't belong to a group use only the name, such as `bulk`. {{kib}} identifiers combine the API group with a name based on the operation ID in the [{{kib}} API reference]({{kib-apis}}), such as `dashboards.create-dashboard` or `alerting.delete-alerting-rule-id`.
+When API discovery is off, an agent can call only operations whose identifier it already knows. To have an agent use a specific operation, include the operation's identifier in the agent's instructions or in your message. {{es}} identifiers combine the API group and the operation name, separated by a period, such as `indices.create` or `indices.get_mapping`. Operations that don't belong to a group use only the name, such as `bulk`. {{kib}} identifiers combine the API group with a name based on the operation ID in the [{{kib}} API reference]({{kib-apis}}), such as `dashboards.create-dashboard` or `alerting.delete-alerting-rule-id`.
 
 ## Inline tools
 
