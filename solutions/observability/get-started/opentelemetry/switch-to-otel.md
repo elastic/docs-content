@@ -64,7 +64,7 @@ Not every feature from the classic stack is available with {{edot}} yet. Review 
 
 Consider waiting if:
 
-- You need production real user monitoring. EDOT Browser is in technical preview.
+- You need production RUM. EDOT Browser is in technical preview.
 - You depend on breakdown metrics to power the **Time spent by span type** chart on your transaction views.
 - You need managed tail-based sampling without additional operational complexity.
 - You have many custom dashboards or alerts built on classic {{product.apm}} field names (`labels.*`, `numeric_labels.*`) and can't absorb the query update work yet.
@@ -120,7 +120,7 @@ EDOT SDKs use standard OpenTelemetry environment variables to replace the classi
 | `service_node_name` / `serviceNodeName` | `OTEL_RESOURCE_ATTRIBUTES=service.instance.id=<id>` |
 | `enabled` / `active` | `OTEL_SDK_DISABLED` — set to `true` to turn the SDK off (`enabled=false` / `active=false`). Applies to Python and Node.js. Java uses `OTEL_JAVAAGENT_ENABLED=false`; PHP uses `OTEL_PHP_ENABLED=false`. |
 
-For detailed configuration mappings, refer to your language's migration guide.
+For detailed configuration mappings, refer to [your language's migration guide](#switch-to-otel-sdk-matrix).
 
 ### Ingestion path change [switch-to-otel-ingestion]
 
