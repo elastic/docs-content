@@ -160,7 +160,7 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-Use the **GenAI** tab to inspect model calls, token usage, and recorded prompts and responses. These views use the `gen_ai.*` attributes defined by the [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai). They work with {{edot}} and other OpenTelemetry instrumentation that records these attributes. For setup instructions, refer to [](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md).
+Use the **GenAI** tab to inspect model calls, token usage, and recorded prompts and responses. These views use the `gen_ai.*` attributes defined by the [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai). They work with {{edot}} and other OpenTelemetry instrumentations that record these attributes. For setup instructions, refer to [](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md).
 
 To open the tab:
 
