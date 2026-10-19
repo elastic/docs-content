@@ -12,8 +12,6 @@ products:
   - id: cloud-serverless
 ---
 
-<!-- Source: kibana#288514 (not merged as of 2026-10-05, head f2ba24cd6). Re-verify UI strings, IDs, and behavior against Kibana main after merge. -->
-
 # Show documents in a Discover table in {{agent-builder}} chat
 
 When you ask an agent to show matching documents, events, or logs, it can display them in an interactive **Discover** table directly in the conversation. You can inspect individual documents, change the time range, open the results in **Discover**, or save the table to a dashboard without leaving the chat.
