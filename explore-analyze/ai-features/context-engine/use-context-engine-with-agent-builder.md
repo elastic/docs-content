@@ -69,7 +69,7 @@ When the available information is incomplete, state the limitation and ask for <
 
 Do not repeat the AI index retrieval sequence or prescribe how the agent should choose between KIs and source data. Add more detail only when testing reveals a specific unmet requirement. For general guidance, refer to [Prompt engineering](/explore-analyze/ai-features/agent-builder/prompt-engineering.md).
 
-## Test KI retrieval
+## Test Knowledge Indicator retrieval
 
 Open a conversation with the agent and test the context it can use:
 
