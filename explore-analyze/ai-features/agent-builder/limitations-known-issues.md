@@ -38,7 +38,7 @@ The [A2A server](a2a-server.md) does not currently support streaming operations.
 
 ### Human-in-the-loop prompts require an interactive conversation
 
-[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A [subagent](agent-builder-agents.md#subagents) execution cannot collect a response to these prompts, whether the subagent runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A [subagent](agent-builder-agents.md#subagents) cannot collect a response to these prompts, whether it runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
 
 The subagent run itself does not fail. The tool call returns an error result and the subagent continues, so the subagent can report the declined action in its output.
 

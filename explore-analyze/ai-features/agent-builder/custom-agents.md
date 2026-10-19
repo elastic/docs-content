@@ -133,7 +133,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-In the **Subagents** section, select **Enable subagents** to let the agent delegate tasks to other agents. **This agent (self-fork)** is added to the list, which lets the agent delegate to a copy of itself. Then, under **Delegable subagents**, select any other agents it can delegate to.
+In the **Subagents** section of the **Settings** tab, select **Enable subagents** to let the agent delegate tasks to other agents. **This agent (self-fork)** appears under **Delegable subagents** and lets the agent delegate to a copy of itself. Select any other agents it can delegate to in the same list.
 
 For more information, refer to [Subagents](agent-builder-agents.md#subagents).
 

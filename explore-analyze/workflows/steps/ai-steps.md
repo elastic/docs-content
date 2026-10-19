@@ -3,7 +3,7 @@ navigation_title: AI
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Call LLMs, run Agent Builder agents, and add context to agent conversations from workflows with AI steps. This reference lists each step's parameters, output, and examples.
+description: Call LLMs, run Agent Builder agents, and manage the attachments and metadata of agent conversations from workflows with AI steps. This reference lists each step's parameters, output, and examples.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,14 +15,16 @@ products:
 
 # AI steps [workflows-ai-steps]
 
-AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also read and update the metadata and attachments of {{agent-builder}} conversations.
+AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also read and update the metadata and attachments of {{agent-builder}} conversations.
 
 The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the default model configured for the workflow is used.
 
 :::{note}
 :applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
 
-Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`; the other AI steps currently take `connector-id` only.
+Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`; `ai.prompt`, `ai.classify`, and `ai.summarize` take `connector-id` only.
 :::
 
 ## Step types
@@ -39,7 +41,7 @@ Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}
 - [`ai.attachment.read`](#ai-attachment-read): Read the content of an attachment. {applies_to}`stack: ga 9.6+`
 - [`ai.attachment.list`](#ai-attachment-list): List the attachments in a conversation. {applies_to}`stack: ga 9.6+`
 
-For `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). The conversation steps have no top-level fields and use `snake_case` inside `with`.
+In `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, the `connector-id`, `agent-id`, and `inference-id` fields are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`).
 
 ::::{applies-switch}
 :::{applies-item} { stack: ga 9.5, serverless: ga }
@@ -49,6 +51,8 @@ Liquid expressions are evaluated in these top-level fields, so you can use templ
 Liquid expressions in these top-level fields aren't evaluated, so use a literal value (for example, `agent-id: elastic-ai-agent`) instead of `"{{ consts.agent_id }}"`.
 :::
 ::::
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [conversation metadata](#ai-conversation-metadata-steps) and [conversation attachment](#ai-attachment-steps) steps take all their parameters inside `with`, in `snake_case`.
 
 :::{include} ../_snippets/schema-location-legend.md
 :::
@@ -285,7 +289,7 @@ serverless: ga
 
 Read and update the metadata of an {{agent-builder}} conversation. Metadata is a set of structured fields, such as `status` or `severity`, defined by the template applied to the conversation. Use these steps to branch a workflow on a field value, or to record the outcome of a workflow on the conversation.
 
-Only conversations with a template have metadata. To create one from a workflow, use [`ai.conversation.create`](#ai-conversation-create) with `template_id` set to a built-in template: `investigation` or `escalation`. Conversations that `ai.agent` creates, or that users start in chat, have no template. The examples in this section use the `investigation` template, where `status` accepts `open` or `closed`.
+Only conversations with a template have metadata. To create a conversation with a template from a workflow, use `ai.conversation.create` with `template_id` set to a built-in template: `investigation` or `escalation`. Conversations that `ai.agent` creates, or that users start in chat, have no template. The examples in this section use the `investigation` template, where `status` accepts `open` or `closed`.
 
 All parameters go in the `with` block and use `snake_case`.
 
@@ -309,7 +313,7 @@ Read all metadata fields of a conversation.
   with:
     conversation_id: "{{ inputs.conversation_id }}"
 
-- name: check_decision
+- name: check_status
   type: if
   condition: 'steps.read_metadata.output.metadata.status : "closed"'
   steps:
@@ -328,7 +332,7 @@ The conversation must have a template applied, and you can only set fields that 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `conversation_id` | `with` | string | Yes | Conversation to update. |
-| `updates` | `with` | object | Yes | Fields to set, from 1 to 100 keys of up to 256 characters each. Each value can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each). |
+| `updates` | `with` | object | Yes | Fields to set, as 1 to 100 key-value pairs. Each key can be up to 256 characters. Each value can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each). |
 
 **Output shape:**
 
@@ -375,7 +379,7 @@ Add an attachment to a conversation.
 | `id` | `with` | string | No | Attachment ID, up to 256 characters. Generated if omitted. The step fails if the conversation already has an attachment with this ID. |
 | `description` | `with` | string | No | Description of the attachment, up to 1,024 characters. |
 | `hidden` | `with` | boolean | No | When `true`, the attachment isn't shown to the user, but the agent can still use it. A hidden attachment is never displayed inline. |
-| `render_inline` | `with` | boolean | No | When `true`, the attachment is displayed in the conversation as soon as a user opens it, even if the agent doesn't refer to it. Defaults to `false`. |
+| `render_inline` | `with` | boolean | No | When `true`, the attachment is displayed as soon as a user opens the conversation, even if the agent doesn't refer to it. Defaults to `false`. |
 
 **Output shape:**
 
@@ -407,7 +411,7 @@ Update the content or description of an attachment. The step creates a new versi
 | `attachment_id` | `with` | string | Yes | Attachment to update. |
 | `data` | `with` | any | No | New attachment content. |
 | `description` | `with` | string | No | New description, up to 1,024 characters. |
-| `render_inline` | `with` | boolean | No | When `true`, the new version is displayed in the conversation as soon as a user opens it. Has an effect only when `data` changes and a new version is created. |
+| `render_inline` | `with` | boolean | No | When `true`, the new version is displayed as soon as a user opens the conversation. Has an effect only when `data` changes and a new version is created. |
 
 **Output shape:** `{ attachment_id: string, current_version: number }`. `current_version` is the new version number when the content changed, and the existing version number otherwise.
 
@@ -425,7 +429,7 @@ Update the content or description of an attachment. The step creates a new versi
 
 Delete an attachment from a conversation. By default, the attachment is marked inactive but kept, so you can still list it with `include_deleted: true`. To remove the attachment completely, set `permanent: true`.
 
-A permanent delete fails if the agent has already read or updated the attachment in the conversation. A regular delete still works in that case.
+A permanent delete fails if the agent has already read, updated, or compared versions of the attachment in the conversation. A regular delete still works in that case.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -470,7 +474,7 @@ List the attachments of a conversation. The step returns a summary of each attac
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `conversation_id` | `with` | string | Yes | Conversation to list the attachments of. |
+| `conversation_id` | `with` | string | Yes | Conversation whose attachments to list. |
 | `include_deleted` | `with` | boolean | No | When `true`, also returns attachments deleted without `permanent: true`. Defaults to `false`. |
 
 **Output shape:**

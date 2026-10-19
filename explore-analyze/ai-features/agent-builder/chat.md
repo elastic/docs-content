@@ -348,7 +348,7 @@ At certain points an agent pauses and hands control back to you before it contin
 
 HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
-HITL prompts require an interactive conversation, so [subagent executions cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+HITL prompts require an interactive conversation, so [subagents cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Confirm a change
 
