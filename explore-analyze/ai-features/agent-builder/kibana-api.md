@@ -1243,7 +1243,7 @@ as the [update conversation access control](#update-conversation-access-control)
 
 This example uses the [add events to a conversation API]({{kib-apis}}operation/operation-post-agent-builder-conversations-conversation-id-add-events).
 
-Use this API to add information to a conversation without running the agent. For example, an integration can post incident updates as they happen. The agent reads the events the next time it runs on the conversation, so a later request can ask it to summarize them.
+Use this API to add information to a conversation without the agent responding. For example, an integration can post incident updates as they happen. The agent reads the events the next time it runs on the conversation, so a later request can ask it to summarize them.
 
 {{agent-builder}} provides the `text_note` event type, which takes a required `text` field (up to 1,000 characters) and an optional `title` field (up to 256 characters). Other fields in `data` are ignored. Notes appear in the conversation in Agent Chat.
 
@@ -1318,14 +1318,9 @@ The response returns each added event with the ID, author, and timestamp that {{
 
 Keep the following in mind:
 
-- You can send between 1 and 10 events in a single request. Each event can contain only `type` and `data`.
-- {{kib}} accepts only supported event types, such as `text_note`, and rejects internal event types, such as user messages.
 - If any event in the request is invalid, the whole request fails with a `400` error and no events are added.
-- {{kib}} validates events before it checks access to the conversation, so an invalid request returns a `400` error even if the conversation doesn't exist.
-- Events are attributed to the user who makes the request. You can't set a different author.
 - Events are append-only. You can't update or remove an event after you add it.
 - You must own the conversation or be a member of it, or the conversation must be public. You must also be able to use the conversation's agent. Otherwise, the request returns a `404` error.
-- The request requires the {{agent-builder}} **Read** privilege. Refer to [{{kib}} feature privileges](permissions.md#kib-privileges).
 
 To add events from a workflow, use the [`ai.conversation.add_event`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-event) step.
 

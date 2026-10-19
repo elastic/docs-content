@@ -17,7 +17,7 @@ products:
 
 AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also create {{agent-builder}} conversations and add content to them without running an agent.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also create {{agent-builder}} conversations and add content to them without triggering an agent response.
 
 The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID in the step. Configure a Generative AI connector in {{kib}} and pass its ID in `connector-id`. For [`ai.agent`](#ai-agent), you can instead pass an {{infer}} endpoint ID in `inference-id`.
 
@@ -38,8 +38,8 @@ Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}
 - [`ai.summarize`](#ai-summarize): Generate a summary of the provided content. {applies_to}`stack: ga 9.4+`
 - [`ai.agent`](#ai-agent): Invoke an {{agent-builder}} agent as a workflow step. {applies_to}`stack: preview 9.3, ga 9.4+`
 - [`ai.conversation.create`](#ai-conversation-create): Create an empty {{agent-builder}} conversation. {applies_to}`stack: ga 9.6+`
-- [`ai.conversation.add_event`](#ai-conversation-add-event): Add an event, such as a note, to a conversation without running the agent. {applies_to}`stack: ga 9.6+`
-- [`ai.conversation.add_user_message`](#ai-conversation-add-user-message): Add a user message to a conversation without running the agent. {applies_to}`stack: ga 9.6+`
+- [`ai.conversation.add_event`](#ai-conversation-add-event): Add an event, such as a note, to a conversation without triggering an agent response. {applies_to}`stack: ga 9.6+`
+- [`ai.conversation.add_user_message`](#ai-conversation-add-user-message): Add a user message to a conversation without triggering an agent response. {applies_to}`stack: ga 9.6+`
 
 For `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). The conversation steps have no top-level fields and use `snake_case` inside `with`.
 
@@ -323,7 +323,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Add an event to an {{agent-builder}} conversation without running the agent. The agent reads the event the next time it runs on the conversation. The step works the same way as the [add events to a conversation API](/explore-analyze/ai-features/agent-builder/kibana-api.md#add-conversation-events).
+Add an event to an {{agent-builder}} conversation without triggering an agent response. The agent reads the event the next time it runs on the conversation. The step works the same way as the [add events to a conversation API](/explore-analyze/ai-features/agent-builder/kibana-api.md#add-conversation-events).
 
 All parameters go in the `with` block and use `snake_case`.
 
@@ -379,7 +379,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Add a user message to an existing {{agent-builder}} conversation without running the agent. The agent reads the message the next time it runs on the conversation.
+Add a user message to an existing {{agent-builder}} conversation without triggering an agent response. The agent reads the message the next time it runs on the conversation.
 
 All parameters go in the `with` block and use `snake_case`.
 
