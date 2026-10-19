@@ -37,10 +37,10 @@ When using a custom {{kib}} space, include the space ID in the endpoint path:
 {KIBANA_URL}/s/{SPACE_ID}/api/agent_builder/mcp
 ```
 
-{applies_to}`serverless: ga` If you authenticate with [OAuth](/deploy-manage/app-connections/oauth-clients.md), use an OAuth client created in the same space as the endpoint. A client doesn't work with another space's endpoint, including the default space.
+{applies_to}`serverless: ga` If you authenticate with [OAuth](/deploy-manage/app-connections/oauth-clients.md), don't build this URL yourself. Use the **MCP server URL** shown in your OAuth client's details. The client works only with that URL, not with the endpoint of any other space.
 
 :::{tip}
-You can copy your MCP server URL directly in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
+You can copy the MCP server URL for the current space in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access). For OAuth, use the URL from your client's details instead.
 :::
 
 {applies_to}`serverless: ga` For setup instructions for specific MCP hosts, including prebuilt Elastic connectors in their directories, refer to [](/deploy-manage/app-connections/connect-mcp-host.md).

@@ -38,7 +38,7 @@ Before you create an OAuth client:
 
 :::::{stepper}
 
-::::{step} Switch to the target space
+::::{step} Switch to the space you want to connect to
 [Switch to the {{kib}} space](/deploy-manage/choose-and-switch-spaces.md) whose agents and tools you want MCP hosts to use. The client works only with that space's MCP server URL, and you can't change its space later.
 ::::
 
@@ -95,12 +95,12 @@ The client secret is displayed after you create the client. The secret is only d
 Click **Create client**. The **Copy server details for [client name]** dialog displays the values your MCP host (AI agent) needs to authenticate:
 
 - **Client ID**: The identifier for this client.
-- **MCP server URL**: The endpoint your MCP host uses to reach {{agent-builder}} tools in this project and space. For a custom space, the URL includes the space ID, for example `/s/marketing/api/agent_builder/mcp`. For the default space, the URL has no space segment. Don't add `/s/default` to it, because the client doesn't work with that URL.
+- **MCP server URL**: The endpoint your MCP host uses to reach {{agent-builder}} tools in this project and space. For a custom space, the URL includes the space ID, for example `/s/marketing/api/agent_builder/mcp`. Use the URL exactly as shown. For the default space, the URL usually has no space segment, so don't add `/s/default` to it.
 - **MCP client secret**: Appears for confidential clients only. This value is displayed only once and can't be retrieved later, so copy or download it before you close the dialog.
 
 You'll use these values to [connect an MCP host](connect-mcp-host.md).
 
-The client ID and MCP server URL can be retrieved at any time from the **MCP clients** page.
+The client ID and MCP server URL can be retrieved at any time from the **MCP clients** page. The page lists every client in the project, regardless of which space you open it from, and each client's MCP server URL shows the space it works with.
 ::::
 
 :::::
@@ -108,8 +108,6 @@ The client ID and MCP server URL can be retrieved at any time from the **MCP cli
 ## Edit a client [edit-oauth-client]
 
 You can edit an active client's name, logo, and redirect URIs. You can't edit its client type, client ID, MCP server URL, or client secret, and you can't move it to another space. Revoked clients can't be edited.
-
-The **MCP clients** page lists every client in the project, whichever space you open it from. Each client's MCP server URL shows the space it works with.
 
 To edit a client:
 

@@ -66,7 +66,7 @@ Setting up the connector means creating an OAuth client in your project and ente
 ::::::{stepper}
 
 :::::{step} Create an OAuth client in your project
-In your {{serverless-short}} project, [switch to the {{kib}} space](/deploy-manage/choose-and-switch-spaces.md) whose agents and tools you want Claude to use. Then [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md), and select **Generate confidential MCP client (optional)**.
+In your {{serverless-short}} project, [switch to the {{kib}} space](/deploy-manage/choose-and-switch-spaces.md) whose agents and tools you want Claude to use. Then [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md), and select **Generate confidential MCP client (optional)**. The connector requires a client secret, so don't skip this option.
 Add the redirect URI for the Claude app you use to set up the connector, as described in the [claude.ai](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-ai) or [Claude desktop app](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-desktop) instructions.
 
 Copy the **Client ID**, **MCP client secret**, and **MCP server URL** from the **Copy server details** dialog.
@@ -117,7 +117,7 @@ You don't need an OAuth client or credentials of your own.
 2. Select **Connect**.
 3. Sign in to {{ecloud}}, review the project that Claude is requesting access to, and then select **Authorize**.
 
-You connect to the project that the Owner chose, with your own {{ecloud}} account and permissions.
+You connect to the project and space that the Owner chose, with your own {{ecloud}} account and permissions.
 
 ## Check that the connector works [elastic-claude-connector-verify]
 
@@ -136,8 +136,8 @@ To learn more, refer to [](/deploy-manage/app-connections/revoke-oauth-client.md
 Each OAuth client, and therefore each connection, is scoped to a single {{serverless-short}} project and to the {{kib}} space the client was created in.
 Claude supports only one configuration of a directory connector for each Claude account or organization, which means:
 
-- On Claude Free, Pro, and Max plans, the connector connects your account to one project at a time.
-- On Claude Team and Enterprise plans, the Owner who sets up the connector chooses the project for the whole organization.
+- On Claude Free, Pro, and Max plans, the connector connects your account to one project and space at a time.
+- On Claude Team and Enterprise plans, the Owner who sets up the connector chooses the project and space for the whole organization.
 
 :::{note}
 This one-configuration limit comes from how Claude manages directory connectors, and might change in future Claude releases.
@@ -147,12 +147,10 @@ You don't always need another connection to work with data from several projects
 If your projects are linked through [{{cps}}](/explore-analyze/cross-project-search.md), tool calls through one connection can search the linked projects.
 To learn more, refer to [Use tools with data from multiple projects](/explore-analyze/ai-features/agent-builder/mcp-server.md#agent-builder-mcp-cps).
 
-To connect Claude to the MCP servers of additional projects:
+To connect Claude to additional projects, or to other {{kib}} spaces in the same project:
 
-1. In each additional project, [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md).
-2. In Claude, add each project as a uniquely named [custom connector](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-ai), using that project's MCP server URL, client ID, and client secret.
-
-To connect Claude to another {{kib}} space in the same project, follow the same steps: create an OAuth client in that space, and add it as a custom connector.
+1. In each additional project or space, [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md).
+2. In Claude, add each one as a uniquely named [custom connector](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-ai), using its MCP server URL, client ID, and client secret.
 
 On Team and Enterprise plans, an Owner adds custom connectors for the organization.
 To learn more, refer to [Add a connector that isn't in the directory](https://claude.com/docs/connectors/custom/add-unlisted) in the Claude documentation.

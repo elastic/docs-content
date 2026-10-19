@@ -16,10 +16,10 @@ The [](/explore-analyze/ai-features/agent-builder/mcp-server.md) supports OAuth 
 
 OAuth is best for interactive, agentic use cases: instead of configuring a static, long-lived API key, a user connects an MCP host such as Claude Desktop and authorizes the connection in the browser. The connection then acts with that user's own permissions, using short-lived tokens that the user, a project administrator, or an organization owner can revoke at any time.
 
-:::{note}
-OAuth for the MCP server is available on {{serverless-short}} projects only. Each OAuth client is scoped to one {{serverless-short}} project and one [{{kib}} space](/deploy-manage/manage-spaces.md), and it works only with the MCP server URL shown in its details. For a new client, that's the URL of the space you create it in.
+Each OAuth client is scoped to one {{serverless-short}} project and one [{{kib}} space](/deploy-manage/manage-spaces.md), and it works only with the MCP server URL shown in its details. For a new client, that's the URL of the space you create it in. Some older clients work only with the default space, even if they were created in a custom space. If a client that you created in a custom space shows an MCP server URL without a `/s/<space-id>` segment, it's one of these older clients. To use the custom space, create a new client in that space.
 
-Clients created before OAuth became space-aware are scoped to the default space, even if they were created in another space. To use a custom space, create a new client in that space.
+:::{note}
+OAuth for the MCP server is available on {{serverless-short}} projects only.
 :::
 
 ## OAuth or API keys?
@@ -37,7 +37,7 @@ Understanding these terms makes the setup and management pages easier to follow.
 | MCP host | The application a user runs that contains MCP clients, such as Claude Desktop or Cursor. Users connect hosts; hosts use clients. |
 | OAuth client | The OAuth client registration that holds the credentials (a client ID, and a client secret for confidential clients) your MCP host uses to authenticate to the MCP server. You create one in {{kib}} before connecting a host; the {{kib}} UI labels this an **MCP client**. |
 | MCP server | The interface that exposes {{agent-builder}} tools to MCP hosts. The MCP server is the only resource the OAuth tokens grant access to. This is separate from the [](/explore-analyze/ai-features/agent-builder/tools/mcp-tools.md), which let your agents call external MCP servers. |
-| App connection | The record created when a user authorizes a connection, linking that user, the OAuth client, and the {{serverless-short}} project. A connection is established on top of an OAuth client, and is the unit of access and revocation. If two people use the same client ID, each authorization creates a separate connection. |
+| App connection | The record created when a user authorizes a connection, linking that user, the OAuth client, and the client's {{serverless-short}} project and {{kib}} space. A connection is established on top of an OAuth client, and is the unit of access and revocation. If two people use the same client ID, each authorization creates a separate connection. |
 
 In practice, the pieces connect in order. An OAuth client is registered in {{kib}}, and its credentials are added to an MCP host such as Claude Desktop. The host's MCP client uses those credentials to reach the {{agent-builder}} MCP server. When a user authorizes access, an app connection is created, and the host's tools then run with that user's permissions.
 
@@ -56,7 +56,7 @@ OAuth tokens are accepted only by the {{agent-builder}} MCP server. They don't g
 
 A single OAuth client registration can be reused by any number of people. After you create a client, you can share its connection details so that others configure the same client in their own MCP hosts (AI agents). Each person authenticates and authorizes access separately, which creates a distinct app connection scoped to that person's own permissions. Revoking one person's connection leaves the others active, while revoking the client ends access for everyone.
 
-Everyone who uses a shared client connects to the client's {{kib}} space. To give people access to {{agent-builder}} in another space, create a separate client in that space.
+A shared client always connects to its own {{kib}} space.
 
 ### Access tokens
 

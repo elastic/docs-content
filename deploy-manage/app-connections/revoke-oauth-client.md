@@ -17,7 +17,7 @@ products:
 Revoking OAuth access in {{agent-builder}} immediately cuts off an MCP host's ability to use the Agent Builder tools. You can revoke access at two levels:
 
 - **Revoke a connection**: Removes one user's authorized session for an OAuth client, while leaving the client registered. The user can reconnect by going through the authorization flow again.
-- **Revoke an OAuth client**: Revokes the entire client and all its connections. Users whose connections are removed can no longer connect until a new client is created in the same {{kib}} space.
+- **Revoke an OAuth client**: Revokes the entire client and all its connections. Users whose connections are removed can't connect again until they use another active client from the same {{kib}} space.
 
 After revocation, you can permanently delete the retained [connection](#delete-a-connection) or [client](#delete-an-oauth-client) record. Deletion can't be undone.
 

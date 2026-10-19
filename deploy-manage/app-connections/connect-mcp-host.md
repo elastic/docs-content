@@ -29,8 +29,7 @@ Other OAuth 2.1 hosts follow the same general pattern, so consult your host's do
 Confirm the following before you configure your MCP host:
 
 - You have an MCP host that supports OAuth 2.1 with a pre-registered client ID. Hosts that rely solely on dynamic client registration are not supported.
-- You have the client ID and MCP server URL for the OAuth client. You either [created the client](create-oauth-client.md) yourself or received these values from the person who did.
-- You use the MCP server URL exactly as {{kib}} displays it for the client. Each client works only with the URL of its {{kib}} space, so don't add, remove, or change the `/s/<space-id>` segment. For the default space, don't add `/s/default`.
+- You have the client ID and MCP server URL for the OAuth client, copied exactly as {{kib}} displays them. Each client works only with the URL of its {{kib}} space. You either [created the client](create-oauth-client.md) yourself or received these values from the person who did.
 - You have access to the {{serverless-short}} project that the OAuth client is scoped to, not just organization-level access. The connection acts with your own permissions in that project, so you also need the privileges required for the tools you'll run through the MCP server, such as {{agent-builder}} access and **Read** access to any data those tools query. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 
 ## Connect your MCP host to an OAuth client [connect-mcp-host]
@@ -285,21 +284,21 @@ You can also check your connection in the {{ecloud}} Console at **Organization**
 
 Confirm the `{MCP_SERVER_URL}` in your config matches exactly what {{kib}} displays. The correct URL ends with `/api/agent_builder/mcp`. A typo, extra slash, or doubled path segment will prevent the OAuth discovery step from completing.
 
-**Authorization fails with a resource mismatch, or tool calls fail with a `400` `VALIDATION.OAUTH` error.**
+**Authorization fails with "does not match the client's registered resource", or requests fail with a `400` `VALIDATION.OAUTH` error.**
 
-The MCP server URL in your host's config doesn't match the {{kib}} space of the OAuth client. If you authorize with the mismatched URL, authorization fails with an error that the resource doesn't match the client's registered resource. If the host reuses cached credentials from a client in another space, tool calls fail with the `400` error instead.
+The MCP server URL in your host's config doesn't match the MCP server URL of the OAuth client. If you authorize with the mismatched URL, authorization fails with an `invalid_request` error stating that the resource doesn't match the client's registered resource. If the host reuses cached credentials from a client in another space, requests to the MCP server fail with the `400` error instead.
 
 Common causes:
 
 - The client was created in a different space than the one in the URL.
-- The URL for the default space includes `/s/default`.
-- The client was created before OAuth became space-aware. These clients work only with the default space URL.
+- The URL adds, removes, or changes the `/s/<space-id>` segment, for example by adding `/s/default` to a default-space URL.
+- The client is an older client that works only with the default space, even though it was created in a custom space. Its MCP server URL has no `/s/<space-id>` segment.
 
 To fix it:
 
 1. [Create a client](create-oauth-client.md) in the space you want to connect to, or use an existing client from that space.
 2. Update your host's config with that client's ID and the MCP server URL that {{kib}} displays for it.
-3. Clear the host's cached OAuth credentials, as described in **You need to start fresh with a new connection** later on this page. Most hosts don't prompt you to authorize again after this error until you clear them.
+3. Clear the host's cached OAuth credentials. Refer to your MCP host's documentation for how to do this. Most hosts don't prompt you to authorize again after this error until you clear them.
 
 **Authorization completed but no connection appears in {{kib}}.**
 
