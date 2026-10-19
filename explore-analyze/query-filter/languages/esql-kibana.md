@@ -3,7 +3,7 @@ navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
-description: Write and run ES|QL queries in Kibana with the editor in Discover, dashboards, and alerting. Covers autocomplete, AI assistance, time filters, and variables.
+description: Query your data with the ES|QL editor in Kibana, whether you work in Discover, on dashboards, or in alerting rules. Get suggestions and syntax help as you write.
 applies_to:
   stack: ga
   serverless: ga
