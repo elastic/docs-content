@@ -28,7 +28,7 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 
 | Area | What you can do | Editing experience |
 |------|-----------------|--------------------|
-| [Discover](/explore-analyze/discover/try-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
+| [Discover](/explore-analyze/discover/use-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
 | [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
 | [{{alerting-v2-system-cap}}](/explore-analyze/alerting/system-overview.md) | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
