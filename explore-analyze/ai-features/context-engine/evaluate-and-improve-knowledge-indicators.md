@@ -25,7 +25,7 @@ You need an AI index that contains at least one generated KI, the **Read** privi
 
 You can inspect and test KIs in a [managed AI index](concepts.md#managed-ai-indices), but you cannot refine its sources or automations. The Elastic feature that provides the managed AI index maintains that configuration.
 
-## Review the KI document
+## Review the Knowledge Indicator document
 
 Open a KI as described in [Inspect and manage Knowledge Indicators](inspect-and-manage-knowledge-indicators.md), then review the following fields:
 
@@ -104,7 +104,7 @@ Use {{kib}} or the APIs to verify that later automation runs update the intended
 
 If the automation intentionally creates one KI per event or source document, multiple KIs are expected. Stable IDs are most important when an automation maintains one KI for a dataset, entity, or other long-lived subject.
 
-## Test how an agent uses the KI
+## Test how an agent uses the Knowledge Indicator
 
 After you make the AI index available to an agent or application:
 

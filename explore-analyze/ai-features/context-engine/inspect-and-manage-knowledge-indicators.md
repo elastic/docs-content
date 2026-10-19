@@ -35,7 +35,7 @@ Requirements depend on what you want to do:
 
 You can inspect KIs in a [managed AI index](concepts.md#managed-ai-indices), but you cannot manage them directly. The Elastic feature that provides the AI index controls their lifecycle.
 
-## Inspect a KI in {{kib}}
+## Inspect a Knowledge Indicator in {{kib}}
 
 The KI detail view shows the generated content and the metadata that identifies where it came from and when it changed.
 
@@ -62,7 +62,7 @@ The following image shows the Knowledge Indicators table and its type filter:
 :::
 -->
 
-## Inspect raw KI documents
+## Inspect raw Knowledge Indicator documents
 
 Use [Discover](/explore-analyze/discover.md) when you need to compare several raw KI documents or inspect their stored fields.
 
@@ -72,7 +72,7 @@ Use [Discover](/explore-analyze/discover.md) when you need to compare several ra
 
 Use Discover for inspection. To retrieve KIs programmatically, use the list, describe, and query APIs described in [Query with APIs](retrieve-context-from-ai-index.md#query-with-apis). Manage KIs through their owning automation or the supported workflow steps instead of editing the backing index directly.
 
-## Choose how to change a KI
+## Choose how to change a Knowledge Indicator
 
 How you change a KI depends on how it was created and whether the change must survive future automation runs:
 
@@ -86,7 +86,7 @@ How you change a KI depends on how it was created and whether the change must su
 
 Changing the automation is the preferred way to correct generated content because later runs reproduce the improvement. A direct update is appropriate when updating the KI is part of the workflow's intended design.
 
-## Manage KIs in a workflow
+## Manage Knowledge Indicators in a workflow
 
 Add KI management steps to an existing automation or to another workflow that intentionally maintains KIs:
 
