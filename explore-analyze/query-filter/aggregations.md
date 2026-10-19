@@ -1,4 +1,5 @@
 ---
+navigation_title: Aggregations
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Aggregations [search-aggregations]
+# Aggregations in {{es}} [search-aggregations]
 
 An aggregation summarizes your data as metrics, statistics, or other analytics. Aggregations help you answer questions like:
 

@@ -46,10 +46,9 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
 
 4. Provide data for the lookup index. You can either:
    - **Upload a CSV file up to 500 MB**. When you upload a file, you can preview its data, inspect its contents, and review any detected issues before importing it. Refer to [](#esql-lookup-index-from-file) for more details.
-   - **Add data manually**. You can add fields and populate data directly. When adding a field, you must set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
-     :::{note}
-     Some {{es}} data types aren't supported in {{kib}}.
-     :::
+   - **Add data manually**. You can add fields and populate data directly. When you add a field:
+     - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` Set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). The type list offers only some {{es}} data types. If a type isn't in the list, the editor doesn't support it. For example, you can't select `object`, `nested`, `alias`, or `scaled_float`.
+     - {applies_to}`stack: preview =9.2` Set its name. {{es}} sets the data type from the values you enter.
    - **Combine both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
 
 5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.

@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic plugin for Claude
+navigation_title: Elastic Claude plugin
 description: "Install the official Elastic plugin for Claude to give the Claude AI assistant specialized skills, MCP server access, and Elastic Stack knowledge in any Claude environment."
 type: overview
 applies_to:
@@ -18,6 +18,7 @@ products:
 The [Elastic plugin for Claude](https://github.com/elastic/claude-plugin) is an official, open-source [Claude plugin](https://docs.claude.com/en/docs/claude-code/plugins) that bundles Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit.
 It gives Claude specialized knowledge of the {{stack}} so it can perform Elastic tasks more accurately and efficiently.
 The plugin is compatible with Claude Code and Cowork, and has been tested on the desktop and web apps.
+You install the plugin in Claude, not in {{es}}, {{kib}}, or your {{serverless-short}} project.
 
 ## Use cases
 
@@ -45,6 +46,11 @@ The plugin provides a smoother in-app installation experience.
 The plugin registers the [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server), which lets Claude search and retrieve Elastic documentation as part of any conversation.
 Claude can look up configuration options, API references, and feature guides without leaving the chat session.
 
+::::{note}
+The Elastic Docs MCP server only gives Claude access to Elastic documentation, not to your data.
+To let Claude work with the data in an {{serverless-full}} project, also add the [Elastic Cloud Serverless connector for Claude](claude-connector.md).
+::::
+
 ## Install the plugin
 
 In Claude on the web or in the desktop app, open **Settings** → **Plugins** → **Discover**, search for **Elastic**, and click **Add**.
@@ -63,5 +69,6 @@ See the official [Claude documentation on synced plugins](https://code.claude.co
 ## Next steps
 
 - [AI agent skills for Elastic](agent-skills.md) — install individual skills without a plugin, or learn about the skills format.
+- [Elastic Cloud Serverless connector for Claude](claude-connector.md) — connect Claude to the data in your {{serverless-short}} project.
 - [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server) — connect other agents or tools to the same documentation server the plugin registers.
 - [elastic/claude-plugin on GitHub](https://github.com/elastic/claude-plugin) — source code, changelog, and contribution guide.
