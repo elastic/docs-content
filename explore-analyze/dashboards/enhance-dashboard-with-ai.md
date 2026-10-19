@@ -11,7 +11,7 @@ type: how-to
 
 # Enhance a {{kib}} dashboard with AI [enhance-dashboard-with-ai]
 
-If a dashboard you built feels cluttered or hard to read, you can let an {{agent-builder}} agent improve it instead of reworking it by hand. The agent looks at what your panels actually measure, then gives the dashboard clearer text, a tidier layout, and consistent chart styling. You can also let it fill the gaps, for example by adding the trends or breakdowns that your data supports. The changes stay unsaved until you review them and decide to keep them.
+If a dashboard you built feels cluttered or hard to read, you can let an AI agent improve it instead of reworking it by hand. The agent looks at what your panels actually measure, then gives the dashboard clearer text, a tidier layout, and consistent chart styling. You can also let it fill the gaps, for example by adding the trends or breakdowns that your data supports. The changes stay unsaved until you review them and decide to keep them.
 
 ## Before you begin [enhance-dashboard-requirements]
 
@@ -74,14 +74,14 @@ What the agent does to a panel depends on the type of panel and the option you s
 
 | Panel type | **Appearance only** | **Appearance and content** |
 |---|---|---|
-| {{esql}} visualizations | The agent applies the default chart styling, which replaces any custom styling. It also rewrites their titles and labels to match their queries. | Same as **Appearance only**. The agent can also change their query or chart type. |
+| {{esql}} visualizations | The agent applies the default chart styling, for example to chart colors, legend position, axis titles, and number formats. This replaces any custom styling. It also rewrites their titles and labels to match their queries. | Same as **Appearance only**. The agent can also change their query or chart type. |
 | Markdown panels | The agent rewrites them to describe what the dashboard measures, or removes them when they have nothing useful left to say. | Same as **Appearance only**. |
 | Vega visualizations and custom panels | The agent only moves or resizes them. Their look doesn't change. | Same as **Appearance only**. |
 | Other panels, such as visualizations that don't use {{esql}}, images, and links | The agent only moves or resizes them. | The agent replaces a visualization with an {{esql}} visualization when it can re-create it in {{esql}}. Otherwise, it only moves or resizes the panel. |
 | Panels that duplicate another panel or don't fit the dashboard's purpose | The agent keeps them. | The agent removes them. |
 | New panels and controls | The agent doesn't add any. | The agent adds panels that your data supports, such as a trend over time, and controls for useful fields. |
 
-In both options, the agent also rewrites the dashboard title and description to match what the panels measure, and keeps your time range. It arranges panels using the best practices described in [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout). You can apply the same practices when you arrange panels yourself.
+In both options, the agent also rewrites the dashboard title and description to match what the panels measure, and keeps your time range. It resizes each panel to suit its type, and arranges panels using the best practices described in [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout). You can apply the same practices when you arrange panels yourself.
 
 ## Discard the changes [enhance-dashboard-discard]
 
