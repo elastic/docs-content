@@ -30,6 +30,8 @@ Elastic adds new OpenTelemetry content packs regularly. If one you need is missi
 
 Elastic offers several [{{edot}}](opentelemetry://reference/index.md) distributions. Each is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
 
+If you currently use classic Elastic {{product.apm}} agents or {{beats}} and want to move to OpenTelemetry, refer to [Switch to OpenTelemetry](/solutions/observability/get-started/opentelemetry/switch-to-otel.md).
+
 :::{include} /solutions/_snippets/edot-reference-arch.md
 :::
 
