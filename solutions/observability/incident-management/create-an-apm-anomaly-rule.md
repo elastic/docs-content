@@ -69,9 +69,9 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Select **low transaction count** under **Detector types** to alert when a service's transaction count drops abnormally, including when traffic stops reaching it. This detector is selected by default for new rules. Existing rules retain their saved detector selections; edit those rules to include it.
+Select **low transaction count** under **Detector types** to alert when a service's transaction count drops abnormally, including when traffic stops reaching it. This detector is selected by default for new rules. Existing rules retain their saved detector selections, edit them to include it.
 
-The environment's APM {{ml}} job must also contain the `low_count` detector. Selecting it in a rule does not update the job. If the detector is missing, follow [Add low-count detection to existing jobs](/solutions/observability/apm/machine-learning.md#apm-ml-recreate-existing-jobs).
+The environment's {{product.apm}} {{ml}} job must also contain the `low_count` detector. Selecting it in a rule does not update the job. If the detector is missing, follow [Add low-count detection to existing jobs](/solutions/observability/apm/machine-learning.md#apm-ml-recreate-existing-jobs).
 
 ## Add actions [observability-create-anomaly-alert-rule-add-actions]
 
