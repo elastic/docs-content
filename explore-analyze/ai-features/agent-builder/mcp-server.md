@@ -31,11 +31,13 @@ The MCP server is available at the following endpoint:
 {KIBANA_URL}/api/agent_builder/mcp
 ```
 
-When using a custom {{kib}} Space, include the space name in the endpoint path:
+When using a custom {{kib}} space, include the space ID in the endpoint path:
 
 ```
-{KIBANA_URL}/s/{SPACE_NAME}/api/agent_builder/mcp
+{KIBANA_URL}/s/{SPACE_ID}/api/agent_builder/mcp
 ```
+
+{applies_to}`serverless: ga` If you authenticate with [OAuth](/deploy-manage/app-connections/oauth-clients.md), use an OAuth client created in the same space as the endpoint. A client doesn't work with another space's endpoint, including the default space.
 
 :::{tip}
 You can copy your MCP server URL directly in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
@@ -74,7 +76,7 @@ stack: unavailable
 serverless: ga
 ```
 
-When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), tool calls use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the MCP URL. Requests without `/s/<space-name>` use the default space.
+When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), tool calls use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the MCP URL. Requests without `/s/<space-id>` use the default space.
 
 ## Related pages
 

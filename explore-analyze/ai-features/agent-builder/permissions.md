@@ -85,7 +85,7 @@ Conversations, custom agents, and custom tools are scoped to the current {{kib}}
 
 In a role or API key descriptor, specify the space in the application privilege resource. For example, use `"resources": ["space:production"]` for the `production` space. Users and API keys cannot access resources in spaces outside their assigned resources.
 
-When calling the {{agent-builder}} APIs or MCP server in a custom space, include `/s/<space-name>` before the API path. The default space does not use this prefix.
+When calling the {{agent-builder}} APIs or MCP server in a custom space, include `/s/<space-id>` before the API path. The default space does not use this prefix.
 
 Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
 
@@ -167,7 +167,7 @@ Use [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles
 When configuring roles in the {{kib}} UI, {{agent-builder}} privileges appear under **Analytics**. In {{serverless-short}} {{es}} projects, they appear under **{{es}}**.
 :::
 
-On Serverless, roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The client inherits the permissions of the user who authorizes the connection. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md). {applies_to}`serverless: ga`
+On Serverless, roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The client inherits the permissions of the user who authorizes the connection, in the {{kib}} space of the OAuth client. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md). {applies_to}`serverless: ga`
 
 ### API keys for programmatic clients [#api-keys-for-clients]
 

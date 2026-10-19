@@ -30,6 +30,7 @@ Confirm the following before you configure your MCP host:
 
 - You have an MCP host that supports OAuth 2.1 with a pre-registered client ID. Hosts that rely solely on dynamic client registration are not supported.
 - You have the client ID and MCP server URL for the OAuth client. You either [created the client](create-oauth-client.md) yourself or received these values from the person who did.
+- You use the MCP server URL exactly as {{kib}} displays it for the client. Each client works only with the URL of its {{kib}} space, so don't add, remove, or change the `/s/<space-id>` segment. For the default space, don't add `/s/default`.
 - You have access to the {{serverless-short}} project that the OAuth client is scoped to, not just organization-level access. The connection acts with your own permissions in that project, so you also need the privileges required for the tools you'll run through the MCP server, such as {{agent-builder}} access and **Read** access to any data those tools query. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 
 ## Connect your MCP host to an OAuth client [connect-mcp-host]
@@ -255,7 +256,7 @@ Some tools might require additional manual steps. For example, Claude Code CLI r
 2. The **Connect and authorize** page opens, showing which project the OAuth client is requesting access to. Click **Authorize** to grant access.
 3. The browser confirms the authorization is complete. Close the tab and return to your MCP host.
 
-A new app connection is created scoped to your account and the project associated with the OAuth client. The connection name is auto-generated in the format `<client-name>#<word-pair>`. This connection is visible in both {{kib}} and the {{ecloud}} Console.
+A new app connection is created scoped to your account and to the project and space of the OAuth client. The connection name is auto-generated in the format `<client-name>#<word-pair>`. This connection is visible in both {{kib}} and the {{ecloud}} Console.
 
 If you click **Deny** on the **Connect and authorize** page, then no connection is created. The host retries the flow the next time you use a tool, or you can restart the host to trigger a fresh attempt.
 
@@ -283,6 +284,22 @@ You can also check your connection in the {{ecloud}} Console at **Organization**
 **The host shows an error and doesn't open a browser.**
 
 Confirm the `{MCP_SERVER_URL}` in your config matches exactly what {{kib}} displays. The correct URL ends with `/api/agent_builder/mcp`. A typo, extra slash, or doubled path segment will prevent the OAuth discovery step from completing.
+
+**Authorization fails with a resource mismatch, or tool calls fail with a `400` `VALIDATION.OAUTH` error.**
+
+The MCP server URL in your host's config doesn't match the {{kib}} space of the OAuth client. If you authorize with the mismatched URL, authorization fails with an error that the resource doesn't match the client's registered resource. If the host reuses cached credentials from a client in another space, tool calls fail with the `400` error instead.
+
+Common causes:
+
+- The client was created in a different space than the one in the URL.
+- The URL for the default space includes `/s/default`.
+- The client was created before OAuth became space-aware. These clients work only with the default space URL.
+
+To fix it:
+
+1. [Create a client](create-oauth-client.md) in the space you want to connect to, or use an existing client from that space.
+2. Update your host's config with that client's ID and the MCP server URL that {{kib}} displays for it.
+3. Clear the host's cached OAuth credentials, as described in **You need to start fresh with a new connection** later on this page. Most hosts don't prompt you to authorize again after this error until you clear them.
 
 **Authorization completed but no connection appears in {{kib}}.**
 

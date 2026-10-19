@@ -120,6 +120,8 @@ On the Tools page, open the **Manage MCP** dropdown to access:
 :width: 250px
 :::
 
+{applies_to}`serverless: ga` **Copy MCP Server URL** copies the URL for the current space. If you connect with [OAuth](/deploy-manage/app-connections/oauth-clients.md), use the MCP server URL shown in your OAuth client's details instead.
+
 ::::
 
 ::::{applies-item} { stack: ga 9.2-9.3 }

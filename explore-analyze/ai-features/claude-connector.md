@@ -66,10 +66,10 @@ Setting up the connector means creating an OAuth client in your project and ente
 ::::::{stepper}
 
 :::::{step} Create an OAuth client in your project
-In your {{serverless-short}} project, [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md), and select **Generate confidential MCP client**.
+In your {{serverless-short}} project, [switch to the {{kib}} space](/deploy-manage/choose-and-switch-spaces.md) whose agents and tools you want Claude to use. Then [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md), and select **Generate confidential MCP client (optional)**.
 Add the redirect URI for the Claude app you use to set up the connector, as described in the [claude.ai](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-ai) or [Claude desktop app](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-desktop) instructions.
 
-Copy the **Client ID**, **Client secret**, and **MCP server URL** from the **Copy server details** dialog.
+Copy the **Client ID**, **MCP client secret**, and **MCP server URL** from the **Copy server details** dialog.
 {{kib}} shows the client secret only once.
 :::::
 
@@ -131,9 +131,9 @@ To learn more about turning connectors on and approving tool use, refer to [Use 
 After you authorize the connection, you can manage or revoke it like any other application connection.
 To learn more, refer to [](/deploy-manage/app-connections/revoke-oauth-client.md) and [](/deploy-manage/app-connections/manage-app-connections.md).
 
-## Connect Claude to more than one project [elastic-claude-connector-multiple-projects]
+## Connect Claude to more than one project or space [elastic-claude-connector-multiple-projects]
 
-Each OAuth client, and therefore each connection, is scoped to a single {{serverless-short}} project.
+Each OAuth client, and therefore each connection, is scoped to a single {{serverless-short}} project and to the {{kib}} space the client was created in.
 Claude supports only one configuration of a directory connector for each Claude account or organization, which means:
 
 - On Claude Free, Pro, and Max plans, the connector connects your account to one project at a time.
@@ -151,6 +151,8 @@ To connect Claude to the MCP servers of additional projects:
 
 1. In each additional project, [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md).
 2. In Claude, add each project as a uniquely named [custom connector](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-ai), using that project's MCP server URL, client ID, and client secret.
+
+To connect Claude to another {{kib}} space in the same project, follow the same steps: create an OAuth client in that space, and add it as a custom connector.
 
 On Team and Enterprise plans, an Owner adds custom connectors for the organization.
 To learn more, refer to [Add a connector that isn't in the directory](https://claude.com/docs/connectors/custom/add-unlisted) in the Claude documentation.

@@ -52,9 +52,9 @@ Need an API key? Refer to [Create API keys for {{agent-builder}} APIs](api-keys.
 
 ### Working with spaces
 
-To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space_name>` before `/api/agent_builder` in your requests.
+To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space-id>` before `/api/agent_builder` in your requests.
 
-For example, to list tools in a space named `my-space`:
+For example, to list tools in a space with the ID `my-space`:
 
 ```bash
 curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
@@ -63,7 +63,7 @@ curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
 
 The default space does not require the `/s/default` prefix.
 
-Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space_name>` prefix.
+Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space-id>` prefix.
 
 ### Use APIs with data from multiple projects [agent-builder-api-cps]
 ```{applies_to}
@@ -71,7 +71,7 @@ stack: unavailable
 serverless: ga
 ```
 
-  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the default space.
+  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the default space.
 
 To override that default, include a `project_routing` expression in the body of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) or the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async). The [run a tool API]({{kib-apis}}operation/operation-post-agent-builder-tools-execute) uses the space default and does not accept this field. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md). For an example, refer to [Chat and conversations](#chat-and-conversations).
 
@@ -1145,7 +1145,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 **Example:** Scope a chat across projects {applies_to}`serverless: ga`
 
-By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the {{cps-init}} scope from the default space. 
+By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the {{cps-init}} scope from the default space. 
 
 Include a `project_routing` expression in the body to override the space's {{cps-init}} scope. The `_alias:my_search_project` expression in this example searches only the project with that alias. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
