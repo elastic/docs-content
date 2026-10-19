@@ -20,11 +20,8 @@ Elastic nightshift is made up of the following engines, which work together to d
 
 ## Requirements [nightshift-requirements]
 
-- **An {{obs-serverless}} project on the Complete tier**: Elastic nightshift runs on {{serverless-full}} during the private preview. It isn't available on self-managed or {{ech}} deployments.
-- **Private preview access**: Your project must be enabled for the private preview. Contact your Elastic account team to request access.
-- **Data to monitor**: Elastic nightshift works with the data you already have in your local project or in remote serverless projects connected through {{cps}}.
-
-Elastic nightshift uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). You don't need to configure an LLM connector or select a model.
+:::{include} _snippets/requirements.md
+:::
 
 ## Elastic nightshift UI [nightshift-landing-page]
 
@@ -53,6 +50,7 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-landing-page-nav]
 
+- [Get started with Elastic nightshift](./get-started.md): Start an investigation and review the results
 - [Investigations](./investigations.md): Learn how Elastic nightshift investigates problems and how to read the results
 - [Context](./memory.md): Learn how Elastic nightshift stores and uses system knowledge to improve investigation quality over time
 - [Significant Events](./significant-events/index.md): Get an overview of how Elastic nightshift detects significant events in your data

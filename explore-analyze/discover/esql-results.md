@@ -92,6 +92,8 @@ When a query without a command such as `KEEP` or `STATS` returns five or fewer c
 
 To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To inspect each result as an expandable tree of its fields instead of columns, set **View mode** to **JSON** in **Display options**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
+
 ### Add a column from the fields list
 
 Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same.
@@ -124,7 +126,7 @@ FROM kibana_sample_data_logs
 If you omit `LIMIT`, the table shows up to 1,000 rows, or up to 10,000 rows for queries that start with `TS` or `PROMQL`. `LIMIT` can raise that to 10,000, which is as many rows as Discover displays. Aggregations still run on the full data set.
 
 - **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
-- **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.
+- **CSV export:** A CSV report of an {{esql}} query stops at a row limit that depends on your deployment. Queries and aggregations still run on the full data set. To find the limit, refer to [](save-open-search.md#export-discover-session-csv).
 
 ## Set the time filter for the table and the chart [_esql_and_time_series_data]
 
