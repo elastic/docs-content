@@ -30,7 +30,17 @@ An {{agent-builder}} request is allowed only when the user or client has access 
 
 Not every operation requires every privilege. For example, a tool that queries an index requires index privileges, while `monitor_inference` is required only when an agent or tool calls the {{es}} Inference API.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Every agent can also call {{es}} and {{kib}} HTTP APIs through the built-in [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools). These calls run with the privileges of the user or API key, and {{kib}} API calls run in the current space. All of those {{kib}} feature privileges and {{es}} privileges, not only the {{agent-builder}} privileges, determine what an agent can do. Using the tools requires no privileges beyond those needed to chat with an agent, and confirmation prompts don't replace privileges: some operations, such as creating an API key, run without a prompt, and an agent can [auto-approve](custom-agents.md#auto-approve-api-operations-optional) operations that would otherwise prompt. Grant each user or client only the privileges they need.
+### HTTP API tool privileges [#http-api-tool-privileges]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Every agent can call {{es}} and {{kib}} HTTP APIs through the built-in [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools). These calls use the privileges of the user or API key, and {{kib}} API calls run in the current space. All of that identity's {{kib}} feature privileges and {{es}} privileges determine what the agent can do, not only its {{agent-builder}} privileges.
+
+Access to the tools requires no additional privileges beyond those needed to chat with an agent. Each API call still requires the privileges for the underlying operation.
+
+[Confirmation prompts](chat.md#confirm-an-api-operation) don't replace privilege checks. Some operations run without a prompt, and agents can auto-approve others. Grant each user or client only the privileges they need.
 
 ## Privilege reference [#privilege-reference]
 
