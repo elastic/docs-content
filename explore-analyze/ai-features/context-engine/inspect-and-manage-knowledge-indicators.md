@@ -17,7 +17,7 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-[Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) in an [AI index](concepts.md#ai-indices) can be inspected in {{kib}}, while repeatable changes are made through [workflows](/explore-analyze/workflows.md). Update and rerun the owning [automation](create-and-manage-automations.md) to correct generated context, or use dedicated {{context-engine}} workflow steps when a workflow needs to create, update, or delete individual KIs.
+Inspect [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) in an [AI index](concepts.md#ai-indices) from {{kib}}, and change them through [workflows](/explore-analyze/workflows.md). To correct generated context, update and rerun the owning [automation](create-and-manage-automations.md). When a workflow needs to create, update, or delete individual KIs, use the dedicated {{context-engine}} workflow steps.
 
 ## Before you begin
 
@@ -70,7 +70,7 @@ Use [Discover](/explore-analyze/discover.md) when you need to compare several ra
 2. In Discover, filter the documents to the KI or set of KIs you want to inspect.
 3. Review their content, timestamps, lifecycle status, references, and provenance.
 
-Use Discover for inspection. Manage KIs through their owning automation or the supported workflow steps instead of editing the backing index directly.
+Use Discover for inspection. To retrieve KIs programmatically, use the list, describe, and query APIs described in [Query with APIs](retrieve-context-from-ai-index.md#query-with-apis). Manage KIs through their owning automation or the supported workflow steps instead of editing the backing index directly.
 
 ## Choose how to change a KI
 
@@ -139,7 +139,7 @@ For KIs that contain ES|QL, you can also add the built-in `esql-valid-syntax` an
 
 ### Add a custom verifier [add-custom-ki-verifier]
 
-A custom verifier is a workflow that receives the candidate KI as `inputs.ki` and returns a boolean `passed` result, with an optional `reason`. Create and enable the workflow in the same Kibana space as the calling workflow. Use the workflow's `name` value as its `workflow_id` in the `verifiers` list.
+A custom verifier is a workflow that receives the candidate KI as `inputs.ki` and returns a boolean `passed` result, with an optional `reason`. Create and enable the workflow in the same {{kib}} space as the calling workflow. In the `verifiers` list, set `workflow_id` to the verifier workflow's ID. {{kib}} derives the ID from the workflow's `name` when you create it, so the ID for this example is `check-ki-content`.
 
 For example, this verifier rejects a KI when its `content` field is missing or empty:
 
@@ -177,7 +177,7 @@ steps:
 
 Test the verifier with a KI that contains content and one that does not. Confirm that it returns `passed: true` and `passed: false`, respectively. This example checks only whether content is present. Add checks appropriate to your use case to assess the generated information.
 
-For the workflow input and output contract, refer to [Compose workflows from reusable parts](/explore-analyze/workflows/authoring-techniques/compose-workflows.md).
+For the workflow input and output contract, refer to [](/explore-analyze/workflows/authoring-techniques/compose-workflows.md#workflows-compose-contract).
 
 ### Run verification separately
 
