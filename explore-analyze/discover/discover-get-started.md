@@ -362,6 +362,7 @@ This allows you to pivot quickly between different explorations without losing y
 
 You can open new tabs or duplicate existing ones to compare different queries:
 - To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
+  - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The new tab starts empty and doesn't search until you start one. In classic mode, select **Refresh data** to load results, or select **Query in ES|QL** to write the query in {{esql}}. In {{esql}} mode, run one of the **Recommended queries** or write your own.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
 A session supports a maximum of 25 open tabs. When the limit is reached, the {icon}`plus` icon and **Duplicate** are disabled. You can't add more tabs until you close some.
@@ -379,23 +380,6 @@ To manage and organize your tabs, you can:
   - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once. If restoring a group would exceed the 25-tab limit, only the first tabs in the group are restored up to the remaining capacity.
 
 To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
-
-#### Start a search in a new tab
-```{applies_to}
-serverless: preview
-stack: preview 9.6+
-```
-
-A tab you open with the {icon}`plus` icon doesn't search until you tell it to. In that tab, automatic refresh stays paused until you turn on **Refresh every** in the [time filter](../query-filter/filtering.md#set-time-filter) settings, and the list of fields stays hidden until the first search.
-
-By default, the first tab you see when you open **Discover** searches right away. A duplicated tab searches right away too, and it keeps the query and the automatic refresh setting of the tab you copied.
-
-To start a search in a new tab, use the option that matches its query mode:
-
-- **Classic mode:** The tab shows **Start searching**. Select **Refresh data** to load results for the current query, or enter a different query and submit it. To write the query in {{esql}} instead, select **Query in ES|QL**.
-- **{{esql}} mode:** The tab lists **Recommended queries** for its data source. To run one, hover over or focus on it and select the {icon}`play` **Run query** icon. You can also write your own query in the editor and run it.
-
-After the first search, the tab shows results and the list of fields. Switching between classic and {{esql}} mode before the first search doesn't start a search.
 
 ### Inspect your Discover queries
 
