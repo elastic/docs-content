@@ -125,6 +125,24 @@ For what each level means, refer to [Access control settings](#access-control-se
 
 :::::
 
+:::::{step} Auto-approve API operations (optional)
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+By default, the agent's [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) asks for confirmation before each call to an {{es}} or {{kib}} API operation that can change or delete existing data. To let the agent call some of these operations without asking, select them in the **Auto-approved APIs** section of the **Settings** tab, under **Elasticsearch APIs** or **Kibana APIs**. For each service, you can select:
+
+* `*` to approve every such operation on that service.
+* A group, such as `indices.*`, to approve every such operation in the group.
+* Individual operations, such as `indices.delete`.
+
+The approval applies to every run of the agent and to the sub-agents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
+
+Only the owner, a user with **Manager** access, or an administrator can change the auto-approved APIs. For the **Elastic AI Agent**, only an administrator can change them.
+
+:::::
+
 :::::{step} Assign tools
 
 Switch to the **Tools** tab to assign [tools](tools.md) to your agent.

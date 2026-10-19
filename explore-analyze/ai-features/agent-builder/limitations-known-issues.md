@@ -46,6 +46,8 @@ A2A executions behave differently: the action is not declined. Instead, the conv
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Before starting a sub-agent, a parent agent can ask you to approve {{es}} and {{kib}} API operations that can change or delete existing data. The request can name individual operations, a whole group of operations such as all `indices` operations, or every such operation on {{es}} or {{kib}}. If you approve, the sub-agent can call those operations through the [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) without another prompt. If you deny, the sub-agent runs without access to them.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` A sub-agent can also call any operation that the parent agent or the sub-agent itself [auto-approves](custom-agents.md#auto-approve-api-operations-optional). When the requested operations are all auto-approved, you aren't asked.
+
 This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
 ### {{esql}} limitations
