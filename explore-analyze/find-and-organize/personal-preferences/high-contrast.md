@@ -15,7 +15,7 @@ You can change the interface contrast mode of Kibana to improve visibility and r
 2. Select **Appearance**.
    
    :::{note}
-   On self-managed deployments of {{kib}}, this option is located on your profile page. To access it, select **Edit profile** from the header's user menu.
+   If you don't sign in with your {{ecloud}} account, for example you use a username and password or a self-managed deployment, this option is on your profile page. To access it, select **Edit profile** from the header's user menu.
    :::
 
 3. Choose an interface contrast mode:
@@ -26,3 +26,9 @@ You can change the interface contrast mode of Kibana to improve visibility and r
 
 4. Select **Save changes**.
 5. Refresh the page to apply the selected contrast mode.
+
+## Related pages
+
+- [](/explore-analyze/find-and-organize/personal-preferences.md)
+- [Use dark mode in {{kib}}](dark-mode.md)
+- [Change the interface language in {{kib}}](change-interface-language.md)

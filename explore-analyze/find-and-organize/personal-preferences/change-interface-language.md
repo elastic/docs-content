@@ -24,22 +24,28 @@ If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your 
 2. Select **Language**.
 
    :::{note}
-   :applies_to: { self: , ece: , eck: }
-   On self-managed, {{ece}}, and {{eck}} deployments of {{kib}}, this option is located on your profile page. To access it, select **Edit profile** from the header's user menu, then find the **Language** section.
+   If you don't sign in with your {{ecloud}} account, for example you use a username and password or a self-managed deployment, this option is on your profile page. To access it, select **Edit profile** from the header's user menu, then find the **Language** section.
    :::
 
 3. Select your preferred language from the **Display language** menu.
 4. Select **Save changes**.
 5. Refresh the page to apply the selected language.
 
-## If your language isn't available
+## Troubleshooting
+
+### If your language isn't available
 
 By default, {{kib}} offers localized versions for [some languages](kibana://reference/configuration-reference/internationalization-settings.md#built-in-and-custom-locales).
 
 On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, administrators can enable or disable languages, or turn language selection off, in the [internationalization settings](kibana://reference/configuration-reference/internationalization-settings.md).
 
+### Browser translation isn't supported
+
+Browser page translation, such as the translator built into Chrome or Edge, isn't supported. It modifies the page in ways that can make parts of {{kib}} stop updating or fail to load. To use {{kib}} in another language, change the interface language using the built-in options described on this page. Text that users create, such as dashboard and panel titles, isn't translated.
+
 ## Related pages
 
+- [](/explore-analyze/find-and-organize/personal-preferences.md)
 - [Internationalization settings in {{kib}}](kibana://reference/configuration-reference/internationalization-settings.md)
 - [Use dark mode in {{kib}}](dark-mode.md)
 - [Use high-contrast mode in {{kib}}](high-contrast.md)
