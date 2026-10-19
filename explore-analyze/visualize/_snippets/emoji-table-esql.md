@@ -13,8 +13,6 @@ Because they're part of the query results, you can use them in any visualization
 
 Before you begin, ensure you have the sample web logs data installed. In {{kib}}, go to **{{integrations}}** and search for **Sample data**. On the **Sample data** page, add **Sample web logs**.
 
-{applies_to}`stack: ga 9.0-9.3` Expand the **Other sample data sets** section first.
-
 To create the visualization:
 
 1. Open a dashboard and add a new {{esql}} visualization:
