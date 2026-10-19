@@ -18,7 +18,7 @@ Elastic nightshift is in private preview and isn't enabled by default. To reques
 
 ## View and edit context [nightshift-memory-manage]
 
-To see what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs hold what it has learned:
+To see what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**, then check the **Cortex** and **Memory** tabs:
 
 - **Cortex**: Durable knowledge that the investigator reads before each run, organized into pages by type, such as services, runbooks, postmortems, and queries.
 - **Memory**: The individual memories Elastic nightshift has learned.
