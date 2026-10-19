@@ -15,7 +15,7 @@ products:
 
 Use the {{esql}} editor to query and aggregate your data across {{kib}}, including in [Discover](/explore-analyze/discover/use-esql.md), on [dashboards](/explore-analyze/visualize/esorql.md), and in [{{es}} query rules](/explore-analyze/alerting/alerts/rule-type-es-query.md) for alerting. The editor works in many areas, and some tools are available only in **Discover**. To see every area and the editor it uses, refer to [](#esql-kibana-areas).
 
-As you write a query, the editor offers inline suggestions and syntax help, so you don't have to leave {{kib}} to check the syntax. You can also filter by time, add variables that make a query interactive, and reuse your recent and starred queries.
+As you write a query, the editor offers inline suggestions and syntax help, so you don't have to leave {{kib}} to check the syntax. You can also filter by time, add variables that make a query interactive, and reuse your recent and starred queries. This page describes these capabilities.
 
 To look up commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
