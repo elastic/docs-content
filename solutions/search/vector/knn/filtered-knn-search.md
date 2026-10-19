@@ -34,7 +34,7 @@ POST image-index/_search
 ```
 
 ::::{note}
-The filter is applied **during** approximate kNN search to ensure that `k` matching documents are returned. In contrast, post-filtering applies the filter **after** the approximate kNN step and can return fewer than `k` results, even when enough relevant documents exist.
+The filter is applied as part of the approximate kNN search to ensure that `k` matching documents are returned. In contrast, post-filtering applies the filter **after** the approximate kNN step and can return fewer than `k` results, even when enough relevant documents exist.
 ::::
 
 ## Pre-filtering and post-filtering [knn-prefilter-vs-postfilter]
@@ -91,6 +91,8 @@ POST image-index/_search
 
 Post-filtering isn't always wrong. It's a reasonable choice when the filter matches most of your documents and you'd rather not pay the cost of filtered graph traversal. But when the filter is selective, pre-filter.
 
+{applies_to}`stack: ga 9.6` {applies_to}`serverless: ga` You don't need to move a broad filter out of the kNN clause to avoid that cost. {{es}} [post-filters broad filters automatically](#knn-automatic-post-filtering) and still returns `k` matching results when enough matching documents exist.
+
 ## Filtering behavior and performance [filtering-behavior-and-performance]
 
 In approximate kNN search with an HNSW index, filters can make a search slower rather than faster, because the search has to explore more of the graph to collect enough candidates that satisfy the filter. This is the opposite of conventional query filtering, where a stricter filter usually speeds up a query.
@@ -106,3 +108,47 @@ For indices created in 9.1 or later, {{es}} also applies the `acorn` filter heur
 :::
 
 For more ways to trade approximate search speed against accuracy, refer to [Optimize approximate kNN performance and accuracy](optimize-performance-accuracy.md).
+
+### Automatic post-filtering for broad filters [knn-automatic-post-filtering]
+
+```{applies_to}
+stack: ga 9.6
+serverless: ga
+```
+
+Filtering during the search pays off when a filter removes most documents. When a filter keeps most documents, checking it during the search adds work without narrowing the search much. For these broad filters, {{es}} may choose to apply the filter after the vector search instead, and still return `k` matching results when enough matching documents exist. This applies to approximate kNN search on `dense_vector` fields, and you don't need to change your queries to benefit from it.
+
+#### How it works [knn-automatic-post-filtering-how-it-works]
+
+For each shard, {{es}} estimates the filter's _selectivity_: the fraction of the field's vectors that match the filter. The estimate is cheap but approximate, and some filters, such as ones with `must_not` clauses, can look broader than they are. If the selectivity reaches a configurable threshold, the search runs in up to three steps:
+
+1. **Search without the filter, then filter.** {{es}} runs the approximate kNN search without the filter and gathers more than `k` candidates, enough to make up for the ones the filter is expected to remove. It then applies the filter to those candidates.
+2. **Search again if needed.** If too few candidates pass the filter, {{es}} searches once more for the missing results, skipping every candidate it has already checked. For HNSW indices, this search starts from some of the best matches found so far.
+3. **Fall back to filtering during the search.** If there are still too few matches, {{es}} discards the post-filtered results and runs the search with the filter applied during the search. If the first search finds far fewer matches than the selectivity predicts, {{es}} skips step 2 and falls back right away. A shortfall that large usually means that the filter excludes most of the documents closest to the query vector, or that the selectivity estimate was too high.
+
+Filters below the threshold always use regular filtered search.
+
+#### How many extra candidates {{es}} gathers [knn-automatic-post-filtering-candidates]
+
+{{es}} sizes the first search by modeling how many candidates the filter removes. It treats each candidate as passing the filter independently, with a probability equal to the selectivity `s`. The number of matches among `m` candidates then follows a binomial distribution with a mean of `m × s`.
+
+Gathering `k / s` candidates yields `k` matches on average, but an individual search falls short about half the time. To make a shortfall unlikely, {{es}} adds a safety margin proportional to the standard deviation of that distribution, scaled by a fixed confidence factor `z`:
+
+:::{math}
+m = \frac{k + z \sqrt{k (1 - s) / s}}{s}
+:::
+
+{{es}} keeps `m` between a small minimum above `k` and the maximum `num_candidates`. When you use [`rescore_vector`](optimize-performance-accuracy.md#the-rescore_vector-option), the same model sizes the larger, oversampled set of candidates that gets rescored. For HNSW indices, `m` only raises `num_candidates` when needed: if your `num_candidates` is already larger, {{es}} keeps it.
+
+This model also explains why only broad filters are post-filtered. As the selectivity drops, both the expected loss and its variance grow, so the number of candidates to gather grows quickly, and filtering during the search becomes the cheaper option.
+
+The model assumes that whether a document matches the filter is unrelated to how close it is to the query vector. When that's not the case, the second search and the fallback still return `k` results when enough matching documents exist.
+
+#### Configure automatic post-filtering [knn-automatic-post-filtering-configure]
+
+```{applies_to}
+stack: ga 9.6
+serverless: ga
+```
+
+The [`index.dense_vector.post_filter_selectivity_threshold`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-dense-vector-post-filter-selectivity-threshold) index setting controls which filters are post-filtered. Lower values also post-filter more selective filters, and `1.0` turns automatic post-filtering off. The setting is dynamic, so you can change it on an open index with the [update index settings API]({{es-apis}}operation/operation-indices-put-settings), and new searches use the new value.
