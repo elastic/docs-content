@@ -478,7 +478,7 @@ Customize your metric chart to display exactly the information you need, formatt
       - **Line**: Show a light line chart in the background.
       - **Bar**: Show a progress bar that represents the current value of the chart measured against the [Maximum value](#max-value-options) defined for the chart.
     - **Bar orientation**: Options include **Vertical** and **Horizontal**.
-    - **Color mode** or **Color by value** (depending on your version): Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
+    - **Mode** (**Color mode** or **Color by value** in earlier versions): Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
       - **Static**: The color always remains the same and is independent from the metric's value.
         - **Color**: Pick a color and its opacity.
       - **Dynamic**: Define colors to apply to the chart based on the value of the primary metric.
@@ -603,7 +603,7 @@ The following examples show various configuration options that you can use for b
     * **Title**: "Successful requests (2xx)"
     * **Primary metric**: `count(kql='response.keyword >= "200" and response.keyword < "300"') / count(response.keyword)`
       * **Value format**: `Percent`
-      * **Color mode** or **Color by value**: `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
+      * **Mode** (**Color mode** or **Color by value** in earlier versions): `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
       * **Background chart** or **Supporting visualization**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Value format**: `Percent`
@@ -750,7 +750,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
     * **Title**: "Successful requests per origin"
     * **Primary metric**: `count(kql='response.keyword >= "200" and response.keyword < "300"') / count(response.keyword)`
       * **Value format**: `Percent`
-      * **Color mode** or **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
+      * **Mode** (**Color mode** or **Color by value** in earlier versions): `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
       * **Background chart** or **Supporting visualization**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Label**: Custom, set to `Target:`

@@ -104,7 +104,7 @@ $$$save-the-lens-panel$$$
 
 :::::
 
-Once you have created your visualization, you can edit it directly on the dashboard. Click the **Edit visualization configuration** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
+Once you have created your visualization, you can edit it directly on the dashboard. Select the **Edit visualization** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
 
 
 ### Change the fields list [change-the-fields]
