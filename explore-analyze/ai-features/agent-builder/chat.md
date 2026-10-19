@@ -304,7 +304,7 @@ The agent's progress appears only in the chat where you sent the message or answ
 Inline reasoning events replace the [Reasoning panel](glossary.md#reasoning-panel).
 ::::
 
-Agent responses show reasoning, tool calls, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
+The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded). {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agent responses show reasoning, tool calls, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context.
 
 Tool call events show whether a tool is still running or has returned a response.
 
@@ -350,9 +350,27 @@ Expand a tool call to inspect **Parameters sent** and **Response returned**. Som
 
 ::::
 
+::::{applies-item} stack: preview =9.2, ga 9.3-9.4
+
+Select **Completed reasoning** in the agent's response to open the **Reasoning** panel. While the agent is still working, the label reads **Thinking…**. The panel lists the agent's reasoning steps and tool calls in the order they happen.
+
+- Expand a tool call to view the **Parameters** the agent sent.
+- Generated ES|QL queries, query results, and errors appear in the panel. For other results, select **Inspect response** to open the tool response in a flyout.
+- Select **View JSON** to inspect the raw response for the round.
+
+{applies_to}`stack: preview =9.2` In 9.2, **Reasoning** is an accordion labeled **Thinking completed**, tool calls don't show their parameters, and **View raw response** replaces **View JSON**.
+
+:::{image} images/reasoning-panel.png
+:screenshot:
+:alt: Reasoning panel showing a tool call, its Inspect response link, and the View JSON button
+:width: 650px
+:::
+
+::::
+
 :::::
 
-After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
 ### View traces for a conversation round [view-traces]
 ```{applies_to}
