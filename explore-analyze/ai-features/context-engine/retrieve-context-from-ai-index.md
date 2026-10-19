@@ -43,6 +43,13 @@ Choose a query mode based on whether your code or an agent controls the retrieva
 
 Run the requests from [{{kib}} Console](/explore-analyze/query-filter/tools/console.md) or use cURL from an application environment. Console uses your current session and {{kib}} space.
 
+### Create an API key [create-query-api-key]
+
+For cURL or another external client, create an API key:
+
+:::{include} _snippets/create-query-api-key.md
+:::
+
 For cURL, set the {{kib}} URL and encoded API key used by the examples:
 
 ```bash

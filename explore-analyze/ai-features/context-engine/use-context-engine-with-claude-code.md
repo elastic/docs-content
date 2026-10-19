@@ -34,7 +34,7 @@ You need:
 - An AI index that contains at least one Knowledge Indicator (KI).
 - The {{context-engine}} **Read** privilege in that space.
 - The {{es}} `read` and `view_index_metadata` privileges for the AI index's backing indices.
-- An API key with those {{kib}} and {{es}} privileges.
+- Permission to create an API key with those {{kib}} and {{es}} privileges.
 
 ## Install the Elastic CLI
 
@@ -56,6 +56,13 @@ elastic kb context-engine --help
 ```
 
 The command output should include operations for listing, describing, and querying AI indices. If the command group is unavailable, update the Elastic CLI before continuing.
+
+## Create an API key
+
+Create the API key that the Elastic CLI will use:
+
+:::{include} _snippets/create-query-api-key.md
+:::
 
 ## Configure an Elastic CLI context
 

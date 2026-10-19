@@ -34,66 +34,17 @@ All three operations run against one {{kib}} space, as the owner of the API key.
 
 ## Step 1: Create credentials
 
-Your credential needs privileges in both Kibana and Elasticsearch.
+Your credential needs privileges in both {{kib}} and {{es}}.
 
-Create the credential as follows:
+:::{include} _snippets/create-query-api-key.md
+:::
 
-1. In Kibana, go to **Stack Management → API Keys** and click `Create API key`
-2. Leave **Control security privileges** off and define a role with the following privileges:
+Export the encoded value, along with your Kibana URL:
 
-    * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
-    * **Kibana privileges**, in the space you want to query: **{{context-engine}}** at **Read**.
-
-    ::::{dropdown} Example of a concrete definition
-    ```json
-    {
-      "contextEngineRole": {
-        "cluster": [],
-        "indices": [
-          {
-            "names": [
-              "ai-index-*"
-            ],
-            "privileges": [
-              "read",
-              "view_index_metadata"
-            ],
-            "field_security": {
-              "grant": [
-                "*"
-              ],
-              "except": []
-            },
-            "allow_restricted_indices": false
-          }
-        ],
-        "applications": [
-          {
-            "application": "kibana-.kibana",
-            "privileges": [
-              "feature_contextEngine.read"
-            ],
-            "resources": [
-              "*"
-            ]
-          }
-        ],
-        "run_as": [],
-        "metadata": {},
-        "transient_metadata": {
-          "enabled": true
-        }
-      }
-    }
-    ```
-    ::::
-
-3. Copy the `encoded` value and export it, along with your Kibana URL:
-
-    ```shell
-    export KIBANA_URL="https://my-deployment.kb.us-east-1.aws.elastic.cloud"
-    export KIBANA_API_KEY="VnVhQ2ZHY0JDZGJrU..."
-    ```
+```shell
+export KIBANA_URL="https://my-deployment.kb.us-east-1.aws.elastic.cloud"
+export KIBANA_API_KEY="VnVhQ2ZHY0JDZGJrU..."
+```
 
 This example also uses an OpenRouter key to reach the model:
 
