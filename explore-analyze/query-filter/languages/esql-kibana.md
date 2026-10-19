@@ -3,7 +3,7 @@ navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
-description: Query your data with the ES|QL editor in Kibana, whether you work in Discover, on dashboards, or in alerting rules. Get suggestions and syntax help as you write.
+description: Query your data with the ES|QL editor across Kibana, including Discover, dashboards, and alerting rules. Get suggestions and syntax help as you write.
 applies_to:
   stack: ga
   serverless: ga
@@ -13,7 +13,7 @@ products:
 
 # Use {{esql}} in {{kib}} [esql-kibana]
 
-Use the {{esql}} editor in {{kib}} to query and aggregate your data in [Discover](/explore-analyze/discover/use-esql.md). You can also use it to build visualizations on [dashboards](/explore-analyze/visualize/esorql.md) and to create [{{es}} query rules](/explore-analyze/alerting/alerts/rule-type-es-query.md) for alerting. Some editor tools are available only in **Discover**.
+Use the {{esql}} editor to query and aggregate your data across {{kib}}, including in [Discover](/explore-analyze/discover/use-esql.md), on [dashboards](/explore-analyze/visualize/esorql.md), and in [{{es}} query rules](/explore-analyze/alerting/alerts/rule-type-es-query.md) for alerting. The editor works in many areas, and some tools are available only in **Discover**. To see every area and the editor it uses, refer to [](#esql-kibana-areas).
 
 To look up commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
