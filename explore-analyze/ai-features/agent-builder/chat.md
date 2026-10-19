@@ -296,7 +296,7 @@ Conversations run independently, so you can work in several at the same time: st
 
 The agent's progress appears only in the chat where you sent the message or answered a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. The agent keeps working if you reload the page, close the sidebar, or open the conversation in another browser tab or in the other [chat mode](standalone-and-flyout-modes.md). In those cases, the conversation doesn't show **In progress** and doesn't update while the agent works. After the agent finishes, its steps and response appear when you switch back to that browser tab, reopen the conversation, or reload the page.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The same applies if you go to another app from standalone mode. If you haven't reloaded the page since you sent the message, for example after you close and reopen the sidebar or come back from another app, the steps and response appear on their own when the agent finishes. In a [shared or public conversation](#share-a-conversation), the conversation also updates on its own a few seconds after the agent finishes, in any browser tab.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent also keeps working without showing progress if you go to another app from standalone mode. If you haven't reloaded the page since you sent the message, for example, after you close and reopen the sidebar or come back from another app, the steps and response appear on their own when the agent finishes. In a [shared or public conversation](#share-a-conversation), the conversation also updates automatically a few seconds after the agent finishes, in any browser tab.
 
 ### Inspect tool calls and reasoning
 
@@ -306,7 +306,9 @@ The agent's progress appears only in the chat where you sent the message or answ
 Inline reasoning events replace the [Reasoning panel](glossary.md#reasoning-panel).
 ::::
 
-The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded). {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agent responses show reasoning, tool calls, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context.
+The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agent responses show reasoning, tool calls, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context.
 
 Tool call events show whether a tool is still running or has returned a response.
 
@@ -314,7 +316,7 @@ Tool call events show whether a tool is still running or has returned a response
 
 ::::{applies-item} { stack: ga 9.6+, serverless: ga }
 
-Each tool call shows the tool ID followed by **running…** or **ran**, or by **stopped** if the response stopped or failed before the tool returned. A tool call that returned an error appears in red.
+Each tool call shows the tool ID followed by its status: **running…**, **ran**, or **stopped** if the response stopped or failed before the tool returned. A tool call that returned an error appears in red.
 
 When the agent runs two or more tools in a row, the chat groups them under a label such as **3 tools ran**. Groups are collapsed by default. Expand a group to see its tool calls.
 
@@ -354,13 +356,13 @@ Expand a tool call to inspect **Parameters sent** and **Response returned**. Som
 
 ::::{applies-item} stack: preview =9.2, ga 9.3-9.4
 
-Select **Completed reasoning** in the agent's response to open the **Reasoning** panel. While the agent is still working, the label shows its current step, or **Thinking…**. The panel lists the agent's reasoning steps and tool calls in the order they happen.
+Select **Completed reasoning** in the agent's response to open the **Reasoning** panel. While the agent is still working, the label shows the agent's current step or **Thinking…**. The panel lists the agent's reasoning steps and tool calls in the order they happen.
 
 - Expand a tool call to view the **Parameters** the agent sent.
-- Generated ES|QL queries, query results, and errors appear in the panel. For other results, select **Inspect response** to open the tool response in a flyout.
+- Generated {{esql}} queries, query results, and errors appear in the panel. For other results, select **Inspect response** to open the tool response in a flyout.
 - Select **View JSON** to inspect the raw response for the round.
 
-{applies_to}`stack: preview =9.2` In 9.2, reasoning appears in an accordion labeled **Thinking completed**, tool calls don't show their parameters, and **View raw response** replaces **View JSON**.
+{applies_to}`stack: preview =9.2` Reasoning appears in an accordion labeled **Thinking completed**, tool calls don't show their parameters, and **View raw response** replaces **View JSON**.
 
 :::{image} images/reasoning-panel.png
 :screenshot:
