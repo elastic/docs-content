@@ -17,15 +17,15 @@ type: overview
 
 Get {{es}} running in a few minutes.
 
-**Try for free on {{ecloud}}**
+### Try for free on {{ecloud}}
 
 
-* **{{serverless-full}}**: Elastic automatically scales and upgrades the project.
+* **{{serverless-full}}**: Elastic automatically scales and upgrades the project. Projects are versionless, so you always get the latest features.
   * **[{{es}} {{vectordb}} project](/solutions/vector-database/get-started.md)**: For most search workloads, this is the recommended option. It is optimized for vector workloads, such as [RAG](/solutions/search/rag.md), [recommendations](/solutions/search/vector/vector-search-use-cases.md#discovery-and-recommendations), and [multimodal search](/solutions/search/multimodal-search.md). Sign up for a [14-day free trial](https://cloud.elastic.co/registration?onboarding_token=vector).
   * **[{{es}} project](/solutions/elasticsearch-solution-project/get-started.md)**: If you have logs, events, time series, or telemetry data, choose this project type. Sign up for a [14-day free trial](https://cloud.elastic.co/serverless-registration).
-* **[{{ech}}](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md)**: You size, scale, and upgrade the cluster yourself, and you select the hardware profile it runs on. Sign up for a [14-day free trial](https://cloud.elastic.co/registration).
+* **[{{ech}}](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md)**: You size, scale, and upgrade the cluster yourself, and you select the hardware profile it runs on. The cluster runs a specific {{stack}} version. Sign up for a [14-day free trial](https://cloud.elastic.co/registration).
 
-**Run locally**
+### Run locally
 
 * **[Local development](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md)**: Get started quickly with {{es}} and {{kib}} in Docker for local development and testing. Refer to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
