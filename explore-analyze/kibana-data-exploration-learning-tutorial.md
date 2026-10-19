@@ -207,7 +207,7 @@ Before adding more panels, save your dashboard so you don't lose your work:
 A dashboard often starts with a row of metrics for key numbers at a glance. Using the same steps, you can create additional metrics such as:
 
 - **Unique visitors**: drag `clientip`. Lens picks **Unique count** for IP fields.
-- **Total requests**: drag `Records`. Lens creates a simple count. To add a trend indicator, drag `Records` again to the **Secondary metric** area and set its **Time shift** to `1d`. Then set **Color mode** to `Dynamic` and **Compare to** to `Primary metric` to show whether traffic is trending up or down. For details, refer to [Show trends in Metric charts](visualize/charts/metric-charts.md#metric-trends).
+- **Total requests**: drag `Records`. Lens creates a simple count. To add a trend indicator, drag `Records` again to the **Secondary metric** area and set its **Time shift** to `1d`. Then set **Color mode** (**Color by value** in earlier versions) to `Dynamic` and **Compare to** to `Primary metric` to show whether traffic is trending up or down. For details, refer to [Show trends in Metric charts](visualize/charts/metric-charts.md#metric-trends).
 - **Unique URLs**: drag `request.keyword`. Lens picks **Unique count**, showing how many distinct pages were requested.
 :::
 

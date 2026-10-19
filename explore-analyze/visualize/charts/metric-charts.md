@@ -135,7 +135,7 @@ To add trend indicators to your metric visualization:
     Use the `shift` parameter in formulas to compare current values against historical data. For example, if your primary metric is counting orders (based on an `order_id` field) for the current week, you can use the `count(order_id, shift='1w')` formula to compare this week's count of orders to last week's count.
     ::::
 
-3. In the secondary metric configuration, look for the **Color by value** option. The possible choices are:
+3. In the secondary metric configuration, look for the **Color mode** option (**Color by value** in earlier versions). The possible choices are:
    * **None**: No trend indicators (default)
    * **Static**: Shows the secondary metric as a badge with a fixed color that you select
    * **Dynamic**: Enables both color coding and directional icons based on the comparison
@@ -501,7 +501,7 @@ Customize your metric chart to display exactly the information you need, formatt
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
     - **Label**: Define the label displayed next to the secondary metric. By default, the **Name** shows. You can instead show a **Custom** value or hide it by selecting **None**.
     - **Label position**: Choose to show the label **Before** or **After** the metric.
-    - **Color by value**: Apply colors to the chart. Choose between **None**, **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. This option allows you to use the secondary metric as a comparison point to highlight trends. Refer to [](#metric-trends) for more details.
+    - **Color mode** (**Color by value** in earlier versions): Apply colors to the chart. Choose between **None**, **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. This option allows you to use the secondary metric as a comparison point to highlight trends. Refer to [](#metric-trends) for more details.
 
 ### Maximum value settings [max-value-options]
 
