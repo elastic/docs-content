@@ -1,6 +1,6 @@
 ---
 navigation_title: Enhance using AI
-description: Improve a Kibana dashboard you already built with an Agent Builder agent. Decide how much the agent can change, review the result, then keep or discard it.
+description: Improve the text, layout, and chart styling of an existing Kibana dashboard with an AI agent. Decide how much it can change, then keep or discard the result.
 applies_to:
   stack: preview 9.6+
   serverless: preview
