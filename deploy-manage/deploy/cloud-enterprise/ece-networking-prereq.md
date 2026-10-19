@@ -15,8 +15,8 @@ The first host you install ECE on initially requires the ports for all roles to 
 ::::{warning} 
 To ensure the security of your ECE deployment, you should enforce via firewall that:
 
-* Only the [Inbound traffic from any source](#ece-inbound) ports described below can be accessed from outside of the ECE network
-* The [Inbound traffic from other ECE hosts](#ece-inbound) ports described below should only be accessible from other ECE hosts
+* Only the [Inbound traffic from any source](#ece-inbound) ports described in the following section can be accessed from outside of the ECE network
+* The [Inbound traffic from other ECE hosts](#ece-inbound) ports described in the following section should only be accessible from other ECE hosts
 * The [Container communication on the same host](#ece-container-communication-on-same-host) ports are only accessible locally to the host itself
 ::::
 
