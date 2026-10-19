@@ -34,6 +34,30 @@ Ingesting metrics data using the Prometheus remote write endpoint has the follow
 
 ## How to send data to the Prometheus remote write endpoint
 
+### Required privileges
+
+Authenticate with an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) or user that has the `create_doc` and `auto_configure` index privileges on the data streams the endpoint writes to.
+`create_doc` allows writing documents without overwriting existing ones.
+`auto_configure` allows the endpoint to create the target data streams on first write.
+
+| Data | Required `names` patterns |
+| --- | --- |
+| Metric samples | `metrics-*.prometheus-*` |
+| {applies_to}`stack: ga 9.6+` [Exemplars](#exemplars) | `exemplars-*.prometheus-*` |
+
+For example, an API key role descriptor that allows ingesting metrics and exemplars:
+
+```json
+{
+  "indices": [
+    {
+      "names": ["metrics-*.prometheus-*", "exemplars-*.prometheus-*"],
+      "privileges": ["create_doc", "auto_configure"]
+    }
+  ]
+}
+```
+
 ### From Prometheus
 
 To send data from Prometheus to the {{es}} remote write endpoint,
@@ -191,6 +215,59 @@ Custom dynamic templates are merged with the built-in ones. The built-in counter
 * Metrics as passthrough fields with dynamic template-based type inference
 * A total field limit of 10,000
 * [Failure store](/manage-data/data-store/data-streams/failure-store.md) enabled
+
+{applies_to}`stack: ga 9.6+` A second built-in index template matching `exemplars-*.prometheus-*` configures the [exemplar](#exemplars) data streams with the same label mappings.
+
+## Exemplars [exemplars]
+```{applies_to}
+stack: ga 9.6
+serverless: ga
+```
+
+[Exemplars](https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars) are individual observations that Prometheus can attach to a time series, such as a histogram bucket observation together with the trace ID of the request that produced it.
+The remote write endpoint stores the exemplars included in a `WriteRequest`, so you can navigate from a metric to a trace that contributed to it.
+Exemplars are only stored when you send remote write requests directly to the {{es}} endpoint. The [managed Prometheus remote write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) doesn't forward exemplars yet.
+
+{{es}} stores exemplars in a time series data stream named after the metrics data stream of their time series: exemplars of time series routed to `metrics-<dataset>.prometheus-<namespace>` are written to `exemplars-<dataset>.prometheus-<namespace>`.
+[Routing](#send-data-to-different-data-streams) by URL path or by labels applies to exemplars in the same way as to samples.
+
+Each exemplar is stored as its own document:
+
+| Prometheus concept | {{es}} field | Description |
+| --- | --- | --- |
+| Exemplar timestamp | `@timestamp` | The exemplar timestamp (in milliseconds). If the exemplar has no timestamp, the time {{es}} received the request. |
+| Series labels (including `__name__`) | `labels.<label_name>` | The same labels as the metric samples, mapped as the same time series dimensions, so you can match an exemplar to the series it belongs to |
+| `__name__` label | `metric_name` | An alias of `labels.__name__` that identifies the metric the exemplar belongs to |
+| Exemplar value | `value` | The observed value, stored as a `double` |
+| Exemplar labels (for example `trace_id` and `span_id`) | `exemplar_labels.<label_name>` | Mapped as `keyword` fields. Unlike series labels, these are not dimensions. |
+
+Exemplars never affect whether a request succeeds.
+If an exemplar can't be indexed, for example because the API key doesn't grant access to `exemplars-*.prometheus-*`, the samples are still indexed and the request succeeds.
+Exemplars with non-finite values, exemplars of time series without a `__name__` label, and duplicate exemplars that share the same series labels and timestamp are dropped.
+The remote write protocol has no way to report partial failures, so {{es}} only logs these problems at the `DEBUG` level.
+
+To customize exemplar data streams, for example to change their lifecycle, use the `exemplars@custom` component template, which applies to all exemplar data streams, or `exemplars-prometheus@custom`, which applies to Prometheus exemplar data streams only.
+
+### Send exemplars
+
+Prometheus doesn't send exemplars by default.
+To include them in remote write requests, start Prometheus with the `--enable-feature=exemplar-storage` flag and set `send_exemplars: true` on the remote write target:
+
+```yaml
+remote_write:
+  - url: "https://<es_endpoint>/_prometheus/api/v1/write"
+    send_exemplars: true
+```
+
+### Turn off exemplar ingestion [disable-exemplars]
+
+{{es}} stores exemplars by default
+If you don't need exemplars, or want to avoid the additional storage, turn it off in one of the following ways.
+
+* **Stop sending exemplars at the source (preferred)**: In Prometheus, remove `send_exemplars: true` from the remote write target or set it to `false`, which is the default. This works on every deployment type and saves bandwidth and processing by avoiding sending data that would be discarded anyway.
+
+:::{include} /manage-data/_snippets/turn-off-exemplar-ingestion.md
+:::
 
 ## Limitations
 
