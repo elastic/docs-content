@@ -1,6 +1,6 @@
 ---
 navigation_title: "Concepts"
-description: Understand AI indices, sources, automations, Knowledge Indicators, and agent access in Context Engine.
+description: Understand AI indices, sources, automations, Knowledge Indicators, memory, and agent access in Context Engine.
 type: overview
 applies_to:
   stack: experimental 9.6
@@ -19,17 +19,18 @@ products:
 
 The following concepts help you understand how {{context-engine}} turns source data into context for agents and applications:
 
-- [AI indices](#ai-indices) group the configuration and generated context for a particular purpose.
+- [AI indices](#ai-indices) group the configuration and stored context for a particular purpose.
 - [Sources](#sources) identify the raw data available to automations.
 - [Automations and workflows](#automations-and-workflows) analyze sources and generate or refresh KIs.
 - [Knowledge Indicators (KIs)](#knowledge-indicators) are documents of reusable context generated from source data.
-- [Agents and applications](#agents-and-applications) retrieve and apply the generated context.
+- [Memory](#memory) records useful task context that agents can retrieve in later interactions.
+- [Agents and applications](#agents-and-applications) retrieve and apply the stored context.
 - [Tools, system instructions, and skills](#tools-system-instructions-and-skills) cover the operations agents can perform and the guidance for using them.
 - [Agent traces](#agent-traces) provide feedback about how well the context supports real questions.
 
 ## AI indices
 
-An AI index groups the metadata, [sources](#sources), [automations](#automations-and-workflows), optional [agent traces](#agent-traces), and {{es}} storage for a particular body of context. Its name and description help an [agent](#agents-and-applications) determine whether that context is relevant to a question. Its generated [Knowledge Indicators (KIs)](#knowledge-indicators) provide the context that agents and applications query.
+An AI index groups the metadata, [sources](#sources), [automations](#automations-and-workflows), optional [agent traces](#agent-traces), and {{es}} storage for a particular body of context. Its name and description help an [agent](#agents-and-applications) determine whether that context is relevant to a question. Its generated [Knowledge Indicators (KIs)](#knowledge-indicators) and agent-written [memories](#memory) provide the context that agents and applications query.
 
 Each AI index that you create belongs to the {{kib}} space where you created it. Its ID is unique within that space, so different spaces can contain AI indices with the same ID.
 
@@ -71,11 +72,19 @@ Unlike a cached answer to one request, a KI can support different questions and 
 
 The [generation strategy](build-and-maintain-ai-index.md#select-a-generation-strategy) determines how an automation divides source data into KIs and how much information each KI contains. To examine a generated KI and evaluate its usefulness, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
+## Memory
+
+Memory is context that an [agent](#agents-and-applications) writes to a memory-enabled [AI index](#ai-indices) for reuse in later interactions. Unlike a [Knowledge Indicator](#knowledge-indicators), which an [automation](#automations-and-workflows) generates from source data, a memory records a fact or outcome learned during an agent interaction or task.
+
+Memories belong to the AI index, not to an individual conversation or user. Anyone who can access the AI index can retrieve its memories. Do not use memory for personal details, individual preferences, or other information that should not be shared with everyone who can access the AI index.
+
+Follow [Save and retrieve memories with {{context-engine}}](save-and-retrieve-memories.md) for an end-to-end example in which an agent saves a memory, retrieves it by querying the AI index in a later interaction, and forgets it when it is no longer valid.
+
 ## Agents and applications
 
-Agents and applications retrieve [KIs](#knowledge-indicators) from an [AI index](#ai-indices) as context. In {{agent-builder}}, you make an AI index available by adding it to an agent's configuration. Other agent frameworks and applications can use supported {{context-engine}} operations through Model Context Protocol (MCP) [tools](#tools-system-instructions-and-skills) or APIs.
+Agents and applications retrieve [KIs](#knowledge-indicators) and [memories](#memory) from an [AI index](#ai-indices) as context. In {{agent-builder}}, you make an AI index available by adding it to an agent's configuration. Other agent frameworks and applications can use supported {{context-engine}} operations through Model Context Protocol (MCP) [tools](#tools-system-instructions-and-skills) or APIs.
 
-At retrieval time, an agent or application lists the AI indices it can access, describes a relevant AI index, and queries it for KIs. For the available query modes and complete retrieval workflow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
+At retrieval time, an agent or application lists the AI indices it can access, describes a relevant AI index, and queries it for context. For the available query modes and complete retrieval workflow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
 To choose a retrieval or integration route, refer to [Use an AI index](use-an-ai-index.md). For the built-in integration, follow [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
 

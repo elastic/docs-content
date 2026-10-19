@@ -12,7 +12,7 @@ products:
 
 # Import a dashboard [_import_dashboards]
 
-Import a dashboard that was exported from another {{product.kibana}} space, instance, deployment, or project. How you import it depends on the format it was exported in. Refer to [Share and export dashboards](sharing.md#export-dashboards) for the export options, then use the matching import method:
+Import a dashboard that was exported from another {{product.kibana}} space, instance, deployment, or project. How you import it depends on the format it was exported in. Refer to [](sharing.md#export-dashboards) for the export options, then use the matching import method:
 
 - {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **JSON**: import it with the [Dashboards API](create-dashboards-programmatically.md). This is the recommended method.
 - **NDJSON**: import it with the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects), or from the **Saved Objects** page.
@@ -25,7 +25,7 @@ Import a dashboard that was exported from another {{product.kibana}} space, inst
 
 **Prerequisites**
 
-- The dashboard's API-compatible JSON. Refer to [Share and export dashboards](sharing.md#export-dashboard-json) to produce it.
+- The dashboard's API-compatible JSON. Refer to [](sharing.md#export-dashboard-json) to produce it.
 - **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 - A way to call the API, such as {{kib}} Dev Tools Console or an API key.
 
@@ -41,7 +41,7 @@ Import the dashboard and its related objects from an NDJSON file on the **Saved 
 
 **Prerequisites**
 
-- An NDJSON file containing the dashboard and its related objects. Refer to [Share and export dashboards](sharing.md#export-dashboards) to produce it.
+- An NDJSON file containing the dashboard and its related objects. Refer to [](sharing.md#export-dashboards) to produce it.
 - **All** privilege for the **Dashboard** and **Saved Objects Management** features in {{product.kibana}}.
 - Access to **Stack Management** in {{product.kibana}}.
 

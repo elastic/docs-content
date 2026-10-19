@@ -30,7 +30,9 @@ description: Use Discover to search and filter documents, analyze field structur
 : Create quick visualizations from aggregatable fields, or use {{esql}} to build charts directly from your queries.
 
 **Save and share**
-: Save your Discover sessions to reuse later, add them to dashboards, or share them with your team. You can also generate reports and create alerts based on your searches.
+: Save your Discover sessions to reuse later, add them to dashboards, or share them with your team. To export a session, refer to [Export as a file](report-and-share.md#manually-generate-reports).
+
+   Large CSV exports can reach some limits. To see the limits for your deployment, how they differ between query modes, and what to do when you reach them, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
 
 ## Get started
 
@@ -44,7 +46,7 @@ Once you're familiar with the basics, explore these guides for specific tasks:
 
 * **[Switch between {{esql}} and classic mode](discover/switch-esql-mode.md)** - Change query mode, and see what happens to your query and filters.
 * **[Use Discover with {{esql}}](discover/use-esql.md)** - Find the Discover tasks that are specific to {{esql}} mode.
-* **[Search and filter data](discover/discover-get-started.md)** - Build queries and apply filters to narrow down your results.
+* **[Search and filter data](discover/discover-get-started.md#search-in-discover)** - Build queries and apply filters to narrow down your results.
 * **[Customize the Discover view](discover/document-explorer.md)** - Adjust the layout, columns, and display options to suit your needs.
 * **[Save a search for reuse](discover/save-open-search.md)** - Save your Discover sessions and add them to dashboards.
 
