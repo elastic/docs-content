@@ -362,8 +362,9 @@ This allows you to pivot quickly between different explorations without losing y
 
 You can open new tabs or duplicate existing ones to compare different queries:
 - To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
-  - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The new tab starts empty and doesn't search until you start one. In classic mode, select **Refresh data** to load results, or select **Query in ES|QL** to write the query in {{esql}}. In {{esql}} mode, run one of the **Recommended queries** or write your own.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` A tab you open with the {icon}`plus` icon starts empty. **Discover** doesn't search, automatic refresh is paused, and the list of fields stays hidden until you search. To load results, select **Refresh data** in classic mode, or run one of the **Recommended queries** in {{esql}} mode. You can also enter your own query in either mode. To resume automatic refresh, turn on **Refresh every** in the [time filter](../query-filter/filtering.md#set-time-filter) settings. A duplicated tab searches right away and keeps your query and automatic refresh setting.
 
 A session supports a maximum of 25 open tabs. When the limit is reached, the {icon}`plus` icon and **Duplicate** are disabled. You can't add more tabs until you close some.
 
