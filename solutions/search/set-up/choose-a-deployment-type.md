@@ -33,13 +33,11 @@ Get {{es}} running in a few minutes.
 Elastic also offers other deployment types. Refer to the [deployment comparison](/deploy-manage/deploy/deployment-comparison.md) to learn more.
 :::
 
-If {{es}} is running, try a quickstart tutorial to index data and run a search in a few minutes.
-
 ::::
 
 ::::{step} Try a quickstart
 
-These quickstarts show how to use {{es}} for search:
+Once you have {{es}} running, try a quickstart tutorial:
 
 * [](/solutions/search/get-started/index-basics.md): create an index, add documents, and run a search
 * [](/solutions/vector-database/vector-full-text-search.md): connect a client and run full-text, semantic, and hybrid search
