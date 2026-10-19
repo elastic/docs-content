@@ -26,7 +26,7 @@ If you haven't saved a color mode preference, Kibana applies a default color mod
 2. Select **Appearance**.
    
    :::{note}
-   On self-managed deployments of {{kib}}, this option is located on your profile page. To access it, select **Edit profile** from the header's user menu.
+   If you don't sign in with your {{ecloud}} account, for example you use a username and password or a self-managed deployment, this option is on your profile page. To access it, select **Edit profile** from the header's user menu.
    :::
 
 3. Choose a color mode:
@@ -42,3 +42,9 @@ If you haven't saved a color mode preference, Kibana applies a default color mod
 
 4. Select **Save changes**.
 5. Refresh the page to apply the selected color mode.
+
+## Related pages
+
+- [](/explore-analyze/find-and-organize/personal-preferences.md)
+- [Use high-contrast mode in {{kib}}](high-contrast.md)
+- [Change the interface language in {{kib}}](change-interface-language.md)
