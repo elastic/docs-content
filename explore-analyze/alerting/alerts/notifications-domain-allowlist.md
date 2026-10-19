@@ -16,7 +16,7 @@ The notifications domain allowlist restricts the possible recipients for alert e
 The recipients are only restricted if one or more domains are configured. If there are no domains configured, notifications can be sent to any recipient domain (No restrictions apply).
 ::::
 
-You can configure the allowlist on the organization [Contacts](https://cloud.elastic.co/account/contacts?page=docs&placement=docs-body) page.
+You can configure the allowlist on the **Organization** → [Contacts](https://cloud.elastic.co/account/contacts?page=docs&placement=docs-body) page.
 
 ::::{warning}
 Changes to the allowlist do not take effect immediately. After saving your changes, run a configuration change on each of your deployments to apply the updated allowlist.

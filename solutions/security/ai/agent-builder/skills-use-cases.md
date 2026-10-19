@@ -153,7 +153,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-**Enable:** `attack-discovery-generator` (requires [`securitySolution:enableAttackDiscoveryWorkflows`](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows))
+**Enable:** `attack-discovery-generator` (requires [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings))
 
 Use this skill when you are investigating in chat and want {{agent-builder}} to run Attack Discovery as part of answering you. The skill gathers and cross-checks evidence from other Security skills, then runs the same Attack Discovery analysis used by manual, scheduled, and workflow triggers. Chat runs stay in the current conversation. For the full conversational flow, including in-chat reports, detection gap closure, and privacy, refer to [Run Attack Discovery from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md).
 
@@ -176,10 +176,10 @@ The Elastic AI Agent can use a variety of skills in one conversation. As your qu
 
 ### Alert to dashboard
 
-Start from a critical alert and end with a tracking dashboard. The [`alert-analysis`](#alert-triage-and-investigation) skill enriches the alert with related alerts, entity risk, and threat intelligence. The [`dashboard-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboard-management-skill) platform skill then creates a {{kib}} dashboard to track similar activity going forward.
+Start from a critical alert and end with a tracking dashboard. The [`alert-analysis`](#alert-triage-and-investigation) skill enriches the alert with related alerts, entity risk, and threat intelligence. The [`dashboards`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboards-skill) platform skill (`dashboard-management` in 9.4 and 9.5) then creates a {{kib}} dashboard to track similar activity going forward.
 
 1. **You:** What's the context on this critical alert? → `alert-analysis` activates, pulls related alerts sharing entities, checks entity risk scores, and correlates with {{elastic-sec}} Labs.
-2. **You:** Create a dashboard to track alerts like this going forward. → `dashboard-management` activates and composes a dashboard with filters matching the alert's rule, entities, and severity.
+2. **You:** Create a dashboard to track alerts like this going forward. → `dashboards` activates and composes a dashboard with filters matching the alert's rule, entities, and severity.
 
 ### Hunt to entity profile
 

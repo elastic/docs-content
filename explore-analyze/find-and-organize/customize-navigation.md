@@ -9,7 +9,7 @@ products:
 
 # Customize your navigation menu
 
-You can reorder the apps in the navigation menu and hide the ones you don't use, so the layout matches how you work. Your changes apply only to you, and only in the current space. Other users of the space are not affected.
+You can reorder the apps in the [navigation menu](/explore-analyze/find-and-organize/kibana-interface.md#navigation-menu) and hide the ones you don't use, so the layout matches how you work. Your changes apply only to you, and only in the current space. Other users of the space are not affected.
 
 ## Before you begin
 
@@ -46,7 +46,8 @@ To discard all of your customizations and return to the space's default layout, 
 
 Adjust other Kibana settings to your own preferences:
 
-* [Use dark mode in Kibana](/cloud-account/dark-mode.md)
-* [Use high-contrast mode in Kibana](/cloud-account/high-contrast.md)
+* [](/explore-analyze/find-and-organize/personal-preferences.md)
+* [](/explore-analyze/find-and-organize/personal-preferences/dark-mode.md)
+* [](/explore-analyze/find-and-organize/personal-preferences/high-contrast.md)
 
 To control which features are visible to all users of a space, refer to [Manage spaces](/deploy-manage/manage-spaces.md).

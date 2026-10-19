@@ -22,7 +22,7 @@ On this page, find and organize your dashboards:
 
 To move dashboards between environments or manage them as code, refer to:
 
-- [Share and export dashboards](sharing.md): Share with your team using links or embeds, and export as PDF, PNG, CSV, or JSON.
+- [](sharing.md): Share with your team using links or embeds, and export as PDF, PNG, CSV, or JSON.
 - [Import a dashboard](import-dashboards.md): Bring a dashboard from another space, instance, deployment, or project into your own.
 - [Manage dashboards as code](manage-dashboards-as-code.md): Version-control dashboards and deploy them across spaces, clusters, and stages.
 

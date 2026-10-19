@@ -42,7 +42,6 @@ If you want to keep the snapshot for future purposes even after the deployment d
 ## Serverless
 
 :::{note}
-:applies_to: serverless: preview
 You can't delete a project that's linked to a {{cps}} ({{cps-init}}) origin project. To delete a linked project, first [unlink](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-unlink-projects) it from every origin project it's connected to, then delete it.
 :::
 

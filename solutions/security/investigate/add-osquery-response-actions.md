@@ -94,7 +94,7 @@ If you edited a saved query or query pack that an Osquery Response Action is usi
 
 ## Find query results [find-osquery-response-action-results]
 
-When a rule generates an alert, Osquery automatically collects data on the host. Query results are displayed within the **Response** tab in the left panel of the alert details flyout. The number next to the **Response Results** tab represents the number of queries attached to the rule, in addition to endpoint response actions run by the rule.
+When a rule generates an alert, Osquery automatically collects data on the host. Query results are available from the [**Response** section](/solutions/security/detect-and-alert/view-detection-alert-details.md#response-overview) on the **Overview** tab of the alert details flyout. Click **Response** to view the query results.
 
 ::::{note}
 Refer to [Examine Osquery results](/solutions/security/investigate/examine-osquery-results.md) for more information about query results.

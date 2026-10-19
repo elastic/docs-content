@@ -43,11 +43,11 @@ Changes might be required if your nodes have customized roles. When updating nod
 
 To use {{elastic-sec}}, your role must have at least:
 
-* `Read` privilege for the `Security` feature in the [space](/deploy-manage/manage-spaces.md). This grants you `Read` access to all features in {{elastic-sec}} except cases. You need additional [minimum privileges](/explore-analyze/cases/control-case-access.md) to use cases.
+* **Read** for the **Security** privilege in the [space](/deploy-manage/manage-spaces.md). This grants read access to the {{elastic-sec}} features that don't have a privilege of their own. Other features, such as cases, have their own privileges. For the full list, refer to [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md).
 * `Read` and `view_index_metadata` privileges for all {{elastic-sec}} indices, such as `filebeat-*`, `packetbeat-*`, `logs-*`, and `endgame-*` indices.
 
 ::::{note}
-[Configure advanced settings](/solutions/security/get-started/configure-advanced-settings.md) describes how to modify {{elastic-sec}} indices.
+You can modify {{elastic-sec}} indices using the `securitySolution:defaultIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 ::::
 
 
@@ -67,7 +67,7 @@ There are some additional requirements for specific features:
 
 ## Advanced configuration and UI options [security-requirements-overview-advanced-configuration-and-ui-options]
 
-[Configure advanced settings](/solutions/security/get-started/configure-advanced-settings.md) describes how to modify advanced settings, such as the {{elastic-sec}} indices, default time intervals used in filters, and IP reputation links.
+[{{kib}} advanced settings](kibana://reference/advanced-settings.md) describes how to modify advanced settings, such as the {{elastic-sec}} indices, default time intervals used in filters, and IP reputation links.
 
 
 ## Third-party collectors mapped to ECS [security-requirements-overview-third-party-collectors-mapped-to-ecs]

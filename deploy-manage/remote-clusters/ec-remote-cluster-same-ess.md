@@ -64,7 +64,7 @@ To configure strong identity verification together with API key authentication f
 ::::::{tab-item} TLS certificate (deprecated)
 ### Set the default trust with other clusters in the same {{ecloud}} organization [ec_set_the_default_trust_with_other_clusters_in_the_same_elasticsearch_service_organization]
 
-To configure this behavior in [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Security** > **Trust management** from the navigation menu. The **Trust all deployments** option is switched on by default. You can keep it switched on or switch it off.
+To configure this behavior in [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Organization** > **Trust management** from the navigation menu. The **Trust all deployments** option is switched on by default. You can keep it switched on or switch it off.
 
 * When **Trust all deployments** is switched on - All deployments trust all other deployments in the same organization, including new deployments when they are created. If you keep this setting switched on, you can jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ec-remote-cluster-same-ess.md#ec_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * When **Trust all deployments** is switched off - New deployments won’t trust any other deployments. Instead, you can configure trust for each of them in their security settings, as described in the next section.
@@ -93,13 +93,15 @@ If your organization’s deployments already trust each other by default, you ca
     * **None** - No deployment in this environment is trusted.
 
     ::::{note}
-    When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described below.
+    When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described in [Using the API](#ec-trust-using-the-api).
     ::::
 
 4. Click **Update trust**.
 5. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect two deployments successfully when both of them trust each other.
 
 ::::{dropdown} Using the API
+:name: ec-trust-using-the-api
+
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
 ::::{include} /deploy-manage/_snippets/curl-k-generic.md

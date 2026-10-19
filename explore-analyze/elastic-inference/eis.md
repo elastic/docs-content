@@ -16,11 +16,13 @@ Elastic {{infer-cap}} Service (EIS) enables you to leverage AI-powered search as
 With EIS, you don't need to manage the infrastructure and resources required for {{ml}} {{infer}} by adding, configuring, and scaling {{ml}} nodes.
 Instead, you can use {{ml}} models for ingest, search, and chat independently of your {{es}} infrastructure.
 
-{applies_to}`stack: ga 9.3` You can use EIS with your [self-managed](/deploy-manage/deploy/self-managed.md) cluster through Cloud Connect. For details, refer to [EIS for self-managed clusters](connect-self-managed-cluster-to-eis.md).
+{applies_to}`stack: ga 9.3` You can use EIS with your [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), or [self-managed](/deploy-manage/deploy/self-managed.md) cluster through Cloud Connect. For details, refer to [](connect-self-managed-cluster-to-eis.md).
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with [Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) by default. These can be used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
+* Your Elastic deployment or project comes with [Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) by default. These can be used in Agent Builder, the AI Assistant, Attack Discovery, and Automatic Import. For the list of available models, refer to [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
+
+* Search Playground also uses Elastic Managed LLMs. {applies_to}`stack: preview =9.0, beta 9.1-9.3, deprecated 9.4-9.5, removed 9.6+` {applies_to}`serverless: unavailable`
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 

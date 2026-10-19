@@ -1,5 +1,6 @@
 ---
 navigation_title: Visualizations (ES|QL query)
+description: Create Lens visualizations with an ES|QL query from Discover or a dashboard, then customize the chart, filters, and time series.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
 applies_to:
@@ -28,9 +29,9 @@ If your visualization's query uses exactly one `STATS` command, dashboard users 
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
-In Discover, [typing ES|QL queries](../query-filter/languages/esql-kibana.md) automatically shows a visualization. The visualization type depends on the content of the query: histogram, bar charts, etc. You can manually make changes to that visualization and edit its type and display options using the pencil button ![pencil button](/explore-analyze/images/kibana-esql-icon-edit-visualization.svg "").
+In Discover, an [ES|QL query](../query-filter/languages/esql-kibana.md) shows a visualization when the query transforms the results, for example, with `STATS` or `KEEP`, or when the results have a time field. The time field is `@timestamp`, or the field that the query compares with the `?_tstart` and `?_tend` parameters. The query determines the visualization type, such as a histogram or a bar chart. To change the visualization type and display options, select {icon}`pencil` **Edit visualization**.
 
-You can then **Save** and add it to an existing or a new dashboard using the save button of the visualization ![save button](/explore-analyze/images/kibana-esql-icon-save-visualization.svg "").
+To add the visualization to an existing or a new dashboard, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 
 ## Create from dashboard [_create_from_dashboard]
 
@@ -115,7 +116,7 @@ The chart configuration resets or follows automatic suggestions when:
 
 ### Query data from multiple projects [esql-viz-cps]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
@@ -123,19 +124,61 @@ When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have
 
 To target specific projects from within the query, add [`SET project_routing`](elasticsearch://reference/query-languages/esql/directives/set.md) at the beginning of your {{esql}} query. When you do this, the visualization panel displays a **Custom CPS scope** badge on the dashboard, indicating that it uses a different scope than the {{cps-init}} scope selector. Refer to [View data from multiple projects](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.
 
+## Build specific chart types with an {{esql}} query [esql-chart-types]
+
+An {{esql}} query returns a table. When you use the result to build a visualization, each returned column is available as a chart dimension. Shape the query result to provide the dimensions required by the chart:
+
+| Result column | How to produce it | Common uses |
+| --- | --- | --- |
+| Grouping column | Return a source column, group values with a `BY` clause, or derive a column with `EVAL`. | Categories, rows, regions, series, and non-time axes |
+| Time-bucket column | Group a time field with `BUCKET` or `DATE_TRUNC`. | The horizontal axis of a time-series chart |
+| Numeric metric column | Calculate a value with a `STATS` aggregation such as `COUNT`, `SUM`, or `AVG`. | Plotted values, sizes, color intensity, metrics, and gauges |
+
+The chart type determines the combination of columns you need. Open a page from the [visualization types](lens.md#lens-visualization-types) list to find an {{esql}} query pattern and learn how to assign its result columns to the chart dimensions.
+
+## Build time series charts with {{esql}} [esql-time-series-charts]
+
+A time series chart plots a metric over time. The query must return a time-bucket column for the **Horizontal axis** and a numeric metric column for the **Vertical axis**.
+
+In this query, `WHERE` applies the dashboard time range, `BUCKET` divides that range into 50 groups, and `COUNT` returns one value for each group:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+| STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
+
+If your time field isn't named `@timestamp`, replace `@timestamp` with that field in both `WHERE` and `BUCKET`. Refer to [](../query-filter/languages/esql-kibana.md#_custom_time_parameters).
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](#_create_from_dashboard) and run the query.
+2. Set the visualization type to a chart type compatible with time series, typically **Line**, **Area**, or **Bar**.
+3. Assign `time_bucket` to the **Horizontal axis** and `requests` to the **Vertical axis**.
+4. Select **Apply and close**.
+
+The chart preview shows how the request count changes over time.
+
+For more query patterns and chart settings, refer to [Build a line chart with an {{esql}} query](charts/line-charts.md#build-a-line-chart-with-esql) and [Build an area chart with an {{esql}} query](charts/area-charts.md#build-an-area-chart-with-esql).
+
+## Compare current versus previous period with time shift [esql-viz-time-shift]
+
+:::{include} _snippets/esql-time-shift.md
+:::
+
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
 ```
 
-{{esql}} visualizations support the following [drilldown types](../dashboards/drilldowns.md):
+{{esql}} visualizations support the following [drilldown types](../dashboards/drilldowns.md#drilldown-types):
 
-- **Dashboard** drilldowns: open another dashboard from a data point.
-- **URL** drilldowns: open an external URL from a data point.
-- {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Discover** drilldowns: open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
+- [Dashboard](../dashboards/create-dashboard-drilldown.md) drilldowns: Open another dashboard from a data point.
+- [URL](../dashboards/create-url-drilldown.md) drilldowns: Open an external URL from a data point.
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
-Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
+Drilldowns are compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](../dashboards/drilldowns.md#drilldowns-requirements).
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}

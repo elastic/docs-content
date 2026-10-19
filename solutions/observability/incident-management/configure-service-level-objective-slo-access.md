@@ -39,8 +39,8 @@ You can enable access to SLOs in two different ways:
 
 To create a role:
 
-1. Open the **Roles** management page by finding it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. On the **Roles** page, click **Create role**.
+1. Open the **Roles** (**Custom Roles** on Serverless) management page by finding it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On that page, click **Create role**.
 
 ::::{warning}
 {{kib}} [spaces](/deploy-manage/manage-spaces.md) control which SLOs users can see. The **SLO** app only shows SLOs that belong to the active space. Spaces do not, however, restrict access to underlying {{es}} indices.

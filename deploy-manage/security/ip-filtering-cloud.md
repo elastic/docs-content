@@ -59,7 +59,7 @@ deployment:
   ech: ga
 ```
 
-In {{ech}} deployments, IP filters do not apply to the [managed OTLP endpoint](opentelemetry://reference/motlp.md). They still apply to this endpoint in {{serverless-full}} projects.
+In {{ech}} deployments, IP filters do not apply to [managed inputs](opentelemetry://reference/managed-inputs/index.md). In {{serverless-full}} projects, IP filters still apply to managed inputs.
 
 ## Apply an IP filter to a deployment or project
 
@@ -78,7 +78,7 @@ To create an IP filter:
 5. Select the cloud provider and region for the IP filter. 
 6. Add a meaningful name and description for the IP filter.
 7. Under **Access control**, select whether the IP filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
-8. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
+8. Add one or more allowed sources using IPv4, or a range of addresses with CIDR. For each source, select **Add description** to add an optional description that helps you identify the source later.
 9.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the  IP filter with a deployment or project, it starts filtering traffic.
 10.  To automatically attach this IP filter to new deployments or projects, select **Apply to future resources by default**.
 11.  Click **Create**.

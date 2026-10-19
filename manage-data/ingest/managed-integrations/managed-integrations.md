@@ -22,11 +22,6 @@ type: overview
 
 To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md).
 
-:::{important}
-:applies_to: stack: preview 9.0-9.4
-{{managed-integrations}} are a technical preview feature. The design and code are less mature than GA features, and Elastic provides them as-is with no warranties. The support SLA for GA features doesn't apply. There are no additional costs for {{managed-integrations}} during technical preview.
-:::
-
 ## Key benefits [managed-integrations-benefits]
 
 {{managed-integrations}} remove the operational overhead of running your own collectors:
@@ -87,7 +82,7 @@ For service issues or to request diagnostics, contact [Elastic Support](https://
 ## Next steps [managed-integrations-next-steps]
 
 * [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md) in {{kib}} to start collecting data from a cloud source.
-* [Authenticate {{managed-integrations}} using cloud connectors](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
+* [Authenticate {{managed-integrations}} using a federated identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
 
 ## Related pages [managed-integrations-related]
 

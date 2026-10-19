@@ -13,7 +13,7 @@ description: "Privilege requirements for the experimental alerting system in Kib
 
 To use the {{alerting-v2-system}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
 
-This page is organized by user activity. Most privileges are set under the **Alerting** category in {{kib}} role management. Exceptions are noted in each section.
+This page is organized by user activity. Most privileges are set under the **Alerting V2** category in {{kib}} role management. Exceptions are noted in each section.
 
 :::{note}
 This page covers access to the {{alerting-v2-system}} features and data. Depending on how your rules and notifications are configured, your role might also need `read` index privileges on the indices their rules query and **Actions and Connectors: All** (under **Management**) to create or edit workflow connectors. Refer to [{{kib}} role management](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for guidance on building roles that combine privileges across features.
@@ -25,10 +25,10 @@ The following table shows the minimum privileges required for each activity. Hig
 
 | To... | Minimum required |
 |---|---|
-| Author and manage rules | **Rules: All** (under **Alerting**) |
-| Monitor rule execution | **Execution history: Read** (under **Alerting**) |
-| Triage alert episodes | **Alerts: All** (under **Alerting**) |
-| Configure notifications | **Action Policies: All** (under **Alerting**) + **Workflows: Read** (under **Analytics > Workflows**) |
+| Author and manage rules | **Rules: All** (under **Alerting V2**) |
+| Monitor rule execution | **Execution history: Read** (under **Alerting V2**) |
+| Triage alert episodes | **Alerts: All** (under **Alerting V2**) |
+| Configure notifications | **Action Policies: All** (under **Alerting V2**) + **Workflows: Read** (under **Analytics > Workflows**) |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics > Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics > Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
@@ -73,11 +73,11 @@ Granting **Alerts: All** or **Alerts: Read** also gives the role direct Elastics
 
 ## Configure notifications [alerting-notifications-privileges]
 
-These privileges control who can set up the action policies and workflows that route alert episode notifications.
+These privileges control who can set up the action policies that invoke workflows and the workflows that send notifications.
 
 ### Action policies [action-policy-management]
 
-The **Action Policies** privilege controls who can manage the action policies that route alert episode notifications.
+The **Action Policies** privilege controls who can manage the action policies that invoke workflows for alert episodes.
 
 | Level | What you can do |
 |---|---|
@@ -90,16 +90,16 @@ Having **Action Policies: All** does not include the ability to create or edit r
 
 ### Workflows [alerting-workflows-access]
 
-Action policies route notifications through workflows. The **Workflows** privilege is set under **Analytics > Workflows** in {{kib}} role management. To create or manage action policies, your role also needs access to the workflows they reference.
+Action policies invoke workflows, which send notifications. The **Workflows** privilege is set under **Analytics > Workflows** in {{kib}} role management. To create or manage action policies, your role also needs access to the workflows they reference.
 
 | Level | What you can do |
 |---|---|
 | **All** | Create and edit workflows; view and select existing workflows in action policies |
 | **Read** | View and select existing workflows in action policies |
 
-## Query rule output and episode data [alerting-data-investigation-privileges]
+## Query rule output and alert episode data [alerting-data-investigation-privileges]
 
-The {{alerting-v2-system}} writes rule output and episode data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
+The {{alerting-v2-system}} writes rule output and alert episode data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access and {{es}} index access.
 
 ### {{kib}} feature access
 
@@ -118,14 +118,14 @@ For `.rule-events` and `.alert-actions`, {{es}} `read` access is bundled into th
 
 | Data source | What it stores | How to grant access |
 |---|---|---|
-| `.rule-events` | A record for every rule evaluation; one document per result row per run | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
-| `.alert-actions` | User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [alert data stream field reference](../alerts/field-reference.md). | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
+| `.rule-events` | One [rule event](../rules/rule-event-field-reference.md) per matching row, per run | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
+| `.alert-actions` | User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [field reference](../alerts/field-reference.md). | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
 | `.kibana-event-log-*` | Action policy dispatch outcomes written by the dispatcher: `dispatched`, `throttled`, and `unmatched` | Custom role with `read` index privilege. Not covered by the automatic grant. |
 
 ## Set up rules and notifications [alerting-access-next-steps]
 
 With access configured, you're ready to:
 
-- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds.
+- [Create a rule](../rules/create-a-rule.md): Write the {{esql}} query that defines what to detect, set whether matches are grouped into an alert episode, and configure grouping and thresholds.
 - [Set up workflows](../notifications-actions.md): Configure the automation objects that deliver notifications — email, Slack, webhook, and so on.
-- [Create action policies](../action-policies/create-configure-action-policy.md): Define who gets notified, how often, and under what conditions.
+- [Create action policies](../action-policies/create-configure-action-policy.md): Define which alert episodes invoke a workflow, how often, and under what conditions.

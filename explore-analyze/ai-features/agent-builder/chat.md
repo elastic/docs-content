@@ -90,6 +90,37 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 :screenshot:
 :::
 
+### Attach images to a message
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram. Pasting is the only way to attach an image. Dragging a file onto the input and selecting one from a file picker aren't supported.
+
+To attach an image, copy it to your clipboard, then press {kbd}`ctrl|cmd+v` in the chat input. A chip with the file name appears in the message text, and a thumbnail appears above the input. To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`.
+
+:::{image} images/agent-builder-image-attachment.png
+:alt: Chat input with an image thumbnail attached, a file chip in the message text, and the model selector below
+:width: 650px
+:screenshot:
+:::
+
+You can attach up to 10 images to a single message. Each image must be a PNG or JPEG file no larger than 3.5 MB. You can't submit the message until all attached images finish uploading.
+
+After you submit the message, the image appears in the conversation history, and the agent can refer to it in later messages in the same conversation.
+
+### Chat with data from multiple projects [agent-builder-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: ga
+```
+
+  When your projects are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md), an agent searches the projects selected in the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header.
+
+  You can change the selector at any time. Each new message uses the current selection. Earlier messages in the conversation keep the results they already returned.
+
 ### Options menu [access-key-actions]
 
 ```{applies_to}
@@ -150,7 +181,99 @@ Use the chat history panel to access previous conversations.
 :width: 450px
 :::
 
+### Pin conversations
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Pin conversations that you want to access quickly. Pinned conversations appear in the **Pinned** section above **Chats** and remain pinned after you reload the page.
+
+You can pin or unpin a conversation in either of the following ways:
+
+- Drag the conversation from **Chats** to **Pinned** to pin it. Drag it back to **Chats** to unpin it.
+- Click the **Open conversation menu** icon {icon}`boxes_vertical`, then select **Pin** or **Unpin**.
+
+:::{image} images/pinned-conversations.gif
+:screenshot:
+:alt: Animated Agent Builder sidebar showing a conversation dragged from Chats to Pinned and the Unpin action in the conversation menu
+:width: 450px
+:::
+
+### Share a conversation [share-a-conversation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Conversations are private to you by default. As the owner of a conversation, you can share it with specific users or make it public. Users you share a conversation with can read its full history and continue it. For details about who can do what, refer to [Conversation access control](permissions.md#conversation-access-control).
+
+You can share a conversation in standalone mode only. The sharing button doesn't appear in [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode).
+
+To share a conversation:
+
+1. Open the conversation. The sharing button appears after you send the first message.
+2. In the conversation header, click the sharing button. It shows the {icon}`users` icon and the number of users with access, including you.
+3. Under **General access**, select **Restricted** (the default) to share with specific users, or **Public** to share with any user who can access the conversation's agent.
+4. If you selected **Restricted**, enter a name in the **Search for users to add** field, then select a user. The user appears under **Current members**, listed alphabetically after you, the **Author**.
+
+Your changes save immediately. If a change fails, the popover shows the error "Failed to update sharing settings" and reverts the change.
+
+The user search includes users who can log in to the current space, but a member can open the conversation only if they can also access its agent. You can't add users who have never logged in to {{kib}}.
+
+To remove a member, click the **Remove member** icon {icon}`cross` next to their name. Switching to **Public** removes all members, and switching back to **Restricted** doesn't restore them.
+
+When a conversation is public, the sharing button shows the {icon}`globe` icon and **Public**.
+
+The following example shows a restricted conversation shared with two users:
+
+:::{image} images/agent-builder-share-conversation.png
+:screenshot:
+:alt: Sharing popover with General access set to Restricted, the owner listed as Author, and two members under Current members
+:width: 450px
+:::
+
+#### Conversations shared with you
+
+Conversations shared with you appear in the chat history panel with your own conversations, along with public conversations for agents you can access. The panel lists conversations for the selected agent only, so select the conversation's agent to find it. You can read the full history and send new messages.
+
+Only the owner can add or remove members, change the access mode, rename the conversation, or delete it. A user whose role grants all {{kib}} application privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}, can also rename or delete a public conversation they don't own. This doesn't give them access to private conversations. Like any other user, they can open a private conversation only if they own it or it's shared with them.
+
+To view a conversation's details, click its title in the conversation header. **Visibility** shows **Private** if only the owner can access the conversation, **Restricted** if it's shared with specific users, or **Public** if any user who can access the agent can open it. In the sharing popover, both **Private** and **Restricted** conversations appear under **Restricted**, which the API calls `private`.
+
+For a restricted conversation, click the sharing button to view the **Participants** list. Public conversations that you don't own don't show a sharing button. The following example shows the **Participants** list as a member sees it:
+
+:::{image} images/agent-builder-conversation-participants.png
+:screenshot:
+:alt: Participants popover showing the conversation owner labeled Author and the other members
+:width: 450px
+:::
+
+#### Post without running the agent
+
+In a shared or public conversation, you can post a message for the other participants without asking the agent to respond. In the chat input, click **Include agent**, select **Skip agent**, then send your message. While **Skip agent** is selected, the input shows **Leaving a post to the team** and the model selector doesn't appear. The agent doesn't respond, but your message is saved to the conversation and included in the agent's context the next time it runs.
+
+The selector appears only in shared and public conversations, for everyone who can open them. Your choice applies only to the current conversation. If a conversation stops being shared, new messages run the agent again.
+
+The following example shows the chat input with **Skip agent** selected:
+
+:::{image} images/agent-builder-skip-agent.png
+:screenshot:
+:alt: Chat input with Skip agent selected and the Leaving a post to the team header
+:width: 650px
+:::
+
+#### Updates from other participants
+
+An open shared or public conversation refreshes about every five seconds, so messages from other participants appear shortly after they're sent, not instantly. It doesn't refresh while the browser tab is in the background.
+
+The chat history panel doesn't refresh on a timer. A conversation that someone shares with you appears the next time the list refreshes, for example when you return to the browser tab or reload the page.
+
 ### Track conversation status
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
 
 The chat history panel shows the status of each conversation at a glance, so you can keep track of what your agents are doing across conversations:
 
@@ -158,8 +281,8 @@ The chat history panel shows the status of each conversation at a glance, so you
 |------|--------|---------|
 | ![In progress spinner](images/agent-builder-status-in-progress.svg "=20x20") | **In progress** | The agent is generating a response. |
 | ![Awaiting your input icon](images/agent-builder-status-awaiting.svg "=20x20") | **Awaiting your input** | The agent paused and needs you to respond before it can continue, for example to answer a [human-in-the-loop prompt](#human-in-the-loop-prompts). |
-| ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing. |
-| ![Error icon](images/agent-builder-status-error.svg "=20x20") | **Error** | The agent stopped because of an error. |
+| ![Unread icon](images/agent-builder-status-unread.svg "=20x20") | **Unread** | The agent finished responding in a conversation you weren't viewing.<br>{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Each user has their own read status. In a [shared or public conversation](#share-a-conversation), any new message, including one posted with **Skip agent**, marks the conversation as unread for everyone who can open it and isn't viewing it. |
+| ![Error icon](images/agent-builder-status-error.svg "=20x20") | **Error** {applies_to}`stack: ga =9.5, removed 9.6+` {applies_to}`serverless: removed` | The agent stopped because of an error. |
 
 For example, the following chat history panel shows one conversation in progress and another with unread activity:
 
@@ -210,6 +333,7 @@ To learn how traces are collected, configured, and secured, refer to [Collect ag
 ### Human-in-the-loop prompts
 ```{applies_to}
 stack: ga 9.4+
+serverless: ga
 ```
 
 At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
@@ -218,15 +342,24 @@ At certain points an agent pauses and hands control back to you before it contin
 
 | Prompt | When it appears | Available responses |
 | --- | --- | --- |
-| Tool confirmation | An Elastic-built tool or skill requires approval before it performs an action | Confirm the action or deny it |
+| Tool confirmation | A tool or skill requires approval before it performs an action | Confirm the action or deny it |
 | Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
 | Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
 
 HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
+HITL prompts require an interactive conversation, so [sub-agent executions cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+
 #### Confirm a change
 
-Some Elastic-built tools and skills pause for confirmation before performing consequential actions. When confirmation is required, the chat presents a preview before the action takes effect. The preview format and available responses depend on the tool or skill. Review the preview, then confirm the action to proceed or deny it to cancel.
+Some tools and skills pause for confirmation before they perform consequential actions. Elastic-built tools and skills decide for themselves when to ask.
+
+For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+
+What the prompt shows depends on the tool:
+
+* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
+* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
@@ -249,6 +382,14 @@ For irreversible actions, the prompt highlights the consequences before you proc
 :::{image} images/agent-builder-confirm-delete-stream.png
 :screenshot:
 :alt: Confirmation prompt warning that the logs.otel.checkout stream and its data will be permanently deleted
+:width: 700px
+:::
+
+Custom tools show the generic prompt instead. Here, a tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
+
+:::{image} images/agent-builder-tool-confirmation-prompt.png
+:screenshot:
+:alt: Generic confirmation prompt asking permission to call the tool ecommerce.cancel_order, with Deny and Allow buttons
 :width: 700px
 :::
 
@@ -340,7 +481,9 @@ stack: ga 9.4+
 The **Customize** accordion in the left sidebar provides agent-scoped configuration for the currently selected agent. Expand it to access the following pages:
 
 **Overview**
-:   Displays a summary of the selected agent, including the total count of assigned skills and tools. Use the quick links to edit the agent's instructions or settings.
+:   Displays a summary of the selected agent, including the total count of assigned skills and tools. Use the quick links to edit the agent's instructions or settings. The page also shows a row of agent metadata that includes the agent's ID, followed by the access control level for custom agents or a **Read-only** badge for built-in agents. Select the copy icon {icon}`copy` to copy the ID.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The row begins with **Created by** and, when available, **Updated by**. These values correspond to the **Created by** and **Last updated by** columns in the [agent list](#manage-components). If a timestamp is available, a relative time is shown. Point to or focus on it to view the exact date and time. **Created by** displays **Unknown** if no creator was recorded.
 
 **Skills**
 :   Lists the skills assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**. Skills you import into the library must be turned on with their toggle in this list before the agent can use them. For how skills work and how to manage them, refer to [Skills in {{agent-builder}}](skills.md).
@@ -369,7 +512,11 @@ stack: ga 9.4+
 The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of all agents, skills, plugins, connectors, and tools available across the deployment.
 
 **Agents**
-:   View all agents in the deployment. The list displays each agent's name, visibility badge (**Public**, **Shared**, or **Read-only**), and any custom labels. From this page, you can create new agents, edit existing ones, or start a chat.
+:   View all agents available in the current {{kib}} space. The list displays each agent's name and access control level (**Public**, **Shared**, or **Private**), a **Read-only** badge for built-in agents, and any labels. From this page, you can create new agents, edit existing ones, or start a chat.
+
+    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list also includes **Created by** and **Last updated by** columns. When available, each column displays the user's name and a relative time, such as **3 months ago**. Point to or focus on the relative time to view the exact date and time. If the user's full name is unavailable, their username appears instead. The default agent and other agents installed automatically by {{kib}} display **Elastic**. Read-only built-in agents display a dash in both columns because no creator or editor is recorded for them. If only one value is recorded, only the corresponding column displays a value.
 
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.
@@ -382,9 +529,11 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 :::
 
 **Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   View and manage the agent builder connectors library, which gives agents access to external data sources and systems. 
+:   View and manage the {{agent-builder}} connectors library, which gives agents access to external data sources and systems. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use a connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
 
 :::{note}
+:applies_to: stack: preview 9.4-9.5
+
 The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 

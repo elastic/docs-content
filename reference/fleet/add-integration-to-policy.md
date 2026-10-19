@@ -35,6 +35,8 @@ To add a new integration to one or more {{agent}} policies:
 
 This action installs the integration (if it's not already installed) and adds it to the {{agent}} policies that you specified. {{fleet}} distributes the new integration policy to all {{agent}}s that are enrolled in the agent policies.
 
+If you're monitoring many hosts that run the same service, you don't need to repeat these steps for each host. Refer to [](/reference/fleet/scale-integration-policies.md).
+
 You can update the settings for an installed integration at any time:
 
 1. In {{kib}}, go to the **Integrations** page.

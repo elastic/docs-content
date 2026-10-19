@@ -1,4 +1,5 @@
 ---
+navigation_title: Index fundamentals
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/documents-indices.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Index fundamentals
+# {{es}} index fundamentals
 
 An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. You can store many independent datasets side by side. 
 
@@ -136,3 +137,6 @@ Now that you understand index fundamentals, explore these pages for hands-on tas
 * [](/manage-data/data-store/data-streams/manage-data-stream.md): Create, monitor, and manage data streams and their backing indices.
 * [](/manage-data/ingest/transform-enrich/data-enrichment.md): Set up enrich policies to add data from existing indices to incoming documents.
 * [](/manage-data/data-store/manage-data-from-the-command-line.md): Index, update, retrieve, search, and delete documents using the {{es}} REST API.
+
+:::{related-learning} index-basics
+:::

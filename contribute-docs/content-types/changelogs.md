@@ -5,8 +5,6 @@ description: "Guidelines for writing effective release notes content in changelo
 
 # Changelogs
 
-% Title and technical-formatting guidance updated (base-form verbs, {{esql}}, cleanup checklist, YAML quoting note) — documentation agent, 2026-05-11.
-
 This page provides guidelines for writing useful and consistent changelogs, which are the building blocks of Elastic release notes.
 Use this content type and the associated schema to draft new changelogs or to evaluate existing content.
 
@@ -39,7 +37,7 @@ Each changelog file describes a single change and includes metadata such as the 
 
 :::{important}
 The creation of release notes from changelogs and all the layout and formatting of that content is handled automatically by Elastic Docs.
-For technical details, refer to [Create and bundle changelogs](https://elastic.github.io/docs-builder/contribute/changelog/).
+For technical details, including the commands that create these files, refer to [Create changelogs](https://elastic.github.io/docs-builder/data/release-notes/create/).
 
 Focus on creating clear, accurate content in the changelogs rather than worrying about how it will appear in the final documentation.
 :::
@@ -53,9 +51,14 @@ Focus on creating clear, accurate content in the changelogs rather than worrying
 
 Every changelog must include the following elements:
 
-1. **Products**: The Elastic products affected by the change. Where possible, include a target release version or date and the lifecycle (for example, preview, beta, or GA).
+1. **Products**: The Elastic products affected by the change. Where possible, include the lifecycle (for example, preview, beta, GA, or experimental).
 1. **Type**: The type of change. For guidance, go to [Choose the changelog type](#changelog-types).
 1. **Title**: A short, user-facing summary. In general, limit it to 80 characters. For examples, go to [Write effective titles](#changelog-titles).
+
+How the changelog associates with a release determines one more required field:
+
+- If the changelog relates to a pull request that ships in a product release, include it in `prs` and omit `products[].versions`. The origin branch and the release PR list determine which releases the changelog pertains to. These changelogs are typically created with the `changelog add` command.
+- If the changelog does not relate to a pull request that ships in a product release (e.g. it's a known issue, security advisory, or a late feature announcement), include `products[].versions` as the list of concrete version numbers or release dates (for example, `[9.3.0, 9.4.0]`) that it applies to. These changelogs are typically created with the `changelog note` command.
 
 ### Optional elements
 
@@ -63,7 +66,7 @@ Consider including the following elements when they add value:
 
 - **Description**: Additional information about the change (maximum 600 characters). For guidance, go to [Write effective descriptions](#changelog-descriptions).
 - **Areas**: The components, features, or product areas affected by the change (for example, "{{esql}}" or "{{ml-app}}").
-- **Issues** and **prs**: The numbers or URLs for the related issues and pull requests.
+- **Issues**: The numbers or URLs for related issues.
 - **Feature-id**: If you want to be able to track changelogs associated with a specific feature flag or filter them out of the documentation, add a unique identifier.
 
 The following elements apply to specific types of changes:
@@ -123,8 +126,9 @@ Feature
 
 Known issue
 :   Use `known-issue` for problems that are not fixed in the release but are actively being worked on.
-:   Include information about all affected versions and contexts.
+:   Include information about all affected contexts.
 :   Optionally include `impact` and `action` fields (with workaround steps).
+:   This type of changelog typically does not relate to a pull request that ships in a product release, so `products[].versions` lists affected versions and `prs` is typically empty.
 :   Examples include defects or limitations that might impact implementation.
 
 Other
@@ -135,12 +139,14 @@ Regression
 :   Use `regression` for unintended changes where functionality no longer works or behaves incorrectly.
 :   Unlike breaking changes, they are typically accidental and addressed in a future bug fix.
 :   Unlike known issues, they affect existing behavior and are therefore a higher severity.
-:   Include information about all affected versions and contexts.
+:   Include information about all affected contexts.
+:   This type of changelog typically does not relate to a pull request that ships in a product release, so `products[].versions` lists affected versions and `prs` is typically empty.
 :   Examples include queries that worked in a previous release now failing, UI features disappearing due to refactoring, or a significant performance degradation after an update.
 
 Security
 :   Use `security` for security advisories about vulnerabilities.
 :   Follow security team guidelines for disclosure of sensitive information.
+:   This type of changelog typically does not relate to a pull request that ships in a product release, so `products[].versions` lists affected versions and `prs` is typically empty.
 :   Examples include security patches and vulnerability disclosures.
 
 ### Technical terms and inline code [changelog-technical-terms]
@@ -155,7 +161,7 @@ Use inline code (backticks) for anything code-like so titles and descriptions st
 - {{esql}} commands, functions, and operators in running text or titles when needed (for example, `` `STATS` ``, `` `MV_EXPAND` ``, `` `LIMIT` ``).
 
 :::{important}
-Titles that contain backticks, colons, `#`, or brackets must be valid YAML scalars: quote the whole `title` value in the changelog file (double-quoted string; escape internal `"` as `\"`). See [Create and bundle changelogs](https://elastic.github.io/docs-builder/contribute/changelog/) if you use automation.
+Titles that contain backticks, colons, `#`, or brackets must be valid YAML scalars: quote the whole `title` value in the changelog file (double-quoted string; escape internal `"` as `\"`). See [Create changelogs](https://elastic.github.io/docs-builder/data/release-notes/create/) if you use automation.
 :::
 
 ### Write effective titles [changelog-titles]
@@ -211,21 +217,23 @@ Include a description when:
 Follow these best practices:
 
 - **Keep it concise**: Use a maximum of 600 characters.
-- **Focus on user value**: Explain what users can do or what problems are solved.
+- **Use third-person present**: Titles stay base-form imperative (*Fix*, *Add*); descriptions do not (*Fixes*, *Adds*, *Enables*, *Improves*, *Updates*, or *Removes* depending on type).
+- **Focus on user value**: Explain what users can do or what problems are solved. Avoid filler such as "This enhancement allows you to..."
 - **Provide context**: Help users understand when or why they would use this.
 - **Include relevant details**: Describe configuration changes, API changes, or behavioral differences.
 - **Use code blocks**: Consider the layout of your configuration examples and code snippets.
 
 #### Good description examples
 
-- This enhancement allows you to configure custom authentication providers through the security settings. Previously, only built-in providers were supported.
-- Fix an issue where queries with date range filters could cause excessive memory usage in clusters with many shards. The change optimizes memory allocation for date range queries.
+- Adds support for custom authentication providers through the security settings. Previously, only built-in providers were supported.
+- Fixes excessive memory usage for queries with date range filters in clusters with many shards by optimizing memory allocation.
 
 #### Poor description examples
 
 - "Internal refactoring": Doesn't explain user impact.
 - "See PR #12345 for details": Doesn't provide information, only a reference.
 - Repeating the title verbatim, which adds no value.
+- "Fixed Fleet package policy bulk creation": Past tense; use *Fixes*.
 
 ### Write about user impact and actions
 
@@ -267,6 +275,7 @@ Avoid these common mistakes:
 - **Being too vague**: "Bug fixes and performance improvements" doesn't help users understand what changed.
 - **Including unnecessary technical details**: Skip internal architecture changes unless they affect users.
 - **Shipping PR-style titles unchanged**: Omit `feat:`/`fix:` prefixes, auto-implement labels, and bracketed team tags—rewrite for users (see [Title cleanup checklist](#title-cleanup-checklist)).
+- **Mixing title and description verb forms**: Don't open a description with *Fix* or *Fixed*. Titles use *Fix*; descriptions use *Fixes*.
 
 ## Examples
 

@@ -18,6 +18,8 @@ products:
 3. [Storage](#storage)
 4. [Synthetics](#synthetics)
 5. [Inference](#inference)
+6. [Workflow executions](#workflow-executions)
+7. [{{agent-builder}} executions](#agent-builder-executions)
 
 Read on for detail about each of these billing dimensions.
 
@@ -64,7 +66,11 @@ Data inter-node charges are currently waived for Azure deployments.
 
 Data transfer out of deployments and between nodes of the cluster is hard to control, as it is a function of the use case employed for the cluster and cannot always be tuned. Use cases such as batch queries executed at a frequent interval may be revisited to help lower transfer costs, if applicable. Watcher email alerts also count towards data transfer out of the deployment, so you may want to reduce their frequency and size.
 
-The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster.  The only way to prevent shard movement is by having a single node in a single availability zone. This solution is only possible for clusters up to 64GB RAM and is not recommended as it creates a risk of data loss. [Oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Note that creating snapshots generates inter-node data transfer. The *storage* cost of snapshots is detailed later in this document.
+The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster. [Oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Note that creating snapshots generates inter-node data transfer. The *storage* cost of snapshots is detailed later in this document.
+
+:::{note}
+Using a single {{es}} node can lower inter-node data transfer, but that deployment is not highly available, and you risk losing data. For production, use at least two availability zones. Review [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) for more guidance.
+:::
 
 The exact root cause of unusual data transfer is not always something we can identify as it can have many causes, some of which are out of our control and not associated with Cloud configuration changes.  It may help to [enable monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) and examine index and shard activity on your cluster.
 
@@ -116,3 +122,16 @@ Synthetic Monitoring browser tests are charged per test run (metered in 60 secon
 
 [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is billed separately from [deployment capacity](#ram-hours), which includes ML nodes running in your deployment. For the token-based pricing model and how to find {{infer}} usage in the {{ecloud}} Console, refer to [EIS pricing](/explore-analyze/elastic-inference/eis.md#pricing).
 
+
+## Workflow executions [workflow-executions]
+
+{{ech}} bills [workflows](/explore-analyze/workflows.md) based on workflow executions. Each workflow run counts as one execution. The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included.
+
+For metering details, including how unsuccessful and skipped runs are handled, refer to [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing). For current billing amounts, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).
+
+
+## {{agent-builder}} executions [agent-builder-executions]
+
+{{ech}} bills {{agent-builder}} based on executions. Each completed interaction with an agent counts as at least one execution. The first 10,000 {{agent-builder}} executions across the {{ech}} deployments in an {{ecloud}} organization each month are included.
+
+For metering details, including how token volume and error responses are counted, refer to [Monitor usage and costs](/explore-analyze/ai-features/agent-builder/monitor-usage.md). For current billing amounts, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).

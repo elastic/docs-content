@@ -46,7 +46,7 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
     The time a transaction took to complete is also recorded and displayed on the chart under the "app" label. "app" indicates that something was happening within the application, but we’re not sure exactly what. This could be a sign that the APM agent does not have auto-instrumentation for whatever was happening during that time.
 
-    It’s important to note that if you have asynchronous spans, the sum of all span times may exceed the duration of the transaction.
+    It’s important to note that if you have asynchronous spans, the sum of all span times might exceed the duration of the transaction.
 
 **Cold start rate**
    Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](/solutions/observability/apm/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
@@ -87,6 +87,8 @@ Additional RUM goodies, like core vitals, and visitor breakdown by browser, loca
 ## Transaction details [transaction-details]
 
 Selecting a transaction group will bring you to the **transaction** details. This page is visually similar to the transaction overview, but it shows data from all transactions within the selected transaction group.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The transaction details also include a **Service map** panel scoped to the service. Refer to [](/solutions/observability/apm/service-map.md) for more information.
 
 :::{image} /solutions/images/observability-apm-transactions-overview.png
 :alt: Example view of response time distribution

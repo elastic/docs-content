@@ -179,7 +179,7 @@ This sample configuration forwards events to the output when there are enough ev
     **Default:** `10s`
 
 
-## Topics settings [output-kafka-topics-settings]
+## Topic settings [output-kafka-topics-settings]
 
 Use these options to set the Kafka topic for each {{agent}} event.
 

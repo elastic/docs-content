@@ -54,7 +54,7 @@ There can be multiple timestamps associated with a single data event. By default
 * `event.created` for when an event first reached an Elastic product.
 * `event.ingested` for when an event finished processing through an {{es}} Ingest Pipeline.
 
-{{kib}} [Data Views](https://www.elastic.co/docs/explore-analyze/find-and-organize/data-views) default to `@timestamp` to fit most user's default expectations. While troubleshooting ingestion lag, we recommend creating a temporary Data View based on `event.ingested`. 
+{{kib}} [Data Views](/explore-analyze/find-and-organize/data-views.md) default to `@timestamp` to fit most user's default expectations. While troubleshooting ingestion lag, we recommend [creating a temporary data view](/explore-analyze/find-and-organize/data-views/create-data-view.md#_create_a_temporary_data_source) based on `event.ingested`. 
 
 This potential timing difference is why Security Detection Rules allow for [setting a "Timestamp override"](https://www.elastic.co/docs/troubleshoot/security/detection-rules#troubleshoot-ingestion-pipeline-delay) which defaults to `event.ingested` when enabled.
 
@@ -138,3 +138,19 @@ Storing this output into `nodes_stats.json` and then using [third-party tool JQ]
 {{es}}'s Ingest Pipeline processors don't have associated `id` like {{ls}}'s Pipelines to distinguish them so these emit in sequential order as seen in pipeline's definition. 
 
 The statistics report per node since its uptime, so will reset with node restarts. As a rough heuristic, you could look at an individual node's output knowing proportions will usually be about equal. 
+
+## Common ingest processor performance impacts [troubleshooting-pipelines-common]
+
+The following [ingest processors](elasticsearch://reference/ingest-processor/index.md) are more likely to [cause high CPU](#troubleshooting-pipelines-symptoms-cpu) or [flag high milliseconds per event](#troubleshooting-pipelines-metrics), under certain conditions:
+
+* Processors that run custom code, such as the [`script` processor](elasticsearch://reference/ingest-processor/script-processor.md) or [`grok` processor](elasticsearch://reference/ingest-processor/grok-processor.md), which have not had currently ingesting data formats load tested against performance criteria.
+
+  :::{note}
+  While custom code can run within {{es}}, troubleshooting its failures or optimizing its performance falls outside of the [scope of Elastic's support](https://www.elastic.co/support_policy#6).
+  :::
+
+* The [`foreach` processor](elasticsearch://reference/ingest-processor/foreach-processor.md) when iterating through large objects or arrays.
+
+* The [`enrich` processor](elasticsearch://reference/ingest-processor/enrich-processor.md)'s performance is dependent upon being colocated with [ingest and data roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) to minimize remote search operations.
+
+Refer to each processor's page for its performance guidance.

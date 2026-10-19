@@ -494,10 +494,10 @@ Reference these fields with Liquid templating in workflow steps:
   type: console
   with:
     message: |
-      Episode {{ event.episodeId }} from rule {{ event.ruleId }} changed state.
+      Alert episode {{ event.episodeId }} from rule {{ event.ruleId }} changed state.
 ```
 
-Use these fields to write workflow conditions that scope the automation to specific rules or episodes. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alert episodes from a specific rule.
+Use these fields to write workflow conditions that scope the automation to specific rules or alert episodes. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alert episodes from a specific rule.
 
 ## {{alerting-v2-system-cap}} rule lifecycle triggers [alerting-rule-lifecycle-triggers-event-driven]
 
@@ -641,12 +641,12 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-You can test an event-driven workflow against a real event before enabling it. When you run a workflow from the editor, the **Run workflow** dialog shows a trigger tab for each way to supply input, including an **Event** tab for event-driven triggers.
+You can test an event-driven workflow against a real event before enabling it. When you run a workflow from the editor, the **Test workflow** dialog shows a tab for each way to supply data, including an **Event** tab for event-driven triggers.
 
 On the **Event** tab, browse events that have already occurred for your trigger type. Use the KQL search bar and time range to narrow the list, select an event from the results, and run the workflow against that event's payload. The execution then runs exactly as it would have when the event first occurred, so you can confirm your conditions and steps behave as expected.
 
 :::{tip}
-To reuse the input from an earlier run instead of a fresh event, use the **Historical** tab, which lets you rerun a workflow with the input data from a previous execution.
+To reuse the data from an earlier run instead of a fresh event, select **Historical** in the **Test workflow** dialog. Refer to [Provide data for a test run](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input) for more information.
 :::
 
 ## Related

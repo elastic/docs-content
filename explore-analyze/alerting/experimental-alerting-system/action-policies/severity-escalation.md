@@ -10,13 +10,13 @@ description: "How to manage notifications when alert episode severity changes in
 
 # Manage severity escalation notifications for the {{alerting-v2-system}} [severity-escalation]
 
-Not every severity change fires a notification. The outcome depends on whether the action policy has already matched the episode and which frequency option you've selected.
+Use this page to control when a workflow runs as an alert episode's severity changes, including first-time matches, duplicate invocations, and de-escalation. Not every severity change invokes a workflow. The outcome depends on whether the action policy has already matched the alert episode and which frequency option you've selected.
 
-## Notify when an episode escalates into a new severity threshold
+## Notify when an alert episode escalates into a new severity threshold
 
-Scope an action policy to the severity level you want notifications for. When an episode escalates into that severity level for the first time, the action policy fires because it has no prior notification record for the episode.
+Scope an action policy to the severity level you want a workflow to run for. When an alert episode escalates into that severity level for the first time, the action policy invokes a workflow because it has no prior invocation record for the alert episode.
 
-The following example uses an action policy scoped to `severity: "critical"`. An episode starts at `low` severity, so the action policy doesn't match. When the episode escalates to `critical`, the action policy now matches and fires regardless of the frequency setting, because it has never notified for this episode before.
+The following example uses an action policy scoped to `severity: "critical"`. An alert episode starts at `low` severity, so the action policy doesn't match. When the alert episode escalates to `critical`, the action policy now matches and invokes a workflow regardless of the frequency setting, because it has never invoked a workflow for this alert episode before.
 
 | Field | Value |
 |---|---|
@@ -27,22 +27,22 @@ The following example uses an action policy scoped to `severity: "critical"`. An
 
 ## Prevent duplicate notifications when severity changes within an existing match
 
-If an action policy already matched an episode, a severity escalation alone doesn't trigger re-notification when the episode's status stays the same. With `On status change` frequency, a severity change doesn't count as a status change.
+If an action policy already matched an alert episode, a severity escalation alone doesn't trigger re-notification when the alert episode's status stays the same. With `On status change` frequency, a severity change doesn't count as a status change.
 
-In this example, Action Policy A matches all episodes regardless of severity and notified when the episode was `low`. When the episode escalates to `critical`, Action Policy A still matches, but the throttle blocks re-notification because the status hasn't changed. To re-notify on escalation, use a time-based throttle or create separate action policies for each severity level as described in [Route alert episodes by severity](route-by-severity.md).
+In this example, Action Policy A matches all alert episodes regardless of severity and notified when the alert episode was `low`. When the alert episode escalates to `critical`, Action Policy A still matches, but the throttle blocks re-notification because the status hasn't changed. To re-notify on escalation, use a time-based throttle or create separate action policies for each severity level as described in [Route alert episodes by severity](route-by-severity.md).
 
 | Field | Value |
 |---|---|
-| **Match conditions** | (None, matches all episodes) |
+| **Match conditions** | (None, matches all alert episodes) |
 | **Notify per** | Episode |
 | **Frequency** | On status change |
 | **Destinations** | Slack workflow |
 
-## Stop notifications when an episode de-escalates below an action policy's threshold
+## Stop notifications when an alert episode de-escalates below an action policy's threshold
 
-If an episode drops below an action policy's severity threshold, the action policy stops matching and sends no further notifications. If the episode later escalates back above the threshold, the action policy fires again as if it were the first match.
+If an alert episode drops below an action policy's severity threshold, the action policy stops matching and doesn't invoke a workflow. If the alert episode later escalates back above the threshold, the action policy invokes a workflow again as if it were the first match.
 
-In this example, Action Policy B targets only `severity: "critical"` episodes. An episode de-escalates from `critical` to `high`. Action Policy B no longer matches and stops sending notifications. If the episode later escalates back to `critical`, Action Policy B fires again.
+In this example, Action Policy B targets only `severity: "critical"` alert episodes. An alert episode de-escalates from `critical` to `high`. Action Policy B no longer matches and stops invoking a workflow. If the alert episode later escalates back to `critical`, Action Policy B invokes a workflow again.
 
 | Field | Value |
 |---|---|
@@ -53,6 +53,6 @@ In this example, Action Policy B targets only `severity: "critical"` episodes. A
 
 ## Related pages
 
-- [Route alert episodes by severity](route-by-severity.md): Configure severity-scoped action policies to route episodes to separate workflows.
-- [Re-notify for persistently active episodes](re-notification.md): Set up time-based frequency options to re-notify when an episode stays active.
+- [Route alert episodes by severity](route-by-severity.md): Configure severity-scoped action policies to route alert episodes to separate workflows.
+- [Re-notify for persistently active alert episodes](re-notification.md): Set up time-based frequency options to re-notify when an alert episode stays active.
 - [Action policy reference](action-policy-reference.md): Look up match condition fields and frequency options.

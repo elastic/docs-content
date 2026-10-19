@@ -28,6 +28,10 @@ $ curl -X GET api/task_manager/_health
 
 Monitoring the `_health` endpoint of each {{kib}} instance in the cluster is the recommended method of ensuring confidence in mission critical services such as Alerting, Actions, and Reporting.
 
+::::{note}
+On {{ech}} and {{ece}} deployments where {{kib}} runs [dedicated background task nodes](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes), the `_health` endpoint is served by a UI node and its response doesn't reflect task execution state. To retrieve complete health data, refer to [Retrieve health data when {{kib}} uses separate task nodes](/troubleshoot/kibana/task-manager.md#task-manager-health-multi-node).
+::::
+
 
 ## Configuring the monitored health statistics [task-manager-configuring-health-monitoring]
 

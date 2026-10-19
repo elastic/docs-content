@@ -50,8 +50,12 @@ To create an enrollment token:
 
     The token name you specify must be unique to avoid conflict with any existing API keys.
 
-4. Click **Create enrollment token**.
-5. In the list of tokens, click the **Show token** icon {icon}`eye` to display the token secret.
+4. {applies_to}`stack: ga 9.3+` (Optional) In the **Expiration** field, enter a duration such as `30d`, `24h`, or `90m` to set how long the token is valid. Leave the field empty to create a token that never expires.
+
+    Use a positive whole number followed by `d` (days), `h` (hours), `m` (minutes), or `s` (seconds). After a token expires, you can no longer use it to enroll new agents. Agents that are already enrolled continue to function.
+
+5. Click **Create enrollment token**.
+6. In the list of tokens, click the **Show token** icon {icon}`eye` to display the token secret.
 
 All {{agents}} enrolled with this token use the selected policy unless you assign or enroll them in a different policy.
 

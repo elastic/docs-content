@@ -16,7 +16,7 @@ products:
 {{elastic-sec}} allows any event detected by {{elastic-endpoint}} or supported third-party integrations to be analyzed using a process-based visual analyzer, which shows a graphical timeline of processes that led up to the alert and the events that occurred immediately after. Examining events in the visual event analyzer is useful to determine the origin of potentially malicious activity and other areas in your environment that may be compromised. It also enables security analysts to drill down into all related hosts, processes, and other events to aid in their investigations.
 
 ::::{tip}
-If you’re experiencing performance degradation, you can [exclude cold and frozen tier data](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-tiers) from analyzer queries. This setting is only available for the {{stack}}.
+If you’re experiencing performance degradation, you can use the `securitySolution:excludeColdAndFrozenTiersInAnalyzer` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) to exclude cold and frozen tier data from analyzer queries. This setting is only available for the {{stack}}.
 ::::
 
 

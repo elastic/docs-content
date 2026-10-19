@@ -1,4 +1,5 @@
 ---
+navigation_title: Synonym set API examples
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-synonyms-set.html#put-synonyms-set-example
 applies_to:

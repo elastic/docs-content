@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-load-balancers.html
 applies_to:
   deployment:
-    ece: all
+    ece: ga all
 products:
   - id: cloud-enterprise
 ---
@@ -27,6 +27,7 @@ Use the following recommendations when configuring your load balancer:
 * **Load balancing algorithm**: Select an algorithm that distributes traffic evenly across all proxies, such as round robin or another comparable method. Proxies are constantly updated with internal routing information on how to direct requests to clusters on allocators hosting their nodes across zones. Proxies prefer cluster nodes in their local zone and route requests primarily to nodes in their own zone. 
 * **Network**: Use a network that is fast enough from a latency and throughput perspective to be considered local for the {{es}} clustering requirement. There shouldn't be a major advantage in "preferring local" from a load balancer perspective (rather than a proxy perspective), and it might lead to potential hot spotting on specific proxies, so it should be avoided.
 * **TCP timeout**: Use the default (or required) TCP timeout value from the cloud provider. Do not set a custom timeout on the load balancer.
+* **Dual-stack** {applies_to}`ece: ga 4.2` : If IPv6 clients must reach your deployments or the Cloud UI, the load balancer must accept IPv4 and IPv6. Refer to [IPv6 support](./ece-ipv6-support.md) for more information.
 
 ## Port and mode configuration [ece-load-balancer-ports]
 
@@ -34,7 +35,7 @@ The following table describes the supported load balancer modes for each type of
 
 | Ports | Traffic type | Supported modes | Client IP mechanism | Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| 9200/9243 | {{es}} HTTP | HTTP (L7) or TCP (L4) | `X-Forwarded-For` (L7) or Proxy Protocol v2 (L4) | |
+| 9200/9243 | {{es}} HTTP | HTTP (L7) or TCP (L4) | • `X-Forwarded-For` (L7)<br><br>• Proxy Protocol v2 (L4) {applies_to}`ece: ga 4.2`<br><br>• Direct source IP preservation (L4) | At least one mechanism is required for IP filtering and client IP logging |
 | 9300/9343 | Transport client | TCP (L4) | Proxy Protocol v2 | Enable proxy protocol on the LB |
 | 9400 | CCS/CCR (TLS auth) | TCP (L4) | — | Do **not** enable proxy protocol |
 | 9443 | CCS/CCR (API key auth) | HTTP (L7) | `X-Forwarded-For` | Must send HTTP/1.1 traffic |
@@ -44,11 +45,11 @@ The following table describes the supported load balancer modes for each type of
 
 The ECE proxy must be able to determine the real client IP address for [IP filtering](/deploy-manage/security/ip-filtering-ece.md) and [request logging](/deploy-manage/monitor/orchestrators/ece-proxy-log-fields.md). The mechanism depends on the load balancer mode:
 
-* **`X-Forwarded-For` header** (HTTP/L7 mode): Configure the load balancer to strip inbound `X-Forwarded-For` headers and replace them with the client source IP. This prevents clients from spoofing their IP addresses. Elastic Cloud Enterprise uses `X-Forwarded-For` for logging client IP addresses and, if you have implemented IP filtering, for traffic management.
-* **Proxy Protocol v2** (TCP/L4 mode): The load balancer prepends client connection metadata that the ECE proxy reads directly. Enable Proxy Protocol v2 on both the load balancer and the ECE proxy configuration. For instructions on configuring the ECE proxy side, refer to [our KB article](https://ela.st/ece-configure-ppv2-via-containersets-api).
+* **`X-Forwarded-For` header** (HTTP/L7 mode): Configure the load balancer to strip inbound `X-Forwarded-For` headers and replace them with the client source IP. This prevents clients from spoofing their IP addresses. ECE uses `X-Forwarded-For` for logging client IP addresses and, if you have implemented IP filtering, for traffic management.
+* **Proxy Protocol v2** (TCP/L4 mode): The load balancer prepends client connection metadata that the ECE proxy reads directly. It must be enabled on both the load balancer and the ECE proxies. To learn how to enable Proxy Protocol v2 on ECE proxies for deployment traffic on ports `9200` and `9243`, refer to [](./configure-proxy-protocol.md).
 * **Direct source IP preservation**: If the load balancer forwards connections transparently without modifying the source IP, no additional configuration is needed.
 
-If you use TCP mode for ports 9200/9243, make sure one of these mechanisms is in place. Without real client IP information, IP filtering cannot function correctly and proxy logs will only show the load balancer's IP address.
+Without any of these mechanisms, your deployments remain reachable and no error is reported, but the proxy only sees the load balancer address, so IP filtering rules no longer match real clients.
 
 ## Proxy health check for ECE 2.0 and earlier [ece_proxy_health_check_for_ece_2_0_and_earlier]
 

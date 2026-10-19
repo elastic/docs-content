@@ -6,69 +6,78 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: The experimental Kibana alerting system uses ES|QL rules to detect conditions, track problems as alert episodes, and route notifications through reusable action policies.
+description: The experimental Kibana alerting system writes each match as a rule event, then either groups those events into an alert episode with notifications or keeps them available for later analysis.
 ---
 
 # {{alerting-v2-system-cap}} overview [system-overview]
 
-The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, such as when to open an issue, who should know, and how often to notify them. The system handles the rest.
+The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, and the system handles detection, tracking, and notification from there.
+
+This page introduces the five objects in the system and how they connect. Use it to decide where to go next. For a step-by-step walkthrough after a rule runs, refer to [How it works](experimental-alerting-system/how-it-works.md).
 
 ::::{note}
-In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. The two terms describe similar ideas in different systems and are not interchangeable.
+In the generally available {{kib}} alerting system, the term **alert** refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an **alert episode**. Each system's APIs, UI, and instructions apply only to that system's concepts.
 ::::
 
 ## The core idea [core-idea]
 
-The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it:
+The {{alerting-v2-system}} starts with a rule evaluating your data on a schedule. When the rule detects a match, {{kib}} writes a rule event to `.rule-events`. The rule's configuration determines whether those events are grouped into an [alert episode](experimental-alerting-system/alerts.md) and can notify. Events that aren't part of an alert episode remain available for later analysis.
 
-- **Detecting** - Rules focus purely on what to watch for in your data and on collecting breach and recovery events.
-- **Acting** - Action policies handle who gets notified, when, and how, independently of any rule.
+:::{image} /explore-analyze/images/basic-system-flow.png
+:alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping that event into an alert episode or keeping it with no episode for later analysis
+:::
 
-You can build and test detection logic before wiring up any notifications, and update notification routing across all rules in one place without editing the rules themselves.
+## The building blocks
 
-## The four building blocks
-
-The {{alerting-v2-system}} is built around four objects: rules, alert episodes, action policies, and workflows, each with a distinct role.
+The flowchart is the big picture. The five objects in this section are the pieces you'll create and configure: rules, rule events, alert episodes, action policies, and workflows.
 
 ### Rules
 
-A rule defines what to watch for in your data and how often to check, and runs in one of two modes: alert, which opens and tracks an alert episode until the condition clears, or signal, which records results over time without opening episodes or sending notifications.
+A rule defines what to watch for in your data and how often to check. On each run, {{kib}} writes matches as [rule events](experimental-alerting-system/rules/rule-event-field-reference.md).
 
 Refer to [Rules](experimental-alerting-system/rules.md) to learn more.
 
+### Rule events
+
+A rule event is the document {{kib}} writes to `.rule-events` for each match.
+
+Refer to [Rule events](experimental-alerting-system/rules/rule-event-field-reference.md) to learn more.
+
 ### Alert episodes
 
-In Alert mode, the rule opens one alert episode per problem and keeps it open until the condition clears. The alert episode moves through states (pending, active, recovering, inactive), giving you one lifecycle to triage rather than a separate item per rule check.
+An [alert episode](experimental-alerting-system/alerts.md) tracks one problem from first detection through recovery, so you triage one lifecycle per problem.
 
-Refer to [Alert episodes](experimental-alerting-system/alerts.md) to learn more.
+Refer to [Alerts](experimental-alerting-system/alerts.md) to learn more.
 
 ### Action policies
 
-An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating episode eligibility, match conditions, and frequency. Policy configuration determines the scope. A policy can apply to alert episodes from a specific rule, multiple rules, or all rules in the space.
+An action policy decides whether and when to invoke a workflow for an alert episode. You configure that on the policy, not on the rule, so you can change routing without editing each rule. The workflow sends the notification.
 
 Refer to [Notifications and actions](experimental-alerting-system/notifications-actions.md) to learn more.
 
 ### Workflows
 
-A workflow is what actually sends the message or runs the automation, for example, posting to Slack, sending an email, calling a webhook. The {{alerting-v2-system}} invokes workflows in two ways: action policies that you configure to route alert episodes to a workflow based on match conditions and frequency, or alert episode lifecycle triggers that invoke a workflow immediately in response to a specific episode event, such as when it's activated or assigned.
+A workflow sends the notification or runs the automation, for example posting to Slack, sending an email, or calling a webhook.
 
 Refer to [Connect workflows](experimental-alerting-system/workflows-alerting.md) to learn more.
 
 ## How the pieces fit together [how-pieces-fit-together]
 
-At the simplest level:
+The following diagram is a more detailed version of the same flow. It places the five objects on that path so you can see how they connect.
 
-1. A rule checks your data on a schedule.
-2. The rule's query returns results when data matching its conditions is found.
-3. The rule's mode determines what happens next:
-   - Alert - The rule opens an alert episode to track the problem. An action policy can route it to a workflow to perform an action or send a notification.
-   - Signal - Each result is recorded for querying later. Nothing else happens.
+:::{image} /explore-analyze/images/detailed-system-flow.png
+:alt: Flowchart showing a rule detecting a match, Kibana writing a rule event, then either grouping the event into an alert episode that an action policy can route to a workflow, or keeping the event with no episode for later analysis
+:::
 
-For a more detailed explanation of each stage, refer to [How the {{alerting-v2-system}} works](experimental-alerting-system/how-it-works.md).
+Every match still becomes a rule event. From there, the rule's configuration determines the next step:
+
+* **Alert episode** - {{kib}} groups the event into an [alert episode](experimental-alerting-system/alerts.md). An action policy evaluates the alert episode and can invoke a workflow, which sends the notification or runs the automation.
+
+* **No episode** - The event stays in `.rule-events` for later analysis. You can [query it in Discover](experimental-alerting-system/alerts/query-signals.md), build dashboards, or feed it into another rule. Rule events that aren't part of an alert episode (`type: signal`) don't appear on **Alerts** and aren't evaluated by action policies or lifecycle triggers.
 
 ## Get started or go deeper [system-overview-next-steps]
 
 - **New to the {{alerting-v2-system}}?** [Get started](experimental-alerting-system/get-started.md) walks you through enabling the system, setting up role access, and creating your first rule with a hands-on tutorial.
 - **Wondering what you can detect?** [Rules](experimental-alerting-system/rules.md) shows you how to define what to watch for in {{esql}}, and how to choose and configure the right creation path for your use case.
 - **Curious what happens when something breaks?** [Alerts](experimental-alerting-system/alerts.md) explains how alert episodes track a problem from first detection through recovery, and how to triage them as they come in.
-- **Want the right people to know when it matters?** [Notifications and actions](experimental-alerting-system/notifications-actions.md) shows you how workflows and action policies decide who gets notified, and when.
+- **Want the right people to know when it matters?** [Notifications and actions](experimental-alerting-system/notifications-actions.md) shows you how action policies decide when to invoke a workflow, and how workflows send the notification.

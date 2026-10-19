@@ -19,6 +19,7 @@ When using Elastic, you create, manage, and export various types of content, cal
 
 This section describes what those objects are, how you can organize them, and how you can find them quickly when navigating the user interface.
 
+- [The {{kib}} interface](find-and-organize/kibana-interface.md)
 - [Data views](find-and-organize/data-views.md)
 - [Saved objects](find-and-organize/saved-objects.md)
 - [Files](find-and-organize/files.md)

@@ -48,6 +48,8 @@ toc:
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/external.md
+        children:
+          - file: elastic-inference/external-inference-private-ca.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
@@ -193,6 +195,7 @@ toc:
       - file: cross-project-search/cross-project-search-tags.md
       - file: cross-project-search/cross-project-search-project-routing.md
       - file: cross-project-search/cross-project-search-manage-scope.md
+      - file: cross-project-search/cps-compared-to-ccs.md
       - title: "CPS in ES|QL"
         crosslink: elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md
   - file: ai-features.md
@@ -245,10 +248,13 @@ toc:
               - file: ai-features/agent-builder/agent-traces-dashboard.md
               - file: ai-features/agent-builder/create-alerts.md
           - file: ai-features/agent-builder/permissions.md
+            children:
+              - file: ai-features/agent-builder/api-keys.md
           - file: ai-features/agent-builder/troubleshooting.md
             children:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
+              - file: ai-features/agent-builder/troubleshooting/pre-execution-workflow-disabled.md
           - file: ai-features/agent-builder/limitations-known-issues.md
           - file: ai-features/agent-builder/glossary.md
           - hidden: ai-features/agent-builder/connectors.md
@@ -258,8 +264,30 @@ toc:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant.md
           - file: ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md
+      - hidden: ai-features/context-engine.md
+        children:
+          - hidden: ai-features/context-engine/quickstart.md
+          - hidden: ai-features/context-engine/concepts.md
+          - hidden: ai-features/context-engine/build-and-maintain-ai-index.md
+            children:
+              - hidden: ai-features/context-engine/create-and-manage-ai-indices.md
+              - hidden: ai-features/context-engine/add-and-manage-sources.md
+              - hidden: ai-features/context-engine/create-and-manage-automations.md
+              - hidden: ai-features/context-engine/inspect-and-manage-knowledge-indicators.md
+              - hidden: ai-features/context-engine/evaluate-and-improve-knowledge-indicators.md
+          - hidden: ai-features/context-engine/use-an-ai-index.md
+            children:
+              - hidden: ai-features/context-engine/retrieve-context-from-ai-index.md
+              - hidden: ai-features/context-engine/save-and-retrieve-memories.md
+              - hidden: ai-features/context-engine/use-context-engine-with-agents.md
+                children:
+                  - hidden: ai-features/context-engine/use-context-engine-with-agent-builder.md
+                  - hidden: ai-features/context-engine/langchain-integration.md
+          - hidden: ai-features/context-engine/context-engine-api.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
+      - file: ai-features/claude-plugin.md
+      - file: ai-features/claude-connector.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:
           - file: ai-features/llm-guides/connect-to-azure-openai.md
@@ -274,14 +302,22 @@ toc:
   - file: discover.md
     children:
       - file: discover/discover-get-started.md
+      - file: discover/switch-esql-mode.md
+      - file: discover/use-esql.md
+        children:
+          - file: discover/try-esql.md
+          - file: discover/browse-esql-sources.md
+          - file: discover/esql-results.md
+          - file: discover/esql-variable-controls.md
+          - file: discover/create-lookup-indices.md
+          - file: discover/inspect-grouped-stats.md
+          - file: discover/detect-change-points.md
       - file: discover/document-explorer.md
       - file: discover/discover-search-for-relevance.md
       - file: discover/save-open-search.md
       - file: discover/show-field-statistics.md
       - file: discover/run-pattern-analysis-discover.md
-      - file: discover/detect-change-points.md
       - file: discover/background-search.md
-      - file: discover/try-esql.md
   - file: dashboards.md
     children:
       - file: dashboards/using.md
@@ -292,6 +328,11 @@ toc:
           - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
           - file: dashboards/drilldowns.md
+            children:
+              - file: dashboards/create-dashboard-drilldown.md
+              - file: dashboards/create-url-drilldown.md
+              - file: dashboards/create-discover-drilldown.md
+              - file: dashboards/manage-drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
       - file: dashboards/managing.md
@@ -322,6 +363,9 @@ toc:
           - file: visualize/charts/treemap-charts.md
       - file: visualize/esorql.md
       - file: visualize/custom-visualizations-with-vega.md
+      - file: visualize/custom-panels.md
+        children:
+          - file: visualize/custom-panel-examples.md
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
@@ -383,13 +427,29 @@ toc:
       - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
+      - file: find-and-organize/kibana-interface.md
       - file: find-and-organize/data-views.md
+        children:
+          - file: find-and-organize/data-views/create-data-view.md
+          - file: find-and-organize/data-views/delete-data-view.md
+          - file: find-and-organize/data-views/duplicate-data-view.md
+          - file: find-and-organize/data-views/customize-data-view-fields.md
+            children:
+              - file: find-and-organize/data-views/runtime-fields.md
+              - file: find-and-organize/data-views/scripted-fields.md
+              - file: find-and-organize/data-views/field-formatters.md
+              - file: find-and-organize/data-views/data-view-field-cache.md
       - file: find-and-organize/saved-objects.md
       - file: find-and-organize/files.md
       - file: find-and-organize/reports.md
       - file: find-and-organize/tags.md
       - file: find-and-organize/find-apps-and-objects.md
-      - file: find-and-organize/customize-navigation.md
+      - file: find-and-organize/personal-preferences.md
+        children:
+          - file: find-and-organize/personal-preferences/dark-mode.md
+          - file: find-and-organize/personal-preferences/high-contrast.md
+          - file: find-and-organize/personal-preferences/change-interface-language.md
+          - file: find-and-organize/customize-navigation.md
   - file: report-and-share.md
     children:
       - file: report-and-share/automating-report-generation.md
@@ -430,7 +490,7 @@ toc:
                   - file: alerting/experimental-alerting-system/rules/configure-rule-alert-delay.md
                   - file: alerting/experimental-alerting-system/rules/configure-rule-recovery.md
                   - file: alerting/experimental-alerting-system/rules/configure-no-data-handling.md
-                  - file: alerting/experimental-alerting-system/rules/configure-rule-tags.md
+                  - file: alerting/experimental-alerting-system/rules/configure-rule-artifacts.md
               - file: alerting/experimental-alerting-system/rules/view-manage-rules.md
               - file: alerting/experimental-alerting-system/rules/review-rule-execution-history.md
               - file: alerting/experimental-alerting-system/rules/esql-query-patterns.md
@@ -443,12 +503,13 @@ toc:
               - file: alerting/experimental-alerting-system/rules/rule-event-field-reference.md
           - file: alerting/experimental-alerting-system/alerts.md
             children:
-              - file: alerting/experimental-alerting-system/alerts/alert-data-model.md
+              - file: alerting/experimental-alerting-system/alerts/rule-event-data-model.md
               - file: alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md
                 children:
                   - file: alerting/experimental-alerting-system/alerts/triage-alert-episodes.md
                   - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
               - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
+              - file: alerting/experimental-alerting-system/alerts/query-signals.md
               - file: alerting/experimental-alerting-system/alerts/field-reference.md
           - file: alerting/experimental-alerting-system/notifications-actions.md
             children:

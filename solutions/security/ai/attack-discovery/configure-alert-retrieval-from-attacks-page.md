@@ -16,7 +16,7 @@ You can configure which alerts Attack Discovery retrieves, and how discoveries a
 
 | Your setup | Available in | Go to |
 |---|---|---|
-| [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned on. Configure alert retrieval methods, generation, and validation for manual runs and schedules. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure alert retrieval, generation, and validation](#attacks-page-settings-flyout) |
+| [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings) is turned on. Configure alert retrieval methods, generation, and validation for manual runs and schedules. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure alert retrieval, generation, and validation](#attacks-page-settings-flyout) |
 | Attack Discovery Workflows is turned off. Configure alerts for manual runs with the query bar, time filter, and alerts slider. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure alerts for manual runs with the query bar and alerts slider](#attacks-page-classic-settings) |
 | Attack Discovery Workflows is turned off, or not available in your version. Configure alerts for scheduled runs with the query bar, time filter, and alerts slider. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Configure alerts for scheduled runs with the query bar and alerts slider](#attacks-page-schedule-alert-selection) |
 
@@ -27,7 +27,7 @@ serverless:
   security: ga
 ```
 
-When [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned on, use **Attack discovery settings** to control which alerts Attack Discovery analyzes, which LLM creates the discoveries, and how those discoveries are checked before they're saved as attacks. Your choices apply to the manual runs you start from the **Attacks** view and are saved for you on this browser. Schedules can use different settings. 
+When [Attack Discovery Workflows](kibana://reference/advanced-settings.md#kibana-siem-settings) is turned on, use **Attack discovery settings** to control which alerts Attack Discovery analyzes, which LLM creates the discoveries, and how those discoveries are checked before they're saved as attacks. Your choices apply to the manual runs you start from the **Attacks** view and are saved for you on this browser. Schedules can use different settings. 
 
 To open the **Attack discovery settings** flyout, select **Settings** next to **Run** on the **Attacks** page.
 
@@ -103,7 +103,7 @@ serverless:
   security: ga
 ```
 
-When [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned off, use **Attack discovery settings** to choose which alerts to analyze. You set a query and time range, then choose how many alerts to send. Your choices apply to the manual runs you start from the **Attacks** view and are saved for you on this browser. Schedules can use different settings.
+When [Attack Discovery Workflows](kibana://reference/advanced-settings.md#kibana-siem-settings) is turned off, use **Attack discovery settings** to choose which alerts to analyze. You set a query and time range, then choose how many alerts to send. Your choices apply to the manual runs you start from the **Attacks** view and are saved for you on this browser. Schedules can use different settings.
 
 To open the **Attack discovery settings** flyout, select **Settings** next to **Run** on the **Attacks** page, then:
 
@@ -122,6 +122,6 @@ serverless:
   security: ga
 ```
 
-When [Attack Discovery Workflows](/solutions/security/get-started/configure-advanced-settings.md#enable-attack-discovery-workflows) is turned off, or not available in your version, set which alerts each schedule analyzes when you create or edit it. You choose a connector, a query, a time range, and how many alerts to send. If you don't already have a connector, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Sending more alerts than your chosen LLM can handle might result in an error.
+When [Attack Discovery Workflows](kibana://reference/advanced-settings.md#kibana-siem-settings) is turned off, or not available in your version, set which alerts each schedule analyzes when you create or edit it. You choose a connector, a query, a time range, and how many alerts to send. If you don't already have a connector, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Sending more alerts than your chosen LLM can handle might result in an error.
 
 Refer to [Schedule runs from the Attacks view](/solutions/security/ai/attack-discovery/schedule-runs-from-attacks-page.md) to finish creating or editing the schedule.

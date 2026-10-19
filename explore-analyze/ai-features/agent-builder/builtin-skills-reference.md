@@ -43,8 +43,12 @@ $$$agent-builder-visualization-creation-skill$$$ `visualization-creation` {appli
 $$$agent-builder-graph-creation-skill$$$ `graph-creation` {applies_to}`stack: ga 9.4+`
 :   Creates graph attachments by transforming relationship data into nodes and edges rendered inline in the conversation. Use for topology, dependency, or entity-link visualizations.
 
-$$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_to}`stack: preview =9.4, ga 9.5+`
+$$$agent-builder-dashboard-management-skill$$$ $$$agent-builder-dashboards-skill$$$ `dashboards` {applies_to}`stack: preview =9.4, ga 9.5+`
 :   Composes and updates in-memory {{kib}} dashboards. Use when a user asks to find, create, or modify a dashboard, add or remove panels, or edit existing panel visualizations.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` This skill was previously named `dashboard-management`. 
+       - If a custom agent that doesn't have **Elastic capabilities** turned on lists `dashboard-management`, change it to `dashboards`. Otherwise, the agent stops loading the skill without reporting an error. To retrieve the skill through the API, use `GET /api/agent_builder/skills/dashboards`.
+       - If you created a custom skill with the ID `dashboards` before the rename, the built-in skill takes precedence over it. To keep using your custom skill, re-create it with a different ID.
 
     :::{dropdown} Assigned tools
     A skill-scoped inline tool for generating and updating dashboards.
@@ -71,13 +75,45 @@ $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: prev
 
     **Prerequisites:** Controlled by the `agentBuilder:tracing:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is on by default.
 
+$$$agent-builder-connector-discovery-skill$$$ `connector-discovery` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
+:   Looks up [connectors](connectors.md) and their sub-actions, and runs the connectors assigned to the agent. Use when a request involves an external service, such as creating a GitHub issue or sending a Slack message, or when a user asks what the agent can connect to. Agents need this skill to find their connectors. **Enable Elastic capabilities** includes it. If the toggle is off, assign the skill to the agent yourself.
+
+    :::{dropdown} Assigned tools
+    `platform.core.execute_connector_sub_action`, plus internal tools to list the agent's connectors and load a connector's sub-actions.
+
+    :::
+
+$$$agent-builder-context-engine-skills$$$
+### {{context-engine}}
+
+These skills help agents plan an AI index, configure its sources and automations, evaluate how well its KIs support questions, and retrieve KIs while answering them.
+
+$$$agent-builder-analyze-and-improve-skill$$$ `analyze-and-improve` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Evaluates what an AI index should contain, selects a Knowledge Indicator (KI) generation strategy, and diagnoses gaps in existing KIs. It directs source and automation changes instead of editing generated KIs directly.
+
+$$$agent-builder-ai-index-sources-skill$$$ `ai-index-sources` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Selects and configures the {{es}} indices or connectors that supply an AI index. It can inspect mappings and sample data, build {{esql}} source queries, and distinguish a source coverage problem from an automation problem.
+
+$$$agent-builder-ai-index-automations-skill$$$ `ai-index-automations` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Reads, drafts, validates, and pilots the Elastic Workflows that generate and refresh KIs. It includes Workflow templates for common generation strategies.
+
+$$$agent-builder-context-engine-signals-skill$$$ `context-engine-signals` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Examines retrieval signals to determine which KI retrievals succeeded, returned no useful context, or led an agent to query source data.
+
+$$$agent-builder-ki-retrieval-skill$$$ `ki-retrieval` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Retrieves existing KIs from an AI index with keyword, semantic, or hybrid {{esql}} search. Use it at question-answering time rather than to generate KIs.
+
+For the relationship between these skills, AI indices, automations, and KIs, refer to [{{context-engine}} concepts](/explore-analyze/ai-features/context-engine/concepts.md).
+
 ### Cases and alerting
 
 $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Manages investigation and incident cases across {{elastic-sec}}, {{observability}}, and Stack Management. Covers creating, updating, searching, and enriching cases with comments, alerts, events, and observables such as indicators of compromise.
 
     :::{dropdown} Assigned tools
-    `platform.core.cases`, `platform.core.cases.manage`, `platform.core.cases.attachments`, `platform.core.cases.observables`
+    `platform.core.cases`, `platform.core.cases.manage`, `platform.core.cases.get_attachments`, `platform.core.cases.manage_attachments`, `platform.core.cases.observables`, `platform.core.cases.find_templates`
+
+    In 9.5, the skill uses `platform.core.cases.attachments` instead of `platform.core.cases.get_attachments` and `platform.core.cases.manage_attachments`.
 
     :::
 
@@ -194,6 +230,8 @@ $$$agent-builder-connector-authoring-skill$$$ `connector-authoring` {applies_to}
     Internal tools to list connector types and to propose a connector.
 
     :::
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library but doesn't assign it to an agent. To let an agent use the new connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
 
 ## Observability skills
 ```{applies_to}
@@ -333,14 +371,6 @@ $$$agent-builder-pci-compliance-skill$$$ `pci-compliance` {applies_to}`stack: pr
 
     **Prerequisites:** The `pciComplianceAgentBuilder` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
-$$$agent-builder-siem-readiness-skill$$$ `siem-readiness` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Assesses SIEM readiness across four dimensions: coverage (data ingested per category), quality (ECS field compatibility), continuity (ingest pipeline health), and retention (data retention compliance). Use when a user asks about SIEM health, readiness, data coverage, pipeline failures, ECS quality, or retention compliance.
-
-    :::{dropdown} Assigned tools
-    `security.siem_readiness.get_coverage`, `security.siem_readiness.get_quality`, `security.siem_readiness.get_continuity`, `security.siem_readiness.get_retention`
-
-    :::
-
 $$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
 :   Diagnoses [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) endpoint configuration issues such as endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus software. Queries endpoint data, inspects package configuration, and produces structured findings with specific endpoint IDs and remediation steps.
 
@@ -390,6 +420,8 @@ $$$agent-builder-search-use-case-library-skill$$$ `search.use-case-library` {app
 :   Presents a library of {{es}} use cases when users want to explore what they can build, need help identifying which category their project falls into, or are looking for inspiration. Covers product search, knowledge base search, AI assistants, recommendations, customer support, location-based search, log and event search, and vector database use cases.
 
 ## Related pages
+
+For more information, refer to the following pages:
 
 - [Skills in {{agent-builder}}](skills.md)
 - [Custom skills](custom-skills.md)
