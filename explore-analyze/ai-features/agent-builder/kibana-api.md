@@ -1028,7 +1028,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents/elastic-ai-agent/consumptio
 
 Use these APIs to send messages to agents and manage conversation history.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` For `POST /api/agent_builder/converse` and `POST /api/agent_builder/converse/async`, the `input` parameter is limited to 100,000 characters. Requests with a longer `input` fail with a `400` error.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `input` parameter of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) and the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) accepts up to 100,000 characters. A request with a longer `input` returns a `400` error.
 
 **Example:** Chat with an agent
 
