@@ -107,7 +107,7 @@ Elastic nightshift learns about your systems every time it runs an investigation
 
 ### View what Elastic nightshift knows [nightshift-get-started-knowledge-view]
 
-Open the **Knowledge** page. It has two tabs for what Elastic nightshift knows:
+From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs hold what Elastic nightshift knows:
 
 - **Cortex**: A breakdown of what Elastic nightshift knows about your systems, organized by type, such as services, runbooks, postmortems, and queries. Each page shows its type and whether it's established or tentative.
 - **Memory**: The individual memories Elastic nightshift has learned.
