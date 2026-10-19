@@ -473,9 +473,22 @@ The tools send requests with the privileges of the current user or API key, so a
 `discover_apis` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 :   Lists the supported API operations for {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.
 
-    **Prerequisites:** Turn on the `agentBuilder:apiDiscovery` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (**Elastic Agent Builder: API Discovery**) in each {{kib}} space where you want agents to use it. It's off by default.
+### API discovery [#api-discovery]
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
 
-When API discovery is off, an agent can call only operations whose identifier it already knows. To have an agent use a specific operation, include the operation's identifier in the agent's instructions or in your message. {{es}} identifiers combine the API group and the operation name, separated by a period, such as `indices.create` or `indices.get_mapping`. Operations that don't belong to a group use only the name, such as `bulk`. {{kib}} identifiers combine the API group with a name based on the operation ID in the [{{kib}} API reference]({{kib-apis}}), such as `dashboards.create-dashboard` or `alerting.delete-alerting-rule-id`.
+To make `discover_apis` available, turn on the `agentBuilder:apiDiscovery` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (**Elastic Agent Builder: API Discovery**) in each {{kib}} space where you want agents to use it. It's off by default.
+
+When API discovery is off, an agent can call only operations whose identifier it already knows. You can supply an identifier in the agent's instructions or in your message.
+
+### API operation identifiers [#api-operation-identifiers]
+
+Identifier formats depend on the service:
+
+* {{es}} identifiers combine the API group and operation name, separated by a period, such as `indices.create` or `indices.get_mapping`. Operations without a group use only the name, such as `bulk`.
+* {{kib}} identifiers combine the API group with a name based on the operation ID in the [{{kib}} API reference]({{kib-apis}}), such as `dashboards.create-dashboard` or `alerting.delete-alerting-rule-id`.
 
 ## Inline tools
 
