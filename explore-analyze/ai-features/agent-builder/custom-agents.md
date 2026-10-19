@@ -127,6 +127,18 @@ For what each level means, refer to [Access control settings](#access-control-se
 
 :::::
 
+:::::{step} Configure subagents (optional)
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+In the **Subagents** section, select **Enable subagents** to let the agent delegate tasks to other agents. **This agent (self-fork)** is added to the list, which lets the agent delegate to a copy of itself. Then, under **Delegable subagents**, select any other agents it can delegate to.
+
+For more information, refer to [Subagents](agent-builder-agents.md#subagents).
+
+:::::
+
 :::::{step} Assign tools
 
 Switch to the **Tools** tab to assign [tools](tools.md) to your agent.

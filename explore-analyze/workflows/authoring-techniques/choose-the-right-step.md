@@ -107,6 +107,8 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 | Classify into a fixed category set | [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify) |
 | Summarize content | [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) |
 | Invoke an {{agent-builder}} agent | [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) |
+| Add, update, or read a conversation attachment {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | [`ai.attachment.add`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-add), [`ai.attachment.update`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-update), [`ai.attachment.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-read) |
+| Read or update conversation metadata {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | [`ai.conversation.metadata.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-read), [`ai.conversation.metadata.patch`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-patch) |
 
 ### Call another workflow [workflows-choose-composition]
 
