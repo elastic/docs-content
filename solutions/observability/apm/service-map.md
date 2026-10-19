@@ -88,7 +88,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Use {{agent-builder}} to identify problem services and understand how they connect. Before you start, check the [requirements for AI investigations](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements).
+Use {{agent-builder}} to identify problem services and understand how they connect. Before you start, refer to [Investigate an alert or the service map](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements) for requirements.
 
 On the full **Service map** page, set the time range and filters for your investigation, then click **Investigate map** in the map toolbar. {{agent-builder}} opens a new conversation with a **Service map context** attachment and automatically sends an investigation request. The button is not available on maps embedded in alert detail pages or dashboards.
 

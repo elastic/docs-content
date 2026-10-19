@@ -26,13 +26,23 @@ While Agent Builder works with any [configured model](/explore-analyze/ai-featur
 
 ## {{observability}} capabilities
 
-::::{applies-switch}
-
-:::{applies-item} { stack: preview 9.4+, serverless: preview }
+### Built-in skills
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
 
 The Elastic AI Agent includes built-in [{{observability}} skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#observability-skills) designed to assist with infrastructure monitoring, application performance troubleshooting, and root cause analysis.
 
 By default it includes the [`observability.investigation`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill. You can [create a custom skill](/explore-analyze/ai-features/agent-builder/custom-skills.md) to extend the agent's capabilities for your specific use case. To learn more about the available skills, refer to [](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md).
+
+:::{dropdown} Built-in {{observability}} agent
+:applies_to: {"stack": "preview =9.3, removed =9.4"}
+
+Agent Builder features a built-in [{{observability}} agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) designed to assist with infrastructure monitoring and application performance troubleshooting.
+
+By default it includes some of the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [{{observability}} tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#observability-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
+:::
 
 ### Time range awareness
 
@@ -56,21 +66,28 @@ When you chat with the agent from a Synthetics monitor detail page, it automatic
 - Configured locations (public and private)
 - Tags
 
-### Alert context [observability-agent-alert-context]
+### Investigate an alert or the service map [observability-agent-investigation-requirements]
 ```{applies_to}
 stack: ga 9.6+
 serverless: ga
 ```
+
+The **Add to chat** and **Investigate map** actions require:
+
+- An Enterprise license on the {{stack}}, or the [Observability Complete feature tier](/solutions/observability/observability-serverless-feature-tiers.md#obs-subscription-features) on {{obs-serverless}}.
+- The [Agent Builder chat experience](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+- An available model through a supported inference endpoint or Generative AI connector, including preconfigured models. Refer to [Model configuration](/explore-analyze/ai-features/agent-builder/models.md).
+- [Permission to use Agent Builder](/explore-analyze/ai-features/agent-builder/permissions.md) and read the data you want to investigate.
+
+If an action is missing, check these requirements with your administrator.
+
+#### Alert context [observability-agent-alert-context]
 
 When you click **Add to chat** on an {{observability}} alert detail page, the new conversation includes an `observability.alert` attachment. The attachment identifies the selected alert so the agent can retrieve its full details, including the rule, status, reason, and related entities, using your permissions.
 
 The conversation automatically starts with `Investigate this alert`. Follow the steps to [start an AI investigation from an alert](/solutions/observability/incident-management/view-alerts.md#observability-alert-ai-investigation).
 
-### Service map context [observability-agent-service-map-context]
-```{applies_to}
-stack: ga 9.6+
-serverless: ga
-```
+#### Service map context [observability-agent-service-map-context]
 
 When you click **Investigate map** on the full **Service map** page, the new conversation includes a **Service map context** attachment (`observability.service-map-context`). It captures these settings from the view:
 
@@ -85,33 +102,6 @@ The attachment contains the view settings, not a snapshot of the map data. The a
 The service group is included as context but does not restrict the investigation's data queries to that group. The environment and KQL query filter service health information, but the topology can include connections from other environments.
 
 For the entry point and the investigation's findings, refer to [Investigate the service map with AI](/solutions/observability/apm/service-map.md#service-map-ai-investigation).
-
-:::
-
-:::{applies-item} stack: preview =9.3, removed =9.4
-
-Agent Builder features a built-in [{{observability}} agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) designed to assist with infrastructure monitoring and application performance troubleshooting.
-
-By default it includes some of the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [{{observability}} tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#observability-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
-
-:::
-
-::::
-
-## Requirements for alert and service map investigations [observability-agent-investigation-requirements]
-```{applies_to}
-stack: ga 9.6+
-serverless: ga
-```
-
-The **Add to chat** and **Investigate map** actions require:
-
-- An Enterprise license on the {{stack}}, or the [Observability Complete feature tier](/solutions/observability/observability-serverless-feature-tiers.md#obs-subscription-features) on {{obs-serverless}}.
-- The [Agent Builder chat experience](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
-- An available model through a supported inference endpoint or Generative AI connector, including preconfigured models. Refer to [Model configuration](/explore-analyze/ai-features/agent-builder/models.md).
-- [Permission to use Agent Builder](/explore-analyze/ai-features/agent-builder/permissions.md) and read the data you want to investigate.
-
-If an action is missing, check these requirements with your administrator.
 
 ## Use Agent Builder and Workflows together
 

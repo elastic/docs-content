@@ -70,7 +70,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Use {{agent-builder}} to investigate an alert and ask follow-up questions about the affected services. Before you start, check the [requirements for AI investigations](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements).
+Use {{agent-builder}} to investigate an alert and ask follow-up questions about the affected services. Before you start, refer to [Investigate an alert or the service map](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements) for requirements.
 
 1. In the **Alerts** table, click **Alert details** {icon}`maximize` for the alert you want to investigate.
 2. In the flyout, click **Alert details** to open the alert's detail page.
@@ -88,7 +88,7 @@ From the **Actions** menu {icon}`boxes_vertical` in the alert detail page header
 
 - **Add to case**: Attach the alert to a case for tracking and collaboration.
 - **View in Discover**: Explore the data associated with the alert.
-- **Inspect**: Examine the rule's query and results. Refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md).
+- **Inspect**: Examine the rule's query and results. Refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md) for details.
 
 Available actions depend on the rule type and your permissions. Case actions require permission to read cases and add comments to them.
 
