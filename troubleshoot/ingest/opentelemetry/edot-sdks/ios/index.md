@@ -22,6 +22,10 @@ This page provides guidance for resolving common problems when instrumenting iOS
 When troubleshooting the EDOT iOS agent, ensure your app is compatible with the agent's [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
 
 
+## Kibana visualizations
+
+If you're troubleshooting the Kibana visualizations for the iOS SDK, refer to [Troubleshooting iOS dashboards](integration-docs://reference/otel_ios_dashboards.md#troubleshooting).
+
 ## SDK fails to export data
 
 If your app is running but no telemetry reaches Elastic, the SDK might be failing to send data to the configured endpoint. For connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md). If telemetry data isn't appearing in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md) or [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
