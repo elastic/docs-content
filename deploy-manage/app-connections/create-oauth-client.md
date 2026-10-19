@@ -86,7 +86,7 @@ For local clients that need more than one redirect URI, click **Add local URL** 
 ::::
 
 ::::{step} Optional: Generate a client secret
-You can select **Generate confidential MCP client (optional)** to add a client secret for extra security. This is most useful when your MCP host can store a secret securely, such as a server-side service. 
+You can select **Generate confidential MCP client (optional)** to add a client secret for extra security. This is most useful when your MCP host can store a secret securely, such as a server-side service.
 
 The client secret is displayed after you create the client. The secret is only displayed once and can't be retrieved later.
 ::::
@@ -100,7 +100,7 @@ Click **Create client**. The **Copy server details for [client name]** dialog di
 
 You'll use these values to [connect an MCP host](connect-mcp-host.md).
 
-The client ID and MCP server URL can be retrieved at any time from the **MCP clients** page. The page lists every client in the project, regardless of which space you open it from, and each client's MCP server URL shows the space it works with.
+You can find the client ID and MCP server URL at any time on the **MCP clients** page. The page lists the clients you created in the project, regardless of which space you open it from, and each client's MCP server URL shows the space it works with.
 ::::
 
 :::::

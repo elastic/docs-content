@@ -1145,7 +1145,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 **Example:** Scope a chat across projects {applies_to}`serverless: ga`
 
-By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the {{cps-init}} scope from the default space. 
+By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the {{cps-init}} scope from the default space.
 
 Include a `project_routing` expression in the body to override the space's {{cps-init}} scope. The `_alias:my_search_project` expression in this example searches only the project with that alias. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 

@@ -54,9 +54,7 @@ OAuth tokens are accepted only by the {{agent-builder}} MCP server. They don't g
 
 ### Sharing a client
 
-A single OAuth client registration can be reused by any number of people. After you create a client, you can share its connection details so that others configure the same client in their own MCP hosts (AI agents). Each person authenticates and authorizes access separately, which creates a distinct app connection scoped to that person's own permissions. Revoking one person's connection leaves the others active, while revoking the client ends access for everyone.
-
-A shared client always connects to its own {{kib}} space.
+A single OAuth client registration can be reused by any number of people. After you create a client, you can share its connection details so that others configure the same client in their own MCP hosts (AI agents). Each person authenticates and authorizes access separately, which creates a distinct app connection scoped to that person's own permissions. Revoking one person's connection leaves the others active, while revoking the client ends access for everyone. A shared client always connects to its own {{kib}} space.
 
 ### Access tokens
 

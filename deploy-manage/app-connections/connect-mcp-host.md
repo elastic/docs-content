@@ -255,7 +255,7 @@ Some tools might require additional manual steps. For example, Claude Code CLI r
 2. The **Connect and authorize** page opens, showing which project the OAuth client is requesting access to. Click **Authorize** to grant access.
 3. The browser confirms the authorization is complete. Close the tab and return to your MCP host.
 
-A new app connection is created scoped to your account and to the project and space of the OAuth client. The connection name is auto-generated in the format `<client-name>#<word-pair>`. This connection is visible in both {{kib}} and the {{ecloud}} Console.
+Authorization creates a new app connection that's scoped to your account and to the OAuth client's project and space. The connection name is auto-generated in the format `<client-name>#<word-pair>`. This connection is visible in both {{kib}} and the {{ecloud}} Console.
 
 If you click **Deny** on the **Connect and authorize** page, then no connection is created. The host retries the flow the next time you use a tool, or you can restart the host to trigger a fresh attempt.
 
@@ -286,7 +286,7 @@ Confirm the `{MCP_SERVER_URL}` in your config matches exactly what {{kib}} displ
 
 **Authorization fails with "does not match the client's registered resource", or requests fail with a `400` `VALIDATION.OAUTH` error.**
 
-The MCP server URL in your host's config doesn't match the MCP server URL of the OAuth client. If you authorize with the mismatched URL, authorization fails with an `invalid_request` error stating that the resource doesn't match the client's registered resource. If the host reuses cached credentials from a client in another space, requests to the MCP server fail with the `400` error instead.
+The MCP server URL in your host's config doesn't match the MCP server URL of the OAuth client. If you authorize with the mismatched URL, authorization fails with an `invalid_request` error stating that the resource doesn't match the client's registered resource. If the host reuses tokens it obtained for a different MCP server URL, requests to the MCP server fail with the `400` error instead.
 
 Common causes:
 

@@ -167,7 +167,7 @@ Use [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles
 When configuring roles in the {{kib}} UI, {{agent-builder}} privileges appear under **Analytics**. In {{serverless-short}} {{es}} projects, they appear under **{{es}}**.
 :::
 
-{applies_to}`serverless: ga` On Serverless, roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The client acts with the permissions of the user who authorizes the connection, within the OAuth client's {{kib}} space. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md).
+{applies_to}`serverless: ga` On {{serverless-short}}, roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The client acts with the permissions of the user who authorizes the connection, within the OAuth client's {{kib}} space. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md).
 
 ### API keys for programmatic clients [#api-keys-for-clients]
 
