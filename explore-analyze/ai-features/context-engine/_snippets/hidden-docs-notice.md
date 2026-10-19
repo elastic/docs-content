@@ -1,4 +1,3 @@
-<!--
 :::{important}
 This page is currently hidden from the documentation navigation.
 
@@ -21,4 +20,3 @@ The following {{context-engine}} pages are live:
             - [Use {{context-engine}} with Claude Code](/explore-analyze/ai-features/context-engine/use-context-engine-with-claude-code.md)
     - [{{context-engine}} APIs](/explore-analyze/ai-features/context-engine/context-engine-api.md)
 :::
--->
