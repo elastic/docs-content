@@ -12,7 +12,7 @@ type: overview
 description: Use Kibana Query Language (KQL) to filter data in Discover, dashboards, and other Kibana apps. See example queries and find where to learn the full syntax.
 ---
 
-# {{kib}} Query Language (KQL) [kuery-query]
+# {{kib}} Query Language (KQL) overview [kuery-query]
 
 {{kib}} Query Language (KQL) is a text-based language for filtering data in {{kib}}. Enter a KQL query in the query bar of **Discover**, dashboards, and other {{kib}} apps to narrow the data down to the documents you care about. You can start with plain text and add field conditions when you need more precision.
 
