@@ -1127,5 +1127,5 @@ FROM kibana_sample_data_ecommerce
 
 - [Custom panels for {{kib}} dashboards](custom-panels.md)
 - [Dashboards and visualizations in {{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md)
-- [Use {{esql}} in the {{kib}} UI](/explore-analyze/query-filter/languages/esql-kibana.md)
+- [](/explore-analyze/query-filter/languages/esql-kibana.md)
 - [LiquidJS documentation](https://liquidjs.com/tutorials/intro-to-liquid.html)
