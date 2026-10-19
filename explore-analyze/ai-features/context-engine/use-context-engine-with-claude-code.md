@@ -30,7 +30,7 @@ You need:
 - An {{stack}} 9.6 deployment with an Enterprise license, or an {{serverless-full}} project.
 - Claude Code installed.
 - Node.js 22.12.0 or later to install the Elastic CLI.
-- `contextEngine:enabled` turned on in the {{kib}} space you want to query.
+- The `contextEngine:enabled` advanced setting turned on in the {{kib}} space you want to query.
 - An AI index that contains at least one Knowledge Indicator (KI).
 - The {{context-engine}} **Read** privilege in that space.
 - The {{es}} `read` and `view_index_metadata` privileges for the AI index's backing indices.
