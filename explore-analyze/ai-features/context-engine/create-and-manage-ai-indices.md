@@ -17,7 +17,7 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-An AI index groups the sources, automations, and Knowledge Indicators (KIs) that agents retrieve as context for a defined subject. Its name and description help agents decide when that context is relevant. Create and maintain AI indices interactively in {{kib}} or programmatically with the {{context-engine}} APIs. You can update or delete AI indices that you create. [Managed AI indices](concepts.md#managed-ai-indices) are read-only.
+An AI index groups the [sources](concepts.md#sources), [automations](concepts.md#automations-and-workflows), [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators), and [memories](concepts.md#memory) that agents retrieve as context for a defined subject. Its name and description help agents decide when that context is relevant. Create and maintain AI indices interactively in {{kib}} or programmatically with the {{context-engine}} APIs. You can update or delete AI indices that you create. [Managed AI indices](concepts.md#managed-ai-indices) are read-only.
 
 ## Before you begin
 
