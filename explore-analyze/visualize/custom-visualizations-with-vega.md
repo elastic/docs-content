@@ -1426,7 +1426,7 @@ The `url` object supports the following parameters:
 | `"%context%"` | When set to `true`, applies the dashboard filters to the query. |
 | `"%timefield%"` | The timestamp field to use for the dashboard time range. See [Apply the dashboard time range](#vega-esql-time-range). |
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
-| `"params"` | An array of named parameter objects to substitute into the query. |
+| `"params"` | An array of named parameter objects to substitute into the query. Use it to give a query parameter a fixed value, or a default value for a [dashboard variable control](#vega-esql-variable-controls). |
 
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
@@ -1531,6 +1531,46 @@ The following example creates a line chart of document counts over time. It wire
   }
 }
 ```
+
+
+#### Apply dashboard variable controls to {{esql}} data sources [vega-esql-variable-controls]
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
+
+To make a Vega visualization react to a dashboard control, reference the control's name in the query of one of its {{esql}} data sources. [Variable controls](add-variable-controls.md) bind interactive controls to variables in {{esql}} queries, so when the selection changes, the query runs again with the new value. If the spec has several {{esql}} data sources, each one uses only the controls that its own query references.
+
+To reference a control, use its name in the query, as you do in other {{esql}} visualizations. The name starts with `?` for a value, or with `??` for a field or function. To create a control, refer to [Add variable controls](add-variable-controls.md#create-variable-control).
+
+For example, a variable control named `?machineos` offers the operating systems in the sample web logs data. This spec shows the request count over time for the selected operating system:
+
+```json
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": {
+      "%type%": "esql",
+      "query": "FROM kibana_sample_data_logs | WHERE machine.os.keyword == ?machineos | STATS count = COUNT(*) BY bucket = DATE_TRUNC(2 hour, @timestamp) | SORT bucket", <1>
+      "params": [ { "machineos": "ios" } ] <2>
+    }
+  },
+  "mark": "line",
+  "encoding": {
+    "x": { "field": "bucket", "type": "temporal" },
+    "y": { "field": "count", "type": "quantitative" }
+  }
+}
+```
+
+1. `?machineos` is the name of the control.
+2. Optional. Sets a default value for the variable. Use its name without the `?` or `??` prefix.
+
+A `??` variable takes a default the same way. For example, `{ "field": "bytes" }` sets a default for `??field`.
+
+On a dashboard, a control whose name matches a `params` key replaces that value, and `params` still supplies the variables that no control sets. The **Visualize library** editor and **Canvas** don't have dashboard controls, so `params` is the only source of values there. If the query references a variable that `params` doesn't set, the visualization shows an error.
+
+A default in `params` lets the visualization render in the **Visualize library** editor. After you add the visualization to a dashboard, the control takes over.
 
 
 #### Access Elastic Map Service files [vega-esmfiles]

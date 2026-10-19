@@ -21,7 +21,7 @@ A useful Knowledge Indicator (KI) gives an agent accurate, relevant context with
 
 ## Before you begin
 
-You need an AI index that contains at least one generated KI, the **Read** privilege for the **Context Engine** feature, and the `read` and `view_index_metadata` index privileges on its backing index (`ai-index-*`). To refine an AI index's sources or automations, you need the **All** privilege for the **Context Engine** feature. To create an AI index and generate a KI, follow [Get started with {{context-engine}}](quickstart.md).
+You need an AI index that contains at least one generated KI, the **Read** privilege for the **Context Engine** feature, and the `read` and `view_index_metadata` index privileges on its backing index (`ai-index-*`). To refine an AI index's sources or automations, you need the **All** privilege for the **Context Engine** feature. To create an AI index and generate a KI, follow the [{{context-engine}} quickstart](quickstart.md).
 
 You can inspect and test KIs in a [managed AI index](concepts.md#managed-ai-indices), but you cannot refine its sources or automations. The owning Elastic integration maintains that configuration.
 
@@ -133,7 +133,7 @@ After you make the AI index available to an agent or application:
 3. Inspect the retrieval, source queries, and other tool calls made for each response.
 4. Confirm that the agent retrieves the relevant KI, answers from it when appropriate, and queries the source only when it needs additional detail.
 
-With {{agent-builder}}, inspect the reasoning and tool calls shown with each response. If trace collection is available, you can also [view the trace for the conversation round](/explore-analyze/ai-features/agent-builder/chat.md#view-traces). For another agent framework or an application, inspect the equivalent client logs, traces, and API requests. Refer to [Use {{context-engine}} with agents and applications](use-context-engine-with-agents.md) for the available integration routes.
+With {{agent-builder}}, inspect the reasoning and tool calls shown with each response. If trace collection is available, you can also [view the trace for the conversation round](/explore-analyze/ai-features/agent-builder/chat.md#view-traces). For another agent framework or an application, inspect the equivalent client logs, traces, and API requests. Refer to [Use an AI index](use-an-ai-index.md) for the available retrieval and integration routes.
 
 This test shows whether the KI reduces repeated source exploration. If the agent ignores the KI, retrieves an unrelated KI, or still performs broad source exploration, revise the AI index description, KI content and tags, source selection, or automation instructions.
 

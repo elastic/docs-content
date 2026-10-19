@@ -8,7 +8,7 @@ applies_to:
 type: how-to
 products:
   - id: kibana
-description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
+description: Save Discover sessions to reuse queries, filters, and views. Add sessions to dashboards, or use them to build visualizations.
 ---
 
 # Save a Discover session for reuse [save-open-search]
@@ -37,7 +37,7 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
     3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
 2. Select **Save**.
-3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
+3. To reload your search results in **Discover**, select **Open session** in the application menu, and select the saved Discover session.
 
 A Discover session stores the following elements for each of its tabs:
 
@@ -45,12 +45,49 @@ A Discover session stores the following elements for each of its tabs:
 - The query text and filters
 - The {{data-source}}
 - If you turned on **Store time with Discover session**, the selected time filter and refresh interval
-- The current view of **Discover**, including the document table layout, the chart, and any {{esql}} [variable controls](try-esql.md#add-variable-control)
+- The current view of **Discover**, including the document table layout, the chart, and any {{esql}} [variable controls](esql-variable-controls.md)
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The **JSON** view of the document table, including how each tree is displayed. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting in {{esql}} mode. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
+
+## Export Discover session results as CSV [export-discover-session-csv]
+
+To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file. To start, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**, then generate the report.
+
+Your CSV file might not contain every row of your results. The export stops at the first limit that it reaches, either a number of rows or a file size.
+
+::::{applies-switch}
+
+:::{applies-item} serverless: ga
+* **{{esql}} mode:** 10,000 rows or 250 MB, whichever comes first. The {{kib}} limit is 10,000 rows by default. The row limit is the lower value of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is also 10,000 by default. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so the {{kib}} limit of 10,000 rows applies instead. A `LIMIT` in your query can lower the row limit. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **Classic mode:** 100,000 rows or 250 MB, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
+
+You can't change the limits in either mode.
+:::
+
+:::{applies-item} stack: ga 9.3+
+* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The {{kib}} limit is 10,000 rows by default. The row limit is the lower value of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is also 10,000 by default. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so only the {{kib}} limit applies. A `LIMIT` in your query can lower the row limit. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **Classic mode:** 10,000 rows or 250 MB by default, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
+
+In self-managed and {{ech}} deployments, you can change the {{kib}} limits with the `xpack.reporting.csv.maxRows` and `xpack.reporting.csv.maxSizeBytes` settings. Higher limits can affect performance. In {{esql}} mode, you can also raise the {{es}} cap with the `esql.query.result_truncation_max_size` cluster setting. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
+:::
+
+:::{applies-item} stack: ga 9.0-9.2
+* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The row limit is the {{es}} cap on the rows that an {{esql}} query returns. A `LIMIT` in your query can lower it. In 9.2, for queries that start with `TS`, the {{es}} cap is 10,000,000 rows, so the file size limit usually comes first. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **Classic mode:** 250 MB by default. There is no row limit.
+
+In self-managed and {{ech}} deployments, you can change the file size limit with the `xpack.reporting.csv.maxSizeBytes` setting. In {{esql}} mode, you can change the row limit with the `esql.query.result_truncation_max_size` cluster setting. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
+:::
+
+::::
+
+If you need more rows than the limit allows, use filters to create several smaller reports, or query {{es}} directly.
+
+An export can also time out or return incomplete data for reasons unrelated to these limits, such as slow storage, an unavailable shard, or high network latency. For the common causes, refer to [CSV report limitations](../report-and-share.md#csv-limitations).
+
+To generate the same export automatically, from a script, {{watcher}}, or on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
 
 ## Export a Discover session as JSON [export-discover-session-json]
 ```{applies_to}
@@ -58,7 +95,7 @@ serverless: preview
 stack: preview 9.6+
 ```
 
-Export the session as JSON to inspect its definition, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**.
+Export the session as JSON to inspect its definition, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows, refer to [](#export-discover-session-csv).
 
 1. In **Discover**, in the application menu, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**.
 2. Set what the JSON includes:
@@ -116,14 +153,14 @@ You need permission to view and create dashboards.
 #### In {{esql}} mode [add-discover-visualization-esql]
 
 1. In Discover, run an {{esql}} query that produces a chart.
-2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** depending on the version you're using).
+2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 3. Enter a title for the panel, and optionally a description.
 4. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 5. Select **Save and go to dashboard**.
 
 :::{note}
 :applies_to: stack: ga =9.2
-In that version, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. To preserve them, follow [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) instead.
+In that version, if your {{esql}} query defines [variable controls](esql-variable-controls.md), they aren't added to the dashboard when using this method. To preserve them, follow [Import a Discover query along with its controls into a dashboard](esql-variable-controls.md#import-discover-query-with-controls) instead.
 :::
 
 #### In classic mode [add-discover-visualization-classic]
@@ -176,7 +213,7 @@ From Discover, save the entire Discover session, including all its tabs, columns
 
 ::::{applies-switch}
 
-:::{applies-item} {"stack": "ga 9.5", "serverless": "ga"}
+:::{applies-item} { serverless: ga, stack: ga 9.5+ }
 When you save a Discover session, it is saved to the library. The **Add to dashboard** option of the dialog lets you choose whether to also add it as a panel on a dashboard:
 
 - **Existing**: The session is also added as a panel on a dashboard you choose.
@@ -188,7 +225,7 @@ If the session has multiple tabs, you can [choose which tab the panel displays](
 Follow the steps under [Save a Discover session](#_save_a_discover_session), and select the **Add to dashboard** option that matches what you want.
 :::
 
-:::{applies-item} {"stack": "ga 9.0-9.4"}
+:::{applies-item} stack: ga 9.0-9.4
 Saving from Discover saves the session to the library only. To put it on a dashboard, follow the steps under [Save a Discover session](#_save_a_discover_session), then [add the session from the dashboard library](#add-discover-session-from-library).
 :::
 
@@ -202,7 +239,7 @@ This option requires that the session has already been [saved to the library](#_
 
 1. Go to **Dashboards**.
 2. Open or create the dashboard, then switch to **Edit** mode if necessary.
-3. Depending on the version you're using, select **Add from library**, or **Add** > **From library**.
+3. Depending on the version you're using, select **Add from library**, or **Add** → **From library**.
 4. From the **Types** dropdown, select **Discover session**.
 5. Select the Discover session that you want to add, then select **X** to close the list.
 
@@ -267,4 +304,5 @@ A Discover session panel displays one tab at a time. When the underlying session
 
 - [Explore fields and data with Discover](discover-get-started.md)
 - [Create a dashboard](../dashboards/create-dashboard.md)
-- [Using ES|QL](try-esql.md)
+- [Get started with {{esql}} in Discover](try-esql.md)
+- [Use Discover with {{esql}}](use-esql.md)
