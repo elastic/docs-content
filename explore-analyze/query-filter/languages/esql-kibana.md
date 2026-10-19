@@ -131,7 +131,7 @@ stack: preview 9.3+
 
 The {{esql}} editor includes a search bar that helps you build a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` or {icon}`magnify_sparkles` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). The search bar offers two modes:
 
-- **KQL**: filter your data with free text or [KQL](kql.md) syntax, as described in this section.
+- **KQL**: filter your data with free text or [KQL](elasticsearch://reference/query-languages/kql.md) syntax, as described in this section.
 - {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an AI agent generate it for you. Refer to [Generate a full query from natural language](#esql-kibana-quick-search-nl).
 
 The search bar closes automatically when you start typing in the editor or select outside of it.
@@ -140,7 +140,7 @@ To filter your data with KQL:
 
 1. Open the editor's search bar ({icon}`magnify` or {icon}`magnify_sparkles`).
 2. Select the data sources to search.
-3. Type the text you want to search for as free text or using [KQL](kql.md) syntax.
+3. Type the text you want to search for as free text or using [KQL](elasticsearch://reference/query-languages/kql.md) syntax.
 4. Submit your search by pressing {kbd}`enter`. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. The query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
 5. Refine your query with any other {{esql}} command or function that you need.
 

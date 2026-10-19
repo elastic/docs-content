@@ -1,5 +1,5 @@
 ---
-meta_title: KQL - Kibana
+meta_title: Kibana Query Language (KQL) - Kibana
 navigation_title: KQL
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kuery-query.html
@@ -30,7 +30,7 @@ KQL only filters data. It does not aggregate, transform, or sort data. For those
 
 A KQL condition is a field name, an operator, and a value, such as `http.request.method: GET`. If you leave out the field name, KQL searches all fields. As you type in the query bar, {{kib}} suggests fields, operators, and values.
 
-KQL is the default language in the query bar of dashboards and of **Discover** in classic mode. In **Discover**, the query bar also accepts the [Lucene query language](lucene-query-syntax.md), which has a different feature set.
+By default, the query bar of dashboards and of **Discover** in classic mode uses KQL. In **Discover**, you can also switch the query bar to the [Lucene query language](lucene-query-syntax.md), which has a different feature set.
 
 ## Combine free text with field-based search [semi-structured-search]
 
