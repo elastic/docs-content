@@ -38,7 +38,7 @@ Creating an AI index does not ingest source data or generate knowledge. Sources 
 
 ### Managed AI indices
 
-A managed AI index is a built-in AI index supplied by an Elastic integration. The owning Elastic feature defines its configuration and supplies its [KIs](#knowledge-indicators), giving [agents](#agents-and-applications) access to product-provided context without requiring you to configure its [sources](#sources) or [automations](#automations-and-workflows).
+A managed AI index is a built-in AI index supplied and maintained by an Elastic feature. That feature defines its configuration and supplies its [KIs](#knowledge-indicators), giving [agents](#agents-and-applications) access to product-provided context without requiring you to configure its [sources](#sources) or [automations](#automations-and-workflows).
 
 Managed AI indices have a **Managed** badge in **Context**. Agents can discover and query them in the same way as user-created AI indices, subject to the same access checks. You can open a managed AI index and inspect its KIs, but you cannot edit its description, sources, automations, or [agent traces](#agent-traces), or delete it. Managed AI indices are available in every space where {{context-engine}} is turned on. To build context for your own use case, create a user-created AI index instead.
 
@@ -70,7 +70,7 @@ A Knowledge Indicator (KI) is a document that records reusable context derived f
 
 Unlike a cached answer to one request, a KI can support different questions and multiple agents. When evaluation reveals a gap, improve the source or automation and regenerate the KI so the correction is available to future retrievals.
 
-The [generation strategy](build-and-maintain-ai-index.md#select-a-generation-strategy) determines how an automation divides source data into KIs and how much information each KI contains. To examine a generated KI and evaluate its usefulness, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
+The [generation strategy](build-and-maintain-ai-index.md#select-a-generation-strategy) determines how an automation divides source data into KIs and how much information each KI contains. To find, inspect, create, update, or delete KIs, refer to [Inspect and manage Knowledge Indicators](inspect-and-manage-knowledge-indicators.md). To evaluate whether generated KIs meet an agent's needs, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
 ## Memory
 
