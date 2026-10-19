@@ -359,8 +359,30 @@ For [custom tools](tools/custom-tools.md), you decide when the agent asks: set *
 What the prompt shows depends on the tool:
 
 * Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The built-in [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) asks for confirmation before each call to an {{es}} or {{kib}} API operation that can change or delete existing data, unless the agent [auto-approves the operation](custom-agents.md#auto-approve-api-operations-optional). The prompt shows the HTTP method, the path, and whether the call goes to {{es}} or {{kib}}, but not the request body. Select **Approve** to proceed or **Deny** to cancel. Approving one call doesn't approve later ones.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
 * Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
+
+##### Confirm an API operation [#confirm-an-api-operation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The built-in [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) asks for confirmation before each call to an {{es}} or {{kib}} API operation that can change or delete existing data, unless the agent [auto-approves the operation](custom-agents.md#auto-approve-api-operations-optional).
+
+Whether you see a prompt depends on the operation, not its HTTP method:
+
+* Most write and delete operations require confirmation, including bulk indexing, document updates, and index deletion.
+* Read operations, including searches, run without a prompt.
+* Some operations that only create something new also run without a prompt, including creating an index or an API key.
+
+The prompt shows the HTTP method, path, and whether the call goes to {{es}} or {{kib}}. It doesn't show the request body.
+
+Click **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
+
+A parent agent can also ask you to approve operations before starting a sub-agent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+
+##### Other confirmation prompts
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
