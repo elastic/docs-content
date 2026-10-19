@@ -59,7 +59,7 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [Share and export dashboards](/explore-analyze/dashboards/sharing.md).
+Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
@@ -134,6 +134,8 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Network latency between nodes is high
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
+
+In Discover, a CSV report also stops at a row limit, and the file is truncated at a size limit. To find both limits for your deployment and how they work in each query mode, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
 
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
