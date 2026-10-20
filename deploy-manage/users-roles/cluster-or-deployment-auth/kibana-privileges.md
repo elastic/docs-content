@@ -224,6 +224,11 @@ These privileges control specific actions on workflows. Selecting **All** includ
 | **Update managed workflows** {applies_to}`stack: ga 9.5+` | Edit the workflows that Elastic provides. |
 :::
 
+:::{warning}
+:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+The **Update** privilege lets a user change what a bound service account does. Adding, changing, or removing a binding, and editing or deleting a bound workflow, also requires the `manage_security` cluster privilege. Grant workflow edit access only to users you trust to use the account's privileges. For account assignment instructions and required privileges, refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
+:::
+
 ## Privileges in the Management group [kibana-privileges-management]
 
 Each of the following privileges controls access to a different feature.

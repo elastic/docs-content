@@ -1,0 +1,88 @@
+---
+navigation_title: Run as a service account
+applies_to:
+  stack: ga 9.6+
+  serverless: unavailable
+description: Assign a user-managed service account to a workflow, verify its execution identity, and troubleshoot permission errors.
+products:
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+---
+
+# Run a workflow as a service account [run-workflow-as-service-account]
+
+Starting with {{stack}} 9.6, you can run a workflow as a [user-managed service account](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#user-managed-service-accounts).
+
+Each run uses the account's roles, regardless of who starts or last edits the workflow. This is useful for shared workflows: their identity remains stable even if the person who created them leaves your organization. You can also give the account only the privileges the workflow needs, even if the people who manage it have broader access.
+
+This guide shows you how to assign a service account to a workflow and verify which identity its runs use.
+
+## Before you begin [run-workflow-as-service-account-prerequisites]
+
+- You need the **Update** [Workflows privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) to assign an account. To run the workflow and review its execution, you also need **Execute** and **Read Workflow Execution**.
+- You need the `manage_security` cluster privilege to add, change, or remove the workflow's service account assignment. Editing or deleting a workflow assigned to a service account also requires this privilege, in addition to the corresponding Workflows privilege.
+- An administrator must [create the account in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) and assign the roles required by its steps.
+
+% Release check: the permissions documented here follow main at 0048598a3826081f299198d2e87e455047f71c41 (workflow_service_account_binding.ts and workflow_crud_service.ts). Confirm with Workflows whether 9.6 changes to the binding-only manage_security check described in https://github.com/elastic/docs-content-internal/issues/1733#issuecomment-6157381771.
+
+:::{warning}
+Anyone who can edit a workflow can change what its assigned service account does. Grant workflow edit privileges only to users you trust to use the account's privileges.
+:::
+
+## Assign a service account [assign-workflow-service-account]
+
+The `settings.run_as` field specifies the account that runs the workflow. Set it to the account's full principal, such as `kibana/incident-response`.
+
+:::{note}
+Workflows can run only as accounts created in {{kib}}, where the account's credential is securely stored. Accounts created directly through the {{es}} API can't be used for workflow execution, even if they use the `kibana` namespace.
+:::
+
+1. Open the workflow in the {{kib}} workflow editor.
+2. In the `settings` block, add `run_as`. Select an account from the picker or enter its principal:
+
+    ```yaml
+    settings:
+      run_as: kibana/incident-response
+    ```
+
+    If you have the required privileges, select **Create account** to create and assign an account without leaving the workflow editor.
+
+3. Save the workflow.
+
+The saved assignment applies to manual, scheduled, alert, and event-driven runs. Users who have permission to run the workflow don't need `manage_security` to start it.
+
+% TBD: Verify the final labels and interaction against https://github.com/elastic/kibana/pull/296889 before publication.
+
+## Verify the execution identity [verify-workflow-execution-identity]
+
+Run the saved workflow, then open its execution details. The overview identifies both identities:
+
+- **Triggered by** is the user who initiated the execution or whose action caused it.
+- **Run as** is the service account whose privileges authorized the workflow's actions.
+
+Steps that call {{es}} or {{kib}} (`elasticsearch.*` and `kibana.*`) use the service account's privileges. Connectors use their own stored credentials to authenticate to external systems. For details about credentials and child workflows, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
+
+% TBD: Confirm agent credential propagation with Workflows and Agent Builder after https://github.com/elastic/kibana/issues/293019 is resolved before adding a claim about agents invoked by a bound workflow.
+
+## Test the workflow [test-bound-workflow]
+
+Save your changes before you [test the complete workflow](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input). The test uses the saved definition and the service account's privileges. You can't test individual steps or unsaved definitions when `run_as` is set.
+
+## Handle permission and identity failures [handle-workflow-service-account-failures]
+
+A workflow assigned to a service account never falls back to the triggering user's privileges. If a run fails, check the account and its roles:
+
+- If the account is deactivated or deleted, the next run fails.
+- If the account lacks a privilege required by a step, that step fails with a privileges error.
+- If the account was deleted and recreated with the same principal, the old assignment no longer matches it. Remove the assignment, save the workflow, then assign the recreated account.
+
+[Update the account or its roles](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md#disable-service-account), or assign a different account, then run the workflow again.
+
+## Remove the assignment [remove-workflow-service-account]
+
+Remove `run_as` from the workflow's `settings` block and save the workflow. Future runs return to the default [workflow authorization model](/explore-analyze/workflows/authorization.md), in which the trigger type determines whose privileges are used.
+
+Changing or removing the assignment doesn't switch the identity of a run already in progress. That run fails if it needs to renew its credential or resumes after a pause.

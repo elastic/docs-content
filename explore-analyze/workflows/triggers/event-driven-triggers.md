@@ -23,6 +23,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 - **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
+For details about which identity authorizes an event-driven run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 
 :::{include} ../_snippets/schema-location-legend.md
 :::

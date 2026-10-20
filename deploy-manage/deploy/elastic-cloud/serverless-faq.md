@@ -32,8 +32,8 @@ User-initiated data recovery is anticipated in a future release. You can follow 
 
 ## Security, compliance, and access
 
-**Q: How can I create {{serverless-full}} service accounts?**  
-A: Create API keys for service accounts in your {{serverless-short}} projects. You can create them in {{kib}}, with the {{es}} API, or as code with Terraform. Refer to [](/deploy-manage/api-keys/serverless-project-api-keys.md) for details.
+**Q: How can a non-human application authenticate to {{serverless-full}}?**<br>
+A: User-managed service accounts aren't available on {{serverless-short}}. Create a project API key instead. You can create project API keys in {{kib}}, with the {{es}} API, or as code with Terraform. Refer to [](/deploy-manage/api-keys/serverless-project-api-keys.md) for details.
 
 **Q: Can I configure {{es}} authentication realms (for example, native realm) in {{serverless-short}} projects?**  
 A: No. {{serverless-short}} uses a different authentication model and does not support [{{es}} authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md). Project-level access is handled through [Serverless project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md), and user authentication is managed at the [{{ecloud}} organization level](/deploy-manage/users-roles/cloud-organization.md) (including SAML SSO).
