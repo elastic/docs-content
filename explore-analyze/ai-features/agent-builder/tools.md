@@ -126,14 +126,14 @@ On the Tools page, open the **Manage MCP** dropdown to access:
 
 ::::{applies-item} { stack: ga 9.2-9.3 }
 
-The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
+To copy the MCP server URL, open the **MCP Server** dropdown on the Tools page ({{stack}} 9.2) or the **Manage MCP** dropdown ({{stack}} 9.3), then select **Copy MCP Server URL**.
 
 ::::
 
 :::::
 
 :::{important}
-There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.
+There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.0.
 :::
 
 For detailed MCP server configuration, refer to [MCP server](mcp-server.md).

@@ -289,7 +289,7 @@ Confirm the `{MCP_SERVER_URL}` in your config matches exactly what {{kib}} displ
 The MCP server URL in your host's config doesn't match the MCP server URL of the OAuth client. The error you see depends on when the mismatch is detected:
 
 - **During authorization**: Authorization fails with an `invalid_request` error stating that the resource doesn't match the client's registered resource.
-- **During requests**: If the host reuses tokens it obtained for a different MCP server URL, requests to the MCP server fail with the `400` error.
+- **During requests**: If the host reuses tokens it obtained for a different MCP server URL, or doesn't send the MCP server URL during authorization, requests to the MCP server fail with the `400` error.
 
 Common causes:
 
