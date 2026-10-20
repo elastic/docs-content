@@ -1,0 +1,34 @@
+---
+description: Use high-contrast mode in Kibana.
+applies_to:
+  stack: ga 9.1
+  serverless: ga
+products:
+  - id: kibana
+---
+
+# Use high-contrast mode in Kibana
+
+You can change the interface contrast mode of Kibana to improve visibility and readability in low-light conditions.
+
+1. Open the user menu from the header.
+2. Select **Appearance**.
+   
+   :::{note}
+   If you don't sign in with your {{ecloud}} account, for example you use a username and password or a self-managed deployment, this option is on your profile page. To access it, select **Edit profile** from the header's user menu.
+   :::
+
+3. Choose an interface contrast mode:
+
+    - **System**: Synchronizes Kibana's contrast mode with your system settings.
+    - **Normal**: Normal contrast mode.
+    - **High**: The high-contrast color mode of Kibana.
+
+4. Select **Save changes**.
+5. Refresh the page to apply the selected contrast mode.
+
+## Related pages
+
+- [](/explore-analyze/find-and-organize/personal-preferences.md)
+- [Use dark mode in {{kib}}](dark-mode.md)
+- [Change the interface language in {{kib}}](change-interface-language.md)

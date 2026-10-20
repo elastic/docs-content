@@ -16,7 +16,7 @@ products:
 
 Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [visualizations](/explore-analyze/visualize.md) directly in the conversation. Send a message like "create a dashboard to monitor host CPU and memory usage" and the agent builds a dashboard with {{esql}}-powered visualization panels.
 
-This functionality is powered by the built-in [`dashboard-management`](builtin-skills-reference.md#agent-builder-dashboard-management-skill) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, which access core or inline tools to create and edit dashboards and visualizations.
+This functionality is powered by the built-in [`dashboards`](builtin-skills-reference.md#agent-builder-dashboards-skill) (`dashboard-management` in 9.4 and 9.5) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, which access core or inline tools to create and edit dashboards and visualizations.
 
 :::{tip}
 For best results with {{esql}}-heavy dashboard generation, use a higher-tier model such as Claude 4.6 Opus. Current testing shows that Claude 4.6 Sonnet may require more corrections for generated dashboard queries.
@@ -89,6 +89,8 @@ Individual visualizations display inline in the conversation when you ask for a 
 ::::
 :::::
 
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To see the matching documents instead of a chart, turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) and ask the agent to show them in a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
+
 ## Manage dashboards
 
 Agent-created dashboards start as in-memory attachments in the conversation. You can save them as {{kib}} objects when you are ready, and pull in changes if the saved dashboard is edited outside the conversation.
@@ -146,5 +148,6 @@ Agents can create and manage the following panel types:
 
 - [Dashboards](/explore-analyze/dashboards.md)
 - [Chat with {{agent-builder}} agents](chat.md)
+- [Discover tables in chat](agent-builder-discover-tables.md)
 - [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
 - [Agent Builder traces overview dashboard](agent-traces-dashboard.md): a prebuilt, managed dashboard for monitoring agent activity from trace data
