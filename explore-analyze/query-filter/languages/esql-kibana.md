@@ -111,13 +111,12 @@ After running a query, the editor's footer displays statistics about the last ru
 
 #### Keyboard shortcuts [esql-kibana-keyboard-shortcuts]
 
-| Mac                | Windows/Linux       | Description                 |
-|--------------------|---------------------|-----------------------------|
-| {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
-| {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment the current line or selected lines |
-| {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` |
-| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-comment) {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` |
-| {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open the [search bar](#esql-kibana-quick-search) {applies_to}`stack: preview 9.3-9.5` {applies_to}`serverless: unavailable` |
+| Mac                | Windows/Linux       | Description                 | Shortcut availability |
+|--------------------|---------------------|-----------------------------|-----------------------|
+| {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |                       |
+| {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment the current line or selected lines |                       |
+| {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` |
+| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-comment) | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` |
 
 :::{tip}
 You can find the list of shortcuts directly from the editor. Look for the ![keyboard](../../images/keyboard.svg "keyboard =2%") icon.
