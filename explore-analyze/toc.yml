@@ -209,6 +209,7 @@ toc:
             children:
               - file: ai-features/agent-builder/standalone-and-flyout-modes.md
               - file: ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
+              - file: ai-features/agent-builder/agent-builder-discover-tables.md
           - file: ai-features/agent-builder/agent-builder-agents.md
             children:
             - file: ai-features/agent-builder/custom-agents.md
@@ -273,10 +274,12 @@ toc:
               - hidden: ai-features/context-engine/create-and-manage-ai-indices.md
               - hidden: ai-features/context-engine/add-and-manage-sources.md
               - hidden: ai-features/context-engine/create-and-manage-automations.md
+              - hidden: ai-features/context-engine/inspect-and-manage-knowledge-indicators.md
               - hidden: ai-features/context-engine/evaluate-and-improve-knowledge-indicators.md
           - hidden: ai-features/context-engine/use-an-ai-index.md
             children:
               - hidden: ai-features/context-engine/retrieve-context-from-ai-index.md
+              - hidden: ai-features/context-engine/save-and-retrieve-memories.md
               - hidden: ai-features/context-engine/use-context-engine-with-agents.md
                 children:
                   - hidden: ai-features/context-engine/use-context-engine-with-agent-builder.md
@@ -324,6 +327,7 @@ toc:
           - file: dashboards/create-dashboard.md
           - file: dashboards/create-dashboards-programmatically.md
           - file: dashboards/create-dashboards-using-ai.md
+          - file: dashboards/enhance-dashboard-with-ai.md
           - file: dashboards/open-dashboard.md
           - file: dashboards/drilldowns.md
             children:
