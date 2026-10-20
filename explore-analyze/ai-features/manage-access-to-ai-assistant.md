@@ -106,11 +106,40 @@ For per-response token counts and billing details specific to {{agent-builder}},
 
 ### Give agents access to Elastic documentation
 
-To let agents answer questions about Elastic products from the official Elastic documentation, install that documentation. You need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md) to do this. In **GenAI Settings**, go to the **Documentation** section and select **Install** next to **Elastic documentation**. The install takes a few minutes.
+Agents can answer questions about Elastic products from the official Elastic documentation after it's installed in {{kib}}. Depending on your version and setup, {{kib}} installs it for you or you install it yourself. To see whether it's installed, go to the **Documentation** section in **GenAI Settings**.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available and **Use AI features** is turned on in **Feature Settings**, you don't need to install the documentation yourself. Each time {{kib}} starts, it checks both conditions. When they're met, it installs Elastic documentation, or applies available updates if the documentation is already installed. To check, go to the **Documentation** section in **GenAI Settings**. It shows **Installed** when the documentation is ready. If either condition isn't met, {{kib}} skips the automatic install and you install the documentation yourself.
+#### Install Elastic documentation automatically
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} can also install Security labs content for you. This content gives agents access to [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence. In serverless {{elastic-sec}} projects, {{kib}} installs it when it starts, under the same two conditions. In any {{elastic-sec}} deployment, it also installs the content when a user with the **Agent Builder: All** privilege opens {{elastic-sec}} while **Use AI features** is turned on and the content isn't installed yet. In other cases, install **Security labs** from the **Documentation** section.
+{{kib}} installs Elastic documentation for you when both of these conditions are met:
+
+- [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available.
+- **Use AI features** is turned on in **Feature Settings**.
+
+{{kib}} checks the conditions each time it starts. When they're met, it installs the documentation, or applies available updates if it's already installed. When the documentation is ready, **Elastic documentation** shows **Installed** in the **Documentation** section of **GenAI Settings**.
+
+If either condition isn't met, {{kib}} skips the automatic install. In that case, install the documentation manually.
+
+#### Install Elastic documentation manually
+
+To install the documentation yourself, you need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
+
+1. Go to **GenAI Settings**.
+2. In the **Documentation** section, select **Install** next to **Elastic documentation**.
+
+The install takes a few minutes. When it finishes, **Elastic documentation** shows **Installed**.
+
+#### Install Security labs content
+
+Security labs content gives agents access to [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence. To install it, follow the same steps as for Elastic documentation, and select **Install** next to **Security labs** instead.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} can also install Security labs content for you:
+
+- In serverless {{elastic-sec}} projects, {{kib}} installs it when it starts, under the same two conditions as for Elastic documentation.
+- In any {{elastic-sec}} deployment, {{kib}} installs it when a user with the **Agent Builder: All** privilege opens {{elastic-sec}}, **Use AI features** is turned on, and the content isn't installed yet.
 
 ## Feature settings
 ```{applies_to}
