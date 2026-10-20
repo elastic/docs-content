@@ -47,7 +47,7 @@ The JSON methods are recommended because they rely on the [Dashboards API](creat
 |---|---|---|
 | The selected file is too large. The maximum size is 1 MB. | The file is larger than 1 MB. | Select a smaller file. **Import** stays unavailable. |
 | The selected file does not contain valid JSON. | The file isn't valid JSON. | Select a different file. **Import** stays unavailable. |
-| The file could not be imported. | {{kib}} can't validate the file, for example because it isn't a full dashboard definition. | Select a different file. **Import** stays unavailable. |
+| The file could not be imported. | {{kib}} can't validate the file, for example because it isn't a full dashboard definition. | Select a different file. Make sure the file comes from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md). **Import** stays unavailable. |
 | Unsupported properties were removed. | The file includes panel types or properties that the [Dashboards API](create-dashboards-programmatically.md) doesn't support. {{kib}} leaves them out of the imported dashboard. | Select **Show details** to see what {{kib}} removed. **Import** stays available. |
 | Review import warnings. | The file references related items, such as data views, tags, or library visualizations. {{kib}} imports only the dashboard. This warning also lists any removed properties. | Select **Show details** to see each item's type and ID. Make sure these items exist in the space or cluster where you import. **Import** stays available. |
 
