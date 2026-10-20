@@ -3,7 +3,7 @@ navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
-description: Overview of the ES|QL editor in Kibana, including query structure, editor tools, AI assistance, time filtering, variables, and query management.
+description: Learn how to use the ES|QL editor and its syntax help, KQL search, and AI-assisted capabilities to write ES|QL queries across Kibana, including Discover, dashboards, and alerting rules.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,11 +11,13 @@ products:
   - id: elasticsearch
 ---
 
-# Use ES|QL in the {{kib}} UI [esql-kibana]
+# Use {{esql}} in {{kib}} [esql-kibana]
 
-The {{esql}} editor lets you write, run, and manage [{{esql}}](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) queries across {{kib}}. Use it to query and aggregate your data, create visualizations, and set up alerts.
+Use the {{esql}} editor to query and aggregate your data across {{kib}}, including in [Discover](/explore-analyze/discover/use-esql.md), on [dashboards](/explore-analyze/visualize/esorql.md), and in [{{es}} query rules](/explore-analyze/alerting/alerts/rule-type-es-query.md) for alerting. The editor works in many areas, and some tools are available only in **Discover**. To see every area and the editor it uses, refer to [](#esql-kibana-areas).
 
-Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+As you write a query, the editor offers inline suggestions and syntax help, so you don't have to leave {{kib}} to check the syntax. You can also filter by time, add variables that make a query interactive, and reuse your recent and starred queries. This page describes these capabilities.
+
+To look up commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
@@ -28,7 +30,7 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 
 | Area | What you can do | Editing experience |
 |------|-----------------|--------------------|
-| [Discover](/explore-analyze/discover/try-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
+| [Discover](/explore-analyze/discover/use-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
 | [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
 | [{{alerting-v2-system-cap}}](/explore-analyze/alerting/system-overview.md) | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |

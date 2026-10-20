@@ -361,7 +361,9 @@ This allows you to pivot quickly between different explorations without losing y
 #### Manage Discover tabs
 
 You can open new tabs or duplicate existing ones to compare different queries:
-- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
+- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs. What the new tab does when it opens depends on your version:
+  - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The tab starts empty. It doesn't run any search until you enter a query and run it.
+  - {applies_to}`stack: preview 9.2-9.5` The tab opens on the same data source as the tab you came from and, by default, runs a search right away.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
 A session supports a maximum of 25 open tabs. When the limit is reached, the {icon}`plus` icon and **Duplicate** are disabled. You can't add more tabs until you close some.
@@ -471,6 +473,8 @@ To start an analysis:
 4. Review the agent's findings, the inline visualization, and the suggested drill-down queries.
 
 You can also ask the agent for follow-up analyses, including correlations between fields, time-over-time comparisons, and field statistics for specific columns.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To see the current documents without leaving the conversation, ask the agent to show them in an interactive **Discover** table. Refer to [Discover tables in chat](../ai-features/agent-builder/agent-builder-discover-tables.md).
 
 ### Context-aware deep analysis
 
