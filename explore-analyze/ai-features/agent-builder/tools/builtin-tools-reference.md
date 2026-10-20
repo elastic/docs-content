@@ -453,9 +453,13 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-HTTP API tools let agents look up and call {{es}} and {{kib}} HTTP APIs from a built-in set of supported API operations. Every agent has these tools automatically, and they don't appear on the **Tools** page. You can't assign them to an agent or remove them from one, and turning off [Elastic capabilities](../agent-builder-agents.md#elastic-capabilities) doesn't remove them. Their IDs have no prefix such as `platform.core`. You see these tools when you [inspect an agent's tool calls](../chat.md#inspect-tool-calls-and-reasoning) and when `execute_api` asks you to confirm a change.
+HTTP API tools let agents look up and call {{es}} and {{kib}} HTTP APIs from a built-in set of supported API operations.
 
-The tools send requests with the privileges of the current user or API key, so an agent can call only the APIs that the user or API key is allowed to call. {{kib}} API calls run in the current space. To learn more, refer to [Permissions and access control](../permissions.md#how-permissions-work).
+Every agent has these tools automatically. You can't assign or remove them, and turning off [Elastic capabilities](../agent-builder-agents.md#elastic-capabilities) doesn't remove them.
+
+These tools don't appear on the **Tools** page. You see them when you [inspect an agent's tool calls](../chat.md#inspect-tool-calls-and-reasoning) and when `execute_api` asks you to confirm a change. Their IDs have no prefix such as `platform.core`.
+
+API calls use the privileges of the current user or API key. {{kib}} API calls run in the current space. For details, refer to [HTTP API tool privileges](../permissions.md#http-api-tool-privileges).
 
 `describe_api` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   Returns the specification of an API operation, given the operation's identifier and whether it's an {{es}} or {{kib}} API. The specification includes the HTTP method, the path, a description, the parameter schema, and whether the operation can change or delete existing data, which determines whether `execute_api` asks for confirmation before calling it. The tool summarizes large nested types, and the agent can expand them with `describe_api_type`.
