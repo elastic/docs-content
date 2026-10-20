@@ -243,7 +243,7 @@ To share the session, refer to [Share your Discover session](discover-get-starte
 - [Create lookup indices from Discover queries](create-lookup-indices.md): Add fields from a lookup index with `LOOKUP JOIN`.
 - [Detect change points in Discover](detect-change-points.md): Find a spike, dip, or shift in a time series.
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Look up commands, functions, and operators beyond this tutorial.
-- [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md): Use editor tools, time parameters, AI assistance, and Fast mode.
+- [](../query-filter/languages/esql-kibana.md): Use editor tools, time parameters, AI assistance, and Fast mode.
 - [Learn data exploration and visualization with Kibana](../kibana-data-exploration-learning-tutorial.md): Follow a longer path from Discover into dashboards.
 
 ## Related pages
