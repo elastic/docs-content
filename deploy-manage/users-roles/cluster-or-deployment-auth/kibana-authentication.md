@@ -419,7 +419,7 @@ With this configuration, you can send requests to {{kib}} with the `Authorizatio
 
 :::{note}
 :applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-You can authenticate programmatic requests as a user-managed service account. Refer to [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md) to create a token and use it with the `Bearer` scheme.
+For programmatic access to {{kib}} APIs, you can authenticate as a user-managed service account using a service token with the `Bearer` scheme. Service accounts can't log in to the {{kib}} UI. Refer to [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md) for instructions.
 :::
 
 
