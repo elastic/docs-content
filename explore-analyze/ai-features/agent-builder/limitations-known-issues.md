@@ -44,6 +44,18 @@ The subagent run itself does not fail. The tool call returns an error result and
 
 A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) follows the same rule in subagent runs and in [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent): it declines any {{es}} or {{kib}} API operation that requires [confirmation](chat.md#confirm-an-api-operation), unless the operation is approved in advance. You can approve operations in advance in these ways:
+
+* **For every run of an agent:** Add the operations to the agent's [auto-approved APIs](custom-agents.md#auto-approve-api-operations-optional). This approval is stored with the agent, so it applies to every run, including runs from workflows, and to the subagents the agent starts.
+* **For one workflow step:** List the operations under `approvals.auto_approved_apis` in the `ai.agent` step. This approval applies only to that step and to the subagents it starts, in addition to the agent's auto-approved APIs.
+* **For one subagent run:** Before starting a subagent, a parent agent can ask you to approve operations for it. The request can name individual operations, a group such as all `indices` operations, or every such operation on {{es}} or {{kib}}. The outcome depends on your response and any existing auto-approvals:
+
+  * If you approve, the subagent can call those operations without another prompt.
+  * If you deny, the subagent runs without access to them.
+  * If all requested operations are already auto-approved, you aren't asked.
+
+  A subagent can also call any operation that the parent agent or the subagent itself auto-approves.
+
 This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
 ### {{esql}} limitations

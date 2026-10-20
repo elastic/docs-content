@@ -38,6 +38,8 @@ You can also have a look at our [autoscaling example](#ec-autoscaling-example), 
 Autoscaling is enabled for the Machine Learning tier by default for new deployments.
 ::::
 
+$$$ec-autoscaling-behavior$$$
+
 Currently, autoscaling behavior is as follows:
 
 * **Data tiers**
