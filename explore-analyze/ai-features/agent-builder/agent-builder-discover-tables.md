@@ -49,6 +49,8 @@ The table works like a compact version of the **Discover** document table:
 - **Columns**: Select **Columns** in the table toolbar to change which columns appear. Your column changes carry over when you open the table in **Discover** or save it to a dashboard.
 - **Horizontal scrolling**: Scroll sideways to see more columns in the narrow chat area.
 
+The following example shows a **Discover** table of error and warning logs in a conversation:
+
 :::{image} images/agent-builder-discover-table-inline.png
 :screenshot:
 :alt: Discover table of error and warning logs in an Agent Builder conversation, with the Open in Discover button, a Last 1 hour time picker, the Columns selector, and a Summary column showing service and host badges
