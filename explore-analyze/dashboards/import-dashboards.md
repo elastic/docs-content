@@ -14,11 +14,11 @@ products:
 
 If you exported a dashboard from another {{product.kibana}} space, instance, deployment, or project, you can import it into your own in one of these ways:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **From the Dashboards app**: Import a JSON file from [Export JSON](sharing.md#export-dashboard-json) or from the Dashboards API.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` **With the Dashboards API**: Send a dashboard JSON definition to the [Dashboards API](create-dashboards-programmatically.md). Get the definition from Export JSON or from the Dashboards API.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **From the Dashboards app**: Import a JSON file from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` **With the Dashboards API**: Send a dashboard JSON definition to the [Dashboards API](create-dashboards-programmatically.md). Get the definition from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md).
 - **From Saved Objects**: Import an NDJSON file from a previous [saved objects export](../find-and-organize/saved-objects.md#saved-objects-export). Use the **Saved Objects** page or the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects).
 
-The JSON methods are recommended because they rely on the Dashboards API.
+The JSON methods are recommended because they rely on the [Dashboards API](create-dashboards-programmatically.md).
 
 ::::::{tab-set}
 
@@ -28,7 +28,7 @@ The JSON methods are recommended because they rely on the Dashboards API.
 
 **Prerequisites**
 
-- A dashboard JSON file of 1 MB or less, from [Export JSON](sharing.md#export-dashboard-json) or from the Dashboards API.
+- A dashboard JSON file of 1 MB or less, from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md).
 - **All** privilege for the **Dashboard** feature in {{product.kibana}}. Without it, **Import dashboard** doesn't appear.
 
 **Import the file**
@@ -43,11 +43,13 @@ The JSON methods are recommended because they rely on the Dashboards API.
 
 **Messages after you select a file**
 
-- **The selected file is too large. The maximum size is 1 MB.** Select a smaller file. **Import** stays unavailable.
-- **The selected file does not contain valid JSON.** Select a different file. **Import** stays unavailable.
-- **The file could not be imported.** {{kib}} can't validate the file, for example because it isn't a full dashboard definition. **Import** stays unavailable.
-- **Unsupported properties were removed.** The file includes panel types or properties that the Dashboards API doesn't support. {{kib}} leaves them out of the imported dashboard. Select **Show details** to see what it removed. **Import** stays available.
-- **Review import warnings.** The file references related items, such as data views, tags, or library visualizations. {{kib}} imports only the dashboard. Select **Show details** to see each item's type and ID, and make sure these items exist in the space or cluster where you import. This warning also lists any removed properties. **Import** stays available.
+| Message | What it means | What to do |
+|---|---|---|
+| The selected file is too large. The maximum size is 1 MB. | The file is larger than 1 MB. | Select a smaller file. **Import** stays unavailable. |
+| The selected file does not contain valid JSON. | The file isn't valid JSON. | Select a different file. **Import** stays unavailable. |
+| The file could not be imported. | {{kib}} can't validate the file, for example because it isn't a full dashboard definition. | Select a different file. **Import** stays unavailable. |
+| Unsupported properties were removed. | The file includes panel types or properties that the [Dashboards API](create-dashboards-programmatically.md) doesn't support. {{kib}} leaves them out of the imported dashboard. | Select **Show details** to see what {{kib}} removed. **Import** stays available. |
+| Review import warnings. | The file references related items, such as data views, tags, or library visualizations. {{kib}} imports only the dashboard. This warning also lists any removed properties. | Select **Show details** to see each item's type and ID. Make sure these items exist in the space or cluster where you import. **Import** stays available. |
 
 :::::
 
@@ -61,7 +63,7 @@ The JSON methods are recommended because they rely on the Dashboards API.
 - **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 - A way to call the API, such as {{kib}} Dev Tools Console or an API key.
 
-Send the JSON to the Dashboards API in the target space, instance, deployment, or project. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the target space before sending it. The API creates the dashboard, or updates it in place when you send it with an existing ID.
+Send the JSON to the [Dashboards API](create-dashboards-programmatically.md) in the target space, instance, deployment, or project. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the target space before sending it. The API creates the dashboard, or updates it in place when you send it with an existing ID.
 
 For the imported dashboard to work, the objects it references, such as data views and library visualizations, must also exist in the target environment. To version-control dashboards and keep their references portable across environments, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
 
