@@ -314,6 +314,18 @@ Tool call events show whether a tool is still running or has returned a response
 
 After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
+### Call a specific API operation [call-a-specific-api-operation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Agents can call {{es}} and {{kib}} APIs through the built-in [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools). When [API discovery](tools/builtin-tools-reference.md#api-discovery) is off, an agent can call only operations whose identifier it already knows. To have the agent use a specific operation, include the operation's [identifier](tools/builtin-tools-reference.md#api-operation-identifiers) in your message. For example:
+
+```text
+Use the indices.get_mapping Elasticsearch API to show the mapping of the logs-web index.
+```
+
 ### View traces for a conversation round [view-traces]
 ```{applies_to}
 stack: ga 9.5+
@@ -359,7 +371,8 @@ For [custom tools](tools/custom-tools.md), you decide when the agent asks: set *
 What the prompt shows depends on the tool:
 
 * Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
-* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and does not show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
+* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
 For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
 
@@ -392,6 +405,26 @@ Custom tools show the generic prompt instead. Here, a tool that cancels an order
 :alt: Generic confirmation prompt asking permission to call the tool ecommerce.cancel_order, with Deny and Allow buttons
 :width: 700px
 :::
+
+#### Confirm an API operation [confirm-an-api-operation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The built-in [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) asks for confirmation before each call to an {{es}} or {{kib}} API operation that can change or delete existing data, unless the agent [auto-approves the operation](custom-agents.md#auto-approve-api-operations-optional).
+
+Whether you see a prompt depends on the operation, not on its HTTP method:
+
+* Most write and delete operations require confirmation, including bulk indexing, document updates, and index deletion.
+* Read operations, including searches, run without a prompt.
+* Some operations that only create something new also run without a prompt, such as creating an index or an API key.
+
+The prompt shows the HTTP method, path, and whether the call goes to {{es}} or {{kib}}. It doesn't show the request body.
+
+Select **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
+
+A parent agent can also ask you to approve operations before starting a sub-agent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Authorize a connector
 ```{applies_to}

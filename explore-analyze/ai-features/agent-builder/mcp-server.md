@@ -41,6 +41,8 @@ When using a custom {{kib}} Space, include the space name in the endpoint path:
 You can copy your MCP server URL directly in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
 :::
 
+{applies_to}`serverless: ga` For setup instructions for specific MCP hosts, including prebuilt Elastic connectors in their directories, refer to [](/deploy-manage/app-connections/connect-mcp-host.md).
+
 ## Authentication and configuration [mcp-server-authentication]
 
 External MCP hosts need credentials to reach the MCP server endpoint. The way that you configure your MCP server depends on your authentication method. Choose API keys or OAuth 2.1 based on your deployment type and use case.
