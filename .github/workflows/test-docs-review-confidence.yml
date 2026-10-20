@@ -1,0 +1,50 @@
+name: "TEST: docs review with confidence instructions (throwaway)"
+
+# Throwaway test. This file exists only on the branch gwallace/test-ai-review-confidence and runs only for
+# the pull request opened from that branch. Do not merge. Delete the branch when done.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: test-docs-review-confidence-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: Docs review (test, new instructions)
+    if: github.head_ref == 'gwallace/test-ai-review-confidence'
+    permissions:
+      actions: read
+      contents: read
+      discussions: write
+      issues: write
+      pull-requests: write
+      copilot-requests: write
+    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-review.lock.yml@v1
+    with:
+      review-scope: repo-wide-markdown
+      additional-instructions: |
+        This repository stores documentation as markdown across the repository, not only under `docs/`.
+        Prefer concise, high-signal review comments with exact replacement text when possible.
+
+        Verification pass. Complete this before you post anything.
+
+        For every inline comment you plan to post, verify it first:
+        1. Quote the exact text from the changed file that the comment is about. If you cannot quote it, do not post the comment.
+        2. If the comment states a number (characters, words, lines, versions, counts), compute it with a command and use the computed value.
+        3. Check the diff. The quoted text must be added or changed by this pull request, or be directly affected by the change. Otherwise drop the comment.
+        4. If the quote or the computation contradicts the comment, drop it. If you cannot confirm or refute it from the repository or the Elastic docs MCP (a product fact, a version, behavior that lives in code), do not post it as an inline comment. List it under "Needs a person" in the review body instead.
+
+        Review body additions. After "Issue satisfaction", add these two sections:
+
+        ### Review confidence
+        <High | Medium | Low>: <one line of reasons>. Use Low when a check listed under "Not checked" could affect a finding, a linked issue could not be read, you reached the 20-comment limit, or a high-impact concern is unconfirmed. Use Medium when two or more items are under "Needs a person", or at least half of the posted comments are minor wording. Otherwise use High.
+
+        ### Needs a person
+        - <One line per item you could not confirm: the claim, the location, and what a person must check. Omit this section when empty.>
+
+        Audit record. End the review body with one HTML comment that contains JSON and nothing else:
+        <!-- docs-review-audit {"v":1,"candidates":<n>,"posted":<n>,"dropped":[{"file":"<path>","line":<n>,"reason":"<short>"}],"needs_person":<n>,"confidence":"High|Medium|Low"} -->
+    secrets:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
