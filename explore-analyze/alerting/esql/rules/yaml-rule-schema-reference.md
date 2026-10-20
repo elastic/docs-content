@@ -199,8 +199,6 @@ The `no_data` object is required when `kind: alert`, and `strategy` selects the 
 
 A strategy other than `ignore` requires `query.breach` or `no_data.query`. That way, {{kib}} can tell a group with no data apart from a group that stopped breaching.
 
-The schema also lists an `alert` strategy, but {{kib}} rejects it when you create or update a rule.
-
 :::{note}
 Rules with `kind: signal` can't set `no_data`.
 :::
