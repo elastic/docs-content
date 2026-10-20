@@ -27,7 +27,7 @@ api:
         categories:
           - serverless
   kibana:
-    - spec: kibana.yaml
+    - spec: kibana-full.yaml
       product: kibana
       repository: elastic/kibana
       children:
