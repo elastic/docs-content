@@ -2,17 +2,12 @@
 navigation_title: Knowledge Indicators
 description: Knowledge Indicators automatically extract structured facts about services, infrastructure, and dependencies from raw log data in Streams, and generate ES|QL alerting rules that feed the Significant Events pipeline.
 applies_to:
-  serverless: preview
-  stack: preview 9.4+
+  serverless:
+    observability: preview
 products:
   - id: observability
-  - id: elasticsearch
   - id: kibana
   - id: cloud-serverless
-  - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
-  - id: elastic-stack
 ---
 
 # Knowledge Indicators [sig-events-ki]
@@ -21,25 +16,23 @@ Knowledge Indicators (KIs) are structured facts that Elastic extracts from your 
 
 Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like the [Significant Events detection pipeline](./how-it-works.md), topology maps, AI agent investigations, and dashboards.
 
-To access Knowledge Indicators, open **Significant Events** from the Streams main page and select the **Knowledge Indicators** tab.
-
-:::{admonition} Requirements
-To use this feature, you need a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
-:::
+To access Knowledge Indicators, select **Show all events** from the Elastic nightshift home page and select the **Knowledge Indicators** tab.
 
 ## Generate KIs [sig-events-ki-generate]
 
-You can trigger KI extraction on demand or set up continuous extraction at a specific interval.
+You can trigger KI extraction on demand or set up continuous KI onboarding at a specific interval.
 
 On demand
-:   From the **Significant Events** page, select the streams you want to generate KIs for and select **Generate**.
+:   From the **Significant Events** tab on the **Management** page, select the streams you want to generate KIs for and select **Generate**.
 
-Continuous extraction
-:   When enabled, continuous extraction runs automatically on managed streams at the interval you configure. Continuous extraction is off by default. To enable it:
+Continuous KI onboarding
+:   When enabled, KI onboarding runs automatically on managed streams at the configured interval. Continuous KI onboarding is off by default. To enable it:
 
-    1. From the **Streams** main page, select **Significant Events** → **Settings**.
-    1. Under **Continuous KI extraction**, turn on **Enable continuous KI extraction**.
-    1. Set the **Extraction interval** in hours, and list any **Excluded streams** to skip during continuous extraction.
+    1. Select **Show all events** from the Elastic nightshift home page and select **Settings**.
+    1. Under **Continuous KI onboarding**, turn on **Enable continuous KI onboarding**.
+    1. Set the **Onboarding interval (hours)**, the minimum number of hours between onboarding runs for a given stream. Set it to `0` for no cooldown between runs.
+
+    Continuous KI onboarding covers the streams that match the index patterns in the **Data sources** section of the settings, plus query streams, which are always eligible regardless of index patterns.
 
 ## How KI extraction works [sig-events-ki-extraction]
 
@@ -53,7 +46,7 @@ The pipeline runs up to five iterations. Each iteration fetches a batch of up to
 | Diverse | 40% | One representative document per log category, based on message structure |
 | Random | 20% | Plain random sample to avoid systematic blind spots |
 
-KIs found in one iteration are fed back as exclusions into the next, so each round focuses on what the previous one missed. This ensures quieter, less-represented services are not crowded out by high-volume log categories.
+KIs found in one iteration are fed back as exclusions into the next, so each round focuses on what the previous one missed. This ensures quieter, less-represented services aren't crowded out by high-volume log categories.
 
 For example, from a single nginx access log line:
 
@@ -90,7 +83,7 @@ Sampled documents are sent to an LLM that identifies the following feature types
 | Infrastructure | Environment context: {{k8s}}, cloud provider, OS |
 | Technology | Languages, frameworks, libraries, databases |
 | Dependency | Relationships between components |
-| Schema | Log format conventions: {{product.ecs}}, OTel, custom |
+| Schema | Log format conventions: {{product.ecs}}, OpenTelemetry, custom |
 
 Every feature must include stable identifying properties and cite direct evidence from the sampled logs. The LLM assigns a confidence score from 0–100 (where 0 is the lowest confidence and 100 is the highest) for each KI. The pipeline also tracks features excluded by users (false positives) and carries them forward to prevent re-identification in future runs.
 
@@ -119,7 +112,7 @@ Feature KIs carry a full data model:
 - **`properties`**: Stable key-value pairs used to deduplicate findings across multiple runs
 - **`confidence`**: 0–100. LLM-identified KIs score based on evidence quality. Deterministic KIs always score 100.
 - **`evidence`**: 2–5 supporting log excerpts that justify the KI's existence
-- **`filter`**: An optional [StreamLang](../streamlang.md) condition scoping the KI to specific documents
+- **`filter`**: An optional [StreamLang](../../streams/streamlang.md) condition scoping the KI to specific documents
 
 Example dependency KI:
 
@@ -167,7 +160,7 @@ Example query KI:
 
 Query KIs are generated in two {{esql}} forms depending on what the LLM determines is most useful for detection:
 
-**MATCH queries** filter for specific log events, such as errors, exceptions, failure messages:
+**MATCH queries** filter for specific log events, such as errors, exceptions, or failure messages:
 
 ```esql
 FROM logs-mystream,logs-mystream.* METADATA _id, _source
@@ -187,29 +180,28 @@ When you promote a query KI, it becomes an alerting rule that runs its {{esql}} 
 
 The Significant Events pipeline picks up from there. A Detection workflow runs change point aggregation against those per-rule counts and writes a document to `.significant_events-detections` when statistically significant shifts are found. A Discovery workflow then uses an LLM to process those documents.
 
-## Continuous extraction [sig-events-ki-continuous]
+## Continuous KI onboarding [sig-events-ki-continuous]
 
-When continuous extraction is enabled, a workflow runs every 35 minutes and processes up to five eligible streams per run. A stream is eligible if:
+When continuous KI onboarding is enabled, a workflow runs every 35 minutes and processes up to five eligible streams per run. A stream is eligible if:
 
-- It is a wired, classic, or query stream that matches the configured Significant Events index patterns
-- No feature identification is currently running for it
-- No feature identification task is currently running for it
-- Enough time has elapsed since its last extraction (controlled by the **Extraction interval** setting, default 12 hours)
+- It matches the configured index patterns, or a query stream (query streams are always eligible, regardless of index patterns)
+- No feature identification is running for it
+- Enough time has elapsed since its last extraction (controlled by the **Onboarding interval (hours)** setting, default 12 hours)
 
 Streams that have never been processed are always prioritized. Among remaining candidates, streams with the oldest last-completed extraction run are processed first.
 
-The continuous extraction workflow has a 34-minute timeout (one minute shorter than the 35-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
+The continuous onboarding workflow has a 34-minute timeout (one minute shorter than the 35-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
 
-Toggling continuous extraction off cancels any in-flight extraction tasks and disables the workflow. Re-enabling turns it back on. Already-extracted KIs are preserved throughout.
+Turning off continuous KI onboarding cancels any in-flight extraction tasks and disables the workflow. Re-enabling turns it back on. Already-extracted KIs are preserved throughout.
 
-### Continuous extraction settings
+### Continuous KI onboarding settings
 
 | Setting | Default | Description |
 |---|---|---|
-| `observability:streamsContinuousKiExtractionEnabled` | `false` | Enables or disables continuous extraction |
-| `observability:streamsContinuousKiExtractionIntervalHours` | `12` | Minimum hours between extraction runs for a single stream |
+| `observability:streamsContinuousKiExtractionEnabled` | `false` | Enables or disables continuous KI onboarding |
+| `observability:streamsContinuousKiExtractionIntervalHours` | `12` | Minimum hours between onboarding runs for a single stream. `0` means no cooldown between runs |
 
-These settings are only modifiable through the Significant Events Settings page.
+These settings are only modifiable through the **Settings** page, which you reach from **Show all events** on the Elastic nightshift home page.
 
 ## KI lifecycle and maintenance [sig-events-ki-lifecycle]
 

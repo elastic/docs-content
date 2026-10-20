@@ -6,12 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Explore data in Discover with sample or your own data. Select a data view, filter documents, analyze fields, and create visualizations.
+description: Follow this tutorial to learn how to explore your data in Discover. Filter documents, analyze fields, and create visualizations with sample data or your own.
 ---
 
 # Explore fields and data with Discover [discover-get-started]
 
-Learn how to explore your {{product.elasticsearch}} data using **Discover**. This tutorial walks you through selecting {{data-sources}}, filtering documents, analyzing field structures, and creating visualizations from your data.
+If you want to learn about **Discover** by using it, this tutorial takes you from loading your data to filtering it, charting a field, and saving what you find. Use the {{kib}} [sample data](/manage-data/ingest/sample-data.md) or your own data. To learn what **Discover** is and what else it can do, refer to the [Discover overview](../discover.md).
 
 ## Context-aware data exploration [context-aware-discover]
 
@@ -361,7 +361,9 @@ This allows you to pivot quickly between different explorations without losing y
 #### Manage Discover tabs
 
 You can open new tabs or duplicate existing ones to compare different queries:
-- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
+- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs. What the new tab does when it opens depends on your version:
+  - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The tab starts empty. It doesn't run any search until you enter a query and run it.
+  - {applies_to}`stack: preview 9.2-9.5` The tab opens on the same data source as the tab you came from and, by default, runs a search right away.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
 A session supports a maximum of 25 open tabs. When the limit is reached, the {icon}`plus` icon and **Duplicate** are disabled. You can't add more tabs until you close some.
@@ -411,7 +413,7 @@ You can share the current view, show the results on a dashboard, export the sess
 
 - Select {icon}`share` **Share** in the application menu to copy a link to the current view. For the link options, refer to [Reporting and sharing](../report-and-share.md).
 - To show the results on a dashboard, add the session, its chart, or its table, to the dashboard. Refer to [Use Discover sessions in dashboards](save-open-search.md#_add_search_results_to_a_dashboard).
-- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Refer to [Reporting and sharing](../report-and-share.md#manually-generate-reports).
+- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Some limits apply. Refer to [](save-open-search.md#export-discover-session-csv) for details.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
 
 In classic mode, select {icon}`maximize` **View details** on a row, then select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).
@@ -471,6 +473,8 @@ To start an analysis:
 4. Review the agent's findings, the inline visualization, and the suggested drill-down queries.
 
 You can also ask the agent for follow-up analyses, including correlations between fields, time-over-time comparisons, and field statistics for specific columns.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To see the current documents without leaving the conversation, ask the agent to show them in an interactive **Discover** table. Refer to [Discover tables in chat](../ai-features/agent-builder/agent-builder-discover-tables.md).
 
 ### Context-aware deep analysis
 
