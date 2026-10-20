@@ -142,7 +142,7 @@ The search bar offers two modes:
 
 To filter your data with KQL:
 
-1. If the search bar isn't already open, open it ({icon}`magnify` or {icon}`magnify_sparkles`).
+1. If the search bar isn't visible, open it ({icon}`magnify` or {icon}`magnify_sparkles`).
 2. Set the data sources to search:
 
    - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Make sure the query in the editor names the data sources, for example `FROM logs-*`. If the query names none, submitting the search does nothing.
@@ -181,7 +181,7 @@ Without an Enterprise license, the AI prompts and actions don't appear, and the 
 
 Not sure how to write an {{esql}} query? Describe what you want from your data in natural language and a specialized AI agent writes the query for you.
 
-1. If the search bar isn't already open, open it ({icon}`magnify_sparkles`).
+1. If the search bar isn't visible, open it ({icon}`magnify_sparkles`).
 2. From the mode selector, select **Natural language**.
 3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
 4. Press **Enter** to submit your request. The editor replaces or updates the current query, runs it, and saves it to your [query history](#esql-kibana-query-history).
