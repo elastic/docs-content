@@ -167,16 +167,11 @@ If you prefer not to use the UI, you can also create endpoints with the {{infer}
 ### Configure a connector
 
 ```{applies_to}
-stack: ga 9.3-9.4, deprecated 9.5
-serverless: deprecated
+stack: ga 9.3-9.4, deprecated =9.5, removed 9.6+
+serverless: unavailable
 ```
 
-::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-Generative AI connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
-
-In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new models, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
-::::
+To connect a model provider in {{stack}} 9.6 and later, or on {{serverless-full}}, [add an {{infer}} endpoint](#add-an-inference-endpoint). {{kib}} no longer lets you create Generative AI connectors in the UI, but existing connectors continue to work.
 
 To use additional models that aren't preconfigured, create a connector for your model provider.
 
