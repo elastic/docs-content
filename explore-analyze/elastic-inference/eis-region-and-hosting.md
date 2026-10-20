@@ -86,7 +86,7 @@ Models that aren't available in your allowed locations become unavailable.
 To open **Elastic {{infer}}**, you typically need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 To load and save region preferences, you also need the `manage_inference` {{es}} cluster privilege.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To check the current policy without opening **Region preferences**, select the **Restricted regions** badge in the header of the **Elastic Inference Service** page. The badge appears when a region policy is set, and its popover shows which geographies or regions the policy includes.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To check the current policy without opening **Region preferences**, select the **Restricted regions** badge in the header of the **Elastic Inference Service** page. The badge appears when a region policy is set, and its popover lists geographies or regions and marks the ones the policy allows.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` You don't need to be able to edit region preferences to see the badge. You need the `monitor_inference` {{es}} cluster privilege to read the policy. If you don't see the badge, this can happen when no policy is set or when you don't have that privilege. If you can edit region preferences, select **Edit region preferences** in the same popover to open the dialog.
 
