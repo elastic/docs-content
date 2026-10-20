@@ -39,7 +39,7 @@ The JSON methods are recommended because they rely on the [Dashboards API](creat
 4. Review any messages in the flyout. If {{kib}} shows an error, select a different file. If it shows a warning, review it before you continue.
 5. Select **Import**.
 
-{{kib}} creates a new dashboard, closes the flyout, shows a confirmation message, and refreshes the list of dashboards so the new dashboard appears. It never updates an existing dashboard, so importing the same file again creates another dashboard.
+{{kib}} creates a new dashboard in the current space, closes the flyout, shows a confirmation message, and refreshes the list of dashboards so the new dashboard appears. It never updates an existing dashboard, so importing the same file again creates another dashboard.
 
 **Messages after you select a file**
 
@@ -63,7 +63,7 @@ The JSON methods are recommended because they rely on the [Dashboards API](creat
 - **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 - A way to call the API, such as {{kib}} Dev Tools Console or an API key.
 
-Send the JSON to the [Dashboards API](create-dashboards-programmatically.md) in the target space, instance, deployment, or project. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the target space before sending it. The API creates the dashboard, or updates it in place when you send it with an existing ID.
+Send the JSON to the [Dashboards API](create-dashboards-programmatically.md) in the target instance, deployment, or project. The API creates the dashboard in the space identified by the request path, or updates it in place when you send it with an existing ID. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the space in the request path before sending it.
 
 For the imported dashboard to work, the objects it references, such as data views and library visualizations, must also exist in the target environment. To version-control dashboards and keep their references portable across environments, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
 
