@@ -61,7 +61,7 @@ For more information about adding endpoints, refer to [External {{infer}}](/expl
 :::::
 
 :::::{applies-item} stack: ga 9.0-9.4
-To integrate with {{kib}}:
+Create an OpenAI connector so that {{kib}} can use OpenAI models.
 
 1. Log in to {{kib}}.
 2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **OpenAI**.

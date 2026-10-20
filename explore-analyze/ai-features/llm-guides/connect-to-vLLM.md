@@ -159,7 +159,7 @@ For more information about adding endpoints, refer to [External {{infer}}](/expl
 :::
 
 :::{applies-item} stack: ga 9.0-9.4
-Create the connector within your Elastic deployment to link it to your vLLM instance.
+Create an OpenAI connector to link your Elastic deployment to your vLLM instance. The OpenAI connector works because vLLM serves an OpenAI-compatible API.
 
 1. In {{kib}}, navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.
 2. Give the connector a descriptive name, such as `vLLM - Mistral Small 3.2`.

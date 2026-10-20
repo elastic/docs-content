@@ -212,7 +212,7 @@ For more information about adding endpoints, refer to [External {{infer}}](/expl
 :::::
 
 :::::{applies-item} stack: ga 9.0-9.4
-Finally, configure the connector:
+Create an OpenAI connector so that {{kib}} can use the model that you loaded in LM Studio.
 
 1. Log in to your Elastic deployment.
 2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **OpenAI**. The OpenAI connector enables this use case because LM Studio uses the OpenAI SDK.
