@@ -202,16 +202,17 @@ Setup is now complete. The model served by your vLLM container can now power Ela
 :::{note}
 To run a different model:
 * Stop the current container and run a new one with an updated `--model` parameter.
-* Update your {{kib}} connector's **Default model** parameter to match the new model ID.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` Create a new {{infer}} endpoint with the new model ID.
+* {applies_to}`stack: ga 9.0-9.4` Update your {{kib}} connector's **Default model** parameter to match the new model ID.
 :::
 
 ## Next steps
 
-With your vLLM connector set up, you can use it to power features including:
+With vLLM connected, you can use it to power features including:
 
 * [AI Assistant for Security](/solutions/security/ai/ai-assistant.md): Interact with an agent designed to assist with {{elastic-sec}} tasks.
 * [Attack Discovery](/solutions/security/ai/attack-discovery/index.md): Use AI to quickly correlate and triage security alerts.
 * [Automatic Import](/explore-analyze/ai-features/automatic-import.md): Use AI to create custom integrations for third-party data sources.
 * [AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md): Interact with an agent designed to assist with {{observability}} and Search tasks.
 
-You can also learn how to [set up other types of LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+You can also learn how to [connect other LLM providers](/explore-analyze/ai-features/llm-guides/llm-connectors.md).

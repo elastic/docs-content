@@ -20,7 +20,7 @@ Elastic doesn’t support the setup and configuration of local LLMs. The example
 Before using a local LLM, evaluate its performance according to the [LLM performance matrix](/solutions/observability/ai/llm-performance-matrix.md#evaluate-your-own-model).
 :::
 
-This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within the {{obs-ai-assistant}}. You’ll first need to set up LM Studio, then download and deploy a model via LM studio and finally configure the connector in your Elastic deployment.
+This page provides instructions for connecting a large language model (LLM) of your choice to Elastic using LM Studio. This allows you to use your chosen model within the {{obs-ai-assistant}}. You’ll first need to set up LM Studio, then download and deploy a model via LM studio and finally connect your Elastic deployment to the model.
 
 ::::{note}
 If your Elastic deployment is not on the same network, you must configure an Nginx reverse proxy to authenticate with Elastic. Refer to [Configure your reverse proxy](https://www.elastic.co/docs/solutions/security/ai/connect-to-own-local-llm#_configure_your_reverse_proxy) for more detailed instructions.
@@ -36,11 +36,11 @@ This example uses a server hosted in GCP to configure LM Studio with the [Llama-
 
 ### Already running LM Studio? [skip-if-already-running]
 
-If you've already installed LM Studio, the server is running, and you have a model loaded (with a context window of at least 64K tokens), skip directly to [Configure the connector in your Elastic deployment](#configure-the-connector-in-your-elastic-deployment).
+If you've already installed LM Studio, the server is running, and you have a model loaded (with a context window of at least 64K tokens), skip directly to [Connect your Elastic deployment to LM Studio](#configure-the-connector-in-your-elastic-deployment).
 
 ## Configure LM Studio and download a model [configure-lm-studio-and-download-a-model]
 
-LM Studio supports the OpenAI SDK, which makes it compatible with Elastic’s OpenAI connector, allowing you to connect to any model available in the LM Studio marketplace.
+LM Studio supports the OpenAI SDK, which makes it compatible with Elastic’s OpenAI connector and OpenAI {{infer}} service, allowing you to connect to any model available in the LM Studio marketplace.
 
 To get started with LM Studio:
 

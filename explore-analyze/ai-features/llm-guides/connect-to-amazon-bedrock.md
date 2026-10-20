@@ -82,7 +82,7 @@ The following video demonstrates these steps (click to watch).
 
 ### Create an access key [_create_an_access_key]
 
-Create the access keys that will authenticate your Elastic connector:
+Create the access keys that Elastic uses to authenticate with Amazon Bedrock:
 
 1. Return to the **IAM** menu. Select **Users** from the navigation menu.
 2. Search for the user you created, and click its name.

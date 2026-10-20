@@ -14,7 +14,7 @@ products:
 
 # Configure access to LLMs
 
-Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-the-box Elastic Managed LLMs or with third-party LLMs configured using one of the available connectors.
+Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-the-box Elastic Managed LLMs or with third-party LLMs that you connect through {{infer}} endpoints or connectors.
 
 ## Elastic Managed LLMs
 
@@ -23,7 +23,7 @@ Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-th
 
 ## Tested models and performance ratings [tested-models]
 
-While connectors let you connect to a wide range of LLMs, model performance varies by solution and use case. Refer to the following pages for performance information for models Elastic has tested:
+While you can connect to a wide range of LLMs, model performance varies by solution and use case. Refer to the following pages for performance information for models Elastic has tested:
 
 * [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
 * [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
