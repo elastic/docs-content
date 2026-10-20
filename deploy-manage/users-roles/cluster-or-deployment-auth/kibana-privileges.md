@@ -228,7 +228,7 @@ These privileges control specific actions on workflows. Selecting **All** includ
 :applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
 When you edit a workflow that runs as a service account, subsequent runs continue to use that account's privileges. Your changes can therefore use privileges you don't personally have. Grant workflow edit access only to users you trust to use those privileges.
 
-Adding, changing, or removing a binding, and editing or deleting a bound workflow, also requires the `manage_security` cluster privilege. For account assignment instructions and required privileges, refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
+Adding, changing, or removing a service account binding, and editing or deleting a bound workflow, also requires the `manage_security` cluster privilege. For account assignment instructions and required privileges, refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
 :::
 
 ## Privileges in the Management group [kibana-privileges-management]

@@ -47,7 +47,7 @@ When a workflow run starts, {{kib}} records the execution identity so you can au
 
 :::{note}
 :applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-For a bound workflow, the execution details show the initiating user under **Triggered by** and the service account under **Run as**.
+For a bound workflow, **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger. **Run as** shows the service account used for authorization.
 :::
 
 The **Created By** filter on the **Workflows** page reflects who last saved the workflow, not necessarily who originally created it.
