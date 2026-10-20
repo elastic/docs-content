@@ -56,7 +56,7 @@ In {{es-serverless}} projects, Search Power controls the amount of baseline reso
 
 Increase **Search Power** to add resources for improved query throughput and performance as load increases. Decrease it to reduce the amount of provisioned resources, which lowers both active search costs and the reduced rate billed during idle periods, at the cost of more variable query latency. The On-demand setting provides the lowest baseline and idle cost.
 
-Choose from three Search Power settings:
+The following Search Power settings are available:
 
 **On-demand**
 :   Low cost option. Query latency is variable and maximum throughput is limited, particularly during demand spikes.
@@ -76,7 +76,7 @@ The default value is **100**, which reserves enough capacity to keep the project
 
 :::::
 
-{{es}} {{vectordb}}, {{obs-serverless}}, and {{sec-serverless}} projects don't have a Search Power setting.
+{{obs-serverless}} and {{sec-serverless}} projects don't have a Search Power setting.
 
 ### Search Boost Window [elasticsearch-search-boost-window]
 ```{applies_to}
@@ -84,7 +84,7 @@ serverless:
   elasticsearch: ga
 ```
 
-In {{es}}{{serverless-short}} projects, non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.
+In {{es-serverless}} projects, non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.
 
 Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.
 
