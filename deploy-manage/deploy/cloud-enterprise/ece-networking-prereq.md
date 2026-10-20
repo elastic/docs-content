@@ -13,11 +13,11 @@ products:
 The first host you install ECE on initially requires the ports for all roles to be open, which includes the ports for the coordinator, allocator, director, and proxy roles. After you have brought up your initial ECE installation, only the ports for the roles that the initial host continues to hold need to remain open. Before installing a host, make sure that ports 20000, 21000, and 22000 are open for the installation script checks. Port 2375 will also be utilized on each host you install ECE on for internal Docker communication.
 
 ::::{warning} 
-To ensure the security of your ECE deployment, you should enforce via firewall that:
+To secure your ECE deployment, configure your firewall rules as follows:
 
-* Only the [Inbound traffic from any source](#ece-inbound) ports described in the following section can be accessed from outside of the ECE network
-* The [Inbound traffic from other ECE hosts](#ece-inbound) ports described in the following section should only be accessible from other ECE hosts
-* The [Container communication on the same host](#ece-container-communication-on-same-host) ports are only accessible locally to the host itself
+* Allow traffic from outside the ECE network only to the ports listed in [Inbound traffic from any source](#ece-inbound).
+* Allow traffic from other ECE hosts only to the ports listed in [Inbound traffic from other ECE hosts](#ece-inbound).
+* Restrict access to localhost for the ports listed in [Container communication on the same host](#ece-container-communication-on-same-host). Containers on the same host use these ports to communicate with each other, and no other system should reach them.
 ::::
 
 :::::{note}
