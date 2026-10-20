@@ -24,7 +24,7 @@ To add custom panels to a dashboard, you need:
 
 - **All** privilege for the **Dashboard** feature in {{kib}}.
 - [{{agent-builder}} set up](/explore-analyze/ai-features/agent-builder/get-started.md) in your deployment or project, if you want to generate or refine panels with chat. Without it, you can still write templates yourself.
-- Data that you can query with {{esql}}, if you want the panel to show live values. If you're new to {{esql}}, refer to [Use {{esql}} in the {{kib}} UI](/explore-analyze/query-filter/languages/esql-kibana.md).
+- Data that you can query with {{esql}}, if you want the panel to show live values. If you're new to {{esql}}, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
 
 ## When to use a custom panel [custom-panels-when-to-use]
 
@@ -253,5 +253,5 @@ Custom panels render in a sandbox that protects the dashboard and your browser:
 - [Panels and visualizations](../visualize.md): all panel types you can add to a dashboard
 - [Dashboards and visualizations in {{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md)
 - [Create dashboards using AI](/explore-analyze/dashboards/create-dashboards-using-ai.md)
-- [Use {{esql}} in the {{kib}} UI](/explore-analyze/query-filter/languages/esql-kibana.md)
+- [](/explore-analyze/query-filter/languages/esql-kibana.md)
 - [LiquidJS documentation](https://liquidjs.com/tutorials/intro-to-liquid.html)

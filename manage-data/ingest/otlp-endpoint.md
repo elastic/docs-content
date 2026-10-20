@@ -94,12 +94,15 @@ The minimum index patterns depend on which signals you ingest:
 
 | Signals ingested | Required `names` patterns |
 | --- | --- |
-| Metrics | `metrics-*` |
+| Metrics | `metrics-*`, `exemplars-*` |
 | Logs | `logs-*` |
 | Traces | `traces-*`, `logs-*` |
-| All three | `metrics-*`, `logs-*`, `traces-*` |
+| All three | `metrics-*`, `exemplars-*`, `logs-*`, `traces-*` |
 
 Traces ingestion also writes span events to `logs-*` data streams, so it requires both patterns.
+
+{applies_to}`stack: ga 9.6+` Metrics ingestion also writes [exemplars](#metric-exemplars) to `exemplars-*` data streams.
+If the key doesn't grant access to `exemplars-*`, the metric data points are still indexed, but their exemplars are rejected and each response reports the rejection as a warning.
 
 For example, an API key role descriptor that allows ingesting all three signals:
 
@@ -107,7 +110,7 @@ For example, an API key role descriptor that allows ingesting all three signals:
 {
   "indices": [
     {
-      "names": ["logs-*", "metrics-*", "traces-*"],
+      "names": ["logs-*", "metrics-*", "exemplars-*", "traces-*"],
       "privileges": ["create_doc", "auto_configure"]
     }
   ]
@@ -181,10 +184,12 @@ By default, records are written to the following data streams:
 | Logs | `logs-generic.otel-default` |
 | Traces | `traces-generic.otel-default` |
 | Metrics | `metrics-generic.otel-default` |
+| Metric exemplars {applies_to}`stack: ga 9.6+` | `exemplars-generic.otel-default` |
 
 For more about how OTLP metrics are stored as time series data streams, refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md).
 
 The target data stream name follows the pattern `<type>-<dataset>.otel-<namespace>`.
+[Exemplars](#metric-exemplars) always follow the metric they belong to: a metric routed to `metrics-<dataset>.otel-<namespace>` stores its exemplars in `exemplars-<dataset>.otel-<namespace>`.
 You can influence `dataset` and `namespace` by setting attributes on your data:
 
 * Set `data_stream.dataset` and/or `data_stream.namespace` as attributes.
@@ -239,6 +244,59 @@ The `temporality` dimension is set automatically based on the OTLP [AggregationT
 
 Note that cumulative temporality for histograms is only supported if `xpack.otel_data.histogram_field_type` is set to `exponential_histogram` (which is the default).
 
+## Metric exemplars [metric-exemplars]
+```{applies_to}
+stack: ga 9.6
+serverless: ga
+```
+
+[Exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars) are individual measurements that an OpenTelemetry SDK records alongside an aggregated metric data point, typically together with the trace and span that were active when the measurement was taken.
+The OTLP endpoint stores the exemplars that arrive with metric data points on `/_otlp/v1/metrics`, so you can navigate from a metric to a trace that contributed to it.
+
+{{es}} stores exemplars in dedicated [time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) named after the metrics data stream of their data point: exemplars of metrics in `metrics-<dataset>.otel-<namespace>` are written to `exemplars-<dataset>.otel-<namespace>`.
+
+Each exemplar is stored as its own document with the following fields:
+
+| Field | Description |
+| --- | --- |
+| `@timestamp` | The time the measurement was taken. |
+| Resource, scope, and data point attributes | The same attributes as the metric document, mapped as the same [time series dimensions](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension), so you can match an exemplar to the series it belongs to. |
+| `metric_name` | The name of the metric the exemplar belongs to. Also a dimension. |
+| `value` | The measured value, stored as a `double`. |
+| `trace_id`, `span_id` | The trace and span that were active when the measurement was taken, if any. `trace.id` and `span.id` are aliases of these fields. |
+| `filtered_attributes` | Attributes that were recorded with the measurement but aren't part of the data point attributes, for example because the SDK dropped them during aggregation. These are not dimensions. |
+
+Exemplars never affect whether a request succeeds.
+If an exemplar can't be indexed, for example because the API key doesn't grant access to `exemplars-*`, the data point it belongs to is still indexed and the problem is reported as a warning in the OTLP [partial success](https://opentelemetry.io/docs/specs/otlp/#partial-success) response.
+Exemplars without a value, and duplicate exemplars that share the same metric, dimensions, and timestamp, are dropped and reported the same way.
+
+To customize exemplar data streams, for example to change their lifecycle, use the `exemplars@custom` component template, which applies to all exemplar data streams, or `exemplars-otel@custom`, which applies to OpenTelemetry exemplar data streams only.
+
+### Turn off exemplar ingestion [disable-exemplars]
+
+Exemplar ingestion is enabled by default.
+If you don't need exemplars, or want to avoid the additional storage, turn it off in one of the following ways.
+
+* **Stop sending exemplars at the source (preferred)**: Configure the sender so exemplars never leave your infrastructure. This works on every deployment type and saves bandwidth and processing by avoiding sending data that would be discarded anyway.
+
+  OpenTelemetry SDKs stop recording exemplars when you set the [`OTEL_METRICS_EXEMPLAR_FILTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exemplar) environment variable to `always_off`.
+  
+  In an OpenTelemetry Collector, remove exemplars from all data points with the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor) and add it to your metrics pipeline:
+
+  ```yaml
+  processors:
+    transform/drop_exemplars:
+      metric_statements:
+        - context: datapoint
+          statements:
+            - set(datapoint.exemplars, nil)
+  ```
+
+  Setting a field to `nil` requires OpenTelemetry Collector Contrib 0.161.0 or later.
+
+:::{include} /manage-data/_snippets/turn-off-exemplar-ingestion.md
+:::
+
 ## Limitations
 
 * **Trace enrichment and {{product.apm}} metrics:** The endpoint does not run the `elasticapm` processor or connector.
@@ -249,4 +307,4 @@ Note that cumulative temporality for histograms is only supported if `xpack.otel
   Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
 * **Profiles:** Profiles are not supported.
   To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md), such as [{{agent}}](elastic-agent://reference/edot-collector/index.md).
-* **Exemplars:** Exemplars are not supported yet.
+* {applies_to}`stack: unavailable 9.2-9.5` **Exemplars:** Exemplars are not supported on older versions.

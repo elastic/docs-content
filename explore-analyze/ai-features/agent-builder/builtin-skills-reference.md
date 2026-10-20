@@ -43,8 +43,12 @@ $$$agent-builder-visualization-creation-skill$$$ `visualization-creation` {appli
 $$$agent-builder-graph-creation-skill$$$ `graph-creation` {applies_to}`stack: ga 9.4+`
 :   Creates graph attachments by transforming relationship data into nodes and edges rendered inline in the conversation. Use for topology, dependency, or entity-link visualizations.
 
-$$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_to}`stack: preview =9.4, ga 9.5+`
+$$$agent-builder-dashboard-management-skill$$$ $$$agent-builder-dashboards-skill$$$ `dashboards` {applies_to}`stack: preview =9.4, ga 9.5+`
 :   Composes and updates in-memory {{kib}} dashboards. Use when a user asks to find, create, or modify a dashboard, add or remove panels, or edit existing panel visualizations.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` This skill was previously named `dashboard-management`. 
+       - If a custom agent that doesn't have **Elastic capabilities** turned on lists `dashboard-management`, change it to `dashboards`. Otherwise, the agent stops loading the skill without reporting an error. To retrieve the skill through the API, use `GET /api/agent_builder/skills/dashboards`.
+       - If you created a custom skill with the ID `dashboards` before the rename, the built-in skill takes precedence over it. To keep using your custom skill, re-create it with a different ID.
 
     :::{dropdown} Assigned tools
     A skill-scoped inline tool for generating and updating dashboards.
@@ -54,12 +58,24 @@ $$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_t
 $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Analyzes {{esql}} query results in {{kib}} **Discover**, identifying patterns, trends, and anomalies by running aggregation queries against the full dataset. The skill receives the current query, columns, sample rows, and time range as an attachment, then runs 2 to 3 focused aggregation queries, renders an inline visualization for the main finding, and proposes drill-down queries. When the active [context-aware profile](/explore-analyze/discover/discover-get-started.md#context-aware-discover) is logs, metrics, or traces, the skill receives shape-specific guidance. For example, it uses the {{esql}} `TS` source command for time series metrics.
 
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you ask to see the documents in a **Discover** table, the skill can also show them in the conversation. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
+
     :::{dropdown} Assigned tools
-    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`
+    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`, `platform.core.create_discover_session` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 
     :::
 
     **How to activate:** Activates from the [standard activation methods](skills.md#how-skills-are-invoked) when the conversation is started from a Discover session tab that is in {{esql}} mode and has loaded results. The current query, columns, sample rows, and time range are automatically attached to the conversation, so the agent has the context it needs to run the analysis. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai) for the full workflow.
+
+$$$agent-builder-discover-session-skill$$$ `discover-session` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
+:   Shows {{es}} documents, events, or logs as an interactive **Discover** table in the conversation. Use it to see the matching rows rather than a chart or an aggregation. The skill generates an {{esql}} query and creates or updates a **Discover** table that renders inline in chat. Requests for charts, metrics, or trends go to [`visualization-creation`](#agent-builder-visualization-creation-skill). Unlike [`discover-data-analysis`](#agent-builder-discover-data-analysis-skill), this skill doesn't need a conversation started from **Discover**. For the full workflow, refer to [Discover tables in chat](agent-builder-discover-tables.md).
+
+    :::{dropdown} Assigned tools
+    `platform.core.generate_esql`, `platform.core.create_discover_session`
+
+    :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
 
 $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Answers questions about {{agent-builder}} OpenTelemetry (OTel) traces and activity, including token usage, model and provider breakdowns, conversation and agent latency, tool-call volume, and error rates, and can help build dashboards from that trace data. The skill queries the {{agent-builder}} OTel traces with {{esql}} and is part of the default Elastic AI Agent.
@@ -70,6 +86,14 @@ $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: prev
     :::
 
     **Prerequisites:** Controlled by the `agentBuilder:tracing:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is on by default.
+
+$$$agent-builder-connector-discovery-skill$$$ `connector-discovery` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
+:   Looks up [connectors](connectors.md) and their sub-actions, and runs the connectors assigned to the agent. Use when a request involves an external service, such as creating a GitHub issue or sending a Slack message, or when a user asks what the agent can connect to. Agents need this skill to find their connectors. **Enable Elastic capabilities** includes it. If the toggle is off, assign the skill to the agent yourself.
+
+    :::{dropdown} Assigned tools
+    `platform.core.execute_connector_sub_action`, plus internal tools to list the agent's connectors and load a connector's sub-actions.
+
+    :::
 
 $$$agent-builder-context-engine-skills$$$
 ### {{context-engine}}
@@ -99,7 +123,9 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 :   Manages investigation and incident cases across {{elastic-sec}}, {{observability}}, and Stack Management. Covers creating, updating, searching, and enriching cases with comments, alerts, events, and observables such as indicators of compromise.
 
     :::{dropdown} Assigned tools
-    `platform.core.cases`, `platform.core.cases.manage`, `platform.core.cases.attachments`, `platform.core.cases.observables`
+    `platform.core.cases`, `platform.core.cases.manage`, `platform.core.cases.get_attachments`, `platform.core.cases.manage_attachments`, `platform.core.cases.observables`, `platform.core.cases.find_templates`
+
+    In 9.5, the skill uses `platform.core.cases.attachments` instead of `platform.core.cases.get_attachments` and `platform.core.cases.manage_attachments`.
 
     :::
 
@@ -216,6 +242,8 @@ $$$agent-builder-connector-authoring-skill$$$ `connector-authoring` {applies_to}
     Internal tools to list connector types and to propose a connector.
 
     :::
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library but doesn't assign it to an agent. To let an agent use the new connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
 
 ## Observability skills
 ```{applies_to}
