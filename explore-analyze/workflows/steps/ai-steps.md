@@ -19,12 +19,12 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also read and update the metadata and attachments of {{agent-builder}} conversations.
 
-The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the step uses the workflow's default model.
+The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the step uses the default AI connector.
 
 :::{note}
 :applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
 
-Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`. The `ai.prompt`, `ai.classify`, and `ai.summarize` steps take `connector-id` only.
+Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`. The `ai.classify` and `ai.summarize` steps take `connector-id` only.
 :::
 
 ## Step types
@@ -453,7 +453,7 @@ The step creates a new version only when `data` differs from the current content
 
 Delete an attachment from a conversation. By default, the step marks the attachment inactive but keeps it, so you can still list it with `include_deleted: true`. To remove the attachment completely, set `permanent: true`.
 
-A permanent deletion fails if the agent has already read, updated, or compared versions of the attachment in the conversation. A regular deletion still works in that case.
+A permanent deletion fails if the agent has already read, updated, or compared versions of the attachment in the conversation, or if the attachment has a client ID. A regular deletion still works in these cases.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
