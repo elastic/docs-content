@@ -85,6 +85,16 @@ The hypothesis tree is a diagram that reads from top to bottom and shows:
 
 To read a hypothesis in full, select its card. A panel opens with the complete explanation and the supporting evidence, including charts of the data behind it.
 
+## Re-test or test a new hypothesis [nightshift-get-started-hypothesis]
+
+If you think Elastic nightshift didn't test a hypothesis correctly, for example because it didn't find the right data, or if it missed a hypothesis entirely, ask it to re-test that hypothesis or test a new one.
+
+1. Open the investigation.
+1. Select **Open chat**.
+1. Ask Elastic nightshift to test the hypothesis. For example, ask "Add and test a hypothesis that the checkout service failures were caused by a GCP outage."
+
+Elastic nightshift reinvestigates with the hypothesis and adds it to the hypothesis tree, marked **Confirmed** or **Dismissed** with a confidence percentage.
+
 ## Resolve a problem and confirm you did it [nightshift-get-started-resolve]
 
 Elastic nightshift proposes actions you can take to mitigate or fix the problem.
@@ -105,8 +115,6 @@ GitHub holds the source of truth for the code behind your systems, and often you
 
 Elastic nightshift learns about your systems every time it runs an investigation. Storing what it learns as knowledge makes future investigations more accurate and uses fewer tokens. You can view this knowledge, correct it, and add your own.
 
-### View Elastic nightshift knowledge [nightshift-get-started-knowledge-view]
-
 From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs contain what Elastic nightshift knows about your system:
 
 - **Cortex**: A breakdown of what Elastic nightshift knows about your systems, organized by type, such as services, runbooks, postmortems, and queries. Each page shows the type and whether it's established or tentative.
@@ -114,33 +122,38 @@ From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowl
 
 ### Edit, archive, or delete knowledge [nightshift-get-started-knowledge-edit]
 
-If something isn't correct or useful, you can change it.
+From the **Cortex** tab:
 
-In **Cortex**:
+- To edit a page yourself, open it and select **Edit**.
 
-- To stop Elastic nightshift from using a page, open the page and select **Archive**.
-- To change a page yourself, open it and select **Edit**. Elastic nightshift doesn't change a page you edit manually.
-- To change a page and let Elastic nightshift keep updating it as it learns, ask the Elastic AI Agent to make the change instead.
+  :::{warning}
+  When you edit a Cortex page yourself, Elastic nightshift and the Elastic AI Agent can no longer change that page, and won't update the page with information from later investigations.
+  :::
+
+- To edit a page and let Elastic nightshift keep updating it, ask the Elastic AI Agent to make the change.
+- To stop Elastic nightshift from using a page, open it and select **Archive**.
 
 In **Memory**:
 
 - To stop Elastic nightshift from using a memory, open it and select **Archive**. Select **Restore** to use it again.
 - To remove a memory permanently, select **Delete**.
 
-### Tell Elastic nightshift about your systems [nightshift-get-started-knowledge-add]
+### Add knowledge [nightshift-get-started-knowledge-add]
 
-Using Cortex, you can provide Elastic nightshift with information about your systems before it runs an investigation. This helps future investigations know where to look and what to do. Memories are only created by Elastic nightshift. You can't manually create a memory.
+To tell Elastic nightshift about your systems before it runs an investigation, either create a Cortex page or have the Elastic AI Agent create one for you.
 
-To manually create a Cortex page that only you can modify (Elastic nightshift can't update these pages):
+:::{note}
+You can't add a Memory page. All Memory pages are created by Elastic nightshift.
+:::
+
+To create a page that only you can change and won't be updated during investigations:
 
 1. From **Knowledge**, select the **Cortex** tab.
 1. Select **New page** {icon}`plus`.
 1. In the **New Cortex page** dialog, select a **Type**. Enter a **Slug**, using lowercase words separated by hyphens, such as `checkout-latency-p99`, and a **Title**.
 1. Select **Create**, then open the page and select **Edit** to add your content.
 
-Elastic nightshift prioritizes a page you create over other knowledge it has about your systems.
-
-To create a Cortex page that Elastic nightshift can update as it learns, ask the Elastic AI Agent to create it:
+To create a page that Elastic nightshift can update with information from investigations, ask the Elastic AI Agent to create it:
 
 1. Select **AI Agent**.
 1. Ask the agent to create entries about your systems. For example:
