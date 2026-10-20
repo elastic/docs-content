@@ -1,4 +1,4 @@
-name: "Label new issues with needs-team"
+name: "Issues: Flag missing team"
 
 on:
   issues:
