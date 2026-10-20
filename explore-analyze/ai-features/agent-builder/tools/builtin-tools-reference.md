@@ -74,6 +74,9 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 
     {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` This tool isn't available through the [MCP server](../mcp-server.md).
 
+`platform.core.create_discover_session` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Creates or updates a **Discover** table from an {{esql}} query and shows the matching documents in an interactive table in the conversation. Refer to [Discover tables in chat](../agent-builder-discover-tables.md). Aggregating queries, such as queries with `STATS` or `PROMQL`, aren't supported. Use `platform.core.create_visualization` for those. This tool isn't available through the [MCP server](../mcp-server.md).
+
 `platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 

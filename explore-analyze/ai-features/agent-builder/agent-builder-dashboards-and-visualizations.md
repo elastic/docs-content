@@ -89,6 +89,8 @@ Individual visualizations display inline in the conversation when you ask for a 
 ::::
 :::::
 
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To see the matching documents instead of a chart, turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) and ask the agent to show them in a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
+
 ## Manage dashboards
 
 Agent-created dashboards start as in-memory attachments in the conversation. You can save them as {{kib}} objects when you are ready, and pull in changes if the saved dashboard is edited outside the conversation.
@@ -146,5 +148,6 @@ Agents can create and manage the following panel types:
 
 - [Dashboards](/explore-analyze/dashboards.md)
 - [Chat with {{agent-builder}} agents](chat.md)
+- [Discover tables in chat](agent-builder-discover-tables.md)
 - [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
 - [Agent Builder traces overview dashboard](agent-traces-dashboard.md): a prebuilt, managed dashboard for monitoring agent activity from trace data
