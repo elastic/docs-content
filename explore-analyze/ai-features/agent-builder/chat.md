@@ -294,6 +294,8 @@ For example, the following chat history panel shows one conversation in progress
 
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
+#### Where the agent's progress appears
+
 The agent's progress appears only in the chat where you sent the message or answered a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. The agent keeps working if you reload the page, close the sidebar, or open the conversation in another browser tab or in the other [chat mode](standalone-and-flyout-modes.md). In those cases, the conversation doesn't show **In progress** and doesn't update while the agent works. After the agent finishes, its steps and response appear when you switch back to that browser tab, reopen the conversation, or reload the page.
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent also keeps working without showing progress if you go to another app from standalone mode. If you haven't reloaded the page since you sent the message, for example, after you close and reopen the sidebar or come back from another app, the steps and response appear on their own when the agent finishes. In a [shared or public conversation](#share-a-conversation), the conversation also updates automatically a few seconds after the agent finishes, in any browser tab.
@@ -310,7 +312,7 @@ The agent runs tools in a loop until it achieves its goal or [exceeds the maximu
 
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agent responses show reasoning, tool calls, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context.
 
-Tool call events show whether a tool is still running or has returned a response.
+Tool call events show whether a tool is still running or has returned a response. How you inspect tool calls and reasoning depends on your version:
 
 :::::{applies-switch}
 
@@ -326,6 +328,8 @@ Select a tool call to open a flyout with its details. The flyout title shows the
 - **Execution**: Progress messages that the tool reported while it ran. This section appears only for tools that report progress and for sub-agent calls.
 - **Result**: The tool's response, including any error. This section appears after the tool returns.
 
+For example, the following flyout shows the details of a `platform.core.search` tool call:
+
 :::{image} images/agent-builder-tool-call-flyout.png
 :screenshot:
 :alt: Flyout for a platform.core.search tool call, showing the Parameters, Execution, and Result sections next to the tool call in the conversation
@@ -333,6 +337,8 @@ Select a tool call to open a flyout with its details. The flyout title shows the
 :::
 
 For a sub-agent call, the **Execution** section shows a **Sub-agent execution** link followed by the execution ID. Select the link to open the sub-agent's execution in another flyout, with its own **Parameters**, **Execution**, and **Result** sections. Its **Execution** section shows the sub-agent's reasoning and tool calls, and you can select a tool call to inspect it. Select **Back** to return to the previous flyout.
+
+For example, the following flyout shows a sub-agent's execution, opened from a tool call's **Sub-agent execution** link:
 
 :::{image} images/agent-builder-sub-agent-execution-flyout.png
 :screenshot:
@@ -345,6 +351,8 @@ For a sub-agent call, the **Execution** section shows a **Sub-agent execution** 
 ::::{applies-item} stack: ga =9.5
 
 Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
+
+For example, the following response shows inline reasoning events and tool calls:
 
 :::{image} images/reasoning-steps.png
 :screenshot:
@@ -363,6 +371,8 @@ Select **Completed reasoning** in the agent's response to open the **Reasoning**
 - Select **View JSON** to inspect the raw response for the round.
 
 {applies_to}`stack: preview =9.2` Reasoning appears in an accordion labeled **Thinking completed**, tool calls don't show their parameters, and **View raw response** replaces **View JSON**.
+
+For example, the following **Reasoning** panel shows a tool call with its **Inspect response** link:
 
 :::{image} images/reasoning-panel.png
 :screenshot:
