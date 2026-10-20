@@ -37,7 +37,7 @@ Show me error and warning logs from logs-* for the last hour in a Discover table
 
 ## Start from Discover [discover-tables-from-discover]
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you start the conversation from **Discover** in {{esql}} mode, the [`discover-data-analysis`](builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) skill can also show the current documents in a **Discover** table, even when the `agentBuilder:experimentalFeatures` setting is off. Ask to see the documents, for example in a table in this chat. Otherwise, the agent runs its usual analysis and shows a Lens chart instead. If you ask only for the table, the agent skips the analysis. For details on starting a conversation from **Discover**, refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you start the conversation from **Discover** in {{esql}} mode, the [`discover-data-analysis`](builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) skill can also show the current documents in a **Discover** table, even when the `agentBuilder:experimentalFeatures` setting is off. For details on starting a conversation from **Discover**, refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
 
 ## Work with the table
 
