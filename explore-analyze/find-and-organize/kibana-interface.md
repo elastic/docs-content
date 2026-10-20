@@ -45,8 +45,6 @@ The global header holds the following elements.
 
 The navigation menu lists the apps of your solution view. When a top-level item contains sub-items, selecting it opens the **secondary navigation** to its right.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To reopen one of your latest Discover sessions, hover over **Discover** in the navigation menu or move keyboard focus to it, then select a session from **Recently viewed**. The list starts with your five latest sessions, and **Show more** adds older sessions, up to 20 in total. {{kib}} adds a session when you open or save it in **Discover**, and stores the list in your browser, so it doesn't follow you to another browser. If **Discover** is under **More**, the list isn't available. For other ways to reopen a session, refer to [Save a Discover session for reuse](/explore-analyze/discover/save-open-search.md).
-
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can reorder the apps in the menu and hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
 
 ## Application menu

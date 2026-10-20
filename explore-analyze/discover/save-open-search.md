@@ -39,7 +39,7 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 2. Select **Save**.
 3. To reload your search results in **Discover**, select **Open session** in the application menu, and select the saved Discover session.
 
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In a space that uses a solution view, you can also reopen one of your latest sessions from the navigation menu. Refer to [Navigation menu](/explore-analyze/find-and-organize/kibana-interface.md#navigation-menu).
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To reopen a session you opened or saved before, you can also hover over **Discover** in the navigation menu or move keyboard focus to it, then select the session from **Recently viewed**. This list is available in spaces that use a solution view. It holds up to 20 of your latest sessions from this browser.
 
 A Discover session stores the following elements for each of its tabs:
 
