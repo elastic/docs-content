@@ -101,13 +101,13 @@ You can export the data displayed in a visualization on a dashboard as a CSV fil
 
 You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To export only a supported panel's configuration, use [panel JSON export](#export-panel-json).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To export only a supported panel's configuration, use [panel JSON export](#export-panel-json).
 
 $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
 :::::{applies-switch}
 
-::::{applies-item} {stack: "preview 9.4+", serverless: preview}
+::::{applies-item} {serverless: ga, stack: "ga 9.6+, preview 9.4-9.5"}
 
 Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance. To version-control this JSON and deploy it across environments through a Git-based workflow, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
 
@@ -141,8 +141,8 @@ You can still use the NDJSON export on later versions, but the API-compatible JS
 
 ## Export a panel as JSON [export-panel-json]
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+serverless: ga
+stack: ga 9.6+
 ```
 
 You can export the configuration of individual dashboard elements as API-compatible JSON. Use this when you need one panel's definition without exporting the rest of the dashboard. You can inspect the JSON, or copy it into a [Dashboards API](create-dashboards-programmatically.md) request to add that panel to another dashboard.
