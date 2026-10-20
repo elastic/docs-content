@@ -127,7 +127,7 @@ From the **Cortex** tab:
 - To edit a page yourself, open it and select **Edit**.
 
   :::{warning}
-  When you edit a Cortex page yourself, Elastic nightshift and the Elastic AI Agent can no longer change that page, and won't update the page with information from later investigations.
+  When you manually edit or create a Cortex page, Elastic nightshift and the Elastic AI Agent can't change it, and it won't be updated with information from later investigations.
   :::
 
 - To edit a page and let Elastic nightshift keep updating it, ask the Elastic AI Agent to make the change.
@@ -140,18 +140,9 @@ In **Memory**:
 
 ### Add knowledge [nightshift-get-started-knowledge-add]
 
-To tell Elastic nightshift about your systems before it runs an investigation, either create a Cortex page or have the Elastic AI Agent create one for you.
+Add knowledge by creating a Cortex page.
 
-:::{note}
-You can't add a Memory page. All Memory pages are created by Elastic nightshift.
-:::
-
-To create a page that only you can change and won't be updated during investigations:
-
-1. From **Knowledge**, select the **Cortex** tab.
-1. Select **New page** {icon}`plus`.
-1. In the **New Cortex page** dialog, select a **Type**. Enter a **Slug**, using lowercase words separated by hyphens, such as `checkout-latency-p99`, and a **Title**.
-1. Select **Create**, then open the page and select **Edit** to add your content.
+#### Ask the Elastic AI Agent to create a page
 
 To create a page that Elastic nightshift can update with information from investigations, ask the Elastic AI Agent to create it:
 
@@ -161,6 +152,15 @@ To create a page that Elastic nightshift can update with information from invest
    - Tell it where to find your runbooks.
    - Tell it anything you would want an on-call engineer to know.
 1. When the agent asks for permission to write to Cortex, select **Approve**.
+
+#### Create a page yourself
+
+Elastic nightshift uses a page you create exactly as you wrote it and it won't be updated by Elastic nightshift or the AI Agent at any point:
+
+1. From **Knowledge**, select the **Cortex** tab.
+1. Select **New page** {icon}`plus`.
+1. In the **New Cortex page** dialog, select a **Type**. Enter a **Slug**, using lowercase words separated by hyphens, such as `checkout-latency-p99`, and a **Title**.
+1. Select **Create**, then open the page and select **Edit** to add your content.
 
 ## Next steps [nightshift-get-started-next]
 
