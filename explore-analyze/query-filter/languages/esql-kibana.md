@@ -3,7 +3,7 @@ navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
-description: Overview of the ES|QL editor in Kibana, including query structure, editor tools, AI assistance, time filtering, variables, and query management.
+description: Learn how to use the ES|QL editor and its syntax help, KQL search, and AI-assisted capabilities to write ES|QL queries across Kibana, including Discover, dashboards, and alerting rules.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,11 +11,13 @@ products:
   - id: elasticsearch
 ---
 
-# Use ES|QL in the {{kib}} UI [esql-kibana]
+# Use {{esql}} in {{kib}} [esql-kibana]
 
-The {{esql}} editor lets you write, run, and manage [{{esql}}](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) queries across {{kib}}. Use it to query and aggregate your data, create visualizations, and set up alerts.
+Use the {{esql}} editor to query and aggregate your data across {{kib}}, including in [Discover](/explore-analyze/discover/use-esql.md), on [dashboards](/explore-analyze/visualize/esorql.md), and in [{{es}} query rules](/explore-analyze/alerting/alerts/rule-type-es-query.md) for alerting. The editor works in many areas, and some tools are available only in **Discover**. To see every area and the editor it uses, refer to [](#esql-kibana-areas).
 
-Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+As you write a query, the editor offers inline suggestions and syntax help, so you don't have to leave {{kib}} to check the syntax. You can also filter by time, add variables that make a query interactive, and reuse your recent and starred queries. This page describes these capabilities.
+
+To look up commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql
@@ -28,7 +30,7 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 
 | Area | What you can do | Editing experience |
 |------|-----------------|--------------------|
-| [Discover](/explore-analyze/discover/try-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
+| [Discover](/explore-analyze/discover/use-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
 | [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
 | [{{alerting-v2-system-cap}}](/explore-analyze/alerting/system-overview.md) | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
@@ -88,7 +90,7 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 :screenshot:
 :::
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In **Discover**, the editor includes interactive browsers for selecting data sources and field names from the autocomplete menu. Refer to [](/explore-analyze/discover/try-esql.md#discover-esql-resource-browsers) for details.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` In **Discover**, the editor includes interactive browsers for selecting data sources and field names from the autocomplete menu. Refer to [](/explore-analyze/discover/browse-esql-sources.md) for details.
 
 #### Query formatting [_make_your_query_readable]
 
@@ -249,7 +251,7 @@ Some {{esql}} commands have dedicated editor features beyond autocomplete, such 
 
 The {{esql}} editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
-In **Discover**, LOOKUP JOIN commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/try-esql.md#discover-esql-lookup-join).
+In **Discover**, `LOOKUP JOIN` commands let you create or edit lookup indices directly from the editor. Find more information in [](/explore-analyze/discover/create-lookup-indices.md).
 
 ##### Cross-cluster and cross-project lookup joins
 ```{applies_to}
@@ -334,7 +336,7 @@ Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-langu
 {{esql}} variables help you add interactive controls to your queries and make them more dynamic.
 
 They're available for:
-* [Discover queries](/explore-analyze/discover/try-esql.md#add-variable-control) {applies_to}`stack: ga 9.2`
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2+` [Discover queries](/explore-analyze/discover/esql-variable-controls.md)
 * [{{esql}} visualizations in dashboards](/explore-analyze/visualize/add-variable-controls.md)
 
 :::{include} ../../_snippets/variable-control-procedure.md
@@ -494,7 +496,7 @@ Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon
 
 Where it applies depends on the context:
 
-- In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
+- In [**Discover**](/explore-analyze/discover/use-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
 - In **Dashboards** or when previewing a dashboard created with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md), {icon}`bolt` **Fast mode** can return faster, estimated results for [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command. You can turn **Fast mode** on when the dashboard includes at least one {{esql}}-based panel.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Turning **Fast mode** on does not change a map with an {{esql}} layer. To approximate a `STATS` query on the map, use the [SET approximation directive](#esql-kibana-approximation) in the layer query. The option can still appear when that map is an {{esql}}-based panel on the dashboard.
 
@@ -542,7 +544,7 @@ An approximate query returns your usual `STATS` columns, plus two extra columns 
 - `_approximation_confidence_interval(<column>)`: The range that the exact value is very likely to fall within (with a 90% confidence level). For example, an estimated count of `769` shown with `[759, 779]` means the exact count is very likely between 759 and 779. A narrower range means a more precise estimate. It's empty when no range can be computed, and zero-width (such as `[769, 769]`) when the result is actually exact.
 - `_approximation_certified(<column>)`: Whether the estimate passed the statistical checks behind the confidence interval. `true` means the interval is reliable. `false` means the estimate might still be accurate, but the interval couldn't be fully validated.
 
-{applies_to}`{stack: "preview 9.5", serverless: "preview"}` In [**Discover**](/explore-analyze/discover/try-esql.md), these appear as additional columns in the results table. 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` In [**Discover**](/explore-analyze/discover/esql-results.md#esql-kibana-results-table), these appear as additional columns in the results table. 
 
 For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
@@ -550,7 +552,8 @@ For more details, refer to [Approximate `STATS` queries](elasticsearch://referen
 ## Related pages
 
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators.
-- [Using {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial and Discover-specific features like result tables, visualizations, and lookup indices.
+- [Get started with {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial for your first {{esql}} queries in Discover.
+- [Use Discover with {{esql}}](/explore-analyze/discover/use-esql.md): Discover tasks that are specific to {{esql}} mode.
 - [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
 - [Add variable controls to dashboards](/explore-analyze/visualize/add-variable-controls.md): Add {{esql}}-powered variable controls to dashboards.

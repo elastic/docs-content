@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
 navigation_title: Create from the UI
-description: Create a new Kibana dashboard from scratch by adding visualizations, controls, and organizing panels to display your data insights.
+description: Steps to create a dashboard in Kibana, from adding panels and controls to arranging the layout, setting display options, and saving.
 applies_to:
   stack: ga
   serverless: ga
@@ -13,7 +13,7 @@ type: how-to
 
 # Create a dashboard from the {{kib}} UI [create-dashboard]
 
-Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data.
+To build a dashboard panel by panel in {{product.kibana}}, start with an empty dashboard, add your content, and save it. If you need an overview or examples, refer to [](../dashboards.md).
 
 :::{tip} - New ways to create dashboards
 :applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
