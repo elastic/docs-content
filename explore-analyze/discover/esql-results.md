@@ -92,6 +92,8 @@ When a query without a command such as `KEEP` or `STATS` returns five or fewer c
 
 To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To inspect each result as an expandable tree of its fields instead of columns, set **View mode** to **JSON** in **Display options**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
+
 ### Add a column from the fields list
 
 Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same.

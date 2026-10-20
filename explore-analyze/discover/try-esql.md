@@ -147,7 +147,7 @@ You can also filter from the table, so you don't need to enter the field name an
 
 :::{tip}
 :applies_to: { serverless: preview, stack: preview 9.3+ }
-If you know KQL, you can also filter from the editor's [search bar](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search). When you submit a KQL query there, Discover replaces your whole query with a `FROM` command and a `WHERE KQL()` line that contains your KQL query. Commands such as `KEEP` are removed, so to keep building on your query, use `WHERE`.
+If you know KQL, you can also filter from the editor's [search bar](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search). When you submit a KQL query there, the editor replaces the query with a source command (`TS` if the query starts with `TS`, otherwise `FROM`) and a `WHERE KQL()` line that contains your KQL query. Commands such as `KEEP` are removed, so to keep building on your query, use `WHERE`.
 :::
 
 ::::
@@ -243,7 +243,7 @@ To share the session, refer to [Share your Discover session](discover-get-starte
 - [Create lookup indices from Discover queries](create-lookup-indices.md): Add fields from a lookup index with `LOOKUP JOIN`.
 - [Detect change points in Discover](detect-change-points.md): Find a spike, dip, or shift in a time series.
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Look up commands, functions, and operators beyond this tutorial.
-- [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md): Use editor tools, time parameters, AI assistance, and Fast mode.
+- [](../query-filter/languages/esql-kibana.md): Use editor tools, time parameters, AI assistance, and Fast mode.
 - [Learn data exploration and visualization with Kibana](../kibana-data-exploration-learning-tutorial.md): Follow a longer path from Discover into dashboards.
 
 ## Related pages

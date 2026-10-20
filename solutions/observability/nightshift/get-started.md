@@ -38,7 +38,7 @@ The investigation appears on the home page, where you can open it to follow its 
 If an alert needs a closer look, run an investigation into it to find out what happened and how to fix it. Start an investigation from either the [alerts table](#nightshift-get-started-alerts-table) or from an [alert notification](#nightshift-get-started-alert-details).
 
 :::{note}
-Investigations from an alert work only with alerts created by [{{kib}} alerting](/explore-analyze/alerting/alerts.md). They don't work with alert episodes from the [{{alerting-v2-system}}](/explore-analyze/alerting/system-overview.md).
+Investigations from an alert work only with alerts created by [{{kib}} alerting](/explore-analyze/alerting/alerts.md). They don't work with alert episodes from the [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md).
 :::
 
 ### From the Alerts table [nightshift-get-started-alerts-table]
