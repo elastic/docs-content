@@ -13,7 +13,7 @@ products:
 
 # Connect to Amazon Bedrock
 
-This page provides step-by-step instructions for setting up an Amazon Bedrock connector for the first time. This connector type enables you to leverage large language models (LLMs) within {{kib}}. You’ll first need to configure AWS, then configure the connector in {{kib}}.
+This page provides step-by-step instructions for connecting {{kib}} to large language models (LLMs) in Amazon Bedrock. You’ll first need to configure AWS, then connect {{kib}} to Amazon Bedrock.
 
 ::::{note}
 All models in Amazon Bedrock's `Claude` model group are supported.
@@ -94,16 +94,25 @@ The following video demonstrates these steps (click to watch).
 
 
 
-## Configure the Amazon Bedrock connector [_configure_the_amazon_bedrock_connector]
+## Connect {{kib}} to Amazon Bedrock [_configure_the_amazon_bedrock_connector]
 
-```{applies_to}
-stack: deprecated =9.5, removed 9.6+
-serverless: unavailable
-```
+::::::{applies-switch}
 
-:::{include} _snippets/deprecated-llm-connector-note.md
-:::
+:::::{applies-item} { stack: ga 9.5+, serverless: ga }
+Create an {{infer}} endpoint so that {{kib}} can use Amazon Bedrock models. AI features in {{kib}} can use only endpoints with the `chat_completion` task type.
 
+1. Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Add endpoint**.
+3. Select **Amazon Bedrock** as the service.
+4. For **Provider**, select the provider of your model, for example Anthropic. For **Model**, enter the model ID.
+5. For **Region**, enter the AWS region where your model is available.
+6. Enter the access key and secret key that you generated earlier.
+7. Select the `chat_completion` task type, then select **Save**.
+
+For more information about adding endpoints, refer to [External {{infer}}](/explore-analyze/elastic-inference/external.md#add-inference-endpoints).
+:::::
+
+:::::{applies-item} stack: ga 9.0-9.4
 Finally, configure the connector in {{kib}}:
 
 1. Log in to {{kib}}.
@@ -131,3 +140,6 @@ If you’re using [provisioned throughput](https://docs.aws.amazon.com/bedrock/l
 The following video demonstrates these steps (click to watch).
 
 [![bedrock-configure-model-video](https://play.vidyard.com/QJe4RcTJbp6S6m9CkReEXs.jpg)](https://videos.elastic.co/watch/QJe4RcTJbp6S6m9CkReEXs?)
+:::::
+
+::::::

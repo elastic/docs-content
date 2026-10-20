@@ -191,16 +191,27 @@ You can monitor the performance of the host running LM Studio using Elastic’s 
 :::
 
 
-## Configure the connector in your Elastic deployment [_configure_the_connector_in_your_elastic_deployment]
+## Connect your Elastic deployment to LM Studio [_configure_the_connector_in_your_elastic_deployment]
 
-```{applies_to}
-stack: deprecated =9.5, removed 9.6+
-serverless: unavailable
-```
+::::::{applies-switch}
 
-:::{include} _snippets/deprecated-llm-connector-note.md
-:::
+:::::{applies-item} { stack: ga 9.5+, serverless: ga }
+Create an {{infer}} endpoint so that {{kib}} can use the model that you loaded in LM Studio. AI features in {{kib}} can use only endpoints with the `chat_completion` task type.
 
+1. Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Add endpoint**.
+3. Select **OpenAI** as the service. LM Studio uses the OpenAI SDK, so the OpenAI service enables this use case.
+4. For **URL**, enter the domain name specified in your Nginx configuration file, followed by `/v1/chat/completions`.
+5. For **Model ID**, enter `local-model`.
+6. For **API Key**, enter the secret token specified in your Nginx configuration file.
+7. Select the `chat_completion` task type, then select **Save**.
+
+Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features.
+
+For more information about adding endpoints, refer to [External {{infer}}](/explore-analyze/elastic-inference/external.md#add-inference-endpoints).
+:::::
+
+:::::{applies-item} stack: ga 9.0-9.4
 Finally, configure the connector:
 
 1. Log in to your Elastic deployment.
@@ -217,6 +228,9 @@ Finally, configure the connector:
 :::
 
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features. You can test a variety of models as you interact with AI Assistant to see what works best without having to update your connector.
+:::::
+
+::::::
 
 ::::{note}
 Self-managed models are likely to improve over time. As they do, using one for [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) may become more viable. For current guidance, refer to the warning near the top of this page.

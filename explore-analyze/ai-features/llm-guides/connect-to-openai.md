@@ -13,7 +13,7 @@ products:
 
 # Connect to OpenAI
 
-This page provides step-by-step instructions for setting up an OpenAI connector for the first time. This connector type enables you to leverage OpenAI’s large language models (LLMs) within {{kib}}. You’ll first need to create an OpenAI API key, then configure the connector in {{kib}}.
+This page provides step-by-step instructions for connecting {{kib}} to OpenAI’s large language models (LLMs). You’ll first need to create an OpenAI API key, then connect {{kib}} to OpenAI.
 
 
 ## Configure OpenAI [_configure_openai]
@@ -43,16 +43,24 @@ The following video demonstrates these steps (click to watch).
 [![openai-apikey-video](https://play.vidyard.com/vbD7fGBGgyxK4TRbipeacL.jpg)](https://videos.elastic.co/watch/vbD7fGBGgyxK4TRbipeacL?)
 
 
-## Configure the OpenAI connector [_configure_the_openai_connector]
+## Connect {{kib}} to OpenAI [_configure_the_openai_connector]
 
-```{applies_to}
-stack: deprecated =9.5, removed 9.6+
-serverless: unavailable
-```
+::::::{applies-switch}
 
-:::{include} _snippets/deprecated-llm-connector-note.md
-:::
+:::::{applies-item} { stack: ga 9.5+, serverless: ga }
+Create an {{infer}} endpoint so that {{kib}} can use OpenAI models. AI features in {{kib}} can use only endpoints with the `chat_completion` task type.
 
+1. Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Add endpoint**.
+3. Select **OpenAI** as the service.
+4. For **API Key**, paste the API key that you created.
+5. For **Model ID**, enter the name of the [model](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4) you want to use. The **URL** field is optional.
+6. Select the `chat_completion` task type, then select **Save**.
+
+For more information about adding endpoints, refer to [External {{infer}}](/explore-analyze/elastic-inference/external.md#add-inference-endpoints).
+:::::
+
+:::::{applies-item} stack: ga 9.0-9.4
 To integrate with {{kib}}:
 
 1. Log in to {{kib}}.
@@ -67,3 +75,6 @@ To integrate with {{kib}}:
 The following video demonstrates these steps (click to watch).
 
 [![openai-configure-connector-video](https://play.vidyard.com/BGaQ73KBJCzeqWoxXkQvy9.jpg)](https://videos.elastic.co/watch/BGaQ73KBJCzeqWoxXkQvy9?)
+:::::
+
+::::::
