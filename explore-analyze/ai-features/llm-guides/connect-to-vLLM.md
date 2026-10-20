@@ -7,6 +7,9 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: vLLM
+  inference-service: OpenAI
 ---
 
 # Connect to your own LLM using vLLM (air-gapped environments)
@@ -23,9 +26,9 @@ The steps below show one example configuration, but you can use any model suppor
 
 ## Connect vLLM to {{kib}}
 
-::::::{stepper}
+:::::::{stepper}
 
-:::::{step} Configure your host server
+::::::{step} Configure your host server
 
 To support this use case, you need a powerful server. For example, we tested a server with the following specifications:
 
@@ -39,9 +42,9 @@ To support this use case, you need a powerful server. For example, we tested a s
 
 Set up your server then install all necessary GPU drivers.
 
-:::::
+::::::
 
-:::::{step} Generate auth tokens
+::::::{step} Generate auth tokens
 
 
 1. (Optional) Create a Hugging Face user token. If you plan to use a gated model (such as Llama 3.1) or a private model, create a [Hugging Face user access token](https://huggingface.co/docs/hub/en/security-tokens).
@@ -51,9 +54,9 @@ Set up your server then install all necessary GPU drivers.
 
 2. Create an OpenAI-compatible secret token. Generate a strong, random string and save it in a secure location. You need the secret token to authenticate communication between Elastic and your reverse proxy.
 
-:::::
+::::::
 
-:::::{step} Run your vLLM container
+::::::{step} Run your vLLM container
 
 To pull and run your chosen vLLM image:
 
@@ -100,9 +103,9 @@ docker run \
 Verify the container's status by running the `docker ps -a` command. The output should show the value you specified for the `--name` parameter.
 :::
 
-:::::
+::::::
 
-:::::{step} Expose the API with a reverse proxy
+::::::{step} Expose the API with a reverse proxy
 
 Using a reverse proxy improves stability for this use case. This example uses Nginx, which supports monitoring by means of Elastic's native Nginx integration. The example Nginx configuration forwards traffic to the vLLM container and uses a secret token for authentication.
 
@@ -138,27 +141,25 @@ server {
 For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to Nginx, but it is not recommended for production use.
 :::
 
-:::::
+::::::
 
-:::::{step} Connect your Elastic deployment to vLLM
+::::::{step} Connect your Elastic deployment to vLLM
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.5+, serverless: ga }
-Create an {{infer}} endpoint to link your Elastic deployment to your vLLM instance. AI features in {{kib}} can use only endpoints with the `chat_completion` task type.
+::::{applies-item} { stack: ga 9.5+, serverless: ga }
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-1. Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select **Add endpoint**.
-3. Select **OpenAI** as the service. vLLM serves an OpenAI-compatible API.
+vLLM serves an OpenAI-compatible API, so you create the endpoint with the OpenAI service.
+
 4. For **URL**, enter your server's public URL followed by `/v1/chat/completions`.
 5. For **Model ID**, enter `mistralai/[YOUR_MODEL_ID]`.
 6. For **API Key**, enter the secret token you created in Step 1 and specified in your Nginx configuration file.
 7. Select the `chat_completion` task type, then select **Save**.
+::::
 
-For more information about adding endpoints, refer to [External {{infer}}](/explore-analyze/elastic-inference/external.md#add-inference-endpoints).
-:::
-
-:::{applies-item} stack: ga 9.0-9.4
+::::{applies-item} stack: ga 9.0-9.4
 Create an OpenAI connector to link your Elastic deployment to your vLLM instance. The OpenAI connector works because vLLM serves an OpenAI-compatible API.
 
 1. In {{kib}}, navigate to the **Connectors** page, click **Create Connector**, and select **OpenAI**.
@@ -189,12 +190,12 @@ Create an OpenAI connector to link your Elastic deployment to your vLLM instance
     3. The `content` field must remain empty for any assistant message that performs a tool call.
     4. Only use tool calls defined in the "tools" parameter.
     ```
-:::
-
 ::::
 
 :::::
+
 ::::::
+:::::::
 
 Setup is now complete. The model served by your vLLM container can now power Elastic's generative AI features.
 

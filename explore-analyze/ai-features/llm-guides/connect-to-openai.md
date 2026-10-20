@@ -9,6 +9,9 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: OpenAI
+  inference-service: OpenAI
 ---
 
 # Connect to OpenAI
@@ -48,16 +51,12 @@ The following video demonstrates these steps (click to watch).
 ::::::{applies-switch}
 
 :::::{applies-item} { stack: ga 9.5+, serverless: ga }
-Create an {{infer}} endpoint so that {{kib}} can use OpenAI models. AI features in {{kib}} can use only endpoints with the `chat_completion` task type.
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-1. Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select **Add endpoint**.
-3. Select **OpenAI** as the service.
 4. For **API Key**, paste the API key that you created.
 5. For **Model ID**, enter the name of the [model](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4) you want to use. The **URL** field is optional.
 6. Select the `chat_completion` task type, then select **Save**.
-
-For more information about adding endpoints, refer to [External {{infer}}](/explore-analyze/elastic-inference/external.md#add-inference-endpoints).
 :::::
 
 :::::{applies-item} stack: ga 9.0-9.4

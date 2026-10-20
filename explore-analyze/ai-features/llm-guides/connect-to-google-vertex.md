@@ -9,6 +9,9 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: Google Vertex AI
+  inference-service: Google Vertex AI
 ---
 
 # Connect to Google Vertex
@@ -69,17 +72,13 @@ The following video demonstrates these steps.
 ::::::{applies-switch}
 
 :::::{applies-item} { stack: ga 9.5+, serverless: ga }
-Create an {{infer}} endpoint so that {{kib}} can use Gemini models on Vertex AI. AI features in {{kib}} can use only endpoints with the `chat_completion` task type.
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-1. Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select **Add endpoint**.
-3. Select **Google Vertex AI** as the service.
 4. For **Model ID**, enter a Gemini model ID such as `gemini-1.5-flash`. [Learn more about the models](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models).
 5. For **GCP Region** and **GCP Project**, enter your region and project ID.
 6. For **Credentials JSON**, enter the key JSON that you generated.
 7. Select the `chat_completion` task type, then select **Save**.
-
-For more information about adding endpoints, refer to [External {{infer}}](/explore-analyze/elastic-inference/external.md#add-inference-endpoints).
 :::::
 
 :::::{applies-item} stack: ga 9.0-9.4

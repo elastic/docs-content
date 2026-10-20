@@ -10,6 +10,9 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: LM Studio
+  inference-service: OpenAI
 ---
 
 # Connect to a local LLM for {{elastic-sec}} using LM Studio
@@ -196,19 +199,17 @@ You can monitor the performance of the host running LM Studio using Elastic’s 
 ::::::{applies-switch}
 
 :::::{applies-item} { stack: ga 9.5+, serverless: ga }
-Create an {{infer}} endpoint so that {{kib}} can use the model that you loaded in LM Studio. AI features in {{kib}} can use only endpoints with the `chat_completion` task type.
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-1. Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select **Add endpoint**.
-3. Select **OpenAI** as the service. LM Studio uses the OpenAI SDK, so the OpenAI service enables this use case.
+LM Studio uses the OpenAI SDK, so the OpenAI service enables this use case.
+
 4. For **URL**, enter the domain name specified in your Nginx configuration file, followed by `/v1/chat/completions`.
 5. For **Model ID**, enter `local-model`.
 6. For **API Key**, enter the secret token specified in your Nginx configuration file.
 7. Select the `chat_completion` task type, then select **Save**.
 
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features.
-
-For more information about adding endpoints, refer to [External {{infer}}](/explore-analyze/elastic-inference/external.md#add-inference-endpoints).
 :::::
 
 :::::{applies-item} stack: ga 9.0-9.4

@@ -9,6 +9,9 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: Amazon Bedrock
+  inference-service: Amazon Bedrock
 ---
 
 # Connect to Amazon Bedrock
@@ -99,17 +102,13 @@ The following video demonstrates these steps (click to watch).
 ::::::{applies-switch}
 
 :::::{applies-item} { stack: ga 9.5+, serverless: ga }
-Create an {{infer}} endpoint so that {{kib}} can use Amazon Bedrock models. AI features in {{kib}} can use only endpoints with the `chat_completion` task type.
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-1. Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select **Add endpoint**.
-3. Select **Amazon Bedrock** as the service.
 4. For **Provider**, select the provider of your model, for example Anthropic. For **Model**, enter the model ID.
 5. For **Region**, enter the AWS region where your model is available.
 6. Enter the access key and secret key that you generated earlier.
 7. Select the `chat_completion` task type, then select **Save**.
-
-For more information about adding endpoints, refer to [External {{infer}}](/explore-analyze/elastic-inference/external.md#add-inference-endpoints).
 :::::
 
 :::::{applies-item} stack: ga 9.0-9.4
