@@ -19,7 +19,7 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also read and update the metadata and attachments of {{agent-builder}} conversations.
 
-The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the default model configured for the workflow is used.
+The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID from the workflow step: configure a Generative AI connector in {{kib}} and pass `connector-id`, or, for [`ai.agent`](#ai-agent), pass `inference-id` with an {{infer}} endpoint ID instead. When you omit both, the step uses the workflow's default model.
 
 :::{note}
 :applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
@@ -41,7 +41,7 @@ Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}
 - [`ai.attachment.read`](#ai-attachment-read): Read the content of an attachment. {applies_to}`stack: ga 9.6+`
 - [`ai.attachment.list`](#ai-attachment-list): List the attachments in a conversation. {applies_to}`stack: ga 9.6+`
 
-In `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, the `connector-id`, `agent-id`, and `inference-id` fields are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`).
+In `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, the `connector-id`, `agent-id`, and `inference-id` fields are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) in **kebab-case**. They aren't nested under `with`, and they aren't `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`).
 
 ::::{applies-switch}
 :::{applies-item} { stack: ga 9.5, serverless: ga }
@@ -289,12 +289,20 @@ serverless: ga
 
 Read and update the metadata of an {{agent-builder}} conversation. Metadata is a set of structured fields, such as `status` or `severity`, defined by the template applied to the conversation. Use these steps to branch a workflow on a field value, or to record the outcome of a workflow on the conversation.
 
-Only conversations with a template have metadata. To create a conversation with a template from a workflow, use `ai.conversation.create` with `template_id` set to a built-in template: `investigation` or `escalation`. Conversations that `ai.agent` creates, or that users start in chat, have no template. The examples in this section use the `investigation` template, where `status` accepts `open` or `closed`.
+Only conversations with a template have metadata:
 
-All parameters go in the `with` block and use `snake_case`.
+- Conversations that `ai.agent` creates, or that users start in chat, have no template.
+- To create a conversation with a template from a workflow, use `ai.conversation.create` with `template_id` set to a built-in template: `investigation` or `escalation`.
+
+The examples in this section use the `investigation` template, where `status` accepts `open` or `closed`.
 
 :::{note}
-These steps run with the privileges of the user who authorizes the run. That user must own the conversation or be a member of it, or the conversation must be public. The user also needs access to the agent the conversation uses. Otherwise, the step fails with a `Conversation <id> not found` error. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
+These steps run with the privileges of the user who authorizes the run. That user needs:
+
+- Access to the conversation: they own it, are a member of it, or the conversation is public.
+- Access to the agent the conversation uses.
+
+Otherwise, the step fails with a `Conversation <id> not found` error. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
 :::
 
 ### `ai.conversation.metadata.read` [ai-conversation-metadata-read]
@@ -327,12 +335,22 @@ Read all metadata fields of a conversation.
 
 Update one or more metadata fields of a conversation. The step merges your values into the existing metadata. Fields you don't include keep their current values.
 
-The conversation must have a template applied, and you can only set fields that the template defines. Each value must match the type and constraints of its field, such as the allowed options of a select field. You can't set a field to `null`.
+The conversation must have a template applied. In addition:
+
+- You can only set fields that the template defines.
+- Each value must match the type and constraints of its field, such as the allowed options of a select field.
+- You can't set a field to `null`.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `conversation_id` | `with` | string | Yes | Conversation to update. |
-| `updates` | `with` | object | Yes | Fields to set, as 1 to 100 key-value pairs. Each key can be up to 256 characters. Each value can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each). |
+| `updates` | `with` | object | Yes | Fields to set, as key-value pairs. For size limits, refer to the list after this table. |
+
+The `updates` object has the following limits:
+
+- 1 to 100 key-value pairs.
+- Keys up to 256 characters.
+- Values can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each).
 
 **Output shape:**
 
@@ -362,7 +380,9 @@ serverless: ga
 
 Add, update, delete, read, and list the attachments of an {{agent-builder}} conversation. Each attachment has a type, such as `text`, and keeps a version history of its content.
 
-All parameters go in the `with` block and use `snake_case`. Every attachment step takes the `conversation_id` of the conversation the attachment belongs to. The examples in this section use the conversation created by the `investigate` step in [Example: Call an agent](#example-call-an-agent).
+All parameters go in the `with` block and use `snake_case`. Every attachment step takes the `conversation_id` of the conversation the attachment belongs to.
+
+The examples in this section use the conversation created by the `investigate` step in [Example: Call an agent](#example-call-an-agent).
 
 These steps follow the same access rules as the [conversation metadata steps](#ai-conversation-metadata-steps): the user who authorizes the run must be able to access the conversation.
 
@@ -375,11 +395,13 @@ Add an attachment to a conversation.
 | `conversation_id` | `with` | string | Yes | Conversation to add the attachment to. |
 | `type` | `with` | string | Yes | Attachment type, such as `text`. The step fails if the type doesn't exist. |
 | `data` | `with` | any | Depends | Attachment content. Its shape depends on `type`. For `text`, use `{ content: "<text>" }`. Required unless you set `origin`. |
-| `origin` | `with` | string | Depends | Reference to the object the content comes from, such as a dashboard ID, up to 2,048 characters. Required unless you set `data`. If you set `origin` without `data`, the content is loaded once, when the attachment is created. Not all attachment types support `origin`. For example, `text` doesn't. |
+| `origin` | `with` | string | Depends | Reference to the object the content comes from, such as a dashboard ID, up to 2,048 characters. Required unless you set `data`. |
 | `id` | `with` | string | No | Attachment ID, up to 256 characters. Generated if omitted. The step fails if the conversation already has an attachment with this ID. |
 | `description` | `with` | string | No | Description of the attachment, up to 1,024 characters. |
 | `hidden` | `with` | boolean | No | When `true`, the attachment isn't shown to the user, but the agent can still use it. A hidden attachment is never displayed inline. |
 | `render_inline` | `with` | boolean | No | When `true`, the attachment is displayed as soon as a user opens the conversation, even if the agent doesn't refer to it. Defaults to `false`. |
+
+If you set `origin` without `data`, the content is loaded once, when the attachment is created. Not all attachment types support `origin`. For example, `text` doesn't.
 
 **Output shape:**
 
@@ -403,7 +425,9 @@ Add an attachment to a conversation.
 
 ### `ai.attachment.update` [ai-attachment-update]
 
-Update the content or description of an attachment. The step creates a new version only when `data` differs from the current content. Updating only `description` doesn't create a new version. You can't update a deleted attachment.
+Update the content or description of an attachment. You can't update a deleted attachment.
+
+The step creates a new version only when `data` differs from the current content. Updating only `description` doesn't create a new version.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -427,9 +451,9 @@ Update the content or description of an attachment. The step creates a new versi
 
 ### `ai.attachment.delete` [ai-attachment-delete]
 
-Delete an attachment from a conversation. By default, the attachment is marked inactive but kept, so you can still list it with `include_deleted: true`. To remove the attachment completely, set `permanent: true`.
+Delete an attachment from a conversation. By default, the step marks the attachment inactive but keeps it, so you can still list it with `include_deleted: true`. To remove the attachment completely, set `permanent: true`.
 
-A permanent delete fails if the agent has already read, updated, or compared versions of the attachment in the conversation. A regular delete still works in that case.
+A permanent deletion fails if the agent has already read, updated, or compared versions of the attachment in the conversation. A regular deletion still works in that case.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|

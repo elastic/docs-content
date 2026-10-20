@@ -125,6 +125,8 @@ An agent can delegate tasks to subagents. A subagent is another agent, or a copy
 
 ### Configure subagents
 
+New custom agents have subagents turned off. By default, the Elastic AI Agent can delegate to a copy of itself. If the Elastic AI Agent existed in a space before subagents were available, for example after an upgrade, it keeps its configuration without subagents.
+
 To change an agent's subagents, you need permission to edit the agent.
 
 1. Edit the agent and go to the **Subagents** section of the **Settings** tab. You can also select **Edit agent settings** on the agent's **Overview** page.
@@ -140,13 +142,18 @@ The following example shows an agent that can delegate tasks to a copy of itself
 :width: 700px
 :::
 
-New custom agents have subagents turned off. By default, the Elastic AI Agent can delegate to a copy of itself. If the Elastic AI Agent already existed in a space before subagents were available, for example after an upgrade from an earlier version, it keeps its existing configuration without subagents.
+To configure subagents with the Agents API, set `configuration.subagent_ids` when you [create]({{kib-apis}}operation/operation-post-agent-builder-agents) or [update]({{kib-apis}}operation/operation-put-agent-builder-agents-id) an agent:
 
-To configure subagents with the Agents API, set `configuration.subagent_ids` when you [create]({{kib-apis}}operation/operation-post-agent-builder-agents) or [update]({{kib-apis}}operation/operation-put-agent-builder-agents-id) an agent. The list takes up to 50 unique IDs of agents that you can access. To let the agent delegate to a copy of itself, use `_self`. You can't use the agent's own ID. An empty list turns subagents off. If you omit `subagent_ids` when you update an agent, the agent keeps its current list.
+- The list takes up to 50 unique IDs of agents that you can access.
+- To let the agent delegate to a copy of itself, use `_self`. You can't use the agent's own ID.
+- An empty list turns subagents off.
+- If you omit `subagent_ids` when you update an agent, the agent keeps its current list.
 
 ### How subagents run
 
-The agent decides when to delegate a task and writes the task instructions for the subagent. The subagent doesn't see the conversation, only those task instructions. A copy of the agent has the same custom instructions, tools, and skills as the agent.
+The agent decides when to delegate a task and writes the task instructions for the subagent. The subagent doesn't see the conversation, only those instructions.
+
+A copy of the agent (self-fork) has the same custom instructions, tools, and skills as the agent.
 
 The agent can wait for a subagent to finish, or let the subagent run in the background while it continues working. Background subagents are available only in saved conversations.
 
