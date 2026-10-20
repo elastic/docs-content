@@ -101,13 +101,10 @@ helm upgrade elastic-operator elastic/eck-operator -n elastic-system
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
-```{applies_to}
-deployment:
-  eck: ga 3.6+
-```
+{applies_to}`eck: ga 3.6+`
 
 ```shell subs=true
 helm upgrade elastic-operator oci://docker.elastic.co/eck-charts/eck-operator --version {{version.eck}} -n elastic-system

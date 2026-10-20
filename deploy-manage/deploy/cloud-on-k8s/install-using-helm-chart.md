@@ -11,7 +11,10 @@ products:
 
 # Install ECK using a Helm chart [k8s-install-helm]
 
-You can install ECK using a Helm chart from the Elastic Helm repository or from the Elastic container registry.
+You can install ECK using a Helm chart from the following sources:
+
+* The Elastic Helm repository
+* {applies_to}`eck: ga 3.6+` The {{container-registry}}
 
 ::::::{tab-set}
 :group: eck-helm-source
@@ -27,23 +30,24 @@ helm repo update
 ```
 
 :::{note}
-The minimum supported version of Helm is {{eck_helm_minimum_version}}.
+The minimum supported version of Helm for this method is {{eck_helm_minimum_version}}.
 :::
 
 ::::
 
-::::{tab-item} OCI registry
+::::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
-```{applies_to}
-deployment:
-  eck: ga 3.6+
-```
+{applies_to}`eck: ga 3.6+`
 
-The chart is available as an Open Container Initiative (OCI) artifact in the Elastic container registry, at `docker.elastic.co/eck-charts`. You do not add a Helm repository. Instead, you refer to each chart with an `oci://` URL, as the examples on this page show. You must specify the chart version with the `--version` option. For the `eck-operator` and `eck-operator-crds` charts, the chart version is the ECK version.
+The chart is available as an Open Container Initiative (OCI) artifact in the {{container-registry}} at `docker.elastic.co/eck-charts`.
+
+To use this type of artifact, you do not add a Helm repository. Instead, refer to each chart with an `oci://` URL, as the examples on this page show.
+
+You must specify the chart version with the `--version` option. For the `eck-operator` and `eck-operator-crds` charts, the chart version is the ECK version.
 
 :::{note}
-The minimum supported version of Helm is {{eck_helm_oci_minimum_version}}.
+The minimum supported version of Helm for this method is {{eck_helm_oci_minimum_version}}.
 :::
 
 ::::
@@ -75,7 +79,7 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -104,7 +108,7 @@ helm install elastic-operator-crds elastic/eck-operator-crds
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -134,7 +138,7 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -150,8 +154,17 @@ helm install elastic-operator oci://docker.elastic.co/eck-charts/eck-operator --
 
 ::::
 
-:::::{note}
-The `eck-operator` chart contains several pre-defined profiles to help you install the operator in different configurations. These profiles can be found in the root of the chart directory, prefixed with `profile-`. For example, the restricted configuration illustrated in the previous code extract is defined in the `profile-restricted.yaml` file, and can be used as follows:
+The previous example disabled the validation webhook along with all other cluster-wide resources. If you need to enable the validation webhook in a restricted environment, see [](./webhook-namespace-selectors.md). To understand what the validation webhook does, refer to [](./configure-validating-webhook.md).
+
+::::{tip}
+:applies_to: eck: ga 3.5
+
+Instead of a static list of namespaces, the operator can also select the namespaces to manage dynamically, based on their labels. Refer to [](./dynamic-namespace-handling.md) for details. Note that this feature requires cluster-wide permissions and is therefore not compatible with the restricted installation mode.
+::::
+
+#### Using a profile file [k8s-install-helm-profiles]
+
+As an alternative to setting each `--set` option manually, you can install the operator with a pre-defined profile from the `eck-operator` chart. A profile is a values file that sets all the options for a specific installation type. Profile files are in the root of the chart directory and are prefixed with `profile-`. For example, the restricted configuration from the previous example is defined in the `profile-restricted.yaml` file, and can be used as follows:
 
 ::::{tab-set}
 :group: eck-helm-source
@@ -159,17 +172,18 @@ The `eck-operator` chart contains several pre-defined profiles to help you insta
 :::{tab-item} Helm repository
 :sync: helm-repository
 
+To get the profile files, download and extract the chart with the `helm pull` command. The command extracts the chart to the `eck-operator` directory. You can also find the profile files in the Helm cache directory or in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-operator).
+
 ```sh
+helm pull elastic/eck-operator --untar
 helm install elastic-operator elastic/eck-operator -n elastic-system --create-namespace \
-  --values="${CHART_DIR}/profile-restricted.yaml" \
+  --values="eck-operator/profile-restricted.yaml" \
   --set=managedNamespaces='{namespace-a, namespace-b}'
 ```
 
-You can find the profile files in the Helm cache directory or in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-operator).
-
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 To get the profile files, download and extract the chart with the `helm pull` command. The command extracts the chart to the `eck-operator` directory. You can also find the profile files in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-operator).
@@ -183,15 +197,6 @@ helm install elastic-operator oci://docker.elastic.co/eck-charts/eck-operator --
 
 :::
 
-::::
-:::::
-
-The previous example disabled the validation webhook along with all other cluster-wide resources. If you need to enable the validation webhook in a restricted environment, see [](./webhook-namespace-selectors.md). To understand what the validation webhook does, refer to [](./configure-validating-webhook.md).
-
-::::{tip}
-:applies_to: eck: ga 3.5
-
-Instead of a static list of namespaces, the operator can also select the namespaces to manage dynamically, based on their labels. Refer to [](./dynamic-namespace-handling.md) for details. Note that this feature requires cluster-wide permissions and is therefore not compatible with the restricted installation mode.
 ::::
 
 ## View available configuration options [k8s-install-helm-show-values]
@@ -210,7 +215,7 @@ helm show values elastic/eck-operator
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true

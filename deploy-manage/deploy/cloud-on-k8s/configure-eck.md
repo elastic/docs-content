@@ -43,13 +43,8 @@ helm show values elastic/eck-operator
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
-
-```{applies_to}
-deployment:
-  eck: ga 3.6+
-```
 
 ```sh subs=true
 helm show values oci://docker.elastic.co/eck-charts/eck-operator --version {{version.eck}}
@@ -84,7 +79,7 @@ helm upgrade elastic-operator elastic/eck-operator -f my-values-file.yaml -n ela
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -109,7 +104,7 @@ helm upgrade elastic-operator elastic/eck-operator --set config.caValidity=43800
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true

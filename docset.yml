@@ -285,6 +285,7 @@ subs:
   managed-integrations:   "Elastic Managed integrations"
   package-registry:   "Elastic Package Registry"
   artifact-registry:   "Elastic Artifact Registry"
+  container-registry:   "Elastic Container Registry"
   aws:   "AWS"
   gcp:   "GCP"
   stack:   "Elastic Stack"

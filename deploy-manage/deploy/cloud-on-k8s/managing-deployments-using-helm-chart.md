@@ -11,7 +11,10 @@ products:
 
 # {{stack}} Helm chart [k8s-stack-helm-chart]
 
-You can manage {{stack}} resources with the ECK Operator using a Helm chart from the Elastic Helm repository or from the Elastic container registry.
+You can manage {{stack}} resources with the ECK Operator using a Helm chart from the following sources:
+
+* The Elastic Helm repository
+* {applies_to}`eck: ga 3.6+` The {{container-registry}}
 
 ::::::{tab-set}
 :group: eck-helm-source
@@ -27,23 +30,24 @@ helm repo update
 ```
 
 :::{note}
-The minimum supported version of Helm is {{eck_helm_minimum_version}}.
+The minimum supported version of Helm for this method is {{eck_helm_minimum_version}}.
 :::
 
 ::::
 
-::::{tab-item} OCI registry
+::::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
-```{applies_to}
-deployment:
-  eck: ga 3.6+
-```
+{applies_to}`eck: ga 3.6+`
 
-The chart is available as an Open Container Initiative (OCI) artifact in the Elastic container registry, at `docker.elastic.co/eck-charts`. You do not add a Helm repository. Instead, you refer to each chart with an `oci://` URL, as the examples on this page show. You must specify the chart version with the `--version` option.
+The chart is available as an Open Container Initiative (OCI) artifact in the {{container-registry}} at `docker.elastic.co/eck-charts`.
+
+To use this type of artifact, you do not add a Helm repository. Instead, refer to each chart with an `oci://` URL, as the examples on this page show.
+
+You must specify the chart version with the `--version` option.
 
 :::{note}
-The minimum supported version of Helm is {{eck_helm_oci_minimum_version}}.
+The minimum supported version of Helm for this method is {{eck_helm_oci_minimum_version}}.
 :::
 
 ::::
@@ -77,7 +81,7 @@ helm install es-kb-quickstart elastic/eck-stack -n elastic-stack --create-namesp
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -110,7 +114,7 @@ helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -142,7 +146,7 @@ helm install eck-stack-with-fleet elastic/eck-stack \
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -173,7 +177,7 @@ helm install eck-stack-with-logstash elastic/eck-stack \
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -204,7 +208,7 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -239,7 +243,7 @@ helm install eck-stack-with-autoops elastic/eck-stack \
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -278,7 +282,7 @@ helm install eck-stack-with-package-registry elastic/eck-stack \
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -324,7 +328,7 @@ helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -351,7 +355,7 @@ helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-n
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -376,7 +380,7 @@ When running `helm upgrade`, it’s recommended to pass the same values and conf
 Helm provides additional options to control how values associated with an existing release are reused or reset during an upgrade. For details, refer to the [`helm upgrade` documentation](https://helm.sh/docs/helm/helm_upgrade/).
 ::::
 
-When you use the Elastic Helm repository, `helm upgrade` uses the latest available version of the chart unless the `--version` option is specified. When you use the OCI registry, you must always specify the `--version` option. Refer to [View chart versions](#show-versions) to list the available chart versions or the version associated with an installed release.
+When you use the Elastic Helm repository, `helm upgrade` uses the latest available version of the chart unless the `--version` option is specified. When you use the {{container-registry}}, you must always specify the `--version` option. Refer to [View chart versions](#show-versions) to list the available chart versions or the version associated with an installed release.
 
 ::::{admonition} Chart version vs {{stack}} component version
 There is an important distinction between the Helm chart version and the {{stack}} component version:
@@ -428,7 +432,7 @@ helm upgrade es-kb-quickstart elastic/eck-stack -n elastic-stack
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 To find the latest version of the chart, refer to [](#show-versions). Then use this version with the `--version` option:
@@ -470,7 +474,7 @@ helm upgrade es-kb-quickstart elastic/eck-stack -n elastic-stack \
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 To find the latest version of the chart, refer to [](#show-versions). Then use this version with the `--version` option:
@@ -514,7 +518,7 @@ helm upgrade es-kb-quickstart elastic/eck-stack -n elastic-stack -f custom-value
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 To find the latest version of the chart, refer to [](#show-versions). Then use this version with the `--version` option:
@@ -565,7 +569,7 @@ For example, if you installed the [quickstart release](#k8s-install-elasticsearc
 
    :::
 
-   :::{tab-item} OCI registry
+   :::{tab-item} Elastic Container Registry
    :sync: oci-registry
 
    ```sh subs=true
@@ -610,7 +614,7 @@ helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-n
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -640,7 +644,7 @@ helm install es-kb-quickstart elastic/eck-stack -n elastic-stack --create-namesp
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -721,7 +725,7 @@ helm show values elastic/eck-package-registry
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
 ```sh subs=true
@@ -759,10 +763,10 @@ helm search repo elastic/eck-stack --versions
 
 :::
 
-:::{tab-item} OCI registry
+:::{tab-item} Elastic Container Registry
 :sync: oci-registry
 
-Helm cannot list the versions of a chart in an OCI registry. To list the versions, use an OCI client such as [ORAS](https://oras.land/):
+Helm cannot list the versions of a chart in the {{container-registry}}. To list the versions, use an OCI client such as [ORAS](https://oras.land/):
 
 ```sh
 oras repo tags docker.elastic.co/eck-charts/eck-stack
