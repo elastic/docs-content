@@ -162,6 +162,10 @@ Choose based on how the model is hosted:
 - **Elastic-managed models**: Add an endpoint in [**Elastic {{infer}}**](/explore-analyze/elastic-inference/eis.md).
 - **Third-party providers** (such as OpenAI, Anthropic, or Amazon Bedrock): Add an endpoint in [**External {{infer}}**](/explore-analyze/elastic-inference/external.md).
 
+:::{note}
+Gemini 3.1 Pro and Gemini 3.0 Flash are supported only through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). Tool calls through a Google Vertex AI {{infer}} endpoint are not supported. If you want to use Gemini on the Google Vertex AI {{infer}} endpoint, choose a Gemini 2.x model, such as `gemini-2.5-flash`. For the error text and how to create the endpoint, refer to [](troubleshooting/gemini-3-vertex-tool-calls.md).
+:::
+
 If you prefer not to use the UI, you can also create endpoints with the {{infer}} APIs. See [Create models programmatically](#create-models-programmatically).
 
 ### Configure a connector
@@ -239,7 +243,7 @@ The following models are known to work well with {{agent-builder}}. These catego
 | Balanced performance | - GPT-5.2 <br>- Claude 4.6 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
 | High throughput | - Claude 4.5 Haiku <br>- Gemini 3.0 Flash\* | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
 
-{applies_to}`stack: ga 9.4-9.5` \* Gemini 3.1 Pro and Gemini 3.0 Flash are  supported only through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). They cannot complete tool calls through a Google Vertex AI {{infer}} endpoint. Use a Gemini 2.x model on that endpoint, such as `gemini-2.5-flash`.
+\* Gemini 3.1 Pro and Gemini 3.0 Flash are supported only through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). Tool calls through a Google Vertex AI {{infer}} endpoint are not supported. If you want to use Gemini on the Google Vertex AI {{infer}} endpoint, choose a Gemini 2.x model, such as `gemini-2.5-flash`. For the error text and how to create the endpoint, refer to [](troubleshooting/gemini-3-vertex-tool-calls.md).
 
 :::{note}
 {{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model for low-effort tasks](#fast-model).
