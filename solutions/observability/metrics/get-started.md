@@ -82,7 +82,13 @@ With data flowing, try a few common tasks to find the metrics that matter to you
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 From the chart grid in **Discover**:
 
-- **Search for a metric.** Select **Search metrics** ({icon}`magnify`) in the grid toolbar and enter a metric name, for example `system.cpu.utilization`. The grid shows only the matching metrics, which is faster than scrolling when your sources send hundreds of them.
+- **Search for a metric.** Select **Search metrics** ({icon}`magnify`) at the top right of the chart grid and enter part of a metric name, for example `cpu`. The grid shows only the metrics whose names match, which is faster than scrolling when your sources send hundreds of them.
+
+  :::{image} /solutions/images/explore-metrics-search.png
+  :alt: The Discover chart grid filtered to metrics that contain cpu
+  :screenshot:
+  :::
+
 - **Break a metric down by a dimension.** Select **Dimensions** and choose a dimension such as the host name. Each chart then shows a separate line for each host, so you can find the host that causes a CPU spike or uses the most memory.
 - **View the details of a metric.** On a chart, select **View details** ({icon}`eye`) to find the metric type, its dimensions, and the {{esql}} query behind the chart. Use the query as a starting point for your own queries and alerts.
 - **Add a chart to a dashboard.** On a chart, select **Copy to dashboard** ({icon}`app_dashboard`) to save it to a new or existing dashboard. A dashboard keeps the chart next to related charts, so you can return to it, follow the metric over time, and share it with your team.
