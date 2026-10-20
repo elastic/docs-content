@@ -85,7 +85,7 @@ In both options, the agent also rewrites the dashboard title and description to 
 
 ## Discard the changes [enhance-dashboard-discard]
 
-If you'd rather not keep the agent's changes, select **Reset changes** from the menu next to **Save**, before you save. Resetting returns the dashboard to its last saved version, so it also discards any unsaved edits of your own. Once you save, the changes become part of the dashboard, and you can no longer discard them in one step. To learn more, refer to [Reset dashboard changes](open-dashboard.md#reset-the-dashboard).
+If you'd rather not keep the agent's changes, select **Reset changes** from the menu next to **Save**, before you save. Resetting returns the dashboard to its last saved version, so it also discards any unsaved edits of your own. Once you save, the changes become part of the dashboard, and you can no longer discard them in one step.
 
 ## Next steps [enhance-dashboard-next-steps]
 
