@@ -15,7 +15,7 @@ products:
 If you exported a dashboard from another {{product.kibana}} space, instance, deployment, or project, you can import it into your own in one of these ways:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **From the Dashboards app**: Import a JSON file from [Export JSON](sharing.md#export-dashboard-json) or from the Dashboards API.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` **With the Dashboards API**: Send the same JSON to the [Dashboards API](create-dashboards-programmatically.md).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` **With the Dashboards API**: Send a dashboard JSON definition to the [Dashboards API](create-dashboards-programmatically.md). Get the definition from Export JSON or from the Dashboards API.
 - **From Saved Objects**: Import an NDJSON file from a previous [saved objects export](../find-and-organize/saved-objects.md#saved-objects-export). Use the **Saved Objects** page or the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects).
 
 The JSON methods are recommended because they rely on the Dashboards API.
