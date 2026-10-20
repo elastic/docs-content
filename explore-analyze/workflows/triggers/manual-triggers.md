@@ -16,7 +16,12 @@ products:
 
 Manual triggers run workflows on-demand through the UI or API. They require explicit user action to start a workflow. Use manual triggers for testing, one-off tasks, administrative actions, or workflows that require a human decision to start.
 
-Manual runs use the [workflow's execution identity](/explore-analyze/workflows/authorization.md). For workflows without a service account binding, this is the user who starts the run.
+By default, manual runs use the privileges of the user who starts the run.
+
+:::{note}
+:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+If you assign a service account to the workflow, it runs with that account's privileges instead. For details, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
+:::
 
 To define a manual trigger, use the following syntax:
 
