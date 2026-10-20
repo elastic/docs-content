@@ -19,7 +19,6 @@ Use the topics in this section to troubleshoot common problems with {{agent-buil
 * [Context length exceeded](troubleshooting/context-length-exceeded.md)
 * [API calls return `403 Forbidden`](troubleshooting/api-calls-return-403-forbidden.md)
 * [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md)
-* {applies_to}`stack: ga 9.4-9.5` [Gemini 3 on Vertex AI](troubleshooting/gemini-3-vertex-tool-calls.md)
 
 ## Related pages
 
