@@ -10,7 +10,7 @@ products:
 # Explore traces in Discover [explore-traces-discover]
 
 :::{important}
-Except for the [investigation flyouts](#investigate-with-flyouts), the functionality described on this page is experimental. It might change or be removed at any time.
+Except for the [investigation flyouts](#investigate-with-flyouts), the functionality described on this page is in technical preview. It might change or be removed at any time.
 :::
 
 **Discover** offers a dedicated experience for exploring trace data. When **Discover** detects data in `traces-*` indices, it automatically enables features that help you investigate distributed traces more effectively. The traces experience includes a preselected set of trace fields in the data grid, a structured overview of each document's key attributes, latency comparisons for similar spans, and a waterfall visualization of the full trace timeline.
@@ -91,9 +91,12 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Investigate a service, transaction, trace, and individual span or error in a series of flyouts without leaving **Discover**. Opening a service flyout requires access to {{product.apm}}.
+Investigate a service, transaction, trace, and individual span or error in a series of flyouts without leaving **Discover**.
 
-First, [load trace data](#load-trace-data) in **Discover**.
+Before you begin:
+
+- Take into consideration that opening a service flyout requires access to {{product.apm}}.
+- You need to [Load trace data](#load-trace-data) in **Discover**.
 
 1. Click **View details** {icon}`expand` in a transaction or span's row to open the document detail panel.
 2. On the document's **Overview** tab, click the **Service name** value (`service.name`). The service flyout opens with the service's key metrics.
