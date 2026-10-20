@@ -167,6 +167,39 @@ The response payload of a request to generate a report includes the path to down
 * **`500` (Internal Server Error)**: When using the `path` to request the download, you will get a `500` status response if the report isn’t available due to an error when generating the report. More information is available at **Management > Kibana > Reporting**.
 
 
+## Check the status of a report [check-report-status]
+
+After you queue a report, you can check its status before you try to download it. Polling the status is more reliable than retrying the download URL, which returns a `503` response until the report is ready.
+
+To check the status of a report, send a `GET` request to the job info API with the job ID of the report. The job ID is the `id` property in the response from the `POST` URL:
+
+```bash
+curl \
+-XGET \
+-u elastic \
+'http://0.0.0.0:5601/api/reporting/jobs/info/jxzaofkc0ykpf4062305t068'
+```
+
+A report job has three possible statuses, which you can read from the `status` property of the response:
+
+* `pending`: The report is queued and waiting for a worker to pick it up.
+* `processing`: The report is being generated.
+* `completed`: The report is ready to download.
+* `failed`: Generation failed. Check the `output.error_code` property for the reason.
+
+When the status is `completed`, download the report from the `path` that was returned when you queued it.
+
+:::{tip}
+Starting in 9.4, completed reports are kept for 60 days by default. You can download them until they are deleted, so there is no need to download every report right away.
+:::
+
+To check the status in the UI instead, go to **Management > Reporting**. The **Status** column shows the same values. For more detail on why a report failed, refer to [Reporting troubleshooting](reporting-troubleshooting.md#reporting-troubleshooting-failed).
+
+### Poll the status from a script [poll-report-status]
+
+Utilize a loop to poll the job info API until the status is `completed` or `failed`. We recommend waiting at least 5 seconds between requests so that the {{kib}} server isn't overloaded.
+
+
 ## Deprecated report URLs [deprecated-report-urls]
 
 If you experience issues with the deprecated report URLs after you upgrade {{kib}}, regenerate the POST URL for your reports.

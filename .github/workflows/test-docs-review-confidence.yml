@@ -39,12 +39,13 @@ jobs:
         Review body additions. After "Issue satisfaction", add these two sections:
 
         ### Review confidence
-        <High | Medium | Low>: <one line of reasons>. Use Low when a check listed under "Not checked" could affect a finding, a linked issue could not be read, you reached the 20-comment limit, or a high-impact concern is unconfirmed. Use Medium when two or more items are under "Needs a person", or at least half of the posted comments are minor wording. Otherwise use High.
+        <High | Medium | Low>: <one line of reasons>. Use Low when a check listed under "Not checked" could affect a finding, you reached the 20-comment limit, or a high-impact concern is unconfirmed. Use Medium when two or more items are under "Needs a person", or at least half of the posted comments are minor wording. Otherwise use High. Do not lower the confidence because a linked issue could not be read; report that under "Issue satisfaction" only.
 
         ### Needs a person
         - <One line per item you could not confirm: the claim, the location, and what a person must check. Omit this section when empty.>
 
-        Audit record. End the review body with one HTML comment that contains JSON and nothing else:
-        <!-- docs-review-audit {"v":1,"candidates":<n>,"posted":<n>,"dropped":[{"file":"<path>","line":<n>,"reason":"<short>"}],"needs_person":<n>,"confidence":"High|Medium|Low"} -->
+        Audit record. As the last item inside the "Review coverage" details block, add `- Audit:` followed by a fenced `json` code block that holds one JSON object and nothing else:
+        {"v":1,"candidates":<n>,"posted":<n>,"dropped":[{"file":"<path>","line":<n>,"reason":"<short>"}],"needs_person":<n>,"confidence":"High|Medium|Low"}
+        Do not put the audit record in an HTML comment. HTML comments are removed from review bodies, so it would be lost.
     secrets:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
