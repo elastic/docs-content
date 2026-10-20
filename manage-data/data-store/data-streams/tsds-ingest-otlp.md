@@ -25,5 +25,7 @@ In most setups, applications send metrics to the {{motlp}} or to an [{{agent}} i
   Metric points are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
 * {{es}} stores histogram metrics using the `exponential_histogram` or `histogram` field type, depending on your version and the [histogram handling setting](/manage-data/ingest/otlp-endpoint.md#configure-histogram-handling-for-metrics).
 * {applies_to}`stack: ga 9.5+` The endpoint preserves the [temporality](/manage-data/data-store/data-streams/metric-temporality.md) of each metric in a `temporality` dimension, so {{esql}} time series queries and downsampling interpret counters and histograms correctly.
+* {applies_to}`stack: ga 9.6+` [Exemplars](/manage-data/ingest/otlp-endpoint.md#metric-exemplars) attached to metric data points are stored in matching `exemplars-*` time series data streams that share the dimensions of the metrics data stream.
+  Exemplar ingestion is enabled by default and can be [turned off](/manage-data/ingest/otlp-endpoint.md#disable-exemplars).
 
 For request details, authentication, and limitations, refer to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) reference.
