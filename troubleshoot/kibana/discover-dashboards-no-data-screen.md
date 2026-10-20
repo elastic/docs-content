@@ -66,7 +66,7 @@ Use the option that matches the screen you see:
 
 If you see **How do you want to explore your data?**, {{es}} has data that you can explore in either of the following ways:
 
-- To explore the data with a data view, select **Create data view** on the **Create a data view** card and define the data view. When you save it, **Discover** opens on the new data view. In **Dashboards**, the screen closes and the page you were opening appears, either the list of dashboards or a new dashboard. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md).
+- To explore the data with a data view, select **Create data view** on the **Create a data view** card and define the data view. When you save it, **Discover** opens on the new data view, and **Dashboards** continues to the dashboard list or the new dashboard. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md).
 - To query the data without a data view, select **Try ES|QL** on the **Query your data with ES|QL** card. {{kib}} picks an index for the starting query: `logs*` if the name of a local index starts with `logs`, otherwise the first index it finds. In **Discover**, this opens {{esql}} mode with a query on that index. In **Dashboards**, this opens a new dashboard with a chart built from a query on that index. Refer to [](/explore-analyze/discover/try-esql.md).
 
 If **Create data view** is unavailable, your role can't create data views. Ask an administrator to create one or to update your role.
