@@ -117,8 +117,8 @@ Elastic nightshift learns about your systems every time it runs an investigation
 
 From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs contain what Elastic nightshift knows about your system:
 
-- **Cortex**: A breakdown of what Elastic nightshift knows about your systems, organized by type, such as services, runbooks, postmortems, and queries. Each page shows the type and whether it's established or tentative.
-- **Memory**: The individual memories Elastic nightshift has learned.
+- **Cortex**: A breakdown of what Elastic nightshift knows about your systems, organized by type, such as services, runbooks, postmortems, and queries. Each page shows the type and whether it's established or tentative. You and Elastic nightshift can both create and update pages. However, if you create a page yourself or edit an existing page, Elastic nightshift and the Elastic AI Agent can no longer change it.
+- **Memory**: The individual memories Elastic nightshift has learned. Elastic nightshift creates memories, and you can only archive or delete them.
 
 ### Edit, archive, or delete knowledge [nightshift-get-started-knowledge-edit]
 
@@ -133,7 +133,7 @@ From the **Cortex** tab:
 - To edit a page and let Elastic nightshift keep updating it, ask the Elastic AI Agent to make the change.
 - To stop Elastic nightshift from using a page, open it and select **Archive**.
 
-In **Memory**:
+From the **Memory** tab:
 
 - To stop Elastic nightshift from using a memory, open it and select **Archive**. Select **Restore** to use it again.
 - To remove a memory permanently, select **Delete**.
