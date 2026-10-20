@@ -37,7 +37,7 @@ While a new allocator is spun up, this `Could not ensure capacity allocation for
 
 ### When {{ecloud}} or the underlying cloud service provider do not have enough capacity
 
-When there is not enough capacity in {{ecloud}} or the underlying cloud service provider, the plan can fail after the maximum number of retries and show this message.
+When there is not enough capacity in {{ecloud}} or the underlying cloud service provider (CSP), the plan can fail after the maximum number of retries and show this message.
 
 This usually happens when:
 
