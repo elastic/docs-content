@@ -155,7 +155,7 @@ vLLM serves an OpenAI-compatible API, so you create the endpoint with the OpenAI
 
 4. For **URL**, enter your server's public URL followed by `/v1/chat/completions`.
 5. For **Model ID**, enter `mistralai/[YOUR_MODEL_ID]`.
-6. For **API Key**, enter the secret token you created in Step 1 and specified in your Nginx configuration file.
+6. For **API Key**, enter the secret token you created in the "Generate auth tokens" step and specified in your Nginx configuration file.
 7. Select the `chat_completion` task type, then select **Save**.
 ::::
 
@@ -169,7 +169,7 @@ Create an OpenAI connector to link your Elastic deployment to your vLLM instance
     * For **URL**, enter your server's public URL followed by `/v1/chat/completions`.
 4. For **Default Model**, enter `mistralai/[YOUR_MODEL_ID]`.
 5. For **Authentication**, configure the following:
-    * For **API key**, enter the secret token you created in Step 1 and specified in your Nginx configuration file.
+    * For **API key**, enter the secret token you created in the "Generate auth tokens" step and specified in your Nginx configuration file.
     * If your chosen model supports tool use, then turn on **Enable native function calling**.
 6. Click **Save**
 7. To enable the connector to work with AI Assistant for Security, add the following to your `config/kibana.yml` file:
