@@ -132,6 +132,14 @@ To change an agent's subagents, you need permission to edit the agent.
 3. Under **Delegable subagents**, select the other agents this agent can delegate to. You can only select agents that you can access. To stop the agent from delegating to a copy of itself, remove **This agent (self-fork)**.
 4. Select **Save**.
 
+The following example shows an agent that can delegate tasks to a copy of itself and to one custom agent:
+
+:::{image} images/agent-subagents-settings.png
+:screenshot:
+:alt: The Subagents section of the agent Settings tab, with Enable subagents selected and This agent (self-fork) and a custom agent selected under Delegable subagents.
+:width: 700px
+:::
+
 New custom agents have subagents turned off. By default, the Elastic AI Agent can delegate to a copy of itself. If the Elastic AI Agent already existed in a space before subagents were available, for example after an upgrade from an earlier version, it keeps its existing configuration without subagents.
 
 To configure subagents with the Agents API, set `configuration.subagent_ids` when you [create]({{kib-apis}}operation/operation-post-agent-builder-agents) or [update]({{kib-apis}}operation/operation-put-agent-builder-agents-id) an agent. The list takes up to 50 unique IDs of agents that you can access. To let the agent delegate to a copy of itself, use `_self`. You can't use the agent's own ID. An empty list turns subagents off. If you omit `subagent_ids` when you update an agent, the agent keeps its current list.

@@ -24,7 +24,7 @@ The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a
 :::{note}
 :applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
 
-Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`; `ai.prompt`, `ai.classify`, and `ai.summarize` take `connector-id` only.
+Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`. The `ai.prompt`, `ai.classify`, and `ai.summarize` steps take `connector-id` only.
 :::
 
 ## Step types
