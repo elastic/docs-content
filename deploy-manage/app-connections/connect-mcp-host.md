@@ -284,9 +284,12 @@ You can also check your connection in the {{ecloud}} Console at **Organization**
 
 Confirm the `{MCP_SERVER_URL}` in your config matches exactly what {{kib}} displays. The correct URL ends with `/api/agent_builder/mcp`. A typo, extra slash, or doubled path segment will prevent the OAuth discovery step from completing.
 
-**Authorization fails with "does not match the client's registered resource", or requests fail with a `400` `VALIDATION.OAUTH` error.**
+**Authorization fails with "does not match the client's registered resource" or requests fail with a `400` `VALIDATION.OAUTH` error.**
 
-The MCP server URL in your host's config doesn't match the MCP server URL of the OAuth client. If you authorize with the mismatched URL, authorization fails with an `invalid_request` error stating that the resource doesn't match the client's registered resource. If the host reuses tokens it obtained for a different MCP server URL, requests to the MCP server fail with the `400` error instead.
+The MCP server URL in your host's config doesn't match the MCP server URL of the OAuth client. The error you see depends on when the mismatch is detected:
+
+- **During authorization**: Authorization fails with an `invalid_request` error stating that the resource doesn't match the client's registered resource.
+- **During requests**: If the host reuses tokens it obtained for a different MCP server URL, requests to the MCP server fail with the `400` error.
 
 Common causes:
 
@@ -298,7 +301,7 @@ To fix it:
 
 1. [Create a client](create-oauth-client.md) in the space you want to connect to, or use an existing client from that space.
 2. Update your host's config with that client's ID and the MCP server URL that {{kib}} displays for it.
-3. Clear the host's cached OAuth credentials. Refer to your MCP host's documentation for how to do this. Most hosts don't prompt you to authorize again after this error until you clear them.
+3. Clear the host's cached OAuth credentials, as described in your MCP host's documentation. Until you clear them, most hosts don't prompt you to authorize again.
 
 **Authorization completed but no connection appears in {{kib}}.**
 

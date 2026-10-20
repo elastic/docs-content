@@ -16,7 +16,9 @@ products:
 
 Register a new OAuth client in {{agent-builder}} to generate the credentials that an MCP host, such as Claude Desktop, needs to connect over OAuth 2.1.
 
-Each OAuth client is scoped to a single {{serverless-short}} project and to the {{kib}} space you create it in. Creating a client gives you a client ID and the MCP server URL for that space. For confidential clients, you also get a client secret that is shown only once and can't be retrieved later. To connect MCP hosts to {{agent-builder}} in more than one space, create a client in each space.
+Each OAuth client is scoped to a single {{serverless-short}} project and to the {{kib}} space you create it in. To connect MCP hosts to {{agent-builder}} in more than one space, create a client in each space.
+
+Creating a client gives you a client ID and the MCP server URL for that space. For confidential clients, you also get a client secret that is shown only once and can't be retrieved later.
 
 :::{note}
 In the {{kib}} UI, OAuth clients are labeled **MCP clients**. The button and menu labels in these steps, such as **Add MCP client**, refer to the OAuth client you're creating.
@@ -95,12 +97,12 @@ The client secret is displayed after you create the client. The secret is only d
 Click **Create client**. The **Copy server details for [client name]** dialog displays the values your MCP host (AI agent) needs to authenticate:
 
 - **Client ID**: The identifier for this client.
-- **MCP server URL**: The endpoint your MCP host uses to reach {{agent-builder}} tools in this project and space. For a custom space, the URL includes the space ID, for example `/s/marketing/api/agent_builder/mcp`. Use the URL exactly as shown. For the default space, the URL usually has no space segment, so don't add `/s/default` to it.
+- **MCP server URL**: The endpoint your MCP host uses to reach {{agent-builder}} tools in this project and space. For a custom space, the URL includes the space ID, for example `/s/marketing/api/agent_builder/mcp`. Copy the URL exactly as shown, and don't add `/s/default` to a default-space URL.
 - **MCP client secret**: Appears for confidential clients only. This value is displayed only once and can't be retrieved later, so copy or download it before you close the dialog.
 
 You'll use these values to [connect an MCP host](connect-mcp-host.md).
 
-You can find the client ID and MCP server URL at any time on the **MCP clients** page. The page lists the clients you created in the project, regardless of which space you open it from, and each client's MCP server URL shows the space it works with.
+You can find the client ID and MCP server URL at any time on the **MCP clients** page. The page lists the clients you created in the project, regardless of which space you open it from. Each client's MCP server URL shows the space it works with.
 ::::
 
 :::::

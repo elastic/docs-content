@@ -66,7 +66,7 @@ Setting up the connector means creating an OAuth client in your project and ente
 ::::::{stepper}
 
 :::::{step} Create an OAuth client in your project
-In your {{serverless-short}} project, [switch to the {{kib}} space](/deploy-manage/choose-and-switch-spaces.md) whose agents and tools you want Claude to use. Then [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md), and select **Generate confidential MCP client (optional)**. Select this option, because the connector asks for a client secret.
+In your {{serverless-short}} project, [switch to the {{kib}} space](/deploy-manage/choose-and-switch-spaces.md) whose agents and tools you want Claude to use. Then [create an OAuth client](/deploy-manage/app-connections/create-oauth-client.md), and select **Generate confidential MCP client (optional)**. The connector needs a client secret, so select this option even though it's marked optional.
 Add the redirect URI for the Claude app you use to set up the connector, as described in the [claude.ai](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-ai) or [Claude desktop app](/deploy-manage/app-connections/connect-mcp-host.md#connect-claude-desktop) instructions.
 
 Copy the **Client ID**, **MCP client secret**, and **MCP server URL** from the **Copy server details** dialog.

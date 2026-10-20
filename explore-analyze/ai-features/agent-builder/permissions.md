@@ -85,7 +85,7 @@ Conversations, custom agents, and custom tools are scoped to the current {{kib}}
 
 In a role or API key descriptor, specify the space in the application privilege resource. For example, use `"resources": ["space:production"]` for the `production` space. Users and API keys cannot access resources in spaces outside their assigned resources.
 
-When calling the {{agent-builder}} APIs or MCP server in a custom space, include `/s/<space-id>` before the API path. The default space does not use this prefix.
+When calling the {{agent-builder}} APIs or MCP server in a custom space, include `/s/<space-id>` before the API path. The default space doesn't use this prefix.
 
 Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
 

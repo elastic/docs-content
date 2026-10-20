@@ -63,7 +63,7 @@ curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
 
 The default space does not require the `/s/default` prefix.
 
-Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space-id>` prefix.
+Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and doesn't require the `/s/<space-id>` prefix.
 
 ### Use APIs with data from multiple projects [agent-builder-api-cps]
 ```{applies_to}

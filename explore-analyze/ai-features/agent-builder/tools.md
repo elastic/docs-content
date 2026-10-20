@@ -110,7 +110,7 @@ Tools can also be accessed through the Model Context Protocol (MCP) server, whic
 
 On the Tools page, open the **Manage MCP** dropdown to access:
 
-- **Copy MCP Server URL**: Copy the MCP server URL for the current space, for configuring external clients.
+- **Copy MCP Server URL**: Copy the current space's MCP server URL to configure external clients.
 - **Bulk import MCP tools**: Import multiple tools from an MCP server at once.
 - **Documentation**: Open the MCP documentation.
 
