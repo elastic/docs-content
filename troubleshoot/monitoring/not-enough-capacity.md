@@ -58,7 +58,6 @@ A current [hardware profile](../../deploy-manage/deploy/elastic-cloud/ec-change-
 
 ### Contact support for scale-up failure
 
-In case the scale up fails eventually, please [contact support](/troubleshoot/index.md#contact-us).
+In case the scale-up fails eventually, please [contact support](/troubleshoot/index.md#contact-us).
 
-Additionally, for large scale up (several hundreds of GiBs in RAM size), there's higher chance CSP doesn't have enough capacity. In this situation, we recommend you contact support beforehand, so that we can better help you plan for the capacity.
-
+Additionally, for a large scale-up on a current hardware profile, such as an increase of several hundred GiB in RAM, there is a higher chance the underlying CSP does not have enough capacity. In this situation, we recommend you contact support beforehand, so that we can better help you plan for the capacity.
