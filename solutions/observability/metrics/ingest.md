@@ -13,59 +13,62 @@ products:
 
 # Ingest metrics [metrics-ingest]
 
-Send metrics to Elastic over the OpenTelemetry Protocol (OTLP), with Prometheus remote write, or with {{agent}} integrations. Use OTLP unless one of these constraints applies:
+You can send metrics to Elastic over the OpenTelemetry Protocol (OTLP), with {{agent}} integrations, or with Prometheus remote write:
 
-- You need existing Elastic Common Schema (ECS) integrations, dashboards, and alerts to keep working without customization: use {{agent}} integrations.
-- Prometheus already scrapes the metrics you need: keep it and add Prometheus remote write.
+- [**OTLP**](#metrics-ingest-otlp): Recommended in most cases.
+- [**{{agent}} integrations**](#metrics-ingest-agent-integrations): Use when you need existing Elastic Common Schema (ECS) integrations, dashboards, and alerts to keep working without customization.
+- [**Prometheus metrics**](#metrics-ingest-prometheus): Use when Prometheus already scrapes the metrics you need.
 
-Classic Elastic components, such as {{agent}} integrations, {{metricbeat}}, and Elastic APM agents, work better in some other cases. For more information, refer to [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
+To understand when classic Elastic components, such as {{agent}} integrations, {{metricbeat}}, and Elastic APM agents, are a better fit, refer to [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
 
 ## Ingest with OpenTelemetry (recommended) [metrics-ingest-otlp]
 
-{{edot}} is the distribution that Elastic supports and recommends, and the [quickstarts](/solutions/observability/metrics/get-started.md) use it. The endpoint depends on your deployment type.
+Elastic supports and recommends using the {{edot}} distribution to send your metric data to {{es}}, and the [quickstarts](/solutions/observability/metrics/get-started.md) use it. The endpoint you send data to depends on your deployment type.
 
 :::::{applies-switch}
 
 ::::{applies-item} { serverless:, ech: }
 Send metrics to the Managed OTLP Endpoint. Use the setup that matches the source of your metrics:
 
-- **Application metrics:** Point your EDOT SDKs or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
-- **Infrastructure metrics (host, {{k8s}}, Docker):** Run {{agent}} in OTel mode on your hosts or cluster and configure its OTLP exporter to send data to the endpoint.
+- **Application metrics:** Point your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
+- **Infrastructure metrics (host, {{k8s}}, Docker):** Run {{agent}} in OTel mode on your hosts or cluster and configure its OTLP exporter to send data to the endpoint. The [quickstarts](/solutions/observability/metrics/get-started.md#metrics-get-started-quickstart) set this up for you. For the exporter and pipeline configuration, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
 
 The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}} or {{ech}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
-Run {{agent}} in OTel mode as a gateway. The Managed OTLP Endpoint isn't available for self-managed {{stack}}, {{ece}}, or {{eck}} deployments. The gateway exposes an OTLP endpoint that your EDOT SDKs and edge collectors send to, and it writes to {{es}} with the `elasticsearch` exporter. For gateway versus edge setup, refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
+Run {{agent}} in OTel mode as a gateway. The gateway exposes an OTLP endpoint that your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) and edge collectors send to, and it writes to {{es}} with the `elasticsearch` exporter. For gateway versus edge setup, refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
 
 {applies_to}`stack: ga 9.2+` {{es}} also accepts OTLP/HTTP on `/_otlp/v1/metrics` from a gateway Collector. Use it when that gateway prefers the OTLP/HTTP exporter over the `elasticsearch` exporter. Don't send applications or pods directly to `/_otlp`. Metrics land in a time series data stream (TSDS) through built-in index templates. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) for how metrics are stored and to [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) for request details.
 ::::
 
 :::::
 
-For language SDK setup, refer to [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md).
-
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For how counters and histograms behave after ingest, refer to [Metric temporality](/manage-data/data-store/data-streams/metric-temporality.md).
-
 ## Ingest with {{agent}} integrations [metrics-ingest-agent-integrations]
 
-Use {{agent}} integrations to collect metrics from specific infrastructure components and services: system metrics from hosts, {{k8s}} cluster metrics, or metrics from services such as Nginx, PostgreSQL, or Redis. {{integrations}} store ECS documents and send them to the output you configure in {{fleet}}, the {{kib}} app that manages {{agent}} policies. That output is {{es}} by default. You don't send this data through the Managed OTLP Endpoint, and you don't convert it to OTLP.
+Use {{agent}} integrations to collect metrics from specific infrastructure components and services, for example system metrics from hosts, {{k8s}} cluster metrics, or metrics from Nginx, PostgreSQL, or Redis. {{integrations}} store ECS documents and send them to the output you configure in {{fleet}}, where you manage {{agent}} policies in {{kib}}. That output is {{es}} by default. The data doesn't go through the Managed OTLP Endpoint and isn't converted to OTLP.
 
 Use this path when you need existing ECS integrations, dashboards, and alerts to keep working without customization. To collect host metrics this way, follow [Get started with system metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md). To find which services have a prebuilt integration, browse the [{{integrations}} catalog](https://www.elastic.co/integrations).
 
-### ECS and OpenTelemetry integration tiles [metrics-ingest-agent-integrations-otel]
+### ECS and OpenTelemetry integrations [metrics-ingest-agent-integrations-otel]
 ```{applies_to}
 stack: preview 9.2+
 serverless: preview
 ```
 
-Some services have two tiles in the {{kib}} {{integrations}} UI, for example **Nginx** and **Nginx (OpenTelemetry)**. The **(OpenTelemetry)** tile is an OpenTelemetry input package: a {{fleet}}-managed {{agent}} runs the matching OTel Collector receiver, stores the data with OpenTelemetry semantic conventions, and {{kib}} installs the matching OpenTelemetry content pack with dashboards. The other tile is the ECS integration.
+Some services have both an ECS integration and an OpenTelemetry integration, for example **Nginx** and **Nginx (OpenTelemetry)**. The **(OpenTelemetry)** integration is an OpenTelemetry input package: a {{fleet}}-managed {{agent}} runs the matching OTel Collector receiver. The integration without **(OpenTelemetry)** is the ECS integration.
 
-Pick the ECS tile when you need the integration's ECS dashboards and alerts. Pick the OpenTelemetry tile when you standardize on the OpenTelemetry schema and manage agents with {{fleet}}. OpenTelemetry input packages run only on {{agent}} in default mode, not on {{agent}} in OTel mode. Refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md) for how to set up an OpenTelemetry input package.
+| Aspect | ECS integration | OpenTelemetry integration |
+|---|---|---|
+| **Stores data with** | ECS field names | OpenTelemetry semantic conventions |
+| **Prebuilt content** | The integration's ECS dashboards and alerts | Dashboards from the matching OpenTelemetry content pack, which {{kib}} installs |
+| **Use when** | You need the integration's ECS dashboards and alerts | You standardize on the OpenTelemetry schema and manage agents with {{fleet}} |
+
+OpenTelemetry input packages run only on {{agent}} in default mode, not on {{agent}} in OTel mode. Refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md) for how to set up an OpenTelemetry input package.
 
 ### {{metricbeat}} [metrics-ingest-metricbeat]
 
-{{metricbeat}} is the standalone {{beats}} shipper for metrics. It writes ECS documents and isn't deprecated, but new setups use {{agent}}: in OTel mode for the OpenTelemetry schema, or with integrations for ECS. If you already run {{metricbeat}}, refer to [Move from {{metricbeat}} or {{agent}} integrations](/solutions/observability/metrics/migrate.md#metrics-migrate-metricbeat) for how to switch to OpenTelemetry.
+{{metricbeat}}, the standalone {{beats}} shipper for metrics, writes ECS documents. While it isn't deprecated, we recommend that new setups use {{agent}} instead: in OTel mode for the OpenTelemetry schema, or with integrations for ECS. If you already run {{metricbeat}}, refer to [Move from {{metricbeat}} or {{agent}} integrations](/solutions/observability/metrics/migrate.md#metrics-migrate-metricbeat) for how to switch to OpenTelemetry.
 
 ### {{ls}} [metrics-ingest-logstash]
 

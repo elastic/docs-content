@@ -13,11 +13,11 @@ products:
 
 # Plan your metrics setup [metrics-plan-your-setup]
 
-Before you ingest metrics at scale, decide on two things: the data model your metrics are stored in, and the ingest path for your deployment type. The two are linked. Elastic doesn't convert metrics between schemas at ingest, so the ingest path you use determines how your data is stored, which field names you query, and which prebuilt dashboards work.
+Before you ingest metrics at scale, decide on two things: the data model your metrics are stored in, and the ingest path for your deployment type. Elastic doesn't convert metrics between schemas at ingest, so the ingest path you use determines how your data is stored, which field names you query, and which prebuilt dashboards work.
 
 ## Choose a data model [metrics-plan-data-model]
 
-Use the OpenTelemetry schema unless you need existing Elastic Common Schema (ECS) integrations, dashboards, and alerts to keep working without customization. That constraint, and the other cases where classic Elastic components still work better, are listed in [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
+Use the OpenTelemetry schema unless you need existing Elastic Common Schema (ECS) integrations, dashboards, and alerts to keep working without customization. For that and other use cases where ECS might work better, refer to [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic).
 
 **OpenTelemetry (OTel) schema**
 :   Metrics follow the OpenTelemetry semantic conventions, for example the metric `system.cpu.utilization`, with attributes stored under `attributes.*` and `resource.attributes.*`. This is the default. It matches the OpenTelemetry ecosystem and the {{edot}} ingest paths.
@@ -25,9 +25,10 @@ Use the OpenTelemetry schema unless you need existing Elastic Common Schema (ECS
 **ECS**
 :   Metrics follow Elastic's original field naming conventions, for example `system.cpu.user.pct`. {{agent}} integrations write this schema, as does [{{metricbeat}}](beats://reference/metricbeat/index.md), the standalone {{beats}} shipper for metrics. Use ECS when you need existing ECS integrations, dashboards, and alerts to keep working without customization.
 
-Prefer one schema. Mixing them in one deployment works, but it means two sets of field names in your queries and dashboards.
+**Prometheus names**
+:   Prometheus remote write uses neither schema. It stores Prometheus metric and label names as they arrive, for example the metric `node_cpu_seconds_total`, with labels stored under `labels.*`. You get this data model when you keep Prometheus and add Elastic as a remote write target.
 
-Prometheus remote write is neither schema: it stores Prometheus metric and label names as they arrive.
+Use one schema. Mixing OpenTelemetry and ECS in one deployment works, but requires two sets of field names in your queries and dashboards.
 
 ### How each ingest path stores metrics [metrics-plan-ingest-path-storage]
 
@@ -42,7 +43,7 @@ For the OpenTelemetry Protocol (OTLP) paths, refer to [OpenTelemetry data stream
 
 ### Implications of your choice [metrics-plan-data-model-implications]
 
-The schema you end up with affects how you ingest, which metric names you query, and which dashboards work without customization:
+The schema you choose affects how you ingest, which metric names you query, and which dashboards work without customization:
 
 | Aspect | OTel schema | ECS schema |
 |---|---|---|

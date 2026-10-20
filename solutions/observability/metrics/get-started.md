@@ -13,7 +13,7 @@ products:
 
 # Get started with metrics [metrics-get-started]
 
-This page walks you through the fastest way to try metrics in Elastic: add one source, get its data flowing, and explore and query that data in {{kib}}. A quickstart gets data flowing in minutes on a single host or cluster, so you can confirm that collection, authentication, and storage work end to end before you design a larger setup.
+This page walks you through the fastest way to try metrics in Elastic. Start here to ingest metrics from a single source and use {{kib}} to explore and query your data. You'll use a quickstart to install {{agent}} in OTel mode and confirm that collection, authentication, and storage work end to end before you design a larger setup.
 
 When you're ready to add more sources and plan a production rollout, continue with [Next steps](#metrics-get-started-next).
 
@@ -23,6 +23,8 @@ You need:
 
 - An Elastic deployment or project: {{serverless-full}}, {{ech}}, or a self-managed {{stack}} deployment.
 - Access to install and run {{agent}} where your workloads run, or an application that can export OpenTelemetry metrics.
+
+## Send and explore your first metrics [metrics-get-started-steps]
 
 :::::::{stepper}
 
@@ -40,16 +42,14 @@ Follow an {{edot}} quickstart for your deployment type and environment. Each qui
 To send **custom application metrics** instead of infrastructure metrics, follow [Ingest custom metrics with {{edot}}](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md).
 ::::::
 
-::::::{step} Explore and query your data
-:anchor: metrics-get-started-explore
+::::::{step} Confirm your metrics are flowing
+:anchor: metrics-get-started-confirm
 
-After metrics are flowing, confirm they arrived and open the first metric in {{kib}}.
+After the quickstart finishes, check that its metrics arrived in {{kib}}.
 
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
-**Discover** shows one metric at a time. Use it to view how that metric changes over time and to break it down by a dimension such as the host name.
-
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select {icon}`code` **{{esql}}** to switch to {{esql}} mode, then run:
 
@@ -57,26 +57,52 @@ After metrics are flowing, confirm they arrived and open the first metric in {{k
     TS metrics-*
     ```
 
-    `TS` queries time-series metrics. `metrics-*` matches your metrics data streams, including the streams from the quickstart. Discover opens the result as a chart grid of the available metrics.
+    `TS` queries time-series metrics. `metrics-*` matches your metrics data streams, including the streams from the quickstart.
 
-3. Search the chart grid for a metric your quickstart collects, for example `system.cpu.utilization`. Break the metric down by a dimension such as the host name, or select **Copy to dashboard** to save the chart.
-
-For the full workflow, refer to [](/solutions/observability/infra-and-hosts/discover-metrics.md).
+**Discover** shows the result as a grid of charts, one for each metric in your data. If the grid includes metrics your quickstart collects, such as `system.cpu.utilization`, your data is flowing.
 ::::
 
 ::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
-**Metrics Explorer** charts one metric over time. You can compare it with related metrics and break it down by a field.
-
 1. Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Metrics Explorer**.
 2. Search for a metric your quickstart collects, for example `system.cpu.utilization`.
-3. Visualize or aggregate the metric data, and add the chart to a dashboard.
+
+If **Metrics Explorer** charts values for the metric, your data is flowing.
+::::
+
+:::::
+::::::
+
+::::::{step} Explore your metrics
+:anchor: metrics-get-started-explore
+
+With data flowing, try a few common tasks to find the metrics that matter to you and keep them at hand.
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+From the chart grid in **Discover**:
+
+- **Search for a metric.** Select **Search metrics** ({icon}`magnify`) in the grid toolbar and enter a metric name, for example `system.cpu.utilization`. The grid shows only the matching metrics, which is faster than scrolling when your sources send hundreds of them.
+- **Break a metric down by a dimension.** Select **Dimensions** and choose a dimension such as the host name. Each chart then shows a separate line for each host, so you can find the host that causes a CPU spike or uses the most memory.
+- **View the details of a metric.** On a chart, select **View details** ({icon}`eye`) to find the metric type, its dimensions, and the {{esql}} query behind the chart. Use the query as a starting point for your own queries and alerts.
+- **Add a chart to a dashboard.** On a chart, select **Copy to dashboard** ({icon}`app_dashboard`) to save it to a new or existing dashboard. A dashboard keeps the chart next to related charts, so you can return to it, follow the metric over time, and share it with your team.
+
+For more ways to work with the chart grid, refer to [](/solutions/observability/infra-and-hosts/discover-metrics.md).
+::::
+
+::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3
+In **Metrics Explorer**:
+
+- **Aggregate the metric.** Choose an aggregation, such as **Average** or **Max**, to control how values are combined in each time bucket.
+- **Break the metric down by a field.** From the **graph per** dropdown, add a field such as `host.name` to get one chart for each host, so you can compare hosts and find the one that causes a spike.
+- **Add the chart to a dashboard.** On a chart, select **Actions** → **Open in Visualize**, then save the visualization to a dashboard. A dashboard keeps the chart next to related charts, so you can return to it and share it with your team.
 
 For the Metrics Explorer workflow, refer to [](/solutions/observability/infra-and-hosts/explore-infrastructure-metrics-over-time.md).
 ::::
 
 :::::
 
-A dashboard stores that chart so you can return to it or share it. To check the health of a resource, such as a host or a pod, open **Infrastructure inventory**. It groups the resources you monitor, such as hosts, pods, and containers, and shows a metric for each one. Open **Hosts** to compare host metrics side by side.
+To check the health of the resources you monitor instead of individual metrics, open **Infrastructure inventory**. It groups the resources you monitor, such as hosts, pods, and containers, and shows a metric for each one, so you can find a resource under pressure at a glance. Open **Hosts** to compare host metrics side by side.
 
 For other ways to query, visualize, and alert on metrics, refer to [](/solutions/observability/metrics/explore.md).
 ::::::

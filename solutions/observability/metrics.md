@@ -31,7 +31,7 @@ Start here if you need to get metrics into Elastic or decide how to ingest them:
 [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md)
 :   Understand how each ingest path stores your metrics (OpenTelemetry, Elastic Common Schema (ECS), or Prometheus names) and pick the path for your deployment type before you scale up.
 
-## Work with metrics already in Elastic [metrics-work-with]
+## Work with existing metrics in Elastic [metrics-work-with]
 
 After metrics are in Elastic, use these pages to query, visualize, and control storage:
 
@@ -45,7 +45,7 @@ After metrics are in Elastic, use these pages to query, visualize, and control s
 [Manage metrics storage](/solutions/observability/metrics/manage-storage.md)
 :   Control storage costs and retention using time series data streams (TSDS), downsampling, cardinality management, and lifecycle policies.
 
-## Already using Prometheus? [metrics-prometheus-users]
+## Use Prometheus and Grafana with Elastic [metrics-prometheus-users]
 
 Keep Prometheus scraping and add Elastic as a `remote_write` target. Your scrape configurations don't change. On {{serverless-full}} and {{ech}}, send to the Managed Prometheus Remote Write endpoint. On self-managed {{stack}}, {{ece}}, and {{eck}}, send to the {{es}} `/_prometheus/api/v1/write` endpoint.
 
@@ -56,7 +56,7 @@ Use these pages to add remote write, keep Grafana, and reuse PromQL:
 [Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+`
 :   The recommended remote write destination on {{serverless-full}} and {{ech}}.
 
-[Prometheus remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) {applies_to}`stack: ga 9.5+, preview =9.4`
+[Ingest Prometheus metrics with the {{es}} remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) {applies_to}`stack: ga 9.5+, preview =9.4`
 :   The {{es}} `/_prometheus/api/v1/write` endpoint for self-managed {{stack}}, {{ece}}, and {{eck}}.
 
 [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md) {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
