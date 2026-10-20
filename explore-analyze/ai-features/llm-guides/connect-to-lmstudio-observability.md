@@ -128,11 +128,18 @@ To enable other devices on the same network to access the server, go to **Settin
 
 ## Configure the connector in your Elastic deployment [configure-the-connector-in-your-elastic-deployment]
 
-::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-The OpenAI connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+```{applies_to}
+stack: deprecated =9.5, removed 9.6+
+serverless: unavailable
+```
 
-For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
+::::{important}
+The OpenAI connector is being replaced by {{es}} {{infer}} endpoints. To configure access to an LLM provider, create an {{infer}} endpoint with the `chat_completion` task type. To get started, refer to [Elastic Inference](/explore-analyze/elastic-inference.md) and [External inference](/explore-analyze/elastic-inference/external.md).
+
+Availability of this connector depends on your deployment and version:
+
+- {applies_to}`serverless: deprecated` {applies_to}`stack: deprecated 9.6+` You can no longer create new connectors of this type by selecting **Create connector** in {{kib}}. Existing connectors and their rule actions continue to work.
+- {applies_to}`stack: deprecated =9.5` This connector is still available, but deprecated.
 ::::
 
 Finally, configure the connector:

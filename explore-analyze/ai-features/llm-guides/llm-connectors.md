@@ -36,10 +36,12 @@ Models that do not appear in these resources may still work, but Elastic hasn't 
 ## Connect to a third-party or self-managed LLM
 
 ::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-The OpenAI, Amazon Bedrock, Google Gemini, and **AI Connector** connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
+The OpenAI, Amazon Bedrock, Google Gemini, and **AI Connector** connector types are being replaced by {{es}} {{infer}} endpoints. To configure access to an LLM provider, create an {{infer}} endpoint with the `chat_completion` task type. To get started, refer to [Elastic Inference](/explore-analyze/elastic-inference.md) and [External inference](/explore-analyze/elastic-inference/external.md).
 
-In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new AI integrations, use {{es}} {{infer}} endpoints.
+Availability of these connector types depends on your deployment and version:
+
+- {applies_to}`serverless: deprecated` {applies_to}`stack: deprecated 9.6+` You can no longer create new connectors of these types by selecting **Create connector** in {{kib}}. Existing connectors and their rule actions continue to work.
+- {applies_to}`stack: deprecated =9.5` These connector types are still available, but deprecated.
 ::::
 
 Follow these guides to connect to one or more third-party LLM providers:
