@@ -115,10 +115,10 @@ GitHub holds the source of truth for the code behind your systems, and often you
 
 Elastic nightshift learns about your systems every time it runs an investigation. Storing what it learns as knowledge makes future investigations more accurate and uses fewer tokens. You can view this knowledge, correct it, and add your own.
 
-From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs contain what Elastic nightshift knows about your system:
+From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs contain what Elastic nightshift knows about your systems:
 
-- **Cortex**: A breakdown of what Elastic nightshift knows about your systems, organized by type, such as services, runbooks, postmortems, and queries. Each page shows the type and whether it's established or tentative. You and Elastic nightshift can both create and update pages. However, if you create a page yourself or edit an existing page, Elastic nightshift and the Elastic AI Agent can no longer change it.
-- **Memory**: The individual memories Elastic nightshift has learned. Elastic nightshift creates memories, and you can only archive or delete them.
+- **Cortex**: Durable knowledge that the investigator reads before each run, organized into pages by type, such as services, runbooks, postmortems, and queries. Each page shows its type and whether it's established or tentative. You and Elastic nightshift can both create and update pages.
+- **Memory**: Lessons that the investigator saves after a run and recalls when it works on a similar problem, such as how a previous problem was resolved or which checks found its cause. Elastic nightshift creates memories, and you can only archive or delete them.
 
 ### Edit, archive, or delete knowledge [nightshift-get-started-knowledge-edit]
 
@@ -131,11 +131,12 @@ From the **Cortex** tab:
   :::
 
 - To edit a page and let Elastic nightshift keep updating it, ask the Elastic AI Agent to make the change.
-- To stop Elastic nightshift from using a page, open it and select **Archive**.
+- To stop Elastic nightshift from using a page, open it and select **Archive**. Archiving keeps the page, so you can restore it later.
+- To restore an archived page, filter the pages by **Archived**, open the page, select **Edit**, change **Status** to **Tentative** or **Established**, and select **Save**.
 
 From the **Memory** tab:
 
-- To stop Elastic nightshift from using a memory, open it and select **Archive**. Select **Restore** to use it again.
+- To stop Elastic nightshift from using a memory, open it and select **Archive**. Archiving keeps the memory, so you can select **Restore** to use it again.
 - To remove a memory permanently, select **Delete**.
 
 ### Add knowledge [nightshift-get-started-knowledge-add]
