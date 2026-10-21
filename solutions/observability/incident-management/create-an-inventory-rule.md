@@ -53,8 +53,15 @@ This rule queries the index patterns defined by the `observability:logSources` s
 Conditions for each rule can be applied to specific metrics relating to the inventory type you select. You can choose the aggregation type, the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. When creating the rule, you can still get notified if no data is returned for the specific metric or if the rule fails to query {{es}}.
 
 :::{note}
-:applies_to: {"stack": "ga 9.2", "serverless": "ga"}`
+:applies_to: {"stack": "ga 9.2+", "serverless": "ga"}
 Most inventory types respect the default data collection method (for example, [Elastic System Integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
+:::
+
+:::{note}
+:applies_to: {"stack": "ga 9.6+", "serverless": "ga"}
+The **Schema** dropdown menu is also available for the **{{k8s}} Pods** inventory type. The selected schema determines the field the rule groups on: `k8s.pod.uid` for **OpenTelemetry**, or `kubernetes.pod.uid` for the **Elastic System Integration**. The **Docker Containers** and **{{aws}}** inventory types have no **Schema** dropdown menu.
+
+If you saved a **{{k8s}} Pods** rule with the **OpenTelemetry** schema before 9.6, that rule was evaluated against {{k8s}} integration data despite the saved schema. From 9.6, it evaluates and groups on OpenTelemetry data instead. After you upgrade, check any such rules to confirm they still alert on the pods you expect.
 :::
 
 In the following example, Kubernetes Pods is the selected inventory type. The conditions state that you will receive a critical alert for any pods within the `ingress-nginx` namespace with a memory usage of 95% or above and a warning alert if memory usage is 90% or above. The chart shows the results of applying the rule to the last 20 minutes of data. Note that the chart time range is 20 times the value of the look-back window specified in the `FOR THE LAST` field.
