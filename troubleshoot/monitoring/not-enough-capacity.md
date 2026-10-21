@@ -39,7 +39,7 @@ The configuration change can fail when:
 In case of failure, you may observe below message in the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md).
 
 ```
-Plan change failed: Not enough capacity to allocate instance(s)
+Not enough capacity to allocate instance(s)
 
 Unable to get capacity from
 ```
