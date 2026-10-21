@@ -50,7 +50,6 @@ For more details about how snapshots are used with {{es}}, check [Snapshot and R
 
 * [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)
 * [Microsoft Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
-* [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/)
 
 ## Add snapshot repository configurations [ece-manage-repositories-add]
 
