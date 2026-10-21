@@ -18,7 +18,7 @@ To connect a client application or a third-party tool to {{es}}, you need two th
 
 ## Before you begin [before-you-begin]
 
-To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege.
+To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege. If you created the deployment or project, you already have this privilege. If you sign in as a different user, an administrator needs to grant it. In this case, refer to [](/deploy-manage/users-roles.md).
 
 ## Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
 

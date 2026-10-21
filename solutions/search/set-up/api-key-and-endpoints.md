@@ -13,8 +13,8 @@ To connect a client to {{es}}, you need an endpoint URL and an API key. This pag
 
 ## Before you begin
 
-* Access to your deployment or project, such as an {{es}} {{vectordb}} project, an {{es}} project, or an {{ech}} deployment.
-* To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege.
+* You need access to your deployment or project, such as an {{es}} {{vectordb}} project, an {{es}} project, or an {{ech}} deployment. If you don't have one yet, refer to [](/solutions/search/set-up/choose-a-deployment-type.md).
+* To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege. If you created the deployment or project, you already have this privilege. If you sign in as a different user, an administrator needs to grant it. In this case, refer to [](/deploy-manage/users-roles.md).
 
 :::{include} /solutions/elasticsearch-solution-project/_snippets/deployment-tab-legend.md
 :::

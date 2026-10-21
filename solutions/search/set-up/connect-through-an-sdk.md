@@ -17,12 +17,10 @@ To try things out without installing a client, you can also work with {{es}} dat
 
 ## Before you begin
 
-You need two values from your deployment or project:
+You need the following:
 
-- The {{es}} endpoint URL. The client uses it to reach {{es}}.
-- An API key. The client uses it to authenticate.
-
-If you don't have them yet, refer to [](/solutions/search/set-up/api-key-and-endpoints.md).
+- A running {{es}} deployment or project. If you don't have one yet, refer to [](/solutions/search/set-up/choose-a-deployment-type.md).
+- The {{es}} endpoint URL, which the client uses to reach {{es}}, and an API key, which the client uses to authenticate. If you don't have them yet, refer to [](/solutions/search/set-up/api-key-and-endpoints.md).
 
 :::::::{stepper}
 
@@ -38,7 +36,7 @@ Set your {{es}} endpoint and API key as environment variables:
 :sync: macos-linux
 
 ```bash
-export ES_URL="<YOUR_PROJECT_URL>" <1>
+export ES_URL="YOUR_PROJECT_URL" <1>
 export ES_API_KEY="YOUR_API_KEY"
 ```
 
@@ -50,7 +48,7 @@ export ES_API_KEY="YOUR_API_KEY"
 :sync: windows-powershell
 
 ```powershell
-$Env:ES_URL = "<YOUR_PROJECT_URL>" <1>
+$Env:ES_URL = "YOUR_PROJECT_URL" <1>
 $Env:ES_API_KEY = "YOUR_API_KEY"
 ```
 
