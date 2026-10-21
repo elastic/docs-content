@@ -60,9 +60,7 @@ When a platform-level repository is associated with a deployment, the `found-sna
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
 
-* No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
-* Elastic permits use of storage that is fully compatible with AWS S3. Elastic does not support the storage itself.
-* While users can use the open source version of [MinIO](https://github.com/minio/minio), Elastic does not recommend it, as it is no longer maintained. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch) and the [MinIO self-managed repository](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md) guide.
+No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}. While Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself.
 No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}. While Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself.
 
 :::{admonition} MinIO support
