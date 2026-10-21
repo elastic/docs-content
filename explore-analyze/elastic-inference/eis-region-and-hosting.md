@@ -111,12 +111,12 @@ It can show fewer options than the full EIS hosting list on this page.
 1. In **Review region preferences**, check the allowed geographies or regions under **Pending changes**.
 1. Select **Save policy**.
 
-If the policy would deny access to in-use {{infer}} endpoints, **Review region preferences** stays open and shows **Policy could not be saved**.
+If the policy would deny access to in-use {{infer}} endpoints, **Review region preferences** stays open and shows a **Policy could not be saved** message.
 To save the policy anyway, select **Ignore inference endpoint errors with affected models**, and then select **Save policy**.
 Ingest or index operations that use endpoints for models outside the selected locations then fail.
 ::::
 
-::::{applies-item} stack: ga 9.5
+::::{applies-item} stack: ga =9.5
 
 3. Turn on **Restrict inference to specific locations**.
 
