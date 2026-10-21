@@ -76,7 +76,7 @@ The default value is **100**, which reserves enough capacity to keep the project
 
 :::::
 
-{{obs-serverless}} and {{sec-serverless}} projects don't have a Search Power setting.
+In {{obs-serverless}} and {{sec-serverless}} projects, Search Power isn't configurable. Search capacity is sized automatically based on the volume of search-ready data in your project. Unlike {{es-serverless}} projects, capacity is not scaled automatically based on query load. If your workload needs more search capacity than this sizing provides, for example because of a large number of detection rules or long rule lookback windows, contact Elastic Support.
 
 ### Search Boost Window [elasticsearch-search-boost-window]
 ```{applies_to}
@@ -88,7 +88,9 @@ In {{es-serverless}} projects, non-time series data is always considered search-
 
 Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.
 
-{{es}} {{vectordb}}, {{obs-serverless}}, and {{sec-serverless}} projects don't have a Search Boost Window setting.
+{{es}} {{vectordb}} projects don't have a Search Boost Window setting.
+
+In {{obs-serverless}} and {{sec-serverless}} projects, the Search Boost Window is fixed at 1 day. If your workload needs more search capacity than the data-driven sizing provides (for example, a large number of detection rules or long rule lookback windows), contact Elastic Support.
 
 ### Data retention [serverless-data-retention-settings]
 
@@ -96,9 +98,6 @@ Data retention policies determine how long your project data is retained.
 
 In {{serverless-full}}, data retention policies are configured through [data streams](/manage-data/lifecycle/data-stream.md), and you can [specify different retention periods](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) for specific data streams in your project.
 
-:::::{applies-switch}
-
-:::{applies-item} { "serverless": {"security": "ga"} }
 In addition to the retention period you set for each data stream, {{sec-serverless}} projects have two project-wide settings that you can use to manage data retention.
 
 **Maximum data retention period**
@@ -108,18 +107,10 @@ In addition to the retention period you set for each data stream, {{sec-serverle
 
 **Default data retention period**
 :   When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.
-:::
 
-:::{applies-item} { "serverless": {"elasticsearch": "ga", "observability": "ga"} }
-The **Data Retention** option in the **Search AI Lake settings** tab provides a shortcut to the **Data Streams** tab on the **Index Management** page, where you can define a different retention period for each data stream in your project.
-:::
+{{es-serverless}}, {{obs-serverless}}, and {{es}} {{vectordb}} projects rely on data stream settings to configure data retention. You can define a different retention period for each data stream from the **Data Streams** tab on the **Index Management** page. To open the **Index Management** page, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::::
-
-:::{note}
-:applies_to: { "serverless": {"vectordb": "ga"} }
-The **Search AI Lake settings** tab for {{es}} {{vectordb}} projects doesn't include a data retention setting. You can still define a different retention period for each data stream in your project from the **Data Streams** tab on the **Index Management** page. To open the **Index Management** page, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-:::
+{{es-serverless}} and {{obs-serverless}} projects also provide a shortcut: the **Data Retention** option in the **Search AI Lake settings** tab opens the **Data Streams** tab directly. {{es}} {{vectordb}} projects don't include this option in the **Search AI Lake settings** tab.
 
 ## Project features and add-ons [project-features-add-ons]
 ```{applies_to}
