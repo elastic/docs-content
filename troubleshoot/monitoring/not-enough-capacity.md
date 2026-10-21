@@ -27,7 +27,7 @@ Retry [<attempt>] will happen in [60000 milliseconds]. Errors from previous atte
 1. Could not ensure capacity allocation for [<deployment id>] result was [{"type":"capacity_by_zone","allocated_instances":0,"required_capacity":{"<zone>":{"<instance configuration>":<size>}},"failed_instances":[{"instance_name":"not-created-yet"}]}]
 ```
 
-While those hosts are starting, the message is temporary, and the scale-up can still succeed. In this situation, you can safely disregard this message.
+While those hosts are being provisioned, the message is temporary, and the scale-up can still succeed. In this situation, you can safely disregard this message.
 
 ### Possible failure causes
 
@@ -38,13 +38,15 @@ The configuration change can fail when:
 
 In case of failure, you may observe below message in the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md).
 
-```bash
+```
 Plan change failed: Not enough capacity to allocate instance(s)
+
+Unable to get capacity from
 ```
 
 ### Potential performance degradation
 
-During the scale-up, after {{ecloud}} required and started the new hosts, the new {{stack}} instances will be created and started, and the index/shard data will be migrated from old {{es}} instances to new ones. 
+During the scale-up, after {{ecloud}} required and provisioned the new hosts, the new {{stack}} instances will be created and started, and the index/shard data will be migrated from old {{es}} instances to new ones. 
 
 In this migration step, a part of the resources from existing instance is consumed, and the deployment without configuring [high availability](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) may experience temporary service degradation.
 
@@ -58,7 +60,7 @@ The following sections describe how to mitigate this situation.
 Current [hardware profiles](../../deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md#ec_upgrade_to_the_newest_version_of_your_current_hardware_profile) generally offer more available capacity than [deprecated profiles](../../deploy-manage/deploy/elastic-cloud/change-hardware.md#ec-deprecated-icdt). If you're using a deprecated profile and encounter a "not enough capacity" error when scaling up, consider migrating to a current profile first.
 
 ::::{note}
-For a large scale-up on a current hardware profile, such as increasing RAM by several hundred GiB, there is a higher chance the underlying CSP does not have enough capacity. In this situation, we recommend you contact support beforehand, so that we can better help you plan for the desired capacity.
+For a large scale-up on a current hardware profile, such as increasing RAM by several hundred GiB; Or migrating a large size deployment from one hardware profile to another, there is a higher chance the underlying CSP does not have enough capacity. In this situation, we recommend you contact support beforehand, so that we can better help you plan for the desired capacity.
 ::::
 
 
