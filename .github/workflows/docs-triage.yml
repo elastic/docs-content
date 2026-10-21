@@ -1,4 +1,4 @@
-name: Docs Triage
+name: "Issues: Triage on request"
 on:
   issue_comment:
     types: [created]

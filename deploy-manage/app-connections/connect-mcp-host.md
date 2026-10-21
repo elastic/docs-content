@@ -91,6 +91,8 @@ The server is now configured. Start a Claude Code session. The OAuth authorizati
 :::::
 
 :::::{dropdown} Claude desktop app
+:name: connect-claude-desktop
+
 The Claude desktop app supports OAuth natively, so no additional adapter is required.
 
 To configure the Claude desktop app:
@@ -111,7 +113,7 @@ When Claude desktop starts the OAuth flow, it expects an authorization callback 
 If you get an authorization error, check [the OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) you created includes this redirect URI.
 
 :::{note}
-Some enterprises may restrict adding custom connectors in this way. See the mcp-remote adapter alternative below.
+Some enterprises restrict adding custom connectors in this way. Use the [Elastic Cloud Serverless connector](/explore-analyze/ai-features/claude-connector.md) from the Claude directory instead, or use the **Alternative: mcp-remote adapter** option in this section.
 :::
 
 ::::{dropdown} Alternative: mcp-remote adapter
@@ -156,8 +158,13 @@ The `mcp-remote` adapter stores OAuth credentials locally on your machine, keyed
 :::::
 
 :::::{dropdown} claude.ai
+:name: connect-claude-ai
 
 The Claude web interface (https://claude.ai) supports OAuth natively, so no additional adapter is required.
+
+:::{tip}
+Instead of adding a custom connector, you can add the [Elastic Cloud Serverless connector](/explore-analyze/ai-features/claude-connector.md) from the Claude directory. It uses the same client ID, client secret, and MCP server URL as a custom connector.
+:::
 
 To connect from claude.ai:
 

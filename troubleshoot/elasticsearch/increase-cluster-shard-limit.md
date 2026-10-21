@@ -18,6 +18,12 @@ You can influence the data distribution by configuring the [`cluster.routing.all
 
 In earlier {{es}} versions, `cluster.routing.allocation.total_shards_per_node` is set to `1000`. Reaching that limit causes the following error: `Total number of shards per node has been reached` and requires adjusting this setting or reducing the number of shards. In {{es}} 9.x, this setting is not configured by default, which means there is no upper bound on the number of shards per node unless the setting is explicitly defined.
 
+However, having no default limit doesn't mean a node can safely host an unlimited number of shards. Oversharding can degrade performance regardless of this setting. Refer to the [shard sizing guidelines](/deploy-manage/production-guidance/optimize-performance/size-shards.md#sizing-shard-guidelines) for more details.
+
+:::{note}
+This page covers the per-node limit on shard allocation. A separate setting, [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node), defaults to `1000` per non-frozen data node and limits the total number of shards in the cluster, not the number of shards on each node. It is enforced even when `cluster.routing.allocation.total_shards_per_node` is not set. If you get the error `this action would add [x] shards, but this cluster currently has [y]/[z] maximum normal shards open`, refer to the [Troubleshoot shard-related errors](/deploy-manage/production-guidance/optimize-performance/size-shards.md#troubleshooting-max-shards-open) section for details.
+:::
+
 Various configurations limiting how many shards can be hosted on a single node can lead to shards being unassigned, because the cluster does not have enough nodes to satisfy the configuration.
 To ensure that each node carries a reasonable shard load, you might need to resize your deployment.
 
