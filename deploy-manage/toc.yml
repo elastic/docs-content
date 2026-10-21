@@ -820,7 +820,7 @@ toc:
                 children:
                   - file: monitor/stack-audit-logging/logfile-audit-events-ignore-policies.md
                   - file: monitor/stack-audit-logging/logfile-audit-output.md
-              - file: monitor/stack-audit-logging/auditing-search-queries.md
+              - file: monitor/stack-audit-logging/auditing-http-request-bodies.md
               - file: monitor/stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md
           - file: monitor/cloud-audit-trail.md
           - title: "Kibana user activity"

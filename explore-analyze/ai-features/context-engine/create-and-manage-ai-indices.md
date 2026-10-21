@@ -155,7 +155,7 @@ Delete an AI index as follows:
 
 If you preserve an associated resource, deleting the AI index does not delete that resource. Agents can no longer discover or retrieve from the deleted AI index through {{context-engine}}.
 
-You cannot edit or delete a managed AI index. Its owning Elastic integration controls its configuration and lifecycle.
+You cannot edit or delete a managed AI index. The Elastic feature that provides the AI index controls its configuration and lifecycle.
 
 ### Use the API [delete-ai-index-api]
 
