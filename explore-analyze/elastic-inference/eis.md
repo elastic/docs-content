@@ -62,6 +62,30 @@ Available actions include:
 - Copy the inference endpoint ID
 - Delete endpoints
 - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Region preferences](eis-region-and-hosting.md#inference-region-preferences) for where EIS processes {{infer}} requests
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Show or hide models](#eis-display-options) that are in preview, past end of life, or outside your region preferences
+
+### Show models that are hidden by default [eis-display-options]
+
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If a model you expect is missing from the list, it might be hidden. By default, {{kib}} leaves out three groups of models:
+
+- **Preview models**: Models in preview, which aren't recommended for production use.
+- **End-of-life models**: Models that have already reached their end-of-life date, which you can't use. Models that are close to that date stay in the list.
+- **Models outside your region preferences**: Models that you can't use until you update your [region preferences](eis-region-and-hosting.md#inference-region-preferences).
+
+To show or hide any of these groups:
+
+1. On the toolbar, select {icon}`controls` **Display options**.
+1. In **Model display options**, set each group to **Show** or **Hide**.
+1. Select **Apply**.
+
+The list now includes the groups you set to **Show**.
+
+{{kib}} doesn't save your selection. After you reload {{kib}}, all three groups are hidden again.
 
 ## Add endpoints [add-endpoint]
 
