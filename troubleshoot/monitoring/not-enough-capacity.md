@@ -1,6 +1,6 @@
 ---
-navigation_title: Not enough capacity during scale-up
-description: Learn why a scale-up or new deployment in Elastic Cloud Hosted can show a not enough capacity message, and how to mitigate, or contact support.
+navigation_title: Not enough capacity during scale-up or scale-out
+description: Learn why a scale-up, a scale-out, or a new deployment in Elastic Cloud Hosted can show a not enough capacity message, and how to mitigate, or contact support.
 applies_to:
   deployment:
     ech: ga
@@ -8,11 +8,15 @@ products:
   - id: cloud-hosted
 ---
 
-# Not enough capacity on scale-up [ec-not-enough-capacity]
+# Not enough capacity on scale-up or scale-out [ec-not-enough-capacity]
 
-When scaling up or creating a new deployment, you might encounter a temporary capacity error message if {{ecloud}} or the underlying cloud service provider (CSP) does not have enough capacity for the desired size. If sufficient capacity cannot be allocated, the operation might eventually fail.
+When scaling up, scaling out, or creating a new deployment, you might encounter a temporary capacity error message if {{ecloud}} or the underlying cloud service provider (CSP) does not have enough capacity for the desired size. If sufficient capacity cannot be allocated, the operation might eventually fail.
 
-This page explains the scale-up configuration change workflow, and what you can do when you encounter the failure.
+This page explains the scale configuration change workflow, and what you can do when you encounter the failure.
+
+:::{note}
+In the rest of this page, we describe scale-up for simplicity. The content also applies to a scale-out.
+:::
 
 ## Scale-up workflow
 
