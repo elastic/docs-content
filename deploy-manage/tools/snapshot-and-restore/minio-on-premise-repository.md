@@ -10,7 +10,7 @@ products:
 
 # MinIO self-managed repository [ece-configuring-minio]
 
-The open source version of [MinIO](https://github.com/minio/minio) is an object storage server compatible with the Amazon AWS S3 API. Elastic permits use of fully S3-compatible storage but does not provide support for that storage.
+The open source version of [MinIO](https://github.com/minio/minio) is an object storage server compatible with the Amazon AWS S3 API. While Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself.
 
 :::{warning}
 Elastic does not recommend MinIO, as it is no longer maintained. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch) for more guidance.

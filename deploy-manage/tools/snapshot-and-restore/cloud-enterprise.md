@@ -37,7 +37,7 @@ To register snapshot repositories in ECE directly at the deployment level, follo
 
 For more details about how snapshots are used with {{es}}, refer to [](/deploy-manage/tools/snapshot-and-restore.md).
 
-No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.  Elastic permits use of other storage that is fully compatible with the S3 API, but does not provide support for that storage.
+No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.  While Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself.
 
 If you are installing ECE [without internet access](/deploy-manage/deploy/cloud-enterprise/air-gapped-install.md), you need to use an on-premise storage service.
 
