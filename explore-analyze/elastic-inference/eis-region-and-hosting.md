@@ -95,14 +95,13 @@ If you can't edit region preferences, you can still check the current policy. Wh
 The **Region preferences** dialog lists only the geographies and regions currently available for your deployment.
 It can show fewer options than the full EIS hosting list on this page.
 
-1. Go to the **Elastic Inference Service** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Select **Region preferences**.
+To open the dialog, go to the **Elastic Inference Service** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and then select **Region preferences**.
 
 :::::{applies-switch}
 
 ::::{applies-item} { "serverless": "ga", "stack": "ga 9.6+" }
 
-3. Turn on **Use custom region policy**.
+1. Turn on **Use custom region policy**.
 1. Select **Geographies** or **Regions**, then select the locations to allow:
 
    * **Geographies**: Allows all current and future regions in each geographic zone you select.
@@ -118,7 +117,7 @@ Ingest or index operations that use endpoints for models outside the selected lo
 
 ::::{applies-item} stack: ga =9.5
 
-3. Turn on **Restrict inference to specific locations**.
+1. Turn on **Restrict inference to specific locations**.
 
    :::{image} /explore-analyze/images/eis-manage-region-preferences.png
    :alt: Region preferences dialog with Restrict inference to specific locations turned on and the Geographies tab open
