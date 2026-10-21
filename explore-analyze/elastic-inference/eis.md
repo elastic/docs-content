@@ -75,7 +75,7 @@ If a model you expect is missing from the list, it might be hidden. By default, 
 
 - **Preview models**: Models in preview, which aren't recommended for production use.
 - **End-of-life models**: Models that have already reached their end-of-life date, which you can't use. Models that are close to that date stay in the list.
-- **Models outside your region preferences**: Models that you can't use until you update your [region preferences](eis-region-and-hosting.md#inference-region-preferences).
+- **Models outside your region preferences**: Models that you can't use until you update your [region preferences](eis-region-and-hosting.md#inference-region-preferences). If you can edit region preferences, open the model's details, expand the banner with **View details**, and select **Edit Region preferences**.
 
 To show or hide any of these groups:
 
