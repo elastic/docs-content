@@ -1,5 +1,6 @@
 ---
-navigation_title: Not enough capacity during scale up
+navigation_title: Not enough capacity during scale-up
+description: Learn why a scale-up or new deployment in Elastic Cloud Hosted can show a not enough capacity message, and how to wait, mitigate, or contact support.
 applies_to:
   deployment:
     ess: all
