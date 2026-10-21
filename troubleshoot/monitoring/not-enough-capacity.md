@@ -55,7 +55,7 @@ Configuring [high availability](/deploy-manage/deploy/elastic-cloud/elastic-clou
 
 ### Avoid using a deprecated hardware profile
 
-A current [hardware profile](../../deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md#ec_upgrade_to_the_newest_version_of_your_current_hardware_profile) usually has more available capacity than a [deprecated one](../../deploy-manage/deploy/elastic-cloud/change-hardware.md#ec-deprecated-icdt). If you use a deprecated hardware profile and encounter the "not enough capacity" issue, consider migrating to a current one before the scale-up.
+Current [hardware profiles](../../deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md#ec_upgrade_to_the_newest_version_of_your_current_hardware_profile) generally offer more available capacity than [deprecated profiles](../../deploy-manage/deploy/elastic-cloud/change-hardware.md#ec-deprecated-icdt). If you're using a deprecated profile and encounter a "not enough capacity" error when scaling up, consider migrating to a current profile first.
 
 ### Contact support for scale-up failure
 
