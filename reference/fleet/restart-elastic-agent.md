@@ -27,16 +27,24 @@ To restart the {{agent}} service locally on the host instead, refer to [Start an
 
 ## Restart a single agent [restart-elastic-agent-single]
 
+To restart the {{agent}} running on a specific host:
+
 1. In {{kib}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**.
 2. From the **Actions** menu next to the agent, select **Restart agent**. The action is also available in the **Actions** menu on the agent details page.
 3. In the confirmation window, click **Restart agent**.
 
+{{fleet}} sends the restart action to the agent, and the {{agent}} process on the host restarts. To verify the result, [track the restart progress](#restart-elastic-agent-track).
+
 ## Restart multiple agents [restart-elastic-agent-bulk]
+
+To restart a group of agents in a single action:
 
 1. In {{kib}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**.
 2. Select the agents you want to restart.
 3. Select **Actions** → **Restart _x_ agents**.
 4. In the confirmation window, click **Restart agents**.
+
+{{fleet}} restarts all eligible agents in your selection. Agents that can't be restarted, for example because they're on a version earlier than 9.6.0, are excluded from the action and receive individual error results. To verify the results, [track the restart progress](#restart-elastic-agent-track).
 
 ## Track the restart progress [restart-elastic-agent-track]
 
