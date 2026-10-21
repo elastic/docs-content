@@ -559,6 +559,8 @@ An approximate query returns your usual `STATS` columns, plus two extra columns 
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` In [**Discover**](/explore-analyze/discover/esql-results.md#esql-kibana-results-table), these appear as additional columns in the results table. 
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` On a dashboard, a {icon}`bolt` badge in the panel header shows which panels display approximate results. It appears on {{esql}} visualizations, Discover session panels, Vega and Vega-Lite panels, custom panels, and maps with an {{esql}} layer. The badge has no text. Its tooltip says the results are approximate because [**Fast mode**](#esql-kibana-fast-mode-toggle) is on or the panel's query enables approximation, for example with the [`SET approximation`](#esql-kibana-approximation) directive. **Fast mode** doesn't change maps, so on a map the badge comes from the directive. If {{es}} still returns exact results, such as when the time range matches few documents, the panel shows no badge.
+
 For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
 
