@@ -24,14 +24,7 @@ When you initialize a scale-up configuration change,
 * If the underlying hosts running deployment instances, such as {{es}} and {{kib}}, have enough available capacity, the scale-up operation proceeds normally, either on the existing hosts or by creating new instances on other available hosts.
 * If the underlying hosts do not have enough capacity, {{ecloud}} might request additional hosts (virtual machines) from the cloud service provider (CSP) to accommodate the scale-up operation.
 
-While {{ecloud}} requests additional hosts, you might see a message matching the following pattern on the [Activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md).
-
-```bash
-Retry [<attempt>] will happen in [60000 milliseconds]. Errors from previous attempt:
-1. Could not ensure capacity allocation for [<deployment id>] result was [{"type":"capacity_by_zone","allocated_instances":0,"required_capacity":{"<zone>":{"<instance configuration>":<size>}},"failed_instances":[{"instance_name":"not-created-yet"}]}]
-```
-
-While those hosts are being provisioned, the message is temporary, and the scale-up can still succeed. In this situation, you can safely disregard this message.
+While {{ecloud}} requests additional hosts, the plan can stay on **Validating plan prerequisites** for a long time. During this step, {{ecloud}} is requesting compute resources from the CSP. The scale-up can still succeed.
 
 ### Possible failure causes
 
@@ -44,9 +37,12 @@ If the configuration change fails, you might see the following message on the [A
 
 ```
 Not enough capacity to allocate instance(s)
-
-Unable to get capacity from
+Unable to get capacity from ...
 ```
+
+:::{note}
+If the plan fails, no change is made to the deployment. The previous size and billing still apply.
+:::
 
 ### Potential performance degradation
 
@@ -67,6 +63,9 @@ Current [hardware profiles](../../deploy-manage/deploy/elastic-cloud/ec-change-h
 For large scale-ups, such as adding several hundred GiB of RAM, or large hardware profile migrations, notify support several weeks before your target date with your expected capacity needs and timeline. Advance notice allows Elastic to work on securing the necessary capacity or help you plan alternative options. Requests made without sufficient lead time are subject to CSP availability and may fail due to capacity limits.
 ::::
 
+### Try a smaller increase
+
+If a scale-up fails, try a smaller increase and then gradually work up to the size you need. For example, if you want 10 nodes in each availability zone, try 5 first.
 
 ### Configure high availability
 
