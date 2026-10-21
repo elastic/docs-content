@@ -7,7 +7,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Understanding not enough capacity on scale-up [ec-not-enough-capacity]
+# Not enough capacity on scale-up [ec-not-enough-capacity]
 
 A scale-up, or a new deployment, may temporarily show a capacity error message. It can also fail if {{ecloud}} or the underlying cloud service provider does not, in the end, have enough capacity for the desired size.
 
