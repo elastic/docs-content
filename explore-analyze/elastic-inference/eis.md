@@ -83,7 +83,7 @@ To show or hide any of these groups:
 1. In **Model display options**, set each group to **Show** or **Hide**.
 1. Select **Apply**.
 
-The list now includes the groups you set to **Show**. In card view, **Preview** and **Blocked** badges mark preview models and models outside your region preferences, and end-of-life models show their end-of-life date.
+The list now includes the groups you set to **Show**.
 
 {{kib}} doesn't save your selection. After you reload {{kib}}, all three groups are hidden again.
 
