@@ -39,6 +39,8 @@ The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}} or
 ::::{applies-item} { self:, ece:, eck: }
 Run {{agent}} in OTel mode as a gateway. The gateway exposes an OTLP endpoint that your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) and edge collectors send to, and it writes to {{es}} with the `elasticsearch` exporter. For gateway versus edge setup, refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
 
+The `elasticsearch` exporter drops histograms with cumulative temporality, the default in most OpenTelemetry SDKs. Export histograms with delta temporality, add the `cumulativetodelta` processor to the gateway, or send metrics to `/_otlp`, which accepts both temporalities from 9.5. Refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality).
+
 {applies_to}`stack: ga 9.2+` {{es}} also accepts OTLP/HTTP on `/_otlp/v1/metrics` from a gateway Collector. Use it when that gateway prefers the OTLP/HTTP exporter over the `elasticsearch` exporter. Don't send applications or pods directly to `/_otlp`. Metrics land in a time series data stream (TSDS) through built-in index templates. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) for how metrics are stored and to [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) for request details.
 ::::
 
@@ -90,10 +92,12 @@ The remote write endpoint depends on your deployment:
 
 :::::{applies-switch}
 
-::::{applies-item} { serverless:, ech: }
+::::{applies-item} serverless:
 Use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md). Managed inputs, the endpoints {{ecloud}} runs for you, provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}. Sending remote write traffic directly to the {{es}} endpoint bypasses that.
+::::
 
-{applies_to}`stack: ga 9.4+` Available for {{ech}} deployments.
+::::{applies-item} ech:
+{applies_to}`stack: ga 9.4+` Use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md). Managed inputs, the endpoints {{ecloud}} runs for you, provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}. Sending remote write traffic directly to the {{es}} endpoint bypasses that.
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }

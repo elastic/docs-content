@@ -42,7 +42,7 @@ serverless: ga
 
 When counters and histograms live in a TSDS, temporality is how each sample relates to the last one. Cumulative values are running totals since the process started. Delta values are the change since the previous sample. {{es}} needs the same temporality your producer uses. If they don't match, rates, aggregations, and downsampling can be wrong.
 
-You don't have to configure temporality if you ingest with the {{es}} OTLP/HTTP endpoint, the Managed OTLP Endpoint, or Prometheus remote write. The OTLP intakes keep the temporality that each metric arrives with, and Prometheus remote write counters are always cumulative, which matches the {{es}} default.
+You don't have to configure temporality if you ingest with the {{es}} OTLP/HTTP endpoint, the Managed OTLP Endpoint, or Prometheus remote write. Some paths accept only delta histograms, such as the `elasticsearch` exporter and, on {{ech}} before 9.5.3, the Managed OTLP Endpoint. Refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality).
 
 For how to set and verify temporality, refer to [Metric temporality](/manage-data/data-store/data-streams/metric-temporality.md).
 :::
