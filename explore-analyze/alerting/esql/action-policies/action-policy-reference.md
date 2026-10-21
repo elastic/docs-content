@@ -14,7 +14,7 @@ Look up the match condition fields, grouping modes, frequency options, and dispa
 
 ## Match conditions fields [action-policy-matcher-fields]
 
-Use the following fields in the **Match conditions** expression to filter which alerts an action policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `severity: "critical" AND alert_status: "active"`.
+Use the following fields in the **Match conditions** expression to filter which alerts an action policy applies to. Combine them with standard [KQL](elasticsearch://reference/query-languages/kql.md) operators, for example `severity: "critical" AND alert_status: "active"`.
 
 | Field | Description | Example |
 |---|---|---|

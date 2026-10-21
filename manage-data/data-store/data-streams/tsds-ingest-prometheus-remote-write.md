@@ -274,4 +274,7 @@ If you don't need exemplars, or want to avoid the additional storage, turn it of
 * Only the Prometheus remote write 1.0 protocol is supported. Remote write 2.0 is not yet supported.
 * Time series with a missing `__name__` label are dropped.
 * Samples with non-finite values (NaN, Infinity) are silently dropped.
+* {applies_to}`stack: ga 9.6+` Samples whose series and timestamp are already indexed are treated as duplicates and silently dropped, even if their value differs.
+  This lets clients safely retry requests that were already partially or fully indexed.
+  If duplicates are the only failures in a request, the endpoint responds with `204 No Content`.
 * [Staleness markers](https://prometheus.io/docs/prometheus/latest/querying/basics/#staleness) are not supported.

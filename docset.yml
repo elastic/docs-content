@@ -439,8 +439,8 @@ subs:
   context-engine: "Context Engine"
   kube-stack-version: 0.16.0
   helm-version: 4.3.0
-  ece-docker-images-8: 8.19.20
-  ece-docker-images-9: 9.5.2
+  ece-docker-images-8: 8.19.23
+  ece-docker-images-9: 9.5.5
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
