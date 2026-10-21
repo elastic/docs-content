@@ -29,12 +29,12 @@ The following situations can cause this message:
 
 ### When {{ecloud}} has enough capacity
 
-When {{ecloud}} and the underlying cloud service provider have enough capacity, but the allocator that holds the instance does not, it may take time for {{ecloud}} to orchestrate the following actions:
+When {{ecloud}} and the underlying cloud service provider have enough capacity, but the host that holds the instance does not, it may take time for {{ecloud}} to orchestrate the following actions:
 
-* Spin up new empty allocators.
-* On the new allocator, spin up a new instance with the desired size, and copy the data from the current instance into the new instance.
+* Spin up new empty underlying host.
+* On the new host, spin up a new instance with the desired size, and copy the data from the current instance into the new instance.
 
-While a new allocator is spun up, this `Could not ensure capacity allocation for...` message can be observed. In this situation, the message is temporary. The scale-up can succeed after a retry, within those 100 attempts.
+While a new underlying host is spun up, you can observe `Could not ensure capacity allocation for...` message. In this situation, the message is temporary. The scale-up can succeed after a retry, within those 100 attempts.
 
 ### When {{ecloud}} or the underlying cloud service provider do not have enough capacity
 
