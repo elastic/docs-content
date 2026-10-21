@@ -20,7 +20,7 @@ When you initialize a scale-up configuration change,
 * If the underlying hosts that hold your deployment instances, such as {{es}} and {{kib}}, have enough room for the size change, the configuration change will perform an inline size up straightforward. 
 * If the underlying hosts do not have enough room, as a normal process, {{ecloud}} will request the new host (virtual machines) from the cloud provider. 
 
-During the requesting period, you may observe the message that follows below pattern in the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). 
+During the requesting period, you may observe the following message pattern in the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). 
 
 ```bash
 Retry [<attempt>] will happen in [60000 milliseconds]. Errors from previous attempt:
