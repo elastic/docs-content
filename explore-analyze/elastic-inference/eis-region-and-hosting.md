@@ -18,6 +18,7 @@ EIS is available to all Elastic customers in all regions on Elastic Cloud Server
 * `ap-southeast-2` (Sydney, Australia)
 * `ca-central-1` (Montreal, Canada)
 * `eu-central-1` (Frankfurt, Germany)
+* `eu-central-2` (Zurich, Switzerland)
 * `eu-west-2` (London, UK)
 * `us-east-1` (N. Virginia, US)
 * `us-west-2` (Oregon, US)
