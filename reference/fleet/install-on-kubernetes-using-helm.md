@@ -21,6 +21,7 @@ Features of the Helm-based {{agent}} install include:
 * Support for {{es}} outputs with authentication through username and password, an API key, or a stored secret.
 * Easy switching between privileged (`root`) and unprivileged {{agent}} deployments.
 * Support for {{stack}} deployments on {{eck}}.
+* {applies_to}`stack: ga 9.5.6+` Support for Red Hat OpenShift.
 
 For detailed install steps, try one of our walk-through examples:
 
