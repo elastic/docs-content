@@ -60,7 +60,7 @@ The following sections describe how to mitigate this situation.
 Current [hardware profiles](../../deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md#ec_upgrade_to_the_newest_version_of_your_current_hardware_profile) generally offer more available capacity than [deprecated profiles](../../deploy-manage/deploy/elastic-cloud/change-hardware.md#ec-deprecated-icdt). If you're using a deprecated profile and encounter a "not enough capacity" error when scaling up, consider migrating to a current profile first.
 
 ::::{note}
-For a large scale-up on a current hardware profile, such as increasing RAM by several hundred GiB; Or migrating a large size deployment from one hardware profile to another, there is a higher chance the underlying CSP does not have enough capacity. In this situation, we recommend you contact support beforehand, so that we can better help you plan for the desired capacity.
+For large scale-ups, such as adding several hundred GiB of RAM, or large hardware profile migrations, notify support several weeks before your target date with your expected capacity needs and timeline. Advance notice allows Elastic to work on securing the necessary capacity or help you plan alternative options. Requests made without sufficient lead time are subject to CSP availability and may fail due to capacity limits.
 ::::
 
 
