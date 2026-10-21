@@ -10,7 +10,7 @@ products:
 
 # Not enough capacity on scale-up [ec-not-enough-capacity]
 
-A scale-up, or a new deployment, may temporarily show a capacity error message. It can also fail if {{ecloud}} or the underlying cloud service provider (CSP) does not, in the end, have enough capacity for the desired size.
+When scaling up or creating a new deployment, you might encounter a temporary capacity error message if {{ecloud}} or the underlying cloud service provider (CSP) does not have enough capacity for the desired size. If sufficient capacity cannot be allocated, the operation might eventually fail.
 
 This page explains the scale-up configuration change workflow, and what you can do when you encounter the failure.
 
