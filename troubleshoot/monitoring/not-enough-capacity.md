@@ -27,7 +27,7 @@ Retry [<attempt>] will happen in [60000 milliseconds]. Errors from previous atte
 1. Could not ensure capacity allocation for [<deployment id>] result was [{"type":"capacity_by_zone","allocated_instances":0,"required_capacity":{"<zone>":{"<instance configuration>":<size>}},"failed_instances":[{"instance_name":"not-created-yet"}]}]
 ```
 
-While those hosts are starting, the message is temporary, and the scale-up can still succeed.
+While those hosts are starting, the message is temporary, and the scale-up can still succeed. In this situation, you can safely disregard this message.
 
 ### Possible failure causes
 
