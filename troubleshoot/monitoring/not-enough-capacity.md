@@ -17,8 +17,8 @@ This page explains the scale-up configuration change workflow, and what you can 
 ## Scale-up workflow
 
 When you initialize a scale-up configuration change, 
-* If the underlying hosts that hold your deployment instances, such as {{es}} and {{kib}}, have enough room for the size change, the configuration change will perform an inline size up straightforward. 
-* If the underlying hosts do not have enough room, as a normal process, {{ecloud}} will request the new host (virtual machines) from the cloud provider. 
+* If the underlying hosts running deployment instances, such as {{es}} and {{kib}}, have enough available capacity, the scale-up operation proceeds normally, either on the existing hosts or by creating new instances on other available hosts.
+* If the underlying hosts do not have enough capacity, {{ecloud}} might request additional hosts (virtual machines) from the cloud service provider (CSP) to accommodate the scale-up operation.
 
 During the requesting period, you may observe the following message pattern in the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). 
 
