@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Managed inputs event API [observability-apm-server-api]
+# Managed Inputs APM intake event API [observability-apm-server-api]
 
 ::::{warning}
 This API is exclusively for APM agent developers. The vast majority of users should have no reason to interact with this API.
@@ -40,14 +40,11 @@ Requests to this endpoint must be authenticated.
 Example managed inputs information request:
 
 ```sh
-curl -X POST http://127.0.0.1:8200/ \
+curl -X GET http://127.0.0.1:8200/ \
   -H "Authorization: ApiKey api_key"
 
 {
-  "build_date": "2021-12-18T19:59:06Z",
-  "build_sha": "24fe620eeff5a19e2133c940c7e5ce1ceddb1445",
-  "publish_ready": true,
-  "version": "8.16.1"
+  "version": "8.9.0"
 }
 ```
 
@@ -87,17 +84,6 @@ Send an `HTTP POST` request to the `intake/v2/events` endpoint:
 https://{hostname}:{port}/intake/v2/events
 ```
 
-Managed inputs support asynchronous processing of batches. To request asynchronous processing the `async` query parameter can be set in the POST request to the `intake/v2/events` endpoint:
-
-```bash
-https://{hostname}:{port}/intake/v2/events?async=true
-```
-
-::::{note}
-Since asynchronous processing defers some of the event processing to the background and takes place after the client has closed the request, some errors can’t be communicated back to the client and are logged by managed inputs. Furthermore, asynchronous processing requests will only be scheduled if managed inputs can service the incoming request, requests that cannot be serviced will receive an internal error `503` "queue is full" error.
-
-::::
-
 ### Response [api-events-response]
 
 On success, the server will respond with a 202 Accepted status code and no body.
@@ -106,41 +92,18 @@ Keep in mind that events can succeed and fail independently of each other. Only 
 
 ### API Errors [api-events-errors]
 
-There are two types of errors that managed inputs may return to an agent:
-
-* Event related errors (typically validation errors)
-* Non-event related errors
-
-Managed inputs process events one after the other. If an error is encountered while processing an event, the error encountered as well as the document causing the error are added to an internal array. Managed inputs will only save 5 event related errors. If it encounters more than 5 event related errors, the additional errors will not be returned to agent. Once all events have been processed, the error response is sent.
-
-Some errors, not relating to specific events, may terminate the request immediately. For example: IP rate limit reached, wrong metadata, etc. If at any point one of these errors is encountered, it is added to the internal array and immediately returned.
+Errors are returned as a flat list of messages alongside the number of accepted events. The HTTP status code reflects the error (for example, `400` for a validation or decoding error).
 
 An example error response might look something like this:
 
 ```json
 {
+  "accepted": 0,
   "errors": [
-    {
-      "message": "<json-schema-err>",   <1>
-      "document": "<ndjson-obj>"   <2>
-    },{
-      "message": "<json-schema-err>",
-      "document": "<ndjson-obj>"
-    },{
-      "message": "<json-decoding-err>",
-      "document": "<ndjson-obj>"
-    },{
-      "message": "too many requests"   <3>
-    },
-  ],
-  "accepted": 2320   <4>
+    "validation error: 'metadata' required"
+  ]
 }
 ```
-
-1. An event related error
-2. The document causing the error
-3. An immediately returning non-event related error
-4. The number of accepted events
 
 If you’re developing an agent, these errors can be useful for debugging.
 
@@ -161,7 +124,7 @@ Metadata is stored under `context` when viewing documents in {{es}}.
 
 #### Metadata Schema [metadata-schema]
 
-Managed inputs use JSON Schema to validate requests. The specification for metadata is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/metadata.json) and included below.
+Managed inputs use JSON Schema to validate requests. The specification for metadata is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/metadata.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -774,7 +737,7 @@ Transactions are events corresponding to an incoming request or similar task occ
 
 #### Transaction Schema [api-transaction-schema]
 
-Managed inputs use JSON Schema to validate requests. The specification for transactions is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/transaction.json) and included below.
+Managed inputs use JSON Schema to validate requests. The specification for transactions is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/transaction.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -1919,7 +1882,7 @@ Spans are events captured by an agent occurring in a monitored service.
 
 #### Span Schema [api-span-schema]
 
-Managed inputs use JSON Schema to validate requests. The specification for spans is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/span.json) and included below.
+Managed inputs use JSON Schema to validate requests. The specification for spans is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/span.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -2836,7 +2799,7 @@ An error or a logged error message captured by an agent occurring in a monitored
 
 #### Error Schema [api-error-schema]
 
-Managed inputs use a JSON Schema to validate requests. The specification for errors is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/error.json) and included below.
+Managed inputs use a JSON Schema to validate requests. The specification for errors is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/error.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -4143,7 +4106,7 @@ Metrics contain application metric data captured by an {{apm-agent}}.
 
 #### Metric Schema [api-metricset-schema]
 
-Managed inputs use JSON Schema to validate requests. The specification for metrics is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/metricset.json) and included below.
+Managed inputs use JSON Schema to validate requests. The specification for metrics is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/metricset.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
