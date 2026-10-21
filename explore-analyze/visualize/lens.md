@@ -418,7 +418,7 @@ In the legend, click the field, then choose one of the following options:
 
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
 
-To get started, use the option that matches your deployment and version:
+To open the visualization data in **Discover**, use the option that matches your deployment and version:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Open in Discover**.
 - {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Explore in Discover**.
