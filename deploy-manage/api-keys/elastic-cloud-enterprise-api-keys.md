@@ -54,8 +54,8 @@ For token-based API authentication, you can use the same username and password t
 
 For operations that only read information, but don’t create, update or delete, you can authenticate with a user that has restricted permissions, such as the `readonly` user.
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 To create a bearer token:
 

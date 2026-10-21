@@ -49,8 +49,8 @@ For production environments, you must define the memory settings for each role, 
 
 Make sure you have completed all prerequisites and environment preparations described in the [Installation overview](./install.md), and that the hosts are configured according to [](./configure-operating-system.md).
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 ## Installation steps [ece_installation_steps_2]
 

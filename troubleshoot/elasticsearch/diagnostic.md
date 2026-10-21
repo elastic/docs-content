@@ -27,8 +27,8 @@ Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthroug
 
 * Java Runtime Environment or Java Development Kit v1.8 or higher
 
-::::{include} /deploy-manage/_snippets/curl-k-generic.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-generic.md
+:::
 
 
 ## Performance and safety [diagnostic-performance-safety]

@@ -1415,8 +1415,8 @@ After adding support for autoscaling to the [example](#ece-node-roles-support-ex
 
 Having added support for `node_roles` and autoscaling to your custom template, it is possible to perform the update through the RESTful API, by following these steps:
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 1. Obtain the existing deployment templates by sending the following `GET` request, and take note of the `id` of the template you wish to update.
 

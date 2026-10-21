@@ -44,8 +44,8 @@ You can also get the latest version of the tool by downloading the `diagnostics-
 
 ## Capture diagnostic information [kibana-diagnostic-capture]
 
-::::{include} /deploy-manage/_snippets/curl-k-generic.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-generic.md
+:::
 
 To run a {{kib}} diagnostic:
 

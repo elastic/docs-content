@@ -305,8 +305,8 @@ For *offline* or *air-gapped* installations, additional steps are required to ad
 
 The examples shown all use HTTPS over port 12443, which requires that you have [a TLS certificate configured](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 
 ## Get {{stack}} information [ece_get_elastic_stack_information]

@@ -74,8 +74,8 @@ If you have an allocator that meets several criteria, such as an allocator with 
 
 ## Tag an allocator through the RESTful API [ece_tag_an_allocator_through_the_restful_api]
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 1. Get a list of the allocators in your ECE installation:
 

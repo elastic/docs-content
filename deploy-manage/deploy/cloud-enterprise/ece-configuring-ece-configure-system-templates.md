@@ -25,8 +25,8 @@ You cannot edit system templates through the UI; they can only be configured thr
 The API user must have the `Platform admin` role in order to configure system templates.
 ::::
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 1. Obtain the existing system deployment template you wish to modify. Note the `id` of the system deployment template as you will include this value in the API call to edit the template.
 

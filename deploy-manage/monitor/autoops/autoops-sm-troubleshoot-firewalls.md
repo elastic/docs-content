@@ -87,8 +87,8 @@ The command returns a response similar to the following:
 
 If you do not receive a similar response, your system returns an error indicating one or more reasons for the failure as outlined in the following table. Use the corresponding proposed solution to fix the issue.
 
-::::{include} /deploy-manage/_snippets/curl-k-generic.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-generic.md
+:::
 
 | Reason for failure | Proposed solution |
 | :--- | :--- |
