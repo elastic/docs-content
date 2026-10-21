@@ -166,7 +166,7 @@ Every shard uses memory. Usually, a small set of large shards uses fewer resourc
 
 Once document writes are complete, ensure an index is [merged](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to optimize its read performance. For indices managed by {{ilm}}, you can automate this by adding the [{{ilm-init}} force merge action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md).
 
-Force merging significantly improves the read performance of [partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#searchable-snapshot-mount-storage-options). As a safeguard, the [{{ilm-init}} searchable snapshot action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) sets `force_merge_index` to `true` by default, which force merges the index before the snapshot is taken.
+Every segment contributes to memory, so force merging significantly improves the read performance of [partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#searchable-snapshot-mount-storage-options). As a safeguard, the [{{ilm-init}} searchable snapshot action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) sets `force_merge_index` to `true` by default, which force merges the index before the snapshot is taken.
 
 ### Common traffic issues [reduce-jvm-memory-pressure-traffic]
 
