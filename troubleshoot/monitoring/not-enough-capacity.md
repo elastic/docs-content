@@ -25,7 +25,7 @@ This page explains why the change can fail, and what you can do.
 
 ## Possible causes [ec-not-enough-capacity-causes]
 
-There are two situations:
+The following situations can cause this message:
 
 ### When {{ecloud}} has enough capacity
 
