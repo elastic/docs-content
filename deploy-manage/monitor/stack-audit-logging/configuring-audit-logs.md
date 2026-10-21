@@ -52,7 +52,7 @@ For a complete description of auditing event details, such as `category`, `type`
 
 * If you need a more granular control, refer to [{{es}} audit events ignore policies](./logfile-audit-events-ignore-policies.md) for a better understanding how ignore policies work and when they are beneficial.
 
-* Refer to [auditing search queries](./auditing-search-queries.md) for details on logging request bodies in the {{es}} audit logs.
+* Refer to [auditing HTTP request bodies](./auditing-http-request-bodies.md) for details on logging request bodies in the {{es}} audit logs.
 
   ::::{important}
   Sensitive data may be audited in plain text when including the request body in audit events, even though all the security APIs, such as those that change the user’s password, have the credentials filtered out when audited.

@@ -31,11 +31,17 @@ If you're using {{ecloud}}, this setting only applies to the {{kib}} UI of your 
 4. Select **Save changes**.
 5. Refresh the page to apply the selected language.
 
-## If your language isn't available
+## Troubleshooting
+
+### If your language isn't available
 
 By default, {{kib}} offers localized versions for [some languages](kibana://reference/configuration-reference/internationalization-settings.md#built-in-and-custom-locales).
 
 On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, administrators can enable or disable languages, or turn language selection off, in the [internationalization settings](kibana://reference/configuration-reference/internationalization-settings.md).
+
+### Browser translation isn't supported
+
+Browser page translation, such as the translator built into Chrome or Edge, isn't supported. It modifies the page in ways that can make parts of {{kib}} stop updating or fail to load. To use {{kib}} in another language, change the interface language using the built-in options described on this page. Text that users create, such as dashboard and panel titles, isn't translated.
 
 ## Related pages
 

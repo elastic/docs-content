@@ -115,6 +115,13 @@ This routing is automatic and cannot be turned off. You do not need to configure
 
 {{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as {{esql}} query generation and conversation title generation.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The fast model also selects the [skills](skills.md#how-skills-are-invoked) that are relevant to each message, but only when both of the following are true:
+
+- The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) is turned on.
+- A fast model is available that's different from the model the conversation uses.
+
+Otherwise, the agent receives its full list of skills.
+
 ### Fast model availability by deployment type
 
 On {{serverless-full}} projects and {{ech}} deployments, the fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup. Claude Haiku 4.5 is one example. The latency improvement is most noticeable on {{serverless-full}}.
@@ -202,6 +209,8 @@ You can create either an {{infer}} endpoint or a connector through the API:
 You can connect a locally hosted LLM to Elastic. This requires your local LLM to be compatible with the OpenAI API format.
 
 [Add an {{infer}} endpoint](#add-an-inference-endpoint) that uses the `openai` service and points at your local LLM. For an example request, refer to [Using OpenAI compatible models with the {{infer-cap}} API](/solutions/search/semantic-search/using-openai-compatible-models.md).
+
+{applies_to}`{ deployment: { self: ga, ece: ga, eck: ga } }` If your LLM is served over HTTPS with a certificate signed by a private or internal certificate authority, refer to [Trust a private certificate authority for external {{infer}} endpoints](/explore-analyze/elastic-inference/external-inference-private-ca.md).
 
 :::{note}
 :applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
