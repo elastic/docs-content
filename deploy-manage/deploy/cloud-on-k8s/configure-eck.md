@@ -43,7 +43,7 @@ helm show values elastic/eck-operator
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 ```sh subs=true
@@ -79,7 +79,7 @@ helm upgrade elastic-operator elastic/eck-operator -f my-values-file.yaml -n ela
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 ```sh subs=true
@@ -104,7 +104,7 @@ helm upgrade elastic-operator elastic/eck-operator --set config.caValidity=43800
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 ```sh subs=true

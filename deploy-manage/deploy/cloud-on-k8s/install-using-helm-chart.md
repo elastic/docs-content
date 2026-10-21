@@ -35,7 +35,7 @@ The minimum supported version of Helm for this method is {{eck_helm_minimum_vers
 
 ::::
 
-::::{tab-item} Elastic Container Registry
+::::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 {applies_to}`eck: ga 3.6+`
@@ -79,7 +79,7 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 ```sh subs=true
@@ -108,7 +108,7 @@ helm install elastic-operator-crds elastic/eck-operator-crds
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 ```sh subs=true
@@ -138,7 +138,7 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 ```sh subs=true
@@ -183,7 +183,7 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 To get the profile files, download and extract the chart with the `helm pull` command. The command extracts the chart to the `eck-operator` directory. You can also find the profile files in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-operator).
@@ -215,7 +215,7 @@ helm show values elastic/eck-operator
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 ```sh subs=true

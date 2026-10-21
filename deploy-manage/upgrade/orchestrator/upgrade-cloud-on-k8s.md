@@ -101,7 +101,7 @@ helm upgrade elastic-operator elastic/eck-operator -n elastic-system
 
 :::
 
-:::{tab-item} Elastic Container Registry
+:::{tab-item} {{container-registry}}
 :sync: oci-registry
 
 {applies_to}`eck: ga 3.6+`
