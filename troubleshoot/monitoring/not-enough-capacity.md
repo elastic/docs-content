@@ -52,7 +52,7 @@ Unable to get capacity from
 
 During the scale-up, after {{ecloud}} has requested and provisioned the new hosts, the new {{stack}} instances are created and started, and the index/shard data is migrated from the old {{es}} instances to the new ones.
 
-This migration consumes additional resources on the existing instances, and deployments without [high availability](https://github.com/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) might experience temporary service degradation.
+This migration consumes additional resources on the existing instances, and deployments without [high availability](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) might experience temporary service degradation.
 
 
 ## Mitigation [ec-not-enough-capacity-mitigation]
