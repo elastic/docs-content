@@ -51,7 +51,7 @@ The following sections describe how to mitigate this situation.
 
 ### Configure high availability
 
-Configuring [high availability](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) can avoid a performance outage and degradation while the deployment changes size. With high availability, search and indexing continue during the scale-up. You do not need to follow the retry time. The deployment keeps serving at its current size, and the new capacity is available when a later retry attempt succeeds.
+Configuring [high availability](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) can avoid a performance outage and degradation while the deployment changes size. With high availability, search and indexing continue during the scale-up, so you can leave the plan to retry. The deployment keeps serving at its current size, and the new capacity is available when a later retry attempt succeeds.
 
 ### Avoid using a deprecated hardware profile
 
