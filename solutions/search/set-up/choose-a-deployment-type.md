@@ -39,9 +39,9 @@ Elastic also offers other deployment types. Refer to the [deployment comparison]
 
 Once you have {{es}} running, try a quickstart tutorial:
 
-* [](/solutions/search/get-started/index-basics.md): create an index, add documents, and run a search
-* [](/solutions/vector-database/vector-full-text-search.md): connect a client and run full-text, semantic, and hybrid search
-* [](/solutions/search/get-started/keyword-search-python.md): build a search query with Python
+* [](/solutions/vector-database/vector-full-text-search.md): Connect a client and run full-text, semantic, and hybrid search. You can follow the examples in Python, TypeScript, PHP, Ruby, C#/.NET, Java, or Go.
+* [](/solutions/search/get-started/index-basics.md): Create an index, add documents, and run a search. This tutorial goes further into indices, including dynamic and explicit mappings.
+* [](/solutions/search/get-started/keyword-search-python.md): Build a keyword search query with Python.
 
 ::::
 

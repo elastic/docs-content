@@ -7,13 +7,13 @@ This snippet is in use in the following locations:
 :::::::{applies-switch}
 
 ::::::{applies-item} serverless: ga
-Copy the {{es}} endpoint from {{kib}} or the {{ecloud}} Console.
+Copy the {{es}} endpoint from the project UI or the {{ecloud}} Console.
 
 :::::{tab-set}
 
-::::{tab-item} {{kib}}
+::::{tab-item} Project UI
 
-1. Open {{kib}} for your project.
+1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Open**.
 2. From the **Help menu** {icon}`question` or the project selector in the header, select **Connection details**.
 3. On the **Endpoints** tab, copy the **{{es}} endpoint**.
 
@@ -47,13 +47,13 @@ If your project runs on AWS and AWS PrivateLink is set up, the panel also lists 
 ::::::
 
 ::::::{applies-item} ech: ga
-Copy the {{es}} endpoint from {{kib}} or the {{ecloud}} Console.
+Copy the {{es}} endpoint from the deployment UI or the {{ecloud}} Console.
 
 :::::{tab-set}
 
-::::{tab-item} {{kib}}
+::::{tab-item} Deployment UI
 
-1. Open {{kib}} for your deployment.
+1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your deployment and select **Open**.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. On the **Endpoints** tab, copy the **{{es}} endpoint**.
 

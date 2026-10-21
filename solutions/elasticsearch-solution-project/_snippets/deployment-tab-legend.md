@@ -4,10 +4,12 @@ This snippet is in use in the following locations:
 - solutions/search/set-up/api-key-and-endpoints.md
 -->
 
-The deployment tabs mean the following:
+:::{admonition} Deployment tabs
+The deployment tabs below mean the following:
 
 * **Serverless**: an {{es}} {{vectordb}} project or an {{es}} project.
 * **ECH**: {{ech}}.
 * **ECE**: {{ece}}.
 * **Self-managed**: a cluster you install and manage.
 * **ECK**: {{eck}}.
+:::

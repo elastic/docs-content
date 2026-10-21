@@ -9,18 +9,27 @@ type: how-to
 
 # Connect through an SDK [connect-through-an-sdk]
 
-Install and configure an official {{es}} language client to connect to a project or cluster.
+Use an official {{es}} client library to connect your application to {{es}} from code. This page shows how to install and initialize the client for each supported language, so you can copy the example for your language and start sending requests.
 
 :::{note}
 To try things out without installing a client, you can also work with {{es}} data in the {{kib}} [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md).
 :::
+
+## Before you begin
+
+You need two values from your deployment or project:
+
+- The {{es}} endpoint URL. The client uses it to reach {{es}}.
+- An API key. The client uses it to authenticate.
+
+If you don't have them yet, refer to [](/solutions/search/set-up/api-key-and-endpoints.md).
 
 :::::::{stepper}
 
 ::::::{step} Connect to your project
 :anchor: connect-through-an-sdk-connect
 
-To get your {{es}} endpoint and API key, refer to [API key and endpoints](/solutions/search/set-up/api-key-and-endpoints.md). Set them as environment variables:
+Set your {{es}} endpoint and API key as environment variables:
 
 :::::{tab-set}
 :group: operating-systems

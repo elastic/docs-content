@@ -7,10 +7,10 @@ description: Prepare Elasticsearch for search by selecting a deployment type, th
 type: overview
 ---
 
-# Set up Elasticsearch for search [set-up-elasticsearch-for-search]
+# Set up {{es}} for search [set-up-elasticsearch-for-search]
 
-This section covers where {{es}} runs and how you connect to it. Refer to the following pages to set up your {{es}} deployment:
+If you're building search on {{es}}, start here. These pages take you from selecting where to run {{es}} to sending your first request from code.
 
-1. [](/solutions/search/set-up/choose-a-deployment-type.md): Compare deployment types, start one, and try a search quickstart.
-2. [](/solutions/search/set-up/api-key-and-endpoints.md): Find the {{es}} endpoint and create an API key for search.
-3. [](/solutions/search/set-up/connect-through-an-sdk.md): Install an official language client and connect it to your deployment.
+1. [](/solutions/search/set-up/choose-a-deployment-type.md): Compare fully managed and self-managed options, and select the one that fits how much infrastructure you want to run.
+2. [](/solutions/search/set-up/api-key-and-endpoints.md): Find your endpoint URL and create an API key.
+3. [](/solutions/search/set-up/connect-through-an-sdk.md): Install a language client and send a request from code.

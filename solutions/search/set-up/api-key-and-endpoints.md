@@ -9,7 +9,12 @@ type: how-to
 
 # Get your API key and endpoints [get-your-api-key-and-endpoints]
 
-Find the endpoint URL and an API key. You need them to connect a client to {{es}} for search. The steps depend on where your deployment runs.
+To connect a client to {{es}}, you need an endpoint URL and an API key. This page shows how to find the endpoint and create an API key for each deployment type, including {{serverless-full}} projects, {{ech}}, {{ece}}, self-managed clusters, and {{eck}}.
+
+## Before you begin
+
+* Access to your deployment or project, such as an {{es}} {{vectordb}} project, an {{es}} project, or an {{ech}} deployment.
+* To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege.
 
 :::{include} /solutions/elasticsearch-solution-project/_snippets/deployment-tab-legend.md
 :::
@@ -19,17 +24,19 @@ Find the endpoint URL and an API key. You need them to connect a client to {{es}
 ::::::::{step} Find your {{es}} endpoint
 :anchor: find-your-elasticsearch-endpoint
 
+The {{es}} endpoint is the URL your client uses to send requests. Where you find it depends on your deployment type. The following steps show you where to copy it.
+
 :::{include} /solutions/elasticsearch-solution-project/_snippets/find-elasticsearch-endpoint.md
 :::
 
 ::::::::
 
-::::::::{step} Get your API key
+::::::::{step} Create an API key
 :anchor: get-your-api-key
 
-If you just created an {{es}} {{vectordb}} project or an {{es}} project, a generated API key is on the **Getting started** {icon}`rocket` page.
-
-Otherwise, create an API key:
+:::{tip}
+If you just created a {{serverless-short}} project, the **Getting started** {icon}`rocket` page shows a generated API key that you can copy immediately. If you have navigated away from that page, create a new API key as described below.
+:::
 
 :::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
 :::

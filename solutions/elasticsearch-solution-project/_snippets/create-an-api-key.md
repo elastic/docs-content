@@ -8,7 +8,7 @@ This snippet is in use in the following locations:
 
 ::::{applies-item} serverless: ga
 
-1. Open {{kib}} for your deployment or project.
+1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Open**.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Select the **API key** tab.
 4. In the **API key name** field, enter a name, then select **Create API key**.
@@ -20,7 +20,7 @@ Keys created here expire in 90 days and carry your own privileges. To set an exp
 
 ::::{applies-item} ech: ga
 
-1. Open {{kib}} for your deployment or project.
+1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your deployment and select **Open**.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Select the **API key** tab.
 4. In the **API key name** field, enter a name, then select **Create API key**.
