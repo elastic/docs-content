@@ -52,13 +52,50 @@ A Discover session stores the following elements for each of its tabs:
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
 
+## Export Discover session results as CSV [export-discover-session-csv]
+
+To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file. To start, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**, then generate the report.
+
+Your CSV file might not contain every row of your results. The export stops at the first limit that it reaches, either a number of rows or a file size.
+
+::::{applies-switch}
+
+:::{applies-item} serverless: ga
+* **{{esql}} mode:** 10,000 rows or 250 MB, whichever comes first. The {{kib}} limit is 10,000 rows by default. The row limit is the lower value of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is also 10,000 by default. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so the {{kib}} limit of 10,000 rows applies instead. A `LIMIT` in your query can lower the row limit. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **Classic mode:** 100,000 rows or 250 MB, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
+
+You can't change the limits in either mode.
+:::
+
+:::{applies-item} stack: ga 9.3+
+* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The {{kib}} limit is 10,000 rows by default. The row limit is the lower value of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is also 10,000 by default. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so only the {{kib}} limit applies. A `LIMIT` in your query can lower the row limit. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **Classic mode:** 10,000 rows or 250 MB by default, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
+
+In self-managed and {{ech}} deployments, you can change the {{kib}} limits with the `xpack.reporting.csv.maxRows` and `xpack.reporting.csv.maxSizeBytes` settings. Higher limits can affect performance. In {{esql}} mode, you can also raise the {{es}} cap with the `esql.query.result_truncation_max_size` cluster setting. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
+:::
+
+:::{applies-item} stack: ga 9.0-9.2
+* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The row limit is the {{es}} cap on the rows that an {{esql}} query returns. A `LIMIT` in your query can lower it. In 9.2, for queries that start with `TS`, the {{es}} cap is 10,000,000 rows, so the file size limit usually comes first. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **Classic mode:** 250 MB by default. There is no row limit.
+
+In self-managed and {{ech}} deployments, you can change the file size limit with the `xpack.reporting.csv.maxSizeBytes` setting. In {{esql}} mode, you can change the row limit with the `esql.query.result_truncation_max_size` cluster setting. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
+:::
+
+::::
+
+If you need more rows than the limit allows, use filters to create several smaller reports, or query {{es}} directly.
+
+An export can also time out or return incomplete data for reasons unrelated to these limits, such as slow storage, an unavailable shard, or high network latency. For the common causes, refer to [CSV report limitations](../report-and-share.md#csv-limitations).
+
+To generate the same export automatically, from a script, {{watcher}}, or on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
+
 ## Export a Discover session as JSON [export-discover-session-json]
 ```{applies_to}
 serverless: preview
 stack: preview 9.6+
 ```
 
-Export the session as JSON to inspect its definition, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**.
+Export the session as JSON to inspect its definition, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows, refer to [](#export-discover-session-csv).
 
 1. In **Discover**, in the application menu, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**.
 2. Set what the JSON includes:
