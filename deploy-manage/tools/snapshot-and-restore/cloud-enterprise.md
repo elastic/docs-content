@@ -31,9 +31,11 @@ To register snapshot repositories in ECE directly at the deployment level, follo
 
 {{ece}} installations support the following {{es}} snapshot repository types:
 
-* AWS S3
-* Azure Blob Storage
-* Google Cloud Storage
+* [Amazon S3](https://docs.aws.amazon.com/s3/)
+* [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
+* [Google Cloud Storage](https://cloud.google.com/storage/docs/)
+
+For more details about how snapshots are used with {{es}}, refer to [](/deploy-manage/tools/snapshot-and-restore.md).
 
 ::::{note}
 * No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
