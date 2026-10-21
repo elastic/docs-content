@@ -30,8 +30,10 @@ Decide what each KI should represent before creating an automation. Refer to [Se
 Use the guided route to have {{agent-builder}} propose, pilot, and save a workflow for the AI index:
 
 1. Open **Context**, then select the AI index.
-2. In **Automations**, select **Suggest automation**.
-3. {{agent-builder}} opens a new conversation and sends a request to suggest an automation for the AI index.
+2. In **Automations**, select **Add automation** → **Create with AI Agent**.
+3. {{agent-builder}} opens in the side panel and sends **Suggest an automation for this AI index.** for you.
+
+   If you already have a conversation for this AI index, {{agent-builder}} reopens it instead, so you can continue where you left off. Each AI index has its own conversation in each space, and the conversation is remembered in your current browser only. To start over, select the menu icon (**Open navigation menu**) at the top of the panel, select **New chat**, then select **Create with AI Agent** again. If you type a message in the new chat instead, that conversation is the one that reopens next time.
 4. Review the proposed generation strategy, source coverage, KI content, and verification plan.
 5. Ask for changes where necessary, then confirm that {{agent-builder}} should build and pilot the workflow.
 6. Review the pilot summary and temporary KI output.
@@ -40,7 +42,7 @@ Use the guided route to have {{agent-builder}} propose, pilot, and save a workfl
 
 <!--
 :::{image} images/suggest-automation.png
-:alt: AI index Automations section showing the Suggest automation action
+:alt: AI index Automations section showing the Add automation menu with the Create with AI Agent option
 :width: 700px
 :screenshot:
 :::
@@ -52,7 +54,7 @@ The pilot can create and delete temporary KIs while testing the workflow. Focus 
 
 Use the manual route when you intend to author the workflow yourself:
 
-1. Open the AI index and select **Create automation**.
+1. Open the AI index. In **Automations**, select **Add automation** → **Create workflow**.
 2. {{context-engine}} creates and attaches a workflow with **Enabled** turned off, then opens it in the Workflows YAML editor.
 3. Replace the generic starter workflow with the trigger and steps that generate the intended KIs.
 4. Include the appropriate {{context-engine}} workflow steps to create, update, verify, or delete KIs.
@@ -76,8 +78,8 @@ The AI index lists each attached workflow and whether it is enabled.
 To inspect or edit one:
 
 1. Open the AI index.
-2. In **Automations**, use the preview action to inspect the workflow YAML without leaving the page.
-3. Select **Edit workflow** to open it in the Workflows editor.
+2. In **Automations**, open the actions menu (**⋯**) for the automation, then select **View** to inspect the workflow YAML without leaving the page.
+3. To edit the workflow, open the actions menu again and select **Open in Workflows**.
 4. Make and test the required changes, then save the workflow.
 
 Saving a workflow creates a versioned snapshot. For information about comparing or restoring versions, refer to [Workflow version history](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history).
@@ -104,9 +106,9 @@ Removing an automation from an AI index detaches its workflow. It does not delet
 Detach an automation as follows:
 
 1. Open the AI index.
-2. In **Automations**, select **Edit**.
-3. Remove the automation, then select **Save**.
-4. Confirm that it no longer appears in the AI index.
+2. In **Automations**, open the actions menu (**⋯**) for the automation, then select **Delete**.
+3. In the confirmation dialog, select **Remove**. The change is saved immediately.
+4. Confirm that the automation no longer appears in the AI index.
 
 To delete the detached workflow, delete it separately from the Workflows UI. You can also choose to delete attached automations when you [delete the AI index](create-and-manage-ai-indices.md#delete-an-ai-index).
 

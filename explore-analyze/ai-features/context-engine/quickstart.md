@@ -84,15 +84,15 @@ Use the guided route for this tutorial:
 
 For an AI index without an automation, {{agent-builder}} starts with an Index/Table Metadata automation. It creates one `index_metadata` KI that describes what the data contains, when to use it, and how to query it.
 
-1. In **Automations**, select **Suggest automation**.
-2. {{agent-builder}} opens a conversation and sends **Suggest an automation for this AI index**.
+1. In **Automations**, select **Add automation** → **Create with AI Agent**.
+2. {{agent-builder}} opens a conversation and sends **Suggest an automation for this AI index.**
 3. Review the proposal. Confirm that it identifies the intended source index and a suitable keyword field for grouping the data. For the ecommerce sample data, `category.keyword` is an appropriate grouping field.
 4. Approve the proposal when {{agent-builder}} asks whether to create the automation.
 
 {{agent-builder}} installs the Index/Table Metadata template and attaches the resulting workflow to the AI index. The workflow inspects the index mapping, samples documents, runs grounding aggregations, generates the KI, and verifies any {{esql}} that the KI contains. Installing the automation does not run it.
 
 :::{note}
-**Create automation** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
+**Add automation** → **Create workflow** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
 :::
 
 ## 5. Run the automation and inspect the Knowledge Indicator
