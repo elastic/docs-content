@@ -44,7 +44,12 @@ To get started with your analysis, select the type of resources you want to show
 * **Docker Containers**: shows *all* containers, not only Docker containers. Refer to [Container metrics](../../../reference/observability/observability-container-metrics.md) for more on supported data types for this view.
 * **AWS**: includes EC2 instances, S3 buckets, RDS databases, and SQS queues. Refer to [AWS metrics](../../../reference/observability/observability-aws-metrics.md) for more on supported data types for this view.
 
-A **Schema** menu appears for **Hosts** and **{{k8s}} Pods**, which can show data collected using either {{product.integrations}} or OpenTelemetry. **Docker Containers** and **{{aws}}** show data collected using {{product.integrations}} only, so they have no **Schema** menu.
+A **Schema** menu lets you choose the data collection schema for the following resource types:
+
+* **Hosts**: Choose between the Elastic System integration and OpenTelemetry.
+* {applies_to}`{stack: ga 9.6+, serverless: ga}` **{{k8s}} Pods**: Choose between the {{k8s}} integration and OpenTelemetry.
+
+**Docker Containers** and **{{aws}}** show data collected using {{product.integrations}} only, so they have no **Schema** menu.
 
 When you hover over each resource in the waffle map, the metrics specific to that resource are displayed.
 
