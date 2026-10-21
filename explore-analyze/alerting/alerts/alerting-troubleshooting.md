@@ -66,6 +66,8 @@ curl -X POST \
  -d '{"params":{"subject":"hallo","message":"hallo!","to":["me@example.com"]}}'
 ```
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If the connector is an email connector, {{kib}} replaces the `subject` and `message` in an `_execute` request with the fixed text `This is a test email from Kibana`. The `to`, `cc`, and `bcc` recipients still apply. For details, refer to [Email connector and action](kibana://reference/connectors-kibana/email-action-type.md#email-action-configuration).
+
 {applies_to}`stack: preview` {applies_to}`serverless: preview` In addition, there is a command-line client that uses legacy rule APIs, which can be easier to use, but must be updated for the new APIs. CLI tools to list, create, edit, and delete alerts (rules) and actions (connectors) are available in [kbn-action](https://github.com/pmuellr/kbn-action), which you can install as follows:
 
 ```txt
