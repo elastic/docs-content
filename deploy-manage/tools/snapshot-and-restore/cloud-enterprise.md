@@ -42,7 +42,6 @@ For more details about how snapshots are used with {{es}}, refer to [](/deploy-m
 * Elastic permits use of storage that is fully compatible with AWS S3. Elastic does not support the storage itself.
 * While users can use the open source version of [MinIO](https://github.com/minio/minio), Elastic does not recommend it, as it is no longer maintained. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch) and the [MinIO self-managed repository](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md) guide.
 * Configuring and troubleshooting MinIO beyond the documented ECE repository setup is out of the Elastic support scope.
-::::
 
 
 For more details about how snapshots are used with {{es}}, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
