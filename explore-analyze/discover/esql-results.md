@@ -142,7 +142,7 @@ Discover highlights matches for:
 
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The [`TOP_SNIPPETS`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/top-snippets.md) function with its `highlight` option set to `true`. Discover highlights the matches in the column that holds the snippets, including when you set your own `pre_tag` and `post_tag`.
 
-  For example, this query returns a `snippets` column in which rabbit and hole are highlighted:
+  For example, this query returns a `snippets` column in which _rabbit_ and _hole_ are highlighted:
 
   ```esql
   ROW chunks = ["The white rabbit disappeared down a hole."]
