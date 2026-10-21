@@ -19,7 +19,7 @@ Retry [<attempt>] will happen in [60000 milliseconds]. Errors from previous atte
 1. Could not ensure capacity allocation for [<deployment id>] result was [{"type":"capacity_by_zone","allocated_instances":0,"required_capacity":{"<zone>":{"<instance configuration>":<size>}},"failed_instances":[{"instance_name":"not-created-yet"}]}]
 ```
 
-The plan retries this check up to 100 times. While the retry message is still showing, wait. If the scale-up succeeds within those retries, you do not need to contact support. If the plan fails after the retries, [contact support](/troubleshoot/index.md#contact-us).
+The plan retries the capacity allocation multiple times. While the retry message is still showing, wait. If the scale-up succeeds within those retries, there's no need to contact support. If the plan fails after the retries, [contact support](/troubleshoot/index.md#contact-us) for assistance.
 
 This page explains why the change can fail, and what you can do.
 
