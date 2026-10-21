@@ -48,6 +48,8 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 `platform.core.generate_esql` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Generates an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query from a natural language query.
 
+    {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` The tool can also generate queries against [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md).
+
 `platform.core.get_document_by_id` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Retrieves the full content of an {{es}} document based on its ID and index name.
 
@@ -57,11 +59,17 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 `platform.core.index_explorer` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Lists relevant indices and corresponding mappings based on a natural language query.
 
+    {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` The tool can also select [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md).
+
 `platform.core.list_indices` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
+    {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` The tool also lists [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md), with the data source and resource of each dataset. Datasets aren't indices, so agents can only query them with {{esql}}. If [{{esql}} Data Federation isn't enabled](elasticsearch://reference/query-languages/esql/esql-data-federation.md#enable-the-feature), or you don't have privileges to view dataset metadata, the tool returns no datasets and no error.
+
 $$$agent-builder-builtin-search-tool$$$ `platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Searches {{es}} data using natural language, automatically selecting between query DSL and {{esql}} based on the query intent.
+
+    {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` The tool can also search [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md). It queries datasets with {{esql}}.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves documentation about Elastic products. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section. This takes a few minutes.

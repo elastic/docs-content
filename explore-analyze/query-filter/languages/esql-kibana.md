@@ -162,6 +162,8 @@ stack: preview 9.5+
 
 When your deployment or project has a configured large language model (LLM), {{kib}} can use AI to help you author {{esql}}. The editor uses the model assigned to {{agent-builder}}'s **Fast models** feature, and falls back to the **Global model** setting if no fast model is assigned. Both accept an {{infer}} endpoint or a Generative AI connector. To view or change them, search for **Model management / Feature settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You don't need to configure a specific connection for the editor.
 
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` When the AI generates a query from natural language or fixes a query, it can use [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md) as sources.
+
 Choose the entry point that matches what you want to do:
 
 - [**Generate a full query from natural language**](#esql-kibana-quick-search-nl) in the editor's search bar, when you're starting from scratch or want to replace the whole query.
