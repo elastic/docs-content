@@ -48,10 +48,6 @@ Configuring and troubleshooting MinIO beyond the documented ECE repository setup
 :::
 
 
-For more details about how snapshots are used with {{es}}, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
-
-* [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)
-* [Microsoft Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
 
 ## Add snapshot repository configurations [ece-manage-repositories-add]
 
