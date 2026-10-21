@@ -31,9 +31,28 @@ If you installed ECK through the Helm chart commands listed in [](./install-usin
 
 Note that the Helm chart uses its own configuration parameters rather than the actual ECK parameters that are described in [{{eck}} configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md). To view all configurable values in the Helm chart for the ECK operator, run the following command:
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 helm show values elastic/eck-operator
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+helm show values oci://docker.elastic.co/eck-charts/eck-operator --version {{version.eck}}
+```
+
+:::
+
+::::
 
 For example, the parameter `caValidity` in the Helm chart corresponds to the `ca-cert-validity` ECK parameter. To add the `caValidity` setting with a value of `43800h`, you can use either of the following methods:
 
@@ -48,15 +67,53 @@ config:
 
 Then, update the installed release pointing to the values file:
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 helm upgrade elastic-operator elastic/eck-operator -f my-values-file.yaml -n elastic-system
 ```
 
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+helm upgrade elastic-operator oci://docker.elastic.co/eck-charts/eck-operator --version {{version.eck}} -f my-values-file.yaml -n elastic-system
+```
+
+:::
+
+::::
+
 ### Option 2: Use `--set` in the helm upgrade command
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
 
 ```sh
 helm upgrade elastic-operator elastic/eck-operator --set config.caValidity=43800h -n elastic-system
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+helm upgrade elastic-operator oci://docker.elastic.co/eck-charts/eck-operator --version {{version.eck}} --set config.caValidity=43800h -n elastic-system
+```
+
+:::
+
+::::
 
 ## Using the operator YAML manifests
 

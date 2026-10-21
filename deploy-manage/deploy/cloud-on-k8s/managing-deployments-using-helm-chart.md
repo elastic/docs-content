@@ -11,16 +11,48 @@ products:
 
 # {{stack}} Helm chart [k8s-stack-helm-chart]
 
-Starting from ECK 2.4.0, a Helm chart is available for managing {{stack}} resources using the ECK Operator. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
+You can manage {{stack}} resources with the ECK Operator using a Helm chart from the following sources:
+
+* The Elastic Helm repository
+* {applies_to}`eck: ga 3.6+` The {{container-registry}}
+
+::::::{tab-set}
+:group: eck-helm-source
+
+::::{tab-item} Helm repository
+:sync: helm-repository
+
+Starting from ECK 2.4.0, the chart is available from the Elastic Helm repository. Add the repository to your Helm repository list:
 
 ```sh
 helm repo add elastic https://helm.elastic.co
 helm repo update
 ```
 
-::::{note}
-The minimum supported version of Helm is {{eck_helm_minimum_version}}.
+:::{note}
+The minimum supported version of Helm for this method is {{eck_helm_minimum_version}}.
+:::
+
 ::::
+
+::::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+{applies_to}`eck: ga 3.6+`
+
+The chart is available as an Open Container Initiative (OCI) artifact in the {{container-registry}} at `docker.elastic.co/eck-charts`.
+
+To use this type of artifact, you do not add a Helm repository. Instead, refer to each chart with an `oci://` URL, as the examples on this page show.
+
+You must specify the chart version with the `--version` option.
+
+:::{note}
+The minimum supported version of Helm for this method is {{eck_helm_oci_minimum_version}}.
+:::
+
+::::
+
+::::::
 
 The {{stack}} (`eck-stack`) Helm chart is built on top of individual charts such as `eck-elasticsearch` and `eck-kibana`. For more details on its structure and dependencies, refer to the [chart repository](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-stack/).
 
@@ -36,16 +68,42 @@ All the provided examples deploy the applications in a namespace named `elastic-
 
 Similar to the quickstart examples for {{es}} and {{kib}}, this section describes how to setup an {{es}} cluster with a simple {{kib}} instance managed by ECK, and how to customize a deployment using the eck-stack Helm chart’s values.
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 # Install an eck-managed Elasticsearch and Kibana using the default values, which deploys the quickstart examples.
 helm install es-kb-quickstart elastic/eck-stack -n elastic-stack --create-namespace
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+# Install an eck-managed Elasticsearch and Kibana using the default values, which deploys the quickstart examples.
+helm install es-kb-quickstart oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} -n elastic-stack --create-namespace
+```
+
+:::
+
+::::
 
 ### Customize {{es}} and {{kib}} installation with example values [k8s-eck-stack-helm-customize]
 
 You can find example Helm values files for deploying and managing more advanced {{es}} and {{kib}} setups [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-stack/examples).
 
 To use one or more of these example configurations, use the `--values` Helm option, as seen in the following section.
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
 
 ```sh subs=true
 # Install an eck-managed Elasticsearch and Kibana using the Elasticsearch node roles example with hot, warm, and cold data tiers, and the Kibana example customizing the http service.
@@ -54,9 +112,31 @@ helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/kibana/http-configuration.yaml
 ```
 
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+# Install an eck-managed Elasticsearch and Kibana using the Elasticsearch node roles example with hot, warm, and cold data tiers, and the Kibana example customizing the http service.
+helm install es-quickstart oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} -n elastic-stack --create-namespace \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/elasticsearch/hot-warm-cold.yaml \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/kibana/http-configuration.yaml
+```
+
+:::
+
+::::
+
 ## Fleet Server with Elastic Agents along with {{es}} and {{kib}} [k8s-install-fleet-agent-elasticsearch-kibana-helm]
 
 The following section builds upon the previous section, and allows installing Fleet Server, and Fleet-managed Elastic Agents along with {{es}} and {{kib}}.
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
 
 ```sh subs=true
 # Install an eck-managed Elasticsearch, Kibana, Fleet Server, and managed Elastic Agents using custom values.
@@ -64,9 +144,30 @@ helm install eck-stack-with-fleet elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/agent/fleet-agents.yaml -n elastic-stack
 ```
 
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+# Install an eck-managed Elasticsearch, Kibana, Fleet Server, and managed Elastic Agents using custom values.
+helm install eck-stack-with-fleet oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/agent/fleet-agents.yaml -n elastic-stack
+```
+
+:::
+
+::::
+
 ## Logstash along with {{es}}, {{kib}} and Beats [k8s-install-logstash-elasticsearch-kibana-helm]
 
 The following section builds upon the previous sections, and allows installing Logstash along with {{es}}, {{kib}} and Beats.
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
 
 ```sh subs=true
 # Install an eck-managed Elasticsearch, Kibana, Beats and Logstash using custom values.
@@ -74,15 +175,51 @@ helm install eck-stack-with-logstash elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/logstash/basic-eck.yaml -n elastic-stack
 ```
 
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+# Install an eck-managed Elasticsearch, Kibana, Beats and Logstash using custom values.
+helm install eck-stack-with-logstash oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/logstash/basic-eck.yaml -n elastic-stack
+```
+
+:::
+
+::::
+
 ## Standalone Elastic APM Server along with {{es}} and {{kib}} [k8s-install-apm-server-elasticsearch-kibana-helm]
 
 The following section builds upon the previous sections, and allows installing a standalone Elastic APM Server along with {{es}} and {{kib}}.
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
 
 ```sh subs=true
 # Install an eck-managed Elasticsearch, Kibana, and standalone APM Server using custom values.
 helm install eck-stack-with-apm-server elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+# Install an eck-managed Elasticsearch, Kibana, and standalone APM Server using custom values.
+helm install eck-stack-with-apm-server oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
+```
+
+:::
+
+::::
 
 ## AutoOps along with {{es}} [k8s-install-autoops-elasticsearch-helm]
 
@@ -92,11 +229,32 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
 
 Use the following code to connect your ECK-managed {{es}} clusters to [AutoOps](../../monitor/autoops.md) using Helm.
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh subs=true
 # Install an eck-managed {{es}} cluster and connect to AutoOps using custom values.
 helm install eck-stack-with-autoops elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/autoops/basic.yaml -n elastic-stack
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+# Install an eck-managed {{es}} cluster and connect to AutoOps using custom values.
+helm install eck-stack-with-autoops oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/autoops/basic.yaml -n elastic-stack
+```
+
+:::
+
+::::
 
 The `eck-autoops-agent-policy` chart creates an `AutoOpsAgentPolicy` resource that connects your {{es}} clusters to AutoOps. The ECK operator handles the creation of API keys, agent configuration, and the deployment of {{agent}} required to send metrics to AutoOps.
 
@@ -110,11 +268,32 @@ To connect to AutoOps using the installation wizard, refer to [](../../monitor/a
 
 The following section describes how to install a {{package-registry}} resource along with {{es}}, {{kib}} and {{fleet-server}}.
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh subs=true
 # Install an eck-managed {{es}}, {{kib}} and {{fleet-server}} and connect to {{package-registry}} using custom values.
 helm install eck-stack-with-package-registry elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/package-registry/basic-eck.yaml -n elastic-stack
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+# Install an eck-managed {{es}}, {{kib}} and {{fleet-server}} and connect to {{package-registry}} using custom values.
+helm install eck-stack-with-package-registry oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/deploy/eck-stack/examples/package-registry/basic-eck.yaml -n elastic-stack
+```
+
+:::
+
+::::
 
 The `eck-package-registry` chart creates a `PackageRegistry` resource that connects your {{kib}} instance to the {{package-registry}}. {{eck}} automatically handles the creation of the {{package-registry}} and the connection to {{kib}} and {{fleet-server}}.
 
@@ -137,17 +316,55 @@ The following examples show how to install only {{es}} using each approach.
 
 This example installs only {{es}} by deploying the `eck-stack` chart and excluding {{kib}}. By default, the chart deploys both {{es}} and {{kib}}.
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace --set=eck-kibana.enabled=false
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+helm install es-quickstart oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} -n elastic-stack --create-namespace --set=eck-kibana.enabled=false
+```
+
+:::
+
+::::
 
 ### Using the eck-elasticsearch Helm chart directly to install only {{es}} [individual-chart]
 
 This example installs {{es}} by deploying the `eck-elasticsearch` chart on its own.
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-namespace
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+helm install es-quickstart oci://docker.elastic.co/eck-charts/eck-elasticsearch --version {{eck_helm_stack_chart_version}} -n elastic-stack --create-namespace
+```
+
+:::
+
+::::
 
 ## Upgrade or change your {{stack}} configuration with Helm [k8s-upgrade-modify-helm]
 
@@ -163,7 +380,7 @@ When running `helm upgrade`, it’s recommended to pass the same values and conf
 Helm provides additional options to control how values associated with an existing release are reused or reset during an upgrade. For details, refer to the [`helm upgrade` documentation](https://helm.sh/docs/helm/helm_upgrade/).
 ::::
 
-By default, `helm upgrade` uses the latest available version of the chart unless the `--version` option is specified. Refer to [View chart versions](#show-versions) to list the available chart versions or the version associated with an installed release.
+When you use the Elastic Helm repository, `helm upgrade` uses the latest available version of the chart unless the `--version` option is specified. When you use the {{container-registry}}, you must always specify the `--version` option. Refer to [View chart versions](#show-versions) to list the available chart versions or the version associated with an installed release.
 
 ::::{admonition} Chart version vs {{stack}} component version
 There is an important distinction between the Helm chart version and the {{stack}} component version:
@@ -201,11 +418,32 @@ If you use an `ElasticsearchAutoscaler`, first remove the [fields that the autos
 
 To upgrade an installed release named `es-kb-quickstart` to the latest version of the Helm chart, do the following:
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 helm repo update <1>
 helm upgrade es-kb-quickstart elastic/eck-stack -n elastic-stack
 ```
 1. Refresh the local chart cache.
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+To find the latest version of the chart, refer to [](#show-versions). Then use this version with the `--version` option:
+
+```sh subs=true
+helm upgrade es-kb-quickstart oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} -n elastic-stack
+```
+
+:::
+
+::::
 
 By default, upgrading the Helm chart also upgrades the {{stack}} components to the versions associated with that chart version. To override this behavior, you can explicitly set the {{stack}} component versions to use, as shown in the following section.
 
@@ -219,6 +457,12 @@ The following examples show both ways to upgrade the release to the latest avail
 
 Use `--set` options to override the component versions directly from the command line:
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh subs=true
 helm repo update <1>
 helm upgrade es-kb-quickstart elastic/eck-stack -n elastic-stack \
@@ -227,6 +471,24 @@ helm upgrade es-kb-quickstart elastic/eck-stack -n elastic-stack \
 ```
 1. Refresh the local chart cache.
 2. Specify versions for all the components you deploy. Components without an explicitly defined version continue to use the default versions provided by the chart.
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+To find the latest version of the chart, refer to [](#show-versions). Then use this version with the `--version` option:
+
+```sh subs=true
+helm upgrade es-kb-quickstart oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} -n elastic-stack \
+  --set eck-elasticsearch.version={{version.stack}} \ <1>
+  --set eck-kibana.version={{version.stack}}
+```
+1. Specify versions for all the components you deploy. Components without an explicitly defined version continue to use the default versions provided by the chart.
+
+:::
+
+::::
 
 #### Using a values file
 
@@ -242,11 +504,32 @@ eck-kibana:
 
 Then upgrade the release using the values file:
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 helm repo update <1>
 helm upgrade es-kb-quickstart elastic/eck-stack -n elastic-stack -f custom-values.yaml
 ```
 1. Refresh the local chart cache.
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+To find the latest version of the chart, refer to [](#show-versions). Then use this version with the `--version` option:
+
+```sh subs=true
+helm upgrade es-kb-quickstart oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} -n elastic-stack -f custom-values.yaml
+```
+
+:::
+
+::::
 
 ### Apply configuration changes
 
@@ -272,11 +555,32 @@ For example, if you installed the [quickstart release](#k8s-install-elasticsearc
 
 2. Apply the configuration using `helm upgrade`:
 
+   ::::{tab-set}
+   :group: eck-helm-source
+
+   :::{tab-item} Helm repository
+   :sync: helm-repository
+
    ```sh
    helm upgrade es-kb-quickstart elastic/eck-stack \
      -n elastic-stack \
      -f custom-values.yaml
    ```
+
+   :::
+
+   :::{tab-item} {{container-registry}}
+   :sync: oci-registry
+
+   ```sh subs=true
+   helm upgrade es-kb-quickstart oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} \
+     -n elastic-stack \
+     -f custom-values.yaml
+   ```
+
+   :::
+
+   ::::
 
 ::::{warning}
 This example also upgrades the {{stack}} components if a newer Helm chart version is available. To avoid this, [identify the chart version](#show-versions) currently used by your release and include the `--version` option when running `helm upgrade`.
@@ -297,20 +601,61 @@ Both {{es}} and {{kib}} support [Ingress](https://kubernetes.io/docs/concepts/se
 
 The following command installs an {{es}} cluster using the `eck-elasticsearch` chart and configures an ingress resource:
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-namespace \
   --set=ingress.enabled=true --set=ingress.hosts[0].host=elasticsearch.example.com --set=ingress.hosts[0].path="/"
 ```
 
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+helm install es-quickstart oci://docker.elastic.co/eck-charts/eck-elasticsearch --version {{eck_helm_stack_chart_version}} -n elastic-stack --create-namespace \
+  --set=ingress.enabled=true --set=ingress.hosts[0].host=elasticsearch.example.com --set=ingress.hosts[0].path="/"
+```
+
+:::
+
+::::
+
 **If eck-stack chart is used**
 
 The following command deploys the basic {{es}} and {{kib}} example with ingress resources for both components:
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
 
 ```sh
 helm install es-kb-quickstart elastic/eck-stack -n elastic-stack --create-namespace \
   --set=eck-elasticsearch.ingress.enabled=true --set=eck-elasticsearch.ingress.hosts[0].host=elasticsearch.example.com --set=eck-elasticsearch.ingress.hosts[0].path="/" \
   --set=eck-kibana.ingress.enabled=true --set=eck-kibana.ingress.hosts[0].host=kibana.example.com --set=eck-kibana.ingress.hosts[0].path="/"
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+helm install es-kb-quickstart oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}} -n elastic-stack --create-namespace \
+  --set=eck-elasticsearch.ingress.enabled=true --set=eck-elasticsearch.ingress.hosts[0].host=elasticsearch.example.com --set=eck-elasticsearch.ingress.hosts[0].path="/" \
+  --set=eck-kibana.ingress.enabled=true --set=eck-kibana.ingress.hosts[0].host=kibana.example.com --set=eck-kibana.ingress.hosts[0].path="/"
+```
+
+:::
+
+::::
 
 For illustration purposes, the ingress objects created by the previous command look similar to the following:
 
@@ -360,6 +705,12 @@ spec:
 
 You can view all configurable values of the {{stack}} helm chart of the individual charts by running the following:
 
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
 ```sh
 helm show values elastic/eck-stack
 helm show values elastic/eck-elasticsearch
@@ -372,14 +723,58 @@ helm show values elastic/eck-logstash
 helm show values elastic/eck-package-registry
 ```
 
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+```sh subs=true
+helm show values oci://docker.elastic.co/eck-charts/eck-stack --version {{eck_helm_stack_chart_version}}
+helm show values oci://docker.elastic.co/eck-charts/eck-elasticsearch --version {{eck_helm_stack_chart_version}}
+helm show values oci://docker.elastic.co/eck-charts/eck-kibana --version {{eck_helm_stack_chart_version}}
+helm show values oci://docker.elastic.co/eck-charts/eck-agent --version {{eck_helm_stack_chart_version}}
+helm show values oci://docker.elastic.co/eck-charts/eck-beats --version {{eck_helm_stack_chart_version}}
+helm show values oci://docker.elastic.co/eck-charts/eck-apm-server --version {{eck_helm_stack_chart_version}}
+helm show values oci://docker.elastic.co/eck-charts/eck-fleet-server --version {{eck_helm_stack_chart_version}}
+helm show values oci://docker.elastic.co/eck-charts/eck-logstash --version {{eck_helm_stack_chart_version}}
+helm show values oci://docker.elastic.co/eck-charts/eck-package-registry --version {{eck_helm_stack_chart_version}}
+```
+
+:::
+
+::::
+
 ## View available chart versions [show-versions]
 
-To view the available versions of a Helm chart, update the local chart cache and use the `helm repo search` command with `--versions` option. You can use this flag with `eck-stack` or [individual charts](#k8s-eck-stack-individual-components).
+To view the available versions of a Helm chart, use one of the following options. You can use them with `eck-stack` or [individual charts](#k8s-eck-stack-individual-components).
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
+
+Update the local chart cache and use the `helm search repo` command with the `--versions` option:
 
 ```sh
 helm repo update
-helm repo search elastic/eck-stack --versions
+helm search repo elastic/eck-stack --versions
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+Helm cannot list the versions of a chart in the {{container-registry}}. To list the versions, use an OCI client such as [ORAS](https://oras.land/):
+
+```sh
+oras repo tags docker.elastic.co/eck-charts/eck-stack
+```
+
+:::
+
+::::
 
 To view the version associated with an installed release, check the **CHART** column of the `helm list` command output. For example:
 
