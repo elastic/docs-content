@@ -46,7 +46,7 @@ Unable to get capacity from
 
 ### Potential performance degradation
 
-During the scale-up, after {{ecloud}} required and provisioned the new hosts, the new {{stack}} instances will be created and started, and the index/shard data will be migrated from old {{es}} instances to new ones. 
+During the scale-up, after {{ecloud}} has requested and provisioned the new hosts, the new {{stack}} instances are created and started, and the index/shard data is migrated from the old {{es}} instances to the new ones.
 
 In this migration step, a part of the resources from existing instance is consumed, and the deployment without configuring [high availability](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) may experience temporary service degradation.
 
