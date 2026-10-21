@@ -137,7 +137,7 @@ To enable other devices on the same network to access the server, go to **Settin
 :::{include} _snippets/create-chat-completion-endpoint.md
 :::
 
-LM Studio uses the OpenAI SDK, so the OpenAI service works for this use case.
+   LM Studio uses the OpenAI SDK, so the OpenAI service works for this use case.
 
 4. For **URL**, enter the host's IP address and port, followed by `/v1/chat/completions`. If you have a reverse proxy set up, enter the domain name specified in your Nginx configuration file followed by `/v1/chat/completions`.
 5. For **Model ID**, enter `llama-3.3-70b-instruct`.
