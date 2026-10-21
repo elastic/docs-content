@@ -32,7 +32,7 @@ In this section, you'll learn how to:
 
 * [](./stack-audit-logging/configuring-audit-logs.md): Filter and control what security events get logged in the audit log output.
 
-* [Audit {{es}} search queries](./stack-audit-logging/auditing-search-queries.md): Audit and log search request bodies.
+* [Audit {{es}} HTTP request bodies](./stack-audit-logging/auditing-http-request-bodies.md): Include authenticated REST request bodies in audit events.
 
 * [Correlate audit events](./stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md): Explore audit logs and understand how events from the same request are correlated.
 

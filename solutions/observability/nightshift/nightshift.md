@@ -20,11 +20,8 @@ Elastic nightshift is made up of the following engines, which work together to d
 
 ## Requirements [nightshift-requirements]
 
-- **An {{obs-serverless}} project on the Complete tier**: Elastic nightshift runs on {{serverless-full}} during the private preview. It isn't available on self-managed or {{ech}} deployments.
-- **Private preview access**: Your project must be enabled for the private preview. Contact your Elastic account team to request access.
-- **Data to monitor**: Elastic nightshift works with the data you already have in your local project or in remote serverless projects connected through {{cps}}.
-
-Elastic nightshift uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). You don't need to configure an LLM connector or select a model.
+:::{include} _snippets/requirements.md
+:::
 
 ## Elastic nightshift UI [nightshift-landing-page]
 
@@ -38,14 +35,15 @@ From the home page you can:
 
 ### Look deeper into investigations [nightshift-investigation-flyout]
 
-Select an investigation from the home page to view more information. A flyout opens showing the investigation's status, such as **Running** or **Completed**, its severity, and its findings: what happened, the impact, the hypotheses and evidence, the conclusion, and proposed actions.
+Select an investigation from the home page to view more information. A flyout opens showing the investigation's status, such as **Running** or **Completed**, its severity, and its findings: what happened, the impact, the conclusion, a hypothesis tree, and proposed actions.
+
+### Knowledge page [nightshift-knowledge-page]
+
+To review, edit, and add to what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**. Refer to [Context](./memory.md).
 
 ### Management page [nightshift-management-page]
 
-Go to **Elastic nightshift** → **Management** to control what Elastic nightshift knows and how it runs. From the management page, you can:
-
-- Review, edit, and add to what Elastic nightshift knows about your systems. Refer to [Context](./memory.md).
-- Manage Significant Events settings. Refer to the [operator guide](./significant-events/operator-guide.md).
+Go to **Elastic nightshift** → **Management** to manage how Elastic nightshift runs. From the management page, you can manage Significant Events settings. Refer to the [operator guide](./significant-events/operator-guide.md).
 
 ## Give feedback [nightshift-feedback]
 
@@ -53,6 +51,7 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-landing-page-nav]
 
+- [Get started with Elastic nightshift](./get-started.md): Start an investigation and review the results
 - [Investigations](./investigations.md): Learn how Elastic nightshift investigates problems and how to read the results
 - [Context](./memory.md): Learn how Elastic nightshift stores and uses system knowledge to improve investigation quality over time
 - [Significant Events](./significant-events/index.md): Get an overview of how Elastic nightshift detects significant events in your data

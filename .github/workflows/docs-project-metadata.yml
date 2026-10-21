@@ -1,4 +1,4 @@
-name: Docs project metadata
+name: "Issues: Route to board and enrich"
 
 on:
   issues:

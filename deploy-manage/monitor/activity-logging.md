@@ -30,7 +30,7 @@ For search operations, query logging is the recommended approach because it capt
 | [](./logging-configuration/query-logs.md) | Log every search, {{esql}}, SQL, or EQL query for analysis and debugging. | {applies_to}`stack: preview 9.4` |
 | [](./logging-configuration/slow-logs.md) | Identify slow queries and indexing operations. | {applies_to}`stack: ga` |
 
-If query logging is not available in your {{stack}} version, [audit logging](./stack-audit-logging/enabling-audit-logs.md) can also capture query sources.
+If query logging is not available in your {{stack}} version, [HTTP request body auditing](./stack-audit-logging/auditing-http-request-bodies.md) can also capture submitted queries.
 
 ## Audit logging
 
