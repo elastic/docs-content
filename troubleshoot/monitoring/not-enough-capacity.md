@@ -20,7 +20,7 @@ When you initialize a scale-up configuration change,
 * If the underlying hosts running deployment instances, such as {{es}} and {{kib}}, have enough available capacity, the scale-up operation proceeds normally, either on the existing hosts or by creating new instances on other available hosts.
 * If the underlying hosts do not have enough capacity, {{ecloud}} might request additional hosts (virtual machines) from the cloud service provider (CSP) to accommodate the scale-up operation.
 
-During the requesting period, you may observe the following message pattern in the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). 
+While {{ecloud}} requests additional hosts, you might see a message matching the following pattern on the [Activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md).
 
 ```bash
 Retry [<attempt>] will happen in [60000 milliseconds]. Errors from previous attempt:
