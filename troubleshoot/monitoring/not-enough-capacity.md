@@ -18,7 +18,7 @@ This page explains the scale configuration change workflow, and what you can do 
 In the rest of this page, we describe scale-up for simplicity. The content also applies to a scale-out.
 :::
 
-## Scale-up workflow
+## Workflow
 
 When you initialize a scale-up configuration change, 
 * If the underlying hosts running deployment instances, such as {{es}} and {{kib}}, have enough available capacity, the scale-up operation proceeds normally, either on the existing hosts or by creating new instances on other available hosts.
