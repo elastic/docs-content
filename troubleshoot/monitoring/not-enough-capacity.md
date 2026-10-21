@@ -36,7 +36,7 @@ The configuration change can fail when:
 * The CSP does not have enough resources. A large scale-up on a current hardware profile, such as an increase of several hundred GiB in RAM, has a higher chance of this.
 * The deployment uses a [deprecated hardware profile](../../deploy-manage/deploy/elastic-cloud/change-hardware.md#ec-deprecated-icdt).
 
-In case of failure, you may observe below message in the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md).
+If the configuration change fails, you might see the following message on the [Activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md):
 
 ```
 Not enough capacity to allocate instance(s)
