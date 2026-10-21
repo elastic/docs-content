@@ -48,7 +48,7 @@ To restart a group of agents in a single action:
 
 ## Track the restart progress [restart-elastic-agent-track]
 
-To follow the progress of the restart, select **Agent activity** on the **Agents** tab. The activity log shows the restart action, when it completed, and any agents that couldn't be restarted. If any agents failed to restart, select **Show errors** to view the error message for each agent.
+To follow the progress of the restart, click **Agent activity** on the **Agents** tab. For more information, refer to [View agent activity](/reference/fleet/monitor-elastic-agent.md#view-agent-activity). The activity log shows the restart action, when it completed, and any agents that couldn't be restarted. If any agents failed to restart, select **Show errors** to view the error message for each agent.
 
 If an agent is offline when you issue the restart, it receives the action the next time it checks in with {{fleet}}.
 
