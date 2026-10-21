@@ -27,18 +27,31 @@ Decide what each KI should represent before creating an automation. Refer to [Se
 
 ## Create an automation with Agent Builder
 
-Use the guided route to have {{agent-builder}} propose, pilot, and save a workflow for the AI index:
+Use the guided route to have {{agent-builder}} propose and set up an automation for the AI index:
 
 1. Open **Context**, then select the AI index.
 2. In **Automations**, select **Add automation** → **Create with AI Agent**.
 3. {{agent-builder}} opens in the side panel and sends **Suggest an automation for this AI index.** for you.
 
-   If you already have a conversation for this AI index, {{agent-builder}} reopens it instead, so you can continue where you left off. Each AI index has its own conversation in each space, and the conversation is remembered in your current browser only. To start over, select the menu icon (**Open navigation menu**) at the top of the panel, select **New chat**, then select **Create with AI Agent** again. If you type a message in the new chat instead, that conversation is the one that reopens next time.
-4. Review the proposed generation strategy, source coverage, KI content, and verification plan.
-5. Ask for changes where necessary, then confirm that {{agent-builder}} should build and pilot the workflow.
-6. Review the pilot summary and temporary KI output.
-7. Tell {{agent-builder}} to save the automation.
-8. Return to the AI index and confirm that the saved workflow appears in **Automations**.
+    If you already have a conversation for this AI index, {{agent-builder}} reopens it so you can continue where you left off. Each AI index has one conversation in each space, and only your current browser remembers it. To start over, select the menu icon (**Open navigation menu**) at the top of the panel, select **New chat**, then select **Create with AI Agent** again. If you enter a message in the new chat instead, that conversation is the one that reopens next time.
+
+4. Review the generation strategy that {{agent-builder}} proposes and the evidence it cites from your data. For an AI index without automations, {{agent-builder}} chooses the strategy from the data. It asks you to choose when two strategies fit about equally, or when the data doesn't show what the AI index is for. For an AI index that already has automations, it asks what you want to achieve.
+5. What happens next depends on the strategy:
+
+    - **Index/Table Metadata, Bottom-Up, Cumulative / Wiki-style, and Targeted KI**: {{agent-builder}} installs a template and attaches the automation to the AI index without asking for confirmation.
+    - **Other strategies**: {{agent-builder}} asks you to confirm a plan before it builds anything:
+
+        1. Review the plan, which includes the strategy, sources, corpus filter, and expected cost. Ask for changes where necessary, then confirm.
+        2. {{agent-builder}} builds and pilots the workflow, removes the temporary KIs that the pilot wrote, and summarizes the results. Review the summary.
+        3. In the confirmation dialog, select **Save and attach**. If the workflow replaces an existing automation, select **Replace** instead.
+
+6. {{agent-builder}} asks you to confirm that it can run the automation. For an Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style automation that would write more than five KIs, it asks to run a pilot first. Select **Run pilot** or **Run automation** to start the run, or select **Cancel**. To run the automation later, ask {{agent-builder}} again or [run it from the Workflows UI](#run-schedule-and-monitor-an-automation).
+
+    If the pilot completes and writes a KI for each item, {{agent-builder}} estimates how long the full run takes and asks to start it. Select **Run automation**. Otherwise, {{agent-builder}} reports the problem and stops. The pilot writes real KIs. The full run replaces them, or adds a newer revision of each if the AI index is backed by a data stream. If you cancel the full run, the pilot's KIs stay in the AI index.
+
+    A Targeted KI automation is the exception: {{agent-builder}} runs it without asking.
+7. The full run continues in the background. To check on it, ask {{agent-builder}} for a progress update.
+8. Return to the AI index and confirm that the workflow appears in **Automations**.
 
 <!--
 :::{image} images/suggest-automation.png
@@ -48,7 +61,7 @@ Use the guided route to have {{agent-builder}} propose, pilot, and save a workfl
 :::
 -->
 
-The pilot can create and delete temporary KIs while testing the workflow. Focus your review on the source data it reads, what each KI represents, the claims and query guidance it generates, and the checks it performs before writing a KI. You do not need to understand every line of the generated YAML.
+When {{agent-builder}} builds a workflow for a strategy that has no template, it pilots the workflow and deletes the temporary KIs the pilot wrote before you save it. Focus your review on the source data it reads, what each KI represents, the claims and query guidance it generates, and the checks it performs before writing a KI. You do not need to understand every line of the generated YAML.
 
 ## Create an automation manually
 
