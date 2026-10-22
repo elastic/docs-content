@@ -7,7 +7,7 @@ description: Find your Elasticsearch endpoint and create an API key so you can c
 type: how-to
 ---
 
-# Get your API key and endpoints [get-your-api-key-and-endpoints]
+# Get your API key and {{es}} endpoint [get-your-api-key-and-endpoints]
 
 To connect a client to {{es}}, you need an endpoint URL and an API key. This page shows how to find the endpoint and create an API key for each deployment type, including {{serverless-full}} projects, {{ech}}, {{ece}}, self-managed clusters, and {{eck}}.
 
