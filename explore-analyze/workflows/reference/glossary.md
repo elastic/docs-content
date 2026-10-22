@@ -139,7 +139,7 @@ A runtime parameter of a workflow. Declared under the `manual` trigger on 9.5+ a
 
 ### KQL [workflows-glossary-kql]
 
-{{kib}} Query Language. Used for `if` conditions and `data.filter` predicates in workflows. Refer to the [KQL reference](/explore-analyze/query-filter/languages/kql.md).
+{{kib}} Query Language. Used for `if` conditions and `data.filter` predicates in workflows. Refer to the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md).
 
 ## L [workflows-glossary-l]
 
