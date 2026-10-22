@@ -45,8 +45,8 @@ There are several ways to send OpenTelemetry data to Elastic. The right choice d
 
 ### Collect, process, and export data
 
-* **OTel Collector in {{agent}}** {applies_to}`stack: ga 9.2+`: The OTel Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. No separate Collector installation is needed. Data is stored in OTel-native format by default. Refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for more information.
-* **Standalone {{agent}}**: Run {{agent}} independently as its own process. Data is stored in OTel-native format by default. Refer to [{{agent}}](elastic-agent://reference/edot-collector/index.md) for more information.
+* **OTel Collector in {{agent}}** {applies_to}`stack: ga 9.2+`: The OTel Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. No separate Collector installation is needed. Refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for more information.
+* **{{agent}} configured as an OTel Collector**: Run {{agent}} as a separate OTel Collector process, configured exclusively for OTel data collection. Data is stored in OTel-native format by default. Refer to [{{agent}}](elastic-agent://reference/edot-collector/index.md) for more information.
 * **Upstream `otelcol-contrib` Collector**: Use the community-built Collector to forward data to {{agent}} or directly to {{apm-server-or-mis}} using OTLP. Useful for a vendor-neutral pipeline or fanning out to multiple observability backends, but it's community-supported only. Refer to [Contrib OpenTelemetry Collectors and language SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md) for more information.
 
 ### Send data directly

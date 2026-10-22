@@ -18,14 +18,14 @@ Using OpenTelemetry with {{product.apm}} has limitations that depend on how you 
 
 ## Data format and compatibility with the `.apm` OTLP intake [apm-open-telemetry-data-format]
 
-When sending OTLP data to {{apm-server-or-mis}} using its built-in OTLP endpoint (the `.apm` path), your data is translated to ECS format before storage. This differs from the {{motlp}} and {{agent}} in OTel mode, which store data in OTel-native format.
+When sending OTLP data to {{apm-server-or-mis}} using its built-in OTLP endpoint (the `.apm` endpoint), your data is translated to ECS format before storage. This differs from the {{motlp}} and {{agent}} configured as an OTel Collector, which store data in OTel-native format.
 
 Consequences of the ECS translation:
 
 * Unmapped span and transaction attributes are stored under `labels.*` (strings) or `numeric_labels.*` (numbers), with dots replaced by underscores. For example, `order.id` becomes `labels.order_id`. On OTel-native paths, they are stored under `attributes.order.id`, with dots preserved.
-* OpenTelemetry content packs, which provide OTel-compatible dashboards, are not applicable to ECS-translated data. Use prebuilt ECS-based integrations and dashboards, or the classic {{product.apm}} UI.
+* OpenTelemetry content packages, which provide OTel-compatible dashboards, are not applicable to ECS-translated data. Use prebuilt ECS-based integrations and dashboards, or the classic {{product.apm}} UI.
 * ECS-translated data passes through {{es}} ingest pipelines in the usual way. OTel-native data bypasses ingest pipelines.
-* EDOT SDKs are not supported with the {{apm-server-or-mis}} OTLP intake. Use the {{motlp}} or {{agent}} in OTel mode instead.
+* EDOT SDKs are not supported with the {{apm-server-or-mis}} OTLP intake. Use the {{motlp}} or {{agent}} configured as an OTel Collector instead.
 
 For a detailed comparison and guidance on choosing your ingest path, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
 
