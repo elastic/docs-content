@@ -413,6 +413,23 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 `security.entity_relationship_history` {applies_to}`stack: ga 9.6+`
 :   Answers questions about when an [entity relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) was first or last observed, and which hosts or users an entity related to over a time window.
 
+**Entity resolution tools** manage [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) groups and rules. Mutating actions require user confirmation before running. An [Enterprise license](https://www.elastic.co/subscriptions) is required, and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled.
+
+`security.get_resolution_group` {applies_to}`stack: ga 9.6+`
+:   Returns an entity's resolution group: the primary entity and every alias linked to it. Works from either the primary entity or an alias.
+
+`security.link_entities` {applies_to}`stack: ga 9.6+`
+:   Links one or more entities of the same type to a primary entity, which creates or extends a resolution group. Risk scores update the next time scoring runs.
+
+`security.unlink_entities` {applies_to}`stack: ga 9.6+`
+:   Unlinks one or more entities from their resolution group, so each becomes a standalone entity again.
+
+`security.list_resolution_rules` {applies_to}`stack: ga 9.6+`
+:   Lists the automated resolution rules and whether each is enabled.
+
+`security.set_resolution_rules` {applies_to}`stack: ga 9.6+`
+:   Enables or disables one or more automated resolution rules.
+
 **Watchlist tools** manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md). Mutating actions require user confirmation before running. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required, and adding or removing entities also requires the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) to be enabled and populated.
 
 `security.list_watchlists` {applies_to}`stack: ga 9.5+`

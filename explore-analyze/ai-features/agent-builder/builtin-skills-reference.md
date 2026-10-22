@@ -341,14 +341,14 @@ $$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`sta
     {applies_to}`stack: ga =9.5` In this version, for read-only questions about which watchlists exist, the [`entity-analytics`](#agent-builder-entity-analytics-skill) skill also applies.
 
 $$$agent-builder-entity-resolution-skill$$$ `entity-resolution` {applies_to}`stack: ga 9.6+`
-:   Manages [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md). Shows an entity's resolution group — the primary entity and every alias linked to it — links or unlinks entities, and lists, enables, or disables the automated resolution rules. All mutating actions require explicit user confirmation before running. Bulk CSV imports aren't performed in chat; the agent links you to the **Entity resolution** tab of the **Entity Analytics** management page instead. For the resolution group's risk score trend, use the [`entity-analytics`](#agent-builder-entity-analytics-skill) skill.
+:   Manages [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md). Shows an entity's resolution group, which is the primary entity and every alias linked to it. Links or unlinks entities, and lists, enables, or disables the automated resolution rules. All mutating actions require explicit user confirmation before running. Bulk CSV imports aren't performed in chat. Instead, the agent links you to the **Entity resolution** tab of the **Entity Analytics** management page. For the resolution group's risk score trend, use the [`entity-analytics`](#agent-builder-entity-analytics-skill) skill.
 
     :::{dropdown} Assigned tools
     `security.get_resolution_group`, `security.link_entities`, `security.unlink_entities`, `security.list_resolution_rules`, `security.set_resolution_rules`, `security.build_redirect_url`, `security.get_entity`
 
     :::
 
-    **Prerequisites:** The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) populated.
+    **Prerequisites:** An [Enterprise license](https://www.elastic.co/subscriptions) and a populated [entity store](/solutions/security/advanced-entity-analytics/entity-store.md).
 
 $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies_to}`stack: ga 9.4+`
 :   Investigates atypical behavior detected by {{ml-app}} jobs, including unusual or first-time access patterns, access outside working hours, privileged accounts with unusual command patterns, logins from unexpected geographic locations, lateral movement, and large or unusual data transfers.
