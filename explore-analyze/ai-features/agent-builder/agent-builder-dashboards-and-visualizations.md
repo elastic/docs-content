@@ -88,7 +88,9 @@ You can also continue chatting to refine the dashboard. For example, ask the age
 ::::
 :::::
 
-When you ask for a single chart, metric, or panel instead of a whole dashboard, it displays inline in the conversation. These types can appear inline:
+## How single visualizations appear in chat
+
+If you ask for a single chart, metric, or panel instead of a whole dashboard, it displays inline in the conversation. These types can appear inline:
 
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md), such as charts, tables, and metrics
 - {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)

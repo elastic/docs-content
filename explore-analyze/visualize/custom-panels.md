@@ -105,7 +105,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
    - "Create an HTML banner with an animated image."
    - "Create a custom panel that shows how data flows across the services."
 
-3. Review the result. When the panel needs live data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders on the dashboard, in the dashboard preview of the conversation, or inline in the message. To keep an inline panel, select **Save to dashboard**. For details, refer to [How dashboards appear in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-dashboards-appear-in-chat).
+3. Review the result. When the panel needs live data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders on the dashboard, in the dashboard preview of the conversation, or inline in the message. To keep an inline panel, select **Save to dashboard**. For details, refer to [How single visualizations appear in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-single-visualizations-appear-in-chat).
 
    :::{image} /explore-analyze/images/custom-panels-sankey-chat.png
    :alt: Dashboard with a Sankey diagram custom panel next to the Agent Builder conversation that created it
