@@ -93,7 +93,12 @@ If your organization’s deployments already trust each other by default, you ca
     * **None** - No deployment in this environment is trusted.
 
     ::::{note}
-    When trusting specific deployments, the UI only lists deployments that pass the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version compatibility check, evaluated from the deployment you are editing. Because both deployments must trust each other, you might need to configure trust on one of them using the API as described in [Using the API](#ec-trust-using-the-api). This applies to [CCR](/deploy-manage/tools/cross-cluster-replication.md)-only trust, and to CCS from an older local deployment to a newer remote deployment (for example, a local 8.19 deployment searching a remote 9.x deployment).
+    When you select **Specific deployments**, the UI only lists deployments that are CCS-compatible with the deployment you are editing. This means the UI on a newer deployment might not list an older one, even if CCS works in the other direction. Because both deployments must trust each other, you might need to configure trust on the deployment that doesn't list the other [using the API](#ec-trust-using-the-api).
+
+    This applies to:
+
+    - **CCR-only trust**, where the [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is more restrictive than what [CCR](/deploy-manage/tools/cross-cluster-replication.md) requires.
+    - **CCS from an older local deployment to a newer remote deployment**. For example, a local 8.19 deployment can search a remote 9.x deployment, but the 9.x deployment's UI won't list the 8.19 deployment. Configure trust on the 9.x side using the API.
     ::::
 
 5. Click **Update trust**.
