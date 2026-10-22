@@ -28,7 +28,7 @@ These are the available admonition types:
 * Important
 * Plain 
 
-Use admonitions sparingly. They interrupt the reader to highlight something they can't afford to miss, and the more you use them, the less any one of them stands out. Follow these general guidelines for using admonitions: 
+Use admonitions sparingly. They interrupt the reader to highlight something they shouldn't miss, and the more you use them, the less any one of them stands out. Follow these general guidelines for using admonitions: 
 
 * **Limit how many you use.** Too many admonitions on a single page become distracting. Aim for no more than one admonition per section. If you reach for a second one, rewrite the content instead. For example, consider a section earlier in the page that provides more context upfront.
 * **Don't stack admonitions.** Avoid placing two or more admonitions in a row, whether they are the same type or different types (for example, a `Note` immediately followed by a `Warning`), or using several in the same page section. Stacked admonitions dilute each other and make the page feel cluttered. If you find it necessary to use more than one, restructure or rewrite the content. 
