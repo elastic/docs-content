@@ -3,7 +3,7 @@ navigation_title: Event-driven triggers
 applies_to:
   stack: ga 9.5+, preview =9.4
   serverless: ga
-description: Run a workflow in response to a platform event, such as a workflow failure, a case change, an entity store change, or an alert lifecycle event.
+description: Run a workflow in response to a platform event, such as a workflow failure, a case change, an entity store change, an alert lifecycle event, or an Agent Builder conversation change.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -22,6 +22,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers**: Fire when an entity's asset criticality or risk score changes in the entity store.
 - {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
 - {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
+- {applies_to}`security: preview` {applies_to}`stack: preview 9.6+` **{{agent-builder}} conversation triggers**: Fire when an {{agent-builder}} conversation changes, for supported conversation types.
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -598,6 +599,132 @@ steps:
     with:
       message: |
         Rule {{ event.rule.ruleId }} in space {{ event.rule.spaceId }} — trigger: {{ trigger.type }}
+```
+
+## {{agent-builder}} conversation triggers [agent-builder-conversation-triggers-event-driven]
+
+```{applies_to}
+stack: preview 9.6+
+serverless:
+  security: preview
+```
+
+{{agent-builder}} conversation triggers fire when an {{agent-builder}} conversation changes. Use them to react to conversation activity without polling, for example to refresh a summary when an investigation gains new content.
+
+:::{important}
+`ai.conversation.updated` only fires for conversations whose template a solution has enabled for this trigger. Regular {{agent-builder}} conversations, which have no template, never fire it. Currently, only investigation and escalation conversations fire it, and only when AlertZero is available in your deployment and the **AlertZero** advanced setting is turned on for the space. AlertZero is part of {{elastic-sec}} and is turned off by default. The trigger is available in the workflow editor in all deployments and project types, so a workflow that uses it validates and saves even where it can't fire.
+:::
+
+### `ai.conversation.updated` [ai-conversation-updated-trigger]
+
+Fires once after each successful conversation write that changes something, such as new events, attachments, metadata, title, template, or access. Writes that change nothing don't fire the trigger.
+
+The payload describes what changed but never includes values. To get the current values, read the conversation in a workflow step.
+
+The following actions don't fire the trigger:
+
+- Deleting a conversation
+- Marking a conversation as read
+- Pinning or unpinning a conversation
+- Giving feedback on a response
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `ai.conversation.updated`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.conversationId` | The ID of the conversation that changed. |
+| `event.templateId` | The conversation's template, for example `investigation`. |
+| `event.parentId` | The ID of the parent conversation, when this conversation is a child, such as a persistent subagent. |
+| `event.source` | The code path that made the change: `execution` (an agent run, including the stored user message and the generated title), `http_api` ({{agent-builder}} HTTP APIs), `workflow` ({{agent-builder}} workflow steps), or `server_api` (another {{kib}} plugin). Use `event.actorTypes` to find out who made the change. |
+| `event.changeKinds` | Array of what changed: `created`, `events`, `attachments`, `metadata`, `title`, `template`, or `access`. Never empty. A create reports `created`, `events`, and `title`, plus everything else set at creation, including template defaults. |
+| `event.eventTypes` | Array of the types of events the write added, for example `user_message`, `execution_terminated`, `attachment_added`, `conversation_created`, or `title_updated`. Can also include custom event types. Empty when no event was added. |
+| `event.actorTypes` | Array of the actor types of the events the write added: `user`, `agent`, `external`, or `system`. Empty when no event was added. |
+| `event.executionId` | The agent execution that the write stored, whether it completed, paused for user input, failed, or was stopped. Absent when the write stored no execution. |
+| `event.attachmentTypes` | Array of the types of attachments that were added, versioned, deleted, restored, or edited. |
+| `event.attachmentIds` | Array of the IDs of the attachments that changed. |
+| `event.changedFields` | Array of the names of metadata fields whose value changed. |
+
+#### Write conditions
+
+The trigger can fire often, so use `on.condition` to match only the changes you care about. Keep the following in mind:
+
+- An array field matches when any of its elements matches. For example, `event.eventTypes: "user_message"` matches any write that added a user message.
+- Wildcards work on string values. For example, `event.eventTypes: attachment_*`.
+- A wildcard on an absent field is false. For example, `event.executionId: *` matches only writes that stored an agent execution.
+- To match only changes to an existing conversation, add `not event.changeKinds: "created"` to the clause.
+- Creating a conversation and changing its title, metadata, template, or access also add an activity event. These writes report `events` in `event.changeKinds`, along with their own change kind. A template change adds a `metadata_updated` event. Restoring or renaming an attachment doesn't add an event, so those writes report only `attachments`. Match on `event.eventTypes` or `event.executionId` instead of `event.changeKinds: "events"` to react only to messages and agent runs.
+- The payload arrays are flat. They can't tie an attachment type to a specific operation.
+
+#### Coalesce bursts of changes
+
+A single agent run can change a conversation several times in quick succession. To run the workflow at most once at a time per conversation, with at most one run waiting, set a [concurrency key](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-concurrency) that includes both the workflow ID and the conversation ID:
+
+```yaml
+settings:
+  concurrency:
+    key: '{{ workflow.id }}:{{ event.conversationId }}'
+    strategy: queue
+    max: 1
+    queue-size: 1
+```
+
+While a run is waiting, runs for further changes to that conversation are skipped instead of queued. The waiting run's `event` payload describes only the change that queued it, but the run still sees the later changes when it reads the conversation.
+
+#### Avoid reacting to your own changes
+
+If your workflow writes to the same conversation, for example with an {{agent-builder}} conversation step, that write fires the trigger again. Most steps report `source: workflow`. Steps that add a user message or run an agent report `source: execution`. The default [`workflowEvents`](#event-driven-triggers-workflow-events) setting blocks a workflow from retriggering itself. Also write conditions that match the changes you care about, rather than excluding the field your workflow writes.
+
+#### Examples
+
+Log investigation activity when the investigation gains content. Creating an investigation sets its `status`, so the metadata clauses exclude creates. The first user message, which can arrive with the create, still matches:
+
+```yaml
+name: Log investigation activity
+settings:
+  concurrency:
+    key: '{{ workflow.id }}:{{ event.conversationId }}'
+    strategy: queue
+    max: 1
+    queue-size: 1
+triggers:
+  - type: ai.conversation.updated
+    on:
+      condition: >-
+        event.templateId: "investigation"
+        and (
+          event.eventTypes: "user_message"
+          or event.executionId: *
+          or event.changeKinds: "attachments"
+          or (
+            not event.changeKinds: "created"
+            and (
+              event.changedFields: "status"
+              or event.changedFields: "severity"
+              or event.changedFields: "verdict"
+            )
+          )
+        )
+steps:
+  - name: log
+    type: console
+    with:
+      message: 'Conversation {{ event.conversationId }} changed: {{ event.changeKinds }}'
+```
+
+Fire when a write adds an attachment and touches a dashboard attachment. Because the arrays are flat, this also matches a write that adds a different attachment while updating a dashboard:
+
+```yaml
+triggers:
+  - type: ai.conversation.updated
+    on:
+      condition: 'event.eventTypes: "attachment_added" and event.attachmentTypes: "platform.dashboard.dashboard_state"'
 ```
 
 ## Control event chains and prevent loops

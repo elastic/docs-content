@@ -59,6 +59,10 @@ triggers:
   - type: entityStore.entityRiskScoreChanged   # tech preview (9.5+)
     on:
       condition: 'event.direction: "increase" AND event.delta >= 25'
+
+  - type: ai.conversation.updated      # tech preview (9.6+), supported conversation types only
+    on:
+      condition: 'event.templateId: "investigation" AND event.eventTypes: "user_message"'
 ```
 
 The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. The entity store trigger family also includes `entityStore.entityAssetCriticalityUpdated`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
