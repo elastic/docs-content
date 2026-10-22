@@ -16,6 +16,7 @@ In addition to [configuring an {{elastic-defend}} policy](configure-an-integrati
 ::::{admonition} Requirements
 You must have the **{{elastic-defend}} Policy Management: All** [privilege](elastic-defend-feature-privileges.md) to configure an integration policy.
 
+Default endpoint policy preset options: NGAV, EDREssential, EDRComplete, DataCollection
 ::::
 
 
