@@ -18,7 +18,7 @@ applies_to:
 | {{filebeat}} and {{metricbeat}} | {applies_to}`stack: preview 9.1-9.2` Linux | {applies_to}`stack: ga 9.3+` Linux<br>{applies_to}`stack: ga 9.6+` Linux and Windows |
 | {{apm-server}} | {applies_to}`stack: preview 9.1-9.2` Linux | {applies_to}`stack: ga 9.3+` Linux |
 
-FIPS 140-3 binaries use Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)). Specific components and configurations that fall outside the certified boundary are documented in the [Limitations](#ingest-limitations-all) section.
+FIPS 140-3 binaries use Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
@@ -90,7 +90,8 @@ This also limits the available `sasl.mechanism` values for the Kafka output:
 When you use {{agent}} and {{fleet-server}}, these limitations apply:
 * Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
 * Agent upgrade artifact verification uses GPG signature checking, which is outside the FIPS module boundary.
-* {applies_to}`stack: ga 9.5+` Lightweight Synthetics monitors are supported, because {{heartbeat}} is included in the {{agent}} FIPS build.
+
+{applies_to}`stack: ga 9.5+` Lightweight Synthetics monitors are supported, because {{heartbeat}} is included in the {{agent}} FIPS build.
 
 #### {{agent}} configured as an OTel Collector [ingest-limitations-edot]
 
