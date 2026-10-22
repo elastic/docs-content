@@ -94,7 +94,7 @@ If you ask for a single chart, metric, or panel instead of a whole dashboard, it
 
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md), such as charts, tables, and metrics
 - {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md), such as status boards
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md)
 - {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` [Discover tables](agent-builder-discover-tables.md), which show the matching documents instead of a chart. To keep a table, refer to [Save the table to a dashboard](agent-builder-discover-tables.md#save-the-table-to-a-dashboard)
 
 To change the time range that an inline visualization covers, use its time filter. A custom panel shows the time filter only when it has an {{esql}} query.
