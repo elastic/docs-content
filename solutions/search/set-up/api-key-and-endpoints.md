@@ -9,7 +9,7 @@ type: how-to
 
 # Get your API key and {{es}} endpoint [get-your-api-key-and-endpoints]
 
-To connect a client to {{es}}, you need an endpoint URL and an API key. This page shows how to find the endpoint and create an API key for each deployment type, including {{serverless-full}} projects, {{ech}}, {{ece}}, self-managed clusters, and {{eck}}.
+If you want to work with {{es}} programmatically, you need an endpoint URL and an API key. This page shows how to find the endpoint and create an API key for each deployment type, including {{serverless-full}} projects, {{ech}}, {{ece}}, self-managed clusters, and {{eck}}.
 
 ## Before you begin
 
