@@ -28,12 +28,14 @@ These are the available admonition types:
 * Important
 * Plain 
 
-Follow these general guidelines for using admonitions: 
+Use admonitions sparingly. They interrupt the reader to highlight something they can't afford to miss, and the more you use them, the less any one of them stands out. Follow these general guidelines for using admonitions: 
 
-* Don't use too many admonitions on a single page, otherwise it can become distracting.
-* Where possible, avoid stacking admonitions of different types (for example, a `Note` immediately followed by a `Warning`). If you find it necessary to do so, consider rewriting the content. 
-* Don't use an admonition to inform the user about prerequisites. 
-* Keep admonitions concise. 
+* **Limit how many you use.** Too many admonitions on a single page become distracting. Aim for no more than one admonition per section. If you reach for a second one, rewrite the content instead.
+* **Don't stack admonitions.** Avoid placing two or more admonitions in a row, whether they are the same type or different types (for example, a `Note` immediately followed by a `Warning`), or using several in the same page section. Stacked admonitions dilute each other and make the page feel cluttered. If you find it necessary to use more than one, restructure or rewrite the content.
+* **Ask whether the content belongs in the body.** Most text that ends up in an admonition is part of the explanation. If the reader needs it to understand or complete the task, put it in the main text, in the step or paragraph where it applies. For example, don't use an admonition to inform the user about prerequisites. 
+* **Reserve admonitions for exceptions.** Use a warning or important admonition for risk of data loss, security issues, irreversible actions, or impact on performance or stability. Use a note only for information that is genuinely supplementary and safe to skip.
+* **Test it by removing it.** If the page still makes sense without the admonition, you might not need it. If the page breaks down without it, the content belongs in the body.
+* **Keep admonitions concise.** 
 
 ### Note 
 Use a note to include a useful, relevant piece of information that's not critical if ignored.
