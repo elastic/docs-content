@@ -1,4 +1,5 @@
 ---
+navigation_title: Integrate with Machine Learning
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-machine-learning-integration.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-integrate-with-machine-learning.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Integrate with {{ml}} [observability-apm-integrate-with-machine-learning]
+# Integrate Elastic APM with {{ml}} [observability-apm-integrate-with-machine-learning]
 
 ::::{important}
 Using {{ml}} requires an [appropriate license](https://www.elastic.co/subscriptions).
@@ -62,6 +63,8 @@ stack: ga 9.6+
 serverless: ga
 ```
 
+Because a job's detectors are fixed at creation, the only way to add low-count detection is to delete the environment's {{product.apm}} transaction job and create a new one, which includes all four detectors. Your {{product.apm}} anomaly rules survive the deletion, but the environment's anomaly history and model are lost.
+
 Use this procedure for each environment whose {{product.apm}} transaction job lacks the `low_count` detector.
 
 To check a job, open its configuration in **{{ml-app}}** → **Anomaly Detection** → **Jobs**, or use the [get job configuration API]({{es-apis}}operation/operation-ml-get-jobs) and inspect `analysis_config.detectors`. If the `low_count` detector is already present, you do not need to recreate the job.
@@ -79,7 +82,7 @@ Deleting a job also removes its automatically generated annotations. User-create
 ### Recreate the job and update rules
 
 1. In **{{ml-app}}** → **Anomaly Detection** → **Jobs**, find the environment's {{product.apm}} transaction job. Its ID has the form `apm-<environment>-<four-character suffix>-apm_tx_metrics`.
-2. Delete the job. These jobs are managed by {{product.apm}}; deleting one also deletes its {{dfeed}}. Leave **Delete alerting rules** off if the option appears. Wait for the job to disappear from the list.
+2. Delete the job. Because these jobs are managed by {{product.apm}}, deleting one also deletes its {{dfeed}}. Leave **Delete alerting rules** off if the option appears. Wait for the job to disappear from the list.
 3. In **Applications**, open **Settings** → **{{anomaly-detect-cap}}**. Click **Create job**, select the same environment, and click **Create Jobs**. The {{dfeed}} starts automatically with a four-week lookback.
 4. Wait until the job is open and has finished analyzing the lookback period.
 5. Edit each existing [{{product.apm}} anomaly rule](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md#apm-anomaly-low-transaction-count) that should detect traffic drops. Under **Detector types**, select **low transaction count** and save the rule.
