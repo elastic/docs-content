@@ -51,7 +51,7 @@ The following table lists each predefined pod metric and its field calculation f
 | Metric | Description |
 | --- | --- |
 | **CPU Usage** | Percentage of CPU used, measured against the pod's CPU limit. When the pod has no CPU limit, the percentage is measured against the capacity of the node instead.<br><br>**Field Calculation**: `average(kubernetes.pod.cpu.usage.limit.pct)`, falling back to `average(kubernetes.pod.cpu.usage.node.pct)`<br> |
-| **Memory Usage** | Percentage of memory used, measured against the pod's memory limit. When the pod has no memory limit, the percentage is measured against the capacity of the node instead.<br><br>**Field Calculation**: `average(kubernetes.pod.memory.usage.limit.pct)`, falling back to `average(kubernetes.pod.memory.usage.node.pct)`<br> |
+| **Memory Usage** | Percentage of memory used, measured against the pod's memory limit. Pods without a memory limit report no value.<br><br>**Field Calculation**: `average(kubernetes.pod.memory.usage.limit.pct)`<br> |
 | **Inbound Traffic** | Number of bytes received per second.<br><br>**Field Calculation**: `derivative(max(kubernetes.pod.network.rx.bytes))` scaled to a 1 second rate<br> |
 | **Outbound Traffic** | Number of bytes sent per second.<br><br>**Field Calculation**: `derivative(max(kubernetes.pod.network.tx.bytes))` scaled to a 1 second rate<br> |
 
@@ -70,7 +70,7 @@ Refer to the following sections for pod metrics and field calculation formulas f
 
 ### OpenTelemetry Collector configuration [k8s-pod-otel-collector-configuration]
 
-By default, {{agent}} collects {{k8s}} node, pod, and container metrics using the `kubeletstats` receiver. Refer to the [default {{k8s}} configuration](elastic-agent://reference/edot-collector/config/default-config-k8s.md) for the receiver settings.
+By default, when {{agent}} is configured as an OTel Collector, it collects {{k8s}} node, pod, and container metrics using the `kubeletstats` receiver. Refer to the [default {{k8s}} configuration](elastic-agent://reference/edot-collector/config/default-config-k8s.md) for the receiver settings.
 
 If you're using a different Collector distribution or the upstream Contrib Collector, refer to the [{{k8s}} OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md) for the equivalent Collector configuration.
 
