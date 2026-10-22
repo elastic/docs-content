@@ -93,7 +93,7 @@ You can also continue chatting to refine the dashboard. For example, ask the age
 If you ask for a single chart, metric, or panel instead of a whole dashboard, it displays inline in the conversation. These types can appear inline:
 
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md), such as charts, tables, and metrics
-- {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md)
 - {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` [Discover tables](agent-builder-discover-tables.md), which show the matching documents instead of a chart. To keep a table, refer to [Save the table to a dashboard](agent-builder-discover-tables.md#save-the-table-to-a-dashboard)
 
@@ -158,7 +158,7 @@ Agents can create and manage the following panel types:
 | Panel type | Description |
 | --- | --- |
 | [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) | Charts, tables, and metrics powered by {{esql}}, rendered with [Lens](/explore-analyze/visualize/lens.md) by default. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes. |
-| [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md) {applies_to}`stack: ga 9.5` | Used for chart shapes that Lens can't express, such as small multiples, layered or combination charts, scatter plots, and bubble charts, or when you ask for a Vega or custom visualization. The agent supports Vega-Lite specifications only, not raw Vega. Shapes that Vega-Lite can't express, such as Sankey, radar, or network diagrams, fall back to the closest supported chart. |
+| [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` | Used for chart shapes that Lens can't express, such as small multiples, layered or combination charts, scatter plots, and bubble charts, or when you ask for a Vega or custom visualization. The agent supports Vega-Lite specifications only, not raw Vega. Shapes that Vega-Lite can't express, such as Sankey, radar, or network diagrams, fall back to the closest supported chart. |
 | Markdown panels | Text panels for notes, headings, and other context. |
 | Collapsible sections | Grouped panels that readers can expand or collapse. |
 | [Filter controls](/explore-analyze/visualize/dashboard-controls.md) {applies_to}`stack: ga 9.5` | Interactive filters that appear above the dashboard and let users filter data without editing queries. The agent can add and remove **Options list**, **Range slider**, and **Time slider** controls, and can proactively add **Options list** controls for useful categorical fields such as service or host names. A dashboard can contain only one **Time slider** control. |
