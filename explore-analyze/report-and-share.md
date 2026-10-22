@@ -59,15 +59,15 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [Share and export dashboards](/explore-analyze/dashboards/sharing.md).
+Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **CSV reports** — Generate CSV reports of saved Discover sessions.
 * **CSV download** — Generate and download CSV files of Lens visualizations.
-* **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
+* **Download as JSON** {applies_to}`serverless: unavailable` — Generate and download JSON files of **Canvas** workpads.
 * **Export JSON**
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, preview 9.4-9.5` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
     * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
 
 :::{tip}
@@ -90,7 +90,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
     :::
 
     :::{dropdown} CSV
-    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/try-esql.md#add-variable-control), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
+    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/esql-variable-controls.md), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
     * Certain [limitations apply](#csv-limitations).
     :::
 
@@ -135,6 +135,8 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
+In Discover, a CSV report also stops at a row limit, and the file is truncated at a size limit. To find both limits for your deployment and how they work in each query mode, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
+
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
 For more information on using Elasticsearch APIs directly, see [Scroll API]({{es-apis}}operation/operation-scroll), [Point in time API]({{es-apis}}operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
@@ -153,6 +155,9 @@ For the most reliable configuration of PDF/PNG {{report-features}}, consider ins
 
 
 ## Create JSON files [download-as-json]
+```{applies_to}
+serverless: unavailable
+```
 
 Create and share JSON files for workpads.
 
@@ -172,7 +177,9 @@ serverless: unavailable
 ::::{note}
 :name: reporting-on-cloud-resource-requirements
 
-For {{ech}} deployments, {{kib}} instances require a minimum of 2 GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
+For {{ech}} deployments, {{kib}} instances require a minimum of 2 GB RAM to generate PDF or PNG reports. For large dashboards or dashboards showing panels with complex queries, we recommend a minimum of 4 GB RAM.
+
+To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
 ::::
 
 

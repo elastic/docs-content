@@ -45,12 +45,12 @@ Most {{ecloud}} and {{ech}} features are also available in FedRAMP authorized Cl
 | [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md) | Yes | No | No |
 | [Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md) | Yes | No | No |
 | [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) | Yes | No | No |
-| [Custom bundles and plugins](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
+| [Custom bundles and plugins](/deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
 | [Elastic AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
 | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) | Yes | Yes | TBD |
 | [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |
 | [Multiple organization membership](/deploy-manage/cloud-organization/manage-multiple-organizations.md) | Yes | Yes | Yes, with [limitations](#ec-fedramp-multi-org) |
-| [{{ecloud}} audit trail](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md) | No | Yes | No |
+| [{{ecloud}} audit trail](/deploy-manage/monitor/cloud-audit-trail.md) | No | Yes | No |
 | [Cloud Connect](/deploy-manage/cloud-connect.md) | Yes | No | No |
 
 ## Get started with FedRAMP [ec-fedramp-get-started]

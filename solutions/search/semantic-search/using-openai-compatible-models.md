@@ -123,6 +123,8 @@ To use the model with Agent Builder, follow the [local LLM setup guidance](/expl
 :::{include} /solutions/_snippets/use-local-llm-inference-api.md
 :::
 
+{applies_to}`{ deployment: { self: ga, ece: ga, eck: ga } }` If your LLM is served over HTTPS with a certificate signed by a private or internal certificate authority, refer to [Trust a private certificate authority for external {{infer}} endpoints](/explore-analyze/elastic-inference/external-inference-private-ca.md).
+
 ## Further reading
 
 * [Using Ollama with the {{infer}} API](https://www.elastic.co/search-labs/blog/ollama-with-inference-api#expose-endpoint-to-the-internet-using-ngrok): A more comprehensive, end-to-end guide to using Ollama with {{es}}.

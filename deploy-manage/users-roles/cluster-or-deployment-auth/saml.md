@@ -382,7 +382,7 @@ Once you have [configured a SAML realm in {{es}}](#saml-create-realm), you can g
 
 You can generate the SAML metadata by issuing the API request to {{es}} and store it as an XML file using tools like `jq`. For example, the following command generates the metadata for the SAML realm `saml1` and saves it to a `metadata.xml` file:
 
-```console
+```sh
 curl -u user_name:password -X GET https://elasticsearch.example.com:9200/_security/saml/metadata/saml1 -H 'Content-Type: application/json' | jq -r '.[]' > metadata.xml  # <1>
 ```
 
