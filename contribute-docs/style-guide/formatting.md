@@ -35,7 +35,10 @@ Use admonitions sparingly. They interrupt the reader to highlight something they
    This is not a recommendation to merge admonitions into a single bigger ones that touches on multiple topics. This should be avoided too.
 * **Ask whether the content belongs in the body.** Most text that ends up in an admonition is part of the explanation. If the reader needs it to understand or complete the task, put it in the main text, in the step or paragraph where it applies. For example, don't use an admonition to inform the user about prerequisites. 
 * **Reserve admonitions for exceptions.** Use a warning or important admonition for risk of data loss, security issues, irreversible actions, or impact on performance or stability. Use a note only for information that is genuinely supplementary and safe to skip.
-* **Test it by removing it.** If the page still makes sense without the admonition, you might not need it. If the page breaks down without it, the content belongs in the body.
+* **Test it by removing it.** Remove the admonition and read the page again:
+  * If the reader can no longer understand the topic or complete the task, the content belongs in the body.
+  * If the reader can still complete the task but might miss a risk or an exception, such as data loss or an irreversible action, keep the important or warning admonition.
+  * If useful but non-critical information is lost, such as a pointer to a related or equivalent concept, you can keep it as a tip or note.
 * **Keep admonitions concise.** If it's too long and not temporary, it likely deserves a section on the page.
 
 ### Note 

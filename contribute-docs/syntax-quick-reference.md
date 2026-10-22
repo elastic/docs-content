@@ -19,7 +19,7 @@ Contributing to [elastic.co/guide](https://www.elastic.co/guide/index.html)? Ref
 ## Admonitions
 
 Use admonitions to caution users, or to provide helpful tips or extra information.
-Admonitions exist to flag something the reader can’t afford to miss, so use them sparingly. Before adding one, ask whether the text should simply be part of the body. If readers need it to understand or complete the task, it belongs in the main flow. Keep warnings and cautions for real risk, such as data loss, security issues, or irreversible actions, and avoid placing more than one in the same section.
+Admonitions work best when they flag something the reader shouldn't miss, so use them sparingly. Before adding one, consider whether the text could be part of the body. If readers need it to understand or complete the task, it usually belongs in the main flow. Reserve warnings and cautions for real risk, such as data loss, security issues, or irreversible actions, and try to avoid more than one in the same section.
 
 ::::{dropdown} Types
 :open:
