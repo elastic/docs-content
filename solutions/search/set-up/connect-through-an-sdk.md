@@ -24,7 +24,7 @@ You need the following:
 
 :::::::{stepper}
 
-::::::{step} Connect to your project
+::::::{step} Connect to {{es}}
 :anchor: connect-through-an-sdk-connect
 
 Set your {{es}} endpoint and API key as environment variables:
