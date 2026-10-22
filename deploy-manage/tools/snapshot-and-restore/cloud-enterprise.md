@@ -35,6 +35,9 @@ To register snapshot repositories in ECE directly at the deployment level, follo
 * [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
 * [Google Cloud Storage](https://cloud.google.com/storage/docs/)
 
+Only the repository types listed on this page are supported in {{ece}}. While Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself.
+
+
 For more details about how snapshots are used with {{es}}, refer to [](/deploy-manage/tools/snapshot-and-restore.md).
 
 :::{note}
