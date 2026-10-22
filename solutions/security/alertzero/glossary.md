@@ -1,6 +1,6 @@
 ---
 navigation_title: Glossary
-description: "Reference of terms used across AlertZero documentation, with links to the pages that explain them."
+description: Reference of terms used across AlertZero documentation, with links to the pages that explain them.
 applies_to:
   stack: preview 9.6
   serverless:
@@ -12,7 +12,7 @@ products:
 
 # AlertZero glossary [alertzero-glossary]
 
-Every term used in the AlertZero documentation. Terms match the labels you see in the product. Each entry links to the page that explains it in more detail, where one exists.
+This glossary defines the terms you see in AlertZero and its documentation. Each entry links to the page that explains it in more detail, where one exists.
 
 ## A-B [alertzero-glossary-a-b]
 
