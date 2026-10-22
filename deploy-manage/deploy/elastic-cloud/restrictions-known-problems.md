@@ -99,7 +99,7 @@ $$$ec-restrictions-apis-kibana$$$
 
 ## {{watcher}} [ec-restrictions-watcher]
 
-{{watcher}} encryption key setup is not supported.
+Setting up [encryption for sensitive data in {{watcher}}](../../../explore-analyze/alerting/watcher/encrypting-data.md) with the `xpack.watcher.encryption_key` setting is not supported on {{ecloud}}.
 
 Changing the default throttle period is not possible. You can specify a throttle period per watch, however.
 
