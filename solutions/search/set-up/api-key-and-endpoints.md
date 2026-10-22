@@ -43,7 +43,7 @@ If you just created a {{serverless-short}} project, the **Getting started** {ico
 ::::::::{step} Next step
 :anchor: api-key-and-endpoints-next
 
-After you have an endpoint and an API key, connect a language client in [](/solutions/search/set-up/connect-through-an-sdk.md).
+After you have an endpoint and an API key, connect a language client in [](/solutions/search/set-up/connect-with-an-sdk.md).
 
 ::::::::
 

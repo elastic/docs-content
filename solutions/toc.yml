@@ -15,7 +15,7 @@ toc:
         children:
           - file: search/set-up/choose-a-deployment-type.md
           - file: search/set-up/api-key-and-endpoints.md
-          - file: search/set-up/connect-through-an-sdk.md
+          - file: search/set-up/connect-with-an-sdk.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md

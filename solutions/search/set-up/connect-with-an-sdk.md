@@ -2,12 +2,12 @@
 applies_to:
   stack:
   serverless:
-navigation_title: Connect through an SDK
+navigation_title: Connect with an SDK
 description: Install an official Elasticsearch language client, connect it with your endpoint and API key, and verify the connection.
 type: how-to
 ---
 
-# Connect through an SDK [connect-through-an-sdk]
+# Connect with an SDK [connect-with-an-sdk]
 
 Use an official {{es}} client library to connect your application to {{es}} from code. This page shows how to install and initialize the client for each supported language, so you can copy the example for your language and start sending requests.
 
@@ -25,7 +25,7 @@ You need the following:
 :::::::{stepper}
 
 ::::::{step} Connect to {{es}}
-:anchor: connect-through-an-sdk-connect
+:anchor: connect-with-an-sdk-connect
 
 Set your {{es}} endpoint and API key as environment variables:
 
@@ -61,7 +61,7 @@ $Env:ES_API_KEY = "YOUR_API_KEY"
 ::::::
 
 ::::::{step} Install and initialize a client
-:anchor: connect-through-an-sdk-install
+:anchor: connect-with-an-sdk-install
 
 Install the client for your language. For a list of available clients, refer to [{{es}} clients](/reference/elasticsearch-clients/index.md).
 
@@ -296,7 +296,7 @@ func main() {
 ::::::
 
 ::::::{step} Verify your connection
-:anchor: connect-through-an-sdk-verify
+:anchor: connect-with-an-sdk-verify
 
 Call the info API to confirm that your endpoint URL and API key work. A successful response includes the cluster name and version.
 
@@ -377,9 +377,9 @@ log.Println(res)
 ::::::
 
 ::::::{step} Next steps
-:anchor: connect-through-an-sdk-next
+:anchor: connect-with-an-sdk-next
 
-{{es}} is up and running. Next, learn how to ingest your own data in [](/solutions/search/ingest-for-search.md).
+{{es}} is up and running, and your application is connected. Next, learn how to ingest your own data in [](/solutions/search/ingest-for-search.md).
 
 ::::::
 
