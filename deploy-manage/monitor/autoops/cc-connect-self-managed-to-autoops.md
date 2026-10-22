@@ -13,8 +13,7 @@ products:
 
 # Connect your ECE, ECK, or self-managed cluster to AutoOps
 
-This page explains how to connect your ECE, ECK, or self-managed cluster to AutoOps in {{ecloud}}. Sign in with an {{ecloud}} account or start from {{kib}}, then use the installation wizard to install {{agent}} and ship cluster metrics.
-To use AutoOps with your ECE, ECK, or self-managed cluster through [Cloud Connect](/deploy-manage/cloud-connect.md), you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard then guides you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}. The connection process takes about 10 minutes.
+This page explains how to connect your ECE, ECK, or self-managed cluster to AutoOps through [Cloud Connect](/deploy-manage/cloud-connect.md). Sign in with an {{ecloud}} account or start from {{kib}}, then use the installation wizard to install {{agent}} and ship cluster metrics. The connection process takes about 10 minutes.
 
 Cloud Connect is not available in [FedRAMP authorized Cloud offerings](/deploy-manage/deploy/elastic-cloud/fedramp.md).
 
@@ -50,15 +49,43 @@ If your ECK-managed cluster's license is downgraded, you must upgrade {{agent}} 
 ::::{tab-set}
 
 :::{tab-item} {{ecloud}}
-Sign up or log in to {{ecloud}} with the following links and follow the prompts on screen:
-* [For new users](https://cloud.elastic.co/registration?onboarding_service_type=ccm) who don't have an {{ecloud}} account
-* [For existing users](https://cloud.elastic.co/login?redirectTo=%2Fconnect-cluster-services) who already have an {{ecloud}} account
+1. Sign up or log in to {{ecloud}} with the following links:
+    * [For new users](https://cloud.elastic.co/registration?onboarding_service_type=ccm) who don't have an {{ecloud}} account
+    * [For existing users](https://cloud.elastic.co/login?redirectTo=%2Fconnect-cluster-services) who already have an {{ecloud}} account
 
-Alternatively, go to your {{ecloud}} home page and select **Connect self-managed cluster**.
+    Alternatively, go to your {{ecloud}} home page and select **Connect self-managed cluster**.
+
+    If it's your first time connecting a cluster, you will be prompted to accept the terms and conditions.
+2. On the **Get access to all services** page, you have two options:
+    * Select **Install AutoOps agent** and move on to [Select installation method](#select-installation-method).
+    * {applies_to}`stack: ga 9.3.2+` Or, select **Connect through {{kib}}** and complete the following steps:
+      1. Copy the Cloud Connect API key that shows up on your screen.
+      2. In your {{kib}} instance, find **Cloud Connect** using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+      3. On the **Get started with Cloud Connect** page, paste your Cloud Connect API key in the provided field and click **Connect**.
+      4. On the **Cloud connected services** page, choose the services you want to enable. For AutoOps, click **Connect** next to AutoOps and move on to [Select installation method](#select-installation-method). 
+        
+          For other services, refer to [](/deploy-manage/cloud-connect.md) for instructions.
+
+:::{image} /deploy-manage/images/get-access-to-cc-services.png
+:screenshot:
+:alt: Screenshot showing the Connect through Kibana and Install AutoOps agent options
+:::
+
 :::
 
 :::{tab-item} {{kib}}
-Go to the **Cloud Connect** page in your {{kib}} instance using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md) and sign up or log in to {{ecloud}} from there. Then, follow the steps to [connect through {{kib}}](#connect-through-kibana).
+
+{applies_to}`stack: ga 9.3.2+` This pathway requires {{stack}} version 9.3 or later.
+
+1. In your {{kib}} instance, find **Cloud Connect** using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Get started with Cloud Connect** page, sign up or log in to {{ecloud}}. If it's your first time connecting a cluster, you will be prompted to accept the terms and conditions.
+3. Copy the Cloud Connect API key that shows up on your screen.
+4. Return to the **Get started with Cloud Connect** page in your {{kib}} instance.
+5. Paste your Cloud Connect API key in the provided field and click **Connect**.
+6. On the **Cloud connected services** page, choose the services you want to enable. For AutoOps, click **Connect** next to AutoOps and move on to [Select installation method](#select-installation-method). 
+  
+    For other services, refer to [](/deploy-manage/cloud-connect.md) for instructions.
+
 
 :::{image} /explore-analyze/images/cloud-connect-eis.png
 :screenshot:
@@ -72,28 +99,9 @@ Go to the **Cloud Connect** page in your {{kib}} instance using the [global sear
 
 ::::::
 
-::::::{step} Choose how to connect
-
-:::{image} /deploy-manage/images/get-access-to-cc-services.png
-:screenshot:
-:alt: Screenshot showing the Connect through Kibana and Install AutoOps agent options
-:::
-
-Select **Install AutoOps agent** to enable only AutoOps and open the installation wizard.
-Select **Connect through {{kib}}** to enable multiple cloud connected services with an API key.
-
-$$$connect-through-kibana$$$
-If you select **Connect through Kibana**:
-
-1. Copy the Cloud Connect API key that shows up.
-2. In your cluster's {{kib}} instance, go to the **Cloud Connect** page using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-3. Paste your Cloud Connect API key and click **Connect**.
-4. On the **Cloud connected services** page, choose the services you want to enable. For AutoOps, click **Connect** next to AutoOps. For other services, refer to [](/deploy-manage/cloud-connect.md).
-::::::
-
 ::::::{step} Select installation method
-
-This is the first part of the installation wizard. Your cluster ships metrics to AutoOps with the help of {{agent}}. 
+$$$select-installation-method$$$
+Your cluster ships metrics to AutoOps with the help of {{agent}}. 
 
 Select one of the following methods to install {{agent}}:
 
@@ -303,7 +311,7 @@ To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend
 
 ::::::
 
-::::::{step} Launch AutoOps
+::::::{step} Open AutoOps
 
 If the connection is successful, AutoOps starts analyzing your metrics and reporting on any issues found. Depending on the size of your cluster, this process can take up to 30 minutes. 
 
