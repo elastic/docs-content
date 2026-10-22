@@ -47,7 +47,7 @@ If the plan fails, no change is made to the deployment. The previous size and bi
 
 During the expansion, after {{ecloud}} has requested and provisioned the new hosts, the new {{stack}} instances are created and started, and the index/shard data is migrated from the old {{es}} instances to the new ones.
 
-This migration consumes additional resources on the existing instances, and deployments without [high availability](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) might experience temporary service degradation.
+This migration consumes additional resources on the existing instances, and deployments without [high availability](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) might experience temporary reduced performante.
 
 
 ## Mitigation [ec-not-enough-capacity-mitigation]
