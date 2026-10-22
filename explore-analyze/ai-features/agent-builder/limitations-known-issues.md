@@ -32,6 +32,33 @@ In version 9.4+, [index search tools](tools/index-search-tools.md) support [cros
 
 In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To search remote clusters, use a custom {{esql}} tool and instruct your agent to query `remote_cluster:index_name`.
 
+### Frozen tier data excluded by default [frozen-tier-data]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: unavailable
+```
+
+By default, {{agent-builder}} tools exclude data stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier). Searching frozen data recovers [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) from object storage, which is slow and can cause tool calls to time out. As a result, agents return no results for data that has moved to the frozen tier.
+
+This behavior depends on your version:
+
+* **9.4.0 through 9.4.7, and 9.5.0 through 9.5.4:** Tools read frozen tier data.
+* **9.4.8 and 9.5.5:** Tools always exclude frozen tier data, and the options to include it aren't available.
+* **9.4.9, 9.5.6, and later:** Tools exclude frozen tier data by default, and you can include it with the options on this page.
+
+Tools that query data, such as the built-in `execute_esql`, `generate_esql`, and `search` tools, and custom [{{esql}} tools](tools/esql-tools.md) and [index search tools](tools/index-search-tools.md), exclude documents in frozen tier indices. Tools that inspect mappings, such as the built-in `get_index_mapping` and `index_explorer` tools, can omit fields that exist only in frozen tier indices.
+
+% TODO: Confirm with engineering before publishing. Several Security solution tools call the shared Agent Builder search and ES|QL helpers without passing include_frozen, so they always exclude frozen tier data, and none of the options below apply to them: alerts, Attack Discovery search, get entity, search entities, PCI compliance evaluator (9.5+), and the risk score and asset criticality skill tools. Is this intended? If so, document it here.
+
+To include frozen tier data, use one of these options:
+
+* **For one tool call:** Ask the agent to include frozen tier data. Built-in tools accept an `include_frozen` parameter. By default, the agent sets it to `true` only when the user or the agent instructions explicitly ask for frozen tier data. For details, refer to [Frozen tier data in built-in tools](tools/builtin-tools-reference.md#agent-builder-builtin-tools-frozen-tier).
+* **For a custom tool:** Select **Include frozen tier data** in the tool configuration, or set `include_frozen` to `true` in the [Tools API](kibana-api.md#tools-apis).
+* **For all built-in tools in a space:** Turn on the **Elastic Agent Builder: Include frozen tier data by default** [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (`agentBuilder:includeFrozenByDefault`). This is useful for [MCP clients](mcp-server.md), where you can't adjust a single agent prompt. When the setting is on, the agent sets `include_frozen` to `false` only when the user or the agent instructions explicitly ask to exclude frozen tier data. An explicit `include_frozen` value on a tool call overrides the setting. The setting doesn't affect custom tools.
+
+Including frozen tier data doesn't extend tool timeouts. Queries over large amounts of frozen data can still time out.
+
 ### A2A streaming not supported
 
 The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.

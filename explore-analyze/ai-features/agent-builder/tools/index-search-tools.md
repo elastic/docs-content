@@ -50,6 +50,9 @@ Index search tools support the following configuration parameters:
 `custom_instructions` (optional)
 :   Domain-specific guidance for {{esql}} query generation. For example: `"Always include @timestamp and filter out records where environment='test'"`.
 
+`include_frozen` (optional) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: unavailable`
+:   Whether the tool searches data stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier). Defaults to `false`. In the UI, this is the **Include frozen tier data** option. Searching frozen tier data is slow and can cause the tool to time out. For more information, refer to [Frozen tier data excluded by default](../limitations-known-issues.md#frozen-tier-data).
+
 ## How it works
 
 When an agent calls an index search tool:
