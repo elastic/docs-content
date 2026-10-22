@@ -16,9 +16,6 @@ To connect a client to {{es}}, you need an endpoint URL and an API key. This pag
 * You need access to your deployment or project, such as an {{es}} {{vectordb}} project, an {{es}} project, or an {{ech}} deployment. If you don't have one yet, refer to [](/solutions/search/set-up/choose-a-deployment-type.md).
 * To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege. If you created the deployment or project, you already have this privilege. If you sign in as a different user, an administrator needs to grant it. In this case, refer to [](/deploy-manage/users-roles.md).
 
-:::{include} /solutions/elasticsearch-solution-project/_snippets/deployment-tab-legend.md
-:::
-
 :::::::::{stepper}
 
 ::::::::{step} Find your {{es}} endpoint
@@ -34,11 +31,11 @@ The {{es}} endpoint is the URL your client uses to send requests. Where you find
 ::::::::{step} Create an API key
 :anchor: get-your-api-key
 
-:::{tip}
-If you just created a {{serverless-short}} project, the **Getting started** {icon}`rocket` page shows a generated API key that you can copy immediately. If you have navigated away from that page, create a new API key as described below.
+:::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
 :::
 
-:::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
+:::{tip}
+If you just created a {{serverless-short}} project, the **Getting started** {icon}`rocket` page shows a generated API key that you can copy immediately. If you have navigated away from that page, create a new API key as described above.
 :::
 
 ::::::::

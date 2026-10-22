@@ -12,7 +12,7 @@ type: how-to
 Use an official {{es}} client library to connect your application to {{es}} from code. This page shows how to install and initialize the client for each supported language, so you can copy the example for your language and start sending requests.
 
 :::{note}
-To try things out without installing a client, you can also work with {{es}} data in the {{kib}} [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md).
+To get started without installing a client, you can also work with {{es}} data in the {{kib}} [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md).
 :::
 
 ## Before you begin
@@ -167,7 +167,7 @@ After installation, initialize the client:
 
 ```python
 import os
-from elasticsearch import Elasticsearch, helpers
+from elasticsearch import Elasticsearch
 
 es = Elasticsearch(
     os.environ["ES_URL"],
@@ -227,11 +227,7 @@ es = Elasticsearch::Client.new(
 :sync: csharp
 
 ```csharp
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Elastic.Clients.Elasticsearch;
-using Elastic.Clients.Elasticsearch.Core.Bulk;
-using Elastic.Clients.Elasticsearch.Esql;
 using Elastic.Transport;
 
 var url = Environment.GetEnvironmentVariable("ES_URL")
@@ -252,17 +248,7 @@ var es = new ElasticsearchClient(settings);
 ```java
 package quickstart;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch._types.Refresh;
-import co.elastic.clients.elasticsearch.core.BulkRequest;
-import co.elastic.clients.elasticsearch.core.SearchResponse;
-import co.elastic.clients.elasticsearch.core.search.Hit;
-import co.elastic.clients.elasticsearch.esql.EsqlFormat;
-import co.elastic.clients.transport.endpoints.BinaryResponse;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -312,9 +298,7 @@ func main() {
 ::::::{step} Verify your connection
 :anchor: connect-through-an-sdk-verify
 
-To verify your connection, create an index, index some sample data, and check the document count.
-
-1. Create an index called `books`:
+Call the info API to confirm that your endpoint URL and API key work. A successful response includes the cluster name and version.
 
 :::::{tab-set}
 :group: languages
@@ -323,16 +307,7 @@ To verify your connection, create an index, index some sample data, and check th
 :sync: python
 
 ```python
-es.indices.create(
-    index="books",
-    mappings={
-        "properties": {
-            "description": {
-                "type": "semantic_text",
-            }
-        }
-    },
-)
+print(es.info())
 ```
 
 ::::
@@ -341,16 +316,7 @@ es.indices.create(
 :sync: typescript
 
 ```typescript
-await es.indices.create({
-  index: "books",
-  mappings: {
-    properties: {
-      description: {
-        type: "semantic_text",
-      },
-    },
-  },
-});
+console.log(await es.info());
 ```
 
 ::::
@@ -359,18 +325,7 @@ await es.indices.create({
 :sync: php
 
 ```php
-$es->indices()->create([
-    "index" => "books",
-    "body" => [
-        "mappings" => [
-            "properties" => [
-                "description" => [
-                    "type" => "semantic_text",
-                ],
-            ],
-        ],
-    ],
-]);
+echo $es->info()->asString();
 ```
 
 ::::
@@ -379,18 +334,7 @@ $es->indices()->create([
 :sync: ruby
 
 ```ruby
-es.indices.create(
-  index: "books",
-  body: {
-    mappings: {
-      properties: {
-        description: {
-          type: "semantic_text"
-        }
-      }
-    }
-  }
-)
+puts es.info
 ```
 
 ::::
@@ -399,13 +343,8 @@ es.indices.create(
 :sync: csharp
 
 ```csharp
-await es.Indices.CreateAsync<Book>("books", c => c
-    .Mappings(m => m
-        .Properties(p => p
-            .SemanticText(b => b.Description)
-        )
-    )
-);
+var info = await es.InfoAsync();
+Console.WriteLine(info);
 ```
 
 ::::
@@ -414,20 +353,7 @@ await es.Indices.CreateAsync<Book>("books", c => c
 :sync: java
 
 ```java
-es.indices().create(c -> c
-    .index("books")
-    .withJson(new StringReader("""
-        {
-          "mappings": {
-            "properties": {
-              "description": {
-                "type": "semantic_text"
-              }
-            }
-          }
-        }
-        """))
-);
+System.out.println(es.info());
 ```
 
 ::::
@@ -436,496 +362,24 @@ es.indices().create(c -> c
 :sync: go
 
 ```go
-createResponse, err := es.Indices.Create(
-	"books",
-	es.Indices.Create.WithBody(strings.NewReader(`{
-	  "mappings": {
-	    "properties": {
-	      "description": {
-	        "type": "semantic_text"
-	      }
-	    }
-	  }
-	}`)),
-)
-if err != nil {
-	panic(err)
-}
-if createResponse.IsError() {
-	log.Fatal(createResponse)
-}
-createResponse.Body.Close()
-```
-
-::::
-:::::
-
-2. Index five sample books in one bulk request:
-
-:::::{tab-set}
-:group: languages
-
-::::{tab-item} Python
-:sync: python
-
-```python
-books = [
-    {"title": "The Left Hand of Darkness", "author": "Ursula K. Le Guin", "release_year": 1969,
-     "description": "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap."},
-    {"title": "Project Hail Mary", "author": "Andy Weir", "release_year": 2021,
-     "description": "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth."},
-    {"title": "The Name of the Wind", "author": "Patrick Rothfuss", "release_year": 2007,
-     "description": "A gifted young musician and magician tells the story of his rise from orphan to legend."},
-    {"title": "Klara and the Sun", "author": "Kazuo Ishiguro", "release_year": 2021,
-     "description": "An artificial friend watches human love and loneliness while hoping a child will pick her."},
-    {"title": "Dune", "author": "Frank Herbert", "release_year": 1965,
-     "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."},
-]
-
-helpers.bulk(es, ({"_index": "books", "_source": b} for b in books), refresh="wait_for")
-```
-
-::::
-
-::::{tab-item} TypeScript
-:sync: typescript
-
-```typescript
-const books = [
-  {
-    title: "The Left Hand of Darkness",
-    author: "Ursula K. Le Guin",
-    release_year: 1969,
-    description: "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap.",
-  },
-  {
-    title: "Project Hail Mary",
-    author: "Andy Weir",
-    release_year: 2021,
-    description: "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth.",
-  },
-  {
-    title: "The Name of the Wind",
-    author: "Patrick Rothfuss",
-    release_year: 2007,
-    description: "A gifted young musician and magician tells the story of his rise from orphan to legend.",
-  },
-  {
-    title: "Klara and the Sun",
-    author: "Kazuo Ishiguro",
-    release_year: 2021,
-    description: "An artificial friend watches human love and loneliness while hoping a child will pick her.",
-  },
-  {
-    title: "Dune",
-    author: "Frank Herbert",
-    release_year: 1965,
-    description: "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power.",
-  },
-];
-
-await es.bulk({
-  refresh: "wait_for",
-  operations: books.flatMap((book) => [
-    { index: { _index: "books" } },
-    book,
-  ]),
-});
-```
-
-::::
-
-::::{tab-item} PHP
-:sync: php
-
-```php
-$books = [
-    [
-        "title" => "The Left Hand of Darkness",
-        "author" => "Ursula K. Le Guin",
-        "release_year" => 1969,
-        "description" => "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap.",
-    ],
-    [
-        "title" => "Project Hail Mary",
-        "author" => "Andy Weir",
-        "release_year" => 2021,
-        "description" => "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth.",
-    ],
-    [
-        "title" => "The Name of the Wind",
-        "author" => "Patrick Rothfuss",
-        "release_year" => 2007,
-        "description" => "A gifted young musician and magician tells the story of his rise from orphan to legend.",
-    ],
-    [
-        "title" => "Klara and the Sun",
-        "author" => "Kazuo Ishiguro",
-        "release_year" => 2021,
-        "description" => "An artificial friend watches human love and loneliness while hoping a child will pick her.",
-    ],
-    [
-        "title" => "Dune",
-        "author" => "Frank Herbert",
-        "release_year" => 1965,
-        "description" => "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power.",
-    ],
-];
-
-$operations = [];
-foreach ($books as $book) {
-    $operations[] = [
-        "index" => [
-            "_index" => "books",
-        ],
-    ];
-    $operations[] = $book;
-}
-
-$es->bulk([
-    "refresh" => "wait_for",
-    "body" => $operations,
-]);
-```
-
-::::
-
-::::{tab-item} Ruby
-:sync: ruby
-
-```ruby
-books = [
-  {
-    title: "The Left Hand of Darkness",
-    author: "Ursula K. Le Guin",
-    release_year: 1969,
-    description: "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap."
-  },
-  {
-    title: "Project Hail Mary",
-    author: "Andy Weir",
-    release_year: 2021,
-    description: "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth."
-  },
-  {
-    title: "The Name of the Wind",
-    author: "Patrick Rothfuss",
-    release_year: 2007,
-    description: "A gifted young musician and magician tells the story of his rise from orphan to legend."
-  },
-  {
-    title: "Klara and the Sun",
-    author: "Kazuo Ishiguro",
-    release_year: 2021,
-    description: "An artificial friend watches human love and loneliness while hoping a child will pick her."
-  },
-  {
-    title: "Dune",
-    author: "Frank Herbert",
-    release_year: 1965,
-    description: "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."
-  }
-]
-
-operations = books.flat_map do |book|
-  [
-    { index: { _index: "books" } },
-    book
-  ]
-end
-
-es.bulk(
-  body: operations,
-  refresh: "wait_for"
-)
-```
-
-::::
-
-::::{tab-item} C#/.NET
-:sync: csharp
-
-```csharp
-var books = new[]
-{
-    new Book(
-        "The Left Hand of Darkness",
-        "Ursula K. Le Guin",
-        1969,
-        "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap."
-    ),
-    new Book(
-        "Project Hail Mary",
-        "Andy Weir",
-        2021,
-        "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth."
-    ),
-    new Book(
-        "The Name of the Wind",
-        "Patrick Rothfuss",
-        2007,
-        "A gifted young musician and magician tells the story of his rise from orphan to legend."
-    ),
-    new Book(
-        "Klara and the Sun",
-        "Kazuo Ishiguro",
-        2021,
-        "An artificial friend watches human love and loneliness while hoping a child will pick her."
-    ),
-    new Book(
-        "Dune",
-        "Frank Herbert",
-        1965,
-        "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."
-    )
-};
-
-var operations = new BulkOperationsCollection();
-foreach (var book in books)
-{
-    operations.Add(new BulkIndexOperation<Book>(book)
-    {
-        Index = "books"
-    });
-}
-
-await es.BulkAsync(new BulkRequest
-{
-    Refresh = Refresh.WaitFor,
-    Operations = operations
-});
-
-public record Book(
-    string Title,
-    string Author,
-    [property: JsonPropertyName("release_year")] int ReleaseYear,
-    string Description
-);
-```
-
-::::
-
-::::{tab-item} Java
-:sync: java
-
-```java
-record Book(
-    String title,
-    String author,
-    int release_year,
-    String description
-) {}
-
-Book[] books = {
-    new Book(
-        "The Left Hand of Darkness",
-        "Ursula K. Le Guin",
-        1969,
-        "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap."
-    ),
-    new Book(
-        "Project Hail Mary",
-        "Andy Weir",
-        2021,
-        "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth."
-    ),
-    new Book(
-        "The Name of the Wind",
-        "Patrick Rothfuss",
-        2007,
-        "A gifted young musician and magician tells the story of his rise from orphan to legend."
-    ),
-    new Book(
-        "Klara and the Sun",
-        "Kazuo Ishiguro",
-        2021,
-        "An artificial friend watches human love and loneliness while hoping a child will pick her."
-    ),
-    new Book(
-        "Dune",
-        "Frank Herbert",
-        1965,
-        "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."
-    )
-};
-
-BulkRequest.Builder bulk = new BulkRequest.Builder()
-    .refresh(Refresh.WaitFor);
-
-for (Book book : books) {
-    bulk.operations(op -> op
-        .index(idx -> idx
-            .index("books")
-            .document(book)
-        )
-    );
-}
-
-es.bulk(bulk.build());
-```
-
-::::
-
-::::{tab-item} Go
-:sync: go
-
-```go
-type Book struct {
-	Title       string `json:"title"`
-	Author      string `json:"author"`
-	ReleaseYear int    `json:"release_year"`
-	Description string `json:"description"`
-}
-
-books := []Book{
-	{
-		Title:       "The Left Hand of Darkness",
-		Author:      "Ursula K. Le Guin",
-		ReleaseYear: 1969,
-		Description: "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap.",
-	},
-	{
-		Title:       "Project Hail Mary",
-		Author:      "Andy Weir",
-		ReleaseYear: 2021,
-		Description: "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth.",
-	},
-	{
-		Title:       "The Name of the Wind",
-		Author:      "Patrick Rothfuss",
-		ReleaseYear: 2007,
-		Description: "A gifted young musician and magician tells the story of his rise from orphan to legend.",
-	},
-	{
-		Title:       "Klara and the Sun",
-		Author:      "Kazuo Ishiguro",
-		ReleaseYear: 2021,
-		Description: "An artificial friend watches human love and loneliness while hoping a child will pick her.",
-	},
-	{
-		Title:       "Dune",
-		Author:      "Frank Herbert",
-		ReleaseYear: 1965,
-		Description: "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power.",
-	},
-}
-
-indexer, err := esutil.NewBulkIndexer(esutil.BulkIndexerConfig{
-	Client:  es,
-	Index:   "books",
-	Refresh: "wait_for",
-})
-if err != nil {
-	panic(err)
-}
-
-ctx := context.Background()
-for _, book := range books {
-	data, err := json.Marshal(book)
-	if err != nil {
-		panic(err)
-	}
-
-	err = indexer.Add(ctx, esutil.BulkIndexerItem{
-		Action: "index",
-		Body:   bytes.NewReader(data),
-	})
-	if err != nil {
-		panic(err)
-	}
-}
-
-if err := indexer.Close(ctx); err != nil {
-	panic(err)
-}
-```
-
-:::::
-
-3. Verify the documents were indexed:
-
-:::::{tab-set}
-:group: languages
-
-::::{tab-item} Python
-:sync: python
-
-```python
-es.count(index="books")
-```
-
-::::
-
-::::{tab-item} TypeScript
-:sync: typescript
-
-```typescript
-await es.count({ index: "books" });
-```
-
-::::
-
-::::{tab-item} PHP
-:sync: php
-
-```php
-$es->count([
-    "index" => "books",
-]);
-```
-
-::::
-
-::::{tab-item} Ruby
-:sync: ruby
-
-```ruby
-es.count(index: "books")
-```
-
-::::
-
-::::{tab-item} C#/.NET
-:sync: csharp
-
-```csharp
-await es.CountAsync(c => c.Indices("books"));
-```
-
-::::
-
-::::{tab-item} Java
-:sync: java
-
-```java
-es.count(c -> c.index("books"));
-```
-
-::::
-
-::::{tab-item} Go
-:sync: go
-
-```go
-countRes, err := es.Count(es.Count.WithIndex("books"))
+res, err := es.Info()
 if err != nil {
 	log.Fatal(err)
 }
-countRes.Body.Close()
+defer res.Body.Close()
+log.Println(res)
 ```
 
 ::::
 
 :::::
-
-The response returns a count of 5, which confirms that all five books were indexed.
 
 ::::::
 
 ::::::{step} Next steps
 :anchor: connect-through-an-sdk-next
 
-{{es}} is up and running, and you have already indexed a small sample dataset. Next, learn how to ingest your own data at scale in [](/solutions/search/ingest-for-search.md).
+{{es}} is up and running. Next, learn how to ingest your own data in [](/solutions/search/ingest-for-search.md).
 
 ::::::
 

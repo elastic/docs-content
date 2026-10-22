@@ -7,7 +7,7 @@ This snippet is in use in the following locations:
 :::::::{applies-switch}
 
 ::::::{applies-item} serverless: ga
-Copy the {{es}} endpoint from the project UI or the {{ecloud}} Console.
+Copy the {{es}} endpoint for an {{es}} {{vectordb}} project or an {{es}} project from the project UI or the {{ecloud}} Console.
 
 :::::{tab-set}
 
@@ -47,7 +47,7 @@ If your project runs on AWS and AWS PrivateLink is set up, the panel also lists 
 ::::::
 
 ::::::{applies-item} ech: ga
-Copy the {{es}} endpoint from the deployment UI or the {{ecloud}} Console.
+Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Console.
 
 :::::{tab-set}
 
@@ -85,7 +85,7 @@ Copy the {{es}} endpoint from the deployment UI or the {{ecloud}} Console.
 ::::::
 
 ::::{applies-item} ece: ga
-Your endpoint details are in the **Connection details** panel in {{kib}}.
+For {{ece}}, your endpoint details are in the **Connection details** panel in {{kib}}.
 
 1. Open {{kib}} for your deployment.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
@@ -104,7 +104,7 @@ When the space uses the **{{es}}** solution view, the **Getting started** page s
 ::::
 
 ::::{applies-item} {"deployment": {"self": "ga"}}
-Your endpoint takes the form `<scheme>://<host>:<port>`. Each part comes from your cluster's HTTP settings:
+For a self-managed cluster, one you install and manage, your endpoint takes the form `<scheme>://<host>:<port>`. Each part comes from your cluster's HTTP settings:
 
 * **Scheme**: `https` when TLS is enabled on the HTTP layer, and `http` when it isn't. [Automatic security setup](/deploy-manage/security/self-auto-setup.md) enables TLS on a new archive or package installation.
 * **Host**: The address clients use to reach the node, set by [`http.host` or `network.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md).
@@ -116,7 +116,7 @@ If clients reach your cluster through a load balancer, reverse proxy, or ingress
 ::::
 
 ::::{applies-item} {"deployment": {"eck": "ga"}}
-The {{eck}} operator creates a `ClusterIP` service named `<cluster-name>-es-http` on port `9200`, with TLS enabled by default.
+For {{eck}}, the operator creates a `ClusterIP` service named `<cluster-name>-es-http` on port `9200`, with TLS enabled by default.
 
 From inside the Kubernetes cluster, your endpoint is `https://<cluster-name>-es-http:9200` in the same namespace, or `https://<cluster-name>-es-http.<namespace>.svc:9200` from another namespace. List your services to confirm the name:
 
