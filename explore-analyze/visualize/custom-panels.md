@@ -11,7 +11,7 @@ type: how-to
 
 # Custom panels for {{kib}} dashboards [custom-panels]
 
-With a custom panel, you add layouts to a {{kib}} dashboard that other panel types can't produce: status boards, scorecards with colored badges, branded banners, or blocks that mix text with live values. You describe the panel in {{agent-builder}} chat, or write the HTML and CSS template yourself. To show live data, add an {{esql}} query and place its results in the template with [Liquid](https://liquidjs.com/) tags, a template syntax for inserting values into HTML.
+With a custom panel, you add layouts to a {{kib}} dashboard that other panel types can't produce: status boards, scorecards with colored badges, branded banners, or blocks that mix text with values from your data. You describe the panel in {{agent-builder}} chat, or write the HTML and CSS template yourself. To show values from your data, add an {{esql}} query and place its results in the template with [Liquid](https://liquidjs.com/) tags, a template syntax for inserting values into HTML.
 
 :::{image} /explore-analyze/images/custom-panels-dashboard.png
 :alt: Dashboard made of custom panels: a narrative summary with a health score, four KPI tiles, and a Sankey diagram of traffic by destination, platform, and status
@@ -24,7 +24,7 @@ To add custom panels to a dashboard, you need:
 
 - **All** privilege for the **Dashboard** feature in {{kib}}.
 - [{{agent-builder}} set up](/explore-analyze/ai-features/agent-builder/get-started.md) in your deployment or project, if you want to generate or refine panels with chat. Without it, you can still write templates yourself.
-- Data that you can query with {{esql}}, if you want the panel to show live values. If you're new to {{esql}}, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
+- Data that you can query with {{esql}}, if you want the panel to show values from your data. If you're new to {{esql}}, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
 
 ## When to use a custom panel [custom-panels-when-to-use]
 
@@ -52,7 +52,7 @@ When chat generates a panel, it writes the template once, at creation or edit ti
 
 ## Create a custom panel [custom-panels-create]
 
-A custom panel needs a template and, to show live data, an {{esql}} query. You can write the template yourself or generate it with {{agent-builder}}. Start from the dashboard to add the panel where you want it and work in the flyout. Start from a conversation to let the agent build the panel, or a whole dashboard, for you.
+A custom panel needs a template and, to show values from your data, an {{esql}} query. You can write the template yourself or generate it with {{agent-builder}}. Start from the dashboard to add the panel where you want it and work in the flyout. Start from a conversation to let the agent build the panel, or a whole dashboard, for you.
 
 ### Start from the dashboard [custom-panels-create-from-dashboard]
 
@@ -76,7 +76,7 @@ A custom panel needs a template and, to show live data, an {{esql}} query. You c
 4. Provide the template and, optionally, the {{esql}} query that returns the data required by the template. You have several options to define these elements:
 
    - Manually, in **Template (HTML)** and **Data source (ES|QL)**. For the template syntax, refer to [Write a template](#custom-panels-write-a-template). For the {{esql}} query, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
-   - Using AI. Select **Generate with chat** and describe the panel. The flyout closes and a conversation opens with the panel attached. When the answer completes, the panel shows the generated template and, for live data, its query. Save the dashboard, or refer to [Refine a custom panel with chat](#custom-panels-refine-with-chat) to adjust the result.
+   - Using AI. Select **Generate with chat** and describe the panel. The flyout closes and a conversation opens with the panel attached. When the answer completes, the panel shows the generated template and, if the panel shows values from your data, its query. Save the dashboard, or refer to [Refine a custom panel with chat](#custom-panels-refine-with-chat) to adjust the result.
 
 5. If you chose to provide the template and the query manually, select **Preview data** to check the returned columns. The preview shows up to five rows and shortens long cell values. Hover over a shortened cell to see the full value.
 
@@ -105,7 +105,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
    - "Create an HTML banner with an animated image."
    - "Create a custom panel that shows how data flows across the services."
 
-3. Review the result. When the panel needs live data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders on the dashboard, in the dashboard preview of the conversation, or inline in the message. To keep an inline panel, select **Save to dashboard**. For details, refer to [How single visualizations appear in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-single-visualizations-appear-in-chat).
+3. Review the result. When the panel shows values from your data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders on the dashboard, in the dashboard preview of the conversation, or inline in the message. To keep an inline panel, select **Save to dashboard**. For details, refer to [How single visualizations appear in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-single-visualizations-appear-in-chat).
 
    :::{image} /explore-analyze/images/custom-panels-sankey-chat.png
    :alt: Dashboard with a Sankey diagram custom panel next to the Agent Builder conversation that created it
