@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create Universal Alerting rules and action policies with Agent Builder. Describe what to monitor in natural language, review the proposal, and save in dependency order."
+description: "Create Universal Alerting rules and action policies with Agent Builder. Describe what to monitor in natural language, review the proposal, and save the rule, workflow, and action policy."
 ---
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
@@ -18,6 +18,8 @@ Before you start, make sure you have the following:
 
 - **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
 - {applies_to}`stack: experimental =9.5` **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
+- {applies_to}`stack: experimental =9.5` **To search for and edit existing rules and action policies, the `contextEngine:enabled` advanced setting also turned on** - Turn it on in the same way, in each space where you use the agent.
+- {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` **To search for existing rules and action policies from a conversation, the `agentBuilder:experimentalFeatures` advanced setting turned on** - Without it, the agent can still create rules and action policies. It can also edit a saved rule or action policy when you open the agent from that rule's details page or that policy's edit page. To turn it on, refer to [Enable experimental features](/explore-analyze/ai-features/agent-builder/get-started.md#enable-experimental-features-optional).
 - {applies_to}`stack: experimental 9.6+` **A space that uses the Classic or {{observability}} solution view** - The `rule-authoring` and `action-policy-authoring` skills aren't available in other spaces.
 - {applies_to}`serverless: experimental` **An {{obs-serverless}} project** - The `rule-authoring` and `action-policy-authoring` skills aren't available in other project types.
 - **The required privileges** - Your role needs the [privileges to use {{agent-builder}} and save rules and action policies](../manage/configure-access.md#alerting-agent-builder-privileges).
@@ -59,11 +61,11 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 
 ## Set up notifications [ai-agent-notification-setup]
 
-After you save a rule, you can ask the agent to configure notifications. The agent creates the workflows and action policies needed to deliver them.
+After you save a rule, you can ask the agent to configure notifications. The agent proposes the workflows and action policies needed to deliver them.
 
 {applies_to}`stack: experimental =9.5` The `rule-management` skill creates the action policies itself.
 
-{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The [`action-policy-authoring`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-action-policy-authoring-skill) skill creates action policies. After the `rule-authoring` skill proposes a complete rule, it offers to set up notifications and then passes the request to `action-policy-authoring`.
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The [`action-policy-authoring`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-action-policy-authoring-skill) skill creates action policies. After the `rule-authoring` skill proposes a complete rule that opens alerts, it offers to set up notifications. If you accept, the agent loads `action-policy-authoring`.
 
 :::{note}
 Action policies invoke workflows for alerts only. If you ask the agent to set up notifications for a rule that doesn't open alerts, it explains the limitation and offers a way forward:
