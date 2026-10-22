@@ -19,6 +19,7 @@ Before you start, make sure you have the following:
 - **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
 - {applies_to}`stack: experimental =9.5` **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
 - {applies_to}`stack: experimental 9.6+` **A space that uses the Classic or {{observability}} solution view** - The `rule-authoring` and `action-policy-authoring` skills aren't available in other spaces.
+- {applies_to}`serverless: experimental` **An {{obs-serverless}} project** - The `rule-authoring` and `action-policy-authoring` skills aren't available in other project types.
 - **The required privileges** - Your role needs the [privileges to use {{agent-builder}} and save rules and action policies](../manage/configure-access.md#alerting-agent-builder-privileges).
 
 ## Propose and save a rule [ai-agent-rule-proposal]
@@ -58,7 +59,7 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 
 ## Set up notifications [ai-agent-notification-setup]
 
-After a rule is saved, you can ask the agent to configure notifications. The agent creates the workflows and action policies needed to deliver them.
+After you save a rule, you can ask the agent to configure notifications. The agent creates the workflows and action policies needed to deliver them.
 
 {applies_to}`stack: experimental =9.5` The `rule-management` skill creates the action policies itself.
 
@@ -67,7 +68,7 @@ After a rule is saved, you can ask the agent to configure notifications. The age
 :::{note}
 Action policies invoke workflows for alerts only. If you ask the agent to set up notifications for a rule that doesn't open alerts, it explains the limitation and offers a way forward:
 
-- **Unsaved rule** - The agent changes the draft so that matches open alerts, then you save it.
+- **Unsaved rule** - The agent changes the draft rule so that it opens alerts. Then you save the rule.
 - **Saved rule** - Whether a rule opens alerts can't change after you save it, so the agent offers to create a new rule with the same query and schedule that does, and to set up notifications on that one.
 :::
 
@@ -80,12 +81,12 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 ### Save order [save-order-ai-agent]
 
-The three objects have a dependency chain that determines the order in which to save them:
+The three objects depend on each other. Save them in this recommended order:
 
 1. **Rule** - Save the rule first. The link between the rule and the action policy takes effect only after the rule is saved.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Save the action policy last.
-    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` You can't save the action policy until its workflow exists: {{kib}} disables **Create policy** while a workflow destination is still a draft. You can save the policy before the rule, but the policy doesn't apply to the rule's alerts until the rule is saved.
+    * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` You can't save the action policy until its workflow exists: {{kib}} disables **Create policy** while a workflow destination is still a draft. You can save the policy before the rule, but the policy doesn't apply to the rule's alerts until the rule is saved.
     * {applies_to}`stack: experimental =9.5` You can't save the action policy until both its rule and its workflow exist.
 
 :::{note}
