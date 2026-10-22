@@ -16,7 +16,6 @@ In addition to [configuring an {{elastic-defend}} policy](configure-an-integrati
 ::::{admonition} Requirements
 You must have the **{{elastic-defend}} Policy Management: All** [privilege](elastic-defend-feature-privileges.md) to configure an integration policy.
 
-Default endpoint policy preset options: NGAV, EDREssential, EDRComplete, DataCollection
 ::::
 
 
@@ -89,6 +88,15 @@ Replace these values:
 3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, navigate to **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **{{elastic-defend}}**.
 
 This adds the {{elastic-defend}} integration to your agent policy with the default settings.
+
+The `endpointConfig.preset` field in the request body is required. It sets the initial event collection and protection settings for the policy, like the configuration presets you can choose when [installing the integration in the UI](install-elastic-defend.md). The example uses `EDRComplete`. The following values are accepted:
+
+| Value | Preset in the UI |
+| --- | --- |
+| `DataCollection` | **Data Collection** |
+| `NGAV` | **Next-Generation Antivirus (NGAV)** |
+| `EDREssential` | **Essential EDR (Endpoint Detection & Response)** |
+| `EDRComplete` | **Complete EDR (Endpoint Detection & Response)** |
 
 ```console
 curl --user <username>:<password> --request POST \
