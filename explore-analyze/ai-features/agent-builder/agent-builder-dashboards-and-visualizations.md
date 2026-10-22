@@ -96,17 +96,17 @@ If you ask for a single chart, metric, or panel instead of a whole dashboard, it
 - {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md), such as status boards
 
-To change the period that an inline visualization covers, use its time range picker. For an {{esql}} visualization, you can also select a range directly on the chart to zoom in. A custom panel shows the picker only when it displays live {{esql}} data.
+To change the time range that an inline visualization covers, use its time filter. A custom panel shows the time filter only when it displays live {{esql}} data.
 
 :::{image} images/agent-builder-inline-visualization.png
 :screenshot:
-:alt: An area chart of average temperature over time displayed inline in an Agent Builder conversation, with a time range picker and the View configuration and Save to dashboard actions
+:alt: An area chart of average temperature over time displayed inline in an Agent Builder conversation, with a time filter and the View configuration and Save to dashboard actions
 :::
 
 To keep an inline visualization, add it to a dashboard:
 
 1. Select **Save to dashboard**.
-2. In **Add to dashboard**, select **Existing** and then select a dashboard from the list, or select **New** to create one.
+2. In **Add to dashboard**, select an existing dashboard or create a new one.
 3. Select **Save and go to dashboard**. The dashboard opens in edit mode with the visualization added.
 4. Save the dashboard to keep the visualization.
 
