@@ -98,6 +98,11 @@ If you ask for a single chart, metric, or panel instead of a whole dashboard, it
 
 To change the period that an inline visualization covers, use its time range picker. For an {{esql}} visualization, you can also select a range directly on the chart to zoom in. A custom panel shows the picker only when it displays live {{esql}} data.
 
+:::{image} images/agent-builder-inline-visualization.png
+:screenshot:
+:alt: An area chart of average temperature over time displayed inline in an Agent Builder conversation, with a time range picker and the View configuration and Save to dashboard actions
+:::
+
 To keep an inline visualization, add it to a dashboard:
 
 1. Select **Save to dashboard**.
