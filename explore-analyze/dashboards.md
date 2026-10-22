@@ -1,6 +1,6 @@
 ---
 navigation_title: Dashboards
-description: Visualize and share insights from your Elasticsearch data using interactive panels, charts, maps, and custom filters.
+description: Kibana dashboards turn your Elasticsearch data into interactive charts, maps, and filters. Start with dashboard examples, then build and share your own.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/dashboard.html
 applies_to:
@@ -12,18 +12,18 @@ products:
 
 # {{kib}} dashboards [dashboard]
 
-**Dashboards** provide the primary way to visualize and share insights from your {{es}} data. They allow you to build interactive displays that combine multiple visualizations, metrics, and controls into a single view that helps you and your team monitor trends, investigate issues, and make data-driven decisions.
+{{kib}} **dashboards** provide the primary way to visualize and share insights from your {{es}} data. They allow you to build interactive displays that combine multiple visualizations, metrics, and controls into a single view that helps you and your team monitor trends, investigate issues, and make data-driven decisions.
 
 A dashboard is composed of one or more **panels** that you arrange to tell your data story. Each panel can display visualizations such as charts, tables, metrics, and maps, static annotations like text or images, or specialized views for {{ml}} or {{observability}} data.
 
 ![Example dashboard](/explore-analyze/images/kibana-dashboard-overview.png "")
 
-## Get started with dashboards [get-started-with-dashboards]
+## Get started with dashboard examples [get-started-with-dashboards]
 
-New to dashboards? Start with these hands-on tutorials that walk you through creating your first dashboards using sample data:
+New to dashboards? These hands-on examples walk you through creating your first dashboards using sample data:
 
-- [Create a simple dashboard to monitor website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns.
-- [Create a dashboard with time series charts](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using eCommerce data.
+- [Example: Website logs](dashboards/create-dashboard-of-panels-with-web-server-data.md): Build a dashboard with charts, metrics, and filters to analyze web traffic patterns.
+- [Example: Time series from eCommerce data](dashboards/create-dashboard-of-panels-with-ecommerce-data.md): Learn to visualize sales trends and patterns over time using eCommerce data.
 
 
 ## Work with dashboards [work-with-dashboards]
@@ -31,19 +31,20 @@ New to dashboards? Start with these hands-on tutorials that walk you through cre
 Once you understand the basics, explore these common tasks:
 
 **Explore and interact**
-- [Explore dashboards](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights.
+- [](dashboards/using.md): Filter data, adjust time ranges, and interact with panels to uncover insights.
 
 **Build and customize dashboards**
-- [Build dashboards](dashboards/building.md): Learn the fundamentals of creating and configuring dashboards.
+- [](dashboards/building.md): Compare the UI, REST APIs, and AI approaches to find the one that fits how you work.
 - [Create a dashboard](dashboards/create-dashboard.md): Start with an empty dashboard and add your content.
 - [Create dashboards using AI](dashboards/create-dashboards-using-ai.md): Generate dashboards from natural language through chat with {{agent-builder}}.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Enhance a dashboard with AI](dashboards/enhance-dashboard-with-ai.md): Let an {{agent-builder}} agent improve the text, layout, and chart styling of a dashboard you already built.
 - [Add dashboard controls](visualize/dashboard-controls.md): Enable interactive filtering with options lists, range sliders, time sliders, and ES|QL variable controls.
 - [Drilldowns](dashboards/drilldowns.md): Open another dashboard, a URL, or Discover from a panel.
 - [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning.
 
 **Manage and share**
 - [Manage dashboards](dashboards/managing.md): Browse, search, organize, and track usage of your dashboards.
-- [Share and export dashboards](dashboards/sharing.md): Share with your team using links or embeds, and export as PDF, PNG, or CSV.
+- [](dashboards/sharing.md): Share with your team using links or embeds, and export as PDF, PNG, CSV, or JSON.
 - [Duplicate a dashboard](dashboards/duplicate-dashboards.md): Create customizable copies of existing dashboards.
 - [Import a dashboard](dashboards/import-dashboards.md): Bring a dashboard from another space, instance, or deployment into your own.
 

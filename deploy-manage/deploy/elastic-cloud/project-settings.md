@@ -13,7 +13,7 @@ navigation_title: Project settings
 
 Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic [manages many things for you](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md), you can customize the following aspects of your project:
 
-- **[Search AI Lake settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention.
+- **[Search AI Lake settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention. The available settings depend on your project type.
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
 - **[Project tags](#project-tags)**: Add custom tags to categorize and organize your projects alongside predefined tags.
 - **[Connection aliases](#elasticsearch-manage-project-connection-aliases)**: Use predictable, human-readable URLs for your projects that you can share easily.
@@ -30,11 +30,9 @@ To edit a project's settings, you must be granted the **Admin** or **Editor** [r
 
 ## Search AI Lake settings [elasticsearch-manage-project-search-ai-lake-settings]
 
-$$$elasticsearch-manage-project-search-power-settings$$$
-
 Once ingested, your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. Data in this cache layer is considered **search-ready**.
 
-Together, these data storage layers form your project’s **Search AI Lake**.
+Together, these data storage layers form your project's **Search AI Lake**.
 
 The total volume of search-ready data is the sum of the following:
 
@@ -45,28 +43,94 @@ The total volume of search-ready data is the sum of the following:
 Time series data refers to any document in standard indices or data streams that includes a concrete `@timestamp` field. The `@timestamp` field must be an actual mapped field for data to be subject to the Search Boost Window setting. A [field alias](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) named `@timestamp` that points to another field does not qualify the data as time series data. Such data is always treated as search-ready and is not governed by the Search Boost Window.
 ::::
 
-Each project type offers different settings that let you adjust the performance and volume of search-ready data, as well as the features available in your projects.
+Each project type offers different settings that let you adjust the performance and volume of search-ready data available in your projects.
 
-The documentation in this section describes shared capabilities that are available in multiple solutions. These settings allow you to tune your project settings, but not all functionality as you would have with a self-managed deployment.
+### Search Power [elasticsearch-manage-project-search-power-settings]
 
-$$$elasticsearch-manage-project-search-power-settings$$$
+Search Power controls the search resources that are provisioned for your project. How it works, and the values you can choose from, depend on your project type.
 
-| Setting | Description | Project Type |
-| :--- | :--- | :--- |
-| **Search Power** | Search Power controls the amount of baseline resources kept ready for your data and the maximum amount of resources the system can allocate to your project under high search load.<br><br>Increase **Search Power** to add resources for improved query throughput and performance as load increases. Decrease it to reduce the amount of provisioned resources, which lowers both active search costs and the reduced rate billed during idle periods, at the cost of more variable query latency. The On-demand setting provides the lowest baseline and idle cost.<br><br>Choose from three Search Power settings:<br><br>**On-demand:** Low cost option. Query latency is variable and maximum throughput is limited, particularly during demand spikes.<br><br>**Performant:** Delivers low _average_ query latency with no practical query throughput limits to meet varying demand.<br><br>**High availability:** Maintains consistent low query latency across most search workloads, from steady baseline to peak demand.<br> | {{es}} |
-| **Search Power** | Search Power reserves search capacity for your project. Unlike {{es}} projects, capacity is not scaled automatically based on query load.<br><br>The default value is **100**, which reserves enough capacity to keep the project's entire data set available for low-latency search. You can increase Search Power in increments of 100 to reserve additional capacity for the same data set, which can improve performance for higher query concurrency or more demanding search loads. Higher values reserve proportionally more capacity: for example, **200** reserves about twice the capacity of **100**. You can increase Search Power up to **1900**.<br> | {{es}} {{vectordb}} |
-| **Search Boost Window** | Non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.<br><br>Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.<br> | {{es}} |
-| **Data Retention** | Data retention policies determine how long your project data is retained.<br>In {{serverless-full}} data retention policies are configured through [data streams](../../../manage-data/lifecycle/data-stream.md) and you can [specify different retention periods](../../../manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) for specific data streams in your project.<br><br> {{elastic-sec}} has two additional configuration settings that can be configured to manage your data retention.<br><br>**Maximum data retention period**<br><br>When enabled, this setting determines the maximum length of time that data can be retained in any data streams of this project.<br><br>Editing this setting replaces the data retention set for all data streams of the project that have a longer data retention defined. Data older than the new maximum retention period that you set is permanently deleted.<br><br> **Default data retention period**<br><br>When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.<br> |Elasticsearch<br>Observability<br>Security  |
-| **Project features** | Controls [feature tiers and add-on options](../../../deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons) for your {{elastic-sec}} project. | Security |
+:::::{applies-switch}
+
+:::{applies-item} { "serverless": {"elasticsearch": "ga"} }
+In {{es-serverless}} projects, Search Power controls the amount of baseline resources kept ready for your data and the maximum amount of resources the system can allocate to your project under high search load.
+
+Increase **Search Power** to add resources for improved query throughput and performance as load increases. Decrease it to reduce the amount of provisioned resources, which lowers both active search costs and the reduced rate billed during idle periods, at the cost of more variable query latency. The On-demand setting provides the lowest baseline and idle cost.
+
+The following Search Power settings are available:
+
+**On-demand**
+:   Low cost option. Query latency is variable and maximum throughput is limited, particularly during demand spikes.
+
+**Performant**
+:   Delivers low _average_ query latency with no practical query throughput limits to meet varying demand.
+
+**High availability**
+:   Maintains consistent low query latency across most search workloads, from steady baseline to peak demand.
+
+During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
+:::
+
+:::{applies-item} { "serverless": {"vectordb": "ga"} }
+In {{es}} {{vectordb}} projects, Search Power reserves search capacity for your project. Unlike {{es-serverless}} projects, capacity is not scaled automatically based on query load.
+
+The default value is **100**, which reserves enough capacity to keep the project's entire data set available for low-latency search. You can increase Search Power in increments of 100 to reserve additional capacity for the same data set, which can improve performance for higher query concurrency or more demanding search loads. Higher values reserve proportionally more capacity: for example, **200** reserves about twice the capacity of **100**. You can increase Search Power up to **1900**.
+:::
+
+:::::
+
+In {{obs-serverless}} and {{sec-serverless}} projects, search capacity is sized automatically based on the volume of search-ready data in your project. Search capacity does not scale automatically based on query load. If your workload requires additional search capacity, contact Elastic Support.
+
+### Search Boost Window [elasticsearch-search-boost-window]
+```{applies_to}
+serverless:
+  elasticsearch: ga
+```
+
+In {{es-serverless}} projects, non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.
+
+The default Search Boost Window is 7 days. You can set it to any value from 1 day to 180 days. Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.
+
+During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
+
+{{es}} {{vectordb}} projects don't have a Search Boost Window setting.
+
+In {{obs-serverless}} and {{sec-serverless}} projects, search is optimized for fast, responsive performance on the most recent day of ingested data, while historical data remains available for broader analysis. If your workload would benefit from extending the search boost window, contact Elastic Support.
+
+### Data retention [serverless-data-retention-settings]
+
+Data retention policies determine how long your project data is retained.
+
+In {{serverless-full}}, data retention policies are configured through [data streams](/manage-data/lifecycle/data-stream.md), and you can [specify different retention periods](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) for specific data streams in your project.
+
+In addition to the retention period you set for each data stream, {{sec-serverless}} projects have two project-wide settings that you can use to manage data retention.
+
+**Maximum data retention period**
+:   When enabled, this setting determines the maximum length of time that data can be retained in any data stream of the project.
+
+    Editing this setting replaces the data retention set for all data streams of the project that have a longer data retention defined. Data older than the new maximum retention period that you set is permanently deleted.
+
+**Default data retention period**
+:   When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.
+
+{{es-serverless}}, {{obs-serverless}}, and {{es}} {{vectordb}} projects rely on data stream settings to configure data retention. You can define a different retention period for each data stream from the **Data Streams** tab on the **Index Management** page. To open the **Index Management** page, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+{{es-serverless}} and {{obs-serverless}} projects also provide a shortcut: the **Data Retention** option in the **Search AI Lake settings** tab opens the **Data Streams** tab directly. {{es}} {{vectordb}} projects don't include this option in the **Search AI Lake settings** tab.
 
 ## Project features and add-ons [project-features-add-ons]
+```{applies_to}
+serverless:
+  observability: ga
+  security: ga
+```
 
 Project features and add-ons control which capabilities are available in your serverless project and how they are billed. What you can configure depends on your project type:
 
 * [{{sec-serverless}} project features](#elastic-sec-project-features)
-* [{{obs-serverless}} project features](#obs-serverless-project-features) 
+* [{{obs-serverless}} project features](#obs-serverless-project-features)
 
 There are no additional project features or on-demand add-ons for {{es-serverless}} or {{es}} {{vectordb}} projects.
+
+To change your project features, select your project from the **Serverless projects** panel and click **Manage**. On the project **Overview** page, next to **Project features**, click **Edit**.
 
 :::{note}
 In {{serverless-full}}, your organization's {{ecloud}} subscription level controls only the support level you receive, and is not related to the features that you use or have access to. [Learn more about subscriptions](/deploy-manage/license.md).
