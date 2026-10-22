@@ -7,7 +7,7 @@ description: Install an official Elasticsearch language client, connect it with 
 type: how-to
 ---
 
-# Connect with an SDK [connect-with-an-sdk]
+# Connect to {{es}} with an SDK [connect-with-an-sdk]
 
 Use an official {{es}} client library to connect your application to {{es}} from code. This page shows how to install and initialize the client for each supported language, so you can copy the example for your language and start sending requests.
 
