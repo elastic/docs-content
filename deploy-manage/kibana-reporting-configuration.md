@@ -110,12 +110,12 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         If the **Reporting** options for application features are unavailable, and the cluster license is higher than Basic, contact your administrator.
         :::
 
+    5. Click **Assign role**.
+
         :::{image} /deploy-manage/images/kibana-kibana-privileges-with-reporting.png
         :alt: {{kib}} privileges with Reporting options, Gold or higher license
         :screenshot:
         :::
-
-    5. Click **Assign role**.
 
 4. Click **Create role**.
 5. Assign the reporting role to a user.
