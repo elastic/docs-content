@@ -18,7 +18,8 @@ This page explains how an expansion works, and what you can do when it fails.
 
 ## Expanding a deployment
 
-When you expand a deployment,
+When expanding a deployment, the following scenarios are possible:
+
 * If the underlying hosts running deployment instances, such as {{es}} and {{kib}}, have enough available capacity, the expansion proceeds normally, either on the existing hosts or by creating new instances on other available hosts.
 * If the underlying hosts do not have enough capacity, {{ecloud}} might request additional hosts (virtual machines) from the cloud service provider (CSP) to accommodate the expansion.
 
