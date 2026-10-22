@@ -43,11 +43,6 @@ Only the repository types listed on this page are supported in {{ece}}.
 
 If you are installing ECE [without internet access](/deploy-manage/deploy/cloud-enterprise/air-gapped-install.md), you need to use an on-premise storage service.
 
-:::{admonition} MinIO and other third-party storage product support
-While users can use the open source version of [MinIO](https://github.com/minio/minio), Elastic does not recommend it, as it is no longer maintained. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch). Configuring and troubleshooting MinIO is out of the Elastic support scope.
-
-Furthermore, while Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself.
-:::
 
 
 
