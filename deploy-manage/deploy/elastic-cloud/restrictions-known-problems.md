@@ -122,7 +122,7 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 
 * Automatic report generation from {{kib}} alerting rules is not supported on {{ecloud}}.
 * On deployments running {{stack}} 8.7.0 and earlier, {{watcher}} can't generate PDF, PNG, or CSV reports when [network security](../../security/network-security.md) (formerly traffic filtering) is enabled. This restriction applies to requests from {{watcher}} to {{es}} or {{kib}}. It doesn't affect {{watcher}} actions that connect to external services, such as Slack, PagerDuty, or email actions without report attachments.
-* On deployments running {{stack}} 8.7.1 and later, {{watcher}} can generate reports when network security is enabled. Set `xpack.notification.webhook.additional_token_enabled` to `true` to add an authentication token to requests from {{watcher}} to {{kib}} through the {{ecloud}} proxy. To generate and email reports, use a [`reporting` attachment in a {{watcher}} `email` action](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher).
+* On deployments running {{stack}} 8.7.1 and later, {{watcher}} can generate reports when [network security](/deploy-manage/security/network-security.md) is enabled. Set `xpack.notification.webhook.additional_token_enabled` to `true` to add an authentication token to requests from {{watcher}} to {{kib}} through the {{ecloud}} proxy. To generate and email reports, use a [`reporting` attachment in a {{watcher}} `email` action](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher).
 
 
 ## {{kib}} [ec-restrictions-kibana]
