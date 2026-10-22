@@ -85,10 +85,25 @@ From here, you can use the buttons in the canvas toolbar:
 Select **Save** to [save the dashboard](#save-a-dashboard) as a {{kib}} saved object. Select **Edit in Dashboards** to open the dashboard in the [Dashboards app](/explore-analyze/dashboards.md) for further editing.
 
 You can also continue chatting to refine the dashboard. For example, ask the agent to add panels, change chart types, update metrics, or rearrange the layout.
-
-Individual visualizations display inline in the conversation when you ask for a single chart or metric. Inline visualizations are interactive: adjust the time range, or select a range directly on the chart to zoom in.
 ::::
 :::::
+
+When you ask for a single chart, metric, or panel instead of a whole dashboard, it displays inline in the conversation. These types can appear inline:
+
+- [{{esql}} visualizations](/explore-analyze/visualize/esorql.md), such as charts, tables, and metrics
+- {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md), such as status boards
+
+To change the period that an inline visualization covers, use its time range picker. For an {{esql}} visualization, you can also select a range directly on the chart to zoom in. A custom panel shows the picker only when it displays live {{esql}} data.
+
+To keep an inline visualization, add it to a dashboard:
+
+1. Select **Save to dashboard**.
+2. In **Add to dashboard**, select **Existing** and then select a dashboard from the list, or select **New** to create one.
+3. Select **Save and go to dashboard**. The dashboard opens in edit mode with the visualization added.
+4. Save the dashboard to keep the visualization.
+
+If you don't have the **All** privilege for **Dashboard**, you can't select **Save to dashboard**.
 
 {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To see the matching documents instead of a chart, turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) and ask the agent to show them in a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 

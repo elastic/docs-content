@@ -96,7 +96,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
 
 ### Start from a conversation [custom-panels-create-with-chat]
 
-1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). To add the panel to an existing dashboard, open that dashboard first and select **AI Agent** in the header, which opens the [chat sidebar](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode) with the dashboard attached. From a conversation without a dashboard, the agent creates a new dashboard for the panel.
+1. Open [{{agent-builder}} chat](/explore-analyze/ai-features/agent-builder/chat.md). To add the panel to an existing dashboard, open that dashboard first and select **AI Agent** in the header, which opens the [chat sidebar](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode) with the dashboard attached. From a conversation without a dashboard, the agent shows a single panel inline in the message, or builds a new dashboard when you ask for one.
 
    You can also select **Add** → **Custom** → **Generate with chat** from an existing dashboard.
 2. Describe the panel you want. The agent chooses the panel type and uses a custom panel only when a standard visualization doesn't fit. If you want a custom panel, say so in the prompt by asking for a custom panel or an HTML panel. For example:
@@ -105,7 +105,7 @@ The panel now shows your content. If it has a query, change the dashboard time r
    - "Create an HTML banner with an animated image."
    - "Create a custom panel that shows how data flows across the services."
 
-3. Review the result. When the panel needs live data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders on the dashboard, or in the dashboard preview of the conversation.
+3. Review the result. When the panel needs live data, the agent writes the {{esql}} query, samples its results, and generates a template that matches the returned columns. The panel renders on the dashboard, in the dashboard preview of the conversation, or inline in the message. To keep an inline panel, select **Save to dashboard**. For details, refer to [How dashboards appear in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-dashboards-appear-in-chat).
 
    :::{image} /explore-analyze/images/custom-panels-sankey-chat.png
    :alt: Dashboard with a Sankey diagram custom panel next to the Agent Builder conversation that created it
