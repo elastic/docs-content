@@ -103,14 +103,12 @@ To change the time range that an inline visualization covers, use its time filte
 :alt: An area chart of average temperature over time displayed inline in an Agent Builder conversation, with a time filter and the View configuration and Save to dashboard actions
 :::
 
-To keep an inline visualization, add it to a dashboard:
+To keep an inline visualization, you need the **All** privilege for **Dashboard**. Without it, you can't select **Save to dashboard**. With the privilege, add the visualization to a dashboard:
 
 1. Select **Save to dashboard**.
 2. In **Add to dashboard**, select an existing dashboard or create a new one.
 3. Select **Save and go to dashboard**. The dashboard opens in edit mode with the visualization added.
 4. Save the dashboard to keep the visualization.
-
-If you don't have the **All** privilege for **Dashboard**, you can't select **Save to dashboard**.
 
 {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To see the matching documents instead of a chart, turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) and ask the agent to show them in a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
