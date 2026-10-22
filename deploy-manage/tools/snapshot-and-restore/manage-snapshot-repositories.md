@@ -61,7 +61,7 @@ When a platform-level repository is associated with a deployment, the `found-sna
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
 
 :::{note}
-No repository types other than those listed are supported in the {{ece}} platform. 
+Only the repository types listed on this page are supported in {{ece}}.
 :::
 
 :::{admonition} MinIO and other third-party storage product support
