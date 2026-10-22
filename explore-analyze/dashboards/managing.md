@@ -61,7 +61,7 @@ By default, your most recently viewed dashboards are displayed first. You can in
 
 **Reopen a recently viewed dashboard**
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the **Elasticsearch** and **Observability** solution views and project types, and in {{es}} {{vectordb}} projects, you can return to a dashboard you opened or saved earlier without going through the dashboard list. Hover over **Dashboards** in the navigation menu or move keyboard focus to it, then select the dashboard from **Recently viewed**. This list shows your five latest dashboards first. Select **Show more** to show older ones, up to 20 in total for this browser.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the **Elasticsearch** and **Observability** solution views and project types, and in {{es}} {{vectordb}} projects, you can return to a dashboard you opened or saved earlier without going through the dashboard list. Hover over **Dashboards** in the navigation menu or move keyboard focus to it, then select the dashboard from **Recently viewed**. This list shows your five latest dashboards first. Select **Show more** to show older ones, up to 20 in total.
 
 
 ## Browse saved visualizations and annotation groups [find-visualizations-annotation-groups]
