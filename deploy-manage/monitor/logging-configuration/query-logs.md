@@ -45,6 +45,8 @@ Query logging uses an asynchronous mechanism that does not block query execution
 
 Query logging supersedes [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) and [ES|QL query logging](elasticsearch://reference/query-languages/esql/esql-query-log.md). We recommend migrating to query logging for more comprehensive and robust logging.
 
+If you use [HTTP request body auditing](/deploy-manage/monitor/stack-audit-logging/auditing-http-request-bodies.md) to trace queries, migrate that use case to query logging. Continue using audit logging for security events and compliance.
+
 To migrate:
 
 1. [Enable query logging](#set-up-query-logging).

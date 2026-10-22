@@ -37,7 +37,7 @@ You’ll need:
     * Open the **Integrations** pages by searching in the global search field.
     * Search for `sample data` in the **Integrations** search field.
     * Open the **Sample data** page.
-    * Select the **Other sample data sets** collapsible.
+    * {applies_to}`stack: ga 9.0-9.3` Select the **Other sample data sets** collapsible.
     * Add the **Sample eCommerce orders** data set. This will create and populate an index called `kibana_sample_data_ecommerce`.
 
 ## Inspect index structure [aggregations-tutorial-inspect-data]
