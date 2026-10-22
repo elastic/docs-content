@@ -90,7 +90,7 @@ serverless: ga
 
 Use {{agent-builder}} to identify problem services and understand how they connect. Before you start, refer to [Investigate an alert or the service map](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements) for requirements.
 
-On the full **Service map** page, set the time range and filters for your investigation, then click **Investigate map** in the map toolbar. {{agent-builder}} opens a new conversation with a **Service map context** attachment and automatically sends an investigation request. The button is not available on maps embedded in alert detail pages or dashboards.
+On the full **Service map** page, set the time range and filters for your investigation, then click **Investigate map** in the toolbar in the upper-right corner of the map. {{agent-builder}} opens a new conversation with a **Service map context** attachment and automatically sends an investigation request. The button is not available on maps embedded in alert detail pages or dashboards.
 
 The agent prioritizes findings by severity, including active alerts, violated or degrading SLOs, {{ml}} anomalies, unusual error rates or latency, and isolated services. It explains the service connections and links to affected services and their alerts.
 

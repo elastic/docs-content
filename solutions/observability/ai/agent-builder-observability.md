@@ -36,14 +36,6 @@ The Elastic AI Agent includes built-in [{{observability}} skills](/explore-analy
 
 By default it includes the [`observability.investigation`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill. You can [create a custom skill](/explore-analyze/ai-features/agent-builder/custom-skills.md) to extend the agent's capabilities for your specific use case. To learn more about the available skills, refer to [](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md).
 
-:::{dropdown} Built-in {{observability}} agent
-:applies_to: {"stack": "preview =9.3, removed =9.4"}
-
-Agent Builder features a built-in [{{observability}} agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) designed to assist with infrastructure monitoring and application performance troubleshooting.
-
-By default it includes some of the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [{{observability}} tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#observability-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
-:::
-
 ### Time range awareness
 
 ```{applies_to}
@@ -72,7 +64,9 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-The **Add to chat** and **Investigate map** actions require:
+{{agent-builder}} can start an investigation from the {{observability}} view where you spotted a problem. Use **Add to chat** in the header of an alert detail page, or **Investigate map** on the full **Service map** page. Each action opens a new conversation that already includes the context of what you were viewing, so the agent can begin investigating without you describing the problem first.
+
+Both actions require:
 
 - An Enterprise license on the {{stack}}, or the [Observability Complete feature tier](/solutions/observability/observability-serverless-feature-tiers.md#obs-subscription-features) on {{obs-serverless}}.
 - The [Agent Builder chat experience](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
