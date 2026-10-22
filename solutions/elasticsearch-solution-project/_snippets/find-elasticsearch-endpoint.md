@@ -51,7 +51,7 @@ Copy the {{es}} endpoint from the deployment UI or the {{ecloud}} Console.
 
 :::::{tab-set}
 
-::::{tab-item} Deployment UI
+::::{tab-item} {{kib}} UI
 
 1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your deployment and select **Open**.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
