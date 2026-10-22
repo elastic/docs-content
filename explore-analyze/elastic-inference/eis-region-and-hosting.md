@@ -51,7 +51,7 @@ Use them when your organization needs {{infer}} to stay within approved geograph
 
 You can express preferences in one of two ways:
 
-* **Geographies**: Broader geographic areas, shown as options such as **North America — All available regions**.
+* **Geographies**: Broader geographic areas, such as **North America**.
 * **Regions**: Specific cloud service provider regions, for example **US East (N. Virginia) - AWS**.
 
 You must choose either geographies or regions. The two modes are mutually exclusive.
