@@ -5,20 +5,20 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How Agent Builder creates rules and action policies using the rule management skill, what the agent produces, and the save-order dependency."
+description: "Create Universal Alerting rules and action policies with Agent Builder. Describe what to monitor in natural language, review the proposal, and save in dependency order."
 ---
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
 
-Use {{agent-builder}} to create and configure {{alerting-v2-system}} rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the rule management skill resolves the data source and proposes a fully configured rule.
+Use {{agent-builder}} to create and configure {{alerting-v2-system}} rules and action policies through natural language instead of the rule form. Describe what you want to monitor, and an agent equipped with the [`rule-authoring`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-rule-authoring-skill) skill (`rule-management` in 9.5) resolves the data source and proposes a fully configured rule.
 
 ## Requirements [create-ai-agent-requirements]
 
 Before you start, make sure you have the following:
 
 - **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
-- **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
-- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` **The `alerting:v2:experimentalFeatures` advanced setting turned on** - The setting is off by default and applies only to the space where you turn it on. To turn it on, refer to [Try experimental features in a space](../setup.md#alerting-setup-experimental-features).
+- {applies_to}`stack: experimental =9.5` **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
+- {applies_to}`stack: experimental 9.6+` **A space that uses the Classic or {{observability}} solution view** - The `rule-authoring` and `action-policy-authoring` skills aren't available in other spaces.
 - **The required privileges** - Your role needs the [privileges to use {{agent-builder}} and save rules and action policies](../manage/configure-access.md#alerting-agent-builder-privileges).
 
 ## Propose and save a rule [ai-agent-rule-proposal]
@@ -27,9 +27,9 @@ Before you start, make sure you have the following:
 
 To create a rule, go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Then select the creation path that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. 
+Then select the creation path that lets you create the rule with an agent. Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the [`rule-authoring`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-rule-authoring-skill) skill configured.
 
-The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the {{alerting-v2-system}} data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
+The `rule-authoring` skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the {{alerting-v2-system}} data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
 
 ### Review the proposal [ai-agent-review-proposal]
 
@@ -58,10 +58,17 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 
 ## Set up notifications [ai-agent-notification-setup]
 
-After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating workflows and action policies.
+After a rule is saved, you can ask the agent to configure notifications. The agent creates the workflows and action policies needed to deliver them.
+
+{applies_to}`stack: experimental =9.5` The `rule-management` skill creates the action policies itself.
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The [`action-policy-authoring`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-action-policy-authoring-skill) skill creates action policies. After the `rule-authoring` skill proposes a complete rule, it offers to set up notifications and then passes the request to `action-policy-authoring`.
 
 :::{note}
-Action policies invoke workflows for alerts only. If you ask the agent to set up notifications for a rule that doesn't open alerts, the skill explains the limitation. If the rule is still a draft in the conversation, the skill changes it so matches open alerts before you save it. If the rule is already saved, that setting can't change, so the skill offers to create a new rule with the same query and schedule that opens alerts, then set up notifications on that rule.
+Action policies invoke workflows for alerts only. If you ask the agent to set up notifications for a rule that doesn't open alerts, it explains the limitation and offers a way forward:
+
+- **Unsaved rule** - The agent changes the draft so that matches open alerts, then you save it.
+- **Saved rule** - Whether a rule opens alerts can't change after you save it, so the agent offers to create a new rule with the same query and schedule that does, and to set up notifications on that one.
 :::
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
@@ -73,11 +80,13 @@ Both objects are proposed as inline attachments and must be explicitly saved bef
 
 ### Save order [save-order-ai-agent]
 
-The three objects have a dependency chain that determines the order in which they must be saved:
+The three objects have a dependency chain that determines the order in which to save them:
 
 1. **Rule** - Save the rule first. The link between the rule and the action policy takes effect only after the rule is saved.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
-3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
+3. **Action policy** - Save the action policy last.
+    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` You can't save the action policy until its workflow exists: {{kib}} disables **Create policy** while a workflow destination is still a draft. You can save the policy before the rule, but the policy doesn't apply to the rule's alerts until the rule is saved.
+    * {applies_to}`stack: experimental =9.5` You can't save the action policy until both its rule and its workflow exist.
 
 :::{note}
 :applies_to: {"stack": "removed 9.6+, experimental =9.5", "serverless": "unavailable"}

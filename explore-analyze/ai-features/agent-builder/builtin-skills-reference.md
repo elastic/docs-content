@@ -129,13 +129,48 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 
     :::
 
-$$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Composes, discovers, and modifies alerting rules and action policies from within a conversation.
+$$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$$$ `rule-authoring` {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
+:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover [{{kib}} alerting](/explore-analyze/alerting/alerts.md) rules, {{observability}} rules, or {{elastic-sec}} detection rules.
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill was previously named `rule-management`. If a custom agent lists `rule-management`, change it to `rule-authoring`.
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The [`action-policy-authoring`](#agent-builder-action-policy-authoring-skill) skill handles notification setup. This skill still offers to set up notifications after it composes a rule, then passes the request to `action-policy-authoring`.
+
+    {applies_to}`stack: preview =9.5` This skill composes action policies itself, and is also assigned the `platform.alerting.manage_action_policy` tool.
 
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_rule`, `platform.alerting.manage_action_policy`
+    `platform.alerting.manage_rule`
 
     :::
+
+    **Prerequisites:**
+
+    * The `alerting:v2:enabled` advanced setting turned on, on the **Global Settings** tab. Refer to [Turn on the system](/explore-analyze/alerting/esql/setup.md#alerting-setup-turn-on). {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This setting is on by default.
+    * {applies_to}`stack: preview =9.5` The `agentBuilder:experimentalFeatures` advanced setting turned on, on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
+    * {applies_to}`stack: preview 9.6+` A space that uses the Classic or {{observability}} solution view.
+    * {applies_to}`serverless: preview` An {{obs-serverless}} project.
+
+    Saving a rule requires the **Rules: All** privilege. For all the privileges you need, refer to [Create rules and action policies with {{agent-builder}}](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-agent-builder-privileges).
+
+$$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Composes, discovers, and modifies action policies from within a conversation. Use when a user asks to set up, change, or inspect alert notifications, such as sending email or paging an on-call responder. An [action policy](/explore-analyze/alerting/esql/action-policies/about-action-policies.md) controls how alerts are matched, grouped, throttled, and dispatched to workflows. It applies to a whole {{kib}} space rather than to a single rule, so one policy can match alerts from many rules.
+
+    {applies_to}`serverless: preview` This skill was previously named `action-policy-management`. If a custom agent lists `action-policy-management`, change it to `action-policy-authoring`.
+
+    :::{dropdown} Assigned tools
+    `platform.alerting.manage_action_policy`
+
+    :::
+
+    **Prerequisites:**
+
+    * The `alerting:v2:enabled` advanced setting turned on, on the **Global Settings** tab. This setting is on by default. Refer to [Turn on the system](/explore-analyze/alerting/esql/setup.md#alerting-setup-turn-on).
+    * {applies_to}`stack: preview 9.6+` A space that uses the Classic or {{observability}} solution view.
+    * {applies_to}`serverless: preview` An {{obs-serverless}} project.
+
+    Saving an action policy requires the **Action Policies: All** privilege, and an Enterprise license on {{stack}} deployments. An action policy dispatches to a workflow rather than to a connector directly, so notifications also need a workflow whose steps reference a configured connector. For all the privileges you need, refer to [Create rules and action policies with {{agent-builder}}](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-agent-builder-privileges).
+
+    **Related skills:** [`rule-authoring`](#agent-builder-rule-authoring-skill) composes the rules whose alerts a policy matches.
 
 ### Streams and significant events
 
