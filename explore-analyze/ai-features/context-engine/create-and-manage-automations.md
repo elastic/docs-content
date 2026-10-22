@@ -38,16 +38,16 @@ Use the guided route to have {{agent-builder}} propose and set up an automation 
 4. Review the generation strategy that {{agent-builder}} proposes and the evidence it cites from your data. For an AI index without automations, {{agent-builder}} chooses the strategy from the data. It asks you to choose when two strategies fit about equally, or when the data doesn't show what the AI index is for. For an AI index that already has automations, it asks what you want to achieve.
 5. What happens next depends on the strategy:
 
-    - **Index/Table Metadata, Bottom-Up, Cumulative / Wiki-style, and Targeted KI**: {{agent-builder}} installs a template and attaches the automation to the AI index without asking for confirmation.
+    - **Index/Table Metadata, Bottom-Up, Cumulative / Wiki-style, and Targeted KI**: {{agent-builder}} installs a template and attaches the automation to the AI index. There's no confirmation prompt for the install, but {{agent-builder}} might ask in chat whether to go ahead first.
     - **Other strategies**: {{agent-builder}} asks you to confirm a plan before it builds anything:
 
         1. Review the plan, which includes the strategy, sources, corpus filter, and expected cost. Ask for changes where necessary, then confirm.
         2. {{agent-builder}} builds and pilots the workflow, removes the temporary KIs that the pilot wrote, and summarizes the results. Review the summary.
-        3. In the confirmation dialog, select **Save and attach**. If the workflow replaces an existing automation, select **Replace** instead.
+        3. In the confirmation prompt, select **Save and attach**. If the workflow replaces an existing automation, select **Replace** instead.
 
-6. {{agent-builder}} asks you to confirm that it can run the automation. For an Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style automation that would write more than five KIs, it asks to run a pilot first. Select **Run pilot** or **Run automation** to start the run, or select **Cancel**. To run the automation later, ask {{agent-builder}} again or [run it from the Workflows UI](#run-schedule-and-monitor-an-automation).
+6. {{agent-builder}} shows a confirmation prompt before it runs the automation. For an Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style automation that would write more than five KIs, it asks to run a pilot first. Select **Run pilot** or **Run automation** to start the run, or select **Cancel**. To run the automation later, ask {{agent-builder}} again or [run it from the Workflows UI](#run-schedule-and-monitor-an-automation).
 
-    If the pilot completes and writes a KI for each item, {{agent-builder}} estimates how long the full run takes and asks to start it. Select **Run automation**. Otherwise, {{agent-builder}} reports the problem and stops. The pilot writes real KIs. The full run replaces them, or adds a newer revision of each if the AI index is backed by a data stream. If you cancel the full run, the pilot's KIs stay in the AI index.
+    If the pilot completes and writes a KI for each item, {{agent-builder}} estimates how long the full run takes and asks to start it. Select **Run automation**. Otherwise, {{agent-builder}} reports the problem and stops. The pilot writes real KIs, which the full run replaces. If you cancel the full run, the pilot's KIs stay in the AI index.
 
     A Targeted KI automation is the exception: {{agent-builder}} runs it without asking.
 7. The full run continues in the background. To check on it, ask {{agent-builder}} for a progress update.
@@ -91,7 +91,7 @@ The AI index lists each attached workflow and whether it is enabled.
 To inspect or edit one:
 
 1. Open the AI index.
-2. In **Automations**, open the actions menu (**⋯**) for the automation, then select **View** to inspect the workflow YAML without leaving the page.
+2. In **Automations**, open the actions menu ({icon}`ellipsis`) for the automation, then select **View** to inspect the workflow YAML without leaving the page.
 3. To edit the workflow, open the actions menu again and select **Open in Workflows**.
 4. Make and test the required changes, then save the workflow.
 
@@ -119,7 +119,7 @@ Removing an automation from an AI index detaches its workflow. It does not delet
 Detach an automation as follows:
 
 1. Open the AI index.
-2. In **Automations**, open the actions menu (**⋯**) for the automation, then select **Delete**.
+2. In **Automations**, open the actions menu ({icon}`ellipsis`) for the automation, then select **Delete**.
 3. In the confirmation dialog, select **Remove**. The change is saved immediately.
 4. Confirm that the automation no longer appears in the AI index.
 
