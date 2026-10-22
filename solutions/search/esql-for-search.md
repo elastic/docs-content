@@ -49,7 +49,7 @@ Features are usually available on {{serverless-full}} before stack-versioned dep
 | [TOP_SNIPPETS function](#top_snippets-function) | Extract the best snippets for a given query string from a text field | 9.3 |
 | [MMR command](#result-diversification-with-mmr) | Reduce redundancy in results using Maximum Marginal Relevance diversification | 9.4 (preview) |
 | [EMBEDDING function](#embedding-function) | Generate dense vector embeddings from multimodal input using inference endpoints | 9.5 (preview) |
-| [MATCH on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH` | 9.5 (preview) |
+| [Runtime search on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH` and `MATCH_PHRASE` | 9.5 (preview) |
 
 ## How search works in {{esql}}
 
@@ -96,23 +96,26 @@ The following functions provide text-based search capabilities in {{esql}} with 
 
 Refer to the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-3-basic-search-operations) for examples of both syntaxes.
 
-#### MATCH on expressions [match-on-expressions]
-
-```{applies_to}
-stack: preview 9.5
-serverless: preview
-```
-
-[`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) can search expressions that are not backed by an index, such as columns produced by `EVAL` or `STATS`.
-Values are scanned row by row instead of using the inverted index, and the usual placement restrictions do not apply.
-
-When searching expressions, function named parameters are not supported and `MATCH` does not contribute to `_score`.
-
 ### `MATCH_PHRASE` function
 
 Use the [`MATCH_PHRASE` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match_phrase.md) to perform a `match_phrase` query on the specified field. This is equivalent to using the [match_phrase query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) in Query DSL.
 
 For exact phrase matching rather than individual word matching, use `MATCH_PHRASE`.
+
+### Runtime search on expressions [match-on-expressions]
+
+```{applies_to}
+stack: preview =9.5, ga 9.6+
+serverless: ga
+```
+
+`MATCH`, the match operator (`:`), and `MATCH_PHRASE` can search expressions that are not backed by an index, such as columns produced by `EVAL` or `STATS`. This is called runtime search: values are analyzed and matched row by row instead of using the inverted index, which is usually slower than searching an indexed field.
+
+A runtime search can appear anywhere in the query, and supports the same options as a search on an indexed field when it searches `text`. With `METADATA _score`, it contributes to the relevance score, but not with BM25, because an expression has no index statistics.
+
+{applies_to}`stack: preview =9.5` In 9.5, only `MATCH` and the match operator support runtime search, with the same placement restrictions as a search on an indexed field. They don't support options and don't contribute to `_score`.
+
+For details, refer to [Runtime search](elasticsearch://reference/query-languages/esql/esql-runtime-search.md).
 
 ### `QSTR` function
 
@@ -216,6 +219,7 @@ The [`MMR` command](elasticsearch://reference/query-languages/esql/commands/mmr.
 
 - [Search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md): Complete reference for all search functions
 - [Dense vector functions](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions.md): Complete reference for vector embedding and similarity functions
+- [Runtime search](elasticsearch://reference/query-languages/esql/esql-runtime-search.md): How `MATCH` and `MATCH_PHRASE` search expressions that are not backed by an index
 - [Limitations](elasticsearch://reference/query-languages/esql/limitations.md#esql-limitations-full-text-search): Current limitations for search functions in {{esql}}
 
 ### Related blog posts [esql-for-search-blogs]
