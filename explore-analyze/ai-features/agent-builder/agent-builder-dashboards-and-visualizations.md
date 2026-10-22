@@ -96,7 +96,7 @@ If you ask for a single chart, metric, or panel instead of a whole dashboard, it
 - {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md), such as status boards
 
-To change the time range that an inline visualization covers, use its time filter. A custom panel shows the time filter only when it displays live {{esql}} data.
+To change the time range that an inline visualization covers, use its time filter. A custom panel shows the time filter only when it has an {{esql}} query.
 
 :::{image} images/agent-builder-inline-visualization.png
 :screenshot:
