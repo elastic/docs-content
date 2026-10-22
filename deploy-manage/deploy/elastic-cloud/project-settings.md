@@ -66,6 +66,8 @@ The following Search Power settings are available:
 
 **High availability**
 :   Maintains consistent low query latency across most search workloads, from steady baseline to peak demand.
+
+During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
 :::
 
 :::{applies-item} { "serverless": {"vectordb": "ga"} }
@@ -76,7 +78,7 @@ The default value is **100**, which reserves enough capacity to keep the project
 
 :::::
 
-In {{obs-serverless}} and {{sec-serverless}} projects, Search Power isn't configurable. Search capacity is sized automatically based on the volume of search-ready data in your project. Unlike {{es-serverless}} projects, capacity is not scaled automatically based on query load. If your workload needs more search capacity than this sizing provides, for example because of a large number of detection rules or long rule lookback windows, contact Elastic Support.
+In {{obs-serverless}} and {{sec-serverless}} projects, search capacity is sized automatically based on the volume of search-ready data in your project. Search capacity does not scale automatically based on query load. If your workload requires additional search capacity, contact Elastic Support.
 
 ### Search Boost Window [elasticsearch-search-boost-window]
 ```{applies_to}
@@ -86,11 +88,13 @@ serverless:
 
 In {{es-serverless}} projects, non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.
 
-Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.
+The default Search Boost Window is 7 days. You can set it to any value from 1 day to 180 days. Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.
+
+During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
 
 {{es}} {{vectordb}} projects don't have a Search Boost Window setting.
 
-In {{obs-serverless}} and {{sec-serverless}} projects, the Search Boost Window is fixed at 1 day. If your workload needs more search capacity than the data-driven sizing provides (for example, a large number of detection rules or long rule lookback windows), contact Elastic Support.
+In {{obs-serverless}} and {{sec-serverless}} projects, search is optimized for fast, responsive performance on the most recent day of ingested data, while historical data remains available for broader analysis. If your workload would benefit from extending the search boost window, contact Elastic Support.
 
 ### Data retention [serverless-data-retention-settings]
 
