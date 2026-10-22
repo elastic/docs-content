@@ -1,6 +1,6 @@
 ---
 navigation_title: Find connection details
-description: Find your Elasticsearch endpoint and create an API key so that client applications and tools can connect to your cluster or project.
+description: Find your {{es}} endpoint and create an API key so that client applications and tools can connect to your cluster or project.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
 applies_to:
@@ -98,6 +98,6 @@ If your cluster uses a self-signed certificate, pass your CA certificate with `c
 
 ## Related pages
 
-* [Configure Beats and {{ls}} with a Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md)
+* [Configure {{beats}} and {{ls}} with a Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md)
 * [Connect to {{es}} on {{ece}}](/deploy-manage/deploy/cloud-enterprise/connect-elasticsearch.md)
 * [Securing HTTP client applications](/deploy-manage/security/httprest-clients-security.md)

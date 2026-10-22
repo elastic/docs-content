@@ -14,7 +14,7 @@ Follow these steps to create an API key for an {{es}} {{vectordb}} project or an
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Select the **API key** tab.
 4. In the **API key name** field, enter a name, then select **Create API key**.
-5. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **Beats** or **Logstash** to configure those products.
+5. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **{{beats}}** or **{{ls}}** to configure those products.
 6. Copy the key. It isn't available after you close the panel.
 
 Keys created here expire in 90 days and carry your own privileges. To set an expiration or restrict privileges, select **Manage API keys** and create the key there instead.
@@ -28,7 +28,7 @@ Follow these steps to create an API key for {{ech}}.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Select the **API key** tab.
 4. In the **API key name** field, enter a name, then select **Create API key**.
-5. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **Beats** or **Logstash** to configure those products.
+5. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **{{beats}}** or **{{ls}}** to configure those products.
 6. Copy the key. It isn't available after you close the panel.
 
 Keys created here expire in 90 days and carry your own privileges. To set an expiration or restrict privileges, select **Manage API keys** and create the key there instead.
@@ -42,7 +42,7 @@ Follow these steps to create an API key for {{ece}}.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
 3. Select the **API key** tab.
 4. In the **API key name** field, enter a name, then select **Create API key**.
-5. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **Beats** or **Logstash** to configure those products.
+5. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **{{beats}}** or **{{ls}}** to configure those products.
 6. Copy the key. It isn't available after you close the panel.
 
 Keys created here expire in 90 days and carry your own privileges. To set an expiration or restrict privileges, select **Manage API keys** and create the key there instead.

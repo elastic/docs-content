@@ -3,11 +3,11 @@ applies_to:
   stack:
   serverless:
 navigation_title: Choose a deployment type
-description: Select an Elasticsearch deployment model for search, get it running, and try a search quickstart.
+description: Select an {{es}} deployment model for search, get it running, and try a search quickstart.
 type: overview
 ---
 
-# Choose a deployment type [choose-a-deployment-type]
+# Choose an {{es}} deployment type [choose-a-deployment-type]
 
 {{es}} is at the core of every Elastic deployment type. The deployment type you choose determines who manages the infrastructure, scaling, and upgrades, and how usage is billed. Use this page to compare the options and find the best fit for your operational needs.
 

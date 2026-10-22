@@ -3,11 +3,11 @@ applies_to:
   stack:
   serverless:
 navigation_title: API key and endpoints
-description: Find your Elasticsearch endpoint and create an API key so you can connect a search client.
+description: Find your {{es}} endpoint and create an API key so you can connect a search client.
 type: how-to
 ---
 
-# Get your API key and {{es}} endpoint [get-your-api-key-and-endpoints]
+# Get your {{es}} endpoint and API key [get-your-api-key-and-endpoints]
 
 If you want to work with {{es}} programmatically, you need an endpoint URL and an API key. This page shows how to find the endpoint and create an API key for each deployment type, including {{serverless-full}} projects, {{ech}}, {{ece}}, self-managed clusters, and {{eck}}.
 

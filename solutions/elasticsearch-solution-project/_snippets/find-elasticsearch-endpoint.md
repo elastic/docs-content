@@ -18,7 +18,7 @@ Copy the {{es}} endpoint for an {{es}} {{vectordb}} project or an {{es}} project
 3. On the **Endpoints** tab, copy the **{{es}} endpoint**.
 
 :::{image} /solutions/images/kibana-connection-details-endpoints.png
-:alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
+:alt: The Connection details panel showing the {{es}} endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
 :screenshot:
 :width: 50%
 :::
@@ -33,7 +33,7 @@ Copy the {{es}} endpoint for an {{es}} {{vectordb}} project or an {{es}} project
 4. Copy the **Endpoint** value.
 
 :::{image} /solutions/images/cloud-console-serverless-endpoint.png
-:alt: The Elasticsearch panel on a Serverless project page in the Elastic Cloud Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
+:alt: The {{es}} panel on a Serverless project page in the {{ecloud}} Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
 :screenshot:
 :width: 50%
 :::
@@ -58,7 +58,7 @@ Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Co
 3. On the **Endpoints** tab, copy the **{{es}} endpoint**.
 
 :::{image} /solutions/images/kibana-connection-details-endpoints.png
-:alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
+:alt: The Connection details panel showing the {{es}} endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
 :screenshot:
 :width: 50%
 :::
@@ -73,7 +73,7 @@ Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Co
 4. Copy the **Endpoint** value.
 
 :::{image} /solutions/images/cloud-console-hosted-endpoint.png
-:alt: The Elasticsearch panel on a hosted deployment page in the Elastic Cloud Console, showing the Endpoint value with a copy button
+:alt: The {{es}} panel on a hosted deployment page in the {{ecloud}} Console, showing the Endpoint value with a copy button
 :screenshot:
 :width: 50%
 :::
@@ -92,7 +92,7 @@ For {{ece}}, your endpoint details are in the **Connection details** panel in {{
 3. Copy the **{{es}} endpoint** from the **Endpoints** tab.
 
 :::{image} /solutions/images/kibana-connection-details-endpoints.png
-:alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
+:alt: The Connection details panel showing the {{es}} endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
 :screenshot:
 :width: 50%
 :::

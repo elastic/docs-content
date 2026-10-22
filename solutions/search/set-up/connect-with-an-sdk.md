@@ -3,7 +3,7 @@ applies_to:
   stack:
   serverless:
 navigation_title: Connect with an SDK
-description: Install an official Elasticsearch language client, connect it with your endpoint and API key, and verify the connection.
+description: Install an official {{es}} language client, connect it with your endpoint and API key, and verify the connection.
 type: how-to
 ---
 

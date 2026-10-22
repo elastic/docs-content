@@ -4,7 +4,7 @@
 4. Copy the **Endpoint** value.
 
     :::{image} /solutions/images/cloud-console-serverless-endpoint.png
-    :alt: The Elasticsearch panel on a Serverless project page in the Elastic Cloud Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
+    :alt: The {{es}} panel on a Serverless project page in the {{ecloud}} Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
     :screenshot:
     :width: 50%
     :::

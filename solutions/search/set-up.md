@@ -3,7 +3,7 @@ applies_to:
   stack:
   serverless:
 navigation_title: Set up
-description: Prepare Elasticsearch for search by selecting a deployment type, then connecting with an endpoint, API key, and language client.
+description: Prepare {{es}} for search by selecting a deployment type, then connecting with an endpoint, API key, and language client.
 type: overview
 ---
 
