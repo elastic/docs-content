@@ -9,7 +9,7 @@ type: how-to
 
 # Connect to {{es}} with an SDK [connect-with-an-sdk]
 
-Use an official {{es}} client library to connect your application to {{es}} from code. This page shows how to install and initialize the client for each supported language, so you can copy the example for your language and start sending requests.
+You can use an official {{es}} client library to connect your application to {{es}} from code. This page shows how to install and initialize the client for each supported language.
 
 :::{note}
 To get started without installing a client, you can also work with {{es}} data in the {{kib}} [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md).
