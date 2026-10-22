@@ -34,7 +34,6 @@ In **API keys**, click **Create API key**:
 :::{image} /deploy-manage/images/serverless-create-personal-api-key.png
 :alt: Create API key UI
 :screenshot:
-:width: 50%
 :::
 
 Once created, you can copy the encoded API key and use it to send requests to the {{es}} HTTP API. For example:

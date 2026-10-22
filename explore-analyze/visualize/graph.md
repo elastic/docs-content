@@ -106,21 +106,21 @@ To change the color and label of selected vertices, click the style icon {icon}`
 
 #### Tune the noise level [edit-graph-settings]
 
-By default, **Graph** is configured to tune out noise in your data. If this isn’t a good fit for your data, open **Settings > Advanced settings**, and then adjust the way **Graph** queries your data. You can tune the graph to show only the results relevant to you and to improve performance. For more information, see [Graph troubleshooting](graph/graph-troubleshooting.md).
+By default, **Graph** is configured to tune out noise in your data. If this isn’t a good fit for your data, open **Settings** → **Advanced settings**, and then adjust the way **Graph** queries your data. You can tune the graph to show only the results relevant to you and to improve performance. For more information, see [Graph troubleshooting](graph/graph-troubleshooting.md).
 
 You can configure the number of vertices that a search or expand operation adds to the graph. By default, only the five most relevant terms for any given field are added at a time. This keeps the graph from overflowing. To increase this number, click a field, select **Edit Settings**, and change **Terms per hop**.
 
 
 #### Block terms from the graph [graph-block-terms]
 
-Documents that match a blocked term are not allowed in the graph. To block a term, select its vertex and click the block icon {icon}`eye_slash` in the graph toolbar. For a list of blocked terms, open **Settings → Blocked terms**.
+Documents that match a blocked term are not allowed in the graph. To block a term, select its vertex and click the block icon {icon}`eye_slash` in the graph toolbar. For a list of blocked terms, open **Settings** → **Blocked terms**.
 
 
 #### Drill down into raw documents [graph-drill-down]
 
 With drilldowns, you can display additional information about a selected vertex in a new browser window. For example, you might configure a drilldown URL to perform a web search for the selected vertex term.
 
-Use the drilldown icon {icon}`info` in the graph toolbar to show the drilldown buttons for the selected vertices. To configure drilldowns, go to **Settings → Drilldowns**. See also [Disabling drilldown configuration](graph/graph-configuration.md#disable-drill-down).
+Use the drilldown icon {icon}`info` in the graph toolbar to show the drilldown buttons for the selected vertices. To configure drilldowns, go to **Settings** → **Drilldowns**. See also [Disabling drilldown configuration](graph/graph-configuration.md#disable-drill-down).
 
 
 #### Run and pause the layout [graph-run-layout]
