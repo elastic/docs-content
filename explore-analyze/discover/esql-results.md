@@ -15,6 +15,7 @@ After an {{esql}} query runs in **Discover**, the results table shows what that 
 
 - **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort rows or change which rows the query returns](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) with `LIMIT`.
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
+- **Matches:** [See highlighted matches in the table](#esql-kibana-results-highlights) when a query uses `HIGHLIGHT`, or `TOP_SNIPPETS` with highlighting turned on.
 - **Time filter and chart:** [Set the time filter for the table and the chart](#_esql_and_time_series_data). Discover applies the time filter when the data has an `@timestamp` field. If the time field has another name, name it in the query.
 
 To keep the chart or the table, [save the session or add it to a dashboard](#_edit_the_esql_visualization).
@@ -120,6 +121,34 @@ To display all fields as separate columns, use `KEEP *`:
 FROM kibana_sample_data_logs
 | KEEP *
 ```
+
+## See highlighted matches in the results table [esql-kibana-results-highlights]
+
+To see which words matched a full-text search, add a command or function that highlights matches to your query. **Discover** then shows each match highlighted in the results table. You don't need to change any setting.
+
+{{es}} marks a match by wrapping it in tags. For example, it returns `The <em>Hobbit</em>`, where `<em>` and `</em>` surround the matched word. Discover reads those tags and shows the word highlighted, so the tags don't appear in the table.
+
+Discover highlights matches for:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The [`HIGHLIGHT`](elasticsearch://reference/query-languages/esql/commands/highlight.md) command. It writes the matches to new columns named `highlight_` plus the field name, and Discover highlights those columns. If you set your own `prefix`, `pre_tags`, or `post_tags`, the matches in the resulting columns stay highlighted.
+
+  For example, this query returns a `highlight_title` column in which Hobbit is highlighted:
+
+  ```esql
+  ROW title = "The Hobbit"
+  | HIGHLIGHT "hobbit" ON title
+  | KEEP title, highlight_title
+  ```
+
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The [`TOP_SNIPPETS`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/top-snippets.md) function with its `highlight` option set to `true`. Discover highlights the matches in the column that holds the snippets, including when you set your own `pre_tag` and `post_tag`.
+
+  For example, this query returns a `snippets` column in which _rabbit_ and _hole_ are highlighted:
+
+  ```esql
+  ROW chunks = ["The white rabbit disappeared down a hole."]
+  | EVAL snippets = TOP_SNIPPETS(chunks, "rabbit hole", { "num_words": 0, "highlight": true })
+  | KEEP snippets
+  ```
 
 ## Row and column limits [esql-kibana-results-table-limitations]
 
