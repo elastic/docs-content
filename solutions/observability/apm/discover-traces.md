@@ -188,12 +188,10 @@ In **Discover**, hover over a field value to use **Filter for value** {icon}`plu
 
 When the instrumentation records message content, the **Conversation** section shows prompts and responses with their roles, such as user or assistant. Click **Copy message** {icon}`copy` next to a message to copy its full contents.
 
+The conversation is built from the [`gen_ai.input.messages`](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/registry/attributes/gen-ai.md#gen-ai-input-messages) and [`gen_ai.output.messages`](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/registry/attributes/gen-ai.md#gen-ai-output-messages) attributes, added in version 1.37.0 of the OpenTelemetry semantic conventions. For instrumentation that records `gen_ai.prompt` and `gen_ai.completion` instead, {{kib}} falls back to those attributes. Instrumentation that predates version 1.37.0 records messages as separate events, which the **GenAI** tab doesn't show.
+
 Messages and token counts are recorded separately. A span can include token usage without message content. For message capture settings, refer to the documentation for your instrumentation.
 
-If an {{esql}} query produces a **Content may be incomplete** message on the **GenAI** tab, add `METADATA _id, _index` to the `FROM` command so {{kib}} can retrieve long messages from the original document. For example:
-
-```esql
-FROM traces-* METADATA _id, _index
-```
+Message values longer than 1,024 characters aren't indexed, so {{kib}} reads them from the document source, matching the span by `_id` or, when that isn't available, by `span.id`. A **Content may be incomplete** message appears only when a query returns neither field, such as an {{esql}} query that uses `KEEP` without `span.id`. To resolve it, add `span.id` to the query, or add `METADATA _id, _index` to the `FROM` command.
 
 You can also [inspect GenAI spans in a trace waterfall](/solutions/observability/apm/trace-sample-timeline.md#genai-trace-waterfall) to see model calls alongside the other operations in a request.
