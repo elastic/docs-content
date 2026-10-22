@@ -453,6 +453,15 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 `security.remove_entities_from_watchlist` {applies_to}`stack: ga 9.5+`
 :   Removes one or more entities from a watchlist by entity ID (EUID).
 
+`security.set_watchlist_rule_based_data_source` {applies_to}`stack: ga 9.6+`
+:   Creates or updates the [rule-based data source](/solutions/security/advanced-entity-analytics/watchlists.md#watchlists-create) that keeps a watchlist's membership in sync. Entities that match the query are added, and entities that stop matching are removed. The confirmation includes a preview of the entities the query currently matches.
+
+`security.remove_watchlist_rule_based_data_source` {applies_to}`stack: ga 9.6+`
+:   Removes a rule-based data source from a watchlist, which stops automatic membership sync for that source. Entities added manually or by other sources aren't affected. Managed data sources can't be removed.
+
+`security.list_watchlist_data_sources` {applies_to}`stack: ga 9.6+`
+:   Lists the data sources linked to a watchlist, including rule-based and managed data sources.
+
 **Lead generation tools** surface AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads) for security entities. An [Enterprise license](https://www.elastic.co/subscriptions) is required.
 
 `security.list_leads` {applies_to}`stack: preview 9.5`
