@@ -110,7 +110,7 @@ To keep an inline visualization, you need the **All** privilege for **Dashboard*
 3. Select **Save and go to dashboard**. The dashboard opens in edit mode with the visualization added.
 4. Save the dashboard to keep the visualization.
 
-{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To see the matching documents instead of a chart, turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) and ask the agent to show them in a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
+{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` If you want the matching documents instead of a chart, ask the agent for a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
 ## Manage dashboards
 
