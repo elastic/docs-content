@@ -1,4 +1,4 @@
-name: Elastic docs
+name: "Preview: Versioned publish"
 
 on:
   pull_request_target:

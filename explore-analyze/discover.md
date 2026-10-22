@@ -21,7 +21,7 @@ description: Use Discover to search and filter documents, analyze field structur
 ## What you can do with Discover
 
 **Search and explore**
-: Search through your data using KQL, Lucene, or {{esql}}. Filter results to focus on what matters. Discover adapts its interface based on the type of data you're exploring, providing specialized experiences for logs, metrics, and other data types.
+: Search through your data using Kibana Query Language (KQL), Lucene, or {{esql}}. Filter results to focus on what matters. Discover adapts its interface based on the type of data you're exploring, providing specialized experiences for logs, metrics, and other data types.
 
 **Analyze fields and documents**
 : View field statistics, examine individual documents, compare multiple documents side by side, and find patterns in your log data.
@@ -30,20 +30,23 @@ description: Use Discover to search and filter documents, analyze field structur
 : Create quick visualizations from aggregatable fields, or use {{esql}} to build charts directly from your queries.
 
 **Save and share**
-: Save your Discover sessions to reuse later, add them to dashboards, or share them with your team. You can also generate reports and create alerts based on your searches.
+: Save your Discover sessions to reuse later, add them to dashboards, or share them with your team. To export a session, refer to [Export as a file](report-and-share.md#manually-generate-reports).
+
+   Large CSV exports can reach some limits. To see the limits for your deployment, how they differ between query modes, and what to do when you reach them, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
 
 ## Get started
 
-New to Discover? Start with these resources:
+New to Discover? Start with [Explore fields and data with Discover](discover/discover-get-started.md).
 
-* **[Get started with Discover](discover/discover-get-started.md)** - A hands-on tutorial that walks you through exploring data, from loading data to filtering and visualizing your findings.
-* **[Using {{esql}}](discover/try-esql.md)** - Learn how to use the {{es}} Query Language for powerful data exploration.
+Discover has two query modes. {{esql}} mode doesn't require a data view. Classic mode uses data views with KQL or Lucene. For your first {{esql}} queries, follow [Get started with {{esql}} in Discover](discover/try-esql.md).
 
 ## Common tasks
 
 Once you're familiar with the basics, explore these guides for specific tasks:
 
-* **[Search and filter data](discover/discover-get-started.md)** - Build queries and apply filters to narrow down your results.
+* **[Switch between {{esql}} and classic mode](discover/switch-esql-mode.md)** - Change query mode, and see what happens to your query and filters.
+* **[Use Discover with {{esql}}](discover/use-esql.md)** - Find the Discover tasks that are specific to {{esql}} mode.
+* **[Search and filter data](discover/discover-get-started.md#search-in-discover)** - Build queries and apply filters to narrow down your results.
 * **[Customize the Discover view](discover/document-explorer.md)** - Adjust the layout, columns, and display options to suit your needs.
 * **[Save a search for reuse](discover/save-open-search.md)** - Save your Discover sessions and add them to dashboards.
 
@@ -54,5 +57,5 @@ The following guides cover additional features you can use in Discover:
 * [Add runtime fields to your {{data-source}}](discover/discover-get-started.md#add-field-in-discover)
 * [Run queries in the background](discover/background-search.md)
 * [Analyze field statistics and patterns](discover/run-pattern-analysis-discover.md)
-* {applies_to}`stack: ga 9.5+` [Detect change points in time series data](discover/detect-change-points.md)
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Detect change points in time series data](discover/detect-change-points.md)
 * [Search for relevance](discover/discover-search-for-relevance.md)

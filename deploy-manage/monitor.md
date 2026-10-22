@@ -123,13 +123,28 @@ Learn how to enable monitoring of your orchestrator:
 Elastic monitors [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) service metrics and performance as part of [our shared responsibility](https://www.elastic.co/cloud/shared-responsibility). We provide service availability information on our [service status page](/deploy-manage/cloud-organization/service-status.md).
 :::
 
-## Logging
+## Activity logging
+```{applies_to}
+stack: ga
+```
 
-You can configure several types of logs in {{stack}} that can help you to gain insight into {{stack}} operations, diagnose issues, and track certain types of events. [Learn about the types of logs available, where to find them, and how to configure them](/deploy-manage/monitor/logging-configuration.md).
+Activity logging records actions taken by users and systems, such as authentication events, search queries, and configuration changes. Use these logs for security auditing, compliance, and debugging.
 
-## Audit logging
+| Feature | Description | Availability |
+|---|---|---|
+| [](./monitor/logging-configuration/query-logs.md) | Log every search, {{esql}}, SQL, or EQL query for analysis and debugging. | {applies_to}`stack: preview 9.4` |
+| [](./monitor/logging-configuration/slow-logs.md) | Identify slow queries and indexing operations. | {applies_to}`stack: ga` |
+| [](./monitor/stack-audit-logging.md) | Enable and configure audit logging for {{es}} and {{kib}} deployments. | {applies_to}`stack: ga` |
+| [](./monitor/cloud-audit-trail.md) | Audit organization-level actions such as sign-in activity, deployment management, user and role changes, and API key usage. | {applies_to}`ech: ga` {{fedramp-mod}} only |
+| [{{kib}} user activity](kibana://reference/user-activity.md) | Track user actions in {{kib}}, such as dashboard views, creation, and updates. | {applies_to}`stack: preview 9.5` |
 
-Audit logging helps you track who did what in your Elastic environment.
+For more information about these features, and when to use each one, refer to [](./monitor/activity-logging.md)
 
-* To audit {{es}} and {{kib}} activity within a deployment, enable [](/deploy-manage/security/logging-configuration/security-event-audit-logging.md).
-* In {{fedramp-mod}} environments, you can also audit organization-level actions such as deployment management, API key usage, and sign-in activity. Refer to [](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md).
+## Operational logging
+```{applies_to}
+stack: ga
+```
+
+{{es}} and {{kib}} are able to produce diagnostic logs as they run. You can enable {{es}} and {{kib}} logging features to gain insight into {{stack}} operations and diagnose issues. 
+
+To configure these logs, including log levels, output format, and deprecation warning logging, refer to [](/deploy-manage/monitor/logging-configuration.md).

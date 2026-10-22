@@ -1,4 +1,5 @@
 ---
+navigation_title: Index fundamentals
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/documents-indices.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Index fundamentals
+# {{es}} index fundamentals
 
 An _index_ is the fundamental unit of storage in {{es}}, and the level at which you interact with your data. You can store many independent datasets side by side. 
 
