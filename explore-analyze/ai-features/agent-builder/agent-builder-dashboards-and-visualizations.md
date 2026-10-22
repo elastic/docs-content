@@ -95,6 +95,7 @@ If you ask for a single chart, metric, or panel instead of a whole dashboard, it
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md), such as charts, tables, and metrics
 - {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md), such as status boards
+- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` [Discover tables](agent-builder-discover-tables.md), which show the matching documents instead of a chart. To keep a table, refer to [Save the table to a dashboard](agent-builder-discover-tables.md#save-the-table-to-a-dashboard)
 
 To change the time range that an inline visualization covers, use its time filter. A custom panel shows the time filter only when it has an {{esql}} query.
 
@@ -109,8 +110,6 @@ To keep an inline visualization, you need the **All** privilege for **Dashboard*
 2. In **Add to dashboard**, select an existing dashboard or create a new one.
 3. Select **Save and go to dashboard**. The dashboard opens in edit mode with the visualization added.
 4. Save the dashboard to keep the visualization.
-
-{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` If you want the matching documents instead of a chart, ask the agent for a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
 ## Manage dashboards
 
