@@ -384,9 +384,12 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
     **Prerequisites:** The `rulePreviewAttachmentEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
+`security.build_redirect_url` {applies_to}`stack: ga 9.6+`
+:   Builds a link to a specific {{elastic-sec}} page in your current {{kib}} space, so the agent can send you to the UI for an operation it doesn't perform in chat, such as a CSV upload or a destructive settings change. This tool only builds the link and performs no action.
+
 ### Entity Analytics tools
 
-[Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, watchlists, and threat hunting leads.
+[Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, relationships, resolution groups, watchlists, and threat hunting leads.
 
 $$$agent-builder-security-entity-risk-score-tool$$$
 `security.entity_risk_score` {applies_to}`stack: ga 9.4+`
@@ -401,10 +404,22 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 `security.set_asset_criticality` {applies_to}`stack: ga 9.5+`
 :   Sets or removes the [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) level for a security entity and recalculates the entity's risk score.
 
+`security.get_entity_graph` {applies_to}`stack: ga 9.6+`
+:   Renders a preview of the [relationship graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) for a single entity, showing how it connects to other entities, events, and alerts. The preview links to the full interactive graph in the entity details flyout. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required.
+
+`security.get_entity_risk_score_history` {applies_to}`stack: ga 9.6+`
+:   Returns an entity's [risk score over time](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) and renders it as a chart. Can return either the entity's own score or its [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md) score. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required.
+
+`security.entity_relationship_history` {applies_to}`stack: ga 9.6+`
+:   Answers questions about when an [entity relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) was first or last observed, and which hosts or users an entity related to over a time window.
+
 **Watchlist tools** manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md). Mutating actions require user confirmation before running. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required, and adding or removing entities also requires the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) to be enabled and populated.
 
 `security.list_watchlists` {applies_to}`stack: ga 9.5+`
 :   Lists the entity watchlists in the current space, including name, description, risk modifier, and member sources.
+
+`security.get_watchlist_id` {applies_to}`stack: ga 9.6+`
+:   Finds a watchlist by name or ID. The agent uses it when you refer to a watchlist by name before acting on it.
 
 `security.create_watchlist` {applies_to}`stack: ga 9.5+`
 :   Creates a new watchlist in the current space.
