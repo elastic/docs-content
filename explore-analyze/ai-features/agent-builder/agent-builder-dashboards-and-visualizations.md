@@ -19,7 +19,7 @@ Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [v
 This functionality is powered by the built-in [`dashboards`](builtin-skills-reference.md#agent-builder-dashboards-skill) (`dashboard-management` in 9.4 and 9.5) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, which access core or inline tools to create and edit dashboards and visualizations.
 
 :::{tip}
-For best results with {{esql}}-heavy dashboard generation, use a higher-tier model such as Claude 4.6 Opus. Current testing shows that Claude 4.6 Sonnet may require more corrections for generated dashboard queries.
+For best results with {{esql}}-heavy dashboard generation, use a higher-tier model such as Claude 4.6 Opus. Current testing shows that Claude 4.6 Sonnet might require more corrections for generated dashboard queries.
 :::
 
 ## When to use agent-generated dashboards
@@ -62,7 +62,7 @@ Select **Preview** to open the dashboard in a canvas alongside the conversation.
 
 :::{image} images/agent-builder-dashboard-canvas-preview.png
 :screenshot:
-:alt: Full-screen chat with the conversation on the left and a dashboard canvas preview on the right showing metrics, charts, and trend panels
+:alt: Full-screen chat showing the conversation next to a dashboard canvas preview with metrics, charts, and trend panels
 :::
 
 In the canvas, you can explore the data before you save the dashboard: enter a KQL query, add filter pills, adjust the time range, and select chart elements or legend values to filter the results. To work with an individual panel, hover over it to reveal its actions, such as maximizing or inspecting it.
@@ -95,7 +95,7 @@ If you ask for a single chart, metric, or panel instead of a whole dashboard, it
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md), such as charts, tables, and metrics
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md)
-- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` [Discover tables](agent-builder-discover-tables.md), which show the matching documents instead of a chart and have their own [steps to save to a dashboard](agent-builder-discover-tables.md#save-the-table-to-a-dashboard)
+- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` [Discover tables](agent-builder-discover-tables.md), which show the matching documents instead of a chart. Unless you start from **Discover**, you need the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) turned on. To save a table to a dashboard, use its [own steps](agent-builder-discover-tables.md#save-the-table-to-a-dashboard).
 
 To change the time range that an inline visualization covers, use its time filter. A custom panel shows the time filter only when it has an {{esql}} query.
 
@@ -104,7 +104,7 @@ To change the time range that an inline visualization covers, use its time filte
 :alt: An area chart of average temperature over time displayed inline in an Agent Builder conversation, with a time filter and the View configuration and Save to dashboard actions
 :::
 
-To keep an inline visualization, you need the **All** privilege for **Dashboard**. Without it, you can't select **Save to dashboard**. With the privilege, add the visualization to a dashboard:
+To adjust an {{esql}} visualization before you keep it, select **View configuration** and change its settings. To keep any inline visualization, select **Save to dashboard**. Both actions need the **All** privilege for **Dashboard**. Without it, you can't select either. With the privilege, add the visualization to a dashboard:
 
 1. Select **Save to dashboard**.
 2. In **Add to dashboard**, select an existing dashboard or create a new one.

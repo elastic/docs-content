@@ -182,7 +182,7 @@ For complete templates with their queries and screenshots, refer to [Custom pane
 
 {{kib}} injects the following CSS custom properties into every custom panel. Use them instead of hard-coded colors, spacing, fonts, and motion so the panel follows the light or dark theme without reloading its data.
 
-{{kib}} also applies a baseline body style: the theme font, padding, text color, and background. Your CSS can override that baseline, except the body background, which always follows the theme. If the browser requests reduced motion, the panel disables animations and transitions.
+{{kib}} also applies a baseline body style: the theme font, padding, text color, and background. Your CSS can override that baseline, except the body background, which always follows the theme. If the browser requests reduced motion, the panel turns off animations and transitions.
 
 | Property | Use for |
 | --- | --- |
