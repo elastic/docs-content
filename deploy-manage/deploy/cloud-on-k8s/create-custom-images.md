@@ -10,7 +10,7 @@ products:
 
 # Create custom images [k8s-custom-images]
 
-You can create your own custom application images ({{eck_resources_list}}) instead of using the base images provided by Elastic. You might want to do this to have a canonical image with all the necessary plugins pre-loaded rather than [installing them through an init container](init-containers-for-plugin-downloads.md) each time a Pod starts.  You must use the official image as the base for custom images. For example, if you want to create an {{es}} {{version.stack}} image with the [ICU Analysis Plugin](elasticsearch://reference/elasticsearch-plugins/analysis-icu.md), you can do the following:
+You can create your own custom application images ({{eck_resources_list}}) instead of using the base images provided by Elastic. You might want to do this to have a canonical image with all the necessary plugins pre-loaded rather than [installing them through an init container](/deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md) each time a Pod starts.  You must use the official image as the base for custom images. For example, if you want to create an {{es}} {{version.stack}} image with the [ICU Analysis Plugin](elasticsearch://reference/elasticsearch-plugins/analysis-icu.md), you can do the following:
 
 1. Create a `Dockerfile` containing:
 
@@ -22,7 +22,7 @@ You can create your own custom application images ({{eck_resources_list}}) inste
 2. Build the image with:
 
     ```sh subs=true
-    docker build --tag elasticsearch-icu:{{version.stack}}
+    docker build --tag elasticsearch-icu:{{version.stack}} .
     ```
 
 
@@ -52,7 +52,7 @@ If your custom images follow the naming convention adopted by the official image
 
 For more information, check the following references:
 
-* [{{es}} documentation on Using custom Docker images](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image)
+* [{{es}} documentation on building a custom Docker image](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image)
 * [Google Container Registry](https://cloud.google.com/container-registry/docs/how-to)
 * [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/)
 * [Amazon Elastic Container Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)

@@ -16,7 +16,7 @@ products:
 
 Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [visualizations](/explore-analyze/visualize.md) directly in the conversation. Send a message like "create a dashboard to monitor host CPU and memory usage" and the agent builds a dashboard with {{esql}}-powered visualization panels.
 
-This functionality is powered by the built-in [`dashboard-management`](builtin-skills-reference.md#agent-builder-dashboard-management-skill) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, which access core or inline tools to create and edit dashboards and visualizations.
+This functionality is powered by the built-in [`dashboards`](builtin-skills-reference.md#agent-builder-dashboards-skill) (`dashboard-management` in 9.4 and 9.5) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, which access core or inline tools to create and edit dashboards and visualizations.
 
 :::{tip}
 For best results with {{esql}}-heavy dashboard generation, use a higher-tier model such as Claude 4.6 Opus. Current testing shows that Claude 4.6 Sonnet may require more corrections for generated dashboard queries.
@@ -38,6 +38,7 @@ You can open the full-screen chat, or open the chat beside the page you are on.
 - Find **Agents** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to open the [full-screen chat](standalone-and-flyout-modes.md#standalone-mode). You have more room to preview dashboards and read the agent's replies.
 - Select **AI Agent** in the header to keep the page you are on open, with the [chat beside it](standalone-and-flyout-modes.md#sidebar-mode).
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` While you edit a dashboard, select **Create with chat** to open that chat beside it with the dashboard attached. On an empty dashboard, the card includes pre-populated examples, and a blank **Open chat** option. When the dashboard already has panels, select **Add** → **Create with chat**.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To improve a dashboard you already built, select **Enhance** while you edit it. The chat opens in the sidebar with the dashboard attached, and the agent tidies its text, layout, and chart styling. Refer to [](/explore-analyze/dashboards/enhance-dashboard-with-ai.md).
 
 ## How dashboards appear in chat
 
@@ -68,7 +69,7 @@ In the canvas, you can explore the data before you save the dashboard: enter a K
 
 :::{tip}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-Select the {icon}`bolt` **Fast mode** option and turn it on to get approximate {{esql}} results for faster performance on large datasets. Fast mode is available when the dashboard includes at least one {{esql}} visualization that uses `STATS`. For more about {{esql}} approximation, refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+Select the {icon}`bolt` **Fast mode** option to get faster, estimated results from {{esql}} visualizations and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command. {{es}} still returns exact results when sampling would not speed up the query. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 :::
 ::::
 ::::{step} Save or refine
@@ -88,6 +89,8 @@ You can also continue chatting to refine the dashboard. For example, ask the age
 Individual visualizations display inline in the conversation when you ask for a single chart or metric. Inline visualizations are interactive: adjust the time range, or select a range directly on the chart to zoom in.
 ::::
 :::::
+
+{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To see the matching documents instead of a chart, turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) and ask the agent to show them in a **Discover** table. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
 ## Manage dashboards
 
@@ -146,5 +149,6 @@ Agents can create and manage the following panel types:
 
 - [Dashboards](/explore-analyze/dashboards.md)
 - [Chat with {{agent-builder}} agents](chat.md)
+- [Discover tables in chat](agent-builder-discover-tables.md)
 - [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
 - [Agent Builder traces overview dashboard](agent-traces-dashboard.md): a prebuilt, managed dashboard for monitoring agent activity from trace data

@@ -87,6 +87,7 @@ toc:
           - file: alert-templates.md
           - file: agent-health-status.md
           - file: filter-agent-list-by-tags.md
+          - file: export-agents-csv.md
           - file: enrollment-handling-containerized-agent.md
           - file: remove-agent-elevated-privileges.md
       - file: agent-policy.md
