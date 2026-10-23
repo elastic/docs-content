@@ -359,11 +359,11 @@ links:
 :::
 
 :::{link-card}
-title: Alerting V2
+title: Kibana Universal Alerting
 links:
-  - label: Alerting V2 overview
+  - label: Kibana Universal Alerting overview
     url: /explore-analyze/alerting/esql/system-overview.md
-  - label: Get started with Alerting V2
+  - label: Get started with Kibana Universal Alerting
     url: /explore-analyze/alerting/esql/get-started.md
   - label: Rules
     url: /explore-analyze/alerting/esql/rules.md
