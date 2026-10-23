@@ -511,6 +511,8 @@ Where it applies depends on the context:
 - In **Dashboards** or when previewing a dashboard created with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md), {icon}`bolt` **Fast mode** can return faster, estimated results for [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command. You can turn **Fast mode** on when the dashboard includes at least one {{esql}}-based panel.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Turning **Fast mode** on does not change a map with an {{esql}} layer. To approximate a `STATS` query on the map, use the [SET approximation directive](#esql-kibana-approximation) in the layer query. The option can still appear when that map is an {{esql}}-based panel on the dashboard.
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To tell whether approximation was applied, look for the {icon}`bolt` badge in Discover or in the panel header on a dashboard. Refer to [Interpret approximate results](#esql-kibana-approximation-columns).
+
 **Fast mode** is preserved when you:
 
 - Save or share a dashboard
@@ -559,7 +561,7 @@ An approximate query returns your usual `STATS` columns, plus two extra columns 
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` In [**Discover**](/explore-analyze/discover/esql-results.md#esql-kibana-results-table), these appear as additional columns in the results table. 
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` On a dashboard, a {icon}`bolt` badge in the panel header shows which panels display approximate results. It appears on {{esql}} visualizations, Discover session panels, Vega and Vega-Lite panels, custom panels, and maps with an {{esql}} layer. The badge has no text. Its tooltip says the results are approximate because [**Fast mode**](#esql-kibana-fast-mode-toggle) is on or the panel's query enables approximation, for example with the [`SET approximation`](#esql-kibana-approximation) directive. **Fast mode** doesn't change maps, so on a map the badge comes from the directive. If {{es}} still returns exact results, such as when the time range matches few documents, the panel shows no badge.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` A {icon}`bolt` badge shows when {{es}} applied approximation, so you can tell estimates from exact results. In Discover, the badge appears in the chart toolbar and in the results table toolbar. On a dashboard, it appears in the panel header of {{esql}} visualizations, Discover session panels, Vega and Vega-Lite panels, custom panels, and maps with an {{esql}} layer (when the layer query uses `SET approximation`). The badge has no text. Its tooltip says the results are approximate because [**Fast mode**](#esql-kibana-fast-mode-toggle) is on or the query enables approximation, for example with the [`SET approximation`](#esql-kibana-approximation) directive. If {{es}} still [returns exact results](#approximation-fast-mode), such as when the time range matches few documents, no badge appears.
 
 For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
