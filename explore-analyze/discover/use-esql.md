@@ -11,7 +11,7 @@ description: Find the Discover tasks that are specific to ES|QL mode, from runni
 
 # Use Discover with {{esql}}
 
-{{esql}} mode in **Discover** lets you explore data with an {{esql}} query. The query sets the data, so you don't need a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene.
+{{esql}} mode in **Discover** lets you explore data with an {{esql}} query. The query sets the data, so you don't need a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene. For classic mode tasks, refer to [Use Discover in classic mode](use-classic-mode.md).
 
 For the editor itself, time parameters, AI assistance, and Fast mode, refer to [](../query-filter/languages/esql-kibana.md). If you haven't run a query in this mode yet, start with [Get started with {{esql}} in Discover](try-esql.md).
 

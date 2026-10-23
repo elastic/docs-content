@@ -19,7 +19,7 @@ Field statistics are only available in classic mode, not in {{esql}} mode.
 
 This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
-1. Go to **Discover**.
+1. Go to **Discover**. If it opens in {{esql}} mode, [switch to classic mode](switch-esql-mode.md#revert-to-classic-mode).
 2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 7 days**.
 4. Select **Field statistics** (or **View as** → **Field statistics**, depending on your version).
