@@ -215,6 +215,7 @@ toc:
           - file: monitoring/high-availability.md
           - file: monitoring/cluster-response-time.md
       - file: monitoring/node-moves-outages.md
+      - file: monitoring/not-enough-capacity.md
       - file: monitoring/deployment-health-warnings.md
       - file: monitoring/node-bootlooping.md
   - file: deployments/cloud-enterprise/cloud-enterprise.md
