@@ -92,7 +92,7 @@ These fields control how far back each evaluation looks and which timestamp fiel
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
-| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Defaults to `@timestamp`. <br><br> {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Max 256 characters. <br><br> {applies_to}`stack: experimental =9.5` Max 128 characters. |
+| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Defaults to `@timestamp`. <br><br> Max 256 characters. |
 
 ## Recovery strategy [recovery-strategy]
 
