@@ -75,7 +75,7 @@ deployment:
   ece: ga 4.3
 ```
 
-When you install {{ece}} on an additional host, the host reads a set of bootstrap secrets from the installation to join it. By default, any host that reaches a coordinator with a valid roles token can read these secrets. To protect them, you can set an install password. While a password is set, a host can only join when it is installed with the same password.
+When you install {{ece}} on an additional host, the host reads a set of bootstrap secrets from the installation to join it. By default, any host that can reach the installation over the network can read these secrets. To protect them, you can set an install password. While a password is set, a host can only join when it is installed with the same password. For the security background, refer to [](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md#ece-securing-install-password).
 
 To start a new installation with an install password, add `--install-password PASSWORD` to the installation command on the first host, or set the password in the `INSTALL_PASSWORD` environment variable before you run the script. The environment variable keeps the password out of your shell history and of the process list.
 

@@ -19,6 +19,7 @@ This section covers security settings for your {{ece}} orchestrator.
 - [**TLS certificates**](secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md): Apply security controls to network communications. With {{ece}}, you manage proxy certificates for the HTTP layer. The transport layer is managed by ECE.
 - [**Platform role-based access control**](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md): Define the roles of users who have access to your organization and its resources. Note that you can also [manage non-cloud users and roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 - [**Authentication providers**](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md): Integrate with external authentication providers, including Active Directory, LDAP, and SAML.
+- {applies_to}`ece: ga 4.3` [**Install password**](/deploy-manage/deploy/cloud-enterprise/install.md#ece-install-password): Require a password to add hosts to the installation, so that the secrets a new host reads while joining can't be read by other hosts on the network.
 
 
 **Additional deployment-level security settings**
@@ -58,6 +59,19 @@ Specifically, a host that is used as an allocator should hold *only* the allocat
 
 Security comes in layers, and running separate services on separate infrastructure is the last layer of defense, on top of other security features like the JVM security manager, system call filtering, and running nodes in isolated containers with no shared secrets.
 
+
+### Hosts that join the installation [ece-securing-install-password]
+
+```{applies_to}
+deployment:
+  ece: ga 4.3
+```
+
+When you install {{ece}} on an additional host, the host has no credentials of its own yet. To start its core services, it reads a set of bootstrap secrets from the installation. These secrets include the ZooKeeper credentials that the core services share across all hosts. By default, any host that can reach the installation over the network can read these secrets, with no roles token required.
+
+To close this gap, set an install password. While a password is set, only a host that is installed with the same password can read the bootstrap secrets, so every additional host must be installed with `--install-password`. The password is never written to disk or to ZooKeeper, so you don't need the current password to change or remove it. Refer to [](/deploy-manage/deploy/cloud-enterprise/install.md#ece-install-password).
+
+The install password doesn't replace the [roles token](/deploy-manage/deploy/cloud-enterprise/generate-roles-tokens.md), which a host still needs to join. It protects the bootstrap secrets only, so keep restricting network access to the installation to trusted hosts.
 
 ### Hardware isolation
 $$$ece_clusters_share_the_same_resources$$$
