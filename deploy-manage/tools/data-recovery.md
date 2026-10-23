@@ -12,9 +12,9 @@ products:
 
 # Data recovery in {{serverless-full}}
 
-Data recovery in {{serverless-full}} helps you recover from accidental deletions and unintended updates, such as deleting the wrong index or overwriting data in a data stream. 
+Data recovery in {{serverless-full}} helps you recover from accidental deletions and unintended updates. 
 
-Elastic automatically creates recovery points for your indices and data streams in the background. You can use them to recover an earlier version from the last 7 days. Data recovery is designed for short-window recovery from your own mistakes, in minutes or hours rather than weeks. For other data protection needs, refer to [Other ways to protect your data](#other-ways-to-protect-your-data).
+Elastic automatically protects your indices and data streams by creating recovery points in the background. If data is deleted or overwritten by mistake, you can recover an earlier version of it from the last 7 days. Data recovery is designed for short-window recovery.
 
 You can recover data as new copies of your indices or data streams, or replace your existing instances. You can also recover several indices and data streams at once, by listing them by name or using [wildcard patterns](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index).
 
