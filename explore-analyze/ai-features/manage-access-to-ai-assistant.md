@@ -36,7 +36,7 @@ The **GenAI Settings** page has the following settings:
 
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
-- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give agents access to Elastic documentation](#give-agents-access-to-elastic-documentation).
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
 ::::{applies-item} stack: ga 9.4+
 
@@ -50,7 +50,7 @@ The **GenAI Settings** page has the following settings:
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
-- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give agents access to Elastic documentation](#give-agents-access-to-elastic-documentation).
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
 ::::{applies-item} stack: ga 9.2-9.3
 
@@ -104,42 +104,34 @@ If you open the dashboard right after turning on tracking and its breakdown pane
 
 For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
 
-### Give agents access to Elastic documentation
+### Give {{agent-builder}} access to Elastic documentation [give-agent-builder-access-to-elastic-documentation]
 
-Agents can answer questions about Elastic products from the official Elastic documentation after it's installed in {{kib}}. Depending on your version and setup, {{kib}} installs it for you or you install it yourself. To see whether it's installed, go to the **Documentation** section in **GenAI Settings**.
+{{agent-builder}} agents can answer questions about Elastic products from the official Elastic documentation once it's installed in {{kib}}. To check, go to **GenAI Settings**. The **Documentation** section shows **Installed** next to **Elastic documentation**.
 
-#### Install Elastic documentation automatically
-```{applies_to}
-serverless: ga
-stack: ga 9.6+
-```
+Whether you need to install it depends on your version:
 
-{{kib}} installs Elastic documentation for you when both of these conditions are met:
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` {{kib}} installs the documentation when it starts, with no action from you, if both of these are true. If the documentation is already installed, {{kib}} updates it instead.
+  - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available.
+  - **Use AI features** is turned on in **Feature Settings**.
 
-- [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available.
-- **Use AI features** is turned on in **Feature Settings**.
+  If either condition isn't met, install the documentation manually.
+- {applies_to}`stack: ga 9.4-9.5` You install the documentation manually.
 
-{{kib}} checks the conditions each time it starts. When they're met, it installs the documentation, or applies available updates if it's already installed. When the documentation is ready, **Elastic documentation** shows **Installed** in the **Documentation** section of **GenAI Settings**.
-
-If either condition isn't met, {{kib}} skips the automatic install. In that case, install the documentation manually.
-
-#### Install Elastic documentation manually
-
-To install the documentation yourself, you need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
+To install the documentation manually, you need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
 
 1. Go to **GenAI Settings**.
 2. In the **Documentation** section, select **Install** next to **Elastic documentation**.
 
-The install takes a few minutes. When it finishes, **Elastic documentation** shows **Installed**.
+The install takes a few minutes.
 
-#### Install Security labs content
+#### Security labs content
 
-Security labs content gives agents access to [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence. To install it, follow the same steps as for Elastic documentation, and select **Install** next to **Security labs** instead.
+Security labs content gives agents access to [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence. You install it the same way as Elastic documentation: In the **Documentation** section of **GenAI Settings**, select **Install** next to **Security labs**.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} can also install Security labs content for you:
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} also installs Security labs content with no action from you:
 
-- In serverless {{elastic-sec}} projects, {{kib}} installs it when it starts, under the same two conditions as for Elastic documentation.
-- In any {{elastic-sec}} deployment, {{kib}} installs it when a user with the **Agent Builder: All** privilege opens {{elastic-sec}}, **Use AI features** is turned on, and the content isn't installed yet.
+- In serverless {{elastic-sec}} projects, when {{kib}} starts, if the same two conditions as for Elastic documentation are met.
+- In any {{elastic-sec}} deployment, when a user with the **Agent Builder: All** privilege opens {{elastic-sec}}, **Use AI features** is turned on, and the content isn't installed yet.
 
 ## Feature settings
 ```{applies_to}
