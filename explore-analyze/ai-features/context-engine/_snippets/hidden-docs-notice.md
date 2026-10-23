@@ -10,6 +10,7 @@ The following {{context-engine}} pages are live:
         - [Create and manage AI indices](/explore-analyze/ai-features/context-engine/create-and-manage-ai-indices.md)
         - [Add and manage sources](/explore-analyze/ai-features/context-engine/add-and-manage-sources.md)
         - [Create and manage automations](/explore-analyze/ai-features/context-engine/create-and-manage-automations.md)
+        - [Manage KIs](/explore-analyze/ai-features/context-engine/inspect-and-manage-knowledge-indicators.md)
         - [Evaluate and improve KIs](/explore-analyze/ai-features/context-engine/evaluate-and-improve-knowledge-indicators.md)
     - [Use an AI index](/explore-analyze/ai-features/context-engine/use-an-ai-index.md)
         - [Retrieve context](/explore-analyze/ai-features/context-engine/retrieve-context-from-ai-index.md)
