@@ -362,13 +362,13 @@ links:
 title: Alerting V2
 links:
   - label: Alerting V2 overview
-    url: /explore-analyze/alerting/system-overview.md
+    url: /explore-analyze/alerting/esql/system-overview.md
   - label: Get started with Alerting V2
-    url: /explore-analyze/alerting/experimental-alerting-system/get-started.md
+    url: /explore-analyze/alerting/esql/get-started.md
   - label: Rules
-    url: /explore-analyze/alerting/experimental-alerting-system/rules.md
+    url: /explore-analyze/alerting/esql/rules.md
   - label: Alert episodes
-    url: /explore-analyze/alerting/experimental-alerting-system/alerts.md
+    url: /explore-analyze/alerting/esql/alerts.md
 :::
 
 :::{link-card}
