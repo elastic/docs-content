@@ -54,9 +54,9 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-If a dashboard takes too long to load, you can stop it instead of waiting. While panels load, a **Cancel** button replaces the **Refresh** or **Update** button in the query bar. Select **Cancel** to stop the queries that are still running. To load the dashboard again, refresh it.
+If a dashboard takes too long to load, you can stop it instead of waiting. While panels load, a **Cancel** button replaces the **Refresh** or **Update** button in the query bar. Select **Cancel** to stop the queries that are still running. To load the dashboard again, select **Refresh**.
 
-**Cancel** works for visualization panels (including Vega), Discover sessions, Maps, and Synthetics panels. Panels from other apps might keep loading.
+**Cancel** works for visualization panels (including Vega), Discover sessions, Maps, and Synthetics panels. Other panel types might keep loading.
 
 
 ### Use filter pills [_use_filter_pills]
