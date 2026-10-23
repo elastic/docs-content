@@ -1,6 +1,6 @@
 ---
 navigation_title: Empty fields in Discover
-description: Find out why some fields show as empty in Discover even though your data has values, and how to see those values.
+description: Find out why some fields show as empty in Discover even though your data has values for them, and how to see those values in the table.
 type: troubleshooting
 applies_to:
   stack: ga
