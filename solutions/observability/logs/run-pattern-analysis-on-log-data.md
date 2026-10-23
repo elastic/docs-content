@@ -20,7 +20,7 @@ Log pattern analysis works on every text field.
 
 To run a log pattern analysis:
 
-1. In your {{obs-serverless}} project, go to **Discover** and select the **All logs** from the **Data view** menu.
+1. In your {{obs-serverless}} project, go to **Discover**. If it opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then select **All logs** from the **Data view** menu.
 2. Apply any filters that you want.
 3. If you don’t see any results, expand the time range, for example, to **Last 15 days**.
 4. In the **Available fields** list, select the text field you want to analyze, then click **Run pattern analysis**.
