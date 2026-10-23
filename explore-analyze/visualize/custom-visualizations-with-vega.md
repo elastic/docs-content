@@ -23,7 +23,7 @@ Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, 
 
 :::{tip}
 :applies_to: {"serverless": "ga", "stack": "ga 9.5+"}
-You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language. The agent adds them to a dashboard it creates or updates, or shows a single one [inline in the conversation](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-single-visualizations-appear-in-chat).
+You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language. The agent adds them to dashboards, or shows a single visualization [inline in the conversation](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-single-visualizations-appear-in-chat).
 :::
 
 :::{image} /explore-analyze/images/kibana-vega.png

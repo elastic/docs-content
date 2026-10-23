@@ -90,21 +90,21 @@ You can also continue chatting to refine the dashboard. For example, ask the age
 
 ## How single visualizations appear in chat
 
-If you ask for a single chart, metric, or panel instead of a whole dashboard, it displays inline in the conversation. The following types of visualizations can appear inline:
+If you ask for a single chart, metric, or panel instead of a whole dashboard, the agent shows it inline in the conversation. Visualizations that can appear inline include:
 
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md), such as charts, tables, and metrics
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Vega-Lite visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md)
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md)
-- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` [Discover tables](agent-builder-discover-tables.md), which show the matching documents instead of a chart. Unless you start from **Discover**, you need the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) turned on. To save a table to a dashboard, use its [own steps](agent-builder-discover-tables.md#save-the-table-to-a-dashboard).
+- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` [Discover tables](agent-builder-discover-tables.md), which show the matching documents instead of a chart. Unless you start from **Discover**, you need the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) turned on. To save a table to a dashboard, refer to [Save the table to a dashboard](agent-builder-discover-tables.md#save-the-table-to-a-dashboard).
 
-To change the time range that an inline visualization covers, use its time filter. A custom panel shows the time filter only when it has an {{esql}} query.
+To change the time range that an inline visualization covers, use its time filter. On {{esql}} charts, you can also select a range directly on the chart to zoom in. A custom panel shows the time filter only when it has an {{esql}} query.
 
 :::{image} images/agent-builder-inline-visualization.png
 :screenshot:
 :alt: An area chart of average temperature over time displayed inline in an Agent Builder conversation, with a time filter and the View configuration and Save to dashboard actions
 :::
 
-To adjust an {{esql}} visualization before you keep it, select **View configuration** and change its settings. To keep any inline visualization, select **Save to dashboard**. Both actions need the **All** privilege for **Dashboard**. Without it, you can't select either. With the privilege, add the visualization to a dashboard:
+Editing and saving inline visualizations requires the **All** privilege for **Dashboard**. To edit the settings of an {{esql}} visualization, select **View configuration**. To save any inline visualization to a dashboard:
 
 1. Select **Save to dashboard**.
 2. In **Add to dashboard**, select an existing dashboard or create a new one.
@@ -162,7 +162,7 @@ Agents can create and manage the following panel types:
 | Markdown panels | Text panels for notes, headings, and other context. |
 | Collapsible sections | Grouped panels that readers can expand or collapse. |
 | [Filter controls](/explore-analyze/visualize/dashboard-controls.md) {applies_to}`stack: ga 9.5` | Interactive filters that appear above the dashboard and let users filter data without editing queries. The agent can add and remove **Options list**, **Range slider**, and **Time slider** controls, and can proactively add **Options list** controls for useful categorical fields such as service or host names. A dashboard can contain only one **Time slider** control. |
-| [Custom panels](/explore-analyze/visualize/custom-panels.md) {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` | HTML and CSS layouts that other panel types can't express, such as status boards, KPI scorecards with colored badges, or panels that mix text with values from your data. The agent creates a custom panel only when no other panel type fits, or when you ask for a custom or HTML panel. To change an existing custom panel through chat, open it on the dashboard and select **Refine with chat**. |
+| [Custom panels](/explore-analyze/visualize/custom-panels.md) {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` | HTML and CSS layouts that other panel types can't express, such as status boards, KPI scorecards with colored badges, or panels that mix text with query results. The agent creates a custom panel only when no other panel type fits, or when you ask for a custom or HTML panel. To change an existing custom panel through chat, open it on the dashboard and select **Refine with chat**. |
 
 ## Related pages
 
