@@ -104,8 +104,6 @@ FROM .rule-events
 
 {{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an alert. Use it to audit who did what, measure acknowledgment response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
 
-{applies_to}`stack: experimental =9.5` In {{stack}} 9.5, `.alert-actions` stores the alert ID and status as `episode_id` and `episode_status`. Replace `alert_id` and `alert_status` with those names in the following queries.
-
 ### View the full triage history for an alert [full-triage-history]
 
 Returns all actions recorded for a single alert in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved. The **Resolve** action writes `deactivate`, and **Unresolve** writes `activate`.

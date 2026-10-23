@@ -26,19 +26,13 @@ You'll need the following to create rules and send notifications.
 
 {{alerting-v2-system-cap}} is controlled by the [`alerting:v2:enabled`](kibana://reference/advanced-settings.md#alerting-v2-enabled) advanced setting in {{kib}}. This is a global setting, so turning it on makes {{alerting-v2-system}} available in every space, even though the rules and action policies you create in it are space-scoped.
 
-The setting's default state depends on your version:
-
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The setting is on by default. If you turned the setting off, it stays off, even after an upgrade.
-- {applies_to}`stack: experimental =9.5` The setting is off by default.
+The setting is on by default. If you turned the setting off, it stays off, even after an upgrade.
 
 To turn on the setting:
 
 1. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **Global Settings** tab, turn on `alerting:v2:enabled`, save the change, then refresh the page.
-3. Confirm that {{alerting-v2-system}} is accessible in your space. Find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or go to:
-
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Alerting** → **Rules** in the {{observability}} navigation menu
-   - {applies_to}`stack: experimental =9.5` **Stack Management** → **Alerting V2 Preview** → **Rules**
+3. Confirm that {{alerting-v2-system}} is accessible in your space. Find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or go to **Alerting** → **Rules** in the {{observability}} navigation menu.
 
 ## Turn off the system [alerting-setup-turn-off]
 
@@ -51,7 +45,7 @@ Turning off the setting hides the {{alerting-v2-system}} UI and turns off its AP
 Turning off the setting doesn't stop rules and action policies from running. To stop them, use the option for your deployment:
 
 - {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us).
-- {applies_to}`stack: ga 9.6+, experimental =9.5` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
+- {applies_to}`stack: ga 9.6+` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
 
 ## Try experimental features in a space [alerting-setup-experimental-features]
 
