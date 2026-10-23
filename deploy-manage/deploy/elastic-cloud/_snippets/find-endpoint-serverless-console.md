@@ -4,9 +4,9 @@
 4. Copy the **Endpoint** value.
 
     :::{image} /solutions/images/cloud-console-serverless-endpoint.png
-    :alt: The Elasticsearch panel on a Serverless project page in the Elastic Cloud Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
+    :alt: The {{es}} panel on a Serverless project page in the {{ecloud}} Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
     :screenshot:
     :width: 50%
     :::
 
-If your project runs on AWS, the panel also lists an **AWS PrivateLink endpoint**. Use it only when you connect through AWS PrivateLink. To learn more, refer to [](/deploy-manage/security/private-connectivity-aws.md).
+If your project runs on AWS and AWS PrivateLink is set up, the panel also lists an **AWS PrivateLink endpoint**. Use it only when you connect through AWS PrivateLink. To learn more, refer to [](/deploy-manage/security/private-connectivity-aws.md).
