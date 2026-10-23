@@ -177,26 +177,26 @@ When you grant **Organization owner** access, or **Cloud resource** access for o
 | **{{es}} and {{kib}}** | Grants access to project-level data and features for the applicable projects. This includes access to the {{kib}} interface and {{es}} service, but no access to the {{ecloud}} Console. |
 | **Cloud Console** | Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects. |
 
-### Restrict access to the {{ecloud}} Console [es-and-kibana-access]
+### Restrict access to the {{ecloud}} Console [restrict-console-access]
 
-To limit a member's access to only the {{serverless-short}} projects they work in, and restrict their access to the {{ecloud}} Console, set their access level to **{{es}} and {{kib}}** on every resource assignment. This is useful for multi-tenant organizations, managed service providers, or any setup where members should use their projects without seeing organization-level settings or other members.
+To limit a user's access to only the {{serverless-short}} projects they work in, and restrict their access to the {{ecloud}} Console, set their access level to **{{es}} and {{kib}}** on every resource assignment. This is useful for multi-tenant organizations, managed service providers, or any setup where users should use their projects without seeing organization-level settings or other organization members.
 
-When every resource assignment a member holds is set to **{{es}} and {{kib}}**, and they hold no organization-level role, the member doesn't have access to most pages in the {{ecloud}} Console. These users can sign in to {{ecloud}} and open their assigned projects directly, but organization-level {{ecloud}} Console pages like **Members**, **Billing**, **Network security**, **Trust management**, and **Extensions** are not accessible. The project overview page in the Console remains accessible for projects the member is assigned to.
+When every resource assignment a user holds is set to **{{es}} and {{kib}}**, and they hold no organization-level role, the user doesn't have access to most pages in the {{ecloud}} Console. These users can sign in to {{ecloud}} and open their assigned projects directly, but organization-level {{ecloud}} Console pages like **Members**, **Billing**, **Network security**, **Trust management**, and **Extensions** are not accessible. The project overview page in the Console remains accessible for projects the user is assigned to.
 
-Within an organization, access is always additive. Any of the following gives a member full {{ecloud}} Console access, regardless of what is set on their other assignments:
+Within an organization, access is always additive. Any of the following gives a user full {{ecloud}} Console access, regardless of what is set on their other assignments:
 
 * An assignment set to **Cloud Console** or **Cloud Console, {{es}}, and {{kib}}**
 * An assignment with no access level set
 * An {{ech}} deployment or Cloud Connect resource assignment
 * An organization-level role such as **Organization owner** or **Billing admin**
 
-The restriction is evaluated for each organization independently. A member can have only project-level access in one organization and full Console access in another.
+The restriction is evaluated for each organization independently. A user can have only project-level access in one organization and full Console access in another.
 
-Some {{kib}} features include links that redirect to the {{ecloud}} Console, such as **Manage project**, **View all projects**, and **Organization**. For members with **{{es}} and {{kib}}** access, these links return a 403.
+Some {{kib}} features include links that redirect to the {{ecloud}} Console, such as **Manage project**, **View all projects**, and **Organization**. For users with **{{es}} and {{kib}}** access, these links return a 403.
 
 :::{tip}
 % need to confirm this is still needed
-Members with no {{ecloud}} Console access need the direct project URL to open their projects. Share the URL with them so they can bookmark it. Project URLs follow this pattern: `https://<project-alias>.<kb>.<region>.<csp>.elastic-cloud.com`. You can find the project URL on the project's overview page in the {{ecloud}} Console.
+Users with no {{ecloud}} Console access need the direct project URL to open their projects. Share the URL with them so they can bookmark it. Project URLs follow this pattern: `https://<project-alias>.<kb>.<region>.<csp>.elastic-cloud.com`. You can find the project URL on the project's overview page in the {{ecloud}} Console.
 :::
 
 ### Considerations

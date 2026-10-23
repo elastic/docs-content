@@ -6,11 +6,11 @@ products:
   - id: cloud-serverless
 ---
 
-# Access Denied page in the {{ecloud}} Console
+# 403 Access Denied in the {{ecloud}} Console
 
-When you open the {{ecloud}} Console, you see an **Access Denied** page instead of the expected content. 
+When you open a page in the {{ecloud}} Console, you get a 403 **Access Denied** error instead of the expected content. 
 
-This message might appear when navigating directly to an {{ecloud}} URL, or when following links in {{kib}} that redirect to the {{ecloud}} Console, such as **Manage project**, **View all projects**, and **Organization**.
+This error can appear when navigating directly to an {{ecloud}} URL, or when following links in {{kib}} that redirect to the {{ecloud}} Console, such as **Manage project**, **View all projects**, and **Organization**.
 
 ## Why this happens
 
