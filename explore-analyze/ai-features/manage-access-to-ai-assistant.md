@@ -106,7 +106,7 @@ For per-response token counts and billing details specific to {{agent-builder}},
 
 ### Give {{agent-builder}} access to Elastic documentation [give-agent-builder-access-to-elastic-documentation]
 
-{{agent-builder}} agents can answer questions about Elastic products from the official Elastic documentation once it's installed in {{kib}}. To check, go to **GenAI Settings**. The **Documentation** section shows **Installed** next to **Elastic documentation**.
+{{agent-builder}} agents can answer questions about Elastic products from the official Elastic documentation once it's installed in {{kib}}. To check, go to **GenAI Settings**. The **Documentation** section should show **Installed** next to **Elastic documentation**.
 
 How the documentation gets installed depends on your version and configuration:
 
@@ -120,7 +120,7 @@ To install the documentation, you need the [**Agent Builder: All** privilege](/e
 1. Go to **GenAI Settings**.
 2. In the **Documentation** section, select **Install** next to **Elastic documentation**.
 
-The install takes a few minutes.
+The install takes a few minutes. When it finishes, the **Documentation** section shows **Installed** next to **Elastic documentation**.
 
 #### Security labs content
 
@@ -128,7 +128,7 @@ Security labs content gives agents access to [Elastic Security Labs](https://www
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} also installs Security labs content automatically:
 
-- In serverless {{elastic-sec}} projects, when {{kib}} starts, if the same two conditions as for Elastic documentation are met.
+- In serverless {{elastic-sec}} projects, when {{kib}} starts, if EIS is available and **Use AI features** is turned on.
 - In any {{elastic-sec}} deployment, when a user with the **Agent Builder: All** privilege opens {{elastic-sec}}, **Use AI features** is turned on, and the content isn't installed yet.
 
 ## Feature settings
