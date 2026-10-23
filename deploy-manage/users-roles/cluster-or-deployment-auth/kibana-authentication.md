@@ -417,6 +417,12 @@ xpack.security.authc.http.schemes: [apikey, bearer, basic, something-custom]
 With this configuration, you can send requests to {{kib}} with the `Authorization` header using `ApiKey`, `Bearer`, `Basic` or `Something-Custom` HTTP schemes (case insensitive). Under the hood, {{kib}} relays this header to {{es}}, then {{es}} authenticates the request using the credentials in the header.
 
 
+:::{note}
+:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+For programmatic access to {{kib}} APIs, you can authenticate as a user-managed service account using a service token with the `Bearer` scheme. Service accounts can't log in to the {{kib}} UI. Refer to [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md) for instructions.
+:::
+
+
 ### Embedded content authentication [embedded-content-authentication]
 
 Once you create a dashboard or a visualization, you might want to share it with your colleagues or friends. The easiest way to do this is to share a direct link to your dashboard or visualization. However, some users might not have access to your {{kib}}. With the {{kib}} embedding functionality, you can display the content you created in {{kib}} to an internal company website or a personal web page.

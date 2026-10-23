@@ -51,6 +51,15 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 | Access the **Workflows** page | `All` or `Read` for **Analytics → Workflows** |
 | Fully manage workflows | `All` for **Analytics → Workflows** |
 | Grant access to specific workflow actions | [Set sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) for **Analytics → Workflows** |
+| Add, change, or remove a service account binding {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | The **Update** Workflows privilege and the `manage_security` cluster privilege |
+| Edit or delete a workflow bound to a service account {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | The corresponding Workflows privilege and the `manage_security` cluster privilege |
+
+:::{warning}
+:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+Workflow edit permission lets a user change what a bound service account does. Grant it only to users you trust to use the account's privileges.
+:::
+
+For details about assigning accounts and the permissions model, refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
 
 ## Show managed workflows [workflows-managed-visibility]
 

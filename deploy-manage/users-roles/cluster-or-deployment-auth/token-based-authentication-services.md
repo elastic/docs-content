@@ -9,21 +9,27 @@ products:
 
 # Token-based authentication services [token-authentication-services]
 
-The {{stack-security-features}} authenticate users by using realms and one or more token-based authentication services. The token-based authentication services are used for authenticating and managing tokens. You can attach these tokens to requests that are sent to {{es}} and use them as credentials. When {{es}} receives a request that must be authenticated, it consults the token-based authentication services first, and then the realm chain.
+The {{stack-security-features}} authenticate requests by using realms and one or more token-based authentication services. The token-based authentication services are used for authenticating and managing tokens. You can attach these tokens to requests that are sent to {{es}} and use them as credentials. When {{es}} receives a request that must be authenticated, it consults the token-based authentication services first, and then the realm chain.
 
 The {{security-features}} provide the following built-in token-based authentication services, which are listed in the order they are consulted:
 
 *service-accounts*
-:   The [service accounts](service-accounts.md) use either the [create service account token API]({{es-apis}}operation/operation-security-create-service-token) or the [elasticsearch-service-tokens](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool to generate service account tokens.
+:   [Service accounts](service-accounts.md) use service tokens to authenticate as non-human identities. For details about token creation, storage, and deletion, refer to [Service account tokens](service-accounts.md#service-accounts-tokens).
+
+    :::{note}
+    :applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+    [User-managed service accounts](service-accounts.md#user-managed-service-accounts) can authenticate requests to {{es}} and {{kib}}.
+    :::
 
 To use a service account token, include the generated token value in a request with an `Authorization: Bearer` header:
 
 ```shell
-curl -H "Authorization: Bearer AAEAAWVsYXN0aWMvZ...mXQtc2VydmMTpyNXdkYmRib1FTZTl2R09Ld2FKR0F3" http://localhost:9200/_cluster/health
+curl -H "Authorization: Bearer AAEAAWVsYXN0aWMvZ...mXQtc2VydmMTpyNXdkYmRib1FTZTl2R09Ld2FKR0F3" \
+  "$ELASTICSEARCH_URL/_cluster/health"
 ```
 
 ::::{important}
-Do not attempt to use service accounts for authenticating individual users. Service accounts can only be authenticated with service tokens, which are not applicable to regular users.
+Don't use service accounts to authenticate individual users. Service tokens and credentials derived from them are for software and workloads, not people.
 ::::
 
 

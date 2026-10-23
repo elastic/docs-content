@@ -23,6 +23,12 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
 - {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
 
+By default, event-driven workflows run with the privileges of the user whose action produced the event. Workflows triggered by `workflows.failed` use the same privileges as the failed workflow.
+
+:::{note}
+:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+If you assign a service account to the workflow, it runs with that account's privileges instead. For details, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
+:::
 
 :::{include} ../_snippets/schema-location-legend.md
 :::

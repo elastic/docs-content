@@ -45,6 +45,13 @@ To instantly run a workflow, click the **Run** icon {icon}`play` for a workflow,
 
 Click the **Edit** icon to open the workflow in the YAML editor. Alternatively, open the **All actions** menu ({icon}`boxes_vertical`), and click **Edit**.
 
+% Release check: confirm with Workflows whether editing a bound workflow without changing its service account binding requires manage_security in 9.6. Larry describes a binding-only requirement: https://github.com/elastic/docs-content-internal/issues/1733#issuecomment-6157381771. Update the related permissions guidance together if this changes.
+
+:::{important}
+:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+Editing a workflow [bound to a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md) also requires the `manage_security` cluster privilege. An editor can change what the account does, so grant edit access only to users you trust to use its privileges.
+:::
+
 ### Turn a workflow on or off [workflow-enable-disable]
 
 Use the **Enabled** toggle to control whether a workflow can run:

@@ -125,6 +125,8 @@ Metadata about the current workflow execution.
 | `execution.startedAt` | ISO timestamp of start. |
 | `execution.isTestRun` | `true` if run from the editor's **Test** button. |
 | `execution.executedBy` | UID of the user or system that invoked the workflow. |
+| `execution.effectiveIdentity.type` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | Identity type. Set to `service_account` when the workflow runs as a user-managed service account. |
+| `execution.effectiveIdentity.id` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | ID of the user-managed service account that authorizes the workflow. |
 | `execution.triggeredBy` | Which trigger initiated this execution (`manual`, `scheduled`, `alert`, `workflows.failed`). |
 | `execution.url` | Deep link to the execution view in {{kib}}. |
 | `execution.compositionDepth` | 0 for a top-level invocation. Increments by 1 for each [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) level. |

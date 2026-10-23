@@ -3,7 +3,7 @@ navigation_title: Workflow settings
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Reference for workflow-wide settings. Timeout, timezone, concurrency, max step size, and global on-failure.
+description: Reference for workflow-wide settings, including execution identity, timeout, timezone, concurrency, output size, and failure handling.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -26,6 +26,7 @@ The top-level `settings` block configures workflow-wide behavior. Every field is
 | `concurrency` | object | Controls what happens when a new execution would exceed the concurrency limit for its group. Refer to [Concurrency control](#workflows-settings-concurrency). |
 | `max-step-size` | byte size | Cap on per-step output size (for example `10mb`). |
 | `on-failure` | object | Global failure handling applied to every step. Same shape as per-step `on-failure`. Refer to [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md). |
+| `run_as` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | string | User-managed service account ID that authorizes every workflow run. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md). |
 
 Fields not set take the engine defaults.
 
@@ -38,6 +39,7 @@ Fields not set take the engine defaults.
 | Prevent overlapping runs from colliding on shared state | `concurrency` |
 | Keep a single step from producing 100 MB of output that bogs down the UI | `max-step-size` |
 | Apply a default retry policy to every step | `on-failure` |
+| Run with a stable, least-privilege identity {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | `run_as` |
 
 ## `timeout` [workflows-settings-timeout]
 
@@ -78,6 +80,21 @@ settings:
 ```
 
 Steps that produce outputs exceeding this limit fail with a clear error. Useful to catch runaway {{es}} queries before they push the whole execution past the deployment limit.
+
+## `run_as` [workflows-settings-run-as]
+```{applies_to}
+stack: ga 9.6+
+serverless: unavailable
+```
+
+Assigns a user-managed service account to the workflow. Every trigger type runs the workflow with the account's current roles:
+
+```yaml
+settings:
+  run_as: kibana/incident-response
+```
+
+Setting, changing, or removing `run_as` requires the `manage_security` cluster privilege. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md) for setup instructions, permissions, and testing restrictions.
 
 ## Concurrency control [workflows-settings-concurrency]
 
