@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Switch Discover between ES|QL and classic mode, and see what happens to your query and filters.
+description: Switch Discover between ES|QL and classic mode, find out which mode it opens in, and see what happens to your query and filters.
 ---
 
 # Switch between {{esql}} and classic mode
