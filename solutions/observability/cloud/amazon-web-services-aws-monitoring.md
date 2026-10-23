@@ -22,6 +22,7 @@ Learn how to use the Elastic Observability solution to observe and monitor a bro
 
 If you don't already have an Elastic deployment, you can [start a free trial](https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-aws).
 
+* {applies_to}`{stack: preview 9.6+, serverless: preview}` [Set up {{aws}} data collection with guided onboarding](/manage-data/ingest/aws-guided-onboarding.md)
 * [Monitor {{aws}} with {{agent}}](monitor-amazon-web-services-aws-with-elastic-agent.md)
 * [Monitor {{aws}} with {{beats}}](monitor-amazon-web-services-aws-with-beats.md)
 * [Monitor {{aws}} with Amazon Data Firehose](monitor-amazon-web-services-aws-with-amazon-data-firehose.md)
