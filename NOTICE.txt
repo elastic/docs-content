@@ -1,0 +1,6 @@
+Elastic Docs Content
+Copyright 2023-2026 Elastic Technologies Inc. and contributors
+
+This product includes documentation licensed under the
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
+International License (CC-BY-NC-ND-4.0).
