@@ -80,7 +80,7 @@ In role management, features are organized into the following groups.
 | Group | What it contains |
 | --- | --- |
 | **Analytics** | Privileges for the features you use to explore and visualize data. Refer to [Privileges in the Analytics group](#kibana-privileges-analytics). |
-| **Alerting V2** {applies_to}`stack: experimental 9.5+` | Privileges for the {{alerting-v2-system}}. Refer to [Configure access to the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md). <br> {applies_to}`stack: experimental =9.5` Before 9.5.4, this group is called **Alerting**. |
+| **Universal Alerting** {applies_to}`serverless: ga` {applies_to}`stack: experimental =9.5, ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). <br><br> {applies_to}`stack: experimental =9.5` In 9.5, this group is called **Alerting V2**. Before 9.5.4, it's called **Alerting**. |
 | **Elasticsearch** | Privileges for {{es}} features. |
 | **Observability** | Privileges for Elastic {{observability}} features. Refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md). |
 | **Security** | Privileges for {{elastic-sec}} features. Refer to [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md). |

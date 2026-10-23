@@ -100,7 +100,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
 
     After all shards have relocated to the other nodes, you can safely [stop the {{es}} process](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#stopping-elasticsearch) on the node you want to remove. Depending on your installation method and operating system, the command to stop {{es}} may vary. For example, if you are using systemd on a Linux system, you can run the following command:
 
-    ```console
+    ```sh
     sudo systemctl stop elasticsearch
     ```
 
