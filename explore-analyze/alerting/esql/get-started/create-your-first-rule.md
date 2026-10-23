@@ -17,7 +17,7 @@ Here's what you'll do:
 
 1. **Load sample data** - Create an index and populate it with synthetic latency data that moves through healthy, degraded, and recovered phases. This gives you a realistic dataset to work with without needing a live service.
 2. **Write a detection query** - Use the query sandbox to build and preview an {{esql}} query that computes P95 latency and flags breaches. The sandbox lets you verify the logic before the rule ever runs.
-3. **Configure the rule** - Set the alert condition, schedule, lookback window, and recovery behavior. You'll see how each setting shapes the alert lifecycle.
+3. **Configure the rule** - Set the schedule, lookback window, alert delay, and recovery behavior. You'll see how each setting shapes the alert lifecycle.
 4. **Confirm the rule is running** - Check the **Execution history** page to see that the rule is evaluating on schedule and its runs are succeeding.
 5. **Watch the alert open and recover** - Open the alert's details page to watch the alert move from `pending` to `active` as the breach persists, then trigger the recovery condition directly to see it close.
 
@@ -25,12 +25,7 @@ Here's what you'll do:
 
 Before you start, make sure you have the following:
 
-- **One of the following deployment types**:
-  - **{{serverless-short}}** - A {{serverless-full}} project. [Create a serverless project](/deploy-manage/deploy/elastic-cloud/serverless.md) if you don't have one.
-  - **{{ech}}** - An {{ech}} deployment running version 9.6 or later. Refer to [Create an Elastic Cloud hosted deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) if you don't have one.
-  - **Self-managed** - An {{stack}} deployment running version 9.6 or later. Refer to the [local development quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) if you don't have one.
-
-- **{{alerting-v2-system-cap}} turned on**: If {{alerting-v2-system}} is off, turn it on as described in [Set up {{alerting-v2-system}}](../setup.md#alerting-setup-turn-on).
+- {applies_to}`serverless: ga` **An {{observability}} project**: On {{serverless-short}}, {{alerting-v2-system}} is available only in {{observability}} projects.
 
 - **The required access**: Your role needs the privileges to create rules, triage alerts, and review execution history. Refer to [Configure access](../manage/configure-access.md#alerting-quick-reference). To create the tutorial index and load the sample data, your role also needs the `create_index` and `write` index privileges on `checkout-service-logs`.
 
@@ -262,13 +257,15 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 Go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Then create a new rule, and select **Create ES|QL rule** to open the rule authoring flyout.
+Select **Create rule**, then select **ES|QL rule** to open the rule form.
 
 ::::
 
 ::::{step} Write and test the detection query
 
-1. Paste the following {{esql}} query into the **Query sandbox**. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself. The sandbox and the rule both apply one automatically based on the date range or schedule you choose.
+1. In the **ES|QL query** section, select **Add query** to open the **Query sandbox**.
+
+2. Paste the following {{esql}} query into the sandbox. It finds the slowest 5% of requests for each service (P95 latency), labels how severe that is, and keeps only the services where that value is above 2 seconds. You don't need to add a time filter yourself. The sandbox and the rule both apply one automatically based on the date range or schedule you choose.
 
    ```esql
    FROM checkout-service-logs
@@ -281,11 +278,11 @@ Then create a new rule, and select **Create ES|QL rule** to open the rule author
    | WHERE p95_latency_ms > 2000
    ```
 
-2. Set the sandbox date range to **Today** and run the query. **Today** covers the full calendar day, so it finds the sample data no matter what time it is right now.
+3. Set the sandbox date range to **Today**, then select **Search** to run the query. **Today** covers the full calendar day, so it finds the sample data no matter what time it is right now.
 
-3. Confirm the query results. You should see one row for `service.name: checkout` with `p95_latency_ms` above 2000 and `severity: high` or `critical`.
+4. Confirm the query results. You should see one row for `service.name: checkout` with `p95_latency_ms` above 2000 and `severity: high` or `critical`.
 
-4. Select **Apply changes** to populate the rule form, then select **Next**.
+5. Select **Apply changes** to add the query to the rule form.
 
    :::{note}
    The sandbox time controls set the preview range only. They don't carry over to the rule's schedule or lookback window once the rule is running.
@@ -293,28 +290,31 @@ Then create a new rule, and select **Create ES|QL rule** to open the rule author
 
 ::::
 
-::::{step} Configure the alert condition
+::::{step} Set how the rule runs
 
-The query you applied from the sandbox auto-fills **Mode**, **Time field**, and **Group fields**. Set the remaining fields:
+On the **Condition** step, the query you applied fills in **Time field** with `@timestamp` and **Group fields** with `service.name`, the field in the query's `STATS ... BY` clause. Under **Rule execution**, set the following:
 
-- **Alert delay**: `Breaches: 2` (The breach must persist across 2 consecutive evaluations before the alert moves to `active`.)
-- **Schedule**: `Every 5 minutes`
-- **Lookback Window**: `Last 45 minutes` (Ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.)
+- **Schedule**: 5 minutes
+- **Lookback Window**: 45 minutes. This lets the rule reach the sample data no matter when you complete the tutorial.
 
 Select **Next**.
 
 ::::
 
-::::{step} Configure the recovery condition
+::::{step} Set the alert and recovery behavior
 
-Confirm the default settings:
+1. On the **Outcome** step, keep **Detect and respond** selected for **What's your goal?** This option tracks each breach as an alert.
 
-- **Recovery**: `Default recovery`
-- **Recovery delay**: `Immediate` (no delay, recovers on first non-breach)
+2. Set **Alert delay** to **Breaches**, then set **Consecutive breaches** to `2`. The breach must persist across 2 consecutive evaluations before the alert moves to `active`.
 
-These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run finds that the service's P95 latency is back under the 2-second threshold, the alert will close.
+3. Keep the default values for the remaining settings:
 
-Select **Next**.
+   - **Recovery**: **Default recovery**
+   - **Recovery delay**: **Immediate**
+
+   With these settings, the alert closes as soon as a scheduled run finds that the service's P95 latency is back under the 2-second threshold.
+
+4. Select **Next**.
 
 ::::
 
@@ -327,7 +327,7 @@ Select **Next**.
 
    Select **Next**.
 
-2. On the **Actions** step, do not create an action policy (rules can run without notifications or an action policy configured). Select **Create rule** to create and enable the rule.
+2. On the **Actions** step, select **Create rule** to create and enable the rule. You don't need an action policy for this tutorial, because a rule can run without notifications.
 
 ::::
 
@@ -345,9 +345,9 @@ Open **Execution history** using the navigation menu or the [global search field
 
 ::::
 
-::::{step} Select the rule
+::::{step} Find the rule's runs
 
-On the **Rules** tab, select **Checkout Service Latency**.
+On the **Rules** tab, search for `Checkout Service Latency`.
 
 ::::
 
@@ -385,7 +385,7 @@ The degraded window starts at 16 minutes past the hour. Once the current UTC tim
 
 ::::{step} Inspect the alert details
 
-Select the alert to open its details. Use the metric trend to see how P95 latency compared to the threshold over the alert's lifetime, and confirm the grouping value (`checkout`) that triggered it.
+Select the alert to open its details. Use the **Trend** chart to see how P95 latency compared to the threshold over the alert's lifetime, and confirm the grouping value (`checkout`) that triggered it.
 
 ::::
 
