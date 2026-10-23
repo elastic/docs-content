@@ -108,16 +108,16 @@ For per-response token counts and billing details specific to {{agent-builder}},
 
 {{agent-builder}} agents can answer questions about Elastic products from the official Elastic documentation once it's installed in {{kib}}. To check, go to **GenAI Settings**. The **Documentation** section shows **Installed** next to **Elastic documentation**.
 
-Whether you need to install it depends on your version:
+How the documentation gets installed depends on your version:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` {{kib}} installs the documentation when it starts, with no action from you, if both of these are true. If the documentation is already installed, {{kib}} updates it instead.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` {{kib}} installs the documentation automatically when it starts, if both of these are true. If the documentation is already installed, {{kib}} updates it instead.
   - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available.
   - **Use AI features** is turned on in **Feature Settings**.
 
-  If either condition isn't met, install the documentation manually.
-- {applies_to}`stack: ga 9.4-9.5` You install the documentation manually.
+  If either condition isn't met, the documentation needs a manual install.
+- {applies_to}`stack: ga 9.4-9.5` The documentation needs a manual install.
 
-To install the documentation manually, you need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
+A manual install requires the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
 
 1. Go to **GenAI Settings**.
 2. In the **Documentation** section, select **Install** next to **Elastic documentation**.
@@ -126,9 +126,9 @@ The install takes a few minutes.
 
 #### Security labs content
 
-Security labs content gives agents access to [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence. You install it the same way as Elastic documentation: In the **Documentation** section of **GenAI Settings**, select **Install** next to **Security labs**.
+Security labs content gives agents access to [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence. To install it, follow the same steps as for Elastic documentation, and select **Install** next to **Security labs** instead.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} also installs Security labs content with no action from you:
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} also installs Security labs content automatically:
 
 - In serverless {{elastic-sec}} projects, when {{kib}} starts, if the same two conditions as for Elastic documentation are met.
 - In any {{elastic-sec}} deployment, when a user with the **Agent Builder: All** privilege opens {{elastic-sec}}, **Use AI features** is turned on, and the content isn't installed yet.
