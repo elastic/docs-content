@@ -31,9 +31,9 @@ This section shows the most common ways for you to filter dashboard data. For mo
 
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-On {{esql}} visualizations, {{esql}}-based Discover sessions, and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command, {icon}`bolt` **Fast mode** can return faster, estimated results. {{es}} still returns exact results when sampling would not speed up the query. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+On {{esql}} visualizations, {{esql}}-based Discover sessions, [custom panels](/explore-analyze/visualize/custom-panels.md) that have an {{esql}} query, and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command, {icon}`bolt` **Fast mode** can return faster, estimated results. {{es}} still returns exact results when sampling would not speed up the query. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Custom panels](/explore-analyze/visualize/custom-panels.md) that have an {{esql}} query also use **Fast mode**. To tell which panels show approximate results, look for the {icon}`bolt` badge in the panel header. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Panels where {{es}} applied approximation show a {icon}`bolt` badge in the panel header. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 :::
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
