@@ -14,7 +14,7 @@ products:
 
 # Configure access to LLMs
 
-Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-the-box Elastic Managed LLMs or with third-party LLMs configured using one of the available connectors.
+Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-the-box Elastic Managed LLMs or with third-party LLMs that you connect through {{infer}} endpoints or connectors.
 
 ## Elastic Managed LLMs
 
@@ -23,7 +23,7 @@ Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-th
 
 ## Tested models and performance ratings [tested-models]
 
-While connectors let you connect to a wide range of LLMs, model performance varies by solution and use case. Refer to the following pages for performance information for models Elastic has tested:
+While you can connect to a wide range of LLMs, model performance varies by solution and use case. Refer to the following pages for performance information for models Elastic has tested:
 
 * [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
 * [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
@@ -36,10 +36,12 @@ Models that do not appear in these resources may still work, but Elastic hasn't 
 ## Connect to a third-party or self-managed LLM
 
 ::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-The OpenAI, Amazon Bedrock, Google Gemini, and **AI Connector** connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
+The OpenAI, Amazon Bedrock, Google Gemini, and **AI Connector** connector types are being replaced by {{es}} {{infer}} endpoints. To configure access to an LLM provider, create an {{infer}} endpoint with the `chat_completion` task type. For steps that use your own provider account and API key, refer to [External inference](/explore-analyze/elastic-inference/external.md). To use models that Elastic hosts instead, refer to [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md).
 
-In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new AI integrations, use {{es}} {{infer}} endpoints.
+Availability of these connector types depends on your deployment and version:
+
+- {applies_to}`serverless: deprecated` {applies_to}`stack: deprecated 9.6+` You can no longer create new connectors of these types by selecting **Create connector** in {{kib}}. Existing connectors and their rule actions continue to work, but the **Connectors** page hides them by default. To show them, open **Display options** and set **Deprecated** to **Show**.
+- {applies_to}`stack: deprecated =9.5` These connector types are still available, but deprecated.
 ::::
 
 Follow these guides to connect to one or more third-party LLM providers:

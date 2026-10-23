@@ -172,10 +172,12 @@ serverless: deprecated
 ```
 
 ::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-Generative AI connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
+Generative AI connectors are deprecated. To connect a model provider, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
 
-In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new models, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
+Availability of connectors depends on your deployment and version:
+
+- {applies_to}`serverless: deprecated` {applies_to}`stack: deprecated 9.6+` You can no longer create connectors in the {{kib}} UI, but you can still create them through the API. Existing connectors continue to work, and the **Connectors** page hides them by default. To show them, refer to [Connectors](/deploy-manage/manage-connectors.md#connectors-list).
+- {applies_to}`stack: deprecated =9.5` Connectors are still available, but deprecated.
 ::::
 
 To use additional models that aren't preconfigured, create a connector for your model provider.

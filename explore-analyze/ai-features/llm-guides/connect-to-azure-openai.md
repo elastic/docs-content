@@ -9,11 +9,14 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: Azure OpenAI
+  inference-service: Azure OpenAI
 ---
 
 # Connect to Azure OpenAI
 
-This page provides step-by-step instructions for setting up an Azure OpenAI connector for the first time. This connector type enables you to leverage large language models (LLMs) within {{kib}}. You’ll first need to configure Azure, then configure the connector in {{kib}}.
+This page provides step-by-step instructions for connecting {{kib}} to large language models (LLMs) in Azure OpenAI. You’ll first need to configure Azure, then connect {{kib}} to your deployment.
 
 
 ## Configure Azure [_configure_azure]
@@ -70,16 +73,22 @@ The following video demonstrates these steps (click to watch).
 
 
 
-## Configure Elastic AI Assistant [_configure_elastic_ai_assistant]
+## Connect {{kib}} to Azure OpenAI [_configure_elastic_ai_assistant]
 
-::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-The Azure OpenAI connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+::::::{applies-switch}
 
-For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
-::::
+:::::{applies-item} { stack: ga 9.5+, serverless: ga }
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-Finally, configure the connector in {{kib}}:
+4. For **Resource Name**, enter the name of your Azure OpenAI resource. For **Deployment ID**, enter the name that you gave your deployment.
+5. For **API Version**, enter an [API version](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference) that your deployment supports.
+6. For **API Key**, enter one of your API keys.
+7. Select the `chat_completion` task type, then select **Save**.
+:::::
+
+:::::{applies-item} stack: ga 9.0-9.4
+Create an OpenAI connector that points to your Azure OpenAI deployment so that {{kib}} can use it.
 
 1. Log in to {{kib}}.
 2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **OpenAI**.
@@ -104,3 +113,6 @@ Finally, configure the connector in {{kib}}:
 Your LLM connector is now configured. The following video demonstrates these steps (click to watch).
 
 [![azure-openai-configure-model-video](https://play.vidyard.com/RQZVcnXHokC3RcV6ZB2pmF.jpg)](https://videos.elastic.co/watch/RQZVcnXHokC3RcV6ZB2pmF?)
+:::::
+
+::::::
