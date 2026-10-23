@@ -25,11 +25,8 @@ You can add {{esql}} visualizations to a dashboard directly from queries in Disc
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 If your visualization's query uses exactly one `STATS` command, dashboard users can turn on {icon}`bolt` **Fast mode** to get faster, estimated results for it. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
-:::
 
-:::{tip}
-:applies_to: {"serverless": "preview", "stack": "preview 9.6"}
-A {icon}`bolt` badge in the panel header shows when approximation was applied. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` A {icon}`bolt` badge in the panel header shows when approximation was applied. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 :::
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
