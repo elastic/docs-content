@@ -31,6 +31,6 @@ For the editor itself, time parameters, AI assistance, and Fast mode, refer to [
 
 ## Related pages
 
-- [Explore fields and data with Discover](discover-get-started.md)
+- [Introduction to Discover](discover-get-started.md)
 - [](../query-filter/languages/esql-kibana.md)
 - [Lens visualizations using {{esql}} queries](../visualize/esorql.md)

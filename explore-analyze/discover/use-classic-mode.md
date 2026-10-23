@@ -15,7 +15,7 @@ Classic mode in **Discover** lets you explore the documents of a data view. You 
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Discover** opens in {{esql}} mode by default. To use the tasks in this section, switch to classic mode. Refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md#revert-to-classic-mode).
 
-Tasks that work the same way in both modes, such as customizing the table or saving a session, are in the other Discover guides. Start with [Explore fields and data with Discover](discover-get-started.md).
+Tasks that work the same way in both modes, such as customizing the table or saving a session, are in the other Discover guides. Start with [Introduction to Discover](discover-get-started.md).
 
 ## Select a data view and a time range [find-the-data-you-want-to-use]
 

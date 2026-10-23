@@ -2,7 +2,7 @@ When you cancel a running query in **Discover**, you might still see some result
 
 :::::{applies-switch}
 
-::::{applies-item} { serverless:, stack: ga 9.3+ }
+::::{applies-item} { serverless: ga, stack: ga 9.3+ }
 Select the **Cancel** button that appears while the query executes. **Discover** stops the search and displays the partial results collected up to that point.
 ::::
 
