@@ -157,7 +157,7 @@ serverless: preview
 stack: preview 9.6+
 ```
 
-When {{es}} applies approximation to a query, for example because [**Fast mode**](../query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) is on, a {icon}`bolt` badge shows next to the chart actions and in the table toolbar. Hover over the badge to see why the results are approximate. For what the badge and the extra columns mean, refer to [Interpret approximate results](../query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
+When {{es}} applies approximation to a query, for example because [**Fast mode**](../query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) is on or the query explicitly sets [`approximation = true`](../query-filter/languages/esql-kibana.md#esql-kibana-approximation), a {icon}`bolt` badge shows next to the chart actions and in the table toolbar. Hover over the badge to see why the results are approximate. For what the badge and the extra columns mean, refer to [Interpret approximate results](../query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 
 ## Row and column limits [esql-kibana-results-table-limitations]
 

@@ -1432,7 +1432,10 @@ The response is converted from the {{esql}} columnar format into the row-based f
 
 {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` When {{es}} applies approximation, the panel header shows a {icon}`bolt` badge. Refer to [Interpret approximate results](../query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6"}
+When {{es}} applies approximation, the panel header shows a {icon}`bolt` badge. Refer to [Interpret approximate results](../query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
+:::
 
 
 #### Apply the dashboard time range to {{esql}} data sources [vega-esql-time-range]

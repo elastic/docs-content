@@ -518,7 +518,10 @@ Where it applies depends on the context:
 
 To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To tell whether approximation was applied, look for the {icon}`bolt` badge in Discover or in the panel header on a dashboard. Refer to [Interpret approximate results](#esql-kibana-approximation-columns).
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6"}
+To tell whether approximation was applied, look for the {icon}`bolt` badge in Discover or in the panel header on a dashboard. Refer to [Interpret approximate results](#esql-kibana-approximation-columns).
+:::
 
 ### Use the `SET approximation` directive [esql-kibana-approximation]
 ```{applies_to}
