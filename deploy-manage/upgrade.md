@@ -14,7 +14,7 @@ products:
 navigation_title: Upgrade
 ---
 
-# Upgrade your deployment, cluster, or orchestrator
+# Deployment, cluster, and orchestrator upgrades
 
 Upgrading to the latest version provides access to the newest Elastic features, security patches, performance improvements, and bug fixes. These updates reduce costs, speed up threat response, and improve investigative and analytical data tools.
 

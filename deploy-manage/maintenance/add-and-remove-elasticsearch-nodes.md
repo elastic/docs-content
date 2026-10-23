@@ -57,12 +57,12 @@ When you need to remove a node from an {{es}} cluster, you must first empty the 
 If the node to remove is a master-eligible node, review the [master-eligible node considerations](#modules-discovery-removing-nodes) before proceeding and do not remove multiple master-eligible nodes at the same time.
 :::
 
-1. Optional: Stop indexing and perform a synced flush:
+1. Optional: Stop indexing and perform a flush:
 
-    If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a synced flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
+    If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a flush, run the following command:
 
     ```console
-    POST /_flush/synced
+    POST /_flush
     ```
 
 2. Retrieve the node name:
@@ -100,7 +100,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
 
     After all shards have relocated to the other nodes, you can safely [stop the {{es}} process](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#stopping-elasticsearch) on the node you want to remove. Depending on your installation method and operating system, the command to stop {{es}} may vary. For example, if you are using systemd on a Linux system, you can run the following command:
 
-    ```console
+    ```sh
     sudo systemctl stop elasticsearch
     ```
 

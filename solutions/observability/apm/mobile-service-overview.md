@@ -50,9 +50,9 @@ Optimize your end-user experience and your application QA strategy based on your
 stack: ga 9.6+
 ```
 
-The **Service map** panel shows the mobile service’s upstream and downstream connections. It uses the selected time range, environment, and filters (including device, operating system version, app version, and network connection type).
+The **Service map** panel shows the mobile service’s upstream and downstream connections. It uses the selected time range and environment, and the mobile filters—device, operating system version, app version, and network connection type—are added to the KQL query.
 
-In the **Service map** panel, click **Explore in Service map** to open the full map with the service selected and the filters preserved.
+Click **Explore in Service map** to open the full map with the service selected. The link preserves the time range, environment, and KQL query, so the mobile filters carry over.
 
 For licensing requirements and map controls, refer to [](/solutions/observability/apm/service-map.md).
 

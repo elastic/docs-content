@@ -104,7 +104,7 @@ $$$save-the-lens-panel$$$
 
 :::::
 
-Once you have created your visualization, you can edit it directly on the dashboard. Click the **Edit visualization configuration** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
+Once you have created your visualization, you can edit it directly on the dashboard. Select the **Edit visualization** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
 
 
 ### Change the fields list [change-the-fields]
@@ -316,9 +316,9 @@ From the annotation panel, you can choose the type of placement and adjust the i
       2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
       3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
 
-    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search). To create custom query annotations:
+    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md). To create custom query annotations:
       1. Select **Custom query**.
-      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
+      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md).
       3. Select the **Target date field**.
 
 **Appearance**
@@ -418,7 +418,10 @@ In the legend, click the field, then choose one of the following options:
 
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
 
-To get started, click **Explore data in Discover** in the toolbar.
+Open the data in **Discover**:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Open in Discover**.
+- {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Explore in Discover**.
 
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 
@@ -427,7 +430,11 @@ For more information about exploring your data with **Discover**, check out [Dis
 
 To view the data included in the visualization and the requests that collected the data, use the **Inspector**.
 
-1. In the toolbar, click **Inspect**.
+1. Open the **Inspector**:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Inspect**.
+    - {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Inspect**.
+
 2. Open the **View** dropdown, then click **Data**.
 
     1. From the dropdown, select the table that contains the data you want to view.
