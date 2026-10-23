@@ -29,8 +29,6 @@ or by directly opening the proper connector edit flyout:
 :screenshot:
 :::
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` To test an email connector, enter the recipients. {{kib}} sends the fixed subject and message `This is a test email from Kibana`, so the test form has no **Subject** and **Message** fields. To send custom content, use the connector in a rule action. For details, refer to [Email connector and action](kibana://reference/connectors-kibana/email-action-type.md#email-action-configuration).
-
 ## Troubleshooting connectors with the `kbn-action` tool [_troubleshooting_connectors_with_the_kbn_action_tool]
 ```{applies_to}
 stack: preview
@@ -64,6 +62,8 @@ $ kbn-action ls
 ]
 ```
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` For an email connector, {{kib}} replaces the `subject` and `message` in the following example with the fixed text `This is a test email from Kibana`. The `to`, `cc`, and `bcc` recipients still apply. To send custom content, use the connector in a rule action. For details, refer to [Email connector and action](kibana://reference/connectors-kibana/email-action-type.md#email-action-configuration).
+
 You can then run the following test:
 
 ```txt
@@ -90,5 +90,3 @@ $ kbn-action execute a692dc89-15b9-4a3c-9e47-9fb6872e49ce '{subject: "hallo", me
     "actionId": "a692dc89-15b9-4a3c-9e47-9fb6872e49ce"
 }
 ```
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` For an email connector, {{kib}} replaces the `subject` and `message` in this example with the fixed text `This is a test email from Kibana`. The `to`, `cc`, and `bcc` recipients still apply.
