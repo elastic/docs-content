@@ -1519,6 +1519,7 @@ redirects:
           'create-a-custom-image':
   'deploy-manage/deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md'
   'deploy-manage/deploy/cloud-on-k8s/k8s-kibana-plugins.md': 'deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/k8s-kibana-plugins.md'
+  'deploy-manage/deploy/cloud-on-k8s/k8s-openshift-anyuid-workaround.md': '!deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-openshift.md'
   # related to https://github.com/elastic/docs-content/issues/7709
   'solutions/elasticsearch-solution-project/search-connection-details.md':
     to: 'solutions/elasticsearch-solution-project/search-connection-details.md'

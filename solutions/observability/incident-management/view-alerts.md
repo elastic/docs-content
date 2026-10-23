@@ -64,6 +64,34 @@ To view the alert in the app that triggered it:
 * From the alert detail flyout, click **View in app**.
 * From the Alerts table, click the {icon}`eye` icon.
 
+### Start an AI investigation [observability-alert-ai-investigation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Use {{agent-builder}} to investigate an alert and ask follow-up questions about the affected services. Before you start, refer to [Investigate an alert or the service map](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements) for requirements.
+
+1. In the **Alerts** table, click **Alert details** {icon}`maximize` for the alert you want to investigate.
+2. In the flyout, click **Alert details** to open the alert's detail page.
+3. Click **Add to chat** in the page header.
+
+{{agent-builder}} opens a new conversation with the alert attached and automatically sends `Investigate this alert`. The agent can retrieve the alert's rule, status, reason, and related entities. Refer to [Alert context](/solutions/observability/ai/agent-builder-observability.md#observability-agent-alert-context) for details.
+
+### Alert detail actions [observability-alert-detail-actions]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+From the **Actions** menu {icon}`boxes_vertical` in the alert detail page header, you can:
+
+- **Add to case**: Attach the alert to a case for tracking and collaboration.
+- **View in Discover**: Explore the data associated with the alert.
+- **Inspect**: Examine the rule's query and results. Refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md) for details.
+
+Available actions depend on the rule type and your permissions. Case actions require permission to read cases and add comments to them.
+
 ### {{product.apm}} alert detail pages [observability-view-alerts-apm-detail]
 
 ```{applies_to}
@@ -85,6 +113,8 @@ For **{{product.apm}} anomaly** alerts specifically, the alert detail page also 
 :alt: APM anomaly alert detail page showing RED metric charts for latency, throughput, and failed transaction rate, with a Major anomaly badge on the Latency chart
 :screenshot:
 :::
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` For **low transaction count** anomaly alerts, **Throughput** is the primary chart and displays the anomaly badge. **Latency** and **Failed transaction rate** are secondary charts.
 
 ## Review related alerts [observability-view-alerts-find-related-alerts]
 ```{applies_to}

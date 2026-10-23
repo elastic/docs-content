@@ -384,9 +384,12 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
     **Prerequisites:** The `rulePreviewAttachmentEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
+`security.build_redirect_url` {applies_to}`stack: ga 9.6+`
+:   Builds a link to a specific {{elastic-sec}} page in your current {{kib}} space, so the agent can send you to the UI for an operation it doesn't perform in chat, such as a CSV upload or a destructive settings change. This tool only builds the link and performs no action.
+
 ### Entity Analytics tools
 
-[Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, watchlists, and threat hunting leads.
+[Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, relationships, resolution groups, watchlists, and threat hunting leads.
 
 $$$agent-builder-security-entity-risk-score-tool$$$
 `security.entity_risk_score` {applies_to}`stack: ga 9.4+`
@@ -401,10 +404,39 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 `security.set_asset_criticality` {applies_to}`stack: ga 9.5+`
 :   Sets or removes the [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) level for a security entity and recalculates the entity's risk score.
 
+`security.get_entity_graph` {applies_to}`stack: ga 9.6+`
+:   Renders a preview of the [relationship graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) for a single entity, showing how it connects to other entities, events, and alerts. The preview links to the full interactive graph in the entity details flyout. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required.
+
+`security.get_entity_risk_score_history` {applies_to}`stack: ga 9.6+`
+:   Returns an entity's [risk score over time](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) and renders it as a chart. Can return either the entity's own score or its [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md) score. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required.
+
+`security.entity_relationship_history` {applies_to}`stack: ga 9.6+`
+:   Answers questions about when an [entity relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) was first or last observed, and which hosts or users an entity related to over a time window.
+
+**Entity resolution tools** manage [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) groups and rules. Mutating actions require user confirmation before running. An [Enterprise license](https://www.elastic.co/subscriptions) is required, and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled.
+
+`security.get_resolution_group` {applies_to}`stack: ga 9.6+`
+:   Returns an entity's resolution group: the primary entity and every alias linked to it. Works from either the primary entity or an alias.
+
+`security.link_entities` {applies_to}`stack: ga 9.6+`
+:   Links one or more entities of the same type to a primary entity, which creates or extends a resolution group. Risk scores update the next time scoring runs.
+
+`security.unlink_entities` {applies_to}`stack: ga 9.6+`
+:   Unlinks one or more entities from their resolution group, so each becomes a standalone entity again.
+
+`security.list_resolution_rules` {applies_to}`stack: ga 9.6+`
+:   Lists the automated resolution rules and whether each is enabled.
+
+`security.set_resolution_rules` {applies_to}`stack: ga 9.6+`
+:   Enables or disables one or more automated resolution rules.
+
 **Watchlist tools** manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md). Mutating actions require user confirmation before running. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required, and adding or removing entities also requires the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) to be enabled and populated.
 
 `security.list_watchlists` {applies_to}`stack: ga 9.5+`
 :   Lists the entity watchlists in the current space, including name, description, risk modifier, and member sources.
+
+`security.get_watchlist_id` {applies_to}`stack: ga 9.6+`
+:   Finds a watchlist by name or ID. The agent uses it when you refer to a watchlist by name before acting on it.
 
 `security.create_watchlist` {applies_to}`stack: ga 9.5+`
 :   Creates a new watchlist in the current space.
@@ -420,6 +452,15 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 
 `security.remove_entities_from_watchlist` {applies_to}`stack: ga 9.5+`
 :   Removes one or more entities from a watchlist by entity ID (EUID).
+
+`security.set_watchlist_rule_based_data_source` {applies_to}`stack: ga 9.6+`
+:   Creates or updates the [rule-based data source](/solutions/security/advanced-entity-analytics/watchlists.md#watchlists-create) that keeps a watchlist's membership in sync. Entities that match the query are added, and entities that stop matching are removed. The confirmation includes a preview of the entities the query currently matches.
+
+`security.remove_watchlist_rule_based_data_source` {applies_to}`stack: ga 9.6+`
+:   Removes a rule-based data source from a watchlist, which stops automatic membership sync for that source. Entities added manually or by other sources aren't affected. Managed data sources can't be removed.
+
+`security.list_watchlist_data_sources` {applies_to}`stack: ga 9.6+`
+:   Lists the data sources linked to a watchlist, including rule-based and managed data sources.
 
 **Lead generation tools** surface AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads) for security entities. An [Enterprise license](https://www.elastic.co/subscriptions) is required.
 
