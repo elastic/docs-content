@@ -49,7 +49,8 @@ Features are usually available on {{serverless-full}} before stack-versioned dep
 | [TOP_SNIPPETS function](#top_snippets-function) | Extract the best snippets for a given query string from a text field | 9.3 |
 | [MMR command](#result-diversification-with-mmr) | Reduce redundancy in results using Maximum Marginal Relevance diversification | 9.4 (preview) |
 | [EMBEDDING function](#embedding-function) | Generate dense vector embeddings from multimodal input using inference endpoints | 9.5 (preview) |
-| [Runtime search on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH` and `MATCH_PHRASE` | 9.5 (preview) |
+| [MATCH on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH` | 9.5 (preview) |
+| [MATCH_PHRASE on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH_PHRASE` | 9.6 |
 
 ## How search works in {{esql}}
 
