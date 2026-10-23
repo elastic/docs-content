@@ -174,49 +174,40 @@ When you grant **Organization owner** access, or **Cloud resource** access for o
 | Access | Grants |
 | --- | --- |
 | **Cloud Console, {{es}}, and {{kib}}** (default) | Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects. |
-| **{{es}} and {{kib}}** | Grants access to the {{kib}} interface and {{es}} service for the applicable projects, without access to the {{ecloud}} Console. |
+| **{{es}} and {{kib}}** | Grants access to project-level data and features for the applicable projects. This includes access to the {{kib}} interface and {{es}} service, but no access to the {{ecloud}} Console. |
 | **Cloud Console** | Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects. |
 
-### Data-plane-only members [data-plane-only]
+### Restrict access to the {{ecloud}} Console [es-and-kibana-access]
 
-A member is _data-plane-only_ when every resource assignment they hold is set to **{{es}} and {{kib}}**, and they hold no organization-level role. Data-plane-only members can sign in to {{ecloud}} and open their projects, but cannot access any {{ecloud}} Console surfaces such as the **Members**, **Billing**, or **Settings** pages. Console URLs return a branded Access Denied page.
+To limit a member's access to only the {{serverless-short}} projects they work in, and restrict their access to the {{ecloud}} Console, set their access level to **{{es}} and {{kib}}** on every resource assignment. This is useful for multi-tenant organizations, managed service providers, or any setup where members should use their projects without seeing organization-level settings or other members.
 
-Access is always additive. Any of the following gives a member full {{ecloud}} Console access, regardless of what is set on their other assignments:
+When every resource assignment a member holds is set to **{{es}} and {{kib}}**, and they hold no organization-level role, the member doesn't have access to most pages in the {{ecloud}} Console. These users can sign in to {{ecloud}} and open their assigned projects directly, but organization-level {{ecloud}} Console pages like **Members**, **Billing**, **Network security**, **Trust management**, and **Extensions** are not accessible. The project overview page in the Console remains accessible for projects the member is assigned to.
+
+Within an organization, access is always additive. Any of the following gives a member full {{ecloud}} Console access, regardless of what is set on their other assignments:
 
 * An assignment set to **Cloud Console** or **Cloud Console, {{es}}, and {{kib}}**
 * An assignment with no access level set
-* An {{ech}} deployment or Cloud Connect resource assignment, which cannot carry an access level in this release
+* An {{ech}} deployment or Cloud Connect resource assignment
 * An organization-level role such as **Organization owner** or **Billing admin**
 
-The restriction is evaluated for each organization independently. A member can be data-plane-only in one organization and have full Console access in another.
+The restriction is evaluated for each organization independently. A member can have only project-level access in one organization and full Console access in another.
 
-:::{note}
-The **{{es}} and {{kib}}** access level is designed for members provisioned and managed through an organization identity provider. Their IdP handles sign-in, credentials, and MFA.
+Some {{kib}} features include links that redirect to the {{ecloud}} Console, such as **Manage project**, **View all projects**, and **Organization**. For members with **{{es}} and {{kib}}** access, these links return a 403.
+
+:::{tip}
+% need to confirm this is still needed
+Members with no {{ecloud}} Console access need the direct project URL to open their projects. Share the URL with them so they can bookmark it. Project URLs follow this pattern: `https://<project-alias>.<kb>.<region>.<csp>.elastic-cloud.com`. You can find the project URL on the project's overview page in the {{ecloud}} Console.
 :::
-
-#### Reaching projects without the Console
-
-Data-plane-only members open their projects directly using the project URL. They cannot browse or discover projects from the {{ecloud}} Console. When you confine a member to the data plane, share the project URL with them so they can bookmark it.
-
-Project URLs follow this pattern: `https://<project-alias>.<kb>.<region>.<csp>.elastic-cloud.com`
-
-You can find the project URL on the project's overview page in the {{ecloud}} Console.
-
-#### In-product links to the Console
-
-Some {{kib}} features include links that redirect to the {{ecloud}} Console, such as **Manage project**, **View all projects**, and **Organization**. For data-plane-only members, these links return the Access Denied page.
 
 ### Considerations
 
-The **Access** selection impacts the behavior of the selected role. Most roles require **Cloud Console, {{es}}, and {{kib}}** access to take full effect.
+The **Access** selection impacts the behavior of the selected role. Most roles require an access level that includes {{es}} and {{kib}} access, either **Cloud Console, {{es}}, and {{kib}}** or **{{es}} and {{kib}}**, to take full effect.
 
-When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that are designed to work inside of the project have limited access, and can't open the project in {{kib}}. For example: 
+When {{es}} and {{kib}} access is not granted, roles that are designed to work inside of the project have limited access, and can't open the project in {{kib}}. For example: 
 
 * If you select the **Admin** role, the user is able to configure project settings and network security in {{ecloud}}, but can't log in to the relevant projects as superuser.
 * Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, can view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
-* [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require **Cloud Console, {{es}}, and {{kib}}** access. Without it, custom roles are replaced with the predefined **Viewer** role, and users can't log in to the project.
-
-Members with **{{es}} and {{kib}}** access can open the project and use all features granted by their role. They cannot access the {{ecloud}} Console. For details, refer to [Data-plane-only members](#data-plane-only).
+* [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require {{es}} and {{kib}} access. Without it, custom roles are replaced with the predefined **Viewer** role, and users can't log in to the project.
 
 If your organization uses [{{cps}}](/deploy-manage/cross-project-search-config.md), the roles assigned to a user determine what data they can access across linked projects. Users can only see data from a linked project if their role on that project grants the necessary privileges. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
 

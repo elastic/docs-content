@@ -61,6 +61,11 @@ To invite users to your organization:
 
     Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation before it expires. If the invite has expired, an admin can resend the invitation.
 
+:::{tip}
+% need to confirm this is still needed
+Members with [limited {{ecloud}} Console access](/deploy-manage/users-roles/cloud-organization/user-roles.md#es-and-kibana-access) need the direct project URL to open their projects. Share the URL with them so they can bookmark it. Learn more about [access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
+:::
+
 ## Invite users to join additional organizations [invite-additional-orgs]
 
 :::{include} _snippets/invite-additional-orgs.md

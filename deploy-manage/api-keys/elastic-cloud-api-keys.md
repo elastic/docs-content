@@ -137,6 +137,9 @@ When you grant **Organization owner** access, or **Cloud resource** access for o
 | --- | --- |
 | **Cloud API** (default) | Grants access to only [{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs. No direct access to project {{es}} or {{kib}} API endpoints. |
 | **Cloud, {{es}}, and {{kib}} API** | Grants the following access:<br><br>• [{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs<br><br>• [{{es}} {{serverless-short}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) API endpoints for the relevant projects |
+| **{{es}} and {{kib}} API** | Grants access to [{{es}} {{serverless-short}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) API endpoints for the relevant projects, with limited access to [{{ecloud}}]({{cloud-apis}}) APIs |
+
+% do we need an explicit list of the access to ecloud APIs?
 
 Using {{ecloud}} keys for project-level API access, rather than [granting keys from within each {{serverless-short}} project](serverless-project-api-keys.md), allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
 
