@@ -252,7 +252,7 @@ When a custom panel has a query, it responds to filters and options active on th
 - The time filter. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
 - The query bar and filter pills. The query fields are also available for suggestions in the query bar and filter editor.
 - [Controls](dashboard-controls.md), including [{{esql}} variable controls](add-variable-controls.md).
-- [Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) for approximate `STATS` results.
+- [Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) for approximate `STATS` results. When {{es}} applies approximation, the panel header shows a {icon}`bolt` badge. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 
 A panel without a query renders the same content regardless of the dashboard state.
 
