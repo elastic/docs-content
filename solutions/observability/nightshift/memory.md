@@ -18,15 +18,18 @@ Elastic nightshift is in private preview and isn't enabled by default. To reques
 
 ## View and edit context [nightshift-memory-manage]
 
-To see what Elastic nightshift knows about your systems, go to **Elastic nightshift** → **Management** → **Cortex**. Review the existing pages to confirm the information is correct for your environment. To update a page, select it, then select **Edit**.
+To see what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**, then check the **Cortex** and **Memory** tabs:
 
-You can also add information about your systems and processes that Elastic nightshift might not discover from your data, such as team conventions, deployment processes, or known issues. To add a page, select **New page** {icon}`plus` and enter the information you want investigations to use.
+- **Cortex**: Durable knowledge that the investigator reads before each run, organized into pages by type, such as services, runbooks, postmortems, and queries.
+- **Memory**: Lessons that the investigator saves after a run and recalls when it works on a similar problem, such as how a previous problem was resolved or which checks found its cause.
+
+Review the knowledge to confirm it's correct for your environment. You can edit, archive, or delete anything that isn't correct or useful. You can also add information about your systems and processes that Elastic nightshift might not discover from your data, such as team conventions, deployment processes, or known issues. For the steps, refer to [Manage what Elastic nightshift knows about your systems](./get-started.md#nightshift-get-started-knowledge).
 
 ## How investigations use context [nightshift-memory-usage]
 
 When an [investigation](./investigations.md) starts, the investigation agent reads the knowledge relevant to the affected services before querying your telemetry. This means the agent starts with an understanding of your environment, and investigations produce more accurate conclusions than they would from raw data alone.
 
-Investigations can't currently update or create knowledge base pages.
+Elastic nightshift also learns from every investigation it runs. It saves what it learns as knowledge, which makes later investigations more accurate and uses fewer tokens. If something it learned isn't correct, you can edit, archive, or delete it.
 
 ## Give feedback [nightshift-memory-feedback]
 
