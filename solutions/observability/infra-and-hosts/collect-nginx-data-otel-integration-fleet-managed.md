@@ -95,7 +95,7 @@ After you apply the policy changes, validate that both the ECS-based logs and th
 
 ::::{step} Validate the log collection
 
-1. In {{kib}}, go to **Discover**, then filter the results using the KQL search bar.
+1. In {{kib}}, go to **Discover**. If it opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then filter the results using the KQL search bar.
 2. Search for NGINX data stream datasets such as `nginx.access` and `nginx.error`, or enter:
 
    ```text

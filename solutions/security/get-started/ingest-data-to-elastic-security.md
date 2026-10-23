@@ -114,7 +114,7 @@ If your data goes to an index that doesn't match the default index patterns, suc
 
 Whichever method you use, confirm that your data reaches {{elastic-sec}}:
 
-- In [Discover](/solutions/security/investigate/discover-security.md), select or create a {{data-source}} that includes your index, then filter for documents from your source. For integration data, filter on the `data_stream.dataset` field, for example `data_stream.dataset : "okta.system"`. For data from other methods, filter on the index name, for example `_index : filebeat-*`.
+- In [Discover](/solutions/security/investigate/discover-security.md), if it opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then select or create a {{data-source}} that includes your index, then filter for documents from your source. For integration data, filter on the `data_stream.dataset` field, for example `data_stream.dataset : "okta.system"`. For data from other methods, filter on the index name, for example `_index : filebeat-*`.
 
   - If no documents appear, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md). For {{managed-integrations}}, refer to the [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-health).
   - If documents appear in Discover but not on {{elastic-sec}} pages, the {{data-source}} that {{elastic-sec}} uses doesn't include their index. To fix this, [add the index to that {{data-source}}](#security-ingest-other-methods).
