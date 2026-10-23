@@ -146,7 +146,7 @@ You can add different pieces of a Discover session to a dashboard, and manage ho
 
 ### Add Discover visualizations to dashboards [add-discover-visualization-to-dashboard]
 
-When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact flow depends on the [query mode](discover-get-started.md#search-in-discover) you're using in Discover.
+When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact flow depends on the [query mode](switch-esql-mode.md) you're using in Discover.
 
 You need permission to view and create dashboards.
 
