@@ -113,7 +113,7 @@ How the documentation gets installed depends on your version and configuration:
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` {{kib}} installs the documentation automatically when it starts, if both of these are true. If the documentation is already installed, {{kib}} updates it instead.
   - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available.
   - **Use AI features** is turned on in **Feature Settings**.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` In earlier versions, or if these conditions aren't met, you need to install the documentation from **GenAI Settings**.
+- In earlier versions, or if these conditions aren't met, you need to install the documentation from **GenAI Settings**.
 
 To install the documentation, you need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
 
