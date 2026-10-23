@@ -61,8 +61,10 @@ The possible values are `DeleteOnScaledownAndClusterDeletion` and `DeleteOnScale
 When you recreate a cluster this way:
 
 * Use the same name, namespace, and node set names, so the PersistentVolumeClaim names match.
-* Keep every PersistentVolumeClaim of the master-eligible nodes. {{es}} stores the cluster metadata on the master-eligible nodes. If half or more of them start with empty volumes, the cluster can't form a quorum and the original cluster can't be recovered. The empty nodes might bootstrap a new cluster next to it, or no master is elected. In that case, start a new cluster and restore from a snapshot, as described in [Troubleshoot discovery](/troubleshoot/elasticsearch/discovery-troubleshooting.md#discovery-no-master).
-* Expect a warning about `cluster.initial_master_nodes` in the logs of the master-eligible nodes. ECK sets this [managed setting](/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck.md) on every {{es}} resource that has no `elasticsearch.k8s.elastic.co/cluster-uuid` annotation, and a recreated resource starts without it. The warning is harmless when all master volumes are intact. Once the cluster has formed and ECK has recorded its UUID, ECK stops setting it.
+* Keep every PersistentVolumeClaim of the master-eligible nodes. {{es}} stores the cluster metadata on the master-eligible nodes. If half or more of them start with empty volumes, the cluster can't form a quorum and the original cluster can't be recovered. The empty nodes might bootstrap a new cluster next to it, or no master is elected.
+
+  If the original cluster can't be recovered, start a new cluster and restore from a snapshot, as described in [Troubleshoot discovery](/troubleshoot/elasticsearch/discovery-troubleshooting.md#discovery-no-master).
+* Expect a warning about `cluster.initial_master_nodes` in the logs of the master-eligible nodes. ECK sets this [managed setting](/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck.md) on every {{es}} resource that has no `elasticsearch.k8s.elastic.co/cluster-uuid` annotation, and a recreated resource starts without it. The warning is harmless when the volumes of those PersistentVolumeClaims still hold the cluster data. Once the cluster has formed and ECK has recorded the cluster UUID, ECK stops setting it.
 
 
 ### Updating the volume claim settings [k8s-volume-claim-templates-update]
