@@ -1,7 +1,7 @@
 ---
 navigation_title: "{{alerting-v2-system-cap}}"
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -17,6 +17,8 @@ To open {{alerting-v2-system}}, go to **Alerting** in the {{observability}} navi
 
 :::{note}
 Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
+
+If you tried {{alerting-v2-system}} while it was experimental in {{stack}} 9.5, upgrade to 9.6 or later to use the generally available version. The system changed significantly between 9.5 and 9.6. This documentation covers only the generally available version.
 :::
 
 ## The building blocks

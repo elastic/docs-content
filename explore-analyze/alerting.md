@@ -24,7 +24,7 @@ Elastic offers three alerting systems. If you're not sure which fits your situat
 
 ```{applies_to}
 serverless: ga
-stack: ga 9.6+, experimental =9.5
+stack: ga 9.6+
 ```
 
 You write an {{esql}} query that defines what to watch for, decide whether matches are tracked as [alerts](alerting/esql/alerts.md) or recorded as rule events for later analysis, and control notifications through action policies that handle routing, frequency, and notification batching. {{alerting-v2-system-cap}} also adds alert lifecycle tracking, per-series snooze, queryable rule event history, and rules that can correlate those events for escalation. It is a strong fit when you want full control over what data travels with each detection and how your team is notified.

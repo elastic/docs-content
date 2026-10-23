@@ -1,7 +1,7 @@
 ---
 navigation_title: Set up
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -12,6 +12,10 @@ description: "License, connector, data, and space requirements, plus how to turn
 # Set up {{alerting-v2-system}} [setup]
 
 Check the requirements for {{alerting-v2-system}}, turn it on or off for all spaces, and turn on optional features in the spaces where you want them.
+
+:::{note}
+If you tried {{alerting-v2-system}} while it was experimental in {{stack}} 9.5, upgrade to 9.6 or later to use the generally available version. The system changed significantly between 9.5 and 9.6. This documentation covers only the generally available version.
+:::
 
 ## Before you use the system [alerting-setup-requirements]
 

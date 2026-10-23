@@ -1,7 +1,7 @@
 ---
 navigation_title: Create rules using Agent Builder
 applies_to:
-  stack: experimental 9.5+
+  stack: experimental 9.6+
   serverless: experimental
 products:
   - id: kibana
