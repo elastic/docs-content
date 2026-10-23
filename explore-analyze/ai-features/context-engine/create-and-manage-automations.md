@@ -33,9 +33,24 @@ Use the guided route to have {{agent-builder}} propose and set up an automation 
 2. In **Automations**, select **Add automation** → **Create with AI Agent**.
 3. {{agent-builder}} opens in the side panel and sends **Suggest an automation for this AI index.**
 
-    If this browser already has a conversation for this AI index in the current space, {{agent-builder}} reopens it. The browser remembers one conversation for each AI index in each space. To start over, click **Open navigation menu** at the top of the panel, click **New chat**, then select **Add automation** → **Create with AI Agent** again. If you send a message in the new chat, or select a different chat from that menu, that conversation is the one that reopens next time.
+    If this browser already has a conversation for this AI index in the current space, {{agent-builder}} reopens it. The browser remembers one conversation for each AI index in each space.
 
-4. Review the generation strategy that {{agent-builder}} proposes and the evidence it cites from your data. For an AI index without automations, {{agent-builder}} chooses the strategy from the data. It asks which entity to profile when the description covers more than one recurring entity, such as products and customers. It asks you to choose a strategy when two strategies fit about equally, or when the data doesn't show what the AI index is for. For an AI index that already has automations, it asks what you want to achieve.
+    To start over:
+
+    1. Click **Open navigation menu** at the top of the panel.
+    2. Click **New chat**.
+    3. Select **Add automation** → **Create with AI Agent** again.
+
+    If you send a message in the new chat, or select a different chat from that menu, that conversation is the one that reopens next time.
+
+4. Review the generation strategy that {{agent-builder}} proposes and the evidence it cites from your data.
+
+    For an AI index without automations, {{agent-builder}} chooses the strategy from the data. It asks you to choose in these cases:
+
+    - The description covers more than one recurring entity, such as products and customers. It asks which entity to profile.
+    - Two strategies fit about equally, or the data doesn't show what the AI index is for. It asks you to choose a strategy.
+
+    For an AI index that already has automations, it asks what you want to achieve.
 5. What happens next depends on the strategy:
 
     - **Index/Table Metadata, Bottom-Up, Cumulative / Wiki-style, and Targeted KI**: {{agent-builder}} installs a template and attaches the automation to the AI index. The install has no confirmation prompt. When one strategy clearly fits, it installs without asking you to approve it in chat.
@@ -45,11 +60,21 @@ Use the guided route to have {{agent-builder}} propose and set up an automation 
         2. {{agent-builder}} builds and pilots the workflow, removes the temporary KIs that the pilot wrote, and summarizes the results. Review the summary.
         3. In the confirmation prompt, select **Save and attach**. If the workflow replaces an existing automation, select **Replace** instead.
 
-6. {{agent-builder}} shows a confirmation prompt before it runs the automation. Select **Run automation**, or select **Cancel**. For an Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style automation that would write more than five KIs, the first prompt is a pilot of five items. Select **Run pilot**. To run the automation later, ask {{agent-builder}} again, select **Run** from the automation's actions menu ({icon}`ellipsis`) after the workflow is enabled, or [run it from the Workflows UI](#run-schedule-and-monitor-an-automation).
+6. Confirm the run:
 
-    A Targeted KI automation is the exception: {{agent-builder}} runs it without this prompt.
+    - For an Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style automation that would write more than five KIs, the first prompt is a pilot of five items. Select **Run pilot**. **Cancel** is the other button.
+    - Otherwise, select **Run automation** or **Cancel**.
+    - A Targeted KI automation is the exception. {{agent-builder}} runs it without this prompt.
 
-    If the pilot completes and writes a KI for each item, {{agent-builder}} estimates how long the full run takes and asks to start it. Select **Run automation**. Otherwise, {{agent-builder}} reports the problem and stops. The pilot writes real KIs, which the full run replaces. If you cancel the full run, the pilot's KIs stay in the AI index.
+    To run the automation later:
+
+    - Ask {{agent-builder}} again.
+    - From the actions menu ({icon}`ellipsis`), select **Run** after the workflow is enabled.
+    - [Run it from the Workflows UI](#run-schedule-and-monitor-an-automation).
+
+    If the pilot writes a KI for each item, {{agent-builder}} estimates how long the full run takes. Select **Run automation**.
+
+    If the pilot fails, or doesn't write a KI for each item, {{agent-builder}} reports the problem and stops. The pilot writes real KIs, which the full run replaces. If you cancel the full run, the pilot's KIs stay in the AI index.
 7. The full run continues in the background. To check on it, ask {{agent-builder}} for a progress update.
 8. Return to the AI index and confirm that the workflow appears in **Automations**.
 

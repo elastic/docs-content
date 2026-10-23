@@ -86,9 +86,15 @@ Create the automation:
 
 1. In **Automations**, select **Add automation** → **Create with AI Agent**.
 2. {{agent-builder}} opens a conversation and sends **Suggest an automation for this AI index.**
-3. Review the strategy that {{agent-builder}} names and the evidence it cites from your data. Confirm that it uses the intended source index. For the ecommerce sample data, {{agent-builder}} names **Cumulative / Wiki-style** and asks whether to profile products, customers, or both. Select an option, then select **Submit**.
+3. Review the strategy that {{agent-builder}} names and the evidence it cites from your data. Confirm that it uses the intended source index.
+4. For the ecommerce sample data, {{agent-builder}} names **Cumulative / Wiki-style** and asks whether to profile products, customers, or both. Select an option, then select **Submit**.
 
-For template strategies, such as Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style, {{agent-builder}} installs a template and attaches the resulting workflow to the AI index. The install has no confirmation prompt. When one strategy clearly fits, it installs without asking you to approve it in chat. If it asks which entity to profile, or which strategy to use, answer that question first. For other strategies, it first describes its plan and asks you to confirm before it builds and pilots a workflow. Installing the automation does not run it. For details about each path, refer to [Create an automation with Agent Builder](create-and-manage-automations.md#create-an-automation-with-agent-builder).
+What happens next depends on the strategy:
+
+- **Index/Table Metadata, Bottom-Up, Cumulative / Wiki-style, and Targeted KI**: {{agent-builder}} installs a template and attaches the workflow. The install has no confirmation prompt. If it asks which entity to profile, or which strategy to use, answer that question first.
+- **Other strategies**: {{agent-builder}} describes a plan and asks you to confirm before it builds and pilots a workflow.
+
+Installing the automation does not run it. For each path, refer to [Create an automation with Agent Builder](create-and-manage-automations.md#create-an-automation-with-agent-builder).
 
 :::{note}
 **Add automation** → **Create workflow** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
@@ -98,11 +104,12 @@ For template strategies, such as Index/Table Metadata, Bottom-Up, or Cumulative 
 
 Run the automation and inspect its output:
 
-1. After it attaches the automation, {{agent-builder}} asks to run it. If it installed a template and the run would write more than five KIs, it first asks to run a pilot over five items. Select **Run pilot**. A workflow that {{agent-builder}} built and piloted itself skips this step.
-2. When {{agent-builder}} asks to start the full run, select **Run automation**. After a successful pilot, it also estimates how long the full run takes. If the pilot fails or doesn't write a KI for each item, {{agent-builder}} reports the problem and stops instead.
-3. The full run continues in the background. To check on it, ask {{agent-builder}} for a progress update until the run completes.
-4. Return to the AI index in **Context**, then open **Knowledge Indicators**.
-5. Open the KIs that the run wrote and confirm that they describe the intended data and include useful {{esql}} access patterns.
+1. If the run would write more than five KIs, select **Run pilot**. **Cancel** is the other button. A workflow that {{agent-builder}} already piloted skips this step.
+2. When {{agent-builder}} asks to start the full run, select **Run automation**. After a successful pilot, it also estimates how long the full run takes.
+3. If the pilot fails, or doesn't write a KI for each item, {{agent-builder}} reports the problem and stops.
+4. The full run continues in the background. Ask {{agent-builder}} for a progress update until the run completes.
+5. Return to the AI index in **Context**, then open **Knowledge Indicators**.
+6. Open the KIs that the run wrote and confirm that they describe the intended data and include useful {{esql}} access patterns.
 
 For a detailed review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
