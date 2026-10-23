@@ -268,7 +268,7 @@ For more on dashboards and visualization, refer to the [Dashboards and visualiza
 
 ### View logs and metrics with Discover [azure-openai-discover]
 
-Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the data view drop-down, select either `logs-*` or `metrics-*` to view specific data. You can also create data views if, for example, you wanted to view both `logs-*` and `metrics-*` simultaneously.
+Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). If Discover opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). From the data view drop-down, select either `logs-*` or `metrics-*` to view specific data. You can also create data views if, for example, you wanted to view both `logs-*` and `metrics-*` simultaneously.
 
 ![screenshot of the Discover data view dropdown](/solutions/images/observability-discover-data-view-menu.png "")
 

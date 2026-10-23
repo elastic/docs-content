@@ -33,7 +33,7 @@ A {{data-source}} in your space is created automatically or by you.
 **Created by you**
 :   For your own data, you often need to create the {{data-source}} yourself. In the **Index pattern** field of the creation form, enter the indices, data streams, or aliases to match. Refer to [Create a data view](data-views/create-data-view.md).
 
-To see which {{data-sources}} already exist in your space, open the data view menu in **Discover** or **Lens**, or go to the **Data Views** management page.
+To see which {{data-sources}} already exist in your space, open the data view menu in **Discover** (in classic mode) or **Lens**, or go to the **Data Views** management page.
 
 ## Managed data views [managed-data-views]
 

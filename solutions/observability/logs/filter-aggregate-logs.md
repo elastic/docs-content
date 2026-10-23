@@ -85,7 +85,7 @@ Filter your data using the fields you’ve extracted so you can focus on log dat
 
 Discover is a tool that provides views of your log data based on data views and index patterns. To open **Discover**, find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From Discover, open the `logs-*` or `All logs` data views from the **Data views** menu. From here, you can use the [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data that’s displayed. For example, you might want to look into an event that occurred within a specific time range.
+If Discover opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then open the `logs-*` or `All logs` data views from the **Data views** menu. From here, you can use the [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data that’s displayed. For example, you might want to look into an event that occurred within a specific time range.
 
 Add some logs with varying timestamps and log levels to your data stream:
 
