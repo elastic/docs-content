@@ -13,10 +13,10 @@ description: Compare Kibana Classic Alerting, Kibana Universal Alerting, and Wat
 
 # Compare alerting systems [compare-alerting-systems]
 
-Elastic offers three alerting systems, each suited to different use cases and workflows. Use this page to compare them by goal, feature, and availability.
+Elastic offers more than one alerting system, each suited to different use cases and workflows. Use this page to compare them by goal, feature, and availability.
 
 :::{note}
-{{elastic-sec}} has its own detection rules, separate from these three systems. For threat detection, refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
+{{elastic-sec}} has its own detection rules, separate from these alerting systems. For threat detection, refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
 :::
 
 ## Select by use case

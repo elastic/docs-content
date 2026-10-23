@@ -45,7 +45,7 @@ For a step-by-step walkthrough of what happens after a rule runs, refer to [How 
 ## Get started or go deeper [system-overview-next-steps]
 
 - [Get started](get-started.md): Learn how the system works and its key terms, then create your first rule in a hands-on tutorial.
-- [Set up {{alerting-v2-system}}](setup.md): Check the requirements, then turn the system on or off.
+- [Set up {{alerting-v2-system}}](setup.md): Check the requirements and turn on optional features.
 - [Manage](manage.md): Give your team the role privileges it needs, and manage the API keys that authorize rules, action policies, and workflows.
 - [Rules](rules.md): Define what to watch for in {{esql}}, and decide which creation path fits your use case.
 - [Alerts](alerts.md): Learn how alerts track a problem from first detection through recovery, and how to triage them.
