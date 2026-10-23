@@ -12,7 +12,7 @@ products:
 
 # Get started with {{elastic-sec}} [getting-started]
 
-Deploy {{elastic-sec}}, bring in your data, and start detecting threats. For what {{elastic-sec}} covers and how its parts fit together, refer to the [{{elastic-sec}} overview](/solutions/security.md).
+Create a {{sec-serverless}} project or set up an {{stack}} deployment, then bring in your data and start detecting threats. For what {{elastic-sec}} covers and how its parts fit together, refer to the [{{elastic-sec}} overview](/solutions/security.md).
 
 ## Set up {{elastic-sec}} [security-get-started-steps]
 
@@ -21,13 +21,16 @@ These steps follow the **Set up Security** checklist on the {{elastic-sec}} **Ge
 {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` If you're migrating from Splunk, QRadar, or Microsoft Sentinel, run [Automatic Migration](/solutions/security/get-started/automatic-migration.md) after you create your deployment. It translates your existing rules and identifies the data sources they need, so you know which integrations to add in step 2.
 
 ::::::{stepper}
-:::::{step} Create or choose a deployment
+:::::{step} Create a project or deployment
 
-{{sec-serverless}} is the quickest way to start, because Elastic manages the underlying {{es}} cluster and {{kib}} instances for you.
+If you already have a deployment, go to the next step. If it's self-managed, first check the requirements in the Self-managed tab.
 
 $$$create-sec-serverless-project$$$
-::::{dropdown} Create an {{sec-serverless}} project
-:open:
+::::{tab-set}
+
+:::{tab-item} {{serverless-full}}
+{{sec-serverless}} is the quickest way to start, because Elastic manages the underlying {{es}} cluster and {{kib}} instances for you.
+
 There are two options to create serverless projects:
 - If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration). For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 - If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and do the following:
@@ -37,17 +40,19 @@ There are two options to create serverless projects:
   4. Select a cloud provider and region.
   5. Select **Create project**. It takes a few minutes to create your project.
   6. Once the project is ready, select **Continue** to open the **Get started** page. You might need to log in to {{ecloud}} again.
-
-:::{note}
-You need the `admin` predefined role or an equivalent custom role to create projects. For more information, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 :::
+
+:::{tab-item} {{ech}}
+[Create an {{ech}} deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md). Elastic provisions {{fleet-server}} automatically when you create the deployment, and detections need no extra configuration.
+:::
+
+:::{tab-item} Self-managed
+1. [Deploy a self-managed cluster](/deploy-manage/deploy/self-managed.md).
+2. [Deploy {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md) so you can enroll {{agent}} on your hosts.
+3. Meet the detection requirements: HTTPS between {{es}} and {{kib}}, an encryption key in `kibana.yml`, and security turned on in {{es}}. Refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
+:::
+
 ::::
-
-For other deployment types:
-
-- **{{ech}}:** [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md). Detections need no extra configuration.
-- **Self-managed:** [Deploy a self-managed cluster](/deploy-manage/deploy/self-managed.md), then [deploy {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md) so you can enroll {{agent}} on your hosts. Before detections can run, you also need HTTPS between {{es}} and {{kib}} and an encryption key in `kibana.yml`. Refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
-- **Existing deployment:** Go to the next step. On a self-managed deployment, check the detection requirements first.
 
 To compare all options, refer to [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type).
 :::::

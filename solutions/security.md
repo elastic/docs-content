@@ -18,7 +18,7 @@ description: Elastic Security combines threat detection analytics, cloud native 
 
 # {{elastic-sec}} solution & project type overview [es-overview]
 
-To deploy {{elastic-sec}} and bring in your data, refer to [Get started with {{elastic-sec}}](/solutions/security/get-started.md).
+To create a project or deployment and bring in your data, refer to [Get started with {{elastic-sec}}](/solutions/security/get-started.md).
 
 :::{include} ../get-started/_snippets/security-overview.md
 :::
