@@ -35,8 +35,6 @@ To register snapshot repositories in ECE directly at the deployment level, follo
 * [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
 * [Google Cloud Storage](https://cloud.google.com/storage/docs/)
 
-Only the repository types listed on this page are supported in {{ece}}. 
-
 For more details about how snapshots are used with {{es}}, refer to [](/deploy-manage/tools/snapshot-and-restore.md).
 
 If you are installing ECE [without internet access](/deploy-manage/deploy/cloud-enterprise/air-gapped-install.md), you need to use an on-premise storage service.
