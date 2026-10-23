@@ -21,6 +21,6 @@ To view and manage reports, go to **Management** > **Reporting**.
 :screenshot:
 :::
 
-You can download or view details about the report by clicking the icons in the actions menu.
+Use the actions menu for a report to download it, view details about it, or open the app where it was generated.
 
 To delete one or more reports, select their checkboxes then click **Delete reports**.
