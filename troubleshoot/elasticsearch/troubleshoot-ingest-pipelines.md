@@ -99,7 +99,7 @@ The {{es}} API response body includes errors encountered at any stage of the ing
 
 To demonstrate a common example, a document can be rejected from indexing due to a [mapping](/manage-data/data-store/mapping.md) conflict when the incoming data does not match the [explicit field types](/manage-data/data-store/mapping/explicit-mapping.md) defined inside the existing index's mapping. The {{es}} logs might include entries such as:
 
-```console
+```text
 [index] Error while parsing document for index [index]: [1:852] object mapping for [field] tried to parse field [field] as object, but found a concrete value at org.elasticsearch.index.mapper.DocumentParser.throwOnConcreteValue(DocumentParser.java:359)
 ```
 
