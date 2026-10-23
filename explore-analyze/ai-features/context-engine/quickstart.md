@@ -71,7 +71,7 @@ A source identifies the data that the automation can analyze. For this tutorial,
 
 Add a source to the AI index:
 
-1. In **Sources**, select **Edit**.
+1. In **Sources**, select **Add sources**.
 2. On the **Elasticsearch data** tab, start typing the name of an index, data stream, or alias. If you are using the ecommerce sample data, enter `kibana_sample_data_ecommerce`.
 3. Select the matching result.
 4. Confirm that the source appears under **Selected sources**, then select **Save**.
@@ -86,9 +86,9 @@ Create the automation:
 
 1. In **Automations**, select **Add automation** → **Create with AI Agent**.
 2. {{agent-builder}} opens a conversation and sends **Suggest an automation for this AI index.**
-3. Review the strategy that {{agent-builder}} names and the evidence it cites from your data. Confirm that it uses the intended source index. If two strategies fit about equally, {{agent-builder}} asks you to choose and lists its recommendation first.
+3. Review the strategy that {{agent-builder}} names and the evidence it cites from your data. Confirm that it uses the intended source index. For the ecommerce sample data, {{agent-builder}} names **Cumulative / Wiki-style** and asks whether to profile products, customers, or both. Select an option, then select **Submit**.
 
-For template strategies, such as Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style, {{agent-builder}} installs a template and attaches the resulting workflow to the AI index. The install has no confirmation prompt. When one strategy clearly fits, it installs without asking you to approve it in chat. If two strategies fit about equally, answer the question in the previous step. For other strategies, it first describes its plan and asks you to confirm before it builds and pilots a workflow. Installing the automation does not run it. For details about each path, refer to [Create an automation with Agent Builder](create-and-manage-automations.md#create-an-automation-with-agent-builder).
+For template strategies, such as Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style, {{agent-builder}} installs a template and attaches the resulting workflow to the AI index. The install has no confirmation prompt. When one strategy clearly fits, it installs without asking you to approve it in chat. If it asks which entity to profile, or which strategy to use, answer that question first. For other strategies, it first describes its plan and asks you to confirm before it builds and pilots a workflow. Installing the automation does not run it. For details about each path, refer to [Create an automation with Agent Builder](create-and-manage-automations.md#create-an-automation-with-agent-builder).
 
 :::{note}
 **Add automation** → **Create workflow** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
