@@ -174,6 +174,7 @@ curl -XPOST \
 1. When granting a custom serverless role, you need to grant the relevant `viewer` role ID for the project type.
 2. [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) for the user in this {{serverless-short}} project. 
 3. Pass an empty `application_roles` array to grant only {{ecloud}} Console access to the relevant resources. [Learn more about access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
+% can/should we expose the `*-application-only` role ID pattern?
 :::
 
 :::{dropdown} View pending invitations to your organization

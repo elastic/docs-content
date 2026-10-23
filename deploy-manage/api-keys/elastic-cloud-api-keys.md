@@ -151,14 +151,21 @@ The [cross-project search feature](/deploy-manage/cross-project-search-config/cp
 
 When granting Cloud resource access, you can apply a [predefined role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) to granularly control access to the specified resources. The selected role controls access to resources in all relevant APIs. 
 
+#### Restrict access to {{es}} and {{kib}} APIs
+
+To limit an API key to project-level operations without granting access to organization-level {{ecloud}} APIs, set the API access level to **{{es}} and {{kib}} API** on every role assignment for the key. This is useful when you need programmatic access to project data without exposing organization management capabilities.
+
+API access is additive. If any role assignment on the key uses **Cloud API** or **Cloud, {{es}}, and {{kib}} API** access, the key has access to the {{ecloud}} API, as defined by the role, regardless of what is set on other assignments.
+
 #### Considerations
 
-All roles include permissions for Cloud APIs, as well as {{es}} and {{kib}} APIs. Your **API access** selection limits the role's scope and can disable core functionality:
+The **API access** selection impacts the behavior of the selected role. Most roles require an access level that includes {{es}} and {{kib}} API access, either **Cloud, {{es}}, and {{kib}} API** or **{{es}} and {{kib}} API**, to take full effect.
 
-* **Cloud API access**: The API key can use the role’s permissions for organization-level actions in {{ecloud}}, but it has no direct access to the project itself. Roles designed for project use, such as the Security **Tier 1 analyst** role, have only **Viewer** access to the relevant projects through {{ecloud}} APIs. 
-  
-  API keys with custom roles are also limited to **Viewer** access in the project.
+When {{es}} and {{kib}} API access is not granted, roles that are designed to work inside of the project have limited access. For example:
 
-* **Cloud, {{es}}, and {{kib}} API access**: The API key can use the role’s permissions to fully interact with the project. This selection is required for custom roles to work as intended, because they rely on the {{es}} and {{kib}} serverless APIs for project-level access.
+* Roles such as the Security **Tier 1 analyst** role have only **Viewer** access to the relevant projects through {{ecloud}} APIs.
+* [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) are also limited to **Viewer** access in the project.
+
+When access is set to **{{es}} and {{kib}} API**, the API key can use the role's permissions in the project, but cannot access organization-level {{ecloud}} APIs such as members, billing, or network security.
 
 For details on the permissions granted for each role, refer to the [predefined roles table](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table).
