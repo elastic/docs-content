@@ -64,7 +64,9 @@ $$$agent-builder-builtin-search-tool$$$ `platform.core.search` {applies_to}`stac
 :   Searches {{es}} data using natural language, automatically selecting between query DSL and {{esql}} based on the query intent.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
-:   Searches and retrieves documentation about Elastic products. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section. This takes a few minutes.
+:   Searches and retrieves documentation about Elastic products. If **Elastic documentation** isn't installed, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install it from the **Documentation** section. This takes a few minutes.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` {{kib}} installs the documentation automatically if requirements are met. Refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
 
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
@@ -374,7 +376,9 @@ $$$agent-builder-security-attack-discovery-search-tool$$$
 :   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery/index.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once.
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
-:   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
+:   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. If **Security labs** isn't installed, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install it from the **Documentation** section. This takes a few minutes.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} installs Security labs content automatically if requirements are met. Refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
 
 `security.create_detection_rule` {applies_to}`stack: ga 9.4+`
 :   Creates a security detection [rule](/solutions/security/detect-and-alert/rule-types.md) from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports [ES|QL rules](/solutions/security/detect-and-alert/esql.md) only. Form changes suggested in chat must be applied manually.
