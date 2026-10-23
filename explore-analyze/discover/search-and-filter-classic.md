@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Narrow the documents in a data view to the ones you need by searching with KQL or Lucene and adding filters in Discover classic mode.
+description: Narrow the documents in a data view to the ones you need by searching with Kibana Query Language (KQL) or Lucene and adding filters in classic mode.
 ---
 
 # Search and filter with KQL, Lucene, and filters
@@ -28,7 +28,7 @@ To search all fields, enter a text string in the query bar.
 Free text searches that don't specify a field might not return the results you expect, depending on how the [`index.query.default_field` index setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-query-default-field) is configured for the indices that match the current data view.
 :::
 
-To search particular fields and build more complex queries, use [KQL](../query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query. To use [Lucene](../query-filter/languages/lucene-query-syntax.md) instead, switch the query language of the query bar.
+To search particular fields and build more complex queries, use [KQL](../query-filter/languages/kql.md). As you enter text, KQL prompts you with the fields you can search and the operators you can use to build a structured query. To use [Lucene](../query-filter/languages/lucene-query-syntax.md) instead, switch the query language of the query bar.
 
 For example, search the ecommerce sample data for documents where the country matches US:
 
@@ -46,11 +46,11 @@ $$$filter-in-discover$$$
 
 ## Filter with the filter bar
 
-Besides the query bar, you can build filters one by one with **Add filter**, or define them as Query DSL.
+Besides the query bar, you can build filters one by one with **Add filter**, or define them as [Query DSL](../query-filter/languages/querydsl.md).
 
 For example, exclude results from the ecommerce sample data view where the day of the week is Wednesday:
 
-1. Select ![Add icon](/explore-analyze/images/kibana-add-icon.png "") next to the query bar.
+1. Select ![Add filter icon](/explore-analyze/images/kibana-add-icon.png "") next to the query bar.
 2. In the **Add filter** pop-up, set the field to **day_of_week**, the operator to **is not**, and the value to **Wednesday**.
 
     ![Add filter dialog in Discover](/explore-analyze/images/kibana-discover-add-filter.png "")

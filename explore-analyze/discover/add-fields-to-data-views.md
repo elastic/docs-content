@@ -42,7 +42,7 @@ The following examples use the [sample ecommerce data](/manage-data/ingest/sampl
 * **Set value**: enabled
 * **Script**:
 
-    ```ts
+    ```painless
     emit("Hello World!");
     ```
 
@@ -53,7 +53,7 @@ The following examples use the [sample ecommerce data](/manage-data/ingest/sampl
 * **Set value**: enabled
 * **Script**:
 
-    ```ts
+    ```painless
     String str = doc['customer_first_name.keyword'].value;
     char ch1 = str.charAt(0);
     emit(doc['customer_last_name.keyword'].value + ", " + ch1);
