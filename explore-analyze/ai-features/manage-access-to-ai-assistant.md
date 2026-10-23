@@ -114,10 +114,10 @@ How the documentation gets installed depends on your version:
   - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available.
   - **Use AI features** is turned on in **Feature Settings**.
 
-  If either condition isn't met, the documentation needs a manual install.
-- {applies_to}`stack: ga 9.4-9.5` The documentation needs a manual install.
+  If either condition isn't met, you need to install the documentation from **GenAI Settings**.
+- {applies_to}`stack: ga 9.4-9.5` You need to install the documentation from **GenAI Settings**.
 
-A manual install requires the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
+To install the documentation, you need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
 
 1. Go to **GenAI Settings**.
 2. In the **Documentation** section, select **Install** next to **Elastic documentation**.
