@@ -33,7 +33,7 @@ Use the following table to jump to the query you need:
 
 Before you can query alert history in Discover, add the alert data streams as data views. Repeat these steps for each stream.
 
-1. Open **Discover**, and then open the data view menu.
+1. Open **Discover**. If it opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then open the data view menu.
 2. Select **Create a data view**.
 3. Give your data view a name, for example `.rule-events` or `.alert-actions`.
 4. In the **Index pattern** field, enter the data stream name:

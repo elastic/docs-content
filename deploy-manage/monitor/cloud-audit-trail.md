@@ -137,7 +137,7 @@ Events start flowing when you enable delivery. Historical cloud audit logs are n
 
 After enabling delivery, explore your audit logs in the destination deployment:
 
-* Use the **{{ecloud}} audit logs** data view in **Discover** to browse individual events.
+* Use the **{{ecloud}} audit logs** data view in **Discover** to browse individual events. If Discover opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode) to select a data view.
 * Open the **[{{ecloud}}] Audit Logs** dashboard to visualize and filter audit activity.
 :::::
 :::::::
