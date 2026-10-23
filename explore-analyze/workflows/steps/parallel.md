@@ -42,6 +42,7 @@ The step has two modes, and each step must use exactly one of them.
 | `mode` | top level | string | No | Failure policy: `fail-fast` (default) or `settled`. Refer to [Handle branch failures](#workflows-parallel-failures). |
 | `branch-timeout` | top level | duration | No | Maximum time a single branch may run. No default. |
 | `timeout` | top level | duration | No | Maximum time the whole step may run, across all branches. No default. |
+| `if` | top level | string | No | Boolean or KQL expression that determines whether the step runs. When it's false, the workflow skips the step and no branch runs. Refer to [Skip a single step](/explore-analyze/workflows/steps/if.md#workflows-step-level-if). |
 
 Each entry in `branches` takes the following fields:
 
@@ -179,7 +180,7 @@ Use `settled` for best-effort enrichment where partial results are useful, and `
 `fail-fast` doesn't cancel branches that are already running. It only stops the step from starting more branches.
 :::
 
-The `parallel` step doesn't accept `on-failure` or `if` as top-level parameters. To keep the workflow running when a branch fails, set `mode: settled` and branch on the results in a following step:
+The `parallel` step doesn't accept `on-failure` as a top-level parameter. To keep the workflow running when a branch fails, set `mode: settled` and branch on the results in a following step:
 
 ```yaml
 - name: handle_partial_failure
@@ -229,14 +230,18 @@ Set `count-waiting: false` when branches spend most of their time waiting, so sl
 
 ## Branch body limitations [workflows-parallel-branch-limits]
 
-A branch body must be a straight-line sequence of steps. The following are rejected when you save the workflow, with an error on the offending step:
+A branch body is a straight-line sequence of steps. If you add an unsupported step type or step-level property, validation fails when you save the workflow.
 
-| Not supported in a branch | Use instead |
-|---|---|
-| Nested flow control: `if`, `switch`, `foreach`, `while` | Put the branching logic in a step before or after the `parallel` step, or move the branch body into a child workflow and call it with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute). |
-| Human-in-the-loop waits: `waitForInput`, `waitForApproval` | Pause before or after the `parallel` step. |
-| Step-level `on-failure` inside a branch | `mode: settled` to collect every branch's outcome, then handle failures in a step after the `parallel` step. |
-| Step-level `timeout` inside a branch | `branch-timeout` on the `parallel` step. |
+When you need flow-control or human-in-the-loop behavior, run those steps outside the branch body:
+
+* Put [`if`](/explore-analyze/workflows/steps/if.md), `switch`, `foreach`, or `while` steps before or after the `parallel` step, or move the branch body into a child workflow and call it with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute).
+* Run `waitForInput` and `waitForApproval` before or after the `parallel` step.
+
+To use step-level `if`, `on-failure`, or `timeout`, set them on the `parallel` step or on steps outside the branch body:
+
+* Set step-level `if` ([skip a single step](/explore-analyze/workflows/steps/if.md#workflows-step-level-if)) on the `parallel` step to run or skip every branch together, or use an [`if`](/explore-analyze/workflows/steps/if.md) step or step-level `if` on a step that runs before the `parallel` step.
+* Set `mode: settled` on the `parallel` step to collect every branch's outcome, then handle failures in a step after the `parallel` step.
+* Set `branch-timeout` on the `parallel` step to cap how long each branch may run.
 
 Timer-based `wait` steps are supported inside a branch.
 
