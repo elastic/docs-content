@@ -18,11 +18,11 @@ products:
 
 This page lists all built-in tools available in {{agent-builder}}, grouped by [namespace](custom-tools.md#protected-namespaces). Built-in tools are read-only: you can't modify or delete them.
 
-Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `platform.sig_events`, `platform.workflows`, `observability`, `security`) reflect this scoping.
+Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `platform.sig_events`, `platform.workflows`, `observability`, `security`) reflect this scoping. The [HTTP API tools](#http-api-tools) have no prefix.
 
 Some tools are in technical preview or require a license, an [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), or an experimental feature flag before they become available. These requirements are called out in each tool's entry.
 
-[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. You can also assign any available built-in tool to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create.
+[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are preconfigured with relevant tools. You can also assign any available built-in tool to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create, except the HTTP API tools, which every agent has automatically.
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
@@ -73,6 +73,9 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Creates or updates a visualization configuration based on a natural language description.
 
     {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` This tool isn't available through the [MCP server](../mcp-server.md).
+
+`platform.core.create_discover_session` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Creates or updates a **Discover** table from an {{esql}} query and shows the matching documents in an interactive table in the conversation. Refer to [Discover tables in chat](../agent-builder-discover-tables.md). Aggregating queries, such as queries with `STATS` or `PROMQL`, aren't supported. Use `platform.core.create_visualization` for those. This tool isn't available through the [MCP server](../mcp-server.md).
 
 `platform.core.execute_connector_sub_action` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
@@ -381,9 +384,12 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
     **Prerequisites:** The `rulePreviewAttachmentEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
+`security.build_redirect_url` {applies_to}`stack: ga 9.6+`
+:   Builds a link to a specific {{elastic-sec}} page in your current {{kib}} space, so the agent can send you to the UI for an operation it doesn't perform in chat, such as a CSV upload or a destructive settings change. This tool only builds the link and performs no action.
+
 ### Entity Analytics tools
 
-[Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, watchlists, and threat hunting leads.
+[Entity Analytics](/solutions/security/advanced-entity-analytics.md) tools work with security entities and their risk scores, asset criticality, relationships, resolution groups, watchlists, and threat hunting leads.
 
 $$$agent-builder-security-entity-risk-score-tool$$$
 `security.entity_risk_score` {applies_to}`stack: ga 9.4+`
@@ -398,10 +404,39 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 `security.set_asset_criticality` {applies_to}`stack: ga 9.5+`
 :   Sets or removes the [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) level for a security entity and recalculates the entity's risk score.
 
+`security.get_entity_graph` {applies_to}`stack: ga 9.6+`
+:   Renders a preview of the [relationship graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) for a single entity, showing how it connects to other entities, events, and alerts. The preview links to the full interactive graph in the entity details flyout. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required.
+
+`security.get_entity_risk_score_history` {applies_to}`stack: ga 9.6+`
+:   Returns an entity's [risk score over time](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) and renders it as a chart. Can return either the entity's own score or its [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md) score. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required.
+
+`security.entity_relationship_history` {applies_to}`stack: ga 9.6+`
+:   Answers questions about when an [entity relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) was first or last observed, and which hosts or users an entity related to over a time window.
+
+**Entity resolution tools** manage [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) groups and rules. Mutating actions require user confirmation before running. An [Enterprise license](https://www.elastic.co/subscriptions) is required, and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled.
+
+`security.get_resolution_group` {applies_to}`stack: ga 9.6+`
+:   Returns an entity's resolution group: the primary entity and every alias linked to it. Works from either the primary entity or an alias.
+
+`security.link_entities` {applies_to}`stack: ga 9.6+`
+:   Links one or more entities of the same type to a primary entity, which creates or extends a resolution group. Risk scores update the next time scoring runs.
+
+`security.unlink_entities` {applies_to}`stack: ga 9.6+`
+:   Unlinks one or more entities from their resolution group, so each becomes a standalone entity again.
+
+`security.list_resolution_rules` {applies_to}`stack: ga 9.6+`
+:   Lists the automated resolution rules and whether each is enabled.
+
+`security.set_resolution_rules` {applies_to}`stack: ga 9.6+`
+:   Enables or disables one or more automated resolution rules.
+
 **Watchlist tools** manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md). Mutating actions require user confirmation before running. A [Platinum or higher license](https://www.elastic.co/subscriptions) is required, and adding or removing entities also requires the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) to be enabled and populated.
 
 `security.list_watchlists` {applies_to}`stack: ga 9.5+`
 :   Lists the entity watchlists in the current space, including name, description, risk modifier, and member sources.
+
+`security.get_watchlist_id` {applies_to}`stack: ga 9.6+`
+:   Finds a watchlist by name or ID. The agent uses it when you refer to a watchlist by name before acting on it.
 
 `security.create_watchlist` {applies_to}`stack: ga 9.5+`
 :   Creates a new watchlist in the current space.
@@ -417,6 +452,15 @@ $$$agent-builder-security-entity-risk-score-tool$$$
 
 `security.remove_entities_from_watchlist` {applies_to}`stack: ga 9.5+`
 :   Removes one or more entities from a watchlist by entity ID (EUID).
+
+`security.set_watchlist_rule_based_data_source` {applies_to}`stack: ga 9.6+`
+:   Creates or updates the [rule-based data source](/solutions/security/advanced-entity-analytics/watchlists.md#watchlists-create) that keeps a watchlist's membership in sync. Entities that match the query are added, and entities that stop matching are removed. The confirmation includes a preview of the entities the query currently matches.
+
+`security.remove_watchlist_rule_based_data_source` {applies_to}`stack: ga 9.6+`
+:   Removes a rule-based data source from a watchlist, which stops automatic membership sync for that source. Entities added manually or by other sources aren't affected. Managed data sources can't be removed.
+
+`security.list_watchlist_data_sources` {applies_to}`stack: ga 9.6+`
+:   Lists the data sources linked to a watchlist, including rule-based and managed data sources.
 
 **Lead generation tools** surface AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads) for security entities. An [Enterprise license](https://www.elastic.co/subscriptions) is required.
 
@@ -446,6 +490,55 @@ PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
 
 `security.pci_field_mapper` {applies_to}`stack: preview 9.5`
 :   Inspects non-ECS index fields and suggests mappings to ECS fields for PCI queries. Use when scope discovery reports low ECS coverage.
+
+## HTTP API tools
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+HTTP API tools let agents look up and call {{es}} and {{kib}} HTTP APIs from a built-in set of supported API operations.
+
+Every agent has these tools automatically. You can't assign or remove them, and turning off [Elastic capabilities](../agent-builder-agents.md#elastic-capabilities) doesn't remove them.
+
+These tools don't appear on the **Tools** page. You see them when you [inspect an agent's tool calls](../chat.md#inspect-tool-calls-and-reasoning) and when `execute_api` asks you to confirm a change. Their IDs have no prefix such as `platform.core`.
+
+API calls use the privileges of the current user or API key. {{kib}} API calls run in the current space. For details, refer to [HTTP API tool privileges](../permissions.md#http-api-tool-privileges).
+
+`describe_api` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Returns the specification of an API operation, given the operation's identifier and whether it's an {{es}} or {{kib}} API. The specification includes the HTTP method, the path, a description, the parameter schema, and whether the operation can change or delete existing data, which determines whether `execute_api` asks for confirmation before calling it. The tool summarizes large nested types, and the agent can expand them with `describe_api_type`.
+
+`describe_api_type` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Returns the schemas of one or more types that `describe_api` summarized.
+
+`execute_api` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Calls an {{es}} or {{kib}} API operation and returns the raw response body. {{agent-builder}} truncates oversized responses before the agent sees them, so the agent narrows results with parameters such as filters, size limits, or field selections.
+
+    Before each call to an operation that can change or delete existing data, `execute_api` requests confirmation unless the agent's **Auto-approved APIs** setting includes the operation. For prompt behavior and exceptions, refer to [Confirm an API operation](../chat.md#confirm-an-api-operation). To configure auto-approval, refer to [Auto-approve API operations](../custom-agents.md#auto-approve-api-operations-optional).
+
+    In runs where no one can respond to a prompt, such as workflow `ai.agent` steps and sub-agent runs, `execute_api` declines these operations unless they were approved in advance. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+
+`discover_apis` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Lists the supported API operations for {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.
+
+    **Prerequisites:** Turn on [API discovery](#api-discovery).
+
+### API discovery [api-discovery]
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+To make `discover_apis` available, turn on the `agentBuilder:apiDiscovery` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) (**Elastic Agent Builder: API Discovery**) in each {{kib}} space where you want agents to use it. It's off by default.
+
+When API discovery is off, an agent can call only operations whose identifier it already knows. You can supply an identifier in the agent's instructions or [in your message](../chat.md#call-a-specific-api-operation).
+
+### API operation identifiers [api-operation-identifiers]
+
+Identifier formats depend on the service:
+
+* {{es}} identifiers combine the API group and operation name, separated by a period, such as `indices.create` or `indices.get_mapping`. Operations without a group use only the name, such as `bulk`.
+* {{kib}} identifiers combine the API group with a name based on the operation ID in the [{{kib}} API reference]({{kib-apis}}), such as `dashboards.create-dashboard` or `alerting.delete-alerting-rule-id`.
 
 ## Inline tools
 

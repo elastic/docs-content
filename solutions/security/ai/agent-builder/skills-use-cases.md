@@ -44,8 +44,17 @@ Use this skill to find risky entities or profile specific hosts, users, services
 | Has `host-12`'s risk score changed significantly in the last 90 days? | Compare current and historical risk scores, flag changes greater than 20 points as significant, and summarize what drove the change. |
 | What are the riskiest hosts that are high-impact assets? | Filter for entities with criticality `high_impact` or `extreme_impact` and sort by risk score. |
 | Set `host-12`'s asset criticality to high impact {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`|  Update the entity's asset criticality and recalculate its risk score. |
+| Show the relationship graph for `host-12` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Render a preview of the entity's [relationship graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) in the chat, with a link to the full interactive graph. |
+| Chart `user-42`'s risk score over the last 30 days {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Render a [risk score history](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) chart and summarize the trend. |
+| When did `user-42` first access `host-12`? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Query the entity's [relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) history for when the relationship was first or last observed, or which hosts or users an entity related to over a time window. |
+| Who is on the Executives watchlist? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Look up the watchlist by name and list its members. |
 
 ![Entity Analytics skill in Agent Builder](/solutions/images/security-ab-skill-ea.png)
+
+:::{note}
+:applies_to: {stack: ga 9.6+, serverless: ga}
+Some Entity Analytics operations, such as turning Entity Analytics on or off, are intentionally not performed in chat. When you ask for one of them, the agent gives you a link to the {{kib}} UI where you can perform this action instead.
+:::
 
 ## Watchlist management
 
@@ -66,10 +75,32 @@ Use this skill to manage [entity watchlists](/solutions/security/advanced-entity
 | Add `user-42` and `user-99` to the Executives watchlist | Resolve the watchlist by name and add the entities. |
 | Remove `host-9` from the Critical Infrastructure watchlist | Remove the entity from the named watchlist. |
 | Delete the Contractors watchlist | Delete the named watchlist. |
+| Automatically add any host running Ubuntu to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Create or update the watchlist's rule-based data source. The confirmation includes a preview of the entities the query currently matches. |
+| What's keeping the Server Fleet watchlist in sync? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | List every data source linked to the watchlist. |
+| Stop automatically adding Ubuntu hosts to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Remove the rule-based data source. Entities it added are removed on the next sync, and manually added entities aren't affected. |
 
 :::{tip}
 The `manage-watchlists` skill only covers watchlist changes. To also profile entities or filter them by watchlist, combine it with [`entity-analytics`](#entity-risk-investigation).
 :::
+
+## Entity resolution
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+**Enable:** `entity-resolution`
+
+Use this skill to inspect and correct [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) from chat. The agent can show an entity's resolution group — the primary entity and every alias linked to it — link or unlink entities, and list, enable, or disable the automated resolution rules. Linking and unlinking change group membership only, and risk scores update the next time scoring runs.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Who is `jsmith` resolved with? | Return the entity's resolution group, including the primary entity and each alias. |
+| `jsmith123` and `jsmith.contractor` are the same user, merge them | Link the entities into a resolution group. If you don't say which should be the primary entity, the agent proposes one and explains why. |
+| Unlink `jsmith.contractor` from that group | Unlink the alias so it becomes a standalone entity again. |
+| What resolution rules do we have? | List the automated resolution rules and whether each is enabled. |
+| Turn off the Windows SID rule | Disable the named rule. |
 
 ## Threat hunting leads
 
