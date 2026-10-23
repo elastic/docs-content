@@ -40,6 +40,8 @@ New to Discover? Start with [Explore fields and data with Discover](discover/dis
 
 Discover has two query modes. {{esql}} mode doesn't require a data view. Classic mode uses data views with KQL or Lucene. For your first {{esql}} queries, follow [Get started with {{esql}} in Discover](discover/try-esql.md).
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Discover** opens in {{esql}} mode by default. To use data views with KQL or Lucene, switch to classic mode. Refer to [Switch between {{esql}} and classic mode](discover/switch-esql-mode.md).
+
 ## Common tasks
 
 Once you're familiar with the basics, explore these guides for specific tasks:
