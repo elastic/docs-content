@@ -26,6 +26,9 @@ To install {{ece}} on additional hosts:
       --cloud-enterprise-version VERSION_NAME
       --availability-zone ZONE_NAME
     ```
+
+    {applies_to}`ece: ga 4.3` If the installation has an [install password](install.md#ece-install-password), also include `--install-password 'PASSWORD'`, or set the password in the `INSTALL_PASSWORD` environment variable before you run the script to keep it out of your shell history. Without the right password, the new host cannot read the secrets it needs to join and the installation fails.
+
     If you are creating a larger {{ece}} installation:
 
     * Make your installation [fault tolerant or highly available](ece-ha.md) by determining the failure domain for each host and using the `--availability-zone ZONE_NAME` parameter to specify the name of an [availability zone](ece-ha.md). For production systems, hosts should go into three different availability zones. For example, including the parameter `--availability-zone ece-zone-1c` when you install on additional hosts will assign each host to availability zone `ece-zone-1c`.
