@@ -37,7 +37,7 @@ Show me error and warning logs from logs-* for the last hour in a Discover table
 
 ## Start from Discover [discover-tables-from-discover]
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you start the conversation from **Discover** in {{esql}} mode, the [`discover-data-analysis`](builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) skill can also show the current documents in a **Discover** table, even when the `agentBuilder:experimentalFeatures` setting is off. For details on starting a conversation from **Discover**, refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you start the conversation from **Discover** in {{esql}} mode, the [`discover-data-analysis`](builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) skill can also show the current documents in a **Discover** table, even when the `agentBuilder:experimentalFeatures` setting is off. For details on starting a conversation from **Discover**, refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md).
 
 ## Work with the table
 
@@ -71,7 +71,7 @@ To keep the first table and add another, ask for a new table. If the conversatio
 
 ## Open the table in Discover
 
-Select **Open in Discover** to continue working in **Discover**. The results open in a new [**Discover** tab](/explore-analyze/discover/discover-get-started.md#run-multiple-explorations-with-tabs) with the same {{esql}} query, time range, columns, and sort order as the table.
+Select **Open in Discover** to continue working in **Discover**. The results open in a new [**Discover** tab](/explore-analyze/discover/work-with-tabs.md) with the same {{esql}} query, time range, columns, and sort order as the table.
 
 This button appears only if you have the **Read** or **All** privilege for **Discover**.
 

@@ -249,7 +249,7 @@ The proposed fix appears directly below your query, with the original lines and 
 
 :::{tip}
 :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
-After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md).
 :::
 
 

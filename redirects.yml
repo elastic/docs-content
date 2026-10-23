@@ -652,6 +652,69 @@ redirects:
 
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+  # related to https://github.com/elastic/docs-content/issues/4898
+  'explore-analyze/discover/discover-get-started.md':
+    to: 'explore-analyze/discover/discover-get-started.md'
+    many:
+      - to: 'explore-analyze/discover/explore-fields.md'
+        anchors:
+          'explore-fields-in-your-data': ''
+      - to: 'explore-analyze/discover/inspect-documents.md'
+        anchors:
+          'in-table-search': 'in-table-search'
+          'look-inside-a-document': 'look-inside-a-document'
+          'document-explorer-expand-documents': 'document-explorer-expand-documents'
+          'view-active-context-aware-experience': 'view-active-context-aware-experience'
+          'inspect-your-discover-queries': 'inspect-discover-request'
+      - to: 'explore-analyze/discover/compare-documents.md'
+        anchors:
+          'compare-documents-in-discover': ''
+      - to: 'explore-analyze/discover/copy-and-share-documents.md'
+        anchors:
+          'copy-row-content': 'copy-row-content'
+          'share-your-findings': 'share-your-findings'
+          'share-a-document-link': 'share-a-document-link'
+      - to: 'explore-analyze/discover/work-with-tabs.md'
+        anchors:
+          'run-multiple-explorations-with-tabs': ''
+          'manage-discover-tabs': 'manage-discover-tabs'
+      - to: 'explore-analyze/discover/analyze-discover-data-with-ai.md'
+        anchors:
+          'analyze-with-ai': ''
+          'context-aware-deep-analysis': 'context-aware-deep-analysis'
+      - to: 'explore-analyze/discover/generate-alerts-from-discover.md'
+        anchors:
+          'alert-from-Discover': ''
+      - to: 'explore-analyze/discover/use-classic-mode.md'
+        anchors:
+          'find-the-data-you-want-to-use': 'find-the-data-you-want-to-use'
+      - to: 'explore-analyze/discover/search-and-filter-classic.md'
+        anchors:
+          'search-in-discover': ''
+          '_default_mode_search_and_filter_using_kql': ''
+          'filter-in-discover': 'filter-in-discover'
+          'filter-pill-actions': 'filter-pill-actions'
+      - to: 'explore-analyze/discover/add-fields-to-data-views.md'
+        anchors:
+          'add-field-in-discover': ''
+      - to: 'explore-analyze/discover/visualize-field.md'
+        anchors:
+          '_visualize_aggregated_fields': ''
+      - to: 'explore-analyze/discover/esql-results.md'
+        anchors:
+          'cancel-query-in-discover': 'cancel-query-in-discover'
+      - to: 'explore-analyze/discover/use-esql.md'
+        anchors:
+          '_search_and_filter_using_esql': ''
+      - to: 'explore-analyze/discover/save-open-search.md'
+        anchors:
+          'save-discover-search': '_save_a_discover_session'
+      - to: 'explore-analyze/discover/background-search.md'
+        anchors:
+          'run-long-running-queries-in-the-background': ''
+      - to: 'troubleshoot/kibana/discover-empty-fields.md'
+        anchors:
+          '_troubleshooting': ''
   # related to https://github.com/elastic/docs-content/issues/4890
   'explore-analyze/discover/try-esql.md':
     to: 'explore-analyze/discover/try-esql.md'
