@@ -229,7 +229,7 @@ The `artifacts` array is optional and accepts up to 100 entries. Every artifact 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `artifacts[].id` | string | Any string | Artifact identifier. Required. <br><br> {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Max 150 characters. Must be unique within the rule. <br><br> {applies_to}`stack: experimental =9.5` Max 256 characters. |
+| `artifacts[].id` | string | Any string | Artifact identifier. Required. <br><br> Max 150 characters. Must be unique within the rule. |
 | `artifacts[].type` | string | Any string | Use `runbook` or `dashboard`. Other strings are allowed. Max 128 characters. |
 | `artifacts[].data` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | object | Type-specific object | Required. The artifact's content. Max 32 fields. |
 | `artifacts[].data.content` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | string | Non-empty string | The Markdown body of a runbook. {{kib}} displays it on the **Runbook** tab of the rule details page. Required when `type` is `runbook`. Max 50,000 characters. |
