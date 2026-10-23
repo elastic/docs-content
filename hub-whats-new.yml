@@ -21,19 +21,19 @@ products:
       label: Upgrade Elasticsearch
       url: /deploy-manage/upgrade/deployment-or-cluster.md
     items:
-      - title: Cross-project search
-        description: Query data across several Serverless projects without moving or copying it, from Discover, ES|QL, dashboards, and alerting. Generally available.
-        link: /explore-analyze/cross-project-search.md
-        availability:
-          - Serverless
-        tag: Search
-        featured: true
       - title: Vector database project type
         description: Run vector workloads on a Serverless project with vector-tuned defaults, inference access, and pricing built for embeddings.
         link: /solutions/vector-database.md
         availability:
           - Serverless
         tag: Vector search
+        featured: true
+      - title: Cross-project search
+        description: Query data across several Serverless projects without moving or copying it, from Discover, ES|QL, dashboards, and alerting. Generally available.
+        link: /explore-analyze/cross-project-search.md
+        availability:
+          - Serverless
+        tag: Search
       - title: ES|QL HIGHLIGHT command
         description: Show which terms matched a full-text query by wrapping them in highlight tags in your ES|QL results. Generally available.
         link: elasticsearch://reference/query-languages/esql/commands/highlight.md
