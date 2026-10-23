@@ -29,7 +29,7 @@ Open **Discover** and run a query that returns at least two results.
 
    ![Comparison view in Discover](/explore-analyze/images/kibana-discover-compare-rows.png "")
 
-4. Optionally, customize the **Comparison settings** to your liking. You can for example choose to not highlight the differences, to show them more granularly at the line, word, or character level, or even to hide fields where the value matches for all results.
+4. Optionally, adjust the **Comparison settings**. For example, you can turn off difference highlighting, show differences at the line, word, or character level, or hide fields where the value matches for all results.
 5. Exit the comparison view at any time using the **Exit comparison mode** button.
 
 ## Related pages

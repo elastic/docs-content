@@ -13,9 +13,13 @@ description: Copy results from Discover as text, JSON, or Markdown, or send a li
 
 When you want to use results outside of **Discover**, you can copy them to your clipboard. When you want someone else to see what you see, you can send a link that reopens the same view or the same document.
 
+## Before you begin
+
+Open **Discover** and run a query that returns results.
+
 ## Copy results as text, JSON, or Markdown [copy-row-content]
 
-You can quickly copy the content currently displayed in the table for one or several results to your clipboard.
+You can quickly copy the content displayed in the table for one or several results to your clipboard.
 
 1. Select the rows you want to copy.
 2. Open the **Selected** menu in the table toolbar, and select one of the available formats:
@@ -23,7 +27,7 @@ You can quickly copy the content currently displayed in the table for one or sev
    - **Copy documents as JSON**, or **Copy results as JSON** if you're in {{esql}} mode.
    - {applies_to}`stack: ga 9.3+` **Copy selection as Markdown**: Selected results are copied as a Markdown table.
 
-The content is copied to your clipboard in the selected format. Fields that are not currently added to the table are ignored.
+The content is copied to your clipboard in the selected format. Fields that are not added to the table are ignored.
 
 :::{tip}
 You can copy the content of a single cell to your clipboard from the quick actions that appear when hovering over the cell.

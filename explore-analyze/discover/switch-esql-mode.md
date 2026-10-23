@@ -92,4 +92,4 @@ From the application menu, select **Switch to classic**.
 ## Related pages
 
 - [Use Discover with {{esql}}](use-esql.md)
-- [Explore fields and data with Discover](discover-get-started.md)
+- [Introduction to Discover](discover-get-started.md)

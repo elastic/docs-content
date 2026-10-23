@@ -19,9 +19,9 @@ Open **Discover** and run a query that returns results.
 
 ## Find and highlight values in the table [in-table-search]
 
-Use the in-table search to find and highlight specific values beyond what's currently visible on your screen.
+Use the in-table search to find and highlight specific values beyond what's visible on your screen.
 
-The in-table search looks for all matching values in all results and pages currently loaded in the table. The number of results loaded depends on the [Sample size](document-explorer.md#document-explorer-sample-size). If you load more results, the search automatically updates and reflects the new number of matching values, if any more are found.
+The in-table search looks for all matching values in all results and pages loaded in the table. The number of results loaded depends on the [Sample size](document-explorer.md#document-explorer-sample-size). If you load more results, the search automatically updates and reflects the new number of matching values, if any more are found.
 
 ```{tip}
 You can navigate between results with your keyboard by pressing "Enter" to go to the next result, and "Shift + Enter" to go to the previous result.
@@ -43,8 +43,8 @@ Dive into an individual document to view its fields and the documents that occur
 2. Scan through the fields and their values. You can filter the table in several ways:
 
    * If you find a field of interest, hover your mouse over the **Field** or **Value** columns for filters and additional options.
-   * Use the search above the table to filter for specific fields or values, or filter by field type using the options next to the search field.
-   * You can pin fields by selecting the left column, so they stay displayed even if you filter the table.
+   * Use the search field to filter for specific fields or values, or filter by field type using the options next to it.
+   * You can pin fields from the first column of the fields table, so they stay displayed even if you filter the table.
 
    ::::{tip}
    You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
@@ -65,7 +65,7 @@ To copy a link that reopens this document, select {icon}`link` **Copy link** in 
 
 ## Check which context-aware experience is active [view-active-context-aware-experience]
 
-You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
+You can check which experience is active in your Discover session. This can help you confirm whether Discover detects the type of data you're exploring or uses its default experience.
 
 1. Open the Inspector:
    * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**. You can also select **Inspect tab** from the application menu to inspect the active tab.

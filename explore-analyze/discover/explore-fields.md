@@ -15,7 +15,7 @@ When you open **Discover** on data you don't know yet, the fields list shows wha
 
 ## Before you begin
 
-Open **Discover** and run a query that returns results. If you haven't run a query in {esql} mode yet, refer to [Get started with {esql} in Discover](try-esql.md). In classic mode, select a data view first. Refer to [Use Discover in classic mode](use-classic-mode.md).
+Open **Discover** and run a query that returns results. If you haven't run a query in {{esql}} mode yet, refer to [Get started with {{esql}} in Discover](try-esql.md). In classic mode, select a data view first. Refer to [Use Discover in classic mode](use-classic-mode.md).
 
 ## Explore the fields
 
