@@ -59,14 +59,14 @@ When you're ready to explore your own data, refer to [Ingest data](/manage-data/
 
 **Discover** is the starting point for data exploration. You can search, filter, and visualize your data interactively.
 
-Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasticsearch Query Language), a piped query language that lets you chain operations like filtering, aggregating, and sorting in a single query. Unlike the default classic, KQL-based mode, {{esql}} doesn't require you to set up a {{data-source}} first: you query indices directly by name, so you can start exploring right away.
+Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasticsearch Query Language), a piped query language that lets you chain operations like filtering, aggregating, and sorting in a single query. Unlike classic mode, which is KQL-based, {{esql}} doesn't require you to set up a {{data-source}} first: you query indices directly by name, so you can start exploring right away.
 
 ::::::{stepper}
 
-:::::{step} Open Discover and switch to {{esql}}
+:::::{step} Open Discover in {{esql}} mode
 
 1. From the navigation menu, go to **Discover**.
-2. In the application menu, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) to switch to {{esql}} mode.
+2. If Discover doesn't open in {{esql}} mode, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) in the application menu.
 
 **Result:** The query bar changes to an {{esql}} editor where you can write piped queries.
 :::::

@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Switch Discover between ES|QL and classic mode, and see what happens to your query and filters.
+description: Switch Discover between ES|QL and classic mode, find out which mode it opens in, and see what happens to your query and filters.
 ---
 
 # Switch between {{esql}} and classic mode
@@ -16,6 +16,13 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 This page explains how to switch between modes, and what Discover does with your queries when you switch.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers the last query mode you used in your browser. New Discover tabs and sessions open in that mode.
+
+When Discover has no remembered mode, it opens in:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` {{esql}} mode. On {{stack}} deployments, an administrator can turn {{esql}} off with the `enableESQL` advanced setting, and Discover then opens in classic mode.
+- {applies_to}`stack: ga 9.0-9.5` Classic mode.
+
+{applies_to}`stack: ga 9.6+` A mode you used in an earlier version isn't carried over. The first time you open Discover after you upgrade, it opens in {{esql}} mode.
 
 ## Before you begin
 
