@@ -212,7 +212,7 @@ Use `no_data_strategy` to control what the rule does when an evaluation returns 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `no_data_strategy` | string | `emit`, `last_known_status`, `recover`, or `none` | Optional. What happens when the rule evaluates and returns no results. `emit` records a no-data event. `last_known_status` holds the last known status. `recover` treats missing data as a recovery, so an active alert goes through the `recovering` phase and the `state_transition.recovering_*` fields apply. `none` disables no-data detection. |
+| `no_data_strategy` | string | `emit`, `last_known_status`, `recover`, or `none` | Optional. What happens when the rule evaluates and returns no results. `emit` records a no-data event. `last_known_status` holds the last known status. `recover` treats missing data as a recovery, so an active alert goes through the `recovering` phase and the `state_transition.recovering_*` fields apply. `none` turns off no-data detection. |
 
 :::{note}
 No-data detection is only supported with `query.format: standalone`. Setting `no_data_strategy` to any active value on a `composed` rule has no effect because `query.no_data.query` can only be defined on a standalone query. Rules with `kind: signal` must omit `no_data_strategy` or set it to `none`.
