@@ -11,6 +11,10 @@ products:
 
 # Run Elastic Agent Standalone on Kubernetes [running-on-kubernetes-standalone]
 
+:::{note}
+Helm is the preferred method for installing {{agent}} on Kubernetes. Refer to [Install {{agent}} on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md) for installation examples for standalone and {{fleet}}-managed agents.
+:::
+
 ## What you need [_what_you_need_3]
 
 * [kubectl installed](https://kubernetes.io/docs/tasks/tools/).
