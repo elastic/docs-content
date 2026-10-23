@@ -35,7 +35,7 @@ To visualize your metrics data as charts:
 
     Metrics stored as the legacy [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) field type are also charted, but their percentiles are calculated assuming T-Digest encoding. If the histogram was encoded differently, the chart shows a warning that the values might be approximate.
 
-The dedicated metrics view is only available in ES|QL mode. To switch, select {icon}`code` **Query in ES|QL** in the Discover application menu.
+The dedicated metrics view is only available in ES|QL mode. If Discover doesn't open in ES|QL mode, select {icon}`code` **Query in ES|QL** in the Discover application menu.
 
 You can also query a specific index:
 
