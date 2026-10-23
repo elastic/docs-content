@@ -12,95 +12,71 @@ products:
 
 # Get started with {{elastic-sec}} [getting-started]
 
-New to {{elastic-sec}}? Start with what it protects and how its parts fit together, then follow the steps to deploy it and bring in your data.
+Deploy {{elastic-sec}}, bring in your data, and start detecting threats. For what {{elastic-sec}} covers and how its parts fit together, refer to the [{{elastic-sec}} overview](/solutions/security.md).
 
-## What {{elastic-sec}} protects [security-what-it-protects]
+## Set up {{elastic-sec}} [security-get-started-steps]
 
-{{elastic-sec}} covers four areas. You can use them together or start with one:
+These steps follow the **Set up Security** checklist on the {{elastic-sec}} **Get started** page. {applies_to}`serverless: ga` If your project uses the EASE feature tier, follow [Elastic AI SOC Engine with {{sec-serverless}}](/solutions/security/ai/ease/ease-intro.md) instead.
 
-| Area | What it does | Start here |
-|---|---|---|
-| SIEM detection and response | Collects security data from across your environment, detects threats with rules and {{ml}}, and helps you investigate and respond. | [Detect and respond to threats with SIEM](/solutions/security/get-started/get-started-detect-with-siem.md) |
-| Endpoint protection | Prevents and detects malware, ransomware, and malicious behavior on Windows, macOS, and Linux hosts with {{elastic-defend}}. | [Protect your hosts with endpoint security](/solutions/security/get-started/get-started-endpoint-security.md) |
-| Cloud posture | Checks your cloud and Kubernetes configurations against security benchmarks, and scans cloud workloads for vulnerabilities. | [Secure your cloud assets with cloud security posture management](/solutions/security/get-started/get-started-cloud-security.md) |
-| Cloud workload protection | Detects and blocks threats on cloud VMs and Kubernetes containers while they run. | [Cloud workload protection for VMs](/solutions/security/cloud/cloud-workload-protection-for-vms.md) |
+{applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` If you're migrating from Splunk, QRadar, or Microsoft Sentinel, run [Automatic Migration](/solutions/security/get-started/automatic-migration.md) after you create your deployment. It translates your existing rules and identifies the data sources they need, so you know which integrations to add in step 2.
 
-For a full list of use cases and core concepts, refer to the [{{elastic-sec}} overview](/solutions/security.md).
+::::::{stepper}
+:::::{step} Create or choose a deployment
 
-Which areas you can use depends on your deployment and license:
+{{sec-serverless}} is the quickest way to start, because Elastic manages the underlying {{es}} cluster and {{kib}} instances for you.
 
-- {applies_to}`serverless: ga` In {{sec-serverless}}, the Security Analytics feature tiers include SIEM detection and response, with optional add-ons for endpoint protection and cloud protection. The Elastic AI SOC Engine (EASE) tier adds AI-powered threat hunting and alert triage to a third-party SIEM. Refer to [Serverless feature tiers](/solutions/security/security-serverless-feature-tiers.md).
-- {applies_to}`stack: ga` In {{stack}} deployments, the features you can use depend on your [subscription](https://www.elastic.co/pricing).
-
-## SIEM components in {{elastic-sec}} [security-siem-pieces]
-
-In {{elastic-sec}}, SIEM detection and response relies on three components that you set up separately:
-
-1. **Data collection:** [{{agent}}](/reference/fleet/index.md), centrally managed with {{fleet}}, collects data from your hosts. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` On {{ecloud}}, [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) can also collect data from cloud sources without an agent.
-2. **Integrations:** Hundreds of integrations bring in logs, alerts, findings, and threat intelligence from your security tools, cloud services, and identity providers, and normalize them to the [Elastic Common Schema (ECS)](ecs://reference/index.md). Refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
-3. **Detection rules:** Elastic maintains prebuilt rules mapped to MITRE ATT&CK. You can also write your own in KQL, EQL, or {{esql}}, or use threshold, indicator match, new terms, and {{ml}} rules. [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md), then [install the prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md). Refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
-
-## Coming from another SIEM [security-coming-from-siem]
-
-If you're moving from Splunk, QRadar, or Microsoft Sentinel, [Automatic Migration](/solutions/security/get-started/automatic-migration.md) can translate your existing rules, and Splunk dashboards, into {{elastic-sec}}. Supported sources and assets vary by version.
-
-## Get started in three steps [security-get-started-steps]
-
-::::::{{stepper}}
-:::::{{step}} Choose your deployment type   
-
-Elastic provides several self-managed and Elastic-managed options. For simplicity and speed, we recommend {{sec-serverless}}, which enables you to run {{elastic-sec}} in a fully managed environment so you don’t have to manage the underlying {{es}} cluster and {{kib}} instances. 
-
-$$$create-sec-serverless-project$$$ 
-::::{dropdown} Create an {{sec-serverless}} project 
+$$$create-sec-serverless-project$$$
+::::{dropdown} Create an {{sec-serverless}} project
 :open:
 There are two options to create serverless projects:
 - If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration). For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
-- If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and do the following: 
+- If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and do the following:
   1. Select **Create project** from the **Serverless projects** panel.
   2. Select **Next** from the **Security** panel.
   3. Name your project and select your feature tier. For more information about tiers, refer to [pricing](https://www.elastic.co/pricing/serverless-security).
   4. Select a cloud provider and region.
   5. Select **Create project**. It takes a few minutes to create your project.
-  6. Once the project is ready, select **Continue** to open the **Get started** page (you might need to log in to Elastic Cloud again).   From here, you can learn more about Elastic Security features and start setting up your workspace.  
+  6. Once the project is ready, select **Continue** to open the **Get started** page. You might need to log in to {{ecloud}} again.
 
 :::{note}
-You need the `admin` predefined role or an equivalent custom role to create projects. For more information, refer to [User roles and privileges](https://www.elastic.co/docs/deploy-manage/users-roles/cloud-organization/user-roles).
+You need the `admin` predefined role or an equivalent custom role to create projects. For more information, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 :::
 ::::
 
-Alternatively, if you prefer a self-managed deployment, you can create a [local development installation](https://www.elastic.co/docs/deploy-manage/deploy/self-managed/local-development-installation-quickstart) in Docker:
-    
-```sh
-curl -fsSL https://elastic.co/start-local | sh
-```
+For other deployment types:
 
-Check out the complete list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
+- **{{ech}}:** [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md). Detections need no extra configuration.
+- **Self-managed:** [Deploy a self-managed cluster](/deploy-manage/deploy/self-managed.md), then [deploy {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md) so you can enroll {{agent}} on your hosts. Before detections can run, you also need HTTPS between {{es}} and {{kib}} and an encryption key in `kibana.yml`. Refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
+- **Existing deployment:** Go to the next step. On a self-managed deployment, check the detection requirements first.
 
+To compare all options, refer to [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type).
 :::::
 
-::::{{step}} Ingest your data 
+:::::{step} Bring in data
 
+At the top of the **Get started** page, select **Set up Security**, then go to **Ingest your data** → **Add data with integrations**. Select a recommended integration, or browse by category.
 
-Integrations are the most common way to bring data into {{elastic-sec}}. To add one from the **Get Started** page:
-1. At the top of the page, click **Set up Security**. 
-2. In the Ingest your data section, click **Add data with integrations**. 
-3. Choose from one of our recommended integrations, or select another tab to browse by category. 
 :::{image} /solutions/images/security-gs-ingest-data.png
 :alt: Ingest data
 :screenshot:
 :::
 
-Elastic also provides different [ingestion methods](/manage-data/ingest.md) to meet your infrastructure needs. 
+On {{sec-serverless}} and {{ech}}, use a managed integration when one exists for your source, because Elastic runs the collector for you. Otherwise, use an integration that runs on {{agent}}. Refer to [Decide between managed and {{agent}} integrations](/solutions/security/get-started/ingest-data-to-elastic-security.md#security-ingest-collection-methods). After you add an integration, [verify that your data reaches {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md#security-ingest-verify).
 
-:::{{tip}}
-If you have data from a source that doesn't yet have an integration, you can use [Automatic Import](/explore-analyze/ai-features/automatic-import.md) to create one using AI.   
-:::
-::::
+If a source has no integration, you can build one with [Automatic Import](/explore-analyze/ai-features/automatic-import.md). For {{beats}}, {{ls}}, and third-party collectors, refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
+:::::
 
-::::{{step}} Get started with your use case 
-Each [quickstart guide](../security/get-started/quickstarts.md) walks through a core task for one use case: SIEM detection and response, endpoint protection, or cloud security posture management.
-::::
+:::::{step} Install detection rules
+
+On the **Get started** page, go to **Configure rules and alerts** → **Install Elastic rules**. Start with the prebuilt rules whose `Data Source` tags match your integrations, so every rule you enable has data to run against. For a method to build your first rule set, refer to [Choosing which rules to enable](/solutions/security/detect-and-alert/install-prebuilt-rules.md#choosing-rules-to-enable).
+
+If you ran Automatic Migration, install and enable your translated rules from the **Translated rules** page.
+:::::
+
+:::::{step} Review alerts
+
+On the **Get started** page, go to **Configure rules and alerts** → **Alert list and details** to open the **Alerts** page. From there, you can triage and investigate alerts. Refer to [Manage detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md).
+:::::
 
 ::::::
 
@@ -108,6 +84,7 @@ Each [quickstart guide](../security/get-started/quickstarts.md) walks through a 
 
 Use these resources to learn more about {{elastic-sec}} or get started in a different way.
 
+* Follow a [quickstart](/solutions/security/get-started/quickstarts.md) for a guided walkthrough of SIEM detection, endpoint protection, or cloud security posture management.
 * Migrate your detection rules from Splunk, QRadar, or Microsoft Sentinel, and your Splunk dashboards, using [Automatic Migration](../security/get-started/automatic-migration.md).
 * Check out the numerous [Security integrations](https://www.elastic.co/integrations/data-integrations?solution=security) available to collect and process your data.  
 * Get started with [AI-assisted operations](../security/ai.md). 
