@@ -188,7 +188,7 @@ serverless:
 
 **Enable:** `elastic-defend-policy-management`
 
-Use this skill to decide how an {{elastic-defend}} [integration policy](/solutions/security/manage-elastic-defend/policies.md) should be configured. The agent can explain settings, compare policies, find policies that no endpoints use, assess a proposed change before you make it, and guide you through a staged move from detect to prevent. It can also apply a change to a policy after you confirm, except for [advanced policy settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings).
+Use this skill to decide how an {{elastic-defend}} [integration policy](/solutions/security/manage-elastic-defend/policies.md) should be configured. The agent can explain settings, compare policies, find policies that no endpoints use, assess a proposed change before you make it, and guide you through a staged move from detect to prevent. It can also apply a change to a policy after you confirm, except for [advanced policy settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings) and custom notification messages.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|

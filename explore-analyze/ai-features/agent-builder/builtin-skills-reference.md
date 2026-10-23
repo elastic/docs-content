@@ -432,7 +432,7 @@ $$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-polic
     **Prerequisites:**
 
     - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) installed, with at least one integration policy in the current space.
-    - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, and assessing a change also require the **Security** privilege.
+    - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
 
 ## Elasticsearch skills
 ```{applies_to}
