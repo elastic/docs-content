@@ -48,6 +48,16 @@ You can use KQL to create complex queries that filter your dashboard data. For e
 When working with large datasets, complex KQL queries might cause dashboards to load slowly. In versions 9.2 and later, you can [send long-running searches to the background](../discover/background-search.md) and continue working on other tasks while the data loads.
 :::
 
+### Cancel a slow dashboard load [cancel-dashboard-load]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If a dashboard takes too long to load, you can stop it instead of waiting. While panels load, a **Cancel** button replaces the **Refresh** or **Update** button in the query bar. Select **Cancel** to stop the queries that are still running. To load the dashboard again, refresh it.
+
+**Cancel** works for visualization panels (including Vega), Discover sessions, Maps, and Synthetics panels. Panels from other apps might keep loading.
+
 
 ### Use filter pills [_use_filter_pills]
 
