@@ -47,7 +47,7 @@ Use the following fields to configure the Breaches and Duration modes. Timeframe
 
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
-| `state_transition.pending.count` | integer | 0–1000 | Consecutive matches the alert spends in `pending` before it becomes `active` on the next match. For example, `2` opens the alert on the third consecutive match. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to open the alert on the first match. |
+| `state_transition.pending.count` | integer | 0–1000 | Consecutive matches the alert spends in `pending` before it becomes `active` on the next match. For example, `2` opens the alert on the third consecutive match. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to open the alert on the first match. If you also set `timeframe` with `operator: and`, a count of `0` still waits for the timeframe. |
 | `state_transition.pending.timeframe` | duration | Any duration string | How long the condition must remain breached before the alert opens. Appears as **Active for** in Duration mode. |
 | `state_transition.pending.operator` | string | `and` or `or` | When you set both `count` and `timeframe`, controls whether both must be satisfied (`and`) or either one is enough (`or`). Defaults to `or`. |
 
