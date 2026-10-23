@@ -1,7 +1,5 @@
 Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
 
 1. In {{serverless-full}}, open your Observability project.
-2. Go to **Add data** → **Application** → **OpenTelemetry**.
-3. Select **Managed OTLP Endpoint** in the second step.
-4. Copy the OTLP endpoint configuration value.
-5. Select **Create API Key** to generate an API key.
+2. Go to **Add data** and select **OpenTelemetry** under **Applications**.
+3. In **Configure the OpenTelemetry SDK**, copy the `OTEL_EXPORTER_OTLP_ENDPOINT` value. Elastic generates the API key for you and shows it in the same step.
