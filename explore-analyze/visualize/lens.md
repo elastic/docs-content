@@ -418,7 +418,10 @@ In the legend, click the field, then choose one of the following options:
 
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
 
-To get started, click **Explore data in Discover** in the toolbar.
+Open the data in **Discover**:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Open in Discover**.
+- {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Explore in Discover**.
 
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 
@@ -427,7 +430,11 @@ For more information about exploring your data with **Discover**, check out [Dis
 
 To view the data included in the visualization and the requests that collected the data, use the **Inspector**.
 
-1. In the toolbar, click **Inspect**.
+1. Open the **Inspector**:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Inspect**.
+    - {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Inspect**.
+
 2. Open the **View** dropdown, then click **Data**.
 
     1. From the dropdown, select the table that contains the data you want to view.

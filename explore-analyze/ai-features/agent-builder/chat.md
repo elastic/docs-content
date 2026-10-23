@@ -292,17 +292,69 @@ For example, the following chat history panel shows one conversation in progress
 :width: 450px
 :::
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` There's no status for stopped or failed responses. If a response stops or fails in a conversation you aren't viewing, that conversation shows as **Unread**, like any other new activity. To see the stopped response or the error, open the conversation. For more information, refer to [Stopped and failed responses](#stopped-and-failed-responses).
+
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
+
+#### Where the agent's progress appears
+
+The agent's progress appears only in the chat where you sent the message or answered a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. The agent keeps working if you reload the page, close the sidebar, or open the conversation in another browser tab or in the other [chat mode](standalone-and-flyout-modes.md). In those cases, the conversation doesn't show **In progress** and doesn't update while the agent works. After the agent finishes, its steps and response appear when you switch back to that browser tab, reopen the conversation, or reload the page.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent also keeps working without showing progress if you go to another app from standalone mode. After the agent finishes, its steps and response appear the next time you interact with the conversation, for example, when you reopen the sidebar, come back from another app, or select another conversation and return. In a [shared or public conversation](#share-a-conversation), the conversation also updates automatically a few seconds after the agent finishes, in any browser tab.
 
 ### Inspect tool calls and reasoning
 
 ::::{note}
-:applies_to: stack: ga 9.5+, serverless: ga
+:applies_to: { stack: ga 9.5+, serverless: ga }
 
 Inline reasoning events replace the [Reasoning panel](glossary.md#reasoning-panel).
 ::::
 
-Agent responses show reasoning, tool calls, tool results, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context. The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
+The agent runs tools in a loop until it achieves its goal or [exceeds the maximum conversation length](limitations-known-issues.md#conversation-length-exceeded).
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agent responses show reasoning, tool calls, and the final response inline as a single sequence. Events appear in the order they happen, so you can follow how the agent handles your request in context.
+
+Tool call events show whether a tool is still running or has returned a response. How you inspect tool calls and reasoning depends on your version:
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+Each tool call shows the tool ID followed by its status: **running…**, **ran**, or **stopped** if the response [stopped or failed](#stopped-and-failed-responses) before the tool returned. A tool call that returned an error appears in red.
+
+When the agent runs two or more tools in a row, the chat groups them under a label such as **3 tools ran**. Groups are collapsed by default. Expand a group to see its tool calls.
+
+Select a tool call to open a flyout with its details. The flyout title shows the tool ID, and the flyout has the following sections:
+
+- **Parameters**: The parameters the agent sent to the tool.
+- **Execution**: Progress messages that the tool reported while it ran. This section appears only for tools that report progress and for sub-agent calls.
+- **Result**: The tool's response, including any error. This section appears after the tool returns.
+
+For example, the following flyout shows the details of a `platform.core.search` tool call:
+
+:::{image} images/agent-builder-tool-call-flyout.png
+:screenshot:
+:alt: Flyout for a platform.core.search tool call, showing the Parameters, Execution, and Result sections next to the tool call in the conversation
+:width: 650px
+:::
+
+For a sub-agent call, the **Execution** section shows a **Sub-agent execution** link followed by the execution ID. Select the link to open the sub-agent's execution in another flyout, with its own **Parameters**, **Execution**, and **Result** sections. Its **Execution** section shows the sub-agent's reasoning and tool calls, and you can select a tool call to inspect it. Select **Back** to return to the previous flyout.
+
+For example, the following flyout shows a sub-agent's execution, opened from a tool call's **Sub-agent execution** link:
+
+:::{image} images/agent-builder-sub-agent-execution-flyout.png
+:screenshot:
+:alt: Sub-agent execution flyout with a Back button, the execution ID, and the sub-agent's Parameters, Execution, and Result sections
+:width: 450px
+:::
+
+::::
+
+::::{applies-item} stack: ga =9.5
+
+Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
+
+For example, the following response shows inline reasoning events and tool calls:
 
 :::{image} images/reasoning-steps.png
 :screenshot:
@@ -310,9 +362,60 @@ Agent responses show reasoning, tool calls, tool results, and the final response
 :width: 650px
 :::
 
-Tool call events show whether a tool is still running or has returned a response. Expand a tool call to inspect **Parameters sent** and **Response returned**. Some results render inline; other results provide **View JSON** or **View execution** links for more detail.
+::::
 
-After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+::::{applies-item} stack: preview =9.2, ga 9.3-9.4
+
+Select **Completed reasoning** in the agent's response to open the **Reasoning** panel. While the agent is still working, the label shows the agent's current step or **Thinking…**. The panel lists the agent's reasoning steps and tool calls in the order they happen.
+
+- Expand a tool call to view the **Parameters** the agent sent.
+- Generated {{esql}} queries, query results, and errors appear in the panel. For other results, select **Inspect response** to open the tool response in a flyout.
+- Select **View JSON** to inspect the raw response for the round.
+
+{applies_to}`stack: preview =9.2` Reasoning appears in an accordion labeled **Thinking completed**, tool calls don't show their parameters, and **View raw response** replaces **View JSON**.
+
+For example, the following **Reasoning** panel shows a tool call with its **Inspect response** link:
+
+:::{image} images/reasoning-panel.png
+:screenshot:
+:alt: Reasoning panel showing a tool call, its Inspect response link, and the View JSON button
+:width: 650px
+:::
+
+::::
+
+:::::
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+
+### Stopped and failed responses [stopped-and-failed-responses]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+To stop the agent while it responds, click the **Stop** icon {icon}`stop_filled` in the chat input. **Stop** replaces the **Submit** icon after the agent starts working on your message.
+
+**Stop** is available only in the chat where you sent the message or responded to a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. You can't stop a response that's already running if you:
+
+- Reload the page.
+- Close the sidebar or leave the standalone chat.
+- Open the conversation in another tab or [chat mode](standalone-and-flyout-modes.md).
+- Didn't start the response yourself, for example in a [shared conversation](#share-a-conversation).
+
+When you stop a response, the conversation keeps your message, its attachments, and the steps the agent has taken so far, but discards any partial answer. Your message doesn't return to the chat input.
+
+The end of the response shows why it ended:
+
+- **Response stopped by** and a user name: That user stopped the response.
+- **Response stopped**: {{kib}} stopped the response, for example because it ran for more than 20 minutes.
+- **An error occurred**: An error interrupted the agent. Select it to expand the error details.
+
+Stopped and failed responses:
+
+- Stay in the conversation when you reload the page or open another conversation.
+- Don't include the **Copy response** icon, the response metadata menu, or the [View Trace icon](#view-traces).
+- Can't be retried. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
 
 ### Call a specific API operation [call-a-specific-api-operation]
 ```{applies_to}
@@ -332,13 +435,15 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon ({icon}`apm_trace`) on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
+Each conversation round can record OpenTelemetry traces of how the agent ran. To inspect them, select the **View Trace** icon {icon}`chart_waterfall` on the round. A **Trace** flyout opens with a waterfall of the round's spans, including model calls and tool calls.
 
 The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
 
 Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
 
-The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon does not appear.
+The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon doesn't appear.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The icon also doesn't appear on [stopped or failed responses](#stopped-and-failed-responses), even when the round has a trace.
 
 To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
 
