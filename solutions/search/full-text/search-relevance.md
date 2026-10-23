@@ -16,5 +16,7 @@ This section includes a few recipes to help with common search relevance issues:
 * [Getting consistent scores](search-relevance/consistent-scoring.md)
 * [Incorporating static relevance signals into the score](search-relevance/static-scoring-signals.md)
 
+To diagnose relevance problems such as unexpected scoring, token mismatches, synonyms not applying, or poor semantic search results, refer to [Troubleshoot search relevance](/troubleshoot/elasticsearch/troubleshooting-search-relevance.md).
+
 
 
