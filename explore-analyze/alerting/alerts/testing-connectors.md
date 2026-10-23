@@ -89,7 +89,5 @@ $ kbn-action execute a692dc89-15b9-4a3c-9e47-9fb6872e49ce '{subject: "hallo", me
 }
 ```
 
-:::{note}
-:applies_to: {"serverless": "ga", "stack": "ga 9.5+"}
-For an email connector, {{kib}} replaces the `subject` and `message` in this example with the fixed text `This is a test email from Kibana`. The `to`, `cc`, and `bcc` recipients still apply. To send custom content, use the connector in a rule action. For details, refer to [Email connector and action](kibana://reference/connectors-kibana/email-action-type.md#email-action-configuration).
+:::{include} /explore-analyze/alerting/alerts/_snippets/email-connector-test-message.md
 :::
