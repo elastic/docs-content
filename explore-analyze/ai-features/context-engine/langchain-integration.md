@@ -198,7 +198,7 @@ Each entry the list operation returns gives the agent:
 * `id`, to pass to the describe operation.
 * `esql_target`, the exact string to put after `FROM`. Use it verbatim: it differs from the ID (`sales-knowledge` becomes `ai-index-idx-sales-knowledge`) and can be a wildcard or a data stream.
 * `description`, to determine whether the AI Index is relevant to the question.
-* `managed`, to distinguish a [built-in AI Index supplied by an Elastic integration](concepts.md#managed-ai-indices) from one created by a user.
+* `managed`, to distinguish a [built-in AI Index supplied by an Elastic feature](concepts.md#managed-ai-indices) from one created by a user.
 
 The list omits an AI Index when your credential can't read its backing index. It does include an AI Index that's registered but still empty.
 
@@ -388,6 +388,8 @@ If the agent answers without calling the tools, or queries a target that describ
 ## Query a different space
 
 Set `KIBANA_SPACE` to the space ID before creating the client, so requests go to `/s/{space_id}/api/context_engine`. The API key needs the {{context-engine}} feature privilege in that space, and `contextEngine:enabled` has to be on there.
+
+Each AI Index belongs to one space, so the list tool returns only the AI Indices in the space that the client targets. The same AI Index ID can refer to different AI Indices in different spaces.
 
 To read from several spaces in one agent, build one client per space and register a separate set of tools for each.
 

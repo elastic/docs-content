@@ -1,4 +1,5 @@
 ---
+navigation_title: Solutions and use cases
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-solutions.html
 applies_to:
@@ -11,7 +12,7 @@ description: Learn about Elastic solutions for search, observability, and securi
   custom applications.
 ---
 
-# Solutions and use cases
+# Elastic solutions and use cases
 
 :::{tip}
 New to Elastic? Refer to [Elastic Fundamentals](/get-started/index.md) to understand the {{stack}}, its components, and your deployment options.
