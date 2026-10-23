@@ -38,6 +38,8 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
    :::{note}
    :applies_to: { serverless: preview, stack: preview 9.5+ }
    When you search large data sets, you can get faster, estimated results by using {icon}`bolt` **Fast mode**. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+
+   {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` When {{es}} applied approximation, a {icon}`bolt` badge shows in the results toolbar. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
    :::
 
    :::{image} /explore-analyze/images/discover-esql-cascade-overview.png
