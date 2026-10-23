@@ -29,7 +29,7 @@ To support certain older Linux platforms (most notably CentOS7/RHEL7), {{kib}} f
 
 ## {{kib}} install packages [install]
 
-{{kib}} is provided in the following package formats. Which format you choose depends on your company's infrastructure policies and environment. If you don't have an existing preference, Docker and Linux packages (`deb` and `rpm`) offer the most straightforward setup. Archive installations (`tar.gz` and `zip`) require more manual setup.
+{{kib}} is provided in the following package formats. Which format you choose depends on your company's infrastructure policies and environment. If you don't have an existing preference, Docker containers and Linux packages (`deb` and `rpm`) offer the most straightforward setup. Archive installations (`tar.gz` and `zip`) require more manual setup.
 
 | Format | Description | Instructions |
 | --- | --- | --- |
