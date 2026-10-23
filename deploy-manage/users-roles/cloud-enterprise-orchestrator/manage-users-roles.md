@@ -48,7 +48,7 @@ Platform viewer
 :   Same access as the `readonly` system user, which includes being able to view secret and sensitive settings.
 
 Deployment manager
-:   Can create and manage non-system deployments, specify keystore security settings, and establish cross-cluster remote relationships. They can also reset the `elastic` password.
+:   Can create and manage non-system deployments, specify keystore security settings, and establish cross-cluster remote relationships. Deployment managers should be treated as equivalent in trust to admins in practice.
 
 Deployment viewer
 :   Can view non-system deployments, including their activity. Can prepare the diagnostic bundle, inspect the files, and download the bundle as a ZIP file.
