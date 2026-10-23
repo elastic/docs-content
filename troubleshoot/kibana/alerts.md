@@ -84,7 +84,10 @@ kbn-action execute a692dc89-15b9-4a3c-9e47-9fb6872e49ce ‘{"params":{"subject":
 
 The result of this HTTP request (and printed to stdout by [kbn-action](https://github.com/pmuellr/kbn-action)) will be data returned by the action, along with error messages if errors were encountered.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If the connector is an email connector, {{kib}} replaces the `subject` and `message` in both examples with the fixed text `This is a test email from Kibana`. The `to`, `cc`, and `bcc` recipients still apply. For details, refer to [Email connector and action](kibana://reference/connectors-kibana/email-action-type.md#email-action-configuration).
+:::{note}
+:applies_to: {"serverless": "ga", "stack": "ga 9.5+"}
+If the connector is an email connector, {{kib}} replaces the `subject` and `message` in both examples with the fixed text `This is a test email from Kibana`. The `to`, `cc`, and `bcc` recipients still apply. For details, refer to [Email connector and action](kibana://reference/connectors-kibana/email-action-type.md#email-action-configuration).
+:::
 
 
 ## Look for error banners [alerting-error-banners]
