@@ -31,25 +31,25 @@ Use the guided route to have {{agent-builder}} propose and set up an automation 
 
 1. Open **Context**, then select the AI index.
 2. In **Automations**, select **Add automation** → **Create with AI Agent**.
-3. {{agent-builder}} opens in the side panel and sends **Suggest an automation for this AI index.** for you.
+3. {{agent-builder}} opens in the side panel and sends **Suggest an automation for this AI index.**
 
-    If you already have a conversation for this AI index, {{agent-builder}} reopens it so you can continue where you left off. Each AI index has one conversation in each space, and only your current browser remembers it. To start over, select the menu icon (**Open navigation menu**) at the top of the panel, select **New chat**, then select **Create with AI Agent** again. If you enter a message in the new chat instead, that conversation is the one that reopens next time.
+    If this browser already has a conversation for this AI index in the current space, {{agent-builder}} reopens it. The browser remembers one conversation for each AI index in each space. To start over, click **Open navigation menu** at the top of the panel, click **New chat**, then select **Add automation** → **Create with AI Agent** again. If you send a message in the new chat, or select a different chat from that menu, that conversation is the one that reopens next time.
 
 4. Review the generation strategy that {{agent-builder}} proposes and the evidence it cites from your data. For an AI index without automations, {{agent-builder}} chooses the strategy from the data. It asks you to choose when two strategies fit about equally, or when the data doesn't show what the AI index is for. For an AI index that already has automations, it asks what you want to achieve.
 5. What happens next depends on the strategy:
 
-    - **Index/Table Metadata, Bottom-Up, Cumulative / Wiki-style, and Targeted KI**: {{agent-builder}} installs a template and attaches the automation to the AI index. There's no confirmation prompt for the install, but {{agent-builder}} might ask in chat whether to go ahead first.
+    - **Index/Table Metadata, Bottom-Up, Cumulative / Wiki-style, and Targeted KI**: {{agent-builder}} installs a template and attaches the automation to the AI index. The install has no confirmation prompt. When one strategy clearly fits, it installs without asking you to approve it in chat.
     - **Other strategies**: {{agent-builder}} asks you to confirm a plan before it builds anything:
 
         1. Review the plan, which includes the strategy, sources, corpus filter, and expected cost. Ask for changes where necessary, then confirm.
         2. {{agent-builder}} builds and pilots the workflow, removes the temporary KIs that the pilot wrote, and summarizes the results. Review the summary.
         3. In the confirmation prompt, select **Save and attach**. If the workflow replaces an existing automation, select **Replace** instead.
 
-6. {{agent-builder}} shows a confirmation prompt before it runs the automation. For an Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style automation that would write more than five KIs, it asks to run a pilot first. Select **Run pilot** or **Run automation** to start the run, or select **Cancel**. To run the automation later, ask {{agent-builder}} again or [run it from the Workflows UI](#run-schedule-and-monitor-an-automation).
+6. {{agent-builder}} shows a confirmation prompt before it runs the automation. Select **Run automation**, or select **Cancel**. For an Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style automation that would write more than five KIs, the first prompt is a pilot of five items. Select **Run pilot**. To run the automation later, ask {{agent-builder}} again, select **Run** from the automation's actions menu ({icon}`ellipsis`) after the workflow is enabled, or [run it from the Workflows UI](#run-schedule-and-monitor-an-automation).
+
+    A Targeted KI automation is the exception: {{agent-builder}} runs it without this prompt.
 
     If the pilot completes and writes a KI for each item, {{agent-builder}} estimates how long the full run takes and asks to start it. Select **Run automation**. Otherwise, {{agent-builder}} reports the problem and stops. The pilot writes real KIs, which the full run replaces. If you cancel the full run, the pilot's KIs stay in the AI index.
-
-    A Targeted KI automation is the exception: {{agent-builder}} runs it without asking.
 7. The full run continues in the background. To check on it, ask {{agent-builder}} for a progress update.
 8. Return to the AI index and confirm that the workflow appears in **Automations**.
 
@@ -91,8 +91,8 @@ The AI index lists each attached workflow and whether it is enabled.
 To inspect or edit one:
 
 1. Open the AI index.
-2. In **Automations**, open the actions menu ({icon}`ellipsis`) for the automation, then select **View** to inspect the workflow YAML without leaving the page.
-3. To edit the workflow, open the actions menu again and select **Open in Workflows**.
+2. In **Automations**, from the actions menu ({icon}`ellipsis`) for the automation, select **View** to inspect the workflow YAML without leaving the page.
+3. To edit the workflow, from the actions menu, select **Open in Workflows**.
 4. Make and test the required changes, then save the workflow.
 
 Saving a workflow creates a versioned snapshot. For information about comparing or restoring versions, refer to [Workflow version history](/explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history).
@@ -119,7 +119,7 @@ Removing an automation from an AI index detaches its workflow. It does not delet
 Detach an automation as follows:
 
 1. Open the AI index.
-2. In **Automations**, open the actions menu ({icon}`ellipsis`) for the automation, then select **Delete**.
+2. In **Automations**, from the actions menu ({icon}`ellipsis`) for the automation, select **Delete**.
 3. In the confirmation dialog, select **Remove**. The change is saved immediately.
 4. Confirm that the automation no longer appears in the AI index.
 

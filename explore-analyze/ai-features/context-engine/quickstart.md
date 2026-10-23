@@ -88,7 +88,7 @@ Create the automation:
 2. {{agent-builder}} opens a conversation and sends **Suggest an automation for this AI index.**
 3. Review the strategy that {{agent-builder}} names and the evidence it cites from your data. Confirm that it uses the intended source index. If two strategies fit about equally, {{agent-builder}} asks you to choose and lists its recommendation first.
 
-For template strategies, such as Bottom-Up or Cumulative / Wiki-style, {{agent-builder}} installs a template and attaches the resulting workflow to the AI index. There's no confirmation prompt for the install, but {{agent-builder}} might ask in chat whether to go ahead first. If it does, confirm. For other strategies, it first describes its plan and asks you to confirm before it builds and pilots a workflow. Installing the automation does not run it. For details about each path, refer to [Create an automation with Agent Builder](create-and-manage-automations.md#create-an-automation-with-agent-builder).
+For template strategies, such as Index/Table Metadata, Bottom-Up, or Cumulative / Wiki-style, {{agent-builder}} installs a template and attaches the resulting workflow to the AI index. The install has no confirmation prompt. When one strategy clearly fits, it installs without asking you to approve it in chat. If two strategies fit about equally, answer the question in the previous step. For other strategies, it first describes its plan and asks you to confirm before it builds and pilots a workflow. Installing the automation does not run it. For details about each path, refer to [Create an automation with Agent Builder](create-and-manage-automations.md#create-an-automation-with-agent-builder).
 
 :::{note}
 **Add automation** → **Create workflow** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
@@ -124,7 +124,7 @@ Ask the agent questions that exercise both kinds of context:
 1. Ask a question that a KI can answer from its distilled content.
 2. Ask for current or detailed information that requires a verified {{esql}} query from one of the KIs.
 
-For the ecommerce sample data, ask about something a KI describes, then ask for a current revenue breakdown by manufacturer. Expect the agent to answer the first question from a KI and to query the source data for the second.
+For the ecommerce sample data, ask about something a KI describes, then ask for a current revenue breakdown by manufacturer. Check whether the agent answers from a KI or queries the source data. Which one it uses depends on the strategy {{agent-builder}} chose.
 
 Confirm that the agent:
 
