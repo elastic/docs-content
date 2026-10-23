@@ -7,6 +7,7 @@ applies_to:
 products:
   - id: kibana
 description: Use Discover to search and filter documents, analyze field structures, visualize patterns, and save findings to reuse later or share with dashboards.
+type: overview
 ---
 
 # Discover [discover]
