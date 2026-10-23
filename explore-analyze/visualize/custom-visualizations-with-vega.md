@@ -1326,7 +1326,7 @@ The full result includes the following structure:
     "time_buckets": {
       "buckets": [{
           "key_as_string": "2015-11-30T22:00:00.000Z",
-          "key": 1448920800000,<1>
+          "key": 1448920800000, <1>
           "doc_count": 28
         }, {
           "key_as_string": "2015-11-30T23:00:00.000Z",
