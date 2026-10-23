@@ -51,6 +51,7 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-After your application sends trace data, open **Discover** and [load trace data](/solutions/observability/apm/discover-traces.md#load-trace-data). Select a time range that includes a model call, open the span's document details, and select **GenAI**. The tab shows model details and token usage, along with prompts and responses when your instrumentation records them.
+After your application sends trace data, use the **GenAI** tab in {{kib}} to review model details and token usage, along with prompts and responses when your instrumentation records them:
 
-Refer to [Inspect GenAI spans](/solutions/observability/apm/discover-traces.md#genai-span-details) for the full workflow. You can also inspect model calls and token counts in the [trace waterfall](/solutions/observability/apm/trace-sample-timeline.md#genai-trace-waterfall).
+- [Inspect GenAI spans](/solutions/observability/apm/discover-traces.md#genai-span-details) in **Discover**.
+- [Inspect GenAI spans in a trace waterfall](/solutions/observability/apm/trace-sample-timeline.md#genai-trace-waterfall) to see model calls alongside the other operations in a request.

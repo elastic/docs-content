@@ -170,7 +170,7 @@ To open the tab:
 
 ### Details [genai-span-details-fields]
 
-The **Details** section shows the attributes recorded for the selected operation:
+The **Details** section shows the attributes recorded for the selected operation. Each row appears only when the span carries a value for its attribute, so the fields you see vary by instrumentation and provider:
 
 | Field | Description |
 | --- | --- |
@@ -179,8 +179,11 @@ The **Details** section shows the attributes recorded for the selected operation
 | **Provider** | The provider from `gen_ai.provider.name`, or `gen_ai.system` for instrumentation that uses the older attribute. |
 | **Input tokens** | The input token count recorded in `gen_ai.usage.input_tokens`. |
 | **Output tokens** | The output token count recorded in `gen_ai.usage.output_tokens`. |
-
-Additional details, such as the response model and request parameters, appear when they are recorded on the span.
+| **Response model** | The model that produced the response, from `gen_ai.response.model`. |
+| **Conversation ID** | The identifier that groups related model calls, from `gen_ai.conversation.id`. |
+| **Response ID** | The identifier the provider assigned to the response, from `gen_ai.response.id`. |
+| **Finish reasons** | Why the model stopped generating, such as `stop` or `length`, from `gen_ai.response.finish_reasons`. |
+| **temperature**, **top_p**, **top_k**, **max_tokens**, **seed** | The request parameters sent to the model, from the matching `gen_ai.request.*` attributes. These rows keep their semantic convention names. |
 
 In **Discover**, hover over a field value to use **Filter for value** {icon}`plus_circle` or **Filter out value** {icon}`minus_circle`. Hover over a field name to use **Filter for field present** {icon}`filter` or **Toggle column in table**. These actions help you find related model calls or compare their attributes in the results table. Available actions depend on the field and query mode.
 
