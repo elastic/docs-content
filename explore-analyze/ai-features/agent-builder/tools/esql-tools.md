@@ -134,13 +134,22 @@ FROM finance-orders-*
 ## Frozen tier data [esql-tools-frozen-tier]
 
 ```{applies_to}
-stack: ga 9.4+
-serverless: unavailable
+stack: ga 9.4.8+
+serverless: ga
 ```
 
 By default, {{esql}} tools exclude data stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier). When some of the data that matches a query is in the frozen tier, the tool returns fewer rows than the same query run in Discover.
 
-To include frozen tier data, select **Include frozen tier data** in the tool configuration, or set `include_frozen` to `true` in the tool's `configuration` object in the [Tools API](../kibana-api.md#tools-apis). This option defaults to `false`, and existing tools keep excluding frozen tier data until you change it. Searching frozen tier data is slow and can cause the tool to time out. For more information, refer to [Frozen tier data excluded by default](../limitations-known-issues.md#frozen-tier-data).
+### Include frozen tier data [esql-tools-include-frozen]
+
+```{applies_to}
+stack: ga 9.4.9+
+serverless: ga
+```
+
+To include frozen tier data, in **Data tiers**, select **Include frozen tier data**. You can also set `include_frozen` to `true` in the tool `configuration` object in the [Tools API](../kibana-api.md#tools-apis).
+
+This option defaults to `false`. Existing tools keep excluding frozen tier data until you change it. Searching frozen tier data is slow and can cause the tool to time out. For more information, refer to [Frozen tier data excluded by default](../limitations-known-issues.md#frozen-tier-data).
 
 ## Best practices
 
