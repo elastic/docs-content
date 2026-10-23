@@ -1,19 +1,105 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/discover-get-started.html
+navigation_title: Introduction
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
-description: Follow this tutorial to learn how to explore your data in Discover. Filter documents, analyze fields, and create visualizations with sample data or your own.
+type: overview
+description: Learn what you can do in Discover, from querying your data to inspecting, visualizing, saving, and sharing results, and find the guide for each task.
 ---
 
-# Explore fields and data with Discover [discover-get-started]
+# Introduction to Discover [discover-get-started]
 
-If you want to learn about **Discover** by using it, this tutorial takes you from loading your data to filtering it, charting a field, and saving what you find. Use the {{kib}} [sample data](/manage-data/ingest/sample-data.md) or your own data. To learn what **Discover** is and what else it can do, refer to the [Discover overview](../discover.md).
+When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. This page introduces what **Discover** shows you, how you work in it, and where to find the guide for each task. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md).
 
-## Context-aware data exploration [context-aware-discover]
+To open **Discover**, find it in the navigation menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
+
+## What people use Discover for
+
+**Investigate a problem**
+: Narrow your documents to the time range and the query that matter, then open individual documents to read every field. Start with [Work with {{esql}} results in Discover](esql-results.md) and [Inspect documents and requests in Discover](inspect-documents.md).
+
+**Check that your data is what you expect**
+: See which fields exist and how their values are spread. Start with [Explore the fields in your data](explore-fields.md). In classic mode, [View field statistics](show-field-statistics.md) summarizes every field at once.
+
+**Explore data you haven't seen before**
+: In {{esql}} mode, query any index or data stream by name, without setting up a data view first. Start with [Get started with {{esql}} in Discover](try-esql.md).
+
+**Spot patterns, spikes, and shifts**
+: Group results to see what's common, and look for changes over time. Try [Inspect grouped STATS results in Discover](inspect-grouped-stats.md) or [Detect change points in Discover](detect-change-points.md). In classic mode, you can also [run a pattern analysis](run-pattern-analysis-discover.md). To have an AI agent look at the data for you, refer to [Analyze your data with AI in Discover](analyze-discover-data-with-ai.md).
+
+**Share what you found, or keep an eye on it**
+: [Save a Discover session](save-open-search.md), [copy results or send a link to a document](copy-and-share-documents.md), or [create an alert rule](generate-alerts-from-discover.md).
+
+## What you see in Discover [discover-screen]
+
+:::{image} /explore-analyze/images/kibana-discover-try-esql-from.png
+:alt: Discover in ES|QL mode, with a query on the sample web logs, a chart of the results over time, the fields list, and the results table
+:screenshot:
+:::
+
+A **Discover** session combines data, a query, and a time range. The chart and the table show what that combination returns, and you can refine each part as you explore.
+
+Query bar or editor
+: Where you write the query. In {{esql}} mode, it is an editor, and the query defines the data. In classic mode, you select a data view and write a KQL or Lucene query.
+
+Time filter
+: Keeps only the results in the time range you select.
+
+Fields list
+: Lists the fields of your data. Select a field to see its most frequent values.
+
+Chart
+: By default, shows how the results spread over the time range.
+
+Results table
+: Lists the results. The table is named **Results** in {{esql}} mode and **Documents** in classic mode.
+
+Tabs
+: {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Keep several explorations open side by side. Each tab has its own query, time range, and view.
+
+## Two query modes [query-modes]
+
+**Discover** has two query modes. In {{esql}} mode, you write a query that defines the data, so you don't need a data view. In classic mode, you select a data view, search with Kibana Query Language (KQL) or Lucene, and add filters.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Discover** opens in {{esql}} mode by default.
+
+To learn how the modes differ and what happens to your query when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md). For the tasks in each mode, refer to [Use Discover with {{esql}}](use-esql.md) and [Use Discover in classic mode](use-classic-mode.md).
+
+## How you work in Discover
+
+### Get the data you need
+
+Pick a query mode, then select the data and the time range, and narrow the results with a query.
+
+- In {{esql}} mode, write a query that starts from a data source. The editor helps you [browse data sources and fields](browse-esql-sources.md), [change values without rewriting the query](esql-variable-controls.md), and [write or fix queries with AI](../query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
+- In classic mode, [select a data view and a time range](use-classic-mode.md#find-the-data-you-want-to-use), then [search and filter with KQL, Lucene, and filters](search-and-filter-classic.md).
+- To keep working while a long query runs, [run it in the background](background-search.md).
+
+### Shape and read the results
+
+Choose what the table and the chart show, and learn what your fields contain.
+
+- To change columns, sorting, density, or switch to the JSON view, refer to [Customize the Discover view](document-explorer.md).
+- To check what a field contains, refer to [Explore the fields in your data](explore-fields.md).
+- To filter, sort, and keep the chart or the table from {{esql}} results, refer to [Work with {{esql}} results in Discover](esql-results.md).
+- To run several explorations side by side, refer to [Run multiple explorations with tabs](work-with-tabs.md).
+- To rank results by how well they match a search, refer to [Search for relevance](discover-search-for-relevance.md).
+
+### Take it further
+
+Look closer at a result, turn it into a chart, and keep or share your work.
+
+- To read every field of a result or compare results, refer to [Inspect documents and requests in Discover](inspect-documents.md) and [Compare documents](compare-documents.md).
+- To turn results into a visualization, refer to [Keep the chart or the table](esql-results.md#_edit_the_esql_visualization). In classic mode, you can also [visualize a field](visualize-field.md).
+- To keep a session and use it in dashboards, refer to [Save a Discover session for reuse](save-open-search.md).
+- To copy results or share links, refer to [Copy results and share links to documents](copy-and-share-documents.md).
+- To be notified when data crosses a threshold, refer to [Create an alert rule from Discover](generate-alerts-from-discover.md).
+
+## Context-aware experiences [context-aware-discover]
 
 **Discover** provides tailored interfaces and features for the following data types when accessed from Observability or Security project types or {{kib}} solution views:
 
@@ -29,408 +115,16 @@ This context-aware experience is determined by both your solution context and th
 
 When you access **Discover** outside of a specific solution context, or when working with data types that don't have specialized experiences, you get the default **Discover** interface with all its core functionality for general-purpose data exploration.
 
-{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` The active profile also shapes [AI-powered deep analysis](#analyze-with-ai): when you query logs, metrics, or traces from the matching solution context, the agent receives domain-specific guidance on which fields to group by and which {{esql}} commands to use. For example, it uses the `TS` command for time series metrics.
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` The active profile also shapes [AI-powered deep analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces from the matching solution context, the agent receives domain-specific guidance on which fields to group by and which {{esql}} commands to use. For example, it uses the `TS` command for time series metrics.
 
 ### Context-awareness with multiple data types
 
 Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context.
 
-In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
+In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](inspect-documents.md#look-inside-a-document).
 
-### View active context-aware experience
+To check which experience is active, refer to [Check which context-aware experience is active](inspect-documents.md#view-active-context-aware-experience).
 
-You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
+## Troubleshooting
 
-1. Open the Inspector:
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**. You can also select **Inspect tab** from the application menu to inspect the active tab.
-   * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
-1. Open the **View** dropdown, then select **Profiles**.
-
-The various profiles listed show details such as the active solution and data source contexts, which determine Discover's context-aware experiences.
-
-## Load data into Discover [find-the-data-you-want-to-use]
-
-Select the data you want to explore, and then specify the time range in which to view that data.
-
-:::{note}
-:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
-**Discover** opens in {{esql}} mode, where your query selects the data and you don't need a data view. To follow these steps with a data view, switch to classic mode. Refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md#revert-to-classic-mode).
-:::
-
-1. Find **Discover** in the navigation menu or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the data view that contains the data you want to explore.
-   ::::{tip}
-   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
-
-   You can also [use {{esql}}](try-esql.md), which lets you query any data you have in {{es}} without specifying a {{data-source}} first.
-
-   If **Discover** asks you to add data or create a {{data-source}} instead of opening and you're not sure of what to do next, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
-   ::::
-   If you’re using sample data, data views are automatically created and are ready to use.
-   :::{image} /explore-analyze/images/kibana-discover-data-view.png
-   :alt: How to set the {{data-source}} in Discover
-   :screenshot:
-   :width: 300px
-   :::
-
-3. If needed, adjust the [time range](../query-filter/filtering.md), for example by setting it to the **Last 7 days**.
-    The range selection is based on the default time field in your data view. If you are using the sample data, this value was set when the data view was created. If you are using your own data view and it does not have a time field:
-
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The time filter stays visible, shows **All time**, and cannot be changed.
-    - {applies_to}`stack: ga 9.0-9.5` The range selection is not available.
-
-
-**Discover** is populated with your data and you can view various areas with different information:
-
-* All fields detected are listed in a dedicated panel.
-* A chart allows you to visualize your data.
-* A table displays the results of your search. By default, the table includes a column for the time field and a **Summary** column with an overview of each result. You can modify the document table to display your fields of interest.
-
-You can later filter the data that shows in the chart and in the table by specifying a query and changing the time range.
-
-
-## Explore the fields in your data [explore-fields-in-your-data]
-
-**Discover** provides utilities designed to help you make sense of your data:
-
-1. In the sidebar, check the available fields. It's common to have hundreds of fields. Use the search at the top of that sidebar to look for specific terms in the field names.
-   In this example, we’ve entered `ma` in the search field to find the `manufacturer` field.
-   ![Fields list that displays the top five search results](/explore-analyze/images/kibana-discover-sidebar-available-fields.png "title =40%")
-   ::::{tip}
-   You can combine multiple keywords or characters. For example, `geo dest` finds `geo.dest` and `geo.src.dest`.
-   ::::
-
-   {applies_to}`stack: ga 9.2` For some searches, Discover suggests recommended fields to explore. These suggestions are based on the data you query and are managed by Elastic.
-
-2. Select a field to view its most frequent values.
-  **Discover** shows the top 10 values and the number of records used to calculate those values.
-
-3. Select the **Plus** icon to add fields to the results table. You can also drag them from the list into the table.
-
-   ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
-
-   When you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
-
-   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
-
-   ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
-
-4. Arrange the view to your liking to display the fields and data you care most about using the various display options of **Discover**. For example, you can change the order and size of columns, expand the table to be in full screen or collapse the chart and the list of fields. Check [Customize the Discover view](document-explorer.md) for more information.
-5. **Save** your changes to be able to open the same view later on and explore your data further.
-
-
-### Add a field to your {{data-source}} [add-field-in-discover]
-
-In classic mode, you can add a runtime field to a data view from **Discover**, and then use that field for analysis and visualizations the same way you use other fields. Refer to [Add a runtime field to a data view from Discover](add-fields-to-data-views.md).
-
-
-### Visualize aggregated fields [_visualize_aggregated_fields]
-
-In classic mode, you can open an aggregatable field in **Lens** from the fields list. Refer to [Visualize a field from Discover](visualize-field.md).
-
-
-### Find and highlight values in the table [in-table-search]
-
-Use the in-table search to find and highlight specific values beyond what's currently visible on your screen.
-
-The in-table search looks for all matching values in all results and pages currently loaded in the table. The number of results loaded depends on the [Sample size](document-explorer.md#document-explorer-sample-size). If you load more results, the search automatically updates and reflects the new number of matching values, if any more are found.
-
-```{tip}
-You can navigate between results with your keyboard by pressing "Enter" to go to the next result, and "Shift + Enter" to go to the previous result.
-```
-
-![Using the in-table search and navigating through the matches](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt30bf5f8b9a45ab74/67c234a787966d9fbc994ce0/in-table-search-demo.gif)
-
-
-### Compare documents [compare-documents-in-discover]
-
-You can use **Discover** to compare and diff the field values of multiple results or documents in the table.
-
-1. Select the results you want to compare from the Documents or Results tab in Discover.
-2. From the **Selected** menu in the table toolbar, choose **Compare selected**. The comparison view opens and shows the selected results next to each other.
-3. Compare the values of each field. By default the first result selected shows as the reference for displaying differences in the other results. When the value remains the same for a given field, it’s displayed in green. When the value differs, it’s displayed in red.
-   ::::{tip}
-   You can change the result used as reference by selecting **Pin for comparison** in the contextual menu of any other result.
-   ::::
-
-
-   ![Comparison view in Discover](/explore-analyze/images/kibana-discover-compare-rows.png "")
-
-4. Optionally, customize the **Comparison settings** to your liking. You can for example choose to not highlight the differences, to show them more granularly at the line, word, or character level, or even to hide fields where the value matches for all results.
-5. Exit the comparison view at any time using the **Exit comparison mode** button.
-
-
-### Copy results as text, JSON, or Markdown [copy-row-content]
-
-You can quickly copy the content currently displayed in the table for one or several results to your clipboard.
-
-1. Select the rows you want to copy.
-2. Open the **Selected** menu in the table toolbar, and select one of the available formats:
-   - **Copy selection as text**.
-   - **Copy documents as JSON**, or **Copy results as JSON** if you're in {{esql}} mode.
-   - {applies_to}`stack: ga 9.3+` **Copy selection as Markdown**: Selected results are copied as a Markdown table.
-
-The content is copied to your clipboard in the selected format. Fields that are not currently added to the table are ignored.
-
-:::{tip}
-You can copy the content of a single cell to your clipboard from the quick actions that appear when hovering over the cell.
-:::
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, you can also copy a field, a nested object, or the whole document from the tree. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
-
-
-### Explore individual result or document details in depth [look-inside-a-document]
-
-$$$document-explorer-expand-documents$$$
-Dive into an individual document to view its fields and the documents that occurred before and after it.
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To filter or copy values in the table without opening the flyout, switch **View mode** to **JSON**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
-
-1. In the document table, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier {{stack}} versions) to show document details.
-
-    ![Table view with document expanded](/explore-analyze/images/kibana-document-table-expanded.png "")
-
-2. Scan through the fields and their values. You can filter the table in several ways:
-
-   * If you find a field of interest, hover your mouse over the **Field** or **Value** columns for filters and additional options.
-   * Use the search above the table to filter for specific fields or values, or filter by field type using the options to the right of the search field.
-   * You can pin some fields by clicking the left column to keep them displayed even if you filter the table.
-
-   ::::{tip}
-   You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
-   ::::
-
-3. In classic mode, you can also open the document on a page of its own, or view the documents that occurred before and after it. Refer to [View a single document or the documents around it](view-single-document.md). These actions aren't available in {{esql}} mode.
-
-::::{tip}
-:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
-
-To copy a link that reopens this document, select {icon}`link` **Copy link** in the flyout header. Refer to [Share a link to a document](#share-a-document-link).
-::::
-
-
-## Search and filter data [search-in-discover]
-
-
-### Search and filter using KQL in classic mode [_default_mode_search_and_filter_using_kql]
-
-In classic mode, you search with KQL or Lucene in the query bar and narrow results with filters. Refer to [Search and filter with KQL, Lucene, and filters](search-and-filter-classic.md).
-
-$$$filter-in-discover$$$
-
-### Search and filter using ES|QL [_search_and_filter_using_esql]
-
-You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
-
-You can switch between ES|QL and classic mode at any time. To learn what happens to your query and filters when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md).
-
-In ES|QL mode, the **Documents** tab is named **Results**.
-
-:::{important}
-:applies_to: stack: ga 9.1+
-Partial results appear when an {{esql}} query:
-- times out. The `search:timeout` advanced setting defines the timeout, and its default value depends on your version:
-  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` 20 minutes (1200000 ms). In serverless projects, this is not customizable.
-  - {applies_to}`stack: ga 9.1-9.5` 10 minutes (600000 ms).
-- {applies_to}`stack: ga 9.3+` is canceled.
-:::
-
-Learn more about how to use ES|QL queries in [Get started with {{esql}} in Discover](try-esql.md) and [Use Discover with {{esql}}](use-esql.md).
-
-### Cancel a running query [cancel-query-in-discover]
-
-When you cancel a running query in **Discover**, you might still see some results depending on which version you're using.
-
-:::::{applies-switch}
-
-::::{applies-item} { serverless:, stack: ga 9.3+ }
-Select the **Cancel** button that appears while the query executes. **Discover** stops the search and displays the partial results collected up to that point.
-::::
-
-::::{applies-item} stack: ga 9.0-9.2
-Select the **Cancel** button that appears while the query executes. **Discover** stops the search and shows an empty results table.
-::::
-
-:::::
-
-This behavior applies to all query types (KQL, Lucene, and {{esql}}).
-
-:::{tip}
-For long-running queries, you can also [send the query to the background](background-search.md) instead of canceling it, allowing it to complete while you continue working.
-:::
-
-### Run multiple explorations with tabs
-```{applies_to}
-stack: preview 9.2
-serverless: preview
-```
-**Discover** supports multiple tabs to help you explore different aspects of your data simultaneously. Each tab maintains its own independent state, including the query ({{esql}} or classic mode), time range, filters, selected data source, columns and sort order you defined, and the active [context-aware experience](#context-aware-discover).
-
-This allows you to pivot quickly between different explorations without losing your place. For example:
-
-* **Compare time periods:** Open multiple tabs with the same query but different time ranges
-* **Test query variations:** Duplicate a tab to experiment with different {{esql}} queries or filters
-* **Switch contexts:** Keep separate tabs for logs, metrics, and traces explorations
-* **Test a hypothesis:** Switch between different data sources or field combinations
-
-#### Manage Discover tabs
-
-You can open new tabs or duplicate existing ones to compare different queries:
-- To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs. What the new tab does when it opens depends on your version:
-  - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The tab starts empty. It doesn't run any search until you enter a query and run it.
-  - {applies_to}`stack: preview 9.2-9.5` The tab opens on the same data source as the tab you came from and, by default, runs a search right away.
-- To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
-
-A session supports a maximum of 25 open tabs. When the limit is reached, the {icon}`plus` icon and **Duplicate** are disabled. You can't add more tabs until you close some.
-
-To manage and organize your tabs, you can:
-- Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
-- Reorder them: Drag and drop a tab to move it.
-- Close them: Hover over a tab and select the {icon}`cross` icon.
-- Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
-
-  :::{tip}
-  If you want to discard all open tabs, you can also start a {icon}`plus` **New session**/**New** from the application menu. When you use this option, any unsaved changes to your current session are lost.
-  :::
-- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`arrow_down` **Tabs menu** icon located at the end of the tab bar.
-  - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once. If restoring a group would exceed the 25-tab limit, only the first tabs in the group are restored up to the remaining capacity.
-
-To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
-
-### Inspect your Discover queries
-
-:::{include} ../_snippets/inspect-request.md
-:::
-
-### Run long-running queries in the background
-```{applies_to}
-serverless: preview
-stack: preview 9.2
-```
-
-You can send your long-running KQL or {{esql}} queries to the background from **Discover** and let them run while you continue exploring your data. Refer to [Run queries in the background](/explore-analyze/discover/background-search.md).
-
-
-### Save your Discover session for later use [save-discover-search]
-
-Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
-
-1. In the application menu, select **Save**.
-2. Enter a title and a description for the session.
-3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
-4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to also add the session as a panel on a dashboard, in addition to the library. For details, refer to [Save a Discover session](save-open-search.md#_save_a_discover_session).
-5. Select **Save**.
-
-
-### Share your findings [share-your-findings]
-
-You can share the current view, show the results on a dashboard, export the session, or copy a link that reopens a specific document.
-
-- Select {icon}`share` **Share** in the application menu to copy a link to the current view. For the link options, refer to [Reporting and sharing](../report-and-share.md).
-- To show the results on a dashboard, add the session, its chart, or its table, to the dashboard. Refer to [Use Discover sessions in dashboards](save-open-search.md#_add_search_results_to_a_dashboard).
-- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Some limits apply. Refer to [](save-open-search.md#export-discover-session-csv) for details.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
-
-In classic mode, you can also open a document on a bookmarkable page of its own. Refer to [View a single document or the documents around it](view-single-document.md).
-
-#### Share a link to a document [share-a-document-link]
-```{applies_to}
-serverless: ga
-stack: ga 9.6+
-```
-
-When you are investigating a result, copy a link that reopens **Discover** with that document's flyout open. Recipients land on the same document instead of only the surrounding query.
-
-1. In the document table, select {icon}`maximize` **View details** on the document's row.
-2. In the flyout header, select {icon}`link` **Copy link**.
-
-   :::{image} /explore-analyze/images/kibana-discover-copy-document-link.png
-   :alt: Copy link tooltip in the flyout header
-   :screenshot:
-   :width: 400px
-   :::
-
-Opening the link brings back the same flyout.
-
-The link uses the absolute time range of the results on screen, so the document stays in that range.
-
-After you expand a grouped {{esql}} result and select a nested document, **Copy link** reopens that document in the default layout and keeps the grouping with [`INLINE STATS`](elasticsearch://reference/query-languages/esql/commands/inlinestats-by.md).
-
-When **Copy link** can copy the open document, **Share** includes that document. The session link opens **Discover** with the same flyout. If the time range is relative, the **Share** dialog warns you to use an absolute time range so the document stays in the results. If **Copy link** cannot copy the document, the dialog says the link will not include it.
-
-If you are using {{esql}}, add `METADATA _id, _index` on the `FROM` or `TS` line, then rerun the query and reopen the document before copying the link. For example:
-
-```esql
-FROM kibana_sample_data_logs METADATA _id, _index
-```
-
-If the query transforms rows, such as with `STATS` or `KEEP`, you cannot copy a link to an individual result. **Copy link** stays available and shows a warning. If `_id` and `_index` are missing, **Copy link** stays available and warns you to add `METADATA _id, _index`.
-
-
-## Analyze your data with AI [analyze-with-ai]
-```{applies_to}
-stack: preview 9.5
-serverless: preview
-```
-
-**Discover** integrates with [{{agent-builder}}](../ai-features/elastic-agent-builder.md) to provide AI-powered analysis of your {{esql}} query results. The [`discover-data-analysis` skill](../ai-features/agent-builder/builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) runs aggregation queries against the full dataset behind your current view, renders a chart for the main finding, and proposes drill-down queries you can run in a new tab.
-
-This feature is available only when **Discover** is in [{{esql}} mode](use-esql.md). To write or fix the query itself with AI, use the [AI assistance in the {{esql}} editor](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
-
-To start an analysis:
-
-1. Switch to {{esql}} mode and run a query so results are loaded in the table.
-2. Select the **AI Agent** button in the {{kib}} header, or press {kbd}`cmd+;` (Mac) / {kbd}`ctrl+;` (Windows and Linux), to open the agent chat.
-
-   The agent automatically receives your current query, columns, sample rows, and time range as context.
-
-3. Ask the agent to analyze your data. For example, prompt it with `analyze this data` or a more specific question.
-4. Review the agent's findings, the inline visualization, and the suggested drill-down queries.
-
-You can also ask the agent for follow-up analyses, including correlations between fields, time-over-time comparisons, and field statistics for specific columns.
-
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To see the current documents without leaving the conversation, ask the agent to show them in an interactive **Discover** table. Refer to [Discover tables in chat](../ai-features/agent-builder/agent-builder-discover-tables.md).
-
-### Context-aware deep analysis
-
-When your data matches one of the [context-aware experiences](#context-aware-discover), the agent receives shape-specific guidance so the analysis is tailored to the data type:
-
-* **Logs**: groups by `log.level`, `service.name`, `host.name`, and `event.dataset`; surfaces error and warning frequency and shifts in level distribution.
-* **Metrics**: uses the {{esql}} `TS` source command for time series data streams, runs `TS_INFO` first to discover metric names, types, and dimension fields, then aggregates with the right function for each metric type (`RATE` or `SUM` for counters, `AVG`, `MAX`, `MIN`, or `PERCENTILE` for gauges, `PERCENTILE` for histograms).
-* **APM traces**: focuses on latency percentiles of transaction and span durations, throughput by transaction or span name, and error rate via `event.outcome`.
-* **OTel traces**: focuses on latency percentiles of `duration`, throughput by service and span kind, and error rate via `status.code`.
-
-If your query doesn't match any context-aware profile, the agent infers the analysis strategy from the column names and types in the results instead.
-
-
-## Generate alerts [alert-from-Discover]
-
-From **Discover**, you can create a rule to periodically check when data goes above or below a certain threshold within a given time interval.
-
-1. Ensure that your data view, query, and filters fetch the data for which you want an alert.
-2. In the application menu, select **Create alert rule** (or **Alerts** in earlier versions), then select **Create search threshold rule**.
-
-    The **Create rule** form is pre-filled with the latest query sent to {{es}}.
-
-3. [Configure your query](../alerting/alerts/rule-type-es-query.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
-4. Click **Save**.
-
-For more about this and other rules provided in {{alert-features}}, go to [Alerting](../alerting/alerts.md).
-
-
-## What’s next? [_whats_next_4]
-
-* [Search for relevance](discover-search-for-relevance.md).
-* [Configure the chart and document table](document-explorer.md) to better meet your needs.
-
-
-## Troubleshooting [_troubleshooting]
-
-This section references common questions and issues encountered when using Discover. Also check the following blog post: [Learn how to resolve common issues with Discover.](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load)
-
-**Some fields show as empty while they should not be, why is that?**
-
-This can happen in several cases:
-
-* With runtime fields and regular keyword fields, when the string exceeds the value set for the [ignore_above](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) setting used when indexing the data into {{es}}.
-* Due to the structure of nested fields, a leaf field added to the table as a column will not contain values in any of its cells. Instead, add the root field as a column to view a JSON representation of its values. Learn more in [this blog post](https://www.elastic.co/de/blog/discover-uses-fields-api-in-7-12).
+If **Discover** asks you to add data or create a data view, refer to [Discover or Dashboards asks you to add data or create a data view](/troubleshoot/kibana/discover-dashboards-no-data-screen.md). If fields show as empty when they shouldn't, refer to [Some fields show as empty in Discover](/troubleshoot/kibana/discover-empty-fields.md).

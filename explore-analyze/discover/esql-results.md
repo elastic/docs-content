@@ -97,7 +97,7 @@ To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColum
 
 ### Add a column from the fields list
 
-Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same.
+Add a field from the [fields list](explore-fields.md) to show it as its own column. The query stays the same.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no command such as `KEEP` or `STATS`, the time field stays the first column after you add other fields. CSV exports from **Discover** and from Discover session panels on dashboards also include the time field.
 
@@ -192,10 +192,24 @@ To keep the chart or the table, use one of these options:
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Save the table to a dashboard.** [Customize the table](document-explorer.md#document-explorer-customize) explains how to configure it before you [save it](save-open-search.md#save-table-to-dashboard).
 - **Save the chart to a dashboard.** [Change the chart type and display options](../visualize/esorql.md#_edit_and_add_from_discover) explains how to configure it before you [save it](save-open-search.md#add-discover-visualization-esql).
 
+## Cancel a query and partial results [cancel-query-in-discover]
+
+:::{include} ../_snippets/discover-cancel-query.md
+:::
+
+:::{important}
+:applies_to: stack: ga 9.1+
+Partial results appear when an {{esql}} query:
+- times out. The `search:timeout` advanced setting defines the timeout, and its default value depends on your version:
+  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` 20 minutes (1200000 ms). In serverless projects, this is not customizable.
+  - {applies_to}`stack: ga 9.1-9.5` 10 minutes (600000 ms).
+- {applies_to}`stack: ga 9.3+` is canceled.
+:::
+
 ## Related pages
 
 - [Use Discover with {{esql}}](use-esql.md)
-- [Analyze your data with AI](discover-get-started.md#analyze-with-ai)
+- [Analyze your data with AI](analyze-discover-data-with-ai.md)
 - [Inspect grouped STATS results in Discover](inspect-grouped-stats.md)
 - [Save a Discover session for reuse](save-open-search.md)
 - [Customize the Discover view](document-explorer.md)
