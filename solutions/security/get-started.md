@@ -32,13 +32,13 @@ Which areas you can use depends on your deployment and license:
 - {applies_to}`serverless: ga` In {{sec-serverless}}, the Security Analytics feature tiers include SIEM detection and response, with optional add-ons for endpoint protection and cloud protection. The Elastic AI SOC Engine (EASE) tier adds AI-powered threat hunting and alert triage to a third-party SIEM. Refer to [Serverless feature tiers](/solutions/security/security-serverless-feature-tiers.md).
 - {applies_to}`stack: ga` In {{stack}} deployments, the features you can use depend on your [subscription](https://www.elastic.co/pricing).
 
-## How a SIEM comes together [security-siem-pieces]
+## SIEM components in {{elastic-sec}} [security-siem-pieces]
 
-There's no single step that installs a SIEM. A working SIEM needs three things:
+In {{elastic-sec}}, SIEM detection and response relies on three components that you set up separately:
 
-1. **Data collection:** [{{agent}}](/reference/fleet/index.md), managed with {{fleet}}, collects data from your hosts. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` On {{ecloud}}, [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) can also collect data from cloud sources without an agent.
-2. **Data sources:** Integrations bring in the logs, alerts, and findings that {{elastic-sec}} analyzes. Refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
-3. **Detection rules:** Rules search your data and create alerts. [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md), then [install Elastic's prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md). Refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
+1. **Data collection:** [{{agent}}](/reference/fleet/index.md), centrally managed with {{fleet}}, collects data from your hosts. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` On {{ecloud}}, [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) can also collect data from cloud sources without an agent.
+2. **Integrations:** Hundreds of integrations bring in logs, alerts, findings, and threat intelligence from your security tools, cloud services, and identity providers, and normalize them to the [Elastic Common Schema (ECS)](ecs://reference/index.md). Refer to [Ingest data to {{elastic-sec}}](/solutions/security/get-started/ingest-data-to-elastic-security.md).
+3. **Detection rules:** Elastic maintains prebuilt rules mapped to MITRE ATT&CK. You can also write your own in KQL, EQL, or {{esql}}, or use threshold, indicator match, new terms, and {{ml}} rules. [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md), then [install the prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md). Refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
 
 ## Coming from another SIEM [security-coming-from-siem]
 
