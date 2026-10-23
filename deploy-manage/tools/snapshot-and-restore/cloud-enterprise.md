@@ -2,6 +2,7 @@
 navigation_title: "{{ece}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-repositories.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-minio.html
 applies_to:
   deployment:
     ece:
