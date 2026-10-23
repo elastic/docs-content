@@ -16,7 +16,7 @@ When a field in the Discover fields list looks interesting, you can open it in *
 ## Before you begin
 
 - Open **Discover** in classic mode and select a data view. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
-- Pick a field that can be [aggregated](../query-filter/aggregations.md).
+- Select a field that can be [aggregated](../query-filter/aggregations.md).
 
 ## Visualize a field
 

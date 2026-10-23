@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: overview
-description: Find the Discover tasks that only exist in classic mode, from searching with KQL and filters to adding runtime fields and viewing field statistics.
+description: Find the Discover tasks that only exist in classic mode, from searching with Kibana Query Language (KQL) and filters to adding runtime fields.
 ---
 
 # Use Discover in classic mode
