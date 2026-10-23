@@ -79,7 +79,14 @@ If there is no HTTP status, both transactions and spans are considered successfu
 
 ::::
 
-The **Errors** table provides a high-level view of each error message when it first and last occurred, along with the total number of occurrences. This makes it very easy to quickly see which errors affect your services and take actions to rectify them. To do so, click **View errors**.
+The **Errors** table shows each error group's type and message, when it was last seen, and its number of occurrences in the selected time range. The most frequent errors appear first by default.
+
+Use the search field to filter by message, type, or culprit. Click an error message to view its group details. Click **View all errors** (or **View errors** in earlier versions) to open [](/solutions/observability/apm/errors-ui.md).
+
+:::{note}
+:applies_to: { stack: ga 9.5+, serverless: ga }
+When the service has no APM error groups but has OpenTelemetry exception logs, the **Errors** table displays those logs instead. Refer to [Errors from logs](/solutions/observability/apm/errors-ui.md#apm-errors-from-logs) for details.
+:::
 
 :::{image} /solutions/images/observability-error-rate.png
 :alt: failed transaction rate and errors
