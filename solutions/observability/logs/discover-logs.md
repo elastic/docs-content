@@ -35,11 +35,11 @@ Viewing data in Discover logs data views requires `read` privileges for **Discov
 
 The logs experience is available in:
 
-* **{{data-source-cap}} mode**: Select the `logs-*` or `All logs` {{data-source}} from the **Discover** main page. By default, **All logs** shows all of your logs according to the index patterns set in the **logs sources** advanced setting. You can navigate to the **Advanced settings** from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* **{{data-source-cap}} mode**: If **Discover** opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then select the `logs-*` or `All logs` {{data-source}} from the **Discover** main page. By default, **All logs** shows all of your logs according to the index patterns set in the **logs sources** advanced setting. You can navigate to the **Advanced settings** from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     To focus on logs from a specific source, create a data view using the index patterns for that source. For more information, refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md).
 
-* **{{esql}} mode**: Switch to **{{esql}}** mode and use the `FROM` command to query your log data:
+* **{{esql}} mode**: If **Discover** isn't in **{{esql}}** mode, [switch to it](/explore-analyze/discover/switch-esql-mode.md#switch-discover-query-mode). Then use the `FROM` command to query your log data:
 
     ```esql
     FROM logs-*-*,logs-*,filebeat-*
