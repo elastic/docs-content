@@ -68,6 +68,37 @@ Alternatively, you can install ECE with the [Ansible](alternative-install-ece-wi
 
 To install ECE in an air-gapped environment, refer to [](./air-gapped-install.md).
 
+## Require an install password to add hosts [ece-install-password]
+
+```{applies_to}
+deployment:
+  ece: ga 4.3
+```
+
+When you install {{ece}} on an additional host, the host reads a set of bootstrap secrets from the installation to join it. By default, any host that can reach the installation over the network can read these secrets. To protect them, you can set an install password. While a password is set, a host can only join when it is installed with the same password. For the security background, refer to [](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation.md#ece-securing-install-password).
+
+To start a new installation with an install password, add `--install-password PASSWORD` to the installation command on the first host, or set the password in the `INSTALL_PASSWORD` environment variable before you run the script. The environment variable keeps the password out of your shell history and of the process list.
+
+```sh
+bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --install-password PASSWORD
+```
+
+To set, change, or remove the install password of an existing installation, run the `set-install-password` command on the first host or on any host that holds the director role:
+
+```sh
+bash elastic-cloud-enterprise.sh set-install-password --pwd PASSWORD
+```
+
+Use `--generate` instead of `--pwd` to let the script generate a password and print it, or `--unset` to remove the password. {{ece}} stores only a digest of the password, so you don't need the current password to change or remove it.
+
+After you set a password, install every additional host with `--install-password PASSWORD`, as described in [](./install-ece-on-additional-hosts.md). Hosts that are already part of the installation don't need the password.
+
+::::{important}
+If you upgrade an existing installation, set the install password only after every host runs {{ece}} 4.3 or later. On a host that still runs an earlier version, the services forwarder loses access to the bootstrap secrets when it restarts. If that happens, remove the password with `--unset`.
+::::
+
+For all options, refer to [elastic-cloud-enterprise.sh set-install-password](cloud://reference/cloud-enterprise/ece-installation-script-set-install-password.md).
+
 ## Post-installation steps
 
 Once you have installed ECE, check some final [post-installation steps](post-installation-steps.md) to get ready for production.
