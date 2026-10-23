@@ -61,6 +61,11 @@ To invite users to your organization:
 
     Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation before it expires. If the invite has expired, an admin can resend the invitation.
 
+:::{tip}
+% need to confirm this is still needed
+Users with [limited {{ecloud}} Console access](/deploy-manage/users-roles/cloud-organization/user-roles.md#restrict-console-access) need the direct project URL to open their projects. Share the URL with them so they can bookmark it. Learn more about [access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
+:::
+
 ## Invite users to join additional organizations [invite-additional-orgs]
 
 :::{include} _snippets/invite-additional-orgs.md
@@ -168,7 +173,9 @@ curl -XPOST \
 ```
 1. When granting a custom serverless role, you need to grant the relevant `viewer` role ID for the project type.
 2. [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) for the user in this {{serverless-short}} project. 
-3. Pass an empty `application_roles` array to only grant the user {{ecloud}} Console access to the relevant resources. [Learn more about access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
+3. Pass an empty `application_roles` array to grant only {{ecloud}} Console access to the relevant resources. [Learn more about access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
+
+% can/should we expose the `*-application-only` role ID pattern?
 :::
 
 :::{dropdown} View pending invitations to your organization
