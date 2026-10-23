@@ -23,11 +23,8 @@ Here's what you'll do:
 
 ## Requirements [create-rule-requirements]
 
-Before you start, make sure you have the following:
-
-- {applies_to}`serverless: ga` **An {{observability}} project**: On {{serverless-short}}, {{alerting-v2-system}} is available only in {{observability}} projects.
-
-- **The required access**: Your role needs the privileges to create rules, triage alerts, and review execution history. Refer to [Configure access](../manage/configure-access.md#alerting-quick-reference). To create the tutorial index and load the sample data, your role also needs the `create_index` and `write` index privileges on `checkout-service-logs`.
+- An {{stack}} deployment or an {{observability}} project on {{serverless-short}}.
+- The [{{alerting-v2-system}} privileges](../manage/configure-access.md#alerting-quick-reference) to create rules, triage alerts, and view execution history, plus the `create_index` and `write` index privileges on `checkout-service-logs`.
 
 ## Prepare your environment [prepare-your-environment]
 
