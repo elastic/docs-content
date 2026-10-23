@@ -39,11 +39,9 @@ For more details about how snapshots are used with {{es}}, refer to [](/deploy-m
 
 If you are installing ECE [without internet access](/deploy-manage/deploy/cloud-enterprise/air-gapped-install.md), you need to use an on-premise storage service.
 
-:::{admonition} MinIO and other third-party storage product support
-While users can use the open source version of [MinIO](https://github.com/minio/minio), Elastic does not recommend it, as it is no longer maintained. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch). Configuring and troubleshooting MinIO is out of the Elastic support scope.
+While Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself. Refer to [S3-compatible services](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-compatible-services) for details.
 
-Furthermore, while Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself. Refer to [S3-compatible services](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-compatible-services) for details.
-:::
+While users can use the open source version of [MinIO](https://github.com/minio/minio), Elastic does not recommend it, as it is no longer maintained. Review [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch). Configuring and troubleshooting MinIO is out of the Elastic support scope.
 
 ## Add snapshot repository configurations [ece-manage-repositories-add]
 
