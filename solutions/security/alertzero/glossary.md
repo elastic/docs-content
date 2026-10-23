@@ -20,7 +20,7 @@ This glossary defines the terms you see in AlertZero and its documentation. Each
 
 An {{elastic-sec}} feature that runs agentic security work for your SOC. AI-powered [Workers](#alertzero-glossary-worker), grouped into [Watches](#alertzero-glossary-watch), triage alerts, hunt for threats, tune noisy detection rules, and investigate on their own, then bring you the [proposed actions](#alertzero-glossary-proposed-action) that need a person to decide. Refer to [](index.md).
 
-### Assisted [alertzero-glossary-assisted]
+### Assisted (autonomy) [alertzero-glossary-assisted]
 
 An [autonomy](#alertzero-glossary-autonomy) level at which a Worker skips the approval it asks for at [Manual](#alertzero-glossary-manual) before it starts analyzing or drafting. Every proposed rule change still waits for you. Refer to [](configure-worker-settings.md).
 
@@ -37,14 +37,6 @@ A Worker setting that controls how far the Worker goes on its own before it wait
 A model setting in **Feature Settings** for AlertZero calls where accuracy matters, but that run often or use tools over many steps, such as triaging alerts or diagnosing a noisy rule. Choose a strong mid-size model. Refer to [Efficient models](#alertzero-glossary-efficient-models) and [Frontier models](#alertzero-glossary-frontier-models).
 
 ## C-D [alertzero-glossary-c-d]
-
-### Closed actions [alertzero-glossary-closed-actions]
-
-The section of the AlertZero home page that lists proposed actions that are no longer waiting for a decision, including ones that expired or that a Worker resolved without you. Refer to [](review-closed-proposed-actions.md).
-
-### Configure [alertzero-glossary-configure]
-
-A section of the AlertZero home page that groups proposed actions about your detection rules, such as reviewing a detection gap, creating, editing, or enabling a rule, or adding a rule exception. Refer to [](decide-detection-change.md).
 
 ### Cyber domain models [alertzero-glossary-cyber-domain-models]
 
@@ -82,21 +74,13 @@ A result from the [Hunt Watch](#alertzero-glossary-hunt-watch): activity in your
 
 The [Watch](#alertzero-glossary-watch) that hunts for threats before anyone reports them. Its Continuous Threat Hunt Worker searches your data for activity that matches threat reports and for detection coverage gaps. This Worker runs on a fixed schedule and always uses [Manual](#alertzero-glossary-manual) autonomy. Refer to [](watches-and-workers.md#alertzero-hunt-watch).
 
-### Impact [alertzero-glossary-impact]
-
-The row on the AlertZero home page that lists the hosts, users, and other entities involved in your [proposed actions](#alertzero-glossary-proposed-action). Each entry shows an entity and the number of proposed actions that involve it, including closed ones. Select an entry to filter the home page to that entity. Impact is also the severity of a single proposed action: critical, high, medium, or low. Refer to [](use-alertzero.md).
-
-### Investigate [alertzero-glossary-investigate]
-
-A section of the AlertZero home page that groups proposed actions that help you look further into a threat, such as closing alerts as false positives or running a deep forensics investigation. Refer to [](decide-proposed-action.md).
-
 ### Investigation [alertzero-glossary-investigation]
 
 A record of an AlertZero Worker's inquiry into a potential threat, such as a candidate attack or a [hunt finding](#alertzero-glossary-hunt-finding). An investigation collects the Worker's evidence, its conclusion, and any [proposed actions](#alertzero-glossary-proposed-action). You can assign an investigation, close it, or [escalate](#alertzero-glossary-escalation) it. Refer to [](escalate-investigation.md).
 
 ## M-P [alertzero-glossary-m-p]
 
-### Manual [alertzero-glossary-manual]
+### Manual (autonomy) [alertzero-glossary-manual]
 
 The default [autonomy](#alertzero-glossary-autonomy) level. At this level, the Worker still runs and analyzes on its own, but the actions it proposes wait for your approval. For example, Alert Triage waits for you to approve closing false-positive alerts, Attack Discovery waits for you to approve handing an attack to the Forensics Watch, and Endpoint Analysis waits for you to approve each response action. Rule Tuning and Rule Coverage also ask for your approval before they start analyzing a rule or a detection gap. Refer to [](configure-worker-settings.md).
 
@@ -106,11 +90,7 @@ A recommendation from a Worker that waits for your decision, such as closing fal
 
 ## R-S [alertzero-glossary-r-s]
 
-### Respond [alertzero-glossary-respond]
-
-A section of the AlertZero home page that groups proposed actions that contain a threat, such as isolating a host, killing a process, or suspending a process. Refer to [](respond-to-attack.md).
-
-### Supervised [alertzero-glossary-supervised]
+### Supervised (autonomy) [alertzero-glossary-supervised]
 
 The highest [autonomy](#alertzero-glossary-autonomy) level. At this level, the Worker approves its own proposed actions instead of waiting for you, and you review the results afterward. For example, Alert Triage closes false-positive alerts, which you can reopen, Attack Discovery hands attacks to the Forensics Watch, and Endpoint Analysis runs its response actions. Refer to [](configure-worker-settings.md).
 
