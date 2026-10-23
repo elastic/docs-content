@@ -1,14 +1,15 @@
 ---
+description: Create aggregation-based visualizations such as bar, line, and pie charts in Kibana, convert them to Lens, and add them to a dashboard.
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: kibana
-  - id: cloud-serverless
   - id: cloud-hosted
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+type: how-to
 ---
 
 # Aggregation-based [add-aggregation-based-visualization-panels]
@@ -145,6 +146,8 @@ You can open the following aggregation-based visualizations in **Lens**:
 * Vertical bar
 
 To get started, click **Edit visualization in Lens** in the toolbar.
+
+You can also convert an aggregation-based visualization that's already on a dashboard. In **Edit** mode, open the panel menu {icon}`boxes_vertical` and select **Convert to Lens**. The option appears only when {{kib}} can convert the visualization's configuration, and you need at least **Read** access to the **Visualize library** feature. **Lens** opens with the converted visualization. To replace the panel with it, select **Save and return**.
 
 For more information, check out [Create visualizations with Lens](../lens.md).
 

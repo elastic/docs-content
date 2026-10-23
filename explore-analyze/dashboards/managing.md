@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Managing dashboards [_manage_dashboards]
@@ -62,9 +63,10 @@ By default, your most recently viewed dashboards are displayed first. You can in
 
 ## Browse saved visualizations and annotation groups [find-visualizations-annotation-groups]
 
-To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). To do that, search for **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To browse your saved visualizations and annotation groups, open the [Visualize library](../visualize/visualize-library.md). Where you open it depends on your deployment and version.
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When using the Security and Observability solution views or project types, the **Dashboards** page includes **Visualizations** and **Annotation groups** tabs for direct access to the Visualize Library. With the **Classic** solution view or in previous versions, the Visualize Library is available from the **Visualize** page in the navigation menu.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` On the **Dashboards** page, select the **Visualizations** tab for visualizations or the **Annotation groups** tab for annotation groups. In the {{stack}} Classic view, you can also select **Visualize library** in the navigation menu.
+- {applies_to}`stack: ga 9.0-9.3` Select **Visualize library** in the navigation menu, or search for it in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the **Visualizations** or **Annotation groups** tab.
 
 
 ## Keep track of your favorite dashboards [_keep_track_of_your_favorite_dashboards]
