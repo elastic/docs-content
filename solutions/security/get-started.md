@@ -67,8 +67,6 @@ There are two options to create serverless projects:
 :::{note}
 You need the `admin` predefined role or an equivalent custom role to create projects. For more information, refer to [User roles and privileges](https://www.elastic.co/docs/deploy-manage/users-roles/cloud-organization/user-roles).
 :::
-
-After you've created your project, you're ready to move on to the next step.
 ::::
 
 Alternatively, if you prefer a self-managed deployment, you can create a [local development installation](https://www.elastic.co/docs/deploy-manage/deploy/self-managed/local-development-installation-quickstart) in Docker:
@@ -84,7 +82,7 @@ Check out the complete list of [deployment types](/deploy-manage/deploy.md#choos
 ::::{{step}} Ingest your data 
 
 
-After you've deployed {{elastic-sec}}, the next step is to get data into the product before you can search, analyze, or use any visualization tools. The easiest way to get data into {{elastic-sec}} is through one of our hundreds of ready-made integrations. You can add an integration directly from the **Get Started** page within the **Ingest your data** section:
+Integrations are the most common way to bring data into {{elastic-sec}}. To add one from the **Get Started** page:
 1. At the top of the page, click **Set up Security**. 
 2. In the Ingest your data section, click **Add data with integrations**. 
 3. Choose from one of our recommended integrations, or select another tab to browse by category. 
@@ -101,8 +99,7 @@ If you have data from a source that doesn't yet have an integration, you can use
 ::::
 
 ::::{{step}} Get started with your use case 
-Not sure where to start exploring {{elastic-sec}} 
-or which features may be relevant to you? Continue to the next topic to view our [quickstart guides](../security/get-started/quickstarts.md), each of which is tailored to a specific use case and helps you complete a core task so you can get up and running. 
+Each [quickstart guide](../security/get-started/quickstarts.md) walks through a core task for one use case: SIEM detection and response, endpoint protection, or cloud security posture management.
 ::::
 
 ::::::
@@ -111,7 +108,7 @@ or which features may be relevant to you? Continue to the next topic to view our
 
 Use these resources to learn more about {{elastic-sec}} or get started in a different way.
 
-* Migrate your SIEM rules from Splunk's Search Processing Language (SPL) to Elasticsearch Query Language ({{esql}}) using [Automatic Migration](../security/get-started/automatic-migration.md). 
+* Migrate your detection rules from Splunk, QRadar, or Microsoft Sentinel, and your Splunk dashboards, using [Automatic Migration](../security/get-started/automatic-migration.md).
 * Check out the numerous [Security integrations](https://www.elastic.co/integrations/data-integrations?solution=security) available to collect and process your data.  
 * Get started with [AI-assisted operations](../security/ai.md). 
 * Learn how to use {{es}} Query Language ({{esql}}) for [security use cases](/solutions/security/esql-for-security.md). 
