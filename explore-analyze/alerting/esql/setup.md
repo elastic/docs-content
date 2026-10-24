@@ -62,7 +62,7 @@ stack: experimental 9.6+
 
 To try features of {{alerting-v2-system}} that are still experimental, turn on the **Universal Alerting: Experimental Features** advanced setting (`alerting:v2:experimentalFeatures`). The setting is off by default and applies only to the space where you turn it on.
 
-When the setting is on, you can detect multi-step alert patterns by chaining rules into a sequence. On the **Rules** page, select **Build a sequence (Experimental)**.
+When the setting is on, you can chain rules into a sequence and detect multi-step alert patterns. On the **Rules** page, select **Build a sequence (Experimental)**.
 
 To turn on experimental features:
 
@@ -71,7 +71,12 @@ To turn on experimental features:
 3. Select the **Space Settings** tab, then turn on **Universal Alerting: Experimental Features**.
 4. Select **Save changes**, then reload {{kib}}.
 
-You can create rules and action policies with {{agent-builder}} while this setting is off. On the **Rules** page, select **Create rule** → **Create with agent**. When the Rules list is empty, select **With AI Agent**. On the **Action Policies** page, select **Create policy** → **Create with agent**. When the Action Policies list is empty, select **Create with AI Agent**. {{agent-builder}} has [its own requirements](rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
+You can create rules and action policies with {{agent-builder}} while this setting is off.
+
+- On the **Rules** page, select **Create rule** → **Create with agent**. When the Rules list is empty, select **With AI Agent**.
+- On the **Action Policies** page, select **Create policy** → **Create with agent**. When the Action Policies list is empty, select **Create with AI Agent**.
+
+{{agent-builder}} has [its own requirements](rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
 
 ## Keep the Observability alerts page for {{alerting-v1-system}} [alerting-setup-v1-alerts-page]
 
