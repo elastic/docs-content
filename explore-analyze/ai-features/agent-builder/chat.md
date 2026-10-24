@@ -465,7 +465,7 @@ At certain points an agent pauses and hands control back to you before it contin
 
 HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
-HITL prompts require an interactive conversation, so [sub-agent executions cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+HITL prompts require an interactive conversation, so [subagents cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Confirm a change
 
@@ -529,7 +529,7 @@ The prompt shows the HTTP method, path, and whether the call goes to {{es}} or {
 
 Select **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
 
-A parent agent can also ask you to approve operations before starting a sub-agent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+A parent agent can also ask you to approve operations before starting a subagent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Authorize a connector
 ```{applies_to}

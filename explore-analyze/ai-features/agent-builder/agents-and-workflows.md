@@ -171,6 +171,19 @@ Set `agent-id` and other configuration keys at the top level of the step. Set in
 
 For the complete step reference, refer to [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent).
 
+## Manage conversation attachments and metadata [manage-conversation-attachments-metadata-workflow]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Workflows can read and update the attachments and metadata of {{agent-builder}} conversations. For example, a workflow can add a runbook to the conversation that an `ai.agent` step created, or record the outcome of an investigation in the metadata of a conversation it created from a template.
+
+Use these steps:
+
+- [Conversation attachment steps](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-steps): Add, update, delete, read, and list attachments.
+- [Conversation metadata steps](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-steps): Read and update metadata fields.
 
 ## Use `kibana.request` step [use-kibana-request-workflow-step]
 

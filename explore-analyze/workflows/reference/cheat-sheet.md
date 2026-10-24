@@ -105,6 +105,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Pause | `wait`, `waitForInput` |
 | Transform data | `data.filter`, `data.map`, `data.aggregate`, `data.parseJson`, `data.regexExtract` |
 | Call AI | `ai.prompt`, `ai.classify`, `ai.summarize`, `ai.agent` |
+| Manage {{agent-builder}} conversation attachments and metadata {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | `ai.attachment.add`, `ai.attachment.update`, `ai.attachment.delete`, `ai.attachment.read`, `ai.attachment.list`, `ai.conversation.metadata.read`, `ai.conversation.metadata.patch` |
 | Call another workflow | `workflow.execute` (synchronous), `workflow.executeAsync` (asynchronous, tech preview) |
 | Log | `console` |
 

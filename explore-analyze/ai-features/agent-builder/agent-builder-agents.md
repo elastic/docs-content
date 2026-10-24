@@ -57,6 +57,7 @@ Create custom agents tailored to your specific needs by defining custom instruct
 - Agent behavior and personality through custom instructions
 - Available tools and capabilities
 - {applies_to}`stack: ga 9.4+` Assigned skills for specialized expertise
+- {applies_to}`stack: ga 9.6+` [Subagents](#subagents) the agent can delegate tasks to
 - Visual appearance and organization
 
 Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created.
@@ -112,6 +113,58 @@ This toggle is available for all agents, both built-in and custom.
 - **Custom agents**: Elastic capabilities are **disabled** by default. Enable if you want the agent to have access to all current and future Elastic-built tools, skills, and plugins.
 
 To review which tools and skills are active, open the agent's **Tools** or **Skills** tab after enabling the toggle. Elastic-provided items are marked with a lock icon.
+
+## Subagents [subagents]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+An agent can delegate tasks to subagents. A subagent is another agent, or a copy of the same agent, that works on a task separately and returns the result. Use subagents to split a complex request into focused tasks, or to hand part of the work to an agent with specialized instructions and tools.
+
+### Configure subagents
+
+New custom agents have subagents turned off. By default, the Elastic AI Agent can delegate to a copy of itself. If the Elastic AI Agent existed in a space before subagents were available, for example after an upgrade, it keeps its configuration without subagents.
+
+To change an agent's subagents, you need permission to edit the agent.
+
+1. Edit the agent and go to the **Subagents** section of the **Settings** tab. You can also select **Edit agent settings** on the agent's **Overview** page.
+2. Select **Enable subagents**. **This agent (self-fork)** appears under **Delegable subagents**.
+3. Under **Delegable subagents**, select the other agents this agent can delegate to. You can only select agents that you can access. To stop the agent from delegating to a copy of itself, remove **This agent (self-fork)**.
+4. Select **Save**.
+
+The following example shows an agent that can delegate tasks to a copy of itself and to one custom agent:
+
+:::{image} images/agent-subagents-settings.png
+:screenshot:
+:alt: The Subagents section of the agent Settings tab, with Enable subagents selected and This agent (self-fork) and a custom agent selected under Delegable subagents.
+:width: 700px
+:::
+
+To configure subagents with the Agents API, set `configuration.subagent_ids` when you [create]({{kib-apis}}operation/operation-post-agent-builder-agents) or [update]({{kib-apis}}operation/operation-put-agent-builder-agents-id) an agent:
+
+- The list takes up to 50 unique IDs of agents that you can access.
+- To let the agent delegate to a copy of itself, use `_self`. You can't use the agent's own ID.
+- An empty list turns subagents off.
+- If you omit `subagent_ids` when you update an agent, the agent keeps its current list.
+
+### How subagents run
+
+The agent decides when to delegate a task and writes the task instructions for the subagent. The subagent doesn't see the conversation, only those instructions.
+
+A copy of the agent (self-fork) has the same custom instructions, tools, and skills as the agent.
+
+The agent can wait for a subagent to finish, or let the subagent run in the background while it continues working. Background subagents are available only in saved conversations.
+
+The subagent returns its result to the agent, not to you, and the agent uses it in its response. To review what a subagent did, select the `run_subagent` tool call in the conversation, then select the **Sub-agent execution** link.
+
+Delegation has the following limits and safeguards:
+
+- A subagent can't delegate tasks to its own subagents.
+- The agent can only delegate to agents that you can access. It skips agents in the **Delegable subagents** list that you can't access or that were deleted.
+- Before it delegates a task that can modify or delete data, the agent might ask you to approve the APIs the subagent can call. If you select **Deny**, the subagent runs without access to those APIs.
+- Subagents can't show you confirmation prompts. For details, refer to [Human-in-the-loop prompts require an interactive conversation](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 ## Agents API
 
