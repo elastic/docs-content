@@ -130,7 +130,7 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
     :::
 
 $$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$$$ `rule-authoring` {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
-:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover [{{kib}} alerting](/explore-analyze/alerting/alerts.md) rules, {{observability}} rules, or {{elastic-sec}} detection rules.
+:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) rules, {{observability}} rules created with {{alerting-v1-system}}, or {{elastic-sec}} detection rules.
 
     {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This skill was previously named `rule-management`. If a custom agent lists `rule-management`, change it to `rule-authoring`. The [`action-policy-authoring`](#agent-builder-action-policy-authoring-skill) skill handles notification setup. After this skill composes a complete rule that opens alerts, it offers to set up notifications. If you accept, the agent loads `action-policy-authoring`.
 
