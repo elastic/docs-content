@@ -157,7 +157,17 @@ When you retrieve a quarantined file using `get-file`, the XOR obfuscation is au
 
 ## Ransomware protection [ransomware-protection]
 
-Behavioral ransomware prevention detects and stops ransomware attacks on Windows systems by analyzing data from low-level system processes. It is effective across an array of widespread ransomware families — including those targeting the system’s master boot record.
+Behavioral ransomware prevention detects and stops ransomware attacks by analyzing data from low-level system processes. It is effective across an array of widespread ransomware families — including, on Windows, those targeting the system’s master boot record.
+
+Ransomware protection is available on:
+
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Windows, macOS, and Linux systems
+- {applies_to}`stack: ga 9.0-9.5` Windows systems only
+
+::::{note}
+:applies_to: {"stack": "ga 9.6+", "serverless": "ga"}
+New policies have ransomware protection turned on for all supported operating systems. Existing policies keep it turned off for macOS and Linux until you turn it on.
+::::
 
 ::::{admonition} Requirements
 :class: note
