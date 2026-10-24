@@ -109,7 +109,6 @@ If your organization’s deployments already trust each other by default, you ca
 
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-::::{include} /deploy-manage/_snippets/curl-k-generic.md
 :::{include} /deploy-manage/_snippets/curl-k-generic.md
 :::
 

@@ -117,7 +117,7 @@ You can also adjust the which documents the preview uses:
 
 1. From the **Processing** tab, select the **Manage data sources** {icon}`controls` icon.
 1. Select **Add data source**, then **Add KQL search samples**.
-1. Add a filter using [KQL syntax](/explore-analyze/query-filter/languages/kql.md) and adjust the time window to include the data you want to use as a sample.
+1. Add a filter using [KQL syntax](elasticsearch://reference/query-languages/kql.md) and adjust the time window to include the data you want to use as a sample.
 
 The preview automatically uses your new data source.
 ::::::

@@ -341,7 +341,7 @@ POST _reindex
 Here’s how to resolve common shard-related errors.
 
 
-### this action would add [x] total shards, but this cluster currently has [y]/[z] maximum shards open; [troubleshooting-max-shards-open]
+### this action would add [x] shards, but this cluster currently has [y]/[z] maximum normal shards open; [troubleshooting-max-shards-open]
 
 The [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
 
