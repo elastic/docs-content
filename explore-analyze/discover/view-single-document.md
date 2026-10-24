@@ -29,5 +29,5 @@ When you investigate an event, you often need to look at one document on its own
 
 ## Related pages
 
-- [Explore individual result or document details in depth](discover-get-started.md#look-inside-a-document)
+- [Look inside a document](inspect-documents.md#look-inside-a-document)
 - [Use Discover in classic mode](use-classic-mode.md)

@@ -66,6 +66,11 @@ For example, exclude results from the ecommerce sample data view where the day o
 :::{include} ../_snippets/global-filters.md
 :::
 
+## Cancel a running query [cancel-query-in-discover]
+
+:::{include} ../_snippets/discover-cancel-query.md
+:::
+
 ## Related pages
 
 - [Use Discover in classic mode](use-classic-mode.md)
