@@ -623,6 +623,9 @@ toc:
               - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/enable-cloud-security-features.md
           - file: security/cloud/d4c/get-started-with-d4c.md
+          - file: security/ai/set-up-ai-features.md
+            children:
+              - file: security/ai/large-language-model-performance-matrix.md
           - file: security/advanced-entity-analytics/entity-analytics-requirements.md
           - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
       - file: security/get-started/ingest-data-to-elastic-security.md
@@ -724,7 +727,6 @@ toc:
           - hidden: security/alertzero/glossary.md
       - file: security/ai.md
         children:
-          - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/agent-builder/agent-builder.md
             children:
               - file: security/ai/agent-builder/skills-model.md
