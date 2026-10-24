@@ -112,7 +112,7 @@ Tools can also be accessed through the Model Context Protocol (MCP) server, whic
 
 On the Tools page, open the **Manage MCP** dropdown to access:
 
-- **Copy MCP Server URL**: Copy the MCP server URL for configuring external clients.
+- **Copy MCP Server URL**: Copy the current space's MCP server URL to configure external clients.
 - **Bulk import MCP tools**: Import multiple tools from an MCP server at once.
 - **Documentation**: Open the MCP documentation.
 
@@ -122,18 +122,20 @@ On the Tools page, open the **Manage MCP** dropdown to access:
 :width: 250px
 :::
 
+{applies_to}`serverless: ga` If you connect with [OAuth](/deploy-manage/app-connections/oauth-clients.md), use the MCP server URL shown in your OAuth client's details instead.
+
 ::::
 
 ::::{applies-item} { stack: ga 9.2-9.3 }
 
-The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
+To copy the MCP server URL, open the **MCP Server** dropdown on the Tools page ({{stack}} 9.2) or the **Manage MCP** dropdown ({{stack}} 9.3), then select **Copy MCP Server URL**.
 
 ::::
 
 :::::
 
 :::{important}
-There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.
+There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.0.
 :::
 
 For detailed MCP server configuration, refer to [MCP server](mcp-server.md).

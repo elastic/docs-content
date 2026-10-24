@@ -128,15 +128,15 @@ Disabling a workflow doesn't remove it from the agents or spaces that use it as 
 
 **Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear it through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
 
-### MCP server URL copy button omits space name
+### MCP server URL copy button omits space ID [mcp-server-url-copy-button-omits-space-name]
 
 :::{note}
-Fixed on serverless and 9.3.
+Fixed on {{serverless-short}} and in 9.2.1 and later.
 :::
 
-On 9.2 deployments, the **Copy your MCP server URL** button does not include the space name when used from a custom {{kib}} Space.
+On 9.2.0 deployments, **Copy MCP Server URL** doesn't include the space ID when you use it from a custom {{kib}} space.
 
-**Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
+**Workaround:** Manually add `/s/<space-id>` to the URL. For example: `https://<deployment>/s/<space-id>/api/agent_builder/mcp`
 
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#space-scope).
 
