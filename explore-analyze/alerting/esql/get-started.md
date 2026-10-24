@@ -1,7 +1,7 @@
 ---
 navigation_title: Get started
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
