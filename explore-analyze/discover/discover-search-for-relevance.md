@@ -15,7 +15,7 @@ description: Sort search results by relevance score in Discover to identify the 
 
 This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
-1. In **Discover**, open the {{data-source}} dropdown, and select the data that you want to work with.
+1. In **Discover**, if it opens in {{esql}} mode, [switch to classic mode](switch-esql-mode.md#revert-to-classic-mode). Then open the {{data-source}} dropdown, and select the data that you want to work with.
 
     For the sample flights data, set the {{data-source}} to **Kibana Sample Data Flights**.
 
