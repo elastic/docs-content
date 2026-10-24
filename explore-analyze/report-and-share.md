@@ -97,9 +97,9 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
     ::::{note}
-    To generate the report from outside of {{kib}} or from {{watcher}}, use the POST URL, then submit an HTTP `POST` request using a script or {{watcher}}.
+    {applies_to}`serverless: unavailable` To generate the report from outside of {{kib}} or from {{watcher}}, use the POST URL, then submit an HTTP `POST` request using a script or {{watcher}}.
 
-    {applies_to}`stack: ga 9.1+` You can schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more. 
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` You can schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more. 
     ::::
 
 Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management > Alerts and Insights > Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
