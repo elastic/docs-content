@@ -356,9 +356,9 @@ If you're still running into issues, see [{{agent}} troubleshooting](/troublesho
 
 After you have {{agent}} configured and are streaming log data to {{es}}:
 
-* Refer to the [Explore log data](/solutions/observability/logs/discover-logs.md) documentation for information on exploring your log data in the UI, including searching and filtering your log data, getting information about the structure of log fields, and displaying your findings in a visualization.
-* Refer to the [Parse and organize logs](/solutions/observability/logs/parse-route-logs.md) documentation for information on extracting structured fields from your log data, rerouting your logs to different data streams, and filtering and aggregating your log data.
-* Refer to the [Filter and aggregate logs](/solutions/observability/logs/filter-aggregate-logs.md) documentation for information on filtering and aggregating your log data to find specific information, gain insight, and monitor your systems more efficiently.
+* [Explore logs](/solutions/observability/logs/explore-logs.md): search, filter, and tail your logs in **Discover**, and aggregate them with {{esql}}.
+* [Process logs](/solutions/observability/logs/process.md): extract structured fields from your log messages, in the Collector or in Streams, and route logs to the right data streams.
+* [Manage logs storage](/solutions/observability/logs/manage-storage.md): set retention for the new data stream before volume grows.
 * To collect telemetry from applications and use {{agent}} as a gateway, instrument your target applications following the setup instructions:
   - [Android](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/android/)
   - [.NET](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/setup/)
