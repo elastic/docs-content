@@ -43,9 +43,12 @@ Choose a query mode based on whether your code or an agent controls the retrieva
 
 Run the requests from [{{kib}} Console](/explore-analyze/query-filter/tools/console.md) or use cURL from an application environment. Console uses your current session and {{kib}} space.
 
-<!--
-Claude Code can use the {{context-engine}} skill to perform the same sequence through the `elastic` CLI, which calls the {{context-engine}} APIs. For setup instructions, refer to [Use {{context-engine}} with Claude Code](use-context-engine-with-claude-code.md).
--->
+### Create an API key [create-query-api-key]
+
+For cURL or another external client, create an API key:
+
+:::{include} _snippets/create-query-api-key.md
+:::
 
 For cURL, set the {{kib}} URL and encoded API key used by the examples:
 
@@ -153,7 +156,9 @@ By default, the query operation returns only active, unexpired KIs. For an AI in
 An agent can perform the retrieval sequence when its integration provides access to the list, describe, and query operations. How those operations become available depends on the integration:
 
 - With [{{agent-builder}}](use-context-engine-with-agent-builder.md), assign an AI index to an agent. {{agent-builder}} automatically adds the three tools and retrieval instructions.
+- {applies_to}`serverless: experimental` With the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md), Claude on the web or desktop can use the {{context-engine}} tools that a {{serverless-full}} project exposes through the {{agent-builder}} MCP server. The available tools depend on the project configuration and the user's permissions.
 - With [LangChain](langchain-integration.md), wrap the three {{context-engine}} API operations as LangChain tools, then provide them to the agent with instructions that establish their order.
+- With [Claude Code](use-context-engine-with-claude-code.md), install the {{context-engine}} skill and the Elastic CLI. The skill teaches Claude Code to perform the same sequence through CLI commands that call the {{context-engine}} APIs.
 
 <!--
 - [Use {{context-engine}} through MCP and skills](use-context-engine-through-mcp-and-skills.md)

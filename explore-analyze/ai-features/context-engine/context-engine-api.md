@@ -25,7 +25,7 @@ Turn on the `contextEngine:enabled` advanced setting in each {{kib}} space where
 
 API requests use the permissions and space of the authenticated caller. Include the space in the request URL when you are not using the default space.
 
-The caller also needs the `read` index privilege on each AI index's backing index (`ai-index-*`). AI indices without it are left out of list results, and query requests against them return `403`.
+The caller also needs the `read` index privilege on each AI index's backing index (`ai-index-*`). Describing an AI index also requires the `view_index_metadata` privilege. AI indices without `read` are left out of list results, and query or describe requests return `403` when the caller lacks a required privilege.
 
 ## Operations quick access
 
