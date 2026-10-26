@@ -24,6 +24,7 @@ After the {{agent}} is installed with the {{elastic-defend}} integration, severa
 * Host isolation exceptions
 * Blocked applications 
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` {{elastic-endpoint}} exceptions
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Custom YARA signatures
 
 You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then follow the steps for [adding the {{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md#add-security-integration).
 
@@ -78,6 +79,7 @@ To configure an integration policy:
     * [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md)
     * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) 
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Endpoint exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md)
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Custom YARA signatures](/solutions/security/manage-elastic-defend/custom-yara-signatures.md)
  
    On these tabs, you can:
 
@@ -208,6 +210,8 @@ Select **Notify user** to send a push notification in the host operating system 
 If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
 ::::
 
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Select **Apply custom YARA signatures in detection mode** to have {{elastic-endpoint}} evaluate your [custom YARA signatures](/solutions/security/manage-elastic-defend/custom-yara-signatures.md) against process memory on hosts that use this policy. This setting is available only when memory threat protection is turned on. Custom YARA signatures only detect threats and generate alerts. They never block activity, even when the protection level is **Prevent**.
 
 :::{image} /solutions/images/security-memory-protection.png
 :alt: Detail of memory protection section.
