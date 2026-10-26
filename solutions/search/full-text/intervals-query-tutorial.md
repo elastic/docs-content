@@ -1,6 +1,6 @@
 ---
-navigation_title: "Intervals query"
-description: "Learn how to use the Elasticsearch intervals query for proximity and order-sensitive full-text searches."
+navigation_title: "Query DSL intervals query"
+description: "Learn how to use the Query DSL intervals query in Elasticsearch for proximity and order-sensitive full-text search."
 applies_to:
   stack: ga
   serverless: ga
@@ -8,9 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# Search by term proximity and order with the intervals query [intervals-query-tutorial]
+# Search by term proximity and order with the Query DSL intervals query [intervals-query-tutorial]
 
-The [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) finds documents based on the **order and proximity** of matching terms.
+The Query DSL [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) finds documents based on the **order and proximity** of matching terms.
 Unlike the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md), it lets you define flexible rules about how terms relate to each other.
 You can allow gaps between terms, enforce term order, and combine multiple term patterns.
 
@@ -374,7 +374,7 @@ In this tutorial, you learned how to:
 
 ## Next steps [intervals-query-tutorial-next-steps]
 
-* Refer to the full [intervals query reference](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) for all available rules and parameters, including `fuzzy`, `wildcard`, `regexp`, and `range` rules.
+* Refer to the full [Query DSL intervals query reference](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) for all available rules and parameters, including `fuzzy`, `wildcard`, `regexp`, and `range` rules.
 * Learn how [text analysis](../../../manage-data/data-store/text-analysis.md) affects how terms are stored and matched.
 * Explore [full-text queries](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md) for other matching options.
 * Use the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) for strict phrase matching without gaps.
