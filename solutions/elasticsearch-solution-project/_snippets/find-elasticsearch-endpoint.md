@@ -37,7 +37,7 @@ Copy the {{es}} endpoint for an {{es}} {{vectordb}} project or an {{es}} project
 :width: 50%
 :::
 
-If your project runs on AWS and AWS PrivateLink is set up, the panel also lists an **AWS PrivateLink endpoint**. Use it only when you connect through AWS PrivateLink. To learn more, refer to [](/deploy-manage/security/private-connectivity-aws.md).
+Azure and AWS also offer an endpoint you can use to connect to the deployment over a private connection. [Learn more about private connectivity](/deploy-manage/security/private-connectivity.md).
 
 ::::
 
