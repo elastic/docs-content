@@ -17,4 +17,4 @@ To apply this limit, use the [system settings configuration methods](setting-sys
 
 The package distributions when run as services under `systemd` will configure the number of threads for the {{es}} process automatically. No additional configuration is required.
 
-
+Note: the thread limit can very easily be changed by the system administrator, and you should basically check it before the nodes are started. See https://www.elastic.co/docs/deploy-manage/deploy/self-managed for more details, or click [here](https://www.elastic.co/docs/deploy-manage/deploy/self-managed/important-system-configuration).
