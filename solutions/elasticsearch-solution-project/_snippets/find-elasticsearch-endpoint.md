@@ -54,7 +54,7 @@ Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Co
 
 1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your deployment and select **Open**.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
-3. On the **Endpoints** tab, copy the **{{es}} endpoint**.
+3. On the **Endpoints** tab, copy the **{{es}} endpoint** value.
 
 :::{image} /solutions/images/kibana-connection-details-endpoints.png
 :alt: The Connection details panel showing the {{es}} endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
