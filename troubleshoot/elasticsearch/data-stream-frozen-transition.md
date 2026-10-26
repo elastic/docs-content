@@ -31,7 +31,11 @@ For example:
 GET .ds-my-stream-*/_lifecycle/explain
 ```
 
-Note the error on each blocked index. For transient failures, {{es}} records the error and retries the conversion on the next poll cycle. Each conversion step is idempotent, so retries resume from the point at which the error occurred. Conversions stop retrying when the explain output reports an unrecoverable error, such as a missing snapshot repository or a license compliance failure.
+If a backing index reports an `error`, that entry is the failure from the most recent recorded attempt.
+{{es}} keeps retrying the conversion until you fix the cause.
+`error.message` replaces any earlier message.
+When the same failure is recorded again, `retry_count` increases.
+A later attempt skips conversion steps that already finished and continues from the step that failed.
 
 ### Check frozen transition health
 ```{applies_to}
