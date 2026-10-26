@@ -25,7 +25,7 @@ To create an API key, you need the `manage_api_key` or the `manage_own_api_key` 
 :::{include} /solutions/elasticsearch-solution-project/_snippets/find-elasticsearch-endpoint.md
 :::
 
-### Find your Cloud ID [find-cloud-id-cloud-self-managed]
+## Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
 ```{applies_to}
 deployment:

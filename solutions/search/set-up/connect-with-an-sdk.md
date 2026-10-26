@@ -12,7 +12,7 @@ type: how-to
 You can use an official {{es}} client library to connect your application to {{es}} from code. This page shows how to install and initialize the client for each supported language.
 
 :::{note}
-To get started without installing a client, you can also work with {{es}} data in the {{kib}} [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md).
+To get started without installing a client, work with {{es}} data in the {{kib}} [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md), or send requests with `curl`. For `curl` examples, refer to the [{{es}} API documentation]({{es-apis}}).
 :::
 
 ## Before you begin
@@ -21,6 +21,10 @@ You need the following:
 
 - A running {{es}} deployment or project. If you don't have one yet, refer to [](/solutions/search/set-up/get-elasticsearch-running-for-search.md).
 - The {{es}} endpoint URL, which the client uses to reach {{es}}, and an API key, which the client uses to authenticate. If you don't have them yet, refer to [](/solutions/search/set-up/api-key-and-endpoints.md).
+
+## Connect a client
+
+The following steps show you how to set your endpoint and API key, install a client for your language, and verify the connection.
 
 :::::::{stepper}
 
@@ -298,7 +302,7 @@ func main() {
 ::::::{step} Verify your connection
 :anchor: connect-with-an-sdk-verify
 
-Call the info API to confirm that your endpoint URL and API key work. A successful response includes the cluster name and version.
+Call the info API to confirm that your endpoint URL and API key work.
 
 :::::{tab-set}
 :group: languages
@@ -375,13 +379,131 @@ log.Println(res)
 
 :::::
 
-::::::
+:::::{dropdown} Example responses
+A successful response includes the cluster name and version. The exact output depends on your client and your deployment.
 
-::::::{step} Next steps
-:anchor: connect-with-an-sdk-next
+::::{tab-set}
+:group: languages
 
-{{es}} is up and running, and your application is connected. Next, learn how to ingest your own data in [](/solutions/search/ingest-for-search.md).
+:::{tab-item} Python
+:sync: python
+
+```python
+{'name': 'instance-0000000000', 'cluster_name': 'my-deployment', 'cluster_uuid': 'QIpRB53HS1KSVYWtjP_rqg', 'version': {'number': '9.2.0', 'build_flavor': 'default', 'build_type': 'docker', 'build_hash': '25d88452371273dd27356c98598287b669a03eae', 'build_date': '2025-10-21T10:06:21.288851013Z', 'build_snapshot': False, 'lucene_version': '10.3.1', 'minimum_wire_compatibility_version': '8.19.0', 'minimum_index_compatibility_version': '8.0.0'}, 'tagline': 'You Know, for Search'}
+```
+
+:::
+
+:::{tab-item} TypeScript
+:sync: typescript
+
+```typescript
+{
+  name: 'instance-0000000000',
+  cluster_name: 'my-deployment',
+  cluster_uuid: 'QIpRB53HS1KSVYWtjP_rqg',
+  version: {
+    number: '9.2.0',
+    build_flavor: 'default',
+    build_type: 'docker',
+    build_hash: '25d88452371273dd27356c98598287b669a03eae',
+    build_date: '2025-10-21T10:06:21.288851013Z',
+    build_snapshot: false,
+    lucene_version: '10.3.1',
+    minimum_wire_compatibility_version: '8.19.0',
+    minimum_index_compatibility_version: '8.0.0'
+  },
+  tagline: 'You Know, for Search'
+}
+```
+
+:::
+
+:::{tab-item} PHP
+:sync: php
+
+```json
+{
+  "name" : "instance-0000000000",
+  "cluster_name" : "my-deployment",
+  "cluster_uuid" : "QIpRB53HS1KSVYWtjP_rqg",
+  "version" : {
+    "number" : "9.2.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "25d88452371273dd27356c98598287b669a03eae",
+    "build_date" : "2025-10-21T10:06:21.288851013Z",
+    "build_snapshot" : false,
+    "lucene_version" : "10.3.1",
+    "minimum_wire_compatibility_version" : "8.19.0",
+    "minimum_index_compatibility_version" : "8.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
+:::
+
+:::{tab-item} Ruby
+:sync: ruby
+
+```ruby
+{"name" => "instance-0000000000", "cluster_name" => "my-deployment", "cluster_uuid" => "QIpRB53HS1KSVYWtjP_rqg", "version" => {"number" => "9.2.0", "build_flavor" => "default", "build_type" => "docker", "build_hash" => "25d88452371273dd27356c98598287b669a03eae", "build_date" => "2025-10-21T10:06:21.288851013Z", "build_snapshot" => false, "lucene_version" => "10.3.1", "minimum_wire_compatibility_version" => "8.19.0", "minimum_index_compatibility_version" => "8.0.0"}, "tagline" => "You Know, for Search"}
+```
+
+:::
+
+:::{tab-item} C#/.NET
+:sync: csharp
+
+```text
+my-deployment 9.2.0
+```
+
+:::
+
+:::{tab-item} Java
+:sync: java
+
+```text
+InfoResponse: {"cluster_name":"my-deployment","cluster_uuid":"QIpRB53HS1KSVYWtjP_rqg","name":"instance-0000000000","tagline":"You Know, for Search","version":{"build_date":"2025-10-21T10:06:21.288851013Z","build_flavor":"default","build_hash":"25d88452371273dd27356c98598287b669a03eae","build_snapshot":false,"build_type":"docker","lucene_version":"10.3.1","minimum_index_compatibility_version":"8.0.0","minimum_wire_compatibility_version":"8.19.0","number":"9.2.0"}}
+```
+
+:::
+
+:::{tab-item} Go
+:sync: go
+
+```text
+[200 OK] {
+  "name" : "instance-0000000000",
+  "cluster_name" : "my-deployment",
+  "cluster_uuid" : "QIpRB53HS1KSVYWtjP_rqg",
+  "version" : {
+    "number" : "9.2.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "25d88452371273dd27356c98598287b669a03eae",
+    "build_date" : "2025-10-21T10:06:21.288851013Z",
+    "build_snapshot" : false,
+    "lucene_version" : "10.3.1",
+    "minimum_wire_compatibility_version" : "8.19.0",
+    "minimum_index_compatibility_version" : "8.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
+:::
+
+::::
+
+:::::
 
 ::::::
 
 :::::::
+
+## Next steps [connect-with-an-sdk-next]
+
+{{es}} is up and running, and your application is connected. Next, learn how to ingest your own data in [](/solutions/search/ingest-for-search.md).

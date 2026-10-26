@@ -28,11 +28,11 @@ Copy the {{es}} endpoint for your project from the project UI or the {{ecloud}} 
 ::::{tab-item} {{ecloud}} Console
 
 1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Manage**.
-3. Under **Application endpoints**, select **{{es}}**.
-4. Copy the **Direct endpoint** value.
+2. Under **Application endpoints**, select **{{es}}**.
+3. Copy the **Direct endpoint** value.
 
 :::{image} /solutions/images/cloud-console-serverless-endpoint.png
-:alt: The {{es}} panel on a Serverless project page in the {{ecloud}} Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
+:alt: The Application endpoints panel in the {{ecloud}} Console, with {{es}} expanded to show the Direct endpoint and Direct Azure Private Link endpoint
 :screenshot:
 :width: 50%
 :::
@@ -62,16 +62,20 @@ Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Co
 :width: 50%
 :::
 
+:::{tip}
+When the space uses the **{{es}}** solution view, the **Getting started** page shows the endpoint directly.
+:::
+
 ::::
 
 ::::{tab-item} {{ecloud}} Console
 
-1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Manage**.
-3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
-4. Copy the **Direct endpoint** value.
+1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your deployment and select **Manage**.
+2. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
+3. Copy the **Direct endpoint** value.
 
 :::{image} /solutions/images/cloud-console-hosted-endpoint.png
-:alt: The {{es}} panel on a hosted deployment page in the {{ecloud}} Console, showing the Endpoint value with a copy button
+:alt: The Application endpoints, cluster and component IDs panel in the {{ecloud}} Console, with {{es}} expanded to show the Endpoint, Direct endpoint, and Cluster ID
 :screenshot:
 :width: 50%
 :::
@@ -82,7 +86,12 @@ Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Co
 
 ::::::
 
-::::{applies-item} ece: ga
+::::::{applies-item} ece: ga
+
+:::::{tab-set}
+
+::::{tab-item} {{kib}}
+
 For {{ece}}, your endpoint details are in the **Connection details** panel in {{kib}}.
 
 1. Open {{kib}} for your deployment.
@@ -100,6 +109,16 @@ When the space uses the **{{es}}** solution view, the **Getting started** page s
 :::
 
 ::::
+
+::::{tab-item} Cloud UI
+
+To connect to your {{es}} cluster, copy the **{{es}} endpoint** from the deployment page in the [Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+
+::::
+
+:::::
+
+::::::
 
 ::::{applies-item} {"deployment": {"self": "ga"}}
 For a self-managed cluster, one you install and manage, your endpoint takes the form `<scheme>://<host>:<port>`. Each part comes from your cluster's HTTP settings:
