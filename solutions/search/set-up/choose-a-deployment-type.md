@@ -33,7 +33,9 @@ Get {{es}} running in a few minutes.
 * **[Local development](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md)**: Get started quickly with {{es}} and {{kib}} in Docker for local development and testing.
 
 :::{tip}
-Elastic also offers other deployment types. Refer to the [deployment comparison](/deploy-manage/deploy/deployment-comparison.md) to learn more.
+These are the fastest ways to get {{es}} running for search. Elastic offers additional deployment types for production workloads on your own infrastructure. 
+
+For more detail on the options listed here, and to compare all deployment types across factors like data residency, compliance, feature availability, and infrastructure control, refer to the [full list of deployment options](/deploy-manage/deploy.md) and the [detailed feature comparison](/deploy-manage/deploy/deployment-comparison.md).
 :::
 
 ::::
