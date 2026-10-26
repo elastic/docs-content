@@ -27,10 +27,9 @@ Copy the {{es}} endpoint for your project from the project UI or the {{ecloud}} 
 
 ::::{tab-item} {{ecloud}} Console
 
-1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select **Serverless**.
-2. Find your project and select **Manage**.
-3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
-4. Copy the **Endpoint** value.
+1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Manage**.
+3. Under **Application endpoints**, select **{{es}}**.
+4. Copy the **Direct endpoint** value.
 
 :::{image} /solutions/images/cloud-console-serverless-endpoint.png
 :alt: The {{es}} panel on a Serverless project page in the {{ecloud}} Console, showing the Endpoint and AWS PrivateLink endpoint values with copy buttons
@@ -38,7 +37,7 @@ Copy the {{es}} endpoint for your project from the project UI or the {{ecloud}} 
 :width: 50%
 :::
 
-If your project runs on AWS and AWS PrivateLink is set up, the panel also lists an **AWS PrivateLink endpoint**. Use it only when you connect through AWS PrivateLink. To learn more, refer to [](/deploy-manage/security/private-connectivity-aws.md).
+Azure and AWS also offer an endpoint you can use to connect to the deployment over a private connection. [Learn more about private connectivity](/deploy-manage/security/private-connectivity.md).
 
 ::::
 
@@ -55,7 +54,7 @@ Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Co
 
 1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your deployment and select **Open**.
 2. From the **Help menu** {icon}`question`, select **Connection details**.
-3. On the **Endpoints** tab, copy the **{{es}} endpoint**.
+3. On the **Endpoints** tab, copy the **{{es}} endpoint** value.
 
 :::{image} /solutions/images/kibana-connection-details-endpoints.png
 :alt: The Connection details panel showing the {{es}} endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
@@ -67,10 +66,9 @@ Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Co
 
 ::::{tab-item} {{ecloud}} Console
 
-1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select **Hosted**.
-2. Select your deployment.
+1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Manage**.
 3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
-4. Copy the **Endpoint** value.
+4. Copy the **Direct endpoint** value.
 
 :::{image} /solutions/images/cloud-console-hosted-endpoint.png
 :alt: The {{es}} panel on a hosted deployment page in the {{ecloud}} Console, showing the Endpoint value with a copy button
@@ -116,15 +114,13 @@ If clients reach your cluster through a load balancer, reverse proxy, or ingress
 ::::
 
 ::::{applies-item} {"deployment": {"eck": "ga"}}
-For {{eck}}, the operator creates a `ClusterIP` service named `<cluster-name>-es-http` on port `9200`, with TLS enabled by default.
+The ECK operator automatically creates a service for your {{es}} cluster with TLS enabled. Your endpoint URL depends on where your application runs:
 
-From inside the Kubernetes cluster, your endpoint is `https://<cluster-name>-es-http:9200` in the same namespace, or `https://<cluster-name>-es-http.<namespace>.svc:9200` from another namespace. List your services to confirm the name:
+- **Inside the same Kubernetes namespace**: `https://<cluster-name>-es-http:9200`
+- **In a different namespace**: `https://<cluster-name>-es-http.<namespace>.svc:9200`
+- **Outside the Kubernetes cluster**: You need to expose the service first. Refer to [Access the endpoint](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-request-elasticsearch-endpoint) for setup steps.
 
-```sh
-kubectl get svc
-```
-
-To reach the cluster from outside, expose the service and use its external address. Refer to [Access the endpoint](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-request-elasticsearch-endpoint) for both cases, including how to retrieve the certificate authority (CA) certificate.
+To find your cluster name, run `kubectl get svc` and look for the service ending in `-es-http`.
 ::::
 
 :::::::
