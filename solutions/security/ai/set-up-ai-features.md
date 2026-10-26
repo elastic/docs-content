@@ -12,10 +12,11 @@ products:
 
 # Set up AI features [set-up-ai-features]
 
-{{elastic-sec}} AI features require a connection to a large language model (LLM), and users need privileges for the features they use. Beyond those requirements, the rest of the setup is optional or applies only to specific features.
+This page explains how to set up {{elastic-sec}} AI features. It covers the required setup, optional setup that control which models and chat experience are available, and setup that applies only to specific features.
 
 ## Required setup [set-up-ai-required]
 
+{{elastic-sec}} AI features require a connection to a large language model (LLM), and users need privileges for the features they use.
 ### Connect to an LLM [set-up-ai-llm]
 
 If your subscription or project feature tier includes [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), they're available by default with no setup required. To connect a different LLM, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
