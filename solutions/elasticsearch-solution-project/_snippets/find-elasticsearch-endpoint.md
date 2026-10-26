@@ -104,7 +104,7 @@ When the space uses the **{{es}}** solution view, the **Getting started** page s
 ::::{applies-item} {"deployment": {"self": "ga"}}
 For a self-managed cluster, one you install and manage, your endpoint takes the form `<scheme>://<host>:<port>`. Each part comes from your cluster's HTTP settings:
 
-* **Scheme**: `https` when TLS is enabled on the HTTP layer, and `http` when it isn't. [Automatic security setup](/deploy-manage/security/self-auto-setup.md) enables TLS on a new archive or package installation.
+* **Scheme**: `https` when TLS is enabled on the HTTP layer, and `http` when it isn't. TLS is enabled by default on first startup through [automatic security setup](/deploy-manage/security/self-auto-setup.md), unless the setup is [explicitly skipped](/deploy-manage/security/self-auto-setup.md#stack-skip-auto-configuration) or disabled, as in the local development quickstart.
 * **Host**: The address clients use to reach the node, set by [`http.host` or `network.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md).
 * **Port**: The HTTP port, set by [`http.port`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md). It defaults to the range `9200-9300`, and a node binds to the first free port in that range.
 
