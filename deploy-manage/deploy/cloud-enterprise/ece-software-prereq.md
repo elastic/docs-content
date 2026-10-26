@@ -40,7 +40,6 @@ For example:
 
 The following limitations apply to hosts using cgroups v2:
 
-* {{stack}} versions earlier than 7.15, including {{es}}, {{kib}}, APM Server, Integrations Server, and Beats, don't detect cgroups v2 memory limits. On cgroups v2 hosts, these components can use more memory than allocated and get stopped by the Linux out-of-memory (OOM) killer. Upgrade deployments to {{stack}} version 7.15 or later before moving hosts to cgroups v2.
 * {{es}} versions 8.0–8.4.3 fail to start on hosts using cgroups v2 with the bundled JDK. Refer to [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more details.
 * On cgroups v2 hosts, [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) reports process CPU metrics in `system.process.cgroup.cpu.*` instead of `system.process.cgroup.cpuacct.*`, and `docker.memory.rss.pct` is unavailable. Update any custom dashboards or alerts that query these fields.
 
