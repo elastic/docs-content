@@ -19,7 +19,7 @@ To get started without installing a client, you can also work with {{es}} data i
 
 You need the following:
 
-- A running {{es}} deployment or project. If you don't have one yet, refer to [](/solutions/search/set-up/choose-a-deployment-type.md).
+- A running {{es}} deployment or project. If you don't have one yet, refer to [](/solutions/search/set-up/get-elasticsearch-running-for-search.md).
 - The {{es}} endpoint URL, which the client uses to reach {{es}}, and an API key, which the client uses to authenticate. If you don't have them yet, refer to [](/solutions/search/set-up/api-key-and-endpoints.md).
 
 :::::::{stepper}
@@ -128,7 +128,7 @@ For supported .NET versions and other requirements, refer to the [.NET client do
 ::::{tab-item} Java
 :sync: java
 
-Add the client dependency and the runnable example's main class to the generated `build.gradle` file:
+In the generated `build.gradle` file, add the client dependency to the `dependencies` block and set `mainClass` in the `application` block:
 
 ```groovy
 dependencies {
@@ -344,7 +344,7 @@ puts es.info
 
 ```csharp
 var info = await es.InfoAsync();
-Console.WriteLine(info);
+Console.WriteLine($"{info.ClusterName} {info.Version.Number}");
 ```
 
 ::::
@@ -354,6 +354,7 @@ Console.WriteLine(info);
 
 ```java
 System.out.println(es.info());
+es._transport().close();
 ```
 
 ::::

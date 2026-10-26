@@ -2,14 +2,14 @@
 applies_to:
   stack:
   serverless:
-navigation_title: Choose a deployment type
+navigation_title: Get {{es}} running
 description: Select an {{es}} deployment model for search, get it running, and try a search quickstart.
 type: overview
 ---
 
-# Choose an {{es}} deployment type [choose-a-deployment-type]
+# Get {{es}} running for search [get-elasticsearch-running-for-search]
 
-{{es}} is at the core of every Elastic deployment type. The deployment type you choose determines who manages the infrastructure, scaling, and upgrades, and how usage is billed. Use this page to compare the options and find the best fit for your operational needs.
+{{es}} is at the core of every Elastic deployment type. The deployment type you choose determines who manages the infrastructure, scaling, and upgrades, and how usage is billed. This page briefly introduces the deployment types you can use to get {{es}} running quickly, and points you to resources that compare them in detail.
 
 :::::{stepper}
 
@@ -18,7 +18,6 @@ type: overview
 Get {{es}} running in a few minutes.
 
 ### Try for free on {{ecloud}}
-
 
 * **{{serverless-full}}**: Elastic automatically scales and upgrades the project. Projects are versionless, so you always get the latest features.
   * **[{{es}} {{vectordb}} project](/solutions/vector-database/get-started.md)**: For most search workloads, this is the recommended option. It is optimized for vector workloads, such as [RAG](/solutions/search/rag.md), recommendations, and [multimodal search](/solutions/search/multimodal-search.md). Sign up for a [14-day free trial](https://cloud.elastic.co/registration?onboarding_token=vector).

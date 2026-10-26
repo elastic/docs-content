@@ -8,7 +8,7 @@ This snippet is in use in the following locations:
 
 ::::{applies-item} serverless: ga
 
-Follow these steps to create an API key for an {{es}} {{vectordb}} project or an {{es}} project.
+Follow these steps to create an API key for your project.
 
 1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Open**.
 2. From the **Help menu** {icon}`question`, select **Connection details**.

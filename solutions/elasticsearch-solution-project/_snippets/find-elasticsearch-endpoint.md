@@ -7,7 +7,7 @@ This snippet is in use in the following locations:
 :::::::{applies-switch}
 
 ::::::{applies-item} serverless: ga
-Copy the {{es}} endpoint for an {{es}} {{vectordb}} project or an {{es}} project from the project UI or the {{ecloud}} Console.
+Copy the {{es}} endpoint for your project from the project UI or the {{ecloud}} Console.
 
 :::::{tab-set}
 
