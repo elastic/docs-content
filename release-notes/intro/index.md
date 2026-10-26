@@ -21,7 +21,7 @@ Release notes cover all the latest Elastic product changes, including the follow
 Elastic Stack {{version.stack}} includes new features, enhancements, and critical fixes across {{es}}, {{observability}}, {{elastic-sec}}, {{kib}}, and more. To view detailed release notes, select a product.
 
 :::{tip}
-Looking for earlier versions? Go to [Release docs](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/8.19/new.html).
+Looking for the Elastic Stack 8.19.0 and earlier release notes? Go to [Release docs](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/8.19/new.html).
 :::
 
 ## Recommended: Upgrade to the latest version
