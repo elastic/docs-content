@@ -21,7 +21,7 @@ By the end of this tutorial, you can:
 
 * Run a basic ordered proximity search using `all_of` with `match`
 * Combine `all_of` and `any_of` rules for flexible matching
-* Use the `prefix` rule to match term variants by their leading characters
+* Use the `prefix` rule to match partial words
 * Apply a `filter` rule to exclude unwanted terms from proximity matches
 
 ::::{tip}
@@ -230,11 +230,16 @@ Document 5 matches because `text` and `search` are two positions apart (`analysi
 Document 4 matches because `search` appears two positions after `machine learning` (`to` and `improve` are between them).
 Document 3 doesn't match because its synopsis contains neither `text` nor `machine learning` near `search`.
 
-## Step 4: Match term variants with `prefix` [intervals-query-tutorial-prefix-example]
+The scores drop as the matching terms get farther apart.
+Documents 1 and 2 score highest because their matching terms are adjacent, and documents 5 and 4 score lower because other terms sit between the matches.
+The intervals query gives shorter matches a higher score.
 
-The `prefix` rule matches any term that starts with a given set of characters, so you can match term variants without listing every form.
+## Step 4: Match partial words with `prefix` [intervals-query-tutorial-prefix-example]
 
-Find books where any term starting with `fast` appears immediately before `queries`:
+The `prefix` rule matches any term that starts with a given set of characters.
+This is useful when the input contains a partial word, such as when a user has typed only the start of a word in a search box.
+
+Find books where `search` is immediately followed by a term that starts with `relev`:
 
 ```console
 GET /books/_search
@@ -247,13 +252,13 @@ GET /books/_search
           "max_gaps": 0,
           "intervals": [
             {
-              "prefix": { <1>
-                "prefix": "fast"
+              "match": {
+                "query": "search"
               }
             },
             {
-              "match": {
-                "query": "queries"
+              "prefix": { <1>
+                "prefix": "relev"
               }
             }
           ]
@@ -264,7 +269,7 @@ GET /books/_search
 }
 ```
 
-1. The `prefix` rule matches any indexed term that starts with `fast`, such as `fast`, `faster`, and `fastest`.
+1. The `prefix` rule matches any indexed term that starts with `relev`, such as `relevance` and `relevant`.
 
 ::::{dropdown} Example response
 ```console-result
@@ -276,11 +281,11 @@ GET /books/_search
     },
     "hits": [
       {
-        "_id": "3",
+        "_id": "4",
         "_score": 0.5,
         "_source": {
-          "title": "Faster Elasticsearch",
-          "synopsis": "Tips for fast and efficient search at scale. Covers caching, faster queries, and cluster optimization."
+          "title": "Machine Learning for Search",
+          "synopsis": "Apply machine learning to improve search relevance. Covers learning to rank and query classification."
         }
       }
     ]
@@ -289,9 +294,9 @@ GET /books/_search
 ```
 ::::
 
-Document 3 matches because its synopsis contains `faster queries`.
-If you replace the `prefix` rule with a `match` rule for `fast`, the query returns no results.
-The index stores `fast` and `faster` as separate terms, and the only `fast` in document 3 is followed by `and`, not `queries`.
+Document 4 matches because its synopsis contains `search relevance`.
+If you replace the `prefix` rule with a `match` rule for `relev`, the query returns no results, because `relev` isn't a complete term in the index.
+Document 2 also contains `relevance`, but four other terms sit between it and `search`, so `max_gaps: 0` excludes it.
 
 ::::{warning}
 The `prefix` rule can expand to match many terms depending on your data.
@@ -379,7 +384,7 @@ In this tutorial, you learned how to:
 
 * Search for ordered, contiguous phrases with `all_of` and `max_gaps`
 * Match alternative terms using `any_of`
-* Broaden interval matching to term variants using the `prefix` rule
+* Match partial words using the `prefix` rule
 * Exclude unwanted terms from proximity matches using a `filter` rule
 
 ## Next steps [intervals-query-tutorial-next-steps]
