@@ -174,7 +174,7 @@ When you grant **Organization owner** access, or **Cloud resource** access for o
 | Access | Grants |
 | --- | --- |
 | **Cloud Console, {{es}}, and {{kib}}** (default) | Grants access to the {{ecloud}} Console, plus the {{kib}} interface and {{es}} service for the applicable projects. |
-| **{{es}} and {{kib}}** | Grants access to project-level data and features for the applicable projects. This includes access to the {{kib}} interface and {{es}} service, but no access to the {{ecloud}} Console. |
+| **{{es}} and {{kib}}** | Grants access to project-level data and features for the applicable projects. This includes access to the {{kib}} interface and {{es}} service, but limited access to the {{ecloud}} Console. |
 | **Cloud Console** | Grants access to only the {{ecloud}} Console for the applicable {{serverless-short}} projects. |
 
 ### Restrict access to the {{ecloud}} Console [restrict-console-access]
