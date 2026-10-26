@@ -87,7 +87,9 @@ If you need more rows than the limit allows, use filters to create several small
 
 An export can also time out or return incomplete data for reasons unrelated to these limits, such as slow storage, an unavailable shard, or high network latency. For the common causes, refer to [CSV report limitations](../report-and-share.md#csv-limitations).
 
-To generate the same export automatically, from a script, {{watcher}}, or on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
+To generate the same export automatically on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
+
+{applies_to}`serverless: unavailable` You can also trigger the export from a script or {{watcher}} by [creating a POST URL](../report-and-share/automating-report-generation.md#create-a-post-url).
 
 ## Export a Discover session as JSON [export-discover-session-json]
 ```{applies_to}
