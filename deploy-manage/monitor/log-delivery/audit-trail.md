@@ -41,9 +41,7 @@ Delivering an audit trail into a project lets you investigate end-to-end activit
 
 Complete the following steps to configure audit trail log delivery in your project.
 
-:::{note}
 You must have the **Admin** or **Editor** [role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) on the source project.
-:::
 
 ::::::{stepper}
 
