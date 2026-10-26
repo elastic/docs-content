@@ -28,7 +28,7 @@ Copy the {{es}} endpoint for an {{es}} {{vectordb}} project or an {{es}} project
 ::::{tab-item} {{ecloud}} Console
 
 1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Manage**.
-3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
+3. Under **Application endpoints**, select **{{es}}**.
 4. Copy the **Endpoint** value.
 
 :::{image} /solutions/images/cloud-console-serverless-endpoint.png
