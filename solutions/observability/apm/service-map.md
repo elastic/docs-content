@@ -82,11 +82,39 @@ When you select an instrumented service node (circle shape), a **service flyout*
 :screenshot:
 :::
 
+### Investigate transactions and traces [service-map-investigate-traces]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Click a service node to open its flyout. On the service flyout's **Overview** tab, scroll to **Transactions** and click a transaction name to open the transaction details in another flyout.
+
+In the transaction flyout, under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available. From the full trace, inspect individual spans and errors, then use **Back** to return to the previous flyout without leaving the map.
+
+The transaction flyout follows the service flyout's environment, transaction type, and time range. If the transaction no longer matches those filters, it displays the previous data with a warning. For the full workflow and filter behavior, refer to [Investigate a service with flyouts](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts).
+
+## Investigate the service map with AI [service-map-ai-investigation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Use {{agent-builder}} to identify problem services and understand how they connect. Before you start, refer to [Investigate an alert or the service map](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements) for requirements.
+
+On the full **Service map** page, set the time range and filters for your investigation, then click **Investigate map** in the toolbar in the upper-right corner of the map. {{agent-builder}} opens a new conversation with a **Service map context** attachment and automatically sends an investigation request. The button is not available on maps embedded in alert detail pages or dashboards.
+
+The agent prioritizes findings by severity, including active alerts, violated or degrading SLOs, {{ml}} anomalies, unusual error rates or latency, and isolated services. It explains the service connections and links to affected services and their alerts.
+
+The attachment includes the time range, environment, KQL query, service group, and highlighted services. Some settings do not restrict every part of the investigation. Refer to [Service map context](/solutions/observability/ai/agent-builder-observability.md#observability-agent-service-map-context) for the scope and limitations.
+
 ## Anomaly detection with machine learning [service-map-anomaly-detection]
 
-You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transaction durations within the selected service. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
+You can create {{ml}} jobs to detect anomalous {{product.apm}} transaction metrics for services in an environment. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
 
 To learn how to create a {{ml}} job, refer to [Integrate with {{ml}}](/solutions/observability/apm/machine-learning.md).
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Low transaction count anomalies also contribute to service-node anomaly scores. The environment's job must include the [low-count detector](/solutions/observability/apm/machine-learning.md#apm-ml-low-transaction-count).
 
 ### Investigate anomalies [service-map-anomaly-investigate]
 
