@@ -18,13 +18,13 @@ An audit trail includes the following {{es}} and {{kib}} project events:
 <!-- Unhide when org-level audit logs are available.
 * **{{ecloud}} and organization administration:** Sign-ins; membership and IAM; and project settings.
 -->
-* Configuration changes for index, template, and pipeline changes
+* Configuration changes to indices, templates, and pipelines
 * Data access, including searches, reads, and writes
-* UI access
+* {{kib}} UI access, such as page navigation and UI requests
 
 Audit trail delivery is applicable to {{serverless-short}} projects, so {{ech}} fields like `node.*` and `host.*` are not included.
 
-### Why deliver an audit trail
+## Why deliver an audit trail
 
 Delivering an audit trail into a project lets you investigate end-to-end activity in one place. For example, you can:
 
@@ -33,7 +33,6 @@ Delivering an audit trail into a project lets you investigate end-to-end activit
 * Review membership, IAM, or project-admin changes
 -->
 * Investigate access denied on an index pattern
-* Track create, update, or delete actions on indices, templates, or pipelines
 * Detect changes or deletions of {{kib}} saved objects such as detection rules
 * Determine who searched a sensitive index
 * Follow a user journey across `service.name` values for the same `user.name` and time window
@@ -110,15 +109,15 @@ After delivery is enabled, explore your audit trail on the destination project w
 
 ### Dashboards
 
-Select **View dashboards** after you save, or open the destination project and find the audit trail dashboards in {{kib}}. The following dashboards are available:
+Select **View dashboards** after you save your log delivery configuration, or open the destination project and find the audit trail dashboards in {{kib}}. The following dashboards are available:
 
 * **Command Center**: Overview of audit activity, including volume, key indicators, higher-risk actors, and a live feed of recent events.
-* **Actor 360**: Full trail for individual users. Select a person to filter every panel to their activity.
-* **Identity & Access**: Sign-ins and access attempts, including method, source, and failures.
-* **{{kib}} Object Forensics**: Insights on which {{kib}} saved objects were created, edited, deleted or opened. View this information grouped by type, name, space, and actor.
-* **{{es}} Data Access**: Which indices each user accessed, the kinds of requests they made, and which requests were denied.
-* **Security & Anomalies**: Risk rating for sensitive and privileged actions, along with operation failures and newly seen identities.
-* **Geo & Network**: Observe activity by geographic location, routed from each user's real address.
+* **Actor 360**: Full activity trail for one user. Select a person to filter every panel to their events.
+* **Identity & Access**: Sign-ins and access attempts by method, source, and outcome, with user identifiers resolved to real identities where available.
+* **{{kib}} Object Forensics**: {{kib}} saved objects that were created, edited, deleted, or opened, grouped by type, name, space, and actor.
+* **{{es}} Data Access**: Which indices each identity used, request types, denied requests, and access to system or hidden indices.
+* **Security & Anomalies**: Risk signals for sensitive and privileged actions, operation failures, and newly seen identities.
+* **Geo & Network**: Activity by geographic location, routed from each identity's real address, including unusual location patterns.
 
 ### Discover or {{esql}}
 

@@ -33,7 +33,7 @@ Each event in the delivered logs has a `project.id`, so you can trace it back to
 
 When configuring log delivery, you can apply **ignore filters** to exclude certain events from being delivered. For example, if you're setting up an audit trail log delivery and you don't need data on every role check, apply the **Ignore routine user and role checks** filter. Role check information will not be delivered to your selected destination project.
 
-Ignore filters help you drill down into the data you actually need and ignore the rest. Also, ignore filters exclude matching events *before* delivery, reducing the volume of your delivery and the overall cost. 
+Ignore filters help you drill down into the data you actually need and ignore the rest. They exclude matching events *before* delivery, reducing the volume of your delivery and the overall cost. 
 
 :::{important}
 If you don't select any ignore filters, *all* events for your chosen log type will be delivered. This is the highest volume option and directly affects your {{serverless-short}} bill.
@@ -45,6 +45,7 @@ Log delivery usage is metered. Cost is proportional to the volume of the deliver
 
 * Usage depends on the combination of source project, log type, and destination project you select. Adjust these combinations to see which ones drive higher volume.
 * Ignore filters exclude events *before* delivery. Use them to reduce the volume of delivered data.
+* Retention is configured on the destination project's data streams. After you save a log type, [set retention](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) on the delivered streams to match your compliance or cost needs.
 * Ingestion and retention of delivered data is billed on the destination project. For exact rates, refer to [{{sec-serverless}} pricing](https://www.elastic.co/pricing/serverless-security) and [{{obs-serverless}} pricing](https://www.elastic.co/pricing/serverless-observability). Use the AutoOps [Storage Tier](/deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md) view on your destination project to monitor your ingest rate and storage retained, and adjust accordingly.
 
 ## Log types

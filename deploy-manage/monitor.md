@@ -138,7 +138,7 @@ Activity logging records actions taken by users and systems, such as authenticat
 | [](./monitor/stack-audit-logging.md) | Enable and configure audit logging for {{es}} and {{kib}} deployments. | {applies_to}`stack: ga` |
 | [](./monitor/cloud-audit-trail.md) | Audit organization-level actions such as sign-in activity, deployment management, user and role changes, and API key usage. | {applies_to}`ech: ga` {{fedramp-mod}} only |
 | [{{kib}} user activity](kibana://reference/user-activity.md) | Track user actions in {{kib}}, such as dashboard views, creation, and updates. | {applies_to}`stack: preview 9.5` |
-| [](./monitor/log-delivery.md) | Log {{es}} and {{kib}} activity and ship it from one {{serverless-short}} project to another. | {applies_to}`serverless: ga` |
+| [](./monitor/log-delivery.md) | Ship selected log types from from one {{serverless-short}} project to another. The first available log type is the audit trail, covering configuration changes, data access, and UI access. | {applies_to}`serverless: ga` |
 
 For more information about these features, and when to use each one, refer to [](./monitor/activity-logging.md).
 
