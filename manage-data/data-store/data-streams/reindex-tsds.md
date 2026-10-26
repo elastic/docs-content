@@ -399,7 +399,6 @@ PUT _index_template/my-new-tsds-template
       "index.mode": "time_series",
       "index.time_series.start_time": "2023-01-01T00:00:00Z", <1>
       "index.time_series.end_time": "2025-01-01T00:00:00Z", <2>
-      <!-- TBD "index.lifecycle.skip": true <3> -->
     },
     "mappings": {
       "properties": {
@@ -422,12 +421,9 @@ PUT _index_template/my-new-tsds-template
 
 1. Lowest timestamp value in the old data stream
 2. Highest timestamp value in the old data stream
-<!-- 3. Instruct data stream lifecycle to not manage the backing indices. -->
 
-<!--
-Don't add a data stream lifecycle to the template yet.
-That keeps lifecycle actions such as downsampling from modifying the destination while you reindex.
--->
+Don't add optional data stream lifecycle details such as downsampling or data retention to the template yet.
+By using only the default configuration, you reduce the actions that can modify the destination while you reindex.
 ::::
 
 ::::{step} Create the destination data stream
@@ -477,7 +473,6 @@ The response lists each backing index and the time range it accepts.
 :anchor: serverless-restore
 
 After reindexing completes, update the index template and remove `index.time_series.start_time` and `index.time_series.end_time`.
-<!-- and `index.lifecycle.skip`. -->
 
 ```console
 PUT _index_template/my-new-tsds-template
@@ -512,7 +507,7 @@ PUT _index_template/my-new-tsds-template
 ::::{step} Add data stream lifecycle
 :anchor: add-serverless-lifecycle
 
-After the reindex completes, optionally customise the data stream lifecycle to manage retention, performance, and storage.
+After the reindex completes, optionally customize the data stream lifecycle to manage retention, performance, and storage.
 For example, use the [update data stream lifecycles]({{es-apis}}operation/operation-indices-put-data-lifecycle) API:
 
 ```console
