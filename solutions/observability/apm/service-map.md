@@ -16,10 +16,7 @@ products:
 
 A service map is a real-time visual representation of the instrumented services in your application’s architecture. It shows you how these services are connected, along with high-level metrics like average transaction duration, requests per minute, and errors per minute. If enabled, service maps also integrate with {{ml}}—displaying real-time anomaly indicators based on {{anomaly-detect}} scores. All of these features can help you quickly and visually assess your services’ status.
 
-We currently surface two types of service maps:
-
-* **Global**: All services instrumented with APM agents and the connections between them are shown.
-* **Service-specific**: Highlight connections for a selected service.
+You can view all your instrumented services and the connections between them, or focus on the services that interest you most.
 
 ## How do service maps work? [service-maps-how]
 
@@ -35,7 +32,26 @@ Customize what the service map displays using either the query bar or the enviro
 If you’re using {{edot}} or contrib OpenTelemetry, set the `deployment.environment` resource attribute on your instrumented services. This attribute maps to the `service.environment` field that populates the environment selector. Without it, services appear under an "unset" environment, meaning you can’t distinguish between production, staging, or other environments using the selector. Refer to [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md) for configuration examples.
 :::
 
-If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the **Errors** or **Metrics** overview.
+### Focus on specific services [service-map-focus]
+
+:::::{applies-switch}
+::::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+To focus on one or more services, select them in the **Service name** filter. The map highlights the selected services and their connections.
+
+Service maps are also embedded where you’re already working: a service’s **Overview** tab and its transaction details include a **Service map** panel scoped to that service. To view the panel for a transaction group, open the service’s **Transactions** tab and select a group from the **Transactions** table.
+
+To open the full service map from an embedded panel, click **Explore in Service map**. The services you were viewing stay filtered and highlighted on the full map.
+
+::::
+::::{applies-item} stack: ga 9.0-9.5
+
+To open a map that’s focused on a single service, select the **Service Map** tab on that service’s detail page. From there, you can use the tabs at the top of the page to jump to the **Transactions**, **Errors**, or **Metrics** overview for that service.
+
+{applies_to}`stack: ga 9.0-9.4` If there’s a specific service that interests you, select that service on the map to highlight its connections, then click **Focus map** to refocus the map on the selected service and lock the connection highlighting.
+
+::::
+:::::
 
 ### Map controls [service-map-controls]
 
@@ -52,7 +68,7 @@ Use the map controls to adjust the layout, filter what’s displayed, and naviga
 
 To save the current service map view to a {{kib}} dashboard, click the **Copy to dashboard** icon located in the upper-right corner of the map.
 
-When you click an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
+When you select an instrumented service node (circle shape), a **service flyout** panel opens with a summary of the service’s RED metrics and infrastructure usage. Use the footer menu to open traces, logs, alerts, or SLOs for the service without leaving the map. Dependency nodes (diamond shape) and connections still use a compact popover.
 
 :::{image} /solutions/images/observability-apm-service-map-service-flyout.png
 :alt: Service flyout panel open alongside the service map, showing RED metrics and a transactions list for the selected service
@@ -66,13 +82,53 @@ When you click an instrumented service node (circle shape), a **service flyout**
 :screenshot:
 :::
 
+### Investigate transactions and traces [service-map-investigate-traces]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Click a service node to open its flyout. On the service flyout's **Overview** tab, scroll to **Transactions** and click a transaction name to open the transaction details in another flyout.
+
+In the transaction flyout, under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available. From the full trace, inspect individual spans and errors, then use **Back** to return to the previous flyout without leaving the map.
+
+The transaction flyout follows the service flyout's environment, transaction type, and time range. If the transaction no longer matches those filters, it displays the previous data with a warning. For the full workflow and filter behavior, refer to [Investigate a service with flyouts](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts).
+
+## Investigate the service map with AI [service-map-ai-investigation]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Use {{agent-builder}} to identify problem services and understand how they connect. Before you start, refer to [Investigate an alert or the service map](/solutions/observability/ai/agent-builder-observability.md#observability-agent-investigation-requirements) for requirements.
+
+On the full **Service map** page, set the time range and filters for your investigation, then click **Investigate map** in the toolbar in the upper-right corner of the map. {{agent-builder}} opens a new conversation with a **Service map context** attachment and automatically sends an investigation request. The button is not available on maps embedded in alert detail pages or dashboards.
+
+The agent prioritizes findings by severity, including active alerts, violated or degrading SLOs, {{ml}} anomalies, unusual error rates or latency, and isolated services. It explains the service connections and links to affected services and their alerts.
+
+The attachment includes the time range, environment, KQL query, service group, and highlighted services. Some settings do not restrict every part of the investigation. Refer to [Service map context](/solutions/observability/ai/agent-builder-observability.md#observability-agent-service-map-context) for the scope and limitations.
+
 ## Anomaly detection with machine learning [service-map-anomaly-detection]
 
-You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transaction durations within the selected service. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
+You can create {{ml}} jobs to detect anomalous {{product.apm}} transaction metrics for services in an environment. When these jobs are active, service maps display a color-coded anomaly indicator on each service node based on the detected anomaly score.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For a description of what each color means, refer to [Anomaly score colors](#service-maps-legend-anomaly-colors).
+To learn how to create a {{ml}} job, refer to [Integrate with {{ml}}](/solutions/observability/apm/machine-learning.md).
 
-{applies_to}`stack: ga 9.0-9.4` Node borders are color-coded based on the maximum anomaly score:
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Low transaction count anomalies also contribute to service-node anomaly scores. The environment's job must include the [low-count detector](/solutions/observability/apm/machine-learning.md#apm-ml-low-transaction-count).
+
+### Investigate anomalies [service-map-anomaly-investigate]
+
+:::::{applies-switch}
+::::{applies-item} { stack: ga 9.5+, serverless: ga }
+
+To investigate a detected anomaly, select the affected service node to open the service flyout. The flyout header shows a badge with the anomaly severity and score. Select the badge to open the service **Overview**, filtered to the environment where the anomaly was detected.
+
+For a description of what each color means, refer to [Anomaly score colors](#service-maps-legend-anomaly-colors).
+
+::::
+::::{applies-item} stack: ga 9.0-9.4
+
+Node borders are color-coded based on the maximum anomaly score:
 
 |  |  |
 | --- | --- |
@@ -80,14 +136,15 @@ You can create {{ml}} jobs to calculate anomaly scores on {{product.apm}} transa
 | ![Degraded service node icon](/solutions/images/observability-yellow-service.png "") | Max anomaly score **26-74**. Anomalous activity detected. Service might be degraded. |
 | ![Unhealthy service node icon](/solutions/images/observability-red-service.png "") | Max anomaly score **≥75**. Anomalous activity detected. Service is unhealthy. |
 
+If an anomaly has been detected, click **View anomalies** to view the {{anomaly-detect}} metric viewer. This time series analysis displays additional details on the severity and time of the detected anomalies.
+
 :::{image} /solutions/images/observability-apm-service-map-anomaly.png
-:alt: Example view of anomaly scores on service maps in the Applications UI
+:alt: Anomaly score and View anomalies link in the service map popover
 :screenshot:
 :::
 
-If an anomaly has been detected, click **View anomalies** to view the {{anomaly-detect}} metric viewer. This time series analysis displays additional details on the severity and time of the detected anomalies.
-
-To learn how to create a {{ml}} job, refer to [Integrate with {{ml}}](/solutions/observability/apm/machine-learning.md).
+::::
+:::::
 
 ## Legend [service-maps-legend]
 
@@ -96,7 +153,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-An interactive legend is available directly on the map. Click the {icon}`question` (**Legend**) button to expand it and see an explanation of node shapes, connections, and anomaly score colors.
+An interactive legend is available directly on the map. Click the {icon}`question` **Legend** button to expand it and see an explanation of node shapes, connections, and anomaly score colors.
 
 ### Nodes [service-maps-legend-nodes]
 

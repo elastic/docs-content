@@ -21,6 +21,15 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.5 [elastic-observability-9.5.5-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.5-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.5.5-fixes]
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
+* Fixes a race that creates the SLO summary temporary index with the wrong `service.name` mapping, causing new SLOs to be missing from filters [#286871]({{kib-pull}}286871).
+
 ## 9.5.4 [elastic-observability-9.5.4-release-notes]
 
 ### Features and enhancements [elastic-observability-9.5.4-features-enhancements]
@@ -188,6 +197,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
+
+## 9.4.8 [elastic-observability-9.4.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.8-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.4.8-fixes]
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
 
 ## 9.4.7 [elastic-observability-9.4.7-release-notes]
 
