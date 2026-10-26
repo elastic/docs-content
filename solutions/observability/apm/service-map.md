@@ -48,7 +48,7 @@ To focus on one or more services, select them in the **Service name** filter. Th
 
 Service maps are also embedded where you’re already working: a service’s **Overview** tab and its transaction details include a **Service map** panel. The panel centers on the service and shows its upstream and downstream connections. To view the panel for a transaction group, open the service’s **Transactions** tab and select a group from the **Transactions** table.
 
-{applies_to}`stack: ga 9.6+` The [mobile service overview](/solutions/observability/apm/mobile-service-overview.md#mobile-service-map) includes the same panel.
+The [mobile service overview](/solutions/observability/apm/mobile-service-overview.md#mobile-service-map) includes the same panel.
 
 Use **Hops** to adjust how many connections to follow from the service, and **Max visible** to limit the number of nodes shown.
 

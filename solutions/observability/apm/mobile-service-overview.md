@@ -48,6 +48,7 @@ Optimize your end-user experience and your application QA strategy based on your
 ## Service map [mobile-service-map]
 ```{applies_to}
 stack: ga 9.6+
+serverless: ga
 ```
 
 The **Service map** panel shows the mobile service’s upstream and downstream connections. It uses the selected time range and environment, and the mobile filters—device, operating system version, app version, and network connection type—are added to the KQL query.
