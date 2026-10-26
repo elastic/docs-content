@@ -98,6 +98,7 @@ curl -XGET \
 :::
 
 :::{dropdown} Invite members with {{ecloud}} Console access
+$$$invite-console-access$$$
 
 Invite members to your {{ecloud}} organization. 
 
@@ -171,14 +172,15 @@ curl -XPOST \
   }
 }'
 ```
-1. When granting a custom serverless role, you need to grant the relevant `viewer` role ID for the project type. Role IDs follow the format `<project-type>-<role-name>`. For example, `elasticsearch-viewer` or `security-t1-analyst`.
+1. When granting a custom Serverless role, you need to grant the relevant `viewer` role ID for the project type. 
 2. [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) for the user in this {{serverless-short}} project. 
 3. Pass an empty `application_roles` array to grant only {{ecloud}} Console access to the relevant resources. [Learn more about access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
 
 :::
 
-$$$invite-es-kib-access$$$
+
 :::{dropdown} Invite members with limited {{ecloud}} Console access
+$$$invite-es-kib-access$$$
 
 To grant a user access to a project [with limited {{ecloud}} Console access](/deploy-manage/users-roles/cloud-organization/user-roles.md#restrict-console-access), use the `*-application-only` role ID for the project type and specify the user's `application_roles`.
 

@@ -133,6 +133,8 @@ You can apply the following predefined roles to {{serverless-full}} projects. So
 
 In the following table, the privileges outlined in **Project access** require [**Cloud Console, {{es}}, and {{kib}}**](#access) or [**{{es}} and {{kib}}**](#access) access to be granted for the relevant projects.
 
+When specifying these roles [through the {{ecloud}} API](deploy-manage/users-roles/cloud-organization/manage-users.md#invite-console-access), follow the format `<project-type>-<role-name>`. For example, `elasticsearch-admin`, `vectordb-viewer`, or `security-t1-analyst`.
+
 :::{tip}
 You can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md) and apply them to your organization users.
 :::

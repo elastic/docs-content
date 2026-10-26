@@ -151,7 +151,7 @@ The [cross-project search feature](/deploy-manage/cross-project-search-config/cp
 
 When granting Cloud resource access, you can apply a [predefined role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) to granularly control access to the specified resources. The selected role controls access to resources in all relevant APIs. 
 
-#### Restrict access to {{es}} and {{kib}} APIs
+#### Restrict access to {{ecloud}} APIs
 
 To limit an API key to project-level operations without granting access to organization-level {{ecloud}} APIs, set the API access level to **{{es}} and {{kib}} API** on every role assignment for the key. This is useful when you need programmatic access to project data without exposing organization management capabilities.
 
