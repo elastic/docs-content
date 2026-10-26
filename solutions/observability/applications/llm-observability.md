@@ -20,6 +20,7 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 - Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
 - APM tracing for LLM Models (via [instrumentation](opentelemetry://reference/index.md))
+- Traces from [OpenRouter Broadcast](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-openrouter-broadcast-traces.md), sent to the [{{motlp}}](opentelemetry://reference/motlp.md)
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/observability/llm-obs
@@ -55,6 +56,10 @@ You can instrument the application with one of the following {{edot}} SDKs:
 ### Getting started
 
 Check [these instructions](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md) on how to setup and collect OpenTelemetry data for your LLM applications.
+
+## Monitor OpenRouter with Broadcast
+
+[OpenRouter Broadcast](https://openrouter.ai/docs/guides/features/broadcast/elastic) sends a trace for each API request to the [{{motlp}}](opentelemetry://reference/motlp.md) on {{serverless-full}} and {{ech}}. You don't install a Fleet integration or instrument your application. To add the destination and find the traces, go to [Send OpenRouter traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-openrouter-broadcast-traces.md).
 
 ## Use cases
 
