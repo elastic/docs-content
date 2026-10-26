@@ -6,13 +6,16 @@ applies_to:
   serverless: ga
 products:
   - id: elasticsearch
+type: tutorial
 ---
 
 # Search by term proximity and order with the Query DSL intervals query [intervals-query-tutorial]
 
-The Query DSL [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) finds documents based on the **order and proximity** of matching terms.
+The Query DSL [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) finds documents based on the order and proximity of matching terms.
 Unlike the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md), it lets you define flexible rules about how terms relate to each other.
 You can allow gaps between terms, enforce term order, and combine multiple term patterns.
+
+This tutorial is for developers who know basic Query DSL queries and want finer control over how matching terms relate to each other.
 
 By the end of this tutorial, you can:
 
@@ -28,8 +31,12 @@ You can [convert examples into other programming languages](../../../explore-ana
 
 ## Before you begin [intervals-query-tutorial-prereqs]
 
-You can follow these steps with any {{es}} deployment.
-Refer to [Choosing your deployment type](../../../deploy-manage/deploy.md) for deployment options.
+To follow this tutorial, you need:
+
+* Access to an {{es}} project or deployment. Refer to [Choosing your deployment type](../../../deploy-manage/deploy.md) for deployment options.
+* A way to send requests, such as [Console](../../../explore-analyze/query-filter/tools/console.md).
+* Index privileges to create, write to, read, and delete the `books` index, such as the `all` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
+* Familiarity with basic [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md) queries. It also helps to know how [text analysis](../../../manage-data/data-store/text-analysis.md) breaks text into terms at specific positions, because intervals rules match on those positions.
 
 ## Step 1: Create an index and add sample data [intervals-query-tutorial-setup]
 
@@ -53,7 +60,9 @@ POST /books/_bulk?refresh=wait_for
 {"title":"Advanced Text Processing","synopsis":"Deep dive into text analysis and search pipelines. Full coverage of custom analyzers and token filters."}
 ```
 
-The [`standard` analyzer](elasticsearch://reference/text-analysis/analysis-standard-analyzer.md) is used by default for `text` fields.
+The response shows `"errors": false` when all five documents are indexed.
+
+By default, `text` fields use the [`standard` analyzer](elasticsearch://reference/text-analysis/analysis-standard-analyzer.md).
 It lowercases and tokenizes the text, so each word becomes a searchable term at a specific position.
 
 To learn more, refer to [Text analysis](../../../manage-data/data-store/text-analysis.md).
@@ -218,7 +227,7 @@ GET /books/_search
 
 Documents 1 and 2 match because `text` appears immediately before `search` (zero gaps).
 Document 5 matches because `text` and `search` are two positions apart (`analysis` and `and` are between them).
-Document 4 matches because `search` appears two positions after `machine learning` (`to` and `improve` are the intervening tokens).
+Document 4 matches because `search` appears two positions after `machine learning` (`to` and `improve` are between them).
 Document 3 doesn't match because its synopsis contains neither `text` nor `machine learning` near `search`.
 
 ## Step 4: Match term variants with `prefix` [intervals-query-tutorial-prefix-example]
@@ -287,13 +296,13 @@ The index stores `fast` and `faster` as separate terms, and the only `fast` in d
 ::::{warning}
 The `prefix` rule can expand to match many terms depending on your data.
 If a prefix matches more terms than the `indices.query.bool.max_clause_count` [search setting](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md) allows, {{es}} returns an error.
-To avoid this, use the [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) mapping option or keep prefixes specific enough to limit expansion.
+To avoid this error, use the [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) mapping option or keep prefixes specific enough to limit expansion.
 ::::
 
-## Step 5: Exclude terms with a filter [intervals-query-tutorial-filter-example]
+## Step 5: Exclude terms with a `filter` rule [intervals-query-tutorial-filter-example]
 
 Use the `filter` rule to exclude unwanted terms from a proximity match.
-This query finds books where `search` appears near `text`, but only when `analysis` does not appear between them:
+This query finds books where `search` appears near `text`, but only when `analysis` doesn't appear between them:
 
 ```console
 GET /books/_search
@@ -353,7 +362,8 @@ GET /books/_search
 ::::
 
 Documents 1 and 2 match because both contain `text` near `search` without `analysis` between them.
-Document 5 also contains `text` near `search` (and matched in [Step 3](#intervals-query-tutorial-any-of-example)), but `analysis` appears between them (the tokens `text`, `analysis`, `and`, `search` are contiguous), so the filter excludes it.
+Document 5 also contains `text` near `search` and matched in [Step 3](#intervals-query-tutorial-any-of-example).
+However, its synopsis contains `text analysis and search`, so `analysis` appears between the two terms and the filter excludes the document.
 
 ## Clean up [intervals-query-tutorial-cleanup]
 
@@ -377,4 +387,4 @@ In this tutorial, you learned how to:
 * Refer to the full [Query DSL intervals query reference](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) for all available rules and parameters, including `fuzzy`, `wildcard`, `regexp`, and `range` rules.
 * Learn how [text analysis](../../../manage-data/data-store/text-analysis.md) affects how terms are stored and matched.
 * Explore [full-text queries](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md) for other matching options.
-* Use the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) for strict phrase matching without gaps.
+* Use the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md) when you need to match a phrase, using `slop` to allow gaps between terms.
