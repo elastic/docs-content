@@ -11,7 +11,8 @@ products:
 # Search by term proximity and order with the intervals query [intervals-query-tutorial]
 
 The [intervals query](elasticsearch://reference/query-languages/query-dsl/query-dsl-intervals-query.md) finds documents based on the **order and proximity** of matching terms.
-Unlike the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md), it lets you define flexible rules about how terms relate to each other — allowing gaps between terms, enforcing ordering, and combining multiple term patterns.
+Unlike the [`match_phrase` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query-phrase.md), it lets you define flexible rules about how terms relate to each other.
+You can allow gaps between terms, enforce term order, and combine multiple term patterns.
 
 By the end of this tutorial, you can:
 
@@ -92,7 +93,7 @@ GET /books/_search
 ```
 
 1. `ordered: true` requires the first interval (`full text`) to appear before the second (`search`).
-2. `max_gaps: 0` on `all_of` requires both intervals to be adjacent — no words between `text` and `search`.
+2. `max_gaps: 0` on `all_of` requires both intervals to be adjacent, with no words between `text` and `search`.
 
 ::::{dropdown} Example response
 ```console-result
@@ -194,19 +195,19 @@ GET /books/_search
         }
       },
       {
-        "_id": "4",
-        "_score": 0.5,
-        "_source": {
-          "title": "Machine Learning for Search",
-          "synopsis": "Apply machine learning to improve search relevance. Covers learning to rank and query classification."
-        }
-      },
-      {
         "_id": "5",
-        "_score": 0.5,
+        "_score": 0.25,
         "_source": {
           "title": "Advanced Text Processing",
           "synopsis": "Deep dive into text analysis and search pipelines. Full coverage of custom analyzers and token filters."
+        }
+      },
+      {
+        "_id": "4",
+        "_score": 0.19999999,
+        "_source": {
+          "title": "Machine Learning for Search",
+          "synopsis": "Apply machine learning to improve search relevance. Covers learning to rank and query classification."
         }
       }
     ]
@@ -216,15 +217,15 @@ GET /books/_search
 ::::
 
 Documents 1 and 2 match because `text` appears immediately before `search` (zero gaps).
-Document 4 matches because `search` appears two positions after `machine learning` (`to` and `improve` are the intervening tokens).
 Document 5 matches because `text` and `search` are two positions apart (`analysis` and `and` are between them).
+Document 4 matches because `search` appears two positions after `machine learning` (`to` and `improve` are the intervening tokens).
 Document 3 doesn't match because its synopsis contains neither `text` nor `machine learning` near `search`.
 
 ## Step 4: Match term variants with `prefix` [intervals-query-tutorial-prefix-example]
 
 The `prefix` rule matches any term that starts with a given set of characters, so you can match term variants without listing every form.
 
-Find books where any term starting with `fast` appears within three positions of `search`:
+Find books where any term starting with `fast` appears immediately before `queries`:
 
 ```console
 GET /books/_search
@@ -233,8 +234,8 @@ GET /books/_search
     "intervals": {
       "synopsis": {
         "all_of": {
-          "ordered": false,
-          "max_gaps": 3,
+          "ordered": true,
+          "max_gaps": 0,
           "intervals": [
             {
               "prefix": { <1>
@@ -243,7 +244,7 @@ GET /books/_search
             },
             {
               "match": {
-                "query": "search"
+                "query": "queries"
               }
             }
           ]
@@ -254,12 +255,7 @@ GET /books/_search
 }
 ```
 
-1. The `prefix` rule matches any indexed term beginning with `fast`, including `fast`, `faster`, and `fastest`.
-
-::::{warning}
-The `prefix` rule can expand to match many terms depending on your data.
-To avoid errors from exceeding the `indices.query.bool.max_clause_count` [search setting](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md), use the [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) mapping option or keep prefix patterns specific enough to limit expansion.
-::::
+1. The `prefix` rule matches any indexed term that starts with `fast`, such as `fast`, `faster`, and `fastest`.
 
 ::::{dropdown} Example response
 ```console-result
@@ -284,8 +280,15 @@ To avoid errors from exceeding the `indices.query.bool.max_clause_count` [search
 ```
 ::::
 
-Document 3 matches because `fast` appears two positions before `search` (`and efficient` are the intervening tokens).
-A regular `match` for `fast` would also find this document, but the `prefix` rule additionally catches variants like `faster` in the same document — ensuring the query works even if the data uses different word forms.
+Document 3 matches because its synopsis contains `faster queries`.
+If you replace the `prefix` rule with a `match` rule for `fast`, the query returns no results.
+The index stores `fast` and `faster` as separate terms, and the only `fast` in document 3 is followed by `and`, not `queries`.
+
+::::{warning}
+The `prefix` rule can expand to match many terms depending on your data.
+If a prefix matches more terms than the `indices.query.bool.max_clause_count` [search setting](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md) allows, {{es}} returns an error.
+To avoid this, use the [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) mapping option or keep prefixes specific enough to limit expansion.
+::::
 
 ## Step 5: Exclude terms with a filter [intervals-query-tutorial-filter-example]
 
