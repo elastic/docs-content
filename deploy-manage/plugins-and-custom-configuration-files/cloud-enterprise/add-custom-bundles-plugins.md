@@ -104,8 +104,8 @@ Custom plugins can include the official {{es}} plugins not provided with {{ece}}
 
 This example adds a custom LDAP bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
-1. Prepare a custom bundle as a ZIP file that contains your keystore file with the private key and certificate inside of a `truststore` folder. This bundle allows all {{es}} containers to access the same keystore file through your `ssl.truststore` settings.
-2. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your new {{es}} cluster with the custom bundle you have created. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
+1. Prepare a custom bundle as a ZIP file that contains a trust store with the LDAP server certificate or its issuing Certificate Authority (CA) certificate inside a `truststore` folder. This bundle allows all {{es}} containers to access the same trust store through your `ssl.truststore` settings.
+2. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your new {{es}} cluster with the custom bundle you have created. Modify the `user_bundles` JSON attribute as shown in the following example:
 
     ```sh
     {
@@ -128,9 +128,9 @@ This example adds a custom LDAP bundle for deployment level role-based access co
             ...
     ```
 
-    1. The URLs for the bundle ZIP files (`ldapcert.zip`) must be always available. Make sure you host the plugin artifacts internally in a highly available environment.
+    1. The URL for the bundle ZIP file (`ldapcert.zip`) must always be available. Host the bundle internally in a highly available environment.
 
-3. Note where the bundle contents are placed, so that you can reference the keystore in your `ssl.truststore` settings.
+3. Note where the bundle contents are placed, so that you can reference the trust store in your `ssl.truststore` settings.
 
     ```sh
     $ tree .
@@ -139,19 +139,33 @@ This example adds a custom LDAP bundle for deployment level role-based access co
           └── keystore.ks
     ```
 
-    In this example, the unzipped keystore file gets placed under `/app/config/truststore/keystore.ks`.
+    In this example, the unzipped trust store file gets placed under `/app/config/truststore/keystore.ks`.
 
 ## Example: Add a custom SAML bundle [ece-add-custom-bundle-example-SAML]
 
-This example adds a custom SAML bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
+This example adds a custom SAML bundle for deployment-level role-based access control (RBAC). To configure platform-level RBAC, refer to [](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
-In this example, we assume the Identity Provider does not publish its SAML metadata at an HTTP URL, so we provide it through a custom bundle.
+We assume that the Identity Provider does not publish its SAML metadata at an HTTP URL, so the bundle contains the metadata file required to configure the realm. The example also shows how to optionally include and configure a signing certificate and key for [signing outgoing SAML messages](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-enc-sign) when required by the Identity Provider or your organization.
 
-1. Prepare a ZIP file with a custom bundle that contains your Identity Provider’s metadata (`metadata.xml`). Place the file inside a `saml` folder within the ZIP (`saml/metadata.xml`).
+1. Prepare a ZIP file that contains the Identity Provider metadata at `saml/metadata.xml`.
 
-    This bundle will allow all {{es}} containers to access the metadata file.
+    If you configure signing, follow [Configure SAML signing and encryption](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-signing-encryption.md) to generate a signing certificate and key. Add `saml-sign.crt` and `saml-sign.key` to the same `saml` folder.
 
-2. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
+    If the signing private key is protected with a passphrase, you must add the passphrase as a secure setting before you configure the realm in step 3.
+
+    Structure the files in the ZIP as follows:
+
+    ```text
+    $ tree .
+    .
+    └── saml
+          ├── metadata.xml
+          ├── saml-sign.crt <1>
+          └── saml-sign.key <1>
+    ```
+    1. Include the signing certificate and key when you configure signing for outgoing SAML messages.
+
+2. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute as shown in the following example:
 
     ```text
     {
@@ -165,8 +179,8 @@ In this example, we assume the Identity Provider does not publish its SAML metad
                 ...
                 "user_bundles": [
                 {
-                  "name": "saml-metadata",
-                  "url": "<MY_HOST_URL>/saml-metadata.zip", <1>
+                  "name": "saml-files",
+                  "url": "<MY_HOST_URL>/saml-files.zip", <1>
                   "elasticsearch_version": "*"
                 }
               ]
@@ -174,28 +188,24 @@ In this example, we assume the Identity Provider does not publish its SAML metad
             ...
     ```
 
-    1. The URL for the bundle ZIP file must be always available. Make sure you host the plugin artifacts internally in a highly available environment.
+    1. The URL for the bundle ZIP file must always be available. Host the bundle internally in a highly available environment.
 
-    These file locations are needed in the next step.
+3. After the bundle is associated with the deployment, its files are available under `/app/config` on every {{es}} node. Follow [SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) to configure the realm. In [](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md), reference the metadata file from the bundle:
 
-    In this example, the SAML metadata file is located in the path `/app/config/saml/metadata.xml`:
-
-    ```sh
-    $ tree .
-    .
-    └── saml
-          └── metadata.xml
+    ```yaml
+    idp.metadata.path: /app/config/saml/metadata.xml
     ```
 
-3. Adjust your `saml` realm configuration accordingly through [](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md):
+    If you prepared the signing certificate and key, add their paths to the same realm configuration:
 
-    ```sh
-        idp.metadata.path: /app/config/saml/metadata.xml <1>
+    ```yaml
+    signing.certificate: /app/config/saml/saml-sign.crt
+    signing.key: /app/config/saml/saml-sign.key
     ```
 
-    1. The path to the SAML metadata file that was uploaded
+    If the signing private key is protected with a passphrase, store the passphrase as the `xpack.security.authc.realms.saml.<realm-name>.signing.secure_key_passphrase` [secure setting](/deploy-manage/security/secure-settings.md) before you apply this realm configuration.
 
-    Refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) for more details on SAML authentication.
+    Provide the signing certificate to your Identity Provider so that it can verify the signed messages.
 
 ## Example: Add a custom JVM trust store bundle [ece-add-custom-bundle-example-cacerts]
 
@@ -254,7 +264,7 @@ To import a JVM trust store:
     A bundle may contain other contents beyond the trust store if you prefer, but we recommend creating separate bundles for different purposes.
     ::::
 
-3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example:
+3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute as shown in the following example:
 
     ```sh
     {
@@ -276,7 +286,7 @@ To import a JVM trust store:
             }
         ...
     ```
-    1. The URL for the bundle ZIP file must be always available. Make sure you host the plugin artefacts internally in a highly available environment.
+    1. The URL for the bundle ZIP file must always be available. Host the bundle internally in a highly available environment.
     2. Wildcards are allowed here, since the certificates are independent from the {{es}} version.
 
 4. (Optional) If you prefer to use a different file name and/or password for the trust store, you also need to add an additional configuration section to the cluster metadata before adding the bundle. This configuration should be added to the `Elasticsearch cluster data` section of the [advanced configuration](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md) page:
@@ -309,7 +319,7 @@ To import a JVM trust store:
     ```
 
 2. Copy the ZIP file to a webserver that is reachable from any allocator in your environment.
-3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example.
+3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute as shown in the following example.
 
     ```sh
     {
@@ -359,7 +369,7 @@ To import a JVM trust store:
     ```
 
 2. Copy the ZIP file to a webserver that is reachable from any allocator in your environment.
-3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute of **each** {{es}} instance type as shown in the following example.
+3. In the [advanced configuration editor](/deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your {{es}} cluster configuration with the bundle you prepared in the previous step. Modify the `user_bundles` JSON attribute as shown in the following example.
 
     ```sh
     {
