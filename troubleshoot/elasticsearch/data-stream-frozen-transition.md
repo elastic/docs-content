@@ -14,7 +14,7 @@ products:
 If the data stream lifecycle has frozen phase transitions turned on, older backing indices convert to [frozen {{search-snaps}}](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md) instead of staying on hot or warm nodes.
 Until the conversion finishes, those indices keep using local storage.
 
-Ue the following troubleshooting information to diagnose problems with these transitions.
+Use the following troubleshooting information to diagnose problems with these transitions.
 
 ## Symptoms
 
