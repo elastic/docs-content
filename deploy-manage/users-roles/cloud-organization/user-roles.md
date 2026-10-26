@@ -194,11 +194,6 @@ The restriction is evaluated for each organization independently. A user can hav
 
 Some {{kib}} features include links that redirect to the {{ecloud}} Console, such as **Manage project**, **View all projects**, and **Organization**. For users with **{{es}} and {{kib}}** access, these links return a 403.
 
-:::{tip}
-% need to confirm this is still needed
-Users with no {{ecloud}} Console access need the direct project URL to open their projects. Share the URL with them so they can bookmark it. Project URLs follow this pattern: `https://<project-alias>.<kb>.<region>.<csp>.elastic-cloud.com`. You can find the project URL on the project's overview page in the {{ecloud}} Console.
-:::
-
 ### Considerations
 
 The **Access** selection impacts the behavior of the selected role. Most roles require an access level that includes {{es}} and {{kib}} access, either **Cloud Console, {{es}}, and {{kib}}** or **{{es}} and {{kib}}**, to take full effect.

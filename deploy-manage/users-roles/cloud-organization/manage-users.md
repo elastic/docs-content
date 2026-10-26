@@ -61,11 +61,6 @@ To invite users to your organization:
 
     Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation before it expires. If the invite has expired, an admin can resend the invitation.
 
-:::{tip}
-% need to confirm this is still needed
-Users with [limited {{ecloud}} Console access](/deploy-manage/users-roles/cloud-organization/user-roles.md#restrict-console-access) need the direct project URL to open their projects. Share the URL with them so they can bookmark it. Learn more about [access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
-:::
-
 ## Invite users to join additional organizations [invite-additional-orgs]
 
 :::{include} _snippets/invite-additional-orgs.md
@@ -102,10 +97,13 @@ curl -XGET \
 ```
 :::
 
-:::{dropdown} Invite members to your organization
+:::{dropdown} Invite members with {{ecloud}} Console access
 
-Invite members to your {{ecloud}} organization.
+Invite members to your {{ecloud}} organization. 
 
+These examples grant the member [role-appropriate access to the {{ecloud}} Console](/deploy-manage/users-roles/cloud-organization/user-roles.md#access), either with or without additional project-level access. To invite a user with [limited access to the {{ecloud}} console](#invite-es-kib-access), use the application-only role IDs instead.
+
+**{{ecloud}} Console only access**
 ```sh
 curl -XPOST \
 -H 'Content-Type: application/json' \
@@ -120,6 +118,8 @@ curl -XPOST \
 ```
 
 1. One or more email addresses to invite to the organization
+
+**{{ecloud}} Console and resource access**
 
 When creating an invitation, you can define the user's roles and grant access to resources in the API request body:
 
@@ -171,11 +171,50 @@ curl -XPOST \
   }
 }'
 ```
-1. When granting a custom serverless role, you need to grant the relevant `viewer` role ID for the project type.
+1. When granting a custom serverless role, you need to grant the relevant `viewer` role ID for the project type. Role IDs follow the format `<project-type>-<role-name>`. For example, `elasticsearch-viewer` or `security-t1-analyst`.
 2. [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) for the user in this {{serverless-short}} project. 
 3. Pass an empty `application_roles` array to grant only {{ecloud}} Console access to the relevant resources. [Learn more about access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
 
-% can/should we expose the `*-application-only` role ID pattern?
+:::
+
+$$$invite-es-kib-access$$$
+:::{dropdown} Invite members with limited {{ecloud}} Console access
+
+To grant a user access to a project [with limited {{ecloud}} Console access](/deploy-manage/users-roles/cloud-organization/user-roles.md#restrict-console-access), use the `*-application-only` role ID for the project type and specify the user's `application_roles`.
+
+A user's {{ecloud}} Console access is restricted only when all of their project role assignments use application-only roles, they hold no access to other resource types such as {{ech}} deployments or connected clusters, and they hold no organization-level role.
+
+```sh
+curl -XPOST \
+-H 'Content-Type: application/json' \
+-H "Authorization: ApiKey $EC_API_KEY" \
+"https://api.elastic-cloud.com/api/v1/organizations/$ORGANIZATION_ID/invitations" \
+-d '
+{
+  "emails": [
+    "test@test.com"
+  ],
+  "role_assignments": {
+    "project": {
+      "observability": [
+        {
+          "role_id": "observability-application-only", <1>
+          "organization_id": "ORG_ID_PLACEHOLDER",
+          "all": false,
+          "project_ids": [
+            "OBS_PROJECT_ID_PLACEHOLDER"
+          ],
+          "application_roles": [
+            "editor" <2>
+          ]
+        }
+      ]
+    }
+  }
+}'
+```
+1. Use the application-only role ID for the project type: `elasticsearch-application-only`, `observability-application-only`, `security-application-only`, or `vectordb-application-only`.
+2. The user's [project-level role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table). [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) are also supported.
 :::
 
 :::{dropdown} View pending invitations to your organization
