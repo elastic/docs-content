@@ -20,10 +20,10 @@ You can view all your instrumented services and the connections between them, or
 
 ## Requirements [service-map-requirements]
 
-Service maps, including embedded panels, require:
+Service maps access is dependent on your subscription level. For more information, refer to:
 
-* **Elastic Stack**: An active [Platinum or higher subscription](https://www.elastic.co/subscriptions).
-* **{{obs-serverless}}**: The [Observability Complete feature tier](/solutions/observability/observability-serverless-feature-tiers.md#obs-subscription-features).
+* **Elastic Stack**:  [Subscriptions](https://www.elastic.co/subscriptions).
+* **{{obs-serverless}}**: The [Observability Serverless feature tier](/solutions/observability/observability-serverless-feature-tiers.md#obs-subscription-features).
 
 ## How do service maps work? [service-maps-how]
 
