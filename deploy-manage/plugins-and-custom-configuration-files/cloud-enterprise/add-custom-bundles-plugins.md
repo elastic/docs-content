@@ -196,16 +196,12 @@ We assume that the Identity Provider does not publish its [SAML metadata](/deplo
     idp.metadata.path: /app/config/saml/metadata.xml
     ```
 
-    If you prepared the signing certificate and key, add their paths to the same realm configuration:
+    If you prepared the signing certificate and key, configure signing in the same realm. If the private key is protected with a passphrase, first store the passphrase as the `xpack.security.authc.realms.saml.<realm-name>.signing.secure_key_passphrase` [secure setting](/deploy-manage/security/secure-settings.md). Then add the following settings:
 
     ```yaml
     signing.certificate: /app/config/saml/saml-sign.crt
     signing.key: /app/config/saml/saml-sign.key
     ```
-
-    If the signing private key is protected with a passphrase, store the passphrase as the `xpack.security.authc.realms.saml.<realm-name>.signing.secure_key_passphrase` [secure setting](/deploy-manage/security/secure-settings.md) before you apply this realm configuration.
-
-    Provide the signing certificate to your Identity Provider so that it can verify the signed messages.
 
 ## Example: Add a custom JVM trust store bundle [ece-add-custom-bundle-example-cacerts]
 
