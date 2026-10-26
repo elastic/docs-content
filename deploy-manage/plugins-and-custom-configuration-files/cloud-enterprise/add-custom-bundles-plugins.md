@@ -100,7 +100,11 @@ Custom plugins can include the official {{es}} plugins not provided with {{ece}}
 6. To verify that all nodes have the plugins installed, use one of these commands: `GET /_nodes/plugins?filter_path=nodes.*.plugins` or `GET _cat/plugins?v`
 
 
-## Example: Add a custom LDAP bundle [ece-add-custom-bundle-example-LDAP]
+## Examples [ece-custom-bundle-examples]
+
+The following examples show how to use custom bundles to make additional files available to {{es}} deployments.
+
+### Add a custom LDAP bundle [ece-add-custom-bundle-example-LDAP]
 
 This example adds a custom LDAP bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
@@ -141,7 +145,7 @@ This example adds a custom LDAP bundle for deployment level role-based access co
 
     In this example, the unzipped keystore file gets placed under `/app/config/truststore/keystore.ks`.
 
-## Example: Add a custom SAML bundle [ece-add-custom-bundle-example-SAML]
+### Add a custom SAML bundle [ece-add-custom-bundle-example-SAML]
 
 This example adds a custom SAML bundle for deployment-level role-based access control (RBAC). To configure platform-level RBAC, refer to [](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
@@ -203,7 +207,7 @@ We assume that the Identity Provider does not publish its [SAML metadata](/deplo
     signing.key: /app/config/saml/saml-sign.key
     ```
 
-## Example: Add a custom JVM trust store bundle [ece-add-custom-bundle-example-cacerts]
+### Add a custom JVM trust store bundle [ece-add-custom-bundle-example-cacerts]
 
 If you are using SSL certificates signed by non-public certificate authorities, {{es}} is not able to communicate with the services using those certificates unless you import a custom JVM trust store containing the certificates of your signing authority into your {{ece}} installation. You’ll need the trust store to access snapshot repositories like MinIO, for your {{ece}} proxy, or to reindex from remote.
 
@@ -301,7 +305,7 @@ To import a JVM trust store:
     * You do not need to do this step if you are using default filename and password (`cacerts` and `changeit` respectively) in your bundle.
     ::::
 
-## Example: Add a custom GeoIP database bundle [ece-add-custom-bundle-example-geoip]
+### Add a custom GeoIP database bundle [ece-add-custom-bundle-example-geoip]
 
 1. Prepare a ZIP file with a custom bundle that contains a: [GeoLite2 database](https://dev.maxmind.com/geoip/geoip2/geolite2). The folder has to be named `ingest-geoip`, and the file name can be anything that is appended `-(City|Country|ASN)` with the `mmdb` file extension, and it must have a different name than the original name `GeoLite2-City.mmdb`.
 
@@ -351,7 +355,7 @@ To import a JVM trust store:
     ...
     ```
 
-## Example: Add a custom synonyms bundle [ece-add-custom-bundle-example-synonyms]
+### Add a custom synonyms bundle [ece-add-custom-bundle-example-synonyms]
 
 1. Prepare a ZIP file with a custom bundle that contains a dictionary of synonyms in a text file.
 
