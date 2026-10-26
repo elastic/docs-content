@@ -68,7 +68,7 @@ Copy the {{es}} endpoint for {{ech}} from the deployment UI or the {{ecloud}} Co
 
 1. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), find your project and select **Manage**.
 3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
-4. Copy the **Endpoint** value.
+4. Copy the **Direct endpoint** value.
 
 :::{image} /solutions/images/cloud-console-hosted-endpoint.png
 :alt: The {{es}} panel on a hosted deployment page in the {{ecloud}} Console, showing the Endpoint value with a copy button
