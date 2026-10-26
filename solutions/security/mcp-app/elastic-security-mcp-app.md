@@ -40,7 +40,7 @@ The tools compose into an end-to-end SOC loop you can drive entirely from the AI
 1. **Generate sample data.** Ask the agent to populate your cluster with one of the four pre-built attack scenarios (ransomware, lateral movement, credential theft, or data exfiltration). The Sample Data tool writes ECS-compliant events you can safely clean up later.
 2. **Triage alerts.** Ask the agent to triage by host, rule, user, or time window. The Alert Triage tool classifies each alert as benign, suspicious, or malicious above the raw alert list. Click any alert for the process tree, network events, related alerts, and MITRE ATT&CK tags.
 3. **Hunt for threats.** Ask the agent to hunt across your indices. The Threat Hunt tool returns an {{esql}} workbench with the query pre-populated and auto-executed, plus an investigation graph for entity pivots.
-4. **Run Attack Discovery.** Ask the agent to correlate the alerts and findings into attack chains. The Attack Discovery tool calls the [Attack Discovery API](/solutions/security/ai/attack-discovery.md) and returns ranked findings with MITRE tactics, risk scores, and impacted hosts and users.
+4. **Run Attack Discovery.** Ask the agent to correlate the alerts and findings into attack chains. The Attack Discovery tool calls the [Attack Discovery API](/solutions/security/ai/attack-discovery/index.md) and returns ranked findings with MITRE tactics, risk scores, and impacted hosts and users.
 5. **Open cases.** Approve findings in bulk or ask the agent to open cases for specific alerts. The Case Management tool creates one case per finding, attaches the source alerts, and renders the live case list inline.
 
 For the narrative version of this walkthrough, refer to the [Elastic Security Labs blog post](https://www.elastic.co/security-labs/elastic-security-mcp-app).
@@ -123,7 +123,7 @@ The app implements the [MCP Apps extension](https://modelcontextprotocol.io/docs
 
 ## Related pages [related-pages]
 
-* [Attack Discovery](/solutions/security/ai/attack-discovery.md): AI-powered attack chain correlation in {{kib}}.
+* [Attack Discovery](/solutions/security/ai/attack-discovery/index.md): AI-powered attack chain correlation in {{kib}}.
 * [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md): An AI agent platform for {{elastic-sec}} in {{kib}}.
 * [LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md): Configure a generative AI provider for {{kib}}.
 * [MCP Apps overview](https://modelcontextprotocol.io/docs/extensions/apps.md): The Model Context Protocol extension that lets MCP servers ship interactive UIs.

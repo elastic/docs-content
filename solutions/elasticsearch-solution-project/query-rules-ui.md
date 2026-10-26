@@ -1,8 +1,8 @@
 ---
 applies_to:
   stack: ga 9.1
-  serverless: ga
-  elasticsearch:
+  serverless:
+    elasticsearch: ga
 products:
  - id: elasticsearch
 ---

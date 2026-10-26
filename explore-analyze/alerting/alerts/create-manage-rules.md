@@ -39,22 +39,17 @@ For more information on alerting concepts and the types of rules and connectors 
 
 ## Required permissions [_required_permissions]
 
-Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup.md#alerting-security).
+* **Rules**: To create and manage rules, you need the appropriate feature privileges for the app that owns the rule type, for example, {{observability}} features for Observability rules, or {{ml-app}} for anomaly detection rules. For more information, go to [Security](alerting-setup.md#alerting-security). {applies_to}`serverless: ga` On serverless, assign the **Editor** role or higher instead. For more information, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+* **Alerts**: To read alerts and perform per-alert actions (such as snooze, unsnooze, and acknowledge) without allowing users to manage rules—assign the **Stack Alerts** or **Observability Alerts** feature privilege, depending on which alerts page you use (`All` for full access, or `Read` for view and snooze state only). Assign this through {{kib}} roles on the {{stack}}, or through a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) on serverless. For details, refer to [Give access to triage alerts without managing rules](alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules).
 
 ## {{cps-cap}} scope for rules [cps-scope-for-rules]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), alerting rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a {{cps}} scope on individual rules.
-
-When you open a rule to create or edit it, the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header shows the current {{cps}} scope but is read-only. To change which projects rules query, update the [{{cps}} scope configured for the space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
-
-For {{esql}} rules, you can use [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the rule query to target specific linked projects, overriding the space-level scope. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.
-
-:::{note}
-{{ml-cap}} rules don't support {{cps}}; they search data in the origin project only. Other features also have limited or no {{cps}} support. For details, refer to [{{cps-cap}} availability by app](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
+:::{include} /solutions/_snippets/cps-sec-obs-rules.md
 :::
 
 ## Create and edit rules [create-edit-rules]

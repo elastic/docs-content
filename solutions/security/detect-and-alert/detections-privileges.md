@@ -15,14 +15,14 @@ description: Find privilege requirements, predefined roles, and the authorizatio
 
 Learn about the access requirements for detection features, including:
 
-- **Privilege requirements**: Cluster, index, and {{kib}} privileges that your role needs to enable detections, manage rules, view and edit alerts, and more
+- **Privilege requirements**: Cluster, index, and {{kib}} privileges that your role needs to enable detections, manage rules, view and edit alerts, and more. For {{kib}} **Rules and Exceptions** sub-feature privileges, refer to [Rules and Exceptions sub-feature privileges](/solutions/security/manage/security-kibana-privileges.md#rules-and-exceptions-sub-feature-privileges).
 - **Predefined {{serverless-full}} roles**: {{serverless-short}} roles with detection privileges
-- **Authorization model**: How rules inherit privileges from their last editor using API keys
+- **Authorization model**: How rule authorization works across Stack and {{serverless-full}} deployments, and what each API key model means for privilege inheritance
 
 For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
 
 :::{important}
-Rules run in the background using the privileges of the user who last edited them. Ensure that only users with the appropriate access edit them. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
+Ensure that only users with the appropriate access edit rules. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 :::
 
 ## About index privileges
@@ -115,7 +115,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-Assigning `All` on `Rules` grants the full set of rule actions by default (create, edit, delete, enable, disable, and the rest). **Customize sub-feature privileges** lets you turn off specific actions for a role. For example, you can remove one capability for the role (such as enabling or disabling rules) while still granting the role access to other actions that `All` provides. 
+Assigning `All` on `Rules` grants the full set of rule actions by default (create, edit, delete, enable, disable, and the rest). **Customize sub-feature privileges** lets you turn off [specific actions](/solutions/security/manage/security-kibana-privileges.md#rules-and-exceptions-sub-feature-privileges) for a role. For example, you can remove one capability for the role (such as enabling or disabling rules) while still granting the role access to other actions that `All` provides. 
 
 The following table illustrates this by comparing the default setup with a customized role.
 
@@ -144,6 +144,11 @@ Index privileges
     - {applies_to}`stack: ga 9.4+` `All` for `Alerts`: Everything that `Read` provides, plus changing alert status, setting assignees, setting tags, and bulk actions on alerts.
     - {applies_to}`stack: ga 9.3` `All` for the `Rules, Alerts, and Exceptions` feature to view alert management flows
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
+
+::::{note}
+:applies_to: {stack: ga 9.5+, serverless: ga}
+To export alerts to CSV from the Alerts table, you also need [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access).
+::::
 
 ## Manage exceptions
 

@@ -10,11 +10,17 @@ products:
 
 # Control access to APM data [apm-spaces]
 
-Starting in version 8.2.0, the Applications UI is [Kibana space](/deploy-manage/manage-spaces.md) aware. This allows you to separate your data—and access to that data—by team, use case, service environment, or any other filter that you choose.
+## APM index settings [apm-index-settings]
+
+The Applications UI uses {{data-sources}} to query {{product.apm}} indices. To change the default {{product.apm}} indices, open the Applications UI and go to **Settings** → **Indices**. Settings configured in the UI take precedence over those set in `kibana.yml`.
+
+{{product.apm}} index settings are [{{kib}} Spaces](/deploy-manage/manage-spaces.md)-aware, which means that changes apply only to the currently enabled space. For an example, refer to [Separate staging and production data](#apm-spaces-example).
+
+{applies_to}`stack: ga 8.2+` The Applications UI is [Kibana space](/deploy-manage/manage-spaces.md)-aware. This allows you to separate your data—and access to that data—by team, use case, service environment, or any other filter that you choose.
 
 To take advantage of this feature, your APM data needs to be written to different data streams. One way to accomplish this is with different namespaces. For example, you can send production data to an APM integration with a namespace of `production`, while sending staging data to a different APM integration with a namespace of `staging`.
 
-Multiple APM integration instances is not required though. The simplest way to take advantage of this feature is by creating filtered aliases. See the guide below for more information.
+Multiple APM integration instances are not required. The simplest way to take advantage of this feature is by creating filtered aliases. Refer to [Separate staging and production data](#apm-spaces-example) for more information.
 
 ## Guide: Separate staging and production data [apm-spaces-example]
 

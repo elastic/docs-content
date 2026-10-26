@@ -13,15 +13,17 @@ products:
 # Configure SSL/TLS for standalone {{agent}}s [elastic-agent-ssl-configuration]
 
 
-There are a number of SSL configuration settings available depending on whether you are configuring a client, server, or both. See the following tables for available settings:
+Use these settings to configure SSL/TLS for a standalone {{agent}}. The available settings depend on whether {{agent}} acts as a client, a server, or both:
 
-* [Table 7, Common configuration options](#common-ssl-options). These settings are valid in both client and server configurations.
-* [Table 8, Client configuration options](#client-ssl-options)
-* [Table 9, Server configuration options](#server-ssl-options)
+* [Common configuration options](#common-ssl-config-options): Valid in both client and server configurations.
+* [Client configuration options](#client-ssl-config-options): Apply when {{agent}} connects to a server.
+* [Server configuration options](#server-ssl-config-options): Apply when {{agent}} accepts incoming connections.
 
 ::::{tip}
 For more information about using certificates, refer to [Secure connections](/reference/fleet/secure.md).
 ::::
+
+## Common configuration options [common-ssl-config-options]
 
 $$$common-ssl-options$$$
 
@@ -100,6 +102,8 @@ $$$common-ssl-options$$$
 
     **Default:** `[TLSv1.2, TLSv1.3]`
 
+## Client configuration options [client-ssl-config-options]
+
 $$$client-ssl-options$$$
 
 `ssl.certificate` $$$ssl.certificate-client-setting$$$
@@ -116,7 +120,7 @@ $$$client-ssl-options$$$
     Specify a path, or embed a certificate directly in the `YAML` configuration:
 
     ```yaml
-    ssl.certificate: &#124;
+    ssl.certificate: |
         -----BEGIN CERTIFICATE-----
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
@@ -135,7 +139,7 @@ $$$client-ssl-options$$$
 
     ```yaml
     ssl.certificate_authorities:
-      - &#124;
+      - |
         -----BEGIN CERTIFICATE-----
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
@@ -171,7 +175,7 @@ $$$client-ssl-options$$$
     Specify a path, or embed the private key directly in the `YAML` configuration:
 
     ```yaml
-    ssl.key: &#124;
+    ssl.key: |
         -----BEGIN PRIVATE KEY-----
         KEY CONTENT APPEARS HERE
         -----END PRIVATE KEY-----
@@ -206,7 +210,15 @@ $$$client-ssl-options$$$
     ssl.ca_trusted_fingerprint: 3b24d33844d6553...826
     ```
 
+## Server configuration options [server-ssl-config-options]
+
 $$$server-ssl-options$$$
+
+::::{tip}
+:applies_to: serverless: unavailable
+
+The following server configuration options also apply to the {{fleet-server}} HTTPS endpoint. To set them for a {{fleet}}-managed {{fleet-server}}, add them under a `server.ssl` block in the {{fleet-server}} integration policy. For more information, refer to [Configure advanced SSL/TLS settings for {{fleet-server}}](/reference/fleet/secure-connections.md#fleet-server-advanced-ssl-settings).
+::::
 
 `ssl.certificate` $$$ssl.certificate-server-setting$$$
 :   (string) The path to the certificate for SSL server authentication. If the certificate is not specified, startup will fail.
@@ -222,7 +234,7 @@ $$$server-ssl-options$$$
     Specify a path, or embed a certificate directly in the `YAML` configuration:
 
     ```yaml
-    ssl.certificate: &#124;
+    ssl.certificate: |
         -----BEGIN CERTIFICATE-----
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
@@ -241,7 +253,7 @@ $$$server-ssl-options$$$
 
     ```yaml
     ssl.certificate_authorities:
-      - &#124;
+      - |
         -----BEGIN CERTIFICATE-----
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
@@ -291,7 +303,7 @@ $$$server-ssl-options$$$
     Specify a path, or embed the private key directly in the `YAML` configuration:
 
     ```yaml
-    ssl.key: &#124;
+    ssl.key: |
         -----BEGIN PRIVATE KEY-----
         KEY CONTENT APPEARS HERE
         -----END PRIVATE KEY-----

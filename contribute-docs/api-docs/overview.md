@@ -38,10 +38,10 @@ All Elastic API docs follow this general pattern:
 flowchart TD
     A[Source files] --> B[OpenAPI documents]
     B --> C[Published documentation]
-    
-    style A fill:#fff2cc
-    style B fill:#e1d5e7
-    style C fill:#dae8fc
+
+    class A warning
+    class B important
+    class C note
 ```
 
 1. **Source files** can be:
@@ -71,16 +71,11 @@ flowchart TD
     C1 -->|published| E["HTML published by Bump.sh"]
     B -->|generated| D[Client libraries]
     B -->|generated| F[REST API spec]
-    
-    style A fill:#fff2cc
-    style F fill:#fff2cc
-    style G fill:#fff2cc
-    style B fill:#d5e8d4
-    style C1 fill:#e1d5e7
-    style C2 fill:#e1d5e7
-    style H fill:#fff2cc
-    style D fill:#dae8fc
-    style E fill:#dae8fc
+
+    class A,F,G,H warning
+    class B success
+    class C1,C2 important
+    class D,E note
 ```
 
 ### Input sources

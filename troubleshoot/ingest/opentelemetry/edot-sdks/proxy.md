@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Proxy settings for EDOT SDKs
+# Proxy settings for EDOT SDKs [proxy-settings-for-edot-sdks]
 
 EDOT SDKs generally use the standard proxy environment variables. However, there are exceptions and limitations depending on the language and exporter type. For general connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
@@ -25,11 +25,11 @@ If you use the default gRPC-based exporter, proxy settings are ignored. To enabl
 
 * Switch to the `http/protobuf` exporter, which supports standard proxy environment variables.
 
-* Route telemetry through a local EDOT Collector configured with proxy settings.
+* Route telemetry through a local {{agent}} configured with proxy settings.
 
 ## Node.js SDK
 
-The Node.js SDK does not currently support `HTTP_PROXY`, `HTTPS_PROXY`, or `NO_PROXY` by default. You can route telemetry through an EDOT Collector.
+The Node.js SDK does not currently support `HTTP_PROXY`, `HTTPS_PROXY`, or `NO_PROXY` by default. You can route telemetry through an {{agent}}.
 
 ## Java SDK
 

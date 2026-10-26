@@ -1,4 +1,5 @@
 ---
+meta_title: Deploy and manage Elasticsearch
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/setup.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
@@ -7,8 +8,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/management.html
 products:
   - id: kibana
+  - id: elasticsearch
   - id: cloud-hosted
   - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-serverless
 description: Deploy and manage your Elastic environment. Learn how to design resilient
   clusters, secure access, monitor performance, and maintain your Elastic Stack
   components across different deployment options.
@@ -42,6 +46,8 @@ Learn how to design and deploy a production-ready Elastic environment.
 * [](/deploy-manage/distributed-architecture.md): Learn about the architecture of {{es}} and {{kib}}, and how Elastic stores and retrieves data and executes tasks in clusters with multiple nodes.
 * [](/deploy-manage/production-guidance.md): Review tips and guidance that you can use to design a production environment that matches your workloads, policies, and deployment needs.
 * [](/deploy-manage/reference-architectures.md): Explore blueprints for deploying clusters tailored to different use cases.
+* [](/deploy-manage/stack-settings.md): Customize {{es}}, {{kib}}, and other {{stack}} settings for your deployment type.
+* [](/deploy-manage/plugins-and-custom-configuration-files.md): Add {{es}} plugins and configuration files across {{ech}}, {{ece}}, {{eck}}, and self-managed deployments.
 * [](/deploy-manage/tools.md): Learn about the tools available to safeguard data, ensure continuous availability, and maintain resilience in your {{es}} environment.
 * [](/deploy-manage/autoscaling.md): Learn how to configure your [orchestrated](/deploy-manage/deploy.md#about-orchestration) deployment to scale based on policies and cluster signals. Applies to {{ech}}, {{ece}}, and {{eck}} deployments.
 * [](/deploy-manage/cloud-connect.md): Learn how to use {{ecloud}} services in your self-hosted environment.
@@ -58,9 +64,10 @@ Learn how to secure your Elastic environment to restrict access to only authoriz
 * [](/deploy-manage/users-roles.md): Manage user authentication and authorization at the level of your Cloud organization, your orchestrator, or your deployment or cluster.
 * [](/deploy-manage/manage-spaces.md): Learn how to organize content in {{kib}}, and restrict access to this content to specific users.
 * [](/deploy-manage/api-keys.md): Authenticate and authorize programmatic access to your deployments and {{es}} resources.
-* [](/deploy-manage/manage-connectors.md): Manage connection information between Elastic and third-party systems.
-* [](/deploy-manage/remote-clusters.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/explore-analyze/cross-cluster-search.md).
-* [Cross-project search](/deploy-manage/cross-project-search-config.md): Link multiple {{serverless-full}} projects to broaden the dataset users can query and visualize. {applies_to}`serverless: preview` 
+* [](/deploy-manage/app-connections.md): Register OAuth clients and manage application connections for external access to {{serverless-short}} projects. Currently, only MCP clients for the {{agent-builder}} MCP server are supported. {applies_to}`serverless: ga`
+* [](/deploy-manage/manage-connectors.md): Manage {{kib}} connectors for alerting rules and external service integrations.
+* [](/deploy-manage/remote-clusters.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/explore-analyze/cross-cluster-search.md). {applies_to}`serverless: unavailable`
+* [Cross-project search](/deploy-manage/cross-project-search-config.md): Link multiple {{serverless-full}} projects to broaden the dataset users can query and visualize. {applies_to}`serverless: ga` 
 
 ## Administer and maintain
 

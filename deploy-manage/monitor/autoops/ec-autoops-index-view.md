@@ -16,12 +16,14 @@ The **Indices** view provides detailed statistics for each {{es}} index in your 
 
 Information about each index is organized into a clear table with columns for the index's name, primary and total shards, indexing and search rate per second, and more. You can expand each index entry to dive deeper into real-time metrics.
 
-To get to the **Indices** view, go to AutoOps in your deployment or cluster and select **Indices** from the side navigation.
+Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the date and time picker to select a time period for the data shown.
 
 :::{image} /deploy-manage/images/cloud-autoops-index-view.png
 :screenshot:
 :alt: Screenshot showing the Indices view in AutoOps
 :::
+
+To get to the **Indices** view, go to AutoOps in your deployment or cluster and select **Indices** from the side navigation.
 
 ## Metrics in the Indices view [ec-autoops-index-metrics]
 
@@ -37,4 +39,5 @@ The following table lists all the metrics available in the **Indices** view, alo
 | Search latency | Average latency for searching, which is the time it takes to execute searches divided by the number of searches submitted to all shards of the index |
 | Errors | Number of failed indexing operations for the index |
 | Merge rate | Number of merge operations being executed per second on all primary shards of the index |
+| Merge latency | Average latency for merging, which is the time it takes to execute merges divided by the number of merge operations submitted to all primary shards of the index |
 

@@ -3,7 +3,7 @@ navigation_title: Cases
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Reference for the 28 Cases action steps that let workflows create, query, update, attach content, push to external connectors, and manage the lifecycle of cases in any Cases-enabled app.
+description: Reference for the Cases action steps that let workflows create, query, update, attach content, push to external connectors, and manage the lifecycle of cases in any Cases-enabled app.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -66,7 +66,7 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
 
 ## Step catalog [workflows-cases-catalog]
 
-The 28 Cases steps group into seven operational categories. Jump to any step:
+The Cases steps group into seven operational categories. Jump to any step:
 
 **Create, fetch, and search**
 [`cases.createCase`](#cases-createcase) ·
@@ -93,10 +93,12 @@ The 28 Cases steps group into seven operational categories. Jump to any step:
 [`cases.addAlerts`](#cases-addalerts) ·
 [`cases.addEvents`](#cases-addevents) ·
 [`cases.addObservables`](#cases-addobservables) ·
+[`cases.addAttachments`](#cases-addattachments) ·
 [`cases.getAllAttachments`](#cases-getallattachments)
 
 **Tags and assignees**
 [`cases.addTags`](#cases-addtags) ·
+[`cases.removeTags`](#cases-removetags) ·
 [`cases.assignCase`](#cases-assigncase) ·
 [`cases.unassignCase`](#cases-unassigncase)
 
@@ -519,6 +521,71 @@ Add observables (indicators of compromise such as IPs, file hashes, domains, or 
 
 The `typeKey` must match one of the built-in observable type keys: `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, or `observable-type-file-hash`. Use `observable-type-file-hash` for all hash algorithms (MD5, SHA-1, SHA-256, and so on).
 
+### `cases.addAttachments` [cases-addattachments]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Attach one or more items to a case in a single request. Use this when you need to add several attachment types together, such as a comment, an alert, and a dashboard, instead of chaining dedicated steps such as [`cases.addComment`](#cases-addcomment) or [`cases.addAlerts`](#cases-addalerts).
+
+Each entry in `attachments` uses a `type` field that selects the payload shape. Required fields depend on that type (`data`, `attachmentId`, and `metadata` appear only when the type needs them). The YAML editor narrows the available fields after you set `type`. Don't set `owner`. The step injects it from the target case.
+
+Common `type` values include:
+
+- `comment` ([`cases.addComment`](#cases-addcomment))
+- `stack.alert`, `security.alert`, `observability.alert` ([`cases.addAlerts`](#cases-addalerts))
+- `security.event` ([`cases.addEvents`](#cases-addevents)), `security.endpoint`, `security.indicator`, `security.timeline`
+- `osquery`
+- `dashboard`, `map`, `discoverSession`
+- `lens` (by saved-object reference: `attachmentId` plus `metadata.title` and `metadata.soType: "lens"`)
+
+Which types appear depends on the solutions and plugins enabled in your deployment. Use the example below for the payload shapes this step expects.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `case_id` | `with` | string | Yes | Case ID. |
+| `attachments` | `with` | array | Yes | Array of `{ type, attachmentId?, data?, metadata? }` objects (1–100). |
+
+Output: `{ case: object }` (the updated case).
+
+```yaml
+- name: attach_attachments
+  type: cases.addAttachments
+  with:
+    case_id: "{{ steps.create_case.output.case.id }}"
+    attachments:
+      - type: "comment"
+        data:
+          content: "Investigating this incident."
+      - type: "security.alert"
+        attachmentId: "{{ event.alerts[0]._id }}"
+        metadata:
+          index: "{{ event.alerts[0]._index }}"
+          rule:
+            id: "{{ event.rule.id }}"
+            name: "{{ event.rule.name }}"
+      - type: "dashboard"
+        attachmentId: "dashboard-id-1"
+        metadata:
+          title: "Security dashboard"
+          soType: "dashboard"
+```
+
+:::{note}
+These attachment types aren't available through this step:
+
+- File attachments
+- Anomaly charts, anomaly swim lane, and single metric viewer
+- Change point detection, log pattern analysis, and log rate analysis
+- Lens visualizations that include the full visualization state instead of a saved-object reference
+
+For those, use the dedicated Cases UI flows. You can still attach a Lens visualization by saved-object reference with `type: lens`.
+:::
+
+% TODO: After https://github.com/elastic/docs-content/pull/7450 merges, link "Cases UI flows" above to explore-analyze/cases/attach-objects-to-cases.md (Attach objects to cases).
+
 ### `cases.getAllAttachments` [cases-getallattachments]
 
 Fetch every attachment associated with a case without pagination. Use this when you need the complete set of attachments for decision-making, for example when checking evidence before closing or escalating.
@@ -548,6 +615,23 @@ Add tags to a case.
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `tags` | `with` | `string[]` | Yes | Tags to add. |
+
+### `cases.removeTags` [cases-removetags]
+
+Remove tags from a case. Pass the case ID and the list of tags to remove.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `case_id` | `with` | string | Yes | Case ID. |
+| `tags` | `with` | `string[]` | Yes | Tags to remove. Tags that are not on the case are ignored. |
+
+```yaml
+- name: remove_case_tags
+  type: cases.removeTags
+  with:
+    case_id: "{{ steps.create_case.output.case.id }}"
+    tags: ["investigation", "high-priority"]
+```
 
 ### `cases.assignCase` [cases-assigncase]
 

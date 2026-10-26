@@ -25,6 +25,8 @@ Select your deployment type below to see what's available and how implementation
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
 | **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/monitor/stack-audit-logging.md) |
+| | {{ecloud}} audit trail | Configurable ({{fedramp-mod}} only)| [](/deploy-manage/monitor/cloud-audit-trail.md) |
 
 :::
 
@@ -35,13 +37,15 @@ Select your deployment type below to see what's available and how implementation
 | **Communication** | TLS (HTTP layer) | Fully managed | Automatically configured by Elastic |
 | | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
-| | Private connectivity and VPC filtering | Configurable | [](/deploy-manage/security/private-connectivity.md) (AWS PrivateLink only) |
+| | Private connectivity and VPC filtering | Configurable | [](/deploy-manage/security/private-connectivity.md) (AWS PrivateLink and Azure Private Link only) |
 | | Kubernetes network policies | N/A |  |
 | | Published static IPs (ingress and egress) | N/A | Not offered as Elastic-published ranges for {{serverless-short}}. Use [private connectivity](/deploy-manage/security/private-connectivity.md) where supported. |
 | **Data** | Encryption at rest | Fully managed | Automatically encrypted by Elastic |
 | | Secure settings | N/A |  |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
 | **User session** | {{kib}} sessions | Fully managed | Automatically configured by Elastic |
+| **Auditing** | {{es}} and {{kib}} audit logs | N/A |  |
+| | {{ecloud}} audit trail | N/A |  |
 
 :::
 
@@ -59,6 +63,8 @@ Select your deployment type below to see what's available and how implementation
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
 | **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/monitor/stack-audit-logging.md) |
+| | {{ecloud}} audit trail | N/A |  |
 
 :::
 
@@ -76,6 +82,8 @@ Select your deployment type below to see what's available and how implementation
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/k8s-secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
 | **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/monitor/stack-audit-logging.md) |
+| | {{ecloud}} audit trail | N/A |  |
 
 :::
 
@@ -94,6 +102,8 @@ Select your deployment type below to see what's available and how implementation
 | | Keystore security | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
 | **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
+| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/monitor/stack-audit-logging.md) |
+| | {{ecloud}} audit trail | N/A |  |
 
 :::
 ::::

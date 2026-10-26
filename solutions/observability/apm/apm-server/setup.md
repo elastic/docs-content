@@ -1,5 +1,6 @@
 ---
 navigation_title: Set up
+description: Set up APM Server for a self-managed Elastic Stack or Elastic Cloud Hosted deployment. Compare Fleet-managed APM Server with the standalone binary and choose the right deployment model.
 applies_to:
   stack: ga
   serverless: unavailable
@@ -21,7 +22,7 @@ The fastest way to get started with Elastic APM is with Elastic Cloud Serverless
 Read more in [](/solutions/observability/apm/get-started.md).
 :::
 
-APM Server receives performance data from your APM agents and Elastic Distribution of OpenTelemetry (EDOT) SDKs, validates and processes it, and then transforms the data into {{es}} documents. If you’re on this page, then you’ve chosen to self-manage the Elastic Stack, and you now must decide how to run and configure the APM Server. There are two options, and the components required are different for each:
+APM Server receives performance data from your APM agents and {{edot}} SDKs, validates and processes it, and then transforms the data into {{es}} documents. If you’re on this page, then you’ve chosen to self-manage the Elastic Stack, and you now must decide how to run and configure the APM Server. There are two options, and the components required are different for each:
 
 * [Fleet-managed APM Server](#apm-setup-fleet-managed-apm)
 * [APM Server binary](#apm-setup-apm-server-binary)

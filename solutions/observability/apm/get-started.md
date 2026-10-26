@@ -1,5 +1,6 @@
 ---
 navigation_title: Get started with traces and APM
+description: Get started with Elastic APM by sending application traces with EDOT SDKs or Elastic APM agents, then explore service performance data in Kibana.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-getting-started-apm-server.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
@@ -13,9 +14,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Get started with traces and APM [apm-getting-started-apm-server]
+# Get started with Elastic APM [apm-getting-started-apm-server]
 
-Elastic APM receives performance data from your APM agents or [Elastic Distributions of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md), validates and processes it, and then transforms the data into {{es}} documents.
+Elastic APM receives performance data from your APM agents or [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), validates and processes it, and then transforms the data into {{es}} documents.
 
 In this guide you'll learn how to collect and send Application Performance Monitoring (APM) data to Elastic, then explore and visualize the data in real time.
 
@@ -42,7 +43,7 @@ Follow these steps to send APM data to Elastic.
 
 :::::
 
-:::::{step} Add data using EDOT or APM Agents
+:::::{step} Add data using {{edot}} or APM Agents
 
 To send APM data to Elastic, you must install an Elastic Distribution of OpenTelemetry or an APM agent and configure it to send data to your project:
 

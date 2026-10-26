@@ -24,7 +24,7 @@ The AI features present in EASE are not available on the Essentials tier.
 
 ## How to upgrade from EASE to other feature tiers
 
-1. Log in to the [{{ecloud}} console](https://console.qa.cld.elstc.co/).
+1. Log in to the [{{ecloud}} console](https://cloud.elastic.co/).
 2. Find the project you wish to upgrade on the list of serverless projects, and click **Manage**. 
 
    :::{image} /solutions/images/security-ease-cloud-console-manage-project.png

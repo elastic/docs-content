@@ -29,7 +29,7 @@ A resolution group consists of:
 * **Primary entity**: The authoritative representation of the real-world identity. It receives aggregated risk scores that combine the risk from all linked records in the group. When an entity from an identity provider (Okta, Active Directory, or Entra ID) is linked with a local entity, the IDP entity is preferred as the primary entity.
 * **Alias entities**: Records that point to the primary entity via a `resolved_to` field. In the **Entities** section of the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), alias entities appear nested under their primary entity when the table is grouped by **Resolution** (the default view).
 
-Resolution group relationships are also visible as **Resolved to** connections in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab.
+Resolution group relationships are also visible as **Resolved to** connections in the entity details flyout's [interactive graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations).
 
 ## Automated resolution [entity-resolution-automated]
 
@@ -42,6 +42,11 @@ Automated resolution currently matches on email addresses only. Automated resolu
 ## Manual resolution [entity-resolution-manual]
 
 You can manually link entity records using a CSV bulk upload on the **Entity Analytics** management page, or by adding and removing entities directly from the entity details flyout.
+
+:::{tip}
+:applies_to: {stack: ga 9.6+, serverless: ga}
+You can also inspect resolution groups, link or unlink entities, and enable or disable automated resolution rules conversationally with {{agent-builder}} using the `entity-resolution` [skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#security-skills). For example prompts, refer to [Entity resolution](/solutions/security/ai/agent-builder/skills-use-cases.md#entity-resolution).
+:::
 
 ### Bulk link entities using CSV [entity-resolution-csv]
 
@@ -86,10 +91,4 @@ Bulk unlinking is not available in the UI; use the [Entity store API]({{kib-apis
 
 ### Manage resolution groups from the entity flyout [entity-resolution-flyout]
 
-You can view, add to, and remove entities from a resolution group directly from the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution). The flyout's **Resolution group** tab shows all linked records and lets you search for entities to add, or remove individual aliases.
-
-:::{image} /solutions/images/security-resolution-from-flyout.png
-:alt: Resolution group tab on the entity details flyout
-:screenshot:
-:::
-
+You can view, add to, and remove entities from a resolution group directly from the entity details flyout. Open the [**Resolution** section's](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) child flyout to view all linked records, search for entities to add, or remove individual aliases.

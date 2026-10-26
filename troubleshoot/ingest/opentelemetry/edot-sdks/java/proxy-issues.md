@@ -13,7 +13,7 @@ products:
   - id: edot-sdk
 ---
 
-# Proxy issues with EDOT Java SDK
+# Proxy issues with EDOT Java SDK [proxy-issues-with-edot-java-sdk]
 
 If your Java SDK sends telemetry but fails to communicate with the APM server, the issue might be due to missing or misconfigured proxy settings, which are required for outbound HTTP/S communication in some environments. For general proxy configuration guidance, refer to [Proxy settings for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md). For connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 

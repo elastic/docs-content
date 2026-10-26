@@ -2,7 +2,7 @@
 navigation_title: EDOT iOS
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/troubleshooting.html
-description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) iOS agent, covering common issues.
+description: Troubleshooting guide for the EDOT iOS agent, covering common issues.
 applies_to:
   stack:
   serverless:
@@ -17,10 +17,14 @@ products:
 
 # Troubleshooting the EDOT iOS agent [troubleshooting]
 
-This page provides guidance for resolving common problems when instrumenting iOS applications with the {{edot}} (EDOT) SDK.
+This page provides guidance for resolving common problems when instrumenting iOS applications with the {{edot}} SDK.
 
 When troubleshooting the EDOT iOS agent, ensure your app is compatible with the agent's [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
 
+
+## Kibana visualizations
+
+If you're troubleshooting the Kibana visualizations for the iOS SDK, refer to [Troubleshooting iOS dashboards](integration-docs://reference/otel_ios_dashboards.md#troubleshooting).
 
 ## SDK fails to export data
 

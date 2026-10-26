@@ -39,7 +39,7 @@ To build a custom agent with {{agent-builder}} APIs, you need the following:
 
 - Access to the feature in {{kib}}. Refer to [](get-started.md)
 - [Permission](permissions.md) to create indices and use {{agent-builder}}
-  - A {{kib}} API key for authentication if you're using `curl`
+- A [{{agent-builder}} API key](api-keys.md) for authentication if you're using `curl`
   :::{note}
   Set the required environment variables to simplify running `curl` commands:
   ```bash
@@ -920,6 +920,72 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 ### Result
 
 The agent uses your custom `example-books-esql-tool` to efficiently answer the query in a single step. Compare the `token_usage` in this response with Step 1. Custom tools optimized for specific use cases typically consume fewer tokens than general-purpose agents. To learn more about token consumption, refer to [Monitor token usage](monitor-usage.md).
+
+### Handle a human-in-the-loop prompt
+
+When an agent calls a tool that requires your confirmation, the response has an `awaiting_prompt` status and includes the prompt in `response.prompts`:
+
+```json
+{
+  "conversation_id": "<CONVERSATION_ID>",
+  "round_id": "<ROUND_ID>",
+  "status": "awaiting_prompt",
+  "response": {
+    "prompts": [
+      {
+        "type": "confirmation",
+        "id": "<PROMPT_ID>",
+        "title": "Permission to call tool",
+        "message": "Agent wants to call tool \"<TOOL_ID>\". Do you want to proceed?"
+      }
+    ]
+  }
+}
+```
+
+To respond, call the converse API again with the same conversation ID and map the exact prompt ID to your response:
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/converse
+{
+  "agent_id": "books-search-agent",
+  "conversation_id": "<CONVERSATION_ID>",
+  "prompts": {
+    "<PROMPT_ID>": {
+      "allow": true
+    }
+  }
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "agent_id": "books-search-agent",
+       "conversation_id": "<CONVERSATION_ID>",
+       "prompts": {
+         "<PROMPT_ID>": {
+           "allow": true
+         }
+       }
+     }'
+```
+:::
+
+::::
+
+Set `allow` to `false` to deny the action. This request resumes the existing conversation round. It does not start a new user turn. To learn about the prompt types shown in chat, refer to [Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts).
 
 :::{tip}
 For real-time chat responses, use the [streaming converse API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) instead.

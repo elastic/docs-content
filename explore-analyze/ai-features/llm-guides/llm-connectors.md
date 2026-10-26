@@ -35,6 +35,13 @@ Models that do not appear in these resources may still work, but Elastic hasn't 
 
 ## Connect to a third-party or self-managed LLM
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+The OpenAI, Amazon Bedrock, Google Gemini, and **AI Connector** connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
+
+In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new AI integrations, use {{es}} {{infer}} endpoints.
+::::
+
 Follow these guides to connect to one or more third-party LLM providers:
 
 * [Azure OpenAI](/explore-analyze/ai-features/llm-guides/connect-to-azure-openai.md)
@@ -51,7 +58,9 @@ stack: ga
 serverless: unavailable
 ```
 
-You can also use [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md) to set up third-party LLM connectors by editing the `kibana.yml` file. This allows you enable a connector for multiple spaces at once, without performing set up in the {{kib}} UI for each space. 
+You can also use [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md) to set up third-party LLM connectors by editing the `kibana.yml` file. This lets you enable a connector for multiple spaces at once, without performing setup in the {{kib}} UI for each space.
+
+{applies_to}`stack: deprecated 9.5+` Preconfigured Generative AI connectors are deprecated too. For new setups, use {{infer}} endpoints.
 
 If you use a preconfigured connector for your LLM connector, we recommend adding the `exposeConfig: true` parameter to the `xpack.actions.preconfigured` section of the `kibana.yml` config file. This parameter makes debugging easier by adding configuration information to the debug logs, including which LLM the connector uses.
 

@@ -21,7 +21,7 @@ Their information can be used to troubleshoot problems with your setup. You can 
 
 ## Which information do I need? [agent-diagnostic-type]
 
-For [{{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md) and [agentless integrations](/manage-data/ingest/agentless/agentless-integrations.md), the related settings and states can be surfaced by:
+For [{{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md), the related settings and states can be surfaced by:
 
 * {{kib}} from the [{{kib}} {{fleet}} APIs](/reference/fleet/fleet-api-docs.md)
 * {{agent}} and {{fleet}} from their [command reference](/reference/fleet/agent-command-reference.md)
@@ -41,8 +41,8 @@ To pull data from the respective applicable locations, refer to:
     :::
 
     :::{note}
-    :applies_to: { serverless: ga, ess: ga }
-    To pull [agentless integration](/manage-data/ingest/agentless/agentless-integrations.md) diagnostics, you have to use the {{fleet}} UI. To display agentless resources in {{fleet}}, refer to [Show agentless resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting).
+    :applies_to: { serverless: unavailable, stack: preview 9.1-9.4 }
+    To pull [{{managed-integration}}](/manage-data/ingest/managed-integrations/managed-integrations.md) diagnostics, you have to use the {{fleet}} UI. To display Managed integration resources in {{fleet}}, refer to [Show {{managed-integration}} resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting).
     :::
 
 You need to determine which diagnostic types are needed to investigate your specific issue. This table shows common troubleshooting situations and which diagnostics are commonly associated:
@@ -72,6 +72,11 @@ Some {{agent}} configuration issues only appear in the agent's start-up debug lo
 
 The {{fleet}} UI provides the ability to remotely generate and gather an {{agent}}'s diagnostics bundle if it is online in a [`Healthy` or `Unhealthy` status](/reference/fleet/monitor-elastic-agent.md#view-agent-status). For {{agent}}s in other statuses, you must use the CLI to grab their diagnostic.
 
+:::{note}
+:applies_to: stack: ga 9.5+
+When OTel-based {{es}} monitoring is active, the bundle also includes `elastic-agent-metrics.ndjson` (capped at 20 MB). This file contains raw collector metric snapshots useful for diagnosing OTel monitoring pipeline issues.
+:::
+
 :::{warning}
 Diagnostics and logs mainly emit product metadata and settings, but they might expose sensitive data which needs to be redacted before being shared outside of your organization. For more details, refer to [Sanitize](#agent-diagnostics-sanitize).
 :::
@@ -80,9 +85,9 @@ Diagnostics and logs mainly emit product metadata and settings, but they might e
 
 The diagnostics are sent to {{fleet-server}} which in turn sends it to {{es}}. Therefore, this works even with {{agents}} that are not using the {{es}} output.
 
-:::{{note}}
-:applies_to: { serverless: ga, ess: ga }
-If you want to pull diagnostics related to an agentless integration, you first need to display the agentless resources in {{fleet}}. Refer to [Show agentless resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting) for details.
+:::{note}
+:applies_to: { serverless: unavailable, stack: preview 9.1-9.4 }
+To pull diagnostics related to an {{managed-integration}}, you first need to display the related resources in {{fleet}}. Refer to [Show {{managed-integration}} resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting) for details.
 :::
 
 To download the diagnostics bundle for local viewing:

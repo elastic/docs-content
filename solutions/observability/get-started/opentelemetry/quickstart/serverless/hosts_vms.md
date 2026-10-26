@@ -1,6 +1,6 @@
 ---
 navigation_title: Hosts and VMs
-description: Step-by-step guide for setting up the EDOT Collector and SDKs on Elastic Cloud Serverless to collect host metrics, logs, and application traces via OTLP.
+description: Step-by-step guide for setting up the {{agent}} and SDKs on Elastic Cloud Serverless to collect host metrics, logs, and application traces via OTLP.
 applies_to:
   stack:
   serverless:
@@ -15,7 +15,7 @@ products:
 
 #  Quickstart for hosts / VMs on Elastic Cloud Serverless
 
-Learn how to set up the EDOT Collector and EDOT SDKs on hosts and VMs with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless project.
+Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless project.
 
 ## Guided setup
 
@@ -24,17 +24,17 @@ Learn how to set up the EDOT Collector and EDOT SDKs on hosts and VMs with {{ser
 
 ## Manual installation
 
-Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with {{serverless-full}}.
+Follow these steps to deploy the {{agent}} and EDOT SDKs with {{serverless-full}}.
 
 ::::::{stepper}
 
-:::::{step} Download the EDOT Collector
+:::::{step} Download the {{agent}}
 
-[Download the EDOT Collector](elastic-agent://reference/edot-collector/download.md) for your operating system.
+[Download the {{agent}}](elastic-agent://reference/edot-collector/download.md) for your operating system.
 
 :::::
 
-:::::{step} Configure the EDOT Collector
+:::::{step} Configure the {{agent}}
 
 :::{include} ../../_snippets/serverless-endpoint-api.md
 :::
@@ -83,9 +83,9 @@ $content | Set-Content .\otel.yml
 ::::
 :::::
 
-:::::{step} Run the EDOT Collector
+:::::{step} Run the {{agent}}
     
-Run the following command to run the EDOT Collector.
+Run the following command to run the {{agent}}.
 
 ::::{tab-set}
 
@@ -110,7 +110,7 @@ The Collector opens ports `4317` and `4318` to receive application data from loc
 
 :::::{step} (Optional) Instrument your applications
 
-To collect telemetry from applications and use the EDOT Collector as a gateway,
+To collect telemetry from applications and use the {{agent}} as a gateway,
 instrument your target applications following the setup instructions:
 
 - [Android](apm-agent-android://reference/edot-android/index.md)
@@ -121,7 +121,7 @@ instrument your target applications following the setup instructions:
 - [PHP](elastic-otel-php://reference/edot-php/setup/index.md)
 - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 
-Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 :::::
 
 :::::{step} Explore your data

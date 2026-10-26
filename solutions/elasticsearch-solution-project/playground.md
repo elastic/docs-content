@@ -1,17 +1,20 @@
 ---
-navigation_title: Playground
+navigation_title: Playground (deprecated)
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
   - https://www.elastic.co/guide/en/kibana/current/playground.html
 applies_to:
-  stack: preview =9.0, beta 9.1+
-  serverless: beta
+  stack: preview =9.0, beta 9.1-9.3, deprecated 9.4-9.5, removed 9.6+
+  serverless: unavailable
 products:
   - id: cloud-serverless
   - id: kibana
 ---
 
 # Playground for RAG [playground]
+
+::::{include} /solutions/_snippets/playground-deprecated.md
+::::
 
 Use Playground to combine your Elasticsearch data with the power of large language models (LLMs) for retrieval augmented generation (RAG). The chat interface translates your natural language questions into {{es}} queries, retrieves the most relevant results from your {{es}} documents, and passes those documents to the LLM to generate tailored responses.
 
@@ -63,7 +66,7 @@ Here’s a simplified overview of how Playground works:
 
 For Elastic Cloud and self-managed deployments, select **Playground** from the left navigation menu.
 
-For Elastic Serverless, Playground is available in your {{es}} project UI.
+Playground is unavailable in Elastic Serverless. Use [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
 
 To use Playground, you’ll need the following:
 

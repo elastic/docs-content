@@ -23,7 +23,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 ## Before you begin [workflows-run-rules-prereqs]
 
-- **Permissions.** `All` on **Analytics > Workflows** and on **Security > Detection rules** in the target space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- **Permissions.** `All` on **Analytics → Workflows** and on **Security → Detection rules** in the target space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Rule IDs.** The `rule_id` values of the detection rules you want to run. You can copy them from the **Rules** table in {{elastic-sec}} or from a saved-object export.
 - **Time range.** The lookback window for this manual run. The default in this workflow is the last 15 minutes, which matches the interval of most default rules.
 

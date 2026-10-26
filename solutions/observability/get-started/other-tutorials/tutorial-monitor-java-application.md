@@ -23,7 +23,7 @@ You’ll learn how to:
 * Instrument your application using the [Elastic APM Java agent](apm-agent-java://reference/index.md).
 
 :::{tip}
-We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application. The EDOT Java SDK provides OpenTelemetry-based instrumentation and can send telemetry data to Elastic.
+We recommend using the [{{edot}} Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application. The EDOT Java SDK provides OpenTelemetry-based instrumentation and can send telemetry data to Elastic.
 :::
 
 * Monitor your services using {{heartbeat}} and view your uptime data in {{kib}}.
@@ -569,9 +569,9 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
 
     ![{{kib}} single document view](/solutions/images/observability-monitor-java-app-kibana-single-document.png "")
 
-    You can see that a lot more data is indexed than just the event. There is information about the offset in the file, information about the component shipping the logs, the name of the shipper’s name in the output, and there is a `message` field containing log line contents.
+    You can see that a lot more data is indexed than the event itself. There is information about the offset in the file, information about the component shipping the logs, the name of the shipper’s name in the output, and there is a `message` field containing log line contents.
 
-    You can see there is a flaw in the request logging. If the user agent is `null`, something other than `null` is returned. Reading our logs is crucial; however, just indexing them gains us nothing.  To fix this, here is a new request logger.
+    You can see there is a flaw in the request logging. If the user agent is `null`, something other than `null` is returned. Reading our logs is crucial. However, indexing them alone gains us nothing.  To fix this, here is a new request logger.
 
     ```java
     Javalin app = Javalin.create(config -> {
@@ -584,7 +584,7 @@ This command results in roughly 8,000 requests per second, and the equivalent nu
     });
     ```
 
-    You may also want to fix this in the logging message in the main handler.
+    You might also want to fix this in the logging message in the main handler.
 
     ```java
     static Handler mainHandler() {
@@ -1416,7 +1416,7 @@ The third piece of {{observability}} is Application Performance Management (APM)
 The agent has two tasks: instrumenting the Java application to extract application performance information and sending that data to the APM Server.
 
 :::{note}
-This tutorial uses the Elastic APM Java agent. We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application with OpenTelemetry-based instrumentation. Refer to the [EDOT Java SDK setup guide](elastic-otel-java://reference/edot-java/setup/index.md) for instructions.
+This tutorial uses the Elastic APM Java agent. We recommend using the [{{edot}} Java SDK](elastic-otel-java://reference/edot-java/setup/index.md) as the preferred way to instrument your Java application with OpenTelemetry-based instrumentation. Refer to the [EDOT Java SDK setup guide](elastic-otel-java://reference/edot-java/setup/index.md) for instructions.
 :::
 
 One of the APM’s core ideas is the ability to follow the flow of a user session across your whole stack, regardless of whether you have dozens of microservices or a monolith answering your user requests. This implies the ability to tag a request across your entire stack.

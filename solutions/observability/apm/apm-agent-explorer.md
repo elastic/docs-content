@@ -28,3 +28,14 @@ Select an APM agent to expand it and view the details of each agent instance.
 :screenshot:
 :::
 
+## Enable {{product.apm}} Labs [apm-labs]
+```{applies_to}
+stack: removed 9.1
+```
+
+{{product.apm}} Labs lets you try out technical preview features, including the agent explorer.
+
+To enable {{product.apm}} Labs, go to **Applications** → **Settings** → **General settings** and toggle **Enable labs button in {{product.apm}}**. Select **Save changes** and refresh the page.
+
+After enabling {{product.apm}} Labs, select **Labs** in the toolbar to see the available technical preview features.
+

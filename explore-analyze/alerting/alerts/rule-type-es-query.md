@@ -13,7 +13,10 @@ products:
 
 The {{es}} query rule type runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
 
-In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
+In **{{rules-ui}}**, click **Create rule**. For help navigating to the Rules page, refer to [Create and manage alerting rules](create-manage-rules.md). Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Define the conditions [_define_the_conditions_2]
 
@@ -65,7 +68,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
         :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
 
         Threshold
-        :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
+        :   Defines a threshold value and a comparison operator (`is above`, `is above or equals`, `is below`, `is below or equals`, `is between`, or `is not between`). The value calculated by the aggregation is compared to this threshold. Both range boundaries are inclusive for `is between` and exclusive for `is not between`.
 
     * {applies_to}`stack: ga 9.2` If you use {{esql}}, specify a time field and how to group alerts. 
 
@@ -94,6 +97,31 @@ When you create an {{es}} query rule, your choice of query type affects the info
    - **Stack Management**: Roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
 
    For example, if you select **All**, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} page.
+
+### Set the timezone for an {{esql}} query [rule-type-es-query-esql-timezone]
+```{applies_to}
+serverless: ga
+stack: ga 9.4
+```
+
+To control the timezone that date and time functions such as `DATE_EXTRACT` use in an {{esql}} rule, add [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md) at the start of the rule query. For example, to alert on hosts that transfer more than 200,000 bytes during business hours in Tokyo:
+
+```esql
+SET time_zone="Asia/Tokyo";
+FROM kibana_sample_data_logs
+| WHERE DATE_EXTRACT("hour_of_day", @timestamp) >= 9
+    AND DATE_EXTRACT("hour_of_day", @timestamp) < 17
+| STATS total_bytes = SUM(bytes) BY host
+| WHERE total_bytes > 200000
+```
+
+The **Time zone** (`dateFormat:tz`) advanced setting doesn't apply to rules, because a rule sends its query to {{es}} without a timezone. {{es}} uses the first of these that applies:
+
+1. `SET time_zone` in the rule query.
+2. {applies_to}`stack: ga 9.6+` The `esql.query.settings.time_zone` cluster setting, if it's configured.
+3. UTC.
+
+For how {{kib}} chooses the timezone in Discover, dashboards, and Maps, refer to [Timezone handling](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-timezone).
 
 ## Test your query [_test_your_query]
 

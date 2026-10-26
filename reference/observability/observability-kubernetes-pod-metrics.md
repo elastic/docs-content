@@ -16,7 +16,7 @@ To analyze {{k8s}} pod metrics, you can select view filters based on the followi
 
 :::{note}
 :applies_to: stack: ga 9.3+
-For {{k8s}} pod metrics, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [{{k8s}} integration](integration-docs://reference/kubernetes.md). If you're using {{edot}} and these views appear empty, refer to [{{k8s}} Pods and Docker Containers views empty when using EDOT](/troubleshoot/observability/troubleshooting-infrastructure-monitoring/kubernetes-pods-docker-containers-empty-otel.md).
+For {{k8s}} pod metrics, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [{{k8s}} integration](integration-docs://reference/kubernetes.md). If you're using {{edot}} and these views appear empty, refer to [{{k8s}} Pods and Docker Containers views empty when using {{edot}}](/troubleshoot/observability/troubleshooting-infrastructure-monitoring/kubernetes-pods-docker-containers-empty-otel.md).
 :::
 
 ## Entity definition [monitor-k8s-pods-entity]

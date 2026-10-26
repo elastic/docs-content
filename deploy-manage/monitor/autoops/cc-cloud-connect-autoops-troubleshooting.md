@@ -18,7 +18,6 @@ Learn about issues that might come up when connecting your clusters and using Au
 
 Use this guide to troubleshoot any issues you may encounter.
 
-* [I’m trying to create a Cloud organization, but I’m already part of a different one.](#single-cloud-org)
 * [I need to uninstall {{agent}}.](#unistall-agent)
 * [My cluster was disconnected from {{ecloud}} and I want to reconnect it.](#disconnected-cluster)
 * [After running the installation command, I can't move on to the next steps.](#next-steps)
@@ -26,10 +25,6 @@ Use this guide to troubleshoot any issues you may encounter.
 * [{{agent}} is failing to connect because it doesn't recognize my SSL certificate.](#custom-cert)
 * [I went through the wizard with {{ECK}} (ECK) as my installation method, but I can't view any connected clusters in my account.](#eck-no-clusters) {applies_to}`eck: ga 3.3`
 * [My `AutoOpsAgentPolicy` resource entered the `Invalid` phase after a license change.](#invalid-phase-license-change) {applies_to}`eck: ga 3.3`
-
-$$$single-cloud-org$$$**I’m trying to create a Cloud organization, but I’m already part of a different one.**
-:   :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
-:::
 
 $$$unistall-agent$$$**I need to uninstall {{agent}}.**
 :   Refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md) for instructions.

@@ -16,15 +16,17 @@ Elastic {{infer-cap}} Service (EIS) enables you to leverage AI-powered search as
 With EIS, you don't need to manage the infrastructure and resources required for {{ml}} {{infer}} by adding, configuring, and scaling {{ml}} nodes.
 Instead, you can use {{ml}} models for ingest, search, and chat independently of your {{es}} infrastructure.
 
-{applies_to}`stack: ga 9.3` You can use EIS with your [self-managed](/deploy-manage/deploy/self-managed.md) cluster through Cloud Connect. For details, refer to [EIS for self-managed clusters](connect-self-managed-cluster-to-eis.md).
+{applies_to}`stack: ga 9.3` You can use EIS with your [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), or [self-managed](/deploy-manage/deploy/self-managed.md) cluster through Cloud Connect. For details, refer to [](connect-self-managed-cluster-to-eis.md).
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with [Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) by default. These can be used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
+* Your Elastic deployment or project comes with [Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) by default. These can be used in Agent Builder, the AI Assistant, Attack Discovery, and Automatic Import. For the list of available models, refer to [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
+
+* Search Playground also uses Elastic Managed LLMs. {applies_to}`stack: preview =9.0, beta 9.1-9.3, deprecated 9.4-9.5, removed 9.6+` {applies_to}`serverless: unavailable`
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 
-* You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
+* You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-text-embeddings) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
 ## Manage your models [manage-models]
 
@@ -59,6 +61,31 @@ Available actions include:
 - View endpoint details
 - Copy the inference endpoint ID
 - Delete endpoints
+- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Region preferences](eis-region-and-hosting.md#inference-region-preferences) for where EIS processes {{infer}} requests
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Show or hide models](#eis-display-options) that are in preview, past end of life, or outside your region preferences
+
+### Show models that are hidden by default [eis-display-options]
+
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If a model you expect is missing from the list, it might be hidden. By default, {{kib}} leaves out three groups of models:
+
+- **Models outside your region preferences**: Models that you can't use until you update your [region preferences](eis-region-and-hosting.md#inference-region-preferences). If you can edit region preferences, open the model's details, expand the banner with **View details**, and select **Edit Region preferences**.
+- **End-of-life models**: Models that have already reached their end-of-life date, which you can't use. Models that are close to that date stay in the list.
+- **Preview models**: Models in preview, which aren't recommended for production use.
+
+To show or hide any of these groups:
+
+1. On the toolbar, select {icon}`controls` **Display options**.
+1. In **Model display options**, set each group to **Show** or **Hide**.
+1. Select **Apply**.
+
+The list now includes the groups you set to **Show**.
+
+{{kib}} doesn't save your selection. After you reload {{kib}}, all three groups are hidden again.
 
 ## Add endpoints [add-endpoint]
 
@@ -103,7 +130,7 @@ The Jina v5 omni models availability and the support for the [`semantic_text`](e
 
 - {applies_to}`stack: ga 9.3+` In {{stack}} 9.3 and later, you can create endpoints and run multimodal `embedding` {{infer}} requests. You cannot use these models with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type.
 - {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
-- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic_field` field type supports all modalities, such as text, images, video, audio, and documents.
+- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic` field type supports all modalities, such as text, images, video, audio, and documents.
 ::::
 
 There are two Jina v5 omni embedding models available through Elastic {{infer-cap}} Service, [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small-on-eis) and [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano-on-eis). Both models support multimodal embeddings for text, images, video, audio, and documents such as PDF in one shared vector space.
@@ -216,7 +243,7 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 
 ## Pricing [pricing]
 
-All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://www.elastic.co/pricing/serverless-search).
+All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
 This pricing model differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed through VCUs consumed.
 
@@ -237,3 +264,18 @@ To track your token consumption:
 
 1. Navigate to [**Billing > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
+
+## Service status [eis-service-status]
+
+Elastic {{infer-cap}} Service (EIS) is a global service on {{ecloud}}. Like any service, it might undergo availability changes from time to time. When availability changes, Elastic posts updates on the [Cloud Status](https://status.elastic.co/) page.
+
+EIS incidents and maintenance affect features that rely on EIS, such as semantic search, embeddings, reranking, and AI-powered assistants.
+
+To check current and past EIS availability, go to the [Cloud Status](https://status.elastic.co/) page. EIS is listed under **Global services** as **Elastic {{infer-cap}} Service**.
+
+:::{image} /explore-analyze/images/eis-status.png
+:alt: Elastic Inference Service status on the Cloud Status page
+:screenshot:
+:::
+
+Learn how to [subscribe to updates](/deploy-manage/cloud-organization/service-status.md#ec_subscribe_to_updates) on the Service status page.

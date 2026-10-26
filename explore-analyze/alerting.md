@@ -8,28 +8,55 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
+  - id: elasticsearch
+  - id: cloud-hosted
+navigation_title: Alerting
+description: Watch your data and respond to conditions automatically with Elastic alerting. Compare Kibana Classic Alerting, Kibana Universal Alerting, and Watcher to find the right fit.
 ---
 
-# Alerting
+# Alerting [alerting-overview]
 
-Alerting tools in Elasticsearch and Kibana provide functionality to monitor data and notify you about significant changes or events in real time. This page provides an overview of how the key components work.
+Elastic alerting helps you watch your data and respond when something needs attention, whether that is a metric crossing a limit, an asset leaving an area on a map, or an unusual pattern in your time series. You set the conditions and how people should be notified. Elastic runs the checks for you.
 
-## Alerts
+Elastic offers three alerting systems. If you're not sure which fits your situation, refer to [Compare alerting systems](alerting/compare-alerting-systems.md).
 
-Alerts are notifications generated when specific conditions are met. These notifications are sent to you through channels that you previously set such as email, Slack, webhooks, PagerDuty, and so on. 
+## {{alerting-v2-system-cap}}
 
-Alerts are created based on rules, which define the criteria for triggering them. Rules monitor the data indexed in Elasticsearch and evaluate conditions on a defined schedule to identify matches. For example, a threshold rule can generate an alert when a value crosses a specific threshold, while a machine learning rule activates an alert when an anomaly detection job identifies an anomaly.
+```{applies_to}
+serverless: ga
+stack: ga 9.6+, experimental =9.5
+```
+
+You write an {{esql}} query that defines what to watch for, decide whether matches are tracked as [alerts](alerting/esql/alerts.md) or recorded as rule events for later analysis, and control notifications through action policies that handle routing, frequency, and notification batching. {{alerting-v2-system-cap}} also adds alert lifecycle tracking, per-series snooze, queryable rule event history, and rules that can correlate those events for escalation. It is a strong fit when you want full control over what data travels with each detection and how your team is notified.
+
+:::{note}
+{{alerting-v2-system-cap}} runs next to {{alerting-v1-system}} on {{serverless-full}} and {{stack}} 9.5 and later. You don't have to move everything at once. You can copy or rebuild rules when you're ready, and your existing {{alerting-v1-system}} rules won't be affected.
+:::
+
+[Get started with {{alerting-v2-system}} →](alerting/esql/system-overview.md)
+
+## {{alerting-v1-system-cap}}
+
+```{applies_to}
+stack: ga
+serverless: ga
+```
+
+{{alerting-v1-system-cap}} gives you ready-made rule types that work with applications such as APM, metrics, and uptime monitoring. You set the conditions and how often to check them, and send notifications through common channels (email, chat apps, webhooks, on-call tools, and more). Setup uses forms and clear steps, so you do not need to learn a query language first. It is a strong fit when you want broad coverage out of the box.
+
+[Get started with {{alerting-v1-system}} →](alerting/alerts.md)
 
 ## Watcher
+
 ```{applies_to}
+stack: ga
 serverless: unavailable
 ```
 
-You can use Watcher for alerting and monitoring specific conditions in your data. It enables you to define rules and take automated actions when certain criteria are met. Watcher is a powerful alerting tool for custom use cases and more complex alerting logic. It allows advanced scripting using Painless to define complex conditions and transformations.
+Watcher is for unusual or highly tailored setups where you need scripts, chained steps, or close control over {{es}} APIs. It does not use the main {{kib}} rules UI used by {{alerting-v1-system}}. It is available on the {{stack}} only, not in {{serverless-full}}.
 
 :::{tip}
-For most use cases, you should use Kibana Alerts instead of Watcher. Kibana Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
-
-Watcher is not available in {{serverless-full}}.
+For most teams, {{alerting-v1-system}} is easier to adopt than Watcher. Both {{alerting-v1-system}} and {{alerting-v2-system}} work within {{kib}}'s rules UI and don't require writing {{es}} watch definitions.
 :::
 
+[Get started with Watcher →](alerting/watcher.md)

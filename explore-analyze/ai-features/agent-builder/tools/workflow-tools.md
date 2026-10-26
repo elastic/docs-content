@@ -17,7 +17,7 @@ products:
 Workflow tools enable agents to trigger [Elastic Workflows](/explore-analyze/workflows.md) directly from a conversation and use their output. This is ideal for offloading tasks from the LLM that require a deterministic, repeatable sequence of actions.
 
 :::{note}
-This page explains how to trigger a workflow in an agent conversation. If you want to use an agent within a workflow step, refer to [Call agents from workflows](../agents-and-workflows.md).
+This page explains how to trigger an existing workflow in an agent conversation. To create a new workflow from Agent Chat, refer to [Create skills and workflows in chat](../chat.md#create-skills-and-workflows-directly-from-chat). If you want to use an agent within a workflow step, refer to [Call agents from workflows](../agents-and-workflows.md).
 :::
 
 ## Prerequisites
@@ -75,8 +75,13 @@ The Workflow tools have the following configuration settings:
   :   The specific Elastic Workflow to execute. Selecting a workflow automatically pulls its definition into the tool configuration.
   
   **Inputs**
-  :   The parameters required by the workflow. These are automatically detected from the `inputs` section of the selected workflow's YAML definition. The agent will attempt to extract values for these inputs from the user's chat message.
+  :   The parameters required by the workflow. These are automatically detected from the `inputs` section of the selected workflow's YAML definition. The agent tries to extract values for these inputs from the user's chat message.
   
+  **Require user confirmation** (Optional) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+  :   Controls whether the agent asks you to approve a tool call before it runs. Select **Never** to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. The default is **Never**.
+  :   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action, including retries after a failed call.
+  :   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
+
   **Labels** (Optional)
   :   Tags used to organize and filter tools within the {{agent-builder}} UI.
 
@@ -119,12 +124,12 @@ The agent:
 - runs the workflow
 - returns the workflow's final output to the chat
 
-Expand the **Completed reasoning** section to trace the execution steps and inspect the raw workflow output.
+Review the [inline reasoning events](../chat.md#inspect-tool-calls-and-reasoning) to trace the execution steps and inspect the raw workflow output.
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:
 :width: 500px
-:alt: Screenshot of reasoning steps of agent builder.
+:alt: Inline reasoning events showing an Agent Builder workflow tool execution.
 :::
 
 ## Examples
@@ -134,4 +139,4 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 ## Related pages
 * [Tools overview](../tools.md)
 * [Call agents from workflows](../agents-and-workflows.md)
-* [Workflows](/explore-analyze/workflows.md)
+* [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md)

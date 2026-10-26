@@ -75,6 +75,19 @@ To create a custom tool in the UI:
 
 You can also create and manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
 
+## Require confirmation before a tool runs
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+An agent can pause and ask you to approve a call to a custom tool before it runs. To learn what these prompts look like in chat, refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
+
+Set **Require user confirmation** in the UI for [workflow tools](workflow-tools.md) and [MCP tools](mcp-tools.md), or use the [Tools API](../tools.md#tools-api) for any custom tool type. The API equivalent is the tool's `confirmation.askUser` property, which accepts `never`, `once`, or `always`. A request that retrieves the tool returns the current value.
+
+{{esql}} and index search tools accept `confirmation.askUser` through the API, and the agent applies it, but the setting does not appear when you open the tool in the UI. Use the API to check or change it for these tool types.
+
+Confirmation applies only when an agent calls the tool. Calling the tool directly through the Tools API skips it, and [sub-agent executions cannot answer confirmation prompts](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 ## Test your tools
 
@@ -133,8 +146,10 @@ The set of protected prefixes has expanded across {{stack}} versions. The versio
 - `attachments.*` {applies_to}`stack: ga 9.4+`
 - `filestore.*` {applies_to}`stack: ga 9.4+`
 - `observability.*` {applies_to}`stack: ga 9.3+`
+- `platform.alerting.*` {applies_to}`stack: ga 9.5+`
 - `platform.core.*` {applies_to}`stack: ga 9.2+`
 - `platform.dashboard.*` {applies_to}`stack: ga 9.3+`
+- `platform.sig_events.*` {applies_to}`stack: ga 9.5+`
 - `platform.streams.*` {applies_to}`stack: ga 9.4+`
 - `platform.workflows.*` {applies_to}`stack: ga 9.4+`
 - `search.*` {applies_to}`stack: ga 9.4+`

@@ -13,6 +13,8 @@ products:
 
 {{eck}} (ECK) diagnostics is a stand-alone command line tool that you can run on hosts where the ECK operator is installed. It collects logs, metrics, and configuration details, and stores everything into an archive file that can be provided to [Elastic support](/troubleshoot/index.md#troubleshoot-work-with-support) for troubleshooting and investigation purposes.
 
+Watch [this video](https://www.youtube.com/watch?v=qLy-PNxOkSg) for a walkthrough of capturing an {{eck}} diagnostic.
+
 ::::{note}
 :::{include} /troubleshoot/_snippets/diagnostics-privacy.md
 :::

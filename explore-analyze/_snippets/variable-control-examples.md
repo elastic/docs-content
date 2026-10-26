@@ -1,24 +1,24 @@
 **Examples**
 
-* Integrate filtering into your {{esql}} experience
+* Filter by a selected value:
 
   ```esql
   | WHERE field == ?value
   ```
 
-* Fields in controls for dynamic group by
+* Group by a selected field:
 
   ```esql
-  | STATS count=COUNT(*) BY ??field
+  | STATS count = COUNT(*) BY ??field
   ```
 
-* Variable time ranges? Bind function configuration settings to a control
+* Adjust a function setting, such as a date histogram interval:
 
   ```esql
-  | BUCKET(@timestamp, ?interval),
+  | STATS count = COUNT(*) BY BUCKET(@timestamp, ?interval)
   ```
 
-* Make the function itself dynamic
+* Switch the aggregation function:
 
   ```esql
   | STATS metric = ??function

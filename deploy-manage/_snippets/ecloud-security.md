@@ -3,13 +3,14 @@
 In both {{ech}} and {{serverless-full}}, you can augment these security features in the following ways:
 
 * Configure [IP filters](/deploy-manage/security/ip-filtering-cloud.md) to prevent unauthorized access to your deployments and projects.
-* [Configure private connectivity and apply VPC filtering](/deploy-manage/security/private-connectivity.md) to establish a secure connection for your deployments or projects and restrict traffic based on those private connections. {{serverless-short}} supports AWS PrivateLink only; {{ech}} supports AWS PrivateLink, Azure Private Link, and GCP Private Service Connect.
+* [Configure private connectivity and apply VPC filtering](/deploy-manage/security/private-connectivity.md) to establish a secure connection for your deployments or projects and restrict traffic based on those private connections. {{serverless-short}} supports only AWS PrivateLink and Azure Private Link; {{ech}} supports AWS PrivateLink, Azure Private Link, and GCP Private Service Connect.
 
 In {{ech}}, you can also:
 
 * Encrypt your deployment with a [customer-managed encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md).
 * [Secure your settings](/deploy-manage/security/secure-settings.md) using {{es}} and {{kib}} keystores.
 * Use the list of [{{ecloud}} static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) to allow or restrict communications in your infrastructure.
+* In {{fedramp-mod}} environments, audit organization-level actions such as deployment management, API key usage, and sign-in activity. Refer to [](/deploy-manage/monitor/cloud-audit-trail.md).
 
 {{ech}} doesn't support custom SSL certificates, which means that a custom CNAME for an {{ech}} endpoint such as *mycluster.mycompanyname.com* also is not supported.
 

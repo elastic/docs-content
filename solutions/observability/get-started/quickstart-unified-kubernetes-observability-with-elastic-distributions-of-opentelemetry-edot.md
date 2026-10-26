@@ -1,5 +1,5 @@
 ---
-description: Learn how to send Kubernetes logs, metrics, and application traces to Elasticsearch using the OpenTelemetry Operator and Elastic Distributions of OpenTelemetry (EDOT).
+description: Learn how to send Kubernetes logs, metrics, and application traces to Elasticsearch using the OpenTelemetry Operator and {{edot}}.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-k8s-otel-edot.html
   - https://www.elastic.co/guide/en/serverless/current/monitor-k8s-otel-edot.html
@@ -11,15 +11,15 @@ products:
   - id: cloud-serverless
 ---
 
-# Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT) [monitor-k8s-otel-edot]
+# Quickstart: Unified Kubernetes Observability with {{edot}} [monitor-k8s-otel-edot]
 
-In this quickstart guide, you’ll learn how to send {{k8s}} logs, metrics, and application traces to {{es}}, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) (EDOT) Collectors and SDK instances.
+In this quickstart guide, you’ll learn how to send {{k8s}} logs, metrics, and application traces to {{es}}, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [{{edot}}](opentelemetry://reference/index.md) {{agents}} and SDK instances.
 
 All the components are deployed through the [opentelemetry-kube-stack](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) helm chart. They include:
 
 * [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/).
-* `DaemonSet` EDOT Collector configured for node level metrics.
-* `Deployment` EDOT Collector configured for cluster level metrics.
+* `DaemonSet` {{agent}} configured for node level metrics.
+* `Deployment` {{agent}} configured for cluster level metrics.
 * `Instrumentation` object for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/).
 
 For a more detailed description of the components and advanced configuration, refer to [elastic/opentelemetry](opentelemetry://reference/index.md).
@@ -73,7 +73,7 @@ For a more detailed description of the components and advanced configuration, re
     ::::
 
 
-    Deploy the OpenTelemetry Operator and EDOT Collectors using the kube-stack Helm chart with the provided `values.yaml` file. You will run a few commands to:
+    Deploy the OpenTelemetry Operator and {{agents}} using the kube-stack Helm chart with the provided `values.yaml` file. You will run a few commands to:
 
     * Add the helm chart repository needed for the installation.
     * Create a namespace.
@@ -101,7 +101,7 @@ For a more detailed description of the components and advanced configuration, re
     ::::
 
 
-    Deploy the OpenTelemetry Operator and EDOT Collectors using the kube-stack Helm chart with the provided `values.yaml` file. You will run a few commands to:
+    Deploy the OpenTelemetry Operator and {{agents}} using the kube-stack Helm chart with the provided `values.yaml` file. You will run a few commands to:
 
     * Add the helm chart repository needed for the installation.
     * Create a namespace.

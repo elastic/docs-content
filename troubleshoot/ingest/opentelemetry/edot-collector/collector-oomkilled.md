@@ -1,6 +1,6 @@
 ---
 navigation_title: Collector out of memory
-description: Diagnose and resolve out-of-memory issues in the EDOT Collector using Go’s Performance Profiler.
+description: Diagnose and resolve out-of-memory issues in the Elastic Agent using Go’s Performance Profiler.
 applies_to:
   stack:
   serverless:
@@ -13,17 +13,17 @@ products:
   - id: edot-collector
 ---
 
-# Troubleshoot an out-of-memory EDOT Collector
+# Troubleshoot an out-of-memory {{agent}} [troubleshoot-an-out-of-memory-edot-collector]
 
-If your EDOT Collector pods terminate with an `OOMKilled` status, this usually indicates sustained memory pressure or potentially a memory leak due to an introduced regression or a bug. You can use the Performance Profiler (`pprof`) extension to collect and analyze memory profiles, helping you identify the root cause of the issue.
+If your {{agent}} pods terminate with an `OOMKilled` status, this usually indicates sustained memory pressure or potentially a memory leak due to an introduced regression or a bug. You can use the Performance Profiler (`pprof`) extension to collect and analyze memory profiles, helping you identify the root cause of the issue.
 
 If you're running the Collector in Kubernetes and experiencing resource allocation issues, refer to [Insufficient resources in Kubernetes](/troubleshoot/ingest/opentelemetry/edot-collector/insufficient-resources-kubestack.md) for troubleshooting steps.
 
 ## Symptoms
 
-These symptoms typically indicate that the EDOT Collector is experiencing a memory-related failure:
+These symptoms typically indicate that the {{agent}} is experiencing a memory-related failure:
 
-- EDOT Collector pod restarts with an `OOMKilled` status in Kubernetes.
+- {{agent}} pod restarts with an `OOMKilled` status in Kubernetes.
 - Memory usage steadily increases before the crash.
 - The Collector's logs don't show clear errors before termination.
 
@@ -37,7 +37,7 @@ Turn on runtime profiling using the `pprof` extension and then gather memory hea
 
 :::::{step} Enable `pprof` in the Collector
 
-Edit the EDOT Collector Daemonset configuration and include the `pprof` extension:
+Edit the {{agent}} Daemonset configuration and include the `pprof` extension:
 
 ```yaml
 exporters:

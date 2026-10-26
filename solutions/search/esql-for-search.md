@@ -49,6 +49,7 @@ Features are usually available on {{serverless-full}} before stack-versioned dep
 | [TOP_SNIPPETS function](#top_snippets-function) | Extract the best snippets for a given query string from a text field | 9.3 |
 | [MMR command](#result-diversification-with-mmr) | Reduce redundancy in results using Maximum Marginal Relevance diversification | 9.4 (preview) |
 | [EMBEDDING function](#embedding-function) | Generate dense vector embeddings from multimodal input using inference endpoints | 9.5 (preview) |
+| [MATCH on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH` | 9.5 (preview) |
 
 ## How search works in {{esql}}
 
@@ -94,6 +95,18 @@ The following functions provide text-based search capabilities in {{esql}} with 
 - Use the [MATCH function syntax](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
 
 Refer to the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-3-basic-search-operations) for examples of both syntaxes.
+
+#### MATCH on expressions [match-on-expressions]
+
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+[`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) can search expressions that are not backed by an index, such as columns produced by `EVAL` or `STATS`.
+Values are scanned row by row instead of using the inverted index, and the usual placement restrictions do not apply.
+
+When searching expressions, function named parameters are not supported and `MATCH` does not contribute to `_score`.
 
 ### `MATCH_PHRASE` function
 

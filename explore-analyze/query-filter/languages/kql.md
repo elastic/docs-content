@@ -1,4 +1,6 @@
 ---
+meta_title: Kibana Query Language (KQL) - Kibana
+navigation_title: KQL
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kuery-query.html
 applies_to:
@@ -6,228 +8,51 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: overview
+description: Use Kibana Query Language (KQL) to filter data in Discover, dashboards, and other Kibana apps. See example queries and find where to learn the full syntax.
 ---
 
-# KQL [kuery-query]
+# {{kib}} Query Language (KQL) overview [kuery-query]
 
-The {{kib}} Query Language (KQL) is a simple text-based query language for filtering data.
+{{kib}} Query Language (KQL) is a text-based language for filtering data in {{kib}}. Enter a KQL query in the query bar of **Discover**, dashboards, and other {{kib}} apps to narrow the data down to the documents you care about. You can start with plain text and add field conditions when you need more precision. You can also use KQL syntax in the Query DSL [`kql` clause](elasticsearch://reference/query-languages/query-dsl/query-dsl-kql-query.md) in {{es}} and the {{esql}} [`KQL` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/kql.md).
 
-* KQL only filters data, and has no role in aggregating, transforming, or sorting data.
-* KQL is not to be confused with the [Lucene query language](lucene-query-syntax.md), which has a different feature set.
+## When to use KQL [kql-when-to-use]
 
-Use KQL to filter documents where a value for a field exists, matches a given value, or is within a given range.
+Use KQL when you want to:
 
+* Search for a word or phrase without naming a field.
+* Find documents where a field exists, matches a value, or falls in a range.
+* Combine, exclude, or group conditions with `AND`, `OR`, and `NOT`.
 
-## Semi-structured search [semi-structured-search]
+KQL only filters data. It does not aggregate, transform, or sort data. For those tasks, use a language such as {{esql}}.
 
-Combine free text search with field-based search using KQL. Type a search term to match across all fields, or start typing a field name to get suggestions for field names and operators that you can use to build a structured query. The semi-structured search will filter documents for matches, and only return matching documents.
+## How KQL works [kql-how-it-works]
 
-|     |     |
+A KQL condition is a field name, an operator, and a value, such as `http.request.method: GET`. If you leave out the field name, KQL searches the index's [default fields](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-query-default-field). As you type in the query bar, {{kib}} suggests fields, operators, and values.
+
+By default, the query bar of dashboards and of **Discover** in classic mode uses KQL. In **Discover**, you can also switch the query bar to the [Lucene query language](lucene-query-syntax.md), which has a different feature set.
+
+## Combine free text with field-based search [semi-structured-search]
+
+To search without naming a field, enter a term. To narrow the results, start typing a field name and select a suggested field and operator. You can mix both in one query.
+
+These examples show common patterns:
+
+| Query type | Example |
 | --- | --- |
-| Exact phrase query | `http.response.body.content.text:"quick brown fox"` |
-| Terms query | http.response.status_code:400 401 404 |
-| Boolean query | `response:200 or extension:php` |
-| Range query | `account_number >= 100 and items_sold <= 200` |
-| Wildcard query | `machine.os:win*` |
+| Exact phrase query | `http.response.body.content.text: "quick brown fox"` |
+| Multiple values | `http.response.status_code: (400 OR 401 OR 404)` |
+| Boolean query | `response: 200 OR extension: php` |
+| Range query | `account_number >= 100 AND items_sold <= 200` |
+| Wildcard query | `machine.os: win*` |
 
+## Next steps [kql-next-steps]
 
+* [KQL syntax reference](elasticsearch://reference/query-languages/kql.md): Look up how to match values, ranges, and wildcards, negate or combine conditions, and query multiple or nested fields.
+* [Search and filter data in Discover](../../discover/discover-get-started.md#search-in-discover): Try KQL on your own data.
+* [Search and filter your dashboard data](../../dashboards/using.md#search-or-filter-your-data): Use the query bar to focus a dashboard.
 
-## Filter for documents where a field exists [_filter_for_documents_where_a_field_exists]
+## Related pages [kql-related-pages]
 
-To filter documents for which an indexed value exists for a given field, use the `*` operator. For example, to filter for documents where the `http.request.method` field exists, use the following syntax:
-
-```yaml
-http.request.method: *
-```
-
-This checks for any indexed value, including an empty string.
-
-
-## Filter for documents that match  a value [_filter_for_documents_that_match_a_value]
-
-Use KQL to filter for documents that match a specific number, text, date, or boolean value. For example, to filter for documents where the `http.request.method` is GET, use the following query:
-
-```yaml
-http.request.method: GET
-```
-
-The field parameter is optional. If not provided, all fields are searched for the given value. For example, to search all fields for “Hello”, use the following:
-
-```yaml
-Hello
-```
-
-When querying keyword, numeric, date, or boolean fields, the value must be an exact match, including punctuation and case. However, when querying text fields, {{es}} analyzes the value provided according to the [field’s mapping settings](../../../solutions/search/full-text/text-analysis-during-search.md). For example, to search for documents where `http.request.body.content` (a `text` field) contains the text “null pointer”:
-
-```yaml
-http.request.body.content: null pointer
-```
-
-Because this is a `text` field, the order of these search terms does not matter, and even documents containing “pointer null” are returned. To search `text` fields where the terms are in the order provided, surround the value in quotation marks, as follows:
-
-```yaml
-http.request.body.content: "null pointer"
-```
-
-Certain characters must be escaped by a backslash (unless surrounded by quotes). For example, to search for documents where `http.request.referrer` is [https://example.com](https://example.com), use either of the following queries:
-
-```yaml
-http.request.referrer: "https://example.com"
-http.request.referrer: https\://example.com
-```
-
-You must escape following characters:
-
-```yaml
-\():<>"*
-```
-
-
-## Filter for documents within a range [_filter_for_documents_within_a_range]
-
-To search documents that contain terms within a provided range, use KQL’s range syntax. For example, to search for all documents for which `http.response.bytes` is less than 10000, use the following syntax:
-
-```yaml
-http.response.bytes < 10000
-```
-
-To search for an inclusive range, combine multiple range conditions. For example, to search for documents where `http.response.bytes` is greater than 10000 but less than or equal to 20000, use the following syntax:
-
-```yaml
-http.response.bytes > 10000 and http.response.bytes <= 20000
-```
-
-:::{note}
-When using range queries with multiple conditions on multi-value fields, each condition is evaluated independently against all values in the array. 
-
-For example, the query `number > 300 AND number < 400` will match a document with `"number": [500, 10]` because 500 satisfies the first condition and 10 satisfies the second condition. If you need all conditions to be satisfied by the same value, consider using [Query DSL](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) instead, which will only match documents where at least one value falls entirely within the specified range.
-:::
-
-You can also use range syntax for string values, IP addresses, and timestamps. For example, to search for documents earlier than two weeks ago, use the following syntax:
-
-```yaml
-@timestamp < now-2w
-```
-
-For more examples on acceptable date formats, refer to [Date Math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math).
-
-
-## Filter for documents using wildcards [_filter_for_documents_using_wildcards]
-
-To search for documents matching a pattern, use the wildcard syntax. For example, to find documents where `http.response.status_code` begins with a 4, use the following syntax:
-
-```yaml
-http.response.status_code: 4*
-```
-
-By default, leading wildcards are not allowed for performance reasons. You can modify this with the [`query:allowLeadingWildcards`](kibana://reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
-
-::::{note}
-Only `*` is currently supported. This matches zero or more characters.
-::::
-
-
-
-## Negating a query [_negating_a_query]
-
-To negate or exclude a set of documents, use the `not` keyword (not case-sensitive). For example, to filter documents where the `http.request.method` is **not** GET, use the following query:
-
-```yaml
-NOT http.request.method: GET
-```
-
-
-## Combining multiple queries [_combining_multiple_queries]
-
-To combine multiple queries, use the `and`/`or` keywords (not case-sensitive). For example, to find documents where the `http.request.method` is GET **or** the `http.response.status_code` is 400, use the following query:
-
-```yaml
-http.request.method: GET OR http.response.status_code: 400
-```
-
-Similarly, to find documents where the `http.request.method` is GET **and** the `http.response.status_code` is 400, use this query:
-
-```yaml
-http.request.method: GET AND http.response.status_code: 400
-```
-
-To specify precedence when combining multiple queries, use parentheses. For example, to find documents where the `http.request.method` is GET **and** the `http.response.status_code` is 200, **or** the `http.request.method` is POST **and** `http.response.status_code` is 400, use the following:
-
-```yaml
-(http.request.method: GET AND http.response.status_code: 200) OR
-(http.request.method: POST AND http.response.status_code: 400)
-```
-
-You can also use parentheses for shorthand syntax when querying multiple values for the same field. For example, to find documents where the `http.request.method` is GET, POST, **or** DELETE, use the following:
-
-```yaml
-http.request.method: (GET OR POST OR DELETE)
-```
-
-
-## Matching multiple fields [_matching_multiple_fields]
-
-Wildcards can also be used to query multiple fields. For example, to search for documents where any sub-field of `datastream` contains “logs”, use the following:
-
-```yaml
-datastream.*: logs
-```
-
-::::{note}
-When using wildcards to query multiple fields, errors might occur if the fields are of different types. For example, if `datastream.*` matches both numeric and string fields, the above query will result in an error because numeric fields cannot be queried for string values.
-::::
-
-
-
-## Querying nested fields [_querying_nested_fields]
-
-Querying [nested fields](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) requires a special syntax. Consider the following document, where `user` is a nested field:
-
-```yaml
-{
-  "user" : [
-    {
-      "first" : "John",
-      "last" :  "Smith"
-    },
-    {
-      "first" : "Alice",
-      "last" :  "White"
-    }
-  ]
-}
-```
-
-To find documents where a single value inside the `user` array contains a first name of “Alice” and last name of “White”, use the following:
-
-```yaml
-user:{ first: "Alice" and last: "White" }
-```
-
-Because nested fields can be inside other nested fields, you must specify the full path of the nested field you want to query. For example, consider the following document where `user` and `names` are both nested fields:
-
-```yaml
-{
-  "user": [
-    {
-      "names": [
-        {
-          "first": "John",
-          "last": "Smith"
-        },
-        {
-          "first": "Alice",
-          "last": "White"
-        }
-      ]
-    }
-  ]
-}
-```
-
-To find documents where a single value inside the `user.names` array contains a first name of “Alice” **and** last name of “White”, use the following:
-
-```yaml
-user.names:{ first: "Alice" and last: "White" }
-```
-
+* [Query languages](../languages.md): Compare KQL with Query DSL, {{esql}}, and other languages.
+* [Lucene query syntax in {{kib}}](lucene-query-syntax.md)

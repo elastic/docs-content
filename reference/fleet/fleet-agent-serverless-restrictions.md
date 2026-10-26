@@ -15,13 +15,15 @@ products:
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ech}} and self-managed {{es}}:
 
-* A maximum of 20,000 {{fleet}}-managed {{agents}} can be connected to an {{serverless-full}} project. This limit does not apply to standalone agents.
+* A maximum of 30,000 {{fleet}}-managed {{agents}} can be connected to an {{serverless-full}} project. This limit does not apply to standalone agents.
 * The maximum supported number of {{agent}} policies is 500.
 * The minimum supported version of {{agent}} supported for use with {{serverless-full}} is 8.11.0.
 
 ### Outputs
 
 On {{serverless-short}}, you can configure new {{es}} outputs to use a proxy, with the restriction that the output URL is fixed. Any new {{es}} outputs must use the default {{es}} host URL.
+
+If an AWS PrivateLink connection is set up for your project, {{fleet}} also provides an output that points to your private endpoint, which you can use instead. Refer to [AWS PrivateLink and {{fleet}}](/deploy-manage/security/private-connectivity-aws.md#aws-privatelink-and-fleet).
 
 ### Upgrade
 
@@ -45,3 +47,4 @@ Note the following restrictions with using [{{fleet-server}}](/reference/fleet/f
 
 * On-premises {{fleet-server}} is not currently available for use in a {{serverless-short}} environment. We recommend using the hosted {{fleet-server}} that is included and configured automatically in {{serverless-short}} {{observability}} and Security projects.
 * On {{serverless-short}}, you can configure {{fleet-server}} to use a proxy, with the restriction that the {{fleet-server}} host URL is fixed. Any new {{fleet-server}} hosts must use the default {{fleet-server}} host URL. Refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md) for more information.
+* If an AWS PrivateLink connection is set up for your project, {{fleet}} also provides a {{fleet-server}} host that points to your private endpoint, which you can use instead of the default. Refer to [AWS PrivateLink and {{fleet}}](/deploy-manage/security/private-connectivity-aws.md#aws-privatelink-and-fleet).

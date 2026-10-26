@@ -46,7 +46,7 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
     The time a transaction took to complete is also recorded and displayed on the chart under the "app" label. "app" indicates that something was happening within the application, but we’re not sure exactly what. This could be a sign that the APM agent does not have auto-instrumentation for whatever was happening during that time.
 
-    It’s important to note that if you have asynchronous spans, the sum of all span times may exceed the duration of the transaction.
+    It’s important to note that if you have asynchronous spans, the sum of all span times might exceed the duration of the transaction.
 
 **Cold start rate**
    Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](/solutions/observability/apm/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
@@ -61,6 +61,8 @@ The **Transactions** table displays a list of *transaction groups* for the selec
 :::
 
 By default, transaction groups are sorted by *Impact*. Impact helps show the most used and slowest endpoints in your service - in other words, it’s the collective amount of pain a specific endpoint is causing your users. If there’s a particular endpoint you’re worried about, you can click on it to view the [transaction details](/solutions/observability/apm/transactions-ui.md#transaction-details).
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Each row in the Transactions table has an **Actions** menu. Use it to act on a specific transaction group. For example, you can create an alert rule, create an SLO, or select **Open traces in Discover** to explore the underlying trace data.
 
 ::::{important}
 If you only see one route in the Transactions table, or if you have transactions named "unknown route", it could be a symptom that the APM agent either wasn’t installed correctly or doesn’t support your framework.
@@ -85,6 +87,8 @@ Additional RUM goodies, like core vitals, and visitor breakdown by browser, loca
 ## Transaction details [transaction-details]
 
 Selecting a transaction group will bring you to the **transaction** details. This page is visually similar to the transaction overview, but it shows data from all transactions within the selected transaction group.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The transaction details also include a **Service map** panel scoped to the service. Refer to [](/solutions/observability/apm/service-map.md) for more information.
 
 :::{image} /solutions/images/observability-apm-transactions-overview.png
 :alt: Example view of response time distribution
@@ -138,9 +142,17 @@ Learn more about a trace sample in the **Metadata** tab:
 * FaaS information, like cold start, AWS request ID, trigger type, and trigger request ID
 
 ::::{tip}
-All of this data is stored in documents in Elasticsearch. This means you can select "Actions - View transaction in Discover" to see the actual Elasticsearch document under the discover tab.
+All of this data is stored in documents in {{es}}. Depending on your version, click **Open full trace in Discover** or **Actions** → **View transaction in Discover** to see the raw {{es}} document for this trace sample.
 
 ::::
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **View full trace** to open a flyout showing the complete trace timeline (all spans and transactions from the same distributed trace) without leaving the {{product.apm}} UI.
+
+:::{tip}
+:applies_to: { stack: ga 9.6+, serverless: ga }
+
+You can also open transaction details and the full trace from a service flyout in **Discover** or the **Service map**. Follow the [investigation flyout workflow](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts) to inspect individual spans or errors.
+:::
 
 **Trace sample logs**
 
@@ -162,6 +174,6 @@ To learn how to correlate your logs with your instrumented services, see [Stream
 Correlations surface attributes of your data that are potentially correlated with high-latency or erroneous transactions. To learn more, see [Find transaction latency and failure correlations](/solutions/observability/apm/find-transaction-latency-failure-correlations.md).
 
 :::{image} /solutions/images/observability-correlations-hover.png
-:alt: APM lattency correlations
+:alt: APM latency correlations
 :screenshot:
 :::

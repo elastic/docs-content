@@ -1,4 +1,5 @@
 ---
+navigation_title: Full-text search
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-search.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Full-text search [full-text-search]
+# Full-text search in {{es}} [full-text-search]
 
 ::::{tip}
 If you'd prefer to start with a hands-on example, refer to our [full-text search tutorial](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md).

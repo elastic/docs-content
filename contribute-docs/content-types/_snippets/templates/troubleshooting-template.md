@@ -21,7 +21,7 @@ For complete guidance, refer to [the troubleshooting guide](https://www.elastic.
 
 Describe the problem users are experiencing.
 
-Example: EDOT Collector doesn't propagate client metadata
+Example: {{agent}} doesn't propagate client metadata
 -->
 
 <!-- REQUIRED

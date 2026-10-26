@@ -306,7 +306,7 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 :   Force overwrite of current configuration without prompting for confirmation. This flag is helpful when using automation software or scripted deployments.
 
     ::::{note}
-    If the {{agent}} is already installed on the host, using `--force` may result in unpredictable behavior with duplicate {{agent}}s appearing in {{fleet}}.
+    If the {{agent}} is already installed on the host, using `--force` might result in unpredictable behavior with duplicate {{agent}}s appearing in {{fleet}}.
     ::::
 
 
@@ -501,7 +501,7 @@ elastic-agent inspect components [--show-config]
     :   Display the input/output runtime specification for a component. By default, the runtime specification is hidden.
 
     `--variables-wait <duration>`
-    :   Wait the specified amount of time for variable discovery before computing the components model. This is useful when using dynamic providers like {{k8s}} or Docker that may need additional time to discover all available variables.
+    :   Wait the specified amount of time for variable discovery before computing the components model. This is useful when using dynamic providers like {{k8s}} or Docker that might need additional time to discover all available variables.
 
 
 ### Options [_options_4]
@@ -784,7 +784,7 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 :   Force overwrite of current configuration without prompting for confirmation. This flag is helpful when using automation software or scripted deployments.
 
     ::::{note}
-    If the {{agent}} is already installed on the host, using `--force` may result in unpredictable behavior with duplicate {{agent}}s appearing in {{fleet}}.
+    If the {{agent}} is already installed on the host, using `--force` might result in unpredictable behavior with duplicate {{agent}}s appearing in {{fleet}}.
     ::::
 
 
@@ -905,7 +905,7 @@ elastic-agent install --url=https://fleet-server:8220 \
 
 ## elastic-agent otel [elastic-agent-otel-command]
 
-Run {{agent}} as an [Elastic Distribution of OpenTelemetry Collector (EDOT Collector)](/reference/fleet/otel-agent.md).
+Run {{agent}} as an [OTel Collector](/reference/fleet/otel-agent.md).
 
 ### Synopsis [_synopsis_6]
 
@@ -942,13 +942,13 @@ You can also run the `./otelcol` command, which calls `./elastic-agent otel` and
 
 ### Examples [_examples_15]
 
-Run {{agent}} as an EDOT Collector using the supplied `otel.yml` configuration file.
+Run {{agent}} as an OTel Collector using the supplied `otel.yml` configuration file.
 
 ```shell
 ./elastic-agent otel --config otel.yml
 ```
 
-Change the default verbosity setting in the {{agent}} EDOT Collector configuration from `detailed` to `normal`.
+Change the default verbosity setting in the {{agent}} OTel Collector configuration from `detailed` to `normal`.
 
 ```shell
 ./elastic-agent otel --config otel.yml --set "exporters::debug::verbosity=normal"

@@ -13,7 +13,7 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT Python Agent
+# Troubleshooting the EDOT Python Agent [troubleshooting-the-edot-python-agent]
 
 Use the information on this page to troubleshoot issues using EDOT Python.
 
@@ -25,7 +25,7 @@ As a first step, review the [supported technologies](elastic-otel-python://refer
 
 Follow these recommended actions to make sure that EDOT Python is configured correctly.
 
-### EDOT logging level 
+### EDOT logging level [edot-logging-level] 
 
 ```{applies_to}
 product:
@@ -59,7 +59,7 @@ FastAPI application started with `fastapi dev` requires the reloader to be turne
 
 Flask applications running in debug mode require to turn off the reloader to be traced. Refer to [OpenTelemetry zero code documentation](https://opentelemetry.io/docs/zero-code/python/example/#instrumentation-while-debugging).
 
-## Turn off EDOT
+## Turn off {{edot}} [turn-off-edot]
 
 In the unlikely event EDOT Python causes disruptions to a production application, you can turn it off while you troubleshoot. To turn off the underlying OpenTelemetry SDK, set the `OTEL_SDK_DISABLED` environment variable to `true`.
 

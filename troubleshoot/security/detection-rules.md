@@ -47,6 +47,25 @@ For **self-managed** {{stack}} deployments only, this message might display when
 ::::
 
 
+## Rule privileges [rule-privileges-ts]
+
+::::{dropdown} Warning about required read privileges for indices you can access
+:name: rule-privileges-combined-patterns-ts
+
+You might receive the following warning for a rule even when your role clearly includes privileges for the index patterns:
+
+`This rule may not have the required read privileges to the following index patterns: [...]`
+
+This can happen when your role's index privileges are defined as a single, comma-separated pattern. When you enter multiple index patterns as one combined entry (for example, `auditbeat-*,filebeat-*`), the privileges aren't granted to each pattern individually, so the rule's privilege check fails.
+
+To fix this, itemize the index privileges so each pattern is its own entry:
+
+1. Go to the **Custom Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then edit the affected role.
+2. Split any combined, comma-separated index patterns into separate entries, then save the role.
+3. Edit and save the affected rule so it picks up the updated privileges. Turning a rule off and on does not refresh its privileges.
+::::
+
+
 ## {{ml-cap}} rules [ML-rules-ts]
 
 ::::{dropdown} {{ml-cap}} rule is failing and a required {{ml}} job is stopped
@@ -227,7 +246,7 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 :applies_to: {stack: ga 9.4+, serverless: ga}
 
 
-If detection rules are not creating expected alerts or appear to be missing data, the **Include data stream namespaces in rule execution** [advanced setting](../../solutions/security/get-started/configure-advanced-settings.md#included-data-stream-namespaces-rule-execution) might be limiting which documents are searched. When configured, only events with a matching `data_stream.namespace` value are queried by all rules in the {{kib}} space.
+If detection rules are not creating expected alerts or appear to be missing data, the `securitySolution:includedDataStreamNamespacesForRuleExecution` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) might be limiting which documents are searched. When configured, only events with a matching `data_stream.namespace` value are queried by all rules in the {{kib}} space.
 
 To verify:
 

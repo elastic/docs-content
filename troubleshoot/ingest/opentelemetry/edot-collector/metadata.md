@@ -13,13 +13,13 @@ products:
   - id: edot-collector
 ---
 
-# EDOT Collector doesn’t propagate client metadata
+# {{agent}} doesn’t propagate client metadata [edot-collector-doesnt-propagate-client-metadata]
 
-By default, the Collector only propagates transport-level metadata. If you want the EDOT Collector to propagate metadata like `project_id`, `tenant`, or `environment`, you need a specific SDK instrumentation.
+By default, the Collector only propagates transport-level metadata. If you want the {{agent}} to propagate metadata like `project_id`, `tenant`, or `environment`, you need a specific SDK instrumentation.
 
 ### What is client metadata
 
-In the context of the EDOT, client metadata refers to gRPC metadata or HTTP headers that accompany telemetry data sent by clients (usually SDKs) to the Collector.
+In the context of {{edot}}, client metadata refers to gRPC metadata or HTTP headers that accompany telemetry data sent by clients (usually SDKs) to the Collector.
 
 For example: 
 

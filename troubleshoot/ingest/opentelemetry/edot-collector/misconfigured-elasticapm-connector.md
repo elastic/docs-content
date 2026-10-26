@@ -12,7 +12,7 @@ products:
 
 # {{product.apm}} services missing due to misconfigured `elasticapmconnector`
 
-If {{product.apm}} services and metrics don't appear in {{kib}} despite a healthy-looking traces pipeline, check the `elasticapmconnector` for misconfiguration. This is one of the most common causes of a silent, empty {{product.apm}} UI when using the EDOT Collector with direct {{es}} ingestion.
+If {{product.apm}} services and metrics don't appear in {{kib}} despite a healthy-looking traces pipeline, check the `elasticapmconnector` for misconfiguration. This is one of the most common causes of a silent, empty {{product.apm}} UI when using the {{agent}} with direct {{es}} ingestion.
 
 :::{note}
 This page applies when exporting directly to {{es}} using the `elasticsearch` exporter (typically with `mapping.mode: otel`). If you're sending data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md) or {{apm-server-or-mis}} using OTLP, neither the `elasticapmprocessor` nor the `elasticapmconnector` is required.
@@ -31,7 +31,7 @@ The pipeline looks healthy, but no {{product.apm}} data reaches {{kib}}:
 
 ## Causes
 
-There are two distinct `elasticapm` components in the EDOT Collector:
+There are two distinct `elasticapm` components in the {{agent}}:
 
 * **`elasticapm` processor**, which enriches OpenTelemetry spans with Elastic-specific attributes. Declare it under `processors`.
 * **`elasticapm` connector**, which generates pre-aggregated {{product.apm}} metrics from trace data. Declare it under `connectors`. This component is used as an exporter in the `traces` pipeline, and as a receiver in a dedicated `metrics` pipeline.

@@ -89,6 +89,10 @@ With an Enterprise subscription on {{stack}} or a Security Analytics Complete pr
 * **Auto-resolved conflicts**: {{elastic-sec}} suggests a resolution for your review. The field displays a `Review required` status.
 * **Unresolved conflicts**: You must manually select how to resolve the conflict. The field displays an `Action required` status.
 
+:::{note}
+If the rule's original version is unavailable, as described in [Additional options with Enterprise subscription](#enterprise-review-options), {{elastic-sec}} cannot identify which changes are yours. For fields that hold multiple values, such as **Tags**, **Reference URLs**, and **Indicator index patterns**, the suggested resolution is Elastic's values rather than a combination of both sets. These fields display the `Review required` status. To keep your values, open the rule update flyout and edit the **Final update** value before you accept it.
+:::
+
 Refer to [Resolve update conflicts](#resolve-reduce-rule-conflicts) for guidance on handling conflicts.
 
 ::::{tip}

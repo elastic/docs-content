@@ -147,7 +147,7 @@ If you do not define a throttle period at the action or watch level, the global 
 xpack.watcher.execution.default_throttle_period: 15m
 ```
 
-{{watcher}} also supports acknowledgement-based throttling. You can acknowledge a watch using the [ack watch API]({{es-apis}}operation/operation-watcher-ack-watch) to prevent the watch actions from being executed again while the watch condition remains `true`. This essentially tells {{watcher}} "I received the notification and I’m handling it, do not notify me about this error again". An acknowledged watch action remains in the `acked` state until the watch’s condition evaluates to `false`. When that happens, the action’s state changes to `awaits_successful_execution`.
+{{watcher}} also supports acknowledgment-based throttling. You can acknowledge a watch using the [ack watch API]({{es-apis}}operation/operation-watcher-ack-watch) to prevent the watch actions from being executed again while the watch condition remains `true`. This essentially tells {{watcher}} "I received the notification and I’m handling it, do not notify me about this error again". An acknowledged watch action remains in the `acked` state until the watch’s condition evaluates to `false`. When that happens, the action’s state changes to `awaits_successful_execution`.
 
 To acknowledge an action, you use the [ack watch API]({{es-apis}}operation/operation-watcher-ack-watch):
 
@@ -208,7 +208,7 @@ GET _watcher/watch/my_watch
 
 The action state of a newly-created watch is `awaits_successful_execution`:
 
-```console
+```console-result
 
 {
   "found": true,
@@ -250,7 +250,7 @@ GET _watcher/watch/my_watch
 
 and the action is now in `ackable` state:
 
-```console
+```console-result
 
 {
   "found": true,
@@ -301,7 +301,7 @@ GET _watcher/watch/my_watch
 % TEST[continued]
 
 
-```console
+```console-result
 
 {
   "found": true,
@@ -359,7 +359,7 @@ POST _watcher/watch/my_watch/_ack
 
 The response looks like a get watch response, but only contains the status:
 
-```console
+```console-result
 
 {
   "status": {

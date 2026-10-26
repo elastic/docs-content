@@ -27,7 +27,7 @@ In addition to Timelines, you can create and attach Timeline templates to [detec
 
 ## Grant access to Timeline [timeline-privileges]
 
-You can control access to Timeline by setting the [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Timeline** feature under **Security**.
+You can control access to Timeline by setting the [{{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md) for the **Timeline** feature under **Security**.
 
 ## Create new or open existing Timeline [open-create-timeline]
 
@@ -254,7 +254,7 @@ You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, yo
 
     This query does the following:
 
-    * It starts by querying documents within the Security alert index (`.alerts-security.alerts-default`) and indices specified in the [Security data view](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices).
+    * It starts by querying documents within the Security alert index (`.alerts-security.alerts-default`) and indices specified in the `securitySolution:defaultIndex` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
     * Then, the query limits the output to the top 10 results.
     * Finally, it keeps the default Timeline fields (`@timestamp`, `message`, `event.category`, `event.action`, `host.name`, `source.ip`, `destination.ip`, and `user.name`) in the output.
 

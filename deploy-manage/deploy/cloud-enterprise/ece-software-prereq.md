@@ -15,6 +15,7 @@ To install ECE, make sure you prepare your environment with the following softwa
 * [Supported Linux kernel](#ece-linux-kernel)
 * [Linux distributions with compatible Docker versions](#ece-linux-docker)
 * [Free RAM](#ece-free-ram)
+* [Swap considerations](#ece-swap-considerations)
 * [XFS](#ece-xfs)
 * [FIPS compliance](#ece-fips)
 
@@ -27,9 +28,20 @@ We recommend using kernel 4.15.x or later on Ubuntu.
 
 To check your kernel version, run `uname -r`.
 
-::::{note} 
-{{ece}} is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2.
-::::
+### cgroups support
+
+Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2 are only supported in {{ece}} 4.2 and later. {{ece}} versions 4.0-4.1 only support cgroups version 1.
+
+The cgroups version is determined by the OS, not by ECE.
+
+For example:
+* Ubuntu 20.04, RHEL 8.x, and Rocky Linux 8.x use cgroups v1.
+* Ubuntu 22.04 and later, RHEL 9.x and later, Rocky Linux 9.x and later, and SLES 15 use cgroups v2.
+
+The following limitations apply to hosts using cgroups v2:
+
+* {{es}} versions 8.0–8.4.3 fail to start on hosts using cgroups v2 with the bundled JDK. Refer to [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more details.
+* On cgroups v2 hosts, [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) reports process CPU metrics in `system.process.cgroup.cpu.*` instead of `system.process.cgroup.cpuacct.*`, and `docker.memory.rss.pct` is unavailable. Update any custom dashboards or alerts that query these fields.
 
 
 
@@ -71,6 +83,22 @@ free -h
 ```
 
 
+## Swap [ece-swap-considerations]
+
+Swap requirements depend on the ECE roles assigned to the host:
+* **Director hosts:** Do not enable swap. Directors run ZooKeeper, and swap can severely degrade ZooKeeper performance. For background, refer to the [ZooKeeper administrator guide](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html).
+* **All other hosts, including allocators:** Enable swap. If the host runs out of memory, the Linux OOM killer can stop a random process. Swap acts as a last-resort safeguard and helps protect ECE service availability.
+
+:::{admonition} Use swap only as an emergency safety net
+A container runtime process, such as Docker or Podman, running on swap can cause allocator failures due to API timeouts. Do not rely on it to overcommit memory or reduce host RAM. Size allocator capacity so the OS does not need swap during normal operation. For allocator capacity planning, refer to [](./ece-manage-capacity.md).
+:::
+
+As a baseline, provision at least 512 MB of swap. A common safeguard is 4 GB of swap for every 32 GB of RAM.
+
+Set `vm.swappiness` to `1` so the kernel uses swap only as a last resort. The OS preparation guides in [](./configure-operating-system.md) include this setting.
+
+How you create swap space depends on your operating system and infrastructure provider. Use your OS or cloud provider documentation to create a swap file or partition.
+
 ## XFS [ece-xfs] 
 
 XFS is required if you want to use disk space quotas for {{es}} data directories.
@@ -78,7 +106,7 @@ XFS is required if you want to use disk space quotas for {{es}} data directories
 Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
 ::::{important} 
-You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
+You must use XFS and have quotas enabled on all allocators, otherwise disk usage won't display correctly.
 ::::
 
 

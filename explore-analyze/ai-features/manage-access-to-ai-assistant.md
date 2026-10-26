@@ -36,7 +36,7 @@ The **GenAI Settings** page has the following settings:
 
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
-- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
 ::::{applies-item} stack: ga 9.4+
 
@@ -49,7 +49,8 @@ The **GenAI Settings** page has the following settings:
 
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
-- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+- **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
 ::::{applies-item} stack: ga 9.2-9.3
 
@@ -74,6 +75,62 @@ The **GenAI Settings** page has the following settings:
 ::::
 :::::
 
+### Track token usage across AI features
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+**Token usage tracking** is off by default. When you turn it on, Elastic records the token counts for each completed request that the AI features in {{kib}} send to an LLM, and makes a managed dashboard available to monitor them.
+
+To start tracking, go to **GenAI Settings** and turn on **Token usage tracking**.
+
+For each request, Elastic records the number of prompt, completion, and total tokens, along with the model, connector, and the feature that made the request.
+
+After you turn on tracking, the managed **[Elastic] Inference Token Usage** dashboard becomes available in the **Dashboards** app. Open it to review usage. It summarizes:
+
+- Total, prompt, and completion tokens, and the total number of requests.
+- Token usage over time, broken down by feature.
+- Token usage by feature and by model.
+
+:::{image} /explore-analyze/images/inference-token-usage-dashboard.png
+:alt: Inference Token Usage dashboard showing token totals, request count, usage over time by feature, and token usage by feature and by model
+:screenshot:
+:::
+
+:::{tip}
+If you open the dashboard right after turning on tracking and its breakdown panels show an error or no data, reload {{kib}} to refresh the dashboard's fields.
+:::
+
+For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
+
+### Give {{agent-builder}} access to Elastic documentation [give-agent-builder-access-to-elastic-documentation]
+
+{{agent-builder}} agents can answer questions about Elastic products from the official Elastic documentation once it's installed in {{kib}}. To check, go to **GenAI Settings**. The **Documentation** section should show **Installed** next to **Elastic documentation**.
+
+How the documentation gets installed depends on your version and configuration:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` {{kib}} installs the documentation automatically when it starts, if both of these are true. If the documentation is already installed, {{kib}} updates it instead.
+  - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available.
+  - **Use AI features** is turned on in **Feature Settings**.
+- In earlier versions, or if these conditions aren't met, you need to install the documentation from **GenAI Settings**.
+
+To install the documentation, you need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
+
+1. Go to **GenAI Settings**.
+2. In the **Documentation** section, select **Install** next to **Elastic documentation**.
+
+The install takes a few minutes. When it finishes, the **Documentation** section shows **Installed** next to **Elastic documentation**.
+
+#### Security labs content
+
+Security labs content gives agents access to [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence. To install it, follow the same steps as for Elastic documentation, and select **Install** next to **Security labs** instead.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} also installs Security labs content automatically:
+
+- In serverless {{elastic-sec}} projects, when {{kib}} starts, if EIS is available and **Use AI features** is turned on.
+- In any {{elastic-sec}} deployment, when a user with the **Agent Builder: All** privilege opens {{elastic-sec}}, **Use AI features** is turned on, and the content isn't installed yet.
+
 ## Feature settings
 ```{applies_to}
 stack: ga 9.4+
@@ -81,6 +138,8 @@ serverless: ga
 ```
 
 Elastic's AI-powered features can use [EIS](/explore-analyze/elastic-inference/eis.md) and [External Inference](/explore-analyze/elastic-inference/external.md) models, as well as your custom [Generative AI connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+
+{applies_to}`stack: deprecated 9.5` {applies_to}`serverless: deprecated` Generative AI connectors are deprecated. Use {{infer}} endpoints for new models.
 
 To control the models used by each feature, go to **Feature Settings** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 

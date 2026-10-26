@@ -33,7 +33,7 @@ To secure the communication between APM Agents and either {{apm-server-or-mis}} 
 4. [Set the API key in your APM agents](#apm-agent-api-key)
 
 ::::{note}
-If you're using [{{edot}} (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md), refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md) for EDOT-specific guidance on creating and using API keys.
+If you're using [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), refer to [Create {{apm-agent}} key for EDOT SDKs](/solutions/observability/apm/opentelemetry/create-apm-agent-key-for-edot-sdks.md) for {{edot}}-specific guidance on creating and using API keys.
 ::::
 
 ## Enable API keys [apm-enable-api-key]
@@ -227,18 +227,4 @@ If the API key has been encoded correctly, you’ll see a response similar to th
       "type":"_es_api_key"
    }
 }
-```
-
-You can then use the APM Server CLI to verify that the API key has the requested privileges:
-
-```sh
-apm-server apikey verify --credentials R25yVVQzUUI3eVpiU054S0VUNmQ6UmhIS2lzVG1RMWFQQ0hDX1RQd092dw==
-```
-
-If the API key has the requested privileges, the response will look similar to this:
-
-```console-result
-Authorized for privilege "config_agent:read"...:  Yes
-Authorized for privilege "event:write"...:        Yes
-Authorized for privilege "sourcemap:write"...:    Yes
 ```

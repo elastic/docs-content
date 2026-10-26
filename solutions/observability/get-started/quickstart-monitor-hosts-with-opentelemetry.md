@@ -1,5 +1,5 @@
 ---
-description: Learn how to monitor hosts using the Elastic Distribution of OpenTelemetry (EDOT) Collector and gain deeper insights into your observability data.
+description: Learn how to monitor hosts using the {{agent}} and gain deeper insights into your observability data.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-otel.html
   - https://www.elastic.co/guide/en/serverless/current/quickstart-monitor-hosts-with-otel.html
@@ -13,7 +13,7 @@ products:
 
 # Quickstart: Monitor hosts with OpenTelemetry [quickstart-monitor-hosts-with-otel]
 
-In this quickstart guide, you’ll learn how to monitor your hosts using the Elastic Distribution of OpenTelemetry (EDOT) Collector. You’ll also learn how to use {{observability}} features to gain deeper insight into your observability data after collecting it.
+In this quickstart guide, you’ll learn how to monitor your hosts using the {{agent}}. You’ll also learn how to use {{observability}} features to gain deeper insight into your observability data after collecting it.
 
 ## Prerequisites [_prerequisites]
 
@@ -48,12 +48,12 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 
 ## Limitations [_limitations]
 
-Refer to [Elastic OpenTelemetry Collector limitations](opentelemetry://reference/compatibility/limitations.md) for known limitations when using the EDOT Collector.
+Refer to [Elastic OpenTelemetry Collector limitations](opentelemetry://reference/compatibility/limitations.md) for known limitations when using the {{agent}}.
 
 
 ## Collect your data [_collect_your_data]
 
-Follow these steps to collect logs and metrics using the EDOT Collector:
+Follow these steps to collect logs and metrics using the {{agent}}:
 
 :::::{applies-switch}
 
@@ -75,10 +75,10 @@ Follow these steps to collect logs and metrics using the EDOT Collector:
 6. For **MacOS and Linux**, copy the command, open a terminal on your host, and run the command to download and configure the OpenTelemetry collector.
 7. For **Kubernetes**, download the manifest.
 8. Copy the command under Step 2:
-9. For **MacOS and Linux**, run the command in your terminal to start the EDOT Collector.
-10. For **Kubernetes**, run the command from the directory where you downloaded the manifest to install the EDOT Collector on every node of your cluster.
+9. For **MacOS and Linux**, run the command in your terminal to start the {{agent}}.
+10. For **Kubernetes**, run the command from the directory where you downloaded the manifest to install the {{agent}} on every node of your cluster.
 
-Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector. The default log path is `/var/log/*`. To update the path, modify `otel.yml`.
+Logs are collected from setup onward, so you won’t see logs that occurred before starting the {{agent}}. The default log path is `/var/log/*`. To update the path, modify `otel.yml`.
 
 ::::
 
@@ -95,16 +95,16 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 3. Select the appropriate platform.
 4. Copy the command under step 1, open a terminal on your host, and run the command.
 
-    This command downloads the {{agent}} package, extracts it in a EDOT directory. For example, `elastic-distro-8.16.0-linux-x86_64`. It also adds a sample `otel.yml` configuration file to the directory and updates the storage directory, Elastic endpoint, and API key in the file.
+    This command downloads the {{agent}} package, extracts it in a {{edot}} directory. For example, `elastic-distro-8.16.0-linux-x86_64`. It also adds a sample `otel.yml` configuration file to the directory and updates the storage directory, Elastic endpoint, and API key in the file.
 
-    The default log path is `/var/log/*.log`. To update the path, modify the `otel.yml` in the EDOT directory.
+    The default log path is `/var/log/*.log`. To update the path, modify the `otel.yml` in the {{edot}} directory.
 
-    Find additional sample `otel.yml` configuration files in the EDOT directory in the `otel_samples` folder.
+    Find additional sample `otel.yml` configuration files in the {{edot}} directory in the `otel_samples` folder.
 
-5. Copy the command under Step 2 and run it in your terminal to start the EDOT Collector.
+5. Copy the command under Step 2 and run it in your terminal to start the {{agent}}.
 
 :::{note}
-Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector.
+Logs are collected from setup onward, so you won’t see logs that occurred before starting the {{agent}}.
 :::
 
 ::::

@@ -148,6 +148,7 @@ PUT _slm/policy/nightly-snapshots
 5. If `true`, the policy’s snapshots include the cluster state. This also includes all feature states by default. To only include specific feature states, see [Back up a specific feature state](#back-up-specific-feature-state).
 6. Optional retention rules. This configuration keeps snapshots for 30 days, retaining at least 5 and no more than 50 snapshots regardless of age. See [{{slm-init}} retention](#slm-retention-task) and [Snapshot retention limits](#snapshot-retention-limits).
 
+{{slm-init}} uses the system clock to determine when to take snapshots. To ensure it takes snapshots when expected, [keep the clocks on all nodes synchronized](/deploy-manage/deploy/self-managed/system-config-clocks.md).
 
 
 ### Manually run an {{slm-init}} policy [manually-run-slm-policy]
@@ -165,7 +166,7 @@ The snapshot process runs in the background. To monitor its progress, see [Monit
 
 ### {{slm-init}} retention [slm-retention-task]
 
-{{slm-init}} snapshot retention is a cluster-level task that runs separately from a policy’s snapshot schedule. To control when the {{slm-init}} retention task runs, configure the [`slm.retention_schedule`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-retention-schedule) cluster setting.
+{{slm-init}} snapshot retention is a cluster-level task that runs separately from a policy’s snapshot schedule. Retention ages are measured using the system clock, so [keep node clocks synchronized](/deploy-manage/deploy/self-managed/system-config-clocks.md) to avoid deleting snapshots too early or too late. To control when the {{slm-init}} retention task runs, configure the [`slm.retention_schedule`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-retention-schedule) cluster setting.
 
 ```console
 PUT _cluster/settings

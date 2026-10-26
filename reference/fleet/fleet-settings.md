@@ -32,7 +32,9 @@ Not sure if {{fleet-server}} is running? Refer to [What is {{fleet-server}}?](/r
 
 On self-managed clusters, you must specify one or more URLs.
 
-On {{ecloud}}, this field is populated automatically. If you are using Azure Private Link, GCP Private Service Connect, or AWS PrivateLink and enrolling the {{agent}} with a private link URL, ensure that this setting is configured. Otherwise, {{agent}} will reset to use a default address instead of the private link URL.
+On {{ecloud}}, this field is populated automatically. On {{ech}} deployments, if you are using Azure Private Link, GCP Private Service Connect, or AWS PrivateLink and enrolling the {{agent}} with a private link URL, ensure that this setting is configured. Otherwise, {{agent}} will reset to use a default address instead of the private link URL.
+
+{applies_to}`serverless: ga` If an AWS PrivateLink connection is set up for your project, {{fleet}} adds a **Private Fleet Server** host that points to your private endpoint. Select it to send agent traffic over the private connection. Refer to [AWS PrivateLink and {{fleet}}](/deploy-manage/security/private-connectivity-aws.md#aws-privatelink-and-fleet). For other private connectivity services, such as Azure Private Link, configure this setting with the private URL. Otherwise, {{agent}} resets to a default address instead of the private URL. Refer to [Azure Private Link and {{fleet}}](/deploy-manage/security/private-connectivity-azure.md#azure-private-link-and-fleet).
 
 ::::{note}
 If a URL is specified without a port, {{kib}} sets the port to `80` (http) or `443` (https).
@@ -67,13 +69,12 @@ When a {{fleet-server}} is added or removed from the list, all agent policies ar
 
 Add or edit output settings to specify where {{agent}}s send data. {{agent}}s use the default output if you don’t select an output in the agent policy.
 
-::::{tip}
-If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per integration output assignment**, you can configure {{agent}} to [send data to different outputs for different integration policies](/reference/fleet/integration-level-outputs.md).
-::::
+The {{ecloud}} internal output is locked, so you can't edit it. It handles internal routing to reduce external network charges when you use the {{ecloud}} agent policy, and it provides visibility for troubleshooting on {{ece}}.
 
+{applies_to}`serverless: ga` If an AWS PrivateLink connection is set up for your project, {{fleet}} adds a **Private Elasticsearch Output** that points to your private endpoint. Refer to [AWS PrivateLink and {{fleet}}](/deploy-manage/security/private-connectivity-aws.md#aws-privatelink-and-fleet).
 
 ::::{note}
-The {{ecloud}} internal output is locked and cannot be edited. This output is used for internal routing to reduce external network charges when using the {{ecloud}} agent policy. It also provides visibility for troubleshooting on {{ece}}.
+If your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per integration output assignment**, you can configure {{agent}} to [send data to different outputs for different integration policies](/reference/fleet/integration-level-outputs.md).
 ::::
 
 
@@ -190,17 +191,18 @@ To enable automatic deletion of unenrolled agents:
 1. Go to **{{fleet}}** > **Settings**.
 2. In the **Advanced Settings** section, enable the **Delete unenrolled agents** option.
 
-### Show agentless resources [show-agentless-resources-setting]
+### Show {{managed-integration}} resources [show-agentless-resources-setting]
+
 ```{applies_to}
-stack: ga 9.1.6
-serverless: ga
+serverless: unavailable
+stack: preview 9.1-9.4
 ```
 
-If you have [agentless integrations](/manage-data/ingest/agentless/agentless-integrations.md) deployed, you can enable the **Show agentless resources** option to display agentless agents and policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
+If you have [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) deployed, you can enable the **Show agentless resources** option to display the Managed integration collectors and the Managed integration policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
 
-To display agentless resources in the agent and agent policy lists:
+To display {{managed-integration}} resources in the agent and agent policy lists:
 
 1. Go to **{{fleet}}** > **Settings**.
 2. In the **Advanced Settings** section, enable **Show agentless resources**.
 
-You can [view and request diagnostics](/troubleshoot/ingest/fleet/diagnostics.md#agent-diagnostics-collect) for agentless agents, but you cannot upgrade, unenroll, or reassign them.
+You can [view and request diagnostics](/troubleshoot/ingest/fleet/diagnostics.md#agent-diagnostics-collect) for Managed integration collectors, but you cannot upgrade, unenroll, or reassign them.

@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
 description: Learn how search expressions, search options, and index resolution work in cross-project search (CPS).
@@ -17,7 +17,7 @@ This page explains how search works in {{cps-init}}, including:
 * how search options such as `ignore_unavailable` and `allow_no_indices` behave in {{cps-init}}
 * common edge cases and examples involving mixed qualified and unqualified expressions
 
-For an overview of {{cps}} concepts such as origin projects, linked projects, and project aliases, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md).
+For an overview of {{cps}} concepts such as origin projects, linked projects, and project aliases, refer to [{{cps-cap}}](/explore-analyze/cross-project-search.md). If you're coming from an {{stack}} environment where you used {{ccs}}, refer to [](/explore-analyze/cross-project-search/cps-compared-to-ccs.md) for a side-by-side syntax comparison.
 
 ## {{cps-init}} search model
 
@@ -47,6 +47,8 @@ GET _origin:logs/_search
 ```
 
 For additional examples of qualified search expressions, refer to the [examples section](/explore-analyze/cross-project-search.md#cps-examples).
+
+To exclude specific projects or indices from a search, refer to [Excluding indices and projects](/explore-analyze/cross-project-search.md#cps-exclude).
 
 ::::{tip}
 [Project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) provide an additional way for you to control which projects the query is routed to, but they serve a different purpose than qualified search expressions.

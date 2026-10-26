@@ -41,6 +41,8 @@ You can share direct links to saved Discover sessions, dashboards, and visualiza
 * **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users will see the most recent 7 days when they open the link.
 * **Absolute time range** (default): The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link will always show that exact week of January 1-7, 2025, regardless of when users open the link.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens a specific document in **Discover**, refer to [Share a link to a document](discover/discover-get-started.md#share-a-document-link).
+
 ::::{tip}
 When sharing an object with unsaved changes, you get a temporary link that might break in the future, for example in case of upgrade. Save the object to get a permanent link instead.
 ::::
@@ -57,33 +59,40 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [Share and export dashboards](/explore-analyze/dashboards/sharing.md).
+Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
-* **CSV Reports** — Generate CSV reports of saved Discover sessions. [Certain limitations apply](/explore-analyze/report-and-share.md#csv-limitations).
-* **CSV Download** — Generate and download CSV files of **Lens** visualizations.
-* **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
-* {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+* **CSV reports** — Generate CSV reports of saved Discover sessions.
+* **CSV download** — Generate and download CSV files of Lens visualizations.
+* **Download as JSON** {applies_to}`serverless: unavailable` — Generate and download JSON files of **Canvas** workpads.
+* **Export JSON**
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, preview 9.4-9.5` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
+
+:::{tip}
+Several applications let you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation).
+:::
 
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
 
-    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type. 
-    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
+    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type.
+    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** → **Export** tab, then choose a file type.
 
-    ::::{note}
-    When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-    ::::
+    Some export formats have specific considerations:
 
-    ::::{tip}
+    :::{dropdown} PDF
+    * When a dashboard report includes a data table or Discover session, the PDF includes only the visible data.
+    * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
+    * Certain [limitations apply](#pdf-limitations).
+    :::
 
-    Tips for generating PDF reports:
-
-    * If you are creating dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
-    * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
-    
-    ::::
+    :::{dropdown} CSV
+    * {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you export a Discover session whose {{esql}} query references a [variable control](/explore-analyze/discover/esql-variable-controls.md), the report uses the values currently selected in the controls. In earlier versions, these exports failed with an unknown query parameter error.
+    * Certain [limitations apply](#csv-limitations).
+    :::
 
 3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
@@ -126,6 +135,8 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
+In Discover, a CSV report also stops at a row limit, and the file is truncated at a size limit. To find both limits for your deployment and how they work in each query mode, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
+
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
 For more information on using Elasticsearch APIs directly, see [Scroll API]({{es-apis}}operation/operation-scroll), [Point in time API]({{es-apis}}operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
@@ -144,6 +155,9 @@ For the most reliable configuration of PDF/PNG {{report-features}}, consider ins
 
 
 ## Create JSON files [download-as-json]
+```{applies_to}
+serverless: unavailable
+```
 
 Create and share JSON files for workpads.
 
@@ -163,7 +177,10 @@ serverless: unavailable
 ::::{note}
 :name: reporting-on-cloud-resource-requirements
 
-For {{ech}} deployments, {{kib}} instances require a minimum of 2 GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
+For {{ech}} deployments, {{kib}} instances require a minimum of 2 GB RAM to generate PDF or PNG reports. For large dashboards or dashboards showing panels with complex queries, we recommend a minimum of 4 GB RAM.
+
+To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
+::::
 
 
 

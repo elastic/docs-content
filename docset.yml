@@ -4,6 +4,80 @@ max_toc_depth: 2
 features:
   primary-nav: true
 
+# API Explorer (staging only). This block is consumed by docs-builder when the
+# assembler-api-explorer feature flag is enabled (staging today). Production and
+# other environments ignore these declarations until the rollout completes.
+api:
+  # CloudFront remote specs - mirror https://d29hkgsdo66d1n.cloudfront.net/index.json.
+  # No local spec files: each key fetches remotely on serve/build. Paths: /api/<key>/
+  elasticsearch:
+    - spec: elasticsearch.json
+      product: elasticsearch
+      repository: elastic/elasticsearch-specification
+      catalog:
+        categories:
+          - self
+          - ece
+          - ess
+  elasticsearch-serverless:
+    - spec: elasticsearch-serverless.json
+      product: serverless-elasticsearch
+      repository: elastic/elasticsearch-specification
+      catalog:
+        categories:
+          - serverless
+  kibana:
+    - spec: kibana.yaml
+      product: kibana
+      repository: elastic/kibana
+      children:
+        - file: kibana-api-overview.md
+      catalog:
+        categories:
+          - self
+          - ece
+          - ess
+  kibana-serverless:
+    - spec: kibana-serverless.yaml
+      product: kibana
+      repository: elastic/kibana
+      catalog:
+        categories:
+          - serverless
+  cloud:
+    - spec: cloud.json
+      product: cloud-hosted
+      repository: elastic/cloud
+  cloud-enterprise:
+    - spec: cloud-enterprise.json
+      product: cloud-enterprise
+      repository: elastic/cloud
+  cloud-billing:
+    - spec: cloud-billing.yaml
+      product: ess
+      repository: elastic/cloud
+      catalog:
+        categories:
+          - ess
+  cloud-connect:
+    - spec: cloud-connect.yml
+      product: ess
+      repository: elastic/cloud-connected-api
+  cloud-serverless:
+    - spec: elastic-cloud-serverless.yml
+      product: cloud-serverless
+      repository: elastic/serverless-api-specification
+      catalog:
+        categories:
+          - serverless
+  logstash:
+    - spec: logstash.yaml
+      product: logstash
+      repository: elastic/logstash
+      catalog:
+        categories:
+          - self
+
 cta:
   monitor-kubernetes:
     button:
@@ -29,9 +103,45 @@ cta:
       - "Simplified billing and MACC burndown"
       - "Manage resources from the Azure portal"
       - "Built-in logs and metrics forwarding"
+  observability:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=observability
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  security:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=security
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  search:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=search
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  vector:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=vector
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
 
 exclude:
   - 'README.md'
+  - 'AGENTS.md'
+  - 'AI.md'
+  - 'CLAUDE.md'
+  - 'GEMINI.md'
   - 'changelog/**'
   - 'releases/**'
 
@@ -49,7 +159,9 @@ cross_links:
   - apm-aws-lambda
   - apm-k8s-attacher
   - apm-server
+  - autoops-insights
   - beats
+  - cli
   - cloud
   - cloud-on-k8s
   - curator
@@ -111,7 +223,6 @@ toc:
   - file: archive.md
   - file: versions.md
   - hidden: 404.md
-  - hidden: _search.md
 
 subs:
   subscriptions:   "https://www.elastic.co/subscriptions"
@@ -119,13 +230,14 @@ subs:
   ech:   "Elastic Cloud Hosted"
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
-  edot:  "Elastic Distribution of OpenTelemetry"
+  edot:  "Elastic OpenTelemetry"
   motlp: "Elastic Cloud Managed OTLP Endpoint"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
+  vectordb:   "Vector Database"
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"
@@ -149,8 +261,10 @@ subs:
   ls-pipelines-app:   "Logstash Pipelines"
   maint-windows-app:   "Maintenance Windows"
   maint-windows-cap:   "Maintenance windows"
-  alerting-v2:   "experimental alerting features"
-  alerting-v2-cap:   "Experimental alerting features"
+  alerting-v2-system:   "Kibana Universal Alerting"
+  alerting-v2-system-cap:   "Kibana Universal Alerting"
+  alerting-v1-system:   "Kibana Classic Alerting"
+  alerting-v1-system-cap:   "Kibana Classic Alerting"
   custom-roles-app:   "Custom Roles"
   data-source:   "data view"
   data-sources:   "data views"
@@ -169,6 +283,8 @@ subs:
   fleet-server:   "Fleet Server"
   integrations-server:   "Integrations Server"
   integrations:   "Integrations"
+  managed-integration:   "Elastic Managed integration"
+  managed-integrations:   "Elastic Managed integrations"
   package-registry:   "Elastic Package Registry"
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"
@@ -248,6 +364,7 @@ subs:
   anomaly-detect:   "anomaly detection"
   anomaly-detect-cap:   "Anomaly detection"
   anomaly-job:   "anomaly detection job"
+  anomaly-job-cap:   "Anomaly detection job"
   anomaly-jobs:   "anomaly detection jobs"
   anomaly-jobs-cap:   "Anomaly detection jobs"
   dataframe:   "data frame"
@@ -319,11 +436,18 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
-  kube-stack-version: 0.12.4
-  helm-version: 3.21.0
-  ece-docker-images-8: 8.19.16
-  ece-docker-images-9: 9.3.5
+  context-engine: "Context Engine"
+  kube-stack-version: 0.16.0
+  helm-version: 4.3.0
+  ece-docker-images-8: 8.19.23
+  ece-docker-images-9: 9.5.5
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
+  tsds: "time series data stream"
+  tsdses: "time series data streams"
+  tsds-cap: "Time series data stream"
+  tsds-init: "TSDS"
+release_notes:
+  - product: cloud-serverless

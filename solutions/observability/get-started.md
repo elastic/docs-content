@@ -1,5 +1,6 @@
 ---
 navigation_title: Get started
+description: Get started with Elastic Observability. Create a project, collect logs and metrics from your infrastructure and applications, and explore your data in one place.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started.html
   - https://www.elastic.co/guide/en/observability/current/observability-get-started.html
@@ -10,6 +11,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+description: Set up your first Elastic Observability deployment, collect data from your infrastructure and applications, and explore it.
 ---
 
 # Get started with Elastic {{observability}} [observability-get-started]
@@ -46,7 +48,7 @@ Bring logs and metrics from your hosts and services into Elastic {{observability
 ::::{tab-set}
 :::{tab-item} Hosts
 
-Elastic {{observability}} can collect telemetry data from hosts, containers, and {{k8s}} through the EDOT Collector or the Elastic Agent.
+Elastic {{observability}} can collect telemetry data from hosts, containers, and {{k8s}} through {{agent}}.
 
 1. Select **Add data** from the main menu and then select **Host**.
 2. Select one of these options:
@@ -54,16 +56,16 @@ Elastic {{observability}} can collect telemetry data from hosts, containers, and
     * **{{product.elastic-agent}}: Logs & Metrics**: Bring data from Elastic integrations.
 3. {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Select an ingestion mode:
     * **Classic ingestion**: Ingest Data through standard Elastic data streams.
-    * **Wired Streams**: Route logs through [wired streams](/solutions/observability/streams/wired-streams.md), a managed log hierarchy with centralized data retention and routing. Logs are sent to root log streams, while metrics and traces continue through standard data streams. If you haven't enabled wired streams, you'll be prompted to do so.
+    * **Wired Streams**: Route logs through [wired streams](/solutions/observability/streams/get-data-in.md#get-data-in-wired), a managed log hierarchy with centralized data retention and routing. Logs are sent to root log streams, while metrics and traces continue through standard data streams. If you haven't enabled wired streams, you'll be prompted to do so.
 4. Follow the instructions for your platform.
 
-For an overview of the {{product.edot-collector}}, refer to [{{edot}} (EDOT)](opentelemetry://reference/index.md).
+For an overview of the {{product.edot-collector}}, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 
 :::{tab-item} {{k8s}}
 
-Elastic {{observability}} can collect telemetry data from {{k8s}} through the Elastic Distribution of OpenTelemetry Collector or the Elastic Agent.
+Elastic {{observability}} can collect telemetry data from {{k8s}} through {{agent}}.
 
 1. Select **Add data** from the main menu and then select **{{k8s}}**.
 2. Select one of these options:
@@ -71,10 +73,10 @@ Elastic {{observability}} can collect telemetry data from {{k8s}} through the El
     * **{{product.elastic-agent}}: Logs & Metrics**: Bring data from Elastic {{integrations}}.
 3. {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Select an ingestion mode:
     * **Classic ingestion**: Ingest data through standard Elastic data streams.
-    * **Wired Streams**: Route logs through [wired streams](/solutions/observability/streams/wired-streams.md), a managed log hierarchy with centralized data retention and routing. Logs are sent to root log streams, while metrics and traces continue through standard data streams. If you haven't enabled wired streams, you'll be prompted to do so.
+    * **Wired Streams**: Route logs through [wired streams](/solutions/observability/streams/get-data-in.md#get-data-in-wired), a managed log hierarchy with centralized data retention and routing. Logs are sent to root log streams, while metrics and traces continue through standard data streams. If you haven't enabled wired streams, you'll be prompted to do so.
 4. Follow the instructions for your platform.
 
-For an overview of EDOT, refer to [{{edot}} (EDOT)](opentelemetry://reference/index.md).
+For an overview of {{edot}}, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 
@@ -143,7 +145,7 @@ After you've onboarded your data, you can explore it in the following Elastic {{
 - [Explore your logs](/solutions/observability/logs/explore-logs.md) in the Logs UI.
 - [Analyze infrastructure and host metrics](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) in the Infrastructure UI.
 - [View and analyze APM data](/solutions/observability/apm/view-analyze-data.md) in the Applications UI.
-- Use the [Elastic Query Language ({{esql}})](/explore-analyze/discover/try-esql.md) to search and filter your data.
+- Use the [Elasticsearch Query Language ({{esql}})](/explore-analyze/discover/try-esql.md) to search and filter your data.
 
 ::::::
 

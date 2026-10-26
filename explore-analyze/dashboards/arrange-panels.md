@@ -27,6 +27,11 @@ To organize dashboard panels, you need the **All** privilege for the **Dashboard
 
 ## Dashboard grid layout and best practices [dashboard-grid-layout]
 
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6+"}
+To have an agent apply layout practices like these to a dashboard you already built, [enhance it with AI](enhance-dashboard-with-ai.md).
+:::
+
 Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default.
 
 Size panels to match what they show. Use these as starting points and adjust for the density of your data:
@@ -45,6 +50,7 @@ Consider the following best practices to keep dashboards scannable as you add pa
 * **Place KPIs and key trends above the fold.** On a 1080p screen, roughly 20–24 rows are visible without scrolling. Put metrics in the top row so viewers see the most important information first. Aim for 8–12 panels above the fold.
 * **Keep heights consistent within a row.** When several panels sit side by side, use the same height for all of them. Mismatched heights leave awkward gaps and make the row harder to read.
 * **Match panel width to importance.** Give primary charts more horizontal room, and group compact KPI metrics into narrower panels along a single row.
+* **Order panels from summary to detail.** Lead with high-level metrics, follow with time series trends, then add breakdowns and distributions such as top-N rankings. When you use sections, keep each section to one of those purposes: summary metrics, trends, or breakdowns.
 * **Separate secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
 * **Don't use text panels as section headers.** They take up vertical space without showing data. Use collapsible section labels and descriptive panel titles instead.
 
@@ -96,7 +102,7 @@ Each dashboard enforces the following limits:
 
 - Up to 1,000 top-level items (panels, including unpinned controls, and sections combined)
 - Up to 1,000 panels inside each section
-- Up to 100 [pinned controls](add-controls.md)
+- Up to 100 [pinned controls](../visualize/dashboard-controls.md#pinned-unpinned-controls)
 
 These limits are independent of each other. For example, a single dashboard can have 100 pinned controls, 1,000 sections at the top level, and 1,000 panels inside each of those sections.
 
@@ -127,7 +133,7 @@ Users viewing the dashboard will find the section in the same state as when you 
 :::{note} 
 :applies_to: stack: ga 9.4
 
-**Filter controls and sections**: Controls placed inside a collapsible section apply their filters only to panels within that section. Controls placed outside sections, or [pinned to the dashboard header](add-controls.md), have global scope and filter all relevant panels on the dashboard. Refer to [Add filter controls](add-controls.md) for more on pinned and unpinned controls.
+**Filter controls and sections**: Controls placed inside a collapsible section apply their filters only to panels within that section. Controls placed outside sections, or [pinned to the top of the dashboard](../visualize/dashboard-controls.md), have global scope and filter all relevant panels on the dashboard.
 :::
 
 ![Collapsible sections](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8c368aecdd095010/685e8fcb9c34ed3c353812a5/collapsible_panels.gif)

@@ -28,7 +28,7 @@ Choose the relevant option for your cloud service provider:
 | Cloud service provider | Service | Applicable deployment types |
 | --- | --- | --- |
 | AWS | [AWS PrivateLink](/deploy-manage/security/private-connectivity-aws.md) | {{ech}}, {{serverless-short}} |
-| Azure | [Azure Private Link](/deploy-manage/security/private-connectivity-azure.md) | {{ech}} |
+| Azure | [Azure Private Link](/deploy-manage/security/private-connectivity-azure.md) | {{ech}}, {{serverless-short}} |
 | GCP | [GCP Private Service Connect](/deploy-manage/security/private-connectivity-gcp.md) | {{ech}} |
 
 For private connections created for {{ech}} deployments, after you set up your private connection, you can [claim ownership of your private connection ID](/deploy-manage/security/claim-private-connection-api.md) to prevent other organizations from using it.

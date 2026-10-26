@@ -12,10 +12,10 @@ products:
 
 Schedule [triggers](trigger.md) define when the watch execution should start based on date and time. All times are in UTC time unless a timezone is explicitly specified in the schedule.
 
-{{watcher}} uses the system clock to determine the current time. To ensure schedules are triggered when expected, you should synchronize the clocks of all nodes in the cluster using a time service such as [NTP](http://www.ntp.org/).
+{{watcher}} uses the system clock to determine the current time. To ensure schedules are triggered when expected, [keep the clocks on all nodes synchronized](/deploy-manage/deploy/self-managed/system-config-clocks.md).
 
 ::::{note}
-{{watcher}} can’t correct for manual adjustments to the system clock. Be aware when making such changes that watch execution may be affected with watches being skipped or repeated if the adjustment covers their target execution time. This applies to changes made via NTP as well.
+{{watcher}} does not correct for discontinuities in the system clock, in which the clock time jumps forwards or backwards. Discontinuities happen when setting the clock manually, and sometimes when using a time synchronization service if the node's clock is allowed to drift too far out of synchronization. Watches can trigger at unexpected times, or be skipped or repeated, if the system clock experiences a discontinuity.
 ::::
 
 When specifying a timezone for a watch, keep in mind the effect daylight savings time transitions may have on the schedule, especially if the watch is scheduled to run during the transition. Here’s how {{watcher}} handles watches scheduled during discontinuities:

@@ -27,6 +27,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * To view information about the stream’s backing indices, click the number in the **Indices** column.
 * A value in the **Data retention** column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time.
 * To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is managed by a [data stream lifecycle](/manage-data/lifecycle/data-stream.md).
+* {applies_to}`serverless: ga` If your project has a maximum retention period configured, the **Edit data retention** flyout shows the maximum below the retention field and won't let you save a longer value. To learn how default and maximum retention are applied, refer to [Data stream retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
 
 ## Manage data streams on the Streams page [manage-data-streams-with-streams]
 ```{applies_to}
@@ -42,9 +43,9 @@ The [**Streams**](/solutions/observability/streams/streams.md) page provides a c
 
 
 You can perform the following data management tasks on the **Streams** page:
-* [define parsing and field extraction logic](/solutions/observability/streams/management/extract.md)
-* [configure data retention policies](/solutions/observability/streams/management/retention.md)
-* [manually adjust index settings](/solutions/observability/streams/management/advanced.md)
-* [manage and update field mappings](/solutions/observability/streams/management/schema.md)
-* [identify failed and degraded documents](/solutions/observability/streams/management/data-quality.md)
-* [partition data into child streams](/solutions/observability/streams/management/partitioning.md) {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview`
+* [define parsing and field extraction logic](/solutions/observability/streams/parse-and-process.md)
+* [configure data retention policies](/solutions/observability/streams/configure-retention.md)
+* [manually adjust index settings](/solutions/observability/streams/advanced.md)
+* [manage and update field mappings](/solutions/observability/streams/map-fields.md)
+* [identify failed and degraded documents](/solutions/observability/streams/manage-data-quality.md)
+* [partition data into child streams](/solutions/observability/streams/organize-your-data.md) {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview`

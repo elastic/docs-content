@@ -1,6 +1,6 @@
 ---
-navigation_title: Collector doesn't start
-description: Learn what to do when the EDOT Collector doesn’t start.
+navigation_title: Collector doesn’t start
+description: Learn what to do when the Elastic Agent doesn’t start.
 applies_to:
   stack:
   serverless:
@@ -13,14 +13,14 @@ products:
   - id: edot-collector
 ---
 
-# EDOT Collector doesn’t start
+# {{agent}} doesn’t start [edot-collector-doesnt-start]
 
 
-If your EDOT Collector fails to start, it's often due to configuration or environment-related issues. This guide walks you through the most common root causes and how to resolve them.
+If your {{agent}} fails to start, it’s often due to configuration or environment-related issues. This guide walks you through the most common root causes and how to resolve them.
 
 ## Symptoms   
 
-EDOT Collector fails to start or crashes immediately after launch.
+{{agent}} fails to start or crashes immediately after launch.
 
 Possible causes include:
 
@@ -31,14 +31,14 @@ Possible causes include:
 
 ## Resolution
 
-The solution depends on your EDOT Collector's setup:
+The solution depends on your {{agent}}'s setup:
 
 * [Standalone](#standalone-edot-collector)
 * [Kubernetes](#kubernetes-edot-collector)
 
-### Standalone EDOT Collector
+### Standalone {{agent}} [standalone-edot-collector]
 
-If you're deploying the EDOT Collector in a standalone configuration, try to:
+If you're deploying the {{agent}} in a standalone configuration, try to:
 
 * Validate configuration syntax
 
@@ -79,12 +79,12 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    
    * **For managed OTLP endpoint**: use relevant receivers and export using the `otlp` exporter
    
-   Refer to [Default configuration of the EDOT Collector (Standalone)](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for full examples for each use case.
+   Refer to [Default configuration of the {{agent}} (Standalone)](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for full examples for each use case.
 
 
 * Check for port conflicts
 
-   By default, EDOT uses:
+   By default, {{edot}} uses:
    
    * 4317 for OTLP/gRPC
    * 4318 for OTLP/HTTP
@@ -97,9 +97,9 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
 
    If needed, adjust your configuration or free up the port. For network connectivity issues, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
-### Kubernetes EDOT Collector
+### Kubernetes {{agent}} [kubernetes-edot-collector]
 
-If you're deploying the EDOT Collector using the Elastic Helm charts, try to:
+If you're deploying the {{agent}} using the Elastic Helm charts, try to:
 
 * Double-check your custom `values.yaml` or -`-set` overrides for typos or missing fields.
 

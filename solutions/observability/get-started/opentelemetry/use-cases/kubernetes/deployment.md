@@ -1,6 +1,6 @@
 ---
 navigation_title: Deployment
-description: Instructions for deploying EDOT components for Kubernetes monitoring, using guided onboarding or manual steps.
+description: Instructions for deploying {{edot}} components for Kubernetes monitoring, using guided onboarding or manual steps.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Deploy EDOT for Kubernetes observability [k8s-edot-deployment]
+# Deploy {{edot}} for Kubernetes observability [k8s-edot-deployment]
 
 You can use the [guided onboarding](#deploy-using-the-guided-onboarding) or [deploy all components manually](#manual-deployment)
 
@@ -24,7 +24,7 @@ The guided onboarding simplifies deploying your Kubernetes components by setting
 Follow these steps to use the guided onboarding:
 
 1. In {{kib}}, navigate to **Observability** → **Add data**.
-2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
+2. Select **Kubernetes**, then choose **Kubernetes monitoring with {{agent}}**.
 3. Follow the instructions to install the OpenTelemetry Operator using the Helm chart and the provided `values.yaml`.
 
 When installing the OpenTelemetry Operator:
@@ -88,6 +88,42 @@ Follow these steps to install the operator:
           --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
           --version {{kube-stack-version}}
     ```
+
+### Deploy on OpenShift [k8s-edot-deployment-openshift]
+
+```{applies_to}
+edot_collector: ga 9.5.5+
+```
+
+On OpenShift, follow the [operator installation instructions](#operator-installation) and in step 4 use the following command to apply the OpenShift values file after the base values file:
+
+```bash subs=true
+helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+      --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
+      --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/values.yaml' \
+      --version {{kube-stack-version}}
+```
+
+The OpenShift values file configures the minimum permissions required to run the chart and collect Kubernetes telemetry. It creates a custom [security context constraint (SCC)](https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/authentication_and_authorization/managing-pod-security-policies) for the daemon collector. Refer to the [OpenShift values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/values.yaml) for the complete configuration.
+
+#### Run the daemon collector as non-root
+
+By default, the daemon collector runs as root to read host files. To run it as a non-root user, also apply the rootless values file after the OpenShift values file:
+
+```bash subs=true
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/openshift/rootless-values.yaml'
+```
+
+The rootless configuration uses an init container to make `/var/lib/otelcol` writable so that the collector can persist file log checkpoints.
+
+#### Use an existing OpenTelemetry Operator
+
+If the OpenTelemetry Operator is already installed through Operator Lifecycle Manager (OLM), such as from OperatorHub, add the following flags to prevent the chart from installing another operator and its custom resource definitions (CRDs):
+
+```bash
+--set crds.installOtel=false \
+--set opentelemetry-operator.enabled=false
+```
 
 ## Verify the installation
 

@@ -26,7 +26,7 @@ The **Entity analytics** page provides a centralized workspace for investigating
   * `read` for `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>`
   * **Read** for the **Management → Saved Objects Management** feature 
 * {applies_to}`serverless: ga` If you're using a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md), make sure it grants `read` access to all the required index patterns.
-* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 :::
 
 To access the page:
@@ -83,7 +83,8 @@ serverless: ga
 ```
 
 :::{admonition} Requirements
-To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](/reference/machine-learning/ootb-ml-jobs-siem.md).
+* To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt {{anomaly-jobs}}](/reference/machine-learning/ootb-ml-jobs-siem.md).
+* Loading this panel requires `read` privileges for the `.ml-anomalies-shared*` index and **Read** for the **Machine Learning** {{kib}} feature.
 :::
 
 This panel displays recent entity-related anomalies detected by prebuilt {{ml}} jobs. Interact with this section in the following ways:

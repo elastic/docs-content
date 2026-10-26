@@ -11,17 +11,11 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
-<!-- :::{changelog} /releases
+:::{changelog}
 :type: deprecation
-::: -->
-
-:::{include} _snippets/2026-06-18/deprecations.md
-:::
-
-:::{include} _snippets/2026-05-19/deprecations.md
-:::
-
-:::{include} _snippets/2026-05-14/deprecations.md
+:cdn: cloud-serverless
+:link-visibility: keep-links
+:description-visibility: keep-descriptions
 :::
 
 ## April 28, 2026 [elastic-cloud-serverless-04282026-deprecations]

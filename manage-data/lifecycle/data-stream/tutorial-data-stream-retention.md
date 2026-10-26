@@ -43,7 +43,6 @@ The result should look like this:
 1. The name of your data stream.
 2. Ensure that the lifecycle is enabled, meaning this should be `true`.
 
-
 :::{tip}
 :applies_to: {"stack": "ga 9.2, preview 9.1", "serverless": "ga"}
 
@@ -58,7 +57,6 @@ We define retention as the least amount of time the data of a data stream are go
 Retention does not define the period that the data will be removed, but the minimum time period they will be kept.
 ::::
 
-
 We define 4 different types of retention:
 
 * The data stream retention, or `data_retention`, which is the retention configured on the data stream level. It can be set using an [index template](../../data-store/templates.md) for future data streams or using the [PUT data stream lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle) for an existing data stream. When the data stream retention is not set, it implies that the data need to be kept forever.
@@ -69,8 +67,6 @@ We define 4 different types of retention:
 ::::{note}
 Global default and max retention do not apply to data streams internal to elastic. Internal data streams are recognized either by having the `system` flag set to `true` or if their name is prefixed with a dot (`.`).
 ::::
-
-
 
 ## How to configure retention? [retention-configuration]
 
@@ -123,8 +119,6 @@ Global default and max retention do not apply to data streams internal to elasti
       }
     }
     ```
-
-
 
 ## How is the effective retention calculated? [effective-retention-calculation]
 
@@ -180,12 +174,15 @@ We see that it will remain the same with what the user configured:
 4. The retention that is applied by the data stream lifecycle on this data stream.
 5. The configuration that determined the effective retention. In this case it’s the `data_configuration` because it is less than the `max_retention`.
 
-
-
 ## How is the effective retention applied? [effective-retention-application]
 
-Retention is applied to the remaining backing indices of a data stream as the last step of [a data stream lifecycle run](../data-stream.md#data-streams-lifecycle-how-it-works). Data stream lifecycle will retrieve the backing indices whose `generation_time` is longer than the effective retention period and delete them. The `generation_time` is only applicable to rolled over backing indices and it is either the time since the backing index got rolled over, or the time optionally configured using the [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) setting.
+Retention is applied to the remaining backing indices of a data stream as the last step of [a data stream lifecycle run](../data-stream.md#data-streams-lifecycle-how-it-works). Data stream lifecycle retrieves the backing indices whose `generation_time` is longer than the effective retention period and deletes them. The `generation_time` is only applicable to rolled over backing indices and it is either the time since the backing index got rolled over, or the time optionally configured using the [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) setting.
 
-::::{important}
-We use the `generation_time` instead of the creation time because this ensures that all data in the backing index have passed the retention period. As a result, the retention period is not the exact time data get deleted, but the minimum time data will be stored.
+We use the `generation_time` instead of the creation time because this ensures that all data in the backing index have passed the retention period.
+As a result, the retention period is not the exact time data get deleted, but the minimum time data is stored.
+
+::::{note}
+:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
+
+Backing indices may be converted to {{search-snaps}} on the frozen tier **before** retention makes them eligible for deletion if you set [`frozen_after`](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md). Effective retention still applies: indices are removed after their `generation_time` exceeds the effective retention period.
 ::::

@@ -22,7 +22,7 @@ This issue can occur in both {{serverless-full}} and {{ech}} (ECH) environments.
 
 ## Symptoms
 
-You might notice log messages similar to the following in your EDOT Collector output or SDK logs:
+You might notice log messages similar to the following in your {{agent}} output or SDK logs:
 
 ```json
 {
@@ -65,7 +65,7 @@ After scaling, monitor your ingest metrics to verify that the rate of accepted r
 
 ### Reduce ingest rate or enable backpressure
 
-Lower the telemetry export rate by enabling batching and retry mechanisms in your EDOT Collector or SDK configuration. For example:
+Lower the telemetry export rate by enabling batching and retry mechanisms in your {{agent}} or SDK configuration. For example:
 
 ```yaml
 processors:

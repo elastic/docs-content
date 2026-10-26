@@ -26,6 +26,8 @@ Use the following topics to explore relevant strategies:
 
   For additional guidance specific to {{esql}} queries, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
 
+  For additional guidance specific to EQL queries, refer to [How functions impact search performance](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-how-functions-impact-search-performance).
+
 * [Tune approximate kNN search](optimize-performance/approximate-knn-search.md)
 * [Tune for disk usage](optimize-performance/disk-usage.md)
 * [Size your shards](optimize-performance/size-shards.md)

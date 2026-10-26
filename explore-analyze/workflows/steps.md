@@ -43,6 +43,7 @@ Flow control steps define how a workflow runs. They control the order, structure
 * **Conditional logic** (`if`, `switch`): Run different steps based on values and predicates.
 * **Loops and iteration** (`foreach`, `while`): Process collections or repeat until a condition changes.
 * **Loop control** (`loop.break`, `loop.continue`): Exit early or skip to the next iteration.
+* {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Concurrency** (`parallel`): Run independent branches at the same time and collect their results.
 * **Pauses and waits** (`wait`, `waitForInput`): Introduce timed pauses or pause for human input.
 
 These steps make workflows dynamic and responsive, allowing them to adapt in real time to data and conditions.

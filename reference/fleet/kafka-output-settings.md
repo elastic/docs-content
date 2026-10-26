@@ -77,7 +77,7 @@ Select the mechanism that {{agent}} uses to authenticate with Kafka.
     * SCRAM-SHA-256 - uses the SHA-256 hashing function
     * SCRAM-SHA-512 - uses the SHA-512 hashing function
 
-    To prevent unauthorized access your Kafka password is stored as a secret value. While secret storage is recommended, you can choose to override this setting and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or higher.
+    To prevent unauthorized access your Kafka password is stored as a secret value. While secret storage is recommended, you can choose to override this setting and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or later.
 
     Note that this setting can also be stored as a secret value or as plain text for preconfigured outputs. See [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) in the {{kib}} Guide to learn more.
 
@@ -95,7 +95,7 @@ Select the mechanism that {{agent}} uses to authenticate with Kafka.
 
         In cases where each client has a unique certificate key, the local path to that certificate key can be placed here. The agents will pick the certificate key in that location when establishing a connection to Kafka.
 
-        To prevent unauthorized access the certificate key is stored as a secret value. While secret storage is recommended, you can choose to override this setting and store the key as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or higher.
+        To prevent unauthorized access the certificate key is stored as a secret value. While secret storage is recommended, you can choose to override this setting and store the key as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or later.
 
         Note that this setting can also be stored as a secret value or as plain text for preconfigured outputs. See [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) in the {{kib}} Guide to learn more.
 
@@ -138,7 +138,7 @@ The number of partitions created is set automatically by the Kafka broker based 
 :   Publish records to Kafka output broker event partitions based on a hash computed from the specified list of fields. If a field is not specified, the Kafka event key value is used.
 
 
-### Topics settings [_topics_settings]
+### Topic settings [_topics_settings]
 
 Use this option to set the Kafka topic for each {{agent}} event.
 

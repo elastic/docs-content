@@ -9,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Install {{es}} with Docker [docker]
+# {{es}} Docker installation [docker]
 
 Docker images for {{es}} are available from the Elastic Docker registry. A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co). The source code is in [GitHub](https://github.com/elastic/elasticsearch/blob/master/distribution/docker).
 

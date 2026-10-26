@@ -27,7 +27,7 @@ Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output
 |---|---|
 | You're copying the same steps across many workflows. | Extract them into a shared child workflow and call it. |
 | A long workflow is hard to test end to end. | Break it into smaller pieces and test each one in isolation. |
-| You need to fan out to N background jobs. | Use `workflow.executeAsync` to fire and forget. |
+| You need to fan out to N background jobs. | Use `workflow.executeAsync` to fire and forget. To fan out inside the current workflow and use the results, use the [`parallel` step](/explore-analyze/workflows/steps/parallel.md) instead. |
 | Different teams own different parts of a process. | Each team maintains their own child workflow. |
 
 ## Shape of a composed workflow

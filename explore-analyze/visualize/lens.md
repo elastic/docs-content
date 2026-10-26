@@ -1,5 +1,5 @@
 ---
-navigation_title: Lens
+navigation_title: Visualizations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Lens [lens]
+# Lens visualizations [lens]
 
 **Lens** is {{kib}}'s visualization editor for building charts, tables, maps, and metrics. It supports two modes for creating visualizations:
 
@@ -19,6 +19,8 @@ products:
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
 :::
+
+$$$lens-visualization-types$$$
 
 With Lens, you can create the following visualization types:
 
@@ -45,17 +47,13 @@ With Lens, you can create the following visualization types:
 ## Create visualizations with the API [lens-api]
 
 ```{applies_to}
-stack: preview 9.4
-serverless: preview
+stack: ga 9.5+, preview =9.4
+serverless: ga
 ```
 
 You can create and manage Lens visualizations programmatically using the Visualizations API ([stateful](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations), [serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-visualizations)). This is useful for managing visualizations as code, automating their lifecycle, or building tooling around Lens charts.
 
 Visualizations created through this API can be added to dashboards using the Kibana UI or the Dashboards API.
-
-:::{note}
-The Visualizations API is in technical preview and may change in future releases.
-:::
 
 ## Create visualizations [create-the-visualization-panel]
 
@@ -81,7 +79,11 @@ As you drag fields to the layer pane, Lens automatically selects an aggregation 
 
 ::::{step}  Customize the appearance of your visualization
 
-In the Lens editor, you can customize the appearance of your visualization by clicking the **Style** icon {icon}`brush` and the **Legend** icon ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") in the layer pane.
+$$$configure-the-visualization-components$$$
+$$$customize-visualization-appearance$$$
+$$$customize-visualization-legend$$$
+
+In the Lens editor, use the {icon}`brush` **Style** and ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") **Legend** controls in the layer pane to customize your visualization. The available controls vary by chart type. For all settings, open the dedicated page for your chart from the [visualization type table](#lens-visualization-types).
 
 ::::
 
@@ -102,7 +104,7 @@ $$$save-the-lens-panel$$$
 
 :::::
 
-Once you have created your visualization, you can edit it directly on the dashboard. Click the **Edit visualization configuration** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
+Once you have created your visualization, you can edit it directly on the dashboard. Select the **Edit visualization** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
 
 
 ### Change the fields list [change-the-fields]
@@ -114,7 +116,7 @@ When you can create a visualization, you can change the fields list to display a
 
 If the fields list is empty, change the [time filter](../query-filter/filtering.md).
 
-For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
+For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
 
 ### Assign colors to terms [assign-colors-to-terms]
 ```{applies_to}
@@ -145,8 +147,8 @@ To assign colors to terms in your visualization:
 
 1. Create a visualization using one of the supported types.
 2. Add a categorical field that contains the terms you want to color.
-3. In the field configuration, look for the **Color by value** option:
-   * For data tables: Select **Cell** or **Text**
+3. In the field configuration, look for the **Cell decoration** or **Color by value** (depending on your {{kib}} version) option:
+   * For data tables: Select **Background** or **Cell** (depending on your {{kib}} version), or **Text**
    * For other chart types: This option appears when you have a categorical breakdown
 4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
 5. Select a color palette from the available options:
@@ -262,6 +264,10 @@ These are examples of common formulas:
 
 Compare your real-time data to the results that are offset by a time increment. For example, you can compare the real-time percentage of a user CPU time spent to the results offset by one hour.
 
+:::{tip}
+To apply a time shift in an {{esql}} visualization, refer to [Compare current versus previous period with time shift](esorql.md#esql-viz-time-shift).
+:::
+
 1. In the layer pane, click the field you want to offset.
 2. Click **Advanced**.
 3. In the **Time shift** field, enter the time offset increment.
@@ -310,9 +316,9 @@ From the annotation panel, you can choose the type of placement and adjust the i
       2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
       3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
 
-    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search). To create custom query annotations:
+    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md). To create custom query annotations:
       1. Select **Custom query**.
-      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
+      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md).
       3. Select the **Target date field**.
 
 **Appearance**
@@ -408,194 +414,14 @@ In the legend, click the field, then choose one of the following options:
 :::
 
 
-## Customize the visualization display [configure-the-visualization-components]
-
-Each visualization offers various options that you can use to customize its appearance:
-
-* **Style** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
-* **Labels** — Specifies how to display the labels for donut charts, pie charts, and treemaps.
-* **Legend** — Specifies how to display the legend. You can choose to display the legend inside or outside the visualization, truncate the legend values when they’re too long, and [select additional statistics to show](#customize-visualization-legend).
-* **Left axis**, **Bottom axis**, and **Right axis** — Specify how you want to display the chart axes. For example, add axis labels and change the orientation and bounds.
-
-### Visualization appearance and style options [customize-visualization-appearance]
-
-You can customize the appearance of your visualizations with several options. To do that, look for the {icon}`brush` **Style** button.
-
-These options can vary depending on the type of chart.
-
-#### Area, Bar, and Line charts
-
-**Area fill opacity**
-:   For **Area** charts. Opacity of the area fill. Defaults to `0.3`.
-
-**Bar orientation**
-:   For **Bar** charts. Choose between **Horizontal** and **Vertical**.
-
-**Line interpolation**
-:   For **Line** charts. Choose how to interpolate the line between data points from the available options: **Straight** (default), **Smooth**, and **Step**.
-
-**Missing values**
-:   For **Area** and **Line** charts. Choose between **Hide**, **Zero**, **Linear**, **Last**, and **Next**. This option controls how gaps in data appear on the chart. By default, gaps are hidden.
-
-    _Missing values_ include empty buckets and metrics: Buckets without documents or metrics that returned `null` due to their operation and data content.
-    
-    ```{note}
-    You can only use this option when the **Include empty rows** option of the chart is enabled or when a metric produces a null bucket. For example, if a moving average finds empty buckets.
-    ```
-
-    * **Hide**: Don't show gaps in data.
-      
-      ![Hide missing values](../images/charts-gaps-fill-hide.png "Hide missing values =50%")
-
-    * **Zero**: Fill gaps by connecting starting and ending data points to zero.
-      
-      ![Fill gaps to zero](../images/charts-gaps-fill-zero.png "Fill gaps to zero =50%")
-
-    * **Linear**: Fill gaps by connecting related starting and ending data points together with a direct line.
-      
-      ![Fill gaps with a direct line](../images/charts-gaps-fill-linear.png "Fill gaps with a direct line =50%")
-    
-    * **Last**: Fill gaps between data points with a horizontal or vertical line that uses the last ending point value, when available, to determine its position.
-      
-      ![Fill gaps with a straight line from last known data point](../images/charts-gaps-fill-last.png "Fill gaps with a straight line from last known data point =50%")
-
-    * **Next**: Fill gaps between data points with a horizontal or vertical line that uses the next starting point value, when available, to determine its position.
-      
-      ![Fill gaps with a straight line from next known data point](../images/charts-gaps-fill-next.png "Fill gaps with a straight line from next known data point =50%")
-
-    **End values**
-    :   If you've chosen to show missing values, you can also decide to extend data series to the edge of the chart. By default, end values are hidden.
-        
-        * **Hide**: Don't extend series to the edge of the chart.
-        * **Zero**: Extend series as zero to the edge of the chart.
-        * **Nearest**: Extend series with their first or last value to the edge of the chart.
-
-    **Show as dotted line**
-    :   If you've chosen to show missing values, you can turn on this option to show gaps as a dotted line.
-
-**Point visibility** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
-:   For **Area** and **Line** charts. Use this option to show or hide data points. Set to `Auto` by default: Points are visible unless the distance between them is too short.
-
-#### Metric charts
-```{applies_to}
-stack: ga 9.2
-```
-When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` **Style** button.
-
-**Primary metric**
-:   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
-
-**Title and subtitle**
-:   Enter a subtitle and define the relevant settings:
-    - **Alignment**
-    - {applies_to}`stack: ga 9.2-9.3` **Font weight**
-
-**Secondary metric**
-:   Define the **Alignment**.
-
-**Other**
-:   Choose the **Icon** position.
-
-#### Tables
-
-**Density** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
-:   Make the table more or less compact. Choose between **Compact**, **Normal** (default), and **Expanded**.
-
-**Max header cell lines**
-:   The maximum number of lines that header cells can span over. If the content exceeds this limit and is truncated, an ellipsis indicates it.
-
-**Body cell lines**
-:   The fixed number of lines that body cells span over. If the content exceeds this limit and is truncated, an ellipsis indicates it.
-
-**Paginate table**
-:   Turn on this option to paginate the table. Pagination shows when the table contains at least 10 items, and lets you define how many items to display per page. When turned off, you can scroll through all items.
-
-**Show row numbers** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
-
-#### Pie charts
-
-For comprehensive pie chart documentation, including best practices, advanced scenarios, and all configuration options, refer to [Build pie charts with {{kib}}](/explore-analyze/visualize/charts/pie-charts.md).
-
-**Donut hole**
-:   Display a **Small**, **Medium**, or **Large** hole at the center of the pie chart. Defaults to **None**.
-
-#### Gauge charts
-
-**Gauge shape**
-:   Define the shape of the gauge. Choose between **Linear**, **Minor arc**, **Major arc**, and **Circle**. When set to **Linear**, you can choose to display the chart horizontally or vertically.
-
-#### Tag clouds
-
-**Font size**
-:   Define the range of font sizes used in the tag cloud. The font size is based on the number of times a tag appears in the data.
-
-**Orientation**
-:   Define the orientation of the tags. Choose **Single**, **Right angled**, and **Multiple**.
-
-**Show label**
-:   Turn on this option to show a label for the tag cloud. You can define this label when defining the tags to show for the visualization, by customizing the **Name** field.
-
-
-### Customize the visualization legend [customize-visualization-legend]
-
-To customize the legend of your visualization, click the **Legend** icon ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") in the layer pane.
-
-:::{image} /explore-analyze/images/kibana-lens-legend.png
-:screenshot:
-:alt: Menu with options to customize the legend of a visualization
-:::
-
-::::{note}
-The options available can vary based on the type of chart you’re setting up. For example, showing additional statistics is only possible for time series charts.
-::::
-
-
-**Change the legend’s display**
-
-With the **Visibility**, **Position**, and **Width** options, you can adjust the way the legend appears in or next to the visualization.
-
-**Truncate long labels**
-
-With the **Label truncation** option, you can keep your legend minimal in case of long labels that span over multiple lines.
-
-**Show additional statistics for time series charts**
-
-To make your legends as informative as possible, you can show some additional **Statistics** for charts with a timestamp on one of the axes, and add a **Series header**.
-
-**Bar**, **Line** and **Area** charts can show the following values:
-
-* **Average**: Average value considering all data points in the chart
-* **Median**: Median value considering all data points in the chart
-* **Minimum**: Minimum value considering all data points in the chart
-* **Maximum**: Maximum value considering all data points in the chart
-* **Range**: Difference between min and max values
-* **Last value**: Last value considering all data points in the chart
-* **Last non-null value:** Last non-null value
-* **First value**: First value considering all data points in the chart
-* **First non-null value**: First non-null value
-* **Difference**: Difference between first and last values
-* **Difference %**: % difference between first and last values
-* **Sum**: Sum of al values plotted in the chart
-* **Count**: number of data points plotted in the chart
-* **Distinct Count**: number of data points with different values plotted in the chart
-* **Variance**: Variance of all data points plotted in the chart
-* **Std Deviation**: Standard deviation of all data points plotted in the chart
-* **Current or last value**: The exact value of the current or last data point moused over
-
-All statistics are computed based on the selected time range and the aggregated data points shown in the chart, rather than the original data coming from {{es}}.
-
-For example, if the metric plotted in the chart is `Median(system.memory)` and the time range is **last 24 hours**, when you show the **Max** statistic in the Legend, the value that shows corresponds to the `Max[Median(system.memory)]` for the last 24 hours.
-
-:::{image} /explore-analyze/images/kibana-statistics-in-legends.png
-:alt: Additional statistics shown in the legend of a memory consumption bar chart
-:::
-
 ## Explore the data in Discover [explore-lens-data-in-discover]
 
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
 
-To get started, click **Explore data in Discover** in the toolbar.
+Open the data in **Discover**:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Open in Discover**.
+- {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Explore in Discover**.
 
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 
@@ -604,7 +430,11 @@ For more information about exploring your data with **Discover**, check out [Dis
 
 To view the data included in the visualization and the requests that collected the data, use the **Inspector**.
 
-1. In the toolbar, click **Inspect**.
+1. Open the **Inspector**:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Inspect**.
+    - {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Inspect**.
+
 2. Open the **View** dropdown, then click **Data**.
 
     1. From the dropdown, select the table that contains the data you want to view.
@@ -743,7 +573,7 @@ To configure the bounds, use the menus in the editor toolbar. Bar and area chart
 ::::{dropdown} Is it possible to display icons in data tables?
 :name: is-it-possible-to-show-icons-in-datatable
 
-You can display icons with [field formatters](../find-and-organize/data-views.md) in data tables.
+You can display icons with [field formatters](../find-and-organize/data-views/field-formatters.md) in data tables.
 
 ::::
 

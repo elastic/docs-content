@@ -1,6 +1,6 @@
 ---
 navigation_title: OpenTelemetry
-description: Learn how to integrate OpenTelemetry with Elastic APM using Elastic Distributions, contrib SDKs, and APM agents. Includes setup for serverless, self-managed, and AWS Lambda.
+description: Send OpenTelemetry data to Elastic APM with EDOT, contrib SDKs and Collectors, Elastic APM agent bridges, or the managed OTLP endpoint.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry.html
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html
@@ -12,7 +12,7 @@ products:
   - id: observability
 ---
 
-# Use OpenTelemetry with Elastic APM
+# OpenTelemetry with Elastic APM
 
 OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. You can use OpenTelemetry to collect application performance data in Elastic APM, whether you’re running serverless, self-managed, or hybrid deployments.
 
@@ -21,14 +21,16 @@ OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the 
 
 **Install OpenTelemetry content packs to work with OpenTelemetry data**
 
-To visualize data from OpenTelemetry receivers which is stored natively as OpenTelemetry semantic conventions, you must install content-only packs that provide dashboards compatible with OpenTelemetry data.
+OpenTelemetry data is stored using OpenTelemetry semantic conventions. You must install content-only packs that provide compatible dashboards to visualize your data.
 
-In the Kibana Integrations UI, search for `otel` to find and install available integrations, like **System OpenTelemetry Assets**, to access the dashboards. We are adding more OpenTelemetry content packs every week, reach out by [opening an issue](https://github.com/elastic/integrations/issues) if what you are looking for is not available as an OTel content pack.
+In the {{kib}} Integrations UI, search for `otel` and install packs like **System OpenTelemetry Assets**. Beats-based integrations ship ECS dashboards, which don't work with OpenTelemetry semantic conventions.
 
-Other Integrations which are beats-based include dashboards based on ECS data and are not compatible with OpenTelemetry semantic conventions.
+Elastic adds new OpenTelemetry content packs regularly. If one you need is missing, [open an issue](https://github.com/elastic/integrations/issues).
 :::
 
-Elastic offers several distributions of OpenTelemetry. Each [Elastic Distribution of OpenTelemetry](opentelemetry://reference/index.md) is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
+Elastic offers several [{{edot}}](opentelemetry://reference/index.md) distributions. Each is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
+
+If you currently use classic Elastic {{product.apm}} agents or {{beats}} and want to move to OpenTelemetry, refer to [Switch to OpenTelemetry](/solutions/observability/get-started/opentelemetry/switch-to-otel.md).
 
 :::{include} /solutions/_snippets/edot-reference-arch.md
 :::
@@ -39,15 +41,15 @@ There are several ways to send OpenTelemetry data to Elastic. The right choice d
 
 ### Instrument your applications
 
-* **EDOT language SDKs**: Use Elastic's customized OpenTelemetry SDKs, which apply opinionated defaults and preselected instrumentations for zero-code setup, with full Elastic support. The recommended approach for most applications. Refer to [Why use the Elastic Distributions of OpenTelemetry?](#why-use-the-elastic-distributions-of-opentelemetry) for more information.
-* **Contrib OpenTelemetry SDKs**: Use community OpenTelemetry SDKs for a language that doesn't have an EDOT SDK, such as Go or C++. These work with Elastic over OTLP but receive community support only. Refer to [Contrib OpenTelemetry Collector and SDKs](#apm-otel-upstream) for more information.
-* **Elastic {{product.apm}} agents with the OpenTelemetry bridge**: Instrument your application with the vendor-neutral OpenTelemetry API while the Elastic {{apm-agent}} collects and exports the data. Useful for reusing existing manual OpenTelemetry instrumentation without vendor lock-in, though some OpenTelemetry API features aren't supported. Refer to [Contrib OpenTelemetry with Elastic {{apm-agent}}](#apm-otel-api-sdk-elastic-agent) for more information.
+* **EDOT language SDKs** (recommended): Elastic's customized OpenTelemetry SDKs, with opinionated defaults and preselected instrumentations for zero-code setup and full Elastic support. Refer to [Why use the Elastic Distributions of OpenTelemetry?](#why-use-the-elastic-distributions-of-opentelemetry) for more information.
+* **Contrib OpenTelemetry SDKs**: Community SDKs for languages without an EDOT SDK, such as Go or C++. They work with Elastic over OTLP but are community-supported. Refer to [Contrib OpenTelemetry Collector and SDKs](#apm-otel-upstream) for more information.
+* **Elastic {{product.apm}} agents with the OpenTelemetry bridge**: Instrument with the vendor-neutral OpenTelemetry API while the Elastic {{apm-agent}} collects and exports the data. Good for reusing existing manual instrumentation, but some OpenTelemetry API features aren't supported. Refer to [Contrib OpenTelemetry with Elastic {{apm-agent}}](#apm-otel-api-sdk-elastic-agent) for more information.
 
 ### Collect, process, and export data
 
-* **EDOT Collector in {{agent}}** {applies_to}`stack: ga 9.2+`: The EDOT Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. No separate Collector installation is needed. Refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for more information.
-* **Standalone EDOT Collector**: Run the EDOT Collector independently as its own process, without {{agent}}. Refer to [EDOT Collector](elastic-agent://reference/edot-collector/index.md) for more information.
-* **Upstream `otelcol-contrib` Collector**: Use the community-built Collector to forward data to an EDOT Collector or directly to {{apm-server-or-mis}} using OTLP. Useful for a vendor-neutral pipeline or fanning out to multiple observability backends, but it's community-supported only. Refer to [Contrib OpenTelemetry Collectors and language SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md) for more information.
+* **OTel Collector in {{agent}}** {applies_to}`stack: ga 9.2+`: The OTel Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. No separate Collector installation is needed. Refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for more information.
+* **Standalone {{agent}}**: Run {{agent}} independently as its own process. Refer to [{{agent}}](elastic-agent://reference/edot-collector/index.md) for more information.
+* **Upstream `otelcol-contrib` Collector**: Use the community-built Collector to forward data to {{agent}} or directly to {{apm-server-or-mis}} using OTLP. Useful for a vendor-neutral pipeline or fanning out to multiple observability backends, but it's community-supported only. Refer to [Contrib OpenTelemetry Collectors and language SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md) for more information.
 
 ### Send data directly
 
@@ -59,7 +61,7 @@ With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry://ref
 
 * You can get access to SDK improvements and bug fixes contributed by the Elastic team before the changes are available in the OpenTelemetry repositories.
 * The distribution configures the collection of tracing and metrics signals, applying opinionated defaults, such as which sources are collected by default.
-* By sending data through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md), you make sure to onboard infrastructure logs and metrics.
+* By sending data through [{{agent}}](elastic-agent://reference/edot-collector/index.md), you make sure to onboard infrastructure logs and metrics.
 
 To set up OpenTelemetry with Elastic, refer to these guides for each SDK:
 
@@ -71,7 +73,7 @@ To set up OpenTelemetry with Elastic, refer to these guides for each SDK:
 * [**Elastic Distribution of OpenTelemetry Browser**](elastic-otel-rum-js://reference/edot-browser/index.md)
 
 ::::{important}
-For a complete overview of OpenTelemetry and Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).
+For a complete overview of OpenTelemetry and Elastic, explore [**{{edot}}**](opentelemetry://reference/index.md).
 ::::
 
 ## Contrib OpenTelemetry Collector and SDKs [apm-otel-upstream]
@@ -85,14 +87,14 @@ This approach works well when you need to instrument a technology that Elastic d
 * Elastic can’t provide implementation support on how to use contrib OpenTelemetry tools.
 * You won’t have access to Elastic enterprise {{product.apm}} features.
 * You might experience problems with performance efficiency.
-* Data ingested through a contrib Collector won't trigger automatic installation of OpenTelemetry content-pack assets, such as dashboards. Only data ingested through the EDOT Collector or {{agent}} does.
+* Data ingested through a contrib Collector won't trigger automatic installation of OpenTelemetry content-pack assets, such as dashboards. Only data ingested through {{agent}} does.
 
 For more on the limitations associated with using contrib OpenTelemetry tools, refer to [Limitations](/solutions/observability/apm/opentelemetry/limitations.md).
 
 [**Get started with contrib OpenTelemetry Collectors and language SDKs →**](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md)
 
 :::{note}
-To understand the differences between Elastic Distributions of OpenTelemetry and contrib OpenTelemetry, refer to [EDOT compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md).
+To understand the differences between {{edot}} and contrib OpenTelemetry, refer to [{{edot}} compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md).
 :::
 
 ## Contrib OpenTelemetry with Elastic APM agent [apm-otel-api-sdk-elastic-agent]
@@ -112,6 +114,6 @@ Find more details about how to use an OpenTelemetry API or SDK with an Elastic A
 
 AWS Lambda functions can be instrumented with OpenTelemetry and monitored with Elastic {{observability}} or {{obs-serverless}}.
 
-To get started, follow the official AWS Distribution for OpenTelemetry Lambda documentation, and [configure the EDOT Collector in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) to send traces and metrics to your Elastic cluster:
+To get started, follow the official AWS Distribution for OpenTelemetry Lambda documentation, and [configure {{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) to send traces and metrics to your Elastic cluster:
 
 [**Get started with the AWS Distro for OpenTelemetry Lambda**](https://aws-otel.github.io/docs/getting-started/lambda)

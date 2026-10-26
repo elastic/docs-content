@@ -31,13 +31,19 @@ If a node fails and {{search-snap}} shards need to be recovered elsewhere, there
 
 You typically manage {{search-snaps}} through {{ilm-init}}. The [searchable snapshots](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action automatically converts a regular index into a {{search-snap}} index when it reaches the `cold` or `frozen` phase. You can also make indices in existing snapshots searchable by manually mounting them using the [mount snapshot]({{es-apis}}operation/operation-searchable-snapshots-mount) API.
 
+::::{note}
+:applies_to: {"stack": "ga 9.5"}
+
+For data streams, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) can automate partially mounted {{search-snaps}} using `frozen_after` on older backing indices. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+::::
+
 To mount an index from a snapshot that contains multiple indices, we recommend creating a [clone]({{es-apis}}operation/operation-snapshot-clone) of the snapshot that contains only the index you want to search, and mounting the clone. You should not delete a snapshot if it has any mounted indices, so creating a clone enables you to manage the lifecycle of the backup snapshot independently of any {{search-snaps}}. If you use {{ilm-init}} to manage your {{search-snaps}} then it will automatically look after cloning the snapshot as needed.
 
 You can control the allocation of the shards of {{search-snap}} indices using the same mechanisms as for regular indices. For example, you could use [Index-level shard allocation filtering](../../distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to restrict {{search-snap}} shards to a subset of your nodes.
 
 The speed of recovery of a {{search-snap}} index is limited by the repository setting `max_restore_bytes_per_sec` and the node setting `indices.recovery.max_bytes_per_sec` just like a normal restore operation. By default `max_restore_bytes_per_sec` is unlimited, but the default for `indices.recovery.max_bytes_per_sec` depends on the configuration of the node. See [Recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings).
 
-We recommend that you [force-merge]({{es-apis}}operation/operation-indices-forcemerge) indices to a single segment per shard before taking a snapshot that will be mounted as a {{search-snap}} index. Each read from a snapshot repository takes time and costs money, and the fewer segments there are the fewer reads are needed to restore the snapshot or to respond to a search.
+We recommend that you [force-merge]({{es-apis}}operation/operation-indices-forcemerge) indices to a single segment per shard before taking a snapshot that will be mounted as a {{search-snap}} index. Each read from a snapshot repository takes time and costs money, and the fewer segments there are the fewer reads are needed to restore the snapshot or to respond to a search. This is especially important for read performance on the [frozen data tier](/manage-data/lifecycle/data-tiers.md#frozen-tier).
 
 ::::{tip}
 {{search-snaps-cap}} are ideal for managing a large archive of historical data. Historical information is typically searched less frequently than recent data and therefore may not need replicas for their performance benefits.
@@ -76,7 +82,7 @@ $$$fully-mounted$$$
 Fully mounted index
 :   Fully caches the snapshotted index’s shards in the {{es}} cluster. {{ilm-init}} uses this option in the `hot` and `cold` phases.
 
-    Search performance for a fully mounted index is normally comparable to a regular index, since there is minimal need to access the snapshot repository. While recovery is ongoing, search performance may be slower than with a regular index because a search may need some data that has not yet been retrieved into the local cache. If that happens, {{es}} will eagerly retrieve the data needed to complete the search in parallel with the ongoing recovery. On-disk data is preserved across restarts, such that the node does not need to re-download data that is already stored on the node after a restart.
+    Search performance for a fully mounted index is normally comparable to a regular index, since there is minimal need to access the snapshot repository. While recovery is ongoing, search performance might be slower than with a regular index because a search might need some data that has not yet been retrieved into the local cache. If that happens, {{es}} will eagerly retrieve the data needed to complete the search in parallel with the ongoing recovery. On-disk data is preserved across restarts, such that the node does not need to re-download data that is already stored on the node after a restart.
 
     Indices managed by {{ilm-init}} are prefixed with `restored-` when fully mounted.
 
@@ -95,7 +101,7 @@ Partially mounted index
 
 To partially mount an index, you must have one or more nodes with a shared cache available. By default, dedicated frozen data tier nodes (nodes with the `data_frozen` role and no other data roles) have a shared cache configured using the greater of 90% of total disk space and total disk space subtracted a headroom of 100GB.
 
-Using a dedicated frozen tier is highly recommended for production use. If you do not have a dedicated frozen tier, you must configure the `xpack.searchable.snapshot.shared_cache.size` setting to reserve space for the cache on one or more nodes. Partially mounted indices are only allocated to nodes that have a shared cache.
+Using a dedicated [frozen data tier](/manage-data/lifecycle/data-tiers.md#frozen-tier) is highly recommended for production use. If you do not have a dedicated frozen tier, you must configure the `xpack.searchable.snapshot.shared_cache.size` setting to reserve space for the cache on one or more nodes. Partially mounted indices are only allocated to nodes that have a shared cache.
 
 ::::{admonition} Manual snapshot mounting
 :class: warning

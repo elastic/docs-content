@@ -1,5 +1,7 @@
 ---
 navigation_title: Observability solution
+meta_title: Elastic Observability overview
+description: Unify logs, metrics, traces, user experience data, and synthetic monitoring with Elastic Observability to investigate application and infrastructure problems.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
   - https://www.elastic.co/guide/en/observability/current/index.html
@@ -25,7 +27,7 @@ The {{observability}} reference documentation is available in the [Elastic refer
 
 You can also browse reference documentation for the following components:
 
-- [Elastic Distributions of OpenTelemetry (EDOT)](opentelemetry://reference/index.md)
+- [{{edot}}](opentelemetry://reference/index.md)
 - [Fleet and Elastic Agent](/reference/fleet/index.md)
 - [Elastic APM](/reference/apm/observability/apm.md)
 - [Elastic APM agents](/reference/apm-agents/index.md)

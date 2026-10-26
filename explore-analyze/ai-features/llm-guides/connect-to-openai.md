@@ -45,6 +45,13 @@ The following video demonstrates these steps (click to watch).
 
 ## Configure the OpenAI connector [_configure_the_openai_connector]
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+This connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+
+For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
+::::
+
 To integrate with {{kib}}:
 
 1. Log in to {{kib}}.

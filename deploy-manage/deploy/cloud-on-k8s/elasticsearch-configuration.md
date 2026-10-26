@@ -6,11 +6,12 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Elasticsearch configuration
 ---
 
-# {{es}} configuration [k8s-elasticsearch-specification]
+# {{es}} configuration on ECK [k8s-elasticsearch-specification]
 
-This section covers various {{es}} cluster configuration scenarios when using ECK. For configuration topics relevant to both {{es}} and {{kib}}, see the [](./configure-deployments.md).
+This section covers various {{es}} cluster configuration scenarios when using {{eck}}. For configuration topics relevant to both {{es}} and {{kib}}, see the [](./configure-deployments.md).
 
 Before deploying and running ECK in production, review the basic and advanced settings available on this page. These configurations integrate {{es}}, Kubernetes, and ECK operator functionality to help you fine-tune your deployment.
 
@@ -26,8 +27,7 @@ Before deploying and running ECK in production, review the basic and advanced se
 * [Virtual memory](virtual-memory.md): Methods to accomplish {{es}} virtual memory system configuration requirement.
 * [Secure settings](/deploy-manage/security/k8s-secure-settings.md): Configure the {{es}} keystore through Kubernetes secrets.
 * [Settings managed by ECK](settings-managed-by-eck.md): List of {{es}} settings that you shouldn't update.
-* [Custom configuration files and plugins](custom-configuration-files-plugins.md): Add extra configuration files or install plugins to your {{es}} nodes.
-* [Init containers for plugin downloads](init-containers-for-plugin-downloads.md): Use Kubernetes init containers to install plugins before starting {{es}}.
+* [Plugins and custom configuration files](/deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/manage-plugins.md): Install {{es}} plugins using init containers or custom images, and add custom configuration files to pods using ConfigMaps or Secrets.
 
 ## Scheduling and lifecycle management
 

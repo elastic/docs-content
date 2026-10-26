@@ -61,6 +61,11 @@ Note that the recommended reservations above are not guaranteed upper limits, if
 
 These fluctuations should not be a concern in practice. To get actual limits that could be used in alerts, you could add 4GB to the recommended values above.
 
+:::{note}
+Configure swap on ECE allocator hosts unless they also have the director role. For sizing and more guidance, refer to [](./ece-software-prereq.md#ece-swap-considerations).
+:::
+
+
 
 ## CPU quotas [ece-alloc-cpu]
 
@@ -150,5 +155,4 @@ You can change the value of the disk multiplier at different levels:
 ::::{important}
 The override only persists during the lifecycle of the instance container. If a new container is created, for example during a `grow_and_shrink` plan or a vacate operation, the quota is reset to its default. To increase the storage ratio in a persistent way, [edit the instance configurations](ece-configuring-ece-instance-configurations-edit.md).
 ::::
-
 

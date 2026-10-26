@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
 navigation_title: Create from the UI
-description: Create a new Kibana dashboard from scratch by adding visualizations, controls, and organizing panels to display your data insights.
+description: Steps to create a dashboard in Kibana, from adding panels and controls to arranging the layout, setting display options, and saving.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,9 +11,9 @@ products:
 type: how-to
 ---
 
-# Create a dashboard from the UI [create-dashboard]
+# Create a dashboard from the {{kib}} UI [create-dashboard]
 
-Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data.
+To build a dashboard panel by panel in {{product.kibana}}, start with an empty dashboard, add your content, and save it. If you need an overview or examples, refer to [](../dashboards.md).
 
 :::{tip} - New ways to create dashboards
 :applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
@@ -27,6 +27,8 @@ Before creating a dashboard, ensure you have:
 * [Data indexed into {{product.elasticsearch}}](/manage-data/ingest.md) and at least one [data view](../find-and-organize/data-views.md) configured
 * **All** privilege for the **Dashboard** feature in {{product.kibana}}
 
+If **Dashboards** asks you to add data or create a data view instead of opening and you're not sure of what to do next, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
+
 ## Create a new dashboard [create-dashboard-steps]
 
 1. Open the **Dashboards** page in {{product.kibana}}.
@@ -39,7 +41,7 @@ Before creating a dashboard, ensure you have:
     * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{product.kibana}}, or other visualizations such as [Maps](../visualize/maps.md).
     * [**Add existing content from the library**](../visualize/visualize-library.md). Select existing visualizations or Discover sessions that have already been configured and saved to the **Visualize Library**.
     * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
-    * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
+    * [**Add controls**](../visualize/add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
 
     Panels added from the library stay linked to it unless you explicitly unlink them. Edits you make are reflected on every dashboard that uses them. Panels created directly on the dashboard are local to it and are permanently lost if you remove them without saving to the library first.
 
@@ -58,7 +60,7 @@ Before creating a dashboard, ensure you have:
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.
-        * {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard** — Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when anyone opens it.
+        * {applies_to}`serverless: ga` {applies_to}`stack: unavailable` **Store CPS scope with dashboard** — Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when anyone opens it.
 
     3. Click **Apply**.
        
@@ -69,7 +71,7 @@ Before creating a dashboard, ensure you have:
     - **Title** and **Description**: Give the dashboard a meaningful name and description so you and others can find it later.
     - **Tags**: Add [tags](../find-and-organize/tags.md) to organize and categorize the dashboard.
     - **Store time with dashboard**: Saves the current time filter with the dashboard.
-    - {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard**: Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when opened. When this option is not active, the dashboard opens with the {{cps-init}} scope currently active for the session.
+    - {applies_to}`serverless: ga` {applies_to}`stack: unavailable` **Store CPS scope with dashboard**: Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when opened. When this option is not active, the dashboard opens with the {{cps-init}} scope currently active for the session.
     - {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` **Permissions**: Control who can access the dashboard. You can share with one of the following permissions:
       - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
       - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it.

@@ -8,6 +8,7 @@ products:
   - id: "cloud-hosted"
   - id: "cloud-kubernetes"
   - id: "cloud-enterprise"
+navigation_title: Query logging
 ---
 
 # Query logging in {{es}}
@@ -20,6 +21,11 @@ The following query types are supported:
 - `esql`: [{{esql}}](elasticsearch://reference/query-languages/esql.md) queries
 - `eql`: [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) queries
 - `sql`: [SQL](elasticsearch://reference/query-languages/sql.md) queries
+- `promql`: [PromQL API](elasticsearch://reference/query-languages/promql/promql-http-api.md) queries {applies_to}`stack: ga 9.6`
+
+:::{note}
+On ECE, query logging requires version 4.2 or later.
+:::
 
 ## When to use query logging
 
@@ -38,6 +44,8 @@ Query logging uses an asynchronous mechanism that does not block query execution
 ### Migrate to query logging
 
 Query logging supersedes [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) and [ES|QL query logging](elasticsearch://reference/query-languages/esql/esql-query-log.md). We recommend migrating to query logging for more comprehensive and robust logging.
+
+If you use [HTTP request body auditing](/deploy-manage/monitor/stack-audit-logging/auditing-http-request-bodies.md) to trace queries, migrate that use case to query logging. Continue using audit logging for security events and compliance.
 
 To migrate:
 
@@ -99,7 +107,12 @@ ECK clusters automatically collect from the `*_querylog.json` path using the def
 
 :::::
 
-:::::{applies-item} { self:, ece: }
+:::::{applies-item} { self:, ece: ga 4.2 }
+
+:::{note}
+
+On ECE, query logging requires version 4.2 or later.
+:::
 
 To set up query logging on self-managed or ECE clusters:
 
@@ -145,7 +158,7 @@ The [`elasticsearch` Elastic Agent integration](https://www.elastic.co/docs/refe
 
 Install the assets from Fleet (or the integration's Assets tab) when you are ready to explore the indexed stream.
 
-Alternatively, [create a data view](/explore-analyze/find-and-organize/data-views.md) for `logs-elasticsearch.querylog-*` and use **Discover** to filter on `event.dataset: elasticsearch.querylog`.
+Alternatively, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for `logs-elasticsearch.querylog-*` and use **Discover** to filter on `event.dataset: elasticsearch.querylog`.
 
 ## Example query log entries
 
@@ -318,11 +331,16 @@ Using parent task and node IDs, you can correlate the log entries of queries ini
 These fields are specific to query logging and common for all query languages.
 
 - `elasticsearch.querylog.type`: The type of operation (`dsl`, `esql`, `sql`, `eql`).
+	-  `promql` support: {applies_to}`stack: ga 9.6` 
+
 - `elasticsearch.querylog.took`: How long the request took to complete, in nanoseconds. This is the same value as `event.duration`.
 - `elasticsearch.querylog.took_millis`: How long (in milliseconds) the request took to complete.
 - `elasticsearch.querylog.timed_out`: Boolean specifying whether the query timed out.
 - `elasticsearch.querylog.query`: The query text (depending on the query language, could be string or JSON).
-- `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Not supported for `sql` or `esql` queries.
+- `elasticsearch.querylog.indices`: Array containing the indices that were requested. These may not be fully resolved. May contain wildcards and index expressions, and it is not guaranteed these resolve to any specific index or exist at all. Support limitations:
+  - Not supported for `sql` queries.
+  - `esql` queries support: {applies_to}`stack: ga 9.5`
+- `elasticsearch.querylog.params`: Query parameters, if [parameterized query](elasticsearch://reference/query-languages/esql/esql-rest.md#esql-rest-params) was used. Only supported for `sql` and `esql`. Positional parameters are reported under the field name `?`. {applies_to}`stack: ga 9.5`
 - `elasticsearch.querylog.result_count`: The number of results actually returned in the response.
 - `elasticsearch.querylog.is_system`: If system index logging is enabled, indicates whether the request was performed only on system indices.
 - `elasticsearch.querylog.has_aggregations`: For a `dsl` search result, this boolean flag specifies whether the result has a non-empty aggregations section.
@@ -351,8 +369,8 @@ Each query language may also include its own fields, prefixed with `elasticsearc
 
 ### Fields specific to {{esql}}
 
+- `elasticsearch.querylog.esql.filter`: Query [filter](elasticsearch://reference/query-languages/esql/esql-rest.md#esql-rest-filtering), if the query used one. {applies_to}`stack: ga 9.5`
 - `elasticsearch.querylog.esql.profile.*.took`: {{esql}} query profiling metrics, in nanoseconds
-
 
 ## Related pages 
 

@@ -36,6 +36,28 @@ In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To
 
 The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
 
+### Human-in-the-loop prompts require an interactive conversation
+
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A sub-agent execution cannot collect a response to these prompts, whether the sub-agent runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
+
+The sub-agent run itself does not fail. The tool call returns an error result and the sub-agent continues, so the sub-agent can report the declined action in its output.
+
+A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) follows the same rule in sub-agent runs and in [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent): it declines any {{es}} or {{kib}} API operation that requires [confirmation](chat.md#confirm-an-api-operation), unless the operation is approved in advance. You can approve operations in advance in these ways:
+
+* **For every run of an agent:** Add the operations to the agent's [auto-approved APIs](custom-agents.md#auto-approve-api-operations-optional). This approval is stored with the agent, so it applies to every run, including runs from workflows, and to the sub-agents the agent starts.
+* **For one workflow step:** List the operations under `approvals.auto_approved_apis` in the `ai.agent` step. This approval applies only to that step and to the sub-agents it starts, in addition to the agent's auto-approved APIs.
+* **For one sub-agent run:** Before starting a sub-agent, a parent agent can ask you to approve operations for it. The request can name individual operations, a group such as all `indices` operations, or every such operation on {{es}} or {{kib}}. The outcome depends on your response and any existing auto-approvals:
+
+  * If you approve, the sub-agent can call those operations without another prompt.
+  * If you deny, the sub-agent runs without access to them.
+  * If all requested operations are already auto-approved, you aren't asked.
+
+  A sub-agent can also call any operation that the parent agent or the sub-agent itself auto-approves.
+
+This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
+
 ### {{esql}} limitations
 
 {{esql}} tools are subject to the current limitations of the [{{esql}} language](elasticsearch://reference/query-languages/esql.md).
@@ -91,6 +113,21 @@ This results in parsing errors like this:
 ]
 ```
 
+### Disabling a workflow breaks agents that use it [disabled-pre-execution-workflow]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+:::{note}
+The selector-visibility half of this issue is fixed on serverless and on 9.5.3 and later.
+:::
+
+Disabling a workflow doesn't remove it from the agents or spaces that use it as a [pre-execution workflow](agents-and-workflows.md#pre-execution-workflows), so every message to those agents fails with a **Workflow Failed** error. On 9.4.x, and on 9.5.0 through 9.5.2, the disabled workflow also disappears from the **Workflows** selector, so you can't clear it from the UI without re-enabling the workflow first.
+
+**Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear it through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
+
 ### MCP server URL copy button omits space name
 
 :::{note}
@@ -101,7 +138,7 @@ On 9.2 deployments, the **Copy your MCP server URL** button does not include the
 
 **Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
 
-For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#working-with-spaces).
+For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#space-scope).
 
 
 ## Related pages

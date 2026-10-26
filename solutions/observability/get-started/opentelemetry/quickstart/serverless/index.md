@@ -1,6 +1,6 @@
 ---
 navigation_title: Elastic Cloud Serverless
-description: Quickstart setup guides for the Elastic Distribution of OpenTelemetry (EDOT) on Elastic Cloud Serverless.
+description: Quickstart setup guides for the {{edot}} on Elastic Cloud Serverless.
 applies_to:
   stack:
   serverless:
@@ -21,6 +21,11 @@ The {{motlp}} is designed for the following use cases:
 
 * Logs and Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
+
+:::{note}
+:applies_to: stack: ga 9.5+
+In previous versions, the **EDOT Collector** was a standalone product. From this version onwards, this OpenTelemetry collector capability is built into **{{agent}}**.
+:::
 
 ## Prerequisites
 
@@ -48,4 +53,4 @@ The {{motlp}} ensures that OpenTelemetry data is stored without any schema trans
 
 Help improve the {{motlp}} by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup).
 
-For EDOT Collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
+For {{agent}} feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).

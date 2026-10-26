@@ -1,5 +1,5 @@
 ---
-navigation_title: Investigation tools
+navigation_title: Investigate
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/investigations-tools.html
   - https://www.elastic.co/guide/en/serverless/current/security-investigate-events.html
@@ -19,25 +19,29 @@ When {{elastic-sec}}'s [detection engine](/solutions/security/detect-and-alert.m
 
 Together, these tools let you move from a single alert to a complete picture of an incident without leaving {{kib}}. You can correlate events across data sources in [Timeline](/solutions/security/investigate/timeline.md), trace process execution chains with the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md), inspect running hosts with [Osquery](/solutions/security/investigate/osquery.md), and document findings in [cases](/solutions/security/investigate/security-cases.md) and [notes](/solutions/security/investigate/notes.md). [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) can help you interpret alerts, generate queries, and suggest next steps throughout your investigations.
 
+To act on what you find, such as isolating a host, refer to [Respond and contain](/solutions/security/respond-and-contain.md). To find where to start a hunt, review risk scores and findings in [Hunt and assess posture](/solutions/security/hunt-and-assess-posture.md).
+
 ## Where to start [investigation-where-to-start]
 
 | Your goal | Start here |
 |---|---|
 | Investigate an alert or hunt for threats | [Timeline](/solutions/security/investigate/timeline.md) |
+| Hunt for threats with {{esql}} | [{{esql}} for security](/solutions/security/esql-for-security.md) |
+| Explore host, network, and user activity | [Explore](/solutions/security/advanced-entity-analytics/explore.md) → [Hosts](/solutions/security/advanced-entity-analytics/hosts-page.md), [Network](/solutions/security/advanced-entity-analytics/network-page.md), or [Users](/solutions/security/advanced-entity-analytics/users-page.md) |
 | Explore security alerts and events in Discover | [Explore Security data in Discover](/solutions/security/investigate/discover-security.md) |
 | Trace a process to its root cause | [Visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md) |
 | Review a Linux session for suspicious activity | [Session View](/solutions/security/investigate/session-view.md) |
 | Audit live host state during an incident | [Osquery](/solutions/security/investigate/osquery.md) → [Run live queries from alerts](/solutions/security/investigate/run-osquery-from-alerts.md) |
 | Correlate alerts with known threat intelligence | [Indicators of compromise](/solutions/security/investigate/indicators-of-compromise.md) |
 | Track and coordinate an incident across your team | [Cases](/solutions/security/investigate/security-cases.md) |
-| Identify coordinated attacks across many alerts | [Attack discovery](/solutions/security/ai/attack-discovery.md) |
+| Identify coordinated attacks across many alerts | [Attack discovery](/solutions/security/ai/attack-discovery/index.md) |
 | Use AI to accelerate your investigation | [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md)  |
 
 ## How investigation tools work together [investigation-workflow]
 
 Investigation typically progresses from initial triage to documented resolution:
 
-1. **Triage the alert.** The detection engine generates an alert. You open it to review the alert details, severity, and affected entities. [Attack discovery](/solutions/security/ai/attack-discovery.md) can help you prioritize by identifying coordinated attacks that span multiple alerts.
+1. **Triage the alert.** The detection engine generates an alert. You open it to review the alert details, severity, and affected entities. [Attack discovery](/solutions/security/ai/attack-discovery/index.md) can help you prioritize by identifying coordinated attacks that span multiple alerts.
 2. **Explore context in Timeline.** Add the alert to a Timeline and query related events using KQL, EQL, or {{esql}}. Correlate data across hosts, users, and network activity to understand the broader event sequence.
 3. **Dive into forensic detail.** Use the visual event analyzer to inspect the process tree that led to the alert, or use Session View to review full Linux sessions, including terminal output and user activity.
 4. **Interrogate the live environment.** Run Osquery against affected hosts to check running processes, open ports, installed software, and other OS-level context that helps confirm or rule out compromise.
@@ -56,7 +60,7 @@ You can also create [Timeline templates](/solutions/security/investigate/timelin
 
 ### Attack discovery [investigation-attack-discovery]
 
-[Attack discovery](/solutions/security/ai/attack-discovery.md) uses large language models to analyze alerts in your environment and identify threats spanning multiple alerts. Each discovery describes relationships among alerts, maps them to the MITRE ATT&CK matrix, identifies involved users and hosts, and suggests which threat actor might be responsible. Use Attack discovery to reduce alert fatigue, prioritize the incidents that matter most, and shorten your mean time to respond.
+[Attack discovery](/solutions/security/ai/attack-discovery/index.md) uses large language models to analyze alerts in your environment and identify threats spanning multiple alerts. Each discovery describes relationships among alerts, maps them to the MITRE ATT&CK matrix, identifies involved users and hosts, and suggests which threat actor might be responsible. Use Attack discovery to reduce alert fatigue, prioritize the incidents that matter most, and shorten your mean time to respond.
 
 ### Visual event analyzer [investigation-visual-analyzer]
 

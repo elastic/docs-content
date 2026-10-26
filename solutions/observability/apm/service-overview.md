@@ -15,16 +15,20 @@ products:
 
 Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) brings you to the **Service overview**. The **Service overview** contains a wide variety of charts and tables that provide high-level visibility into how a service is performing across your infrastructure:
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/service-health
-:::
-
 * Service details like service version, runtime version, framework, and APM agent name and version
 * Container and orchestration information
 * Cloud provider, machine type, service name, region, and availability zone
 * Serverless function names and event trigger type
 * Latency, throughput, and errors over time
 * Service dependencies
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` An **Anomaly** badge appears at the top of the page alongside alerts and SLOs when [{{ml}}](/solutions/observability/apm/machine-learning.md) is enabled. It shows the highest anomaly score across all metrics and environments, and indicates which metric triggered the anomaly. Click the badge to navigate to the service view pre-configured with the relevant environment and anomaly threshold.
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Active alerts and SLOs for the service are shown at the top of the page so you can assess health without scrolling to the metadata section. Use the **Actions** menu located in the bottom right of the page to act on the service directly. For example, you can create an alert rule or SLO.
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Each RED metric chart (**Latency**, **Throughput**, and **Failed transaction rate**) includes an **Open in Discover** button to explore the underlying trace data directly in Discover.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The overview also includes a **Service map** panel scoped to the service, showing how it connects to the rest of your architecture. Refer to [](/solutions/observability/apm/service-map.md) for more information.
 
 ## Time series and expected bounds comparison [service-time-comparison]
 
@@ -146,6 +150,8 @@ To view metadata relating to the service agent, and if relevant, the container a
 * Function name(s)
 * Event trigger type
 
-**Alerts**
 
-* Recently fired alerts
+**Alerts and SLOs**
+
+* {applies_to}`stack: ga 9.0+` {applies_to}`serverless: ga` Recently fired alerts
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Active SLOs associated with the service

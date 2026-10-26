@@ -21,11 +21,18 @@ They work with any numeric data: plain numbers, percentages, or calculations lik
 You can also display strings by using the `Last value` aggregation function that picks up the last document, sorted by timestamp, in the current time frame.
 
 
-You can create metric charts in {{kib}} using [**Lens**](../lens.md).
+You can build a metric chart in {{kib}} in either of these ways:
+
+- [With the point-and-click editor](#build-a-metric-chart)
+- [With an {{esql}} query](#build-a-metric-chart-with-esql)
+
+To automate chart or dashboard creation, use the [Dashboards and Visualizations APIs](../../dashboards/create-dashboards-programmatically.md). To create dashboards from natural-language instructions, use [{{agent-builder}} or the {{product.kibana}} dashboards agent skill](../../dashboards/create-dashboards-using-ai.md).
 
 ![Metric chart representing an SLO with different layouts](../../images/metric-chart.png)
 
-## Build a metric chart
+## Create a metric chart [create-a-metric-chart]
+
+### Create a metric chart with the point-and-click editor [build-a-metric-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -33,6 +40,7 @@ You can create metric charts in {{kib}} using [**Lens**](../lens.md).
 To build a metric chart:
 
 :::::{stepper}
+:toc: false
 
 ::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -58,8 +66,40 @@ The chart preview updates to show a large numeric value. If you added a secondar
 See [](#settings) for all data configuration options for your metric chart.
 ::::
 
-::::{step} Customize the chart to follow best practices
-Tweak the appearance of the chart to your needs. Consider the following best practices:
+::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+::::
+
+:::::
+
+### Create a metric chart with an {{esql}} query [build-a-metric-chart-with-esql]
+
+:::{include} ../../_snippets/esql-visualization-prerequisites.md
+:::
+
+A metric chart displays a single numeric metric. In this query, `STATS` has no `BY` clause, so it reduces all matching documents to one row containing the total request count:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS requests = COUNT(*)
+```
+
+To show a distribution statistic instead of a count, replace `COUNT(*)` with [`PERCENTILE(bytes, 95)`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/percentile.md).
+
+To build the chart:
+
+1. [Create an {{esql}} visualization](../esorql.md#_create_from_dashboard) and run the query.
+2. Set the visualization type to **Metric**.
+3. Assign `requests` to the **Primary metric**.
+4. Customize the chart appearance using the [metric chart settings](#settings).
+5. Select **Apply and close**.
+
+The chart preview shows the request count as a single value.
+
+## Apply metric chart best practices [metric-chart-best-practices]
+
+After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
 
 **Use color wisely**
 :   Assign colors that match your users' expectations and consider your specific context.
@@ -70,17 +110,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Provide context**
 :   Use titles and subtitles to explain what the metric shows. "45,234" is a number, but "Active Users" as a title gives it meaning, and "Last 24 hours" as a subtitle makes it unambiguous.
 
-Refer to [](#settings) for a complete list of options.
-
-For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
-::::
-
-::::{step} Save the chart
-:::{include} ../../_snippets/save-visualization.md
-:::
-::::
-
-:::::
+Refer to [Metric chart settings](#settings) for all metric chart configuration options. For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 
 ## Advanced metric scenarios
 
@@ -105,7 +135,7 @@ To add trend indicators to your metric visualization:
     Use the `shift` parameter in formulas to compare current values against historical data. For example, if your primary metric is counting orders (based on an `order_id` field) for the current week, you can use the `count(order_id, shift='1w')` formula to compare this week's count of orders to last week's count.
     ::::
 
-3. In the secondary metric configuration, look for the **Color by value** option. The possible choices are:
+3. In the secondary metric configuration, look for the **Color mode** option (**Color by value** in earlier versions). The possible choices are:
    * **None**: No trend indicators (default)
    * **Static**: Shows the secondary metric as a badge with a fixed color that you select
    * **Dynamic**: Enables both color coding and directional icons based on the comparison
@@ -135,10 +165,13 @@ To add trend indicators to your metric visualization:
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 Send the following request to create a metric that counts unique orders for the current period and compares the result to the previous week using a time-shifted formula.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -291,10 +324,13 @@ You can combine progress bars with secondary metrics to show both progress towar
 ::::
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that shows the current count of users against a target of 2,500, with a progress bar and a weekly comparison badge.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -442,7 +478,7 @@ Customize your metric chart to display exactly the information you need, formatt
       - **Line**: Show a light line chart in the background.
       - **Bar**: Show a progress bar that represents the current value of the chart measured against the [Maximum value](#max-value-options) defined for the chart.
     - **Bar orientation**: Options include **Vertical** and **Horizontal**.
-    - **Color mode** or **Color by value** (depending on your version): Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
+    - **Mode** (**Color mode** or **Color by value** in earlier versions): Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
       - **Static**: The color always remains the same and is independent from the metric's value.
         - **Color**: Pick a color and its opacity.
       - **Dynamic**: Define colors to apply to the chart based on the value of the primary metric.
@@ -465,7 +501,7 @@ Customize your metric chart to display exactly the information you need, formatt
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
     - **Label**: Define the label displayed next to the secondary metric. By default, the **Name** shows. You can instead show a **Custom** value or hide it by selecting **None**.
     - **Label position**: Choose to show the label **Before** or **After** the metric.
-    - **Color by value**: Apply colors to the chart. Choose between **None**, **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. This option allows you to use the secondary metric as a comparison point to highlight trends. Refer to [](#metric-trends) for more details.
+    - **Color mode** (**Color by value** in earlier versions): Apply colors to the chart. Choose between **None**, **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. This option allows you to use the secondary metric as a comparison point to highlight trends. Refer to [](#metric-trends) for more details.
 
 ### Maximum value settings [max-value-options]
 
@@ -546,7 +582,10 @@ When creating or editing a visualization, you can customize several appearance o
 :   Define the **Alignment** of the secondary metric.
 
 **Other**
-:   Choose the **Icon** position.
+:   Configure the icon and layout:
+    - **Icon decoration**: Add an icon to the metric chart.
+    - **Icon position**: Select **Left** or **Right**.
+    - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` **Density**: Select **Compact** for tighter spacing, less padding, and smaller text, or **Default** for more spacing, more padding, and larger text. New metric charts use **Default**. Charts saved before this option was introduced use **Compact** until you change the setting.
 
 
 ## Metric chart examples
@@ -564,7 +603,7 @@ The following examples show various configuration options that you can use for b
     * **Title**: "Successful requests (2xx)"
     * **Primary metric**: `count(kql='response.keyword >= "200" and response.keyword < "300"') / count(response.keyword)`
       * **Value format**: `Percent`
-      * **Color mode** or **Color by value**: `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
+      * **Mode** (**Color mode** or **Color by value** in earlier versions): `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
       * **Background chart** or **Supporting visualization**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Value format**: `Percent`
@@ -573,10 +612,13 @@ The following examples show various configuration options that you can use for b
 ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that calculates the ratio of successful HTTP requests using a formula with a KQL filter, and adds a fixed target value as a secondary metric.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -708,7 +750,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
     * **Title**: "Successful requests per origin"
     * **Primary metric**: `count(kql='response.keyword >= "200" and response.keyword < "300"') / count(response.keyword)`
       * **Value format**: `Percent`
-      * **Color mode** or **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
+      * **Mode** (**Color mode** or **Color by value** in earlier versions): `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
       * **Background chart** or **Supporting visualization**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Label**: Custom, set to `Target:`
@@ -720,10 +762,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example builds on the previous one by adding a breakdown that splits the success rate into one tile per destination country.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 
@@ -876,10 +921,13 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
+:applies_to: { stack: "ga 9.5+, preview =9.4", serverless: ga }
 
 This example creates a metric that counts page views and compares the current value to the previous week using a time-shifted formula.
 
+
+:::{include} ../../_snippets/api-payload-version-note.md
+:::
 
 :::::{tab-set}
 

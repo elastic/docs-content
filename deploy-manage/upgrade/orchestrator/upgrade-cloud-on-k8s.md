@@ -111,14 +111,42 @@ Stepping over one of these versions, for example, upgrading ECK from 2.6 to 2.9,
 ::::
 
 
-If you have a very large {{es}} cluster or multiple {{stack}} deployments, this rolling restart might be disruptive or inconvenient. To have more control over when the pods belonging to a particular deployment should be restarted, you can [add an annotation](../../../troubleshoot/deployments/cloud-on-k8s/troubleshooting-methods.md#k8s-exclude-resource) to the corresponding resources to temporarily exclude them from being managed by the operator. When the time is convenient, you can remove the annotation and let the rolling restart go through.
+If you have a very large {{es}} cluster or multiple {{stack}} deployments, this rolling restart might be disruptive or inconvenient. To have more control over when the pods belonging to a particular deployment should be restarted, temporarily pause orchestration on the corresponding resources. When the time is convenient, remove the annotation and let the rolling restart go through.
 
-::::{warning}
-Once a resource is excluded from being managed by ECK, you will not be able to add/remove nodes, upgrade Stack version, or perform other [orchestration tasks](../../deploy/cloud-on-k8s/configure-deployments.md) by updating the resource manifest. You must remember to remove the exclusion to ensure that your {{stack}} deployment is continually monitored and managed by the operator.
+:::::{applies-switch}
+
+::::{applies-item} eck: ga 3.5+
+Use [pause orchestration](/deploy-manage/deploy/cloud-on-k8s/k8s-pause-orchestration.md), which stops spec-driven changes while keeping housekeeping running:
+
+```shell subs=true
+ANNOTATION='eck.k8s.elastic.co/pause-orchestration=true'
+
+# Pause a single Elasticsearch resource named "quickstart"
+kubectl annotate --overwrite elasticsearch quickstart $ANNOTATION
+
+# Pause all resources in the current namespace
+kubectl annotate --overwrite elastic --all $ANNOTATION
+
+# Pause all resources in all of the namespaces:
+for NS in $(kubectl get ns -o=custom-columns='NAME:.metadata.name' --no-headers); do kubectl annotate --overwrite elastic --all $ANNOTATION -n $NS; done
+```
+
+Once the operator has been upgraded and you are ready to resume orchestration, remove the annotation.
+
+```shell subs=true
+RM_ANNOTATION='eck.k8s.elastic.co/pause-orchestration-'
+
+# Resume a single {{es}} cluster named "quickstart"
+kubectl annotate elasticsearch quickstart $RM_ANNOTATION
+```
 ::::
 
-Exclude Elastic resources from being managed by the operator:
+::::{applies-item} eck: ga 3.0-3.4
+Use the `eck.k8s.elastic.co/managed` annotation:
 
+:::{warning}
+Once a resource is excluded from being managed by ECK, you will not be able to add/remove nodes, upgrade Stack version, or perform other [orchestration tasks](../../deploy/cloud-on-k8s/configure-deployments.md) by updating the resource manifest. You must remember to remove the exclusion to ensure that your {{stack}} deployment is continually monitored and managed by the operator.
+:::
 
 ```shell subs=true
 ANNOTATION='eck.k8s.elastic.co/managed=false'
@@ -133,7 +161,7 @@ kubectl annotate --overwrite elastic --all $ANNOTATION
 for NS in $(kubectl get ns -o=custom-columns='NAME:.metadata.name' --no-headers); do kubectl annotate --overwrite elastic --all $ANNOTATION -n $NS; done
 ```
 
-Once the operator has been upgraded and you are ready to let the resource become managed again (triggering a rolling restart of pods in the process), remove the annotation.
+Once the operator has been upgraded and you are ready to resume orchestration, remove the annotation.
 
 ```shell subs=true
 RM_ANNOTATION='eck.k8s.elastic.co/managed-'
@@ -141,6 +169,9 @@ RM_ANNOTATION='eck.k8s.elastic.co/managed-'
 # Resume management of a single {{es}} cluster named "quickstart"
 kubectl annotate elasticsearch quickstart $RM_ANNOTATION
 ```
+::::
+
+:::::
 
 ::::{note}
 The ECK source repository contains a [shell script](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/hack/annotator) to assist with mass addition/deletion of annotations.

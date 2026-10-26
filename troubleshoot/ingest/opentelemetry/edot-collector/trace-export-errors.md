@@ -1,6 +1,6 @@
 ---
-navigation_title: Export errors from the EDOT Collector
-description: Learn how to resolve export failures caused by `sending_queue` overflow and Elasticsearch exporter timeouts in the EDOT Collector.
+navigation_title: Export errors from the Elastic Agent
+description: Learn how to resolve export failures caused by `sending_queue` overflow and Elasticsearch exporter timeouts in the Elastic Agent.
 applies_to:
   serverless: ga
   product:
@@ -10,15 +10,15 @@ products:
   - id: edot-collector
 ---
 
-# Export failures when sending telemetry data from the EDOT Collector
+# Export failures when sending telemetry data from the {{agent}} [export-failures-when-sending-telemetry-data-from-the-edot-collector]
 
-During high traffic or load testing scenarios, the EDOT Collector might fail to export telemetry data (traces, metrics, or logs) to {{es}}. This typically happens when the internal queue for outgoing data fills up faster than it can be drained, resulting in timeouts and dropped data.
+During high traffic or load testing scenarios, the {{agent}} might fail to export telemetry data (traces, metrics, or logs) to {{es}}. This typically happens when the internal queue for outgoing data fills up faster than it can be drained, resulting in timeouts and dropped data.
 
 If you're experiencing network connectivity issues, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md). If no data appears in {{kib}}, refer to [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
 
 ## Symptoms
 
-You might see one or more of the following messages in the EDOT Collector logs:
+You might see one or more of the following messages in the {{agent}} logs:
 
 * `bulk indexer flush error: failed to execute the request: context deadline exceeded`
 * `Exporting failed. Rejecting data. sending queue is full`
@@ -41,7 +41,7 @@ Common contributing factors include:
 * Sending queue is enabled but `num_consumers` is too low to keep up with the incoming data volume.
 * Sending queue size (`queue_size`) is too small for the traffic load.
 * Both internal and sending queue batching are disabled, increasing processing overhead.
-* EDOT Collector resources (CPU, memory) are insufficient for the traffic volume.
+* {{agent}} resources (CPU, memory) are insufficient for the traffic volume.
 
 :::{note}
 Increasing the `timeout` value (for example from 30s to 90s) doesn't help if the queue itself or Elasticsearch throughput is the bottleneck.
@@ -90,7 +90,7 @@ For a complete list of available metrics, refer to the upstream OpenTelemetry me
 
 ::::{step} Scale the Collector's resources
 
-* Ensure sufficient CPU and memory for the EDOT Collector.
+* Ensure sufficient CPU and memory for the {{agent}}.
 * Scale vertically (more resources) or horizontally (more replicas) as needed.
 
 For Kubernetes deployments, refer to [Insufficient resources in Kubernetes](/troubleshoot/ingest/opentelemetry/edot-collector/insufficient-resources-kubestack.md) for detailed resource configuration guidance.

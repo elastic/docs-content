@@ -13,7 +13,10 @@ products:
 
 The index threshold rule type runs an {{es}} query. It aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met.
 
-In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Index threshold** rule type then fill in the name and optional tags.
+In **{{rules-ui}}**, click **Create rule**. For help navigating to the Rules page, refer to [Create and manage alerting rules](create-manage-rules.md). Select the **Index threshold** rule type then fill in the name and optional tags.
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Define the conditions [_define_the_conditions]
 

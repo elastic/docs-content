@@ -4,6 +4,7 @@
   * `security`: Applies to Serverless [security projects](https://www.elastic.co/docs/solutions/security/get-started#create-sec-serverless-project).
   * `elasticsearch`: Applies to Serverless [search projects](https://www.elastic.co/docs/solutions/search/serverless-elasticsearch-get-started).
   * `observability`: Applies to Serverless [observability projects](https://www.elastic.co/docs/solutions/observability/get-started).
+  * `vectordb`: Applies to Serverless [vector database projects](https://www.elastic.co/docs/solutions/vector-database).
 * `stack`: Applies to the [Elastic Stack](https://www.elastic.co/docs/get-started/the-stack) including any Elastic Stack components.
 * `deployment`: Applies to some deployment type(s).
   * `ece`: Applies to [Elastic Cloud Enterprise](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise) deployments.
@@ -22,9 +23,9 @@
   * `curator`: Applies to [Elasticsearch Curator](https://www.elastic.co/docs/reference/elasticsearch/curator) (Curator).
   * `ecctl`: Applies to [Elastic cloud control](https://www.elastic.co/docs/reference/ecctl) (ECCTL).
   * `edot_android`: Applies to the [Elastic Distribution of OpenTelemetry Android](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/android/) (EDOT Android).
-  * `edot_cf_aws`: Applies to the [Elastic Distribution of OpenTelemetry Cloud Forwarder](https://www.elastic.co/docs/reference/opentelemetry/edot-cloud-forwarder/) (EDOT Cloud Forwarder).
-  * `edot_cf_azure`: Applies to the [Elastic Distribution of OpenTelemetry Cloud Forwarder](https://www.elastic.co/docs/reference/opentelemetry/edot-cloud-forwarder/) (EDOT Cloud Forwarder).
-  * `edot_collector`: Applies to the [Elastic Distribution of OpenTelemetry Collector](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/) (EDOT Collector).
+  * `edot_cf_aws`: Applies to the [Elastic Cloud Forwarder](https://www.elastic.co/docs/reference/opentelemetry/edot-cloud-forwarder/) (Elastic Cloud Forwarder).
+  * `edot_cf_azure`: Applies to the [Elastic Cloud Forwarder](https://www.elastic.co/docs/reference/opentelemetry/edot-cloud-forwarder/) (Elastic Cloud Forwarder).
+  * `edot_collector`: Applies to [{{agent}} in OpenTelemetry mode](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/) ({{agent}}).
   * `edot_dotnet`: Applies to the [Elastic Distribution of OpenTelemetry .NET](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/) (EDOT .NET).
   * `edot_ios`: Applies to the [Elastic Distribution of OpenTelemetry iOS](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/ios/) (EDOT iOS).
   * `edot_java`: Applies to the [Elastic Distribution of OpenTelemetry Java](https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/) (EDOT Java).

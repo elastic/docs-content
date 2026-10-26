@@ -18,7 +18,7 @@ cta:
 In this quickstart guide, you'll learn how to create the Kubernetes resources required to monitor your cluster infrastructure by using a single command to download, install, and configure {{agent}} in your Kubernetes cluster.
 
 :::{tip}
-We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) as the preferred way to collect Kubernetes logs, metrics, and application traces using OpenTelemetry.
+We recommend using the [{{agent}}](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) as the preferred way to collect Kubernetes logs, metrics, and application traces using OpenTelemetry.
 :::
 
 :::{note}
@@ -95,7 +95,7 @@ The installation command provided by the UI during the quickstart cannot be used
     If you encounter an error during the installation, refer to [Troubleshooting](#monitor-k8s-with-agent-troubleshooting).
 
     :::{dropdown} Details about the install command
-    The install command provided by the UI may be similar to:
+    The install command provided by the UI might be similar to:
 
     ```sh subs=true
     helm repo add elastic https://helm.elastic.co/ && helm install elastic-agent elastic/elastic-agent --version {{version.stack}} -n kube-system --set outputs.default.url=https:<elasticsearch-url>:443 --set kubernetes.onboardingID=<internal-id> --set kubernetes.enabled=true --set outputs.default.type=ESPlainAuthAPI --set outputs.default.api_key=$(echo "<api-key>" | base64 -d)
@@ -133,7 +133,7 @@ The installation command provided by the UI during the quickstart cannot be used
     If you encounter an error during the installation, refer to [Troubleshooting](#monitor-k8s-with-agent-troubleshooting).
 
     :::{dropdown} Details about the install command
-    The install command provided by the UI may be similar to:
+    The install command provided by the UI might be similar to:
 
     ```sh subs=true
     helm repo add elastic https://helm.elastic.co/ && helm install elastic-agent elastic/elastic-agent --version {{version.stack}} -n kube-system --set outputs.default.url=https:<elasticsearch-url>:443 --set kubernetes.onboardingID=<internal-id> --set kubernetes.enabled=true --set outputs.default.type=ESPlainAuthAPI --set outputs.default.api_key=$(echo "<api-key>" | base64 -d)

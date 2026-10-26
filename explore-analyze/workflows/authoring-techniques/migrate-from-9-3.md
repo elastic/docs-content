@@ -24,6 +24,7 @@ This guide is the side-by-side for the migrations every 9.3 workflow author need
 | Change | Old (9.3) | New (9.4) | What happens to existing workflows |
 |---|---|---|---|
 | Case management | `kibana.createCaseDefaultSpace`, `kibana.getCaseDefaultSpace`, `kibana.updateCaseDefaultSpace`, `kibana.addCaseCommentDefaultSpace` | `cases.createCase`, `cases.getCase`, `cases.updateCase`, `cases.addComment` (plus 23 additional `cases.*` steps) | Deprecated aliases still work. New workflows must use `cases.*`. |
+| Direct AI connector steps | `inference.*`, `bedrock.*`, `gen-ai.*`, `gemini.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) (or `ai.classify`, `ai.summarize`, `ai.agent` when appropriate) | Deprecated steps still run. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning on hover. |
 | HTTP step `timeout` | Inside `with` | At the step top level (common field) | Existing workflows auto-migrate on save. |
 | HTTP step allowed hosts | `workflowsExecutionEngine.http.allowedHosts` controlled workflow HTTP steps. The default was `["*"]`. | `xpack.actions.allowedHosts` controls HTTP steps because they now run through the Actions framework HTTP connector. | If `xpack.actions.allowedHosts` is unset, the default is still `["*"]`. If it is set restrictively, existing HTTP steps can fail until their target hosts are added. |
 | Scheduled trigger interval minimum | Any duration | Minimum `1m` / `60s` | Sub-minute intervals auto-migrate to `1m` on first edit. |
@@ -207,7 +208,7 @@ Beyond the breaking changes, 9.4 adds many capabilities that don't require you t
 - **27 `cases.*` steps.** Full Cases API coverage. To learn more, refer to [Cases action steps](/explore-analyze/workflows/steps/cases.md).
 - **Composition (technical preview).** Call child workflows with typed inputs and outputs. To learn more, refer to [Composition steps](/explore-analyze/workflows/steps/composition.md).
 - **Human-in-the-loop.** Pause a workflow and resume after a human provides input. To learn more, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
-- **Event-driven triggers (technical preview).** React to other workflow failures. To learn more, refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
+- **Event-driven triggers.** React to other workflow failures. To learn more, refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
 - **`while` and `switch` flow control.** Even more control over workflow logic. To learn more, refer to [Flow control steps](/explore-analyze/workflows/steps/flow-control-steps.md).
 - **Expanded AI steps.** `ai.classify` and `ai.summarize` join `ai.prompt` and `ai.agent`. To learn more, refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
 - **Data transformation steps.** 11 `data.*` steps for inline data work: filter, map, aggregate, parse JSON, regex extract, and more. To learn more, refer to [Data action steps](/explore-analyze/workflows/steps/data.md).

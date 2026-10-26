@@ -1,5 +1,7 @@
 ---
 navigation_title: Logs
+meta_title: Log management and monitoring with Elastic
+description: Collect, manage, search, and analyze logs with Elastic Observability. Compare ingestion options, configure log data, detect anomalies, and create threshold alerts.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-checklist.html
   - https://www.elastic.co/guide/en/serverless/current/observability-log-monitoring.html
@@ -8,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Log monitoring [logs-checklist]
+# Log monitoring with Elastic Observability [logs-checklist]
 
 Elastic Observability allows you to deploy and manage logs at a petabyte scale, giving you insights into your logs in minutes. You can also search across your logs in one place, troubleshoot in real time, and detect patterns and outliers with categorization and anomaly detection. For more information, refer to the following links:
 
@@ -31,14 +33,14 @@ Refer to [Ingest tools overview](/manage-data/ingest/tools.md) for more informat
 
 :::{tab-item} {{edot}}
 
-The Elastic Distribution of OpenTelemetry (EDOT) Collector and SDKs provide native OpenTelemetry support for collecting logs, metrics, and traces. This approach is ideal for:
+The {{edot}} Collector and SDKs provide native OpenTelemetry support for collecting logs, metrics, and traces. This approach is ideal for:
 
 * Native OpenTelemetry: When you want to use OpenTelemetry standards and are already using OpenTelemetry in your environment.
 * Full observability: When you need to collect logs, metrics, and traces from a single collector.
 * Modern applications: When building new applications with OpenTelemetry instrumentation.
 * Standards compliance: When you need to follow OpenTelemetry specifications.
 
-For more information, refer to [Elastic Distribution of OpenTelemetry](opentelemetry://reference/index.md).
+For more information, refer to [{{edot}}](opentelemetry://reference/index.md).
 
 :::
 

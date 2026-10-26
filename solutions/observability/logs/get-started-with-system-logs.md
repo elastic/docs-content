@@ -55,7 +55,7 @@ From the Observability UI, go to **Add data**. Under **What do you want to monit
 ::::{tab-set}
 :::{tab-item} OpenTelemetry: Full Observability
 
-Collect native OpenTelemetry metrics and logs using the Elastic Distribution of OpenTelemetry Collector (EDOT).
+Collect native OpenTelemetry metrics and logs using {{agent}}.
 
 **Recommended for**: Users who want to collect native OpenTelemetry data or are already using OpenTelemetry in their environment.
 

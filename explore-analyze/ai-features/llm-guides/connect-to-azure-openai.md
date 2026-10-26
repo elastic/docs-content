@@ -72,6 +72,13 @@ The following video demonstrates these steps (click to watch).
 
 ## Configure Elastic AI Assistant [_configure_elastic_ai_assistant]
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+The Azure OpenAI connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+
+For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
+::::
+
 Finally, configure the connector in {{kib}}:
 
 1. Log in to {{kib}}.

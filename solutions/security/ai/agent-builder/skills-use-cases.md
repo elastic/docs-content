@@ -43,8 +43,82 @@ Use this skill to find risky entities or profile specific hosts, users, services
 | Which users have the highest risk scores? | Return top N users sorted by normalized risk score, with risk level and asset criticality. |
 | Has `host-12`'s risk score changed significantly in the last 90 days? | Compare current and historical risk scores, flag changes greater than 20 points as significant, and summarize what drove the change. |
 | What are the riskiest hosts that are high-impact assets? | Filter for entities with criticality `high_impact` or `extreme_impact` and sort by risk score. |
+| Set `host-12`'s asset criticality to high impact {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`|  Update the entity's asset criticality and recalculate its risk score. |
+| Show the relationship graph for `host-12` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Render a preview of the entity's [relationship graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) in the chat, with a link to the full interactive graph. |
+| Chart `user-42`'s risk score over the last 30 days {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Render a [risk score history](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) chart and summarize the trend. |
+| When did `user-42` first access `host-12`? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Query the entity's [relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) history for when the relationship was first or last observed, or which hosts or users an entity related to over a time window. |
+| Who is on the Executives watchlist? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Look up the watchlist by name and list its members. |
 
 ![Entity Analytics skill in Agent Builder](/solutions/images/security-ab-skill-ea.png)
+
+:::{note}
+:applies_to: {stack: ga 9.6+, serverless: ga}
+Some Entity Analytics operations, such as turning Entity Analytics on or off, are intentionally not performed in chat. When you ask for one of them, the agent gives you a link to the {{kib}} UI where you can perform this action instead.
+:::
+
+## Watchlist management
+
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
+
+**Enable:** `manage-watchlists`
+
+Use this skill to manage [entity watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) — groups of important entities — directly from chat. The agent can list, create, update, and delete watchlists, and add or remove entities.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| List all watchlists | Return existing watchlists, and search them by name when you specify one. |
+| Create a watchlist called Executives for high-profile users | Create a new watchlist, then use it in risk scoring. |
+| Add `user-42` and `user-99` to the Executives watchlist | Resolve the watchlist by name and add the entities. |
+| Remove `host-9` from the Critical Infrastructure watchlist | Remove the entity from the named watchlist. |
+| Delete the Contractors watchlist | Delete the named watchlist. |
+| Automatically add any host running Ubuntu to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Create or update the watchlist's rule-based data source. The confirmation includes a preview of the entities the query currently matches. |
+| What's keeping the Server Fleet watchlist in sync? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | List every data source linked to the watchlist. |
+| Stop automatically adding Ubuntu hosts to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Remove the rule-based data source. Entities it added are removed on the next sync, and manually added entities aren't affected. |
+
+:::{tip}
+The `manage-watchlists` skill only covers watchlist changes. To also profile entities or filter them by watchlist, combine it with [`entity-analytics`](#entity-risk-investigation).
+:::
+
+## Entity resolution
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+**Enable:** `entity-resolution`
+
+Use this skill to inspect and correct [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) from chat. The agent can show an entity's resolution group — the primary entity and every alias linked to it — link or unlink entities, and list, enable, or disable the automated resolution rules. Linking and unlinking change group membership only, and risk scores update the next time scoring runs.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Who is `jsmith` resolved with? | Return the entity's resolution group, including the primary entity and each alias. |
+| `jsmith123` and `jsmith.contractor` are the same user, merge them | Link the entities into a resolution group. If you don't say which should be the primary entity, the agent proposes one and explains why. |
+| Unlink `jsmith.contractor` from that group | Unlink the alias so it becomes a standalone entity again. |
+| What resolution rules do we have? | List the automated resolution rules and whether each is enabled. |
+| Turn off the Windows SID rule | Disable the named rule. |
+
+## Threat hunting leads
+
+```{applies_to}
+stack: preview 9.5+
+serverless:
+  security: preview
+```
+
+**Enable:** `entity-analytics-leads`
+
+Use this skill to work with AI-generated [threat hunting leads](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md#entity-threat-hunting-leads). The agent can list current leads, generate new ones, and dismiss those that aren't relevant.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Show me the current threat hunting leads | List AI-generated leads so you can review them. |
+| Generate new threat hunting leads | Generate new leads. |
+| Dismiss this lead, it's a false positive | Dismiss the specified lead. |
 
 ## Threat hunting
 
@@ -104,16 +178,39 @@ Use this skill to diagnose [{{elastic-defend}}](/solutions/security/configure-el
 | Which endpoints are reporting policy response failures? | Search for policy response errors or warnings across endpoints and summarize affected endpoint IDs. |
 | Is there any incompatible antivirus software on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
 
+## Attack Discovery generation [attack-discovery-generation]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+**Enable:** `attack-discovery-generator` (requires [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings))
+
+Use this skill when you are investigating in chat and want {{agent-builder}} to run Attack Discovery as part of answering you. The skill gathers and cross-checks evidence from other Security skills, then runs the same Attack Discovery analysis used by manual, scheduled, and workflow triggers. Chat runs stay in the current conversation. For the full conversational flow, including in-chat reports, detection gap closure, and privacy, refer to [Run Attack Discovery from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md).
+
+Related Attack Discovery skills in the Skills library:
+
+* `attack-discovery-alert-retrieval-builder`: Powers **Edit with AI** when you refine an {{esql}} or custom query in [Attack Discovery settings](/solutions/security/ai/attack-discovery/configure-alert-retrieval-from-attacks-page.md).
+* `attack-discovery-workflow-troubleshooting`: Powers [AI troubleshooting](/solutions/security/ai/attack-discovery/troubleshoot-runs-from-attacks-page.md) for failed runs on the Attacks view.
+
+Those skills diagnose or refine configuration. They do not replace `attack-discovery-generator`.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Investigate lateral movement involving `host-12` over the last 24 hours. | Gather related alerts and entity context, run Attack Discovery, and return a narrative report with supporting evidence. |
+| What's the status of Attack Discovery run `<execution-id>`? | Report progress for that run without starting a new one. |
+| The skill proposed a detection rule for a gap. Create it. | Create the proposed rule only after you explicitly approve it in the chat. |
+
 ## Combining skills across use cases [combining-skills-across-workflows]
 
 The Elastic AI Agent can use a variety of skills in one conversation. As your questions shift across domains, the agent activates the matching skill — you don't need to start over or switch agents. The following examples show common multi-skill flows and the skills each turn activates.
 
 ### Alert to dashboard
 
-Start from a critical alert and end with a tracking dashboard. The [`alert-analysis`](#alert-triage-and-investigation) skill enriches the alert with related alerts, entity risk, and threat intelligence. The [`dashboard-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboard-management-skill) platform skill then creates a {{kib}} dashboard to track similar activity going forward.
+Start from a critical alert and end with a tracking dashboard. The [`alert-analysis`](#alert-triage-and-investigation) skill enriches the alert with related alerts, entity risk, and threat intelligence. The [`dashboards`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboards-skill) platform skill (`dashboard-management` in 9.4 and 9.5) then creates a {{kib}} dashboard to track similar activity going forward.
 
 1. **You:** What's the context on this critical alert? → `alert-analysis` activates, pulls related alerts sharing entities, checks entity risk scores, and correlates with {{elastic-sec}} Labs.
-2. **You:** Create a dashboard to track alerts like this going forward. → `dashboard-management` activates and composes a dashboard with filters matching the alert's rule, entities, and severity.
+2. **You:** Create a dashboard to track alerts like this going forward. → `dashboards` activates and composes a dashboard with filters matching the alert's rule, entities, and severity.
 
 ### Hunt to entity profile
 

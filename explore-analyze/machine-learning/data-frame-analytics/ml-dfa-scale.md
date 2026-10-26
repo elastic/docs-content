@@ -81,6 +81,22 @@ If your data is large and you do not need to test and train on the whole source 
 
 (This step only applies to {{regression}} and {{classification}} jobs.)
 
-[Hyperparameter optimization](hyperparameters.md) is the most complicated mathematical process during model training and may take a long time.
+[Hyperparameter optimization](hyperparameters.md) is the most complicated mathematical process during model training and might take a long time.
 
-By default, optimized hyperparameter values are chosen automatically. It is possible to reduce the time taken at this step by manually configuring hyperparameters – if you fully understand the purpose of the hyperparameters and have a sensible value for any or all of them. This reduces the computing load and therefore decreases training time.
+By default, optimized hyperparameter values are chosen automatically. It is possible to reduce the time taken at this step by manually configuring hyperparameters – if you fully understand the purpose of the hyperparameters and have a sensible value for any or all. This reduces the computing load and therefore decreases training time.
+
+## 7. Set the model memory limit [set-model-memory-limit]
+
+The `model_memory_limit` job configuration option sets the approximate maximum amount of memory resources required for training and analysis. When you create a {{dfanalytics-job}} in {{kib}}, the job creation wizard can estimate this limit based on your data and analysis configuration.
+
+If a job fails to start because it requires more memory than the configured limit, or your data characteristics change, you can update `model_memory_limit` on a stopped job using either of the following methods:
+
+* The [update {{dfanalytics-jobs}} API]({{es-apis}}operation/operation-ml-update-data-frame-analytics).
+* {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` In {{kib}}, navigate to the **Data Frame Analytics** page, open the edit flyout for the stopped job, and select **Apply** under the **Model memory limit** field to apply the estimate. This option is available only when the current value differs from the estimate.
+
+::::{tip}
+To get a memory estimate without updating the job, use either of the following methods:
+
+* Run the [explain {{dfanalytics}} API]({{es-apis}}operation/operation-ml-explain-data-frame-analytics), which reports how much memory the analysis might require.
+* {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` Open the edit job flyout, which shows the estimate under the **Model memory limit** field when the current value differs from the estimate.
+::::

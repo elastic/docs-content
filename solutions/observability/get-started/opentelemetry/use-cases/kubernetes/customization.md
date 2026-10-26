@@ -1,6 +1,6 @@
 ---
 navigation_title: Customization
-description: Guide on customizing the EDOT installation parameters for Kubernetes monitoring.
+description: Guide on customizing the {{edot}} installation parameters for Kubernetes monitoring.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Customize the EDOT Kubernetes configuration [k8s-edot-customization]
+# Customize the {{edot}} Kubernetes configuration [k8s-edot-customization]
 
 To customize the installation parameters, change the configuration values provided in `values.yaml` file, or override them using `--set parameter=value` during the installation.
 
@@ -26,13 +26,13 @@ The following table lists common parameters that might be relevant for your use 
 | `values.yaml` parameter          |     Description      |
 |----------------------------------|----------------------|
 | `clusterName`                    | Sets the `k8s.cluster.name` field in all collected data. The cluster name is automatically detected for `EKS/GKE/AKS` clusters, but it might be useful for other environments. When monitoring multiple Kubernetes clusters, ensure that the cluster name is properly set in all your environments.<br><br>Refer to the [resourcedetection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md#cluster-name) for more details about cluster name detection. |
-| `collectors.cluster.resources`   | Configures `CPU` and `memory` `requests` and `limits` applied to the `Deployment` EDOT Collector responsible for cluster-level metrics.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
-| `collectors.daemon.resources`    | Configures `CPU` and `memory` `requests` and `limits` applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
+| `collectors.cluster.resources`   | Configures `CPU` and `memory` `requests` and `limits` applied to the `Deployment` {{agent}} responsible for cluster-level metrics.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
+| `collectors.daemon.resources`    | Configures `CPU` and `memory` `requests` and `limits` applied to the `DaemonSet` {{agent}} responsible for node-level metrics and application traces.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
 | `certManager.enabled`    | Defaults to `false`.<br>Refer to [cert-manager integrated installation](#cert-manager-integrated-installation) for more details. |
 
 For more information on all available parameters and their meaning, refer to:
 
-* The provided `values.yaml`, which includes the default settings for the EDOT installation.
+* The provided `values.yaml`, which includes the default settings for the {{edot}} installation.
 * The official OpenTelemetry `kube-stack` Helm chart [values file](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/values.yaml), with explanations of all parameters.
 
 ## Cert-manager integrated installation

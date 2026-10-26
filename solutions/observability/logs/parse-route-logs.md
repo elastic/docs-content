@@ -23,7 +23,7 @@ In this tutorial, learn how to:
 - Query and filter structured log data
 
 ::::{tip}
-**Prefer a UI-based approach?** [Streams](/solutions/observability/streams/streams.md) provides a centralized Kibana UI for field extraction and log routing without requiring direct API calls. Streams supports [dissect and grok processors](/solutions/observability/streams/management/extract.md) for extracting fields extraction along with many other processors to filter, transform, and enrich your data.
+**Prefer a UI-based approach?** [Streams](/solutions/observability/streams/streams.md) provides a centralized Kibana UI for field extraction and log routing without requiring direct API calls. Streams supports [dissect and grok processors](/solutions/observability/streams/parse-and-process.md) for extracting fields extraction along with many other processors to filter, transform, and enrich your data.
 ::::
 
 ## Before you begin [observability-parse-log-data-before-you-begin]
@@ -907,8 +907,8 @@ In this tutorial, you learned how to:
 ## Related pages [observability-parse-log-data-related-pages]
 
 - [Streams](/solutions/observability/streams/streams.md)
-- [Process documents in Streams](/solutions/observability/streams/management/extract.md)
-- [Partition data into child streams](/solutions/observability/streams/management/partitioning.md)
+- [Process documents in Streams](/solutions/observability/streams/parse-and-process.md)
+- [Partition data into child streams](/solutions/observability/streams/organize-your-data.md)
 - [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 - [Dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md)
 - [Reroute processor](elasticsearch://reference/enrich-processor/reroute-processor.md)

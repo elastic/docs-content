@@ -23,14 +23,14 @@ Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/
 
 To migrate a data stream from {{ilm-init}} to data stream lifecycle using APIs you need to run two steps:
 
-1. Update the index template that’s backing the data stream to set [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `false`, and to configure data stream lifecycle.
+1. Update the index template that's backing the data stream to set [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `false` and to configure data stream lifecycle.
 2. Configure the data stream lifecycle for the *existing* data stream using the [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
 
 For more details refer to [Migrate to data stream lifecycle](#migrate-from-ilm-to-dsl).
 
 ## Setup ILM managed data stream [setup-test-data]
 
-Let’s first create a data stream with two backing indices managed by {{ilm-init}}. We first create an {{ilm-init}} policy:
+Let's first create a data stream with two backing indices managed by {{ilm-init}}. We first create an {{ilm-init}} policy:
 
 ```console
 PUT _ilm/policy/pre-dsl-ilm-policy
@@ -55,7 +55,7 @@ PUT _ilm/policy/pre-dsl-ilm-policy
 }
 ```
 
-And let’s create an index template that’ll back the data stream and configures {{ilm-init}}:
+And let's create an index template that'll back the data stream and configures {{ilm-init}}:
 
 ```console
 PUT _index_template/dsl-data-stream-template
@@ -71,7 +71,7 @@ PUT _index_template/dsl-data-stream-template
 }
 ```
 
-We’ll now index a document targeting `dsl-data-stream` to create the data stream and we’ll also manually rollover the data stream to have another generation index created:
+We'll now index a document targeting `dsl-data-stream` to create the data stream and we'll also manually rollover the data stream to have another generation index created:
 
 ```console
 POST dsl-data-stream/_doc?
@@ -85,13 +85,13 @@ POST dsl-data-stream/_doc?
 POST dsl-data-stream/_rollover
 ```
 
-We’ll use the [GET _data_stream]({{es-apis}}operation/operation-indices-get-data-stream) API to inspect the state of the data stream:
+We'll use the [GET _data_stream]({{es-apis}}operation/operation-indices-get-data-stream) API to inspect the state of the data stream:
 
 ```console
 GET _data_stream/dsl-data-stream
 ```
 
-Inspecting the response we’ll see that both backing indices are managed by {{ilm-init}} and that the next generation index will also be managed by {{ilm-init}}:
+Inspecting the response we'll see that both backing indices are managed by {{ilm-init}} and that the next generation index will also be managed by {{ilm-init}}:
 
 ```console-result
 {
@@ -138,25 +138,22 @@ Inspecting the response we’ll see that both backing indices are managed by {{i
 3. The {{ilm-init}} policy configured for this index.
 4. The system that manages this index (possible values are "Index Lifecycle Management", "Data stream lifecycle", or "Unmanaged")
 5. The system that will manage the next generation index (the new write index of this data stream, once the data stream is rolled over). The possible values are "Index Lifecycle Management", "Data stream lifecycle", or "Unmanaged".
-6. The [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) value configured in the index template that’s backing the data stream. This value will be configured for all the new backing indices. If it’s not configured in the index template the backing indices will receive the `true` default value ({{ilm-init}} takes precedence over data stream lifecycle by default as it’s currently richer in features).
-7. The {{ilm-init}} policy configured in the index template that’s backing this data stream (which will be configured on all the new backing indices, as long as it exists in the index template).
-
-
+6. The [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) value configured in the index template that's backing the data stream. This value will be configured for all the new backing indices. If it's not configured in the index template the backing indices will receive the `true` default value ({{ilm-init}} takes precedence over data stream lifecycle by default as it's currently richer in features).
+7. The {{ilm-init}} policy configured in the index template that's backing this data stream (which will be configured on all the new backing indices, as long as it exists in the index template).
 
 ## Migrate data stream to data stream lifecycle [migrate-from-ilm-to-dsl]
 
-To migrate the `dsl-data-stream` to data stream lifecycle we’ll have to execute two steps:
+To migrate the `dsl-data-stream` to data stream lifecycle:
 
-1. Update the index template that’s backing the data stream to set [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `false`, and to configure data stream lifecycle.
+1. Update the index template that's backing the data stream to set [prefer_ilm](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `false`, and to configure data stream lifecycle.
 2. Configure the data stream lifecycle for the *existing* `dsl-data-stream` using the [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
 
 ::::{important}
-The data stream lifecycle configuration that’s added to the index template, being a data stream configuration, will only apply to **new** data streams. Our data stream exists already, so even though we added a data stream lifecycle configuration in the index template it will not be applied to `dsl-data-stream`.
+The data stream lifecycle configuration that's added to the index template, being a data stream configuration, will only apply to **new** data streams. Our data stream exists already, so even though we added a data stream lifecycle configuration in the index template it will not be applied to `dsl-data-stream`.
 ::::
 
-
 $$$update-index-template-for-dsl$$$
-Let’s update the index template:
+Let's update the index template:
 
 ```console
 PUT _index_template/dsl-data-stream-template
@@ -177,12 +174,11 @@ PUT _index_template/dsl-data-stream-template
 ```
 
 1. The `prefer_ilm` setting will now be configured on the **new** backing indices (created by rolling over the data stream) such that {{ilm-init}} does *not* take precedence over data stream lifecycle.
-2. We’re configuring the data stream lifecycle so *new* data streams will be managed by data stream lifecycle.
+2. We're configuring the data stream lifecycle so *new* data streams will be managed by data stream lifecycle.
 
+We've now made sure that new data streams will be managed by data stream lifecycle.
 
-We’ve now made sure that new data streams will be managed by data stream lifecycle.
-
-Let’s update our existing `dsl-data-stream` and configure data stream lifecycle:
+Let's update our existing `dsl-data-stream` and configure data stream lifecycle:
 
 ```console
 PUT _data_stream/dsl-data-stream/_lifecycle
@@ -245,11 +241,10 @@ GET _data_stream/dsl-data-stream
 
 1. The existing backing index will continue to be managed by {{ilm-init}}
 2. The existing backing index will continue to be managed by {{ilm-init}}
-3. The next generation index will be managed by Data stream lifecycle
+3. The next generation index will be managed by data stream lifecycle ({{dlm-init}})
 4. The `prefer_ilm` setting value we configured in the index template is reflected and will be configured accordingly for new backing indices.
 
-
-We’ll now rollover the data stream to see the new generation index being managed by data stream lifecycle:
+We'll now rollover the data stream to see the new generation index being managed by data stream lifecycle:
 
 ```console
 POST dsl-data-stream/_rollover
@@ -317,16 +312,22 @@ GET _data_stream/dsl-data-stream
 3. The new write index received the `false` value for the `prefer_ilm` setting, as we configured in the index template
 4. The new write index is managed by `Data stream lifecycle`
 
+:::{note}
+:applies_to: {"stack": "ga 9.5"}
+
+If your {{ilm-init}} policy used the frozen phase with the [searchable_snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action, you can configure a comparable archive path using `frozen_after` on your data stream lifecycle. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md) for prerequisites, API examples, and limitations.
+:::
+
 ## Migrate data stream back to ILM [migrate-from-dsl-to-ilm]
 
-We can easily change this data stream to be managed by {{ilm-init}} because we didn’t remove the {{ilm-init}} policy when we [updated the index template](#update-index-template-for-dsl).
+We can easily change this data stream to be managed by {{ilm-init}} because we didn't remove the {{ilm-init}} policy when we [updated the index template](#update-index-template-for-dsl).
 
 We can achieve this in two ways:
 
 1. [Delete the lifecycle]({{es-apis}}operation/operation-indices-delete-data-lifecycle) from the data streams
 2. Disable data stream lifecycle by configuring the `enabled` flag to `false`.
 
-Let’s implement option 2 and disable the data stream lifecycle:
+Let's implement option 2 and disable the data stream lifecycle:
 
 ```console
 PUT _data_stream/dsl-data-stream/_lifecycle
@@ -336,8 +337,7 @@ PUT _data_stream/dsl-data-stream/_lifecycle
 }
 ```
 
-1. The `enabled` flag can be omitted and defaults to `true` however, here we explicitly configure it to `false` Let’s check the state of the data stream:
-
+1. The `enabled` flag can be omitted and defaults to `true` however, here we explicitly configure it to `false` Let's check the state of the data stream:
 
 ```console
 GET _data_stream/dsl-data-stream
@@ -398,5 +398,4 @@ GET _data_stream/dsl-data-stream
 2. The `lifecycle` configured on the data stream is now disabled.
 3. The next write index will be managed by {{ilm-init}}
 
-
-Had we removed the {{ilm-init}} policy from the index template when we [updated](#update-index-template-for-dsl) it, the write index of the data stream will now be `Unmanaged` because the index wouldn’t have the {{ilm-init}} policy configured to fallback onto.
+Had we removed the {{ilm-init}} policy from the index template when we [updated](#update-index-template-for-dsl) it, the write index of the data stream will now be `Unmanaged` because the index wouldn't have the {{ilm-init}} policy configured to fallback onto.

@@ -15,6 +15,7 @@ sub:
   service-name: "AWS PrivateLink"
   example-phz-dn: "vpce.us-east-1.aws.elastic-cloud.com"
   example-default-dn: "us-east-1.aws.elastic-cloud.com"
+  example-serverless-phz-dn: "private.us-east-1.aws.elastic.cloud"
 ---
 
 # Private connectivity with AWS PrivateLink
@@ -41,7 +42,7 @@ The following requirements apply to the project where you want to apply a privat
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
 
-There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
+There are no specific requirements for other {{serverless-short}} project types or {{ech}} deployments.
 
 ## Considerations
 
@@ -76,14 +77,17 @@ When using AWS PrivateLink, the following limitations apply:
 
 ```{include} _snippets/private-connectivity-limitations-ech.md
 ```
+```{include} _snippets/aws-privatelink-cloud-id-limitation.md
+```
 
 ## PrivateLink service names and aliases [ec-private-link-service-names-aliases]
+
+PrivateLink Service is set up by Elastic in all supported AWS regions under the following service names.
 
 Some metadata might differ between {{ech}} and {{serverless-full}}, even if the region is the same.
 
 :::::{applies-switch}
 ::::{applies-item} ess: ga
-PrivateLink Service is set up by Elastic in all supported AWS regions under the following service names:
 
 :::{dropdown} AWS public regions
 | Region | VPC service name | Private hosted zone domain name | AZ names (AZ IDs) |
@@ -119,7 +123,23 @@ PrivateLink Service is set up by Elastic in all supported AWS regions under the 
 :::
 ::::
 ::::{applies-item} serverless: ga
-To view the service metadata for your selected region, start to [create a new private connection policy](#ec-add-vpc-elastic) for the region and expand the **Service metadata** dropdown.
+
+:::{dropdown} AWS public regions
+| Region | VPC service name | Private hosted zone domain name | AZ names (AZ IDs) |
+| --- | --- | --- | --- |
+| ap-northeast-1 | `com.amazonaws.vpce.ap-northeast-1.vpce-svc-06284ba62764f1d90` | `private.ap-northeast-1.aws.elastic.cloud` | `ap-northeast-1a` (`apne1-az4`), `ap-northeast-1c` (`apne1-az1`), `ap-northeast-1d` (`apne1-az2`) |
+| ap-southeast-1 | `com.amazonaws.vpce.ap-southeast-1.vpce-svc-03b39b802f04ea0d0` | `private.ap-southeast-1.aws.elastic.cloud` | `ap-southeast-1a` (`apse1-az2`), `ap-southeast-1b` (`apse1-az1`), `ap-southeast-1c` (`apse1-az3`) |
+| ap-southeast-2 | `com.amazonaws.vpce.ap-southeast-2.vpce-svc-0f49488ed054785dd` | `private.ap-southeast-2.aws.elastic.cloud` | `ap-southeast-2a` (`apse2-az1`), `ap-southeast-2b` (`apse2-az3`), `ap-southeast-2c` (`apse2-az2`) |
+| ca-central-1 | `com.amazonaws.vpce.ca-central-1.vpce-svc-07c1055703fa21557` | `private.ca-central-1.aws.elastic.cloud` | `ca-central-1a` (`cac1-az1`), `ca-central-1b` (`cac1-az2`), `ca-central-1d` (`cac1-az4`) |
+| eu-central-1 | `com.amazonaws.vpce.eu-central-1.vpce-svc-08bdd241053768a93` | `private.eu-central-1.aws.elastic.cloud` | `eu-central-1a` (`euc1-az2`), `eu-central-1b` (`euc1-az3`), `eu-central-1c` (`euc1-az1`) |
+| eu-west-1 | `com.amazonaws.vpce.eu-west-1.vpce-svc-063ee4d57bcb7e850` | `private.eu-west-1.aws.elastic.cloud` | `eu-west-1a` (`euw1-az2`), `eu-west-1b` (`euw1-az3`), `eu-west-1c` (`euw1-az1`) |
+| eu-west-2 | `com.amazonaws.vpce.eu-west-2.vpce-svc-0eff494bfad918e69` | `private.eu-west-2.aws.elastic.cloud` | `eu-west-2a` (`euw2-az2`), `eu-west-2b` (`euw2-az3`), `eu-west-2c` (`euw2-az1`) |
+| us-east-1 | `com.amazonaws.vpce.us-east-1.vpce-svc-06b7aa0d52044e98f` | `private.us-east-1.aws.elastic.cloud` | `us-east-1b` (`use1-az2`), `us-east-1c` (`use1-az4`), `us-east-1d` (`use1-az6`) |
+| us-east-2 | `com.amazonaws.vpce.us-east-2.vpce-svc-05572e19a6a405b79` | `private.us-east-2.aws.elastic.cloud` | `us-east-2a` (`use2-az1`), `us-east-2b` (`use2-az2`), `us-east-2c` (`use2-az3`) |
+| us-west-2 | `com.amazonaws.vpce.us-west-2.vpce-svc-057a54fcdb1617033` | `private.us-west-2.aws.elastic.cloud` | `us-west-2a` (`usw2-az2`), `us-west-2b` (`usw2-az1`), `us-west-2c` (`usw2-az3`) |
+:::
+
+You can also view the service metadata for your selected region by starting to [create a new private connection policy](#ec-add-vpc-elastic) for the region and expanding the **Service metadata** dropdown.
 ::::
 :::::
 
@@ -182,7 +202,7 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
     :screenshot:
     :::
 
-    The security group for the endpoint should, at minimum, allow for inbound connectivity from your instances' CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243.
+    The security group for the endpoint should, at minimum, allow for inbound connectivity from your instances' CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243. If you use this endpoint for remote cluster traffic to an {{ech}} deployment, also allow port `9443` or `9400`, depending on the security model you configure.
 
     <!--need to verify this for serverless-->
 
@@ -194,11 +214,12 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
 
     1. Create a Private hosted zone.
 
-        For {{ech}}, refer to the **Private hosted zone domain name** column in the [PrivateLink service names and aliases](#ec-private-link-service-names-aliases) table for the name of the zone.
+        Refer to the **Private hosted zone domain name** column in the [PrivateLink service names and aliases](#ec-private-link-service-names-aliases) table for the name of the zone.
 
-        For {{serverless-full}}, to view the service metadata for your selected region, start to [create a new private connection policy](#ec-add-vpc-elastic) for the region and find the **Domain name** in the **Service metadata** dropdown.
+        For example, in `us-east-1`:
 
-        For example, for {{ech}} deployments in `us-east-1`, use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. For {{serverless-full}} deployments in the same region, use `private.us-east-1.aws.elastic.cloud`.
+        * For {{ech}} deployments: Use `{{example-phz-dn}}`.
+        * For {{serverless-short}} projects: Use `{{example-serverless-phz-dn}}`.
 
         Don’t forget to associate the zone with your VPC.
 
@@ -224,8 +245,18 @@ This limitation does not apply to [cross-region PrivateLink connections](#ec-aws
 
 After you create your VPC endpoint and DNS entries, check that you are able to reach your deployment or project over PrivateLink.
 
+:::::{applies-switch}
+::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for {{es}} and {{kib}} traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
+::::
+::::{applies-item} serverless: ga
+:::{include} _snippets/private-url-struct-serverless.md
+:::
+::::
+:::::
 
 :::{tip}
 Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
@@ -246,10 +277,12 @@ To test the connection:
     ::::
     :::::
 
-2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment or project's endpoint information and the private hosted zone domain name that you registered.
+2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster.
 
     ::::{applies-switch}
     :::{applies-item} ess: ga
+    Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
+
     **Request**
 
     ```sh
@@ -275,6 +308,8 @@ To test the connection:
     ```
     :::
     :::{applies-item} serverless: ga
+    Make sure to replace the URL with the **Private endpoint** URL from your project.
+
     **Request**
 
     ```sh
@@ -342,7 +377,7 @@ Create a new private connection policy.
     Private connection policies are bound to a single resource type and region, and can be assigned only to resources with the same resource type and in the same region. If you want to associate a policy with multiple resource types or resources in multiple regions, then you have to recreate the policy for all applicable resource types and regions.
     :::
 6.  Under **Connectivity**, select **PrivateLink**.
-7.  Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment or project.
+7.  Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment or project. For each VPC filter, select **Add description** to add an optional description that helps you identify the filter later.
 
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
 
@@ -400,8 +435,18 @@ For traffic to connect with the deployment or project over AWS PrivateLink, the 
 Use the alias you’ve set up as CNAME DNS record to access your resource.
 ::::
 
+:::::{applies-switch}
+::::{applies-item} ess: ga
 :::{include} _snippets/private-url-struct.md
 :::
+
+{{ech}} supports ports `443` and `9243` for Elasticsearch and Kibana traffic. Remote cluster traffic for cross-cluster search and cross-cluster replication uses port `9400` with the TLS certificate based security model, or `9443` with the API key based model. Refer to [Connection paths and private connectivity](/deploy-manage/remote-clusters.md#remote-clusters-connection-paths) for the supported combinations.
+::::
+::::{applies-item} serverless: ga
+:::{include} _snippets/private-url-struct-serverless.md
+:::
+::::
+:::::
 
 :::{tip}
 Private hosted zone domain names differ between {{ech}} and {{serverless-full}}, even if the region is the same.
@@ -481,8 +526,46 @@ To access the deployment or project:
 
 ### AWS PrivateLink and Fleet
 
+:::::{applies-switch}
+
+::::{applies-item} ech: ga
 :::{include} _snippets/private-connection-fleet.md
 :::
+::::
+
+::::{applies-item} serverless: ga
+When a private connection is set up for your project, {{fleet}} adds two entries that can route {{agent}} traffic over AWS PrivateLink:
+
+* A {{fleet-server}} host named **Private Fleet Server**, listed in the **Fleet server hosts** section.
+* An {{es}} output named **Private Elasticsearch Output**, listed in the **Outputs** section.
+
+Both entries appear on the **Fleet** → **Settings** page with an **AWS PrivateLink** badge, and they point to the private endpoints of your project. Elastic manages their names and URLs, so you can't change them. Neither entry is used until you select it, either as the default for all agent policies or in an individual policy.
+
+To send data from all agent policies over the private connection:
+
+1. Go to **Fleet** → **Settings**.
+2. In the **Fleet server hosts** section, select **Edit** for **Private Fleet Server**, then select **Make this Fleet server the default one**.
+3. In the **Outputs** section, select **Edit** for **Private Elasticsearch Output**, then select **Make this output the default for agent integrations**. To also send agent monitoring data over the private connection, select **Make this output the default for agent monitoring**.
+4. Save your changes.
+
+To send data from a single agent policy over the private connection, and leave the remaining policies on the public endpoints:
+
+1. Go to **Fleet** → **Agent policies**, then select the policy you want to change.
+2. On the **Settings** tab, set **Fleet Server** to **Private Fleet Server**.
+3. Set **Output for integrations** and, optionally, **Output for agent monitoring** to **Private Elasticsearch Output**.
+4. Save your changes.
+
+A selection made in an agent policy takes precedence over the defaults on the **Settings** page.
+
+If the private connection is later removed from your project, {{fleet}} restores the public {{fleet-server}} host and output as the defaults and deletes the private entries. Agent policies that used a private entry revert to the default, so {{agents}} continue to reach a valid endpoint.
+
+:::{admonition} Limitations
+* You can't create another {{es}} output that points to the private endpoint. Only the output that {{fleet}} adds can use that URL.
+* {{managed-integrations}} don't use the private endpoints. Elastic runs their collectors and writes the data to your project over Elastic's internal network. For more information, refer to [Security and data residency](/manage-data/ingest/managed-integrations/managed-integrations.md#managed-integrations-data-security).
+:::
+::::
+
+:::::
 
 ## Setting up a cross-region PrivateLink connection [ec-aws-inter-region-private-link]
 

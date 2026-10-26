@@ -1,6 +1,6 @@
 ---
 navigation_title: Upgrade
-description: Instructions for upgrading the EDOT Helm chart release for Kubernetes monitoring.
+description: Instructions for upgrading the {{edot}} Helm chart release for Kubernetes monitoring.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Upgrade the EDOT Kubernetes Helm chart release [k8s-edot-upgrade]
+# Upgrade the {{edot}} Kubernetes Helm chart release [k8s-edot-upgrade]
 
 :::{note}
 Before upgrading or updating the release configuration, refer to the [compatibility matrix](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/prerequisites-compatibility.md#compatibility-matrix) for a list of supported versions and [customizing configuration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md) for a list of supported configurable parameters.
@@ -30,4 +30,6 @@ helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack 
 --version {{kube-stack-version}}
 ```
 
-If [cert-manager integration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) is disabled, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
+{applies_to}`edot_collector: ga 9.5.5+` For OpenShift deployments, include the version-matched OpenShift values file after the base values file in every upgrade command.
+
+If [cert-manager integration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) is turned off, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.

@@ -233,7 +233,7 @@ For Elastic Cloud Hosted and Elastic Cloud Enterprise deployments, you must also
 
 #### Example: A product feature that is only compatible with specific deployments
 
-If a feature in a product like a client library or EDOT distro requires a specific version of the stack, or a specific deployment type, then the page-level applies to should be about the product, and the stack version should be listed as a requirement or prerequisite:
+If a feature in a product like a client library or {{edot}} distribution requires a specific version of the stack, or a specific deployment type, then the page-level applies to should be about the product, and the stack version should be listed as a requirement or prerequisite:
 
 ```markdown
 ---
@@ -309,7 +309,7 @@ applies_to:
 
 #### If the section lifecycle is different than the page level [unversioned-added-different]
 
-For example, on the [Dashboard controls](https://www.elastic.co/docs/explore-analyze/dashboards/add-controls#add-esql-control) page we added content about new ES|QL controls functionality that was added to Serverless in preview.
+For example, on the [Add variable controls with ES|QL](https://www.elastic.co/docs/explore-analyze/visualize/add-variable-controls) page we added content about new ES|QL controls functionality that was added to Serverless in preview.
 Because this is different than the page-level applicability in the frontmatter, `serverless: ga`,
 label the content about the new functionality with `serverless: preview`.
 
@@ -400,8 +400,7 @@ whether the product/deployment mode is versioned or unversioned.
 #### If a GA or deprecated feature is removed from a versioned product
 
 For example, we removed the `securitySolution:enableVisualizationsInFlyout` setting that was described on the
-[Configure advanced settings](https://www.elastic.co/docs/solutions/security/get-started/configure-advanced-settings)
-page from the Elastic Stack in 9.1.0 and from Serverless around the same time.
+**Configure advanced settings** page from the Elastic Stack in 9.1.0 and from Serverless around the same time.
 Because this functionality is still available before 9.1.0, we need that content to continue to be
 available to users on Elastic Stack earlier versions while communicating to users on later versions
 that it is no longer available.
@@ -613,7 +612,7 @@ Applies switch tabs are minimally disruptive in many situations.
   Make the tab content as small as possible apart from the procedure itself.
 * Consider breaking up procedures into sets of procedures if only one section differs between contexts.
 
-**Example**: On the [Enable audit logging](https://www.elastic.co/docs/deploy-manage/security/logging-configuration/enabling-audit-logs#enable-audit-logging-procedure) page, we use applies switch tabs to show separate ordered lists outlining the workflow for each deployment type.
+**Example**: On the [Enable audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md#enable-audit-logging-procedure) page, we use applies switch tabs to show separate ordered lists outlining the workflow for each deployment type.
 
 ::::::{tab-set}
 

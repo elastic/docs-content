@@ -1,4 +1,5 @@
 ---
+navigation_title: Detect and analyze
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detection-engine-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-engine-overview.html
@@ -16,6 +17,11 @@ products:
 {{elastic-sec}}'s detection engine evaluates your data against detection rules and generates alerts when rule criteria are met. Rules can correlate events across all connected data sources to surface threats that no single data stream would reveal on its own. {{elastic-sec}} provides several [rule types](/solutions/security/detect-and-alert/choose-the-right-rule-type.md), from field-value matches to event correlation, {{ml}} anomaly detection, and more.
 
 The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint protection](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) (malware, ransomware, memory threats, and malicious behavior) and [external alerts](https://www.elastic.co/docs/reference/security/prebuilt-rules/rules/promotions/external_alerts) from third-party tools like Suricata, giving you a unified view of threats across your security stack.
+
+:::{note}
+:applies_to: {"serverless": "ga", "stack": "ga 9.6+, experimental =9.5"}
+[{{alerting-v2-system-cap}}](/explore-analyze/alerting/esql/system-overview.md) is a separate alerting system that isn't tied to any specific solution. Its rules aren't the same as {{elastic-sec}} [{{esql}} rules](/solutions/security/detect-and-alert/esql.md). For threat detection, use {{elastic-sec}} detection rules. They include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that {{alerting-v2-system}} doesn't provide.
+:::
 
 ## Where to start
 

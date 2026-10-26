@@ -119,7 +119,7 @@ Entity risk fields on alert documents denote the risk at the time the alert was 
 
 ### Alert details flyout [alert-details-flyout]
 
-To access risk score data in the alert details flyout, select **Insights** → **Entities** on the **Overview** tab:
+To access risk score data in the alert details flyout, click **Entities** in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) on the **Overview** tab:
 
 :::{image} /solutions/images/security-alerts-flyout-rs.png
 :alt: Risk scores in the Alerts flyout
@@ -169,12 +169,7 @@ On the host details and user details pages, you can access the risk score data:
 
 ### Entity details flyouts [entity-details-flyouts]
 
-In the entity details flyouts, you can access the risk score data in the risk summary section:
-
-:::{image} /solutions/images/security-risk-summary.png
-:alt: Host risk data in the Host risk summary section
-:screenshot:
-:::
+In the entity details flyouts, you can access the risk score data in the [risk score](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score) section.
 
 ## Analyze entities over time [historical-entity-analysis]
 ```yaml {applies_to}
@@ -189,6 +184,8 @@ The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md
 * Which user had the biggest jump in their risk score since yesterday?
 
 By analyzing current and past entity data, you can understand how your environment and its entities evolve over time.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To review an entity's scoring history without writing a query, use the [risk score history chart](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) in the entity details flyout.
 
 ::::{note}
 If you enabled the entity store before upgrading to 9.2, you'll need to re-start it using the **On**/**Off** toggle to access the historical analysis feature.

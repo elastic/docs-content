@@ -17,7 +17,7 @@ products:
 Learn how to troubleshoot common issues on your own or ask for help.
 
 * [Understanding "no results found" message](troubleshooting-infrastructure-monitoring/understanding-no-results-found-message.md)
-* [Kubernetes Pods and Docker Containers views empty when using EDOT](troubleshooting-infrastructure-monitoring/kubernetes-pods-docker-containers-empty-otel.md)
+* [Kubernetes Pods and Docker Containers views empty when using {{edot}}](troubleshooting-infrastructure-monitoring/kubernetes-pods-docker-containers-empty-otel.md)
 
 
 ## Elastic Support [troubleshooting-infra-support] 

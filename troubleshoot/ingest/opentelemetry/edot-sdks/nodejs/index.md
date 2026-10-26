@@ -1,6 +1,6 @@
 ---
 navigation_title: EDOT Node.js
-description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
+description: Troubleshooting guide for the EDOT Node.js SDK.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT Node.js SDK
+# Troubleshooting the EDOT Node.js SDK [troubleshooting-the-edot-nodejs-sdk]
 
 Use the information on this page to troubleshoot issues using EDOT Node.js.
 
@@ -120,7 +120,7 @@ export OTEL_NODE_DISABLED_INSTRUMENTATIONS=dns,net
 node --import @elastic/opentelemetry-node my-app.js
 ```
 
-## Check if EDOT Node.js is running
+## Check if EDOT Node.js is running [check-if-edot-nodejs-is-running]
 
 Look for `start Elastic Distribution of OpenTelemetry Node.js` in the application log.
 

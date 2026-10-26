@@ -66,6 +66,13 @@ The following video demonstrates these steps.
 
 ## Configure the Google Gemini connector [_configure_the_google_gemini_connector]
 
+::::{important}
+:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
+This connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+
+For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
+::::
+
 Finally, configure the connector in your Elastic deployment:
 
 1. Log in to your Elastic deployment.

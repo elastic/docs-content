@@ -13,11 +13,11 @@ products:
   - id: edot-collector
 ---
 
-# LLM observability with EDOT
+# LLM observability with {{edot}} [llm-observability-with-edot]
 
 Applications make more and more use of Generative Artificial Intelligence (GenAI). Telemetry data in terms of spans, metrics and logs when communicating with the GenAI APIs becomes more and more important to operate the application in production and understand the application's behavior and health state.
 
-Elastic currently supports LLM observability through the Elastic Distributions of Opentelemetry (EDOT). The EDOT Java, EDOT Node.js, and EDOT Python distributions support LLM observability as a tech preview.
+Elastic currently supports LLM observability through the {{edot}}. The EDOT Java, EDOT Node.js, and EDOT Python distributions support LLM observability as a tech preview.
 
 ## Supported technologies
 
@@ -33,7 +33,7 @@ See the [Supported Technologies section in the corresponding EDOT SDK](opentelem
 
 ## Quickstart
 
-Follow these steps to instrument LLMs using EDOT.
+Follow these steps to instrument LLMs using {{edot}}.
 
 ### Instrument your LLM application
 
@@ -44,3 +44,14 @@ Select the environment and target system from the [quick start overview](/soluti
 See the [Configuration section in the corresponding EDOT SDK](opentelemetry://reference/edot-sdks/index.md) to turn on or off specific instrumentations and check which instrumentation is active by default.
 
 When you complete the setup and configuration of the EDOT SDK and there is a workload on your application, start checking for telemetry data in {{kib}}. If there's no data showing up, see the troubleshooting of the corresponding EDOT SDK.
+
+## View GenAI spans in {{kib}} [llm-view-genai-spans]
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+After your application sends trace data, use the **GenAI** tab in {{kib}} to review model details and token usage, along with prompts and responses when your instrumentation records them:
+
+- [Inspect GenAI spans](/solutions/observability/apm/discover-traces.md#genai-span-details) in **Discover**.
+- [Inspect GenAI spans in a trace waterfall](/solutions/observability/apm/trace-sample-timeline.md#genai-trace-waterfall) to see model calls alongside the other operations in a request.
