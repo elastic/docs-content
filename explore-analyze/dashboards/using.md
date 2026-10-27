@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
-description: Learn how to explore and interact with Kibana dashboards using filters, time ranges, and controls to uncover insights in your data.
+description: Use KQL queries, filter pills, time ranges, and controls to focus a dashboard on specific data, then inspect the data and requests behind each panel.
 applies_to:
   stack: ga
   serverless: ga
@@ -9,11 +9,11 @@ products:
   - id: kibana
 ---
 
-# Exploring dashboards [_use_and_filter_dashboards]
+# Inspect and filter a dashboard [_use_and_filter_dashboards]
 
-{{product.kibana}} dashboards support filtering, time range adjustments, and interactive controls that let you focus on specific data segments or time periods. Use these interactive features to drill into your data, compare metrics across different dimensions, and uncover insights that matter to your analysis.
+To focus a dashboard on specific data or a specific period, filter it with a {{kib}} Query Language (KQL) query, filter pills, a time range, or dashboard controls. These options help you drill into your data, compare metrics across different dimensions, and find the insights that matter to your analysis.
 
-This page covers the main ways to explore dashboard data: using Kibana Query Language (KQL) queries, filter pills, time ranges, and dashboard controls. You'll also learn how to view underlying data and switch between different display modes.
+You can also inspect the data and requests behind a panel, and view a dashboard in full screen or maximize a single panel.
 
 
 

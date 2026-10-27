@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/data-views.html
   - https://www.elastic.co/guide/en/serverless/current/data-views.html
   - https://www.elastic.co/guide/en/kibana/current/managing-data-views.html
-description: A Kibana data view selects Elasticsearch indices, data streams, or aliases for Discover, Lens, and other analytics features. Create one yourself, or use one created automatically or managed by Elastic.
+description: Use a Kibana data view (formerly Kibana index pattern) to choose the Elasticsearch indices, data streams, or aliases that Discover, Lens, and other apps query.
 applies_to:
   stack: ga
   serverless: ga
@@ -15,7 +15,7 @@ products:
 
 # {{kib}} data views
 
-A {{data-source}} tells {{kib}} which {{es}} indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md) to query. Analytics features such as **Discover** and **Lens** use a {{data-source}} to access your data. For example, a {{data-source}} can point to your log data from yesterday, or to all indices that contain your data.
+A {{data-source}} (formerly *{{kib}} index pattern*) tells {{kib}} which {{es}} indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md) to query. Analytics features such as **Discover** and **Lens** use a {{data-source}} to access your data. For example, a {{data-source}} can point to your log data from yesterday, or to all indices that contain your data.
 
 ::::{note}
 In some apps, you can query {{es}} with [{{esql}}](elasticsearch://reference/query-languages/esql.md) instead. {{esql}} doesn't require a {{data-source}}.
@@ -31,7 +31,7 @@ A {{data-source}} in your space is created automatically or by you.
     Installing an Elastic integration through Fleet also creates {{data-sources}}. Those {{data-sources}} are [managed by Elastic](#managed-data-views).
 
 **Created by you**
-:   For your own data, you often need to create the {{data-source}} yourself. Refer to [Create a data view](data-views/create-data-view.md).
+:   For your own data, you often need to create the {{data-source}} yourself. In the **Index pattern** field of the creation form, enter the indices, data streams, or aliases to match. Refer to [Create a data view](data-views/create-data-view.md).
 
 To see which {{data-sources}} already exist in your space, open the data view menu in **Discover** or **Lens**, or go to the **Data Views** management page.
 

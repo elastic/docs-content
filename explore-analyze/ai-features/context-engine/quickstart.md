@@ -95,7 +95,7 @@ For an AI index without an automation, {{agent-builder}} starts with an Index/Ta
 **Create automation** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
 :::
 
-## 5. Run the automation and inspect the KI
+## 5. Run the automation and inspect the Knowledge Indicator
 
 Run the automation and inspect its output:
 
@@ -118,7 +118,7 @@ Add the populated AI index to an Agent Builder agent:
 
 The assignment makes the AI index and the dedicated {{context-engine}} retrieval tools available to the agent. Its name and description help the agent decide when to retrieve its KIs. For details about the tools, source-data access, and custom instructions, refer to [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
 
-## 7. Test how the agent uses the KI
+## 7. Test how the agent uses the Knowledge Indicator
 
 Ask the agent questions that exercise both kinds of context:
 

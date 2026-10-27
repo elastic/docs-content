@@ -104,6 +104,8 @@ Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP s
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some built-in tools aren't available through the MCP server. For details, refer to [Authentication and configuration](/explore-analyze/ai-features/agent-builder/mcp-server.md#mcp-server-authentication).
 
+{applies_to}`serverless: ga` To connect Claude to the MCP server of an {{serverless-full}} project, you can add the [Elastic Cloud Serverless connector for Claude](/explore-analyze/ai-features/claude-connector.md) from the Claude directory.
+
 #### {{es}} MCP server
 ```{applies_to}
 stack: deprecated 9.2
