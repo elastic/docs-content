@@ -1,7 +1,7 @@
 ---
 navigation_title: Manage action policies
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -20,7 +20,7 @@ The action policy list shows who created and last updated each policy, along wit
 
 Deleting a rule doesn't delete the action policies that applied to its alerts. Delete those policies separately when no remaining rule needs them.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To check which alerts a policy applies to, open the policy and read **Policy scope**. It lists the policy's [routing tags](create-configure-action-policy.md#routing-tags) and query. A policy with neither shows **This policy matches all alerts.** To list the rules that open alerts and have at least one of the policy's routing tags, select **See all affected rules**.
+To check which alerts a policy applies to, open the policy and read **Policy scope**. It lists the policy's [routing tags](create-configure-action-policy.md#routing-tags) and query. A policy with neither shows **This policy matches all alerts.** To list the rules that open alerts and have at least one of the policy's routing tags, select **See all affected rules**.
 
 ## Enable, disable, and snooze an action policy
 

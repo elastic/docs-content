@@ -1,7 +1,7 @@
 ---
 navigation_title: How Kibana stores rule events
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana

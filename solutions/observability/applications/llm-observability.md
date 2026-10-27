@@ -52,6 +52,8 @@ You can instrument the application with one of the following {{edot}} SDKs:
 
 {{edot}} includes many types of LLM instrumentation. This [table](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md#supported-technologies) lists the supported technologies.
 
+For Claude, the Claude Platform can export traces of Messages API requests and Claude Managed Agents sessions directly to Elastic without changing your code or running an OpenTelemetry Collector. Refer to [Send Claude Platform traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-claude-platform-traces.md) for more information.
+
 ### Getting started
 
 Check [these instructions](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md) on how to setup and collect OpenTelemetry data for your LLM applications.
