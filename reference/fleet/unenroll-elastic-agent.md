@@ -26,10 +26,19 @@ You can unenroll {{agent}}s to invalidate the API key used to connect to {{es}}.
 
 When you unenroll an agent, {{fleet}} sends it an unenroll action. When the agent receives the action, it stops its inputs and no longer sends data. {{fleet}} invalidates the agent's API keys after the agent acknowledges the action. The {{agent}} process continues to run, but it's no longer managed by {{fleet}}.
 
-If unenrollment hangs, select **Force unenroll** to invalidate all API keys related to the agent and change the status to **Unenrolled** so that the agent no longer appears in {{fleet}}. A force-unenrolled agent doesn't receive the unenroll action, so it keeps running its inputs. It can no longer connect to {{fleet}} or send data to the {{es}} cluster where {{fleet}} runs, and it logs an invalid API key error.
+Enrollment works differently for {{agent}} in a containerized environment. For details, refer to [Enrollment handling for containerized agents](/reference/fleet/enrollment-handling-containerized-agent.md).
 
-::::{important}
-A force-unenrolled agent can continue sending data to outputs that don't use the invalidated API keys, such as Kafka, {{ls}}, or remote {{es}} outputs. To stop all data collection, [uninstall {{agent}}](/reference/fleet/uninstall-elastic-agent.md) from the host.
+## Force unenroll an agent [force-unenroll-elastic-agent]
+
+If unenrollment hangs because the agent is offline or can't be reached, you can force unenroll it. Force unenroll invalidates all API keys related to the agent and changes its status to **Unenrolled**, so that the agent no longer appears in {{fleet}}.
+
+A force-unenrolled agent doesn't receive the unenroll action, so it keeps running its last policy and keeps trying to check in with {{fleet}}. It can no longer send data to the {{es}} cluster where {{fleet}} runs, and it logs an invalid API key error. However, it can continue sending data to outputs that don't use the invalidated API keys, such as Kafka, {{ls}}, or remote {{es}} outputs. To stop it, you need to [uninstall {{agent}}](/reference/fleet/uninstall-elastic-agent.md) on the host.
+
+::::{warning}
+Force unenroll is a last resort, and you can't undo it from {{fleet}}. Use it only for agents that are offline or can't be reached, or for compromised agents whose API keys you need to revoke immediately.
 ::::
 
-Enrollment works differently for {{agent}} in a containerized environment. For details, refer to [Enrollment handling for containerized agents](/reference/fleet/enrollment-handling-containerized-agent.md).
+To force unenroll an agent, do one of the following:
+
+* If the agent's unenrollment hangs, open the **Actions** menu next to the agent and select **Force unenroll**. This option replaces **Unenroll agent** while unenrollment is in progress.
+* In the unenroll dialog, select **Remove agent immediately** under **Force unenroll agent**.

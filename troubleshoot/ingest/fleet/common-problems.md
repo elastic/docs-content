@@ -204,7 +204,7 @@ This can occur on newer macOS software. To resolve the problem, [ensure that fil
 
 When unenrolling {{agent}}, {{fleet}} waits for acknowledgment from the agent before it completes the unenroll process. If {{fleet}} doesn’t receive an acknowledgment, the agent's status stays **Updating**.
 
-You can force unenroll the agent to invalidate all API keys related to the agent and change the status to **Unenrolled** so that the agent no longer appears in {{fleet}}.
+You can force unenroll the agent to invalidate all API keys related to the agent and change the status to **Unenrolled** so that the agent no longer appears in {{fleet}}. Use force unenroll only when the agent is offline or can't be reached. A force-unenrolled agent keeps running on its host, and you can't undo the action from {{fleet}}. For details, refer to [Force unenroll an agent](/reference/fleet/unenroll-elastic-agent.md#force-unenroll-elastic-agent).
 
 1. In {{fleet}}, select **Agents**.
 2. Open the **Actions** menu next to the agent you want to unenroll, and then select:
