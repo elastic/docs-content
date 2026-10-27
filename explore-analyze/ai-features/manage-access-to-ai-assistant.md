@@ -71,6 +71,7 @@ The **GenAI Settings** page has the following settings:
   - **{{obs-ai-assistant}} in other apps**: The {{obs-ai-assistant}} appears throughout {{kib}} regardless of solution. The Security AI Assistant does not appear anywhere.
   - **Security AI Assistant in other apps**: The Security AI Assistant appears throughout {{kib}} regardless of solution. The {{obs-ai-assistant}} does not appear anywhere.
   - **Hide all assistants**: Turns off AI Assistant throughout {{kib}}.
+- **Documentation**: {applies_to}`stack: preview 9.3+` Install Elastic documentation or content from Security labs to improve Agent Builder responses. This section appears only when the chat experience is AI Agent. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 
 ::::
 :::::
@@ -105,6 +106,10 @@ If you open the dashboard right after turning on tracking and its breakdown pane
 For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
 
 ### Give {{agent-builder}} access to Elastic documentation [give-agent-builder-access-to-elastic-documentation]
+```{applies_to}
+serverless: ga
+stack: preview =9.3, ga 9.4+
+```
 
 {{agent-builder}} agents can answer questions about Elastic products from the official Elastic documentation once it's installed in {{kib}}. To check, go to **GenAI Settings**. The **Documentation** section should show **Installed** next to **Elastic documentation**.
 

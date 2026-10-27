@@ -55,6 +55,8 @@ Each space uses one of two chat experiences for all its users, either [{{agent-b
 
 ## Feature-specific setup [set-up-ai-by-feature]
 
+The following steps apply to specific features. Complete a step only if you plan to use the feature it covers.
+
 ### Install documentation for {{agent-builder}} [set-up-ai-agent-builder-docs]
 
 ```{applies_to}
@@ -85,5 +87,5 @@ To run Attack Discovery from a workflow or from {{agent-builder}}, turn on the [
 
 Some features need a separate project or a local install:
 
-- To use [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md), create an EASE project, which is a separate {{sec-serverless}} project type.
+- {applies_to}`serverless: preview` To use [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md), create an EASE project, which is a separate {{sec-serverless}} project type.
 - To use the [Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md), install it on your own machine.
