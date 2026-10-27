@@ -450,6 +450,9 @@ redirects:
 # Search use case: the Get started page is removed. Kept sections live on the use case landing page.
   'solutions/search/get-started.md': '!solutions/search.md'
 
+# Keyword search quickstart is no longer Python-only.
+  'solutions/search/get-started/keyword-search-python.md': 'solutions/search/get-started/keyword-search.md'
+
 # Related to https://github.com/elastic/docs-content/pull/2745
   'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'
 
