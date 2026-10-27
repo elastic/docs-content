@@ -11,7 +11,7 @@ products:
 
 # Deploy an {{es}} cluster on Kubernetes [k8s-deploy-elasticsearch]
 
-To deploy a simple [{{es}}](/solutions/search/get-started.md) cluster specification, with one {{es}} node:
+To deploy a simple [{{es}}](/solutions/search.md) cluster specification, with one {{es}} node:
 
 ```yaml subs=true
 cat <<EOF | kubectl apply -f -

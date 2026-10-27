@@ -291,7 +291,7 @@ We recommend the following activities for each use case:
 
 :::{tab-item} {{es}}
 
-Follow the steps in [](/solutions/search/get-started.md), which include:
+Follow the steps in [](/solutions/search.md), which include:
   
   1. Identify your search goals.
   2. Ingest sample data or connect a data source.
