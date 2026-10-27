@@ -4,13 +4,7 @@ toc:
   - file: search.md
     default_cta: search
     children:
-      - file: search/get-started.md
-        children:
-          - file: search/get-started/quickstarts.md
-            children:
-              - file: search/get-started/index-basics.md
-              - file: search/get-started/keyword-search-python.md
-              - file: search/get-started/semantic-search.md
+      - file: search/get-started/quickstarts.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
