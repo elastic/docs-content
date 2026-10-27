@@ -1,7 +1,7 @@
 ---
 navigation_title: Create rules using Agent Builder
 applies_to:
-  stack: experimental 9.5+
+  stack: experimental 9.6+
   serverless: experimental
 products:
   - id: kibana
@@ -18,7 +18,7 @@ Before you start, make sure you have the following:
 
 - **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
 - **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
-- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` **The `alerting:v2:experimentalFeatures` advanced setting turned on** - The setting is off by default and applies only to the space where you turn it on. To turn it on, refer to [Try experimental features in a space](../setup.md#alerting-setup-experimental-features).
+- **The `alerting:v2:experimentalFeatures` advanced setting turned on** - The setting is off by default and applies only to the space where you turn it on. To turn it on, refer to [Try experimental features in a space](../setup.md#alerting-setup-experimental-features).
 - **The required privileges** - Your role needs the [privileges to use {{agent-builder}} and save rules and action policies](../manage/configure-access.md#alerting-agent-builder-privileges).
 
 ## Propose and save a rule [ai-agent-rule-proposal]
@@ -66,8 +66,8 @@ Action policies invoke workflows for alerts only. If you ask the agent to set up
 
 - **Workflows** - Workflows are the delivery mechanism. They define what happens when {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
 - **Action Policies** - Action policies are the gating mechanism. {{kib}} evaluates them against the rule's alerts and invokes the workflow for the alerts they apply to. When you create an action policy with a rule, the policy applies to that rule's alerts.
-    * {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` The agent links the policy to the rule with a [routing tag](../action-policies/create-configure-action-policy.md#routing-tags). If the rule already has a routing tag that no other rule uses, the agent can reuse it. Otherwise, the agent adds a `notify-<rule-name>` routing tag to the rule and the policy, in lowercase with hyphens (for example, `notify-high-cpu-prod`). The policy also applies to alerts from any other rule with that routing tag. If the agent adds a routing tag to a rule you already saved, save the rule again so the tag takes effect.
-    * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` The action policy references the rule by ID.
+
+  The agent links the policy to the rule with a [routing tag](../action-policies/create-configure-action-policy.md#routing-tags). If the rule already has a routing tag that no other rule uses, the agent can reuse it. Otherwise, the agent adds a `notify-<rule-name>` routing tag to the rule and the policy, in lowercase with hyphens (for example, `notify-high-cpu-prod`). The policy also applies to alerts from any other rule with that routing tag. If the agent adds a routing tag to a rule you already saved, save the rule again so the tag takes effect.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.
 
@@ -78,11 +78,6 @@ The three objects have a dependency chain that determines the order in which the
 1. **Rule** - Save the rule first. The link between the rule and the action policy takes effect only after the rule is saved.
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
-
-:::{note}
-:applies_to: {"stack": "removed 9.6+, experimental =9.5", "serverless": "unavailable"}
-Action policies saved or edited through {{agent-builder}} also receive the `agent-builder-assisted` tag automatically, with the same behavior: user-editable and re-applied on subsequent agent edits.
-:::
 
 ## Related pages
 
