@@ -89,7 +89,7 @@ State transition settings are nested objects. `state_transition.pending` delays 
 | `state_transition.recovering.timeframe` | duration | Any duration string | How long the condition must hold before the alert recovers. For example: `5m`. |
 | `state_transition.recovering.operator` | string | `and` or `or` | Allowed only when you set both `count` and `timeframe`. `and` requires both and `or` requires either. Defaults to `or`. |
 
-A `count` of `0` skips the phase unless you also set `timeframe` with `operator: and`. In that case, the alert stays in the phase until the timeframe passes.
+A `count` of `0` skips the `pending` or `recovering` state unless you also set `timeframe` with `operator: and`. In that case, the alert stays in that state until the timeframe passes.
 
 ```yaml
 state_transition:
@@ -117,8 +117,8 @@ The `no_data` object is required when `kind: alert`, and `strategy` selects the 
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `no_data.strategy` | string | `ignore`, `keep_last`, or `resolve` | What happens when a group has no data. <br><br> - `ignore`: Doesn't check whether a group still has data. Missing groups don't produce `no_data` events. <br> - `keep_last`: Holds the alert's current status. <br> - `resolve`: Closes the alert the first time the rule finds no data for the group. The alert skips the `recovering` phase, so `state_transition.recovering` doesn't apply. |
-| `no_data.query` | ES\|QL string | Any ES\|QL query | Optional presence query that checks whether a group has data. Allowed with `keep_last` and `resolve`, but not with `ignore`. If you omit it, {{kib}} uses `query.base` as the presence query. |
+| `no_data.strategy` | string | `ignore`, `keep_last`, or `resolve` | What happens when a group has no data. <br><br> - `ignore`: Doesn't check whether a group still has data. Missing groups don't produce `no_data` events. <br> - `keep_last`: Holds the alert's current status. <br> - `resolve`: Closes the alert the first time the rule finds no data for the group. The alert skips the `recovering` state, so `state_transition.recovering` doesn't apply. |
+| `no_data.query` | ES\|QL string | Any ES\|QL query | Optional presence query that checks whether a group has data. Allowed only with `keep_last` and `resolve`. A rule that sets it with `ignore` fails validation. If you omit it, {{kib}} uses `query.base` as the presence query. |
 
 A strategy other than `ignore` requires `query.breach` or `no_data.query`. That way, {{kib}} can tell a group with no data apart from a group that stopped breaching.
 
