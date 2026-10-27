@@ -127,11 +127,39 @@ For what each level means, refer to [Access control settings](#access-control-se
 
 :::::
 
+:::::{step} Auto-approve API operations (optional)
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+By default, the agent's [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) asks for [confirmation](chat.md#confirm-an-api-operation) before each call to an {{es}} or {{kib}} API operation that can change or delete existing data. You can auto-approve selected operations so the agent can call them without asking.
+
+In the **Settings** tab, find **Auto-approved APIs** and select operations under **Elasticsearch APIs** or **Kibana APIs**. Each list shows only operations that require confirmation. Search by identifier or description.
+
+For each service, you can select:
+
+* `*` to approve every such operation on that service.
+* A group, such as `indices.*`, to approve every such operation in the group.
+* Individual operations, such as `indices.delete`.
+
+Some {{es}} operations, such as `bulk` and `delete_by_query`, don't belong to a group. To approve them, select them individually or select `*`.
+
+The approval applies to every run of the agent and to the sub-agents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
+
+Only the owner, a user with **Manager** access, or an administrator can change the auto-approved APIs. For the **Elastic AI Agent**, only an administrator can change them.
+
+To change the auto-approved APIs of an existing agent, you can also select **Edit agent settings** on the agent's **Overview** page. To set them with the [Agents API](kibana-api.md#agents-apis), use `configuration.approvals.auto_approved_apis`, with an `elasticsearch` list and a `kibana` list of operations, groups, or `*`.
+
+:::::
+
 :::::{step} Assign tools
 
 Switch to the **Tools** tab to assign [tools](tools.md) to your agent.
 
 Select the combination of built-in and custom tools available to the agent, based on your use case.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` You don't need to assign the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools). Every agent has them automatically.
 
 :::::
 
@@ -295,7 +323,7 @@ Each user you add gets one of three access levels. These are separate from the a
 :   Can find, view, and run the agent.
 
 **Editor**
-:   Everything a **User** can do, plus editing the agent's configuration.
+:   Everything a **User** can do, plus editing the agent's configuration, except its {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [auto-approved APIs](#auto-approve-api-operations-optional).
 
 **Manager**
 :   Everything an **Editor** can do, plus deleting the agent and managing who has access to it.
