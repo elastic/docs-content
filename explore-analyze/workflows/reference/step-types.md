@@ -44,8 +44,9 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`cases.pushCases`](/explore-analyze/workflows/steps/cases.md#cases-pushcases) | Cases | Push one or more cases to their configured external connector. |
 | [`cases.removeTags`](/explore-analyze/workflows/steps/cases.md#cases-removetags) | Cases | Remove tags from a case. |
 | [`cases.setCategory`](/explore-analyze/workflows/steps/cases.md#cases-setcategory) | Cases | Set a case's category. |
-| [`cases.setCustomField`](/explore-analyze/workflows/steps/cases.md#cases-setcustomfield) | Cases | Set a custom field on a case. |
+| [`cases.setCustomField`](/explore-analyze/workflows/steps/cases.md#cases-setcustomfield) {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` | Cases | Set a legacy custom field on a case. Use `cases.setExtendedFields` instead. |
 | [`cases.setDescription`](/explore-analyze/workflows/steps/cases.md#cases-setdescription) | Cases | Update a case's description. |
+| [`cases.setExtendedFields`](/explore-analyze/workflows/steps/cases.md#cases-setextendedfields) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Cases | Set template and field library values on a case. |
 | [`cases.setSeverity`](/explore-analyze/workflows/steps/cases.md#cases-setseverity) | Cases | Set a case's severity. |
 | [`cases.setStatus`](/explore-analyze/workflows/steps/cases.md#cases-setstatus) | Cases | Set a case's status. |
 | [`cases.setTitle`](/explore-analyze/workflows/steps/cases.md#cases-settitle) | Cases | Update a case's title. |
