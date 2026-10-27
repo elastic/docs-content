@@ -44,7 +44,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`cases.pushCases`](/explore-analyze/workflows/steps/cases.md#cases-pushcases) | Cases | Push one or more cases to their configured external connector. |
 | [`cases.removeTags`](/explore-analyze/workflows/steps/cases.md#cases-removetags) | Cases | Remove tags from a case. |
 | [`cases.setCategory`](/explore-analyze/workflows/steps/cases.md#cases-setcategory) | Cases | Set a case's category. |
-| [`cases.setCustomField`](/explore-analyze/workflows/steps/cases.md#cases-setcustomfield) {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` | Cases | Set a legacy custom field on a case. Use `cases.setExtendedFields` instead. |
+| [`cases.setCustomField`](/explore-analyze/workflows/steps/cases.md#cases-setcustomfield) {applies_to}`stack: deprecated 9.6+, ga 9.4-9.5` {applies_to}`serverless: deprecated` | Cases | Set a legacy custom field on a case. Use `cases.setExtendedFields` instead. |
 | [`cases.setDescription`](/explore-analyze/workflows/steps/cases.md#cases-setdescription) | Cases | Update a case's description. |
 | [`cases.setExtendedFields`](/explore-analyze/workflows/steps/cases.md#cases-setextendedfields) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Cases | Set template and field library values on a case. |
 | [`cases.setSeverity`](/explore-analyze/workflows/steps/cases.md#cases-setseverity) | Cases | Set a case's severity. |
@@ -119,7 +119,7 @@ Because the available connector steps depend on which connectors your deployment
 
 ## Deprecated step types [workflows-deprecated-steps]
 
-Deprecated step types still work in existing workflows but can't be used in new ones. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning with a replacement suggestion on hover. 
+The step types in the following table are deprecated. They still work in existing workflows but can't be used in new ones. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning with a replacement suggestion on hover. 
 
 Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for Cases replacement details. For AI connector steps, replace them with [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) (or another [AI step](/explore-analyze/workflows/steps/ai-steps.md) such as `ai.classify`, `ai.summarize`, or `ai.agent` when that better matches the task).
 

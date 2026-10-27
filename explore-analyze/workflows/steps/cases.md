@@ -64,7 +64,16 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
     tags: ["triaged"]
 ```
 
-**Case field values.** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To fill in fields from a case template or the field library, pass a map of storage keys to values. `cases.createCase` and `cases.updateCase` take the map as `extended_fields`, and `cases.setExtendedFields` takes it as `fields`. A storage key combines the `name` and `type` from the field's definition as `<name>_as_<type>`, for example `priority_as_keyword`. Each value is a string, even for a number field. For a field that holds several values, such as a checkbox group or a user picker, pass a JSON-encoded array string.
+## Template and field library values [workflows-cases-field-values]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+To fill in fields that come from a [case template](/explore-analyze/cases/manage-case-templates.md) or the [field library](/explore-analyze/cases/create-case-field-library.md), pass a map of each field's storage key to its value. A *storage key* combines the `name` and `type` from the field's definition as `<name>_as_<type>`, for example `priority_as_keyword`. `cases.createCase` and `cases.updateCase` take the map as `extended_fields`, and `cases.setExtendedFields` takes it as `fields`.
+
+Each value is a string, even for a number field. For a field that holds several values, such as a `CHECKBOX_GROUP` or `USER_PICKER` field, pass a JSON-encoded array string. To check what each field type accepts, refer to [Field types and metadata](/explore-analyze/cases/yaml-template-schema-reference.md#case-templates-field-types-ref).
 
 ```yaml
 - name: create_case
@@ -78,7 +87,7 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
       ticket_number_as_integer: "4287"
 ```
 
-To list the storage keys an existing case accepts, use [Get the fields applicable to an existing case]({{kib-apis}}operation/operation-getcaseapplicablefieldsdefaultspace). To list them before you create a case, use [Get the fields applicable to a case]({{kib-apis}}operation/operation-getapplicablefieldsdefaultspace). Fields that were legacy custom fields appear in both responses as global fields, so you can look up the key to write for each one.
+To list the storage keys an existing case accepts, use the [Get the fields applicable to an existing case]({{kib-apis}}operation/operation-getcaseapplicablefieldsdefaultspace) API. To list them before you create a case, use the [Get the fields applicable to a case]({{kib-apis}}operation/operation-getapplicablefieldsdefaultspace) API. Fields that were legacy custom fields appear in both responses as [global fields](/explore-analyze/cases/manage-case-templates.md#case-templates-field-library), so you can look up the storage key for each one.
 
 When you update a case, the step merges the values you pass with the case's existing values, and fields you leave out keep their current values. The step fails if a key isn't defined for the case or a value doesn't match the field's definition.
 
@@ -149,8 +158,8 @@ Create a case with a title, description, severity, tags, and optional assignees.
 | `tags` | `with` | `string[]` | No | Tags to apply to the case. |
 | `assignees` | `with` | array | No | Array of `{ uid }` objects. |
 | `category` | `with` | string | No | Case category. |
-| `customFields` {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` | `with` | array | No | Legacy custom field values. Use `extended_fields` instead. |
-| `extended_fields` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | Values for template and field library fields, keyed by storage key. Refer to [Shared conventions](#workflows-cases-conventions). |
+| `customFields` {applies_to}`stack: deprecated 9.6+, ga 9.4-9.5` {applies_to}`serverless: deprecated` | `with` | array | No | Legacy custom field values. Use `extended_fields` instead. |
+| `extended_fields` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | Template and field library values, keyed by storage key. Refer to [Template and field library values](#workflows-cases-field-values). |
 | `settings` | `with` | object | No | Case settings, for example `syncAlerts`. |
 
 ```yaml
@@ -304,7 +313,7 @@ Update one case's fields. Changes go inside a required `updates` object. An opti
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `version` | `with` | string | No | Case version for optimistic concurrency. |
-| `updates` | `with` | object | Yes | Fields to update. At least one field required. Includes `title`, `description`, `status`, `severity`, `category`, `tags`, `assignees`, `settings`, and more. To set template and field library values, include `extended_fields` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`. |
+| `updates` | `with` | object | Yes | Fields to update. At least one field required. Includes `title`, `description`, `status`, `severity`, `category`, `tags`, `assignees`, `settings`, and more.<br>{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To set template and field library values, include `extended_fields`. |
 
 ```yaml
 - name: escalate
@@ -399,7 +408,7 @@ Set a case's category.
 ### `cases.setCustomField` [cases-setcustomfield]
 
 ```{applies_to}
-stack: ga 9.4-9.5, deprecated 9.6+
+stack: deprecated 9.6+, ga 9.4-9.5
 serverless: deprecated
 ```
 
@@ -431,12 +440,12 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Set one or more template or field library values on an existing case. For the key and value format, and how to find valid keys, refer to [Shared conventions](#workflows-cases-conventions).
+Set one or more template and field library values on an existing case. To learn the key and value format and how to find valid keys, refer to [Template and field library values](#workflows-cases-field-values).
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
-| `fields` | `with` | object | Yes | Map of storage key to value. Pass an empty string (`""`) to clear a field. Required fields can't be cleared. |
+| `fields` | `with` | object | Yes | Map of storage key to value. Pass an empty string (`""`) to clear a field. You can't clear a required field. |
 | `version` | `with` | string | No | Case version for optimistic concurrency. |
 
 Output: `{ case: object }` (the updated case).
