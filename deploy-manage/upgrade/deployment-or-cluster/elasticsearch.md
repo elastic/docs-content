@@ -253,6 +253,15 @@ GET _cat/nodes?v=true&h=name,ip,role,master,version,uptime&s=uptime
 If you encounter issues during a rolling upgrade, refer to [](/troubleshoot/elasticsearch/troubleshooting-upgrades.md).
 :::
 
+## Configure cluster state encryption for clusters created before 9.5
+```{applies_to}
+stack: ga 9.5+
+```
+
+Self-managed clusters created before 9.5 don't have [cluster state encryption](elasticsearch://reference/elasticsearch/cluster-state-encryption-key.md) configured automatically.
+
+Cluster state encryption protects sensitive values, such as credentials, that {{es}} features store in cluster state. To use features that rely on this protection, configure an encryption password after the upgrade. For instructions, refer to [](elasticsearch://reference/elasticsearch/cluster-state-encryption-key.md#cluster-state-encryption-upgrades).
+
 ## Archived settings [archived-settings]
 
 :::{include} _snippets/archived-settings-post.md
