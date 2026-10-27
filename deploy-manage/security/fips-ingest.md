@@ -10,15 +10,19 @@ applies_to:
 
 # FIPS mode for Ingest tools [fips-ingest]
 
-{{agent}}, {{fleet-server}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} FIPS binaries are built and configured to use FIPS 140 validated cryptography. The FIPS standard and the platforms covered depend on the product and version:
+{{agent}}, {{fleet-server}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} FIPS binaries are built and configured to use FIPS 140 validated cryptography. FIPS mode for these tools was in technical preview in 9.1 and 9.2 and is generally available from 9.3. The FIPS standard and the platforms covered depend on the product and version:
 
 | Ingest tool | FIPS 140-2 | FIPS 140-3 |
 |---|---|---|
-| {{agent}} and {{fleet-server}} | {applies_to}`stack: preview 9.1-9.2, ga 9.3-9.4` Linux | {applies_to}`stack: ga 9.5+` Linux<br>{applies_to}`stack: ga 9.6+` Linux and Windows. {{agent}} is FIPS 140-3 certified. |
-| {{filebeat}} and {{metricbeat}} | {applies_to}`stack: preview 9.1-9.2` Linux | {applies_to}`stack: ga 9.3+` Linux<br>{applies_to}`stack: ga 9.6+` Linux and Windows |
-| {{apm-server}} | {applies_to}`stack: preview 9.1-9.2` Linux | {applies_to}`stack: ga 9.3+` Linux |
+| {{agent}} and {{fleet-server}} | 9.1–9.5 on Linux | 9.6+ on Linux and Windows |
+| {{filebeat}} and {{metricbeat}} | 9.1–9.2, 9.3.0–9.3.7, and 9.4.0–9.4.3 on Linux | 9.3.8+, 9.4.4+, and 9.5+ on Linux<br><br>9.6+ on Linux and Windows |
+| {{apm-server}} | 9.1–9.2, 9.3.0–9.3.7, and 9.4.0–9.4.3 on Linux | 9.3.8+, 9.4.4+, and 9.5+ on Linux |
 
-FIPS 140-3 binaries use Go's native FIPS 140-3 module (`GOFIPS140=v1.0.0`, CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
+{{auditbeat}} FIPS binaries are also available and follow the same versions and platforms as {{filebeat}} and {{metricbeat}}. This page doesn't document {{auditbeat}}-specific limitations.
+
+{applies_to}`stack: ga 9.6+` {{agent}}, including the bundled {{fleet-server}}, is FIPS 140-3 certified.
+
+FIPS 140-3 binaries use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library, which is validated under the Cryptographic Module Validation Program (CMVP). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
@@ -34,7 +38,7 @@ The default configurations provided in the binaries are FIPS compatible. Be sure
 
 ### TLS [ingest-limitations-tls]
 
-Only FIPS-approved TLS protocols, cipher suites, and curve types are allowed. For FIPS 140-3 binaries, these are the algorithms approved for the Go Cryptographic Module ([CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)):
+Only FIPS-approved TLS protocols, cipher suites, and curve types are allowed. For FIPS 140-3 binaries, these are the algorithms approved in the CMVP validation of the Go Cryptographic Module, such as [CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247). The certificate number changes when Go revalidates the module.
 * The supported TLS versions are `TLS v1.2` and `TLS v1.3`.
 * The supported cipher suites are:
   * `TLS v1.2`: `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, `ECDHE-ECDSA-AES-256-GCM-SHA384`
@@ -51,9 +55,9 @@ These TLS related restrictions apply to {{agent}}, {{fleet-server}}, {{filebeat}
 
 The Kerberos protocol is not supported for any output or input. This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [Metricbeat](beats://reference/metricbeat/configuration-kerberos.md) and {{apm-server}}, as well as output configurations for {{agent}} with {{fleet-server}}.
 
-This also limits the available `sasl.mechanism` values for the Kafka output:
+This also limits the available `sasl.mechanism` values for Kafka connections, including the Kafka output, the {{filebeat}} Kafka input, and the {{metricbeat}} Kafka module:
 
-* {applies_to}`stack: ga 9.6+` `PLAIN`, `SCRAM-SHA-256`, and `SCRAM-SHA-512` are supported for {{filebeat}}, {{metricbeat}}, and {{agent}}. {{apm-server}} supports only `PLAIN`.
+* {applies_to}`stack: ga 9.6+` `PLAIN`, `SCRAM-SHA-256`, and `SCRAM-SHA-512` are supported.
 * {applies_to}`stack: preview 9.1-9.2, ga 9.3-9.5` Only `PLAIN` is supported.
 
 
@@ -89,9 +93,9 @@ This also limits the available `sasl.mechanism` values for the Kafka output:
 
 When you use {{agent}} and {{fleet-server}}, these limitations apply:
 * Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
-* Agent upgrade artifact verification uses GPG signature checking, which is outside the FIPS module boundary.
+* Agent upgrade artifact verification uses GPG signature checking, which is outside the validated FIPS module boundary.
 
-{applies_to}`stack: ga 9.5+` Lightweight Synthetics monitors are supported, because {{heartbeat}} is included in the {{agent}} FIPS build.
+{applies_to}`stack: ga 9.6+` Lightweight Synthetics monitors are supported, because {{heartbeat}} is included in the {{agent}} FIPS build. NTLM authentication for HTTP monitors is not supported in FIPS mode.
 
 #### {{agent}} configured as an OTel Collector [ingest-limitations-edot]
 
@@ -101,10 +105,8 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
 When you run [{{agent}} configured as an OTel Collector](/reference/fleet/otel-agent.md), these additional limitations apply:
 
 * **Azure integrations**: PKCS#12 (`.pfx`) client certificates are not supported for Azure Active Directory authentication. Use client secrets, workload identity, managed identity, or PEM-encoded certificate and key files instead.
-* **Kafka metrics receiver**: SASL GSSAPI (Kerberos) is not supported. SASL SCRAM (SCRAM-SHA-256, SCRAM-SHA-512) uses cryptography outside the validated FIPS module boundary and is not supported. Use SASL/PLAIN over TLS or mTLS.
-* **Kafka receiver** and **Kafka exporter**:
-  * {applies_to}`stack: ga 9.4+` Included in FIPS builds. SASL GSSAPI (Kerberos) is not supported. Use SASL/PLAIN or SASL/SCRAM over TLS, or mTLS.
-  * {applies_to}`stack: ga =9.3` Not included in FIPS builds.
+* {applies_to}`stack: ga 9.4+` **Kafka metrics receiver**: SASL GSSAPI (Kerberos) is not supported. Use SASL/PLAIN or SASL/SCRAM over TLS, or mTLS. In 9.4.0–9.4.7 and 9.5.0–9.5.4, SASL/SCRAM uses cryptography outside the validated FIPS module boundary, so use SASL/PLAIN over TLS or mTLS instead.
+* **Kafka receiver** and **Kafka exporter**: Not included in FIPS builds in 9.3, 9.4.0–9.4.8, and 9.5.0–9.5.4. Included starting in 9.4.9, 9.5.5, and 9.6.0. When included, SASL GSSAPI (Kerberos) is not supported. Use SASL/PLAIN or SASL/SCRAM over TLS, or mTLS.
 * **Prometheus receiver**: Not included in FIPS builds.
 * The following receivers are not supported in FIPS mode:
   * **MongoDB receiver**
@@ -124,7 +126,7 @@ Running [{{agent}} configured as an OTel Collector](/reference/fleet/otel-agent.
 
 ### Elastic Integrations that are not FIPS compatible [ingest-limitations-integrations]
 
-The following Fleet-managed Elastic Integrations use cryptographic implementations outside Go's validated FIPS module boundary for core functionality. These integrations cannot be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
+The following {{fleet}}-managed Elastic Integrations use cryptographic implementations outside Go's validated FIPS module boundary for core functionality. These integrations cannot be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
 
 For limitations that apply when {{agent}} is configured as an OTel Collector, refer to [{{agent}} configured as an OTel Collector](#ingest-limitations-edot).
 
