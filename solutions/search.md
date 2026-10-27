@@ -46,7 +46,7 @@ These steps take you from a running {{es}} deployment to search queries.
 ::::::{stepper}
 :::::{step} Set up {{es}}
 
-Choose where {{es}} runs, start it, and connect a client. [](/solutions/search/set-up.md) shows how to pick a deployment type, get an endpoint and API key, and send your first request from code. Once {{es}} is running, try a [quickstart](/solutions/search/get-started/quickstarts.md).
+Choose where {{es}} runs, start it, and connect a client. Once {{es}} is running, try a [quickstart](/solutions/search/get-started/quickstarts.md).
 :::::
 :::::{step} Identify your search goals
 Depending on your use case, you can choose multiple [search approaches](/solutions/search/search-approaches.md), for example full-text and semantic search.
