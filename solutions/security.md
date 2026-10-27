@@ -30,8 +30,8 @@ SIEM
 Endpoint security
 :   Detects and prevents malware, ransomware, in-memory threats, and malicious behavior on Windows, macOS, and Linux hosts with [{{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md), which runs on the same [{{agent}}](/reference/fleet/index.md) that collects your host data. You can also isolate hosts and take other [response actions](/solutions/security/respond-and-contain.md), including on hosts that run supported third-party EDR tools. To try it, follow the [endpoint security quickstart](/solutions/security/get-started/get-started-endpoint-security.md).
 
-Cloud security posture
-:   Finds misconfigurations in your cloud accounts and Kubernetes clusters by checking them against security benchmarks, and scans your AWS VMs for known vulnerabilities. To try it, follow the [cloud security posture quickstart](/solutions/security/get-started/get-started-cloud-security.md).
+Cloud posture and vulnerability management
+:   [Cloud security posture management (CSPM) and Kubernetes security posture management (KSPM)](/solutions/security/cloud/security-posture-management-overview.md) find misconfigurations in your cloud accounts and Kubernetes clusters by checking them against security benchmarks. A separate feature, [cloud native vulnerability management (CNVM)](/solutions/security/cloud/cloud-native-vulnerability-management.md), scans your Linux VMs in AWS for known vulnerabilities. To try posture management, follow the [cloud security posture quickstart](/solutions/security/get-started/get-started-cloud-security.md).
 
 Cloud workload protection
 :   Detects threats on your Linux VMs while the VMs run, and can block some of those threats. It also protects Kubernetes containers. To learn how it works, refer to [Manage cloud workload protection](/solutions/security/manage/manage-cloud-workload-protection.md).
@@ -47,7 +47,7 @@ Alongside these capabilities, {{elastic-sec}} uses [large language models (LLMs)
 * **Automate response:** Combine custom [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) agents with [Workflows](/explore-analyze/workflows.md) to isolate hosts, create cases, and send notifications.
 * **Keep endpoint protection working:** [Automatic Troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md) finds issues that stop {{elastic-defend}} from working as intended, such as policy response failures and conflicts with third-party antivirus software.
 
-Depending on your deployment and license, you can use an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) or [connect your own provider](/explore-analyze/ai-features/llm-guides/llm-connectors.md), such as OpenAI, Amazon Bedrock, Azure OpenAI, or Google Vertex AI.
+Depending on your deployment and license, you can use Elastic Managed LLMs through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) or an LLM from another provider. For details, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 :::{note}
 :applies_to: serverless: preview
