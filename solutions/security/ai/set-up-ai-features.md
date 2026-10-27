@@ -55,7 +55,7 @@ Each space uses one of two chat experiences for all its users, either [{{agent-b
 
 ## Feature-specific setup [set-up-ai-by-feature]
 
-The following steps apply to specific features. Complete a step only if you plan to use the feature it covers.
+The following sections apply to specific features. Only use them if you plan to set up the feature it covers.
 
 ### Install documentation for {{agent-builder}} [set-up-ai-agent-builder-docs]
 
