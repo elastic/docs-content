@@ -109,8 +109,8 @@ After delivery is enabled, explore your audit trail on the destination project w
 
 Select **View dashboards** after you save your log delivery configuration, or open the destination project and find the audit trail dashboards in {{kib}}. The following dashboards are available:
 
-* **Command Center**: Overview of audit activity, including volume, key indicators, higher-risk actors, and a live feed of recent events.
-* **Actor 360**: Full activity trail for one user. Select a person to filter every panel to their events.
+* **Command Center**: Overview of audit activity, including volume, key indicators, higher-risk identities, and a live feed of recent events.
+* **Identity 360**: Full activity trail for one user. Select a person to filter every panel to their events.
 * **Identity & Access**: Sign-ins and access attempts by method, source, and outcome, with user identifiers resolved to real identities where available.
 * **{{kib}} Object Forensics**: {{kib}} saved objects that were created, edited, deleted, or opened, grouped by type, name, space, and actor.
 * **{{es}} Data Access**: Which indices each identity used, request types, denied requests, and access to system or hidden indices.
