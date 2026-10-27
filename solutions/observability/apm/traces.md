@@ -233,7 +233,7 @@ $distDataAsString = ElasticApm::getSerializedCurrentDistributedTracingData(); <1
 Example:
 
 ```python
-client.begin_transaction('new-transaction')<1>
+client.begin_transaction('new-transaction') <1>
 
 elasticapm.get_trace_parent_header('new-transaction') <2>
 
