@@ -14,8 +14,7 @@ products:
 
 Change the lifecycle configuration for a classic {{es}} data stream, such as its data retention or phases.
 
-For wired data streams, go to [](/solutions/observability/streams/configure-retention.md).
-
+For [wired](/solutions/observability/streams/get-data-in.md#get-data-in-wired) data streams, go to [](/solutions/observability/streams/configure-retention.md).
 For {{ilm-init}}, refer to [](/manage-data/lifecycle/index-lifecycle-management.md).
 
 ## Before you begin [update-data-stream-lifecycle-prereqs]
