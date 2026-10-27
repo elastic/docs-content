@@ -58,13 +58,9 @@ spec:
 
 The possible values are `DeleteOnScaledownAndClusterDeletion` and `DeleteOnScaledownOnly`. By default `DeleteOnScaledownAndClusterDeletion` is in effect, which means that all PersistentVolumeClaims are deleted together with the {{es}} cluster. However, `DeleteOnScaledownOnly` keeps the PersistentVolumeClaims when deleting the {{es}} cluster. If you recreate a deleted cluster with the same name and node sets as before, the existing PersistentVolumeClaims will be adopted by the new cluster.
 
-When you recreate a cluster this way:
-
-* Use the same name, namespace, and node set names, so the PersistentVolumeClaim names match.
-* Keep every PersistentVolumeClaim of the master-eligible nodes. {{es}} stores the cluster metadata on the master-eligible nodes. If half or more of them start with empty volumes, the cluster can't form a quorum and the original cluster can't be recovered. The empty nodes might bootstrap a new cluster next to it, or no master is elected.
-
-  If the original cluster can't be recovered, start a new cluster and restore from a snapshot, as described in [Troubleshoot discovery](/troubleshoot/elasticsearch/discovery-troubleshooting.md#discovery-no-master).
-* Expect a warning about `cluster.initial_master_nodes` in the logs of the master-eligible nodes. ECK sets this [managed setting](/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck.md) on every {{es}} resource that has no `elasticsearch.k8s.elastic.co/cluster-uuid` annotation, and a recreated resource starts without it. The warning is harmless when the volumes of those PersistentVolumeClaims still hold the cluster data. Once the cluster has formed and ECK has recorded the cluster UUID, ECK stops setting it.
+::::{warning}
+After you delete the cluster, do not delete any of the retained PersistentVolumeClaims. ECK does not check the integrity of the data on adopted PersistentVolumeClaims. Missing or damaged data can cause data loss or prevent master discovery. Recovery requires last-resort steps that can also lose data: [restore a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) into a new cluster, or use the `elasticsearch-node` tool as described in [Suspend Elasticsearch](/troubleshoot/deployments/cloud-on-k8s/troubleshooting-methods.md#k8s-suspend-elasticsearch).
+::::
 
 
 ### Updating the volume claim settings [k8s-volume-claim-templates-update]
