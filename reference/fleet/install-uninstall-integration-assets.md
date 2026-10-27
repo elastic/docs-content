@@ -18,8 +18,8 @@ products:
 
 ## Install integration assets [install-integration-assets]
 
-1. In {{kib}}, go to the **Integrations** page and open the **Browse integrations** tab. Search for and select an integration. You can select a category to narrow your search.
-2. Click the **Settings** tab.
+1. In {{kib}}, go to the **Integrations** page and open the **Browse integrations** tab. Search for an integration. You can select a category to narrow your search.
+2. [Open the integration's details page](/reference/fleet/add-integration-to-policy.md#open-integration-details-page), then click the **Settings** tab.
 3. Click **Install <integration> assets** to set up the {{kib}} and {{es}} assets.
 
 It's currently not possible to have multiple versions of the same integration installed. When you upgrade an integration, the previous version assets are removed and replaced by the current version.

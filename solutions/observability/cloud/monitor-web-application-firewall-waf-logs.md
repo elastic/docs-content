@@ -41,7 +41,7 @@ Make sure the deployment is on AWS, because the Amazon Data Firehose delivery st
 ## Step 1: Install the AWS integration in {{kib}} [firehose-waf-step-one]
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Browse the catalog to find the AWS integration.
+2. Browse the catalog to find the AWS integration, then [open its details page](/reference/fleet/add-integration-to-policy.md#open-integration-details-page).
 3. Navigate to the **Settings** tab and click **Install AWS assets**.
 
 

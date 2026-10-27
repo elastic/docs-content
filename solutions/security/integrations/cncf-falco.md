@@ -23,8 +23,8 @@ First, you’ll need to configure {{elastic-sec}} to receive data from Falco, th
 In {{elastic-sec}}:
 
 1. Click **Add integrations**.
-2. Search the Integrations page for `Falco`, then select it.
-3. Go to the Falco integration’s **Settings** tab.
+2. Search the Integrations page for `Falco`, then [open the Falco integration's details page](/reference/fleet/add-integration-to-policy.md#open-integration-details-page).
+3. Go to the **Settings** tab.
 4. Click **Install Falco**, then confirm by clicking **Install Falco** again. Installation should take less than a minute.
 
 {{elastic-sec}} is now ready to receive data from Falco. The Falco integration page now has an **Assets** tab where you can inspect the newly installed assets that help to ingest Falco data.

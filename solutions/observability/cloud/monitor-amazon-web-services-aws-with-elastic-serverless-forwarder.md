@@ -101,7 +101,7 @@ For more details, refer to the AWS documentation on how to [Configure a bucket f
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for AWS.
-3. Click the AWS integration, select **Settings** and click **Install AWS assets** to install all the AWS integration assets.
+3. [Open the AWS integration's details page](/reference/fleet/add-integration-to-policy.md#open-integration-details-page), select **Settings**, and click **Install AWS assets** to install all the AWS integration assets.
 
 
 ## Step 5: Create a new S3 bucket to store the configuration file [esf-step-five]

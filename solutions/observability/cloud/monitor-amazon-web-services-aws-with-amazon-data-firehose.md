@@ -34,7 +34,7 @@ Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=do
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-step-one]
 
-1. Install AWS integrations to load index templates, ingest pipelines, and dashboards into {{kib}}. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Find the AWS Integration by browsing the catalog.
+1. Install AWS integrations to load index templates, ingest pipelines, and dashboards into {{kib}}. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Find the AWS Integration by browsing the catalog, then [open its details page](/reference/fleet/add-integration-to-policy.md#open-integration-details-page).
 2. Navigate to the **Settings** tab and click **Install AWS assets**. Confirm by clicking **Install AWS** in the popup.
 3. Install Amazon Data Firehose integration assets in Kibana.
 

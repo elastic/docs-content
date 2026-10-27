@@ -86,9 +86,9 @@ You can enable namespace index templates from the integration settings, or while
 :open:
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the integration you want, then:
-   * To create an integration policy, click **Add <integration>**.
-   * To edit an existing one, open the **Integration policies** tab and select the policy.
+2. Open the integration policy editor:
+   * To create an integration policy, [add the integration](/reference/fleet/add-integration-to-policy.md).
+   * To edit an existing one, open the **Installed integrations** tab, select the integration, open the **Integration policies** tab, and select the policy.
 3. In the **Integration settings** section, expand **Advanced options**.
 4. In the **Namespace** field, enter the namespace you want to customize.
 5. Turn on **Use dedicated index templates for this namespace**.

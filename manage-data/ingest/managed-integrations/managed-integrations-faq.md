@@ -151,7 +151,7 @@ Manage and monitor {{managed-integrations}} from the **{{integrations}}** app:
 1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
    - Open the **Installed integrations** tab and select **View policies** for the integration you want.
-   - Open the integration's page and go to its **Integration policies** tab.
+   - [Open the integration's details page](/reference/fleet/add-integration-to-policy.md#open-integration-details-page) and go to its **Integration policies** tab.
 
 Each integration policy shows the integration's status, so you can check its health and take action — such as updating credentials — without using {{fleet}}.
 
@@ -256,7 +256,7 @@ On {{stack}} versions before 9.2, {{managed-integrations}} can't be upgraded to 
 Deleting an {{managed-integration}} removes all associated resources and stops data ingestion.
 ::::
 
-1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then search for your integration.
-2. Go to the integration's **Integration policies** tab.
+1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Open the **Installed integrations** tab, select your integration, and go to its **Integration policies** tab.
 3. Find the integration policy to delete. Click the actions icon {icon}`ellipsis`, then select **Delete integration**.
 4. Confirm by clicking **Delete integration** again.
