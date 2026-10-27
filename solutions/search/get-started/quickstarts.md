@@ -19,7 +19,7 @@ Each quickstart provides:
 Follow the steps in these guides to get started quickly:
 
 - [](/solutions/search/get-started/index-basics.md)
-- [](/solutions/search/get-started/keyword-search-python.md)
+- [](/solutions/search/get-started/keyword-search.md)
 - [](/solutions/search/get-started/semantic-search.md)
 
 ## Related resources
