@@ -52,6 +52,8 @@ You must have access to [{{dev-tools-app}} Console](/explore-analyze/query-filte
 
 :::{include} /manage-data/_snippets/enable-backfill.md
 :::
+
+If you do not want to use this feature, you can use the steps provided for earlier versions, which include calculating time bounds and applying temporary index template settings.
 ::::
 ::::{step} Create the destination index template
 :anchor: tsds-reindex-create-template
