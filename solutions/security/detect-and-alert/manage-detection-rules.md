@@ -38,9 +38,8 @@ To filter the rules list, enter a search term in the search bar and press **Retu
 
 * **Rule name**: Partial matches work. Enter any word or phrase from a rule's name.
 * **Index pattern**: Exact match required. Enter the full pattern (for example, `filebeat-*` works, but `filebeat` does not).
-* **MITRE tactic or technique**: Exact, case-sensitive match required. Enter the full tactic name (`Defense Evasion`) or technique number (`TA0005`). Partial matches like `Defense` or `defense evasion` do not work.
-
-  {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` You can also search by MITRE ATLAS tactic or technique, such as `AML.T0051`.
+* **MITRE ATT&CK tactic or technique**: Exact, case-sensitive match required. Enter the full tactic or technique name (`Persistence`) or ID (`TA0003`). Partial matches such as `Persist` or `persistence` don't work.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **MITRE ATLAS tactic or technique**: Exact, case-sensitive match required. Enter the full name or ID, such as `AML.T0051`.
 
 
 You can also filter the rules list by selecting the **Tags**, **Last response**, **Elastic rules**, **Custom rules**, **Enabled rules**, and **Disabled rules** filters next to the search bar.

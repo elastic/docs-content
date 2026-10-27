@@ -63,8 +63,8 @@ To find rules that need to be remapped, check the following places:
 * {applies_to}`stack: ga =9.5` A callout on the **{{siem-rules-ui}}** page, titled **MITRE ATT&CK updated to v19**, links to the coverage page and notes that affected rules are flagged there and on each rule's edit form.
 * A callout on the [coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md) shows how many rules are affected. Select **View rules** to see the affected rules, each with the specific outdated tactic, technique, or sub-technique ID it references.
 * On an individual rule's details page, any outdated ID is marked with a warning icon next to it. Hover over the icon to see which ID is affected. The icon appears in this field:
-  * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Threat mappings**
-  * {applies_to}`stack: ga =9.5` **MITRE ATT&CK**
+    * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Threat mappings**
+    * {applies_to}`stack: ga =9.5` **MITRE ATT&CK**
 
 ## Remap your rules [remap-mitre-attack-remap-rules]
 
@@ -74,7 +74,7 @@ If you only use Elastic prebuilt rules, mappings are updated for you automatical
 ::::{step} Review flagged rules
 Go to the [coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md) and select **View rules** in the outdated mappings callout to see the affected rules and the specific ID each one references. Select a rule to open its details page, where the outdated mapping is marked with a warning icon, then select **Edit rule**.
 
-In the rule editor, open **Advanced settings**. Flagged mappings appear outlined in red, with an inline error naming the outdated ID, in this setting:
+In the rule editor, expand **Advanced settings**. In the following setting, flagged mappings appear outlined in red with an inline error that names the outdated ID:
 
 * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The **MITRE ATT&CK** section of **Threat mappings**
 * {applies_to}`stack: ga =9.5` **MITRE ATT&CK threats**

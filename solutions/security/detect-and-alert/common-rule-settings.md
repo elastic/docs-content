@@ -144,12 +144,12 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 :   Map the rule to the [MITRE ATT&CK](https://attack.mitre.org/) and [MITRE ATLAS](https://atlas.mitre.org/) tactics, techniques, and subtechniques it detects. Mappings determine where the rule appears on the [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) page. Each framework has its own section, and a rule can use one or both:
 
     * **MITRE ATT&CK**: For attacks on enterprise IT systems. This section appears by default.
-    * **MITRE ATLAS**: For attacks on AI and machine learning systems, such as LLM prompt injection. To add this section, select **Add framework** → **MITRE ATLAS**.
+    * **MITRE ATLAS**: For attacks on AI and machine learning systems, such as prompt injection. To add this section, select **Add framework** → **MITRE ATLAS**.
 
-    In a framework's section, select a tactic, then add its techniques and subtechniques. To map another tactic, select **Add tactic**. To delete all of a framework's mappings, select **Remove framework** {icon}`trash` in its section.
+    In a framework's section, select a tactic, then add its techniques and subtechniques. To map another tactic, click **Add tactic**. To remove all of a framework's mappings, click **Remove framework** {icon}`trash` in its section.
 
     ::::{note}
-    The tactic and technique options here only include the framework versions currently supported by {{elastic-sec}}. If you're upgrading and existing mappings are affected by a MITRE ATT&CK version change, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+    The tactic and technique options here include only the framework versions that {{elastic-sec}} supports. If a MITRE ATT&CK version change affects existing mappings after you upgrade, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
     ::::
 
 **Timestamp override** (optional)
