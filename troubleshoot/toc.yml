@@ -108,6 +108,7 @@ toc:
       - file: kibana/task-manager.md
       - file: kibana/maps.md
       - file: kibana/graph.md
+      - file: kibana/discover-dashboards-no-data-screen.md
       - file: kibana/migration-failures.md
       - file: kibana/capturing-diagnostics.md
   - file: observability.md
@@ -214,6 +215,7 @@ toc:
           - file: monitoring/high-availability.md
           - file: monitoring/cluster-response-time.md
       - file: monitoring/node-moves-outages.md
+      - file: monitoring/not-enough-capacity.md
       - file: monitoring/deployment-health-warnings.md
       - file: monitoring/node-bootlooping.md
   - file: deployments/cloud-enterprise/cloud-enterprise.md
