@@ -17,7 +17,7 @@ After your metrics are in Elastic, query them, visualize them in {{kib}}, and ac
 
 ## Query metrics [metrics-query]
 
-Elastic gives you two ways to query metrics: {{esql}}, including its time-series (TS) mode, and PromQL. Use {{esql}} for new analysis and {{kib}} dashboards. Use PromQL to reuse the Prometheus queries, alerting rules, and Grafana dashboards you already have.
+Elastic gives you two ways to query metrics: {{esql}}, including its time-series (TS) mode, and PromQL. Use {{esql}} for new analysis and {{kib}} dashboards. Use PromQL to reuse existing Prometheus query expressions and Grafana dashboards.
 
 ### Which query language to use [metrics-query-which]
 
@@ -26,7 +26,7 @@ Pick a language based on what you ingested and what you want to do:
 | If you want to | Use |
 |---|---|
 | Run time-series queries over OpenTelemetry (OTel) or Prometheus remote write metrics, including counters, rates, and time buckets | {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` [{{esql}} with time-series (TS) mode](#metrics-query-esql-ts) |
-| Reuse existing Prometheus queries, alerting rules, or Grafana dashboards | {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` [PromQL](#metrics-query-promql) |
+| Reuse existing Prometheus query expressions or Grafana dashboards | {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` [PromQL](#metrics-query-promql) |
 
 ### {{esql}} for metrics [metrics-query-esql]
 
@@ -63,7 +63,7 @@ stack: ga 9.5+, preview =9.4
 serverless: ga
 ```
 
-{{es}} supports PromQL for any metrics stored in a TSDS, whichever ingest path filled it: Prometheus remote write, OTLP, or the bulk API. You can reuse existing Prometheus queries and alerting rules as long as they use supported PromQL. Metric names reflect the ingest path you used.
+{{es}} supports PromQL for any metrics stored in a TSDS, whichever ingest path filled it: Prometheus remote write, OTLP, or the bulk API. You can reuse existing Prometheus query expressions as long as they use supported PromQL. Metric names reflect the ingest path you used.
 
 {{es}} runs PromQL in two ways:
 

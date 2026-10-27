@@ -74,13 +74,13 @@ OpenTelemetry input packages run only on {{agent}} in default mode, not on {{age
 
 ### {{ls}} [metrics-ingest-logstash]
 
-If your {{agent}} integrations already send through {{ls}}, keep that setup by using the {{fleet}} [{{ls}} output](/reference/fleet/logstash-output.md). OTLP and Prometheus remote write don't pass through {{ls}}: {{agent}} in OTel mode has no {{ls}} exporter, and {{ls}} has no OTLP or remote write input.
+If your {{agent}} integrations already send through {{ls}}, keep that setup by using the {{fleet}} [{{ls}} output](/reference/fleet/logstash-output.md). {{agent}} in OTel mode includes a {{ls}} exporter for ECS events produced by [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers), but it doesn't forward OTLP metrics or Prometheus remote write traffic through {{ls}}, and {{ls}} has no OTLP or remote write input.
 
 ## Ingest Prometheus metrics [metrics-ingest-prometheus]
 
 Elastic accepts Prometheus metrics in three ways:
 
-- **Prometheus remote write.** Recommended when Prometheus already scrapes your targets. Add a `remote_write` target and keep your scrape configurations unchanged. Any client that sends Prometheus remote write 1.0 works, including Prometheus and Grafana Alloy. Keep clients on remote write 1.0: the endpoint accepts 2.0 requests but discards their samples without returning an error. Metrics keep their Prometheus names and land in a [TSDS](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#index-template).
+- **Prometheus remote write.** Recommended when Prometheus already scrapes your targets. Add a `remote_write` target and keep your scrape configurations unchanged. Any client that sends Prometheus remote write 1.0 works, including Prometheus and Grafana Alloy. Remote write 2.0 is not supported, so configure clients to use 1.0. Metrics keep their Prometheus names and land in a [TSDS](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#index-template).
 - **OpenTelemetry Collector.** Scrape targets with the `prometheus` receiver in {{agent}} in OTel mode or another Collector, and export OTLP to the endpoints in [Ingest with OpenTelemetry](#metrics-ingest-otlp). Use this when you're retiring Prometheus rather than keeping it. The Collector's `prometheusremotewrite` exporter also works against the remote write endpoint, but it rewrites metric names with Prometheus suffixes and underscores, and the endpoint drops the native histograms it produces for OpenTelemetry exponential histograms. Use it only when you can't change the exporter.
 - **{{agent}} Prometheus integration.** Scrapes exporters or a Prometheus server's federation endpoint, receives remote write on the agent, or runs PromQL queries against a Prometheus server. It stores ECS documents under `prometheus.*` and isn't deprecated. Use it when you need the ECS schema or {{fleet}} management. Refer to the [Prometheus integration](https://www.elastic.co/docs/reference/integrations/prometheus) for setup instructions.
 

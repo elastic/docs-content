@@ -91,7 +91,7 @@ From the chart grid in **Discover**:
 
 - **Break a metric down by a dimension.** Select **Dimensions** and choose a dimension such as the host name. Each chart then shows a separate line for each host, so you can find the host that causes a CPU spike or uses the most memory.
 - **View the details of a metric.** On a chart, select **View details** ({icon}`eye`) to find the metric type, its dimensions, and the {{esql}} query behind the chart. Use the query as a starting point for your own queries and alerts.
-- **Add a chart to a dashboard.** On a chart, select **Copy to dashboard** ({icon}`app_dashboard`) to save it to a new or existing dashboard. A dashboard keeps the chart next to related charts, so you can return to it, follow the metric over time, and share it with your team.
+- **Add a chart to a dashboard.** On a chart, select **Copy to dashboard** ({icon}`add_to_dashboard`) to save it to a new or existing dashboard. A dashboard keeps the chart next to related charts, so you can return to it, follow the metric over time, and share it with your team.
 
 For more ways to work with the chart grid, refer to [](/solutions/observability/infra-and-hosts/discover-metrics.md).
 ::::

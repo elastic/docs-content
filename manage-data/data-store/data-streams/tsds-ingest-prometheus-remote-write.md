@@ -275,7 +275,7 @@ If you don't need exemplars, or want to avoid the additional storage, turn it of
 
 ## Limitations
 
-* Only the Prometheus remote write 1.0 protocol is supported. The endpoint accepts remote write 2.0 requests but discards their samples without returning an error, so keep clients on 1.0.
+* Only the Prometheus remote write 1.0 protocol is supported. The endpoint rejects remote write 2.0 requests, so configure clients to use 1.0.
 * Time series with a missing `__name__` label are dropped.
 * Native histograms, which Prometheus and OpenTelemetry Collector exporters use for exponential histograms, are not supported. Time series that carry them are silently dropped. Classic histograms sent as `_bucket`, `_sum`, and `_count` series are supported.
 * Samples with non-finite values (NaN, Infinity) are silently dropped.
