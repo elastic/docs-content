@@ -13,7 +13,7 @@ products:
 
 # Get started with metrics [metrics-get-started]
 
-This page walks you through the fastest way to try metrics in Elastic. Start here to ingest metrics from a single source and use {{kib}} to explore and query your data. You'll use a quickstart to install {{agent}} in OTel mode and confirm that collection, authentication, and storage work end to end before you design a larger setup.
+This page walks you through the fastest way to try metrics in Elastic. Start here to ingest metrics from a single source and use {{kib}} to explore and query your data. You'll use a quickstart to install {{agent}} configured as an OTel Collector and confirm that collection, authentication, and storage work end to end before you design a larger setup.
 
 When you're ready to add more sources and plan a production rollout, continue with [Next steps](#metrics-get-started-next).
 
@@ -31,7 +31,7 @@ You need:
 ::::::{step} Get data flowing
 :anchor: metrics-get-started-quickstart
 
-Follow an {{edot}} quickstart for your deployment type and environment. Each quickstart deploys {{agent}} in OTel mode to collect logs, metrics, and traces. Use the row that matches your deployment and the column that matches where you run your workloads:
+Follow an {{edot}} quickstart for your deployment type and environment. Each quickstart deploys {{agent}} configured as an OTel Collector to collect logs, metrics, and traces. Use the row that matches your deployment and the column that matches where you run your workloads:
 
 | Deployment | {{k8s}} | Docker | Hosts or VMs |
 |---|---|---|---|

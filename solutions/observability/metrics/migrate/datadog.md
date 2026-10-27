@@ -31,7 +31,7 @@ Pick the path that matches how you collect metrics:
 
 #### Retarget applications that already emit OTLP [metrics-migrate-datadog-otlp]
 
-If your services already export OTLP, retarget those exporters at Elastic. Change `OTEL_EXPORTER_OTLP_ENDPOINT` (and the authentication headers) to the Managed OTLP Endpoint or to {{agent}} in OTel mode running as a gateway, using the same settings as any other OTLP client.
+If your services already export OTLP, retarget those exporters at Elastic. Change `OTEL_EXPORTER_OTLP_ENDPOINT` (and the authentication headers) to the Managed OTLP Endpoint or to {{agent}} configured as an OTel Collector gateway, using the same settings as any other OTLP client.
 
 The Datadog Agent can receive OTLP from your applications and forward it to Datadog. That ingest path doesn't forward the same telemetry to Elastic. Point the applications, or a collector in front of them, at Elastic.
 
@@ -41,7 +41,7 @@ For the endpoint and gateway options by deployment type, refer to [Ingest metric
 
 If a collector already receives your metrics and exports them to Datadog, add Elastic as a second exporter and send the same metrics to both backends. Keep the Datadog exporter until you have validated Elastic queries and alerts.
 
-Any OpenTelemetry Collector distribution can do this, including vendor distributions. On {{ecloud}}, add an `otlp` exporter that points at the Managed OTLP Endpoint. On self-managed {{stack}}, forward OTLP to {{agent}} in OTel mode running as a gateway.
+Any OpenTelemetry Collector distribution can do this, including vendor distributions. On {{ecloud}}, add an `otlp` exporter that points at the Managed OTLP Endpoint. On self-managed {{stack}}, forward OTLP to {{agent}} configured as an OTel Collector gateway.
 
 For the Elastic OTLP destination, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp). For the self-managed gateway pattern, refer to [Send data from an upstream OpenTelemetry Collector](/solutions/observability/get-started/opentelemetry/use-cases/upstream-collector/index.md).
 

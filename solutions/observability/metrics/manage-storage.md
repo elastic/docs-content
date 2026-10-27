@@ -24,7 +24,7 @@ A time series data stream (TSDS) is an {{es}} data stream with `index.mode` set 
 
 Naming a data stream `metrics-*` doesn't make it a TSDS. The index template that matches the data stream must set `index.mode: time_series`. Elastic's built-in templates do this for the OpenTelemetry Protocol (OTLP) and Prometheus remote write paths, so you don't create templates yourself:
 
-- OTLP metrics from the Managed OTLP Endpoint, {{agent}} in OTel mode, and the {{es}} OTLP/HTTP endpoint land in `metrics-*.otel-*` data streams (`metrics-generic.otel-default` by default). To extend the mappings, use the `metrics-otel@custom` component template. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) for how that path stores metrics.
+- OTLP metrics from the Managed OTLP Endpoint, {{agent}} configured as an OTel Collector, and the {{es}} OTLP/HTTP endpoint land in `metrics-*.otel-*` data streams (`metrics-generic.otel-default` by default). To extend the mappings, use the `metrics-otel@custom` component template. Refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) for how that path stores metrics.
 - Prometheus remote write metrics land in `metrics-*.prometheus-*` data streams (`metrics-generic.prometheus-default` by default) through the built-in template for that pattern. To extend the mappings, use the `metrics-prometheus@custom` component template. Refer to [Index template](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#index-template) for the template that creates those data streams.
 - {{agent}} integrations store metrics as a TSDS when the integration enables it.
 
@@ -42,7 +42,7 @@ serverless: ga
 
 When counters and histograms live in a TSDS, temporality is how each sample relates to the last one. Cumulative values are running totals since the process started. Delta values are the change since the previous sample. {{es}} needs the same temporality your producer uses. If they don't match, rates, aggregations, and downsampling can be wrong.
 
-You don't have to configure temporality if you ingest with the {{es}} OTLP/HTTP endpoint, the Managed OTLP Endpoint, or Prometheus remote write. Some paths accept only delta histograms, such as the `elasticsearch` exporter and, on {{ech}} before 9.5.3, the Managed OTLP Endpoint. Refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality).
+You don't have to configure temporality if you ingest with the {{es}} OTLP/HTTP endpoint, the Managed OTLP Endpoint, or Prometheus remote write. Some paths accept only delta histograms, such as the `elasticsearch` exporter and, on {{ech}} before 9.5.3, the Managed OTLP Endpoint. For the affected paths and their workarounds, refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality).
 
 For how to set and verify temporality, refer to [Metric temporality](/manage-data/data-store/data-streams/metric-temporality.md).
 :::

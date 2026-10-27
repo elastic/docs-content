@@ -34,7 +34,7 @@ Use one schema. Mixing OpenTelemetry and ECS in one deployment works, but requir
 
 | Ingest path | Stored as | Metric values and labels |
 |---|---|---|
-| Managed OTLP Endpoint, {{agent}} in OTel mode as a gateway, {{es}} OTLP/HTTP endpoint | OpenTelemetry-native | `metrics.<metric_name>`, with OpenTelemetry attributes under `attributes.*` and `resource.attributes.*`, in `metrics-*.otel-*` data streams |
+| Managed OTLP Endpoint, {{agent}} configured as an OTel Collector gateway, {{es}} OTLP/HTTP endpoint | OpenTelemetry-native | `metrics.<metric_name>`, with OpenTelemetry attributes under `attributes.*` and `resource.attributes.*`, in `metrics-*.otel-*` data streams |
 | {{agent}} integrations, {{metricbeat}}, Beat receivers | ECS | ECS field names, for example `system.cpu.user.pct`, in the integration's data streams |
 | {{apm-server-or-mis}} OTLP intake (the `.apm` endpoint) | ECS | Legacy path that translates OTLP data to ECS. Not recommended for new setups. |
 | Prometheus remote write (Managed Prometheus Remote Write endpoint or {{es}} endpoint) | Prometheus names, unchanged | `metrics.<metric_name>`, with labels as `labels.<label_name>` dimensions, in `metrics-*.prometheus-*` data streams. No conversion to OpenTelemetry or ECS. |
@@ -47,7 +47,7 @@ The schema you choose affects how you ingest, which metric names you query, and 
 
 | Aspect | OTel schema | ECS schema |
 |---|---|---|
-| **Ingest using** | EDOT SDKs, any OTLP-compatible client, {{agent}} in OTel mode | {{agent}} integrations, {{metricbeat}} |
+| **Ingest using** | EDOT SDKs, any OTLP-compatible client, {{agent}} configured as an OTel Collector | {{agent}} integrations, {{metricbeat}} |
 | **Metric names** | OpenTelemetry semantic conventions (`system.cpu.utilization`) | ECS (`system.cpu.user.pct`) |
 | **Prebuilt dashboards** | OpenTelemetry content packs from the {{kib}} {{integrations}} UI | {{agent}} integration dashboards |
 | {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **PromQL support** | Yes | Yes, when the integration stores data as a time series data stream (TSDS) |
@@ -63,6 +63,6 @@ Your deployment type determines the recommended path. Use {{agent}} integrations
 |---|---|---|
 | {{serverless-full}} | Managed OTLP Endpoint | - Managed Prometheus Remote Write endpoint<br>- {{agent}} integrations |
 | {{ech}} | Managed OTLP Endpoint | - Managed Prometheus Remote Write endpoint {applies_to}`stack: ga 9.4+`<br>- {{agent}} integrations |
-| Self-managed {{stack}}, {{ece}}, {{eck}} | {{agent}} in OTel mode as a gateway | - {{es}} OTLP/HTTP endpoint {applies_to}`stack: ga 9.2+`<br>- {{es}} Prometheus remote write endpoint {applies_to}`stack: ga 9.5+, preview =9.4`<br>- {{agent}} integrations |
+| Self-managed {{stack}}, {{ece}}, {{eck}} | {{agent}} configured as an OTel Collector gateway | - {{es}} OTLP/HTTP endpoint {applies_to}`stack: ga 9.2+`<br>- {{es}} Prometheus remote write endpoint {applies_to}`stack: ga 9.5+, preview =9.4`<br>- {{agent}} integrations |
 
 For configuration details for each path, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
