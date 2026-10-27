@@ -258,9 +258,9 @@ If you encounter issues during a rolling upgrade, refer to [](/troubleshoot/elas
 stack: ga 9.5+
 ```
 
-Self-managed clusters created before 9.5 don't have [cluster state encryption](elasticsearch://reference/elasticsearch/cluster-state-encryption-key.md) configured automatically.
+Self-managed clusters created before 9.5 don't have [Cluster state encryption](elasticsearch://reference/elasticsearch/cluster-state-encryption-key.md) configured automatically.
 
-Cluster state encryption protects sensitive values, such as credentials, that {{es}} features store in cluster state. To use features that rely on this protection, configure an encryption password after the upgrade. For instructions, refer to [](elasticsearch://reference/elasticsearch/cluster-state-encryption-key.md#cluster-state-encryption-upgrades).
+Cluster state encryption protects sensitive values, such as credentials, that {{es}} features store in cluster state. To use features that rely on this protection, configure an encryption password after the upgrade. For instructions, refer to [Upgrade existing deployments](elasticsearch://reference/elasticsearch/cluster-state-encryption-key.md#cluster-state-encryption-upgrades).
 
 
 ## Archived settings [archived-settings]
