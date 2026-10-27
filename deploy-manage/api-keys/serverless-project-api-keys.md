@@ -29,7 +29,16 @@ To manage API keys in {{kib}}, go to the **API keys** management page in the nav
 
 ## Create an API key [api-keys-create-an-api-key]
 
-In **API keys**, click **Create API key**:
+The following options are available to create an API key:
+
+* As a quick option to create a personal API key from anywhere in {{kib}}:
+  1. From the **Help menu** {icon}`question`, select **Connection details > API key**.
+  1. Give the key a name.
+  1. Select **Create API key**.
+
+  Your personal API key is created with a default expiration of 90 days from the time of creation. You can manage the key from the **API keys** page.
+
+* To create a personal API key with configurable options, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create API key**:
 
 :::{image} /deploy-manage/images/serverless-create-personal-api-key.png
 :alt: Create API key UI
