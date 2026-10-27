@@ -118,7 +118,6 @@ After you can see the time series you care about, create a rule so a threshold n
 
 For the full list of {{observability}} rule types, refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md).
 
-## Related pages [metrics-explore-related]
+## Next steps [metrics-explore-next]
 
-- [Ingest metrics](/solutions/observability/metrics/ingest.md)
-- [Manage metrics storage](/solutions/observability/metrics/manage-storage.md)
+As your metrics volume grows, learn how to control storage costs and retention with [Manage metrics storage](/solutions/observability/metrics/manage-storage.md).

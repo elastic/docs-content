@@ -468,6 +468,9 @@ toc:
           - file: observability/metrics/plan-your-setup.md
           - file: observability/metrics/ingest.md
           - file: observability/metrics/migrate.md
+            children:
+              - file: observability/metrics/migrate/prometheus.md
+              - file: observability/metrics/migrate/datadog.md
           - file: observability/metrics/explore.md
           - file: observability/metrics/manage-storage.md
       - file: observability/logs.md

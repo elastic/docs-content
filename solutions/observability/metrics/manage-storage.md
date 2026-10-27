@@ -76,8 +76,3 @@ Retention is how long metrics stay in {{es}}, when backing indices roll over, an
 :::
 
 ::::
-
-## Related pages [metrics-manage-storage-related]
-
-- [Ingest metrics](/solutions/observability/metrics/ingest.md)
-- [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md)

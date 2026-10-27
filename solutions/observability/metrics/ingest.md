@@ -106,9 +106,8 @@ Use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/man
 
 :::::
 
-For the side-by-side ingest sequence and how to switch over, refer to [Migrate metrics to Elastic](/solutions/observability/metrics/migrate.md#metrics-migrate-prometheus).
+For the side-by-side ingest sequence and how to switch over, refer to [Migrate from Prometheus](/solutions/observability/metrics/migrate/prometheus.md).
 
-## Related pages [metrics-ingest-related]
+## Next steps [metrics-ingest-next]
 
-- [Plan your metrics setup](/solutions/observability/metrics/plan-your-setup.md)
-- [Manage metrics storage](/solutions/observability/metrics/manage-storage.md)
+After metrics are flowing, [explore and query them](/solutions/observability/metrics/explore.md) in {{kib}}. Metrics volume grows quickly, so [set up storage and retention](/solutions/observability/metrics/manage-storage.md) before your rollout becomes production-critical.

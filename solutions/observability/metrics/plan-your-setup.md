@@ -66,9 +66,3 @@ Your deployment type determines the recommended path. Use {{agent}} integrations
 | Self-managed {{stack}}, {{ece}}, {{eck}} | {{agent}} in OTel mode as a gateway | - {{es}} OTLP/HTTP endpoint {applies_to}`stack: ga 9.2+`<br>- {{es}} Prometheus remote write endpoint {applies_to}`stack: ga 9.5+, preview =9.4`<br>- {{agent}} integrations |
 
 For configuration details for each path, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md).
-
-## Related pages [metrics-plan-related]
-
-- [Ingest metrics](/solutions/observability/metrics/ingest.md)
-- [Get started with metrics](/solutions/observability/metrics/get-started.md)
-- [Know when to keep using classic Elastic components](/solutions/observability/get-started/opentelemetry/start-with-otel.md#start-with-otel-when-classic)
