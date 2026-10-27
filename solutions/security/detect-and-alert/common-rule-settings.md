@@ -110,7 +110,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
 ::::
 
-**MITRE ATT&CK threats** (optional)
+**MITRE ATT&CK threats** (optional) {applies_to}`stack: ga 9.0-9.5`
 :   Add relevant [MITRE ATT&CK](https://attack.mitre.org/) tactics, techniques, and subtechniques.
 
     ::::{note}
@@ -139,6 +139,18 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 
 **Setup guide** (optional)
 :   Instructions on rule prerequisites such as required integrations, configuration steps, and anything else needed for the rule to work correctly.
+
+**Threat mappings** (optional) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Map the rule to the [MITRE ATT&CK](https://attack.mitre.org/) and [MITRE ATLAS](https://atlas.mitre.org/) tactics, techniques, and subtechniques it detects. Mappings determine where the rule appears on the [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) page. Each framework has its own section, and a rule can use one or both:
+
+    * **MITRE ATT&CK**: For attacks on enterprise IT systems. This section appears by default.
+    * **MITRE ATLAS**: For attacks on AI and machine learning systems, such as LLM prompt injection. To add this section, select **Add framework** → **MITRE ATLAS**.
+
+    In a framework's section, select a tactic, then add its techniques and subtechniques. To map another tactic, select **Add tactic**. To delete all of a framework's mappings, select **Remove framework** {icon}`trash` in its section.
+
+    ::::{note}
+    The tactic and technique options here only include the framework versions currently supported by {{elastic-sec}}. If you're upgrading and existing mappings are affected by a MITRE ATT&CK version change, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+    ::::
 
 **Timestamp override** (optional)
 :   Select a source event timestamp field. When selected, the rule's query uses the selected field, instead of the default `@timestamp` field, to search for alerts. This can help reduce missing alerts due to network or server outages. Specifically, if your ingest pipeline adds a timestamp when events are sent to {{es}}, this can prevent missing alerts from ingestion delays.

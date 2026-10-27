@@ -60,9 +60,11 @@ A rule is flagged if it's mapped to the Defense Evasion tactic under its pre-v19
 
 To find rules that need to be remapped, check the following places:
 
-* A callout on the **{{siem-rules-ui}}** page, titled **MITRE ATT&CK updated to v19**, links to the coverage page and notes that affected rules are flagged there and on each rule's edit form.
-* A callout on the **MITRE ATT&CK coverage** page shows how many rules are affected. Select **View rules** to see the affected rules, each with the specific outdated tactic, technique, or sub-technique ID it references.
-* On an individual rule's details page, any outdated ID is marked with a warning icon next to it in the **MITRE ATT&CK** field. Hover over the icon to see which ID is affected.
+* {applies_to}`stack: ga =9.5` A callout on the **{{siem-rules-ui}}** page, titled **MITRE ATT&CK updated to v19**, links to the coverage page and notes that affected rules are flagged there and on each rule's edit form.
+* A callout on the [coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md) shows how many rules are affected. Select **View rules** to see the affected rules, each with the specific outdated tactic, technique, or sub-technique ID it references.
+* On an individual rule's details page, any outdated ID is marked with a warning icon next to it. Hover over the icon to see which ID is affected. The icon appears in this field:
+  * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Threat mappings**
+  * {applies_to}`stack: ga =9.5` **MITRE ATT&CK**
 
 ## Remap your rules [remap-mitre-attack-remap-rules]
 
@@ -70,9 +72,12 @@ If you only use Elastic prebuilt rules, mappings are updated for you automatical
 
 :::::{stepper}
 ::::{step} Review flagged rules
-Go to the **MITRE ATT&CK coverage** page and select **View rules** in the outdated mappings callout to see the affected rules and the specific ID each one references. Select a rule to open its details page, where the outdated mapping is marked with a warning icon, then select **Edit rule**.
+Go to the [coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md) and select **View rules** in the outdated mappings callout to see the affected rules and the specific ID each one references. Select a rule to open its details page, where the outdated mapping is marked with a warning icon, then select **Edit rule**.
 
-In the rule editor, flagged mappings appear outlined in red under **MITRE ATT&CK threats** in **Advanced settings**, with an inline error naming the outdated ID.
+In the rule editor, open **Advanced settings**. Flagged mappings appear outlined in red, with an inline error naming the outdated ID, in this setting:
+
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The **MITRE ATT&CK** section of **Threat mappings**
+* {applies_to}`stack: ga =9.5` **MITRE ATT&CK threats**
 
 :::{note}
 Prebuilt rules that aren't installed, and custom rules that are unmapped or mapped to a deprecated tactic or technique, don't appear on the coverage grid.
@@ -110,5 +115,5 @@ Filter to enabled rules and confirm the Stealth and Defense Impairment columns m
 
 ## Related [remap-mitre-attack-related]
 
-* [MITRE ATT&CK coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md)
+* [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md)
 * [MITRE ATT&CK v19 release notes](https://attack.mitre.org/resources/updates/updates-april-2026/)

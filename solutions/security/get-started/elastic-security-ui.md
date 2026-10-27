@@ -146,7 +146,9 @@ Expand this section to access the following pages:
 
 * [Shared Exception Lists](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
 
-* [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
+* [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE tactics and techniques, based on installed rules.
+
+  {applies_to}`stack: ga 9.0-9.5` This page is named **MITRE ATT&CK® coverage**.
 
 
 ### Detections [_detections]

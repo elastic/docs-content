@@ -369,7 +369,9 @@ $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga
     :::
 
 $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}`stack: ga 9.4+`
-:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, or query.
+:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE mappings, schedule, or query.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` MITRE mappings can use MITRE ATT&CK, MITRE ATLAS, or both.
 
     :::{dropdown} Assigned tools
     `security.create_detection_rule`, `security.security_labs_search`, `platform.core.generate_esql`, `platform.core.product_documentation`
