@@ -86,3 +86,7 @@ In **API keys**, click on the name of the key. You can update only **Control sec
 The **API keys** app lists your API keys, including the name, date created, and status. When API keys expire, the status changes from `Active` to `Expired`.
 
 You can delete API keys individually or in bulk.
+
+## Related pages
+
+* [](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md): Pair a key with your project's {{es}} endpoint to connect clients and tools.

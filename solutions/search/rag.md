@@ -81,7 +81,7 @@ If you're using the {{es}} solution or serverless project type, these additional
 
 **Agent Builder:** Build AI-powered search experiences using [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md), which provides built-in agents, tools, and skills for interacting with your {{es}} data through a chat interface.
 
-**Playground (deprecated):** [Playground](/solutions/elasticsearch-solution-project/playground.md) has been deprecated as of version 9.4. Use Agent Builder instead.
+**Playground:** {applies_to}`stack: preview =9.0, beta 9.1-9.3, deprecated 9.4-9.5, removed 9.6+` {applies_to}`serverless: unavailable` [Playground](/solutions/elasticsearch-solution-project/playground.md) is deprecated and removed. Use Agent Builder instead.
 
 :::{related-learning} rag-foundation, rag-beyond-basics, rag-build-system, rag-build-agentic 
 :::

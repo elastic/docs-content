@@ -260,7 +260,7 @@ Available matchers are:
     :   (Optional) Type of the resource to obtain the ID of. Valid `resource_type`:
         * `pod`: to make the lookup based on the Pod UID. When `resource_type` is set to `pod`, `logs_path` must be set as well, supported path in this case:
             * `/var/lib/kubelet/pods/` used to read logs from mounted into the Pod volumes, those logs end up under `/var/lib/kubelet/pods/<pod UID>/volumes/<volume name>/...` To use `/var/lib/kubelet/pods/` as a `log_path`, `/var/lib/kubelet/pods` must be mounted into the filebeat Pods.
-            * `/var/log/pods/` Note: when using `resource_type: 'pod'` logs will be enriched only with Pod metadata: Pod id, Pod name, etc., not container metadata.
+            * `/var/log/pods/` Note: when using `resource_type: 'pod'` logs will be enriched only with Pod metadata, such as Pod id and Pod name, not container metadata.
         * `container`: to make the lookup based on the container ID, `logs_path` must be set to `/var/log/containers/`. It defaults to `container`.
 
 

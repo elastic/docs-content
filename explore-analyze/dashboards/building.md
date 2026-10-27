@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboards.html
-description: Choose how to create Kibana dashboards — from the UI, programmatically using REST APIs, or using AI-powered tools — and find the right starting point for your workflow.
+description: Decide whether to build a Kibana dashboard from the UI, with REST APIs, or with AI tools, based on how you work and what you need to automate.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,11 +10,9 @@ products:
 type: overview
 ---
 
-# Building dashboards [create-dashboards]
+# Ways to build a dashboard [create-dashboards]
 
-{{product.kibana}} offers many ways to build powerful dashboards that help you visualize and keep track of the most important information in your {{product.elasticsearch}} data. Combine multiple visualizations, metrics, and interactive elements into a cohesive view that tells your data story and enables rapid decision-making.
-
-Use the following table to find the right approach for building your dashboards, then follow the link to get started.
+You can build a dashboard from the UI, with REST APIs, or with AI. Use the following table to find the approach that fits how you work, then follow the link to get started. To learn what a dashboard is, refer to [](../dashboards.md).
 
 | Approach | When to use this | What you get |
 |---|---|---|
@@ -27,6 +25,7 @@ Once you have a dashboard, you can enhance it:
 * [Add filter controls](../visualize/add-controls.md) to let viewers explore the data interactively
 * Add [drilldowns](drilldowns.md#drilldown-types) to open another dashboard, a URL, or Discover from a panel
 * [Arrange and resize panels](arrange-panels.md) to optimize its layout
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Enhance it with AI](enhance-dashboard-with-ai.md) to improve its text, layout, and chart styling
 
 You can also maintain your dashboards after you create them: [organize your collection](managing.md) with search, tags, and favorites, [duplicate](duplicate-dashboards.md) a dashboard to reuse it as a starting point, [import](import-dashboards.md) one from another space, instance, or deployment, or [share or export](sharing.md) it. For repeatable, auditable changes, [manage your dashboards as code](manage-dashboards-as-code.md) to version-control their definitions and deploy them across environments.
 

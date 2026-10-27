@@ -35,11 +35,6 @@ After you've identified the tier that needs more capacity, you can resize your d
 :::{include} /troubleshoot/elasticsearch/_snippets/resize-your-deployment.md
 :::
 
- 
-
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
-:::
-
 
 ## Check and adjust the index replicas limit [adjust-index-replica-limit]
 
