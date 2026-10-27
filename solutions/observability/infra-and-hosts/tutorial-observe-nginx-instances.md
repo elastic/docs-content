@@ -62,7 +62,7 @@ Follow these steps to add the nginx integration to your deployment:
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Enter "nginx" in the search bar, and select the **Nginx** integration.
-3. Select **Add Nginx** at the top of the integration page.
+3. If the integration's details page opens, select **Add Nginx** at the top of the page.
 4. Select **Add integration only (skip agent installation)** at the bottom of the page.
 
 

@@ -170,7 +170,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
     :alt: The Integrations catalog showing a newly installed custom integration under its chosen category
     :::
 
-14. Click **Add** to start collecting data and assign the integration to an [agent policy](/reference/fleet/agent-policy.md).
+14. Select the integration. If the integration's details page opens, click **Add** to start collecting data and assign the integration to an [agent policy](/reference/fleet/agent-policy.md).
 
     :::{image} /solutions/images/security-auto-import-add-integration.png
     :alt: The integration details page with an Add button to deploy the integration to an agent policy

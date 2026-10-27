@@ -94,7 +94,7 @@ Follow these steps to add the Kubernetes integration to your policy:
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Enter "Kubernetes" in the search bar, and select the **Kubernetes** integration.
-3. Click **Add Kubernetes** at the top of the Kubernetes integration page.
+3. If the integration's details page opens, click **Add Kubernetes** at the top of the page.
 4. Click **Add integration only (skip agent installation)** at the bottom of the Add integration page.
 
 Continue to [Step 2: Configure your Kubernetes integration](#monitor-k8s-configure-integration).

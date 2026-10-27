@@ -65,7 +65,7 @@ You’ll start with installing the Elastic GCP integration to add pre-built dash
     :alt: {{kib}} integrations
     :::
 
-3. Click the Elastic Google Cloud Platform (GCP) integration to see more details about it, then click **Add Google Cloud Platform (GCP)**.
+3. Click the Elastic Google Cloud Platform (GCP) integration. If the integration's details page opens, click **Add Google Cloud Platform (GCP)**.
 
     :::{image} /solutions/images/observability-monitor-gcp-integration.png
     :alt: GCP integration

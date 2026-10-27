@@ -156,7 +156,7 @@ curl --request POST \
 ::::{admonition}
 * To save time, you can use {{kib}} to generate the API call, then run it from the Dev Tools console.
 
-    1. Go to **Integrations**, select an {{agent}} integration, and click **Add <Integration>**.
+    1. Go to **Integrations** and select an {{agent}} integration. If the integration's details page opens, click **Add <Integration>**.
     2. Configure the integration settings and select which agent policy to use.
     3. Click **Preview API request**.
 

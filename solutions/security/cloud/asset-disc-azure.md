@@ -41,7 +41,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select `Cloud asset discovery`.
-3. Click **Add Cloud Asset Discovery**.
+3. If the integration's details page opens, click **Add Cloud Asset Discovery**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
 5. Give your integration a name that matches the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
 6. In **Deployment options**, select the deployment mode:
@@ -87,7 +87,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select `Cloud asset discovery`.
-3. Click **Add Cloud Asset Discovery**.
+3. If the integration's details page opens, click **Add Cloud Asset Discovery**.
 4. In **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
 5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CAD-dev-1`.
 

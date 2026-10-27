@@ -125,8 +125,8 @@ In this step, you install the AWS integration in {{kib}}. The AWS integration co
 To add the integration:
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **AWS** and select the AWS integration to see more details about it.
-3. Click **Add AWS**.
+2. In the query bar, search for **AWS** and select the AWS integration.
+3. If the integration's details page opens, click **Add AWS**.
 4. Configure the integration name and optionally add a description.
 
     ::::{tip}

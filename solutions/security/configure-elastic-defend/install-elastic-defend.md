@@ -44,7 +44,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
     :screenshot:
     :::
 
-2. Search for and select **{{elastic-defend}}**, then select **Add {{elastic-defend}}**. The integration configuration page appears.
+2. Search for and select **{{elastic-defend}}**. If the integration's details page opens, select **Add {{elastic-defend}}**. The integration configuration page appears.
 
     ::::{note}
     If this is the first integration you’ve installed and the **Ready to add your first integration?** page appears instead, select **Add integration only (skip agent installation)** to proceed. You can [install {{agent}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) after setting up the {{elastic-defend}} integration.

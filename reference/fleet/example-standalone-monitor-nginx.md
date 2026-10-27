@@ -126,7 +126,7 @@ Elastic integrations are a streamlined way to connect your data from popular ser
     :::
 
 5. Select the **Nginx** card.
-6. Click **Add Nginx**.
+6. If the integration's details page opens, click **Add Nginx**.
 7. Click the link to **Add integration only (skip agent installation)**. You’ll install standalone {{agent}} in a later step.
 8. Here, you can select options such as the paths to where your nginx logs are stored, whether or not to collect metrics data, and various other settings.
 

@@ -75,7 +75,7 @@ After you decide which data you need and how to collect it, add the integration:
    To browse the full catalog, go to the **Integrations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Security** category.
    :::
 
-4. On the integration's page, select **Add** followed by the integration's name, such as **Add Okta**.
+4. If the integration's details page opens, select **Add** followed by the integration's name, such as **Add Okta**.
 5. Follow the prompts to configure the integration. If you're adding an {{managed-integration}}, also select it as the deployment mode:
 
    - {applies_to}`{serverless: ga, stack: ga 9.5+}` In the **Deployment** section, select **Elastic Managed Integration**.
