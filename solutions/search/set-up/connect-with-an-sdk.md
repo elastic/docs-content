@@ -28,7 +28,7 @@ The following steps show you how to set your endpoint and API key, install a cli
 
 :::::::{stepper}
 
-::::::{step} Connect to {{es}}
+::::::{step} Set environment variables
 :anchor: connect-with-an-sdk-connect
 
 Set your {{es}} endpoint and API key as environment variables:
@@ -302,7 +302,7 @@ func main() {
 ::::::{step} Verify your connection
 :anchor: connect-with-an-sdk-verify
 
-Call the info API to confirm that your endpoint URL and API key work.
+Call the info API to confirm that your endpoint URL and API key work. A successful response includes the cluster name and version. The exact output depends on your client and your deployment.
 
 :::::{tab-set}
 :group: languages
@@ -314,6 +314,14 @@ Call the info API to confirm that your endpoint URL and API key work.
 print(es.info())
 ```
 
+:::{dropdown} Example response
+
+```python
+{'name': 'instance-0000000000', 'cluster_name': 'my-deployment', 'cluster_uuid': 'QIpRB53HS1KSVYWtjP_rqg', 'version': {'number': '9.2.0', 'build_flavor': 'default', 'build_type': 'docker', 'build_hash': '25d88452371273dd27356c98598287b669a03eae', 'build_date': '2025-10-21T10:06:21.288851013Z', 'build_snapshot': False, 'lucene_version': '10.3.1', 'minimum_wire_compatibility_version': '8.19.0', 'minimum_index_compatibility_version': '8.0.0'}, 'tagline': 'You Know, for Search'}
+```
+
+:::
+
 ::::
 
 ::::{tab-item} TypeScript
@@ -323,79 +331,7 @@ print(es.info())
 console.log(await es.info());
 ```
 
-::::
-
-::::{tab-item} PHP
-:sync: php
-
-```php
-echo $es->info()->asString();
-```
-
-::::
-
-::::{tab-item} Ruby
-:sync: ruby
-
-```ruby
-puts es.info
-```
-
-::::
-
-::::{tab-item} C#/.NET
-:sync: csharp
-
-```csharp
-var info = await es.InfoAsync();
-Console.WriteLine($"{info.ClusterName} {info.Version.Number}");
-```
-
-::::
-
-::::{tab-item} Java
-:sync: java
-
-```java
-System.out.println(es.info());
-es._transport().close();
-```
-
-::::
-
-::::{tab-item} Go
-:sync: go
-
-```go
-res, err := es.Info()
-if err != nil {
-	log.Fatal(err)
-}
-defer res.Body.Close()
-log.Println(res)
-```
-
-::::
-
-:::::
-
-:::::{dropdown} Example responses
-A successful response includes the cluster name and version. The exact output depends on your client and your deployment.
-
-::::{tab-set}
-:group: languages
-
-:::{tab-item} Python
-:sync: python
-
-```python
-{'name': 'instance-0000000000', 'cluster_name': 'my-deployment', 'cluster_uuid': 'QIpRB53HS1KSVYWtjP_rqg', 'version': {'number': '9.2.0', 'build_flavor': 'default', 'build_type': 'docker', 'build_hash': '25d88452371273dd27356c98598287b669a03eae', 'build_date': '2025-10-21T10:06:21.288851013Z', 'build_snapshot': False, 'lucene_version': '10.3.1', 'minimum_wire_compatibility_version': '8.19.0', 'minimum_index_compatibility_version': '8.0.0'}, 'tagline': 'You Know, for Search'}
-```
-
-:::
-
-:::{tab-item} TypeScript
-:sync: typescript
+:::{dropdown} Example response
 
 ```typescript
 {
@@ -419,8 +355,16 @@ A successful response includes the cluster name and version. The exact output de
 
 :::
 
-:::{tab-item} PHP
+::::
+
+::::{tab-item} PHP
 :sync: php
+
+```php
+echo $es->info()->asString();
+```
+
+:::{dropdown} Example response
 
 ```json
 {
@@ -444,8 +388,16 @@ A successful response includes the cluster name and version. The exact output de
 
 :::
 
-:::{tab-item} Ruby
+::::
+
+::::{tab-item} Ruby
 :sync: ruby
+
+```ruby
+puts es.info
+```
+
+:::{dropdown} Example response
 
 ```ruby
 {"name" => "instance-0000000000", "cluster_name" => "my-deployment", "cluster_uuid" => "QIpRB53HS1KSVYWtjP_rqg", "version" => {"number" => "9.2.0", "build_flavor" => "default", "build_type" => "docker", "build_hash" => "25d88452371273dd27356c98598287b669a03eae", "build_date" => "2025-10-21T10:06:21.288851013Z", "build_snapshot" => false, "lucene_version" => "10.3.1", "minimum_wire_compatibility_version" => "8.19.0", "minimum_index_compatibility_version" => "8.0.0"}, "tagline" => "You Know, for Search"}
@@ -453,8 +405,17 @@ A successful response includes the cluster name and version. The exact output de
 
 :::
 
-:::{tab-item} C#/.NET
+::::
+
+::::{tab-item} C#/.NET
 :sync: csharp
+
+```csharp
+var info = await es.InfoAsync();
+Console.WriteLine($"{info.ClusterName} {info.Version.Number}");
+```
+
+:::{dropdown} Example response
 
 ```text
 my-deployment 9.2.0
@@ -462,8 +423,17 @@ my-deployment 9.2.0
 
 :::
 
-:::{tab-item} Java
+::::
+
+::::{tab-item} Java
 :sync: java
+
+```java
+System.out.println(es.info());
+es._transport().close();
+```
+
+:::{dropdown} Example response
 
 ```text
 InfoResponse: {"cluster_name":"my-deployment","cluster_uuid":"QIpRB53HS1KSVYWtjP_rqg","name":"instance-0000000000","tagline":"You Know, for Search","version":{"build_date":"2025-10-21T10:06:21.288851013Z","build_flavor":"default","build_hash":"25d88452371273dd27356c98598287b669a03eae","build_snapshot":false,"build_type":"docker","lucene_version":"10.3.1","minimum_index_compatibility_version":"8.0.0","minimum_wire_compatibility_version":"8.19.0","number":"9.2.0"}}
@@ -471,8 +441,21 @@ InfoResponse: {"cluster_name":"my-deployment","cluster_uuid":"QIpRB53HS1KSVYWtjP
 
 :::
 
-:::{tab-item} Go
+::::
+
+::::{tab-item} Go
 :sync: go
+
+```go
+res, err := es.Info()
+if err != nil {
+	log.Fatal(err)
+}
+defer res.Body.Close()
+log.Println(res)
+```
+
+:::{dropdown} Example response
 
 ```text
 [200 OK] {
