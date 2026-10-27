@@ -155,7 +155,7 @@ To learn more about creating and managing rules, refer to [Alerting](/solutions/
 
 ::::
 
-## Select the data collection schema[host-schema-selector]
+## Select the data collection schema [host-schema-selector]
 ```{applies_to}
 stack: ga 9.2
 serverless: ga
