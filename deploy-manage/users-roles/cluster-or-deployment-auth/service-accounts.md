@@ -55,7 +55,7 @@ You can create and delete service tokens for these accounts, but you can't chang
 stack: ga 9.6+
 ```
 
-You create these accounts and assign roles to control their privileges. Accounts created in {{kib}} have IDs such as `kibana/order-processing`.
+You create these accounts and assign roles to control their privileges. Accounts created in {{kib}} use the `kibana` namespace, and their principals have the form `kibana/<name>`.
 
 Use a user-managed service account when your application needs its own identity to access {{es}} or {{kib}} APIs. Assign the roles required by the application, and authenticate its requests with a [service account token](#service-accounts-tokens).
 

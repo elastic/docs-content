@@ -77,7 +77,7 @@ Setting `enabled: false` prevents authentication with the account's service toke
 
 To reactivate the account, send the complete definition again with `enabled` set to `true`.
 
-Workloads bound to an account that has `enabled: false` fail the next time they run. They don't fall back to the user who starts or edits the workload.
+[Workflows assigned to an account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md#assign-workflow-service-account) that has `enabled: false` fail the next time they run. They don't fall back to the user who starts or edits the workflow.
 
 ## Delete a service account [delete-service-account-kibana]
 
@@ -91,7 +91,7 @@ To delete a service account:
     - If no workloads are bound, click **Delete account**.
     - If workloads are bound, review the list. To delete the account without removing the bindings, click **Force delete account**.
 
-If you force delete an account, its bound workloads fail on their next run. To restore access, assign each affected workload a valid service account. This reassignment is required even if you recreate the deleted account with the same name. For Workflows, [assign a service account to each affected workflow](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md#assign-workflow-service-account).
+If you force delete an account, workloads assigned to it fail on their next run. To restore access, assign each affected workload a valid service account. This reassignment is required even if you recreate the deleted account with the same name. For Workflows, [assign a service account to each affected workflow](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md#assign-workflow-service-account).
 
 Deleting an account through {{kib}} attempts to remove every service token, including the credential it stores for workloads and tokens created outside {{kib}}. It also attempts to invalidate any short-lived access tokens used to run workloads as the account. If any credential cleanup fails, {{kib}} completes the deletion and reports a warning.
 
