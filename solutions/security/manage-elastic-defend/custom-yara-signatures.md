@@ -13,7 +13,7 @@ products:
 
 [YARA](https://virustotal.github.io/yara/) is a rule-based language for identifying malware and other threats by the patterns they contain. Custom YARA signatures let you add your own YARA rules to {{elastic-defend}}, so that it can detect threats that are specific to your environment, such as malware that targets your organization or indicators from a threat report that you're tracking.
 
-{{elastic-endpoint}} evaluates your YARA rules against the memory of running processes on protected hosts. When a rule matches, {{elastic-defend}} generates an alert. To see these alerts on the **Alerts** page, the Endpoint Security ({{elastic-defend}}) rule, or the Memory Threat - Detected - {{elastic-defend}} rule, must be turned on. Refer to [Investigate alerts from custom YARA signatures](#investigate-custom-yara-signature-alerts) for details.
+{{elastic-endpoint}} evaluates your YARA rules against the memory of running processes on protected hosts. When a rule matches, {{elastic-defend}} generates an alert. To see these alerts on the **Alerts** page, the Endpoint Security ({{elastic-defend}}) rule, or the Memory Threat - Detected - {{elastic-defend}} rule, must be turned on. Refer to [Identify alerts from custom YARA signatures](#identify-custom-yara-signature-alerts) for details.
 
 ::::{important}
 Custom YARA signatures only detect threats. They never block a process or stop a thread, even when [memory threat protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection) is set to **Prevent**.
@@ -52,13 +52,43 @@ You can't save a signature that has errors. Warnings don't prevent you from savi
 
 After you add a signature, make sure the policies that it's assigned to [apply custom YARA signatures](#apply-custom-yara-signatures-policy).
 
+### YARA rule requirements [yara-rule-requirements]
+
+{{elastic-defend}} checks the definition of each custom YARA signature when you save it. Your definition must meet the following requirements:
+
+* It must contain at least one valid YARA rule, and can contain up to 256 rules.
+* It must not exceed 32,766 bytes. This limit applies to the whole definition, not to each rule.
+* Rule names can be up to 128 characters long.
+* It can't use the `include` directive. Each signature must be self-contained.
+* It can only import the following YARA modules: `pe`, `elf`, `math`, `time`, `string`, and `console`. Importing any other module, such as `hash`, `macho`, `dotnet`, `dex`, `magic`, or `cuckoo`, causes an error.
+
+Syntax errors and other YARA compiler errors prevent you from saving the signature. YARA compiler warnings appear in the editor, but don't prevent you from saving the signature.
+
+### Meta fields that {{elastic-defend}} uses [yara-meta-fields]
+
+In YARA, the `meta` section of a rule is optional, and you can add any metadata to it that you want. {{elastic-defend}} reads three meta fields, `os`, `arch`, and `scan_type`, and uses them to limit where a rule applies. {{elastic-defend}} validates their values when you save the signature, but it doesn't validate any other meta fields that you add.
+
+| Meta field | Allowed values | If you omit it |
+| --- | --- | --- |
+| `os` | A comma-separated list of one or more of `Windows`, `Linux`, and `MacOS`. The list must match the operating systems selected in the **Operating system** field of the signature. | The operating systems selected in the **Operating system** field apply. |
+| `arch` | `x86`, `arm64`, or both in a comma-separated list. | The rule applies to both `x86` and `arm64`. |
+| `scan_type` | `Memory`. | The rule scans memory. Memory is currently the only supported scan type. |
+
+The following rules apply to these meta fields:
+
+* Values are case-sensitive. For example, use `MacOS`, not `macos`, and `Memory`, not `memory`.
+* Separate multiple values with a comma, optionally followed by a space (for example, `"Windows, Linux"` or `"x86,arm64"`). Don't repeat a value in the same list.
+* Each field can appear only once in each rule.
+* The `os` value must list exactly the same operating systems as the **Operating system** field of the signature, in any order. If they differ, {{elastic-defend}} rejects the signature. If you don't want to keep them in sync, omit `os` from your rules.
+* When a signature contains more than one rule, `arch` and `scan_type` must be consistent across all its rules. Either omit the field from every rule, or use the same value in every rule.
+
 ## Apply custom YARA signatures to hosts [apply-custom-yara-signatures-policy]
 
 For a signature to take effect on a host, all the following must be true:
 
 * The signature is enabled.
 * The signature is global, or it's assigned to the {{elastic-defend}} integration policy that the host uses.
-* In that policy, [memory threat protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection) is turned on, and the **Apply custom YARA signatures in detection mode** setting is turned on.
+* In that policy, [memory threat protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection) is turned on, and the **Apply custom YARA signatures in detection mode** setting is turned on. This setting is turned on by default in new {{elastic-defend}} integration policies. In existing policies, you must turn it on yourself.
 
 To check or change the policy setting:
 
@@ -124,7 +154,7 @@ To delete a custom YARA signature:
 1. Click the actions menu (**…**) on the signature you want to delete, then select **Remove from YARA signatures list**.
 2. On the dialog that opens, verify that you are removing the correct signature, then click **Delete**.
 
-## Investigate alerts from custom YARA signatures [investigate-custom-yara-signature-alerts]
+## Identify alerts from custom YARA signatures [identify-custom-yara-signature-alerts]
 
 When a custom YARA signature matches the memory of a running process, {{elastic-defend}} generates a memory threat detection alert. It appears on the **Alerts** page only if one of the following [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) is turned on:
 
@@ -137,39 +167,10 @@ The alert includes the following fields:
 
 * `rule.custom_yara_signature.entry_name`: The name of the custom YARA signature that contains the matching rule.
 * `rule.custom_yara_signature.rule_identifier`: The name of the YARA rule that matched.
+* `rule.custom_yara_signature.entry_id`: The ID of the custom YARA signature that contains the matching rule.
 
-These fields appear in the **Highlighted fields** section of the alert details flyout. If you have the **Custom YARA Signatures: Read** privilege, the value links to the signature.
+The `entry_name` and `rule_identifier` fields appear in the **Highlighted fields** section of the alert details flyout. If you have the **Custom YARA Signatures: Read** privilege and the signature exists in the current space, the value links to the signature. If the signature doesn't exist in the current space, an information icon appears next to the value instead of a link.
 
 ::::{note}
 The signature name is stored in the alert when it's generated, so it might not match the current name if you rename the signature later.
 ::::
-
-## YARA rule requirements [yara-rule-requirements]
-
-{{elastic-defend}} checks the definition of each custom YARA signature when you save it. Your definition must meet the following requirements:
-
-* It must contain at least one valid YARA rule, and can contain up to 256 rules.
-* It must not exceed 32,766 bytes. This limit applies to the whole definition, not to each rule.
-* Rule names can be up to 128 characters long.
-* It can't use the `include` directive. Each signature must be self-contained.
-* It can only import the following YARA modules: `pe`, `elf`, `math`, `time`, `string`, and `console`. Importing any other module, such as `hash`, `macho`, `dotnet`, `dex`, `magic`, or `cuckoo`, causes an error.
-
-Syntax errors and other YARA compiler errors prevent you from saving the signature. YARA compiler warnings appear in the editor, but don't prevent you from saving the signature.
-
-## Meta fields that {{elastic-defend}} uses [yara-meta-fields]
-
-In YARA, the `meta` section of a rule is optional, and you can add any metadata to it that you want. {{elastic-defend}} reads three meta fields, `os`, `arch`, and `scan_type`, and uses them to limit where a rule applies. {{elastic-defend}} validates their values when you save the signature, but it doesn't validate any other meta fields that you add.
-
-| Meta field | Allowed values | If you omit it |
-| --- | --- | --- |
-| `os` | A comma-separated list of one or more of `Windows`, `Linux`, and `MacOS`. The list must match the operating systems selected in the **Operating system** field of the signature. | The operating systems selected in the **Operating system** field apply. |
-| `arch` | `x86`, `arm64`, or both in a comma-separated list. | The rule applies to both `x86` and `arm64`. |
-| `scan_type` | `Memory`. | The rule scans memory. Memory is currently the only supported scan type. |
-
-The following rules apply to these meta fields:
-
-* Values are case-sensitive. For example, use `MacOS`, not `macos`, and `Memory`, not `memory`.
-* Separate multiple values with a comma, optionally followed by a space (for example, `"Windows, Linux"` or `"x86,arm64"`). Don't repeat a value in the same list.
-* Each field can appear only once in each rule.
-* The `os` value must list exactly the same operating systems as the **Operating system** field of the signature, in any order. If they differ, {{elastic-defend}} rejects the signature. If you don't want to keep them in sync, omit `os` from your rules.
-* When a signature contains more than one rule, `arch` and `scan_type` must be consistent across all its rules. Either omit the field from every rule, or use the same value in every rule.
