@@ -42,7 +42,7 @@ The step has two modes, and each step must use exactly one of them.
 | `mode` | top level | string | No | Failure policy: `fail-fast` (default) or `settled`. Refer to [Handle branch failures](#workflows-parallel-failures). |
 | `branch-timeout` | top level | duration | No | Maximum time a single branch may run. No default. |
 | `timeout` | top level | duration | No | Maximum time the whole step may run, across all branches. No default. |
-| `if` | top level | string | No | Boolean or KQL expression that determines whether the step runs. When it's false, the workflow skips the step and no branch runs. Refer to [Skip a single step](/explore-analyze/workflows/steps/if.md#workflows-step-level-if). |
+| `if` | top level | string | No | Boolean or KQL expression that determines whether the step runs. When it's false, the workflow skips the step and no branch runs. Refer to [Skip a single step](/explore-analyze/workflows/steps/if.md#workflows-step-level-if) for more information. |
 
 Each entry in `branches` takes the following fields:
 
@@ -241,7 +241,7 @@ To use step-level `if`, `on-failure`, or `timeout`, set them on the `parallel` s
 
 * Set step-level `if` ([skip a single step](/explore-analyze/workflows/steps/if.md#workflows-step-level-if)) on the `parallel` step to run or skip every branch together, or use an [`if`](/explore-analyze/workflows/steps/if.md) step or step-level `if` on a step that runs before the `parallel` step.
 * Set `mode: settled` on the `parallel` step to collect every branch's outcome, then handle failures in a step after the `parallel` step.
-* Set `branch-timeout` on the `parallel` step to cap how long each branch may run.
+* Set `branch-timeout` on the `parallel` step to cap how long each branch can run.
 
 Timer-based `wait` steps are supported inside a branch.
 

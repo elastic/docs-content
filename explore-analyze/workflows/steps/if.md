@@ -30,7 +30,7 @@ Use the following parameters to configure an `if` step:
 steps:
   - name: conditionalStep
     type: if
-    condition: <KQL expression>
+    condition: <boolean or KQL expression>
     steps:
       # Steps to run if condition is true
     else:
@@ -215,7 +215,7 @@ steps:
       message: "Escalating: risk score {{ steps.triage.output.risk_score }}."
 ```
 
-A step-level `if` takes the same boolean and KQL expressions as the `if` step's `condition`, and you can set it on any step type, with two exceptions:
+A step-level `if` takes the same [boolean](#boolean-expressions) and [KQL](#kql-expressions) expressions as the `if` step's `condition`, and you can set it on any step type, with two exceptions:
 
 * The `if` step itself. It already branches on its own `condition`, so setting a step-level `if` on it is a validation error.
 * A step inside a [`parallel`](/explore-analyze/workflows/steps/parallel.md) branch body. This limitation applies to the step-level `if` property only.
