@@ -56,12 +56,9 @@ The **Created By** filter on the **Workflows** page reflects who last saved the 
 
 ### Execution identity in child workflows [workflows-authorization-child-identity]
 
-A workflow can call a child workflow with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute). By default, the child's execution identity depends on whether either workflow is assigned a service account:
+A workflow can call a child workflow with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute). When neither workflow is assigned a service account, the child runs with the same execution identity as the parent.
 
-* **Neither workflow is assigned a service account.** The child runs with the same execution identity as the parent.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **A service account is assigned to at least one workflow.** When the child has a service account assignment, it uses that account's privileges. The child doesn't automatically inherit the parent's service account. If only the parent is assigned a service account, the child uses the identity associated with the [parent run's trigger](#workflows-authorization-user). For example, if a user manually starts the parent, the child uses that user's privileges even when the parent runs as a service account.
-
-{applies_to}`stack: ga 9.4-9.5, preview =9.3` {applies_to}`serverless: ga` The **Executions** tab doesn't visually indicate when a child inherits its parent's execution identity.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` When service accounts are involved, each workflow uses its own assignment by default. A child doesn't automatically inherit its parent's service account. If only the parent is assigned a service account, the child uses the identity associated with the [parent run's trigger](#workflows-authorization-user). For example, if a user manually starts the parent, the child uses that user's privileges even when the parent runs as a service account.
 
 ## How steps use the execution identity [workflows-authorization-scope]
 
