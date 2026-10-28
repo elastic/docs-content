@@ -16,23 +16,16 @@ The {{security-features}} provide the following built-in token-based authenticat
 *service-accounts*
 :   [Service accounts](service-accounts.md) use service tokens to authenticate as non-human identities. For details about token creation, storage, and deletion, refer to [Service account tokens](service-accounts.md#service-accounts-tokens).
 
-    :::{note}
-    :applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-    [User-managed service accounts](service-accounts.md#user-managed-service-accounts) can authenticate requests to {{es}} and {{kib}}.
-    :::
+    To use a service account token, include the generated token value in a request with an `Authorization: Bearer` header:
 
-To use a service account token, include the generated token value in a request with an `Authorization: Bearer` header:
+    ```shell
+    curl -H "Authorization: Bearer AAEAAWVsYXN0aWMvZ...mXQtc2VydmMTpyNXdkYmRib1FTZTl2R09Ld2FKR0F3" \
+      "$ELASTICSEARCH_URL/_cluster/health"
+    ```
 
-```shell
-curl -H "Authorization: Bearer AAEAAWVsYXN0aWMvZ...mXQtc2VydmMTpyNXdkYmRib1FTZTl2R09Ld2FKR0F3" \
-  "$ELASTICSEARCH_URL/_cluster/health"
-```
-
-::::{important}
-Don't use service accounts to authenticate individual users. Service tokens and credentials derived from them are for software and workloads, not people.
-::::
-
-
+    ::::{important}
+    Don't use service accounts to authenticate individual users. Service tokens and credentials derived from them are for software and workloads, not people.
+    ::::
 
 $$$token-authentication-access-token$$$
 
