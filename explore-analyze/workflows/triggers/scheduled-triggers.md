@@ -129,15 +129,11 @@ The following table describes the available fields for configuring RRule-based s
 | `byweekday` | Required when `freq` is `WEEKLY` | Days of the week | Array of weekdays: `MO`, `TU`, `WE`, `TH`, `FR`, `SA`, `SU` |
 | `bymonthday` | Required when `freq` is `MONTHLY` | Days of the month | Array of integers `1`-`31`. Use negative values to count from the end of the month (for example, -1 for the last day of the month) |
 
-### Set the run time and timezone [rrule-run-time]
+### Run at a specific local time [rrule-run-time]
 
-The `byhour`, `byminute`, `tzid`, and `dtstart` fields each control a different part of when a workflow runs:
+To run a workflow at a specific local time, set `byhour` and `byminute` to the clock time and `tzid` to the timezone. You don't need `dtstart`. Use an IANA timezone name, such as `America/Chicago`, rather than a fixed offset. Runs then stay at the same local time when daylight saving time starts or ends.
 
-* `byhour` and `byminute` set the clock time of every run.
-* `tzid` sets the timezone for that clock time. Runs stay at the same local time when daylight saving time starts or ends. Use an IANA timezone name, such as `America/Chicago`, rather than a fixed offset.
-* `dtstart` sets when the schedule starts, and the schedule skips any occurrence before it. If you omit `dtstart`, the schedule starts when you save the workflow.
-
-To run a workflow at a specific local time, set `byhour`, `byminute`, and `tzid`. You don't need `dtstart`. The following example runs every day at 4:00 PM in Chicago:
+The following example runs every day at 4:00 PM in Chicago:
 
 ```yaml
 triggers:
@@ -151,7 +147,28 @@ triggers:
         byminute: [0]
 ```
 
-Add `dtstart` only to hold the schedule until a later date. The run time still comes from `byhour` and `byminute`, so `dtstart` doesn't have to match it.
+To check a schedule, go to the **Workflows** list and hover over the workflow's trigger icon. The tooltip shows **Next execution** using your {{kib}} display timezone.
+
+### Delay the first run [rrule-dtstart]
+
+To hold a schedule until a later date, set `dtstart`. The schedule skips any occurrence before `dtstart`. If you omit `dtstart`, the schedule starts when you save the workflow.
+
+When you also set `byhour` and `byminute`, the run time still comes from them, so the time in `dtstart` doesn't have to match it. The following example runs daily at 9 AM UTC, starting after 1 PM UTC on January 15. The schedule skips 9 AM on January 15 because it's before `dtstart`, so the first run is at 9 AM UTC on January 16:
+
+```yaml
+triggers:
+  - type: scheduled
+    with:
+      rrule:
+        freq: DAILY
+        interval: 1
+        tzid: UTC
+        dtstart: 2024-01-15T13:00:00Z
+        byhour: [9]
+        byminute: [0]
+```
+
+### Schedules without `byhour` and `byminute` [rrule-first-run-time]
 
 If you omit `byhour` and `byminute`, the first run sets the clock time for the whole schedule:
 
@@ -175,9 +192,9 @@ triggers:
 
 To run at 4:00 PM in Chicago instead, write the same moment as either `2026-05-11T21:00:00Z` or `2026-05-11T16:00:00-05:00`.
 
-To check a schedule, go to the **Workflows** list and hover over the workflow's trigger icon. The tooltip shows **Next execution** using your {{kib}} display timezone.
+### RRule schedule examples [rrule-examples]
 
-### Examples [rrule-examples]
+The following examples show common RRule schedules. Each one sets `byhour`, `byminute`, and `tzid`, so it runs at a fixed time in that timezone. To use an example in your own timezone, change `tzid` to your IANA timezone name.
 
 Daily at multiple times (6 AM, 12 PM, 6 PM) UTC:
 
@@ -190,21 +207,6 @@ triggers:
         interval: 1
         tzid: UTC
         byhour: [6, 12, 18]
-        byminute: [0]
-```
-
-Daily at 9 AM UTC, starting after 1 PM UTC on January 15. The schedule skips 9 AM on January 15 because it's before `dtstart`, so the first run is at 9 AM UTC on January 16:
-
-```yaml
-triggers:
-  - type: scheduled
-    with:
-      rrule:
-        freq: DAILY
-        interval: 1
-        tzid: UTC
-        dtstart: 2024-01-15T13:00:00Z
-        byhour: [9]
         byminute: [0]
 ```
 
