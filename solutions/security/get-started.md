@@ -79,8 +79,8 @@ or which features may be relevant to you? Continue to the next topic to view our
 
 Use these resources to learn more about {{elastic-sec}} or get started in a different way.
 
-* Learn what {{elastic-sec}} covers and how its parts fit together in the [{{elastic-sec}} overview](/solutions/security.md).
-* Migrate your detection rules and dashboards from another SIEM using [Automatic Migration](../security/get-started/automatic-migration.md). Supported SIEMs and asset types depend on your version.
+* Learn what {{elastic-sec}} can do and which features depend on your deployment and license in the [{{elastic-sec}} overview](/solutions/security.md).
+* Migrate your detection rules and dashboards from another SIEM using [Automatic Migration](../security/get-started/automatic-migration.md). Supported SIEMs and asset types vary by deployment type and {{stack}} version.
 * Check out the numerous [Security integrations](https://www.elastic.co/integrations/data-integrations?solution=security) available to collect and process your data.  
 * Get started with [AI-assisted operations](../security/ai.md). 
 * Learn how to use {{es}} Query Language ({{esql}}) for [security use cases](/solutions/security/esql-for-security.md). 

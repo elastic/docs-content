@@ -18,7 +18,7 @@ description: Elastic Security brings SIEM, endpoint protection, and cloud securi
 
 # {{elastic-sec}} solution overview [es-overview]
 
-{{elastic-sec}} helps you detect, investigate, and respond to threats across your hosts, cloud services, and networks. It's built on {{es}} and {{kib}}, so you can search, correlate, and visualize all of your security data in one place. AI features also help with time-consuming tasks, such as migrating from another SIEM and triaging high alert volumes.
+{{elastic-sec}} helps you detect, investigate, and respond to threats across your hosts, cloud services, and networks. It's built on {{es}} and {{kib}}, so you can search, correlate, and visualize your security data in one place. AI features can also translate rules from another SIEM and group related alerts into attacks.
 
 ## {{elastic-sec}} capabilities [elastic-security-capabilities]
 
@@ -31,28 +31,24 @@ Endpoint security
 :   Detects and prevents malware, ransomware, in-memory threats, and malicious behavior on Windows, macOS, and Linux hosts with [{{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md), which runs on the same [{{agent}}](/reference/fleet/index.md) that collects your host data. You can also isolate hosts and take other [response actions](/solutions/security/respond-and-contain.md), including on hosts that run supported third-party EDR tools. To try it, follow the [endpoint security quickstart](/solutions/security/get-started/get-started-endpoint-security.md).
 
 Cloud posture and vulnerability management
-:   [Cloud security posture management (CSPM) and Kubernetes security posture management (KSPM)](/solutions/security/cloud/security-posture-management-overview.md) find misconfigurations in your cloud accounts and Kubernetes clusters by checking them against security benchmarks. A separate feature, [cloud native vulnerability management (CNVM)](/solutions/security/cloud/cloud-native-vulnerability-management.md), scans your Linux VMs in AWS for known vulnerabilities. To try posture management, follow the [cloud security posture quickstart](/solutions/security/get-started/get-started-cloud-security.md).
+:   Finds misconfigurations in your cloud accounts and Kubernetes clusters by checking them against security benchmarks, with [cloud security posture management (CSPM) and Kubernetes security posture management (KSPM)](/solutions/security/cloud/security-posture-management-overview.md). A separate feature, [cloud native vulnerability management (CNVM)](/solutions/security/cloud/cloud-native-vulnerability-management.md), scans your Linux VMs in AWS for known vulnerabilities. To try posture management, follow the [cloud security posture quickstart](/solutions/security/get-started/get-started-cloud-security.md).
 
 Cloud workload protection
-:   Detects threats on your Linux VMs while the VMs run, and can block some of those threats. It also protects Kubernetes containers. To learn how it works, refer to [Manage cloud workload protection](/solutions/security/manage/manage-cloud-workload-protection.md).
+:   Detects threats on your running Linux VMs, and can block some of them. {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` It also protects Kubernetes containers. To learn how it works, refer to [Manage cloud workload protection](/solutions/security/manage/manage-cloud-workload-protection.md).
 
 ## AI in {{elastic-sec}} [ai-in-elastic-security]
 
-Alongside these capabilities, {{elastic-sec}} uses [large language models (LLMs)](/solutions/security/ai.md) to help with time-consuming security tasks:
+{{elastic-sec}} also includes [AI features](/solutions/security/ai.md) that use large language models (LLMs). Depending on your deployment and license, you can use Elastic Managed LLMs through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) or an LLM from another provider. For details, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
-* **Migrate from another SIEM:** [Automatic Migration](/solutions/security/get-started/automatic-migration.md) translates rules and dashboards from your existing SIEM into {{elastic-sec}} rules and dashboards, and identifies the data sources the translated rules need. Supported SIEMs and asset types depend on your version.
+With AI features, you can:
+
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+, preview =9.0` **Migrate from another SIEM:** [Automatic Migration](/solutions/security/get-started/automatic-migration.md) translates rules and dashboards from your existing SIEM into {{elastic-sec}} rules and dashboards, and identifies the data sources the translated rules need. Supported SIEMs and asset types vary by deployment type and {{stack}} version.
 * **Onboard data sources without an integration:** [Automatic Import](/explore-analyze/ai-features/automatic-import.md) builds a custom integration from a sample of your data.
 * **Triage high alert volumes:** [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) correlates related alerts into attacks, shows the hosts and users involved, maps the activity to MITRE ATT&CK, and suggests which threat actor might be responsible.
-* **Investigate alerts and hunt for threats:** [AI chat](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) answers questions about your alerts and data, and writes {{esql}} queries.
-* **Automate response:** Combine custom [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) agents with [Workflows](/explore-analyze/workflows.md) to isolate hosts, create cases, and send notifications.
-* **Keep endpoint protection working:** [Automatic Troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md) finds issues that stop {{elastic-defend}} from working as intended, such as policy response failures and conflicts with third-party antivirus software.
-
-Depending on your deployment and license, you can use Elastic Managed LLMs through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) or an LLM from another provider. For details, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
-
-:::{note}
-:applies_to: serverless: preview
-If you already run another SIEM or EDR/XDR platform, [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) is an {{sec-serverless}} project type that runs Attack Discovery, AI Assistant, and cases on the alerts from those tools, so you can use these features without replacing them.
-:::
+* **Investigate alerts and hunt for threats:** [AI chat](/solutions/security/ai.md#ai-chat-overview) answers questions about your alerts and data, and writes {{esql}} queries. You can use [AI Assistant](/solutions/security/ai/ai-assistant.md) or {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.3` [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md).
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.3` **Automate response:** Combine custom [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) agents with [Workflows](/explore-analyze/workflows.md) to isolate hosts, create cases, and send notifications.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+, preview 9.0-9.1` **Keep endpoint protection working:** [Automatic Troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md) finds issues that stop {{elastic-defend}} from working as intended, such as policy response failures and conflicts with third-party antivirus software.
+* {applies_to}`serverless: preview` **Add AI to your current security tools:** In an [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) project, you can run Attack Discovery, AI Assistant, and cases on alerts from your existing SIEM or EDR/XDR platform, without replacing it.
 
 ## Start using {{elastic-sec}} [start-using-elastic-security]
 
