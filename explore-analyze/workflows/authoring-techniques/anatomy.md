@@ -278,6 +278,7 @@ A workflow that doesn't declare outputs can still complete successfully. `output
 
 ```yaml
 settings:
+  run_as: kibana/workflow-runner <1>
   timeout: "10m"
   timezone: "America/Los_Angeles"
   max-step-size: "10mb"
@@ -290,13 +291,9 @@ settings:
       max-attempts: 2
       delay: "10s"
 ```
+1. {applies_to}`{stack: ga 9.6+, serverless: unavailable}` Runs every execution with the specified user-managed service account. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
 
 Every field in `settings` is optional. The full reference with per-field semantics is available in [](/explore-analyze/workflows/authoring-techniques/settings.md).
-
-:::{note}
-:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-To run every execution with a user-managed service account, set `settings.run_as`. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
-:::
 
 ## `steps` — the body of the workflow [workflows-anatomy-steps]
 
