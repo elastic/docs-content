@@ -14,81 +14,80 @@ description: View which MITRE ATT&CK and MITRE ATLAS tactics and techniques your
 
 # MITRE coverage [security-rules-coverage]
 
-The MITRE coverage page shows which adversary tactics and techniques your installed detection rules cover, both Elastic prebuilt and custom. It maps rules to these frameworks:
+Use the **MITRE coverage** page to find gaps in your detection coverage and close them. The page shows how your installed detection rules, both Elastic prebuilt and custom, cover the adversary tactics and techniques of these frameworks:
 
 * [MITRE ATT&CK®](https://attack.mitre.org): Attacks on enterprise IT systems.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [MITRE ATLAS™](https://atlas.mitre.org): Attacks on AI and machine learning systems, such as prompt injection.
-
-How you use the coverage page depends on your goal:
-
-- **Identifying coverage gaps**: Filter to view only enabled rules, then look for light or empty cells to find tactics and techniques where your detection coverage is thin. Use this to prioritize which [prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) to install or which [custom rules](/solutions/security/detect-and-alert/using-the-rule-ui.md) to build next.
-- **Activating coverage quickly**: Find techniques you care about and [enable installed rules](#security-rules-coverage-enable-rules) directly from the coverage grid.
+* [MITRE ATLAS™](https://atlas.mitre.org): Attacks on AI and {{ml}} systems, such as prompt injection. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` 
 
 ## Open the MITRE coverage page [access-mitre-page]
 
-Find the MITRE coverage page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Its name depends on your version:
+Find **MITRE coverage** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **MITRE coverage**
-* {applies_to}`stack: ga 9.0-9.5` **MITRE ATT&CK® coverage**
+To view the **MITRE coverage** page, you need at least read access to detection rules. To enable rules from the coverage grid, you also need privileges to enable and disable rules. For details, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#detections-privileges-manage-rules).
 
-To view the coverage page, you need at least read access to detection rules. To enable rules from the coverage grid, you also need privileges to enable and disable rules. For details, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#detections-privileges-manage-rules).
+::::{note}
+:applies_to: stack: ga 9.0-9.5
+The **MITRE ATT&CK® coverage** page was renamed to **MITRE coverage** in version 9.6.0.
+::::
+
+## Find coverage gaps by tactic and technique [read-coverage-grid]
+
+The coverage grid is the main part of the **MITRE coverage** page. It arranges MITRE tactics, such as Initial Access and Persistence, as columns, and lists each tactic's techniques as cells in its column. Each column's header shows how many of the tactic's techniques have enabled rules.
 
 :::{image} /solutions/images/security-rules-coverage.png
-:alt: MITRE ATT&CK coverage page
+:alt: Coverage grid with MITRE ATT&CK tactics as columns and techniques as cells, shaded by rule count
 :screenshot:
 :::
 
-## Read the coverage grid [read-coverage-grid]
-
-Columns represent the major tactics of the framework you're viewing, and cells within each column represent a tactic's related techniques. Cells are darker when a technique has more rules matching the current filters, as indicated in the **Legend** at the top.
+Cells are darker when a technique has more rules matching the current filters, as indicated in the **Legend** at the top. By default, the grid counts only enabled rules, so light or empty cells mark the techniques where your detection coverage is thin. To close those gaps, [enable rules](#security-rules-coverage-enable-rules) you've already installed, [install more prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md), or [create custom rules](/solutions/security/detect-and-alert/using-the-rule-ui.md) mapped to those techniques.
 
 ::::{note}
-The coverage grid only includes detection rules you currently have installed, and only rules that are mapped to the framework you're viewing. Prebuilt rules that are not installed, and custom rules that are unmapped or mapped to a deprecated tactic or technique, do not appear. You can map custom rules to tactics in **Advanced settings** when creating or editing a rule.
+The grid counts only installed rules that are mapped to the framework you're viewing. If a rule you expect is missing, check that it's installed and that its MITRE mappings are set in the rule's **Advanced settings**.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If some rules use tactics or techniques that the supported MITRE version no longer includes, a callout about outdated mappings appears. Select **View rules** to find them, then [update their mappings](/solutions/security/detect-and-alert/remap-mitre-attack.md).
 ::::
 
-## View MITRE ATLAS coverage [view-mitre-atlas-coverage]
+### View MITRE ATLAS coverage [view-mitre-atlas-coverage]
 ```{applies_to}
 stack: ga 9.6+
 serverless: ga
 ```
 
-The coverage page opens on the **MITRE ATT&CK** tab. To view coverage of MITRE ATLAS [v2026.08](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.08), select the **MITRE ATLAS** tab. Each tab counts only its own framework's mappings, so a rule mapped to both frameworks appears on both tabs.
+To view the coverage grid for MITRE ATLAS [v2026.08](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.08), select the **MITRE ATLAS** tab. If a rule is mapped to both frameworks, it counts toward coverage on both tabs.
 
-Some Elastic prebuilt rules for generative AI threats include MITRE ATLAS mappings. To map a custom rule, add MITRE ATLAS in the rule's [**Threat mappings**](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) setting.
+After you install them, some Elastic prebuilt rules that detect generative AI threats count toward MITRE ATLAS coverage. To map a custom rule, add MITRE ATLAS in the rule's [**Threat mappings**](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) setting.
 
 ## Filter which rules count toward coverage [security-rules-coverage-filter-rules]
 
-Use the drop-down filters at the top of the coverage page to control which of your installed detection rules are included in calculating coverage.
+Use the drop-down filters at the top of the **MITRE coverage** page to change which rules count toward coverage, depending on what you want to know.
 
-* **Installed rule status**: Select to include **Enabled rules**, **Disabled rules**, or both.
-* **Installed rule type**: Select to include **Elastic rules** (prebuilt rules), **Custom rules** (user-created rules), or both.
+* **Installed rule status**: Select only **Disabled rules** to find techniques where enabling rules you've already installed adds coverage. By default, only **Enabled rules** is selected, so the grid shows the coverage your enabled rules provide.
+* **Installed rule type**: Select only **Custom rules** to see what your own rules cover, or only **Elastic rules** to see prebuilt coverage. By default, both are selected.
 
-You can also search for a tactic or technique name, technique number, or rule name in the search bar. The search bar acts as a filter for the coverage grid: only rules matching the search term are included.
+To focus the grid on specific rules, search for a rule name, or for a tactic, technique, or sub-technique by name or ID. The grid then counts only the matching rules. 
 
-::::{note}
-Searches for tactics and techniques must match exactly, are case sensitive, and do *not* support wildcards.
-::::
+For example, search for `T1059` to see only rules mapped to Command and Scripting Interpreter. Enter tactic and technique names and IDs exactly as they appear in the grid, including capitalization.
 
 
 ## Expand cells to show rule counts [security-rules-coverage-expand-and-collapse-cells]
 
-Select **Collapse cells** or **Expand cells** to change how much information the cells display. Cells always include the technique's name and the number of sub-techniques covered by enabled rules. Expand the cells to also display counts of disabled and enabled rules for each technique.
+Cells always show the technique's name and how many of its sub-techniques your enabled rules cover. Select **Expand cells** to also see how many enabled and disabled rules each technique has, or **Collapse cells** to hide those counts.
 
-::::{note}
-The counts inside cells are affected by how you filter the grid. For example, if you filter the **Installed rule status** to only include **Enabled rules**, then all disabled rule counts are 0 because those rules are filtered out.
-::::
+With the default filter, which includes only **Enabled rules**, every disabled count is 0. To see disabled counts, add **Disabled rules** to **Installed rule status**.
+
+## View rules and details for a technique [security-rules-coverage-learn-more-about-techniques-and-sub-techniques]
+
+Select a technique's cell to open a popup with details about that technique. The popup lists the **Enabled rules** and **Disabled rules** that match the current filters, and you can select a rule's name to open its details page. 
+
+To read about the technique and its sub-techniques on the MITRE ATT&CK or MITRE ATLAS website, select the technique's name at the top of the popup. The documentation opens in a new browser tab.
 
 ## Enable all rules for a technique [security-rules-coverage-enable-rules]
 
-You can quickly enable all the rules for a specific technique that you've installed but not yet enabled. Select the technique's cell, then select **Enable all disabled** in the popup that appears.
-
-## Look up a technique on the MITRE website [security-rules-coverage-learn-more-about-techniques-and-sub-techniques]
-
-For more information on a specific technique and its sub-techniques, select the technique's cell, then select the title in the popup that appears. This opens a new browser tab with the technique's documentation on the MITRE ATT&CK or MITRE ATLAS website.
+You can quickly enable all the rules for a specific technique that you've installed but not yet enabled. If **Installed rule status** includes only **Enabled rules**, first add **Disabled rules** to the filter. Then select the technique's cell, and select **Enable all disabled**.
 
 ## Supported MITRE ATT&CK versions [supported-versions]
 
-The coverage page maps detections to [MITRE ATT&CK versions](https://attack.mitre.org/resources/updates/) used by {{elastic-sec}}.
+Each {{elastic-sec}} version supports a specific [MITRE ATT&CK version](https://attack.mitre.org/resources/updates/), which determines the tactics and techniques the grid shows. If a tactic or technique you expect is missing or renamed, check which MITRE ATT&CK version your {{elastic-sec}} version uses.
 
 | {{elastic-sec}} version | MITRE ATT\&CK version |
 | :---- | :---- |
