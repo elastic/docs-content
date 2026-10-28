@@ -41,7 +41,7 @@ To manage roles, go to the **Roles** management page using the navigation menu o
 
 ## Create an API key [create-api-key]
 
-The following are available to create an API key:
+The following options are available to create an API key:
 
 * On {{ech}} and {{ece}} deployments, as a quick option to create a personal API key from anywhere in {{kib}}:
   1. From the **Help menu** (![help icon](/deploy-manage/images/help-icon.svg)), select **Connection details > API key**.  
@@ -50,7 +50,7 @@ The following are available to create an API key:
   
   Your personal API key is created with a default expiration of 90 days from the time of creation. You can manage the key from the **API Keys** page.
 
-  The **Connection details** panel is not available on self-managed or {{eck}} deployments. Use the full **API keys** management page instead.
+  The **Connection details** panel is not available on self-managed or {{eck}} deployments. Use the **API keys** management page instead.
 
 * For all deployment types, to create a personal or cross-cluster API key with configurable options: 
   1. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
