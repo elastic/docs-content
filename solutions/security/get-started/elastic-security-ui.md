@@ -148,8 +148,6 @@ Expand this section to access the following pages:
 
 * [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE tactics and techniques, based on installed rules.
 
-    {applies_to}`stack: ga 9.0-9.5` The page name is **MITRE ATT&CK® coverage**.
-
 
 ### Detections [_detections]
 

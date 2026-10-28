@@ -14,10 +14,10 @@ description: View which MITRE ATT&CK and MITRE ATLAS tactics and techniques your
 
 # MITRE coverage [security-rules-coverage]
 
-This page maps your installed detection rules, both Elastic prebuilt and custom, to the adversary tactics and techniques they detect. It supports these MITRE frameworks:
+The MITRE coverage page shows which adversary tactics and techniques your installed detection rules cover, both Elastic prebuilt and custom. It maps rules to these frameworks:
 
-* [MITRE ATT&CK](https://attack.mitre.org): Tactics and techniques that adversaries use against enterprise IT systems.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [MITRE ATLAS](https://atlas.mitre.org): Tactics and techniques that adversaries use against AI and machine learning systems, such as prompt injection and AI model manipulation.
+* [MITRE ATT&CK](https://attack.mitre.org): Attacks on enterprise IT systems.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [MITRE ATLAS](https://atlas.mitre.org): Attacks on AI and machine learning systems, such as prompt injection.
 
 How you use this page depends on your goal:
 
@@ -52,15 +52,13 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-The page opens on the **MITRE ATT&CK** tab. To view your coverage of MITRE ATLAS tactics and techniques, select the **MITRE ATLAS** tab. Your filters, search term, and expanded or collapsed cells carry over when you switch tabs.
+The page opens on the **MITRE ATT&CK** tab. To view coverage of MITRE ATLAS [v2026.08](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.08), select the **MITRE ATLAS** tab. Each tab counts only its own framework's mappings, so a rule mapped to both frameworks appears on both tabs.
 
-Each tab counts only the mappings for its own framework. A rule mapped to both frameworks appears on both tabs, in the cells it's mapped to on each. Its MITRE ATLAS mappings don't change your MITRE ATT&CK coverage.
+Some Elastic prebuilt rules for generative AI threats include MITRE ATLAS mappings. To map a custom rule, add MITRE ATLAS in the rule's [**Threat mappings**](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) setting.
 
-Some Elastic prebuilt rules that cover generative AI threats include MITRE ATLAS mappings. To map a custom rule to MITRE ATLAS, add the framework in the rule's [**Threat mappings** setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params).
+## Supported MITRE ATT&CK versions [supported-versions]
 
-## Supported framework versions [supported-versions]
-
-The coverage page maps detections to the MITRE framework versions used by {{elastic-sec}}. For MITRE ATT&CK, refer to the following table and the [MITRE ATT&CK release notes](https://attack.mitre.org/resources/updates/).
+The coverage page maps detections to [MITRE ATT&CK versions](https://attack.mitre.org/resources/updates/) used by {{elastic-sec}}.
 
 | {{elastic-sec}} version | MITRE ATT\&CK version |
 | :---- | :---- |
@@ -80,8 +78,6 @@ The coverage page maps detections to the MITRE framework versions used by {{elas
 :applies_to: {stack: ga 9.5, serverless: ga}
 MITRE ATT\&CK v19 retires the Defense Evasion tactic and replaces it with Stealth and Defense Impairment. If you have custom rules mapped to MITRE ATT\&CK, check [](/solutions/security/detect-and-alert/remap-mitre-attack.md) to find and update mappings that changed in v19.
 ::::
-
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The **MITRE ATLAS** tab maps detections to MITRE ATLAS [v2026.08](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.08).
 
 
 ## Filter rules [security-rules-coverage-filter-rules]
