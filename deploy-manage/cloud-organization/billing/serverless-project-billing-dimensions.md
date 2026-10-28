@@ -27,8 +27,9 @@ To learn about billing dimensions for specific offerings, refer to:
 * [](security-billing-dimensions.md)
 
 
-## Add-ons [add-ons] 
+## Add-ons [add-ons]
 
+The following add-ons apply to all {{serverless-short}} project types. Each offering page also documents project-specific add-ons such as Agent Builder Executions, Workflow Executions, and Elastic Managed LLMs.
 
 ### Data out [general-serverless-billing-data-out] 
 

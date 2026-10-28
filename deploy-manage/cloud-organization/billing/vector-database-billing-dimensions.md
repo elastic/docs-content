@@ -8,6 +8,19 @@ products:
 description: >-
   Learn how costs for Elasticsearch Vector Database Serverless projects
   are calculated across storage, search, ingest, and infrastructure.
+sub:
+  abb-anchor: vector-database-billing-agent-builder-executions
+  abb-preamble: |
+    Elastic Agent Builder enables you to create AI agents that assist with data exploration and analysis within your {{vectordb}} project. Agent usage is billed in addition to the core billing dimensions, based on the number of executions completed in your project over the course of a month.
+  abb-free-executions: "1,000"
+  abb-pricing-label: Elastic Cloud pricing table
+  abb-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=vectordb
+  wfe-anchor: vector-database-billing-workflow-executions
+  wfe-preamble: Workflows enable you to automate multi-step processes within your {{vectordb}} project.
+  wfe-billing-detail: Billing is based on the number of workflow executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
+  wfe-free-executions: "10,000"
+  wfe-pricing-label: Elastic Cloud pricing table
+  wfe-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=vectordb
 ---
 
 # {{es}} {{vectordb}} billing dimensions [vector-database-billing]
@@ -55,8 +68,28 @@ There is no separate control to pause or make a project unavailable. To stop inf
 
 [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) reserves search capacity for your project. Start at the default of **100**, measure latency and throughput for your workload, then increase Search Power if you need more capacity. You increase Search Power in increments of 100. Higher Search Power increases search charges in proportion to the setting and your active storage. You can increase Search Power up to **1900**.
 
+% TODO: Confirm free allocation amounts for VDB projects (abb-free-executions
+% and wfe-free-executions in frontmatter). Using 1,000 and 10,000 as defaults
+% based on ES project values, but VDB may differ.
+
+% TODO: Confirm the pricing table URL slug is correct for VDB
+% (project=vectordb). Check https://cloud.elastic.co/cloud-pricing-table.
+
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
+
+:::{include} _snippets/workflow-executions-billing.md
+:::
+
+% TODO: Confirm whether Elastic Managed LLMs apply to VDB projects the same
+% way they do for O11y and Security (token-based add-on billing), or whether
+% the token billing described on the ES page under "Tokens" VCU type is what
+% applies here instead. If VDB has no tier requirement, drop the tier sentence.
+
+## Elastic Managed LLMs [vector-database-billing-elastic-managed-llms]
+
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered search as a service without deploying a model in your serverless project. The models are configured by default for use with applicable AI features. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
+
 ## Related billing dimensions [vector-database-billing-related]
 
-Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out) and [support](serverless-project-billing-dimensions.md#general-serverless-billing-support) may also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).
-
-If you use {{cps}}, additional charges may apply when the feature becomes generally available. For how those charges are calculated, refer to [{{cps}} billing](/deploy-manage/cross-project-search-config.md#cps-billing).
+Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out), [support](serverless-project-billing-dimensions.md#general-serverless-billing-support), and [{{cps}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps) may also appear on your bill. Refer to [](serverless-project-billing-dimensions.md) for details.

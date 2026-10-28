@@ -54,12 +54,6 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
-:::{include} _snippets/agent-builder-executions-billing.md
-:::
-
-:::{include} _snippets/workflow-executions-billing.md
-:::
-
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 
 {{es-serverless}} costs follow your resource consumption across search, ingest, ML, and storage. To balance performance with spend for your workload, you can adjust the project settings, data layout, and indexing practices described in this section.
@@ -103,3 +97,21 @@ When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasti
   The `general_purpose` option is suitable for most search use cases. For example, it is the right profile for full-text search, sparse vectors, and dense vectors that use compression such as BBQ. It is used by default when you create projects from the UI.
 
   The `vector` option is recommended only for uncompressed dense vectors ([dense_vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields with `int4` or `int8` quantization strategies) and high dimensionality. Though the per VCU cost is the same for general purpose and vector profiles, the latter allocates more VCUs for searchable data. This leads to higher VCU consumption in order to improve the performance for uncompressed vector data.
+
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
+
+:::{include} _snippets/workflow-executions-billing.md
+:::
+
+% TODO: The "Tokens" bullet under VCU types already describes Elastic Managed
+% LLM token billing inline. Decide whether to also add a standalone
+% "Elastic Managed LLMs" section here (like O11y and Security have) for
+% consistency, or whether the Tokens bullet is sufficient for ES projects.
+% If they're the same billing dimension, consider pulling LLM details out of
+% the Tokens bullet into a standalone section and keeping the Tokens bullet
+% focused on embeddings/reranker token metering.
+
+## Related billing dimensions [elasticsearch-billing-related]
+
+Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out), [support](serverless-project-billing-dimensions.md#general-serverless-billing-support), and [{{cps}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps) may also appear on your bill. Refer to [](serverless-project-billing-dimensions.md) for details.
