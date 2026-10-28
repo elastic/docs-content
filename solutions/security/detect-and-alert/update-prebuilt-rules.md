@@ -18,12 +18,12 @@ Elastic regularly updates prebuilt rules to optimize their performance and ensur
 For deployments without internet access, refer to [Prebuilt rules in air-gapped environments](/solutions/security/detect-and-alert/prebuilt-rules-airgapped.md).
 :::
 
-## Update availability [update-availability]
+## Check for available updates [update-availability]
 
 When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **{{siem-rules-ui}}** page.
 
 ::::{note}
-The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1 and 9.2.6.
+The **{{siem-rules-ui}}** page was renamed from **Rules** in versions 9.3.1 and 9.2.6.
 ::::
 
 :::{admonition} Automatic updates
@@ -50,7 +50,7 @@ All subscriptions can preview incoming updates by selecting the **Elastic update
 :screenshot:
 :::
 
-::::{dropdown} Additional options with Enterprise subscription
+::::{dropdown} Additional review options with Enterprise / Security Analytics Complete
 :name: enterprise-review-options
 
 With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, you also have access to:
@@ -90,7 +90,7 @@ With an Enterprise subscription on {{stack}} or a Security Analytics Complete pr
 * **Unresolved conflicts**: You must manually select how to resolve the conflict. The field displays an `Action required` status.
 
 :::{note}
-If the rule's original version is unavailable, as described in [Additional options with Enterprise subscription](#enterprise-review-options), {{elastic-sec}} cannot identify which changes are yours. For fields that hold multiple values, such as **Tags**, **Reference URLs**, and **Indicator index patterns**, the suggested resolution is Elastic's values rather than a combination of both sets. These fields display the `Review required` status. To keep your values, open the rule update flyout and edit the **Final update** value before you accept it.
+If the rule's original version is unavailable, as described in [Additional review options](#enterprise-review-options), {{elastic-sec}} cannot identify which changes are yours. For fields that hold multiple values, such as **Tags**, **Reference URLs**, and **Indicator index patterns**, the suggested resolution is Elastic's values rather than a combination of both sets. These fields display the `Review required` status. To keep your values, open the rule update flyout and edit the **Final update** value before you accept it.
 :::
 
 Refer to [Resolve update conflicts](#resolve-reduce-rule-conflicts) for guidance on handling conflicts.
@@ -191,11 +191,11 @@ When you [edit prebuilt rules directly](/solutions/security/detect-and-alert/cus
 If you don't need to keep your customizations, you can [update the rules to the Elastic version](#update-to-elastic-version) instead of resolving conflicts.
 ::::
 
-### Auto-resolved conflicts
+### Review auto-resolved conflicts [auto-resolved-conflicts]
 
 When {{elastic-sec}} can suggest a resolution, the field displays `Review required`. You can still update rules with auto-resolved conflicts, but review each rule individually rather than bulk-updating to avoid unintended changes.
 
-### Unresolved conflicts
+### Fix unresolved conflicts [unresolved-conflicts]
 
 When {{elastic-sec}} can't resolve a conflict, the field displays `Action required`. To fix unresolved conflicts:
 
