@@ -52,18 +52,16 @@ The saved assignment applies to manual, scheduled, alert, and event-driven runs.
 
 ## Verify the execution identity [verify-workflow-execution-identity]
 
-Run the saved workflow, then open its execution details. The overview identifies both identities:
+[Test the complete workflow](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input). The test uses the saved definition and the service account's privileges. You can't test individual steps or unsaved definitions when `run_as` is set.
+
+After the test completes, open its execution details. The overview identifies both identities:
 
 - **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger.
 - **Run as** is the service account whose privileges authorized the workflow's actions.
 
-Steps that call {{es}} or {{kib}} (`elasticsearch.*` and `kibana.*`) use the service account's privileges. Connectors use their own stored credentials to authenticate to external systems. For details about credentials and child workflows, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
+Steps that call {{es}} or {{kib}} (`elasticsearch.*` and `kibana.*`) use the service account's privileges. {{connectors-ui}} use their own stored credentials to authenticate to external systems. For details about credentials and child workflows, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 
 % TBD: Confirm agent credential propagation with Workflows and Agent Builder after https://github.com/elastic/kibana/issues/293019 is resolved before adding a claim about agents invoked by a bound workflow.
-
-## Test the workflow [test-bound-workflow]
-
-Save your changes before you [test the complete workflow](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-supply-test-input). The test uses the saved definition and the service account's privileges. You can't test individual steps or unsaved definitions when `run_as` is set.
 
 ## Handle permission and identity failures [handle-workflow-service-account-failures]
 
