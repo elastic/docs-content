@@ -15,7 +15,7 @@ products:
 
 # Create and manage service accounts in {{kib}} [manage-service-accounts-kibana]
 
-Create user-managed service accounts and assign roles to control programmatic access to {{es}} and {{kib}} APIs. {{kib}} creates each account in {{es}} and securely stores its credential.
+Create user-managed service accounts and assign roles to control programmatic access to {{es}} and {{kib}} APIs.
 
 ## Before you begin [manage-service-accounts-before-you-begin]
 
