@@ -31,7 +31,7 @@ Leave alert delay set to **Immediate** when:
 | Mode | Behavior | When to use |
 | --- | --- | --- |
 | Immediate | Opens an alert as soon as the threshold is breached on the first evaluation. | Use when any single breach warrants attention and latency matters. |
-| Breaches | Opens an alert after the threshold is breached a set number of times in a row. | Use when brief spikes are normal and you only want to act after the condition keeps firing—a single breach on its own isn't enough. |
+| Breaches | Opens an alert after the threshold is breached a set number of times in a row. | Use when brief spikes are normal and you only want to act after the condition keeps firing. A single breach on its own isn't enough. |
 | Duration | Opens an alert after the threshold has been continuously breached for a set time. | Use when duration of the problem matters more than how many evaluations caught it, for example sustained high CPU rather than a momentary spike. |
 
 ### Alert delay fields
@@ -40,7 +40,7 @@ Use the following fields to configure the Breaches and Duration modes. Timeframe
 
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
-| `state_transition.pending.count` | integer | 0–1000 | Consecutive matches the alert spends in `pending` before it becomes `active` on the next match. For example, `2` opens the alert on the third consecutive match. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to open the alert on the first match. |
+| `state_transition.pending.count` | integer | 0–1000 | Consecutive matches the alert spends in `pending` before it becomes `active` on the next match. For example, `2` opens the alert on the third consecutive match. Appears as **Consecutive breaches** in Breaches mode. Set to `0` to open the alert on the first match. If you also set `timeframe` with `operator: and`, a count of `0` opens the alert only after the timeframe passes. |
 | `state_transition.pending.timeframe` | duration | Any duration string | How long the condition must remain breached before the alert opens. Appears as **Active for** in Duration mode. |
 | `state_transition.pending.operator` | string | `and` or `or` | When you set both `count` and `timeframe`, controls whether both must be satisfied (`and`) or either one is enough (`or`). Defaults to `or`. |
 
