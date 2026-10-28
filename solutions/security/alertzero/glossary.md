@@ -18,11 +18,11 @@ This glossary defines the terms you see in AlertZero and its documentation. Each
 
 ### AlertZero [alertzero-glossary-alertzero]
 
-An {{elastic-sec}} feature that runs agentic security work for your SOC. AI-powered [Workers](#alertzero-glossary-worker), grouped into [Watches](#alertzero-glossary-watch), triage alerts, hunt for threats, tune noisy detection rules, and investigate on their own, then bring you the [proposed actions](#alertzero-glossary-proposed-action) that need a person to decide. Refer to [](index.md).
+The agentic layer of {{elastic-sec}}. AI-powered [Workers](#alertzero-glossary-worker), grouped into [Watches](#alertzero-glossary-watch), triage alerts, hunt for threats, tune detection rules, and investigate attacks, then bring you the [proposed actions](#alertzero-glossary-proposed-action) that need a person to decide. Refer to [](index.md).
 
 ### Assisted (autonomy) [alertzero-glossary-assisted]
 
-An [autonomy](#alertzero-glossary-autonomy) level at which a Worker skips the approval it asks for at [Manual](#alertzero-glossary-manual) before it starts analyzing or drafting. Every proposed rule change still waits for you. Refer to [](configure-worker-settings.md).
+An [autonomy](#alertzero-glossary-autonomy) level at which a Worker starts its analysis on its own, without asking you first, but still waits for your approval before it makes any change. For example, Rule Tuning analyzes a noisy rule on its own and drafts a tuning change, then waits for you to approve the change. Refer to [](configure-worker-settings.md).
 
 ### Attack Discovery [alertzero-glossary-attack-discovery]
 
@@ -44,7 +44,7 @@ An optional model setting in **Feature Settings** for cyber-specific models. A m
 
 ### Detection Watch [alertzero-glossary-detection-watch]
 
-The [Watch](#alertzero-glossary-watch) that improves your detection rules. Its Rule Tuning Worker diagnoses noisy or under-covering rules and proposes tuning changes. Its Rule Coverage Worker assesses detection gaps that Hunt Watch finds and proposes new or existing rules to close them. Refer to [](watches-and-workers.md#alertzero-detection-watch).
+The [Watch](#alertzero-glossary-watch) that handles detection engineering, improving your detection rules at the source instead of handling the alerts they produce one by one. Its Rule Tuning Worker diagnoses noisy or under-covering rules and proposes tuning changes. Its Rule Coverage Worker assesses detection gaps that Hunt Watch finds and proposes new or existing rules to close them. Refer to [](watches-and-workers.md#alertzero-detection-watch).
 
 ## E-F [alertzero-glossary-e-f]
 
@@ -54,11 +54,11 @@ A model setting in **Feature Settings** for AlertZero calls that need quick, lig
 
 ### Escalation [alertzero-glossary-escalation]
 
-A coordinated response that you create from an [investigation](#alertzero-glossary-investigation) when it needs a human decision. An escalation links one or more investigations, and has an owner, assignees, and a visibility of **Public** or **Private**. Closing an escalation also closes its linked investigations. Refer to [](escalate-investigation.md) and [](track-escalations.md).
+A coordinated response that you create from an [investigation](#alertzero-glossary-investigation) to work on it with other people, privately if needed. An escalation can link related investigations, and it has an owner, assignees, and a visibility of **Public** or **Private**. Closing an escalation also closes its linked investigations. Refer to [](escalate-investigation.md) and [](track-escalations.md).
 
 ### Forensics Watch [alertzero-glossary-forensics-watch]
 
-The [Watch](#alertzero-glossary-watch) that runs deeper forensics on an attack. Its Endpoint Analysis Worker reconstructs the attack timeline on the affected hosts and proposes response actions. It runs only on attacks handed off by the Attack Discovery Worker, and it needs {{elastic-defend}} data. Refer to [](watches-and-workers.md#alertzero-forensics-watch).
+The [Watch](#alertzero-glossary-watch) that does deep research on threats and exploits, running forensics on an attack. Its Endpoint Analysis Worker reconstructs the attack timeline on the affected hosts and proposes response actions. It runs only on attacks handed off by the Attack Discovery Worker, and it needs {{elastic-defend}} data. Refer to [](watches-and-workers.md#alertzero-forensics-watch).
 
 ### Frontier models [alertzero-glossary-frontier-models]
 
@@ -72,7 +72,7 @@ A result from the [Hunt Watch](#alertzero-glossary-hunt-watch): activity in your
 
 ### Hunt Watch [alertzero-glossary-hunt-watch]
 
-The [Watch](#alertzero-glossary-watch) that hunts for threats before anyone reports them. Its Continuous Threat Hunt Worker searches your data for activity that matches threat reports and for detection coverage gaps. This Worker runs on a fixed schedule and always uses [Manual](#alertzero-glossary-manual) autonomy. Refer to [](watches-and-workers.md#alertzero-hunt-watch).
+The [Watch](#alertzero-glossary-watch) that proactively hunts your environment for threats, without waiting for an alert. Its Continuous Threat Hunt Worker searches your data for activity that matches threat reports and for detection coverage gaps. This Worker runs on a fixed schedule and always uses [Manual](#alertzero-glossary-manual) autonomy. Refer to [](watches-and-workers.md#alertzero-hunt-watch).
 
 ### Investigation [alertzero-glossary-investigation]
 
@@ -82,7 +82,7 @@ A record of an AlertZero Worker's inquiry into a potential threat, such as a can
 
 ### Manual (autonomy) [alertzero-glossary-manual]
 
-The default [autonomy](#alertzero-glossary-autonomy) level. At this level, the Worker still runs and analyzes on its own, but the actions it proposes wait for your approval. For example, Alert Triage waits for you to approve closing false-positive alerts, Attack Discovery waits for you to approve handing an attack to the Forensics Watch, and Endpoint Analysis waits for you to approve each response action. Rule Tuning and Rule Coverage also ask for your approval before they start analyzing a rule or a detection gap. Refer to [](configure-worker-settings.md).
+The default [autonomy](#alertzero-glossary-autonomy) level. At this level, every action the Worker proposes waits for your approval, and some Workers also ask for your approval before they start analyzing. For example, Alert Triage waits for you to approve closing false-positive alerts, Attack Discovery waits for you to approve handing an attack to the Forensics Watch, and Endpoint Analysis waits for you to approve each response action. Refer to [](configure-worker-settings.md).
 
 ### Proposed action [alertzero-glossary-proposed-action]
 
@@ -106,11 +106,11 @@ A report of threat activity, built from ingested threat intelligence, that the [
 
 ### Triage Watch [alertzero-glossary-triage-watch]
 
-The [Watch](#alertzero-glossary-watch) that reduces alert volume and routes what still needs a person. Its Alert Triage Worker classifies each batch of alerts. Its Attack Discovery Worker finds candidate attacks and opens an investigation for each. Refer to [](watches-and-workers.md#alertzero-triage-watch).
+The [Watch](#alertzero-glossary-watch) that works as your first line of defense, reviewing incoming alerts and routing the ones that still need a person. Its Alert Triage Worker classifies alerts as true or false positives, then proposes closing the false positives. Its Attack Discovery Worker finds candidate attacks and opens an investigation for each. Refer to [](watches-and-workers.md#alertzero-triage-watch).
 
 ### Watch [alertzero-glossary-watch]
 
-A named group of related [Workers](#alertzero-glossary-worker) that handle one kind of security work. The following Watches are available: [Triage Watch](#alertzero-glossary-triage-watch), [Hunt Watch](#alertzero-glossary-hunt-watch), [Detection Watch](#alertzero-glossary-detection-watch), and [Forensics Watch](#alertzero-glossary-forensics-watch). Each Watch has its own page where you turn its Workers on or off and change their settings. Refer to [](watches-and-workers.md).
+A named group of [Workers](#alertzero-glossary-worker) with one area of expertise. AlertZero includes the following Watches: [Triage Watch](#alertzero-glossary-triage-watch), [Hunt Watch](#alertzero-glossary-hunt-watch), [Detection Watch](#alertzero-glossary-detection-watch), and [Forensics Watch](#alertzero-glossary-forensics-watch). Each Watch has its own page where you turn its Workers on or off and change their settings. Refer to [](watches-and-workers.md).
 
 ### Worker [alertzero-glossary-worker]
 
