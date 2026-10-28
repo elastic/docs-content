@@ -48,11 +48,6 @@ When a workflow runs, the execution panel displays:
 - **Timestamps**: The duration of each step.
 - **Expandable details**: Click any step to examine details such as input parameters, output data, and execution timelines.
 
-:::{note}
-:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-For a workflow assigned to a service account, **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger. **Run as** identifies the service account used for authorization. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
-:::
-
 ## See what triggered a run [workflows-execution-trigger-source]
 
 ```{applies_to}
@@ -61,6 +56,8 @@ serverless: ga
 ```
 
 Every execution begins with a trigger entry that shows how the run started, such as a manual run, a schedule, an alert, or an event. Expand this entry to see the input the workflow received, including the full event payload for [event-driven](/explore-analyze/workflows/triggers/event-driven-triggers.md) runs. This lets you trace an execution back to the event or action that started it, which is especially useful when workflows react to one another through event-driven triggers.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` For workflows assigned to a service account, **Triggered by** identifies the user associated with the run, and **Run as** identifies the account used for authorization. For details, refer to [](/explore-analyze/workflows/authorization.md#workflows-authorization-audit).
 
 ## View execution history [workflows-execution-history]
 
