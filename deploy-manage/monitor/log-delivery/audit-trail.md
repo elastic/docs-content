@@ -18,24 +18,26 @@ An audit trail includes the following {{es}} and {{kib}} project events:
 <!-- Unhide when org-level audit logs are available.
 * **{{ecloud}} and organization administration:** Sign-ins; membership and IAM; and project settings.
 -->
+* {{kib}} sign-ins
 * Configuration changes to indices, templates, and pipelines
 * Data access, including searches, reads, and writes
-* {{kib}} UI access, such as page navigation and UI requests
-
-Audit trail delivery is applicable to {{serverless-short}} projects, so {{ech}} fields like `node.*` and `host.*` are not included.
+* UI access, such as page navigation and UI requests
 
 ## Why deliver an audit trail
 
-Delivering an audit trail into a project lets you investigate end-to-end activity in one place. For example, you can:
+Delivering an audit trail to a project lets you investigate end-to-end activity in one place. For example, you can:
 
 <!-- Unhide when org-level audit logs are available.
 * Trace failed or successful sign-ins for a user
 * Review membership, IAM, or project-admin changes
 -->
-* Investigate access denied on an index pattern
-* Detect changes or deletions of {{kib}} saved objects such as detection rules
+* Detect suspicious sign-in activity
+* Observe changes or deletions of {{kib}} saved objects such as detection rules
+* Inspect access denied on an index pattern
 * Determine who searched a sensitive index
 * Follow a user journey across `service.name` values for the same `user.name` and time window
+
+The destination project has several tools to help with your investigation. Refer to [Explore delivered logs](#explore-delivered-logs) for more information.
 
 ## Set up delivery for audit trail
 
@@ -103,11 +105,13 @@ In the following table, find the recommended combination of filters to select fo
 
 ## Explore delivered logs
 
-After delivery is enabled, explore your audit trail on the destination project with the provided [dashboards](#dashboards), [Discover or {{esql}}](#discover-or-esql), and [AutoOps](#autoops).
+After delivery is enabled, explore your audit trail on the destination project with the provided [dashboards](#dashboards), [alerting rules](#alerting-rules), [Discover or {{esql}}](#discover-or-esql), and [AutoOps](#autoops).
 
 ### Dashboards
 
-Select **View dashboards** after you save your log delivery configuration, or open the destination project and find the audit trail dashboards in {{kib}}. The following dashboards are available:
+When you enable an audit trail, the destination project creates dashboards to help you explore and investigate audit activity. Select **View dashboards** after you save your log delivery configuration, or open the destination project and find the audit trail dashboards in {{kib}}. 
+
+The following dashboards are available:
 
 * **Command Center**: Overview of audit activity, including volume, key indicators, higher-risk identities, and a live feed of recent events.
 * **Identity 360**: Full activity trail for one user. Select a person to filter every panel to their events.
@@ -116,6 +120,23 @@ Select **View dashboards** after you save your log delivery configuration, or op
 * **{{es}} Data Access**: Which indices each identity used, request types, denied requests, and access to system or hidden indices.
 * **Security & Anomalies**: Risk signals for sensitive and privileged actions, operation failures, and newly seen identities.
 * **Geo & Network**: Activity by geographic location, routed from each identity's real address, including unusual location patterns.
+
+### Alerting rules
+
+Set up alerting rules on the destination project to run continuously and notify you when sign-in or location patterns look suspicious, even when you're not watching the dashboards. These alerts link to the relevant dashboards for context, so you can use them together to enhance the security of your projects.
+
+The destination project includes the following as templates. [Create a rule from each template](/reference/fleet/alerting-rule-templates.md) to receive alerts.
+
+| Alerting rule | What triggers it |
+| --- | --- |
+| Password guessing | One identity fails to sign in at least 15 times in 10 minutes |
+| Password spray | One client IP fails against at least 10 identities in 15 minutes |
+| Credential stuffing | At least 30 failures, across 10 identities and 5 public IPs, in 10 minutes |
+| Successful sign-in after repeated failures | At least 5 failures followed by a success, in the same 30 minutes |
+| Impossible travel | Two sign-ins at least 500 km apart, at the same moment or faster than 800 km/h, within 6 hours |
+| Sign-in from a new country | A known identity appears in a country it has not used in the last 7 days |
+| Credential used from many places | Two countries in one hour, or an API key seen from 3 public IPs |
+| First-seen identity | The first sign-in in 7 days<br> Stays quiet until the audit stream is at least 24 hours old, because it needs history to compare against. |
 
 ### Discover or {{esql}}
 
