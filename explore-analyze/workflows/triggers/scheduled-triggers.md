@@ -124,14 +124,20 @@ The following table describes the available fields for configuring RRule-based s
 | `interval` | Yes | Interval between occurrences | Positive integer (for example, `2` with `freq: WEEKLY` runs every 2 weeks) |
 | `tzid` | No | Timezone identifier. Defaults to `UTC`. | IANA timezone name. For example, `UTC`, `America/New_York`, `Europe/London` |
 | `dtstart` | No | Start date | ISO format (for example, `2024-01-15T09:00:00Z`) |
-| `byhour` | No | Hours to run | Array of integers `0`-`23` |
-| `byminute` | No | Minutes to run | Array of integers `0`-`59` |
+| `byhour` | No | Hours to run, in the `tzid` timezone | Array of integers `0`-`23` |
+| `byminute` | No | Minutes to run, in the `tzid` timezone | Array of integers `0`-`59` |
 | `byweekday` | Required when `freq` is `WEEKLY` | Days of the week | Array of weekdays: `MO`, `TU`, `WE`, `TH`, `FR`, `SA`, `SU` |
 | `bymonthday` | Required when `freq` is `MONTHLY` | Days of the month | Array of integers `1`-`31`. Use negative values to count from the end of the month (for example, -1 for the last day of the month) |
 
 ### Set the run time and timezone [rrule-run-time]
 
-To run a workflow at a specific local time, set `byhour` and `byminute`. Both use `tzid`, so runs stay at that local time when daylight saving time starts or ends. The following example runs every day at 4:00 PM in Chicago:
+The `byhour`, `byminute`, `tzid`, and `dtstart` fields each control a different part of when a workflow runs:
+
+* `byhour` and `byminute` set the clock time of every run.
+* `tzid` sets the timezone for that clock time. Runs stay at the same local time when daylight saving time starts or ends. Use an IANA timezone name, such as `America/Chicago`, rather than a fixed offset.
+* `dtstart` sets when the schedule starts, and the schedule skips any occurrence before it. If you omit `dtstart`, the schedule starts when you save the workflow.
+
+To run a workflow at a specific local time, set `byhour`, `byminute`, and `tzid`. You don't need `dtstart`. The following example runs every day at 4:00 PM in Chicago:
 
 ```yaml
 triggers:
@@ -145,12 +151,16 @@ triggers:
         byminute: [0]
 ```
 
-If you omit `byhour` and `byminute`, each run uses the clock time that `dtstart` falls on in `tzid`. Because `dtstart` and `tzid` control different things, confusing them is a common reason a workflow runs at an unexpected hour:
+Add `dtstart` only to hold the schedule until a later date. The run time still comes from `byhour` and `byminute`, so `dtstart` doesn't have to match it.
 
-* `dtstart` is a single moment in time. The offset in the timestamp decides which moment: A trailing `Z` means UTC, and `-05:00` means five hours behind UTC. Setting `tzid` doesn't change which moment `dtstart` refers to.
-* `tzid` sets the timezone for calculating recurrences. It determines the clock time of each run and follows daylight saving time in that zone. Use an IANA timezone name, such as `America/Chicago`, rather than a fixed offset.
+If you omit `byhour` and `byminute`, the first run sets the clock time for the whole schedule:
 
-For example, `2026-05-11T16:00:00Z` is 4:00 PM UTC, which is 11:00 AM in Chicago, so the following trigger runs daily at 11:00 AM:
+* The first run takes its clock time from `dtstart` as it falls in `tzid`, or from the time you save the workflow if you omit `dtstart`.
+* {{kib}} calculates each later run from the previous run, at the same clock time in `tzid`.
+
+If a run starts late, the delay carries over to every later run. For example, if a daily workflow that runs at 11:00 AM starts 7 minutes late one day, it runs at 11:07 AM from then on. To keep runs at a fixed time, set `byhour` and `byminute`.
+
+When the run time comes from `dtstart`, check the offset at the end of the timestamp. `dtstart` carries its own offset, so `tzid` doesn't change which moment it refers to. A trailing `Z` means UTC, and `-05:00` means five hours behind UTC. For example, `2026-05-11T16:00:00Z` is 4:00 PM UTC, which is 11:00 AM in Chicago, so the following trigger runs daily at 11:00 AM in Chicago, not 4:00 PM:
 
 ```yaml
 triggers:
@@ -163,9 +173,7 @@ triggers:
         dtstart: 2026-05-11T16:00:00Z
 ```
 
-To schedule 4:00 PM in Chicago from `dtstart` alone, write the same moment as either `2026-05-11T21:00:00Z` or `2026-05-11T16:00:00-05:00`.
-
-`dtstart` is also the earliest moment a workflow can run, and the schedule skips any occurrence before it. If you omit `dtstart`, the schedule starts when you save the workflow.
+To run at 4:00 PM in Chicago instead, write the same moment as either `2026-05-11T21:00:00Z` or `2026-05-11T16:00:00-05:00`.
 
 To check a schedule, go to the **Workflows** list and hover over the workflow's trigger icon. The tooltip shows **Next execution** using your {{kib}} display timezone.
 
@@ -185,7 +193,7 @@ triggers:
         byminute: [0]
 ```
 
-Daily with a custom start date at 9 AM UTC:
+Daily at 9 AM UTC, starting after 1 PM UTC on January 15. The schedule skips 9 AM on January 15 because it's before `dtstart`, so the first run is at 9 AM UTC on January 16:
 
 ```yaml
 triggers:
@@ -195,7 +203,7 @@ triggers:
         freq: DAILY
         interval: 1
         tzid: UTC
-        dtstart: 2024-01-15T09:00:00Z
+        dtstart: 2024-01-15T13:00:00Z
         byhour: [9]
         byminute: [0]
 ```
