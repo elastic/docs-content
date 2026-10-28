@@ -30,15 +30,15 @@ From the **Rule Monitoring** tab on the **{{siem-rules-ui}}** page, you can get 
 ::::{applies-switch}
 
 :::{applies-item} { "serverless": "ga", "stack": "ga 9.4+" }
-Use the **Rule Monitoring Overview** panel to check how every rule in the current {{kib}} space last ran, and how much gap time across the space is still unfilled. The panel is expanded by default. Its header also shows **Auto gap fill status**, which tells you whether [automatic gap fill](#fill-gaps-automatically) is on.
+Use the **Rule Monitoring Overview** panel to check how every rule in the current {{kib}} space last ran, and how much gap time across the space is still unfilled. Its header also shows **Auto gap fill status**, which tells you whether [automatic gap fill](#fill-gaps-automatically) is on.
 
 The panel's two charts always cover the whole space, so filtering or searching the Rules table doesn't change them. To find the rules behind a number, filter the Rules table instead, for example by **Gap fill status**.
 
-**Last response summary** counts rules by the outcome of their most recent run, with the total number of rules in the center of the chart. `Succeeded`, `Warning`, and `Failed` match the **Last response** column, described in [Rule execution status](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-status). `No response` counts rules that have never recorded an outcome, such as a new rule that hasn't run yet. A rule that you turn off keeps the status from its last run.
+**Last response summary** counts rules by the outcome of their most recent run, with the total number of rules in the center of the chart. `Succeeded`, `Warning`, and `Failed` match the **Last response** column, described in [Rule execution status](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-status). `No response` counts rules that don't have a result yet, such as a new rule that hasn't run. A rule that you turn off keeps the status from its last run.
 
-**Rule gap summary** measures gap time from the last 90 days instead of counting rules. The total in the center of the chart is all gap time recorded across the space, including time that's already filled. The chart's table splits that total into `Filled`, `In progress`, `Unfilled`, and `Error` time. These are the [gap fill status](#gap-fill-status) names, applied to time instead of to rules. To find how much detection time is still uncovered, add `Unfilled` and `Error`. `Error` is unfilled time that automatic gap fill stopped retrying.
+**Rule gap summary** measures gap time from the last 90 days instead of counting rules. The total in the center of the chart is all gap time recorded across the space, including time that's already filled. The chart's table splits that total by [gap fill status](#gap-fill-status): `Filled`, `In progress`, `Unfilled`, and `Error`. Together, `Unfilled` and `Error` show how much time still has no detection coverage, so alerts from that time might be missing. `Error` is gap time that automatic gap fill failed to fill after repeated attempts. To cover it, [fill the gaps manually](#fill-gaps-manually).
 
-Because the chart splits each gap by status, a partially filled gap counts toward more than one row. Durations also add up across rules, so one outage that affects many rules counts each rule's gap separately. The totals follow your [gap detection scope](#gap-detection-scope-and-gap-reasons), so gaps with an excluded reason aren't counted.
+The total adds up each rule's gap time separately, so it can be much larger than the outage that caused it. For example, a one-hour outage that affects 20 rules adds 20 hours. The total leaves out gaps from when a rule was off, unless you include them in your [gap detection scope](#gap-detection-scope-and-gap-reasons).
 :::
 
 :::{applies-item} { "stack": "ga =9.3"}
