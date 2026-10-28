@@ -27,6 +27,41 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.5.6 [elastic-security-9.5.6-release-notes]
+
+### Features and enhancements [elastic-security-9.5.6-features-enhancements]
+
+* Speeds up importing detection rules with overwrite enabled by updating existing rules in bulk instead of one at a time [#291560]({{kib-pull}}291560).
+* Refactors how {{elastic-defend}} manages the macOS system extension to improve reliability.
+* Updates {{elastic-defend}} to accept `advanced.utilization_limits.cpu` values down to 1%. On hosts with more than 32 logical CPUs, the effective limit never goes below 6.4 CPUs; smaller hosts never go below 20% of the host. Policies that already set a value below 20, which was previously ignored with a policy warning, are now enforced.
+* Increases the default maximum file size that {{elastic-defend}} scans for malware to 150 MiB, up from 75 MiB. The `advanced.malware.max_file_size_bytes` setting continues to accept values from 1 MiB to 1 GiB.
+
+### Fixes [elastic-security-9.5.6-fixes]
+
+* Fixes Osquery so the live queries API and detection rule response actions require read access to a pack or saved query before running it [#299125]({{kib-pull}}299125).
+* Fixes the **Download script** action in the Script Library so the download link works when {{kib}} runs with a base path [#298398]({{kib-pull}}298398).
+* Fixes an issue where maximizing a panel on a dashboard opened in {{elastic-sec}} showed a blank view [#297340]({{kib-pull}}297340).
+* Fixes Cribl integration routing to OpenTelemetry input package data streams. Previously, events were routed to a data stream without the `.otel` suffix, so the integration's index template and ingest pipeline did not apply [#296533]({{kib-pull}}296533).
+* Fixes an issue where clicking **Generate** on the Entity Analytics **Threat hunting leads** panel failed with a `No connector or inference endpoint found` error. Also fixes an issue where leads were sometimes generated but not shown the first time you generated them [#295785]({{kib-pull}}295785).
+* Fixes **Open in Lens** on the **Hosts**, **Network**, and **Users** pages' KPI tiles, which previously opened Lens with a "Data view not found" error [#295261]({{kib-pull}}295261).
+* Fixes the success message after updating a missing index pattern for translated rules so it says "rules" instead of "migrations" [#295064]({{kib-pull}}295064).
+* Fixes an issue where prebuilt rules were flagged as customized, and showed non-solvable `required_fields` upgrade conflicts, even though you hadn't edited the field. Also improves the performance of the rule edit form and the upgrade flyout for rules with long `required_fields` lists [#294946]({{kib-pull}}294946).
+* Fixes an issue where Osquery live query results and statuses were empty in non-default spaces for queries that ran before {{kib}} began recording the space on results [#294515]({{kib-pull}}294515).
+* Fixes blank change history entries when importing detection rules with overwrite enabled by skipping rules that haven't changed. For example, re-importing a file of 1000 rules where only one rule changed now updates only that rule [#293948]({{kib-pull}}293948).
+* Fixes an issue where {{elastic-sec}} pages could stay stuck on a loading spinner when more than one data view selection was requested at the same time [#293909]({{kib-pull}}293909).
+* Fixes an authorization issue where users with only the Osquery **Run Saved queries** privilege could run arbitrary SQL by referencing a saved query or pack [#287882]({{kib-pull}}287882).
+* Fixes the detection rules bulk delete action (`POST /api/detection_engine/rules/_bulk_action`) returning HTTP 500 when a targeted rule was already deleted, for example by a concurrent request. These rules are now reported as skipped with a `RULE_NOT_FOUND` reason, and the response is HTTP 200 [#287003]({{kib-pull}}287003).
+* Fixes the `get-file` response action so {{elastic-defend}} no longer fails the action as host unreachable when a TLS handshake fails due to a broken connection.
+* Fixes a startup crash on macOS where {{elastic-defend}} could abort if it was unable to determine the OS version.
+* Improves how {{elastic-defend}} on Linux handles DNS events when packet data is incomplete or unavailable.
+* Fixes an issue where {{elastic-defend}} could negotiate a different TLS cipher suite from the one configured, or reject a valid cipher suite name, when the output's `ssl.cipher_suites` setting used Beats-style names for two CBC cipher suites. `ECDHE-RSA-AES-128-CBC-SHA256` was resolving to `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA` instead of `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`, and `RSA-AES-128-CBC-SHA256` and `ECDHE-RSA-AES-256-CBC-SHA` were rejected.
+* Updates the {{elastic-defend}} `get-file` response action to return a symbolic link on Linux and macOS as a regular file with the content and permissions of the file the link points to. Previously, some extraction tools, such as `unzip`, created a link instead of the file, or skipped it. On Windows, `get-file` no longer returns an empty file when another process has the file open for reading.
+* Fixes an issue where {{elastic-defend}} incorrectly enforced device control policies on non-removable devices.
+* Fixes the {{elastic-defend}} `get-file` response action so it no longer fails on a symbolic link whose target is a relative path, such as most shared-library links on Linux, and reports the link's real target path.
+* Improves {{elastic-defend}} memory threat protection on macOS 27.
+* Fixes file signature reporting on macOS, which reduces false positive alerts from {{elastic-defend}}.
+* Fixes caseless comparison in {{elastic-defend}} so it ignores case for non-ASCII letters, such as Cyrillic, Greek, or accented Latin.
+
 ## 9.5.5 [elastic-security-9.5.5-release-notes]
 
 ### Features and enhancements [elastic-security-9.5.5-features-enhancements]
