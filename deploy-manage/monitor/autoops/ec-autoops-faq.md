@@ -31,6 +31,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 
 **Questions about AutoOps for ECE, ECK, or self-managed clusters**
 * [Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?](#additional-payment)
+* [Which {{ecloud}} organization should I connect to AutoOps?](#which-org)
 * [Does shipping metrics data to {{ecloud}} incur additional costs?](#autoops-metrics-cost)
 * [Which deployment types can be connected to AutoOps through Cloud Connect?](#deployment-types)
 * [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
@@ -91,6 +92,11 @@ $$$feedback$$$**How do I provide feedback about AutoOps?**
 
 $$$additional-payment$$$ **Does AutoOps for ECE, ECK, or self-managed clusters incur additional costs?**
 :   In ECE, ECK, and self-managed clusters, AutoOps is available for free across all [self-managed license types](https://www.elastic.co/subscriptions) through [Cloud Connect](/deploy-manage/cloud-connect.md). This does not consume ECUs.
+
+$$$which-org$$$ **Which {{ecloud}} organization should I connect to AutoOps?**
+:   Any organization you can manage works — AutoOps is free for self-managed clusters, so there's no requirement to use a specific one. If you don't have access to an existing org, you can [create a new one](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) for free, or [join/switch to another organization](/cloud-account/switch-organizations.md) you're already a member of.
+
+    To get started, refer to [Connect your self-managed cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md).
 
 $$$autoops-metrics-cost$$$ **Does shipping metrics data to {{ecloud}} incur additional costs?**
 :   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs are determined by your agreement with that CSP. 
