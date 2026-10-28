@@ -15,7 +15,7 @@ products:
 Change the lifecycle configuration for a classic {{es}} data stream, such as its data retention or phases.
 
 For [wired](/solutions/observability/streams/get-data-in.md#get-data-in-wired) data streams, go to [](/solutions/observability/streams/configure-retention.md).
-For {{ilm-init}}, refer to [](/manage-data/lifecycle/index-lifecycle-management.md).
+For {{ilm}} ({{ilm-init}}), refer to [](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md).
 
 ## Before you begin [update-data-stream-lifecycle-prereqs]
 
@@ -114,7 +114,7 @@ Lifecycle changes apply to every backing index of the data stream.
 :::::
 
 $$$data-retention-streams$$$
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` Alternatively, you can use the **Streams** page in {{kib}}, which is a centralized interface for common data management tasks, including how your data streams retain data. Refer to [](/solutions/observability/streams/configure-retention.md).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+, preview =9.1` Alternatively, you can use the **Streams** page in {{kib}}, which is a centralized interface for common data management tasks, including how your data streams retain data. Refer to [](/solutions/observability/streams/configure-retention.md).
 
 ::::{dropdown} API example
 
@@ -279,7 +279,7 @@ GET my-data-stream-test/_lifecycle/explain
 
 1. The name of the backing index.
 1. The data stream lifecycle does not manage the index.
-1. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The reason the data stream is not managed.
+1. {applies_to}`stack: ga 9.6+` The reason the data stream is not managed.
 
 ::::
 
