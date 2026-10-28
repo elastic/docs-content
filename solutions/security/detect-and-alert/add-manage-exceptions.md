@@ -154,10 +154,6 @@ When using ES|QL, you can append new fields with commands such as [`EVAL`](https
 
 ### Rule type considerations
 
-If an Elastic update changes a prebuilt rule's type, the rule keeps its exceptions, but they might stop working or behave differently. To learn how to update these rules, refer to [Update rules with a rule type change](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-rule-type-change).
-
-Some rule types evaluate exceptions differently:
-
 * **Event correlation (EQL) rules**: Exceptions are evaluated against every event in the sequence. If an exception matches any event necessary to complete the sequence, alerts are not created. To exclude values from a specific event in the sequence, update the rule's EQL statement instead. For example:
 
     ```eql
@@ -169,6 +165,8 @@ Some rule types evaluate exceptions differently:
     ```
 
 * **Indicator match rules**: Exceptions are evaluated against both source and indicator indices. If the exception matches events in *either* index, alerts are not generated.
+
+If an Elastic update changes a prebuilt rule's type, the rule keeps its exceptions, but they might behave differently with the new type. For details, refer to [Update rules with a rule type change](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-rule-type-change).
 
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
 

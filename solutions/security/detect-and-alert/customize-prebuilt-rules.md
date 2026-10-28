@@ -89,9 +89,7 @@ All subscriptions allow you to configure rule actions (notifications) on prebuil
 
 ## Revert to Elastic version [revert-prebuilt-rules]
 
-With an Enterprise subscription (or Security Analytics Complete), you can [edit prebuilt rules directly](#edit-prebuilt-rules). Reverting returns a modified rule to the Elastic version you installed and doesn't apply pending updates. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` To apply the latest Elastic update and discard your customizations instead, refer to [Update rules and discard your customizations](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-to-elastic-version).
-
-If you've modified a prebuilt rule and want to restore the original Elastic version:
+With an Enterprise subscription (or Security Analytics Complete), you can [edit prebuilt rules directly](#edit-prebuilt-rules). If you've modified a prebuilt rule and want to restore the original Elastic version:
 
 1. Open the rule's details page.
 2. Select the **All actions** menu {icon}`boxes_horizontal`, then select **Revert to Elastic version**.
@@ -101,3 +99,5 @@ If you've modified a prebuilt rule and want to restore the original Elastic vers
 ::::{note}
 If you haven't updated the rule in a while, its original version might be unavailable for comparison. You can avoid this by regularly [updating prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md).
 ::::
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Reverting doesn't apply pending Elastic updates. To apply the latest update and discard your customizations at the same time, use [Update to Elastic version](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-to-elastic-version).

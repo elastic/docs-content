@@ -66,7 +66,7 @@ With an Enterprise subscription on {{stack}} or a Security Analytics Complete pr
 * **Edit the final update**: Change the update that will be applied to any field. Go to the **Final update** section, make your changes, and save them.
 
     ::::{important}
-    When an Elastic update changes the rule's type, you can't edit the final update, and updating the rule overwrites your customizations. To keep a copy of them, refer to [Update rules with a rule type change](#update-rule-type-change).
+    You can't edit an Elastic update that changes the rule's type. To keep your customizations, [duplicate the rule](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules) before you update it.
     ::::
 
 :::{image} /solutions/images/security-prebuilt-rules-update-diff-advanced.png
@@ -123,7 +123,7 @@ From the **Rule Updates** tab, do one of the following:
 * **Update a single rule**: Select **Update rule** for that rule.
 * **Update multiple rules**: Select the rules and select **Update *x* selected rule(s)**.
 
-With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, **Update all** and **Update *x* selected rule(s)** skip some rules whose type changes. To learn which ones and how to update them, refer to [Update rules with a rule type change](#update-rule-type-change).
+Bulk updates might skip some [rules with a rule type change](#update-rule-type-change).
 
 ::::{tip}
 Use the search bar and **Tags** filter to find specific rules. For example, filter by `OS: Windows` if your environment only includes Windows endpoints. For more on tag categories, refer to [Prebuilt rule tags](/solutions/security/detect-and-alert/prebuilt-rule-components.md#prebuilt-rule-tags).
@@ -140,18 +140,34 @@ serverless: ga
 stack: ga 9.4+
 ```
 
-If you don't need to keep your customizations, you can update rules to the Elastic version without resolving conflicts. You need an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}. Updated rules lose your customizations but keep their exceptions and actions. Unlike **Update all** and **Update *x* selected rule(s)**, **Update to Elastic version** also updates customized rules whose type changes.
+If you don't need to keep your customizations, you can update rules to the Elastic version without resolving conflicts. You need an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}. Updated rules lose your customizations but keep their exceptions and actions.
 
 1. From the **Rule Updates** tab, do one of the following:
 
-    * To update specific rules, select them, then select {icon}`arrow_down` **More update options for selected rules** next to **Update *x* selected rule(s)**. You can do this even when unresolved conflicts make **Update *x* selected rule(s)** unavailable.
+    * To update specific rules, select them, then select {icon}`arrow_down` **More update options for selected rules** next to **Update *x* selected rule(s)**.
     * To update every rule on the tab that matches your current search and filters, select {icon}`arrow_down` **More update options for all rules** next to **Update all**.
 
-2. Select **Update to Elastic version**.
-3. If a confirmation dialog opens, check how many rules lose customizations or change type, then select **Update to Elastic version**.
-4. If any of the rules changed type, check their exceptions and actions.
+2. Select **Update to Elastic version**. If a confirmation dialog opens, review how many rules lose customizations or change type, then confirm the update.
+3. If any rules changed type, check their exceptions and actions.
 
 To return a rule to the Elastic version you installed without applying the update, use [Revert to Elastic version](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#revert-prebuilt-rules) instead.
+
+### Update rules with a rule type change [update-rule-type-change]
+
+Some Elastic updates change a rule's type, for example from custom query to event correlation. When you apply one of these updates:
+
+* **The update overwrites your customizations.** You can't edit the final update to keep them. To keep a copy, [duplicate the rule](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules) first. The duplicate keeps your customizations and the old rule type, but doesn't receive Elastic updates.
+* **The rule keeps its exceptions and actions.** They might behave differently with the new rule type, so check them after you update. For how rule types evaluate exceptions, refer to [Rule type considerations](/solutions/security/detect-and-alert/add-manage-exceptions.md#rule-type-considerations).
+
+With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, bulk updates handle these rules as follows:
+
+| Rule | **Update all** and **Update *x* selected rule(s)** |
+|---|---|
+| Customized | Skipped. Update each rule individually, or use [Update to Elastic version](#update-to-elastic-version). |
+| Not customized {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` | Included, but listed as auto-resolved conflicts. To update only these rules, filter by **Unmodified** first. In the **Conflicts found** dialog, select **Update rules**. |
+| Not customized {applies_to}`stack: ga 9.0-9.3` | Skipped. Update each rule individually. |
+
+With a subscription lower than Enterprise on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, bulk updates include every rule with a type change.
 
 
 ## Field update statuses [rule-field-update-statuses]
@@ -198,28 +214,3 @@ When {{elastic-sec}} can't resolve a conflict, the field displays `Action requir
 3. Select **Save and accept** to apply your changes. The field's status changes to `Ready for update`.
 
 After resolving all conflicts, select **Update rule** to apply the update.
-
-## Update rules with a rule type change [update-rule-type-change]
-
-When an Elastic update changes a rule's type, such as from a custom query rule to an event correlation rule, you can't edit the final update, and updating the rule overwrites your customizations. The rule keeps its exceptions and actions, but some of them might stop working or behave differently with the new rule type. To learn how event correlation and indicator match rules evaluate exceptions, refer to [Rule type considerations](/solutions/security/detect-and-alert/add-manage-exceptions.md#rule-type-considerations).
-
-With an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}, the rule update flyout shows a **Rule type change** warning for these rules. **Update all** and **Update *x* selected rule(s)** skip customized rules whose type changes. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` To update them in bulk anyway, use [Update to Elastic version](#update-to-elastic-version), which overwrites your customizations.
-
-For rules you haven't customized:
-
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` You can update them in bulk:
-
-    1. To avoid also accepting Elastic's suggested resolutions for customized rules, select **Unmodified** in the **Modified/Unmodified** drop-down menu.
-    2. Select the rules you want to update, then select **Update *x* selected rule(s)**.
-    3. In the **Conflicts found** dialog, select **Update rules**, not **Update rules without conflicts**. The dialog lists these rules as auto-resolved conflicts even though you haven't customized them, so **Update rules without conflicts** skips them.
-    4. Check the updated rules' exceptions and actions.
-
-* {applies_to}`stack: ga 9.0-9.3` As with customized rules, you can't update them in bulk.
-
-With a Basic–Platinum subscription on {{stack}} or a Security Analytics Essentials project on {{serverless-short}}, **Update all** and **Update *x* selected rule(s)** also update rules whose type changes.
-
-To update a single rule whose type changes:
-
-1. If you customized the rule and want to keep a copy of your customizations, [duplicate the rule](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules). The duplicate is a separate rule that keeps your customizations and the old rule type. It starts turned off and doesn't receive Elastic updates.
-2. From the **Rule Updates** tab, select the rule name or **Review** to open the rule update flyout, then select **Update rule**.
-3. Check the rule's exceptions and actions.
