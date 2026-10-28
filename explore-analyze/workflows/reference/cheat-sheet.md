@@ -91,7 +91,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 |---|---|
 | Query {{es}} | `elasticsearch.search`, `elasticsearch.esql.query` |
 | Write to {{es}} | `elasticsearch.index`, `elasticsearch.bulk`, `elasticsearch.update` |
-| Manage cases {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.addAttachments` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`, `cases.pushCases` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
+| Manage cases {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.addAttachments` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`, `cases.pushCases` |
 | Manage alerts | Preferred: `security.setAlertStatus` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`, `security.setAlertTags` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`, `security.assignAlert` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`. Alternatives: `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
 | Manage attacks {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack` |
 | Enable or disable detection rules {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `security.enableRule`, `security.disableRule` |
