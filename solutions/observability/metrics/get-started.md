@@ -93,7 +93,7 @@ From the chart grid in **Discover**:
 - **View the details of a metric.** On a chart, select **View details** ({icon}`eye`) to find the metric type, its dimensions, and the {{esql}} query behind the chart. Use the query as a starting point for your own queries and alerts.
 - **Add a chart to a dashboard.** On a chart, select **Copy to dashboard** ({icon}`add_to_dashboard`) to save it to a new or existing dashboard. A dashboard keeps the chart next to related charts, so you can return to it, follow the metric over time, and share it with your team.
 
-For more ways to work with the chart grid, refer to [](/solutions/observability/infra-and-hosts/discover-metrics.md).
+For more ways to explore your metrics in **Discover**, refer to [](/solutions/observability/infra-and-hosts/discover-metrics.md).
 ::::
 
 ::::{applies-item} stack: deprecated 9.4+, ga 9.0-9.3

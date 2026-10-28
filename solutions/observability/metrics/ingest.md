@@ -27,13 +27,22 @@ Elastic supports and recommends using the {{edot}} distribution to send your met
 
 :::::{applies-switch}
 
-::::{applies-item} { serverless:, ech: }
+::::{applies-item} serverless:
 Send metrics to the Managed OTLP Endpoint. Use the setup that matches the source of your metrics:
 
 - **Application metrics:** Point your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
 - **Infrastructure metrics (host, {{k8s}}, Docker):** Run {{agent}} configured as an OTel Collector on your hosts or cluster and point its OTLP exporter at the endpoint. The [quickstarts](/solutions/observability/metrics/get-started.md#metrics-get-started-quickstart) set this up for you. For the exporter and pipeline configuration, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
 
-The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}} or {{ech}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
+The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
+::::
+
+::::{applies-item} ech:
+Send metrics to the Managed OTLP Endpoint. Use the setup that matches the source of your metrics:
+
+- **Application metrics:** Point your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
+- **Infrastructure metrics (host, {{k8s}}, Docker):** Run {{agent}} configured as an OTel Collector on your hosts or cluster and point its OTLP exporter at the endpoint. The [quickstarts](/solutions/observability/metrics/get-started.md#metrics-get-started-quickstart) set this up for you. For the exporter and pipeline configuration, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
+
+The {{es}} OTLP endpoint isn't a supported ingest path on {{ech}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
@@ -82,7 +91,7 @@ Elastic accepts Prometheus metrics in three ways:
 
 - **Prometheus remote write.** Recommended when Prometheus already scrapes your targets. Add a `remote_write` target and keep your scrape configurations unchanged. Any client that sends Prometheus remote write 1.0 works, including Prometheus and Grafana Alloy. Remote write 2.0 is not supported, so configure clients to use 1.0. Metrics keep their Prometheus names and land in a [TSDS](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#index-template).
 - **OpenTelemetry Collector.** Scrape targets with the `prometheus` receiver in {{agent}} configured as an OTel Collector, or in another Collector, and export OTLP to the endpoints in [Ingest with OpenTelemetry](#metrics-ingest-otlp). Use this when you're retiring Prometheus rather than keeping it. The Collector's `prometheusremotewrite` exporter also works against the remote write endpoint, but it rewrites metric names with Prometheus suffixes and underscores, and the endpoint drops the native histograms it produces for OpenTelemetry exponential histograms. Use it only when you can't change the exporter.
-- **{{agent}} Prometheus integration.** Scrapes exporters or a Prometheus server's federation endpoint, receives remote write on the agent, or runs PromQL queries against a Prometheus server. It stores ECS documents under `prometheus.*` and isn't deprecated. Use it when you need the ECS schema or {{fleet}} management. Refer to the [Prometheus integration](https://www.elastic.co/docs/reference/integrations/prometheus) for setup instructions.
+- **{{agent}} Prometheus integration.** Scrapes exporters or a Prometheus server's federation endpoint, receives remote write on the agent, or runs PromQL queries against a Prometheus server. It stores ECS documents under `prometheus.*` and isn't deprecated. Use it when you need ECS or {{fleet}} management. Refer to the [Prometheus integration](https://www.elastic.co/docs/reference/integrations/prometheus) for setup instructions.
 
 :::{note}
 {{es}} doesn't implement Prometheus remote read or the federation endpoint, and the Managed OTLP Endpoint and {{apm-server-or-mis}} don't accept remote write.

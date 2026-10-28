@@ -1,6 +1,6 @@
 ---
 navigation_title: Migrate from Prometheus
-description: Migrate from Prometheus to Elastic. Add a remote write target, keep your Grafana dashboards and PromQL, and recreate alerts before switching over.
+description: Migrate from Prometheus to Elastic. Add a remote write target, explore metrics in Kibana while Grafana keeps working, and recreate alerts before switching over.
 applies_to:
   stack: ga
   serverless:
@@ -31,8 +31,24 @@ Add a remote write target so Prometheus also sends samples to Elastic. The endpo
 
 :::::{applies-switch}
 
-::::{applies-item} { serverless:, ech: }
-Use the Managed Prometheus Remote Write endpoint. In the {{ecloud}} Console, open your project or deployment, select **Manage**, then under **Application endpoints, cluster and component IDs** select **Prometheus** and copy the endpoint. Authenticate with an API key that has the `event:write` privilege for the `apm` application.
+::::{applies-item} serverless:
+Use the Managed Prometheus Remote Write endpoint. In the {{ecloud}} Console, open your project, select **Manage**, then under **Application endpoints, cluster and component IDs** select **Prometheus** and copy the endpoint. Authenticate with an API key that has the `event:write` privilege for the `apm` application.
+
+```yaml
+remote_write:
+  - url: "<prometheus-endpoint>"
+    authorization:
+      type: ApiKey
+      credentials: <api_key>
+```
+
+Replace `<prometheus-endpoint>` with the value you copied and `<api_key>` with that API key.
+
+Managed inputs provide durable buffering, unified authentication, and back-pressure handling. URL-path routing to custom data streams isn't supported on this endpoint. Use label-based routing instead. For authentication, routing labels, and limitations, refer to [Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md).
+::::
+
+::::{applies-item} ech:
+{applies_to}`stack: ga 9.4+` Use the Managed Prometheus Remote Write endpoint. In the {{ecloud}} Console, open your deployment, select **Manage**, then under **Application endpoints, cluster and component IDs** select **Prometheus** and copy the endpoint. Authenticate with an API key that has the `event:write` privilege for the `apm` application.
 
 ```yaml
 remote_write:
@@ -46,9 +62,7 @@ Replace `<prometheus-endpoint>` with the value you copied and `<api_key>` with t
 
 Managed inputs provide durable buffering, unified authentication, and back-pressure handling. URL-path routing to custom data streams isn't supported on this endpoint. Use label-based routing instead. For authentication, routing labels, and limitations, refer to [Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md).
 
-Use this endpoint rather than sending remote write traffic directly to {{es}}, which bypasses the buffering and back-pressure handling that managed inputs provide. Send directly to the {{es}} endpoint only on self-managed, {{ece}}, and {{eck}} deployments, where managed inputs aren't available.
-
-{applies_to}`stack: ga 9.4+` Available for {{ech}} deployments.
+Use this endpoint rather than sending remote write traffic directly to {{es}}, which bypasses the buffering and back-pressure handling that managed inputs provide.
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
@@ -79,11 +93,11 @@ To confirm that samples are arriving, open **{{index-manage-app}}** using the [g
 ::::::{step} Query and visualize
 :anchor: metrics-migrate-prometheus-visualize
 
-After samples are in Elastic, you can keep your existing Grafana dashboards and PromQL.
+After samples are in Elastic, explore and visualize the metrics in {{kib}}. Your existing Grafana dashboards can keep working while you migrate.
 
-{applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` If you use Grafana and want to keep doing so, point it at {{es}} as a Prometheus data source. Grafana treats {{es}} like any other Prometheus backend, so existing dashboards and template variables keep working as long as they use supported PromQL. For the data source URL and authentication, refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md). For constructs {{es}} doesn't support, refer to [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md).
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` In {{kib}}, run {{esql}} time-series queries over the migrated metrics, browse them in the **Discover** chart grid, and add charts to dashboards. For the query languages and the Discover workflow, refer to [Explore metrics](/solutions/observability/metrics/explore.md#metrics-query).
 
-To query those metrics with PromQL in Elastic, or with Elasticsearch Query Language ({{esql}}) time-series mode, refer to [Explore metrics](/solutions/observability/metrics/explore.md#metrics-query).
+{applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` To keep using PromQL, query the metrics with the `PROMQL` {{esql}} command or the Prometheus-compatible API. If you use Grafana, point it at {{es}} as a Prometheus data source. Grafana treats {{es}} like any other Prometheus backend, so existing dashboards and template variables keep working as long as they use supported PromQL. For the data source URL and authentication, refer to [Use {{es}} as a Prometheus data source in Grafana](elasticsearch://reference/query-languages/promql/promql-grafana.md). For constructs {{es}} doesn't support, refer to [PromQL limitations](elasticsearch://reference/query-languages/promql/promql-limitations.md).
 ::::::
 
 ::::::{step} Recreate alerts
