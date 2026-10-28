@@ -18,7 +18,7 @@ products:
 Every workflow run is authorized by:
 
 * A specific user's privileges, by default.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` The privileges of an assigned user-managed service account.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` The privileges of a user-managed service account, when one is assigned to the workflow.
 
 Use this page to configure who runs your workflows, diagnose privileges errors, and keep your workflows' access current.
 
