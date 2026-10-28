@@ -212,6 +212,9 @@ stack: ga
 serverless: unavailable
 ```
 
+<!-- NOTE: The Kibana instructions are commented out until https://github.com/elastic/kibana/issues/301013 is resolved -->
+
+<!-- 
 Remove the lifecycle with the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle).
 
 :::::{applies-switch}
@@ -239,14 +242,13 @@ Remove the lifecycle with the **{{index-manage-app}}** tools in {{kib}} or the {
 1. Reopen the data stream flyout to confirm the change. **Effective data retention** shows **Disabled**.
 
 ::::
-
 :::::
+-->
 
-<!-- TBD: In 9.6 test these Kibana methods don't seem to have the same result as the API i.e. do not make the stream `"managed_by_lifecycle": false` -->
+<!-- ::::{dropdown} API example -->
 
-::::{dropdown} API example
-
-To remove a data stream's lifecycle:
+Remove the lifecycle with the {{es}} [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle).
+For example:
 
 ```console
 DELETE _data_stream/my-data-stream-test/_lifecycle
@@ -281,7 +283,7 @@ GET my-data-stream-test/_lifecycle/explain
 1. The data stream lifecycle does not manage the index.
 1. {applies_to}`stack: ga 9.6+` The reason the data stream is not managed.
 
-::::
+<!-- :::: -->
 
 ## Related pages [update-data-stream-lifecycle-related]
 
