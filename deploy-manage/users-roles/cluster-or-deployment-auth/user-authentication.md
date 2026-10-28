@@ -53,7 +53,7 @@ If you use {{serverless-full}}, then you can only manage authentication at the [
 ### Advanced topics
 
 * Learn about [internal users](/deploy-manage/users-roles/cluster-or-deployment-auth/internal-users.md), which are responsible for the operations that take place inside an {{es}} cluster.
-* {applies_to}`stack: all` {applies_to}`serverless: unavailable` Learn about [service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md), which provide non-human identities for applications and services that access Elastic products. {applies_to}`stack: ga 9.6+` User-managed service accounts can authenticate to both {{es}} and {{kib}}.
+* Learn about [service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md), which provide non-human identities for services and workloads.
 * Learn about the [services used for token-based authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services.md).
 * Learn about the [services used by orchestrators](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md).
 * Manage [user profiles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-profiles.md).
