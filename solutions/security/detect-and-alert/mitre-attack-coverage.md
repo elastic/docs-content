@@ -35,7 +35,7 @@ The **MITRE ATT&CK® coverage** page was renamed to **MITRE coverage** in versio
 The coverage grid is the main part of the **MITRE coverage** page. It arranges MITRE tactics, such as Initial Access and Persistence, as columns, and lists each tactic's techniques as cells in its column. Each column's header shows how many of the tactic's techniques have enabled rules.
 
 :::{image} /solutions/images/security-rules-coverage.png
-:alt: Coverage grid with MITRE ATT&CK tactics as columns and techniques as cells, shaded by rule count
+:alt: MITRE coverage page on the MITRE ATT&CK tab, with rule filters, a legend, and a grid of tactic columns whose technique cells are shaded by rule count
 :screenshot:
 :::
 
