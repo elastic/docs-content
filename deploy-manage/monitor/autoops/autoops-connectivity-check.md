@@ -78,7 +78,7 @@ The following table describes the variables.
 | Variable | Required or Optional | Description |
 |---|---|---|
 | `ELASTIC_CLOUD_CONNECTED_MODE_API_URL` | Required | Base URL for the {{ecloud}} Connected Mode API. This is set to `https://api.elastic-cloud.com` by default. |
-| `AUTOOPS_OTEL_URL` | Required | Base URL for the OTel endpoint where the agent sends metrics. You selected this as your [storage location](../autoops/cc-connect-self-managed-to-autoops.md#storage-location) in the wizard. |
+| `AUTOOPS_OTEL_URL` | Required | Base URL for the OTel endpoint where the agent sends metrics. You selected this as your [storage location](../autoops/cc-connect-self-managed-to-autoops.md#configure-agent) in the wizard. |
 | `AUTOOPS_ES_URL` | Required | Your {{es}} cluster URL. Set this if you want to run the {{es}} check. |
 | `AUTOOPS_ES_USERNAME` | Optional | Username for HTTP Basic authentication. Use with `AUTOOPS_ES_PASSWORD`. |
 | `AUTOOPS_ES_PASSWORD` | Optional | Password for HTTP Basic authentication. Use with `AUTOOPS_ES_USERNAME`. |

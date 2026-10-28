@@ -56,6 +56,21 @@ Response times for the service. You can filter the **Latency** chart to display 
 :screenshot:
 :::
 
+## Service map [service-overview-map]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The **Service map** panel shows the service’s upstream and downstream connections. Click **Explore in Service map** to open the full map with the service selected and the time range, environment, and KQL query preserved.
+
+For licensing requirements and map controls, refer to [](/solutions/observability/apm/service-map.md).
+
+:::{image} /solutions/images/observability-service-overview-contextual-map.jpg
+:alt: Service map panel in the service overview, showing upstream and downstream connections and map controls
+:screenshot:
+:::
+
 ## Throughput and transactions [service-throughput-transactions]
 
 The **Throughput** chart visualizes the average number of transactions per minute for the selected service.

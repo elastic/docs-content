@@ -252,7 +252,7 @@ About once a minute, Synthetics checks the health of every agent in the pool and
 * **Recovery and new agents**: After a recovered or newly enrolled agent has been healthy for 3 minutes, Synthetics moves only as many monitors to it as needed to balance the pool.
 * **No healthy agents**: If no agent in the pool is healthy, monitors keep their assignments and don't run until an agent recovers.
 
-To stop these adjustments for every scalable {{private-location}}, turn off **Rebalance private location shards** in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced).
+To stop these adjustments for every scalable {{private-location}}, turn off **Rebalance private location shards** in [**Settings → Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
 
 ::::{warning}
 Turning off **Rebalance private location shards** removes the agent assignment from every monitor in every scalable {{private-location}}. Each monitor then runs on every agent enrolled on its location's agent policy, which duplicates test runs. When you turn the switch back on, Synthetics reassigns the monitors right away.

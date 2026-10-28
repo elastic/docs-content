@@ -15,7 +15,7 @@ products:
 
 Attack Discovery uses large language models (LLMs) to analyze alerts and identify potential attacks. Each discovery groups related alerts into an attack narrative. It shows which users and hosts are involved, how alerts map to the MITRE ATT&CK matrix, and which threat actor might be responsible. Use discoveries to prioritize investigation and shorten mean time to respond.
 
-You can start a run from the UI (manual or scheduled), from an automated workflow, or from an {{agent-builder}} conversation. All methods use the same analysis steps.
+You can start a run from the UI (manual or scheduled), from an automated workflow, or from an {{agent-builder}} conversation. All methods use the same analysis steps. To act on the attacks you confirm, refer to [Respond and contain](/solutions/security/respond-and-contain.md).
 
 For a demo, refer to the following video (click to view).
 

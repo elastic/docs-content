@@ -53,8 +53,11 @@ toc:
               - file: elasticsearch/diagnosing-invalid-repositories.md
           - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
-      - file: elasticsearch/start-ilm.md
-      - file: elasticsearch/index-lifecycle-management-errors.md
+      - file: elasticsearch/data-lifecycle.md
+        children:
+          - file: elasticsearch/start-ilm.md
+          - file: elasticsearch/index-lifecycle-management-errors.md
+          - file: elasticsearch/data-stream-frozen-transition.md
       - file: elasticsearch/file-based-recovery.md
       - file: elasticsearch/troubleshooting-upgrades.md
       - file: elasticsearch/troubleshooting-upgrade-assistant.md
@@ -108,6 +111,7 @@ toc:
       - file: kibana/task-manager.md
       - file: kibana/maps.md
       - file: kibana/graph.md
+      - file: kibana/discover-dashboards-no-data-screen.md
       - file: kibana/migration-failures.md
       - file: kibana/capturing-diagnostics.md
   - file: observability.md
@@ -214,6 +218,7 @@ toc:
           - file: monitoring/high-availability.md
           - file: monitoring/cluster-response-time.md
       - file: monitoring/node-moves-outages.md
+      - file: monitoring/not-enough-capacity.md
       - file: monitoring/deployment-health-warnings.md
       - file: monitoring/node-bootlooping.md
   - file: deployments/cloud-enterprise/cloud-enterprise.md
