@@ -36,7 +36,7 @@ Choose one of the following options in the **No data behavior** field. Each maps
 | Option | `no_data.strategy` value | Description |
 | --- | --- | --- |
 | Keep last known status | `keep_last` | Hold the last known lifecycle state. An active breach stays active and a recovered alert stays recovered. |
-| Recover immediately | `resolve` | Close the alert the first time the rule finds no data for the group. |
+| Recover immediately | `resolve` | Close the alert the first time the rule finds no data for the group, even if the rule has a [recovery delay](configure-rule-recovery.md#recovery-delay). |
 | Do nothing | `ignore` | Skip the no-data check. With **Default recovery**, a group that stops matching recovers, but the rule doesn't confirm that the data pipeline is actually working. This is the default. |
 
 ## When to configure no-data handling [no-data-when-to-use]
