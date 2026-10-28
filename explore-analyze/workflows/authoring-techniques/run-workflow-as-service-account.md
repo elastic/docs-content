@@ -26,37 +26,29 @@ Before you assign a service account to a workflow, make sure you meet these requ
 
 - You need the **Update** [Workflows privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) to assign an account. To run the workflow and review its execution, you also need **Execute** and **Read Workflow Execution**.
 - You need the `manage_security` cluster privilege to add, change, or remove the workflow's service account assignment. Editing or deleting a workflow assigned to a service account also requires this privilege, in addition to the corresponding Workflows privilege.
-- An administrator must [create the account in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) and assign the roles required by its steps.
-
-% Release check: the permissions documented here follow main at 0048598a3826081f299198d2e87e455047f71c41 (workflow_service_account_binding.ts and workflow_crud_service.ts). Confirm with Workflows whether 9.6 changes to the binding-only manage_security check described in https://github.com/elastic/docs-content-internal/issues/1733#issuecomment-6157381771.
-
-:::{warning}
-Anyone who can edit a workflow can change what its assigned service account does. Grant workflow edit privileges only to users you trust to use the account's privileges.
-:::
 
 ## Assign a service account [assign-workflow-service-account]
 
 The `settings.run_as` field specifies the account that runs the workflow. Set it to the account's full principal, such as `kibana/incident-response`.
 
-:::{note}
-Workflows can run only as accounts created in {{kib}}, where the account's credential is securely stored. Accounts created directly through the {{es}} API can't be used for workflow execution, even if they use the `kibana` namespace.
-:::
+You can assign an existing account or create one without leaving the workflow editor. In both cases, the account must be [created in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) and have the roles required by the workflow steps. Accounts created directly through the {{es}} API can't be used for workflow execution, even if they use the `kibana` namespace.
 
 1. Open the workflow in the {{kib}} workflow editor.
-2. In the `settings` block, add `run_as`. Select an account from the picker or enter its principal:
+2. In the `settings` block, add `run_as`:
+
+    - To use an existing account, select it from the picker or enter its principal.
+    - To create and assign an account, select **Create account** and configure its roles.
+
+    For example:
 
     ```yaml
     settings:
       run_as: kibana/incident-response
     ```
 
-    If you have the required privileges, select **Create account** to create and assign an account without leaving the workflow editor.
-
 3. Save the workflow.
 
 The saved assignment applies to manual, scheduled, alert, and event-driven runs. Users who have permission to run the workflow don't need `manage_security` to start it.
-
-% TBD: Verify the final labels and interaction against https://github.com/elastic/kibana/pull/296889 before publication.
 
 ## Verify the execution identity [verify-workflow-execution-identity]
 
