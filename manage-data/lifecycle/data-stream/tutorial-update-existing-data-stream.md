@@ -39,20 +39,16 @@ Add or change the data stream lifecycle with the **{{index-manage-app}}** or **S
 1. In the data stream details pane, click the actions icon {icon}`gear` and select **Edit data lifecycle**.
 1. You can choose to inherit lifecycle settings from the index template or customize the lifecycle for this data stream:
 
-   ![Edit data lifecycle page](/manage-data/images/elasticsearch-serverless-edit-data-lifecycle.png "=50%")
+   :::{image} /manage-data/images/elasticsearch-serverless-edit-data-lifecycle.png
+   :screenshot:
+   :width: 50%
+   :::
 
    * On the **Successful data** tab, select the **Delete phase** to choose how long to retain your data, in days, hours, minutes, or seconds.
     <!--TBD: This did not work for me, it always reverted to inheriting from the lifecycle instead. If you deselect the delete phase, {{es}} does not delete the data. -->
    * On the **Failed data** tab, select **Enable failure store** to turn on a [failure store](/manage-data/data-store/data-streams/failure-store.md). Select how long to retain failure store data, in days, hours, minutes, or seconds.
 
 1. Click **Apply** to save the changes.
-
-<!-- TO-DO: Dependent on https://github.com/elastic/docs-builder/pull/4541
-   :::{image} /manage-data/images/elasticsearch-serverless-edit-data-lifecycle.png
-   :screenshot:
-   :width: 50%
-   :::
--->
 
 Lifecycle changes apply to every backing index of the data stream.
 
@@ -68,7 +64,10 @@ Lifecycle changes apply to every backing index of the data stream.
 1. Select the **Data stream lifecycle** method.
 1. You can choose to inherit lifecycle settings from the index template or customize the lifecycle for this data stream:
 
-   ![Edit data lifecycle page](/manage-data/images/elasticsearch-edit-data-lifecycle.png "=50%")
+   :::{image} /manage-data/images/elasticsearch-edit-data-lifecycle.png
+   :screenshot:
+   :width: 50%
+   :::
 
    * On the **Successful data** tab:
 
@@ -95,7 +94,10 @@ Lifecycle changes apply to every backing index of the data stream.
 1. Select the data stream to view its details.
 1. In the data stream details pane, select **Manage** → **Edit data retention**.
 
-   ![Edit data retention page](/manage-data/images/elasticsearch-edit-data-retention.png "=50%")
+   :::{image} /manage-data/images/elasticsearch-edit-data-retention.png
+   :screenshot:
+   :width: 75%
+   :::
 
    You can do any of the following:
 
