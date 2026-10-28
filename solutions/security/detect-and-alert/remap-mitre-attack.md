@@ -60,7 +60,7 @@ A rule is flagged if it's mapped to the Defense Evasion tactic under its pre-v19
 
 To find rules that need to be remapped, check the following places:
 
-* {applies_to}`stack: ga =9.5` A callout on the **{{siem-rules-ui}}** page, titled **MITRE ATT&CK updated to v19**, links to the coverage page and notes that affected rules are flagged there and on each rule's edit form.
+* {applies_to}`stack: ga =9.5` A callout on the **{{siem-rules-ui}}** page, titled **MITRE ATT&CK® updated to v19**, links to the coverage page and notes that affected rules are flagged there and on each rule's edit form.
 * A callout on the [coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md) shows how many rules are affected. Select **View rules** to see the affected rules, each with the specific outdated tactic, technique, or sub-technique ID it references.
 * On an individual rule's details page, any outdated ID is marked with a warning icon next to it. Hover over the icon to see which ID is affected.
 

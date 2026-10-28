@@ -29,7 +29,7 @@ How you use this page depends on your goal:
 Find the page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Its name depends on your version:
 
 * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **MITRE coverage**
-* {applies_to}`stack: ga 9.0-9.5` **MITRE ATT&CK coverage**
+* {applies_to}`stack: ga 9.0-9.5` **MITRE ATT&CK® coverage**
 
 To view the page, you need at least read access to detection rules. To enable rules from the coverage grid, you also need privileges to enable and disable rules. For details, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#detections-privileges-manage-rules).
 
