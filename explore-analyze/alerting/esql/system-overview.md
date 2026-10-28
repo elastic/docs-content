@@ -15,8 +15,6 @@ Use {{alerting-v2-system}} to detect conditions in your {{es}} data with {{esql}
 
 To open {{alerting-v2-system}}, go to **Alerting** in the {{observability}} navigation menu.
 
-In spaces that use the **Classic** [solution view](/deploy-manage/manage-spaces.md), the **Alerting** section of the {{observability}} navigation menu doesn't include **Rules**. To open the **Rules** page, select **Manage rules** on the **Alerts** page, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
 :::{note}
 Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
 
