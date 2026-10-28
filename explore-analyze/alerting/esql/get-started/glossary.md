@@ -1,7 +1,7 @@
 ---
 navigation_title: Glossary
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -31,7 +31,7 @@ These terms appear throughout the {{alerting-v2-system}} documentation.
 **Notification**
 :   The message or action a workflow sends (such as a Slack message, an email, or a webhook call) when an alert matches an action policy or a lifecycle trigger fires. To learn more, refer to [How the dispatcher evaluates action policies](../action-policies/about-action-policies.md#how-action-policies-evaluated).
 
-**Routing tag** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+`
+**Routing tag**
 :   A tag that links rules to an action policy. When a rule and an action policy share a routing tag, the policy applies to that rule's alerts. Routing tags are separate from rule tags, which only label and filter rules. To learn more, refer to [Apply the policy to alerts from specific rules](../action-policies/create-configure-action-policy.md#routing-tags).
 
 **Rule**

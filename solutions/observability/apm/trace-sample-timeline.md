@@ -31,6 +31,25 @@ A [span](/solutions/observability/apm/spans.md) is the duration of a single even
 :screenshot:
 :::
 
+## Inspect GenAI spans [genai-trace-waterfall]
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+For model calls with recorded token usage, waterfall rows show **input.tokens** and **output.tokens** badges next to the duration. Each badge appears only when its corresponding token count is available.
+
+Click a GenAI span in a waterfall, then select **GenAI** in the flyout:
+
+- In the APM **Trace sample** timeline, the tab is in the **Span details** flyout.
+- In APM **Full trace** or the [expanded trace timeline in Discover](/solutions/observability/apm/discover-traces.md#expanded-trace-timeline), the tab is in the **Span document** flyout, between **Overview** and **Table**.
+
+The tab appears only when the selected span contains GenAI attributes with values.
+
+Use the tab to review the model, provider, operation, and token usage. When messages are recorded, you can also read and copy prompts and responses. For details, refer to [Inspect GenAI spans](/solutions/observability/apm/discover-traces.md#genai-span-details). Filtering and column actions are available from the document detail panel in **Discover**.
+
+If the transaction shown in the APM **Trace sample** section contains GenAI attributes, that section also has a **GenAI** tab. To inspect GenAI data from a child span, select that span in the waterfall.
+
 ## Investigate [trace-sample-investigate]
 
 The trace sample timeline features an **Investigate** button which provides a quick way to jump to other areas of the Elastic Observability UI while maintaining the context of the currently selected trace sample. For example, quickly view:
