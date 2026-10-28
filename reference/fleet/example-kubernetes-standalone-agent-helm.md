@@ -160,8 +160,8 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     ```
 
 8. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
-9. Run a search for `Kubernetes` and then select the {{k8s}} integration card.
-10. On the {{k8s}} integration **Settings** page, select **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
+9. Run a search for `Kubernetes`, then [open the {{k8s}} integration's details page](/reference/fleet/add-integration-to-policy.md#open-integration-details-page).
+10. Open the **Settings** tab and select **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
 11. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
 
     On the dashboard, you can view the status of your {{k8s}} nodes, including metrics on memory, CPU, and filesystem usage, network throughput, and more.

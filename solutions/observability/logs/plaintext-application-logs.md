@@ -302,7 +302,7 @@ To add the custom logs integration to your project:
 
 To aggregate or search for information in plaintext logs, use an ingest pipeline with your integration to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](ecs://reference/index.md)-compatible fields.
 
-1. From the custom logs integration, select **Integration policies** tab.
+1. On the **Integrations** page, open the **Installed integrations** tab, select **Custom Logs**, and open the **Integration policies** tab.
 2. Select the integration policy you created in the previous section.
 3. Click **Change defaults → Advanced options**.
 4. Under **Ingest pipelines**, click **Add custom pipeline**.
