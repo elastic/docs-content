@@ -399,6 +399,50 @@ From the query history, you can mark some queries as favorite to find and access
 
 To find your starred queries later, open the **Starred** tab.
 
+## Create and manage {{esql}} views [esql-kibana-views]
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+You can use [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) to save queries and reuse them by name in `FROM`, just like an index. In {{kib}}, you can create views from the {{esql}} editor and manage them from the **{{esql}} Views** page.
+
+These options appear only if you have the following [privileges](elasticsearch://reference/query-languages/esql/esql-views.md#esql-views-privileges) on all indices (`*`):
+
+* `read_view_metadata` to open the **{{esql}} Views** page
+* `create_view` to create or edit views
+* `delete_view` to delete views
+
+### Create a view from the {{esql}} editor [esql-kibana-views-create]
+
+You can create a view from the {{esql}} editor in Discover, or when you edit an {{esql}} visualization in a dashboard.
+
+1. Open the **Create view** dialog in one of these ways:
+
+   * From your [query history](#esql-kibana-query-history):
+
+     1. Select **Show recent queries**.
+     2. On the **Recent** or **Starred** tab, select the {icon}`index_open` **Create view** icon on the query's row.
+
+   * From the current query: select the {icon}`index_open` **Create view** icon in the editor toolbar.
+
+     ![The ES|QL editor in Discover with the Create view tooltip showing over its icon in the editor toolbar](../../images/esql-views-create-button.png)
+
+2. Enter a name and an optional description, then select **Create**.
+
+![The Create view dialog with the name web_server_errors, a description, and the query to save](../../images/esql-views-create-modal.png)
+
+### Manage views [esql-kibana-views-manage]
+
+To list, edit, preview, or delete views, go to the **{{esql}} Views** management page using the navigation menu or the [global search field](../../find-and-organize/find-apps-and-objects.md). Each view's row has two actions:
+
+![The ES|QL Views management page listing two views, with the Open in Discover icon marked 1 and the actions menu marked 2 in the first row](../../images/esql-views-management.png)
+
+1. {icon}`product_discover` **Open in Discover** opens the view in Discover.
+2. The {icon}`boxes_vertical` actions menu has options to edit or delete the view.
+
+[Reserved views](elasticsearch://reference/query-languages/esql/esql-views.md#esql-views-reserved) are created by {{es}}, so they're read-only. They have a **Reserved** badge. To hide them from the list, select the **Reserved views** filter.
+
 
 ## Define query settings with `SET` [esql-kibana-set]
 ```{applies_to}
