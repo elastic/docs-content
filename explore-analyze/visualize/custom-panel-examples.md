@@ -1123,6 +1123,56 @@ FROM kibana_sample_data_ecommerce
 ```
 :::
 
+## Link to dashboards or Discover [custom-panel-examples-links]
+
+Cards that open dashboards or **Discover**, with a live value on the **Discover** card. The links follow the rules in [Link to dashboards and Discover](custom-panels.md#custom-panels-links). Links don't open in **Run preview**, so save the dashboard to try them. Sample data: **Sample web logs**.
+
+:::{image} /explore-analyze/images/custom-panels-example-navigation.png
+:alt: Two cards, Dashboards and Discover, each with a round icon, a description, and an Open button
+:screenshot:
+:::
+
+:::{dropdown} Query
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS requests = COUNT(*)
+```
+:::
+
+:::{dropdown} Template
+```html
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--cc-space-m); }
+  .card { --accent: var(--cc-color-primary); display: flex; flex-direction: column; align-items: flex-start; background: var(--cc-color-surface); border: 1px solid var(--cc-color-border); border-top: 3px solid var(--accent); border-radius: var(--cc-radius); padding: var(--cc-space-l); }
+  .card.discover { --accent: var(--cc-color-accent); }
+  .icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-bottom: var(--cc-space-m); border-radius: 50%; color: var(--accent); background: color-mix(in srgb, var(--accent) 15%, transparent); }
+  .title { margin: 0 0 var(--cc-space-xs); font-size: 16px; font-weight: 600; }
+  .desc { margin: 0 0 var(--cc-space-m); font-size: 13px; opacity: 0.8; }
+  .open { margin-top: auto; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; text-decoration: none; color: var(--accent); background: color-mix(in srgb, var(--accent) 15%, transparent); }
+</style>
+{% assign requests = rows[0]["requests"].value %}
+<div class="grid">
+  <div class="card">
+    <div class="icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
+    </div>
+    <h3 class="title">Dashboards</h3>
+    <p class="desc">Browse and open your saved dashboards.</p>
+    <a class="open" href="/app/dashboards">Open &rarr;</a>
+  </div>
+  <div class="card discover">
+    <div class="icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l5 5"/></svg>
+    </div>
+    <h3 class="title">Discover</h3>
+    <p class="desc">Explore the {{ requests }} web requests in the dashboard's time range.</p>
+    <a class="open" href="/app/discover">Open &rarr;</a>
+  </div>
+</div>
+```
+:::
+
 ## Related pages [custom-panel-examples-related-pages]
 
 - [Custom panels for {{kib}} dashboards](custom-panels.md)

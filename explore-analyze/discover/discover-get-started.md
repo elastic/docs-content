@@ -58,6 +58,8 @@ Select the data you want to explore, and then specify the time range in which to
    By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
    You can also [use {{esql}}](try-esql.md), which lets you query any data you have in {{es}} without specifying a {{data-source}} first.
+
+   If **Discover** asks you to add data or create a {{data-source}} instead of opening and you're not sure of what to do next, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -316,7 +318,9 @@ In ES|QL mode, the **Documents** tab is named **Results**.
 :::{important}
 :applies_to: stack: ga 9.1+
 Partial results appear when an {{esql}} query:
-- times out. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+- times out. The `search:timeout` advanced setting defines the timeout, and its default value depends on your version:
+  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` 20 minutes (1200000 ms). In serverless projects, this is not customizable.
+  - {applies_to}`stack: ga 9.1-9.5` 10 minutes (600000 ms).
 - {applies_to}`stack: ga 9.3+` is canceled.
 :::
 

@@ -8,19 +8,11 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Standalone Elastic Agent [k8s-elastic-agent]
+# Standalone {{agent}} [k8s-elastic-agent]
 
-This section describes how to configure and deploy Elastic Agent in [standalone mode](/reference/fleet/install-standalone-elastic-agent.md) with ECK. Check the [Fleet section](fleet-managed-elastic-agent.md) if you want to manage your Elastic Agents with [Fleet](/reference/fleet/install-elastic-agents.md).
+This section describes how to configure and deploy {{agent}} in [standalone mode](/reference/fleet/install-standalone-elastic-agent.md) with ECK. Refer to [Stack compatibility](/deploy-manage/deploy/cloud-on-k8s.md#stack-compatibility) for supported ECK and {{agent}} version combinations. Check the [{{fleet}} section](fleet-managed-elastic-agent.md) if you want to manage your {{agents}} with [{{fleet}}](/reference/fleet/install-elastic-agents.md).
 
 * [Quickstart](quickstart-standalone.md)
 * [Configuration](configuration-standalone.md)
 * [Configuration examples](configuration-examples-standalone.md)
-
-::::{note}
-Running standalone Elastic Agent on ECK is compatible only with Stack versions 7.10+.
-::::
-
-
-
-
 

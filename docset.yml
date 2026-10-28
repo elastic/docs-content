@@ -140,6 +140,7 @@ exclude:
   - 'README.md'
   - 'AGENTS.md'
   - 'AI.md'
+  - '.agents/**'
   - 'CLAUDE.md'
   - 'GEMINI.md'
   - 'changelog/**'
@@ -210,10 +211,11 @@ cross_links:
 toc:
   - file: index.md
   - toc: get-started
+  - toc: products
+  - toc: deploy-manage
   - toc: solutions
   - toc: manage-data
   - toc: explore-analyze
-  - toc: deploy-manage
   - toc: cloud-account
   - toc: troubleshoot
   - toc: release-notes
@@ -261,8 +263,10 @@ subs:
   ls-pipelines-app:   "Logstash Pipelines"
   maint-windows-app:   "Maintenance Windows"
   maint-windows-cap:   "Maintenance windows"
-  alerting-v2-system:   "experimental alerting system"
-  alerting-v2-system-cap:   "Experimental alerting system"
+  alerting-v2-system:   "Kibana Universal Alerting"
+  alerting-v2-system-cap:   "Kibana Universal Alerting"
+  alerting-v1-system:   "Kibana Classic Alerting"
+  alerting-v1-system-cap:   "Kibana Classic Alerting"
   custom-roles-app:   "Custom Roles"
   data-source:   "data view"
   data-sources:   "data views"
@@ -437,8 +441,8 @@ subs:
   context-engine: "Context Engine"
   kube-stack-version: 0.16.0
   helm-version: 4.3.0
-  ece-docker-images-8: 8.19.20
-  ece-docker-images-9: 9.5.2
+  ece-docker-images-8: 8.19.23
+  ece-docker-images-9: 9.5.5
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"

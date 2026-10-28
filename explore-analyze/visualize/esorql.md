@@ -44,7 +44,7 @@ To add the visualization to an existing or a new dashboard, select {icon}`app_da
    If you haven't created a [data view](/explore-analyze/find-and-organize/data-views.md) and you don't have a dashboard yet, the **Dashboards** page offers you the possibility to **Try ES|QL** right away. By selecting this option, a dashboard is created with an ES|QL visualization that you can interact with and configure using ES|QL.
    ::::
 
-2. Select **Visualization (query)** or **ES|QL** under **Visualizations**, depending on your {{kib}} version.
+2. Select **Create visualization (query)** (**Visualization (query)** or **ES|QL** under **Visualizations** in earlier versions).
 
    An ES|QL editor appears and lets you configure your query and its associated visualization. The **Suggestions** panel can help you find alternative ways to configure the visualization.
 

@@ -211,6 +211,40 @@ For complete templates with their queries and screenshots, refer to [Custom pane
 
 There is no dedicated property for a healthy or success state. For a three-state status board, pick one of the accent properties for the healthy state, or set your own color.
 
+### Link to dashboards and Discover [custom-panels-links]
+
+To turn a panel into a navigation hub, add standard HTML links to the template. For example, a set of cards can open related dashboards or **Discover**. For a complete template, refer to [Link to dashboards or Discover](custom-panel-examples.md#custom-panel-examples-links). A link opens its target in the current browser tab. If you generate the panel with chat, you can ask for these links in your prompt.
+
+A custom panel link opens exactly the path you write. It doesn't carry the dashboard's time range, query, or filters, and it can't open an external site. To carry the time range, query, or filters, to open an external site, or to show a plain list of links, use a [Links panel](link-panels.md).
+
+A link works when its `href` is a {{kib}} path to dashboards or **Discover**, that is, a path that starts with `/app/dashboards` or `/app/discover`. Don't include a host, a protocol, or a server base path. For example:
+
+- `/app/dashboards#/view/<dashboard-id>` opens a dashboard. You can copy the ID from the dashboard's URL.
+- `/app/discover` opens **Discover**.
+
+A link stays in the current space unless you add a space prefix. To open a target in another space, put `/s/<space-id>` in front of the path, for example `/s/marketing/app/discover`.
+
+When the panel has a query, you can build the `href` from a query column with a Liquid tag. The following query returns the `title` and `dashboard_id` of each dashboard to link to:
+
+```esql
+FROM my-index
+| KEEP title, dashboard_id
+```
+
+This template renders one link per row:
+
+```html
+<ul>
+{% for row in rows %}
+  <li><a href="/app/dashboards#/view/{{ row["dashboard_id"].value }}">{{ row["title"].value }}</a></li>
+{% endfor %}
+</ul>
+```
+
+{{kib}} keeps the text of any other link and removes the link itself. This includes external URLs, paths to other {{kib}} apps, API paths, and URLs that start with `//`. On the links that work, {{kib}} removes every attribute except `href`, `class`, `style`, `id`, `title`, and `aria-label`, so `target="_blank"` has no effect.
+
+Links in **Run preview** don't open, and neither do links in a dashboard that is embedded in another web page. To test a link, save the dashboard and select the link in view mode.
+
 ## Dashboard interactions [custom-panels-dashboard-interactions]
 
 When a custom panel has a query, it responds to filters and options active on the dashboard like other {{esql}} panels:
@@ -241,7 +275,7 @@ To use a time range for this panel only, hover over the panel, select {icon}`gea
 Custom panels render in a sandbox that protects the dashboard and your browser:
 
 - JavaScript doesn't run. `<script>` tags and inline event handlers have no effect. For interactivity, use CSS only: `:hover` rules for tooltips, or hidden radio inputs with `:checked` rules for tabs.
-- Links are removed from the rendered content.
+- Links work only for dashboards and **Discover**. For details, refer to [Link to dashboards and Discover](#custom-panels-links).
 - External resources don't load: no scripts, fonts, or images from URLs. For icons and illustrations, use inline SVG, CSS shapes, or Unicode symbols.
 - A template can't exceed 500 KB.
 - A panel holds one {{esql}} query.
