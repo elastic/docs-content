@@ -22,6 +22,8 @@ This guide shows you how to assign a service account to a workflow and verify wh
 
 ## Before you begin [run-workflow-as-service-account-prerequisites]
 
+Before you assign a service account to a workflow, make sure you meet these requirements:
+
 - You need the **Update** [Workflows privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) to assign an account. To run the workflow and review its execution, you also need **Execute** and **Read Workflow Execution**.
 - You need the `manage_security` cluster privilege to add, change, or remove the workflow's service account assignment. Editing or deleting a workflow assigned to a service account also requires this privilege, in addition to the corresponding Workflows privilege.
 - An administrator must [create the account in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) and assign the roles required by its steps.

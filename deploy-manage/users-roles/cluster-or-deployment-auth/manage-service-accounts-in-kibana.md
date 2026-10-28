@@ -19,24 +19,26 @@ Create user-managed service accounts and assign roles to control programmatic ac
 
 ## Before you begin [manage-service-accounts-before-you-begin]
 
+Before you create or manage service accounts, check these requirements:
+
 - You need the `manage_security` cluster privilege. Without it, the **Service accounts** page isn't available. The `manage_service_account` privilege applies only to built-in accounts in the `elastic` namespace.
-- On self-managed deployments, set [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-encryptionkey) in `kibana.yml`. {{kib}} uses this key to encrypt the stored credential.
-- Create the roles that you want to assign. Each account requires at least one role.
+- {applies_to}`self: ga` Set [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-encryptionkey) in `kibana.yml`. {{kib}} uses this key to encrypt the stored credential.
 
-% Follow-up in elastic/kibana: document xpack.security.serviceAccounts.enabled and xpack.security.serviceAccounts.requestLifetime (default 10m), then add links to the settings reference.
-
-Service accounts are enabled by default on {{ech}}, {{ece}}, {{eck}}, and self-managed deployments. Setting `xpack.security.serviceAccounts.enabled` to `false` turns off the **Service accounts** page and workload integration.
+% TBD: pending to add link to the setting reference as soon as the kibana PR is created and merged
+Service accounts are enabled by default on {{ech}}, {{ece}}, {{eck}}, and self-managed deployments. Set the {{kib}} `xpack.security.serviceAccounts.enabled` setting to `false` to turn off the **Service accounts** page and workload integration.
 
 ## Create a service account [create-service-account-kibana]
+
+Create a service account with the roles your workloads need:
 
 1. Find **Service accounts** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
 2. Click **Create account**.
 3. In the **Name** field, enter a unique name of up to 128 characters. The name must start with a letter or number and can contain letters, numbers, hyphens, and underscores.
 4. Optional: In the **Description** field, describe what the account is used for.
-5. Under **Set privileges**, select one or more predefined or custom roles that grant the privileges the account needs. To create a role, click **Create new role**.
-6. Review the privileges granted by the selected roles, and click **Create account**.
+5. Under **Set privileges**, select one or more predefined or custom roles that grant the privileges the account needs. To [create a role](kibana-role-management.md), click **Create new role**.
+6. Review the selected roles, and click **Create account**.
 
-The new account appears with the principal `kibana/<name>`. {{kib}} creates and stores its credential. No token is displayed, and you don't need to copy a secret.
+The service account uses the principal `kibana/<name>`. For workloads such as workflows, rules, and scheduled tasks, {{kib}} creates and securely stores the credential for you. You don't need to copy a secret, and no token is displayed. To use the account from an external API client, [create a separate named service token](authenticate-kibana-api-with-service-account.md#create-service-token).
 
 {{es}} resolves the assigned roles by name whenever the account authenticates. Editing a role changes the privileges it grants to the account. Deleting a role stops that role from granting privileges.
 
@@ -45,8 +47,6 @@ The new account appears with the principal `kibana/<name>`. {{kib}} creates and 
 The **Service accounts** table shows each account's name, description, roles, creator, and number of bound workloads. A **Disabled** badge identifies accounts that can't authenticate. Use the **Role** filter to find accounts assigned to specific roles.
 
 When an account has bound workloads, click **View** in the **Workloads** column to review them.
-
-% TBD: Recheck the creation flyout and role selector after https://github.com/elastic/kibana/pull/296889 merges. The Workloads column and View action are verified in main after #297492.
 
 Accounts created directly through the [{{es}} API]({{es-apis}}operation/operation-security-put-user-managed-service-account) also appear in the table.
 
@@ -79,7 +79,9 @@ Workloads bound to an account that has `enabled: false` fail the next time they 
 
 ## Delete a service account [delete-service-account-kibana]
 
-Delete an account when you no longer need its identity:
+Deleting a service account is permanent. If you only need to temporarily prevent the account from authenticating, [deactivate it](#disable-service-account) instead.
+
+To delete a service account:
 
 1. On the **Service accounts** page, find the account.
 2. From the **Actions** column, click **Delete**.
@@ -87,15 +89,19 @@ Delete an account when you no longer need its identity:
     - If no workloads are bound, click **Delete account**.
     - If workloads are bound, review the list. To delete the account without removing the bindings, click **Force delete account**.
 
-Deleting an account removes all its service tokens, including tokens created outside {{kib}}, and the credential stored by {{kib}}. It also invalidates access tokens issued to the account. If credential cleanup fails, {{kib}} reports a warning. A service token left behind can't authenticate while the account is absent.
+If you force delete an account, its bound workloads fail on their next run. To restore access, assign each affected workload a valid service account. This reassignment is required even if you recreate the deleted account with the same name. For Workflows, [assign a service account to each affected workflow](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md#assign-workflow-service-account).
 
-Forced deletion leaves workload bindings in place. Those workloads fail on their next run. Creating another account with the same name doesn't restore an old binding. Bind each workload to the replacement account.
+Deleting an account through {{kib}} attempts to remove every service token, including the credential it stores for workloads and tokens created outside {{kib}}. It also attempts to invalidate any short-lived access tokens used to run workloads as the account. If any credential cleanup fails, {{kib}} completes the deletion and reports a warning.
+
+A service token left behind after deletion can't authenticate, but it prevents you from creating another account with the same name until you delete the token. If you delete an account directly through the {{es}} API, short-lived access tokens already issued to the account remain valid until they expire, 20 minutes after issuance by default.
 
 :::{important}
-API keys owned by the account aren't invalidated when you delete the account. Rules and tasks that obtained an API key while authenticated as the account can continue to run with that key. To revoke this access, [invalidate the API keys]({{es-apis}}operation/operation-security-invalidate-api-key) explicitly.
+API keys owned by the account aren't invalidated when you delete the account. {{rules-ui}} and tasks that obtained an API key while authenticated as the account can continue to run with that key. To revoke this access, [invalidate the API keys]({{es-apis}}operation/operation-security-invalidate-api-key) explicitly.
 :::
 
 ## Next steps [manage-service-accounts-next-steps]
+
+Use these guides to work with service accounts and learn more about their credentials:
 
 - [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
 - [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
