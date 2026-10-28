@@ -42,7 +42,7 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
 3. Under **Application endpoints**, select **OpenTelemetry**.
-4. Copy the **Direct endpoint** value.
+4. Copy the **Direct endpoint** value from the flyout.
 
 :::{tip}
 Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key for authentication with the {{motlp}}. Copy the authentication headers value from the same screen to skip the next step.
@@ -53,7 +53,7 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
 1. Log in to the {{ecloud}} Console.
 2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**.
 3. Under **Application endpoints, cluster and component IDs**, select **Managed OTLP**.
-4. Copy the **Direct endpoint** value.
+4. Copy the **Direct endpoint** value from the flyout.
 ::::
 :::::
 
