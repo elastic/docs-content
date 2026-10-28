@@ -22,7 +22,7 @@ Columnar mode ships alongside existing index modes such as `standard`, [`logsdb`
 You choose it per index (or in a template) at creation time; you can't change the mode after the index has been created.
 
 :::{note}
-Columnar index mode is not available in {{vectordb}} projects, which only support [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). Use an {{es}} project for columnar workloads. For details, refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
+Columnar index modes, including `vectordb_columnar`, are not available in {{vectordb}} projects, which only support the [`vectordb_document`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode) index mode. Use an {{es}} project for columnar workloads. For details, refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
 :::
 
 This page explains what columnar index mode is, when to use it, and how it fits with the rest of the {{es}} data store.
@@ -46,7 +46,7 @@ For logs that should keep the current `logsdb` defaults without switching to a f
 
 ## Columnar modes [columnar-modes]
 
-Two values of [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting) enable columnar storage:
+The following values of [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting) enable columnar storage:
 
 `columnar`
 :   A general-purpose columnar store with no use-case-specific defaults.
@@ -56,13 +56,17 @@ Two values of [`index.mode`](elasticsearch://reference/elasticsearch/index-setti
 :   The same columnar storage behavior with logging-oriented defaults, including a default `@timestamp` mapping and index sorting when `@timestamp` and `host.name` are present.
 :   Use it for log data when you want columnar storage rather than the default [`logsdb`](/manage-data/data-store/data-streams/logs-data-stream.md) mode.
 
-Both modes apply to indices and to data stream backing indices configured through templates.
+`vectordb_columnar` {applies_to}`stack: preview 9.6+`
+:   The same columnar storage behavior with the vector search defaults of the `vectordb_document` index mode. Unlike the other columnar modes, it's optimized for search rather than analytics: `dense_vector` and `text` fields are indexed by default.
+:   Use it for vector search and hybrid search, especially when your documents carry many non-vector, non-text fields. For details, refer to [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes).
+
+These modes apply to indices and to data stream backing indices configured through templates.
 
 ## How it works [how-columnar-works]
 
 At a high level, columnar index mode changes storage defaults while leaving the document and query model familiar:
 
-* Store once, by field: Non-text fields are stored as doc values and aren't indexed by default, which avoids paying for structures your analytics workload may not need.
+* Store once, by field: Non-text fields are stored as doc values and aren't indexed by default, which avoids paying for structures your analytics workload may not need. In `vectordb_columnar`, `dense_vector` fields are also indexed by default so they can be used for kNN search.
 * Keep search where it matters: Text fields remain indexed by default so full-text search continues to work on fields such as log messages.
 * Flat field layout: Object and passthrough mappings are flattened to leaf fields, which matches how columnar systems organize data for efficient scanning and compression.
 
@@ -80,7 +84,7 @@ What changes is how {{es}} lays data out on disk and which structures it builds 
 
 ## Next steps [columnar-next-steps]
 
-* [Enable and configure columnar index mode](elasticsearch://reference/elasticsearch/columnar/index.md): Create indices or templates with `columnar` or `logsdb_columnar`, configure index sorting, and review `_source` modes and limitations.
+* [Enable and configure columnar index mode](elasticsearch://reference/elasticsearch/columnar/index.md): Create indices or templates with a columnar mode, configure index sorting, and review `_source` modes and limitations.
 * [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md): Use `logsdb` for efficient log storage with current defaults, or move to `logsdb_columnar` when you're ready for the columnar logs profile.
 * [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md): Choose TSDS when your data is metrics with dimensions, not a general columnar analytics workload.
 * [Index fundamentals](/manage-data/data-store/index-basics.md): Review documents, mappings, settings, and shards if you're new to {{es}} storage concepts.
