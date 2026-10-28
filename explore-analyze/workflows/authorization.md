@@ -15,7 +15,12 @@ products:
 
 # Workflow authorization [workflows-authorization]
 
-Every workflow run uses a user's privileges by default. In {{stack}} 9.6 and later, you can run workflows as a user-managed service account instead. Use this page to understand which identity runs a workflow, diagnose privileges errors, and keep its access current.
+Every workflow run is authorized by:
+
+* A specific user's privileges, by default.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` The privileges of an assigned user-managed service account.
+
+Use this page to configure who runs your workflows, diagnose privileges errors, and keep your workflows' access current.
 
 ## Whose privileges authorize a run [workflows-authorization-user]
 
