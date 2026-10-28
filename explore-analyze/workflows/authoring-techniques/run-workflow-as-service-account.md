@@ -14,11 +14,11 @@ products:
 
 # Run a workflow as a service account [run-workflow-as-service-account]
 
-Starting with {{stack}} 9.6, you can run a workflow as a [user-managed service account](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#user-managed-service-accounts).
+By default, workflows run with a user's privileges. As an alternative, you can run a workflow as a [user-managed service account](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#user-managed-service-accounts).
 
-Each run uses the account's roles, regardless of who starts or last edits the workflow. This is useful for shared workflows: their identity remains stable even if the person who created them leaves your organization. You can also give the account only the privileges the workflow needs, even if the people who manage it have broader access.
+The workflow then uses the account's roles for every run, regardless of who starts or last edits it. This gives shared workflows a stable identity, even if their creator leaves your organization. You can also give the account only the privileges the workflow needs, even if the people who manage it have broader access.
 
-This guide shows you how to assign a service account to a workflow and verify which identity its runs use.
+This guide shows you how to assign a service account to a workflow and verify its execution identity.
 
 ## Before you begin [run-workflow-as-service-account-prerequisites]
 
