@@ -38,7 +38,7 @@ Create a service account with the roles your workloads need:
 5. Under **Set privileges**, select one or more predefined or custom roles that grant the privileges the account needs. To [create a role](kibana-role-management.md), click **Create new role**.
 6. Review the selected roles, and click **Create account**.
 
-The service account uses the principal `kibana/<name>`. For workloads such as workflows, rules, and scheduled tasks, {{kib}} creates and securely stores the credential for you. You don't need to copy a secret, and no token is displayed. To use the account from an external API client, [create a separate named service token](authenticate-kibana-api-with-service-account.md#create-service-token).
+The service account uses the principal `kibana/<name>`. For workloads such as workflows, rules, and scheduled tasks, {{kib}} creates and securely stores the credential for you. You don't need to copy a secret, and no token is displayed. To use the account from an external API client, [create a separate named service token](authenticate-kibana-api-with-service-account.md#create-service-account-api-token).
 
 {{es}} resolves the assigned roles by name whenever the account authenticates. Editing a role changes the privileges it grants to the account. Deleting a role stops that role from granting privileges.
 
@@ -73,7 +73,9 @@ PUT /_security/service/kibana/workflow-runner
 }
 ```
 
-Setting `enabled: false` prevents the account from authenticating without deleting it. To reactivate the account, send the complete definition again with `enabled` set to `true`.
+Setting `enabled: false` prevents authentication with the account's service tokens without deleting the account. It doesn't invalidate [short-lived access tokens](token-based-authentication-services.md#token-authentication-access-token) already issued to run workloads as the account. API keys already issued to the account also remain valid.
+
+To reactivate the account, send the complete definition again with `enabled` set to `true`.
 
 Workloads bound to an account that has `enabled: false` fail the next time they run. They don't fall back to the user who starts or edits the workload.
 

@@ -95,7 +95,7 @@ Both the API and CLI generate service tokens with a 22-character secret. {{es}} 
 
 Service tokens never expire. You must actively [delete]({{es-apis}}operation/operation-security-delete-service-token) them if they are no longer needed.
 
-For an overview of how service tokens, access tokens, and API keys are used for authentication, refer to [Token-based authentication services](token-based-authentication-services.md).
+Service tokens are different from short-lived access tokens, which expire automatically. For an overview of these credential types and API keys, refer to [Token-based authentication services](token-based-authentication-services.md).
 
 
 ### Authenticate with service tokens [authenticate-with-service-account-token]
