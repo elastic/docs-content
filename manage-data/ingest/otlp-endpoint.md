@@ -1,6 +1,6 @@
 ---
 navigation_title: "OTLP/HTTP endpoint"
-description: "Send metrics, logs, and traces directly to Elasticsearch through its native OTLP/HTTP endpoints, without running an OpenTelemetry Collector."
+description: "The Elasticsearch /_otlp APIs accept OTLP data from a gateway collector. On Elastic Cloud, send OTLP data to the Managed OTLP Endpoint. /_otlp does not enrich traces or produce APM metrics."
 applies_to:
   deployment:
     self: ga 9.2
@@ -12,7 +12,15 @@ products:
 
 # {{es}} OTLP/HTTP endpoint
 
-In addition to ingesting data through the Bulk API, {{es}} accepts data through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
+The {{es}} OTLP/HTTP endpoint is a native ingest API, like the [bulk API]({{es-apis}}operation/operation-bulk).
+It accepts [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp) requests on the same host and port as the other {{es}} APIs, under the `/_otlp` path, and writes the records to data streams as they are received.
+The endpoint does not run the [`elasticapm` processor](elastic-agent://reference/edot-collector/components/elasticapmprocessor.md) or [`elasticapm` connector](elastic-agent://reference/edot-collector/components/elasticapmconnector.md): traces are not enriched, no aggregated {{product.apm}} metrics are produced, and {{product.apm}} views that depend on them, such as the service inventory and service map, stay empty.
+
+The intended client for this endpoint is a gateway Collector, not an application. How you send OpenTelemetry data to {{es}} depends on your deployment type:
+
+* On {{ech}} and {{serverless-full}}, use the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) rather than `/_otlp`. The {{motlp}} is a separate ingestion host, and it enriches traces and produces aggregated {{product.apm}} metrics.
+* On self-managed, {{ece}}, and {{eck}} deployments, send application data to an [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode). The gateway runs the `elasticapm` processor and connector, then writes the enriched result to {{es}}, either to `/_otlp` or through the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md).
+
 The {{es}} OTLP/HTTP endpoint exposes three signal-specific paths:
 
 | Signal | Path | Availability |
@@ -21,37 +29,45 @@ The {{es}} OTLP/HTTP endpoint exposes three signal-specific paths:
 | Logs | `/_otlp/v1/logs` | {applies_to}`stack: preview 9.5` |
 | Traces | `/_otlp/v1/traces` | {applies_to}`stack: preview 9.5` |
 
+`/_otlp/v1/traces` stores spans as they are received: it does not run the `elasticapm` processor or connector, so traces ingested through it are not enriched and produce no aggregated {{product.apm}} metrics.
+
 :::{important}
 {{es}} only supports [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp), not [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc).
 :::
 
-## When to use the {{es}} OTLP endpoint
+## When to use the {{es}} OTLP endpoint [when-to-use]
 
 For most users, one of the following higher-level ingestion paths is recommended:
 
 | Deployment | Recommended ingestion path |
 | --- | --- |
-| {{ech}} and {{serverless-short}} | [{{motlp}}](opentelemetry://reference/motlp.md) |
-| {{ece}}, {{eck}}, and self-managed | OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode), using the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md) |
+| {{ech}} and {{serverless-short}} | [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) |
+| {{ece}}, {{eck}}, and self-managed | [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode), which runs the `elasticapm` processor and connector before writing to {{es}} |
 
 Use {{motlp}} if it's available in your deployment, even when an application can target the {{es}} OTLP endpoint directly.
 
 For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [{{edot}} reference architecture](opentelemetry://reference/architecture/index.md).
 
-Use the {{es}} OTLP endpoint directly when one of the following applies:
+Use the {{es}} OTLP endpoint directly only in the following cases:
 
-* You have an application that exports OTLP natively and you want it to send data to {{es}} without running an OpenTelemetry Collector.
-  For example, a lightweight development setup (SDK to {{es}}).
-* You operate a self-managed gateway Collector and prefer the `OTLP/HTTP` exporter over the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md).
+* You operate a self-managed OpenTelemetry Collector gateway that runs the `elasticapm` processor and connector, and you prefer the `OTLP/HTTP` exporter over the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md) to send data from the gateway to {{es}}.
+  The {{es}} exporter writes through the [bulk API]({{es-apis}}operation/operation-bulk) and the `OTLP/HTTP` exporter writes to `/_otlp`. Run the `elasticapm` processor and connector in the gateway pipeline before whichever exporter you choose.
+* You build a development-only setup in which an application SDK sends OTLP data straight to the cluster.
+  Traces sent this way are stored without `elasticapm` enrichment or aggregated {{product.apm}} metrics, so the {{product.apm}} views that depend on them stay empty.
 
 :::{warning}
-Don't send telemetry from many individual applications directly to the {{es}} OTLP endpoint at the same time.
-Send to an OpenTelemetry Collector first so it can absorb connection churn and batch records to improve ingestion performance.
+Don't send telemetry from applications or pods directly to `/_otlp`.
+As with the [bulk API]({{es-apis}}operation/operation-bulk), each client opens its own connections to {{es}} and sends its own small batches.
+Many direct clients mean many connections and many small requests, which {{es}} handles less efficiently than a few connections carrying larger batches.
+
+Send telemetry to a gateway Collector or to the {{motlp}} instead.
+A gateway Collector combines data from many clients into larger batches and writes them to `/_otlp` over a small number of connections.
+This limit is about the number of connections to {{es}}, not the number of applications you monitor.
 :::
 
 ## Advantages of OTLP ingest over Bulk API
 
-Compared to the Bulk API, ingesting through OTLP offers:
+Compared to the [bulk API]({{es-apis}}operation/operation-bulk), ingesting through OTLP offers:
 
 * Improved ingestion performance, especially for payloads with many resource attributes.
 * Simplified mapping: data streams, index templates, dimensions, and metrics are derived dynamically from OTLP metadata.
@@ -62,12 +78,13 @@ Compared to the Bulk API, ingesting through OTLP offers:
 ### Create an API key
 
 Authenticate to the {{es}} OTLP endpoint with an API key.
-Refer to the API key documentation for your deployment type for instructions on how to create one:
 
-* [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) (self-managed, {{ece}}, {{eck}})
-* [{{ech}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md)
+On {{ech}} and {{serverless-short}}, send OTLP data to the {{motlp}} instead of to `/_otlp`, and authenticate with an API key as described in [{{motlp}} authentication](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md#authentication).
+
+On self-managed, {{ece}}, and {{eck}} deployments, refer to the API key documentation for your deployment type for instructions on how to create one:
+
+* [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) (self-managed, {{eck}})
 * [{{ece}} API keys](/deploy-manage/api-keys/elastic-cloud-enterprise-api-keys.md)
-* [{{serverless-short}} project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md)
 
 The API key needs `create_doc` and `auto_configure` privileges on the data stream patterns it writes to.
 `create_doc` allows writing documents without overwriting existing ones.
@@ -77,12 +94,15 @@ The minimum index patterns depend on which signals you ingest:
 
 | Signals ingested | Required `names` patterns |
 | --- | --- |
-| Metrics | `metrics-*` |
+| Metrics | `metrics-*`, `exemplars-*` |
 | Logs | `logs-*` |
 | Traces | `traces-*`, `logs-*` |
-| All three | `metrics-*`, `logs-*`, `traces-*` |
+| All three | `metrics-*`, `exemplars-*`, `logs-*`, `traces-*` |
 
 Traces ingestion also writes span events to `logs-*` data streams, so it requires both patterns.
+
+{applies_to}`stack: ga 9.6+` Metrics ingestion also writes [exemplars](#metric-exemplars) to `exemplars-*` data streams.
+If the key doesn't grant access to `exemplars-*`, the metric data points are still indexed, but their exemplars are rejected and each response reports the rejection as a warning.
 
 For example, an API key role descriptor that allows ingesting all three signals:
 
@@ -90,7 +110,7 @@ For example, an API key role descriptor that allows ingesting all three signals:
 {
   "indices": [
     {
-      "names": ["logs-*", "metrics-*", "traces-*"],
+      "names": ["logs-*", "metrics-*", "exemplars-*", "traces-*"],
       "privileges": ["create_doc", "auto_configure"]
     }
   ]
@@ -138,6 +158,8 @@ service:
 
 The exporter appends the signal-specific path (`/v1/logs`, `/v1/traces`, `/v1/metrics`) to the configured `endpoint`.
 
+To ingest enriched traces and aggregated {{product.apm}} metrics, run the `elasticapm` processor and connector in the pipeline before this exporter, as [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) does.
+
 These values are starting points for a gateway Collector.
 Tune them for your workload and Collector resources.
 They are local to each Collector instance and don't increase {{es}} ingest capacity.
@@ -145,7 +167,9 @@ If many applications need to send telemetry, scale out the gateway Collector ins
 
 Supported `compression` values are `gzip` (the `OTLP/HTTP` exporter default) and `none`.
 
-To send data from a custom application, use the [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-started/dev/) of your choice and point its OTLP/HTTP exporter at the corresponding {{es}} OTLP endpoint path.
+In development-only setups, you can send data from a custom application by pointing the OTLP/HTTP exporter of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-started/dev/) at the corresponding {{es}} OTLP endpoint path.
+Traces sent this way are stored without `elasticapm` enrichment or aggregated {{product.apm}} metrics, so the {{product.apm}} views that depend on them stay empty.
+In production, point SDKs at a gateway Collector or at the {{motlp}}.
 
 :::{note}
 Only `encoding: proto` is supported, which the `OTLP/HTTP` exporter uses by default.
@@ -160,10 +184,12 @@ By default, records are written to the following data streams:
 | Logs | `logs-generic.otel-default` |
 | Traces | `traces-generic.otel-default` |
 | Metrics | `metrics-generic.otel-default` |
+| Metric exemplars {applies_to}`stack: ga 9.6+` | `exemplars-generic.otel-default` |
 
 For more about how OTLP metrics are stored as time series data streams, refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md).
 
 The target data stream name follows the pattern `<type>-<dataset>.otel-<namespace>`.
+[Exemplars](#metric-exemplars) always follow the metric they belong to: a metric routed to `metrics-<dataset>.otel-<namespace>` stores its exemplars in `exemplars-<dataset>.otel-<namespace>`.
 You can influence `dataset` and `namespace` by setting attributes on your data:
 
 * Set `data_stream.dataset` and/or `data_stream.namespace` as attributes.
@@ -205,7 +231,7 @@ PUT /_cluster/settings
 Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
 
 This setting only applies to metrics ingested through the {{es}} OTLP endpoint.
-Documents ingested using the Bulk API (for example through the {{es}} exporter for the OpenTelemetry Collector) are not affected.
+Documents ingested using the bulk API (for example through the {{es}} exporter for the OpenTelemetry Collector) are not affected.
 
 ## Metric temporality
 ```{applies_to}
@@ -218,11 +244,71 @@ The `temporality` dimension is set automatically based on the OTLP [AggregationT
 
 Note that cumulative temporality for histograms is only supported if `xpack.otel_data.histogram_field_type` is set to `exponential_histogram` (which is the default).
 
+## Metric exemplars [metric-exemplars]
+```{applies_to}
+stack: ga 9.6
+serverless: ga
+```
+
+[Exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars) are individual measurements that an OpenTelemetry SDK records alongside an aggregated metric data point, typically together with the trace and span that were active when the measurement was taken.
+The OTLP endpoint stores the exemplars that arrive with metric data points on `/_otlp/v1/metrics`, so you can navigate from a metric to a trace that contributed to it.
+
+{{es}} stores exemplars in dedicated [time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) named after the metrics data stream of their data point: exemplars of metrics in `metrics-<dataset>.otel-<namespace>` are written to `exemplars-<dataset>.otel-<namespace>`.
+
+Each exemplar is stored as its own document with the following fields:
+
+| Field | Description |
+| --- | --- |
+| `@timestamp` | The time the measurement was taken. |
+| Resource, scope, and data point attributes | The same attributes as the metric document, mapped as the same [time series dimensions](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension), so you can match an exemplar to the series it belongs to. |
+| `metric_name` | The name of the metric the exemplar belongs to. Also a dimension. |
+| `value` | The measured value, stored as a `double`. |
+| `trace_id`, `span_id` | The trace and span that were active when the measurement was taken, if any. `trace.id` and `span.id` are aliases of these fields. |
+| `filtered_attributes` | Attributes that were recorded with the measurement but aren't part of the data point attributes, for example because the SDK dropped them during aggregation. These are not dimensions. |
+
+Exemplars never affect whether a request succeeds.
+If an exemplar can't be indexed, for example because the API key doesn't grant access to `exemplars-*`, the data point it belongs to is still indexed and the problem is reported as a warning in the OTLP [partial success](https://opentelemetry.io/docs/specs/otlp/#partial-success) response.
+Exemplars without a value, and duplicate exemplars that share the same metric, dimensions, and timestamp, are dropped and reported the same way.
+
+To customize exemplar data streams, for example to change their lifecycle, use the `exemplars@custom` component template, which applies to all exemplar data streams, or `exemplars-otel@custom`, which applies to OpenTelemetry exemplar data streams only.
+
+### Turn off exemplar ingestion [disable-exemplars]
+
+Exemplar ingestion is enabled by default.
+If you don't need exemplars, or want to avoid the additional storage, turn it off in one of the following ways.
+
+* **Stop sending exemplars at the source (preferred)**: Configure the sender so exemplars never leave your infrastructure. This works on every deployment type and saves bandwidth and processing by avoiding sending data that would be discarded anyway.
+
+  OpenTelemetry SDKs stop recording exemplars when you set the [`OTEL_METRICS_EXEMPLAR_FILTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exemplar) environment variable to `always_off`.
+  
+  In an OpenTelemetry Collector, remove exemplars from all data points with the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor) and add it to your metrics pipeline:
+
+  ```yaml
+  processors:
+    transform/drop_exemplars:
+      metric_statements:
+        - context: datapoint
+          statements:
+            - set(datapoint.exemplars, nil)
+  ```
+
+  Setting a field to `nil` requires OpenTelemetry Collector Contrib 0.161.0 or later.
+
+:::{include} /manage-data/_snippets/turn-off-exemplar-ingestion.md
+:::
+
 ## Limitations
 
+* **Trace enrichment and {{product.apm}} metrics:** The endpoint does not run the `elasticapm` processor or connector.
+  Traces are stored as received, no aggregated {{product.apm}} metrics are produced, and the {{product.apm}} views that depend on them, such as the service inventory and service map, stay empty.
+  For the full {{product.apm}} experience, send traces to the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) or through an [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
 * **Delivery guarantees:** {{es}} can only acknowledge an OTLP request as a whole, not on a per-record basis.
   If part of a request fails, the client retries the entire batch, which can produce duplicate logs or trace spans.
   Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
+  
+  {applies_to}`stack: ga 9.6+` Metric points that are already indexed are not counted as rejected.
+  Instead, the [partial success](https://opentelemetry.io/docs/specs/otlp/#partial-success) response reports them as skipped duplicates in its error message.
+  A metric point with a different value but the same dimensions and timestamp as an already indexed one is also skipped this way.
 * **Profiles:** Profiles are not supported.
-  To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md), such as [{{agent}}](opentelemetry://reference/edot-collector/index.md).
-* **Exemplars:** Exemplars are not supported yet.
+  To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md), such as [{{agent}}](elastic-agent://reference/edot-collector/index.md).
+* {applies_to}`stack: unavailable 9.2-9.5` **Exemplars:** Exemplars are not supported on older versions.

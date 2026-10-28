@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
-description: Learn how to explore and interact with Kibana dashboards using filters, time ranges, and controls to uncover insights in your data.
+description: Use KQL queries, filter pills, time ranges, and controls to focus a dashboard on specific data, then inspect the data and requests behind each panel.
 applies_to:
   stack: ga
   serverless: ga
@@ -9,11 +9,11 @@ products:
   - id: kibana
 ---
 
-# Exploring dashboards [_use_and_filter_dashboards]
+# Inspect and filter a dashboard [_use_and_filter_dashboards]
 
-{{product.kibana}} dashboards support filtering, time range adjustments, and interactive controls that let you focus on specific data segments or time periods. Use these interactive features to drill into your data, compare metrics across different dimensions, and uncover insights that matter to your analysis.
+To focus a dashboard on specific data or a specific period, filter it with a {{kib}} Query Language (KQL) query, filter pills, a time range, or dashboard controls. These options help you drill into your data, compare metrics across different dimensions, and find the insights that matter to your analysis.
 
-This page covers the main ways to explore dashboard data: using Kibana Query Language (KQL) queries, filter pills, time ranges, and dashboard controls. You'll also learn how to view underlying data and switch between different display modes.
+You can also inspect the data and requests behind a panel, and view a dashboard in full screen or maximize a single panel.
 
 
 
@@ -69,11 +69,13 @@ You can interact with some panel visualizations to explore specific data more in
 You can create filter pills by:
 
 - **Clicking on chart elements**, such as data points, bars, or slices.
-- **Using legend actions**: hover over a legend item and select **Filter In** or **Filter Out** to filter the dashboard by a specific series.
+- **Using legend actions**: Hover over a legend item and select **Filter for** or **Filter out** to filter the dashboard by a specific series.
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 {{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
+
+Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements) for an {{esql}} example.
 :::
 
 

@@ -1,0 +1,33 @@
+name: Review classification
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr-number:
+        description: 'Pull request number to classify'
+        required: true
+        type: string
+      dry-run:
+        description: 'Preview only: write the result to the job summary, post no comment or labels'
+        type: boolean
+        default: true
+  # Automatic mode. Uncomment when the dry-run results look right.
+  # pull_request:
+  #   types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review]
+
+permissions: {}
+
+concurrency:
+  group: review-classification-${{ github.event.pull_request.number || inputs.pr-number }}
+  cancel-in-progress: true
+
+jobs:
+  classify:
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+    uses: elastic/docs-actions/.github/workflows/review-classifier.yml@v1
+    with:
+      pr-number: ${{ inputs.pr-number }}
+      dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run }}

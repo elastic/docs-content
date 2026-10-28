@@ -80,7 +80,7 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
 * **Shares of resources**
 
-    Each cluster node is run within a Docker container to make sure that all of the nodes have access to a guaranteed share of host resources. This mitigates the *noisy neighbor effect* where one busy deployment can overwhelm the entire host. The CPU resources are relative to the size of the {{es}} cluster they get assigned to. For example, a cluster with 32GB of RAM gets assigned twice as many CPU resources as a cluster with 16GB of RAM.
+    Each cluster node is run within a Docker container to make sure that all the nodes have access to a guaranteed share of host resources. This mitigates the *noisy neighbor effect* where one busy deployment can overwhelm the entire host. The CPU resources are relative to the size of the {{es}} cluster they get assigned to. For example, a cluster with 32GB of RAM gets assigned twice as many CPU resources as a cluster with 16GB of RAM.
 
 * **Better security**
 
@@ -88,7 +88,7 @@ Services are deployed as Docker containers, which simplifies the operational eff
 
 * **Secure communication through Stunnel**
 
-    Docker containers communicate securely with one another through Transport Layer Security, provided by [Stunnel](https://www.stunnel.org/) (as not all of the services or components support TLS natively). Tunneling all traffic between containers makes sure that it is not possible to eavesdrop, even when someone else has access to the underlying cloud or network infrastructure.
+    Docker containers communicate securely with one another through Transport Layer Security, provided by [Stunnel](https://www.stunnel.org/) (as not all services or components support TLS natively). Tunneling all traffic between containers makes sure that it is impossible to eavesdrop, even when someone else has access to the underlying cloud or network infrastructure.
 
 ## ECE service containers by host role [ece-service-containers]
 

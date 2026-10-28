@@ -1,4 +1,4 @@
-name: docs-preview-cleanup
+name: "Preview: Cleanup"
 on:
   pull_request_target:
     types: [closed]
