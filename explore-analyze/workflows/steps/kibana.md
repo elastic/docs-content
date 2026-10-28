@@ -19,7 +19,7 @@ products:
 
 For Cases operations, always use the dedicated [Cases action steps](/explore-analyze/workflows/steps/cases.md). For Observability Streams, use the [Streams action steps](/explore-analyze/workflows/steps/streams.md). Everything else lives here.
 
-All {{kib}} actions are automatically authenticated as the workflow's execution identity. Refer to [Workflow authorization](/explore-analyze/workflows/authorization.md) to understand which privileges each run uses.
+All {{kib}} actions are automatically authenticated as the workflow's execution identity. Refer to [](/explore-analyze/workflows/authorization.md) to understand which privileges each run uses.
 
 :::{important}
 The detection alert step type IDs use **PascalCase**, not lowercase or snake_case: `kibana.SetAlertsStatus`, `kibana.SetAlertTags`. The editor rejects lowercase variants. This is the most common authoring surprise on the {{kib}} namespace.

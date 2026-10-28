@@ -26,7 +26,7 @@ The top-level `settings` block configures workflow-wide behavior. Every field is
 | `concurrency` | object | Controls what happens when a new execution would exceed the concurrency limit for its group. Refer to [Concurrency control](#workflows-settings-concurrency). |
 | `max-step-size` | byte size | Cap on per-step output size (for example `10mb`). |
 | `on-failure` | object | Global failure handling applied to every step. Same shape as per-step `on-failure`. Refer to [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md). |
-| `run_as` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | string | User-managed service account ID that authorizes every workflow run. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md). |
+| `run_as` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | string | User-managed service account ID that authorizes every workflow run. Refer to [](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md). |
 
 Fields not set take the engine defaults.
 

@@ -291,7 +291,7 @@ settings:
       delay: "10s"
 ```
 
-Every field in `settings` is optional. The full reference with per-field semantics lives on the [Workflow settings page](/explore-analyze/workflows/authoring-techniques/settings.md).
+Every field in `settings` is optional. The full reference with per-field semantics is available in [](/explore-analyze/workflows/authoring-techniques/settings.md).
 
 :::{note}
 :applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}

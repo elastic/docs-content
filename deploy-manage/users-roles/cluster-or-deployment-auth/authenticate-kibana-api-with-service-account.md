@@ -43,7 +43,7 @@ The `elasticsearch.serviceAccountToken` {{kib}} setting has a different purpose.
 
 ## Call a {{kib}} API [call-kibana-api-service-account]
 
-Send the token with the `Bearer` authentication scheme:
+To call the {{kib}} API using the service account identity, send the token with the `Bearer` authentication scheme:
 
 ```shell
 curl --request GET "$KIBANA_URL/api/spaces/space" \

@@ -12,7 +12,7 @@ products:
 
 # Service accounts [service-accounts]
 
-The {{stack-security-features}} provide *service accounts* specifically for integration with external services that connect to {{es}}. A service account is a non-human identity for a service or workload. Unlike a user, a service account isn't associated with a person and can't log in to the {{kib}} UI.
+A service account is a non-human identity for a service or workload. Unlike a user, a service account isn't associated with a person and can't log in to the {{kib}} UI.
 
 Service accounts authenticate with service tokens. The account defines the identity and privileges, while the token is a credential for that identity. For example, {{fleet}} server uses a service token to authenticate with {{es}} and manage its own API keys.
 
@@ -150,10 +150,7 @@ This example uses the `elastic/fleet-server` account, which has predefined privi
 :::
 
 :::{tab-item} User-managed service account
-
-```{applies_to}
-stack: ga 9.6+
-```
+{applies_to}`stack: ga 9.6+`
 
 This example uses the `kibana/automation-client` account with the `automation_client` role:
 

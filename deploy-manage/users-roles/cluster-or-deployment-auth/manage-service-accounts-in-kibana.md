@@ -15,7 +15,7 @@ products:
 
 # Create and manage service accounts in {{kib}} [manage-service-accounts-kibana]
 
-Create user-managed service accounts and assign roles to control access to {{es}} and {{kib}} APIs. {{kib}} creates each account in {{es}} and securely stores its credential.
+Create user-managed service accounts and assign roles to control programmatic access to {{es}} and {{kib}} APIs. {{kib}} creates each account in {{es}} and securely stores its credential.
 
 ## Before you begin [manage-service-accounts-before-you-begin]
 
@@ -29,7 +29,7 @@ Service accounts are enabled by default on {{ech}}, {{ece}}, {{eck}}, and self-m
 
 ## Create a service account [create-service-account-kibana]
 
-1. Find **Service accounts** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). In the **Classic** solution view, select **Stack Management** → **Security** → **Service accounts**.
+1. Find **Service accounts** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
 2. Click **Create account**.
 3. In the **Name** field, enter a unique name of up to 128 characters. The name must start with a letter or number and can contain letters, numbers, hyphens, and underscores.
 4. Optional: In the **Description** field, describe what the account is used for.
