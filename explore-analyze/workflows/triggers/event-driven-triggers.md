@@ -23,21 +23,25 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - **Alert episode lifecycle triggers** — Fire on specific alert episode events in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 - **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
-By default, event-driven workflows run with the privileges of the user whose action produced the event. Workflows triggered by `workflows.failed` use the same privileges as the failed workflow.
+## Authorization
 
-:::{note}
-:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-If you assign a service account to the workflow, it runs with that account's privileges instead. For details, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
-:::
+Event-driven runs are authorized by:
 
-:::{include} ../_snippets/schema-location-legend.md
-:::
+* The privileges of the user whose action produced the event, by default.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` The privileges of a user-managed service account, when one is assigned to the workflow.
+
+Without an assigned service account, runs triggered by `workflows.failed` use the same privileges as the failed workflow.
+
+For details, refer to [](/explore-analyze/workflows/authorization.md).
 
 ## `workflows.failed`
 
 Fires when any workflow execution reaches the `failed` terminal state. Use this trigger to build handler workflows that react to failures in your production workflows, for example by paging on-call, opening a case, or logging to a dedicated index for observability.
 
 ### Schema
+
+:::{include} ../_snippets/schema-location-legend.md
+:::
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|

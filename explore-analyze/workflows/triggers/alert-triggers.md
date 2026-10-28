@@ -16,13 +16,6 @@ products:
 
 Alert triggers run workflows automatically when detection or alerting rules generate an alert. Use alert triggers for alert enrichment, automated incident response, case creation, or notification routing.
 
-By default, alert-triggered workflows run with the privileges of the user who last saved the rule.
-
-:::{note}
-:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-If you assign a service account to the workflow, it runs with that account's privileges instead. For details, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
-:::
-
 When a rule generates an alert that triggers your workflow, the trigger provides rich context data to the workflow through the `event` field.
 
 :::{warning}
@@ -32,6 +25,15 @@ Declaring `type: alert` on a workflow isn't enough to run the workflow when aler
 :::{note}
 Alert triggers are different from [alert episode lifecycle triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven). An alert trigger (`type: alert`) runs a workflow when a rule generates an alert, and only when you add the workflow to that rule as an action. Alert episode lifecycle triggers are [event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) that automatically react to alert episode events (such as an alert episode being assigned or acknowledged) in the {{alerting-v2-system}}, with no rule action to configure.
 :::
+
+## Authorization
+
+Alert-triggered runs are authorized by:
+
+* The privileges of the user who last saved the rule, by default.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` The privileges of a user-managed service account, when one is assigned to the workflow.
+
+For details, refer to [](/explore-analyze/workflows/authorization.md).
 
 ## Schema [workflows-alert-trigger-schema]
 
