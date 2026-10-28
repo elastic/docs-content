@@ -26,7 +26,7 @@ To remap custom rules, you need privileges to manage rules. Refer to [Detections
 
 The core change in v19 is the Defense Evasion tactic split. It reorganizes how the Impair Defenses ([T1562](https://attack.mitre.org/techniques/T1562/)) technique is structured, and v19 also adds a handful of new techniques.
 
-### Defense Evasion tactic split [remap-mitre-attack-defense-evasion-split]
+### Defense Evasion splits into Stealth and Defense Impairment [remap-mitre-attack-defense-evasion-split]
 
 MITRE retired the Defense Evasion tactic ([TA0005](https://attack.mitre.org/tactics/TA0005/)) and replaced it with two tactics, split by adversary intent:
 
@@ -37,13 +37,13 @@ MITRE retired the Defense Evasion tactic ([TA0005](https://attack.mitre.org/tact
 
 Most former Defense Evasion techniques moved into Stealth or Defense Impairment. A smaller number moved to Execution, Lateral Movement, or Privilege Escalation instead.
 
-### Impair Defenses (T1562) restructuring [remap-mitre-attack-impair-defenses]
+### Impair Defenses (T1562) moves to new technique IDs [remap-mitre-attack-impair-defenses]
 
 As part of the split, [T1562](https://attack.mitre.org/techniques/T1562/) (Impair Defenses), [T1562.001](https://attack.mitre.org/techniques/T1562/001/), and [T1562.006](https://attack.mitre.org/techniques/T1562/006/) were merged into a new parent technique, [T1685 (Disable or Modify Tools)](https://attack.mitre.org/techniques/T1685/). The remaining T1562 sub-techniques were revoked and reissued under new IDs in Defense Impairment.
 
 Review any rule, exception, or dashboard that references T1562 or its sub-techniques.
 
-### New techniques [remap-mitre-attack-new-techniques]
+### New techniques you can map rules to [remap-mitre-attack-new-techniques]
 
 Beyond the tactic split, v19 also introduces techniques that didn't exist in earlier versions. You don't need to remap anything for these, but you can map new or existing custom rules to them going forward.
 
@@ -60,11 +60,11 @@ A rule is flagged if it's mapped to the Defense Evasion tactic under its pre-v19
 
 To find rules that need to be remapped, check the following places:
 
-* {applies_to}`stack: ga =9.5` A callout on the **{{siem-rules-ui}}** page, titled **MITRE ATT&CK® updated to v19**, links to the coverage page and notes that affected rules are flagged there and on each rule's edit form.
+* {applies_to}`stack: ga =9.5` {applies_to}`serverless: unavailable` A callout on the **{{siem-rules-ui}}** page, titled **MITRE ATT&CK® updated to v19**, links to the coverage page and notes that affected rules are flagged there and on each rule's edit form.
 * A callout on the [coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md) shows how many rules are affected. Select **View rules** to see the affected rules, each with the specific outdated tactic, technique, or sub-technique ID it references.
 * On an individual rule's details page, any outdated ID is marked with a warning icon next to it. Hover over the icon to see which ID is affected.
 
-## Remap your rules [remap-mitre-attack-remap-rules]
+## Remap your custom rules [remap-mitre-attack-remap-rules]
 
 If you only use Elastic prebuilt rules, mappings are updated for you automatically. If you have custom rules mapped to MITRE ATT&CK, remap them manually:
 
@@ -103,8 +103,8 @@ To update affected saved searches and dashboards:
 :::
 ::::
 
-::::{step} Verify on the coverage page
-Filter to enabled rules and confirm the Stealth and Defense Impairment columns match your expected coverage, and that the list of rules with outdated mappings contains no rules (or only the rules you intend to leave mapped to a previous MITRE ATT&CK version).
+::::{step} Confirm your updated coverage
+On the [coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md), filter to enabled rules and confirm the Stealth and Defense Impairment columns match your expected coverage, and that the list of rules with outdated mappings contains no rules (or only the rules you intend to leave mapped to a previous MITRE ATT&CK version).
 ::::
 :::::
 
