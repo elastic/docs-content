@@ -20,9 +20,9 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | Step type | Category | What it does |
 |---|---|---|
 | [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) | AI | Invoke an {{agent-builder}} agent as a step. |
-| [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify) | AI | Classify input into a fixed category set. |
+| [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | AI | Classify input into a fixed category set. |
 | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) | AI | Prompt a model, optionally with structured output. |
-| [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) | AI | Summarize content with an LLM. |
+| [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | AI | Summarize content with an LLM. |
 | [`cases.addAlerts`](/explore-analyze/workflows/steps/cases.md#cases-addalerts) | Cases | Attach detection alerts to a case. |
 | [`cases.addAttachments`](/explore-analyze/workflows/steps/cases.md#cases-addattachments) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Cases | Attach several attachment types to a case in one request. |
 | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) | Cases | Add a comment to a case. |
@@ -54,17 +54,17 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`cases.updateCases`](/explore-analyze/workflows/steps/cases.md#cases-updatecases) | Cases | Bulk update multiple cases. |
 | [`cases.updateObservable`](/explore-analyze/workflows/steps/cases.md#cases-updateobservable) | Cases | Update an observable. |
 | [`console`](/explore-analyze/workflows/steps/external-systems-apps.md) | HTTP and console | Log a message to the workflow execution view. |
-| [`data.aggregate`](/explore-analyze/workflows/steps/data.md#data-aggregate) | Data | Group and aggregate a collection. |
-| [`data.concat`](/explore-analyze/workflows/steps/data.md#data-concat) | Data | Concatenate arrays. |
-| [`data.dedupe`](/explore-analyze/workflows/steps/data.md#data-dedupe) | Data | Remove duplicates from an array. |
-| [`data.filter`](/explore-analyze/workflows/steps/data.md#data-filter) | Data | Keep elements matching a KQL predicate. |
-| [`data.find`](/explore-analyze/workflows/steps/data.md#data-find) | Data | Return the first element matching a KQL predicate. |
-| [`data.map`](/explore-analyze/workflows/steps/data.md#data-map) | Data | Transform each element of an array. |
-| [`data.parseJson`](/explore-analyze/workflows/steps/data.md#data-parsejson) | Data | Parse a JSON string into an object. |
-| [`data.regexExtract`](/explore-analyze/workflows/steps/data.md#data-regexextract) | Data | Extract fields from a string using regex. |
-| [`data.regexReplace`](/explore-analyze/workflows/steps/data.md#data-regexreplace) | Data | Replace regex matches in a string. |
-| [`data.set`](/explore-analyze/workflows/steps/data.md#data-set) | Data | Set named variables in the workflow context. |
-| [`data.stringifyJson`](/explore-analyze/workflows/steps/data.md#data-stringifyjson) | Data | Serialize an object to a JSON string. |
+| [`data.aggregate`](/explore-analyze/workflows/steps/data.md#data-aggregate) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Group and aggregate a collection. |
+| [`data.concat`](/explore-analyze/workflows/steps/data.md#data-concat) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Concatenate arrays. |
+| [`data.dedupe`](/explore-analyze/workflows/steps/data.md#data-dedupe) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Remove duplicates from an array. |
+| [`data.filter`](/explore-analyze/workflows/steps/data.md#data-filter) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Keep elements matching a KQL predicate. |
+| [`data.find`](/explore-analyze/workflows/steps/data.md#data-find) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Return the first element matching a KQL predicate. |
+| [`data.map`](/explore-analyze/workflows/steps/data.md#data-map) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Transform each element of an array. |
+| [`data.parseJson`](/explore-analyze/workflows/steps/data.md#data-parsejson) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Parse a JSON string into an object. |
+| [`data.regexExtract`](/explore-analyze/workflows/steps/data.md#data-regexextract) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Extract fields from a string using regex. |
+| [`data.regexReplace`](/explore-analyze/workflows/steps/data.md#data-regexreplace) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Replace regex matches in a string. |
+| [`data.set`](/explore-analyze/workflows/steps/data.md#data-set) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Set named variables in the workflow context. |
+| [`data.stringifyJson`](/explore-analyze/workflows/steps/data.md#data-stringifyjson) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Data | Serialize an object to a JSON string. |
 | [`elasticsearch.bulk`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Bulk index, update, or delete documents. |
 | [`elasticsearch.esql.query`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Run an ES\|QL query. |
 | [`elasticsearch.index`](/explore-analyze/workflows/steps/elasticsearch.md#named-actions) | {{es}} | Index one document. |
@@ -81,29 +81,29 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request) | {{kib}} | Generic {{kib}} API escape hatch. |
 | [`kibana.SetAlertsStatus`](/explore-analyze/workflows/steps/kibana.md#kibana-setalertsstatus) | {{kib}} | Update detection alert status. PascalCase. |
 | [`kibana.SetAlertTags`](/explore-analyze/workflows/steps/kibana.md#kibana-setalerttags) | {{kib}} | Add or remove tags on detection alerts. PascalCase. |
-| [`kibana.streams.get`](/explore-analyze/workflows/steps/streams.md#kibana-streams-get) | Streams (tech preview) | Fetch a stream by name. |
-| [`kibana.streams.getSignificantEvents`](/explore-analyze/workflows/steps/streams.md#kibana-streams-getsignificantevents) | Streams (tech preview) | Get significant events for a stream. |
-| [`kibana.streams.list`](/explore-analyze/workflows/steps/streams.md#kibana-streams-list) | Streams (tech preview) | List available streams. |
-| [`loop.break`](/explore-analyze/workflows/steps/loop-break.md) | Flow control | Exit the innermost loop. |
-| [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) | Flow control | Skip to the next iteration. |
+| [`kibana.streams.get`](/explore-analyze/workflows/steps/streams.md#kibana-streams-get) {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Streams | Fetch a stream by name. |
+| [`kibana.streams.getSignificantEvents`](/explore-analyze/workflows/steps/streams.md#kibana-streams-getsignificantevents) {applies_to}`stack: removed 9.6+, preview 9.4-9.5` {applies_to}`serverless: removed` | Streams | Get significant events for a stream. |
+| [`kibana.streams.list`](/explore-analyze/workflows/steps/streams.md#kibana-streams-list) {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Streams | List available streams. |
+| [`loop.break`](/explore-analyze/workflows/steps/loop-break.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Flow control | Exit the innermost loop. |
+| [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Flow control | Skip to the next iteration. |
 | [`parallel`](/explore-analyze/workflows/steps/parallel.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Flow control | Run branches concurrently and collect a per-branch result. |
-| [`security.assignAlert`](/explore-analyze/workflows/steps/alert-triage.md#security-assignalert) | Security | Assign or unassign users on one or more alerts. |
-| [`security.assignAttack`](/explore-analyze/workflows/steps/attack-triage.md#security-assignattack) | Security | Assign or unassign users on one or more attacks. |
+| [`security.assignAlert`](/explore-analyze/workflows/steps/alert-triage.md#security-assignalert) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Assign or unassign users on one or more alerts. |
+| [`security.assignAttack`](/explore-analyze/workflows/steps/attack-triage.md#security-assignattack) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Assign or unassign users on one or more attacks. |
 | [`security.disableRule`](/explore-analyze/workflows/steps/detection-rules.md#security-disablerule) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Disable one or more detection rules by rule-ID list or KQL query, with partial-failure reporting. |
 | [`security.enableRule`](/explore-analyze/workflows/steps/detection-rules.md#security-enablerule) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Enable one or more detection rules by rule-ID list or KQL query, with partial-failure reporting. |
-| [`security.setAlertStatus`](/explore-analyze/workflows/steps/alert-triage.md#security-setalertstatus) | Security | Set alert status: `open`, `acknowledged`, or `closed`. |
-| [`security.setAlertTags`](/explore-analyze/workflows/steps/alert-triage.md#security-setalerttags) | Security | Add or remove tags on one or more alerts. |
-| [`security.setAttackStatus`](/explore-analyze/workflows/steps/attack-triage.md#security-setattackstatus) | Security | Set attack status: `open`, `acknowledged`, or `closed`. |
-| [`security.setAttackTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setattacktags) | Security | Add or remove tags on one or more attacks. |
-| [`switch`](/explore-analyze/workflows/steps/switch.md) | Flow control | Multi-way dispatch. |
+| [`security.setAlertStatus`](/explore-analyze/workflows/steps/alert-triage.md#security-setalertstatus) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Set alert status: `open`, `acknowledged`, or `closed`. |
+| [`security.setAlertTags`](/explore-analyze/workflows/steps/alert-triage.md#security-setalerttags) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Add or remove tags on one or more alerts. |
+| [`security.setAttackStatus`](/explore-analyze/workflows/steps/attack-triage.md#security-setattackstatus) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Set attack status: `open`, `acknowledged`, or `closed`. |
+| [`security.setAttackTags`](/explore-analyze/workflows/steps/attack-triage.md#security-setattacktags) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Security | Add or remove tags on one or more attacks. |
+| [`switch`](/explore-analyze/workflows/steps/switch.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Flow control | Multi-way dispatch. |
 | [`wait`](/explore-analyze/workflows/steps/wait.md) | Flow control | Pause for a fixed duration. |
 | [`waitForApproval`](/explore-analyze/workflows/steps/wait-for-approval.md) {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | Flow control | Pause for approve/reject (human-in-the-loop). |
-| [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) | Flow control | Pause for human input (human-in-the-loop). |
-| [`while`](/explore-analyze/workflows/steps/while.md) | Flow control | Loop while a condition holds. |
-| [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) | Composition (tech preview) | Run a child workflow synchronously. |
-| [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync) | Composition (tech preview) | Fire-and-forget child workflow. |
-| [`workflow.fail`](/explore-analyze/workflows/steps/composition.md#workflow-fail) | Composition (tech preview) | Terminate the workflow as failed. |
-| [`workflow.output`](/explore-analyze/workflows/steps/composition.md#workflow-output) | Composition (tech preview) | Emit the final outputs of a workflow. |
+| [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Flow control | Pause for human input (human-in-the-loop). |
+| [`while`](/explore-analyze/workflows/steps/while.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Flow control | Loop while a condition holds. |
+| [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Composition | Run a child workflow synchronously. |
+| [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync) {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Composition | Fire-and-forget child workflow. |
+| [`workflow.fail`](/explore-analyze/workflows/steps/composition.md#workflow-fail) {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Composition | Terminate the workflow as failed. |
+| [`workflow.output`](/explore-analyze/workflows/steps/composition.md#workflow-output) {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | Composition | Emit the final outputs of a workflow. |
 
 ## External connector steps [workflows-external-connectors]
 

@@ -91,21 +91,21 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 |---|---|
 | Query {{es}} | `elasticsearch.search`, `elasticsearch.esql.query` |
 | Write to {{es}} | `elasticsearch.index`, `elasticsearch.bulk`, `elasticsearch.update` |
-| Manage cases | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.addAttachments`, `cases.pushCases` |
-| Manage alerts | `security.setAlertStatus`, `security.setAlertTags`, `security.assignAlert` (preferred); `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
-| Manage attacks | `security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack` |
-| Enable or disable detection rules | `security.enableRule`, `security.disableRule` |
-| Manage asset criticality | `entityStore.updateAssetCriticality` |
+| Manage cases {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.addAttachments` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`, `cases.pushCases` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
+| Manage alerts | Preferred: `security.setAlertStatus` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`, `security.setAlertTags` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`, `security.assignAlert` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`. Alternatives: `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
+| Manage attacks {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack` |
+| Enable or disable detection rules {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `security.enableRule`, `security.disableRule` |
+| Manage asset criticality {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | `entityStore.updateAssetCriticality` |
 | Call an API | `http` (with optional `connector-id`) |
 | Call a service | `<connector>.<action>` (for example, `slack.postMessage`, `jira.createIssue`) |
-| Branch | `if`, `switch` |
-| Loop | `foreach`, `while`, `loop.break`, `loop.continue` |
-| Run independent work at the same time | `parallel` |
-| Fan out to independent executions | `workflow.executeAsync` (tech preview) |
-| Pause | `wait`, `waitForInput` |
-| Transform data | `data.filter`, `data.map`, `data.aggregate`, `data.parseJson`, `data.regexExtract` |
-| Call AI | `ai.prompt`, `ai.classify`, `ai.summarize`, `ai.agent` |
-| Call another workflow | `workflow.execute` (synchronous), `workflow.executeAsync` (asynchronous, tech preview) |
+| Branch | `if`, `switch` {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` |
+| Loop | `foreach`, `while` {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`, `loop.break` {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`, `loop.continue` {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` |
+| Run independent work at the same time {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | `parallel` |
+| Fan out to independent executions {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | `workflow.executeAsync` |
+| Pause | `wait`, `waitForInput` {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` |
+| Transform data {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `data.filter`, `data.map`, `data.aggregate`, `data.parseJson`, `data.regexExtract` |
+| Call AI | `ai.prompt`, `ai.classify` {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`, `ai.summarize` {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`, `ai.agent` |
+| Call another workflow {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | `workflow.execute` (synchronous), `workflow.executeAsync` (asynchronous) |
 | Log | `console` |
 
 Full list: [Step type index](/explore-analyze/workflows/reference/step-types.md).
