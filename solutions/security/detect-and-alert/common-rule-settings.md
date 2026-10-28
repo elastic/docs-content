@@ -111,7 +111,7 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 ::::
 
 **MITRE ATT&CK threats** (optional) {applies_to}`stack: ga 9.0-9.5`
-:   Add relevant [MITRE ATT&CK](https://attack.mitre.org/) tactics, techniques, and sub-techniques.
+:   Add relevant [MITRE ATT&CK®](https://attack.mitre.org/) tactics, techniques, and sub-techniques.
 
     ::::{note}
     The tactic and technique options here only include the MITRE ATT&CK version currently supported by {{elastic-sec}}. If you're upgrading and existing mappings are affected by a MITRE ATT&CK version change, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
@@ -143,8 +143,8 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 **Threat mappings** (optional) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   Map the rule to the tactics, techniques, and sub-techniques it detects. Mappings determine where the rule appears on the [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) page. You can use one or both frameworks:
 
-    * [MITRE ATT&CK](https://attack.mitre.org/): Attacks on enterprise IT systems.
-    * [MITRE ATLAS](https://atlas.mitre.org/): Attacks on AI and machine learning systems, such as prompt injection. To add it, select **Add framework** → **MITRE ATLAS**.
+    * [MITRE ATT&CK®](https://attack.mitre.org/): Attacks on enterprise IT systems.
+    * [MITRE ATLAS™](https://atlas.mitre.org/): Attacks on AI and machine learning systems, such as prompt injection. To add it, select **Add framework** → **MITRE ATLAS**.
 
     The options include only the framework versions that {{elastic-sec}} supports. If an upgrade affects existing mappings, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
 

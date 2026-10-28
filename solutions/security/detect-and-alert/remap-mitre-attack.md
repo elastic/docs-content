@@ -10,9 +10,9 @@ products:
 description: Learn what changed in MITRE ATT&CK v19 and how to find and remap custom detection rules affected by the update.
 ---
 
-# Remap detection rules to MITRE ATT&CK v19 [remap-mitre-attack]
+# Remap detection rules to MITRE ATT&CK® v19 [remap-mitre-attack]
 
-[MITRE ATT&CK](https://attack.mitre.org) v19 retires the Defense Evasion tactic and replaces it with two new tactics: Stealth and Defense Impairment. This page helps you understand how to find custom rules affected by the change and remap them so your coverage stays accurate.
+[MITRE ATT&CK®](https://attack.mitre.org) v19 retires the Defense Evasion tactic and replaces it with two new tactics: Stealth and Defense Impairment. This page helps you understand how to find custom rules affected by the change and remap them so your coverage stays accurate.
 
 ::::{note}
 When you create or edit a custom rule, the tactic and technique options in **Advanced settings** only include MITRE ATT&CK v19. You can't map a rule to a tactic or technique from v18 or earlier.

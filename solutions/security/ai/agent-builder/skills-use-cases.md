@@ -152,10 +152,10 @@ Use this skill to create or edit detection rules. The skill supports **{{esql}} 
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
-| Create an {{esql}} rule that detects PowerShell downloading from external URLs | Draft the rule with query, severity, risk score, and MITRE ATT&CK mappings, then render it as an attachment. |
+| Create an {{esql}} rule that detects PowerShell downloading from external URLs | Draft the rule with query, severity, risk score, and MITRE ATT&CK® mappings, then render it as an attachment. |
 | Raise the severity on this rule to critical and add the T1059 tag | Update the attached rule's `severity`, `risk_score`, and `tags` fields and re-render the attachment. |
 | Add the Execution tactic (TA0002) and technique T1059.001 to this rule | Append entries to the rule's `threat` array with correct tactic, technique, and subtechnique IDs. |
-| Map this rule to the MITRE ATLAS technique for LLM prompt injection {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Add a separate `threat` entry for MITRE ATLAS with the matching ATLAS tactic and technique IDs. |
+| Map this rule to the MITRE ATLAS technique for LLM prompt injection {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Add a separate `threat` entry for MITRE ATLAS™ with the matching ATLAS tactic and technique IDs. |
 
 :::{tip}
 `detection-rule-edit` operates on a rule attachment. The skill activates when a rule attachment is present in the conversation. You can start a rule attachment from the rule creation form, the rule details page, or by asking the agent to "create a detection rule" directly in chat — the skill creates the attachment and renders an **Apply to creation** button so you can save the rule from the chat.

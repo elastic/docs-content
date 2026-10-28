@@ -16,8 +16,8 @@ description: View which MITRE ATT&CK and MITRE ATLAS tactics and techniques your
 
 The MITRE coverage page shows which adversary tactics and techniques your installed detection rules cover, both Elastic prebuilt and custom. It maps rules to these frameworks:
 
-* [MITRE ATT&CK](https://attack.mitre.org): Attacks on enterprise IT systems.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [MITRE ATLAS](https://atlas.mitre.org): Attacks on AI and machine learning systems, such as prompt injection.
+* [MITRE ATT&CK®](https://attack.mitre.org): Attacks on enterprise IT systems.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [MITRE ATLAS™](https://atlas.mitre.org): Attacks on AI and machine learning systems, such as prompt injection.
 
 How you use this page depends on your goal:
 
