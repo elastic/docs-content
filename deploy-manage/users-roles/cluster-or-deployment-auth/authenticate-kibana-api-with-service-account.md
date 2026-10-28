@@ -24,7 +24,7 @@ Before you create a service token, make sure you have the following:
 - You need an existing user-managed service account. If you don't have one, [create a service account in {{kib}}](manage-service-accounts-in-kibana.md#create-service-account-kibana).
 - You need the `manage_security` cluster privilege to create a service token for a user-managed account. The `manage_service_account` privilege permits token management only for built-in accounts in the `elastic` namespace.
 
-## Create a token for your application [create-service-account-api-token]
+## Create a service token for your application [create-service-account-api-token]
 
 {{kib}} creates and stores a credential when you create an account in the UI. That credential is used for workload integrations and isn't displayed. For your application, create an additional service token. The following example uses an existing account with the principal `kibana/automation-client`:
 
