@@ -289,7 +289,7 @@ To add the custom logs integration to your project:
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Type `custom` in the search bar and select **Custom Logs**.
-3. Click **Add Custom Logs**.
+3. If the integration's details page opens, click **Add Custom Logs**.
 4. Click **Install {{agent}}** at the bottom of the page, and follow the instructions for your system to install the {{agent}}.
 5. After installing the {{agent}}, configure the integration from the **Add Custom Logs integration** page.
 6. Give your integration a meaningful name and description.

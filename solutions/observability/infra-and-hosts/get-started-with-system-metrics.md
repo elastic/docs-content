@@ -55,8 +55,8 @@ The **Admin** role or higher is required to onboard system metrics data. To lear
 In this step, add the System integration to monitor host logs and metrics.
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **System** and select the integration to see more details about it.
-3. Select **Add System**.
+2. In the query bar, search for **System** and select the integration.
+3. If the integration's details page opens, select **Add System**.
 4. Configure the integration name and optionally add a description. Make sure that **Collect logs from System instances** and **Collect metrics from System instances** are turned on.
 5. Expand each configuration section to verify that the settings are correct for your host. For example, if you're deploying {{agent}} on macOS hosts, you need to add a new path to the *System syslog logs* section by clicking **Add row** and specifying `/var/log/system.log`.
 
@@ -84,8 +84,8 @@ In this step, add the System integration to monitor host logs and metrics.
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Project Settings** → **Integrations**.
-3. Enter **System** in the search bar, then select the integration to see more details about it.
-4. Select **Add System**.
+3. Enter **System** in the search bar, then select the integration.
+4. If the integration's details page opens, select **Add System**.
 5. Follow the in-product steps to install the System integration and deploy an {{agent}}. The sequence of steps varies depending on whether you have already installed an integration.
 
     * When configuring the System integration, make sure that **Collect metrics from System instances** is turned on.

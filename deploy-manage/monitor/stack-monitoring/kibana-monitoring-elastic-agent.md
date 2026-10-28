@@ -34,8 +34,8 @@ To collect {{kib}} monitoring data, add a {{kib}} integration to an {{agent}} an
     ::::
 
 2. In the query bar, search for and select the **Kibana** integration for {{agent}}.
-3. Read the overview to make sure you understand integration requirements and other considerations.
-4. Click **Add Kibana**.
+3. Read the integration's documentation to make sure you understand integration requirements and other considerations. The documentation is on the integration's details page. If the **Add Kibana** page opens instead, select **View documentation**.
+4. If the integration's details page opens, click **Add Kibana**.
 
     ::::{tip}
     If you’re installing an integration for the first time, you may be prompted to install {{agent}}. Click **Add integration only (skip agent installation)**.

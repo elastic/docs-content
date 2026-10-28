@@ -41,7 +41,7 @@ Do not add the integration to an existing {{agent}} policy. It should always be 
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select **Cloud Native Vulnerability Management**.
-3. Click **Add Cloud Native Vulnerability Management**.
+3. If the integration's details page opens, click **Add Cloud Native Vulnerability Management**.
 4. Give your integration a name that matches its purpose or the AWS account region you want to scan for vulnerabilities (for example, `uswest2-aws-account`.)
 
    :::{image} /solutions/images/security-cnvm-setup-1.png

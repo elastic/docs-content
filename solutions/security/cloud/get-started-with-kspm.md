@@ -50,7 +50,7 @@ The instructions differ depending on whether you’re installing on EKS or on un
 ### Name your integration and select a Kubernetes Deployment type [_name_your_integration_and_select_a_kubernetes_deployment_type]
 
 1. Navigate to the **Integrations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `kspm`, and select the integration. Click **Add Kubernetes Security Posture Management (KSPM)**.
+2. Search for `kspm`, and select the integration. If the integration's details page opens, click **Add Kubernetes Security Posture Management (KSPM)**.
 3. Under **Configure integration**, select **EKS**. A new section called **Setup Access** appears.
 4. Name your integration and add a description. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
 5. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
@@ -250,7 +250,7 @@ Follow these steps to deploy the KSPM integration to unmanaged clusters. Keep in
 To install the integration on unmanaged clusters:
 
 1. Navigate to the **Integrations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `kspm`, and select the integration. Click **Add Kubernetes Security Posture Management (KSPM)**.
+2. Search for `kspm`, and select the integration. If the integration's details page opens, click **Add Kubernetes Security Posture Management (KSPM)**.
 3. Under **Configure integration**, select **Self-Managed**.
 4. Name your integration and add a description. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
 5. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.

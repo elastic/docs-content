@@ -23,7 +23,7 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
 ## Create a standalone policy [create-standalone-policy]
 
 1. From the main menu in {{kib}}, click **Add integrations**, and search for the {{agent}} integration you want to use. Read the description to make sure the integration works with {{agent}}.
-2. Click the integration to see more details about it, then click **Add <Integration>**.
+2. Click the integration. If the integration's details page opens, click **Add <Integration>**.
 
     :::{image} images/add-integration-standalone.png
     :alt: Add Nginx integration screen with agent policy selected

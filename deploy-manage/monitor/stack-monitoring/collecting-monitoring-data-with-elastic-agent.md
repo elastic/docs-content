@@ -27,8 +27,8 @@ To collect {{es}} monitoring data, add an {{es}} integration to an {{agent}} and
 
 1. Go to the {{kib}} home page and click **Add integrations**.
 2. In the query bar, search for and select the **{{es}}** integration for {{agent}}.
-3. Read the overview to make sure you understand integration requirements and other considerations.
-4. Click **Add Elasticsearch**.
+3. Read the integration's documentation to make sure you understand integration requirements and other considerations. The documentation is on the integration's details page. If the **Add Elasticsearch** page opens instead, select **View documentation**.
+4. If the integration's details page opens, click **Add Elasticsearch**.
 
     ::::{tip}
     If you’re installing an integration for the first time, you may be prompted to install {{agent}}. Click **Add integration only (skip agent installation)**.

@@ -52,7 +52,7 @@ Expand a section below for your endpoint security system:
 
 2. **Install the CrowdStrike integration and {{agent}}.** Elastic’s [CrowdStrike integration](https://docs.elastic.co/en/integrations/crowdstrike) collects and ingests logs into {{elastic-sec}}.
 
-    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **CrowdStrike**, then select **Add CrowdStrike**.
+    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **CrowdStrike**. If the integration's details page opens, select **Add CrowdStrike**.
     2. Configure the integration with an **Integration name** and optional **Description**.
     3. Select **Collect CrowdStrike logs via API**, and enter the required **Settings**:
 
@@ -114,7 +114,7 @@ Expand a section below for your endpoint security system:
     ::::
 
 
-    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **Microsoft Defender for Endpoint**, then select **Add Microsoft Defender for Endpoint**.
+    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **Microsoft Defender for Endpoint**. If the integration's details page opens, select **Add Microsoft Defender for Endpoint**.
     2. Enter an **Integration name**. Entering a **Description** is optional.
     3. Ensure that **Microsoft Defender for Endpoint logs** is selected, and enter the required values for **Client ID**, **Client Secret**, and **Tenant ID**.
     4. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
@@ -166,7 +166,7 @@ Expand a section below for your endpoint security system:
 
 2. **Install the SentinelOne integration and {{agent}}.** Elastic’s [SentinelOne integration](https://docs.elastic.co/en/integrations/sentinel_one) collects and ingests logs into {{elastic-sec}}.
 
-    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **SentinelOne**, then select **Add SentinelOne**.
+    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **SentinelOne**. If the integration's details page opens, select **Add SentinelOne**.
     2. Configure the integration with an **Integration name** and optional **Description**.
     3. Ensure that **Collect SentinelOne logs via API** is selected, and enter the required **Settings**:
 

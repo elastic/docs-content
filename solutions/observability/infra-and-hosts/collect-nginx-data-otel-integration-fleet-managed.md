@@ -51,7 +51,7 @@ You'll collect:
 
 1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for "nginx", then select the **Nginx** integration.
-3. Select **Add Nginx**, then configure the integration. Log collection from NGINX instances is enabled by default.
+3. If the integration's details page opens, select **Add Nginx**. Then configure the integration. Log collection from NGINX instances is enabled by default.
 
    1. Confirm the **Paths** fields for access and error logs match your NGINX configuration.
    2. Turn off **Collect metrics from Nginx instances**. In this tutorial, you’ll use the OpenTelemetry input package for metrics collection.
@@ -69,7 +69,7 @@ For more details, refer to [Add an integration to an {{agent}} policy](/referenc
 1. In {{kib}}, go to **Integrations**.
 2. Select **Display beta integrations** (the NGINX OpenTelemetry packages are in technical preview).
 3. Search for "nginx", then select **NGINX OpenTelemetry Input Package**.
-4. Select **Add NGINX OpenTelemetry Input Package**, then configure the integration. **NGINX OpenTelemetry Input** is enabled by default.
+4. If the integration's details page opens, select **Add NGINX OpenTelemetry Input Package**. Then configure the integration. **NGINX OpenTelemetry Input** is enabled by default.
 
    1. Select **Change defaults**, then expand **Advanced options**.
    2. Set the data stream type to **Metrics**.

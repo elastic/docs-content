@@ -96,8 +96,8 @@ In this step, you install the Azure Billing Metrics integration in {{kib}}. This
 To add the integration:
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **Azure Billing** and select the Azure Billing Metrics integration to see more details about it.
-3. Click **Add Azure Billing Metrics**.
+2. In the query bar, search for **Azure Billing** and select the Azure Billing Metrics integration.
+3. If the integration's details page opens, click **Add Azure Billing Metrics**.
 4. Under Integration settings, configure the integration name and optionally add a description.
 
     ::::{tip}
@@ -249,8 +249,8 @@ Now that activity logs are streaming into the event hub, you can configure the A
 To add the integration:
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **Azure activity logs** and select the Azure activity logs integration to see more details about it.
-3. Click **Add Azure activity logs**.
+2. In the query bar, search for **Azure activity logs** and select the Azure activity logs integration.
+3. If the integration's details page opens, click **Add Azure activity logs**.
 4. Under Integration settings, configure the integration name and optionally add a description.
 5. Specify values for all the required fields. For more information about these settings, refer to the [Azure activity logs](https://docs.elastic.co/en/integrations/azure/activitylogs) documentation.
 

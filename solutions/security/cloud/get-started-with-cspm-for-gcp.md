@@ -40,7 +40,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+3. If the integration's details page opens, click **Add Cloud Security Posture Management (CSPM)**.
 4. Under **Configure integration**, select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual project.
 5. Give your integration a name and description that match the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-project`.
 6. (Optional) Expand **Advanced options** and add a `Namespace` to the integration's data stream.
@@ -61,7 +61,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+3. If the integration's details page opens, click **Add Cloud Security Posture Management (CSPM)**.
 4. For **Configure integration**, select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual project.
 5. Give your integration a name and description that match the purpose or team of the GCP project you want to monitor, for example, `dev-gcp-project`.
 6. (Optional) Expand the **Advanced options** menu and add a `Namespace` to the integration's data stream.

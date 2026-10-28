@@ -163,7 +163,7 @@ To add a role assignment to your app:
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for **Azure OpenAI** and select the Azure OpenAI integration card.
-3. Click **Add Azure OpenAI**.
+3. If the integration's details page opens, click **Add Azure OpenAI**.
 4. Under Integration settings, configure the integration name and optionally add a description.
 
     ::::{tip}
