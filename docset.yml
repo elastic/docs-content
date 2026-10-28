@@ -445,6 +445,8 @@ subs:
   az-watches: "Watches"
   az-worker: "Worker"
   az-workers: "Workers"
+  # Common nouns, lowercase mid-sentence to match the UI. If they become proper nouns, change
+  # proposed action, investigation, and escalation together, and update the UI to match.
   az-proposed-action: "proposed action"
   az-proposed-actions: "proposed actions"
   az-proposed-action-cap: "Proposed action"
