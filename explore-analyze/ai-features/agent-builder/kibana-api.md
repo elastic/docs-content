@@ -701,6 +701,8 @@ This example uses the [create an agent API]({{kib-apis}}operation/operation-post
 
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can't grant individual users access when you create an agent. On create, `access_control` accepts only `access_mode`, and including `entries` returns a validation error. To grant access, call `PUT /api/agent_builder/agents/{id}/access_control` after the agent exists.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To assign [connectors](connectors.md) to the agent, list their IDs in `configuration.connector_ids`. If you omit `connector_ids`, the agent can't run any connectors.
+
 ::::{tab-set}
 :group: api-examples
 
@@ -1026,6 +1028,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents/elastic-ai-agent/consumptio
 
 Use these APIs to send messages to agents and manage conversation history.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `input` parameter of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) and the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) accepts up to 100,000 characters. A request with a longer `input` returns a `400` error.
+
 **Example:** Chat with an agent
 
 This example uses the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse).
@@ -1318,7 +1322,7 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}"
 
 ::::
 
-**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 
 This example uses the [update conversation access control API]({{kib-apis}}operation/operation-put-agent-builder-conversations-conversation-id-access-control).
 

@@ -24,6 +24,7 @@ Use the topics in this section to troubleshoot {{ecloud}}:
 * [](/troubleshoot/monitoring/high-availability.md)
 * [](/troubleshoot/monitoring/cluster-response-time.md)
 * [](/troubleshoot/monitoring/node-moves-outages.md)
+* [](/troubleshoot/monitoring/not-enough-capacity.md)
 * [](/troubleshoot/monitoring/deployment-health-warnings.md)
 * [](/troubleshoot/monitoring/node-bootlooping.md)
 
