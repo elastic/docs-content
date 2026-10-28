@@ -75,6 +75,6 @@ A workflow assigned to a service account never falls back to the triggering user
 
 ## Remove the assignment [remove-workflow-service-account]
 
-Remove `run_as` from the workflow's `settings` block and save the workflow. Future runs return to the default [workflow authorization model](/explore-analyze/workflows/authorization.md), in which the trigger type determines whose privileges are used.
+To remove the service account assignment from a workflow, remove `run_as` from the workflow's `settings` block and save the workflow. Future runs return to the default [workflow authorization model](/explore-analyze/workflows/authorization.md), in which the trigger type determines whose privileges are used.
 
 Changing or removing the assignment doesn't switch the identity of a run already in progress. That run fails if it needs to renew its credential or resumes after a pause.
