@@ -40,14 +40,14 @@ Refer to [](/explore-analyze/workflows/steps/kibana.md) for more information.
 
 ## Cases
 
-Cases actions provide 27 step types for creating, querying, updating, and managing the lifecycle of cases in {{elastic-sec}} and other Cases-enabled apps. Use Cases actions to:
+Cases actions provide step types for creating, querying, updating, and managing the lifecycle of cases in {{elastic-sec}}, {{observability}}, or {{stack-manage-app}}. Use Cases actions to:
 
 * Create cases with a full schema or from a template
 * Attach alerts, events, observables, and comments
 * Assign, tag, categorize, and close cases
 * Find cases by criteria or similarity
 
-Refer to [](/explore-analyze/workflows/steps/cases.md) for the complete 27-step catalog.
+Refer to [](/explore-analyze/workflows/steps/cases.md) for the complete step catalog.
 
 ## Entity store
 

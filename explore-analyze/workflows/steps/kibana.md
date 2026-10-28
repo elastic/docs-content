@@ -133,16 +133,16 @@ The following `kibana.*` step types are deprecated in 9.4. They still resolve in
 
 | Deprecated | Use instead |
 |---|---|
-| `kibana.createCaseDefaultSpace` | [`cases.createCase`](/explore-analyze/workflows/steps/cases.md#cases-createcase) |
-| `kibana.getCaseDefaultSpace` | [`cases.getCase`](/explore-analyze/workflows/steps/cases.md#cases-getcase) |
-| `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](/explore-analyze/workflows/steps/cases.md#cases-updatecase) |
-| `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) |
+| `kibana.createCase`, `kibana.createCaseDefaultSpace` | [`cases.createCase`](/explore-analyze/workflows/steps/cases.md#cases-createcase) |
+| `kibana.getCase`, `kibana.getCaseDefaultSpace` | [`cases.getCase`](/explore-analyze/workflows/steps/cases.md#cases-getcase) |
+| `kibana.updateCase`, `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](/explore-analyze/workflows/steps/cases.md#cases-updatecase) |
+| `kibana.addCaseComment`, `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) |
 
 Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for side-by-side replacement patterns.
 
 ## Related
 
 - [Security action steps](/explore-analyze/workflows/steps/security.md): Named `security.*` steps for {{elastic-sec}}, including [Alert triage](/explore-analyze/workflows/steps/alert-triage.md) and [Attack triage](/explore-analyze/workflows/steps/attack-triage.md) for status, assignee, and tag management.
-- [Cases action steps](/explore-analyze/workflows/steps/cases.md): 27 step types for working with cases. Use these instead of the deprecated Case aliases above.
+- [Cases action steps](/explore-analyze/workflows/steps/cases.md): Step types for working with cases. Use these instead of the deprecated Case aliases above.
 - [Streams action steps](/explore-analyze/workflows/steps/streams.md): Observability Streams operations.
 - [Elasticsearch action steps](/explore-analyze/workflows/steps/elasticsearch.md): For {{es}} API calls.

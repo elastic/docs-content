@@ -217,7 +217,7 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
            message: "low severity"
    ```
 
-4. **`cases.*` parameters use `snake_case`:** `case_id`, not `caseId`.
+4. **`cases.*` ID parameters use `snake_case`:** `case_id`, not `caseId`. A few parameters keep the `camelCase` of the Cases API, such as `perPage` in `cases.findCases`.
 
    ```yaml
    # Wrong
