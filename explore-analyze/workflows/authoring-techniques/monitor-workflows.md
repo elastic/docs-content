@@ -50,7 +50,7 @@ When a workflow runs, the execution panel displays:
 
 :::{note}
 :applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-For a workflow bound to a service account, **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger. **Run as** identifies the service account used for authorization. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
+For a workflow assigned to a service account, **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger. **Run as** identifies the service account used for authorization. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
 :::
 
 ## See what triggered a run [workflows-execution-trigger-source]

@@ -40,7 +40,7 @@ stack: ga 9.6+
 serverless: unavailable
 ```
 
-When you [bind a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md) with `settings.run_as`, every run uses that account's roles. The trigger type and the user who last saved or started the workflow don't change its privileges.
+When you [assign a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md) with `settings.run_as`, every run uses that account's roles. The trigger type and the user who last saved or started the workflow don't change its privileges.
 
 The workflow stores a reference to the account. When a run starts, {{kib}} obtains a short-lived credential and renews it as needed. {{es}} resolves the account's roles whenever it authenticates, so changes to an assigned role apply to later credential requests without saving the workflow again.
 
@@ -50,10 +50,7 @@ If the account is deleted, turned off, or lacks a required privilege, the run fa
 
 When a workflow run starts, {{kib}} records the execution identity so you can audit which privileges it used. Refer to [](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution) for execution context variables.
 
-:::{note}
-:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
-For a bound workflow, **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger. **Run as** shows the service account used for authorization.
-:::
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` For workflows assigned to service accounts, **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger. **Run as** shows the service account used for authorization.
 
 The **Created By** filter on the **Workflows** page reflects who last saved the workflow, not necessarily who originally created it.
 
@@ -63,7 +60,7 @@ For workflows composed with [`workflow.execute`](/explore-analyze/workflows/step
 
 ::::{applies-switch}
 :::{applies-item} stack: ga 9.6+
-Each saved workflow uses its own service account binding. A child doesn't automatically inherit a parent's service account. If the child has no binding, it uses the original caller's identity. When neither workflow has a binding, the child uses the same execution identity as the parent.
+Each saved workflow uses its own service account assignment. A child doesn't automatically inherit its parent's assignment. If the child isn't assigned a service account, it uses the original caller's identity. When neither workflow is assigned a service account, the child uses the same execution identity as the parent.
 :::
 :::{applies-item} { stack: 'ga 9.4-9.5, preview =9.3', serverless: ga }
 The child execution runs with the same execution identity as the parent. The **Executions** tab doesn't visually indicate this inheritance.
@@ -74,7 +71,7 @@ The child execution runs with the same execution identity as the parent. The **E
 
 All `kibana.*` and `elasticsearch.*` steps in a workflow share the same execution identity. There's no separate identity per step type. A step fails with a privileges error if the user or service account lacks the required privilege for that step. For example, a `createCase` step fails if the execution identity doesn't have Cases privileges.
 
-For a workflow without a binding, credentials belong to the user identified in [Whose privileges authorize a run](#workflows-authorization-user). For a bound workflow, refer to [Workflows assigned a service account](#workflows-authorization-service-account).
+For a workflow that isn't assigned a service account, credentials belong to the user identified in [Whose privileges authorize a run](#workflows-authorization-user). For a workflow assigned to a service account, refer to [Workflows assigned a service account](#workflows-authorization-service-account).
 
 _Connector steps are an exception._ The connector authenticates to the third-party system using its own stored credentials, not the workflow's credential. However, {{kib}} still records the connector step as having executed under the workflow's execution identity for auditability. Refer to [Connector-based actions](/explore-analyze/workflows/steps/external-systems-apps.md#connector-based-actions) for details.
 

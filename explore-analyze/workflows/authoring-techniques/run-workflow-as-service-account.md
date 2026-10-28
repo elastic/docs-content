@@ -61,7 +61,7 @@ After the test completes, open its execution details. The overview identifies bo
 
 Steps that call {{es}} or {{kib}} (`elasticsearch.*` and `kibana.*`) use the service account's privileges. {{connectors-ui}} use their own stored credentials to authenticate to external systems. For details about credentials and child workflows, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 
-% TBD: Confirm agent credential propagation with Workflows and Agent Builder after https://github.com/elastic/kibana/issues/293019 is resolved before adding a claim about agents invoked by a bound workflow.
+% TBD: Confirm agent credential propagation with Workflows and Agent Builder after https://github.com/elastic/kibana/issues/293019 is resolved before adding a claim about agents invoked by a workflow assigned to a service account.
 
 ## Handle permission and identity failures [handle-workflow-service-account-failures]
 
