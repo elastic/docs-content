@@ -32,9 +32,9 @@ Gemini 3.x models remain supported through the [Elastic {{infer-cap}} Service (E
 
 You can choose one of the following options:
 
-- To use Gemini 3.x with a Google Vertex AI endpoint in [External {{infer}}](/explore-analyze/elastic-inference/external.md), [upgrade](#upgrade) to Stack 9.5.6 or later.
-- To keep using that endpoint on Stack 9.2 or 9.3, [switch to Gemini 2.x](#use-a-gemini-2.x-model).
-- To use Gemini 3.x on Stack 9.2 or 9.3, [connect through EIS](#use-gemini-3.x-through-eis).
+- [Upgrade](#upgrade) to Stack 9.5.6 or later.
+- [Create a new endpoint that uses a Gemini 2.x model](#use-a-gemini-2.x-model).
+- [Use Gemini 3.x models through EIS](#use-gemini-3.x-through-eis).
 
 ### Upgrade
 
@@ -42,7 +42,7 @@ Upgrade your cluster to Stack 9.5.6 or later. For instructions, refer to [Upgrad
 
 ### Use a Gemini 2.x model
 
-The model ID of an existing endpoint cannot be changed. Create a new Google Vertex AI endpoint that uses a Gemini 2.x model, for example:
+Create a new Google Vertex AI endpoint that uses a Gemini 2.x model. The model ID of an existing endpoint cannot be changed. For example:
 
 ```console
 PUT _inference/chat_completion/gemini_2_5_flash <1>
