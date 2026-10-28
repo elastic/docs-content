@@ -21,6 +21,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.6 [elastic-observability-9.5.6-release-notes]
+
+### Fixes [elastic-observability-9.5.6-fixes]
+* Fixes an issue in the metrics view in Discover where a dimension picked for breakdown could be silently dropped if the chart section reloaded or hit an error right after the selection was made [#296940]({{kib-pull}}296940).
+* Fixes the {{product.apm}} data check timing out on large deployments and incorrectly showing the onboarding screen as if no {{product.apm}} data exists [#296846]({{kib-pull}}296846).
+* Fixes the error count in the transaction sample header and transaction detail flyout so it matches the error badges in the waterfall when a trace contains both {{product.apm}} errors and OpenTelemetry exception logs [#296018]({{kib-pull}}296018).
+* Fixes **Run test** running on only the first private location when a Synthetics monitor with multiple private locations is in a non-default space [#295614]({{kib-pull}}295614).
+* Fixes the Synthetics private location clean up timing out on large private locations by bumping each affected agent policy once after all deletions [#295492]({{kib-pull}}295492).
+* Fixes {{product.apm}} trace waterfall auto-refresh disrupting an open span or transaction details flyout by pausing auto-refresh while a flyout is open [#295429]({{kib-pull}}295429).
+* Fixes the {{fleet}} **Edit in Synthetics** link opening a monitor in the current space instead of the space it belongs to, and prevents **Delete integration** from deleting the package policy of a monitor that still exists [#294888]({{kib-pull}}294888).
+* Fixes {{product.apm}} **Storage Explorer** returning a 500 error when a configured {{product.apm}} index doesn't exist [#293813]({{kib-pull}}293813).
+* Fixes the Synthetics diagnostics bundle by restricting agent policies in the current space, and requires the **Can manage private locations** privilege in addition to Synthetics write access to download it [#293783]({{kib-pull}}293783).
+
 ## 9.5.5 [elastic-observability-9.5.5-release-notes]
 
 ### Features and enhancements [elastic-observability-9.5.5-features-enhancements]
