@@ -338,7 +338,7 @@ The sandbox showed that your query *can* find a breach. This step confirms the r
 
 ::::{step} Open Execution history
 
-Open **Execution history** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Go to **Alerting** → **Execution History** in the {{observability}} navigation menu, or find **Execution History** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::
 
