@@ -20,9 +20,9 @@ applies_to:
 
 {{auditbeat}} FIPS binaries are also available and follow the same versions and platforms as {{filebeat}} and {{metricbeat}}. This page doesn't document {{auditbeat}}-specific limitations.
 
-{applies_to}`stack: ga 9.6+` {{agent}}, including the bundled {{fleet-server}}, is FIPS 140-3 certified.
+{applies_to}`stack: ga 9.6+` {{agent}}, including the bundled {{fleet-server}}, is FIPS 140-3 compliant. It uses the Go Cryptographic Module, which is validated under the Cryptographic Module Validation Program (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
 
-FIPS 140-3 binaries use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library, which is validated under the Cryptographic Module Validation Program (CMVP). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
+All FIPS 140-3 binaries listed in the table use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library. Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
