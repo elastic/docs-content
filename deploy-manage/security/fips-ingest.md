@@ -20,9 +20,9 @@ applies_to:
 
 {{auditbeat}} FIPS binaries are also available and follow the same versions and platforms as {{filebeat}} and {{metricbeat}}. This page doesn't document {{auditbeat}}-specific limitations.
 
-{applies_to}`stack: ga 9.6+` {{agent}}, including the bundled {{fleet-server}}, is FIPS 140-3 compliant. It uses the Go Cryptographic Module, which is validated under the Cryptographic Module Validation Program (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
+All FIPS 140-3 binaries listed in the table use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library, which is validated under the Cryptographic Module Validation Program (CMVP). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
-All FIPS 140-3 binaries listed in the table use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library. Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
+{applies_to}`stack: ga 9.6+` {{agent}}, including the bundled {{fleet-server}}, is FIPS 140-3 compliant. In 9.6, they use Go Cryptographic Module v1.0.0 (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
@@ -105,7 +105,7 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
 When you run [{{agent}} configured as an OTel Collector](/reference/fleet/otel-agent.md), these additional limitations apply:
 
 * **Azure integrations**: PKCS#12 (`.pfx`) client certificates are not supported for Azure Active Directory authentication. Use client secrets, workload identity, managed identity, or PEM-encoded certificate and key files instead.
-* {applies_to}`stack: ga 9.4+` **Kafka metrics receiver**: SASL GSSAPI (Kerberos) is not supported. Use SASL/PLAIN or SASL/SCRAM over TLS, or mTLS. In 9.4.0–9.4.7 and 9.5.0–9.5.4, SASL/SCRAM uses cryptography outside the validated FIPS module boundary, so use SASL/PLAIN over TLS or mTLS instead.
+* {applies_to}`stack: ga 9.4+` **Kafka metrics receiver**: SASL GSSAPI (Kerberos) is not supported. Use SASL/PLAIN or SASL/SCRAM over TLS, or mTLS. In 9.4.0 and 9.4.1, SASL/SCRAM uses cryptography outside the validated FIPS module boundary, so use SASL/PLAIN over TLS or mTLS instead.
 * **Kafka receiver** and **Kafka exporter**: Not included in FIPS builds in 9.3, 9.4.0–9.4.8, and 9.5.0–9.5.4. Included starting in 9.4.9, 9.5.5, and 9.6.0. When included, SASL GSSAPI (Kerberos) is not supported. Use SASL/PLAIN or SASL/SCRAM over TLS, or mTLS.
 * **Prometheus receiver**: Not included in FIPS builds.
 * The following receivers are not supported in FIPS mode:
