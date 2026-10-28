@@ -40,7 +40,7 @@ To decide whether you have a data view, {{kib}} only checks that one exists in t
 **Discover** opens when either of the following is true:
 
 - A data view exists in the current space.
-- {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` At least one [{{esql}} data federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists.
+- {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` At least one [{{esql}} data federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists.
 
 If {{es}} has data but none of these conditions is true, **Discover** shows the **How do you want to explore your data?** screen. **Discover** still opens when you use a link or a saved Discover session that contains an {{esql}} query.
 
@@ -49,7 +49,7 @@ If {{es}} has data but none of these conditions is true, **Discover** shows the 
 **Dashboards** opens when any of the following is true:
 
 - A data view exists in the current space.
-- {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: unavailable` At least one [{{esql}} data federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists.
+- {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` At least one [{{esql}} data federation](elasticsearch://reference/query-languages/esql/esql-data-federation.md) dataset exists.
 - You have unsaved changes on a new dashboard in your current browser session.
 - At least one saved dashboard exists in the current space.
 
