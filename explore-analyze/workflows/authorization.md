@@ -56,16 +56,12 @@ The **Created By** filter on the **Workflows** page reflects who last saved the 
 
 ### Execution identity in child workflows [workflows-authorization-child-identity]
 
-For workflows composed with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute), the execution identity depends on service account support:
+A workflow can call a child workflow with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute). By default, the child's execution identity depends on whether either workflow is assigned a service account:
 
-::::{applies-switch}
-:::{applies-item} stack: ga 9.6+
-Each saved workflow uses its own service account assignment. A child doesn't automatically inherit its parent's assignment. If the child isn't assigned a service account, it uses the original caller's identity. When neither workflow is assigned a service account, the child uses the same execution identity as the parent.
-:::
-:::{applies-item} { stack: 'ga 9.4-9.5, preview =9.3', serverless: ga }
-The child execution runs with the same execution identity as the parent. The **Executions** tab doesn't visually indicate this inheritance.
-:::
-::::
+* **Neither workflow is assigned a service account.** The child runs with the same execution identity as the parent.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **A service account is assigned to at least one workflow.** When the child has a service account assignment, it uses that account's privileges. The child doesn't automatically inherit the parent's service account. If only the parent is assigned a service account, the child uses the identity associated with the [parent run's trigger](#workflows-authorization-user). For example, if a user manually starts the parent, the child uses that user's privileges even when the parent runs as a service account.
+
+{applies_to}`stack: ga 9.4-9.5, preview =9.3` {applies_to}`serverless: ga` The **Executions** tab doesn't visually indicate when a child inherits its parent's execution identity.
 
 ## How steps use the execution identity [workflows-authorization-scope]
 
