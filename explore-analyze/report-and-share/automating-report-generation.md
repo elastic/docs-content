@@ -198,7 +198,8 @@ Save time by setting up a recurring task that automatically generates reports an
 
 * {applies_to}`serverless: unavailable` To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
-* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
+* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reports** feature privilege, you can only share reports with yourself. 
+* {applies_to}`stack:` (Optional) The **Manage Scheduled Reports** feature must be enabled in the [**Feature visibility** settings](/deploy-manage/manage-spaces.md#spaces-managing) of the space.
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
    * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a built-in preconfigured email connector that uses the SMTP protocol to send emails. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
@@ -251,7 +252,7 @@ Save time by setting up a recurring task that automatically generates reports an
 5. (Optional) To share generated reports outside of Kibana, enable **Send by email** and enter a list of email addresses. Recipients will receive emails with the generated reports attached and on the schedule that you specified.
 
    ::::{note} 
-   If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only send reports to yourself. 
+   If your role doesn't have the **Manage Scheduled Reports** feature privilege, you can only send reports to yourself. 
    ::::
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+`: (Optional) Enter additional details for email notifications:
