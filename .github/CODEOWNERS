@@ -109,11 +109,12 @@
 # Why: landing page for ingest/ (SKI). Today it falls to the whole docs team. Cuts a team from 1 commit.
 /troubleshoot/ingest.md                     @elastic/ski-docs
 /troubleshoot/ingest/                       @elastic/ski-docs
-# Why: landing page for kibana/. Today it falls to the whole docs team. Cuts a team from 1 commit.
-/troubleshoot/kibana.md                     @elastic/admin-docs
-# Why: the triage map lists troubleshoot/kibana/ as Team:Admin. The data is thin and leans SKI, which wrote 5 of 8
-# writer PRs, so SKI is the alternative. Dropping SKI cuts a team from 6 commits.
-/troubleshoot/kibana/                       @elastic/admin-docs
+# Why: landing page for kibana/ (SKI). Today it falls to the whole docs team. Its only writer PR came from SKI.
+# Cuts a team from 1 commit.
+/troubleshoot/kibana.md                     @elastic/ski-docs
+# Why: SKI wrote 5 of 8 writer PRs and was the sole docs approver on 3 of 6 (admin 2, developer-docs 1). Dropping
+# admin cuts a team from 3 commits.
+/troubleshoot/kibana/                       @elastic/ski-docs
 # Why: the triage map lists stack monitoring as Team:Admin, and admin wrote all 3 writer PRs. Dropping SKI cuts a
 # team from 6 commits.
 /troubleshoot/monitoring/                   @elastic/admin-docs
