@@ -80,6 +80,20 @@ The default value is **100**, which reserves enough capacity to keep the project
 
 In {{obs-serverless}} and {{sec-serverless}} projects, search capacity is sized automatically based on the volume of search-ready data in your project. Search capacity does not scale automatically based on query load. If your workload requires additional search capacity, contact Elastic Support.
 
+### Minimum Search VCUs
+```{applies_to}
+serverless:
+  elasticsearch: ga
+```
+
+Use **Minimum Search VCUs** to set a lower bound on Search tier scaling for {{es-serverless}} projects. When configured, the Search tier does not scale below this value, even during idle periods. This reserves a guaranteed level of Search capacity in advance, so your project remains responsive before an anticipated increase in traffic.
+
+Search capacity can still scale above the configured minimum under higher load, and will scale back down toward it only once that additional capacity is no longer required. Lowering the minimum does not immediately reduce capacity that is still in use.
+
+This setting is available for {{es-serverless}} projects only.
+
+Refer to [{{es-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md) for information on how this setting affects your bill.
+
 ### Search Boost Window [elasticsearch-search-boost-window]
 ```{applies_to}
 serverless:
