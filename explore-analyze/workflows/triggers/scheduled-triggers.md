@@ -23,10 +23,10 @@ You can configure scheduled triggers using:
 
 ## Authorization
 
-Scheduled runs are authorized by:
+The privileges used for each scheduled run depend on whether the workflow has an assigned service account:
 
-* The privileges of the user who last saved the workflow, by default.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` The privileges of a user-managed service account, when one is assigned to the workflow.
+* **No service account assigned (default):** The run uses the privileges of the user who last saved the workflow.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **Service account assigned:** The run uses the privileges of that account.
 
 For details, refer to [](/explore-analyze/workflows/authorization.md).
 

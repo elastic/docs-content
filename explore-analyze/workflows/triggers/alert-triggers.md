@@ -26,10 +26,10 @@ Declaring `type: alert` on a workflow isn't enough to run the workflow when aler
 
 ## Authorization
 
-Alert-triggered runs are authorized by:
+The privileges used for each alert-triggered run depend on whether the workflow has an assigned service account:
 
-* The privileges of the user who last saved the rule, by default.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` The privileges of a user-managed service account, when one is assigned to the workflow.
+* **No service account assigned (default):** The run uses the privileges of the user who last saved the rule.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **Service account assigned:** The run uses the privileges of that account.
 
 For details, refer to [](/explore-analyze/workflows/authorization.md).
 

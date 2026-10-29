@@ -25,12 +25,10 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 
 ## Authorization
 
-Event-driven runs are authorized by:
+The privileges used for each event-driven run depend on whether the workflow has an assigned service account:
 
-* The privileges of the user whose action produced the event, by default.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` The privileges of a user-managed service account, when one is assigned to the workflow.
-
-Without an assigned service account, runs triggered by `workflows.failed` use the same privileges as the failed workflow.
+* **No service account assigned (default):** The run uses the privileges of the user whose action produced the event. For `workflows.failed`, it uses the same privileges as the failed workflow.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **Service account assigned:** The run uses the privileges of that account.
 
 For details, refer to [](/explore-analyze/workflows/authorization.md).
 
