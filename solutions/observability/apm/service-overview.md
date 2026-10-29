@@ -85,7 +85,7 @@ Use the search field to filter by message, type, or culprit. Click an error mess
 
 :::{note}
 :applies_to: { stack: ga 9.5+, serverless: ga }
-When the service has no APM error groups but has OpenTelemetry exception logs, the **Errors** table displays those logs instead. Refer to [Errors from logs](/solutions/observability/apm/errors-ui.md#apm-errors-from-logs) for details.
+When the service has no APM error groups but has OpenTelemetry exception logs, the **Errors** table displays those logs instead. To learn why these logs aren't counted as APM errors, refer to [Review exceptions from OpenTelemetry logs](/solutions/observability/apm/errors-ui.md#apm-errors-from-logs).
 :::
 
 :::{image} /solutions/images/observability-error-rate.png
