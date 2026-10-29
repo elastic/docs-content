@@ -13,15 +13,15 @@ Audit trail is the first log type available for [log delivery](/deploy-manage/mo
 
 ## What's included
 
-An audit trail includes the following {{es}} and {{kib}} project events:
+An audit trail includes activity such as the following {{es}} and {{kib}} project events:
 
 <!-- Unhide when org-level audit logs are available.
 * **{{ecloud}} and organization administration:** Sign-ins; membership and IAM; and project settings.
 -->
 * {{kib}} sign-ins
-* Configuration changes to indices, templates, and pipelines
-* Data access, including searches, reads, and writes
 * UI access, such as page navigation and UI requests
+* Configuration changes to {{es}} resources, such as indices, templates, pipelines, and transforms
+* Data access, including searches, reads, and writes
 
 ## Why deliver an audit trail
 
@@ -59,7 +59,7 @@ For **Audit trail**, complete the following fields:
 * In the **Destination** column, select an {{sec-serverless}} or {{obs-serverless}} project to receive the logs.
   
     ::::{tip}
-    Since audit logs are security data, we recommend selecting a {{sec-serverless}} project as the destination for your audit trail.
+    Since audit logs are security data, we recommend selecting a {{sec-serverless}} project as the destination for your audit trail. This lets you create your own detection rules on top of the delivered logs and use the SIEM capabilities of {{sec-serverless}} to alert on suspicious activity.
     ::::
 * In the **Ignore filters** column, select filters to exclude certain events before delivery. Leave the list empty only if you want to deliver all events for that log type. 
 
@@ -144,15 +144,15 @@ Select **View logs** after you save, or use Discover or {{esql}} on the destinat
 
 | Data stream or index pattern | Contents |
 | --- | --- |
-| `logs-*audit.otel-*` | All audit logs |
-| `logs-elastic_cloud.serverless_audit.otel-default` | Project-level audit logs ({{es}}, {{kib}}, and {{ecloud}} project signals) |
+| `logs-*_audit.otel-*` | All audit logs |
+| `logs-elastic_cloud.serverless_audit.otel-default` | Project-level audit logs ({{es}} and {{kib}}) |
 
 <!-- Unhide when org-level audit logs are available.
 | `logs-elastic_cloud.org_audit.otel-default` | Organization-level audit logs (administration, configuration, billing, and similar) |
 -->
 
 :::{warning}
-Restrict who can access these locations in your destination project, because logs might include user identifiers and client IPs.
+Restrict who can access these data streams in your destination project, because logs might include user identifiers and client IPs.
 :::
 
 #### Example queries
