@@ -14,7 +14,7 @@ description: Update Elastic Security prebuilt detection rules to stay current wi
 
 Elastic regularly updates prebuilt rules to optimize their performance and ensure they detect the latest threats and techniques. This page explains how to review and apply updates to your installed prebuilt rules.
 
-How updates handle your customizations depends on whether you can [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#customize-subscription-capabilities). If you can, {{elastic-sec}} keeps them where possible and gives you more options to review updates and resolve conflicts. If you can't, each update replaces the rule with the Elastic version.
+How updates handle your customizations depends on whether your subscription lets you [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#customize-subscription-capabilities). If it does, {{elastic-sec}} keeps them where possible and gives you more options to review updates and resolve conflicts. If it doesn't, each update replaces the rule with the Elastic version.
 
 :::{admonition} Air-gapped environments
 For deployments without internet access, refer to [Prebuilt rules in air-gapped environments](/solutions/security/detect-and-alert/prebuilt-rules-airgapped.md).
@@ -142,24 +142,24 @@ serverless: ga
 stack: ga 9.4+
 ```
 
-If you can edit prebuilt rules directly but don't need to keep your customizations, you can update rules to the Elastic version without resolving conflicts. Updated rules lose your customizations but keep their exceptions and actions.
+If you want to update prebuilt rules without keeping your customizations, you can update them to the Elastic version instead of resolving conflicts. This option requires a subscription that lets you [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#customize-subscription-capabilities). The updated rules keep their exceptions and actions.
 
 1. From the **Rule Updates** tab, do one of the following:
 
-    * To update specific rules, select them, then select {icon}`arrow_down` **More update options for selected rules** next to **Update *x* selected rule(s)**.
-    * To update every rule on the tab that matches your current search and filters, select {icon}`arrow_down` **More update options for all rules** next to **Update all**.
+    * To update specific rules, select them, then select the {icon}`chevron_single_down` arrow next to **Update *x* selected rule(s)**.
+    * To update every rule on the tab that matches your current search and filters, select the {icon}`chevron_single_down` arrow next to **Update all**.
 
 2. Select **Update to Elastic version**. If a confirmation dialog opens, review how many rules lose customizations or change type, then confirm the update.
-3. If any rules changed type, check their exceptions and actions.
+3. If any rules changed type, open each rule's details page and check that its exceptions and actions still work as you intend with the new rule type. Exceptions are on the **Rule exceptions** tab. For how each rule type evaluates exceptions, refer to [Rule type considerations](/solutions/security/detect-and-alert/add-manage-exceptions.md#rule-type-considerations).
 
 To return a rule to the Elastic version you installed without applying the update, use [Revert to Elastic version](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#revert-prebuilt-rules) instead.
 
 ### Update rules with a rule type change [update-rule-type-change]
 
-Some Elastic updates change a rule's type, for example from custom query to event correlation. When you apply one of these updates:
+Some Elastic updates change a rule's type, for example from custom query to event correlation. For these rules, the rule update flyout shows a **Rule type change** callout. When you apply one of these updates:
 
 * The update overwrites your customizations. To keep them, [duplicate the rule](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#duplicate-prebuilt-rules) before you update. The duplicate keeps the old rule type but doesn't receive Elastic updates.
-* The rule keeps its exceptions and actions, but they might behave differently with the new rule type. Check them after you update. For how rule types evaluate exceptions, refer to [Rule type considerations](/solutions/security/detect-and-alert/add-manage-exceptions.md#rule-type-considerations).
+* The rule keeps its exceptions and actions, but they might behave differently with the new rule type. After you update, check them on the rule's details page. For how rule types evaluate exceptions, refer to [Rule type considerations](/solutions/security/detect-and-alert/add-manage-exceptions.md#rule-type-considerations).
 
 If you can't edit prebuilt rules directly, **Update all** and **Update *x* selected rule(s)** include every rule with a type change. If you can, these options handle rules with a type change as follows:
 
