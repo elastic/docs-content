@@ -1,7 +1,7 @@
 ---
 navigation_title: "{{alerting-v2-system-cap}}"
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -13,13 +13,12 @@ description: Kibana Universal Alerting writes each match as a rule event, then e
 
 Use {{alerting-v2-system}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
 
+To open {{alerting-v2-system}}, go to **Alerting** in the {{observability}} navigation menu.
+
 :::{note}
 Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
-:::
 
-:::{admonition} Where to find {{alerting-v2-system}} pages in each version
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Go to **Alerting** in the {{observability}} navigation menu.
-- {applies_to}`stack: experimental =9.5` Go to **Stack Management** → **Alerting V2 Preview**. The UI also calls an alert an **alert episode**. For example, the **Notify per** option for one notification per alert is **Episode** instead of **Alert**.
+If you tried {{alerting-v2-system}} while it was experimental in {{stack}} 9.5, upgrade to 9.6 or later to use the generally available version. The system changed significantly between 9.5 and 9.6. This documentation covers only the generally available version.
 :::
 
 ## The building blocks
@@ -46,7 +45,7 @@ For a step-by-step walkthrough of what happens after a rule runs, refer to [How 
 ## Get started or go deeper [system-overview-next-steps]
 
 - [Get started](get-started.md): Learn how the system works and its key terms, then create your first rule in a hands-on tutorial.
-- [Set up {{alerting-v2-system}}](setup.md): Check the requirements, then turn the system on or off.
+- [Set up {{alerting-v2-system}}](setup.md): Check the requirements and turn on optional features.
 - [Manage](manage.md): Give your team the role privileges it needs, and manage the API keys that authorize rules, action policies, and workflows.
 - [Rules](rules.md): Define what to watch for in {{esql}}, and decide which creation path fits your use case.
 - [Alerts](alerts.md): Learn how alerts track a problem from first detection through recovery, and how to triage them.
