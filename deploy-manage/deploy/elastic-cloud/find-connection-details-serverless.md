@@ -16,7 +16,7 @@ This page is for {{serverless-full}} projects. If you're using an {{ech}} deploy
 
 When you connect clients and tools to an {{serverless-full}} project, these are the main connection details you'll work with:
 
-**{{es}} endpoint**
+**{{es}} direct endpoint**
 :   The HTTPS URL you use to send requests to your project. Most clients, SDKs, and integrations connect with this URL plus an API key.
 
 **API key**
@@ -37,8 +37,8 @@ You can copy your endpoint from the {{ecloud}} Console, or from {{kib}}. Use whi
 :::{include} _snippets/find-endpoint-serverless-console.md
 :::
 
-:::{admonition} Other endpoints in this panel
-The **Application endpoints, cluster and component IDs** area also lists endpoints for other applications, such as {{kib}} and, depending on the project type, {{fleet}} or OpenTelemetry (OTLP), along with your project ID and component IDs. To connect clients and tools to {{es}}, use the **{{es}} endpoint**.
+:::{admonition} Other endpoints in this flyout
+The **Application endpoints** flyout also lists endpoints for other applications, such as {{kib}} and, depending on the project type, {{fleet}} or OpenTelemetry (OTLP), along with your project ID and component IDs. In most cases, to connect clients and tools to {{es}}, use the {{es}} **Direct endpoint**.
 :::
 
 ### From {{kib}} [_find_endpoint_kibana]

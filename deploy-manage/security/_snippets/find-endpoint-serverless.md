@@ -6,8 +6,8 @@
     :::
 
 3. Select **Manage**.
-4. In the project overview, under **Application endpoints, cluster and component IDs**, select the application that you want to access.
-5. Under **Private endpoint**, copy the endpoint URL. It looks something like the following:
+4. In the project overview, under **Application endpoints**, select the application you want to access.
+5. Copy the **Direct {{service-name}} endpoint** URL. It looks something like the following:
 
     ```text subs=true
     https://my-project-d53192.es.{{example-serverless-phz-dn}}

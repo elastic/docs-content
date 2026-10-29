@@ -331,7 +331,7 @@ toc:
                       - file: observability/apm/elastic-apm-agent-configuration-api.md
                       - file: observability/apm/opentelemetry-intake-api.md
                       - file: observability/apm/jaeger-event-intake.md
-                  - file: observability/apm/managed-intake-service-event-api.md
+                  - file: observability/apm/managed-inputs-apm-intake-event-api.md
               - file: observability/apm/upgrade.md
                 children:
                   - file: observability/apm/apm-agent-compatibility.md
