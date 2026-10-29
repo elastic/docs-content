@@ -36,6 +36,18 @@ Platform tools are available across all deployments and serverless projects. The
 
 Platform core tools provide fundamental capabilities for interacting with {{es}} data, executing queries, and working with indices. They are relevant to many use cases.
 
+$$$agent-builder-builtin-tools-frozen-tier$$$ {applies_to}`stack: ga 9.4.8+` **Frozen tier data:** These tools can exclude data stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier).
+
+* {applies_to}`stack: ga 9.4.8+` `execute_esql`, `generate_esql`, and `search` exclude documents in frozen tier indices.
+* {applies_to}`stack: ga 9.4.8+` `get_index_mapping` can omit fields that exist only in frozen backing indices of a data stream, an alias, an index pattern, or a remote index. A request for one local index still returns that index mapping.
+* {applies_to}`stack: ga 9.4.8+` `index_explorer` can omit fields that exist only in frozen indices on a remote cluster. For a local data stream, it returns the data stream mapping without this filter.
+
+{applies_to}`stack: ga 9.4.9+` Each of these five tools accepts an optional `include_frozen` parameter. The parameter description tells the agent to set it to `true` only when you or the agent instructions ask for frozen tier data.
+
+{applies_to}`stack: ga 9.4.9+` To include frozen tier data by default for all five tools in a space, turn on **Elastic Agent Builder: Include frozen tier data by default** (`agentBuilder:includeFrozenByDefault`). This is an [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings). An explicit `include_frozen` value on a tool call overrides the setting.
+
+{applies_to}`stack: ga 9.4.8+` For version differences and other options, refer to [Frozen tier data excluded by default](../limitations-known-issues.md#frozen-tier-data).
+
 $$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The `generate_esql`, `index_explorer`, `list_indices`, and `search` tools also work with [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md). Datasets can only be queried with {{esql}}. If [{{esql}} Data Federation isn't enabled](elasticsearch://reference/query-languages/esql/esql-data-federation.md#enable-the-feature) in {{es}}, these tools find no datasets and don't return an error. The tools find only the datasets that you have the `read_dataset_metadata`, `manage_dataset`, `manage`, or `all` index privilege on. With only the `read` privilege, you can query a dataset with {{esql}}, but these tools don't find it.
 
 `platform.core.execute_esql` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
@@ -47,8 +59,12 @@ $$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {ap
 
     A `WHERE` clause behaves differently: it filters rows without excluding indices from field discovery. To preserve fields from all source indices, use a `WHERE` clause instead of the `filter` parameter. For more information, refer to [Filter using Query DSL](elasticsearch://reference/query-languages/esql/esql-rest.md#esql-rest-filtering).
 
+    {applies_to}`stack: ga 9.4.8+` By default, the tool excludes [frozen tier data](#agent-builder-builtin-tools-frozen-tier).
+
 `platform.core.generate_esql` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Generates an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query from a natural language query.
+
+    {applies_to}`stack: ga 9.4.8+` By default, the tool excludes [frozen tier data](#agent-builder-builtin-tools-frozen-tier).
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also generate queries against [datasets](#agent-builder-builtin-tools-datasets).
 
@@ -58,8 +74,12 @@ $$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {ap
 `platform.core.get_index_mapping` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Retrieves mappings for the specified index or indices.
 
+    {applies_to}`stack: ga 9.4.8+` By default, the tool can omit fields that exist only in frozen backing indices. This applies to a data stream, an alias, an index pattern, or a remote index. Refer to [Frozen tier data](#agent-builder-builtin-tools-frozen-tier).
+
 `platform.core.index_explorer` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Lists relevant indices and corresponding mappings based on a natural language query.
+
+    {applies_to}`stack: ga 9.4.8+` By default, the tool can omit fields that exist only in frozen indices on a remote cluster. Refer to [Frozen tier data](#agent-builder-builtin-tools-frozen-tier).
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also return relevant [federated datasets](#agent-builder-builtin-tools-datasets).
 
@@ -70,6 +90,8 @@ $$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {ap
 
 $$$agent-builder-builtin-search-tool$$$ `platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Searches {{es}} data using natural language, automatically selecting between query DSL and {{esql}} based on the query intent.
+
+    {applies_to}`stack: ga 9.4.8+` By default, the tool excludes [frozen tier data](#agent-builder-builtin-tools-frozen-tier).
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also search [federated datasets](#agent-builder-builtin-tools-datasets), which it always queries with {{esql}}.
 

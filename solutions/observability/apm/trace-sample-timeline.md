@@ -31,6 +31,11 @@ A [span](/solutions/observability/apm/spans.md) is the duration of a single even
 :screenshot:
 :::
 
+:::{note}
+:applies_to: { stack: ga 9.5+, serverless: ga }
+In the waterfall, click **View error**, or **View *x* errors** if there is more than one. This opens the service's **Errors** page, or the **Errors & crashes** page for mobile services, where you can [investigate the related errors](/solutions/observability/apm/errors-ui.md#apm-errors-from-trace).
+:::
+
 ## Inspect GenAI spans [genai-trace-waterfall]
 ```{applies_to}
 stack: preview 9.6+

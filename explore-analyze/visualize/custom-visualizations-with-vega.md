@@ -22,8 +22,8 @@ Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, 
 * Static values written directly into the spec, using Vega's native [inline data](https://vega.github.io/vega/docs/data/#inline-data)
 
 :::{tip}
-:applies_to: {"stack": "ga 9.5"}
-You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language when it creates or updates a dashboard through chat.
+:applies_to: {"serverless": "ga", "stack": "ga 9.5+"}
+You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language. The agent adds them to dashboards, or shows a single visualization [inline in the conversation](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-single-visualizations-appear-in-chat).
 :::
 
 :::{image} /explore-analyze/images/kibana-vega.png
