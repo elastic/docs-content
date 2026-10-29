@@ -34,7 +34,7 @@ Go to the **GenAI Settings** page by using the navigation menu or the [global se
 
 The **GenAI Settings** page has the following settings:
 
-- **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Migrate from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- **Chat experience**: Select whether to use AI Assistant or AI Agent. AI Assistant is deprecated. Use AI Agent.
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
@@ -48,7 +48,7 @@ The **GenAI Settings** page has the following settings:
 The **GenAI Settings** page has the following settings:
 
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
-- **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Migrate from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- **Chat experience**: Select whether to use AI Assistant or AI Agent. AI Assistant is deprecated. Use AI Agent.
 - **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
@@ -65,7 +65,7 @@ The **GenAI Settings** page has the following settings:
   - If an **Elastic Managed LLM** or a custom LLM connector is selected, AI-powered features will default to that connector regardless of which connector was used most recently in your environment.
 - **Disallow all other connectors**: When this setting is disabled, whenever you use an AI-powered feature you can select which connector should power it. Enable it to prevent connectors other than the default connector from being used in your space. Default setting: disabled.
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
-- **Chat experience**: {applies_to}`stack: preview 9.3+` Select whether to use AI Assistant or AI Agent. For information about choosing one, refer to [Migrate from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- **Chat experience**: {applies_to}`stack: preview 9.3+` Select whether to use AI Assistant or AI Agent. Use AI Agent.
 - **AI Assistant visibility**: This setting allows you to choose which AI Assistants are available to use and where. There are several options:
   - **Only in their solutions** (default): The Security AI Assistant appears in {{elastic-sec}}, and the {{obs-ai-assistant}} appears in {{es}} and {{observability}}.
   - **{{obs-ai-assistant}} in other apps**: The {{obs-ai-assistant}} appears throughout {{kib}} regardless of solution. The Security AI Assistant does not appear anywhere.

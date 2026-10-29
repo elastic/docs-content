@@ -29,7 +29,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
 - **[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md)**: An LLM-powered chat experience for digital security. It helps with data analysis, alert investigation, incident response, and {{esql}} query generation, and includes built-in Security skills, custom agents, and tools. To get started, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md).
 
-- {applies_to}`serverless: deprecated` **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: Deprecated. An LLM-powered virtual assistant specialized for digital security. It still works, but it won't get new features. Use {{agent-builder}} instead. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- {applies_to}`serverless: deprecated` **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: Deprecated. An LLM-powered virtual assistant specialized for digital security. Use {{agent-builder}} instead. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
     :::{image} /solutions/images/security-ease-ai-assistant.png
     :alt: A new conversation with AI Assistant

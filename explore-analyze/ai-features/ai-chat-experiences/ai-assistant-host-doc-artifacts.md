@@ -1,7 +1,8 @@
 ---
 navigation_title: "Knowledge base artifact repo for AI Assistant"
 applies_to:
-  self: ga 9.1+
+  stack: ga 9.1-9.3, deprecated 9.4+
+  serverless: deprecated
 products:
   - id: kibana
   - id: security
@@ -11,6 +12,10 @@ description: Host AI Assistant knowledge base artifacts using S3-compatible stor
 ---
 
 # Host a knowledge base artifact repo for AI Assistant [host-knowledge-base-artifact-repo-for-ai-assistant]
+
+:::{warning}
+Elastic AI Assistant is deprecated. Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
+:::
 
 When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually. You do that by mirroring Elastic’s versioned knowledge base artifact ZIP files to infrastructure that {{kib}} can reach.
 

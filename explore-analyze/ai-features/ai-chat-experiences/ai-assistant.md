@@ -8,8 +8,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/ai-assistant-knowledge-base.html
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: ga 9.0-9.3, deprecated 9.4+
+  serverless: deprecated
 products:
   - id: kibana
   - id: observability
@@ -18,6 +18,10 @@ products:
 ---
 
 # AI assistants in {{kib}}
+
+:::{warning}
+Elastic AI Assistant is deprecated. Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
+:::
 
 $$$token-limits$$$
 

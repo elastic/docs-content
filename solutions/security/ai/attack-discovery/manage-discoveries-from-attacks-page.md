@@ -160,4 +160,4 @@ When you change an attack's status, assign or unassign it, or apply attack tags,
 | Apply attack tags | **Take actions** → **Apply attack tags** | Use tags to categorize attacks for filtering. |
 | Investigate in timeline | **Take actions** → **Investigate in timeline** | Includes all alerts originally correlated when the attack was created. It does not reflect your current page filters or time range. |
 | Add to case | **Take actions** → **Add to new case** or **Add to existing case** | Attaches the attack to a [case](/solutions/security/investigate/security-cases.md). |
-| View in AI Chat | **Take actions** → **View in AI Chat** | Continue investigating with an [AI agent](/explore-analyze/ai-features/ai-chat-experiences.md). Ask follow-up questions about the attack or its alerts. |
+| Add to chat | **Take actions** → **Add to chat** | Attaches the attack to an [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) conversation so you can ask follow-up questions about the attack or its alerts. If your space uses the deprecated AI Assistant chat experience, this action is **View in AI Assistant**. |

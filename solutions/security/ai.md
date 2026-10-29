@@ -44,7 +44,7 @@ The following tools provide interactive, LLM-driven capabilities for security an
 
 [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the AI chat experience for {{elastic-sec}}. It provides an LLM-powered chat interface that helps you with alert investigation, incident response, and {{esql}} query generation, plus custom agents, tools, and skills.
 
-{applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) is deprecated. It still works, but it won't get new features. To switch to Agent Builder, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+{applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) is deprecated. To switch to Agent Builder, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
 ## Elastic AI SOC Engine [ease-overview]
 
@@ -71,12 +71,13 @@ Most security AI features require at least one working LLM connector. You can us
 
 ## AI use case guides [ai-use-case-guides]
 
-The following guides walk you through example workflows that demonstrate how AI Assistant and Attack Discovery work individually and together. {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` The AI Assistant guides use a deprecated chat experience. For Agent Builder equivalents, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md).
+The following guides walk you through example workflows that demonstrate how {{agent-builder}} and Attack Discovery work individually and together.
 
-- [Triage alerts](/solutions/security/ai/triage-alerts.md): Use AI Assistant to analyze and triage alerts, including generating investigation reports.
-- [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md): Use Attack Discovery and AI Assistant together to find, investigate, and document potential threats.
-- [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md): Use AI Assistant to write and understand {{esql}} queries.
-- [Use AI Assistant's Knowledge Base to improve response quality](/solutions/security/ai/usecase-knowledge-base-walkthrough.md): Add custom knowledge to AI Assistant to improve the quality and relevance of its responses.
+- [Triage alerts](/solutions/security/ai/triage-alerts.md): Use {{agent-builder}} to analyze and triage alerts, including generating investigation reports.
+- [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md): Use Attack Discovery and {{agent-builder}} together to find, investigate, and document potential threats.
+- [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md): Use {{agent-builder}} to write, run, and understand {{esql}} queries.
+- [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md): Example prompts for each built-in Security skill.
+- {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [Use AI Assistant's Knowledge Base to improve response quality](/solutions/security/ai/usecase-knowledge-base-walkthrough.md): Add custom knowledge to AI Assistant. For {{agent-builder}} equivalents, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
 
 ## Related capabilities [related-capabilities]
 

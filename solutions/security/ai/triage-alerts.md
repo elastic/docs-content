@@ -1,5 +1,5 @@
 ---
-navigation_title: Triage alerts with AI Assistant
+navigation_title: Triage alerts with AI
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/assistant-triage.html
   - https://www.elastic.co/guide/en/serverless/current/security-triage-alerts-with-elastic-ai-assistant.html
@@ -14,10 +14,111 @@ products:
 
 # Triage alerts
 
-::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
+[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) helps you triage alerts faster. Attach an alert to a conversation, and the agent pulls its details, finds related alerts that share hosts, users, or IP addresses, checks entity risk, correlates with {{elastic-sec}} Labs threat intelligence, and recommends a disposition. You can then ask follow-up questions and generate a report for your case.
+
+If you use AI Assistant, refer to [Use AI Assistant (deprecated)](#triage-alerts-ai-assistant).
+
+## Triage alerts with {{agent-builder}} [triage-alerts-agent-builder]
+
+```{applies_to}
+stack: ga 9.4+
+serverless:
+  security: ga
+```
+
+These steps use the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) with the [`alert-analysis`](/solutions/security/ai/agent-builder/skills-use-cases.md#alert-triage-and-investigation) skill. For more example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md).
+
+### Triage a specific alert [triage-alerts-agent-builder-single]
+
+1. From the Alerts table, click an alert's **View details** button.
+2. In the alert details flyout, click **Add to chat**. {{agent-builder}} opens a new conversation with the alert attached and a suggested prompt that asks for a structured alert summary.
+3. Send the suggested prompt, or edit it first. The agent analyzes the alert and its context, then recommends whether it's a true positive, benign true positive, false positive, or needs more data.
+4. Ask follow-up questions, add information, or request clarification. For example:
+
+   * "Find alerts related to this one over the last 7 days."
+   * "Should we escalate this alert?"
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To control which alert field values are anonymized before they're sent to the LLM, go to **Stack Management** → **AI** → **Anonymization**.
+
+### Triage multiple alerts [triage-alerts-agent-builder-multiple]
+
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
+
+Select up to 100 alerts in the Alerts table, then click **Selected *x* alerts** → **Add to chat**. The agent can then assess the alerts together and identify which ones to prioritize. For details, refer to [Add alerts to chat](/solutions/security/detect-and-alert/manage-detection-alerts.md#add-alerts-to-chat).
+
+### Generate triage reports [triage-alerts-agent-builder-reports]
+
+After the agent analyzes one or more alerts, ask it to document the incident for stakeholders. For example:
+
+* "Generate a detailed report about this incident including timeline, impact analysis, and response actions."
+* "Generate a summary of this incident and the related alerts."
+* "Provide more details on the mitigation strategies used."
+
+To keep a record for your team, add the alert to a [case](/solutions/security/investigate/security-cases.md): in the alert details flyout, click **Take action** → **Add to existing case** or **Add to new case**.
+
+{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` You can also ask the agent to create a case or add its findings to an existing one, for example "Add this report as a comment on the case for this alert." The agent uses the [`cases-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-cases-management-skill) skill.
+
+### Example alert triage workflow [triage-alerts-agent-builder-example]
+
+**Scenario:** You're investigating an alert: "Multiple Failed Logins Followed by Success - user: jsmith"
+
+:::::{stepper}
+
+::::{step} Attach the alert and get an initial analysis
+1. From the **Alerts** table, click **View details**.
+2. Click **Add to chat**. The alert is attached to a new conversation.
+3. Send the suggested prompt. The agent returns an initial assessment of the alert.
 ::::
 
-For equivalent workflows in {{agent-builder}}, refer to [Alert triage and investigation](/solutions/security/ai/agent-builder/skills-use-cases.md#alert-triage-and-investigation).
+::::{step} Assess criticality and context
+Ask the agent:
+
+- "Is user jsmith typically logging in from this IP address?"
+- "Are there other suspicious activities from this user in the last 24 hours?"
+- "What are the risk scores for user jsmith and the host they logged in to?"
+::::
+
+::::{step} Investigate related activity
+If the agent flags concerns, investigate further. Ask it to:
+
+- "Hunt for all recent activity from user jsmith."
+- "Find other users logging in from this IP address."
+::::
+
+::::{step} Make a determination
+Based on the agent's analysis, determine whether you're dealing with a potential threat:
+
+- **False positive**: User was traveling, this is expected behavior.
+  - Immediate action: Add a note to the alert, and close it as a false positive.
+  - Future action: Add a rule exception to prevent similar alerts.
+
+- **True positive**: Behavior indicates a potential attack. In response:
+  - Escalate according to your organization's incident response plan.
+  - Create a case to track the investigation.
+::::
+
+::::{step} Document your findings
+1. In the alert details flyout, click **Take action** → **Add to existing case** or **Add to new case**.
+2. Ask the agent for a report, then add it to the case. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` You can ask the agent to add it for you.
+3. Change the alert's status to `Acknowledged`.
+::::
+
+:::::
+
+## Use AI Assistant (deprecated) [triage-alerts-ai-assistant]
+
+```{applies_to}
+stack: ga 9.0-9.5, deprecated 9.6+
+serverless:
+  security: deprecated
+```
+
+::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
+::::
 
 Elastic AI Assistant can help you enhance and streamline your alert triage workflows by assessing multiple recent alerts in your environment, and helping you interpret an alert and its context.
 
@@ -25,15 +126,13 @@ When you view an alert in {{elastic-sec}}, details such as related documents, ho
 
 To enable AI Assistant to answer questions about alerts, you need to provide alert data as context for your prompts. You can either provide multiple alerts using the [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md) feature, or provide individual alerts directly.
 
-
-## Use AI Assistant to triage multiple alerts [ai-assistant-triage-alerts-knowledge-base]
+### Use AI Assistant to triage multiple alerts [ai-assistant-triage-alerts-knowledge-base]
 
 Enable the [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md) **Alerts** setting to send AI Assistant data for up to 500 alerts as context for each of your prompts. Use the slider on the Security AI settings' **Knowledge Base** tab to select the number of alerts to send to AI Assistant.
 
 For more information, refer to [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md).
 
-
-## Use AI Assistant to triage a specific alert [ai-assistant-triage-alerts-instructions]
+### Use AI Assistant to triage a specific alert [ai-assistant-triage-alerts-instructions]
 
 Once you have chosen an alert to investigate:
 
@@ -51,7 +150,7 @@ Once you have chosen an alert to investigate:
 
 5. (Optional) Ask AI Assistant follow-up questions, provide additional information for further analysis, and request clarification. The response is not a static report.
 
-## Generate triage reports [ai-triage-reportgen]
+### Generate triage reports [ai-triage-reportgen]
 
 Elastic AI Assistant can streamline the documentation and report generation process by providing clear records of security incidents, their scope and impact, and your remediation efforts. You can use AI Assistant to create summaries or reports for stakeholders that include key event details, findings, and diagrams. Once AI Assistant has finished analyzing one or more alerts, you can generate reports by using prompts such as:
 
@@ -66,8 +165,7 @@ After you review the report, click **Add to existing case** at the top of AI Ass
 :screenshot:
 :::
 
-
-## Example alert triage workflow
+### Example alert triage workflow [triage-alerts-ai-assistant-example]
 
 This section shows an example workflow for triaging a specific alert.
 
