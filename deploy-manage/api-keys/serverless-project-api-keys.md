@@ -29,13 +29,32 @@ To manage API keys in {{kib}}, go to the **API keys** management page in the nav
 
 ## Create an API key [api-keys-create-an-api-key]
 
-In **API keys**, click **Create API key**:
+The following options are available to create an API key:
 
-:::{image} /deploy-manage/images/serverless-create-personal-api-key.png
-:alt: Create API key UI
-:screenshot:
-:width: 50%
-:::
+* As a quick option, [use the simple API key creation menu](#simple-api-key-creation).
+* For more complex key creation needs, [use the API key page](#advanced-api-key-creation).
+* Create an API key [using the {{es}} API]({{es-serverless-apis}}operation/operation-security-create-api-key).
+
+### Simple API key creation
+
+You can create a basic personal API key from anywhere in {{kib}}:
+
+  1. From the **Help menu** {icon}`question`, select **Connection details → API key**.
+  2. Give the key a name.
+  3. Select **Create API key**.
+
+Your personal API key is created with a default expiration of 90 days from the time of creation. You can manage the key from the **API keys** page.
+
+### Advanced API key creation
+
+Use the API key page to create a personal API key with configurable options.
+
+1. Go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Create API key**.
+3. Give the key a name.
+4. Optionally, set an expiry date. By default the API key does not expire, but it's a good security practice to give the key a limited lifespan.
+5. Optionally, configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [Control security privileges](#api-keys-restrict-privileges) and the [Create API key]({{es-serverless-apis}}operation/operation-security-create-api-key) API documentation to learn more.
+6. Add any additional metadata about the API key as one or more key-value pairs. Refer to the [Create API key]({{es-serverless-apis}}operation/operation-security-create-api-key) API documentation for examples.
 
 Once created, you can copy the encoded API key and use it to send requests to the {{es}} HTTP API. For example:
 
@@ -43,6 +62,10 @@ Once created, you can copy the encoded API key and use it to send requests to th
 curl "${ES_URL}" \
 -H "Authorization: ApiKey ${API_KEY}"
 ```
+:::{image} /deploy-manage/images/serverless-create-personal-api-key.png
+:alt: Create API key UI
+:screenshot:
+:::
 
 ::::{important}
 API keys are intended for programmatic access. Don’t use API keys to authenticate access using a web browser.

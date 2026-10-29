@@ -78,6 +78,7 @@ redirects:
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
   'deploy-manage/security/ece-traffic-filtering-through-the-api.md': 'deploy-manage/security/network-security-api.md'
   'deploy-manage/security/install-stack-demo-secure.md': '!deploy-manage/security/self-setup.md'
+  'deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md': 'deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md'
   'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
