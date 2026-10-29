@@ -4,7 +4,7 @@ description: Understand, analyze, and interact with your Observability data usin
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
 applies_to:
-  stack: ga 9.0-9.3, deprecated 9.4
+  stack: ga 9.0-9.3, deprecated 9.4+
   serverless:
     observability: deprecated
 products:
@@ -14,8 +14,8 @@ products:
 # {{obs-ai-assistant}} [obs-ai-assistant]
 
 :::{warning}
-:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience. To switch back to the AI Assistant, go to **GenAI settings**. Refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for more information.
+:applies_to: {"stack": "deprecated 9.4+", "serverless": "deprecated"}
+The {{obs-ai-assistant}} is deprecated. Use [{{agent-builder}}](/solutions/observability/ai/agent-builder-observability.md) instead. To move to it, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 :::
 
 The AI Assistant is an integration with a large language model (LLM) that helps you understand, analyze, and interact with your Elastic data.
@@ -521,7 +521,7 @@ You can make the official Elastic documentation available to the AI Assistant, w
 Enable this feature from the **Settings** tab in AI Assistant Settings by using the "Install Elastic Documentation" action.
 
 ::::{important}
-For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. Refer to the [Knowledge base artifact settings for AI Assistants](kibana://reference/configuration-reference/ai-assistant-settings.md) for `kibana.yml` settings and proxy options. To mirror the artifact repository to your own infrastructure (S3-compatible bucket, CDN, or local path), refer to [Host a knowledge base artifact repo for AI Assistant](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
+For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. Refer to the [Knowledge base artifact settings for AI Assistants](kibana://reference/configuration-reference/ai-assistant-settings.md) for `kibana.yml` settings and proxy options. To mirror the artifact repository to your own infrastructure (S3-compatible bucket, CDN, or local path), refer to [Host an artifact repo for Elastic product documentation](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
 ::::
 
 ## Anonymization [obs-ai-anonymization]

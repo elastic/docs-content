@@ -1,6 +1,6 @@
 ---
 navigation_title: Set up AI features
-description: Set up the LLM access and privileges that Elastic Security AI features need, plus optional settings such as the chat experience, the Knowledge Base, and Agent Builder documentation.
+description: Set up the LLM access and privileges that Elastic Security AI features need, plus optional settings such as the chat experience, Agent Builder documentation, and the AI Assistant Knowledge Base.
 applies_to:
   serverless:
     security: all
@@ -12,11 +12,12 @@ products:
 
 # Set up AI features [set-up-ai-features]
 
-This page explains how to set up {{elastic-sec}} AI features. It covers the required setup, optional setup that control which models and chat experience are available, and setup that applies only to specific features.
+This page explains how to set up {{elastic-sec}} AI features. It covers the required setup, optional setup that controls which models and chat experience are available, and setup that applies only to specific features.
 
 ## Required setup [set-up-ai-required]
 
 {{elastic-sec}} AI features require a connection to a large language model (LLM), and users need privileges for the features they use.
+
 ### Connect to an LLM [set-up-ai-llm]
 
 If your subscription or project feature tier includes [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), they're available by default with no setup required. To connect a different LLM, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
@@ -28,8 +29,9 @@ Model performance varies by task. To compare models, refer to the [Large languag
 For the privileges that each feature needs, refer to:
 
 - {{agent-builder}}: [Permissions and access control in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md)
-- {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` AI Assistant: [AI Assistant for Security requirements](/solutions/security/ai/ai-assistant.md)
 - Attack Discovery: [Attack Discovery privileges](/solutions/security/ai/attack-discovery/grant-access.md)
+
+If your space still uses AI Assistant, refer to the requirements in [AI Assistant for Security](/solutions/security/ai/ai-assistant.md).
 
 ## Optional setup [set-up-ai-optional]
 
@@ -51,7 +53,7 @@ serverless: ga
 stack: preview =9.3, ga 9.4+
 ```
 
-Each space uses one of two chat experiences for all its users, either [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) or {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [AI Assistant for Security](/solutions/security/ai/ai-assistant.md). The other experience isn't available in that space. To change which experience a space uses, switch chat experiences in **GenAI Settings**. For the default experience in each version and how to switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+{{agent-builder}} is the recommended chat experience, and each space uses one experience for all its users. To change the experience a space uses, switch chat experiences in **GenAI Settings**. For the default in each version and the switching steps, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
 ## Feature-specific setup [set-up-ai-by-feature]
 
@@ -68,7 +70,16 @@ To give {{agent-builder}} more context for its answers, install Elastic document
 
 To check whether the content is already installed, or to install it, refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
 
-### Set up the Knowledge Base [set-up-ai-knowledge-base]
+### Replace the Knowledge Base in {{agent-builder}} [set-up-ai-agent-builder-knowledge]
+
+```{applies_to}
+serverless: ga
+stack: preview =9.3, ga 9.4+
+```
+
+{{agent-builder}} doesn't use Knowledge Base entries. To give agents similar context, install documentation from **GenAI Settings** or assign an [index search tool](/explore-analyze/ai-features/agent-builder/tools/index-search-tools.md). For details, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
+
+### Set up the AI Assistant Knowledge Base [set-up-ai-knowledge-base]
 
 ```{applies_to}
 stack: deprecated 9.6+, ga 9.0-9.5
@@ -76,9 +87,7 @@ serverless:
   security: deprecated
 ```
 
-The Knowledge Base gives AI Assistant more context, such as your internal documentation or threat research. {{agent-builder}} doesn't use the Knowledge Base UI. To give agents similar context, install documentation from **GenAI Settings** or assign an [index search tool](/explore-analyze/ai-features/agent-builder/tools/index-search-tools.md). For details, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
-
-The Knowledge Base requires a {{ml}} node of at least 4 GB. If {{agent-builder}} is the chat experience in the space, [switch to AI Assistant](#set-up-ai-chat) first, because AI Assistant settings aren't available until you do. Then enable the Knowledge Base in each {{kib}} space where you want to use it. For steps to enable it and add knowledge, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
+The Knowledge Base gives AI Assistant more context, such as your internal documentation or threat research. The Knowledge Base requires a {{ml}} node of at least 4 GB. If {{agent-builder}} is the chat experience in the space, [switch to AI Assistant](#set-up-ai-chat) first, because AI Assistant settings aren't available until you do. Then enable the Knowledge Base in each {{kib}} space where you want to use it. For steps to enable it and add knowledge, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
 
 ### Turn on Attack Discovery workflows [set-up-ai-advanced-settings]
 

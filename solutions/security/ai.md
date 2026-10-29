@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ai-for-security.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-for-security.html
 navigation_title: AI-assisted operations
-description: Learn how Elastic Security uses AI to automate alert triage, accelerate threat investigation, and augment SOC analyst workflows with Attack Discovery, AI Assistant, and Agent Builder.
+description: Learn how Elastic Security uses AI to automate alert triage, accelerate threat investigation, and augment SOC analyst workflows with Agent Builder and Attack Discovery.
 applies_to:
   stack: all
   serverless:
@@ -25,7 +25,8 @@ These security-specific AI capabilities build on Elastic's [platform-level AI in
 |---|---|
 | Set up AI features for the first time | [Set up AI features](/solutions/security/ai/set-up-ai-features.md) |
 | Automatically discover attacks across alerts | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) |
-| Get AI help with investigation, queries, and incident response | [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) or {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [AI Assistant](/solutions/security/ai/ai-assistant.md) |
+| Get AI help with investigation, queries, and incident response | {applies_to}`stack: preview =9.3, ga 9.4+` {applies_to}`serverless: ga` [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) |
+| Move from AI Assistant to {{agent-builder}} | {applies_to}`stack: preview =9.3, ga 9.4+` {applies_to}`serverless: ga` [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) |
 | Deploy an AI-powered SOC on {{sec-serverless}} | [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) |
 | Compare LLM performance for security tasks | [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) |
 | Walk through AI-driven security workflows end-to-end | [AI use case guides](#ai-use-case-guides) |
@@ -42,9 +43,27 @@ The following tools provide interactive, LLM-driven capabilities for security an
 
 ### AI chat [ai-chat-overview]
 
-[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the AI chat experience for {{elastic-sec}}. It provides an LLM-powered chat interface that helps you with alert investigation, incident response, and {{esql}} query generation, plus custom agents, tools, and skills.
+{{elastic-sec}} provides an LLM-powered chat interface for alert investigation, incident response, and {{esql}} query generation. The experience depends on your version and space.
 
-{applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) is deprecated. To switch to Agent Builder, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+#### {{agent-builder}} [ai-chat-agent-builder]
+
+```{applies_to}
+stack: preview =9.3, ga 9.4+
+serverless:
+  security: ga
+```
+
+[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the recommended AI chat experience for {{elastic-sec}}. It adds custom agents, tools, and skills to chat. To move from AI Assistant, follow [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+
+#### AI Assistant [ai-chat-ai-assistant]
+
+```{applies_to}
+stack: ga 9.0-9.5, deprecated 9.6+
+serverless:
+  security: deprecated
+```
+
+The [AI Assistant for Security](/solutions/security/ai/ai-assistant.md) documentation covers deployments and spaces that still use it.
 
 ## Elastic AI SOC Engine [ease-overview]
 
@@ -71,13 +90,14 @@ Most security AI features require at least one working LLM connector. You can us
 
 ## AI use case guides [ai-use-case-guides]
 
-The following guides walk you through example workflows that demonstrate how {{agent-builder}} and Attack Discovery work individually and together.
+The following guides walk you through example workflows that demonstrate how AI chat and Attack Discovery work individually and together.
 
-- [Triage alerts](/solutions/security/ai/triage-alerts.md): Use {{agent-builder}} to analyze and triage alerts, including generating investigation reports.
-- [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md): Use Attack Discovery and {{agent-builder}} together to find, investigate, and document potential threats.
-- [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md): Use {{agent-builder}} to write, run, and understand {{esql}} queries.
-- [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md): Example prompts for each built-in Security skill.
-- {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [Use AI Assistant's Knowledge Base to improve response quality](/solutions/security/ai/usecase-knowledge-base-walkthrough.md): Add custom knowledge to AI Assistant. For {{agent-builder}} equivalents, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
+- [Triage alerts](/solutions/security/ai/triage-alerts.md): Use AI chat to analyze and triage alerts, including generating investigation reports.
+- [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md): Use Attack Discovery and AI chat together to find, investigate, and document potential threats.
+- [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md): Use AI chat to write, run, and understand {{esql}} queries.
+- {applies_to}`stack: preview =9.3, ga 9.4+` {applies_to}`serverless: ga` [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md): Example prompts for each built-in Security skill.
+- {applies_to}`stack: preview =9.3, ga 9.4+` {applies_to}`serverless: ga` [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content): Give {{agent-builder}} the context that you would keep in an AI Assistant Knowledge Base.
+- [AI Assistant Knowledge Base walkthrough](/solutions/security/ai/usecase-knowledge-base-walkthrough.md): Add custom knowledge to AI Assistant, for deployments and spaces that still use it.
 
 ## Related capabilities [related-capabilities]
 

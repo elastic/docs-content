@@ -20,17 +20,20 @@ Skills can be activated three ways: the agent selects one automatically from you
 
 **Enable:** `alert-analysis` (optionally combine with [`entity-analytics`](#entity-risk-investigation) for deeper entity context)
 
-Use this skill to triage a specific alert or work through an alert queue. The agent fetches the alert, finds related alerts that share entities, correlates with {{elastic-sec}} Labs threat intelligence, and recommends a disposition (true positive, benign true positive, false positive, or needs more data). For a multi-skill flow that chains this into a tracking dashboard, refer to [Combining skills across use cases](#combining-skills-across-workflows).
+Use this skill to analyze a specific alert or work through an alert queue. The agent fetches the alert, finds related alerts that share entities, and recommends a disposition: true positive, benign true positive, false positive, or needs more data. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For the full UI procedure, from **Add to chat** through disposition and case, refer to [Triage alerts](/solutions/security/ai/triage-alerts.md).
+
+Two parts of the analysis depend on setup:
+
+* Entity risk scores require [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
+* {{elastic-sec}} Labs correlation requires [Security labs content](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#security-labs-content) installed from **GenAI Settings**.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
-| What's the context on this critical alert? | Pull alert details, find alerts that share host, user, or IP entities within a time window, and correlate with threat intelligence. |
+| What's the context on this critical alert? | Pull alert details and find alerts that share host, user, or IP entities within a time window. If Security labs content is installed, also correlate with threat intelligence. |
 | Find alerts related to this one over the last 7 days | Search for alerts sharing `host.name`, `user.name`, `source.ip`, or `destination.ip` with the source alert. |
-| Should we escalate this alert? | Summarize evidence, check entity risk scores for involved hosts and users, and recommend a disposition with supporting reasoning. |
+| Should we escalate this alert? | Summarize evidence and recommend a disposition with supporting reasoning. If entity risk scoring is on, include risk scores for the involved hosts and users. |
 
-:::{tip}
-You can also trigger this skill by attaching an alert from the alert flyout — the agent activates `alert-analysis` automatically based on the attachment.
-:::
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The skill also activates when you attach an alert to the conversation with [**Add to chat**](/solutions/security/detect-and-alert/manage-detection-alerts.md#add-alerts-to-chat).
 
 ## Entity risk investigation
 

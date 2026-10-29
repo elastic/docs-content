@@ -10,6 +10,7 @@ products:
   - id: security
   - id: cloud-serverless
 navigation_title: AI Assistant for Security
+description: Use AI Assistant for Security to investigate alerts, respond to incidents, and generate queries. Agent Builder is the recommended replacement.
 ---
 
 # Elastic AI Assistant for Security

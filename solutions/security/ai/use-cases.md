@@ -20,9 +20,9 @@ The guides in this section describe example workflows for {{agent-builder}} and 
 * [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md)
 * [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md): Example prompts for each built-in Security skill.
 
-Each guide also keeps its AI Assistant steps in a section at the bottom of the page. {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` AI Assistant is deprecated.
-
 For general information, refer to [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) or [Attack Discovery](/solutions/security/ai/attack-discovery/index.md).
+
+Each guide keeps its AI Assistant steps in a section at the bottom of the page for deployments and spaces that still use AI Assistant. To switch to {{agent-builder}}, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). For the Knowledge Base equivalent, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
 
 ## Other AI-powered tools
 

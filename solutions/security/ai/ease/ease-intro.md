@@ -13,12 +13,11 @@ Elastic AI SOC Engine (EASE) is an {{sec-serverless}} project type that provides
 
 This page describes how to create an EASE project, how to ingest your data, and how to use its key features.
 
-
 ## Features
 
 EASE provides a set of capabilities designed to help make the most of each security analyst’s time, fight alert fatigue, and reduce your mean time to respond. Once your data is ingested, you can start using the following features:
 
-- **[Attack Discovery](/solutions/security/ai/attack-discovery/index.md)**: Helps you analyze alerts in your environment and identify threats. Each discovery represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible. 
+- **[Attack Discovery](/solutions/security/ai/attack-discovery/index.md)**: Helps you analyze alerts in your environment and identify threats. Each discovery represents a potential attack and describes relationships among multiple alerts to tell you which users and hosts are involved, how alerts correspond to the MITRE ATT&CK matrix, and which threat actor might be responsible.
 
      :::{image} /solutions/images/security-attck-disc-example-disc.png
      :alt: Attack Discovery detail view
@@ -27,14 +26,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
      You can [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries) Attack Discovery to run automatically, and notify you of any discoveries through a range of connectors such as Slack, Teams, PagerDuty, or email.
 
-- **[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md)**: An LLM-powered chat experience for digital security. It helps with data analysis, alert investigation, incident response, and {{esql}} query generation, and includes built-in Security skills, custom agents, and tools. To get started, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md).
-
-- {applies_to}`serverless: deprecated` **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: Deprecated. An LLM-powered virtual assistant specialized for digital security. Use {{agent-builder}} instead. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
-
-    :::{image} /solutions/images/security-ease-ai-assistant.png
-    :alt: A new conversation with AI Assistant
-    :width: 450px
-    ::: 
+- **[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md)**: An LLM-powered chat experience for digital security. It helps with data analysis, alert investigation, incident response, and {{esql}} query generation, and includes built-in Security skills, custom agents, and tools. To get started, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md). If your project still uses AI Assistant, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) to switch.
 
 - **[Cases](/solutions/security/investigate/security-cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
 
@@ -51,7 +43,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
 To create an EASE project:
 
-1. [Create](/solutions/security/get-started.md#create-sec-serverless-project) an {{sec-serverless}} project, and on the **Confirm your project settings** page, select **Elastic AI SOC Engine**. 
+1. [Create](/solutions/security/get-started.md#create-sec-serverless-project) an {{sec-serverless}} project, and on the **Confirm your project settings** page, select **Elastic AI SOC Engine**.
 
    :::{image} /solutions/images/security-ease-create-ease-project.png
    :alt: The Confirm your project settings page
@@ -59,10 +51,9 @@ To create an EASE project:
 
 2. Click **Create serverless project**, and wait for your project to be provisioned. When it's ready, open it.
 
-
 ## Ingest your SIEM and EDR/XDR data
 
-To ingest third-party security data: 
+To ingest third-party security data:
 
 1. Go to the **Configurations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -82,4 +73,4 @@ To ingest third-party security data:
 
 ## Select a model
 
-EASE uses LLM connectors to enable its AI features such as Attack Discovery and AI Assistant. Elastic Managed LLMs are enabled by default. You can also [configure your own third-party LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Keep in mind that different models [perform differently](/solutions/security/ai/large-language-model-performance-matrix.md) on different tasks.
+EASE uses LLM connectors to enable its AI features such as Attack Discovery and {{agent-builder}}. Elastic Managed LLMs are enabled by default. You can also [configure your own third-party LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Keep in mind that different models [perform differently](/solutions/security/ai/large-language-model-performance-matrix.md) on different tasks.

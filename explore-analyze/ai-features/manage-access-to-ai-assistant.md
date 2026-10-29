@@ -34,7 +34,7 @@ Go to the **GenAI Settings** page by using the navigation menu or the [global se
 
 The **GenAI Settings** page has the following settings:
 
-- **Chat experience**: Select whether to use AI Assistant or AI Agent. AI Assistant is deprecated. Use AI Agent.
+- **Chat Experience**: Select whether to use AI Assistant or AI Agent. AI Assistant is deprecated. Use AI Agent. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
@@ -48,7 +48,7 @@ The **GenAI Settings** page has the following settings:
 The **GenAI Settings** page has the following settings:
 
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
-- **Chat experience**: Select whether to use AI Assistant or AI Agent. AI Assistant is deprecated. Use AI Agent.
+- **Chat Experience**: Select whether to use AI Assistant or AI Agent. The {{obs-ai-assistant}} is deprecated from 9.4. AI Assistant for Security is generally available through 9.5 and deprecated from 9.6. Use AI Agent. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 - **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
@@ -65,13 +65,13 @@ The **GenAI Settings** page has the following settings:
   - If an **Elastic Managed LLM** or a custom LLM connector is selected, AI-powered features will default to that connector regardless of which connector was used most recently in your environment.
 - **Disallow all other connectors**: When this setting is disabled, whenever you use an AI-powered feature you can select which connector should power it. Enable it to prevent connectors other than the default connector from being used in your space. Default setting: disabled.
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
-- **Chat experience**: {applies_to}`stack: preview 9.3+` Select whether to use AI Assistant or AI Agent. Use AI Agent.
+- **Chat Experience**: {applies_to}`stack: preview =9.3` Select whether to use AI Assistant or AI Agent. For help choosing, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 - **AI Assistant visibility**: This setting allows you to choose which AI Assistants are available to use and where. There are several options:
   - **Only in their solutions** (default): The Security AI Assistant appears in {{elastic-sec}}, and the {{obs-ai-assistant}} appears in {{es}} and {{observability}}.
   - **{{obs-ai-assistant}} in other apps**: The {{obs-ai-assistant}} appears throughout {{kib}} regardless of solution. The Security AI Assistant does not appear anywhere.
   - **Security AI Assistant in other apps**: The Security AI Assistant appears throughout {{kib}} regardless of solution. The {{obs-ai-assistant}} does not appear anywhere.
   - **Hide all assistants**: Turns off AI Assistant throughout {{kib}}.
-- **Documentation**: {applies_to}`stack: preview 9.3+` Install Elastic documentation or content from Security labs to improve Agent Builder responses. This section appears only when the chat experience is AI Agent. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
+- **Documentation**: {applies_to}`stack: preview =9.3` Install Elastic documentation or content from Security labs to improve Agent Builder responses. This section appears only when the chat experience is AI Agent. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 
 ::::
 :::::
