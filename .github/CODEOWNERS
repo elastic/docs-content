@@ -140,10 +140,14 @@
 /serverless/index-serverless-changelog.asciidoc @elastic/docs
 
 # Navigation, redirects, and docset config have no owner. The pages changed in the same PR decide the reviewer.
+# When a PR changes only these files, .github/workflows/fallback-reviewer.yml requests the docs team. Keep both
+# lists in sync.
 # Why: nav files change with the pages they list, and those pages already have owners. Cuts a team from 71 commits.
-# 7 commits touched only nav files and would have no code owner.
+# 7 commits touched only nav files. The fallback workflow requests the docs team for those.
 toc.yml
-# Why: cuts a team from 74 commits. 13 commits touched only redirects.yml and would have no code owner.
+# Why: cuts a team from 74 commits. 13 commits touched only redirects.yml. The fallback workflow requests the docs
+# team for those.
 /redirects.yml
-# Why: cuts a team from 36 commits. 14 commits touched only docset.yml and would have no code owner.
+# Why: cuts a team from 36 commits. 14 commits touched only docset.yml. The fallback workflow requests the docs team
+# for those.
 /docset.yml
