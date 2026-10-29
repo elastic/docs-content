@@ -25,7 +25,7 @@ These security-specific AI capabilities build on Elastic's [platform-level AI in
 |---|---|
 | Set up AI features for the first time | [Set up AI features](/solutions/security/ai/set-up-ai-features.md) |
 | Automatically discover attacks across alerts | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) |
-| Get AI help with investigation, queries, and incident response | [AI Assistant](/solutions/security/ai/ai-assistant.md) or [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) |
+| Get AI help with investigation, queries, and incident response | [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) or {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [AI Assistant](/solutions/security/ai/ai-assistant.md) |
 | Deploy an AI-powered SOC on {{sec-serverless}} | [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) |
 | Compare LLM performance for security tasks | [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) |
 | Walk through AI-driven security workflows end-to-end | [AI use case guides](#ai-use-case-guides) |
@@ -42,9 +42,9 @@ The following tools provide interactive, LLM-driven capabilities for security an
 
 ### AI chat [ai-chat-overview]
 
-{{elastic-sec}} offers two AI chat experiences: [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) and [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). Both provide an LLM-powered chat interface that helps you with alert investigation, incident response, and {{esql}} query generation throughout {{elastic-sec}}, and both provide contextual insights that explain errors and suggest remediation steps.
+[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the AI chat experience for {{elastic-sec}}. It provides an LLM-powered chat interface that helps you with alert investigation, incident response, and {{esql}} query generation, plus custom agents, tools, and skills.
 
-However, there are several important differences in their capabilities. To learn more and choose which to use, refer to [AI Agent or AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+{applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) is deprecated. It still works, but it won't get new features. To switch to Agent Builder, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
 ## Elastic AI SOC Engine [ease-overview]
 
@@ -53,7 +53,7 @@ serverless:
   security: preview
 ```
 
-[Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) is an {{sec-serverless}} project type that provides AI-powered tools to augment your existing SIEM and EDR/XDR platforms. EASE combines Attack Discovery, AI Assistant, and agentless data ingestion in a serverless deployment that you can start using in minutes. It's designed for teams that want to get value from AI-driven security operations quickly, without managing infrastructure.
+[Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) is an {{sec-serverless}} project type that provides AI-powered tools to augment your existing SIEM and EDR/XDR platforms. EASE combines Attack Discovery, {{agent-builder}}, and agentless data ingestion in a serverless deployment that you can start using in minutes. It's designed for teams that want to get value from AI-driven security operations quickly, without managing infrastructure.
 
 EASE also offers a [Value report](/solutions/security/ai/ease/ease-value-report.md) that summarizes key security metrics and helps you measure the impact of your AI-powered SOC.
 
@@ -71,7 +71,7 @@ Most security AI features require at least one working LLM connector. You can us
 
 ## AI use case guides [ai-use-case-guides]
 
-The following guides walk you through example workflows that demonstrate how AI Assistant and Attack Discovery work individually and together:
+The following guides walk you through example workflows that demonstrate how AI Assistant and Attack Discovery work individually and together. {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` The AI Assistant guides use a deprecated chat experience. For Agent Builder equivalents, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md).
 
 - [Triage alerts](/solutions/security/ai/triage-alerts.md): Use AI Assistant to analyze and triage alerts, including generating investigation reports.
 - [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md): Use Attack Discovery and AI Assistant together to find, investigate, and document potential threats.

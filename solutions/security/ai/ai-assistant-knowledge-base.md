@@ -3,15 +3,18 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html
   - https://www.elastic.co/guide/en/serverless/current/ai-assistant-knowledge-base.html
 applies_to:
-  stack: all
+  stack: deprecated 9.6+, ga 9.0-9.5
   serverless:
-    security: all
+    security: deprecated
 products:
   - id: security
   - id: cloud-serverless
 ---
 
 # AI Assistant Knowledge Base
+
+::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
+::::
 
 AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific documents and other specified information. This information, which can include everything from the location of your datacenters to the latest threat research, provides additional context that can improve the quality of AI Assistant’s responses to your queries. This topic describes how to enable and add information to Knowledge Base.
 

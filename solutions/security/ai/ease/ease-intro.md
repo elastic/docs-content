@@ -27,14 +27,14 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
      You can [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries) Attack Discovery to run automatically, and notify you of any discoveries through a range of connectors such as Slack, Teams, PagerDuty, or email.
 
-- **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: An LLM-powered virtual assistant specialized for digital security; it helps with data analysis, alert investigation, incident response, and {{esql}} query generation. You can add custom background knowledge and data to its [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md) and use natural language to ask for its assistance with your SOC operations. 
+- **[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md)**: An LLM-powered chat experience for digital security. It helps with data analysis, alert investigation, incident response, and {{esql}} query generation, and includes built-in Security skills, custom agents, and tools. To get started, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md).
+
+- {applies_to}`serverless: deprecated` **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: Deprecated. An LLM-powered virtual assistant specialized for digital security. It still works, but it won't get new features. Use {{agent-builder}} instead. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
     :::{image} /solutions/images/security-ease-ai-assistant.png
     :alt: A new conversation with AI Assistant
     :width: 450px
-    :::
-
-    You can add custom information to AI Assistant's [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md), either in the form of individual documents or entire indices containing numerous documents. This information informs the AI Assistant's responses and can include everything from threat intelligence, to information about your team's on-call rotation, to information about your infrastructure, and more. 
+    ::: 
 
 - **[Cases](/solutions/security/investigate/security-cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
 

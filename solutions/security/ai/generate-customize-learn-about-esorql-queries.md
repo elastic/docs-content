@@ -13,6 +13,11 @@ products:
 
 # Generate, customize, and learn about ES|QL queries
 
+::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
+::::
+
+For equivalent workflows in {{agent-builder}}, refer to [Threat hunting](/solutions/security/ai/agent-builder/skills-use-cases.md#threat-hunting).
+
 Elastic AI Assistant can help you learn about and leverage the Elasticsearch Query Language ({{esql}}) in many ways, including:
 
 * **Education and training**: AI Assistant can serve as a powerful {{esql}} learning tool. Ask it for examples, explanations of complex queries, and best practices.

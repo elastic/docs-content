@@ -33,8 +33,10 @@ $$$token-limits$$$
 
 AI Assistant requires specific privileges and a large language model (LLM) connector. The capabilities and ways to interact with AI Assistant can differ for each solution. To learn more about how it works in each solution, refer to:
 
-- [{{obs-ai-assistant}}](/solutions/observability/ai/observability-ai-assistant.md)
-- [AI Assistant for Security](/solutions/security/ai/ai-assistant.md)
+- {applies_to}`stack: deprecated 9.4+` {applies_to}`serverless: deprecated` [{{obs-ai-assistant}}](/solutions/observability/ai/observability-ai-assistant.md)
+- {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [AI Assistant for Security](/solutions/security/ai/ai-assistant.md)
+
+{{agent-builder}} replaces both assistants. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
 To learn more about configuring LLM connectors, refer to:
 

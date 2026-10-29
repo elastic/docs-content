@@ -13,6 +13,11 @@ products:
 
 # Identify, investigate, and document threats
 
+::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
+::::
+
+For equivalent AI chat workflows in {{agent-builder}}, refer to [Alert triage and investigation](/solutions/security/ai/agent-builder/skills-use-cases.md#alert-triage-and-investigation) and [Attack Discovery generation](/solutions/security/ai/agent-builder/skills-use-cases.md#attack-discovery-generation).
+
 Together, [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) and [Attack discovery](/solutions/security/ai/attack-discovery/index.md) can help you identify and mitigate threats, investigate incidents, and generate incident reports in various languages so you can monitor and protect your environment.
 
 In this guide, you’ll learn how to:

@@ -1,14 +1,17 @@
 ---
 applies_to:
-  stack: ga 9.1
+  stack: deprecated 9.6+, ga 9.1-9.5
   serverless:
-    security: all
+    security: deprecated
 products:
   - id: security
 ---
 
 
 # Use AI Assistant's Knowledge Base to improve response quality
+
+::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
+::::
 
 You can use AI Assistant's Knowledge Base to give it information on anything from threat hunting playbooks, to on-call rotations, security research, infrastructure information, your team's internal communications from platforms like Slack or Teams, and more — constrained only by your creativity. This page guides you through ingesting data from various sources into AI Assistant's Knowledge Base, and shows how this can improve the quality of its responses in a threat response scenario. 
 

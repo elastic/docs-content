@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/security-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
 applies_to:
-  stack: ga
+  stack: deprecated 9.6+, ga 9.0-9.5
   serverless:
-    security: ga
+    security: deprecated
 products:
   - id: security
   - id: cloud-serverless
@@ -14,10 +14,13 @@ navigation_title: AI Assistant for Security
 
 # Elastic AI Assistant for Security
 
+::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
+::::
+
 Elastic AI Assistant for Security helps you interact with your {{elastic-sec}} data and assists with tasks such as alert investigation, incident response, and query generation. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 :::{important}
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Starting in 9.4, [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the default chat experience in {{elastic-sec}}. To continue using AI Assistant, switch chat experiences in **GenAI Settings**. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for the differences and switching steps.
+{applies_to}`stack: ga 9.4-9.5` Starting in 9.4, [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the default chat experience in {{elastic-sec}}. To continue using AI Assistant, switch chat experiences in **GenAI Settings**. Refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for the differences and switching steps.
 :::
 
 :::{image} /solutions/images/security-assistant-basic-view.png

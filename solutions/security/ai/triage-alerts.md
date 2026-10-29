@@ -14,6 +14,11 @@ products:
 
 # Triage alerts
 
+::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
+::::
+
+For equivalent workflows in {{agent-builder}}, refer to [Alert triage and investigation](/solutions/security/ai/agent-builder/skills-use-cases.md#alert-triage-and-investigation).
+
 Elastic AI Assistant can help you enhance and streamline your alert triage workflows by assessing multiple recent alerts in your environment, and helping you interpret an alert and its context.
 
 When you view an alert in {{elastic-sec}}, details such as related documents, hosts, and users appear alongside a synopsis of the events that triggered the alert. This data provides a starting point for understanding a potential threat. AI Assistant can answer questions about this data and offer insights and actionable recommendations to remediate the issue.
