@@ -8,7 +8,6 @@ permissions: {}
 
 jobs:
   request-docs-review:
-    # Fork PRs don't receive secrets, so skip them instead of failing.
     if: ${{ !github.event.pull_request.draft && github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
