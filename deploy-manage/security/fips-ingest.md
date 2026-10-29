@@ -94,8 +94,8 @@ This also limits the available `sasl.mechanism` values for Kafka connections, in
 When you use {{agent}} and {{fleet-server}}, these limitations apply:
 * Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
 * Agent upgrade artifact verification uses GPG signature checking, which is outside the validated FIPS module boundary.
-
-{applies_to}`stack: ga 9.6+` Lightweight Synthetics monitors are supported, because {{heartbeat}} is included in the {{agent}} FIPS build. NTLM authentication for HTTP monitors is not supported in FIPS mode.
+* {applies_to}`stack: ga 9.6+` Lightweight Synthetics monitors don't support NTLM authentication for HTTP monitors.
+* {applies_to}`stack: preview 9.1-9.2, ga 9.3-9.5` Lightweight Synthetics monitors are not supported, because {{heartbeat}} is not included in the {{agent}} FIPS build.
 
 #### {{agent}} configured as an OTel Collector [ingest-limitations-edot]
 
