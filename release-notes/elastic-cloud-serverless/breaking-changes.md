@@ -14,6 +14,38 @@ products:
 :description-visibility: keep-descriptions
 :::
 
+% TODO: Set the date to the Serverless release that enables the `entityStore.migrateLegacySecurityAssets` feature flag (https://github.com/elastic/kibana/pull/287685).
+## Month DD, 2026 [elastic-cloud-serverless-entity-store-index-rename-breaking]
+
+::::{dropdown} Entity Analytics: Entity store indices renamed, custom roles must be updated
+
+The entity store index names no longer include the `security_` prefix. For example, `.entities.v2.latest.security_<space-id>-*` is now `.entities.v2.latest.<space-id>-*`. The same change applies to the `.entities.v2.metadata.*` and `.entities.v2.history.*` indices. Existing entity data is moved to the new indices automatically, and the `entities-latest-<space-id>` alias points to the new index.
+
+The predefined Security roles already grant access to the new indices.
+
+**Impact:**
+
+Users assigned a custom role that only grants the previous `.entities.v2.*.security_*` index patterns see a missing privileges message on the **Entity analytics** page, and entity details in the entity flyout don't load. If a user with such a role turned on the entity store, the entity store stops extracting new entities. Direct queries against the previous concrete index names return no results.
+
+**Action:** Add `read` and `view_index_metadata` for the following index patterns to each custom role used to access Entity Analytics:
+
+```yaml
+- names:
+    - "entities-latest-*"
+    - "entities-metadata-*"
+    - ".entities.v2.latest.*"
+    - ".entities.v2.metadata.*"
+    - ".entities.v2.history.*"
+  privileges:
+    - read
+    - view_index_metadata
+```
+
+For custom roles used to turn on or manage the entity store, grant the same privileges they have for `.entities.v2.*.security_*` on `.entities.v2.*`. If a user with a custom role turned on the entity store, stop and restart the entity store in each space after updating the role. For more information, refer to [Update custom roles after the entity store index rename](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md#update-custom-roles-entity-store-rename).
+
+For more information, view [#282130]({{kib-pull}}282130).
+::::
+
 ## May 28, 2026 [elastic-cloud-serverless-05282026-breaking]
 
 ::::{dropdown} Entity Analytics requires additional index privileges for custom roles

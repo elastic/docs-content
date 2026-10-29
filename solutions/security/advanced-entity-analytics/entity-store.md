@@ -37,7 +37,22 @@ When the entity store is enabled, the following resources are created for the ac
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+::::{applies-item} { stack: ga 9.6+, serverless: ga }
+* A latest entity alias, `entities-latest-<space-id>`, backed by the concrete index `.entities.v2.latest.<space-id>-<mapping_version>`. Query this alias to retrieve the current state of all entities in the entity store.
+* History snapshot indices, `.entities.v2.history.<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
+
+:::{important}
+Starting in 9.6, the entity store index names no longer include the `security_` prefix (for example, `.entities.v2.latest.security_<space-id>-<mapping_version>` is now `.entities.v2.latest.<space-id>-<mapping_version>`). When you upgrade, existing entity data is moved to the new indices automatically, and the `entities-latest-<space-id>` alias points to the new index. History snapshots taken before the upgrade keep their `.entities.v2.history.security_<space-id>.*` names until they expire.
+
+If you query the concrete entity store indices directly, query the `entities-latest-<space-id>` alias instead. If you use custom roles, update them as described in [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md#_privileges_3).
+:::
+
+:::{note}
+Starting in 9.4, the entity store uses {{esql}}-based LOOKUP JOIN queries instead of {{es}} transforms and moves from transform-based indices (`.entities.v1.*`) to ES|QL-based indices (`.entities.v2.*`). When you upgrade from a previous version, existing transforms, enrich policies, and ingest pipelines are removed. Your existing index data is retained. After the entity store is enabled, historical Entity data from logs within the last 3 hours will be extracted.
+:::
+::::
+
+::::{applies-item} { stack: ga 9.4-9.5 }
 * A latest entity alias, `entities-latest-<space-id>`, backed by the concrete index `.entities.v2.latest.security_<space-id>-<mapping_version>`. Query this alias to retrieve the current state of all entities in the entity store.
 * History snapshot indices, `.entities.v2.history.security_<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
 

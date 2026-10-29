@@ -22,6 +22,40 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.6.0 [elastic-security-960-breaking-changes]
+
+::::{dropdown} Entity Analytics: Entity store indices renamed, custom roles must be updated
+**Details**<br> Starting in 9.6.0, the entity store index names no longer include the `security_` prefix:
+
+- `.entities.v2.latest.security_<space-id>-*` is now `.entities.v2.latest.<space-id>-*`
+- `.entities.v2.metadata.security_<space-id>` is now `.entities.v2.metadata.<space-id>`
+- `.entities.v2.history.security_<space-id>.*` is now `.entities.v2.history.<space-id>.*`
+
+When you upgrade, existing entity data is moved to the new indices automatically, and the `entities-latest-<space-id>` alias points to the new index. History snapshots taken before the upgrade keep their previous names until they expire.
+
+Built-in Security roles already grant access to the new indices.
+
+**Impact**<br> Users assigned a custom role that only grants the previous `.entities.v2.*.security_*` index patterns see a missing privileges message on the **Entity analytics** page, and entity details in the entity flyout don't load. If a user with such a role turned on the entity store, the entity store stops extracting new entities after the upgrade. Direct queries against the previous concrete index names return no results.
+
+**Action**<br> Add `read` and `view_index_metadata` for the following index patterns to each custom role used to access Entity Analytics:
+
+```yaml
+- names:
+    - "entities-latest-*"
+    - "entities-metadata-*"
+    - ".entities.v2.latest.*"
+    - ".entities.v2.metadata.*"
+    - ".entities.v2.history.*"
+  privileges:
+    - read
+    - view_index_metadata
+```
+
+For custom roles used to turn on or manage the entity store, grant the same privileges they have for `.entities.v2.*.security_*` on `.entities.v2.*`. If a user with a custom role turned on the entity store, stop and restart the entity store in each space after updating the role. Update direct queries to use the `entities-latest-<space-id>` alias. For more information, refer to [Update custom roles after the entity store index rename](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md#update-custom-roles-entity-store-rename).
+
+For more information, check [#282130]({{kib-pull}}282130).
+::::
+
 ## 9.4.0 [elastic-security-940-breaking-changes]
 
 ::::{dropdown} Osquery: Scheduled query results no longer populate action_id
