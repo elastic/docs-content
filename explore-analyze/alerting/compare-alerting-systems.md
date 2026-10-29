@@ -13,10 +13,10 @@ description: Compare Kibana Classic Alerting, Kibana Universal Alerting, and Wat
 
 # Compare alerting systems [compare-alerting-systems]
 
-Elastic offers three alerting systems, each suited to different use cases and workflows. Use this page to compare them by goal, feature, and availability.
+Elastic offers more than one alerting system, each suited to different use cases and workflows. Use this page to compare them by goal, feature, and availability.
 
 :::{note}
-{{elastic-sec}} has its own detection rules, separate from these three systems. For threat detection, refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
+{{elastic-sec}} has its own detection rules, separate from these alerting systems. For threat detection, refer to [Detections and alerts](/solutions/security/detect-and-alert.md).
 :::
 
 ## Select by use case
@@ -24,11 +24,11 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 | Goal | Suggested system | Availability |
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{alerting-v1-system-cap}}](alerts.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga` |
-| Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, experimental =9.5` |
-| Record matches as rule events with `type: signal` for later analysis, without sending notifications | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, experimental =9.5` |
-| Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, experimental =9.5` |
-| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, experimental =9.5` |
-| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, experimental =9.5` |
+| Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
+| Record matches as rule events with `type: signal` for later analysis, without sending notifications | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
+| Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
+| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
+| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
 | Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | {applies_to}`stack: ga` {applies_to}`serverless: unavailable` |
 
 ## Compare at a glance
@@ -41,4 +41,4 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 | **Notifications** | Configured per action on each rule | [Action policies](esql/notifications-actions.md) invoke reusable workflows, which send the notification; policies support throttling and conditions | Action-level throttling and conditions |
 | **Noise reduction** | Snooze per rule or per alert, maintenance windows | Acknowledge or deactivate per alert, per-series snooze, maintenance windows, match condition routing in [action policies](esql/action-policies/reduce-notification-noise.md) | Action conditions and throttling |
 | **Available on {{serverless-full}}** | Yes | Yes, {applies_to}`serverless: ga` | No |
-| **Available on {{stack}}** | Yes | Yes, {applies_to}`stack: ga 9.6+, experimental =9.5` | Yes |
+| **Available on {{stack}}** | Yes | Yes, {applies_to}`stack: ga 9.6+` | Yes |
