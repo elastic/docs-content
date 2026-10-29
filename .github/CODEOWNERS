@@ -32,10 +32,13 @@
 # Why: both kibana-inference-* images are used only by elastic-inference/ pages. With the line above, cuts a team
 # from 4 commits.
 /explore-analyze/images/kibana-inference-*  @elastic/developer-docs
-# Why: anomaly detection and data frame analytics (ES Core analytics) and NLP (Models & Inference) are developer-docs
-# areas, matching /reference/machine-learning/. SKI wrote 12 of 16 writer PRs outside nlp/, and developer-docs wrote
-# 12 of 16 in nlp/. Dropping SKI cuts a team from 29 commits.
+# Why: data frame analytics (ES Core analytics) and NLP (Models & Inference) are developer-docs areas, matching
+# /reference/machine-learning/. developer-docs wrote 12 of 16 writer PRs in nlp/. Outside nlp/ and
+# anomaly-detection/, SKI wrote 7 of 9. Dropping SKI cuts a team from 21 commits.
 /explore-analyze/machine-learning/          @elastic/developer-docs
+# Why: SKI wrote 8 of 11 writer PRs. Sole docs approvals: developer-docs 4, SKI 2. Versus developer-docs, cuts a
+# team from 3 commits and adds one to 4.
+/explore-analyze/machine-learning/anomaly-detection/ @elastic/ski-docs
 # Why: removed the developer-docs + SKI line for query-filter/, so it falls to SKI through /explore-analyze/. SKI
 # wrote 51 of 63 writer PRs. Sole docs approvals were split (SKI 20, developer-docs 18). Cuts a team from 47 commits.
 /explore-analyze/scripting/                 @elastic/admin-docs
@@ -67,6 +70,13 @@
 /manage-data/ingest/                        @elastic/ski-docs
 
 /reference/                                 @elastic/docs
+# Why: the Observability APM pages are SKI areas. Today the folder falls to the whole docs team. 1 commit in 12
+# months, to cloud-enterprise/ by an admin writer.
+/reference/apm/                             @elastic/ski-docs
+# Why: Elastic Cloud APM settings are Control Plane user settings, an admin-docs area.
+/reference/apm/cloud/                       @elastic/admin-docs
+# Why: Cloud Enterprise APM settings are Control Plane user settings, an admin-docs area.
+/reference/apm/cloud-enterprise/            @elastic/admin-docs
 /reference/apm-agents/                      @elastic/ski-docs
 /reference/elasticsearch-clients/           @elastic/developer-docs
 /reference/fleet/                           @elastic/ski-docs
@@ -118,6 +128,8 @@
 # Why: the triage map lists stack monitoring as Team:Admin, and admin wrote all 3 writer PRs. Dropping SKI cuts a
 # team from 6 commits.
 /troubleshoot/monitoring/                   @elastic/admin-docs
+# Why: landing page for observability/ (SKI). Today it falls to the whole docs team. No commits in 12 months.
+/troubleshoot/observability.md              @elastic/ski-docs
 /troubleshoot/observability/                @elastic/ski-docs
 # Why: landing page for security/ (SKI). Today it falls to the whole docs team. Cuts a team from 1 commit.
 /troubleshoot/security.md                   @elastic/ski-docs
