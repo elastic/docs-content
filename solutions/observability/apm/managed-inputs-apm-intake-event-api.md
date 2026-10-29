@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Managed Inputs APM intake event API [observability-apm-server-api]
+# Managed inputs APM intake event API [observability-apm-server-api]
 
 ::::{warning}
 This API is exclusively for APM agent developers. The vast majority of users should have no reason to interact with this API.
@@ -86,7 +86,7 @@ https://{hostname}:{port}/intake/v2/events
 
 ### Response [api-events-response]
 
-On success, the server will respond with a 202 Accepted status code and no body.
+Managed inputs always process batches asynchronously. On success, the server will respond with a 202 Accepted status code and no body.
 
 Keep in mind that events can succeed and fail independently of each other. Only if all events succeed does the server respond with a 202.
 
@@ -115,7 +115,7 @@ Managed inputs use a collection of JSON Schemas for validating requests to the i
 
 Every new connection to managed inputs starts with a `metadata` stanza. This provides general metadata concerning the other objects in the stream.
 
-Rather than send this metadata information from the agent multiple times, managed inputs hang on to this information and applies it to other objects in the stream as necessary.
+Rather than send this metadata information from the agent multiple times, managed inputs hang on to this information and apply it to other objects in the stream as necessary.
 
 ::::{tip}
 Metadata is stored under `context` when viewing documents in {{es}}.
