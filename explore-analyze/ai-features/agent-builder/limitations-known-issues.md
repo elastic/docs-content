@@ -40,7 +40,9 @@ stack: ga 9.4.8+
 
 {{agent-builder}} tools can exclude documents stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier). Searching that data recovers [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) from object storage. These searches are slow and can cause tool calls to time out.
 
-The frozen tier is a {{stack}} feature. The filter changes results when an index is on the frozen tier.
+:::{note}
+[Data tiers](/manage-data/lifecycle/data-tiers.md) are not relevant to {{serverless}} which automatically handles data storage and scaling. 
+:::
 
 {applies_to}`stack: ga 9.4.8+` Behavior depends on your version:
 
