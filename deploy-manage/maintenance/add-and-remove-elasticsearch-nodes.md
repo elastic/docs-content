@@ -4,13 +4,16 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+navigation_title: Add and remove Elasticsearch nodes on self-managed clusters
 products:
   - id: elasticsearch
 sub:
   slash: \
 ---
 
-# Add and Remove {{es}} nodes [add-elasticsearch-nodes]
+# Add and remove {{es}} nodes on self-managed clusters [add-elasticsearch-nodes]
+
+Use the procedures on this page to add and remove nodes in a self-managed {{es}} cluster.
 
 When you start an instance of {{es}}, you are starting a *node*. An {{es}} *cluster* is a group of nodes that have the same `cluster.name` attribute. As nodes join or leave a cluster, the cluster automatically reorganizes itself to evenly distribute the data across the available nodes.
 
@@ -31,12 +34,11 @@ When you add more nodes to a cluster, it automatically allocates replica shards.
 ## Enroll nodes in an existing cluster [_enroll_nodes_in_an_existing_cluster_5]
 
 ::::{tip}
-Refer to the following pages to learn more about how to add nodes to your cluster in different environments:
+If your deployment is orchestrated, don't enroll nodes manually. Use [autoscaling](../autoscaling.md) or change its capacity or topology instead:
 
-* [autoscaling](../autoscaling.md)
-* [{{ece}}](../deploy/cloud-enterprise/resize-deployment.md)
-* [{{ech}}](../deploy/elastic-cloud/configure.md)
-* [{{eck}}](../deploy/cloud-on-k8s/update-deployments.md)
+* [Configure an {{ech}} deployment](../deploy/elastic-cloud/configure.md)
+* [Resize an {{ece}} deployment](../deploy/cloud-enterprise/resize-deployment.md)
+* [Update an {{eck}} deployment](../deploy/cloud-on-k8s/update-deployments.md)
 
 ::::
 
