@@ -20,6 +20,7 @@ This page covers several common MCP hosts:
 * claude.ai
 * ChatGPT
 * Cursor
+* Amazon Bedrock AgentCore Gateway
 
 
 Other OAuth 2.1 hosts follow the same general pattern, so consult your host's documentation for the specific configuration format.
@@ -232,6 +233,27 @@ When Cursor starts the OAuth flow, it redirects to one of two callback URLs depe
 - **Cursor web and Cursor Agents**: `https://www.cursor.com/agents/mcp/oauth/callback`. If you get an authorization error, check that your [OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) includes this as a Remote redirect URI.
 :::::
 
+:::::{dropdown} Amazon Bedrock AgentCore Gateway
+:name: connect-agentcore-gateway
+
+AgentCore Gateway connects to {{agent-builder}} through an outbound OAuth client in AgentCore Identity.
+
+Before you start, make sure you have:
+
+- An {{agent-builder}} OAuth client with a client secret. Select **Generate confidential MCP client** when you [create the client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client).
+- An outbound OAuth client in AgentCore Identity that uses the client ID and client secret of your {{agent-builder}} OAuth client.
+
+To connect from AgentCore Gateway:
+
+1. In AgentCore Identity, open your outbound OAuth client and copy its **Callback URL**. It looks like `https://bedrock-agentcore.{region}.amazonaws.com/identities/oauth2/callback/{id}`.
+2. [Edit your {{agent-builder}} OAuth client](/deploy-manage/app-connections/create-oauth-client.md#edit-oauth-client) and add the callback URL as a **Remote** redirect URI.
+3. In your gateway, add an MCP server target and set its endpoint to your MCP server URL. For a passthrough target, remove the `/mcp` suffix from the URL, because AgentCore appends it to each request.
+4. For the target's outbound authentication, select your outbound OAuth client, select **Authorization code grant (3LO)** as the grant type, and add the `all` scope.
+5. In the **Return URL** field, enter the `https://` endpoint of the application that completes authorization for your users. Browsers block the redirect to `http://` return URLs.
+
+After a user authorizes, AgentCore redirects them to your return URL with a session ID. Your application must call the AgentCore `CompleteResourceTokenAuth` API with that session ID to finish authorization. For details, refer to [Authentication with an authorization code grant when invoking a gateway](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway-using-auth-ex-3lo.html).
+:::::
+
 :::::{dropdown} Other
 
 Most hosts that support OAuth 2.1 accept a similar configuration to Claude. Provide the `{MCP_SERVER_URL}` and `{CLIENT_ID}` in the format your host requires.
@@ -295,6 +317,10 @@ Connections expire after 30 days without use. Complete the authorization flow ag
 **The authorization flow fails after you wait on the authorization page.**
 
 The MCP host's local callback server times out if the **Connect and authorize** page is left open too long before you click **Authorize**. Start the flow again and click **Authorize** promptly without leaving the page open.
+
+**Amazon Bedrock AgentCore Gateway calls fail with an authorization error after you revoke a connection.**
+
+AgentCore keeps using the revoked access token until it expires, which takes up to one hour. After that, AgentCore prompts the user to authorize again.
 
 **You need to start fresh with a new connection.**
 

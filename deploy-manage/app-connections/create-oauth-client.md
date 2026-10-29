@@ -77,6 +77,11 @@ The redirect URI tells the authorization server where to return the user after t
     :::{warning}
     The ChatGPT callback URL is unique to each app. You must [start the app creation flow first](/deploy-manage/app-connections/connect-mcp-host.md) to get this URL, then return here to add it to your OAuth client.
     :::
+  - Amazon Bedrock AgentCore Gateway: `https://bedrock-agentcore.{region}.amazonaws.com/identities/oauth2/callback/{id}`
+
+    :::{warning}
+    The AgentCore callback URL is unique to each outbound OAuth client in AgentCore Identity. If you haven't created the outbound OAuth client yet, enter a placeholder `https://` URL, then [edit the client](#edit-oauth-client) to [add the callback URL](/deploy-manage/app-connections/connect-mcp-host.md#connect-agentcore-gateway).
+    :::
 
 For local clients that need more than one redirect URI, click **Add local URL** to add additional URLs.
 ::::
