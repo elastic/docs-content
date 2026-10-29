@@ -37,11 +37,12 @@
 # 12 of 16 in nlp/. Dropping SKI cuts a team from 29 commits.
 /explore-analyze/machine-learning/          @elastic/developer-docs
 # Why: removed the developer-docs + SKI line for query-filter/, so it falls to SKI through /explore-analyze/. SKI
-# wrote 51 of 63 writer PRs. Sole docs approvals were split (SKI 20, developer-docs 18). Cuts a team from 47 commits.
+# wrote 51 of 63 writer PRs. Sole docs approvals were split (SKI 20, developer-docs 18). Cuts a team from 49 commits.
 /explore-analyze/scripting/                 @elastic/admin-docs
 /explore-analyze/cross-cluster-search/      @elastic/developer-docs
 # Why: landing page for cross-project-search/. Cuts a team from 4 commits, adds one to 1. Admin wrote 6 of its 8
-# writer PRs, so admin-docs or core-docs is the alternative.
+# writer PRs (10 of 16 in the folder). core-docs would add a team to 8 commits. Moving the page and the folder to
+# admin-docs would cut a team from 8 more commits on net.
 /explore-analyze/cross-project-search.md    @elastic/developer-docs
 /explore-analyze/cross-project-search/      @elastic/developer-docs
 /explore-analyze/transforms/                @elastic/developer-docs
@@ -50,19 +51,11 @@
 /get-started/                               @elastic/core-docs
 
 /manage-data/                               @elastic/admin-docs
-# Why: pages directly in data-store/ mix Storage Engine and Search (developer-docs) with index management and
-# document CRUD (admin-docs). Writer PRs: admin 5, developer-docs 5, SKI 4 of 15. With the four lines below, cuts a
-# team from 49 commits and adds one to 5.
+# Why: data-store/ mixes Storage Engine and Search (developer-docs) with index management and document CRUD
+# (admin-docs), and core-docs covers both teams. Writer PRs: SKI 13, developer-docs 12, admin 11 of 37. Sole docs
+# approvals: admin 17, developer-docs 13. Cuts a team from 52 commits, adds one to 6. Giving data-streams/, mapping/,
+# text-analysis/, and templates/ to developer-docs instead adds a team to 3 more commits on net.
 /manage-data/data-store/                    @elastic/core-docs
-# Why: data streams, the failure store, and time series data streams are Storage Engine, a developer-docs area.
-# Writer PRs are split: SKI 10, admin 8, developer-docs 7 of 25.
-/manage-data/data-store/data-streams/       @elastic/developer-docs
-# Why: mappings are Storage Engine and Search, developer-docs areas. 4 writer PRs (SKI 2, developer-docs 2).
-/manage-data/data-store/mapping/            @elastic/developer-docs
-# Why: analyzers and keyword search are Search, a developer-docs area. 1 writer PR.
-/manage-data/data-store/text-analysis/      @elastic/developer-docs
-# Why: composable, component, and legacy templates are Storage Engine, a developer-docs area. 1 writer PR.
-/manage-data/data-store/templates/          @elastic/developer-docs
 /manage-data/ingest/                        @elastic/ski-docs
 
 /reference/                                 @elastic/docs
@@ -87,13 +80,15 @@
 /solutions/observability/                   @elastic/ski-docs
 # Why (this line and the next): without them, these pages fall to SKI, which wrote 3 of their 15 writer PRs.
 # developer-docs wrote 7 and admin 5. On team count alone it's close: cuts a team from 6 commits, adds one to 8.
+# core-docs would be worse: it adds a team to 9 commits and cuts one from 1.
 /solutions/elasticsearch-solution-project.md @elastic/developer-docs
 /solutions/elasticsearch-solution-project/  @elastic/developer-docs
 # Why: landing page for search/. developer-docs members wrote all 5 writer PRs. Cuts a team from 1 commit.
 /solutions/search.md                        @elastic/developer-docs
 /solutions/search/                          @elastic/developer-docs
 # Why (this line and the next): vector search is a developer-docs area. Without these lines, the pages fall to SKI,
-# which wrote none of the 5 writer PRs (admin 3, developer-docs 2). Adds a team to 1 commit.
+# which wrote none of the 5 writer PRs (admin 3, developer-docs 2). Adds a team to 1 commit. core-docs would add a
+# team to 2 commits and cut one from 1.
 /solutions/vector-database.md               @elastic/developer-docs
 /solutions/vector-database/                 @elastic/developer-docs
 /solutions/security/                        @elastic/ski-docs
