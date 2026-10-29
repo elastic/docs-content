@@ -62,23 +62,33 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
         :alt: The Entra ID User Attributes & Claims page
         :::
 
-    7. From the SAML configuration page, make a note of the `App Federation Metadata URL`.
+    7. Optional: If you use group-based role mappings and your Microsoft Entra ID license supports assigning groups to applications, restrict the group claim to groups assigned to the application. This helps keep the groups sent for each user within the 150-group SAML limit.
+
+        1. In **User Attributes & Claims**, click **Add a group claim**, or edit the existing group claim.
+        2. Select **Groups assigned to the application**. Keep the default group claim name, `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`, to match `attributes.groups` in the {{es}} configuration, then save the claim.
+        3. In **Users and groups**, assign the groups you plan to use in your Elastic role mappings. Users must be direct members of these groups: this option doesn't include nested group memberships.
+
+        If a user's group list exceeds this limit, Entra ID omits the group claim and group-based role mappings don't match. For details about this problem, refer to [Resolve missing group claims](#entra-saml-missing-group-claims).
+
+    8. From the SAML configuration page, make a note of the `App Federation Metadata URL`.
 
 2. Configure {{es}} and {{kib}} for SAML:
 
     1. [Update your {{es}} settings](/deploy-manage/stack-settings.md) with the following configuration:
 
-        ```sh
+        ```yaml
         xpack.security.authc.realms.saml.kibana-realm:
           order: 2
           attributes.principal: nameid
-          attributes.groups: "http://schemas.microsoft.com/ws/2008/06/identity/claims/groups"
+          attributes.groups: "http://schemas.microsoft.com/ws/2008/06/identity/claims/groups" <1>
           idp.metadata.path: "https://login.microsoftonline.com/<Tenant ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application_ID>"
           idp.entity_id: "https://sts.windows.net/<Tenant_ID>/"
           sp.entity_id: "<Kibana_Endpoint_URL>"
           sp.acs: "<Kibana_Endpoint_URL>/api/security/saml/callback"
           sp.logout: "<Kibana_Endpoint_URL>/logout"
         ```
+
+        1. Entra ID omits this attribute when a user's groups exceed the 150-group SAML limit. For workarounds, refer to [Resolve missing group claims](#entra-saml-missing-group-claims).
 
         Where:
 
@@ -87,16 +97,6 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
         * `<Kibana_Endpoint_URL>` is the base URL for your {{kib}} instance. Ensure this is the same value that you set for `Identifier (Entity ID)` in the earlier Microsoft Entra ID configuration step.
 
         * For `idp.metadata.path`, we’ve shown the format to construct the URL. This value should be identical to the `App Federation Metadata URL` setting that you made a note of in the previous step.
-
-        :::{admonition} For organizations with many group memberships
-        If you configure [`attributes.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md#saml-es-user-properties) to read the list of Azure AD groups from the SAML assertion, users who belong to many groups might exceed Azure AD’s size limit for SAML tokens. In that case, the `groups` attribute is omitted.
-
-        To avoid this, enable the **Groups assigned to the application** option in Azure Entra (**App registrations > Token configuration > Edit groups claim**). This setting limits the `groups` attribute in the SAML assertion to only those groups assigned to the application.
-
-        **Alternative:** If you can’t restrict groups to app-assigned ones, use the [Microsoft Graph Authz plugin for Elasticsearch](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md). It looks up group memberships through Microsoft Graph during authorization, so it continues to work even when the `groups` attribute is omitted due to overage.
-
-        Refer to [Group overages](https://learn.microsoft.com/en-us/security/zero-trust/develop/configure-tokens-group-claims-app-roles#group-overages) in the Microsoft Security documentation for more information.
-        :::
 
     2. Next, configure {{kib}} to enable SAML authentication:
         1. [Update your {{kib}} settings](/deploy-manage/stack-settings.md) with the following configuration:
@@ -150,3 +150,27 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
 
 You should now have successfully configured SSO access to {{kib}} with Microsoft Entra ID as the identity provider.
+
+## Resolve missing group claims [entra-saml-missing-group-claims]
+
+Use this procedure if users can't access {{kib}} or don't receive the expected roles because Entra ID omits their group memberships from the SAML assertion.
+
+:::{include} /deploy-manage/_snippets/entra-id-saml-group-overage.md
+:::
+
+For the configuration in this guide, the group claim name must match [`attributes.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-attribute-mapping.md#saml-es-user-properties): `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`.
+
+### Alternative: Retrieve groups with Microsoft Graph
+```{applies_to}
+stack: ga 9.1+
+```
+
+If you can't restrict the groups in the SAML assertion, configure the [Microsoft Graph Authz plugin](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md) to retrieve group memberships from Microsoft Entra ID. Install the plugin and [configure your SAML realm to delegate authorization](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz-configure-elasticsearch.md) to the Microsoft Graph realm.
+
+For example, after configuring a Microsoft Graph realm named `microsoft_graph1`, add this setting to the `kibana-realm` SAML configuration from this guide:
+
+```yaml
+xpack.security.authc.realms.saml.kibana-realm.authorization_realms: microsoft_graph1
+```
+
+The plugin applies to SAML configured in {{es}}, including deployment-level SAML on {{ech}}. It doesn't apply to [{{ecloud}} organization SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md).
