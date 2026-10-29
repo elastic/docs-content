@@ -187,7 +187,6 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-openshift-deploy-operator.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-deploy-elasticsearch.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-deploy-kibana.md
-                      - file: deploy/cloud-on-k8s/k8s-openshift-anyuid-workaround.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-beats.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-agent.md
                   - file: deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md
