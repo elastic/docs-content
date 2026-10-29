@@ -13,7 +13,7 @@ navigation_title: Project settings
 
 Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic [manages many things for you](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md), you can customize the following aspects of your project:
 
-- **[Search AI Lake settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention. The available settings depend on your project type.
+- **[Project settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention. The available settings depend on your project type.
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
 - **[Project tags](#project-tags)**: Add custom tags to categorize and organize your projects alongside predefined tags.
 - **[Connection aliases](#elasticsearch-manage-project-connection-aliases)**: Use predictable, human-readable URLs for your projects that you can share easily.
@@ -28,7 +28,7 @@ To manage these settings:
 
 To edit a project's settings, you must be granted the **Admin** or **Editor** [role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) on the project.
 
-## Search AI Lake settings [elasticsearch-manage-project-search-ai-lake-settings]
+## Project settings [elasticsearch-manage-project-search-ai-lake-settings]
 
 Once ingested, your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. Data in this cache layer is considered **search-ready**.
 
@@ -128,7 +128,7 @@ In addition to the retention period you set for each data stream, {{sec-serverle
 
 {{es-serverless}}, {{obs-serverless}}, and {{es}} {{vectordb}} projects rely on data stream settings to configure data retention. You can define a different retention period for each data stream from the **Data Streams** tab on the **Index Management** page. To open the **Index Management** page, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-{{es-serverless}} and {{obs-serverless}} projects also provide a shortcut: the **Data Retention** option in the **Search AI Lake settings** tab opens the **Data Streams** tab directly. {{es}} {{vectordb}} projects don't include this option in the **Search AI Lake settings** tab.
+{{es-serverless}} and {{obs-serverless}} projects also provide a shortcut: the **Data Retention** option in the **Project settings** tab opens the **Data Streams** tab directly. {{es}} {{vectordb}} projects don't include this option in the **Project settings** tab.
 
 ## Project features and add-ons [project-features-add-ons]
 ```{applies_to}
