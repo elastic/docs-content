@@ -127,7 +127,7 @@ output {
 }
 ```
 
-1. The Elasticsearch endpoint URL for your {{es-serverless}} project is available in **Application endpoints, cluster and component IDs**. Select **Manage** next to your project to access this information. 
+1. The {{es}} endpoint URL for your {{es-serverless}} project is available on the project overview page in the **Application endpoints** flyout. Select **Manage** next to your project to access this information. Use the **Direct endpoint** value.
 
 2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
 

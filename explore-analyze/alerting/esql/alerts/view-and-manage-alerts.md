@@ -1,7 +1,7 @@
 ---
 navigation_title: View and manage alerts
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -12,7 +12,7 @@ description: "Monitor alerts with KPI panels, a histogram, and filters. Triage a
 
 In {{alerting-v2-system}}, use the **Alerts** page to monitor alerts with KPI panels, a histogram, and filters. To open it, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The page also lists alerts from {{alerting-v1-system}} rules, so you can monitor and triage alerts from both systems in one table. Refer to [View alerts from both alerting systems](#alerts-from-both-systems).
+The page also lists alerts from {{alerting-v1-system}} rules, so you can monitor and triage alerts from both systems in one table. Refer to [View alerts from both alerting systems](#alerts-from-both-systems).
 
 To silence, close, or tag alerts, refer to [Triage alerts](triage-alert-episodes.md). For alert lifecycle history, related alerts, and assignment, refer to [Investigate alerts](investigate-alert-episodes.md).
 
@@ -47,10 +47,6 @@ Narrow the time range when filters return too many results or tag options need r
 :::
 
 ## View alerts from both alerting systems [alerts-from-both-systems]
-```{applies_to}
-serverless: ga
-stack: ga 9.6+
-```
 
 To tell alerts from the two systems apart, check the **Source** column: **Universal** for {{alerting-v2-system}} or **Classic** for {{alerting-v1-system}}. To act on {{alerting-v1-system}} alerts from the **Alerts** page, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
 
