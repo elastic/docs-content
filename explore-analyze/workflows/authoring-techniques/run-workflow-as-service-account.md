@@ -56,8 +56,8 @@ The saved assignment applies to manual, scheduled, alert, and event-driven runs.
 
 After the test completes, open its execution details. The overview identifies both identities:
 
-- **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger.
-- **Run as** is the service account whose privileges authorized the workflow's actions.
+- **Triggered by** shows the identity associated with the start of the run, which can be a user or a service account.
+- **Run as** shows the assigned service account whose privileges authorize the workflow's actions.
 
 Steps that call {{es}} or {{kib}} (`elasticsearch.*` and `kibana.*`) use the service account's privileges. {{connectors-ui}} use their own stored credentials to authenticate to external systems. For details about credentials and child workflows, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 

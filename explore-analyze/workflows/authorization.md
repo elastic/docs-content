@@ -50,7 +50,7 @@ If the account is deleted, turned off, or lacks a required privilege, the run fa
 
 When a workflow run starts, {{kib}} records the execution identity so you can audit which privileges it used. Refer to [](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution) for execution context variables.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` For workflows assigned to service accounts, **Triggered by** identifies the user who starts the workflow or last saved it, depending on the trigger. **Run as** shows the service account used for authorization.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` For workflows assigned to service accounts, **Triggered by** shows the identity associated with the start of the run. This can be a user or a service account. **Run as** shows the assigned service account whose privileges authorize the workflow's actions.
 
 The **Created By** filter on the **Workflows** page reflects who last saved the workflow, not necessarily who originally created it.
 
