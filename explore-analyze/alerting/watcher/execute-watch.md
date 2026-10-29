@@ -47,7 +47,7 @@ POST _watcher/watch/my_watch/_execute
 
 This is an example of the output:
 
-```console
+```console-result
 {
   "_id": "my_watch_0-2015-06-02T23:17:55.124Z", <1>
   "watch_record": { <2>

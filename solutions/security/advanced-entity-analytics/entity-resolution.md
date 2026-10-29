@@ -43,6 +43,11 @@ Automated resolution currently matches on email addresses only. Automated resolu
 
 You can manually link entity records using a CSV bulk upload on the **Entity Analytics** management page, or by adding and removing entities directly from the entity details flyout.
 
+:::{tip}
+:applies_to: {stack: ga 9.6+, serverless: ga}
+You can also inspect resolution groups, link or unlink entities, and enable or disable automated resolution rules conversationally with {{agent-builder}} using the `entity-resolution` [skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#security-skills). For example prompts, refer to [Entity resolution](/solutions/security/ai/agent-builder/skills-use-cases.md#entity-resolution).
+:::
+
 ### Bulk link entities using CSV [entity-resolution-csv]
 
 You can bulk-link entity records to primary entities by importing a CSV file from the **Entity Analytics** management page.
