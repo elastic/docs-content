@@ -32,8 +32,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Features and enhancements [elastic-security-9.5.6-features-enhancements]
 
 * Speeds up importing detection rules with overwrite enabled by updating existing rules in bulk instead of one at a time [#291560]({{kib-pull}}291560).
-* Refactors how {{elastic-defend}} manages the macOS system extension to improve reliability.
-* Updates {{elastic-defend}} to accept `advanced.utilization_limits.cpu` values down to 1%. On hosts with more than 32 logical CPUs, the effective limit never goes below 6.4 CPUs, while smaller hosts never go below 20% of the host. Policies that already set a value below 20, which was previously ignored with a policy warning, are now enforced.
+* Improves the reliability of macOS system extension management in {{elastic-defend}}.
+* Updates {{elastic-defend}} to accept `advanced.utilization_limits.cpu` values from 1% to 100%. Values below 20, previously ignored with a policy warning, are now applied. The effective limit never drops below 20% of the host's CPUs, or 6.4 CPUs on hosts with more than 32 logical CPUs.
 * Increases the default maximum file size that {{elastic-defend}} scans for malware to 150 MiB, up from 75 MiB. The `advanced.malware.max_file_size_bytes` setting continues to accept values from 1 MiB to 1 GiB.
 
 ### Fixes [elastic-security-9.5.6-fixes]
@@ -54,8 +54,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the `get-file` response action so {{elastic-defend}} no longer fails the action as host unreachable when a TLS handshake fails due to a broken connection.
 * Fixes a startup crash on macOS that occurred when {{elastic-defend}} could not determine the OS version.
 * Improves how {{elastic-defend}} on Linux handles DNS events when packet data is incomplete or unavailable.
-* Fixes an issue where {{elastic-defend}} could negotiate a different TLS cipher suite from the one configured, or reject a valid cipher suite name, when the output's `ssl.cipher_suites` setting used Beats-style names for two CBC cipher suites. `ECDHE-RSA-AES-128-CBC-SHA256` was resolving to `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA` instead of `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`, and `RSA-AES-128-CBC-SHA256` and `ECDHE-RSA-AES-256-CBC-SHA` were rejected.
-* Updates the {{elastic-defend}} `get-file` response action to return a symbolic link on Linux and macOS as a regular file with the content and permissions of the file the link points to. Previously, some extraction tools, such as `unzip`, created a link instead of the file, or skipped it. On Windows, `get-file` no longer returns an empty file when another process has the file open for reading.
+* Fixes an issue where {{elastic-defend}} could negotiate a different TLS cipher suite than configured, or reject a valid one, when `ssl.cipher_suites` used the Beats-style names `ECDHE-RSA-AES-128-CBC-SHA256`, `RSA-AES-128-CBC-SHA256`, or `ECDHE-RSA-AES-256-CBC-SHA`.
+* Updates the {{elastic-defend}} `get-file` response action to return a symbolic link on Linux and macOS as a regular file with the content and permissions of the file the link points to. On Windows, `get-file` no longer returns an empty file when another process has the file open for reading.
 * Fixes an issue where {{elastic-defend}} incorrectly enforced device control policies on non-removable devices.
 * Fixes the {{elastic-defend}} `get-file` response action so it no longer fails on a symbolic link whose target is a relative path, such as most shared-library links on Linux, and reports the link's real target path.
 * Improves {{elastic-defend}} memory threat protection on macOS 27.
