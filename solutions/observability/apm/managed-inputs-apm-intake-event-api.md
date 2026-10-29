@@ -7,21 +7,21 @@ products:
   - id: cloud-serverless
 ---
 
-# Managed intake service event API [observability-apm-server-api]
+# Managed inputs APM intake event API [observability-apm-server-api]
 
 ::::{warning}
 This API is exclusively for APM agent developers. The vast majority of users should have no reason to interact with this API.
 ::::
 
-The managed intake service exposes endpoints for:
+Managed inputs expose endpoints for:
 
-* [The managed intake service information API](#observability-apm-server-api-server-information-api)
+* [The managed inputs information API](#observability-apm-server-api-server-information-api)
 * [Elastic APM events intake API](#observability-apm-server-api-events-intake-api)
 * [OpenTelemetry intake API](#observability-apm-server-api-opentelemetry-api)
 
 ## Server information API [observability-apm-server-api-server-information-api]
 
-The managed intake service exposes an API endpoint to query general server information. This lightweight endpoint is useful as a server up/down health check.
+Managed inputs expose an API endpoint to query general server information. This lightweight endpoint is useful as a server up/down health check.
 
 ### Server Information endpoint [api-info-endpoint]
 
@@ -37,17 +37,14 @@ Requests to this endpoint must be authenticated.
 
 #### Example [api-info-examples]
 
-Example managed intake service information request:
+Example managed inputs information request:
 
 ```sh
-curl -X POST http://127.0.0.1:8200/ \
+curl -X GET http://127.0.0.1:8200/ \
   -H "Authorization: ApiKey api_key"
 
 {
-  "build_date": "2021-12-18T19:59:06Z",
-  "build_sha": "24fe620eeff5a19e2133c940c7e5ce1ceddb1445",
-  "publish_ready": true,
-  "version": "8.16.1"
+  "version": "8.9.0"
 }
 ```
 
@@ -58,7 +55,7 @@ Most users do not need to interact directly with the events intake API.
 
 ::::
 
-The events intake API is what we call the internal protocol that APM agents use to talk to the managed intake service. Agents communicate with the Server by sending events — captured pieces of information — in an HTTP request. Events can be:
+The events intake API is what we call the internal protocol that APM agents use to talk to managed inputs. Agents communicate with the Server by sending events — captured pieces of information — in an HTTP request. Events can be:
 
 * Transactions
 * Spans
@@ -67,13 +64,13 @@ The events intake API is what we call the internal protocol that APM agents use 
 
 Each event is sent as its own line in the HTTP request body. This is known as [newline delimited JSON (NDJSON)](https://github.com/ndjson/ndjson-spec).
 
-With NDJSON, agents can open an HTTP POST request and use chunked encoding to stream events to the managed intake service as soon as they are recorded in the agent. This makes it simple for agents to serialize each event to a stream of newline delimited JSON. The managed intake service also treats the HTTP body as a compressed stream and thus reads and handles each event independently.
+With NDJSON, agents can open an HTTP POST request and use chunked encoding to stream events to managed inputs as soon as they are recorded in the agent. This makes it simple for agents to serialize each event to a stream of newline delimited JSON. Managed inputs also treat the HTTP body as a compressed stream and thus reads and handles each event independently.
 
 Refer to [Learn about data types](/solutions/observability/apm/data-types.md) to learn more about the different types of events.
 
 ### Endpoints [api-events-endpoint]
 
-The managed intake service exposes the following endpoints for Elastic APM agent data intake:
+Managed inputs expose the following endpoints for Elastic APM agent data intake:
 
 | Name | Endpoint |
 | --- | --- |
@@ -81,78 +78,44 @@ The managed intake service exposes the following endpoints for Elastic APM agent
 
 ### Request [api-events-example]
 
-Send an `HTTP POST` request to the managed intake service `intake/v2/events` endpoint:
+Send an `HTTP POST` request to the `intake/v2/events` endpoint:
 
 ```bash
 https://{hostname}:{port}/intake/v2/events
 ```
 
-The managed intake service supports asynchronous processing of batches. To request asynchronous processing the `async` query parameter can be set in the POST request to the `intake/v2/events` endpoint:
-
-```bash
-https://{hostname}:{port}/intake/v2/events?async=true
-```
-
-::::{note}
-Since asynchronous processing defers some of the event processing to the background and takes place after the client has closed the request, some errors can’t be communicated back to the client and are logged by the managed intake service. Furthermore, asynchronous processing requests will only be scheduled if the managed intake service can service the incoming request, requests that cannot be serviced will receive an internal error `503` "queue is full" error.
-
-::::
-
 ### Response [api-events-response]
 
-On success, the server will respond with a 202 Accepted status code and no body.
+Managed inputs always process batches asynchronously. On success, the server will respond with a 202 Accepted status code and no body.
 
 Keep in mind that events can succeed and fail independently of each other. Only if all events succeed does the server respond with a 202.
 
 ### API Errors [api-events-errors]
 
-There are two types of errors that the managed intake service may return to an agent:
-
-* Event related errors (typically validation errors)
-* Non-event related errors
-
-The managed intake service processes events one after the other. If an error is encountered while processing an event, the error encountered as well as the document causing the error are added to an internal array. The managed intake service will only save 5 event related errors. If it encounters more than 5 event related errors, the additional errors will not be returned to agent. Once all events have been processed, the error response is sent.
-
-Some errors, not relating to specific events, may terminate the request immediately. For example: IP rate limit reached, wrong metadata, etc. If at any point one of these errors is encountered, it is added to the internal array and immediately returned.
+Errors are returned as a flat list of messages alongside the number of accepted events. The HTTP status code reflects the error (for example, `400` for a validation or decoding error).
 
 An example error response might look something like this:
 
 ```json
 {
+  "accepted": 0,
   "errors": [
-    {
-      "message": "<json-schema-err>",   <1>
-      "document": "<ndjson-obj>"   <2>
-    },{
-      "message": "<json-schema-err>",
-      "document": "<ndjson-obj>"
-    },{
-      "message": "<json-decoding-err>",
-      "document": "<ndjson-obj>"
-    },{
-      "message": "too many requests"   <3>
-    },
-  ],
-  "accepted": 2320   <4>
+    "validation error: 'metadata' required"
+  ]
 }
 ```
-
-1. An event related error
-2. The document causing the error
-3. An immediately returning non-event related error
-4. The number of accepted events
 
 If you’re developing an agent, these errors can be useful for debugging.
 
 ### Event API Schemas [api-events-schema-definition]
 
-The managed intake service uses a collection of JSON Schemas for validating requests to the intake API.
+Managed inputs use a collection of JSON Schemas for validating requests to the intake API.
 
 ### Metadata [observability-apm-server-api-metadata]
 
-Every new connection to the managed intake service starts with a `metadata` stanza. This provides general metadata concerning the other objects in the stream.
+Every new connection to managed inputs starts with a `metadata` stanza. This provides general metadata concerning the other objects in the stream.
 
-Rather than send this metadata information from the agent multiple times, the managed intake service hangs on to this information and applies it to other objects in the stream as necessary.
+Rather than send this metadata information from the agent multiple times, managed inputs hang on to this information and apply it to other objects in the stream as necessary.
 
 ::::{tip}
 Metadata is stored under `context` when viewing documents in {{es}}.
@@ -161,7 +124,7 @@ Metadata is stored under `context` when viewing documents in {{es}}.
 
 #### Metadata Schema [metadata-schema]
 
-The managed intake service uses JSON Schema to validate requests. The specification for metadata is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/metadata.json) and included below.
+Managed inputs use JSON Schema to validate requests. The specification for metadata is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/metadata.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -738,7 +701,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 #### Kubernetes data [kubernetes-data]
 
-APM agents automatically read Kubernetes data and send it to the managed intake service. In most instances, agents are able to read this data from inside the container. If this is not the case, or if you wish to override this data, you can set environment variables for the agents to read. These environment variable are set via the Kubernetes [Downward API](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#use-pod-fields-as-values-for-environment-variables). Here’s how you would add the environment variables to your Kubernetes pod spec:
+APM agents automatically read Kubernetes data and send it to managed inputs. In most instances, agents are able to read this data from inside the container. If this is not the case, or if you wish to override this data, you can set environment variables for the agents to read. These environment variable are set via the Kubernetes [Downward API](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#use-pod-fields-as-values-for-environment-variables). Here’s how you would add the environment variables to your Kubernetes pod spec:
 
 ```yaml
          - name: KUBERNETES_NODE_NAME
@@ -774,7 +737,7 @@ Transactions are events corresponding to an incoming request or similar task occ
 
 #### Transaction Schema [api-transaction-schema]
 
-The managed intake service uses JSON Schema to validate requests. The specification for transactions is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/transaction.json) and included below.
+Managed inputs use JSON Schema to validate requests. The specification for transactions is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/transaction.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -1919,7 +1882,7 @@ Spans are events captured by an agent occurring in a monitored service.
 
 #### Span Schema [api-span-schema]
 
-The managed intake service uses JSON Schema to validate requests. The specification for spans is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/span.json) and included below.
+Managed inputs use JSON Schema to validate requests. The specification for spans is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/span.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -2836,7 +2799,7 @@ An error or a logged error message captured by an agent occurring in a monitored
 
 #### Error Schema [api-error-schema]
 
-The managed intake service uses a JSON Schema to validate requests. The specification for errors is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/error.json) and included below.
+Managed inputs use a JSON Schema to validate requests. The specification for errors is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/error.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -4143,7 +4106,7 @@ Metrics contain application metric data captured by an {{apm-agent}}.
 
 #### Metric Schema [api-metricset-schema]
 
-The managed intake service uses JSON Schema to validate requests. The specification for metrics is defined on [GitHub](https://github.com/elastic/apm-server/blob/main/docs/spec/v2/metricset.json) and included below.
+Managed inputs use JSON Schema to validate requests. The specification for metrics is defined on [GitHub](https://github.com/elastic/apm-data/blob/main/input/elasticapm/docs/spec/v2/metricset.json) and included below.
 
 ::::{dropdown} Click to expand the schema
 ```json
@@ -4454,9 +4417,9 @@ The managed intake service uses JSON Schema to validate requests. The specificat
 
 ## OpenTelemetry API [observability-apm-server-api-opentelemetry-api]
 
-Elastic supports receiving traces, metrics, and logs over the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/). OTLP is the default transfer protocol for OpenTelemetry and is supported natively by the managed intake service.
+Elastic supports receiving traces, metrics, and logs over the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/). OTLP is the default transfer protocol for OpenTelemetry and is supported natively by managed inputs.
 
-The managed intake service supports two OTLP communication protocols on the same port:
+Managed inputs support two OTLP communication protocols on the same port:
 
 * OTLP/HTTP (protobuf)
 * OTLP/gRPC
@@ -4478,7 +4441,7 @@ The managed intake service supports two OTLP communication protocols on the same
 | OTLP logs intake | `/v1/logs` |
 
 ::::{tip}
-See our [OpenTelemetry docs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to the managed intake service from an OpenTelemetry agent OpenTelemetry collector.
+See our [OpenTelemetry docs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md) to learn how to send data to managed inputs from an OpenTelemetry agent OpenTelemetry collector.
 
 ::::
 

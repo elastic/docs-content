@@ -124,6 +124,11 @@ stack: ga 9.3+
 
 Disk usage for a `dense_vector` field includes the raw vectors, quantized vectors when quantization is enabled, and the search structure.
 
+#### Interactive sizing calculator [_vector_sizing_calculator]
+
+:::{vector-sizing-calculator}
+:::
+
 #### Raw vector storage
 
 Raw (unquantized) vectors are always stored on disk, including when quantization is enabled. Size depends on `element_type`:

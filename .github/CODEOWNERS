@@ -46,6 +46,14 @@
 /extend/                                    @elastic/core-docs
 /get-started/                               @elastic/core-docs
 
+# Product hub pages. File rules replace the directory fallback (last match wins).
+/products/                                  @elastic/docs
+/products/elasticsearch.md                  @elastic/developer-docs @elastic/admin-docs
+/products/kibana.md                         @elastic/ski-docs @elastic/admin-docs
+/products/logstash.md                       @elastic/ski-docs
+/products/elastic-stack.md                  @elastic/core-docs @elastic/ski-docs
+/hub-whats-new.yml                          @elastic/developer-docs @elastic/ski-docs @elastic/core-docs
+
 /manage-data/                               @elastic/admin-docs
 # Why: pages directly in data-store/ mix Storage Engine and Search (developer-docs) with index management and
 # document CRUD (admin-docs). With the four lines below, cuts a team from 49 commits.

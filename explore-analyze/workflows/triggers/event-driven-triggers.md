@@ -20,8 +20,8 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` **`workflows.failed`**: Fires when another workflow's execution fails.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Cases triggers**: Fire when cases change (created, updated, status changed, attachments added, comments added).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers**: Fire when an entity's asset criticality or risk score changes in the entity store.
-- {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
-- {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.5+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -454,7 +454,7 @@ triggers:
 
 ```{applies_to}
 serverless: preview
-stack: experimental 9.5+
+stack: preview 9.6+
 ```
 
 :::{note}
@@ -467,21 +467,17 @@ Each trigger fires exactly once per event. To subscribe a workflow, add the trig
 
 ### Available triggers [alert-episode-lifecycle-triggers-available]
 
-:::{note}
-The trigger IDs changed after {{stack}} 9.5. If you upgrade, update workflows that use the earlier IDs, because they stop firing until you switch them to the matching current ID.
-:::
-
-| Trigger ID {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.6+` | Trigger ID {applies_to}`stack: experimental =9.5` | When it fires |
-|---|---|---|
-| `alerting.actions.alertActivated` | `alerting.episodeActivated` | A user unresolves an alert. |
-| `alerting.actions.alertDeactivated` | `alerting.episodeDeactivated` | A user resolves an alert. |
-| `alerting.actions.alertSnoozed` | `alerting.episodeSnoozed` | An alert is snoozed. |
-| `alerting.actions.alertUnsnoozed` | `alerting.episodeUnsnoozed` | An alert is unsnoozed. |
-| `alerting.actions.alertAcked` | `alerting.episodeAcked` | An alert is acknowledged. |
-| `alerting.actions.alertUnacked` | `alerting.episodeUnacked` | An alert acknowledgment is removed. |
-| `alerting.actions.alertAssigned` | `alerting.episodeAssigned` | An alert is assigned to a user. |
-| `alerting.actions.alertUnassigned` | `alerting.episodeUnassigned` | An alert assignment is removed. |
-| `alerting.actions.alertTagged` | `alerting.episodeTagged` | A tag is applied to an alert. |
+| Trigger ID | When it fires |
+|---|---|
+| `alerting.actions.alertActivated` | A user unresolves an alert. |
+| `alerting.actions.alertDeactivated` | A user resolves an alert. |
+| `alerting.actions.alertSnoozed` | An alert is snoozed. |
+| `alerting.actions.alertUnsnoozed` | An alert is unsnoozed. |
+| `alerting.actions.alertAcked` | An alert is acknowledged. |
+| `alerting.actions.alertUnacked` | An alert acknowledgment is removed. |
+| `alerting.actions.alertAssigned` | An alert is assigned to a user. |
+| `alerting.actions.alertUnassigned` | An alert assignment is removed. |
+| `alerting.actions.alertTagged` | A tag is applied to an alert. |
 
 ### Event payload [alert-episode-lifecycle-triggers-event]
 
@@ -489,8 +485,7 @@ All lifecycle triggers include these common fields in the event payload.
 
 | `event.*` field | Contains |
 |---|---|
-| `event.alertId` {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.6+` | Unique identifier of the alert. |
-| `event.episodeId` {applies_to}`stack: experimental =9.5` | Unique identifier of the alert. Replaced by `event.alertId` in later versions. |
+| `event.alertId` | Unique identifier of the alert. |
 | `event.ruleId` | ID of the rule that produced the alert. |
 | `event.spaceId` | ID of the {{kib}} space where the event occurred. |
 
@@ -510,7 +505,7 @@ Use these fields to write workflow conditions that scope the automation to speci
 
 ```{applies_to}
 serverless: preview
-stack: experimental 9.5+
+stack: preview 9.6+
 ```
 
 :::{note}
@@ -557,7 +552,7 @@ All rule lifecycle triggers share the same minimal payload.
 |---|---|
 | `event.rule.ruleId` | Unique identifier of the rule that was created, updated, deleted, enabled, or disabled. |
 | `event.rule.spaceId` | ID of the {{kib}} space where the operation occurred. |
-| `event.rule.tags` {applies_to}`serverless: preview` {applies_to}`stack: experimental 9.6+` | Tags assigned to the rule. |
+| `event.rule.tags` | Tags assigned to the rule. |
 
 Reference these fields with Liquid templating in workflow steps:
 
