@@ -65,6 +65,8 @@ stringData:
     log.level: debug
 ```
 
+By default, ECK sets `config.reload.automatic: true` in `logstash.yml` to enable automatic pipeline reloads. {applies_to}`eck: ga 3.6+` For {{ls}} 9.5.0 and later, ECK also sets `ssl.reload.automatic: true` by default (unless you explicitly configure `ssl.reload.automatic`, `config.reload.automatic`, or `xpack.management.enabled`) so that {{ls}} reloads pipeline TLS certificates in place when their backing Secret is updated. Refer to [ConfigMaps and Secrets](logstash-plugins.md#k8s-logstash-working-with-plugins-small-ro) for details.
+
 
 ## Configuring Logstash pipelines [k8s-logstash-pipelines]
 

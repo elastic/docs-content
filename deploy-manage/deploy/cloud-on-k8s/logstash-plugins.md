@@ -40,43 +40,35 @@ In the plugin documentation, look for configurations that call for a `path` or a
 
 **Sensitive assets, such as private keys**
 
-Some plugins need access to private keys or certificates in order to access an external resource. Make the keys or certificates available to the {{ls}} resource in your manifest.
+Some plugins need access to private keys or certificates in order to access an external resource or accept TLS connections. Make the keys or certificates available to the {{ls}} resource in your manifest.
 
 ::::{tip}
 These settings are typically identified by an `ssl_` prefix, such as `ssl_key`, `ssl_keystore_path`, `ssl_certificate`, for example.
 ::::
 
+To use these in your manifest, create a Secret representing the asset, a Volume in your `podTemplate.spec` containing that Secret, and then mount that Volume with a VolumeMount in the `podTemplate.spec.containers` section of your {{ls}} resource.
 
-To use these in your manifest, create a Secret representing the asset, a Volume in your `podTemplate.spec` containing that Secret, and then mount that Volume with a VolumeMount in the `podTemplateSpec.container` section of your {{ls}} resource.
-
-First, create your secrets.
+First, create your secret:
 
 ```bash
-kubectl create secret generic logstash-crt --from-file=logstash.crt
-kubectl create secret generic logstash-key --from-file=logstash.key
+kubectl create secret generic logstash-tls --from-file=logstash.crt --from-file=logstash.key
 ```
 
-Then, create your Logstash resource.
+Then, create your {{ls}} resource:
 
 ```yaml
 spec:
   podTemplate:
     spec:
       volumes:
-        - name: logstash-ssl-crt
+        - name: logstash-tls
           secret:
-            secretName: logstash-crt
-        - name: logstash-ssl-key
-          secret:
-            secretName: logstash-key
+            secretName: logstash-tls
       containers:
         - name: logstash
           volumeMounts:
-            - name: logstash-ssl-key
-              mountPath: "/usr/share/logstash/data/logstash.key"
-              readOnly: true
-            - name: logstash-ssl-crt
-              mountPath: "/usr/share/logstash/data/logstash.crt"
+            - name: logstash-tls
+              mountPath: "/usr/share/logstash/certs"
               readOnly: true
   pipelines:
     - pipeline.id: main
@@ -84,11 +76,21 @@ spec:
         input {
           http {
             port => 8443
-            ssl_certificate => "/usr/share/logstash/data/logstash.crt"
-            ssl_key => "/usr/share/logstash/data/logstash.key"
+            ssl_enabled => true
+            ssl_certificate => "/usr/share/logstash/certs/logstash.crt"
+            ssl_key => "/usr/share/logstash/certs/logstash.key"
           }
         }
 ```
+
+{applies_to}`eck: ga 3.6+` **Automatic TLS certificate reload** 
+
+For {{ls}} 9.5.0 and later, ECK sets `ssl.reload.automatic: true` in `logstash.yml` by default (alongside `config.reload.automatic: true`). When a TLS certificate Secret mounted into the {{ls}} container is renewed—for example, by `cert-manager` or manual rotation—{{ls}} detects the updated certificate files and reloads the affected pipelines in place without restarting the Pod.
+
+For automatic TLS certificate reload to work:
+
+* **Mount the Secret without `subPath`**: Mount the Secret as a directory (as shown in the preceding example) rather than mounting individual files with `subPath`. {{k8s}} does not update files mounted with `subPath` when a Secret changes, and {{ls}} relies on the symlink modification time of the projected Secret volume to detect certificate updates.
+* **Keep default reload settings**: ECK only injects `ssl.reload.automatic: true` when you have not explicitly configured `ssl.reload.automatic`, `config.reload.automatic`, or `xpack.management.enabled` in `spec.config`, `spec.configRef`, or through their corresponding environment variables (`SSL_RELOAD_AUTOMATIC`, `CONFIG_RELOAD_AUTOMATIC`, `XPACK_MANAGEMENT_ENABLED`) on the `logstash` container.
 
 **Static read-only files**
 
