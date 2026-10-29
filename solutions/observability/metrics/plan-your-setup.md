@@ -39,7 +39,7 @@ Use one schema. Mixing OpenTelemetry and ECS in one deployment works, but requir
 | {{apm-server-or-mis}} OTLP intake (the `.apm` endpoint) | ECS | Legacy path that translates OTLP data to ECS. Not recommended for new setups. |
 | Prometheus remote write (Managed Prometheus Remote Write endpoint or {{es}} endpoint) | Prometheus names, unchanged | `metrics.<metric_name>`, with labels as `labels.<label_name>` dimensions, in `metrics-*.prometheus-*` data streams. No conversion to OpenTelemetry or ECS. |
 
-For the OpenTelemetry Protocol (OTLP) paths, refer to [OpenTelemetry data streams compared to classic {{product.apm}} and ECS-based integrations](opentelemetry://reference/compatibility/data-streams.md). For Prometheus remote write, refer to [Data mapping](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#data-mapping).
+For the OpenTelemetry Protocol (OTLP) paths, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format). For Prometheus remote write, refer to [Data mapping](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#data-mapping).
 
 ### Implications of your choice [metrics-plan-data-model-implications]
 
