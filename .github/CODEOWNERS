@@ -18,14 +18,11 @@
 
 /explore-analyze/                           @elastic/ski-docs
 /explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
-# Why: landing page for agent-builder/. developer-docs wrote 13 of its 14 writer PRs. Cuts a team from 11 commits,
-# adds one to 1.
+# Why: landing page for agent-builder/. developer-docs wrote 13 of its 14 writer PRs. Cuts a team from 11 commits.
 /explore-analyze/ai-features/elastic-agent-builder.md @elastic/developer-docs
 /explore-analyze/ai-features/context-engine.md @elastic/developer-docs
 /explore-analyze/ai-features/context-engine/ @elastic/developer-docs
-# Why: developer-docs wrote 23 of 28 writer PRs here (SKI 4), about 6x as many as SKI. 91 of the 121 PRs came from
-# outside the docs team. Dropping SKI cuts a team from 110 commits. core-docs would add a second team to 20 commits
-# and has no triage label.
+# Why: developer-docs wrote 23 of 28 writer PRs here, about 6x as many as SKI. Cuts a team from 110 commits.
 /explore-analyze/elastic-inference/         @elastic/developer-docs
 # Why: all 6 eis-* images are used only by elastic-inference/ pages.
 /explore-analyze/images/eis-*               @elastic/developer-docs
@@ -33,19 +30,15 @@
 # from 4 commits.
 /explore-analyze/images/kibana-inference-*  @elastic/developer-docs
 # Why: data frame analytics (ES Core analytics) and NLP (Models & Inference) are developer-docs areas, matching
-# /reference/machine-learning/. developer-docs wrote 12 of 16 writer PRs in nlp/. Outside nlp/ and
-# anomaly-detection/, SKI wrote 7 of 9. Dropping SKI cuts a team from 21 commits.
+# /reference/machine-learning/. developer-docs wrote 12 of 16 writer PRs in nlp/. Cuts a team from 21 commits.
 /explore-analyze/machine-learning/          @elastic/developer-docs
-# Why: SKI wrote 8 of 11 writer PRs. Sole docs approvals: developer-docs 4, SKI 2. Versus developer-docs, cuts a
-# team from 3 commits and adds one to 4.
+# Why: SKI wrote 8 of 11 writer PRs. Cuts a team from 7 commits.
 /explore-analyze/machine-learning/anomaly-detection/ @elastic/ski-docs
-# Why: removed the developer-docs + SKI line for query-filter/, so it falls to SKI through /explore-analyze/. SKI
-# wrote 51 of 63 writer PRs. Sole docs approvals were split (SKI 20, developer-docs 18). Cuts a team from 47 commits.
+# Why: removed the query-filter/ line (developer-docs + SKI). It now uses the /explore-analyze/ line, so SKI only.
+# SKI wrote 51 of 63 writer PRs. Cuts a team from 47 commits.
 /explore-analyze/scripting/                 @elastic/admin-docs
 /explore-analyze/cross-cluster-search/      @elastic/developer-docs
-# Why: landing page for cross-project-search/. Cuts a team from 4 commits, adds one to 1. Admin wrote 6 of its 8
-# writer PRs (10 of 16 in the folder). core-docs would add a team to 8 commits. Moving the page and the folder to
-# admin-docs would cut a team from 8 more commits on net.
+# Why: landing page for cross-project-search/. Cuts a team from 4 commits.
 /explore-analyze/cross-project-search.md    @elastic/developer-docs
 /explore-analyze/cross-project-search/      @elastic/developer-docs
 /explore-analyze/transforms/                @elastic/developer-docs
@@ -55,27 +48,24 @@
 
 /manage-data/                               @elastic/admin-docs
 # Why: pages directly in data-store/ mix Storage Engine and Search (developer-docs) with index management and
-# document CRUD (admin-docs). Writer PRs: admin 5, developer-docs 5, SKI 4 of 15. With the four lines below, cuts a
-# team from 49 commits and adds one to 5.
+# document CRUD (admin-docs). With the four lines below, cuts a team from 49 commits.
 /manage-data/data-store/                    @elastic/core-docs
 # Why: data streams, the failure store, and time series data streams are Storage Engine, a developer-docs area.
-# Writer PRs are split: SKI 10, admin 8, developer-docs 7 of 25.
 /manage-data/data-store/data-streams/       @elastic/developer-docs
-# Why: mappings are Storage Engine and Search, developer-docs areas. 4 writer PRs (SKI 2, developer-docs 2).
+# Why: mappings are Storage Engine and Search, developer-docs areas.
 /manage-data/data-store/mapping/            @elastic/developer-docs
-# Why: analyzers and keyword search are Search, a developer-docs area. 1 writer PR.
+# Why: analyzers and keyword search are Search, a developer-docs area.
 /manage-data/data-store/text-analysis/      @elastic/developer-docs
-# Why: composable, component, and legacy templates are Storage Engine, a developer-docs area. 1 writer PR.
+# Why: composable, component, and legacy templates are Storage Engine, a developer-docs area.
 /manage-data/data-store/templates/          @elastic/developer-docs
 /manage-data/ingest/                        @elastic/ski-docs
 
 /reference/                                 @elastic/docs
-# Why: the Observability APM pages are SKI areas. Today the folder falls to the whole docs team. 1 commit in 12
-# months, to cloud-enterprise/ by an admin writer.
+# Why: the Observability APM pages are SKI areas. Today the folder falls to the whole docs team.
 /reference/apm/                             @elastic/ski-docs
 # Why: Elastic Cloud APM settings are Control Plane user settings, an admin-docs area.
 /reference/apm/cloud/                       @elastic/admin-docs
-# Why: Cloud Enterprise APM settings are Control Plane user settings, an admin-docs area.
+# Why: Cloud Enterprise APM settings are Control Plane user settings, an admin-docs area. Cuts a team from 1 commit.
 /reference/apm/cloud-enterprise/            @elastic/admin-docs
 /reference/apm-agents/                      @elastic/ski-docs
 /reference/elasticsearch-clients/           @elastic/developer-docs
@@ -91,22 +81,18 @@
 /release-notes/elastic-observability/       @elastic/ski-docs
 /release-notes/elastic-security/            @elastic/ski-docs
 
-# Why: SKI wrote 82 of 108 writer PRs on files directly in solutions/. SKI was the sole docs approver on 76 PRs,
-# developer-docs on 8. About 900 of the 1,090 images in solutions/images/ are used only by SKI pages. Dropping
-# developer-docs cuts a team from 82 commits.
+# Why: SKI wrote 82 of 108 writer PRs on files directly in solutions/. About 900 of the 1,090 images in
+# solutions/images/ are used only by SKI pages. Cuts a team from 83 commits.
 /solutions/                                 @elastic/ski-docs
 /solutions/observability/                   @elastic/ski-docs
-# Why (this line and the next): without them, these pages fall to SKI, which wrote 3 of their 15 writer PRs.
-# developer-docs wrote 7 and admin 5. On team count alone it's close: cuts a team from 6 commits, adds one to 8.
-# core-docs would be worse: it adds a team to 10 commits and cuts one from 1.
+# Why (this line and the next): developer-docs wrote 7 of 15 writer PRs, SKI 3. Cuts a team from 6 commits.
 /solutions/elasticsearch-solution-project.md @elastic/developer-docs
 /solutions/elasticsearch-solution-project/  @elastic/developer-docs
 # Why: landing page for search/. developer-docs members wrote all 5 writer PRs. Cuts a team from 1 commit.
 /solutions/search.md                        @elastic/developer-docs
 /solutions/search/                          @elastic/developer-docs
 # Why (this line and the next): vector search is a developer-docs area. Without these lines, the pages fall to SKI,
-# which wrote none of the 5 writer PRs (admin 3, developer-docs 2). Adds a team to 1 commit. core-docs would add a
-# team to 2 commits and cut one from 1.
+# which wrote none of the 5 writer PRs.
 /solutions/vector-database.md               @elastic/developer-docs
 /solutions/vector-database/                 @elastic/developer-docs
 /solutions/security/                        @elastic/ski-docs
@@ -122,13 +108,12 @@
 # Why: landing page for kibana/ (SKI). Today it falls to the whole docs team. Its only writer PR came from SKI.
 # Cuts a team from 1 commit.
 /troubleshoot/kibana.md                     @elastic/ski-docs
-# Why: SKI wrote 5 of 8 writer PRs and was the sole docs approver on 3 of 6 (admin 2, developer-docs 1). Dropping
-# admin cuts a team from 3 commits.
+# Why: SKI wrote 5 of 8 writer PRs. Cuts a team from 3 commits.
 /troubleshoot/kibana/                       @elastic/ski-docs
-# Why: the triage map lists stack monitoring as Team:Admin, and admin wrote all 3 writer PRs. Dropping SKI cuts a
-# team from 6 commits.
+# Why: the triage map lists stack monitoring as Team:Admin, and admin wrote all 3 writer PRs. Cuts a team from 6
+# commits.
 /troubleshoot/monitoring/                   @elastic/admin-docs
-# Why: landing page for observability/ (SKI). Today it falls to the whole docs team. No commits in 12 months.
+# Why: landing page for observability/ (SKI). Today it falls to the whole docs team.
 /troubleshoot/observability.md              @elastic/ski-docs
 /troubleshoot/observability/                @elastic/ski-docs
 # Why: landing page for security/ (SKI). Today it falls to the whole docs team. Cuts a team from 1 commit.
@@ -142,7 +127,7 @@
 # Navigation, redirects, and docset config have no owner. The pages changed in the same PR decide the reviewer.
 # When a PR changes only these files, .github/workflows/fallback-reviewer.yml requests the docs team. Keep both
 # lists in sync.
-# Why: nav files change with the pages they list, and those pages already have owners. Cuts a team from 71 commits.
+# Why: nav files change with the pages they list, and those pages already have owners. Cuts a team from 70 commits.
 # 7 commits touched only nav files. The fallback workflow requests the docs team for those.
 toc.yml
 # Why: cuts a team from 74 commits. 13 commits touched only redirects.yml. The fallback workflow requests the docs
