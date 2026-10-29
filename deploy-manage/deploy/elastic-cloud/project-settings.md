@@ -90,7 +90,7 @@ Use **Minimum Search VCUs** to set a lower bound on Search tier scaling for {{es
 
 Search capacity can still scale above the configured minimum under higher load, and will scale back down toward it only once that additional capacity is no longer required. Lowering the minimum does not immediately reduce capacity that is still in use.
 
-You can set Minimum Search VCUs to any whole number between 2 and 4,160.
+You can set **Minimum Search VCUs** to any whole number between 2 and 4,160.
 During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
 
 This setting is available for {{es-serverless}} projects only.
