@@ -142,7 +142,7 @@ serverless: ga
 stack: ga 9.4+
 ```
 
-If you want to update prebuilt rules without keeping your customizations, you can update them to the Elastic version instead of resolving conflicts. This option requires a subscription that lets you [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#customize-subscription-capabilities). The updated rules keep their exceptions and actions.
+If you want to update prebuilt rules without keeping your customizations, you can update them to the Elastic version instead of resolving conflicts. This option requires a subscription that lets you [edit prebuilt rules directly](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#customize-subscription-capabilities). The updated rules keep their exceptions and actions. On {{stack}} 9.4 and 9.5, this option is available starting in 9.4.8 and 9.5.5.
 
 1. From the **Rule Updates** tab, do one of the following:
 
@@ -166,7 +166,7 @@ If you can't edit prebuilt rules directly, **Update all** and **Update *x* selec
 | Rule | **Update all** and **Update *x* selected rule(s)** |
 |---|---|
 | Customized | Skipped. Update each rule individually, or use [Update to Elastic version](#update-to-elastic-version). |
-| Not customized {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` | Included, but listed as auto-resolved conflicts. To update only these rules, filter by **Unmodified** first. In the **Conflicts found** dialog, select **Update rules**. |
+| Not customized {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` | Included, but listed as auto-resolved conflicts. To update only these rules, filter by **Unmodified** first. In the **Conflicts found** dialog, select **Update rules**. On {{stack}} 9.4 and 9.5, bulk updates include these rules starting in 9.4.8 and 9.5.5. Earlier versions skip them. |
 | Not customized {applies_to}`stack: ga 9.0-9.3` | Skipped. Update each rule individually. |
 
 
