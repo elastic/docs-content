@@ -36,18 +36,17 @@ In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To
 
 ```{applies_to}
 stack: ga 9.4.8+
-serverless: ga
 ```
 
 {{agent-builder}} tools can exclude documents stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier). Searching that data recovers [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) from object storage. These searches are slow and can cause tool calls to time out.
 
-The frozen tier is a {{stack}} feature. The same controls are available in {{serverless-short}} projects. The filter changes results when an index is on the frozen tier.
+The frozen tier is a {{stack}} feature. The filter changes results when an index is on the frozen tier.
 
-{applies_to}`stack: ga 9.4.8+` {applies_to}`serverless: unavailable` On {{stack}}, behavior depends on your version:
+{applies_to}`stack: ga 9.4.8+` Behavior depends on your version:
 
-* {applies_to}`stack: ga 9.4.8+` {applies_to}`serverless: unavailable` **9.4.0 through 9.4.7, and 9.5.0 through 9.5.4:** Tools read frozen tier data.
-* {applies_to}`stack: ga 9.4.8+` {applies_to}`serverless: unavailable` **9.4.8 and 9.5.5:** Tools always exclude frozen tier data, and the options to include it aren't available.
-* {applies_to}`stack: ga 9.4.8+` {applies_to}`serverless: unavailable` **9.4.9, 9.5.6, and later:** Tools exclude frozen tier data by default. You can include it with the options in this section.
+* {applies_to}`stack: ga 9.4.8+` **9.4.0 through 9.4.7, and 9.5.0 through 9.5.4:** Tools read frozen tier data.
+* {applies_to}`stack: ga 9.4.8+` **9.4.8 and 9.5.5:** Tools always exclude frozen tier data, and the options to include it aren't available.
+* {applies_to}`stack: ga 9.4.8+` **9.4.9, 9.5.6, and later:** Tools exclude frozen tier data by default. You can include it with the options in this section.
 
 Query tools exclude documents in frozen tier indices. This includes the built-in `execute_esql`, `generate_esql`, and `search` tools, plus custom [{{esql}} tools](tools/esql-tools.md) and [index search tools](tools/index-search-tools.md).
 
@@ -71,7 +70,6 @@ These Security tools have no `include_frozen` parameter. On versions that exclud
 
 ```{applies_to}
 stack: ga 9.4.9+
-serverless: ga
 ```
 
 To include frozen tier data, use one of these options:

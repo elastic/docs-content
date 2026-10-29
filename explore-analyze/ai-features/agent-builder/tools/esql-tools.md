@@ -135,7 +135,6 @@ FROM finance-orders-*
 
 ```{applies_to}
 stack: ga 9.4.8+
-serverless: ga
 ```
 
 By default, {{esql}} tools exclude data stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier). When some of the data that matches a query is in the frozen tier, the tool returns fewer rows than the same query run in Discover.
@@ -144,7 +143,6 @@ By default, {{esql}} tools exclude data stored in the [frozen tier](/manage-data
 
 ```{applies_to}
 stack: ga 9.4.9+
-serverless: ga
 ```
 
 To include frozen tier data, in **Data tiers**, select **Include frozen tier data**. You can also set `include_frozen` to `true` in the tool `configuration` object in the [Tools API](../kibana-api.md#tools-apis).
