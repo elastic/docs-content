@@ -20,7 +20,12 @@ You can unenroll {{agent}}s to invalidate the API key used to connect to {{es}}.
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` **Security and removal** → **Unenroll agent**
     * {applies_to}`stack: ga 9.0-9.2` **Unenroll agent**
 
-3. To unenroll multiple agents, bulk select the agents, and then select **Actions** → **Unenroll *N* agents**, where *N* is the number of selected agents.
+3. To unenroll multiple agents, bulk select the agents, open the **Actions** menu, and then select:
+
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` **Security and removal** → **Unenroll *N* agents**
+    * {applies_to}`stack: ga 9.0-9.2` **Unenroll *N* agents**
+
+    *N* is the number of selected agents.
 
     Unable to select multiple agents? Confirm that your subscription level supports **selective agent unenrollment** in {{fleet}}. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
