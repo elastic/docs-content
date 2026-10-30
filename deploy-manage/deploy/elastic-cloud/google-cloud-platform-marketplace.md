@@ -55,7 +55,13 @@ If you plan to use {{ech}} and have existing deployments that you want to migrat
 Your new account is automatically subscribed to the Enterprise subscription level. You can [change your subscription level](../../cloud-organization/billing/manage-subscription.md).
 ::::
 
+## Pricing
 
+Pricing in GCP MP is in Elastic Billing Units for GCP, to allow for proper hourly reporting at the right precision. In USD, this is priced in GCP MP at USD 0.0001/unit, and corresponds to the same price as Elastic Cloud in other channels.
+
+Examples:
+- Monthly hourly usage of 1.043 ECU = 1.043 USD = 1043 units
+- Annual discounted on-demand usage of 1.043 ECU, 10% discount = USD 0.938 = 938 billing units
 
 ## Changes to your billing account [ec-billing-gcp-account-change] 
 
@@ -72,6 +78,8 @@ To prevent downtime, do not remove the currently used billing account before the
 If you cancel your {{ecloud}} order on GCP through the [marketplace orders page](https://console.cloud.google.com/marketplace/orders) before the switch to the new billing account has been done, any running deployments will immediately enter a degraded state known as maintenance mode and they will be scheduled for termination in five days.
 
 If you already unsubscribed before the new billing account has been set up, you can subscribe again from the previously used billing account, which will cancel the termination and restore the deployments to a functional state.
+
+
 
 
 ## Native GCP integrations [ec-gcp-marketplace-native] 
