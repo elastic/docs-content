@@ -44,7 +44,7 @@ Cells are darker when a technique has more rules matching the current filters, a
 ::::{note}
 The grid counts only installed rules that are mapped to the framework you're viewing. If a rule you expect is missing, check that it's installed and that its MITRE mappings are set in the rule's **Advanced settings**.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If some rules use tactics or techniques that the supported MITRE version no longer includes, a callout about outdated mappings appears. Select **View rules** to find them, then [update their mappings](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` If some rules use tactics or techniques that the supported MITRE version no longer includes, a callout about outdated mappings appears. Select **View rules** to find them, then [update their mappings](/solutions/security/detect-and-alert/remap-mitre-attack.md).
 ::::
 
 ### View MITRE ATLAS coverage [view-mitre-atlas-coverage]
