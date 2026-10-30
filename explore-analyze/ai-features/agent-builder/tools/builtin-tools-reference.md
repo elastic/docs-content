@@ -530,8 +530,8 @@ PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
 ### Automatic Migration tools [agent-builder-automatic-migration-tools]
 ```{applies_to}
 serverless:
-  security: ga
-stack: ga 9.6+
+  security: preview
+stack: preview 9.6+
 ```
 
 Automatic Migration tools work with [Automatic Migration](/solutions/security/get-started/automatic-migration.md) rule migrations in the current space. The [Automatic Migration skills](../builtin-skills-reference.md#agent-builder-automatic-migration-skills) use them.
@@ -542,44 +542,44 @@ Automatic Migration tools work with [Automatic Migration](/solutions/security/ge
 
 These tools look up rule migrations, the rules in them, and the resources they're missing.
 
-`security.siem_migration.get_all_rule_migration_stats` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.get_all_rule_migration_stats` {applies_to}`stack: preview 9.6+`
 :   Lists every rule migration in the current space, newest first, with its source platform, status, and how many of its rules are pending, in progress, completed, or failed.
 
-`security.siem_migration.get_rule_migration` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.get_rule_migration` {applies_to}`stack: preview 9.6+`
 :   Returns a rule migration's name, creation time, and details of its last run.
 
-`security.siem_migration.get_rule_migration_stats` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.get_rule_migration_stats` {applies_to}`stack: preview 9.6+`
 :   Returns a rule migration's status, how many of its rules are pending, in progress, completed, or failed, and details of its last run, such as the AI connector it used and any error.
 
-`security.siem_migration.get_rule_migration_translation_stats` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.get_rule_migration_translation_stats` {applies_to}`stack: preview 9.6+`
 :   Returns how many of a rule migration's rules were fully translated, partially translated, not translated, or failed, and how many are ready to install.
 
-`security.siem_migration.get_migration_rules` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.get_migration_rules` {applies_to}`stack: preview 9.6+`
 :   Lists the rules in a migration with their translation result and status. Can narrow the list, for example to failed rules or rules missing an index pattern, and search translated rule titles.
 
-`security.siem_migration.get_missing_rule_migration_resources` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.get_missing_rule_migration_resources` {applies_to}`stack: preview 9.6+`
 :   Lists the resources a rule migration is still missing, such as macros, lookups, reference sets, or watchlists.
 
 #### Tools that make changes
 
 These tools start and stop rule migrations, fix and install translated rules, and rename or delete migrations. The agent asks you to confirm before it uses them. For starting and stopping a migration, it asks only the first time in a conversation.
 
-`security.siem_migration.start_rule_migration` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.start_rule_migration` {applies_to}`stack: preview 9.6+`
 :   Starts, resumes, or reprocesses a rule migration's translation run. Asks for confirmation the first time it runs in a conversation.
 
-`security.siem_migration.stop_rule_migration` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.stop_rule_migration` {applies_to}`stack: preview 9.6+`
 :   Stops a running rule migration. Asks for confirmation the first time it runs in a conversation.
 
-`security.siem_migration.update_translated_rule` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.update_translated_rule` {applies_to}`stack: preview 9.6+`
 :   Changes a translated rule that isn't installed yet. Either matches the rule to a different Elastic prebuilt rule, or replaces its {{esql}} query and integrations after validating the query. Adds a comment to the rule that explains the change. Asks for confirmation every time it runs.
 
-`security.siem_migration.install_migration_rules` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.install_migration_rules` {applies_to}`stack: preview 9.6+`
 :   Installs translated rules from a rule migration, either all rules or the ones you select, and optionally enables them. Requires `All` privileges for the **Rules** feature. Asks for confirmation every time it runs.
 
-`security.siem_migration.update_rule_migration` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.update_rule_migration` {applies_to}`stack: preview 9.6+`
 :   Renames a rule migration. Asks for confirmation every time it runs.
 
-`security.siem_migration.delete_rule_migration` {applies_to}`stack: ga 9.6+`
+`security.siem_migration.delete_rule_migration` {applies_to}`stack: preview 9.6+`
 :   Permanently deletes a rule migration and its rules. This action can't be undone. Asks for confirmation every time it runs.
 
 ## HTTP API tools

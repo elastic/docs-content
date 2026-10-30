@@ -232,8 +232,8 @@ Those skills diagnose or refine configuration. They do not replace `attack-disco
 
 ```{applies_to}
 serverless:
-  security: ga
-stack: ga 9.6+
+  security: preview
+stack: preview 9.6+
 ```
 
 **Enable:** The [`automatic-migration-rules-*` skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills)

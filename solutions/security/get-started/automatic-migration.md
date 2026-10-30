@@ -53,7 +53,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To use [{{agent-builder}}](#siem-migration-agent-builder):
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To use [{{agent-builder}}](#siem-migration-agent-builder):
 
   - At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for **Agent Builder**.
   - {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
@@ -206,7 +206,7 @@ You cannot edit Elastic-authored rules using this interface, but after they are 
 
 Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
 
 ::::{image} /solutions/images/security-siem-migration-edit-rule.png
 :alt: The rule details flyout
@@ -265,8 +265,8 @@ Once you're on the **Translated dashboards** page, to install any assets that we
 
 ```{applies_to}
 serverless:
-  security: ga
-stack: ga 9.6+
+  security: preview
+stack: preview 9.6+
 ```
 
 Check on your rule migrations, start or stop them, install translated rules, and fix rule translations that need your input, all by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). The agent asks you to confirm before it changes a migration or a rule. For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration). To create a migration or upload rules, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
