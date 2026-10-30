@@ -441,13 +441,19 @@ redirects:
   'deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md': 'deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2245/
-  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
+  'solutions/search/elasticsearch-basics-quickstart.md': '!solutions/search/get-started/quickstarts.md'
+  'solutions/search/get-started/index-basics.md': '!solutions/search/get-started/quickstarts.md'
+  'solutions/search/get-started/keyword-search-python.md': '!solutions/search/get-started/quickstarts.md'
+  'solutions/search/get-started/semantic-search.md': '!solutions/search/get-started/quickstarts.md'
 
 # Related to https://github.com/elastic/elasticsearch/pull/133362
   'solutions/search/querydsl-full-text-filter-tutorial.md': 'elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2719
   'solutions/search/api-quickstarts.md': 'solutions/search/get-started/quickstarts.md'
+
+# Search use case: the Get started page is removed. Kept sections live on the use case landing page.
+  'solutions/search/get-started.md': '!solutions/search.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2745
   'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'

@@ -32,7 +32,7 @@ By the end of this quickstart, you can:
   * [Cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `manage_index_templates`
   * [Index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `create_doc`, `create_index`, `read`, and `delete_index`
 
-* Familiarity with [time series data stream concepts](time-series-data-stream-tsds.md) and [{{es}} index and search basics](/solutions/search/get-started.md)
+* Familiarity with [time series data stream concepts](time-series-data-stream-tsds.md) and [{{es}} index fundamentals](/manage-data/data-store/index-basics.md)
 
 You can follow this guide using any {{es}} deployment.
 To see all deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type).
