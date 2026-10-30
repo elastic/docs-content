@@ -31,10 +31,12 @@ The **MITRE ATT&CK® coverage** page was renamed to **MITRE coverage** in versio
 
 ## Find coverage gaps by tactic and technique [read-coverage-grid]
 
-The coverage grid is the main part of the **MITRE coverage** page. It arranges MITRE tactics, such as Initial Access and Persistence, as columns, and lists each tactic's techniques as cells in its column. Each column's header shows how many of the tactic's techniques have enabled rules.
+The coverage grid is the main part of the **MITRE coverage** page. It arranges MITRE tactics, such as Initial Access and Persistence, as columns, and lists each tactic's techniques as cells in its column. Each column's header shows how many of the tactic's techniques have enabled rules, followed by the tactic's disabled and enabled rule counts.
 
-:::{image} /solutions/images/security-rules-coverage.png
-:alt: MITRE coverage page on the MITRE ATT&CK tab, with rule filters, a legend, and a grid of tactic columns whose technique cells are shaded by rule count
+In the following example, **Installed rule status** includes disabled rules, and the deployment has no enabled rules yet. Every column header shows 0 covered techniques, while the shaded cells show where enabling installed rules adds coverage.
+
+:::{image} /solutions/images/security-mitre-coverage-attack.png
+:alt: MITRE coverage page on the MITRE ATT&CK tab, with rule filters, a search bar, a legend, and a grid of tactic columns. Each column header shows 0 enabled rules, and darker technique cells have more rules.
 :screenshot:
 :::
 
@@ -52,7 +54,12 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-To view the coverage grid for MITRE ATLAS [v2026.08](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.08), select the **MITRE ATLAS** tab. If a rule is mapped to both frameworks, it counts toward coverage on both tabs.
+To view the coverage grid for MITRE ATLAS [v2026.08](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.08), select the **MITRE ATLAS** tab. The grid works the same way as on the **MITRE ATT&CK** tab, with MITRE ATLAS tactics, such as AI Model Access, as columns. If a rule is mapped to both frameworks, it counts toward coverage on both tabs.
+
+:::{image} /solutions/images/security-mitre-coverage-atlas.png
+:alt: MITRE coverage page on the MITRE ATLAS tab, with tactic columns such as AI Attack Adaptation and AI Model Access, and shaded cells for techniques that have rules, such as LLM Prompt Injection
+:screenshot:
+:::
 
 After you install them, some Elastic prebuilt rules that detect generative AI threats count toward MITRE ATLAS coverage. To map a custom rule, add MITRE ATLAS in the rule's [**Threat mappings**](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) setting.
 
@@ -70,7 +77,7 @@ For example, search for `T1059` to see only rules mapped to Command and Scriptin
 
 ## Expand cells to show rule counts [security-rules-coverage-expand-and-collapse-cells]
 
-Cells always show the technique's name and how many of its sub-techniques your enabled rules cover. Select **Expand cells** to also see how many enabled and disabled rules each technique has, or **Collapse cells** to hide those counts.
+Cells always show the technique's name and how many of its sub-techniques have rules that match the current filters. Select **Expand cells** to also see how many enabled and disabled rules each technique has, or **Collapse cells** to hide those counts.
 
 With the default filter, which includes only **Enabled rules**, every disabled count is 0. To see disabled counts, add **Disabled rules** to **Installed rule status**.
 
