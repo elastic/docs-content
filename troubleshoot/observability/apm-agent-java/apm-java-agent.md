@@ -66,7 +66,7 @@ When the agent starts up, you should see logs similar to these:
 [main] DEBUG co.elastic.apm.agent.configuration.StartupInfo - log_level: 'DEBUG' (source: Java System Properties)
 ```
 
-Make sure to execute some requests to your application before posting your log files. Each request should at least add some lines similar to these in the logs:
+Make sure to send some requests to your application before posting your log files. Each request should at least add some lines similar to these in the logs:
 
 ```
 [http-nio-8080-exec-10] DEBUG co.elastic.apm.agent.impl.ElasticApmTracer - startTransaction '' 00-2a82cbe3df7a0208f7be6da65be260d1-05e72d045206587a-01 {
@@ -205,7 +205,7 @@ There are two reasons why this might happen:
     Requests do not reach a servlet
     :   It’s possible to change the default transaction naming to use the URL path instead. See [`use_path_as_transaction_name`](apm-agent-java://reference/config-http.md#config-use-path-as-transaction-name) for more information.
 
-        Unfortunately, this may create a lot of duplicate transactions if they have similar paths. For example, in `/usr/{{id}}`, where `{{id}}` is the user ID, you can end up with as many transactions as there are users. You can mitigate this by using [`url_groups` (deprecated)](apm-agent-java://reference/config-http.md#config-url-groups), which will allow the use of wildcards in transaction URLs.
+        Unfortunately, this might create a lot of duplicate transactions if they have similar paths. For example, in `/usr/{{id}}`, where `{{id}}` is the user ID, you can end up with as many transactions as there are users. You can mitigate this by using [`url_groups` (deprecated)](apm-agent-java://reference/config-http.md#config-url-groups), which will allow the use of wildcards in transaction URLs.
 
 
 If the proposed fixes do not solve the problem, or if a custom name is required, transaction names can be set manually throughout the request handling flow using our API:
