@@ -18,6 +18,7 @@ EIS is available to all Elastic customers in all regions on Elastic Cloud Server
 * `ap-southeast-2` (Sydney, Australia)
 * `ca-central-1` (Montreal, Canada)
 * `eu-central-1` (Frankfurt, Germany)
+* `eu-central-2` (Zurich, Switzerland)
 * `eu-west-2` (London, UK)
 * `us-east-1` (N. Virginia, US)
 * `us-west-2` (Oregon, US)
@@ -50,7 +51,7 @@ Use them when your organization needs {{infer}} to stay within approved geograph
 
 You can express preferences in one of two ways:
 
-* **Geographies**: Broader geographic areas, shown as options such as **North America — All available regions**.
+* **Geographies**: Broader geographic areas, such as **North America**.
 * **Regions**: Specific cloud service provider regions, for example **US East (N. Virginia) - AWS**.
 
 You must choose either geographies or regions. The two modes are mutually exclusive.
@@ -65,6 +66,8 @@ After you save a region policy:
 * EIS does not silently fall back to a disallowed region during outages or capacity events.
 * Models that aren't available in any of your allowed locations become unavailable for use.
   In model details, check the **Regions** field to see where each model can run.
+
+  {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, the models list on the **Elastic Inference Service** page hides models that aren't available in your allowed locations. To show them, refer to [Show models that are hidden by default](eis.md#eis-display-options).
 * If a request targets a model that isn't available in your allowed locations, {{infer}} fails with a `403` error that includes:
 
   ```text
@@ -84,11 +87,36 @@ Models that aren't available in your allowed locations become unavailable.
 To open **Elastic {{infer}}**, you typically need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 To load and save region preferences, you also need the `manage_inference` {{es}} cluster privilege.
 
+:::{tip}
+:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
+If you can't edit region preferences, you can still check the current policy. When a region policy is set, select the **Restricted regions** badge in the header of the **Elastic Inference Service** page to see which geographies or regions it allows.
+:::
+
 The **Region preferences** dialog lists only the geographies and regions currently available for your deployment.
 It can show fewer options than the full EIS hosting list on this page.
 
-1. Go to the **Elastic Inference Service** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Select **Region preferences**.
+To open the dialog, go to the **Elastic Inference Service** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and then select **Region preferences**.
+
+:::::{applies-switch}
+
+::::{applies-item} { "serverless": "ga", "stack": "ga 9.6+" }
+
+1. Turn on **Use custom region policy**.
+1. Select **Geographies** or **Regions**, then select the locations to allow:
+
+   * **Geographies**: Allows all current and future regions in each geographic zone you select.
+   * **Regions**: Allows only the cloud provider regions you select.
+1. Select **Save**.
+1. In **Review region preferences**, check the allowed geographies or regions under **Pending changes**.
+1. Select **Save policy**.
+
+If the policy would deny access to in-use {{infer}} endpoints, **Review region preferences** stays open and shows a **Policy could not be saved** message.
+To save the policy anyway, select **Ignore inference endpoint errors with affected models**, and then select **Save policy**.
+Ingest or index operations that use endpoints for models outside the selected locations then fail.
+::::
+
+::::{applies-item} stack: ga =9.5
+
 1. Turn on **Restrict inference to specific locations**.
 
    :::{image} /explore-analyze/images/eis-manage-region-preferences.png
@@ -110,13 +138,18 @@ It can show fewer options than the full EIS hosting list on this page.
 
 1. Select **Save**.
 
-When the update succeeds, {{kib}} shows the **Region preferences saved** message.
 If the policy would deny access to in-use {{infer}} endpoints, {{kib}} blocks the update and shows **Region policy update blocked**.
+::::
+
+:::::
+
+When the update succeeds, {{kib}} shows the **Region preferences saved** message.
 
 #### Restore default nearest-region routing [restore-default-region-preferences]
 
 1. Open **Region preferences**.
-1. Turn off **Restrict inference to specific locations**.
+1. Turn off **Use custom region policy** (or **Restrict inference to specific locations** in earlier versions).
+1. Select **Save** (or **Save preferences** in earlier versions).
 1. Select **I understand this resets my region preferences** in the **Reset region preferences to default?** dialog.
 1. Select **Reset to default**.
 

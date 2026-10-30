@@ -11,6 +11,11 @@ toc:
               - file: search/get-started/index-basics.md
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
+      - file: search/set-up.md
+        children:
+          - file: search/set-up/get-elasticsearch-running-for-search.md
+          - file: search/set-up/api-key-and-endpoints.md
+          - file: search/set-up/connect-with-an-sdk.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -20,6 +25,7 @@ toc:
             children:
               - file: search/full-text/how-full-text-works.md
               - file: search/full-text/text-analysis-during-search.md
+              - file: search/full-text/intervals-query-tutorial.md
               - file: search/full-text/search-relevance.md
                 children:
                   - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
@@ -153,7 +159,7 @@ toc:
               - folder: observability/get-started/opentelemetry/use-cases/llms
                 file: index.md
                 children:
-                  - hidden: send-claude-platform-traces.md
+                  - file: send-claude-platform-traces.md
               - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:
@@ -325,7 +331,7 @@ toc:
                       - file: observability/apm/elastic-apm-agent-configuration-api.md
                       - file: observability/apm/opentelemetry-intake-api.md
                       - file: observability/apm/jaeger-event-intake.md
-                  - file: observability/apm/managed-intake-service-event-api.md
+                  - file: observability/apm/managed-inputs-apm-intake-event-api.md
               - file: observability/apm/upgrade.md
                 children:
                   - file: observability/apm/apm-agent-compatibility.md
@@ -634,6 +640,9 @@ toc:
               - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/enable-cloud-security-features.md
           - file: security/cloud/d4c/get-started-with-d4c.md
+          - file: security/ai/set-up-ai-features.md
+            children:
+              - file: security/ai/large-language-model-performance-matrix.md
           - file: security/advanced-entity-analytics/entity-analytics-requirements.md
           - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
       - file: security/get-started/ingest-data-to-elastic-security.md
@@ -735,7 +744,6 @@ toc:
           - hidden: security/alertzero/glossary.md
       - file: security/ai.md
         children:
-          - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/agent-builder/agent-builder.md
             children:
               - file: security/ai/agent-builder/skills-model.md

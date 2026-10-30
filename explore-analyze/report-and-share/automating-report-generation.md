@@ -53,6 +53,9 @@ To create the POST URL for CSV reports:
 
 
 ## Use Watcher [use-watcher]
+```{applies_to}
+serverless: unavailable
+```
 
 To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 
