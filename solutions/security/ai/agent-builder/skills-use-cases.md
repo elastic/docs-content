@@ -20,12 +20,14 @@ Skills can be activated three ways: the agent selects one automatically from you
 
 **Enable:** `alert-analysis` (optionally combine with [`entity-analytics`](#entity-risk-investigation) for deeper entity context)
 
-Use this skill to analyze a specific alert or work through an alert queue. The agent fetches the alert, finds related alerts that share entities, and recommends a disposition: true positive, benign true positive, false positive, or needs more data. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For the full UI procedure, from **Add to chat** through disposition and case, refer to [Triage alerts](/solutions/security/ai/triage-alerts.md).
+Use this skill to analyze a specific alert or work through an alert queue. The agent fetches the alert, finds related alerts that share entities, and recommends a disposition: true positive, benign true positive, false positive, or needs more data.
 
-Two parts of the analysis depend on setup:
+There is some setup required:
 
 * Entity risk scores require [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 * {{elastic-sec}} Labs correlation requires [Security labs content](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#security-labs-content) installed from **GenAI Settings**.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For the full UI procedure, from **Add to chat** through disposition and case, refer to [Triage alerts](/solutions/security/ai/triage-alerts.md).
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|

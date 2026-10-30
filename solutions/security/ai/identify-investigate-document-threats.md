@@ -49,7 +49,7 @@ serverless:
   security: ga
 ```
 
-To start a conversation with a discovery as context, click **Add to chat** on a discovery on the **Attack Discovery** page. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` From the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** → **Add to chat** on an attack.
+To start a conversation with a discovery as context, click **Add to chat** on a discovery on the **Attack Discovery** page. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Or, from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** → **Add to chat** on an attack.
 
 The [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) can compile essential data and suggest next steps to help you plan an effective response. Ask it questions such as:
 
@@ -69,11 +69,13 @@ serverless:
   security: ga
 ```
 
-[Cases](/solutions/security/investigate/security-cases.md) centralize relevant details in one place for easy sharing with stakeholders. To add a discovery and its alerts to a case, select **Take action** → **Add to new case** or **Add to existing case** on the discovery. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On the **Attacks** view, select **Take actions** → **Add to new case** or **Add to existing case** on the attack.
+[Cases](/solutions/security/investigate/security-cases.md) centralize relevant details in one place for easy sharing with stakeholders. To add a discovery and its alerts to a case, select **Take action** → **Add to new case** or **Add to existing case** on the discovery. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Or, on the **Attacks** view, select **Take actions** → **Add to new case** or **Add to existing case** on the attack.
 
-Ask the agent for an incident report, remediation steps, or a summary, then add them to the case. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` You can also ask the agent to create the case or add its findings to an existing one, for example "Add these remediation steps as a comment on the case for this attack." The agent uses the [`cases-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-cases-management-skill) skill.
+Ask the agent for an incident report, remediation steps, or a summary, then add them to the case.
 
-## Translate incident information to a different human language [use-case-incident-reporting-agent-builder-translate]
+{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` You can also ask the agent to create the case or add its findings to an existing one, for example "Add these remediation steps as a comment on the case for this attack." The agent uses the [`cases-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-cases-management-skill) skill.
+
+## Translate incident information to a different language [use-case-incident-reporting-agent-builder-translate]
 
 ```{applies_to}
 stack: ga 9.4+
@@ -96,9 +98,6 @@ stack: ga 9.0-9.5, deprecated 9.6+
 serverless:
   security: deprecated
 ```
-
-::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
-::::
 
 ### Use AI Assistant to analyze a threat [use-case-incident-reporting-use-ai-assistant-to-analyze-a-threat]
 

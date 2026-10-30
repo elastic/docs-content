@@ -17,11 +17,7 @@ You can connect self-managed LLMs to maintain more control of your data, operate
 The guides on this page use Generative AI connectors, which are deprecated. For new setups, [add an {{infer}} endpoint](/explore-analyze/ai-features/agent-builder/models.md#add-an-inference-endpoint) that uses the `openai` service and points at your local LLM.
 :::
 
-For model performance on {{elastic-sec}} and {{observability}} AI tasks, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) and the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
-
-:::{warning}
-Self-managed LLM performance varies by model and feature. For {{agent-builder}}, refer to [Connect a local LLM](/explore-analyze/ai-features/agent-builder/models.md#connect-a-local-llm) and [Recommended models](/explore-analyze/ai-features/agent-builder/models.md#recommended-models). For [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), we recommend using one of the models in the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
-:::
+Self-managed LLM performance varies by model and feature. For {{elastic-sec}}, the [open-source models](/solutions/security/ai/large-language-model-performance-matrix.md#_open_source_models) table in the LLM performance matrix rates self-hostable models for {{agent-builder}} and Attack Discovery. For {{observability}}, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md).
 
 The following guides describe how to set up self-managed LLMs for {{elastic-sec}} and {{observability}}.
 

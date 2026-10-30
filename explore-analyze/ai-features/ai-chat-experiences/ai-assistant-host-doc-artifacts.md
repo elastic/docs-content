@@ -12,13 +12,7 @@ description: Host Elastic product documentation artifacts for Agent Builder and 
 
 # Host an artifact repo for Elastic product documentation [host-knowledge-base-artifact-repo-for-ai-assistant]
 
-:::{warning}
-AI Assistant is deprecated, and the date depends on the solution. The {{obs-ai-assistant}} is deprecated from {{stack}} 9.4. AI Assistant for Security is generally available through 9.5 and deprecated from 9.6. Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
-:::
-
-When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the artifact repository manually. You do that by mirroring Elastic’s versioned product documentation ZIP files to infrastructure that {{kib}} can reach. {{agent-builder}} and AI Assistant use the same repository, through the same `xpack.productDocBase.artifactRepositoryUrl` setting.
-
-This page walks you through hosting those ZIP files, configuring the repository URL in {{kib}}, and installing Elastic product documentation so {{agent-builder}} and AI Assistant can use it without reaching Elastic’s public artifact host.
+When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the artifact repository manually. To do this, follow the steps below to mirror Elastic’s versioned product documentation ZIP files to infrastructure that {{kib}} can reach. 
 
 ## Choose a hosting option [choose-a-hosting-option-for-knowledge-base-artifacts]
 

@@ -26,7 +26,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
      You can [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries) Attack Discovery to run automatically, and notify you of any discoveries through a range of connectors such as Slack, Teams, PagerDuty, or email.
 
-- **[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md)**: An LLM-powered chat experience for digital security. It helps with data analysis, alert investigation, incident response, and {{esql}} query generation, and includes built-in Security skills, custom agents, and tools. To get started, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md). If your project still uses AI Assistant, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) to switch.
+- **[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md)**: An LLM-powered chat experience for digital security. It helps with data analysis, alert investigation, incident response, and {{esql}} query generation, and includes built-in Security skills, custom agents, and tools. To get started, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md).
 
 - **[Cases](/solutions/security/investigate/security-cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
 

@@ -20,10 +20,6 @@ description: Use AI Assistant for Security to investigate alerts, respond to inc
 
 Elastic AI Assistant for Security helps you interact with your {{elastic-sec}} data and assists with tasks such as alert investigation, incident response, and query generation. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
-:::{important}
-{applies_to}`stack: ga 9.4-9.5` Starting in 9.4, [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the default chat experience in {{elastic-sec}}. To continue using AI Assistant, switch chat experiences in **GenAI Settings**. Refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for the differences and switching steps.
-:::
-
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
 :width: 75%
@@ -31,7 +27,7 @@ Elastic AI Assistant for Security helps you interact with your {{elastic-sec}} d
 :::
 
 ::::{warning}
-The Elastic AI Assistant is designed to enhance your analysis with smart dialogues. Its capabilities are still developing. You should exercise caution as the quality of its responses might vary. Your insights and feedback will help us improve this feature. Always cross-verify AI-generated advice for accuracy.
+The Elastic AI Assistant is designed to enhance your analysis with smart dialogues. You should exercise caution as the quality of its responses might vary. Always cross-verify AI-generated advice for accuracy.
 ::::
 
 ::::{admonition} Requirements

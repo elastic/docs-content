@@ -14,16 +14,14 @@ products:
 # Migrate from AI Assistant to Agent Builder
 
 ::::{admonition} Requirements
-These features require the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
-
-To change the chat experience, you need the {{kib}} privileges listed in [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#requirements).
-
-The chat experience switch appears when you have access to at least one classic AI assistant and either the **Agent Builder: All** privilege or, {applies_to}`stack: ga 9.4+`, **Agent Builder: Read** plus **Create and edit agents**. For details, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
+To change the chat experience, you need access to at least one classic AI assistant and either the **Agent Builder: All** privilege or, {applies_to}`stack: ga 9.4+` **Agent Builder: Read** plus **Create and edit agents**. For details, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 ::::
 
-[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) replaces AI Assistant. The {{obs-ai-assistant}} is deprecated from {{stack}} 9.4. AI Assistant for Security is generally available through 9.5 and deprecated from 9.6. In {{serverless-short}}, both are deprecated.
+[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) replaces Elastic AI Assistants:
+- {applies_to}`stack: ga 9.0-9.3, deprecated 9.4+` {applies_to}`serverless: deprecated` {{obs-ai-assistant}}
+- {applies_to}`stack: ga 9.0-9.5, deprecated 9.6+` {applies_to}`serverless: deprecated` AI Assistant for Security
 
-Switching changes the chat experience only. It doesn't migrate your AI Assistant conversations, prompts, or knowledge base entries, and {{agent-builder}} can't access them. Use the [feature replacements](#feature-differences-between-agent-builder-and-ai-assistant) to re-create what you need.
+Switching changes the chat experience only. It doesn't migrate your AI Assistant conversations, prompts, or knowledge base entries, and {{agent-builder}} can't be configured to access these resources. Use the [feature replacements](#feature-differences-between-agent-builder-and-ai-assistant) to re-create what you need.
 
 ## Switch to Agent Builder [switch-between-chat-experiences]
 
@@ -48,9 +46,9 @@ Most AI Assistant features have an {{agent-builder}} equivalent. Availability va
 
 | AI Assistant feature | In Agent Builder |
 | :--- | :--- |
-| **Chat sharing and duplication** | {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Only the owner of a conversation can [share it](/explore-analyze/ai-features/agent-builder/chat.md#share-a-conversation), with specific users or publicly. Members can continue a shared conversation. Duplication isn't available. |
-| **Chat archiving**<br>({{observability}}) | Not available. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Pin conversations](/explore-analyze/ai-features/agent-builder/chat.md#pin-conversations) instead. |
-| **Data anonymization** | {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Open **Stack Management**, then select **Anonymization** in the **AI** section. This page requires an [Enterprise](https://www.elastic.co/pricing) license, **Advanced Settings: All**, and **Actions and Connectors** access. For details, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management). Anonymization doesn't mask data that you send directly to a connector. |
+| **Chat sharing and duplication** | {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Conversation can be shared with specific users or publicly. Only the owner of a conversation can [share it](/explore-analyze/ai-features/agent-builder/chat.md#share-a-conversation). Members can continue a shared conversation. Duplication isn't available. |
+| **Chat archiving**<br>({{observability}}) | Not available.<br>{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Pin conversations](/explore-analyze/ai-features/agent-builder/chat.md#pin-conversations) instead. |
+| **Data anonymization** | {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Open **Stack Management**, then select **Anonymization** in the **AI** section. This page requires **Advanced Settings: All**, and **Actions and Connectors** privileges. For details, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management). Anonymization doesn't mask data that you send directly to a connector. |
 | **Knowledge base** | Partial. Refer to [Replace knowledge base content](#replace-knowledge-base-content). |
 | **Alerting rule connector action**<br>({{observability}}) | {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Partial. Use an [action policy to run a workflow](/explore-analyze/alerting/esql/workflows-alerting.md) that calls an agent with the [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) step. |
 | **Audit logging** | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Partial. {{kib}} records audit events when agents, tools, and skills are created, updated, or deleted. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` {{kib}} also records when a conversation is created. |
@@ -66,7 +64,7 @@ Most AI Assistant features have an {{agent-builder}} equivalent. Availability va
 
 | AI Assistant knowledge base feature | In Agent Builder |
 | :--- | :--- |
-| Elastic product documentation | Install **Elastic documentation** from [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation). {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` {{kib}} installs it automatically when [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available and **Use AI features** is turned on. |
+| Elastic product documentation | Install **Elastic documentation** from [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).<br>{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` {{kib}} installs docs automatically when [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available and **Use AI features** is turned on. |
 | Security Labs articles<br>({{elastic-sec}}) | Install **Security labs** from [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation). |
 | Indices and content connector indices | Create an [index search tool](/explore-analyze/ai-features/agent-builder/tools/index-search-tools.md) for the index and assign it to your agent. |
 | Markdown entries created in the settings UI | Index the content yourself, then create an [index search tool](/explore-analyze/ai-features/agent-builder/tools/index-search-tools.md). |

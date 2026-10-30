@@ -30,15 +30,15 @@ This procedure uses the [Elastic AI Agent](/explore-analyze/ai-features/agent-bu
 
 ### Before you begin [triage-alerts-agent-builder-requirements]
 
-* Select **AI Agent** as the chat experience for your space. Refer to [Switch between chat experiences](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+* Ensure **AI Agent** is the chat experience for your space. Refer to [Switch between chat experiences](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 * To include entity risk scores in the analysis, turn on [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 * To correlate alerts with {{elastic-sec}} Labs threat intelligence, install **Security labs** content from **GenAI Settings**. Refer to [Security labs content](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#security-labs-content).
-* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To control which alert field values are anonymized before they're sent to the LLM, open **Stack Management**, then select **Anonymization** in the **AI** section. This page requires an [Enterprise](https://www.elastic.co/pricing) license, **Advanced Settings: All**, and **Actions and Connectors** access. For details, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management).
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To control which alert field values are anonymized before they're sent to the LLM, open **Stack Management**, then select **Anonymization** in the **AI** section. This requires elevated privieleges. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management) for more details.
 
 ### Triage a specific alert [triage-alerts-agent-builder-single]
 
 1. On the **Alerts** page, click **View details** for an alert.
-2. In the alert details flyout, click **Add to chat**. {{agent-builder}} opens a new conversation with the alert attached and a suggested triage prompt.
+2. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` In the alert details flyout, click **Add to chat**. {{agent-builder}} opens a new conversation with the alert attached and a suggested triage prompt.
 3. Send the suggested prompt, or edit it first. The agent summarizes the alert and recommends one of four dispositions: true positive, benign true positive, false positive, or needs more data.
 4. If the agent flags concerns, ask follow-up questions. For example:
 
@@ -59,7 +59,7 @@ This procedure uses the [Elastic AI Agent](/explore-analyze/ai-features/agent-bu
 ### Triage multiple alerts [triage-alerts-agent-builder-multiple]
 
 1. On the **Alerts** page, select up to 100 of the alerts loaded in the table. Don't use **Select all**, which switches to query mode and disables **Add to chat**.
-2. Click **Selected *x* alerts** → **Add to chat**.
+2. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **Selected *x* alerts** → **Add to chat**.
 3. Ask the agent to compare the alerts, for example "Which of these alerts should I prioritize, and why?"
 4. Decide a disposition for each alert you investigate, then document the outcome in a case, as described in [Triage a specific alert](#triage-alerts-agent-builder-single).
 
@@ -78,14 +78,6 @@ You're done when each alert has a disposition, its status reflects it (**Acknowl
   * [Triage alerts with an AI agent](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md): Invoke an {{agent-builder}} agent on each Attack Discovery alert, attach the analysis to a case, and post a Slack summary.
 * Hunt further with the [`threat-hunting`](/solutions/security/ai/agent-builder/skills-use-cases.md#threat-hunting) skill.
 
-## Triage alerts with {{agent-builder}} in 9.4 [triage-alerts-agent-builder-94]
-
-```{applies_to}
-stack: ga =9.4
-```
-
-The **Add to chat** action that the previous procedures use requires 9.5 or later. In 9.4, use the [`alert-analysis`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-alert-analysis-skill) skill. For its use case and example prompts, refer to [Alert triage and investigation](/solutions/security/ai/agent-builder/skills-use-cases.md#alert-triage-and-investigation).
-
 ## Use AI Assistant (deprecated) [triage-alerts-ai-assistant]
 
 ```{applies_to}
@@ -93,9 +85,6 @@ stack: ga 9.0-9.5, deprecated 9.6+
 serverless:
   security: deprecated
 ```
-
-::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
-::::
 
 Elastic AI Assistant can help you enhance and streamline your alert triage workflows by assessing multiple recent alerts in your environment, and helping you interpret an alert and its context.
 

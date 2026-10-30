@@ -15,7 +15,7 @@ products:
 
 :::{warning}
 :applies_to: {"stack": "deprecated 9.4+", "serverless": "deprecated"}
-The {{obs-ai-assistant}} is deprecated. Use [{{agent-builder}}](/solutions/observability/ai/agent-builder-observability.md) instead. To move to it, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+The {{obs-ai-assistant}} is deprecated. Use [{{agent-builder}}](/solutions/observability/ai/agent-builder-observability.md) instead. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 :::
 
 The AI Assistant is an integration with a large language model (LLM) that helps you understand, analyze, and interact with your Elastic data.

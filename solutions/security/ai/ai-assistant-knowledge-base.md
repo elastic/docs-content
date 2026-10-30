@@ -14,10 +14,10 @@ products:
 
 # AI Assistant Knowledge Base
 
-::::{include} /solutions/_snippets/security-ai-assistant-deprecated.md
-::::
-
-Agent Builder doesn't use Knowledge Base entries, and they aren't migrated. To give agents similar context, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
+:::{warning}
+:applies_to: {"stack": "deprecated 9.6+", "serverless": "deprecated"}
+AI Assistant for Security has been deprecated. Use [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) instead. Agent Builder doesn't use Knowledge Base entries, and they aren't migrated. To give agents similar context, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
+:::
 
 AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific documents and other specified information. This information, which can include everything from the location of your datacenters to the latest threat research, provides additional context that can improve the quality of AI Assistant’s responses to your queries. This topic describes how to enable and add information to Knowledge Base.
 
