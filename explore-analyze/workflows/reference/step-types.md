@@ -20,7 +20,14 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | Step type | Category | What it does |
 |---|---|---|
 | [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) | AI | Invoke an {{agent-builder}} agent as a step. |
+| [`ai.attachment.add`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-add) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Add an attachment to an {{agent-builder}} conversation. |
+| [`ai.attachment.delete`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-delete) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Delete an attachment from an {{agent-builder}} conversation. |
+| [`ai.attachment.list`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-list) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | List the attachments in an {{agent-builder}} conversation. |
+| [`ai.attachment.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-read) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Read the content of a conversation attachment. |
+| [`ai.attachment.update`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-update) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Update a conversation attachment. |
 | [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify) | AI | Classify input into a fixed category set. |
+| [`ai.conversation.metadata.patch`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-patch) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Update the metadata of an {{agent-builder}} conversation. |
+| [`ai.conversation.metadata.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-read) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Read the metadata of an {{agent-builder}} conversation. |
 | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) | AI | Prompt a model, optionally with structured output. |
 | [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) | AI | Summarize content with an LLM. |
 | [`cases.addAlerts`](/explore-analyze/workflows/steps/cases.md#cases-addalerts) | Cases | Attach detection alerts to a case. |

@@ -46,7 +46,7 @@ Not every task benefits from prompt engineering. Some tasks are better suited to
 | Task requirement | Recommended approach |
 | :--- | :--- |
 | **High accuracy & sequential steps** | **Workflow**: Use a Workflow for logic that must be executed in a specific order (for example Step 1 must complete before Step 2). Hard-coded logic is more reliable than probabilistic reasoning. |
-| **Independent, complex tasks** | **Specialized agents**: Break tasks into sub-agents to keep the context window focused and reduce tool-selection errors. |
+| **Independent, complex tasks** | **Specialized agents**: Break tasks into [subagents](agent-builder-agents.md#subagents) to keep the context window focused and reduce tool-selection errors. |
 | **Open-ended discovery** | **Agent**: Use a standard agent when the path to a solution requires dynamic reasoning or varied data exploration. |
 
 :::{tip}

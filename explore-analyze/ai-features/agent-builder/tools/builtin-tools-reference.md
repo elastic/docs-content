@@ -552,7 +552,7 @@ API calls use the privileges of the current user or API key. {{kib}} API calls r
 
     Before each call to an operation that can change or delete existing data, `execute_api` requests confirmation unless the agent's **Auto-approved APIs** setting includes the operation. For prompt behavior and exceptions, refer to [Confirm an API operation](../chat.md#confirm-an-api-operation). To configure auto-approval, refer to [Auto-approve API operations](../custom-agents.md#auto-approve-api-operations-optional).
 
-    In runs where no one can respond to a prompt, such as workflow `ai.agent` steps and sub-agent runs, `execute_api` declines these operations unless they were approved in advance. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+    In runs where no one can respond to a prompt, such as workflow `ai.agent` steps and subagent runs, `execute_api` declines these operations unless they were approved in advance. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 `discover_apis` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 :   Lists the supported API operations for {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.

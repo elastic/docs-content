@@ -127,6 +127,18 @@ For what each level means, refer to [Access control settings](#access-control-se
 
 :::::
 
+:::::{step} Configure subagents (optional)
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+In the **Subagents** section of the **Settings** tab, select **Enable subagents** to let the agent delegate tasks to other agents. **This agent (self-fork)** is then selected under **Delegable subagents**, so the agent can delegate to a copy of itself. In the same list, select any other agents it can delegate to.
+
+For more information, refer to [Subagents](agent-builder-agents.md#subagents).
+
+:::::
+
 :::::{step} Auto-approve API operations (optional)
 ```{applies_to}
 stack: ga 9.6+
@@ -145,7 +157,7 @@ For each service, you can select:
 
 Some {{es}} operations, such as `bulk` and `delete_by_query`, don't belong to a group. To approve them, select them individually or select `*`.
 
-The approval applies to every run of the agent and to the sub-agents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
+The approval applies to every run of the agent and to the subagents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
 
 Only the owner, a user with **Manager** access, or an administrator can change the auto-approved APIs. For the **Elastic AI Agent**, only an administrator can change them.
 
