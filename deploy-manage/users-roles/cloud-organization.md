@@ -32,7 +32,7 @@ If you're using {{ech}}, then you can also manage users and control access [at t
 
 Organization members can open {{kib}} in their {{ech}} deployments and {{serverless-full}} projects directly from the {{ecloud}} Console, or use the **Login with Cloud** option on the {{kib}} login screen. No additional authentication setup is required.
 
-Users must be granted a [cloud resource access role](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) for the deployment or project. For {{serverless-short}} projects, the [access level](/deploy-manage/users-roles/cloud-organization/user-roles.md#access) must also include {{kib}} and {{es}}. Access to the {{ecloud}} Console alone does not grant access to the project itself.
+Users must be granted a [cloud resource access role](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) for the deployment or project. For {{serverless-short}} projects, the [access level](/deploy-manage/users-roles/cloud-organization/user-roles.md#access) must include {{kib}} and {{es}} for the user to open the project. Access to the {{ecloud}} Console alone does not grant access to the project itself. Users whose access is set to **{{es}} and {{kib}}** can open projects directly using the project URL but cannot access the {{ecloud}} Console. For details, refer to [Access options](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
 
 To configure additional authentication methods at the deployment level, such as SAML, OIDC, or LDAP, refer to [deployment-level authentication](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 

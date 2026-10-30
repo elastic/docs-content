@@ -140,6 +140,7 @@ exclude:
   - 'README.md'
   - 'AGENTS.md'
   - 'AI.md'
+  - '.agents/**'
   - 'CLAUDE.md'
   - 'GEMINI.md'
   - 'changelog/**'
@@ -210,10 +211,11 @@ cross_links:
 toc:
   - file: index.md
   - toc: get-started
+  - toc: products
+  - toc: deploy-manage
   - toc: solutions
   - toc: manage-data
   - toc: explore-analyze
-  - toc: deploy-manage
   - toc: cloud-account
   - toc: troubleshoot
   - toc: release-notes
@@ -422,7 +424,7 @@ subs:
   heroku: "Elasticsearch Add-on for Heroku"
   obs-ai-assistant: "Elastic AI Assistant for Observability and Search"
   apm-server: "APM Server"
-  apm-server-or-mis: "APM Server or the managed intake service"
+  apm-server-or-mis: "APM Server or managed inputs"
   apis: https://www.elastic.co/docs/api/
   es-apis: https://www.elastic.co/docs/api/doc/elasticsearch/
   es-serverless-apis: https://www.elastic.co/docs/api/doc/elasticsearch-serverless/
@@ -437,6 +439,55 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   context-engine: "Context Engine"
+  # AlertZero
+  alertzero: "AlertZero"
+  az-watch: "Watch"
+  az-watches: "Watches"
+  az-worker: "Worker"
+  az-workers: "Workers"
+  # Common nouns, lowercase mid-sentence to match the UI. If they become proper nouns, change
+  # proposed action, investigation, and escalation together, and update the UI to match.
+  az-proposed-action: "proposed action"
+  az-proposed-actions: "proposed actions"
+  az-proposed-action-cap: "Proposed action"
+  az-proposed-actions-cap: "Proposed actions"
+  az-investigation: "investigation"
+  az-investigations: "investigations"
+  az-investigation-cap: "Investigation"
+  az-investigations-cap: "Investigations"
+  az-escalation: "escalation"
+  az-escalations: "escalations"
+  az-escalation-cap: "Escalation"
+  az-escalations-cap: "Escalations"
+  az-autonomy: "autonomy"
+  az-autonomy-cap: "Autonomy"
+  az-manual: "Manual"
+  az-assisted: "Assisted"
+  az-supervised: "Supervised"
+  az-triage-watch: "Triage Watch"
+  az-detection-watch: "Detection Watch"
+  az-hunt-watch: "Hunt Watch"
+  az-forensics-watch: "Forensics Watch"
+  az-alert-triage: "Alert Triage"
+  az-attack-discovery: "Attack Discovery"
+  az-continuous-threat-hunt: "Continuous Threat Hunt"
+  az-rule-tuning: "Rule Tuning"
+  az-rule-coverage: "Rule Coverage"
+  az-endpoint-analysis: "Endpoint Analysis"
+  az-hunt-finding: "hunt finding"
+  az-hunt-findings: "hunt findings"
+  az-hunt-finding-cap: "Hunt finding"
+  az-hunt-findings-cap: "Hunt findings"
+  az-threat-report: "threat report"
+  az-threat-reports: "threat reports"
+  az-threat-report-cap: "Threat report"
+  az-threat-reports-cap: "Threat reports"
+  az-threat-intel-supply: "threat intel supply"
+  az-threat-intel-supply-cap: "Threat intel supply"
+  az-efficient-models: "Efficient models"
+  az-balanced-models: "Balanced models"
+  az-frontier-models: "Frontier models"
+  az-cyber-domain-models: "Cyber domain models"
   kube-stack-version: 0.16.0
   helm-version: 4.3.0
   ece-docker-images-8: 8.19.23
