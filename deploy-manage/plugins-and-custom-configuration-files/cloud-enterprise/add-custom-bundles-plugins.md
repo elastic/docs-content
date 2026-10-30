@@ -149,7 +149,7 @@ This example adds a custom LDAP bundle for deployment level role-based access co
 
 This example adds a custom SAML bundle for deployment-level role-based access control (RBAC). To configure platform-level RBAC, refer to [](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
-We assume that the Identity Provider does not publish its [SAML metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-guide-idp) at an HTTPS URL, so the bundle contains the metadata file required to configure the realm. The example also shows how to optionally include and configure a signing certificate and key for [signing outgoing SAML messages](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-enc-sign) when required by the Identity Provider or your organization.
+The example assumes that the Identity Provider does not publish its [SAML metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-guide-idp) at an HTTPS URL, so the bundle contains the metadata file required to configure the realm. The example also shows how to optionally include and configure a signing certificate and key for [signing outgoing SAML messages](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-enc-sign) when required by the Identity Provider or your organization.
 
 1. Prepare a ZIP file that contains the Identity Provider metadata at `saml/metadata.xml`.
 
