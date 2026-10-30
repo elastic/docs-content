@@ -65,6 +65,8 @@ You can build RAG applications with {{es}} by retrieving relevant context from y
 2. Pass the retrieved content as context to your language model
 3. The language model generates a response grounded in your data
 
+On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+
 ### Core search options
 
 **{{esql}} `COMPLETION` command:** Use the [`COMPLETION`](elasticsearch://reference/query-languages/esql/commands/completion.md) command to send prompts and context directly to language models within your {{esql}} queries.
@@ -79,14 +81,7 @@ If you're using the {{es}} solution or serverless project type, these additional
 
 **Agent Builder:** Build AI-powered search experiences using [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md), which provides built-in agents, tools, and skills for interacting with your {{es}} data through a chat interface.
 
-**Playground (deprecated):** [Playground](/solutions/elasticsearch-solution-project/playground.md) has been deprecated as of version 9.4. Use Agent Builder instead.
+**Playground:** {applies_to}`stack: preview =9.0, beta 9.1-9.3, deprecated 9.4-9.5, removed 9.6+` {applies_to}`serverless: unavailable` [Playground](/solutions/elasticsearch-solution-project/playground.md) is deprecated and removed. Use Agent Builder instead.
 
-
-## Learn more [rag-elasticsearch-learn-more]
-
-Learn more about building RAG systems using {{es}} in these blog posts:
-
-* [Beyond RAG Basics: Advanced strategies for AI applications](https://www.elastic.co/blog/beyond-rag-basics)
-* [Building a RAG system with Gemma, Hugging Face, and Elasticsearch](https://www.elastic.co/search-labs/blog/building-a-rag-system-with-gemma-hugging-face-elasticsearch)
-* [Building an agentic RAG tool with Elasticsearch and Langchain](https://www.elastic.co/search-labs/blog/rag-agent-tool-elasticsearch-langchain)
-
+:::{related-learning} rag-foundation, rag-beyond-basics, rag-build-system, rag-build-agentic 
+:::

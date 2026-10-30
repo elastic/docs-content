@@ -11,8 +11,8 @@ Alternatively, retrieve the endpoint from the {{ecloud}} Console and create an A
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/).
 2. Find your deployment in **Hosted deployments**, and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
-4. Copy the public endpoint value.
+3. Under **Application endpoints, cluster and component IDs**, select **Managed OTLP**.
+4. Copy the **Direct endpoint** value from the flyout.
 
 **Create an API key**
 

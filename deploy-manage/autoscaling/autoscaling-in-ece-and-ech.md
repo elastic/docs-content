@@ -38,6 +38,8 @@ You can also have a look at our [autoscaling example](#ec-autoscaling-example), 
 Autoscaling is enabled for the Machine Learning tier by default for new deployments.
 ::::
 
+$$$ec-autoscaling-behavior$$$
+
 Currently, autoscaling behavior is as follows:
 
 * **Data tiers**
@@ -174,7 +176,7 @@ To help you better understand the available autoscaling settings, this example d
         :alt: A screenshot showing sizing information for the autoscaled data tier
         :::
 
-    2. Use the dropdown boxes to adjust the current and/or the maximum size of the data tier. Capacity will be added to the hot content and data tier when required, based on its past and present storage usage, until it reaches the maximum size per zone. Any scaling events are applied simultaneously across availability zones. In this example, the tier has plenty of room to scale relative to its current size, and it will not scale above the maximum size setting. There is no minimum size setting since downward scaling is currently not supported on data tiers.
+    2. Use the dropdown boxes to adjust the current size of the data tier, its maximum size, or both. Capacity will be added to the hot content and data tier when required, based on its past and present storage usage, until it reaches the maximum size per zone. Any scaling events are applied simultaneously across availability zones. In this example, the tier has plenty of room to scale relative to its current size, and it will not scale above the maximum size setting. There is no minimum size setting since downward scaling is currently not supported on data tiers.
 
 3. View and adjust autoscaling settings on a machine learning instance:
 
@@ -253,8 +255,8 @@ Run this example API request to create a deployment with autoscaling:
 
 ::::{applies-item} ece:
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 ```sh subs=true
 curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '

@@ -189,7 +189,7 @@ After {{agent}} deployment, we need to verify that Agent services are healthy, n
 
 **For stability:**
 
-If {{agent}} is configured as managed, in {{kib}} you can observe under **Fleet** > **Agents**
+If {{agent}} is managed by {{fleet}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**.
 
 :::{image} images/kibana-fleet-agents.png
 :alt: {{agent}} Status
