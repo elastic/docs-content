@@ -151,7 +151,7 @@ To turn on the entity store, you need the following:
 **All** for the **Security** and **Saved Objects Management** features
 
 :::{important}
-The entity store's background tasks run with the privileges of the user who turned on the entity store, as they were at that time. If you change that user's role later, for example after upgrading to 9.6, [stop and restart the entity store](#update-custom-roles-entity-store-rename) so the tasks pick up the updated privileges.
+The entity store's background tasks run with the privileges of the user who turned on the entity store, as they were at that time. If you change that user's role later, for example after upgrading to 9.6, a user with the updated role must stop and restart the entity store so the tasks pick up the updated privileges.
 :::
 :::
 
@@ -196,40 +196,3 @@ The entity store's background tasks run with the privileges of the user who turn
 :::
 
 ::::
-
-### Update custom roles after the entity store index rename [update-custom-roles-entity-store-rename]
-```yaml {applies_to}
-stack: ga 9.6+
-serverless: ga
-```
-
-Starting in 9.6, the entity store indices no longer include the `security_` prefix. For example, `.entities.v2.latest.security_<space-id>-*` is now `.entities.v2.latest.<space-id>-*`. Existing entity data is moved to the new indices automatically, and the `entities-latest-<space-id>` alias keeps working.
-
-Predefined and built-in roles already grant access to the new indices. If you use custom roles that only grant the previous `security_*` index patterns, users with those roles see a missing privileges message on the **Entity analytics** page, and entity details don't load. To update your custom roles:
-
-1. For each custom role used to access Entity Analytics, add `read` and `view_index_metadata` for the following index patterns:
-
-    ```yaml
-    - names:
-        - "entities-latest-*"
-        - "entities-metadata-*"
-        - ".entities.v2.latest.*"
-        - ".entities.v2.metadata.*"
-        - ".entities.v2.history.*"
-      privileges:
-        - read
-        - view_index_metadata
-    ```
-
-    These patterns also match the previous `security_*` index names, so you can keep your existing entries.
-
-2. For each custom role used to turn on or manage the entity store, grant the same privileges it has for `.entities.v2.*.security_*` on `.entities.v2.*`. For the full list, refer to [Entity store privileges](#_privileges_3).
-
-3. If a user with a custom role turned on the entity store, stop and restart the entity store in each space where it's turned on. The entity store's background tasks run with the privileges that user had when they turned it on, so updating the role alone doesn't update the tasks. A user with the updated role must run the following requests:
-
-    ```bash
-    PUT /s/<space-id>/api/security/entity_store/stop
-    PUT /s/<space-id>/api/security/entity_store/start
-    ```
-
-    For the default space, omit `/s/<space-id>`. After the restart, the tasks run with the privileges of the user who restarted the entity store.

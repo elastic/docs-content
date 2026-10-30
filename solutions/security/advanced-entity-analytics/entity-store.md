@@ -41,10 +41,10 @@ When the entity store is enabled, the following resources are created for the ac
 * A latest entity alias, `entities-latest-<space-id>`, backed by the concrete index `.entities.v2.latest.<space-id>-<mapping_version>`. Query this alias to retrieve the current state of all entities in the entity store.
 * History snapshot indices, `.entities.v2.history.<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
 
-:::{important}
+:::{warning}
 Starting in 9.6, the entity store index names no longer include the `security_` prefix (for example, `.entities.v2.latest.security_<space-id>-<mapping_version>` is now `.entities.v2.latest.<space-id>-<mapping_version>`). When you upgrade, existing entity data is moved to the new indices automatically, and the `entities-latest-<space-id>` alias points to the new index. History snapshots taken before the upgrade keep their `.entities.v2.history.security_<space-id>.*` names until they expire.
 
-If you query the concrete entity store indices directly, query the `entities-latest-<space-id>` alias instead. If you use custom roles, update them as described in [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md#_privileges_3).
+If you query the concrete entity store indices directly, query the `entities-latest-<space-id>` alias instead. Update custom roles that grant only the previous `security_*` index patterns. Grant them the index patterns in [Entity store privileges](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md#_privileges_3). Predefined and built-in roles already include the new patterns.
 :::
 ::::
 
