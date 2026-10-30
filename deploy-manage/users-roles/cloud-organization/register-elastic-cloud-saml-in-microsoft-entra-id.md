@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso-entra.html
 applies_to:
   deployment:
-    ess: all
+    ech: all
   serverless: all
 products:
   - id: cloud-hosted
@@ -27,9 +27,16 @@ In Microsoft Entra ID, create a new Entra ID Enterprise application.
 
     1. Configure a claim named `email` to send the email address of your users. This attribute is required in the SAML response.
     2. Optional: Configure a `firstName` and `lastName` claim to set the {{ecloud}} user’s name during SSO.
-    3. Optional: If you plan to use [role mappings](configure-saml-authentication.md#role-mappings) to automate role assignments, add a group claim and customize which groups are sent. Make sure that you customize the name of the group claim under the **Advanced options** section to set the groups claim attribute name `groups`.
+    3. Optional: If you plan to use [role mappings](configure-saml-authentication.md#role-mappings) to automate role assignments, add a group claim. In **Advanced options**, customize the group claim name to `groups`.
 
-6. Collect information about the application from the Entra ID screen.
+6. Optional: If you use group-based role mappings and your Microsoft Entra ID license supports assigning groups to applications, restrict the group claim to groups assigned to the application. This helps keep the groups sent for each user within the 150-group SAML limit.
+
+    1. In **Attributes & Claims**, edit the group claim and select **Groups assigned to the application**. Keep the custom claim name set to `groups`, then save the claim.
+    2. In **Users and groups**, assign the groups you plan to use in your Cloud role mappings. Users must be direct members of these groups: this option doesn't include nested group memberships.
+
+    If a user's group list exceeds this limit, Entra ID omits the group claim and group-based role mappings don't match. For details about this problem, refer to [Resolve missing group claims](#cloud-entra-saml-missing-group-claims).
+
+7. Collect information about the application from the Entra ID screen.
 
     1. Get the **Login URL** for the SSO URL, which is the URL where users will be redirected at login.
     2. Get the **Microsoft Entra Identifier** for use as the issuer.
@@ -65,3 +72,14 @@ Update the **Basic SAML Configuration** section of the Entra ID Enterprise appli
 4. Optional: Fill in other details using information from the metadata file available at the **metadata URL**.
 
 When these steps are complete, you should be able to test SSO as described in [Configure {{ecloud}} SAML SSO](configure-saml-authentication.md).
+
+## Resolve missing group claims [cloud-entra-saml-missing-group-claims]
+
+Use this procedure if users can't access your {{ecloud}} organization, {{ech}} deployments, or {{serverless-short}} projects because their SAML group role mappings don't match.
+
+:::{include} /deploy-manage/_snippets/entra-id-saml-group-overage.md
+:::
+
+For {{ecloud}} organization SSO, keep the custom group claim name set to `groups`, as described in [Create a new Entra ID Enterprise application](#ec_create_a_new_entra_id_enterprise_application).
+
+{{ecloud}} organization SSO doesn't resolve memberships from the `groups.link` attribute. The Microsoft Graph Authz plugin for {{es}} applies to cluster or deployment-level SAML and can't resolve group overages for organization SSO, including access to {{ech}} deployments and {{serverless-short}} projects through that SSO configuration.
