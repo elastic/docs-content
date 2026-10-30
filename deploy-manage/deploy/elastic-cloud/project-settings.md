@@ -13,7 +13,7 @@ navigation_title: Project settings
 
 Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic [manages many things for you](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md), you can customize the following aspects of your project:
 
-- **[Search AI Lake settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention. The available settings depend on your project type.
+- **[Project settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention. The available settings depend on your project type.
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
 - **[Project tags](#project-tags)**: Add custom tags to categorize and organize your projects alongside predefined tags.
 - **[Connection aliases](#elasticsearch-manage-project-connection-aliases)**: Use predictable, human-readable URLs for your projects that you can share easily.
@@ -28,7 +28,7 @@ To manage these settings:
 
 To edit a project's settings, you must be granted the **Admin** or **Editor** [role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) on the project.
 
-## Search AI Lake settings [elasticsearch-manage-project-search-ai-lake-settings]
+## Project settings [elasticsearch-manage-project-search-ai-lake-settings]
 
 Once ingested, your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. Data in this cache layer is considered **search-ready**.
 
@@ -80,6 +80,27 @@ The default value is **100**, which reserves enough capacity to keep the project
 
 In {{obs-serverless}} and {{sec-serverless}} projects, search capacity is sized automatically based on the volume of search-ready data in your project. Search capacity does not scale automatically based on query load. If your workload requires additional search capacity, contact Elastic Support.
 
+### Minimum Search VCUs
+```{applies_to}
+serverless:
+  elasticsearch: ga
+```
+
+Use **Minimum Search VCUs** to set a lower bound on Search tier scaling for {{es-serverless}} projects, expressed in [virtual compute units (VCUs)](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml). When configured, the Search tier does not scale below this value, even during idle periods. This reserves a guaranteed level of Search capacity in advance, so your project remains responsive before an anticipated increase in traffic.
+
+Search capacity can still scale above the configured minimum under higher load, and will scale back down toward it only once that additional capacity is no longer required. Lowering the minimum does not immediately reduce capacity that is still in use.
+
+You can set **Minimum Search VCUs** to any whole number between 2 and 4,160.
+During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
+
+If you set a high **Minimum Search VCUs** value, consider also increasing [Search Power](#elasticsearch-manage-project-search-power-settings) to get the most out of the capacity you reserve.
+
+This setting is available for {{es-serverless}} projects only.
+
+<!-- PM question: How should we best phrase the guidance above about increasing Search Power when Minimum Search VCUs is set high? Do we want to say more than one sentence about why a higher Search Power helps (for example, more replicas and more pre-warming at higher values), or keep it high level? Also, should we contrast and compare this setting with equivalent or alternative features in other project types (for example, Search Power in Vector database projects, or how search capacity is sized in Observability and Security projects) so users can see how the options differ? -->
+
+Refer to [{{es-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md) for information on how this setting affects your bill.
+
 ### Search Boost Window [elasticsearch-search-boost-window]
 ```{applies_to}
 serverless:
@@ -114,7 +135,7 @@ In addition to the retention period you set for each data stream, {{sec-serverle
 
 {{es-serverless}}, {{obs-serverless}}, and {{es}} {{vectordb}} projects rely on data stream settings to configure data retention. You can define a different retention period for each data stream from the **Data Streams** tab on the **Index Management** page. To open the **Index Management** page, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-{{es-serverless}} and {{obs-serverless}} projects also provide a shortcut: the **Data Retention** option in the **Search AI Lake settings** tab opens the **Data Streams** tab directly. {{es}} {{vectordb}} projects don't include this option in the **Search AI Lake settings** tab.
+{{es-serverless}} and {{obs-serverless}} projects also provide a shortcut: the **Data Retention** option in the **Project settings** tab opens the **Data Streams** tab directly. {{es}} {{vectordb}} projects don't include this option in the **Project settings** tab.
 
 ## Project features and add-ons [project-features-add-ons]
 ```{applies_to}
