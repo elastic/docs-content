@@ -114,7 +114,7 @@ Use event-driven triggers for:
 * Central error-handler workflows that react to failures across your automation
 * Reacting to case lifecycle changes (case opened, status changed, attachments or comments added)
 * Paging on-call, opening cases, or logging when a production workflow fails
-* Responding to alert status, tag, assignee, attack discovery, and document note changes {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Responding to alert status, tag, assignee, attack discovery, and document note changes in {{elastic-sec}}
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Auditing rule management actions, syncing rule inventory with external systems, or notifying a channel when rules change in {{alerting-v2-system}}
 
 Event-driven trigger example:

@@ -464,17 +464,19 @@ Security triggers fire when {{elastic-sec}} detection alerts, attack discoveries
 These triggers are separate from the alert lifecycle triggers for the {{alerting-v2-system}}. Refer to [](#alert-episode-lifecycle-triggers-event-driven) for those.
 :::
 
-**Shared schema.** Every security trigger takes the same two parameters: `type` at the top level, set to the trigger ID, and an optional `condition` under `on`, which is a KQL predicate evaluated against the `event` payload.
+**Shared schema.** Every security trigger takes a top-level `type`, set to the trigger ID, and an optional `condition` under `on`, which is a KQL predicate evaluated against the `event` payload. Like other event-driven triggers, they also accept [`on.workflowEvents`](#event-driven-triggers-workflow-events).
 
-**Batched events.** The alert and attack discovery triggers fire once per bulk operation rather than once per affected item, so `event.alertIds` and `event.attackIds` are arrays. Both are capped at 10,000 entries, and `event.truncated` is `true` when the payload was capped. For the status triggers, that means more than 10,000 items were affected. For the tags and assignees triggers, it also means more than 100 tags or assignees were supplied in one operation, or that a tag value or assignee UID exceeded its length limit. Treat `event.truncated` as a signal to re-query the affected items rather than to trust the array. To act on each item in an untruncated payload, iterate the array with a `foreach` step.
+**Batched events.** The alert and attack discovery triggers fire once per bulk operation rather than once per affected item, so `event.alertIds` and `event.attackIds` are arrays. They list only the alerts or attack discoveries that actually changed, so an operation that changes nothing doesn't fire the trigger. Both arrays are capped at 10,000 entries, and `event.truncated` is `true` when the payload was capped. For the status triggers, that means more than 10,000 items were affected. For the tags and assignees triggers, it also means more than 100 tags or assignees were supplied in one operation, or that a tag value or assignee UID exceeded its length limit. Treat `event.truncated` as a signal to re-query the affected items rather than to trust the array. To act on each item in an untruncated payload, iterate the array with a `foreach` step.
 
-The note triggers carry a single `event.noteId` instead of an array, so they have no truncation field. Both fire only for notes attached to a document: investigation guide notes and Timeline-level notes don't fire them.
+**Related changes.** Changing the status, tags, or assignees of attack discoveries together with their related alerts fires both the attack discovery trigger and the matching alert trigger. A case status change that syncs to the case's attached alerts fires `security.alertStatusChanged` for detection alerts and `security.attackStatusChanged` for attack discoveries.
+
+The note triggers carry a single `event.noteId` instead of an array, so they have no truncation field. Both fire only for notes attached to a document. Investigation guide notes and Timeline-level notes don't fire them.
 
 ### `security.alertStatusChanged` [security-alertstatuschanged-trigger]
 
 Fires after the workflow status of a batch of detection alerts changes. The payload carries `event.alertIds`, `event.status` with the new status, `event.previousStatuses`, and `event.truncated`.
 
-Statuses are `open`, `acknowledged`, `in-progress`, and `closed`. Each entry in `event.previousStatuses` pairs an `id` with the `previousStatus` that alert held.
+Statuses are `open`, `acknowledged`, and `closed`. A payload can also carry `in-progress`, an older status value that {{elastic-sec}} treats the same as `acknowledged`. Each entry in `event.previousStatuses` pairs an `id` with the `previousStatus` that alert held.
 
 ```yaml
 triggers:
@@ -500,7 +502,7 @@ Fires after assignees are added to or removed from a batch of detection alerts. 
 
 ### `security.attackStatusChanged` [security-attackstatuschanged-trigger]
 
-Fires after the workflow status of a batch of attack discoveries changes. The payload carries `event.attackIds`, `event.status`, `event.previousStatuses`, and `event.truncated` — the same shape as [`security.alertStatusChanged`](#security-alertstatuschanged-trigger), with attack discovery IDs in place of alert IDs.
+Fires after the workflow status of a batch of attack discoveries changes. The payload carries `event.attackIds`, `event.status`, `event.previousStatuses`, and `event.truncated`. It has the same shape as [`security.alertStatusChanged`](#security-alertstatuschanged-trigger), with attack discovery IDs in place of alert IDs.
 
 ### `security.attackTagsChanged` [security-attacktagschanged-trigger]
 
@@ -512,7 +514,7 @@ Fires after assignees are added to or removed from a batch of attack discoveries
 
 ### `security.noteCreated` [security-notecreated-trigger]
 
-Fires after a note is created on a document. The payload carries `event.noteId`, `event.createdBy` with the username of the note's author, and `event.documentId` with the ID of the document the note is attached to.
+Fires after a note is created on a document. The payload carries `event.noteId`, `event.createdBy` with the display name of the note's author (their full name if set, otherwise their username), and `event.documentId` with the ID of the document the note is attached to.
 
 ```yaml
 triggers:
@@ -521,7 +523,7 @@ triggers:
 
 ### `security.noteUpdated` [security-noteupdated-trigger]
 
-Fires after the text of an existing note is updated. The payload carries `event.noteId`, `event.updatedBy`, and `event.documentId`.
+Fires after an existing note on a document is updated. The payload carries `event.noteId`, `event.updatedBy` with the display name of the user who updated the note, and `event.documentId`.
 
 ## Alert lifecycle triggers in {{alerting-v2-system}} [alert-episode-lifecycle-triggers-event-driven]
 
