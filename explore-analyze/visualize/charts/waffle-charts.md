@@ -304,7 +304,10 @@ Waffle charts do not have configurable style settings. The chart automatically d
     - **Hide**: Never show the legend.
 
 **Width**
-:   Control the width of the legend panel: **Small**, **Medium** (default), **Large**, or **Extra large**.
+:   Control the width of the legend panel. Select **Small**, **Medium**, **Large**, or **Extra large** to set a fixed width. The default depends on your environment:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Select **Auto** to size the legend to fit its labels. **Auto** is the default.
+    - {applies_to}`stack: ga 9.0-9.5` **Medium** is the default.
 
 **Show value**
 :   Toggle whether to display the numeric value alongside each legend entry. This is enabled by default.

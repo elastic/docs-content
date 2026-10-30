@@ -381,7 +381,10 @@ When creating or editing a visualization, you can customize several appearance o
     - **Hide**: Do not display the legend.
 
 **Width**
-:   Control the width of the legend panel. Options include **Small**, **Medium**, **Large**, and **Extra large**.
+:   Control the width of the legend panel. Select **Small**, **Medium**, **Large**, or **Extra large** to set a fixed width. The default depends on your environment:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Select **Auto** to size the legend to fit its labels. **Auto** is the default.
+    - {applies_to}`stack: ga 9.0-9.5` **Medium** is the default.
 
 **Label truncation**
 :   Toggle whether to truncate long legend labels. When enabled, set the **Line limit** to control the maximum number of lines for each label (defaults to 1).
