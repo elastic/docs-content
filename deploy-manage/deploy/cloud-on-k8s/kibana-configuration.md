@@ -27,6 +27,8 @@ For production deployments, consider configuring {{kib}} encryption keys accordi
     * [{{kib}} Configuration](k8s-kibana-advanced-configuration.md#k8s-kibana-configuration)
     * [Scaling out a {{kib}} deployment](k8s-kibana-advanced-configuration.md#k8s-kibana-scaling)
 
+* [Background task isolation](kibana-background-tasks.md) {applies_to}`eck: ga 3.6+`: Run {{kib}} background tasks in a dedicated pool of pods, separate from the pods that serve the UI.
+
 * [Secure settings](../../security/k8s-secure-settings.md#k8s-kibana-secure-settings)
 * [HTTP Configuration](/deploy-manage/security/k8s-https-settings.md#k8s-kibana-http-configuration)
 

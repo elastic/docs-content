@@ -54,6 +54,7 @@ For detailed troubleshooting guidance, see [Troubleshooting](../../troubleshoot/
 Because tasks run on the {{kib}} server, heavy background workloads can compete with user traffic for resources. To avoid this, it is recommended to run background tasks on dedicated {{kib}} nodes:
 
 - On self-managed and {{eck}} deployments, set `node.roles: ["background_tasks"]` in [`kibana.yml`](/deploy-manage/stack-settings.md) to dedicate a {{kib}} instance to background tasks.
+- On {{eck}} deployments, you can also set `spec.backgroundTasks` on the {{kib}} resource {applies_to}`eck: ga 3.6+` and let ECK run a dedicated pool of background task pods next to the UI pods. Refer to [{{kib}} background task isolation on ECK](/deploy-manage/deploy/cloud-on-k8s/kibana-background-tasks.md).
 - On {{ech}} and {{ece}} deployments, when {{kib}} is allocated more than 8 GB of RAM, it is automatically split into multiple instances with specialized roles: UI nodes, which serve user requests, and background task nodes, which run Task Manager tasks.
 
 To identify a node's type on {{ech}} and {{ece}} deployments, check the node's instance name in the `kibana_status.json` file included in the [{{kib}} diagnostic bundle](/troubleshoot/kibana/capturing-diagnostics.md). A UI node's instance name contains `- UI`.
