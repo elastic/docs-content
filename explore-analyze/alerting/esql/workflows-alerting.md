@@ -1,7 +1,7 @@
 ---
 navigation_title: Connect workflows
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -24,10 +24,10 @@ In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens i
 
 ```{applies_to}
 serverless: preview
-stack: ga 9.6+, experimental =9.5
+stack: preview 9.6+
 ```
 
-Lifecycle triggers are [event-driven triggers](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a user [resolves, assigns, acknowledges, or snoozes](alerts/triage-alert-episodes.md) an alert, with no scheduling or gating. Each action emits a named trigger event, such as `alerting.actions.alertAssigned` (`alerting.episodeAssigned` in earlier versions).
+Lifecycle triggers are [event-driven triggers](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a user [resolves, assigns, acknowledges, or snoozes](alerts/triage-alert-episodes.md) an alert, with no scheduling or gating. Each action emits a named trigger event, such as `alerting.actions.alertAssigned`.
 
 Lifecycle triggers don't fire on [automatic status changes](alerts.md#alert-episode-lifecycle), such as when an alert becomes active or recovers based on rule evaluations. To respond to those changes, use an action policy. For the full list of trigger IDs, refer to [Alert lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-available).
 

@@ -1,7 +1,7 @@
 ---
 navigation_title: Review rule execution history
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -12,7 +12,7 @@ description: "Use the Execution History page to monitor rule execution outcomes 
 
 Rule execution history gives you a cross-rule, filterable log of every {{alerting-v2-system}} rule run in the space, so you can confirm rules are running on schedule or spot patterns that aren't visible when looking at individual rules, such as a cluster of failures at the same timestamp that points to a shared dependency issue.
 
-Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Rules** tab, which lists the following for each rule evaluation:
+Go to **Alerting** → **Execution History** in the {{observability}} navigation menu, or find **Execution History** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the **Rules** tab, which lists the following for each rule evaluation:
 
 | Column | Description |
 |---|---|
@@ -22,7 +22,7 @@ Go to **Execution history** in the navigation menu or [global search](/explore-a
 | **Response** | The outcome of the run. Can be `success` or `failure`. |
 | **Message** | An optional message included with the execution result, typically an error description for failed runs. |
 
-Use the outcome filter to view only successful or failed executions. Filtering is applied server-side. Results are paginated up to 100 per page. You can page through up to 10,000 records.
+Use the **Response** filter to view only successful or failed executions. Filtering is applied server-side. Results are paginated up to 100 per page. You can page through up to 10,000 records.
 
 ## Related pages
 

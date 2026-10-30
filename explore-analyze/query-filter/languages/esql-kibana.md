@@ -34,7 +34,7 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 | [Discover](/explore-analyze/discover/use-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
 | [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
-| [{{alerting-v2-system-cap}}](/explore-analyze/alerting/esql/system-overview.md) | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
+| [{{alerting-v2-system-cap}}](/explore-analyze/alerting/esql/system-overview.md) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
 | [Maps](/explore-analyze/visualize/maps.md) {applies_to}`serverless: beta` {applies_to}`stack: beta` | Create map layers from {{esql}} queries | {{esql}} editor |
 | [Data Visualizer](/explore-analyze/machine-learning/machine-learning-in-kibana.md) | Explore field statistics from query results | {{esql}} editor |
 | [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) | Create custom tools that run parameterized queries | Task-specific editor |
@@ -177,6 +177,8 @@ Without an Enterprise license, the AI prompts and actions don't appear, and the 
 
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Natural language mode doesn't appear until you configure a model.
 - {applies_to}`stack: preview =9.5` Natural language mode appears, and selecting it shows a link to set up a connector.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The AI agent can also use [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md) as sources. It uses them when it writes a full query, in natural language mode or from a comment when the editor contains only comments, and when you use **Fix with AI**. It uses only the datasets that you have the `read_dataset_metadata`, `manage_dataset`, `manage`, or `all` index privilege on.
 
 #### Generate a full query from natural language [esql-kibana-quick-search-nl]
 
@@ -396,6 +398,50 @@ From the query history, you can mark some queries as favorite to find and access
 2. On the **Recent** tab, star the queries you want.
 
 To find your starred queries later, open the **Starred** tab.
+
+## Create and manage {{esql}} views [esql-kibana-views]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+You can use [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) to save queries and reuse them by name in `FROM`, just like an index. In {{kib}}, you can create views from the {{esql}} editor and manage them from the **{{esql}} Views** page.
+
+These options appear only if you have the following [privileges](elasticsearch://reference/query-languages/esql/esql-views.md#esql-views-privileges) on all indices (`*`):
+
+* `read_view_metadata` to open the **{{esql}} Views** page
+* `create_view` to create or edit views
+* `delete_view` to delete views
+
+### Create a view from the {{esql}} editor [esql-kibana-views-create]
+
+You can create a view from the {{esql}} editor in Discover, or when you edit an {{esql}} visualization in a dashboard.
+
+1. Open the **Create view** dialog in one of these ways:
+
+   * From your [query history](#esql-kibana-query-history):
+
+     1. Select **Show recent queries**.
+     2. On the **Recent** or **Starred** tab, select the {icon}`index_open` **Create view** icon on the query's row.
+
+   * From the current query: select the {icon}`index_open` **Create view** icon in the editor toolbar.
+
+     ![The ES|QL editor in Discover with the Create view tooltip showing over its icon in the editor toolbar](../../images/esql-views-create-button.png)
+
+2. Enter a name and an optional description, then select **Create**.
+
+![The Create view dialog with the name web_server_errors, a description, and the query to save](../../images/esql-views-create-modal.png)
+
+### Manage views [esql-kibana-views-manage]
+
+To list, edit, preview, or delete views, go to the **{{esql}} Views** management page using the navigation menu or the [global search field](../../find-and-organize/find-apps-and-objects.md). Each view's row has two actions:
+
+![The ES|QL Views management page listing two views, with the Open in Discover icon marked 1 and the actions menu marked 2 in the first row](../../images/esql-views-management.png)
+
+1. {icon}`product_discover` **Open in Discover** opens the view in Discover.
+2. The {icon}`boxes_vertical` actions menu has options to edit or delete the view.
+
+[Reserved views](elasticsearch://reference/query-languages/esql/esql-views.md#esql-views-reserved) are created by {{es}}, so they're read-only. They have a **Reserved** badge. To hide them from the list, select the **Reserved views** filter.
 
 
 ## Define query settings with `SET` [esql-kibana-set]
