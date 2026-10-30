@@ -18,9 +18,7 @@ To open the **Rules** page, go to **Alerting** → **Rules** in the {{observabil
 
 Use the search bar to find rules by name or description. Each space-separated term is matched independently using prefix matching. Tags and grouping fields appear in results but aren't searchable.
 
-Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort, or use bulk actions to enable, disable, or delete multiple rules at once.
-
-{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` You can also use bulk actions to [rotate the API keys](#rotate-rule-api-key) of multiple rules at once.
+Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort. To act on several rules at once, use bulk actions to enable, disable, or delete them, or to [rotate their API keys](#rotate-rule-api-key).
 
 ## Edit a rule inline [quick-edit-rule]
 
@@ -42,19 +40,13 @@ The rule details page is organized into tabs that let you review a rule's config
 - **Conditions**: The rule's base query, alert condition, schedule, lookback, grouping, and recovery settings.
 - **Runbook**: The rule's investigation guide, if one has been added. Use it to document steps for diagnosing or responding to alerts produced by this rule.
 
-Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, or delete it.
-
-{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` To replace the rule's API key, select **Update API key** from the actions menu. Refer to [Rotate a rule's API key](#rotate-rule-api-key).
+Use **Edit** to modify the rule. From the actions menu, you can enable, disable, clone, or delete the rule, or [rotate its API key](#rotate-rule-api-key).
 
 ## Disable or snooze a rule [disable-snooze-rule]
 
 Use **Disable** when you want the rule to stop running entirely until you re-enable it. Snoozing is different: the rule keeps evaluating, but you suppress notifications or quiet a specific series or action policy.
 
 ## Rotate a rule's API key [rotate-rule-api-key]
-```{applies_to}
-serverless: experimental
-stack: experimental 9.6+
-```
 
 Rotating a rule's API key replaces the key that the rule uses to query your data with a new key based on your credentials, without editing the rule. The current key comes from the user who last saved the rule and doesn't expire on its own, so the rule can keep running with access that user has since lost.
 
