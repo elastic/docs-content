@@ -71,12 +71,14 @@ If a Zookeeper quorum is broken, you need to identify the best Zookeeper leader 
 
 Collect the following information from all ECE director hosts that have ZK containers running, including any recently created or decommissioned hosts. After you have gathered the information, reach out to [Elastic Support](/troubleshoot/index.md#contact-us) to identify the best ZK leader candidate.
 
-* [Output of file list and sizes of Zookeeper directories](#zk-file-list-sizes)
+* [Zookeeper data directory details](#zk-file-list-sizes)
 * [ECE diagnostics](#ece-diagnostics)
 
-### Collect the output of file list and sizes of Zookeeper directories [zk-file-list-sizes]
+### Collect Zookeeper data directory details [zk-file-list-sizes]
 
-```
+```bash
+# list files with sizes, ordered by time
+ls -lt /mnt/data/elastic/*/services/zookeeper/data/version-2/
 # collect disk usage
 find /mnt/data/elastic/*/services/zookeeper/data/ -print -exec du -hs {} \;
 # collect file status

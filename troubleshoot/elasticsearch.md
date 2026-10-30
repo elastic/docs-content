@@ -32,10 +32,14 @@ This section helps you fix issues with {{es}} deployments.
 * [](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md)
 * [](/troubleshoot/elasticsearch/fix-date-timestamps.md)
 
-## Management [troubleshooting-management]
+## Data lifecycle [troubleshooting-data-lifecycle]
 
 * [](/troubleshoot/elasticsearch/start-ilm.md)
 * [](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md)
+* [](/troubleshoot/elasticsearch/data-stream-frozen-transition.md)
+
+## Management [troubleshooting-management]
+
 * [](/troubleshoot/elasticsearch/file-based-recovery.md)
 * [](/troubleshoot/elasticsearch/troubleshooting-upgrades.md)
 * [](/troubleshoot/elasticsearch/troubleshooting-upgrade-assistant.md)

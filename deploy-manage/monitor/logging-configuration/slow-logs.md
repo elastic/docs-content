@@ -3,9 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html
 applies_to:
   stack: ga
+navigation_title: Slow query and index logging
 ---
 
-# Slow query and index logging
+# Slow query and index logging in {{es}}
 
 :::{note}
 :applies_to: {"stack": "preview 9.4", "serverless": "unavailable"}
@@ -259,7 +260,7 @@ Slow log thresholds being met does not guarantee cluster performance issues. Slo
 
 If you’re experiencing search performance issues, then you might want to consider investigating searches flagged for their query durations using the [profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md). You can then use the profiled query to investigate optimization options using the [query profiler](/explore-analyze/query-filter/tools/search-profiler.md). This type of investigation should usually take place in a non-production environment.
 
-Slow logging checks each event against the reporting threshold when the event is complete. This means that it can’t report if events trigger [circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md). If you suspect circuit breaker errors, then you should also consider enabling [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md), which logs events before they are executed.
+Slow logging checks each event against the reporting threshold when the event is complete. This means that it can’t report if events trigger [circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md). If you suspect circuit breaker errors, then you should also consider enabling [audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md), which logs events before they are executed.
 
 ## Learn more [_learn_more]
 

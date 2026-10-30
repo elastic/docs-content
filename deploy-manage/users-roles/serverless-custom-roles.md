@@ -80,7 +80,7 @@ Document-level and field-level security affords you even more granularity when i
 
 ## {{kib}} privileges [custom-roles-kib-privileges]
 
-When you create a custom role, click **Add {{kib}} privilege** to grant access to specific features. The features that are available vary depending on the project type. For example, in {{es-serverless}}:
+When you create a custom role, click **Add {{kib}} privilege** to grant access to specific features. These are a subset of the features available in {{stack}}. For a description of what each one allows, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). Which features appear and which group they're listed under depends on the project type. For example, in {{es-serverless}}:
 
 :::{image} /deploy-manage/images/serverless-custom-roles-kibana-privileges.png
 :alt: Create a custom role and define {{kib}} privileges
@@ -89,14 +89,8 @@ When you create a custom role, click **Add {{kib}} privilege** to grant access t
 
 Open the **Spaces** selection control to specify whether to grant the role access to all spaces or one or more individual spaces. When using the **Customize by feature** option, you can choose either **All**, **Read** or **None** for access to each feature.
 
-All
-:   Grants full read-write access.
-
-Read
-:   Grants read-only access.
-
-None
-:   Does not grant any access.
+:::{include} /deploy-manage/_snippets/feature-privilege-access-levels.md
+:::
 
 Some features have finer access control and you can optionally enable sub-feature privileges.
 
@@ -109,5 +103,5 @@ As new features are added to {{serverless-full}}, roles that use the custom opti
 After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to **Organization** > **Members**. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 :::{warning}
-When you assign custom roles, you must always select **Cloud Console, {{es}}, and {{kib}}** access for the role to take full effect. If you don't grant this access, custom roles are replaced with the predefined **Viewer** role. Users can't log in to the project or access project data through {{cps}}. [Learn more](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
+When you assign custom roles, you must select **Cloud Console, {{es}}, and {{kib}}** or **{{es}} and {{kib}}** access for the role to take full effect. If you grant only **Cloud Console** access, custom roles are replaced with the predefined **Viewer** role, and users can't log in to the project or access project data through {{cps}}. [Learn more](/deploy-manage/users-roles/cloud-organization/user-roles.md#access).
 :::

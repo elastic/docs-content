@@ -8,7 +8,7 @@ features:
 # assembler-api-explorer feature flag is enabled (staging today). Production and
 # other environments ignore these declarations until the rollout completes.
 api:
-  # CloudFront remote specs — mirror https://d29hkgsdo66d1n.cloudfront.net/index.json.
+  # CloudFront remote specs - mirror https://d29hkgsdo66d1n.cloudfront.net/index.json.
   # No local spec files: each key fetches remotely on serve/build. Paths: /api/<key>/
   elasticsearch:
     - spec: elasticsearch.json
@@ -44,6 +44,21 @@ api:
       catalog:
         categories:
           - serverless
+  cloud:
+    - spec: cloud.json
+      product: cloud-hosted
+      repository: elastic/cloud
+  cloud-enterprise:
+    - spec: cloud-enterprise.json
+      product: cloud-enterprise
+      repository: elastic/cloud
+  cloud-billing:
+    - spec: cloud-billing.yaml
+      product: ess
+      repository: elastic/cloud
+      catalog:
+        categories:
+          - ess
   cloud-connect:
     - spec: cloud-connect.yml
       product: ess
@@ -88,11 +103,44 @@ cta:
       - "Simplified billing and MACC burndown"
       - "Manage resources from the Azure portal"
       - "Built-in logs and metrics forwarding"
+  observability:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=observability
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  security:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=security
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  search:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=search
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  vector:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=vector
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
 
 exclude:
   - 'README.md'
   - 'AGENTS.md'
   - 'AI.md'
+  - '.agents/**'
   - 'CLAUDE.md'
   - 'GEMINI.md'
   - 'changelog/**'
@@ -112,7 +160,9 @@ cross_links:
   - apm-aws-lambda
   - apm-k8s-attacher
   - apm-server
+  - autoops-insights
   - beats
+  - cli
   - cloud
   - cloud-on-k8s
   - curator
@@ -161,10 +211,11 @@ cross_links:
 toc:
   - file: index.md
   - toc: get-started
+  - toc: products
+  - toc: deploy-manage
   - toc: solutions
   - toc: manage-data
   - toc: explore-analyze
-  - toc: deploy-manage
   - toc: cloud-account
   - toc: troubleshoot
   - toc: release-notes
@@ -212,8 +263,10 @@ subs:
   ls-pipelines-app:   "Logstash Pipelines"
   maint-windows-app:   "Maintenance Windows"
   maint-windows-cap:   "Maintenance windows"
-  alerting-v2-system:   "experimental alerting system"
-  alerting-v2-system-cap:   "Experimental alerting system"
+  alerting-v2-system:   "Kibana Universal Alerting"
+  alerting-v2-system-cap:   "Kibana Universal Alerting"
+  alerting-v1-system:   "Kibana Classic Alerting"
+  alerting-v1-system-cap:   "Kibana Classic Alerting"
   custom-roles-app:   "Custom Roles"
   data-source:   "data view"
   data-sources:   "data views"
@@ -371,7 +424,7 @@ subs:
   heroku: "Elasticsearch Add-on for Heroku"
   obs-ai-assistant: "Elastic AI Assistant for Observability and Search"
   apm-server: "APM Server"
-  apm-server-or-mis: "APM Server or the managed intake service"
+  apm-server-or-mis: "APM Server or managed inputs"
   apis: https://www.elastic.co/docs/api/
   es-apis: https://www.elastic.co/docs/api/doc/elasticsearch/
   es-serverless-apis: https://www.elastic.co/docs/api/doc/elasticsearch-serverless/
@@ -385,13 +438,67 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
+  context-engine: "Context Engine"
+  # AlertZero
+  alertzero: "AlertZero"
+  az-watch: "Watch"
+  az-watches: "Watches"
+  az-worker: "Worker"
+  az-workers: "Workers"
+  # Common nouns, lowercase mid-sentence to match the UI. If they become proper nouns, change
+  # proposed action, investigation, and escalation together, and update the UI to match.
+  az-proposed-action: "proposed action"
+  az-proposed-actions: "proposed actions"
+  az-proposed-action-cap: "Proposed action"
+  az-proposed-actions-cap: "Proposed actions"
+  az-investigation: "investigation"
+  az-investigations: "investigations"
+  az-investigation-cap: "Investigation"
+  az-investigations-cap: "Investigations"
+  az-escalation: "escalation"
+  az-escalations: "escalations"
+  az-escalation-cap: "Escalation"
+  az-escalations-cap: "Escalations"
+  az-autonomy: "autonomy"
+  az-autonomy-cap: "Autonomy"
+  az-manual: "Manual"
+  az-assisted: "Assisted"
+  az-supervised: "Supervised"
+  az-triage-watch: "Triage Watch"
+  az-detection-watch: "Detection Watch"
+  az-hunt-watch: "Hunt Watch"
+  az-forensics-watch: "Forensics Watch"
+  az-alert-triage: "Alert Triage"
+  az-attack-discovery: "Attack Discovery"
+  az-continuous-threat-hunt: "Continuous Threat Hunt"
+  az-rule-tuning: "Rule Tuning"
+  az-rule-coverage: "Rule Coverage"
+  az-endpoint-analysis: "Endpoint Analysis"
+  az-hunt-finding: "hunt finding"
+  az-hunt-findings: "hunt findings"
+  az-hunt-finding-cap: "Hunt finding"
+  az-hunt-findings-cap: "Hunt findings"
+  az-threat-report: "threat report"
+  az-threat-reports: "threat reports"
+  az-threat-report-cap: "Threat report"
+  az-threat-reports-cap: "Threat reports"
+  az-threat-intel-supply: "threat intel supply"
+  az-threat-intel-supply-cap: "Threat intel supply"
+  az-efficient-models: "Efficient models"
+  az-balanced-models: "Balanced models"
+  az-frontier-models: "Frontier models"
+  az-cyber-domain-models: "Cyber domain models"
   kube-stack-version: 0.16.0
-  helm-version: 3.21.0
-  ece-docker-images-8: 8.19.20
-  ece-docker-images-9: 9.5.2
+  helm-version: 4.3.0
+  ece-docker-images-8: 8.19.23
+  ece-docker-images-9: 9.5.5
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
+  tsds: "time series data stream"
+  tsdses: "time series data streams"
+  tsds-cap: "Time series data stream"
+  tsds-init: "TSDS"
 release_notes:
   - product: cloud-serverless

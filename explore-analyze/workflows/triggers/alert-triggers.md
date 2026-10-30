@@ -20,12 +20,10 @@ Alert-triggered workflows run with the privileges of the user who last saved the
 
 When a rule generates an alert that triggers your workflow, the trigger provides rich context data to the workflow through the `event` field.
 
+Alert triggers are different from [alert lifecycle triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven). An alert trigger (`type: alert`) runs a workflow when a detection rule or a {{alerting-v1-system}} rule generates an alert, and only when you add the workflow to that rule as an action. Alert lifecycle triggers are [event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) that run automatically when a user acts on an alert in {{alerting-v2-system}}, such as assigning or acknowledging it, with no rule action to configure.
+
 :::{warning}
 Declaring `type: alert` on a workflow isn't enough to run the workflow when alerts fire. You also have to attach the workflow to the rule's **Actions** using a **Run Workflow** action. Without the attachment, the rule fires alerts but the workflow is never invoked. This is the single most common setup mistake.
-:::
-
-:::{note}
-Alert triggers are different from [alert episode lifecycle triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven). An alert trigger (`type: alert`) runs a workflow when a rule generates an alert, and only when you add the workflow to that rule as an action. Alert episode lifecycle triggers are [event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) that automatically react to alert episode events (such as an alert episode being assigned or acknowledged) in the {{alerting-v2-system}}, with no rule action to configure.
 :::
 
 ## Schema [workflows-alert-trigger-schema]
