@@ -49,7 +49,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 3. Select the **About** tab, then expand the rule’s advanced settings.
 4. Scroll down to the Investigation guide section. In the toolbar, click the **Osquery** button (![Click the Osquery button](/solutions/images/security-osquery-button.png "title =20x20")).
 
-    1. Add a descriptive label for the query; for example, `Search for executables`.
+    1. Add a descriptive label for the query, for example, `Search for executables`.
     2. Select a saved query or enter a new one.
 
         ::::{tip}

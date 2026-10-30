@@ -74,7 +74,7 @@ Tools are modular, reusable functions that agents use to search, retrieve, and m
 
 ## Model selection
 
-On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. You can also configure other model providers using connectors, including local LLMs deployed on your infrastructure.
+On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. You can also configure other model providers using {{infer}} endpoints, including local LLMs deployed on your infrastructure.
 
 For solution-specific ratings of models tested on {{elastic-sec}} AI chat and AI-powered features, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 

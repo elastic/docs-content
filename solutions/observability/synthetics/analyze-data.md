@@ -75,6 +75,8 @@ The **Overview** tab has information about the monitor availability, duration, a
 :screenshot:
 :::
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` For monitors that run on {{private-location}}s, the **Monitor details** panel also shows which {{agents}} run the monitor. If all the monitor's {{private-location}}s are [scalable](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable), the panel shows the **Assigned agent** that runs the monitor, or **Not yet assigned** if Synthetics hasn't assigned an agent yet. Otherwise, it shows the **Location agents**, which are all the agents enrolled on the location's agent policy.
+
 ### History [synthetics-analyze-individual-monitors-history]
 
 The **History** tab has information on every time the monitor has run. It includes some high-level stats and a complete list of all test runs. Use the calendar icon (![Calendar icon](/solutions/images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
