@@ -23,6 +23,7 @@ To follow these steps, you need:
 
 * A classic data stream. To create one, refer to [](/manage-data/lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md).
 * The `manage_data_stream_lifecycle` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) on the data stream and its backing indices.
+* To view and configure a failure store, the [required failure store permissions](/manage-data/data-store/data-streams/failure-store.md#required-permissions).
 * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` A default snapshot repository and an [appropriate license]({{subscriptions}}) for {{search-snaps}} if you turn on frozen phase transitions. Refer to [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md).
 
 ## Set a data stream's lifecycle [set-lifecycle]
@@ -37,15 +38,15 @@ Add or change the data stream lifecycle with the **{{index-manage-app}}** or **S
 1. Search for the data stream.
 1. Select the data stream to view its details.
 1. In the data stream details pane, click the actions icon {icon}`gear` and select **Edit data lifecycle**.
-1. You can choose to inherit lifecycle settings from the index template or customize the lifecycle for this data stream:
+1. To customize the lifecycle for this data stream, clear **Inherit lifecycle from index template** on each tab you want to edit:
 
    :::{image} /manage-data/images/elasticsearch-serverless-edit-data-lifecycle.png
+   :alt: Edit data lifecycle flyout in Serverless.
    :screenshot:
    :width: 50%
    :::
 
    * On the **Successful data** tab, select the **Delete phase** to choose how long to retain your data, in days, hours, minutes, or seconds.
-    <!--TBD: This did not work for me, it always reverted to inheriting from the lifecycle instead. If you deselect the delete phase, {{es}} does not delete the data. -->
    * On the **Failed data** tab, select **Enable failure store** to turn on a [failure store](/manage-data/data-store/data-streams/failure-store.md). Select how long to retain failure store data, in days, hours, minutes, or seconds.
 
 1. Click **Apply** to save the changes.
@@ -61,10 +62,11 @@ Lifecycle changes apply to every backing index of the data stream.
 1. Search for the data stream.
 1. Select the data stream to view its details.
 1. In the data stream details pane, click the actions icon {icon}`gear` and select **Edit data lifecycle**.
-1. Select the **Data stream lifecycle** method.
-1. You can choose to inherit lifecycle settings from the index template or customize the lifecycle for this data stream:
+1. On the **Successful data** tab, clear **Inherit lifecycle from index template** and select the **Data stream lifecycle** method.
+1. Customize the lifecycle settings. To customize the **Failed data** tab, also clear **Inherit lifecycle from index template** on that tab:
 
    :::{image} /manage-data/images/elasticsearch-edit-data-lifecycle.png
+   :alt: Edit data lifecycle flyout in Elastic Stack 9.5 and later.
    :screenshot:
    :width: 50%
    :::
@@ -95,6 +97,7 @@ Lifecycle changes apply to every backing index of the data stream.
 1. In the data stream details pane, select **Manage** → **Edit data retention**.
 
    :::{image} /manage-data/images/elasticsearch-edit-data-retention.png
+   :alt: Edit data retention flyout in Elastic Stack 9.0–9.4.
    :screenshot:
    :width: 75%
    :::
@@ -105,6 +108,7 @@ Lifecycle changes apply to every backing index of the data stream.
    * Select **Keep data indefinitely**. The data stream stays managed but {{es}} does not delete the data. Managing a {{tsds}}, such as logs or metrics, helps {{es}} store your data even when you don't set a retention period.
    * Turn off **Enable data retention** to stop data stream lifecycle management for this data stream.
 
+1. Click **Save** to save the changes.
 1. Reopen the data stream flyout to confirm the change. The flyout shows the effective data retention settings.
 
 Lifecycle changes apply to every backing index of the data stream.
@@ -163,7 +167,7 @@ To check the settings, use the {{es}} [explain API]({{es-apis}}operation/operati
 GET my-data-stream-test/_lifecycle/explain
 ```
 
-**Result:**
+**Example response for the 30-day retention configuration:**
 
 ```console-result
 {
