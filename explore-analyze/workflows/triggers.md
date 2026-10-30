@@ -135,10 +135,10 @@ Each trigger type provides different data to the workflow context through the `e
 * **Event-driven**:
   * `workflows.failed` provides metadata about the failed workflow, its execution, and the step that failed.
   * Cases triggers provide `event.caseId`, `event.owner`, and event-specific fields (status changes carry `previousStatus` and `status`; attachment events carry IDs and type; comment events carry IDs).
-  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` {{alerting-v2-system-cap}} rule execution triggers provide `event.rule.id` and `event.rule.spaceId`, plus execution details for `alerting.ruleEventsGenerated` (`event.rule.kind`, `event.rule.tags`, `event.execution.*`, and `event.ruleEventsGenerated`) or `event.error` for `alerting.ruleExecutionFailed`.
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` Entity store triggers provide `event.entityId`, `event.entityType`, and event-specific fields (asset criticality changes carry `criticalityLevel`; risk score changes carry `score`, `previousScore`, `delta`, and `direction`).
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Alert lifecycle triggers in {{alerting-v2-system}} provide `event.alertId`, `event.ruleId`, and `event.spaceId`.
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Rule lifecycle triggers in {{alerting-v2-system}} provide `event.rule.ruleId` and `event.rule.spaceId`.
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Rule execution triggers in {{alerting-v2-system}} provide `event.rule.id` and `event.rule.spaceId`, plus execution details for `alerting.ruleEventsGenerated` (`event.rule.kind`, `event.rule.tags`, `event.execution.*`, and `event.ruleEventsGenerated`) or `event.error` for `alerting.ruleExecutionFailed`.
 
   Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) for the full payload shapes.
 
