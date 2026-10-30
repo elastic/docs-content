@@ -1028,6 +1028,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents/elastic-ai-agent/consumptio
 
 Use these APIs to send messages to agents and manage conversation history.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `input` parameter of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) and the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) accepts up to 100,000 characters. A request with a longer `input` returns a `400` error.
+
 **Example:** Chat with an agent
 
 This example uses the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse).
@@ -1240,6 +1242,92 @@ The response includes the conversation's `access_control` and your `permissions`
 
 To share the conversation at creation time, include an `access_control` object with the same shape
 as the [update conversation access control](#update-conversation-access-control) example.
+
+**Example:** Add events to a conversation $$$add-conversation-events$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+
+This example uses the [add events to a conversation API]({{kib-apis}}operation/operation-post-agent-builder-conversations-conversation-id-add-events).
+
+Use this API to add information to a conversation without the agent responding. For example, an integration can post incident updates as they happen. The agent reads notes the next time it runs on the conversation, so a later request can ask it to summarize them.
+
+{{kib}} features can define their own event types, and each type defines the shape of its `data` payload. Some event types are only shown in the conversation and aren't sent to the agent. {{agent-builder}} provides the `text_note` event type, which takes a required `text` field (up to 1,000 characters) and an optional `title` field (up to 256 characters). Other fields in `data` are discarded. Notes appear in the conversation in Agent Chat.
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/conversations/{conversation_id}/_add_events
+{
+  "events": [
+    {
+      "type": "text_note",
+      "data": {
+        "title": "Status update",
+        "text": "Checkout service latency is back to normal."
+      }
+    }
+  ]
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}/_add_events" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "events": [
+         {
+           "type": "text_note",
+           "data": {
+             "title": "Status update",
+             "text": "Checkout service latency is back to normal."
+           }
+         }
+       ]
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+The response returns each added event with the ID, author, and timestamp that {{kib}} assigned to it:
+
+```json
+{
+  "events": [
+    {
+      "type": "text_note",
+      "data": {
+        "title": "Status update",
+        "text": "Checkout service latency is back to normal."
+      },
+      "id": "cb684ca4-c5f6-4cd3-bbbc-7411ce893a5c",
+      "actor": {
+        "type": "user",
+        "id": "u_mGBROF_q5bmFCATbLXAcCwKa0k8JvONAwSruelyKA5E_0",
+        "username": "elastic"
+      },
+      "created_at": "2026-10-13T12:55:51.379Z"
+    }
+  ]
+}
+```
+
+Keep the following in mind:
+
+- If any event in the request is invalid, the whole request fails with a `400` error and no events are added.
+- Each request can add between 1 and 10 events.
+- Events are append-only. You can't update or remove an event after you add it.
+- You must own the conversation or be a member of it, or the conversation must be public. You must also be able to use the conversation's agent. Otherwise, the request returns a `404` error.
+
+To add events from a workflow, use the [`ai.conversation.add_event`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-event) step.
 
 **Example:** List conversations
 
