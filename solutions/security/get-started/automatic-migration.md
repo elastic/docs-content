@@ -1,5 +1,6 @@
 ---
 navigation_title: Migrate
+description: Migrate Splunk, QRadar, and Microsoft Sentinel rules and dashboards to Elastic Security with Automatic Migration. Review, fix, and install translated rules, including from Agent Builder chat.
 applies_to:
   stack: preview =9.0, ga 9.1+
   serverless:
