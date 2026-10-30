@@ -16,6 +16,7 @@ After an {{esql}} query runs in **Discover**, the results table shows what that 
 - **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort rows or change which rows the query returns](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) with `LIMIT`.
 - **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
 - **Matches:** [See highlighted matches in the table](#esql-kibana-results-highlights) when a query uses `HIGHLIGHT`, or `TOP_SNIPPETS` with highlighting turned on.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Approximate results:** [Tell whether results are approximate](#esql-kibana-results-approximation) when {{es}} applied approximation to the query.
 - **Time filter and chart:** [Set the time filter for the table and the chart](#_esql_and_time_series_data). Discover applies the time filter when the data has an `@timestamp` field. If the time field has another name, name it in the query.
 
 To keep the chart or the table, [save the session or add it to a dashboard](#_edit_the_esql_visualization).
@@ -149,6 +150,14 @@ Discover highlights matches for:
   | EVAL snippets = TOP_SNIPPETS(chunks, "rabbit hole", { "num_words": 0, "highlight": true })
   | KEEP snippets
   ```
+
+## Tell whether results are approximate [esql-kibana-results-approximation]
+```{applies_to}
+serverless: preview
+stack: preview 9.6+
+```
+
+When {{es}} applies approximation to a query, for example because [**Fast mode**](../query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) is on or the query explicitly sets [`approximation = true`](../query-filter/languages/esql-kibana.md#esql-kibana-approximation), a {icon}`bolt` badge shows next to the chart actions and in the table toolbar. Hover over the badge to see why the results are approximate. For what the badge and the extra columns mean, refer to [Interpret approximate results](../query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 
 ## Row and column limits [esql-kibana-results-table-limitations]
 
