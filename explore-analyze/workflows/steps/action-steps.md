@@ -71,8 +71,9 @@ Security actions provide named `security.*` steps for {{elastic-sec}} operations
 
 * Triage alerts and attacks by setting status and managing tags and assignees (`security.setAlertStatus`, `security.setAlertTags`, `security.assignAlert`, `security.setAttackStatus`, `security.setAttackTags`, `security.assignAttack`)
 * Enable or disable detection rules by ID list or query (`security.enableRule`, `security.disableRule`)
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Add exceptions to a rule or to an exception list (`security.createRuleException`, `security.createExceptionListItem`)
 
-Refer to [](/explore-analyze/workflows/steps/security.md) for the Security step categories, [](/explore-analyze/workflows/steps/alert-triage.md) for the Alert triage catalog, [](/explore-analyze/workflows/steps/attack-triage.md) for the Attack triage catalog, and [](/explore-analyze/workflows/steps/detection-rules.md) for the Detection rules catalog.
+Refer to [](/explore-analyze/workflows/steps/security.md) for the Security step categories, [](/explore-analyze/workflows/steps/alert-triage.md) for the Alert triage catalog, [](/explore-analyze/workflows/steps/attack-triage.md) for the Attack triage catalog, [](/explore-analyze/workflows/steps/detection-rules.md) for the Detection rules catalog, and [](/explore-analyze/workflows/steps/exceptions.md) for the Exceptions catalog.
 
 ## Streams
 
