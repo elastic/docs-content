@@ -119,7 +119,7 @@ Because the available connector steps depend on which connectors your deployment
 
 ## Deprecated step types [workflows-deprecated-steps]
 
-The step types in the following table are deprecated. They still work in existing workflows but can't be used in new ones. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning with a replacement suggestion on hover. 
+The step types in the following table are deprecated. They still work in existing workflows but can't be used in new ones. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning with a replacement suggestion on hover.
 
 Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for Cases replacement details. For AI connector steps, replace them with [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) (or another [AI step](/explore-analyze/workflows/steps/ai-steps.md) such as `ai.classify`, `ai.summarize`, or `ai.agent` when that better matches the task).
 
@@ -133,6 +133,8 @@ Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/m
 | `bedrock.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
 | `gen-ai.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
 | `gemini.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
+
+{applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` The `cases.setCustomField` step is also deprecated, but it still appears in autocomplete and the **Add Action** menu. Use [`cases.setExtendedFields`](/explore-analyze/workflows/steps/cases.md#cases-setextendedfields) instead.
 
 ## Related [workflows-step-types-related]
 
