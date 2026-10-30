@@ -15,6 +15,12 @@ products:
 
 In OpenTelemetry, an attribute is a key-value pair. Attributes are similar to [labels](/solutions/observability/apm/metadata.md#apm-data-model-labels) in that they add metadata to transactions, spans, and other entities.
 
+:::{important}
+This page describes how attributes are handled when sending OTLP data to {{apm-server-or-mis}} (the `.apm` endpoint), a legacy ingest path. On this path, attributes are mapped to ECS fields, and unmapped attributes are stored under `labels.*`.
+
+For new users, Elastic recommends the [{{motlp}}](opentelemetry://reference/motlp.md) or [{{agent}} configured as an OTel Collector](elastic-agent://reference/edot-collector/modes.md) instead. On those paths, your data is stored in OTel-native format, and attributes are preserved under `resource.attributes.*` and `attributes.*`. For a comparison of both formats and guidance on choosing your ingest path, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
+:::
+
 Resource attributes are a type of attribute that contains information about the entities that produce telemetry. Resource attributes map to Elastic Common Schema (ECS) fields like `service.*`, `cloud.*`, `process.*`, and so on. These fields describe the service and its environment.
 
 For example, Elastic APM maps the OpenTelemetry `deployment.environment` field to the ECS `service.environment` field on ingestion.
