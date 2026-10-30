@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_panels_and_visualizations.html
+description: Compare the panel types and editors that you can add to a Kibana dashboard, from Lens charts and maps to text, controls, and legacy editors.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: overview
 ---
 
 # Panels and visualizations [_panels_and_visualizations]
@@ -41,8 +43,8 @@ $$$panels-editors$$$
 |  | [SLO Alerts](/solutions/observability/incident-management/service-level-objectives-slos.md) | Visualize one or more SLO alerts, including status, rule name, duration, and reason. In addition, configure and update alerts, or create cases directly from the panel. |
 |  | [SLO Error Budget](/solutions/observability/incident-management/service-level-objectives-slos.md) | Visualize the consumption of your SLO's error budget |
 |  | | |
-| Legacy | [Aggregation based](visualize/legacy-editors/aggregation-based.md) | Create visualizations including area, line, and pie charts and split them up to three aggregation levels. While these panel types are still available, we recommend using [Lens](visualize/lens.md) instead. |
-|  | [TSVB](visualize/legacy-editors/tsvb.md) | Visualize time-based data through various panel types |
+| Legacy | [Aggregation based](visualize/legacy-editors/aggregation-based.md) {applies_to}`stack: ga` {applies_to}`serverless: unavailable` | Create visualizations including area, line, and pie charts and split them up to three aggregation levels. While these panel types are still available, we recommend using [Lens](visualize/lens.md) instead. |
+|  | [TSVB](visualize/legacy-editors/tsvb.md) {applies_to}`stack: ga` {applies_to}`serverless: unavailable` | Visualize time-based data through various panel types |
 
 :::{note}
 Legacy panel types only appear in the dashboard **Add** menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
