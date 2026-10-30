@@ -28,6 +28,8 @@ In this example, the user `elastic` with a UID and GID of 1000 belongs to both t
 
 :::{admonition} ECE service containers run as root
 While the ECE installer user must be non-root (UID ≥ 1000), the [ECE service containers](ece-architecture.md#ece-service-containers) run as `root` (UID 0) internally. This is an architectural requirement. Elastic Stack containers run as a non-root user (UID ≥ 1000).
+
+**Once ECE is installed on a host, all host users have access to the Docker daemon, which is equivalent to root access. Limit host logins to users you trust with that level of control.**
 :::
 
 ::::{note} 

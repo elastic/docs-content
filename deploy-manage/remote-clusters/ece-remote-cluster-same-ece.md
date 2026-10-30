@@ -91,19 +91,24 @@ If your organization’s deployments already trust each other by default, you ca
     * Trust no deployment - No deployment in this {{ece}} environment is trusted.
 
     ::::{note}
-    When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described in [Using the API](#ece-trust-using-the-api).
+    When you select **Trust specific deployments**, the UI only lists deployments that are CCS-compatible with the deployment you are editing. This means the UI on a newer deployment might not list an older one, even if CCS works in the other direction. Because both deployments must trust each other, you might need to configure trust on the deployment that doesn't list the other [using the API](#ece-trust-using-the-api).
+
+    This applies to:
+
+    - **CCR-only trust**, where the [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is more restrictive than what [CCR](/deploy-manage/tools/cross-cluster-replication.md) requires.
+    - **CCS from an older local deployment to a newer remote deployment**. For example, a local 8.19 deployment can search a remote 9.x deployment, but the 9.x deployment's UI won't list the 8.19 deployment. Configure trust on the 9.x side using the API.
     ::::
 
 
-1. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect 2 deployments successfully when both of them trust each other.
+4. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect 2 deployments successfully when both of them trust each other.
 
 ::::{dropdown} Using the API
 :name: ece-trust-using-the-api
 
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 The current trust settings can be found in the path `.resources.elasticsearch[0].info.settings.trust` when calling:
 

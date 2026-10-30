@@ -22,7 +22,7 @@ There are three ways to use {{agent-builder}} and workflows together:
 
 * **Create workflows from Agent Chat**: {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Create and edit workflows by describing what you want [in plain language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md). {{kib}} generates and updates the workflow YAML for you, so you can quickly build without memorizing step types or Liquid syntax. 
 * **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md) {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`, or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
-* **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
+* **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). To add context to a conversation without triggering an agent response, use the [conversation steps](#add-conversation-context-workflow) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`. For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
 
 ## Prerequisites [prerequisites]
 
@@ -160,10 +160,10 @@ Set `agent-id` and other configuration keys at the top level of the step. Set in
 | Parameter | Location | Type | Required | Description |
 |-----------|----------|------|----------|-------------|
 | `agent-id` | Top level | string | No | The unique identifier of the target agent (must exist in {{agent-builder}}). Defaults to the built-in Elastic AI Agent. |
-| `connector-id` | Top level | string | No | The GenAI connector to use for model routing. Mutually exclusive with `inference-id`. |
+| `connector-id` | Top level | string | No | The Generative AI connector to use for model routing. Mutually exclusive with `inference-id`. Generative AI connectors are deprecated, so use `inference-id` for new workflows. |
 | `inference-id` | Top level | string | No | The {{infer}} endpoint ID to use for model routing. Mutually exclusive with `connector-id`. |
 | `create-conversation` | Top level | boolean | No | When `true`, persists the conversation so that follow-up steps or later requests can continue it. |
-| `public-conversation` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | Top level | boolean | No | When `true`, makes the conversation this step creates public. Any user who can access the agent can read and continue the conversation and see it in their conversation list. Only applies when `create-conversation` is `true`. Defaults to `false` (private). Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
+| `public-conversation` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Top level | boolean | No | When `true`, makes the conversation this step creates public. Any user who can access the agent can read and continue the conversation and see it in their conversation list. Only applies when `create-conversation` is `true`. Defaults to `false` (private). Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
 | `message` | `with` | string | Yes | The natural language prompt to send to the agent. Can include template variables to reference data from previous steps. |
 | `schema` | `with` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the agent returns structured data matching the schema instead of free-text. |
 | `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
@@ -171,6 +171,20 @@ Set `agent-id` and other configuration keys at the top level of the step. Set in
 
 For the complete step reference, refer to [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent).
 
+## Add context to a conversation without an agent response [add-conversation-context-workflow]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+A workflow can add events, such as notes, and user messages to an {{agent-builder}} conversation. The agent reads user messages and notes the next time it runs on the conversation. For example, a workflow can post incident updates as they arrive, and a later `ai.agent` step or chat request can summarize them.
+
+Use these steps:
+
+- [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create): Create a conversation and get its ID.
+- [`ai.conversation.add_event`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-event): Add an event, such as a note.
+- [`ai.conversation.add_user_message`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-user-message): Add a user message.
 
 ## Use `kibana.request` step [use-kibana-request-workflow-step]
 
