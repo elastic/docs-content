@@ -26,7 +26,7 @@ The **Entity analytics** page provides a centralized workspace for investigating
   * `read` for `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>`
   * **Read** for the **Management → Saved Objects Management** feature 
 * {applies_to}`serverless: ga` If you're using a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md), make sure it grants `read` access to all the required index patterns.
-* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 :::
 
 To access the page:
@@ -42,9 +42,9 @@ serverless: preview
 :::{admonition} Requirements
 * To display threat hunting leads, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 * To view or generate threat hunting leads, you need the following privileges:
-  * **View leads**: `read` for `.entity_analytics.entity-leads-*`
+  * **View leads**: `read` for `.entity_analytics.entity-leads*`
   * **Generate leads**:
-    * `read`, `create_index`, and `write` for `.entity_analytics.entity-leads-*`
+    * `read`, `create_index`, and `write` for `.entity_analytics.entity-leads*`
     * **Read** for the **Management > Actions and Connectors** feature
 :::
 

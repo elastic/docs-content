@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: cloud-serverless
 navigation_title: "Link and manage projects"
@@ -41,7 +41,7 @@ To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 1. Click **Link projects**. Browse or search for projects to link to the origin project. Only compatible projects appear in the project list. You can filter by type, cloud provider, region, and tags.
 
-1. Select the checkbox for each project you want to link. You can link up to 20 projects to each origin project.
+1. Select the checkbox for each project you want to link. You can link up to 100 projects to each origin project.
 
      If a project you expected to link to is missing from the list, it might not meet the [requirements](/deploy-manage/cross-project-search-config.md#cps-compatibility), or you might not have the necessary [permissions](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) on the linked project.
 
@@ -52,9 +52,13 @@ To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 On the origin project's **{{cps-cap}}** page, you can reconfigure {{cps}} as needed:
 
-- **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 20-project maximum for the origin project.
+- **Link additional projects:**  Click **Link projects** to add more linked projects, up to the 100-project maximum for the origin project.
 - **Unlink projects:** Remove connections by [unlinking projects](#cps-unlink-projects).
 - **Open space settings in {{kib}}:**  Click **Manage spaces** to set or adjust the default [{{cps-init}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space.
+
+::::{warning}
+{{anomaly-jobs-cap}} store the projects selected at save time. Linking or unlinking a project does not change that stored scope. If the job still includes an unlinked project, it can fail. Refer to [{{cps-cap}} scope](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
+::::
 
 ## Unlink projects [cps-unlink-projects]
 

@@ -53,8 +53,11 @@ toc:
               - file: elasticsearch/diagnosing-invalid-repositories.md
           - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
-      - file: elasticsearch/start-ilm.md
-      - file: elasticsearch/index-lifecycle-management-errors.md
+      - file: elasticsearch/data-lifecycle.md
+        children:
+          - file: elasticsearch/start-ilm.md
+          - file: elasticsearch/index-lifecycle-management-errors.md
+          - file: elasticsearch/data-stream-frozen-transition.md
       - file: elasticsearch/file-based-recovery.md
       - file: elasticsearch/troubleshooting-upgrades.md
       - file: elasticsearch/troubleshooting-upgrade-assistant.md
@@ -87,6 +90,13 @@ toc:
           - file: elasticsearch/discovery-troubleshooting.md
           - file: elasticsearch/monitoring-troubleshooting.md
           - file: elasticsearch/transform-troubleshooting.md
+          - file: elasticsearch/machine-learning-cps.md
+            children:
+              - file: elasticsearch/machine-learning/cps-datafeed-project-scope.md
+              - file: elasticsearch/machine-learning/cps-datafeed-linked-project-unavailable.md
+              - file: elasticsearch/machine-learning/cps-datafeed-scope-change.md
+              - file: elasticsearch/machine-learning/cps-datafeed-credentials.md
+              - file: elasticsearch/machine-learning/cps-datafeed-field-mappings.md
           - file: elasticsearch/watcher-troubleshooting.md
           - file: elasticsearch/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md
   - file: kibana.md
@@ -101,6 +111,7 @@ toc:
       - file: kibana/task-manager.md
       - file: kibana/maps.md
       - file: kibana/graph.md
+      - file: kibana/discover-dashboards-no-data-screen.md
       - file: kibana/migration-failures.md
       - file: kibana/capturing-diagnostics.md
   - file: observability.md
@@ -199,6 +210,7 @@ toc:
     children:
       - file: deployments/serverless.md
       - file: deployments/elastic-cloud/sso.md
+      - file: deployments/elastic-cloud/cloud-console-access-denied.md
       - file: monitoring/unavailable-nodes.md
       - file: monitoring/unavailable-shards.md
       - file: monitoring/performance.md
@@ -207,11 +219,13 @@ toc:
           - file: monitoring/high-availability.md
           - file: monitoring/cluster-response-time.md
       - file: monitoring/node-moves-outages.md
+      - file: monitoring/not-enough-capacity.md
       - file: monitoring/deployment-health-warnings.md
       - file: monitoring/node-bootlooping.md
   - file: deployments/cloud-enterprise/cloud-enterprise.md
     children:
       - file: deployments/cloud-enterprise/common-issues.md
+      - file: deployments/cloud-enterprise/troubleshoot-ipv6-aws-integration.md
       - file: deployments/cloud-enterprise/use-emergency-roles-token.md
       - file: deployments/cloud-enterprise/remove-cloud-enterprise.md
       - file: deployments/cloud-enterprise/troubleshooting-container-engines.md

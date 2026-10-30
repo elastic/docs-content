@@ -49,4 +49,4 @@ Organizations are groupings of {{ecloud}} resources and associated settings. As 
 
 ## Customize your interface
 
-Some account features also let you set personal preferences and customize the interface, such as [using dark mode](dark-mode.md) in your projects and deployments.
+You can change how {{kib}} looks and behaves for you in your projects and deployments. For example, you can use dark mode, change the interface language, or choose whether {{kib}} opens your last space when you log in. Refer to [](/explore-analyze/find-and-organize/personal-preferences.md) for all the preferences you can set.

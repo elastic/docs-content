@@ -66,6 +66,11 @@ The standalone **Threat Hunting Agent** is removed in 9.4. Threat hunting workfl
 
 **Migration path:** Enable the [`threat-hunting`](builtin-skills-reference.md#agent-builder-threat-hunting-skill) skill on the Elastic AI Agent in place of that standalone agent. The skill ships with the same tool set and query templates previously bundled into the agent, plus platform core tools for generating and running {{esql}} queries. For use cases and example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#threat-hunting).
 
+::::{note}
+:applies_to: {stack: ga 9.4+, serverless: ga}
+Conversations previously stored against the standalone Threat Hunting Agent (`agent_id: security.agent`) no longer appear in the conversation list and can't be continued from the UI after upgrading to {{stack}} 9.4.
+::::
+
 ## Related pages
 
 - [Agents](agent-builder-agents.md)

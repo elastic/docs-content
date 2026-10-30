@@ -21,6 +21,7 @@ version and deployment type differences in your docs:
 
 * **Pages**: Provide signals that a page applies to the reader.
 * **Headings**: Provide signals about a section’s scope so a user can choose to read or skip it as needed.
+* **Paragraphs**: Call out a single sentence or short passage that's version- or deployment-specific when the rest of the surrounding content isn't.
 * **Lists**: Identify features in a list of features that are exclusive to a specific context, or that were introduced in a specific version or comparing differing requirements, limits, and other simple, mirrored facts.
 * **Definition lists**: Identify settings or options that are exclusive to a specific context, or that were introduced in a specific version.
 * **Tabs**: Provide two sets of procedures when one or more steps in a process differs between contexts. For differences per version or deployment type, you should use [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) instead of a generic [`tab-set`](https://elastic.github.io/docs-builder/syntax/tabs/).
@@ -70,6 +71,26 @@ Do **not** use [inline annotations](https://elastic.github.io/docs-builder/synta
 :alt: Rendering error when using inline applies_to with headings
 ::::
 :::
+
+### Paragraphs [paragraphs]
+
+Use an inline annotation to lead a standalone paragraph when only part of a passage is version- or deployment-specific. Separate the tagged paragraph from the rest of the content with a blank line, so it's unambiguous that the badge scopes only that paragraph.
+
+```markdown
+General statement that applies to every version.
+
+{applies_to}`stack: ga 9.5+` This paragraph only applies starting in Stack 9.5.
+```
+
+:::{warning}
+Do **not** place the annotation between two sentences of the same paragraph. Without a blank line splitting the sentences into separate paragraphs, it's ambiguous which sentence the badge scopes.
+
+```markdown
+General statement. {applies_to}`stack: ga 9.5+` This sentence only applies starting in Stack 9.5.
+```
+:::
+
+If the version-specific content can't stand on its own as a separate paragraph, for example because it's tightly coupled to the surrounding sentence, follow the guidelines for [lists](#ordered-and-unordered-lists) or use an [admonition](#admonitions) instead.
 
 ### Ordered and unordered lists [ordered-and-unordered-lists]
 

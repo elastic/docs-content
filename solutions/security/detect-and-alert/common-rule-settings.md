@@ -84,7 +84,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
     After you create the rule, you can find all custom highlighted fields in the About section of the rule details page. If the rule has alerts, you can find custom highlighted fields in the [Highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) section of the alert details flyout.
 
 **Elastic endpoint exceptions** (optional)
-:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) to this rule.
+:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) to this rule.
 
     This setting is available on deployments where {{elastic-endpoint}} exceptions are evaluated by detection rules. It's not available on deployments that use [per-policy {{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md#endpoint-exceptions-opt-in).
 
@@ -103,6 +103,8 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 
 **Max alerts per run** (optional)
 :   Specify the maximum number of alerts the rule can create each time it executes. Default is 100.
+
+    {applies_to}`serverless: ga` When {{cps}} is enabled, this limit still applies even if the rule searches across multiple projects. Refer to [{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md#cps-rules-max-alerts).
 
 ::::{admonition} System-level alert limit
 The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.

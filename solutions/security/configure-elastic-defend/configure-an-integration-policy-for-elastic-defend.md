@@ -137,8 +137,9 @@ The quarantine folder location varies by operating system:
 
 * macOS: `/System/Volumes/Data/.equarantine`
 * Linux: `.equarantine` at the root of the mount point of the file being quarantined
-* Windows - {{elastic-defend}} versions 8.5 and later: `[DriveLetter:]\.equarantine`, unless the files are from the `C:` drive. These files are moved to `C:\Program Files\Elastic\Endpoint\state\.equarantine`.
-* Windows - {{elastic-defend}} versions 8.4 and earlier: `[DriveLetter:]\.equarantine`, for any drive
+* Windows:
+    * Quarantined file: `[DriveLetter:]\.equarantine` on the same volume as the original file (for example, `C:\.equarantine`)
+    * Quarantine metadata (`.mdata`): `C:\Program Files\Elastic\Endpoint\state` for files from every volume
 
 To restore a quarantined file to its original state and location, [add an exception](/solutions/security/detect-and-alert/add-manage-exceptions.md) to the rule that identified the file as malicious. If the exception would’ve stopped the rule from identifying the file as malicious, {{elastic-defend}} restores the file.
 
@@ -319,7 +320,22 @@ This means that if you want to allow any access to Windows Portable Devices, you
 
 ## Event collection [event-collection]
 
-In the **Settings** section, select which categories of events to collect on each operating system. Most categories are collected by default.
+In the **Settings** section, select which categories of events to collect on each operating system. {{elastic-defend}} collects most categories by default.
+
+| Event category | Windows | macOS | Linux |
+|---|---|---|---|
+| **API** | ✓ | — | — |
+| **DLL and Driver Load** | ✓ | — | — |
+| **DNS** | ✓ | ✓ | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` ✓ |
+| **File** | ✓ | ✓ | ✓ |
+| **Network** | ✓ | ✓ | ✓ |
+| **Process** | ✓ | ✓ | ✓ |
+| **Registry** | ✓ | — | — |
+| **Security** | ✓ | ✓ | — |
+
+On Linux, DNS events are only available with eBPF-based event collection. You can also select **Collect session data** to capture the extended process data that [Session View](/solutions/security/investigate/session-view.md) uses. This option requires **Process** events. To also record terminal output, such as the commands users run, select **Capture terminal output**. Terminal output capture only works on hosts that support eBPF.
+
+{{elastic-defend}} doesn't capture every system event in these categories, and it might aggregate, truncate, or deduplicate the events it collects. To learn which events it doesn't capture and how to collect them with other integrations, refer to [Event capture and {{elastic-defend}}](/solutions/security/manage-elastic-defend/event-capture-elastic-defend.md).
 
 :::{image} /solutions/images/security-event-collection.png
 :alt: Detail of event collection section.

@@ -12,6 +12,6 @@ During the free 14-day trial, Elastic provides access to one hosted deployment a
 **{{serverless-short}} projects**
 
 * You can have three active {{serverless-short}} projects at a time.
-* Search Power is limited to 100 and Search Boost Window is limited to 7 days. These [settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings) apply only to {{es-serverless}} projects.
-* Scaling is limited for {{serverless-short}} projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
+* For {{es-serverless}} projects, Search Power is limited to 100 and Search Boost Window is limited to 7 days. Refer to [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
+* Scaling is limited for {{serverless-short}} projects in trials. Failures might occur if the workload requires memory or compute beyond what trial limits can provide.
 * Token usage for LLMs and other ML models is restricted during the trial period. If you require higher limits, reach out to [Support](https://cloud.elastic.co/support). After [upgrading to paid](/deploy-manage/cloud-organization/billing/add-billing-details.md), it can take up to 24 hours for these restrictions to clear.

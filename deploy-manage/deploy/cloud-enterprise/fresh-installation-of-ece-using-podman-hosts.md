@@ -32,6 +32,8 @@ This section provides guidelines and recommendations to install ECE using a Podm
 
     [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 
+    {applies_to}`ece: ga 4.2` If you are configuring Proxy Protocol v2 between the load balancer and the ECE proxies, add the `--proxy-protocol-version 2` and `--proxy-protocol-lenient` flags to the installation command on every host. Refer to [](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) and [](/deploy-manage/deploy/cloud-enterprise/configure-proxy-protocol.md) for details.
+
     ::::{important} 
     Important while running `./elastic-cloud-enterprise.sh`
 

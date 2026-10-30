@@ -28,9 +28,20 @@ We recommend using kernel 4.15.x or later on Ubuntu.
 
 To check your kernel version, run `uname -r`.
 
-::::{note} 
-{{ece}} is not supported on Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2.
-::::
+### cgroups support
+
+Linux distributions that use [cgroups](https://man7.org/linux/man-pages/man7/cgroups.7.html) version 2 are only supported in {{ece}} 4.2 and later. {{ece}} versions 4.0-4.1 only support cgroups version 1.
+
+The cgroups version is determined by the OS, not by ECE.
+
+For example:
+* Ubuntu 20.04, RHEL 8.x, and Rocky Linux 8.x use cgroups v1.
+* Ubuntu 22.04 and later, RHEL 9.x and later, Rocky Linux 9.x and later, and SLES 15 use cgroups v2.
+
+The following limitations apply to hosts using cgroups v2:
+
+* {{es}} versions 8.0–8.4.3 fail to start on hosts using cgroups v2 with the bundled JDK. Refer to [our KB article](https://ela.st/es-may-fail-on-cgroup-v2) for more details.
+* On cgroups v2 hosts, [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) reports process CPU metrics in `system.process.cgroup.cpu.*` instead of `system.process.cgroup.cpuacct.*`, and `docker.memory.rss.pct` is unavailable. Update any custom dashboards or alerts that query these fields.
 
 
 
@@ -95,7 +106,7 @@ XFS is required if you want to use disk space quotas for {{es}} data directories
 Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
 ::::{important} 
-You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
+You must use XFS and have quotas enabled on all allocators, otherwise disk usage won't display correctly.
 ::::
 
 

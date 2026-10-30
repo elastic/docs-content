@@ -26,6 +26,9 @@ When you create or edit an {{anomaly-job}} in {{kib}}, it simplifies the creatio
 
 For each custom URL, you must supply the URL and a label, which is the link text that appears in the anomalies table. You can also optionally supply a time range. When you link to **Discover** or a {{kib}} dashboard, you’ll have additional options for specifying the pertinent {{data-source}} or dashboard name and query entities.
 
+::::{include} _snippets/ml-ad-cps-results-links.md
+::::
+
 ## String substitution in custom URLs [ml-configuring-url-strings]
 
 You can use dollar sign ($) delimited tokens in a custom URL. These tokens are substituted for the values of the corresponding fields in the anomaly records. For example, the `Raw data` URL might resolve to `discover#/?_g=(time:(from:'$earliest$',mode:absolute,to:'$latest$'))&_a=(index:ff959d40-b880-11e8-a6d9-e546fe2bba5f,query:(language:kuery,query:'customer_full_name.keyword:"$customer_full_name.keyword$"'))`.

@@ -81,7 +81,7 @@ To add a trusted application:
             ::::
 
             ::::{note}
-            If you use only a hash to identify a trusted application, the entry may stop working when the application is updated, since updates often change the hash. For a more reliable match, combine `Path` and `Signature` conditions instead.
+            If you use only a hash to identify a trusted application, the entry might stop working when the application is updated, since updates often change the hash. For a more reliable match, combine `Path` and `Signature` conditions instead.
             ::::
 
     3. `Operator`: Select an operator to define the condition:

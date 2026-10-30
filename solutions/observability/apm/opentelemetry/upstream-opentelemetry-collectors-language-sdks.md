@@ -20,9 +20,7 @@ The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means lo
 
 To compare approaches and choose the best one for your use case, refer to [OpenTelemetry](/solutions/observability/apm/opentelemetry/index.md).
 
-::::{important}
 {{product.edot-collector}} includes additional features and configurations to seamlessly integrate with Elastic. Refer to [{{edot}} compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md) for a comparison.
-::::
 
 :::{note}
 {applies_to}`stack: ga 9.2+`

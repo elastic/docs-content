@@ -79,7 +79,7 @@ Use bulk editing to update settings on multiple rules simultaneously. Rules that
 
     * **Index patterns**: Add or delete the index patterns used by all selected rules.
     * **Tags**: Add or delete tags on all selected rules.
-    * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices), or enter field names from other indices. To overwrite a rule's current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
+    * **Custom highlighted fields**: Add custom highlighted fields on all selected rules. You can choose any fields that are available in the default {{elastic-sec}} indices ([securitySolution:defaultIndex](kibana://reference/advanced-settings.md#kibana-siem-settings)), or enter field names from other indices. To overwrite a rule's current set of custom highlighted fields, select the **Overwrite all selected rules' custom highlighted fields** option, then click **Save**.
     * **Add rule actions**: Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) on all selected rules. If you add multiple rule actions, you can specify an action frequency for each of them. To overwrite the frequency of existing rule actions, select the option to **Overwrite all selected rules actions**. Keep in mind that rule actions won't run during a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md) or while the rule is [snoozed](#snooze-rule-actions); they'll resume after the maintenance window or snooze period ends.
     * **Update rule schedules**: Update the [schedules](/solutions/security/detect-and-alert/common-rule-settings.md#rule-schedule) and look-back times on all selected rules.
     * **Apply Timeline template**: Apply a specified [Timeline template](/solutions/security/investigate/timeline-templates.md) to the selected rules. You can also choose **None** to remove Timeline templates from the selected rules.
@@ -250,7 +250,7 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 
 * **Data views**: For rules that use a {{kib}} data view as a data source, the exported file contains the associated `data_view_id`, but does *not* include any other data view configuration. To export/import between {{kib}} spaces, first use the [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-share-to-space) UI to share the data view with the destination space.
 
-    To import into a different {{stack}} deployment, the destination cluster must include a data view with a matching data view ID (configured in the [data view’s advanced settings](/explore-analyze/find-and-organize/data-views.md)). Alternatively, after importing, you can manually reconfigure the rule to use an appropriate data view in the destination system.
+    To import into a different {{stack}} deployment, the destination cluster must include a data view with a matching data view ID (configured in the [data view’s advanced settings](/explore-analyze/find-and-organize/data-views/create-data-view.md)). Alternatively, after importing, you can manually reconfigure the rule to use an appropriate data view in the destination system.
 
 * **Actions and connectors**: Rule actions and connectors are included in the exported file, but sensitive information about the connector (such as authentication credentials) *is not* included. You must re-add missing connector details after importing detection rules.
 
@@ -278,7 +278,28 @@ The rules are exported to an `.ndjson` file.
     1. Drag and drop the `.ndjson` file that contains the exported rules.
     2. (Optional) Select the appropriate options to overwrite existing data:
 
-        * **Overwrite existing detection rules with conflicting "rule_id"**: Updates existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
+        * **Overwrite existing detection rules with conflicting "rule_id"**. The behavior differs depending on your version:
+
+            ::::{applies-switch}
+
+            :::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+
+            In {{stack}} 9.5.0 to 9.5.5, this option always updates existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
+
+            In {{serverless-short}} and {{stack}} 9.5.6 onwards, this option only updates existing rules if the imported rule differs from the installed rule. Rules that match the installed version — including their enabled or disabled state — are skipped: their revision, **Updated** timestamp, change history, API key, and owner stay the same, and they still count as a successful import.
+
+            Because of this, re-importing unchanged rules does not refresh their API keys. To update a rule's API key on {{stack}}, refer to [Update a rule's API key](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md#update-api-key). On {{serverless-short}}, refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md).
+
+            :::
+
+            :::{applies-item} { "stack": "ga 9.0-9.4" }
+
+            Updates existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
+
+            :::
+
+            ::::
+
         * **Overwrite existing exception lists with conflicting "list_id"**: Replaces existing exception lists with exception lists from the import file if they have a matching `list_id` value.
         * **Overwrite existing connectors with conflicting action "id"**: Updates existing connectors if they match the `action id` value of any rule actions in the import file. Configuration data included with the actions is also overwritten.
 
