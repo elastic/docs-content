@@ -10,7 +10,7 @@ products:
 
 # {{es}} PKI authentication on {{eck}} [k8s-es-pki-authentication]
 
-When you enable [{{es}} client certificate authentication](/deploy-manage/security/k8s-es-client-certificate-auth.md), each {{stack}} component that ECK connects to {{es}} presents a client certificate. By default, the component also authenticates with a service account token or a username and password. With PKI authentication, the component authenticates with its client certificate only, through a [PKI realm](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) that ECK manages. ECK doesn't create or mount credentials for that connection.
+When you enable [{{es}} client certificate authentication](/deploy-manage/security/k8s-es-client-certificate-auth.md) (mTLS), each {{stack}} component that ECK connects to {{es}} presents a client certificate. By default, the component also authenticates with a service account token or a username and password. You can enable PKI authentication so that the component authenticates with its client certificate only, through a [PKI realm](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) that ECK manages. With PKI authentication, ECK doesn't create credential secrets for that connection, which reduces the number of secrets in your cluster. ECK also keeps the role mapping in step with the client certificate, so when the certificate rotates, nothing stale is left behind.
 
 You enable PKI authentication on both sides of the connection:
 
@@ -26,7 +26,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 ## Requirements [k8s-es-pki-requirements]
 
 * {{es}} 9.6.0 or later.
-* Client certificate authentication enabled on {{es}} with `spec.http.tls.client.authentication: true`.
+* [Client certificate authentication](/deploy-manage/security/k8s-es-client-certificate-auth.md) enabled on {{es}} with `spec.http.tls.client.authentication: true`.
 * A component that supports PKI authentication:
 
   | Component | PKI authentication support |
@@ -36,11 +36,11 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
   | {{beats}} | Supported |
   | Standalone {{agent}} | Supported |
   | {{ls}} | Supported |
-  | {{hosted-ems}} | Supported in version 9.6.0 or later |
+  | {{hosted-ems}} | {applies_to}`stack: ga 9.6` Supported |
   | Fleet-managed {{agent}} and {{fleet-server}} | Not supported |
   | Enterprise Search | Not supported |
 
-  ECK rejects `authenticationMode: PKI` for the components that don't support it. Connections that ECK configures for stack monitoring always use credentials.
+  You enable PKI authentication per component, so you can use it for the supported components in your environment while other components continue to authenticate with credentials. ECK rejects `authenticationMode: PKI` for the components that don't support it. Connections that ECK configures for stack monitoring always use credentials.
 
 ## Reserved names and settings [k8s-es-pki-reserved]
 
@@ -96,7 +96,7 @@ spec:
     authenticationMode: PKI
 ```
 
-The same field applies to {{apm-server}}, {{beats}}, and {{hosted-ems}}. For {{ls}} and standalone {{agent}}, set `authenticationMode` on each entry of `elasticsearchRefs`.
+The same field applies to {{apm-server}}, {{beats}}, and {{hosted-ems}}. For {{ls}} and standalone {{agent}}, set `authenticationMode` on each entry of `elasticsearchRefs`. For {{ls}}, you also need to update the {{es}} output configuration in your pipelines (refer to [Use PKI authentication with {{ls}}](#k8s-es-pki-logstash)).
 
 The `authenticationMode` field accepts these values:
 
@@ -181,7 +181,7 @@ spec:
 
 A custom certificate must have a non-empty subject common name (CN), because {{es}} derives the PKI username from it. If the CN is empty, for example in a certificate that only sets subject alternative names, the association stays `Pending`.
 
-ECK can map each public key to only one set of roles. If two or more components use certificates with the same public key but need different roles, ECK doesn't create a role mapping for any of them. Their associations stay `Pending` with a conflict event. Use a different certificate for each component.
+Each component needs a certificate with a unique public key, because ECK maps the public key to the component's roles. If two or more components share the same public key but need different roles, ECK can't create a role mapping for any of them, and their associations stay `Pending` with a conflict event. Use a different certificate for each component.
 
 ## Switch a component back to credentials [k8s-es-pki-disable]
 
