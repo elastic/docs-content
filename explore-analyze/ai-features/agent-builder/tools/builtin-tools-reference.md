@@ -538,7 +538,9 @@ Automatic Migration tools work with [Automatic Migration](/solutions/security/ge
 
 **Prerequisites:** An Enterprise license on {{stack}}, or a Security Complete subscription on {{serverless-short}}. You also need `All` privileges for the **SIEM migrations** feature and at least `Read` privileges for the **Rules** feature.
 
-**Tools that read migrations** return status, progress, and translation results. They don't change anything.
+#### Tools that read migrations
+
+These tools return status, progress, and translation results. They don't change anything.
 
 `security.siem_migration.get_all_rule_migration_stats` {applies_to}`stack: ga 9.6+`
 :   Lists every rule migration in the current space, newest first, with its source platform, status, and how many of its rules are pending, in progress, completed, or failed.
@@ -558,7 +560,9 @@ Automatic Migration tools work with [Automatic Migration](/solutions/security/ge
 `security.siem_migration.get_missing_rule_migration_resources` {applies_to}`stack: ga 9.6+`
 :   Lists the resources a rule migration is still missing, such as macros, lookups, reference sets, or watchlists.
 
-**Tools that change migrations or rules** ask for confirmation before they run.
+#### Tools that change migrations or rules
+
+These tools ask for confirmation before they run.
 
 `security.siem_migration.start_rule_migration` {applies_to}`stack: ga 9.6+`
 :   Starts, resumes, or reprocesses a rule migration's translation run. Asks for confirmation the first time it runs in a conversation.
