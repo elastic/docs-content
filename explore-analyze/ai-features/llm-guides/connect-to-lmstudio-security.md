@@ -30,8 +30,8 @@ For testing, you can use alternatives to Nginx such as [Azure Dev Tunnels](https
 ::::
 
 
-::::{warning}
-Self-managed models work well for [AI Assistant](/solutions/security/ai/ai-assistant.md). For [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), we recommend using one of the models in the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+::::{note}
+This guide uses Mistral-Nemo-Instruct-2407 as an example. That model hasn't been rated. Before you choose a model, check the [open-source models](/solutions/security/ai/large-language-model-performance-matrix.md#_open_source_models) table. Some models that do well in {{agent-builder}} fail Attack Discovery.
 ::::
 
 

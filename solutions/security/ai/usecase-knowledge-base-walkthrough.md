@@ -1,14 +1,20 @@
 ---
+description: Ingest Slack messages, on-call rotations, and threat hunting playbooks into the AI Assistant Knowledge Base to improve responses in a threat response scenario.
 applies_to:
-  stack: ga 9.1
+  stack: deprecated 9.6+, ga 9.1-9.5
   serverless:
-    security: all
+    security: deprecated
 products:
   - id: security
 ---
 
 
 # Use AI Assistant's Knowledge Base to improve response quality
+
+:::{warning}
+:applies_to: {"stack": "deprecated 9.6+", "serverless": "deprecated"}
+AI Assistant for Security has been deprecated. Use [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) instead. Agent Builder doesn't use Knowledge Base entries, and they aren't migrated. To give agents similar context, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
+:::
 
 You can use AI Assistant's Knowledge Base to give it information on anything from threat hunting playbooks, to on-call rotations, security research, infrastructure information, your team's internal communications from platforms like Slack or Teams, and more — constrained only by your creativity. This page guides you through ingesting data from various sources into AI Assistant's Knowledge Base, and shows how this can improve the quality of its responses in a threat response scenario. 
 
@@ -72,5 +78,5 @@ The following video demo starts with a potential threat identified using Attack 
 
 ## Additional Resources
 
-- Learn more about [Knowledge Base](https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html)
+- Learn more about [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md)
 - Learn to [Ingest data with Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-connectors.html)
