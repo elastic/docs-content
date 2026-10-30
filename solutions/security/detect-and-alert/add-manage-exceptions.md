@@ -170,11 +170,6 @@ If an Elastic update changes a prebuilt rule's type, the rule keeps its exceptio
 
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
 
-::::{note}
-:applies_to: { stack: ga 9.4+, serverless: ga }
-You manage {{elastic-endpoint}} exceptions from the **Artifacts** page instead of from detection rules. Refer to [](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md).
-::::
-
 ```yaml {applies_to}
 stack: ga 9.0-9.3
 ```
