@@ -27,6 +27,7 @@ After deploying {{elastic-defend}}, you can manage your protected endpoints, tun
 | Reduce false positives from known software | [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) → [Event filters](/solutions/security/manage-elastic-defend/event-filters.md) |
 | Suppress false positive {{elastic-endpoint}} alerts | [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) |
 | Block known malicious applications | [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Detect threats that are specific to your environment | [Custom YARA signatures](/solutions/security/manage-elastic-defend/custom-yara-signatures.md) |
 | Understand different {{elastic-endpoint}} configuration settings | [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) |
 | Diagnose problems with {{elastic-defend}} | [Automatic troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md) → [Troubleshoot {{elastic-defend}}](/troubleshoot/security/elastic-defend.md) |
 | Prevent users from removing {{agent}}, or remove it from a host | [Prevent {{agent}} uninstallation](/solutions/security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md) → [Uninstall {{agent}}](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md) |
@@ -46,7 +47,7 @@ To configure those settings, refer to [Configure an integration policy for {{ela
 
 ## Endpoint artifacts
 
-[Endpoint artifacts](/solutions/security/manage-elastic-defend/endpoint-artifacts.md) let you tailor {{elastic-defend}} behavior to your environment, reducing noise without weakening protection. They include trusted applications, trusted devices, event filters, host isolation exceptions, blocklist entries, and {{elastic-endpoint}} exceptions. Each type changes a different behavior, so compare them in [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) before you create one.
+[Endpoint artifacts](/solutions/security/manage-elastic-defend/endpoint-artifacts.md) let you tailor {{elastic-defend}} behavior to your environment, reducing noise without weakening protection. Examples include trusted applications, event filters, and blocklist entries. Each type changes a different behavior, so compare them in [Optimize {{elastic-defend}}](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) before you create one.
 
 ## Protection and security
 
