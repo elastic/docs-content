@@ -57,11 +57,13 @@ These rows only appear when the alert is in the corresponding state. System-gene
 
 ## Review action policy activity [policy-history]
 
-The **Policy history** tab lists the dispatcher's decisions for this alert alone, so you can tell whether a notification went out, was held back, or failed without filtering the space-wide [execution history](../action-policies/review-action-policy-execution-history.md). The tab appears only if your role has the [**Execution history** privilege](../manage/configure-access.md#alerting-execution-history-privileges). For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
+The **Policy history** tab lists the dispatcher's decisions for this alert alone, so you can tell whether a notification went out, was held back, or failed. You can't narrow the space-wide [execution history](../action-policies/review-action-policy-execution-history.md) to a single alert. The tab appears only if your role has the [**Execution history** privilege](../manage/configure-access.md#alerting-execution-history-privileges).
+
+Each row covers one dispatcher run for one action policy. The tab shows the same columns as the space-wide page, except that it hides **Rules**, **Alerts**, and **Action groups** by default. Search the list, or filter by outcome to show only **Dispatched**, **Throttled**, or **Failed** runs. For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
 
 Select an action policy's name to open its configuration in a flyout. The name is a link only if your role can read action policies.
 
-The tab covers the alert's whole lifetime. When the tab is empty, it shows the same message as the space-wide page, "No action policy execution activity in the last 24 hours", but the tab isn't limited to 24 hours.
+The tab covers the alert's whole lifetime. When the tab is empty, its message "No action policy execution activity in the last 24 hours" comes from the space-wide page. The tab itself isn't limited to 24 hours.
 
 ## Inspect the underlying data [inspect-data]
 
