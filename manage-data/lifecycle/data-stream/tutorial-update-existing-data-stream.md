@@ -41,7 +41,7 @@ Add or change the data stream lifecycle with the **{{index-manage-app}}** or **S
 1. To customize the lifecycle for this data stream, clear **Inherit lifecycle from index template** on each tab you want to edit:
 
    :::{image} /manage-data/images/elasticsearch-serverless-edit-data-lifecycle.png
-   :alt: Edit data lifecycle flyout in Serverless.
+   :alt: Edit data lifecycle flyout in {{serverless-short}}.
    :screenshot:
    :width: 50%
    :::
@@ -62,11 +62,10 @@ Lifecycle changes apply to every backing index of the data stream.
 1. Search for the data stream.
 1. Select the data stream to view its details.
 1. In the data stream details pane, click the actions icon {icon}`gear` and select **Edit data lifecycle**.
-1. On the **Successful data** tab, clear **Inherit lifecycle from index template** and select the **Data stream lifecycle** method.
-1. Customize the lifecycle settings. To customize the **Failed data** tab, also clear **Inherit lifecycle from index template** on that tab:
+1. To customize the lifecycle for this data stream, clear **Inherit lifecycle from index template** on each tab you want to edit:
 
    :::{image} /manage-data/images/elasticsearch-edit-data-lifecycle.png
-   :alt: Edit data lifecycle flyout in Elastic Stack 9.5 and later.
+   :alt: Edit data lifecycle flyout in {{stack}} 9.5 and later.
    :screenshot:
    :width: 50%
    :::
@@ -97,7 +96,7 @@ Lifecycle changes apply to every backing index of the data stream.
 1. In the data stream details pane, select **Manage** → **Edit data retention**.
 
    :::{image} /manage-data/images/elasticsearch-edit-data-retention.png
-   :alt: Edit data retention flyout in Elastic Stack 9.0–9.4.
+   :alt: Edit data retention flyout in {{stack}} 9.0–9.4.
    :screenshot:
    :width: 75%
    :::
@@ -122,18 +121,10 @@ $$$data-retention-streams$$$
 
 ::::{dropdown} API example
 
-To update the lifecycle of a data stream, use the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle):
+To update the lifecycle of a data stream, use the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
+For example:
 
-* Set an indefinite retention period so {{es}} does not delete the data. For example:
-
-    ```console
-    PUT _data_stream/my-data-stream-test/_lifecycle
-    { } <1>
-    ```
-
-    1. An empty payload means that your data stream is managed but {{es}} does not delete the data. Managing a {{tsds}}, such as logs or metrics, helps {{es}} store your data even when you don't set a retention period.
-
-* Alternatively, set a retention period. For example:
+* Set a retention period:
 
     ```console
     PUT _data_stream/my-data-stream-test/_lifecycle
@@ -144,7 +135,7 @@ To update the lifecycle of a data stream, use the {{es}} [lifecycle API]({{es-ap
 
     1. The retention period of this data stream is 30 days. {{es}} can delete data older than 30 days.
 
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Optionally add `frozen_after` so older backing indices become partially mounted {{search-snaps}} on the frozen tier. For example:
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Optionally add `frozen_after` so older backing indices become partially mounted {{search-snaps}} on the frozen tier:
 
   ```console
   PUT _data_stream/my-data-stream-test/_lifecycle
@@ -159,6 +150,15 @@ To update the lifecycle of a data stream, use the {{es}} [lifecycle API]({{es-ap
   In this example, backing indices older than 30 days are converted to frozen {{search-snaps}}.
   {{es}} can still delete indices when their `generation_time` exceeds the effective retention period, even after they are frozen.
   For prerequisites, how conversion works, and troubleshooting, refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+
+* Remove the lifecycle settings configured on the data stream:
+
+    ```console
+    PUT _data_stream/my-data-stream-test/_lifecycle
+    { } <1>
+    ```
+
+    1. An empty payload means that your data stream lifecycle uses global settings. For example, the global default and maximum retention settings apply. Refer to [](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
 
 These lifecycle changes apply to every backing index of the data stream.
 To check the settings, use the {{es}} [explain API]({{es-apis}}operation/operation-indices-explain-data-lifecycle):
