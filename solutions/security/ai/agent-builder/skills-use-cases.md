@@ -44,8 +44,17 @@ Use this skill to find risky entities or profile specific hosts, users, services
 | Has `host-12`'s risk score changed significantly in the last 90 days? | Compare current and historical risk scores, flag changes greater than 20 points as significant, and summarize what drove the change. |
 | What are the riskiest hosts that are high-impact assets? | Filter for entities with criticality `high_impact` or `extreme_impact` and sort by risk score. |
 | Set `host-12`'s asset criticality to high impact {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`|  Update the entity's asset criticality and recalculate its risk score. |
+| Show the relationship graph for `host-12` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Render a preview of the entity's [relationship graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) in the chat, with a link to the full interactive graph. |
+| Chart `user-42`'s risk score over the last 30 days {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Render a [risk score history](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) chart and summarize the trend. |
+| When did `user-42` first access `host-12`? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Query the entity's [relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) history for when the relationship was first or last observed, or which hosts or users an entity related to over a time window. |
+| Who is on the Executives watchlist? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Look up the watchlist by name and list its members. |
 
 ![Entity Analytics skill in Agent Builder](/solutions/images/security-ab-skill-ea.png)
+
+:::{note}
+:applies_to: {stack: ga 9.6+, serverless: ga}
+Some Entity Analytics operations, such as turning Entity Analytics on or off, are intentionally not performed in chat. When you ask for one of them, the agent gives you a link to the {{kib}} UI where you can perform this action instead.
+:::
 
 ## Watchlist management
 
@@ -66,10 +75,32 @@ Use this skill to manage [entity watchlists](/solutions/security/advanced-entity
 | Add `user-42` and `user-99` to the Executives watchlist | Resolve the watchlist by name and add the entities. |
 | Remove `host-9` from the Critical Infrastructure watchlist | Remove the entity from the named watchlist. |
 | Delete the Contractors watchlist | Delete the named watchlist. |
+| Automatically add any host running Ubuntu to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Create or update the watchlist's rule-based data source. The confirmation includes a preview of the entities the query currently matches. |
+| What's keeping the Server Fleet watchlist in sync? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | List every data source linked to the watchlist. |
+| Stop automatically adding Ubuntu hosts to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Remove the rule-based data source. Entities it added are removed on the next sync, and manually added entities aren't affected. |
 
 :::{tip}
 The `manage-watchlists` skill only covers watchlist changes. To also profile entities or filter them by watchlist, combine it with [`entity-analytics`](#entity-risk-investigation).
 :::
+
+## Entity resolution
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+**Enable:** `entity-resolution`
+
+Use this skill to inspect and correct [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) from chat. The agent can show an entity's resolution group — the primary entity and every alias linked to it — link or unlink entities, and list, enable, or disable the automated resolution rules. Linking and unlinking change group membership only, and risk scores update the next time scoring runs.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Who is `jsmith` resolved with? | Return the entity's resolution group, including the primary entity and each alias. |
+| `jsmith123` and `jsmith.contractor` are the same user, merge them | Link the entities into a resolution group. If you don't say which should be the primary entity, the agent proposes one and explains why. |
+| Unlink `jsmith.contractor` from that group | Unlink the alias so it becomes a standalone entity again. |
+| What resolution rules do we have? | List the automated resolution rules and whether each is enabled. |
+| Turn off the Windows SID rule | Disable the named rule. |
 
 ## Threat hunting leads
 
@@ -146,6 +177,33 @@ Use this skill to diagnose [{{elastic-defend}}](/solutions/security/configure-el
 | Why isn't this endpoint showing up in the endpoint list? | Query agent and endpoint indices for enrollment and check-in evidence, then flag the root cause and remediation. |
 | Which endpoints are reporting policy response failures? | Search for policy response errors or warnings across endpoints and summarize affected endpoint IDs. |
 | Is there any incompatible antivirus software on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
+
+## {{elastic-defend}} policy management [defend-policy-management]
+
+```{applies_to}
+stack: ga 9.6+
+serverless:
+  security: ga
+```
+
+**Enable:** `elastic-defend-policy-management`
+
+Use this skill to decide how an {{elastic-defend}} [integration policy](/solutions/security/manage-elastic-defend/policies.md) should be configured. The agent can explain settings, compare policies, find policies that no endpoints use, assess a proposed change before you make it, and guide you through a staged move from detect to prevent. It can also apply a change to a policy after you confirm, except for [advanced policy settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings) and custom notification messages.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| What's the difference between detect and prevent for ransomware protection? | Look up the setting, list the values it accepts, and explain its behavior and tradeoffs. |
+| How does the Workstations policy compare with the Complete EDR preset? | Compare the policy with the preset's default configuration and list the settings that differ. |
+| Which of our {{elastic-defend}} policies don't have any endpoints using them? | List policies and classify each as used, unused, or undetermined based on its enrolled endpoints. |
+| How many endpoints haven't applied the latest revision of the Workstations policy? | Report the number of endpoints still running an older policy revision, and the number whose latest policy response has warnings or failures. |
+| What would happen if I changed malware protection on the Workstations policy to prevent? | List every setting the change would modify, warn you if it weakens a protection, and show how many endpoints are enrolled in the policy. Nothing is changed. |
+| Help me move the Workstations policy from detect to prevent safely | Explain the tradeoffs and suggest a staged rollout, based on {{elastic-defend}} guidance. The agent asks for the policy and protection if you haven't named them. |
+| Switch malware protection on the Workstations policy to prevent | Assess the change, then show a confirmation with the settings that will change. The policy is updated only after you select **Apply changes**. |
+| Make the Servers policy match the Workstations policy | Compare the two policies and propose changes for the settings the skill can change. If you don't say which policy to change, the agent asks. |
+
+:::{note}
+Before the agent applies a change, it shows a confirmation with each setting's current and new value, any warnings about weakened protections, and the number of endpoints enrolled in the policy. Select **Cancel** to leave the policy as it is.
+:::
 
 ## Attack Discovery generation [attack-discovery-generation]
 ```{applies_to}

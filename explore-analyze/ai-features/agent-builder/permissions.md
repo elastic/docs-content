@@ -30,6 +30,18 @@ An {{agent-builder}} request is allowed only when the user or client has access 
 
 Not every operation requires every privilege. For example, a tool that queries an index requires index privileges, while `monitor_inference` is required only when an agent or tool calls the {{es}} Inference API.
 
+### HTTP API tool privileges [http-api-tool-privileges]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Every agent can call {{es}} and {{kib}} HTTP APIs through the built-in [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools). These calls use the privileges of the user or API key, and {{kib}} API calls run in the current space. All of that identity's {{kib}} feature privileges and {{es}} privileges determine what the agent can do, not only its {{agent-builder}} privileges.
+
+Access to the tools requires no additional privileges beyond those needed to chat with an agent. Each API call still requires the privileges for the underlying operation.
+
+[Confirmation prompts](chat.md#confirm-an-api-operation) don't replace privilege checks. Some operations run without a prompt, and agents can auto-approve others. Grant each user or client only the privileges they need.
+
 ## Privilege reference [#privilege-reference]
 
 Use the following tables to identify the {{kib}} feature privileges and {{es}} privileges required for each {{agent-builder}} use case.
@@ -50,6 +62,8 @@ In the role management UI, {{kib}} displays human-readable privilege names. Role
 | **Workflows > Workflows Actions: Execute** | `feature_workflowsManagement.workflow_execute` | Run workflows. Also include **Workflows: Read** when the user or client must inspect workflows. |
 | **Workflows: All** | `feature_workflowsManagement.all` | Create, update, delete, run, and read workflows and their executions. |
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Through the [HTTP API tools](#http-api-tool-privileges), agents can also use any other {{kib}} feature privileges that the user or API key has, not only the privileges in this table.
+
 Learn more about [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ### {{es}} privileges [#es-privileges]
@@ -61,6 +75,8 @@ Tools execute {{es}} requests with the privileges of the current user or API key
 | Cluster | `monitor_inference` | Required when an agent uses a model that calls the {{es}} Inference API. This includes {{infer}} endpoints, the Elastic Managed LLM, and the **AI Connector** connector type. Tools that use the selected model, such as the built-in `search` and `generate_esql` tools and [index search tools](tools/index-search-tools.md), also need it in that case. This privilege is not required for the OpenAI, Amazon Bedrock, and Google Gemini connectors, which call the provider directly rather than through {{es}}. |
 | Indices | `read` | Required for tools that query index data. Limit the assigned index patterns to the data the user or client needs. |
 | Indices | `view_index_metadata` | Required for tools that inspect index mappings. The built-in `search` tool and index search tools might use this capability internally. |
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [HTTP API tools](#http-api-tool-privileges) can call any supported {{es}} API that the user or API key has privileges for, not only the operations covered in this table.
 
 Learn more about [cluster privileges](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html#privileges-list-cluster) and [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 

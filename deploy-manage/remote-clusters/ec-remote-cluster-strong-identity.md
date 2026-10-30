@@ -75,7 +75,7 @@ The certificate and key used by the local cluster to sign cross-cluster requests
     In {{ecloud}}, the certificates of all {{es}} nodes follow this Distinguished Name (DN) format:  
     `CN=<node_id>.node.<cluster_id>.cluster.<scope_id>`.
 
-    * The {{es}} `cluster_id` of your deployment can be found on the deployment page in the {{ecloud}} UI by selecting **Copy cluster ID**.  
+    * The {{es}} `cluster_id` of your deployment can be found in the **Application endpoints, cluster and component IDs** flyout on the deployment page in the {{ecloud}} UI.  
     * The `scope_id` corresponds to the {{ecloud}} organization ID.
     :::
 

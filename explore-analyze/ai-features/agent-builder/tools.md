@@ -42,6 +42,8 @@ Built-in tools serve as building blocks for more complex interactions and provid
 
 For the complete list, refer to [Built-in tools reference](tools/builtin-tools-reference.md).
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Every agent also has [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools) for calling {{es}} and {{kib}} APIs. These tools don't appear on the **Tools** page.
+
 :::{note}
 Some built-in skills also include inline tools that are only available while that skill is active and are not listed in the tools reference. For details, refer to [Built-in skills reference](builtin-skills-reference.md).
 :::
