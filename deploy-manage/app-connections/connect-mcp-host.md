@@ -238,12 +238,10 @@ When Cursor starts the OAuth flow, it redirects to one of two callback URLs depe
 
 AgentCore Gateway connects to {{agent-builder}} through an outbound OAuth client in AgentCore Identity.
 
-:::{note}
 Before you start, make sure you have:
 
 - An {{agent-builder}} OAuth client **with a client secret**.
 - An outbound OAuth client in AgentCore Identity that uses the client ID and client secret of your {{agent-builder}} OAuth client.
-:::
 
 To connect from AgentCore Gateway:
 
