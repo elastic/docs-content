@@ -127,7 +127,7 @@ If you're not present during an incident to investigate backlogged tasks, you mi
 
 For example, you can review slow search logs later using the [search profiler](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md), so that time consuming requests can be optimized.
 
-{applies_to}`stack: preview 9.4+` You can also configure [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to record slow Query DSL, {{esql}}, EQL, and SQL queries in a data stream.
+{applies_to}`stack: preview 9.4+` You can also configure [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to record slow Query DSL, {{esql}}, EQL, and SQL queries to a dedicated log data stream.
 
 ## Recommendations [resolve-task-queue-backlog] 
 
