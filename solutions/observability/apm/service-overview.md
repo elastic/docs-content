@@ -28,8 +28,6 @@ Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) b
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Each RED metric chart (**Latency**, **Throughput**, and **Failed transaction rate**) includes an **Open in Discover** button to explore the underlying trace data directly in Discover.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The overview also includes a **Service map** panel scoped to the service, showing how it connects to the rest of your architecture. Refer to [](/solutions/observability/apm/service-map.md) for more information.
-
 ## Time series and expected bounds comparison [service-time-comparison]
 
 For insight into the health of your services, you can compare how a service performs relative to a previous time frame or to the expected bounds from the corresponding {{anomaly-job}}. For example, has latency been slowly increasing over time, did the service experience a sudden spike, is the throughput similar to what the {{ml}} job expects — enabling a comparison can provide the answer.
@@ -58,6 +56,21 @@ Response times for the service. You can filter the **Latency** chart to display 
 :screenshot:
 :::
 
+## Service map [service-overview-map]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The **Service map** panel shows the service’s upstream and downstream connections. Click **Explore in Service map** to open the full map with the service selected and the time range, environment, and KQL query preserved.
+
+For licensing requirements and map controls, refer to [](/solutions/observability/apm/service-map.md).
+
+:::{image} /solutions/images/observability-service-overview-contextual-map.jpg
+:alt: Service map panel in the service overview, showing upstream and downstream connections and map controls
+:screenshot:
+:::
+
 ## Throughput and transactions [service-throughput-transactions]
 
 The **Throughput** chart visualizes the average number of transactions per minute for the selected service.
@@ -79,7 +92,14 @@ If there is no HTTP status, both transactions and spans are considered successfu
 
 ::::
 
-The **Errors** table provides a high-level view of each error message when it first and last occurred, along with the total number of occurrences. This makes it very easy to quickly see which errors affect your services and take actions to rectify them. To do so, click **View errors**.
+The **Errors** table shows each error group's type and message, when it was last seen, and its number of occurrences in the selected time range. The most frequent errors appear first by default.
+
+Use the search field to filter by message, type, or culprit. Click an error message to view its group details. Click **View all errors** (or **View errors** in earlier versions) to open [](/solutions/observability/apm/errors-ui.md).
+
+:::{note}
+:applies_to: { stack: ga 9.5+, serverless: ga }
+When the service has no APM error groups but has OpenTelemetry exception logs, the **Errors** table displays those logs instead. To learn why these logs aren't counted as APM errors, refer to [Review exceptions from OpenTelemetry logs](/solutions/observability/apm/errors-ui.md#apm-errors-from-logs).
+:::
 
 :::{image} /solutions/images/observability-error-rate.png
 :alt: failed transaction rate and errors
