@@ -205,6 +205,8 @@ You cannot edit Elastic-authored rules using this interface, but after they are 
 
 Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
+
 ::::{image} /solutions/images/security-siem-migration-edit-rule.png
 :alt: The rule details flyout
 :width: 850px
@@ -216,8 +218,6 @@ If you haven't yet ingested your data, you may encounter `Unknown index` or `Unk
 ::::
 
 The rule details flyout has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic-authored rule.
-
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
 
 ## The Translated dashboards page 
 

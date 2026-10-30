@@ -236,18 +236,18 @@ serverless:
   security: ga
 ```
 
-**Enable:** the seven [Automatic Migration skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills), which start with `automatic-migration-rules-`
+**Enable:** the [`automatic-migration-rules-*` skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills)
 
-Use these skills to track and run your [Automatic Migration](/solutions/security/get-started/automatic-migration.md) rule migrations from chat, and to fix translated rules before you install them. Each skill handles one task, and the agent switches between them as your requests change. Before the agent changes a migration or a rule, it asks you to confirm. To start from the rules you want to fix, refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
+Use these skills to track and run your [Automatic Migration](/solutions/security/get-started/automatic-migration.md) rule migrations from chat, and to fix translated rules before you install them. To start from the rules you want to fix, refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
 | How are my rule migrations doing? | List each rule migration with its source platform, status, and progress. |
 | What resources is the Splunk Q1 migration missing? | List the missing macros and lookups, grouped by type. |
-| Reprocess the failed rules in the Splunk Q1 migration | Check for missing resources, reuse the AI connector and settings from the last run, and start reprocessing after you confirm. |
+| Reprocess the failed rules in the QRadar migration | Check for missing resources, reuse the AI connector and settings from the last run, and start reprocessing after you confirm. |
 | Which rules in the Splunk Q1 migration are missing an index pattern? | List the rules that aren't installed yet and are missing an index pattern, then fix the one you pick. |
 | Install the translated rules from the Splunk Q1 migration | Tell you how many rules are ready to install, ask whether to enable them, and install them after you confirm. |
-| Delete the Splunk Q1 migration | Check that the migration isn't running, warn that deletion can't be undone, and delete it after you confirm. |
+| Delete the Sentinel test migration | Check that the migration isn't running, warn that deletion can't be undone, and delete it after you confirm. |
 
 ## Combining skills across use cases [combining-skills-across-workflows]
 
