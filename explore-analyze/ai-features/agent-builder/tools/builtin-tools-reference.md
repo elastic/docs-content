@@ -562,7 +562,7 @@ These tools return status, progress, and translation results. They don't change 
 
 #### Tools that change migrations or rules
 
-These tools ask for confirmation before they run.
+These tools start and stop rule migrations, fix and install translated rules, and rename or delete migrations. The agent asks you to confirm before it uses them. For starting and stopping a migration, it asks only the first time in a conversation.
 
 `security.siem_migration.start_rule_migration` {applies_to}`stack: ga 9.6+`
 :   Starts, resumes, or reprocesses a rule migration's translation run. Asks for confirmation the first time it runs in a conversation.
