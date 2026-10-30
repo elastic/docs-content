@@ -10,9 +10,13 @@
 # The docs
 /cloud-account/                             @elastic/admin-docs
 /deploy-manage/                             @elastic/admin-docs
+/deploy-manage/deploy/cloud-enterprise/ece-install-offline-images.md @elastic/admin-docs @elastic/control-plane-hosted-applications
+/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md @elastic/admin-docs @elastic/control-plane-hosted-applications
 
 /explore-analyze/                           @elastic/ski-docs
 /explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
+/explore-analyze/ai-features/context-engine.md @elastic/developer-docs
+/explore-analyze/ai-features/context-engine/ @elastic/developer-docs
 /explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/ski-docs
 /explore-analyze/machine-learning/          @elastic/developer-docs @elastic/ski-docs
 /explore-analyze/query-filter/              @elastic/developer-docs @elastic/ski-docs
@@ -23,6 +27,14 @@
 
 /extend/                                    @elastic/core-docs
 /get-started/                               @elastic/core-docs
+
+# Product hub pages. File rules replace the directory fallback (last match wins).
+/products/                                  @elastic/docs
+/products/elasticsearch.md                  @elastic/developer-docs @elastic/admin-docs
+/products/kibana.md                         @elastic/ski-docs @elastic/admin-docs
+/products/logstash.md                       @elastic/ski-docs
+/products/elastic-stack.md                  @elastic/core-docs @elastic/ski-docs
+/hub-whats-new.yml                          @elastic/developer-docs @elastic/ski-docs @elastic/core-docs
 
 /manage-data/                               @elastic/admin-docs
 /manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs
