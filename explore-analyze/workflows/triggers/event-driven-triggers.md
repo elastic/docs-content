@@ -127,13 +127,14 @@ steps:
 
   - name: page_oncall
     if: "not event.workflow.isErrorHandler"
-    type: pagerduty.triggerIncident
+    type: pagerduty
     connector-id: "platform-pagerduty"
     with:
-      dedup_key: "{{ event.workflow.id }}-{{ event.execution.id }}"
+      eventAction: "trigger"
+      dedupKey: "{{ event.workflow.id }}-{{ event.execution.id }}"
       summary: "Workflow {{ event.workflow.name }} failed"
       severity: "critical"
-      details:
+      customDetails:
         failed_step: "{{ event.error.stepName }}"
         error: "{{ event.error.message }}"
         workflow_id: "{{ event.workflow.id }}"

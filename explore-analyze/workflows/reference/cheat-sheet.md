@@ -203,7 +203,7 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
        - case: critical
          steps:
            - name: page_oncall
-             type: pagerduty.triggerIncident
+             type: pagerduty
              with: { ... }
        - case: high
          steps:
