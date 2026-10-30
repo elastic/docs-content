@@ -57,6 +57,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
   - At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for **Agent Builder**.
   - {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
+  - To use **Add to chat**, the [`agentBuilder:experimentalFeatures`](/explore-analyze/ai-features/agent-builder/get-started.md#enable-experimental-features-optional) and [`agentBuilder:apiDiscovery`](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#api-discovery) advanced settings turned on in your space.
   - To install rules from chat, `All` privileges for **Rules**.
 :::
 
@@ -268,11 +269,11 @@ serverless:
 stack: ga 9.6+
 ```
 
-Check on your rule migrations, start or stop them, install translated rules, and fix rules that need your input, all by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). The agent asks you to confirm before it changes a migration or a rule. For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration). To create a migration or upload rules, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
+Check on your rule migrations, start or stop them, install translated rules, and fix rule translations that need your input, all by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). The agent asks you to confirm before it changes a migration or a rule. For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration). To create a migration or upload rules, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
 
 ### Rule problems you can fix in chat [siem-migration-chat-fixes]
 
-The agent can fix translated rules that aren't installed yet. To fix rules with a `Failed` or `Not translated` status, reprocess them instead. To change a rule after you install it, edit it from the **{{siem-rules-ui}}** page.
+The agent can fix translated rules that aren't installed yet. To fix rules with a `Failed` status, reprocess them instead. The agent can't fix rules with a `Not translated` status. Their source rules usually rely on features that Elastic doesn't support. To change a rule after you install it, edit it from the **{{siem-rules-ui}}** page.
 
 | Problem | What the agent does |
 | --- | --- |
@@ -307,7 +308,7 @@ To send rules to the agent and fix them in chat:
 
 **How does Automatic Migration handle assets that can't be exactly translated for various reasons, such as feature parity issues?**
 
-After translation, assets that can't be translated appear with a status of either partially translated (yellow) or not translated (red). From there, you can address them individually.
+After translation, assets that can't be translated appear with a status of either partially translated (yellow) or not translated (red). A not translated status usually means that the source rule uses features that Elastic doesn't fully support. From there, you can address them individually.
 
 **Are nested macros supported?**
 

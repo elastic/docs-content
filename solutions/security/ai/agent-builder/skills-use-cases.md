@@ -228,7 +228,7 @@ Those skills diagnose or refine configuration. They do not replace `attack-disco
 | What's the status of Attack Discovery run `<execution-id>`? | Report progress for that run without starting a new one. |
 | The skill proposed a detection rule for a gap. Create it. | Create the proposed rule only after you explicitly approve it in the chat. |
 
-## SIEM rule migration [automatic-migration]
+## Automatic rule migration [automatic-migration]
 
 ```{applies_to}
 serverless:
@@ -243,11 +243,11 @@ Use these skills to track and run your [Automatic Migration](/solutions/security
 | Example prompt | What the agent can do |
 |----------------|----------------------|
 | How are my rule migrations doing? | List each rule migration with its source platform, status, and progress. |
-| What resources is the Splunk Q1 migration missing? | List the missing macros and lookups, grouped by type. |
-| Reprocess the failed rules in the QRadar migration | Check for missing resources, reuse the AI connector and settings from the last run, and start reprocessing after you confirm. |
-| Which rules in the Splunk Q1 migration are missing an index pattern? | List the rules that aren't installed yet and are missing an index pattern, then fix the one you pick. |
-| Install the translated rules from the Splunk Q1 migration | Tell you how many rules are ready to install, ask whether to enable them, and install them after you confirm. |
-| Delete the Sentinel test migration | Check that the migration isn't running, warn that deletion can't be undone, and delete it after you confirm. |
+| What resources is my migration missing? | List the missing macros and lookups, grouped by type. |
+| Reprocess the failed rules in my migration | Check for missing resources, reuse the AI connector and settings from the last run, and start reprocessing after you confirm. |
+| Which rules in my migration are missing an index pattern? | List the rules that aren't installed yet and are missing an index pattern, then fix the one you pick. |
+| Install the translated rules from my migration | Report how many rules are ready to install, ask whether to enable them, and install them after you confirm. |
+| Delete my migration | Check that the migration isn't running and offer to stop it if it is. Then warn that deletion can't be undone, and delete it after you confirm. |
 
 ## Combining skills across use cases [combining-skills-across-workflows]
 
