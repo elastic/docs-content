@@ -96,7 +96,9 @@ spec:
     authenticationMode: PKI
 ```
 
-The same field applies to {{apm-server}}, {{beats}}, and {{hosted-ems}}. For {{ls}} and standalone {{agent}}, set `authenticationMode` on each entry of `elasticsearchRefs`. For {{ls}}, you also need to update the {{es}} output configuration in your pipelines (refer to [Use PKI authentication with {{ls}}](#k8s-es-pki-logstash)).
+The same field applies to {{apm-server}}, {{beats}}, and {{hosted-ems}}. For {{ls}} and standalone {{agent}}, set `authenticationMode` on each entry of `elasticsearchRefs`. 
+
+For {{ls}}, you also need to [update the {{es}} output configuration in your pipelines](#k8s-es-pki-logstash).
 
 The `authenticationMode` field accepts these values:
 
