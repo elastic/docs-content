@@ -228,6 +228,27 @@ Those skills diagnose or refine configuration. They do not replace `attack-disco
 | What's the status of Attack Discovery run `<execution-id>`? | Report progress for that run without starting a new one. |
 | The skill proposed a detection rule for a gap. Create it. | Create the proposed rule only after you explicitly approve it in the chat. |
 
+## Automatic Migration [automatic-migration]
+
+```{applies_to}
+stack: ga 9.6+
+serverless:
+  security: ga
+```
+
+**Enable:** the seven [Automatic Migration skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills), which start with `automatic-migration-rules-`
+
+Use these skills to track and run your [Automatic Migration](/solutions/security/get-started/automatic-migration.md) rule migrations from chat, and to fix translated rules before you install them. Each skill handles one task, and the agent switches between them as your requests change. Before the agent changes a migration or a rule, it asks you to confirm. To start from the rules you want to fix, refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| How are my rule migrations doing? | List each rule migration with its source platform, status, and progress. |
+| What resources is the Splunk Q1 migration missing? | List the missing macros and lookups, grouped by type. |
+| Reprocess the failed rules in the Splunk Q1 migration | Check for missing resources, reuse the AI connector and settings from the last run, and start reprocessing after you confirm. |
+| Which rules in the Splunk Q1 migration are missing an index pattern? | List the rules that aren't installed yet and are missing an index pattern, then fix the one you pick. |
+| Install the translated rules from the Splunk Q1 migration | Tell you how many rules are ready to install, ask whether to enable them, and install them after you confirm. |
+| Delete the Splunk Q1 migration | Check that the migration isn't running, warn that deletion can't be undone, and delete it after you confirm. |
+
 ## Combining skills across use cases [combining-skills-across-workflows]
 
 The Elastic AI Agent can use a variety of skills in one conversation. As your questions shift across domains, the agent activates the matching skill — you don't need to start over or switch agents. The following examples show common multi-skill flows and the skills each turn activates.

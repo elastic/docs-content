@@ -156,13 +156,13 @@ The table's fields are as follows:
 * **Name:** The names of Elastic-authored rules cannot be edited until after rule installation. To edit the name of a custom translated rule, click the name and select **Edit**.
 * **Status:** The rule's translation status:
   * `Installed`: Already added to Elastic SIEM. Click **View** to manage and enable it.
-  * `Translated`: Ready to install. This rule was mapped to an Elastic-authored rule, or translated by Automatic Import. Click **Install** to install it.
+  * `Translated`: Ready to install. This rule was mapped to an Elastic-authored rule, or translated by Automatic Migration. Click **Install** to install it.
   * `Partially translated`: Part of the query could not be translated. You may need to specify an index pattern for the rule query, upload missing macros or lookups, or fix broken rule syntax. 
     ::::{note}
-    To fix partially translated rules that are missing an index pattern, use the **Update missing index pattern** button. This affects all migrated assets that contain the placeholder `[indexPattern]`, not just those currently visibly on the table page.
+    To fix partially translated rules that are missing an index pattern, use the **Update missing index pattern** button. This affects all migrated assets that contain the placeholder `[indexPattern]`, not just those currently visible on the table page.
     ::::
   * `Not translated`: None of the original query could be translated.
-  * `Failed`: Translation failed. Refer to the the error for details.
+  * `Failed`: Translation failed. Refer to the error for details.
 * **Risk Score:** For Elastic-authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
   * If the source rule has a field comparable to Elastic's `risk score`, we use that value.
   * Otherwise, if the source rule has a field comparable to Elastic's `rule severity` field, we base the risk score on that value according to [these guidelines](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
@@ -211,6 +211,8 @@ If you haven't yet ingested your data, you may encounter `Unknown index` or `Unk
 
 The rule details flyout has two other tabs, **Overview** and **Summary**. The **Overview** tab displays information such as the rule's severity, risk score, rule type, and how frequently it runs. The **Summary** tab explains the logic behind how the rule was translated, such as why specific {{esql}} commands were used, or why a source rule was mapped to a particular Elastic-authored rule.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
+
 ## The Translated dashboards page 
 
 This section describes the **Translated dashboards** page's interface and the data it displays. Use the **Migrations** dropdown menu in the upper right to select which migration appears. 
@@ -251,6 +253,62 @@ For an explanation of a dashboard's translation, click its name to open the dash
 ### Finalize translated dashboards
 
 Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [](/explore-analyze/dashboards/open-dashboard.md).
+
+## Manage rule migrations with {{agent-builder}} [siem-migration-agent-builder]
+
+```{applies_to}
+stack: ga 9.6+
+serverless:
+  security: ga
+```
+
+Check on, run, and fix your rule migrations by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). In chat, you can:
+
+* Check the status, progress, and translation results of your rule migrations, including the macros, lookups, reference sets, or watchlists that a migration is still missing.
+* Start translating a migration, resume a stopped one, or reprocess failed, partially translated, or selected rules.
+* Stop, rename, or delete a migration.
+* Install translated rules.
+* Fix translated rules that aren't installed yet.
+
+Chat covers rule migrations only. To create a migration or upload rules and resources, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
+
+In addition to the Automatic Migration requirements, you need:
+
+* At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for the **Agent Builder** feature.
+* {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
+* To install rules, `All` privileges for the **Rules** feature.
+
+Before the agent changes a migration or a rule, it asks you to confirm. It asks every time, including for each rule it fixes, except when you start or stop a migration. For those, it asks only the first time in a conversation. For the skills and tools behind each task, refer to [Automatic Migration skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills). For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration).
+
+### Fix translated rules in chat [siem-migration-fix-rules-in-chat]
+
+When a translation needs your input, send the rule to an {{agent-builder}} chat. For example, the rule matches the wrong Elastic prebuilt rule, queries the wrong index, or still has placeholders in its {{esql}} query.
+
+1. On the **Translated rules** page, do one of the following:
+
+   * To fix one rule, click its name to open the rule details flyout, then click **Add to chat**.
+   * To fix several rules, select them in the table, then click **Add to chat**.
+   * To work with every rule in the migration, clear all selections, then click **Add to chat**.
+
+   A new chat opens with the rules attached and a message that asks the agent for help.
+
+2. Tell the agent what's wrong. Include details it can't find on its own, such as the integration or index your data comes from. If you don't say what's wrong, the agent asks. The agent can:
+
+   * Match the rule to a different prebuilt rule. The agent finds up to five Elastic prebuilt rules that cover your source rule's logic, compares how well each one fits, and recommends one.
+   * Fix the rule's integration or index pattern. The agent finds the Elastic integration that provides the rule's data, then rewrites the {{esql}} query to use that integration's index pattern and field names.
+   * Fix field names in the {{esql}} query.
+   * Remove macro or lookup placeholders from the {{esql}} query, if you agree. The rule then no longer applies the logic that the macro or lookup held, such as an index filter or an exclusion list. To keep that logic, upload the missing macros or lookups and reprocess the rule instead.
+
+   If the rule matches a prebuilt rule, changing its integration or query replaces the match with a custom {{esql}} rule. The rule takes the title and description of your source rule, and it no longer gets updates from Elastic.
+
+3. Review the proposed change, then confirm it. The agent updates the rule, which changes its status to `Translated`. If you matched the rule to a prebuilt rule that's already installed, its status changes to `Installed` instead, and you can skip step 4. The agent also adds a note that explains the change to the **Summary** tab of the rule details flyout.
+
+4. Install the rule. On the **Translated rules** page, install and then enable it, as described under the table's **Actions**. Or ask the agent to install it, and it asks whether to enable the rule.
+
+You can't fix these rules in chat:
+
+* Installed rules. Edit them from the **{{siem-rules-ui}}** page instead.
+* Rules with a `Failed` or `Not translated` status. Reprocess them instead, from the **Translated rules** page or by asking the agent.
 
 ## Frequently asked questions (FAQ)
 
