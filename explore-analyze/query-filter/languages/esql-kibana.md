@@ -401,8 +401,8 @@ To find your starred queries later, open the **Starred** tab.
 
 ## Create and manage {{esql}} views [esql-kibana-views]
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
 You can use [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) to save queries and reuse them by name in `FROM`, just like an index. In {{kib}}, you can create views from the {{esql}} editor and manage them from the **{{esql}} Views** page.

@@ -823,9 +823,9 @@ toc:
           - file: monitor/cloud-audit-trail.md
           - title: "Kibana user activity"
             crosslink: kibana://reference/user-activity.md
-          - hidden: monitor/log-delivery.md
+          - file: monitor/log-delivery.md
             children:
-              - hidden: monitor/log-delivery/audit-trail.md
+              - file: monitor/log-delivery/audit-trail.md
       - file: monitor/logging-configuration.md
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
