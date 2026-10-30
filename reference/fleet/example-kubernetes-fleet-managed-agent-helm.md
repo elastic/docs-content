@@ -63,13 +63,18 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
 
 ## Step 2: Create a {{fleet}} policy and install {{agent}} [agent-fleet-managed-helm-example-install-agent]
 
+### Create a policy and obtain enrollment details
+
 1. Open your {{ecloud}} deployment, and from the navigation menu select **Fleet**.
 2. From the **Agents** tab, select **Add agent**.
 3. In the **Add agent** UI, specify a policy name and select **Create policy**. Leave the **Collect system logs and metrics** option selected.
 4. Scroll down in the **Add agent** flyout to the **Install Elastic Agent on your host** section.
 5. Select the **Linux TAR** tab and copy the values for `url` and `enrollment-token`. You’ll use these when you run the `helm install` command.
 6. Open a terminal shell on your local system where the Helm tool is installed and you have access to the {{k8s}} cluster.
-7. Copy and prepare the command to install the chart:
+
+### Install on Kubernetes [agent-fleet-managed-helm-install-kubernetes]
+
+1. Copy and prepare the command to install the chart:
 
     ```sh
     helm install demo elastic/elastic-agent \
@@ -115,7 +120,7 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     * `--set kube-state-metrics.fullnameOverride=ksm`: If you want to deploy KSM with a different release name (it defaults to `kube-state-metrics`). This can be useful if you have already a default installation of KSM and you want a second one.
     ::::
 
-8. Run the command.
+2. Run the command.
 
     The command output should confirm that {{agent}} has been installed:
 
@@ -126,7 +131,25 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     ...
     ```
 
-9. Run the `kubectl get pods -n default` command to confirm that the {{agent}} Pods are running. You should see one {{agent}} Pod running on each Kubernetes node:
+### Install on OpenShift [agent-fleet-managed-helm-install-openshift]
+
+```{applies_to}
+stack: ga 9.5.6+
+```
+
+On OpenShift, follow the same preparation and [Kubernetes installation steps](#agent-fleet-managed-helm-install-kubernetes), using version 9.5.6 or later of the {{agent}} Helm chart.
+
+The chart detects OpenShift automatically. To force OpenShift detection, add `--set agent.openshift.enabled=true` to the installation command.
+
+#### Requirements
+
+Your OpenShift user needs permissions to create role bindings in the release namespace. For an unprivileged installation (`agent.unprivileged=true`), you also need permissions to create security context constraints (SCCs) and cluster roles.
+
+If your organization's security policies require administrators to manage these resources separately, have an administrator configure the required SCCs and role bindings before installation, then add `--set agent.openshift.securityContextConstraints.create=false` to the installation command.
+
+### Verify the installation and enrollment
+
+1. Run the `kubectl get pods -n default` command to confirm that the {{agent}} Pods are running. You should see one {{agent}} Pod running on each Kubernetes node:
 
     ```sh
     NAME                       READY   STATUS    RESTARTS      AGE
@@ -139,16 +162,16 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     You can do this by setting the `presets.perNode.tolerations[]` value, which accepts standard Kubernetes toleration definitions.
     ::::
 
-10. In the **Add agent** flyout, wait a minute or so for confirmation that {{agent}} has successfully enrolled with {{fleet}} and that data is flowing:
+2. In the **Add agent** flyout, wait a minute or so for confirmation that {{agent}} has successfully enrolled with {{fleet}} and that data is flowing:
 
     :::{image} images/helm-example-nodes-enrollment-confirmation.png
     :alt: Screen capture of Add Agent UI showing that the agent has enrolled in Fleet
     :screenshot:
     :::
 
-11. In {{fleet}}, open the **Agents** tab and see that an **Agent-pernode-demo-#** agent is running.
-12. Select the agent to view its details.
-13. On the **Agent details** tab, on the **Integrations** pane, expand `system-1` to confirm that logs and metrics are incoming. You can click either the `Logs` or `Metrics` link to view details.
+3. In {{fleet}}, open the **Agents** tab and see that an **Agent-pernode-demo-#** agent is running.
+4. Select the agent to view its details.
+5. On the **Agent details** tab, on the **Integrations** pane, expand `system-1` to confirm that logs and metrics are incoming. You can click either the `Logs` or `Metrics` link to view details.
 
     :::{image} images/helm-example-nodes-logs-and-metrics.png
     :alt: Screen capture of the Logs and Metrics view on the Integrations pane
