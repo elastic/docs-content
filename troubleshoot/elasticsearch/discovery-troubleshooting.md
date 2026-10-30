@@ -18,6 +18,9 @@ If your cluster has a stable master but some nodes can't discover or join it, th
 
 If the cluster has no elected master node for more than a few seconds, the master is unstable, or some nodes are unable to discover or join a stable master, then {{es}} records information in its logs explaining why. If the problems persist for more than a few minutes, {{es}} records additional information in its logs. To properly troubleshoot discovery and election problems, collect and analyze logs covering at least five minutes from all nodes.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 The following sections describe some common discovery and election problems.
 
 :::{tip}
@@ -97,6 +100,6 @@ If logs suggest that discovery, master elections, or cluster joining are failing
 
 * **Long thread waits**: Long waits for particular threads to be available can be identified by taking stack dumps of the main {{es}} process (for example, using `jstack`) or a profiling trace (for example, using Java Flight Recorder) in the few seconds leading up to the relevant log message.
 
-    The [Nodes hot threads]({{es-apis}}operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you're trying to diagnose. `jstack` is much more reliable since it doesn't require any JVM threads.
+    The [Nodes hot threads]({{es-apis}}operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API might be affected by the very problem you're trying to diagnose. `jstack` is much more reliable since it doesn't require any JVM threads.
 
-    The threads involved in discovery and cluster membership are mainly `transport_worker` and `cluster_coordination` threads, for which there should never be a long wait. There may also be evidence of long waits for threads in the {{es}} logs, particularly looking at warning logs from `org.elasticsearch.transport.InboundHandler`. Refer to [Networking threading model](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#modules-network-threading-model) for more information.
+    The threads involved in discovery and cluster membership are mainly `transport_worker` and `cluster_coordination` threads, for which there should never be a long wait. There might also be evidence of long waits for threads in the {{es}} logs, particularly looking at warning logs from `org.elasticsearch.transport.InboundHandler`. Refer to [Networking threading model](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#modules-network-threading-model) for more information.

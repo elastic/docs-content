@@ -50,7 +50,7 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 |--------|-------------------|
 | Access the **Workflows** page | `All` or `Read` for **Analytics → Workflows** |
 | Fully manage workflows | `All` for **Analytics → Workflows** |
-| Grant access to specific workflow actions | Set sub-feature privileges for **Analytics → Workflows** |
+| Grant access to specific workflow actions | [Set sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) for **Analytics → Workflows** |
 
 ## Show managed workflows [workflows-managed-visibility]
 
@@ -72,13 +72,7 @@ When the setting is on and your role includes the [managed workflow read privile
 
 ### Managed workflow privileges [workflows-managed-privileges]
 
-Managed workflow access uses additive [sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#_sub_feature_privileges) under **Analytics → Workflows → Managed Workflows Actions**:
-
-| Action | Required privilege |
-|--------|-------------------|
-| View managed workflow definitions | **Read managed workflows** |
-| View executions for managed workflows | **Read managed workflow execution** |
-| Configure the [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) settings | **Update managed workflows** |
+Managed workflow access uses additive [sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#_sub_feature_privileges) under **Analytics → Workflows → Managed Workflows Actions**. For the full list, refer to [Workflows sub-feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures).
 
 ## Enable the Template library [workflows-templates-enable]
 
