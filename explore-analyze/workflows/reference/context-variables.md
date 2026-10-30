@@ -45,14 +45,13 @@ Constants declared at the top of the workflow. Evaluated once at workflow load. 
 ```yaml
 consts:
   threshold: 70
-  slack_channel: "#soc-oncall"
 
 steps:
   - name: notify
-    type: slack.postMessage
+    type: slack
+    connector-id: "soc-oncall-slack"
     with:
-      channel: "{{ consts.slack_channel }}"
-      text: "Threshold {{ consts.threshold }} exceeded."
+      message: "Threshold {{ consts.threshold }} exceeded."
 ```
 
 ### `steps.<name>.output` [workflows-ctx-step-output]
@@ -247,10 +246,10 @@ Base URL of the {{kib}} instance. Useful for building deep links in notification
 
 ```yaml
 - name: notify
-  type: slack.postMessage
+  type: slack
+  connector-id: "soc-slack"
   with:
-    channel: "#soc"
-    text: |
+    message: |
       Case created: <{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.case.id }}|Open in {{kib}}>
 ```
 

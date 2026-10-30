@@ -107,10 +107,10 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 
 ## External connector steps [workflows-external-connectors]
 
-In addition to the steps listed previously, every configured {{kib}} connector exposes one or more step types. A connector with a single action uses its connector type as the step type, such as `pagerduty`. A connector with several actions exposes one `<connector>.<action>` step type for each action. Common examples include:
+Every configured {{kib}} connector also exposes one or more step types. A connector with a single action uses its connector type as the step type, such as `slack` or `pagerduty`. A connector with several actions exposes one `<connector>.<action>` step type for each action, such as `jira.pushToService`. Common examples include:
 
-- `slack.postMessage` posts a message to a Slack channel.
-- `jira.createIssue` creates a Jira issue.
+- `slack` posts a message to the Slack channel that the connector's webhook targets.
+- `jira.pushToService` creates or updates a Jira issue.
 - `pagerduty` sends a trigger, acknowledge, or resolve event to PagerDuty, for example to page an on-call rotation.
 - `virustotal.scanFileHash` scans a file hash.
 
