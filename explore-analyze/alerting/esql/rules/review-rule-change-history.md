@@ -1,11 +1,11 @@
 ---
 navigation_title: Review rule change history
 applies_to:
-  serverless: experimental
-  stack: experimental 9.6+
+  stack: ga 9.6+
+  serverless: ga
 products:
   - id: kibana
-description: "Review a rule's change history in the experimental alerting system to see who changed a rule and when, and compare versions with a JSON diff."
+description: "Review a rule's change history to see who changed a rule and when, and compare versions with a JSON diff."
 ---
 
 # Review rule change history in the {{alerting-v2-system}} [review-rule-change-history]
