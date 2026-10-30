@@ -85,7 +85,15 @@ To use asset criticality, you need the following:
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+| Action | Index privilege |
+| --- | --- |
+| View asset criticality | `read` for `entities-latest-<space-id>` and `.entities.v2.latest.<space-id>-*` |
+| View, assign, unassign, or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write`, and `view_index_metadata` for `.entities.v2.latest.<space-id>-*` |
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
 
 | Action | Index privilege |
 | --- | --- |
@@ -125,7 +133,29 @@ To turn on the entity store, you need the following:
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+#### Cluster
+
+- `manage_index_templates`
+- `manage_ingest_pipelines`
+
+#### Index
+
+- `read` and `manage` for `risk-score.risk-score-*`
+- `read`, `write`, and `manage` for `entities-latest-*`, `.entities.v2.latest.*`, `.entities.v2.updates.*`, and `.entities.v2.metadata.*`
+- `read` and `view_index_metadata` for all {{elastic-sec}} indices
+
+#### {{kib}}
+
+**All** for the **Security** and **Saved Objects Management** features
+
+:::{important}
+The entity store's background tasks run with the privileges of the user who turned on the entity store, as they were at that time. If you change that user's role later, for example after upgrading to 9.6, a user with the updated role must stop and restart the entity store so the tasks pick up the updated privileges.
+:::
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
 
 #### Cluster
 
