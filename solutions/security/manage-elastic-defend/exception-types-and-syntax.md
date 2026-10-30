@@ -16,7 +16,7 @@ Different exception types in {{elastic-sec}} require different escaping rules fo
 
 ## Value syntax [value-syntax-details]
 
-[Detection rule exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#detection-rule-exceptions) require escaping for special characters, while [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) and [trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) do not. The following sections explain the syntax for each type.
+[Detection rule exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#detection-rule-exceptions) require escaping for special characters, while [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) and [trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) do not. The following sections explain the syntax for each type.
 
 ### Detection rule exceptions (escaping required) [detection-rule-escaping]
 
