@@ -181,6 +181,7 @@ Create a case with a title, description, severity, tags, and optional assignees.
 | `category` | `with` | string | No | Case category. |
 | `customFields` {applies_to}`stack: deprecated 9.6+, ga 9.4-9.5` {applies_to}`serverless: deprecated` | `with` | array | No | Legacy custom field values. Use `extended_fields` instead. |
 | `extended_fields` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | Template and field library values, keyed by storage key. Refer to [Template and field library values](#workflows-cases-field-values). |
+| `template` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | Template to create the case from, as `{ id, version? }`. |
 | `settings` | `with` | object | No | Case settings, for example `syncAlerts`. |
 
 ```yaml
@@ -194,12 +195,15 @@ Create a case with a title, description, severity, tags, and optional assignees.
     owner: "securitySolution"
 ```
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To create the case from a [case template](/explore-analyze/cases/manage-case-templates.md), set `template.id` to the template's ID. To find the ID, use the [Get all case templates]({{kib-apis}}operation/operation-getcasetemplatesdefaultspace) API. If you don't set `template.version`, the step uses the latest version of the template. Template fields that you don't set in `extended_fields` get their default values. To also use the template's default title and description, use [`cases.createCaseFromTemplate`](#cases-createcasefromtemplate) instead.
+
 ### `cases.createCaseFromTemplate` [cases-createcasefromtemplate]
 
 Create a case from a configured case template. Useful when a team has pre-defined case shapes (default title, description, tags, severity) for common scenarios.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
+| `owner` | `with` | string | Yes | Case owner: `securitySolution`, `observability`, or `cases`. The template must belong to this owner. |
 | `case_template_id` | `with` | string | Yes | ID of the template to apply. |
 | `overwrites` | `with` | object | No | Fields to override on the templated case, for example `title`, `tags`. |
 
@@ -207,6 +211,7 @@ Create a case from a configured case template. Useful when a team has pre-define
 - name: create_from_template
   type: cases.createCaseFromTemplate
   with:
+    owner: "securitySolution"
     case_template_id: "malware-triage-template"
     overwrites:
       title: "Malware: {{ event.alerts[0].host.name }}"
@@ -214,19 +219,18 @@ Create a case from a configured case template. Useful when a team has pre-define
 
 ### `cases.getCase` [cases-getcase]
 
-Retrieve a complete case object by ID. Optionally include comments and attachments in the response.
+Retrieve a complete case object by ID. To get the case's comments and other attachments, use [`cases.getAllAttachments`](#cases-getallattachments).
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
-| `include_comments` | `with` | boolean | Yes | Whether to include comments and attachments in the response. |
+| `include_comments` {applies_to}`stack: deprecated 9.5+, ga =9.4` {applies_to}`serverless: deprecated` | `with` | boolean | No | Whether to include comments and attachments in the response. Defaults to `false`. Use [`cases.getAllAttachments`](#cases-getallattachments) instead. |
 
 ```yaml
 - name: fetch_case
   type: cases.getCase
   with:
     case_id: "{{ inputs.case_id }}"
-    include_comments: true
 ```
 
 ### `cases.getCases` [cases-getcases]
