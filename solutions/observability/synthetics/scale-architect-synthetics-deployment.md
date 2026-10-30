@@ -9,12 +9,24 @@ applies_to:
 products:
   - id: observability
   - id: cloud-serverless
-description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including cross-cluster search support, tagging strategies, and custom dashboards.
+description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including private locations, cross-project and cross-cluster search, tagging, and custom dashboards.
 ---
 
 # Scale and architect a Synthetics deployment [synthetics-scale-and-architect]
 
 Use these advanced considerations when you use the {{synthetics-app}} for large and complex use cases.
+
+## View monitor data from linked projects [synthetics-cps-settings]
+```{applies_to}
+serverless: ga
+stack: unavailable
+```
+
+On {{serverless-full}}, you can view monitor data from linked projects alongside monitors from the origin project, directly in the Synthetics UI.
+
+This view is read-only, meaning Synthetics builds it from monitor check data when you load the page. Monitor definitions stay as saved objects on the project where they were created. To create, edit, or delete those monitors, manage them directly in the Synthetics UI on that project.
+
+To include these monitors, [link projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md). Refer to [Monitors from linked projects](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-linked-monitors) for details.
 
 ## View monitor data from remote clusters [synthetics-ccs-settings]
 ```{applies_to}
@@ -48,6 +60,14 @@ For infrastructure or {{k8s}} uptime monitoring, use one of the following approa
 
 * **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
 * **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The {{uptime-app}} is deprecated as of 8.15 and is not available in {{serverless-short}}.
+
+## Scale {{private-location}}s [synthetics-scale-private-locations]
+
+When a {{private-location}} can't keep up with its monitors, you can:
+
+* **Add resources to the agent**: Raise the concurrency limits of the {{agent}} and allocate more CPU and RAM to it. Refer to [Scaling {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling).
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Add agents to the location**: Use a scalable {{private-location}} to spread its monitors across several {{agents}} that share one agent policy. Scalable locations also move monitors to healthy agents when an agent fails. Refer to [Scale a {{private-location}} across multiple {{agents}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable).
+* **Split the location**: Create more {{private-location}}s, each with its own agent policy, and move some of the monitors to them. Splitting is the recommended approach when a location reaches the limits described in [Known limitations on vertical scaling](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#known-limitations-on-vertical-scaling), such as the number of monitors a single location supports.
 
 ## Manage large numbers of Synthetic monitors with tags [synthetics-tagging]
 

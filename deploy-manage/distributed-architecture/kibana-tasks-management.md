@@ -31,9 +31,7 @@ If you lose this index, all scheduled alerts and actions are lost.
 - An {{es}} task index is polled for overdue tasks at 500-millisecond intervals. You can change this interval using the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.
 - Tasks are claimed by updating them in the {{es}} index, using optimistic concurrency control to prevent conflicts. Each {{kib}} instance can run a maximum of 10 concurrent tasks, so a maximum of 10 tasks are claimed each interval.
 - {{es}} and {{kib}} instances use the system clock to determine the current time. To ensure schedules are triggered when expected, synchronize the clocks of all nodes in the cluster using a time service such as [Network Time Protocol](http://www.ntp.org/).
-- Tasks are run on the {{kib}} server. <br>
-  It is recommended to use an isolated node for the background task.
-  You can achieve that by setting `node.roles` to `background_tasks` for on-prem or by scaling Kibana to 8G+ in ECH.
+- Tasks are run on the {{kib}} server. In large deployments with high background task and user traffic workloads, it is recommended to run tasks on dedicated {{kib}} nodes to prevent resource contention. Refer to [Dedicated background task nodes](#task-manager-dedicated-task-nodes).
 - Task Manager ensures that tasks:
   - Are only executed once
   - Are retried when they fail (if configured to do so)
@@ -50,3 +48,14 @@ For details on the settings that can influence the performance and throughput of
 For detailed troubleshooting guidance, see [Troubleshooting](../../troubleshoot/kibana/task-manager.md).
 
 ::::
+
+## Dedicated background task nodes [task-manager-dedicated-task-nodes]
+
+Because tasks run on the {{kib}} server, heavy background workloads can compete with user traffic for resources. To avoid this, it is recommended to run background tasks on dedicated {{kib}} nodes:
+
+- On self-managed and {{eck}} deployments, set `node.roles: ["background_tasks"]` in [`kibana.yml`](/deploy-manage/stack-settings.md) to dedicate a {{kib}} instance to background tasks.
+- On {{ech}} and {{ece}} deployments, when {{kib}} is allocated more than 8 GB of RAM, it is automatically split into multiple instances with specialized roles: UI nodes, which serve user requests, and background task nodes, which run Task Manager tasks.
+
+To identify a node's type on {{ech}} and {{ece}} deployments, check the node's instance name in the `kibana_status.json` file included in the [{{kib}} diagnostic bundle](/troubleshoot/kibana/capturing-diagnostics.md). A UI node's instance name contains `- UI`.
+
+On {{ech}} and {{ece}} deployments, API requests, including health and monitoring APIs such as `GET api/task_manager/_health`, are always served by UI nodes, so their responses don't reflect task execution state. On self-managed and {{eck}} deployments, the same applies to any request served by a node without the `background_tasks` role. To retrieve complete Task Manager health data, refer to [Retrieve health data when {{kib}} uses separate task nodes](/troubleshoot/kibana/task-manager.md#task-manager-health-multi-node).

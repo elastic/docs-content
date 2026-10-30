@@ -19,5 +19,8 @@ If {{es}} cannot facilitate enough available space in a node, then you can inter
 1. [Increase the disk capacity of your cluster](increase-capacity-data-node.md)
 2. [Reduce the disk usage by decreasing your data volume](decrease-disk-usage-data-node.md)
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 
 

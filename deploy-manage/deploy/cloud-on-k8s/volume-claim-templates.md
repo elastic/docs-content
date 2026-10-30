@@ -16,7 +16,7 @@ products:
 By default, the operator creates a [`PersistentVolumeClaim`](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) with a capacity of 1Gi for each pod in an {{es}} cluster to prevent data loss in case of accidental pod deletion. For production workloads, you should define your own volume claim template with the desired storage capacity and (optionally) the Kubernetes [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/) to associate with the persistent volume.
 
 ::::{important}
-The name of the volume claim must always be `elasticsearch-data`. If you chose a different name you have to set up a corresponding volume mount matching the [data.path](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) yourself ( `/usr/share/elasticsearch/data` by default).
+The name of the volume claim must always be `elasticsearch-data`. If you chose a different name you have to set up a corresponding volume mount matching the [`path.data`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) yourself ( `/usr/share/elasticsearch/data` by default).
 ::::
 
 
@@ -56,7 +56,13 @@ spec:
     count: 3
 ```
 
-The possible values are `DeleteOnScaledownAndClusterDeletion` and `DeleteOnScaledownOnly`. By default `DeleteOnScaledownAndClusterDeletion` is in effect, which means that all PersistentVolumeClaims are deleted together with the {{es}} cluster. However, `DeleteOnScaledownOnly` keeps the PersistentVolumeClaims when deleting the {{es}} cluster. If you recreate a deleted cluster with the same name and node sets as before, the existing PersistentVolumeClaims will be adopted by the new cluster.
+The possible values are `DeleteOnScaledownAndClusterDeletion` and `DeleteOnScaledownOnly`. By default `DeleteOnScaledownAndClusterDeletion` is in effect, which means that all PersistentVolumeClaims are deleted together with the {{es}} cluster. However, `DeleteOnScaledownOnly` keeps the PersistentVolumeClaims when deleting the {{es}} cluster.
+
+::::{warning}
+After you delete the cluster, do not delete any of the retained PersistentVolumeClaims. ECK does not check the integrity of the data on adopted PersistentVolumeClaims. Missing or damaged data can cause data loss or prevent master discovery. Recovery requires last-resort steps that can also lose data: [restore a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) into a new cluster, or use the `elasticsearch-node` tool as described in [Suspend Elasticsearch](/troubleshoot/deployments/cloud-on-k8s/troubleshooting-methods.md#k8s-suspend-elasticsearch).
+::::
+
+If you recreate a deleted cluster with the same name, namespace, and node sets as before, the existing PersistentVolumeClaims will be adopted by the new cluster.
 
 
 ### Updating the volume claim settings [k8s-volume-claim-templates-update]
@@ -86,3 +92,9 @@ spec:
         - name: elasticsearch-data
           emptyDir: {}
 ```
+
+::::{note}
+Besides the risk of data loss, `emptyDir` (or any volume that isn't a `volumeClaimTemplates` PVC) prevents ECK from determining the storage capacity of the affected nodes. On {{es}} 8.3 and later, the `Elasticsearch` resource then reports the `ResourcesAwareManagement` condition as `False`.
+
+`ResourcesAwareManagement` indicates whether ECK could compute CPU, memory, and storage for all expected nodes so it can tell {{es}} the intended cluster topology. When the condition is `False`, ECK stops publishing that topology and removes any topology it published earlier. Without it, {{es}} may make less optimal topology-aware decisions. The condition is cluster-wide, so a single nodeSet using `emptyDir` sets it to `False` for the whole cluster. ECK still reconciles the `Elasticsearch` resource (StatefulSets, Pods, and CPU and memory settings) as usual.
+::::

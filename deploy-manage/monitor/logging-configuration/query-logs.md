@@ -8,6 +8,7 @@ products:
   - id: "cloud-hosted"
   - id: "cloud-kubernetes"
   - id: "cloud-enterprise"
+navigation_title: Query logging
 ---
 
 # Query logging in {{es}}
@@ -21,6 +22,10 @@ The following query types are supported:
 - `eql`: [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) queries
 - `sql`: [SQL](elasticsearch://reference/query-languages/sql.md) queries
 - `promql`: [PromQL API](elasticsearch://reference/query-languages/promql/promql-http-api.md) queries {applies_to}`stack: ga 9.6`
+
+:::{note}
+On ECE, query logging requires version 4.2 or later.
+:::
 
 ## When to use query logging
 
@@ -39,6 +44,8 @@ Query logging uses an asynchronous mechanism that does not block query execution
 ### Migrate to query logging
 
 Query logging supersedes [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) and [ES|QL query logging](elasticsearch://reference/query-languages/esql/esql-query-log.md). We recommend migrating to query logging for more comprehensive and robust logging.
+
+If you use [HTTP request body auditing](/deploy-manage/monitor/stack-audit-logging/auditing-http-request-bodies.md) to trace queries, migrate that use case to query logging. Continue using audit logging for security events and compliance.
 
 To migrate:
 
@@ -100,7 +107,12 @@ ECK clusters automatically collect from the `*_querylog.json` path using the def
 
 :::::
 
-:::::{applies-item} { self:, ece: }
+:::::{applies-item} { self:, ece: ga 4.2 }
+
+:::{note}
+
+On ECE, query logging requires version 4.2 or later.
+:::
 
 To set up query logging on self-managed or ECE clusters:
 
@@ -146,7 +158,7 @@ The [`elasticsearch` Elastic Agent integration](https://www.elastic.co/docs/refe
 
 Install the assets from Fleet (or the integration's Assets tab) when you are ready to explore the indexed stream.
 
-Alternatively, [create a data view](/explore-analyze/find-and-organize/data-views.md) for `logs-elasticsearch.querylog-*` and use **Discover** to filter on `event.dataset: elasticsearch.querylog`.
+Alternatively, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for `logs-elasticsearch.querylog-*` and use **Discover** to filter on `event.dataset: elasticsearch.querylog`.
 
 ## Example query log entries
 

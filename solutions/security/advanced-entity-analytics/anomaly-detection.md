@@ -32,6 +32,8 @@ Refer to [{{ml-cap}}: Anomaly detection](/explore-analyze/machine-learning/anoma
 
 If you have the appropriate role, you can use the **ML job settings** interface on the **Alerts**, **{{siem-rules-ui}}**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {{ml}} jobs.
 
+{applies_to}`serverless: ga` When {{cps}} is enabled, starting a prebuilt job from **ML job settings** searches all linked projects. It doesn't use the space default {{cps}} scope. To change which projects the job searches, update the job's [`project_routing`](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
+
 :::{image} /solutions/images/security-ml-ui.png
 :alt: ML job settings UI on the Alerts page
 :screenshot:
@@ -97,7 +99,7 @@ To view the **Anomalies** table  and **Max Anomaly Score By Job** details, the u
 :::
 
 ::::{note}
-To adjust the `score` threshold that determines which anomalies are shown, you can modify the `securitySolution:defaultAnomalyScore` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md).
+To adjust the `score` threshold that determines which anomalies are shown, you can modify the `securitySolution:defaultAnomalyScore` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 ::::
 
 In the **Anomalies** table, you can add entity details, like the entity or any associated influencers, into Timeline.

@@ -68,12 +68,7 @@ For each entity type (hosts, users, and services):
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
-The entity store is automatically enabled when you turn on risk scoring. In the default {{kib}} space, both are enabled automatically. In non-default spaces, you must enable them manually:
-
-1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
-2. Turn the toggle on.
+The entity store is enabled when you [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
 
 :::{note}
 * If you've upgraded from a previous version, and the entity store was installed in any space, it's automatically migrated after the upgrade. Your existing index data is retained.
@@ -149,6 +144,16 @@ To access the **Engine Status** tab, find **Entity Store** in the navigation men
 :::
 
 ::::
+
+Each engine reports one of the following statuses:
+
+| Status | Meaning |
+| --- | --- |
+| `installing` | The engine is being set up for the first time. |
+| `started` | The engine is running and extracting entities on schedule. |
+| `stopped` | The engine is paused, and extraction is not running. |
+| `updating` | A configuration change is being applied. |
+| `error` | The engine encountered a failure. Check the component health indicators on the **Engine Status** tab for details. |
 
 ## Supported integrations [entity-store-integrations]
 ```yaml {applies_to}
@@ -226,6 +231,10 @@ Because `event.module` identifies the data as coming from a supported identity p
 An endpoint alert includes `user.name: jdoe` and `host.name: prod-web-01` but no `host.id`. Because endpoint telemetry requires both `user.name` and `host.id` to create a user entity, no user entity is created. The user may still appear in the alert's observed or highlighted fields, but it doesn't receive risk scoring, entity resolution, or watchlist matching. If the same alert resolves a host entity, the host can show a risk score while the user does not.
 ::::
 
+### Service entities [entity-store-service-creation]
+
+A service entity is created when a document contains `service.name`. The entity store derives the service EUID from `service.name` alone, so any event carrying that field — regardless of source integration — contributes to service entity creation.
+
 ## Troubleshoot entity store performance [entity-store-troubleshoot]
 ```yaml {applies_to}
 stack: ga 9.4+
@@ -249,6 +258,14 @@ A process might be **unhealthy** if:
 
 If log extraction appears slow, you can modify the following log extraction configuration settings to balance freshness, coverage, and query cost. Use the [update entity store API]({{kib-apis}}operation/operation-put-security-entity-store) to apply these settings.
 
+#### `additionalIndexPatterns`
+
+Use `additionalIndexPatterns` to include index patterns that fall outside the [default {{elastic-sec}} data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security).
+
+* Use this if you have entity-bearing data in indices not covered by the default data view.
+* Accepts an array of index pattern strings.
+* Default: empty (only the default data view is scanned).
+
 #### `docsLimit`
 
 Use `docsLimit` to control how many entities can be processed in one extraction page.
@@ -268,6 +285,9 @@ Use `excludedIndexPatterns` to exclude specific index patterns from log extracti
 Use `frequency` to control how often extraction runs.
 
 * Decrease frequency if extraction is healthy but too resource-intensive and {{es}} CPU utilization is too high. The minimum supported value is `30s`.
+* Default: `1m`. For the `service` entity type, the default differs depending on your version:
+  * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `service` entity type defaults to `10m`.
+  * {applies_to}`stack: ga 9.4-9.5` The `service` entity type defaults to `1m`.
 
 #### `maxLogsPerPage`
 

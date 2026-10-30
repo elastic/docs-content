@@ -189,9 +189,7 @@ To configure {{metricbeat}} you need the {{es}} cluster details.
 
     ![{{ecloud}} deployment](/solutions/images/observability-monitor-azure-kibana-deployment.png "")
 
-3. Click **Security** and then click **Reset password**. Confirm, and copy the password. Keep it safe as you will use it later.
-
-    ![{{ecloud}} security](/solutions/images/observability-monitor-azure-kibana-security.png "")
+3. On the deployment **Overview** page, click **Actions** and then click **Reset password**. Confirm, and copy the password. Keep it safe as you will use it later.
 :::
 
 :::{applies-item} serverless: ga
@@ -284,7 +282,7 @@ If script execution is disabled on your system, you need to set the execution po
 ./metricbeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>
 ```
 
-1. Substitute your {{es}} endpoint and an API key in this command. To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+1. Substitute your {{es}} endpoint and an API key in this command. To find both values, refer to [](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md).
 :::
 
 ::::

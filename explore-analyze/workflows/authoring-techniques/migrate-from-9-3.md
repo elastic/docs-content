@@ -24,6 +24,7 @@ This guide is the side-by-side for the migrations every 9.3 workflow author need
 | Change | Old (9.3) | New (9.4) | What happens to existing workflows |
 |---|---|---|---|
 | Case management | `kibana.createCaseDefaultSpace`, `kibana.getCaseDefaultSpace`, `kibana.updateCaseDefaultSpace`, `kibana.addCaseCommentDefaultSpace` | `cases.createCase`, `cases.getCase`, `cases.updateCase`, `cases.addComment` (plus 23 additional `cases.*` steps) | Deprecated aliases still work. New workflows must use `cases.*`. |
+| Direct AI connector steps | `inference.*`, `bedrock.*`, `gen-ai.*`, `gemini.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) (or `ai.classify`, `ai.summarize`, `ai.agent` when appropriate) | Deprecated steps still run. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning on hover. |
 | HTTP step `timeout` | Inside `with` | At the step top level (common field) | Existing workflows auto-migrate on save. |
 | HTTP step allowed hosts | `workflowsExecutionEngine.http.allowedHosts` controlled workflow HTTP steps. The default was `["*"]`. | `xpack.actions.allowedHosts` controls HTTP steps because they now run through the Actions framework HTTP connector. | If `xpack.actions.allowedHosts` is unset, the default is still `["*"]`. If it is set restrictively, existing HTTP steps can fail until their target hosts are added. |
 | Scheduled trigger interval minimum | Any duration | Minimum `1m` / `60s` | Sub-minute intervals auto-migrate to `1m` on first edit. |

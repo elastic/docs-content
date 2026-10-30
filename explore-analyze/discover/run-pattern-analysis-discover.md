@@ -16,8 +16,8 @@ Pattern analysis in **Discover** helps you find patterns in unstructured log mes
 :::{tip}
 You can also detect patterns from {{esql}}:
 
-- {applies_to}`{ stack: preview 9.4, serverless: preview }` Use the [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) grouping function to render the results as expandable groups with row actions. Refer to [](/explore-analyze/discover/try-esql.md#esql-cascade-layout).
-- {applies_to}`{ stack: preview 9.5, serverless: preview }` Add a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation to display an inline trend for each pattern. Refer to [Add sparklines to patterns](/explore-analyze/discover/try-esql.md#esql-cascade-pattern-sparkline).
+- {applies_to}`{ stack: preview 9.4, serverless: preview }` Use the [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) grouping function to render the results as expandable groups with row actions. Refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
+- {applies_to}`{ stack: preview 9.5, serverless: preview }` Add a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation to display an inline trend for each pattern. Refer to [Add sparklines to patterns](inspect-grouped-stats.md#esql-cascade-pattern-sparkline).
 :::
 
 Pattern analysis works on any text field. This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own log data.
@@ -25,12 +25,13 @@ Pattern analysis works on any text field. This example uses the [sample web logs
 1. Go to **Discover**.
 2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 15 days**.
-4. Click the **Patterns** tab next to **Documents** and **Field statistics**. The pattern analysis starts. The results are displayed under the chart. You can change the analyzed field by using the field selector. In the **Pattern analysis menu**, you can change the **Minimum time range**. This option enables you to widen the time range for calculating patterns which improves accuracy. The patterns, however, are still displayed by the time range you selected in step 3.
+4. Select **Patterns** (or **View as** → **Patterns**, depending on your version). The pattern analysis starts. The results are displayed under the chart. You can change the analyzed field by using the field selector. In the **Pattern analysis menu**, you can change the **Minimum time range**. This option enables you to widen the time range for calculating patterns which improves accuracy. The patterns, however, are still displayed by the time range you selected in step 3.
 
-:::{image} /explore-analyze/images/kibana-log-pattern-analysis-results.png
-:alt: Log pattern analysis results in Discover.
-:screenshot:
-:::
+   :::{image} /explore-analyze/images/kibana-log-pattern-analysis-results.png
+   :alt: Patterns view in Discover with the View as menu open.
+   :screenshot:
+   :width: 70%
+   :::
 
-5. (optional) Apply filters to one or more patterns. **Discover** only displays documents that match the selected patterns. Additionally, you can remove selected patterns from **Discover**, resulting in the display of only those documents that don’t match the selected pattern. These options enable you to remove unimportant messages and focus on the more important, actionable data during troubleshooting. You can also create a categorization {{anomaly-job}} directly from the **Patterns** tab to find anomalous behavior in the selected pattern.
+5. (optional) Apply filters to one or more patterns. **Discover** only displays documents that match the selected patterns. Additionally, you can remove selected patterns from **Discover**, resulting in the display of only those documents that don’t match the selected pattern. These options enable you to remove unimportant messages and focus on the more important, actionable data during troubleshooting. You can also create a categorization {{anomaly-job}} directly from the **Patterns** view to find anomalous behavior in the selected pattern.
 

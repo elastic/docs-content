@@ -23,7 +23,7 @@ The {{ecloud}} Azure Native Service allows you to deploy managed instances of th
 
 * **Integrated billing**
 
-    You are billed directly to your Azure account; no need to configure billing details in Elastic. See [Integrated billing](#ec-azure-integration-billing-summary) for details.
+    You are billed directly to your Azure account, so you don't need to configure billing details in Elastic. See [Integrated billing](#ec-azure-integration-billing-summary) for details.
 
 * **Easy consolidation of your Azure logs in Elastic**
 
@@ -56,7 +56,14 @@ The selected resource is created for you.
 
 If you select **{{serverless-short}}**, then the project is [sized automatically for you](/deploy-manage/deploy/elastic-cloud/serverless.md#_benefits_of_serverless_projects) and adjusts to your usage.
 
-If you select **Cloud Hosted**, a deployment is created with **16GB of RAM** and **560GB of storage**, across **two availability zones** for redundancy. The size of the deployment, both RAM and storage, can be changed [directly in the {{ecloud}} console](/deploy-manage/deploy/elastic-cloud/configure.md). Usage charges are based on the deployment size, so size your instance efficiently. The deployment defaults to the latest available version of the {{stack}}. Check our [Version policy](available-stack-versions.md) to learn more about when new versions are made available and old versions are removed from service.
+If you select **Cloud Hosted**, a deployment is created with **16GB of RAM** and **560GB of storage**, across **two availability zones** for redundancy. The deployment defaults to the latest available version of the {{stack}}. Check our [Version policy](available-stack-versions.md) to learn more about when new versions are made available and old versions are removed from service.
+
+:::{admonition} Configure advanced settings after deployment creation
+The Azure portal exposes only a subset of configuration options at deployment creation time. To access the full set of settings, open the **Advanced Settings** link from your deployment's overview page in the Azure portal. This opens the {{ecloud}} console, where you can configure:
+
+* **Deployment size**: Adjust RAM and storage to match your workload. Usage charges are based on deployment size, so size your instance efficiently. Refer to [Configure ECH deployments](/deploy-manage/deploy/elastic-cloud/configure.md).
+* **Customer-managed encryption key (BYOK)**: Encrypt your deployment at rest using a key from your own key management service. Refer to [Customer-managed encryption keys](azure-native-isv-service-byok.md).
+:::
 
 ### Alternative creation methods [azure-integration-cli-api]
 
@@ -253,14 +260,20 @@ Multiple Azure users can deploy to the same {{ecloud}} organization. Before anot
 
 You can add Azure users as members of your organization even if they don't have an inbox. Reach out to Elastic support.
 
-## Azure tenant information [azure-integration-azure-tenant]
+## Hosting and data location [azure-integration-hosting-data-location]
 
-{{es}} resources deployed in an Azure tenant are managed by Elastic. The management capabilities associated with this tenant are the same as used to run Elastic's managed service, which also allows users to deploy on Azure. {{es}} is not deployed into your Azure tenant.
+When you create an {{ecloud}} deployment or project through the Azure Native Service, Elastic runs it in Azure subscriptions owned and managed by Elastic, in the Azure region you select. Your deployments and projects, and the data stored in them, are not deployed into your Azure tenant or subscription.
+
+The Elastic resource that appears in your Azure resource group lets you manage and pay for your deployment or project from Azure. It represents your deployment or project, but doesn't host it.
+
+Because your data is stored outside your tenant, traffic between your Azure workloads and {{es}} crosses from your tenant into Elastic's. To connect privately, use [Azure Private Link](../../security/private-connectivity-azure.md). To control the encryption of your data at rest, use a [customer-managed encryption key](azure-native-isv-service-byok.md).
+
+## Azure tenant information shared with Elastic [azure-integration-azure-tenant]
 
 $$$azure-integration-azure-tenant-info$$$
 After you subscribe to {{ecloud}} through the Azure Native Service, Elastic has access to the following Azure tenant information:
 
-* Data defined in the marketplace [Saas fulfillment Subscription APIs](https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api).
+* Data defined in the marketplace [SaaS fulfillment Subscription APIs](https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api).
 * The following additional data:
     * Marketplace subscription ID
     * Marketplace plan ID
@@ -271,7 +284,7 @@ After you subscribe to {{ecloud}} through the Azure Native Service, Elastic has 
     * Last name
     * Country
 
-Elastic can also access data from {{ecloud}} Azure Native Service features, including [resource and activity log data](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/platform-logs-overview). This data is available when [log ingestion](azure-native-isv-service-logs-metrics.md#configure-log-ingestion) is configured. By default, Elastic does not have access to this information.
+Elastic can also access data from {{ecloud}} Azure Native Service features, such as [resource and activity log data](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/platform-logs-overview), but only when [log ingestion](azure-native-isv-service-logs-metrics.md#configure-log-ingestion) is configured. By default, Elastic doesn't have access to this data.
 
 ## Delete a resource or Azure resource group [ec-azure-integration-delete]
 

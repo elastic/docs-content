@@ -15,6 +15,8 @@ Learn how to create time series visualizations and build a dashboard that tracks
 
 When you're done, you'll have a complete dashboard showing sales trends, revenue patterns, and customer behavior over time.
 
+You can also create time series charts with an {{esql}} query. Start with [Build time series charts](../visualize/esorql.md#esql-time-series-charts). Use the `kibana_sample_data_ecommerce` index and replace `@timestamp` with its `order_date` time field.
+
 :::{image} /explore-analyze/images/kibana-lens_timeSeriesDataTutorialDashboard_8.3.png
 :alt: Final dashboard with eCommerce sample data
 :screenshot:
@@ -35,7 +37,7 @@ Open the visualization editor, then make sure the correct fields appear.
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization**.
 
 2. Make sure the **Kibana Sample Data eCommerce** {{data-source}} appears, then set the [time filter](../query-filter/filtering.md) to **Last 30 days**.
@@ -102,7 +104,7 @@ To analyze multiple series, create a line chart that displays the price distribu
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. Open the **Visualization type** dropdown, then select **Line**.
@@ -143,7 +145,7 @@ To analyze multiple visualization types, create an area chart that displays the 
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **products.price** to the workspace.
@@ -186,7 +188,7 @@ To view change over time as a percentage, create an **Area percentage** chart th
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **Records** to the workspace.
@@ -227,7 +229,7 @@ To determine the number of orders made only on Saturday and Sunday, create an ar
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. Open the **Visualization type** dropdown, then select **Area**.
@@ -269,7 +271,7 @@ To compare two time ranges, create a line chart that compares the sales in the c
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. Open the **Visualization type** dropdown, then select **Line**.
@@ -301,7 +303,7 @@ To compare time range changes as a percent, create a bar chart that compares the
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **Records** to the workspace.
@@ -327,7 +329,7 @@ Create a date histogram table and group the customer count metric by category, s
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. Open the **Visualization type** dropdown, then select **Table**.

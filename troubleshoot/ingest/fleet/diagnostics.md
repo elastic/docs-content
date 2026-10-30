@@ -72,6 +72,11 @@ Some {{agent}} configuration issues only appear in the agent's start-up debug lo
 
 The {{fleet}} UI provides the ability to remotely generate and gather an {{agent}}'s diagnostics bundle if it is online in a [`Healthy` or `Unhealthy` status](/reference/fleet/monitor-elastic-agent.md#view-agent-status). For {{agent}}s in other statuses, you must use the CLI to grab their diagnostic.
 
+:::{note}
+:applies_to: stack: ga 9.5+
+When OTel-based {{es}} monitoring is active, the bundle also includes `elastic-agent-metrics.ndjson` (capped at 20 MB). This file contains raw collector metric snapshots useful for diagnosing OTel monitoring pipeline issues.
+:::
+
 :::{warning}
 Diagnostics and logs mainly emit product metadata and settings, but they might expose sensitive data which needs to be redacted before being shared outside of your organization. For more details, refer to [Sanitize](#agent-diagnostics-sanitize).
 :::

@@ -1,13 +1,13 @@
 ---
 navigation_title: Semantic search
-description: Quickstart for semantic search in Elasticsearch with the semantic_text workflow, which uses vector search and embeddings to match documents by meaning.
+description: Step-by-step tutorial to build your first semantic search application in Elasticsearch. Index documents, generate embeddings automatically with the semantic_text field type, and run your first hybrid semantic search query.
 applies_to:
   serverless: all
   stack: all
 products:
   - id: elasticsearch
 ---
-# Get started with semantic search
+# Semantic search quickstart
 
 If you want to get a sense of how semantic search works in {{es}}, this quickstart is for you. You use the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) workflow, the simplest managed path for semantic search. First, you create an index and store your data in two forms: plain text for keyword matching and semantic representations in `semantic_text` (vector embeddings are generated and compared automatically using [vector search](../vector.md) under the hood). Then you run a hybrid query that combines keyword search with semantic search on those embeddings and merges the results.
 :::{note}
@@ -22,7 +22,7 @@ With hybrid search, the same query can return both keyword and semantic matches,
 
 ## Prerequisites [semantic-search-quickstart-prerequisites]
 
-A running {{es}} cluster. For the fastest way to follow this quickstart, [create a serverless project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) which includes a free {{serverless-short}} trial.
+A running {{es}} cluster. The fastest way to follow this quickstart is to create an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
 
 ## Get the data in [semantic-search-quickstart-getting-data-in]
 

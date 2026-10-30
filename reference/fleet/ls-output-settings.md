@@ -109,7 +109,7 @@ output {
     * {{agent}} reads batches of events and sends each batch to one {{ls}} worker dynamically, based on a work-queue shared between the outputs.
     * If a connection drops, {{agent}} takes the disconnected {{ls}} worker out of its pool.
     * {{agent}} tries to reconnect. If it succeeds, it re-adds the {{ls}} worker to the pool.
-    * If one of the {{ls}} nodes is slow but "healthy", it sends a keep-alive signal until the full batch of data is processed. This prevents {{agent}} from sending further data until it receives an acknowledgement signal back from {{ls}}. {{agent}} keeps all events in memory until after that acknowledgement occurs.
+    * If one of the {{ls}} nodes is slow but "healthy," it sends a keep-alive signal until the full batch of data is processed. This prevents {{agent}} from sending further data until it receives an acknowledgment signal back from {{ls}}. {{agent}} keeps all events in memory until after that acknowledgment occurs.
 
     Without `loadbalance` enabled:
 

@@ -103,7 +103,7 @@ To connect to, stream data to, and issue queries, you need to think about authen
 
 ### Basic authentication [ec_basic_authentication]
 
-For basic authentication, use the same deployment credentials (`username` and `password` parameters) and Cloud ID you copied down earlier when you created your deployment. (If you did not save the password, you can [reset the password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) .)
+For basic authentication, use the same deployment credentials (`username` and `password` parameters) and Cloud ID you copied down earlier when you created your deployment. (If you did not save the password, you can [reset it](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).)
 
 
 ## Create a sample application [ec_create_a_sample_application]
@@ -295,7 +295,7 @@ const client = new Client({
 })
 ```
 
-Check [Create API key API]({{es-apis}}operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
+Check [Create API key API]({{es-apis}}operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
 
 
 ### Best practices [ec_best_practices]

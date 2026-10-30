@@ -64,7 +64,7 @@ Create a **Marketing** space for your marketing analysts to use.
 3. Give this space a unique name. For example: `Marketing`.
 4. Click **Create space**.
 
-    If you’ve followed the example above, you should end up with a space that looks like this:
+    If you’ve followed the previous example, you should end up with a space that looks like this:
 
     :::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-space.png
     :alt: Create space UI
@@ -102,7 +102,7 @@ To create the role:
 
 6. Click **Create role**.
 
-    If you’ve followed the example above, you should end up with a role that looks like this:
+    If you’ve followed the previous example, you should end up with a role that looks like this:
 
     :::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-role.png
     :alt: Create role UI

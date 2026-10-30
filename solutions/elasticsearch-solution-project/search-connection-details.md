@@ -1,5 +1,6 @@
 ---
 navigation_title: Find connection details
+description: Find your {{es}} endpoint and create an API key so that client applications and tools can connect to your cluster or project.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
 applies_to:
@@ -7,130 +8,96 @@ applies_to:
   serverless:
 products:
   - id: kibana
+  - id: elasticsearch
+type: how-to
 ---
 
 # Find connection details [search-space-connection-details]
 
+To connect a client application or a third-party tool to {{es}}, you need two things: the {{es}} endpoint URL, and credentials that authenticate the request. For secure connections, use an API key.
 
-To connect to your {{es}} deployment, you need your {{es}} endpoint URL. For secure connections, we recommend using an API key for authentication.
+## Before you begin [before-you-begin]
 
-The following sections describe how to find your Cloud ID and create API keys in both {{ecloud}} and {{serverless-short}} deployments.
+To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege. If you created the deployment or project, you already have this privilege. If you sign in as a different user, an administrator needs to grant it. In this case, refer to [](/deploy-manage/users-roles.md).
 
-## Elastic Cloud and self-hosted deployments [_elastic_cloud_and_self_hosted_deployments]
+## Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
 
-### Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
+:::{include} /solutions/elasticsearch-solution-project/_snippets/find-elasticsearch-endpoint.md
+:::
 
-Elastic recommends you connect client applications to your cluster using standard URLs.
+## Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
-1. Go to the {{ecloud}} home page.
-2. In the main menu, select **Manage this deployment**.
-3. Under the **Applications** list, select **Copy endpoint** next to **{{es}}**.
+```{applies_to}
+deployment:
+  ech: ga
+  ece: ga
+serverless: ga
+```
 
-### Find your Cloud ID [find-cloud-id-cloud-self-managed]
+[{{beats}}](beats://reference/index.md) and [{{ls}}](logstash://reference/index.md) can use a Cloud ID instead of the endpoint URL. All other clients and tools use the endpoint.
 
-::::{note}
-The Cloud ID is a connection method specifically supported by Beats and {{ls}}. For all other client applications and third-party tools, use the {{es}} endpoint URL.
-::::
-
-1. Go to the {{ecloud}} home page.
-2. In the main menu, select **Manage this deployment**.
-
-    :::{image} /solutions/images/kibana-manage-deployment.png
-    :alt: manage deployment
-    :screenshot:
-    :::
-
-3. The Cloud ID is displayed on the right side of the page.
-
-    :::{image} /solutions/images/kibana-cloud-id.png
-    :alt: cloud id
-    :screenshot:
-    :::
-
-
-
-### Create an API key [create-an-api-key-cloud-self-managed]
-
-1. To navigate to **API keys**, use the [**global search bar**](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-    :::{image} /solutions/images/kibana-api-keys-search-bar.png
-    :alt: api keys search bar
-    :screenshot:
-    :::
-
-2. Select **Create API key**.
-
-    :::{image} /solutions/images/kibana-click-create-api-key.png
-    :alt: click create api key
-    :screenshot:
-    :::
-
-3. Enter the API key details, and select **Create API key**.
-4. Copy and securely store the API key, because it only appears once.
-
-
-## Serverless deployments [_serverless_deployments]
-
-### Find your Elasticsearch endpoint [find-cloud-id-serverless]
-
-1. Select the Help icon in the top right corner and then select **Connection Details**.
-2. Copy the **Elasticsearch endpoint** from the **Endpoints** tab.
+1. Open {{kib}} for your deployment or project.
+2. From the **Help menu** {icon}`question`, select **Connection details**.
+3. Turn on **Show Cloud ID**, then copy the value.
 
     :::{image} /solutions/images/kibana-serverless-connection-details.png
     :alt: serverless connection details
     :screenshot:
+    :width: 50%
     :::
 
-::::{note}
-The **Cloud ID** is also available in the **Connection Details** section. Toggle the **Show Cloud ID** option to view it.
+:::{tip}
+:applies_to: {ech: ga}
+To skip {{kib}}, select **Hosted** in the {{ecloud}} Console, open your deployment, and copy the **Cloud ID** from the deployment page.
+:::
 
-::::
+## Create an API key [create-an-api-key-cloud-self-managed]
 
+:::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
+:::
 
-### Create an API key [create-an-api-key-serverless]
+## Test your connection [elasticsearch-get-started-test-connection]
 
-1. Go to the serverless project’s home page.
-2. Select **Create API key**.
+Verify your endpoint and API key with a request to the {{es}} root endpoint.
 
-    :::{image} /solutions/images/kibana-serverless-create-an-api-key.png
-    :alt: serverless create an api key
-    :screenshot:
-    :::
+1. In a terminal, assign your endpoint and encoded API key to environment variables:
 
-4. Enter the API key details, and select **Create API key**.
-5. Copy and securely store the API key, because it only appears once.
+    ```bash
+    export ES_URL="https://my-deployment-a1b2c3.es.us-central1.gcp.elastic-cloud.com"
+    export API_KEY="ZFZRbF9Jb0JDMEoxaVhoR2pSa3Q6dExwdmJSaldRTHFXWEp4TFFlR19Hdw=="
+    ```
 
-### Test connection [elasticsearch-get-started-test-connection]
+2. Send the request:
 
-Use [`curl`](https://curl.se) to verify your connection to {{es}}.
+    ```bash
+    curl "${ES_URL}" -H "Authorization: ApiKey ${API_KEY}"
+    ```
 
-In a terminal, assign the {{es}} endpoint and `encoded` API key to the `ES_URL` and `API_KEY` environment variables respectively. `curl` needs access to these values.
-
-For example:
-
-```bash
-export ES_URL="https://dda7de7f1d264286a8fc9741c7741690.es.us-east-1.aws.elastic.cloud:443"
-export API_KEY="ZFZRbF9Jb0JDMEoxaVhoR2pSa3Q6dExwdmJSaldRTHFXWEp4TFFlR19Hdw=="
-```
-
-Next, run the following command to test your connection:
-
-```bash
-curl "${ES_URL}" \
-  -H "Authorization: ApiKey ${API_KEY}" \
-  -H "Content-Type: application/json"
-```
-
-You should receive a response similar to the following:
+A successful response returns your cluster details:
 
 ```json
 {
-  "name" : "serverless",
-  "cluster_name" : "dda7de7f1d264286a8fc9741c7741690",
+  "name" : "instance-0000000000",
+  "cluster_name" : "my-deployment",
   "cluster_uuid" : "ws0IbTBUQfigmYAVMztkZQ",
   "version" : { ... },
   "tagline" : "You Know, for Search"
 }
 ```
 
-Now you’re ready to start adding data to your {{es-serverless}} project.
+:::{note}
+:applies_to: {eck: ga, self: ga}
+If your cluster uses a self-signed certificate, pass your CA certificate with `curl --cacert`. Refer to [Automatic security setup](/deploy-manage/security/self-auto-setup.md) for the certificate location.
+:::
+
+## Next steps
+
+* [Connect a client library](/reference/elasticsearch-clients/index.md) in your language of choice.
+* [Ingest data](/solutions/search/ingest-for-search.md) into your cluster or project.
+* [Build search queries](/solutions/search/querying-for-search.md) against your data.
+
+## Related pages
+
+* [Configure {{beats}} and {{ls}} with a Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md)
+* [Connect to {{es}} on {{ece}}](/deploy-manage/deploy/cloud-enterprise/connect-elasticsearch.md)
+* [Securing HTTP client applications](/deploy-manage/security/httprest-clients-security.md)

@@ -3,6 +3,9 @@ navigation_title: APM anomaly
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-anomaly-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-anomaly-alert-rule.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -28,10 +31,20 @@ This rule queries the ML anomaly indices and the transaction indices defined in 
 
 You can create an anomaly rule to alert you when either the latency, throughput, or failed transaction rate of a service is unusual. Anomaly rules can be set at different levels: environment, service, and transaction type. Add actions to raise alerts via services or third-party integrations (for example, send an email or create a Jira issue).
 
-:::{image} /solutions/images/serverless-alerts-create-apm-anomaly.png
-:alt: Create rule for APM anomaly alert
-:screenshot:
+::::{applies-switch}
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+From an **Applications** page, open **Alerts** in the application menu and select **Create anomaly rule**. If **Alerts** is not visible, open the **More** menu {icon}`boxes_vertical` first.
+
+1. In **Definition**, select the **Service**, **Type**, and **Environment**, or leave **All** selected.
+2. Under **Detector types**, select the anomalies that should trigger alerts. All four types are selected by default: **latency**, **throughput**, **failed transaction rate**, and **low transaction count**.
+3. Set **Has anomaly with severity** to the minimum severity to alert on: **warning**, **minor**, **major**, or **critical**.
+4. Set the rule schedule and click **Next**.
+5. In **Actions**, optionally configure notifications or other actions, then continue to **Details**.
+6. In **Details**, enter the **Rule name** and optional **Tags**, then click **Create rule**.
+
 :::
+:::{applies-item} stack: ga 9.0-9.5
 
 These steps show how to use the **Alerts** UI. You can also create an anomaly rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create anomaly rule**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
@@ -47,6 +60,18 @@ To create your anomaly rule:
 8. (Optional) Set up **Actions**.
 9. **Save** your rule.
 
+:::
+::::
+
+## Alert on low transaction counts [apm-anomaly-low-transaction-count]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Select **low transaction count** under **Detector types** to alert when a service's transaction count drops abnormally, including when traffic stops reaching it. This detector is selected by default for new rules. Existing rules retain their saved detector selections, so edit them to include it.
+
+The environment's {{product.apm}} {{ml}} job must also contain the `low_count` detector. Selecting it in a rule does not update the job. If the detector is missing, follow [Add low-count detection to existing jobs](/solutions/observability/apm/machine-learning.md#apm-ml-recreate-existing-jobs).
 
 ## Add actions [observability-create-anomaly-alert-rule-add-actions]
 

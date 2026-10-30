@@ -80,16 +80,24 @@ If dependencies are broken or bootstrap fails, run `yarn kbn clean` first. For m
 :sync: code-generated
 Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, request/response schemas, and examples as needed, per the [checklist](checklist.md).
 
+**Set an explicit `operationId`** on public routes. SDK and CLI generators use this ID as the method and command name. If you omit it, the generator derives a name from the method and path, such as `post-foo`. Prefer kebab-case `verb-resource` names such as `create-foo`. For details, refer to [Set an operation ID](kibana://extend/tutorials/generating-oas-for-http-apis.md#set-an-operation-id).
+
 **Always include version and lifecycle information** using the `availability` option in your route definitions. This powers the version badges and tech preview labels that help users understand when an API was introduced and its stability status.
 
 ```typescript
-options: {
-  tags: ['example', 'oas-tag:Example APIs'],
-  availability: {
-    stability: 'experimental',
-    since: '9.2.0',
+router.versioned.post({
+  path: '/api/foo',
+  access: 'public',
+  summary: 'Create a foo resource',
+  operationId: 'create-foo',
+  options: {
+    tags: ['example', 'oas-tag:Example APIs'],
+    availability: {
+      stability: 'experimental',
+      since: '9.2.0',
+    },
   },
-},
+});
 ```
 
 The `availability` option includes two fields:

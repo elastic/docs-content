@@ -31,7 +31,11 @@ To change a cluster’s topology, from deployment management, select **Edit depl
 
 For trials, larger sizes are not available until you [add a credit card](../../cloud-organization/billing/add-billing-details.md).
 
-For instances up to 64 GB of RAM, half the memory is assigned to the JVM heap (a bit less when monitoring is activated). For instances larger than 64 GB, the heap size is capped at 32 GB. For example, on a 32 GB instance, 16 GB are allotted to heap, while on a 128 GB instance, 32 GB are allotted to heap. Up to 256 GB RAM per instance is supported. The disk-to-RAM ratio currently is 1:24, meaning that you get 24 GB of storage space for each 1 GB of RAM. All clusters are backed by SSD drives.
+For most hardware profiles, in instances up to 64 GB of RAM, half the memory is assigned to the JVM heap (slightly less when monitoring is activated). Vector search optimized profiles allocate a smaller share to heap so that more memory is available for caching vector data. 
+
+::::{note}
+To check the actual heap size on your instances, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes).
+::::
 
 ::::{tip}
 For production systems, each {{es}} instance in your cluster should have at least 4 GB of RAM, which assigns 2 GB to the JVM heap. Review [Minimum size recommendations for production use](elastic-cloud-hosted-planning.md#ec-minimum-recommendations) for more details.
@@ -97,7 +101,7 @@ For more information, refer to [Edit your user settings](edit-stack-settings.md)
 
 Lists the official plugins available for your selected {{es}} version, as well as any custom plugins and user bundles with dictionaries or scripts.
 
-When selecting a plugin from this list you get a version that has been tested with the chosen {{es}} version. The main difference between selecting a plugin from this list and uploading the same plugin as a custom extension is in who decides the version used. To learn more, check [*Add plugins and extensions*](add-plugins-extensions.md).
+When selecting a plugin from this list you get a version that has been tested with the chosen {{es}} version. The main difference between selecting a plugin from this list and uploading the same plugin as a custom extension is in who decides the version used. To learn more, check [](/deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/add-plugins-extensions.md).
 
 The reason we do not list the version chosen on this page is because we reserve the option to change it when necessary. That said, we will not force a cluster restart for a simple plugin upgrade unless there are severe issues with the current version. In most cases, plugin upgrades are applied lazily, in other words when something else forces a restart like you changing the plan or {{es}} runs out of memory.
 
@@ -116,7 +120,7 @@ If you use a version before 5.0 or if your deployment didn’t include a {{kib}}
 ::::
 
 
-Selecting **Open** will log you in to {{kib}} using single sign-on (SSO). For versions older than 7.9.2, you need to log in to {{kib}} with the `elastic` superuser. The password was provided when you created your deployment or [can be reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+Selecting **Open** will log you in to {{kib}} using single sign-on (SSO). For versions older than 7.9.2, you need to log in to {{kib}} with the `elastic` superuser. The password was provided when you created your deployment or [can be reset](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).
 
 In production systems, you might need to control what {{es}} data users can access through {{kib}}. Refer to [Securing your deployment](../../users-roles/cluster-or-deployment-auth.md) to learn more.
 
@@ -129,7 +133,7 @@ Refer to [Manage your Integrations Server](manage-integrations-server.md) to lea
 
 ## Security [ec_security]
 
-Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up network security, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.
+Here, you can configure features that keep your deployment secure: set up network security, add settings to the {{es}} keystore, and set up remote connections to other deployments.
 
 
 ## Actions [ec_actions]

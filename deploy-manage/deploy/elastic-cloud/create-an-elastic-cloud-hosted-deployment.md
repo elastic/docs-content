@@ -54,7 +54,7 @@ You can also create a deployment using the [{{ecloud}} API]({{cloud-apis}}group/
     Trial users won’t find the Advanced settings when they create their first deployment. This option is available on the deployment’s edit page once the deployment is created.
     ::::
 
-3. Select **Create deployment**. It takes a few minutes before your deployment gets created. While waiting, you are prompted to save the admin credentials for your deployment which provides you with superuser access to {{es}}. Keep these credentials safe as they are shown only once. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
+3. Select **Create deployment**. It takes a few minutes before your deployment gets created. While waiting, you are prompted to save the admin credentials for your deployment which provides you with superuser access to {{es}}. Keep these credentials safe as they are shown only once. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).
 4. Once the deployment is ready, select **Continue** to open the deployment’s main page. From here, you can start [ingesting data](../../../manage-data/ingest.md) or simply [try a sample data](../../../explore-analyze/index.md#gs-get-data-into-kibana) set to get started.
 
     At any time, you can manage and [adjust the configuration](configure.md) of your deployment to your needs, add extra layers of [security](../../users-roles/cluster-or-deployment-auth.md), or (highly recommended) set up [health monitoring](../../monitor/stack-monitoring.md).
@@ -70,7 +70,7 @@ To make sure you’re all set for production, consider the following actions:
 * [Plan for your expected workloads](/deploy-manage/production-guidance.md) and consider how many availability zones you’ll need.
 * [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) on the region you need and with a hardware profile that matches your use case.
 * [Change your configuration](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) by turning on autoscaling, adding high availability, or adjusting components of the {{stack}}.
-* [Add plugins and extensions](/deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use Elastic supported extensions or add your own custom dictionaries and scripts.
+* [Add plugins and extensions](/deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/add-plugins-extensions.md) to use Elastic supported plugins or add your own custom dictionaries and scripts.
 * [Edit settings and defaults](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to fine tune the performance of specific features.
 * [Manage your deployment](/deploy-manage/deploy/elastic-cloud/manage-deployments.md) as a whole to restart, upgrade, stop routing, or delete.
 * [Set up monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md) to learn how to configure your deployments for observability, which includes metric and log collection, troubleshooting views, and cluster alerts to automate performance monitoring.

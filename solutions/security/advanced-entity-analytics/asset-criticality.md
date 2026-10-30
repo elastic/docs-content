@@ -145,5 +145,5 @@ Risk scoring dynamically factors in an entity’s asset criticality, along with 
 To view the impact of asset criticality on an entity’s risk score, follow these steps:
 
 1. Open the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout). The risk score section shows asset criticality’s contribution to the overall risk score.
-2. Expand the risk score section to open the flyout’s left panel.
+2. Open the risk score section's child flyout.
 3. In the **Contexts** section, verify the entity’s criticality level from the time the alert was generated.

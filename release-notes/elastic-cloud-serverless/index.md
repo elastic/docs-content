@@ -8,10 +8,12 @@ products:
 
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
+There are also [breaking changes](breaking-changes.md), [deprecations](deprecations.md), and [known issues](known-issues.md).
 
 :::{changelog}
 :cdn: cloud-serverless
-:description-visibility: hide-descriptions
+:highlights:
+:description-visibility:  keep-highlight-descriptions
 :link-visibility: keep-links
 :::
 
