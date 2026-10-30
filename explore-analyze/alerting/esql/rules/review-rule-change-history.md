@@ -1,32 +1,64 @@
 ---
 navigation_title: Review rule change history
 applies_to:
-  stack: ga 9.6+
   serverless: ga
+  stack: ga 9.6+
 products:
   - id: kibana
-description: "Review a rule's change history to see who changed a rule and when, and compare versions with a JSON diff."
+description: "Find out who changed a rule and when, and compare any two versions of its configuration to see exactly what changed."
 ---
 
 # Review rule change history in {{alerting-v2-system}} [review-rule-change-history]
 
-Use a rule's change history to see who changed the rule and when, and to compare any two versions of its configuration. Anyone who can view a rule can open its change history, even without permission to edit the rule.
+A rule's change history shows who changed the rule, when, and exactly which settings changed. {{kib}} saves a new version of a rule each time someone creates, edits, enables, or disables it.
 
-To open the change history, select **View change history** from any of these places:
+Use the change history to:
 
-- A rule's actions menu on the **Rules** page
+- Find out whether a recent edit explains why a rule started alerting more, alerting less, or stopped running.
+- See who enabled or disabled a rule.
+- Look up a rule's earlier settings before you change them back.
+
+To check whether a rule's runs succeeded, rather than how its settings changed, use [rule execution history](review-rule-execution-history.md).
+
+## Open a rule's change history [open-change-history]
+
+Select **View change history** from any of these places:
+
+- The rule's actions menu on the **Rules** page
 - The **Take action** menu in the rule summary flyout
 - The actions menu on the rule's details page
 
-The change history lists the rule's versions, newest first. A **Current version** badge marks the latest version. Each entry shows who made the change, when they made it, and the kind of change, such as `rule_create`, `rule_update`, `rule_enable`, or `rule_disable`. Enabling or disabling a rule also adds an entry.
+The change history opens on the newest version, so you see the most recent change first. Anyone who can view a rule can open its change history, even without permission to edit the rule.
 
-When the change history opens, {{kib}} selects the newest version. Select any entry to see how that version differs from the one before it. {{kib}} shows the difference as a JSON diff of the rule's configuration, with added and removed lines highlighted. The oldest entry has no earlier version, so selecting it shows its full configuration.
+## Find out who changed a rule and when [who-changed-rule]
 
-To compare the selected version with a different one, select {icon}`boxes_vertical` **Version actions** on that entry, then select **Compare to this version**. Whichever order you pick them in, the diff treats the older version as the starting point, so added lines are what the newer version introduced. The current version has no **Version actions** menu. To compare an earlier version with the current one, select the current version, then select **Compare to this version** on the earlier entry.
+The change history lists the rule's versions, newest first. Each entry shows who made the change, when they made it, and the kind of change, which is one of `rule_create`, `rule_update`, `rule_enable`, or `rule_disable`. A **Current version** badge marks the version the rule uses now.
 
-{{kib}} records a rule's changes only from the time change history became available. A rule that existed before then has an empty change history until its next change.
+{{kib}} records every change, including bulk actions on the **Rules** page and changes made through the API.
 
-Change history is read-only, so you can't restore an earlier version from it. To undo a change, edit the rule and set the changed fields back to their earlier values.
+If the change history is empty, the rule hasn't changed since change history became available. {{kib}} doesn't record changes made before then.
+
+## See what a change did [see-what-changed]
+
+Select a version to see what it changed. {{kib}} compares it with the version before it and shows the difference as a JSON diff of the rule's configuration, with added and removed lines highlighted.
+
+The oldest version has no earlier version to compare with, so selecting it shows the rule's full configuration at that point.
+
+## Compare two versions [compare-versions]
+
+To see everything that changed across several edits, compare two versions directly:
+
+1. Select the newer version. To compare with the rule's current settings, select the version marked **Current version**.
+2. On the older version, select {icon}`boxes_vertical` **Version actions** → **Compare to this version**.
+
+The diff uses the older version as its starting point, so added lines show what the newer version introduced.
+
+## Undo a change [undo-change]
+
+Change history is read-only, so you can't restore an earlier version from it. To undo a change:
+
+1. [Compare](#compare-versions) the current version with the version you want to go back to.
+2. [Edit the rule](view-manage-rules.md#rule-details-page) and set each changed field back to its earlier value.
 
 ## Related pages
 
