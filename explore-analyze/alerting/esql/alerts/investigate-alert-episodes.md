@@ -46,10 +46,6 @@ Related alerts from the same rule are grouped to help you answer whether this is
 - **Other groups for this rule** - Alerts from the same rule firing on different entities (different `group_hash`). Use this to gauge how broadly the rule is triggering across your environment.
 
 ## Spot a flapping alert [flapping]
-```{applies_to}
-serverless: experimental
-stack: experimental 9.6+
-```
 
 A **Flapping** badge next to an alert's status means the alert keeps changing between `active` and `recovering` instead of holding or resolving. Select the badge to see why {{kib}} applied it.
 
