@@ -79,8 +79,8 @@ This hides the UI and turns off the APIs. Your rules, action policies, and alert
 
 Rules and action policies keep running after you turn off the setting. To stop them:
 
-- {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us).
-- {applies_to}`stack: ga 9.6+` Set [`xpack.alerting_v2.enabled`](kibana://reference/configuration-reference/alerting-settings.md) to `false` in `kibana.yml`, then restart {{kib}}.
+- On {{serverless-short}}, [contact Elastic support](/troubleshoot/index.md#contact-us).
+- On {{stack}}, set [`xpack.alerting_v2.enabled`](kibana://reference/configuration-reference/alerting-settings.md) to `false` in `kibana.yml`, then restart {{kib}}.
 
 ## Next steps [alerting-setup-next-steps]
 
