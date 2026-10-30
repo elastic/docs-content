@@ -97,6 +97,7 @@ You can filter on a specific `action`, such as [bulk indexing]({{es-apis}}operat
     GET /_tasks?human&detailed&actions=indices:*search*&nodes=<YOUR_NODE_ID_OR_NAME_HERE>
     ```
 
+    The `indices:*search*` filter matches Query DSL and async search tasks, but not {{esql}}, EQL, or SQL queries. To find and cancel those query types, refer to [Find and cancel long-running queries](elasticsearch://reference/query-languages/query-task-management.md).
 
 Long-running tasks might need to be [canceled](#resolve-task-queue-backlog-stuck-tasks).
 
@@ -125,6 +126,8 @@ There are a few common `source` issues to check for:
 If you're not present during an incident to investigate backlogged tasks, you might consider enabling [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) to review later.
 
 For example, you can review slow search logs later using the [search profiler](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md), so that time consuming requests can be optimized.
+
+{applies_to}`stack: preview 9.4+` You can also configure [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to record slow Query DSL, {{esql}}, EQL, and SQL queries to a dedicated log data stream.
 
 ## Recommendations [resolve-task-queue-backlog] 
 
@@ -193,6 +196,8 @@ POST _tasks/oTUltX4IQMOUUVeiohTt8A:464/_cancel
 ```
 
 For additional tips on how to track and avoid resource-intensive searches, refer to [Avoid expensive searches](high-jvm-memory-pressure.md#reduce-jvm-memory-pressure-setup-searches).
+
+For other query types and guidance on identifying the parent query task, refer to [Find and cancel long-running queries](elasticsearch://reference/query-languages/query-task-management.md).
 
 
 ### Address hot spotting [resolve-task-queue-backlog-hotspotting] 
