@@ -55,15 +55,17 @@ Each alert tracks who performed the most recent response action of each type, so
 
 These rows only appear when the alert is in the corresponding state. System-generated actions display as **System**.
 
-## Review action policy activity [policy-history]
+## Check whether an alert's notifications went out [policy-history]
 
-The **Policy history** tab lists the dispatcher's decisions for this alert alone, so you can tell whether a notification went out, was held back, or failed. You can't narrow the space-wide [execution history](../action-policies/review-action-policy-execution-history.md) to a single alert. The tab appears only if your role has the [**Execution history** privilege](../manage/configure-access.md#alerting-execution-history-privileges).
+To find out whether {{kib}} sent a notification for an alert, open the **Policy history** tab on the alert's details page. The tab lists each time an action policy handled this alert since the alert started, and whether the policy sent the notification, held it back, or failed to send it. Use the tab to investigate one alert, because you can't narrow the space-wide [execution history](../action-policies/review-action-policy-execution-history.md) to a single alert.
 
-Each row covers one dispatcher run for one action policy. The tab shows the same columns as the space-wide page, except that it hides **Rules**, **Alerts**, and **Action groups** by default. Search the list, or filter by outcome to show only **Dispatched**, **Throttled**, or **Failed** runs. For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
+The tab appears only if your role has the [**Execution history** privilege](../manage/configure-access.md#alerting-execution-history-privileges).
 
-Select an action policy's name to open its configuration in a flyout. The name is a link only if your role can read action policies.
+Each row covers one dispatcher run for one action policy. To focus on a problem, filter by outcome to show only **Dispatched**, **Throttled**, or **Failed** runs, or search the list. For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
 
-The tab covers the alert's whole lifetime. When the tab is empty, its message "No action policy execution activity in the last 24 hours" comes from the space-wide page. The tab itself isn't limited to 24 hours.
+To review a policy's configuration, such as which alerts it matches and where it sends notifications, select the policy's name to open it in a flyout. The name is a link only if your role can read action policies.
+
+The tab doesn't show runs where no action policy matched the alert, or where the dispatcher skipped the alert because it was acknowledged, snoozed, resolved, or in a maintenance window. If the tab is empty, its message says "No action policy execution activity in the last 24 hours", but the tab covers the alert's whole lifetime, not only the last 24 hours.
 
 ## Inspect the underlying data [inspect-data]
 
