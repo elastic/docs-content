@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-function-reference.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: kibana
 ---
@@ -514,7 +514,7 @@ This creates a table based on the results of two `essql` queries, joined into on
 | --- | --- | --- |
 | `ids` † | `string` | Column ids to generate in positional order. ID represents the key in the row. |
 | `names` † | `string` | Column names to generate in positional order. Names are not required to be unique, and default to the ID if not provided. |
-| `rowCount` | `number` | The number of empty rows to add to the table, to be assigned a value later.<br>Default: `1`<br>{applies_to}`stack: ga 9.3` {applies_to}`serverless: ga` Must be an integer between 0 and 10,000. |
+| `rowCount` | `number` | The number of empty rows to add to the table, to be assigned a value later.<br>Default: `1`<br>{applies_to}`stack: ga 9.3` Must be an integer between 0 and 10,000. |
 
 **Returns:** `datatable`
 

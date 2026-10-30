@@ -1,79 +1,35 @@
 ---
 applies_to:
-  stack: experimental 9.5
-  serverless: experimental
-description: Nightshift memory is a persistent knowledge base that agents read before investigating incidents and write to as they learn.
+  serverless:
+    observability: preview
+description: Elastic nightshift context is a knowledge base of facts about your systems that investigations use to produce better results.
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# Memory [nightshift-memory]
+# Context [nightshift-memory]
 
-Nightshift **Memory** is a persistent knowledge base that agents read before investigating incidents. Rather than rebuilding knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated wiki of facts about your systems with information about services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can add memory articles, and each added page reduces the need for external queries for the next similar incident.
+The Elastic nightshift AI SRE uses a knowledge base of facts about your systems that agents read when investigating incidents. Rather than rebuilding an understanding of your environment from raw telemetry on every [investigation](./investigations.md), Elastic nightshift keeps knowledge about your services, infrastructure, dependencies, and known failure patterns, and uses it as a starting point.
 
-To review or edit existing memory pages or create new ones, go to **Streams** → **Significant Events** → **Memory**.
+:::{note}
+Elastic nightshift is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
+:::
 
-## What memory stores [nightshift-memory-what]
+## View and edit context [nightshift-memory-manage]
 
-Memory is organized into wiki pages. Each page covers a topic relevant to your environment. Pages use categories to organize knowledge hierarchically (for example, `services/checkout-service` or `infrastructure/kubernetes`). Agents can search, browse, and read these pages during investigations.
+To see what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**, then check the **Cortex** and **Memory** tabs:
 
-## How memory is built [nightshift-memory-how-built]
+- **Cortex**: Durable knowledge that the investigator reads before each run, organized into pages by type, such as services, runbooks, postmortems, and queries.
+- **Memory**: Lessons that the investigator saves after a run and recalls when it works on a similar problem, such as how a previous problem was resolved or which checks found its cause.
 
-You can manually create memory pages from the **Memory** tab under **Significant Events** or through the [onboarding interview](#nightshift-memory-onboarding). You can also run the following workflows from the **Workflow actions** {icon}`boxes_vertical` menu:
+Review the knowledge to confirm it's correct for your environment. You can edit, archive, or delete anything that isn't correct or useful. You can also add information about your systems and processes that Elastic nightshift might not discover from your data, such as team conventions, deployment processes, or known issues. For the steps, refer to [Manage what Elastic nightshift knows about your systems](./get-started.md#nightshift-get-started-knowledge).
 
-- [Synthesize Memory](#nightshift-memory-synthesis)
-- [Consolidate Memory](#nightshift-memory-consolidation)
-- [Scrape Conversations](#nightshift-memory-scraper)
-- [Detect Gaps](#nightshift-memory-gap-detection)
+## How investigations use context [nightshift-memory-usage]
 
-### Synthesize Memory [nightshift-memory-synthesis]
+When an [investigation](./investigations.md) starts, the investigation agent reads the knowledge relevant to the affected services before querying your telemetry. This means the agent starts with an understanding of your environment, and investigations produce more accurate conclusions than they would from raw data alone.
 
-The **Synthesize Memory** workflow builds wiki pages by selectively querying available information sources like [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md), Significant Events, existing memory pages, and connected external tools. The agent decides which sources to consult based on what's most relevant, then synthesizes the results into coherent pages organized around services, infrastructure, and operations.
-
-### Consolidate Memory [nightshift-memory-consolidation]
-
-The **Consolidate Memory** workflow reviews the full wiki for duplicates, stale entries, and disorganized content. It then merges duplicates, removes outdated pages, improves categories, and adds cross-references between related topics. Consolidation reorganizes data. It doesn't invent new facts.
-
-### Scrape Conversations [nightshift-memory-scraper]
-
-The **Scrape Conversations** workflow reads recent AI Agent conversations. It extracts durable, reusable knowledge like architectural facts, operational patterns, and troubleshooting steps discovered during conversations. It then writes those back to memory as wiki pages.
-
-### Detect Gaps [nightshift-memory-gap-detection]
-
-The **Detect Gaps** workflow audits the entire knowledge base against required knowledge dimensions and identifies what's missing.
-
-It checks the following dimensions:
-
-- Services and applications
-- Deployment processes (CI/CD, rollout strategies, feature flags)
-- Infrastructure (cloud, Kubernetes, VMs, regions)
-- Observability coverage (what data flows into Elastic, what's missing)
-- Administrative controls (change freezes, approval processes)
-- Health-checking and on-call (dashboards, runbooks, escalation paths)
-- Known failure modes (past incidents, postmortems, recurring issues)
-- External tools and integrations (deployment APIs, CMDB, incident management)
-- Code repositories (structure, branching, ownership)
-- Data and request flows (end-to-end paths, queues, databases)
-- Access points and connectors (dashboards, wikis, runbooks)
-
-After each run, **Detect Gaps** creates a structured overview page that lists coverage per dimension, the top gaps, and suggested next steps.
-
-## Onboarding interview [nightshift-memory-onboarding]
-
-The onboarding interview is a conversational agent that creates memory pages with knowledge about your specific environment at setup time. The agent asks targeted questions about your system to fill in gaps required for investigations.
-
-To start the onboarding interview, open **Significant Events** and select **Tell us about your system**. Before asking questions, the interview reads the current gap overview and focuses on the highest-priority gaps, so it's best to run the Detect Gaps workflow before starting the interview. The agent skips information that is already covered in memory.
-
-## How agents use memory [nightshift-memory-usage]
-
-When an [investigation](./investigations.md) starts, the investigation agent reads memory pages relevant to the affected service and event type before issuing any telemetry queries. This means:
-
-- The agent starts with knowledge about the service's architecture, known failure modes, and past incident patterns.
-- Targeted ES|QL queries replace broad exploratory queries.
-- Investigations for familiar issue types complete faster and produce higher-confidence hypotheses.
-
-Memory is also available to you directly during chat. You can ask the AI Agent what it knows about a service, request the current gap overview, or ask it to update a memory page based on something you've learned.
+Elastic nightshift also learns from every investigation it runs. It saves what it learns as knowledge, which makes later investigations more accurate and uses fewer tokens. If something it learned isn't correct, you can edit, archive, or delete it.
 
 ## Give feedback [nightshift-memory-feedback]
 
@@ -81,8 +37,9 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-memory-nav]
 
-- [Nightshift overview](./nightshift.md): Get an overview of Nightshift, requirements, and how to get started
-- [Investigations](./investigations.md): Learn how Nightshift automatically investigates Significant Events and produces root cause hypotheses
-- [How Significant Events works](../streams/significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
-- [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
-- [Operator guide](../streams/significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
+- [Get started with Elastic nightshift](./get-started.md): Start an investigation and review the results
+- [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
+- [Investigations](./investigations.md): Learn how Elastic nightshift investigates problems and how to read the results
+- [How Significant Events works](./significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
+- [Knowledge Indicators](./significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
+- [Operator guide](./significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures

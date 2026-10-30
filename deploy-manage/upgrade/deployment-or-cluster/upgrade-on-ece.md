@@ -34,15 +34,6 @@ Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md),
    If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
    ::::
 
-**Security realm settings**
-
-During the upgrade process, you are prompted to update the security realm settings if your user settings include a `xpack.security.authc.realms` value.
-
-If the security realms are configured in `user_settings`, you’ll be prompted to modify the settings:
-
-1. On the **Update security realm settings** window, edit the settings.
-2. Click **Update settings**. If the security realm settings are located in `user_settings_override`, contact support to help you upgrade.
-
 ## Archived settings [archived-settings]
 
 :::{include} _snippets/archived-settings-post.md

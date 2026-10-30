@@ -60,7 +60,7 @@ Elastic Consumption Unit (ECU)
 
     Each billing dimension has its own unit of measure. For example, capacity is measured in GB-hours, data transfer in GB, snapshot storage in GB-months, snapshot API requests in thousands of requests, and {{agent-builder}} and Workflows in executions.
 
-    In order to aggregate consumption across different billing dimensions, all usage is expressed in ECU. ECU has a fixed exchange rate to fiat currency of 1 ECU = $1.00.
+    To aggregate consumption across different billing dimensions, all usage is expressed in ECU. ECU has a fixed exchange rate to fiat currency of 1 ECU = $1.00.
 
     Check [Elastic Consumption Units](/deploy-manage/cloud-organization/billing/ecu.md) for more details.
 
