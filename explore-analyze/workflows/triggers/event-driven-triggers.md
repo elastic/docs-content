@@ -22,7 +22,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers**: Fire when an entity's asset criticality or risk score changes in the entity store.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
-- {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` **Rule execution triggers in {{alerting-v2-system}}**: Fire when a rule execution produces rule events or fails.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule execution triggers in {{alerting-v2-system}}**: Fire when a rule execution produces rule events or fails.
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -599,8 +599,8 @@ steps:
 ## {{alerting-v2-system-cap}} rule execution triggers [alerting-rule-execution-triggers-event-driven]
 
 ```{applies_to}
-stack: experimental 9.6+
-serverless: experimental
+serverless: preview
+stack: preview 9.6+
 ```
 
 :::{note}

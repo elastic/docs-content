@@ -34,8 +34,8 @@ Lifecycle triggers don't fire on [automatic status changes](alerts.md#alert-epis
 ### Rule execution triggers [rule-execution-triggers]
 
 ```{applies_to}
-stack: experimental 9.6+
-serverless: experimental
+serverless: preview
+stack: preview 9.6+
 ```
 
 Rule execution triggers react to a rule's own evaluation instead of to an alert. `alerting.ruleEventsGenerated` fires when an execution writes at least one rule event, and `alerting.ruleExecutionFailed` fires when an execution throws an error. Use them to process the rule events a single execution produced, or to find out that a rule stopped working.
@@ -56,7 +56,7 @@ You can use both at the same time. Each runs its own workflows without conflict.
 | **Frequency control** | Apply eligibility, scope, and frequency gates | Fire exactly once per event, no gates to configure |
 | **Best for** | Recurring notifications and escalation logic that runs as long as a problem persists | One-shot automations, such as opening a ticket when a user assigns an alert or posting a message when a user resolves it |
 
-{applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` Rule execution triggers aren't an alternative to action policies or lifecycle triggers, because they react to a rule's execution rather than to an alert. A rule can use them alongside an action policy or a lifecycle trigger.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Rule execution triggers aren't an alternative to action policies or lifecycle triggers, because they react to a rule's execution rather than to an alert. A rule can use them alongside an action policy or a lifecycle trigger.
 
 ## Related pages
 
