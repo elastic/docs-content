@@ -16,7 +16,7 @@ The [](/explore-analyze/ai-features/agent-builder/mcp-server.md) supports OAuth 
 
 OAuth is best for interactive, agentic use cases: instead of configuring a static, long-lived API key, a user connects an MCP host such as Claude Desktop and authorizes the connection in the browser. The connection then acts with that user's own permissions, using short-lived tokens that the user, a project administrator, or an organization owner can revoke at any time.
 
-Each OAuth client is scoped to one {{serverless-short}} project and one [{{kib}} space](/deploy-manage/manage-spaces.md). It works only with the MCP server URL shown in its details. For a new client, that's the URL of the space you create it in.
+Each OAuth client is scoped to one {{serverless-short}} project and one [{{kib}} space](/deploy-manage/manage-spaces.md). It works only with the MCP server URL shown in its details. For a new client, that URL is the MCP endpoint of the space you create the client in. In a custom space, the path includes the space ID, for example `/s/marketing/api/agent_builder/mcp`.
 
 Some older clients work only with the default space, even if they were created in a custom space. If you created a client in a custom space and its MCP server URL has no `/s/<space-id>` segment, it's one of these older clients. To use the custom space, create a new client in that space.
 

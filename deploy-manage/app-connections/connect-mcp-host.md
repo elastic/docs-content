@@ -29,7 +29,7 @@ Other OAuth 2.1 hosts follow the same general pattern, so consult your host's do
 Confirm the following before you configure your MCP host:
 
 - You have an MCP host that supports OAuth 2.1 with a pre-registered client ID. Hosts that rely solely on dynamic client registration are not supported.
-- You have the client ID and MCP server URL for the OAuth client, copied exactly as {{kib}} displays them. Each client works only with the URL of its {{kib}} space. You either [created the client](create-oauth-client.md) yourself or received these values from the person who did.
+- You have the client ID and MCP server URL for the OAuth client, copied exactly as {{kib}} displays them. Each client works only with that MCP server URL, which is the MCP endpoint of one {{kib}} space. You either [created the client](create-oauth-client.md) yourself or received these values from the person who did.
 - You have access to the {{serverless-short}} project that the OAuth client is scoped to, not just organization-level access. The connection acts with your own permissions in that project, so you also need the privileges required for the tools you'll run through the MCP server, such as {{agent-builder}} access and **Read** access to any data those tools query. To learn more, refer to [Permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 
 ## Connect your MCP host to an OAuth client [connect-mcp-host]

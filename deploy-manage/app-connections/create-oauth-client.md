@@ -45,7 +45,7 @@ Before you create an OAuth client:
 ::::
 
 ::::{step} Open the MCP client management page
-1. Find **Agents** in the navigation menu. You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Agents** in the navigation menu. You can also search for **Agents** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the secondary navigation, select **Tools**.
 3. In the **Tools** workspace, click **Manage all tools**.
 4. In the **Tools library** workspace, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**. 
@@ -102,7 +102,7 @@ Click **Create client**. The **Copy server details for [client name]** dialog di
 
 You'll use these values to [connect an MCP host](connect-mcp-host.md).
 
-You can find the client ID and MCP server URL at any time on the **MCP clients** page. The page lists the clients you created in the project, regardless of which space you open it from. Each client's MCP server URL shows the space it works with.
+You can find the client ID and MCP server URL at any time on the **MCP clients** page. The page lists the project's clients regardless of which space you open it from. Each client's MCP server URL shows the space it works with.
 ::::
 
 :::::
@@ -113,7 +113,7 @@ You can edit an active client's name, logo, and redirect URIs. You can't edit it
 
 To edit a client:
 
-1. Find **Agents** in the navigation menu. You can also search for **Agent Builder** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Agents** in the navigation menu. You can also search for **Agents** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the secondary navigation, select **Tools**.
 3. In the **Tools** workspace, click **Manage all tools**.
 4. In the **Tools library** workspace, click **Manage MCP**, and then select **Manage MCP clients (OAuth)**.
