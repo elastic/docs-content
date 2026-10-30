@@ -49,12 +49,12 @@ Related alerts from the same rule are grouped to help you answer whether this is
 
 A **Flapping** badge next to an alert's status means the alert keeps changing between `active` and `recovering` instead of holding or resolving. Select the badge to see why {{kib}} applied it.
 
-{{kib}} applies the badge when the alert changed between `active` and `recovering` at least 4 times in its last 20 rule events. Changes into or out of `pending` and `inactive` don't count. {{kib}} checks an alert only after it has 20 rule events, so a short-lived alert never shows the badge.
+{{kib}} applies the badge when the alert changed between `active` and `recovering` at least 4 times in its last 20 rule events. Changes into or out of `pending` and `inactive` don't count. {{kib}} checks an alert only after it has 20 rule events, so a short-lived alert never shows the badge. An `inactive` alert still shows the badge if its last 20 rule events meet this threshold.
 
 Flapping usually means that the alert condition sits too close to the metric's normal variation, or that the rule runs faster than the metric settles. To reduce flapping, add a [custom recovery condition](../rules/configure-rule-recovery.md) that requires the metric to move a safe margin back from the alert threshold. The alert then stays `active` until the recovery condition matches, instead of recovering as soon as the alert condition stops matching.
 
 :::{note}
-**Flapping** is a badge, not a lifecycle state. The alert remains `active` or `recovering`, action policies still match it on that status, and the badge neither suppresses nor delays notifications.
+**Flapping** is a badge, not a lifecycle state. The alert keeps its status, action policies still match it on that status, and the badge doesn't stop or delay notifications.
 :::
 
 ## Review who has responded [review-responders]
