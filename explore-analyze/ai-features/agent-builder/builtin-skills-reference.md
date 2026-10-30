@@ -436,12 +436,12 @@ $$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-polic
 
 ### Automatic Migration skills [agent-builder-automatic-migration-skills]
 ```{applies_to}
-stack: ga 9.6+
 serverless:
   security: ga
+stack: ga 9.6+
 ```
 
-These skills let the agent check on, run, and fix the rule migrations you create with [Automatic Migration](/solutions/security/get-started/automatic-migration.md). They have the same requirements as Automatic Migration and don't cover dashboard migrations. For the workflow, refer to [Manage rule migrations with {{agent-builder}}](/solutions/security/get-started/automatic-migration.md#siem-migration-agent-builder).
+These skills let the agent report on and run the rule migrations you create with [Automatic Migration](/solutions/security/get-started/automatic-migration.md), install their rules, and fix translated rules. They have the same requirements as Automatic Migration and don't cover dashboard migrations. For the workflow, refer to [Manage rule migrations with {{agent-builder}}](/solutions/security/get-started/automatic-migration.md#siem-migration-agent-builder).
 
 $$$agent-builder-automatic-migration-rules-summarize-skill$$$ `automatic-migration-rules-summarize` {applies_to}`stack: ga 9.6+`
 :   Reports on your rule migrations. Lists every migration with its source platform, status, and progress, or reports one migration's translation results and the macros, lookups, reference sets, or watchlists it's still missing. This is a read-only skill.
@@ -468,24 +468,24 @@ $$$agent-builder-automatic-migration-rules-stop-migration-skill$$$ `automatic-mi
     :::
 
 $$$agent-builder-automatic-migration-rules-update-translated-rule-skill$$$ `automatic-migration-rules-update-translated-rule` {applies_to}`stack: ga 9.6+`
-:   Fixes problems in translated rules that aren't installed yet, such as a wrong prebuilt rule match, integration, index pattern, or field names, or unresolved macro and lookup placeholders. It asks you to confirm each change and adds a note to the rule's **Summary** tab. For details, refer to [What the agent can fix](/solutions/security/get-started/automatic-migration.md#siem-migration-chat-fixes).
+:   Fixes problems in translated rules that aren't installed yet, such as a wrong prebuilt rule match, integration, index pattern, or field names, or unresolved macro and lookup placeholders. It asks you to confirm each change and adds a note to the rule's **Summary** tab. For details, refer to [Rule problems you can fix in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-chat-fixes).
 
     :::{dropdown} Assigned tools
     `security.siem_migration.get_migration_rules`, `security.siem_migration.update_translated_rule`, `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.get_missing_rule_migration_resources`, `platform.core.product_documentation`. To look up integrations, the skill also uses the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools).
 
     :::
 
-    **How to activate:** In addition to the [standard activation methods](skills.md#how-skills-are-invoked), this skill activates when you click **Add to chat** on the **Translated rules** page. Refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
+    **How to activate:** In addition to the [standard activation methods](skills.md#how-skills-are-invoked), this skill activates when you select **Add to chat** on the **Translated rules** page. Refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
 
 $$$agent-builder-automatic-migration-rules-install-rules-skill$$$ `automatic-migration-rules-install-rules` {applies_to}`stack: ga 9.6+`
-:   Installs translated rules from a migration, either every rule that's ready to install or the rules you name. Before it installs, the skill tells you how many rules it will install and asks whether to enable them. Rules stay disabled unless you choose to enable them. Afterward, it links to the installed rules, or to a sample of them when you install all rules.
+:   Installs translated rules from a migration, either every rule that's ready to install or the rules you name. Before it installs, the skill tells you how many rules it's about to install and asks whether to enable them. If you don't enable them, the rules stay disabled. Afterward, it links to the installed rules, or to a sample of them when you install all rules.
 
     :::{dropdown} Assigned tools
     `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.get_rule_migration_translation_stats`, `security.siem_migration.get_migration_rules`, `security.build_redirect_url`, `security.siem_migration.install_migration_rules`
 
     :::
 
-    **Prerequisites:** `All` privileges for the **Rules** feature.
+    **Prerequisites:** You need `All` privileges for the **Rules** feature.
 
 $$$agent-builder-automatic-migration-rules-update-migration-skill$$$ `automatic-migration-rules-update-migration` {applies_to}`stack: ga 9.6+`
 :   Renames a rule migration.

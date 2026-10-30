@@ -53,7 +53,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To use [{{agent-builder}}](#siem-migration-agent-builder):
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To use [{{agent-builder}}](#siem-migration-agent-builder):
 
   - At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for **Agent Builder**.
   - {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
@@ -165,7 +165,7 @@ The table's fields are as follows:
   * `Translated`: Ready to install. This rule was mapped to an Elastic-authored rule, or translated by Automatic Migration. Click **Install** to install it.
   * `Partially translated`: Part of the query could not be translated. You may need to specify an index pattern for the rule query, upload missing macros or lookups, or fix broken rule syntax. 
     ::::{note}
-    To fix partially translated rules that are missing an index pattern, use the **Update missing index pattern** button. This affects all migrated assets that contain the placeholder `[indexPattern]`, not just those currently visible on the table page.
+    To fix partially translated rules that are missing an index pattern, use the **Update missing index pattern** button. This affects all migrated assets that contain the placeholder `[indexPattern]`, not only those currently visible on the table page.
     ::::
   * `Not translated`: None of the original query could be translated.
   * `Failed`: Translation failed. Refer to the error for details.
@@ -205,7 +205,7 @@ You cannot edit Elastic-authored rules using this interface, but after they are 
 
 Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
 
 ::::{image} /solutions/images/security-siem-migration-edit-rule.png
 :alt: The rule details flyout
@@ -263,14 +263,14 @@ Once you're on the **Translated dashboards** page, to install any assets that we
 ## Manage rule migrations with {{agent-builder}} [siem-migration-agent-builder]
 
 ```{applies_to}
-stack: ga 9.6+
 serverless:
   security: ga
+stack: ga 9.6+
 ```
 
 Check on your rule migrations, start or stop them, install translated rules, and fix rules that need your input, all by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). The agent asks you to confirm before it changes a migration or a rule. For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration). To create a migration or upload rules, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
 
-### What the agent can fix [siem-migration-chat-fixes]
+### Rule problems you can fix in chat [siem-migration-chat-fixes]
 
 The agent can fix translated rules that aren't installed yet. To fix rules with a `Failed` or `Not translated` status, reprocess them instead. To change a rule after you install it, edit it from the **{{siem-rules-ui}}** page.
 
@@ -291,15 +291,15 @@ To send rules to the agent and fix them in chat:
 
 1. On the **Translated rules** page, open a chat in one of these ways:
 
-   * For one rule, click its name to open the rule details flyout, then click **Add to chat**.
-   * For several rules, select them in the table, then click **Add to chat**.
-   * For every rule in the migration, clear all selections, then click **Add to chat**.
+   * For one rule, select its name to open the rule details flyout, then select **Add to chat**.
+   * For several rules, select them in the table, then select **Add to chat**.
+   * For every rule in the migration, clear all selections, then select **Add to chat**.
 
    A new chat opens with the rules attached.
 
 2. Describe the problem. Include details the agent can't find on its own, such as the integration or index your data comes from.
 
-3. Review the proposed change, then confirm it. The rule's status changes to `Translated`, or to `Installed` if you matched it to a prebuilt rule that's already installed. A note that explains the change appears on the rule's **Summary** tab.
+3. Review the proposed change, then confirm it. The rule's status changes to `Translated`. If you matched it to a prebuilt rule that's already installed, the status changes to `Installed` instead. A note that explains the change appears on the rule's **Summary** tab.
 
 4. Install the rule from the **Translated rules** page, or ask the agent to install it. The agent asks whether to enable the rule.
 

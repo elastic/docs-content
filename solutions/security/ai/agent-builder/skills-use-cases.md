@@ -228,15 +228,15 @@ Those skills diagnose or refine configuration. They do not replace `attack-disco
 | What's the status of Attack Discovery run `<execution-id>`? | Report progress for that run without starting a new one. |
 | The skill proposed a detection rule for a gap. Create it. | Create the proposed rule only after you explicitly approve it in the chat. |
 
-## Automatic Migration [automatic-migration]
+## SIEM rule migration [automatic-migration]
 
 ```{applies_to}
-stack: ga 9.6+
 serverless:
   security: ga
+stack: ga 9.6+
 ```
 
-**Enable:** the [`automatic-migration-rules-*` skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills)
+**Enable:** The [`automatic-migration-rules-*` skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills)
 
 Use these skills to track and run your [Automatic Migration](/solutions/security/get-started/automatic-migration.md) rule migrations from chat, and to fix translated rules before you install them. To start from the rules you want to fix, refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
 
