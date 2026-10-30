@@ -110,7 +110,7 @@ The About section has the following information:
     ::::
 
 * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Threat mappings**: Shows the rule's MITRE ATT&CK® and MITRE ATLAS™ tactics and techniques, grouped by framework, when defined.
-* {applies_to}`stack: ga 9.0-9.5` **MITRE ATT&CK**: Shows the tactics and techniques mapped to the rule, when defined.
+* {applies_to}`stack: ga 9.0-9.5` {applies_to}`serverless: unavailable` **MITRE ATT&CK**: Shows the tactics and techniques mapped to the rule, when defined.
 * **Last alert status change**: Shows the last time the alert's status was changed, along with the user who changed it.
 
 ## Investigation [investigation-section]

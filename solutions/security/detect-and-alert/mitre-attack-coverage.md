@@ -26,7 +26,6 @@ Find **MITRE coverage** in the navigation menu or by using the [global search fi
 To view the **MITRE coverage** page, you need at least read access to detection rules. To enable rules from the coverage grid, you also need privileges to enable and disable rules. For details, refer to [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md#detections-privileges-manage-rules).
 
 ::::{note}
-:applies_to: stack: ga 9.0-9.5
 The **MITRE ATT&CK® coverage** page was renamed to **MITRE coverage** in version 9.6.0.
 ::::
 
