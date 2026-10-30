@@ -1,5 +1,7 @@
 ---
 navigation_title: Searches
+description: Diagnose and fix common Elasticsearch search problems including missing results, unexpected ordering, slow queries, and relevance issues.
+type: troubleshooting
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
   - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
@@ -196,7 +198,7 @@ GET /my-index-000001/_validate/query?rewrite=true
 }
 ```
 
-Use the [explain API]({{es-apis}}operation/operation-explain) to find out why a specific document matches or doesn’t match a query:
+Use the [explain API]({{es-apis}}operation/operation-explain) to find out why a specific document matches or doesn’t match a query. For deeper relevance debugging, refer to [Troubleshoot search relevance](troubleshooting-search-relevance.md).
 
 ```console
 GET /my-index-000001/_explain/0
@@ -251,3 +253,7 @@ xpack.security.audit.logfile.events.emit_request_body: true
 Refer to [Advanced tuning: finding and fixing slow Elasticsearch queries](https://www.elastic.co/blog/advanced-tuning-finding-and-fixing-slow-elasticsearch-queries) for more information.
 
 For {{esql}}-specific slow query diagnosis and prevention, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
+
+## Troubleshoot relevance quality [troubleshooting-relevance-quality]
+
+If your search returns results but they're in the wrong order, irrelevant, or missing expected matches, refer to [Troubleshoot search relevance](troubleshooting-search-relevance.md).
