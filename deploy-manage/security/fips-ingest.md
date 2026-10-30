@@ -10,25 +10,27 @@ applies_to:
 
 # FIPS mode for Ingest tools [fips-ingest]
 
-{{agent}}, {{fleet-server}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} FIPS binaries are built and configured to use FIPS 140 validated cryptography. FIPS mode for these tools was in technical preview in 9.1 and 9.2 and is generally available from 9.3. The FIPS standard and the platforms covered depend on the product and version:
+{{agent}}, {{fleet-server}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} FIPS binaries are built and configured to use FIPS 140 validated cryptography. The FIPS standard and the platforms covered depend on the product and {{stack}} version:
 
 | Ingest tool | FIPS 140-2 | FIPS 140-3 |
 |---|---|---|
 | {{agent}} and {{fleet-server}} | 9.1–9.5 on Linux | 9.6+ on Linux and Windows |
-| {{filebeat}} and {{metricbeat}} | 9.1–9.2, 9.3.0–9.3.7, and 9.4.0–9.4.3 on Linux | 9.3.8+, 9.4.4+, and 9.5+ on Linux<br><br>9.6+ on Linux and Windows |
+| {{filebeat}} and {{metricbeat}} | 9.1–9.5 on Linux | 9.6+ on Linux and Windows |
 | {{apm-server}} | 9.1–9.2, 9.3.0–9.3.7, and 9.4.0–9.4.3 on Linux | 9.3.8+, 9.4.4+, and 9.5+ on Linux |
 
-{{auditbeat}} FIPS binaries are also available and follow the same versions and platforms as {{filebeat}} and {{metricbeat}}. This page doesn't document {{auditbeat}}-specific limitations.
+FIPS 140-3 binaries use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library, which is validated under the Cryptographic Module Validation Program (CMVP). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
-All FIPS 140-3 binaries listed in the table use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library, which is validated under the Cryptographic Module Validation Program (CMVP). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
-
-{applies_to}`stack: ga 9.6+` {{agent}}, including the bundled {{fleet-server}}, is FIPS 140-3 compliant. In 9.6, they use Go Cryptographic Module v1.0.0 (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
+{applies_to}`stack: ga 9.6+` {{agent}}, including the bundled {{fleet-server}}, {{filebeat}}, and {{metricbeat}} are FIPS 140-3 compliant. The 9.6 binaries use module version v1.0.0 (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
-FIPS compatible binaries for {{agent}}, {{fleet-server}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are available for [download](https://www.elastic.co/downloads). Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download pages for {{agent}} (which includes {{fleet-server}}), {{filebeat}}, and {{metricbeat}}. Look for the `Linux x86_64 (FIPS)` or `Linux aarch64 (FIPS)` platform option on the {{apm-server}} download page.
+FIPS compatible binaries are available for [download](https://www.elastic.co/downloads) for the following platforms and products:
 
-{applies_to}`stack: ga 9.6+` FIPS binaries for Windows are also available for {{agent}}, {{filebeat}}, and {{metricbeat}}. Look for the Windows FIPS platform options on the product download pages. The {{agent}} Windows FIPS binary includes {{fleet-server}}, so you can use it to run {{fleet-server}} on Windows in FIPS mode.
+* **Linux**:
+  * **{{agent}} (which includes {{fleet-server}}), {{filebeat}}, and {{metricbeat}}**: Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download pages.
+  * **{{apm-server}}**: Look for the `Linux x86_64 (FIPS)` or `Linux aarch64 (FIPS)` platform option on the {{apm-server}} download page.
+* {applies_to}`stack: ga 9.6+` **Windows**:
+  * **{{agent}} (which includes {{fleet-server}}), {{filebeat}}, and {{metricbeat}}**: Look for the Windows FIPS platform options on the product download pages.
 
 :::{important}
 The default configurations provided in the binaries are FIPS compatible. Be sure to check and understand the implications of changing default configurations.
@@ -38,7 +40,7 @@ The default configurations provided in the binaries are FIPS compatible. Be sure
 
 ### TLS [ingest-limitations-tls]
 
-Only FIPS-approved TLS protocols, cipher suites, and curve types are allowed. For FIPS 140-3 binaries, these are the algorithms approved in the CMVP validation of the Go Cryptographic Module, such as [CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247). The certificate number changes when Go revalidates the module.
+Only FIPS-approved TLS protocols, cipher suites, and curve types are allowed. For FIPS 140-3 binaries, these are the algorithms approved in the CMVP validation of the Go Cryptographic Module, such as [CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247). The certificate number changes with each new validation of the module.
 * The supported TLS versions are `TLS v1.2` and `TLS v1.3`.
 * The supported cipher suites are:
   * `TLS v1.2`: `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, `ECDHE-ECDSA-AES-256-GCM-SHA384`
