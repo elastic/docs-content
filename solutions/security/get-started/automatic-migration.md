@@ -53,6 +53,11 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To use [{{agent-builder}}](#siem-migration-agent-builder):
+
+  - At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for **Agent Builder**.
+  - {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
+  - To install rules from chat, `All` privileges for **Rules**.
 :::
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
@@ -263,53 +268,40 @@ serverless:
   security: ga
 ```
 
-Check on, run, and fix your rule migrations by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). In chat, you can:
+Check on your rule migrations, start or stop them, install translated rules, and fix rules that need your input, all by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). The agent asks you to confirm before it changes a migration or a rule. For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration). To create a migration or upload rules, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
 
-* Check the status, progress, and translation results of your rule migrations, including the macros, lookups, reference sets, or watchlists that a migration is still missing.
-* Start translating a migration, resume a stopped one, or reprocess failed, partially translated, or selected rules.
-* Stop, rename, or delete a migration.
-* Install translated rules.
-* Fix translated rules that aren't installed yet.
+### What the agent can fix [siem-migration-chat-fixes]
 
-Chat covers rule migrations only. To create a migration or upload rules and resources, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
+The agent can fix translated rules that aren't installed yet. To fix rules with a `Failed` or `Not translated` status, reprocess them instead. To change a rule after you install it, edit it from the **{{siem-rules-ui}}** page.
 
-In addition to the Automatic Migration requirements, you need:
+| Problem | What the agent does |
+| --- | --- |
+| The rule matches the wrong prebuilt rule. | Compares up to five Elastic prebuilt rules that cover your source rule's logic, and recommends one. |
+| The rule uses the wrong integration, or its index pattern is wrong or missing. | Finds the Elastic integration that provides the rule's data, and rewrites the {{esql}} query to use that integration's index pattern and field names. |
+| The {{esql}} query uses the wrong field names. | Corrects the field names. |
+| The {{esql}} query has macro or lookup placeholders. | Removes the placeholders if you agree. The rule then no longer applies the logic they held, such as an exclusion list. To keep that logic, upload the missing macros or lookups and reprocess the rule instead. |
 
-* At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for the **Agent Builder** feature.
-* {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
-* To install rules, `All` privileges for the **Rules** feature.
-
-Before the agent changes a migration or a rule, it asks you to confirm. It asks every time, including for each rule it fixes, except when you start or stop a migration. For those, it asks only the first time in a conversation. For the skills and tools behind each task, refer to [Automatic Migration skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills). For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration).
+:::{note}
+If the rule matches a prebuilt rule, changing its integration or query makes it a custom rule. The rule takes the title and description of your source rule and no longer gets updates from Elastic.
+:::
 
 ### Fix translated rules in chat [siem-migration-fix-rules-in-chat]
 
-When a translation needs your input, send the rule to an {{agent-builder}} chat. For example, the rule matches the wrong Elastic prebuilt rule, queries the wrong index, or still has placeholders in its {{esql}} query.
+To send rules to the agent and fix them in chat:
 
-1. On the **Translated rules** page, do one of the following:
+1. On the **Translated rules** page, open a chat in one of these ways:
 
-   * To fix one rule, click its name to open the rule details flyout, then click **Add to chat**.
-   * To fix several rules, select them in the table, then click **Add to chat**.
-   * To work with every rule in the migration, clear all selections, then click **Add to chat**.
+   * For one rule, click its name to open the rule details flyout, then click **Add to chat**.
+   * For several rules, select them in the table, then click **Add to chat**.
+   * For every rule in the migration, clear all selections, then click **Add to chat**.
 
-   A new chat opens with the rules attached and a message that asks the agent for help.
+   A new chat opens with the rules attached.
 
-2. Tell the agent what's wrong. Include details it can't find on its own, such as the integration or index your data comes from. If you don't say what's wrong, the agent asks. The agent can:
+2. Describe the problem. Include details the agent can't find on its own, such as the integration or index your data comes from.
 
-   * Match the rule to a different prebuilt rule. The agent finds up to five Elastic prebuilt rules that cover your source rule's logic, compares how well each one fits, and recommends one.
-   * Fix the rule's integration or index pattern. The agent finds the Elastic integration that provides the rule's data, then rewrites the {{esql}} query to use that integration's index pattern and field names.
-   * Fix field names in the {{esql}} query.
-   * Remove macro or lookup placeholders from the {{esql}} query, if you agree. The rule then no longer applies the logic that the macro or lookup held, such as an index filter or an exclusion list. To keep that logic, upload the missing macros or lookups and reprocess the rule instead.
+3. Review the proposed change, then confirm it. The rule's status changes to `Translated`, or to `Installed` if you matched it to a prebuilt rule that's already installed. A note that explains the change appears on the rule's **Summary** tab.
 
-   If the rule matches a prebuilt rule, changing its integration or query replaces the match with a custom {{esql}} rule. The rule takes the title and description of your source rule, and it no longer gets updates from Elastic.
-
-3. Review the proposed change, then confirm it. The agent updates the rule, which changes its status to `Translated`. If you matched the rule to a prebuilt rule that's already installed, its status changes to `Installed` instead, and you can skip step 4. The agent also adds a note that explains the change to the **Summary** tab of the rule details flyout.
-
-4. Install the rule. On the **Translated rules** page, install and then enable it, as described under the table's **Actions**. Or ask the agent to install it, and it asks whether to enable the rule.
-
-You can't fix these rules in chat:
-
-* Installed rules. Edit them from the **{{siem-rules-ui}}** page instead.
-* Rules with a `Failed` or `Not translated` status. Reprocess them instead, from the **Translated rules** page or by asking the agent.
+4. Install the rule from the **Translated rules** page, or ask the agent to install it. The agent asks whether to enable the rule.
 
 ## Frequently asked questions (FAQ)
 
