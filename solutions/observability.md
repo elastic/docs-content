@@ -14,11 +14,23 @@ products:
   - id: observability
   - id: kibana
   - id: edot-collector
+sub:
+  search-load-sources: Alerting rules, SLOs, transforms, dashboards, Discover, ES|QL queries, and external clients that query the project
+  search-saturation-signals: failed or timed-out alerting rule runs
+  search-reduce-load: disable alerting rules you don't need, stagger rule schedules, and narrow time ranges on dashboards and in Discover
 ---
 
 # Elastic Observability solution overview
 
 :::{include} ../get-started/_snippets/observability-overview.md
+:::
+
+## Search performance [observability-search-performance]
+```{applies_to}
+serverless: ga
+```
+
+:::{include} /solutions/_snippets/serverless-search-performance.md
 :::
 
 ## Related reference [_reference_documentation]
