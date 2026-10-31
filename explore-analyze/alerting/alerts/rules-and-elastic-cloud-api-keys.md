@@ -16,6 +16,8 @@ In {{serverless-full}} projects, rules authenticate using [{{ecloud}} API keys](
 
 Use this page to understand how {{ecloud}} API keys work for {{serverless-short}} alerting rules and how role changes affect rule access. If your organization was part of Elastic's migration from {{es}} to {{ecloud}} API keys, it also includes a checklist to verify your rules are still running correctly.
 
+This page doesn't apply to rules in {{alerting-v2-system}}. Those rules get and replace their keys differently, and they don't get the **Missing Elastic Cloud API Key** tag. For details, refer to [How a rule's API key works by deployment](/explore-analyze/alerting/esql/manage/authorization.md#rule-api-key-type).
+
 ## About the {{ecloud}} API key migration [about-the-migration]
 
 Elastic migrated existing alerting rules in {{serverless-short}} projects from {{es}} API keys to {{ecloud}} API keys in a controlled, phased rollout. In-product notices were shown when your organization was affected.

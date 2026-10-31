@@ -48,14 +48,14 @@ Use **Disable** when you want the rule to stop running entirely until you re-ena
 
 ## Rotate a rule's API key [rotate-rule-api-key]
 
-Rotating a rule's API key replaces the key that the rule uses to query your data with a new key based on your credentials, without editing the rule. The current key comes from the user who last saved the rule and doesn't expire on its own, so the rule can keep running with access that user has since lost.
+Rotating a rule's API key replaces the key that the rule uses to query your data with a new key based on your credentials, without editing the rule. A rule gets its key from the user who creates or enables it. Editing the rule doesn't replace the key, and the key doesn't expire on its own, so the rule can keep running with access that user has since lost.
 
 Before you rotate a key, check two things:
 
-- **Your own access.** The new key carries your access, so the rule can reach only the data that you can reach. If your access is narrower than that of the user who last saved the rule, the rule can fail or miss data on its next run.
-- **The rule's state.** You can rotate the key only for an enabled rule. For a disabled rule, **Update API key** is unavailable until you enable the rule. If the rule is running when you confirm, {{kib}} skips it, so try again after the run finishes.
+- **Your own access.** The new key carries your access, so the rule can reach only the data that you can reach. If your access is narrower than the access of the rule's current key, the rule can fail or miss data on its next run.
+- **The rule's state.** You can rotate the key only for an enabled rule. For a disabled rule, **Update API key** is unavailable. Enabling the rule already gives it a new key based on your credentials, so you don't need to rotate it afterward.
 
-To rotate a key, select **Update API key**, then confirm. {{kib}} generates the new key, invalidates the previous one, and keeps the rule's schedule and enabled state. After the rotation, **Last updated by** on the rule details page shows your name.
+To rotate a key, select **Update API key**, then confirm. {{kib}} generates the new key, invalidates the previous one, and keeps the rule's schedule and enabled state. After the rotation, **Last updated by** on the rule details page shows your name. Editing a rule also updates **Last updated by** without replacing the key, so that field doesn't always show whose key the rule uses.
 
 You can select **Update API key** from any of these places:
 
