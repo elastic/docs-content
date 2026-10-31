@@ -32,8 +32,6 @@ The type of API key a rule uses, and what that key captures from the user, depen
 
 If you create or enable a rule through the {{kib}} API while authenticated with your own API key, {{kib}} creates a separate key for the rule instead of reusing yours.
 
-{{alerting-v2-system-cap}} rules don't get the **Missing Elastic Cloud API Key** tag, and the migration checklist in [Rules and {{ecloud}} API keys in {{serverless-short}}](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md) doesn't apply to them.
-
 ## How action policies authorize a workflow run [action-policy-workflow-keys]
 
 Authorizing a workflow run happens in three steps, and each step uses a different credential:
