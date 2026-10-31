@@ -28,7 +28,9 @@ serverless: unavailable
 
 ## Advanced setting [alertzero-requirements-setting]
 
-{{alertzero}} is off by default. You turn it on in each space with the {{alertzero}} advanced setting (`securitySolution:enableAlertZero`). For the steps, refer to [Turn on {{alertzero}} for a space](set-up-alertzero.md#alertzero-turn-on). For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
+{{alertzero}} is off by default. You turn it on in each space with the {{alertzero}} advanced setting (`securitySolution:enableAlertZero`). For the steps, refer to [Turn on {{alertzero}} for a space](set-up-alertzero.md#alertzero-turn-on). 
+
+% For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
 
 ## AI model [alertzero-requirements-ai-model]
 
