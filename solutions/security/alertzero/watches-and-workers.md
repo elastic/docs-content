@@ -40,7 +40,7 @@ The {{az-attack-discovery}} {{az-worker}} groups related alerts into candidate a
 
 - **What it does:** It opens one {{az-investigation}} for each candidate attack, or adds the attack to an open {{az-investigation}} for the same attack, then judges whether the attack is a false positive. For a false positive, it acknowledges the open alerts and closes the {{az-investigation}}. For an attack it confirms or can't rule out, it proposes a deep forensics investigation by the {{az-forensics-watch}}.
 - **What starts it:** A schedule. By default, it runs every 24 hours, and each run looks back over the time since the last one. You can't run it on demand.
-- **What it needs:** Detection alerts. To analyze the attacks it hands off, the {{az-endpoint-analysis}} {{az-worker}} must be on too. Refer to [{{az-worker}} dependencies](requirements.md).
+- **What it needs:** Detection alerts. To hand attacks off, {{context-engine}} must be on in the space (the `contextEngine:enabled` advanced setting), and to analyze them, the {{az-endpoint-analysis}} {{az-worker}} must be on too. Refer to [{{az-worker}} dependencies](requirements.md).
 - **Settings:** It has no settings of its own.
 - **{{az-autonomy-cap}}:** {{az-manual}} or {{az-supervised}}. At {{az-manual}}, every handoff to the {{az-forensics-watch}} waits for your approval. At {{az-supervised}}, it hands attacks off without waiting for you.
 - **Where its work appears:** The **Investigate** section of the **{{az-proposed-actions-cap}}** page. Refer to [](respond-to-attack.md).
