@@ -1,5 +1,5 @@
 ---
-description: "See resolved AlertZero proposed actions, including ones resolved without you."
+description: "Check what happened to AlertZero proposed actions that closed in the last 72 hours, including ones a Worker approved without a person."
 applies_to:
   stack: preview 9.6
   serverless:
@@ -9,6 +9,28 @@ products:
   - id: cloud-serverless
 ---
 
-# Review closed proposed actions
+# Review closed {{az-proposed-actions}} [alertzero-review-closed]
 
-See resolved proposed actions, including ones resolved without you.
+The **Closed Actions** section of the **{{az-proposed-actions-cap}}** page shows what happened to recent {{az-proposed-actions}}, including the ones that {{az-workers}} approved without a person and the ones that nobody decided in time. Check it to confirm that approved actions finished and to see who decided what.
+
+## Find recently closed {{az-proposed-actions}} [alertzero-review-closed-find]
+
+1. On the **{{az-proposed-actions-cap}}** page, expand **Closed Actions**. It starts collapsed.
+2. To see the details of one, select its card.
+
+**Closed Actions** lists the {{az-proposed-actions}} that closed in the last 72 hours, with the most recent decision first. The [entity filter](use-alertzero.md#alertzero-use-filter) applies to it too. When a failed action is retried, only the retry appears.
+
+After 72 hours, {{az-proposed-actions}} leave **Closed Actions**, but they stay with their {{az-investigation}}. To find one, open the {{az-investigation}}'s details and check **{{az-proposed-actions-cap}}**.
+
+## Read the outcome [alertzero-review-closed-outcomes]
+
+Each closed {{az-proposed-action}} shows its outcome:
+
+| Outcome | What happened |
+| --- | --- |
+| **Approved by** _name_ | That person approved it. |
+| **Declined by** _name_ | That person declined it. |
+| **Auto** | The {{az-worker}} approved it at {{az-supervised}} {{az-autonomy}}. Refer to [](configure-worker-settings.md). |
+| **Declined** | It was declined, but {{alertzero}} can't show who declined it. |
+| **Expired** | Nobody decided it in time. |
+| **Failed** | It was approved, but the action didn't finish. |
