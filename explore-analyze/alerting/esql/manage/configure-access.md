@@ -48,7 +48,7 @@ The **Rules** privilege controls who can create and manage rules.
 **Rules: All** also grants access to the **Alerts** menu in Discover, which routes rule creation to the {{alerting-v2-system}} rule form when the system is enabled in your space.
 :::
 
-### View rule execution history [alerting-execution-history-privileges]
+### View execution history [alerting-execution-history-privileges]
 
 The **Execution history** privilege controls who can view rule and action policy execution history, including the **Policy history** tab on an alert's details page. Because execution history is read-only, **All** and **Read** grant the same access.
 
