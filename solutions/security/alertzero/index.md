@@ -31,10 +31,20 @@ Each {{az-watch}} groups the {{az-workers}} for one area of work, such as triage
 
 | {{az-watch}} | {{az-workers}} | What it does |
 | --- | --- | --- |
-| [{{az-triage-watch}}](watches-and-workers.md#alertzero-triage-watch) | {{az-alert-triage}}, {{az-attack-discovery}} | Reviews incoming alerts. {{az-alert-triage}} classifies alerts as true or false positives and proposes closing the false positives. {{az-attack-discovery}} finds candidate attacks and opens one {{az-investigation}} per attack. |
-| [{{az-hunt-watch}}](watches-and-workers.md#alertzero-hunt-watch) | {{az-continuous-threat-hunt}} | Searches your data every 4 hours for activity that matches {{az-threat-reports}}, without waiting for an alert. |
-| [{{az-detection-watch}}](watches-and-workers.md#alertzero-detection-watch) | {{az-rule-tuning}}, {{az-rule-coverage}} | Improves your detection rules. {{az-rule-tuning}} diagnoses rules that are too noisy or that miss activity, and proposes tuning changes. {{az-rule-coverage}} proposes new or existing rules to close detection gaps that the {{az-hunt-watch}} finds. |
-| [{{az-forensics-watch}}](watches-and-workers.md#alertzero-forensics-watch) | {{az-endpoint-analysis}} | Investigates attacks on hosts. {{az-endpoint-analysis}} reconstructs the attack timeline on the affected hosts and proposes response actions, such as isolating a host. It runs only on attacks that {{az-attack-discovery}} hands off. |
+| [{{az-triage-watch}}](watches-and-workers.md) | {{az-alert-triage}}, {{az-attack-discovery}} | Reviews incoming alerts. {{az-alert-triage}} classifies alerts as true or false positives and proposes closing the false positives. {{az-attack-discovery}} finds candidate attacks and opens one {{az-investigation}} per attack. |
+| [{{az-hunt-watch}}](watches-and-workers.md) | {{az-continuous-threat-hunt}} | Searches your data every 4 hours for activity that matches {{az-threat-reports}}, without waiting for an alert. |
+| [{{az-detection-watch}}](watches-and-workers.md) | {{az-rule-tuning}}, {{az-rule-coverage}} | Improves your detection rules. {{az-rule-tuning}} diagnoses rules that are too noisy or that miss activity, and proposes tuning changes. {{az-rule-coverage}} proposes new or existing rules to close detection gaps that the {{az-hunt-watch}} finds. |
+| [{{az-forensics-watch}}](watches-and-workers.md) | {{az-endpoint-analysis}} | Investigates attacks on hosts. {{az-endpoint-analysis}} reconstructs the attack timeline on the affected hosts and proposes response actions, such as isolating a host. It runs only on attacks that {{az-attack-discovery}} hands off. |
+
+<!--
+Uncomment after elastic/docs-content#9118 merges. That PR adds a page for each Watch.
+Then use these links for the Watch names in the table above, in place of the watches-and-workers.md links:
+
+[{{az-triage-watch}}](watches/triage-watch.md)
+[{{az-hunt-watch}}](watches/hunt-watch.md)
+[{{az-detection-watch}}](watches/detection-watch.md)
+[{{az-forensics-watch}}](watches/forensics-watch.md)
+-->
 
 For the details of each {{az-worker}}, refer to [](watches-and-workers.md).
 
