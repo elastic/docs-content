@@ -47,15 +47,21 @@ Related alerts from the same rule are grouped to help you answer whether this is
 
 ## Spot a flapping alert [flapping]
 
-A **Flapping** badge next to an alert's status means the alert keeps changing between `active` and `recovering` instead of holding or resolving. Select the badge to see why {{kib}} applied it.
+A **Flapping** badge next to an alert's status means the alert keeps changing between `active` and `recovering` instead of staying active or closing. On a flapping alert, the current status doesn't tell you whether the problem is ongoing or fixed. Select the badge to see the threshold the alert met.
 
-{{kib}} applies the badge when the alert changed between `active` and `recovering` at least 4 times in its last 20 rule events. Changes into or out of `pending` and `inactive` don't count. {{kib}} checks an alert only after it has 20 rule events, so a short-lived alert never shows the badge. An `inactive` alert still shows the badge if its last 20 rule events meet this threshold.
+{{kib}} adds the badge when an alert changes between `active` and `recovering` at least 4 times in its last 20 rule events. These details affect which alerts show it:
 
-Flapping usually means that the alert condition sits too close to the metric's normal variation, or that the rule runs faster than the metric settles. To reduce flapping, add a [custom recovery condition](../rules/configure-rule-recovery.md) that requires the metric to move a safe margin back from the alert threshold. The alert then stays `active` until the recovery condition matches, instead of recovering as soon as the alert condition stops matching.
+- An alert with fewer than 20 rule events doesn't show the badge, even if it's already changing between `active` and `recovering`.
+- Changes into or out of `pending` and `inactive` don't count.
+- An `inactive` alert keeps the badge if its last 20 rule events meet the threshold.
 
-:::{note}
-**Flapping** is a badge, not a lifecycle state. The alert keeps its status, action policies still match it on that status, and the badge doesn't stop or delay notifications.
-:::
+When you triage a flapping alert:
+
+- **Don't treat `recovering` as a fix.** The alert has already returned to `active` from `recovering` more than once.
+- **Check how close the metric runs to the threshold.** If the alert shows a [trend chart](#assess-metric-behavior), use it to see whether the metric clearly breaches the threshold each time or hovers around it. A metric that hovers around the threshold usually points to a rule that needs tuning, not to a problem that keeps coming back.
+- **Notifications continue.** The badge isn't a lifecycle state. The alert keeps its status, and action policies keep matching it based on that status. To stop the alert's notifications while you investigate, [acknowledge it](triage-alert-episodes.md#track-review-status).
+
+To reduce flapping for a rule, refer to [When to change the recovery strategy](../rules/configure-rule-recovery.md#recovery-strategy-when-to-use).
 
 ## Review who has responded [review-responders]
 
