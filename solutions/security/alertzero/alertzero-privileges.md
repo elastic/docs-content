@@ -15,8 +15,8 @@ Use this page to give each person only the access their work needs, whether they
 
 Keep two rules in mind:
 
-- **Approving an action doesn't grant the privileges to run it.** An approved action runs as the person who approved it, so that person also needs the [privileges for the action](#alertzero-privileges-actions).
-- **Changing {{az-workers}} needs the `manage_security` cluster privilege.** This includes turning {{az-workers}} on or off and changing their {{az-autonomy}}. Refer to [](#alertzero-privileges-configure).
+- Approving an action doesn't grant the privileges to run it. An approved action runs as the person who approved it, so that person also needs the [privileges for the action](#alertzero-privileges-actions).
+- Changing {{az-workers}} needs the `manage_security` cluster privilege. This includes turning {{az-workers}} on or off and changing their {{az-autonomy}}. Refer to [](#alertzero-privileges-configure).
 
 ## Find the privileges in the role editor [alertzero-privileges-where]
 
