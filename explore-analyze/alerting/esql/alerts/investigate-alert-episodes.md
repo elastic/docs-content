@@ -55,6 +55,22 @@ Each alert tracks who performed the most recent response action of each type, so
 
 These rows only appear when the alert is in the corresponding state. System-generated actions display as **System**.
 
+## Check whether an alert's notifications went out [policy-history]
+
+To find out whether {{kib}} sent a notification for an alert, open the **Policy history** tab on the alert's details page. For each time an action policy handled the alert since it started, the tab shows whether the policy sent the notification (**Dispatched**), held it back because of its frequency setting (**Throttled**), or failed to send it (**Failed**).
+
+To narrow the list, filter by outcome or search it. To check which alerts a policy matches and where it sends notifications, select the policy's name.
+
+If a notification you expected isn't listed, no action policy tried to send it. This happens when:
+
+- No action policy matches the alert.
+- The alert is acknowledged, snoozed, or resolved.
+- A maintenance window covers the alert.
+
+An empty tab means no action policy has handled the alert yet, even though the empty message mentions the last 24 hours.
+
+To review notifications for every alert in the space, use the [action policy execution history](../action-policies/review-action-policy-execution-history.md).
+
 ## Inspect the underlying data [inspect-data]
 
 Each alert includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
