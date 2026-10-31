@@ -19,7 +19,7 @@ The type of operation determines which credential authorizes it.
 
 | Operation | How it's authorized |
 |---|---|
-| Rule runs | The rule runs with an API key from the user who created the rule, last enabled it, or last rotated its key. The key determines what data the rule can query, and editing the rule doesn't replace it. In {{serverless-short}}, the key is an {{ecloud}} API key. In {{stack}}, it's an {{es}} API key. To learn how each key type handles role changes, refer to [Which type of API key a rule uses](#rule-api-key-type). To replace the key with one based on your credentials, refer to [Rotate a rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key). |
+| Rule runs | The rule runs with an API key based on the credentials of the user who created the rule, last enabled it, or last rotated its key. The key determines what data the rule can query, and editing the rule doesn't replace it. In {{serverless-short}}, the key is an {{ecloud}} API key. In {{stack}}, it's an {{es}} API key. To learn how each key type handles role changes, refer to [Which type of API key a rule uses](#rule-api-key-type). To replace the key with one based on your credentials, refer to [Rotate a rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key). |
 | Action policy evaluates and dispatches | Uses different credentials at different phases. Refer to [How action policies authorize a workflow run](#action-policy-workflow-keys). |
 | Workflow steps run | The workflow runs with the action policy's API key, so its steps can do only what that key's privileges allow. |
 
