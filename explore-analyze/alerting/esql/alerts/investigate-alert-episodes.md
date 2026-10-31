@@ -57,15 +57,19 @@ These rows only appear when the alert is in the corresponding state. System-gene
 
 ## Check whether an alert's notifications went out [policy-history]
 
-To find out whether {{kib}} sent a notification for an alert, open the **Policy history** tab on the alert's details page. The tab lists each time an action policy handled this alert since the alert started, and whether the policy sent the notification, held it back, or failed to send it. Use the tab to investigate one alert, because you can't narrow the space-wide [execution history](../action-policies/review-action-policy-execution-history.md) to a single alert.
+To find out whether {{kib}} sent a notification for an alert, open the **Policy history** tab on the alert's details page. For each time an action policy handled the alert since it started, the tab shows whether the policy sent the notification (**Dispatched**), held it back because of its frequency setting (**Throttled**), or failed to send it (**Failed**).
 
-The tab appears only if your role has the [**Execution history** privilege](../manage/configure-access.md#alerting-execution-history-privileges).
+To narrow the list, filter by outcome or search it. To check which alerts a policy matches and where it sends notifications, select the policy's name.
 
-Each row covers one dispatcher run for one action policy. To focus on a problem, filter by outcome to show only **Dispatched**, **Throttled**, or **Failed** runs, or search the list. For what each outcome means, refer to [Dispatch outcomes](../action-policies/review-action-policy-execution-history.md#dispatch-outcomes).
+If a notification you expected isn't listed, no action policy tried to send it. This happens when:
 
-To review a policy's configuration, such as which alerts it matches and where it sends notifications, select the policy's name to open it in a flyout. The name is a link only if your role can read action policies.
+- No action policy matches the alert.
+- The alert is acknowledged, snoozed, or resolved.
+- A maintenance window covers the alert.
 
-The tab doesn't show runs where no action policy matched the alert, or where the dispatcher skipped the alert because it was acknowledged, snoozed, resolved, or in a maintenance window. If the tab is empty, its message says "No action policy execution activity in the last 24 hours", but the tab covers the alert's whole lifetime, not only the last 24 hours.
+An empty tab means no action policy has handled the alert yet, even though the empty message mentions the last 24 hours.
+
+To review notifications for every alert in the space, use the [action policy execution history](../action-policies/review-action-policy-execution-history.md).
 
 ## Inspect the underlying data [inspect-data]
 

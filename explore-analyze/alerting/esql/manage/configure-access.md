@@ -50,7 +50,7 @@ The **Rules** privilege controls who can create and manage rules.
 
 ### View rule execution history [alerting-execution-history-privileges]
 
-The **Execution history** privilege controls who can view rule execution history. Because execution history is read-only, **All** and **Read** grant the same access.
+The **Execution history** privilege controls who can view rule and action policy execution history, including the **Policy history** tab on an alert's details page. Because execution history is read-only, **All** and **Read** grant the same access.
 
 ## Triage alerts [alerting-triage-privileges]
 
