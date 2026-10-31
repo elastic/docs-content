@@ -15,7 +15,7 @@ Your work in {{alertzero}} starts on the **{{az-proposed-actions-cap}}** page. I
 
 To open the page, select **{{alertzero}}** in the navigation menu. If no {{az-worker}} is on and no {{az-investigation}} exists yet, {{alertzero}} shows the [setup steps](set-up-alertzero.md) instead.
 
-To view the page, you need the **{{alertzero}}** and **Proposed Actions** privileges set to **Read**. To open {{az-investigation}} details, you also need the **Agent Builder** privilege set to **Read**. Refer to [](alertzero-privileges.md).
+To view the page and open {{az-investigation}} details, you need the privileges to use {{alertzero}}. Refer to [](alertzero-privileges.md).
 
 ## Find what needs a decision [alertzero-use-sections]
 
@@ -31,7 +31,7 @@ If any {{az-worker}} runs failed in the past 24 hours, a callout lists the affec
 
 In the **Impact** filter, select the entity. Every section, including **Closed Actions**, then shows only the {{az-investigations}} that affect it. To clear the filter, select the entity again.
 
-If the message "Impacted entities are unavailable" appears, you need the **Agentic Investigations** privilege set to **Read**.
+If the message "Impacted entities are unavailable" appears, you don't have the privileges to see impacted entities. Refer to [](alertzero-privileges.md).
 
 ## Assign, close, or escalate {{az-investigations}} [alertzero-use-investigation]
 

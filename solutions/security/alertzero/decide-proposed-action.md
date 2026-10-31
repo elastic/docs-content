@@ -17,8 +17,7 @@ These steps are the same for every {{az-worker}}. For what to check on a specifi
 
 ## Before you begin [alertzero-decide-before]
 
-- You need the **{{alertzero}}** and **Agent Builder** privileges set to **Read**, and the **Proposed Actions** privilege set to **All**.
-- An approved action runs as you, so you also need the privileges for the action itself, such as **Alerts**: **All** to close alerts. Without them, the action fails. Refer to [](alertzero-privileges.md).
+- You need the privileges to decide {{az-proposed-actions}}, and the privileges to run each action you approve. Refer to [](alertzero-privileges.md).
 - Decisions are final. After someone approves or declines, nobody can change the decision.
 - By default, {{az-proposed-actions}} expire after 72 hours without a decision. After that, nobody can approve them.
 
@@ -47,7 +46,7 @@ If the action fails, {{alertzero}} can offer it again as a new {{az-proposed-act
 
 ## When {{az-workers}} decide for you [alertzero-decide-after]
 
-At {{az-supervised}} {{az-autonomy}}, {{az-workers}} approve their own {{az-proposed-actions}}, and the actions run as each {{az-worker}}'s service account instead of as you. To check those decisions afterward, refer to [](review-closed-proposed-actions.md). To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
+At {{az-supervised}} {{az-autonomy}}, {{az-workers}} approve their own {{az-proposed-actions}}. To check those decisions afterward, refer to [](review-closed-proposed-actions.md). To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
 
 ## {{az-proposed-action-cap}} statuses [alertzero-decide-statuses]
 

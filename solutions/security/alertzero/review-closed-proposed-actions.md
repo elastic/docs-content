@@ -15,7 +15,7 @@ Use the **Closed Actions** section of the **{{az-proposed-actions-cap}}** page t
 
 ## Before you begin [alertzero-review-closed-before]
 
-To view **Closed Actions**, you need the **{{alertzero}}** and **Proposed Actions** privileges set to **Read**. To open a card's details, you also need the **Agent Builder** privilege set to **Read**. Refer to [](alertzero-privileges.md).
+To view **Closed Actions** and open a card's details, you need the privileges to view the **{{az-proposed-actions-cap}}** page and its {{az-investigations}}. Refer to [](alertzero-privileges.md).
 
 ## Find recently closed {{az-proposed-actions}} [alertzero-review-closed-find]
 
