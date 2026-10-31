@@ -13,7 +13,7 @@ products:
 
 Each {{az-watch}} groups the {{az-workers}} for one area of work. Use this page to look up what each {{az-worker}} does, what starts it, what it needs, its settings, and where its work appears.
 
-On its {{az-watch}} page, every {{az-worker}} has three settings: The {{az-autonomy}} level, the **Trigger** that sets how often it runs, and the **Models** it uses from **Feature Settings**. Some {{az-workers}} have more settings, which their entries list. To change settings, refer to [](configure-worker-settings.md).
+On its {{az-watch}} page, every {{az-worker}} has its {{az-autonomy}} level and the **Models** it uses from **Feature Settings**. {{az-workers}} that run on a schedule also have a **Trigger** that sets how often they run. Some {{az-workers}} have more settings, which their entries list. To change settings, refer to [](configure-worker-settings.md).
 
 ## {{az-triage-watch}} [alertzero-triage-watch]
 
@@ -25,7 +25,7 @@ The {{az-alert-triage}} {{az-worker}} classifies detection alerts as true or fal
 
 - **What it does:** It analyzes open and acknowledged alerts in batches and tags each one as a true positive, false positive, or inconclusive, with a note explaining why. It proposes closing the alerts it's confident are false positives. Alerts with the same pattern share one {{az-investigation}} and one {{az-proposed-action}}.
 - **What starts it:** A schedule, every 15 minutes by default.
-- **What it needs:** Detection alerts, and Alert Analysis turned on in the space. Refer to [](/solutions/security/detect-and-alert/turn-on-detections.md).
+- **What it needs:** Detection alerts, and the [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) turned on in the space. It's off by default.
 - **Settings:**
   - **Minimum confidence score:** How confident it must be that an alert is a false positive before it proposes closing the alert. If its confidence is lower, it tags the alert inconclusive. Default 85%.
   - **Minimum severity:** The lowest alert severity it triages. Default **Low**, which triages every alert.
@@ -40,9 +40,9 @@ The {{az-attack-discovery}} {{az-worker}} groups related alerts into candidate a
 
 - **What it does:** It opens one {{az-investigation}} for each candidate attack, or adds the attack to an open {{az-investigation}} for the same attack, then judges whether the attack is a false positive. For a false positive, it acknowledges the open alerts and closes the {{az-investigation}}. For an attack it confirms or can't rule out, it proposes handing the attack to the {{az-forensics-watch}} for forensics.
 - **What starts it:** A schedule, every 24 hours by default. Each run picks up where the last one ended. You can't run it on demand.
-- **What it needs:** Detection alerts. To hand attacks off, {{context-engine}} must be on in the space (the `contextEngine:enabled` advanced setting). To get those attacks analyzed, turn on the {{az-endpoint-analysis}} {{az-worker}} too. Refer to [{{az-worker}} dependencies](requirements.md).
+- **What it needs:** Detection alerts, and Attack Discovery workflows (`securitySolution:enableAttackDiscoveryWorkflows`) turned on in the space. To hand attacks off, [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) must be on too (the `contextEngine:enabled` advanced setting). Both are off by default. To get those attacks analyzed, turn on the {{az-endpoint-analysis}} {{az-worker}} too. Refer to [{{az-worker}} dependencies](requirements.md).
 - **Settings:** None beyond the three that every {{az-worker}} has.
-- **{{az-autonomy-cap}}:** {{az-manual}} or {{az-supervised}}. At {{az-manual}}, every handoff to the {{az-forensics-watch}} waits for your approval. At {{az-supervised}}, it hands attacks off without waiting for you.
+- **{{az-autonomy-cap}}:** {{az-manual}} or {{az-supervised}}. At {{az-manual}}, every handoff to the {{az-forensics-watch}} waits for your approval. At {{az-supervised}}, it hands attacks off without waiting for you. At either level, it closes false positives without waiting for you.
 - **Where its work appears:** The **Investigate** section of the **{{az-proposed-actions-cap}}** page. Refer to [](respond-to-attack.md).
 - **Limits:** Each run retrieves up to 10,000 alerts for every 24 hours it covers.
 
@@ -71,7 +71,7 @@ The {{az-rule-coverage}} {{az-worker}} proposes rules to close the detection gap
 
 - **What it does:** It opens one {{az-investigation}} for each gap and checks whether a rule already covers it. Depending on what it finds, it proposes turning on an existing rule, installing a prebuilt rule, or creating a new {{esql}} rule with a backtest of how often the rule would have matched. If a rule already covers the gap, it asks you to confirm that instead.
 - **What starts it:** A schedule, every hour by default.
-- **What it needs:** The {{az-continuous-threat-hunt}} {{az-worker}}, which is the only source of the gaps it works on. Refer to [{{az-worker}} dependencies](requirements.md).
+- **What it needs:** The {{az-continuous-threat-hunt}} {{az-worker}}, which is the only source of the gaps it works on, and [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) turned on in the space (the `contextEngine:enabled` advanced setting). Refer to [{{az-worker}} dependencies](requirements.md).
 - **Settings:**
   - **Lookback (days):** How far back it looks for gaps. From 8 to 90, default 14.
   - **Max gaps per run:** The most gaps it works on in one run. From 1 to 50, default 5.
