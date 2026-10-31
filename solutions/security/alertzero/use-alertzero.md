@@ -15,7 +15,7 @@ Every decision in {{alertzero}} starts on the **{{az-proposed-actions-cap}}** pa
 
 To open it, select **{{alertzero}}** in the navigation menu. Once at least one {{az-worker}} is on or an {{az-investigation}} exists, {{alertzero}} opens on this page. Until then, it shows the setup steps in [](set-up-alertzero.md).
 
-To view the page, you need the **Proposed Actions** privilege set to **Read**. Refer to [](alertzero-privileges.md).
+To view the page, you need the **{{alertzero}}** and **Proposed Actions** privileges set to **Read**. Refer to [](alertzero-privileges.md).
 
 ## Find what needs a decision [alertzero-use-sections]
 

@@ -1,5 +1,5 @@
 ---
-description: "Check what happened to AlertZero proposed actions that closed in the last 72 hours, including ones a Worker approved without a person."
+description: "Audit AlertZero proposed actions that closed in the last 72 hours in Elastic Security, including Worker auto-approvals and expired actions, and read each outcome."
 applies_to:
   stack: preview 9.6
   serverless:
@@ -11,7 +11,9 @@ products:
 
 # Review closed {{az-proposed-actions}} [alertzero-review-closed]
 
-The **Closed Actions** section of the **{{az-proposed-actions-cap}}** page shows what happened to recent {{az-proposed-actions}}, including the ones that {{az-workers}} approved without a person and the ones that nobody decided in time. Check it to confirm that approved actions finished and to see who decided what.
+The **Closed Actions** section of the **{{az-proposed-actions-cap}}** page shows what happened to recent {{az-proposed-actions}}, including the ones that {{az-workers}} approved on their own and the ones that nobody decided in time. Check it to confirm that approved actions finished and to see who decided what.
+
+To view **Closed Actions**, you need the **{{alertzero}}** and **Proposed Actions** privileges set to **Read**. To open a card's details, you also need the **Agent Builder** privilege set to **Read**. Refer to [](alertzero-privileges.md).
 
 ## Find recently closed {{az-proposed-actions}} [alertzero-review-closed-find]
 
