@@ -48,6 +48,8 @@ When you approve {{az-proposed-actions}}, the actions run as you. Your role need
 | Isolate a host | **Security**: **All**, with the [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md#response-actions) **Host Isolation** and **Response Actions History** |
 | Kill or suspend a process | **Security**: **All**, with the [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md#response-actions) **Process Operations** and **Response Actions History** |
 
+When {{alertzero}} changes, creates, installs, or turns on a detection rule for you, the rule then runs with your privileges, as it does after any rule edit you make. Refer to [Rule authorization](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
+
 At {{az-supervised}} {{az-autonomy}}, {{az-workers}} approve their own {{az-proposed-actions}}, and the actions run as each {{az-worker}}'s [service account](#alertzero-privileges-service-accounts) instead.
 
 ## Privileges to set up and configure {{az-workers}} [alertzero-privileges-configure]
