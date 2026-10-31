@@ -50,4 +50,5 @@ Use **Disable** when you want the rule to stop running entirely until you re-ena
 
 - [Create a rule](create-a-rule.md): Compare rule creation paths and choose the one that fits your workflow.
 - [Review rule execution history](review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
+- [Review rule change history](review-rule-change-history.md): See who changed a rule and when, and compare its versions.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Triage and investigate the alerts a rule produces.
