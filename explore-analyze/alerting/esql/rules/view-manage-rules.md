@@ -50,6 +50,8 @@ Use **Disable** when you want the rule to stop running entirely until you re-ena
 
 Rotating a rule's API key replaces the key that the rule uses to query your data with a new key based on your credentials, without editing the rule. A rule gets its key from the user who creates or enables it. Editing the rule doesn't replace the key, and the key doesn't expire on its own, so the rule might keep running with access that user has since lost.
 
+In {{serverless-short}}, the new key is an {{ecloud}} API key. In {{stack}}, it's an {{es}} API key. To learn how each key type handles later role changes, refer to [Which type of API key a rule uses](../manage/authorization.md#rule-api-key-type).
+
 Before you rotate a key, make sure your own access covers the data the rule queries. The new key carries your access, so the rule can reach only the data that you can reach. If your access is narrower than the access of the rule's current key, the rule might fail or miss data on its next run.
 
 You can rotate the key only for an enabled rule. For a disabled rule, **Update API key** is unavailable. Enabling the rule already gives it a new key based on your credentials, so you don't need to rotate it afterward.

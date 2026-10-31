@@ -19,16 +19,20 @@ The type of operation determines which credential authorizes it.
 
 | Operation | How it's authorized |
 |---|---|
-| Rule runs | The rule's API key determines what data the rule can query. The key comes from the user who created the rule, last enabled it, or last rotated its key. Editing the rule doesn't replace the key. To replace it with a key based on your credentials, refer to [Rotate a rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key). For how the key type differs between deployments, refer to [How a rule's API key works by deployment](#rule-api-key-type). |
+| Rule runs | The rule runs on an {{ecloud}} API key in {{serverless-short}} or an {{es}} API key in {{stack}}. The key determines what data the rule can query. It comes from the user who created the rule, last enabled it, or last rotated its key. Editing the rule doesn't replace the key. For how each key type handles role changes, refer to [Which type of API key a rule uses](#rule-api-key-type). To replace the key with one based on your credentials, refer to [Rotate a rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key). |
 | Action policy evaluates and dispatches | Uses different credentials at different phases. Refer to [How action policies authorize a workflow run](#action-policy-workflow-keys). |
 | Workflow steps run | The workflow runs with the action policy's API key, so its steps can do only what that key's privileges allow. |
 
-## How a rule's API key works by deployment [rule-api-key-type]
+## Which type of API key a rule uses [rule-api-key-type]
 
-The type of API key a rule uses, and what that key captures from the user, depends on your deployment:
+In {{serverless-short}}, rules run on an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). In {{stack}}, rules run on an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md). The two key types capture different things from the user, so role changes affect them differently:
 
-- {applies_to}`serverless: ga` The rule uses an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that captures the user's role assignments when {{kib}} creates the key. If an administrator changes one of those roles, the change applies on the rule's next run. If an administrator deletes a custom role that the key relies on, the rule might fail. If an {{ecloud}} API key isn't available, the rule uses an {{es}} API key instead.
-- {applies_to}`stack: ga 9.6+` The rule uses an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of the user's privileges when {{kib}} creates the key. Later changes to that user's roles don't affect the key.
+| Deployment | API key type | What the key captures | When the user's roles change |
+|---|---|---|---|
+| {{serverless-short}} | {{ecloud}} API key | The user's role assignments when {{kib}} creates the key | If an administrator changes one of those roles, the change applies on the rule's next run. If an administrator deletes a custom role that the key relies on, the rule might fail. |
+| {{stack}} | {{es}} API key | A snapshot of the user's privileges when {{kib}} creates the key | Later changes to the user's roles don't affect the key. |
+
+In {{serverless-short}}, if an {{ecloud}} API key isn't available for a rule, the rule runs on an {{es}} API key instead.
 
 If you create or enable a rule through the {{kib}} API while authenticated with your own API key, {{kib}} creates a separate key for the rule instead of reusing yours.
 
