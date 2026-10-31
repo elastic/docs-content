@@ -24,7 +24,7 @@ Before you [set up {{alertzero}}](set-up-alertzero.md), check that your deployme
 serverless: unavailable
 ```
 
-{{alertzero}} works only in spaces that use the **Security** solution view. In any other view, including **Classic**, {{alertzero}} shows **{{alertzero}} is not available in this space**. To set a space's solution view, refer to [Create a space](/deploy-manage/manage-spaces.md#spaces-managing).
+{{alertzero}} works only in spaces that use the **Security** solution view. In any other view, including **Classic**, the message "{{alertzero}} is not available in this space" appears instead. To set a space's solution view, refer to [Create a space](/deploy-manage/manage-spaces.md#spaces-managing).
 
 ## Advanced setting [alertzero-requirements-setting]
 

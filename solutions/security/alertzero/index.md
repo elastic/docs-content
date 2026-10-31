@@ -21,7 +21,7 @@ Work moves from {{az-workers}} to you like this:
 
 1. Each {{az-worker}} runs in the background, either on a schedule or when another {{az-worker}} hands it work. When it finds a potential threat, it opens an {{az-investigation}}.
 2. The {{az-investigation}} collects the {{az-worker}}'s evidence, its conclusion, and any {{az-proposed-actions}}.
-3. You approve or decline each {{az-proposed-action}} on the [**{{az-proposed-actions-cap}}** page](use-alertzero.md). You can also assign, close, or [escalate](escalate-investigation.md) the {{az-investigation}}.
+3. You approve or decline each {{az-proposed-action}} on the **{{az-proposed-actions-cap}}** page. You can also assign, close, or [escalate](escalate-investigation.md) the {{az-investigation}}. Refer to [](use-alertzero.md).
 
 {{az-workers}} run as their own service accounts, but an action you approve runs as you, with your privileges. Refer to [](alertzero-privileges.md).
 
