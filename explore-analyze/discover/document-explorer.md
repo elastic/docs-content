@@ -17,8 +17,8 @@ description: Customize the Discover document table, chart, and sidebar. Adjust c
 Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
 :::
 
-:::{image} /explore-analyze/images/kibana-hello-field.png
-:alt: A view of the Discover app
+:::{image} /explore-analyze/images/kibana-discover-try-esql-from.png
+:alt: A view of the Discover app in ES|QL mode
 :screenshot:
 :::
 
@@ -120,7 +120,7 @@ Narrow your results to a subset of documents so you're comparing the data of int
    :::
 
 
-You can also compare individual field values using the [**Compare selected** option](discover-get-started.md#compare-documents-in-discover).
+You can also compare individual field values using the [**Compare selected** option](compare-documents.md).
 
 
 ### Set the number of results per page [document-explorer-configure-table]
@@ -155,7 +155,7 @@ Use **Display options** to change how each tree looks, and how many documents th
 * **Lines shown**: How much of the tree is open in each cell. The range is 10 to 200. The default is 50.
 * **Hide nulls**: When **On**, **Discover** omits null values from the tree. The default is **Off**.
 * **Wrap lines**: When **On**, long values wrap onto more lines. When **Off**, each value is truncated to one line. The default is **On**.
-* [**Sample size**](#document-explorer-sample-size): How many documents the table loads. To page through one document and the documents around it, use the [document flyout](discover-get-started.md#look-inside-a-document).
+* [**Sample size**](#document-explorer-sample-size): How many documents the table loads. To page through one document and the documents around it, use the [document flyout](inspect-documents.md#look-inside-a-document).
 
 You can't filter on values {{es}} ignored at index time, or on values inside a JSON string that **Discover** expanded in the tree. If a document is too large to render in full, **Discover** shows a warning and displays the first 10,000 values.
 

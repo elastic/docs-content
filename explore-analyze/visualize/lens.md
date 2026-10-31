@@ -532,7 +532,7 @@ Here’s a short list of few different aspects to check:
 ::::{dropdown} How do I sort by multiple columns?
 :name: can-i-sort-by-multiple-columns
 
-Multiple column sorting is unsupported, but is supported in **Discover**. For information on how to sort multiple columns in **Discover**, refer to [Explore the fields in your data](../discover/discover-get-started.md#explore-fields-in-your-data).
+Multiple column sorting is unsupported, but is supported in **Discover**. For information on how to sort multiple columns in **Discover**, refer to [Explore the fields in your data](../discover/explore-fields.md).
 
 ::::
 

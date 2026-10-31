@@ -27,7 +27,7 @@ When Discover has no remembered mode, it opens in:
 ## Before you begin
 
 - Open **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
-- Switching modes applies only to the selected [Discover tab](discover-get-started.md#run-multiple-explorations-with-tabs). To switch several tabs, repeat the operation for each tab.
+- Switching modes applies only to the selected [Discover tab](work-with-tabs.md). To switch several tabs, repeat the operation for each tab.
 
 ## Switch to Discover's {{esql}} mode [switch-discover-query-mode]
 
@@ -92,4 +92,4 @@ From the application menu, select **Switch to classic**.
 ## Related pages
 
 - [Use Discover with {{esql}}](use-esql.md)
-- [Explore fields and data with Discover](discover-get-started.md)
+- [Introduction to Discover](discover-get-started.md)

@@ -15,7 +15,7 @@ description: Learn how ES|QL commands change the results you see in Discover by 
 
 In this tutorial, you explore the {{kib}} sample web logs in **Discover** with Elasticsearch Query Language ({{esql}}). You build one query step by step and see how each command changes the results in the table and the chart.
 
-You don't need a [data view](discover-get-started.md#find-the-data-you-want-to-use), and you don't need {{esql}} experience. For the rest of Discover, refer to [Explore fields and data with Discover](discover-get-started.md). For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+You don't need a [data view](../find-and-organize/data-views.md), and you don't need {{esql}} experience. For the rest of Discover, refer to [Introduction to Discover](discover-get-started.md). For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 
 By the end of this tutorial, you'll know the main elements of your query and how they shape the results you see in **Discover**. You'll practice how to:
 
@@ -82,7 +82,7 @@ Command names aren't case-sensitive, so `from` and `FROM` are the same.
 :width: 90%
 :::
 
-The table isn't the end of your exploration. To look at one result in detail, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier versions) on its row. The flyout lists all its fields, and you can filter the results from any of its values. Refer to [Explore individual result or document details in depth](discover-get-started.md#look-inside-a-document).
+The table isn't the end of your exploration. To look at one result in detail, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier versions) on its row. The flyout lists all its fields, and you can filter the results from any of its values. Refer to [Explore individual result or document details in depth](inspect-documents.md#look-inside-a-document).
 
 ::::
 
@@ -231,7 +231,7 @@ A Discover session saves the query, not a copy of the results. When you open the
 
 **Result:** Discover saves the session. To reopen it later, select **Open session** in the application menu, then select the session.
 
-To share the session, refer to [Share your Discover session](discover-get-started.md#share-your-findings). To add the chart or the table to a dashboard, refer to [Keep the chart or the table](esql-results.md#_edit_the_esql_visualization).
+To share the session, refer to [Share your Discover session](copy-and-share-documents.md#share-your-findings). To add the chart or the table to a dashboard, refer to [Keep the chart or the table](esql-results.md#_edit_the_esql_visualization).
 
 ::::
 
@@ -249,5 +249,5 @@ To share the session, refer to [Share your Discover session](discover-get-starte
 ## Related pages
 
 - [Discover](../discover.md)
-- [Explore fields and data with Discover](discover-get-started.md)
+- [Introduction to Discover](discover-get-started.md)
 - [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md)
