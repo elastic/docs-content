@@ -22,17 +22,17 @@ To learn what starts each kind of change, refer to the [{{az-detection-watch}}](
 
 ## Decide a tuning change [alertzero-detection-change-tuning]
 
-The {{az-rule-tuning}} {{az-worker}} proposes one change for each noisy rule.
+The {{az-rule-tuning}} {{az-worker}} proposes one change for each noisy rule. At {{az-manual}} {{az-autonomy}}, the default, it first asks whether to analyze the rule, with a {{az-proposed-action}} named **Review rule for tuning**. Approve that one to get the tuning change.
 
 1. In the **Configure** section of the **{{az-proposed-actions-cap}}** page, select the rule's card. Its name starts with **Rule tuning:**.
 2. In the **{{az-proposed-actions-cap}}** section, select the change.
 3. Before you decide, check these sections:
     - **Why this rule was picked** explains why the rule qualified for tuning.
     - **Proposed change** shows the rule before and after the change.
-    - **Backtest** compares **Alerts with the current rule** with **Alerts with the proposed change**. Use it to check that the change drops the false positives without hiding real threats.
+    - When the change includes one, **Backtest** compares **Alerts with the current rule** with **Alerts with the proposed change**. Use it to check that the change drops the false positives without hiding real threats.
 4. Select **Approve** to change the rule, or **Decline** to keep it unchanged.
 
-When you approve, {{alertzero}} changes the rule in place or adds the exception. To undo the change later, edit the rule. Refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md). If someone edited the rule after {{az-rule-tuning}} proposed the change, the approval fails, so decline the change instead.
+When you approve, {{alertzero}} changes the rule in place or adds the exception. Because {{alertzero}} edits the rule as you, the rule then runs with your privileges, as it does after any edit you make. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md). To see or undo the change later, refer to [](/solutions/security/detect-and-alert/view-rule-changes-history.md). If someone edited the rule after {{az-rule-tuning}} proposed the change, the approval fails, so decline the change instead.
 
 When you decline, the rule doesn't change and the {{az-investigation}} closes.
 
@@ -40,7 +40,7 @@ To tune a rule by hand instead, refer to [](/solutions/security/detect-and-alert
 
 ## Decide a rule for a detection gap [alertzero-detection-change-coverage]
 
-The {{az-rule-coverage}} {{az-worker}} proposes a rule for each gap that the {{az-hunt-watch}} finds.
+The {{az-rule-coverage}} {{az-worker}} proposes a rule for each gap that the {{az-hunt-watch}} finds. At {{az-manual}} {{az-autonomy}}, it first asks whether to work on the gap, with a {{az-proposed-action}} named **Review detection gap**. Approve that one to get the proposed rule.
 
 1. In the **Configure** section of the **{{az-proposed-actions-cap}}** page, select the gap's card. Its name starts with **Detection coverage:**.
 2. In the **{{az-proposed-actions-cap}}** section, select the proposed rule.
@@ -55,7 +55,7 @@ What happens when you approve depends on the kind of {{az-proposed-action}}:
 | Turn on an existing rule | {{alertzero}} turns the rule on. |
 | Confirm rule coverage | Nothing runs. You confirm that an existing rule already covers the gap. |
 
-When you decline, no rule changes, and {{alertzero}} discards any draft rule.
+Rules that {{alertzero}} creates, installs, or turns on for you run with your privileges. When you decline, no rule changes, and {{alertzero}} discards any draft rule.
 
 To manage rules by hand, refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md) and [](/solutions/security/detect-and-alert/install-prebuilt-rules.md).
 

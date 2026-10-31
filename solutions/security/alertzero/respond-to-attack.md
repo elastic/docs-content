@@ -11,15 +11,15 @@ products:
 
 # Respond to an attack [alertzero-respond-to-attack]
 
-When the {{az-attack-discovery}} {{az-worker}} finds an attack it can't rule out, {{alertzero}} brings you the decisions that take it from verdict to containment. First, you decide whether the attack needs forensics. The {{az-endpoint-analysis}} {{az-worker}} then analyzes the affected host and proposes response actions, such as isolating the host, and you decide each one. Finally, you decide whether to close the {{az-investigation}}.
+When the {{az-attack-discovery}} {{az-worker}} finds an attack it can't rule out, {{alertzero}} brings you the decisions that take it from verdict to containment. First, you decide whether the attack needs forensics. The {{az-endpoint-analysis}} {{az-worker}} then analyzes the affected host and proposes response actions, such as isolating the host, and you decide each one. Finally, you decide whether to close the {{az-investigation}}. These steps describe {{az-manual}} {{az-autonomy}}, the default.
 
 ## Before you begin [alertzero-respond-before]
 
 - You need the **{{alertzero}}** and **Agent Builder** privileges set to **Read**, and the **Proposed Actions** privilege set to **All**.
-- Response actions run as you, so you also need the {{elastic-defend}} sub-feature privileges for each action: **Host Isolation** or **Process Operations**, plus **Response Actions History**. Without them, the action fails. Refer to [](alertzero-privileges.md).
+- Response actions run as you, so you also need the **Security** privilege set to **All**, with the {{elastic-defend}} sub-feature privileges for each action: **Host Isolation** or **Process Operations**, plus **Response Actions History**. Without them, the action fails. Refer to [](alertzero-privileges.md).
 - To close the {{az-investigation}} and its alerts, you need the **Alerts** privilege set to **All**.
-- The {{az-endpoint-analysis}} {{az-worker}} must be on, and the affected hosts must run {{elastic-defend}}. Refer to [](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
-- {{context-engine}} must be on in the space (the `contextEngine:enabled` advanced setting). Without it, handing an attack to forensics fails.
+- The {{az-endpoint-analysis}} {{az-worker}} must be on, and the host it analyzes must run {{elastic-defend}}. Refer to [](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
+- [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) must be on in the space (the `contextEngine:enabled` advanced setting). Without it, handing an attack to forensics fails.
 
 ## Check the verdict [alertzero-respond-verdict]
 
@@ -40,7 +40,7 @@ To read the verdict and its **Rationale**, select **Open in chat** on the {{az-i
     - To have the {{az-forensics-watch}} analyze the attack and propose response actions, select **Approve**. The {{az-investigation}} and the attack stay open for the forensics report. You can't undo this handoff.
     - To close the {{az-investigation}} and the attack instead, select **Decline**.
 
-Either way, the attack's detection alerts stay open. If nobody decides within 72 hours, the {{az-proposed-action}} expires and the {{az-investigation}} stays open.
+Either way, the attack's detection alerts stay open. By default, if nobody decides within 72 hours, the {{az-proposed-action}} expires and the {{az-investigation}} stays open.
 
 ## Review the forensics report [alertzero-respond-forensics]
 
@@ -63,9 +63,12 @@ If the host has no {{elastic-defend}} data from the time of the attack, {{az-end
 | Kill a process | No. |
 | Suspend a process | No. |
 
-To decide a response action, select it and check its title, which names the host or process. Then select **Approve** or **Decline**.
+To decide a response action:
 
-An approved action runs as you, through {{elastic-defend}}. If the host doesn't respond within 10 minutes, the action fails, and {{alertzero}} can offer it again as a new {{az-proposed-action}}.
+1. Select it, and check its title, which names the host or process.
+2. Select **Approve** or **Decline**.
+
+An approved action runs as you, through {{elastic-defend}}. If the host doesn't respond within 10 minutes, the {{az-proposed-action}} shows **Failed**, and {{alertzero}} can offer it again as a new {{az-proposed-action}}. The {{elastic-defend}} action can still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
 
 ## Close the {{az-investigation}} [alertzero-respond-close]
 
@@ -85,7 +88,7 @@ Both {{az-workers}} offer {{az-manual}} and {{az-supervised}} {{az-autonomy}}:
 | {{az-attack-discovery}} | Each handoff to forensics waits for you. | It hands off every attack it doesn't rule out, without asking. |
 | {{az-endpoint-analysis}} | Each response action waits for you. | It runs its response actions without asking, as its service account. |
 
-At either level, closing the {{az-investigation}} waits for you. To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
+At either level, the {{az-endpoint-analysis}} proposal to close the {{az-investigation}} waits for you. To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
 
 ## Related pages [alertzero-respond-related]
 
