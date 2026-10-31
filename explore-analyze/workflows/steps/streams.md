@@ -28,7 +28,7 @@ Streams action steps, along with the Streams feature itself, are in technical pr
 
 - [`kibana.streams.list`](#kibana-streams-list): Enumerate available streams.
 - [`kibana.streams.get`](#kibana-streams-get): Fetch a stream by name.
-- [`kibana.streams.getSignificantEvents`](#kibana-streams-getsignificantevents): Pull significant events from a stream.
+- {applies_to}`stack: removed 9.6+, preview 9.4-9.5` {applies_to}`serverless: removed` [`kibana.streams.getSignificantEvents`](#kibana-streams-getsignificantevents): Pull significant events from a stream.
 
 ---
 
@@ -57,6 +57,10 @@ Fetch a stream by name. The `name` is the human-readable stream identifier shown
 ```
 
 ## `kibana.streams.getSignificantEvents` [kibana-streams-getsignificantevents]
+```{applies_to}
+stack: removed 9.6+, preview 9.4-9.5
+serverless: removed
+```
 
 Fetch significant events from a stream in a specified time range, optionally filtered by a query.
 
