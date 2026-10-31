@@ -11,28 +11,32 @@ products:
 
 # Decide a {{az-proposed-action}} [alertzero-decide]
 
-{{alertzero}} {{az-workers}} recommend actions, such as closing false-positive alerts, isolating a host, or changing a detection rule. Each {{az-proposed-action}} waits for one decision: approve it to run the action, or decline it. These steps are the same for every {{az-worker}}. For what to check before you decide a specific kind of action, refer to [](decide-detection-change.md), [](respond-to-attack.md), and [](act-on-hunt-finding.md).
+{{alertzero}} {{az-workers}} recommend actions, such as closing false-positive alerts, isolating a host, or changing a detection rule. Each {{az-proposed-action}} waits for one decision. Approve it to run the action, or decline it. These steps are the same for every {{az-worker}}. For what to check before you decide a specific kind of action, refer to [](decide-detection-change.md), [](respond-to-attack.md), and [](act-on-hunt-finding.md).
 
 ## Before you begin [alertzero-decide-before]
 
-- To approve or decline, you need the **{{alertzero}}** privilege set to **Read** and the **Proposed Actions** privilege set to **All**.
+- You need the **{{alertzero}}** and **Agent Builder** privileges set to **Read**, and the **Proposed Actions** privilege set to **All**.
 - An approved action runs as you, so you also need the privileges for the action itself, such as **Alerts**: **All** to close alerts. Refer to [](alertzero-privileges.md).
-- To open {{az-investigation}} details, you need the **Agent Builder** privilege set to **Read**.
+- Decisions are final. After anyone decides a {{az-proposed-action}}, nobody can change the decision or decide it again.
+- By default, a {{az-proposed-action}} expires if nobody decides it within 72 hours. After that, nobody can approve it.
 
 ## Review the {{az-proposed-action}} [alertzero-decide-review]
 
-1. On the **{{az-proposed-actions-cap}}** page, select the card for the {{az-investigation}}. Its details open in a flyout.
-2. In the **{{az-proposed-actions-cap}}** section, select the {{az-proposed-action}} you want to review.
-3. Check what the action does before you decide. The {{az-worker}}'s description explains the action and why it proposes it. The {{az-proposed-action}} also shows:
+1. Select **{{alertzero}}** in the navigation menu to open the **{{az-proposed-actions-cap}}** page.
+2. Select the card for the {{az-investigation}}. Its details open in a flyout.
+3. In the **{{az-proposed-actions-cap}}** section, select the {{az-proposed-action}} you want to review.
+4. Check what the action does before you decide. The {{az-worker}}'s description explains the action and why the {{az-worker}} proposes it. The {{az-proposed-action}} also shows:
     - Whether the action is **Reversible** or **Irreversible**.
-    - How much impact it has.
+    - How much impact the action has.
     - When the {{az-proposed-action}} expires.
 
-## Approve it [alertzero-decide-approve]
+## Approve the {{az-proposed-action}} [alertzero-decide-approve]
 
-Select **Approve**. The action starts right away, and runs as you. It's **Applying** while it runs, then **Applied** when it finishes, or **Failed** if it doesn't.
+Select **Approve**. The action starts right away and runs as you. While the action runs, the {{az-proposed-action}} shows **Applying**. It then shows **Applied** when the action finishes, or **Failed** if the action doesn't finish.
 
-## Decline it [alertzero-decide-decline]
+If an approved action fails, {{alertzero}} can offer it again as a new {{az-proposed-action}} that keeps the original expiry. You decide the new one the same way.
+
+## Decline the {{az-proposed-action}} [alertzero-decide-decline]
 
 1. Select **Decline**.
 2. Optionally, select a reason. The default is **Decline without a reason**. The other reasons are:
@@ -43,11 +47,9 @@ Select **Approve**. The action starts right away, and runs as you. It's **Applyi
     - **Other**, which requires a description
 3. Select **Decline** again.
 
-## What happens after you decide [alertzero-decide-after]
+## When {{az-workers}} decide for you [alertzero-decide-after]
 
-- **Decisions are final.** After anyone decides, nobody can change the decision or decide the {{az-proposed-action}} again.
-- **Undecided {{az-proposed-actions}} expire.** If nobody decides within 72 hours, the {{az-proposed-action}} expires and can't be approved anymore.
-- **Some {{az-workers}} approve their own {{az-proposed-actions}}.** At {{az-supervised}} {{az-autonomy}}, {{az-workers}} approve their own {{az-proposed-actions}}, and the actions run as their service accounts. To review those decisions afterward, refer to [](review-closed-proposed-actions.md). To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
+At {{az-supervised}} {{az-autonomy}}, {{az-workers}} approve their own {{az-proposed-actions}}, so those actions run as each {{az-worker}}'s service account, not as you. To review those decisions afterward, refer to [](review-closed-proposed-actions.md). To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
 
 ## {{az-proposed-action-cap}} statuses [alertzero-decide-statuses]
 
