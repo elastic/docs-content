@@ -25,16 +25,49 @@ The type of operation determines which credential authorizes it.
 
 ## Which type of API key a rule uses [rule-api-key-type]
 
-In {{serverless-short}}, rules run on an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). In {{stack}}, rules run on an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md). The two key types capture different things from the user, so role changes affect them differently:
-
-| Deployment | API key type | What the key captures | When the user's roles change |
-|---|---|---|---|
-| {{serverless-short}} | {{ecloud}} API key | The user's role assignments when {{kib}} creates the key | If an administrator changes one of those roles, the change applies on the rule's next run. If an administrator deletes a custom role that the key relies on, the rule might fail. |
-| {{stack}} | {{es}} API key | A snapshot of the user's privileges when {{kib}} creates the key | Later changes to the user's roles don't affect the key. |
-
-In {{serverless-short}}, if an {{ecloud}} API key isn't available for a rule, the rule runs on an {{es}} API key instead.
+In {{serverless-short}}, rules run on an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). In {{stack}}, rules run on an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md). A rule's key owner is the user who created the rule, last enabled it, or last rotated its key. Each key type keeps a different record of the key owner's access, so the same role change affects rules differently in each deployment.
 
 If you create or enable a rule through the {{kib}} API while authenticated with your own API key, {{kib}} creates a separate key for the rule instead of reusing yours.
+
+### {{serverless-short}} projects [rule-api-key-serverless]
+
+```yaml {applies_to}
+serverless: ga
+```
+
+A rule's {{ecloud}} API key records which roles the key owner has when {{kib}} creates the key, but not what those roles allow. Each time the rule runs, it uses the current privileges of those roles.
+
+:::{note}
+If an {{ecloud}} API key isn't available for a rule, the rule runs on an {{es}} API key instead. That key works like the key in [{{stack}} deployments](#rule-api-key-stack), so later role changes don't affect the rule.
+:::
+
+The following table shows how common role changes affect the rule and what to do:
+
+| Change | Effect on the rule | What to do |
+|---|---|---|
+| An administrator edits one of the recorded roles | The rule uses the updated privileges on its next run. | You don't need to do anything. |
+| An administrator assigns the key owner a new role | The rule doesn't get the new role's privileges. | [Rotate the rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key) as a user who has the new role. |
+| An administrator deletes a custom role that the key recorded | The rule loses that role's privileges and might fail. | Rotate the rule's API key as a user who has the privileges the rule needs. |
+| The key owner leaves your organization | The rule keeps running with the recorded roles. | To stop the rule from using those roles, rotate the rule's API key as a different user. |
+
+For example, you create a rule while you have the `logs-reader` custom role, which can read `logs-*`. Later, you edit the rule's query to include `metrics-*`. If an administrator adds `metrics-*` to `logs-reader`, the rule can query `metrics-*` on its next run. If the administrator gives you a separate `metrics-reader` role instead, the rule can't query `metrics-*` until you rotate its API key.
+
+### {{stack}} deployments [rule-api-key-stack]
+
+```yaml {applies_to}
+stack: ga 9.6+
+```
+
+A rule's {{es}} API key records a snapshot of the key owner's privileges when {{kib}} creates the key. The snapshot doesn't change after that, so later role changes don't affect the rule.
+
+The following table shows how common role changes affect the rule and what to do:
+
+| Change | Effect on the rule | What to do |
+|---|---|---|
+| An administrator gives the key owner more privileges by editing a role or assigning a new one | The rule doesn't get the new privileges. | [Rotate the rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key) as a user who has them. |
+| An administrator takes privileges away from the key owner by editing a role, deleting a role, or removing a role assignment | The rule keeps running with the privileges in the snapshot. | To remove that access from the rule, rotate the rule's API key as a user who has only the access the rule needs. |
+
+For example, you create a rule while your role can read `logs-*`. Later, an administrator adds `metrics-*` to that role, and you edit the rule's query to include `metrics-*`. The rule still can't query `metrics-*`, because its key keeps the privileges you had when {{kib}} created the key. After you rotate the rule's API key, the rule can query both.
 
 ## How action policies authorize a workflow run [action-policy-workflow-keys]
 
