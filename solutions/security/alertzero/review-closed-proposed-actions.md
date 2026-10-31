@@ -1,9 +1,9 @@
 ---
 description: "Audit AlertZero proposed actions that closed in the last 72 hours in Elastic Security, including ones Workers approved on their own and ones that expired."
 applies_to:
-  stack: preview 9.6
   serverless:
     security: preview
+  stack: preview 9.6
 products:
   - id: security
   - id: cloud-serverless
@@ -11,34 +11,27 @@ products:
 
 # Review closed {{az-proposed-actions}} [alertzero-review-closed]
 
-The **Closed Actions** section of the **{{az-proposed-actions-cap}}** page shows what happened to recent {{az-proposed-actions}}, including the ones that {{az-workers}} approved on their own and the ones that nobody decided in time. Check it to confirm that approved actions finished and to see who decided what.
+Use the **Closed Actions** section of the **{{az-proposed-actions-cap}}** page to audit recent decisions. It shows who approved or declined each {{az-proposed-action}}, which ones {{az-workers}} approved on their own, which ones expired, and whether approved actions finished.
 
 ## Before you begin [alertzero-review-closed-before]
 
-- To view **Closed Actions**, you need the **{{alertzero}}** and **Proposed Actions** privileges set to **Read**.
-- To open a card's details, you also need the **Agent Builder** privilege set to **Read**.
-
-Refer to [](alertzero-privileges.md).
+To view **Closed Actions**, you need the **{{alertzero}}** and **Proposed Actions** privileges set to **Read**. To open a card's details, you also need the **Agent Builder** privilege set to **Read**. Refer to [](alertzero-privileges.md).
 
 ## Find recently closed {{az-proposed-actions}} [alertzero-review-closed-find]
 
-1. Select **{{alertzero}}** in the navigation menu to open the **{{az-proposed-actions-cap}}** page.
-2. Expand **Closed Actions**. It starts collapsed.
-3. To see the details of a closed {{az-proposed-action}}, select its card.
+1. In the navigation menu, select **{{alertzero}}**. The **{{az-proposed-actions-cap}}** page opens.
+2. Expand **Closed Actions**.
+3. To see a closed {{az-proposed-action}}'s details, select its card.
 
-**Closed Actions** lists the {{az-proposed-actions}} that closed in the last 72 hours, most recently closed first. The [**Impact** filter](use-alertzero.md#alertzero-use-filter) applies to it too. If an approved action failed and {{alertzero}} offered it again, only the latest attempt appears.
+**Closed Actions** lists the {{az-proposed-actions}} that closed in the last 72 hours, newest first. After that, they stay in their {{az-investigation}}'s details. If {{alertzero}} offered a failed action again, only the latest attempt appears. To show only one host, user, or service, use the [**Impact** filter](use-alertzero.md#alertzero-use-filter).
 
-After 72 hours, {{az-proposed-actions}} leave **Closed Actions**, but they stay in their {{az-investigation}}'s details.
-
-## Read the outcome [alertzero-review-closed-outcomes]
-
-Each closed {{az-proposed-action}} shows its outcome:
+## What each outcome means [alertzero-review-closed-outcomes]
 
 | Outcome | What happened |
 | --- | --- |
 | **Approved by** _name_ | That person approved it. |
 | **Declined by** _name_ | That person declined it. |
 | **Auto** | The {{az-worker}} approved it at {{az-supervised}} {{az-autonomy}}. Refer to [](configure-worker-settings.md). |
-| **Declined** | It was declined, but {{alertzero}} can't show who declined it. |
+| **Declined** | Someone declined it, but {{alertzero}} can't show who. |
 | **Expired** | Nobody decided it in time. |
-| **Failed** | It was approved, but the action didn't finish. |
+| **Failed** | The approved action didn't finish. |
