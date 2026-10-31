@@ -178,11 +178,12 @@ In the following example:
 
 ```yaml
 - name: create_ticket
-  type: jira
+  type: jira.pushToService
   connector-id: "my-jira-project"
   with:
-    projectKey: "PROJ"
-    summary: "New issue from workflow"
+    incident:
+      summary: "New issue from workflow"
+      issueType: "10001" # Issue type ID
   on-failure:
     retry:
       max-attempts: 2

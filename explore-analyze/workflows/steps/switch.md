@@ -69,18 +69,18 @@ The `switch` step evaluates an expression once and compares its value against ea
     - match: "lateral_movement"
       steps:
         - name: escalate
-          type: pagerduty.triggerIncident
+          type: pagerduty
           connector-id: "platform-pagerduty"
           with:
+            eventAction: "trigger"
             severity: "critical"
             summary: "Lateral movement detected: {{ event.alerts[0].host.name }}"
   default:
     - name: route_to_analyst
-      type: slack.postMessage
-      connector-id: "platform-slack"
+      type: slack
+      connector-id: "soc-triage-slack"
       with:
-        channel: "#soc-triage"
-        text: "Alert needs manual review: {{ event.alerts[0]._id }}"
+        message: "Alert needs manual review: {{ event.alerts[0]._id }}"
 ```
 
 ## When to use `switch` versus `if`

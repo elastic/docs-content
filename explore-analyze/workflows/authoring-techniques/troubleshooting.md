@@ -85,7 +85,7 @@ Refer to [`while`](/explore-analyze/workflows/steps/while.md).
 
 **Cause.** The `cases` block is an array of objects, not a map.
 
-**Resolution.** Structure `cases` as an array where each entry has `case:` and `steps:`:
+**Resolution.** Structure `cases` as an array where each entry has `match:` and `steps:`:
 
 ```yaml
 # Wrong
@@ -97,9 +97,9 @@ cases:
 
 # Right
 cases:
-  - case: foo
+  - match: foo
     steps: [ { ... } ]
-  - case: bar
+  - match: bar
     steps: [ { ... } ]
 ```
 
