@@ -121,68 +121,12 @@ You can later filter the data that shows in the chart and in the table by specif
 
 ### Add a field to your {{data-source}} [add-field-in-discover]
 
-What happens if you forgot to define an important value as a separate field? Or, what if you want to combine two fields and treat them as one? This is where [runtime fields](../../manage-data/data-store/mapping/runtime-fields.md) come into play. You can add a runtime field to your {{data-source}} from inside of **Discover**, and then use that field for analysis and visualizations the same way you do with other fields.
-
-1. In the sidebar, select **Add a field**.
-2. Select the **Type** of the new field.
-3. **Name** the field. Name it in a way that corresponds to the way other fields of the data view are named. You can set a custom label and description for the field to make it more recognizable in your data view.
-4. Define the value that you want the field to show. By default, the field value is retrieved from the source data if it already contains a field with the same name. You can customize this with the following options:
-   - **Set value**: Define a script that will determine the value to show for the field. For more information on adding fields and Painless scripting language examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
-   - **Set format**: Set your preferred format for displaying the value. Changing the format can affect the value and prevent highlighting in Discover.
-
-5. In the advanced settings, you can adjust the field popularity to make it appear higher or lower in the fields list. By default, Discover orders popular fields from most selected to least selected.
-6. **Save** your new field.
-
-You can now find it in the list of fields and add it to the table.
-
-In the following example, we’re adding 2 fields: A simple "Hello world" field, and a second field that combines and transforms the `customer_first_name` and `customer_last_name` fields of the sample data into a single "customer" field:
-
-**Hello world field example**:
-
-* **Name**: `hello`
-* **Type**: `Keyword`
-* **Set value**: enabled
-* **Script**:
-
-    ```ts
-    emit("Hello World!");
-    ```
-
-
-**Customer field example**:
-
-* **Name**: `customer`
-* **Type**: `Keyword`
-* **Set value**: enabled
-* **Script**:
-
-    ```ts
-    String str = doc['customer_first_name.keyword'].value;
-    char ch1 = str.charAt(0);
-    emit(doc['customer_last_name.keyword'].value + ", " + ch1);
-    ```
-
+In classic mode, you can add a runtime field to a data view from **Discover**, and then use that field for analysis and visualizations the same way you use other fields. Refer to [Add a runtime field to a data view from Discover](add-fields-to-data-views.md).
 
 
 ### Visualize aggregated fields [_visualize_aggregated_fields]
 
-If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
-
-1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
-
-   ![Top values for the day_of_week field](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
-
-2. In the popup, click **Visualize**.
-   {{kib}} creates a **Lens** visualization best suited for this field.
-
-3. In **Lens**, from the **Available fields** list, drag and drop more fields to refine the visualization. In this example, we’re adding the `manufacturer.keyword` field onto the workspace, which automatically adds a breakdown of the top values to the visualization.
-   ![Visualization that opens from Discover based on your data](/explore-analyze/images/kibana-discover-from-visualize.png "")
-
-4. Save the visualization if you’d like to add it to a dashboard or keep it in the Visualize library for later use.
-
-For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geoip-icon.png "kibana-geoip-icon =4%x4%")), if you click **Visualize**, your data appears in a map.
-
-![Map containing documents](/explore-analyze/images/kibana-discover-maps.png "")
+In classic mode, you can open an aggregatable field in **Lens** from the fields list. Refer to [Visualize a field from Discover](visualize-field.md).
 
 
 ### Find and highlight values in the table [in-table-search]
@@ -256,8 +200,7 @@ Dive into an individual document to view its fields and the documents that occur
    You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
-3. To navigate to a view of the document that you can bookmark and share, select **View single document**. This action isn't available in {{esql}} mode.
-4. To view documents that occurred before or after the event you are looking at, select **View surrounding documents**. This action isn't available in {{esql}} mode.
+3. In classic mode, you can also open the document on a page of its own, or view the documents that occurred before and after it. Refer to [View a single document or the documents around it](view-single-document.md). These actions aren't available in {{esql}} mode.
 
 ::::{tip}
 :applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
@@ -271,46 +214,9 @@ To copy a link that reopens this document, select {icon}`link` **Copy link** in 
 
 ### Search and filter using KQL in classic mode [_default_mode_search_and_filter_using_kql]
 
-One of the unique capabilities of **Discover** is the ability to combine free text search with filtering based on structured data. To search all fields, enter a simple string in the query bar.
-
-![Search field in Discover](/explore-analyze/images/kibana-discover-search-field.png "")
-
-:::{note}
-Free text searches that don't specify a field may not return expected results depending on how the [`index.query.default_field` index setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-query-default-field) is configured for the indices matching the current data view.
-:::
-
-To search particular fields and build more complex queries, use the [Kibana Query language](../query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query.
-
-For example, search the ecommerce sample data for documents where the country matches US:
-
-1. Enter `g`, and then select **geoip.country_iso_code**.
-2. Select **:** for equals, and **US** for the value, and then click the refresh button or press the Enter key.
-3. For a more complex search, try:
-
-    ```ts
-    geoip.country_iso_code : US and products.taxless_price >= 75
-    ```
-
+In classic mode, you search with KQL or Lucene in the query bar and narrow results with filters. Refer to [Search and filter with KQL, Lucene, and filters](search-and-filter-classic.md).
 
 $$$filter-in-discover$$$
-With the query input, you can filter data using the KQL or Lucene languages. You can also use the **Add filter** function available next to the query input to build your filters one by one or define them as Query DSL.
-
-For example, exclude results from the ecommerce sample data view where day of week is not Wednesday:
-
-1. Click ![Add icon](/explore-analyze/images/kibana-add-icon.png "") next to the query bar.
-2. In the **Add filter** pop-up, set the field to **day_of_week**, the operator to **is not**, and the value to **Wednesday**.
-
-    ![Add filter dialog in Discover](/explore-analyze/images/kibana-discover-add-filter.png "")
-
-3. Click **Add filter**.
-4. Continue your exploration by adding more filters.
-5. To remove a filter, click the close icon (x) next to its name in the filter bar.
-
-#### Filter pill actions
-
-:::{include} ../_snippets/global-filters.md
-:::
-
 
 ### Search and filter using ES|QL [_search_and_filter_using_esql]
 
@@ -425,7 +331,7 @@ You can share the current view, show the results on a dashboard, export the sess
 - To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Some limits apply. Refer to [](save-open-search.md#export-discover-session-csv) for details.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
 
-In classic mode, select {icon}`maximize` **View details** on a row, then select **View single document** to open a bookmarkable page for that document. That action isn't available in {{esql}} mode. Refer to [Explore individual result or document details](#look-inside-a-document).
+In classic mode, you can also open a document on a bookmarkable page of its own. Refer to [View a single document or the documents around it](view-single-document.md).
 
 #### Share a link to a document [share-a-document-link]
 ```{applies_to}
