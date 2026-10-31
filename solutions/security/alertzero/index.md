@@ -48,6 +48,22 @@ Then use these links for the Watch names in the table above, in place of the wat
 
 For the details of each {{az-worker}}, refer to [](watches-and-workers.md).
 
+## How {{az-watches}} pass work to each other [alertzero-context-engine]
+
+Some {{az-workers}} pick up work that a {{az-worker}} in another {{az-watch}} started. They pass that work through [{{context-engine}}](/explore-analyze/ai-features/context-engine.md), which stores information that AI features share. You don't work in {{context-engine}} directly, but it must be on in each space where these {{az-workers}} run:
+
+- **Detection gaps:** The {{az-hunt-watch}} records each detection gap it finds. The {{az-rule-coverage}} {{az-worker}} picks up each gap and proposes a rule for it.
+- **Forensics handoffs:** When the {{az-attack-discovery}} {{az-worker}} hands an attack to the {{az-forensics-watch}}, it records the handoff. The {{az-endpoint-analysis}} {{az-worker}} picks up the handoff and investigates the affected hosts.
+
+If {{context-engine}} is off, these {{az-workers}} can't pass work to each other, and their {{az-watch}} page shows **Worker setup needs attention**. To turn it on, select **Enable {{context-engine}}**. Refer to [](requirements.md#alertzero-requirements-worker-settings).
+
+### Indexes that {{alertzero}} adds [alertzero-context-engine-indexes]
+
+{{alertzero}} keeps this shared work in two indexes, which you might notice in **Index Management**. {{alertzero}} creates and manages them, so you don't need to set them up.
+
+- `ai-index-idx-security-investigations`: The detection gaps and forensics handoffs that {{az-workers}} pass to each other.
+- `ai-index-idx-security-attack-fingerprints`: Lets the {{az-attack-discovery}} {{az-worker}} recognize an attack it already reported, so it adds the attack to the open {{az-investigation}} instead of opening a new one.
+
 ## How much {{az-workers}} do on their own [alertzero-overview-autonomy]
 
 The {{az-autonomy}} level of each {{az-worker}} sets how far it goes before it waits for a person. The three levels are {{az-manual}}, {{az-assisted}}, and {{az-supervised}}. Each {{az-worker}} offers at most two of them and starts at {{az-manual}}, where every {{az-proposed-action}} waits for your approval. Only at {{az-supervised}} do {{az-workers}} approve their own {{az-proposed-actions}}.

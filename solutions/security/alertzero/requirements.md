@@ -52,7 +52,7 @@ Some {{az-workers}} need settings that are off by default. Turn them on in each 
 | {{az-attack-discovery}} | Attack Discovery workflows (`securitySolution:enableAttackDiscoveryWorkflows`) and [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) (`contextEngine:enabled`) |
 | {{az-continuous-threat-hunt}}, {{az-rule-coverage}}, and {{az-endpoint-analysis}} | [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) (`contextEngine:enabled`) |
 
-If a setting that a {{az-worker}} needs is off, the {{az-worker}}'s {{az-watch}} page shows a warning.
+If a setting that a {{az-worker}} needs is off, the {{az-worker}}'s {{az-watch}} page shows a warning. To learn why some {{az-workers}} need {{context-engine}}, refer to [](index.md#alertzero-context-engine).
 
 ## Data and detections [alertzero-requirements-data]
 
