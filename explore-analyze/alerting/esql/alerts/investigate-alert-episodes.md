@@ -45,6 +45,16 @@ Related alerts from the same rule are grouped to help you answer whether this is
 - **Same alert group** - Alerts for this rule that share the same group as the current alert (same `group_hash`). A long list here suggests the underlying condition isn't being fully resolved between alerts.
 - **Other groups for this rule** - Alerts from the same rule firing on different entities (different `group_hash`). Use this to gauge how broadly the rule is triggering across your environment.
 
+## Spot a flapping alert [flapping]
+
+A **Flapping** badge next to an alert's status warns you not to rely on that status. The alert keeps changing between `active` and `recovering` instead of staying active or closing, so its status doesn't tell you whether the problem is ongoing or fixed. Select the badge to see why {{kib}} added it. To decide how to respond, refer to [Triage a flapping alert](triage-alert-episodes.md#triage-flapping).
+
+{{kib}} adds the badge when an alert changes between `active` and `recovering` at least 4 times in its last 20 rule events. These details affect which alerts show it:
+
+- An alert with fewer than 20 rule events doesn't show the badge, even if it's already changing between `active` and `recovering`.
+- Changes into or out of `pending` and `inactive` don't count.
+- If an `inactive` alert's last 20 rule events include at least 4 of these changes, the alert keeps the badge.
+
 ## Review who has responded [review-responders]
 
 Each alert tracks who performed the most recent response action of each type, so you can avoid duplicating work or missing a step someone else already handled:
