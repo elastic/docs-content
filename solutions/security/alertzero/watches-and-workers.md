@@ -1,5 +1,5 @@
 ---
-description: "Find the AlertZero Watches and Workers in Elastic Security, the settings every Worker has, and how the Workers compare."
+description: "Find the AlertZero Watches and Workers in Elastic Security, the settings every Worker has, how the Workers compare, and how Watches pass work to each other."
 applies_to:
   serverless:
     security: preview
@@ -34,3 +34,16 @@ The following table lists each {{az-worker}}'s default schedule, the {{az-autono
 | [{{az-rule-coverage}}](watches/rule-coverage-worker.md) | {{az-detection-watch}} | Every hour | {{az-manual}}, {{az-assisted}} | **Configure** |
 
 % Add rows for the Hunt Watch and Forensics Watch Workers when their pages are written.
+
+## How {{az-watches}} pass work to each other [alertzero-context-engine]
+
+Some {{az-workers}} pick up work that a {{az-worker}} in another {{az-watch}} started. They pass it through [{{context-engine}}](/explore-analyze/ai-features/context-engine.md), which stores information that AI features share:
+
+- **Detection gaps:** The {{az-hunt-watch}} records each detection gap it finds. The [{{az-rule-coverage}} {{az-worker}}](watches/rule-coverage-worker.md) picks up each gap and proposes a rule for it.
+- **Forensics handoffs:** When the [{{az-attack-discovery}} {{az-worker}}](watches/attack-discovery-worker.md) hands an attack to the {{az-forensics-watch}}, it records the handoff. The [{{az-endpoint-analysis}} {{az-worker}}](watches/endpoint-analysis-worker.md) picks up the handoff and investigates the affected hosts.
+
+You don't work in {{context-engine}} directly, but it must be on in each space where these {{az-workers}} run. If it's off, they can't pass work to each other, and their {{az-watch}} page shows **Worker setup needs attention**. Refer to [](requirements.md).
+
+{{alertzero}} keeps this shared work in an index that you might notice in **Index Management**. Refer to [](manage-alertzero.md).
+
+% After elastic/docs-content#9114 merges, link the two "Refer to" links above to requirements.md#alertzero-requirements-worker-settings and manage-alertzero.md#alertzero-indexes.
