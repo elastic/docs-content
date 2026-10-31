@@ -15,9 +15,7 @@ When the {{az-attack-discovery}} {{az-worker}} finds an attack it can't rule out
 
 ## Before you begin [alertzero-respond-before]
 
-- You need the **{{alertzero}}** and **Agent Builder** privileges set to **Read**, and the **Proposed Actions** privilege set to **All**.
-- Response actions run as you, so you also need the **Security** privilege set to **All**, with the {{elastic-defend}} sub-feature privileges for each action: **Host Isolation** or **Process Operations**, plus **Response Actions History**. Without them, the action fails. Refer to [](alertzero-privileges.md).
-- To close the {{az-investigation}} and its alerts, you need the **Alerts** privilege set to **All**.
+- You need the privileges to decide {{az-proposed-actions}}, to run the response actions you approve, and to close the {{az-investigation}} and its alerts. Refer to [](alertzero-privileges.md).
 - The {{az-endpoint-analysis}} {{az-worker}} must be on, and the host it analyzes must run {{elastic-defend}}. Refer to [](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
 - [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) must be on in the space (the `contextEngine:enabled` advanced setting). Without it, handing an attack to forensics fails.
 
@@ -86,7 +84,7 @@ Both {{az-workers}} offer {{az-manual}} and {{az-supervised}} {{az-autonomy}}:
 | {{az-worker}} | At {{az-manual}} | At {{az-supervised}} |
 | --- | --- | --- |
 | {{az-attack-discovery}} | Each handoff to forensics waits for you. | It hands off every attack it doesn't rule out, without asking. |
-| {{az-endpoint-analysis}} | Each response action waits for you. | It runs its response actions without asking, as its service account. |
+| {{az-endpoint-analysis}} | Each response action waits for you. | It runs its response actions without asking. |
 
 At either level, the {{az-endpoint-analysis}} proposal to close the {{az-investigation}} waits for you. To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
 

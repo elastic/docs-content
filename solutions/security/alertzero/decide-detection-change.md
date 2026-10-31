@@ -17,8 +17,7 @@ To learn what starts each kind of change, refer to the [{{az-detection-watch}}](
 
 ## Before you begin [alertzero-detection-change-before]
 
-- You need the **{{alertzero}}** and **Agent Builder** privileges set to **Read**, and the **Proposed Actions** privilege set to **All**.
-- An approved change runs as you, so you also need the **Rules and Exceptions** privilege set to **All**. Refer to [](alertzero-privileges.md).
+- You need the privileges to decide {{az-proposed-actions}} and to change detection rules. Refer to [](alertzero-privileges.md).
 
 ## Decide a tuning change [alertzero-detection-change-tuning]
 
@@ -32,7 +31,7 @@ The {{az-rule-tuning}} {{az-worker}} proposes one change for each noisy rule. At
     - When the change includes one, **Backtest** compares **Alerts with the current rule** with **Alerts with the proposed change**. Use it to check that the change drops the false positives without hiding real threats.
 4. Select **Approve** to change the rule, or **Decline** to keep it unchanged.
 
-When you approve, {{alertzero}} changes the rule in place or adds the exception. Because {{alertzero}} edits the rule as you, the rule then runs with your privileges, as it does after any edit you make. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md). To see or undo the change later, refer to [](/solutions/security/detect-and-alert/view-rule-changes-history.md). If someone edited the rule after {{az-rule-tuning}} proposed the change, the approval fails, so decline the change instead.
+When you approve, {{alertzero}} changes the rule in place or adds the exception. This affects the privileges the rule runs with. Refer to [](alertzero-privileges.md). To see or undo the change later, refer to [](/solutions/security/detect-and-alert/view-rule-changes-history.md). If someone edited the rule after {{az-rule-tuning}} proposed the change, the approval fails, so decline the change instead.
 
 When you decline, the rule doesn't change and the {{az-investigation}} closes.
 
@@ -55,7 +54,7 @@ What happens when you approve depends on the kind of {{az-proposed-action}}:
 | Turn on an existing rule | {{alertzero}} turns the rule on. |
 | Confirm rule coverage | Nothing runs. You confirm that an existing rule already covers the gap. |
 
-Rules that {{alertzero}} creates, installs, or turns on for you run with your privileges. When you decline, no rule changes, and {{alertzero}} discards any draft rule.
+Approving also affects the privileges the rule runs with. Refer to [](alertzero-privileges.md). When you decline, no rule changes, and {{alertzero}} discards any draft rule.
 
 To manage rules by hand, refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md) and [](/solutions/security/detect-and-alert/install-prebuilt-rules.md).
 
