@@ -3,7 +3,7 @@ navigation_title: Event-driven triggers
 applies_to:
   stack: ga 9.5+, preview =9.4
   serverless: ga
-description: Run a workflow in response to a platform event, such as a workflow failure, a case change, an entity store change, or a security event.
+description: Run a workflow in response to a platform event, such as a workflow failure, a case change, an entity store change, a security event, or an alert lifecycle event.
 products:
   - id: kibana
   - id: cloud-serverless
