@@ -1,5 +1,6 @@
 ---
 navigation_title: Migrate
+description: Migrate Splunk, QRadar, and Microsoft Sentinel rules and dashboards to Elastic Security with Automatic Migration. Review, fix, and install translated rules, including from Agent Builder chat.
 applies_to:
   stack: preview =9.0, ga 9.1+
   serverless:
@@ -52,6 +53,12 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To use [{{agent-builder}}](#siem-migration-agent-builder):
+
+  - At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for **Agent Builder**.
+  - {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
+  - To use **Add to chat**, the [`agentBuilder:experimentalFeatures`](/explore-analyze/ai-features/agent-builder/get-started.md#enable-experimental-features-optional) and [`agentBuilder:apiDiscovery`](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#api-discovery) advanced settings turned on in your space.
+  - To install rules from chat, `All` privileges for **Rules**.
 :::
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
@@ -156,13 +163,13 @@ The table's fields are as follows:
 * **Name:** The names of Elastic-authored rules cannot be edited until after rule installation. To edit the name of a custom translated rule, click the name and select **Edit**.
 * **Status:** The rule's translation status:
   * `Installed`: Already added to Elastic SIEM. Click **View** to manage and enable it.
-  * `Translated`: Ready to install. This rule was mapped to an Elastic-authored rule, or translated by Automatic Import. Click **Install** to install it.
+  * `Translated`: Ready to install. This rule was mapped to an Elastic-authored rule, or translated by Automatic Migration. Click **Install** to install it.
   * `Partially translated`: Part of the query could not be translated. You may need to specify an index pattern for the rule query, upload missing macros or lookups, or fix broken rule syntax. 
     ::::{note}
-    To fix partially translated rules that are missing an index pattern, use the **Update missing index pattern** button. This affects all migrated assets that contain the placeholder `[indexPattern]`, not just those currently visibly on the table page.
+    To fix partially translated rules that are missing an index pattern, use the **Update missing index pattern** button. This affects all migrated assets that contain the placeholder `[indexPattern]`, not only those currently visible on the table page.
     ::::
   * `Not translated`: None of the original query could be translated.
-  * `Failed`: Translation failed. Refer to the the error for details.
+  * `Failed`: Translation failed. Refer to the error for details.
 * **Risk Score:** For Elastic-authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
   * If the source rule has a field comparable to Elastic's `risk score`, we use that value.
   * Otherwise, if the source rule has a field comparable to Elastic's `rule severity` field, we base the risk score on that value according to [these guidelines](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
@@ -198,6 +205,8 @@ You cannot edit Elastic-authored rules using this interface, but after they are 
 :::
 
 Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
 
 ::::{image} /solutions/images/security-siem-migration-edit-rule.png
 :alt: The rule details flyout
@@ -252,11 +261,54 @@ For an explanation of a dashboard's translation, click its name to open the dash
 
 Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [](/explore-analyze/dashboards/open-dashboard.md).
 
+## Manage rule migrations with {{agent-builder}} [siem-migration-agent-builder]
+
+```{applies_to}
+serverless:
+  security: preview
+stack: preview 9.6+
+```
+
+Check on your rule migrations, start or stop them, install translated rules, and fix rule translations that need your input, all by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). The agent asks you to confirm before it changes a migration or a rule. For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration). To create a migration or upload rules, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
+
+### Rule problems you can fix in chat [siem-migration-chat-fixes]
+
+The agent can fix translated rules that aren't installed yet. To fix rules with a `Failed` status, reprocess them instead. The agent can't fix rules with a `Not translated` status. Their source rules usually rely on features that Elastic doesn't support. To change a rule after you install it, edit it from the **{{siem-rules-ui}}** page.
+
+| Problem | What the agent does |
+| --- | --- |
+| The rule matches the wrong prebuilt rule. | Compares up to five Elastic prebuilt rules that cover your source rule's logic, and recommends one. |
+| The rule uses the wrong integration, or its index pattern is wrong or missing. | Finds the Elastic integration that provides the rule's data, and rewrites the {{esql}} query to use that integration's index pattern and field names. |
+| The {{esql}} query uses the wrong field names. | Corrects the field names. |
+| The {{esql}} query has macro or lookup placeholders. | Removes the placeholders if you agree. The rule then no longer applies the logic they held, such as an exclusion list. To keep that logic, upload the missing macros or lookups and reprocess the rule instead. |
+
+:::{note}
+If the rule matches a prebuilt rule, changing its integration or query makes it a custom rule. The rule takes the title and description of your source rule and no longer gets updates from Elastic.
+:::
+
+### Fix translated rules in chat [siem-migration-fix-rules-in-chat]
+
+To send rules to the agent and fix them in chat:
+
+1. On the **Translated rules** page, open a chat in one of these ways:
+
+   * For one rule, select its name to open the rule details flyout, then select **Add to chat**.
+   * For several rules, select them in the table, then select **Add to chat**.
+   * For every rule in the migration, clear all selections, then select **Add to chat**.
+
+   A new chat opens with the rules attached.
+
+2. Describe the problem. Include details the agent can't find on its own, such as the integration or index your data comes from.
+
+3. Review the proposed change, then confirm it. The rule's status changes to `Translated`. If you matched it to a prebuilt rule that's already installed, the status changes to `Installed` instead. A note that explains the change appears on the rule's **Summary** tab.
+
+4. Install the rule from the **Translated rules** page, or ask the agent to install it. The agent asks whether to enable the rule.
+
 ## Frequently asked questions (FAQ)
 
 **How does Automatic Migration handle assets that can't be exactly translated for various reasons, such as feature parity issues?**
 
-After translation, assets that can't be translated appear with a status of either partially translated (yellow) or not translated (red). From there, you can address them individually.
+After translation, assets that can't be translated appear with a status of either partially translated (yellow) or not translated (red). A not translated status usually means that the source rule uses features that Elastic doesn't fully support. From there, you can address them individually.
 
 **Are nested macros supported?**
 
