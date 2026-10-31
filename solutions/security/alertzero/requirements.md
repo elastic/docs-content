@@ -40,18 +40,19 @@ Optionally, select which model {{alertzero}} uses for each kind of task. Find **
 
 ## Privileges [alertzero-requirements-privileges]
 
-To set up {{alertzero}}, you need these privileges:
+To set up {{alertzero}}, you need the **Advanced Settings** and **{{alertzero}}** privileges set to **All**, the `manage_security` cluster privilege, and the **Workflows** sub-feature privileges **Update** and **Update managed workflows**. For every {{alertzero}} task and the privileges it needs, refer to [](alertzero-privileges.md).
 
-| To | You need |
+## Settings that {{az-workers}} need [alertzero-requirements-worker-settings]
+
+Some {{az-workers}} need settings that are off by default. Turn them on in each space where those {{az-workers}} run:
+
+| {{az-worker}} | Turn on |
 | --- | --- |
-| Turn on the {{alertzero}} advanced setting | **Advanced Settings**: **All** |
-| Select **Continue** on the first onboarding step | **{{alertzero}}**: **All** |
-| Turn {{az-workers}} on or off | **{{alertzero}}**: **All**, the `manage_security` cluster privilege, and the **Workflows** sub-feature privileges **Update** and **Update managed workflows**. **All** for **Workflows** doesn't include **Update managed workflows**, so grant it separately. |
-| Set models in **Feature Settings** | The privileges in [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#requirements) |
+| {{az-alert-triage}} | The [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) |
+| {{az-attack-discovery}} | Attack Discovery workflows (`securitySolution:enableAttackDiscoveryWorkflows`) and [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) (`contextEngine:enabled`) |
+| {{az-continuous-threat-hunt}}, {{az-rule-coverage}}, and {{az-endpoint-analysis}} | [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) (`contextEngine:enabled`) |
 
-The `manage_security` privilege also lets a user manage users and roles for the whole cluster. Instead of granting it only for {{alertzero}}, ask an admin who already has it to set up {{alertzero}}.
-
-For the privileges people need to view and decide {{az-proposed-actions}}, refer to [](alertzero-privileges.md).
+If a setting that a {{az-worker}} needs is off, the {{az-worker}}'s {{az-watch}} page shows a warning.
 
 ## Data and detections [alertzero-requirements-data]
 
