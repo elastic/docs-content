@@ -23,7 +23,7 @@ Work moves from {{az-workers}} to you like this:
 2. The {{az-investigation}} collects the {{az-worker}}'s evidence, its conclusion, and any {{az-proposed-actions}}.
 3. You approve or decline each {{az-proposed-action}} on the **{{az-proposed-actions-cap}}** page. You can also assign, close, or [escalate](escalate-investigation.md) the {{az-investigation}}. Refer to [](use-alertzero.md).
 
-{{az-workers}} run as their own service accounts, but an action you approve runs as you, with your privileges. Refer to [](alertzero-privileges.md).
+To control who can view, decide, and set up {{alertzero}}, refer to [](alertzero-privileges.md).
 
 ## What each {{az-watch}} does [alertzero-overview-watches]
 
@@ -63,6 +63,18 @@ If {{context-engine}} is off, these {{az-workers}} can't pass work to each other
 
 - `ai-index-idx-security-investigations`: The detection gaps and forensics handoffs that {{az-workers}} pass to each other.
 - `ai-index-idx-security-attack-fingerprints`: Lets the {{az-attack-discovery}} {{az-worker}} recognize an attack it already reported, so it adds the attack to the open {{az-investigation}} instead of opening a new one.
+
+## What {{alertzero}} costs [alertzero-costs]
+```{applies_to}
+serverless:
+  security: preview
+deployment:
+  ech: preview
+```
+
+{{az-workers}} run as [workflows](/explore-analyze/workflows.md), and Elastic bills for workflow executions. Each {{az-worker}} run counts as an execution, and so does the work it starts, such as reviews and handoffs to other {{az-workers}}. A {{az-worker}} that runs more often uses more executions, so its **Trigger** setting affects your costs.
+
+For pricing, refer to [{{elastic-sec}} {{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) for {{serverless-short}} and [Execution-based billing](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing) for {{ech}}.
 
 ## How much {{az-workers}} do on their own [alertzero-overview-autonomy]
 

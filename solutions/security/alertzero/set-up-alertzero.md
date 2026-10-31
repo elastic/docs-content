@@ -15,11 +15,13 @@ products:
 
 ## Before you begin [alertzero-set-up-before]
 
-Check that the [requirements](requirements.md) are in place. In particular:
+Check that the space meets [what every space needs](requirements.md#alertzero-requirements-every-space). In particular:
 
 - {applies_to}`stack: preview 9.6` The space must use the **Security** solution view.
-- You need the [setup privileges](requirements.md#alertzero-requirements-privileges), including the `manage_security` cluster privilege to turn on {{az-workers}}.
+- You need the privileges to set up {{alertzero}}, which most roles don't include. Refer to [](alertzero-privileges.md).
 - The space needs an [AI model](requirements.md#alertzero-requirements-ai-model) that {{alertzero}} can use.
+
+For the {{az-workers}} you plan to turn on, also check [what specific {{az-workers}} need](requirements.md#alertzero-requirements-specific-workers).
 
 ## Turn on {{alertzero}} for a space [alertzero-turn-on]
 
@@ -36,7 +38,7 @@ The first time you open {{alertzero}} in a space, it walks you through turning o
 1. In the navigation menu, select **{{alertzero}}**.
 2. On the **Let's add your data?** step, select **Continue**. To connect more data sources first, select **Open Getting started**.
 
-   If you can't select **Continue**, you need the **{{alertzero}}** privilege set to **All**.
+   If you can't select **Continue**, you don't have the privileges to set up {{alertzero}}. Refer to [](alertzero-privileges.md).
 
 3. On the **Let's turn on the {{az-watches}}?** step, review the list of [{{az-workers}}](watches-and-workers.md). Every {{az-worker}} is on by default. Turn off any you don't want to run yet, but keep at least one on. Some {{az-workers}} depend on others, so check the [{{az-worker}} dependencies](requirements.md#alertzero-requirements-dependencies) before you turn one off.
 4. Select **Enable and run**.
@@ -50,7 +52,7 @@ If something blocks {{az-workers}} from turning on, the onboarding page shows on
 | Message | What to do |
 | --- | --- |
 | "AI models aren't set up for this space" | Make an AI model available in the space, such as an Elastic Managed LLM, then return to {{alertzero}}. To assign models, select **Open Feature settings**. Refer to [AI model](requirements.md#alertzero-requirements-ai-model). |
-| "You need the manage_security cluster privilege to enable {{az-workers}}" | Ask an admin who has the [setup privileges](requirements.md#alertzero-requirements-privileges) to turn on the {{az-workers}}. |
+| "You need the manage_security cluster privilege to enable {{az-workers}}" | Ask an administrator who has the [privileges to set up {{alertzero}}](alertzero-privileges.md) to turn on the {{az-workers}}. |
 | "Some {{az-workers}} weren't turned on" | {{alertzero}} couldn't create service accounts for the {{az-workers}} that the message lists. To retry, select **Enable and run** again. |
 
 ## Turn off {{alertzero}} [alertzero-turn-off]
