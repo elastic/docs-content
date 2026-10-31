@@ -29,7 +29,7 @@ For the {{az-workers}} you plan to turn on, also check [what specific {{az-worke
 2. In the **Security Solution** section, turn on the **{{alertzero}}** setting.
 3. Select **Save changes**, then select **Reload page**.
 
-**{{alertzero}}**, **{{az-escalations-cap}}**, and **{{az-watches}}** appear in the {{elastic-sec}} navigation menu.
+**{{alertzero}}**, **{{az-escalations-cap}}**, and **{{az-watches}}** appear in the {{elastic-sec}} navigation menu. To turn {{alertzero}} off later, refer to [](manage-alertzero.md#alertzero-turn-off).
 
 ## Turn on {{az-workers}} [alertzero-turn-on-workers]
 
@@ -54,13 +54,6 @@ If something blocks {{az-workers}} from turning on, the onboarding page shows on
 | "AI models aren't set up for this space" | Make an AI model available in the space, such as an Elastic Managed LLM, then return to {{alertzero}}. To assign models, select **Open Feature settings**. Refer to [AI model](requirements.md#alertzero-requirements-ai-model). |
 | "You need the manage_security cluster privilege to enable {{az-workers}}" | Ask an administrator who has the [privileges to set up {{alertzero}}](alertzero-privileges.md) to turn on the {{az-workers}}. |
 | "Some {{az-workers}} weren't turned on" | {{alertzero}} couldn't create service accounts for the {{az-workers}} that the message lists. To retry, select **Enable and run** again. |
-
-## Turn off {{alertzero}} [alertzero-turn-off]
-
-Turning off the advanced setting hides {{alertzero}} in the space, but its {{az-workers}} keep running. You can't reach the {{az-watch}} pages while the setting is off, so turn off the {{az-workers}} first:
-
-1. Turn off each {{az-worker}} on its {{az-watch}} page. Refer to [](configure-worker-settings.md).
-2. Turn off the **{{alertzero}}** advanced setting.
 
 ## Next steps [alertzero-set-up-next]
 

@@ -79,6 +79,4 @@ Some {{az-workers}} work on what another {{az-worker}} produces. If you turn on 
 | {{az-endpoint-analysis}} | {{az-attack-discovery}} | It analyzes only the attacks that {{az-attack-discovery}} hands off. |
 | {{az-attack-discovery}} | {{az-endpoint-analysis}} | It hands off attacks it can't rule out as false positives. If {{az-endpoint-analysis}} is off, those attacks stay unanalyzed, and their {{az-investigations}} stay open. |
 
-When you turn off a {{az-worker}} that another one needs, {{alertzero}} asks you to confirm first and shows a warning on both {{az-workers}}. It never turns {{az-workers}} on or off for you.
-
-When you turn on {{az-continuous-threat-hunt}}, {{alertzero}} also turns on the [{{az-threat-intel-supply}}](glossary.md#alertzero-glossary-threat-intel-supply) workflows that provide its {{az-threat-reports}}. Turning off {{az-continuous-threat-hunt}} turns those workflows off.
+To turn {{az-workers}} on or off after setup, refer to [](configure-worker-settings.md#alertzero-worker-on-off).
