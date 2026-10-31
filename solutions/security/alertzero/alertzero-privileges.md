@@ -1,6 +1,5 @@
 ---
-navigation_title: AlertZero privileges
-description: "Grant the Kibana feature privileges, cluster privilege, and action privileges a role needs to view, set up, and decide in AlertZero in Elastic Security."
+description: "Grant access to AlertZero in Elastic Security with Kibana feature privileges and the manage_security cluster privilege. Reference tables list what each task and predefined role needs."
 applies_to:
   stack: preview 9.6
   serverless:
@@ -12,7 +11,7 @@ products:
 
 # {{alertzero}} privileges [alertzero-privileges]
 
-Access to {{alertzero}} spans three {{kib}} features, a cluster privilege, Workflows, and the privileges of each action that someone approves. Use the tables on this page to give each person only what their work needs: viewing, deciding {{az-proposed-actions}}, or setting up {{az-workers}}.
+Access to {{alertzero}} spans the **{{alertzero}}**, **Proposed Actions**, and **Agentic Investigations** features, privileges from Agent Builder, Workflows, and Advanced Settings, the `manage_security` cluster privilege, and the privileges of each action that someone approves. Use the tables on this page to give each person only what their work needs: viewing, deciding {{az-proposed-actions}}, or setting up {{az-workers}}.
 
 The **{{alertzero}}**, **Proposed Actions**, and **Agentic Investigations** features all require an Enterprise license. In {{serverless-short}}, {{alertzero}} also requires the Security Analytics Complete feature tier. Refer to [](requirements.md).
 
