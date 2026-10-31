@@ -741,6 +741,21 @@ toc:
               - hidden: security/alertzero/run-worker-on-demand.md
               - hidden: security/alertzero/view-execution-history.md
           - hidden: security/alertzero/watches-and-workers.md
+            children:
+              - hidden: security/alertzero/watches/triage-watch.md
+                children:
+                  - hidden: security/alertzero/watches/alert-triage-worker.md
+                  - hidden: security/alertzero/watches/attack-discovery-worker.md
+              - hidden: security/alertzero/watches/detection-watch.md
+                children:
+                  - hidden: security/alertzero/watches/rule-tuning-worker.md
+                  - hidden: security/alertzero/watches/rule-coverage-worker.md
+              - hidden: security/alertzero/watches/hunt-watch.md
+                children:
+                  - hidden: security/alertzero/watches/continuous-threat-hunt-worker.md
+              - hidden: security/alertzero/watches/forensics-watch.md
+                children:
+                  - hidden: security/alertzero/watches/endpoint-analysis-worker.md
           - hidden: security/alertzero/glossary.md
       - file: security/ai.md
         children:
