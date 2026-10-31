@@ -15,21 +15,18 @@ products:
 
 ## Before you begin [alertzero-set-up-before]
 
-Check that the space meets [what every space needs](requirements.md#alertzero-requirements-every-space). In particular:
-
-- {applies_to}`stack: preview 9.6` The space must use the **Security** solution view.
-- You need the privileges to set up {{alertzero}}, which most roles don't include. Refer to [](alertzero-privileges.md).
-- The space needs an [AI model](requirements.md#alertzero-requirements-ai-model) that {{alertzero}} can use.
-
-For the {{az-workers}} you plan to turn on, also check [what specific {{az-workers}} need](requirements.md#alertzero-requirements-specific-workers).
+- Complete [what every space needs](requirements.md#alertzero-requirements-every-space). Without an AI model and the privileges to set up {{alertzero}}, you can't turn on {{az-workers}}.
+- For the {{az-workers}} you plan to turn on, complete [what specific {{az-workers}} need](requirements.md#alertzero-requirements-specific-workers). You can also do this later, when a {{az-watch}} page warns you.
 
 ## Turn on {{alertzero}} for a space [alertzero-turn-on]
 
 1. In the space where you want {{alertzero}}, find **Advanced Settings** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the **Security Solution** section, turn on the **{{alertzero}}** setting.
+2. In the **Security Solution** section, turn on the **{{alertzero}}** setting (`securitySolution:enableAlertZero`).
 3. Select **Save changes**, then select **Reload page**.
 
-**{{alertzero}}**, **{{az-escalations-cap}}**, and **{{az-watches}}** appear in the {{elastic-sec}} navigation menu. To turn {{alertzero}} off later, refer to [](manage-alertzero.md#alertzero-turn-off).
+% For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
+
+**{{alertzero}}**, **{{az-escalations-cap}}**, and **{{az-watches}}** appear in the {{elastic-sec}} navigation menu.
 
 ## Turn on {{az-workers}} [alertzero-turn-on-workers]
 
@@ -40,10 +37,15 @@ The first time you open {{alertzero}} in a space, it walks you through turning o
 
    If you can't select **Continue**, you don't have the privileges to set up {{alertzero}}. Refer to [](alertzero-privileges.md).
 
-3. On the **Let's turn on the {{az-watches}}?** step, review the list of [{{az-workers}}](watches-and-workers.md). Every {{az-worker}} is on by default. Turn off any you don't want to run yet, but keep at least one on. Some {{az-workers}} depend on others, so check the [{{az-worker}} dependencies](requirements.md#alertzero-requirements-dependencies) before you turn one off.
+3. On the **Let's turn on the {{az-watches}}?** step, turn off any [{{az-workers}}](watches-and-workers.md) you don't want to run yet. Keep at least one on.
+
+   Every {{az-worker}} is on by default. Some {{az-workers}} need others, so before you turn one off, check [which {{az-workers}} need other {{az-workers}}](requirements.md#alertzero-requirements-dependencies).
+
 4. Select **Enable and run**.
 
-{{alertzero}} turns on the {{az-workers}} you kept, creates a service account for each one, and opens the **{{az-proposed-actions-cap}}** page. Scheduled {{az-workers}} start their first run immediately. The {{az-endpoint-analysis}} {{az-worker}} waits until the {{az-attack-discovery}} {{az-worker}} hands it an attack. The page shows "{{az-workers}} are running in the background" until the first {{az-proposed-actions}} arrive.
+{{alertzero}} turns on the {{az-workers}} you kept, creates a service account for each one, and opens the **{{az-proposed-actions-cap}}** page.
+
+Scheduled {{az-workers}} start their first run immediately, and the page shows "{{az-workers}} are running in the background" until the first {{az-proposed-actions}} arrive. The {{az-endpoint-analysis}} {{az-worker}} waits until the {{az-attack-discovery}} {{az-worker}} hands it an attack.
 
 ## If you can't turn on {{az-workers}} [alertzero-set-up-blocked]
 
@@ -57,6 +59,6 @@ If something blocks {{az-workers}} from turning on, the onboarding page shows on
 
 ## Next steps [alertzero-set-up-next]
 
+- [](review-first-proposed-action.md): Follow one {{az-proposed-action}} from the **{{az-proposed-actions-cap}}** page to a decision.
 - [](alertzero-privileges.md): Give each person the privileges they need to use {{alertzero}}.
-- [](use-alertzero.md): Find the {{az-proposed-actions}} that need your decision.
-- [](configure-worker-settings.md): Change each {{az-worker}}'s {{az-autonomy}}, schedule, and other settings.
+- [](manage-alertzero.md): Change how {{az-workers}} run, or turn {{alertzero}} off in a space.

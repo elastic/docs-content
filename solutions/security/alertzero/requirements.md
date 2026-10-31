@@ -21,11 +21,7 @@ Not everything on this page applies to you:
 
 ## What every space needs [alertzero-requirements-every-space]
 
-Complete these in each space where you want to use {{alertzero}}, before you set it up.
-
-You don't need to turn on {{alertzero}} itself yet. You do that during setup, with the `securitySolution:enableAlertZero` advanced setting. Refer to [Turn on {{alertzero}} for a space](set-up-alertzero.md#alertzero-turn-on).
-
-% For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
+Complete these in each space where you want to use {{alertzero}}, before you set it up. You turn on {{alertzero}} itself later, during [setup](set-up-alertzero.md#alertzero-turn-on).
 
 ### Security solution view [alertzero-requirements-space]
 ```{applies_to}
@@ -62,7 +58,9 @@ Turn on these settings in each space where the {{az-workers}} run:
 | {{az-attack-discovery}} | Attack Discovery workflows (`securitySolution:enableAttackDiscoveryWorkflows`) and [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) (`contextEngine:enabled`) |
 | {{az-continuous-threat-hunt}}, {{az-rule-coverage}}, and {{az-endpoint-analysis}} | [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) (`contextEngine:enabled`) |
 
-To learn why some {{az-workers}} need {{context-engine}}, refer to [](index.md#alertzero-context-engine).
+The {{az-workers}} that need {{context-engine}} use it to pass detection gaps and forensics handoffs to each other. Refer to [](watches-and-workers.md).
+
+% After elastic/docs-content#9118 merges, link "Refer to" above to watches-and-workers.md#alertzero-context-engine.
 
 ### Data that specific {{az-workers}} need [alertzero-requirements-data]
 

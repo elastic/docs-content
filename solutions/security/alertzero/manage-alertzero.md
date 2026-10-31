@@ -1,17 +1,30 @@
 ---
-description: "What you can and can't configure in AlertZero."
+description: "Manage AlertZero in an Elastic Security space: change Worker settings, run Workers on demand, check their runs, recognize the indexes AlertZero adds, and turn AlertZero off."
 applies_to:
-  stack: preview 9.6
   serverless:
     security: preview
+  stack: preview 9.6
 products:
   - id: security
   - id: cloud-serverless
 ---
 
-# Manage AlertZero
+# Manage {{alertzero}}
 
-Learn what you can and can't configure in AlertZero.
+After you [set up {{alertzero}}](set-up-alertzero.md), use these pages to manage it in each space:
+
+- [](configure-worker-settings.md): Turn {{az-workers}} on or off, and change their {{az-autonomy}} and other settings.
+- [](run-worker-on-demand.md): Run a {{az-worker}} outside its schedule.
+- [](view-execution-history.md): See every {{az-worker}} run, including failures.
+
+## Indexes that {{alertzero}} adds [alertzero-indexes]
+
+{{alertzero}} adds two indexes, which you might notice in **Index Management**. {{alertzero}} creates and manages them, so you don't need to set them up.
+
+- `ai-index-idx-security-investigations`: The detection gaps and forensics handoffs that {{az-workers}} pass to each other through [{{context-engine}}](/explore-analyze/ai-features/context-engine.md). Refer to [](watches-and-workers.md).
+- `ai-index-idx-security-attack-fingerprints`: Lets the {{az-attack-discovery}} {{az-worker}} recognize an attack it already reported, so it adds the attack to the open {{az-investigation}} instead of opening a new one.
+
+% After elastic/docs-content#9118 merges, link "Refer to" above to watches-and-workers.md#alertzero-context-engine.
 
 ## Turn off {{alertzero}} [alertzero-turn-off]
 
