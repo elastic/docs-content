@@ -107,6 +107,7 @@ Event-driven triggers run workflows when a platform event occurs:
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers** fire when an entity's asset criticality or risk score changes in the entity store. The family includes `entityStore.entityAssetCriticalityUpdated` and `entityStore.entityRiskScoreChanged`.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}** fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system}}** fire when someone creates, updates, deletes, enables, or disables a rule. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule execution triggers in {{alerting-v2-system}}** fire when a rule execution produces rule events or fails. The family includes `alerting.ruleEventsGenerated` and `alerting.ruleExecutionFailed`.
 
 Use event-driven triggers for:
 
@@ -137,6 +138,7 @@ Each trigger type provides different data to the workflow context through the `e
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` Entity store triggers provide `event.entityId`, `event.entityType`, and event-specific fields (asset criticality changes carry `criticalityLevel`; risk score changes carry `score`, `previousScore`, `delta`, and `direction`).
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Alert lifecycle triggers in {{alerting-v2-system}} provide `event.alertId`, `event.ruleId`, and `event.spaceId`.
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Rule lifecycle triggers in {{alerting-v2-system}} provide `event.rule.ruleId` and `event.rule.spaceId`.
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Rule execution triggers in {{alerting-v2-system}} provide `event.rule.id` and `event.rule.spaceId`, plus execution details for `alerting.ruleEventsGenerated` (`event.rule.kind`, `event.rule.tags`, `event.execution.*`, and `event.ruleEventsGenerated`) or `event.error` for `alerting.ruleExecutionFailed`.
 
   Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) for the full payload shapes.
 

@@ -28,6 +28,11 @@ To send a notification or trigger an action from a rule in {{alerting-v2-system}
 
    To run a workflow when a user acts on an alert, such as opening a ticket when someone assigns it, use an [alert lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead. For a comparison, refer to [Connect workflows](workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
 
+:::{note}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6+"}
+To act on a rule's own execution rather than on an alert, use a [rule execution trigger](../../workflows/triggers/event-driven-triggers.md#alerting-rule-execution-triggers-event-driven). `alerting.ruleEventsGenerated` fires when an execution writes at least one rule event, and `alerting.ruleExecutionFailed` fires when an execution throws an error. Neither needs an alert, so they also work for rules in **Collect evidence** mode (`kind: signal`).
+:::
+
 ## What to do next with action policies [notifications-actions-next-steps]
 
 - [About action policies](action-policies/about-action-policies.md): Understand how action policies evaluate and gate alerts.
