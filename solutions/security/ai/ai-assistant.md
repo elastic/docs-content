@@ -94,8 +94,8 @@ You can also chat with AI Assistant from several particular pages in {{elastic-s
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
 
 ::::{note}
-:applies_to: stack: ga 9.0-9.4
-In these versions, the **Ask AI Assistant** button is called **Chat**.
+:applies_to: stack: ga =9.0
+In {{stack}} 9.0, open AI Assistant from the alert or event details flyout by selecting the **Chat** button in the flyout header.
 ::::
 
 ::::{note}
