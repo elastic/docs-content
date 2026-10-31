@@ -35,7 +35,7 @@ An empty base query result triggers [no-data handling](configure-no-data-handlin
 Choose **Custom recovery** when:
 
 * The condition that should close an alert isn't simply "no longer breaching." For example, a value needs to drop back to a safe margin below the original breach threshold, not just dip under it once. Define a separate recovery condition to require that.
-* Alerts for the rule keep changing between `active` and `recovering`, and show the [**Flapping** badge](../alerts/investigate-alert-episodes.md#flapping). Set a recovery condition that requires the metric to move a safe margin back from the alert threshold. The alert then stays `active` until the metric clears that margin, instead of moving to `recovering` each time the alert condition stops matching. A [recovery delay](#recovery-delay) doesn't reduce flapping, because a breach during the delay returns the alert to `active`.
+* Alerts for the rule keep changing between `active` and `recovering`, and show a **Flapping** badge. Set a recovery condition that requires the metric to move a safe margin back from the breach threshold. The alert then stays `active` until the metric clears that margin, instead of moving to `recovering` each time the alert condition stops matching. A [recovery delay](#recovery-delay) doesn't reduce flapping, because a breach during the delay returns the alert to `active`. To learn when an alert shows the badge, refer to [Spot a flapping alert](../alerts/investigate-alert-episodes.md#flapping).
 
 Choose **No recovery** when:
 
