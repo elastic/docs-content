@@ -497,6 +497,7 @@ toc:
                   - file: alerting/esql/rules/configure-rule-artifacts.md
               - file: alerting/esql/rules/view-manage-rules.md
               - file: alerting/esql/rules/review-rule-execution-history.md
+              - file: alerting/esql/rules/review-rule-change-history.md
               - file: alerting/esql/rules/esql-query-patterns.md
                 children:
                   - file: alerting/esql/rules/esql-first-rule-query.md
