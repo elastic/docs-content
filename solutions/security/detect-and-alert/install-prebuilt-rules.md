@@ -77,9 +77,9 @@ Alternatively, filter by the `Profile: Recommended` tag instead of by severity. 
 :::::::
 
 :::::::{step} Pick 2–3 MITRE tactics relevant to your environment
-Don't try to cover the full MITRE ATT&CK matrix from day one. Anchor your first wave around the techniques that matter most given your environment, data sources, and any past incidents. Common starting choices include Execution, Persistence, Credential Access, Initial Access, and Defense Evasion.
+Don't try to cover the full MITRE ATT&CK® matrix from day one. Anchor your first wave around the techniques that matter most given your environment, data sources, and any past incidents. Common starting choices include Execution, Persistence, Credential Access, Initial Access, Stealth, and Defense Impairment. If your {{elastic-sec}} version uses a [MITRE ATT&CK version](/solutions/security/detect-and-alert/mitre-attack-coverage.md#supported-versions) earlier than v19, pick Defense Evasion instead of Stealth and Defense Impairment.
 
-Use the [MITRE ATT&CK coverage view](/solutions/security/detect-and-alert/mitre-attack-coverage.md) to visualize where your enabled rules provide coverage and where gaps remain.
+Use the [MITRE coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md) to visualize where your enabled rules provide coverage and where gaps remain.
 
 :::{tip}
 If you've had a past incident, those tactics and techniques are almost always worth enabling first. They reflect real attacker behavior in your specific environment.
