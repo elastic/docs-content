@@ -23,14 +23,14 @@ To view **Closed Actions**, you need the **{{alertzero}}** and **Proposed Action
 2. Expand **Closed Actions**.
 3. To see a closed {{az-proposed-action}}'s details, select its card.
 
-**Closed Actions** lists the {{az-proposed-actions}} that closed in the last 72 hours, newest first. After that, they stay in their {{az-investigation}}'s details. If {{alertzero}} offered a failed action again, only the latest attempt appears. To show only one host, user, or service, use the [**Impact** filter](use-alertzero.md#alertzero-use-filter).
+**Closed Actions** lists the {{az-proposed-actions}} that closed in the last 72 hours, newest first. After that, they stay in their {{az-investigation}}'s details. If {{alertzero}} offered a failed action again, only the latest attempt appears. To show only one host, user, or service, select it in the **Impact** filter.
 
 ## What each outcome means [alertzero-review-closed-outcomes]
 
 | Outcome | What happened |
 | --- | --- |
-| **Approved by** _name_ | That person approved it. |
-| **Declined by** _name_ | That person declined it. |
+| **Approved by _name_** | That person approved it. |
+| **Declined by _name_** | That person declined it. |
 | **Auto** | The {{az-worker}} approved it at {{az-supervised}} {{az-autonomy}}. Refer to [](configure-worker-settings.md). |
 | **Declined** | Someone declined it, but {{alertzero}} can't show who. |
 | **Expired** | Nobody decided it in time. |

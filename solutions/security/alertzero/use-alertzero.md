@@ -31,7 +31,7 @@ If any {{az-worker}} runs failed in the past 24 hours, a callout lists the affec
 
 In the **Impact** filter, select the entity. Every section, including **Closed Actions**, then shows only the {{az-investigations}} that affect it. To clear the filter, select the entity again.
 
-If the page shows **Impacted entities are unavailable**, you need the **Agentic Investigations** privilege set to **Read**.
+If the message "Impacted entities are unavailable" appears, you need the **Agentic Investigations** privilege set to **Read**.
 
 ## Assign, close, or escalate {{az-investigations}} [alertzero-use-investigation]
 
@@ -39,7 +39,7 @@ If the page shows **Impacted entities are unavailable**, you need the **Agentic 
 | --- | --- |
 | Review the evidence and decide its {{az-proposed-actions}} | Select the card. The {{az-investigation}}'s details open in a flyout. |
 | Ask follow-up questions | Select **Open in chat**. |
-| Assign it to someone | Select **Add or change assignees**. |
+| Assign it to someone | Select {icon}`plus_circle` **Add or change assignees**. |
 | Share it | From the actions menu, select **Copy link**. |
 | Close it | From the actions menu, select **Close investigation**, then give a reason. Closing it also declines its pending {{az-proposed-actions}}. |
 | Reopen it | From the actions menu, select **Open investigation**. |
