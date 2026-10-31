@@ -16,8 +16,6 @@ products:
 
 Alert triggers run workflows automatically when detection or alerting rules generate an alert. Use alert triggers for alert enrichment, automated incident response, case creation, or notification routing.
 
-Alert-triggered workflows run with the privileges of the user who last saved the rule. For details, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
-
 When a rule generates an alert that triggers your workflow, the trigger provides rich context data to the workflow through the `event` field.
 
 Alert triggers are different from [alert lifecycle triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven). An alert trigger (`type: alert`) runs a workflow when a detection rule or a {{alerting-v1-system}} rule generates an alert, and only when you add the workflow to that rule as an action. Alert lifecycle triggers are [event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) that run automatically when a user acts on an alert in {{alerting-v2-system}}, such as assigning or acknowledging it, with no rule action to configure.
@@ -25,6 +23,15 @@ Alert triggers are different from [alert lifecycle triggers](/explore-analyze/wo
 :::{warning}
 Declaring `type: alert` on a workflow isn't enough to run the workflow when alerts fire. You also have to attach the workflow to the rule's **Actions** using a **Run Workflow** action. Without the attachment, the rule fires alerts but the workflow is never invoked. This is the single most common setup mistake.
 :::
+
+## Authorization
+
+The privileges used for each alert-triggered run depend on whether the workflow has an assigned service account:
+
+* **No service account assigned (default):** The run uses the privileges of the user who last saved the rule.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **Service account assigned:** The run uses the privileges of that account.
+
+For details, refer to [](/explore-analyze/workflows/authorization.md).
 
 ## Schema [workflows-alert-trigger-schema]
 

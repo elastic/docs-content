@@ -57,6 +57,8 @@ serverless: ga
 
 Every execution begins with a trigger entry that shows how the run started, such as a manual run, a schedule, an alert, or an event. Expand this entry to see the input the workflow received, including the full event payload for [event-driven](/explore-analyze/workflows/triggers/event-driven-triggers.md) runs. This lets you trace an execution back to the event or action that started it, which is especially useful when workflows react to one another through event-driven triggers.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` For workflows assigned to a service account, **Triggered by** shows the identity associated with the start of the run, which can be a user or a service account. **Run as** shows the assigned service account used for authorization. For details, refer to [](/explore-analyze/workflows/authorization.md#workflows-authorization-audit).
+
 ## View execution history [workflows-execution-history]
 
 To review past runs, select the **Executions** tab, then select each run to see detailed logs. Workflow runs can have the following statuses:

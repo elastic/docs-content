@@ -21,6 +21,7 @@ Techniques that apply across workflow types, regardless of which outcome you're 
 - [Use the YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md): Author and run workflows in the YAML editor in {{kib}}.
 - [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md): Every top-level field in a workflow definition and the execution lifecycle.
 - [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md): Workflow-wide settings reference, including timeout, timezone, concurrency, max step size, and global on-failure.
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md): Give every run a stable, least-privilege identity.
 - [Choose the right step](/explore-analyze/workflows/authoring-techniques/choose-the-right-step.md): Decision aid for picking the right step type. Keyed by intent.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Move data between steps, use dynamic templating, and make workflows resilient with `on-failure`.
 - [Compose workflows from reusable parts](/explore-analyze/workflows/authoring-techniques/compose-workflows.md): Decompose long workflows into reusable child workflows, design the input and output contract, and fan out with asynchronous composition.

@@ -16,12 +16,19 @@ products:
 
 Scheduled triggers run workflows automatically at specific times or intervals, without requiring manual intervention. Use scheduled triggers for recurring tasks like reports, data cleanup, or periodic health checks.
 
-Scheduled workflows run with the privileges of the user who last saved the workflow. For details, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
-
 You can configure scheduled triggers using:
 
 * **Interval-based scheduling**: Run on a recurring interval (every _x_ minutes, hours, or days)
 * **Recurrence rule (RRule) expressions**: Run at specific times in the specified timezone (for example, daily at 2 AM EST)
+
+## Authorization
+
+The privileges used for each scheduled run depend on whether the workflow has an assigned service account:
+
+* **No service account assigned (default):** The run uses the privileges of the user who last saved the workflow.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **Service account assigned:** The run uses the privileges of that account.
+
+For details, refer to [](/explore-analyze/workflows/authorization.md).
 
 ## Interval-based scheduling
 

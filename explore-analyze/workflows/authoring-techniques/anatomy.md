@@ -15,7 +15,7 @@ products:
 
 # Anatomy of a workflow [workflows-anatomy]
 
-A workflow definition has eleven top-level fields. Most of them are optional. This page is the reference for all of them.
+A workflow definition combines identity, triggers, settings, and steps in top-level fields. Most fields are optional. This page is the reference for all fields.
 
 ## The complete workflow shape [workflows-anatomy-shape]
 
@@ -115,7 +115,7 @@ steps:                               # what it does
 | [`inputs`](#workflows-anatomy-inputs) | object or `Input[]` | No | Runtime parameters the workflow accepts. Values provided at invocation time become `{{ inputs.<name> }}` inside the workflow. On 9.5+, defined under the `manual` trigger. |
 | [`consts`](#workflows-anatomy-consts) | object | No | Constant values reusable as `{{ consts.<name> }}`. Use for thresholds, index names, or other values you want to name. |
 | [`outputs`](#workflows-anatomy-outputs) | object or `Output[]` | No | Declared output schema. Required for workflows invoked through [composition](/explore-analyze/workflows/steps/composition.md) — the parent needs to know the child's output shape. |
-| [`settings`](#workflows-anatomy-settings) | object | No | Global behavior: timeout, timezone, concurrency, global error handling, output-size cap. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). |
+| [`settings`](#workflows-anatomy-settings) | object | No | Global behavior: execution identity, timeout, timezone, concurrency, global error handling, and output-size cap. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). |
 | [`steps`](#workflows-anatomy-steps) | `Step[]` | Yes | Ordered list of steps to execute. Refer to [Steps](/explore-analyze/workflows/steps.md). |
 
 ## `name` — workflow identity [workflows-anatomy-name]
@@ -274,10 +274,11 @@ A workflow that doesn't declare outputs can still complete successfully. `output
 
 ## `settings` — global behavior [workflows-anatomy-settings]
 
-`settings` is the grab bag for workflow-wide behavior: timeout, timezone, concurrency, and global error handling.
+`settings` controls workflow-wide behavior, such as execution identity, timeout, timezone, concurrency, and global error handling.
 
 ```yaml
 settings:
+  run_as: kibana/workflow-runner <1>
   timeout: "10m"
   timezone: "America/Los_Angeles"
   max-step-size: "10mb"
@@ -290,8 +291,9 @@ settings:
       max-attempts: 2
       delay: "10s"
 ```
+1. {applies_to}`{stack: ga 9.6+, serverless: unavailable}` Runs every execution with the specified user-managed service account. Refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
 
-Every field in `settings` is optional. The full reference with per-field semantics lives on the [Workflow settings page](/explore-analyze/workflows/authoring-techniques/settings.md).
+Every field in `settings` is optional. The full reference with per-field semantics is available in [](/explore-analyze/workflows/authoring-techniques/settings.md).
 
 ## `steps` — the body of the workflow [workflows-anatomy-steps]
 
@@ -336,6 +338,7 @@ Five states are terminal: `completed`, `failed`, `cancelled`, `timed_out`, and `
 ## Related [workflows-anatomy-related]
 
 - [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md): The full `settings` reference.
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md): Assign a stable, least-privilege execution identity.
 - [Choose the right step](/explore-analyze/workflows/authoring-techniques/choose-the-right-step.md): Decision aid for picking step types.
 - [Steps overview](/explore-analyze/workflows/steps.md): The step catalog.
 - [Triggers overview](/explore-analyze/workflows/triggers.md): The trigger catalog.
