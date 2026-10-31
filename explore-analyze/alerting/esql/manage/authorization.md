@@ -19,9 +19,47 @@ The type of operation determines which credential authorizes it.
 
 | Operation | How it's authorized |
 |---|---|
-| Rule executes | The rule uses the [API key](/explore-analyze/alerting/alerts/alerting-setup.md#alerting-authorization) of the user who last saved it. That key determines what data the rule can query. |
+| Rule runs | The rule runs with an API key based on the credentials of the user who created the rule, last enabled it, or last rotated its key. The key determines what data the rule can query, and editing the rule doesn't replace it. In {{serverless-short}}, the key is an {{ecloud}} API key. In {{stack}}, it's an {{es}} API key. To learn how each key type handles role changes, refer to [Which type of API key a rule uses](#rule-api-key-type). To replace the key with one based on your credentials, refer to [Rotate a rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key). |
 | Action policy evaluates and dispatches | Uses different credentials at different phases. Refer to [How action policies authorize a workflow run](#action-policy-workflow-keys). |
 | Workflow steps run | The workflow runs with the action policy's API key, so its steps can do only what that key's privileges allow. |
+
+## Which type of API key a rule uses [rule-api-key-type]
+
+In {{serverless-short}}, rules run with an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). In {{stack}}, rules run with an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md). A rule's key owner is the user who created the rule, last enabled it, or last rotated its key. Each key type records the key owner's access differently, so the same role change affects rules differently in each deployment type.
+
+If you create or enable a rule through the {{kib}} API while authenticated with your own API key, {{kib}} creates a separate key for the rule instead of reusing yours.
+
+### {{serverless-short}} projects [rule-api-key-serverless]
+
+A rule's {{ecloud}} API key records the key owner's roles at the time {{kib}} creates the key, but not the privileges those roles grant. Each time the rule runs, it uses the current privileges of those roles.
+
+The following table shows how common role changes affect the rule and what to do:
+
+| Change | Effect on the rule | What to do |
+|---|---|---|
+| An administrator edits one of the recorded roles | The rule uses the updated privileges on its next run. | You don't need to do anything. |
+| An administrator assigns the key owner a new role | The rule doesn't get the new role's privileges. | [Rotate the rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key) as a user who has the new role. |
+| An administrator deletes a custom role that the key recorded | The rule loses that role's privileges and might fail. | Rotate the rule's API key as a user who has the privileges the rule needs. |
+| The key owner leaves your organization | The rule keeps running with the recorded roles. | To stop the rule from using those roles, rotate the rule's API key as a different user. |
+
+For example, you create a rule while you have the `logs-reader` custom role, which can read `logs-*`. Later, you edit the rule's query to include `metrics-*`. If an administrator adds `metrics-*` to `logs-reader`, the rule can query `metrics-*` on its next run. If the administrator gives you a separate `metrics-reader` role instead, the rule can't query `metrics-*` until you rotate its API key.
+
+:::{note}
+If an {{ecloud}} API key isn't available for a rule, the rule runs with an {{es}} API key instead. That key works like the key in [{{stack}} deployments](#rule-api-key-stack), so later role changes don't affect the rule.
+:::
+
+### {{stack}} deployments [rule-api-key-stack]
+
+A rule's {{es}} API key records a snapshot of the key owner's privileges when {{kib}} creates the key. The snapshot doesn't change after that, so later role changes don't affect the rule.
+
+The following table shows how common role changes affect the rule and what to do:
+
+| Change | Effect on the rule | What to do |
+|---|---|---|
+| An administrator gives the key owner more privileges by editing a role or assigning a new one | The rule doesn't get the new privileges. | [Rotate the rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key) as a user who has them. |
+| An administrator takes privileges away from the key owner by editing a role, deleting a role, or removing a role assignment | The rule keeps running with the privileges in the snapshot. | To remove that access from the rule, rotate the rule's API key as a user who has only the access the rule needs. |
+
+For example, you create a rule while your role can read `logs-*`. Later, an administrator adds `metrics-*` to that role, and you edit the rule's query to include `metrics-*`. The rule still can't query `metrics-*`, because its key keeps the privileges you had when {{kib}} created the key. After you rotate the rule's API key, the rule can query both.
 
 ## How action policies authorize a workflow run [action-policy-workflow-keys]
 
@@ -37,7 +75,7 @@ The following authorization errors can cause a rule to fail or prevent an action
 
 | Error type | Cause | Where it appears | How to resolve it |
 |---|---|---|---|
-| Insufficient privileges | The API key doesn't have the privileges required to query the rule's target data. | Rule execution history shows the run as failed. | Save the rule as a user who has the required index privileges, or update that user's role and save again. |
-| Stale or not valid API key | The stored key is no longer valid, for example because an administrator deleted or expired a role it depended on. | An API key error in rule execution history. | Refresh the key by saving the rule again or toggling it off and back on. |
+| Insufficient privileges | The API key doesn't have the privileges required to query the rule's target data. | Rule execution history shows the run as failed. | [Rotate the rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key) as a user who has the required index privileges, or have that user disable the rule and enable it again. Saving the rule doesn't replace its key. |
+| Stale or not valid API key | The stored key is no longer valid, for example because an administrator deleted it. | An API key error in rule execution history. | [Rotate the rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key), or disable the rule and enable it again. Saving the rule doesn't replace its key. |
 | Action policy's API key is missing or not valid | The action policy has no stored API key (`missing_api_key`), or its stored key was deleted or changed (`schedule_error`). The policy can't schedule the workflow, so the workflow doesn't run. | The **Action policies** tab of the [execution history](../action-policies/review-action-policy-execution-history.md) shows the run as **Failed**, with the failure reason. | Save the action policy again to refresh its stored API key. |
 | Action policy's API key lacks the privileges the workflow needs | The action policy schedules the workflow, but its API key doesn't have the privileges the workflow's steps need, so the steps fail. | The workflow run fails at the affected steps. To confirm which credentials a run used, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-audit). | Save the action policy as a user who has the privileges the workflow needs, or update that user's role and save again. |

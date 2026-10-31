@@ -5,7 +5,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: "Search, filter, and bulk-manage rules. Use inline editing, the rule summary flyout, and the rule details page to manage rules."
+description: "Search, filter, and bulk-manage rules. Use inline editing, the rule summary flyout, and the rule details page to manage rules and rotate their API keys."
 ---
 
 # View and manage rules in {{alerting-v2-system}} [manage-rules]
@@ -18,7 +18,7 @@ To open the **Rules** page, go to **Alerting** → **Rules** in the {{observabil
 
 Use the search bar to find rules by name or description. Each space-separated term is matched independently using prefix matching. Tags and grouping fields appear in results but aren't searchable.
 
-Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort, or use bulk actions to enable, disable, or delete multiple rules at once.
+Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort. Use bulk actions to enable, disable, or delete several rules at once, or to [rotate their API keys](#rotate-rule-api-key).
 
 ## Edit a rule inline [quick-edit-rule]
 
@@ -40,11 +40,32 @@ The rule details page is organized into tabs that let you review a rule's config
 - **Conditions**: The rule's base query, alert condition, schedule, lookback, grouping, and recovery settings.
 - **Runbook**: The rule's investigation guide, if one has been added. Use it to document steps for diagnosing or responding to alerts produced by this rule.
 
-Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, or delete it.
+Use **Edit** to modify the rule. From the actions menu, you can enable, disable, clone, or delete the rule, or [rotate its API key](#rotate-rule-api-key).
 
 ## Disable or snooze a rule [disable-snooze-rule]
 
 Use **Disable** when you want the rule to stop running entirely until you re-enable it. Snoozing is different: the rule keeps evaluating, but you suppress notifications or quiet a specific series or action policy.
+
+## Rotate a rule's API key [rotate-rule-api-key]
+
+A rule queries your data with an API key based on the credentials of the user who creates or enables it. Rotating the key gives the rule a new key based on your credentials, without editing the rule. Editing the rule doesn't replace the key, and the key doesn't expire on its own, so the rule can keep running with access that the user no longer has.
+
+In {{serverless-short}}, the new key is an {{ecloud}} API key. In {{stack}}, it's an {{es}} API key. To learn how each key type handles later role changes, refer to [Which type of API key a rule uses](../manage/authorization.md#rule-api-key-type).
+
+Before you rotate a key, make sure your own access covers the data the rule queries. The new key carries your access, so the rule can reach only the data that you can reach. If you have less access than the rule's current key, the rule might fail or miss data on its next run.
+
+**Update API key** is available only for enabled rules. If a rule is disabled, you don't need to rotate its key. Enabling the rule gives it a new key based on your credentials.
+
+To rotate a key, select **Update API key**, then confirm. {{kib}} generates the new key, invalidates the previous one, and keeps the rule's schedule and enabled state. After the rotation, **Last updated by** on the rule details page shows your name. Because editing a rule also updates **Last updated by**, that field doesn't always show whose key the rule uses.
+
+You can select **Update API key** from any of these places:
+
+- The rule details page
+- A row's actions menu on the **Rules** page
+- The rule summary flyout
+- The bulk actions menu on the **Rules** page
+
+When you rotate keys in bulk, {{kib}} rotates every key it can. If some keys can't be rotated, the notification lists those rules and the reason for each.
 
 ## Related pages
 
@@ -52,3 +73,5 @@ Use **Disable** when you want the rule to stop running entirely until you re-ena
 - [Review rule execution history](review-rule-execution-history.md): Monitor rule execution outcomes across all rules in a space.
 - [Review rule change history](review-rule-change-history.md): See who changed a rule and when, and compare its versions.
 - [View and manage alerts](../alerts/view-and-manage-alerts.md): Triage and investigate the alerts a rule produces.
+- [Rule, action policy, and workflow authorization](../manage/authorization.md): Understand which credential authorizes each operation and how to fix authorization errors.
+- [Manage action policies](../action-policies/manage-action-policies.md): Rotate an action policy's API key, which is separate from a rule's.
