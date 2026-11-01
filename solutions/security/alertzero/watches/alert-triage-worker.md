@@ -15,11 +15,13 @@ The {{az-alert-triage}} {{az-worker}} classifies detection alerts as true or fal
 
 It analyzes open and acknowledged alerts in batches and tags each one as a true positive, false positive, or inconclusive, with a note explaining why. It proposes closing the alerts it's confident are false positives. Alerts with the same pattern share one {{az-investigation}} and one {{az-proposed-action}}.
 
-By default, it runs every 15 minutes. It offers {{az-manual}} and {{az-supervised}} {{az-autonomy}}. Refer to [what it does at each level](../watches-and-workers.md#alertzero-worker-autonomy-levels).
+By default, it runs every 15 minutes. It offers {{az-manual}} and {{az-supervised}} {{az-autonomy}}. Refer to [what it does at each level](../configure-worker-settings.md#alertzero-worker-autonomy).
+
+% After elastic/docs-content#9114 merges, link "what it needs" below to ../set-up-alertzero.md#alertzero-requirements-specific-workers.
 
 ## Settings [alertzero-alert-triage-settings]
 
-Besides the [settings every {{az-worker}} has](../watches-and-workers.md#alertzero-shared-worker-settings), {{az-alert-triage}} has these settings:
+Besides the [settings every {{az-worker}} has](../configure-worker-settings.md#alertzero-shared-worker-settings), {{az-alert-triage}} has these settings:
 
 **Minimum confidence score**
 :   How confident it must be that an alert is a false positive before it proposes closing the alert. If its confidence is lower, it tags the alert inconclusive.
@@ -43,6 +45,6 @@ Besides the [settings every {{az-worker}} has](../watches-and-workers.md#alertze
 
 ## Work with this {{az-worker}} [alertzero-alert-triage-tasks]
 
-- **Before you turn it on:** Check [what it needs](../requirements.md).
+- **Before you turn it on:** Check [what it needs](../set-up-alertzero.md).
 - **Decide its work:** Its {{az-proposed-actions}} appear in the **Investigate** section of the **{{az-proposed-actions-cap}}** page. Refer to [](../decide-proposed-action.md).
 - **Change its settings:** Refer to [](../configure-worker-settings.md).

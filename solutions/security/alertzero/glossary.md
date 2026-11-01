@@ -110,15 +110,15 @@ The [{{az-watch}}](#alertzero-glossary-watch) that works as your first line of d
 
 ### {{az-watch}} [alertzero-glossary-watch]
 
-A named group of [{{az-workers}}](#alertzero-glossary-worker) with one area of expertise. {{alertzero}} includes the following {{az-watches}}: [{{az-triage-watch}}](#alertzero-glossary-triage-watch), [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch), [{{az-detection-watch}}](#alertzero-glossary-detection-watch), and [{{az-forensics-watch}}](#alertzero-glossary-forensics-watch). Each {{az-watch}} has its own page where you turn its {{az-workers}} on or off and change their settings. Refer to [](watches-and-workers.md).
+A named group of [{{az-workers}}](#alertzero-glossary-worker) with one area of expertise. {{alertzero}} includes the following {{az-watches}}: [{{az-triage-watch}}](#alertzero-glossary-triage-watch), [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch), [{{az-detection-watch}}](#alertzero-glossary-detection-watch), and [{{az-forensics-watch}}](#alertzero-glossary-forensics-watch). Each {{az-watch}} has its own page where you turn its {{az-workers}} on or off and change their settings. Refer to [](configure-worker-settings.md).
 
 ### {{az-worker}} [alertzero-glossary-worker]
 
-An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-watch). A {{az-worker}} runs in the background, either on a schedule or in response to events such as new alerts. It analyzes your data and brings you [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). Each {{az-worker}} has its own settings, including whether it's turned on, its trigger, and its [{{az-autonomy}}](#alertzero-glossary-autonomy) level. Refer to [](watches-and-workers.md) and [](configure-worker-settings.md).
+An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-watch). A {{az-worker}} runs in the background, either on a schedule or in response to events such as new alerts. It analyzes your data and brings you [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). Each {{az-worker}} has its own settings, including whether it's turned on, its trigger, and its [{{az-autonomy}}](#alertzero-glossary-autonomy) level. Refer to [](configure-worker-settings.md).
 
 ## Related [alertzero-glossary-related]
 
 - [](index.md): What {{alertzero}} is and how its parts fit together.
-- [](watches-and-workers.md): Reference for every {{az-watch}} and {{az-worker}}.
+- [](configure-worker-settings.md): What each {{az-watch}} and {{az-worker}} does, and how to change their settings.
 - [](use-alertzero.md): Read the {{alertzero}} home page and decide on {{az-proposed-actions}}.
 - [](manage-alertzero.md): What you can and can't configure in {{alertzero}}.

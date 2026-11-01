@@ -15,7 +15,9 @@ The {{az-attack-discovery}} {{az-worker}} groups related alerts into candidate a
 
 It opens one {{az-investigation}} for each candidate attack, or adds the attack to an open {{az-investigation}} for the same attack, then judges whether the attack is a false positive. For a false positive, it acknowledges the open alerts and closes the {{az-investigation}}. For an attack it confirms or can't rule out, it proposes handing the attack to the [{{az-forensics-watch}}](forensics-watch.md) for forensics.
 
-It has only the [settings every {{az-worker}} has](../watches-and-workers.md#alertzero-shared-worker-settings). By default, it runs every 24 hours, and each run picks up where the last one ended. It offers {{az-manual}} and {{az-supervised}} {{az-autonomy}}. Refer to [what it does at each level](../watches-and-workers.md#alertzero-worker-autonomy-levels).
+It has only the [settings every {{az-worker}} has](../configure-worker-settings.md#alertzero-shared-worker-settings). By default, it runs every 24 hours, and each run picks up where the last one ended. It offers {{az-manual}} and {{az-supervised}} {{az-autonomy}}. Refer to [what it does at each level](../configure-worker-settings.md#alertzero-worker-autonomy).
+
+% After elastic/docs-content#9114 merges, link "what it needs" below to ../set-up-alertzero.md#alertzero-requirements-specific-workers.
 
 ## Limits [alertzero-attack-discovery-limits]
 
@@ -24,6 +26,6 @@ It has only the [settings every {{az-worker}} has](../watches-and-workers.md#ale
 
 ## Work with this {{az-worker}} [alertzero-attack-discovery-tasks]
 
-- **Before you turn it on:** Check [what it needs](../requirements.md).
+- **Before you turn it on:** Check [what it needs](../set-up-alertzero.md).
 - **Decide its work:** Its {{az-proposed-actions}} appear in the **Investigate** section of the **{{az-proposed-actions-cap}}** page. Refer to [](../respond-to-attack.md).
 - **Change its settings:** Refer to [](../configure-worker-settings.md).

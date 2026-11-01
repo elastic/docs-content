@@ -15,11 +15,13 @@ The {{az-rule-tuning}} {{az-worker}} finds rules that produce too many false pos
 
 It checks how many false positives each enabled rule produced in its analysis window. For each rule that meets both false positive thresholds, it opens an {{az-investigation}}, diagnoses the cause, and proposes one change to the rule's exceptions, query, risk score, threshold, or schedule. Most changes come with a backtest that compares the alerts the rule produced with the alerts it would have produced after the change. It works from alerts closed as false positives, by people or by the [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md).
 
-By default, it runs every 2 hours. It offers {{az-manual}} and {{az-assisted}} {{az-autonomy}}, and at either level, every change waits for your approval. Refer to [what it does at each level](../watches-and-workers.md#alertzero-worker-autonomy-levels).
+By default, it runs every 2 hours. It offers {{az-manual}} and {{az-assisted}} {{az-autonomy}}, and at either level, every change waits for your approval. Refer to [what it does at each level](../configure-worker-settings.md#alertzero-worker-autonomy).
+
+% After elastic/docs-content#9114 merges, link "what it needs" below to ../set-up-alertzero.md#alertzero-requirements-specific-workers.
 
 ## Settings [alertzero-rule-tuning-settings]
 
-Besides the [settings every {{az-worker}} has](../watches-and-workers.md#alertzero-shared-worker-settings), {{az-rule-tuning}} has these settings:
+Besides the [settings every {{az-worker}} has](../configure-worker-settings.md#alertzero-shared-worker-settings), {{az-rule-tuning}} has these settings:
 
 **Analysis window (days)**
 :   How many days of alerts it checks.
@@ -43,6 +45,6 @@ Besides the [settings every {{az-worker}} has](../watches-and-workers.md#alertze
 
 ## Work with this {{az-worker}} [alertzero-rule-tuning-tasks]
 
-- **Before you turn it on:** Check [what it needs](../requirements.md).
+- **Before you turn it on:** Check [what it needs](../set-up-alertzero.md).
 - **Decide its work:** Its {{az-proposed-actions}} appear in the **Configure** section of the **{{az-proposed-actions-cap}}** page. Refer to [](../decide-detection-change.md).
 - **Change its settings:** Refer to [](../configure-worker-settings.md).
