@@ -11,9 +11,7 @@ products:
 
 # Configure {{az-watches}} and {{az-workers}} [alertzero-configure-watches-workers]
 
-Each {{az-watch}} groups the {{az-workers}} for one area of work. {{alertzero}} includes four {{az-watches}}: the [{{az-triage-watch}}](watches/triage-watch.md), the [{{az-detection-watch}}](watches/detection-watch.md), the [{{az-hunt-watch}}](watches/hunt-watch.md), and the [{{az-forensics-watch}}](watches/forensics-watch.md). In {{alertzero}}, each {{az-watch}} has a page where you turn its {{az-workers}} on or off and change their settings.
-
-Use this page to find which {{az-watch}} each {{az-worker}} belongs to, learn how {{az-workers}} depend on each other, decide what needs your approval, and change {{az-worker}} settings.
+{{alertzero}} groups its {{az-workers}} by area of expertise into the [{{az-triage-watch}}](watches/triage-watch.md), [{{az-detection-watch}}](watches/detection-watch.md), [{{az-hunt-watch}}](watches/hunt-watch.md), and [{{az-forensics-watch}}](watches/forensics-watch.md). From each {{az-watch}}'s page, you can turn its {{az-workers}} on or off and change their settings.
 
 ## {{az-workers}} at a glance [alertzero-compare-workers]
 
