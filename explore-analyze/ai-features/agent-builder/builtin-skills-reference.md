@@ -434,6 +434,28 @@ $$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-polic
     - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) installed, with at least one integration policy in the current space.
     - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
 
+$$$agent-builder-endpoint-response-actions-skill$$$ `endpoint-response-actions` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Works with hosts that run [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md). Lists enrolled endpoints, checks a host's status and whether it is isolated, and looks up the status and output of a response action that was already sent. After you confirm in the chat, it can isolate or release a host, request the list of processes running on a host, or scan a file or folder path for malware. Hosts enrolled in a third-party endpoint protection integration are not included.
+
+    Questions about why a host is unhealthy, offline, or missing, or why a response action failed, belong to the [`automatic_troubleshooting`](#agent-builder-automatic-troubleshooting-skill) skill.
+
+    Each isolate, release, process list, and scan shows a confirmation card before anything is sent. When the host resolves, the card names that host and its agent ID. Select **Isolate host**, **Release host**, **List processes**, or **Run scan** to send the action. Select **Deny** to cancel it. If the host cannot be resolved, the card says the action will be refused. When more than one endpoint uses the same hostname, the agent asks which agent ID you mean. A status of `unknown` means the endpoint has not reported its status yet.
+
+    These commands stay in the [response console](/solutions/security/endpoint-response-actions.md): `execute`, `kill-process`, `suspend-process`, `get-file`, `upload`, `runscript`, and `memory-dump`.
+
+    :::{dropdown} Assigned tools
+    `endpoint-response-actions.list_endpoints`, `endpoint-response-actions.get_endpoint_status`, `endpoint-response-actions.get_response_action_status`, `endpoint-response-actions.isolate_host`, `endpoint-response-actions.unisolate_host`, `endpoint-response-actions.get_running_processes`, and `endpoint-response-actions.scan_host`.
+
+    These tools are available only while this skill is active.
+    :::
+
+    **Prerequisites:**
+
+    - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) deployed on the hosts you want to look up or act on.
+    - **Read** access to the **Security** privilege, for every tool in this skill.
+    - The matching [{{elastic-defend}} sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md): **Host Isolation** to isolate or release a host, **Process Operations** to list running processes, **Scan Operations** to scan a path, and **Read** access to **Response Actions History** to read an action's status and output.
+    - The same [subscription, agent version, and project requirements](/solutions/security/endpoint-response-actions.md) as the matching response console actions. In {{stack}}, isolate and action history require a Platinum license or higher, and listing processes or scanning a path requires an Enterprise license. Releasing a host is not limited by license tier. In {{serverless-short}}, isolate, process list, scan, and action history require the Endpoint Complete tier.
+
 ## Elasticsearch skills
 ```{applies_to}
 serverless:
