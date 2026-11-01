@@ -41,8 +41,8 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 ::::{applies-item} serverless:
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **OpenTelemetry**.
-4. Copy the endpoint value.
+3. Under **Application endpoints**, select **OpenTelemetry**.
+4. Copy the **Direct endpoint** value from the flyout.
 
 :::{tip}
 Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key for authentication with the {{motlp}}. Copy the authentication headers value from the same screen to skip the next step.
@@ -52,8 +52,8 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
 ::::{applies-item} ech:
 1. Log in to the {{ecloud}} Console.
 2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
-4. Copy the public endpoint value.
+3. Under **Application endpoints, cluster and component IDs**, select **Managed OTLP**.
+4. Copy the **Direct endpoint** value from the flyout.
 ::::
 :::::
 
@@ -242,9 +242,10 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 :::::::
 
-## Differences from the Elastic APM Endpoint
+## Differences from the Elastic APM endpoint
 
-The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data.
+:::{include} /solutions/observability/get-started/opentelemetry/_snippets/motlp-vs-apm-endpoint.md
+:::
 
 ## Troubleshooting
 

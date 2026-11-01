@@ -151,10 +151,9 @@ $$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$
 
     **Prerequisites:**
 
-    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Turn on the system](/explore-analyze/alerting/esql/setup.md#alerting-setup-turn-on). {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This setting is on by default.
+    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This setting is on by default.
     * {applies_to}`stack: experimental =9.5` The `agentBuilder:experimentalFeatures` advanced setting turned on. You can find it on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
     * {applies_to}`stack: experimental =9.5` To find or edit saved rules and action policies, the `contextEngine:enabled` advanced setting also turned on. You can find it on the **Space Settings** tab.
-    * {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` To search for saved rules from a conversation, turn on `agentBuilder:experimentalFeatures` on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional). The agent can still create rules with this setting off. It can also edit a saved rule from that rule's details page.
     * {applies_to}`stack: experimental 9.6+` A space that uses the Classic or {{observability}} solution view.
     * {applies_to}`serverless: experimental` An {{obs-serverless}} project.
 
@@ -174,8 +173,7 @@ $$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {app
 
     **Prerequisites:**
 
-    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Turn on the system](/explore-analyze/alerting/esql/setup.md#alerting-setup-turn-on). This setting is on by default.
-    * To search for saved action policies from a conversation, turn on `agentBuilder:experimentalFeatures` on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional). The agent can still create action policies with this setting off. It can also edit a saved policy from that policy's edit page.
+    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). This setting is on by default.
     * {applies_to}`stack: experimental 9.6+` A space that uses the Classic or {{observability}} solution view.
     * {applies_to}`serverless: experimental` An {{obs-serverless}} project.
 
@@ -467,6 +465,18 @@ $$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` 
     **Prerequisites:** [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) deployed and reporting.
 
     {applies_to}`stack: preview =9.4` In this version, the `automaticTroubleshootingSkill` [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled for the skill to appear.
+
+$$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-policy-management` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Helps you decide how to configure [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) integration policies. Explains what a policy setting does and which values it accepts, compares policies with each other or with a preset baseline, lists policies and whether any endpoints use them, and reports how many endpoints haven't yet applied the latest policy revision. Assesses the impact of a proposed change and offers guidance on moving from detect to prevent and on staged rollouts. After you confirm, it can also apply a change to a single policy.
+
+    :::{dropdown} Assigned tools
+    `platform.core.integration_knowledge`, plus internal tools to list, read, and compare policies, look up setting details, report rollout status, assess a proposed change, and apply a confirmed change.
+    :::
+
+    **Prerequisites:**
+
+    - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) installed, with at least one integration policy in the current space.
+    - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
 
 ## Elasticsearch skills
 ```{applies_to}

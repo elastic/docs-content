@@ -44,6 +44,13 @@ To get started with your analysis, select the type of resources you want to show
 * **Docker Containers**: shows *all* containers, not only Docker containers. Refer to [Container metrics](../../../reference/observability/observability-container-metrics.md) for more on supported data types for this view.
 * **AWS**: includes EC2 instances, S3 buckets, RDS databases, and SQS queues. Refer to [AWS metrics](../../../reference/observability/observability-aws-metrics.md) for more on supported data types for this view.
 
+A **Schema** menu lets you choose the data collection schema for the following resource types:
+
+* **Hosts**: Choose between the Elastic System integration and OpenTelemetry.
+* {applies_to}`{stack: ga 9.6+, serverless: ga}` **{{k8s}} Pods**: Choose between the {{k8s}} integration and OpenTelemetry.
+
+**Docker Containers** and **{{aws}}** show data collected using {{product.integrations}} only, so they have no **Schema** menu.
+
 When you hover over each resource in the waffle map, the metrics specific to that resource are displayed.
 
 You can sort by resource, group the resource by specific fields related to it, and sort by either name or metric value. For example, you can filter the view to display the memory usage of your Kubernetes pods, grouped by namespace, and sorted by the memory usage value.
@@ -264,6 +271,39 @@ These metrics are also available when viewing hosts on the **Hosts** page.
 
 
 
+## View {{k8s}} pod metrics [analyze-pods-inventory]
+
+When you select **{{k8s}} Pods**, the **Infrastructure inventory** page displays a waffle map that shows the pods you are monitoring and the current CPU usage for each pod. Alternatively, you can click the **Table view** icon ![Table view icon](/solutions/images/serverless-table-view-icon.png "") to switch to a table view.
+
+:::{note}
+Refer to [{{k8s}} pod metrics](../../../reference/observability/observability-kubernetes-pod-metrics.md) for more on supported data types for this view.
+:::
+
+To analyze the metrics for a specific pod, click the pod and select **{{k8s}} Pod metrics**:
+
+:::{image} /solutions/images/observability-pod-metrics.png
+:alt: Kubernetes pod metrics
+:screenshot:
+:::
+
+### Select the data collection schema [pod-schema-selector]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The **Schema** menu shows the available data collection schemas for the current query. If pod data from both the {{k8s}} integration and OpenTelemetry is available, the schema defaults to **OpenTelemetry**. Select **Elastic System Integration** to see pod data collected by the {{k8s}} integration.
+
+The selected schema determines which pods appear on the waffle map, and which field identifies each pod: `k8s.pod.uid` for OpenTelemetry, or `kubernetes.pod.uid` for the {{k8s}} integration. **{{k8s}} Pod logs**, **{{k8s}} Pod {{product.apm}} traces**, and **{{k8s}} Pod metrics** all follow the selected schema.
+
+Keep the following in mind when you switch schemas:
+
+* **Group by** uses the fields of the selected schema. Switching schemas doesn't clear **Group by**, so a field left over from the other schema can leave the map empty. Clear or reselect **Group by** after switching.
+* {{anomaly-detect-cap}} isn't available for OpenTelemetry pods.
+* On the {{k8s}} pod metrics page, charts that depend on the {{k8s}} integration stay hidden when the schema is **OpenTelemetry**. This includes **Pod log usage** and the Nginx charts.
+
+Refer to [{{k8s}} pod metrics](../../../reference/observability/observability-kubernetes-pod-metrics.md) for the field calculation formulas used by each schema.
+
 ## View container metrics [analyze-containers-inventory]
 
 :::{note}
@@ -361,15 +401,10 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 ## View metrics for other resources [analyze-resource-metrics]
 
 :::{note}
-Refer to [{{k8s}} pod metrics](../../../reference/observability/observability-kubernetes-pod-metrics.md) and [AWS metrics](../../../reference/observability/observability-aws-metrics.md) for more on supported data types for this view.
+Refer to [{{aws}} metrics](../../../reference/observability/observability-aws-metrics.md) for more on supported data types for this view.
 :::
 
-When you have searched and filtered for a specific resource, you can drill down to analyze the metrics relating to it. For example, when viewing Kubernetes Pods in the high-level view, click the Pod you want to analyze and select **Kubernetes Pod metrics** to see detailed metrics:
-
-:::{image} /solutions/images/observability-pod-metrics.png
-:alt: Kubernetes pod metrics
-:screenshot:
-:::
+When you have searched and filtered for a specific resource, you can drill down to analyze the metrics relating to it. For example, when viewing EC2 instances in the high-level view, click the instance you want to analyze and select **EC2 Instance metrics** to see detailed metrics.
 
 
 ## Add custom metrics [custom-metrics]
