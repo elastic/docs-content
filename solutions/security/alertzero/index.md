@@ -31,14 +31,14 @@ Four {{az-watches}} group the {{az-workers}}, one {{az-watch}} for each area of 
 
 | {{az-watch}} | What it does | {{az-workers}} |
 | --- | --- | --- |
-| [{{az-triage-watch}}](watches-and-workers.md) | Classifies incoming alerts, proposes closing false positives, and groups related alerts into attacks. | {{az-alert-triage}}, {{az-attack-discovery}} |
-| [{{az-hunt-watch}}](watches-and-workers.md) | Searches your data for activity that matches {{az-threat-reports}}, without waiting for an alert. | {{az-continuous-threat-hunt}} |
-| [{{az-detection-watch}}](watches-and-workers.md) | Proposes changes to rules that produce too many false positives, and proposes rules for the detection gaps that the {{az-hunt-watch}} finds. | {{az-rule-tuning}}, {{az-rule-coverage}} |
-| [{{az-forensics-watch}}](watches-and-workers.md) | Investigates the attacks that the {{az-triage-watch}} hands off, and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
+| [{{az-triage-watch}}](configure-worker-settings.md) | Classifies incoming alerts, proposes closing false positives, and groups related alerts into attacks. | {{az-alert-triage}}, {{az-attack-discovery}} |
+| [{{az-hunt-watch}}](configure-worker-settings.md) | Searches your data for activity that matches {{az-threat-reports}}, without waiting for an alert. | {{az-continuous-threat-hunt}} |
+| [{{az-detection-watch}}](configure-worker-settings.md) | Proposes changes to rules that produce too many false positives, and proposes rules for the detection gaps that the {{az-hunt-watch}} finds. | {{az-rule-tuning}}, {{az-rule-coverage}} |
+| [{{az-forensics-watch}}](configure-worker-settings.md) | Investigates the attacks that the {{az-triage-watch}} hands off, and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
 
 <!--
 Uncomment after elastic/docs-content#9118 merges. That PR adds a page for each Watch.
-Then use these links for the Watch names in the table above, in place of the watches-and-workers.md links:
+Then use these links for the Watch names in the table above, in place of the configure-worker-settings.md links:
 
 [{{az-triage-watch}}](watches/triage-watch.md)
 [{{az-hunt-watch}}](watches/hunt-watch.md)
@@ -46,15 +46,13 @@ Then use these links for the Watch names in the table above, in place of the wat
 [{{az-forensics-watch}}](watches/forensics-watch.md)
 -->
 
-For what each {{az-worker}} does, what it needs, and how {{az-watches}} pass work to each other, refer to [](watches-and-workers.md).
+For what each {{az-worker}} does and how {{az-watches}} pass work to each other, refer to [](configure-worker-settings.md).
 
 ## How much {{az-workers}} do without you [alertzero-overview-autonomy]
 
 Every {{az-worker}} starts at {{az-manual}} {{az-autonomy}}, where each {{az-proposed-action}} waits for your approval. You can give some {{az-workers}} more {{az-autonomy}}, but only at {{az-supervised}} do they approve their own {{az-proposed-actions}}. Changes to detection rules always wait for you.
 
-For what each {{az-worker}} does at each of its levels, refer to [](watches-and-workers.md). To change a level, refer to [](configure-worker-settings.md#alertzero-worker-autonomy).
-
-% After elastic/docs-content#9118 merges, link the Watches and Workers reference above to watches-and-workers.md#alertzero-worker-autonomy-levels.
+For what each {{az-worker}} does at each of its levels, and to change a level, refer to [](configure-worker-settings.md#alertzero-worker-autonomy).
 
 ## What {{alertzero}} costs [alertzero-costs]
 ```{applies_to}
@@ -70,14 +68,12 @@ deployment:
 
 {{alertzero}} is off by default, and you set it up separately in each [space](/deploy-manage/manage-spaces.md):
 
-1. Check the [requirements](requirements.md).
-2. [Set up {{alertzero}}](set-up-alertzero.md) in the space.
-3. Give your team the [privileges](alertzero-privileges.md) they need to view and decide {{az-proposed-actions}}.
-4. [Review your first {{az-proposed-action}}](review-first-proposed-action.md).
+1. [Set up {{alertzero}}](set-up-alertzero.md) in the space, starting with what it needs.
+2. Give your team the [privileges](alertzero-privileges.md) they need to view and decide {{az-proposed-actions}}.
 
 ## Related pages [alertzero-overview-related]
 
 - [](use-alertzero.md): Find the {{az-proposed-actions}} that need your decision.
-- [](watches-and-workers.md): Learn what each {{az-watch}} and {{az-worker}} does.
+- [](configure-worker-settings.md): Learn what each {{az-watch}} and {{az-worker}} does, and change their settings.
 - [](manage-alertzero.md): Change how {{az-workers}} run, or turn {{alertzero}} off in a space.
 - [](glossary.md): Look up any {{alertzero}} term.
