@@ -16,7 +16,7 @@ When the {{az-attack-discovery}} {{az-worker}} finds an attack it can't rule out
 ## Before you begin [alertzero-respond-before]
 
 - You need the privileges to decide {{az-proposed-actions}} and to close the {{az-investigation}} and its alerts. Approving a response action doesn't give you the privileges to run it. It runs as you, so without the {{elastic-defend}} response privileges, it fails. {{alertzero}} can then offer it again, so someone with those privileges can approve it. Refer to [](alertzero-privileges.md).
-- If handing an attack to forensics fails, or no forensics report appears, ask an administrator to check [what the {{az-endpoint-analysis}} {{az-worker}} needs](requirements.md).
+- If handing an attack to forensics fails, or no forensics report appears, ask an administrator to check [what the {{az-endpoint-analysis}} {{az-worker}} needs](set-up-alertzero.md).
 
 ## Check the verdict [alertzero-respond-verdict]
 
@@ -80,7 +80,7 @@ To work on the attack with other people instead, select **Open an escalation** o
 
 ## How {{az-autonomy}} changes this flow [alertzero-respond-autonomy]
 
-At {{az-supervised}} {{az-autonomy}}, the {{az-attack-discovery}} {{az-worker}} hands off every attack it doesn't rule out, and the {{az-endpoint-analysis}} {{az-worker}} runs its response actions, both without asking. At either level, the proposal to close the {{az-investigation}} waits for you. For what each {{az-worker}} does at each level, refer to [](watches-and-workers.md). To change a level, refer to [](configure-worker-settings.md).
+At {{az-supervised}} {{az-autonomy}}, the {{az-attack-discovery}} {{az-worker}} hands off every attack it doesn't rule out, and the {{az-endpoint-analysis}} {{az-worker}} runs its response actions, both without asking. At either level, the proposal to close the {{az-investigation}} waits for you. For what each {{az-worker}} does at each level, and to change a level, refer to [](configure-worker-settings.md).
 
 ## Related pages [alertzero-respond-related]
 

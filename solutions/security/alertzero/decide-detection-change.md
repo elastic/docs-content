@@ -11,7 +11,7 @@ products:
 
 # Decide a detection change [alertzero-decide-detection-change]
 
-Approve or decline the changes that the {{az-detection-watch}} proposes to your detection rules. The {{az-rule-tuning}} {{az-worker}} proposes tuning changes for rules that produce too many false positives, and the {{az-rule-coverage}} {{az-worker}} proposes rules for detection gaps. Every change waits for your approval, so no rule changes without a person deciding. To learn what starts each kind of change, refer to [](watches-and-workers.md).
+Approve or decline the changes that the {{az-detection-watch}} proposes to your detection rules. The {{az-rule-tuning}} {{az-worker}} proposes tuning changes for rules that produce too many false positives, and the {{az-rule-coverage}} {{az-worker}} proposes rules for detection gaps. Every change waits for your approval, so no rule changes without a person deciding. To learn what starts each kind of change, refer to [](configure-worker-settings.md).
 
 % After elastic/docs-content#9118 merges, link "refer to" above to watches/detection-watch.md.
 
@@ -62,4 +62,4 @@ To manage rules by hand, refer to [](/solutions/security/detect-and-alert/manage
 ## Related pages [alertzero-detection-change-related]
 
 - [](decide-proposed-action.md): The steps every decision shares, and what each status means.
-- [](watches-and-workers.md): What each {{az-worker}} needs, and its settings.
+- [](configure-worker-settings.md): What each {{az-worker}} does, and its settings.
