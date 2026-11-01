@@ -403,7 +403,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-After the agent finishes responding, rate that response with the **Good response** icon {icon}`thumbUp` or the **Bad response** icon {icon}`thumbDown`. The icons appear with the other response actions, such as **Copy response**.
+After the agent finishes responding, you can rate the response with the **Good response** icon {icon}`thumbUp` or the **Bad response** icon {icon}`thumbDown`. The icons appear with the other response actions, such as **Copy response**.
 
 Only the conversation owner can view the icons, so they don't appear when you view a [shared or public conversation](#share-a-conversation) that you don't own. The icons also stay hidden when:
 
@@ -411,20 +411,42 @@ Only the conversation owner can view the icons, so they don't appear when you vi
 - The response has [stopped or failed](#stopped-and-failed-responses).
 - The conversation is read-only. Conversations created through the API as read-only show a **Read-Only** badge and have no chat input.
 
-To rate a response as helpful, select the **Good response** icon. The icons are replaced by **Glad it helped!** and **Tell us more**.
+To rate a response, select the **Good response** or **Bad response** icon. Your rating is saved right away and stays on the response when you reload the page. What happens next depends on the rating:
 
-- Select **Tell us more** to open the **What worked well?** dialog. Select any of **Accurate**, **Useful**, and **Well explained**. You can select more than one.
-- Select the **Dismiss** icon {icon}`cross` to keep the rating without extra detail.
+- **Good response**: **Glad it helped!** and **Tell us more** replace the icons. To keep the rating without adding details, select the **Dismiss** icon {icon}`cross`.
+- **Bad response**: The **What went wrong?** dialog opens so you can add details.
 
-To rate a response as unhelpful, select the **Bad response** icon. The **What went wrong?** dialog opens. Select any of **Inaccurate**, **Incomplete**, and **Didn't follow instructions**. You can select more than one.
+#### Add details to a rating
 
-In either dialog, you can enter an optional comment of up to 500 characters in the **Add comment** field. Select **Submit** to send the details. The actions briefly show **Thank you for your feedback**. To keep the rating without extra detail, select **Cancel** or close the dialog.
+To tell Elastic more about a rating:
 
-To change a rating, select the other icon. If **Glad it helped!** is showing, select **Dismiss** first to bring the icons back. This clears any options and comment you submitted for the previous rating. To remove a rating, select the highlighted icon again. This also deletes any options and comment you submitted. Your rating stays on the response when you reload the page.
+1. Open the feedback dialog. For a good rating, select **Tell us more** to open the **What worked well?** dialog. For a bad rating, the **What went wrong?** dialog is already open.
+2. Select the options that apply. You can select more than one.
+   - **What worked well?**: **Accurate**, **Useful**, and **Well explained**
+   - **What went wrong?**: **Inaccurate**, **Incomplete**, and **Didn't follow instructions**
+3. Optional: In the **Add comment** field, enter a comment of up to 500 characters.
+4. Select **Submit**. The response actions briefly show **Thank you for your feedback**.
 
-Both dialogs show this notice: "Your comment and metadata will be shared with Elastic." When [telemetry](kibana://reference/configuration-reference/telemetry-settings.md) is turned on, Elastic receives the following each time you rate a response, submit details, or remove a rating:
+To keep the rating without adding details, select **Cancel** or close the dialog.
 
-- Whether you rated the response as good or bad
+For example, the following **What went wrong?** dialog has one option selected and a comment:
+
+:::{image} images/agent-builder-rate-response-dialog.png
+:screenshot:
+:alt: What went wrong? dialog with the Incomplete option selected, a comment in the Add comment field, the notice that your comment and metadata will be shared with Elastic, and Cancel and Submit buttons
+:width: 400px
+:::
+
+#### Change or remove a rating
+
+- To change a rating, select the other icon. If **Glad it helped!** is showing, select the **Dismiss** icon {icon}`cross` first to bring the icons back. Changing the rating also deletes any options and comment you submitted for the previous rating.
+- To remove a rating, select the highlighted icon again. Removing the rating also deletes any options and comment you submitted.
+
+#### Data shared with Elastic
+
+Both feedback dialogs show this notice: "Your comment and metadata will be shared with Elastic." When [telemetry](kibana://reference/configuration-reference/telemetry-settings.md) is turned on, Elastic receives the following each time you rate a response or submit details:
+
+- The rating, good or bad
 - The options you select
 - Your comment, when you add one
 - The conversation ID, the response ID, and the trace ID
@@ -433,7 +455,9 @@ Both dialogs show this notice: "Your comment and metadata will be shared with El
 - The input and output token counts
 - The number of model calls
 
-Elastic doesn't receive the text of your messages or of the agent's responses. In {{serverless-short}}, telemetry is always on. For details, refer to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
+When you remove a rating, Elastic receives the same information without the rating, options, and comment.
+
+Elastic doesn't receive the text of your messages or of the agent's responses. In {{serverless-full}}, telemetry is always on. For details, refer to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
 
 ### Stopped and failed responses [stopped-and-failed-responses]
 ```{applies_to}
