@@ -15,13 +15,19 @@ Your work in {{alertzero}} starts on the **{{az-proposed-actions-cap}}** page. I
 
 To open the page, select **{{alertzero}}** in the navigation menu. If no {{az-worker}} is on and no {{az-investigation}} exists yet, {{alertzero}} shows the [setup steps](set-up-alertzero.md) instead.
 
-To view the page and open {{az-investigation}} details, you need the privileges to use {{alertzero}}. Refer to [](alertzero-privileges.md).
+What you can see and do on this page depends on your privileges. Refer to [](alertzero-privileges.md).
 
 ## Find what needs a decision [alertzero-use-sections]
 
 The page header shows how many actions need you. Each card shows one {{az-investigation}} and its {{az-proposed-actions}}. {{alertzero}} sorts open {{az-proposed-actions}} into the **Respond**, **Investigate**, and **Configure** sections by the kind of action. Each section lists the newest first, along with approved {{az-proposed-actions}} that are still running.
 
-To review and decide {{az-proposed-actions}}, select a card. Refer to [](decide-proposed-action.md).
+| Section | What it holds | To decide it, refer to |
+| --- | --- | --- |
+| **Respond** | Response actions for an attack, such as isolating a host | [](respond-to-attack.md) |
+| **Investigate** | Proposals to close false-positive alerts, and to hand attacks to forensics | [](decide-proposed-action.md#alertzero-decide-close-alerts) and [](respond-to-attack.md) |
+| **Configure** | Changes to detection rules | [](decide-detection-change.md) |
+
+To open a {{az-proposed-action}}, select its card. For the steps every decision shares, refer to [](decide-proposed-action.md).
 
 The **Closed Actions** section lists {{az-proposed-actions}} that closed in the last 72 hours. Refer to [](review-closed-proposed-actions.md).
 
@@ -45,10 +51,8 @@ If the message "Impacted entities are unavailable" appears, you don't have the p
 | Reopen it | From the actions menu, select **Open investigation**. |
 | Escalate it | From the actions menu, select **Open an escalation** or **Attach to an escalation**. Refer to [](escalate-investigation.md). |
 
-Some of these actions need more privileges than viewing the page. Refer to [](alertzero-privileges.md).
-
 ## Next steps [alertzero-use-next]
 
-- [](decide-proposed-action.md): Approve or decline {{az-proposed-actions}}.
+- [](decide-proposed-action.md): The steps every decision shares.
 - [](review-closed-proposed-actions.md): Check what happened to recent {{az-proposed-actions}}.
-- [](decide-detection-change.md), [](respond-to-attack.md), and [](act-on-hunt-finding.md): Decide the {{az-proposed-actions}} that each {{az-watch}} brings you.
+- [](act-on-hunt-finding.md): Decide what to do about a hunt finding.

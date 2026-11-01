@@ -11,13 +11,11 @@ products:
 
 # Decide a {{az-proposed-action}} [alertzero-decide]
 
-{{alertzero}} {{az-workers}} bring you {{az-proposed-actions}}, such as closing false-positive alerts, isolating a host, or changing a detection rule. Each one waits for you to approve or decline it. Learn what to check before you decide, what happens after, and what each status means.
-
-These steps are the same for every {{az-worker}}. For what to check on a specific kind of action, refer to [](decide-detection-change.md), [](respond-to-attack.md), and [](act-on-hunt-finding.md).
+Approve or decline a {{az-proposed-action}} from a {{az-worker}}, such as closing false-positive alerts, isolating a host, or changing a detection rule. These steps are the same for every {{az-worker}}. For what to check on a specific kind of action, refer to [](decide-detection-change.md), [](respond-to-attack.md), and [](act-on-hunt-finding.md).
 
 ## Before you begin [alertzero-decide-before]
 
-- You need the privileges to decide {{az-proposed-actions}}, and the privileges to run each action you approve. Refer to [](alertzero-privileges.md).
+- You need the privileges to decide {{az-proposed-actions}}. Approving an action doesn't give you the privileges to run it. An approved action runs as you, so if you don't have the privileges for the action itself, it fails. Refer to [](alertzero-privileges.md).
 - Decisions are final. After someone approves or declines, nobody can change the decision.
 - By default, {{az-proposed-actions}} expire after 72 hours without a decision. After that, nobody can approve them.
 
@@ -43,6 +41,15 @@ If the action fails, {{alertzero}} can offer it again as a new {{az-proposed-act
 1. Select **Decline**.
 2. Optionally, select a reason, such as **Not a real issue (false positive)**. If you select **Other**, enter a description.
 3. Select **Decline** again.
+
+## Decide whether to close false-positive alerts [alertzero-decide-close-alerts]
+
+The {{az-alert-triage}} {{az-worker}} proposes closing alerts it's confident are false positives, with one {{az-proposed-action}} for alerts that share a pattern. These {{az-proposed-actions}} appear in the **Investigate** section.
+
+- If you approve, the alerts close.
+- If you decline, {{az-alert-triage}} tags the alerts inconclusive.
+
+At {{az-supervised}} {{az-autonomy}}, {{az-alert-triage}} closes false positives without waiting for you, and you can reopen any you disagree with.
 
 ## When {{az-workers}} decide for you [alertzero-decide-after]
 
