@@ -59,7 +59,7 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-An agent can only use the connectors you assign to it, and new agents start with none. You assign connectors from the agent after you save it.
+An agent can only use the connectors you assign to it, and new agents start with none. You assign connectors from the agent after you save it. You can also [create a connector in chat and assign it to that agent](#assign-a-connector-from-chat).
 
 To assign connectors in {{kib}}, you need permission to edit the agent and the **Actions and Connectors: All** {{kib}} privilege. If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill. Without it, the agent can't find its connectors.
 
@@ -72,6 +72,18 @@ To assign a connector to an agent:
    - **Create new connector**: Configure a new connector. It's added to the library and assigned to the agent.
 
 To unassign a connector, remove it from the agent's **Connectors** page. The connector stays in the library, and other agents it's assigned to can still use it.
+
+### Assign a connector from chat [assign-a-connector-from-chat]
+
+When you create a connector from chat with the [`connector-authoring`](builtin-skills-reference.md#agent-builder-connector-authoring-skill) skill, {{kib}} adds it to the connectors library. If you have the [**Create and edit agents**](permissions.md#kib-privileges) privilege and the agent can be edited, {{kib}} also assigns the connector to the agent in that conversation. On the connector setup card, select **Configure connector**, complete the form, and select **Create connector**.
+
+The **Elastic AI Agent** can be edited. A connector you create while chatting with it is assigned when you have **Create and edit agents**.
+
+Other built-in agents are read-only. {{kib}} still creates the connector, then shows a **Connector created, but not added to the agent** warning. The same warning appears when you don't have **Create and edit agents**. [Assign the connector](#assign-connectors-to-an-agent) from the agent's **Connectors** page.
+
+Connector types the agent can't call from chat, such as email, are added to the library only. {{kib}} doesn't show a warning for those types.
+
+If you ask about a connector that exists in the space but isn't assigned to this agent, the agent tells you it isn't assigned. Add it from the agent's **Connectors** page.
 
 :::{important}
 Agents that were never assigned connectors can't use any. This includes:
