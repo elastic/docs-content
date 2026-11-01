@@ -135,7 +135,8 @@ To copy the MCP server URL, open the **MCP Server** dropdown on the Tools page (
 :::::
 
 :::{important}
-There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.0.
+:applies_to: stack: preview =9.2.0
+**Copy MCP Server URL** doesn't include the space ID. Refer to the [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name).
 :::
 
 For detailed MCP server configuration, refer to [MCP server](mcp-server.md).
