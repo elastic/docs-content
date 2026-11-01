@@ -119,7 +119,6 @@ An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-
 ## Related [alertzero-glossary-related]
 
 - [](index.md): What {{alertzero}} is and how its parts fit together.
-- [](watches-and-workers.md): What each {{az-watch}} and {{az-worker}} does, and how they pass work to each other.
-- [](configure-worker-settings.md): How to turn {{az-workers}} on or off and change their settings.
+- [](configure-worker-settings.md): What each {{az-watch}} and {{az-worker}} does, and how to change their settings.
 - [](use-alertzero.md): Read the {{alertzero}} home page and decide on {{az-proposed-actions}}.
 - [](manage-alertzero.md): What you can and can't configure in {{alertzero}}.
