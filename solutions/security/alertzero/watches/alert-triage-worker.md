@@ -41,7 +41,7 @@ On each run, the {{az-alert-triage}} {{az-worker}}:
 
 When the {{az-alert-triage}} {{az-worker}} closes an alert as a false positive, the alert drops out of your analysts' open alerts, and the [{{az-attack-discovery}} {{az-worker}}](attack-discovery-worker.md) skips it, because that {{az-worker}} analyzes only open and acknowledged alerts. The [{{az-rule-tuning}} {{az-worker}}](rule-tuning-worker.md) counts these closures when it looks for rules to tune.
 
-You review the {{az-alert-triage}} {{az-worker}}'s {{az-proposed-actions}} in the **Investigate** section of the **{{az-proposed-actions-cap}}** page. To learn how to read a {{az-proposed-action}} and then approve or decline it, refer to [](../decide-proposed-action.md).
+You review the {{az-alert-triage}} {{az-worker}}'s {{az-proposed-actions}} in the **Investigate** section of the **{{az-proposed-actions-cap}}** page. To learn how to review a proposed closure and then approve or decline it, refer to [](../decide-proposed-action.md).
 
 ### Example [alertzero-alert-triage-example]
 
