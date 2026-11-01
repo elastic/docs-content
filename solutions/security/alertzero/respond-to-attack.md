@@ -15,15 +15,15 @@ When the {{az-attack-discovery}} {{az-worker}} finds an attack it can't rule out
 
 ## Decide whether to run forensics [alertzero-respond-handoff]
 
-{{alertzero}} asks you about each attack that the {{az-attack-discovery}} {{az-worker}} judges a true positive or inconclusive. When the {{az-worker}} judges an attack a false positive, {{alertzero}} closes the {{az-investigation}} and the attack without asking. If the analysis fails, the {{az-investigation}} stays open with no {{az-proposed-actions}}. Review the attack yourself.
+{{alertzero}} asks you about each attack that the {{az-attack-discovery}} {{az-worker}} judges a true positive or inconclusive. When the {{az-worker}} judges an attack a false positive, {{alertzero}} closes the {{az-investigation}} and the attack without asking, and acknowledges the attack's open alerts. If the analysis fails, the {{az-investigation}} stays open with no {{az-proposed-actions}}. Review the attack yourself.
 
 1. In the **Investigate** section of the **{{az-proposed-actions-cap}}** page, select the attack's card.
 2. Check the verdict and why the {{az-attack-discovery}} {{az-worker}} reached it. To read the verdict and its **Rationale**, select **Open in chat**. The verdict's **Conclusion** also appears in the {{az-investigation}}'s details.
 3. Select **Approve** or **Decline**.
     - **If you approve:** The {{az-endpoint-analysis}} {{az-worker}} analyzes the attack and proposes response actions. The {{az-investigation}} and the attack stay open for the forensics report. You can't undo this approval.
-    - **If you decline:** The {{az-investigation}} and the attack close.
+    - **If you decline:** The {{az-investigation}} and the attack close, and {{alertzero}} acknowledges the attack's open alerts.
 
-    Either way, the attack's detection alerts stay open. By default, the {{az-proposed-action}} expires after 72 hours. If nobody decides before then, the {{az-investigation}} stays open.
+    Either way, {{alertzero}} doesn't close the attack's detection alerts. The {{az-proposed-action}} expires after 72 hours. If nobody decides before then, the {{az-investigation}} stays open.
 
 ## Review the forensics report [alertzero-respond-forensics]
 
