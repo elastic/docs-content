@@ -1,5 +1,5 @@
 ---
-description: "Find the AlertZero proposed actions that are waiting for you in Elastic Security, see which ones fit your role, and follow up on an investigation."
+description: "Find the work that AlertZero Workers bring you in Elastic Security, see which proposed actions fit your role, and follow up on investigations and escalations."
 applies_to:
   serverless:
     security: preview
@@ -9,9 +9,11 @@ products:
   - id: cloud-serverless
 ---
 
-# Work through {{az-proposed-actions}} [alertzero-use]
+# Work in {{alertzero}} [alertzero-use]
 
-{{az-workers}} do the analysis, and you decide what they bring you, such as which alerts to close, how to contain an attack, and which detection rules to change. Everything waiting for you is on the {{alertzero}} home page, the **{{az-proposed-actions-cap}}** page. To open it, select **{{alertzero}}** in the navigation menu.
+{{az-workers}} do the analysis, and you decide what they bring you, such as which alerts to close, how to contain an attack, and which detection rules to change. When an {{az-investigation}} needs more than a decision, you can hand it to a teammate or escalate it.
+
+Your work starts on the {{alertzero}} home page, the **{{az-proposed-actions-cap}}** page, which lists everything waiting for you. To open it, select **{{alertzero}}** in the navigation menu.
 
 Each card on the page is one {{az-proposed-action}}. Select a card to see the {{az-investigation}} behind it: the evidence the {{az-worker}} gathered and what it concluded.
 
@@ -38,5 +40,5 @@ Besides approving or declining, you can:
 ## Next steps [alertzero-use-next]
 
 - [](decide-proposed-action.md): Judge a {{az-proposed-action}}, approve or decline it, and check recent decisions.
-- [](respond-to-attack.md): Take an attack from verdict to containment.
-- [](decide-detection-change.md): Review a change to a detection rule.
+- [](escalate-investigation.md): Turn an {{az-investigation}} into a coordinated response.
+- [](track-escalations.md): Follow {{az-escalations}} as the response runs.
