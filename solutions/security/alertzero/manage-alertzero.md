@@ -24,4 +24,4 @@ If you turn off {{alertzero}} while its {{az-workers}} are enabled, the {{az-wor
 3. In the **Security Solution** section, turn off the **{{alertzero}}** setting.
 4. Select **Save changes**, then select **Reload page**.
 
-% After elastic/docs-content#9118 merges, link the Configure Workers reference in step 1 to configure-worker-settings.md#alertzero-worker-on-off.
+% After elastic/docs-content#9118 merges, link the reference in step 1 to configure-worker-settings.md#alertzero-worker-on-off.

@@ -21,14 +21,14 @@ Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{
 
 | {{az-watch}} | What it does | {{az-workers}} |
 | --- | --- | --- |
-| [{{az-triage-watch}}](watches-and-workers.md) | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks. | {{az-alert-triage}}, {{az-attack-discovery}} |
-| [{{az-hunt-watch}}](watches-and-workers.md) | Hunts your data for activity described in {{az-threat-reports}}, before any alert fires. | {{az-continuous-threat-hunt}} |
-| [{{az-detection-watch}}](watches-and-workers.md) | Tunes noisy rules and proposes new rules for the gaps that the {{az-hunt-watch}} finds. | {{az-rule-tuning}}, {{az-rule-coverage}} |
-| [{{az-forensics-watch}}](watches-and-workers.md) | Investigates attacks that the {{az-triage-watch}} hands off and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
+| [{{az-triage-watch}}](configure-worker-settings.md) | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks. | {{az-alert-triage}}, {{az-attack-discovery}} |
+| [{{az-hunt-watch}}](configure-worker-settings.md) | Hunts your data for activity described in {{az-threat-reports}}, before any alert fires. | {{az-continuous-threat-hunt}} |
+| [{{az-detection-watch}}](configure-worker-settings.md) | Tunes noisy rules and proposes new rules for the gaps that the {{az-hunt-watch}} finds. | {{az-rule-tuning}}, {{az-rule-coverage}} |
+| [{{az-forensics-watch}}](configure-worker-settings.md) | Investigates attacks that the {{az-triage-watch}} hands off and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
 
 <!--
 Uncomment after elastic/docs-content#9118 merges. That PR adds a page for each Watch.
-Then use these links for the Watch names in the table, in place of the watches-and-workers.md links:
+Then use these links for the Watch names in the table, in place of the configure-worker-settings.md links:
 
 [{{az-triage-watch}}](watches/triage-watch.md)
 [{{az-hunt-watch}}](watches/hunt-watch.md)
@@ -36,7 +36,9 @@ Then use these links for the Watch names in the table, in place of the watches-a
 [{{az-forensics-watch}}](watches/forensics-watch.md)
 -->
 
-To learn how {{az-watches}} hand work to each other, refer to [](watches-and-workers.md).
+To learn how {{az-watches}} hand work to each other, refer to [](configure-worker-settings.md).
+
+% After elastic/docs-content#9118 merges, link the reference above to configure-worker-settings.md#alertzero-context-engine.
 
 ## How much {{az-workers}} can act on their own [alertzero-overview-autonomy]
 

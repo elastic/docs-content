@@ -27,7 +27,7 @@ products:
 
 In onboarding, every {{az-worker}} starts out selected, and at least one has to stay selected. Some {{az-workers}} build on each other's results, so check what depends on a {{az-worker}} before you turn it off. For example, the {{az-endpoint-analysis}} {{az-worker}} investigates only the attacks that the {{az-attack-discovery}} {{az-worker}} hands off, so if you turn off {{az-attack-discovery}}, {{az-endpoint-analysis}} has nothing to analyze.
 
-To decide which {{az-workers}} fit your environment and check what each one needs, refer to [](watches-and-workers.md). You can enable {{az-workers}} or turn them off later on their {{az-watch}} pages.
+To decide which {{az-workers}} fit your environment and check what each one needs, refer to [](configure-worker-settings.md). You can enable {{az-workers}} or turn them off later on their {{az-watch}} pages.
 
 ## Start the {{az-workers}} [alertzero-turn-on-workers]
 
