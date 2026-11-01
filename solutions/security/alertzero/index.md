@@ -11,34 +11,24 @@ products:
 
 # {{alertzero}} [alertzero-overview]
 
-{{alertzero}} adds AI-powered {{az-workers}} to {{elastic-sec}}. They triage alerts, hunt for threats, tune detection rules, and investigate attacks in the background. Changes they want to make, such as closing alerts, isolating a host, or editing a detection rule, come to you as {{az-proposed-actions}} to approve or decline.
+{{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}}, AI agents that each specialize in one kind of security work, triage alerts, hunt for threats, tune detection rules, and investigate attacks in the background. When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} that you approve or decline on the [{{alertzero}} home page](use-alertzero.md).
 
-You decide which {{az-workers}} run and [how much each one does without you](#alertzero-overview-autonomy).
+Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you decide. You control which {{az-workers}} run and [how much {{az-autonomy}} each one has](#alertzero-overview-autonomy).
 
-## How {{alertzero}} works [alertzero-how-it-works]
+## What {{az-workers}} take on [alertzero-overview-watches]
 
-Work moves from {{az-workers}} to you like this:
-
-1. Each {{az-worker}} runs in the background, either on a schedule or when another {{az-worker}} hands it work. When it finds a potential threat, it opens an {{az-investigation}}.
-2. The {{az-investigation}} collects the {{az-worker}}'s evidence, its conclusion, and any {{az-proposed-actions}}.
-3. You approve or decline each {{az-proposed-action}} on the **{{az-proposed-actions-cap}}** page. You can also assign, close, or [escalate](escalate-investigation.md) the {{az-investigation}}. Refer to [](use-alertzero.md).
-
-For example, the {{az-alert-triage}} {{az-worker}} classifies new alerts every 15 minutes by default. When it's confident that alerts are false positives, it proposes closing them, with one {{az-investigation}} for alerts that share a pattern. At {{az-manual}} {{az-autonomy}}, the default, nothing closes until you approve.
-
-## What {{alertzero}} covers [alertzero-overview-watches]
-
-Four {{az-watches}} group the {{az-workers}}, one {{az-watch}} for each area of work:
+{{alertzero}} has four {{az-watches}}, one for each area of security operations. Each {{az-watch}} brings together the {{az-workers}} for that area. In the {{az-triage-watch}}, for example, {{az-alert-triage}} classifies individual alerts, while {{az-attack-discovery}} connects related alerts into attacks.
 
 | {{az-watch}} | What it does | {{az-workers}} |
 | --- | --- | --- |
-| [{{az-triage-watch}}](configure-worker-settings.md) | Classifies incoming alerts, proposes closing false positives, and groups related alerts into attacks. | {{az-alert-triage}}, {{az-attack-discovery}} |
-| [{{az-hunt-watch}}](configure-worker-settings.md) | Searches your data for activity that matches {{az-threat-reports}}, without waiting for an alert. | {{az-continuous-threat-hunt}} |
-| [{{az-detection-watch}}](configure-worker-settings.md) | Proposes changes to rules that produce too many false positives, and proposes rules for the detection gaps that the {{az-hunt-watch}} finds. | {{az-rule-tuning}}, {{az-rule-coverage}} |
-| [{{az-forensics-watch}}](configure-worker-settings.md) | Investigates the attacks that the {{az-triage-watch}} hands off, and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
+| [{{az-triage-watch}}](watches-and-workers.md) | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks. | {{az-alert-triage}}, {{az-attack-discovery}} |
+| [{{az-hunt-watch}}](watches-and-workers.md) | Hunts your data for activity described in {{az-threat-reports}}, before any alert fires. | {{az-continuous-threat-hunt}} |
+| [{{az-detection-watch}}](watches-and-workers.md) | Tunes noisy rules and proposes new rules for the gaps that the {{az-hunt-watch}} finds. | {{az-rule-tuning}}, {{az-rule-coverage}} |
+| [{{az-forensics-watch}}](watches-and-workers.md) | Investigates attacks that the {{az-triage-watch}} hands off and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
 
 <!--
 Uncomment after elastic/docs-content#9118 merges. That PR adds a page for each Watch.
-Then use these links for the Watch names in the table above, in place of the configure-worker-settings.md links:
+Then use these links for the Watch names in the table, in place of the watches-and-workers.md links:
 
 [{{az-triage-watch}}](watches/triage-watch.md)
 [{{az-hunt-watch}}](watches/hunt-watch.md)
@@ -46,15 +36,15 @@ Then use these links for the Watch names in the table above, in place of the con
 [{{az-forensics-watch}}](watches/forensics-watch.md)
 -->
 
-For what each {{az-worker}} does and how {{az-watches}} pass work to each other, refer to [](configure-worker-settings.md).
+To learn how {{az-watches}} hand work to each other, refer to [](watches-and-workers.md).
 
-## How much {{az-workers}} do without you [alertzero-overview-autonomy]
+## How much {{az-workers}} can act on their own [alertzero-overview-autonomy]
 
-Every {{az-worker}} starts at {{az-manual}} {{az-autonomy}}, where each {{az-proposed-action}} waits for your approval. You can give some {{az-workers}} more {{az-autonomy}}, but only at {{az-supervised}} do they approve their own {{az-proposed-actions}}. Changes to detection rules always wait for you.
+Every {{az-worker}} starts at {{az-manual}} {{az-autonomy}}, so each {{az-proposed-action}} waits for your approval. You can raise the level for some {{az-workers}}. A {{az-worker}} approves its own {{az-proposed-actions}} only at {{az-supervised}}, and changes to detection rules always wait for you.
 
-For what each {{az-worker}} does at each of its levels, and to change a level, refer to [](configure-worker-settings.md#alertzero-worker-autonomy).
+To change a {{az-worker}}'s level, or to check what it does at each level, refer to [](configure-worker-settings.md#alertzero-worker-autonomy).
 
-## What {{alertzero}} costs [alertzero-costs]
+## What you're billed for [alertzero-costs]
 ```{applies_to}
 serverless:
   security: preview
@@ -62,18 +52,18 @@ deployment:
   ech: preview
 ```
 
-{{az-workers}} run as [workflows](/explore-analyze/workflows.md), and Elastic bills for workflow executions. Each {{az-worker}} run counts, along with the reviews and handoffs it starts, so {{az-workers}} that run more often cost more. For pricing, refer to [{{elastic-sec}} {{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) for {{serverless-short}} and [Execution-based billing](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing) for {{ech}}.
+{{az-workers}} can add to your bill in three ways:
+
+- **Workflow executions:** Each run of a {{az-hunt-watch}} or {{az-detection-watch}} {{az-worker}} counts as a [workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing). Runs of {{az-triage-watch}} and {{az-forensics-watch}} {{az-workers}} don't.
+- **{{agent-builder}} executions:** When a {{az-worker}} in any {{az-watch}} asks an AI agent to analyze its findings, each agent response counts as an [{{agent-builder}} execution](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
+- **AI model tokens:** If the space uses an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md), Elastic bills its model calls by token. Third-party model providers bill you directly.
+
+For rates and free monthly allowances, refer to [{{elastic-sec}} {{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) for {{serverless-short}} and [{{ech}} billing dimensions](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) for {{ech}}.
 
 ## Get started [alertzero-get-started]
 
-{{alertzero}} is off by default, and you set it up separately in each [space](/deploy-manage/manage-spaces.md):
+{{alertzero}} is off by default, and you turn it on separately in each [space](/deploy-manage/manage-spaces.md).
 
-1. [Set up {{alertzero}}](set-up-alertzero.md) in the space, starting with what it needs.
-2. Give your team the [privileges](alertzero-privileges.md) they need to view and decide {{az-proposed-actions}}.
-
-## Related pages [alertzero-overview-related]
-
+- [](set-up-alertzero.md): Turn on {{alertzero}} and start its {{az-workers}}.
+- [](alertzero-privileges.md): Give your team access to view and decide {{az-proposed-actions}}.
 - [](use-alertzero.md): Find the {{az-proposed-actions}} that need your decision.
-- [](configure-worker-settings.md): Learn what each {{az-watch}} and {{az-worker}} does, and change their settings.
-- [](manage-alertzero.md): Change how {{az-workers}} run, or turn {{alertzero}} off in a space.
-- [](glossary.md): Look up any {{alertzero}} term.

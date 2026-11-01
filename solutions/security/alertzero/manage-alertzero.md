@@ -1,5 +1,5 @@
 ---
-description: "Manage AlertZero in an Elastic Security space: change Worker settings, run Workers on demand, check their runs, recognize the indexes AlertZero adds, and turn AlertZero off."
+description: "Manage AlertZero in an Elastic Security space. Configure and manually run Workers, check their runs, and turn AlertZero off."
 applies_to:
   serverless:
     security: preview
@@ -11,26 +11,17 @@ products:
 
 # Manage {{alertzero}}
 
-After you [set up {{alertzero}}](set-up-alertzero.md), use these pages to manage it in each space:
+Control how {{alertzero}} runs in a space. You can change what its {{az-workers}} do, check how their runs went, and turn {{alertzero}} off when you no longer need it.
 
-- [](configure-worker-settings.md): Learn what each {{az-watch}} and {{az-worker}} does, turn {{az-workers}} on or off, and change their settings.
-- [](run-worker-on-demand.md): Run {{az-workers}} outside their schedule.
-- [](view-execution-history.md): See every {{az-worker}} run, including failures.
-
-To give people access to {{alertzero}}, refer to [](alertzero-privileges.md).
-
-## Indexes that {{alertzero}} adds [alertzero-indexes]
-
-{{alertzero}} adds two indexes, which you might notice in **Index Management**. {{alertzero}} creates and manages them, so you don't need to set them up.
-
-- `ai-index-idx-security-investigations`: The detection gaps and forensics handoffs that {{az-workers}} pass to each other through [{{context-engine}}](/explore-analyze/ai-features/context-engine.md). Refer to [](configure-worker-settings.md).
-- `ai-index-idx-security-attack-fingerprints`: Lets the {{az-attack-discovery}} {{az-worker}} recognize an attack it already reported, so it adds the attack to the open {{az-investigation}} instead of opening a new one.
+To enable {{az-workers}} or turn them off, set their {{az-autonomy}}, or change how often they run, refer to [](configure-worker-settings.md). You can also [manually run a {{az-worker}}](run-worker-on-demand.md) instead of waiting for its schedule, and [check each {{az-worker}}'s execution history](view-execution-history.md) to find runs that failed.
 
 ## Turn off {{alertzero}} [alertzero-turn-off]
 
-Turning off the advanced setting hides {{alertzero}} in the space, but its {{az-workers}} keep running. You can't reach the {{az-watch}} pages while the setting is off, so turn off the {{az-workers}} first:
+If you turn off {{alertzero}} while its {{az-workers}} are enabled, the {{az-workers}} keep running, and you can no longer reach the {{az-watch}} pages where you turn them off. Turn off the {{az-workers}} first.
 
 1. Turn off each {{az-worker}} on its {{az-watch}} page. Refer to [](configure-worker-settings.md).
-2. Turn off the **{{alertzero}}** advanced setting, in the same place where you [turned it on](set-up-alertzero.md#alertzero-turn-on).
+2. Find **Advanced Settings** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. In the **Security Solution** section, turn off the **{{alertzero}}** setting.
+4. Select **Save changes**, then select **Reload page**.
 
-% After elastic/docs-content#9118 merges, link the Configure Watches and Workers references above to configure-worker-settings.md#alertzero-context-engine and configure-worker-settings.md#alertzero-worker-on-off.
+% After elastic/docs-content#9118 merges, link the Configure Workers reference in step 1 to configure-worker-settings.md#alertzero-worker-on-off.

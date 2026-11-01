@@ -9,6 +9,6 @@ products:
   - id: cloud-serverless
 ---
 
-# Run a Worker on demand
+# Manually run a Worker
 
 Run a Worker outside its schedule.
