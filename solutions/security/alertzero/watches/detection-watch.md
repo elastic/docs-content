@@ -1,5 +1,5 @@
 ---
-description: "The AlertZero Detection Watch improves your Elastic Security detection rules at the source, and every change it proposes waits for your approval."
+description: "The AlertZero Detection Watch improves your Elastic Security detection rules at the source, and you approve every change before it reaches your rules."
 applies_to:
   serverless:
     security: preview
@@ -11,9 +11,18 @@ products:
 
 # {{az-detection-watch}}
 
-The {{az-detection-watch}} improves your detection rules at the source, instead of handling the alerts they produce one by one. Both of its {{az-workers}} build on another {{az-watch}}'s work:
+The {{az-detection-watch}} improves your detection rules at the source, instead of handling the alerts they produce one by one.
 
-- The [{{az-rule-tuning}} {{az-worker}}](rule-tuning-worker.md) tunes rules that produce too many false positives. It works from alerts closed as false positives, by people or by the [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md) in the [{{az-triage-watch}}](triage-watch.md).
-- The [{{az-rule-coverage}} {{az-worker}}](rule-coverage-worker.md) proposes rules for the detection gaps that the [{{az-hunt-watch}}](hunt-watch.md) finds.
+| {{az-worker}} | What it does | Works with |
+| --- | --- | --- |
+| [{{az-rule-tuning}}](rule-tuning-worker.md) | Tunes rules that produce too many false positives. | The [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md) in the [{{az-triage-watch}}](triage-watch.md), whose false positive closures this {{az-worker}} counts, along with the ones people make. |
+| [{{az-rule-coverage}}](rule-coverage-worker.md) | Proposes rules to close detection gaps. | The [{{az-continuous-threat-hunt}} {{az-worker}}](continuous-threat-hunt-worker.md) in the [{{az-hunt-watch}}](hunt-watch.md), which finds the detection gaps this {{az-worker}} proposes rules for. |
 
-Every change waits for your approval, because neither {{az-worker}} offers {{az-supervised}} {{az-autonomy}}. You decide their changes in the **Configure** section of the **{{az-proposed-actions-cap}}** page. Refer to [](../decide-detection-change.md).
+You review the {{az-watch}}'s proposed changes and rules in the **Configure** section of the **{{az-proposed-actions-cap}}** page. Neither {{az-worker}} offers **{{az-supervised}}** {{az-autonomy}}, so you approve every change before it reaches your rules. To learn how to approve a rule change or a new rule, refer to [](../decide-detection-change.md).
+
+## When to turn on the {{az-detection-watch}} [alertzero-detection-watch-when]
+
+Turn on the {{az-detection-watch}} when noisy rules or missing detections cost your team time:
+
+* Turn on the {{az-rule-tuning}} {{az-worker}} when a few rules produce most of your false positives. To learn whether your rules and data are a good fit, refer to [when to use {{az-rule-tuning}}](rule-tuning-worker.md#alertzero-rule-tuning-when-to-use).
+* Turn on the {{az-rule-coverage}} {{az-worker}} together with the [{{az-hunt-watch}}](hunt-watch.md), because it works only on the detection gaps that Watch records. To learn whether it fits your environment, refer to [when to use {{az-rule-coverage}}](rule-coverage-worker.md#alertzero-rule-coverage-when-to-use).
