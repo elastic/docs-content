@@ -303,6 +303,8 @@ For example, the following chat history panel shows one conversation in progress
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` There's no status for stopped or failed responses. If a response stops or fails in a conversation you aren't viewing, that conversation shows as **Unread**, like any other new activity. To see the stopped response or the error, open the conversation. For more information, refer to [Stopped and failed responses](#stopped-and-failed-responses).
 
+Opening a conversation marks it as read. To change the read status, click the **Open conversation menu** icon {icon}`boxes_vertical`, then select **Mark as read** or **Mark as unread**. The menu shows **Mark as read** when the conversation is unread and **Mark as unread** otherwise.
+
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
 #### Where the agent's progress appears
