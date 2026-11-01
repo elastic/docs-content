@@ -147,7 +147,7 @@ You can also filter from the table, so you don't need to enter the field name an
 
 :::{tip}
 :applies_to: { serverless: preview, stack: preview 9.3+ }
-If you know KQL, you can also filter from the editor's [search bar](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search). When you submit a KQL query there, Discover replaces your whole query with a `FROM` command and a `WHERE KQL()` line that contains your KQL query. Commands such as `KEEP` are removed, so to keep building on your query, use `WHERE`.
+If you know KQL, you can also filter from the editor's [search bar](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search). When you submit a KQL query there, the editor replaces the query with a source command (`TS` if the query starts with `TS`, otherwise `FROM`) and a `WHERE KQL()` line that contains your KQL query. Commands such as `KEEP` are removed, so to keep building on your query, use `WHERE`.
 :::
 
 ::::

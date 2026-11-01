@@ -67,7 +67,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **CSV download** — Generate and download CSV files of Lens visualizations.
 * **Download as JSON** {applies_to}`serverless: unavailable` — Generate and download JSON files of **Canvas** workpads.
 * **Export JSON**
-    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, preview 9.4-9.5` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
     * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
 
 :::{tip}
@@ -97,7 +97,9 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
     ::::{note}
-    To generate the report from outside of {{kib}} or from {{watcher}}, use the POST URL, then submit an HTTP `POST` request using a script or {{watcher}}.
+    To generate the report from outside of {{kib}}, use the POST URL, then submit an HTTP `POST` request using a script.
+
+    {applies_to}`serverless: unavailable` You can also trigger reports from [{{watcher}}](report-and-share/automating-report-generation.md#use-watcher).
 
     {applies_to}`stack: ga 9.1+` You can schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more. 
     ::::
