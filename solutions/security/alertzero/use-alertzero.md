@@ -1,5 +1,5 @@
 ---
-description: "Find the AlertZero proposed actions that need a decision, filter them by impacted entity, and assign, close, or escalate investigations in Elastic Security."
+description: "Find the AlertZero proposed actions that are waiting for you in Elastic Security, see which ones fit your role, and follow up on an investigation."
 applies_to:
   serverless:
     security: preview
@@ -9,50 +9,34 @@ products:
   - id: cloud-serverless
 ---
 
-# Use {{alertzero}} [alertzero-use]
+# Work through {{az-proposed-actions}} [alertzero-use]
 
-Your work in {{alertzero}} starts on the **{{az-proposed-actions-cap}}** page. It shows the {{az-proposed-actions}} waiting for your decision and the ones that closed recently. Use it to find what needs you, focus on one host, user, or service, and assign, close, or escalate {{az-investigations}}.
+{{az-workers}} do the analysis, and you decide what they bring you, such as which alerts to close, how to contain an attack, and which detection rules to change. Everything waiting for you is on the {{alertzero}} home page, the **{{az-proposed-actions-cap}}** page. To open it, select **{{alertzero}}** in the navigation menu.
 
-To open the page, select **{{alertzero}}** in the navigation menu. If no {{az-worker}} is on and no {{az-investigation}} exists yet, {{alertzero}} shows the [setup steps](set-up-alertzero.md) instead.
+Each card on the page is one {{az-proposed-action}}. Select a card to see the {{az-investigation}} behind it: the evidence the {{az-worker}} gathered and what it concluded.
 
-What you can see and do on this page depends on your privileges. Refer to [](alertzero-privileges.md).
+## Find the work for your role [alertzero-use-sections]
 
-## Find what needs a decision [alertzero-use-sections]
+The page groups {{az-proposed-actions}} by the kind of decision they need. If you cover more than one role, work through more than one section.
 
-The page header shows how many actions need you. Each card shows one {{az-investigation}} and its {{az-proposed-actions}}. {{alertzero}} sorts open {{az-proposed-actions}} into the **Respond**, **Investigate**, and **Configure** sections by the kind of action. Each section lists the newest first, along with approved {{az-proposed-actions}} that are still running.
-
-| Section | What it holds | To decide it, refer to |
+| Section | What you decide | Usually decided by |
 | --- | --- | --- |
-| **Respond** | Response actions for an attack, such as isolating a host | [](respond-to-attack.md) |
-| **Investigate** | Proposals to close false-positive alerts, and to hand attacks to forensics | [](decide-proposed-action.md#alertzero-decide-close-alerts) and [](respond-to-attack.md) |
-| **Configure** | Changes to detection rules | [](decide-detection-change.md) |
+| **Respond** | Response actions, such as isolating a host. Refer to [](respond-to-attack.md) and [](act-on-hunt-finding.md). | Incident responders and threat hunters |
+| **Investigate** | Whether to close false-positive alerts, and whether to send an attack for forensics. Refer to [](decide-proposed-action.md) and [](respond-to-attack.md). | Triage analysts |
+| **Configure** | Changes to detection rules. Refer to [](decide-detection-change.md). | Detection engineers |
 
-To open a {{az-proposed-action}}, select its card. For the steps every decision shares, refer to [](decide-proposed-action.md).
+To see only the work that involves one host, user, or service, select it under **Impact**. This helps when the same host turns up in several {{az-investigations}} and you want to handle them together.
 
-The **Closed Actions** section lists {{az-proposed-actions}} that closed in the last 72 hours. Refer to [](review-closed-proposed-actions.md).
+## Follow up on an {{az-investigation}} [alertzero-use-follow-up]
 
-If any {{az-worker}} runs failed in the past 24 hours, a callout lists the affected {{az-workers}}, with links to their failed runs in Workflows. Refer to [](view-execution-history.md).
+Besides approving or declining, you can:
 
-## Focus on one host, user, or service [alertzero-use-filter]
-
-In the **Impact** filter, select the entity. Every section, including **Closed Actions**, then shows only the {{az-investigations}} that affect it. To clear the filter, select the entity again.
-
-If the message "Impacted entities are unavailable" appears, you don't have the privileges to see impacted entities. Refer to [](alertzero-privileges.md).
-
-## Assign, close, or escalate {{az-investigations}} [alertzero-use-investigation]
-
-| To | Do this |
-| --- | --- |
-| Review the evidence and decide its {{az-proposed-actions}} | Select the card. The {{az-investigation}}'s details open in a flyout. |
-| Ask follow-up questions | Select **Open in chat**. |
-| Assign it to someone | Select {icon}`plus_circle` **Add or change assignees**. |
-| Share it | From the actions menu, select **Copy link**. |
-| Close it | From the actions menu, select **Close investigation**, then give a reason. Closing it also declines its pending {{az-proposed-actions}}. |
-| Reopen it | From the actions menu, select **Open investigation**. |
-| Escalate it | From the actions menu, select **Open an escalation** or **Attach to an escalation**. Refer to [](escalate-investigation.md). |
+- **Ask about the evidence:** Select **Open in chat** to ask the AI follow-up questions about the {{az-investigation}}, such as why the {{az-worker}} judged an alert a false positive.
+- **Hand it off:** Assign the {{az-investigation}} to a teammate, or [escalate it](escalate-investigation.md) to work on it with others.
+- **Dismiss everything at once:** Close the {{az-investigation}} to decline all its pending {{az-proposed-actions}} in one step.
 
 ## Next steps [alertzero-use-next]
 
-- [](decide-proposed-action.md): The steps every decision shares.
-- [](review-closed-proposed-actions.md): Check what happened to recent {{az-proposed-actions}}.
-- [](act-on-hunt-finding.md): Decide what to do about a hunt finding.
+- [](decide-proposed-action.md): Judge a {{az-proposed-action}}, approve or decline it, and check recent decisions.
+- [](respond-to-attack.md): Take an attack from verdict to containment.
+- [](decide-detection-change.md): Review a change to a detection rule.

@@ -1,5 +1,5 @@
 ---
-description: "Review an AlertZero proposed action in Elastic Security, then approve it to run the action or decline it, optionally with a reason. Status definitions explain each outcome."
+description: "Review an AlertZero proposed action in Elastic Security, approve or decline it, and check what happened to recent decisions, including ones Workers made on their own."
 applies_to:
   serverless:
     security: preview
@@ -11,36 +11,25 @@ products:
 
 # Decide a {{az-proposed-action}} [alertzero-decide]
 
-Approve or decline the {{az-proposed-actions}} that {{az-workers}} bring you, such as closing false-positive alerts, isolating a host, or changing a detection rule. These steps are the same for every {{az-worker}}. For what to check on a specific kind of action, refer to [](decide-detection-change.md), [](respond-to-attack.md), and [](act-on-hunt-finding.md).
-
-## Before you begin [alertzero-decide-before]
-
-- You need the privileges to decide {{az-proposed-actions}}. Approving an action doesn't give you the privileges to run it. An approved action runs as you, so if you don't have the privileges for the action itself, it fails. Refer to [](alertzero-privileges.md).
-- Decisions are final. After someone approves or declines, nobody can change the decision.
-- By default, {{az-proposed-actions}} expire after 72 hours without a decision. After that, nobody can approve them.
+Approve or decline the {{az-proposed-actions}} that {{az-workers}} bring you, such as closing false-positive alerts, isolating a host, or changing a detection rule. These steps are the same for every {{az-worker}}. For what to check on a specific kind of action, refer to [](respond-to-attack.md), [](act-on-hunt-finding.md), and [](decide-detection-change.md).
 
 ## Review the {{az-proposed-action}} [alertzero-decide-review]
 
 1. In the navigation menu, select **{{alertzero}}**. The **{{az-proposed-actions-cap}}** page opens.
-2. Select the {{az-investigation}}'s card. Its details open in a flyout.
-3. In the **{{az-proposed-actions-cap}}** section, select the {{az-proposed-action}} you want to review.
+2. Select the {{az-proposed-action}}'s card. Its {{az-investigation}} opens in a flyout.
+3. In the **{{az-proposed-actions-cap}}** section, select the {{az-proposed-action}}.
 4. Before you decide, check:
-    - The {{az-worker}}'s description of the action and why it proposes it.
+    - What the {{az-worker}} wants to do, and why.
     - Whether the action is **Reversible** or **Irreversible**.
     - How much impact the action has.
-    - When the {{az-proposed-action}} expires.
+    - When the {{az-proposed-action}} expires. By default, nobody can approve it after 72 hours.
 
-## Approve the {{az-proposed-action}} [alertzero-decide-approve]
+## Approve or decline [alertzero-decide-approve]
 
-Select **Approve**. The action starts immediately and runs as you. The status changes to **Applying**, then to **Applied** when the action finishes, or **Failed** if it doesn't.
+- **To approve:** Select **Approve**. The action starts immediately and runs as you. Its status changes to **Applying**, then to **Applied** when the action finishes, or **Failed** if it doesn't. If your role doesn't allow the action, it fails, and {{alertzero}} can offer it again so someone else can approve it.
+- **To decline:** Select **Decline**, optionally select a reason, such as **Not a real issue (false positive)**, then select **Decline** again.
 
-If the action fails, {{alertzero}} can offer it again as a new {{az-proposed-action}} with the same expiry.
-
-## Decline the {{az-proposed-action}} [alertzero-decide-decline]
-
-1. Select **Decline**.
-2. Optionally, select a reason, such as **Not a real issue (false positive)**. If you select **Other**, enter a description.
-3. Select **Decline** again.
+You can't change a decision after you make it.
 
 ## Decide whether to close false-positive alerts [alertzero-decide-close-alerts]
 
@@ -51,18 +40,8 @@ The {{az-alert-triage}} {{az-worker}} proposes closing alerts it's confident are
 
 At {{az-supervised}} {{az-autonomy}}, {{az-alert-triage}} closes false positives without waiting for you, and you can reopen any you disagree with.
 
-## When {{az-workers}} decide for you [alertzero-decide-after]
+## Check recent decisions [alertzero-decide-closed]
 
-At {{az-supervised}} {{az-autonomy}}, {{az-workers}} approve their own {{az-proposed-actions}}. To check those decisions afterward, refer to [](review-closed-proposed-actions.md). To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
+To see what happened to {{az-proposed-actions}} decided in the last 72 hours, expand **Closed Actions** at the bottom of the **{{az-proposed-actions-cap}}** page. Each card shows who decided it and how it turned out. **Auto** means a {{az-worker}} at {{az-supervised}} {{az-autonomy}} approved it without a person. To check its evidence, select the card.
 
-## {{az-proposed-action-cap}} statuses [alertzero-decide-statuses]
-
-| Status | What it means |
-| --- | --- |
-| **Needs review** | Waiting for a decision. |
-| **Applying** | Approved, and the action is running. |
-| **Applied** | Approved, and the action finished. |
-| **Failed** | Approved, but the action didn't finish. |
-| **Approved** | Approved, with no action to run. |
-| **Declined** | Someone declined it. |
-| **Expired** | Nobody decided it in time. |
+After 72 hours, closed {{az-proposed-actions}} stay in their {{az-investigation}}'s details.
