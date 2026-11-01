@@ -1719,5 +1719,3 @@ redirects:
   'reference/autoops-insights/vector_memory_pressure.md': 'autoops-insights://elasticsearch/vector_memory_pressure.md'
   'reference/autoops-insights/version_is_outdated.md': 'autoops-insights://elasticsearch/version_is_outdated.md'
   'reference/autoops-insights/write_queue_size.md': 'autoops-insights://elasticsearch/write_queue_size.md'
-  # related to https://github.com/elastic/docs-content/pull/9118
-  'solutions/security/alertzero/watches-and-workers.md': 'solutions/security/alertzero/configure-worker-settings.md'

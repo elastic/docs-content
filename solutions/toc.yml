@@ -720,8 +720,8 @@ toc:
                   - file: security/get-started/spaces-defend-faq.md
               - file: security/get-started/data-views-elastic-security.md
               - file: security/get-started/create-runtime-fields-in-elastic-security.md
-      # TEMPORARY: The AlertZero landing page, Manage AlertZero, Configure Watches and Workers, and the
-      # Watch and Worker pages below are unhidden so the PR preview shows their structure in the nav
+      # TEMPORARY: The AlertZero landing page, Watches and Workers, Manage AlertZero, Configure Workers,
+      # and the Watch and Worker pages below are unhidden so the PR preview shows their structure in the nav
       # (elastic/docs-content#9118). If AlertZero should stay hidden when you merge the AlertZero PRs,
       # change these `file:` entries back to `hidden:`.
       - file: security/alertzero/index.md
@@ -740,24 +740,25 @@ toc:
               - hidden: security/alertzero/act-on-hunt-finding.md
               - hidden: security/alertzero/review-closed-proposed-actions.md
           # TEMPORARY: Unhidden for the PR preview. Refer to the comment on security/alertzero/index.md.
+          - file: security/alertzero/watches-and-workers.md
+            children:
+              - file: security/alertzero/watches/triage-watch.md
+                children:
+                  - file: security/alertzero/watches/alert-triage-worker.md
+                  - file: security/alertzero/watches/attack-discovery-worker.md
+              - file: security/alertzero/watches/detection-watch.md
+                children:
+                  - file: security/alertzero/watches/rule-tuning-worker.md
+                  - file: security/alertzero/watches/rule-coverage-worker.md
+              - file: security/alertzero/watches/hunt-watch.md
+                children:
+                  - file: security/alertzero/watches/continuous-threat-hunt-worker.md
+              - file: security/alertzero/watches/forensics-watch.md
+                children:
+                  - file: security/alertzero/watches/endpoint-analysis-worker.md
           - file: security/alertzero/manage-alertzero.md
             children:
               - file: security/alertzero/configure-worker-settings.md
-                children:
-                  - file: security/alertzero/watches/triage-watch.md
-                    children:
-                      - file: security/alertzero/watches/alert-triage-worker.md
-                      - file: security/alertzero/watches/attack-discovery-worker.md
-                  - file: security/alertzero/watches/detection-watch.md
-                    children:
-                      - file: security/alertzero/watches/rule-tuning-worker.md
-                      - file: security/alertzero/watches/rule-coverage-worker.md
-                  - file: security/alertzero/watches/hunt-watch.md
-                    children:
-                      - file: security/alertzero/watches/continuous-threat-hunt-worker.md
-                  - file: security/alertzero/watches/forensics-watch.md
-                    children:
-                      - file: security/alertzero/watches/endpoint-analysis-worker.md
               - hidden: security/alertzero/run-worker-on-demand.md
               - hidden: security/alertzero/view-execution-history.md
           - hidden: security/alertzero/glossary.md

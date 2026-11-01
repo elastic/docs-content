@@ -12,3 +12,5 @@ products:
 # AlertZero privileges
 
 Learn which privileges let users view, configure, and decide in AlertZero.
+
+% When this page is written, cover that changing Workers needs the `manage_security` cluster privilege, and warn that it also lets a user manage users and roles across the cluster, so it shouldn't be granted only for AlertZero.
