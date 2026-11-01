@@ -1,6 +1,6 @@
 ---
 navigation_title: "Connect agents and workflows"
-description: "Learn how Agent Builder works with Elastic Workflows, including creating workflows from chat, workflow tools, pre-execution workflows, and the `ai.agent` step."
+description: "Learn how Agent Builder works with Elastic Workflows, including creating workflows from chat, workflow tools, pre-execution and post-execution workflows, and the `ai.agent` step."
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
@@ -21,7 +21,7 @@ Elastic Workflows and {{agent-builder}} combine deterministic automation with co
 There are three ways to use {{agent-builder}} and workflows together:
 
 * **Create workflows from Agent Chat**: {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Create and edit workflows by describing what you want [in plain language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md). {{kib}} generates and updates the workflow YAML for you, so you can quickly build without memorizing step types or Liquid syntax. 
-* **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md) {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`, or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
+* **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md) {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`, assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning, or assign [post-execution workflows](#post-execution-workflows) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` that run after the agent finishes responding.
 * **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). To add context to a conversation without triggering an agent response, use the [conversation steps](#add-conversation-context-workflow) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`. For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
 
 ## Prerequisites [prerequisites]
@@ -101,6 +101,115 @@ Agents keep running these workflows whenever Elastic Workflows is turned on, eve
 ### Recover agents blocked by a disabled workflow [recover-blocked-agents]
 
 Disabling a workflow doesn't remove it from the agents or spaces that use it. Until you remove the workflow, every message to the affected agents fails. Refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
+
+## Post-execution workflows [post-execution-workflows]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Post-execution workflows run once after the agent finishes responding. Use them to audit the exchange, open a ticket, notify a channel, or grade the answer. They can't change the response. If a workflow fails or is disabled, the agent's answer stays in place. {{kib}} logs the failure and still runs any later workflows assigned to the agent. A disabled workflow fails before an execution is recorded, so it doesn't appear in [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history).
+
+A post-execution workflow doesn't run while the agent is paused on a [human-in-the-loop prompt](chat.md#human-in-the-loop-prompts). It runs after the user answers and the agent finishes that response.
+
+The [prerequisites](#prerequisites) apply here too. You assign post-execution workflows on an individual agent. There is no space setting.
+
+:::{note}
+Configuring an agent's post-execution workflows requires a role that grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role. You can't grant this from the {{kib}} role management UI. Without it, the **Workflows** selector is unavailable. On the **Settings** tab, the help text is `Only administrators can configure post-execution workflows.` Changing `post_execution_workflow_ids` through the API without that privilege returns a `400` error with the same message. Sending the current list unchanged is allowed.
+:::
+
+The workflow runs as the same identity as the agent. When the agent runs as the user who sent the message, the workflow does too. When the agent runs as a service account, the workflow starts as that account. A workflow that sets `settings.run_as` uses that service account instead. The workflow's output is ignored. On the workflow execution, `execution.triggeredBy` is `agent-builder-hook`. A workflow can check that value and skip runs that someone started directly. Refer to [`execution.triggeredBy`](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution).
+
+### Assign post-execution workflows to an agent [assign-post-execution-workflows-to-an-agent]
+
+1. Select **Manage components** at the bottom of the left sidebar to open the **Agents** list.
+2. Select an agent, then select **Settings**.
+3. Under **Post-execution workflow**, select one or more workflows in **Workflows**.
+4. Select **Save**.
+
+When more than one workflow is assigned, they run in the listed order. {{agent-builder}} waits up to 120 seconds for each workflow to finish before it starts the next. A workflow that is still running after that wait doesn't block the workflows that follow. On the agent overview, **Post-execution workflows** shows **Enabled** when the agent has at least one post-execution workflow and **Not set** when it has none.
+
+To confirm the setup, send a message to the agent, then check that the run appears in the workflow's [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history).
+
+You can also set the agent field `configuration.post_execution_workflow_ids` through the [Agent Builder API]({{kib-apis}}group/endpoint-agent-builder). The following request assigns one workflow:
+
+```console
+PUT kbn:/api/agent_builder/agents/<agent_id>
+{
+  "configuration": {
+    "post_execution_workflow_ids": ["<workflow_id>"]
+  }
+}
+```
+
+The update replaces only the keys you send, so the agent keeps its instructions, tools, skills, and other settings. You can list up to 100 workflow IDs. Each ID can be at most 512 characters.
+
+### Workflow inputs [post-execution-workflow-inputs]
+
+Declare the inputs the workflow should receive on its manual trigger. Refer to [`inputs`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs). Inside the workflow, reference them as `{{ inputs.prompt }}`.
+
+{{agent-builder}} always sends these inputs:
+
+| Input | Contains |
+|---|---|
+| `prompt` | The user message for this response. An empty string when the response has no user message. |
+| `response` | The agent's final answer. An empty string when the response has no answer text. |
+| `round_id` | The ID of the completed round. |
+| `tool_calls` | One entry for each tool the agent called, with `tool_id`, `tool_call_id`, and `params`. An empty array when the agent called no tools. |
+
+These inputs are sent when the run has them. Declaring them doesn't stop {{agent-builder}} from sending them.
+
+| Input | Contains |
+|---|---|
+| `conversation_id` | The conversation ID. Omitted when the run has none. |
+| `agent_id` | The agent ID. Omitted when the run has none. |
+
+These inputs are sent only when the workflow declares them:
+
+| Input | Contains |
+|---|---|
+| `round_connector_id` | The connector the agent used for this response. Omitted when that ID is missing, blank, or `unknown`. |
+| `workflow_context` | State a pre-execution workflow saved for this response. An object keyed by namespace. Each namespace has a numeric `version` and a `data` object. Omitted when this response has none. |
+| `tool_results` | Results for tool calls that returned results. Each entry has `tool_id`, `tool_call_id`, and `results`. A tool call with no results stays in `tool_calls` and is left out of `tool_results`. Omitted entirely, including when the workflow declares it, when no tool call returned results. |
+
+`tool_results` can be large, so {{agent-builder}} shortens each result before the workflow receives it. Each string in the result data is cut at 4,000 characters, and each array is cut at 50 items. If that result data is still larger than 32,000 characters, the result is replaced with `type: other` and `data` set to `{ "omitted": "result data exceeded 32000 characters" }`.
+
+If the workflow sets `additionalProperties: false`, declare every input {{agent-builder}} sends, including `conversation_id` and `agent_id` when the run has them. Otherwise the run can fail input validation.
+
+```yaml
+triggers:
+  - type: manual
+    inputs:
+      properties:
+        prompt:
+          type: string
+        response:
+          type: string
+        conversation_id:
+          type: string
+        round_id:
+          type: string
+        agent_id:
+          type: string
+        round_connector_id:
+          type: string
+        workflow_context:
+          type: object
+        tool_calls:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        tool_results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      additionalProperties: false
+```
+
+To keep an input out of the workflow, remove `round_connector_id`, `workflow_context`, or `tool_results` from the manual trigger. `prompt`, `response`, `round_id`, `tool_calls`, `conversation_id`, and `agent_id` are sent whenever the run has them, whether or not the workflow declares them.
 
 ## Use the `ai.agent` step [use-ai-agent-workflow-step]
 

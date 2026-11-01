@@ -108,6 +108,18 @@ For details, refer to [Pre-execution workflows](agents-and-workflows.md#pre-exec
 
 :::::
 
+:::::{step} Configure post-execution workflows (optional)
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Users whose role grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role, can assign workflows that run once after the agent finishes responding. The workflows can't change or discard the answer.
+
+For details, refer to [Post-execution workflows](agents-and-workflows.md#post-execution-workflows).
+
+:::::
+
 :::::{step} Set access control
 ```{applies_to}
 stack: ga 9.4+
