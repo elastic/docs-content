@@ -29,7 +29,7 @@ By default, the {{az-alert-triage}} {{az-worker}} proposes closing an alert only
     - **If you approve:** The alerts close as false positives, and the closure runs under your account. The {{az-attack-discovery}} {{az-worker}} skips closed alerts, so closing a real threat by mistake might hide part of an attack.
     - **If you decline:** The {{az-alert-triage}} {{az-worker}} tags the alerts `az:inconclusive` and leaves them open.
 
-    By default, a {{az-proposed-action}} expires after 72 hours. If nobody decides before then, the {{az-alert-triage}} {{az-worker}} tags its alerts `az:inconclusive` and leaves them open, as it does when you decline.
+    A {{az-proposed-action}} expires after 72 hours. If nobody decides before then, the {{az-alert-triage}} {{az-worker}} tags its alerts `az:inconclusive` and leaves them open, as it does when you decline.
 
 ## Reopen alerts closed by mistake [alertzero-decide-reopen]
 
