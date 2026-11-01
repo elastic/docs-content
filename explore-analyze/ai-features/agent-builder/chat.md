@@ -405,35 +405,35 @@ serverless: ga
 
 After the agent finishes responding, rate that response with the **Good response** icon {icon}`thumbUp` or the **Bad response** icon {icon}`thumbDown`. The icons appear with the other response actions, such as **Copy response**.
 
-Only the conversation owner can view the icons. The icons stay hidden when:
+Only the conversation owner can view the icons, so they don't appear when you view a [shared or public conversation](#share-a-conversation) that you don't own. The icons also stay hidden when:
 
 - The agent is still responding.
 - The response has [stopped or failed](#stopped-and-failed-responses).
-- The conversation is read-only. A read-only conversation shows a **Read-Only** badge and its history, and has no chat input.
-- You are viewing a [shared or public conversation](#share-a-conversation) that you don't own.
+- The conversation is read-only. Conversations created through the API as read-only show a **Read-Only** badge and have no chat input.
 
-To rate a response as helpful, select the **Good response** icon. The actions then show **Glad it helped!** and **Tell us more**.
+To rate a response as helpful, select the **Good response** icon. The icons are replaced by **Glad it helped!** and **Tell us more**.
 
-- Select **Tell us more** to open **What worked well?**. Select any of **Accurate**, **Useful**, and **Well explained**. You can select more than one. In the **Add comment** field, enter an optional comment of up to 500 characters. Then select **Submit**.
+- Select **Tell us more** to open the **What worked well?** dialog. Select any of **Accurate**, **Useful**, and **Well explained**. You can select more than one.
 - Select the **Dismiss** icon {icon}`cross` to keep the rating without extra detail.
 
-To rate a response as unhelpful, select the **Bad response** icon. **What went wrong?** opens.
+To rate a response as unhelpful, select the **Bad response** icon. The **What went wrong?** dialog opens. Select any of **Inaccurate**, **Incomplete**, and **Didn't follow instructions**. You can select more than one.
 
-- Select any of **Inaccurate**, **Incomplete**, and **Didn't follow instructions**. You can select more than one. In the **Add comment** field, enter an optional comment of up to 500 characters, then select **Submit**.
-- Select **Cancel**, or close the dialog, to keep the rating without extra detail.
+In either dialog, you can enter an optional comment of up to 500 characters in the **Add comment** field. Select **Submit** to send the details. The actions briefly show **Thank you for your feedback**. To keep the rating without extra detail, select **Cancel** or close the dialog.
 
-The dialog shows this notice: "Your comment and metadata will be shared with Elastic." It also includes a **Privacy statement** link. When you rate a response, Elastic receives:
+To change a rating, select the other icon. If **Glad it helped!** is showing, select **Dismiss** first to bring the icons back. This clears any options and comment you submitted for the previous rating. To remove a rating, select the highlighted icon again. This also deletes any options and comment you submitted. Your rating stays on the response when you reload the page.
 
+Both dialogs show this notice: "Your comment and metadata will be shared with Elastic." When [telemetry](kibana://reference/configuration-reference/telemetry-settings.md) is turned on, Elastic receives the following each time you rate a response, submit details, or remove a rating:
+
+- Whether you rated the response as good or bad
 - The options you select
 - Your comment, when you add one
+- The conversation ID, the response ID, and the trace ID
+- The agent ID
 - The connector and the model
-- The agent ID and the trace id
 - The input and output token counts
 - The number of model calls
 
-For details, refer to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
-
-Select the active **Good response** or **Bad response** icon again to remove the rating. After you select **Submit**, the actions briefly show **Thank you for your feedback**.
+Elastic doesn't receive the text of your messages or of the agent's responses. In {{serverless-short}}, telemetry is always on. For details, refer to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
 
 ### Stopped and failed responses [stopped-and-failed-responses]
 ```{applies_to}
@@ -461,7 +461,7 @@ The end of the response shows why it ended:
 Stopped and failed responses:
 
 - Stay in the conversation when you reload the page or open another conversation.
-- Don't include the **Copy response** icon, the response metadata menu, the [View Trace icon](#view-traces), or the **Good response** and **Bad response** icons. Refer to [Rate a response](#rate-a-response).
+- Don't include the **Copy response** icon, the response metadata menu, the [View Trace icon](#view-traces), or the [**Good response** and **Bad response** icons](#rate-a-response).
 - Can't be retried. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
 
 ### Call a specific API operation [call-a-specific-api-operation]
