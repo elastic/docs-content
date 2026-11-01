@@ -18,7 +18,7 @@ Each {{az-watch}} groups the {{az-workers}} for one area of work. {{alertzero}} 
 Each {{az-watch}} has its own page in {{alertzero}}, where you turn its {{az-workers}} on or off and change their settings. On that page, every {{az-worker}} has these settings:
 
 - **{{az-autonomy-cap}}**: Its [{{az-autonomy}}](glossary.md#alertzero-glossary-autonomy) level. Each {{az-worker}} offers only the levels that suit its work, and starts at {{az-manual}}. Refer to [What each {{az-worker}} does without you](#alertzero-worker-autonomy-levels).
-- **Models**: A link to **Feature Settings**, where you select the models that {{alertzero}} uses in the space. A {{az-worker}} has no model setting of its own.
+- **Models**: A link to **Feature Settings**, where you select the models that {{alertzero}} uses in the space. {{az-workers}} have no model setting of their own.
 
 {{az-workers}} that run on a schedule also have a **Trigger** that sets how often they run. Some {{az-workers}} have more settings, which their pages list. To change settings, refer to [](configure-worker-settings.md).
 
@@ -46,13 +46,13 @@ Every {{az-worker}} starts at {{az-manual}}, and each one offers at most one oth
 | {{az-rule-tuning}} | You approve each rule before it analyzes the rule. Every change waits for your approval. | {{az-assisted}}: It analyzes every rule that qualifies without asking. Every change still waits for your approval. |
 | {{az-rule-coverage}} | You approve each gap before it drafts a rule. Every rule waits for your approval. | {{az-assisted}}: It drafts a rule for every gap without asking. Every rule still waits for your approval. |
 
-To change a {{az-worker}}'s level, refer to [](configure-worker-settings.md).
+To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
 
 % Add rows for Continuous Threat Hunt and Endpoint Analysis when their pages are written.
 
 ## How {{az-watches}} pass work to each other [alertzero-context-engine]
 
-Some {{az-workers}} pick up work that a {{az-worker}} in another {{az-watch}} started. They pass it through [{{context-engine}}](/explore-analyze/ai-features/context-engine.md), which stores information that AI features share:
+Some {{az-workers}} pick up work that {{az-workers}} in other {{az-watches}} started. They pass it through [{{context-engine}}](/explore-analyze/ai-features/context-engine.md), which stores information that AI features share:
 
 - **Detection gaps:** The {{az-hunt-watch}} records each detection gap it finds. The [{{az-rule-coverage}} {{az-worker}}](watches/rule-coverage-worker.md) picks up each gap and proposes a rule for it.
 - **Forensics handoffs:** When the [{{az-attack-discovery}} {{az-worker}}](watches/attack-discovery-worker.md) hands an attack to the {{az-forensics-watch}}, it records the handoff. The [{{az-endpoint-analysis}} {{az-worker}}](watches/endpoint-analysis-worker.md) picks up the handoff and investigates the affected hosts.
