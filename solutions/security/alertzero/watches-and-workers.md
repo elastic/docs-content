@@ -11,29 +11,44 @@ products:
 
 # {{az-watches}} and {{az-workers}} [alertzero-watches-and-workers]
 
-Each {{az-watch}} groups the {{az-workers}} for one area of work. {{alertzero}} includes four {{az-watches}}: the [{{az-triage-watch}}](watches/triage-watch.md), the [{{az-detection-watch}}](watches/detection-watch.md), the [{{az-hunt-watch}}](watches/hunt-watch.md), and the [{{az-forensics-watch}}](watches/forensics-watch.md). Each {{az-worker}} has its own page that covers what it does, what it needs, its settings, and where its work appears.
+Each {{az-watch}} groups the {{az-workers}} for one area of work. {{alertzero}} includes four {{az-watches}}: the [{{az-triage-watch}}](watches/triage-watch.md), the [{{az-detection-watch}}](watches/detection-watch.md), the [{{az-hunt-watch}}](watches/hunt-watch.md), and the [{{az-forensics-watch}}](watches/forensics-watch.md). Each {{az-worker}} has its own page that covers what it does, its settings, and its limits.
 
 ## Settings every {{az-worker}} has [alertzero-shared-worker-settings]
 
 Each {{az-watch}} has its own page in {{alertzero}}, where you turn its {{az-workers}} on or off and change their settings. On that page, every {{az-worker}} has these settings:
 
-- **{{az-autonomy-cap}}**: Its [{{az-autonomy}}](glossary.md#alertzero-glossary-autonomy) level. Each {{az-worker}} offers only the levels that suit its work, and starts at {{az-manual}}.
+- **{{az-autonomy-cap}}**: Its [{{az-autonomy}}](glossary.md#alertzero-glossary-autonomy) level. Each {{az-worker}} offers only the levels that suit its work, and starts at {{az-manual}}. Refer to [What each {{az-worker}} does without you](#alertzero-worker-autonomy-levels).
 - **Models**: A link to **Feature Settings**, where you select the models that {{alertzero}} uses in the space. A {{az-worker}} has no model setting of its own.
 
 {{az-workers}} that run on a schedule also have a **Trigger** that sets how often they run. Some {{az-workers}} have more settings, which their pages list. To change settings, refer to [](configure-worker-settings.md).
 
 ## Compare {{az-workers}} [alertzero-compare-workers]
 
-The following table lists each {{az-worker}}'s default schedule, the {{az-autonomy}} levels it offers, and the section of the **{{az-proposed-actions-cap}}** page where its work appears.
+The following table lists each {{az-worker}}'s default schedule and the section of the **{{az-proposed-actions-cap}}** page where its work appears.
 
-| {{az-worker}} | {{az-watch}} | Runs by default | {{az-autonomy-cap}} levels | {{az-proposed-actions-cap}} section |
-| --- | --- | --- | --- | --- |
-| [{{az-alert-triage}}](watches/alert-triage-worker.md) | {{az-triage-watch}} | Every 15 minutes | {{az-manual}}, {{az-supervised}} | **Investigate** |
-| [{{az-attack-discovery}}](watches/attack-discovery-worker.md) | {{az-triage-watch}} | Every 24 hours | {{az-manual}}, {{az-supervised}} | **Investigate** |
-| [{{az-rule-tuning}}](watches/rule-tuning-worker.md) | {{az-detection-watch}} | Every 2 hours | {{az-manual}}, {{az-assisted}} | **Configure** |
-| [{{az-rule-coverage}}](watches/rule-coverage-worker.md) | {{az-detection-watch}} | Every hour | {{az-manual}}, {{az-assisted}} | **Configure** |
+| {{az-worker}} | {{az-watch}} | Runs by default | {{az-proposed-actions-cap}} section |
+| --- | --- | --- | --- |
+| [{{az-alert-triage}}](watches/alert-triage-worker.md) | {{az-triage-watch}} | Every 15 minutes | **Investigate** |
+| [{{az-attack-discovery}}](watches/attack-discovery-worker.md) | {{az-triage-watch}} | Every 24 hours | **Investigate** |
+| [{{az-rule-tuning}}](watches/rule-tuning-worker.md) | {{az-detection-watch}} | Every 2 hours | **Configure** |
+| [{{az-rule-coverage}}](watches/rule-coverage-worker.md) | {{az-detection-watch}} | Every hour | **Configure** |
 
 % Add rows for the Hunt Watch and Forensics Watch Workers when their pages are written.
+
+## What each {{az-worker}} does without you [alertzero-worker-autonomy-levels]
+
+Every {{az-worker}} starts at {{az-manual}}, and each one offers at most one other level. Changes to detection rules always wait for you, because the {{az-rule-tuning}} and {{az-rule-coverage}} {{az-workers}} don't offer {{az-supervised}}.
+
+| {{az-worker}} | At {{az-manual}} | At its other level |
+| --- | --- | --- |
+| {{az-alert-triage}} | Every closure waits for your approval. | {{az-supervised}}: It closes false positives itself, and you can reopen any you disagree with. |
+| {{az-attack-discovery}} | Every handoff to the {{az-forensics-watch}} waits for your approval. It closes false positives on its own. | {{az-supervised}}: It also hands attacks off without waiting for you. |
+| {{az-rule-tuning}} | You approve each rule before it analyzes the rule. Every change waits for your approval. | {{az-assisted}}: It analyzes every rule that qualifies without asking. Every change still waits for your approval. |
+| {{az-rule-coverage}} | You approve each gap before it drafts a rule. Every rule waits for your approval. | {{az-assisted}}: It drafts a rule for every gap without asking. Every rule still waits for your approval. |
+
+To change a {{az-worker}}'s level, refer to [](configure-worker-settings.md).
+
+% Add rows for Continuous Threat Hunt and Endpoint Analysis when their pages are written.
 
 ## How {{az-watches}} pass work to each other [alertzero-context-engine]
 

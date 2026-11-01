@@ -1,5 +1,5 @@
 ---
-description: "Find what the AlertZero Rule Tuning Worker does, what it needs, its settings, and where its work appears in Elastic Security."
+description: "Find what the AlertZero Rule Tuning Worker does in Elastic Security, the false positive thresholds that decide which rules it tunes, and its limits."
 applies_to:
   serverless:
     security: preview
@@ -11,31 +11,15 @@ products:
 
 # {{az-rule-tuning}} {{az-worker}}
 
-The {{az-rule-tuning}} {{az-worker}} belongs to the [{{az-detection-watch}}](detection-watch.md). It finds rules that produce too many false positives and proposes one change per rule to reduce them.
+The {{az-rule-tuning}} {{az-worker}} finds rules that produce too many false positives and proposes one change per rule to reduce them. It's part of the [{{az-detection-watch}}](detection-watch.md).
 
-It checks how many false positives each enabled rule produced in its analysis window. For each rule that meets both false positive thresholds, it opens an {{az-investigation}}, diagnoses the cause, and proposes one change to the rule's exceptions, query, risk score, threshold, or schedule. Most changes come with a backtest that compares the alerts the rule produced with the alerts it would have produced after the change.
+It checks how many false positives each enabled rule produced in its analysis window. For each rule that meets both false positive thresholds, it opens an {{az-investigation}}, diagnoses the cause, and proposes one change to the rule's exceptions, query, risk score, threshold, or schedule. Most changes come with a backtest that compares the alerts the rule produced with the alerts it would have produced after the change. It works from alerts closed as false positives, by people or by the [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md).
 
-## Requirements [alertzero-rule-tuning-requirements]
-
-The {{az-rule-tuning}} {{az-worker}} needs alerts closed as false positives, by people or by the [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md).
+By default, it runs every 2 hours. It offers {{az-manual}} and {{az-assisted}} {{az-autonomy}}, and at either level, every change waits for your approval. Refer to [what it does at each level](../watches-and-workers.md#alertzero-worker-autonomy-levels).
 
 ## Settings [alertzero-rule-tuning-settings]
 
-Find these settings on the {{az-detection-watch}} page. To change them, refer to [](../configure-worker-settings.md).
-
-**{{az-autonomy-cap}}**
-:   How much it does without waiting for you. At either level, every change waits for your approval. Default: {{az-manual}}.
-
-    * **{{az-manual}}**: You approve each rule before it analyzes the rule.
-    * **{{az-assisted}}**: It analyzes every rule that qualifies without asking.
-
-**Trigger**
-:   How often it runs, in minutes, hours, or days.
-
-    Default: every 2 hours.
-
-**Models**
-:   A link to **Feature Settings**, where you select the models that {{alertzero}} uses in the space.
+Besides the [settings every {{az-worker}} has](../watches-and-workers.md#alertzero-shared-worker-settings), {{az-rule-tuning}} has these settings:
 
 **Analysis window (days)**
 :   How many days of alerts it checks.
@@ -52,11 +36,13 @@ Find these settings on the {{az-detection-watch}} page. To change them, refer to
 
     Default: 50%. Range: 0–100%.
 
-## Where its work appears [alertzero-rule-tuning-work]
-
-Its {{az-proposed-actions}} appear in the **Configure** section of the **{{az-proposed-actions-cap}}** page, in an {{az-investigation}} named **Rule tuning: _rule name_**. Refer to [](../decide-detection-change.md).
-
 ## Limits [alertzero-rule-tuning-limits]
 
 * Each run reviews up to 10 rules and uses each rule's newest 100 false positives.
 * It doesn't backtest changes to saved query or {{ml}} rules, or exceptions on {{esql}} rules.
+
+## Work with this {{az-worker}} [alertzero-rule-tuning-tasks]
+
+- **Before you turn it on:** Check [what it needs](../requirements.md).
+- **Decide its work:** Its {{az-proposed-actions}} appear in the **Configure** section of the **{{az-proposed-actions-cap}}** page. Refer to [](../decide-detection-change.md).
+- **Change its settings:** Refer to [](../configure-worker-settings.md).

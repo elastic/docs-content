@@ -11,11 +11,9 @@ products:
 
 # {{az-triage-watch}}
 
-The {{az-triage-watch}} reviews incoming alerts so your analysts see only the ones that need their attention. Its {{az-alert-triage}} {{az-worker}} classifies alerts, and its {{az-attack-discovery}} {{az-worker}} groups related alerts into attacks.
+The {{az-triage-watch}} reviews incoming alerts so your analysts see only the ones that need their attention. Its two {{az-workers}} build on each other:
 
-| {{az-worker}} | What it does |
-| --- | --- |
-| [{{az-alert-triage}}](alert-triage-worker.md) | Classifies detection alerts as true or false positives, and proposes closing the false positives. |
-| [{{az-attack-discovery}}](attack-discovery-worker.md) | Groups related alerts into candidate attacks, and proposes handing the attacks it confirms or can't rule out to the {{az-forensics-watch}}. |
+- The [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md) classifies alerts and proposes closing the false positives, so they don't reach the {{az-attack-discovery}} {{az-worker}}.
+- The [{{az-attack-discovery}} {{az-worker}}](attack-discovery-worker.md) groups related alerts into attacks, and proposes handing the attacks it confirms or can't rule out to the [{{az-forensics-watch}}](forensics-watch.md).
 
-Their work appears in the **Investigate** section of the **{{az-proposed-actions-cap}}** page.
+You decide their work in the **Investigate** section of the **{{az-proposed-actions-cap}}** page. Refer to [](../decide-proposed-action.md) and [](../respond-to-attack.md).
