@@ -95,7 +95,17 @@ To assign a tool to an agent:
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+::::{applies-item} { stack: ga 9.5+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Open the tool library and select the workflow tool.
+   - If the agent has no tools assigned, click **Add tools**.
+   - If the agent already has tools, click **Add tool**, then select **Import from tool library**.
+
+::::
+
+::::{applies-item} { stack: ga =9.4 }
 
 1. Select the agent from the agent selector in the left sidebar.
 2. Expand the **Customize** accordion and select **Tools**.

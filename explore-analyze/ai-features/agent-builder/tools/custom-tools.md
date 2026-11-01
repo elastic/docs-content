@@ -71,6 +71,26 @@ To create a custom tool in the UI:
     :width:250px
     :::
 
+### Create a tool from an agent [create-a-tool-from-an-agent]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+You can create a tool from an agent's **Tools** page and attach it to that agent. A new custom agent already lists its default tools, so **Add tool** is available when you open the page. **Add tool** is shown when you can update the agent.
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Click **Add tool**, then select **Create a tool**.
+4. Complete the tool form. It is the same form you open from **Manage components** → **Tools**.
+5. Click **Save and attach**.
+
+The tool is saved to the tool library and attached to this agent. To change that custom tool later, select **Edit in library**. To stop this agent from using it, click **Remove**, then click **Remove** in the confirmation. **Remove** detaches the tool from the agent and leaves it in the tool library.
+
+If the agent has no tools assigned, and **Enable Elastic capabilities** is off, the page shows **Add tools** instead of **Add tool**. **Add tools** opens the tool library so you can attach a tool that already exists. It does not create a tool. Create the tool from **Manage components** → **Tools**, then attach it.
+
+Saving the tool requires **Agent Builder: All** or **Agent Builder > Management: Create and edit custom tools**. Attaching it requires permission to update the agent. Refer to [{{kib}} feature privileges](../permissions.md#kib-privileges).
+
 ## Create custom tools with API
 
 You can also create and manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
@@ -118,7 +138,19 @@ To start using a custom tool, you must assign it to a [custom agent](../custom-a
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+::::{applies-item} { stack: ga 9.5+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Open the tool library and select the tools to assign.
+   - If the agent has no tools assigned, click **Add tools**.
+   - If the agent already has tools, click **Add tool**, then select **Import from tool library**.
+
+To create a tool and attach it in the same action, refer to [Create a tool from an agent](#create-a-tool-from-an-agent).
+
+::::
+
+::::{applies-item} { stack: ga =9.4 }
 
 1. Select the agent from the agent selector in the left sidebar.
 2. Expand the **Customize** accordion and select **Tools**.
