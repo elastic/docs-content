@@ -58,7 +58,7 @@ A coordinated response that you create from an [{{az-investigation}}](#alertzero
 
 ### {{az-forensics-watch}} [alertzero-glossary-forensics-watch]
 
-The [{{az-watch}}](#alertzero-glossary-watch) that does deep research on threats and exploits, running forensics on an attack. Its {{az-endpoint-analysis}} {{az-worker}} reconstructs the attack timeline on the affected hosts and proposes response actions. It runs only on attacks handed off by the {{az-attack-discovery}} {{az-worker}}, and it needs {{elastic-defend}} data. Refer to [](watches/forensics-watch.md).
+The [{{az-watch}}](#alertzero-glossary-watch) that does deep research on threats and exploits, running forensics on an attack. Its {{az-endpoint-analysis}} {{az-worker}} reconstructs the attack timeline on one affected host and proposes response actions. It runs only on attacks handed off by the {{az-attack-discovery}} {{az-worker}}, and it needs {{elastic-defend}} data. Refer to [](watches/forensics-watch.md).
 
 ### {{az-frontier-models}} [alertzero-glossary-frontier-models]
 

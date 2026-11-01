@@ -49,7 +49,7 @@ Decide each {{az-worker}}'s level based on what it does without you. Every {{az-
 | {{az-worker}} | At {{az-manual}} | At {{az-supervised}} |
 | --- | --- | --- |
 | [{{az-alert-triage}}](watches/alert-triage-worker.md) | It closes alerts only after you approve. | It closes false positives itself, and you can reopen any you disagree with. |
-| [{{az-attack-discovery}}](watches/attack-discovery-worker.md) | It hands an attack to the {{az-forensics-watch}} only after you approve. When it judges an attack a false positive, it acknowledges the alerts and closes the {{az-investigation}} on its own. | It also hands attacks off without asking you first. |
+| [{{az-attack-discovery}}](watches/attack-discovery-worker.md) | It hands an attack to the {{az-forensics-watch}} only after you approve. When it judges an attack a false positive, it acknowledges the open alerts and closes the attack and the {{az-investigation}} on its own. | It also hands attacks off without asking you first. |
 
 ### {{az-workers}} that offer {{az-assisted}} [alertzero-autonomy-assisted]
 

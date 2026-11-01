@@ -33,7 +33,7 @@ The following table lists each {{az-worker}}'s default schedule and the section 
 Some {{az-workers}} pick up work that {{az-workers}} in other {{az-watches}} started. They pass it through [{{context-engine}}](/explore-analyze/ai-features/context-engine.md), which stores information that AI features share:
 
 - **Detection gaps:** The {{az-hunt-watch}} records each detection gap it finds. The [{{az-rule-coverage}} {{az-worker}}](watches/rule-coverage-worker.md) picks up each gap and proposes a rule for it.
-- **Forensics handoffs:** When the [{{az-attack-discovery}} {{az-worker}}](watches/attack-discovery-worker.md) hands an attack to the {{az-forensics-watch}}, it records the handoff. The [{{az-endpoint-analysis}} {{az-worker}}](watches/endpoint-analysis-worker.md) picks up the handoff and investigates the affected hosts.
+- **Forensics handoffs:** When the [{{az-attack-discovery}} {{az-worker}}](watches/attack-discovery-worker.md) hands an attack to the {{az-forensics-watch}}, it records the handoff. The [{{az-endpoint-analysis}} {{az-worker}}](watches/endpoint-analysis-worker.md) picks up the handoff and investigates the host the attack affected.
 
 For these handoffs to work, {{context-engine}} must be on in each space where the {{az-workers}} run. {{alertzero}} stores the work they pass in an index, which you might notice in **Index Management**. For everything {{alertzero}} needs to run, refer to [](set-up-alertzero.md). To learn more about the index, refer to [](manage-alertzero.md).
 

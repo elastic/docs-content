@@ -19,13 +19,13 @@ The {{az-rule-tuning}} {{az-worker}} is the right fit when:
 
 * A few rules produce most of your false positives.
 * Your analysts, or the [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md), close false positives with the false positive reason, so the {{az-rule-tuning}} {{az-worker}} can count them.
-* You want a rule preview of each proposed change before you apply it.
+* You want to test each proposed change against your past alerts before you apply it.
 
 The {{az-rule-tuning}} {{az-worker}} isn't the best fit when:
 
 * Your rules rarely produce false positives. With the default settings, a rule needs at least 10 false positives that make up at least 50% of its alerts over 7 days before the {{az-rule-tuning}} {{az-worker}} tunes it.
 * Your analysts close false positives with a different reason, or without one. The {{az-rule-tuning}} {{az-worker}} counts only alerts closed as false positives.
-* Your noisiest rules are saved query or {{ml}} rules. The {{az-rule-tuning}} {{az-worker}} can't preview changes to them, so you need to check those changes yourself.
+* Your noisiest rules are saved query or {{ml}} rules. The {{az-rule-tuning}} {{az-worker}} can't backtest changes to them, so you need to check those changes yourself.
 
 ## Data requirements [alertzero-rule-tuning-data]
 
@@ -38,7 +38,7 @@ On each run, the {{az-rule-tuning}} {{az-worker}}:
 
 1. Counts how many false positives each enabled rule produced in its analysis window.
 2. For each rule that meets both false positive thresholds, opens an {{az-investigation}} and diagnoses the cause.
-3. Proposes one change to the rule's exceptions, query, risk score, threshold, or schedule. Most changes come with a [rule preview](/solutions/security/detect-and-alert/validate-and-test-rules.md#validate-historical-data) that compares how many alerts the rule generated with how many it would have generated after the change.
+3. Proposes one change to the rule's exceptions, query, risk score, threshold, or schedule. Most changes come with a **Backtest**, a [rule preview](/solutions/security/detect-and-alert/validate-and-test-rules.md#validate-historical-data) that compares how many alerts the rule generated with how many it would have generated after the change.
 
 The {{az-rule-tuning}} {{az-worker}} counts every alert closed as a false positive, whether a person or the [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md) closed it.
 
@@ -46,7 +46,7 @@ You review the {{az-rule-tuning}} {{az-worker}}'s proposed changes in the **Conf
 
 ### Example [alertzero-rule-tuning-example]
 
-A rule that detects new service creation generated 30 alerts last week, and analysts closed 24 of them as false positives because a software deployment tool creates services. That's 24 false positives at an 80% rate, above both default thresholds. The {{az-rule-tuning}} {{az-worker}} diagnoses the cause and proposes an exception for the deployment tool's process. The rule preview shows that the rule would have generated 6 alerts instead of 30.
+A rule that detects new service creation generated 30 alerts last week, and analysts closed 24 of them as false positives because a software deployment tool creates services. That's 24 false positives at an 80% rate, above both default thresholds. The {{az-rule-tuning}} {{az-worker}} diagnoses the cause and proposes an exception for the deployment tool's process. The **Backtest** shows that the rule would have generated 6 alerts instead of 30.
 
 % After elastic/docs-content#9114 merges, consider linking to ../set-up-alertzero.md#alertzero-requirements-specific-workers from the intro.
 
@@ -85,4 +85,4 @@ A rule that detects new service creation generated 30 alerts last week, and anal
 ## Limits [alertzero-rule-tuning-limits]
 
 * Each time the {{az-rule-tuning}} {{az-worker}} runs, it reviews up to 10 rules and uses each rule's newest 100 false positives.
-* The {{az-rule-tuning}} {{az-worker}}  doesn't preview changes to saved query or {{ml}} rules, or exceptions on {{esql}} rules.
+* The {{az-rule-tuning}} {{az-worker}} doesn't backtest changes to saved query or {{ml}} rules, or exceptions on {{esql}} rules.

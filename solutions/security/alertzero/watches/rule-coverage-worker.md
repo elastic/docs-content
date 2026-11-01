@@ -35,7 +35,7 @@ On each run, the {{az-rule-coverage}} {{az-worker}}:
 
 1. Opens one {{az-investigation}} for each detection gap.
 2. Checks whether a rule already covers the gap.
-3. Proposes turning on an existing rule, installing a prebuilt rule, or creating a new {{esql}} rule. A new rule comes with a [rule preview](/solutions/security/detect-and-alert/validate-and-test-rules.md#validate-historical-data) that shows how many alerts the rule would have generated. If a rule already covers the gap, it asks you to confirm that instead.
+3. Proposes turning on an existing rule, installing a prebuilt rule, or creating a new {{esql}} rule. A new rule comes with a **Backtest** that shows how often the rule matches your past data. If a rule already covers the gap, it asks you to confirm that instead.
 
 The {{az-rule-coverage}} {{az-worker}} works only on the detection gaps that the [{{az-continuous-threat-hunt}} {{az-worker}}](continuous-threat-hunt-worker.md) in the [{{az-hunt-watch}}](hunt-watch.md) records after each successful hunt.
 
@@ -43,7 +43,7 @@ You review the {{az-rule-coverage}} {{az-worker}}'s proposed rules in the **Conf
 
 ### Example [alertzero-rule-coverage-example]
 
-A threat hunt finds activity that matches a credential dumping technique, but no enabled rule detects it. The {{az-rule-coverage}} {{az-worker}} opens an {{az-investigation}} for the gap, finds a prebuilt rule that covers it but isn't on, and proposes turning the rule on. If no rule covers a gap, the {{az-rule-coverage}} {{az-worker}} drafts a new {{esql}} rule instead, with a rule preview of how many alerts the rule would have generated.
+A threat hunt finds activity that matches a credential dumping technique, but no enabled rule detects it. The {{az-rule-coverage}} {{az-worker}} opens an {{az-investigation}} for the gap, finds a prebuilt rule that covers it but isn't on, and proposes turning the rule on. If no rule covers a gap, the {{az-rule-coverage}} {{az-worker}} drafts a new {{esql}} rule instead, with a **Backtest** of how often it matches your past data.
 
 % After elastic/docs-content#9114 merges, consider linking to ../set-up-alertzero.md#alertzero-requirements-specific-workers from the intro.
 

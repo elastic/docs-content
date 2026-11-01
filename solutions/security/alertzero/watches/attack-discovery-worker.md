@@ -19,7 +19,7 @@ The {{az-attack-discovery}} {{az-worker}} is the right fit when:
 
 * You want the {{az-attack-discovery}} {{az-worker}} to connect related alerts into attacks, instead of piecing them together yourself.
 * You want the {{az-attack-discovery}} {{az-worker}} to check each candidate attack for false positives before it reaches you.
-* You want the [{{az-forensics-watch}}](forensics-watch.md) to investigate confirmed attacks on the affected hosts.
+* You want the [{{az-forensics-watch}}](forensics-watch.md) to investigate confirmed attacks on an affected host.
 
 The {{az-attack-discovery}} {{az-worker}} isn't the best fit when:
 
@@ -37,7 +37,7 @@ On each run, the {{az-attack-discovery}} {{az-worker}}:
 1. Runs the [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) feature of {{elastic-sec}} on open and acknowledged alerts to find candidate attacks.
 2. Opens one {{az-investigation}} for each candidate attack, or adds the attack to an open {{az-investigation}} for the same attack.
 3. Judges whether each attack is a false positive.
-4. For a false positive, acknowledges the open alerts and closes the {{az-investigation}}. For an attack it confirms or can't rule out, proposes handing the attack to the [{{az-forensics-watch}}](forensics-watch.md) for forensics.
+4. For a false positive, acknowledges the open alerts and closes the attack and the {{az-investigation}}. For an attack it confirms or can't rule out, proposes handing the attack to the [{{az-forensics-watch}}](forensics-watch.md) for forensics.
 
 Because the {{az-attack-discovery}} {{az-worker}} analyzes only open and acknowledged alerts, it skips any alert that the [{{az-alert-triage}} {{az-worker}}](alert-triage-worker.md) closed as a false positive.
 
