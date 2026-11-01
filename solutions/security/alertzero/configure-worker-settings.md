@@ -15,9 +15,9 @@ You configure {{az-workers}} on the page for their {{az-watch}}. There, you can 
 
 ## Before you begin [alertzero-configure-before]
 
-To change {{az-workers}}, you need the `manage_security` cluster privilege. Without it, the {{az-watch}} pages are read-only, and you can ask an administrator to apply your changes. Refer to [](alertzero-privileges.md).
+To change a {{az-worker}}'s settings, you need **All** for **{{alertzero}}** and the `manage_security` cluster privilege. To turn {{az-workers}} on or off, you also need the **Workflows** sub-feature privileges **Update** and **Update managed workflows**. Without `manage_security`, the {{az-watch}} pages are read-only, and you can ask an administrator to apply your changes. For where to grant these privileges, refer to [](alertzero-privileges.md).
 
-% The Watch page is also read-only without write access to AlertZero. Name that privilege here once alertzero-privileges.md documents it.
+% After elastic/docs-content#9115 merges, link the privileges reference above to alertzero-privileges.md#alertzero-privileges-configure.
 
 ## Change a {{az-worker}}'s settings [alertzero-change-worker-settings]
 
@@ -36,7 +36,7 @@ Your changes don't take effect until you save. If you leave the page with unsave
 
 ## What happens when you turn a {{az-worker}} on or off [alertzero-worker-on-off]
 
-Some {{az-workers}} depend on work from others. Before you turn off a {{az-worker}}, check whether [other {{az-workers}} need it](set-up-alertzero.md). If another {{az-worker}} needs the one you turn off, {{alertzero}} asks you to confirm and then shows a warning on both {{az-workers}}. {{alertzero}} never turns {{az-workers}} on or off for you.
+Some {{az-workers}} depend on work from others. Before you turn off a {{az-worker}}, check whether [other {{az-workers}} need it](set-up-alertzero.md). If another {{az-worker}} needs the one you turn off, {{alertzero}} asks you to confirm and then shows a warning on both {{az-workers}}. After setup, {{alertzero}} never turns {{az-workers}} on or off for you.
 
 Turning on the {{az-continuous-threat-hunt}} {{az-worker}} also turns on the [{{az-threat-intel-supply}}](glossary.md#alertzero-glossary-threat-intel-supply) workflows that provide its {{az-threat-reports}}. These are workflows, not {{az-workers}}. When you turn {{az-continuous-threat-hunt}} off, {{alertzero}} turns off the space's **Attribute alerts to reports** workflow. It turns off the shared **Ingest** and **Enrich** workflows only if no other space still uses them.
 

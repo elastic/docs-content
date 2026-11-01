@@ -86,7 +86,7 @@ The default [{{az-autonomy}}](#alertzero-glossary-autonomy) level. At this level
 
 ### {{az-proposed-action-cap}} [alertzero-glossary-proposed-action]
 
-A recommendation from a {{az-worker}} that waits for your decision, such as closing false-positive alerts, isolating a host, or changing a detection rule. You review the details, then approve or decline it. Depending on the {{az-worker}}'s [{{az-autonomy}}](#alertzero-glossary-autonomy) level, some {{az-proposed-actions}} run without waiting for you. Statuses include **Needs review**, **Applying**, **Applied**, **Declined**, **Failed**, and **Expired**. Refer to [](decide-proposed-action.md).
+A recommendation from a {{az-worker}} that waits for your decision, such as closing false-positive alerts, isolating a host, or changing a detection rule. You review the details, then approve or decline it. Depending on the {{az-worker}}'s [{{az-autonomy}}](#alertzero-glossary-autonomy) level, some {{az-proposed-actions}} run without waiting for you. Statuses include **Needs review**, **Approved**, **Applying**, **Applied**, **Declined**, **Failed**, and **Expired**. Refer to [](decide-proposed-action.md).
 
 ## R-S [alertzero-glossary-r-s]
 
@@ -114,7 +114,7 @@ A named group of [{{az-workers}}](#alertzero-glossary-worker) with one area of e
 
 ### {{az-worker}} [alertzero-glossary-worker]
 
-An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-watch). A {{az-worker}} runs in the background, either on a schedule or in response to events such as new alerts. It analyzes your data and brings you [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). Each {{az-worker}} has its own settings, including whether it's turned on, its trigger, and its [{{az-autonomy}}](#alertzero-glossary-autonomy) level. Refer to [](configure-worker-settings.md).
+An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-watch). A {{az-worker}} runs in the background, either on a schedule or when another {{az-worker}} hands it work. It analyzes your data and brings you [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). Each {{az-worker}} has its own settings, including whether it's turned on, its trigger, and its [{{az-autonomy}}](#alertzero-glossary-autonomy) level. Refer to [](configure-worker-settings.md).
 
 ## Related [alertzero-glossary-related]
 

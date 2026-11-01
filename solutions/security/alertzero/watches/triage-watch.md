@@ -18,7 +18,7 @@ The {{az-triage-watch}} reviews incoming alerts so your analysts see only the on
 | [{{az-alert-triage}}](alert-triage-worker.md) | Classifies alerts and proposes closing the false positives. | The [{{az-attack-discovery}} {{az-worker}}](attack-discovery-worker.md), which skips the false positives this {{az-worker}} closes, and the [{{az-rule-tuning}} {{az-worker}}](rule-tuning-worker.md), which counts them when it looks for rules to tune. |
 | [{{az-attack-discovery}}](attack-discovery-worker.md) | Groups related alerts into attacks and checks each one. | The [{{az-forensics-watch}}](forensics-watch.md), which investigates the attacks this {{az-worker}} confirms or can't rule out. |
 
-You review the {{az-watch}}'s {{az-proposed-actions}} in the **Investigate** section of the **{{az-proposed-actions-cap}}** page. To learn how to read a {{az-proposed-action}} and then run it, do it yourself, or dismiss it, refer to [](../decide-proposed-action.md). To learn how to take a confirmed attack through to containment, refer to [](../respond-to-attack.md).
+You review the {{az-watch}}'s {{az-proposed-actions}} in the **Investigate** section of the **{{az-proposed-actions-cap}}** page. To learn how to read a {{az-proposed-action}} and then approve or decline it, refer to [](../decide-proposed-action.md). To learn how to take a confirmed attack through to containment, refer to [](../respond-to-attack.md).
 
 ## When to turn on the {{az-triage-watch}} [alertzero-triage-watch-when]
 
