@@ -47,6 +47,7 @@ Each of the following privileges controls access to a different part of {{elasti
 | **Elastic AI Assistant** | Access [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). Turn on **Customize sub-feature privileges** to grant individual AI Assistant privileges. For the full list, refer to [Elastic AI Assistant sub-feature privileges](#elastic-ai-assistant-sub-feature-privileges). |
 | **Attack discovery** | Access [Attack Discovery](/solutions/security/ai/attack-discovery/index.md).<br> {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Turn on **Customize sub-feature privileges** to grant individual Attack discovery privileges. For details, refer to [Attack discovery sub-feature privileges](#attack-discovery-sub-feature-privileges). |
 | **Automatic Migration** | Access [Automatic Migration](/solutions/security/get-started/automatic-migration.md). <br> {applies_to}`stack: ga 9.0-9.2` Before 9.2.4, this privilege is called **SIEM migrations**. |
+| **{{alertzero}}** {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6` | Access {{alertzero}}. Most {{alertzero}} tasks also need other privileges, such as **Proposed Actions**. For the privileges each task needs, refer to [](/solutions/security/alertzero/alertzero-privileges.md). |
 :::
 
 :::{note}
