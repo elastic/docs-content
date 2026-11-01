@@ -46,7 +46,7 @@ Setting up {{alertzero}} needs privileges that most roles don't include, so you 
 
 ## What specific {{az-workers}} need [alertzero-requirements-specific-workers]
 
-Some {{az-workers}} need more than every space does. Complete only the parts for the {{az-workers}} you plan to turn on, and skip the rest. If a {{az-worker}} you turn on is missing something, its {{az-watch}} page shows a warning, so you can also come back to this section then.
+Some {{az-workers}} need more than every space does. Complete only the parts for the {{az-workers}} you plan to turn on, and skip the rest. If the {{az-workers}} you turn on are missing something, their {{az-watch}} pages show a warning, so you can also come back to this section then.
 
 ### Settings that are off by default [alertzero-requirements-worker-settings]
 
@@ -69,7 +69,7 @@ The {{az-workers}} that need {{context-engine}} use it to pass detection gaps an
 
 ### {{az-workers}} that need other {{az-workers}} [alertzero-requirements-dependencies]
 
-Some {{az-workers}} work on what another {{az-worker}} produces. If you turn on a {{az-worker}} in the first column, turn on the {{az-worker}} it needs too.
+Some {{az-workers}} work on what another {{az-worker}} produces. For each {{az-worker}} you turn on in the first column, turn on the {{az-worker}} it needs too.
 
 | {{az-worker}} | Needs | Why |
 | --- | --- | --- |

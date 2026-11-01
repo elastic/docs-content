@@ -14,7 +14,7 @@ products:
 After you [set up {{alertzero}}](set-up-alertzero.md), use these pages to manage it in each space:
 
 - [](configure-worker-settings.md): Turn {{az-workers}} on or off, and change their {{az-autonomy}} and other settings.
-- [](run-worker-on-demand.md): Run a {{az-worker}} outside its schedule.
+- [](run-worker-on-demand.md): Run {{az-workers}} outside their schedule.
 - [](view-execution-history.md): See every {{az-worker}} run, including failures.
 
 To give people access to {{alertzero}}, refer to [](alertzero-privileges.md).
