@@ -103,11 +103,17 @@ Changing a privacy setting affects only traces recorded after the change. Existi
 ::::{applies-switch}
 
 :::{applies-item} {stack: ga 9.6+, serverless: ga}
-{{agent-builder}} reads these settings at the start of each conversation, so a change takes effect on the next conversation you start. Conversations already in progress keep the settings they started with.
+These settings are stored in the {{kib}} space where you change them. A conversation round uses the settings of the space it runs in. Turn a setting on in each space where you want that content captured.
+
+{{agent-builder}} reads the settings at the start of each conversation round. A change takes effect on the next round. A round that is already running keeps the settings it started with. If {{agent-builder}} cannot read the settings, it does not trace that round.
 :::
 
 :::{applies-item} stack: ga =9.5
-{{agent-builder}} refreshes these settings every 30 seconds, so allow up to that long for a change to take effect, then run a new conversation round to see it.
+In 9.5.5 and later, these settings are stored in the {{kib}} space where you change them. A conversation round uses the settings of the space it runs in. Turn a setting on in each space where you want that content captured.
+
+{{agent-builder}} reads the settings at the start of each conversation round. A change takes effect on the next round. A round that is already running keeps the settings it started with. If {{agent-builder}} cannot read the settings, it does not trace that round.
+
+In 9.5.0 through 9.5.4, {{agent-builder}} reads the settings from the default space and refreshes them every 30 seconds. Other spaces use the default space's privacy settings. Allow up to 30 seconds for a change to take effect, then run a new conversation round to see it.
 :::
 
 ::::
