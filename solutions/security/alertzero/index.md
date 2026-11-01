@@ -38,7 +38,7 @@ Then use these links for the Watch names in the table, in place of the configure
 
 To learn how {{az-watches}} hand work to each other, refer to [](configure-worker-settings.md).
 
-% After elastic/docs-content#9118 merges, link the reference above to configure-worker-settings.md#alertzero-context-engine.
+% After elastic/docs-content#9118 merges, link the reference on how Watches hand work to each other to configure-worker-settings.md#alertzero-worker-on-off, the "How Workers depend on each other" section.
 
 ## How much {{az-workers}} can act on their own [alertzero-overview-autonomy]
 
