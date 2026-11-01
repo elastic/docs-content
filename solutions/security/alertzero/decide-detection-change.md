@@ -11,13 +11,13 @@ products:
 
 # Decide a detection change [alertzero-decide-detection-change]
 
-The {{az-detection-watch}} proposes two kinds of changes to your detection rules. The {{az-rule-tuning}} {{az-worker}} tunes rules that produce too many false positives, and the {{az-rule-coverage}} {{az-worker}} proposes rules for detection gaps. Every detection change waits for your approval, so no rule changes without a person deciding. Learn what to check before you approve each kind of change, and what happens to the rule after you decide.
+Approve or decline the changes that the {{az-detection-watch}} proposes to your detection rules. The {{az-rule-tuning}} {{az-worker}} proposes tuning changes for rules that produce too many false positives, and the {{az-rule-coverage}} {{az-worker}} proposes rules for detection gaps. Every change waits for your approval, so no rule changes without a person deciding. To learn what starts each kind of change, refer to [](watches-and-workers.md).
 
-To learn what starts each kind of change, refer to the [{{az-detection-watch}}](watches-and-workers.md#alertzero-detection-watch).
+% After elastic/docs-content#9118 merges, link "refer to" above to watches/detection-watch.md.
 
 ## Before you begin [alertzero-detection-change-before]
 
-- You need the privileges to decide {{az-proposed-actions}} and to change detection rules. Refer to [](alertzero-privileges.md).
+- You need the privileges to decide {{az-proposed-actions}} and to change detection rules. Approving a change doesn't give you the privileges to make it. An approved change runs as you, so if you can't change rules, it fails. Refer to [](alertzero-privileges.md).
 
 ## Decide a tuning change [alertzero-detection-change-tuning]
 
@@ -43,13 +43,14 @@ The {{az-rule-coverage}} {{az-worker}} proposes a rule for each gap that the {{a
 
 1. In the **Configure** section of the **{{az-proposed-actions-cap}}** page, select the gap's card. Its name starts with **Detection coverage:**.
 2. In the **{{az-proposed-actions-cap}}** section, select the proposed rule.
-3. Check what the {{az-proposed-action}} does, then select **Approve** or **Decline**.
+3. Check what the {{az-proposed-action}} does. For a new rule, check the **Proposed rule** query and the **Backtest**, which shows how often the rule would have matched.
+4. Select **Approve** or **Decline**.
 
 What happens when you approve depends on the kind of {{az-proposed-action}}:
 
 | {{az-proposed-action-cap}} | When you approve |
 | --- | --- |
-| Create a new {{esql}} rule | {{alertzero}} creates the rule, turned off. Review the rule, then turn it on. Before you approve, check the **Proposed rule** query and the **Backtest**, which shows how often the rule would have matched. |
+| Create a new {{esql}} rule | {{alertzero}} creates the rule, turned off. Review it, then turn it on. |
 | Install a prebuilt rule | {{alertzero}} installs the rule and turns it on. |
 | Turn on an existing rule | {{alertzero}} turns the rule on. |
 | Confirm rule coverage | Nothing runs. You confirm that an existing rule already covers the gap. |

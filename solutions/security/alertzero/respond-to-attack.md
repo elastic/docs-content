@@ -11,13 +11,12 @@ products:
 
 # Respond to an attack [alertzero-respond-to-attack]
 
-When the {{az-attack-discovery}} {{az-worker}} finds an attack it can't rule out, {{alertzero}} brings you the decisions that take it from verdict to containment. First, you decide whether the attack needs forensics. The {{az-endpoint-analysis}} {{az-worker}} then analyzes the affected host and proposes response actions, such as isolating the host, and you decide each one. Finally, you decide whether to close the {{az-investigation}}. These steps describe {{az-manual}} {{az-autonomy}}, the default.
+When the {{az-attack-discovery}} {{az-worker}} finds an attack it can't rule out, you decide whether to send it for forensics. The {{az-endpoint-analysis}} {{az-worker}} then analyzes the affected host and proposes response actions, such as isolating the host, for you to decide. These steps describe {{az-manual}} {{az-autonomy}}, the default.
 
 ## Before you begin [alertzero-respond-before]
 
-- You need the privileges to decide {{az-proposed-actions}}, to run the response actions you approve, and to close the {{az-investigation}} and its alerts. Refer to [](alertzero-privileges.md).
-- The {{az-endpoint-analysis}} {{az-worker}} must be on, and the host it analyzes must run {{elastic-defend}}. Refer to [](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
-- [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) must be on in the space (the `contextEngine:enabled` advanced setting). Without it, handing an attack to forensics fails.
+- You need the privileges to decide {{az-proposed-actions}} and to close the {{az-investigation}} and its alerts. Approving a response action doesn't give you the privileges to run it. It runs as you, so without the {{elastic-defend}} response privileges, it fails. {{alertzero}} can then offer it again, so someone with those privileges can approve it. Refer to [](alertzero-privileges.md).
+- If handing an attack to forensics fails, or no forensics report appears, ask an administrator to check [what the {{az-endpoint-analysis}} {{az-worker}} needs](requirements.md).
 
 ## Check the verdict [alertzero-respond-verdict]
 
@@ -32,6 +31,8 @@ The {{az-attack-discovery}} {{az-worker}} opens an {{az-investigation}} for each
 To read the verdict and its **Rationale**, select **Open in chat** on the {{az-investigation}}'s card. The verdict's **Conclusion** also appears in the {{az-investigation}}'s details.
 
 ## Decide whether to run forensics [alertzero-respond-handoff]
+
+If you triage alerts, this is usually your last step on an attack. Whoever responds to the attack takes it from here.
 
 1. In the **Investigate** section of the **{{az-proposed-actions-cap}}** page, select the attack's card. The {{az-proposed-action}} has the attack's name as its title.
 2. Decide:
@@ -79,14 +80,7 @@ To work on the attack with other people instead, select **Open an escalation** o
 
 ## How {{az-autonomy}} changes this flow [alertzero-respond-autonomy]
 
-Both {{az-workers}} offer {{az-manual}} and {{az-supervised}} {{az-autonomy}}:
-
-| {{az-worker}} | At {{az-manual}} | At {{az-supervised}} |
-| --- | --- | --- |
-| {{az-attack-discovery}} | Each handoff to forensics waits for you. | It hands off every attack it doesn't rule out, without asking. |
-| {{az-endpoint-analysis}} | Each response action waits for you. | It runs its response actions without asking. |
-
-At either level, the {{az-endpoint-analysis}} proposal to close the {{az-investigation}} waits for you. To change {{az-autonomy}} levels, refer to [](configure-worker-settings.md).
+At {{az-supervised}} {{az-autonomy}}, the {{az-attack-discovery}} {{az-worker}} hands off every attack it doesn't rule out, and the {{az-endpoint-analysis}} {{az-worker}} runs its response actions, both without asking. At either level, the proposal to close the {{az-investigation}} waits for you. For what each {{az-worker}} does at each level, refer to [](watches-and-workers.md). To change a level, refer to [](configure-worker-settings.md).
 
 ## Related pages [alertzero-respond-related]
 
