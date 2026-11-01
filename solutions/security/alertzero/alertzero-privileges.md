@@ -11,7 +11,7 @@ products:
 
 # {{alertzero}} privileges [alertzero-privileges]
 
-Use this page to give each person only the access their work needs, whether they view {{alertzero}}, decide {{az-proposed-actions}}, or set up {{az-workers}}. Most {{alertzero}} privileges come from three {{kib}} features: **{{alertzero}}**, **Proposed Actions**, and **Agentic Investigations**. These features require an Enterprise license on {{stack}}, or the Security Analytics Complete feature tier in {{serverless-short}}. Refer to [](requirements.md).
+Use this page to give each person only the access their work needs, whether they view {{alertzero}}, decide {{az-proposed-actions}}, or set up {{az-workers}}. Most {{alertzero}} privileges come from three {{kib}} features: **{{alertzero}}**, **Proposed Actions**, and **Agentic Investigations**. These features require an Enterprise license on {{stack}}, or the Security Analytics Complete feature tier in {{serverless-short}}. Refer to [](set-up-alertzero.md).
 
 Keep two rules in mind:
 
