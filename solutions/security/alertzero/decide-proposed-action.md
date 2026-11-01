@@ -1,5 +1,5 @@
 ---
-description: "Review an AlertZero proposed action in Elastic Security, approve or decline it, and check what happened to recent decisions, including ones Workers made on their own."
+description: "Review the false-positive alerts that the AlertZero Alert Triage Worker proposes to close in Elastic Security, approve or decline each batch, and reopen any closures you disagree with."
 applies_to:
   serverless:
     security: preview
@@ -9,39 +9,37 @@ products:
   - id: cloud-serverless
 ---
 
-# Decide a {{az-proposed-action}} [alertzero-decide]
+# Close false-positive alerts [alertzero-decide]
 
-Approve or decline the {{az-proposed-actions}} that {{az-workers}} bring you, such as closing false-positive alerts, isolating a host, or changing a detection rule. These steps are the same for every {{az-worker}}. For what to check on a specific kind of action, refer to [](respond-to-attack.md), [](act-on-hunt-finding.md), and [](decide-detection-change.md).
+The {{az-alert-triage}} {{az-worker}} reviews your open and acknowledged alerts and proposes closing the ones it judges to be false positives. It groups alerts that share a pattern into one {{az-proposed-action}}, so you can close a batch of noise in one decision instead of alert by alert.
 
-## Review the {{az-proposed-action}} [alertzero-decide-review]
+By default, {{az-alert-triage}} proposes closing an alert only when it's at least 85% confident that the alert is a false positive. It tags alerts below that score `az:inconclusive` and leaves them open for you to triage.
+
+## Review a proposed closure [alertzero-decide-review]
 
 1. In the navigation menu, select **{{alertzero}}**. The **{{az-proposed-actions-cap}}** page opens.
-2. Select the {{az-proposed-action}}'s card. Its {{az-investigation}} opens in a flyout.
-3. In the **{{az-proposed-actions-cap}}** section, select the {{az-proposed-action}}.
-4. Before you decide, check:
-    - What the {{az-worker}} wants to do, and why.
-    - Whether the action is **Reversible** or **Irreversible**.
-    - How much impact the action has.
-    - When the {{az-proposed-action}} expires. By default, nobody can approve it after 72 hours.
+2. In the **Investigate** section, select the {{az-proposed-action}}'s card. Its {{az-investigation}} opens in a flyout.
+3. In the flyout's **{{az-proposed-actions-cap}}** section, select the {{az-proposed-action}}.
+4. Check that every alert in the batch fits the explanation:
+    - **Scope:** How many alerts the closure covers, which rule they came from, and which hosts and users they involve. Look for a host or user you don't expect for that rule.
+    - **Reasoning:** Why {{az-alert-triage}} judged them false positives. It adds a note to each alert that explains why. Look for an explanation that doesn't match what the alert shows. To ask follow-up questions, select **Open in chat**.
 
-## Approve or decline [alertzero-decide-approve]
+    Your decision covers the whole batch. If even one alert looks wrong, decline and triage the alerts yourself.
+5. Select **Approve** or **Decline**. You can't change a decision after you make it, but you can [reopen alerts](#alertzero-decide-reopen) that it closed.
+    - **If you approve:** The alerts close as false positives, and the closure runs under your account. {{az-attack-discovery}} skips closed alerts, so closing a real threat by mistake can hide part of an attack.
+    - **If you decline:** {{az-alert-triage}} tags the alerts `az:inconclusive` and leaves them open.
 
-- **To approve:** Select **Approve**. The action starts immediately and runs as you. Its status changes to **Applying**, then to **Applied** when the action finishes, or **Failed** if it doesn't. If your role doesn't allow the action, it fails, and {{alertzero}} can offer it again so someone else can approve it.
-- **To decline:** Select **Decline**, optionally select a reason, such as **Not a real issue (false positive)**, then select **Decline** again.
+    If nobody decides within 72 hours, the default, the {{az-proposed-action}} expires and its alerts are handled the same as if you declined.
 
-You can't change a decision after you make it.
+## Reopen alerts closed by mistake [alertzero-decide-reopen]
 
-## Decide whether to close false-positive alerts [alertzero-decide-close-alerts]
+If a closure turns out to be wrong, reopen its alerts so they're back in your queue and {{az-attack-discovery}} considers them again. This applies to closures you approved and to closures {{az-alert-triage}} made on its own. If your team sets {{az-alert-triage}} to {{az-supervised}} {{az-autonomy}}, it closes false positives without waiting for approval, so check its closures regularly, especially soon after the change.
 
-The {{az-alert-triage}} {{az-worker}} proposes closing alerts it's confident are false positives, with one {{az-proposed-action}} for alerts that share a pattern. These {{az-proposed-actions}} appear in the **Investigate** section.
+1. At the bottom of the **{{az-proposed-actions-cap}}** page, expand **Closed Actions**. It lists decisions from the last 72 hours, and **Auto** marks the ones {{az-alert-triage}} made on its own. For older closures, find the alerts on the **Alerts** page.
+2. Select a closure's card to see the evidence behind it.
+3. If you disagree with the closure, reopen the alerts. Refer to [](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
 
-- If you approve, the alerts close.
-- If you decline, {{az-alert-triage}} tags the alerts inconclusive.
+## Related pages [alertzero-decide-related]
 
-At {{az-supervised}} {{az-autonomy}}, {{az-alert-triage}} closes false positives without waiting for you, and you can reopen any you disagree with.
-
-## Check recent decisions [alertzero-decide-closed]
-
-To see what happened to {{az-proposed-actions}} decided in the last 72 hours, expand **Closed Actions** at the bottom of the **{{az-proposed-actions-cap}}** page. Each card shows who decided it and how it turned out. **Auto** means a {{az-worker}} at {{az-supervised}} {{az-autonomy}} approved it without a person. To check its evidence, select the card.
-
-After 72 hours, closed {{az-proposed-actions}} stay in their {{az-investigation}}'s details.
+- [](respond-to-attack.md): Decide what happens next when {{az-attack-discovery}} finds an attack.
+- [](use-alertzero.md): Find other work that {{az-workers}} bring you.
