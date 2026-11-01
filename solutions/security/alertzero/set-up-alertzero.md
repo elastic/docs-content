@@ -25,13 +25,15 @@ products:
 
 ## Decide which {{az-workers}} to run [alertzero-decide-workers]
 
-Every {{az-worker}} starts out enabled, and at least one has to stay enabled. Some {{az-workers}} build on each other's results, so check what depends on a {{az-worker}} before you turn it off. For example, the {{az-endpoint-analysis}} {{az-worker}} investigates only the attacks that the {{az-attack-discovery}} {{az-worker}} hands off, so if you turn off {{az-attack-discovery}}, {{az-endpoint-analysis}} has nothing to analyze.
+In onboarding, every {{az-worker}} starts out selected, and at least one has to stay selected. Some {{az-workers}} build on each other's results, so check what depends on a {{az-worker}} before you turn it off. For example, the {{az-endpoint-analysis}} {{az-worker}} investigates only the attacks that the {{az-attack-discovery}} {{az-worker}} hands off, so if you turn off {{az-attack-discovery}}, {{az-endpoint-analysis}} has nothing to analyze.
 
 To decide which {{az-workers}} fit your environment and check what each one needs, refer to [](watches-and-workers.md). You can enable {{az-workers}} or turn them off later on their {{az-watch}} pages.
 
 ## Start the {{az-workers}} [alertzero-turn-on-workers]
 
-{{az-workers}} need security data to analyze and at least one AI model to run. If the space is missing either one, onboarding links you to where to add it. To prepare ahead, refer to [](/solutions/security/get-started/ingest-data-to-elastic-security.md) and [Connect to an LLM](/solutions/security/ai/set-up-ai-features.md#set-up-ai-llm).
+{{az-workers}} need security data to analyze and at least one AI model to run. Onboarding links to where to add data, and you can't start the {{az-workers}} until the space has a model. To prepare ahead, refer to [](/solutions/security/get-started/ingest-data-to-elastic-security.md) and [Connect to an LLM](/solutions/security/ai/set-up-ai-features.md#set-up-ai-llm).
+
+Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md), which they use to pass work to each other. Without it, the {{az-rule-coverage}} and {{az-endpoint-analysis}} {{az-workers}} can't do their work, and the {{az-attack-discovery}} and {{az-continuous-threat-hunt}} {{az-workers}} run but don't pass work on. Onboarding flags each {{az-worker}} that's missing it.
 
 The first time you open {{alertzero}} in a space, onboarding walks you through starting the {{az-workers}}. To open it, select **{{alertzero}}** in the navigation menu. Follow the steps, turn off any {{az-workers}} you decided not to run, then select **Enable and run**.
 

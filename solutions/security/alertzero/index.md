@@ -54,7 +54,7 @@ deployment:
 
 {{az-workers}} can add to your bill in three ways:
 
-- **Workflow executions:** Each run of a {{az-hunt-watch}} or {{az-detection-watch}} {{az-worker}} counts as a [workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing). Runs of {{az-triage-watch}} and {{az-forensics-watch}} {{az-workers}} don't.
+- **Workflow executions:** {{az-workers}} in every {{az-watch}} run as workflows, so their runs count as [workflow executions](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing).
 - **{{agent-builder}} executions:** When a {{az-worker}} in any {{az-watch}} asks an AI agent to analyze its findings, each agent response counts as an [{{agent-builder}} execution](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
 - **AI model tokens:** If the space uses an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md), Elastic bills its model calls by token. Third-party model providers bill you directly.
 

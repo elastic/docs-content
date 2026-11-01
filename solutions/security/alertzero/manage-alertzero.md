@@ -13,7 +13,7 @@ products:
 
 Control how {{alertzero}} runs in a space. You can change what its {{az-workers}} do, check how their runs went, and turn {{alertzero}} off when you no longer need it.
 
-To enable {{az-workers}} or turn them off, set their {{az-autonomy}}, or change how often they run, refer to [](configure-worker-settings.md). You can also [manually run a {{az-worker}}](run-worker-on-demand.md) instead of waiting for its schedule, and [check each {{az-worker}}'s execution history](view-execution-history.md) to find runs that failed.
+To enable {{az-workers}} or turn them off, set their {{az-autonomy}}, or change how often they run, refer to [](configure-worker-settings.md). You can also [run most {{az-workers}} manually](run-worker-on-demand.md) instead of waiting for their schedule, and [check each {{az-worker}}'s execution history](view-execution-history.md) to find runs that failed.
 
 ## Turn off {{alertzero}} [alertzero-turn-off]
 
