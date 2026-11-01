@@ -34,9 +34,9 @@ Some {{az-workers}} depend on another {{az-worker}}'s results. If you turn off t
 - If you turn off {{az-attack-discovery}}, {{az-endpoint-analysis}} gets no attacks to investigate.
 - If you turn off {{az-alert-triage}}, false positives stay open until someone closes them. {{az-attack-discovery}} analyzes them along with your other open alerts, and {{az-rule-tuning}} counts only the false positives that people close.
 
-These {{az-workers}} also depend on [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) to pass results to each other. If {{context-engine}} is off in a space, {{az-rule-coverage}} and {{az-endpoint-analysis}} get nothing to work on, even when {{az-continuous-threat-hunt}} and {{az-attack-discovery}} are on. For everything {{alertzero}} needs to run, refer to [](set-up-alertzero.md).
+These {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) to pass results to each other. For what happens without it and what else {{alertzero}} needs to run, refer to [](set-up-alertzero.md).
 
-% After elastic/docs-content#9114 merges, link the "everything AlertZero needs to run" reference in the Context Engine paragraph to set-up-alertzero.md#alertzero-turn-on-workers.
+% After elastic/docs-content#9114 merges, link the Set up AlertZero reference in the Context Engine paragraph to set-up-alertzero.md#alertzero-turn-on-workers.
 
 ## What you approve for {{az-workers}} [alertzero-worker-autonomy]
 
@@ -59,7 +59,7 @@ The following table shows what you approve for each {{az-worker}} at each level 
 ## Change {{az-worker}} settings [alertzero-change-worker-settings]
 
 :::{note}
-To change a {{az-worker}}'s settings, you need **All** for **{{alertzero}}** and the `manage_security` cluster privilege. To turn {{az-workers}} on or off, you also need the **Workflows** sub-feature privileges **Update** and **Update managed workflows**. To learn more, refer to [](alertzero-privileges.md).
+To change a {{az-worker}}'s settings, you need **All** for **{{alertzero}}** and the `manage_security` cluster privilege. To turn {{az-workers}} on or off, you also need the **Workflows** sub-feature privileges **Update** and **Update managed workflows**. Because `manage_security` also lets anyone who has it manage users and roles for the whole cluster, ask an administrator who already has it to make the change instead of granting it only for {{alertzero}}. To learn more, refer to [](alertzero-privileges.md).
 :::
 
 % After elastic/docs-content#9115 merges, link the privileges reference in the note to alertzero-privileges.md#alertzero-privileges-configure.
