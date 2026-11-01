@@ -37,6 +37,12 @@ Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/
 
 The first time you open {{alertzero}} in a space, onboarding walks you through starting the {{az-workers}}. To open it, select **{{alertzero}}** in the navigation menu. Follow the steps, turn off any {{az-workers}} you decided not to run, then select **Enable and run**.
 
+:::{note}
+**Enable and run** turns on the {{az-workers}} you selected, so it needs **All** for **{{alertzero}}**, the `manage_security` cluster privilege, and the **Workflows** sub-feature privileges **Update** and **Update managed workflows**. For details, refer to [](alertzero-privileges.md).
+:::
+
+% After elastic/docs-content#9115 merges, link the privileges reference in the note to alertzero-privileges.md#alertzero-privileges-configure.
+
 After you select **Enable and run**, {{alertzero}} opens its home page, the **{{az-proposed-actions-cap}}** page. Scheduled {{az-workers}} start their first run immediately, and their {{az-proposed-actions}} appear there when they need your decision.
 
 ## Next steps [alertzero-set-up-next]

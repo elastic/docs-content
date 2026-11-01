@@ -712,7 +712,7 @@ toc:
               - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
               - file: security/detect-and-alert/detections-privileges.md
               - file: security/ai/attack-discovery/grant-access.md
-              - file: security/alertzero/alertzero-privileges.md
+              - hidden: security/alertzero/alertzero-privileges.md
           - file: security/manage/configure-workspace-settings.md
             children:
               - file: security/get-started/spaces-elastic-security.md
@@ -723,22 +723,22 @@ toc:
       - file: security/alertzero/index.md
         children:
           - file: security/alertzero/set-up-alertzero.md
-          - file: security/alertzero/use-alertzero.md
+          - hidden: security/alertzero/use-alertzero.md
             children:
-              - file: security/alertzero/decide-proposed-action.md
-              - file: security/alertzero/decide-detection-change.md
-              - file: security/alertzero/respond-to-attack.md
-              - file: security/alertzero/escalate-investigation.md
-              - file: security/alertzero/track-escalations.md
-              - file: security/alertzero/act-on-hunt-finding.md
-              - file: security/alertzero/review-closed-proposed-actions.md
+              - hidden: security/alertzero/decide-proposed-action.md
+              - hidden: security/alertzero/decide-detection-change.md
+              - hidden: security/alertzero/respond-to-attack.md
+              - hidden: security/alertzero/escalate-investigation.md
+              - hidden: security/alertzero/track-escalations.md
+              - hidden: security/alertzero/act-on-hunt-finding.md
+              - hidden: security/alertzero/review-closed-proposed-actions.md
           - file: security/alertzero/manage-alertzero.md
             children:
-              - file: security/alertzero/configure-worker-settings.md
-              - file: security/alertzero/run-worker-on-demand.md
-              - file: security/alertzero/view-execution-history.md
-          - file: security/alertzero/watches-and-workers.md
-          - file: security/alertzero/glossary.md
+              - hidden: security/alertzero/configure-worker-settings.md
+              - hidden: security/alertzero/run-worker-on-demand.md
+              - hidden: security/alertzero/view-execution-history.md
+          - hidden: security/alertzero/watches-and-workers.md
+          - hidden: security/alertzero/glossary.md
       - file: security/ai.md
         children:
           - file: security/ai/agent-builder/agent-builder.md
