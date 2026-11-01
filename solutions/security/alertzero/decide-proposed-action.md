@@ -11,7 +11,7 @@ products:
 
 # Decide a {{az-proposed-action}} [alertzero-decide]
 
-Approve or decline a {{az-proposed-action}} from a {{az-worker}}, such as closing false-positive alerts, isolating a host, or changing a detection rule. These steps are the same for every {{az-worker}}. For what to check on a specific kind of action, refer to [](decide-detection-change.md), [](respond-to-attack.md), and [](act-on-hunt-finding.md).
+Approve or decline the {{az-proposed-actions}} that {{az-workers}} bring you, such as closing false-positive alerts, isolating a host, or changing a detection rule. These steps are the same for every {{az-worker}}. For what to check on a specific kind of action, refer to [](decide-detection-change.md), [](respond-to-attack.md), and [](act-on-hunt-finding.md).
 
 ## Before you begin [alertzero-decide-before]
 
