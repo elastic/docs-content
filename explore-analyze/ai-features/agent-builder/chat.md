@@ -397,6 +397,44 @@ For example, the following **Reasoning** panel shows a tool call with its **Insp
 
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
+### Rate a response [rate-a-response]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+After the agent finishes responding, rate that response with the **Good response** icon {icon}`thumbUp` or the **Bad response** icon {icon}`thumbDown`. The icons appear with the other response actions, such as **Copy response**.
+
+Only the conversation owner can view the icons. The icons stay hidden when:
+
+- The agent is still responding.
+- The response has [stopped or failed](#stopped-and-failed-responses).
+- The conversation is read-only. A read-only conversation shows a **Read-Only** badge and its history, and has no chat input.
+- You are viewing a [shared or public conversation](#share-a-conversation) that you don't own.
+
+To rate a response as helpful, select the **Good response** icon. The actions then show **Glad it helped!** and **Tell us more**.
+
+- Select **Tell us more** to open **What worked well?**. Select any of **Accurate**, **Useful**, and **Well explained**. You can select more than one. In the **Add comment** field, enter an optional comment of up to 500 characters. Then select **Submit**.
+- Select the **Dismiss** icon {icon}`cross` to keep the rating without extra detail.
+
+To rate a response as unhelpful, select the **Bad response** icon. **What went wrong?** opens.
+
+- Select any of **Inaccurate**, **Incomplete**, and **Didn't follow instructions**. You can select more than one. In the **Add comment** field, enter an optional comment of up to 500 characters, then select **Submit**.
+- Select **Cancel**, or close the dialog, to keep the rating without extra detail.
+
+The dialog shows this notice: "Your comment and metadata will be shared with Elastic." It also includes a **Privacy statement** link. When you rate a response, Elastic receives:
+
+- The options you select
+- Your comment, when you add one
+- The connector and the model
+- The agent ID and the trace id
+- The input and output token counts
+- The number of model calls
+
+For details, refer to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
+
+Select the active **Good response** or **Bad response** icon again to remove the rating. After you select **Submit**, the actions briefly show **Thank you for your feedback**.
+
 ### Stopped and failed responses [stopped-and-failed-responses]
 ```{applies_to}
 stack: ga 9.6+
@@ -423,7 +461,7 @@ The end of the response shows why it ended:
 Stopped and failed responses:
 
 - Stay in the conversation when you reload the page or open another conversation.
-- Don't include the **Copy response** icon, the response metadata menu, or the [View Trace icon](#view-traces).
+- Don't include the **Copy response** icon, the response metadata menu, the [View Trace icon](#view-traces), or the **Good response** and **Bad response** icons. Refer to [Rate a response](#rate-a-response).
 - Can't be retried. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
 
 ### Call a specific API operation [call-a-specific-api-operation]
