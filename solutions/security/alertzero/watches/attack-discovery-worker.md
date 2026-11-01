@@ -47,7 +47,7 @@ You review the {{az-attack-discovery}} {{az-worker}}'s {{az-proposed-actions}} i
 
 Over one day, alerts fire on the same host for a suspicious PowerShell command, a new scheduled task, and an outbound connection to a rarely seen domain. The {{az-attack-discovery}} {{az-worker}} groups the alerts into one candidate attack and opens an {{az-investigation}}. It can't rule the attack out, so it proposes handing the attack to the {{az-forensics-watch}}. After you approve, the [{{az-endpoint-analysis}} {{az-worker}}](endpoint-analysis-worker.md) investigates the host.
 
-% After elastic/docs-content#9114 merges, consider linking to ../set-up-alertzero.md#alertzero-requirements-specific-workers from the intro.
+% After elastic/docs-content#9114 merges, consider adding this Worker's Context Engine requirement to Data requirements, with a link to ../set-up-alertzero.md#alertzero-turn-on-workers.
 
 ## Settings [alertzero-attack-discovery-settings]
 

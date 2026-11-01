@@ -47,8 +47,6 @@ You review the {{az-alert-triage}} {{az-worker}}'s {{az-proposed-actions}} in th
 
 A vulnerability scanner on your network triggers a port scan rule 40 times overnight. The {{az-alert-triage}} {{az-worker}} analyzes the alerts, tags each one as a false positive with a note explaining that the activity comes from the scanner, and groups them into one {{az-investigation}} with one {{az-proposed-action}} to close them. At **{{az-manual}}**, you approve that one closure instead of closing 40 alerts by hand. After the {{az-alert-triage}} {{az-worker}} closes them, the {{az-attack-discovery}} {{az-worker}} skips them, and the {{az-rule-tuning}} {{az-worker}} counts them toward the port scan rule's false positives.
 
-% After elastic/docs-content#9114 merges, consider linking to ../set-up-alertzero.md#alertzero-requirements-specific-workers from the intro.
-
 ## Settings [alertzero-alert-triage-settings]
 
 **Trigger**

@@ -48,8 +48,6 @@ You review the {{az-rule-tuning}} {{az-worker}}'s proposed changes in the **Conf
 
 A rule that detects new service creation generated 30 alerts last week, and analysts closed 24 of them as false positives because a software deployment tool creates services. That's 24 false positives at an 80% rate, above both default thresholds. The {{az-rule-tuning}} {{az-worker}} diagnoses the cause and proposes an exception for the deployment tool's process. The **Backtest** shows that the rule would have generated 6 alerts instead of 30.
 
-% After elastic/docs-content#9114 merges, consider linking to ../set-up-alertzero.md#alertzero-requirements-specific-workers from the intro.
-
 ## Settings [alertzero-rule-tuning-settings]
 
 **Trigger**

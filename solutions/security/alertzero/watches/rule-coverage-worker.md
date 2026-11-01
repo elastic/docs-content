@@ -45,7 +45,7 @@ You review the {{az-rule-coverage}} {{az-worker}}'s proposed rules in the **Conf
 
 A threat hunt finds activity that matches a credential dumping technique, but no enabled rule detects it. The {{az-rule-coverage}} {{az-worker}} opens an {{az-investigation}} for the gap, finds a prebuilt rule that covers it but isn't on, and proposes turning the rule on. If no rule covers a gap, the {{az-rule-coverage}} {{az-worker}} drafts a new {{esql}} rule instead, with a **Backtest** of how often it matches your past data.
 
-% After elastic/docs-content#9114 merges, consider linking to ../set-up-alertzero.md#alertzero-requirements-specific-workers from the intro.
+% After elastic/docs-content#9114 merges, consider adding this Worker's Context Engine requirement to Data requirements, with a link to ../set-up-alertzero.md#alertzero-turn-on-workers.
 
 ## Settings [alertzero-rule-coverage-settings]
 
