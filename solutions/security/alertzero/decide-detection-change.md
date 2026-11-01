@@ -11,7 +11,7 @@ products:
 
 # Tune noisy rules and fill detection gaps [alertzero-decide-detection-change]
 
-The {{az-detection-watch}} proposes two kinds of changes to your detection rules. The {{az-rule-tuning}} {{az-worker}} proposes tuning changes that cut noise from rules with too many false positives. The {{az-rule-coverage}} {{az-worker}} proposes rules that cover the detection gaps that the {{az-hunt-watch}} finds. No rule changes until you approve, so you can check that each change does what it says without hiding real threats.
+Review the rule changes that {{alertzero}} proposes to cut noise from rules with too many false positives and to cover the detection gaps that the {{az-hunt-watch}} finds. Both kinds of change come from the {{az-detection-watch}}. Its {{az-rule-tuning}} {{az-worker}} handles noisy rules, and its {{az-rule-coverage}} {{az-worker}} handles detection gaps. No rule changes until you approve, so you can check each change before it takes effect.
 
 % After elastic/docs-content#9118 merges, link to watches/detection-watch.md for what starts each kind of change.
 
@@ -22,9 +22,9 @@ The {{az-rule-tuning}} {{az-worker}} proposes one change for each noisy rule. By
 1. In the **Configure** section of the **{{az-proposed-actions-cap}}** page, select the rule's card. Its name starts with **Rule tuning:**.
 2. In the flyout's **{{az-proposed-actions-cap}}** section, select the change.
 3. Check that the change drops the false positives without hiding real threats:
-    - **Why this rule was picked** explains why the rule qualified for tuning.
-    - **Proposed change** shows the rule before and after the change. Make sure an exception or query change is no broader than the noise it targets.
-    - **Backtest**, when the change includes one, compares **Alerts with the current rule** with **Alerts with the proposed change**.
+    - In **Why this rule was picked**, check the reason the rule qualified for tuning.
+    - In **Proposed change**, compare the rule before and after the change. Make sure an exception or query change is no broader than the noise it targets.
+    - If the change includes a **Backtest**, compare **Alerts with the current rule** with **Alerts with the proposed change** to see how the change affects alerts on your past data.
 
     If someone edited the rule after the {{az-rule-tuning}} {{az-worker}} proposed the change, decline the change. Approving a change to an edited rule fails.
 4. Select **Approve** or **Decline**.
@@ -45,7 +45,7 @@ The {{az-rule-coverage}} {{az-worker}} proposes a rule for each gap that the {{a
         - **Create a new {{esql}} rule:** {{alertzero}} creates the rule, turned off. Review it, then turn it on.
         - **Install a prebuilt rule:** {{alertzero}} installs the rule and turns it on.
         - **Turn on an existing rule:** {{alertzero}} turns the rule on.
-        - **Confirm rule coverage:** Nothing runs. You confirm that an existing rule already covers the gap.
+        - **Confirm rule coverage:** No rule changes. Your approval confirms that an existing rule already covers the gap.
     - **If you decline:** No rule changes, and {{alertzero}} discards any draft rule.
 
 To manage rules by hand, refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md) and [](/solutions/security/detect-and-alert/install-prebuilt-rules.md).
