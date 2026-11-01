@@ -50,7 +50,11 @@ For what each {{az-worker}} does, what it needs, and how {{az-watches}} pass wor
 
 ## How much {{az-workers}} do without you [alertzero-overview-autonomy]
 
-Every {{az-worker}} starts at {{az-manual}} {{az-autonomy}}, where each {{az-proposed-action}} waits for your approval. You can give some {{az-workers}} more {{az-autonomy}}, but only at {{az-supervised}} do they approve their own {{az-proposed-actions}}. Changes to detection rules always wait for you. Refer to [Set a {{az-worker}}'s {{az-autonomy}}](configure-worker-settings.md#alertzero-worker-autonomy).
+Every {{az-worker}} starts at {{az-manual}} {{az-autonomy}}, where each {{az-proposed-action}} waits for your approval. You can give some {{az-workers}} more {{az-autonomy}}, but only at {{az-supervised}} do they approve their own {{az-proposed-actions}}. Changes to detection rules always wait for you.
+
+For what each {{az-worker}} does at each of its levels, refer to [](watches-and-workers.md). To change a level, refer to [](configure-worker-settings.md#alertzero-worker-autonomy).
+
+% After elastic/docs-content#9118 merges, link the Watches and Workers reference above to watches-and-workers.md#alertzero-worker-autonomy-levels.
 
 ## What {{alertzero}} costs [alertzero-costs]
 ```{applies_to}

@@ -17,6 +17,8 @@ After you [set up {{alertzero}}](set-up-alertzero.md), use these pages to manage
 - [](run-worker-on-demand.md): Run a {{az-worker}} outside its schedule.
 - [](view-execution-history.md): See every {{az-worker}} run, including failures.
 
+To give people access to {{alertzero}}, refer to [](alertzero-privileges.md).
+
 ## Indexes that {{alertzero}} adds [alertzero-indexes]
 
 {{alertzero}} adds two indexes, which you might notice in **Index Management**. {{alertzero}} creates and manages them, so you don't need to set them up.
