@@ -80,9 +80,10 @@ For an example request, refer to [Route a request to a specific model](kibana-ap
 :::{applies-item} { ess: ga 9.4+, serverless: ga }
 To change which model is used by default:
 
-1. Search for **Model management / Feature settings** in the global search field.
-2. Select your preferred model from the **Default model** dropdown.
-3. Save your changes.
+1. Search for **Model management / Feature Settings** in the global search field.
+2. Select your preferred model from the **Default model** dropdown. {applies_to}`stack: ga =9.4`
+   Select your preferred model from the **Global model** dropdown. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+3. Select **Save settings**.
 
 The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
 
@@ -124,15 +125,29 @@ Otherwise, the agent receives its full list of skills.
 
 ### Fast model availability by deployment type
 
-On {{serverless-full}} projects and {{ech}} deployments, the fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup. Claude Haiku 4.5 is one example. The latency improvement is most noticeable on {{serverless-full}}.
+On {{serverless-full}} projects and {{ech}} deployments, the fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup.
 
-On {{ece}}, {{eck}}, and self-managed deployments, there is no preconfigured fast model unless you [connect to EIS through Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md). Without it, fast model routing falls back to your default model.
+{applies_to}`stack: ga 9.5.0!-9.5.2!` The built-in fast order starts with Claude Haiku 4.5.
 
-### Choose the fast model
+{applies_to}`stack: ga 9.5.3!+` {applies_to}`serverless: ga` The built-in fast order starts with Gemini 3.5 Flash Lite. On 9.6, EIS can replace that order. For the full list, refer to [Choose the fast model](#choose-the-fast-model).
 
-{{agent-builder}} uses a recommended Elastic Managed LLM for fast routing. When more than one recommended fast model is available, such as Claude Haiku 4.5 and Google Gemini Flash, it uses the first one. To prefer a specific model, open the **Feature settings** page, go to the **Agent Builder** section, and order the models under **Fast models** so your preferred one is at the top. To find this page, refer to [Change the default model](#change-the-default-model).
+On {{ece}}, {{eck}}, and self-managed deployments, there is no preconfigured fast model unless you [connect to EIS through Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md). Without that connection, fast model routing uses your default model.
 
-In 9.5, only recommended Elastic Managed LLMs are used for fast routing. Assigning a custom or non-recommended model has no effect on the fast model.
+### Choose the fast model [choose-the-fast-model]
+
+{{agent-builder}} uses the first model in the fast list.
+
+{applies_to}`stack: ga 9.5.0!-9.5.2!` The built-in order is Claude Haiku 4.5, then Gemini 3.0 Flash.
+
+{applies_to}`stack: ga 9.5.3!-9.6` The built-in order is Gemini 3.5 Flash Lite, then Claude Haiku 4.5.
+
+{applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` The built-in order is Gemini 3.5 Flash Lite, then Claude Haiku 4.5, then GPT-6 Luna.
+
+In 9.5, that built-in order is used while **Use recommended defaults** is on for **Fast models**. If you turn off **Use recommended defaults** and select **Save settings**, fast routing uses your default model.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To prefer a specific model, open **Feature Settings**, go to **Agent Builder**, and turn off **Use recommended defaults** under **Fast models**. Put the preferred model first, then select **Save settings**.
+
+On 9.6, EIS can replace the recommended models for **Fast models** and **Main models** when it provides model capability and family metadata. While **Use recommended defaults** is on, **Fast models** shows the order in use. On 9.7 and {{serverless-full}}, the built-in list is used.
 
 :::{image} images/agent-builder-fast-models-feature-settings.png
 :alt: Main models and Fast models cards in the Agent Builder section of the Feature settings page
@@ -181,7 +196,7 @@ In 9.6 and later, deprecated connector types are hidden from the **Create connec
 To use additional models that aren't preconfigured, create a connector for your model provider.
 
 1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select **Create Connector** and select your model provider.
+2. Select **Create connector** and select your model provider.
 3. Configure the connector with your API credentials and preferred model.
 4. Expand **Additional settings** and select `chat_completion` as the task type.
 
@@ -235,20 +250,20 @@ The following models are known to work well with {{agent-builder}}. These catego
 
 | Category | Model examples | Use cases | Trade-offs |
 |---|---|---|---|
-| Extended reasoning | - Gemini 3.1 Pro <br>- Claude 4.6 Opus | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
-| Balanced performance | - GPT-5.2 <br>- Claude 4.6 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
-| High throughput | - Claude 4.5 Haiku <br>- Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+| Extended reasoning | - Gemini 3.1 Pro <br>- Claude Opus 4.6 <br>- Claude Opus 5 {applies_to}`stack: ga 9.5.3!-9.6` <br>- Claude Opus 5.5 {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
+| Balanced performance | - GPT-5.2 <br>- Claude Sonnet 4.6 <br>- GPT-5.6 Sol {applies_to}`stack: ga 9.5.3!-9.6` <br>- Claude Sonnet 5 {applies_to}`stack: ga 9.5.3!-9.6` <br>- GPT-6 Sol {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
+| High throughput | - Claude Haiku 4.5 <br>- Gemini 3.0 Flash <br>- Gemini 3.5 Flash Lite {applies_to}`stack: ga 9.5.3!+` {applies_to}`serverless: ga` <br>- GPT-6 Luna {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
 
 :::{note}
-{{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model for low-effort tasks](#fast-model).
+{{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model routing](#fast-model).
 :::
 
 :::{tip}
-For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude 4.6 Sonnet and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
+For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude Sonnet 4.6 and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
 :::
 
 :::{note}
-For [dashboards and visualizations](agent-builder-dashboards-and-visualizations.md), choose a higher-tier model when the workflow depends on complex {{esql}} generation. Current testing shows Claude 4.6 Opus generates more reliable dashboard {{esql}} than Claude 4.6 Sonnet.
+For [dashboards and visualizations](agent-builder-dashboards-and-visualizations.md), choose a higher-tier model when the workflow depends on complex {{esql}} generation. Current testing shows Claude Opus 4.6 generates more reliable dashboard {{esql}} than Claude Sonnet 4.6.
 :::
 
 ### Incompatible models
