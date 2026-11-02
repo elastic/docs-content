@@ -22,8 +22,8 @@ Add a **Vega** panel on a dashboard to use these grammars with {{kib}} filters, 
 * Static values written directly into the spec, using Vega's native [inline data](https://vega.github.io/vega/docs/data/#inline-data)
 
 :::{tip}
-:applies_to: {"stack": "ga 9.5"}
-You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language when it creates or updates a dashboard through chat.
+:applies_to: {"serverless": "ga", "stack": "ga 9.5+"}
+You can also ask [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md) to generate Vega-Lite visualizations from natural language. The agent adds them to dashboards, or shows a single visualization [inline in the conversation](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md#how-single-visualizations-appear-in-chat).
 :::
 
 :::{image} /explore-analyze/images/kibana-vega.png
@@ -1431,6 +1431,11 @@ The `url` object supports the following parameters:
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
 {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
+
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6"}
+When {{es}} applies approximation, the panel header shows a {icon}`bolt` badge. Refer to [Interpret approximate results](../query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
+:::
 
 
 #### Apply the dashboard time range to {{esql}} data sources [vega-esql-time-range]

@@ -43,7 +43,7 @@ You can control the allocation of the shards of {{search-snap}} indices using th
 
 The speed of recovery of a {{search-snap}} index is limited by the repository setting `max_restore_bytes_per_sec` and the node setting `indices.recovery.max_bytes_per_sec` just like a normal restore operation. By default `max_restore_bytes_per_sec` is unlimited, but the default for `indices.recovery.max_bytes_per_sec` depends on the configuration of the node. See [Recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings).
 
-We recommend that you [force-merge]({{es-apis}}operation/operation-indices-forcemerge) indices to a single segment per shard before taking a snapshot that will be mounted as a {{search-snap}} index. Each read from a snapshot repository takes time and costs money, and the fewer segments there are the fewer reads are needed to restore the snapshot or to respond to a search.
+We recommend that you [force-merge]({{es-apis}}operation/operation-indices-forcemerge) indices to a single segment per shard before taking a snapshot that will be mounted as a {{search-snap}} index. Each read from a snapshot repository takes time and costs money, and the fewer segments there are the fewer reads are needed to restore the snapshot or to respond to a search. This is especially important for read performance on the [frozen data tier](/manage-data/lifecycle/data-tiers.md#frozen-tier).
 
 ::::{tip}
 {{search-snaps-cap}} are ideal for managing a large archive of historical data. Historical information is typically searched less frequently than recent data and therefore may not need replicas for their performance benefits.
@@ -101,7 +101,7 @@ Partially mounted index
 
 To partially mount an index, you must have one or more nodes with a shared cache available. By default, dedicated frozen data tier nodes (nodes with the `data_frozen` role and no other data roles) have a shared cache configured using the greater of 90% of total disk space and total disk space subtracted a headroom of 100GB.
 
-Using a dedicated frozen tier is highly recommended for production use. If you do not have a dedicated frozen tier, you must configure the `xpack.searchable.snapshot.shared_cache.size` setting to reserve space for the cache on one or more nodes. Partially mounted indices are only allocated to nodes that have a shared cache.
+Using a dedicated [frozen data tier](/manage-data/lifecycle/data-tiers.md#frozen-tier) is highly recommended for production use. If you do not have a dedicated frozen tier, you must configure the `xpack.searchable.snapshot.shared_cache.size` setting to reserve space for the cache on one or more nodes. Partially mounted indices are only allocated to nodes that have a shared cache.
 
 ::::{admonition} Manual snapshot mounting
 :class: warning

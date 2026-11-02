@@ -1,7 +1,7 @@
 ---
 navigation_title: Notifications and actions
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -24,7 +24,7 @@ To send a notification or trigger an action from a rule in {{alerting-v2-system}
 
 2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alerts to that workflow. The action policy controls which alerts qualify, how they batch, and how often it invokes the workflow.
 
-   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To apply the policy to specific rules, give the policy and those rules the same [routing tag](action-policies/create-configure-action-policy.md#routing-tags).
+   To apply the policy to specific rules, give the policy and those rules the same [routing tag](action-policies/create-configure-action-policy.md#routing-tags).
 
    To run a workflow when a user acts on an alert, such as opening a ticket when someone assigns it, use an [alert lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead. For a comparison, refer to [Connect workflows](workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
 

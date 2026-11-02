@@ -11,7 +11,7 @@ products:
   - id: kibana
   - id: elastic-agent
   - id: beats
-  - id: fleet
+  - id: fleet-server
   - id: apm
 ---
 
@@ -23,7 +23,7 @@ The Federal Information Processing Standard (FIPS) Publication 140, titled "Secu
   * FIPS 140-2 
   * {applies_to}`stack: ga 9.4+` FIPS 140-3
 - [{{kib}}](/deploy-manage/security/fips-kib.md) offers FIPS 140-2 and FIPS 140-3 compliant modes, and as such can run in a Node.js environment configured with a FIPS 140-2 or FIPS 140-3 compliant OpenSSL3 provider.
-- Some [Ingest tools](/deploy-manage/security/fips-ingest.md), including {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}}, are available as FIPS compatible binaries and can be configured to use FIPS 140-2 compliant cryptography.
+- Some [Ingest tools](/deploy-manage/security/fips-ingest.md), including {{agent}}, {{fleet-server}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}}, are available as FIPS compatible binaries. Depending on the product and version, these binaries use FIPS 140-2 or FIPS 140-3 validated cryptography. Refer to [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md) for the versions in which each tool supports each standard.
 
 :::{note}
 If you are running {{es}} through {{eck}}, you also need a FIPS-compliant ECK operator. Refer to [](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md) for operator installation instructions.
