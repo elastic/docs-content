@@ -52,20 +52,22 @@ Each {{az-hunt-finding}} appears in its {{az-investigation}}, with the finding's
 {{alertzero}} builds {{az-threat-reports}} for you from public threat feeds, so you don't need to set up the feeds yourself. When you turn on {{az-continuous-threat-hunt}}, {{alertzero}} turns on two threat intelligence workflows that run every 4 hours, in this order.
 
 1. **Ingest threat feeds** collects new articles from the [supported threat feeds](#alertzero-threat-feeds) and saves each one as a {{az-threat-report}}. It skips articles more than 30 days old and articles it already collected in the last 90 days.
-2. **Enrich threat report** checks that each report contains threat intelligence, then extracts details such as indicators of compromise (IOCs), attacker behaviors, and severity. {{az-continuous-threat-hunt}} ignores reports that fail the check.
-
-:::{dropdown} What Enrich threat report adds to each report
-* IOCs, including file hashes, IP addresses and ranges, domains, URLs, email addresses, and cryptocurrency wallet addresses.
-* A classification of the threat, including its categories, attacker behaviors, affected regions, and severity.
-* A description of the adversary, including their capabilities, infrastructure, and victims, if the report has enough detail.
-* Links to other reports that share its IOCs.
-:::
+2. **Enrich threat report** checks that each report contains threat intelligence, then extracts details such as indicators of compromise (IOCs), attacker behaviors, and severity. {{az-continuous-threat-hunt}} ignores reports that fail the check. For the full list of details, refer to [](#alertzero-threat-report-contents).
 
 All spaces in your deployment share both workflows, so every space gets the same reports. A third workflow, **Attribute alerts to reports**, then counts the alerts in each space that match each report.
 
 :::{tip}
 After you first turn on {{az-continuous-threat-hunt}}, **Enrich threat report** might need several runs to process all the collected reports. It processes up to 50 reports per run, oldest first. Until then, {{az-continuous-threat-hunt}} hunts with only the reports processed so far.
 :::
+
+#### What Enrich threat report adds to each report [alertzero-threat-report-contents]
+
+For each {{az-threat-report}} that contains threat intelligence, **Enrich threat report** adds the following details:
+
+* IOCs, including file hashes, IP addresses and ranges, domains, URLs, email addresses, and cryptocurrency wallet addresses.
+* A classification of the threat, including its categories, attacker behaviors, affected regions, and severity.
+* A description of the adversary, including their capabilities, infrastructure, and victims, if the report has enough detail.
+* Links to other reports that share its IOCs.
 
 #### Supported threat feeds [alertzero-threat-feeds]
 
@@ -89,7 +91,7 @@ To build reports for {{az-continuous-threat-hunt}}, the threat intelligence work
 | --- | --- | --- |
 | Ingest threat feeds | Outbound HTTPS access from {{kib}} to `www.elastic.co`, `www.cisa.gov`, `www.ncsc.gov.uk`, `cert.cyber.gouv.fr`, and `cert.europa.eu`. | The workflow runs, but it collects no reports from the feeds it can't reach. |
 | Enrich threat report | Reports from **Ingest threat feeds**. | It has nothing to process, so {{az-continuous-threat-hunt}} has no reports to search for. |
-| Enrich threat report | A model selected for **Efficient models** and **Frontier models** in **Feature Settings**, in the default space. Refer to [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). | Reports stay unprocessed, and {{az-continuous-threat-hunt}} can't search for them. The workflow retries them on its next run. |
+| Enrich threat report | Models for the **{{az-efficient-models}}** and **{{az-frontier-models}}** settings, configured in [**Feature Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#feature-settings) in the default space. | The workflow can't process reports, so {{az-continuous-threat-hunt}} has no reports to search for. The workflow retries unprocessed reports on its next run. |
 
 ## {{az-detection-watch}} [alertzero-detection-watch]
 
