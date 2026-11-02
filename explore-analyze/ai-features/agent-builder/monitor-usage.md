@@ -92,7 +92,7 @@ The following screenshot shows the **Total** tab, with cache hit tokens under **
 
 The **By model** table starts with an **All models** row, followed by one row per connector. It has these columns:
 
-* **Model**: The connector name. When the name starts with the model creator, that prefix is omitted, and a tooltip shows the full name. When the connector can't be found, for example because it was deleted, the row shows the model identifier, or the connector identifier if there is no model identifier.
+* **Model**: The connector name. When the name starts with the model creator, that prefix is omitted. Hover over a model name to see the full connector name. When the connector can't be found, for example because it was deleted, the row shows the model identifier, or the connector identifier if there is no model identifier.
 * **LLM calls**: The number of times that connector was called.
 * **Tokens sent**: Input tokens. When the response reported cache hits, the column heading adds **(cached)** and each row shows the cached count in parentheses.
 * **Tokens received**: Output tokens. When the response reported thinking tokens, the column heading adds **(reasoning)** and each row shows the reasoning count in parentheses.
@@ -123,7 +123,7 @@ To view timing and token usage for a response:
 
 ::::{applies-item} stack: ga 9.3-9.4
 
-When the round has steps, select **Completed reasoning** to open the reasoning panel. Token totals are at the bottom of that panel:
+Token usage is shown only for rounds that have steps. Select **Completed reasoning** to open the reasoning panel. Token totals are at the bottom of that panel:
 
 * {icon}`sort_up`: Input tokens.
 * {icon}`sort_down`: Output tokens.
