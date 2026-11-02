@@ -3,7 +3,7 @@ navigation_title: Event-driven triggers
 applies_to:
   stack: ga 9.5+, preview =9.4
   serverless: ga
-description: Run a workflow in response to a platform event, such as a workflow failure, a case change, an entity store change, or an alert lifecycle event.
+description: Run a workflow in response to a platform event, such as a workflow failure, a case change, an entity store change, an alert lifecycle event, or an Agent Builder conversation change.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -22,6 +22,7 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers**: Fire when an entity's asset criticality or risk score changes in the entity store.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **{{agent-builder}} triggers**: Fire when a conversation attachment is added, updated, or deleted, or when conversation metadata changes. `ai.conversation.updated` also fires for other conversation writes, and only for templates that have it turned on.
 
 
 :::{include} ../_snippets/schema-location-legend.md
@@ -595,6 +596,235 @@ steps:
         Rule {{ event.rule.ruleId }} in space {{ event.rule.spaceId }} — trigger: {{ trigger.type }}
 ```
 
+## {{agent-builder}} triggers [agent-builder-triggers]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+{{agent-builder}} triggers run a workflow when a conversation changes. Use them to react to attachment changes and metadata updates without polling the {{agent-builder}} APIs.
+
+These triggers are available wherever {{agent-builder}} is available. They are unavailable in [Observability Logs Essentials](/solutions/observability/observability-serverless-feature-tiers.md) projects and in [Security Analytics Essentials](/solutions/security/security-serverless-feature-tiers.md) projects, where {{agent-builder}} is disabled.
+
+Attachment triggers and [`ai.conversation.metadataUpdated`](#ai-conversation-metadata-updated-trigger) fire for conversations in general. [`ai.conversation.updated`](#ai-conversation-updated-trigger) fires only for specific conversation templates.
+
+### Attachment triggers [agent-builder-attachment-triggers]
+
+Attachment triggers fire after the conversation write that recorded the change is saved.
+
+An attachment trigger doesn't fire in these cases:
+
+- The attachment is hidden. Hidden attachments are internal conversation data, so adding, updating, or deleting one doesn't fire a trigger. If one update makes a hidden attachment visible and also changes its content, that content change fires `ai.attachmentUpdated`.
+- The update doesn't change attachment content. Edits to the description, the hidden setting, or the read-only setting don't fire `ai.attachmentUpdated`. Renaming an attachment or changing its origin doesn't fire a trigger.
+- The new content is identical to the current version.
+- A soft-deleted attachment is restored. Restore doesn't fire a trigger.
+- A soft-deleted attachment is permanently deleted later. The soft delete already fired `ai.attachmentDeleted`. Permanently deleting an attachment that is still active fires `ai.attachmentDeleted` once, with `event.hardDelete` set to `true`.
+
+Every attachment trigger event includes these fields:
+
+| Field | Contains |
+|---|---|
+| `event.conversationId` | The conversation the attachment belongs to. |
+| `event.attachmentId` | The attachment ID. |
+| `event.attachmentType` | The attachment type, for example `text`, `esql`, or `dashboard`. |
+| `event.source` | What made the change. |
+
+`event.source` is one of these values:
+
+| Value | When it is set |
+|---|---|
+| `workflow` | An attachment workflow step made the change (`ai.attachment.add`, `ai.attachment.update`, or `ai.attachment.delete`). |
+| `http_api` | The attachment HTTP API made the change. |
+| `server_api` | Another {{kib}} feature made the change through the {{agent-builder}} server API. |
+| `chat_input` | The attachment was sent with a user message. |
+| `execution` | The agent created or changed the attachment during a run, for example when a tool generates a dashboard. |
+
+Use `event.source` in `on.condition` to ignore changes your own workflow made:
+
+```yaml
+triggers:
+  - type: ai.attachmentAdded
+    on:
+      condition: 'not event.source: "workflow"'
+```
+
+To ignore every event that originated from a workflow run, set [`on.workflowEvents`](#event-driven-triggers-workflow-events). `event.source` is narrower. It identifies the {{agent-builder}} path that made this attachment change.
+
+### `ai.attachmentAdded` [ai-attachment-added-trigger]
+
+Fires when an attachment is added to a conversation. `event.currentVersion` is `1`.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `ai.attachmentAdded`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+In addition to the [shared attachment fields](#agent-builder-attachment-triggers):
+
+| Field | Contains |
+|---|---|
+| `event.currentVersion` | The attachment version after this change. Always `1` for a new attachment. |
+
+#### Example
+
+Fire when an agent run attaches a dashboard:
+
+```yaml
+triggers:
+  - type: ai.attachmentAdded
+    on:
+      condition: 'event.attachmentType: "dashboard" and event.source: "execution"'
+```
+
+### `ai.attachmentUpdated` [ai-attachment-updated-trigger]
+
+Fires when a new content version of an attachment is stored. `event.currentVersion` is greater than `event.previousVersion`. Metadata-only edits don't fire this trigger.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `ai.attachmentUpdated`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+In addition to the [shared attachment fields](#agent-builder-attachment-triggers):
+
+| Field | Contains |
+|---|---|
+| `event.previousVersion` | The attachment version before this change. |
+| `event.currentVersion` | The attachment version after this change. |
+
+#### Example
+
+Fire when a user edits attachment content through chat or the attachment HTTP API:
+
+```yaml
+triggers:
+  - type: ai.attachmentUpdated
+    on:
+      condition: 'event.source: "http_api" or event.source: "chat_input"'
+```
+
+### `ai.attachmentDeleted` [ai-attachment-deleted-trigger]
+
+Fires when an attachment is soft-deleted or permanently removed while it is still active.
+
+- Soft delete: `event.hardDelete` is `false`. The attachment can be restored. Restore doesn't fire another trigger.
+- Permanent delete of an active attachment: `event.hardDelete` is `true`.
+- Permanent delete of an attachment that is already soft-deleted: no trigger. The soft delete already fired this trigger.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `ai.attachmentDeleted`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+In addition to the [shared attachment fields](#agent-builder-attachment-triggers):
+
+| Field | Contains |
+|---|---|
+| `event.hardDelete` | `true` when the attachment was permanently removed. `false` when it was soft-deleted and can be restored. |
+
+#### Example
+
+Fire only when an attachment is permanently removed:
+
+```yaml
+triggers:
+  - type: ai.attachmentDeleted
+    on:
+      condition: 'event.hardDelete: true'
+```
+
+### `ai.conversation.metadataUpdated` [ai-conversation-metadata-updated-trigger]
+
+Fires after a successful metadata patch changes at least one stored field. A patch that changes nothing doesn't fire. Creating a conversation or applying a template can set metadata without firing this trigger.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `ai.conversation.metadataUpdated`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.conversationId` | The conversation whose metadata changed. |
+| `event.templateId` | The template that defines the metadata schema, when the conversation has one. |
+| `event.parentId` | The parent conversation, when this conversation is a child, such as a sub-agent. |
+| `event.changedFields` | Names of the metadata fields that changed. Values are not included. |
+
+#### Example
+
+Fire when a decision is recorded:
+
+```yaml
+triggers:
+  - type: ai.conversation.metadataUpdated
+    on:
+      condition: 'event.changedFields: "decision"'
+```
+
+### `ai.conversation.updated` [ai-conversation-updated-trigger]
+
+Fires after a successful conversation write that changes the conversation: new events, attachments, metadata, the title, the template, or access. A write that changes nothing doesn't fire. Deleting a conversation, marking it as read, pinning it, and saving feedback on an agent response don't fire this trigger.
+
+The trigger appears with the other {{agent-builder}} triggers, but a write fires it only for conversation templates that have it turned on. [{{alertzero}}](/solutions/security/alertzero/set-up-alertzero.md) turns it on for [investigations](/solutions/security/alertzero/glossary.md#alertzero-glossary-investigation) (`event.templateId: "investigation"`) and [escalations](/solutions/security/alertzero/glossary.md#alertzero-glossary-escalation) (`event.templateId: "escalation"`) in a space where {{alertzero}} is turned on. On {{stack}}, that space must use the Security solution view. Writes to other conversations don't fire this trigger.
+
+Changes that only affect hidden attachments don't fire this trigger, and hidden attachment changes are left out of `event.eventTypes`, `event.attachmentTypes`, and `event.attachmentIds`.
+
+The payload describes the write and doesn't include field values. Read the conversation when you need the values. In `on.condition`, an array field matches when any element matches. For example, `event.eventTypes: "user_message"` matches a write that added a user message among other events. A wildcard on a missing field doesn't match, so `event.executionId: *` matches only writes that saved an agent run.
+
+A write that creates a conversation reports `created` plus everything set at creation, including template defaults. Add `not event.changeKinds: "created"` when a condition should match only later changes.
+
+To keep a burst of writes from starting many overlapping runs, set a [concurrency key](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-concurrency) that includes the workflow ID and `event.conversationId`.
+
+#### Schema
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `ai.conversation.updated`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. |
+
+#### Event payload
+
+| Field | Contains |
+|---|---|
+| `event.conversationId` | The conversation that was written. |
+| `event.templateId` | The conversation template, when it has one. |
+| `event.parentId` | The parent conversation, when this conversation is a child, such as a persistent sub-agent. |
+| `event.source` | The path that performed the write: `execution` (an agent run, including the user message stored when it arrives and a generated title), `http_api` ({{agent-builder}} HTTP APIs), `workflow` ({{agent-builder}} workflow steps), or `server_api` (another {{kib}} feature using the {{agent-builder}} server API). |
+| `event.changeKinds` | What this write changed. One or more of `created`, `events`, `attachments`, `metadata`, `title`, `template`, and `access`. Never empty. `created` means the write created the conversation and also reports everything set at creation. |
+| `event.eventTypes` | Types of the events this write added, with duplicates removed. Examples include `user_message`, `execution_terminated`, `attachment_added`, and custom event types. Empty when no event was added. |
+| `event.actorTypes` | Actor types of the events this write added, with duplicates removed: `user`, `agent`, `external`, or `system`. |
+| `event.executionId` | The agent run this write saved, whether it finished, failed, or was stopped. Absent when the write saved no run. |
+| `event.attachmentTypes` | Types of the attachments this write added, updated, deleted, restored, or edited, with duplicates removed. |
+| `event.attachmentIds` | IDs of the attachments this write changed. |
+| `event.changedFields` | Names of the metadata fields whose stored value changed. Values are not included. |
+
+#### Example
+
+Fire when an {{alertzero}} investigation receives a user message:
+
+```yaml
+triggers:
+  - type: ai.conversation.updated
+    on:
+      condition: 'event.templateId: "investigation" and event.eventTypes: "user_message"'
+```
+
 ## Control event chains and prevent loops
 
 When a workflow's own steps cause an event that its trigger listens for, executions can chain together (workflow A emits an event, which runs workflow B, which emits an event that runs A again). Left unchecked, these chains can loop or generate load. Event-driven triggers give you controls to manage this, with safe defaults.
@@ -660,3 +890,4 @@ To reuse the data from an earlier run instead of a fresh event, select **Histori
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): See what triggered each run and inspect the event payload.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
 - [Connect workflows to {{alerting-v2-system}}](../../alerting/esql/workflows-alerting.md): Learn how action policies invoke workflows for alerts, and when to use lifecycle triggers instead.
+- [Connect {{agent-builder}} agents and Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md): Other ways to use agents and workflows together.
