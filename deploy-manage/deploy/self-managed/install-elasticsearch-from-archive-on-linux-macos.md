@@ -1,18 +1,21 @@
 ---
 navigation_title: Install on Linux or MacOS
+description: Install Elasticsearch on Linux or macOS by downloading and extracting the .tar.gz archive.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
 applies_to:
   deployment:
-    self:
+    self: ga
 products:
   - id: elasticsearch
+type: how-to
 sub:
   es-conf: $ES_HOME/config
   slash: /
   export: "export "
   escape: \
   auto: " -d"
+  build-type: tar
 ---
 
 # Install {{es}} from archive on Linux or MacOS [targz]

@@ -19,7 +19,7 @@ products:
 
 Building a useful AI index starts with decisions about its purpose, source data, Knowledge Indicator (KI) granularity, and refresh schedule. Use this page to plan those decisions before creating or revising an automation.
 
-This page covers AI indices that you create and maintain. Elastic integrations can also supply [managed AI indices](concepts.md#managed-ai-indices) whose configuration is read-only.
+This page covers AI indices that you create and maintain. Elastic features can also supply [managed AI indices](concepts.md#managed-ai-indices) whose configuration is read-only.
 
 For a UI-led example that creates and tests an AI index, follow the [{{context-engine}} quickstart](quickstart.md).
 
@@ -87,6 +87,8 @@ After an automation runs, inspect its KIs for accuracy, useful interpretation, s
 
 Where [agent traces](concepts.md#agent-traces) are available, look for empty retrievals, query errors, broad source exploration, and repeated sequences of tool calls. These behaviors can reveal missing context, weak retrieval metadata, or query guidance that the automation should generate in advance.
 
-Use those observations to revise the AI index description, source coverage, generation strategy, automation instructions, or refresh schedule. Run the automation again and compare the resulting KIs and agent behavior. Improving the automation makes the change repeatable for later runs and for every agent that uses the AI index. For a structured review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
+Use those observations to revise the AI index description, source coverage, generation strategy, automation instructions, or refresh schedule. Run the automation again and compare the resulting KIs and agent behavior. Improving the automation makes the change repeatable for later runs and for every agent that uses the AI index.
+
+To find and manage individual KIs, refer to [Inspect and manage Knowledge Indicators](inspect-and-manage-knowledge-indicators.md). For a structured quality review, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
 For definitions of the objects involved, refer to [{{context-engine}} concepts](concepts.md). To make the resulting context available to an agent or application, refer to [Use an AI index](use-an-ai-index.md).

@@ -27,6 +27,11 @@ To organize dashboard panels, you need the **All** privilege for the **Dashboard
 
 ## Dashboard grid layout and best practices [dashboard-grid-layout]
 
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6+"}
+To have an agent apply layout practices like these to a dashboard you already built, [enhance it with AI](enhance-dashboard-with-ai.md).
+:::
+
 Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default.
 
 Size panels to match what they show. Use these as starting points and adjust for the density of your data:
@@ -45,6 +50,7 @@ Consider the following best practices to keep dashboards scannable as you add pa
 * **Place KPIs and key trends above the fold.** On a 1080p screen, roughly 20–24 rows are visible without scrolling. Put metrics in the top row so viewers see the most important information first. Aim for 8–12 panels above the fold.
 * **Keep heights consistent within a row.** When several panels sit side by side, use the same height for all of them. Mismatched heights leave awkward gaps and make the row harder to read.
 * **Match panel width to importance.** Give primary charts more horizontal room, and group compact KPI metrics into narrower panels along a single row.
+* **Order panels from summary to detail.** Lead with high-level metrics, follow with time series trends, then add breakdowns and distributions such as top-N rankings. When you use sections, keep each section to one of those purposes: summary metrics, trends, or breakdowns.
 * **Separate secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
 * **Don't use text panels as section headers.** They take up vertical space without showing data. Use collapsible section labels and descriptive panel titles instead.
 

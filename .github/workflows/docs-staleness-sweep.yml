@@ -1,4 +1,4 @@
-name: Docs staleness sweep
+name: "Sweep: Staleness"
 on:
   workflow_dispatch:
     inputs:

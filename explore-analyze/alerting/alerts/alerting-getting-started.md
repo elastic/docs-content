@@ -117,6 +117,10 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 
 ## Differences from {{watcher}} [alerting-concepts-differences]
 
+:::{note}
+Watcher is not available in {{serverless-full}}.
+:::
+
 [{{watcher}}](../watcher.md) and the {{kib}} {{alert-features}} are both used to detect conditions and can trigger actions in response, but they are completely independent alerting systems.
 
 This section will clarify some of the important differences in the function and intent of the two systems.

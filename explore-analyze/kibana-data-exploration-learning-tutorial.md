@@ -44,8 +44,10 @@ Before you can explore and visualize, you need data in {{es}}. In this tutorial 
 
 1. Open the **Integrations** page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the list of integrations, select **Sample Data**.
-3. On the page that opens, select **Other sample data sets**.
-4. On the **Sample web logs** card, select **Add data**.
+3. Install the **Sample web logs** data set:
+
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` On the **Sample web logs** card, select **Install data**.
+   - {applies_to}`stack: ga 9.0-9.3` Select **Other sample data sets**, then on the **Sample web logs** card, select **Add data**.
 
 The sample data is loaded into the `kibana_sample_data_logs` index. It includes web server access logs with fields like `@timestamp`, `clientip`, `response`, `bytes`, `url`, `extension`, and `geo.src`.
 
@@ -64,10 +66,7 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 :::::{step} Open Discover and switch to {{esql}}
 
 1. From the navigation menu, go to **Discover**.
-2. Switch to {{esql}} mode. You can do this from:
-
-   - {icon}`code` **{{esql}}** or **Try {{esql}}** in the application menu.
-   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+2. In the application menu, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) to switch to {{esql}} mode.
 
 **Result:** The query bar changes to an {{esql}} editor where you can write piped queries.
 :::::
@@ -88,14 +87,14 @@ FROM kibana_sample_data_logs <1>
 
 You can add more {{esql}} commands and functions to control the results of the query. For example, a `| LIMIT` command to cap the number of rows returned (the default is 1,000). Refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) for the full list of commands.
 
-**Result:** The results table displays the most recent web log entries with only the fields you selected. To discover which fields are available, browse the field list in the sidebar.
+**Result:** The results table displays the most recent web log entries with only the fields you selected. Because the query uses `KEEP`, Discover doesn't show the chart of results over time. Instead, it shows a chart based on the columns you keep only when those columns suit one, so it's normal if no chart appears. To discover which fields are available, browse the field list in the sidebar.
 
 :::{tip}
 **No results?** The time range filter defaults to the last 15 minutes. Sample data timestamps are relative to when you loaded the dataset, so you may need to select a wider range, such as **Last 90 days**, or more, to see results.
 :::
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-first-query.png
-:alt: Discover showing an ES|QL query with results table and histogram
+:alt: Discover showing an ES|QL query that keeps four fields and sorts by timestamp, with a results table of those four columns
 :screenshot:
 :::
 
@@ -105,7 +104,7 @@ You can add more {{esql}} commands and functions to control the results of the q
 
 The results table gives you an overview, but sometimes you need the full details of a single event. To inspect a document:
 
-1. Select the expand icon ({icon}`expand`) on any row in the results table. A flyout opens.
+1. Select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier {{stack}} versions) on any row in the results table. A flyout opens.
 2. The flyout shows the fields returned by your query in a detailed view. Use the **Table** tab to see field names and values, or the **JSON** tab to see the raw document.
 3. Use the navigation arrows at the top of the flyout to move between documents without closing it. This is useful when you need to compare consecutive events or trace a sequence.
 
@@ -128,10 +127,12 @@ FROM kibana_sample_data_logs
 1. Excludes rows where the HTTP response code is missing.
 2. Groups rows by response code and counts events in each group.
 
-**Result:** The table shows the HTTP response codes ranked by frequency. A chart appears above the table to visualize the aggregation, so you can see at a glance how traffic breaks down by status (200, 404, 503, and so on). A three-line query turned thousands of raw log entries into a ranked breakdown with a chart. Notice that the field list in the sidebar now only shows the fields produced by the query (`event_count` and `response`), reflecting the narrower result set.
+**Result:** The table lists each HTTP response code with its event count. A chart appears above the table to visualize the aggregation, so you can see at a glance how traffic breaks down by status (200, 404, 503, and so on). A three-line query turned thousands of raw log entries into a breakdown with a chart. Notice that the field list in the sidebar now only shows the fields produced by the query (`event_count` and `response`), reflecting the narrower result set.
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Instead of a flat table, Discover shows each response code as a group that you can expand to see the documents behind it. To return to a flat table, open the **Group by** menu and select **none**. Refer to [Inspect grouped STATS results in Discover](discover/inspect-grouped-stats.md).
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-aggregation.png
-:alt: Discover showing a STATS aggregation with HTTP response codes ranked by event count
+:alt: Discover showing a STATS aggregation as a bar chart of event count by response code, with the response codes listed as expandable groups
 :screenshot:
 :::
 :::::
@@ -146,7 +147,7 @@ The aggregation query produced a chart showing event counts by response code. Yo
 4. Select **Save and go to dashboard**.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-save-to-dashboard.png
-:alt: Save visualization dialog with "Add to dashboard" set to New
+:alt: The Discover chart with the Save visualization to dashboard button highlighted and its tooltip showing
 :screenshot:
 :::
 
@@ -180,23 +181,24 @@ Before adding more panels, save your dashboard so you don't lose your work:
 
 1. Create the visualization:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the toolbar.
    - {applies_to}`stack: ga 9.0-9.1` Select **Create visualization**.
 
-2. Once in the Lens editor, switch the visualization type to **Metric**.
-3. From the **Available fields** list on the left, drag **bytes** to the **Primary metric** area. Lens selects the **Median** aggregation automatically.
-4. Select the "Median of bytes" **Primary metric** that we just added, then go to the **Appearance** section and configure the following:
+2. Make sure the **Kibana Sample Data Logs** {{data-source}} is selected. If another one is selected, switch to **Kibana Sample Data Logs** so the fields in the next steps are available.
+3. Once in the Lens editor, switch the visualization type to **Metric**.
+4. From the **Available fields** list on the left, drag **bytes** to the **Primary metric** area. Lens selects the **Median** aggregation automatically.
+5. Select the "Median of bytes" **Primary metric** that we just added, then go to the **Appearance** section and configure the following:
    - **Name**: `Median response size`
    - **Value format**: `Bytes (1024)`
    - **Background chart** (or **Supporting visualization**): `Line`. A sparkline appears behind the number, showing how the median changes over the selected time range.
-   - **Color by value** (or **Color mode**): `Dynamic`. Set three color stops: green at `0`, yellow at `6000`, and red at `10000`. With these thresholds, the panel color reflects whether the median response size is small (under 6 KB), moderate, or large (over 10 KB).
+   - **Mode** (**Color mode** or **Color by value** in earlier versions): `Dynamic`. Set three color stops: green at `0`, yellow at `6000`, and red at `10000`. With these thresholds, the panel color reflects whether the median response size is small (under 6 KB), moderate, or large (over 10 KB).
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-metric-lens.png
 :alt: Lens editor showing a metric panel with median response size, background sparkline, and dynamic coloring
 :screenshot:
 :::
 
-5. Select **Close**, then select **Save and return**.
+6. Select **Close**, then select **Save and return**.
 
 
 **Result:** A metric panel appears on the dashboard showing the median response size in a human-readable format (for example, 5.6 KB instead of 5,748), with a background sparkline for context.
@@ -205,7 +207,7 @@ Before adding more panels, save your dashboard so you don't lose your work:
 A dashboard often starts with a row of metrics for key numbers at a glance. Using the same steps, you can create additional metrics such as:
 
 - **Unique visitors**: drag `clientip`. Lens picks **Unique count** for IP fields.
-- **Total requests**: drag `Records`. Lens creates a simple count. To add a trend indicator, drag `Records` again to the **Secondary metric** area and set its **Time shift** to `1d`. Then set **Color mode** to `Dynamic` and **Compare to** to `Primary metric` to show whether traffic is trending up or down. For details, refer to [Show trends in Metric charts](visualize/charts/metric-charts.md#metric-trends).
+- **Total requests**: drag `Records`. Lens creates a simple count. To add a trend indicator, drag `Records` again to the **Secondary metric** area and set its **Time shift** to `1d`. Then set **Color mode** (**Color by value** in earlier versions) to `Dynamic` and **Compare to** to `Primary metric` to show whether traffic is trending up or down. For details, refer to [Show trends in Metric charts](visualize/charts/metric-charts.md#metric-trends).
 - **Unique URLs**: drag `request.keyword`. Lens picks **Unique count**, showing how many distinct pages were requested.
 :::
 
@@ -215,7 +217,7 @@ A dashboard often starts with a row of metrics for key numbers at a glance. Usin
 
 1. Create the visualization:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the toolbar.
    - {applies_to}`stack: ga 9.0-9.1` Select **Create visualization**.
 
 2. Once in the Lens editor, switch the visualization type to **Line**.
@@ -228,8 +230,8 @@ A dashboard often starts with a row of metrics for key numbers at a glance. Usin
 
 5. Add a reference line to give the chart visual context:
    1. Select the **Add layer** icon {icon}`plus_square`, then select **Reference lines**.
-   2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart.
-   3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic` and select **Fill below** to shade the area under the line.
+   2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart. The value is only an example, so you can enter a different one.
+   3. Set the color to red. In **Name**, enter a label such as `High traffic`, then set **Text decoration** to **Name**.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-line-chart-lens.png
 :alt: Lens editor showing a line chart of count of records over time with a reference line
@@ -253,7 +255,7 @@ To compare trends, create additional time series. For example, create a **Respon
 
 1. Create the visualization:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** → **Create visualization** (**Visualization** in earlier versions) in the toolbar.
    - {applies_to}`stack: ga 9.0-9.1` Select **Create visualization**.
 
 2. Make sure the correct {{data-source}} is selected (for example, `kibana_sample_data_logs`).
@@ -282,7 +284,7 @@ You can also add panels powered by {{esql}} queries directly from the dashboard.
 
 1. Add a new panel:
 
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**, depending on your {{kib}} version.
+   - {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Create visualization (query)** (**Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations** in earlier versions).
    - {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu, then select **{{esql}}** under **Visualizations**.
 
 2. Enter the following query and run it:
@@ -325,7 +327,7 @@ Each one follows the same workflow you have used so far: create a visualization,
 
 You can fine-tune any Lens panel without leaving the dashboard. Try it on the **Requests by file extension** panel:
 
-1. Hover over the panel and select {icon}`pencil` **Edit visualization configuration**. A **Configuration** flyout opens on the right side of the panel.
+1. Hover over the panel and select {icon}`pencil` **Edit visualization**. A **Configuration** flyout opens on the right side of the panel.
 2. In the flyout, select the **Horizontal axis** configuration.
 3. Expand **Advanced**, then in the **Include values** field, enter `.+` and select **Use regular expression**. This regular expression matches any non-empty string, which filters out documents where the extension field is blank. The panel updates immediately to reflect the change.
 4. Select **Back**, then **Apply and close**.
@@ -364,7 +366,7 @@ For a panel sizing reference with recommended widths and heights for each chart 
 To reduce clutter, consider hiding redundant axis titles. For example, on a bar chart the x-axis title may not add value when the panel title already describes the data. To hide it, edit the panel in Lens, open the {icon}`brush` **Style** panel, then under **Bottom axis**, set **Axis title** to **None**.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
-:alt: A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom
+:alt: A dashboard with metric panels, time series charts, bar charts, a pie chart, a treemap, and a table of recent events
 :screenshot:
 :::
 
@@ -1040,7 +1042,7 @@ One of {{kib}}'s strengths is how you can move between exploring raw data and vi
 :   Select {icon}`pencil` on any panel to open the inline **Configuration** flyout. For deeper changes, select **Edit in Lens** in the flyout to switch to the full editor, then **Save and return** to go back to the dashboard.
 
 **Add a new visualization directly from a dashboard**
-:   From a dashboard, select **Add**, then select **Visualization** to open the Lens editor, or **Visualization (query)** to create a chart from an {{esql}} query without going through Discover first.
+:   From a dashboard, select **Add**, then select **Create visualization** (**Visualization** in earlier versions) to open the Lens editor, or **Create visualization (query)** (**Visualization (query)** in earlier versions) to create a chart from an {{esql}} query without going through Discover first.
 
 :::{tip}
 This back-and-forth workflow is especially useful when investigating anomalies: spot something unusual on a dashboard, jump to Discover to examine the raw events, refine your query, then save an updated visualization back to the dashboard.

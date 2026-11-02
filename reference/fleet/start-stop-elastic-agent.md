@@ -13,6 +13,11 @@ products:
 
 You can start and stop the {{agent}} service on the host where it’s running, and it will no longer send data to {{es}}.
 
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6+"}
+You can also restart {{fleet}}-managed {{agent}}s remotely from {{kib}}, without logging in to the host. Refer to [Restart {{fleet}}-managed {{agent}}s](/reference/fleet/restart-elastic-agent.md).
+:::
+
 
 ## Start {{agent}} [start-elastic-agent-service]
 

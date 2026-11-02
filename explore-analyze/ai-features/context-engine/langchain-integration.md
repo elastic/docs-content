@@ -198,7 +198,7 @@ Each entry the list operation returns gives the agent:
 * `id`, to pass to the describe operation.
 * `esql_target`, the exact string to put after `FROM`. Use it verbatim: it differs from the ID (`sales-knowledge` becomes `ai-index-idx-sales-knowledge`) and can be a wildcard or a data stream.
 * `description`, to determine whether the AI Index is relevant to the question.
-* `managed`, to distinguish a [built-in AI Index supplied by an Elastic integration](concepts.md#managed-ai-indices) from one created by a user.
+* `managed`, to distinguish a [built-in AI Index supplied by an Elastic feature](concepts.md#managed-ai-indices) from one created by a user.
 
 The list omits an AI Index when your credential can't read its backing index. It does include an AI Index that's registered but still empty.
 

@@ -33,7 +33,7 @@ stack: ga 9.3
 serverless: ga
 ```
 
-When migrating a service to OpenTelemetry instrumentation, you may have date ranges that contain both classic {{product.apm}} and OpenTelemetry data. The **Metrics** tab shows callouts to help you navigate this transition period.
+When migrating a service to OpenTelemetry instrumentation, you might have date ranges that contain both classic {{product.apm}} and OpenTelemetry data. The **Metrics** tab shows callouts to help you navigate this transition period. For the full migration path, refer to [Switch to OpenTelemetry](/solutions/observability/get-started/opentelemetry/switch-to-otel.md).
 
 **Instrumentation change detected**
 :   When the **Metrics** tab detects a change in instrumentation, it shows: "We have detected a change on `<timestamp>` in the instrumentation of your service." It also shows the current instrumentation type and time period, and provides the date range for the previous instrumentation period so you can switch to it.

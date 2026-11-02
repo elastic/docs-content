@@ -1,12 +1,14 @@
 ---
 navigation_title: Install on Windows
+description: Install Elasticsearch on Windows using the .zip archive, and optionally configure it to run as a service.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
 applies_to:
   deployment:
-    self:
+    self: ga
 products:
   - id: elasticsearch
+type: how-to
 sub:
   es-conf: "%ES_HOME%\\config"
   slash: \
@@ -15,6 +17,7 @@ sub:
   auto: .bat
   ipcommand: ipconfig /all
   ipvalue: inet
+  build-type: zip
 ---
 
 # Install {{es}} with .zip on Windows [zip-windows]
@@ -132,7 +135,7 @@ The password for the `elastic` user and the enrollment token for {{kib}} are out
 
 ### Install and run {{es}} as a service on Windows [windows-service]
 
-You can install {{es}} as a service that runs in the background or starts automatically at boot time without user interaction.
+You can install {{es}} as a service that runs in the background or starts automatically at startup without user interaction.
 
 1. Install {{es}} as a service. The name of the service and the value of `ES_JAVA_HOME` will be made available during install:
 
@@ -160,7 +163,7 @@ You can install {{es}} as a service that runs in the background or starts automa
     ```
 
     ::::{note}
-    TLS is not enabled or configured when you start {{es}} as a service.
+    Security auto-configuration only runs when you start {{es}} from the command line for the first time. TLS is not configured when you start {{es}} as a service.
     ::::
 
 3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
@@ -178,7 +181,7 @@ Usage:
 elasticsearch-service.bat install|remove|start|stop|manager [SERVICE_ID]
 ```
 
-The script requires one parameter (the command to execute), followed by an optional one indicating the service ID (useful when installing multiple {{es}} services).
+The script requires one parameter (the command to run), followed by an optional one indicating the service ID (useful when installing multiple {{es}} services).
 
 The commands available are:
 
@@ -196,12 +199,12 @@ The commands available are:
 
 You can customize the service settings before installation using environment variables, or after installation using the Manager GUI.
 
-`elasticsearch-service.bat` relies on [Apache Commons Daemon](https://commons.apache.org/proper/commons-daemon/) project to install the service. Environment variables set prior to the service installation are copied and will be used during the service lifecycle. This means any changes made to them after the installation will not be picked up unless the service is reinstalled.
+`elasticsearch-service.bat` relies on [Apache Commons Daemon](https://commons.apache.org/proper/commons-daemon/) project to install the service. Environment variables set before the service installation are copied and used during the service lifecycle. Any changes made to them after the installation are not applied unless the service is reinstalled.
 
 ::::{tab-set}
 :::{tab-item} Environment variables (pre-install)
 
-The {{es}} service can be configured prior to installation by setting the following environment variables (either using the [set command](https://technet.microsoft.com/en-us/library/cc754250(v=ws.10).aspx) from the command line, or through the **System Properties > Environment Variables** GUI).
+The {{es}} service can be configured before installation by setting the following environment variables, either using the [set command](https://technet.microsoft.com/en-us/library/cc754250(v=ws.10).aspx) from the command line or through **System Properties → Environment Variables**.
 
 | Environment variable | Description |
 | --- | --- |
@@ -213,20 +216,20 @@ The {{es}} service can be configured prior to installation by setting the follow
 | `ES_JAVA_HOME` | The installation directory of the desired JVM to run the service under. |
 | `SERVICE_LOG_DIR` | Service log directory, defaults to `%ES_HOME%\logs`. Note that this does not control the path for the {{es}} logs; the path for these is set via the setting `path.logs` in the `elasticsearch.yml` configuration file, or on the command line. |
 | `ES_PATH_CONF` | Configuration file directory (which needs to include `elasticsearch.yml`, `jvm.options`, and `log4j2.properties` files), defaults to `%ES_HOME%\config`. |
-| `ES_JAVA_OPTS` | Any additional JVM system properties you may want to apply. |
+| `ES_JAVA_OPTS` | Any additional JVM system properties you can apply. |
 | `ES_START_TYPE` | Startup mode for the service. Can be either `auto` or `manual` (default). |
 | `ES_STOP_TIMEOUT` | The timeout in seconds that procrun waits for service to exit gracefully. Defaults to `0`. |
 
 :::
 :::{tab-item} Manager GUI (post-install)
 
-It is also possible to configure the service after it’s been installed using the manager GUI (`elasticsearch-service-mgr.exe`), which offers insight into the installed service, including its status, startup type, JVM, start and stop settings amongst other things. To open the manager GUI, run the following command:
+It is also possible to configure the service after it’s been installed using the manager GUI (`elasticsearch-service-mgr.exe`), which offers insight into the installed service, including its status, startup type, JVM, start and stop settings, among other things. To open the manager GUI, run the following command:
 
 ```sh
 elasticsearch-service.bat manager
 ```
 
-Most changes (like JVM settings) made through the manager GUI will require a restart of the service to take affect.
+Most changes, like JVM settings, made through the manager GUI require a restart of the service to take effect.
 :::
 ::::
 
@@ -236,18 +239,26 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 
   When installing {{es}} on Windows as a service for the first time or running {{es}} from the command line, you can manually [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). To resize the heap for an already installed service, use the manager GUI.
 
-* The service automatically configures a private temporary directory for use by {{es}} when it is running. This private temporary directory is configured as a sub-directory of the private temporary directory for the user running the installation. If the service will run under a different user, you can configure the location of the temporary directory that the service should use by setting the environment variable `ES_TMPDIR` to the preferred location before you execute the service installation.
+* The service automatically configures a private temporary directory for use by {{es}} when it is running. This private temporary directory is configured as a sub-directory of the private temporary directory for the user running the installation. If the service will run under a different user, you can configure the location of the temporary directory that the service should use by setting the environment variable `ES_TMPDIR` to the preferred location before you run the service installation.
 
-* The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service, but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. Upgrading across JVM types (e.g. JRE versus SE) is not supported, and requires the service to be reinstalled.
+* The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service, but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. Upgrading across JVM types (for example, JRE versus SE) is not supported, and requires the service to be reinstalled.
 
 ## Step 5: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
 
 :::{include} _snippets/check-es-running.md
 :::
 
+:::{note}
+If you started {{es}} as a Windows service, TLS is not configured automatically. Security auto-configuration only runs when you start {{es}} from the command line for the first time. Use `http://localhost:9200` instead and omit the `--cacert` flag:
+
+```sh
+curl -u elastic:$ELASTIC_PASSWORD http://localhost:9200
+```
+:::
+
 ## Step 6 (Multi-node clusters only): Update the config files [update-config-files]
 
-If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
 
 :::{note}
 Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
@@ -275,7 +286,7 @@ Because the initial node in the cluster is bootstrapped as a single-node cluster
 
 The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `%ES_HOME%` — the directory created when unpacking the archive.
 
-This is very convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} is as easy as removing the `%ES_HOME%` directory. However, it is advisable to change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
+This is convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} only requires removing the `%ES_HOME%` directory. However, it is advisable to change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
 
 | Type | Description | Default Location | Setting |
 | --- | --- | --- | --- |

@@ -11,13 +11,13 @@ This example uses the {{kib}} sample web logs data to build a status table that 
 Because they're part of the query results, you can use them in any visualization type that displays text fields, such as bar charts with emoji labels or metric panels with status indicators.
 :::
 
-Before you begin, ensure you have the sample web logs data installed. In {{kib}}, go to **{{integrations}}** and search for **Sample data**. On the **Sample data** page, expand the **Other sample data sets** section and add **Sample web logs**.
+Before you begin, ensure you have the sample web logs data installed. In {{kib}}, go to **{{integrations}}** and search for **Sample data**. On the **Sample data** page, add **Sample web logs**.
 
 To create the visualization:
 
 1. Open a dashboard and add a new {{esql}} visualization:
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**, depending on your {{kib}} version.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Create visualization (query)** (**Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations** in earlier versions).
     * {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu, then select **{{esql}}**.
 
 2. Enter the following query:

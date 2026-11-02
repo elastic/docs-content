@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html
+description: Monitor Elastic Agent health with Fleet using status overviews, agent details, logs, and metrics. Query agent status data streams, filter status changes by policy namespace, and set up alerts.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,7 +12,7 @@ products:
 
 # Monitor Elastic Agents [monitor-elastic-agent]
 
-{{fleet}} provides built-in capabilities for monitoring your fleet of {{agent}}s. In {{fleet}}, you can:
+{{fleet}} provides built-in capabilities for monitoring your fleet of {{agent}}s. You can:
 
 * [View agent status overview](#view-agent-status)
 * [View details for an agent](#view-agent-details)
@@ -23,14 +24,17 @@ products:
 * [View the {{agent}} metrics dashboard](#view-agent-metrics)
 * [Change {{agent}} monitoring settings](#change-agent-monitoring)
 * [Send {{agent}} monitoring data to a remote {{es}} cluster](#external-elasticsearch-monitoring)
-* [{{agent}} out-of-the-box alert rules](#agent-out-of-the-box-alert-rules)
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Filter agent status changes by policy namespace](#filter-status-changes-by-namespace)
+* [Use {{agent}} out-of-the-box alert rules](#agent-out-of-the-box-alert-rules)
 * [Enable alerts and ML jobs based on {{fleet}} and {{agent}} status](#fleet-alerting)
 
-Agent monitoring is turned on by default in the agent policy unless you turn it off. Want to turn off agent monitoring to stop collecting logs and metrics? See [Change {{agent}} monitoring settings](#change-agent-monitoring).
+Agent monitoring is turned on by default when you create an agent policy in {{fleet}}. To stop collecting agent logs and metrics, refer to [Change {{agent}} monitoring settings](#change-agent-monitoring).
 
-Want to receive an alert when your {{agent}} health status changes? Refer to [Enable alerts and ML jobs based on {{fleet}} and {{agent}} status](#fleet-alerting) and our [alerting example](#fleet-alerting-example).
+To get alerts when the health status of your {{agents}} changes, use the [{{agent}} out-of-the-box alert rules](#agent-out-of-the-box-alert-rules). To create your own alerts, refer to [Enable alerts and ML jobs based on {{fleet}} and {{agent}} status](#fleet-alerting) and the [alerting example](#fleet-alerting-example).
 
-For more detail about how agents communicate their status to {{fleet}}, refer to [{{agent}} health status](/reference/fleet/agent-health-status.md).
+To learn which agent status data {{fleet}} records and which fields you can query, refer to [{{fleet}} and {{agent}} status data streams](#fleet-status-data-streams).
+
+To learn how {{agents}} report their status to {{fleet}}, including how often they check in and how long a status change takes to appear, refer to [{{agent}} health status](/reference/fleet/agent-health-status.md).
 
 
 ## View agent status overview [view-agent-status]
@@ -256,88 +260,136 @@ You may want to store all of the health and status data about your {{agents}} in
 
 To do so, follow the steps in [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md). After the new output is configured, follow the steps to update the {{agent}} policy and make sure that the **Output for agent monitoring** setting is enabled. {{agent}} monitoring data will use the remote {{es}} output that you configured.
 
+## {{fleet}} and {{agent}} status data streams [fleet-status-data-streams]
+
+{{fleet}} records the health status of {{fleet}}-managed {{agents}} in internal data streams. You can query these data streams to track agent status and identify agents that have gone offline, are experiencing health issues, or are facing challenges related to input or output. For example, you can build dashboards on them, [filter status changes by policy namespace](#filter-status-changes-by-namespace), or [create alerts and machine learning (ML) jobs](#fleet-alerting).
+
+The following data streams and fields are available:
+
+`metrics-fleet_server.agent_status-default`
+:   This data stream publishes the number of {{agents}} in various states. It contains the following fields:
+
+    `@timestamp`
+    :   The time the counts were recorded.
+
+    `fleet.agents.total`
+    :   A count of all agents.
+
+    `fleet.agents.enrolled`
+    :   A count of all agents currently enrolled.
+
+    `fleet.agents.unenrolled`
+    :   A count of agents currently unenrolled.
+
+    `fleet.agents.healthy`
+    :   A count of agents currently healthy.
+
+    `fleet.agents.offline`
+    :   A count of agents currently offline.
+
+    `fleet.agents.updating`
+    :   A count of agents currently in the process of updating.
+
+    `fleet.agents.unhealthy`
+    :   A count of agents currently unhealthy.
+
+    `fleet.agents.inactive`
+    :   A count of agents currently inactive.
+
+    `fleet.agents.unhealthy_reason.*`
+    :   Counts of agents currently unhealthy, by cause: `input`, `output`, or `other`. For example, `fleet.agents.unhealthy_reason.output` is the number of agents that are unhealthy because of an output issue.
+
+    `fleet.agents.upgrading_step.*`
+    :   Counts of agents by upgrade state: `requested`, `scheduled`, `downloading`, `extracting`, `replacing`, `restarting`, `watching`, `rollback`, and `failed`. For example, `fleet.agents.upgrading_step.failed` is the number of agents whose upgrade failed.
+
+`metrics-fleet_server.agent_versions-default`
+:   This data stream publishes one document for each {{agent}} version, with the number of enrolled agents on that version. It contains the following fields:
+
+    `@timestamp`
+    :   The time the count was recorded.
+
+    `fleet.agent.version`
+    :   A keyword field containing the version number.
+
+    `fleet.agent.count`
+    :   A count of agents on the specified version.
+
+`logs-elastic_agent.status_change` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+`
+:   This data stream contains agent status changes (for example, `online`, `offline`, `updating`, `unenrolled`) and can be used to produce custom alerts. Some {{agent}} integrations also ship with [alerting rule templates](/reference/fleet/alerting-rule-templates.md) that use this data stream. It contains the following fields:
+
+    `@timestamp`
+    :   The time the status change was recorded.
+
+    `agent.id`
+    :   The unique identifier of the agent.
+
+    `status`
+    :   The agent's current status (`online`, `offline`, `error`, `degraded`, `inactive`, `enrolling`, `unenrolling`, `unenrolled`, `updating`, `uninstalled`, `orphaned`).
+
+    `health_status`
+    :   A simplified status derived from `status`: `healthy` for `online`, `unhealthy` for `error` and `degraded`, `updating` for `updating`, `enrolling`, and `unenrolling`, and the same value as `status` otherwise.
+
+    `policy_id`
+    :   The policy the agent is enrolled in.
+
+    `policy_namespace` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+`
+    :   The namespace of the agent policy when the status change was recorded, or `default` if the agent has no policy or the policy can't be found. Refer to [Filter agent status changes by policy namespace](#filter-status-changes-by-namespace).
+
+    `hostname`
+    :   The hostname of the agent's host.
+
+    `space_id`
+    :   The {{kib}} space or spaces the agent belongs to.
+
+    `agentless`
+    :   Is `true` if the agent runs in an agentless policy.
+
+
+## Filter agent status changes by policy namespace [filter-status-changes-by-namespace]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+{{fleet}} writes all agent status changes to the `logs-elastic_agent.status_change-default` data stream, regardless of the namespace set in the agent policy. As a result, the `data_stream.namespace` field of these events is always `default`, and rules, dashboards, and saved searches that query this data stream include status changes from all your agents.
+
+To separate status changes by agent policy, filter on the `policy_namespace` field instead. This field records the namespace of the agent's policy at the time of the status change. For example, this {{esql}} query returns status changes for agents whose policy uses the `production` namespace:
+
+```esql
+FROM logs-elastic_agent.status_change-default
+| WHERE policy_namespace == "production"
+```
+
+You can add the same condition to rules that you create from the {{agent}} [alerting rule templates](/reference/fleet/alerting-rule-templates.md). For example, to alert only on offline agents in the `production` namespace, extend the query of a rule created from the offline status template:
+
+```esql
+FROM logs-elastic_agent.status_change-default
+| WHERE data_stream.dataset == "elastic_agent.status_change" and agentless == false and health_status == "offline" and policy_namespace == "production"
+```
+
+Filtering on `policy_namespace` separates query results only. All status changes stay in the same data stream, so you can't apply different retention or access settings to each namespace.
+
+To filter on `policy_namespace`, you need version 2.9.6 or later of the **Elastic Agent** integration, which {{fleet}} installs automatically for agent monitoring. If an {{esql}} query returns an unknown column error for `policy_namespace`, [upgrade the integration](/reference/fleet/upgrade-integration.md). Status changes recorded before the upgrade don't have a searchable `policy_namespace` value.
+
 ## {{agent}} out-of-the-box alert rules [agent-out-of-the-box-alert-rules]
+
 ```{applies_to}
 stack: ga 9.2+
+serverless: ga
 ```
 
-{{agent}} provides [out-of-the-box alert rules](/reference/fleet/alert-templates.md) to simplify monitoring the health of agents.
-Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.
+{{agent}} provides [out-of-the-box alert rules](/reference/fleet/alert-templates.md) for common agent health issues, such as offline agents, excessive restarts, and output errors. The rules come with preconfigured conditions, so you can start monitoring agent health without building rules manually. To monitor conditions that the out-of-the-box rules don't cover, [create your own alerts and ML jobs](#fleet-alerting).
 
 ## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status  [fleet-alerting]
-```{applies_to}
-stack: ga 9.0-9.1
-```
-:::{tip}
-For versions 9.2.0 and later, {{agent}} includes out-of-the-box alert rules for the most common health checks. Check out [Elastic Agent built-in alerts](/reference/fleet/alert-templates.md).
-:::
 
-You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerting.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
-
-This functionality allows you to effectively track an agent’s status, and identify scenarios where it has gone offline, is experiencing health issues, or is facing challenges related to input or output.
-
-These data streams and fields are available.
-
-Data stream
-:   `metrics-fleet_server.agent_status-default`
-
-    This data stream publishes the number of {{agents}} in various states.
-
-    **Fields**
-
-    * `@timestamp`
-    * `fleet.agents.total` - A count of all agents
-    * `fleet.agents.enrolled` - A count of all agents currently enrolled
-    * `fleet.agents.unenrolled` - A count of agents currently unenrolled
-    * `fleet.agents.healthy` - A count of agents currently healthy
-    * `fleet.agents.offline` - A count of agents currently offline
-    * `fleet.agents.updating` - A count of agents currently in the process of updating
-    * `fleet.agents.unhealthy` - A count of agents currently unhealthy
-    * `fleet.agents.inactive` - A count of agents currently inactive
-
-    ::::{note}
-    Other fields regarding agent status, based on input and output health, are currently under consideration for future development.
-    ::::
-
-
-Data stream
-:   `metrics-fleet_server.agent_versions-default`
-
-    This index publishes a separate document for each version number and a count of enrolled agents only.
-
-    **Fields**
-
-    * `@timestamp`
-    * `fleet.agent.version` - A keyword field containing the version number
-    * `fleet.agent.count` - A count of agents on the specified version
-
-
-Data stream
-:   `logs-elastic_agent.status_change`
-
-    ```{applies_to}
-    stack: ga 9.3+
-    ```
-
-    This data stream contains agent status changes (for example, `online`, `offline`, `updating`, `unenrolled`) and can be used to produce custom alerts. Some {{agent}} integrations also ship with [alerting rule templates](/reference/fleet/alerting-rule-templates.md) that use this data stream.
-
-    **Fields**
-
-    * `@timestamp` — The time the status change was recorded
-    * `agent.id` — The unique identifier of the agent
-    * `status` — The agent's current status (`online`, `offline`, `error`, `degraded`, `inactive`, `enrolling`, `unenrolling`, `unenrolled`, `updating`, `uninstalled`, `orphaned`)
-    * `policy_id` — The policy the agent is enrolled in
-    * `policy_namespace` — The namespace of the agent policy
-    * `hostname` — The hostname of the agent's host
-    * `space_id` — The {{kib}} space or spaces the agent belongs to
-    * `agentless` — Is `true` if the agent runs in an agentless policy
-
+You can create alerts and machine learning (ML) jobs based on the fields in the [{{fleet}} and {{agent}} status data streams](#fleet-status-data-streams). Refer to the [Alerting documentation](/explore-analyze/alerting.md) or the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
 
 ### Example: Enable an alert for offline {{agent}}s [fleet-alerting-example]
 
 You can set up an alert to notify you when one or more {{agent}}s goes offline:
 
-1. In {{kib}}, navigate to **Management > Stack Management > Rules**.
+1. In {{kib}}, find the **{{rules-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create rule**.
 3. Select **Elasticsearch query** as the rule type.
 4. Choose a name for the rule, for example `Elastic Agent status`.
