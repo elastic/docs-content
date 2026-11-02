@@ -123,7 +123,7 @@ To turn off streaming for the current space:
 2. Turn off **Stream inference endpoint responses**.
 3. Select **Save changes**.
 
-If an {{infer}} endpoint's service doesn't support non-streaming chat completion, {{kib}} keeps streaming from that endpoint even when the setting is off. The setting applies only to {{infer}} endpoints. It doesn't affect the OpenAI, Amazon Bedrock, or Google Gemini connectors.
+If an {{infer}} endpoint's service doesn't support non-streaming chat completion, {{kib}} keeps streaming from that endpoint even when the setting is off. The setting applies only to {{infer}} endpoints, including the AI connector, which sends its requests through one. It doesn't affect the OpenAI, Amazon Bedrock, or Google Gemini connectors.
 
 ### Give {{agent-builder}} access to Elastic documentation [give-agent-builder-access-to-elastic-documentation]
 ```{applies_to}
