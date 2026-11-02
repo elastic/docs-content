@@ -1,5 +1,5 @@
 redirects:
-  # related to https://github.com/elastic/docs-content/pull/9114
+  # related to https://github.com/elastic/docs-content/pull/9147
   'solutions/security/alertzero/requirements.md': 'solutions/security/alertzero/set-up-alertzero.md'
   'solutions/security/alertzero/review-first-proposed-action.md': 'solutions/security/alertzero/decide-proposed-action.md'
   # related to https://github.com/elastic/docs-content/pull/4251
