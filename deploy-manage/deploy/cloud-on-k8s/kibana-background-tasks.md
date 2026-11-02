@@ -159,7 +159,7 @@ status:
   version: 9.5.2
 ```
 
-`status.pools.backgroundTasks` is only present when `spec.backgroundTasks` is set. 
+`status.pools.backgroundTasks` is only present when `spec.backgroundTasks` is set.
 
 The aggregated health reflects the state of both pools:
 
