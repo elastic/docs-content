@@ -89,6 +89,15 @@ Replace these values:
 
 This adds the {{elastic-defend}} integration to your agent policy with the default settings.
 
+The `endpointConfig.preset` field in the request body is required. It sets the initial event collection and protection settings for the policy, like the configuration presets you can choose when [installing the integration in the UI](install-elastic-defend.md). The example uses `EDRComplete`. The following values are accepted:
+
+| Value | Preset in the UI |
+| --- | --- |
+| `DataCollection` | **Data Collection** |
+| `NGAV` | **Next-Generation Antivirus (NGAV)** |
+| `EDREssential` | **Essential EDR (Endpoint Detection & Response)** |
+| `EDRComplete` | **Complete EDR (Endpoint Detection & Response)** |
+
 ```console
 curl --user <username>:<password> --request POST \
   --url 'https://<kibana-url>:5601/api/fleet/package_policies' \

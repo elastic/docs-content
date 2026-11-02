@@ -119,6 +119,8 @@ Export the dashboard's JSON source in a format that the [{{kib}} dashboards API]
    - Select **Open in Console** to open {{kib}} Dev Tools Console with a Create dashboard API request pre-populated with the JSON source. This option is available if you have access to **Dev Tools**.
    - Select **Download JSON** to save the JSON source to a file.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To recreate the dashboard from a downloaded file, [import it from the **Dashboards** app](import-dashboards.md).
+
 ::::
 
 ::::{applies-item} {stack: ga 9.0-9.3}

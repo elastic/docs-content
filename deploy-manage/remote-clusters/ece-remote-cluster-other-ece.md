@@ -104,8 +104,8 @@ Note that the environment ID and cluster IDs must be entered fully and correctly
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API]({{ece-apis}}group/endpoint-platformconfigurationtrustrelationships). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint]({{ece-apis}}group/endpoint-platformconfigurationtrustrelationships):
 

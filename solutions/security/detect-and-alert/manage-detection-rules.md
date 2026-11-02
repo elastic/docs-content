@@ -278,7 +278,28 @@ The rules are exported to an `.ndjson` file.
     1. Drag and drop the `.ndjson` file that contains the exported rules.
     2. (Optional) Select the appropriate options to overwrite existing data:
 
-        * **Overwrite existing detection rules with conflicting "rule_id"**: Updates existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
+        * **Overwrite existing detection rules with conflicting "rule_id"**. The behavior differs depending on your version:
+
+            ::::{applies-switch}
+
+            :::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+
+            In {{stack}} 9.5.0 to 9.5.5, this option always updates existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
+
+            In {{serverless-short}} and {{stack}} 9.5.6 onwards, this option only updates existing rules if the imported rule differs from the installed rule. Rules that match the installed version — including their enabled or disabled state — are skipped: their revision, **Updated** timestamp, change history, API key, and owner stay the same, and they still count as a successful import.
+
+            Because of this, re-importing unchanged rules does not refresh their API keys. To update a rule's API key on {{stack}}, refer to [Update a rule's API key](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md#update-api-key). On {{serverless-short}}, refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md).
+
+            :::
+
+            :::{applies-item} { "stack": "ga 9.0-9.4" }
+
+            Updates existing rules if they match the `rule_id` value of any rules in the import file. Configuration data included with the rules, such as actions, is also overwritten.
+
+            :::
+
+            ::::
+
         * **Overwrite existing exception lists with conflicting "list_id"**: Replaces existing exception lists with exception lists from the import file if they have a matching `list_id` value.
         * **Overwrite existing connectors with conflicting action "id"**: Updates existing connectors if they match the `action id` value of any rule actions in the import file. Configuration data included with the actions is also overwritten.
 

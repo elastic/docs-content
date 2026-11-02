@@ -84,7 +84,7 @@ Alternatively, you can use the cold tier to store regular indices with replicas 
 
 Once data is no longer being queried, or being queried rarely, it may move from the cold tier to the frozen tier where it stays for the rest of its life.
 
-We recommend you use [dedicated nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-frozen-node) in the frozen tier. The frozen tier requires a snapshot repository and uses [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) to store and load data from the snapshot repository. This reduces local storage and operating costs while still letting you search frozen data. Because {{es}} must sometimes fetch frozen data from the snapshot repository, searches on the frozen tier are typically slower than on the cold tier.
+We recommend you use [dedicated nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-frozen-node) in the frozen tier. The frozen tier requires a snapshot repository and uses [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) to store and load data from the snapshot repository. This reduces local storage and operating costs while still letting you search frozen data. Because {{es}} must sometimes fetch frozen data from the snapshot repository, searches on the frozen tier are typically slower than on the cold tier. [Force-merged]({{es-apis}}operation/operation-indices-forcemerge) indices need fewer reads from the snapshot repository, which improves read performance on the frozen tier.
 
 ## Configure data tiers [configure-data-tiers]
 
