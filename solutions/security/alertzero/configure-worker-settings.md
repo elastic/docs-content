@@ -93,15 +93,17 @@ The {{az-hunt-watch}} includes the {{az-continuous-threat-hunt}} {{az-worker}}.
 {{az-continuous-threat-hunt}} has the following settings.
 
 **{{az-threat-intel-supply-cap}}**
-:   The workflows that build the {{az-threat-reports}} that {{az-continuous-threat-hunt}} searches for. {{alertzero}} turns them on when you turn on {{az-continuous-threat-hunt}}. For the feeds they collect from and what they need, refer to [](watches-and-workers.md#alertzero-threat-reports).
+:   The workflows that supply {{az-continuous-threat-hunt}} with {{az-threat-reports}}. {{alertzero}} turns them on when you turn on {{az-continuous-threat-hunt}}. First, it checks that your deployment is ready to build {{az-threat-reports}}. If the check fails, you can't turn on {{az-continuous-threat-hunt}}, and the settings show what's missing. For requirements, refer to [](watches-and-workers.md#alertzero-threat-reports-requirements).
 
-    * **Ingest threat feeds**: Every 4 hours, collects new articles from the [supported threat feeds](watches-and-workers.md#alertzero-threat-feeds) and saves each one as a {{az-threat-report}}. It's shared by all spaces in your deployment, so turning it on or off affects every space.
-    * **Enrich threat report**: Processes the reports that **Ingest threat feeds** collects. It checks that each report contains threat intelligence, then extracts details such as indicators of compromise and severity. {{az-continuous-threat-hunt}} searches only reports that this workflow has processed. It's shared by all spaces in your deployment, so turning it on or off affects every space.
-    * **Attribute alerts to reports**: Counts the alerts in your environment that match each report. It applies to the current space only.
+    * **Ingest threat feeds**: Every 4 hours, collects new articles from the [supported threat feeds](watches-and-workers.md#alertzero-threat-feeds) and saves each one as a {{az-threat-report}}.
+    * **Enrich threat report**: Checks that each collected report contains threat intelligence, then extracts details such as indicators of compromise and severity. {{az-continuous-threat-hunt}} uses only reports that this workflow has processed.
+    * **Attribute alerts to reports**: Counts the alerts that match each report.
 
-    When you turn off {{az-continuous-threat-hunt}}, {{alertzero}} turns off **Attribute alerts to reports** in the current space. It turns off **Ingest threat feeds** and **Enrich threat report** only when {{az-continuous-threat-hunt}} is off in every space.
+    For each workflow, the settings show whether it's on, and whether it applies to your whole deployment or only this space. All spaces in your deployment share **Ingest threat feeds** and **Enrich threat report**, so turning either one on or off affects every space. {{alertzero}} turns them off only when {{az-continuous-threat-hunt}} is off in all spaces. **Attribute alerts to reports** applies only to the current space. It turns off when you turn off {{az-continuous-threat-hunt}} in that space.
 
-    If **Ingest threat feeds** or **Enrich threat report** is off, the {{az-continuous-threat-hunt}} settings show a **Worker setup needs attention** callout. To turn the workflow back on, select **Enable Ingest threat feeds** or **Enable Enrich threat report**. You can also turn these workflows on or off from the **Workflows** page. Refer to [Manage and organize workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md). To show these workflows there, turn on [**Show managed workflows**](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility).
+    If a workflow is off while {{az-continuous-threat-hunt}} is on, the settings show a callout. To turn the workflows back on, select **Restore threat intel supply**. If **Ingest threat feeds** or **Enrich threat report** is off, you can also select **Enable** next to it in the **Worker setup needs attention** callout.
+
+    You can also turn these workflows on or off from the **Workflows** page after you turn on [**Show managed workflows**](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility). Refer to [Manage and organize workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md).
 
 **{{az-autonomy-cap}}**
 :   {{az-continuous-threat-hunt}} always uses **{{az-manual}}** {{az-autonomy}}. It searches your data for activity that matches each {{az-threat-report}}, opens an {{az-investigation}} for each {{az-hunt-finding}}, and proposes response actions. You approve or decline each {{az-proposed-action}}.

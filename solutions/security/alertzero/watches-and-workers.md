@@ -85,7 +85,9 @@ For each {{az-threat-report}} that contains threat intelligence, **Enrich threat
 
 #### What the threat intelligence workflows need [alertzero-threat-reports-requirements]
 
-To build reports for {{az-continuous-threat-hunt}}, the threat intelligence workflows need network access to the threat feeds and a model to process reports. **Enrich threat report** runs in the default space, so it uses the default space's model settings for every report, even if you hunt in another space. It calls the model for every new report.
+To build reports for {{az-continuous-threat-hunt}}, the threat intelligence workflows need network access to the threat feeds and models to process reports. {{alertzero}} also stores the reports with embeddings from your cluster's [default embedding endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). If that endpoint isn't available, you can't turn on {{az-continuous-threat-hunt}}.
+
+**Enrich threat report** runs in the default space, so it uses the default space's model settings for every report, even if you hunt in another space. It makes model calls for every new report.
 
 | Workflow | Needs | What happens without it |
 | --- | --- | --- |
