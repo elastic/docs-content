@@ -66,6 +66,8 @@
 /manage-data/data-store/text-analysis/      @elastic/developer-docs
 # Why: composable, component, and legacy templates are Storage Engine, a developer-docs area.
 /manage-data/data-store/templates/          @elastic/developer-docs
+/manage-data/lifecycle/                                @elastic/developer-docs
+/manage-data/lifecycle/data-tiers/               @elastic/admin-docs
 /manage-data/ingest/                        @elastic/ski-docs
 
 /reference/                                 @elastic/docs
