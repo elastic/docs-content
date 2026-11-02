@@ -1555,7 +1555,16 @@ redirects:
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
 
   # Related to https://github.com/elastic/platform-docs-team/issues/581
-  'explore-analyze/visualize/manage-panels.md': 'explore-analyze/visualize/visualize-library.md'
+  'explore-analyze/visualize/manage-panels.md':
+    to: 'explore-analyze/visualize/visualize-library.md'
+    anchors: '!'
+    many:
+      - to: 'explore-analyze/visualize/visualize-library.md'
+        anchors:
+          'save-to-visualize-library': 'save-to-visualize-library'
+      - to: 'explore-analyze/dashboards/using.md'
+        anchors:
+          'explore-the-underlying-documents': 'explore-panel-data-in-discover'
 
   
   # Related to https://github.com/elastic/docs-content/pull/8651

@@ -237,13 +237,13 @@ You can view it in more detail and edit it by clicking the filter.
 
 If a panel raises a question that the dashboard can't answer, you can open the data behind it in **Discover** and work with the individual documents. The option to use depends on the panel type. For all of them, you need at least **Read** access to the **Discover** feature.
 
-* **Visualizations**: Open the panel menu and select **Explore in Discover**. **Discover** opens with the panel's data, and with the dashboard's filters, query, and time range applied. On {{esql}} panels, {{kib}} turns the dashboard filters and query into a `WHERE` clause and drops filters that {{esql}} can't express.
+* **Lens visualizations**: Open the panel menu and select **Explore in Discover**. **Discover** opens with the panel's data, and with the dashboard's filters, query, and time range applied. On {{esql}} panels, {{kib}} turns the dashboard filters and query into a `WHERE` clause and drops filters that {{esql}} can't express.
 
     The option doesn't appear when {{kib}} can't trace a chart back to one set of documents, for example when the chart has several data layers or a time shift. While you edit a visualization, you can also [explore its data in Discover](../visualize/lens.md#explore-lens-data-in-discover) from the editor toolbar.
 
 * **Discover sessions**: In view mode, open the panel menu and select **Open in Discover**. **Discover** opens the session on the tab that the panel displays. If the session exists only on the dashboard, **Discover** opens with the panel's query, filters, and columns instead.
 
-* {applies_to}`stack: ga` {applies_to}`serverless: unavailable` **Other panels that use one data view**: In view mode, open the panel menu and select **Explore underlying data**. **Discover** opens with the filters, query, and time range of the dashboard and the panel.
+* {applies_to}`serverless: unavailable` **Other panels that use one data view**: In view mode, open the panel menu and select **Explore underlying data**. **Discover** opens with the filters, query, and time range of the dashboard and the panel.
 
     If you don't see this option, it might not be turned on. By default, {{kib}} doesn't offer it. Administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-context) to `true` in the {{kib}} settings. Refer to [Stack settings](/deploy-manage/stack-settings.md).
 
