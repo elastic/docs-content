@@ -120,9 +120,11 @@ To add a layer:
     - **Annotations**: Marks events or time ranges on the chart. Annotations need a chart with a time axis, and they are always static. Query-based annotations and the annotation library aren't available on {{esql}} charts.
     - **Reference lines**: Draws a threshold on the chart. Select **Static reference lines** to enter fixed values, or **ES|QL reference lines** to calculate the values with a separate query.
 
-When a chart has more than one layer, each layer appears as a tab. Select a tab to edit that layer's query and dimensions.
+The new layer opens in its own tab. When a chart has more than one layer, each layer has a tab, and you select a tab to edit that layer's query and dimensions.
 
-If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again. The **Suggestions** panel is hidden while the chart has more than one layer, because applying a suggestion would replace the other layers.
+If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
+
+The **Suggestions** panel is hidden while the chart has more than one layer, because applying a suggestion would replace the other layers.
 
 ### Chart configuration persistence over {{esql}} query update [chart-config-persist]
 ```{applies_to}
