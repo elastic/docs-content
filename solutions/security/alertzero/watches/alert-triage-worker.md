@@ -49,7 +49,7 @@ A vulnerability scanner on your network triggers a port scan rule 40 times overn
 
 ## Settings [alertzero-alert-triage-settings]
 
-**Trigger**
+**Schedule**
 :   How often the {{az-alert-triage}} {{az-worker}} runs.
 
     Default: Every 15 minutes
@@ -74,7 +74,7 @@ A vulnerability scanner on your network triggers a port scan rule 40 times overn
 
     Default: Low, which triages every alert.
 
-**Exclude building-block alerts**
+**Exclude building block alerts**
 :   Skips alerts from building block rules.
 
     Default: Off

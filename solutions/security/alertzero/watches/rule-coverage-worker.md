@@ -49,7 +49,7 @@ A threat hunt finds activity that matches a credential dumping technique, but no
 
 ## Settings [alertzero-rule-coverage-settings]
 
-**Trigger**
+**Schedule**
 :   How often the {{az-rule-coverage}} {{az-worker}} runs.
 
     Default: Every hour

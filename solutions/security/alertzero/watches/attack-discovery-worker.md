@@ -51,7 +51,7 @@ Over one day, alerts fire on the same host for a suspicious PowerShell command, 
 
 ## Settings [alertzero-attack-discovery-settings]
 
-**Trigger**
+**Schedule**
 :   How often the {{az-attack-discovery}} {{az-worker}} runs.
 
     Default: Every 24 hours. Each time the {{az-attack-discovery}} {{az-worker}} runs, it starts where its previous run ended.

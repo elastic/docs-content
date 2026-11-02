@@ -50,7 +50,7 @@ A rule that detects new service creation generated 30 alerts last week, and anal
 
 ## Settings [alertzero-rule-tuning-settings]
 
-**Trigger**
+**Schedule**
 :   How often the {{az-rule-tuning}} {{az-worker}} runs.
 
     Default: Every 2 hours

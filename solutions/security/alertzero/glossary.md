@@ -98,7 +98,7 @@ The highest [{{az-autonomy}}](#alertzero-glossary-autonomy) level. At this level
 
 ### {{az-threat-intel-supply-cap}} [alertzero-glossary-threat-intel-supply]
 
-The set of workflows that feed threat intelligence to the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch). **Ingest** collects threat feeds, **Enrich** builds out {{az-threat-reports}}, and **Attribute alerts to reports** connects alerts to those reports. {{alertzero}} turns them on when you turn on the {{az-continuous-threat-hunt}} {{az-worker}}, and off again when you turn it off. All spaces share Ingest and Enrich. Refer to [](configure-worker-settings.md).
+The set of workflows that feed threat intelligence to the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch). **Ingest threat feeds** brings in threat intelligence feeds, **Enrich threat report** builds out {{az-threat-reports}}, and **Attribute alerts to reports** connects alerts to those reports. {{alertzero}} turns them on when you turn on the {{az-continuous-threat-hunt}} {{az-worker}}, and off again when you turn it off. All spaces share **Ingest threat feeds** and **Enrich threat report**. Refer to [](configure-worker-settings.md).
 
 ### {{az-threat-report-cap}} [alertzero-glossary-threat-report]
 
