@@ -3,7 +3,7 @@
 3. Copy the **Direct endpoint** value.
 
     :::{image} /solutions/images/cloud-console-serverless-endpoint.png
-    :alt: The Application endpoints panel in the {{ecloud}} Console, with {{es}} expanded to show the Direct endpoint and Direct Azure Private Link endpoint
+    :alt: The Application endpoints flyout in the {{ecloud}} Console, with {{es}} expanded to show the Direct endpoint and Direct Azure Private Link endpoint
     :screenshot:
     :width: 50%
     :::
