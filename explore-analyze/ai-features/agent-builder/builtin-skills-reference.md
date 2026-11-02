@@ -245,7 +245,7 @@ $$$agent-builder-connector-authoring-skill$$$ `connector-authoring` {applies_to}
 
     {applies_to}`stack: preview =9.5` **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library. When you have the [**Create and edit agents**](permissions.md#kib-privileges) privilege and the agent can be edited, {{kib}} also assigns it to the agent in the conversation. This includes the **Elastic AI Agent**. Without that privilege, or when the agent is a read-only built-in agent, {{kib}} creates the connector and shows a **Connector created, but not added to the agent** warning. [Assign the connector](connectors.md#assign-connectors-to-an-agent) from the agent's **Connectors** page. Connector types the agent can't call from chat, such as email, are added to the library only, and {{kib}} doesn't show a warning.
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library. If you can edit the agent in the conversation, {{kib}} also assigns the connector to it. For the required privileges and what happens when {{kib}} can't assign it, refer to [Assign a connector from chat](connectors.md#assign-a-connector-from-chat).
 
 ## Observability skills
 ```{applies_to}
