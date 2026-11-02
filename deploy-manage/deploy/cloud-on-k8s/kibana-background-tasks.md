@@ -27,6 +27,8 @@ Without `spec.backgroundTasks`, ECK runs a single pool with all roles.
 
 * {{kib}} 8.16.0 or later. Background tasks pods do not serve `/login`, so ECK probes their readiness through the unauthenticated `/api/status` endpoint introduced in 8.16.0.
 * A valid Enterprise license or Enterprise trial license.
+  
+  If the license expires after you enable background task isolation, both pools continue to run but ECK logs warnings until you renew or remove `spec.backgroundTasks`.
 
 ## Enable background task isolation [k8s-kibana-background-tasks-enable]
 
