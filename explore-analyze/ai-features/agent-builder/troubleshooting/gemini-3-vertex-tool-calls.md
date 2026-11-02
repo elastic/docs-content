@@ -4,6 +4,7 @@ description: Troubleshooting guide for Gemini 3 tool-call failures on a Google V
 type: troubleshooting
 applies_to:
   stack: preview =9.2, ga =9.3
+  serverless: unavailable
 products:
   - id: elasticsearch
   - id: kibana
