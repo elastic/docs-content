@@ -12,23 +12,19 @@ description: Run Kibana background tasks such as alerting rules and reporting in
 
 {{kib}} runs alerting, actions and reporting as persistent [background tasks](/deploy-manage/distributed-architecture/kibana-tasks-management.md). By default, every instance serves user requests and runs background tasks, so a heavy task workload competes with user traffic for CPU and memory. {{kib}} can [dedicate instances to one of these jobs](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes) through the `node.roles` setting.
 
-ECK manages this split for you. When you set `spec.backgroundTasks` on a {{kib}} resource, ECK runs two pools of pods:
+ECK can manage this split for you. When you set `spec.backgroundTasks` on a {{kib}} resource, ECK runs two pools of pods:
 
 * The **primary pool** serves UI and API requests with `node.roles: ["ui"]`.
 * The **background tasks pool** runs task manager work only, with `node.roles: ["background_tasks"]`.
 
 Without `spec.backgroundTasks`, ECK runs a single pool with all roles.
 
-::::{note}
-{{kib}} background task isolation requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses. Refer to [License checks](#k8s-kibana-background-tasks-license) for the behavior without a license.
-::::
-
 ## Requirements [k8s-kibana-background-tasks-requirements]
 
 * {{kib}} 8.16.0 or later. Background tasks pods do not serve `/login`, so ECK probes their readiness through the unauthenticated `/api/status` endpoint introduced in 8.16.0.
-* A valid Enterprise license or Enterprise trial license.
-  
-  If the license expires after you enable background task isolation, both pools continue to run but ECK logs warnings until you renew or remove `spec.backgroundTasks`.
+* A valid Enterprise license or Enterprise trial license. Refer to [Manage your license in ECK](../../license/manage-your-license-in-eck.md).
+
+  Without a valid license you can't enable background task isolation. If the license expires after you enable it, both pools continue to run, but ECK logs warnings and adds events to the {{kib}} resource until you renew the license or remove `spec.backgroundTasks`.
 
 ## Enable background task isolation [k8s-kibana-background-tasks-enable]
 
@@ -51,7 +47,7 @@ spec:
 1. Number of instances in the primary pool.
 2. Number of instances in the background tasks pool.
 
-An empty `backgroundTasks: {}` section is enough to enable the split. The section accepts the following fields:
+An empty `backgroundTasks: {}` section is enough to enable the additional pool. The section accepts the following fields:
 
 | Field | Description |
 | --- | --- |
@@ -59,6 +55,8 @@ An empty `backgroundTasks: {}` section is enough to enable the split. The sectio
 | `config` | {{kib}} settings for the background tasks pool only, merged on top of `spec.config`. Do not set `node.roles` here, ECK manages it. |
 | `resources` | CPU and memory for the `kibana` container of the background tasks pool. Overrides the resources of that container in `spec.podTemplate` and `spec.backgroundTasks.podTemplate`. |
 | `podTemplate` | A [Pod Template](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates) overlay for the background tasks pods, applied as a strategic merge on top of `spec.podTemplate`. |
+
+The background tasks pool is a second {{kib}} deployment, so each of its pods needs the same resources as a primary pod. When you don't set `resources`, the `kibana` container of each pod requests and is limited to 2Gi of memory, the same default as the primary pool, and sets no CPU request or limit. Make sure your Kubernetes cluster has capacity for the additional pods.
 
 All other fields of the {{kib}} spec, such as `spec.config`, `spec.podTemplate`, `spec.secureSettings`, `spec.elasticsearchRef` and `spec.http`, apply to both pools.
 
@@ -220,15 +218,3 @@ The operator runs the same checks when the webhook is turned off and reports fai
 Turning isolation on or off also adds or removes the role label in the immutable Deployment selector. ECK migrates the primary Deployment without downtime: it rolls the pods until all carry the label, lets the old ReplicaSets be pruned, then deletes the Deployment with orphan propagation and recreates it with the new selector so it adopts the running pods. The Service selector follows the Deployment selector, so no endpoint is dropped. The migration is deferred while [orchestration is paused](k8s-pause-orchestration.md).
 
 **Turning isolation off.** Remove `spec.backgroundTasks`. ECK rolls the primary pods back to all roles and deletes the background tasks Deployment and its configuration Secret.
-
-**Version upgrades.** [Version upgrades cause {{kib}} downtime](k8s-kibana-advanced-configuration.md#k8s-kibana-configuration) on ECK. With two pools, ECK scales both Deployments to zero before starting the new version, so no two versions run at the same time. The background tasks replica count is saved in the `kibana.k8s.elastic.co/prev-replicas` annotation of the Deployment and restored afterwards, including a count set by a Horizontal Pod Autoscaler.
-
-## License checks [k8s-kibana-background-tasks-license]
-
-ECK checks the Enterprise license in the validating webhook, which rejects a request with a message you see immediately, and in the operator, which logs and adds a Kubernetes event to the {{kib}} resource. The operator check does not depend on the webhook, which [can be turned off](configure-validating-webhook.md#k8s-disable-webhook). Both decide whether the feature is already active by looking for the background tasks Deployment.
-
-With a valid Enterprise license nothing changes. Without one the background tasks cannot be enabled. A {{kib}} that already runs background tasks keeps running them after the license expires, with warning events until you install a license or remove `spec.backgroundTasks`. A {{kib}} cannot be split without a license.
-
-::::{warning}
-If the background tasks Deployment is deleted by hand while no valid Enterprise license is installed, the operator treats the feature as new and stops reconciling that {{kib}} until you install a license or remove `spec.backgroundTasks`.
-::::
