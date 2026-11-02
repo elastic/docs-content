@@ -643,7 +643,7 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 :::
 
 **Tools**
-:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. {applies_to}`stack: ga =9.4` To assign tools, click **Add tool**. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` When the agent already has tools, **Add tool** opens a menu. Select **Import from tool library** to assign an existing tool, or **Create a tool** to create one and attach it. Refer to [Create a tool from an agent](tools/custom-tools.md#create-a-tool-from-an-agent). If the agent has no tools assigned, click **Add tools** to open the tool library. To view and manage all tools, click **Manage all tools**.
+:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. {applies_to}`stack: ga =9.4` To assign tools, click **Add tool**. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To assign an existing tool or create one and attach it, click **Add tool**. If the agent has no tools, the page shows **Add tools** instead, which opens the tool library. Refer to [Assign tools to agents](tools/custom-tools.md#assign-tools-to-agents) and [Create a tool from an agent](tools/custom-tools.md#create-a-tool-from-an-agent). To view and manage all tools, click **Manage all tools**.
 
 :::{image} images/customize-your-agent-accordion.png
 :alt: Customize accordion open

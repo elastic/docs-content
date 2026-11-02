@@ -99,9 +99,12 @@ To assign a tool to an agent:
 
 1. Select the agent from the agent selector in the left sidebar.
 2. Expand the **Customize** accordion and select **Tools**.
-3. Open the tool library and select the workflow tool.
-   - If the agent has no tools assigned, click **Add tools**.
-   - If the agent already has tools, click **Add tool**, then select **Import from tool library**.
+3. Open the tool library:
+   - If the page shows **Add tools**, click it.
+   - Otherwise, click **Add tool**, then click **Import from tool library**.
+4. Select the workflow tool.
+
+To create a workflow tool and attach it in the same action, refer to [Create a tool from an agent](custom-tools.md#create-a-tool-from-an-agent).
 
 ::::
 
