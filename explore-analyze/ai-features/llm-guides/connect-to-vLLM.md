@@ -151,7 +151,7 @@ For quick testing, you can use [ngrok](https://ngrok.com/) as an alternative to 
 :::{include} _snippets/create-chat-completion-endpoint.md
 :::
 
-vLLM serves an OpenAI-compatible API, so you create the endpoint with the OpenAI service.
+   vLLM serves an OpenAI-compatible API, so you create the endpoint with the OpenAI service.
 
 4. For **URL**, enter your server's public URL followed by `/v1/chat/completions`.
 5. For **Model ID**, enter `mistralai/[YOUR_MODEL_ID]`.

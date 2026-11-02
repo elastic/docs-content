@@ -202,7 +202,7 @@ You can monitor the performance of the host running LM Studio using Elastic’s 
 :::{include} _snippets/create-chat-completion-endpoint.md
 :::
 
-LM Studio uses the OpenAI SDK, so the OpenAI service works for this use case.
+   LM Studio uses the OpenAI SDK, so the OpenAI service works for this use case.
 
 4. For **URL**, enter the domain name specified in your Nginx configuration file, followed by `/v1/chat/completions`.
 5. For **Model ID**, enter `local-model`.
