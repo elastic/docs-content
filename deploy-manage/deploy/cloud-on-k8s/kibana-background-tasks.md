@@ -120,7 +120,7 @@ For a {{kib}} named `kibana-sample` with `spec.backgroundTasks` set, ECK manages
 | Secret | `kibana-sample-kb-bg-config` | The rendered `kibana.yml` of the background tasks pool. Only created when `spec.backgroundTasks.config` is set. |
 | Service | `kibana-sample-kb-http` | The HTTP Service. It only routes traffic to the primary pool. |
 
-ECK sets the node roles through the `NODE_ROLES` environment variable of the `kibana` container, not in `kibana.yml`. Every pod carries the `kibana.k8s.elastic.co/role` label with the value `primary` or `background_tasks`, and the label is part of the Deployment and Service selectors. Use the label to select the pods of one pool:
+Every pod carries the `kibana.k8s.elastic.co/role` label with the value `primary` or `background_tasks`, and the label is part of the Deployment and Service selectors. Use the label to select the pods of one pool:
 
 ```sh
 kubectl get pods -l kibana.k8s.elastic.co/name=kibana-sample,kibana.k8s.elastic.co/role=background_tasks
