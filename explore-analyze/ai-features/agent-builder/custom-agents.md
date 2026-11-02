@@ -159,7 +159,7 @@ Switch to the **Tools** tab to assign [tools](tools.md) to your agent.
 
 Select the combination of built-in and custom tools available to the agent, based on your use case.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` This tab assigns tools that already exist. To create a tool and attach it to the agent, save the agent, then follow [Create a tool from an agent](tools/custom-tools.md#create-a-tool-from-an-agent).
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can only assign existing tools on this tab. To create a tool for this agent, save the agent first, then follow [Create a tool from an agent](tools/custom-tools.md#create-a-tool-from-an-agent).
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` You don't need to assign the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools). Every agent has them automatically.
 
