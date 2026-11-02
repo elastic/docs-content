@@ -1,6 +1,8 @@
-{{alertzero}} has its own section in [Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). The section has a row for each kind of model call that the {{az-workers}} make, named **{{az-efficient-models}}**, **{{az-balanced-models}}**, and **{{az-frontier-models}}**. Each row starts with its own recommended models instead of the default model, and the {{az-workers}} use the first available model in the row's list.
+{{alertzero}} has its own section in [Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). The section has a row for each kind of model call that the {{az-workers}} make, named **{{az-efficient-models}}**, **{{az-balanced-models}}**, and **{{az-frontier-models}}**. Each of these rows starts with its own recommended models instead of the default model, and the {{az-workers}} use the first available model in the row's list.
 
 For the best balance of quality and cost on **{{az-frontier-models}}**, select a model other than Claude Opus 5, such as GPT-5.6 Sol. Claude Opus 5 uses many more tokens for these calls, such as generating attack discoveries, so it costs more to run.
+
+The section also has a **{{az-cyber-domain-models}}** row for OpenAI Daybreak models, which need a prompt template. This row is optional and starts empty. If you add a model to it, the {{az-alert-triage}}, {{az-attack-discovery}}, and {{az-continuous-threat-hunt}} {{az-workers}} use that model instead of their usual rows. If the model needs a prompt template, {{az-continuous-threat-hunt}} still uses **{{az-frontier-models}}** to write {{esql}} queries.
 
 To select a different model for a row:
 

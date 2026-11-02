@@ -19,11 +19,14 @@ Every setup needs the same privileges and an AI model. What else you need depend
 
 ### Required for every setup [alertzero-set-up-before-all]
 
-You need all the following:
+To turn on the {{alertzero}} setting, you need the **All** privilege for **Advanced Settings**.
 
-- The **All** privilege for **Advanced Settings**, to turn on the {{alertzero}} setting.
-- The `manage_security` cluster privilege, to start the {{az-workers}}. None of the {{serverless-short}} predefined roles includes it.
-- At least one AI model in the space, to start the {{az-workers}}. Refer to [Connect to an LLM](/solutions/security/ai/set-up-ai-features.md#set-up-ai-llm).
+To start the {{az-workers}}, you need all the following:
+
+- The **All** privilege for **{{alertzero}}**.
+- The **Update** and **Update managed workflows** sub-feature privileges for **Workflows**. **All** for **Workflows** doesn't include **Update managed workflows**, so grant it separately.
+- The `manage_security` cluster privilege. None of the {{serverless-short}} predefined roles includes it.
+- At least one AI model in the space. Refer to [Connect to an LLM](/solutions/security/ai/set-up-ai-features.md#set-up-ai-llm).
 
 If you don't have `manage_security`, ask an administrator who has it to start the {{az-workers}}. Don't grant `manage_security` only for {{alertzero}}, because anyone who has it can also manage users and roles for the whole cluster. For all {{alertzero}} privileges, refer to [](alertzero-privileges.md).
 
@@ -36,8 +39,8 @@ Each {{az-worker}} works from different data, and some need extra setup, such as
 | {{az-worker}} | Works from | Also needs |
 | --- | --- | --- |
 | [{{az-alert-triage}}](watches-and-workers.md#alertzero-triage-watch) | Alerts from your detection rules that are waiting for triage | The [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) turned on |
-| [{{az-attack-discovery}}](watches-and-workers.md#alertzero-triage-watch) | Alerts from your detection rules | The **Attack Discovery Workflows** [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) turned on in the space, and {{context-engine}} |
-| [{{az-continuous-threat-hunt}}](watches-and-workers.md#alertzero-hunt-watch) | Events in the indices that the [`securitySolution:defaultIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting lists. If you added index patterns to that setting, {{az-continuous-threat-hunt}} can read only the ones that match the setting's default patterns, such as `logs-*`. | {{context-engine}}, outbound HTTPS access from {{kib}} to the [supported threat feeds](watches-and-workers.md#alertzero-hunt-watch), and a model selected for **{{az-efficient-models}}** and **{{az-frontier-models}}** in [Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) in the default space |
+| [{{az-attack-discovery}}](watches-and-workers.md#alertzero-triage-watch) | Alerts from your detection rules | The **Attack Discovery Workflows** [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) turned on in the space, and {{context-engine}} to hand off attacks to {{az-endpoint-analysis}} |
+| [{{az-continuous-threat-hunt}}](watches-and-workers.md#alertzero-hunt-watch) | Events in the indices that the [`securitySolution:defaultIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting lists. If you added index patterns to that setting, {{az-continuous-threat-hunt}} can read only the ones that match the setting's default patterns, such as `logs-*`. | {{context-engine}} to record detection gaps for {{az-rule-coverage}}, outbound HTTPS access from {{kib}} to the [supported threat feeds](watches-and-workers.md#alertzero-hunt-watch), and a model selected for **{{az-efficient-models}}** and **{{az-frontier-models}}** in [Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) in the default space |
 | [{{az-rule-tuning}}](watches-and-workers.md#alertzero-detection-watch) | Alerts that {{az-alert-triage}} or your analysts mark as false positives | Nothing else |
 | [{{az-rule-coverage}}](watches-and-workers.md#alertzero-detection-watch) | Detection gaps that {{az-continuous-threat-hunt}} records | {{context-engine}} |
 | [{{az-endpoint-analysis}}](watches-and-workers.md#alertzero-forensics-watch) | Attacks that {{az-attack-discovery}} hands off | {{elastic-defend}} and {{context-engine}} |
@@ -68,7 +71,7 @@ If you want the {{az-workers}} to use models other than the recommended ones, se
 ## Start the {{az-workers}} [alertzero-turn-on-workers]
 
 1. In the navigation menu, select **{{alertzero}}**. The first time you open it in a space, onboarding starts.
-2. Follow the onboarding steps. All {{az-workers}} start out selected, so turn off any that you don't plan to run. At least one {{az-worker}} must stay selected. Onboarding flags any {{az-worker}} that's missing {{context-engine}}.
+2. Follow the onboarding steps. All {{az-workers}} start out selected, so turn off any that you don't plan to run. At least one {{az-worker}} must stay selected. Onboarding flags any {{az-worker}} that's missing something it needs, such as {{context-engine}}.
 3. Select **Enable and run**.
 
 The {{az-workers}} start their first run right away, and {{alertzero}} opens the **{{az-proposed-actions-cap}}** page. When a {{az-worker}} needs your decision, its {{az-proposed-action}} appears there.
