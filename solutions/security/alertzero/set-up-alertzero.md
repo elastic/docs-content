@@ -25,15 +25,17 @@ products:
 
 ## Decide which {{az-workers}} to run [alertzero-decide-workers]
 
-In onboarding, every {{az-worker}} starts out selected, and at least one has to stay selected. Some {{az-workers}} build on each other's results, so check what depends on a {{az-worker}} before you turn it off. For example, the {{az-endpoint-analysis}} {{az-worker}} investigates only the attacks that the {{az-attack-discovery}} {{az-worker}} hands off, so if you turn off {{az-attack-discovery}}, {{az-endpoint-analysis}} has nothing to analyze.
+In onboarding, every {{az-worker}} starts out selected, and at least one has to stay selected. Some {{az-workers}} build on each other's results, and some need extra features or integrations. Before you decide, check what each {{az-worker}} needs and what depends on it. Refer to [](watches-and-workers.md).
 
-To decide which {{az-workers}} fit your environment and check what each one needs, refer to [](configure-worker-settings.md). You can enable {{az-workers}} or turn them off later on their {{az-watch}} pages.
+You can turn {{az-workers}} on or off later on their {{az-watch}} pages. Refer to [](configure-worker-settings.md).
+
+% After elastic/docs-content#9144 merges, link configure-worker-settings.md#configure-worker-settings-enabled.
 
 ## Start the {{az-workers}} [alertzero-turn-on-workers]
 
 {{az-workers}} need security data to analyze and at least one AI model to run. Onboarding links to where to add data, and you can't start the {{az-workers}} until the space has a model. To prepare ahead, refer to [](/solutions/security/get-started/ingest-data-to-elastic-security.md) and [Connect to an LLM](/solutions/security/ai/set-up-ai-features.md#set-up-ai-llm).
 
-Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md), which they use to pass work to each other. Without it, the {{az-rule-coverage}} and {{az-endpoint-analysis}} {{az-workers}} can't do their work, and the {{az-attack-discovery}} and {{az-continuous-threat-hunt}} {{az-workers}} run but don't pass work on. Onboarding flags each {{az-worker}} that's missing it.
+Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) to pass work to each other. Onboarding flags each {{az-worker}} that's missing it. To check which {{az-workers}} need it, refer to [](watches-and-workers.md).
 
 :::{note}
 **Enable and run** turns on the {{az-workers}} you selected, so it needs **All** for **{{alertzero}}**, the `manage_security` cluster privilege, and the **Workflows** sub-feature privileges **Update** and **Update managed workflows**. Because `manage_security` also lets anyone who has it manage users and roles for the whole cluster, ask an administrator who already has it to start the {{az-workers}} instead of granting it only for {{alertzero}}. For details, refer to [](alertzero-privileges.md).
@@ -49,4 +51,4 @@ After you select **Enable and run**, {{alertzero}} opens its home page, the **{{
 
 - [](alertzero-privileges.md): Give your team the privileges they need to view and decide {{az-proposed-actions}}.
 - [](use-alertzero.md): Find the {{az-proposed-actions}} that need your decision.
-- [](configure-worker-settings.md): Change how often {{az-workers}} run and how much {{az-autonomy}} each one has.
+- [](configure-worker-settings.md): Change {{az-worker}} settings, such as {{az-autonomy}} and schedule.
