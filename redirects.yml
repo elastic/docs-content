@@ -430,7 +430,7 @@ redirects:
   'explore-analyze/query-filter/languages/esql-multi-index.md': 'elasticsearch://reference/query-languages/esql/esql-multi-index.md'
   'explore-analyze/query-filter/languages/esql-multi.md': 'elasticsearch://reference/query-languages/esql/esql-multi.md'
   'explore-analyze/query-filter/languages/esql-rest.md': 'elasticsearch://reference/query-languages/esql/esql-rest.md'
-  'explore-analyze/query-filter/languages/esql-task-management.md': 'elasticsearch://reference/query-languages/esql/esql-task-management.md'
+  'explore-analyze/query-filter/languages/esql-task-management.md': 'elasticsearch://reference/query-languages/query-task-management.md'
   'explore-analyze/query-filter/languages/esql-troubleshooting.md': 'elasticsearch://reference/query-languages/esql/esql-troubleshooting.md'
   'solutions/search/esql-search-tutorial.md': 'elasticsearch://reference/query-languages/esql/esql-search-tutorial.md'
 
@@ -1556,6 +1556,19 @@ redirects:
 
   # Related to https://github.com/elastic/docs-content/pull/7977
   'solutions/security/get-started/siem-readiness.md': '!solutions/security/get-started.md'
+
+  # Related to https://github.com/elastic/platform-docs-team/issues/581
+  'explore-analyze/visualize/manage-panels.md':
+    to: 'explore-analyze/visualize/visualize-library.md'
+    anchors: '!'
+    many:
+      - to: 'explore-analyze/visualize/visualize-library.md'
+        anchors:
+          'save-to-visualize-library': 'save-to-visualize-library'
+      - to: 'explore-analyze/dashboards/using.md'
+        anchors:
+          'explore-the-underlying-documents': 'explore-panel-data-in-discover'
+
   
   # Related to https://github.com/elastic/docs-content/pull/8651
   # Remove duplicate Security dashboard pages

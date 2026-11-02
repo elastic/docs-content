@@ -426,7 +426,6 @@ toc:
           - file: visualize/legacy-editors/tsvb.md
           - file: visualize/legacy-editors/timelion.md
       - file: visualize/visualize-library.md
-      - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/kibana-interface.md
@@ -497,6 +496,7 @@ toc:
                   - file: alerting/esql/rules/configure-rule-artifacts.md
               - file: alerting/esql/rules/view-manage-rules.md
               - file: alerting/esql/rules/review-rule-execution-history.md
+              - file: alerting/esql/rules/review-rule-change-history.md
               - file: alerting/esql/rules/esql-query-patterns.md
                 children:
                   - file: alerting/esql/rules/esql-first-rule-query.md
