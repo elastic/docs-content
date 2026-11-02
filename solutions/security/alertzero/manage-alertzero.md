@@ -15,7 +15,7 @@ When [setting up {{alertzero}}](set-up-alertzero.md), you turn on the {{az-worke
 
 ## Where to start [manage-alertzero-where-to-start]
 
-| If you want to | Refer to |
+| Your goal | Start here |
 |---|---|
 | Turn a {{az-worker}} on or off, choose how much it can do without your approval, or change its other settings | [](configure-worker-settings.md) |
 | Start a run yourself instead of waiting for the next scheduled run | [](run-worker-on-demand.md) |
