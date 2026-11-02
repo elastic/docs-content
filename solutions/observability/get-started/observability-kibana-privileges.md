@@ -79,9 +79,9 @@ These privileges control specific Synthetics actions. Selecting **All** for **Sy
 
 | Privilege | What it allows |
 | --- | --- |
-| **Can run tests manually** {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Trigger a manual test run of an existing monitor without creating, editing, or deleting monitors. |
-| **Enabled** | Under **Elastic managed locations**, create monitors that run from Elastic managed locations. There is an additional charge to use Elastic managed testing locations. |
-| **Can manage** | Under **Private locations**, add and delete private locations. |
+| **Can run tests manually** {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Trigger a manual test run of an existing monitor without creating, editing, or deleting monitors. To add this to a read-only role, refer to [the reader role](/solutions/observability/synthetics/reader-role.md#synthetics-read-sub-feature-privileges). |
+| **Enabled** | Under **Elastic managed locations**, create monitors that run from Elastic managed locations. There is an additional charge to use Elastic managed testing locations. Turning this off is how you [restrict a writer role from using managed locations](/solutions/observability/synthetics/writer-role.md#disable-managed-locations). |
+| **Can manage** | Under **Private locations**, add and delete private locations. Setting up a new private location also requires the {{fleet}} privileges listed in the [writer role](/solutions/observability/synthetics/writer-role.md#synthetics-role-write-private-locations). |
 | **Can read global parameter values** {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga` | View unredacted [global parameter](/solutions/observability/synthetics/work-with-params-secrets.md) values. |
-| **Can manage rules** {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Create, update, delete, enable, disable, run, and backfill Synthetics and Uptime alert rules, including the default status and TLS rules, without granting permission to create or edit monitors. |
+| **Can manage rules** {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Create, update, delete, enable, disable, run, and backfill Synthetics and Uptime alert rules, including the default status and TLS rules, without granting permission to create or edit monitors. To add this to a read-only role, refer to [the reader role](/solutions/observability/synthetics/reader-role.md#synthetics-read-sub-feature-privileges). |
 :::

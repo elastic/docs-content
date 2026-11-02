@@ -13,7 +13,7 @@ products:
 To minimize the privileges required by the writer role, use the [setup role](/solutions/observability/synthetics/setup-role.md) to enable Monitor Management. This section assumes another user has already enabled Monitor Management.
 ::::
 
-For users who need to create, modify, and delete monitors, provide write access. Two types of write access are outlined below:
+For users who need to create, modify, and delete monitors, provide write access. You can grant two types of write access:
 
 * **General write access**: For most users, you can use [General write access](#synthetics-write-privileges-general), which grants write access to all {{kib}} apps and requires little configuration.
 * **Limited write access**: If you want to limit write access to the {{synthetics-app}} only, you can use [Limited write access](#synthetics-write-privileges-limited), which requires additional configuration.
@@ -40,7 +40,7 @@ Create a **writer role**, called something like `synthetics_writer`:
 
 If you want to limit write access to the {{synthetics-app}} only, do *not* use the `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor).
 
-Instead to you can create a writer role, called something like `synthetics_writer_limited`, and start by granting the following privileges:
+Instead, you can create a writer role, called something like `synthetics_writer_limited`, and start by granting the following privileges:
 
 | Type | Privilege | Purpose |
 | --- | --- | --- |
