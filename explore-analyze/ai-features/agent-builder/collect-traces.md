@@ -65,6 +65,8 @@ Trace collection is on by default. To manage it, go to **{{stack-manage-app}}** 
 
 The **Collect conversation traces** setting turns collection on and off. When it is on, {{agent-builder}} collects OpenTelemetry traces for agent conversations and ingests them into {{es}}. From the same section, you can install a prebuilt overview dashboard for the current {{kib}} space.
 
+For the {{kib}} space this setting applies to and when a change takes effect, refer to [Trace setting scope and timing](#trace-setting-scope-and-timing).
+
 :::{note}
 Any user with index access can read trace data. To restrict access, configure index-level privileges in **Stack Management → Roles**. For details, refer to [Grant access to trace data](#grant-access-to-trace-data).
 :::
@@ -98,25 +100,7 @@ User data is the exception to that pattern. Every other setting anonymizes a val
 
 On {{ech}} and {{serverless-full}}, the username recorded for a user who signs in with {{ecloud}} SSO can be an opaque {{ecloud}} identifier rather than a readable name, depending on how SSO is configured. For the field details and how to resolve a display name, refer to [Conversation round attributes](agent-traces-dashboard.md#conversation-round-attributes).
 
-Changing a privacy setting affects only traces recorded after the change. Existing traces are not rewritten.
-
-::::{applies-switch}
-
-:::{applies-item} {stack: ga 9.6+, serverless: ga}
-These settings are stored in the {{kib}} space where you change them. A conversation round uses the settings of the space it runs in. Turn a setting on in each space where you want that content captured.
-
-{{agent-builder}} reads the settings at the start of each conversation round. A change takes effect on the next round. A round that is already running keeps the settings it started with. If {{agent-builder}} cannot read the settings, it does not trace that round.
-:::
-
-:::{applies-item} stack: ga =9.5
-In 9.5.5 and later, these settings are stored in the {{kib}} space where you change them. A conversation round uses the settings of the space it runs in. Turn a setting on in each space where you want that content captured.
-
-{{agent-builder}} reads the settings at the start of each conversation round. A change takes effect on the next round. A round that is already running keeps the settings it started with. If {{agent-builder}} cannot read the settings, it does not trace that round.
-
-In 9.5.0 through 9.5.4, {{agent-builder}} reads the settings from the default space and refreshes them every 30 seconds. Other spaces use the default space's privacy settings. Allow up to 30 seconds for a change to take effect, then run a new conversation round to see it.
-:::
-
-::::
+Changing a privacy setting affects only traces recorded after the change. Existing traces are not rewritten. For the {{kib}} space a setting applies to and when a change takes effect, refer to [Trace setting scope and timing](#trace-setting-scope-and-timing).
 
 Content is stored across different span types:
 - **`chat` spans**: Store prompts, responses, and the system prompt in the `attributes.gen_ai.input.messages`, `attributes.gen_ai.output.messages`, and `attributes.gen_ai.system_instructions` attributes.
@@ -131,6 +115,43 @@ Two limits apply to the conversation title:
 Anonymization also rewrites the span name, not only the attributes. A custom agent's round appears as `invoke_agent custom` rather than `invoke_agent <your agent name>`, a custom tool call appears as `execute_tool custom`, and a workflow appears as `invoke_workflow custom`. Filters that match on a real name in `span.name` return nothing while the names are anonymized.
 
 Anyone who can read the trace data stream can read this content, so review [Grant access to trace data](#grant-access-to-trace-data) before you turn these settings on. For the field-level details, refer to [Message content attributes](agent-traces-dashboard.md#message-content-attributes).
+
+### Trace setting scope and timing
+
+The {{kib}} space that the **Collect conversation traces** setting and the trace privacy settings apply to, and when a change takes effect, depend on your version:
+
+::::{applies-switch}
+
+:::{applies-item} {stack: ga 9.6+, serverless: ga}
+- **Scope**: The settings are stored in the {{kib}} space where you change them, and a conversation round uses the settings of the space it runs in. To capture content in several spaces, turn on the privacy settings in each space. To stop collecting traces in a space, turn off **Collect conversation traces** in that space.
+- **Timing**: {{agent-builder}} reads the settings at the start of each conversation round, so a change takes effect on the next round. A round that's already running keeps the settings it started with.
+- **Read errors**: If {{agent-builder}} can't read the settings, it doesn't trace that round and logs an error on the {{kib}} server.
+
+{applies_to}`stack: ga 9.6+` If you upgrade from 9.5.4 or earlier, spaces other than the default space stop using the default space's values:
+
+- **Privacy settings** use their defaults, which are off, unless someone changed them in that space before the upgrade. Values changed in other spaces in 9.5.4 and earlier were ignored, but they take effect after the upgrade. Check the privacy settings in each space.
+- **Collect conversation traces** is on by default. If you turned it off only in the default space, collection resumes in the other spaces.
+:::
+
+:::{applies-item} stack: ga =9.5
+**9.5.5 and later**
+
+- **Scope**: The settings are stored in the {{kib}} space where you change them, and a conversation round uses the settings of the space it runs in. To capture content in several spaces, turn on the privacy settings in each space. To stop collecting traces in a space, turn off **Collect conversation traces** in that space.
+- **Timing**: {{agent-builder}} reads the settings at the start of each conversation round, so a change takes effect on the next round. A round that's already running keeps the settings it started with.
+- **Read errors**: If {{agent-builder}} can't read the settings, it doesn't trace that round and logs an error on the {{kib}} server.
+
+**9.5.0 through 9.5.4**
+
+- **Scope**: {{agent-builder}} reads the settings from the default space only. Every other space uses the default space's values, so changing a setting in another space doesn't change what's collected or captured. For example, turning off **Collect conversation traces** in another space doesn't stop collection there. It only hides **View Trace** in that space.
+- **Timing**: {{agent-builder}} refreshes the settings every 30 seconds. After you change a setting, allow up to 30 seconds, then run a new conversation round to see the change.
+
+When you upgrade from 9.5.4 or earlier to 9.5.5, spaces other than the default space stop using the default space's values:
+
+- **Privacy settings** use their defaults, which are off, unless someone changed them in that space before the upgrade. Values changed in other spaces in 9.5.4 and earlier were ignored, but they take effect after the upgrade. Check the privacy settings in each space.
+- **Collect conversation traces** is on by default. If you turned it off only in the default space, collection resumes in the other spaces.
+:::
+
+::::
 
 ## Grant access to trace data
 
