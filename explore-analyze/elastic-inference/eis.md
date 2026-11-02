@@ -63,6 +63,7 @@ Available actions include:
 - Delete endpoints
 - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Region preferences](eis-region-and-hosting.md#inference-region-preferences) for where EIS processes {{infer}} requests
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Show or hide models](#eis-display-options) that are in preview, past end of life, or outside your region preferences
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Sort models](#eis-sort-models) in card view and see how many match your search and filters
 
 ### Show models that are hidden by default [eis-display-options]
 
@@ -86,6 +87,22 @@ To show or hide any of these groups:
 The list now includes the groups you set to **Show**.
 
 {{kib}} doesn't save your selection. After you reload {{kib}}, all three groups are hidden again.
+
+### Sort models and see how many match [eis-sort-models]
+
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+To scan models alphabetically, or to see the most recently released ones first, use the **Sort by** menu. {{kib}} also shows how many models match your search and filters, so you can tell when a model you expect isn't in the list. Both appear in card view, which is the default. If you're in table view, select **Card view** on the toolbar.
+
+By default, {{kib}} lists models from **A → Z**. From the **Sort by** menu, select an option:
+
+- **A → Z** or **Z → A**: Order models by name.
+- **Newest** or **Oldest**: Order models by release date. Models without a release date come last.
+
+The count reads like **Showing 12 of 20**. The first number is how many models match your search, filters, and **Display options** settings. The second number also counts models that are [hidden by default](#eis-display-options). If the first number is lower than the second and you haven't searched or filtered, hidden models explain the difference.
 
 ## Add endpoints [add-endpoint]
 
