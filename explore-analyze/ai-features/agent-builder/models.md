@@ -172,7 +172,7 @@ serverless: deprecated
 ```
 
 ::::{important}
-Generative AI connectors are deprecated. To connect a model provider, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
+Generative AI connectors are deprecated and will be removed in a future release. To connect a model provider, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
 
 Availability of connectors depends on your deployment and version:
 
