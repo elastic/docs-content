@@ -10,7 +10,7 @@ description: Run Kibana background tasks such as alerting rules and reporting in
 
 # {{kib}} background task isolation on ECK [k8s-kibana-background-tasks]
 
-{{kib}} runs alerting, actions and reporting as persistent [background tasks](/deploy-manage/distributed-architecture/kibana-tasks-management.md). By default every instance serves user requests and runs background tasks, so a heavy task workload competes with user traffic for CPU and memory. {{kib}} can dedicate instances to one of these jobs through the `node.roles` setting. Refer to [Dedicated background task nodes](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes).
+{{kib}} runs alerting, actions and reporting as persistent [background tasks](/deploy-manage/distributed-architecture/kibana-tasks-management.md). By default, every instance serves user requests and runs background tasks, so a heavy task workload competes with user traffic for CPU and memory. {{kib}} can [dedicate instances to one of these jobs](/deploy-manage/distributed-architecture/kibana-tasks-management.md#task-manager-dedicated-task-nodes) through the `node.roles` setting.
 
 ECK manages this split for you. When you set `spec.backgroundTasks` on a {{kib}} resource, ECK runs two pools of pods:
 
