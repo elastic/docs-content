@@ -7,7 +7,7 @@
 
 Microsoft Entra ID limits group claims in SAML assertions to 150 groups, including nested groups. When a user exceeds this limit, Entra ID omits the group list and sends a link to retrieve memberships through a Graph API instead. This is called a *group overage*. Role mappings that depend on the missing groups don't match.
 
-Configure Entra ID to send only the groups needed for access to Elastic. The **Groups assigned to the application** option requires a Microsoft Entra ID license that supports assigning groups to applications. It includes only direct group memberships, so users who access Elastic through nested groups need direct membership in a group assigned to the application.
+To reduce the likelihood of encountering this issue, configure Entra ID to send only the groups needed for access to Elastic. The **Groups assigned to the application** option requires a Microsoft Entra ID license that supports assigning groups to applications. It includes only direct group memberships, so users who access Elastic through nested groups need direct membership in a group assigned to the application.
 
 1. In Microsoft Entra ID, open **Enterprise applications** and select the application you configured for Elastic SAML SSO.
 2. In **Users and groups**, assign the groups used by your Elastic role mappings. Confirm that affected users are direct members of these groups.
