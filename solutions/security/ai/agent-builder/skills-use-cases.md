@@ -215,12 +215,14 @@ serverless:
 
 **Enable:** `endpoint-response-actions`
 
-Use this skill to see which {{elastic-defend}} endpoints are enrolled, check whether a host is isolated, and follow up on a response action you already sent. After you confirm in the chat, the agent can isolate or release a host, request the processes running on a host, or scan a path for malware. For why a host is unhealthy or why an action failed, use [`automatic_troubleshooting`](#elastic-defend-troubleshooting).
+Use this skill to list enrolled {{elastic-defend}} endpoints, check whether a host is isolated, and follow up on a response action you already sent. After you confirm in the chat, the agent can isolate or release a host, request the processes running on a host, or scan a path for malware. Select **Deny** on the confirmation to cancel instead.
+
+To find out why a host is unhealthy or why an action failed, use [`automatic_troubleshooting`](#elastic-defend-troubleshooting).
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
-| Which endpoints are enrolled? | List enrolled {{elastic-defend}} hosts with status, isolation state, operating system, and last seen time. |
-| Is `host-12` isolated? | Look up that host and report its status and isolation state. If more than one active endpoint uses that hostname, ask you for the agent ID. |
+| Which endpoints are enrolled? | List enrolled {{elastic-defend}} hosts with their agent ID, status, isolation state, operating system, last seen time, and applied policy. |
+| Is `host-12` isolated? | Look up that host and report its status and isolation state. If more than one endpoint with that hostname isn't offline, inactive, or unenrolled, ask you for the agent ID. |
 | Isolate `host-12` | Show a confirmation that names the host and its agent ID. The host is isolated only after you select **Isolate host**. |
 | Release `host-12` | Show a confirmation, then release the host after you select **Release host**. |
 | What processes are running on `host-12`? | Show a confirmation, then request the process list after you select **List processes**. |
@@ -228,7 +230,7 @@ Use this skill to see which {{elastic-defend}} endpoints are enrolled, check whe
 | What happened to action `<action-id>`? | Report that action's status and output. |
 
 :::{note}
-`execute`, `kill-process`, `suspend-process`, `get-file`, `upload`, `runscript`, `memory-dump`, and `cancel` stay in the [response console](/solutions/security/endpoint-response-actions.md). Select **Deny** on a confirmation card to cancel an action from this skill.
+These commands stay in the [response console](/solutions/security/endpoint-response-actions.md): `execute`, `kill-process`, `suspend-process`, `get-file`, `upload`, `runscript`, `memory-dump`, and `cancel`.
 :::
 
 ## Attack Discovery generation [attack-discovery-generation]
