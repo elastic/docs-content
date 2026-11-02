@@ -94,7 +94,7 @@ During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial
 
 {{es}} {{vectordb}} projects don't have a Search Boost Window setting.
 
-In {{obs-serverless}} and {{sec-serverless}} projects, search is optimized for fast, responsive performance on the most recent day of ingested data, while historical data remains available for broader analysis. If your workload would benefit from extending the search boost window, contact Elastic Support.
+In {{obs-serverless}} and {{sec-serverless}} projects, search is optimized for fast, responsive performance on data from the most recent day, while historical data remains available for broader analysis. If your workload would benefit from extending this window, contact Elastic Support.
 
 ### Data retention [serverless-data-retention-settings]
 
