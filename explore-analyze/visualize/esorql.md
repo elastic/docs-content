@@ -103,6 +103,27 @@ In the resulting chart, the time buckets are placed on the **Horizontal axis**, 
 
 To add another field to the breakdown, select **Add a field** under **Breakdown** and choose a column from your query. You can also drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
 
+### Combine several queries in one chart [esql-viz-multi-layer]
+```{applies_to}
+stack: ga 9.6
+serverless: ga
+```
+
+If the series you want to compare come from different queries, you can plot each query in its own layer on the same bar, line, or area chart. Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
+
+To add a layer:
+
+1. In the editor, select {icon}`plus` **Add layer**.
+2. Select the type of layer to add:
+
+    - **Visualization**: Plots the results of another query. Enter the query, run it, then assign its columns to the layer's dimensions.
+    - **Annotations**: Marks events or time ranges on the chart. Annotations need a chart with a time axis, and they are always static. Query-based annotations and the annotation library aren't available on {{esql}} charts.
+    - **Reference lines**: Draws a threshold on the chart. Select **Static reference lines** to enter fixed values, or **ES|QL reference lines** to calculate the values with a separate query.
+
+When a chart has more than one layer, each layer appears as a tab. Select a tab to edit that layer's query and dimensions.
+
+If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again. The **Suggestions** panel is hidden while the chart has more than one layer, because applying a suggestion would replace the other layers.
+
 ### Chart configuration persistence over {{esql}} query update [chart-config-persist]
 ```{applies_to}
 stack: ga 9.1
