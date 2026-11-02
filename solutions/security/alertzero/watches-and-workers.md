@@ -25,7 +25,7 @@ The {{az-alert-triage}} {{az-worker}} reviews alerts that are waiting to be tria
 
 {{az-alert-triage}} relies on the [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) to analyze alerts, so make sure that workflow is turned on.
 
-Each proposed closure appears as a {{az-proposed-action}} on the **{{alertzero}}** page. To find it, refer to [](use-alertzero.md), and to decide what to do with it, refer to [](decide-proposed-action.md).
+Each proposed closure appears as a {{az-proposed-action}} on the **{{az-proposed-actions-cap}}** page. To find it, refer to [](use-alertzero.md), and to decide what to do with it, refer to [](decide-proposed-action.md).
 
 ### {{az-attack-discovery}} [alertzero-attack-discovery]
 
