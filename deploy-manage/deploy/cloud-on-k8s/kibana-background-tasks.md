@@ -135,7 +135,7 @@ Requests sent through the HTTP Service, including the task manager health API, a
 
 ## Check the status [k8s-kibana-background-tasks-status]
 
-The {{kib}} status reports each pool under `status.pools`. The top-level `count`, `availableNodes` and `health` aggregate both pools and are what `kubectl get kibana` shows:
+Check the status of your pools with `kubectl get kibana`. The top-level `count`, `availableNodes`, and `health` fields aggregate the status for both pools. The `status.pools` section breaks this information down for each pool.
 
 ```yaml
 status:
