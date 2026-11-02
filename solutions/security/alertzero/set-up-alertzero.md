@@ -58,6 +58,13 @@ If you haven't added data to {{elastic-sec}} yet, onboarding links to where you 
 
 **{{alertzero}}**, **{{az-escalations-cap}}**, and **{{az-watches}}** appear in the {{elastic-sec}} navigation menu.
 
+## Choose models for the {{az-workers}} [alertzero-choose-models]
+
+If you want the {{az-workers}} to use different models than the recommended ones, choose them before you start the {{az-workers}}, because their first run starts right away.
+
+:::{include} /solutions/security/alertzero/_snippets/choose-models.md
+:::
+
 ## Start the {{az-workers}} [alertzero-turn-on-workers]
 
 1. In the navigation menu, select **{{alertzero}}**. The first time you open it in a space, onboarding starts.
