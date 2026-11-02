@@ -47,46 +47,49 @@ The {{az-continuous-threat-hunt}} {{az-worker}} searches your data for activity 
 
 Each {{az-hunt-finding}} appears in its {{az-investigation}}, with the finding's severity, confidence, and the evidence behind it. To decide what to do with a finding, refer to [](act-on-hunt-finding.md).
 
-#### How {{az-threat-reports}} are built [alertzero-threat-reports]
+#### How {{alertzero}} builds {{az-threat-reports}} [alertzero-threat-reports]
 
-Two workflows build the {{az-threat-reports}} that {{az-continuous-threat-hunt}} searches for. They run in this order:
+{{alertzero}} builds {{az-threat-reports}} for you from public threat feeds, so you don't need to set up the feeds yourself. When you turn on {{az-continuous-threat-hunt}}, {{alertzero}} turns on two threat intelligence workflows that run every 4 hours, in this order.
 
-1. **Ingest threat feeds** collects new articles from the [supported threat feeds](#alertzero-threat-feeds) and saves each one as a {{az-threat-report}}. It runs every 4 hours. It skips articles published more than 30 days ago, and articles it already collected in the last 90 days.
-2. **Enrich threat report** processes the reports that **Ingest threat feeds** saved. For each report, it:
+1. **Ingest threat feeds** collects new articles from the [supported threat feeds](#alertzero-threat-feeds) and saves each one as a {{az-threat-report}}. It skips articles more than 30 days old and articles it already collected in the last 90 days.
+2. **Enrich threat report** checks that each report contains threat intelligence, then extracts details such as indicators of compromise (IOCs), attacker behaviors, and severity. {{az-continuous-threat-hunt}} ignores reports that fail the check.
 
-   * Checks that the report contains threat intelligence. {{az-continuous-threat-hunt}} never searches for reports that fail this check.
-   * Extracts indicators of compromise (IOCs): file hashes, IP addresses and ranges, domains, URLs, email addresses, and cryptocurrency wallet addresses.
-   * Classifies the threat, including its categories, the attacker behaviors it describes, the regions it affects, and its severity.
-   * Describes the adversary, their capabilities, their infrastructure, and their victims, when the report has enough detail.
-   * Links the report to other reports that share its IOCs.
+:::{dropdown} What Enrich threat report adds to each report
+* IOCs, including file hashes, IP addresses and ranges, domains, URLs, email addresses, and cryptocurrency wallet addresses.
+* A classification of the threat, including its categories, attacker behaviors, affected regions, and severity.
+* A description of the adversary, including their capabilities, infrastructure, and victims, if the report has enough detail.
+* Links to other reports that share its IOCs.
+:::
 
-   It runs every 4 hours and processes up to 50 reports per run, oldest first. After you first turn it on, it can take several runs to work through the reports that **Ingest threat feeds** collected.
+All spaces in your deployment share both workflows, so every space gets the same reports. A third workflow, **Attribute alerts to reports**, then counts the alerts in each space that match each report.
 
-{{alertzero}} turns on both workflows when you turn on {{az-continuous-threat-hunt}}, so you don't need to set up the feeds yourself. Both workflows run once for your whole deployment, and the reports they build are available in every space. A third workflow, **Attribute alerts to reports**, then counts the alerts in each space that match each report.
+:::{tip}
+After you first turn on {{az-continuous-threat-hunt}}, **Enrich threat report** might need several runs to process all the collected reports. It processes up to 50 reports per run, oldest first. Until then, {{az-continuous-threat-hunt}} hunts with only the reports processed so far.
+:::
 
 #### Supported threat feeds [alertzero-threat-feeds]
 
-**Ingest threat feeds** collects from the following public feeds. The list is fixed, so you can't add your own feeds or change these.
+**Ingest threat feeds** checks these public feeds for new articles. You can't add your own feeds or change this list.
 
-| Feed | Publisher | Fetched from |
-| --- | --- | --- |
-| Elastic Security Labs | Elastic | `www.elastic.co` |
-| CISA Alerts and Advisories | U.S. Cybersecurity and Infrastructure Security Agency (CISA) | `www.cisa.gov` |
-| UK National Cyber Security Centre | UK National Cyber Security Centre (NCSC) | `www.ncsc.gov.uk` |
-| CERT-FR Security Alerts | French national CERT (CERT-FR) | `cert.cyber.gouv.fr` |
-| CERT-FR Threats and Incidents | CERT-FR | `cert.cyber.gouv.fr` |
-| CERT-EU Security Advisories | CERT for the EU institutions (CERT-EU) | `cert.europa.eu` |
-| CERT-EU Threat Intelligence | CERT-EU | `cert.europa.eu` |
+| Feed | Publisher |
+| --- | --- |
+| Elastic Security Labs | Elastic |
+| CISA Alerts and Advisories | U.S. Cybersecurity and Infrastructure Security Agency (CISA) |
+| UK National Cyber Security Centre | UK National Cyber Security Centre (NCSC) |
+| CERT-FR Security Alerts | French national CERT (CERT-FR) |
+| CERT-FR Threats and Incidents | CERT-FR |
+| CERT-EU Security Advisories | CERT for the EU institutions (CERT-EU) |
+| CERT-EU Threat Intelligence | CERT-EU |
 
 #### What the threat intelligence workflows need [alertzero-threat-reports-requirements]
 
+To build reports for {{az-continuous-threat-hunt}}, the threat intelligence workflows need network access to the threat feeds and a model to process reports. **Enrich threat report** runs in the default space, so it uses the default space's model settings for every report, even if you hunt in another space. It calls the model for every new report.
+
 | Workflow | Needs | What happens without it |
 | --- | --- | --- |
-| **Ingest threat feeds** | Outbound HTTPS access from {{kib}} to the hosts in [Supported threat feeds](#alertzero-threat-feeds). | The workflow runs, but it collects no reports from the feeds it can't reach. |
-| **Enrich threat report** | Reports from **Ingest threat feeds**. | It has nothing to process, so {{az-continuous-threat-hunt}} has no reports to search for. |
-| **Enrich threat report** | A model selected for **Efficient models** and **Frontier models** in **Feature Settings**, in the default space. Refer to [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). | Reports stay unprocessed, and {{az-continuous-threat-hunt}} can't search for them. The workflow retries them on its next run. |
-
-**Enrich threat report** runs in the default space, so it uses the default space's model settings for every report, even if you hunt in another space. It makes model calls for every new report.
+| Ingest threat feeds | Outbound HTTPS access from {{kib}} to `www.elastic.co`, `www.cisa.gov`, `www.ncsc.gov.uk`, `cert.cyber.gouv.fr`, and `cert.europa.eu`. | The workflow runs, but it collects no reports from the feeds it can't reach. |
+| Enrich threat report | Reports from **Ingest threat feeds**. | It has nothing to process, so {{az-continuous-threat-hunt}} has no reports to search for. |
+| Enrich threat report | A model selected for **Efficient models** and **Frontier models** in **Feature Settings**, in the default space. Refer to [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). | Reports stay unprocessed, and {{az-continuous-threat-hunt}} can't search for them. The workflow retries them on its next run. |
 
 ## {{az-detection-watch}} [alertzero-detection-watch]
 
