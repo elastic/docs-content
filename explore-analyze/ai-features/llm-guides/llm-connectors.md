@@ -36,7 +36,7 @@ Models that do not appear in these resources may still work, but Elastic hasn't 
 ## Connect to a third-party or self-managed LLM
 
 ::::{important}
-The OpenAI, Amazon Bedrock, Google Gemini, and **AI Connector** connector types are being replaced by {{es}} {{infer}} endpoints. To configure access to an LLM provider, create an {{infer}} endpoint with the `chat_completion` task type. For steps that use your own provider account and API key, refer to [External inference](/explore-analyze/elastic-inference/external.md). To use models that Elastic hosts instead, refer to [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md).
+The OpenAI, Amazon Bedrock, Google Gemini, and **AI Connector** connector types are being replaced by {{es}} {{infer}} endpoints and will be removed entirely in {{stack}} 10.0 or in January 2028, whichever comes first. To configure access to an LLM provider, create an {{infer}} endpoint with the `chat_completion` task type. For steps that use your own provider account and API key, refer to [External inference](/explore-analyze/elastic-inference/external.md). To use models that Elastic hosts instead, refer to [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md).
 
 Availability of these connector types depends on your deployment and version:
 
