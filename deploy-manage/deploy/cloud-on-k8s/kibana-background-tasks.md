@@ -14,7 +14,7 @@ description: Run Kibana background tasks such as alerting rules and reporting in
 
 ECK can manage this split for you. When you set `spec.backgroundTasks` on a {{kib}} resource, ECK runs two pools of pods:
 
-* The **primary pool** serves UI and API requests with `node.roles: ["ui"]`.
+* The **primary pool** serves UI and API requests with `node.roles: ["ui"]`. It is the only pool behind the {{kib}} HTTP Service.
 * The **background tasks pool** runs task manager work only, with `node.roles: ["background_tasks"]`.
 
 Without `spec.backgroundTasks`, ECK runs a single pool with all roles.
@@ -53,12 +53,13 @@ An empty `backgroundTasks: {}` section is enough to enable the additional pool. 
 | `count` | Number of instances in the background tasks pool. When omitted, ECK does not manage the replica count of the background tasks Deployment, so a [Horizontal Pod Autoscaler](#k8s-kibana-background-tasks-scaling) can own it. |
 | `config` | {{kib}} settings for the background tasks pool only, merged on top of `spec.config`. Do not set `node.roles` here, ECK manages it. |
 | `resources` | CPU and memory for the `kibana` container of the background tasks pool. Overrides the resources of that container in `spec.podTemplate` and `spec.backgroundTasks.podTemplate`. |
-| `podTemplate` | A [Pod Template](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates) overlay for the background tasks pods, applied as a strategic merge on top of `spec.podTemplate`. |
+| `podTemplate` | A [Pod Template](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates) overlay for the background tasks pods, applied as a [strategic merge](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#use-a-strategic-merge-patch-to-update-a-deployment) on top of `spec.podTemplate`. |
 
 The background tasks pool is a second {{kib}} deployment, so each of its pods needs the same resources as a primary pod. When you don't set `resources`, the `kibana` container of each pod requests and is limited to 2Gi of memory, the same default as the primary pool, and sets no CPU request or limit. Make sure your Kubernetes cluster has capacity for the additional pods.
 
 All other fields of the {{kib}} spec, such as `spec.config`, `spec.podTemplate`, `spec.secureSettings`, `spec.elasticsearchRef` and `spec.http`, apply to both pools.
 
+Both pools share the same HTTP Service, so `spec.backgroundTasks` can repeat the base path of the primary pool, set with `server.basePath` and `server.rewriteBasePath`, but must not change it.
 
 When you enable background task isolation, ECK restarts your existing pods with the `ui` role and creates a new Deployment for background tasks in the same operation. Background task execution pauses briefly until the first background tasks pod is ready.
 
@@ -108,28 +109,6 @@ spec:
 2. Applies to the background tasks pool only.
 3. Overrides the node selector inherited from `spec.podTemplate` for the background tasks pods only.
 
-## What ECK creates [k8s-kibana-background-tasks-resources]
-
-For a {{kib}} named `kibana-sample` with `spec.backgroundTasks` set, ECK manages:
-
-| Resource | Name | Purpose |
-| --- | --- | --- |
-| Deployment | `kibana-sample-kb` | The primary pool, `node.roles: ["ui"]`. |
-| Deployment | `kibana-sample-kb-bg` | The background tasks pool, `node.roles: ["background_tasks"]`. |
-| Secret | `kibana-sample-kb-config` | The rendered `kibana.yml` shared by both pools. |
-| Secret | `kibana-sample-kb-bg-config` | The rendered `kibana.yml` of the background tasks pool. Only created when `spec.backgroundTasks.config` is set. |
-| Service | `kibana-sample-kb-http` | The HTTP Service. It only routes traffic to the primary pool. |
-
-Every pod carries the `kibana.k8s.elastic.co/role` label with the value `primary` or `background_tasks`, and the label is part of the Deployment and Service selectors. Use the label to select the pods of one pool:
-
-```sh
-kubectl get pods -l kibana.k8s.elastic.co/name=kibana-sample,kibana.k8s.elastic.co/role=background_tasks
-```
-
-::::{important}
-Requests sent through the HTTP Service, including the task manager health API, are served by the primary pool and do not reflect task execution state. Refer to [Retrieve health data when {{kib}} uses separate task nodes](/troubleshoot/kibana/task-manager.md#task-manager-health-multi-node).
-::::
-
 ## Check the status [k8s-kibana-background-tasks-status]
 
 Check the status of your pools with `kubectl get kibana`. The top-level `count`, `availableNodes`, and `health` fields aggregate the status for both pools. The `status.pools` section breaks this information down for each pool.
@@ -167,6 +146,16 @@ The aggregated health reflects the state of both pools:
 * `yellow`: The primary pool is serving requests, but a pool is not green, for example while the background tasks pods are starting.
 * `red`: The primary pool is not available.
 
+To list the pods of one pool, use the `kibana.k8s.elastic.co/role` label, which has the value `primary` or `background_tasks`:
+
+```sh
+kubectl get pods -l kibana.k8s.elastic.co/name=kibana-sample,kibana.k8s.elastic.co/role=background_tasks
+```
+
+::::{important}
+Requests sent through the HTTP Service, including the task manager health API, are served by the primary pool and do not reflect task execution state. Refer to [Retrieve health data when {{kib}} uses separate task nodes](/troubleshoot/kibana/task-manager.md#task-manager-health-multi-node).
+::::
+
 ## Scale the pools [k8s-kibana-background-tasks-scaling]
 
 `spec.count` sets the size of the primary pool and `spec.backgroundTasks.count` the size of the background tasks pool.
@@ -194,26 +183,6 @@ spec:
         averageUtilization: 70
 ```
 
-1. The background tasks Deployment of the {{kib}} named `kibana-sample`.
+1. The background tasks Deployment of the {{kib}} named `kibana-sample`. ECK names the background tasks Deployment `<kibana-name>-kb-bg`.
 
 Refer to the [{{kib}} task manager scaling guide](/deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md) to size the background tasks pool.
-
-## Validation rules [k8s-kibana-background-tasks-validation]
-
-When `spec.backgroundTasks` is set, the [validating webhook](configure-validating-webhook.md) rejects a {{kib}} resource if:
-
-* `spec.version` is lower than 8.16.0.
-* `node.roles` is set in `spec.config` or `spec.backgroundTasks.config`, or the `NODE_ROLES` environment variable is set on the `kibana` container of either pod template. ECK owns the node roles of both pools.
-* The two pools resolve to different base paths. The base path comes from `server.basePath` and `server.rewriteBasePath`, or from the `SERVER_BASEPATH` and `SERVER_REWRITEBASEPATH` environment variables. Both pools share the same HTTP Service, so `spec.backgroundTasks` can repeat the primary values but must not change them.
-
-The operator runs the same checks when the webhook is turned off and reports failures as events on the {{kib}} resource.
-
-## Rollouts to expect [k8s-kibana-background-tasks-rollouts]
-
-**Upgrading ECK.** The first reconciliation by ECK 3.6 or later adds the role label to the pod template of every existing {{kib}}, with or without `spec.backgroundTasks`. Each {{kib}} goes through one rolling update. Selectors are not changed by the upgrade itself.
-
-**Turning isolation on.** ECK rolls the primary pods to the `ui` role and creates the background tasks Deployment in the same reconciliation. The two rollouts are not ordered, so background task execution pauses until the first background tasks pod is ready. No task is lost: the task manager picks up pending work as soon as a pod with the role is running.
-
-Turning isolation on or off also adds or removes the role label in the immutable Deployment selector. ECK migrates the primary Deployment without downtime: it rolls the pods until all carry the label, lets the old ReplicaSets be pruned, then deletes the Deployment with orphan propagation and recreates it with the new selector so it adopts the running pods. The Service selector follows the Deployment selector, so no endpoint is dropped. The migration is deferred while [orchestration is paused](k8s-pause-orchestration.md).
-
-**Turning isolation off.** Remove `spec.backgroundTasks`. ECK rolls the primary pods back to all roles and deletes the background tasks Deployment and its configuration Secret.
