@@ -114,7 +114,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Users whose role grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role, can assign workflows that run once after the agent finishes responding. The workflows can't change or discard the answer.
+Assign workflows that run once after the agent finishes responding, for example to audit the exchange or notify a channel. The workflows can't change or discard the answer. This setting requires a role that grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role.
 
 For details, refer to [Post-execution workflows](agents-and-workflows.md#post-execution-workflows).
 
