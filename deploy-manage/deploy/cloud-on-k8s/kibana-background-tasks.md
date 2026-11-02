@@ -159,7 +159,7 @@ status:
 
 `spec.count` sets the size of the primary pool and `spec.backgroundTasks.count` the size of the background tasks pool.
 
-A [Horizontal Pod Autoscaler](/deploy-manage/autoscaling/autoscaling-in-eck.md#k8s-stateless-autoscaling) that targets the {{kib}} resource through its `scale` subresource scales the **primary pool only**. To autoscale the background tasks pool, omit `spec.backgroundTasks.count` and target the background tasks Deployment directly. ECK then keeps whatever replica count the autoscaler sets:
+A [Horizontal Pod Autoscaler](/deploy-manage/autoscaling/autoscaling-in-eck.md#k8s-stateless-autoscaling) that targets the {{kib}} resource through its `scale` subresource scales the primary pool only. To autoscale the background tasks pool, omit `spec.backgroundTasks.count` and target the background tasks Deployment directly. ECK then keeps whatever replica count the autoscaler sets:
 
 ```yaml
 apiVersion: autoscaling/v2
