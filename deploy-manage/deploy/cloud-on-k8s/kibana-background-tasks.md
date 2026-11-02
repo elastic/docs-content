@@ -17,7 +17,7 @@ ECK manages this split for you. When you set `spec.backgroundTasks` on a {{kib}}
 * The **primary pool** serves UI and API requests with `node.roles: ["ui"]`.
 * The **background tasks pool** runs task manager work only, with `node.roles: ["background_tasks"]`.
 
-Without `spec.backgroundTasks`, ECK runs a single pool with all roles, as before.
+Without `spec.backgroundTasks`, ECK runs a single pool with all roles.
 
 ::::{note}
 {{kib}} background task isolation requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses. Refer to [License checks](#k8s-kibana-background-tasks-license) for the behavior without a license.
