@@ -27,7 +27,7 @@ Without `spec.backgroundTasks`, ECK runs a single pool with all roles.
 
 ## Enable background task isolation [k8s-kibana-background-tasks-enable]
 
-Add `spec.backgroundTasks` to the {{kib}} resource. The following example runs one UI instance and two background task instances:
+Add `spec.backgroundTasks` to the {{kib}} resource. The following example runs two UI instances and two background task instances:
 
 ```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
