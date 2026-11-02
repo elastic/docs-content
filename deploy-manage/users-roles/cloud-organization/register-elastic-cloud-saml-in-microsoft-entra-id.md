@@ -81,5 +81,3 @@ Use this procedure if users can't access your {{ecloud}} organization, {{ech}} d
 :::
 
 For {{ecloud}} organization SSO, keep the custom group claim name set to `groups`, as described in [Create a new Entra ID Enterprise application](#ec_create_a_new_entra_id_enterprise_application).
-
-{{ecloud}} organization SSO doesn't resolve memberships from the `groups.link` attribute. The Microsoft Graph Authz plugin for {{es}} applies to cluster or deployment-level SAML and can't resolve group overages for organization SSO, including access to {{ech}} deployments and {{serverless-short}} projects through that SSO configuration.
