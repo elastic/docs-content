@@ -155,7 +155,7 @@ To learn more about creating and managing rules, refer to [Alerting](/solutions/
 
 ::::
 
-## Select the data collection schema[host-schema-selector]
+## Select the data collection schema [host-schema-selector]
 ```{applies_to}
 stack: ga 9.2
 serverless: ga
@@ -421,7 +421,7 @@ When a host is detected by APM, but is not collecting full metrics (for example,
 
 This could mean that the APM agent has not been configured to use the correct host name. Instead, the host name might be the container name or the Kubernetes pod name.
 
-To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-intake-service-event-api.md#kubernetes-data).
+To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-inputs-apm-intake-event-api.md#kubernetes-data).
 
 ### I don't see all of my host data [observability-analyze-hosts-i-dont-see-all-of-my-host-data]
 ```{applies_to}
