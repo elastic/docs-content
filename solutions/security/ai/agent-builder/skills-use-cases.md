@@ -220,7 +220,7 @@ Use this skill to see which {{elastic-defend}} endpoints are enrolled, check whe
 | Example prompt | What the agent can do |
 |----------------|----------------------|
 | Which endpoints are enrolled? | List enrolled {{elastic-defend}} hosts with status, isolation state, operating system, and last seen time. |
-| Is `host-12` isolated? | Look up that host and report its status and isolation state. If more than one endpoint uses that hostname, ask you for the agent ID. |
+| Is `host-12` isolated? | Look up that host and report its status and isolation state. If more than one active endpoint uses that hostname, ask you for the agent ID. |
 | Isolate `host-12` | Show a confirmation that names the host and its agent ID. The host is isolated only after you select **Isolate host**. |
 | Release `host-12` | Show a confirmation, then release the host after you select **Release host**. |
 | What processes are running on `host-12`? | Show a confirmation, then request the process list after you select **List processes**. |
@@ -228,7 +228,7 @@ Use this skill to see which {{elastic-defend}} endpoints are enrolled, check whe
 | What happened to action `<action-id>`? | Report that action's status and output. |
 
 :::{note}
-`execute`, `kill-process`, `suspend-process`, `get-file`, `upload`, `runscript`, and `memory-dump` stay in the [response console](/solutions/security/endpoint-response-actions.md). Select **Deny** on a confirmation card to cancel an action from this skill.
+`execute`, `kill-process`, `suspend-process`, `get-file`, `upload`, `runscript`, `memory-dump`, and `cancel` stay in the [response console](/solutions/security/endpoint-response-actions.md). Select **Deny** on a confirmation card to cancel an action from this skill.
 :::
 
 ## Attack Discovery generation [attack-discovery-generation]

@@ -439,9 +439,9 @@ $$$agent-builder-endpoint-response-actions-skill$$$ `endpoint-response-actions` 
 
     Questions about why a host is unhealthy, offline, or missing, or why a response action failed, belong to the [`automatic_troubleshooting`](#agent-builder-automatic-troubleshooting-skill) skill.
 
-    Each isolate, release, process list, and scan shows a confirmation card before anything is sent. When the host resolves, the card names that host and its agent ID. Select **Isolate host**, **Release host**, **List processes**, or **Run scan** to send the action. Select **Deny** to cancel it. If the host cannot be resolved, the card says the action will be refused. When more than one endpoint uses the same hostname, the agent asks which agent ID you mean. A status of `unknown` means the endpoint has not reported its status yet.
+    Each isolate, release, process list, and scan shows a confirmation card before anything is sent. When the host resolves, the card names that host and its agent ID. Select **Isolate host**, **Release host**, **List processes**, or **Run scan** to send the action. Select **Deny** to cancel it. If the host cannot be resolved, or you lack the required privilege, license, or project tier, the card says the action will be refused, and nothing is sent even if you confirm. When more than one active endpoint uses the same hostname, the agent asks which agent ID you mean. For isolate, release, process list, and scan, it asks whenever more than one enrolled endpoint matches the hostname. A status of `unknown` means the endpoint has not reported its status yet.
 
-    These commands stay in the [response console](/solutions/security/endpoint-response-actions.md): `execute`, `kill-process`, `suspend-process`, `get-file`, `upload`, `runscript`, and `memory-dump`.
+    These commands stay in the [response console](/solutions/security/endpoint-response-actions.md): `execute`, `kill-process`, `suspend-process`, `get-file`, `upload`, `runscript`, `memory-dump`, and `cancel`.
 
     :::{dropdown} Assigned tools
     `endpoint-response-actions.list_endpoints`, `endpoint-response-actions.get_endpoint_status`, `endpoint-response-actions.get_response_action_status`, `endpoint-response-actions.isolate_host`, `endpoint-response-actions.unisolate_host`, `endpoint-response-actions.get_running_processes`, and `endpoint-response-actions.scan_host`.
@@ -454,7 +454,8 @@ $$$agent-builder-endpoint-response-actions-skill$$$ `endpoint-response-actions` 
     - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) deployed on the hosts you want to look up or act on.
     - **Read** access to the **Security** privilege, for every tool in this skill.
     - The matching [{{elastic-defend}} sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md): **Host Isolation** to isolate or release a host, **Process Operations** to list running processes, **Scan Operations** to scan a path, and **Read** access to **Response Actions History** to read an action's status and output.
-    - The same [subscription, agent version, and project requirements](/solutions/security/endpoint-response-actions.md) as the matching response console actions. In {{stack}}, isolate and action history require a Platinum license or higher, and listing processes or scanning a path requires an Enterprise license. Releasing a host is not limited by license tier. In {{serverless-short}}, isolate, process list, scan, and action history require the Endpoint Complete tier.
+    - The same [subscription and project requirements](/solutions/security/endpoint-response-actions.md) as the matching response console actions. In {{stack}}, {{agent-builder}} requires an Enterprise license, which covers every action in this skill. In {{serverless-short}}, isolate, process list, scan, and action history require the Endpoint Complete tier.
+    - Hosts that run an {{elastic-defend}} version that supports the action. The skill doesn't check the agent version before it sends an action, so an action sent to an unsupported version can fail or expire.
 
 ## Elasticsearch skills
 ```{applies_to}
