@@ -357,6 +357,33 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a partial-write bug so {{elastic-defend}} correctly sends data to a {{ls}} output when the kernel TCP send buffer is full, resolving premature connection failures.
 * Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
 
+## 9.4.9 [elastic-security-9.4.9-release-notes]
+
+### Features and enhancements [elastic-security-9.4.9-features-enhancements]
+
+* Improves the reliability of macOS system extension management in {{elastic-defend}}.
+* Updates {{elastic-defend}} to accept `advanced.utilization_limits.cpu` values from 1% to 100%. Values below 20, previously ignored with a policy warning, are now applied. The effective limit never drops below 20% of the host's CPUs, or 6.4 CPUs on hosts with more than 32 logical CPUs.
+* Updates {{elastic-defend}} to populate `process.ai_agent.name` and `process.ai_agent.is_descendant` on file, network, and DNS events, which attributes activity to AI agent tools and their descendant processes.
+
+### Fixes [elastic-security-9.4.9-fixes]
+
+* Fixes an issue where the `host.name` and `user.name` cells in the alerts table on the **Alerts** tab of a case showed "An error occurred" instead of the value [#297879]({{kib-pull}}297879).
+* Fixes Cribl integration routing to OpenTelemetry input package data streams. Previously, events were routed to a data stream without the `.otel` suffix, so the integration's index template and ingest pipeline did not apply [#296533]({{kib-pull}}296533).
+* Fixes an issue where clicking **Generate** on the Entity Analytics **Threat hunting leads** panel failed with a `No connector or inference endpoint found` error. Also fixes an issue where leads were sometimes generated but not shown the first time you generated them [#295785]({{kib-pull}}295785).
+* Fixes an issue where prebuilt rules were flagged as customized, and showed non-solvable `required_fields` upgrade conflicts, even though you hadn't edited the field. Also improves the performance of the rule edit form and the upgrade flyout for rules with long `required_fields` lists [#294946]({{kib-pull}}294946).
+* Fixes Osquery live query results and agent status so they display correctly when the query runs in a non-default {{kib}} space [#291767]({{kib-pull}}291767).
+* Fixes the detection rules bulk delete action (`POST /api/detection_engine/rules/_bulk_action`) returning HTTP 500 when a targeted rule was already deleted, for example by a concurrent request. These rules are now reported as skipped with a `RULE_NOT_FOUND` reason, and the response is HTTP 200 [#287003]({{kib-pull}}287003).
+* Fixes a startup crash on macOS that occurred when {{elastic-defend}} could not determine the OS version.
+* Improves how {{elastic-defend}} on Linux handles DNS events when packet data is incomplete or unavailable.
+* Fixes the `get-file` response action so {{elastic-defend}} no longer fails the action as host unreachable when a TLS handshake fails due to a broken connection.
+* Fixes an issue where {{elastic-defend}} could negotiate a different TLS cipher suite than configured, or reject a valid one, when `ssl.cipher_suites` used the Beats-style names `ECDHE-RSA-AES-128-CBC-SHA256`, `RSA-AES-128-CBC-SHA256`, or `ECDHE-RSA-AES-256-CBC-SHA`.
+* Updates the {{elastic-defend}} `get-file` response action to return a symbolic link on Linux and macOS as a regular file with the content and permissions of the file the link points to. On Windows, `get-file` no longer returns an empty file when another process has the file open for reading.
+* Fixes an issue where {{elastic-defend}} incorrectly enforced device control policies on non-removable devices.
+* Fixes file signature reporting on macOS, which reduces false positive alerts from {{elastic-defend}}.
+* Fixes the {{elastic-defend}} `get-file` response action so it no longer fails on a symbolic link whose target is a relative path, such as most shared-library links on Linux, and reports the link's real target path.
+* Improves {{elastic-defend}} memory threat protection on macOS 27.
+* Fixes caseless comparison in {{elastic-defend}} so it ignores case for non-ASCII letters, such as Cyrillic, Greek, or accented Latin.
+
 ## 9.4.8 [elastic-security-9.4.8-release-notes]
 
 ### Features and enhancements [elastic-security-9.4.8-features-enhancements]
