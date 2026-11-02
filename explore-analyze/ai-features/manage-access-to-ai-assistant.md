@@ -36,6 +36,7 @@ The **GenAI Settings** page has the following settings:
 
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
+- **Stream inference endpoint responses**: Turn off streaming if your LLM provider doesn't support it. For details, refer to [Turn off streaming for {{infer}} endpoint responses](#turn-off-inference-streaming).
 - **Agent Builder Traces**: Turn collection of Agent Builder conversation traces on or off, install a prebuilt dashboard, and set which content traces capture. For details, refer to [Collect Agent Builder traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
@@ -51,6 +52,7 @@ The **GenAI Settings** page has the following settings:
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
+- **Stream inference endpoint responses**: {applies_to}`stack: ga 9.6+` Turn off streaming if your LLM provider doesn't support it. For details, refer to [Turn off streaming for {{infer}} endpoint responses](#turn-off-inference-streaming).
 - **Agent Builder Traces**: {applies_to}`stack: ga 9.5` Turn collection of Agent Builder conversation traces on or off, install a prebuilt dashboard, and set which content traces capture. For details, refer to [Collect Agent Builder traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
@@ -106,6 +108,22 @@ If you open the dashboard right after turning on tracking and its breakdown pane
 :::
 
 For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
+
+### Turn off streaming for {{infer}} endpoint responses [turn-off-inference-streaming]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+By default, {{kib}} streams responses from {{infer}} endpoints, so it receives each response as the LLM generates it. If your LLM provider doesn't support streaming, you can turn streaming off so that {{kib}} waits for the full response instead.
+
+To turn off streaming for the current space:
+
+1. Go to **GenAI Settings**.
+2. Turn off **Stream inference endpoint responses**.
+3. Select **Save changes**.
+
+If an {{infer}} endpoint's service doesn't support non-streaming chat completion, {{kib}} keeps streaming from that endpoint even when the setting is off. The setting applies only to {{infer}} endpoints. It doesn't affect the OpenAI, Amazon Bedrock, or Google Gemini connectors.
 
 ### Give {{agent-builder}} access to Elastic documentation [give-agent-builder-access-to-elastic-documentation]
 ```{applies_to}
