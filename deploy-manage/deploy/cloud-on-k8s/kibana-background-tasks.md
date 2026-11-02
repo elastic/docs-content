@@ -160,7 +160,13 @@ status:
   version: 9.5.2
 ```
 
-`status.pools.backgroundTasks` is only present when `spec.backgroundTasks` is set. The aggregated health is `green` when all pools are green, `yellow` when the primary pool serves requests but a pool is not green, for example while the background tasks pods are starting, and `red` when the primary pool is not available.
+`status.pools.backgroundTasks` is only present when `spec.backgroundTasks` is set. 
+
+The aggregated health reflects the state of both pools:
+
+* `green`: All pools are healthy.
+* `yellow`: The primary pool is serving requests, but a pool is not green, for example while the background tasks pods are starting.
+* `red`: The primary pool is not available.
 
 ## Scale the pools [k8s-kibana-background-tasks-scaling]
 
