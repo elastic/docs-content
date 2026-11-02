@@ -13,6 +13,41 @@ products:
 
 {{alertzero}} is off by default, and you set it up separately in each space. First turn on its advanced setting, then let onboarding guide you through starting the {{az-workers}}.
 
+## Before you begin [alertzero-set-up-before]
+
+Every setup needs the same privileges and an AI model. What else you need depends on which {{az-workers}} you run.
+
+### Required for every setup [alertzero-set-up-before-all]
+
+You need all of the following:
+
+- **All** for **Advanced Settings**, to turn on the {{alertzero}} setting.
+- The `manage_security` cluster privilege, to start the {{az-workers}}. None of the {{serverless-short}} predefined roles includes it.
+- At least one AI model in the space, to start the {{az-workers}}. Refer to [Connect to an LLM](/solutions/security/ai/set-up-ai-features.md#set-up-ai-llm).
+
+If you don't have `manage_security`, ask an administrator who does to start the {{az-workers}}. Don't grant it only for {{alertzero}}, because it also lets anyone who has it manage users and roles for the whole cluster. For all {{alertzero}} privileges, refer to [](alertzero-privileges.md).
+
+% After elastic/docs-content#9115 merges, link the privileges reference to alertzero-privileges.md#alertzero-privileges-configure.
+
+### Required for specific {{az-workers}} [alertzero-set-up-before-workers]
+
+Each {{az-worker}} works from different data, and some need extra setup, such as [{{context-engine}}](/explore-analyze/ai-features/context-engine.md). Check what each {{az-worker}} you plan to run needs:
+
+| {{az-worker}} | Works from | Also needs |
+| --- | --- | --- |
+| [{{az-alert-triage}}](watches-and-workers.md#alertzero-triage-watch) | Alerts from your detection rules that are waiting to be triaged | The [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) turned on |
+| [{{az-attack-discovery}}](watches-and-workers.md#alertzero-triage-watch) | Alerts from your detection rules | The [**Attack Discovery Workflows**](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting turned on in the space, and {{context-engine}} |
+| [{{az-continuous-threat-hunt}}](watches-and-workers.md#alertzero-hunt-watch) | Events in the indices that the [`securitySolution:defaultIndex`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting lists. If you added index patterns to that setting, it can read only the ones that match the setting's default patterns, such as `logs-*`. | {{context-engine}}, outbound HTTPS access from {{kib}} to the [supported threat feeds](watches-and-workers.md#alertzero-hunt-watch), and a model selected for **Efficient models** and **Frontier models** in [**Feature Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) in the default space |
+| [{{az-rule-tuning}}](watches-and-workers.md#alertzero-detection-watch) | Alerts marked as false positives, by {{az-alert-triage}} or by your analysts | Nothing else |
+| [{{az-rule-coverage}}](watches-and-workers.md#alertzero-detection-watch) | Detection gaps that {{az-continuous-threat-hunt}} records | {{context-engine}} |
+| [{{az-endpoint-analysis}}](watches-and-workers.md#alertzero-forensics-watch) | Attacks that {{az-attack-discovery}} hands off | {{elastic-defend}} and {{context-engine}} |
+
+% After elastic/docs-content#9144 merges, link each Worker to its own anchor (for example, watches-and-workers.md#alertzero-alert-triage) and the threat feeds to watches-and-workers.md#alertzero-threat-feeds.
+
+{{az-rule-coverage}} and {{az-endpoint-analysis}} only work on what other {{az-workers}} produce, so turn those {{az-workers}} on too.
+
+If you haven't added data to {{elastic-sec}} yet, onboarding links to where you can add it. Refer to [](/solutions/security/get-started/ingest-data-to-elastic-security.md).
+
 ## Turn on {{alertzero}} for a space [alertzero-turn-on]
 
 1. In the space where you want {{alertzero}}, find **Advanced Settings** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -23,29 +58,17 @@ products:
 
 **{{alertzero}}**, **{{az-escalations-cap}}**, and **{{az-watches}}** appear in the {{elastic-sec}} navigation menu.
 
-## Decide which {{az-workers}} to run [alertzero-decide-workers]
-
-In onboarding, every {{az-worker}} starts out selected, and at least one has to stay selected. Some {{az-workers}} build on each other's results, and some need extra features or integrations. Before you decide, check what each {{az-worker}} needs and what depends on it. Refer to [](watches-and-workers.md).
-
-You can turn {{az-workers}} on or off later on their {{az-watch}} pages. Refer to [](configure-worker-settings.md).
-
-% After elastic/docs-content#9144 merges, link configure-worker-settings.md#configure-worker-settings-enabled.
-
 ## Start the {{az-workers}} [alertzero-turn-on-workers]
 
-{{az-workers}} need security data to analyze and at least one AI model to run. Onboarding links to where to add data, and you can't start the {{az-workers}} until the space has a model. To prepare ahead, refer to [](/solutions/security/get-started/ingest-data-to-elastic-security.md) and [Connect to an LLM](/solutions/security/ai/set-up-ai-features.md#set-up-ai-llm).
+1. In the navigation menu, select **{{alertzero}}**. The first time you open it in a space, onboarding starts.
+2. Follow the onboarding steps, and turn off any {{az-workers}} you decided not to run. All of them start out selected, and at least one has to stay selected. Onboarding flags any {{az-worker}} that's missing {{context-engine}}.
+3. Select **Enable and run**.
 
-Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) to pass work to each other. Onboarding flags each {{az-worker}} that's missing it. To check which {{az-workers}} need it, refer to [](watches-and-workers.md).
+The {{az-workers}} start their first run right away, and {{alertzero}} opens the **{{az-proposed-actions-cap}}** page. That's where their {{az-proposed-actions}} appear when they need your decision.
 
-:::{note}
-**Enable and run** turns on the {{az-workers}} you selected, so it needs **All** for **{{alertzero}}**, the `manage_security` cluster privilege, and the **Workflows** sub-feature privileges **Update** and **Update managed workflows**. Because `manage_security` also lets anyone who has it manage users and roles for the whole cluster, ask an administrator who already has it to start the {{az-workers}} instead of granting it only for {{alertzero}}. For details, refer to [](alertzero-privileges.md).
-:::
+To change which {{az-workers}} run later, refer to [](configure-worker-settings.md).
 
-% After elastic/docs-content#9115 merges, link the privileges reference in the note to alertzero-privileges.md#alertzero-privileges-configure.
-
-The first time you open {{alertzero}} in a space, onboarding walks you through starting the {{az-workers}}. To open it, select **{{alertzero}}** in the navigation menu. Follow the steps, turn off any {{az-workers}} you decided not to run, then select **Enable and run**.
-
-After you select **Enable and run**, {{alertzero}} opens its home page, the **{{az-proposed-actions-cap}}** page. The {{az-workers}} start their first run immediately, and their {{az-proposed-actions}} appear there when they need your decision.
+% After elastic/docs-content#9144 merges, link configure-worker-settings.md#configure-worker-settings-enabled.
 
 ## Next steps [alertzero-set-up-next]
 
