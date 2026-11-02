@@ -24,7 +24,7 @@ Check a {{az-worker}}'s reasoning before you decide on what it proposes. You can
 | Act on what a threat hunt found | [Act on a {{az-hunt-finding}}](act-on-hunt-finding.md) |
 | Review proposed rule changes and new rules | [Tune noisy rules and fill detection gaps](decide-detection-change.md) |
 | Ask follow-up questions about the evidence | Select **Open in chat** on the card |
-| Focus on one host, user, or service | Select it in **Impact** |
+| Focus on one host, user, or service | Select it in **Impacted entities** |
 | Hand off an {{az-investigation}} or coordinate a response | Assign it from its card, or [escalate it](escalate-investigation.md) and then [track the escalation](track-escalations.md) |
 | Dismiss an {{az-investigation}} and all its pending {{az-proposed-actions}} | Close the {{az-investigation}} from its card |
 | Audit recent decisions, including ones {{az-workers}} made on their own | Expand **Closed Actions**, which lists decisions from the last 72 hours. **Auto** marks the ones a {{az-worker}} approved without a person. |
