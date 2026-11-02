@@ -724,7 +724,8 @@ toc:
         children:
           - hidden: security/alertzero/set-up-alertzero.md
             children:
-              - hidden: security/alertzero/model-recommendations.md
+              - hidden: security/alertzero/requirements.md
+          - hidden: security/alertzero/review-first-proposed-action.md
           - hidden: security/alertzero/use-alertzero.md
             children:
               - hidden: security/alertzero/decide-proposed-action.md
