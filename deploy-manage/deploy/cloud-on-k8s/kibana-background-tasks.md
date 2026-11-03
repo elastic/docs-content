@@ -61,7 +61,7 @@ All other fields of the {{kib}} spec, such as `spec.config`, `spec.podTemplate`,
 
 Both pools share the same HTTP Service, so `spec.backgroundTasks` can repeat the base path of the primary pool, set with `server.basePath` and `server.rewriteBasePath`, but must not change it.
 
-When you enable background task isolation, ECK restarts your existing pods with the `ui` role and creates a new Deployment for background tasks in the same operation. Background task execution pauses briefly until the first background tasks pod is ready.
+When you enable background task isolation, ECK restarts your existing pods, restricting them to the `ui` role, and creates a new Deployment for background tasks in the same operation. Background task execution pauses briefly until the first background tasks pod is ready.
 
 To reverse the change, remove `spec.backgroundTasks` and ECK cleans up the extra Deployment automatically.
 
