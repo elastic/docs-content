@@ -87,7 +87,7 @@ To target a non-default {{kib}} space, include `/s/<space-id>` in the {{kib}} UR
 
 The [`kibana-context-engine` skill](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-context-engine) supplies the retrieval procedure and the Elastic CLI commands that Claude Code needs. The skill is included in the `elastic-kibana` plugin in the [Elastic agent skills repository](https://github.com/elastic/agent-skills).
 
-Add the repository as a Claude Code marketplace, then install the `elastic-kibana` plugin:
+Add the repository as a Claude Code marketplace, then install the `elastic-kibana` plugin. For more information about marketplaces and plugins, refer to [Install and manage plugins](https://code.claude.com/docs/en/discover-plugins) in the Claude Code documentation.
 
 ```bash
 claude plugin marketplace add https://github.com/elastic/agent-skills
@@ -142,7 +142,7 @@ Use the following table to resolve common setup and retrieval problems:
 
 | Symptom | Resolution |
 | --- | --- |
-| Claude Code does not load `kibana-context-engine`. | Confirm that the skill is installed in a location Claude Code discovers, then start a new session and run `/skills`. |
+| Claude Code does not load `kibana-context-engine`. | Confirm that the `elastic-kibana` plugin is installed and up to date, then start a new session and run `/skills`. |
 | `elastic` is not found. | Install the CLI globally and confirm that its executable is on the `PATH` available to Claude Code. |
 | `elastic kb context-engine` is not a recognized command. | Update the Elastic CLI to version 0.7.0 or later. |
 
