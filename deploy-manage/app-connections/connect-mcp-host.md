@@ -240,8 +240,8 @@ AgentCore Gateway connects to {{agent-builder}} through an outbound OAuth client
 
 Before you start, make sure you have:
 
-- An {{agent-builder}} OAuth client **with a client secret**.
-- An outbound OAuth client in AgentCore Identity that uses the client ID and client secret of your {{agent-builder}} OAuth client.
+- An {{agent-builder}} OAuth client [with a client secret](/deploy-manage/app-connections/create-oauth-client#optional-generate-a-client-secret).
+- [An outbound OAuth client](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/identity-add-oauth-client-custom.html) in AgentCore Identity that uses the client ID and client secret of your {{agent-builder}} OAuth client.
 
 To connect from AgentCore Gateway:
 
