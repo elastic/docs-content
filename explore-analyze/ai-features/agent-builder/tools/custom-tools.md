@@ -77,7 +77,7 @@ You can also create and manage tools programmatically. To learn more, refer to [
 
 ## Require confirmation before a tool runs
 ```{applies_to}
-stack: ga 9.6+
+stack: ga 9.5+
 serverless: ga
 ```
 

@@ -480,7 +480,7 @@ HITL prompts require an interactive conversation, so [sub-agent executions canno
 
 Some tools and skills pause for confirmation before they perform consequential actions. Elastic-built tools and skills decide for themselves when to ask.
 
-For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
 
 What the prompt shows depends on the tool:
 

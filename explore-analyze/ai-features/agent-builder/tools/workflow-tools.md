@@ -77,7 +77,7 @@ The Workflow tools have the following configuration settings:
   **Inputs**
   :   The parameters required by the workflow. These are automatically detected from the `inputs` section of the selected workflow's YAML definition. The agent tries to extract values for these inputs from the user's chat message.
   
-  **Require user confirmation** (Optional) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+  **Require user confirmation** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
   :   Controls whether the agent asks you to approve a tool call before it runs. Select **Never** to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. The default is **Never**.
   :   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action, including retries after a failed call.
   :   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
