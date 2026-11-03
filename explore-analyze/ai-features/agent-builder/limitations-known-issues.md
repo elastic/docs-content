@@ -86,7 +86,14 @@ Including frozen tier data doesn't extend tool timeouts. Queries over large amou
 
 ### A2A streaming not supported
 
-The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+```{applies_to}
+stack: preview =9.2, ga 9.3-9.5
+serverless: unavailable
+```
+
+The [A2A server](a2a-server.md) doesn't support streaming. Send `message/send` to talk to an agent.
+
+By default, `message/send` waits until the task finishes and returns the complete agent message. Set `configuration.blocking` to `false` to receive a task in the `working` state before the agent finishes.
 
 ### Human-in-the-loop prompts require an interactive conversation
 

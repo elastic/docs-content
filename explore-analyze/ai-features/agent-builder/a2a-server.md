@@ -20,7 +20,9 @@ products:
 The [**Agent-to-Agent (A2A) server**](https://github.com/a2aproject/A2A) enables external A2A clients to communicate with {{agent-builder}} agents.
 
 :::{note}
-Streaming operations are not currently supported. Refer to [Limitations and known issues](limitations-known-issues.md#a2a-streaming-not-supported) for more information.
+:applies_to: {"stack": "preview =9.2, ga 9.3-9.5", "serverless": "unavailable"}
+
+Streaming isn't supported. Refer to [Limitations and known issues](limitations-known-issues.md#a2a-streaming-not-supported).
 :::
 
 ## Retrieve agent metadata (GET)
@@ -38,6 +40,12 @@ Interact with agents following the A2A protocol specification:
 ```
 POST /api/agent_builder/a2a/{agentId}
 ```
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent card sets `capabilities.streaming` to `true`. Send `message/stream` to receive a server-sent event stream of text chunks and task status updates until the task finishes.
+
+`message/send` still returns a single response. By default it waits until the task finishes and returns the complete agent message. Set `configuration.blocking` to `false` to receive a task in the `working` state before the agent finishes.
+
+In [a2a-inspector](https://github.com/a2aproject/a2a-inspector), the **Stream** checkbox is selected when the agent card reports streaming.
 
 :::{important}
 Both A2A endpoints require API key authentication. Refer to [Create a read-only client key](api-keys.md#create-a-read-only-client-key) for a limited key example. For more information about the A2A protocol, refer to the [A2A protocol specification](https://a2aprotocol.ai/docs/guide/a2a-protocol-specification-python#protocol-flow-diagram).
