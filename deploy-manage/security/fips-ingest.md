@@ -39,6 +39,13 @@ FIPS compatible binaries are available for [download](https://www.elastic.co/dow
 The default configurations provided in the binaries are FIPS compatible. Be sure to check and understand the implications of changing default configurations.
 :::
 
+## How {{fleet}} handles integrations that aren't FIPS compatible [fips-fleet-integrations]
+
+To help you avoid using [integrations that aren't FIPS compatible](#ingest-limitations-integrations) with {{agent}} in FIPS mode, {{fleet}} warns you or blocks them:
+
+* {applies_to}`stack: ga 9.2+` {{fleet}} shows a warning when you add an integration that isn't FIPS compatible to an agent policy with one or more agents enrolled in FIPS mode. It also shows a warning when you enroll an agent in a policy that contains integrations that aren't FIPS compatible. These warnings appear whether or not {{kib}} runs in FIPS mode.
+* {applies_to}`stack: ga 9.6+` When {{kib}} runs in [FIPS mode](/deploy-manage/security/fips-kib.md#_enable_fips_mode), {{fleet}} hides integrations that aren't FIPS compatible from the **Integrations** catalog. If you try to install one anyway, for example through the API, the request fails. When only some of an integration's policy templates aren't FIPS compatible, the integration stays available and {{fleet}} shows only its FIPS compatible policy templates.
+
 ## Limitations [ingest-limitations-all]
 
 ### TLS [ingest-limitations-tls]
@@ -97,7 +104,7 @@ This also limits the available `sasl.mechanism` values for Kafka connections, in
 ### {{agent}} and {{fleet-server}} [ingest-limitations-agent]
 
 When you use {{agent}} and {{fleet-server}}, these limitations apply:
-* Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
+* Some Elastic integrations are not FIPS compatible, as they depend on functionality that is not supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
 * Agent upgrade artifact verification uses GPG signature checking, which is outside the validated FIPS module boundary.
 * Browser Synthetics monitors are not supported in FIPS mode.
 * {applies_to}`stack: ga 9.6+` Lightweight Synthetics monitors don't support NTLM authentication for HTTP monitors.
@@ -130,9 +137,9 @@ Running [{{agent}} configured as an OTel Collector](/reference/fleet/otel-agent.
 
 ::::
 
-### Elastic Integrations that are not FIPS compatible [ingest-limitations-integrations]
+### Elastic integrations that are not FIPS compatible [ingest-limitations-integrations]
 
-The following {{fleet}}-managed Elastic Integrations use cryptographic implementations outside Go's validated FIPS module boundary for core functionality. These integrations cannot be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
+The following {{fleet}}-managed Elastic integrations use cryptographic implementations outside Go's validated FIPS module boundary for core functionality. These integrations cannot be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. For how {{fleet}} warns about or blocks these integrations, refer to [How {{fleet}} handles integrations that aren't FIPS compatible](#fips-fleet-integrations).
 
 For limitations that apply when {{agent}} is configured as an OTel Collector, refer to [{{agent}} configured as an OTel Collector](#ingest-limitations-edot).
 
