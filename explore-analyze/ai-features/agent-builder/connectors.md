@@ -46,11 +46,10 @@ To register a new connector:
 2. Select **Create connector**.
 3. Select a connector type from the catalog.
 4. Provide the required configuration.
-5. Select **Save**.
+5. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` (Optional) If the form includes **Actions**, select **Custom** to limit which actions the connector can run. Refer to [Limit a connector's actions](#limit-a-connectors-actions).
+6. Select **Save**.
 
 The configured connector appears in the library.
-
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If the form includes **Actions**, you can leave **All** selected. To limit the connector, select **Custom**. Refer to [Limit a connector's actions](#limit-a-connectors-actions).
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use the connector, [assign it to the agent](#assign-connectors-to-an-agent).
 
@@ -63,17 +62,32 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-The create and edit form includes an **Actions** setting when it lists more than one action. Connector types with one action, and types that don't list actions on the form, don't show it.
+Connector types that define more than one action include an **Actions** setting on the create and edit form. Classic connector types, such as Email, Jira, and ServiceNow, don't show it.
 
-The setting controls which actions can run. {{kib}} rejects an action that isn't allowed wherever that connector runs, including agents, workflows, rules, and the [Run a connector API]({{kib-apis}}operation/operation-post-actions-connector-id-execute).
+The setting applies everywhere the connector runs, including agents, workflows, and the [Run a connector API]({{kib-apis}}operation/operation-post-actions-connector-id-execute). {{kib}} rejects calls to actions that aren't allowed. It has two options:
 
-**All** is the default. {{kib}} doesn't save an action list. Actions added to the connector type in later versions are available without another edit. Agents can run every action that isn't marked **Workflow only**. Workflows, rules, and the Run a connector API can run every action, including actions marked **Workflow only**.
+**All**
+:   The default. Every action is allowed, including actions added to the connector type in later versions.
 
-**Custom** lets you select the actions. When you switch from **All** to **Custom** on a connector with no saved action list, the form selects the actions badged **read**. Each action shows a scope badge: **read**, **write**, or **destroy**. Actions that agents can't call also show **Workflow only**. Select at least one action. If you select none, the form shows "Select at least one action, or enable All." Actions added to the connector type later stay unselected until you edit the connector and select them.
+**Custom**
+:   Only the actions you select are allowed. When you first switch to **Custom**, the form preselects the actions badged **read**. Actions added to the connector type later stay unselected until you edit the connector and select them. Select at least one action. Otherwise, the form shows "Select at least one action, or enable All."
 
-An action you leave unselected is rejected for every caller. An action marked **Workflow only** stays unavailable to agents even when you select it. A workflow, a rule, or the Run a connector API can still run that action if you select it, or if the connector uses **All**.
+Each action shows a scope badge: **read**, **write**, or **destroy**. Actions that agents can't call also show **Workflow only**. Agents can't run these actions even when they're allowed, but workflows and the Run a connector API can.
 
-Leaving a write or destroy action unselected blocks it for agents and for every other caller. Selecting it doesn't hide it from agents. Only an action marked **Workflow only** can stay available to workflows and rules while staying unavailable to agents.
+:::{image} images/agent-builder-connector-actions-custom.png
+:alt: Actions setting in Custom mode, with the read action selected and an action marked Workflow only left unselected
+:screenshot:
+:width: 500px
+:::
+
+To change which actions an existing connector allows:
+
+1. In the **Connectors library**, select the connector name.
+2. Under **Actions**, select **Custom**.
+3. Select the actions to allow.
+4. Select **Save**.
+
+The setting applies to every caller of the connector. To let workflows run a write or destroy action that agents can't, use a separate connector for workflows and don't [assign it to the agent](#assign-connectors-to-an-agent).
 
 ## Assign connectors to an agent [assign-connectors-to-an-agent]
 
