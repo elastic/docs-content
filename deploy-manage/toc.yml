@@ -234,6 +234,7 @@ toc:
                     children:
                       - file: deploy/cloud-on-k8s/k8s-kibana-es.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md
+                      - file: deploy/cloud-on-k8s/kibana-background-tasks.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/propagate-labels-annotations.md
                   - file: deploy/cloud-on-k8s/k8s-pause-orchestration.md
