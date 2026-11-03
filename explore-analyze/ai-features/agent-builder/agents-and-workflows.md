@@ -182,7 +182,7 @@ A workflow can add events, such as notes, and user messages to an {{agent-builde
 
 Use these steps:
 
-- [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create): Create a conversation and get its ID.
+- [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create): Create a conversation and get its ID. Set `template_id` to `investigation` or `escalation` to apply a built-in template. Refer to [Conversation templates](./chat.md#conversation-templates).
 - [`ai.conversation.add_event`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-event): Add an event, such as a note.
 - [`ai.conversation.add_user_message`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-user-message): Add a user message.
 

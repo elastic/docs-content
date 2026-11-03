@@ -190,6 +190,36 @@ Use the chat history panel to access previous conversations.
 :width: 450px
 :::
 
+### Conversation templates [conversation-templates]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Some conversations are created from a built-in template. The template defines the metadata stored on the conversation and what the **Chat info** flyout shows. You can't create or edit templates.
+
+{{kib}} includes two templates:
+
+- `investigation`, displayed as **Investigation**
+- `escalation`, displayed as **Escalation**
+
+Those display names and the flyout sections below are registered when `xpack.agenticInvestigations.enabled` is true. The **Agentic Investigations** feature requires an Enterprise license.
+
+{applies_to}`stack: preview =9.6` On Stack the setting defaults to true.
+
+{applies_to}`stack: preview 9.7+` On Stack the setting defaults to false unless project configuration turns it on.
+
+On Serverless the setting defaults to false unless project configuration turns it on. Escalation sections also require `xpack.agenticInvestigations.escalations.enabled`, which defaults to true. Observability Serverless sets that escalations setting to false, so the escalation flyout is not registered. A workflow can still create a conversation with either `template_id`.
+
+**Chat info** appears in the standalone conversation header when the conversation uses a template. It does not appear in sidebar mode. Select it to open the **Chat info** flyout. Anyone who can open the conversation can open **Chat info**. Both flyouts include **Copy link**, which copies a link to the conversation.
+
+An investigation flyout shows the title, status, severity, and assignees. With **Manage investigations**, you can change the status and severity. You can change assignees with the same privilege while the status is `open`. After the status is `closed`, assignees are read-only. The **Overview** tab can show subjects, **What's happened**, **Impact**, **Conclusion**, and **Proposed actions**. A section appears only when that information exists. When the flyout is opened from outside the chat, the footer includes **Open chat**. When escalations are enabled and your role includes **Manage escalations**, the footer also includes **Open an escalation**.
+
+An escalation flyout shows the title, status, and assignees. **What's happened** shows the summary and attachments when they exist. **Impact** appears when the escalation has impact data. **Linked investigations** appears when your role includes **View escalations**. **Manage escalations** includes that access. You can change assignees with **Manage escalations** while the status is `open`. Changing the status requires both **Manage escalations** and **Manage investigations**.
+
+The agent can update the template's metadata while it runs on a stored conversation. A workflow sets the starting values with [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create). For the fields each template accepts, refer to [Conversation template metadata](/explore-analyze/workflows/steps/ai-steps.md#conversation-template-metadata).
+
 ### Pin conversations
 ```{applies_to}
 stack: ga 9.6+

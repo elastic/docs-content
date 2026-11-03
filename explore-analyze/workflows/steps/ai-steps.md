@@ -304,7 +304,7 @@ All parameters go in the `with` block and use `snake_case`.
 | `conversation_id` | `with` | string (UUID) | No | ID for the new conversation. Must be a UUID. Generated if omitted. The step fails if a conversation with this ID already exists. |
 | `title` | `with` | string | No | Conversation title, up to 500 characters. Defaults to `New conversation`. |
 | `access_control` | `with` | object | No | Who can access the conversation. Defaults to private. Takes `access_mode` (`private` or `public`) and optional `entries` (up to 100). Each entry adds a member and has the shape `{ type: user, id: <user profile UID>, role: member }`. Entries are allowed only for private conversations. The step fails if you set `access_mode: public` with any entries. Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
-| `template_id` | `with` | string | No | ID of a conversation template to apply. Templates are defined by {{kib}} features, and you can't create your own. The template sets default metadata for the conversation. The step fails if the template doesn't exist. |
+| `template_id` | `with` | string | No | ID of a built-in conversation template. Use `investigation` or `escalation`. You can't create your own templates. The template sets default metadata and controls the [**Chat info** flyout](/explore-analyze/ai-features/agent-builder/chat.md#conversation-templates). The step fails if the template doesn't exist. For the keys you can set, refer to [Conversation template metadata](#conversation-template-metadata). |
 | `metadata` | `with` | object | No | Initial metadata values. Requires `template_id`, and each key must be defined by the template. Up to 100 keys. Each value can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each). |
 
 **Output shape:**
@@ -324,6 +324,42 @@ If you set `agent_id`, set the same agent in `agent-id` on any [`ai.agent`](#ai-
   with:
     title: "Checkout incident"
 ```
+
+To create an investigation and set its severity:
+
+```yaml
+- name: create_investigation
+  type: ai.conversation.create
+  with:
+    title: "Checkout incident"
+    template_id: investigation
+    metadata:
+      severity: high
+      description: "Checkout error rate increased after the last deploy."
+```
+
+### Conversation template metadata [conversation-template-metadata]
+
+Built-in templates define which metadata keys a conversation accepts. `metadata` on this step can set only the keys in this section. The step fails when a key isn't defined by the template. The agent can update these keys during a later run on a stored conversation.
+
+`investigation` and `escalation` share these fields:
+
+| Field | Required | Accepted values |
+|---|---|---|
+| `status` | No. Defaults to `open`. | `open` or `closed` |
+| `severity` | No | `low`, `medium`, `high`, or `critical` |
+| `assignees` | No | List of user profile UIDs |
+| `verdict` | No | Text, up to 10,000 characters. The outcome of the investigation or escalation. |
+| `summary` | No | Text, up to 10,000 characters. The summary of the investigation or escalation so far. |
+| `description` | No | Text, up to 10,000 characters. A short summary. |
+| `close_reason` | No | `false_positive`, `benign`, `resolved`, `duplicate`, or `other` |
+
+`investigation` also accepts `workflow_execution_ids`, a list of workflow execution IDs for runs that have worked on the investigation.
+
+`escalation` also accepts `linked_investigations`, a list of investigation IDs linked to the escalation.
+
+{applies_to}`stack: preview 9.7+` {applies_to}`serverless: preview`
+`investigation` also accepts `telemetry_target`. It is optional text, up to 64 characters. It must start with a lowercase letter and can contain lowercase letters, digits, underscores, and hyphens. After it is set, a later update can't change it.
 
 ## `ai.conversation.add_event` [ai-conversation-add-event]
 
