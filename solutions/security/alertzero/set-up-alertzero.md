@@ -49,7 +49,7 @@ Each {{az-worker}} analyzes different data, and some need extra setup, such as [
 | [{{az-rule-coverage}}](watches-and-workers.md#alertzero-detection-watch) | Detection gaps from {{az-continuous-threat-hunt}} | {{az-continuous-threat-hunt}} and {{context-engine}} |
 | [{{az-endpoint-analysis}}](watches-and-workers.md#alertzero-forensics-watch) | Attacks handed off by {{az-attack-discovery}} | {{az-attack-discovery}}, {{elastic-defend}}, and {{context-engine}} |
 
-% After elastic/docs-content#9144 merges, link each Worker to its own anchor in watches-and-workers.md: alertzero-alert-triage, alertzero-attack-discovery, alertzero-continuous-threat-hunt, alertzero-rule-tuning, alertzero-rule-coverage, and alertzero-endpoint-analysis. In the Continuous Threat Hunt row, keep Context Engine, and replace the threat feeds, models, and embedding endpoint requirements with a link to watches-and-workers.md#alertzero-threat-reports-requirements, which owns those details.
+% For docs writers: After elastic/docs-content#9144 merges, link each Worker to its own anchor in watches-and-workers.md: alertzero-alert-triage, alertzero-attack-discovery, alertzero-continuous-threat-hunt, alertzero-rule-tuning, alertzero-rule-coverage, and alertzero-endpoint-analysis. In the Continuous Threat Hunt row, keep Context Engine, and replace the threat feeds, models, and embedding endpoint requirements with a link to watches-and-workers.md#alertzero-threat-reports-requirements, which owns those details.
 
 ## Turn on {{alertzero}} for a space [alertzero-turn-on]
 
@@ -57,6 +57,7 @@ Each {{az-worker}} analyzes different data, and some need extra setup, such as [
 2. In the **Security Solution** section, turn on the **{{alertzero}}** setting (`securitySolution:enableAlertZero`).
 3. Select **Save changes**, then select **Reload page**.
 
+% For docs writers: After elastic/kibana#302289 adds this setting to the advanced settings reference, uncomment the following sentence.
 % For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
 
 **{{alertzero}}**, **{{az-escalations-cap}}**, and **{{az-watches}}** appear in the {{elastic-sec}} navigation menu.
@@ -93,7 +94,7 @@ Daybreak models are available only through the [Elastic {{infer-cap}} Service (E
 A Daybreak model in the **{{az-cyber-domain-models}}** tier replaces the other tiers for the {{az-alert-triage}}, {{az-attack-discovery}}, and {{az-continuous-threat-hunt}} {{az-workers}}. The one exception is {{esql}} queries. {{az-continuous-threat-hunt}} can't use a Daybreak model to write them, so it keeps using **{{az-frontier-models}}** for those queries.
 :::
 
-% Open question: Product guidance says that choosing cyber domain models means the other AlertZero model settings don't apply. In the Kibana source, a Daybreak model replaces the tiers only for Alert Triage, Attack Discovery, and Continuous Threat Hunt, and Hunt keeps Frontier models for ES|QL queries. Rule Coverage, Rule Tuning, and Endpoint Analysis keep their usual tiers. Does "one or the other" mean something else, or is the note above accurate?
+% For the AlertZero product team, open question: Product guidance says that choosing cyber domain models means the other AlertZero model settings don't apply. In the Kibana source, a Daybreak model replaces the tiers only for Alert Triage, Attack Discovery, and Continuous Threat Hunt, and Hunt keeps Frontier models for ES|QL queries. Rule Coverage, Rule Tuning, and Endpoint Analysis keep their usual tiers. Does "one or the other" mean something else, or is the preceding note accurate?
 
 ## Start the {{az-workers}} [alertzero-turn-on-workers]
 
@@ -105,7 +106,7 @@ The {{az-workers}} start their first run right away, and {{alertzero}} opens the
 
 To change which {{az-workers}} run after setup, refer to [](configure-worker-settings.md).
 
-% After elastic/docs-content#9144 merges, link configure-worker-settings.md#configure-worker-settings-enabled.
+% For docs writers: After elastic/docs-content#9144 merges, link configure-worker-settings.md#configure-worker-settings-enabled.
 
 ## Next steps [alertzero-set-up-next]
 
