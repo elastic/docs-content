@@ -32,7 +32,7 @@ To edit a project's settings, you must be granted the **Admin** or **Editor** [r
 
 Once ingested, your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. Data in this cache layer is considered **search-ready**.
 
-Together, these data storage layers form your project's **Search AI Lake**.
+Together, these data storage layers form your project's [Search AI Lake](https://www.elastic.co/cloud/serverless/search-ai-lake).
 
 The total volume of search-ready data is the sum of the following:
 
@@ -88,9 +88,9 @@ serverless:
 
 Use **Minimum Search VCUs** to set a lower bound on Search tier scaling for {{es-serverless}} projects, expressed in [virtual compute units (VCUs)](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml). When configured, the Search tier does not scale below this value, even during idle periods. This reserves a guaranteed level of Search capacity in advance, so your project remains responsive before an anticipated increase in traffic.
 
-Search capacity can still scale above the configured minimum under higher load, and will scale back down toward it only once that additional capacity is no longer required. Lowering the minimum does not immediately reduce capacity that is still in use.
+Search capacity can still scale above the configured minimum under higher load, and will scale back down toward it only once that additional capacity is no longer required.
 
-You can set **Minimum Search VCUs** to any whole number between 2 and 4,992.
+You can set **Minimum Search VCUs** to any whole number between 2 and 4,992. Lowering the minimum does not immediately reduce capacity that is still in use.
 During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
 
 If you set a high **Minimum Search VCUs** value, consider also increasing [Search Power](#elasticsearch-manage-project-search-power-settings) to get the most out of the capacity you reserve.
