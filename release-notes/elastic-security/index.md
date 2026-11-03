@@ -31,16 +31,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.6.0-features-enhancements]
 
-#### Detection rules and exceptions [elastic-security-9.6.0-features-detection-rules-and-exceptions]
-* Adds MITRE ATLAS support to detection rules, using MITRE ATLAS `2026.09`. The **MITRE ATT&CK® coverage** page gets a framework tab, the rule creation form groups threat mappings by framework, and rule details, the rule upgrade view, and the alert details flyout show ATLAS mappings [#298185]({{kib-pull}}298185), [#296562]({{kib-pull}}296562), [#302501]({{kib-pull}}302501).
-* Speeds up importing new detection rules by creating them in bulk instead of one at a time [#275695]({{kib-pull}}275695).
-% Also documented in the 9.5.0 release notes.
-* Makes detection rule changes history generally available. A **History** entry in the rule actions menu opens a dedicated changes-history page with an infinite-scroll timeline of recorded rule changes and a JSON diff between revisions [#278052]({{kib-pull}}278052), [#269617]({{kib-pull}}269617), [#270091]({{kib-pull}}270091).
-% Also documented in the 9.5.0 release notes.
-* Updates MITRE ATT&CK mappings to `v19.1` [#278547]({{kib-pull}}278547).
-* Speeds up importing detection rules with overwrite enabled by updating existing rules in bulk instead of one at a time [#291560]({{kib-pull}}291560).
-* Adds an **Update to Elastic version** bulk action to the Rule Updates table that force-upgrades prebuilt rules to the exact Elastic version, discarding any customizations on the updated rules [#290589]({{kib-pull}}290589).
-* Adds a **Reason for closing** option to the rule exception and Endpoint exception flyouts, so alerts that you close while adding or editing an exception record why they were closed. The default is **Close without reason** [#289074]({{kib-pull}}289074).
+#### AI Assistant and Agent Builder [elastic-security-9.6.0-features-ai-assistant-and-agent-builder]
+* Adds the ability for Agent Builder to find case templates by name, so you can create a case from a template without knowing its ID. Requires the Cases templates feature [#287744]({{kib-pull}}287744).
+* Adds an {{elastic-defend}} policy management skill to {{agent-builder}} that explains policy settings, lists and compares {{elastic-defend}} policies, reports rollout status, assesses proposed changes, and applies a policy change after you confirm it [#291909]({{kib-pull}}291909).
+* Enables the endpoint response actions skill in {{agent-builder}} by default. The skill can isolate and release hosts, run malware scans, and list running processes, checks your response action privileges, and asks you to confirm each action before it runs [#299402]({{kib-pull}}299402).
 
 #### Alerts and investigations [elastic-security-9.6.0-features-alerts-and-investigations]
 * Adds AlertZero (technical preview), an agentic layer in {{elastic-sec}} that runs investigations and returns proposals for an analyst to review. It includes an Alert Triage worker that classifies batches of detection alerts, writes an investigation with an impact summary, and closes false positives only after a proposal is approved. You can limit the worker by minimum severity, building block alerts, and rule tags. AlertZero is off by default. Turn it on for each space with the **AlertZero** advanced setting (`securitySolution:enableAlertZero`). When it's on, the {{elastic-sec}} navigation menu lists AlertZero, **Escalations**, **Agents**, and **Watches** first [#292581]({{kib-pull}}292581), [#299416]({{kib-pull}}299416), [#300830]({{kib-pull}}300830), [#301972]({{kib-pull}}301972).
@@ -64,17 +58,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Integrates Attack Discovery 2.0 workflow-based generation with alerting-framework scheduling and registers {{agent-builder}} skills for editing and troubleshooting workflows [#260816]({{kib-pull}}260816), [#260811]({{kib-pull}}260811).
 * Adds the public Attacks API for searching attacks and updating their status, tags, and assignees, and publishes it in the {{kib}} API documentation [#277822]({{kib-pull}}277822).
 
-#### AI Assistant and Agent Builder [elastic-security-9.6.0-features-ai-assistant-and-agent-builder]
-* Adds the ability for Agent Builder to find case templates by name, so you can create a case from a template without knowing its ID. Requires the Cases templates feature [#287744]({{kib-pull}}287744).
-* Adds an {{elastic-defend}} policy management skill to {{agent-builder}} that explains policy settings, lists and compares {{elastic-defend}} policies, reports rollout status, assesses proposed changes, and applies a policy change after you confirm it [#291909]({{kib-pull}}291909).
-* Enables the endpoint response actions skill in {{agent-builder}} by default. The skill can isolate and release hosts, run malware scans, and list running processes, checks your response action privileges, and asks you to confirm each action before it runs [#299402]({{kib-pull}}299402).
-
-#### Workflows [elastic-security-9.6.0-features-workflows]
-* Adds {{elastic-sec}} workflow triggers (technical preview) that start a workflow when the status, tags, or assignees of an alert or attack change, or when a note is created or updated. Tag and assignee triggers report only the values that changed [#285106]({{kib-pull}}285106), [#287781]({{kib-pull}}287781).
-* Adds `security.createRuleException` and `security.createExceptionListItem` workflow steps that add an exception to a specific detection rule or to an existing exception list. The workflow owner needs the privilege to manage rule exceptions [#277802]({{kib-pull}}277802).
-* Adds the `security.createNote`, `security.getNotes`, `security.updateNote`, and `security.deleteNote` workflow steps for managing notes on alerts, attacks, and events. Timeline notes aren't supported [#284719]({{kib-pull}}284719), [#284720]({{kib-pull}}284720), [#284721]({{kib-pull}}284721), [#284722]({{kib-pull}}284722).
-* Adds a **Use a prompt instead of an agent** setting to the **Alert analysis workflow** settings (technical preview). When it's on, the workflow classifies each batch of alerts with a single prompt to the AI connector instead of running an AI agent, which is faster and uses fewer tokens. The setting is off by default [#296878]({{kib-pull}}296878).
-
 #### Automatic Import [elastic-security-9.6.0-features-automatic-import]
 * Adds recommended models for Automatic Import on the **Model settings** page and makes Elastic Inference Service chat models available to select for Automatic Import [#299781]({{kib-pull}}299781).
 
@@ -87,27 +70,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds the ability to attach attacks to cases from the **Attacks** page and the attack details flyout. When you remove an attack from a case, you can also remove the alerts it added, unless another attached attack still includes them [#294314]({{kib-pull}}294314), [#294317]({{kib-pull}}294317), [#299571]({{kib-pull}}299571).
 * Adds the ability to remove alerts and events from a case on the case's **Attachments** tab, for a single item or for selected rows [#299266]({{kib-pull}}299266), [#298950]({{kib-pull}}298950).
 
-#### Entity Analytics [elastic-security-9.6.0-features-entity-analytics]
-* Adds tools to the Entity Analytics {{agent-builder}} skill that show an entity's relationship graph, risk score history, and relationship history in the conversation. When the skill can't perform an action itself, such as clearing all entity data, it links you to the right {{elastic-sec}} page [#277335]({{kib-pull}}277335), [#283229]({{kib-pull}}283229), [#283742]({{kib-pull}}283742), [#277099]({{kib-pull}}277099).
-* Enables risk scoring to create missing entity store entities for alerts whose entities pass the entity type's creation rules, so their risk scores are applied instead of dropped [#283250]({{kib-pull}}283250).
-* Updates the entity store so only `event.kind: asset` events create high-confidence identity provider (IdP) user entities. IAM lifecycle events, such as a Linux `useradd`, no longer create IdP users, and host-local accounts with `user.name` and `host.id` become local user entities [#287084]({{kib-pull}}287084).
-* Adds default entity resolution rules that link entities sharing a Windows security identifier (SID), Microsoft Entra ID GUID, CrowdStrike SID, or Microsoft 365 user principal name (UPN), and makes email-based matching case-insensitive [#287890]({{kib-pull}}287890).
-* Adds CrowdStrike Falcon Data Replicator (FDR) user logon events as a source for entity store relationships, so users and the hosts they access or communicate with are linked from CrowdStrike data [#288655]({{kib-pull}}288655).
-* Adds the `PUT /api/security/entity_store/history_snapshot/disable` and `PUT /api/security/entity_store/history_snapshot/enable` APIs to stop or resume the daily entity store history snapshots in a space. When you disable snapshots, you can also delete the existing history snapshot indices [#290925]({{kib-pull}}290925).
-* Updates automated entity resolution in the entity store to link local Windows and CrowdStrike user entities to the matching Active Directory user by security identifier (SID), and to link local user entities on different hosts that share a domain SID. The CrowdStrike SID and Microsoft 365 UPN resolution rules are now off by default [#291469]({{kib-pull}}291469).
-* Adds an entity resolution skill to {{agent-builder}} in {{elastic-sec}}, so you can inspect an entity's resolution group, link and unlink entities, and list, enable, or disable entity resolution rules from the chat [#293089]({{kib-pull}}293089).
-* Adds {{agent-builder}} tools for managing rule-based data sources on Entity Analytics watchlists. You can add, update, remove, and list watchlist data sources from the chat and preview the matching entities or documents before you confirm a change. CSV uploads still require the watchlist UI [#293994]({{kib-pull}}293994).
-* Adds SailPoint Identity Security Cloud as a source for manager relationships in the entity store, so SailPoint managers are linked to their direct reports [#295263]({{kib-pull}}295263).
-* Updates the entity store so AWS CloudTrail users and IAM users and roles from Cloud Asset Inventory resolve to the same user entity, identified by the IAM ARN. CloudTrail activity then updates the matching inventory entities, and graph view actors show entity details [#296129]({{kib-pull}}296129).
-* Adds a **Generate AI brief** button to the Entity Analytics page that opens {{agent-builder}} with a short brief of the current view, including what needs attention, the period's counts, a recommended next step, and up to three entities to investigate first. The button appears when {{agent-builder}} is available to you [#297677]({{kib-pull}}297677).
-* Adds an **Add integrations** button to the Entity Analytics empty state that opens the user and entity behavior analytics (UEBA) integrations in a new tab [#298032]({{kib-pull}}298032).
-
-#### Osquery [elastic-security-9.6.0-features-osquery]
-* Adds a **Date & time** schedule option to Osquery packs, so scheduled queries can run at set times (for example, every Saturday at 9am) with an optional stop date and splay time, in addition to interval-based schedules [#279154]({{kib-pull}}279154).
-* Updates the Osquery packs and saved queries actions menus to show **View pack** or **View query** instead of **Edit pack** or **Edit query** when the item opens as a read-only page, for example when you lack write privileges or open a prebuilt saved query [#288575]({{kib-pull}}288575).
-
-#### General [elastic-security-9.6.0-features-general]
-* Updates the {{elastic-sec}} **Overview** page with a sticky header that has a back button to the **Dashboards** page, and moves the {{data-source}} picker and search bar into the page [#297995]({{kib-pull}}297995).
+#### Detection rules and exceptions [elastic-security-9.6.0-features-detection-rules-and-exceptions]
+* Adds MITRE ATLAS support to detection rules, using MITRE ATLAS `2026.09`. The **MITRE ATT&CK® coverage** page gets a framework tab, the rule creation form groups threat mappings by framework, and rule details, the rule upgrade view, and the alert details flyout show ATLAS mappings [#298185]({{kib-pull}}298185), [#296562]({{kib-pull}}296562), [#302501]({{kib-pull}}302501).
+* Speeds up importing new detection rules by creating them in bulk instead of one at a time [#275695]({{kib-pull}}275695).
+% Also documented in the 9.5.0 release notes.
+* Makes detection rule changes history generally available. A **History** entry in the rule actions menu opens a dedicated changes-history page with an infinite-scroll timeline of recorded rule changes and a JSON diff between revisions [#278052]({{kib-pull}}278052), [#269617]({{kib-pull}}269617), [#270091]({{kib-pull}}270091).
+% Also documented in the 9.5.0 release notes.
+* Updates MITRE ATT&CK mappings to `v19.1` [#278547]({{kib-pull}}278547).
+* Speeds up importing detection rules with overwrite enabled by updating existing rules in bulk instead of one at a time [#291560]({{kib-pull}}291560).
+* Adds an **Update to Elastic version** bulk action to the Rule Updates table that force-upgrades prebuilt rules to the exact Elastic version, discarding any customizations on the updated rules [#290589]({{kib-pull}}290589).
+* Adds a **Reason for closing** option to the rule exception and Endpoint exception flyouts, so alerts that you close while adding or editing an exception record why they were closed. The default is **Close without reason** [#289074]({{kib-pull}}289074).
 
 #### {{elastic-defend}} [elastic-security-9.6.0-features-elastic-defend]
 * Shows a `Creating action` message in the response console while a response action is being created, before it moves to pending [#276523]({{kib-pull}}276523).
@@ -140,38 +112,49 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Reduces {{elastic-defend}} CPU usage on Windows during video calls and other activity that generates many thread pool events.
 * Enables collection of file header bytes (`file.Ext.header_bytes`) and entropy (`file.Ext.entropy`) by default in {{elastic-defend}} on Linux, for files on ext2, ext3, ext4, XFS, Btrfs, tmpfs, VFAT, and ZFS filesystems.
 * Increases the default maximum file size that {{elastic-defend}} scans for malware to 150 MiB, up from 75 MiB. The `advanced.malware.max_file_size_bytes` setting continues to accept values from 1 MiB to 1 GiB.
+
+#### Entity Analytics [elastic-security-9.6.0-features-entity-analytics]
+* Adds tools to the Entity Analytics {{agent-builder}} skill that show an entity's relationship graph, risk score history, and relationship history in the conversation. When the skill can't perform an action itself, such as clearing all entity data, it links you to the right {{elastic-sec}} page [#277335]({{kib-pull}}277335), [#283229]({{kib-pull}}283229), [#283742]({{kib-pull}}283742), [#277099]({{kib-pull}}277099).
+* Enables risk scoring to create missing entity store entities for alerts whose entities pass the entity type's creation rules, so their risk scores are applied instead of dropped [#283250]({{kib-pull}}283250).
+* Updates the entity store so only `event.kind: asset` events create high-confidence identity provider (IdP) user entities. IAM lifecycle events, such as a Linux `useradd`, no longer create IdP users, and host-local accounts with `user.name` and `host.id` become local user entities [#287084]({{kib-pull}}287084).
+* Adds default entity resolution rules that link entities sharing a Windows security identifier (SID), Microsoft Entra ID GUID, CrowdStrike SID, or Microsoft 365 user principal name (UPN), and makes email-based matching case-insensitive [#287890]({{kib-pull}}287890).
+* Adds CrowdStrike Falcon Data Replicator (FDR) user logon events as a source for entity store relationships, so users and the hosts they access or communicate with are linked from CrowdStrike data [#288655]({{kib-pull}}288655).
+* Adds the `PUT /api/security/entity_store/history_snapshot/disable` and `PUT /api/security/entity_store/history_snapshot/enable` APIs to stop or resume the daily entity store history snapshots in a space. When you disable snapshots, you can also delete the existing history snapshot indices [#290925]({{kib-pull}}290925).
+* Updates automated entity resolution in the entity store to link local Windows and CrowdStrike user entities to the matching Active Directory user by security identifier (SID), and to link local user entities on different hosts that share a domain SID. The CrowdStrike SID and Microsoft 365 UPN resolution rules are now off by default [#291469]({{kib-pull}}291469).
+* Adds an entity resolution skill to {{agent-builder}} in {{elastic-sec}}, so you can inspect an entity's resolution group, link and unlink entities, and list, enable, or disable entity resolution rules from the chat [#293089]({{kib-pull}}293089).
+* Adds {{agent-builder}} tools for managing rule-based data sources on Entity Analytics watchlists. You can add, update, remove, and list watchlist data sources from the chat and preview the matching entities or documents before you confirm a change. CSV uploads still require the watchlist UI [#293994]({{kib-pull}}293994).
+* Adds SailPoint Identity Security Cloud as a source for manager relationships in the entity store, so SailPoint managers are linked to their direct reports [#295263]({{kib-pull}}295263).
+* Updates the entity store so AWS CloudTrail users and IAM users and roles from Cloud Asset Inventory resolve to the same user entity, identified by the IAM ARN. CloudTrail activity then updates the matching inventory entities, and graph view actors show entity details [#296129]({{kib-pull}}296129).
+* Adds a **Generate AI brief** button to the Entity Analytics page that opens {{agent-builder}} with a short brief of the current view, including what needs attention, the period's counts, a recommended next step, and up to three entities to investigate first. The button appears when {{agent-builder}} is available to you [#297677]({{kib-pull}}297677).
+* Adds an **Add integrations** button to the Entity Analytics empty state that opens the user and entity behavior analytics (UEBA) integrations in a new tab [#298032]({{kib-pull}}298032).
+
+#### General [elastic-security-9.6.0-features-general]
+* Updates the {{elastic-sec}} **Overview** page with a sticky header that has a back button to the **Dashboards** page, and moves the {{data-source}} picker and search bar into the page [#297995]({{kib-pull}}297995).
+
+#### Osquery [elastic-security-9.6.0-features-osquery]
+* Adds a **Date & time** schedule option to Osquery packs, so scheduled queries can run at set times (for example, every Saturday at 9am) with an optional stop date and splay time, in addition to interval-based schedules [#279154]({{kib-pull}}279154).
+* Updates the Osquery packs and saved queries actions menus to show **View pack** or **View query** instead of **Edit pack** or **Edit query** when the item opens as a read-only page, for example when you lack write privileges or open a prebuilt saved query [#288575]({{kib-pull}}288575).
+
+#### Workflows [elastic-security-9.6.0-features-workflows]
+* Adds {{elastic-sec}} workflow triggers (technical preview) that start a workflow when the status, tags, or assignees of an alert or attack change, or when a note is created or updated. Tag and assignee triggers report only the values that changed [#285106]({{kib-pull}}285106), [#287781]({{kib-pull}}287781).
+* Adds `security.createRuleException` and `security.createExceptionListItem` workflow steps that add an exception to a specific detection rule or to an existing exception list. The workflow owner needs the privilege to manage rule exceptions [#277802]({{kib-pull}}277802).
+* Adds the `security.createNote`, `security.getNotes`, `security.updateNote`, and `security.deleteNote` workflow steps for managing notes on alerts, attacks, and events. Timeline notes aren't supported [#284719]({{kib-pull}}284719), [#284720]({{kib-pull}}284720), [#284721]({{kib-pull}}284721), [#284722]({{kib-pull}}284722).
+* Adds a **Use a prompt instead of an agent** setting to the **Alert analysis workflow** settings (technical preview). When it's on, the workflow classifies each batch of alerts with a single prompt to the AI connector instead of running an AI agent, which is faster and uses fewer tokens. The setting is off by default [#296878]({{kib-pull}}296878).
 % Held back: setting not exposed in Kibana 9.6 (elastic/kibana#286399 still open).
 % * Adds the `advanced.alerts.reputation_requests_transparency` advanced policy setting, which logs the PII-filtered data that {{elastic-defend}} sends to the Elastic reputation service. Valid values are `info` and `debug`. {{elastic-defend}} also logs each sample collection request at the `info` level.
 
 ### Fixes [elastic-security-9.6.0-fixes]
 
-#### Detection rules and exceptions [elastic-security-9.6.0-fixes-detection-rules-and-exceptions]
-% Also documented in the 9.5.0 release notes.
-* Fixes an issue where the `concurrent_searches` and `items_per_search` API fields for `threat_match` (Indicator Match) rules were reset to their defaults when the rule was saved through the UI [#276823]({{kib-pull}}276823).
-* Fixes rule preview so it no longer runs Osquery or {{elastic-defend}} response actions when the previewed rule matches events [#278393]({{kib-pull}}278393).
-* Fixes a privilege bypass that allowed users with detection rule privileges to attach {{elastic-defend}} or Osquery response actions through the generic Alerting API without the required Endpoint or Osquery privileges [#280430]({{kib-pull}}280430).
-* Improves the bulk edit toast shown when detection rules are skipped, so it points you to the bulk update dialog for rules that use {{data-sources}} [#280928]({{kib-pull}}280928).
-* Fixes missing audit events when bulk editing rules. Attaching or detaching shared exception lists to detection rules via the **Manage rules** screen now emits per-rule audit write events in the {{kib}} audit log [#281075]({{kib-pull}}281075).
-* Fixes a privilege bypass that allowed users with detection rule management privileges to change a rule's exception lists, custom highlighted fields, or investigation guide through the generic Alerting API without the corresponding sub-feature privileges [#281745]({{kib-pull}}281745).
-* Fixes detection rules failing when they page through more than 100 events and the rule's timestamp field, such as the timestamp override, is mapped as `date_nanos` [#281974]({{kib-pull}}281974).
-* Fixes an issue where the detection rule `PATCH` API silently reset `max_signals` to `100` when the field was omitted from the request [#286518]({{kib-pull}}286518).
-* Fixes the detection rules bulk delete action (`POST /api/detection_engine/rules/_bulk_action`) returning HTTP 500 when a targeted rule was already deleted, for example by a concurrent request. These rules are now reported as skipped with a `RULE_NOT_FOUND` reason, and the response is HTTP 200 [#287003]({{kib-pull}}287003).
-* Fixes detection rules so they retry with a smaller page size instead of failing when an event search response is too large [#287916]({{kib-pull}}287916).
-* Fixes the detection rule `PATCH` API so it applies type-specific fields (such as `new_terms_fields`) even when `type` is omitted from the request, instead of silently ignoring them [#288917]({{kib-pull}}288917).
-* Fixes New Terms rule executions failing with `The content length (...) is bigger than the maximum allowed string (...)` when the documents fetched for new terms exceed `elasticsearch.maxResponseSize`. The rule now retries with smaller batches of terms and reports a warning instead of failing [#290058]({{kib-pull}}290058).
-* Fixes an issue where the Rule details **Alerts** tab could show no results, and throw a `tableById is undefined` error in the console, when the alerts table had not been initialized yet (typical on first visit or in a private window) [#290076]({{kib-pull}}290076).
-* Reduces the time it takes to bulk import, update, or enable detection rules by skipping the wait for {{es}} to refresh after creating each rule's API key [#290306]({{kib-pull}}290306).
-* Fixes detection rules that failed with a generic "expected to find aggregations on search result" error when the events search returned zero shards, for example because the rule owner lacks `read` privileges on the source indices. These rules now report an actionable warning that explains the cause [#290924]({{kib-pull}}290924).
-* Fixes an issue where detection rule failures caused by an invalid IP field query (such as a wildcard or literal value against an `ip` field) were classified as framework errors, which caused them to count against SLO dashboards [#291256]({{kib-pull}}291256).
-* Fixes blank change history entries when importing detection rules with overwrite enabled by skipping rules that haven't changed. A new `rules_summary` field has been added in the API response to surface this behavior. For example, re-importing a file of 1000 rules where only one rule changed now updates only that rule, with counts under `rules_summary` appearing as `{ "created":  0, "updated": 1, "skipped": 999, "failed": 0 }` [#293948]({{kib-pull}}293948).
-% Also documented in the 9.5.0 release notes.
-* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
-% Also documented in the 9.5.0 release notes.
-* Fixes a validation error when resolving a `required_fields` conflict during a prebuilt rule upgrade [#278125]({{kib-pull}}278125).
-* Allows bulk upgrading non-customized prebuilt rules whose rule type changed in the target version (such as `query` to `eql`), instead of blocking the upgrade as a non-solvable conflict [#288450]({{kib-pull}}288450).
-* Fixes an issue where prebuilt rules were flagged as customized, and showed non-solvable `required_fields` upgrade conflicts, even though you hadn't edited the field. Also improves the performance of the rule edit form and the upgrade flyout for rules with long `required_fields` lists [#294946]({{kib-pull}}294946).
-* Fixes an issue where detection rule exception items that use **IP range** value lists with more than 200 dash-notation entries were dropped during rule execution [#285178]({{kib-pull}}285178).
-* Fixes rule exception items being deleted immediately from the actions menu with no warning. {{kib}} now shows a confirmation dialog before it deletes the exception item [#286807]({{kib-pull}}286807).
+#### AI Assistant and Agent Builder [elastic-security-9.6.0-fixes-ai-assistant-and-agent-builder]
+* Keeps the Agent Builder `security.alerts` tool scoped to the current {{kib}} space [#276488]({{kib-pull}}276488).
+* Fixes an issue where the OpenAI **Other** connector incorrectly re-enabled **Enable PKI Authentication** after saving with the toggle turned off [#282843]({{kib-pull}}282843).
+* Fixes an issue that allowed index Knowledge Base entries to be created as globally readable without the privilege to manage global entries by sending an empty `users` list [#283195]({{kib-pull}}283195).
+* Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
+* Fixes an issue where Agent Builder couldn't update template fields on a case and used legacy custom fields instead. Requires the Cases templates feature [#287638]({{kib-pull}}287638).
+* Fixes the {{agent-builder}} detection rule creation tool so it reports the actual reason rule creation failed, such as a privilege error, instead of a generic error message [#293439]({{kib-pull}}293439).
+* Fixes an issue where long text in table cells in the Security AI Assistant was cut off or caused the whole conversation to scroll horizontally [#293924]({{kib-pull}}293924).
+* Fixes an issue where opening the AI agent chat from a dashboard in {{elastic-sec}} didn't attach that dashboard to the conversation [#297732]({{kib-pull}}297732).
+* Fixes the Entity Analytics skill in {{agent-builder}} so the agent directs you to the Entity Analytics UI to turn Entity Analytics on or off, clear entity data, or change risk scoring settings, instead of performing those actions in the chat [#301628]({{kib-pull}}301628).
 
 #### Alerts and investigations [elastic-security-9.6.0-fixes-alerts-and-investigations]
 * Fixes the count label in Security donut charts so it's vertically centered [#286900]({{kib-pull}}286900).
@@ -214,28 +197,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes Attack Discovery runs that failed or dropped alerts when the Attack Discovery skill retrieved fewer than 10 alerts, and skips the skill when no open alerts are available to avoid unnecessary model calls [#302303]({{kib-pull}}302303).
 * Fixes Attack Discovery so generation stops with a clear error when a provider content filter refuses the model's response, instead of retrying up to 10 times and reporting `Maximum generation attempts (10) reached` [#302304]({{kib-pull}}302304).
 
-#### AI Assistant and Agent Builder [elastic-security-9.6.0-fixes-ai-assistant-and-agent-builder]
-* Keeps the Agent Builder `security.alerts` tool scoped to the current {{kib}} space [#276488]({{kib-pull}}276488).
-* Fixes an issue where the OpenAI **Other** connector incorrectly re-enabled **Enable PKI Authentication** after saving with the toggle turned off [#282843]({{kib-pull}}282843).
-* Fixes an issue that allowed index Knowledge Base entries to be created as globally readable without the privilege to manage global entries by sending an empty `users` list [#283195]({{kib-pull}}283195).
-* Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
-* Fixes an issue where Agent Builder couldn't update template fields on a case and used legacy custom fields instead. Requires the Cases templates feature [#287638]({{kib-pull}}287638).
-* Fixes the {{agent-builder}} detection rule creation tool so it reports the actual reason rule creation failed, such as a privilege error, instead of a generic error message [#293439]({{kib-pull}}293439).
-* Fixes an issue where long text in table cells in the Security AI Assistant was cut off or caused the whole conversation to scroll horizontally [#293924]({{kib-pull}}293924).
-* Fixes an issue where opening the AI agent chat from a dashboard in {{elastic-sec}} didn't attach that dashboard to the conversation [#297732]({{kib-pull}}297732).
-* Fixes the Entity Analytics skill in {{agent-builder}} so the agent directs you to the Entity Analytics UI to turn Entity Analytics on or off, clear entity data, or change risk scoring settings, instead of performing those actions in the chat [#301628]({{kib-pull}}301628).
-
-#### Workflows [elastic-security-9.6.0-fixes-workflows]
-* Fixes custom workflow steps so {{kib}} API requests are space-prefixed and target the workflow's space instead of the default space [#280986]({{kib-pull}}280986).
-* Fixes the alert analysis workflow model selector so it lists external and built-in inference endpoints from the {{agent-builder}} catalog, not only Actions connectors [#282075]({{kib-pull}}282075).
-* Fixes the alert analysis workflow so notes are written in the same space as the alert, instead of always in the default space [#287438]({{kib-pull}}287438).
-* Fixes the alert analysis workflow settings page so it loads without a Workflows privilege, instead of staying on a loading spinner [#287708]({{kib-pull}}287708).
-* Fixes the Alert Analysis workflow so it finds related alerts after the Security alerts index rolls over. Previously, the lookup failed when the source alert was stored in an older backing index [#290661]({{kib-pull}}290661).
-* Disables the Security Alert Analysis workflow by default for new spaces. Enable it from the Alert Analysis Workflow settings page [#291240]({{kib-pull}}291240).
-* Fixes **Run workflow** after **Select all** in the Security alerts table so it runs on every matching alert instead of only the loaded page. Selections are limited to 500 documents, and the action is disabled with a tooltip when the selection is larger [#292151]({{kib-pull}}292151).
-* Fixes detection rules created or enabled by a workflow so they use their own {{es}} API key instead of the workflow's, which previously caused the rule to stop running once the workflow's API key was revoked [#292911]({{kib-pull}}292911).
-* Fixes the Alert Analysis workflow so the {{agent-builder}} conversation it creates is linked from each alert's verdict note and can be opened by the analyst who started the run [#302452]({{kib-pull}}302452).
-
 #### Automatic Import [elastic-security-9.6.0-fixes-automatic-import]
 * Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
 
@@ -260,64 +221,38 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where the Cases API accepted Security events as attachments on closed cases. Attaching an event to a closed case now returns an error, which matches the existing behavior for alerts [#291173]({{kib-pull}}291173).
 * Fixes the **Create case** button in the **Add to case** selector so it's disabled for users who can add attachments to cases but can't create cases. These users can still add attachments to existing cases [#292761]({{kib-pull}}292761).
 
-#### Entity Analytics [elastic-security-9.6.0-fixes-entity-analytics]
-* Fixes an issue where generating threat hunting leads failed when the number of candidate entities was very large [#275970]({{kib-pull}}275970).
-% Also documented in the 9.5.0 release notes.
-* Fixes an issue where uninstalling the entity store could delete entity store indices and data streams while other engines were still running; they are now kept while any engine is present [#276697]({{kib-pull}}276697).
-% Also documented in the 9.5.0 release notes.
-* Fixes unreachable last pages in grouped tables with more than 10,000 groups by capping pagination at the 10,000-group limit and revealing pages progressively with a **Load more** control [#277322]({{kib-pull}}277322).
-% Also documented in the 9.5.0 release notes.
-* Fixes an issue where the prebuilt Privileged Users watchlist was only installed in the default space; it is now installed in custom spaces as well [#277645]({{kib-pull}}277645).
-* Fixes **Inspect** on the risk score table in {{agent-builder}} entity previews, which showed `Couldn't render this attachment` or became disabled after you closed the entity details flyout [#278949]({{kib-pull}}278949).
-* Fixes links in {{agent-builder}} entity previews that appeared to do nothing when the entity details flyout was already open. The preview now closes before opening the Entity Analytics page or flyout [#279312]({{kib-pull}}279312).
-* Fixes {{elastic-sec}} sending failed entity store install requests when you open it without the privileges to install the entity store, and updates the Entity Analytics enablement toggle and missing-privileges callouts to check the privileges that install and stop actually require [#280251]({{kib-pull}}280251).
-* Fixes an issue where entity store tasks kept running after their {{kib}} space was deleted [#281514]({{kib-pull}}281514).
-* Fixes risk scoring runs failing when {{es}} briefly times out while the risk score transform is being scheduled. These requests are now retried [#284791]({{kib-pull}}284791).
-* Fixes risk scoring timing out in large environments by storing each alert's entity identifier in the new `kibana.alert.entity.id` alert field when the alert is created [#285223]({{kib-pull}}285223).
-* Fixes an issue where the entity summary in the entity details flyout failed to persist when the entity metadata data stream was missing [#288199]({{kib-pull}}288199).
-* Fixes {{kib}} global search showing two identical **Entity analytics** results by renaming the settings page result to **Entity analytics settings** [#292306]({{kib-pull}}292306).
-* Fixes an issue where clicking **Generate** on the Entity Analytics **Threat hunting leads** panel failed with a `No connector or inference endpoint found` error. Also fixes an issue where leads were sometimes generated but not shown the first time you generated them [#295785]({{kib-pull}}295785).
-* Fixes the entity store so users with the {{elastic-sec}} `All` privilege can turn built-in entity resolution rules on or off, and so those settings take effect when a non-superuser set up the entity store. Turning these rules on or off now requires the Entity Analytics manage privilege, which the {{elastic-sec}} `All` privilege grants [#298009]({{kib-pull}}298009).
-
 #### Cloud Security [elastic-security-9.6.0-fixes-cloud-security]
 * Fixes the graph visualization in the alert and event details flyouts intermittently failing to load with a `null_pointer_exception` error [#285138]({{kib-pull}}285138).
 * Fixes the graph visualization failing to load with a `null_pointer_exception` error when entities are pinned [#285139]({{kib-pull}}285139).
 * Fixes the **Evaluated** count on the Cloud Security Posture **Benchmarks** page so it shows the exact number of evaluated assets instead of stopping at 500 [#286909]({{kib-pull}}286909).
 
-#### Threat intelligence [elastic-security-9.6.0-fixes-threat-intelligence]
-* Fixes an issue where the Threat Intelligence **Indicators** page could stay stuck on a loading spinner when the request for installed integrations was cancelled before it finished [#295486]({{kib-pull}}295486).
-
-#### Osquery [elastic-security-9.6.0-fixes-osquery]
+#### Detection rules and exceptions [elastic-security-9.6.0-fixes-detection-rules-and-exceptions]
 % Also documented in the 9.5.0 release notes.
-* Fixes Osquery agent selection, policy grouping, and live query dispatch for agents whose `policy_id` carries a version suffix (such as `<id>#9.5`) [#277283]({{kib-pull}}277283).
+* Fixes an issue where the `concurrent_searches` and `items_per_search` API fields for `threat_match` (Indicator Match) rules were reset to their defaults when the rule was saved through the UI [#276823]({{kib-pull}}276823).
+* Fixes rule preview so it no longer runs Osquery or {{elastic-defend}} response actions when the previewed rule matches events [#278393]({{kib-pull}}278393).
+* Fixes a privilege bypass that allowed users with detection rule privileges to attach {{elastic-defend}} or Osquery response actions through the generic Alerting API without the required Endpoint or Osquery privileges [#280430]({{kib-pull}}280430).
+* Improves the bulk edit toast shown when detection rules are skipped, so it points you to the bulk update dialog for rules that use {{data-sources}} [#280928]({{kib-pull}}280928).
+* Fixes missing audit events when bulk editing rules. Attaching or detaching shared exception lists to detection rules via the **Manage rules** screen now emits per-rule audit write events in the {{kib}} audit log [#281075]({{kib-pull}}281075).
+* Fixes a privilege bypass that allowed users with detection rule management privileges to change a rule's exception lists, custom highlighted fields, or investigation guide through the generic Alerting API without the corresponding sub-feature privileges [#281745]({{kib-pull}}281745).
+* Fixes detection rules failing when they page through more than 100 events and the rule's timestamp field, such as the timestamp override, is mapped as `date_nanos` [#281974]({{kib-pull}}281974).
+* Fixes an issue where the detection rule `PATCH` API silently reset `max_signals` to `100` when the field was omitted from the request [#286518]({{kib-pull}}286518).
+* Fixes the detection rules bulk delete action (`POST /api/detection_engine/rules/_bulk_action`) returning HTTP 500 when a targeted rule was already deleted, for example by a concurrent request. These rules are now reported as skipped with a `RULE_NOT_FOUND` reason, and the response is HTTP 200 [#287003]({{kib-pull}}287003).
+* Fixes detection rules so they retry with a smaller page size instead of failing when an event search response is too large [#287916]({{kib-pull}}287916).
+* Fixes the detection rule `PATCH` API so it applies type-specific fields (such as `new_terms_fields`) even when `type` is omitted from the request, instead of silently ignoring them [#288917]({{kib-pull}}288917).
+* Fixes New Terms rule executions failing with `The content length (...) is bigger than the maximum allowed string (...)` when the documents fetched for new terms exceed `elasticsearch.maxResponseSize`. The rule now retries with smaller batches of terms and reports a warning instead of failing [#290058]({{kib-pull}}290058).
+* Fixes an issue where the Rule details **Alerts** tab could show no results, and throw a `tableById is undefined` error in the console, when the alerts table had not been initialized yet (typical on first visit or in a private window) [#290076]({{kib-pull}}290076).
+* Reduces the time it takes to bulk import, update, or enable detection rules by skipping the wait for {{es}} to refresh after creating each rule's API key [#290306]({{kib-pull}}290306).
+* Fixes detection rules that failed with a generic "expected to find aggregations on search result" error when the events search returned zero shards, for example because the rule owner lacks `read` privileges on the source indices. These rules now report an actionable warning that explains the cause [#290924]({{kib-pull}}290924).
+* Fixes an issue where detection rule failures caused by an invalid IP field query (such as a wildcard or literal value against an `ip` field) were classified as framework errors, which caused them to count against SLO dashboards [#291256]({{kib-pull}}291256).
+* Fixes blank change history entries when importing detection rules with overwrite enabled by skipping rules that haven't changed. A new `rules_summary` field has been added in the API response to surface this behavior. For example, re-importing a file of 1000 rules where only one rule changed now updates only that rule, with counts under `rules_summary` appearing as `{ "created":  0, "updated": 1, "skipped": 999, "failed": 0 }` [#293948]({{kib-pull}}293948).
 % Also documented in the 9.5.0 release notes.
-* Fixes intermittent duplicate execution of scheduled Osquery packs by deduplicating concurrent {{fleet}} package-policy writes for package policies shared across multiple agent policies [#278159]({{kib-pull}}278159).
+* Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
 % Also documented in the 9.5.0 release notes.
-* Fixes an error that prevented adding the Osquery Manager integration in custom {{kib}} spaces when a global Osquery pack existed in the Default space [#278498]({{kib-pull}}278498).
-* Fixes the **Created at** column on the Osquery **History** page so scheduled queries show the planned execution time instead of when agents last responded [#283609]({{kib-pull}}283609).
-* Fixes an issue where duplicated prebuilt Osquery packs ignored the pack-level schedule and ran queries on a stale hourly interval copied from the original pack [#283635]({{kib-pull}}283635).
-* Fixes Osquery **Open in Discover** and **Open in Lens** showing no results for live query results [#284754]({{kib-pull}}284754).
-* Fixes the Osquery agent picker so it no longer fails when many {{agent}} policies are present [#284900]({{kib-pull}}284900).
-* Fixes scheduled Osquery executions on the **History** and execution details pages so agent counts show distinct agents, not response documents [#286879]({{kib-pull}}286879).
-* Fixes scheduled Osquery packs that recorded every run as **Execution #0**. Affected packs are repaired on upgrade. Existing packs jump from `0` to a non-zero execution count on their first run after upgrade [#287023]({{kib-pull}}287023).
-* Fixes an authorization issue where users with only the Osquery **Run Saved queries** privilege could run arbitrary SQL by referencing a saved query or pack [#287882]({{kib-pull}}287882).
-* Fixes Osquery live query results and agent status so they display correctly when the query runs in a non-default {{kib}} space [#291767]({{kib-pull}}291767).
-* Fixes Osquery packs so a query's schedule override follows the pack's schedule mode. Previously, after you switched the pack between **Interval** and **Date & time**, the query flyout showed fields for the wrong mode and saving discarded the override [#293810]({{kib-pull}}293810).
-* Fixes an issue where Osquery live query results and statuses were empty in non-default spaces for queries that ran before {{kib}} began recording the space on results [#294515]({{kib-pull}}294515).
-* Fixes the Osquery **Minimum osquery version** field for packs and pack queries so it lists versions from the installed Osquery Manager integration instead of a list that stopped at 5.0.1. You can also type a version, which is validated, and the packs API now rejects invalid version values [#295450]({{kib-pull}}295450).
-* Fixes Osquery agent search so it matches both `host.name` and `host.hostname` regardless of case, and host names copied from alerts find their agents [#298193]({{kib-pull}}298193).
-* Fixes Osquery so the live queries API and detection rule response actions require read access to a pack or saved query before running it [#299125]({{kib-pull}}299125).
-
-#### General [elastic-security-9.6.0-fixes-general]
-% Also documented in the 9.5.0 release notes.
-* Fixes the **Alert processing analytics** donut on the Value Report, which failed to load when many alerts were linked to attack discoveries in the report window [#277220]({{kib-pull}}277220).
-* Fixes an issue where {{elastic-sec}} pages could stay stuck on a loading spinner when more than one data view selection was requested at the same time [#293909]({{kib-pull}}293909).
-% Also documented in the 9.5.0 release notes.
-* Fixes a crash in index fields formatting when a field or index is named after an `Object.prototype` property such as `constructor`, `toString`, or `__proto__` [#277851]({{kib-pull}}277851).
-* Fixes legacy hash-based dashboard links in markdown panels, such as those on Osquery prebuilt dashboards, so they open the target dashboard [#283697]({{kib-pull}}283697).
-* Fixes the Cribl integration so invalid `dataId` values in route entries are rejected when you create or update the integration policy, and the save fails if the routing ingest pipeline can't be written [#284863]({{kib-pull}}284863).
-* Fixes Cribl integration routing to OpenTelemetry input package data streams. Previously, events were routed to a data stream without the `.otel` suffix, so the integration's index template and ingest pipeline did not apply [#296533]({{kib-pull}}296533).
-* Fixes an issue where maximizing a panel on a dashboard opened in {{elastic-sec}} showed a blank view [#297340]({{kib-pull}}297340).
+* Fixes a validation error when resolving a `required_fields` conflict during a prebuilt rule upgrade [#278125]({{kib-pull}}278125).
+* Allows bulk upgrading non-customized prebuilt rules whose rule type changed in the target version (such as `query` to `eql`), instead of blocking the upgrade as a non-solvable conflict [#288450]({{kib-pull}}288450).
+* Fixes an issue where prebuilt rules were flagged as customized, and showed non-solvable `required_fields` upgrade conflicts, even though you hadn't edited the field. Also improves the performance of the rule edit form and the upgrade flyout for rules with long `required_fields` lists [#294946]({{kib-pull}}294946).
+* Fixes an issue where detection rule exception items that use **IP range** value lists with more than 200 dash-notation entries were dropped during rule execution [#285178]({{kib-pull}}285178).
+* Fixes rule exception items being deleted immediately from the actions menu with no warning. {{kib}} now shows a confirmation dialog before it deletes the exception item [#286807]({{kib-pull}}286807).
 
 #### {{elastic-defend}} [elastic-security-9.6.0-fixes-elastic-defend]
 % Also documented in the 9.5.0 release notes.
@@ -378,6 +313,71 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Reduces temporary memory usage when {{elastic-defend}} scans files on Linux and macOS.
 * Fixes {{elastic-defend}} on Linux so policy responses report a failure when the selected event collection source can't start, instead of reporting event collection as successful.
 * Fixes the {{elastic-defend}} status page that opens from Windows Security so it no longer shows stray content at the end of the page.
+
+#### Entity Analytics [elastic-security-9.6.0-fixes-entity-analytics]
+* Fixes an issue where generating threat hunting leads failed when the number of candidate entities was very large [#275970]({{kib-pull}}275970).
+% Also documented in the 9.5.0 release notes.
+* Fixes an issue where uninstalling the entity store could delete entity store indices and data streams while other engines were still running; they are now kept while any engine is present [#276697]({{kib-pull}}276697).
+% Also documented in the 9.5.0 release notes.
+* Fixes unreachable last pages in grouped tables with more than 10,000 groups by capping pagination at the 10,000-group limit and revealing pages progressively with a **Load more** control [#277322]({{kib-pull}}277322).
+% Also documented in the 9.5.0 release notes.
+* Fixes an issue where the prebuilt Privileged Users watchlist was only installed in the default space; it is now installed in custom spaces as well [#277645]({{kib-pull}}277645).
+* Fixes **Inspect** on the risk score table in {{agent-builder}} entity previews, which showed `Couldn't render this attachment` or became disabled after you closed the entity details flyout [#278949]({{kib-pull}}278949).
+* Fixes links in {{agent-builder}} entity previews that appeared to do nothing when the entity details flyout was already open. The preview now closes before opening the Entity Analytics page or flyout [#279312]({{kib-pull}}279312).
+* Fixes {{elastic-sec}} sending failed entity store install requests when you open it without the privileges to install the entity store, and updates the Entity Analytics enablement toggle and missing-privileges callouts to check the privileges that install and stop actually require [#280251]({{kib-pull}}280251).
+* Fixes an issue where entity store tasks kept running after their {{kib}} space was deleted [#281514]({{kib-pull}}281514).
+* Fixes risk scoring runs failing when {{es}} briefly times out while the risk score transform is being scheduled. These requests are now retried [#284791]({{kib-pull}}284791).
+* Fixes risk scoring timing out in large environments by storing each alert's entity identifier in the new `kibana.alert.entity.id` alert field when the alert is created [#285223]({{kib-pull}}285223).
+* Fixes an issue where the entity summary in the entity details flyout failed to persist when the entity metadata data stream was missing [#288199]({{kib-pull}}288199).
+* Fixes {{kib}} global search showing two identical **Entity analytics** results by renaming the settings page result to **Entity analytics settings** [#292306]({{kib-pull}}292306).
+* Fixes an issue where clicking **Generate** on the Entity Analytics **Threat hunting leads** panel failed with a `No connector or inference endpoint found` error. Also fixes an issue where leads were sometimes generated but not shown the first time you generated them [#295785]({{kib-pull}}295785).
+* Fixes the entity store so users with the {{elastic-sec}} `All` privilege can turn built-in entity resolution rules on or off, and so those settings take effect when a non-superuser set up the entity store. Turning these rules on or off now requires the Entity Analytics manage privilege, which the {{elastic-sec}} `All` privilege grants [#298009]({{kib-pull}}298009).
+
+#### General [elastic-security-9.6.0-fixes-general]
+% Also documented in the 9.5.0 release notes.
+* Fixes the **Alert processing analytics** donut on the Value Report, which failed to load when many alerts were linked to attack discoveries in the report window [#277220]({{kib-pull}}277220).
+* Fixes an issue where {{elastic-sec}} pages could stay stuck on a loading spinner when more than one data view selection was requested at the same time [#293909]({{kib-pull}}293909).
+% Also documented in the 9.5.0 release notes.
+* Fixes a crash in index fields formatting when a field or index is named after an `Object.prototype` property such as `constructor`, `toString`, or `__proto__` [#277851]({{kib-pull}}277851).
+* Fixes legacy hash-based dashboard links in markdown panels, such as those on Osquery prebuilt dashboards, so they open the target dashboard [#283697]({{kib-pull}}283697).
+* Fixes the Cribl integration so invalid `dataId` values in route entries are rejected when you create or update the integration policy, and the save fails if the routing ingest pipeline can't be written [#284863]({{kib-pull}}284863).
+* Fixes Cribl integration routing to OpenTelemetry input package data streams. Previously, events were routed to a data stream without the `.otel` suffix, so the integration's index template and ingest pipeline did not apply [#296533]({{kib-pull}}296533).
+* Fixes an issue where maximizing a panel on a dashboard opened in {{elastic-sec}} showed a blank view [#297340]({{kib-pull}}297340).
+
+#### Osquery [elastic-security-9.6.0-fixes-osquery]
+% Also documented in the 9.5.0 release notes.
+* Fixes Osquery agent selection, policy grouping, and live query dispatch for agents whose `policy_id` carries a version suffix (such as `<id>#9.5`) [#277283]({{kib-pull}}277283).
+% Also documented in the 9.5.0 release notes.
+* Fixes intermittent duplicate execution of scheduled Osquery packs by deduplicating concurrent {{fleet}} package-policy writes for package policies shared across multiple agent policies [#278159]({{kib-pull}}278159).
+% Also documented in the 9.5.0 release notes.
+* Fixes an error that prevented adding the Osquery Manager integration in custom {{kib}} spaces when a global Osquery pack existed in the Default space [#278498]({{kib-pull}}278498).
+* Fixes the **Created at** column on the Osquery **History** page so scheduled queries show the planned execution time instead of when agents last responded [#283609]({{kib-pull}}283609).
+* Fixes an issue where duplicated prebuilt Osquery packs ignored the pack-level schedule and ran queries on a stale hourly interval copied from the original pack [#283635]({{kib-pull}}283635).
+* Fixes Osquery **Open in Discover** and **Open in Lens** showing no results for live query results [#284754]({{kib-pull}}284754).
+* Fixes the Osquery agent picker so it no longer fails when many {{agent}} policies are present [#284900]({{kib-pull}}284900).
+* Fixes scheduled Osquery executions on the **History** and execution details pages so agent counts show distinct agents, not response documents [#286879]({{kib-pull}}286879).
+* Fixes scheduled Osquery packs that recorded every run as **Execution #0**. Affected packs are repaired on upgrade. Existing packs jump from `0` to a non-zero execution count on their first run after upgrade [#287023]({{kib-pull}}287023).
+* Fixes an authorization issue where users with only the Osquery **Run Saved queries** privilege could run arbitrary SQL by referencing a saved query or pack [#287882]({{kib-pull}}287882).
+* Fixes Osquery live query results and agent status so they display correctly when the query runs in a non-default {{kib}} space [#291767]({{kib-pull}}291767).
+* Fixes Osquery packs so a query's schedule override follows the pack's schedule mode. Previously, after you switched the pack between **Interval** and **Date & time**, the query flyout showed fields for the wrong mode and saving discarded the override [#293810]({{kib-pull}}293810).
+* Fixes an issue where Osquery live query results and statuses were empty in non-default spaces for queries that ran before {{kib}} began recording the space on results [#294515]({{kib-pull}}294515).
+* Fixes the Osquery **Minimum osquery version** field for packs and pack queries so it lists versions from the installed Osquery Manager integration instead of a list that stopped at 5.0.1. You can also type a version, which is validated, and the packs API now rejects invalid version values [#295450]({{kib-pull}}295450).
+* Fixes Osquery agent search so it matches both `host.name` and `host.hostname` regardless of case, and host names copied from alerts find their agents [#298193]({{kib-pull}}298193).
+* Fixes Osquery so the live queries API and detection rule response actions require read access to a pack or saved query before running it [#299125]({{kib-pull}}299125).
+
+#### Threat intelligence [elastic-security-9.6.0-fixes-threat-intelligence]
+* Fixes an issue where the Threat Intelligence **Indicators** page could stay stuck on a loading spinner when the request for installed integrations was cancelled before it finished [#295486]({{kib-pull}}295486).
+
+#### Workflows [elastic-security-9.6.0-fixes-workflows]
+* Fixes custom workflow steps so {{kib}} API requests are space-prefixed and target the workflow's space instead of the default space [#280986]({{kib-pull}}280986).
+* Fixes the alert analysis workflow model selector so it lists external and built-in inference endpoints from the {{agent-builder}} catalog, not only Actions connectors [#282075]({{kib-pull}}282075).
+* Fixes the alert analysis workflow so notes are written in the same space as the alert, instead of always in the default space [#287438]({{kib-pull}}287438).
+* Fixes the alert analysis workflow settings page so it loads without a Workflows privilege, instead of staying on a loading spinner [#287708]({{kib-pull}}287708).
+* Fixes the Alert Analysis workflow so it finds related alerts after the Security alerts index rolls over. Previously, the lookup failed when the source alert was stored in an older backing index [#290661]({{kib-pull}}290661).
+* Disables the Security Alert Analysis workflow by default for new spaces. Enable it from the Alert Analysis Workflow settings page [#291240]({{kib-pull}}291240).
+* Fixes **Run workflow** after **Select all** in the Security alerts table so it runs on every matching alert instead of only the loaded page. Selections are limited to 500 documents, and the action is disabled with a tooltip when the selection is larger [#292151]({{kib-pull}}292151).
+* Fixes detection rules created or enabled by a workflow so they use their own {{es}} API key instead of the workflow's, which previously caused the rule to stop running once the workflow's API key was revoked [#292911]({{kib-pull}}292911).
+* Fixes the Alert Analysis workflow so the {{agent-builder}} conversation it creates is linked from each alert's verdict note and can be opened by the analyst who started the run [#302452]({{kib-pull}}302452).
 
 ## 9.5.6 [elastic-security-9.5.6-release-notes]
 
