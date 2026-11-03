@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_import_dashboards.html
-description: Import a Kibana dashboard exported from another space, instance, deployment, or project, using the Dashboards API or the Saved Objects API.
+description: Import a dashboard exported from another Kibana space, instance, deployment, or project, using the Dashboards app, the Dashboards API, or Saved Objects.
 type: how-to
 applies_to:
   stack: ga
@@ -12,16 +12,50 @@ products:
 
 # Import a dashboard [_import_dashboards]
 
-Import a dashboard that was exported from another {{product.kibana}} space, instance, deployment, or project. How you import it depends on the format it was exported in. Refer to [](sharing.md#export-dashboards) for the export options, then use the matching import method:
+If you exported a dashboard from another {{product.kibana}} space, instance, deployment, or project, you can import it into your own in one of these ways:
 
-- {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` **JSON**: import it with the [Dashboards API](create-dashboards-programmatically.md). This is the recommended method.
-- **NDJSON**: import it with the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects), or from the **Saved Objects** page.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **From the Dashboards app**: Import a JSON file from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` **With the Dashboards API**: Send a dashboard JSON definition to the [Dashboards API](create-dashboards-programmatically.md). Get the definition from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md).
+- **From Saved Objects**: Import an NDJSON file from a previous [saved objects export](../find-and-organize/saved-objects.md#saved-objects-export). Use the **Saved Objects** page or the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects).
+
+The JSON methods are recommended because they rely on the [Dashboards API](create-dashboards-programmatically.md).
 
 ::::::{tab-set}
 
-:::::{tab-item} JSON (Dashboards API)
+:::::{tab-item} Dashboards app (JSON)
 
-{applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga` Recreate the dashboard by sending its JSON definition to the [Dashboards API](create-dashboards-programmatically.md). This is the recommended import method.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Recreate a dashboard from its JSON file without writing an API request. {{kib}} checks the file as soon as you select it, so you can see what it removes and what the dashboard depends on before you import.
+
+**Prerequisites**
+
+- A dashboard JSON file of 1 MB or less, from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md).
+- **All** privilege for the **Dashboard** feature in {{product.kibana}}. Without it, **Import dashboard** doesn't appear.
+
+**Import the file**
+
+1. Go to **Dashboards**.
+2. From the application menu, select **Import dashboard**.
+3. In the **Import dashboard** flyout, select your file under **Select a JSON file**. {{kib}} checks the file right away.
+4. Review any messages in the flyout. If {{kib}} shows an error, select a different file. If it shows a warning, review it before you continue.
+5. Select **Import**.
+
+{{kib}} creates a new dashboard in the current space, closes the flyout, shows a confirmation message, and refreshes the list of dashboards so the new dashboard appears. It never updates an existing dashboard, so importing the same file again creates another dashboard.
+
+**Messages after you select a file**
+
+| Message | What it means | What to do |
+|---|---|---|
+| The selected file is too large. The maximum size is 1 MB. | The file is larger than 1 MB. **Import** stays unavailable. | Select a smaller file. |
+| The selected file does not contain valid JSON. | The file isn't valid JSON. **Import** stays unavailable. | Select a different file. |
+| The file could not be imported. | {{kib}} can't validate the file, for example because it isn't a full dashboard definition. **Import** stays unavailable. | Select a different file. Make sure the file comes from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md). |
+| Unsupported properties were removed. | The file includes panel types or properties that the [Dashboards API](create-dashboards-programmatically.md) doesn't support. {{kib}} leaves them out of the imported dashboard. **Import** stays available. | Select **Show details** to see what {{kib}} removed. |
+| Review import warnings. | The file references related items, such as data views, tags, or library visualizations. {{kib}} imports only the dashboard. This warning also lists any removed properties. **Import** stays available. | Select **Show details** to see each item's type and ID. Make sure these items exist in the space or cluster where you import. |
+
+:::::
+
+:::::{tab-item} Dashboards API (JSON)
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` Recreate the dashboard by sending its JSON definition to the [Dashboards API](create-dashboards-programmatically.md).
 
 **Prerequisites**
 
@@ -29,19 +63,19 @@ Import a dashboard that was exported from another {{product.kibana}} space, inst
 - **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 - A way to call the API, such as {{kib}} Dev Tools Console or an API key.
 
-Send the JSON to the Dashboards API in the target space, instance, deployment, or project. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the target space before sending it. The API creates the dashboard, or updates it in place when you send it with an existing ID.
+Send the JSON to the [Dashboards API](create-dashboards-programmatically.md) in the target instance, deployment, or project. The API creates the dashboard in the space identified by the request path, or updates it in place when you send it with an existing ID. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the space in the request path before sending it.
 
 For the imported dashboard to work, the objects it references, such as data views and library visualizations, must also exist in the target environment. To version-control dashboards and keep their references portable across environments, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
 
 :::::
 
-:::::{tab-item} NDJSON (Saved Objects)
+:::::{tab-item} Saved Objects (NDJSON)
 
 Import the dashboard and its related objects from an NDJSON file on the **Saved Objects** page.
 
 **Prerequisites**
 
-- An NDJSON file containing the dashboard and its related objects. Refer to [](sharing.md#export-dashboards) to produce it.
+- An NDJSON file containing the dashboard and its related objects. To produce one, refer to [Export saved objects](../find-and-organize/saved-objects.md#saved-objects-export).
 - **All** privilege for the **Dashboard** and **Saved Objects Management** features in {{product.kibana}}.
 - Access to **Stack Management** in {{product.kibana}}.
 

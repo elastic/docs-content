@@ -38,6 +38,8 @@ You can also have a look at our [autoscaling example](#ec-autoscaling-example), 
 Autoscaling is enabled for the Machine Learning tier by default for new deployments.
 ::::
 
+$$$ec-autoscaling-behavior$$$
+
 Currently, autoscaling behavior is as follows:
 
 * **Data tiers**
@@ -253,8 +255,8 @@ Run this example API request to create a deployment with autoscaling:
 
 ::::{applies-item} ece:
 
-::::{include} /deploy-manage/_snippets/curl-k-ece.md
-::::
+:::{include} /deploy-manage/_snippets/curl-k-ece.md
+:::
 
 ```sh subs=true
 curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '

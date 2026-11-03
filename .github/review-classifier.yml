@@ -22,7 +22,7 @@ triggers:
   shared-snippet:
     scope: top-level
   substantial-change:
-    headings: true
+    headings: false
     thresholds: ['199:20', '500:10', '5']
   applies-to-modified: true
   external-link-added:

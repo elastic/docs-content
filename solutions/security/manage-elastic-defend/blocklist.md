@@ -46,6 +46,7 @@ To add a blocklist entry:
     2. `Field`: Select a field to identify the application being blocked:
 
         * `Hash`: The MD5, SHA-1, or SHA-256 hash value of the application’s executable.
+        * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `File name`: The name of the application’s executable, without its directory path (for example, `setup.exe`).
         * `Path`: The full file path of the application’s executable.
         * `Signature`: (Windows only) The name of the application’s digital signer.
 
@@ -53,8 +54,21 @@ To add a blocklist entry:
             To find the signer’s name for an application, go to **Discover** and query the process name of the application’s executable (for example, `process.name : "mctray.exe"` for a McAfee security binary). Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
             ::::
 
-    3. `Operator`: For hash and path conditions, the operator is `is one of` and can’t be modified. For signature conditions, choose `is one of` to enter multiple values or `is` for one value.
-    4. `Value`: Enter the hash value, file path, or signer name. To enter multiple values (such as a list of known malicious hash values), you can enter each value individually or paste a comma-delimited list, then press **Return**.
+    3. `Operator`: Select how the condition matches the value:
+
+        * `is one of`: Matches any of the values you enter. This is the only operator available for `Hash` conditions.
+        * `is`: Matches one exact value. Available for `Signature` conditions only.
+        * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `matches`: Matches one value that can include wildcards, such as `C:\Program Files\*\setup.exe`. This operator is available for `Path` and `File name` conditions only. Available wildcards are `?` (match one character) and `*` (match zero or more characters).
+
+            ::::{note}
+            Blocklist entries don’t require escaping special characters. Enter paths and file names exactly as they appear on the host (for example, `C:\Windows\explorer.exe`).
+            ::::
+
+            ::::{important}
+            Using wildcards can affect {{elastic-endpoint}} performance, so make them as specific as possible.
+            ::::
+
+    4. `Value`: Enter the value for the selected field. With the `is one of` operator, you can enter multiple values (such as a list of known malicious hash values) individually or paste a comma-delimited list, then press **Return**. The other operators accept a single value.
 
         ::::{note}
         Hash values must be valid to add them to the blocklist.

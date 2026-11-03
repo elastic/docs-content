@@ -46,7 +46,7 @@ For most users, one of the following higher-level ingestion paths is recommended
 
 Use {{motlp}} if it's available in your deployment, even when an application can target the {{es}} OTLP endpoint directly.
 
-For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [{{edot}} reference architecture](opentelemetry://reference/architecture/index.md).
+For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [{{edot}} reference architecture](opentelemetry://reference/architecture/index.md). For how the endpoint fits into the {{observability}} metrics workflows, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp).
 
 Use the {{es}} OTLP endpoint directly only in the following cases:
 
@@ -305,6 +305,10 @@ If you don't need exemplars, or want to avoid the additional storage, turn it of
 * **Delivery guarantees:** {{es}} can only acknowledge an OTLP request as a whole, not on a per-record basis.
   If part of a request fails, the client retries the entire batch, which can produce duplicate logs or trace spans.
   Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
+  
+  {applies_to}`stack: ga 9.6+` Metric points that are already indexed are not counted as rejected.
+  Instead, the [partial success](https://opentelemetry.io/docs/specs/otlp/#partial-success) response reports them as skipped duplicates in its error message.
+  A metric point with a different value but the same dimensions and timestamp as an already indexed one is also skipped this way.
 * **Profiles:** Profiles are not supported.
   To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md), such as [{{agent}}](elastic-agent://reference/edot-collector/index.md).
 * {applies_to}`stack: unavailable 9.2-9.5` **Exemplars:** Exemplars are not supported on older versions.

@@ -1,5 +1,5 @@
 ---
-name: Comment on PR for .asciidoc changes
+name: "PRs: Warn on AsciiDoc changes"
 
 on:
   # We need to use pull_request_target to be able to comment on PRs from forks

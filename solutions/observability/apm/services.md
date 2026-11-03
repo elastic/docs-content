@@ -21,11 +21,13 @@ A service only appears in the **Services** inventory if it has sent transactions
 
 Active alerts for each service are prominently displayed in the service inventory table. Clicking an active alert badge brings you to the [**Alerts**](/solutions/observability/apm/create-apm-rules-alerts.md) tab where you can learn more about the active alert and take action.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The **Anomalies** column shows each service's highest [{{ml}}](/solutions/observability/apm/machine-learning.md) anomaly score for the selected time range, replacing the previous health status. To use this feature, {{anomaly-detect}} must be enabled.
-
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` SLOs for each service are also shown in the service inventory table. Use the **Actions** menu on any service row to act on the service directly, or the **Environment** selector to filter the inventory by environment.
 
-{applies_to}`stack: ga 9.0-9.3` To help surface potential issues, services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**. Health status is powered by [{{ml}}](/solutions/observability/apm/machine-learning.md) and requires {{anomaly-detect}} to be enabled.
+The inventory also uses [{{ml}}](/solutions/observability/apm/machine-learning.md) to surface potential problems with your services. To see these results, {{anomaly-detect}} must be enabled:
+
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Low transaction count anomalies also contribute to the service's highest anomaly score, as long as the environment's job includes the [low-count detector](/solutions/observability/apm/machine-learning.md#apm-ml-low-transaction-count).
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The **Anomalies** column shows each service's highest anomaly score for the selected time range, replacing the previous health status.
+* {applies_to}`stack: ga 9.0-9.3` Services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**.
 
 ## Service groups [service-groups]
 
