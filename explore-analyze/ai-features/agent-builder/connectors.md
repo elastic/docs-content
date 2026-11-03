@@ -26,7 +26,7 @@ The {{agent-builder}} connectors library lets you configure action-based connect
 {{agent-builder}} connectors use the underlying {{kib}} [Stack connectors](/deploy-manage/manage-connectors.md) framework to store credentials securely and manage integrations. They're different from [Generative AI connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which only configure external LLM providers. {applies_to}`stack: deprecated 9.5+` {applies_to}`serverless: deprecated` Generative AI connectors are deprecated, but that deprecation doesn't affect {{agent-builder}} connectors.
 :::
 
-You manage connectors per {{kib}} space from **Manage components** → **Connectors**. Individual connector types in the catalog can be marked **Technical preview**.
+You manage connectors per {{kib}} space from **Manage components** → **Connectors**. For the available connector types, refer to [Data and context sources connectors](kibana://reference/connectors-kibana/data-context-sources-connectors.md). Individual connector types in the catalog can be marked **Technical preview**.
 
 ## How agents use connectors
 
@@ -45,25 +45,6 @@ Unlike standalone tools, connectors don't need to be assigned to agents. Any age
 ::::
 
 When an agent needs to interact with an external system, it reads the schemas of the connectors available to it. It then runs the sub-action it needs through a built-in system tool, `platform.core.execute_connector_sub_action`, and fills in the sub-action's parameters itself. For example, it can look up a Slack channel ID or search AlienVault OTX for threat intelligence. You don't need to map connectors to tools manually.
-
-## Database and API connectors
-
-```{applies_to}
-stack: preview 9.6+
-serverless: preview
-```
-
-The catalog includes connector types that let agents query databases and APIs, such as:
-
-- [Databricks](kibana://reference/connectors-kibana/databricks-action-type.md): Run read-only SQL queries and inspect job runs, clusters, SQL warehouses, and alerts.
-- [GraphQL](kibana://reference/connectors-kibana/graphql-action-type.md): Run queries against a GraphQL endpoint and introspect its schema.
-- [Azure SQL](kibana://reference/connectors-kibana/azure-sql-action-type.md): Run read-only queries and search rows. List databases, tables, and views, and describe a table or view.
-
-Like many connector types in the catalog, these are marked **Technical preview**.
-
-These connector types are available only in {{agent-builder}}, not in workflows.
-
-For configuration details and the full list of actions, refer to each connector's page. To browse the rest of the catalog, refer to [Data and context sources connectors](kibana://reference/connectors-kibana/data-context-sources-connectors.md).
 
 ## Add a connector
 
