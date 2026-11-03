@@ -17,9 +17,9 @@ products:
 
 AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` AI steps can also create {{agent-builder}} conversations and add content to them without triggering an agent response.
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` AI steps can also create {{agent-builder}} conversations.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also read and update the metadata and attachments of {{agent-builder}} conversations.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also add content to {{agent-builder}} conversations without triggering an agent response, and read and update their metadata and attachments.
 
 The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID in the step. Configure a Generative AI connector in {{kib}} and pass its ID in `connector-id`. For [`ai.agent`](#ai-agent), you can instead pass an {{infer}} endpoint ID in `inference-id`.
 
@@ -39,7 +39,7 @@ The step uses the [default AI connector](/explore-analyze/ai-features/manage-acc
 :::{note}
 :applies_to: { serverless: deprecated, stack: deprecated 9.5+ }
 
-Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`. The `ai.classify` and `ai.summarize` steps take `connector-id` only.
+Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`. The `ai.prompt`, `ai.classify`, and `ai.summarize` steps take `connector-id` only.
 :::
 
 ## Step types
@@ -49,8 +49,8 @@ Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}
 - [`ai.summarize`](#ai-summarize): Generate a summary of the provided content. {applies_to}`stack: ga 9.4+`
 - [`ai.agent`](#ai-agent): Invoke an {{agent-builder}} agent as a workflow step. {applies_to}`stack: preview 9.3, ga 9.4+`
 - [`ai.conversation.create`](#ai-conversation-create): Create an empty {{agent-builder}} conversation. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
-- [`ai.conversation.add_event`](#ai-conversation-add-event): Add an event, such as a note, to a conversation without triggering an agent response. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
-- [`ai.conversation.add_user_message`](#ai-conversation-add-user-message): Add a user message to a conversation without triggering an agent response. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+- [`ai.conversation.add_event`](#ai-conversation-add-event): Add an event, such as a note, to a conversation without triggering an agent response. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+- [`ai.conversation.add_user_message`](#ai-conversation-add-user-message): Add a user message to a conversation without triggering an agent response. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 - [`ai.conversation.metadata.read`](#ai-conversation-metadata-read): Read the metadata of a conversation. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 - [`ai.conversation.metadata.patch`](#ai-conversation-metadata-patch): Update the metadata of a conversation. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 - [`ai.attachment.add`](#ai-attachment-add): Add an attachment to a conversation. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
@@ -337,8 +337,8 @@ If you set `agent_id`, set the same agent in `agent-id` on any [`ai.agent`](#ai-
 ## `ai.conversation.add_event` [ai-conversation-add-event]
 
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
 Add an event to an {{agent-builder}} conversation without triggering an agent response. {{kib}} features can define their own event types, and each type defines the shape of its `data` payload. {{agent-builder}} provides the `text_note` type for notes. The agent reads a note the next time it runs on the conversation. Other event types might only be shown in the conversation and not sent to the agent. The step works the same way as the [add events to a conversation API](/explore-analyze/ai-features/agent-builder/kibana-api.md#add-conversation-events).
@@ -393,8 +393,8 @@ Events are attributed to the user whose privileges authorize the run, not to the
 ## `ai.conversation.add_user_message` [ai-conversation-add-user-message]
 
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
 Add a user message to an existing {{agent-builder}} conversation without triggering an agent response. The agent reads the message the next time it runs on the conversation.
@@ -436,9 +436,9 @@ Read and update the metadata of an {{agent-builder}} conversation. Metadata is a
 Only conversations with a template have metadata:
 
 - Conversations that `ai.agent` creates, or that users start in chat, have no template.
-- To create a conversation with a template from a workflow, use [`ai.conversation.create`](#ai-conversation-create) with `template_id` set to a built-in template: `investigation` or `escalation`.
+- To create a conversation with a template from a workflow, use [`ai.conversation.create`](#ai-conversation-create) with `template_id` set to a built-in template: `investigation` or `escalation`. `ai.conversation.create` is in technical preview, so a workflow that creates a conversation with metadata depends on a preview step.
 
-The examples in this section use the `investigation` template, where `status` accepts `open` or `closed`.
+The examples in this section use a conversation that a `create_conversation` step creates with the `investigation` template, where `status` accepts `open` or `closed`.
 
 :::{note}
 These steps run with the privileges of the user who authorizes the run. That user needs:
@@ -460,10 +460,16 @@ Read all metadata fields of a conversation.
 **Output shape:** `{ metadata: object }`. The current metadata fields and their values. Empty if the conversation has no metadata.
 
 ```yaml
+- name: create_conversation
+  type: ai.conversation.create
+  with:
+    title: "Checkout investigation"
+    template_id: investigation
+
 - name: read_metadata
   type: ai.conversation.metadata.read
   with:
-    conversation_id: "{{ inputs.conversation_id }}"
+    conversation_id: "{{ steps.create_conversation.output.conversation_id }}"
 
 - name: check_status
   type: if
@@ -479,8 +485,9 @@ Read all metadata fields of a conversation.
 
 Update one or more metadata fields of a conversation. The step merges your values into the existing metadata. Fields you don't include keep their current values.
 
-The conversation must have a template applied. In addition:
+The step has the following requirements:
 
+- The conversation must have a template applied.
 - You can only set fields that the template defines.
 - Each value must match the type and constraints of its field, such as the allowed options of a select field.
 - You can't set a field to `null`.
@@ -508,7 +515,7 @@ The `updates` object has the following limits:
 - name: resolve_investigation
   type: ai.conversation.metadata.patch
   with:
-    conversation_id: "{{ inputs.conversation_id }}"
+    conversation_id: "{{ steps.create_conversation.output.conversation_id }}"
     updates:
       status: "closed"
       close_reason: "resolved"
@@ -537,15 +544,15 @@ Add an attachment to a conversation.
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `conversation_id` | `with` | string | Yes | Conversation to add the attachment to. |
-| `type` | `with` | string | Yes | Attachment type, such as `text`. The step fails if the type doesn't exist. |
+| `type` | `with` | string | Yes | Attachment type, such as `text`. {{kib}} features can register their own attachment types, so the available types depend on your deployment. The step fails if the type doesn't exist. |
 | `data` | `with` | any | Depends | Attachment content. Its shape depends on `type`. For `text`, use `{ content: "<text>" }`. Required unless you set `origin`. |
-| `origin` | `with` | string | Depends | Reference to the object the content comes from, such as a dashboard ID, up to 2,048 characters. Required unless you set `data`. |
+| `origin` | `with` | string | Depends | ID of the saved object the content comes from, such as a dashboard ID, up to 2,048 characters. Only types that load content from a saved object support it. Required unless you set `data`. |
 | `id` | `with` | string | No | Attachment ID, up to 256 characters. Generated if omitted. The step fails if the conversation already has an attachment with this ID. |
 | `description` | `with` | string | No | Description of the attachment, up to 1,024 characters. |
 | `hidden` | `with` | boolean | No | When `true`, the attachment isn't shown to the user, but the agent can still use it. A hidden attachment is never displayed inline. |
 | `render_inline` | `with` | boolean | No | When `true`, the attachment is displayed as soon as a user opens the conversation, even if the agent doesn't refer to it. Defaults to `false`. |
 
-If you set `origin` without `data`, the content is loaded once, when the attachment is created. Not all attachment types support `origin`. For example, `text` doesn't.
+If you set `origin` without `data`, the content is loaded once, when the attachment is created. Not all attachment types support `origin`. For example, `text` doesn't, but the dashboard type, `platform.dashboard.dashboard_state`, does. To attach a dashboard, set `type` to `platform.dashboard.dashboard_state` and `origin` to the dashboard ID.
 
 **Output shape:**
 
