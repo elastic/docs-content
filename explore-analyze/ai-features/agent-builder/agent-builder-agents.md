@@ -65,9 +65,9 @@ To learn how to create and manage custom agents, refer to [Custom agents](custom
 
 ## Managing agents in the UI
 
-The **Agents** page provides a centralized view of all your agents. From this page you can:
+The **Agents** page provides a centralized view of your agents. From this page you can:
 
-- View all your agents with their names and labels
+- View your agents with their names and labels
 - Search for specific agents using the search bar
 - Filter agents by labels using the **Labels** dropdown
 - Create new agents using the **New agent** button
@@ -86,7 +86,28 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :width: 130px
       :::
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some agents that {{kib}} installs automatically are hidden. They don't appear in the list on the **Agents** page or in the [agent selector](chat.md#select-a-different-agent). Turn on **Show hidden agents** to include them in that list. The toggle is off by default. Turning it on doesn't add those agents to the agent selector. The **Set as space default** action isn't available for a hidden agent. There is no control to hide an agent you create.
+### Hidden agents [hidden-agents]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+{{kib}} hides some of the agents it installs automatically for solution features, such as some Elastic nightshift, Significant Events, and AlertZero agents. The Elastic AI Agent isn't hidden, and you can't hide agents you create.
+
+Hidden agents differ from other agents in these ways:
+
+- They don't appear in the list on the **Agents** page by default.
+- They aren't listed in the [agent selector](chat.md#select-a-different-agent), even when **Show hidden agents** is on. If you open a chat with a hidden agent, for example with **Chat** on the **Agents** page, the selector shows it as the current agent.
+- The **Set as space default** action isn't available for them.
+
+To include hidden agents in the **Agents** page list, turn on **Show hidden agents**. The following image shows the switch turned off, which is the default:
+
+:::{image} images/agent-builder-show-hidden-agents.png
+:screenshot:
+:alt: Show hidden agents switch turned off, above the search bar and Labels filter on the Agents page
+:width: 650px
+:::
 
 ## Elastic capabilities [elastic-capabilities]
 
