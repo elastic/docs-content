@@ -16,6 +16,8 @@ products:
 
 On Stack 9.2 and 9.3, {{agent-builder}} tool calls fail when using a Gemini 3.x model through a Google Vertex AI {{infer}} endpoint configured in [External {{infer}}](/explore-analyze/elastic-inference/external.md), even though endpoint creation succeeds.
 
+{applies_to}`stack: ga =9.3` Gemini 3.x models remain supported through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
+
 ## Symptoms
 
 - The agent fails when it tries to call a tool. You get no tool result.
@@ -33,6 +35,7 @@ You can choose one of the following options:
 
 - [Upgrade](#upgrade) to Stack 9.5.6 or later.
 - [Create a new endpoint that uses a Gemini 2.x model](#use-a-gemini-2.x-model).
+- {applies_to}`stack: ga =9.3` [Use Gemini 3.x models through EIS](#use-gemini-3.x-through-eis).
 
 ### Upgrade
 
@@ -62,6 +65,16 @@ PUT _inference/chat_completion/gemini_2_5_flash <1>
 
 Select this endpoint in the [model selector](../models.md#switch-models-in-the-ui). For the full field list, refer to [Create a Google Vertex AI {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-googlevertexai).
 
+### Use Gemini 3.x through EIS
+```{applies_to}
+stack: ga =9.3
+```
+
+Gemini 3.x models are available through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). EIS is automatically available on {{serverless-full}} projects and {{ech}} deployments. On {{ece}}, {{eck}}, and self-managed deployments, [connect the cluster to EIS](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md) first.
+
+To use a Gemini 3.x model on EIS, select it in the [model selector](../chat.md#select-a-different-model).
+
 ## Resources
 
 - [Recommended models](../models.md#recommended-models)
+- [](/explore-analyze/elastic-inference/eis.md)
