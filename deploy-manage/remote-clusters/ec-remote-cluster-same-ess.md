@@ -86,18 +86,23 @@ If your organization’s deployments already trust each other by default, you ca
     On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 2. From the navigation menu, select **Access and Security** > **Security**.
 3. Under **Trusted environments**, edit the one labeled as your organization.
-3. Choose one of following options to configure the level of trust on each of your deployments:
+4. Choose one of following options to configure the level of trust on each of your deployments:
 
     * **All deployments** - This deployment trusts all other deployments in this environment, including new deployments when they are created.
     * **Specific deployments** - Choose which of the existing deployments from your environment you want to trust.
     * **None** - No deployment in this environment is trusted.
 
     ::::{note}
-    When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described in [Using the API](#ec-trust-using-the-api).
+    When you select **Specific deployments**, the UI only lists deployments that are CCS-compatible with the deployment you are editing. This means the UI on a newer deployment might not list an older one, even if CCS works in the other direction. Because both deployments must trust each other, you might need to configure trust on the deployment that doesn't list the other [using the API](#ec-trust-using-the-api).
+
+    This applies to:
+
+    - **CCR-only trust**, where the [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is more restrictive than what [CCR](/deploy-manage/tools/cross-cluster-replication.md) requires.
+    - **CCS from an older local deployment to a newer remote deployment**. For example, a local 8.19 deployment can search a remote 9.x deployment, but the 9.x deployment's UI won't list the 8.19 deployment. Configure trust on the 9.x side using the API.
     ::::
 
-4. Click **Update trust**.
-5. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect two deployments successfully when both of them trust each other.
+5. Click **Update trust**.
+6. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect two deployments successfully when both of them trust each other.
 
 ::::{dropdown} Using the API
 :name: ec-trust-using-the-api

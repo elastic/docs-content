@@ -23,13 +23,14 @@ These security-specific AI capabilities build on Elastic's [platform-level AI in
 
 | Your goal | Start here |
 |---|---|
+| Set up AI features for the first time | [Set up AI features](/solutions/security/ai/set-up-ai-features.md) |
 | Automatically discover attacks across alerts | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) |
 | Get AI help with investigation, queries, and incident response | [AI Assistant](/solutions/security/ai/ai-assistant.md) or [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) |
 | Deploy an AI-powered SOC on {{sec-serverless}} | [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) |
 | Compare LLM performance for security tasks | [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) |
 | Walk through AI-driven security workflows end-to-end | [AI use case guides](#ai-use-case-guides) |
 | Connect to an LLM provider | [LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md) |
-| {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4` Install the Security MCP App to open interactive {{elastic-sec}} dashboards in Claude, Cursor, or another AI tool | [Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md) |
+| Install the Security MCP App to open interactive {{elastic-sec}} dashboards in Claude, Cursor, or another AI tool | [Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md) |
 
 ## Interactive AI tools [interactive-ai-tools]
 
@@ -66,7 +67,7 @@ In addition to the interactive tools described on this page, {{elastic-sec}} pro
 
 ## Choose the right LLM [choose-llm]
 
-Most security AI features require at least one working LLM connector. You can use Elastic Managed LLMs, which are available by default with a supported license, or [connect to third-party providers](/explore-analyze/ai-features/llm-guides/llm-connectors.md) such as OpenAI, Amazon Bedrock, Azure OpenAI, or Google Vertex AI. To compare how different models perform across security AI use cases, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+Most security AI features require at least one working LLM connector. You can use Elastic Managed LLMs, which are available by default with a supported license, or [connect to third-party providers](/explore-analyze/ai-features/llm-guides/llm-connectors.md) such as OpenAI, Amazon Bedrock, Azure OpenAI, or Google Vertex AI. To compare how different models perform across security AI use cases, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md). For the other setup steps, refer to [Set up AI features](/solutions/security/ai/set-up-ai-features.md).
 
 ## AI use case guides [ai-use-case-guides]
 

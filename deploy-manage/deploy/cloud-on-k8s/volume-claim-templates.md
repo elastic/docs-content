@@ -56,7 +56,13 @@ spec:
     count: 3
 ```
 
-The possible values are `DeleteOnScaledownAndClusterDeletion` and `DeleteOnScaledownOnly`. By default `DeleteOnScaledownAndClusterDeletion` is in effect, which means that all PersistentVolumeClaims are deleted together with the {{es}} cluster. However, `DeleteOnScaledownOnly` keeps the PersistentVolumeClaims when deleting the {{es}} cluster. If you recreate a deleted cluster with the same name and node sets as before, the existing PersistentVolumeClaims will be adopted by the new cluster.
+The possible values are `DeleteOnScaledownAndClusterDeletion` and `DeleteOnScaledownOnly`. By default `DeleteOnScaledownAndClusterDeletion` is in effect, which means that all PersistentVolumeClaims are deleted together with the {{es}} cluster. However, `DeleteOnScaledownOnly` keeps the PersistentVolumeClaims when deleting the {{es}} cluster.
+
+::::{warning}
+After you delete the cluster, do not delete any of the retained PersistentVolumeClaims. ECK does not check the integrity of the data on adopted PersistentVolumeClaims. Missing or damaged data can cause data loss or prevent master discovery. Recovery requires last-resort steps that can also lose data: [restore a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) into a new cluster, or use the `elasticsearch-node` tool as described in [Suspend Elasticsearch](/troubleshoot/deployments/cloud-on-k8s/troubleshooting-methods.md#k8s-suspend-elasticsearch).
+::::
+
+If you recreate a deleted cluster with the same name, namespace, and node sets as before, the existing PersistentVolumeClaims will be adopted by the new cluster.
 
 
 ### Updating the volume claim settings [k8s-volume-claim-templates-update]

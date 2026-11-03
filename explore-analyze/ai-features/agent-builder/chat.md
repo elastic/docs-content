@@ -62,6 +62,15 @@ Use the text input area to chat with an agent in real time. Check the agent sele
 Conversations with agents consume tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
 :::
 
+#### Message length limit
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+You can send up to 100,000 characters in a single message. If your message is longer, the chat input shows a "Message is too long" warning with the current character count, and you can't send the message until you shorten it. Each [attached image](#attach-images-to-a-message) and [slash command](skills.md#how-skills-are-invoked) adds a short text reference to the count, such as the file name or skill ID, so the count can be slightly higher than the visible text. The image itself doesn't count toward the limit.
+
 #### Select a different agent
 
 ```{applies_to}

@@ -18,6 +18,13 @@ A service map is a real-time visual representation of the instrumented services 
 
 You can view all your instrumented services and the connections between them, or focus on the services that interest you most.
 
+## Requirements [service-map-requirements]
+
+Service maps access is dependent on your subscription level. For more information, refer to:
+
+* **Elastic Stack**:  [Subscriptions](https://www.elastic.co/subscriptions).
+* **{{obs-serverless}}**: The [Observability Serverless feature tier](/solutions/observability/observability-serverless-feature-tiers.md#obs-subscription-features).
+
 ## How do service maps work? [service-maps-how]
 
 Service Maps rely on distributed traces to draw connections between services. As [distributed tracing](/solutions/observability/apm/traces.md) is enabled out-of-the-box for supported technologies, so are service maps. However, if a service isn’t instrumented, or a `traceparent` header isn’t being propagated to it, distributed tracing will not work, and the connection will not be drawn on the map.
@@ -39,9 +46,13 @@ If you’re using {{edot}} or contrib OpenTelemetry, set the `deployment.environ
 
 To focus on one or more services, select them in the **Service name** filter. The map highlights the selected services and their connections.
 
-Service maps are also embedded where you’re already working: a service’s **Overview** tab and its transaction details include a **Service map** panel scoped to that service. To view the panel for a transaction group, open the service’s **Transactions** tab and select a group from the **Transactions** table.
+Service maps are also embedded where you’re already working: a service’s **Overview** tab and its transaction details include a **Service map** panel. The panel centers on the service and shows its upstream and downstream connections. To view the panel for a transaction group, open the service’s **Transactions** tab and select a group from the **Transactions** table.
 
-To open the full service map from an embedded panel, click **Explore in Service map**. The services you were viewing stay filtered and highlighted on the full map.
+The [mobile service overview](/solutions/observability/apm/mobile-service-overview.md#mobile-service-map) includes the same panel.
+
+Use **Hops** to adjust how many connections to follow from the service, and **Max visible** to limit the number of nodes shown.
+
+To open the full service map from an embedded panel, click **Explore in Service map**. The map preserves the time range, environment, and KQL query, and selects the service in the **Service name** filter. From transaction details, it also adds filters for the transaction name and type. Selected services stay highlighted.
 
 ::::
 ::::{applies-item} stack: ga 9.0-9.5
@@ -93,6 +104,20 @@ Click a service node to open its flyout. On the service flyout's **Overview** ta
 In the transaction flyout, under **Trace sample**, click a span or transaction in the timeline to open the full trace waterfall. You can also use **View full trace** when the button is available. From the full trace, inspect individual spans and errors, then use **Back** to return to the previous flyout without leaving the map.
 
 The transaction flyout follows the service flyout's environment, transaction type, and time range. If the transaction no longer matches those filters, it displays the previous data with a warning. For the full workflow and filter behavior, refer to [Investigate a service with flyouts](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts).
+
+### Move between dashboards and the service map [service-map-dashboard-context]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+When you copy the map to a dashboard, the panel preserves the environment, KQL query, selected services, map orientation, and the **Dependencies**, **Alert status**, **SLO status**, and **Anomaly severity** filters. Selecting multiple services in **Service name** also preserves their highlights. The destination dashboard opens with the map’s time range.
+
+Field-value and field-existence filters are included in the panel’s KQL query. Range and custom filters aren’t copied.
+
+By default, the copied panel uses its own filters. To also apply the dashboard’s query and filters, edit the panel and turn on **Sync with dashboard filters**.
+
+From a dashboard panel, click **View in Service map** to continue investigating on the full map. The link preserves the panel’s time range, environment, KQL query, selected services, map orientation, and map filters. Dashboard queries and filters applied through **Sync with dashboard filters** aren’t included in this link.
 
 ## Investigate the service map with AI [service-map-ai-investigation]
 ```{applies_to}
