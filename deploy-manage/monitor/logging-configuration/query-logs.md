@@ -158,7 +158,16 @@ The [`elasticsearch` Elastic Agent integration](https://www.elastic.co/docs/refe
 
 Install the assets from Fleet (or the integration's Assets tab) when you are ready to explore the indexed stream.
 
-Alternatively, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for `logs-elasticsearch.querylog-*` and use **Discover** in classic mode to filter on `event.dataset: elasticsearch.querylog`.
+Alternatively, use **Discover** to filter on the `elasticsearch.querylog` dataset:
+
+* In {{esql}} mode, enter:
+
+  ```esql
+  FROM logs-elasticsearch.querylog-*
+  | WHERE event.dataset == "elasticsearch.querylog"
+  ```
+
+* In classic mode, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for `logs-elasticsearch.querylog-*`, then filter on `event.dataset: elasticsearch.querylog`.
 
 ## Example query log entries
 
