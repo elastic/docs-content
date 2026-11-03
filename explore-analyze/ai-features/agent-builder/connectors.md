@@ -14,19 +14,19 @@ products:
 
 # Connectors in {{agent-builder}}
 
+{{agent-builder}} connectors give agents access to external systems, such as messaging services, cloud functions, databases, and third-party APIs. Agents use connectors to act on those systems, for example to look up a Slack channel or query a database, without you building a custom tool for each action.
+
 :::{note}
 :applies_to: stack: preview 9.4-9.5
 
 The connectors library is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
-The {{agent-builder}} connectors library lets you configure action-based connectors that give agents access to external systems, such as messaging services, cloud functions, and third-party APIs.
+{{agent-builder}} connectors use the underlying {{kib}} [Stack connectors](/deploy-manage/manage-connectors.md) framework to store credentials securely and manage integrations. They're different from [Generative AI connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which only configure external LLM providers.
 
-:::{note}
-{{agent-builder}} connectors use the underlying {{kib}} [Stack connectors](/deploy-manage/manage-connectors.md) framework to store credentials securely and manage integrations. They're different from [Generative AI connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which only configure external LLM providers. {applies_to}`stack: deprecated 9.5+` {applies_to}`serverless: deprecated` Generative AI connectors are deprecated, but that deprecation doesn't affect {{agent-builder}} connectors.
-:::
+{applies_to}`stack: deprecated 9.5+` {applies_to}`serverless: deprecated` Generative AI connectors are deprecated. This deprecation doesn't affect {{agent-builder}} connectors.
 
-You manage connectors per {{kib}} space from **Manage components** → **Connectors**. For the available connector types, refer to [Data and context sources connectors](kibana://reference/connectors-kibana/data-context-sources-connectors.md). Individual connector types in the catalog can be marked **Technical preview**.
+You manage connectors per {{kib}} space from **Manage components** → **Connectors**. For the available connector types, refer to [Data and context sources connectors](kibana://reference/connectors-kibana/data-context-sources-connectors.md). Some connector types in the catalog show a **Technical preview** badge.
 
 ## How agents use connectors
 
@@ -44,11 +44,11 @@ Unlike standalone tools, connectors don't need to be assigned to agents. Any age
 
 ::::
 
-When an agent needs to interact with an external system, it reads the schemas of the connectors available to it. It then runs the sub-action it needs through a built-in system tool, `platform.core.execute_connector_sub_action`, and fills in the sub-action's parameters itself. For example, it can look up a Slack channel ID or search AlienVault OTX for threat intelligence. You don't need to map connectors to tools manually.
+When an agent needs to interact with an external system, it reads the schemas of the connectors available to it. It then runs the sub-action it needs through a built-in system tool, `platform.core.execute_connector_sub_action`, and fills in the sub-action's parameters itself. For example, it can look up a Slack channel ID or search AlienVault OTX for threat intelligence.
 
 ## Add a connector
 
-To register a new connector:
+To add a connector to the library:
 
 1. In the sidebar, select **Manage components** → **Connectors** to open the **Connectors library**.
 2. Select **Create connector**.
@@ -79,34 +79,42 @@ serverless: preview
 
 An agent can only use the connectors you assign to it, and new agents start with none. You assign connectors from the agent after you save it.
 
-To assign connectors in {{kib}}, you need permission to edit the agent and the **Actions and Connectors: All** {{kib}} privilege. If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill. Without it, the agent can't find its connectors.
+To assign connectors in {{kib}}, you need:
+
+- Permission to edit the agent.
+- The **Actions and Connectors: All** {{kib}} privilege.
+
+If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill. Without it, the agent can't find its connectors.
 
 To assign a connector to an agent:
 
-1. Select the agent. Then, in the sidebar under **Customize**, select **Connectors**.
+1. Select the agent, then select **Customize** → **Connectors** in the sidebar.
 2. Select **Add connector**.
 3. Select one of the following:
    - **From library**: Assign connectors that already exist in the connectors library.
-   - **Create new connector**: Configure a new connector. It's added to the library and assigned to the agent.
+   - **Create new connector**: Configure a new connector. {{kib}} adds it to the library and assigns it to the agent.
+
+The connector and its sub-actions appear on the agent's **Connectors** page. The following example shows the page with one assigned connector and the **Add connector** menu open:
 
 :::{image} images/agent-connectors-add-connector.png
 :screenshot:
-:alt: An agent's Connectors page with the Add connector menu open, showing the From library and Create new connector options next to an assigned GraphQL connector and its sub-actions
+:alt: An agent's Connectors page with the Add connector menu open, showing the From library and Create new connector options, next to an assigned GraphQL connector and its sub-actions
 :width: 750px
 :::
 
-To unassign a connector, remove it from the agent's **Connectors** page. The connector stays in the library, and other agents it's assigned to can still use it.
+To stop an agent from using a connector, remove the connector from the agent's **Connectors** page. The connector stays in the library, and other agents it's assigned to can still use it.
 
-:::{important}
-Agents that were never assigned connectors can't use any. This includes:
+### Agents without assigned connectors [agents-without-assigned-connectors]
 
-- The built-in **Elastic AI Agent**.
+An agent that was never assigned connectors can't use any. Check for the following agents and assign the connectors they need:
+
 - Agents created with the [Agents API](kibana-api.md#agents-apis) without `connector_ids`.
-- {applies_to}`stack: preview 9.6+` Agents created in 9.4 or 9.5 without a connector list. In those versions, these agents could use any connector. After you upgrade, assign connectors to them.
-- {applies_to}`serverless: preview` Existing agents without a connector list, including agents created before new agents started with an empty list. Previously, these agents could use any connector. Assign connectors to them.
+- {applies_to}`stack: preview 9.6+` Agents created in 9.4 or 9.5 without a connector list. In those versions, these agents could use any connector.
+- {applies_to}`serverless: preview` Existing agents without a connector list, including agents created before new agents started with an empty list. Previously, these agents could use any connector.
 
-Agents that already had a connector list in 9.5 or on {{serverless-short}} can run only the connectors in that list. Previously, the list limited which connectors an agent could discover, not which ones it could run. Check these agents and assign any connectors they still need.
-:::
+Also check agents that already had a connector list in 9.5 or on {{serverless-short}}, and assign any connectors they still need. These agents can run only the connectors in their list. Previously, the list limited which connectors an agent could discover, not which ones it could run.
+
+Built-in agents, such as the **Elastic AI Agent**, are read-only, so you can't assign connectors to them. To use connectors, [create a custom agent](custom-agents.md) and assign connectors to it.
 
 ## Authorize connector access from chat
 
