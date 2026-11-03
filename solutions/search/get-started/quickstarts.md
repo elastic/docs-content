@@ -1,6 +1,6 @@
 ---
 navigation_title: Quickstart - Vector and full-text search
-description: Step-by-step tutorial for connecting a client to Elasticsearch, indexing data, and running hybrid search that combines keyword and semantic matching.
+description: Step-by-step tutorial for connecting a client to Elasticsearch, indexing data, and running keyword, semantic, and hybrid search.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/quickstart.html
 applies_to:
@@ -14,9 +14,7 @@ products:
 
 {{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. This guide uses official {{es}} clients as well as curl and Console examples to take you from an empty project to real search results in less than 10 minutes.
 
-Use it if you're new to search in {{es}} or want to experiment with meaning-based retrieval alongside keyword matching.
-
-You can follow the examples in Python, TypeScript, PHP, Ruby, C#/.NET, Java, or Go, with curl, or in the {{kib}} [**Dev Tools**](/explore-analyze/query-filter/tools/console.md) Console. If you use Console, you don't need to connect or install a client: after you [set up {{es}}](#vector-full-text-search-create-project), you can start at [Create an index and add data](#vector-full-text-search-add-data).
+Use it if you're new to search in {{es}} or want to compare keyword, semantic, and hybrid search.
 
 
 :::{tip}
@@ -25,11 +23,11 @@ Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/el
 
 ## Set up {{es}} [vector-full-text-search-create-project]
 
-You can use this quickstart with any type of deployment, but for the quickest start, we recommend the {{vectordb}} project type. Create a free [{{es}} {{vectordb}} project](https://cloud.elastic.co/serverless-registration?onboarding_token=vector).
+You can use this quickstart with any type of deployment, although for most search use cases we recommend creating a free [{{es}} {{vectordb}} project](https://cloud.elastic.co/serverless-registration?onboarding_token=vector).
 
-The project takes about a minute to start. The **Getting started** page then displays the **{{es}} endpoint** and a generated API key. Copy both values.
+The project takes about a minute to start. The **Getting started** page then displays the **{{es}} endpoint** and a generated API key. Copy both values. If you need a new API key, refer to [Create an API key](/solutions/search/set-up/api-key-and-endpoints.md#get-your-api-key).
 
-You can also find your **{{es}} endpoint** and create new API keys on the **Home** page.
+You can follow the examples in Python, TypeScript, PHP, Ruby, C#/.NET, Java, or Go, with curl, or in the {{kib}} [**Dev Tools**](/explore-analyze/query-filter/tools/console.md) Console. If you use Console, you don't need to connect or install a client: after you set up {{es}}, start at [Create an index and add data](#vector-full-text-search-add-data).
 
 ## Connect to your project [vector-full-text-search-connect]
 
@@ -64,7 +62,7 @@ $Env:ES_API_KEY = "YOUR_API_KEY"
 
 :::::
 
-## Install and initialize an {{es}} client [vector-full-text-search-install-sdk]
+## Set up a client [vector-full-text-search-install-sdk]
 
 Install the client for your language:
 
@@ -313,7 +311,11 @@ func main() {
 
 ## Create an index and add data [vector-full-text-search-add-data]
 
-Create the `books` index and add the sample data. The example maps `description` and lets {{es}} infer the other fields. 
+Create the `books` index and add the sample data. The sample data contains five books, each with a `title`, an `author`, a `release year`, and a `description`.
+
+### Create an index
+
+You define only the `description` field as `semantic_text`. {{es}} automatically chooses a data type for each of the other fields:
 
 :::::{tab-set}
 :group: languages
@@ -334,9 +336,8 @@ es.indices.create(
 )
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. <br>
-In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models. <br> <br>
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. 
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 
 
@@ -358,8 +359,8 @@ await es.indices.create({
 });
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 ::::
 
@@ -381,8 +382,8 @@ $es->indices()->create([
 ]);
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 ::::
 
@@ -404,8 +405,8 @@ es.indices.create(
 )
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 ::::
 
@@ -422,8 +423,8 @@ await es.Indices.CreateAsync<Book>("books", c => c
 );
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 ::::
 
@@ -447,8 +448,8 @@ es.indices().create(c -> c
 );
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 ::::
 
@@ -477,8 +478,8 @@ if createResponse.IsError() {
 createResponse.Body.Close()
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 ::::
 
@@ -498,8 +499,8 @@ PUT books
 }
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 ::::
 
@@ -521,12 +522,14 @@ curl -X PUT "$ES_URL/books" \
   }'
 ```
 
-1. {{es}} uses [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) to determine field types from the first documents you index. The only field you need to define is `description`, which you set to `semantic_text` before indexing so you can search it by meaning. To learn more, refer to [](/manage-data/data-store/mapping.md).
-2. [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) automatically embeds text at ingest time using an {{infer}} endpoint. The {{infer}} endpoint connects to an embedding model that converts indexed text and search queries into vectors. In this example, `semantic_text` uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints). You can also [configure {{infer}} endpoints for `semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use custom models.
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
+2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 ::::
 
 :::::
+
+### Index the sample data
 
 Next, index five books in one bulk request:
 
@@ -956,7 +959,246 @@ EOF
 
 ## Run search [vector-full-text-search-search]
 
-In this section, you run two searches. A semantic search returns books that match the meaning of the query. A hybrid search combines that meaning match with a keyword match in one request, so you can compare the two.
+In this section, you run three searches on the same books dataset. [Full-text search](/solutions/search/full-text.md) matches exact words in the query, [semantic search](/solutions/search/vector.md#semantic-search-vs-vector-search) matches meaning rather than exact terms, and [hybrid search](/solutions/search/hybrid-search.md) combines both approaches.
+
+### Full-text search [vector-full-text-search-keyword]
+
+Run a full-text search for `wind` in the `title` field:
+
+:::::{tab-set}
+:group: languages
+
+::::{tab-item} Python
+:sync: python
+
+```python
+resp = es.search(
+    index="books",
+    query={
+        "match": {
+            "title": "wind",
+        }
+    },
+)
+
+for hit in resp["hits"]["hits"]:
+    print(hit["_score"], hit["_source"]["title"])
+```
+
+::::
+
+::::{tab-item} TypeScript
+:sync: typescript
+
+```typescript
+interface Book {
+  title: string;
+}
+
+const resp = await es.search<Book>({
+  index: "books",
+  query: {
+    match: {
+      title: "wind",
+    },
+  },
+});
+
+for (const hit of resp.hits.hits) {
+  console.log(hit._score, hit._source?.title);
+}
+```
+
+::::
+
+::::{tab-item} PHP
+:sync: php
+
+```php
+$response = $es->search([
+    "index" => "books",
+    "body" => [
+        "query" => [
+            "match" => [
+                "title" => "wind",
+            ],
+        ],
+    ],
+]);
+
+foreach ($response["hits"]["hits"] as $hit) {
+    echo $hit["_score"] . " " . $hit["_source"]["title"] . "\n";
+}
+```
+
+::::
+
+::::{tab-item} Ruby
+:sync: ruby
+
+```ruby
+response = es.search(
+  index: "books",
+  body: {
+    query: {
+      match: {
+        title: "wind"
+      }
+    }
+  }
+)
+
+response["hits"]["hits"].each do |hit|
+  puts "#{hit["_score"]} #{hit["_source"]["title"]}"
+end
+```
+
+::::
+
+::::{tab-item} C#/.NET
+:sync: csharp
+
+```csharp
+var response = await es.SearchAsync<SearchBook>(s => s
+    .Indices("books")
+    .Query(q => q
+        .Match(match => match
+            .Field(book => book.Title)
+            .Query("wind")
+        )
+    )
+);
+
+foreach (var hit in response.Hits)
+{
+    Console.WriteLine($"{hit.Score} {hit.Source?.Title}");
+}
+
+public record SearchBook(
+    [property: JsonPropertyName("title")] string Title
+);
+```
+
+::::
+
+::::{tab-item} Java
+:sync: java
+
+```java
+String query = """
+    {
+      "query": {
+        "match": {
+          "title": "wind"
+        }
+      }
+    }
+    """;
+
+SearchResponse<Book> response = es.search(s -> s
+        .index("books")
+        .withJson(new StringReader(query)),
+    Book.class
+);
+
+for (Hit<Book> hit : response.hits().hits()) {
+    System.out.println(hit.score() + " " + hit.source().title());
+}
+```
+
+::::
+
+::::{tab-item} Go
+:sync: go
+
+```go
+query := strings.NewReader(`{
+	  "query": {
+	    "match": {
+	      "title": "wind"
+	    }
+	  }
+	}`)
+
+	res, err := es.Search(
+		es.Search.WithContext(context.Background()),
+		es.Search.WithIndex("books"),
+		es.Search.WithBody(query),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer res.Body.Close()
+	if res.IsError() {
+		log.Fatal(res)
+	}
+
+	var response struct {
+		Hits struct {
+			Hits []struct {
+				Score  float64 `json:"_score"`
+				Source struct {
+					Title string `json:"title"`
+				} `json:"_source"`
+			} `json:"hits"`
+		} `json:"hits"`
+	}
+	if err := json.NewDecoder(res.Body).Decode(&response); err != nil {
+		log.Fatal(err)
+	}
+
+for _, hit := range response.Hits.Hits {
+	fmt.Println(hit.Score, hit.Source.Title)
+}
+```
+
+::::
+
+::::{tab-item} Console
+:sync: console
+
+```console
+GET books/_search
+{
+  "query": {
+    "match": {
+      "title": "wind"
+    }
+  }
+}
+```
+
+::::
+
+::::{tab-item} curl
+:sync: curl
+
+```bash
+curl -X GET "$ES_URL/books/_search" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": {
+      "match": {
+        "title": "wind"
+      }
+    }
+  }'
+```
+
+::::
+
+:::::
+
+:::{dropdown} Example output
+The first result is:
+
+```text
+SCORE The Name of the Wind
+```
+
+**The Name of the Wind** ranks first because the title contains the word "wind".
+:::
 
 ### Semantic search [vector-full-text-search-semantic]
 
@@ -1207,7 +1449,7 @@ SCORE Project Hail Mary
 
 ### Hybrid search [vector-full-text-search-hybrid]
 
-Run a hybrid search that uses full-text search on the `title` field and semantic search on the `description` field:
+Hybrid search combines semantic search with full-text search. This example matches the word `wind` in `title` and the meaning of `young magician coming of age` in `description`:
 
 :::::{tab-set}
 :group: languages
@@ -1569,9 +1811,9 @@ SCORE The Name of the Wind
 **The Name of the Wind** ranks first because its description of a gifted young magician's rise from orphan to legend is semantically similar to `young magician coming of age`.
 :::
 
-## Aggregate the data with {{esql}} [vector-full-text-search-esql]
+## Summarize the data with {{esql}} [vector-full-text-search-esql]
 
-With [aggregations](/explore-analyze/query-filter/aggregations.md), you can summarize groups of data, such as the number of books released in each decade. Use [{{esql}}](elasticsearch://reference/query-languages/esql.md), a piped query language, to run this aggregation:
+Use [{{esql}}](elasticsearch://reference/query-languages/esql.md) to summarize, analyze, and calculate metrics on your data. This query counts the books released in each decade:
 
 :::::{tab-set}
 :group: languages
@@ -1791,13 +2033,13 @@ The output contains one row per decade:
 ```
 :::
 
-## Complete runnable script [vector-full-text-search-complete-script]
+## Run the steps in one script [vector-full-text-search-complete-script]
 
-The examples above show each step on its own. This script runs them together: it creates an index, adds the sample books, runs a semantic search and a hybrid search, and counts the books by decade. It writes to `books-complete`, so it leaves the `books` index from the earlier steps unchanged.
+The examples above show each step on its own. This script runs them together: it creates an index, adds the sample books, runs a keyword search, a semantic search, and a hybrid search, and counts the books by decade. It writes to `books-complete`, so it leaves the `books` index from the earlier steps unchanged.
 
 1. [Set up {{es}}](#vector-full-text-search-create-project).
 2. [Connect to your project](#vector-full-text-search-connect).
-3. [Install and initialize the client](#vector-full-text-search-install-sdk) for your language. If you use Console or curl, skip this step.
+3. [Set up a client](#vector-full-text-search-install-sdk) for your language. If you use Console or curl, skip this step.
 4. Select your language, expand the complete script, and run it.
 
 :::::{tab-set}
@@ -1834,6 +2076,15 @@ books = [
      "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."},
 ]
 helpers.bulk(es, ({"_index": "books-complete", "_source": b} for b in books), refresh="wait_for")
+
+# Keyword search.
+resp = es.search(
+    index="books-complete",
+    query={"match": {"title": "wind"}},
+)
+print("=== Keyword search results ===")
+for hit in resp["hits"]["hits"]:
+    print(" ", hit["_score"], hit["_source"]["title"])
 
 # Semantic search.
 resp = es.search(
@@ -1916,8 +2167,18 @@ await es.helpers.bulk({
   refreshOnCompletion: true,
 });
 
-// Semantic search.
+// Keyword search.
 let resp = await es.search<Book>({
+  index: "books-complete",
+  query: { match: { title: "wind" } },
+});
+console.log("=== Keyword search results ===");
+for (const hit of resp.hits.hits) {
+  console.log(" ", hit._score, hit._source?.title);
+}
+
+// Semantic search.
+resp = await es.search<Book>({
   index: "books-complete",
   query: { semantic: { field: "description", query: "surviving alone in space" } },
 });
@@ -2026,6 +2287,21 @@ $es->bulk([
     "refresh" => "wait_for",
     "body" => $operations,
 ]);
+
+$response = $es->search([
+    "index" => "books-complete",
+    "body" => [
+        "query" => [
+            "match" => [
+                "title" => "wind",
+            ],
+        ],
+    ],
+]);
+echo "=== Keyword search results ===\n";
+foreach ($response["hits"]["hits"] as $hit) {
+    echo "  " . $hit["_score"] . " " . $hit["_source"]["title"] . "\n";
+}
 
 $response = $es->search([
     "index" => "books-complete",
@@ -2150,6 +2426,21 @@ operations = books.flat_map do |book|
   ]
 end
 es.bulk(body: operations, refresh: "wait_for")
+
+response = es.search(
+  index: "books-complete",
+  body: {
+    query: {
+      match: {
+        title: "wind"
+      }
+    }
+  }
+)
+puts "=== Keyword search results ==="
+response["hits"]["hits"].each do |hit|
+  puts "  #{hit["_score"]} #{hit["_source"]["title"]}"
+end
 
 response = es.search(
   index: "books-complete",
@@ -2289,6 +2580,21 @@ await es.BulkAsync(new BulkRequest
 });
 
 var response = await es.SearchAsync<Book>(s => s
+    .Indices("books-complete")
+    .Query(q => q
+        .Match(match => match
+            .Field(book => book.Title)
+            .Query("wind")
+        )
+    )
+);
+Console.WriteLine("=== Keyword search results ===");
+foreach (var hit in response.Hits)
+{
+    Console.WriteLine($"  {hit.Score} {hit.Source?.Title}");
+}
+
+response = await es.SearchAsync<Book>(s => s
     .Indices("books-complete")
     .Query(q => q
         .Semantic(semantic => semantic
@@ -2451,6 +2757,25 @@ public class App {
         }
         es.bulk(bulk.build());
 
+        String keywordQuery = """
+            {
+              "query": {
+                "match": {
+                  "title": "wind"
+                }
+              }
+            }
+            """;
+        SearchResponse<Book> response = es.search(s -> s
+                .index("books-complete")
+                .withJson(new StringReader(keywordQuery)),
+            Book.class
+        );
+        System.out.println("=== Keyword search results ===");
+        for (Hit<Book> hit : response.hits().hits()) {
+            System.out.println("  " + hit.score() + " " + hit.source().title());
+        }
+
         String semanticQuery = """
             {
               "query": {
@@ -2461,7 +2786,7 @@ public class App {
               }
             }
             """;
-        SearchResponse<Book> response = es.search(s -> s
+        response = es.search(s -> s
                 .index("books-complete")
                 .withJson(new StringReader(semanticQuery)),
             Book.class
@@ -2674,6 +2999,15 @@ func main() {
 		log.Fatal(err)
 	}
 
+	fmt.Println("=== Keyword search results ===")
+	printSearch(es, `{
+	  "query": {
+	    "match": {
+	      "title": "wind"
+	    }
+	  }
+	}`)
+
 	fmt.Println("=== Semantic search results ===")
 	printSearch(es, `{
 	  "query": {
@@ -2770,6 +3104,15 @@ POST books-complete/_bulk?refresh=wait_for
 GET books-complete/_search
 {
   "query": {
+    "match": {
+      "title": "wind"
+    }
+  }
+}
+
+GET books-complete/_search
+{
+  "query": {
     "semantic": {
       "field": "description",
       "query": "surviving alone in space"
@@ -2847,6 +3190,17 @@ curl -X POST "$ES_URL/books-complete/_bulk?refresh=wait_for" \
 { "index": {} }
 { "title": "Dune", "author": "Frank Herbert", "release_year": 1965, "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." }
 EOF
+
+curl -X GET "$ES_URL/books-complete/_search" \
+  -H "Authorization: ApiKey $ES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": {
+      "match": {
+        "title": "wind"
+      }
+    }
+  }'
 
 curl -X GET "$ES_URL/books-complete/_search" \
   -H "Authorization: ApiKey $ES_API_KEY" \
