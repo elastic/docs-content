@@ -85,19 +85,22 @@ To target a non-default {{kib}} space, include `/s/<space-id>` in the {{kib}} UR
 
 ## Install the {{context-engine}} skill
 
-The `kibana-context-engine` skill supplies the retrieval procedure and the Elastic CLI commands that Claude Code needs.
+The [`kibana-context-engine` skill](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-context-engine) supplies the retrieval procedure and the Elastic CLI commands that Claude Code needs. The skill is included in the `elastic-kibana` plugin in the [Elastic agent skills repository](https://github.com/elastic/agent-skills).
 
-:::{note}
-Elastic publishes its public skills through the [Elastic agent skills repository](https://github.com/elastic/agent-skills) and bundles them in the [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md). The `kibana-context-engine` skill is not yet included in either public distribution. This draft will be updated with its supported installation path before publication.
-:::
+Add the repository as a Claude Code marketplace, then install the `elastic-kibana` plugin:
 
-<!--
-Install the [Elastic plugin for Claude](/explore-analyze/ai-features/claude-plugin.md), which includes the `kibana-context-engine` skill.
+```bash
+claude plugin marketplace add https://github.com/elastic/agent-skills
+claude plugin install elastic-kibana@elastic-agent-skills
+```
 
-Tracked by https://github.com/elastic/search-team/issues/16314. Replace this comment with the supported installation steps after the skill is published and its inclusion in the Elastic plugin for Claude is confirmed.
--->
+If the plugin is already installed, update it to the latest version:
 
-After installing or updating the skill, start a new Claude Code session. Run `/skills` and confirm that `kibana-context-engine` is available.
+```bash
+claude plugin update elastic-kibana
+```
+
+After installing or updating the plugin, start a new Claude Code session. Run `/skills` and confirm that `kibana-context-engine` is available.
 
 ## Retrieve context
 
