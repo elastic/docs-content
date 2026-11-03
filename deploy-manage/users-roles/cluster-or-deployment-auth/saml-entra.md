@@ -167,13 +167,23 @@ stack: ga 9.1+
 
 If you can't restrict the groups in the SAML assertion, you can use the [Microsoft Graph Authz plugin](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md) to retrieve group memberships directly from Microsoft Entra ID. The SAML realm continues to authenticate users and delegates authorization to the plugin's realm, which evaluates role mappings to assign roles.
 
-1. Install the plugin and [configure a Microsoft Graph realm](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz-configure-elasticsearch.md).
+1. Install and configure the Microsoft Graph Authz plugin:
 
-2. Add `authorization_realms` to your SAML realm to delegate group lookup and role mapping evaluation to the Microsoft Graph realm. For example, if the Microsoft Graph realm is named `microsoft_graph1`, add this setting to the `kibana-realm` SAML configuration from this guide:
+    1. Install the plugin following the [installation instructions](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md#ms-graph-authz-install).
+    2. Follow [Configure Azure](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz-configure-azure.md) to obtain application credentials and admin consent for the required Microsoft Graph API permissions.
+    3. [Configure a Microsoft Graph realm](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz-configure-elasticsearch.md) with the application's `client_id` and `tenant_id`. Store the realm's `client_secret` as a [secure setting](/deploy-manage/security/secure-settings.md).
+
+2. Add `authorization_realms` to your SAML realm to delegate group lookup and role mapping evaluation to the Microsoft Graph realm.
+
+    For example, if the Microsoft Graph realm is named `microsoft_graph1`, add this setting to the `kibana-realm` SAML configuration from this guide:
 
     ```yaml
     xpack.security.authc.realms.saml.kibana-realm.authorization_realms: microsoft_graph1
     ```
+
+    :::{note}
+    The SAML principal configured with `attributes.principal` must be the user's Microsoft Entra user principal name (UPN) or object ID. This guide uses `attributes.principal: nameid`, so Entra ID must send one of these values as the SAML `NameID`. The default Entra ID `NameID` is the UPN.
+    :::
 
 3. After delegating authorization, create or update role mappings for the Microsoft Graph realm. Update `realm.name` rules that refer to `kibana-realm` to use `microsoft_graph1` instead. Use Microsoft Entra group object IDs for `groups`.
 
@@ -202,6 +212,10 @@ If you can't restrict the groups in the SAML assertion, you can use the [Microso
     }
     ```
 
-    The plugin retrieves transitive group memberships, so the mappings match both direct and nested group memberships.
+    :::{important}
+    Delegating authorization bypasses the SAML realm's role mappings. The Microsoft Graph realm evaluates mappings using the username, its own realm name, and group object IDs. Rules that depend on SAML metadata, such as `metadata.saml_*`, or a distinguished name (`dn`) no longer match.
+    :::
+
+    After SAML authentication, the Microsoft Graph realm must successfully look up the user to complete sign-in. It then retrieves transitive group memberships, so role mappings match both direct and nested group memberships.
 
 The plugin applies to SAML configured in {{es}}, including deployment-level SAML on {{ech}}. It doesn't apply to [{{ecloud}} organization SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md).
