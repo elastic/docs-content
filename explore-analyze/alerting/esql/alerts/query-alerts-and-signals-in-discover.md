@@ -31,8 +31,6 @@ Use the following table to jump to the query you need:
 
 ## Before you begin [alert-history-before-begin]
 
-$$$add-data-views-before-begin$$$
-
 The queries on this page run in **Discover** in {{esql}} mode and read two streams that {{kib}} fills for you:
 
 - `.rule-events` holds the history of your rules. {{kib}} writes one [rule event](../rules/rule-event-field-reference.md) for each row that a scheduled run matches.
