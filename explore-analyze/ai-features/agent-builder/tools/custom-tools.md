@@ -55,19 +55,18 @@ To create a custom tool in the UI:
   :::
 
 3. Fill in the required fields:
-   - **ID**: Enter a unique identifier for your tool (for example, `get_customer_orders`). Agents use this ID to reference the tool. Refer to [Naming conventions](#naming-conventions) for recommended patterns.
-   - **Name**: Enter a descriptive name for your tool.
+   - **Tool ID**: Enter a unique identifier for your tool (for example, `get_customer_orders`). Agents use this ID to reference the tool. Refer to [Naming conventions](#naming-conventions) for recommended patterns.
    - **Description**: Write a clear explanation of what the tool does and when it should be used. Refer to [Writing effective tool descriptions](#writing-effective-tool-descriptions) for guidance.
    - **Type**: Select a tool type from the list.
    - **Parameters**: For tools with {{esql}} queries, define any parameters your query needs.
    - **Labels**: (Optional) Add labels to categorize and organize your tools.
 4. Choose how to save your tool:
    - Click **Save** to create the tool.
-   - Click **Save and test** to create the tool and immediately open the testing interface.
+   - Click **Save & test** to create the tool and immediately open the testing interface.
 
     :::{image} ../images/tool-save-save-and-test-buttons.png
     :screenshot:
-    :alt: Save and Save and test buttons for tool creation
+    :alt: Save and Save & test buttons for tool creation
     :width: 250px
     :::
 
@@ -100,16 +99,16 @@ Where you set it depends on the tool type:
 
 In the [Tools API](../tools.md#tools-api), the setting is the tool's `confirmation.askUser` property, which accepts `never`, `once`, or `always`. A request that retrieves the tool returns the current value.
 
-Confirmation applies only when an agent calls the tool in an interactive conversation:
+Confirmation applies only when an agent calls the tool:
 
-- Calling the tool directly through the Tools API skips confirmation.
-- [A sub-agent that another agent starts can't answer confirmation prompts](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+- Calls that don't come from an agent skip confirmation and run the tool. This includes calls through the Tools API and through the [{{agent-builder}} MCP server](../mcp-server.md).
+- When no one can answer the prompt, such as in a sub-agent run, the call is declined and the tool doesn't run. Refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 ## Test your tools
 
 Before assigning tools to agents, verify they work correctly by testing them. Testing helps ensure your tool returns useful results and handles parameters correctly.
 
-If you didn't select **Save and test** immediately:
+If you didn't select **Save & test** immediately:
 
 1. Find your tool in the Tools list.
 2. Click the test icon (play button) associated with your tool.
