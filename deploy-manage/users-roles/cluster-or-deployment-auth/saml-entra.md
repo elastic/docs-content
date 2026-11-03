@@ -165,12 +165,41 @@ For the configuration in this guide, the group claim name must match [`attribute
 stack: ga 9.1+
 ```
 
-If you can't restrict the groups in the SAML assertion, configure the [Microsoft Graph Authz plugin](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md) to retrieve group memberships from Microsoft Entra ID. Install the plugin and [configure your SAML realm to delegate authorization](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz-configure-elasticsearch.md) to the Microsoft Graph realm.
+If you can't restrict the groups in the SAML assertion, you can use the [Microsoft Graph Authz plugin](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz.md) to retrieve group memberships directly from Microsoft Entra ID. The SAML realm continues to authenticate users and delegates authorization to the plugin's realm, which evaluates role mappings to assign roles.
 
-For example, after configuring a Microsoft Graph realm named `microsoft_graph1`, add this setting to the `kibana-realm` SAML configuration from this guide:
+1. Install the plugin and [configure a Microsoft Graph realm](elasticsearch://reference/elasticsearch-plugins/ms-graph-authz-configure-elasticsearch.md).
 
-```yaml
-xpack.security.authc.realms.saml.kibana-realm.authorization_realms: microsoft_graph1
-```
+2. Add `authorization_realms` to your SAML realm to delegate group lookup and role mapping evaluation to the Microsoft Graph realm. For example, if the Microsoft Graph realm is named `microsoft_graph1`, add this setting to the `kibana-realm` SAML configuration from this guide:
+
+    ```yaml
+    xpack.security.authc.realms.saml.kibana-realm.authorization_realms: microsoft_graph1
+    ```
+
+3. Create or update role mappings for the Microsoft Graph realm. For example, the following mapping assigns the `superuser` role to users who belong to a specific Microsoft Entra ID group:
+
+    ```console
+    POST /_security/role_mapping/SAML_Graph_groups
+    {
+      "enabled": true,
+      "roles": [ "superuser" ],
+      "rules": {
+        "all": [
+          {
+            "field": {
+              "realm.name": "microsoft_graph1"
+            }
+          },
+          {
+            "field": {
+              "groups": "<Microsoft_Entra_group_object_ID>"
+            }
+          }
+        ]
+      },
+      "metadata": { "version": 1 }
+    }
+    ```
+
+    In role mappings for delegated users, set `realm.name` to the name of the Microsoft Graph realm, such as `microsoft_graph1`, instead of the SAML realm. Use Microsoft Entra group object IDs for `groups`. The plugin retrieves transitive group memberships, so the mappings match both direct and nested group memberships.
 
 The plugin applies to SAML configured in {{es}}, including deployment-level SAML on {{ech}}. It doesn't apply to [{{ecloud}} organization SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md).
