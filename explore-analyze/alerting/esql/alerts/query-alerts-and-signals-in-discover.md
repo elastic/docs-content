@@ -29,7 +29,9 @@ Use the following table to jump to the query you need:
 | [Find snoozed series](#find-snoozed-series) | Active and historical snoozes, including who set them and when they expire | `.alert-actions` |
 | [Trace the full story of an incident](#trace-incident) | Both streams filtered or joined together for a complete incident timeline | Both |
 
-## Before you begin [add-data-views-before-begin]
+## Before you begin [alert-history-before-begin]
+
+$$$add-data-views-before-begin$$$
 
 Open **Discover** in {{esql}} mode. The queries on this page read two streams that {{kib}} fills for you:
 
