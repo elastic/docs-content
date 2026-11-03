@@ -30,6 +30,19 @@ The process of tool selection, execution, and analysis consumes tokens. To under
 
 You can also use pre-configured [built-in agents](builtin-agents-reference.md) that are specialized for common use cases.
 
+### Deployment details
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Every agent receives details about the deployment it runs in. It uses those details to tailor guidance to the environment, and it can answer questions about the deployment.
+
+On {{stack}} deployments, the details include the environment ({{ech}}, {{ece}}, or self-managed) and the stack version. The space solution view and the license type and status are included when they are available. On {{serverless-short}}, the details include the project type and the product tier when the project has one. When the deployment is air-gapped, the details include that as well.
+
+{{agent-builder}} sets these values automatically. You can't turn this off.
+
 ## Built-in agents
 
 {{agent-builder}} includes a pre-configured built-in agent optimized for common use cases, which you can also customize using custom instructions, tools, and skills.
