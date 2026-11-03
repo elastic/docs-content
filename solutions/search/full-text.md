@@ -49,6 +49,7 @@ Learn how to build full-text search queries using {{es}}'s query languages:
 
 * [Full-text queries using Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md)
 * [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md)
+* [Search by term proximity and order with the Query DSL intervals query](full-text/intervals-query-tutorial.md)
 
 **Advanced topics**
 

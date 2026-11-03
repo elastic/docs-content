@@ -14,7 +14,7 @@ products:
 
 {{es}} takes advantage of all available resources by distributing data (index shards) among the cluster nodes.
 
-You can influence the data distribution by configuring the [`cluster.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#cluster-total-shards-per-node) dynamic cluster setting to restrict the number of shards that can be hosted on a single node in the cluster. 
+You can influence the data distribution by configuring the [`cluster.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-total-shards-per-node) dynamic cluster setting to restrict the number of shards that can be hosted on a single node in the cluster. 
 
 In earlier {{es}} versions, `cluster.routing.allocation.total_shards_per_node` is set to `1000`. Reaching that limit causes the following error: `Total number of shards per node has been reached` and requires adjusting this setting or reducing the number of shards. In {{es}} 9.x, this setting is not configured by default, which means there is no upper bound on the number of shards per node unless the setting is explicitly defined.
 

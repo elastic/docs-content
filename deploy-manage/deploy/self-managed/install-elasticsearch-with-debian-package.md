@@ -1,10 +1,12 @@
 ---
 navigation_title: Install with Debian package
+description: Install Elasticsearch on Debian-based systems using the APT repository or a downloaded .deb package.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
 applies_to:
   deployment:
-    self:
+    self: ga
+type: how-to
 products:
   - id: elasticsearch
 sub:
@@ -14,11 +16,12 @@ sub:
   export: "export "
   escape: \
   pkg-conf: /etc/default/elasticsearch
+  build-type: deb
 ---
 
 # Install {{es}} with a Debian package [deb]
 
-The Debian package for {{es}} can be [downloaded from our website](#install-deb) or from our [APT repository](#deb-repo). It can be used to install {{es}} on any Debian-based system such as Debian and Ubuntu.
+You can install {{es}} on any Debian-based system such as Debian and Ubuntu using the Debian package. [Download it from our website](#install-deb) or install it from the [APT repository](#deb-repo).
 
 :::{include} _snippets/trial.md
 :::
@@ -53,7 +56,7 @@ You have several options for installing the {{es}} Debian package:
 
 ### Install from the APT repository [deb-repo]
 
-1. You may need to install the `apt-transport-https` package on Debian before proceeding:
+1. You might need to install the `apt-transport-https` package on Debian before proceeding:
 
     ```sh
     sudo apt-get install apt-transport-https
@@ -61,7 +64,7 @@ You have several options for installing the {{es}} Debian package:
 
 2. Save the repository definition to  `/etc/apt/sources.list.d/elastic-9.x.list`:
 
-    ```sh subs=true
+    ```sh
     echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
     ```
 
@@ -92,7 +95,7 @@ These instructions do not use `add-apt-repository` for several reasons:
 
 1. `add-apt-repository` adds entries to the system `/etc/apt/sources.list` file rather than a clean per-repository file in `/etc/apt/sources.list.d`.
 2. `add-apt-repository` is not part of the default install on many distributions and requires a number of non-default dependencies.
-3. Older versions of `add-apt-repository` always add a `deb-src` entry which will cause errors because we do not provide a source package. If you have added the `deb-src` entry, you will see an error like the following until you delete the `deb-src` line:
+3. Earlier versions of `add-apt-repository` always add a `deb-src` entry which will cause errors because we do not provide a source package. If you have added the `deb-src` entry, you will see an error like the following until you delete the `deb-src` line:
 
     ```text
     Unable to find expected entry 'main/source/Sources' in Release file
@@ -103,11 +106,11 @@ These instructions do not use `add-apt-repository` for several reasons:
 :::{warning}
 If two entries exist for the same {{es}} repository, you will see an error like this during `apt-get update`:
 
-```text subs=true
+```text
 Duplicate sources.list entry https://artifacts.elastic.co/packages/9.x/apt/ ...
 ```
 
-Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry or locate the duplicate entry amongst the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
+Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry or locate the duplicate entry among the files in `/etc/apt/sources.list.d/` and the `/etc/apt/sources.list` file.
 :::
 
 :::{include} _snippets/skip-set-kernel-params.md
@@ -115,7 +118,7 @@ Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry
 
 ### Download and install the Debian package manually [install-deb]
 
-The Debian package for {{es}} can be downloaded from the website and installed as follows:
+You can also download and install the {{es}} Debian package manually:
 
 ::::{tab-set}
 
@@ -198,7 +201,7 @@ sudo dpkg -i elasticsearch-<SPECIFIC.VERSION.NUMBER>-amd64.deb
 
 ## Step 8 (Multi-node clusters only): Update the config files [update-config-files]
 
-If you are deploying a multi-node cluster, then the `elasticsearch-reconfigure-node` tool adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+If you are deploying a multi-node cluster, then the `elasticsearch-reconfigure-node` tool adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
 
 :::{note}
 Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
@@ -241,7 +244,7 @@ The Debian package places config files, logs, and the data directory in the appr
 | data | The location of the data files of each index / shard allocated    on the node. | `/var/lib/elasticsearch` | [`path.data`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | jdk | The bundled Java Development Kit used to run {{es}}. Can    be overridden by setting the `ES_JAVA_HOME` environment variable    in `/etc/default/elasticsearch`. | `/usr/share/elasticsearch/jdk` |  |
 | logs | Log files location. | `/var/log/elasticsearch` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
-| plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/elasticsearch/plugins` |  |
+| plugins | Plugin files location. Each plugin has its own subdirectory. | `/usr/share/elasticsearch/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | [`path.repo`](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) |
 
 ## Next steps [_next_steps]

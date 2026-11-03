@@ -59,11 +59,8 @@ When a platform-level repository is associated with a deployment, the `found-sna
 * [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [MinIO](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
-:::{note}
-No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
-:::
+While Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself. Refer to [S3-compatible services](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-compatible-services) for details.
 
 For more details, refer to [Managing snapshot repositories in {{ece}}](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
 

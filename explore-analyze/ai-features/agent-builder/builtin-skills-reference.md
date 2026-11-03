@@ -297,15 +297,24 @@ $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack
 :   Finds and investigates security entities including hosts, users, services, and generic entities. Analyzes entity risk scores, asset criticality, and historical behavior, including signals from Security {{ml-app}} anomaly detection jobs. Use to discover risky entities or profile a specific entity by ID.
 
     :::{dropdown} Assigned tools
-    `security.get_entity`, `security.search_entities`
-
+    `security.get_entity`, `security.search_entities` <br><br>
+    {applies_to}`stack: ga 9.6+` Also `security.get_entity_graph`, `security.get_entity_risk_score_history`, `security.entity_relationship_history`, and `security.get_watchlist_id`, `security.build_redirect_url`.<br><br>
+    {applies_to}`stack: ga 9.5+` Also `security.set_asset_criticality`.<br><br>
+    {applies_to}`stack: ga =9.5` Also `security.list_watchlists`.
     :::
 
-    {applies_to}`stack: ga 9.5+` From 9.5, the skill can also list watchlists to discover watchlist names and members (`security.list_watchlists`) and set entity asset criticality (`security.set_asset_criticality`).
+    {applies_to}`stack: ga 9.6+` From this version, the skill can also:
+       - Render an entity's relationship graph.
+       - Chart an entity's risk score over time.
+       - Answer when a relationship was first or last observed.
+       - Look up a watchlist by name to list its members. Listing watchlists is handled by the [`manage-watchlists`](#agent-builder-manage-watchlists-skill) skill.
+       - Link you to the right {{elastic-sec}} page for operations it doesn't perform in chat.
+
+    {applies_to}`stack: ga 9.5+` From this version, the skill can also set entity asset criticality.
+
+    {applies_to}`stack: ga =9.5` In this version, the skill can also list watchlists to discover watchlist names and members.
 
     **Prerequisites:** [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) enabled and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) populated.
-
-    **Related skills:** [`find-security-ml-jobs`](#agent-builder-find-security-ml-jobs-skill) for deeper investigation of anomalies surfaced during entity analysis. [`manage-watchlists`](#agent-builder-manage-watchlists-skill) to create and modify watchlists.
 
 $$$agent-builder-entity-analytics-leads-skill$$$ `entity-analytics-leads` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Surfaces AI-generated threat hunting leads for security entities. Use when a user asks to review, list, show, triage, dismiss, or generate threat hunting leads, or wants to find proactive threat hunting opportunities surfaced from entity data.
@@ -315,13 +324,31 @@ $$$agent-builder-entity-analytics-leads-skill$$$ `entity-analytics-leads` {appli
 
     :::
 
-$$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
-:   Manages Entity Analytics watchlists. Creates, updates, and deletes watchlists and adds or removes entity membership. Resolves watchlist names to IDs by discovering existing watchlists. All mutating actions require explicit user confirmation before running. For read-only questions about which watchlists exist, the [`entity-analytics`](#agent-builder-entity-analytics-skill) skill also applies.
+$$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`stack: ga 9.5+`
+:   Manages Entity Analytics watchlists. Creates, updates, and deletes watchlists and adds or removes entity membership. Resolves watchlist names to IDs by discovering existing watchlists. All mutating actions require explicit user confirmation before running.
 
     :::{dropdown} Assigned tools
-    `security.list_watchlists`, `security.create_watchlist`, `security.update_watchlist`, `security.delete_watchlist`, `security.add_entities_to_watchlist`, `security.remove_entities_from_watchlist`
+    `security.list_watchlists`, `security.create_watchlist`, `security.update_watchlist`, `security.delete_watchlist`, `security.add_entities_to_watchlist`, `security.remove_entities_from_watchlist`<br><br>
+    {applies_to}`stack: ga 9.6+` Also `security.get_watchlist_id`, `security.set_watchlist_rule_based_data_source`, `security.remove_watchlist_rule_based_data_source`, `security.list_watchlist_data_sources`, and `security.build_redirect_url`.
+    :::
+
+    {applies_to}`stack: ga 9.6+` From this version, the skill can also:
+       - Keep a watchlist in sync automatically by setting or removing its [rule-based data source](/solutions/security/advanced-entity-analytics/watchlists.md#watchlists-create).
+       - List the data sources feeding a watchlist.
+       - Find a watchlist by name.
+       - Link you to a watchlist's editor for CSV uploads, which aren't performed in chat.
+
+    {applies_to}`stack: ga =9.5` In this version, for read-only questions about which watchlists exist, the [`entity-analytics`](#agent-builder-entity-analytics-skill) skill also applies.
+
+$$$agent-builder-entity-resolution-skill$$$ `entity-resolution` {applies_to}`stack: ga 9.6+`
+:   Manages [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md). Shows an entity's resolution group, which is the primary entity and every alias linked to it. Links or unlinks entities, and lists, enables, or disables the automated resolution rules. All mutating actions require explicit user confirmation before running. Bulk CSV imports aren't performed in chat. Instead, the agent links you to the **Entity resolution** tab of the **Entity Analytics** management page. For the resolution group's risk score trend, use the [`entity-analytics`](#agent-builder-entity-analytics-skill) skill.
+
+    :::{dropdown} Assigned tools
+    `security.get_resolution_group`, `security.link_entities`, `security.unlink_entities`, `security.list_resolution_rules`, `security.set_resolution_rules`, `security.build_redirect_url`, `security.get_entity`
 
     :::
+
+    **Prerequisites:** An [Enterprise license](https://www.elastic.co/subscriptions) and a populated [entity store](/solutions/security/advanced-entity-analytics/entity-store.md).
 
 $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies_to}`stack: ga 9.4+`
 :   Investigates atypical behavior detected by {{ml-app}} jobs, including unusual or first-time access patterns, access outside working hours, privileged accounts with unusual command patterns, logins from unexpected geographic locations, lateral movement, and large or unusual data transfers.
@@ -394,6 +421,18 @@ $$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` 
     **Prerequisites:** [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) deployed and reporting.
 
     {applies_to}`stack: preview =9.4` In this version, the `automaticTroubleshootingSkill` [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled for the skill to appear.
+
+$$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-policy-management` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Helps you decide how to configure [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) integration policies. Explains what a policy setting does and which values it accepts, compares policies with each other or with a preset baseline, lists policies and whether any endpoints use them, and reports how many endpoints haven't yet applied the latest policy revision. Assesses the impact of a proposed change and offers guidance on moving from detect to prevent and on staged rollouts. After you confirm, it can also apply a change to a single policy.
+
+    :::{dropdown} Assigned tools
+    `platform.core.integration_knowledge`, plus internal tools to list, read, and compare policies, look up setting details, report rollout status, assess a proposed change, and apply a confirmed change.
+    :::
+
+    **Prerequisites:**
+
+    - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) installed, with at least one integration policy in the current space.
+    - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
 
 ## Elasticsearch skills
 ```{applies_to}
