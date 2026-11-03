@@ -72,7 +72,14 @@ By default, ECK sets `config.reload.automatic: true` in `logstash.yml` to enable
 
 ## Configuring Logstash pipelines [k8s-logstash-pipelines]
 
-You can define Logstash pipelines inline in the `spec.pipelines` section, or reference them from a Secret or a ConfigMap through `spec.pipelinesRef`. Specify at most one of `spec.pipelines` and `spec.pipelinesRef`.
+You can define [Logstash pipelines](logstash://reference/logstash/creating-logstash-pipeline.md) using the following methods:
+
+* [Inline](#k8s-logstash-pipelines-inline) in the `spec.pipelines` section
+* Reference a `pipelines.yml` entry from a [Secret](#k8s-logstash-pipelines-secret) or a [ConfigMap](#k8s-logstash-pipelines-configmap) through `spec.pipelinesRef`. 
+
+Specify at most one of `spec.pipelines` and `spec.pipelinesRef`.
+
+All standard `pipelines.yml` settings are supported. Refer to [Pipeline options](#k8s-logstash-pipelines-options) for an example.
 
 ### Inline pipelines [k8s-logstash-pipelines-inline]
 
