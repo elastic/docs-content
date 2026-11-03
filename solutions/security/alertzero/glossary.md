@@ -120,5 +120,5 @@ An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-
 
 - [](index.md): What {{alertzero}} is and how its parts fit together.
 - [](watches-and-workers.md): Reference for every {{az-watch}} and {{az-worker}}.
-- [](use-alertzero.md): The **{{az-proposed-actions-cap}}** page, where you decide {{az-proposed-actions}}.
+- [](use-alertzero.md): Find the work that {{az-workers}} bring you and decide what happens next.
 - [](manage-alertzero.md): What you can and can't configure in {{alertzero}}.
