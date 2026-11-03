@@ -114,7 +114,7 @@ serverless: ga
 
 The {{kib}} privileges described above control who can use {{agent-builder}} at all. Individual conversations have a second layer of access control on top of that, so the owner of a conversation can decide who else can read it.
 
-Conversations are private by default. Only the user who created a conversation, its owner, can see it.
+Conversations are private by default. Only the owner, who created the conversation, can see it. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` A service account that creates a conversation is that owner. Refer to [Service accounts](#service-accounts).
 
 ### Access modes
 
@@ -138,7 +138,7 @@ Members cannot rename the conversation, delete it, or change who it is shared wi
 
 You can share with individual users only. Granting access to an {{es}} role is not supported.
 
-Members are identified by their {{kib}} user profile ID, not by username. A user who has never logged in to {{kib}} has no profile and cannot be added.
+Members are identified by their {{kib}} user profile ID, not by username. A user who has never logged in to {{kib}} has no profile and cannot be added. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` A service account has no profile either, so Agent Chat cannot add it as a member. Refer to [Service accounts](#service-accounts).
 
 ### Who can do what
 
@@ -190,3 +190,26 @@ When configuring roles in the {{kib}} UI, {{agent-builder}} privileges appear un
 Use API keys for custom clients, scripts, MCP clients, and A2A clients. API key role descriptors combine the same {{kib}} application privileges, {{es}} privileges, and space scope described on this page. An API key cannot grant privileges that its owner does not have.
 
 Refer to [Create API keys for {{agent-builder}} APIs](api-keys.md) for complete examples for read-only clients, management clients, and unrestricted development keys. To learn more about API key behavior and management, refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
+
+### Service accounts [service-accounts]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: unavailable
+```
+
+A user-managed service account can call the {{agent-builder}} HTTP APIs with its own identity. Authenticate with a [service token](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#service-accounts-tokens) and the `Bearer` scheme. A service account cannot sign in to the {{kib}} UI.
+
+% After elastic/docs-content#8921 merges, link token setup to authenticate-kibana-api-with-service-account.md. The published service accounts page still documents built-in accounts only.
+
+Built-in service accounts, such as `elastic/fleet-server`, have fixed privileges. They cannot be granted {{agent-builder}} access.
+
+Assign the account a role with the same {{kib}} and {{es}} privileges you would give a user who chats with the agent. Scope that role to the space the client calls. The role must include **Agent Builder: Read**. Without an `agentBuilder` privilege, requests return `403`.
+
+The agent runs with the service account's privileges. A tool cannot read an index the role cannot read. For the privilege list, refer to [How permissions work](#how-permissions-work).
+
+The account owns the conversations it creates, including private ones. It can also read and continue public conversations that other users own. A private conversation it does not own is reported as not found.
+
+A service account has no {{kib}} user profile. **Search for users to add** does not list it, so Agent Chat cannot add it as a member. To let it continue someone else's conversation, make that conversation public.
+
+For a request example, refer to [Chat as a service account](kibana-api.md#chat-as-a-service-account).
