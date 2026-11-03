@@ -11,7 +11,7 @@ description: Verify rule logic against historical data, assess alert volume, and
 
 # Validate and test rules
 
-Before enabling a new detection rule in production, validate that it detects what you intend, at a volume your team can handle, without generating excessive false positives. The steps below apply to any [rule type](/solutions/security/detect-and-alert/rule-types.md).
+Before enabling a new detection rule in production, validate that it detects what you intend, at a volume your team can handle, without generating excessive false positives. The following steps apply to any [rule type](/solutions/security/detect-and-alert/rule-types.md).
 
 ## Preview rules against historical data [validate-historical-data]
 
@@ -31,15 +31,33 @@ If the rule uses [alert suppression](/solutions/security/detect-and-alert/alert-
 
 ## Validate using AI [validate-using-ai]
 
-Elastic's AI chat experiences can review your rule's logic and suggest improvements. You can use AI to check whether a query is too broad, identify likely false positive patterns, verify MITRE ATT&CK alignment, or evaluate scheduling and suppression settings.
+AI chat can review your rule's logic and suggest improvements. Use it to check whether a query is too broad, identify likely false positive patterns, verify MITRE ATT&CK alignment, or evaluate scheduling and suppression settings.
 
-With [AI Assistant](/solutions/security/ai/ai-assistant.md), you can describe a rule or paste its query into a chat and ask validation-related questions such as:
+### Use {{agent-builder}} [validate-using-agent-builder]
+
+```{applies_to}
+stack: preview =9.3, ga 9.4+
+serverless:
+  security: ga
+```
+
+Describe a rule or paste its query into an {{agent-builder}} chat and ask validation-related questions such as:
 
 - "Does this query match more broadly than intended? What legitimate activity could it catch?"
 - "What MITRE ATT&CK techniques does this rule cover, and are there gaps?"
 - "Is a 5-minute scheduling interval appropriate for this data source, or would a longer interval reduce noise without missing threats?"
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` With [Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md), refer to [Create and refine detection rules in Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md#create-and-refine-detection-rules-in-agent-builder) to attach a detection rule and provide the full rule definition as context. This removes the need to copy and paste and gives the agent access to all rule fields when answering your questions.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` To avoid copying and pasting, attach a detection rule to the chat so the agent can read all its fields. Refer to [Create and refine detection rules in {{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md#create-and-refine-detection-rules-in-agent-builder).
+
+### Use AI Assistant [validate-using-ai-assistant]
+
+```{applies_to}
+stack: ga 9.0-9.5, deprecated 9.6+
+serverless:
+  security: deprecated
+```
+
+In deployments or spaces that still use [AI Assistant](/solutions/security/ai/ai-assistant.md), you can ask the same questions in an AI Assistant chat. To switch to {{agent-builder}}, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
 ## Run manual tests [manual-test-run]
 

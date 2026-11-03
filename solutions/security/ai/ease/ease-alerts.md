@@ -18,7 +18,7 @@ Once you've ingested your alerts to Elastic AI SOC Engine (EASE), you can view, 
 
 ## View alert details
 
-An alert's details flyout shows its basic information, highlighted fields, and any associated attack discoveries. It also enables you to generate an AI summary of the alert, or collaborate with AI Assistant to continue your investigation. 
+An alert's details flyout shows its basic information, highlighted fields, and any associated attack discoveries. It also enables you to generate an AI summary of the alert, or continue your investigation in an AI chat.
 
 To open the alert details flyout, select the **Expand** button ({icon}`expand`) from the alert's row in the alerts table.
 
@@ -31,7 +31,7 @@ You can take several actions from the alert details flyout:
 - **Generate insights**: To generate an AI description of the alert with recommended actions, click **Generate insights**. (The connector used here is the default LLM for your project. To update it, navigate to the **Advanced settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and update the **Default AI Connector**.)
 
    :::{note}
-   The recommended actions are informed by any relevant custom knowledge you may have added to the AI Assistant's [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md). For example, if you have specified a particular teammate is responsible for a particular type of alert of part of your infrastructure, it would recommend contacting that person. 
+   If your project still uses AI Assistant, the recommended actions are informed by any relevant custom knowledge you added to its [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md). For example, if you have specified a particular teammate is responsible for a particular type of alert of part of your infrastructure, it would recommend contacting that person.
    :::
 
 - **Ask AI Assistant** or **Add to chat**: To start an AI chat, select one of the suggested prompts or click **Ask AI Assistant** or **Add to chat**. 

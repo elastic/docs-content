@@ -35,7 +35,7 @@ Specifically:
 * To be able to use {{kib}} sample data, install or update hundreds of prebuilt alert rules, and explore available data integrations, you need to set up and configure the [{{package-registry}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry).
 * To provide detection rule updates for {{endpoint-sec}} agents, you need to set up and configure the [Elastic Endpoint Artifact Repository](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository).
 * To access the APM integration, you need to set up and configure [Elastic APM](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-apm).
-* To install and use the Elastic documentation for {{kib}} AI assistants, you need to set up and configure the [Elastic product documentation for {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana-product-documentation).
+* To install and use Elastic documentation in {{kib}} AI chat, set up and configure [Elastic product documentation for {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana-product-documentation).
 
 
 ## {{beats}} [air-gapped-beats]
@@ -452,6 +452,6 @@ Some {{ml}} features, like natural language processing (NLP), require you to dep
 * [Install trained models in an air-gapped environment with Eland](eland://reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
 
 
-## {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
+## {{kib}} product documentation for AI chat [air-gapped-kibana-product-documentation]
 
-Installing the AI Assistant knowledge base content (Elastic documentation and Security Labs) requires network access to the artifact repository at `https://kibana-knowledge-base-artifacts.elastic.co/`. If you don't have access, which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually. For details, refer to [Host a knowledge base artifact repo for AI assistants](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
+Installing Elastic documentation for {{agent-builder}} or AI Assistant requires access to the artifact host at `https://kibana-knowledge-base-artifacts.elastic.co/`. If {{kib}} can't reach it, which is common in air-gapped or restricted networks, mirror the artifacts to infrastructure that {{kib}} can reach. For details, refer to [Host an artifact repo for Elastic product documentation](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).

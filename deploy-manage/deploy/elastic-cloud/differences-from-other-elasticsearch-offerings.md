@@ -149,7 +149,8 @@ This table compares the {{observability}} solution on {{ech}} deployments with O
 
 | **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ (deprecated) | ✅ (deprecated) | The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
+| [**Agent Builder**](/solutions/observability/ai/agent-builder-observability.md) | ✅ | ✅ | The default AI chat experience. |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ (deprecated in 9.4) | ✅ (deprecated) | The {{obs-ai-assistant}} is deprecated. Use [Agent Builder](/solutions/observability/ai/agent-builder-observability.md) instead. Refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
 | **APM integration** | ✅ | ✅ | Use **Managed Inputs** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](opentelemetry://reference/motlp.md) for OTLP data ingestion |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
@@ -184,7 +185,8 @@ This table compares the Security solution on {{ech}} deployments with {{serverle
 | **Feature** | {{ech}} | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
 | **[Entity analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
-| **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
+| **[Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md)** | ✅ | ✅ | The default AI chat experience. |
+| **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ (deprecated in 9.6) | ✅ (deprecated) | AI Assistant for Security is deprecated. Use [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md) instead. Refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
 | [**Defend for Containers integration**](https://www.elastic.co/guide/en/security/8.18/d4c-overview.html) | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **[Endpoint security](/solutions/security/configure-elastic-defend.md)** | ✅ | ✅ | |

@@ -1,5 +1,5 @@
 ---
-navigation_title: "Knowledge base artifact repo for AI Assistant"
+navigation_title: "Host a documentation artifact repo"
 applies_to:
   self: ga 9.1+
 products:
@@ -7,14 +7,12 @@ products:
   - id: security
   - id: observability
   - id: elasticsearch
-description: Host AI Assistant knowledge base artifacts using S3-compatible storage, CDN, or local paths when Kibana cannot reach Elastic’s public URL, then set the repository URL and install from the assistant UI.
+description: Host Elastic product documentation artifacts for Agent Builder and AI Assistant using S3-compatible storage, CDN, or local paths when Kibana cannot reach Elastic’s public URL, then set the repository URL and install from the UI.
 ---
 
-# Host a knowledge base artifact repo for AI Assistant [host-knowledge-base-artifact-repo-for-ai-assistant]
+# Host an artifact repo for Elastic product documentation [host-knowledge-base-artifact-repo-for-ai-assistant]
 
-When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually. You do that by mirroring Elastic’s versioned knowledge base artifact ZIP files to infrastructure that {{kib}} can reach.
-
-This page walks you through hosting those ZIP files, configuring the repository URL in {{kib}}, and installing knowledge base content from the AI Assistant so assistants can use Elastic product documentation without reaching Elastic’s public artifact host.
+When {{kib}} can't use Elastic’s [public artifact URL](https://kibana-knowledge-base-artifacts.elastic.co/), which is common for deployments in air-gapped or restricted networks, you must deploy the artifact repository manually. To do this, follow the steps below to mirror Elastic’s versioned product documentation ZIP files to infrastructure that {{kib}} can reach. 
 
 ## Choose a hosting option [choose-a-hosting-option-for-knowledge-base-artifacts]
 
@@ -40,7 +38,7 @@ Choose the tab that matches your deployment and hosting setup:
 Check which stack version you’re running (for example, 9.1). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
 :::
 
-Elastic publishes knowledge base artifact ZIP files for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
+Elastic publishes product documentation artifact ZIP files for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
 
 ```yaml
 kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
@@ -111,10 +109,11 @@ xpack.productDocBase.artifactRepositoryUrl: "<MY_CUSTOM_REPOSITORY_URL>"
 
 ::::
 
-::::{step} Install knowledge base content from the AI Assistant UI
+::::{step} Install Elastic documentation from the {{kib}} UI
 
-The steps to install knowledge base content depend on the assistant that you use:
+The steps to install Elastic documentation depend on the AI chat experience that you use:
 
+* **{{agent-builder}}** {applies_to}`self: preview =9.3, ga 9.4+`: Refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
 * **AI Assistant for Security**: Refer to [Give AI Assistant access to Elastic’s product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
 * **AI Assistant for Observability and Search**: Refer to [Add Elastic documentation](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-product-documentation).
 
@@ -134,7 +133,7 @@ The steps to install knowledge base content depend on the assistant that you use
 Check which stack version you’re running (for example, 9.1). The `{{versionMajor}}.{{versionMinor}}` segment in each file name must match that release. If it doesn’t match your {{kib}} release, or the file names differ from what Elastic publishes for that release, installation will fail.
 :::
 
-Elastic publishes knowledge base artifact ZIP files for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
+Elastic publishes product documentation artifact ZIP files for each minor version, one each for {{es}}, {{kib}}, {{observability}}, and {{elastic-sec}}. File names follow this pattern:
 
 ```yaml
 kb-product-doc-{{productName}}-{{versionMajor}}.{{versionMinor}}.zip
@@ -205,10 +204,11 @@ xpack.productDocBase.artifactRepositoryUrl: "<MY_CUSTOM_REPOSITORY_URL>"
 
 ::::
 
-::::{step} Install knowledge base content from the AI Assistant UI
+::::{step} Install Elastic documentation from the {{kib}} UI
 
-The steps to install knowledge base content depend on the assistant that you use:
+The steps to install Elastic documentation depend on the AI chat experience that you use:
 
+* **{{agent-builder}}** {applies_to}`self: preview =9.3, ga 9.4+`: Refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
 * **AI Assistant for Security**: Refer to [Give AI Assistant access to Elastic’s product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
 * **AI Assistant for Observability and Search**: Refer to [Add Elastic documentation](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-product-documentation).
 
@@ -303,10 +303,11 @@ With a `file://` repository, the directory must sit on the {{kib}} host, or on s
 
 ::::
 
-::::{step} Install knowledge base content from the AI Assistant UI
+::::{step} Install Elastic documentation from the {{kib}} UI
 
-The steps to install knowledge base content depend on the assistant that you use:
+The steps to install Elastic documentation depend on the AI chat experience that you use:
 
+* **{{agent-builder}}** {applies_to}`self: preview =9.3, ga 9.4+`: Refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
 * **AI Assistant for Security**: Refer to [Give AI Assistant access to Elastic’s product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
 * **AI Assistant for Observability and Search**: Refer to [Add Elastic documentation](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-product-documentation).
 

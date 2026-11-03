@@ -2,16 +2,22 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html
   - https://www.elastic.co/guide/en/serverless/current/ai-assistant-knowledge-base.html
+description: Enable the AI Assistant Knowledge Base and add documents, files, and indices so AI Assistant for Security can use your own information. Agent Builder doesn't use it.
 applies_to:
-  stack: all
+  stack: deprecated 9.6+, ga 9.0-9.5
   serverless:
-    security: all
+    security: deprecated
 products:
   - id: security
   - id: cloud-serverless
 ---
 
 # AI Assistant Knowledge Base
+
+:::{warning}
+:applies_to: {"stack": "deprecated 9.6+", "serverless": "deprecated"}
+AI Assistant for Security has been deprecated. Use [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) instead. Agent Builder doesn't use Knowledge Base entries, and they aren't migrated. To give agents similar context, refer to [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content).
+:::
 
 AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific documents and other specified information. This information, which can include everything from the location of your datacenters to the latest threat research, provides additional context that can improve the quality of AI Assistant’s responses to your queries. This topic describes how to enable and add information to Knowledge Base.
 
@@ -42,7 +48,7 @@ The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant an
 
 When you enable Knowledge Base, AI Assistant automatically gains access to Elastic's product documentation. This improves its answers to questions related to Elastic products and features.
 
-For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. Refer to the [Knowledge base artifact settings for AI Assistants](kibana://reference/configuration-reference/ai-assistant-settings.md) for `kibana.yml` settings and proxy options. To mirror the artifact repository to your own infrastructure (S3-compatible bucket, CDN, or local path), refer to [Host a knowledge base artifact repo for AI Assistant](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
+For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. Refer to the [Knowledge base artifact settings for AI Assistants](kibana://reference/configuration-reference/ai-assistant-settings.md) for `kibana.yml` settings and proxy options. To mirror the artifact repository to your own infrastructure (S3-compatible bucket, CDN, or local path), refer to [Host an artifact repo for Elastic product documentation](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
 
 ## Enable Knowledge Base [enable-knowledge-base]
 
