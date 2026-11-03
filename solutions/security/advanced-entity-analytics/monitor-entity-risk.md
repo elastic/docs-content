@@ -42,9 +42,9 @@ serverless: preview
 :::{admonition} Requirements
 * To display threat hunting leads, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 * To view or generate threat hunting leads, you need the following privileges:
-  * **View leads**: `read` for `.entity_analytics.entity-leads-*`
+  * **View leads**: `read` for `.entity_analytics.entity-leads*`
   * **Generate leads**:
-    * `read`, `create_index`, and `write` for `.entity_analytics.entity-leads-*`
+    * `read`, `create_index`, and `write` for `.entity_analytics.entity-leads*`
     * **Read** for the **Management > Actions and Connectors** feature
 :::
 

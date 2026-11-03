@@ -331,7 +331,7 @@ toc:
                       - file: observability/apm/elastic-apm-agent-configuration-api.md
                       - file: observability/apm/opentelemetry-intake-api.md
                       - file: observability/apm/jaeger-event-intake.md
-                  - file: observability/apm/managed-intake-service-event-api.md
+                  - file: observability/apm/managed-inputs-apm-intake-event-api.md
               - file: observability/apm/upgrade.md
                 children:
                   - file: observability/apm/apm-agent-compatibility.md
@@ -492,6 +492,17 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
+      - file: observability/metrics.md
+        children:
+          - file: observability/metrics/get-started.md
+          - file: observability/metrics/plan-your-setup.md
+          - file: observability/metrics/ingest.md
+          - file: observability/metrics/migrate.md
+            children:
+              - file: observability/metrics/migrate/prometheus.md
+              - file: observability/metrics/migrate/datadog.md
+          - file: observability/metrics/explore.md
+          - file: observability/metrics/manage-storage.md
       - file: observability/streams/streams.md
         children:
         - file: observability/streams/get-data-in.md

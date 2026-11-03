@@ -12,13 +12,13 @@ description: "Monitor action policy dispatch activity from the execution history
 
 In {{alerting-v2-system}}, action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
 
-Go to **Execution history** in the navigation menu or [global search](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alerts it processed:
+Go to **Alerting** → **Execution History** in the {{observability}} navigation menu, or find **Execution History** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the **Action policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alerts it processed:
 
 | Column | Description |
 |---|---|
 | **Timestamp** | When the dispatcher ran. |
-| **Policy** | The action policy that was evaluated. |
-| **Outcome** | Whether the dispatcher acted on the alert: `dispatched`, `throttled`, or `unmatched`. Definitions are in [Dispatch outcomes](#dispatch-outcomes). |
+| **Action policy** | The action policy that the dispatcher evaluated. |
+| **Outcome** | Whether the dispatcher invoked a workflow: **Dispatched**, **Throttled**, or **Failed**. Definitions are in [Dispatch outcomes](#dispatch-outcomes). |
 | **Rules** | The rule whose alerts the action policy processed. |
 | **Alerts** | The number of alerts processed in this run. |
 | **Action groups** | The number of action groups involved. |
@@ -33,19 +33,19 @@ Go to **Execution history** in the navigation menu or [global search](/explore-a
      otherwise 1."). Verify with the Alerting v2 team before uncommenting.
 -->
 
-You can search records by action policy name, rule name, or saved-object ID, and filter by outcome to view only dispatched or throttled records.
+You can search records by action policy name, rule name, or saved-object ID, and filter by outcome to view only dispatched, throttled, or failed records.
 
 ## Dispatch outcomes [dispatch-outcomes]
 
-After each dispatcher run, {{kib}} records one of three outcomes for each action policy:
+After each dispatcher run, {{kib}} records an outcome for each action policy in the event log. The **Action policies** tab shows these outcomes:
 
-| Outcome | What it means |
-|---|---|
-| `dispatched` | The dispatcher invoked a workflow for the alert. |
-| `throttled` | The alert matched an action policy but was rate-limited by the frequency setting, so no workflow ran. This is expected behavior, not an error. |
-| `unmatched` | No action policy matched the alert. No workflow ran. |
+| Outcome | Event-log value (`event.action`) | What it means |
+|---|---|---|
+| **Dispatched** | `dispatched` | The dispatcher invoked a workflow for the alert. |
+| **Throttled** | `throttled` | The alert matched an action policy but was rate-limited by the frequency setting, so no workflow ran. This is expected behavior, not an error. |
+| **Failed** | `dispatch_failed` | The dispatcher failed to invoke the workflow, so no workflow ran. The row shows the failure reason: `missing_api_key`, `workflow_not_found`, `workflow_disabled`, `schedule_error`, or `license_not_supported`. The outcome's tooltip shows the error message. |
 
-`unmatched` is recorded in the event log but isn't available as an outcome filter in the execution history. To find those records, open Discover and query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
+When no action policy matches an alert, the event log records `unmatched`, and no workflow runs. These records don't appear in the execution history. To find them, open Discover and query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
 
 :::{note}
 Alerts that are acknowledged, snoozed, resolved, or covered by a [maintenance window](../../alerts/maintenance-windows.md) fail the eligibility check, so the dispatcher doesn't evaluate action policies for them. They don't appear in the execution history.

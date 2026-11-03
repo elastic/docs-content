@@ -1,0 +1,33 @@
+name: "PRs: Request docs review when no file has a code owner"
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+
+permissions: {}
+
+jobs:
+  request-docs-review:
+    if: ${{ !github.event.pull_request.draft && github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v9.0.0
+        with:
+          # The default GITHUB_TOKEN can't request a team as reviewer.
+          github-token: ${{ secrets.ADD_TO_BOARD_TOKEN }}
+          script: |
+            // Keep in sync with the ownerless lines at the end of .github/CODEOWNERS.
+            const unowned = (path) =>
+              path === 'redirects.yml' || path === 'docset.yml' || path.split('/').pop() === 'toc.yml'
+            const { owner, repo } = context.repo
+            const pull_number = context.payload.pull_request.number
+
+            const files = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number, per_page: 100 })
+            if (!files.length || !files.every((f) => unowned(f.filename))) return
+
+            const { data: requested } = await github.rest.pulls.listRequestedReviewers({ owner, repo, pull_number })
+            const reviews = await github.paginate(github.rest.pulls.listReviews, { owner, repo, pull_number, per_page: 100 })
+            if (requested.users.length || requested.teams.length || reviews.length) return
+
+            await github.rest.pulls.requestReviewers({ owner, repo, pull_number, team_reviewers: ['docs'] })
+            core.info('No changed file has a code owner. Requested review from the docs team.')

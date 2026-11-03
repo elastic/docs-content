@@ -16,6 +16,7 @@ products:
 
 Use the topics in this section to troubleshoot {{ecloud}}:
 
+* [](/troubleshoot/deployments/elastic-cloud/cloud-console-access-denied.md)
 * [](/troubleshoot/deployments/elastic-cloud/sso.md)
 * [](/troubleshoot/monitoring/unavailable-nodes.md)
 * [](/troubleshoot/monitoring/unavailable-shards.md)
