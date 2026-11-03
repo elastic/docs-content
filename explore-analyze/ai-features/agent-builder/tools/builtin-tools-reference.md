@@ -68,6 +68,8 @@ $$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {ap
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also generate queries against [datasets](#agent-builder-builtin-tools-datasets).
 
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The tool can also generate [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) queries for metrics data when you ask for PromQL or provide a PromQL expression.
+
 `platform.core.get_document_by_id` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Retrieves the full content of an {{es}} document based on its ID and index name.
 
