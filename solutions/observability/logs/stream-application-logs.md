@@ -81,7 +81,7 @@ This feature is supported for the following {{apm-agent}}s:
 
 ### {{apm-agent}} log sending [observability-correlate-application-logs-apm-agent-log-sending]
 
-Automatically capture and send logs directly to the managed intake service using the {{apm-agent}} without using {{filebeat}} or {{agent}}.
+Automatically capture and send logs directly to managed inputs using the {{apm-agent}} without using {{filebeat}} or {{agent}}.
 
 Log sending is supported in the Java {{apm-agent}}.
 

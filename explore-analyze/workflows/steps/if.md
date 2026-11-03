@@ -30,12 +30,14 @@ Use the following parameters to configure an `if` step:
 steps:
   - name: conditionalStep
     type: if
-    condition: <KQL expression>
+    condition: <boolean or KQL expression>
     steps:
       # Steps to run if condition is true
     else:
       # Steps to run if condition is false (optional)
 ```
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` To run or skip one step on its own instead of branching between two sets of steps, set `if` on that step. Refer to [Skip a single step](#workflows-step-level-if).
 
 The `condition` field supports the following expression types:
 
@@ -135,7 +137,7 @@ This example runs different steps based on the event severity:
 steps:
   - name: checkSeverity
     type: if
-    condition: event.severity: 'critical'
+    condition: "event.severity: 'critical'"
     steps:
       - name: handleCritical
         type: console
@@ -147,6 +149,8 @@ steps:
         with:
           message: "Normal severity"
 ```
+
+You can write the same check as a [boolean expression](#boolean-expressions) with `${{ }}` syntax, for example `condition: "${{ event.severity == 'critical' }}"`.
 
 ### Example: Check search results count
 
@@ -193,3 +197,64 @@ steps:
       - name: process-authorized
         type: http
 ```
+
+## Skip a single step [workflows-step-level-if]
+```{applies_to}
+serverless: ga
+stack: ga 9.4+
+```
+
+When only one step in a workflow is optional, you don't need a separate `if` step to control it. Instead, set `if` directly on that step. This step-level `if` makes the step run only when its condition is true. When the condition is false, the workflow skips the step and continues with the next one.
+
+For example, the following snippets both run a `notify` step only when an earlier search step, `find_failed_logins`, finds at least one match. The first snippet wraps `notify` in an `if` step:
+
+```yaml
+- name: check_results
+  type: if
+  condition: "steps.find_failed_logins.output.hits.total.value > 0"
+  steps:
+    - name: notify
+      type: console
+      with:
+        message: "Found {{ steps.find_failed_logins.output.hits.total.value }} failed logins."
+```
+
+The second snippet sets a step-level `if` on `notify`. The result is the same, with one fewer step and one fewer level of nesting:
+
+```yaml
+- name: notify
+  type: console
+  if: "steps.find_failed_logins.output.hits.total.value > 0"
+  with:
+    message: "Found {{ steps.find_failed_logins.output.hits.total.value }} failed logins."
+```
+
+Use an `if` step instead when you need an `else` branch for the false case, or when one condition controls several steps.
+
+A step-level `if` accepts the same [boolean](#boolean-expressions) and [KQL](#kql-expressions) expressions as the `if` step's `condition`.
+
+A skipped step doesn't produce output, so a later reference such as `{{ steps.notify.output }}` resolves to an empty value. If a later step depends on the skipped step's output, set the same condition on that step too.
+
+### Step-level `if` limitations and alternatives [workflows-step-level-if-limitations]
+
+A step-level `if` causes a validation error in the following cases. Each case has an alternative that you can use instead.
+
+#### Add another condition to an `if` step [workflows-step-level-if-on-if-step]
+
+An `if` step already uses `condition` to decide what runs, so it can't also have a step-level `if`. For example, an `if` step can't have both `condition: "status: active"` and `if: "inputs.enabled: true"`.
+
+Instead, combine both checks in `condition` with `and`, for example `condition: "status: active and inputs.enabled: true"`.
+
+#### Skip a step inside a `parallel` branch [workflows-step-level-if-parallel-branch]
+
+Steps inside a [`parallel`](/explore-analyze/workflows/steps/parallel.md) branch can't have a step-level `if`, so a branch can't skip individual steps. For example, you can't skip a GeoIP lookup in one branch when an alert has no source IP.
+
+To run or skip all branches at once, add `if` to the `parallel` step instead, for example `if: "inputs.enrich: true"`. To skip steps in only one branch, move those steps into a child workflow, add `if` to them there, and call the child workflow from the branch with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute).
+
+For more about what a branch can contain, refer to [Branch body limitations](/explore-analyze/workflows/steps/parallel.md#workflows-parallel-branch-limits).
+
+#### Use a condition longer than 2,000 characters [workflows-step-level-if-condition-length]
+
+A step-level `if` and an `if` step's `condition` can each be up to 2,000 characters long. You might reach this limit with a check that lists hundreds of host names joined with `or`.
+
+Instead, move the long part out of the condition. For example, store the host names as a list in [`consts`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-consts), then check the list with `if: "${{ consts.watched_hosts contains inputs.host_name }}"`. You can also calculate a value in an earlier [`data.set`](/explore-analyze/workflows/steps/data.md#data-set) step and check that value instead.
