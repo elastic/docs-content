@@ -67,47 +67,86 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-A pre-execution workflow can read details about the current run and return context for the model and for workflows that run after the agent responds.
+A pre-execution workflow can read details about the current run. It can also return context for the model and for workflows that run after the agent responds.
 
-Declare inputs under the workflow's manual trigger. Refer to [`inputs`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs). Inside the workflow, reference an input as `{{ inputs.prompt }}`.
+#### Inputs [pre-execution-workflow-inputs]
 
-The Sent column shows when {{agent-builder}} sends each input:
+Declare inputs under the workflow's manual trigger, as described in [`inputs`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs). Inside the workflow, reference an input as `{{ inputs.prompt }}`.
+
+{{agent-builder}} can send these inputs:
 
 | Input | Sent | Contains |
 |---|---|---|
-| `prompt` | Always | The user message for this run. An empty string when the run has no user message, such as a resume that only answers a [human-in-the-loop prompt](chat.md#human-in-the-loop-prompts). If an earlier workflow in the sequence returns `new_prompt`, later workflows receive that text as `prompt`. |
-| `conversation_id` | When the run has one, even if not declared | The conversation ID. When the run doesn't save a conversation, such as an [`ai.agent` step](#use-ai-agent-workflow-step) without a conversation ID, this ID doesn't match a saved conversation. |
+| `prompt` | Always | The user message for this run. If an earlier workflow in the sequence returns `new_prompt`, later workflows receive that text as `prompt`.<br><br>An empty string when the run has no user message, such as a resumed run that only answers a [human-in-the-loop prompt](chat.md#human-in-the-loop-prompts). |
+| `conversation_id` | When the run has one, even if not declared | The conversation ID.<br><br>When the run doesn't save a conversation, this ID doesn't match a saved conversation. For example, an [`ai.agent` step](#use-ai-agent-workflow-step) that sets neither `conversation_id` nor `create-conversation: true` doesn't save one. |
 | `agent_id` | Only when declared | The agent ID. Omitted when the run has no agent ID. |
 | `round_execution_index` | Only when declared | `0` the first time the agent runs for this user message. `1` or higher when the agent resumes after a human-in-the-loop prompt. |
 
-To keep `agent_id` or `round_execution_index` out of the workflow, leave it out of the manual trigger. You can't omit `prompt`. You also can't omit `conversation_id` when the run has one.
+To keep `agent_id` or `round_execution_index` out of the workflow, leave it out of the manual trigger. You can't omit `prompt`, or `conversation_id` when the run has one.
 
-If the workflow sets `additionalProperties: false`, declare every input {{agent-builder}} sends, including `conversation_id`. Otherwise input validation fails, the workflow execution is marked failed in its [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history), and the agent run stops.
+If the workflow sets `additionalProperties: false`, declare every input {{agent-builder}} sends, including `conversation_id`. Otherwise:
 
-On the workflow execution, `execution.triggeredBy` is `agent-builder-hook`. A workflow can check that value and skip runs that someone started directly. Refer to [`execution.triggeredBy`](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution).
+* Input validation fails.
+* The workflow execution is marked as failed in its [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history).
+* The agent run stops.
 
-{{agent-builder}} reads the output of the workflow's last step. That output can include `new_prompt`, `abort`, and `abort_message`. It can also include these fields:
+When {{agent-builder}} starts the workflow, [`execution.triggeredBy`](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution) is `agent-builder-hook`. To skip runs that someone started directly, check that value in the workflow.
+
+#### Outputs [pre-execution-workflow-outputs]
+
+{{agent-builder}} reads the output of the workflow's last top-level step. If that step contains other steps, such as `if` or `foreach`, {{agent-builder}} ignores the context fields in its output.
+
+The output can include these fields:
 
 | Output | Effect |
 |---|---|
-| `model_context` | Text that {{agent-builder}} sends to the model as a separate message after the user message. The conversation doesn't show this message. It stays on the round, so the model still receives it when the conversation continues. |
-| `workflow_context` | Data for a workflow assigned under **Post-execution workflow**. The model never receives it. |
+| `new_prompt` | Replaces the user message that the agent receives. Later workflows in the sequence receive this text as `prompt`. |
+| `abort` | `true` stops the agent run. |
+| `abort_message` | Any value stops the agent run, even when `abort` is `false`. |
+| `model_context` | Text that {{agent-builder}} sends to the model as a separate message after the user message. The conversation doesn't show this message.<br><br>The message stays on the round, which is the user message and the agent's response to it. The model still receives it when the conversation continues, until conversation compaction summarizes that round. The summary doesn't include it. |
+| `workflow_context` | Data for a workflow assigned under **Post-execution workflow** in the agent's **Settings**. The model never receives it. |
 
-`model_context` must be a string. {{agent-builder}} ignores any other type, and the agent run continues. It removes leading and trailing whitespace, and it ignores a blank string. It keeps at most 100,000 characters. Workflows from the space setting run first, then workflows assigned to the agent. When more than one workflow returns `model_context`, {{agent-builder}} joins the texts with a blank line in that order, and then keeps the first 100,000 characters of the combined text.
+#### `model_context` rules [pre-execution-workflow-model-context]
 
-`workflow_context` is an object keyed by namespace. Each namespace name can be at most 256 characters, and the object can contain at most 16 namespaces. Each namespace has a `version` and a `data` object:
+* The value must be a string. {{agent-builder}} ignores any other type, and the agent run continues.
+* {{agent-builder}} removes leading and trailing whitespace, and ignores a string that is empty after that.
+* {{agent-builder}} keeps at most 100,000 characters.
+* When more than one workflow returns `model_context`, {{agent-builder}} joins the texts with a blank line, then keeps the first 100,000 characters of the combined text. Workflows from the space setting run first, then workflows assigned to the agent, and the texts are joined in that order.
+
+#### `workflow_context` rules [pre-execution-workflow-workflow-context]
+
+`workflow_context` is an object keyed by namespace. Each namespace has a `version` and a `data` object:
 
 * `version` is a positive integer.
 * `data` is a JSON object. Nested objects and arrays can go eight levels deep, counting `data` as the first level.
-* The combined JSON is at most 65,536 bytes.
 
-If a workflow returns a `workflow_context` with a different shape, or one that doesn't match these limits, {{agent-builder}} ignores that value and continues. Namespaces already stored for the round stay in place. When two workflows use the same namespace, the later workflow replaces that namespace. Other namespaces are kept. If the combined value would exceed the limits, {{agent-builder}} ignores the later value and keeps the earlier one.
+The object has these limits:
 
-{{agent-builder}} stores `model_context` and `workflow_context` only from the first run of the round. The workflow still runs when the agent resumes after a human-in-the-loop prompt. That later run can stop the agent. The model keeps the original user message. Any `model_context` or `workflow_context` from that later run is ignored. A `new_prompt` from that run is still passed to later workflows in the sequence as `prompt`.
+* Each namespace name can be at most 256 characters.
+* The object can contain at most 16 namespaces.
+* The whole `workflow_context` JSON, including namespaces from earlier workflows in the sequence, can be at most 65,536 bytes.
 
-A workflow assigned under **Post-execution workflow** can receive the stored object. {{agent-builder}} passes it as that workflow's `workflow_context` input when the workflow declares the input.
+When more than one workflow returns `workflow_context`:
 
-The following workflow declares every input and returns both context fields. It uses [`workflow.output`](/explore-analyze/workflows/steps/composition.md#workflow-output) as its last step. That step is in technical preview. Put it at the top level of `steps`.
+* If two workflows use the same namespace, the later workflow replaces that namespace. {{agent-builder}} keeps the other namespaces.
+* If the combined value would exceed the limits, {{agent-builder}} ignores the later workflow's whole `workflow_context` and keeps the earlier one.
+
+If a workflow returns a `workflow_context` with a different shape, or one that exceeds these limits, {{agent-builder}} ignores that workflow's whole `workflow_context`, even if only one namespace has a problem. The agent run continues, and namespaces already stored for the round stay in place.
+
+A workflow assigned under **Post-execution workflow** in the agent's **Settings** can receive the stored object. {{agent-builder}} passes it as that workflow's `workflow_context` input when the workflow declares the input.
+
+#### When the agent resumes [pre-execution-workflow-resume]
+
+The workflow runs again when the agent resumes after a human-in-the-loop prompt, but {{agent-builder}} stores `model_context` and `workflow_context` only from the first run of the round. In the later run:
+
+* The workflow can still stop the agent.
+* The model keeps the original user message.
+* {{agent-builder}} ignores any `model_context` or `workflow_context`.
+* {{agent-builder}} still passes a `new_prompt` to later workflows in the sequence as `prompt`.
+
+#### Example [pre-execution-workflow-example]
+
+The following workflow declares every input and returns both context fields. Its last step is [`workflow.output`](/explore-analyze/workflows/steps/composition.md#workflow-output), which is in technical preview. Because {{agent-builder}} reads the last top-level step, put `workflow.output` at the top level of `steps`.
 
 ```yaml
 version: "1"
@@ -146,18 +185,32 @@ steps:
 1. Select **Manage components** at the bottom of the left sidebar to open the **Agents** list.
 2. Select an agent, then select **Settings** → **Pre-execution workflow**.
 3. Open the **Workflows** selector.
-4. Select one or more workflows. They run after each user message, before the agent makes any LLM calls in response.
+4. Select one or more workflows. They run after each user message, before the agent makes any LLM calls in response. They run again when the agent resumes after a human-in-the-loop prompt.
 5. Save the agent.
 
 To confirm the setup, send a message to the agent, then check that the run appears in the workflow's [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history).
 
 The following screenshot shows the **Pre-execution workflow** setting in the agent **Settings** view.
 
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.6+, serverless: ga }
 :::{image} images/pre-execution-workflows.png
 :screenshot:
 :width: 900px
-:alt: Edit agent settings flyout showing the Pre-execution workflow section with a workflow selector
+:alt: Agent Settings tab showing the Pre-execution workflow and Post-execution workflow sections, each with one workflow selected
 :::
+::::
+
+::::{applies-item} stack: ga 9.4-9.5
+:::{image} images/pre-execution-workflows-9-4.png
+:screenshot:
+:width: 900px
+:alt: Agent Settings tab showing the Pre-execution workflow section with an empty Workflows selector
+:::
+::::
+
+:::::
 
 ### Assign workflows to every agent in a space [assign-pre-execution-workflows-to-a-space]
 
