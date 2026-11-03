@@ -183,6 +183,6 @@ spec:
         averageUtilization: 70
 ```
 
-1. The background tasks Deployment of the {{kib}} named `kibana-sample`. ECK names the background tasks Deployment `<kibana-name>-kb-bg`.
+1. The background tasks Deployment of the {{kib}} named `kibana-sample`. ECK names it `<kibana-name>-kb-bg`.
 
 Refer to the [{{kib}} task manager scaling guide](/deploy-manage/production-guidance/kibana-task-manager-scaling-considerations.md) to size the background tasks pool.
