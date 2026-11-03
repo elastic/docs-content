@@ -17,7 +17,7 @@ Rule changes always wait for your approval, because the {{az-rule-tuning}} and {
 
 To learn what starts each kind of change, refer to [](watches-and-workers.md).
 
-% After the Watches and Workers reference (elastic/docs-content-internal#1814) merges, link to its Detection Watch section instead of the whole page.
+% For docs writers: After the Watches and Workers reference (elastic/docs-content-internal#1814) merges, link to its Detection Watch section instead of the whole page.
 
 ## How the {{az-detection-watch}} proposes a change [alertzero-detection-change-how]
 
@@ -28,7 +28,7 @@ By default, each {{az-worker}} asks before it starts work on a change:
 
 After you approve, the {{az-worker}} drafts the change and proposes it for your review. If you decline **Review rule for tuning**, the {{az-rule-tuning}} {{az-worker}} doesn't review those false positives again, but new ones can start a new review. If you decline **Review detection gap**, the {{az-rule-coverage}} {{az-worker}} leaves that gap out of future coverage checks.
 
-% The proposal text inside the UI tells people to "dismiss," but the button says Decline. The flyout also has a separate Dismiss button that acts on the whole investigation. The docs say Decline to match the button, but users might find the mix confusing.
+% For the AlertZero product team: The proposal text inside the UI tells people to "dismiss," but the button says Decline. The flyout also has a separate Dismiss button that acts on the whole investigation. The docs say Decline to match the button, but users might find the mix confusing.
 
 ## Review a tuning change for a noisy rule [alertzero-detection-change-tuning]
 

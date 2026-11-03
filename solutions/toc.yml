@@ -732,7 +732,7 @@ toc:
               - hidden: security/alertzero/respond-to-attack.md
               - hidden: security/alertzero/act-on-hunt-finding.md
               - hidden: security/alertzero/decide-detection-change.md
-              # Suggestion: Keep the escalation pages last in Work in AlertZero, after the decision pages,
+              # For Nat, who owns the escalation pages: Keep the escalation pages last in Work in AlertZero, after the decision pages,
               # and nest track-escalations.md under escalate-investigation.md as its child.
               - hidden: security/alertzero/escalate-investigation.md
               - hidden: security/alertzero/track-escalations.md

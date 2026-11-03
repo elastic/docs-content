@@ -15,7 +15,7 @@ The {{az-continuous-threat-hunt}} {{az-worker}} in the {{az-hunt-watch}} searche
 
 The {{az-continuous-threat-hunt}} {{az-worker}} offers only {{az-manual}} {{az-autonomy}}, so every action it proposes waits for a person. To learn what the {{az-worker}} searches and which sources it draws on, refer to [](watches-and-workers.md).
 
-% After the Watches and Workers reference (elastic/docs-content-internal#1814) merges, link to its Hunt Watch section instead of the whole page.
+% For docs writers: After the Watches and Workers reference (elastic/docs-content-internal#1814) merges, link to its Hunt Watch section instead of the whole page.
 
 ## How the {{az-continuous-threat-hunt}} {{az-worker}} reports a hunt [alertzero-hunt-finding-outcomes]
 
@@ -73,7 +73,7 @@ If containing hosts isn't your role, assign the {{az-investigation}} to an incid
 
     Each {{az-proposed-action}} expires 72 hours after the {{az-continuous-threat-hunt}} {{az-worker}} proposes it. If nobody decides before then, the action doesn't run.
 
-% After elastic/docs-content#9158 merges, link to alertzero-privileges.md#alertzero-action-privileges.
+% For docs writers: After elastic/docs-content#9158 merges, link to alertzero-privileges.md#alertzero-action-privileges.
 
 ## Undo a response action [alertzero-hunt-finding-undo]
 
