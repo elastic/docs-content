@@ -42,6 +42,8 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
 
 * [Add more platform users](../../users-roles/cloud-enterprise-orchestrator/manage-users-roles.md) with role-based access control.
 
+* {applies_to}`ece: ga 4.3+` If you didn't set an install password during installation, [configure an install password](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/configure-ece-install-password.md) to protect the bootstrap secrets that additional hosts read when they join. This protection doesn't replace securing the local `bootstrap-secrets.json` file.
+
 * Consider enabling encryption-at-rest (EAR) on your hosts.
 
   :::{{note}}
