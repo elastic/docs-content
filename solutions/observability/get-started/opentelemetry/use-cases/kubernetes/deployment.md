@@ -147,8 +147,8 @@ Verify that the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard in {{k
 
 ### Log data availability in Kibana
 
-If **{{kib}} Discover** opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then confirm the availability of data under the `__logs-*__` data view.
+In **{{kib}} Discover**, confirm the availability of log data. In {{esql}} mode, run `FROM logs-*`. In classic mode, select the `logs-*` data view.
 
 ### Metrics data availability in Kibana
 
-In **{{kib}} Discover**, in classic mode, ensure data is available under the `__metrics-*__` data view.
+In **{{kib}} Discover**, ensure metrics data is available. In {{esql}} mode, run `FROM metrics-*`. In classic mode, select the `metrics-*` data view.
