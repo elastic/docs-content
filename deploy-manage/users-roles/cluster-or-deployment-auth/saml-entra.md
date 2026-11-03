@@ -175,7 +175,9 @@ If you can't restrict the groups in the SAML assertion, you can use the [Microso
     xpack.security.authc.realms.saml.kibana-realm.authorization_realms: microsoft_graph1
     ```
 
-3. Create or update role mappings for the Microsoft Graph realm. For example, the following mapping assigns the `superuser` role to users who belong to a specific Microsoft Entra ID group:
+3. After delegating authorization, create or update role mappings for the Microsoft Graph realm. Update `realm.name` rules that refer to `kibana-realm` to use `microsoft_graph1` instead. Use Microsoft Entra group object IDs for `groups`.
+
+    For example, the following mapping assigns the `superuser` role to users who belong to a specific Microsoft Entra ID group:
 
     ```console
     POST /_security/role_mapping/SAML_Graph_groups
@@ -200,6 +202,6 @@ If you can't restrict the groups in the SAML assertion, you can use the [Microso
     }
     ```
 
-    After delegating authorization, update role mapping rules that refer to `kibana-realm` to use `microsoft_graph1` instead. Use Microsoft Entra group object IDs for `groups`. The plugin retrieves transitive group memberships, so the mappings match both direct and nested group memberships.
+    The plugin retrieves transitive group memberships, so the mappings match both direct and nested group memberships.
 
 The plugin applies to SAML configured in {{es}}, including deployment-level SAML on {{ech}}. It doesn't apply to [{{ecloud}} organization SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md).
