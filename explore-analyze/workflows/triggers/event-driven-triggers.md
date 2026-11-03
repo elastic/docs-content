@@ -789,7 +789,20 @@ The payload describes the write and doesn't include field values. Read the conve
 
 A write that creates a conversation reports `created` plus everything set at creation, including template defaults. Add `not event.changeKinds: "created"` when a condition should match only later changes.
 
-To keep a burst of writes from starting many overlapping runs, set a [concurrency key](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-concurrency) that includes the workflow ID and `event.conversationId`.
+Creating a conversation and changing its title, metadata, or access also add activity events to the conversation, such as `conversation_created`, `title_updated`, `metadata_updated`, or `visibility_updated`. These writes report `events` in `event.changeKinds` too. To react only to new messages, filter on `event.eventTypes` instead of `event.changeKinds: "events"`.
+
+A single conversation can produce a burst of writes, for example while an agent runs. To coalesce them into one run at a time per conversation, set a [concurrency key](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-concurrency) that includes the workflow ID and `event.conversationId`, and queue at most one waiting run:
+
+```yaml
+settings:
+  concurrency:
+    key: "{{ workflow.id }}-{{ event.conversationId }}"
+    strategy: queue
+    max: 1
+    queue-size: 1
+```
+
+Workflow steps that write to a conversation, such as [`ai.conversation.add_event`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-event), fire this trigger with `event.source` set to `workflow`. A workflow that writes to the conversation that triggered it can therefore trigger itself again. To control this, use [`on.workflowEvents`](#event-driven-triggers-workflow-events) or a condition on `event.source`.
 
 #### Schema
 
@@ -807,7 +820,7 @@ To keep a burst of writes from starting many overlapping runs, set a [concurrenc
 | `event.parentId` | The parent conversation, when this conversation is a child, such as a persistent sub-agent. |
 | `event.source` | The path that performed the write: `execution` (an agent run, including the user message stored when it arrives and a generated title), `http_api` ({{agent-builder}} HTTP APIs), `workflow` ({{agent-builder}} workflow steps), or `server_api` (another {{kib}} feature using the {{agent-builder}} server API). |
 | `event.changeKinds` | What this write changed. One or more of `created`, `events`, `attachments`, `metadata`, `title`, `template`, and `access`. Never empty. `created` means the write created the conversation and also reports everything set at creation. |
-| `event.eventTypes` | Types of the events this write added, with duplicates removed. Examples include `user_message`, `execution_terminated`, `attachment_added`, and custom event types. Empty when no event was added. |
+| `event.eventTypes` | Types of the events this write added, with duplicates removed. Examples include `user_message`, `execution_terminated`, `attachment_added`, activity events such as `title_updated`, and custom event types. Empty when no event was added. |
 | `event.actorTypes` | Actor types of the events this write added, with duplicates removed: `user`, `agent`, `external`, or `system`. |
 | `event.executionId` | The agent run this write saved, whether it finished, failed, or was stopped. Absent when the write saved no run. |
 | `event.attachmentTypes` | Types of the attachments this write added, updated, deleted, restored, or edited, with duplicates removed. |
