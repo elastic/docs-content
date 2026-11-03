@@ -29,20 +29,9 @@ Use the following table to jump to the query you need:
 | [Find snoozed series](#find-snoozed-series) | Active and historical snoozes, including who set them and when they expire | `.alert-actions` |
 | [Trace the full story of an incident](#trace-incident) | Both streams filtered or joined together for a complete incident timeline | Both |
 
-## Before you begin [add-data-views-before-begin]
+## Before you begin
 
-Before you can query alert history in Discover, add the alert data streams as data views. Repeat these steps for each stream.
-
-1. Open **Discover**. If it opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then open the data view menu.
-2. Select **Create a data view**.
-3. Give your data view a name, for example `.rule-events` or `.alert-actions`.
-4. In the **Index pattern** field, enter the data stream name:
-   - `.ds-.rule-events-*` for rule evaluation history.
-   - `.ds-.alert-actions-*` for triage actions recorded on alerts.
-5. Open the **Timestamp field** dropdown and select `@timestamp`.
-6. Select **Save data view to Kibana**.
-
-For more details on data view options, refer to [Data views](../../../find-and-organize/data-views.md).
+Open **Discover** in {{esql}} mode. The queries on this page read `.rule-events` and `.alert-actions` directly, so you don't need to create data views. If **Discover** opens in classic mode, [switch to {{esql}} mode](/explore-analyze/discover/switch-esql-mode.md).
 
 ## Query alert history [query-episode-signal-history]
 
