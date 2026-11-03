@@ -1067,9 +1067,12 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 **Example:** Chat as a service account $$$chat-as-a-service-account$$$ {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable`
 
-A user-managed service account can call the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) by sending its service token in a `Bearer` authorization header. {{kib}} accepts the `Bearer` scheme by default. If you changed the accepted schemes, refer to [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#http-authentication).
+This example calls the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) as a user-managed service account. The account needs the privileges described in [Service accounts](permissions.md#service-accounts).
 
-Dev Tools Console runs as the signed-in user, so send this request with `curl` or another HTTP client. Set `SERVICE_ACCOUNT_TOKEN` to the service token. The account needs the privileges in [Service accounts](permissions.md#service-accounts).
+Before you send the request:
+
+- Set `SERVICE_ACCOUNT_TOKEN` to the account's service token. The request sends it in a `Bearer` authorization header, which {{kib}} accepts by default. If you changed the accepted schemes, refer to [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#http-authentication).
+- Use `curl` or another HTTP client. Dev Tools Console runs as the signed-in user, not as the service account.
 
 This example creates a public conversation. To create a private conversation that only the account can access, omit `access_control`.
 
@@ -1453,6 +1456,8 @@ Each request replaces the entire access control. To stop sharing, send `private`
 
 The `id` of each entry is a {{kib}} user profile ID, not a username.
 
+{applies_to}`serverless: unavailable` To add a [service account](permissions.md#service-accounts) as a member, use `service_account:` followed by the account name as the `id`, for example `service_account:kibana/automation`. Keep `type` set to `user`.
+
 ::::{tab-set}
 :group: api-examples
 
@@ -1511,7 +1516,7 @@ Keep these constraints in mind:
 - Each user can appear only once. Repeated IDs are rejected.
 - `member` is the only supported role, and `user` is the only supported entry type.
 - An entry that names the owner is accepted but not stored.
-- Entry IDs are not validated. An ID that does not match a real user profile is stored and simply never grants access to anyone.
+- Entry IDs are not validated. An ID that does not match a real user profile or service account is stored anyway. It grants access only if a matching principal exists later, such as a service account created afterward.
 - If you do not own the conversation, the request fails with a `404` error rather than a permissions error.
 
 ### Get A2A agent card configuration
