@@ -20,7 +20,7 @@ In **{{stack-manage-app}} > {{connectors-ui}}**, you can test a newly created co
 or by directly opening the proper connector edit flyout:
 
 :::{image} /explore-analyze/images/kibana-email-connector-test.png
-:alt: Rule management page with the errors banner
+:alt: Test tab of the Edit connector flyout for an email connector, with the Fixed test message callout
 :screenshot:
 :::
 
