@@ -86,6 +86,7 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :width: 130px
       :::
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some agents that {{kib}} installs automatically are hidden. They don't appear in the list on the **Agents** page or in the [agent selector](chat.md#select-a-different-agent). Turn on **Show hidden agents** to include them in that list. The toggle is off by default. Turning it on doesn't add those agents to the agent selector. The **Set as space default** action isn't available for a hidden agent. There is no control to hide an agent you create.
 
 ## Elastic capabilities [elastic-capabilities]
 

@@ -79,6 +79,8 @@ stack: ga 9.3+
 
 Use the agent selector to switch agents, to navigate to the agent management section, or to create a new agent. An agent's behavior is defined by its custom instructions and available tools. Switch agents when you need different capabilities for your tasks.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Hidden agents don't appear in the agent selector. To list them, turn on **Show hidden agents** on the [Agents page](agent-builder-agents.md#managing-agents-in-the-ui). That toggle doesn't add them to the selector.
+
 :::{image} images/agent-builder-agent-selector.png
 :screenshot:
 :alt: Agent selector dropdown showing available agents with options to create or manage agents
@@ -660,6 +662,8 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 
 **Agents**
 :   View all agents available in the current {{kib}} space. The list displays each agent's name and access control level (**Public**, **Shared**, or **Private**), a **Read-only** badge for built-in agents, and any labels. From this page, you can create new agents, edit existing ones, or start a chat.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list doesn't include hidden agents until you turn on **Show hidden agents**. Refer to [Managing agents in the UI](agent-builder-agents.md#managing-agents-in-the-ui).
 
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
 
