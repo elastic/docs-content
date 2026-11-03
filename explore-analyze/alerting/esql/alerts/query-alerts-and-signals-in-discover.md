@@ -33,12 +33,12 @@ Use the following table to jump to the query you need:
 
 $$$add-data-views-before-begin$$$
 
-Open **Discover** in {{esql}} mode. The queries on this page read two streams that {{kib}} fills for you:
+The queries on this page run in **Discover** in {{esql}} mode and read two streams that {{kib}} fills for you:
 
 - `.rule-events` holds the history of your rules. {{kib}} writes one [rule event](../rules/rule-event-field-reference.md) for each row that a scheduled run matches.
 - `.alert-actions` holds the actions that you or {{kib}} take on alerts, such as acknowledging, snoozing, or assigning an alert, and the dispatcher's decision to notify or suppress.
 
-You query both streams by name, so you don't need to create data views. If **Discover** opens in classic mode, [switch to {{esql}} mode](/explore-analyze/discover/switch-esql-mode.md).
+You query both streams by name, so you don't need to create data views. If **Discover** opens in classic mode instead, [switch to {{esql}} mode](/explore-analyze/discover/switch-esql-mode.md).
 
 ## Query alert history [query-episode-signal-history]
 
