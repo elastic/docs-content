@@ -1,7 +1,7 @@
 ---
 navigation_title: Configure access
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -12,8 +12,6 @@ description: "Kibana feature privileges and Elasticsearch index privileges neede
 # Configure access to {{alerting-v2-system}} [access]
 
 To create rules, triage alerts, and configure notifications in {{alerting-v2-system}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
-
-Most privileges are under the **Universal Alerting** or **Alerting V2** category (depending on your {{stack}} version and deployment type) in {{kib}} role management.
 
 :::{note}
 Depending on how your rules and notifications are configured, your role might also need `read` index privileges on the indices their rules query and **Actions and Connectors: All** (under **Management**) to create or edit workflow connectors. Refer to [{{kib}} role management](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for guidance on building roles that combine privileges across features.
@@ -29,7 +27,7 @@ The following table shows the minimum privileges for each activity. Higher privi
 | Monitor rule execution | **Execution history: Read** (under **Universal Alerting**) |
 | Triage alerts | **Alerts: All** (under **Universal Alerting**) |
 | Configure notifications | **Action Policies: All** (under **Universal Alerting**) + **Workflows: Read** (under **Analytics** → **Workflows**) |
-| Create rules and action policies with {{agent-builder}} {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
+| Create rules and action policies with {{agent-builder}} {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
@@ -66,11 +64,6 @@ The **Alerts** privilege controls who can take triage actions on alerts.
 Both levels also grant read access to the alert data streams. Refer to [{{es}} index access](#alerting-index-access).
 
 ### Alerts from {{alerting-v1-system}} [alerting-classic-alert-privileges]
-
-```{applies_to}
-serverless: ga
-stack: ga 9.6+
-```
 
 The **Alerts** page also lists {{alerting-v1-system}} alerts. Your role's {{alerting-v1-system}} privileges for each alert's rule type decide which of these alerts you can see and act on:
 
@@ -109,7 +102,7 @@ Action policies invoke workflows, which send notifications. The **Workflows** pr
 
 ```{applies_to}
 serverless: experimental
-stack: experimental 9.5+
+stack: experimental 9.6+
 ```
 
 To create rules and action policies with [{{agent-builder}}](../rules/create-rules-action-policies-agent-builder.md), your role needs these privileges:

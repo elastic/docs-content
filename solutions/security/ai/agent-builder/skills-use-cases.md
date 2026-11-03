@@ -178,6 +178,33 @@ Use this skill to diagnose [{{elastic-defend}}](/solutions/security/configure-el
 | Which endpoints are reporting policy response failures? | Search for policy response errors or warnings across endpoints and summarize affected endpoint IDs. |
 | Is there any incompatible antivirus software on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
 
+## {{elastic-defend}} policy management [defend-policy-management]
+
+```{applies_to}
+stack: ga 9.6+
+serverless:
+  security: ga
+```
+
+**Enable:** `elastic-defend-policy-management`
+
+Use this skill to decide how an {{elastic-defend}} [integration policy](/solutions/security/manage-elastic-defend/policies.md) should be configured. The agent can explain settings, compare policies, find policies that no endpoints use, assess a proposed change before you make it, and guide you through a staged move from detect to prevent. It can also apply a change to a policy after you confirm, except for [advanced policy settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings) and custom notification messages.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| What's the difference between detect and prevent for ransomware protection? | Look up the setting, list the values it accepts, and explain its behavior and tradeoffs. |
+| How does the Workstations policy compare with the Complete EDR preset? | Compare the policy with the preset's default configuration and list the settings that differ. |
+| Which of our {{elastic-defend}} policies don't have any endpoints using them? | List policies and classify each as used, unused, or undetermined based on its enrolled endpoints. |
+| How many endpoints haven't applied the latest revision of the Workstations policy? | Report the number of endpoints still running an older policy revision, and the number whose latest policy response has warnings or failures. |
+| What would happen if I changed malware protection on the Workstations policy to prevent? | List every setting the change would modify, warn you if it weakens a protection, and show how many endpoints are enrolled in the policy. Nothing is changed. |
+| Help me move the Workstations policy from detect to prevent safely | Explain the tradeoffs and suggest a staged rollout, based on {{elastic-defend}} guidance. The agent asks for the policy and protection if you haven't named them. |
+| Switch malware protection on the Workstations policy to prevent | Assess the change, then show a confirmation with the settings that will change. The policy is updated only after you select **Apply changes**. |
+| Make the Servers policy match the Workstations policy | Compare the two policies and propose changes for the settings the skill can change. If you don't say which policy to change, the agent asks. |
+
+:::{note}
+Before the agent applies a change, it shows a confirmation with each setting's current and new value, any warnings about weakened protections, and the number of endpoints enrolled in the policy. Select **Cancel** to leave the policy as it is.
+:::
+
 ## Attack Discovery generation [attack-discovery-generation]
 ```{applies_to}
 stack: ga 9.5+
