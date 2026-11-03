@@ -2035,7 +2035,7 @@ The output contains one row per decade:
 
 ## Run the steps in one script [vector-full-text-search-complete-script]
 
-The examples above show each step on its own. This script runs them together: it creates an index, adds the sample books, runs a keyword search, a semantic search, and a hybrid search, and counts the books by decade. It writes to `books-complete`, so it leaves the `books` index from the earlier steps unchanged.
+The examples above show each step on its own. This script runs them together: it creates an index, adds the sample books, runs a keyword search, a semantic search, and a hybrid search, and counts the books by decade. 
 
 1. [Set up {{es}}](#vector-full-text-search-create-project).
 2. [Connect to your project](#vector-full-text-search-connect).
