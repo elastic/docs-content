@@ -14,7 +14,8 @@ applies_to:
 
 | Ingest tool | FIPS 140-2 | FIPS 140-3 |
 |---|---|---|
-| {{agent}} and {{fleet-server}} | 9.1–9.5 on Linux | 9.6+ on Linux and Windows |
+| {{agent}} | 9.1–9.5 on Linux | 9.6+ on Linux, Windows, and macOS |
+| {{fleet-server}} | 9.1–9.5 on Linux | 9.6+ on Linux and Windows |
 | {{filebeat}} and {{metricbeat}} | 9.1–9.5 on Linux | 9.6+ on Linux and Windows |
 | {{apm-server}} | 9.1–9.2, 9.3.0–9.3.7, and 9.4.0–9.4.3 on Linux | 9.3.8+, 9.4.4+, and 9.5+ on Linux |
 
@@ -31,6 +32,8 @@ FIPS compatible binaries are available for [download](https://www.elastic.co/dow
   * **{{apm-server}}**: Look for the `Linux x86_64 (FIPS)` or `Linux aarch64 (FIPS)` platform option on the {{apm-server}} download page.
 * {applies_to}`stack: ga 9.6+` **Windows**:
   * **{{agent}} (which includes {{fleet-server}}), {{filebeat}}, and {{metricbeat}}**: Look for the Windows FIPS platform options on the product download pages.
+* {applies_to}`stack: ga 9.6+` **macOS**:
+  * **{{agent}}**: Look for the macOS FIPS platform options on the {{agent}} download page. The macOS FIPS {{agent}} doesn't include {{fleet-server}}, so it can't run as a {{fleet-server}}. It can enroll in a FIPS {{fleet-server}} running on Linux or Windows.
 
 :::{important}
 The default configurations provided in the binaries are FIPS compatible. Be sure to check and understand the implications of changing default configurations.
