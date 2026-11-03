@@ -91,6 +91,7 @@ Use the observed behavior to decide what to change:
 
 | Behavior | What to review |
 |---|---|
+| The agent does not use its AI index right after you turn on {{context-engine}}. | Wait up to 5 minutes for the `contextEngine:enabled` setting change to apply, then ask again. Turning the setting off can also take up to 5 minutes to apply. |
 | The agent does not select the AI index. | Confirm the assignment, then make the AI index name and description more specific to the questions it supports. |
 | The agent retrieves the expected AI index but also explores unrelated indices. | Make the AI index name and description more specific, ask a more focused question, and limit the agent's source-query tools to data it should query. |
 | The agent retrieves the AI index but finds no useful KI. | Review the source coverage, generation strategy, automation, and KI content. |
