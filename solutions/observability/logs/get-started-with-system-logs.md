@@ -83,7 +83,7 @@ Follow the in-product steps to auto-detect your logs and install and configure y
 After the agent is installed and successfully streaming log data, you can view the data in the UI:
 
 1. From the navigation menu, go to **Discover**.
-2. Select **All logs** from the **Data views** menu. The view shows all log datasets. Notice you can add fields, change the view, expand a document to see details, and perform other actions to explore your data.
+2. In {{esql}} mode, enter `FROM logs-*`. In classic mode, select **All logs** from the **Data views** menu. The view shows all log datasets. Notice you can add fields, change the view, expand a document to see details, and perform other actions to explore your data.
 
 :::::
 
