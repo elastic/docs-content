@@ -102,8 +102,8 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 ### Attach images to a message
 
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
 Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram. Pasting is the only way to attach an image. Dragging a file onto the input and selecting one from a file picker aren't supported.
