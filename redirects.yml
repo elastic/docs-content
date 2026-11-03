@@ -1,5 +1,5 @@
 redirects:
-  # related to https://github.com/elastic/docs-content/pull/9116
+  # related to https://github.com/elastic/docs-content/pull/9157
   'solutions/security/alertzero/review-closed-proposed-actions.md': 'solutions/security/alertzero/decide-proposed-action.md'
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
