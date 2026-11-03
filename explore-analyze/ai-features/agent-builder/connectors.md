@@ -14,7 +14,7 @@ products:
 
 # Connectors in {{agent-builder}}
 
-{{agent-builder}} connectors give agents access to external systems, such as messaging services, cloud functions, databases, and third-party APIs. Agents use connectors to act on those systems, for example to look up a Slack channel or query a database, without you building a custom tool for each action.
+{{agent-builder}} connectors give agents access to external systems, such as messaging services, cloud functions, and third-party APIs. Agents use connectors to act on those systems, for example to look up a Slack channel or search for threat intelligence, without you building a custom tool for each action.
 
 :::{note}
 :applies_to: stack: preview 9.4-9.5
@@ -108,13 +108,12 @@ To stop an agent from using a connector, remove the connector from the agent's *
 
 An agent that was never assigned connectors can't use any. Check for the following agents and assign the connectors they need:
 
+- The built-in **Elastic AI Agent**.
 - Agents created with the [Agents API](kibana-api.md#agents-apis) without `connector_ids`.
 - {applies_to}`stack: preview 9.6+` Agents created in 9.4 or 9.5 without a connector list. In those versions, these agents could use any connector.
 - {applies_to}`serverless: preview` Existing agents without a connector list, including agents created before new agents started with an empty list. Previously, these agents could use any connector.
 
 Also check agents that already had a connector list in 9.5 or on {{serverless-short}}, and assign any connectors they still need. These agents can run only the connectors in their list. Previously, the list limited which connectors an agent could discover, not which ones it could run.
-
-Built-in agents, such as the **Elastic AI Agent**, are read-only, so you can't assign connectors to them. To use connectors, [create a custom agent](custom-agents.md) and assign connectors to it.
 
 ## Authorize connector access from chat
 
