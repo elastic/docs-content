@@ -55,7 +55,7 @@ An empty `backgroundTasks: {}` section is enough to enable the additional pool. 
 | `resources` | CPU and memory for the `kibana` container of the background tasks pool. Overrides the resources of that container in `spec.podTemplate` and `spec.backgroundTasks.podTemplate`. |
 | `podTemplate` | A [Pod Template](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates) overlay for the background tasks pods, applied as a [strategic merge](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#use-a-strategic-merge-patch-to-update-a-deployment) on top of `spec.podTemplate`. |
 
-The background tasks pool is a second {{kib}} deployment, so each of its pods needs the same resources as a primary pod. When you don't set `resources`, the `kibana` container of each pod requests and is limited to 2Gi of memory, the same default as the primary pool, and sets no CPU request or limit. Make sure your Kubernetes cluster has capacity for the additional pods.
+The background tasks pool is a second {{kib}} deployment, so each of its pods needs the same resources as a primary pod. When you don't set `resources`, each background tasks pod is allocated 2Gi of memory with no CPU constraint, matching the primary pool defaults. Make sure your Kubernetes cluster has capacity for the additional pods.
 
 All other fields of the {{kib}} spec, such as `spec.config`, `spec.podTemplate`, `spec.secureSettings`, `spec.elasticsearchRef` and `spec.http`, apply to both pools.
 
