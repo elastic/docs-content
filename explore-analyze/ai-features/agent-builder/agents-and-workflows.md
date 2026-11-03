@@ -50,7 +50,7 @@ Configuring an agent's pre-execution workflows requires a role that grants wildc
 Changing the space setting works differently: it requires the `manage_advanced_settings` privilege, which you can grant through the **Advanced Settings** [feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 :::
 
-A pre-execution workflow runs once for each user message. It does not run before every LLM call or tool call within the agent's response.
+A pre-execution workflow runs before the agent calls the model. It does not run before every LLM call or tool call inside that response. When the agent resumes after a [human-in-the-loop prompt](chat.md#human-in-the-loop-prompts), the workflow runs again for that same user message.
 
 Pre-execution workflows can:
 
@@ -59,6 +59,87 @@ Pre-execution workflows can:
 * Run multiple workflows in sequence when more than one workflow is assigned.
 
 You can assign pre-execution workflows to a single agent or to every agent in a space. If you do both, the agent runs the workflows from both settings.
+
+### Inputs and outputs [pre-execution-workflow-inputs-and-outputs]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+A pre-execution workflow can read details about the current run and return context for the model and for workflows that run after the agent responds.
+
+Declare inputs under the workflow's manual trigger. Refer to [`inputs`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs). Inside the workflow, reference an input as `{{ inputs.prompt }}`.
+
+The Sent column shows when {{agent-builder}} sends each input:
+
+| Input | Sent | Contains |
+|---|---|---|
+| `prompt` | Always | The user message for this run. An empty string when the run has no user message, such as a resume that only answers a [human-in-the-loop prompt](chat.md#human-in-the-loop-prompts). If an earlier workflow in the sequence returns `new_prompt`, later workflows receive that text as `prompt`. |
+| `conversation_id` | When the run has one, even if not declared | The conversation ID. When the run doesn't save a conversation, such as an [`ai.agent` step](#use-ai-agent-workflow-step) without a conversation ID, this ID doesn't match a saved conversation. |
+| `agent_id` | Only when declared | The agent ID. Omitted when the run has no agent ID. |
+| `round_execution_index` | Only when declared | `0` the first time the agent runs for this user message. `1` or higher when the agent resumes after a human-in-the-loop prompt. |
+
+To keep `agent_id` or `round_execution_index` out of the workflow, leave it out of the manual trigger. You can't omit `prompt`. You also can't omit `conversation_id` when the run has one.
+
+If the workflow sets `additionalProperties: false`, declare every input {{agent-builder}} sends, including `conversation_id`. Otherwise input validation fails, the workflow execution is marked failed in its [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history), and the agent run stops.
+
+On the workflow execution, `execution.triggeredBy` is `agent-builder-hook`. A workflow can check that value and skip runs that someone started directly. Refer to [`execution.triggeredBy`](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution).
+
+{{agent-builder}} reads the output of the workflow's last step. That output can include `new_prompt`, `abort`, and `abort_message`. It can also include these fields:
+
+| Output | Effect |
+|---|---|
+| `model_context` | Text that {{agent-builder}} sends to the model as a separate message after the user message. The conversation doesn't show this message. It stays on the round, so the model still receives it when the conversation continues. |
+| `workflow_context` | Data for a workflow assigned under **Post-execution workflow**. The model never receives it. |
+
+`model_context` must be a string. {{agent-builder}} ignores any other type, and the agent run continues. It removes leading and trailing whitespace, and it ignores a blank string. It keeps at most 100,000 characters. Workflows from the space setting run first, then workflows assigned to the agent. When more than one workflow returns `model_context`, {{agent-builder}} joins the texts with a blank line in that order, and then keeps the first 100,000 characters of the combined text.
+
+`workflow_context` is an object keyed by namespace. Each namespace name can be at most 256 characters, and the object can contain at most 16 namespaces. Each namespace has a `version` and a `data` object:
+
+* `version` is a positive integer.
+* `data` is a JSON object. Nested objects and arrays can go eight levels deep, counting `data` as the first level.
+* The combined JSON is at most 65,536 bytes.
+
+If a workflow returns a `workflow_context` with a different shape, or one that doesn't match these limits, {{agent-builder}} ignores that value and continues. Namespaces already stored for the round stay in place. When two workflows use the same namespace, the later workflow replaces that namespace. Other namespaces are kept. If the combined value would exceed the limits, {{agent-builder}} ignores the later value and keeps the earlier one.
+
+{{agent-builder}} stores `model_context` and `workflow_context` only from the first run of the round. The workflow still runs when the agent resumes after a human-in-the-loop prompt. That later run can stop the agent. The model keeps the original user message. Any `model_context` or `workflow_context` from that later run is ignored. A `new_prompt` from that run is still passed to later workflows in the sequence as `prompt`.
+
+A workflow assigned under **Post-execution workflow** can receive the stored object. {{agent-builder}} passes it as that workflow's `workflow_context` input when the workflow declares the input.
+
+The following workflow declares every input and returns both context fields. It uses [`workflow.output`](/explore-analyze/workflows/steps/composition.md#workflow-output) as its last step. That step is in technical preview. Put it at the top level of `steps`.
+
+```yaml
+version: "1"
+name: add_support_context
+description: Adds support policy context before the agent answers.
+enabled: true
+triggers:
+  - type: manual
+    inputs:
+      properties:
+        prompt:
+          type: string
+        conversation_id:
+          type: string
+        agent_id:
+          type: string
+        round_execution_index:
+          type: number
+      additionalProperties: false
+steps:
+  - name: return_context
+    type: workflow.output
+    with:
+      model_context: |
+        Apply the support policy before you answer.
+        The user message is: {{ inputs.prompt }}
+      workflow_context:
+        support.policy:
+          version: 1
+          data:
+            policy: "answer from the published support policy"
+```
 
 ### Assign workflows to an agent [assign-pre-execution-workflows-to-an-agent]
 
