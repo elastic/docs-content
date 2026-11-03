@@ -200,6 +200,6 @@ If you can't restrict the groups in the SAML assertion, you can use the [Microso
     }
     ```
 
-    In role mappings for delegated users, set `realm.name` to the name of the Microsoft Graph realm, such as `microsoft_graph1`, instead of the SAML realm. Use Microsoft Entra group object IDs for `groups`. The plugin retrieves transitive group memberships, so the mappings match both direct and nested group memberships.
+    After delegating authorization, update role mapping rules that refer to `kibana-realm` to use `microsoft_graph1` instead. Use Microsoft Entra group object IDs for `groups`. The plugin retrieves transitive group memberships, so the mappings match both direct and nested group memberships.
 
 The plugin applies to SAML configured in {{es}}, including deployment-level SAML on {{ech}}. It doesn't apply to [{{ecloud}} organization SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md).
