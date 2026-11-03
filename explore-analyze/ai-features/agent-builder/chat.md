@@ -216,7 +216,7 @@ The default for `xpack.agenticInvestigations.enabled` and the availability of es
 
 ::::{applies-switch}
 :::{applies-item} serverless: preview
-The default depends on the project type. Escalation flyouts aren't available in {{obs-serverless}} projects.
+The setting is turned on only in {{obs-serverless}} Complete projects, where escalation flyouts aren't available. Other project types have the setting turned off.
 :::
 :::{applies-item} stack: preview =9.6
 The setting is turned on by default, and escalation flyouts are available.
@@ -243,7 +243,12 @@ Click **Chat info** to open the flyout. To copy a link to the conversation, clic
 The investigation flyout contains:
 
 - **Header**: The title, status, and assignees, plus the severity once someone sets it.
-- **Sections**: **Subject**, **What's happened**, **Impact**, and **Conclusion**, when that information exists. When proposed actions are turned on, **Proposed actions** always appears, with a message if there are none.
+- **Sections**:
+  - **Subject**, when the investigation has subjects.
+  - **What's happened**: The `summary` metadata, or `description` when there's no summary.
+  - **Impact**, when the investigation has impact data.
+  - **Conclusion**: The `verdict` metadata, when it's set.
+  - **Proposed actions**: When `xpack.proposals.enabled` is `true`, this section always appears, with a message if there are none.
 - **Footer**: **Open an escalation**, when escalations are available and your role includes **Manage escalations**. **Open chat**, when you open the flyout from outside the chat.
 
 The following image shows an investigation flyout with a severity set and no proposed actions:
@@ -259,11 +264,16 @@ The following image shows an investigation flyout with a severity set and no pro
 The escalation flyout contains:
 
 - **Header**: The title, status, and assignees.
-- **Sections**: **What's happened**, with the summary and attachments, and **Impact**, when that information exists. **Linked investigations**, when your role includes **View escalations** or **Manage escalations**.
+- **Sections**:
+  - **What's happened**: The summary and attachments, when they exist.
+  - **Linked investigations**, when your role includes **View escalations** or **Manage escalations**.
+  - **Impact**, when the escalation has impact data.
 
 #### Privileges for templated conversations
 
 Actions on investigations and escalations use privileges of the **Agentic Investigations** feature, which requires an Enterprise license. **Manage investigations** is included in the feature's **All** privilege, and **View escalations** is included in **Read** and **All**. **Manage escalations** isn't included in **All**, so you need to grant it separately.
+
+In the **Chat info** flyout, these controls require the following privileges:
 
 | Action | Required privilege |
 |---|---|

@@ -359,11 +359,6 @@ Each template also accepts its own keys:
 - `investigation`: `workflow_execution_ids`, a list of workflow execution IDs for runs that have worked on the investigation.
 - `escalation`: `linked_investigations`, a list of conversation IDs of the investigations linked to the escalation.
 
-{applies_to}`stack: preview 9.7+` {applies_to}`serverless: preview` `investigation` also accepts the optional `telemetry_target` key:
-
-- Text, up to 64 characters. It must start with a lowercase letter and can contain lowercase letters, digits, underscores, and hyphens.
-- You can set it only when you create the conversation. Later updates can't add or change it.
-
 ## `ai.conversation.add_event` [ai-conversation-add-event]
 
 ```{applies_to}
