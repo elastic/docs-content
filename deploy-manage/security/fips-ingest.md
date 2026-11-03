@@ -5,7 +5,7 @@ products:
   - id: beats
   - id: fleet-server
 applies_to:
-  stack: preview 9.1, ga 9.3+
+  stack: preview 9.1-9.2, ga 9.3+
 ---
 
 # FIPS mode for Ingest tools [fips-ingest]
