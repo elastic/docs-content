@@ -28,6 +28,21 @@ The {{agent-builder}} connectors library lets you configure action-based connect
 
 You manage connectors per {{kib}} space from **Manage components** → **Connectors**. Individual connector types in the catalog can be marked **Technical preview**.
 
+## Connectors added in 9.6
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+The catalog adds more connector types than these three. These three are marked **Technical preview** and are available in {{agent-builder}} only. Workflow support for them is planned for a later release.
+
+- [Databricks](kibana://reference/connectors-kibana/databricks-action-type.md): Run read-only SQL, and inspect jobs, clusters, SQL warehouses, and alerts.
+- [GraphQL](kibana://reference/connectors-kibana/graphql-action-type.md): Run queries and introspect the schema of a GraphQL endpoint.
+- [Azure SQL](kibana://reference/connectors-kibana/azure-sql-action-type.md): Run read-only queries, search rows, list databases, tables, and views, and describe a table or view.
+
+For configuration and the full action list, refer to the linked pages. For the wider catalog, refer to [Data and context sources connectors](kibana://reference/connectors-kibana/data-context-sources-connectors.md).
+
 ## How agents use connectors
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` An agent can only run the connectors assigned to it. Agents look up connectors and load their sub-actions and parameter schemas at run time through the built-in `connector-discovery` [skill](skills.md), which **Enable Elastic capabilities** includes. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
