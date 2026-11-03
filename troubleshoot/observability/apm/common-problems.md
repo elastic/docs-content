@@ -236,38 +236,47 @@ stack: ga
 serverless: ga
 ```
 
-The **Service inventory** tracks a limited number of services. When more services report data than the limit allows, the extra services are grouped into a single row named **Remaining Services**, marked with a warning icon. Those services aren't listed individually in the Service inventory, the service map, or the APIs behind them. Their data is still ingested and stored; only these views are affected.
+The **Service inventory** stops listing every service separately once it reaches a limit. Your data is still ingested and stored, and you can still open the services that are listed. Only the inventory list is affected.
 
-For both of the limits described here, a service is each unique combination of `service.name`, `service.environment`, `service.language.name`, and `agent.name`. A single application can count as several services, for example when it reports from more than one environment. This is why a production deployment can show the warning while a development one with more instrumented applications doesn't.
+Two limits can cause this, and each one shows a different warning:
 
-Two separate limits can cause this grouping, and each has a different fix.
+* A **warning icon above the table**, in a message that the limit of *n* services is exceeded, means you reached the [limit on the services {{kib}} displays](#troubleshooting-too-many-services-displayed).
+* A row named **Remaining Services** at the end of the table, with its own warning icon, means you reached the [limit on the services {{apm-server}} aggregates](#troubleshooting-too-many-services-aggregated).
 
-### Limit on the services displayed in {{kib}} [troubleshooting-too-many-services-displayed]
+In both cases, a service is each unique combination of `service.name`, `service.environment`, `service.language.name`, and `agent.name`. This means that one application can count as several services, for example when it reports from more than one environment. This is why a production deployment can reach a limit while a development one with more instrumented applications doesn't.
+
+### Limit on the services {{kib}} displays [troubleshooting-too-many-services-displayed]
 ```yaml {applies_to}
 stack: ga
 serverless: ga
 ```
 
-{{kib}} caps how many services the Service inventory query returns. The default is 1,000 services.
+{{kib}} returns at most 1,000 services to the Service inventory. Services past that limit are left out of the list, and the warning tells you which limit is in effect.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To change the cap, edit the `observability:apmMaxNumberOfServices` advanced setting, shown as **Maximum services in the Services Inventory**. The highest value you can set is 5,000. The warning in the Service inventory names the limit currently in effect and points to this setting.
+The services are still there, so any of the following brings them back into view:
 
-If you raise the limit above 2,000, check the `search.max_buckets` cluster setting, which defaults to 65,536. The Service inventory query runs nested sub-aggregations for each transaction type and environment, so a high service limit can exceed it.
+* Use the query bar to narrow the list to the services you need.
+* Create [service groups](/solutions/observability/apm/services.md#service-groups) and view one group at a time.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Raise the limit in the `observability:apmMaxNumberOfServices` advanced setting, shown as **Maximum services in the Services Inventory**. The highest value you can set is 5,000.
 
-To work within the current limit, use the query bar to narrow the Service inventory to the services you need.
+:::{note}
+Raising the limit makes the Service inventory query slower and increases its memory use on {{es}}. Past about 2,000 services, the query can also exceed `search.max_buckets`, the cluster-wide cap on aggregation buckets that defaults to 65,536. When that happens, the query fails instead of returning a shorter list, so raise `search.max_buckets` to match, or leave the service limit lower and filter the list instead.
+:::
 
 ### Limit on the services {{apm-server}} aggregates [troubleshooting-too-many-services-aggregated]
 ```yaml {applies_to}
 stack: ga
 ```
 
-When you ingest data using {{apm-server}}, service metrics share a limit of 1,000 services per GB of memory available to {{apm-server}}. Services beyond that limit are combined into an overflow bucket when the metrics are aggregated, so they're missing from the views that read service metrics. For the complete set of limits and an explanation of how overflow buckets work, refer to [Aggregated metrics: limits and overflows](/solutions/observability/apm/metrics.md#_aggregated_metrics_limits_and_overflows).
+When you ingest data using {{apm-server}}, service metrics share a limit of 1,000 services per GB of memory available to {{apm-server}}. Services past that limit are combined into a single overflow bucket while the metrics are aggregated, and the Service inventory shows that bucket as **Remaining Services**.
 
-To stay within this limit:
+This happens as the data is written, so narrowing the query or raising the display limit doesn't recover the individual services. To list them separately, reduce the number of unique services or give {{apm-server}} more memory:
 
-* Use stable values for `service.name` and `service.environment`. Values taken from build numbers, per-instance identifiers, or short-lived test environments create a new unique service every time they change.
+* Use stable values for `service.name` and `service.environment`. Values taken from build numbers, per-instance identifiers, or short-lived test environments create a new service every time they change.
 * Review your instrumentation so that only the services you need to monitor send {{product.apm}} data.
 * Increase the memory available to {{apm-server}}.
+
+For the full set of limits and an explanation of how overflow buckets work, refer to [Aggregated metrics: limits and overflows](/solutions/observability/apm/metrics.md#_aggregated_metrics_limits_and_overflows).
 
 If you also see warnings about transaction groups, refer to [Too many unique transaction names](#troubleshooting-too-many-transactions), which covers the equivalent limits for transactions.
 
