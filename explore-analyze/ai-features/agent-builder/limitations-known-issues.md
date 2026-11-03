@@ -88,20 +88,20 @@ Including frozen tier data doesn't extend tool timeouts. Queries over large amou
 
 ```{applies_to}
 stack: preview =9.2, ga 9.3-9.5
-serverless: unavailable
 ```
 
-The [A2A server](a2a-server.md) doesn't support streaming. Send `message/send` to talk to an agent.
-
-By default, `message/send` waits until the task finishes and returns the complete agent message. Set `configuration.blocking` to `false` to receive a task in the `working` state before the agent finishes.
+The [Agent-to-Agent (A2A) server](a2a-server.md) doesn't support streaming. Use [`message/send`](a2a-server.md#send-messages) instead.
 
 ### Human-in-the-loop prompts require an interactive conversation
 
-[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A sub-agent execution cannot collect a response to these prompts, whether the sub-agent runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A sub-agent execution can't collect a response to these prompts, whether the sub-agent runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
 
-The sub-agent run itself does not fail. The tool call returns an error result and the sub-agent continues, so the sub-agent can report the declined action in its output.
+The sub-agent run itself doesn't fail. The tool call returns an error result and the sub-agent continues, so the sub-agent can report the declined action in its output.
 
-A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` A2A executions behave differently: the action isn't declined. Instead, the conversation round stays in the `awaiting_prompt` state, but A2A clients can't respond to the prompt. How the client sees the paused round depends on the method:
+
+* [`message/send`](a2a-server.md#send-messages): The response doesn't show that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [`message/stream`](a2a-server.md#stream-responses): The stream ends with a status update in the `input-required` state. The update describes the prompt.
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) follows the same rule in sub-agent runs and in [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent): it declines any {{es}} or {{kib}} API operation that requires [confirmation](chat.md#confirm-an-api-operation), unless the operation is approved in advance. You can approve operations in advance in these ways:
 
