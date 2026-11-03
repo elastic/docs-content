@@ -21,7 +21,7 @@ Without `spec.backgroundTasks`, ECK runs a single pool with all roles.
 
 ## Requirements [k8s-kibana-background-tasks-requirements]
 
-* {{kib}} 8.16.0 or later. 
+* {{kib}} 8.16.0 or later.
 * A valid Enterprise license or Enterprise trial license. Refer to [Manage your license in ECK](../../license/manage-your-license-in-eck.md).
 
 
@@ -98,11 +98,6 @@ spec:
       spec:
         nodeSelector:
           type: workers <3>
-        containers:
-        - name: kibana
-          env:
-          - name: NODE_OPTIONS
-            value: "--max-old-space-size=3072"
 ```
 
 1. Applies to both pools.
