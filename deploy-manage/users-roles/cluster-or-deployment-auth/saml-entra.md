@@ -216,6 +216,6 @@ If you can't restrict the groups in the SAML assertion, you can use the [Microso
     Delegating authorization bypasses the SAML realm's role mappings. The Microsoft Graph realm evaluates mappings using the username, its own realm name, and group object IDs. Rules that depend on SAML metadata, such as `metadata.saml_*`, or a distinguished name (`dn`) no longer match.
     :::
 
-    After SAML authentication, the Microsoft Graph realm must successfully look up the user to complete sign-in. It then retrieves transitive group memberships, so role mappings match both direct and nested group memberships.
+    After SAML authentication, the Microsoft Graph user lookup must succeed for sign-in to complete. The plugin retrieves transitive group memberships, so role mappings match both direct and nested groups.
 
 The plugin applies to SAML configured in {{es}}, including deployment-level SAML on {{ech}}. It doesn't apply to [{{ecloud}} organization SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md).
