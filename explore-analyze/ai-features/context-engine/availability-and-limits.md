@@ -19,9 +19,7 @@ products:
 
 Use this page to check whether you can use {{context-engine}} in your environment, what you must turn on or grant before you start, and the limits that apply to AI indices, Knowledge Indicators (KIs), queries, and automations.
 
-## Deployment types and lifecycle
-
-{{context-engine}} is in technical preview for {{stack}} 9.6 and later and for {{serverless-full}} projects. Features in technical preview can change or be removed in a future release.
+## Deployment types and licensing
 
 For {{stack}} deployments, {{context-engine}} requires an Enterprise license or trial.
 
