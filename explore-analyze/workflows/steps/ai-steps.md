@@ -235,13 +235,17 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | `inference-id` | top level | string | No | Inference endpoint ID. Mutually exclusive with `connector-id`. |
 | `create-conversation` | top level | boolean | No | When `true`, persist the conversation for follow-up steps or later reference. |
 | `public-conversation` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | top level | boolean | No | When `true`, make the conversation this step creates public. Any user who can access the agent can read and continue the conversation and see it in their conversation list. Only applies when `create-conversation` is `true`. Defaults to `false` (private). Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
-| `ephemeral` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | top level | boolean | No | When `true`, run the agent on the conversation in `conversation_id` without writing anything back to it. Defaults to `false`. Can't be combined with `create-conversation: true`. Refer to [Ephemeral runs](#ai-agent-ephemeral). |
+| `ephemeral` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | top level | boolean | No | When `true`, the agent reads the conversation set in `conversation_id` but doesn't change it. Has no effect without `conversation_id`. Defaults to `false`. Can't be combined with `create-conversation: true`. Refer to [Example: Summarize a conversation without changing it](#ai-agent-ephemeral). |
 | `message` | `with` | string | Yes | User message to send to the agent. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
 | `conversation_id` | `with` | string | No | Continue an existing conversation by ID. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` With `ephemeral: true`, the conversation is read and not updated. |
 | `attachments` | `with` | array | No | Attachments to provide to the agent. Each attachment has `{ id?, type, data?, origin?, hidden? }`. |
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The step ignores `public-conversation` if `create-conversation` isn't `true`, or if it continues an existing conversation instead of creating one. Neither case returns an error.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` With `ephemeral: true` and a `conversation_id`, the agent uses the conversation's history, attachments, and metadata as context but adds nothing to it. The user whose privileges authorize the run must own the conversation or be a member of it, or the conversation must be public. The user must also be able to use the conversation's agent. Otherwise, the step fails. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` When `ephemeral` is `true` and `conversation_id` is set, the run doesn't answer a conversation that's [awaiting your input](/explore-analyze/ai-features/agent-builder/chat.md#track-conversation-status), so the conversation stays paused. The run starts the agent's [pre-execution workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#pre-execution-workflows) but not its post-execution workflows. The workflow editor doesn't flag `ephemeral: true` combined with `create-conversation: true`, but the step fails when it runs.
 
 **Output shape:**
 
@@ -254,31 +258,6 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 :::{important}
 Use `connector-id` **or** `inference-id`, not both. The schema rejects a step that sets both.
 :::
-
-### Ephemeral runs [ai-agent-ephemeral]
-
-```{applies_to}
-stack: ga 9.6+
-serverless: ga
-```
-
-Set `ephemeral: true` and pass a `conversation_id` to run an agent on an existing conversation without changing it, for example to summarize the conversation. The agent uses the conversation's history, attachments, and metadata as context, and can read the conversation's workspace files.
-
-The step reads the conversation as the user the workflow runs as. Refer to [Workflow authorization](/explore-analyze/workflows/authorization.md). It needs the same access as continuing the conversation: the conversation must be public, owned by that user, or shared with them, and the user must be able to use the conversation's agent. A conversation that an earlier step in the same workflow created with `create-conversation: true` meets this. `ephemeral` doesn't grant access to any other conversation.
-
-An ephemeral run:
-
-* Adds no message or round to the conversation, and doesn't change its metadata or workspace files.
-* Can't continue sub-agents that started earlier in the conversation. It can start only sub-agents that finish within the step.
-* Doesn't answer or resume a round that's paused for your input. If the conversation has the **Awaiting your input** [status](/explore-analyze/ai-features/agent-builder/chat.md#track-conversation-status), the agent sees that round as unanswered, and the conversation stays paused.
-* Runs the agent's [pre-execution workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#pre-execution-workflows), but not the workflows selected in the agent's **Post-execution workflow** setting, which run after the agent responds.
-* Returns the agent's answer without a `conversation_id`.
-
-Ephemeral runs can overlap with each other and with a regular run of the same conversation. If a regular run is still in progress, the ephemeral run doesn't see that run's message or answer.
-
-Without a `conversation_id`, `ephemeral: true` has no effect, and the step runs like any other `ai.agent` step that doesn't create a conversation.
-
-The workflow editor doesn't flag `ephemeral: true` combined with `create-conversation: true`, but the step fails when it runs, with the error `` `ephemeral` cannot be combined with `create-conversation`. ``
 
 ### Example: Call an agent
 
@@ -313,14 +292,14 @@ The workflow editor doesn't flag `ephemeral: true` combined with `create-convers
     message: "Apply the recommended action and report back."
 ```
 
-### Example: Summarize a conversation without changing it
+### Example: Summarize a conversation without changing it [ai-agent-ephemeral]
 
 ```{applies_to}
 stack: ga 9.6+
 serverless: ga
 ```
 
-The following step reads the conversation from `investigate` and does not write the summary back to it. The answer is in `steps.summarize.output.message`. The output has no `conversation_id`.
+The following step summarizes the `investigate` conversation without changing it. The summary is in `steps.summarize.output.message`.
 
 ```yaml
 - name: summarize
