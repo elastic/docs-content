@@ -732,7 +732,8 @@ toc:
               - hidden: security/alertzero/decide-detection-change.md
               - hidden: security/alertzero/respond-to-attack.md
               - hidden: security/alertzero/escalate-investigation.md
-              - hidden: security/alertzero/track-escalations.md
+                children:
+                  - hidden: security/alertzero/manage-escalations.md
               - hidden: security/alertzero/act-on-hunt-finding.md
               - hidden: security/alertzero/review-closed-proposed-actions.md
           - hidden: security/alertzero/manage-alertzero.md
