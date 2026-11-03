@@ -52,8 +52,7 @@ serverless: preview
 stack: preview 9.6
 ```
 
-:::{include} /solutions/security/alertzero/_snippets/choose-models.md
-:::
+{{alertzero}} has its own model settings, which start with recommended models instead of your default model. For how the {{az-workers}} choose a model, and how to balance quality and cost, refer to [Select models for the {{az-workers}}](/solutions/security/alertzero/set-up-alertzero.md#alertzero-choose-models).
 
 ### Switch chat experiences [set-up-ai-chat]
 
@@ -103,7 +102,7 @@ serverless: preview
 stack: preview 9.6
 ```
 
-{{alertzero}} is off by default, and you turn it on in each space where you want it. Its {{az-workers}} need an AI model, and some also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) or the **Attack Discovery Workflows** [advanced setting](#set-up-ai-advanced-settings). For what each {{az-worker}} needs and the steps to start them, refer to [](/solutions/security/alertzero/set-up-alertzero.md).
+{{alertzero}} is off by default, and you turn it on in each space where you want it. Its {{az-workers}} can't turn on until the space has an AI model, either an Elastic Managed LLM or an [LLM connector](#set-up-ai-llm). Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) or the **Attack Discovery Workflows** [advanced setting](#set-up-ai-advanced-settings). For what each {{az-worker}} needs and the steps to start them, refer to [](/solutions/security/alertzero/set-up-alertzero.md).
 
 ### Features with their own setup [set-up-ai-feature-specific]
 
