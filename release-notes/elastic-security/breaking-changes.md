@@ -22,6 +22,54 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.6.0 [elastic-security-960-breaking-changes]
+
+::::{dropdown} Elastic Defend and endpoint management APIs enforce request limits
+Requests to the {{elastic-defend}} and endpoint management APIs now enforce maximum string lengths and array sizes:
+
+- **{{elastic-defend}} artifacts:** Blocklist, trusted application, and trusted device entry values, including signer `subject_name` values, are limited to 4,096 characters. Trusted application advanced-mode entry `field` values and event filter entry `field` values are limited to 1,024 characters.
+- **Response actions APIs:** For all `POST /api/endpoint/action/*` requests, `comment` is limited to 30,000 characters, and `endpoint_ids`, `alert_ids`, and `case_ids` are limited to 256 items. Command parameters are also limited, for example `parameters.command` for `execute` (8,192 characters), `parameters.path` for `scan` and `get_file` (4,096), inline `parameters.raw` for `run_script` (65,536), and `parameters.process_name` for `kill_process` (1,024). For `GET /api/endpoint/action`, `agentIds`, `userIds`, and `withOutputs` are limited to 256 items, and `startDate` and `endDate` to 64 characters.
+- **Scripts library API:** `name` must be 1 to 256 characters. `description`, `instructions`, and `example` are limited to 10,000 characters, and `pathToExecutable` to 4,096 characters. For `PATCH` requests, `version` must be 1 to 256 characters.
+- **Endpoint metadata, policy response, and protection updates note APIs:** `kuery` is limited to 30,000 characters, and IDs such as `id`, `agentId`, and `package_policy_id` to 256 characters. The protection updates note `note` field is limited to 10,000 characters.
+- **Response actions in detection rules:** When you create, update, preview, or import a rule, Osquery `query` values and ECS mapping `value` entries are limited to 30,000 characters, and ECS mapping `field` values to 2,000 characters. For {{elastic-defend}} response actions, `comment` is limited to 30,000 characters, `scriptId` to 256 characters, and `scriptInput` to 8,192 characters.
+
+**Impact**<br> Requests that exceed these limits, or that send an empty `name` or `version` to the scripts library API, are rejected with a validation error. Creating, updating, previewing, or importing a detection rule with response action parameters that exceed these limits fails validation.
+
+**Action**<br> Before you upgrade, make sure scripts, integrations, and rule import files that call these APIs keep values within these limits.
+
+For more information, check [#274803]({{kib-pull}}274803), [#274987]({{kib-pull}}274987), [#275710]({{kib-pull}}275710), [#275711]({{kib-pull}}275711), and [#275716]({{kib-pull}}275716).
+::::
+
+::::{dropdown} Entity Analytics: Entity store indices use solution-neutral names
+The entity store indices, data streams, templates, and ingest pipelines no longer include `security_` in their names. For example, `.entities.v2.latest.security_<space>-00001` is now `.entities.v2.latest.<space>-00001`. The updates, metadata, and history indices follow the same pattern (`.entities.v2.updates.<space>`, `.entities.v2.metadata.<space>`, and `.entities.v2.history.<space>.<date>`). Existing deployments migrate automatically on upgrade, and history snapshots taken before the upgrade keep their `.entities.v2.history.security_<space>.*` names until they expire. Compatibility aliases keep requests that use the old names working, and the entity store API paths are unchanged.
+
+**Impact**<br> Users with custom roles that grant index privileges only on the old `.entities.v2.*.security_*` names get a 403 error when they query the new index names directly.
+
+**Action**<br> Update custom roles that access entity store data to grant privileges on the new index names, for example `.entities.v2.latest.*`, `.entities.v2.updates.*`, `.entities.v2.metadata.*`, and `.entities.v2.history.*`.
+
+For more information, check [#282130]({{kib-pull}}282130).
+::::
+
+::::{dropdown} Workflows: Run workflow sends documents in one format from every entry point
+When you run a workflow from the alerts table, the row actions menu, or the alert details flyout, {{elastic-sec}} now sends document IDs, and {{kib}} fetches each document. Workflows receive every document with dotted field paths and array values, for example `'host.name': ['h1']`. Previously, **Run workflow** from the legacy alert details flyout sent the raw `_source`, with nested objects and single values, for example `host: { name: 'h1' }`. Runtime fields that are defined only on a {{data-source}} aren't included.
+
+**Impact**<br> Workflows that read fields in the nested `_source` format from the legacy alert details flyout can resolve those fields as `undefined`.
+
+**Action**<br> Update workflows that read document fields from the trigger event to use dotted field paths with array values, such as `event.documents[0]['host.name'][0]`.
+
+For more information, check [#292144]({{kib-pull}}292144).
+::::
+
+::::{dropdown} Cases: Legacy response action attachments use the `security.endpoint` format
+Case attachments of the legacy `actions` type are now returned as external reference attachments of type `security.endpoint`. This applies to existing and new attachments in Cases API responses, case user actions, and Cases workflow step outputs. Stored attachments aren't modified, and the `user` and `alert` attachment types are unchanged.
+
+**Impact**<br> Scripts, integrations, and workflows that read `actions` attachments from the Cases API or Cases workflow steps no longer receive the `actions` type.
+
+**Action**<br> Update code that parses `actions` attachments to read response action attachments as external reference attachments of type `security.endpoint`.
+
+For more information, check [#287729]({{kib-pull}}287729).
+::::
+
 ## 9.4.0 [elastic-security-940-breaking-changes]
 
 ::::{dropdown} Osquery: Scheduled query results no longer populate action_id
