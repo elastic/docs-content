@@ -29,3 +29,5 @@ In most setups, applications send metrics to the {{motlp}} or to an [{{agent}} i
   Exemplar ingestion is enabled by default and can be [turned off](/manage-data/ingest/otlp-endpoint.md#disable-exemplars).
 
 For request details, authentication, and limitations, refer to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) reference.
+
+For an overview of all metrics ingest paths, including how this endpoint fits alongside the Managed OTLP Endpoint and {{agent}} integrations, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp).

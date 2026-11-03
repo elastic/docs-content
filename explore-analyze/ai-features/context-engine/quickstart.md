@@ -17,15 +17,15 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-In this tutorial, you follow the complete {{kib}} and {{agent-builder}} path from data already stored in {{es}} to a Knowledge Indicator (KI) that an agent can retrieve. You can use your own data or the {{kib}} sample ecommerce data.
+In this tutorial, you follow the complete {{kib}} and {{agent-builder}} path from data already stored in {{es}} to Knowledge Indicators (KIs) that an agent can retrieve. You can use your own data or the {{kib}} sample ecommerce data.
 
-Suppose an agent regularly answers questions about an {{es}} index. Without reusable context, it might first inspect the mapping, interpret the fields, and construct suitable queries. This tutorial generates an index metadata KI that gives the agent that orientation and query guidance up front.
+Suppose an agent regularly answers questions about an {{es}} index. Without reusable context, it might first inspect the mapping, interpret the fields, and construct suitable queries. This tutorial generates KIs that give the agent that orientation and query guidance up front.
 
 ## Tutorial outcome
 
-By the end of this tutorial, an {{agent-builder}} agent can retrieve an `index_metadata` KI. The KI explains what your selected {{es}} data contains, its limitations, and how to query it with verified {{esql}}.
+By the end of this tutorial, an {{agent-builder}} agent can retrieve KIs generated from your selected {{es}} data. The KIs describe what the data contains and how to query it with verified {{esql}}.
 
-An automation, implemented as a workflow in [Elastic Workflows](/explore-analyze/workflows.md), generates the KI and can refresh it when the source changes.
+An automation, implemented as a workflow in [Elastic Workflows](/explore-analyze/workflows.md), generates the KIs and can refresh them when the source changes.
 
 ## Before you begin
 
@@ -71,7 +71,7 @@ A source identifies the data that the automation can analyze. For this tutorial,
 
 Add a source to the AI index:
 
-1. In **Sources**, select **Edit**.
+1. In **Sources**, select **Add sources**.
 2. On the **Elasticsearch data** tab, start typing the name of an index, data stream, or alias. If you are using the ecommerce sample data, enter `kibana_sample_data_ecommerce`.
 3. Select the matching result.
 4. Confirm that the source appears under **Selected sources**, then select **Save**.
@@ -80,30 +80,36 @@ Selecting an index, data stream, or alias creates an {{esql}} source in the form
 
 ## 4. Create the automation
 
-Use the guided route for this tutorial:
+This tutorial uses the guided route, where {{agent-builder}} creates the automation for you. For an AI index without an automation, {{agent-builder}} has no default generation strategy. It chooses one from the shape of your data, such as one KI for each document, or one KI for each recurring entity, like a customer or a product.
 
-For an AI index without an automation, {{agent-builder}} starts with an Index/Table Metadata automation. It creates one `index_metadata` KI that describes what the data contains, when to use it, and how to query it.
+Create the automation:
 
-1. In **Automations**, select **Suggest automation**.
-2. {{agent-builder}} opens a conversation and sends **Suggest an automation for this AI index**.
-3. Review the proposal. Confirm that it identifies the intended source index and a suitable keyword field for grouping the data. For the ecommerce sample data, `category.keyword` is an appropriate grouping field.
-4. Approve the proposal when {{agent-builder}} asks whether to create the automation.
+1. In **Automations**, select **Add automation** → **Create with AI Agent**.
+2. {{agent-builder}} opens a conversation and sends **Suggest an automation for this AI index.**
+3. Review the strategy that {{agent-builder}} names and the evidence it cites from your data. Confirm that it uses the intended source index.
+4. For the ecommerce sample data, {{agent-builder}} names **Cumulative / Wiki-style** and asks whether to profile products, customers, or both. Select an option, then select **Submit**.
 
-{{agent-builder}} installs the Index/Table Metadata template and attaches the resulting workflow to the AI index. The workflow inspects the index mapping, samples documents, runs grounding aggregations, generates the KI, and verifies any {{esql}} that the KI contains. Installing the automation does not run it.
+What happens next depends on the strategy:
+
+- **Index/Table Metadata, Bottom-Up, Cumulative / Wiki-style, and Targeted KI**: {{agent-builder}} installs a template and attaches the workflow. The install has no confirmation prompt. If it asks which entity to profile, or which strategy to use, answer that question first.
+- **Other strategies**: {{agent-builder}} describes a plan and asks you to confirm before it builds and pilots a workflow.
+
+Installing the automation does not run it. For each path, refer to [Create an automation with Agent Builder](create-and-manage-automations.md#create-an-automation-with-agent-builder).
 
 :::{note}
-**Create automation** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
+**Add automation** → **Create workflow** is the manual route. It opens a new, disabled workflow in the [Workflows YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) with a manual trigger and generic starter YAML. Use it when you intend to author the KI-generation workflow yourself.
 :::
 
-## 5. Run the automation and inspect the Knowledge Indicator
+## 5. Run the automation and inspect the Knowledge Indicators
 
 Run the automation and inspect its output:
 
-1. Ask {{agent-builder}} to run the automation.
-2. Confirm the run when prompted.
-3. Follow the execution link and confirm that the workflow completes successfully.
-4. Return to the AI index in **Context**, then open **Knowledge Indicators**.
-5. Open the `index_metadata` KI and confirm that it describes the intended data, its limitations, and useful {{esql}} access patterns.
+1. If the run would write more than five KIs, select **Run pilot**. **Cancel** is the other button. A workflow that {{agent-builder}} already piloted skips this step.
+2. When {{agent-builder}} asks to start the full run, select **Run automation**. After a successful pilot, it also estimates how long the full run takes.
+3. If the pilot fails, or doesn't write a KI for each item, {{agent-builder}} reports the problem and stops.
+4. The full run continues in the background. Ask {{agent-builder}} for a progress update until the run completes.
+5. Return to the AI index in **Context**, then open **Knowledge Indicators**.
+6. Open the KIs that the run wrote and confirm that they describe the intended data and include useful {{esql}} access patterns.
 
 For a detailed review process, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
 
@@ -118,19 +124,19 @@ Add the populated AI index to an Agent Builder agent:
 
 The assignment makes the AI index and the dedicated {{context-engine}} retrieval tools available to the agent. Its name and description help the agent decide when to retrieve its KIs. For details about the tools, source-data access, and custom instructions, refer to [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
 
-## 7. Test how the agent uses the Knowledge Indicator
+## 7. Test how the agent uses the Knowledge Indicators
 
 Ask the agent questions that exercise both kinds of context:
 
-1. Ask a question the KI can answer from its distilled content, such as what the dataset represents and what its important limitations are.
-2. Ask for current or detailed information that requires one of the KI's verified ESQL queries.
+1. Ask a question that a KI can answer from its distilled content.
+2. Ask for current or detailed information that requires a verified {{esql}} query from one of the KIs.
 
-For the ecommerce sample data, ask which questions the index cannot answer, then ask for a current revenue breakdown by manufacturer. The first answer should come from the KI. The second should cause the agent to query the source data.
+For the ecommerce sample data, ask about something a KI describes, then ask for a current revenue breakdown by manufacturer. Check whether the agent answers from a KI or queries the source data. Which one it uses depends on the strategy {{agent-builder}} chose.
 
 Confirm that the agent:
 
 - Selects the relevant AI index
-- Retrieves the KI as context
+- Retrieves a KI as context
 - Answers directly when the KI contains the required knowledge
 - Uses targeted {{esql}} against the source when current detail is required
 
@@ -141,6 +147,6 @@ KIs can reduce the time and model tokens agents spend exploring source data. The
 After completing this tutorial, you can:
 
 - [Add or refine sources](add-and-manage-sources.md) to control the data that automations analyze.
-- [Create, run, and schedule automations](create-and-manage-automations.md) that generate other kinds of KIs.
+- [Create, run, and schedule automations](create-and-manage-automations.md) that use other generation strategies.
 - [Evaluate and improve the generated KIs](evaluate-and-improve-knowledge-indicators.md).
 - [Use the AI index](use-an-ai-index.md) through APIs or another agent integration.
