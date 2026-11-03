@@ -63,6 +63,8 @@ Select **Create connector** to open the connector selection flyout, where you ch
 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Use the **Filter by feature** control to narrow the list to connector types that support specific {{kib}} features, such as **Alerting**, **Cases**, or **Uptime**. Leave the filter empty to show all available connector types. The HTTP connector type is available in the create flyout alongside other connector types.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some connector types include an **Actions** setting on the create and edit form when that form lists more than one action. **All** is the default and doesn't save an action list. **Custom** lets you select which actions that connector can run. Calls to actions you leave unselected are rejected wherever the connector runs. Agents still can't run actions marked **Workflow only**. Refer to [Limit a connector's actions](/explore-analyze/ai-features/agent-builder/connectors.md#limit-a-connectors-actions).
+
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
 ::::

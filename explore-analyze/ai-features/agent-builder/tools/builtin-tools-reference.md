@@ -116,6 +116,8 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool only runs connectors [assigned to the agent](../connectors.md#assign-connectors-to-an-agent). Calls to other connectors fail with an error.
 
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool only runs sub-actions allowed on the connector. Other sub-actions fail with an error. Sub-actions marked **Workflow only** fail even when they're allowed. Refer to [Limit a connector's actions](../connectors.md#limit-a-connectors-actions).
+
     **Prerequisites:** In 9.4 and 9.5, the `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on. Starting in 9.6, and on {{serverless-short}}, the tool is available without it.
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This tool isn't available through the [MCP server](../mcp-server.md).

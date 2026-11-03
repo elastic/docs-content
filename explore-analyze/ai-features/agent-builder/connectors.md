@@ -32,6 +32,8 @@ You manage connectors per {{kib}} space from **Manage components** → **Connect
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` An agent can only run the connectors assigned to it. Agents look up connectors and load their sub-actions and parameter schemas at run time through the built-in `connector-discovery` [skill](skills.md), which **Enable Elastic capabilities** includes. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` From those connectors, an agent only sees actions the connector allows that aren't marked **Workflow only**. Refer to [Limit a connector's actions](#limit-a-connectors-actions).
+
 {applies_to}`stack: preview 9.4-9.5` Unlike standalone tools, connectors don't need to be assigned to agents: any agent can use any connector in the space.
 
 When an agent needs to interact with an external system, it automatically reads the schemas of the connectors available to it. It then uses a built-in system tool (`platform.core.execute_connector_sub_action`) to independently format API payloads and run specific sub-actions (for example, looking up a Slack channel ID or searching AlienVault OTX for threat intelligence) without any manual tool mapping.
@@ -48,9 +50,30 @@ To register a new connector:
 
 The configured connector appears in the library.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If the form includes **Actions**, you can leave **All** selected. To limit the connector, select **Custom**. Refer to [Limit a connector's actions](#limit-a-connectors-actions).
+
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use the connector, [assign it to the agent](#assign-connectors-to-an-agent).
 
 {applies_to}`stack: preview 9.4-9.5` Any agent can use the connector immediately.
+
+## Limit a connector's actions [limit-a-connectors-actions]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+The create and edit form includes an **Actions** setting when it lists more than one action. Connector types with one action, and types that don't list actions on the form, don't show it.
+
+The setting controls which actions can run. {{kib}} rejects an action that isn't allowed wherever that connector runs, including agents, workflows, rules, and the [Run a connector API]({{kib-apis}}operation/operation-post-actions-connector-id-execute).
+
+**All** is the default. {{kib}} doesn't save an action list. Actions added to the connector type in later versions are available without another edit. Agents can run every action that isn't marked **Workflow only**. Workflows, rules, and the Run a connector API can run every action, including actions marked **Workflow only**.
+
+**Custom** lets you select the actions. When you switch from **All** to **Custom** on a connector with no saved action list, the form selects the actions badged **read**. Each action shows a scope badge: **read**, **write**, or **destroy**. Actions that agents can't call also show **Workflow only**. Select at least one action. If you select none, the form shows "Select at least one action, or enable All." Actions added to the connector type later stay unselected until you edit the connector and select them.
+
+An action you leave unselected is rejected for every caller. An action marked **Workflow only** stays unavailable to agents even when you select it. A workflow, a rule, or the Run a connector API can still run that action if you select it, or if the connector uses **All**.
+
+Leaving a write or destroy action unselected blocks it for agents and for every other caller. Selecting it doesn't hide it from agents. Only an action marked **Workflow only** can stay available to workflows and rules while staying unavailable to agents.
 
 ## Assign connectors to an agent [assign-connectors-to-an-agent]
 
