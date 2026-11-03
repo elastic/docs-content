@@ -1067,11 +1067,11 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 **Example:** Chat as a service account $$$chat-as-a-service-account$$$ {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable`
 
-A user-managed service account calls the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) with a service token. The token uses the `Bearer` scheme. {{kib}} must accept that scheme. Refer to [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#http-authentication).
+A user-managed service account can call the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) by sending its service token in a `Bearer` authorization header. {{kib}} accepts the `Bearer` scheme by default. If you changed the accepted schemes, refer to [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#http-authentication).
 
 Dev Tools Console runs as the signed-in user, so send this request with `curl` or another HTTP client. Set `SERVICE_ACCOUNT_TOKEN` to the service token. The account needs the privileges in [Service accounts](permissions.md#service-accounts).
 
-To create a public conversation in the same request, set `access_control.access_mode` to `public`. Omit `access_control` to create a private conversation that the account owns.
+This example creates a public conversation. To create a private conversation that only the account can access, omit `access_control`.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
@@ -1088,7 +1088,17 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 :::{include} _snippets/spaces-api-note.md
 :::
 
-The converse response attributes the round to the service account. `author.type` is `service_account`, and `author.id` is `service_account:` followed by the account id, for example `service_account:kibana/automation`. The conversation owner is the same account. On the conversation, `user.type` and `user.id` use those same values.
+The response identifies the service account as the author of the message:
+
+```json
+"author": {
+  "id": "service_account:kibana/automation",
+  "type": "service_account",
+  "username": "kibana/automation"
+}
+```
+
+Because this request creates the conversation, the service account also owns it, and the conversation's `user` object has the same values.
 
 **Example:** Chat with an agent and stream events
 

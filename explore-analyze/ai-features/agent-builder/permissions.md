@@ -114,7 +114,7 @@ serverless: ga
 
 The {{kib}} privileges described above control who can use {{agent-builder}} at all. Individual conversations have a second layer of access control on top of that, so the owner of a conversation can decide who else can read it.
 
-Conversations are private by default. Only the owner, who created the conversation, can see it. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` A service account that creates a conversation is that owner. Refer to [Service accounts](#service-accounts).
+Conversations are private by default. Only the owner, who created the conversation, can see it.
 
 ### Access modes
 
@@ -138,7 +138,7 @@ Members cannot rename the conversation, delete it, or change who it is shared wi
 
 You can share with individual users only. Granting access to an {{es}} role is not supported.
 
-Members are identified by their {{kib}} user profile ID, not by username. A user who has never logged in to {{kib}} has no profile and cannot be added. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` A service account has no profile either, so Agent Chat cannot add it as a member. Refer to [Service accounts](#service-accounts).
+Members are identified by their {{kib}} user profile ID, not by username. A user who has never logged in to {{kib}} has no profile and cannot be added. {applies_to}`serverless: unavailable` Service accounts are the exception. Refer to [Service accounts](#service-accounts).
 
 ### Who can do what
 
@@ -198,18 +198,20 @@ stack: ga 9.6+
 serverless: unavailable
 ```
 
-A user-managed service account can call the {{agent-builder}} HTTP APIs with its own identity. Authenticate with a [service token](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#service-accounts-tokens) and the `Bearer` scheme. A service account cannot sign in to the {{kib}} UI.
+A user-managed service account can call the {{agent-builder}} APIs and MCP server with its own identity and privileges. Send its [service token](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#service-accounts-tokens) in a `Bearer` authorization header. A service account cannot sign in to the {{kib}} UI.
 
 % After elastic/docs-content#8921 merges, link token setup to authenticate-kibana-api-with-service-account.md. The published service accounts page still documents built-in accounts only.
 
-Built-in service accounts, such as `elastic/fleet-server`, have fixed privileges. They cannot be granted {{agent-builder}} access.
+Built-in service accounts, such as `elastic/fleet-server`, have fixed privileges and cannot be granted {{agent-builder}} access.
 
-Assign the account a role with the same {{kib}} and {{es}} privileges you would give a user who chats with the agent. Scope that role to the space the client calls. The role must include **Agent Builder: Read**. Without an `agentBuilder` privilege, requests return `403`.
+Assign the account a role with the same {{kib}} and {{es}} privileges you would give a user who chats with the agent, scoped to the space the client calls. The role needs at least **Agent Builder: Read**. Without it, requests return `403`. For the privilege list, refer to [How permissions work](#how-permissions-work).
 
-The agent runs with the service account's privileges. A tool cannot read an index the role cannot read. For the privilege list, refer to [How permissions work](#how-permissions-work).
+The account also needs access to the agent it calls. If it cannot access the agent, requests return `404` and report the conversation as not found.
 
-The account owns the conversations it creates, including private ones. It can also read and continue public conversations that other users own. A private conversation it does not own is reported as not found.
+The agent runs with the service account's privileges, so its tools can read only the indices the role allows.
 
-A service account has no {{kib}} user profile. **Search for users to add** does not list it, so Agent Chat cannot add it as a member. To let it continue someone else's conversation, make that conversation public.
+The account owns the conversations it creates, including private ones. It can also read and continue public conversations that other users own. Like any user, it gets a not found error for a private conversation it does not own and is not a member of.
+
+A service account has no {{kib}} user profile, so **Search for users to add** in Agent Chat does not list it. To give it access to someone else's conversation, the owner can make the conversation public, or add the account as a member with the [update conversation access control API](kibana-api.md#update-conversation-access-control). Use `service_account:` followed by the account name as the member ID, for example `service_account:kibana/automation`.
 
 For a request example, refer to [Chat as a service account](kibana-api.md#chat-as-a-service-account).

@@ -230,7 +230,7 @@ Your changes save immediately. If a change fails, the popover shows the error "F
 
 The user search includes users who can log in to the current space, but a member can open the conversation only if they can also access its agent. You can't add users who have never logged in to {{kib}}.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` A service account has no user profile, so it doesn't appear in this search. Refer to [Messages from a service account](#messages-from-a-service-account).
+{applies_to}`serverless: unavailable` Service accounts don't appear in this search. Refer to [Service accounts](permissions.md#service-accounts).
 
 To remove a member, click the **Remove member** icon {icon}`cross` next to their name. Switching to **Public** removes all members, and switching back to **Restricted** doesn't restore them.
 
@@ -267,11 +267,9 @@ stack: ga 9.6+
 serverless: unavailable
 ```
 
-A service account can post into a public conversation through the Kibana APIs. The message shows the account username, such as `kibana/automation`. If that message was stored with a display name, chat shows the display name instead. The converse API doesn't accept a display name.
+Scripts and integrations can post to a conversation as a [service account](permissions.md#service-accounts) through the {{kib}} API. Chat shows these messages with the account username, such as `kibana/automation`, instead of a person's name. If a workflow posted the message with a display name, chat shows that name instead.
 
-Click the conversation title to open its details. **Author** is the account username. A public conversation owned by the service account doesn't show the sharing button.
-
-For privileges and which conversations the account can open, refer to [Service accounts](permissions.md#service-accounts).
+If the service account created the conversation, **Author** in the conversation details shows the account username.
 
 #### Post without running the agent
 
