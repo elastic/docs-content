@@ -26,7 +26,7 @@ Examples:
 
 <!-- REQUIRED
 
-Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
+State the intent of the page. Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
 
 - A brief description of what this tutorial teaches
 - The intended audience and their expected skill level
