@@ -58,13 +58,15 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
-| `state_transition.recovering.count` | integer | 0–1000 | Consecutive recoveries the alert spends in `recovering` before it becomes `inactive` on the next recovery. Set to `0` to close the alert on the first recovery. |
+| `state_transition.recovering.count` | integer | 0–1000 | Consecutive recoveries the alert spends in `recovering` before it becomes `inactive` on the next recovery. Set to `0` to close the alert on the first recovery. If you also set `timeframe` with `operator: and`, a count of `0` closes the alert only after the timeframe passes. |
 | `state_transition.recovering.timeframe` | duration | Any duration string | How long the condition must remain non-breaching before the alert closes. |
 | `state_transition.recovering.operator` | string | `and` or `or` | When you set both `count` and `timeframe`, controls whether both must be satisfied (`and`) or either one is enough (`or`). Defaults to `or`. |
 
 Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
 A rule with **No recovery** (`manual`) can't set `state_transition.recovering`, because a recovery delay has no effect when alerts never recover on their own.
+
+Recovery delay also doesn't apply when [no-data handling](configure-no-data-handling.md) closes an alert with **Recover immediately**. The alert skips the `recovering` state and closes the first time the rule finds no data for its group.
 
 You can combine Recoveries and Duration by setting both `count` and `timeframe`. Use `operator: and` to require both conditions before the alert closes, or `operator: or` if either condition alone is enough. For field details, refer to the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields).
 

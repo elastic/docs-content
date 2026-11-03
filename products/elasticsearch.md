@@ -25,8 +25,8 @@ steps:
         url: https://cloud.elastic.co/registration
         url-label: Start a free trial
       - label: Run locally
-        description: Spin up Elasticsearch on your machine for development with `start-local`.
-        code: curl -fsSL https://elastic.co/start-local | sh
+        description: Spin up Elasticsearch on your machine for development. To spin up Kibana too, delete the `--esonly` flag.
+        code: curl -fsSL https://elastic.co/start-local | sh -s -- --esonly
         language: sh
   - title: Ingest your data into Elasticsearch
     description: Send documents to Elasticsearch using the APIs, ingest pipelines, connectors, or a language client.
