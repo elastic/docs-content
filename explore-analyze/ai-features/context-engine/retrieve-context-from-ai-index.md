@@ -30,6 +30,8 @@ To query an AI index, you need:
 
 For direct API access, you also need credentials for the caller. The examples on this page use an API key.
 
+For the privileges each task requires and the query limits, refer to [](availability-and-limits.md).
+
 ## How to query AI indices
 
 Choose a query mode based on whether your code or an agent controls the retrieval sequence:

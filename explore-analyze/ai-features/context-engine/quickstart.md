@@ -38,6 +38,8 @@ You need:
 
 Starting with existing data matters. An AI index does not ingest source data by itself. Its sources identify the data that an automation can use to generate KIs.
 
+For deployment, license, and privilege requirements, refer to [](availability-and-limits.md).
+
 ## 1. Enable {{context-engine}}
 
 Turn on {{context-engine}} for the current Kibana space:

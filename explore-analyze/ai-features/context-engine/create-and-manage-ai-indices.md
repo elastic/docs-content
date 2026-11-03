@@ -25,6 +25,8 @@ Turn on the `contextEngine:enabled` advanced setting in the current {{kib}} spac
 
 Define the purpose and boundaries of the AI index before creating it. For planning guidance, refer to [Define the AI index's purpose](build-and-maintain-ai-index.md#define-the-ai-indexs-purpose).
 
+For the privileges each task requires and the limits on AI indices, refer to [](availability-and-limits.md).
+
 ## Create an AI index
 
 Create an AI index in {{kib}} for an interactive setup, or use the API for programmatic provisioning.
