@@ -60,7 +60,7 @@ It also sends process, file, and network activity to {{elastic-sec}}, where preb
 
 ## AI in {{elastic-sec}} [ai-in-elastic-security]
 
-{{elastic-sec}} also includes [AI features](/solutions/security/ai.md) that use large language models (LLMs). Depending on your deployment and license, you can use Elastic Managed LLMs through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) or an LLM from another provider.
+{{elastic-sec}} also includes AI features that use large language models (LLMs). Depending on your deployment and license, you can use Elastic Managed LLMs through the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) or an LLM from another provider.
 
 With AI features, you can:
 
@@ -76,11 +76,15 @@ With AI features, you can:
 To add AI triage without replacing your current SIEM or EDR/XDR platform, use an [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) project. It runs Attack Discovery, {{agent-builder}}, and cases on the alerts from that platform.
 :::
 
+[Learn more about AI in {{elastic-sec}} →](/solutions/security/ai.md)
+
 ## Start using {{elastic-sec}} [start-using-elastic-security]
 
 To try {{elastic-sec}}, [start a free trial](https://cloud.elastic.co/serverless-registration). The features available to your team depend on how you run it. In {{sec-serverless}}, the Security Analytics [feature tiers](/solutions/security/security-serverless-feature-tiers.md) include SIEM, with add-ons for endpoint and cloud protection. In {{stack}} deployments, features depend on your [subscription](https://www.elastic.co/pricing).
 
-To set up your deployment, follow [Get started with {{elastic-sec}}](/solutions/security/get-started.md). For a guided walkthrough of one area, use a [quickstart](/solutions/security/get-started/quickstarts.md).
+For a guided walkthrough of one area, use a [quickstart](/solutions/security/get-started/quickstarts.md).
+
+[Get started with {{elastic-sec}} →](/solutions/security/get-started.md)
 
 ## Related reference
 
