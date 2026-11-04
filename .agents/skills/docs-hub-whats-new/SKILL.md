@@ -63,6 +63,8 @@ A blog says what to highlight. It does not prove the feature is in the release. 
 2. Read its `applies_to` tag. The card's `availability` comes from that tag, not from the blog. If the page has no tag for the target minor and no `serverless` tag, drop the card or ask the user.
 3. If the abstract names a license level, a lifecycle (technical preview or GA), or a deployment (Serverless only, or stack too), check it against the page. Use the page when they disagree.
 
+A new API can have no narrative page yet. In that case, link the generated API reference group on `https://www.elastic.co/docs/api/doc/kibana/` and take `availability` from the `x-state` of its operations in `oas_docs/output/kibana.yaml` (for example `Generally available; added in 9.6.0`) at `origin/main` in `elastic/kibana`. Open the group URL to confirm that it resolves, and list the card under `Pending links` in the PR body so a narrative page can replace it later.
+
 Keep the project private. In the PR body, name each blog by its title and status. Do not paste abstracts, Google Doc links, or issue links into a public PR. Give the user the full list of blogs you read in chat.
 
 Rerun the skill after GA, when the published release notes can confirm the cards.
@@ -95,7 +97,7 @@ Every `release-links[].url`, `upgrade-link.url`, and `items[].link` must be one 
 - Site-absolute with `.md`, for example `/manage-data/data-store/columnar.md`
 - Cross-repo, for example `elasticsearch://reference/query-languages/promql.md`
 
-Do not use `https://www.elastic.co/docs/...` for pages this site publishes. Do not use relative paths.
+Do not use `https://www.elastic.co/docs/...` for pages this site publishes. The generated API reference under `https://www.elastic.co/docs/api/doc/` is the one exception, because no source file in this repo builds it. Do not use relative paths.
 
 Confirm the file exists before you add the link. For docs-content pages, `git cat-file -e HEAD:<path>` or a working-tree glob. For other repos, use the `repo://` form and confirm the path in that repo.
 
