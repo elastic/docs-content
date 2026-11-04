@@ -38,9 +38,10 @@ description: Use Discover to search and filter documents, analyze field structur
 
 New to Discover? Start with [Explore fields and data with Discover](discover/discover-get-started.md).
 
-Discover has two query modes. {{esql}} mode doesn't require a data view. Classic mode uses data views with KQL or Lucene. For your first {{esql}} queries, follow [Get started with {{esql}} in Discover](discover/try-esql.md).
+Discover has two query modes that you can [switch between](discover/switch-esql-mode.md):
+- Classic mode, that uses data views with KQL or Lucene.
+- {{esql}} mode, that can directly query your {{es}} data sources without a data view.  For your first {{esql}} queries, follow [Get started with {{esql}} in Discover](discover/try-esql.md).
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Discover** opens in {{esql}} mode by default. To use data views with KQL or Lucene, switch to classic mode. Refer to [Switch between {{esql}} and classic mode](discover/switch-esql-mode.md).
 
 ## Common tasks
 
