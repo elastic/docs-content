@@ -60,7 +60,7 @@ When you approve the results, the agent names every historical job it wants to d
 
 ## Alerting rules
 
-If you ask for alerting, the agent lets you pick one of two {{kib}} rule types:
+If you ask for alerting, the agent creates a [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) rule and lets you pick one of two rule types:
 
 * **{{anomaly-detect-cap}}**: Notifies you when a job's results match the conditions you define. The agent proposes a default severity threshold of 75 and asks whether you want to change it.
 * **{{anomaly-detect-cap}} jobs health**: Notifies you when a job has an operational problem, such as a stopped {{dfeed}} or a memory limit error.
