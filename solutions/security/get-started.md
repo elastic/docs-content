@@ -52,12 +52,14 @@ Check out the complete list of [deployment types](/deploy-manage/deploy.md#choos
 ::::{{step}} Ingest your data 
 
 
-After you've deployed {{elastic-sec}}, the next step is to get data into the product before you can search, analyze, or use any visualization tools. The easiest way to get data into {{elastic-sec}} is through one of our hundreds of ready-made integrations. You can add an integration directly from the **Get Started** page within the **Ingest your data** section:
-1. At the top of the page, click **Set up Security**. 
-2. In the Ingest your data section, click **Add data with integrations**. 
-3. Choose from one of our recommended integrations, or select another tab to browse by category. 
+After you've deployed {{elastic-sec}}, the next step is to get data into the product before you can search, analyze, or use any visualization tools. The easiest way to get data into {{elastic-sec}} is through one of our hundreds of ready-made integrations. You can add an integration from the **Get started** page:
+
+1. Find **Get started** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In **Ingest your data**, choose a recommended integration or select another category tab.
+3. Select the integration you want to add.
+
 :::{image} /solutions/images/security-gs-ingest-data.png
-:alt: Ingest data
+:alt: Ingest your data section on the Get started page, with recommended integrations
 :screenshot:
 :::
 

@@ -17,7 +17,7 @@ products:
 The Hosts page provides a comprehensive overview of all hosts and host-related security events. Key performance indicator (KPI) charts, data tables, and interactive widgets let you view specific data, drill down for deeper insights, and interact with Timeline for further investigation.
 
 :::{image} /solutions/images/security-hosts-ov-pg.png
-:alt: Hosts page
+:alt: Hosts page with KPI charts and the Events histogram
 :screenshot:
 :::
 
