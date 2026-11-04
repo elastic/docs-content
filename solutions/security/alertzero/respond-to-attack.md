@@ -74,7 +74,7 @@ Your team can set either {{az-worker}} to {{az-supervised}} {{az-autonomy}}, so 
 - **{{az-attack-discovery}} {{az-worker}}:** Sends attacks for forensics without asking.
 - **{{az-endpoint-analysis}} {{az-worker}}:** Runs its response actions without asking.
 
-To see what ran, expand **Closed Actions** on the **{{az-proposed-actions-cap}}** page and look for cards marked **Auto**, or check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md). If the {{az-endpoint-analysis}} {{az-worker}} isolated a host and it's safe to bring the host back, [release it](#alertzero-respond-undo).
+To see what ran, expand **Closed Actions** on the **{{az-proposed-actions-cap}}** page and look for cards approved by the {{az-endpoint-analysis}} {{az-worker}}, or check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md). If the {{az-endpoint-analysis}} {{az-worker}} isolated a host and it's safe to bring the host back, [release it](#alertzero-respond-undo).
 
 ## Related pages [alertzero-respond-related]
 
