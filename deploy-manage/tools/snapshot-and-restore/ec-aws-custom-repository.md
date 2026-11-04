@@ -27,7 +27,7 @@ Next, create an IAM user, copy the access key ID and secret, and configure the f
 
 ```json
 {
-  "Version": "policy-language-YYYY-MM-dd",<1>
+  "Version": "policy-language-YYYY-MM-dd", <1>
   "Statement": [
     {
       "Action": [

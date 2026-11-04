@@ -49,11 +49,11 @@ PUT _ml/anomaly_detectors/it_ops_app_logs
 {
   "description" : "IT ops application logs",
   "analysis_config" : {
-    "categorization_field_name": "message",<1>
+    "categorization_field_name": "message", <1>
     "bucket_span":"30m",
     "detectors" :[{
       "function":"count",
-      "by_field_name": "mlcategory"<2>
+      "by_field_name": "mlcategory" <2>
     }]
   },
   "data_description" : {

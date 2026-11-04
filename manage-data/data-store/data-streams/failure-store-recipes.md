@@ -126,7 +126,7 @@ GET _ingest/pipeline/ingest-step-2
       {
         "set": { <1>
           "field": "copy.info",
-          "copy_from": "important.info" <2> 
+          "copy_from": "important.info" <2>
         }
       }
     ]

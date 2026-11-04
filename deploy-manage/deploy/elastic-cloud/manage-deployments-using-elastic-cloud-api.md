@@ -80,8 +80,8 @@ curl -XPOST \
 "https://api.elastic-cloud.com/api/v1/deployments?template_id=gcp-general-purpose" \
 -d '
 {
-  "version": "{{version.stack}}",<1>
-  "region": "gcp-europe-west1"<2>
+  "version": "{{version.stack}}", <1>
+  "region": "gcp-europe-west1" <2>
 }
 '
 ```

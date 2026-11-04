@@ -804,7 +804,7 @@ GET _data_stream/my-datastream
         ],
         "lifecycle": {
           "enabled": true,
-          "effective_retention": "30d",  <3> 
+          "effective_retention": "30d",  <3>
           "retention_determined_by": "default_failures_retention"  <4>
         }
       }

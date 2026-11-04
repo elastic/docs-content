@@ -485,7 +485,7 @@ This query demonstrates how {{esql}}'s [COUNT_DISTINCT](elasticsearch://referenc
 ```esql
 FROM process-logs
 | WHERE process.name IN ("powershell.exe", "cmd.exe", "net.exe", "sqlcmd.exe", "schtasks.exe", "sc.exe") <1>
-| LOOKUP JOIN asset-inventory ON host.name
+| LOOKUP JOIN asset-inventory ON host.name <2>
 | LOOKUP JOIN user-context ON user.name
 | STATS executions = COUNT(*),
         unique_hosts = COUNT_DISTINCT(host.name),
