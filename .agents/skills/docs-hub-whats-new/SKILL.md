@@ -12,7 +12,12 @@ The Elastic Stack hub does not use this file. Its "Elastic Stack components" sec
 
 ## When to run
 
-After a stack minor GA (for example 9.5.0), or when the user asks to refresh the hub cards. Patch releases (9.5.1) usually do not change the cards unless a highlight was wrong.
+Around a stack minor GA (for example 9.5.0), or when the user asks to refresh the hub cards. Patch releases (9.5.1) usually do not change the cards unless a highlight was wrong.
+
+Run it in two passes:
+
+1. **Before GA**, when the release notes and the official what's-new blog are not published yet. Pick the candidates from the Elastic Labs content project (see [Before GA](#before-ga-the-elastic-labs-content-project)) and confirm each one against the docs pages.
+2. **After GA**, when the release notes are published. Confirm every card against them and fix any that disagree.
 
 ## Sources (in this order)
 
@@ -23,9 +28,44 @@ Read these. Do not scrape changelog YAML, docs-builder internals, or unpublished
    - [Kibana](https://www.elastic.co/docs/release-notes/kibana)
    - [Logstash](https://www.elastic.co/docs/release-notes/logstash)
 2. **Official what's-new blog** for the same minor, for example [Elastic 9.5](https://www.elastic.co/blog/whats-new-elastic-9-5-0). Use the blog to decide which items are the story of the release. Confirm each item against the published release notes before you keep it.
-3. **Existing docs pages** in this repo (or `repo://` targets in other docs repos) for the `link:` on each card. Every link must resolve.
+3. **Elastic Labs content project**, when the release notes or the what's-new blog are not published yet. See the next section.
+4. **Existing docs pages** in this repo (or `repo://` targets in other docs repos) for the `link:` on each card. Every link must resolve. Before GA, the `applies_to` tag on the page is the fact check (see [Before GA](#before-ga-the-elastic-labs-content-project)).
 
 If the blog and the release notes disagree, the published release notes win for facts. The blog wins for which items belong on the hub.
+
+## Before GA: the Elastic Labs content project
+
+Many launch blogs are not published until release day, so the published sources above are empty or partial in the days before GA. The [Elastic Labs Content Process](https://github.com/orgs/elastic/projects/1446) project (internal, Elastic employees only) tracks every blog from idea to publication. Its issues live in `elastic/elastic-labs-blogs` and carry the abstract, the target version, a status, and a publishing date. Use it to see which features Elastic is about to announce.
+
+Read it with the `gh` CLI. The token needs the `project` and `read:org` scopes (`gh auth status` lists them):
+
+```sh
+gh project item-list 1446 --owner elastic --limit 2000 --format json > /tmp/labs-items.json
+```
+
+Then filter the items:
+
+- Keep an item when its issue body has a `### Version` value that names the target minor (for example `9.6`), when its title or abstract names the minor, or when its publishing date falls in the release window. Some blogs say "Available now in serverless & 9.6", so match on the minor, not on an exact string.
+- Drop blogs that are not about a product feature: research, threat reports, partner and integration how-tos, and ideas still in `Article backlog`.
+
+Weigh each blog by its `status`:
+
+| Status | How to use it |
+|---|---|
+| `Done` with a publishing date on or before today | Published. A strong signal of what the story of the release is. |
+| `Article ready to publish`, `Article staging`, `Article SEO/LLMO review`, `Article editorial review` | About to publish, usually on release day. A strong signal. |
+| `Article technical review`, `Article in progress`, `Article ready to start` | A weaker signal. The feature can still slip. Keep it only when the docs page is already tagged for the target minor. |
+| `Article backlog (available content)` | Ignore for the hub. |
+
+A blog says what to highlight. It does not prove the feature is in the release. Before you keep a card:
+
+1. Find the docs page for the feature in this repo at `origin/main`.
+2. Read its `applies_to` tag. The card's `availability` comes from that tag, not from the blog. If the page has no tag for the target minor and no `serverless` tag, drop the card or ask the user.
+3. If the abstract names a license level, a lifecycle (technical preview or GA), or a deployment (Serverless only, or stack too), check it against the page. Use the page when they disagree.
+
+Keep the project private. In the PR body, name each blog by its title and status. Do not paste abstracts, Google Doc links, or issue links into a public PR. Give the user the full list of blogs you read in chat.
+
+Rerun the skill after GA, when the published release notes can confirm the cards.
 
 ## What to write
 
@@ -63,7 +103,9 @@ If a highlight has no documentation page yet, link to the product release notes 
 
 ## What not to do
 
-- Do not invent highlights that are not in the published release notes or the blog.
+- Do not invent highlights that are not in the published release notes, the what's-new blog, or an Elastic Labs content project blog that you confirmed against a docs page.
+- Do not add a card because a blog is in `Article technical review` or earlier when no docs page carries the `applies_to` tag for the target minor.
+- Do not copy abstracts, Google Doc links, or Labs issue links into a public PR.
 - Do not copy changelog YAML entries wholesale. Those lists are complete; the hub is a short story.
 - Do not add an Elastic Stack key to this file.
 - Do not edit `{whats-new}` on the hub Markdown pages. Those pages only name the product key.
@@ -72,4 +114,4 @@ If a highlight has no documentation page yet, link to the product release notes 
 
 Title: `Refresh hub What's new cards for <version>`.
 
-Body must list the items you kept, the sources you read (release notes URLs, blog URL, and the Serverless changelog when you added a Serverless-only card), the `applies_to` tag you used for each `availability`, and any pending links.
+Body must list the items you kept, the sources you read (release notes URLs, blog URL, the Serverless changelog when you added a Serverless-only card, and the titles and statuses of Elastic Labs content project blogs you used before GA), the `applies_to` tag you used for each `availability`, and any pending links.
