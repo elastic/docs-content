@@ -1,6 +1,6 @@
 ---
 navigation_title: Anomaly detection jobs with AI
-description: Describe what you want to monitor. An AI agent in Elastic Agent Builder tests anomaly detection jobs on historical data, then creates them for real-time use.
+description: Create anomaly detection jobs with an AI agent in Elastic Agent Builder. It tests a setup on historical data, then creates real-time jobs after you approve.
 applies_to:
   serverless: experimental
   stack: experimental 9.6
