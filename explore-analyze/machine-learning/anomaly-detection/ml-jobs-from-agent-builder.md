@@ -31,7 +31,7 @@ Because the agent uses a large language model, its questions and the setup it pr
 
 2. Answer the agent's questions. It asks about your goal, not about {{ml}} settings, for example what a bad day looks like, how quickly you need to know about a problem, and whether planned events such as deployments or holidays would look unusual without being a real problem. The agent turns your answers into a job configuration and chooses the job structure itself.
 
-3. Review the proposed setup. The agent validates the configuration, estimates how much memory the jobs need, and summarizes in plain language the time range it will analyze, the approximate number of records, and how long the run is expected to take. It also shows the full job and {{dfeed}} definitions. To try the setup on your historical data before going live, which the agent recommends, confirm the batch run.
+3. Review the proposed setup. The agent validates the configuration, estimates how much memory the jobs need, and summarizes in plain language the time range it will analyze, the approximate number of records, and how long the run is expected to take. It also shows the full job and {{dfeed}} definitions. The agent then asks whether to run the setup on your historical data first, so you can review the results before going live. It recommends this, so answer yes.
 
 4. Wait while the agent runs the analysis on your historical data. When it's done, the agent summarizes what it found, such as how many anomalies, the highest score, and the time and entity behind the strongest one. It also shows an anomaly swim lane, anomaly charts, and a single metric viewer for the top anomaly in the conversation, with a link that opens the jobs in the **Anomaly Explorer**.
 
