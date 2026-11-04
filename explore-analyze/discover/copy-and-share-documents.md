@@ -47,7 +47,6 @@ You can share the current view, show the results on a dashboard, export the sess
 In classic mode, you can also [open a document on a bookmarkable page of its own](inspect-documents.md#open-single-document).
 
 ### Share a link to a document [share-a-document-link]
-
 ```{applies_to}
 serverless: ga
 stack: ga 9.6+

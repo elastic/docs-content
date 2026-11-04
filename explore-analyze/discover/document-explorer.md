@@ -4,6 +4,7 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+type: how-to
 products:
   - id: kibana
 description: Customize the Discover document table, chart, and sidebar. Adjust columns, density, and row height, or inspect documents as JSON.

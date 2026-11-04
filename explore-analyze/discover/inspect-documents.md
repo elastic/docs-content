@@ -81,9 +81,9 @@ To use them, open **Discover** in classic mode and run a search that returns res
 You can check which experience is active in your Discover session. This can help you confirm whether Discover detects the type of data you're exploring or uses its default experience.
 
 1. Open the Inspector:
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**. You can also select **Inspect tab** from the application menu to inspect the active tab.
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**. You can also select **Inspect tab** from the application menu to inspect the active tab.
    * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
-1. Open the **View** dropdown, then select **Profiles**.
+1. From the **View** menu, select **Profiles**.
 
 The various profiles listed show details such as the active solution and data source contexts, which determine Discover's context-aware experiences.
 

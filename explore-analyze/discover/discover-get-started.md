@@ -81,11 +81,10 @@ To find the guide for what you want to do, such as searching your data, shaping 
 
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
-  * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2`
-  * **[Traces exploration](/solutions/observability/apm/discover-traces.md)**
-  {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2`
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` **[Traces exploration](/solutions/observability/apm/discover-traces.md)**
 * Security:
-  * **[Security data exploration](/solutions/security/investigate/discover-security.md)** {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1`
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1` **[Security data exploration](/solutions/security/investigate/discover-security.md)**
 
 This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
 
@@ -95,7 +94,7 @@ When you access **Discover** outside of a specific solution context, or when wor
 
 ### Context-awareness with multiple data types
 
-Your query may include multiple data types that each have tailored experiences; for example, if you query both `logs-*` and `traces-*` indices within an Observability context.
+Your query can include multiple data types that each have tailored experiences. For example, you might query both `logs-*` and `traces-*` indices within an Observability context.
 
 In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [look inside a document](inspect-documents.md#look-inside-a-document).
 

@@ -24,12 +24,14 @@ type: overview
 Discover has two query modes that you can [switch between](discover/switch-esql-mode.md):
 
 - {{esql}} mode queries your {{es}} data directly, without a data view.
-- Classic mode uses [data views](find-and-organize/data-views.md) with [KQL](query-filter/languages/kql.md) or [Lucene](query-filter/languages/lucene-query-syntax.md) queries to filter your data.
+- Classic mode uses [data views](find-and-organize/data-views.md) with [Kibana Query Language (KQL)](query-filter/languages/kql.md) or [Lucene](query-filter/languages/lucene-query-syntax.md) queries to filter your data.
 
-The mode that Discover opens in depends on your version:
+The mode that Discover opens in by default depends on your version:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Discover opens in {{esql}} mode.
 - {applies_to}`stack: ga 9.0-9.5` Discover opens in classic mode.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` After you switch modes, Discover remembers the last mode you used in your browser and opens new tabs and sessions in that mode.
 
 The steps for a task can differ between the two modes, and a few tasks work in only one. The guide for each task says which mode it covers.
 

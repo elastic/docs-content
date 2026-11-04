@@ -4,6 +4,7 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+type: how-to
 products:
   - id: kibana
 description: Sort results by relevance score in Discover to see the documents that best match your query first, in classic mode or with an ES|QL query.
@@ -48,7 +49,7 @@ For more about scores, refer to [Relevance scoring](/solutions/search/esql-for-s
 
 This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
-1. In **Discover**, if it opens in {{esql}} mode, [switch to classic mode](switch-esql-mode.md#revert-to-classic-mode). Then open the {{data-source}} dropdown, and select the data that you want to work with.
+1. In **Discover**, if it opens in {{esql}} mode, [switch to classic mode](switch-esql-mode.md#revert-to-classic-mode). Then, from the {{data-source}} menu, select the data that you want to work with.
 
     For the sample flights data, set the {{data-source}} to **Kibana Sample Data Flights**.
 
