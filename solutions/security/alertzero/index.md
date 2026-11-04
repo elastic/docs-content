@@ -11,33 +11,38 @@ products:
 
 # {{alertzero}} [alertzero-overview]
 
-{{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}}, AI agents that each specialize in one kind of security work, triage alerts, hunt for threats, tune detection rules, and investigate attacks in the background. When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} that you approve or decline on the **{{az-proposed-actions-cap}}** page.
+{{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}} are AI agents that each specialize in one kind of security work: triaging alerts, hunting for threats, tuning detection rules, and investigating attacks. After you turn them on, they run on a schedule, so this work continues without someone working the queue.
+
+When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} that you approve or decline on the **{{az-proposed-actions-cap}}** page. With {{az-workers}} doing the first pass, your team spends less time sorting through noise and more time deciding on investigated work:
 
 % For docs writers: For the 9.6 release, uncomment the following paragraph and remove the one before it.
-% {{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}}, AI agents that each specialize in one kind of security work, triage alerts, hunt for threats, tune detection rules, and investigate attacks in the background. When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} that you approve or decline on the [**{{az-proposed-actions-cap}}** page](use-alertzero.md).
+% When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} that you approve or decline on the [**{{az-proposed-actions-cap}}** page](use-alertzero.md). With {{az-workers}} doing the first pass, your team spends less time sorting through noise and more time deciding on investigated work:
 
-Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you decide. You control which {{az-workers}} run and [how much {{az-autonomy}} each one has](#alertzero-overview-autonomy).
+- **Less noise to sort through.** The {{az-triage-watch}} proposes closing false positives, and the {{az-detection-watch}} proposes fixes for the noisy rules that create them.
+- **Investigations that start further along.** Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you decide rather than repeat the work.
+- **Fewer gaps in your detections.** The {{az-hunt-watch}} looks for activity before an alert fires, and the {{az-detection-watch}} proposes rules for the gaps it finds.
+- **Control stays with you.** You control which {{az-workers}} run and [how much {{az-autonomy}} each one has](#alertzero-overview-autonomy).
 
 ## What {{az-workers}} take on [alertzero-overview-watches]
 
-{{alertzero}} has four {{az-watches}}, one for each area of security operations. Each {{az-watch}} brings together the {{az-workers}} for that area. In the {{az-triage-watch}}, for example, {{az-alert-triage}} classifies individual alerts, while {{az-attack-discovery}} connects related alerts into attacks.
+{{alertzero}} has four {{az-watches}}, one for each area of security operations. Each {{az-watch}} brings together the {{az-workers}} for that area, and the {{az-watches}} pass work to each other, so a finding in one area can lead to action in another. In the {{az-triage-watch}}, for example, {{az-alert-triage}} classifies individual alerts, while {{az-attack-discovery}} connects related alerts into attacks.
 
 | {{az-watch}} | What it does | {{az-workers}} |
 | --- | --- | --- |
-| {{az-triage-watch}} | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks. | {{az-alert-triage}}, {{az-attack-discovery}} |
-| {{az-hunt-watch}} | Hunts your data for activity described in {{az-threat-reports}}, before any alert fires. | {{az-continuous-threat-hunt}} |
-| {{az-detection-watch}} | Tunes noisy rules and proposes new rules for the gaps that the {{az-hunt-watch}} finds. | {{az-rule-tuning}}, {{az-rule-coverage}} |
+| {{az-triage-watch}} | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks, so you review attacks and {{az-proposed-actions}} instead of individual alerts. | {{az-alert-triage}}, {{az-attack-discovery}} |
+| {{az-hunt-watch}} | Hunts your data for activity described in {{az-threat-reports}}, so you find out about it before any alert fires. | {{az-continuous-threat-hunt}} |
+| {{az-detection-watch}} | Tunes noisy rules to cut false positives and proposes new rules for the gaps that the {{az-hunt-watch}} finds, so your detections improve over time. | {{az-rule-tuning}}, {{az-rule-coverage}} |
 | {{az-forensics-watch}} | Investigates attacks that the {{az-triage-watch}} hands off and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
 
 % For docs writers: For the 9.6 release, uncomment the following table and sentence, and remove the table before them.
 % | {{az-watch}} | What it does | {{az-workers}} |
 % | --- | --- | --- |
-% | [{{az-triage-watch}}](watches-and-workers.md#alertzero-triage-watch) | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks. | {{az-alert-triage}}, {{az-attack-discovery}} |
-% | [{{az-hunt-watch}}](watches-and-workers.md#alertzero-hunt-watch) | Hunts your data for activity described in {{az-threat-reports}}, before any alert fires. | {{az-continuous-threat-hunt}} |
-% | [{{az-detection-watch}}](watches-and-workers.md#alertzero-detection-watch) | Tunes noisy rules and proposes new rules for the gaps that the {{az-hunt-watch}} finds. | {{az-rule-tuning}}, {{az-rule-coverage}} |
+% | [{{az-triage-watch}}](watches-and-workers.md#alertzero-triage-watch) | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks, so you review attacks and {{az-proposed-actions}} instead of individual alerts. | {{az-alert-triage}}, {{az-attack-discovery}} |
+% | [{{az-hunt-watch}}](watches-and-workers.md#alertzero-hunt-watch) | Hunts your data for activity described in {{az-threat-reports}}, so you find out about it before any alert fires. | {{az-continuous-threat-hunt}} |
+% | [{{az-detection-watch}}](watches-and-workers.md#alertzero-detection-watch) | Tunes noisy rules to cut false positives and proposes new rules for the gaps that the {{az-hunt-watch}} finds, so your detections improve over time. | {{az-rule-tuning}}, {{az-rule-coverage}} |
 % | [{{az-forensics-watch}}](watches-and-workers.md#alertzero-forensics-watch) | Investigates attacks that the {{az-triage-watch}} hands off and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
 %
-% To learn how {{az-watches}} hand work to each other, refer to [](watches-and-workers.md).
+% To learn how {{az-watches}} pass work to each other, refer to [](watches-and-workers.md).
 
 ## How much {{az-workers}} can act on their own [alertzero-overview-autonomy]
 
