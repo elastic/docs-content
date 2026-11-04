@@ -47,3 +47,33 @@ If your subscription level is Standard, there is no separate charge for Support 
 ::::{include} /deploy-manage/_snippets/cps-billing.md
 ::::
 
+
+### Agent Builder Executions [general-serverless-billing-agent-builder]
+
+Agent Builder usage is billed in addition to the other billing dimensions of your project. Free allocations and requirements depend on your project type. For details, refer to Agent Builder Executions for your project type:
+
+* [{{es-serverless}}](elasticsearch-billing-dimensions.md#elasticsearch-billing-agent-builder-executions)
+* [{{es}} {{vectordb}}](vector-database-billing-dimensions.md#vector-database-billing-agent-builder-executions)
+* [{{obs-serverless}}](elastic-observability-billing-dimensions.md#observability-billing-agent-builder-executions)
+* [{{elastic-sec}}](security-billing-dimensions.md#security-billing-agent-builder-executions)
+
+
+### Workflow Executions [general-serverless-billing-workflow-executions]
+
+Workflow usage is billed in addition to the other billing dimensions of your project. Free allocations and requirements depend on your project type. For details, refer to Workflow Executions for your project type:
+
+* [{{es-serverless}}](elasticsearch-billing-dimensions.md#elasticsearch-billing-workflow-executions)
+* [{{es}} {{vectordb}}](vector-database-billing-dimensions.md#vector-database-billing-workflow-executions)
+* [{{obs-serverless}}](elastic-observability-billing-dimensions.md#observability-billing-workflow-executions)
+* [{{elastic-sec}}](security-billing-dimensions.md#security-billing-workflow-executions)
+
+
+### Elastic Managed LLMs [general-serverless-billing-elastic-managed-llms]
+
+Using Elastic Managed LLMs consumes tokens and incurs token-based billing in addition to the other billing dimensions of your project. For details, refer to Elastic Managed LLMs for your project type:
+
+* [{{es-serverless}}](elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml)
+* [{{es}} {{vectordb}}](vector-database-billing-dimensions.md#vector-database-billing-elastic-managed-llms)
+* [{{obs-serverless}}](elastic-observability-billing-dimensions.md#observability-billing-elastic-managed-llms)
+* [{{elastic-sec}}](security-billing-dimensions.md#security-billing-elastic-managed-llms)
+

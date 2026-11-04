@@ -98,3 +98,7 @@ For more details about {{elastic-sec}} serverless project rates and billable ass
 ## Elastic Managed LLMs [security-billing-elastic-managed-llms]
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
+
+## {{cps-cap}} [security-billing-cps]
+
+If you use [{{cps}}](/deploy-manage/cross-project-search-config.md), charges are billed to the origin project. For how {{cps}} charges are calculated, refer to [{{cps-cap}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps).

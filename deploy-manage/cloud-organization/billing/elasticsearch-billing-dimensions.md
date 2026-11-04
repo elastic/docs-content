@@ -54,12 +54,6 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
-:::{include} _snippets/agent-builder-executions-billing.md
-:::
-
-:::{include} _snippets/workflow-executions-billing.md
-:::
-
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 
 {{es-serverless}} costs follow your resource consumption across search, ingest, ML, and storage. To balance performance with spend for your workload, you can adjust the project settings, data layout, and indexing practices described in this section.
@@ -103,3 +97,13 @@ When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasti
   The `general_purpose` option is suitable for most search use cases. For example, it is the right profile for full-text search, sparse vectors, and dense vectors that use compression such as BBQ. It is used by default when you create projects from the UI.
 
   The `vector` option is recommended only for uncompressed dense vectors ([dense_vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields with `int4` or `int8` quantization strategies) and high dimensionality. Though the per VCU cost is the same for general purpose and vector profiles, the latter allocates more VCUs for searchable data. This leads to higher VCU consumption in order to improve the performance for uncompressed vector data.
+
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
+
+:::{include} _snippets/workflow-executions-billing.md
+:::
+
+## {{cps-cap}} [elasticsearch-billing-cps]
+
+If you use [{{cps}}](/deploy-manage/cross-project-search-config.md), charges are billed to the origin project. For how {{cps}} charges are calculated, refer to [{{cps-cap}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps).
