@@ -241,7 +241,7 @@ The **Service inventory** stops listing every service separately once it reaches
 Two limits can cause this, and each one shows a different warning:
 
 * A **warning icon above the table**, in a message that the limit of *n* services is exceeded, means you reached the [limit on the services {{kib}} displays](#troubleshooting-too-many-services-displayed).
-* A row named **Remaining Services** at the end of the table, with its own warning icon, means you reached the [limit on the services {{apm-server}} aggregates](#troubleshooting-too-many-services-aggregated).
+* A row named **Remaining Services** at the end of the table, with its own warning icon, means you reached the [limit on the services tracked in aggregated metrics](#troubleshooting-too-many-services-aggregated).
 
 In both cases, a service is each unique combination of `service.name`, `service.environment`, `service.language.name`, and `agent.name`. This means that one application can count as several services, for example when it reports from more than one environment. This is why a production deployment can reach a limit while a development one with more instrumented applications doesn't.
 
@@ -253,6 +253,8 @@ serverless: ga
 
 {{kib}} returns at most 1,000 services to the Service inventory. Services past that limit are left out of the list, and the warning tells you which limit is in effect.
 
+This limit is applied when {{kib}} queries your data, so it behaves the same however that data was ingested, whether your applications use {{apm-agent}}s or EDOT SDKs, and whether they report through {{apm-server}} or the {{motlp}}.
+
 The services are still there, so any of the following brings them back into view:
 
 * Use the query bar to narrow the list to the services you need.
@@ -263,18 +265,21 @@ The services are still there, so any of the following brings them back into view
 Raising the limit makes the Service inventory query slower and increases its memory use on {{es}}. Past about 2,000 services, the query can also exceed `search.max_buckets`, the cluster-wide cap on aggregation buckets that defaults to 65,536. When that happens, the query fails instead of returning a shorter list, so raise `search.max_buckets` to match, or leave the service limit lower and filter the list instead.
 :::
 
-### Limit on the services {{apm-server}} aggregates [troubleshooting-too-many-services-aggregated]
+### Limit on the services tracked in aggregated metrics [troubleshooting-too-many-services-aggregated]
 ```yaml {applies_to}
 stack: ga
+serverless: ga
 ```
 
-When you ingest data using {{apm-server}}, service metrics share a limit of 1,000 services per GB of memory available to {{apm-server}}. Services past that limit are combined into a single overflow bucket while the metrics are aggregated, and the Service inventory shows that bucket as **Remaining Services**.
+Service metrics are aggregated as your data is written, and only a limited number of services can be tracked at a time. Services past that limit are combined into a single overflow bucket, which the Service inventory shows as **Remaining Services**. 
 
-This happens as the data is written, so narrowing the query or raising the display limit doesn't recover the individual services. To list them separately, reduce the number of unique services or give {{apm-server}} more memory:
+{applies_to}`stack: ga` With {{apm-server}}, service metrics share a limit of 1,000 services per GB of memory available to {{apm-server}}.
 
-* Use stable values for `service.name` and `service.environment`. Values taken from build numbers, per-instance identifiers, or short-lived test environments create a new service every time they change.
-* Review your instrumentation so that only the services you need to monitor send {{product.apm}} data.
-* Increase the memory available to {{apm-server}}.
+Because this happens as the data is written, narrowing the query or raising the display limit doesn't recover the individual services. To list them separately, reduce the number of unique services you send by:
+
+* Using stable values for `service.name` and `service.environment`. Values taken from build numbers, per-instance identifiers, or short-lived test environments create a new service every time they change.
+* Reviewing your instrumentation so that only the services you need to monitor send {{product.apm}} data.
+* {applies_to}`stack: ga` Increase the memory available to {{apm-server}}.
 
 For the full set of limits and an explanation of how overflow buckets work, refer to [Aggregated metrics: limits and overflows](/solutions/observability/apm/metrics.md#_aggregated_metrics_limits_and_overflows).
 
