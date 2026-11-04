@@ -88,13 +88,24 @@ For example, the following mapping defines field types for a few common data typ
 
 ### Settings [index-settings]
 
-Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request]({{es-apis}}operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
+Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request]({{es-apis}}operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be [updated dynamically]({{es-apis}}operation/operation-indices-put-settings) on a live index.
 
 Common settings include:
 
 * `index.number_of_shards`: The number of primary shards. Fixed at creation.
 * `index.number_of_replicas`: The number of replica copies per primary shard. Can be changed at any time.
 * `index.refresh_interval`: How often new data becomes searchable. Defaults to `1s`.
+
+To configure index settings at creation time, include a `settings` object in the create index request. The following example creates `my-index` with a refresh interval of 30 seconds:
+
+```console
+PUT /my-index
+{
+  "settings": {
+    "index.refresh_interval": "30s"
+  }
+}
+```
 
 For the full list of available settings, refer to [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md).
 

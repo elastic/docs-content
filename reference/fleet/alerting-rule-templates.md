@@ -1,11 +1,12 @@
 ---
+navigation_title: Integration alerting templates
+description: Create alerting rules from Elastic integration templates with curated ES|QL queries and recommended thresholds. Adjust the preconfigured rule settings to fit your environment.
 applies_to:
   stack: ga 9.2.1
   serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
-navigation_title: Integration alerting templates
 ---
 
 # Create rules from integration alerting templates  [alerting-rule-templates]
@@ -33,14 +34,12 @@ Alerting rule templates come with recommended, pre-populated values. Templates a
 
 **From an integration:**
 
-1. In {{kib}}, go to **Data management** > **{{integrations}}** or search for Integrations using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
+1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Find and open the integration.
-1. On the integration page, select the **Alerting** tab to view all available alerting rule templates for that integration.
+1. On the integration page, select the tab that lists the alerting rule templates for that integration:
 
-    :::{note}
-    {applies_to}`stack: ga 9.4`
-    The **Alerting** tab is available for all integrations starting in version 9.4.0. In earlier versions, alerting rule templates are located in the **Assets** tab.
-    :::
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Alerting**
+    - {applies_to}`stack: ga 9.2-9.3` **Assets**
 
     ![The Alerting tab showing available alerting rule templates for an integration](images/alerting-rule-template.png)
 
@@ -56,7 +55,7 @@ To update a rule you created from a template, go to the **Rules** page, open the
 
 **From the {{rules-ui}}:**
 
-1. In {{kib}}, go to **Data management** > **Rules** or search for Rules using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
+1. In {{kib}}, find the **{{rules-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create rule**, then select the **Template** tab.
 3. Choose a template from the list, review the pre-filled settings, and click **Create rule** to save and enable it. .
 
@@ -106,9 +105,10 @@ The Idle data streams template monitors all data stream patterns defined by the 
 
 ```{applies_to}
 stack: ga 9.3+
+serverless: ga
 ```
 
-Alerting rule templates use the `logs-elastic_agent.status_change` data stream, which contains agent status changes (for example, `online`, `offline`, `updating`, `unenrolled`). For more information, refer to [Monitor Elastic Agents](/reference/fleet/monitor-elastic-agent.md#fleet-alerting).
+Alerting rule templates use the `logs-elastic_agent.status_change` data stream, which contains agent status changes (for example, `online`, `offline`, `updating`, `unenrolled`). For more information, refer to [{{fleet}} and {{agent}} status data streams](/reference/fleet/monitor-elastic-agent.md#fleet-status-data-streams).
 
 ## Reinstall alerting assets
 

@@ -26,11 +26,11 @@ You can create your own custom application images ({{eck_resources_list}}) inste
     ```
 
 
-There are various hosting options for your images. If you use Google Kubernetes Engine, it is automatically configured to use the Google Container Registry. Check [Using Container Registry with Google Cloud](https://cloud.google.com/container-registry/docs/using-with-google-cloud-platform#google-kubernetes-engine) for more information. To use the image, you can then [push to the registry](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) with:
+There are various hosting options for your images. If you use Google Kubernetes Engine, you can store your custom images in [Artifact Registry](https://cloud.google.com/artifact-registry/docs/overview). Before you push an image, [create a Docker repository and configure authentication](https://cloud.google.com/artifact-registry/docs/docker/store-docker-container-images). Make sure that your cluster has [permission to pull images from the repository](https://cloud.google.com/artifact-registry/docs/integrate-gke).
 
 ```sh subs=true
-docker tag elasticsearch-icu:{{version.stack}} gcr.io/$PROJECT-ID/elasticsearch-icu:{{version.stack}}
-docker push gcr.io/$PROJECT-ID/elasticsearch-icu:{{version.stack}}
+docker tag elasticsearch-icu:{{version.stack}} ${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/elasticsearch-icu:{{version.stack}}
+docker push ${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/elasticsearch-icu:{{version.stack}}
 ```
 
 Configure your {{es}} specification to use the newly pushed image, for example:
@@ -38,7 +38,7 @@ Configure your {{es}} specification to use the newly pushed image, for example:
 ```yaml subs=true
 spec:
   version: {{version.stack}}
-  image: gcr.io/$PROJECT-ID/elasticsearch-icu:{{version.stack}}
+  image: ${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/elasticsearch-icu:{{version.stack}}
 ```
 
 ::::{note}
@@ -53,7 +53,7 @@ If your custom images follow the naming convention adopted by the official image
 For more information, check the following references:
 
 * [{{es}} documentation on building a custom Docker image](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#_c_customized_image)
-* [Google Container Registry](https://cloud.google.com/container-registry/docs/how-to)
+* [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/overview)
 * [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/)
 * [Amazon Elastic Container Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
 * [OpenShift Container Platform registry](https://docs.openshift.com/container-platform/4.12/registry/index.html)

@@ -83,6 +83,7 @@ toc:
           - file: set-inactivity-timeout.md
           - file: upgrade-elastic-agent.md
           - file: migrate-elastic-agent.md
+          - file: restart-elastic-agent.md
           - file: monitor-elastic-agent.md
           - file: alert-templates.md
           - file: agent-health-status.md

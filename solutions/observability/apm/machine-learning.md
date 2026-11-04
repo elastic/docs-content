@@ -1,4 +1,5 @@
 ---
+navigation_title: Integrate with Machine Learning
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-machine-learning-integration.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-integrate-with-machine-learning.html
@@ -11,16 +12,16 @@ products:
   - id: cloud-serverless
 ---
 
-# Integrate with {{ml}} [observability-apm-integrate-with-machine-learning]
+# Integrate Elastic APM with {{ml}} [observability-apm-integrate-with-machine-learning]
 
 ::::{important}
 Using {{ml}} requires an [appropriate license](https://www.elastic.co/subscriptions).
 
 ::::
 
-The {{ml}} integration initiates a new job predefined to calculate anomaly scores on {{product.apm}} transaction durations. With this integration, you can quickly pinpoint anomalous transactions and identify services with active anomalies across your architecture.
+The {{ml}} integration creates predefined jobs to detect anomalies in {{product.apm}} transaction metrics. With this integration, you can quickly pinpoint anomalous transactions and identify services with active anomalies across your architecture.
 
-{{ml}} jobs are created per environment and are based on a service’s average response time. Because jobs are created at the environment level, you can add new services to your existing environments without the need for additional {{ml}} jobs.
+{{ml}} jobs are created per environment, so you can add services to an existing environment without creating additional jobs.
 
 Results from {{ml}} jobs are shown in multiple places throughout the Applications UI:
 
@@ -45,6 +46,50 @@ To enable {{ml}} {{anomaly-detect}}:
 5. Click **Create Jobs**.
 
 After a few minutes, the job will begin calculating results; it might take additional time for results to appear on your service maps. To manage existing jobs, click **Manage jobs** (or go to **{{ml-cap}}** → **Jobs**).
+
+## Detect low transaction counts [apm-ml-low-transaction-count]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+New {{product.apm}} transaction {{ml}} jobs include four detectors: latency, throughput, failed transaction rate, and low transaction count. The `low_count` detector identifies unusually low transaction counts, including drops to zero. This helps detect when traffic stops reaching a service, even when there are no transactions from which to calculate latency or failed transaction rate.
+
+Existing jobs retain the detectors they were created with, which means that upgrading {{kib}} doesn't add the low-count detector to them. To use it, [recreate jobs that lack the detector](#apm-ml-recreate-existing-jobs).
+
+## Add low-count detection to existing jobs [apm-ml-recreate-existing-jobs]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Because a job's detectors are fixed at creation, the only way to add low-count detection is to delete the environment's {{product.apm}} transaction job and create a new one, which includes all four detectors. Your {{product.apm}} anomaly rules survive the deletion, but the environment's anomaly history and model are lost.
+
+Use this procedure for each environment whose {{product.apm}} transaction job lacks the `low_count` detector.
+
+To check a job, open its configuration in **{{ml-app}}** → **Anomaly Detection** → **Jobs**, or use the [get job configuration API]({{es-apis}}operation/operation-ml-get-jobs) and inspect `analysis_config.detectors`. If the `low_count` detector is already present, you do not need to recreate the job.
+
+### Before you delete a job
+
+:::{warning}
+Deleting a job permanently deletes its anomaly results and model snapshots. The replacement job analyzes the last four weeks of available data with a new model. Older anomaly history is lost, and scores in the reanalyzed period can differ. Other environments' jobs are not affected.
+:::
+
+Anomaly charts and badges for the environment have no results until the replacement job produces them. {{product.apm}} anomaly rules cannot detect new anomalies for that environment during this gap. Existing active alerts recover, and anomalies from the replacement job create new alerts. Alert history remains available.
+
+Deleting a job also removes its automatically generated annotations. User-created annotations are deleted only if you enable **Delete annotations** in the deletion dialog.
+
+### Recreate the job and update rules
+
+1. In **{{ml-app}}** → **Anomaly Detection** → **Jobs**, find the environment's {{product.apm}} transaction job. Its ID has the form `apm-<environment>-<four-character suffix>-apm_tx_metrics`.
+2. Delete the job. Because these jobs are managed by {{product.apm}}, deleting one also deletes its {{dfeed}}. Leave **Delete alerting rules** off if the option appears. Wait for the job to disappear from the list.
+3. In **Applications**, open **Settings** → **{{anomaly-detect-cap}}**. Click **Create job**, select the same environment, and click **Create Jobs**. The {{dfeed}} starts automatically with a four-week lookback.
+4. Wait until the job is open and has finished analyzing the lookback period.
+5. Edit each existing [{{product.apm}} anomaly rule](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md#apm-anomaly-low-transaction-count) that should detect traffic drops. Under **Detector types**, select **low transaction count** and save the rule.
+
+Closing the old job is not enough: {{product.apm}} skips creation while the existing {{product.apm}} transaction job for the environment remains, including a closed job.
+
+You do not need to recreate {{product.apm}} anomaly rules. They look up the job for the environment on each run, and the ML job deletion dialog does not delete them. {{rules-ui}} retain their saved detector selections, so check that **low transaction count** is selected. The other selected detectors resume alerting once the new job has finalized results.
 
 ## {{anomaly-detect-cap}} warning [observability-apm-integrate-with-machine-learning-anomaly-detection-warning]
 

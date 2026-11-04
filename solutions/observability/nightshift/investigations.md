@@ -31,6 +31,7 @@ Each investigation runs as an agentic process in the background:
 - **Context first**: The investigation agent starts from what Elastic nightshift knows about your systems, such as the services involved, their dependencies, and any knowledge you've added. Refer to [Context](./memory.md) for more information on adding context about your systems and processes.
 - **Evidence gathering**: The agent runs targeted queries against your data to collect evidence about the problem and the services it affects.
 - **Findings**: The agent synthesizes what it found into a conclusion about the likely root cause.
+- **Learning**: The agent saves what it learned about your systems as knowledge, so future investigations are more accurate and use fewer tokens. Refer to [Context](./memory.md).
 
 ## Read investigation results [nightshift-investigations-output]
 
@@ -39,9 +40,9 @@ A completed investigation shows:
 - **What happened**: A short factual summary of the observed issue and what the investigation found.
 - **Impact**: What the issue affects, including a chart of the affected activity, so you can prioritize it and involve the right teams.
 - **Subject**: What was being investigated, for example, the alert or significant event that triggered it.
-- **Investigation**: The hypotheses the investigation tested, each with a confidence score and the evidence and charts that support it, so you can validate its conclusions.
 - **Conclusion**: The best-supported explanation of why the issue occurred.
-- **Proposed actions**: Recommended next steps, with the most direct fix tagged **Recommended**. Select an action to see why it's suggested and copy any commands it includes.
+- **View hypothesis tree**: A diagram of the hypotheses the investigation tested, each marked **Confirmed** or **Dismissed** with a confidence percentage and the evidence behind it, so you can validate its conclusions. Refer to [Check how Elastic nightshift reached its conclusion](./get-started.md#nightshift-get-started-reasoning).
+- **Proposed actions**: Recommended next steps, with the most direct fix tagged **Recommended**. Select an action to see why it's suggested and copy any commands it includes. After you apply an action, confirm it in the investigation. Refer to [Resolve a problem and confirm you did it](./get-started.md#nightshift-get-started-resolve).
 
 Each investigation has a severity (critical, high, medium, or low), which is used to group investigations on the home page.
 
