@@ -1,7 +1,7 @@
 ---
 layout: hub
 navigation_title: Kibana
-description: Kibana documentation. Explore and visualize your data, build dashboards, set up alerts, automate tasks with AI, and use purpose-built solutions for Search, Observability, and Security.
+description: Use Kibana to explore and visualize your data, build dashboards, set up alerts, automate tasks with AI, and work with purpose-built solutions for Search, Observability, and Security.
 products:
   - id: kibana
 ---
