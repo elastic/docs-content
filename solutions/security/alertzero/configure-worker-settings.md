@@ -75,11 +75,11 @@ The {{az-triage-watch}} includes the {{az-alert-triage}} and {{az-attack-discove
 **{{az-autonomy-cap}}**
 :   Sets whether {{az-attack-discovery}} needs your approval to hand an attack to the {{az-forensics-watch}}.
 
-    * **{{az-manual}}**: {{az-attack-discovery}} opens an {{az-investigation}} for each candidate attack. For each attack it confirms or can't rule out, it proposes handing the attack to the {{az-forensics-watch}}. You approve or decline each handoff.
-    * **{{az-supervised}}**: {{az-attack-discovery}} opens an {{az-investigation}} for each candidate attack and hands the attacks it confirms or can't rule out to the {{az-forensics-watch}} on its own.
+    * **{{az-manual}}**: {{az-attack-discovery}} opens an {{az-investigation}} for each potential attack. For each attack it confirms or can't rule out, it proposes handing the attack to the {{az-forensics-watch}}. You approve or decline each handoff.
+    * **{{az-supervised}}**: {{az-attack-discovery}} opens an {{az-investigation}} for each potential attack and hands the attacks it confirms or can't rule out to the {{az-forensics-watch}} on its own.
 
 **Schedule**
-:   How often {{az-attack-discovery}} looks for candidate attacks.
+:   How often {{az-attack-discovery}} looks for potential attacks.
 
 :::{include} /solutions/security/alertzero/_snippets/worker-models-setting.md
 :::
@@ -106,7 +106,7 @@ The {{az-hunt-watch}} includes the {{az-continuous-threat-hunt}} {{az-worker}}.
     You can also turn these workflows on or off from the **Workflows** page after you turn on [**Show managed workflows**](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility). Refer to [Manage and organize workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md).
 
 **{{az-autonomy-cap}}**
-:   {{az-continuous-threat-hunt}} always uses **{{az-manual}}** {{az-autonomy}}. It searches your data for activity that matches each {{az-threat-report}}, opens an {{az-investigation}} for each {{az-hunt-finding}}, and proposes response actions. You approve or decline each {{az-proposed-action}}.
+:   {{az-continuous-threat-hunt}} always uses **{{az-manual}}** {{az-autonomy}}. It hunts each {{az-threat-report}}, opens an {{az-investigation}} for it, and proposes response actions for the threats it finds. You approve or decline each {{az-proposed-action}}.
 
 **Schedule**
 :   How often {{az-continuous-threat-hunt}} searches your data for activity that matches {{az-threat-reports}}. The interval is fixed, so you can't change it. It runs every 4 hours.

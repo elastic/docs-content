@@ -17,7 +17,7 @@ A {{az-worker}} also needs certain features and integrations to be set up. Witho
 
 ## {{az-triage-watch}} [alertzero-triage-watch]
 
-The {{az-triage-watch}} is your first line of defense. It reviews incoming alerts and finds candidate attacks.
+The {{az-triage-watch}} is your first line of defense. It reviews incoming alerts and finds potential attacks.
 
 ### {{az-alert-triage}} [alertzero-alert-triage]
 
@@ -29,7 +29,7 @@ Each proposed closure appears as a {{az-proposed-action}} on the **{{az-proposed
 
 ### {{az-attack-discovery}} [alertzero-attack-discovery]
 
-The {{az-attack-discovery}} {{az-worker}} groups related alerts into candidate attacks and opens an {{az-investigation}} for each one. For each attack that it confirms or can't rule out, it proposes handing the attack to the {{az-forensics-watch}} for a deeper investigation.
+The {{az-attack-discovery}} {{az-worker}} groups related alerts into potential attacks and opens an {{az-investigation}} for each one. For each attack that it confirms or can't rule out, it proposes handing the attack to the {{az-forensics-watch}} for a deeper investigation.
 
 To generate discoveries, {{az-attack-discovery}} needs the [**Attack Discovery Workflows**](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting turned on in the current space. It also needs [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) so that the attacks it hands off can reach the {{az-endpoint-analysis}} {{az-worker}} in the {{az-forensics-watch}}.
 
@@ -41,7 +41,7 @@ The {{az-hunt-watch}} proactively looks for threats in your data without waiting
 
 ### {{az-continuous-threat-hunt}} [alertzero-continuous-threat-hunt]
 
-The {{az-continuous-threat-hunt}} {{az-worker}} searches your data for activity that matches {{az-threat-reports}}, opens an {{az-investigation}} for each {{az-hunt-finding}}, and proposes response actions, such as isolating a host. It also records the detection gaps that it finds, so the {{az-rule-coverage}} {{az-worker}} in the {{az-detection-watch}} can review them.
+The {{az-continuous-threat-hunt}} {{az-worker}} searches your data for activity that matches {{az-threat-reports}}, opens an {{az-investigation}} for each {{az-threat-report}} it hunts, and proposes response actions for the threats it finds, such as isolating a host. It also records the detection gaps that it finds, so the {{az-rule-coverage}} {{az-worker}} in the {{az-detection-watch}} can review them.
 
 {{az-continuous-threat-hunt}} works from {{az-threat-reports}}, which {{alertzero}} builds from public threat intelligence feeds. It searches only reports that have been fully processed, so it can't start hunting until the workflows that collect and process reports have run. Refer to [](#alertzero-threat-reports). It also needs [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) so that it can record detection gaps for {{az-rule-coverage}}.
 
