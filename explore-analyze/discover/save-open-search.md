@@ -119,11 +119,7 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-In addition to the [requirements for saving sessions](#save-search-requirements), you need:
-
-- {applies_to}`stack: ga 9.6+` A space that doesn't use the **Classic** solution view.
-- A session that Elastic doesn't manage.
-- A session that you opened in **Discover**, not one that you're editing from a dashboard panel.
+This does not apply to {{kib}} spaces that use the **Classic** solution view.
 
 To rename a session:
 
