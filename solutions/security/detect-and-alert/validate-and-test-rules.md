@@ -22,7 +22,7 @@ While [creating or editing a rule](/solutions/security/detect-and-alert/using-th
 When reviewing the rule preview results, look for:
 
 - **Expected true positives.** Does the rule detect the activity it's designed to catch? If you have known-good test data (for example, from red team exercises), confirm those events appear in the results.
-- **Obvious false positives.** Do any results represent legitimate activity? If so, refine the query or plan to add [exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) before enabling the rule.
+- **Obvious false positives.** Do any results represent legitimate activity? If so, [tune the rule](/solutions/security/detect-and-alert/tune-detection-rules.md) or plan to add [exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) before enabling the rule.
 - **Missing detections.** If the rule produces no results and you expected it to, check that the required data sources are being ingested and that your index patterns are correct.
 
 ::::{tip}

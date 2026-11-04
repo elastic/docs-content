@@ -9,139 +9,88 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Modify detection rule queries, thresholds, and schedules to improve detection precision.
+description: Narrow a noisy detection rule's query, threshold, or other logic so it matches only suspicious activity, then test the change and keep track of it.
 ---
 
 # Tune detection rules [security-tune-detection-signals]
 
-Tuning means modifying a rule's query, threshold, or schedule so it only matches events that are genuinely suspicious. Use tuning when the rule itself is too broad and catches normal behavior in any environment, not only yours.
+When a detection rule creates alerts for activity that's normal in any environment, change the rule's logic so it matches only the behavior it's meant to detect. Tuning fixes noise at its source. Analysts get fewer false positives, and the rule keeps catching the activity that matters.
 
-If a rule is correctly written but fires on known-safe activity specific to your environment, use [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) instead. If you're unsure which approach fits your situation, refer to [Reduce noise and false positives](/solutions/security/detect-and-alert/reduce-noise-and-false-positives.md) to compare all available mechanisms.
+% Legacy anchors. Exception guidance moved to rule-exceptions.md, and indicator match guidance moved to indicator-match.md.
 
-This page covers tuning guidance for specific rule categories:
+$$$filter-rule-process$$$
+$$$tune-authorized-processes$$$
+$$$tune-windows-rules$$$
+$$$security-tune-detection-signals-noise-from-common-cloud-based-network-traffic$$$
 
-* [Tune rules detecting authorized processes](#tune-authorized-processes)
-* [Tune Windows child process and PowerShell rules](#tune-windows-rules)
-* [Tune indicator match rules](#tune-indicator-rules)
+Tuning changes what the rule detects across all the data it searches, so it doesn't fit every noisy rule. If the rule is correct but fires on activity that's safe only in your environment, such as a known admin tool, scanner, or service account, add an [exception](/solutions/security/detect-and-alert/rule-exceptions.md) instead. To compare tuning with exceptions, alert suppression, and snoozing, refer to [Reduce noise and false positives](/solutions/security/detect-and-alert/reduce-noise-and-false-positives.md).
 
+## Before you begin [tune-rules-before-you-begin]
 
-## Filter out uncommon application alerts [filter-rule-process]
+* To edit rules, you need the privileges described in [Manage rules](/solutions/security/detect-and-alert/detections-privileges.md#detections-privileges-manage-rules).
+* You can edit Elastic prebuilt rules directly with an Enterprise subscription on {{stack}} or a Security Analytics Complete project on {{serverless-short}}. With other subscriptions, duplicate the prebuilt rule and tune the copy. A duplicate doesn't receive Elastic updates. Refer to [Customize Elastic prebuilt rules](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#customize-subscription-capabilities).
 
-Organizations frequently use uncommon and in-house applications. Occasionally, these can trigger unwanted alerts. To stop a rule matching on an application, add an exception for the required application.
+## Find out why the rule is noisy [find-noisy-rules]
 
-For example, to prevent the [Unusual Process Execution Path - Alternate Data Stream](detection-rules://rules/windows/defense_evasion_unusual_dir_ads.md) rule from producing alerts for an in-house application named `myautomatedbuild`:
+Before you change a rule, find out what its false positives have in common. That tells you whether to tune the rule and which part of it to change.
 
-1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the Rules table, search for and then click on the **Unusual Process Execution Path - Alternate Data Stream** rule.
+1. Find the rules that create the most alerts. On the **Alerts** page, select **Group alerts by** → **Rule name**. To count alerts by rule over a longer period, [query the alerts index](/solutions/security/detect-and-alert/query-alert-indices.md#example_queries).
+2. Open several alerts from a noisy rule and compare their details. Look for values the false positives share, such as the same parent process, command line, file path, or destination.
+3. On the rule's details page, read the rule's **False positive examples** and investigation guide. For Elastic prebuilt rules, they describe activity that's known to trigger the rule.
+4. Decide whether to tune the rule. If the false positives come from activity that's normal in any environment, tune the rule. If they come from hosts, users, or tools that are specific to your environment, add an [exception](/solutions/security/detect-and-alert/add-manage-exceptions.md) instead.
 
-    The **Unusual Process Execution Path - Alternate Data Stream** rule details page is displayed.
+## Change the rule's logic [change-rule-logic]
 
-    :::{image} /solutions/images/security-rule-details-page.png
-    :alt: Rule details page
-    :screenshot:
-    :::
+$$$tune-indicator-rules$$$
 
-3. Select the **Rule exceptions** tab, then click **Add rule exception**.
-4. Fill in these options:
+What to change depends on the rule type and on what the false positives have in common.
 
-    * **Field**: `process.name`
-    * **Operator**: `is`
-    * **Value**: `myautomatedbuild`
+1. Open the rule's details page, then select **Edit rule settings**.
+2. Make the change that matches the cause of the false positives.
 
-        :::{image} /solutions/images/security-process-exception.png
-        :alt: Add Rule Exception UI
-        :screenshot:
-        :::
+    | What the false positives have in common | What to change | Learn more |
+    |---|---|---|
+    | They match the query, but they aren't the behavior the rule is meant to detect | Add conditions to the query that describe the behavior more precisely | [Example of narrowing a query](#tune-example-narrow-query) |
+    | A threshold rule fires on normal bursts of activity | Raise the **Threshold** value, or use **Count** to require a minimum number of unique values in another field | [Threshold rule field reference](/solutions/security/detect-and-alert/threshold.md#threshold-fields) |
+    | A new terms rule fires on values that are new but expected | Increase the **History Window Size**, so the rule checks a longer period for earlier occurrences of each value | [New terms rule field reference](/solutions/security/detect-and-alert/new-terms.md#new-terms-fields) |
+    | A {{ml}} rule fires on weak anomalies | Raise the **Anomaly score threshold** | [{{ml-cap}} rule field reference](/solutions/security/detect-and-alert/machine-learning.md#ml-fields) |
+    | An indicator match rule fires on old or low-value indicators | Narrow the **Indicator index query**, for example to a shorter time range | [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md#indicator-match-limitations) |
+    | The alerts are real, but they don't need urgent attention | Lower the **Default severity** and **Default risk score**, or use **Severity override** to lower the severity only for specific field values | [Basic settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params) |
 
-5. Click **Add rule exception**.
+## Test and save the change [test-tuned-rule]
 
+Every condition you add to a rule can also hide an attack, so check what the tuned rule still detects before you save it.
 
-## Tune rules detecting authorized processes [tune-authorized-processes]
+1. While you edit the rule, use the rule preview to run the tuned rule against past data. Select a time range that includes the false positives you're removing. Refer to [Preview rules against historical data](/solutions/security/detect-and-alert/validate-and-test-rules.md#validate-historical-data).
+2. Compare the preview results with the rule's recent alerts. The false positives you targeted no longer appear, and the alerts you'd still want to investigate do.
+3. Select **Save changes**.
+4. Check the rule's next alerts to confirm that the change works on new data.
 
-Authorized security testing, system tools, management frameworks, and administrative activity may trigger detection rules. These legitimate activities include:
+## Example of narrowing a query [tune-example-narrow-query]
 
-* Authorized security research.
-* System and software management processes running scripts, including scripts that start child processes.
-* Administrative and management frameworks that create users, schedule tasks, make `psexec` connections, and run WMI commands.
-* Legitimate scripts using the `whoami` command.
-* Applications that work with file shares, such as backup programs, and use the server message block (SMB) protocol.
+Administrators and management scripts run `whoami.exe` all the time, so a rule that matches every run of it creates alerts in any environment. Attackers run it too, often as soon as they get code execution through a web shell or a remote management tool, to check which account they're using.
 
-To reduce noise for authorized activity, you can do any of these:
+This EQL query matches every run of `whoami.exe` on Windows hosts.
 
-* Add an exception to the rules that exclude specific servers, such as the relevant host names, agent names, or other common identifiers. For example, `host.name is <server-name>`.
-* Add an exception to the rules that [exclude specific processes](/solutions/security/detect-and-alert/tune-detection-rules.md#filter-rule-process). For example, `process.name is <process-name>`.
-* Add an exception to the rules that exclude a common user. For example, `user.name is <security-tester>`.
+```eql
+process where host.os.type == "windows" and event.type == "start" and
+  process.name : "whoami.exe"
+```
 
-Another useful technique is to assign lower risk scores to rules triggered by authorized activity. This enables detections while keeping the resulting alerts out of high-priority workflows. Use these steps:
+To match only the suspicious runs, add a condition on the process that started it. The following query matches `whoami.exe` only when an IIS worker process, a remote PowerShell session, the WMI provider host, `rundll32.exe`, or `regsvr32.exe` starts it. Legitimate tools rarely start it this way.
 
-1. Before adding exceptions, duplicate the prebuilt rule.
-2. Add an exception to the original prebuilt rule that excludes the relevant user or process name (`user.name is <user-name>` or `process.name is "process-name"`).
-3. Edit the duplicated rule as follows:
+```eql
+process where host.os.type == "windows" and event.type == "start" and
+  process.name : "whoami.exe" and
+  process.parent.name : ("w3wp.exe", "wsmprovhost.exe", "wmiprvse.exe", "rundll32.exe", "regsvr32.exe")
+```
 
-    * Lower the `Risk score` (**Edit rule settings** > **About** tab).
-    * Add an exception so the rule only matches the user or process name excluded in original prebuilt rules. (`user.name is not <user-name>` or `process.name is not <process-name>`).
+The tuned query no longer detects `whoami.exe` when other processes start it, such as a command shell that an attacker opened. Decide whether that gap is acceptable, or add a second condition that covers it. For example, the Elastic prebuilt [Whoami Process Activity](detection-rules://rules/windows/discovery_whoami_command_activity.md) rule also matches runs with SYSTEM privileges, and it excludes specific commands that monitoring tools run.
 
-        :::{image} /solutions/images/security-process-specific-exception.png
-        :alt: Example of `is not` exception in the Add Rule Exception UI
-        :screenshot:
-        :::
+## Keep track of tuned rules [track-tuned-rules]
 
-4. Click **Add rule exception**.
+A tuned rule detects less than it did before, so make sure your team can find out what changed and why.
 
-
-## Tune Windows child process and PowerShell rules [tune-windows-rules]
-
-Normal user activity may sometimes trigger one or more of these rules:
-
-* [Suspicious MS Office Child Process](detection-rules://rules/windows/initial_access_suspicious_ms_office_child_process.md)
-* [Suspicious MS Outlook Child Process](detection-rules://rules/windows/initial_access_suspicious_ms_outlook_child_process.md)
-* [System Shells via Services](detection-rules://rules/windows/persistence_system_shells_via_services.md)
-* [Unusual Parent-Child Relationship](detection-rules://rules/windows/privilege_escalation_unusual_parentchild_relationship.md)
-* [Windows Script Executing PowerShell](detection-rules://rules/windows/initial_access_script_executing_powershell.md)
-
-While all rules can be adjusted as needed, use care when adding exceptions to these rules. Exceptions could result in an undetected client-side execution, or a persistence or malware threat going unnoticed.
-
-Examples of when these rules may create noise include:
-
-* Receiving and opening email-attached Microsoft Office files, which include active content such as macros or scripts, from a trusted third-party source.
-* Authorized technical support personnel who provide remote workers with scripts to gather troubleshooting information.
-
-In these cases, exceptions can be added to the rules using the relevant `process.name`, `user.name`, and `host.name` conditions. Additionally, you can create duplicate rules with lower risk scores.
-
-
-<!-- COMMENTED OUT - REVIEW FOR FUTURE UPDATE
-## Tune network rules [tune-network-rules]
-
-The definition of normal network behavior varies widely across different organizations. Different networks conform to different security policies, standards, and regulations. When normal network activity triggers alerts, network rules can be disabled or modified. For example:
-
-* To exclude a specific source, add a `source.ip` exception with the relevant IP address, and a `destination.port` exception with the relevant port number (`source.ip is 196.1.0.12` and `destination.port is 445`).
-* To exclude source network traffic for an entire subnet, add a `source.ip` exception with the relevant CIDR notation (`source.ip is 192.168.0.0/16`).
-* To exclude a destination IP for a specific destination port, add a `destination.ip` exception with the IP address, and a `destination.port` exception with the port number (`destination.ip is 38.160.150.31` and `destination.port is 445`)
-* To exclude a destination subnet for a specific destination port, add a `destination.ip` exception using CIDR notation, and a ‘destination.port’ exception with the port number (`destination.ip is 172.16.0.0/12` and `destination.port is 445`).
--->
-
-## Tune indicator match rules [tune-indicator-rules]
-
-Take the following steps to tune indicator match rules:
-
-* Specify a detailed query as part of the indicator index query. Results of the indicator index query are used by the detection engine to query the indices specified in your rule definition’s index pattern. Using no query or the wildcard `***` query may result in your rule executing very large queries.
-* Limit your rule’s additional look-back time to as short a duration as possible, and no more than 24 hours.
-* Avoid cluster performance issues by scheduling your rule to run in one-hour intervals or longer. For example, avoid scheduling an indicator match rule to check for indicators every five minutes.
-
-::::{note}
-{{elastic-sec}} provides limited support for indicator match rules. Visit [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md) for more information.
-::::
-
-
-
-### Noise from common cloud-based network traffic [security-tune-detection-signals-noise-from-common-cloud-based-network-traffic]
-
-In cloud-based organizations, remote workers sometimes access services over the internet. The security policies of home networks probably differ from the security policies of managed corporate networks, and these rules might need tuning to reduce noise from legitimate administrative activities:
-
-* [RDP (Remote Desktop Protocol) from the Internet](detection-rules://rules/network/command_and_control_rdp_remote_desktop_protocol_from_the_internet.md)
-
-::::{tip}
-If your organization is widely distributed and the workforce travels a lot, use the `windows_anomalous_user_name_ecs`, `linux_anomalous_user_name_ecs`, and `suspicious_login_activity_ecs` [{{ml}}](/solutions/security/advanced-entity-analytics/anomaly-detection.md) jobs to detect suspicious authentication activity.
-::::
-
-
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` To find out who changed a rule and when, or to restore an earlier version, use the rule's changes history. Refer to [View rule changes history](/solutions/security/detect-and-alert/view-rule-changes-history.md).
+* If you edited an Elastic prebuilt rule, an Elastic update that changes the same fields can conflict with your changes. Refer to [Resolve update conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts).
+* Record why you tuned the rule, for example in its **Investigation guide**, so analysts know which activity it no longer detects.
