@@ -79,7 +79,7 @@ stack: ga 9.3+
 
 Use the agent selector to switch agents, to navigate to the agent management section, or to create a new agent. An agent's behavior is defined by its custom instructions and available tools. Switch agents when you need different capabilities for your tasks.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Hidden agents](agent-builder-agents.md#hidden-agents) aren't listed in the agent selector, even when you turn on **Show hidden agents** on the **Agents** page. If you open a chat with a hidden agent from the **Agents** page, the selector shows it as the current agent.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Hidden agents](agent-builder-agents.md#hidden-agents) aren't listed in the agent selector, even when you turn on **Show hidden agents** on the **Agents** page. If you start a chat with a hidden agent, for example from the **Agents** page, the selector still shows it as the current agent.
 
 :::{image} images/agent-builder-agent-selector.png
 :screenshot:
@@ -658,7 +658,7 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 stack: ga 9.4+
 ```
 
-The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of all agents, skills, plugins, connectors, and tools available across the deployment.
+The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of the agents, skills, plugins, connectors, and tools available across the deployment.
 
 **Agents**
 :   View the agents available in the current {{kib}} space. The list displays each agent's name and access control level (**Public**, **Shared**, or **Private**), a **Read-only** badge for built-in agents, and any labels. From this page, you can create new agents, edit existing ones, or start a chat.

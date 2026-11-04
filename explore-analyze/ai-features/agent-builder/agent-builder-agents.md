@@ -93,21 +93,9 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-{{kib}} hides some of the agents it installs automatically for solution features, such as some Elastic nightshift, Significant Events, and AlertZero agents. The Elastic AI Agent isn't hidden, and you can't hide agents you create.
+{{kib}} hides some agents that solution features install automatically. The Elastic AI Agent isn't hidden, and you can't hide agents you create.
 
-Hidden agents differ from other agents in these ways:
-
-- They don't appear in the list on the **Agents** page by default.
-- They aren't listed in the [agent selector](chat.md#select-a-different-agent), even when **Show hidden agents** is on. If you open a chat with a hidden agent, for example with **Chat** on the **Agents** page, the selector shows it as the current agent.
-- The **Set as space default** action isn't available for them.
-
-To include hidden agents in the **Agents** page list, turn on **Show hidden agents**. The following image shows the switch turned off, which is the default:
-
-:::{image} images/agent-builder-show-hidden-agents.png
-:screenshot:
-:alt: Show hidden agents switch turned off, above the search bar and Labels filter on the Agents page
-:width: 650px
-:::
+Hidden agents aren't listed in the [agent selector](chat.md#select-a-different-agent). By default, they also don't appear in the list on the **Agents** page. To include them in that list, turn on **Show hidden agents**.
 
 ## Elastic capabilities [elastic-capabilities]
 
