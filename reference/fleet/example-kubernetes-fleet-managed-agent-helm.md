@@ -31,6 +31,7 @@ To get started, you need:
 * A local install of the [Helm](https://helm.sh/) {{k8s}} package manager.
 * An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server) component. An {{serverless-full}} project also meets this requirement.
 * An active {{k8s}} cluster.
+* {applies_to}`stack: ga 9.5.6+` For Red Hat OpenShift clusters, the permissions listed in [Install on OpenShift](#agent-fleet-managed-helm-install-openshift).
 
 ## Installation overview [overview]
 
@@ -73,6 +74,8 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
 6. Open a terminal shell on your local system where the Helm tool is installed and you have access to the {{k8s}} cluster.
 
 ### Install on Kubernetes [agent-fleet-managed-helm-install-kubernetes]
+
+If you're installing on OpenShift, review the requirements in [Install on OpenShift](#agent-fleet-managed-helm-install-openshift) before you run the command.
 
 1. Copy and prepare the command to install the chart:
 
@@ -137,15 +140,19 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
 stack: ga 9.5.6+
 ```
 
-On OpenShift, follow the same preparation and [Kubernetes installation steps](#agent-fleet-managed-helm-install-kubernetes), using version 9.5.6 or later of the {{agent}} Helm chart.
+Starting with version 9.5.6, the {{agent}} Helm chart supports Red Hat OpenShift. On OpenShift, the chart configures the security context constraints (SCCs) that {{agent}} needs to run. The SCC depends on the `agent.unprivileged` setting:
 
-The chart detects OpenShift automatically. To force OpenShift detection, add `--set agent.openshift.enabled=true` to the installation command.
+* By default (`agent.unprivileged=false`), {{agent}} runs as `root`, and the chart grants the agent service accounts the built-in `privileged` SCC.
+* With `agent.unprivileged=true`, {{agent}} runs as a non-root user, and the chart creates a custom SCC with the minimum permissions {{agent}} needs. This SCC doesn't allow privileged containers or access to the host PID and IPC namespaces. Use this option if your security policies don't allow the `privileged` SCC.
 
-#### Requirements
+To install {{agent}} on OpenShift:
 
-Your OpenShift user needs permissions to create role bindings in the release namespace. For an unprivileged installation (`agent.unprivileged=true`), you also need permissions to create security context constraints (SCCs) and cluster roles.
+1. Make sure you have the `cluster-admin` role, or equivalent permissions. With the default settings, the chart creates role bindings to the `privileged` SCC in the release namespace, which requires permission to create role bindings and either `use` on that SCC or `bind` on the referenced cluster role. For an unprivileged installation, the chart also creates an SCC and a cluster role.
+2. Follow the [Kubernetes installation steps](#agent-fleet-managed-helm-install-kubernetes). Run `helm repo update` first to make sure you install version 9.5.6 or later of the chart. To run {{agent}} with the minimum permissions, add `--set agent.unprivileged=true` to the installation command.
 
-If your organization's security policies require administrators to manage these resources separately, have an administrator configure the required SCCs and role bindings before installation, then add `--set agent.openshift.securityContextConstraints.create=false` to the installation command.
+The chart detects OpenShift automatically by querying the cluster APIs. If you render the chart without access to the cluster, for example with `helm template` or a GitOps tool such as Argo CD, detection doesn't work and the chart doesn't create the OpenShift resources. In that case, add `--set agent.openshift.enabled=true` to the command.
+
+If your organization requires administrators to manage SCCs and role bindings separately, add `--set agent.openshift.securityContextConstraints.create=false` to the command. An administrator then needs to create the resources the chart would otherwise create before you install. To review these resources, render the chart with `helm template` and `--set agent.openshift.enabled=true`, or refer to the [OpenShift examples](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/kubernetes-openshift-unprivileged) in the {{agent}} repository.
 
 ### Verify the installation and enrollment
 

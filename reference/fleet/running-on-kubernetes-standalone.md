@@ -188,6 +188,8 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
 
 If you are using Red Hat OpenShift, you need to specify additional settings in the manifest file and enable the container to run as privileged.
 
+{applies_to}`stack: ga 9.5.6+` To run {{agent}} on OpenShift without granting the `privileged` SCC, install it with the Helm chart in unprivileged mode. Refer to [Install on OpenShift](/reference/fleet/example-kubernetes-standalone-agent-helm.md#agent-standalone-helm-install-openshift).
+
 1. In the manifest file, modify the `agent-node-datastreams` ConfigMap and adjust inputs:
 
     * `kubernetes-cluster-metrics` input:
