@@ -221,6 +221,8 @@ links:
     url: /explore-analyze/dashboards/create-dashboard.md
   - label: Ways to create a dashboard
     url: /explore-analyze/dashboards/building.md
+  - label: Custom panels
+    url: /explore-analyze/visualize/custom-panels.md
   - label: Best practices
     url: /explore-analyze/dashboards/arrange-panels.md
 :::
@@ -369,6 +371,8 @@ links:
     url: /explore-analyze/alerting/esql/rules.md
   - label: Alert episodes
     url: /explore-analyze/alerting/esql/alerts.md
+  - label: Action policies
+    url: /explore-analyze/alerting/esql/action-policies/about-action-policies.md
 :::
 
 :::{link-card}
@@ -428,6 +432,8 @@ links:
     url: /explore-analyze/ai-features/agent-builder/models.md
   - label: MCP server
     url: /explore-analyze/ai-features/agent-builder/mcp-server.md
+  - label: MCP server API keys
+    url: /explore-analyze/ai-features/agent-builder/mcp-server-api-keys.md
 :::
 
 :::{link-card}
