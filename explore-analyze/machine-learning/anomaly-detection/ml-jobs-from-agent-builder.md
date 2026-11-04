@@ -27,15 +27,15 @@ Because the agent uses a large language model, its questions and the setup it pr
 
 1. [Start a chat](/explore-analyze/ai-features/agent-builder/chat.md) with an agent that has the `anomaly-detection` skill. Describe what you want to detect and where your data is. For example: `Detect unusual error rates per host in my nginx access logs.`
 
-   Before it asks you anything, the agent checks your data to see which fields and time range are available. If a prebuilt {{ml}} configuration matches your data, the agent starts from it.
+   The agent first checks which fields and time range your data has, and starts from a prebuilt {{ml}} configuration if one matches.
 
-2. Answer the agent's questions. It asks about your goal, not about {{ml}} settings, for example what a bad day looks like, how quickly you need to know about a problem, and whether planned events such as deployments or holidays would look unusual without being a real problem. The agent turns your answers into a job configuration and chooses the job structure itself.
+2. Answer the agent's questions. They're about your goal, not {{ml}} settings, for example what a bad day looks like, how fast you need to know about a problem, and whether planned events such as deployments would look unusual. The agent turns your answers into a job configuration.
 
-3. Review the proposed setup. The agent validates the configuration, estimates how much memory the jobs need, and summarizes in plain language the time range it will analyze, the approximate number of records, and how long the run is expected to take. It also shows the full job and {{dfeed}} definitions. The agent then asks whether to run the setup on your historical data first. A test run lets you review the results and adjust the setup before anything goes live.
+3. Review the proposed setup. The agent validates it, estimates the memory it needs, and summarizes the time range, record count, and expected run time in plain language, along with the full job and {{dfeed}} definitions. It then asks whether to run the setup on your historical data first. A test run lets you review the results and adjust the setup before anything goes live.
 
-4. If you agree to the test run, wait while the agent analyzes your historical data. When it's done, the agent summarizes what it found, such as how many anomalies, the highest score, and the time and entity behind the strongest one. It also shows an anomaly swim lane, anomaly charts, and a single metric viewer for the top anomaly in the conversation, with a link that opens the jobs in the **Anomaly Explorer**.
+4. If you agree to the test run, wait while the agent analyzes your historical data. It then summarizes what it found, such as the number of anomalies, the highest score, and the time and entity behind the strongest one. It also shows a swim lane, anomaly charts, and a single metric viewer in the conversation, with a link that opens the jobs in the **Anomaly Explorer**.
 
-   The charts are interactive, so you can explore them without leaving the conversation. For example, in the single metric viewer you can zoom in on a period and show or hide the model bounds and annotations. Each chart has a time range picker, so you can change the period it shows. To keep exploring in the full app, select **View in Anomaly Explorer** on a swim lane or anomaly charts, or **View in Single Metric Viewer** on a single metric viewer. To keep a chart, select **Save to dashboard** and choose a new or existing dashboard. Both actions use the period you set. **Save to dashboard** needs permission to edit dashboards.
+   The charts are interactive. In the single metric viewer, for example, you can zoom in on a period and show or hide the model bounds and annotations. Use a chart's time range picker to change the period it shows. To keep exploring, select **View in Anomaly Explorer** on a swim lane or anomaly charts, or **View in Single Metric Viewer** on a single metric viewer. To keep a chart, select **Save to dashboard**, which needs permission to edit dashboards, and choose a new or existing dashboard. Both actions use the period you set.
 
    :::{image} /explore-analyze/images/machine-learning-ad-agent-builder-single-metric-viewer.png
    :alt: A conversation with a single metric viewer chart that has a time range picker, model bounds and annotations options, and the View in Single Metric Viewer and Save to dashboard buttons, followed by a table that describes the job
@@ -43,20 +43,20 @@ Because the agent uses a large language model, its questions and the setup it pr
    :screenshot:
    :::
 
-   If the agent finds no anomalies, it says so and offers to widen the time range, try a different field or function, or adjust the sensitivity. Zero anomalies can mean your data is very consistent or that the setup needs adjusting.
+   If the agent finds no anomalies, it says so and offers to widen the time range, try a different field or function, or adjust the sensitivity. That can mean your data is very consistent or that the setup needs adjusting.
 
 5. Tell the agent whether the results look right.
 
-   * **If they do**, the agent creates a second set of jobs with the same configuration that runs on incoming data from now on. These jobs get a new ID, for example the original ID with `-realtime` added, so they don't replace the historical ones. The agent then offers to delete the historical jobs, which it only does after you confirm. It also offers to create an alerting rule that notifies you about anomalies.
-   * **If they don't**, tell the agent what looked wrong, for example too many false alerts, the wrong entities, missing events, or the wrong time scale. The agent goes back to your answers, adjusts the setup, and runs it again.
+   * **If they do**, the agent creates a second set of jobs with the same configuration that runs on incoming data from now on. These jobs get new IDs, such as the original ID plus `-realtime`, so they don't replace the historical ones. The agent then offers to delete the historical jobs, which it does only after you confirm, and to create an alerting rule.
+   * **If they don't**, tell the agent what looked wrong, such as too many false alerts, the wrong entities, missing events, or the wrong time scale. The agent adjusts the setup and runs it again.
 
-To check the outcome, open the **Anomaly Detection Jobs** page. The new real-time jobs are listed there, and they're open with their {{dfeeds}} started. The historical jobs are also listed until you delete them. The model keeps learning what's normal for your data over the following weeks, so the results become more accurate over time.
+To check the outcome, open the **Anomaly Detection Jobs** page. It lists the new real-time jobs, open with their {{dfeeds}} started, and the historical jobs until you delete them. The model keeps learning what's normal for your data, so the results improve over the following weeks.
 
 ## Temporary jobs and cleanup
 
-The jobs the agent runs on your historical data are temporary. It adds them to a job group named `ml-agent-scratch`, so it can tell them apart from your other jobs. A job group is a label that lets you refer to several jobs at once, for example in calendars or alerting rules. The real-time jobs don't carry that group.
+The test run uses temporary jobs. The agent adds them to a job group named `ml-agent-scratch`, a label that lets you refer to several jobs at once, for example in calendars or alerting rules, so it can tell them apart from your other jobs. The real-time jobs don't carry that group.
 
-When you approve the results, the agent names every historical job it wants to delete and waits for your confirmation. It only deletes jobs in the `ml-agent-scratch` group. If you decline, the historical jobs stay in place, and you can delete them yourself later. Keep them if you want to look at the historical results again.
+When you approve the results, the agent names every historical job it wants to delete and deletes only jobs in that group, after you confirm. If you decline, the jobs stay in place. You can delete them yourself later, or keep them to review the historical results.
 
 ## Alerting rules
 
