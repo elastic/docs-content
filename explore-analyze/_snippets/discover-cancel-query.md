@@ -12,7 +12,7 @@ Select the **Cancel** button that appears while the query executes. **Discover**
 
 :::::
 
-This behavior applies to all query types (KQL, Lucene, and {{esql}}).
+This behavior applies to all query types (Kibana Query Language (KQL), Lucene, and {{esql}}).
 
 :::{tip}
 For long-running queries, you can also [send the query to the background](/explore-analyze/discover/background-search.md) instead of canceling it, allowing it to complete while you continue working.

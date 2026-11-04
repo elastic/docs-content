@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: See which fields your data has, check the most frequent values of a field, break the chart down by a field, and add the ones you need as columns in the Discover results table.
+description: Check which fields your data has and their most frequent values, add fields as columns, and break the chart down by a field in Discover.
 ---
 
 # Explore the fields in your data

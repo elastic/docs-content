@@ -13,7 +13,7 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 
 **Discover** has two query modes: {{esql}} mode and classic mode. Classic mode uses data views with Kibana Query Language (KQL) or Lucene.
 
-This page explains how to switch between modes, and what Discover does with your queries when you switch.
+To switch between modes, and to see what Discover does with your query when you switch, use the following sections.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers the last query mode you used in your browser. New Discover tabs and sessions open in that mode.
 
