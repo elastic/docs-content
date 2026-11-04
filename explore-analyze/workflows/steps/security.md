@@ -3,7 +3,7 @@ navigation_title: Security
 applies_to:
   stack: ga 9.5+
   serverless: ga
-description: Named security.* workflow action steps for Elastic Security operations such as attack triage and detection rule management.
+description: Named security.* workflow action steps for Elastic Security operations such as attack triage, detection rule management, and exceptions.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -50,11 +50,28 @@ Use them to:
 
 Refer to [Detection rules action steps](/explore-analyze/workflows/steps/detection-rules.md) for shared conventions, parameters, output fields, and YAML examples.
 
+## Exceptions
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Exception steps add exception items so that matching events stop generating alerts, either on one rule or on a shared exception list.
+
+Use them to:
+
+* Add an exception to a rule's own default exception list (`security.createRuleException`)
+* Add an item to an existing exception list (`security.createExceptionListItem`)
+
+Refer to [Exceptions action steps](/explore-analyze/workflows/steps/exceptions.md) for shared conventions, parameters, output fields, and YAML examples.
+
 ## Related
 
 - [Alert triage action steps](/explore-analyze/workflows/steps/alert-triage.md): Status, assignee, and tag management for individual alerts.
 - [Attack triage action steps](/explore-analyze/workflows/steps/attack-triage.md): Status, assignee, and tag management for attacks.
 - [Detection rules action steps](/explore-analyze/workflows/steps/detection-rules.md): Enable or disable detection rules by ID list or query.
+- [Exceptions action steps](/explore-analyze/workflows/steps/exceptions.md): Add exceptions to a rule or to an exception list.
 - [Kibana action steps](/explore-analyze/workflows/steps/kibana.md): Generic `kibana.request` and older PascalCase alert steps.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Hand off a triaged alert or attack to a case.
 - [Step type index](/explore-analyze/workflows/reference/step-types.md): Alphabetical lookup of every step type.
