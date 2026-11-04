@@ -12,7 +12,7 @@ products:
   - id: kibana
 ---
 
-# {{alerting-v1-system-cap}}: performance and scaling [alerting-production-considerations]
+# {{alerting-v1-system-cap}}: Performance and scaling [alerting-production-considerations]
 
 Alerting runs both rule checks and actions as persistent background tasks managed by the Task Manager.
 
