@@ -1,119 +1,154 @@
 ---
 navigation_title: Migrate data using Logstash
 applies_to:
-  serverless:
   deployment:
-    serverless: ga
+    ech: ga
+    ece: ga
+    eck: ga
+    self: ga
+  serverless: ga
 products:
   - id: elasticsearch
   - id: logstash
   - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Migrate {{es}} data using {{ls}} [migrate-with-ls]
 
-[{{ls}}](logstash://reference/index.md) is a data collection engine that uses a large ecosystem of [plugins](logstash-docs-md://lsr/index.md) to collect, process, and forward data from a variety of sources to a variety of destinations. Here we focus on using the [Elasticsearch input](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md) plugin to read from your {{ech}} deployment, and the [Elasticsearch output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md) plugin to write to your {{{serverless-full}} project.
+[{{ls}}](logstash://reference/index.md) can copy documents between {{es}} deployments by reading them with the [{{es}} input plugin](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md) and writing them with the [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md). This guide uses {{ech}} and {{serverless-full}} in both directions as examples. You can adapt the connection settings for {{ece}}, {{eck}}, and self-managed clusters.
 
-Familiarity with {{ech}}, {{es}}, and {{ls}} is helpful, but not required. 
+This process copies ingested user data. It does not copy cluster settings, index mappings, index templates, ingest pipelines, or {{kib}} saved objects.
 
-:::{admonition} Basic migration
-This guide focuses on migrating static data from an {{ech}} deployment to a {{serverless-full}} project. 
+## Before you begin [migrate-prereqs]
 
-The Elasticsearch input plugin offers [additional configuration options](#additional-config) that can support more advanced use cases and migrations between other deployment types. More information about those options is available near the end of this topic. 
-:::
+- Make sure that the source and destination deployments are running and reachable from the host where you run {{ls}}.
+- [Install {{ls}}](https://www.elastic.co/downloads/logstash).
+- Create credentials that give the [{{es}} input plugin](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md#plugins-inputs-elasticsearch-auth) read access to the source and the [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-auth) write access to the destination.
+- Estimate the amount of data to migrate and make sure that the {{ls}} host, network, and destination have enough capacity.
+- Prepare the destination before copying documents:
+    - Create indices and mappings when you don't want to rely on dynamic mapping.
+    - Add the required index templates and data stream definitions.
+    - Configure the lifecycle policy that applies to the destination. {{serverless-full}} uses data stream lifecycle ({{dlm-init}}), not {{ilm}} ({{ilm-init}}).
 
-## Prerequisites [migrate-prereqs]
+Migrate {{kib}} saved objects, ingest pipelines, and feature configuration separately. To migrate saved objects, use the {{kib}} [import and export APIs]({{kib-apis}}group/endpoint-saved-objects) or [saved object management](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export).
 
-- {{ech}} deployment with data to migrate
-- [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) project configured and running
-- {{ls}} [installed](https://www.elastic.co/downloads/logstash) on your local machine or server 
-- API keys in {{ls}} format for authentication with both deployments
+## Choose connection settings [logstash-migration-connection-settings]
 
-:::{important} 
-Kibana assets much be migrated separately using the {{kib}} [export/import APIs]({{kib-apis}}group/endpoint-saved-objects) or recreated manually.
-Templates, data stream definitions, and ILM policies, must be in place _before_ you start data migration. 
+Both plugins support the same connection settings. Select settings based on the deployment that each plugin connects to:
 
-Visual components, such dashboard and visualizations, can be migrated after you have migrated the data.
-:::
+| Deployment | Connection | Authentication |
+| --- | --- | --- |
+| {{serverless-full}} | Set `hosts` to the project's {{es}} endpoint over HTTPS and explicitly use port `443`. | Use `api_key`. User-based authentication settings are not supported. |
+| {{ech}} | Use `cloud_id`, or use `hosts` with the {{es}} endpoint. Use `hosts` when connecting through a private endpoint. Don't set both options. | An API key is recommended. `cloud_auth` with a `username:password` value is also supported. |
+| {{ece}} | Use the deployment's `cloud_id` or `hosts` with its {{es}} endpoint. Don't set both options. | Use an API key or user credentials. |
+| {{eck}} or self-managed | Use `hosts` with an endpoint that the {{ls}} host can reach. | Use an API key or user credentials. Configure certificate authority settings when the endpoint does not use a publicly trusted certificate. |
 
-## Process overview [migration-overview]
-* [Configure {{ls}}](#configure-ls)
-* [Run {{ls}}](#run-ls)
-* [Verify data migration](#verify-migration)
+API keys use the `id:api_key` format. When you create an [API key for {{ls}}](logstash://reference/connecting-to-serverless.md#api-key), select **{{ls}}** from the **API key** format dropdown.
 
+API key authentication requires SSL/TLS. A `cloud_id` enables TLS automatically. With `hosts`, TLS is inferred when every URL uses `https`, or you can set `ssl_enabled => true`. The `cloud_auth` setting does not enable TLS by itself. For other TLS configurations, refer to the SSL settings for the [input plugin](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md#plugins-inputs-elasticsearch-ssl_enabled) and [output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-ssl_enabled).
+
+## Migrate your data [migrate-data-logstash]
 
 ### Step 1: Configure {{ls}} [configure-ls]
-Create a new {{ls}} [pipeline configuration file](logstash://reference/creating-logstash-pipeline.md) (_migration.conf_) using the [Elasticsearch input](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md) and the [Elasticsearch output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md):
-- The **input** reads from your {{ech}}.
-- The **output** writes to your {{serverless-full}} project.
 
-#### Input: Read from your {{ech}} deployment [read-from-ech]
+Create a {{ls}} [pipeline configuration file](logstash://reference/creating-logstash-pipeline.md) named `migration.conf`. Select the example that matches your migration direction.
 
-```
+::::{tab-set}
+:::{tab-item} ECH to {{serverless-short}}
+
+```ruby
 input {
   elasticsearch {
-    cloud_id => "<HOSTED_DEPLOYMENT_CLOUD_ID>"   # Connects Logstash to your Elastic Cloud Hosted deployment using its Cloud ID.
-    api_key  => "<HOSTED_API_KEY>"               # API key for authenticating the connection.
-    index    => "index_pattern*"                 # The index or index pattern (such as logs-*,metrics-*).
-    docinfo  => true                             # Includes metadata about each document, such as its original index name or doc ID. This metadata can be used to preserve index information on the destination cluster. 
+    cloud_id       => "<ECH_CLOUD_ID>"
+    api_key        => "<ECH_SOURCE_API_KEY>"
+    index          => "index_pattern*"
+    docinfo        => true
+    docinfo_target => "[@metadata][input][elasticsearch]"
   }
 }
-```
 
-  :::{tip}
-  To migrate multiple indexes at the same time, use a wildcard in the index name. For example, `index => "logs-*"` migrates all indices starting with `logs-`.
-  :::
-
-#### Output: Write to your {{serverless-full}} project [write-to-serverless]
-
-```
 output {
   elasticsearch {
-    hosts       => [ "https://<SERVERLESS_HOST_URL>:443" ] # URL for your Serverless project URL, set port as 443
-    api_key     => "<SERVERLESS_API_KEY>"                  # API key (in Logstash format) for your Serverless project
-    index       => "%{[@metadata][input][elasticsearch][_index]}" # Instruction to retain original index names
+    hosts       => [ "https://<SERVERLESS_ELASTICSEARCH_ENDPOINT>:443" ]
+    api_key     => "<SERVERLESS_DESTINATION_API_KEY>"
+    index       => "%{[@metadata][input][elasticsearch][_index]}"
+    document_id => "%{[@metadata][input][elasticsearch][_id]}"
   }
 
   stdout { codec => rubydebug { metadata => true } }
 }
 ```
 
-:::{tip}
-When you create an [API key for {{ls}}](logstash://reference/connecting-to-serverless.md#api-key), be sure to select **Logstash** from the **API key** format dropdown. This option formats the API key in the correct `id:api_key` format required by {{ls}}.
 :::
+:::{tab-item} {{serverless-short}} to ECH
+
+```ruby
+input {
+  elasticsearch {
+    hosts          => [ "https://<SERVERLESS_ELASTICSEARCH_ENDPOINT>:443" ]
+    api_key        => "<SERVERLESS_SOURCE_API_KEY>"
+    index          => "index_pattern*"
+    docinfo        => true
+    docinfo_target => "[@metadata][input][elasticsearch]"
+  }
+}
+
+output {
+  elasticsearch {
+    cloud_id    => "<ECH_CLOUD_ID>"
+    api_key     => "<ECH_DESTINATION_API_KEY>"
+    index       => "%{[@metadata][input][elasticsearch][_index]}"
+    document_id => "%{[@metadata][input][elasticsearch][_id]}"
+  }
+
+  stdout { codec => rubydebug { metadata => true } }
+}
+```
+
+:::
+::::
+
+The examples preserve the source index name and document ID. Replace `index_pattern*` with the index or index pattern to migrate. For example, `logs-*` selects all indices whose names start with `logs-`.
+
+The examples target regular indices. To write to a data stream, create a matching data stream template on the destination and configure the [output plugin to use data streams](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data-streams).
+
+When the destination is {{serverless-short}}, omit user-based authentication and all `ilm_*` output settings. For a data stream destination, configure {{dlm-init}} in the destination project.
 
 ### Step 2: Run {{ls}} [run-ls]
- 
-Start {{ls}}:
 
-```
+Run the pipeline:
+
+```sh
 bin/logstash -f migration.conf
 ```
 
-### Step 3: Verify data migration [verify-migration]
+For a static migration, stop writes to the source before the final run or plan a final synchronization before cutover.
 
-After running {{ls}}, verify that the data has been migrated successfully:
+### Step 3: Verify the migration [verify-migration]
 
-1. Log in to your {{serverless-full}} project.
-2. Navigate to Index Management and select the relevant index.
-3. Confirm that the migrated data is visible.
+1. Check the {{ls}} output for failed events.
+2. In the destination deployment, find **{{index-manage-app}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. Confirm that the destination indices contain the expected documents.
+4. Run representative searches and application queries against the destination before directing production traffic to it.
 
+## Tune or resume a migration [additional-config]
 
-## Additional configuration options [additional-config]
+The {{es}} input plugin provides options for larger or long-running migrations:
 
-The Elasticsearch input includes more [configuration options](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md#plugins-inputs-elasticsearch-options) 
-that offer greater flexibility and can handle more advanced migrations.
-Some options that can be particularly relevant for a  migration use case are: 
+- `size` controls how many documents each page retrieves. Larger values can improve throughput but use more memory.
+- `slices` enables parallel reads. Don't configure more slices than the number of primary shards.
+- `search_api` controls whether the plugin uses `search_after` or scroll pagination. The default `auto` option uses `search_after` with supported {{es}} versions.
 
-- `size` - Controls how many documents are retrieved per scroll. Larger values increase throughput, but use more memory.
-- `slices` - Enables parallel reads from the source index.
-- `scroll` - Adjusts how long Elasticsearch keeps the scroll context alive.
+### Track progress across runs [field-tracking]
 
-### Field tracking options [field-tracking]
-{applies_to}`serverless: preview` {applies_to}`stack: preview`
+:::{warning}
+Field tracking is a technical preview feature. Its configuration and behavior might change.
+:::
 
-The {{es}} input plugin supports cursor-like pagination functionality, unlocking more advanced migration features, including the ability to resume migration tasks after a {{ls}} restart, and support for ongoing data migration over time. Tracking field options are:
-- `tracking_field` - Plugin records the value of a field for the last document retrieved in a run.
-- `tracking_field_seed` - Sets the starting value for `tracking_field` if no `last_run_metadata_path` is set. 
+Use `tracking_field` to record the last value that the input plugin retrieves. The plugin can inject that value into the next query, which supports resuming after a restart or periodically copying new documents. Use `tracking_field_seed` to set the initial value when no previous tracking metadata exists.
 
-Check out the Elasticsearch input plugin documentation for more details and code samples: [Tracking a field's value across runs](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md#plugins-inputs-elasticsearch-cursor).
+Tracking progress can result in duplicate documents after a failure. Preserve document IDs on the destination so that repeated events overwrite the same documents instead of creating copies.
+
+For configuration details and examples, refer to [Tracking a field's value across runs](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md#plugins-inputs-elasticsearch-cursor).
