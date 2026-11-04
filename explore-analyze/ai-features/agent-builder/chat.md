@@ -318,7 +318,12 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-Some features create conversations from a built-in template, `investigation` or `escalation`. For example, [{{alertzero}}](/solutions/security/alertzero/index.md) creates investigations and escalations in {{elastic-sec}}, and [Elastic nightshift](/solutions/observability/nightshift/investigations.md) creates investigations in {{obs-serverless}}. A template stores structured metadata on the conversation, such as its status, severity, and assignees, and shows the template name next to the conversation title. You can't create or edit templates, or switch a conversation to a different template.
+Agent Builder has two built-in conversation templates: investigation and escalation. A template defines the structured metadata that a conversation stores, such as its status, severity, and assignees. The conversation shows the template name next to its title. You can’t create or edit templates, or switch a conversation to a different template.
+
+You don’t usually create these conversations yourself. Other features create them and use the template to keep track of their work:
+
+- {{alertzero}} creates investigation and escalation conversations in {{elastic-sec}}.
+- Elastic nightshift creates investigation conversations in {{obs-serverless}}.
 
 In standalone mode, select **Chat info** in the header of a templated conversation to open a flyout with the details that the template defines, such as the summary and proposed actions. **Chat info** doesn't appear in [sidebar mode](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode). To copy a link that opens the conversation with **Chat info** open, select the **Copy link** icon {icon}`link`.
 
