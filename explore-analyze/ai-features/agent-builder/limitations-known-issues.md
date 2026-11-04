@@ -86,11 +86,9 @@ Including frozen tier data doesn't extend tool timeouts. Queries over large amou
 
 ### A2A streaming not supported
 
-```{applies_to}
-stack: preview =9.2, ga 9.3-9.5
-```
+In 9.2 through 9.5, the [Agent-to-Agent (A2A) server](a2a-server.md) doesn't support the `message/stream` method. Use [`message/send`](a2a-server.md#send-messages) instead.
 
-The [Agent-to-Agent (A2A) server](a2a-server.md) doesn't support the `message/stream` method. Use [`message/send`](a2a-server.md#send-messages) instead.
+Fixed on {{serverless-short}} and in 9.6 and later. Refer to [Stream responses](a2a-server.md#stream-responses).
 
 ### Human-in-the-loop prompts require an interactive conversation
 
