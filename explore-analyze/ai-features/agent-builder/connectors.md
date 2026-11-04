@@ -14,7 +14,7 @@ products:
 
 # Connectors in {{agent-builder}}
 
-{{agent-builder}} connectors give agents access to external systems, such as messaging services, cloud functions, and third-party APIs. Agents use connectors to act on those systems, for example to look up a Slack channel or search for threat intelligence, without you building a custom tool for each action.
+{{agent-builder}} connectors give agents access to external systems, such as messaging services, cloud functions, and third-party APIs. Agents use connectors to act on those systems without you building a custom tool for each action.
 
 :::{note}
 :applies_to: stack: preview 9.4-9.5
@@ -30,27 +30,17 @@ You manage connectors per {{kib}} space from **Manage components** → **Connect
 
 ## How agents use connectors
 
-::::{applies-switch}
-
-:::{applies-item} { stack: preview 9.6+, serverless: preview }
-An agent can only run the connectors assigned to it. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
-
-At run time, the agent uses the built-in `connector-discovery` [skill](skills.md) to look up its connectors and load their sub-actions and parameter schemas. **Enable Elastic capabilities** includes this skill.
-:::
-
-:::{applies-item} { stack: preview 9.4-9.5 }
-Unlike standalone tools, connectors don't need to be assigned to agents. Any agent can use any connector in the space.
-:::
-
-::::
-
 When an agent needs to interact with an external system, it reads the schemas of the connectors available to it. It then runs the sub-action it needs through a built-in system tool, `platform.core.execute_connector_sub_action`, and fills in the sub-action's parameters itself. For example, it can look up a Slack channel ID or search AlienVault OTX for threat intelligence.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` An agent can only run the connectors assigned to it. At run time, it uses the built-in [`connector-discovery` skill](builtin-skills-reference.md#agent-builder-connector-discovery-skill) to look up its connectors and load their sub-actions and parameter schemas. **Enable Elastic capabilities** includes this skill. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
+
+{applies_to}`stack: preview 9.4-9.5` Unlike standalone tools, connectors don't need to be assigned to agents. Any agent can run any connector in the space.
 
 ## Add a connector
 
 To add a connector to the library:
 
-1. In the sidebar, select **Manage components** → **Connectors** to open the **Connectors library**.
+1. In the left sidebar, select **Manage components** → **Connectors** to open the **Connectors library**.
 2. Select **Create connector**.
 3. Select a connector type from the catalog.
 4. Provide the required configuration.
@@ -58,17 +48,9 @@ To add a connector to the library:
 
 The configured connector appears in the library.
 
-::::{applies-switch}
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use the connector, [assign it to the agent](#assign-connectors-to-an-agent).
 
-:::{applies-item} { stack: preview 9.6+, serverless: preview }
-To let an agent use the connector, [assign it to the agent](#assign-connectors-to-an-agent).
-:::
-
-:::{applies-item} { stack: preview 9.4-9.5 }
-Any agent can use the connector immediately.
-:::
-
-::::
+{applies_to}`stack: preview 9.4-9.5` Any agent can use the connector immediately.
 
 ## Assign connectors to an agent [assign-connectors-to-an-agent]
 
@@ -77,24 +59,24 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-An agent can only use the connectors you assign to it, and new agents start with none. You assign connectors from the agent after you save it.
+New agents start with no connectors. You assign connectors from the agent after you save it.
 
 To assign connectors in {{kib}}, you need:
 
-- Permission to edit the agent.
-- The **Actions and Connectors: All** {{kib}} privilege.
+- Permission to edit the agent
+- The **Actions and Connectors: All** {{kib}} privilege
 
-If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill. Without it, the agent can't find its connectors.
+If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill on the agent's **Skills** page. Without it, the agent can't find its connectors.
 
 To assign a connector to an agent:
 
-1. Select the agent, then select **Customize** → **Connectors** in the sidebar.
+1. Select the agent, then select **Customize** → **Connectors** in the left sidebar.
 2. Select **Add connector**.
 3. Select one of the following:
    - **From library**: Assign connectors that already exist in the connectors library.
    - **Create new connector**: Configure a new connector. {{kib}} adds it to the library and assigns it to the agent.
 
-The connector and its sub-actions appear on the agent's **Connectors** page. The following example shows the page with one assigned connector and the **Add connector** menu open:
+The connector and its sub-actions appear on the agent's **Connectors** page. The following image shows the page with one assigned connector and the **Add connector** menu open:
 
 :::{image} images/agent-connectors-add-connector.png
 :screenshot:
@@ -102,9 +84,9 @@ The connector and its sub-actions appear on the agent's **Connectors** page. The
 :width: 750px
 :::
 
-To stop an agent from using a connector, remove the connector from the agent's **Connectors** page. The connector stays in the library, and other agents it's assigned to can still use it.
+To stop an agent from using a connector, select the connector on the agent's **Connectors** page, then select **Remove** and confirm. The connector stays in the library, and other agents it's assigned to can still use it.
 
-### Agents without assigned connectors [agents-without-assigned-connectors]
+### Check which agents need connectors [agents-without-assigned-connectors]
 
 An agent that was never assigned connectors can't use any. Check for the following agents and assign the connectors they need:
 

@@ -648,9 +648,10 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 **Tools**
 :   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
 
-The following image shows the expanded **Customize** accordion in the sidebar:
+The following image shows the **Customize** section of the left sidebar:
 
 :::{image} images/customize-your-agent-accordion.png
+:screenshot:
 :alt: Customize section of the agent sidebar listing Overview, Skills, Connectors, and Tools
 :width: 200px
 :::
