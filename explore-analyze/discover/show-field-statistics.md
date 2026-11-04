@@ -4,6 +4,7 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+type: how-to
 products:
   - id: kibana
 description: Explore field statistics in Discover to view distributions, top values, and data quality metrics. Analyze numeric ranges, geographic coordinates, and field cardinality.
