@@ -44,7 +44,7 @@ serverless:
 For simplicity and speed, use {{serverless-full}}.
 
 :::{note}
-Some features differ between {{serverless-short}} and {{ech}}, including synonyms, data lifecycle management, and write latency. Before you build, review [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#indexing-search-and-analysis) so the steps and settings you follow match your deployment type.
+Some features differ between {{serverless-short}} and {{ech}}, including data lifecycle management. Before you build, review [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#indexing-search-and-analysis) so the steps and settings you follow match your deployment type.
 :::
 
 ::::{dropdown} Create a serverless project
