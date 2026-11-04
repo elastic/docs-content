@@ -12,7 +12,7 @@ products:
 ECK supports Wolfi-based image variants for the stack components it manages. Elastic produces these images in partnership with [Chainguard](https://www.chainguard.dev/). They include only the application and its required runtime dependencies. This reduces the CVE footprint. For background, refer to [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
 
 ::::{note}
-The standard ECK operator image has been Wolfi-based since ECK 2.15. You do not need to configure the operator. This page explains how to enable Wolfi variants for the stack components the operator manages.
+The standard ECK operator image is Wolfi-based and does not require configuration. This page explains how to enable Wolfi variants for the stack components the operator manages.
 ::::
 
 ## Supported versions [k8s-wolfi-supported-versions]
