@@ -33,7 +33,7 @@ The agent only discovers AI indices that its credentials can read in the current
 
 The AI index name and description help the agent decide whether its KIs are relevant. Write them around the subject and questions the AI index supports, rather than the implementation that produced it.
 
-Agent instructions can further define when to use the context, when to query source data, and how to communicate source limitations. Keep these instructions specific to the agent's task. The retrieval tools already tell the agent how to list, describe, and query AI indices.
+Agent instructions can further define when to use the context, when to query source data, and how to communicate source limitations. Keep these instructions specific to the agent's task. When the integration already provides retrieval instructions, such as the `ki-retrieval` skill in {{agent-builder}}, you do not need to repeat how to list, describe, and query AI indices.
 
 {{agent-builder}} also includes [{{context-engine}} skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-context-engine-skills) for planning AI indices, configuring sources and automations, evaluating retrieval results, and retrieving KIs. These skills support {{context-engine}} work, but they do not replace the AI index assignment or the tools required to access source data.
 
