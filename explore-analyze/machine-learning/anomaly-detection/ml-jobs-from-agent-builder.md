@@ -38,7 +38,7 @@ Because the agent uses a large language model, its questions and the setup it pr
    The charts are interactive, so you can explore them without leaving the conversation. For example, in the single metric viewer you can zoom in on a period and show or hide the model bounds and annotations. Each chart has a time range picker, so you can change the period it shows. To keep exploring in the full app, select **View in Anomaly Explorer** on a swim lane or anomaly charts, or **View in Single Metric Viewer** on a single metric viewer. To keep a chart, select **Save to dashboard** and choose a new or existing dashboard. Both actions use the period you set. **Save to dashboard** needs permission to edit dashboards.
 
    :::{image} /explore-analyze/images/machine-learning-ad-agent-builder-single-metric-viewer.png
-   :alt: A single metric viewer chart in the conversation, with a time range picker, model bounds and annotations options, and the View in Single Metric Viewer and Save to dashboard buttons
+   :alt: A conversation with a single metric viewer chart that has a time range picker, model bounds and annotations options, and the View in Single Metric Viewer and Save to dashboard buttons, followed by a table that describes the job
    :width: 650px
    :screenshot:
    :::
