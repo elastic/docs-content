@@ -1,7 +1,7 @@
 ---
 navigation_title: Query alert history
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -103,8 +103,6 @@ FROM .rule-events
 ## Query triage and action history [query-triage-action-history]
 
 {{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an alert. Use it to audit who did what, measure acknowledgment response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
-
-{applies_to}`stack: experimental =9.5` In {{stack}} 9.5, `.alert-actions` stores the alert ID and status as `episode_id` and `episode_status`. Replace `alert_id` and `alert_status` with those names in the following queries.
 
 ### View the full triage history for an alert [full-triage-history]
 

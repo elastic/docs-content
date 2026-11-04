@@ -43,6 +43,8 @@ In **{{connectors-ui}}**, you can find a list of the connectors in the current s
 :screenshot:
 :::
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If a connector you created earlier doesn't appear in the list, its type might be deprecated. {{kib}} hides deprecated connector types by default. To show them, open **Display options** and set **Deprecated** to **Show**.
+
 You can delete individual connectors using the trash icon. Alternatively, select multiple connectors and delete them in bulk using the **Delete** button.
 
 :::{image} /deploy-manage/images/kibana-connector-delete.png

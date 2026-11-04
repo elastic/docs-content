@@ -115,6 +115,8 @@ $$$agent-builder-context-engine-signals-skill$$$ `context-engine-signals` {appli
 $$$agent-builder-ki-retrieval-skill$$$ `ki-retrieval` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
 :   Retrieves existing KIs from an AI index with keyword, semantic, or hybrid {{esql}} search. Use it at question-answering time rather than to generate KIs.
 
+    When {{context-engine}} is enabled, this hidden skill is available automatically to any agent with at least one assigned AI index. It does not appear in the Skills library or on the agent's **Skills** tab. The retrieval tools become available when the agent loads the skill.
+
 For the relationship between these skills, AI indices, automations, and KIs, refer to [{{context-engine}} concepts](/explore-analyze/ai-features/context-engine/concepts.md).
 
 ### Cases and alerting
@@ -421,6 +423,18 @@ $$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` 
     **Prerequisites:** [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) deployed and reporting.
 
     {applies_to}`stack: preview =9.4` In this version, the `automaticTroubleshootingSkill` [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled for the skill to appear.
+
+$$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-policy-management` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Helps you decide how to configure [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) integration policies. Explains what a policy setting does and which values it accepts, compares policies with each other or with a preset baseline, lists policies and whether any endpoints use them, and reports how many endpoints haven't yet applied the latest policy revision. Assesses the impact of a proposed change and offers guidance on moving from detect to prevent and on staged rollouts. After you confirm, it can also apply a change to a single policy.
+
+    :::{dropdown} Assigned tools
+    `platform.core.integration_knowledge`, plus internal tools to list, read, and compare policies, look up setting details, report rollout status, assess a proposed change, and apply a confirmed change.
+    :::
+
+    **Prerequisites:**
+
+    - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) installed, with at least one integration policy in the current space.
+    - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
 
 ## Elasticsearch skills
 ```{applies_to}
