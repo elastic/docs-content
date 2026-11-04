@@ -14,7 +14,7 @@ products:
 
 Give each person on your team only the {{alertzero}} access their work needs, whether they view {{alertzero}}, approve or decline {{az-proposed-actions}}, or set up {{az-workers}}.
 
-Most {{alertzero}} access comes from the **{{alertzero}}**, **Proposed Actions**, and **Agentic Investigations** features in {{kib}}. A [predefined role](#alertzero-assign-predefined-role) already includes these features, so it's the quickest way to give someone access. To grant narrower access, [build a custom role](#alertzero-build-custom-role) from the privileges for each job.
+Most {{alertzero}} access comes from the **{{alertzero}}**, **Proposed Actions**, and **Agentic Investigations** [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). A [predefined role](#alertzero-assign-predefined-role) already includes these privileges, so it's the quickest way to give someone access. To grant narrower access, [build a custom role](#alertzero-build-custom-role) with the privileges for each job.
 
 ## Assign a predefined role [alertzero-assign-predefined-role]
 
