@@ -35,7 +35,7 @@ When you chat with an agent, your message is combined with the agent's system-le
 
 This means your chat prompts work together with the agent's instructions. A well-designed custom agent with clear instructions requires less detailed chat prompts, while a general-purpose built-in agent may need more specific prompts to achieve the same results.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The instructions of every agent also include [details about the deployment](agent-builder-agents.md#deployment-details) it runs in, such as the environment and the project type or {{stack}} version.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The instructions of every agent also include [details about the deployment](agent-builder-agents.md#elastic-deployment-awareness) it runs in, such as the environment and the project type or {{stack}} version.
 
 :::{tip}
 To understand the baseline reasoning patterns of your agent, refer to the official prompt engineering guides provided by LLM vendors. Understanding the "system prompt" philosophy of the underlying model helps you write instructions and chat prompts that complement, rather than contradict, the model's native behavior.
