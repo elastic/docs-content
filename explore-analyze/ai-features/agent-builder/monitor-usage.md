@@ -94,10 +94,12 @@ The following screenshot shows the **Total** tab, with cache hit tokens under **
 
 The **By model** table starts with an **All models** row, followed by one row per connector. It has these columns:
 
-* **Model**: The connector name. When the name starts with the model creator, that prefix is omitted. Hover over a model name to see the full connector name. If the connector can't be found, for example because it was deleted, the row shows the model identifier instead. If there is no model identifier, it shows the connector identifier.
+* **Model**: The connector name. When the name starts with the model creator, that prefix is omitted. Hover over a model name to see the full connector name.
 * **LLM calls**: The number of times that connector was called.
 * **Tokens sent**: Input tokens. When the response reported cache hits, the column heading adds **(cached)** and each row shows the cached count in parentheses.
 * **Tokens received**: Output tokens. When the response reported thinking tokens, the column heading adds **(reasoning)** and each row shows the reasoning count in parentheses.
+
+If the connector can't be found, for example because it was deleted, the **Model** column shows the model identifier instead. If there is no model identifier, it shows the connector identifier.
 
 The main values in **LLM calls**, **Tokens sent**, and **Tokens received** are always numbers. A dash appears only inside the parentheses, where it means that connector didn't report the cached or reasoning count. Its tooltip says **Not reported by this model**.
 
