@@ -14,7 +14,7 @@ description: Detect patterns in unstructured data with pattern analysis in Disco
 Pattern analysis in **Discover** helps you find patterns in unstructured log messages by performing categorization analysis on text fields. It creates categories based on message structures, displays their distribution in a chart, and provides example documents for each pattern. This makes it easier to identify common log patterns, filter out noise, and focus on anomalous messages during troubleshooting. Pattern analysis is available in classic mode.
 
 :::{tip}
-You can also detect patterns from {{esql}}:
+To detect patterns in {{esql}} mode instead:
 
 - {applies_to}`{ stack: preview 9.4, serverless: preview }` Use the [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) grouping function to render the results as expandable groups with row actions. Refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
 - {applies_to}`{ stack: preview 9.5, serverless: preview }` Add a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) aggregation to display an inline trend for each pattern. Refer to [Add sparklines to patterns](inspect-grouped-stats.md#esql-cascade-pattern-sparkline).
