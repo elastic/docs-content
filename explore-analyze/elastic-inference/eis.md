@@ -326,7 +326,7 @@ Use the `parameters` task setting to pass [Jina Reader options](https://r.jina.a
 Use the `preset` option to choose how Jina Reader extracts content. For example:
 
 - `ocr`: Extracts text with the `jina-ocr-v1` OCR model. Use it for scanned PDFs.
-- `pdf+`: Detects the page layout before it extracts text with `jina-ocr-v1`. Use it for PDFs with complex layouts, such as multiple columns, tables, or formulas.
+- `pdf+`: Reads the PDF's text layer, adds support for images in the PDF, and uses `jina-ocr-v1` for tables, formulas, and pages without text. Use it for PDFs with tables or formulas, or with a mix of text and scanned pages.
 
 OCR and layout presets extract pages 1 to 35 by default. A request extracts at most 35 pages, so use the `page` option to choose which pages to extract.
 
@@ -354,7 +354,7 @@ POST _inference/document_extraction/.jina-reader
 ```
 
 1. Jina Reader options for this request only. Each option here overrides the same option in the endpoint's `parameters`.
-2. Detects the layout and extracts the text with OCR, instead of reading the PDF's text layer.
+2. Reads the PDF's text layer and uses OCR for tables, formulas, and pages without text.
 3. The pages to extract.
 
 #### Create a document extraction endpoint [document-extraction-create-endpoint]
