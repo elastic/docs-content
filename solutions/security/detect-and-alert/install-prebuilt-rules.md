@@ -109,7 +109,7 @@ Once your Critical and High rules are tuned and your triage workflow is stable, 
 :::::
 
 :::::{dropdown} Enable building block rules
-BBRs elevate entity risk scores and feed into correlation rules you build to detect multi-stage attack patterns that no single rule would catch. Enable them once you understand what signals matter in your environment.
+BBRs elevate entity risk scores and feed into [correlation rules you build](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#about-building-block-rules) to detect multi-stage attack patterns that no single rule catches. Enable them once you understand what signals matter in your environment.
 :::::
 
 :::::{dropdown} Use hunting queries for noisy behaviors
