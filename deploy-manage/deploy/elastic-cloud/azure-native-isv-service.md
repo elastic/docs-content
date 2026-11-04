@@ -30,7 +30,7 @@ The {{ecloud}} Azure Native Service allows you to deploy managed instances of th
     Use a single-step setup to ingest logs from your Azure services into the {{stack}}. For details, refer to [Azure Native Service logs and metrics](azure-native-isv-service-logs-metrics.md).
 
 ::::{tip}
-The full product name in the Microsoft Marketplace is _Elasticsearch - Search & Vector Database (Free 7-Day Trial)_.
+The full product name in the Microsoft Marketplace is _Elasticsearch - Search (7-day free trial)_.
 ::::
 
 $$$ec-azure-integration-faq$$$
