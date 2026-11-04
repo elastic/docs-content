@@ -82,6 +82,8 @@ To add AI triage without replacing your current SIEM or EDR/XDR platform, use an
 
 To try {{elastic-sec}}, [start a free trial](https://cloud.elastic.co/serverless-registration). The features available to your team depend on how you run it. In {{sec-serverless}}, the Security Analytics [feature tiers](/solutions/security/security-serverless-feature-tiers.md) include SIEM, with add-ons for endpoint and cloud protection. In {{stack}} deployments, features depend on your [subscription](https://www.elastic.co/pricing).
 
+If you run {{elastic-sec}} for several customers or teams, you can keep each one's rules, alerts, and cases separate in its own [space](/solutions/security/get-started/spaces-elastic-security.md). To detect threats in data stored elsewhere, detection rules can query other clusters with [{{ccs}}](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md) in {{stack}} deployments, or other projects with [{{cps}}](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md) in {{serverless-short}}.
+
 For a guided walkthrough of one area, use a [quickstart](/solutions/security/get-started/quickstarts.md).
 
 [Get started with {{elastic-sec}} →](/solutions/security/get-started.md)
