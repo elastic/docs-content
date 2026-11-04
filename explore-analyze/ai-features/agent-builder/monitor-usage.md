@@ -62,11 +62,11 @@ Where you find token usage for a response, and how much detail it shows, depends
 
 To view timing and token usage for a response:
 
-1. After the agent responds, select the execution time. The control shows a clock icon {icon}`clock` and a duration such as 12s.
+1. After the agent responds, click the execution time. The control shows a clock icon {icon}`clock` and a duration such as 12s.
 
     The details list **Execution time**, **Tokens sent**, and **Tokens received**.
 
-2. To view the complete response data, select **View response JSON**. A flyout titled **Raw response** opens.
+2. To view the complete response data, click **View response JSON**. A flyout titled **Raw response** opens.
 
 The details can also show these counts, each included in the total it appears under:
 
@@ -75,10 +75,12 @@ The details can also show these counts, each included in the total it appears un
 | **Cache hit tokens** | **Tokens sent** | The model reports them, including a reported zero |
 | **Reasoning tokens** | **Tokens received** | The model reports thinking tokens, including a reported zero |
 
-When the response uses two or more connectors, the details include two tabs. For example, [fast model routing](models.md#fast-model) can use the model you selected and a fast model in the same response.
+When the response uses two or more connectors, the details include two tabs:
 
 * **Total**: Shows usage for the whole response. The details open on this tab.
 * **By model**: Splits that usage by connector.
+
+For example, [fast model routing](models.md#fast-model) can use the model you selected and a fast model in the same response.
 
 A response that uses one connector shows only the summary. A response created before per-model usage was available also shows only the summary.
 
@@ -92,12 +94,12 @@ The following screenshot shows the **Total** tab, with cache hit tokens under **
 
 The **By model** table starts with an **All models** row, followed by one row per connector. It has these columns:
 
-* **Model**: The connector name. When the name starts with the model creator, that prefix is omitted. Hover over a model name to see the full connector name. When the connector can't be found, for example because it was deleted, the row shows the model identifier, or the connector identifier if there is no model identifier.
+* **Model**: The connector name. When the name starts with the model creator, that prefix is omitted. Hover over a model name to see the full connector name. If the connector can't be found, for example because it was deleted, the row shows the model identifier instead. If there is no model identifier, it shows the connector identifier.
 * **LLM calls**: The number of times that connector was called.
 * **Tokens sent**: Input tokens. When the response reported cache hits, the column heading adds **(cached)** and each row shows the cached count in parentheses.
 * **Tokens received**: Output tokens. When the response reported thinking tokens, the column heading adds **(reasoning)** and each row shows the reasoning count in parentheses.
 
-**LLM calls**, **Tokens sent**, and **Tokens received** are always numbers. A dash in parentheses means that connector didn't report the value, and its tooltip says **Not reported by this model**.
+The main values in **LLM calls**, **Tokens sent**, and **Tokens received** are always numbers. A dash appears only inside the parentheses, where it means that connector didn't report the cached or reasoning count. Its tooltip says **Not reported by this model**.
 
 The following screenshot shows the **By model** tab for a response that used the selected model and a fast model. The fast model row shows a dash for the values it didn't report:
 
@@ -113,17 +115,17 @@ The following screenshot shows the **By model** tab for a response that used the
 
 To view timing and token usage for a response:
 
-1. After the agent responds, select the execution time. The control shows a clock icon {icon}`clock` and a duration such as 12s.
+1. After the agent responds, click the execution time. The control shows a clock icon {icon}`clock` and a duration such as 12s.
 
     The details list **Execution**, **Tokens sent**, and **Tokens received**.
 
-2. To view the complete response data, select **View response JSON**. A flyout titled **Raw response** opens.
+2. To view the complete response data, click **View response JSON**. A flyout titled **Raw response** opens.
 
 ::::
 
 ::::{applies-item} stack: ga 9.3-9.4
 
-Token usage is shown only for rounds that have steps. Select **Completed reasoning** to open the reasoning panel. Token totals are at the bottom of that panel:
+Token usage is shown only for rounds that have steps. Click **Completed reasoning** to open the reasoning panel. Token totals are at the bottom of that panel:
 
 * {icon}`sort_up`: Input tokens.
 * {icon}`sort_down`: Output tokens.
@@ -137,7 +139,7 @@ The following screenshot shows the input and output token totals at the bottom o
 :alt: Screenshot of token totals at the bottom of the reasoning panel, with input and output token counts
 :::
 
-To view the complete response data, select **View JSON**. A flyout titled **Raw response** opens. The following screenshot shows the **Raw response** flyout with the response data in JSON format:
+To view the complete response data, click **View JSON**. A flyout titled **Raw response** opens. The following screenshot shows the **Raw response** flyout with the response data in JSON format:
 
 :::{image} images/token-usage-json-raw-response.png
 :screenshot:
