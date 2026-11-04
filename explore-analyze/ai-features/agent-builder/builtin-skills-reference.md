@@ -144,9 +144,6 @@ $$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`ser
 
     :::{dropdown} Assigned tools
     `ml.ad_get_job_info`, `ml.ad_create_job`, `ml.ad_manage_job_state`, `ml.ad_update_job_config`, `ml.query_anomalies`, `ml.create_ml_charts`, `platform.core.execute_esql`, `platform.dashboard.generate_dashboard`
-
-    The `ml.create_ml_charts` tool, which shows anomaly charts in the conversation, needs a Platinum or later license.
-
     :::
 
     **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear. You also need the privileges to read or manage {{anomaly-jobs}}, depending on the request. Refer to [Setting up machine learning](/explore-analyze/machine-learning/setting-up-machine-learning.md#setup-privileges).

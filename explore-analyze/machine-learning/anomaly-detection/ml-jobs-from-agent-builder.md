@@ -22,8 +22,6 @@ Because the agent uses a large language model, its questions and the setup it pr
 * Use an agent that has the [`anomaly-detection` skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-anomaly-detection-skill). The default Elastic AI Agent has it because [Elastic capabilities](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#elastic-capabilities) are on by default. For a custom agent, turn on Elastic capabilities or assign the skill to the agent.
 * Make sure your user has the {{kib}} and {{es}} privileges to create and run {{anomaly-jobs}}. Refer to [Setting up machine learning](../setting-up-machine-learning.md#setup-privileges).
 * Have time series data in {{es}}. The agent reads the data through a {{dfeed}}, so it can't create jobs for data outside {{es}}.
-* To see the inline charts in the conversation, you need a Platinum or later license.
-
 ## Create jobs with the agent
 
 1. [Start a chat](/explore-analyze/ai-features/agent-builder/chat.md) with an agent that has the `anomaly-detection` skill. Describe what you want to detect and where your data is. For example: `Detect unusual error rates per host in my nginx access logs.`
@@ -34,7 +32,7 @@ Because the agent uses a large language model, its questions and the setup it pr
 
 3. Review the proposed setup. The agent validates the configuration, estimates how much memory the jobs need, and summarizes in plain language the time range it will analyze, the approximate number of records, and how long the run is expected to take. It also shows the full job and {{dfeed}} definitions. To try the setup on your historical data before going live, which the agent recommends, confirm the batch run.
 
-4. Wait while the agent runs the analysis on your historical data. When it's done, the agent summarizes what it found, such as how many anomalies, the highest score, and the time and entity behind the strongest one. If you have a Platinum or later license, it also shows an anomaly swim lane, anomaly charts, and a single metric viewer for the top anomaly in the conversation, with a link that opens the jobs in the **Anomaly Explorer**.
+4. Wait while the agent runs the analysis on your historical data. When it's done, the agent summarizes what it found, such as how many anomalies, the highest score, and the time and entity behind the strongest one. It also shows an anomaly swim lane, anomaly charts, and a single metric viewer for the top anomaly in the conversation, with a link that opens the jobs in the **Anomaly Explorer**.
 
    If the agent finds no anomalies, it says so and offers to widen the time range, try a different field or function, or adjust the sensitivity. Zero anomalies can mean your data is very consistent or that the setup needs adjusting.
 
