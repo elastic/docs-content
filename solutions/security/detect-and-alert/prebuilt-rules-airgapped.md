@@ -49,6 +49,8 @@ When choosing an {{package-registry}} image for production air-gapped environmen
 * **Versioned images**: Use images that match your {{stack}} version (for example, `docker.elastic.co/package-registry/distribution:9.3.0`), as described in the [{{fleet}} documentation](/reference/fleet/air-gapped.md#air-gapped-diy-epr). This is the safest option for environments where you cannot immediately upgrade your {{stack}} when new versions are released.
 * **Production images**: Use an image like `docker.elastic.co/package-registry/distribution:production` _only_ if you keep your air-gapped {{stack}} up-to-date. If you want to rely on the `production` image for the most recent {{fleet}} packages and prebuilt detection rules, upgrade your {{stack}} as soon as new versions are released. This minimizes the risk of encountering breaking changes between the {{package-registry}} and your {{stack}} version.
 ::::
+
+{applies_to}`stack: ga 9.6+` If your environment requires FIPS 140-3 validated cryptography, append `-fips` to either image tag, for example `docker.elastic.co/package-registry/distribution:{{version.stack}}-fips`. For details, refer to [FIPS 140-3 images](/reference/fleet/air-gapped.md#air-gapped-diy-epr-fips).
 ::::
 
 ::::{step} Pull and transfer the image

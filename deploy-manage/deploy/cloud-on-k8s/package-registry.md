@@ -51,6 +51,25 @@ spec:
 
 Refer to the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/packageregistry) in the ECK source repository for additional configuration examples.
 
+## Use a FIPS 140-3 image [k8s-package-registry-fips]
+```{applies_to}
+stack: ga 9.6+
+```
+
+If your environment requires FIPS 140-3 validated cryptography, set `spec.image` to a `-fips` distribution tag. For details on the FIPS images, refer to [FIPS 140-3 images](/reference/fleet/air-gapped.md#air-gapped-diy-epr-fips). To also run the operator itself in FIPS mode, refer to [](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md).
+
+```yaml subs=true
+apiVersion: packageregistry.k8s.elastic.co/v1alpha1
+kind: PackageRegistry
+metadata:
+  name: package-registry-sample
+  namespace: default
+spec:
+  version: {{version.stack}}
+  count: 1
+  image: docker.elastic.co/package-registry/distribution:lite-{{version.stack}}-fips
+```
+
 ## Troubleshooting
 
 ### Packages are not available

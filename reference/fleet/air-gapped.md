@@ -129,8 +129,8 @@ There are different distributions available:
 * lite-{{version.stack}}: *docker.elastic.co/package-registry/distribution:lite-{{version.stack}}* - Subset of the most commonly used packages from the production repository released with {{stack}} {{version.stack}}. This image is a good candidate to start using {{fleet}} in air-gapped environments.
 * production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
 * lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
-* {applies_to}`stack: ga 9.6+` FIPS: Each of these distributions is also available as a FIPS 140-3 compliant image with a `-fips` suffix, for example *docker.elastic.co/package-registry/distribution:{{version.stack}}-fips*. For details, refer to [FIPS 140-3 images](#air-gapped-diy-epr-fips).
 
+{applies_to}`stack: ga 9.6+` Each of these distributions is also available as a FIPS 140-3 compliant image with a `-fips` suffix. For details, refer to [FIPS 140-3 images](#air-gapped-diy-epr-fips).
 
 To update the distribution image, re-pull the image and then restart the docker container.
 
@@ -191,15 +191,13 @@ If you need to host the {{package-registry}} in an environment that requires FIP
 * *docker.elastic.co/package-registry/distribution:{{version.stack}}-fips*
 * *docker.elastic.co/package-registry/distribution:lite-{{version.stack}}-fips*
 
-The FIPS images are available for `linux/amd64` and `linux/arm64`, like the regular images. They contain the same packages, and use the same port, environment variables, and configuration file. The {{package-registry}} binary is built with the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library, and the images use a FIPS-enabled Wolfi base image from Chainguard rather than a UBI base image. For the FIPS variants of {{agent}} and other ingest tools, refer to [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
+The FIPS images are available for `linux/amd64` and `linux/arm64`, like the regular images. They contain the same packages, and use the same port, environment variables, and configuration file. The {{package-registry}} binary is built with the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library. For the FIPS variants of {{agent}} and other ingest tools, refer to [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
 
 By default, the FIPS images use the validated module for all supported cryptographic operations, and algorithms that the module doesn't approve stay available as a fallback. To refuse non-approved algorithms instead, set `GODEBUG=fips140=only` when you run the container:
 
 ```sh subs=true
 docker run -it -p 8080:8080 -e GODEBUG=fips140=only docker.elastic.co/package-registry/distribution:{{version.stack}}-fips
 ```
-
-If you [configure TLS](#air-gapped-tls), the FIPS images require TLS 1.2 or later.
 
 ### Connect {{kib}} to your hosted {{package-registry}} [air-gapped-diy-epr-kibana]
 
