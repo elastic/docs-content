@@ -35,7 +35,7 @@ Because the agent uses a large language model, its questions and the setup it pr
 
 4. If you agree to the test run, wait while the agent analyzes your historical data. When it's done, the agent summarizes what it found, such as how many anomalies, the highest score, and the time and entity behind the strongest one. It also shows an anomaly swim lane, anomaly charts, and a single metric viewer for the top anomaly in the conversation, with a link that opens the jobs in the **Anomaly Explorer**.
 
-   Each chart has a time range picker, so you can change the period it shows. To keep exploring, select **View in Anomaly Explorer** on a swim lane or anomaly charts, or **View in Single Metric Viewer** on a single metric viewer. To keep a chart, select **Save to dashboard** and choose a new or existing dashboard. Both actions use the period you set. **Save to dashboard** needs permission to edit dashboards.
+   The charts are interactive, so you can explore them without leaving the conversation. Each chart has a time range picker, so you can change the period it shows. To keep exploring in the full app, select **View in Anomaly Explorer** on a swim lane or anomaly charts, or **View in Single Metric Viewer** on a single metric viewer. To keep a chart, select **Save to dashboard** and choose a new or existing dashboard. Both actions use the period you set. **Save to dashboard** needs permission to edit dashboards.
 
    If the agent finds no anomalies, it says so and offers to widen the time range, try a different field or function, or adjust the sensitivity. Zero anomalies can mean your data is very consistent or that the setup needs adjusting.
 
