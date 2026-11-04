@@ -115,7 +115,7 @@ $$$agent-builder-context-engine-signals-skill$$$ `context-engine-signals` {appli
 $$$agent-builder-ki-retrieval-skill$$$ `ki-retrieval` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
 :   Retrieves existing KIs from an AI index with keyword, semantic, or hybrid {{esql}} search. Use it at question-answering time rather than to generate KIs.
 
-    When {{context-engine}} is enabled, this hidden skill is available automatically to any agent with at least one assigned AI index. It does not appear in the skill library or agent skill picker. The retrieval tools become available when the agent loads the skill.
+    When {{context-engine}} is enabled, this hidden skill is available automatically to any agent with at least one assigned AI index. It does not appear in the Skills library or on the agent's **Skills** tab. The retrieval tools become available when the agent loads the skill.
 
 For the relationship between these skills, AI indices, automations, and KIs, refer to [{{context-engine}} concepts](/explore-analyze/ai-features/context-engine/concepts.md).
 
