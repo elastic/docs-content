@@ -8,5 +8,5 @@ Queries on data older than the most recent day are read from general storage rat
 
 Signs that capacity is saturated include {{search-saturation-signals}}, `Request timed out` errors in {{kib}}, circuit breaker exceptions, and rising query latency in Discover. To reduce load, {{search-reduce-load}}.
 
-If your workload would benefit from extending this window or requires additional search capacity, contact Elastic Support.
+If your workload would benefit from making more than the most recent day of data search-ready, or requires additional search capacity, contact Elastic Support.
 :::

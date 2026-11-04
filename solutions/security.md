@@ -16,7 +16,7 @@ products:
 description: Elastic Security combines threat detection analytics, cloud native security, and endpoint protection capabilities in a single solution.
 sub:
   search-load-sources: Detection rules (the number of enabled rules, how often they run, and lookback windows longer than the most recent day; rules that fail or time out and trigger catch-up runs over wider windows), other alerting rules, transforms, dashboards, Discover, ES|QL queries, and external clients that query the project
-  search-saturation-signals: rule failures or timeouts in the Rule Monitoring tab
+  search-saturation-signals: detection rule failures or timeouts in the Rule Monitoring tab
   search-reduce-load: disable rules you don't need, shorten lookbacks where your false positive tolerance allows, stagger rule schedules, and narrow time ranges on dashboards
 ---
 
