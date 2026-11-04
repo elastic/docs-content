@@ -104,7 +104,7 @@ A Daybreak model in the **{{az-cyber-domain-models}}** tier replaces the other t
 
 The {{az-workers}} start their first run right away, and {{alertzero}} opens the **{{az-proposed-actions-cap}}** page. When a {{az-worker}} needs your decision, its {{az-proposed-action}} appears there.
 
-To change which {{az-workers}} run after setup, refer to [](configure-worker-settings.md).
+To change which {{az-workers}} run after setup, or the default {{az-worker}} settings, refer to [](configure-worker-settings.md).
 
 % For docs writers: After elastic/docs-content#9144 merges, link configure-worker-settings.md#configure-worker-settings-enabled.
 
