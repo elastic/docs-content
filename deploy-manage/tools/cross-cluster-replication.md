@@ -39,6 +39,9 @@ The following matrix describes the version compatibility between local and remot
 :::::{dropdown} Version compatibility matrix
 :name: ccr-version-compatibility
 
+:::{table}
+:matrix:
+
 |     |     |
 | --- | --- |
 |  | Local cluster |
@@ -52,6 +55,7 @@ The following matrix describes the version compatibility between local and remot
 | 7.1–7.16 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
 | 7.17 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
 | 8.0–9.0 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
+:::
 
 
 
