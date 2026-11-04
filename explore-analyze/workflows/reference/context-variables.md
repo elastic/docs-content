@@ -135,7 +135,7 @@ Metadata about the current workflow execution.
 * `manual`, `scheduled`, and `alert`.
 * The trigger ID for runs started by an event trigger, such as `workflows.failed`.
 * {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` `workflow-step` when a parent workflow starts the run with a [`workflow.execute` or `workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md) step.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `agent-builder-hook` when {{agent-builder}} starts the workflow as a [pre-execution](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#pre-execution-workflows) or [post-execution](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#post-execution-workflows) hook.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `agent-builder-hook` when {{agent-builder}} starts the workflow as a [pre-execution](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#pre-execution-workflows) or [post-execution](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#post-execution-workflows) workflow.
 
 For how each trigger type determines `execution.executedBy`, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 
