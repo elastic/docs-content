@@ -37,42 +37,12 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Every agent, built-in or custom, receives details about your deployment each time it runs. The agent uses these details to:
+Every agent, built-in or custom, receives details about the deployment it runs in. The agent uses them to tailor what it says about features, navigation, and terminology, and to answer questions about the deployment. The details depend on the deployment type:
 
-- Tailor its guidance, such as features, navigation, and terminology, to your environment.
-- Answer questions about your deployment.
+- {applies_to}`stack: ga 9.6+` **{{ech}}, {{ece}}, and self-managed**: The environment, the {{stack}} version, and, when available, the space's solution view and the license type and status. If {{kib}} is configured as air-gapped, the details also say so.
+- {applies_to}`serverless: ga` **{{serverless-full}}**: The environment, the project type, and the product tier, when the project has one.
 
-The details an agent receives depend on your deployment type:
-
-::::{applies-switch}
-
-:::{applies-item} stack: ga 9.6+
-The details always include:
-
-- The environment: {{ech}}, {{ece}}, or self-managed
-- The {{stack}} version
-
-When available, the details also include:
-
-- The space's solution view, if one is set (including Classic)
-- The license type and license status
-
-If {{kib}} is configured as air-gapped (`airgapped: true` in `kibana.yml`), the details also say so.
-:::
-
-:::{applies-item} serverless: ga
-The details include:
-
-- The environment: {{serverless-full}}
-- The project type
-- The product tier, when the project has one
-
-The details don't include a version, solution view, or license.
-:::
-
-::::
-
-{{agent-builder}} sets these details automatically, and you can't turn this behavior off. The details are part of the instructions sent to the LLM, and the agent can share them with anyone who chats with it.
+{{agent-builder}} adds these details automatically, and you can't turn them off. Because the details are part of the agent's instructions, the agent can share them with anyone who chats with it.
 
 ## Built-in agents
 
