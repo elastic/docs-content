@@ -46,6 +46,8 @@ To help you avoid using [integrations that aren't FIPS compatible](#ingest-limit
 * {applies_to}`stack: ga 9.2+` {{fleet}} shows a warning when you add an integration that isn't FIPS compatible to an agent policy with one or more enrolled agents running in FIPS mode. It also shows a warning when you enroll an agent in a policy containing integrations that aren't FIPS compatible. These warnings appear whether or not {{kib}} runs in FIPS mode.
 * {applies_to}`stack: ga 9.6+` When {{kib}} runs in [FIPS mode](/deploy-manage/security/fips-kib.md#_enable_fips_mode), {{fleet}} hides integrations that aren't FIPS compatible from the **Integrations** catalog, and blocks installing them or adding them to an agent policy, including through the API. When only some of an integration's policy templates aren't FIPS compatible, the integration stays available and {{fleet}} shows only its FIPS compatible policy templates.
 
+  Hiding integrations from the catalog requires [{{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr) version 1.41.0 or later. If you run your own registry with an earlier version, the integrations stay visible in the catalog, but {{fleet}} still blocks them.
+
 ## Limitations [ingest-limitations-all]
 
 ### TLS [ingest-limitations-tls]
