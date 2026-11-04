@@ -70,8 +70,8 @@ The {{az-workers}} match each model call to a model tier based on what the call 
 - **{{az-balanced-models}}**: Calls where accuracy matters, but that run often or use tools over many steps, such as triaging alerts or diagnosing a noisy rule.
 - **{{az-frontier-models}}**: Complex work where output quality matters most, such as generating attack discoveries or drafting a detection rule.
 
-    :::{important}
-    By default, Claude Opus 5 is first in the **{{az-frontier-models}}** list, so the {{az-workers}} use it whenever it's available. For a better balance of quality and cost, we recommend moving another model, such as GPT-5.6 Sol, to the top of the list.
+    :::{note}
+    By default, GPT-6 Sol is first in the **{{az-frontier-models}}** list, followed by GPT-5.6 Sol and Claude Opus 5. The {{az-workers}} use Claude Opus 5, which costs more than the GPT models, only when neither GPT model is available.
     :::
 
 Each tier starts with recommended models instead of your default model, and the {{az-workers}} use the first available model in the tier's list. To use a different model for a tier, change it before you [start the {{az-workers}}](#alertzero-turn-on-workers), because their first run starts right away:
@@ -99,7 +99,7 @@ A Daybreak model in the **{{az-cyber-domain-models}}** tier replaces the other t
 ## Start the {{az-workers}} [alertzero-turn-on-workers]
 
 1. In the navigation menu, select **{{alertzero}}**. The first time you open it in a space, onboarding starts.
-2. Follow the onboarding steps. All {{az-workers}} start out selected, so turn off any that you don't plan to run. At least one {{az-worker}} must stay selected. Onboarding flags any {{az-worker}} that's missing something it needs, such as {{context-engine}}.
+2. Follow the onboarding steps. All {{az-workers}} start out on, so turn off any that you don't plan to run. At least one {{az-worker}} must stay on. If a {{az-worker}} needs a setting that's off, such as {{context-engine}}, onboarding lists it under **Settings to enable**. Select **Enable** next to each setting. For a dependency that you set up yourself, such as {{elastic-defend}}, select **Set up**.
 3. Select **Enable and run**.
 
 The {{az-workers}} start their first run right away, and {{alertzero}} opens the **{{az-proposed-actions-cap}}** page. When a {{az-worker}} needs your decision, its {{az-proposed-action}} appears there.
