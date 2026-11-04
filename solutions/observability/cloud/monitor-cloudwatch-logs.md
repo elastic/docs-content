@@ -232,7 +232,7 @@ The Firehose delivery stream reports:
 
 With the logs streaming to the Elastic stack, you can now visualize them in {{kib}}.
 
-In {{kib}}, navigate to the **Discover** page. In {{esql}} mode, enter `FROM logs-aws.generic-default`. In classic mode, select the index pattern that matches the Firehose stream name. Here is a sample of logs from the Lambda function you forwarded to the `logs-aws.generic-default` data stream:
+In {{kib}}, navigate to the **Discover** page. In {{esql}} mode, enter `FROM logs-awsfirehose-default`. In classic mode, select the data view that matches `logs-awsfirehose-default`. Here is a sample of logs from the Lambda function you forwarded to the `logs-awsfirehose-default` data stream:
 
 :::{image} /solutions/images/observability-firehose-cloudwatch-verify-discover.png
 :alt: Sample logs in Discover
