@@ -6,12 +6,12 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: See which fields your data has, check the most frequent values of a field, and add the ones you need as columns in the Discover results table.
+description: See which fields your data has, check the most frequent values of a field, break the chart down by a field, and add the ones you need as columns in the Discover results table.
 ---
 
 # Explore the fields in your data
 
-When you open **Discover** on data you don't know yet, the fields list shows what that data contains. You can check the most frequent values of a field and add the fields you need as columns in the results table.
+When you open **Discover** on data you don't know yet, the fields list shows what that data contains. You can check the most frequent values of a field, break the chart down by a field, and add the fields you need as columns in the results table.
 
 ## Before you begin
 
@@ -32,6 +32,8 @@ Open **Discover** and run a query that returns results. If you haven't run a que
 
 2. Select a field to view its most frequent values.
   **Discover** shows the top 10 values and the number of records used to calculate those values.
+
+   To split the chart by that field, select the **Add breakdown** icon in the popover. In {{esql}} mode, this works when the data source has a time field and the query doesn't transform the results, for example with `STATS`.
 
 3. Select the **Plus** icon to add fields to the results table. You can also drag them from the list into the table.
 
