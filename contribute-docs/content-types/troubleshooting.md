@@ -54,6 +54,7 @@ The following elements are required in troubleshooting pages:
    - For example: "{{agent}} doesn't propagate client metadata", "No application-level telemetry visible in {{kib}}", or "Logs are missing after upgrading {{agent}}".
 4. An **introduction:** Briefly summarize the problem the page helps resolve, so users can quickly confirm they're in the right place.
    - Focus on the problem, not the solution.
+   - Where it helps, include a benefit statement: what's in it for the user, such as getting back to a working state.
    - Keep it concise. Don't repeat the details that belong in the **Symptoms** section.
 5. A **Symptoms** section: Describe what users can observe when the problem occurs.
    - Focus only on user-visible behavior.

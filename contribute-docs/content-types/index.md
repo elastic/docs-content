@@ -51,7 +51,7 @@ The guides are particularly powerful when combined with LLMs by putting them int
 
 ## Start with a statement of intent
 
-Every page has a purpose, whether it's to explain a concept, complete a task, teach a skill, or resolve a problem. A short introduction should state that intent: what the page covers and what readers will get from it.
+Every page has a purpose, whether it's to explain a concept, complete a task, teach a skill, or resolve a problem. A short introduction should state that intent: what the page covers and the benefit to readers.
 
 A clear statement of intent sets expectations up front. Readers can quickly tell whether they're in the correct place, and know what they'll learn or achieve if they continue. It also helps reviewers and LLMs check the rest of the page against its stated purpose.
 
