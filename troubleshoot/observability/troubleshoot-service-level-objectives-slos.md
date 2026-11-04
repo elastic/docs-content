@@ -191,7 +191,7 @@ Follow these steps to reset an SLO:
 Alternatively you can use {{kib}} API for the reset action:
 
 ```console
-POST kbn:/api/observability/slos/{sloId}∫/_reset
+POST kbn:/api/observability/slos/{sloId}/_reset
 ```
 
 Where `sloId` can be obtained from the [Inspect SLO assets](#slo-troubleshoot-inspect) action.
