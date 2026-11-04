@@ -43,22 +43,16 @@ Discover has two query modes that you can [switch between](discover/switch-esql-
 - Classic mode uses [data views](find-and-organize/data-views.md) with [KQL](query-filter/languages/kql.md) or [Lucene](query-filter/languages/lucene-query-syntax.md) queries to filter your data.
 - {{esql}} mode queries your {{es}} data directly, without a data view. For your first {{esql}} queries, follow [Get started with {{esql}} in Discover](discover/try-esql.md).
 
-## Common tasks
+## Common goals
 
-Once you're familiar with the basics, explore these guides for specific tasks:
+Once you're familiar with the basics, find what you need by what you want to achieve:
 
-* **[Switch between {{esql}} and classic mode](discover/switch-esql-mode.md)**: Change query mode, and see what happens to your query and filters.
-* **[Use Discover with {{esql}}](discover/use-esql.md)**: Find the Discover tasks that are specific to {{esql}} mode.
-* **[Use Discover in classic mode](discover/use-classic-mode.md)**: Find the tasks that are specific to classic mode, such as searching with KQL or Lucene and adding filters.
-* **[Customize the Discover view](discover/document-explorer.md)**: Adjust the layout, columns, and display options to suit your needs.
-* **[Save a search for reuse](discover/save-open-search.md)**: Save your Discover sessions and add them to dashboards.
-
-## Advanced features
-
-The following guides cover additional features you can use in Discover:
-
-* [Add runtime fields to your {{data-source}}](discover/add-fields-to-data-views.md)
-* [Run queries in the background](discover/background-search.md)
-* [Analyze field statistics and patterns](discover/run-pattern-analysis-discover.md)
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Detect change points in time series data](discover/detect-change-points.md)
-* [Search for relevance](discover/discover-search-for-relevance.md)
+* **Find the documents that answer a question**: In {{esql}} mode, [filter and sort your results](discover/esql-results.md). In classic mode, [search with KQL, Lucene, and filters](discover/search-and-filter-classic.md), then [sort by relevance score](discover/discover-search-for-relevance.md) to see the best matches first.
+* **Understand what's in your data**:
+  * In classic mode, [check field statistics](discover/show-field-statistics.md), [chart a field](discover/visualize-field.md), [run a pattern analysis](discover/run-pattern-analysis-discover.md), or [add a runtime field](discover/add-fields-to-data-views.md) when your data lacks a value you need.
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` In {{esql}} mode, [group log messages by pattern](discover/inspect-grouped-stats.md).
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` **Spot changes over time**: [Detect change points in time series data](discover/detect-change-points.md).
+* **Investigate one event in depth**: In classic mode, [open a single document or the documents around it](discover/view-single-document.md).
+* **Keep working while a slow query runs**: [Run queries in the background](discover/background-search.md).
+* **Reuse and share what you found**: [Save a Discover session](discover/save-open-search.md), then add it to a dashboard or share it with your team.
+* **Make Discover fit how you work**: [Customize the Discover view](discover/document-explorer.md). In {{esql}} mode, [add variable controls](discover/esql-variable-controls.md) to change values without keeping several copies of a query.
