@@ -13,7 +13,7 @@ navigation_title: Project settings
 
 Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic [manages many things for you](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md), you can customize the following aspects of your project:
 
-- **[Project settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention. The available settings depend on your project type.
+- **[Project settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance and capacity, cache behavior, and data retention. The available settings depend on your project type.
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
 - **[Project tags](#project-tags)**: Add custom tags to categorize and organize your projects alongside predefined tags.
 - **[Connection aliases](#elasticsearch-manage-project-connection-aliases)**: Use predictable, human-readable URLs for your projects that you can share easily.
@@ -86,14 +86,14 @@ serverless:
   elasticsearch: ga
 ```
 
-Use **Minimum Search VCUs** to set a lower bound on Search tier scaling for {{es-serverless}} projects, expressed in [virtual compute units (VCUs)](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml). When configured, the Search tier does not scale below this value, even during idle periods. This reserves a guaranteed level of Search capacity in advance, so your project remains responsive before an anticipated increase in traffic.
+Use **Minimum Search VCUs** to set a lower bound on Search tier scaling for {{es-serverless}} projects, expressed in [virtual compute units (VCUs)](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml). When configured, the Search tier does not scale below this value, even during idle periods. This allows you to pre-scale the Search tier ahead of anticipated increases in traffic.
 
 Search capacity can still scale above the configured minimum under higher load, and will scale back down toward it only once that additional capacity is no longer required.
 
-You can set **Minimum Search VCUs** to any whole number between 2 and 4,992. Lowering the minimum does not immediately reduce capacity that is still in use.
+You can set **Minimum Search VCUs** to any whole number up to 4,992. Reducing the minimum Search VCUs value may not immediately reduce capacity if the load still requires it.
 During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
 
-If you set a high **Minimum Search VCUs** value, consider also increasing [Search Power](#elasticsearch-manage-project-search-power-settings) to get the most out of the capacity you reserve.
+If you set a high **Minimum Search VCUs** value, consider also increasing [Search Power](#elasticsearch-manage-project-search-power-settings) to get the most out of the capacity you pre-scale.
 
 This setting is available for {{es-serverless}} projects only.
 
