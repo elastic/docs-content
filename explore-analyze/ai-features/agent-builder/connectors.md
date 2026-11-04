@@ -96,7 +96,7 @@ To change which actions an existing connector allows:
 4. Select the actions to allow.
 5. Click **Save**.
 
-The allowed actions are the same for every caller of the connector. To keep an action with the **write** or **destroy** badge away from agents but available to workflows:
+The allowed actions are the same for every caller of the connector. To make an action with the **write** or **destroy** badge available to workflows but not to agents:
 
 - Use a separate connector for workflows, and don't [assign it to the agent](#assign-connectors-to-an-agent).
 - Don't give the agent a workflow tool that runs that workflow.
