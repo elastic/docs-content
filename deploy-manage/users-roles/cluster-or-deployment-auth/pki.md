@@ -181,7 +181,14 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
 
     The distinguished name for a PKI user follows X.500 naming conventions which place the most specific fields (like `cn` or `uid`) at the beginning of the name and the most general fields (like `o` or `dc`) at the end of the name. Some tools, such as *openssl*, may print out the subject name in a different format.
 
-    One way that you can determine the correct DN for a certificate is to use the [authenticate API]({{es-apis}}operation/operation-security-authenticate) (use the relevant PKI certificate as the means of authentication) and inspect the metadata field in the result. The user’s distinguished name will be populated under the `pki_dn` key. You can also use the authenticate API to validate your role mapping.
+    One way that you can determine the correct DN for a certificate is to use the [authenticate API]({{es-apis}}operation/operation-security-authenticate) (use the relevant PKI certificate as the means of authentication) and inspect the metadata field in the result. The user's distinguished name will be populated under the `pki_dn` key. You can also use the authenticate API to validate your role mapping.
+
+    PKI-authenticated users have the following metadata fields, which you can use in role mapping rules:
+
+    | Field | Description |
+    |-------|-------------|
+    | `pki_cert_fingerprint` | {applies_to}`stack: ga 9.6` The SHA-256 fingerprint (lowercase hex) of the end-entity certificate. Use `metadata.pki_cert_fingerprint` to target a specific certificate. |
+    | `pki_public_key_fingerprint` | {applies_to}`stack: ga 9.6` The SHA-256 fingerprint (lowercase hex) of the public key in the end-entity certificate. Use `metadata.pki_public_key_fingerprint`. Mappings based on this field survive certificate renewals that preserve the same key pair. |
 
     For more information, see [Mapping users and groups to roles](mapping-users-groups-to-roles.md).
 
