@@ -75,7 +75,7 @@ ECK is compatible with the following {{k8s}} distributions and related technolog
 
 ::::{applies-switch}
 
-:::{applies-item} eck: ga 3.5+
+:::{applies-item} eck: ga 3.6+
 
 * {{k8s}} 1.32-1.37
 * OpenShift 4.16-4.22
