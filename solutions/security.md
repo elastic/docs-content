@@ -26,25 +26,25 @@ description: Elastic Security brings SIEM, endpoint protection, and cloud securi
 
 ### SIEM [security-siem]
 
-{{elastic-sec}} collects security data from across your environment through hundreds of [integrations](/solutions/security/get-started/ingest-data-to-elastic-security.md). It detects threats with Elastic-maintained [prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md), your own rules, and {{ml}}.
+{{elastic-sec}} collects security data from across your environment through hundreds of [integrations](/solutions/security/get-started/ingest-data-to-elastic-security.md). It detects threats with Elastic-maintained prebuilt rules, your own rules, and {{ml}}.
 
-When alerts come in, you can triage and investigate them, and hunt for threats in [Timeline](/solutions/security/investigate/timeline.md) and the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md). [Cases](/solutions/security/investigate/security-cases.md) keep a record of each investigation, from the first alert to resolution.
+When alerts come in, you can triage and investigate them, and hunt for threats in Timeline and the visual event analyzer. Cases keep a record of each investigation, from the first alert to resolution.
 
 [Get started with SIEM →](/solutions/security/get-started/get-started-detect-with-siem.md)
 
 ### Endpoint security [security-endpoint-security]
 
-[{{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md) detects and prevents malware, ransomware, in-memory threats, and malicious behavior on Windows, macOS, and Linux hosts. It runs on the same [{{agent}}](/reference/fleet/index.md) that collects your host data, so you deploy one agent for both.
+{{elastic-defend}} detects and prevents malware, ransomware, in-memory threats, and malicious behavior on Windows, macOS, and Linux hosts. It runs on the same {{agent}} that collects your host data, so you deploy one agent for both.
 
-When you confirm an attack, you can contain it by isolating hosts and taking other [response actions](/solutions/security/respond-and-contain.md). You can also take response actions on hosts that run supported third-party EDR tools.
+When you confirm an attack, you can contain it by isolating hosts and taking other response actions. You can also take response actions on hosts that run supported third-party EDR tools.
 
 [Get started with endpoint security →](/solutions/security/get-started/get-started-endpoint-security.md)
 
 ### Cloud posture and vulnerability management [security-cloud-posture]
 
-[Cloud security posture management (CSPM) and Kubernetes security posture management (KSPM)](/solutions/security/cloud/security-posture-management-overview.md) find misconfigurations in your cloud accounts and Kubernetes clusters by checking them against security benchmarks.
+Cloud security posture management (CSPM) and Kubernetes security posture management (KSPM) find misconfigurations in your cloud accounts and Kubernetes clusters by checking them against security benchmarks.
 
-A separate feature, [cloud native vulnerability management (CNVM)](/solutions/security/cloud/cloud-native-vulnerability-management.md), scans your Linux VMs in AWS for known vulnerabilities.
+A separate feature, cloud native vulnerability management (CNVM), scans your Linux VMs in AWS for known vulnerabilities.
 
 [Get started with cloud security posture management →](/solutions/security/get-started/get-started-cloud-security.md)
 
@@ -54,7 +54,7 @@ A separate feature, [cloud native vulnerability management (CNVM)](/solutions/se
 
 It also sends process, file, and network activity to {{elastic-sec}}, where prebuilt rules and {{ml}} can find threats in it.
 
-{applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` For Kubernetes containers, [Defend for Containers](/solutions/security/cloud/d4c/d4c-overview.md) alerts on drift and can block process and file operations that match your policy.
+{applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` For Kubernetes containers, Defend for Containers alerts on drift and can block process and file operations that match your policy.
 
 [Learn more about cloud workload protection →](/solutions/security/manage/manage-cloud-workload-protection.md)
 
