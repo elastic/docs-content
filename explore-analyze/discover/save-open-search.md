@@ -119,11 +119,8 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-If the title of a session no longer describes what it shows, you can rename it from the title at the top of **Discover**.
+In addition to the [requirements for saving sessions](#save-search-requirements), you need:
 
-To rename a session, you need:
-
-- Permission to save Discover sessions. If the **Save** button isn't visible, you can't rename sessions either. Refer to [Requirements](#save-search-requirements).
 - {applies_to}`stack: ga 9.6+` A space that doesn't use the **Classic** solution view.
 - A session that Elastic doesn't manage.
 - A session that you opened in **Discover**, not one that you're editing from a dashboard panel.
