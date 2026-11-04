@@ -30,7 +30,7 @@ The process of tool selection, execution, and analysis consumes tokens. To under
 
 You can also use pre-configured [built-in agents](builtin-agents-reference.md) that are specialized for common use cases.
 
-### Deployment details
+### Elastic deployment awareness
 
 ```{applies_to}
 stack: ga 9.6+
