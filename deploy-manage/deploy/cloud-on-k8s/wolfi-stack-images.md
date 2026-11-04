@@ -16,15 +16,15 @@ ECK supports Wolfi-based image variants for the stack components it manages. Ela
 The standard ECK operator image is Wolfi-based and does not require configuration. This page explains how to enable Wolfi variants for the stack components the operator manages.
 ::::
 
-## Supported versions [k8s-wolfi-supported-versions]
+## Requirements and limitations [k8s-wolfi-requirements]
 
-ECK supports Wolfi images for stack components from version 8.16.0.
+The following requirements and limitations apply to Wolfi images for stack components:
 
-::::{warning}
-- {{ls}} Wolfi images in versions `8.16.0`–`8.16.3` and `8.17.0`–`8.17.1` do not include the `openssl` binary. ECK requires `openssl` to inject TLS certificates. Do not use those patch releases with Wolfi images and {{ls}}. Use `8.16.4+` or `8.17.2+` instead.
+- Wolfi images are available for stack components running version 8.16.0 or later, with one restriction for {{ls}}:
 
-- Do not configure `spec.secureSettings` on an {{apm-server}} Wolfi image. The Wolfi {{apm-server}} image does not include a shell. ECK's keystore init container requires a shell to inject secure settings.
-::::
+  {{ls}} Wolfi images in versions `8.16.0`–`8.16.3` and `8.17.0`–`8.17.1` do not include the `openssl` binary that ECK requires to inject TLS certificates. Use `8.16.4+` or `8.17.2+` instead.
+
+- The {{apm-server}} Wolfi image does not include a shell. Because ECK's keystore init container requires a shell, `spec.secureSettings` is not supported on {{apm-server}} resources that use Wolfi images.
 
 ## Enable Wolfi images [k8s-wolfi-enable]
 
