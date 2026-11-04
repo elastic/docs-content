@@ -54,7 +54,7 @@ To check the outcome, open the **Anomaly Detection Jobs** page. The new real-tim
 
 ## Temporary jobs and cleanup
 
-The jobs the agent runs on your historical data are temporary. It adds them to the `ml-agent-scratch` group so it can find them again. The real-time jobs don't carry that group.
+The jobs the agent runs on your historical data are temporary. It adds them to a job group named `ml-agent-scratch`, so it can tell them apart from your other jobs. A job group is a label that lets you refer to several jobs at once, for example in calendars or alerting rules. The real-time jobs don't carry that group.
 
 When you approve the results, the agent names every historical job it wants to delete and waits for your confirmation. It only deletes jobs in the `ml-agent-scratch` group. If you decline, the historical jobs stay in place, and you can delete them yourself later. Keep them if you want to look at the historical results again.
 
