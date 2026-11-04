@@ -8,6 +8,7 @@ applies_to:
   serverless: ga
 products:
   - id: elasticsearch
+  - id: cloud-serverless
   - id: cloud-hosted
   - id: cloud-enterprise
   - id: cloud-kubernetes
@@ -54,8 +55,8 @@ The following table describes the migration options available for each data type
 | ------ | ------ |
 | Ingested user data | The reindex API, snapshot and restore, and {{ls}} migration options are available for your user data, with some restrictions based on the source and target deployment type. Refer to [User data migration guides](#data-migration-guides) on this page to learn more. |
 | {{es}} system data | System indices must be migrated using the snapshot and restore [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) component. Refer to [Migrate system indices](/manage-data/migrate/migrate-internal-indices.md) for detailed migration steps. Migrating system data is not available when migrating to or from {{serverless-short}} projects. |
-| {{kib}} saved objects | {{kib}} saved objects can be migrated using the snapshot and restore [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) component or the {{kib}} import and export tools. The tools include the import and export endpoints of the [Saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) and the [import and export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) options in the {{kib}} UI.<br><br>Snapshot and restore is generally the preferred migration method due to both speed and ease of use. |
-| Elastic feature and component data | Configuration data for products such as {{fleet}}, {{integrations}}, and {{watcher}} is typically migrated using the snapshot and restore feature. Refer to [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) and to the documentation for each specific product for additional detail. In case you need to migrate {{fleet}} configuration data through snapshot and restore, this requires also restoring the {{kib}} [feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state). |
+| {{kib}} saved objects | {{kib}} saved objects can be migrated using the snapshot and restore [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) component or the {{kib}} import and export tools. The tools include the import and export endpoints of the [Saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) and the [import and export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) options in the {{kib}} UI.<br><br>Snapshot and restore is generally the preferred migration method due to both speed and ease of use. When you migrate to or from {{serverless-short}}, use the import and export tools because user-initiated snapshot and restore is unavailable. |
+| Elastic feature and component data | Configuration data for products such as {{fleet}}, {{integrations}}, and {{watcher}} is typically migrated using the snapshot and restore feature. Refer to [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) and to the documentation for each specific product for additional detail. If you migrate {{fleet}} configuration data through snapshot and restore, you must also restore the {{kib}} [feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state).<br><br>When you migrate to or from {{serverless-short}}, follow the documentation for each feature to export or recreate its supported configuration. Snapshot and restore is unavailable, and some {{ech}} features have no {{serverless-short}} equivalent. |
 
 ## User data migration guides [data-migration-guides]
 
@@ -95,12 +96,14 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 
 ### Migrate data to {{serverless-full}} [data-migration-guides-serverless]
 
+For guidance beyond transferring ingested user data, follow [Migrate to an {{es-serverless}} project](/deploy-manage/deploy/elastic-cloud/migrate-to-serverless.md) to plan and complete the full transition.
+
 | From | To | Supported methods |
 | --- | --- | --- |
-| ECH | {{serverless-short}} | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md) {applies_to}`stack: preview 9.3+` <br> [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| ECH | {{serverless-short}} | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECE | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECK | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
-| {{serverless-short}} | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
+| {{serverless-short}} | {{serverless-short}} | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | Self-managed | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 
 ### Migrate data to Elastic self-managed [data-migration-guides-self-managed]
