@@ -209,10 +209,6 @@ You can use this to:
 - Write a query from scratch when the editor is empty. For example, type `// Show the top 10 destinations by flight count` and press {kbd}`cmd+J` to generate a complete query.
 - Add a step to an existing query. Place the comment between pipes (for example `// filter for delayed flights`) and the AI agent generates a single pipe to append. If the AI agent determines that your comment describes a change to the next pipe rather than a new step, it modifies that pipe instead.
 
-As you write, the editor displays inline hints that remind you how to use the feature: on an empty line it suggests starting a `//` comment, and once you've written one it prompts you to press the shortcut. The placeholder in an empty editor conveys the same order: describe what you want in a `//` comment first, then press the shortcut to generate {{esql}} from it.
-
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` In **Discover**, where the search bar is always visible, the placeholder in an empty editor asks you to begin with `FROM` to choose a data source instead.
-
 While the AI agent is generating, a `Generating...` indicator appears next to your comment. Press the shortcut again to cancel the in-flight request and start a new one.
 
 When the generated code is ready, the editor highlights it and shows review actions:
