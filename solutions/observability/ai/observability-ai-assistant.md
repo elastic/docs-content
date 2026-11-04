@@ -187,7 +187,7 @@ Field names in custom indices have no specific requirements. Any `semantic_text`
 
    **Use the UI**:
 
-   - Navigate to `Content crawlers` in the global search field
+   - Navigate to `Content crawlers` (`Content / Connectors` in {{kib}} 9.6 and earlier) in the global search field
    - Create a connector for your data source (example: [GitHub connector](elasticsearch://reference/search-connectors/es-connectors-github.md))
    - If your Space lacks the Search solution, either create the connector from a different space or change your space **Solution view** to `Classic`
 
@@ -218,7 +218,7 @@ This is a more complex method that requires you to set up the ELSER model and in
 
 To create the embeddings needed by the AI Assistant (weights and tokens into a sparse vector field) using an **ML Inference Pipeline**:
 
-1. Open the previously created content crawler in **Content crawlers**, and select the **Pipelines** tab.
+1. Open the previously created content crawler in **Content crawlers** (**Content / Connectors** in {{kib}} 9.6 and earlier), and select the **Pipelines** tab.
 2. Select **Copy and customize** under `Unlock your custom pipelines`.
 3. Select **Add Inference Pipeline** under `Machine Learning Inference Pipelines`.
 4. Select the **ELSER (Elastic Learned Sparse EncodeR)** ML model to add the necessary embeddings to the data.
@@ -512,7 +512,7 @@ The AI Assistant Settings page contains the following tabs:
 
 * **Settings**: Configures the main AI Assistant settings, which are explained directly within the interface.
 * **Knowledge base**: Manages [knowledge base entries](#obs-ai-kb-ui).
-* **Content crawlers**: Provides a link to {{kib}} **Content crawlers** UI for connectors configuration.
+* **Content crawlers**: Provides a link to {{kib}} **Content crawlers** UI (**Search** → **Content** → **Connectors** in {{kib}} 9.6 and earlier) for connectors configuration.
 
 ### Add Elastic documentation [obs-ai-product-documentation]
 
