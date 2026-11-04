@@ -42,7 +42,7 @@ Every agent, built-in or custom, receives details about the deployment it runs i
 - {applies_to}`stack: ga 9.6+` **{{ech}}, {{ece}}, and self-managed**: The environment, the {{stack}} version, and, when available, the space's solution view and the license type and status. If {{kib}} is configured as air-gapped, the details also say so.
 - {applies_to}`serverless: ga` **{{serverless-full}}**: The environment, the project type, and the product tier, when the project has one.
 
-{{agent-builder}} adds these details automatically, and you can't turn them off. Because the details are part of the agent's instructions, the agent can share them with anyone who chats with it.
+{{agent-builder}} adds these details automatically, and you can't turn them off. Agents can share these details with anyone who chats with them, even though they don't disclose their other instructions.
 
 ## Built-in agents
 
