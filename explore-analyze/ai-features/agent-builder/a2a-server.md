@@ -43,7 +43,7 @@ Both A2A endpoints require API key authentication. Refer to [Create a read-only 
 
 By default, `message/send` waits until the agent finishes, then returns the complete agent message in a single response.
 
-{applies_to}`stack: preview =9.2, ga 9.3-9.5` Streaming isn't supported. Refer to [Limitations and known issues](limitations-known-issues.md#a2a-streaming-not-supported).
+In 9.2 through 9.5, `message/stream` isn't supported. Refer to [Limitations and known issues](limitations-known-issues.md#a2a-streaming-not-supported).
 
 ### Send messages without waiting
 
