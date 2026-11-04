@@ -1,7 +1,7 @@
 ---
 name: docs-hub-whats-new
 disable-model-invocation: true
-description: Refresh the What's new cards on Elastic product hub pages. Use when updating hub-whats-new.yml after a stack release, or when the user asks to refresh hub What's new content.
+description: Keeps the What's new cards on Elastic product hub pages current, before and after a stack release. Use when updating hub-whats-new.yml for a stack minor, including before GA when the release notes are not published yet, or when the user asks to refresh hub What's new content.
 ---
 
 # Refresh hub What's new cards
@@ -16,7 +16,7 @@ Around a stack minor GA (for example 9.5.0), or when the user asks to refresh th
 
 Run it in two passes:
 
-1. **Before GA**, when the release notes and the official what's-new blog are not published yet. Pick the candidates from the Elastic Labs content project (see [Before GA](#before-ga-the-elastic-labs-content-project)) and confirm each one against the docs pages.
+1. **Before GA**, when the release notes and the official what's-new blog are not published yet. Pick the candidates from the Elastic Labs content project (see [Pick cards before GA from the Elastic Labs content project](#pick-cards-before-ga-from-the-elastic-labs-content-project)) and confirm each one against the docs pages.
 2. **After GA**, when the release notes are published. Confirm every card against them and fix any that disagree.
 
 ## Sources (in this order)
@@ -28,14 +28,14 @@ Read these. Do not scrape changelog YAML, docs-builder internals, or unpublished
    - [Kibana](https://www.elastic.co/docs/release-notes/kibana)
    - [Logstash](https://www.elastic.co/docs/release-notes/logstash)
 2. **Official what's-new blog** for the same minor, for example [Elastic 9.5](https://www.elastic.co/blog/whats-new-elastic-9-5-0). Use the blog to decide which items are the story of the release. Confirm each item against the published release notes before you keep it.
-3. **Elastic Labs content project**, when the release notes or the what's-new blog are not published yet. See the next section.
-4. **Existing docs pages** in this repo (or `repo://` targets in other docs repos) for the `link:` on each card. Every link must resolve. Before GA, the `applies_to` tag on the page is the fact check (see [Before GA](#before-ga-the-elastic-labs-content-project)).
+3. **Elastic Labs content project**, when the release notes or the what's-new blog are not published yet. See [Pick cards before GA from the Elastic Labs content project](#pick-cards-before-ga-from-the-elastic-labs-content-project).
+4. **Existing docs pages** in this repo (or `repo://` targets in other docs repos) for the `link:` on each card. Every link must resolve. Before GA, the `applies_to` tag on the page is the fact check.
 
 If the blog and the release notes disagree, the published release notes win for facts. The blog wins for which items belong on the hub.
 
-## Before GA: the Elastic Labs content project
+## Pick cards before GA from the Elastic Labs content project
 
-Many launch blogs are not published until release day, so the published sources above are empty or partial in the days before GA. The [Elastic Labs Content Process](https://github.com/orgs/elastic/projects/1446) project (internal, Elastic employees only) tracks every blog from idea to publication. Its issues live in `elastic/elastic-labs-blogs` and carry the abstract, the target version, a status, and a publishing date. Use it to see which features Elastic is about to announce.
+Many launch blogs are not published until release day, so the release notes and the what's-new blog are empty or partial in the days before GA. The [Elastic Labs Content Process](https://github.com/orgs/elastic/projects/1446) project (internal, Elastic employees only) tracks every blog from idea to publication. Its issues live in `elastic/elastic-labs-blogs` and carry the abstract, the target version, a status, and a publishing date. Use it to see which features Elastic is about to announce.
 
 Read it with the `gh` CLI. The token needs the `project` and `read:org` scopes (`gh auth status` lists them):
 
