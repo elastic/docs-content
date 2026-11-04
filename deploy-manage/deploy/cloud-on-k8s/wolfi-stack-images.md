@@ -27,8 +27,7 @@ The following requirements and limitations apply to Wolfi images for stack compo
 - The {{apm-server}} Wolfi image does not include a shell. Because ECK's keystore init container requires a shell, `spec.secureSettings` is not supported on {{apm-server}} resources that use Wolfi images.
 
 ## Enable Wolfi images [k8s-wolfi-enable]
-
-Set the `container-suffix` configuration flag to `-wolfi`. For ECK configuration options, refer to [Configure ECK](./configure-eck.md).
+To use Wolfi images, configure the ECK operator to append `-wolfi` to the container image names it resolves for stack components. For ECK configuration options, refer to [](./configure-eck.md).
 
 ::::{important}
 The `container-suffix` flag cannot be combined with `--ubi-only`. If your `eck.yaml` ConfigMap contains a `ubi-only` key (including `ubi-only: false`), remove it before setting `container-suffix: -wolfi`. ECK checks whether the key exists, not its value, and rejects `container-suffix` when `ubi-only` is present.
