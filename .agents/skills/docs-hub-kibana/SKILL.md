@@ -88,7 +88,7 @@ Vector Database is a fourth solution, Serverless only. Place it next to Elastics
 
 Solutions intro: "Solutions are packages of Elastic capabilities optimized for certain use cases. All solutions include the core storage, querying, and analytics capabilities of Elasticsearch and Kibana." Do not add a description on one solution card when the others have none. Match solution card link counts instead. Current target is six links each.
 
-Elasticsearch card: Overview, Get started, Agent Builder, Query rules, Content connectors, Index management. Do not link Playground. It is deprecated in 9.4+ and on Serverless.
+Elasticsearch card: Overview, Get started, Agent Builder, Query rules, Content crawlers, Index management. Do not link Playground. It is deprecated in 9.4+ and on Serverless.
 
 Observability card: Overview, Get started, APM, Logs, Infrastructure, Synthetics.
 
