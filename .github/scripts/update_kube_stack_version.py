@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright Elastic Technologies Inc. and contributors
+# SPDX-License-Identifier: CC-BY-NC-ND-4.0
 """
 Script to update the kube-stack-version and helm-version in docset.yml based on
 versions from the Kibana and Elastic Agent repositories.

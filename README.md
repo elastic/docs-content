@@ -55,6 +55,8 @@ When you open a PR, your changes are built, deployed, and ready to be previewed 
 
 ## License
 
+Copyright 2023-2026 Elastic Technologies Inc. and contributors
+
 [![CC BY-NC-ND 4.0][cc-by-nc-nd-image]][cc-by-nc-nd] [![CC BY-NC-ND 4.0][cc-by-nc-nd-shield]][cc-by-nc-nd]
 
 This work is licensed under a
