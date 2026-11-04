@@ -18,6 +18,8 @@ Use this section to understand search techniques, query methods, ranking strateg
 
 On {{serverless-full}}, there are two search project types. Use an [{{es}} project](/solutions/elasticsearch-solution-project.md) for general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, or when you need custom models on {{ml}} nodes. Use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case.
 
+Some features that search use cases rely on work differently on {{serverless-short}} than on {{ech}}. For example, {{serverless-short}} supports the synonyms API only, uses data stream lifecycle instead of {{ilm-init}}, and has a baseline write latency of 200ms. To check the features you depend on, refer to [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#indexing-search-and-analysis).
+
 ::::{tip}
 Using the {{es}} solution or serverless project type? The [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) covers additional UI tools included with these options.
 ::::
