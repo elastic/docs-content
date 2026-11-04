@@ -62,7 +62,7 @@ You can specify these increments with up to 20 decimal places for input and outp
 The **Color / Badge** field formatter lets you specify colors with ranges of values for a number field. To set it up:
 
 * Select **Add color**, then specify the **Range**, **Text color**, and **Background color**.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To control the decimal places, thousands separator, or other number format of a colored value, enter an [Elastic numeral pattern](/explore-analyze/numeral-formatting.md) in **Numeral.js format pattern (optional)**. For example, in the `en` locale, the pattern `0,0.00` displays 1234.5 as 1,234.50.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To control the decimal places, thousands separator, or other number format of a colored value, enter an [Elastic numeral pattern](/explore-analyze/numeral-formatting.md) in **Numeral.js format pattern (optional)**. For example, the pattern `0,0.00` displays 1234.5 with a thousands separator and two decimal places, such as 1,234.50.
   * Color ranges still match the original value, not the formatted one. With the pattern `0.00`, the value 99.999 displays as 100.00 but doesn't match a range that starts at 100.
   * If you leave the field empty, {{kib}} shows the value as stored.
 
