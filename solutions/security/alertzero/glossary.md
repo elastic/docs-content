@@ -44,7 +44,7 @@ An optional model setting in **Feature Settings** for cyber-specific models. A m
 
 ### {{az-detection-watch}} [alertzero-glossary-detection-watch]
 
-The [{{az-watch}}](#alertzero-glossary-watch) that handles detection engineering, improving your detection rules at the source instead of handling the alerts they produce one by one. Its {{az-rule-tuning}} {{az-worker}} finds noisy rules and proposes tuning changes tested against past data. Its {{az-rule-coverage}} {{az-worker}} reviews the detection gaps that the {{az-hunt-watch}} finds and proposes new or existing rules to close them. Refer to [](watches-and-workers.md#alertzero-detection-watch).
+The [{{az-watch}}](#alertzero-glossary-watch) that handles detection engineering, improving your detection rules at the source instead of handling the alerts they produce one by one. Its {{az-rule-tuning}} {{az-worker}} diagnoses noisy or under-covering rules and proposes tuning changes tested against past data. Its {{az-rule-coverage}} {{az-worker}} assesses the detection gaps that the {{az-hunt-watch}} finds and proposes new or existing rules to close them. Refer to [](watches-and-workers.md#alertzero-detection-watch).
 
 ## E-F [alertzero-glossary-e-f]
 

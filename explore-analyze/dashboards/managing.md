@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Managing dashboards [_manage_dashboards]
@@ -59,12 +60,17 @@ The creator information is only available for dashboards created on or after ver
 
 By default, your most recently viewed dashboards are displayed first. You can instead sort the dashboard list based on their name or their last update date.
 
+**Reopen a recently viewed dashboard**
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the **Elasticsearch** and **Observability** solution views and project types, and in {{es}} {{vectordb}} projects, you can return to a dashboard you opened or saved earlier without going through the dashboard list. Hover over **Dashboards** in the navigation menu or move keyboard focus to it, then select the dashboard from **Recently viewed**. This list shows your five latest dashboards first. Select **Show more** to show older ones, up to 20 in total.
+
 
 ## Browse saved visualizations and annotation groups [find-visualizations-annotation-groups]
 
-To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). To do that, search for **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To browse your saved visualizations and annotation groups, open the [Visualize library](../visualize/visualize-library.md). Where you open it depends on your deployment and version.
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When using the Security and Observability solution views or project types, the **Dashboards** page includes **Visualizations** and **Annotation groups** tabs for direct access to the Visualize Library. With the **Classic** solution view or in previous versions, the Visualize Library is available from the **Visualize** page in the navigation menu.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` On the **Dashboards** page, select the **Visualizations** tab for visualizations or the **Annotation groups** tab for annotation groups. In the {{stack}} Classic view, you can also select **Visualize library** in the navigation menu.
+- {applies_to}`stack: ga 9.0-9.3` Select **Visualize library** in the navigation menu, or search for it in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the **Visualizations** or **Annotation groups** tab.
 
 
 ## Keep track of your favorite dashboards [_keep_track_of_your_favorite_dashboards]
