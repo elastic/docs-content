@@ -130,12 +130,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes metrics charts in Discover failing with an `Unknown column` error when a parent filter references a field that the metric data stream doesn't map [#289428]({{kib-pull}}289428).
 * Fixes an issue in the metrics view in Discover where a dimension picked for breakdown could be silently dropped if the chart section reloaded or hit an error right after the selection was made [#296940]({{kib-pull}}296940).
 
-#### Significant Events [elastic-observability-9.6.0-fixes-significant-events]
-
-* Prevents Significant Events from writing duplicate event documents when an event's severity and status are unchanged, or when a rule matches an event that's already active [#280838]({{kib-pull}}280838).
-* Fixes the Significant Events tuning YAML editor showing a nested scrollbar. The full YAML now shows on the page [#292021]({{kib-pull}}292021).
-* Keeps knowledge indicator names readable on narrow screens in Significant Events [#292974]({{kib-pull}}292974).
-
 #### General [elastic-observability-9.6.0-fixes-general]
 
 * Fixes the date picker not updating its time bounds when you click **Refresh** with a relative time range such as **Last 15 minutes** [#297346]({{kib-pull}}297346).
