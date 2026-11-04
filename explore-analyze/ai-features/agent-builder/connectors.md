@@ -72,11 +72,11 @@ The **Actions** setting has two options:
 :   The default. Allows every action, including actions added to the connector type in later versions.
 
 **Custom**
-:   Allows only the actions you select.
+:   Allows only the actions you select. You must select at least one action.
 
-    - When you first switch to **Custom**, the form preselects the actions with the **read** badge.
-    - Actions added to the connector type later stay unselected until you edit the connector and select them.
-    - You must select at least one action. When none are selected, the form shows "Select at least one action, or enable All."
+    When you first switch to **Custom**, the **read** actions are selected by default. You can change the selection.
+    
+    Actions added to the connector type later stay unselected until you edit the connector and select them.
 
 Each action has a scope badge: **read**, **write**, or **destroy**. Some actions also have a **Workflow only** badge. Agents can't run these actions, even when the connector allows them. The Run a connector API can run them, and so can workflows, for connector types available in workflows.
 
