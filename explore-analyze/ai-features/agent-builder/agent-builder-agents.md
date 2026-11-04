@@ -37,11 +37,42 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Every agent receives details about the deployment it runs in. It uses those details to tailor guidance to the environment, and it can answer questions about the deployment.
+Every agent, built-in or custom, receives details about your deployment each time it runs. The agent uses these details to:
 
-On {{stack}} deployments, the details include the environment ({{ech}}, {{ece}}, or self-managed) and the stack version. The space solution view and the license type and status are included when they are available. On {{serverless-short}}, the details include the project type and the product tier when the project has one. When the deployment is air-gapped, the details include that as well.
+- Tailor its guidance, such as features, navigation, and terminology, to your environment.
+- Answer questions about your deployment.
 
-{{agent-builder}} sets these values automatically. You can't turn this off.
+The details an agent receives depend on your deployment type:
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.6+
+The details always include:
+
+- The environment: {{ech}}, {{ece}}, or self-managed
+- The {{stack}} version
+
+When available, the details also include:
+
+- The space's solution view, if one is set (including Classic)
+- The license type and license status
+
+If {{kib}} is configured as air-gapped (`airgapped: true` in `kibana.yml`), the details also say so.
+:::
+
+:::{applies-item} serverless: ga
+The details include:
+
+- The environment: {{serverless-full}}
+- The project type
+- The product tier, when the project has one
+
+The details don't include a version, solution view, or license.
+:::
+
+::::
+
+{{agent-builder}} sets these details automatically, and you can't turn this behavior off. The details are part of the instructions sent to the LLM, and the agent can share them with anyone who chats with it.
 
 ## Built-in agents
 
