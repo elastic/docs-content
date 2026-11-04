@@ -24,19 +24,39 @@ description: Elastic Security brings SIEM, endpoint protection, and cloud securi
 
 {{elastic-sec}} has four main capabilities. You can use them together or start with one.
 
-SIEM
-:   Collects security data from across your environment through hundreds of [integrations](/solutions/security/get-started/ingest-data-to-elastic-security.md), and detects threats with Elastic-maintained [prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md), your own rules, and {{ml}}. You can triage and investigate alerts and hunt for threats in [Timeline](/solutions/security/investigate/timeline.md) and the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md). [Cases](/solutions/security/investigate/security-cases.md) keep a record of each investigation, from the first alert to resolution. To try it, follow the [SIEM quickstart](/solutions/security/get-started/get-started-detect-with-siem.md).
+### SIEM [security-siem]
 
-Endpoint security
-:   Detects and prevents malware, ransomware, in-memory threats, and malicious behavior on Windows, macOS, and Linux hosts with [{{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md), which runs on the same [{{agent}}](/reference/fleet/index.md) that collects your host data, so you deploy one agent for both. When you confirm an attack, you can contain it by isolating hosts and taking other [response actions](/solutions/security/respond-and-contain.md), including on hosts that run supported third-party EDR tools. To try it, follow the [endpoint security quickstart](/solutions/security/get-started/get-started-endpoint-security.md).
+{{elastic-sec}} collects security data from across your environment through hundreds of [integrations](/solutions/security/get-started/ingest-data-to-elastic-security.md). It detects threats with Elastic-maintained [prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md), your own rules, and {{ml}}.
 
-Cloud posture and vulnerability management
-:   Finds misconfigurations in your cloud accounts and Kubernetes clusters by checking them against security benchmarks, with [cloud security posture management (CSPM) and Kubernetes security posture management (KSPM)](/solutions/security/cloud/security-posture-management-overview.md). A separate feature, [cloud native vulnerability management (CNVM)](/solutions/security/cloud/cloud-native-vulnerability-management.md), scans your Linux VMs in AWS for known vulnerabilities. To try posture management, follow the [cloud security posture quickstart](/solutions/security/get-started/get-started-cloud-security.md).
+When alerts come in, you can triage and investigate them, and hunt for threats in [Timeline](/solutions/security/investigate/timeline.md) and the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md). [Cases](/solutions/security/investigate/security-cases.md) keep a record of each investigation, from the first alert to resolution.
 
-Cloud workload protection
-:   Detects and prevents malware, memory threats, and malicious behavior on your Linux VMs while they run, with the same {{elastic-defend}} integration that protects your other hosts. It also sends process, file, and network activity to {{elastic-sec}}, where prebuilt rules and {{ml}} can find threats in it. To learn how cloud workload protection works, refer to [Manage cloud workload protection](/solutions/security/manage/manage-cloud-workload-protection.md).
+[Get started with SIEM →](/solutions/security/get-started/get-started-detect-with-siem.md)
 
-    {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` For Kubernetes containers, [Defend for Containers](/solutions/security/cloud/d4c/d4c-overview.md) alerts on drift and can block process and file operations that match your policy.
+### Endpoint security [security-endpoint-security]
+
+[{{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md) detects and prevents malware, ransomware, in-memory threats, and malicious behavior on Windows, macOS, and Linux hosts. It runs on the same [{{agent}}](/reference/fleet/index.md) that collects your host data, so you deploy one agent for both.
+
+When you confirm an attack, you can contain it by isolating hosts and taking other [response actions](/solutions/security/respond-and-contain.md). You can also take response actions on hosts that run supported third-party EDR tools.
+
+[Get started with endpoint security →](/solutions/security/get-started/get-started-endpoint-security.md)
+
+### Cloud posture and vulnerability management [security-cloud-posture]
+
+[Cloud security posture management (CSPM) and Kubernetes security posture management (KSPM)](/solutions/security/cloud/security-posture-management-overview.md) find misconfigurations in your cloud accounts and Kubernetes clusters by checking them against security benchmarks.
+
+A separate feature, [cloud native vulnerability management (CNVM)](/solutions/security/cloud/cloud-native-vulnerability-management.md), scans your Linux VMs in AWS for known vulnerabilities.
+
+[Get started with cloud security posture management →](/solutions/security/get-started/get-started-cloud-security.md)
+
+### Cloud workload protection [security-cloud-workload-protection]
+
+{{elastic-defend}} also protects your Linux VMs while they run. It's the same integration that protects your other hosts, and it detects and prevents malware, memory threats, and malicious behavior.
+
+It also sends process, file, and network activity to {{elastic-sec}}, where prebuilt rules and {{ml}} can find threats in it.
+
+{applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` For Kubernetes containers, [Defend for Containers](/solutions/security/cloud/d4c/d4c-overview.md) alerts on drift and can block process and file operations that match your policy.
+
+[Learn more about cloud workload protection →](/solutions/security/manage/manage-cloud-workload-protection.md)
 
 ## AI in {{elastic-sec}} [ai-in-elastic-security]
 
