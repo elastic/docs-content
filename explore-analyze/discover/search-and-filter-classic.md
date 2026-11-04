@@ -9,9 +9,11 @@ type: how-to
 description: Narrow the documents in a data view to the ones you need by searching with Kibana Query Language (KQL) or Lucene and adding filters in classic mode.
 ---
 
-# Search and filter with KQL, Lucene, and filters
+# Search and filter with KQL, Lucene, and filters in classic mode
 
 In classic mode, **Discover** lets you combine free text search with filtering on structured data. Search with Kibana Query Language (KQL) or Lucene, add filters, and the chart and the results table update to show only the matching documents.
+
+In {{esql}} mode, you filter by selecting a value in the results table, which adds a `WHERE` clause to your query. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
 ## Before you begin
 

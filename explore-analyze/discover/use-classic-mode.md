@@ -52,7 +52,6 @@ In classic mode, you select the data to explore with a data view, and then set t
 | You want to search documents with KQL or Lucene, or narrow them down with filters | [Search and filter with KQL, Lucene, and filters](search-and-filter-classic.md) |
 | You need a field that your data view doesn't have | [Add a runtime field to a data view from Discover](add-fields-to-data-views.md) |
 | You want to chart a field from the fields list | [Visualize a field from Discover](visualize-field.md) |
-| You want to open a document on its own page, or see the documents around it | [View a single document or the documents around it](view-single-document.md) |
 | You want to see how the values of each field are distributed | [View field statistics](show-field-statistics.md) |
 | You want to group log messages into patterns | [Run a pattern analysis on your log data](run-pattern-analysis-discover.md) |
 

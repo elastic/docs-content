@@ -6,12 +6,45 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Sort search results by relevance score in Discover to identify the documents that best match your query. Use the score field to prioritize the most relevant data.
+description: Sort results by relevance score in Discover to see the documents that best match your query first, in classic mode or with an ES|QL query.
 ---
 
 # Search for relevance [discover-search-for-relevance]
 
 {{product.elasticsearch}} assigns a relevancy score to each document based on how well it matches your query. Sorting by this score helps you identify the most relevant results quickly. This guide shows how to use **Discover** to sort documents by relevance score, putting the best matches at the top of your results.
+
+:::::{tab-set}
+:group: query-mode
+
+::::{tab-item} {{esql}} mode
+:sync: esql
+
+This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
+
+1. In **Discover**, make sure you're in {{esql}} mode. If **Discover** opens in classic mode, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md#switch-discover-query-mode).
+2. To get scores, request `METADATA _score` and filter with a full text search function such as `MATCH`. Then sort by `_score`. For the sample data, enter:
+
+    ```esql
+    FROM kibana_sample_data_logs METADATA _score
+    | WHERE MATCH(message, "Mozilla")
+    | SORT _score DESC
+    | KEEP _score, message
+    | LIMIT 10
+    ```
+
+3. If you don't see any results, expand the [time range](../query-filter/filtering.md), for example to **Last 7 days**.
+
+**Result:** The table lists the best matches first, with their scores in the `_score` column.
+
+:::{tip}
+Very small scores show as `0` in the table. To see the difference between them, multiply the score in your query. For example, add `| EVAL score_x100000 = _score * 100000` before `KEEP`, and keep that column.
+:::
+
+For more about scores, refer to [Relevance scoring](/solutions/search/esql-for-search.md#esql-for-search-scoring) and to the [`_score` metadata field](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md).
+::::
+
+::::{tab-item} Classic mode
+:sync: classic
 
 This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
@@ -42,5 +75,6 @@ This example uses the [sample flights data set](../index.md#gs-get-data-into-kib
    :alt: Documents are sorted from most relevant to least relevant.
    :screenshot:
    :::
+::::
 
-
+:::::

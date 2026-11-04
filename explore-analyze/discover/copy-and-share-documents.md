@@ -44,7 +44,7 @@ You can share the current view, show the results on a dashboard, export the sess
 - To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Some limits apply. Refer to [](save-open-search.md#export-discover-session-csv) for details.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
 
-In classic mode, you can also open a document on a bookmarkable page of its own. Refer to [View a single document or the documents around it](view-single-document.md).
+In classic mode, you can also [open a document on a bookmarkable page of its own](inspect-documents.md#open-single-document).
 
 ### Share a link to a document [share-a-document-link]
 

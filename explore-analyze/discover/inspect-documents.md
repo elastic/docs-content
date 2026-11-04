@@ -50,13 +50,26 @@ Dive into an individual document to view its fields and the documents that occur
    You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
-3. In classic mode, you can also open the document on a page of its own, or view the documents that occurred before and after it. Refer to [View a single document or the documents around it](view-single-document.md). These actions aren't available in {{esql}} mode.
+3. In classic mode, you can also [open the document on a page of its own, or view the documents that occurred before and after it](#open-single-document).
 
 ::::{tip}
 :applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
 
 To copy a link that reopens this document, select {icon}`link` **Copy link** in the flyout header. Refer to [Share a link to a document](copy-and-share-documents.md#share-a-document-link).
 ::::
+
+## Open a document on its own page or see the documents around it [open-single-document]
+
+In classic mode, you can open a document on a page that you can bookmark and share, or view the documents that occurred before and after it. These actions aren't available in {{esql}} mode, where the document flyout is the way to read a document.
+
+To use them, open **Discover** in classic mode and run a search that returns results. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode). To view the surrounding documents, select a data view that has a time field.
+
+1. In the document table, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier {{stack}} versions) on the row of the document you want to look at.
+2. In the flyout, select one of the following:
+   - **View single document** to open the document on its own page. You can bookmark the page and share its link.
+   - **View surrounding documents** to inspect the documents that occurred before and after this document. Only pinned filters remain active in this view.
+
+**Result:** **Discover** opens the document on a page that you can bookmark, or shows the documents that occurred before and after it.
 
 ## Inspect the request behind your results [inspect-discover-request]
 
