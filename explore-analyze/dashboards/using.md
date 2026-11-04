@@ -54,7 +54,7 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-If a dashboard takes too long to load, you can stop it instead of waiting. While the dashboard loads, a **Cancel** button is available at the top of the dashboard. Select it to stop the queries that are still running. To load the dashboard again, select **Refresh**.
+If a dashboard takes too long to load, you can stop it instead of waiting. While it loads, a **Cancel** button is available at the top of the dashboard. Select it to stop the queries that are still running. To load the dashboard again, select **Refresh**.
 
 
 ### Use filter pills [_use_filter_pills]
