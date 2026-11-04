@@ -408,9 +408,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
      -d '{
        "tool_id": "platform.core.search",
        "tool_params": {
-         "query": "can you find john doe's email from the employee index?"}
-       }
-     }'
+         "query": "can you find john doe'\''s email from the employee index?"}
+       }'
 ```
 :::{include} _snippets/spaces-api-note.md
 :::
