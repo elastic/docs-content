@@ -732,8 +732,8 @@ toc:
               - hidden: security/alertzero/respond-to-attack.md
               - hidden: security/alertzero/act-on-hunt-finding.md
               - hidden: security/alertzero/decide-detection-change.md
-              # For Nat, who owns the escalation pages: Keep the escalation pages last in Work in AlertZero, after the decision pages,
-              # and nest track-escalations.md under escalate-investigation.md as its child.
+              # Keep the escalation pages last in Work in AlertZero, after the decision pages. When this merges with
+              # elastic/docs-content#9184, keep its manage-escalations.md entry, nested under escalate-investigation.md, in place of track-escalations.md.
               - hidden: security/alertzero/escalate-investigation.md
               - hidden: security/alertzero/track-escalations.md
           - hidden: security/alertzero/manage-alertzero.md
