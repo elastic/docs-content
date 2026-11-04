@@ -11,6 +11,10 @@ products:
 
 # Run Elastic Agent Standalone on Kubernetes [running-on-kubernetes-standalone]
 
+:::{note}
+Helm is the preferred method for installing {{agent}} on Kubernetes. Refer to [Install {{agent}} on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md) for installation examples for standalone and {{fleet}}-managed agents.
+:::
+
 ## What you need [_what_you_need_3]
 
 * [kubectl installed](https://kubernetes.io/docs/tasks/tools/).
@@ -183,6 +187,8 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
 ## Red Hat OpenShift configuration [_red_hat_openshift_configuration]
 
 If you are using Red Hat OpenShift, you need to specify additional settings in the manifest file and enable the container to run as privileged.
+
+{applies_to}`stack: ga 9.5.6+` To run {{agent}} on OpenShift without granting the `privileged` SCC, install it with the Helm chart in unprivileged mode. Refer to [Install on OpenShift](/reference/fleet/example-kubernetes-standalone-agent-helm.md#agent-standalone-helm-install-openshift).
 
 1. In the manifest file, modify the `agent-node-datastreams` ConfigMap and adjust inputs:
 
