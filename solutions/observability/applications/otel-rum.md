@@ -14,7 +14,7 @@ products:
 # OpenTelemetry for Real User Monitoring (RUM)
 
 :::{important}
-Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}} is currently in technical preview and should not be used in production environments. This feature may be changed or removed in a future release and has [known limitations](#known-limitations). Features in preview are not subject to support SLAs like GA features.
+Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}} is currently in technical preview and should not be used in production environments. This feature might be changed or removed in a future release and has [known limitations](#known-limitations). Features in preview are not subject to support SLAs like GA features.
 :::
 
 You can instrument your web application with OpenTelemetry browser instrumentation for use with {{product.observability}}. The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
@@ -82,11 +82,12 @@ The minimal configuration you need to instrument your web application with OpenT
   - `service.name` (string): Name of the application you're instrumenting.
   - `service.version` (string, optional): A string representing the version or build of your app.
   - `deployment.environment.name` (string, optional): Name of the environment where the app runs (if applicable); for example, "prod", "dev", or "staging".
-- **OTEL_LOG_LEVEL**: Use this configuration to set the log level of the OpenTelemetry components you're going to use. Supported values are: `error`, `warn`, `info`, `debug`, `verbose`.
+- **OTEL_LOG_LEVEL**: Use this configuration to set the log level of the OpenTelemetry components you're going to use. Supported values are: `ERROR`, `WARN`, `INFO`, `DEBUG`, `VERBOSE`.
 
 ## Set up OpenTelemetry for the browser [otel-rum-set-up-open-telemetry-for-the-browser]
 
-To instrument your web application with OpenTelemetry in the browser, you need to add a script that configures the essential components, including the context manager, signal providers, processors, and exporters. After adding the script, you can register the instrumentations so they can observe your app and send telemetry data to your endpoint.
+To instrument your web application with OpenTelemetry in the browser, you need to add a script that configures the essential components, including the context manager, signal providers, processors, and exporters. OpenTelemetry already provides utility functions to configure logs and traces signals.
+After adding the script, you can register the instrumentations so they can observe your app and send telemetry data to your endpoint.
 
 The following starter script is in plain JavaScript. If you use TypeScript, you can adapt this script by changing the file extension to `.ts` and adding the necessary type definitions. OpenTelemetry packages are written in TypeScript, so they include the appropriate type definitions for TypeScript.
 
@@ -98,29 +99,13 @@ Each signal configuration is independent of the others and has to be configured 
 
 :::::{step} Set the configuration
 
-Start by setting the options to be used by all the signals and the instrumentation code, as well as initializing the internal logger.
-
-For this step, you need the following dependencies:
-
-- `@opentelemetry/api`: All the packages are included. Each signal configuration uses it to register the providers for each signal.
-- `@opentelemetry/core`: Contains core types and some utilities for the rest of the packages. It parses strings to the correct type.
-
-To install the dependencies, run the following command:
-
-```bash
-npm install @opentelemetry/api @opentelemetry/core
-```
-
-After the dependencies are installed, configure the following options:
+Start by setting the options to be used by all the signals and the instrumentation code.
 
 :::{dropdown} Configuration example
 
 ```javascript
-import { diag, DiagConsoleLogger } from '@opentelemetry/api';
-import { diagLogLevelFromString } from '@opentelemetry/core';
-
 // Set the configuration options
-const OTEL_LOG_LEVEL = 'info'; // Possible values: error, warn, info, debug, verbose
+const OTEL_LOG_LEVEL = 'INFO'; // Possible values: ERROR, WARN, INFO, DEBUG, VERBOSE
 const OTEL_EXPORTER_OTLP_ENDPOINT = 'https://proxy.example.com'; // Point to your reverse proxy configured in the section above
 const OTEL_RESOURCE_ATTRIBUTES = {
   'service.name': 'my-web-app',
@@ -128,99 +113,46 @@ const OTEL_RESOURCE_ATTRIBUTES = {
   'deployment.environment.name': 'qa',
   // You can add other attributes
 };
-
-// Set the log level for the OTEL components
-// You can raise the level to "debug" if you want more details
-diag.setLogger(
-  new DiagConsoleLogger(),
-  { logLevel: diagLogLevelFromString(OTEL_LOG_LEVEL) },
-);
-diag.info('OTEL bootstrap', config);
 ```
 
 :::
 
 :::::
 
-:::::{step} Define the resource
+:::::{step} Configure tracing
 
-A [resource](https://opentelemetry.io/docs/concepts/resources/) is an entity that generates telemetry, with its characteristics captured in resource attributes. An example is a web application operating within a browser that produces telemetry data.
+Configure the traces signal to enable instrumentations to transmit traces and allow for the creation of custom spans. The upstream SDK offers a utility function to configure the signal wihtout having to handle all the dependencies by yourself.
 
-A standardized set of attributes is specified in [Browser resource semantic conventions](https://opentelemetry.io/docs/specs/semconv/resource/browser/), which can be included alongside those outlined in the configuration section. OpenTelemetry offers resource detectors like `browserDetector` to help set these attributes like brands, mobile, and platform.
+The function will configure a [TracerProvider](https://opentelemetry.io/docs/concepts/signals/traces/#tracer-provider) to enable instrumentations to transmit traces and allow for the creation of custom spans. A TracerProvider requires several components:
 
-To define the resource, you need the following dependencies:
-
-- `@opentelemetry/resources`: This package provides information about the SDK to be placed in the resource. This information helps {{kib}} identify the service type and the SDK that generated the telemetry.
-- `@opentelemetry/resources`: This package helps you to define and work with resources because a Resource is not a plain object and has some properties (like immutability) and constraints.
-- `@opentelemetry/opentelemetry-browser-detector`: Detectors help you to define a resource by querying the runtime and environment and resolving some attributes. In this case, the browser detector resolves the language, brands, and mobile attributes of the browser namespace.
-
-To install the dependencies, run the following command:
-
-```bash
-npm install @opentelemetry/core @opentelemetry/resources @opentelemetry/opentelemetry-browser-detector
-```
-
-After the dependencies are installed, define the resource for your instrumentation with the following code:
-
-:::{dropdown} Resource definition
-```javascript
-import { SDK_INFO } from '@opentelemetry/core';
-import { resourceFromAttributes, detectResources } from '@opentelemetry/resources';
-import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
-
-const detectedResources = detectResources({ detectors: [browserDetector] });
-let resource = resourceFromAttributes({ ...OTEL_RESOURCE_ATTRIBUTES, ...SDK_INFO});
-resource = resource.merge(detectedResources);
-```
-:::
-:::::
-
-:::::{step} (Optional) Configure tracing
-
-Configure a [TracerProvider](https://opentelemetry.io/docs/concepts/signals/traces/#tracer-provider) to enable instrumentations to transmit traces and allow for the creation of custom spans. A TracerProvider requires several components:
-
-- **Resource**: The resource to be associated with the spans created by the tracers. You defined this in the second step.
-- **Span Processor**: A component that manages the spans generated by the tracers and forwards them to a [SpanExporter](https://opentelemetry.io/docs/specs/otel/trace/sdk/#span-exporter). The exporter should be configured to direct data to an endpoint designated for traces.
-- **Span Exporter**: Manages the transmission of spans to the Collector.
 - **Context Manager**: A mechanism for managing the active Span context across asynchronous operations and threads. It ensures that when a new Span is created, it correctly identifies its parent Span.
 
 For this step, you need the following dependencies:
 
-- `@opentelemetry/sdk-trace-base`: This package contains all the core components to set up tracing regardless of the runtime they're running in (Node.js or browser).
-- `@opentelemetry/sdk-trace-web`: This package contains a tracer provider that runs in web browsers.
-- `@opentelemetry/exporter-trace-otlp-http`: This package contains the exporter for the HTTP/JSON protocol.
+- `@opentelemetry/browser-sdk`: This package contains all the core components to set up tracing for browsers.
 - `@opentelemetry/context-zone`: This package contains a context manager which uses on [zone.js](https://www.npmjs.com/package/zone.js) library.
 
 ```bash
-npm install @opentelemetry/sdk-trace-base\
-      @opentelemetry/sdk-trace-web\
-      @opentelemetry/exporter-trace-otlp-http\
-      @opentelemetry/context-zone
+npm install @opentelemetry/browser-sdk @opentelemetry/context-zone
 ```
 
-After the dependencies are installed, configure and register a TracerProvider with the following code:
+After the dependencies are installed, configure the traces signal with the following code:
 
 :::{dropdown} Tracer provider configuration
 ```javascript
-import { trace } from '@opentelemetry/api';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
-import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
-import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
+import { startTracesSdk } from '@opentelemetry/browser-sdk/traces';
 
-// Set the traces endpoint based on the config provided
-const tracesEndpoint = `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/traces`;
-
-// Set the tracer provider for instrumentations and calls to the API to start and end spans
-const tracerProvider = new WebTracerProvider({
-  resource,  // All spans will be associated with this resource
-  spanProcessors: [
-    new BatchSpanProcessor(new OTLPTraceExporter({
-      url: tracesEndpoint,
-    })),
-  ],
+// The traces SDK start function sets all necessary components and registers a provider
+// for instrumentations and calls to the API to start and end spans
+const tracesSdk = startTracesSdk({
+  resourceAttributes: OTEL_RESOURCE_ATTRIBUTES,
+  contextManager: new ZoneContextManager()
+  exportConfig: {
+    // Set the traces endpoint based on the config provided
+    url: `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/traces`,
+  },
 });
-tracerProvider.register({ contextManager: new ZoneContextManager() });
 ```
 :::
 
@@ -228,23 +160,61 @@ Now you can use the OpenTelemetry API to get a tracer and start creating your ow
 
 :::::
 
+:::::{step} Configure logs
+
+Configure the logs signal to enable instrumentations to transmit logs and allow for the creation of custom log records. The upstream SDK offers a utility function to configure the signal wihtout having to handle all the dependencies by yourself.
+
+The function will configure a [LoggerProvider](https://opentelemetry.io/docs/specs/otel/logs/sdk/#loggerprovider) allowing you to record relevant events that are happening in your application using the API or instrumentations.
+
+For this step, you need the following dependencies:
+
+- `@opentelemetry/browser-sdk`: This package contains all the required components to set up logs.
+
+To install the dependencies, run the following command:
+
+```bash
+npm install @opentelemetry/browser-sdk
+```
+
+After the dependencies are installed, configure and register a LoggerProvider with the following code:
+
+:::{dropdown} Logger provider configuration
+```javascript
+import { startLogsSdk } from '@opentelemetry/browser-sdk/logs';
+
+// The logs SDK start function sets all necessary components and registers a provider
+// for instrumentations and calls to the API to emit logs
+const logsSdk = startLogsSdk({
+  resourceAttributes: OTEL_RESOURCE_ATTRIBUTES,
+  exportConfig: {
+    // Set the logs endpoint based on the config provided
+    url: `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/logs`,
+  },
+});
+```
+:::
+:::::
+
+
 :::::{step} (Optional) Configure metrics
 
-Similar to traces, configure a [MeterProvider](https://opentelemetry.io/docs/concepts/signals/metrics/#meter-provider) for metrics. A MeterProvider requires several components:
+Unlike other signals thre is no utility function in the upstream SDK. So you need to configure a [MeterProvider](https://opentelemetry.io/docs/concepts/signals/metrics/#meter-provider) for metrics. A MeterProvider requires several components:
 
-- **Resource**: The resource to be associated with the metrics created by the meters. You defined this in the second step.
+- **Resource**: The resource to be associated with the metrics created by the meters.
 - **Metric Reader**: Used to determine how often metrics are collected and what destination they should be exported to. In this case, use a `PeriodicExportingMetricReader` configured to collect and export metrics at a fixed interval.
 - **Metric Exporter**: Responsible for serializing and sending the collected and aggregated metric data to a backend observability platform. Use the OTLP/HTTP exporter.
 
 For this step, you need the following dependencies:
 
+- `@opentelemetry/api`: You need this package to register the meter provider globally.
+- `@opentelemetry/resources`: This package provides information about the SDK to be placed in the resource. This information helps Kibana identify the service type and the SDK that generated the telemetry.
 - `@opentelemetry/sdk-metrics`: This package contains all the required components to set up metrics.
 - `@opentelemetry/exporter-metrics-otlp-http`: This package contains the exporter for the HTTP/JSON protocol.
 
 To install the dependencies, run the following command:
 
 ```bash
-npm install @opentelemetry/sdk-metrics @opentelemetry/exporter-metrics-otlp-http
+npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/sdk-metrics @opentelemetry/exporter-metrics-otlp-http
 ```
 
 After the dependencies are installed, configure and register a MeterProvider with the following code:
@@ -252,8 +222,13 @@ After the dependencies are installed, configure and register a MeterProvider wit
 :::{dropdown} Meter provider configuration
 ```javascript
 import { metrics } from '@opentelemetry/api';
+import { defaultResource, resourceFromAttributes } from '@opentelemetry/resources';
 import { MeterProvider, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
+
+// set the resource for metics from the given attributes
+const resource = resourceFromAttributes(OTEL_RESOURCE_ATTRIBUTES)
+                  .merge(defaultResource());
 
 // Set the metrics endpoint based on the config provided
 const metricsEndpoint = `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/metrics`;
@@ -273,48 +248,6 @@ metrics.setGlobalMeterProvider(meterProvider);
 :::
 :::::
 
-:::::{step} (Optional) Configure logs
-
-Like traces and metrics, configure a [LoggerProvider](https://opentelemetry.io/docs/specs/otel/logs/sdk/#loggerprovider) if you want to record relevant events that are happening in your application using the API or instrumentations. A LoggerProvider requires several components:
-
-- **Resource**: The resource to be associated with the log records created by the loggers. You defined this in the second step.
-- **LogRecord Processor**: A component that manages the log records generated by the loggers and forwards them to a [LogExporter](https://opentelemetry.io/docs/specs/otel/logs/sdk/#logrecordexporter). The exporter should be configured to direct data to an endpoint designated for logs.
-- **Log Exporter**: Manages the transmission of log records to the Collector.
-
-For this step, you need the following dependencies:
-
-- `@opentelemetry/api-logs`: This package contains the logs API. This API is not yet included in the generic API package because logs are still experimental.
-- `@opentelemetry/sdk-logs`: This package contains all the required components to set up logs.
-- `@opentelemetry/exporter-logs-otlp-http`: This package contains the exporter for the HTTP/JSON protocol.
-
-To install the dependencies, run the following command:
-
-```bash
-npm install @opentelemetry/api-logs @opentelemetry/sdk-logs @opentelemetry/exporter-logs-otlp-http
-```
-
-After the dependencies are installed, configure and register a LoggerProvider with the following code:
-
-:::{dropdown} Logger provider configuration
-```javascript
-import { logs, SeverityNumber } from '@opentelemetry/api-logs';
-import { BatchLogRecordProcessor, LoggerProvider } from '@opentelemetry/sdk-logs';
-import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http';
-
-// Set the logs endpoint based on the config provided
-const logsEndpoint = `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/logs`;
-
-// Configure logging to send to the Collector
-const logExporter = new OTLPLogExporter({ url: logsEndpoint });
-
-const loggerProvider = new LoggerProvider({
-  resource: resource,
-  processors: [new BatchLogRecordProcessor(logExporter)]
-});
-logs.setGlobalLoggerProvider(loggerProvider);
-```
-:::
-:::::
 
 :::::{step} Register the instrumentations
 
@@ -324,38 +257,43 @@ With the OpenTelemetry SDK, resource attributes, and exporters already configure
 
 Install the following dependencies:
 
-- `@opentelemetry/instrumentation`: This package contains the core components of instrumentations along with some utilities.
-- `@opentelemetry/auto-instrumentations-web`: This package contains the more common instrumentations for web apps. Which are:
-  - `@opentelemetry/instrumentation-document-load`: This instrumentation package measures the time it took the document to load and also the load timings of its resources. More info at [instrumentation-document-load](https://www.npmjs.com/package/@opentelemetry/instrumentation-document-load).
-  - `@opentelemetry/instrumentation-fetch`: This instrumentation keeps track of your web application requests made through the Fetch API. More info at [instrumentation-fetch](https://www.npmjs.com/package/@opentelemetry/instrumentation-fetch).
-  - `@opentelemetry/instrumentation-xml-http-request`: This instrumentation keeps track of your web application requests made through the XMLHttpRequest API. More info at [instrumentation-xml-http-request](https://www.npmjs.com/package/@opentelemetry/instrumentation-xml-http-request).
-  - `@opentelemetry/instrumentation-user-interaction`: This instrumentation measures user interactions in your web application. More info at [instrumentation-user-interaction](https://www.npmjs.com/package/@opentelemetry/instrumentation-user-interaction).
-- `@opentelemetry/instrumentation-long-task`: This instrumentation is not part of the auto instrumentations package. It gathers information about long tasks being executed in your browser, helping to spot issues like unresponsive UI in your web application. More info at [instrumentation-long-task](https://www.npmjs.com/package/@opentelemetry/instrumentation-long-task).
+- `@opentelemetry/browser-instrumentation`: This package contains the core components of instrumentations along with some utilities. The different browser instrumentations are available under the `/experimental/` import path.
   
 To install the dependencies, run the following command:
 
 ```bash
-npm install @opentelemetry/instrumentation\
-      @opentelemetry/auto-instrumentations-web\
-      @opentelemetry/instrumentation-long-task
+npm install @opentelemetry/browser-instrumentation
 ```
 
 After the dependencies are installed, configure and register instrumentations with the following code:
 
 :::{dropdown} Instrumentations registration
 ```javascript
-import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
-import { LongTaskInstrumentation } from '@opentelemetry/instrumentation-long-task';
+import { ErrorsInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/errors';
+import { FetchInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/fetch';
+import { NavigationInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/navigation';
+import { NavigationTimingInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/navigation-timing';
+import { ResourceTimingInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/resource-timing';
+import { UserActionInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/user-action';
+import { WebVitalsInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/web-vitals';
+import { XhrInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/xhr';
 
+// Setup the instrumentations and enable them
+const instrumentations = [
+  new ErrorsInstrumentation(),
+  new FetchInstrumentation(),
+  new NavigationInstrumentation(),
+  new NavigationTimingInstrumentation(),
+  new ResourceTimingInstrumentation(),
+  new UserActionInstrumentation(),
+  new WebVitalsInstrumentation(),
+  new XhrInstrumentation(),
+];
 
-// Register instrumentations
-registerInstrumentations({
-  instrumentations: [
-    getWebAutoInstrumentations(),
-    new LongTaskInstrumentation(),
-  ],
-});
+for(const instr of instrumentations) {
+  instr.enable();
+}
+
 ```
 :::
 :::::
@@ -369,21 +307,13 @@ To install all the dependencies needed for the complete setup, run the following
 :::{dropdown} Install setup script dependencies
 ```bash
 npm install @opentelemetry/api\
-      @opentelemetry/core\
       @opentelemetry/resources\
-      @opentelemetry/opentelemetry-browser-detector\
-      @opentelemetry/sdk-trace-base\
-      @opentelemetry/sdk-trace-web\
       @opentelemetry/context-zone\
-      @opentelemetry/exporter-trace-otlp-http\
       @opentelemetry/sdk-metrics\
       @opentelemetry/exporter-metrics-otlp-http\
-      @opentelemetry/api-logs\
-      @opentelemetry/sdk-logs\
-      @opentelemetry/exporter-logs-otlp-http\
-      @opentelemetry/instrumentation\
-      @opentelemetry/auto-instrumentations-web\
-      @opentelemetry/instrumentation-long-task
+      @opentelemetry/browser-sdk\
+      @opentelemetry/browser-instrumentation
+      
 ```
 :::
 
@@ -392,88 +322,100 @@ After the dependencies are installed, you can wrap the setup in a function with 
 :::{dropdown} Complete setup script example
 ```javascript
 // file: telemetry.js
-import { diag, DiagConsoleLogger, trace, metrics } from '@opentelemetry/api';
-import { diagLogLevelFromString, SDK_INFO } from '@opentelemetry/core';
-import { resourceFromAttributes, detectResources } from '@opentelemetry/resources';
-import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
+import { metrics } from '@opentelemetry/api';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
-import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
-import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
+import { startTracesSdk } from '@opentelemetry/browser-sdk/traces';
+import { startLogsSdk } from '@opentelemetry/browser-sdk/logs';
 import { MeterProvider, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
-import { logs, SeverityNumber } from '@opentelemetry/api-logs';
-import { BatchLogRecordProcessor, LoggerProvider } from '@opentelemetry/sdk-logs';
-import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http';
-import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
-import { LongTaskInstrumentation } from '@opentelemetry/instrumentation-long-task';
+import { defaultResource, resourceFromAttributes } from '@opentelemetry/resources';
 
-const initDone = Symbol('OTEL initialized');
+import { ErrorsInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/errors';
+import { FetchInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/fetch';
+import { NavigationInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/navigation';
+import { NavigationTimingInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/navigation-timing';
+import { ResourceTimingInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/resource-timing';
+import { UserActionInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/user-action';
+import { WebVitalsInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/web-vitals';
+import { XhrInstrumentation } from '@opentelemetry/browser-instrumentation/experimental/xhr';
 
-// Expected properties of the config object:
-// - logLevel
-// - endpoint
-// - resourceAttributes
-export function initOpenTelemetry(config) {
+
+const isStarted = Symbol('OTEL started');
+
+/**
+ * @param {Object} config
+ * @param {string} config.logLevel
+ * @param {string} config.endpoint
+ * @param {Record<string, any>} config.resourceAttributes
+ */
+export function startOtel(config) {
   // To avoid multiple calls
-  if (window[initDone]) {
+  if (globalThis[isStarted]) {
     return;
   }
-  window[initDone] = true;
-  diag.setLogger(
-    new DiagConsoleLogger(),
-    { logLevel: diagLogLevelFromString(config.logLevel) },
-  );
-  diag.info('OTEL bootstrap', config);
 
-  // Resource definition
-  const resourceAttributes = { ...config.resourceAttributes, ...SDK_INFO };
-  const detectedResources = detectResources({ detectors: [browserDetector] });
-  const resource = resourceFromAttributes(resourceAttributes)
-                              .merge(detectedResources);
-
-  // Trace signal setup
-  const tracesEndpoint = `${config.endpoint}/v1/traces`;
-  const tracerProvider = new WebTracerProvider({
-    resource,
-    spanProcessors: [
-      new BatchSpanProcessor(new OTLPTraceExporter({
-        url: tracesEndpoint,
-      })),
-    ],
+  // The traces SDK start function sets all necessary components and registers a provider
+  // for instrumentations and calls to the API to start and end spans
+  const tracesSdk = startTracesSdk({
+    logLevel: config.logLevel,
+    resourceAttributes: config.resourceAttributes,
+    contextManager: new ZoneContextManager()
+    exportConfig: {
+      // Set the traces endpoint based on the config provided
+      url: `${config.endpoint}/v1/traces`,
+    },
   });
-  tracerProvider.register({ contextManager: new ZoneContextManager() })
 
-  // Metrics signal setup
-  const metricsEndpoint = `${config.endpoint}/v1/metrics`;
+  // The logs SDK start function sets all necessary components and registers a provider
+  // for instrumentations and calls to the API to emit logs
+  const logsSdk = startLogsSdk({
+    logLevel: config.logLevel,
+    resourceAttributes: config.resourceAttributes,
+    exportConfig: {
+      // Set the logs endpoint based on the config provided
+      url: `${config.endpoint}/v1/logs`,
+    },
+  });
+
+  // set the resource for metics from the given attributes
+  const resource = resourceFromAttributes(OTEL_RESOURCE_ATTRIBUTES)
+                  .merge(defaultResource());
+
+  // Set the metrics endpoint based on the config provided
+  const metricsEndpoint = `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/metrics`;
+
+  // Create metric reader to process metrics and export using OTLP
   const metricReader = new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({ url: metricsEndpoint }),
   });
+
+  // Create meter provider to send metrics
   const meterProvider = new MeterProvider({
-    resource: resource,
+    resource: resource,  // All metrics will be associated with this resource
     readers: [metricReader],
   });
   metrics.setGlobalMeterProvider(meterProvider);
 
-  // Logs signal setup
-  const logsEndpoint = `${config.endpoint}/v1/logs`;
-  const logExporter = new OTLPLogExporter({ url: logsEndpoint });
+  // Setup the instrumentations and enable them
+  const instrumentations = [
+    new ErrorsInstrumentation(),
+    new FetchInstrumentation(),
+    new NavigationInstrumentation(),
+    new NavigationTimingInstrumentation(),
+    new ResourceTimingInstrumentation(),
+    new UserActionInstrumentation(),
+    new WebVitalsInstrumentation(),
+    new XhrInstrumentation(),
+  ];
 
-  const loggerProvider = new LoggerProvider({
-    resource: resource,
-    processors: [new BatchLogRecordProcessor(logExporter)]
-  });
-  logs.setGlobalLoggerProvider(loggerProvider);
+  for(const instr of instrumentations) {
+    instr.enable();
+  }
 
-  // Register instrumentations
-  registerInstrumentations({
-    instrumentations: [
-      getWebAutoInstrumentations(),
-      new LongTaskInstrumentation(),
-    ],
-  });
+  globalThis[isStarted] = true;
+  diag.info('OpenTelemetry started', config);
 }
+
 ```
 :::
 :::::
@@ -496,10 +438,10 @@ For example, if you're using Webpack, you can import the code like this:
 :::{dropdown} Example: Import telemetry.js in your app
 
 ```javascript
-import { initOpenTelemetry } from 'telemetry.js';
+import { startOtel } from 'telemetry.js';
 
-initOpenTelemetry({
-  logLevel: 'info',
+startOtel({
+  logLevel: 'INFO',
   endpoint: 'https://proxy.example.com',
   resourceAttributes: {
     'service.name': 'my-web-app',
@@ -576,8 +518,8 @@ Add a `<script>` tag to load the bundle and use the `initOpenTelemetry` global f
 ```html
 <script src="./js/telemetry.umd.js"></script>
 <script>
-  initOpenTelemetry({
-    logLevel: 'info',
+  startOtel({
+    logLevel: 'INFO',
     endpoint: 'https://proxy.example.com',
     resourceAttributes: {
       'service.name': 'my-web-app',
@@ -603,7 +545,7 @@ Loading the script asynchronously ensures the agent script doesn't block other r
     document,
     'script',
     {
-      logLevel: 'info',
+      logLevel: 'INFO',
       endpoint: 'https://proxy.example.com',
       resourceAttributes: {'service.name': 'my-web-app', 'service.version': '1'} }
   )
@@ -736,9 +678,9 @@ If you see errors like "Cannot find module" or bundler-specific issues:
 
 1. Ensure all required packages are installed and listed in `package.json`.
 
-2. Different bundlers (Webpack, Rollup, Vite) may require specific configuration for OpenTelemetry packages.
+2. Different bundlers (Webpack, Rollup, Vite) might require specific configuration for OpenTelemetry packages.
 
-3. For Webpack, you may need to add polyfills for Node.js modules. Add this to your Webpack config:
+3. For Webpack, you might need to add polyfills for Node.js modules. Add this to your Webpack config:
 
 ```javascript
 resolve: {
@@ -753,7 +695,7 @@ resolve: {
 
 ```javascript
 optimizeDeps: {
-  include: ['@opentelemetry/api', '@opentelemetry/sdk-trace-web']
+  include: ['@opentelemetry/api']
 }
 ```
 
@@ -853,7 +795,7 @@ const OTEL_LOG_LEVEL = 'debug';
 CORS errors are the most common issue with browser-based RUM. Symptoms include:
 
 - Network requests blocked in the browser console
-- Error messages like "Access to fetch at '...' from origin '...' has been blocked by CORS policy"
+- Browser console messages that fetch requests were blocked by CORS policy
 
 1. Verify CORS configuration: If using a reverse proxy, ensure the CORS headers are correctly configured. The `Access-Control-Allow-Origin` header must match your web application's origin.
 
@@ -939,7 +881,7 @@ initOpenTelemetry({...});
 import { MyApp } from './app.js';
 ```
 
-2. Some bundlers may remove OpenTelemetry code if it appears unused. Use `/* @preserve */` comments or configure your bundler to keep it.
+2. Some bundlers might remove OpenTelemetry code if it appears unused. Use `/* @preserve */` comments or configure your bundler to keep it.
 
 3. Verify the script path is correct and the file is being served:
 
