@@ -13,6 +13,8 @@ description: Add a runtime field to a data view from Discover when your data lac
 
 If you forgot to define an important value as a separate field, or you want to combine two fields and treat them as one, you can add a [runtime field](../../manage-data/data-store/mapping/runtime-fields.md) to your data view without leaving **Discover**. You can then use the new field for analysis and visualizations the same way you use other fields.
 
+In {{esql}} mode, add the value to your query with [`EVAL`](elasticsearch://reference/query-languages/esql/commands/eval.md) instead. The new column then appears in the field list.
+
 ## Before you begin
 
 Open **Discover** in classic mode and select the data view that you want to add the field to. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).

@@ -19,23 +19,57 @@ type: overview
 :screenshot:
 :::
 
-**Discover** has two query modes. In {{esql}} mode, a query defines the data, so you don't need a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene.
+## Query modes [query-modes]
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Discover** opens in {{esql}} mode by default. To use data views with KQL or Lucene, switch to classic mode. Refer to [Switch between {{esql}} and classic mode](discover/switch-esql-mode.md).
+Discover has two query modes that you can [switch between](discover/switch-esql-mode.md):
 
-## Where to go next
+- {{esql}} mode queries your {{es}} data directly, without a data view.
+- Classic mode uses [data views](find-and-organize/data-views.md) with [KQL](query-filter/languages/kql.md) or [Lucene](query-filter/languages/lucene-query-syntax.md) queries to filter your data.
 
-* **[Introduction to Discover](discover/discover-get-started.md)** - See what **Discover** shows you, what people use it for, and where to find the guide for each task.
-* **[Get started with {{esql}} in Discover](discover/try-esql.md)** - Run your first {{esql}} query on sample data, step by step.
-* **[Use Discover with {{esql}}](discover/use-esql.md)** - Find the Discover tasks that are specific to {{esql}} mode.
-* **[Use Discover in classic mode](discover/use-classic-mode.md)** - Find the tasks that are specific to classic mode, such as searching with KQL or Lucene and adding filters.
-* **[Customize the Discover view](discover/document-explorer.md)** - Adjust the layout, columns, and display options to suit your needs.
-* **[Save a Discover session for reuse](discover/save-open-search.md)** - Save your Discover sessions and add them to dashboards.
+The mode that Discover opens in depends on your version:
 
-## More guides
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Discover opens in {{esql}} mode.
+- {applies_to}`stack: ga 9.0-9.5` Discover opens in classic mode.
 
-* [Inspect documents and requests in Discover](discover/inspect-documents.md)
-* [Run queries in the background](discover/background-search.md)
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Detect change points in time series data](discover/detect-change-points.md)
-* [Search for relevance](discover/discover-search-for-relevance.md)
-* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` [Analyze your data with AI in Discover](discover/analyze-discover-data-with-ai.md)
+The steps for a task can differ between the two modes, and a few tasks work in only one. The guide for each task says which mode it covers.
+
+## What you can do with Discover [what-you-can-do]
+
+**Query your data**
+
+* Check how each query mode available in Discover can help you search and filter your data: [{{esql}} mode](discover/use-esql.md) and [classic mode](discover/use-classic-mode.md).
+* [Open Discover from a dashboard panel](dashboards/create-discover-drilldown.md) with a drilldown.
+* Learn how to handle long-running queries with [background search](discover/background-search.md).
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Keep [several explorations open side by side](discover/work-with-tabs.md) in tabs.
+
+**Shape what your queries return and show**
+
+* [Customize the Discover view](discover/document-explorer.md) to show the columns, density, and layout you need.
+* See how your {{esql}} query can change [the results table](discover/esql-results.md).
+* Add [variable controls](discover/esql-variable-controls.md) to make your {{esql}} query dynamic without having to duplicate it.
+* Add [runtime fields](discover/add-fields-to-data-views.md) to your views in classic mode.
+* [Sort your results by relevance](discover/discover-search-for-relevance.md).
+
+**Understand your data**
+
+* Explore [individual results and documents](discover/inspect-documents.md).
+* See [which fields your data has](discover/explore-fields.md) and what they contain.
+* [Compare documents](discover/compare-documents.md) side by side.
+* Find patterns in your log data with [pattern analysis](discover/run-pattern-analysis-discover.md) in classic mode, or with an [{{esql}} query that groups by pattern](discover/inspect-grouped-stats.md).
+* Check [how the values of each field are distributed](discover/show-field-statistics.md) (classic mode only).
+* [Chart a field](discover/visualize-field.md) from the fields list (classic mode only).
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Detect change points](discover/detect-change-points.md) in a time series ({{esql}} mode only).
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` [Analyze your data with AI](discover/analyze-discover-data-with-ai.md) ({{esql}} mode only).
+
+**Save and share your explorations**
+
+* [Save sessions](discover/save-open-search.md#_save_a_discover_session) to reuse your queries, filters, and views later.
+* [Add Discover content to dashboards](discover/save-open-search.md#_add_search_results_to_a_dashboard), as charts, tables, or whole sessions.
+* [Export your results](report-and-share.md#manually-generate-reports) as a file. For the limits of large CSV exports, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
+* [Copy results](discover/copy-and-share-documents.md#copy-row-content) as text, JSON, or Markdown, or [share a link](discover/copy-and-share-documents.md#share-your-findings) to a session or a document.
+* [Create an alert rule](discover/generate-alerts-from-discover.md) from the query and filters of a session.
+
+## Next steps [next-steps]
+
+- [Introduction to Discover](discover/discover-get-started.md): See what Discover shows you and what people use it for.
+- [Get started with {{esql}} in Discover](discover/try-esql.md): Build your first {{esql}} query step by step.

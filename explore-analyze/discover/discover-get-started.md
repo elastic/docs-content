@@ -71,35 +71,9 @@ Tabs
 
 To learn how the modes differ and what happens to your query when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md). For the tasks in each mode, refer to [Use Discover with {{esql}}](use-esql.md) and [Use Discover in classic mode](use-classic-mode.md).
 
-## How you work in Discover
+## Find the guide for your task [find-a-guide]
 
-### Get the data you need
-
-Pick a query mode, then select the data and the time range, and narrow the results with a query.
-
-- In {{esql}} mode, write a query that starts from a data source. The editor helps you [browse data sources and fields](browse-esql-sources.md), [change values without rewriting the query](esql-variable-controls.md), and [write or fix queries with AI](../query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
-- In classic mode, [select a data view and a time range](use-classic-mode.md#find-the-data-you-want-to-use), then [search and filter with KQL, Lucene, and filters](search-and-filter-classic.md).
-- To keep working while a long query runs, [run it in the background](background-search.md).
-
-### Shape and read the results
-
-Control what the table and the chart show, and learn what your fields contain.
-
-- To change columns, sorting, density, or switch to the JSON view, refer to [Customize the Discover view](document-explorer.md).
-- To check what a field contains, refer to [Explore the fields in your data](explore-fields.md).
-- To filter, sort, and keep the chart or the table from {{esql}} results, refer to [Work with {{esql}} results in Discover](esql-results.md).
-- To run several explorations side by side, refer to [Run multiple explorations with tabs](work-with-tabs.md).
-- To rank results by how well they match a search, refer to [Search for relevance](discover-search-for-relevance.md).
-
-### Take it further
-
-Look closer at a result, turn it into a chart, and keep or share your work.
-
-- To read every field of a result or compare results, refer to [Inspect documents and requests in Discover](inspect-documents.md) and [Compare documents](compare-documents.md).
-- To turn results into a visualization, refer to [Keep the chart or the table](esql-results.md#_edit_the_esql_visualization). In classic mode, you can also [visualize a field](visualize-field.md).
-- To keep a session and use it in dashboards, refer to [Save a Discover session for reuse](save-open-search.md).
-- To copy results or share links, refer to [Copy results and share links to documents](copy-and-share-documents.md).
-- To be notified when data crosses a threshold, refer to [Create an alert rule from Discover](generate-alerts-from-discover.md).
+To find the guide for what you want to do, such as searching your data, shaping the table, or saving your work, refer to [What you can do with Discover](../discover.md#what-you-can-do).
 
 ## Context-aware experiences [context-aware-discover]
 
