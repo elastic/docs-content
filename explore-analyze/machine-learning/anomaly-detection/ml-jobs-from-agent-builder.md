@@ -1,6 +1,6 @@
 ---
-navigation_title: Anomaly detection jobs in chat
-description: Describe what you want to monitor in chat. An Elastic Agent Builder agent tests anomaly detection jobs on historical data, then creates them for real-time use.
+navigation_title: Anomaly detection jobs with AI
+description: Describe what you want to monitor. An AI agent in Elastic Agent Builder tests anomaly detection jobs on historical data, then creates them for real-time use.
 applies_to:
   serverless: experimental
   stack: experimental 9.6
@@ -10,11 +10,11 @@ products:
   - id: kibana
 ---
 
-# Create {{anomaly-jobs}} in chat
+# Create {{anomaly-jobs}} with AI in chat
 
-If you know what you want to monitor but not how to configure an {{anomaly-job}}, you can describe it in a chat with {{agent-builder}}. Instead of choosing a job wizard and its settings, you answer questions about your goal in everyday language. The agent looks at your data, proposes a setup, and tries it on your historical data first, so you can review the results before anything runs in real time.
+If you know what you want to monitor but not how to configure an {{anomaly-job}}, you can describe it to an AI agent in {{agent-builder}}. Instead of choosing a job wizard and its settings, you answer questions about your goal in everyday language. The agent looks at your data, proposes a setup, and tries it on your historical data first, so you can review the results before anything runs in real time.
 
-The agent's questions and the setup it proposes can differ from one conversation to the next. You stay in control: nothing is created for real-time use, and nothing is deleted, until you say so.
+The agent uses a large language model, so its questions and the setup it proposes can differ from one conversation to the next. You stay in control: nothing is created for real-time use, and nothing is deleted, until you say so.
 
 ## Before you begin
 
