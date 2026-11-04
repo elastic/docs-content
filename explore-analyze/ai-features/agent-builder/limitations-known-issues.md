@@ -96,10 +96,26 @@ Fixed on {{serverless-short}} and in 9.6 and later. Refer to [Stream responses](
 
 The sub-agent run itself doesn't fail. The tool call returns an error result and the sub-agent continues, so the sub-agent can report the declined action in its output.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` A2A executions behave differently: the action isn't declined. Instead, the conversation round stays in the `awaiting_prompt` state, but A2A clients can't respond to the prompt. How the client sees the paused round depends on the method:
+A2A executions behave differently: the action isn't declined. Instead, the conversation round stays in the `awaiting_prompt` state, but A2A clients can't respond to the prompt.
 
-* [`message/send`](a2a-server.md#send-messages): The response doesn't show that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [`message/stream`](a2a-server.md#stream-responses): The stream ends with a status update in the `input-required` state. The update describes the prompt.
+:::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+What the client sees depends on the method:
+
+* [`message/send`](a2a-server.md#send-messages): Nothing in the response shows that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+* [`message/stream`](a2a-server.md#stream-responses): The stream ends with a status update in the `input-required` state that describes the prompt.
+
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
+
+A2A clients use [`message/send`](a2a-server.md#send-messages), and nothing in the response shows that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+
+:::
+
+:::::
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) follows the same rule in sub-agent runs and in [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent): it declines any {{es}} or {{kib}} API operation that requires [confirmation](chat.md#confirm-an-api-operation), unless the operation is approved in advance. You can approve operations in advance in these ways:
 
