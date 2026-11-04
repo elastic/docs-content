@@ -5,6 +5,7 @@ applies_to:
     eck: ga 3.6
 products:
   - id: cloud-kubernetes
+description: Configure ECK to use Wolfi-based container images for Elastic Stack components for a smaller CVE footprint.
 ---
 
 # Use Wolfi images for stack components on ECK
