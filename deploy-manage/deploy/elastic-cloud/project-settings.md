@@ -116,6 +116,19 @@ In addition to the retention period you set for each data stream, {{sec-serverle
 
 {{es-serverless}} and {{obs-serverless}} projects also provide a shortcut: the **Data Retention** option in the **Search AI Lake settings** tab opens the **Data Streams** tab directly. {{es}} {{vectordb}} projects don't include this option in the **Search AI Lake settings** tab.
 
+### Configure the Search Boost Window
+
+For {{es-serverless}} projects, the Search Boost Window defaults to 7 days. To edit it:
+
+1. Open the project settings as described at the start of this page.
+2. In **Search AI Lake settings**, find **Search Boost Window** and click **Edit**.
+3. Select 3 or 7 days, or select **Enter custom value** and enter a value from 1 through 180 days.
+4. Click **Save**.
+
+During a trial, the maximum Search Boost Window is 7 days.
+
+The setting applies to time series data with a concrete `@timestamp` field. Data outside the window remains searchable, but it is no longer considered search-ready. Increasing the window keeps more data search-ready and can provide faster searches at a higher baseline resource cost. Decreasing it reduces the search-ready data volume and baseline cost, but searches over older data can have different latency.
+
 ## Project features and add-ons [project-features-add-ons]
 ```{applies_to}
 serverless:
