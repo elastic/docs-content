@@ -22,7 +22,7 @@ New to vector search? Start with [{{es}} vector and full-text search in 10 minut
 
 ## Get started with vector search [vector-search-get-started]
 
-- To select a {{serverless-short}} project type, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type). {{vectordb}} projects use the `vectordb_document` index mode only and don't support custom models on {{ml}} nodes. For the full list of differences from {{ech}}, refer to [{{es}} {{vectordb}} project differences](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-vector-database).
+- To select a {{serverless-short}} project type, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type). For the differences between {{serverless-short}} project types and from {{ech}}, refer to [{{es}} {{vectordb}} project differences](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-vector-database).
 - If you're new to semantic search, start with the [semantic search quickstart](get-started/semantic-search.md), which uses the managed `semantic_text` workflow.
 - To explore common applications and implementation approaches, refer to [Vector search use cases](vector/vector-search-use-cases.md).
 
