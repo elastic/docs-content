@@ -49,12 +49,14 @@ Each {{az-hunt-finding}} appears in its {{az-investigation}}, with the finding's
 
 #### How {{alertzero}} builds {{az-threat-reports}} [alertzero-threat-reports]
 
-{{alertzero}} builds {{az-threat-reports}} for you from public threat feeds, so you don't need to set up the feeds yourself. When you turn on {{az-continuous-threat-hunt}}, {{alertzero}} turns on two threat intelligence workflows that run every 4 hours, in this order.
+{{alertzero}} builds {{az-threat-reports}} for you from public threat feeds, so you don't need to set up the feeds yourself. When you turn on {{az-continuous-threat-hunt}}, {{alertzero}} turns on three threat intelligence supply workflows. **Ingest threat feeds** and **Enrich threat report** each run every 4 hours in the default space. **Attribute alerts to reports** runs every hour in the current space.
+
+**Enrich threat report** works on the reports that **Ingest threat feeds** saves:
 
 1. **Ingest threat feeds** collects new articles from the [supported threat feeds](#alertzero-threat-feeds) and saves each one as a {{az-threat-report}}. It skips articles more than 30 days old and articles it already collected in the last 90 days.
 2. **Enrich threat report** checks that each report contains threat intelligence, then extracts details such as indicators of compromise (IOCs), attacker behaviors, and severity. {{az-continuous-threat-hunt}} ignores reports that fail the check. For the full list of details, refer to [](#alertzero-threat-report-contents).
 
-All spaces in your deployment share both workflows, so every space gets the same reports. A third workflow, **Attribute alerts to reports**, then counts the alerts in each space that match each report.
+All spaces in your deployment share **Ingest threat feeds** and **Enrich threat report**, so every space gets the same reports. **Attribute alerts to reports** counts the alerts in its space that match each report.
 
 :::{tip}
 After you first turn on {{az-continuous-threat-hunt}}, **Enrich threat report** might need several runs to process all the collected reports. It processes up to 50 reports per run, oldest first. Until then, {{az-continuous-threat-hunt}} hunts with only the reports processed so far.
@@ -71,7 +73,7 @@ For each {{az-threat-report}} that contains threat intelligence, **Enrich threat
 
 #### Supported threat feeds [alertzero-threat-feeds]
 
-**Ingest threat feeds** checks these public feeds for new articles. You can't add your own feeds or change this list.
+**Ingest threat feeds** checks these public feeds for new articles. You can't add your own feeds. The list is fixed.
 
 | Feed | Publisher |
 | --- | --- |
