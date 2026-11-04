@@ -1,12 +1,9 @@
 ---
 navigation_title: Kubernetes
-description: Step-by-step guide for setting up the {{agent}} and SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
+description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
-  stack:
   serverless:
-    observability:
-  product:
-    edot_collector: ga
+    observability: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -15,7 +12,7 @@ products:
 
 # Quickstart for Kubernetes on Elastic Cloud Serverless
 
-Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs and application traces.
+Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs, and application traces.
 
 ## Guided setup
 
@@ -24,7 +21,8 @@ Learn how to set up the {{agent}} and EDOT SDKs in a Kubernetes environment with
 
 ## Prerequisites
 
-To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and including {{helm-version}}.
+- Helm version 3.9+ up to and including {{helm-version}}, required by the OpenTelemetry Kube Stack chart.
+- A user with the **Admin** role or higher. Both the guided setup and the manual installation steps create an {{es}} API key, which requires the `manage_own_api_key` cluster privilege.
 
 ## Manual installation
 
@@ -91,7 +89,7 @@ The OpenShift values file configures the chart to run with least privilege, incl
 
 ::::{step} Auto-instrument applications
 
-Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet` or `go`) in the following command. 
+Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet`, or `go`) in the following command. 
 
 ```bash
 kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
@@ -102,9 +100,21 @@ The OpenTelemetry Operator automatically provides the OTLP endpoint configuratio
 For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](opentelemetry://reference/edot-sdks/index.md).
 ::::
 
+::::{step} Install the content packs
+
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then install both content packs:
+
+1. Search for **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)**, open the integration, and select **Install Kubernetes OpenTelemetry Assets**.
+2. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+
+If an integration doesn't appear in the search results, turn on **Display beta integrations**.
+
+::::
+
 ::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 ::::
 
@@ -114,7 +124,7 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 The following issues might occur.
 
-### API Key prefix not found
+### API key prefix not found
 
 The following error is due to an improperly formatted API key:
 
@@ -126,6 +136,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: Too many requests
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

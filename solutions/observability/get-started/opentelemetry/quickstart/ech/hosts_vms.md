@@ -1,6 +1,6 @@
 ---
 navigation_title: Hosts and VMs
-description: Learn how to set up the {{agent}} and EDOT SDKs with Elastic Cloud Hosted to collect host metrics, logs, and application traces using the Managed OTLP Endpoint.
+description: Learn how to set up Elastic Agent and EDOT SDKs with Elastic Cloud Hosted to collect host metrics, logs, and application traces using the Managed OTLP Endpoint.
 applies_to:
   deployment:
     ech: ga
@@ -12,12 +12,13 @@ products:
 
 # Quickstart for hosts and VMs on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
+Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md), which is the recommended ingestion path for ECH.
 
 ## Prerequisites
 
 - An {{ech}} deployment running version 9.0 or later.
 - The host or VM running a supported operating system (Linux, macOS, or Windows).
+- A user with the **Integrations: All** and **Fleet: Agent policies: All** {{kib}} privileges to install the content packs. The manual installation steps also need the `manage_own_api_key` cluster privilege to create the API key.
 
 ## Guided setup
 
@@ -133,11 +134,25 @@ To collect telemetry from applications and use the {{agent}} as a gateway, instr
 
 Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 
+:::{tip}
+:applies_to: stack: preview 9.1+
+Enable central configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [Central configuration for EDOT SDKs](opentelemetry://reference/central-configuration.md).
+:::
+
+:::::
+
+:::::{step} Install the content pack
+
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+
+If the integration doesn't appear in the search results, turn on **Display beta integrations**.
+
 :::::
 
 :::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 :::::
 ::::::

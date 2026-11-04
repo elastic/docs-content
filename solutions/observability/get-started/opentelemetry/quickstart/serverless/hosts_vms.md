@@ -1,21 +1,24 @@
 ---
 navigation_title: Hosts and VMs
-description: Step-by-step guide for setting up the {{agent}} and SDKs on Elastic Cloud Serverless to collect host metrics, logs, and application traces via OTLP.
+description: Step-by-step guide for setting up Elastic Agent and EDOT SDKs on Elastic Cloud Serverless to collect host metrics, logs, and application traces using OTLP.
 applies_to:
-  stack:
   serverless:
-    observability:
-  product:
-    edot_collector: ga
+    observability: ga
 products:
   - id: cloud-serverless
   - id: observability
   - id: edot-collector
 ---
 
-#  Quickstart for hosts / VMs on Elastic Cloud Serverless
+# Quickstart for hosts and VMs on Elastic Cloud Serverless
 
 Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless project.
+
+## Prerequisites
+
+- An active {{obs-serverless}} project.
+- The host or VM running a supported operating system (Linux, macOS, or Windows).
+- A user with the **Admin** role or higher. Both the guided setup and the manual installation steps create an {{es}} API key, which requires the `manage_own_api_key` cluster privilege.
 
 ## Guided setup
 
@@ -104,7 +107,7 @@ sudo ./otelcol --config otel.yml
 ::::
 
 ::::{note}
-The Collector opens ports `4317` and `4318` to receive application data from locally running OTel SDKs without authentication. This allows the SDKs to send data without any further configuration needed as they use this endpoint by default.
+By default, the Collector opens ports `4317` and `4318` to receive application data from locally running EDOT SDKs. The ports require no authentication, so the SDKs send data without further configuration because they use this endpoint by default.
 ::::
 :::::
 
@@ -124,9 +127,18 @@ instrument your target applications following the setup instructions:
 Configure your SDKs to send the data to the local {{agent}} using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 :::::
 
+:::::{step} Install the content pack
+
+In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
+
+If the integration doesn't appear in the search results, turn on **Display beta integrations**.
+
+:::::
+
 :::::{step} Explore your data
 
-Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+:::{include} ../../_snippets/explore-your-data.md
+:::
 
 :::::
 ::::::
@@ -135,7 +147,7 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 The following issues might occur.
 
-### API Key prefix not found
+### API key prefix not found
 
 The following error is due to an improperly formatted API key:
 
@@ -147,6 +159,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: Too many requests
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

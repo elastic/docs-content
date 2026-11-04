@@ -93,7 +93,7 @@ Use one of these methods:
 
 :::::
 
-For a full end-to-end setup guide, refer to [Quickstart: Unified Kubernetes Observability with {{edot}}](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md).
+For a full end-to-end setup guide, refer to the [{{edot}} {{k8s}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
 On {{stack}} versions before 9.6, use these dashboards for {{k8s}} pods as well.
 
