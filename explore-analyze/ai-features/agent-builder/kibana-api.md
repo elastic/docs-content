@@ -1069,10 +1069,11 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 This example calls the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) as a user-managed service account. The account needs the privileges described in [Service accounts](permissions.md#service-accounts).
 
-Before you send the request:
+Send this request with `curl` or another HTTP client. Dev Tools Console runs as the signed-in user, not as the service account, so this example has no Console version.
 
-- Set `SERVICE_ACCOUNT_TOKEN` to the account's service token. The request sends it in a `Bearer` authorization header, which {{kib}} accepts by default. If you changed the accepted schemes, refer to [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#http-authentication).
-- Use `curl` or another HTTP client. Dev Tools Console runs as the signed-in user, not as the service account.
+Before you send the request, set `SERVICE_ACCOUNT_TOKEN` to the account's service token. The request sends the token in a `Bearer` authorization header, which {{kib}} accepts by default. If you changed the accepted schemes, refer to [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#http-authentication).
+
+% After elastic/docs-content#8921 merges, replace the Bearer sentences with a link to authenticate-kibana-api-with-service-account.md.
 
 This example creates a public conversation. To create a private conversation that only the account can access, omit `access_control`.
 
@@ -1091,17 +1092,19 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 :::{include} _snippets/spaces-api-note.md
 :::
 
-The response identifies the service account as the author of the message:
+The response's `author` object identifies the service account as the author of the message:
 
 ```json
-"author": {
-  "id": "service_account:kibana/automation",
-  "type": "service_account",
-  "username": "kibana/automation"
+{
+  "author": {
+    "id": "service_account:kibana/automation",
+    "type": "service_account",
+    "username": "kibana/automation"
+  }
 }
 ```
 
-Because this request creates the conversation, the service account also owns it, and the conversation's `user` object has the same values.
+When you [get the conversation]({{kib-apis}}operation/operation-get-agent-builder-conversations-conversation-id), its `user` object, which identifies the owner, has the same values.
 
 **Example:** Chat with an agent and stream events
 
@@ -1456,7 +1459,7 @@ Each request replaces the entire access control. To stop sharing, send `private`
 
 The `id` of each entry is a {{kib}} user profile ID, not a username.
 
-{applies_to}`serverless: unavailable` To add a [service account](permissions.md#service-accounts) as a member, use `service_account:` followed by the account name as the `id`, for example `service_account:kibana/automation`. Keep `type` set to `user`.
+{applies_to}`serverless: unavailable` To add a [service account](permissions.md#service-accounts) as a member, use `service_account:` followed by the account's principal as the `id`, such as `service_account:kibana/automation`. Keep `type` set to `user`.
 
 ::::{tab-set}
 :group: api-examples
@@ -1516,7 +1519,7 @@ Keep these constraints in mind:
 - Each user can appear only once. Repeated IDs are rejected.
 - `member` is the only supported role, and `user` is the only supported entry type.
 - An entry that names the owner is accepted but not stored.
-- Entry IDs are not validated. An ID that does not match a real user profile or service account is stored anyway. It grants access only if a matching principal exists later, such as a service account created afterward.
+- Entry IDs are not validated. An ID that does not match an existing user profile or service account is stored anyway. It grants access if a matching service account is created later.
 - If you do not own the conversation, the request fails with a `404` error rather than a permissions error.
 
 ### Get A2A agent card configuration

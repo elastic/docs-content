@@ -31,4 +31,4 @@ Most users will probably want to integrate with Agent Builder using MCP or A2A, 
 
 To authenticate a programmatic client with an API key, refer to [Create API keys for {{agent-builder}} APIs](api-keys.md). MCP hosts can also use OAuth on {{serverless-short}}. Refer to [MCP server authentication](mcp-server.md#mcp-server-authentication).
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` A user-managed service account can also call the {{agent-builder}} APIs and MCP server with a service token. Refer to [Service accounts](permissions.md#service-accounts).
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` A user-managed service account can also call the {{agent-builder}} APIs with a service token. Refer to [Service accounts](permissions.md#service-accounts).
