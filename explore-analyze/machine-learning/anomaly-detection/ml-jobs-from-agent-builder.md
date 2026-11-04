@@ -21,7 +21,8 @@ Because the agent uses a large language model, its questions and the setup it pr
 * Turn on the `agentBuilder:experimentalFeatures` [advanced setting](/explore-analyze/ai-features/agent-builder/get-started.md#enable-experimental-features-optional). The `anomaly-detection` skill doesn't appear without it.
 * Use an agent that has the [`anomaly-detection` skill](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-anomaly-detection-skill). The default Elastic AI Agent has it because [Elastic capabilities](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#elastic-capabilities) are on by default. For a custom agent, turn on Elastic capabilities or assign the skill to the agent.
 * Make sure your user has the {{kib}} and {{es}} privileges to create and run {{anomaly-jobs}}. Refer to [Setting up machine learning](../setting-up-machine-learning.md#setup-privileges).
-* Have time series data in {{es}}. The agent reads the data through a {{dfeed}}, so it can't create jobs for data outside {{es}}.
+* Have time series data in {{es}}, such as logs or metrics, with a timestamp field.
+
 ## Create jobs with the agent
 
 1. [Start a chat](/explore-analyze/ai-features/agent-builder/chat.md) with an agent that has the `anomaly-detection` skill. Describe what you want to detect and where your data is. For example: `Detect unusual error rates per host in my nginx access logs.`
