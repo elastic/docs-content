@@ -11,9 +11,9 @@ products:
 
 # Escalate an {{az-investigation}}
 
-Escalate an {{az-investigation}} when it needs a coordinated response from more than one person. An [{{az-escalation}}](glossary.md#alertzero-glossary-escalation) brings related {{az-investigations}} together with their attachments, a summary, and assignees, and you choose who can see it.
+Escalate an {{az-investigation}} when you need to work on it with other people, whether to coordinate a broader response or to collaborate privately with a smaller group. An {{az-escalation}} brings related {{az-investigations}} together with their attachments, a summary, and assignees, and you choose who can see it.
 
-{{alertzero}} doesn't create {{az-escalations}} for you. You create each one yourself, and you become its owner. As the owner, you're the only person who can later change who can see it. Escalating doesn't close the {{az-investigation}} or change its status, assignees, or contents. Closing the {{az-escalation}} later closes the open {{az-investigations}} linked to it.
+You create each {{az-escalation}} yourself; AlertZero doesn't create them for you. When you create one, you become its owner, and only the owner can change its visibility later. Escalating an {{az-investigation}} doesn't close it or change its status, assignees, or contents. When you close the {{az-escalation}}, its linked open {{az-investigations}} close too.
 
 ::::{admonition} Requirements
 * You need the **Agentic Investigations**: **Manage escalations** sub-feature privilege to create an {{az-escalation}} or add an {{az-investigation}} to one. To learn more, refer to [](/solutions/security/alertzero/alertzero-privileges.md).
