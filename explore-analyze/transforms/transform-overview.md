@@ -20,7 +20,7 @@ You can choose either of the following methods to transform your data: [pivot](#
 
 ::::
 
-Transforms are persistent tasks; they are stored in cluster state which makes them resilient for node failures. Their configuration, state, and checkpoints are stored in internal {{es}} indices. Refer to [How checkpoints work](transform-checkpoints.md) and [Error handling](transform-checkpoints.md#ml-transform-checkpoint-errors) to learn more about the machinery behind transforms.
+Transforms are persistent tasks. They are stored in cluster state, which makes them resilient for node failures. Their configuration, state, and checkpoints are stored in internal {{es}} indices. Refer to [How checkpoints work](transform-checkpoints.md) and [Error handling](transform-checkpoints.md#ml-transform-checkpoint-errors) to learn more about the machinery behind transforms.
 
 ## Pivot transforms [pivot-transform-overview]
 

@@ -65,7 +65,7 @@ If it’s required, you may define custom mappings prior to starting the transfo
 
 ### Batch transforms may not account for changed documents [transform-batch-limitations]
 
-A batch transform uses a [composite aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md) which allows efficient pagination through all buckets. By default, transforms page through the source with a [point in time]({{es-apis}}operation/operation-open-point-in-time), which gives the search a consistent view of the data. Point in time is not used when `use_point_in_time` is set to `false`, when the source includes remote clusters, or when {{cps}} is enabled. When point-in-time is disabled, if the source data is changed (deleted, updated, added) while the batch {{dataframe}} is in progress, then the results may not include these changes.
+A batch transform uses a [composite aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md) which allows efficient pagination through all buckets. By default, transforms page through the source with a [point in time]({{es-apis}}operation/operation-open-point-in-time), which gives the search a consistent view of the data. Point in time is not used when `use_point_in_time` is set to `false`, when the source includes remote clusters, or when {{cps}} is enabled. When point in time is turned off, if the source data is changed (deleted, updated, added) while the batch {{dataframe}} is in progress, then the results might not include these changes.
 
 ### {{ctransform-cap}} consistency does not account for deleted or updated documents [transform-consistency-limitations]
 
@@ -87,7 +87,7 @@ During the development of transforms, control was favoured over performance. In 
 
 Composite aggregations are well suited for high cardinality data enabling pagination through results. If a [circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) memory exception occurs when performing the composite aggregated search then we try again reducing the number of buckets requested. This circuit breaker is calculated based upon all activity within the cluster, not just activity from transforms, so it therefore may only be a temporary resource availability issue.
 
-For a batch transform, the number of buckets requested is only ever adjusted downwards. The lowering of value may result in a longer duration for the transform checkpoint to complete. For {{ctransforms}}, the number of buckets requested is reset back to the configured `max_page_search_size` when a checkpoint completes.
+For a batch transform, the number of buckets requested is only ever adjusted downwards. The lowering of value might result in a longer duration for the transform checkpoint to complete. For {{ctransforms}}, the number of buckets requested is reset back to the configured `max_page_search_size` when a checkpoint completes.
 
 The transform retrieves data in batches which means it calculates several buckets at once. By default, this is 500 buckets per search/index operation for `pivot` transforms and 5000 for `latest` transforms. You can change the default using `max_page_search_size`. The minimum value is 10 and the maximum is 65,536. If failures still occur once the number of buckets requested has been reduced to its minimum, then the transform will be set to a failed state, unless it runs in `unattended` mode, in which case it keeps retrying.
 
