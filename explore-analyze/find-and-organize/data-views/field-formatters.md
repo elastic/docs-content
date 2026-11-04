@@ -39,7 +39,7 @@ Geographic point fields support the [**String**](#string-transformations) format
 
 Numeric fields support the **Bytes and Bits**, **Color / Badge**, **Duration**, **Histogram**, **Number**, **Percentage**, [**String**](#string-transformations), and [`Url`](#url-field-formatter) formatters.
 
-The **Bytes and Bits**, **Number**, and **Percentage** formatters let you choose the display formats of numbers in the field using the [Elastic numeral pattern](/explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
+The **Bytes and Bits**, **Number**, and **Percentage** formatters let you choose the display formats of numbers in the field using the [Elastic numeral pattern](/explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains. The decimal and thousands separators that these patterns produce follow the **Formatting locale** [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is `en` by default.
 
 The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes and Bits**, **Number**, or **Percentage** format to aggregated data.
 
