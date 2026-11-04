@@ -120,6 +120,8 @@ For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations 
 
 ## Known issues
 
+The following known issues affect current versions of {{agent-builder}}. For fixes and known issues in a specific release, refer to the **Elastic Agent Builder** entries in the [{{kib}} release notes](kibana://release-notes/index.md) and [{{kib}} known issues](kibana://release-notes/known-issues.md).
+
 ### Troubleshoot incompatible LLMs
 
 The following errors suggest your selected model may not be compatible with {{agent-builder}}:
@@ -180,15 +182,20 @@ Disabling a workflow doesn't remove it from the agents or spaces that use it as 
 
 **Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear it through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
 
-### MCP server URL copy button omits space name
+### MCP server URL copy button omits space ID [mcp-server-url-copy-button-omits-space-name]
+
+```{applies_to}
+stack: preview =9.2.0
+serverless: unavailable
+```
 
 :::{note}
-Fixed on serverless and 9.3.
+Fixed on {{serverless-short}} and in 9.2.1 and later.
 :::
 
-On 9.2 deployments, the **Copy your MCP server URL** button does not include the space name when used from a custom {{kib}} Space.
+**Copy MCP Server URL** doesn't include the space ID when you use it from a custom {{kib}} space.
 
-**Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
+**Workaround:** Manually add `/s/<space-id>` to the URL. For example: `https://<deployment>/s/<space-id>/api/agent_builder/mcp`
 
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#space-scope).
 
