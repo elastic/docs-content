@@ -4,6 +4,7 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+type: how-to
 products:
   - id: kibana
 description: Detect patterns in unstructured data with pattern analysis in Discover. Categorize log messages, identify common structures, and filter noise during troubleshooting.
