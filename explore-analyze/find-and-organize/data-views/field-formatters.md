@@ -1,5 +1,5 @@
 ---
-description: Field formatters for string, date, geographic point, and numeric fields in a Kibana data view. Set a custom label and choose how Kibana displays each field.
+description: Change how Kibana displays the fields of a data view. Set a custom label and select a field formatter for string, date, geographic point, or numeric fields.
 applies_to:
   stack: ga
   serverless: ga
