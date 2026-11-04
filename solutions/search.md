@@ -14,7 +14,7 @@ navigation_title: Search use case
 
 This section documents core {{es}} search capabilities. These capabilities are available across all Elastic deployments, solutions, and project types.
 
-Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search-powered applications.
+Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search-powered applications. If you're not sure where to start, refer to [Choose a search approach](/solutions/search/search-approaches.md#choose-search-approach).
 
 On {{serverless-full}}, there are two search project types. Use an [{{es}} project](/solutions/elasticsearch-solution-project.md) for general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, or when you need custom models on {{ml}} nodes. Use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case.
 
