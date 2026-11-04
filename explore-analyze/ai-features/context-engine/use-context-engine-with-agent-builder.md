@@ -17,7 +17,11 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-When you assign an [AI index](concepts.md#ai-indices) to an {{agent-builder}} agent, the agent can retrieve [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) during a conversation. If the AI index has [memory](concepts.md#memory) enabled, the agent can also save useful task context and retrieve it in later conversations.
+Use {{context-engine}} with {{agent-builder}} to give an agent access to context distilled from your organization's data. By retrieving relevant [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) from an [AI index](concepts.md#ai-indices) instead of repeatedly discovering and interpreting source data, the agent can complete tasks faster and use fewer model tokens.
+
+Assigning an AI index to an {{agent-builder}} agent automatically makes the {{context-engine}} retrieval skill available, which provides the retrieval tools and instructions. A retrieved KI can answer a question directly or guide the agent to current details in the source data. If the AI index has [memory](concepts.md#memory) enabled, the agent can also save useful task context and retrieve it in later conversations.
+
+For guidance that applies to every agent integration, refer to [Configure agents to use an AI index](use-context-engine-with-agents.md). For the list, describe, and query flow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
 ## Before you begin
 
@@ -42,7 +46,7 @@ The list contains AI indices registered in the current space that you can access
 
 ## How retrieval is provided
 
-When {{context-engine}} is enabled, {{agent-builder}} automatically includes the `ki-retrieval` skill for chat agents. You cannot remove the skill from an individual agent. When the agent loads the skill, it receives three dedicated {{context-engine}} retrieval tools:
+When {{context-engine}} is enabled and an agent has at least one assigned AI index, {{agent-builder}} automatically makes the hidden `ki-retrieval` skill available to that agent, regardless of its type. The skill does not appear in the skill library or agent skill picker. When the agent loads the skill, it receives three dedicated {{context-engine}} retrieval tools:
 
 - `platform.context_engine.list_ai_indices` lists the accessible AI indices and their query targets.
 - `platform.context_engine.describe_ai_index` returns the selected AI index's purpose, fields, KI types, tags, and example queries.
@@ -50,7 +54,7 @@ When {{context-engine}} is enabled, {{agent-builder}} automatically includes the
 
 If an assigned AI index has [memory](concepts.md#memory) enabled, {{agent-builder}} also gives the agent `platform.context_engine.remember` and `platform.context_engine.forget`. These tools let it save useful task context and exclude obsolete memories from later retrieval. To configure and test memory, refer to [Save and retrieve memories with {{context-engine}}](save-and-retrieve-memories.md).
 
-{{agent-builder}} also adds the available AI indices to the agent's system instructions. You do not need to add the skill or tools manually or repeat their sequence in custom instructions.
+{{agent-builder}} lists the available AI indices in the agent's system instructions and directs the agent to load the skill for retrieval guidance. You do not need to add the skill or tools manually or repeat their sequence in custom instructions.
 
 The assignment provides access to KIs, not to the original source data. If a KI contains an {{esql}} pattern for retrieving current details, the agent also needs a source-query tool such as `platform.core.execute_esql` and permission to read the source indices. For a custom agent, you can enable built-in Elastic capabilities or assign only the source tools required for its task.
 
@@ -87,6 +91,7 @@ Use the observed behavior to decide what to change:
 
 | Behavior | What to review |
 |---|---|
+| The agent does not use its AI index right after you turn on {{context-engine}}. | Wait up to 5 minutes for the `contextEngine:enabled` setting change to apply, then ask again. Turning the setting off can also take up to 5 minutes to apply. |
 | The agent does not select the AI index. | Confirm the assignment, then make the AI index name and description more specific to the questions it supports. |
 | The agent retrieves the expected AI index but also explores unrelated indices. | Make the AI index name and description more specific, ask a more focused question, and limit the agent's source-query tools to data it should query. |
 | The agent retrieves the AI index but finds no useful KI. | Review the source coverage, generation strategy, automation, and KI content. |
