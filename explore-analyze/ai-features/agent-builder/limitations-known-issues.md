@@ -32,6 +32,58 @@ In version 9.4+, [index search tools](tools/index-search-tools.md) support [cros
 
 In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To search remote clusters, use a custom {{esql}} tool and instruct your agent to query `remote_cluster:index_name`.
 
+### Frozen tier data excluded by default [frozen-tier-data]
+
+```{applies_to}
+stack: ga 9.4.8+
+```
+
+{{agent-builder}} tools can exclude documents stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier). Searching that data recovers [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) from object storage. These searches are slow and can cause tool calls to time out.
+
+:::{note}
+[Data tiers](/manage-data/lifecycle/data-tiers.md) are not relevant to {{serverless-short}} which automatically handles data storage and scaling. 
+:::
+
+{applies_to}`stack: ga 9.4.8+` Behavior depends on your version:
+
+* {applies_to}`stack: ga 9.4.8+` **9.4.0 through 9.4.7, and 9.5.0 through 9.5.4:** Tools read frozen tier data.
+* {applies_to}`stack: ga 9.4.8+` **9.4.8 and 9.5.5:** Tools always exclude frozen tier data, and the options to include it aren't available.
+* {applies_to}`stack: ga 9.4.8+` **9.4.9, 9.5.6, and later:** Tools exclude frozen tier data by default. You can include it with the options in this section.
+
+Query tools exclude documents in frozen tier indices. This includes the built-in `execute_esql`, `generate_esql`, and `search` tools, plus custom [{{esql}} tools](tools/esql-tools.md) and [index search tools](tools/index-search-tools.md).
+
+* If only some matching documents are frozen, the tool returns the rest.
+* If every matching document is frozen, the tool returns no documents.
+
+Mapping tools differ:
+
+* `get_index_mapping` can omit fields that exist only in frozen backing indices. This applies when it reads a data stream, an alias, an index pattern, or a remote index. A request for one local index still returns that index mapping.
+* `index_explorer` can omit those fields for remote clusters. For a local data stream, it returns the data stream mapping, which doesn't apply this filter.
+
+These Security tools have no `include_frozen` parameter. On versions that exclude frozen tier data, they always exclude it. The options in this section don't apply to them:
+
+* `security.alerts`
+* `security.attack_discovery_search`
+* `security.search_entities`
+* `security.get_entity`, when it reads profile history
+* {applies_to}`stack: preview 9.5` `security.pci_compliance`
+
+#### Include frozen tier data
+
+```{applies_to}
+stack: ga 9.4.9+
+```
+
+To include frozen tier data, use one of these options:
+
+* **For one tool call:** Ask the agent to include frozen tier data. Built-in tools accept an `include_frozen` parameter. The parameter description tells the agent to set it to `true` only when you or the agent instructions ask for frozen tier data. For details, refer to [Frozen tier data in built-in tools](tools/builtin-tools-reference.md#agent-builder-builtin-tools-frozen-tier).
+* **For a custom tool:** In **Data tiers**, select **Include frozen tier data**. Or set `include_frozen` to `true` in the tool `configuration` object in the [Tools API](kibana-api.md#tools-apis).
+* **For all five built-in tools in a space:** Turn on **Elastic Agent Builder: Include frozen tier data by default** (`agentBuilder:includeFrozenByDefault`). This is an [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings). Use it for [Model Context Protocol (MCP) clients](mcp-server.md), where you can't adjust a single agent prompt.
+
+  When the setting is on, the parameter description tells the agent to set `include_frozen` to `false` only when you or the agent instructions ask to exclude frozen tier data. An explicit `include_frozen` value on a tool call overrides the setting. The setting doesn't affect custom tools or the Security tools in this section.
+
+Including frozen tier data doesn't extend tool timeouts. Queries over large amounts of frozen data can still time out.
+
 ### A2A streaming not supported
 
 The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
@@ -67,6 +119,8 @@ Ensure your cluster version supports the {{esql}} features you intend to use.
 For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
 ## Known issues
+
+The following known issues affect current versions of {{agent-builder}}. For fixes and known issues in a specific release, refer to the **Elastic Agent Builder** entries in the [{{kib}} release notes](kibana://release-notes/index.md) and [{{kib}} known issues](kibana://release-notes/known-issues.md).
 
 ### Troubleshoot incompatible LLMs
 
@@ -128,15 +182,20 @@ Disabling a workflow doesn't remove it from the agents or spaces that use it as 
 
 **Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear it through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
 
-### MCP server URL copy button omits space name
+### MCP server URL copy button omits space ID [mcp-server-url-copy-button-omits-space-name]
+
+```{applies_to}
+stack: preview =9.2.0
+serverless: unavailable
+```
 
 :::{note}
-Fixed on serverless and 9.3.
+Fixed on {{serverless-short}} and in 9.2.1 and later.
 :::
 
-On 9.2 deployments, the **Copy your MCP server URL** button does not include the space name when used from a custom {{kib}} Space.
+**Copy MCP Server URL** doesn't include the space ID when you use it from a custom {{kib}} space.
 
-**Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
+**Workaround:** Manually add `/s/<space-id>` to the URL. For example: `https://<deployment>/s/<space-id>/api/agent_builder/mcp`
 
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#space-scope).
 

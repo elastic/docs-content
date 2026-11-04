@@ -87,7 +87,9 @@ If you need more rows than the limit allows, use filters to create several small
 
 An export can also time out or return incomplete data for reasons unrelated to these limits, such as slow storage, an unavailable shard, or high network latency. For the common causes, refer to [CSV report limitations](../report-and-share.md#csv-limitations).
 
-To generate the same export automatically, from a script, {{watcher}}, or on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
+To generate the same export automatically on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
+
+{applies_to}`serverless: unavailable` You can also trigger the export from a script or {{watcher}} by [creating a POST URL](../report-and-share/automating-report-generation.md#create-a-post-url).
 
 ## Export a Discover session as JSON [export-discover-session-json]
 ```{applies_to}
@@ -146,7 +148,7 @@ You can add different pieces of a Discover session to a dashboard, and manage ho
 
 ### Add Discover visualizations to dashboards [add-discover-visualization-to-dashboard]
 
-When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact flow depends on the [query mode](switch-esql-mode.md) you're using in Discover.
+When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact steps depend on the [query mode](switch-esql-mode.md) you're using in Discover.
 
 You need permission to view and create dashboards.
 
@@ -260,6 +262,8 @@ You need permission to access Discover, and the dashboard must be in **Edit** mo
 3. Select **Save and return** in the application menu to add the configured panel to the dashboard.
 
 ### Manage Discover session panels on a dashboard [manage-discover-session-panels]
+
+To open the session behind a panel in **Discover** without editing the panel, refer to [Open the data behind a panel in Discover](../dashboards/using.md#explore-panel-data-in-discover).
 
 #### Save panel edits as a new Discover session [discover-session-save-as-from-dashboard]
 ```{applies_to}
