@@ -785,7 +785,8 @@ def filter_columns(
 def write_csv(
     data: List[Dict[str, Any]],
     output_path: str,
-    delimiter: str = ','
+    delimiter: str = ',',
+    fieldnames: Optional[List[str]] = None
 ) -> None:
     """
     Write data to CSV file.
@@ -794,6 +795,8 @@ def write_csv(
         data: List of row dictionaries
         output_path: Path where CSV should be written
         delimiter: CSV delimiter character (default: comma)
+        fieldnames: Column names, used to write a header-only file when
+                    there are no rows (for example, a type with no models yet)
 
     Raises:
         SystemExit: If file cannot be written
@@ -807,9 +810,10 @@ def write_csv(
         # Write CSV
         if not data:
             print("Warning: No data to write to CSV", file=sys.stderr)
-            # Write empty file with just headers
+            # Write a file with just the header row
             with open(output_path, 'w', newline='', encoding='utf-8') as f:
-                f.write('')
+                if fieldnames:
+                    csv.writer(f, delimiter=delimiter).writerow(fieldnames)
             return
 
         # Get field names from first row
@@ -899,7 +903,9 @@ Examples:
         output_dir = output_config.get('directory', '.')
         output_path = os.path.join(output_dir, filename)
         delimiter = output_config.get('delimiter', ',')
-        write_csv(output_data, output_path, delimiter)
+        fieldnames = [col.get('target', col['source'])
+                      for col in output_config['columns']]
+        write_csv(output_data, output_path, delimiter, fieldnames)
 
         generated_paths.append(output_path)
 
