@@ -7,7 +7,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Use Wolfi images for stack components [k8s-wolfi-stack-images]
+# Use Wolfi images for stack components on ECK
 
 ECK supports Wolfi-based image variants for the stack components it manages. Elastic produces these images in partnership with [Chainguard](https://www.chainguard.dev/). They include only the application and its required runtime dependencies. This reduces the CVE footprint. For background, refer to [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
 
