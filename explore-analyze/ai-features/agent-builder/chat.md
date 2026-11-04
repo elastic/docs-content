@@ -190,101 +190,6 @@ Use the chat history panel to access previous conversations.
 :width: 450px
 :::
 
-### Conversation templates [conversation-templates]
-
-```{applies_to}
-stack: preview 9.6+
-serverless: preview
-```
-
-A conversation can use a built-in template. The template defines the metadata stored on the conversation and what the **Chat info** flyout shows. The template name and icon appear next to the conversation title.
-
-{{kib}} includes two templates:
-
-- `investigation`, displayed as **Investigation**
-- `escalation`, displayed as **Escalation**
-
-You can't create or edit templates, and you can't switch a conversation to a different template.
-
-A workflow sets the template and its starting metadata with [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create). The agent can update the metadata during later runs on the conversation. For the keys each template accepts, refer to [Conversation template metadata](/explore-analyze/workflows/steps/ai-steps.md#conversation-template-metadata).
-
-#### Chat info availability
-
-The template display names and the **Chat info** flyout content depend on the `xpack.agenticInvestigations.enabled` setting. Escalation flyouts also need `xpack.agenticInvestigations.escalations.enabled`, which defaults to `true`.
-
-The default for `xpack.agenticInvestigations.enabled` and the availability of escalation flyouts differ by deployment type:
-
-::::{applies-switch}
-:::{applies-item} serverless: preview
-The setting is turned on only in {{obs-serverless}} Complete projects, where escalation flyouts aren't available. Other project types have the setting turned off.
-:::
-:::{applies-item} stack: preview =9.6
-The setting is turned on by default, and escalation flyouts are available.
-:::
-::::
-
-When the setting is off, a templated conversation still shows **Chat info**, but the flyout is empty and the template name appears as its ID, such as `investigation`. A workflow can create a conversation with either `template_id` regardless of these settings.
-
-#### Open Chat info
-
-When a conversation uses a template, **Chat info** appears in the conversation header in standalone mode. It doesn't appear in [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode). Anyone who can open the conversation can open **Chat info**.
-
-The following image shows the header of an investigation, with the **Investigation** badge next to the title and **Chat info** on the right:
-
-:::{image} images/chat-info-conversation-header-9.6.png
-:screenshot:
-:alt: Conversation header with the Investigation template badge next to the title and the Chat info button on the right
-:::
-
-Click **Chat info** to open the flyout. To copy a link to the conversation, click the **Copy link** icon {icon}`link`. The link opens the conversation with **Chat info** open.
-
-#### Investigation flyout
-
-The investigation flyout contains:
-
-- **Header**: The title, status, and assignees, plus the severity once someone sets it.
-- **Sections**:
-  - **Subject**, when the investigation has subjects.
-  - **What's happened**: The `summary` metadata, or `description` when there's no summary.
-  - **Impact**, when the investigation has impact data.
-  - **Conclusion**: The `verdict` metadata, when it's set.
-  - **Proposed actions**: When `xpack.proposals.enabled` is `true`, this section always appears, with a message if there are none.
-- **Footer**: **Open an escalation**, when escalations are available and your role includes **Manage escalations**. **Open chat**, when you open the flyout from outside the chat.
-
-The following image shows an investigation flyout with a severity set and no proposed actions:
-
-:::{image} images/chat-info-investigation-flyout-9.6.png
-:screenshot:
-:alt: Investigation Chat info flyout with the Copy link icon at the top, status Open, severity High, an empty assignees field, What's happened, Conclusion, an empty Proposed actions section, and the Open an escalation button
-:width: 400px
-:::
-
-#### Escalation flyout
-
-The escalation flyout contains:
-
-- **Header**: The title, status, and assignees.
-- **Sections**:
-  - **What's happened**: The summary and attachments, when they exist.
-  - **Linked investigations**, when your role includes **View escalations** or **Manage escalations**.
-  - **Impact**, when the escalation has impact data.
-
-#### Privileges for templated conversations
-
-Actions on investigations and escalations use privileges of the **Agentic Investigations** feature, which requires an Enterprise license. **Manage investigations** is included in the feature's **All** privilege, and **View escalations** is included in **Read** and **All**. **Manage escalations** isn't included in **All**, so you need to grant it separately.
-
-In the **Chat info** flyout, these controls require the following privileges:
-
-| Action | Required privilege |
-|---|---|
-| Change an investigation's status or severity | **Manage investigations** |
-| Change an investigation's assignees | **Manage investigations**, while the status is `open` |
-| View linked investigations on an escalation | **View escalations** |
-| Change an escalation's assignees | **Manage escalations**, while the status is `open` |
-| Change an escalation's status | **Manage escalations** and **Manage investigations** |
-
-For more information about feature privileges, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-
 ### Pin conversations
 ```{applies_to}
 stack: ga 9.6+
@@ -405,6 +310,29 @@ Conversations run independently, so you can work in several at the same time: st
 The agent's progress appears only in the chat where you sent the message or answered a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. The agent keeps working if you reload the page, close the sidebar, or open the conversation in another browser tab or in the other [chat mode](standalone-and-flyout-modes.md). In those cases, the conversation doesn't show **In progress** and doesn't update while the agent works. After the agent finishes, its steps and response appear when you switch back to that browser tab, reopen the conversation, or reload the page.
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent also keeps working without showing progress if you go to another app from standalone mode. After the agent finishes, its steps and response appear the next time you interact with the conversation, for example, when you reopen the sidebar, come back from another app, or select another conversation and return. In a [shared or public conversation](#share-a-conversation), the conversation also updates automatically a few seconds after the agent finishes, in any browser tab.
+
+### Conversation templates [conversation-templates]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Some features create conversations from a built-in template, `investigation` or `escalation`. For example, [{{alertzero}}](/solutions/security/alertzero/index.md) creates investigations and escalations in {{elastic-sec}}, and [Elastic nightshift](/solutions/observability/nightshift/investigations.md) creates investigations in {{obs-serverless}}. A template stores structured metadata on the conversation, such as its status, severity, and assignees, and shows the template name next to the conversation title. You can't create or edit templates, or switch a conversation to a different template.
+
+In standalone mode, select **Chat info** in the header of a templated conversation to open a flyout with the details that the template defines, such as the summary and proposed actions. **Chat info** doesn't appear in [sidebar mode](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode). To copy a link that opens the conversation with **Chat info** open, select the **Copy link** icon {icon}`link`.
+
+:::{image} images/chat-info-conversation-header-9.6.png
+:screenshot:
+:alt: Conversation header with the Investigation template badge next to the title and the Chat info button
+:::
+
+What you can change in **Chat info** depends on your privileges. For investigations and escalations in {{alertzero}}, refer to [](/solutions/security/alertzero/escalate-investigation.md) and [](/solutions/security/alertzero/alertzero-privileges.md).
+
+To create a templated conversation from a workflow, use [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create). For the metadata keys each template accepts, refer to [Conversation template metadata](/explore-analyze/workflows/steps/ai-steps.md#conversation-template-metadata).
+
+% TODO(#8910): After merge, add: "To read or update the metadata from a workflow, use [`ai.conversation.metadata.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-read) and [`ai.conversation.metadata.patch`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-patch)."
+% TODO(#9140): After merge, add: "To start a workflow when the metadata changes, use the [`ai.conversation.metadataUpdated` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md#ai-conversation-metadata-updated-trigger)."
 
 ### Inspect tool calls and reasoning
 
