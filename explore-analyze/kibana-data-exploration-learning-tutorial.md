@@ -59,7 +59,7 @@ When you're ready to explore your own data, refer to [Ingest data](/manage-data/
 
 **Discover** is the starting point for data exploration. You can search, filter, and visualize your data interactively.
 
-Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasticsearch Query Language), a piped query language that lets you chain operations like filtering, aggregating, and sorting in a single query. Unlike classic mode, which is KQL-based, {{esql}} doesn't require you to set up a {{data-source}} first: you query indices directly by name, so you can start exploring right away.
+Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasticsearch Query Language), a piped query language that lets you chain operations like filtering, aggregating, and sorting in a single query. Unlike classic mode, {{esql}} doesn't require you to set up a {{data-source}} first: you query your data sources directly by name, so you can start exploring right away.
 
 ::::::{stepper}
 
