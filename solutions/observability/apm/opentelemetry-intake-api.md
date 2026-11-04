@@ -17,6 +17,8 @@ products:
 * OTLP/HTTP (protobuf)
 * OTLP/gRPC
 
+{applies_to}`stack: ga 9.4.9+ 9.5.6+ 9.6+` The request body size limit, after decompression if applies, is 64MB, in alignment with recommendation in [OpenTelemetry Protocol (OTLP) specification](https://opentelemetry.io/docs/specs/otlp/).
+
 The OTLP endpoint on {{apm-server}} is not recommended for new users; use [{{agent}}](elastic-agent://reference/edot-collector/index.md) or [Managed OTLP](opentelemetry://reference/motlp.md) instead. EDOT SDKs are only supported with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md), and using them with this intake is not supported.
 
 ## OTLP/gRPC paths [_otlpgrpc_paths]
