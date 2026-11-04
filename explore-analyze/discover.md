@@ -47,11 +47,11 @@ Discover has two query modes that you can [switch between](discover/switch-esql-
 
 Once you're familiar with the basics, explore these guides for specific tasks:
 
-* **[Switch between {{esql}} and classic mode](discover/switch-esql-mode.md)** - Change query mode, and see what happens to your query and filters.
-* **[Use Discover with {{esql}}](discover/use-esql.md)** - Find the Discover tasks that are specific to {{esql}} mode.
-* **[Use Discover in classic mode](discover/use-classic-mode.md)** - Find the tasks that are specific to classic mode, such as searching with KQL or Lucene and adding filters.
-* **[Customize the Discover view](discover/document-explorer.md)** - Adjust the layout, columns, and display options to suit your needs.
-* **[Save a search for reuse](discover/save-open-search.md)** - Save your Discover sessions and add them to dashboards.
+* **[Switch between {{esql}} and classic mode](discover/switch-esql-mode.md)**: Change query mode, and see what happens to your query and filters.
+* **[Use Discover with {{esql}}](discover/use-esql.md)**: Find the Discover tasks that are specific to {{esql}} mode.
+* **[Use Discover in classic mode](discover/use-classic-mode.md)**: Find the tasks that are specific to classic mode, such as searching with KQL or Lucene and adding filters.
+* **[Customize the Discover view](discover/document-explorer.md)**: Adjust the layout, columns, and display options to suit your needs.
+* **[Save a search for reuse](discover/save-open-search.md)**: Save your Discover sessions and add them to dashboards.
 
 ## Advanced features
 
