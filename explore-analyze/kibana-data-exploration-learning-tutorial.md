@@ -66,9 +66,9 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 :::::{step} Open Discover in {{esql}} mode
 
 1. From the navigation menu, go to **Discover**.
-2. If Discover doesn't open in {{esql}} mode, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) in the application menu.
+2. If **Discover** doesn't open in {{esql}} mode, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) in the application menu.
 
-**Result:** The query bar changes to an {{esql}} editor where you can write piped queries.
+**Result:** **Discover** is in {{esql}} mode, with an editor where you can write piped queries.
 :::::
 
 :::::{step} Run your first query
