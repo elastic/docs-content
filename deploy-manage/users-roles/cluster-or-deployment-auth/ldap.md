@@ -180,8 +180,8 @@ POST /_security/role_mapping/ldap-superuser <1>
   "roles": [ "superuser" ], <2>
   "rules": {
     "all" : [
-      { "field": { "realm.name": "ldap1" } },<3>
-      { "field": { "groups": "cn=administrators, ou=groups, o=services, dc=example, dc=com" } }<4>
+      { "field": { "realm.name": "ldap1" } }, <3>
+      { "field": { "groups": "cn=administrators, ou=groups, o=services, dc=example, dc=com" } } <4>
     ]
   },
   "metadata": { "version": 1 }
@@ -206,7 +206,7 @@ If you're using a self-managed cluster, then the file must be present on each no
 
 ```yaml
 monitoring: <1>
-  - "cn=admins,dc=example,dc=com" <2>S
+  - "cn=admins,dc=example,dc=com" <2>
 user:
   - "cn=users,dc=example,dc=com" <3>
   - "cn=admins,dc=example,dc=com"
