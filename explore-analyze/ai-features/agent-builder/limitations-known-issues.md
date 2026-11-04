@@ -90,7 +90,7 @@ Including frozen tier data doesn't extend tool timeouts. Queries over large amou
 stack: preview =9.2, ga 9.3-9.5
 ```
 
-The [Agent-to-Agent (A2A) server](a2a-server.md) doesn't support streaming. Use [`message/send`](a2a-server.md#send-messages) instead.
+The [Agent-to-Agent (A2A) server](a2a-server.md) doesn't support the `message/stream` method. Use [`message/send`](a2a-server.md#send-messages) instead.
 
 ### Human-in-the-loop prompts require an interactive conversation
 
