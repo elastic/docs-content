@@ -41,7 +41,7 @@ You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API]({{es-
 
 :::{tip}
 :applies_to: { serverless: experimental, stack: experimental 9.6 }
-Don't want to pick a wizard and its settings? You can describe what you want to monitor to an AI agent in {{agent-builder}}. The agent explores your data, tests a setup on your historical data, and creates real-time jobs after you approve the results. Refer to [Create {{anomaly-jobs}} with AI in chat](ml-jobs-from-agent-builder.md).
+Don't want to pick a wizard and its settings? You can describe your data and your goal to an AI agent in {{agent-builder}}. The agent explores your data, tests a setup on your historical data, and creates real-time jobs after you approve the results. Refer to [Create {{anomaly-jobs}} with AI in chat](ml-jobs-from-agent-builder.md).
 :::
 
 When you create an {{anomaly-job}} in {{kib}}, the job creation wizards can provide advice based on the characteristics of your data. By heeding these suggestions, you can create jobs that are more likely to produce insightful {{ml}} results. The most important concepts are covered here; for a description of all the job properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).

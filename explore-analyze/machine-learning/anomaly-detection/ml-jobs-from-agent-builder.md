@@ -12,7 +12,7 @@ products:
 
 # Create {{anomaly-jobs}} with AI in chat
 
-If you want {{anomaly-detect}} on your data but don't know which job type or settings to use, you can describe what you want to monitor to an AI agent in {{agent-builder}}. The agent asks about your goal in everyday language, tests a proposed setup on your historical data, and creates real-time jobs only after you've reviewed the results.
+If you have time series data and want to catch unusual behavior in it, but you're not sure how to set up an {{anomaly-job}}, you can describe your data and your goal to an AI agent in {{agent-builder}}. The agent asks follow-up questions in everyday language, tests a proposed setup on your historical data, and creates real-time jobs only after you've reviewed the results.
 
 Because the agent uses a large language model, its questions and the setup it proposes can vary between conversations. Nothing runs in real time, and no job is deleted, until you approve it.
 
