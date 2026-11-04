@@ -13,7 +13,7 @@ Review the changes, fixes, and more in each version of {{elastic-sec}}.
 To check for security updates, go to [Security announcements for the Elastic stack](https://discuss.elastic.co/c/announcements/security-announcements/31).
 
 :::{tip}
-{{elastic-sec}} runs on {{kib}}, so we recommend also reviewing the [{{kib}} release notes](kibana://release-notes/index.md) for relevant updates.
+{{elastic-sec}} runs on {{kib}}, so we recommend also reviewing the [{{kib}} release notes](kibana://release-notes/index.md) for relevant updates. For example, this page lists only Cases changes specific to {{elastic-sec}}. Cases updates that apply across all solutions, such as case templates and the Cases APIs, are under **Alerting and cases** in the {{kib}} release notes.
 :::
 
 % Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
