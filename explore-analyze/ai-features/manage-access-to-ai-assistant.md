@@ -1,5 +1,5 @@
 ---
-description: Control which models power AI features in Kibana, track token usage, turn off streaming for inference endpoints, and install documentation in GenAI Settings.
+description: Control which models power AI features in Kibana, track token usage, turn off streaming for inference endpoints, and install Elastic's documentation for more accurate answers from agents.
 applies_to:
   stack: ga 9.2+
   serverless: ga
