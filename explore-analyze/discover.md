@@ -53,7 +53,7 @@ The steps for a task can differ between the two modes, and a few tasks work in o
 **Understand your data**
 
 * Explore [individual results and documents](discover/inspect-documents.md).
-* See [which fields your data has](discover/explore-fields.md) and what they contain.
+* See [which fields your data has](discover/explore-fields.md) and what they contain, and break the chart down by a field.
 * [Compare documents](discover/compare-documents.md) side by side.
 * Find patterns in your log data with [pattern analysis](discover/run-pattern-analysis-discover.md) in classic mode, or with an [{{esql}} query that groups by pattern](discover/inspect-grouped-stats.md).
 * Check [how the values of each field are distributed](discover/show-field-statistics.md) (classic mode only).
