@@ -37,7 +37,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Every agent, built-in or custom, receives details about the deployment it runs in. The agent uses them to tailor what it says about features, navigation, and terminology, and to answer questions about the deployment. The details depend on the deployment type:
+Agents tailor their guidance on features, navigation, and terminology to the Elastic deployment they run in, and they can answer questions about that deployment directly. To make this possible, {{agent-builder}} adds details about the deployment to the instructions of every agent, built-in or custom. The details depend on the deployment type:
 
 - {applies_to}`stack: ga 9.6+` **{{ech}}, {{ece}}, and self-managed**: The environment, the {{stack}} version, and, when available, the space's solution view and the license type and status. If {{kib}} is configured as air-gapped, the details also say so.
 - {applies_to}`serverless: ga` **{{serverless-full}}**: The environment, the project type, and the product tier, when the project has one.
