@@ -66,6 +66,8 @@ Newer connector types, such as Gmail, Jira Cloud, and GitHub, include an **Actio
 
 The setting applies everywhere the connector runs: in agents, workflows, and the [Run a connector API]({{kib-apis}}operation/operation-post-actions-connector-id-execute). {{kib}} rejects calls to actions that the setting doesn't allow.
 
+### Choose which actions to allow
+
 The **Actions** setting has two options:
 
 **All**
@@ -88,6 +90,8 @@ The following screenshot shows a GraphQL connector in **Custom** mode, with its 
 :width: 500px
 :::
 
+### Change the actions on an existing connector
+
 To change which actions an existing connector allows:
 
 1. In the sidebar, select **Manage components** → **Connectors**.
@@ -95,6 +99,8 @@ To change which actions an existing connector allows:
 3. Under **Actions**, select **Custom**.
 4. Select the actions to allow.
 5. Click **Save**.
+
+### Allow actions for workflows but not agents
 
 The allowed actions are the same for every caller of the connector. To make an action with the **write** or **destroy** badge available to workflows but not to agents:
 
