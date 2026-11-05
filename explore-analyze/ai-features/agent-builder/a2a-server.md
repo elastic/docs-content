@@ -54,11 +54,7 @@ serverless: ga
 
 In 9.4, non-blocking requests require version 9.4.5 or later. On earlier versions, `configuration.blocking: false` is ignored and the request waits for the complete response.
 
-To get a response without waiting for the agent to finish, send a non-blocking request and poll for the result:
-
-1. Call the `message/send` method with `configuration.blocking` set to `false`. The response is a task in the `working` state.
-2. Call the `tasks/get` method with the task ID. Repeat until the task reaches a final state: `completed`, `failed`, or `canceled`. While the task is queued, `tasks/get` might report `submitted`.
-3. Read the task's `status.message`. If the task is `completed`, it contains the agent's response. If the task is `failed`, it contains the error.
+To get a response without waiting for the agent to finish, call `message/send` with `configuration.blocking` set to `false`. The response is a task. Poll it with `tasks/get` until it reaches a final state, then read `status.message`, which contains the agent's response or, if the task failed, the error. For the task states, refer to the [A2A protocol specification](https://a2a-protocol.org/v0.3.0/topics/life-of-a-task/).
 
 ### Stream responses
 
@@ -69,13 +65,7 @@ serverless: ga
 
 Call the `message/stream` method to receive the response as a stream of server-sent events. The [agent card](#retrieve-agent-metadata-get) reports streaming support by setting `capabilities.streaming` to `true`.
 
-The stream sends [A2A streaming events](https://a2a-protocol.org/v0.3.0/topics/streaming-and-async/) in this order:
-
-1. A task in the `working` state.
-2. While the agent works:
-   * Artifact updates that contain the agent's response text.
-   * Status updates in the `working` state that report progress, such as tool calls.
-3. A final status update in the `completed`, `failed`, or `input-required` state.
+The stream uses the [A2A streaming events](https://a2a-protocol.org/v0.3.0/topics/streaming-and-async/). Artifact updates contain the agent's response text, and status updates in the `working` state report progress, such as tool calls. The final status update is `completed`, `failed`, or `input-required`.
 
 The `input-required` state means the agent is waiting for a response to a prompt, which A2A clients can't send. Refer to [Human-in-the-loop prompts require an interactive conversation](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
