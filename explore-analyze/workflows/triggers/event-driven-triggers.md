@@ -605,7 +605,9 @@ serverless: preview
 
 {{agent-builder}} triggers run a workflow when a conversation changes. Use them to react to attachment changes, metadata updates, and, for supported conversation templates, new messages and other conversation changes without polling the {{agent-builder}} APIs.
 
-These triggers are available wherever {{agent-builder}} is available. They aren't available in [Observability Logs Essentials](/solutions/observability/observability-serverless-feature-tiers.md) projects or in [Security Analytics Essentials](/solutions/security/security-serverless-feature-tiers.md) projects, where {{agent-builder}} is disabled.
+The attachment and metadata triggers are available wherever {{agent-builder}} is available. They aren't available in [Observability Logs Essentials](/solutions/observability/observability-serverless-feature-tiers.md) projects or in [Security Analytics Essentials](/solutions/security/security-serverless-feature-tiers.md) projects, where {{agent-builder}} is turned off.
+
+[`ai.conversation.updated`](#ai-conversation-updated-trigger) has an additional requirement: it fires only for conversation templates that a {{kib}} feature has turned it on for. Refer to the trigger's section for details.
 
 | Trigger | Fires when | Fires for |
 |---|---|---|
