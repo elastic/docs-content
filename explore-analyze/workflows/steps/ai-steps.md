@@ -572,7 +572,7 @@ Add an attachment to a conversation. Provide the content directly in `data`, or 
 | `hidden` | `with` | boolean | No | When `true`, users don't see the attachment, but the agent can still use it. Takes precedence over `render_inline`. Defaults to `false`. |
 | `render_inline` | `with` | boolean | No | When `true`, users see the attachment as soon as they open the conversation. When `false`, users see it only when the agent refers to it in a response. Defaults to `false`. |
 
-If you set `origin` without `data`, the content is loaded once, when the attachment is created. Not all attachment types support `origin`. For example, `text` doesn't, but the dashboard type, `platform.dashboard.dashboard_state`, does. To attach a dashboard, set `type` to `platform.dashboard.dashboard_state` and `origin` to the dashboard ID.
+If you set `origin` without `data`, the step copies the object's content once, when it creates the attachment. Later changes to the object don't update the attachment. Not all attachment types support `origin`. For example, `text` doesn't, but the dashboard type, `platform.dashboard.dashboard_state`, does. To attach a dashboard, set `type` to `platform.dashboard.dashboard_state` and `origin` to the dashboard ID.
 
 **Output shape:**
 
