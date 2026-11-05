@@ -15,7 +15,7 @@ In {{esql}} mode, you write a query in [{{esql}}](elasticsearch://reference/quer
 
 ## What you can do in {{esql}} mode
 
-The following tasks focus on {{esql}} mode. For tasks that work the same way in both modes, refer to [What you can do with Discover](../discover.md#what-you-can-do).
+Anything that works the same way in both modes, such as customizing the view or saving a session, is in [What you can do with Discover](../discover.md#what-you-can-do).
 
 | When you need this | Guide |
 | --- | --- |

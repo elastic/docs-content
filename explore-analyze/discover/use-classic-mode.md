@@ -15,7 +15,7 @@ Classic mode in **Discover** lets you explore the documents of a [data view](../
 
 ## What you can do in classic mode
 
-The following tasks focus on classic mode. For tasks that work the same way in both modes, refer to [What you can do with Discover](../discover.md#what-you-can-do).
+Anything that works the same way in both modes, such as customizing the view or saving a session, is in [What you can do with Discover](../discover.md#what-you-can-do).
 
 | When you need this | Guide |
 | --- | --- |
