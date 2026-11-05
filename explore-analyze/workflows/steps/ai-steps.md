@@ -17,9 +17,11 @@ products:
 
 AI steps let workflows call a large language model (LLM) for reasoning, classification, summarization, or agent-driven execution.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` AI steps can also create {{agent-builder}} conversations.
+AI steps can also manage {{agent-builder}} conversations:
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` AI steps can also add content to {{agent-builder}} conversations without triggering an agent response, and read and update their metadata and attachments.
+- {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Create a conversation.
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Add notes and user messages to a conversation without triggering an agent response.
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Read and update a conversation's attachments and metadata.
 
 The `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` steps reference a model by ID in the step. Configure a Generative AI connector in {{kib}} and pass its ID in `connector-id`. For [`ai.agent`](#ai-agent), you can instead pass an {{infer}} endpoint ID in `inference-id`.
 
