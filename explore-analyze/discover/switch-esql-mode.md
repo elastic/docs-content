@@ -13,7 +13,7 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 
 **Discover** has two query modes. In {{esql}} mode, you write a query in [{{esql}}](elasticsearch://reference/query-languages/esql.md), the {{es}} query language, and the query names the data to explore. In classic mode, you select a [data view](../find-and-organize/data-views.md), which is a saved definition of the data to query, then search it with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md) and narrow the results with filters.
 
-To switch between modes, and to see what Discover does with your query when you switch, use the following sections.
+You can switch a tab between the two modes at any time. When you move to {{esql}} mode, **Discover** converts your KQL or Lucene search into an {{esql}} query. When you move back to classic mode, you keep the data you were querying but start with an empty search.
 
 The mode that Discover opens in by default depends on your version:
 
