@@ -663,6 +663,8 @@ Read the content of an attachment. By default, the step returns the current vers
 
 **Output shape:** `{ data: any, version: number }`.
 
+The following example reads version 1 of the runbook, which is its content from before the update:
+
 ```yaml
 - name: read_runbook
   type: ai.attachment.read
