@@ -51,6 +51,7 @@ Features are usually available on {{serverless-full}} before stack-versioned dep
 | [EMBEDDING function](#embedding-function) | Generate dense vector embeddings from multimodal input using inference endpoints | 9.5 (preview) |
 | [MATCH on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH` | 9.5 (preview) |
 | [MATCH_PHRASE on expressions](#match-on-expressions) | Search computed columns and other non-indexed values with `MATCH_PHRASE` | 9.6 |
+| [KNN on expressions](#match-on-expressions) | Find nearest vectors in computed `dense_vector` columns using exact search | 9.6 (preview) |
 
 ## How search works in {{esql}}
 
@@ -112,11 +113,13 @@ serverless: ga
 
 `MATCH`, the match operator (`:`), and `MATCH_PHRASE` can search expressions that are not backed by an index, such as columns produced by `EVAL` or `STATS`. This is called runtime search: values are analyzed and matched row by row instead of using the inverted index, which is usually slower than searching an indexed field.
 
-A runtime search can appear anywhere in the query, and supports the same options as a search on an indexed field when it searches `text`. With `METADATA _score`, it contributes to the relevance score, but not with BM25, because an expression has no index statistics.
+A full-text runtime search can appear anywhere in the query, and supports the same options as a search on an indexed field when it searches `text`. With `METADATA _score`, it contributes to the relevance score, but not with BM25, because an expression has no index statistics.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` `KNN` also uses runtime search on `dense_vector` expressions, such as the embeddings that the [`DENSE_VECTOR` command](elasticsearch://reference/query-languages/esql/commands/dense-vector.md) generates. It runs an exact search that compares the query vector with the vector in every row, instead of an approximate search in a vector index. Unlike a full-text runtime search, `KNN` can't appear just anywhere in the query: it needs a `LIMIT` after it.
 
 {applies_to}`stack: preview =9.5` In 9.5, only `MATCH` and the match operator support runtime search, with the same placement restrictions as a search on an indexed field. They don't support options and don't contribute to `_score`.
 
-For details, refer to [Runtime search](elasticsearch://reference/query-languages/esql/esql-runtime-search.md).
+For details, refer to [Runtime search](elasticsearch://reference/query-languages/esql/esql-runtime-search.md) and [`KNN` on `dense_vector` expressions](elasticsearch://reference/query-languages/esql/esql-runtime-search.md#esql-runtime-search-knn).
 
 ### `QSTR` function
 
@@ -133,6 +136,8 @@ For migrating queries from other Kibana interfaces, the `KQL` function preserves
 ### `KNN` function
 
 The [`KNN` function](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/knn.md) finds the k nearest vectors to a query vector, as measured by a similarity metric. It performs approximate search on indexed `dense_vector` or `semantic_text` fields.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` On `dense_vector` expressions that are not backed by an index, `KNN` runs an exact search instead. Refer to [Runtime search on expressions](#match-on-expressions).
 
 Use `KNN` for vector similarity search use cases, such as finding semantically similar documents or implementing recommendation systems based on vector embeddings.
 
@@ -220,7 +225,7 @@ The [`MMR` command](elasticsearch://reference/query-languages/esql/commands/mmr.
 
 - [Search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md): Complete reference for all search functions
 - [Dense vector functions](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions.md): Complete reference for vector embedding and similarity functions
-- [Runtime search](elasticsearch://reference/query-languages/esql/esql-runtime-search.md): How `MATCH` and `MATCH_PHRASE` search expressions that are not backed by an index
+- [Runtime search](elasticsearch://reference/query-languages/esql/esql-runtime-search.md): How `MATCH`, `MATCH_PHRASE`, and `KNN` search expressions that are not backed by an index
 - [Limitations](elasticsearch://reference/query-languages/esql/limitations.md#esql-limitations-full-text-search): Current limitations for search functions in {{esql}}
 
 ### Related blog posts [esql-for-search-blogs]
