@@ -567,8 +567,8 @@ Add an attachment to a conversation.
 | `origin` | `with` | string | Depends | ID of the saved object the content comes from, such as a dashboard ID, up to 2,048 characters. Only types that load content from a saved object support it. Required unless you set `data`. |
 | `id` | `with` | string | No | Attachment ID, up to 256 characters. Generated if omitted. The step fails if the conversation already has an attachment with this ID. |
 | `description` | `with` | string | No | Description of the attachment, up to 1,024 characters. |
-| `hidden` | `with` | boolean | No | When `true`, the attachment isn't shown to the user, but the agent can still use it. A hidden attachment is never displayed inline. |
-| `render_inline` | `with` | boolean | No | When `true`, the attachment is displayed as soon as a user opens the conversation, even if the agent doesn't refer to it. Defaults to `false`. |
+| `hidden` | `with` | boolean | No | When `true`, users don't see the attachment, but the agent can still use it. Takes precedence over `render_inline`. Defaults to `false`. |
+| `render_inline` | `with` | boolean | No | When `true`, users see the attachment as soon as they open the conversation. When `false`, users see it only when the agent refers to it in a response. Defaults to `false`. |
 
 If you set `origin` without `data`, the content is loaded once, when the attachment is created. Not all attachment types support `origin`. For example, `text` doesn't, but the dashboard type, `platform.dashboard.dashboard_state`, does. To attach a dashboard, set `type` to `platform.dashboard.dashboard_state` and `origin` to the dashboard ID.
 
