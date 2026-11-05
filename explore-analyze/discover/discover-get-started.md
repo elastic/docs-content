@@ -61,13 +61,13 @@ Document flyout
 
 Which experiences you can get depends on where you open **Discover** from, and then on the data you query.
 
-**In {{observability}} projects and solution views**, **Discover** can switch to one of these experiences:
+**In {{observability}} projects and solution views**, **Discover** automatically switches to one of these experiences, depending on the data you query:
 
 * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**: For log data.
 * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: For metrics data that you query in {{esql}} mode with the `TS` command.
 * **[Traces exploration](/solutions/observability/apm/discover-traces.md)**: For trace data.
 
-**In Security projects and solution views**, **Discover** can switch to one of these experiences:
+**In Security projects and solution views**, **Discover** automatically switches to one of these experiences, depending on the data you query:
 
 * **[Security data exploration](/solutions/security/investigate/discover-security.md)**: For security alerts and events.
 * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: For metrics data that you query in {{esql}} mode with the `TS` command.
