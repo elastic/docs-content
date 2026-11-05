@@ -35,14 +35,17 @@ When your data doesn't have a field you need, such as a value that is part of an
    - **Geo point** for locations.
    - **Composite** to produce several fields from one script. Refer to [Return multiple fields with a composite runtime field](../find-and-organize/data-views/runtime-fields.md#composite-runtime-field).
 
-3. **Name** the field. Name it in a way that corresponds to the way other fields of the data view are named. You can set a custom label and description for the field to make it more recognizable in your data view.
-4. Define the value that you want the field to show. By default, the field value is retrieved from the source data if it already contains a field with the same name. You can customize this with the following options:
-   - **Set value**: Define a script that determines the value to show for the field. The script must return a value of the **Type** you selected, or the data view fails wherever it's used. For more information on adding fields and Painless scripting language examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
-   - **Set format**: Set your preferred format for displaying the value. Changing the format can affect the value and prevent highlighting in Discover.
+3. **Name** the field. Use a name that follows the way the other fields of the data view are named. Changing the name or the type later can break searches and visualizations that use the field.
+4. Turn on the options you need:
+
+   - **Set custom label**: Show a label in place of the field name in Discover, Maps, Lens, Visualize, and TSVB. This is useful for shortening a long field name. Queries and filters keep using the original field name.
+   - **Set custom description**: Add a description that appears next to the field in Discover, Lens, and the Data Views management page.
+   - **Set value**: Define a script that determines the value of the field, instead of retrieving it from the field with the same name in `_source`. The script must return a value of the **Type** you selected, or the data view fails wherever it's used. For Painless scripting language examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
+   - **Set format**: Set how the value is displayed. Changing the format can affect the value and prevent highlighting in Discover.
+   - **Show advanced settings** → **Set popularity**: Adjust the popularity to make the field appear higher or lower in the fields list. By default, Discover orders fields from most selected to least selected.
 
 5. To check what your script returns before you save, use the **Preview**. Select the **Document ID** arrows to see the value for other documents.
-6. In the advanced settings, you can adjust the field popularity to make it appear higher or lower in the fields list. By default, Discover orders popular fields from most selected to least selected.
-7. Select **Save** to save your new field.
+6. Select **Save** to save your new field.
 
 **Result:** The new field appears in the list of fields, and you can add it to the table. It's available wherever the data view is used. It doesn't change the index mapping in {{es}}.
 
