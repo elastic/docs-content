@@ -225,6 +225,7 @@ Built-in service accounts, such as `elastic/fleet-server`, have fixed privileges
 Assign the account a role with the same {{kib}} and {{es}} privileges you give a user who chats with the agent, scoped to the space the client calls. For the privilege names, refer to [Privilege reference](#privilege-reference). The account needs:
 
 - At least **Agent Builder: Read**. Without it, requests return `403`.
+- The `monitor_inference` cluster privilege, if the agent uses a model that calls the {{es}} Inference API, such as the default Elastic Managed LLM. Without it, requests return a `404` error that says the connector or inference endpoint wasn't found.
 - [Access to the agent](custom-agents.md#access-control-settings) it calls. Without it, chat requests return `404`. Continuing an existing conversation reports the conversation as not found, and starting a new one reports that the agent is not found or not available.
 
 The agent runs with the service account's privileges, so its tools can read only the indices the role allows.

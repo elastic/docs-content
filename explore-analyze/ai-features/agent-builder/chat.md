@@ -230,7 +230,7 @@ Your changes save immediately. If a change fails, the popover shows the error "F
 
 The user search includes users who can log in to the current space, but a member can open the conversation only if they can also access its agent. You can't add users who have never logged in to {{kib}}.
 
-{applies_to}`serverless: unavailable` Service accounts don't appear in this search. To add one as a member, use the API as described in [Service accounts in conversations](permissions.md#service-account-conversations). A service account member doesn't appear under **Current members** or **Participants**, but the user count on the sharing button includes it. To remove it, update the access control with the API or switch the conversation to **Public**.
+{applies_to}`serverless: unavailable` Service accounts don't appear in this search. To add one as a member, use the API as described in [Service accounts in conversations](permissions.md#service-account-conversations). A service account that is only a member doesn't appear under **Current members** or **Participants**, but the user count on the sharing button includes it. A service account that owns the conversation appears as the author. To remove it, update the access control with the API or switch the conversation to **Public**.
 
 To remove a member, click the **Remove member** icon {icon}`cross` next to their name. Switching to **Public** removes all members, and switching back to **Restricted** doesn't restore them.
 
