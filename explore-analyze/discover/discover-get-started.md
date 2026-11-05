@@ -50,12 +50,10 @@ Document flyout
 
 **Discover** has two query modes, and you can [switch between them](switch-esql-mode.md) at any time:
 
-- {{esql}} mode: You write a query that defines the data, so you don't need a data view. The query can also filter, transform, and group results.
-- Classic mode: You select a [data view](../find-and-organize/data-views.md), search with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), and add filters.
+- [{{esql}} mode](use-esql.md): You write a query that defines the data, so you don't need a data view. The query can also filter, transform, and group results.
+- [Classic mode](use-classic-mode.md): You select a [data view](../find-and-organize/data-views.md), search with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), and add filters.
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Each tab keeps its own query, so one tab can run an {{esql}} query while another uses classic mode.
-
-The steps for a task can differ between the two modes, and a few tasks work in only one. The guide for each task says which mode it covers. For the tasks that belong to a mode, refer to [Use Discover with {{esql}}](use-esql.md) and [Use Discover in classic mode](use-classic-mode.md). To see what happens to your query when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md).
 
 ## Context-aware experiences [context-aware-discover]
 
