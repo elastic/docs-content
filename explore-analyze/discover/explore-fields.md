@@ -19,8 +19,6 @@ Open **Discover** and run a query that returns results. If you haven't run a que
 
 ## Explore the fields
 
-**Discover** provides utilities designed to help you make sense of your data:
-
 1. In the sidebar, check the available fields. It's common to have hundreds of fields. Use the search at the top of that sidebar to look for specific terms in the field names.
    In this example, we’ve entered `ma` in the search field to find the `manufacturer` field.
    ![Fields list that displays the top five search results](/explore-analyze/images/kibana-discover-sidebar-available-fields.png "title =40%")

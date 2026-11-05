@@ -31,7 +31,7 @@ You can open new tabs or duplicate existing ones to compare different queries:
 A session supports a maximum of 25 open tabs. When the limit is reached, the {icon}`plus` icon and **Duplicate** are unavailable. You can't add more tabs until you close some.
 
 To manage and organize your tabs, you can:
-- Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
+- Rename them: Double-click a tab's label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
 - Reorder them: Drag a tab to move it.
 - Close them: Hover over a tab and select the {icon}`cross` icon.
 - Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.

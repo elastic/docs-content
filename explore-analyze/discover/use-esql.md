@@ -11,7 +11,7 @@ description: Find the Discover tasks that are specific to ES|QL mode, from runni
 
 # Use Discover with {{esql}}
 
-{{esql}} mode in **Discover** lets you explore data with an {{esql}} query. The query sets the data, so you don't need a data view. Classic mode uses data views with Kibana Query Language (KQL) or Lucene. For classic mode tasks, refer to [Use Discover in classic mode](use-classic-mode.md).
+{{esql}} mode in **Discover** lets you explore data with a query written in [{{esql}}](elasticsearch://reference/query-languages/esql.md), the {{es}} query language. The query names the data to explore, so you don't need to set up a [data view](../find-and-organize/data-views.md) first. In classic mode, you select a data view and search it with Kibana Query Language (KQL) or Lucene syntax instead. For classic mode tasks, refer to [Use Discover in classic mode](use-classic-mode.md).
 
 For the editor itself, time parameters, AI assistance, and Fast mode, refer to [](../query-filter/languages/esql-kibana.md). If you haven't run a query in this mode yet, start with [Get started with {{esql}} in Discover](try-esql.md).
 
@@ -20,7 +20,7 @@ For the editor itself, time parameters, AI assistance, and Fast mode, refer to [
 | When you need this | Guide |
 | --- | --- |
 | You haven't run an {{esql}} query in Discover yet | [Get started with {{esql}} in Discover](try-esql.md) |
-| You want to query in {{esql}}, or go back to KQL, and you need to know what happens to the query | [Switch between {{esql}} and classic mode](switch-esql-mode.md) |
+| You want to switch between {{esql}} and classic mode, and need to know what happens to your query | [Switch between {{esql}} and classic mode](switch-esql-mode.md) |
 | You're writing a query and need an index or a field name | [Browse data sources and fields from the {{esql}} editor in Discover](browse-esql-sources.md) |
 | You have results and want to read them, sort them, or filter from a value | [Work with {{esql}} results in Discover](esql-results.md) |
 | You want to change a value in the query without keeping several copies | [Add variable controls to Discover queries](esql-variable-controls.md) |

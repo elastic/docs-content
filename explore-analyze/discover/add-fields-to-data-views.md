@@ -11,7 +11,7 @@ description: Add a runtime field to a data view from Discover when your data lac
 
 # Add a runtime field to a data view from Discover
 
-If you forgot to define an important value as a separate field, or you want to combine two fields and treat them as one, you can add a [runtime field](../../manage-data/data-store/mapping/runtime-fields.md) to your data view without leaving **Discover**. You can then use the new field for analysis and visualizations the same way you use other fields.
+If you forgot to define an important value as a separate field, or you want to combine two fields and treat them as one, you can add a [runtime field](../../manage-data/data-store/mapping/runtime-fields.md) to your [data view](../find-and-organize/data-views.md) without leaving **Discover**. You can then use the new field for analysis and visualizations the same way you use other fields.
 
 ## Before you begin
 

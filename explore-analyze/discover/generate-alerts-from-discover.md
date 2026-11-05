@@ -13,7 +13,7 @@ description: Turn the query and filters of a Discover session into an alert rule
 
 From **Discover**, you can create a rule to periodically check when data goes above or below a certain threshold within a given time interval.
 
-1. Ensure that your data view, query, and filters fetch the data for which you want an alert.
+1. Check that your data, query, and filters return the results you want an alert for.
 2. In the application menu, select **Create alert rule** (or **Alerts** in earlier versions), then select **Create search threshold rule**.
 
     The **Create rule** form is pre-filled with the latest query sent to {{es}}.

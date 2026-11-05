@@ -32,7 +32,7 @@ You can navigate between results with your keyboard by pressing "Enter" to go to
 ## Look inside a document [look-inside-a-document]
 
 $$$document-explorer-expand-documents$$$
-Dive into an individual document to view its fields and the documents that occurred before and after it.
+Open an individual document to read all its fields.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To filter or copy values in the table without opening the flyout, switch **View mode** to **JSON**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
@@ -47,7 +47,7 @@ Dive into an individual document to view its fields and the documents that occur
    * You can pin fields from the first column of the fields table, so they stay displayed even if you filter the table.
 
    ::::{tip}
-   You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
+   You can restrict the fields listed in the detailed view to the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In {{esql}} mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
 3. In classic mode, you can also [open the document on a page of its own, or view the documents that occurred before and after it](#open-single-document).

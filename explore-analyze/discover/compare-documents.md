@@ -32,6 +32,8 @@ Open **Discover** and run a query that returns at least two results.
 4. Optionally, adjust the **Comparison settings**. For example, you can turn off difference highlighting, show differences at the line, word, or character level, or hide fields where the value matches for all results.
 5. Exit the comparison view at any time using the **Exit comparison mode** button.
 
+**Result:** The comparison view shows the selected results next to each other, with the differences highlighted.
+
 ## Related pages
 
 - [Inspect documents and requests in Discover](inspect-documents.md)
