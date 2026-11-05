@@ -440,7 +440,7 @@ serverless: ga
 
 Conversation metadata is a set of structured fields, such as `status` or `severity`, that track the state of a conversation. The template applied to the conversation defines which fields exist and which values each one accepts.
 
-Use these steps to read the metadata, for example to branch a workflow on a field's value, or to update it, for example to record the outcome of an investigation.
+Use these steps to read the metadata, for example to branch a workflow on a field's value, or to update it, for example to record the outcome of an investigation. The agent also sees the fields and their current values each time it runs on the conversation. In the chat, users see the template name as the conversation's type, but not the field values.
 
 Only conversations with a template have metadata:
 
@@ -460,8 +460,6 @@ Both built-in templates, `investigation` and `escalation`, define the following 
 | `description` | Text | A one-line summary | None |
 
 The `escalation` template also has a `linked_investigations` field, a list of investigation IDs.
-
-The examples in this section use a conversation that a `create_conversation` step creates with the `investigation` template.
 
 :::{note}
 These steps run with the privileges of the user who authorizes the run. That user needs:
@@ -515,7 +513,7 @@ The step has the following requirements:
 - The conversation must have a template applied.
 - You can only set fields that the template defines.
 - Each value must match the field's type and constraints. For example, a field with a fixed list of values rejects any value that isn't in the list.
-- You can't set a field to `null`.
+- You can't set a field to `null` or remove it. To clear a text or list field that isn't required, set it to an empty string or an empty list. You can't clear a required field, such as `status`, or a field with a fixed list of values.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -535,6 +533,8 @@ The `updates` object has the following limits:
 | `conversation_id` | string | Always. |
 | `changed_fields` | array of strings | Always. Names of the fields whose values changed. Empty if no value changed. |
 | `metadata` | object | Always. All metadata fields after the update. |
+
+The following example runs after an [`ai.conversation.create`](#ai-conversation-create) step named `create_conversation` that sets `template_id: investigation`. It closes the investigation and records why:
 
 ```yaml
 - name: resolve_investigation
@@ -576,10 +576,10 @@ Add an attachment to a conversation. Provide the content directly in `data`, or 
 | `origin` | `with` | string | Depends | ID of the {{kib}} object to copy the content from, such as a dashboard ID, up to 2,048 characters. Required unless you set `data`. |
 | `id` | `with` | string | No | Attachment ID, up to 256 characters. Generated if omitted. The step fails if the conversation already has an attachment with this ID. |
 | `description` | `with` | string | No | Description of the attachment, up to 1,024 characters. |
-| `hidden` | `with` | boolean | No | When `true`, users don't see the attachment, but the agent can still use it. Takes precedence over `render_inline`. Defaults to `false`. |
+| `hidden` | `with` | boolean | No | When `true`, users don't see the attachment when it's added, even if `render_inline` is `true`. The agent can still use it, and users see it if the agent refers to it in a response. Takes precedence over `render_inline`. Defaults to `false`. |
 | `render_inline` | `with` | boolean | No | When `true`, users see the attachment as soon as they open the conversation. When `false`, users see it only when the agent refers to it in a response. Defaults to `false`. |
 
-If you set `origin` without `data`, the step copies the object's content once, when it creates the attachment. Later changes to the object don't update the attachment. Not all attachment types support `origin`. For example, `text` doesn't, but the dashboard type, `platform.dashboard.dashboard_state`, does. To attach a dashboard, set `type` to `platform.dashboard.dashboard_state` and `origin` to the dashboard ID.
+If you set `origin` without `data`, the step copies the object's content once, when it creates the attachment. Later changes to the object don't update the attachment. If you set both `data` and `origin`, the step uses `data` as the content and doesn't copy anything from the object. Not all attachment types support `origin`. For example, `text` doesn't, but the dashboard type, `platform.dashboard.dashboard_state`, does. To attach a dashboard, set `type` to `platform.dashboard.dashboard_state` and `origin` to the dashboard ID.
 
 **Output shape:**
 
@@ -633,7 +633,7 @@ The following example replaces the runbook's content, which creates version 2 of
 
 ### `ai.attachment.delete` [ai-attachment-delete]
 
-Delete an attachment from a conversation. By default, the step does a regular deletion: the attachment is marked as deleted, but its content and version history are kept. You can still read it with [`ai.attachment.read`](#ai-attachment-read), and list it with `include_deleted: true` in [`ai.attachment.list`](#ai-attachment-list). To remove the attachment and its history completely, set `permanent: true`.
+Delete an attachment from a conversation. By default, the step does a regular deletion: the attachment is marked as deleted, but its content and version history are kept. A deleted attachment no longer appears in the agent's list of attachments, and users no longer see it in the conversation. You can still read it with [`ai.attachment.read`](#ai-attachment-read), and list it with `include_deleted: true` in [`ai.attachment.list`](#ai-attachment-list). To remove the attachment and its history completely, set `permanent: true`.
 
 You can't permanently delete an attachment in the following cases. Use a regular deletion instead.
 
