@@ -19,8 +19,9 @@ To keep what you found next to your other panels, add different pieces of a Disc
 
 ## Before you begin
 
-- You need permission to view and create dashboards. Without it, the options to add content to a dashboard aren't available.
-- To add a whole session, save it first. Refer to [Save and manage Discover sessions](save-open-search.md#_save_a_discover_session).
+- To add content to a dashboard, you need permission to view and create dashboards, which the **All** privilege for the **Dashboard** feature grants. Without it, the options to add content to a dashboard aren't available.
+- To create a session directly on a dashboard, you also need access to **Discover**.
+- To add a whole session from **Discover**, save it first. Saving needs the **All** privilege for the **Discover** feature. Refer to [Save and manage Discover sessions](save-open-search.md#_save_a_discover_session).
 
 ## Add Discover visualizations to dashboards [add-discover-visualization-to-dashboard]
 
@@ -137,7 +138,7 @@ serverless: ga
 
 Use this option to create a single-tab Discover session directly on the dashboard, without first saving it to the library. The session is stored only with the dashboard.
 
-You need permission to access Discover, and the dashboard must be in **Edit** mode.
+The dashboard must be in **Edit** mode.
 
 1. Select **Add** → **New**, then select **Discover session**.
 2. Configure the session. It starts in {{esql}} mode with an empty query. Enter a query, adjust columns, sort, and apply other view settings as needed.

@@ -51,7 +51,7 @@ This feature is named **Search sessions** and is disabled by default unless you 
 :::::
 
 
-## Usage requirements [_requirements]
+## Before you begin [_requirements]
 
 The background searches that you run are personal and only visible by you. To use this feature, you must have the following minimum permissions:
 

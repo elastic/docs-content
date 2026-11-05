@@ -15,7 +15,9 @@ To analyze the results of a Discover session in a spreadsheet or another tool, o
 
 ## Before you begin
 
-Open **Discover** and run a query that returns results.
+- Open **Discover** and run a query that returns results.
+- To generate a CSV report, you need the **Generate CSV reports** privilege, in the **Reporting** sub-feature of the **Discover** feature. The **All** privilege for **Discover** includes it by default. For more information, refer to [Permissions](../report-and-share.md#permissions).
+- To open the exported JSON in **Console**, you need access to **Dev Tools**.
 
 ## Export Discover session results as CSV [export-discover-session-csv]
 
