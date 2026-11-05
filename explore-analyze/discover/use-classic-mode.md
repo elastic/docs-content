@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: overview
-description: Find the Discover tasks that only exist in classic mode, from searching with Kibana Query Language (KQL) and filters to adding runtime fields.
+description: Find everything you can do in Discover's classic mode, from searching with Kibana Query Language (KQL) and filters to adding runtime fields and saving what you find.
 ---
 
 # Use Discover in classic mode
@@ -15,15 +15,37 @@ Classic mode in **Discover** lets you explore the documents of a [data view](../
 
 ## What you can do in classic mode
 
-Anything that works the same way in both modes, such as customizing the view or saving a session, is in [What you can do with Discover](../discover.md#what-you-can-do).
+**Query your data**
 
-| When you need this | Guide |
-| --- | --- |
-| You want to select a data view and a time range, then search with KQL or Lucene or narrow the results with filters | [Search and filter with KQL, Lucene, and filters](search-and-filter-classic.md) |
-| You need a field that your data view doesn't have | [Add a runtime field to a data view from Discover](add-fields-to-data-views.md) |
-| You want to chart a field from the fields list | [Visualize a field from Discover](visualize-field.md) |
-| You want to see how the values of each field are distributed | [View field statistics](show-field-statistics.md) |
-| You want to group log messages into patterns | [Run a pattern analysis on your log data](run-pattern-analysis-discover.md) |
+* [Select a data view and a time range](search-and-filter-classic.md#find-the-data-you-want-to-use) to choose the data you explore (classic mode only).
+* [Search with KQL or Lucene and narrow the results with filters](search-and-filter-classic.md) (classic mode only).
+* [Switch to {{esql}} mode](switch-esql-mode.md) and see what happens to your search.
+* [Open Discover from a dashboard panel](../dashboards/create-discover-drilldown.md) with a drilldown.
+* Learn how to handle long-running queries with [background search](background-search.md).
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Keep [several explorations open side by side](work-with-tabs.md) in tabs.
+
+**Understand your data**
+
+* Explore [individual results and documents](inspect-documents.md).
+* See [which fields your data has](explore-fields.md) and what they contain, and break the chart down by a field.
+* [Compare documents](compare-documents.md) side by side.
+* Find patterns in your log data with [pattern analysis](run-pattern-analysis-discover.md) (classic mode only).
+* Check [how the values of each field are distributed](show-field-statistics.md) (classic mode only).
+* [Chart a field](visualize-field.md) from the fields list (classic mode only).
+
+**Shape what your queries return and show**
+
+* [Customize the Discover view](document-explorer.md) to show the columns, density, and layout you need.
+* Add [runtime fields](add-fields-to-data-views.md) to your data views (classic mode only).
+* [Sort your results by relevance](discover-search-for-relevance.md).
+
+**Save and share your explorations**
+
+* [Save sessions](save-open-search.md#_save_a_discover_session) to reuse your queries, filters, and views later.
+* [Add Discover content to dashboards](save-open-search.md#_add_search_results_to_a_dashboard), as charts, tables, or whole sessions.
+* [Export your results](../report-and-share.md#manually-generate-reports) as a file.
+* [Copy results](copy-and-share-documents.md#copy-row-content) as text, JSON, or Markdown, or [share a link](copy-and-share-documents.md#share-your-findings) to a session or a document.
+* [Create an alert rule](generate-alerts-from-discover.md) from the query and filters of a session.
 
 ## Related pages
 
