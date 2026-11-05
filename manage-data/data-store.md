@@ -38,8 +38,6 @@ Both use the same foundational concepts such as documents, mappings, templates, 
 
 An index mode is the storage and query profile for an index or for the backing indices of a data stream.
 It changes default settings and how {{es}} stores documents on disk.
-By default, indices use standard index mode.
-The other modes exist for logs, metrics, vectors, analytical workloads, and lookup joins.
 
 Set [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting) when you create the index or put it in an [index template](/manage-data/data-store/templates.md) so new indices inherit it.
 You cannot change the mode after the index is created.
@@ -48,17 +46,17 @@ For every supported value, refer to [`index.mode`](elasticsearch://reference/ela
 Standard (`standard`) {applies_to}`vectordb: unavailable`
 :   Optimized for search and any type of retrieval.
 
-Columnar (`columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
-:   Optimized for storage efficiency and analytics. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
-
 LogsDB (`logsdb`) {applies_to}`stack: ga 9.0+` {applies_to}`vectordb: unavailable`
 :   Optimized for logs use cases, with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode.
 
 LogsDB columnar (`logsdb_columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
-:   Optimized for logs use cases that align with columnar semantics and limitations. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
+:   Optimized for logs use cases that align with columnar semantics and [limitations](elasticsearch://reference/elasticsearch/columnar/index.md#columnar-limitations). Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
 
 TSDB (`time_series`) {applies_to}`vectordb: unavailable`
 :   Optimized for metrics and time series use cases. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. This mode is for data streams only.
+
+Columnar (`columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
+:   Optimized for storage efficiency and analytics. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
 
 VectorDB (`vectordb_document`) {applies_to}`stack: ga 9.5+` {applies_to}`vectordb: ga`
 :   Optimized for vector search use cases, enabling similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). In {{vectordb}} projects, it is the only mode available.
