@@ -151,7 +151,7 @@ To turn on the entity store, you need the following:
 **All** for the **Security** and **Saved Objects Management** features
 
 :::{important}
-The entity store's background tasks run with the privileges of the user who turned on the entity store, as they were at that time. If you change that user's role later, for example after upgrading to 9.6, a user with the updated role must stop and restart the entity store so the tasks pick up the updated privileges.
+The entity store's background tasks run with the privileges of the user who turned on the entity store, as they were at that time. If you change that user's role later, a user with the updated role must stop and restart the entity store so the tasks pick up the updated privileges.
 :::
 :::
 
