@@ -20,6 +20,8 @@ type: overview
 
 {{managed-integrations}} let you ingest data from cloud sources into Elastic without deploying or maintaining any collectors yourself. Elastic runs the collectors for you and writes the data directly to your cluster, so you can focus on the data rather than on the infrastructure that collects it. {{managed-integrations}} are available on {{serverless-full}} and {{ech}} deployments.
 
+{applies_to}`stack: ga 9.6+` On {{ech}} deployments in [{{fedramp-mod}}](/deploy-manage/deploy/elastic-cloud/fedramp.md), the **{{integrations}}** catalog shows only FIPS compatible integrations, including {{managed-integrations}}. {{managed-integrations}} aren't available in {{fedramp-high}}.
+
 To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md).
 
 ## Key benefits [managed-integrations-benefits]
