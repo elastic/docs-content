@@ -31,7 +31,23 @@ The operator defines and oversees the following Custom Resource Definitions (CRD
 - [OpenTelemetry Collectors](https://github.com/open-telemetry/opentelemetry-collector): Agents responsible for receiving, processing, and exporting telemetry data such as logs, metrics, and traces.
 - [Instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic): Leverages OpenTelemetry instrumentation libraries to automatically instrument workloads.
 
-All signals including logs, metrics, and traces are processed by the collectors and sent directly to {{es}} using the [Elasticsearch exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md). A collector's processor pipeline replaces the traditional APM server functionality for handling application traces.
+All signals including logs, metrics, and traces are processed by the collectors before being forwarded to Elastic.
+
+:::::{applies-switch}
+
+::::{applies-item} serverless:
+Processed data is exported to the [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md), which handles data enrichment, {{product.apm}} aggregations, and ingestion server-side.
+::::
+
+::::{applies-item} ech:
+Processed data is exported to the [Managed OTLP endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md), which handles data enrichment, {{product.apm}} aggregations, and ingestion server-side.
+::::
+
+::::{applies-item} { self:, ece:, eck: }
+Processed data is sent directly to {{es}} using the [Elasticsearch exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md). A collector's processor pipeline, including the `elasticapm` connector and processor, replaces the traditional {{product.apm}} server functionality for handling application traces.
+::::
+
+:::::
 
 ## Kube-stack Helm Chart
 

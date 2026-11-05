@@ -35,6 +35,14 @@ Use the values file and installation instructions for your deployment mode:
 | {{motlp}} on {{ech}} | `kube-stack/managed_otlp/values.yaml` | [Quickstart for Kubernetes on {{ech}}](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md) |
 | {{motlp}} on {{serverless-short}} | `kube-stack/managed_otlp/values.yaml` | [Quickstart for Kubernetes on {{serverless-full}}](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md) |
 
+For direct ingestion into {{es}}, use the values file tagged for your Elastic Stack version:
+
+```
+https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<STACK_VERSION>/deploy/helm/edot-collector/kube-stack/values.yaml
+```
+
+Where `<STACK_VERSION>` is the version of the Elastic Stack you are using, for example `9.1.2`.
+
 :::{important}
 For Elastic Stack `8.16.0`, use the [values file](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml) from the `elastic/opentelemetry` repository instead.
 :::
