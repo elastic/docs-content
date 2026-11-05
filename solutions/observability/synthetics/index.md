@@ -31,7 +31,7 @@ Synthetics periodically checks the status of your services and applications. Mon
 * [Browser monitors](/solutions/observability/synthetics/index.md#monitoring-synthetics)
 
 :::{image} /solutions/images/observability-synthetics-monitor-page.png
-:alt: {{synthetics-app}} in {{kib}}
+:alt: Synthetics Overview in 9.6 with monitor status counts, ping history, and monitor cards
 :screenshot:
 :::
 
