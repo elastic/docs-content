@@ -70,7 +70,8 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 
 ### Elastic {{infer-cap}} Service [observability-billing-elastic-managed-llms]
 
-The [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) is charged based on the tokens used with its models, including embedding models, rerankers, and Elastic Managed LLMs.
+:::{include} _snippets/eis-billing.md
+:::
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder and other applicable AI features as a part of the "Observability Complete" feature tier.
 

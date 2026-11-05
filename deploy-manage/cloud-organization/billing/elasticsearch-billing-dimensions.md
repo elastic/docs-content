@@ -49,7 +49,8 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
   Unlike ingest, Search VCU billing does not scale to zero during idle periods. A baseline of search capacity is always provisioned so your data remains instantly queryable, and you are billed a reduced rate for this baseline when no search activity is occurring. The baseline is determined primarily by your Search Power setting and your [search-ready](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#elasticsearch-manage-project-search-ai-lake-settings) dataset size.
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities. ML VCUs are a factor of the models deployed and number of ML operations such as inference for search and ingest. ML VCUs are typically consumed for generating embeddings during ingestion and during semantic search or reranking.
-* **Tokens:** [The Elastic Inference Service](https://www.elastic.co/docs/explore-analyze/elastic-inference/eis) is charged based on tokens used with machine learning models. For embeddings and rerankers, usage is billed per million input tokens sent to the models. For LLMs, this is either per 1 million input or per 1 million output tokens. For details about Elastic Managed LLMs, refer to [](#elasticsearch-billing-elastic-managed-llms).
+
+  Models that run on the [Elastic {{infer-cap}} Service](#elasticsearch-billing-elastic-managed-llms) are billed based on tokens as an add-on, not as ML VCUs.
 
 ## Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
 
@@ -122,7 +123,8 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 
 ### Elastic {{infer-cap}} Service [elasticsearch-billing-elastic-managed-llms]
 
-The [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) is charged based on the tokens used with its models, including embedding models, rerankers, and Elastic Managed LLMs.
+:::{include} _snippets/eis-billing.md
+:::
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) can power AI features in {{es-serverless}} projects, such as Agent Builder and AI Assistant, and are enabled by default.
 
