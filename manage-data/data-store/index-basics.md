@@ -68,7 +68,7 @@ A simple {{es}} document might look like this:
 }
 ```
 1. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system-managed fields prefixed with an underscore. `_index` identifies which index stores the document and `_id` is the document's unique identifier within that index.
-2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested. Some [index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting), such as [columnar](/manage-data/data-store/columnar.md), change how `_source` and field indexes are stored while keeping the same document and query APIs.
+2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested. Some [index modes](/manage-data/data-store.md#understand-index-modes) reconstruct `_source` instead of storing the JSON you sent, or omit values such as vectors. The document and query APIs stay the same.
 
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
@@ -92,9 +92,10 @@ Each index has settings that control its storage and performance behavior. Setti
 
 Common settings include:
 
-* `index.number_of_shards`: The number of primary shards. Fixed at creation.
+* `index.number_of_shards`: The number of primary shards. Cannot be changed after you create the index.
 * `index.number_of_replicas`: The number of replica copies per primary shard. Can be changed at any time.
 * `index.refresh_interval`: How often new data becomes searchable. Defaults to `1s`.
+* `index.mode`: The storage and query profile. Cannot be changed after you create the index. Refer to [index modes](/manage-data/data-store.md#understand-index-modes).
 
 To configure index settings at creation time, include a `settings` object in the create index request. The following example creates `my-index` with a refresh interval of 30 seconds:
 
