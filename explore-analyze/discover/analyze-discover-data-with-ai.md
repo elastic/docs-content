@@ -44,4 +44,4 @@ If your query doesn't match any context-aware profile, the agent infers the anal
 ## Related pages
 
 - [Discover tables in chat](../ai-features/agent-builder/agent-builder-discover-tables.md)
-- [Introduction to Discover](discover-get-started.md)
+- [How Discover works](discover-get-started.md)

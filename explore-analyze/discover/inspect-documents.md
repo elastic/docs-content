@@ -91,4 +91,4 @@ The various profiles listed show details such as the active solution and data so
 
 - [Compare documents](compare-documents.md)
 - [Copy results and share links to documents](copy-and-share-documents.md)
-- [Introduction to Discover](discover-get-started.md#context-aware-discover)
+- [How Discover works](discover-get-started.md#context-aware-discover)

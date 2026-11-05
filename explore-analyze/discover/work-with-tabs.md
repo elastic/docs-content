@@ -47,4 +47,4 @@ To keep all your tabs for later, you can [save your Discover session](save-open-
 ## Related pages
 
 - [Save a Discover session for reuse](save-open-search.md)
-- [Introduction to Discover](discover-get-started.md)
+- [How Discover works](discover-get-started.md)
