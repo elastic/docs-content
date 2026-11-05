@@ -690,6 +690,8 @@ List the attachments of a conversation. The step returns a summary of each attac
 | `attachments` | array | Always. Each item has `id`, `type`, `current_version`, `active`, and, if set, `description`. `active` is `false` for deleted attachments. |
 | `total_token_estimate` | number | Always. Estimated number of tokens across the active attachments. Deleted attachments aren't counted, even with `include_deleted: true`. |
 
+The following example lists the attachments in the conversation that haven't been deleted:
+
 ```yaml
 - name: list_attachments
   type: ai.attachment.list
