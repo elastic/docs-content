@@ -566,7 +566,7 @@ Add an attachment to a conversation. Provide the content directly in `data`, or 
 | `conversation_id` | `with` | string | Yes | Conversation to add the attachment to. |
 | `type` | `with` | string | Yes | Attachment type, such as `text`. {{kib}} features can register their own attachment types, so the available types depend on your deployment. The step fails if the type doesn't exist. |
 | `data` | `with` | any | Depends | Attachment content. Its shape depends on `type`. For `text`, use `{ content: "<text>" }`. Required unless you set `origin`. |
-| `origin` | `with` | string | Depends | ID of the saved object the content comes from, such as a dashboard ID, up to 2,048 characters. Only types that load content from a saved object support it. Required unless you set `data`. |
+| `origin` | `with` | string | Depends | ID of the {{kib}} object to copy the content from, such as a dashboard ID, up to 2,048 characters. Required unless you set `data`. |
 | `id` | `with` | string | No | Attachment ID, up to 256 characters. Generated if omitted. The step fails if the conversation already has an attachment with this ID. |
 | `description` | `with` | string | No | Description of the attachment, up to 1,024 characters. |
 | `hidden` | `with` | boolean | No | When `true`, users don't see the attachment, but the agent can still use it. Takes precedence over `render_inline`. Defaults to `false`. |
