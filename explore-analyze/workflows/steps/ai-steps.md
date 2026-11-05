@@ -620,9 +620,12 @@ The step creates a new version only when `data` differs from the current content
 
 ### `ai.attachment.delete` [ai-attachment-delete]
 
-Delete an attachment from a conversation. By default, the step marks the attachment inactive but keeps it, so you can still list it with `include_deleted: true`. To remove the attachment completely, set `permanent: true`.
+Delete an attachment from a conversation. By default, the step does a regular deletion: the attachment is marked as deleted, but its content and version history are kept. You can still read it with [`ai.attachment.read`](#ai-attachment-read), and list it with `include_deleted: true` in [`ai.attachment.list`](#ai-attachment-list). To remove the attachment and its history completely, set `permanent: true`.
 
-A permanent deletion fails if the agent has already read, updated, or compared versions of the attachment in the conversation, or if the attachment has a client ID. A regular deletion still works in these cases.
+You can't permanently delete an attachment in the following cases. Use a regular deletion instead.
+
+- The agent has already used the attachment in the conversation, by reading it, updating it, or comparing its versions.
+- The attachment, or its `data`, has a `client_id` field. This isn't the `id` you can set with [`ai.attachment.add`](#ai-attachment-add).
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
