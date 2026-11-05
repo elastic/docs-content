@@ -157,6 +157,80 @@ Your synthetics scripts might require the use of passwords or other sensitive se
 {applies_to}`serverless: ga`{applies_to}`stack: ga 9.1` Params are viewable by administrators and users with the **Can read global parameter values** {{kib}} privilege. Also, synthetics scripts have no limitations on accessing these values, and a malicious script author could write a synthetics journey that exfiltrates `params` and other data at runtime. Do **not** use truly sensitive passwords (for example, an admin password or a real credit card) in **any** synthetics tools. Instead, set up limited demo accounts, or fake credit cards with limited functionality. If you want to limit access to parameters, ensure that users who are not supposed to access those values do not have the **Can read global parameter values** {{kib}} privilege, and that any scripts that use those values do not leak them in network requests or screenshots.
 ::::
 
+### Reference secrets from HashiCorp Vault [synthetics-secrets-vault]
+```{applies_to}
+stack: ga 9.6+
+serverless: unavailable
+```
+
+Instead of storing a sensitive value in {{kib}}, you can keep it in HashiCorp Vault and reference it from a param or a monitor field, with {{kib}} storing and forwarding only the reference. The {{agent}} running the monitor looks the value up in Vault each time the monitor runs, so the value itself never reaches {{kib}} or {{es}}.
+
+This works on [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md) only, and the agents running the monitors must be on {{agent}} 9.6 or later. A monitor that references a secret and runs on a public location is rejected when you save it.
+
+#### Add a Vault connection [synthetics-secrets-vault-connection]
+
+Each connection holds the credential that reads secrets from one Vault account. You can add several per {{kib}} space.
+
+1. Go to **Synthetics** → **Settings** → **Global parameters**, then find **HashiCorp Vault connections**.
+2. Select **Add connection** and fill in the fields:
+
+    | Field | Description |
+    | --- | --- |
+    | **Name** | The name you reference the connection by, such as `prod`. You can't change it after you save the connection. |
+    | **Vault address** | The address of your Vault server. It must use `https`, unless the host is a loopback address such as `localhost` or `127.0.0.1`. |
+    | **Authorization method** | Can be a **Token**, or an AppRole with a **Role ID** and **Secret ID**. |
+    | **KV v2 mount** | Optional. It's the mount holding the secrets this connection reads. |
+    | **Allowed monitor hosts** | Decides which monitor targets might receive secrets from this connection. Leave it empty to allow any host. |
+    | **Skip TLS verification (dev only)** | Turns off certificate validation. Use it only against a development Vault server. |
+
+3. Select **Test connection** to check that {{kib}} can reach and authenticate with Vault, then select **Save connection**.
+
+Test connection runs from {{kib}}. A monitor looks secrets up from the {{private-location}}'s network instead, so confirm that the agents can also reach the address. A loopback address can't be tested from {{kib}} at all, because it refers to whichever host is making the request.
+
+:::{note}
+Anyone who can edit monitors or global parameters in the space can reference any secret the connection's credential can read. Give each connection a dedicated, read-only credential scoped to the paths your monitors need.
+:::
+
+To change a connection later, select **Edit**. You can edit a connection that params and monitors are already using, which is how you rotate its credential: you can leave the secret field blank to keep the stored value, or enter a new one to replace it. If you add or narrow **Allowed monitor hosts**, the form lists the monitors that the restriction would stop before you save.
+
+To remove a connection, select **Delete**. However, this fails while any param or monitor still names it, so point them at another connection first.
+
+#### Reference a secret [synthetics-secrets-vault-reference]
+
+Reference a secret by connection name, path, and field:
+
+```text
+vault://<connection>@<secret-path>#<field>
+```
+
+The connection name is required. For example, a param or a monitor's request header can hold:
+
+```text
+Bearer vault://prod@myapp/credentials#password
+```
+
+Use only letters, digits, `.`, `_`, and `-`, plus `/` to separate segments of the path. Percent-encoded characters aren't accepted. {{kib}} rejects a reference that is malformed, names a connection that doesn't exist, or leaves the connection name out.
+
+References work in params and in monitor fields, but not in browser monitor scripts. Pass a secret into a script through a param instead.
+
+#### Limit which hosts receive a secret [synthetics-secrets-vault-allowed-hosts]
+
+**Allowed monitor hosts** restricts a connection so its secrets only reach the targets you list. Enter host names or IP addresses without a scheme, port, path, or wildcard, using the punycode form for international names.
+
+When the list isn't empty, the connection becomes much narrower:
+
+* Only HTTP, TCP, and ICMP monitors can use it, and every target and proxy the monitor uses must be on the list.
+* Browser monitors can't use it at all.
+* Monitors that follow redirects or use Kerberos can't use it either.
+
+A monitor that the restriction excludes reports down, and the secret isn't sent.
+
+#### Known limitations [synthetics-secrets-vault-limitations]
+
+* An {{agent}} keeps a secret for five minutes after looking it up. Saving the connection again gives it a fresh copy.
+* {{kib}} doesn't detect references inside base64-encoded Kerberos and NTLM fields, so a secret referenced there is never looked up.
+* Deleting or changing a connection doesn't withdraw access to Vault. {{agents}} keep cached values until they restart, and an offline {{agent}} keeps whatever it already holds. To withdraw access, revoke the credential in Vault and rotate any secrets it retrieved.
+
 ### Use environment variables in Synthetics Projects
 
 If you are managing monitors with a Synthetics project, you can use environment variables in your `synthetics.config.ts` or `synthetics.config.js` file.
