@@ -118,9 +118,11 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::{include} _snippets/workflow-executions-billing.md
 :::
 
-### Elastic Managed LLMs [elasticsearch-billing-elastic-managed-llms]
+### Elastic {{infer-cap}} Service [elasticsearch-billing-elastic-managed-llms]
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) can power AI features in {{es-serverless}} projects, such as Agent Builder and AI Assistant, and are enabled by default. Using Elastic Managed LLMs consumes tokens and incurs token-based billing in addition to the other billing dimensions of your project.
+The [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) is charged based on the tokens used with its models, including embedding models, rerankers, and Elastic Managed LLMs.
+
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) can power AI features in {{es-serverless}} projects, such as Agent Builder and AI Assistant, and are enabled by default.
 
 ## Organization charges [elasticsearch-billing-organization-charges]
 

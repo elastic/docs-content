@@ -109,9 +109,11 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::{include} _snippets/workflow-executions-billing.md
 :::
 
-### Elastic Managed LLMs [security-billing-elastic-managed-llms]
+### Elastic {{infer-cap}} Service [security-billing-elastic-managed-llms]
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
+The [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) is charged based on the tokens used with its models, including embedding models, rerankers, and Elastic Managed LLMs.
+
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier.
 
 ## Organization charges [security-billing-organization-charges]
 

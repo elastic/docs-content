@@ -88,9 +88,11 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::{include} _snippets/workflow-executions-billing.md
 :::
 
-### Elastic Managed LLMs [vector-database-billing-elastic-managed-llms]
+### Elastic {{infer-cap}} Service [vector-database-billing-elastic-managed-llms]
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. Using Elastic Managed LLMs consumes tokens and incurs token-based billing in addition to the other billing dimensions of your project. For current rates, refer to the [{{es}} {{vectordb}} pricing page](https://cloud.elastic.co/pricing/serverless?s=vectordb).
+The [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) is charged based on the tokens used with its models, including embedding models, rerankers, and Elastic Managed LLMs.
+
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. For current rates, refer to the [{{es}} {{vectordb}} pricing page](https://cloud.elastic.co/pricing/serverless?s=vectordb).
 
 ## Organization charges [vector-database-billing-organization-charges]
 
