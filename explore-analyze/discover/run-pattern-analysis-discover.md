@@ -14,11 +14,6 @@ description: Detect patterns in unstructured data with pattern analysis in Disco
 
 In **Discover**'s classic mode, pattern analysis helps you find patterns in unstructured log messages by performing categorization analysis on text fields. It creates categories based on message structures, displays their distribution in a chart, and provides example documents for each pattern. This makes it easier to identify common log patterns, filter out noise, and focus on anomalous messages during troubleshooting.
 
-:::{tip}
-:applies_to: { serverless: preview, stack: preview 9.4+ }
-To group log messages by pattern in {{esql}} mode instead, refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
-:::
-
 Pattern analysis works on any text field. This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own log data.
 
 1. Go to **Discover**. If it opens in {{esql}} mode, [switch to classic mode](switch-esql-mode.md#revert-to-classic-mode).

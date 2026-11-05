@@ -14,10 +14,6 @@ description: Explore field statistics in Discover to view distributions, top val
 
 The **Field statistics** view in **Discover** provides statistical summaries and visualizations of your data fields. View distributions, top values, minimum and maximum ranges, and cardinality to quickly understand your data quality and patterns. Use field statistics to identify data issues, understand field characteristics, and discover insights before building visualizations.
 
-:::{note}
-Field statistics are only available in classic mode, not in {{esql}} mode. In {{esql}} mode, you can calculate summaries such as counts and averages with a [`STATS`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) query.
-:::
-
 This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. Go to **Discover**. If it opens in {{esql}} mode, [switch to classic mode](switch-esql-mode.md#revert-to-classic-mode).

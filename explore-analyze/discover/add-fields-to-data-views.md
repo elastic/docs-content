@@ -15,7 +15,7 @@ If you forgot to define an important value as a separate field, or you want to c
 
 ## Before you begin
 
-Open **Discover** in classic mode and select the data view that you want to add the field to. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode). In {{esql}} mode, add the value to your query with [`EVAL`](elasticsearch://reference/query-languages/esql/commands/eval.md) instead. The new column then appears in the field list.
+Open **Discover** in classic mode and select the data view that you want to add the field to. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 
 ## Add a runtime field
 
