@@ -27,7 +27,7 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 ## 9.6.0 [elastic-observability-9.6.0-breaking-changes]
 
 ::::{dropdown} Removes deprecated Significant Events public APIs
-**Details**<br> The deprecated, technical preview Significant Events public APIs are removed:
+**Details**<br> The deprecated, experimental Significant Events public APIs are removed:
 
 * `GET /api/streams/{name}/queries`
 * `PUT /api/streams/{name}/queries/{queryId}`
