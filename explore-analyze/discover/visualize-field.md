@@ -15,7 +15,8 @@ When a field in the Discover fields list looks interesting, you can open it in *
 
 ## Before you begin
 
-- Use **Discover** in classic mode, the only mode that offers this capability, and select a [data view](../find-and-organize/data-views.md). If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+- Make sure **Discover** is in classic mode. {{esql}} mode doesn't support this functionality. To switch, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+- Select a [data view](../find-and-organize/data-views.md).
 - Select a field that can be [aggregated](../query-filter/aggregations.md).
 - To follow the example, add the [ecommerce sample data](/manage-data/ingest/sample-data.md) and select its data view.
 

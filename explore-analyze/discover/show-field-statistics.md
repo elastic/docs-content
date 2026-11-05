@@ -16,7 +16,7 @@ The **Field statistics** view in **Discover** provides statistical summaries and
 
 ## Before you begin
 
-Use **Discover** in classic mode, the only mode that offers field statistics. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+Make sure **Discover** is in classic mode. {{esql}} mode doesn't support this functionality. To switch, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 
 ## View the statistics of your fields
 
