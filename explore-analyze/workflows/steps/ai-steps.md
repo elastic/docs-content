@@ -61,7 +61,12 @@ Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}
 - [`ai.attachment.read`](#ai-attachment-read): Read the content of an attachment. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 - [`ai.attachment.list`](#ai-attachment-list): List the attachments in a conversation. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 
-For `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). The conversation steps, including the [conversation metadata](#ai-conversation-metadata-steps) and [conversation attachment](#ai-attachment-steps) steps, have no top-level fields and use `snake_case` inside `with`.
+Where a step's fields go, and how they're named, depends on the step:
+
+| Steps | Top-level fields | Parameters inside `with` |
+|---|---|---|
+| `ai.prompt`, `ai.classify`, `ai.summarize`, `ai.agent` | Fields marked **top level** in each step's table, such as `connector-id`, `agent-id`, and `inference-id`. They use kebab-case (`connector-id`, not `connectorId`) and sit alongside `name`, `type`, `if`, and `foreach`, not under `with`. | Mostly camelCase, such as `systemPrompt`, `maxLength`, and `includeRationale`. |
+| `ai.conversation.*`, `ai.attachment.*` | None. | snake_case, such as `conversation_id`. |
 
 ::::{applies-switch}
 :::{applies-item} { stack: ga 9.5, serverless: ga }
