@@ -36,7 +36,7 @@ For complete network capture, consider deploying {{packetbeat}} using the [Netwo
 
 {{elastic-defend}} collects a selected set of user security events to support threat detection and prevention. It doesn't capture every user event, and the events it collects vary by operating system.
 
-On Windows, {{elastic-defend}} collects the following events from the Windows Security event log and stores them in the `logs-endpoint.events.security-*` data stream. Windows records these events only when the corresponding audit policy is enabled on the host.
+On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect the following Windows Security events and stores them in the `logs-endpoint.events.security-*` data stream. 
 
 | Windows event ID | Description |
 | --- | --- |
@@ -57,7 +57,7 @@ On Windows, {{elastic-defend}} collects the following events from the Windows Se
 
 {{elastic-defend}} only captures system service security events required by its behavioral protection engine.
 
-On Windows, {{elastic-defend}} collects the following event from the Windows Security event log and stores it in the `logs-endpoint.events.security-*` data stream. Windows records this event only when the corresponding audit policy is enabled on the host.
+On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect the following Windows Security events and stores them in the `logs-endpoint.events.security-*` data stream. 
 
 | Windows event ID | Description |
 | --- | --- |
@@ -72,7 +72,7 @@ For complete capture of all or specific Windows security events, consider the [C
 
 {{elastic-defend}} only captures scheduled task security events required by its behavioral protection engine.
 
-On Windows, {{elastic-defend}} collects the following events from the Windows Security event log and stores them in the `logs-endpoint.events.security-*` data stream. Windows records these events only when the corresponding audit policy is enabled on the host.
+On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect the following Windows Security events and stores them in the `logs-endpoint.events.security-*` data stream. 
 
 | Windows event ID | Description |
 | --- | --- |
@@ -93,8 +93,6 @@ On Windows, {{elastic-defend}} monitors calls to sensitive Windows APIs that mal
 * `connect`
 * `CreateProcessAsUserA` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 * `CreateProcessAsUserW` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `CreateProcessWithLogonW` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `CreateProcessWithTokenW` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 * `DeviceIoControl`
 * `GetAsyncKeyState`
 * `ImpersonateLoggedOnUser` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
