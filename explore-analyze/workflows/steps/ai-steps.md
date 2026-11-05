@@ -3,7 +3,7 @@ navigation_title: AI
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Call LLMs, run Agent Builder agents, and add context to agent conversations and manage their attachments and metadata from workflows with AI steps. This reference lists each step's parameters, output, and examples.
+description: Call LLMs, run Agent Builder agents, and manage agent conversations, including their attachments and metadata, from workflows with AI steps. This reference lists each step's parameters, output, and examples.
 products:
   - id: kibana
   - id: cloud-serverless
