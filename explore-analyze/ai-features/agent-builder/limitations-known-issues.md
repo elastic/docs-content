@@ -141,6 +141,8 @@ For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations 
 
 ## Known issues
 
+The following known issues affect current versions of {{agent-builder}}. For fixes and known issues in a specific release, refer to the **Elastic Agent Builder** entries in the [{{kib}} release notes](kibana://release-notes/index.md) and [{{kib}} known issues](kibana://release-notes/known-issues.md).
+
 ### Troubleshoot incompatible LLMs
 
 The following errors suggest your selected model may not be compatible with {{agent-builder}}:

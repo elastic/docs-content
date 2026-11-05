@@ -68,6 +68,13 @@ $$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {ap
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also generate queries against [datasets](#agent-builder-builtin-tools-datasets).
 
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The tool can also generate queries with the [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) command, which runs Prometheus Query Language (PromQL) expressions on metrics in [time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md). The tool uses `PROMQL` when you:
+
+    * Ask for PromQL or provide a PromQL expression.
+    * Ask it to convert a Prometheus query, dashboard, or alert.
+
+    Otherwise, it uses the [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) source command.
+
 `platform.core.get_document_by_id` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Retrieves the full content of an {{es}} document based on its ID and index name.
 
@@ -115,6 +122,8 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool only runs connectors [assigned to the agent](../connectors.md#assign-connectors-to-an-agent). Calls to other connectors fail with an error.
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool runs only sub-actions that the connector allows and that aren't marked **Workflow only**. Calls to any other sub-action fail with an error. Refer to [Limit a connector's actions](../connectors.md#limit-a-connectors-actions).
 
     **Prerequisites:** In 9.4 and 9.5, the `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on. Starting in 9.6, and on {{serverless-short}}, the tool is available without it.
 
