@@ -34,8 +34,6 @@ The `settings.run_as` field specifies the ID of the account that runs the workfl
 
 You can assign an existing account or create one without leaving the workflow editor. In both cases, the account must be [created in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) and have the privileges required by the workflow steps.
 
-{applies_to}`serverless: unavailable` Accounts created directly through the {{es}} API can't be used for workflow execution, even if they use the `kibana` namespace.
-
 1. Open the workflow in the {{kib}} workflow editor.
 2. In the `settings` block, add `run_as`:
 
