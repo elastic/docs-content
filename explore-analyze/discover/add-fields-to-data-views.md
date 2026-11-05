@@ -25,7 +25,7 @@ When your data doesn't have a field you need, such as a value that is part of an
    - In the sidebar, select **Add a field**.
    - In the data view menu, select **Add a field to this data view**.
 
-2. Select the **Type** that matches the value your script returns:
+2. Select the **Type** that matches the value your script returns. If they don't match, the data view fails wherever it's used. The options are:
 
    - **Keyword** for text, such as names or labels.
    - **Long** for whole numbers and **Double** for numbers with decimals.
@@ -34,8 +34,6 @@ When your data doesn't have a field you need, such as a value that is part of an
    - **Boolean** for true or false.
    - **Geo point** for locations.
    - **Composite** to produce several fields from one script. Refer to [Return multiple fields with a composite runtime field](../find-and-organize/data-views/runtime-fields.md#composite-runtime-field).
-
-   The script must match the type, or the data view fails wherever it's used.
 
 3. **Name** the field. Name it in a way that corresponds to the way other fields of the data view are named. You can set a custom label and description for the field to make it more recognizable in your data view.
 4. Define the value that you want the field to show. By default, the field value is retrieved from the source data if it already contains a field with the same name. You can customize this with the following options:
