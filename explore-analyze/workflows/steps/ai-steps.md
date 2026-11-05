@@ -641,6 +641,8 @@ You can't permanently delete an attachment in the following cases. Use a regular
 
 **Output shape:** `{ success: boolean, permanent: boolean }`.
 
+The following example deletes the runbook. Because `permanent` isn't set, you can still read and list the attachment afterward:
+
 ```yaml
 - name: delete_runbook
   type: ai.attachment.delete
