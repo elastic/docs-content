@@ -193,7 +193,10 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Workflows can read and update the attachments and metadata of {{agent-builder}} conversations. For example, a workflow can add a runbook to the conversation that an `ai.agent` step created, or record the outcome of an investigation in the metadata of a conversation it created from a template.
+Workflows can read and update the attachments and metadata of {{agent-builder}} conversations:
+
+- **Attachments** are content, such as a runbook or a dashboard, that the agent can use as context. For example, a workflow can add a runbook to a conversation that an `ai.agent` step created.
+- **Metadata** is a set of structured fields, such as `status` and `severity`, that track the state of a conversation. For example, a workflow can mark an investigation as closed. Only conversations created from a template have metadata. To create one from a workflow, use [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`.
 
 Use these steps:
 
