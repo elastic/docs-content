@@ -23,7 +23,6 @@ type: overview
 
 - To learn the basics, including the two query modes, tabs, and context-aware experiences, read [How Discover works](discover/discover-get-started.md).
 - To learn by running a first query, follow [Get started with {{esql}} in Discover](discover/try-esql.md).
-- To change modes or see what happens to your query when you do, refer to [Switch between {{esql}} and classic mode](discover/switch-esql-mode.md).
 
 ## What you can do with Discover [what-you-can-do]
 
@@ -36,14 +35,6 @@ The guides for each task say which query mode they cover.
 * Learn how to handle long-running queries with [background search](discover/background-search.md).
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Keep [several explorations open side by side](discover/work-with-tabs.md) in tabs.
 
-**Shape what your queries return and show**
-
-* [Customize the Discover view](discover/document-explorer.md) to show the columns, density, and layout you need.
-* See how your {{esql}} query can change [the results table](discover/esql-results.md).
-* Add [variable controls](discover/esql-variable-controls.md) to make your {{esql}} query dynamic without having to duplicate it.
-* Add [runtime fields](discover/add-fields-to-data-views.md) to your views in classic mode.
-* [Sort your results by relevance](discover/discover-search-for-relevance.md).
-
 **Understand your data**
 
 * Explore [individual results and documents](discover/inspect-documents.md).
@@ -54,6 +45,14 @@ The guides for each task say which query mode they cover.
 * [Chart a field](discover/visualize-field.md) from the fields list (classic mode only).
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` [Detect change points](discover/detect-change-points.md) in a time series ({{esql}} mode only).
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` [Analyze your data with AI](discover/analyze-discover-data-with-ai.md) ({{esql}} mode only).
+
+**Shape what your queries return and show**
+
+* [Customize the Discover view](discover/document-explorer.md) to show the columns, density, and layout you need.
+* See how your {{esql}} query can change [the results table](discover/esql-results.md).
+* Add [variable controls](discover/esql-variable-controls.md) to make your {{esql}} query dynamic without having to duplicate it.
+* Add [runtime fields](discover/add-fields-to-data-views.md) to your views in classic mode.
+* [Sort your results by relevance](discover/discover-search-for-relevance.md).
 
 **Save and share your explorations**
 

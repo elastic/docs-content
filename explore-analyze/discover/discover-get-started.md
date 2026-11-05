@@ -8,12 +8,12 @@ applies_to:
 products:
   - id: kibana
 type: overview
-description: Understand how Discover works, from what a session combines and what each part of the screen does to query modes, tabs, and context-aware experiences.
+description: See what Discover shows by default, how you define the data to explore, and how query modes, context-aware experiences, and sharing fit in.
 ---
 
 # How Discover works [discover-get-started]
 
-When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. This page explains how **Discover** works, so that the guides for individual tasks make sense whether you're new to **Discover** or you've landed in a mode you didn't expect. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md). To go straight to the guide for a task, refer to [What you can do with Discover](../discover.md#what-you-can-do).
+When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. Its default view shows what your query returns over time and as a table of results, and you can open any result to read it in full. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md). To go straight to the guide for a task, refer to [What you can do with Discover](../discover.md#what-you-can-do).
 
 To open **Discover**, find it in the navigation menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 
@@ -24,13 +24,13 @@ To open **Discover**, find it in the navigation menu or use the [global search f
 :screenshot:
 :::
 
-A **Discover** session combines data, a query, and a time range. The chart and the table show what that combination returns, and you can refine each part as you explore.
+A **Discover** session combines data, a query, and a time range. This is the default view, and you can [customize it](document-explorer.md) to fit your work. The elements that show can also change automatically, based on your context and the data you search. Refer to [Context-aware experiences](#context-aware-discover).
 
-Query bar or editor
-:   Where you write the query. In {{esql}} mode, it is an editor, and the query defines the data. In classic mode, you select a data view and write a Kibana Query Language (KQL) or Lucene query.
+Tabs
+:   {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` A single session can have several tabs, each with its own exploration, such as a different query and time range. Refer to [Run multiple explorations with tabs](work-with-tabs.md).
 
-Time filter
-:   Keeps only the results in the time range you select.
+Search bar and query editor
+:   The top of **Discover** is where you define the data to explore. You write your query there and set the time range. **Discover** offers [two query modes](#query-modes) for exploring your data.
 
 Fields list
 :   Lists the fields of your data. Select a field to see its most frequent values.
@@ -41,7 +41,10 @@ Chart
 Results table
 :   Lists the results. The table is named **Results** in {{esql}} mode and **Documents** in classic mode.
 
-## Two query modes [query-modes]
+Document flyout
+:   When you need to focus on a specific row of the table, open it to see the document in more detail. Refer to [Look inside a document](inspect-documents.md#look-inside-a-document).
+
+## Query modes in Discover [query-modes]
 
 **Discover** has two query modes, and you can [switch between them](switch-esql-mode.md) at any time:
 
@@ -55,15 +58,9 @@ The mode that **Discover** opens in by default depends on your version:
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` After you switch modes, **Discover** remembers the last mode you used in your browser and opens new tabs and sessions in that mode.
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Each tab keeps its own query, so one tab can run an {{esql}} query while another uses classic mode.
+
 The steps for a task can differ between the two modes, and a few tasks work in only one. The guide for each task says which mode it covers. For the tasks that belong to a mode, refer to [Use Discover with {{esql}}](use-esql.md) and [Use Discover in classic mode](use-classic-mode.md). To see what happens to your query when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md).
-
-## Several explorations at once [discover-tabs]
-
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Tabs let you follow one line of investigation without losing another. Each tab keeps its own query, time range, filters, and columns. To open, duplicate, and reorder tabs, refer to [Run multiple explorations with tabs](work-with-tabs.md).
-
-## Keeping and sharing what you find [discover-save-share]
-
-When a session gets you the answer, you can [save it](save-open-search.md) to reuse its query, filters, and view later, including on a dashboard. You can also [copy results or send a link](copy-and-share-documents.md) to share what you found, or [create an alert rule](generate-alerts-from-discover.md) from your query to keep an eye on it.
 
 ## Context-aware experiences [context-aware-discover]
 
@@ -89,6 +86,19 @@ Your query can include multiple data types that each have tailored experiences. 
 In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [look inside a document](inspect-documents.md#look-inside-a-document).
 
 To check which experience is active, refer to [Check which context-aware experience is active](inspect-documents.md#view-active-context-aware-experience).
+
+## Save, share, and export what you find [discover-save-share]
+
+When a session gets you the answer, you have several ways to keep it, share it, or take it somewhere else:
+
+- [Save the session](save-open-search.md#_save_a_discover_session) to reuse its query, filters, and view later.
+- [Add the chart, the table, or the whole session to a dashboard](save-open-search.md#_add_search_results_to_a_dashboard) to keep it next to your other panels.
+- [Open Discover from a dashboard panel](../dashboards/create-discover-drilldown.md) with a drilldown to read the documents behind a value you select.
+- [Open a field in a visualization](visualize-field.md) from the fields list, in classic mode.
+- [Copy a link](copy-and-share-documents.md#share-your-findings) to a session or to a single document, so that others can open the same view.
+- [Copy rows](copy-and-share-documents.md#copy-row-content) as text, JSON, or Markdown.
+- Export the results of a session as [CSV](save-open-search.md#export-discover-session-csv) or [JSON](save-open-search.md#export-discover-session-json).
+- [Create an alert rule](generate-alerts-from-discover.md) from your query to keep an eye on it.
 
 ## Troubleshooting
 
