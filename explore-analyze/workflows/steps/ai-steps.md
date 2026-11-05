@@ -431,7 +431,9 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Read and update the metadata of an {{agent-builder}} conversation. Metadata is a set of structured fields, such as `status` or `severity`, defined by the template applied to the conversation. Use these steps to branch a workflow on a field value, or to record the outcome of a workflow on the conversation.
+Conversation metadata is a set of structured fields, such as `status` or `severity`, that track the state of a conversation. The template applied to the conversation defines which fields exist and which values each one accepts.
+
+Use these steps to read the metadata, for example to branch a workflow on a field's value, or to update it, for example to record the outcome of an investigation.
 
 Only conversations with a template have metadata:
 
