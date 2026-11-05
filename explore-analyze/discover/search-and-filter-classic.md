@@ -13,8 +13,6 @@ description: Narrow the documents in a data view to the ones you need by searchi
 
 In classic mode, you find the documents you need by searching a data view with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), two search syntaxes, and narrowing the results with filters that you set in the interface. The chart and the results table update to show only the matching documents.
 
-In {{esql}} mode, you filter by selecting a value in the results table, which adds a `WHERE` clause to your query. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
-
 ## Before you begin
 
 - Open **Discover** in classic mode. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
