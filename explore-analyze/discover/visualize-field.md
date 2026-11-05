@@ -11,7 +11,7 @@ description: Turn a field from the Discover fields list into a Lens visualizatio
 
 # Visualize a field from Discover
 
-When a field in the Discover fields list looks interesting, you can open it in **Lens** to see how its values break down, without building a chart from scratch. **Lens** is the default visualization editor in {{kib}}.
+When a field in the Discover fields list looks interesting, you can open it in **Lens** to see how its values break down, without building a chart from scratch. **Lens** is the default visualization editor in {{kib}}. This capability is available only in **Discover**'s classic mode.
 
 ## Before you begin
 
