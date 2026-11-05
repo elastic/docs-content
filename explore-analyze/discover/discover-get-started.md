@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/discover-get-started.html
-navigation_title: Introduction
+navigation_title: How Discover works
 applies_to:
   stack: ga
   serverless: ga
@@ -11,7 +11,7 @@ type: overview
 description: Understand how Discover works, from what a session combines and what each part of the screen does to query modes, tabs, and context-aware experiences.
 ---
 
-# Introduction to Discover [discover-get-started]
+# How Discover works [discover-get-started]
 
 When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. This page explains how **Discover** works, so that the guides for individual tasks make sense whether you're new to **Discover** or you've landed in a mode you didn't expect. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md). To go straight to the guide for a task, refer to [What you can do with Discover](../discover.md#what-you-can-do).
 

@@ -90,5 +90,5 @@ These tools and workflows apply to every solution and project type.
 ## Next steps
 
 - **[Learn data exploration and visualization](kibana-data-exploration-learning-tutorial.md)**: A hands-on tutorial that walks you through exploring data with Discover, building a visualization with Lens, and composing a dashboard.
-- **[Introduction to Discover](discover/discover-get-started.md)**: Learn how Discover works, from its query modes to tabs and saving your work.
+- **[How Discover works](discover/discover-get-started.md)**: Learn how Discover works, from its query modes to tabs and saving your work.
 - **[Create your first dashboard](dashboards/create-dashboard.md)**: Start with a blank dashboard and add panels to build your first view.

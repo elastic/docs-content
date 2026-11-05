@@ -21,7 +21,7 @@ type: overview
 
 ## Where to start [where-to-start]
 
-- To understand how Discover works, including its two query modes, tabs, and context-aware experiences, read the [Introduction to Discover](discover/discover-get-started.md).
+- To learn the basics, including the two query modes, tabs, and context-aware experiences, read [How Discover works](discover/discover-get-started.md).
 - To learn by running a first query, follow [Get started with {{esql}} in Discover](discover/try-esql.md).
 - To change modes or see what happens to your query when you do, refer to [Switch between {{esql}} and classic mode](discover/switch-esql-mode.md).
 
