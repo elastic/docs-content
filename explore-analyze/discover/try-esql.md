@@ -13,9 +13,9 @@ description: Learn how ES|QL commands change the results you see in Discover by 
 
 # Get started with {{esql}} in Discover [try-esql]
 
-If you want to learn how a query shapes what you see in **Discover**, this tutorial shows it on the {{kib}} sample web logs. You build one {{esql}} query step by step and watch how each command changes the rows and columns in the table, and the chart. You don't need any {{esql}} experience.
+This tutorial shows how an {{esql}} query shapes what **Discover** displays, from the rows and columns in the table to the chart. On the {{kib}} sample web logs, one query grows step by step, and each command it gains changes the table and the chart. No {{esql}} experience is needed.
 
-If you already know **Discover**'s classic mode, the main difference is that {{esql}} queries an {{es}} index, a data stream, or another data source directly by name. You don't need to create a [data view](../find-and-organize/data-views.md) first.
+For anyone who knows **Discover**'s classic mode, the main difference is that {{esql}} queries an {{es}} index, a data stream, or another data source directly by name, with no [data view](../find-and-organize/data-views.md) to create first.
 
 By the end of this tutorial, you'll know the main elements of your query and how they shape the results you see in **Discover**. You'll practice how to:
 
