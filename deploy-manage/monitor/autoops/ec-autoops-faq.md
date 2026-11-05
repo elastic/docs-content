@@ -94,7 +94,7 @@ $$$additional-payment$$$ **Does AutoOps for ECE, ECK, or self-managed clusters i
 :   In ECE, ECK, and self-managed clusters, AutoOps is available for free across all [self-managed license types](https://www.elastic.co/subscriptions) through [Cloud Connect](/deploy-manage/cloud-connect.md). This does not consume ECUs.
 
 $$$which-org$$$ **Which {{ecloud}} organization should I connect to AutoOps?**
-:   Any organization you can manage works. AutoOps is free for ECE, ECK, and self-managed clusters, so there's no requirement to use a specific organization. You can [switch to an organization](/cloud-account/switch-organizations.md) you're already a member of, or if you don't have access to an existing organization, you can [create a new one](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) for free.
+:   Any organization you can manage works. AutoOps is free for ECE, ECK, and self-managed clusters, so there's no requirement to use a specific organization. If your team already shares an organization, we recommend using that one, provided you are an Organization Owner, which is required for Cloud Connect setup. You can [switch to an organization](/cloud-account/switch-organizations.md) you're already a member of, or if you don't have access to an existing organization, you can [create a new one](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) for free.
 
     To get started, refer to [Connect your self-managed cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md).
 
