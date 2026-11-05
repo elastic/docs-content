@@ -462,7 +462,7 @@ These steps run with the privileges of the user who authorizes the run. That use
 - Access to the conversation: they own it, are a member of it, or the conversation is public.
 - Access to the agent the conversation uses.
 
-Otherwise, the step fails with a `Conversation <id> not found` error. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
+Otherwise, the step fails with a `Conversation <id> not found` error, even if the conversation ID is correct. To find out which user authorizes a run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md#workflows-authorization-user).
 :::
 
 ### `ai.conversation.metadata.read` [ai-conversation-metadata-read]
