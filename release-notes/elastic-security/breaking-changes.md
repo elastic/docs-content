@@ -40,45 +40,6 @@ Requests to the {{elastic-defend}} and endpoint management APIs now enforce maxi
 For more information, check [#274803]({{kib-pull}}274803), [#274987]({{kib-pull}}274987), [#275710]({{kib-pull}}275710), [#275711]({{kib-pull}}275711), and [#275716]({{kib-pull}}275716).
 ::::
 
-::::{dropdown} Entity Analytics: Entity store indices use solution-neutral names
-The entity store indices, data streams, templates, and ingest pipelines no longer include `security_` in their names. For example, `.entities.v2.latest.security_<space-id>-<mapping_version>` is now `.entities.v2.latest.<space-id>-<mapping_version>`. The updates, metadata, and history indices follow the same pattern (`.entities.v2.updates.<space-id>`, `.entities.v2.metadata.<space-id>`, and `.entities.v2.history.<space-id>.<timestamp>`). When you upgrade, existing entity data is moved to the new indices automatically, and the `entities-latest-<space-id>` alias points to the new index. History snapshots taken before the upgrade keep their `.entities.v2.history.security_<space-id>.*` names until they expire. The entity store API paths are unchanged.
-
-**Impact**<br> Predefined and built-in roles already grant access to the new indices. Users with custom roles that grant access only to the previous `security_*` index patterns see a missing privileges message on the **Entity analytics** page, and entity details don't load. Entity store background tasks also run with the privileges that the user who turned on the entity store had at that time, so updating that user's role doesn't update the tasks.
-
-**Action**<br> After you upgrade:
-
-1. For each custom role used to access Entity Analytics, add `read` and `view_index_metadata` for the following index patterns:
-
-    ```yaml
-    - names:
-        - "entities-latest-*"
-        - "entities-metadata-*"
-        - ".entities.v2.latest.*"
-        - ".entities.v2.metadata.*"
-        - ".entities.v2.history.*"
-      privileges:
-        - read
-        - view_index_metadata
-    ```
-
-    These patterns also match the previous `security_*` index names, so you can keep your existing entries.
-
-2. For each custom role used to turn on or manage the entity store, grant the same privileges on `.entities.v2.*` that the role has on `.entities.v2.*.security_*`. For the full list, refer to [Entity store privileges](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md#_privileges_3).
-
-3. If a user with a custom role turned on the entity store, a user with the updated role must stop and restart the entity store in each space where it's turned on:
-
-    ```bash
-    PUT /s/<space-id>/api/security/entity_store/stop
-    PUT /s/<space-id>/api/security/entity_store/start
-    ```
-
-    For the default space, omit `/s/<space-id>`. After the restart, the background tasks run with the privileges of the user who restarted the entity store.
-
-If you query the concrete entity store indices directly, query the `entities-latest-<space-id>` alias instead.
-
-For more information, check [#282130]({{kib-pull}}282130).
-::::
-
 ::::{dropdown} Workflows: Run workflow sends documents in one format from every entry point
 When you run a workflow from the alerts table, the row actions menu, or the alert details flyout, {{elastic-sec}} now sends document IDs, and {{kib}} fetches each document. Workflows receive every document with dotted field paths and array values, for example `'host.name': ['h1']`. Previously, **Run workflow** from the legacy alert details flyout sent the raw `_source`, with nested objects and single values, for example `host: { name: 'h1' }`. Runtime fields that are defined only on a {{data-source}} aren't included.
 
