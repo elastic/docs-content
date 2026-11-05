@@ -28,15 +28,56 @@ For each step's inputs, which inputs are required, and which steps support `push
 
 ## Which Cases step to use [workflows-cases-catalog]
 
-| Task | Steps |
-| --- | --- |
-| Create, get, and search cases | `cases.createCase`, `cases.createCaseFromTemplate`, `cases.getCase`, `cases.getCases`, `cases.findCases`, `cases.findSimilarCases`, `cases.getCasesByAlertId` |
-| Update case fields | `cases.updateCase`, `cases.updateCases`, `cases.setStatus`, `cases.setSeverity`, `cases.setTitle`, `cases.setDescription`, `cases.setCategory`, `cases.setCustomField`, `cases.closeCase` |
-| Attach content | `cases.addComment`, `cases.addAlerts`, `cases.addEvents`, `cases.addObservables`, `cases.addAttachments`, `cases.getAllAttachments` |
-| Manage tags and assignees | `cases.addTags`, `cases.removeTags`, `cases.assignCase`, `cases.unassignCase` |
-| Update and delete observables | `cases.updateObservable`, `cases.deleteObservable` |
-| Push cases to an external system | `cases.pushCases` |
-| Delete cases | `cases.deleteCases` |
+### Create, get, and search cases
+
+- `cases.createCase`
+- `cases.createCaseFromTemplate`
+- `cases.getCase`
+- `cases.getCases`
+- `cases.findCases`
+- `cases.findSimilarCases`
+- `cases.getCasesByAlertId`
+
+### Update case fields
+
+- `cases.updateCase`
+- `cases.updateCases`
+- `cases.setStatus`
+- `cases.setSeverity`
+- `cases.setTitle`
+- `cases.setDescription`
+- `cases.setCategory`
+- `cases.setCustomField`
+- `cases.closeCase`
+
+### Attach content
+
+- `cases.addComment`
+- `cases.addAlerts`
+- `cases.addEvents`
+- `cases.addObservables`
+- `cases.addAttachments`
+- `cases.getAllAttachments`
+
+### Manage tags and assignees
+
+- `cases.addTags`
+- `cases.removeTags`
+- `cases.assignCase`
+- `cases.unassignCase`
+
+### Update and delete observables
+
+- `cases.updateObservable`
+- `cases.deleteObservable`
+
+### Push cases to an external system
+
+- `cases.pushCases`
+
+### Delete cases
+
+- `cases.deleteCases`
 
 ## Pass a case between steps [workflows-cases-conventions]
 
