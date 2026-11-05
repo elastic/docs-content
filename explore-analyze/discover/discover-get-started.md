@@ -59,31 +59,24 @@ Document flyout
 
 **Discover** adapts to the kind of data you explore. When it recognizes your data, it switches to a tailored experience, with columns, charts, and document details that suit that data. For example, log data opens with log-specific columns and details, and security alerts get color-coded row indicators. This is called a context-aware experience.
 
-Two things decide which experience you get: where you open **Discover** from, and the data you query.
+Which experiences you can get depends on where you open **Discover** from, and then on the data you query.
 
-**Where you open Discover from**
-:   An {{observability}} or {{elastic-sec}} project, or a space whose [solution view](/deploy-manage/manage-spaces.md) is {{observability}} or {{elastic-sec}}.
+**In {{observability}} projects and solution views**, **Discover** can switch to one of these experiences:
 
-    {applies_to}`stack: ga 9.6+` In a space with the **Classic** solution view, the metrics, traces, and Security experiences can also apply when you query matching data, as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
+* **[Logs exploration](/solutions/observability/logs/discover-logs.md)**: For log data.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.2-9.3` **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: For metrics data that you query in {{esql}} mode with the `TS` command.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1+` **[Traces exploration](/solutions/observability/apm/discover-traces.md)**: For trace data.
 
-**The data you query**
-:   Each experience recognizes its own kind of data, as described in the following list.
+**In Security projects and solution views**, **Discover** can switch to one of these experiences:
 
-**Discover** has context-aware experiences for the following kinds of data:
+* {applies_to}`security: ga` {applies_to}`stack: ga 9.1+` **[Security data exploration](/solutions/security/investigate/discover-security.md)**: For security alerts and events.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.2-9.3` **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: For metrics data that you query in {{esql}} mode with the `TS` command.
 
-* **[Logs exploration](/solutions/observability/logs/discover-logs.md)**: Log data. Available in {{observability}} projects and solution views.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.2-9.3` **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: Metrics data that you query in {{esql}} mode with the `TS` command. Available in {{observability}} and {{elastic-sec}}.
-* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1+` **[Traces exploration](/solutions/observability/apm/discover-traces.md)**: Trace data. Available in {{observability}}.
-* {applies_to}`security: ga` {applies_to}`stack: ga 9.1+` **[Security data exploration](/solutions/security/investigate/discover-security.md)**: Security alerts and events. Available in {{elastic-sec}}.
-
-These experiences don't depend on where you opened **Discover** from. They adapt to your {{esql}} query in any context:
-
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` A query with `CHANGE_POINT` gets a chart for each analyzed series. Refer to [Detect change points in Discover](detect-change-points.md).
-* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Grouped results, for example from `CATEGORIZE`, get expandable groups. Refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
+{applies_to}`stack: ga 9.6+` **In spaces with the Classic solution view**, the metrics, traces, and Security experiences can also apply when you query matching data, as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
 
 When you open **Discover** outside of these contexts, or query data without a tailored experience, you get the default **Discover** experience with all its core functionality for general-purpose data exploration.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` The active experience also shapes [AI-powered analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces, the agent receives guidance for that type of data, such as which fields to group by and which {{esql}} commands to use. For example, it uses the `TS` command for time series metrics.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` The active experience also shapes [AI-powered analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces, the agent receives guidance that suits that type of data.
 
 ### When you query several kinds of data
 
