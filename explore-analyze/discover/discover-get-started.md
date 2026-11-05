@@ -8,31 +8,14 @@ applies_to:
 products:
   - id: kibana
 type: overview
-description: Learn what you can do in Discover, from querying your data to inspecting, visualizing, saving, and sharing results, and find the guide for each task.
+description: Understand how Discover works, from what a session combines and what each part of the screen does to query modes, tabs, and context-aware experiences.
 ---
 
 # Introduction to Discover [discover-get-started]
 
-When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. This page introduces what **Discover** shows you, how you work in it, and where to find the guide for each task. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md).
+When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. This page explains how **Discover** works, so that the guides for individual tasks make sense whether you're new to **Discover** or you've landed in a mode you didn't expect. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md). To go straight to the guide for a task, refer to [What you can do with Discover](../discover.md#what-you-can-do).
 
 To open **Discover**, find it in the navigation menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
-
-## What people use Discover for
-
-**Investigate a problem**
-: Narrow your documents to the time range and the query that matter, then open individual documents to read every field. To run a first query, start with [Get started with {{esql}} in Discover](try-esql.md). Then use [Work with {{esql}} results in Discover](esql-results.md) and [Inspect documents and requests in Discover](inspect-documents.md).
-
-**Check that your data is what you expect**
-: See which fields exist and how their values are spread. Start with [Explore the fields in your data](explore-fields.md). In classic mode, [View field statistics](show-field-statistics.md) summarizes every field at once.
-
-**Explore data you haven't seen before**
-: In {{esql}} mode, query any index or data stream by name, without setting up a data view first. Start with [Get started with {{esql}} in Discover](try-esql.md).
-
-**Spot patterns, spikes, and shifts**
-: Group results to see what's common, and look for changes over time. Try [Inspect grouped STATS results in Discover](inspect-grouped-stats.md) or [Detect change points in Discover](detect-change-points.md). In classic mode, you can also [run a pattern analysis](run-pattern-analysis-discover.md). To have an AI agent look at the data for you, refer to [Analyze your data with AI in Discover](analyze-discover-data-with-ai.md).
-
-**Share what you found, or keep an eye on it**
-: [Save a Discover session](save-open-search.md), [copy results or send a link to a document](copy-and-share-documents.md), or [create an alert rule](generate-alerts-from-discover.md).
 
 ## What you see in Discover [discover-screen]
 
@@ -44,36 +27,43 @@ To open **Discover**, find it in the navigation menu or use the [global search f
 A **Discover** session combines data, a query, and a time range. The chart and the table show what that combination returns, and you can refine each part as you explore.
 
 Query bar or editor
-: Where you write the query. In {{esql}} mode, it is an editor, and the query defines the data. In classic mode, you select a data view and write a Kibana Query Language (KQL) or Lucene query.
+:   Where you write the query. In {{esql}} mode, it is an editor, and the query defines the data. In classic mode, you select a data view and write a Kibana Query Language (KQL) or Lucene query.
 
 Time filter
-: Keeps only the results in the time range you select.
+:   Keeps only the results in the time range you select.
 
 Fields list
-: Lists the fields of your data. Select a field to see its most frequent values.
+:   Lists the fields of your data. Select a field to see its most frequent values.
 
 Chart
-: By default, shows how the results spread over the time range.
+:   By default, shows how the results spread over the time range.
 
 Results table
-: Lists the results. The table is named **Results** in {{esql}} mode and **Documents** in classic mode.
-
-Tabs
-: {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Keep several explorations open side by side. Each tab has its own query, time range, and view.
+:   Lists the results. The table is named **Results** in {{esql}} mode and **Documents** in classic mode.
 
 ## Two query modes [query-modes]
 
-**Discover** has two query modes. In {{esql}} mode, you write a query that defines the data, so you don't need a data view. In classic mode, you select a data view, search with KQL or Lucene, and add filters.
+**Discover** has two query modes, and you can [switch between them](switch-esql-mode.md) at any time:
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Discover** opens in {{esql}} mode by default.
+- {{esql}} mode: You write a query that defines the data, so you don't need a data view. The query can also filter, transform, and group results.
+- Classic mode: You select a [data view](../find-and-organize/data-views.md), search with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), and add filters.
 
-{applies_to}`stack: ga 9.0-9.5` **Discover** opens in classic mode by default.
+The mode that **Discover** opens in by default depends on your version:
 
-To learn how the modes differ and what happens to your query when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md). For the tasks in each mode, refer to [Use Discover with {{esql}}](use-esql.md) and [Use Discover in classic mode](use-classic-mode.md).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Discover** opens in {{esql}} mode.
+- {applies_to}`stack: ga 9.0-9.5` **Discover** opens in classic mode.
 
-## Find the guide for your task [find-a-guide]
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` After you switch modes, **Discover** remembers the last mode you used in your browser and opens new tabs and sessions in that mode.
 
-To find the guide for what you want to do, such as searching your data, shaping the table, or saving your work, refer to [What you can do with Discover](../discover.md#what-you-can-do).
+The steps for a task can differ between the two modes, and a few tasks work in only one. The guide for each task says which mode it covers. For the tasks that belong to a mode, refer to [Use Discover with {{esql}}](use-esql.md) and [Use Discover in classic mode](use-classic-mode.md). To see what happens to your query when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md).
+
+## Several explorations at once [discover-tabs]
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Tabs let you follow one line of investigation without losing another. Each tab keeps its own query, time range, filters, and columns. To open, duplicate, and reorder tabs, refer to [Run multiple explorations with tabs](work-with-tabs.md).
+
+## Keeping and sharing what you find [discover-save-share]
+
+When a session gets you the answer, you can [save it](save-open-search.md) to reuse its query, filters, and view later, including on a dashboard. You can also [copy results or send a link](copy-and-share-documents.md) to share what you found, or [create an alert rule](generate-alerts-from-discover.md) from your query to keep an eye on it.
 
 ## Context-aware experiences [context-aware-discover]
 

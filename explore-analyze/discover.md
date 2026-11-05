@@ -19,23 +19,15 @@ type: overview
 :screenshot:
 :::
 
-## Query modes [query-modes]
+## Where to start [where-to-start]
 
-Discover has two query modes that you can [switch between](discover/switch-esql-mode.md):
-
-- {{esql}} mode queries your {{es}} data directly, without a data view.
-- Classic mode uses [data views](find-and-organize/data-views.md) with [Kibana Query Language (KQL)](query-filter/languages/kql.md) or [Lucene](query-filter/languages/lucene-query-syntax.md) queries to filter your data.
-
-The mode that Discover opens in by default depends on your version:
-
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Discover opens in {{esql}} mode.
-- {applies_to}`stack: ga 9.0-9.5` Discover opens in classic mode.
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` After you switch modes, Discover remembers the last mode you used in your browser and opens new tabs and sessions in that mode.
-
-The steps for a task can differ between the two modes, and a few tasks work in only one. The guide for each task says which mode it covers.
+- To understand how Discover works, including its two query modes, tabs, and context-aware experiences, read the [Introduction to Discover](discover/discover-get-started.md).
+- To learn by running a first query, follow [Get started with {{esql}} in Discover](discover/try-esql.md).
+- To change modes or see what happens to your query when you do, refer to [Switch between {{esql}} and classic mode](discover/switch-esql-mode.md).
 
 ## What you can do with Discover [what-you-can-do]
+
+The guides for each task say which query mode they cover.
 
 **Query your data**
 
@@ -70,8 +62,3 @@ The steps for a task can differ between the two modes, and a few tasks work in o
 * [Export your results](report-and-share.md#manually-generate-reports) as a file. For the limits of large CSV exports, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
 * [Copy results](discover/copy-and-share-documents.md#copy-row-content) as text, JSON, or Markdown, or [share a link](discover/copy-and-share-documents.md#share-your-findings) to a session or a document.
 * [Create an alert rule](discover/generate-alerts-from-discover.md) from the query and filters of a session.
-
-## Next steps [next-steps]
-
-- [Introduction to Discover](discover/discover-get-started.md): See what Discover shows you and what people use it for.
-- [Get started with {{esql}} in Discover](discover/try-esql.md): Build your first {{esql}} query step by step.
