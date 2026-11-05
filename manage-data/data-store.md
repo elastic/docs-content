@@ -46,22 +46,22 @@ You cannot change the mode after the index is created.
 For every supported value, refer to [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
 
 Standard (`standard`) {applies_to}`vectordb: unavailable`
-:   Use it for documents you update or delete, and for data that isn't logs, metrics, or vectors.
+:   Optimized for search and any type of retrieval.
 
 Columnar (`columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
-:   Use it for analytics-heavy data that isn't logs. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
+:   Optimized for storage efficiency and analytics. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
 
 LogsDB (`logsdb`) {applies_to}`stack: ga 9.0+` {applies_to}`vectordb: unavailable`
-:   Use it to store logs. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode.
+:   Optimized for logs use cases, with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode.
 
 LogsDB columnar (`logsdb_columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
-:   Use it to store logs with columnar storage. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
+:   Optimized for logs use cases that align with columnar semantics and limitations. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
 
 TSDB (`time_series`) {applies_to}`vectordb: unavailable`
-:   Use it to store metrics. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. This mode is for data streams only.
+:   Optimized for metrics and time series use cases. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. This mode is for data streams only.
 
 VectorDB (`vectordb_document`) {applies_to}`stack: ga 9.5+` {applies_to}`vectordb: ga`
-:   Use it for similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). In {{vectordb}} projects, it is the only mode available.
+:   Optimized for vector search use cases, enabling similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). In {{vectordb}} projects, it is the only mode available.
 
 Lookup (`lookup`) {applies_to}`vectordb: unavailable`
 :   Use it for reference data you join in {{esql}}, for example a list of users, hosts, or known threat IPs. Refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md). Only the lookup index needs this mode, not the source index.
