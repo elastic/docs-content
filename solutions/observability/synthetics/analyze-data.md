@@ -35,11 +35,13 @@ When you use a single monitor configuration to create monitors in multiple locat
 ::::
 
 :::{image} /solutions/images/observability-synthetics-monitor-page.png
-:alt: Synthetics Overview with separate Errors and Alerts panels
+:alt: Synthetics Overview in 9.6 with the Monitors status panel, Pings over time chart, and monitor grid
 :screenshot:
 :::
 
-To get started with your analysis in the Overview tab, you can search for monitors or use the filter options including current status (up, down, or disabled), monitor type (for example, journey or HTTP), location, and more.
+The screenshot shows {{stack}} 9.6.
+
+To get started with your analysis in the **Overview** tab, you can search for monitors or use the filter options including current status (up, down, or disabled), monitor type (for example, journey or HTTP), location, and more.
 
 Then click an individual monitor to see some details in a flyout. From there, you can click **Go to monitor** to go to an individual monitor’s page to see more details (as described below).
 
@@ -49,11 +51,11 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Two panels at the top of the **Overview** tab summarize the monitors that match your current search, filters, and time range.
+The **Monitors status** and **Pings over time** panels on the **Overview** tab summarize the monitors that match your current search, filters, and time range.
 
-The **Monitors status** panel counts the monitors in each state: **Up**, **Down**, **Disabled**, **Pending**, and **Stale**. Select a state to filter the page to it, and select it again to clear the filter. To show the states as a donut chart rather than a grid of counts, click **Show status as donut chart**.
+The **Monitors status** panel counts the monitors in each state: **Up**, **Down**, **Disabled**, **Pending**, and **Stale**. Select a state to filter the page to it, and select it again to clear the filter. To show the states as a donut chart rather than a grid of counts, click {icon}`chart_pie` **Show status as donut chart**.
 
-In the grid of counts, **Alerts** shows the number of active and recovered alerts that started during the selected time range. A monitor can contribute more than one alert to this count. Click **Alerts** to open the **Alerts** page with the same monitor filters and time range.
+The **Alerts** count shows the number of active and recovered alerts that started during the selected time range. A monitor can contribute more than one alert to this count. Click **Alerts** to open the **Alerts** page with the same monitor filters and time range.
 
 The **Pings over time** chart stacks the **Up** and **Down** ping counts over the time range you select, with an **Error states** line over the top. Each alert appears as an **Alert** marker at the time the alert started. Hover over a marker to see the monitor, the reason for the alert, and the alert's duration.
 
