@@ -13,7 +13,7 @@ description: See what Discover shows by default, how you define the data to expl
 
 # How Discover works [discover-get-started]
 
-When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. Its default view shows what your query returns over time and as a table of results, and you can open any result to read it in full. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md). To go straight to the guide for a task, refer to [What you can do with Discover](../discover.md#what-you-can-do).
+When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. Its default view shows what your query returns in a table of results, and you can open any result to read it in full. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md). To go straight to the guide for a task, refer to [What you can do with Discover](../discover.md#what-you-can-do).
 
 To open **Discover**, find it in the navigation menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 
@@ -36,7 +36,7 @@ Fields list
 :   Lists the fields of your data. Select a field to see its most frequent values.
 
 Chart
-:   By default, shows how the results spread over the time range.
+:   Shows how the results spread over the time range. It appears when your data has a time field, and in {{esql}} mode when your query doesn't transform the results, for example with `STATS`.
 
 Results table
 :   Lists the results. The table is named **Results** in {{esql}} mode and **Documents** in classic mode.
