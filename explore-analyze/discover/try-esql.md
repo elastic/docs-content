@@ -13,9 +13,9 @@ description: Learn how ES|QL commands change the results you see in Discover by 
 
 # Get started with {{esql}} in Discover [try-esql]
 
-In this tutorial, you explore the {{kib}} sample web logs in **Discover** with Elasticsearch Query Language ({{esql}}). You build one query step by step and see how each command changes the results in the table and the chart.
+If you want to learn how a query shapes what you see in **Discover**, this tutorial shows it on the {{kib}} sample web logs. You build one {{esql}} query step by step and watch how each command changes the rows and columns in the table, and the chart. You don't need any {{esql}} experience.
 
-You can query any index or data stream by name, so you don't need a [data view](../find-and-organize/data-views.md) (a saved definition of the data to query), and you don't need {{esql}} experience. For the rest of Discover, refer to [How Discover works](discover-get-started.md). For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+If you already know **Discover**'s classic mode, the main difference is that {{esql}} queries an {{es}} index, a data stream, or another data source directly by name. You don't need to create a [data view](../find-and-organize/data-views.md) first.
 
 By the end of this tutorial, you'll know the main elements of your query and how they shape the results you see in **Discover**. You'll practice how to:
 
