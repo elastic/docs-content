@@ -29,7 +29,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 * Adds an **Add to chat** button to the {{observability}} alert details page that opens Agent Builder with the alert attached and starts an investigation, replacing the AI insights panel. **Add to case**, **View in Discover**, and **Inspect rule query** move to the **Actions** menu [#287420]({{kib-pull}}287420).
 * Adds a `public-conversation` option to the `ai.agent` workflow step so conversations it creates are visible to and can be continued by other users of the agent [#280364]({{kib-pull}}280364).
-* Enables the New Relic connector for agent sandbox tools, allowing agents to call the New Relic NerdGraph API from the sandbox [#299688]({{kib-pull}}299688).
+* Enables the New Relic connector for Agent Builder sandbox tools, allowing agents to call the New Relic NerdGraph API from the sandbox [#299688]({{kib-pull}}299688).
 
 #### {{product.apm}} [elastic-observability-9.6.0-features-apm]
 
@@ -128,7 +128,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes reasoning in GenAI output messages showing as raw JSON. Reasoning now shows as formatted text in a collapsed section [#298407]({{kib-pull}}298407).
 * Fixes metrics charts in Discover failing with an `Unknown column` error when an {{esql}} `TS` query filters on a metadata field such as `_ignored` [#302705]({{kib-pull}}302705).
 * Fixes metrics charts in Discover failing with an `Unknown column` error when a parent filter references a field that the metric data stream doesn't map [#289428]({{kib-pull}}289428).
-* Fixes an issue in the metrics view in Discover where a dimension picked for breakdown could be silently dropped if the chart section reloaded or hit an error right after the selection was made [#296940]({{kib-pull}}296940).
+* Fixes an issue in the metrics view in Discover where the chart section could silently drop a selected breakdown dimension if it reloaded or encountered an error right after you made the selection [#296940]({{kib-pull}}296940).
 
 #### General [elastic-observability-9.6.0-fixes-general]
 
@@ -153,11 +153,11 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes Synthetics monitor status alerts showing the location ID instead of the location name when a pending (no data) alert recovers, and adds a clearer recovery message for pending alerts [#300220]({{kib-pull}}300220).
 * Fixes the Synthetics **Inspect configuration** flyout showing monitor secrets, such as passwords, in plain text [#278097]({{kib-pull}}278097).
 * Fixes Synthetics private location monitors never producing results when attached to a one-off maintenance window created through the API [#297018]({{kib-pull}}297018).
-* Fixes the Synthetics private location clean up timing out on large private locations by bumping each affected agent policy once after all deletions [#295492]({{kib-pull}}295492).
+* Fixes the Synthetics private location cleanup timing out on large private locations by updating each affected {{agent}} policy once after all deletions [#295492]({{kib-pull}}295492).
 * Fixes **Run test** running on only the first private location when a Synthetics monitor with multiple private locations is in a non-default space [#295614]({{kib-pull}}295614).
 * Fixes the {{fleet}} **Edit in Synthetics** link opening a monitor in the current space instead of the space it belongs to, and prevents **Delete integration** from deleting the package policy of a monitor that still exists [#294888]({{kib-pull}}294888).
 * Fixes the Synthetics diagnostics bundle by restricting agent policies in the current space, and requires the **Can manage private locations** privilege in addition to Synthetics write access to download it [#293783]({{kib-pull}}293783).
-* Warns in Synthetics when a private location's {{agent}} version predates Maintenance Window support (8.19.x), so operators know monitors on that location will not honor active maintenance windows [#285327]({{kib-pull}}285327).
+* Warns in Synthetics when a private location's {{agent}} version predates Maintenance Window support (8.19.x), so you know monitors on that location don't honor active maintenance windows [#285327]({{kib-pull}}285327).
 * Fixes Synthetics monitors to support referencing maintenance windows by name in addition to ID [#282570]({{kib-pull}}282570).
 * Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
 * Fixes an error loading maintenance window status on the Synthetics monitors overview for users with read-only access [#281894]({{kib-pull}}281894).
