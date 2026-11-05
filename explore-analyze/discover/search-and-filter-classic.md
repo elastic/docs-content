@@ -37,7 +37,7 @@ In classic mode, you select the data to explore with a data view, and then set t
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The time filter stays visible, shows **All time**, and cannot be changed.
     - {applies_to}`stack: ga 9.0-9.5` The range selection is not available.
 
-3. If the search bar shows **Update**, select it to apply your changes. When nothing is pending, the button shows {icon}`refresh` **Refresh**, and selecting it runs the search again.
+3. To load the data, select **Update** in the search bar. If the button shows {icon}`refresh` **Refresh** instead, select that.
 
 **Result:** **Discover** shows your data. By default, the table includes a column for the time field and a **Summary** column with an overview of each result.
 
