@@ -475,26 +475,28 @@ Read all metadata fields of a conversation.
 
 **Output shape:** `{ metadata: object }`. The current metadata fields and their values. Empty if the conversation has no metadata.
 
+The following example runs in a separate workflow that receives the ID of an investigation conversation as an input, for example when another workflow [calls it](/explore-analyze/workflows/authoring-techniques/compose-workflows.md). It logs a message if the investigation is closed:
+
 ```yaml
-- name: create_conversation
-  type: ai.conversation.create
-  with:
-    title: "Checkout investigation"
-    template_id: investigation
+inputs:
+  - name: conversation_id
+    type: string
+    required: true
 
-- name: read_metadata
-  type: ai.conversation.metadata.read
-  with:
-    conversation_id: "{{ steps.create_conversation.output.conversation_id }}"
+steps:
+  - name: read_metadata
+    type: ai.conversation.metadata.read
+    with:
+      conversation_id: "{{ inputs.conversation_id }}"
 
-- name: check_status
-  type: if
-  condition: 'steps.read_metadata.output.metadata.status : "closed"'
-  steps:
-    - name: log_closed
-      type: console
-      with:
-        message: "The investigation is closed."
+  - name: check_status
+    type: if
+    condition: 'steps.read_metadata.output.metadata.status : "closed"'
+    steps:
+      - name: log_closed
+        type: console
+        with:
+          message: "The investigation is closed."
 ```
 
 ### `ai.conversation.metadata.patch` [ai-conversation-metadata-patch]
