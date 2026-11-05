@@ -18,7 +18,7 @@ Elastic Workflows and {{agent-builder}} combine deterministic automation with co
 
 ## Approaches
 
-There are four ways to use {{agent-builder}} and workflows together:
+{{agent-builder}} and workflows work together in the following ways:
 
 * **Create workflows from Agent Chat**: {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Create and edit workflows by describing what you want [in plain language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md). {{kib}} generates and updates the workflow YAML for you, so you can quickly build without memorizing step types or Liquid syntax. 
 * **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md) {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`, or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
