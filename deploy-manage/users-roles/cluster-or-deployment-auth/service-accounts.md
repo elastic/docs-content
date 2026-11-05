@@ -21,11 +21,11 @@ Service accounts authenticate with tokens. The account defines the identity and 
 Don't use service accounts to authenticate individual users. Service account credentials are for software and workloads, not people.
 ::::
 
+This page refers to {{ech}}, {{ece}}, {{eck}}, and self-managed deployments as {{stack}} deployments. In these environments, {{es}} stores and manages user-managed service accounts. In {{serverless-full}} projects, {{ecloud}} manages these accounts at the organization level. These differences affect account identifiers, credentials, and the available management APIs.
+
 $$$service-accounts-explanation$$$
 
-Each service account has a unique identifier, called a principal. In {{stack}}, the principal has the form `<namespace>/<service>`. The `namespace` groups related accounts, and the `service` name must be unique within that namespace.
-
-On {{stack}}, service accounts are not included in the response of the [get users API]({{es-apis}}operation/operation-security-get-user). To retrieve a service account, use the [get service accounts API]({{es-apis}}operation/operation-security-get-service-accounts). Use the [get service account credentials API]({{es-apis}}operation/operation-security-get-service-credentials) to retrieve all service credentials for a service account.
+Each service account has a unique identifier, called a principal. In {{stack}} deployments, the principal has the form `<namespace>/<service>`. The `namespace` groups related accounts, and the `service` name must be unique within that namespace.
 
 ## Service account types [service-account-types]
 
@@ -60,6 +60,11 @@ You create these accounts and assign roles to control their privileges. The acco
 Use a user-managed service account when your workload needs its own identity to access {{es}} or {{kib}} APIs. Assign the roles required by the workload.
 
 [Workflows](/explore-analyze/workflows.md) is the only {{kib}} application that supports directly assigning a service account as the execution identity of a workload. {{kib}} manages the credential used for this integration.
+
+:::{note}
+:applies_to: serverless: ga
+On {{serverless-short}}, user-managed service accounts can only be used within {{kib}} applications. For programmatic access from external applications, use [API keys](/deploy-manage/api-keys.md).
+:::
 
 To manage service accounts and use them in your workloads:
 
@@ -207,6 +212,10 @@ In both responses:
 - `roles` lists the assigned role names. Built-in accounts return an empty array because their privileges are predefined.
 - `token` describes the credential used for the request. Its `name` is the service token's name, and its `type` identifies the storage backend: `_service_account_index` for tokens stored in the `.security` index, or `_service_account_file` for file-backed tokens used by built-in accounts.
 - `metadata` identifies the account type: `_elastic_service_account` for built-in accounts or `_user_managed_service_account` for user-managed accounts.
+
+:::{note}
+Service accounts are not included in the response of the [get users API]({{es-apis}}operation/operation-security-get-user). To retrieve a service account, use the [get service accounts API]({{es-apis}}operation/operation-security-get-service-accounts). Use the [get service account credentials API]({{es-apis}}operation/operation-security-get-service-credentials) to retrieve all service credentials for a service account.
+:::
 
 {applies_to}`stack: ga 9.6+` To authenticate calls to {{kib}} with a user-managed service account, refer to [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
 
