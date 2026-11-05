@@ -308,7 +308,7 @@ Opening a conversation marks it as read. To change the read status of a conversa
 1. In the chat history panel, hover over the conversation and select the **Open conversation menu** icon {icon}`boxes_vertical`.
 2. Select **Mark as read** or **Mark as unread**. The menu shows **Mark as read** when the conversation is unread, and **Mark as unread** otherwise.
 
-If you mark the conversation you're viewing as unread, it switches back to read right away, or as soon as the agent finishes responding. To mark it as unread, open a different conversation first.
+If you mark the conversation you're viewing as unread, it switches back to read right away, or as soon as the agent finishes responding. To keep a conversation unread, open a different conversation first, then mark it as unread.
 
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
