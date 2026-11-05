@@ -102,7 +102,7 @@ A service account token, or service token, is a unique string that a service use
 For example, {{fleet}} server uses a service token to authenticate with {{es}} and manage its own API keys. You can create multiple service tokens for the same service account. This lets multiple instances of a service use the same identity without sharing credentials.
 
 :::{note}
-:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+:applies_to: stack: ga 9.6+
 When you create a user-managed service account in {{kib}}, {{kib}} creates and stores a service token so applications such as Workflows can run on behalf of the account. This token isn't displayed. To authenticate requests from your own application, create an additional service token with the API.
 :::
 
