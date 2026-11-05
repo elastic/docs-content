@@ -688,7 +688,7 @@ List the attachments of a conversation. The step returns a summary of each attac
 | Field | Type | Presence |
 |---|---|---|
 | `attachments` | array | Always. Each item has `id`, `type`, `current_version`, `active`, and, if set, `description`. `active` is `false` for deleted attachments. |
-| `total_token_estimate` | number | Always. Estimated number of tokens across the active attachments. Deleted attachments aren't counted, even with `include_deleted: true`. |
+| `total_token_estimate` | number | Always. Estimated size, in tokens, of the active attachments. Deleted attachments aren't counted, even with `include_deleted: true`. Use it to check how much of the model's context window the attachments use. Refer to [](/explore-analyze/ai-features/agent-builder/troubleshooting/context-length-exceeded.md). |
 
 The following example lists the attachments in the conversation that haven't been deleted:
 
