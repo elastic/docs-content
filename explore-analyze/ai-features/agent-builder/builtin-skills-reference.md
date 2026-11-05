@@ -454,7 +454,7 @@ $$$agent-builder-automatic-migration-rules-summarize-skill$$$ `automatic-migrati
     :::
 
 $$$agent-builder-automatic-migration-rules-start-migration-skill$$$ `automatic-migration-rules-start-migration` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
-:   Starts translating a migration's uploaded rules, resumes a stopped migration, or reprocesses failed, partially translated, or selected rules. Before a first run or a reprocess, it lists any missing resources. For a first run, it also asks which AI connector to use and whether to match rules to Elastic prebuilt rules.
+:   Starts translating a migration's uploaded rules, resumes a stopped or interrupted migration, or reprocesses failed rules, rules that weren't fully translated, or selected rules. Before a first run or a reprocess, it lists any missing resources. For a first run, it also asks which AI connector to use and whether to match rules to Elastic prebuilt rules.
 
     :::{dropdown} Assigned tools
     `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.get_rule_migration_translation_stats`, `security.siem_migration.get_migration_rules`, `security.siem_migration.get_missing_rule_migration_resources`, `security.siem_migration.start_rule_migration`, `platform.core.list_inference_endpoints`
@@ -487,7 +487,7 @@ $$$agent-builder-automatic-migration-rules-install-rules-skill$$$ `automatic-mig
 
     :::
 
-    **Prerequisites:** You need `All` privileges for the **Rules** feature.
+    **Prerequisites:** You need `All` privileges for the **Rules and Exceptions** feature.
 
 $$$agent-builder-automatic-migration-rules-update-migration-skill$$$ `automatic-migration-rules-update-migration` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
 :   Renames a rule migration.

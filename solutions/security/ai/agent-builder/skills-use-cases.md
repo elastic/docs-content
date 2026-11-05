@@ -243,11 +243,11 @@ Use these skills to track and run your [Automatic Migration](/solutions/security
 | Example prompt | What the agent can do |
 |----------------|----------------------|
 | How are my rule migrations doing? | List each rule migration with its source platform, status, and progress. |
-| What resources is my migration missing? | List the missing macros and lookups, grouped by type. |
+| What resources is my migration missing? | List the missing resources, such as macros and lookups, grouped by type. |
 | Reprocess the failed rules in my migration | Check for missing resources, reuse the AI connector and settings from the last run, and start reprocessing after you confirm. |
 | Which rules in my migration are missing an index pattern? | List the rules that aren't installed yet and are missing an index pattern, then fix the one you pick. |
 | Install the translated rules from my migration | Report how many rules are ready to install, ask whether to enable them, and install them after you confirm. |
-| Delete my migration | Check that the migration isn't running and offer to stop it if it is. Then warn that deletion can't be undone, and delete it after you confirm. |
+| Delete my rule migration | If the migration is running, offer to stop it, then wait for you to ask again. Otherwise, warn that deletion can't be undone, and delete it after you confirm. |
 
 ## Combining skills across use cases [combining-skills-across-workflows]
 

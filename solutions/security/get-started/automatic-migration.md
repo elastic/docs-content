@@ -46,8 +46,8 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 * Minimum [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
 
-  - `All` for **SIEM migrations**
-  - At least `Read` for **Rules**
+  - `All` for **Automatic Migration**
+  - At least `Read` for **Rules and Exceptions**
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
@@ -58,13 +58,13 @@ You can ingest your data before migrating your assets, or migrate your assets fi
   - At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for **Agent Builder**.
   - {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
   - To use **Add to chat**, the [`agentBuilder:experimentalFeatures`](/explore-analyze/ai-features/agent-builder/get-started.md#enable-experimental-features-optional) and [`agentBuilder:apiDiscovery`](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#api-discovery) advanced settings turned on in your space.
-  - To install rules from chat, `All` privileges for **Rules**.
+  - To install rules from chat, `All` privileges for **Rules and Exceptions**.
 :::
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 **Requirements**
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Automatic Migration** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
@@ -75,7 +75,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 :::{applies-item} stack: ga 9.0-9.2
 **Requirements**
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature.
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature. In 9.2.4 and later, this feature is called **Automatic Migration**.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
@@ -296,11 +296,11 @@ To send rules to the agent and fix them in chat:
    * For several rules, select them in the table, then select **Add to chat**.
    * For every rule in the migration, clear all selections, then select **Add to chat**.
 
-   A new chat opens with the rules attached.
+   A new chat opens with the rules attached and automatically asks the agent for help. The agent reviews the rules and asks what you want to fix.
 
-2. Describe the problem. Include details the agent can't find on its own, such as the integration or index your data comes from.
+2. Select what to fix, or describe the problem. Include details the agent can't find on its own, such as the integration or index your data comes from.
 
-3. Review the proposed change, then confirm it. The rule's status changes to `Translated`. If you matched it to a prebuilt rule that's already installed, the status changes to `Installed` instead. A note that explains the change appears on the rule's **Summary** tab.
+3. Review the proposed change, then confirm it. For several rules, the agent works through them one at a time and asks you to confirm each change. The rule's status changes to `Translated`. If you matched it to a prebuilt rule that's already installed, the status changes to `Installed` instead. A note that explains the change appears on the rule's **Summary** tab.
 
 4. Install the rule from the **Translated rules** page, or ask the agent to install it. The agent asks whether to enable the rule.
 

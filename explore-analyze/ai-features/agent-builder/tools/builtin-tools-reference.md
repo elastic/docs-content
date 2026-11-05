@@ -545,14 +545,14 @@ stack: preview 9.6+
 
 Automatic Migration tools work with [Automatic Migration](/solutions/security/get-started/automatic-migration.md) rule migrations in the current space. The [Automatic Migration skills](../builtin-skills-reference.md#agent-builder-automatic-migration-skills) use them.
 
-**Prerequisites:** An Enterprise license on {{stack}}, or a Security Complete subscription on {{serverless-short}}. You also need `All` privileges for the **SIEM migrations** feature and at least `Read` privileges for the **Rules** feature.
+**Prerequisites:** An Enterprise license on {{stack}}, or a Security Complete subscription on {{serverless-short}}. You also need `All` privileges for the **Automatic Migration** feature and at least `Read` privileges for the **Rules and Exceptions** feature.
 
 #### Read-only tools
 
 These tools look up rule migrations, the rules in them, and the resources they're missing.
 
 `security.siem_migration.get_all_rule_migration_stats` {applies_to}`stack: preview 9.6+`
-:   Lists every rule migration in the current space, newest first, with its source platform, status, and how many of its rules are pending, in progress, completed, or failed.
+:   Lists the rule migrations in the current space, newest first, with each migration's source platform, status, and how many of its rules are pending, in progress, completed, or failed.
 
 `security.siem_migration.get_rule_migration` {applies_to}`stack: preview 9.6+`
 :   Returns a rule migration's name, creation time, and details of its last run.
@@ -583,7 +583,7 @@ These tools start and stop rule migrations, fix and install translated rules, an
 :   Changes a translated rule that isn't installed yet. Either matches the rule to a different Elastic prebuilt rule, or replaces its {{esql}} query and integrations after validating the query. Adds a comment to the rule that explains the change. Asks for confirmation every time it runs.
 
 `security.siem_migration.install_migration_rules` {applies_to}`stack: preview 9.6+`
-:   Installs translated rules from a rule migration, either all rules or the ones you select, and optionally enables them. Requires `All` privileges for the **Rules** feature. Asks for confirmation every time it runs.
+:   Installs translated rules from a rule migration, either all rules or the ones you select, and optionally enables them. Requires `All` privileges for the **Rules and Exceptions** feature. Asks for confirmation every time it runs.
 
 `security.siem_migration.update_rule_migration` {applies_to}`stack: preview 9.6+`
 :   Renames a rule migration. Asks for confirmation every time it runs.
