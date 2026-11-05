@@ -11,7 +11,7 @@ products:
 
 # {{alertzero}} [alertzero-overview]
 
-{{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}} are AI agents that each specialize in one kind of security work: triaging alerts, hunting for threats, tuning detection rules, and investigating attacks. After you turn them on, they run on a schedule, so this work continues without someone working the queue.
+{{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}} are AI agents that each specialize in one kind of security work: triaging alerts, hunting for threats, tuning detection rules, and investigating attacks. After you turn the {{az-workers}} on, they run on a schedule.
 
 When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} that you approve or decline on the **{{az-proposed-actions-cap}}** page. With {{az-workers}} doing the first pass, your team spends less time sorting through noise and more time deciding on investigated work:
 
