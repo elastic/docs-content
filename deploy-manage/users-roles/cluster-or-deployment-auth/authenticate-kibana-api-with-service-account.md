@@ -15,7 +15,9 @@ products:
 
 # Authenticate to the {{kib}} API with a service account [authenticate-kibana-api-service-account]
 
-Use a user-managed service account to authenticate programmatic requests to {{kib}}. The account provides a non-human identity whose privileges come from its assigned roles.
+Use a service token to authenticate programmatic requests to {{kib}} as a user-managed service account. The account provides a non-human identity whose privileges come from its assigned roles.
+
+On {{serverless-full}}, use [API keys](/deploy-manage/api-keys.md) for programmatic access from external applications, because service account tokens aren't available for this use.
 
 ## Before you begin [authenticate-kibana-api-service-account-prerequisites]
 
