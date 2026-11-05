@@ -144,7 +144,7 @@ Inside the loop, reference items as `foreach.item`, `foreach.index`, and `foreac
           name: "{{ event.rule.name }}"
 ```
 
-Refer to [`cases.addAlerts`](/explore-analyze/workflows/steps/cases.md#cases-addalerts).
+Refer to [`cases.addAlerts`](kibana://reference/workflows/cases-steps.md#cases-addalerts).
 
 ### `kibana.SetAlertsStatus` step type is rejected [workflows-ts-pascal-case]
 
@@ -180,7 +180,7 @@ Refer to [{{kib}} action steps](/explore-analyze/workflows/steps/kibana.md).
     case_id: "{{ steps.case.output.id }}"
 ```
 
-Refer to [`cases.closeCase`](/explore-analyze/workflows/steps/cases.md#cases-closecase).
+Refer to [`cases.closeCase`](kibana://reference/workflows/cases-steps.md#cases-closecase).
 
 ## Liquid and data flow [workflows-ts-liquid]
 
