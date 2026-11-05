@@ -17,12 +17,13 @@ When a field in the Discover fields list looks interesting, you can open it in *
 
 - Open **Discover** in classic mode and select a [data view](../find-and-organize/data-views.md). If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 - Select a field that can be [aggregated](../query-filter/aggregations.md).
+- To follow the example, add the [ecommerce sample data](/manage-data/ingest/sample-data.md) and select its data view.
 
 ## Visualize a field
 
-1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
+1. In the list of fields, find an aggregatable field. For example, in the [sample ecommerce data](/manage-data/ingest/sample-data.md), you can look for `day_of_week`.
 
-   ![Top values for the day_of_week field](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
+   ![Top values for the day_of_week field in the sample ecommerce data](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
 
 2. In the popup, select **Visualize**.
 
