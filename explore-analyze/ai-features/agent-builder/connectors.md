@@ -34,6 +34,8 @@ When an agent needs to interact with an external system, it reads the schemas of
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` An agent can only run the connectors assigned to it. At run time, it uses the built-in [`connector-discovery` skill](builtin-skills-reference.md#agent-builder-connector-discovery-skill) to look up its connectors and load their sub-actions and parameter schemas. **Enable Elastic capabilities** includes this skill. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Within those connectors, an agent sees only the actions that the connector allows and that aren't marked **Workflow only**. Refer to [Limit a connector's actions](#limit-a-connectors-actions).
+
 {applies_to}`stack: preview 9.4-9.5` Unlike standalone tools, connectors don't need to be assigned to agents. Any agent can run any connector in the space.
 
 ## Add a connector
@@ -41,16 +43,71 @@ When an agent needs to interact with an external system, it reads the schemas of
 To add a connector to the library:
 
 1. In the left sidebar, select **Manage components** → **Connectors** to open the **Connectors library**.
-2. Select **Create connector**.
+2. Click **Create connector**.
 3. Select a connector type from the catalog.
 4. Provide the required configuration.
-5. Select **Save**.
+5. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` (Optional) If the form includes **Actions**, select **Custom** to limit which actions the connector can run. Refer to [Limit a connector's actions](#limit-a-connectors-actions).
+6. Click **Save**.
 
 The configured connector appears in the library.
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use the connector, [assign it to the agent](#assign-connectors-to-an-agent).
 
 {applies_to}`stack: preview 9.4-9.5` Any agent can use the connector immediately.
+
+## Limit a connector's actions [limit-a-connectors-actions]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Newer connector types, such as Gmail, Jira Cloud, and GitHub, include an **Actions** setting on the create and edit form when they define more than one action. Older connector types, such as Email, Jira, and ServiceNow ITSM, don't show it, even when they have several actions.
+
+The setting applies everywhere the connector runs: in agents, workflows, and the [Run a connector API]({{kib-apis}}operation/operation-post-actions-connector-id-execute). {{kib}} rejects calls to actions that the setting doesn't allow.
+
+### Choose which actions to allow
+
+The **Actions** setting has two options:
+
+**All**
+:   The default. Allows every action, including actions added to the connector type in later versions.
+
+**Custom**
+:   Allows only the actions you select. You must select at least one action.
+
+    When you first switch to **Custom**, the **read** actions are selected by default. You can change the selection.
+    
+    Actions added to the connector type later stay unselected until you edit the connector and select them.
+
+Each action has a scope badge: **read**, **write**, or **destroy**. Some actions also have a **Workflow only** badge. Agents can't run these actions, even when the connector allows them. The Run a connector API can run them, and so can workflows, for connector types available in workflows.
+
+The following screenshot shows a GraphQL connector in **Custom** mode, with its **read** actions selected and a **Workflow only** action left unselected:
+
+:::{image} images/agent-builder-connector-actions-custom.png
+:alt: Actions setting in Custom mode, with the read actions selected and the mutation action, marked Workflow only, left unselected
+:screenshot:
+:width: 500px
+:::
+
+### Change the actions on an existing connector
+
+To change which actions an existing connector allows:
+
+1. In the sidebar, select **Manage components** → **Connectors**.
+2. In the **Connectors library**, click the connector name to open its edit form.
+3. Under **Actions**, select **Custom**.
+4. Select the actions to allow.
+5. Click **Save**.
+
+### Allow actions for workflows but not agents
+
+The allowed actions are the same for every caller of the connector. To make an action with the **write** or **destroy** badge available to workflows but not to agents:
+
+- Use a separate connector for workflows, and don't [assign it to the agent](#assign-connectors-to-an-agent).
+- Don't give the agent a workflow tool that runs that workflow.
+
+This works only for connector types available in workflows.
 
 ## Assign connectors to an agent [assign-connectors-to-an-agent]
 
