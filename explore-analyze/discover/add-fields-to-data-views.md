@@ -19,7 +19,11 @@ Open **Discover** in classic mode and select the data view that you want to add 
 
 ## Add a runtime field
 
-1. In the sidebar, select **Add a field**.
+1. Start from either location:
+
+   - In the sidebar, select **Add a field**.
+   - In the data view menu, select **Add a field to this data view**.
+
 2. Select the **Type** of the new field.
 3. **Name** the field. Name it in a way that corresponds to the way other fields of the data view are named. You can set a custom label and description for the field to make it more recognizable in your data view.
 4. Define the value that you want the field to show. By default, the field value is retrieved from the source data if it already contains a field with the same name. You can customize this with the following options:
