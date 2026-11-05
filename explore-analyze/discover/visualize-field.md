@@ -11,11 +11,11 @@ description: Turn a field from the Discover fields list into a Lens visualizatio
 
 # Visualize a field from Discover
 
-When a field in the Discover fields list looks interesting, you can open it in **Lens** to see how its values break down, without building a chart from scratch. **Lens** is the default visualization editor in {{kib}}. This capability is available only in **Discover**'s classic mode.
+When a field in the Discover fields list looks interesting, you can open it in **Lens** to see how its values break down, without building a chart from scratch. **Lens** is the default visualization editor in {{kib}}.
 
 ## Before you begin
 
-- Open **Discover** in classic mode and select a [data view](../find-and-organize/data-views.md). If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+- Use **Discover** in classic mode, the only mode that offers this capability, and select a [data view](../find-and-organize/data-views.md). If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 - Select a field that can be [aggregated](../query-filter/aggregations.md).
 - To follow the example, add the [ecommerce sample data](/manage-data/ingest/sample-data.md) and select its data view.
 

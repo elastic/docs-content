@@ -12,11 +12,17 @@ description: Explore field statistics in Discover to view distributions, top val
 
 # View field statistics [show-field-statistics]
 
-The **Field statistics** view in **Discover** provides statistical summaries and visualizations of your data fields. View distributions, top values, minimum and maximum ranges, and cardinality to quickly understand your data quality and patterns. Use field statistics to identify data issues, understand field characteristics, and discover insights before building visualizations. This capability is available only in **Discover**'s classic mode.
+The **Field statistics** view in **Discover** provides statistical summaries and visualizations of your data fields. View distributions, top values, minimum and maximum ranges, and cardinality to quickly understand your data quality and patterns. Use field statistics to identify data issues, understand field characteristics, and discover insights before building visualizations.
+
+## Before you begin
+
+Use **Discover** in classic mode, the only mode that offers field statistics. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+
+## View the statistics of your fields
 
 This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
-1. Go to **Discover**. If it opens in {{esql}} mode, [switch to classic mode](switch-esql-mode.md#revert-to-classic-mode).
+1. Go to **Discover**.
 2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
 3. If you don’t see any results, expand the time range, for example, to **Last 7 days**.
 4. Select **Field statistics** (or **View as** → **Field statistics**, depending on your version).
