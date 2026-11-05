@@ -13,7 +13,7 @@ description: See what Discover shows by default, how you define the data to expl
 
 # How Discover works [discover-get-started]
 
-When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. It lets you query your data and presents the results as a table and, when possible, as a visualization. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md).
+When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. You query your data, and **Discover** shows the results as a table and, when the data allows it, as a chart. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md).
 
 To open **Discover**, find it in the navigation menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 
