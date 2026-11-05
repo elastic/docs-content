@@ -15,14 +15,14 @@ description: Save a Discover session to reuse its queries, filters, and view, th
 
 When an exploration is worth coming back to, save it as a Discover session. A saved session preserves your queries, filters, column selections, and view configurations, so you can reopen it later, share it, add it to dashboards, or use it as a foundation for building visualizations.
 
-## Requirements [save-search-requirements]
+## Before you begin [save-search-requirements]
 
-To save searches, you need **Create** and **Edit** permissions for the {{saved-objects-app}} feature in {{product.kibana}}. If you don't have these permissions, the **Save** button won't be visible. For more information, refer to [Read-only access](#discover-read-only-access).
+To save Discover sessions, you need the **All** privilege for the **Discover** feature in {{product.kibana}}. If you don't have it, the **Save** button isn't visible. For more information, refer to [Read-only access](#discover-read-only-access).
 
 
 ### Read-only access [discover-read-only-access]
 
-If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
+If you don’t have sufficient privileges to save Discover sessions, **Discover** shows a **Read only** badge in the header, as in the following image, and the **Save** button isn't visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 :::{image} /explore-analyze/images/kibana-read-only-badge.png
 :alt: Example of Discover's read only access indicator in the {{product.kibana}} header
@@ -31,12 +31,14 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 
 ## Save a Discover session [_save_a_discover_session]
 
-1. Once you’ve created a view worth saving, select **Save** in the application menu. A dialog with several options opens:
+1. Once you’ve created a view worth saving, select **Save** in the application menu. A dialog opens that saves all the open tabs to the session, with several options:
     1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
-    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
+    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When you save a new session, **Add to dashboard** lets you choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
 2. Select **Save**.
 3. To reload your results later, refer to [Open a saved Discover session](#open-discover-session).
+
+**Result:** The session is saved and appears in the list of the **Open Discover session** flyout.
 
 A Discover session stores the following elements for each of its tabs:
 
@@ -53,12 +55,12 @@ A Discover session stores the following elements for each of its tabs:
 To go back to a session you saved, or to find one that a teammate saved, open it from **Discover**.
 
 1. In the application menu, select **Open session**. The **Open Discover session** flyout lists the saved sessions.
-2. To find a session, enter part of its title in the search box, filter the list by tag, or sort it by selecting a column header such as **Title**.
+2. To find a session, enter part of its title in the search box, or filter the list by tag. When the search box is empty, you can also sort the list by selecting the **Title** column header.
 3. Select the session.
 
 **Result:** The session opens in **Discover**. If it uses a different {{data-source}} than the one currently selected, **Discover** switches to it. The query language that the session used is also selected automatically.
 
-To rename, delete, or otherwise manage your saved sessions, select **Manage Discover sessions** in the flyout. The button opens the [{{saved-objects-app}}](../find-and-organize/saved-objects.md) page, filtered to Discover sessions. It appears if you have access to that page.
+To rename, delete, or otherwise manage your saved sessions, select **Manage Discover sessions** in the flyout. The button opens the [{{saved-objects-app}}](../find-and-organize/saved-objects.md) page, filtered to Discover sessions. It appears if your role lets you edit or delete saved objects.
 
 ## Duplicate a Discover session [_duplicate_a_discover_session]
 
@@ -84,9 +86,15 @@ To duplicate an existing Discover session as a new one, the workflow depends on 
 
 ::::
 
+**Result:** A new Discover session is saved with the title you entered.
+
+
+## Next steps
+
+- [Use Discover sessions in dashboards](use-sessions-in-dashboards.md): Add the session, its chart, or its table to a dashboard.
+- [Export Discover session results](export-discover-session.md): Take the results or the session definition elsewhere.
+
 ## Related pages [save-open-search-related]
 
 - [How Discover works](discover-get-started.md)
-- [Export Discover session results](export-discover-session.md)
-- [Use Discover sessions in dashboards](use-sessions-in-dashboards.md)
 - [Query your data in Discover with {{esql}}](use-esql.md)

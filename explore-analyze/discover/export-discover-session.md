@@ -13,30 +13,41 @@ description: Export the results of a Discover session as a CSV file, or the sess
 
 To analyze the results of a Discover session in a spreadsheet or another tool, or to manage the session as code, export them from **Discover** as a CSV file or as JSON.
 
+## Before you begin
+
+Open **Discover** and run a query that returns results.
+
 ## Export Discover session results as CSV [export-discover-session-csv]
 
-To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file. To start, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**, then generate the report.
+To analyze the rows of a session in a spreadsheet or another tool, export them as a CSV file.
+
+1. In the application menu, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV** (**CSV** in earlier versions).
+2. Generate the report.
+
+**Result:** {{kib}} generates a CSV report of the results of the current tab. For what happens next, refer to [Manually generate reports](../report-and-share.md#manually-generate-reports).
+
+### Row and file size limits [export-csv-limits]
 
 Your CSV file might not contain every row of your results. The export stops at the first limit that it reaches, either a number of rows or a file size.
 
 ::::{applies-switch}
 
 :::{applies-item} serverless: ga
-* **{{esql}} mode:** 10,000 rows or 250 MB, whichever comes first. The {{kib}} limit is 10,000 rows by default. The row limit is the lower value of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is also 10,000 by default. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so the {{kib}} limit of 10,000 rows applies instead. A `LIMIT` in your query can lower the row limit. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
-* **Classic mode:** 100,000 rows or 250 MB, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
+* **{{esql}} mode:** 250 MB or the row limit, whichever comes first. The {{kib}} limit is 100,000 rows. The row limit is the lower value of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is 10,000 by default, so most queries stop at 10,000 rows. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so the {{kib}} limit of 100,000 rows applies instead. A `LIMIT` in your query can lower the row limit. The generated report doesn't include a warning when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **Classic mode:** 100,000 rows or 250 MB, whichever comes first. When the results reach the row limit, the report completes with a warning.
 
 You can't change the limits in either mode.
 :::
 
 :::{applies-item} stack: ga 9.3+
-* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The {{kib}} limit is 10,000 rows by default. The row limit is the lower value of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is also 10,000 by default. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so only the {{kib}} limit applies. A `LIMIT` in your query can lower the row limit. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The {{kib}} limit is 10,000 rows by default. The row limit is the lower value of the {{kib}} limit and the {{es}} cap on the rows that an {{esql}} query returns, which is also 10,000 by default. For queries that start with `TS` or `PROMQL`, the {{es}} cap is 10,000,000 rows, so only the {{kib}} limit applies. A `LIMIT` in your query can lower the row limit. The generated report doesn't include a warning when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
 * **Classic mode:** 10,000 rows or 250 MB by default, whichever comes first. When the results reach the row limit, the export flyout warns you before you generate the report, and the report completes with a warning.
 
 In self-managed and {{ech}} deployments, you can change the {{kib}} limits with the `xpack.reporting.csv.maxRows` and `xpack.reporting.csv.maxSizeBytes` settings. Higher limits can affect performance. In {{esql}} mode, you can also raise the {{es}} cap with the `esql.query.result_truncation_max_size` cluster setting. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
 :::
 
 :::{applies-item} stack: ga 9.0-9.2
-* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The row limit is the {{es}} cap on the rows that an {{esql}} query returns. A `LIMIT` in your query can lower it. In 9.2, for queries that start with `TS`, the {{es}} cap is 10,000,000 rows, so the file size limit usually comes first. The report doesn't warn you when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
+* **{{esql}} mode:** 10,000 rows or 250 MB by default, whichever comes first. The row limit is the {{es}} cap on the rows that an {{esql}} query returns. A `LIMIT` in your query can lower it. In 9.2, for queries that start with `TS`, the {{es}} cap is 10,000,000 rows, so the file size limit usually comes first. The generated report doesn't include a warning when it reaches the row limit. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
 * **Classic mode:** 250 MB by default. There is no row limit.
 
 In self-managed and {{ech}} deployments, you can change the file size limit with the `xpack.reporting.csv.maxSizeBytes` setting. In {{esql}} mode, you can change the row limit with the `esql.query.result_truncation_max_size` cluster setting. Refer to [Reporting settings](kibana://reference/configuration-reference/reporting-settings.md).
@@ -73,6 +84,12 @@ Export the session as JSON to inspect its definition, or to use that JSON as the
    - Select **Copy to clipboard** to copy it.
    - Select **Open in Console** to open {{kib}} Dev Tools with a request that contains the JSON. This option is available if you have access to **Dev Tools**.
    - Select **Download JSON** to save the file. The file name is the session title. For an unsaved session, the file is named `Untitled Discover session.json`.
+
+**Result:** You have the JSON of the session, as a copy, as a request in **Console**, or as a file.
+
+## Next steps
+
+- [Use Discover sessions in dashboards](use-sessions-in-dashboards.md): Keep the results next to your other panels instead of exporting them.
 
 ## Related pages
 
