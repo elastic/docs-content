@@ -11,7 +11,9 @@ description: Find the Discover tasks that are specific to ES|QL mode, from runni
 
 # Use Discover with {{esql}}
 
-{{esql}} mode in **Discover** lets you explore data with a query written in [{{esql}}](elasticsearch://reference/query-languages/esql.md), the {{es}} query language. The query names the data to explore, so you don't need to set up a [data view](../find-and-organize/data-views.md) first. In classic mode, you select a data view and search it with Kibana Query Language (KQL) or Lucene syntax instead. For classic mode tasks, refer to [Use Discover in classic mode](use-classic-mode.md).
+In {{esql}} mode, you write a query in [{{esql}}](elasticsearch://reference/query-languages/esql.md), the {{es}} query language, and **Discover** shows the results. The query says which data to read, and it can also filter that data, calculate new fields, and summarize it. For example, `FROM kibana_sample_data_logs | WHERE bytes > 5000` returns the entries in the sample web logs that transferred more than 5,000 bytes. You don't need to set anything up first. Name an index or data stream in the query and run it.
+
+If you'd rather pick a saved definition of your data, called a [data view](../find-and-organize/data-views.md), and search it with KQL or Lucene, two search syntaxes, use classic mode. Refer to [Use Discover in classic mode](use-classic-mode.md).
 
 For the editor itself, time parameters, AI assistance, and Fast mode, refer to [](../query-filter/languages/esql-kibana.md). If you haven't run a query in this mode yet, start with [Get started with {{esql}} in Discover](try-esql.md).
 
