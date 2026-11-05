@@ -18,7 +18,7 @@ Columnar index mode turns {{es}} into an analytical and search columnar store fo
 Instead of keeping multiple copies of each field for different query paths, columnar mode stores fields once as [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) by default.
 This strategy can reduce storage cost for high-volume, analytics-heavy data while keeping the same APIs, dashboards, and integrations.
 
-The `columnar` and `logsdb_columnar` modes ship alongside the other [index modes](/manage-data/data-store.md#understand-index-modes).
+The `columnar` and `logsdb_columnar` modes ship alongside the other [index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
 You choose a mode when you create the index, or in a template. You can't change the mode after the index has been created.
 
 :::{note}

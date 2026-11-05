@@ -34,45 +34,9 @@ Both use the same foundational concepts such as documents, mappings, templates, 
 * [](/manage-data/data-store/data-streams.md): Learn when to use data streams for timestamped and append-only time series data, like logs, events, or metrics. You work with one stream name while {{es}} manages multiple backing indices behind the scenes.
 * [](/manage-data/data-store/near-real-time-search.md): Understand how {{es}} makes newly indexed data searchable within seconds of indexing.
 
-## Understand index modes [understand-index-modes]
-
-An index mode is the storage and query profile for an index or for the backing indices of a data stream.
-It changes default settings and how {{es}} stores documents on disk.
-
-Set [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting) when you create the index or put it in an [index template](/manage-data/data-store/templates.md) so new indices inherit it.
-You cannot change the mode after the index is created.
-For every supported value, refer to [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
-
-Standard (`standard`) {applies_to}`vectordb: unavailable`
-:   Optimized for search and any type of retrieval.
-
-LogsDB (`logsdb`) {applies_to}`stack: ga 9.0+` {applies_to}`vectordb: unavailable`
-:   Optimized for logs use cases, with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode.
-
-LogsDB columnar (`logsdb_columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
-:   Optimized for logs use cases that align with columnar semantics and [limitations](elasticsearch://reference/elasticsearch/columnar/index.md#columnar-limitations). Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
-
-TSDB (`time_series`) {applies_to}`vectordb: unavailable`
-:   Optimized for metrics and time series use cases. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. This mode is for data streams only.
-
-Columnar (`columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
-:   Optimized for storage efficiency and analytics. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
-
-VectorDB (`vectordb_document`) {applies_to}`stack: ga 9.5+` {applies_to}`vectordb: ga`
-:   Optimized for vector search use cases, enabling similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). In {{vectordb}} projects, it is the only mode available.
-
-Lookup (`lookup`) {applies_to}`vectordb: unavailable`
-:   Use it for reference data you join in {{esql}}, for example a list of users, hosts, or known threat IPs. Refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md). Only the lookup index needs this mode, not the source index.
-
-Index mode works together with [mappings](/manage-data/data-store/mapping.md) and [templates](/manage-data/data-store/templates.md).
-The mode changes default settings and whether {{es}} stores the original JSON document ([`_source`](/manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields)) or reconstructs it.
-For how documents, mappings, and `_source` fit together, refer to [index fundamentals](/manage-data/data-store/index-basics.md).
-
 ## Configure how data is stored
 
-An [index mode](#understand-index-modes) is the storage profile for the whole index. The topics in this section describe the fields and the names you use to reach the data. A [template](/manage-data/data-store/templates.md) can include both the mode and these settings so new indices get them together.
-
-{{es}} provides tools to control document field types, manage unstructured text, standardize index configurations, and to simplify and automate access logic:
+How your indices are structured and managed affects query performance, storage efficiency, and how easily your cluster scales. {{es}} provides tools to control document field types, manage unstructured text, standardize index configurations, and to simplify and automate access logic:
 
 * [](/manage-data/data-store/mapping.md): Define how documents and their fields are stored and indexed. Choose between dynamic mapping for automatic field detection and explicit mapping for full control over field types and indexing behavior.
 * [](/manage-data/data-store/text-analysis.md): Configure how unstructured text is converted into a structured format optimized for full-text search, including tokenization, normalization, and custom analyzers.
