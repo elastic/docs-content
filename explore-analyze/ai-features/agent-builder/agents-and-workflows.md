@@ -48,7 +48,7 @@ serverless: ga
 Pre-execution workflows run after each user message, before the agent makes any calls to the large language model (LLM) in response. They let you use Elastic Workflows for deterministic preparation or control before the agent begins its reasoning loop.
 
 :::{note}
-Configuring an agent's pre-execution workflows requires a role that grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role or the **Admin** role in {{serverless-short}}. You can't grant this from the {{kib}} role management UI.
+Configuring an agent's pre-execution workflows requires a role that grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role or the **Admin** role in {{serverless-short}}. You can't grant this from the {{kib}} role management UI. Refer to [Users and roles](/deploy-manage/users-roles.md) for how to assign roles.
 
 Changing the space setting works differently: it requires the `manage_advanced_settings` privilege, which you can grant through the **Advanced Settings** [feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 :::
@@ -111,17 +111,23 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Post-execution workflows run once after the agent finishes responding. Use them to audit the exchange, open a ticket, notify a channel, or grade the response. They can't change the response, and {{agent-builder}} ignores their output.
+Post-execution workflows run after the agent finishes each response. Use them to audit the exchange, open a ticket, notify a channel, or grade the response. They can't change the response, and {{agent-builder}} ignores their output.
 
 You assign post-execution workflows to individual agents. Unlike pre-execution workflows, post-execution workflows have no space setting.
 
 ### Requirements [post-execution-workflows-requirements]
 
 * The [prerequisites](#prerequisites) for using workflows with {{agent-builder}}.
-* A role that grants wildcard (`*`) {{kib}} privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}. You need this role to configure an agent's post-execution workflows. Without it, the **Workflows** selector is disabled. You can't grant wildcard privileges from the {{kib}} role management UI.
+* A role that grants wildcard (`*`) {{kib}} privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}. You need this role to configure an agent's post-execution workflows. Without it, the **Workflows** selector is disabled. You can't grant wildcard privileges from the {{kib}} role management UI. Refer to [Users and roles](/deploy-manage/users-roles.md) for how to assign roles.
 * By default, each workflow runs as the user who sent the message, so its steps can do only what that user's privileges allow. If the workflow is private, that user must own it or have **Executor** or **Editor** access to it.
 
 ### Assign post-execution workflows to an agent [assign-post-execution-workflows-to-an-agent]
+
+:::::{tab-set}
+:group: post-execution-assign
+
+::::{tab-item} {{kib}} UI
+:sync: ui
 
 1. Select **Manage components** at the bottom of the left sidebar to open the **Agents** list.
 2. Select an agent, then select **Settings**.
@@ -137,8 +143,10 @@ The following screenshot shows the **Post-execution workflow** setting in the ag
 :width: 900px
 :alt: Post-execution workflow section of the agent Settings tab with an empty Workflows selector
 :::
+::::
 
-#### Assign workflows with the API [assign-post-execution-workflows-api]
+::::{tab-item} API
+:sync: api
 
 To assign post-execution workflows through the [Agent Builder API]({{kib-apis}}group/endpoint-agent-builder), set the agent field `configuration.post_execution_workflow_ids`. The following request assigns one workflow:
 
@@ -153,6 +161,9 @@ PUT kbn:/api/agent_builder/agents/<agent_id>
 
 * The update replaces only the keys you send, so the agent keeps its instructions, tools, skills, and other settings.
 * Without wildcard (`*`) {{kib}} privileges, a request that changes `post_execution_workflow_ids` returns a `400` error: `Only administrators can configure post-execution workflows.`
+::::
+
+:::::
 
 ### How post-execution workflows run [post-execution-workflows-run]
 
@@ -210,9 +221,9 @@ steps:
 | `agent_id` | The agent ID. |
 | `round_connector_id` | The connector the agent used for this response. Not sent when the connector ID isn't available. |
 | `workflow_context` | Data that pre-execution workflows returned as `workflow_context` for this response, keyed by namespace. Each namespace has a numeric `version` and a `data` object. Not sent when there's none. |
-| `tool_results` | One entry for each tool call that has results, with `tool_id`, `tool_call_id`, and `results`. A workflow that declares `tool_results` as an array receives an empty array when no tool call has results. |
+| `tool_results` | One entry for each tool call that has results, with `tool_id`, `tool_call_id`, and `results`. A workflow that declares `tool_results` as an array receives an empty array when no tool call has results. {{agent-builder}} truncates this data, so it might not be complete. Refer to the limits after this table. |
 
-To limit size, {{agent-builder}} truncates `tool_results` before the workflow receives it: each string to 4,000 characters and each array to 50 items. If a result's data is still larger than 32,000 characters, {{agent-builder}} replaces it with `type: other` and `data` set to `{ "omitted": "result data exceeded 32000 characters" }`.
+The `tool_results` data is truncated and might not be the complete tool output. To limit size, {{agent-builder}} truncates `tool_results` before the workflow receives it: each string to 4,000 characters and each array to 50 items. If a result's data is still larger than 32,000 characters, {{agent-builder}} replaces it with `type: other` and `data` set to `{ "omitted": "result data exceeded 32000 characters" }`.
 
 If the workflow sets `additionalProperties: false`, declare every input that {{agent-builder}} sends, including `conversation_id` and `agent_id`. Otherwise, the run fails input validation and appears as a failed execution in the workflow's execution history.
 
@@ -261,7 +272,7 @@ Follow these steps to invoke an `ai.agent` as a step within a workflow.
 5.  Optionally, in the **`with`** block, set the **`schema`** parameter to a JSON Schema object to receive structured output from the agent instead of free-text.
 6.  Optionally, route the step to a specific model by setting **`connector-id`** or **`inference-id`** at the top level of the step. These parameters are mutually exclusive.
 
-### Example: Analyze flight delays
+:::{dropdown} Example: Analyze flight delays
 The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact. To follow along with this example ensure that the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
 
 ```yaml
@@ -300,6 +311,7 @@ steps:
 ```
 1. **agent-id**: The ID of the agent you want to call (must exist in Agent Builder). Set it at the top level of the step, not in the `with` block.
 2. **message**: The prompt sent to the agent. You can use template variables (like `{{ steps.step_name.output }}`) to inject data dynamically.
+:::
 
 ### Parameters
 
@@ -342,7 +354,7 @@ Use the generic `kibana.request` step to interact with {{agent-builder}} APIs pr
 2. Set the method (for example: `GET`, `POST`).
 3. Set the `path` to the specific [Agent Builder API endpoint]({{kib-apis}}group/endpoint-agent-builder).
 
-### Example: List available agents
+:::{dropdown} Example: List available agents
 This step retrieves a list of all agents currently available in Agent Builder.
 
 ```yaml
@@ -357,6 +369,7 @@ steps:
       method: GET
       path: /api/agent_builder/agents
 ```
+:::
 
 ## Examples
 
