@@ -9,7 +9,6 @@ products:
   - id: cloud-serverless
 sub:
   offering: Security Analytics
-  abb-anchor: security-billing-agent-builder-executions
   abb-preamble: |
     Elastic Agent Builder enables you to create AI agents that assist with security operations, including alert investigation, threat triage, root cause analysis, and guided response actions. Agent Builder Executions is a billing dimension for Elastic Security Serverless projects on the Security Analytics Complete tier.
 
@@ -17,7 +16,6 @@ sub:
   abb-free-executions: 10,000
   pricing-label: Elastic Cloud pricing table
   pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
-  wfe-anchor: security-billing-workflow-executions
   wfe-preamble: Workflows enable you to automate multi-step processes across your security operations, including alert triage, case management, enrichment, and response actions. Workflow Executions is a billing dimension for Security Serverless projects on the Security Analytics Complete tier and the Elastic AI SOC Engine (EASE) tier.
   wfe-billing-detail: Billing is based on the number of workflow executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
@@ -92,6 +90,8 @@ Logs, events, alerts, and configuration data ingested into your security project
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
 
+## Agent Builder executions [security-billing-agent-builder-executions]
+
 :::{include} _snippets/agent-builder-executions-billing.md
 :::
 
@@ -105,6 +105,8 @@ For more details about {{elastic-sec}} serverless project rates and billable ass
 ## Add-ons [security-billing-add-ons]
 
 Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
+
+### Workflow executions [security-billing-workflow-executions]
 
 :::{include} _snippets/workflow-executions-billing.md
 :::

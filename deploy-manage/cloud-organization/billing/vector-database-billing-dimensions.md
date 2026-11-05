@@ -9,13 +9,11 @@ description: >-
   Learn how costs for Elasticsearch Vector Database Serverless projects
   are calculated across storage, search, ingest, and infrastructure.
 sub:
-  abb-anchor: vector-database-billing-agent-builder-executions
   abb-preamble: |
     Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Vector Database project. Agent usage is billed in addition to the other billing dimensions of your project, based on the number of executions completed in your project over the course of a month.
   abb-free-executions: 1,000
   pricing-label: "Elasticsearch Vector Database pricing page"
   pricing-url: https://cloud.elastic.co/pricing/serverless?s=vectordb
-  wfe-anchor: vector-database-billing-workflow-executions
   wfe-preamble: Workflows enable you to automate multi-step processes within your Elasticsearch Vector Database project.
   wfe-billing-detail: In addition to the other billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
@@ -63,6 +61,8 @@ You are billed an infrastructure fee for as long as the project exists. Elastic 
 
 There is no separate control to pause or make a project unavailable. To stop infrastructure charges, [delete the project](/deploy-manage/uninstall/delete-a-cloud-deployment.md).
 
+## Agent Builder executions [vector-database-billing-agent-builder-executions]
+
 :::{include} _snippets/agent-builder-executions-billing.md
 :::
 
@@ -84,6 +84,8 @@ There is no separate control to pause or make a project unavailable. To stop inf
 ## Add-ons [vector-database-billing-add-ons]
 
 Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
+
+### Workflow executions [vector-database-billing-workflow-executions]
 
 :::{include} _snippets/workflow-executions-billing.md
 :::

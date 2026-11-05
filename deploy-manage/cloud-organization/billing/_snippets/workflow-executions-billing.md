@@ -1,5 +1,3 @@
-### Workflow executions [{{wfe-anchor}}]
-
 {{wfe-preamble}}
 
 {{wfe-billing-detail}}

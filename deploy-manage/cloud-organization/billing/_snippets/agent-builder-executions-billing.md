@@ -1,5 +1,3 @@
-## Agent Builder executions [{{abb-anchor}}]
-
 {{abb-preamble}}
 
 Each execution represents one conversational turn — a user input and the agent's non-error response. Complex turns that exceed 50,000 input tokens count as additional executions to reflect the heavier processing involved. For example, a turn that uses 120,000 input tokens would count for 3 Agent Executions. Error responses are not billed. When an agent triggers a workflow as part of its response, the workflow execution is metered separately under Workflow Executions.
