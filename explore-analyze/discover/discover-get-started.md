@@ -64,13 +64,13 @@ Which experiences you can get depends on where you open **Discover** from, and t
 **In {{observability}} projects and solution views**, **Discover** can switch to one of these experiences:
 
 * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**: For log data.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.2-9.3` **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: For metrics data that you query in {{esql}} mode with the `TS` command.
-* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1+` **[Traces exploration](/solutions/observability/apm/discover-traces.md)**: For trace data.
+* **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: For metrics data that you query in {{esql}} mode with the `TS` command.
+* **[Traces exploration](/solutions/observability/apm/discover-traces.md)**: For trace data.
 
 **In Security projects and solution views**, **Discover** can switch to one of these experiences:
 
-* {applies_to}`security: ga` {applies_to}`stack: ga 9.1+` **[Security data exploration](/solutions/security/investigate/discover-security.md)**: For security alerts and events.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.2-9.3` **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: For metrics data that you query in {{esql}} mode with the `TS` command.
+* **[Security data exploration](/solutions/security/investigate/discover-security.md)**: For security alerts and events.
+* **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)**: For metrics data that you query in {{esql}} mode with the `TS` command.
 
 {applies_to}`stack: ga 9.6+` **In spaces with the Classic solution view**, the metrics, traces, and Security experiences can also apply when you query matching data, as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
 
