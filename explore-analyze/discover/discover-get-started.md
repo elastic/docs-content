@@ -15,7 +15,7 @@ description: See what Discover shows by default, how you define the data to expl
 
 When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. You query your data, and **Discover** shows the results as a table and, when the data allows it, as a chart.
 
-If you're new to **Discover**, this page introduces its core concepts. When you're ready to get hands-on, the [next steps](#next-steps) at the end of this page point to a tutorial and to guides for each task.
+If you're new to **Discover**, this page introduces its core concepts. When you're ready to get hands-on, check the [next steps](#next-steps) at the end of this page for a tutorial and guides for each task.
 
 To open **Discover**, find it in the navigation menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 
