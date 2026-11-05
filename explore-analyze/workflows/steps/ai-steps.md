@@ -440,7 +440,21 @@ Only conversations with a template have metadata:
 - Conversations that `ai.agent` creates, or that users start in chat, have no template.
 - To create a conversation with a template from a workflow, use [`ai.conversation.create`](#ai-conversation-create) with `template_id` set to a built-in template: `investigation` or `escalation`. `ai.conversation.create` is in technical preview, so a workflow that creates a conversation with metadata depends on a preview step.
 
-The examples in this section use a conversation that a `create_conversation` step creates with the `investigation` template, where `status` accepts `open` or `closed`.
+Both built-in templates, `investigation` and `escalation`, define the following fields:
+
+| Field | Type | Accepted values | Default |
+|---|---|---|---|
+| `status` | One value from a fixed list | `open`, `closed` | `open` |
+| `severity` | One value from a fixed list | `low`, `medium`, `high`, `critical` | None |
+| `close_reason` | One value from a fixed list | `false_positive`, `benign`, `resolved`, `duplicate`, `other` | None |
+| `assignees` | List of text values | User IDs | None |
+| `verdict` | Text | The outcome, up to 10,000 characters | None |
+| `summary` | Text | A summary so far, up to 10,000 characters | None |
+| `description` | Text | A one-line summary | None |
+
+The `escalation` template also has a `linked_investigations` field, a list of investigation IDs.
+
+The examples in this section use a conversation that a `create_conversation` step creates with the `investigation` template.
 
 :::{note}
 These steps run with the privileges of the user who authorizes the run. That user needs:
