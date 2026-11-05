@@ -507,7 +507,7 @@ The step has the following requirements:
 
 - The conversation must have a template applied.
 - You can only set fields that the template defines.
-- Each value must match the type and constraints of its field, such as the allowed options of a select field.
+- Each value must match the field's type and constraints. For example, a field with a fixed list of values rejects any value that isn't in the list.
 - You can't set a field to `null`.
 
 | Parameter | Location | Type | Required | Description |
