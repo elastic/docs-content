@@ -15,7 +15,7 @@ When your data doesn't have a field you need, such as a value that is part of an
 
 ## Before you begin
 
-Open **Discover** in classic mode and select the data view that you want to add the field to. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+Open **Discover** in classic mode, select the data view that you want to add the field to, and run a search so the fields list appears. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 
 ## Add a runtime field
 
