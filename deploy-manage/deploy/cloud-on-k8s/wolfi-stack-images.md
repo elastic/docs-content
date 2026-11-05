@@ -33,8 +33,9 @@ To use Wolfi images, configure the ECK operator to append `-wolfi` to the contai
 The `container-suffix` flag cannot be combined with `--ubi-only`. If your `eck.yaml` ConfigMap contains a `ubi-only` key (including `ubi-only: false`), remove it before setting `container-suffix: -wolfi`. ECK checks whether the key exists, not its value, and rejects `container-suffix` when `ubi-only` is present.
 ::::
 
-**Using a ConfigMap (YAML install)**
+:::::{tab-set}
 
+::::{tab-item} YAML manifests
 Edit the `elastic-operator` ConfigMap in the `elastic-system` namespace:
 
 ```yaml
@@ -47,9 +48,9 @@ data:
   eck.yaml: |-
     container-suffix: -wolfi
 ```
+::::
 
-**Using Helm**
-
+::::{tab-item} Helm chart
 Set the value with `--set`:
 
 ```sh
@@ -65,5 +66,18 @@ Or in `values.yaml`:
 config:
   containerSuffix: "-wolfi"
 ```
+::::
 
-Apply the configuration. Restart the ECK operator pod. Verify that pods pull Wolfi images. For example, {{es}} pods should use `docker.elastic.co/elasticsearch/elasticsearch-wolfi:<version>`. {{package-registry}} and Enterprise Search images are Wolfi-based by default. ECK does not append the `-wolfi` suffix for those components.
+:::::
+
+After updating the configuration, restart the ECK operator pod. 
+
+To verify that Wolfi images are in use, describe a stack component pod and check its image:
+
+```sh
+kubectl describe pod <pod-name> -n <namespace> | grep Image:
+```
+
+Image names should end in `-wolfi`. For example, `docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{version.stack}}`.
+
+{{package-registry}} and Enterprise Search images are Wolfi-based by default. ECK does not append the `-wolfi` suffix for those components.
