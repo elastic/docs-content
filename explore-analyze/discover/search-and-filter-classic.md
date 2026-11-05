@@ -16,6 +16,7 @@ In classic mode, you find the documents you need by searching a data view with [
 ## Before you begin
 
 - Open **Discover** in classic mode. If **Discover** opens in {{esql}} mode, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+- A [{{data-source}}](../find-and-organize/data-views.md) for the data you want to search. It can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). Integrations sometimes create data views for you, and you can also [create your own](../find-and-organize/data-views/create-data-view.md). If **Discover** asks you to add data or create a {{data-source}} instead of opening, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
 - To follow the examples, add the [ecommerce sample data](/manage-data/ingest/sample-data.md) and select its data view.
 
 ## Select a data view and a time range [find-the-data-you-want-to-use]
@@ -23,11 +24,6 @@ In classic mode, you find the documents you need by searching a data view with [
 In classic mode, you select the data to explore with a data view, and then set the time range in which to view that data.
 
 1. Select the data view that contains the data you want to explore.
-   ::::{tip}
-   In classic mode, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
-
-   If **Discover** asks you to add data or create a {{data-source}} instead of opening and you're not sure of what to do next, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
-   ::::
    If you're using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
    :alt: How to set the {{data-source}} in Discover
