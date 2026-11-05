@@ -116,7 +116,7 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::{include} _snippets/eis-billing.md
 :::
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier.
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier.
 
 ## Organization charges [security-billing-organization-charges]
 
