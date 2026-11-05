@@ -225,7 +225,7 @@ These privileges control specific actions on workflows. Selecting **All** includ
 :::
 
 :::{warning}
-:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+:applies_to: {"stack": "ga 9.6+", "serverless": "ga"}
 When you edit a workflow that runs as a service account, subsequent runs continue to use that account's privileges. Your changes can therefore use privileges you don't personally have. Grant workflow edit access only to users you trust to use those privileges.
 
 Adding, changing, or removing a service account assignment, and editing or deleting a workflow assigned to a service account, also require the `manage_security` cluster privilege. For account assignment instructions and required privileges, refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).

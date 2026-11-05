@@ -2,10 +2,11 @@
 navigation_title: Run as a service account
 applies_to:
   stack: ga 9.6+
-  serverless: unavailable
+  serverless: ga
 description: Assign a user-managed service account to a workflow, verify its execution identity, and troubleshoot permission errors.
 products:
   - id: kibana
+  - id: cloud-serverless
   - id: cloud-hosted
   - id: cloud-enterprise
   - id: cloud-kubernetes
@@ -16,7 +17,7 @@ products:
 
 By default, workflows run with a user's privileges. As an alternative, you can run a workflow as a [user-managed service account](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#user-managed-service-accounts).
 
-The workflow then uses the account's roles for every run, regardless of who starts or last edits it. This gives shared workflows a stable identity, even if their creator leaves your organization. You can also give the account only the privileges the workflow needs, even if the people who manage it have broader access.
+The workflow then uses the account's privileges for every run, regardless of who starts or last edits it. This gives shared workflows a stable identity, even if their creator leaves your organization. You can also give the account only the privileges the workflow needs, even if the people who manage it have broader access.
 
 This guide shows you how to assign a service account to a workflow and verify its execution identity.
 
@@ -29,22 +30,26 @@ Before you assign a service account to a workflow, make sure you meet these requ
 
 ## Assign a service account [assign-workflow-service-account]
 
-The `settings.run_as` field specifies the account that runs the workflow. Set it to the account's full principal, such as `kibana/incident-response`.
+The `settings.run_as` field specifies the ID of the account that runs the workflow. On {{stack}} deployments, this is the account's principal, such as `kibana/incident-response`. On {{serverless-short}}, it is a generated identifier independent of the account's name.
 
-You can assign an existing account or create one without leaving the workflow editor. In both cases, the account must be [created in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) and have the roles required by the workflow steps. Accounts created directly through the {{es}} API can't be used for workflow execution, even if they use the `kibana` namespace.
+You can assign an existing account or create one without leaving the workflow editor. In both cases, the account must be [created in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) and have the privileges required by the workflow steps.
+
+{applies_to}`serverless: unavailable` Accounts created directly through the {{es}} API can't be used for workflow execution, even if they use the `kibana` namespace.
 
 1. Open the workflow in the {{kib}} workflow editor.
 2. In the `settings` block, add `run_as`:
 
-    - To use an existing account, select it from the picker or enter its principal.
+    - To use an existing account, select it from the picker or enter its ID.
     - To create and assign an account, select **Create account** and configure its roles.
 
     For example:
 
     ```yaml
     settings:
-      run_as: kibana/incident-response
+      run_as: "<service-account-id>"
     ```
+
+    Replace `<service-account-id>` with the account's ID.
 
 3. Save the workflow.
 
@@ -69,9 +74,9 @@ A workflow assigned to a service account never falls back to the triggering user
 
 - If the account is deactivated or deleted, the next run fails.
 - If the account lacks a privilege required by a step, that step fails with a privileges error.
-- If the account was deleted and recreated with the same principal, the old assignment no longer matches it. Remove the assignment, save the workflow, then assign the recreated account.
+- If the account was deleted and recreated with the same name, the old assignment no longer matches it. Remove the assignment, save the workflow, then assign the recreated account.
 
-[Update the account or its roles](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md#disable-service-account), or assign a different account, then run the workflow again.
+[Update the account or its roles](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md#update-service-account-kibana), or assign a different account, then run the workflow again.
 
 ## Remove the assignment [remove-workflow-service-account]
 

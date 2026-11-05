@@ -3,30 +3,29 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html
 applies_to:
   stack: all
-  serverless: unavailable
+  serverless: ga
 description: Learn how built-in and user-managed service accounts provide non-human identities for Elastic services and workloads.
 products:
   - id: elasticsearch
   - id: kibana
+  - id: cloud-serverless
 ---
 
 # Service accounts [service-accounts]
 
 A service account is a non-human identity for a service or workload. Unlike a user, a service account isn't associated with a person and can't log in to the {{kib}} UI.
 
-Service accounts authenticate with service tokens. The account defines the identity and privileges, while the token is a credential for that identity. For example, {{fleet}} server uses a service token to authenticate with {{es}} and manage its own API keys.
-
-You can create multiple service tokens for the same service account. This lets multiple instances of a service use the same identity without sharing credentials.
+Service accounts authenticate with tokens. The account defines the identity and privileges, while the token is a credential for that identity.
 
 ::::{important}
-Don't use service accounts to authenticate individual users. Service tokens are credentials for software and workloads, not people.
+Don't use service accounts to authenticate individual users. Service account credentials are for software and workloads, not people.
 ::::
 
 $$$service-accounts-explanation$$$
 
-Each service account has a unique identifier, called a principal, in the form `<namespace>/<service>`. The `namespace` groups related accounts, and the `service` name must be unique within that namespace.
+Each service account has a unique identifier, called a principal. In {{stack}}, the principal has the form `<namespace>/<service>`. The `namespace` groups related accounts, and the `service` name must be unique within that namespace.
 
-Service accounts are not included in the response of the [get users API]({{es-apis}}operation/operation-security-get-user). To retrieve a service account, use the [get service accounts API]({{es-apis}}operation/operation-security-get-service-accounts). Use the [get service account credentials API]({{es-apis}}operation/operation-security-get-service-credentials) to retrieve all service credentials for a service account.
+On {{stack}}, service accounts are not included in the response of the [get users API]({{es-apis}}operation/operation-security-get-user). To retrieve a service account, use the [get service accounts API]({{es-apis}}operation/operation-security-get-service-accounts). Use the [get service account credentials API]({{es-apis}}operation/operation-security-get-service-credentials) to retrieve all service credentials for a service account.
 
 ## Service account types [service-account-types]
 
@@ -48,38 +47,54 @@ The following built-in accounts are available:
 
 The `elastic` namespace is reserved for built-in accounts.
 
-You can create and delete service tokens for these accounts, but you can't change their predefined privileges.
+In {{stack}}, you can create and delete service tokens for these accounts, but you can't change their predefined privileges.
 
 ### User-managed service accounts [user-managed-service-accounts]
 ```{applies_to}
 stack: ga 9.6+
+serverless: ga
 ```
 
-You create these accounts and assign roles to control their privileges. Accounts created in {{kib}} use the `kibana` namespace, and their principals have the form `kibana/<name>`.
+You create these accounts and assign roles to control their privileges. The accounts belong to the deployment on {{stack}} or to the Cloud organization on {{serverless-short}}, rather than to the user who created them. In {{stack}}, accounts created in {{kib}} use the `kibana` namespace, and their principals have the form `kibana/<name>`.
 
-Use a user-managed service account when your application needs its own identity to access {{es}} or {{kib}} APIs. Assign the roles required by the application, and authenticate its requests with a [service account token](#service-accounts-tokens).
+Use a user-managed service account when your workload needs its own identity to access {{es}} or {{kib}} APIs. Assign the roles required by the workload.
 
-In {{stack}} 9.6, [Workflows](/explore-analyze/workflows.md) is the only {{kib}} application that supports directly assigning a service account as the execution identity of a workload. {{kib}} manages the credential used for this integration.
+[Workflows](/explore-analyze/workflows.md) is the only {{kib}} application that supports directly assigning a service account as the execution identity of a workload. {{kib}} manages the credential used for this integration.
 
-To manage service accounts and use them in your own applications:
+To manage service accounts and use them in your workloads:
 
 - [Create and manage service accounts in {{kib}}](manage-service-accounts-in-kibana.md).
-- [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
+- {applies_to}`{stack: ga 9.6+, serverless: unavailable}` [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
 
 To use service accounts with {{kib}} Workflows, refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
 
-The {{es}} API reference also documents these operations:
+On {{stack}}, the {{es}} API reference also documents these operations:
 
 - [Create or replace an account]({{es-apis}}operation/operation-security-put-user-managed-service-account).
 - [Delete an account]({{es-apis}}operation/operation-security-delete-user-managed-service-account).
 
-% TBD: Add the query service accounts API link when elasticsearch-specification includes the endpoint from elastic/elasticsearch#159406.
-% Serverless follow-up: publish only after availability is confirmed. Reuse these pages with deployment-specific sections for the 50-role limit, creator privilege ceiling, user-only management, and cross-project role resolution.
-% Serverless follow-up: omit the encryption-key prerequisite and direct service-token API instructions. Document deletion and token expiry instead of disabling an account. Confirm mixed-project-type restrictions before documenting them.
+### Service accounts in {{serverless-short}} [service-accounts-serverless]
+```{applies_to}
+serverless: ga
+```
+
+{{serverless-short}} uses the same [built-in service accounts](#built-in-service-accounts), with credentials managed by Elastic.
+
+User-managed accounts have a generated identifier that is independent of the name you enter in {{kib}}. Their identifiers don't use the `<namespace>/<service>` principal format of {{stack}} accounts.
+
+You can assign a user-managed account to a workflow, and {{kib}} manages the short-lived credentials used to run it. You can't obtain a token for an external application or manage these accounts through the {{es}} service account APIs. The service token instructions on this page apply to {{stack}}.
+
+The account's privileges are limited to those allowed by both its assigned roles and its creator's access at creation time. For details about role limits, cross-project search, and deleting accounts, refer to [Create and manage service accounts in {{kib}}](manage-service-accounts-in-kibana.md).
 
 ## Service account tokens [service-accounts-tokens]
+```{applies_to}
+stack: all
+serverless: unavailable
+```
 
 A service account token, or service token, is a unique string that a service uses to authenticate with {{es}}. For a given service account, each token must have a unique name. Because tokens include access credentials, they should always be kept secret by whichever client is using them.
+
+For example, {{fleet}} server uses a service token to authenticate with {{es}} and manage its own API keys. You can create multiple service tokens for the same service account. This lets multiple instances of a service use the same identity without sharing credentials.
 
 :::{note}
 :applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
@@ -198,11 +213,14 @@ In both responses:
 ## Audit user-managed service account activity [audit-service-account-activity]
 ```{applies_to}
 stack: ga 9.6+
-serverless: unavailable
+serverless: ga
 ```
 
 {{kib}} [audit events](kibana://reference/kibana-audit-events.md) record account creation and deletion, changes to workload assignments, and attempts to run a workload as an account. The `service_account_assume` event identifies the account and workload execution. Events caused by that workload identify the service account as the acting principal.
 
-{{es}} [audit events](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) also attribute requests that use a service account credential to the account.
+In {{stack}}, {{es}} [audit events](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) also attribute requests that use a service account credential to the account.
 
-% Follow-up in elastic/kibana: change the service account audit event lifecycle labels from preview to GA for 9.6. The service_account_assume event is already documented after #295817 merged.
+On {{serverless-short}}, configure [audit trail log delivery](/deploy-manage/monitor/log-delivery/audit-trail.md) to collect audit logs from your project.
+
+% Follow-up in elastic/kibana: Update all five service account audit events from preview to GA for 9.6 and document their Serverless availability.
+% Serverless verification: Confirm Elasticsearch audit attribution for UIAM-backed service accounts.

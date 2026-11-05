@@ -33,7 +33,7 @@ This allows you to run a workflow manually by:
 The privileges used for each manual run depend on whether the workflow has an assigned service account:
 
 * **No service account assigned (default):** The run uses the privileges of the user who starts it.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **Service account assigned:** The run uses the privileges of that account.
+* {applies_to}`stack: ga 9.6+` **Service account assigned:** The run uses the privileges of that account.
 
 For details, refer to [](/explore-analyze/workflows/authorization.md).
 

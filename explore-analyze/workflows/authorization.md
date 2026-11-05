@@ -18,7 +18,7 @@ products:
 The privileges used to authorize a workflow run depend on whether the workflow has an assigned service account:
 
 * **No service account assigned (default):** The run uses a user's privileges, determined by how the workflow starts.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` **Service account assigned:** The run uses the privileges of that account.
+* {applies_to}`stack: ga 9.6+` **Service account assigned:** The run uses the privileges of that account.
 
 Use this page to configure who runs your workflows, diagnose privileges errors, and keep your workflows' access current.
 
@@ -37,20 +37,21 @@ When a workflow doesn't run as a service account, the trigger type determines wh
 ### Workflows that run as a service account [workflows-authorization-service-account]
 ```{applies_to}
 stack: ga 9.6+
-serverless: unavailable
 ```
 
-When you [assign a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md) with `settings.run_as`, every run uses that account's roles. The trigger type and the user who last saved or started the workflow don't change its privileges.
+When you [assign a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md) with `settings.run_as`, every run uses that account's privileges. The trigger type and the user who last saved or started the workflow don't change its privileges.
 
-The workflow stores a reference to the account. When a run starts, {{kib}} obtains a short-lived credential and renews it as needed. {{es}} resolves the account's roles whenever it authenticates, so changes to an assigned role apply to later credential requests without saving the workflow again.
+The workflow stores a reference to the account. When a run starts, {{kib}} obtains a short-lived credential and renews it as needed. Changes to an assigned role affect the account's privileges without saving the workflow again.
 
-If the account is deleted, turned off, or lacks a required privilege, the run fails without falling back to a user.
+On {{serverless-short}}, the account's privileges are also limited by its creator's access when the account was created. Refer to [Roles and privileges in {{serverless-short}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md#service-account-serverless-roles).
+
+If the account is deleted or lacks a required privilege, the run fails without falling back to a user.
 
 ## How {{kib}} records execution identity [workflows-authorization-audit]
 
 When a workflow run starts, {{kib}} records the execution identity so you can audit which privileges it used. Refer to [](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution) for execution context variables.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` For workflows assigned to service accounts, **Triggered by** shows the identity associated with the start of the run. This can be a user or a service account. **Run as** shows the assigned service account whose privileges authorize the workflow's actions.
+{applies_to}`stack: ga 9.6+` For workflows assigned to service accounts, **Triggered by** shows the identity associated with the start of the run. This can be a user or a service account. **Run as** shows the assigned service account whose privileges authorize the workflow's actions.
 
 The **Created By** filter on the **Workflows** page reflects who last saved the workflow, not necessarily who originally created it.
 
@@ -58,7 +59,7 @@ The **Created By** filter on the **Workflows** page reflects who last saved the 
 
 A workflow can call a child workflow with [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute). When neither workflow is assigned a service account, the child runs with the same execution identity as the parent.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` When service accounts are involved, each workflow uses its own assignment by default. A child doesn't automatically inherit its parent's service account. If only the parent is assigned a service account, the child uses the identity associated with the [parent run's trigger](#workflows-authorization-user). For example, if a user manually starts the parent, the child uses that user's privileges even when the parent runs as a service account.
+{applies_to}`stack: ga 9.6+` When service accounts are involved, each workflow uses its own assignment by default. A child doesn't automatically inherit its parent's service account. If only the parent is assigned a service account, the child uses the identity associated with the [parent run's trigger](#workflows-authorization-user). For example, if a user manually starts the parent, the child uses that user's privileges even when the parent runs as a service account.
 
 ## How steps use the execution identity [workflows-authorization-scope]
 
@@ -87,6 +88,6 @@ The following authorization errors can cause a workflow step to fail:
 |---|---|---|---|
 | Step-level privileges error | The execution identity lacks a required privilege for the step. | On the failing step in the run's **Executions** tab. | For a user identity, update the user's role and save the workflow again. For a service account, update one of its assigned roles. |
 | Stale or not-valid API key | The stored key is no longer valid, for example because an administrator deleted a role it depended on. There's no dedicated status or list-level indicator for this condition. | As an API key error on the individual `elasticsearch` or `kibana` step in the run's **Executions** tab. | Refresh the API key by saving the workflow again or toggling **Enabled** off and back on. |
-| Service account identity error {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` | The assigned account has `enabled: false`, is deleted, or no longer matches the saved assignment. | In the run's execution details. | Set `enabled: true` or assign an available account, then start a new run. |
+| Service account identity error {applies_to}`stack: ga 9.6+` | The assigned account is deleted, deactivated, or no longer matches the saved assignment. | In the run's execution details. | Assign an available account or, on {{stack}} deployments, [reactivate the account](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md#disable-service-account). Then start a new run. |
 
 <!-- TODO: Workflows currently uses {{es}} API keys on both {{stack}} and {{serverless-short}} with no deployment-specific key type. When {{serverless-short}} enables UIAM API keys, Task Manager will use UIAM-issued keys for Serverless workflow runs. Add a "How the API key differs by deployment type" section when that ships. -->
