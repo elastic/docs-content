@@ -85,7 +85,7 @@ You can check which experience is active in your Discover session. This can help
    * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
 1. From the **View** menu, select **Profiles**.
 
-The various profiles listed show details such as the active solution and data source contexts, which determine Discover's context-aware experiences.
+The **Profiles** view lists the active solution and data source contexts, which determine the context-aware experience that **Discover** shows.
 
 ## Related pages
 

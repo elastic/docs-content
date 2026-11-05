@@ -30,7 +30,7 @@ The guides for each task say which query mode they cover.
 
 **Query your data**
 
-* Check how each query mode available in Discover can help you search and filter your data: [{{esql}} mode](discover/use-esql.md) and [classic mode](discover/use-classic-mode.md).
+* Query your data in [{{esql}} mode](discover/use-esql.md) or in [classic mode](discover/use-classic-mode.md).
 * [Open Discover from a dashboard panel](dashboards/create-discover-drilldown.md) with a drilldown.
 * Learn how to handle long-running queries with [background search](discover/background-search.md).
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Keep [several explorations open side by side](discover/work-with-tabs.md) in tabs.
