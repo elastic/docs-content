@@ -15,7 +15,7 @@ type: overview
 **Discover** is the primary tool for exploring your {{product.elasticsearch}} data in {{product.kibana}}. Search and filter documents, analyze field structures, visualize patterns, and save findings to reuse later or share with dashboards. Whether investigating issues, analyzing trends, or validating data quality, **Discover** offers a flexible interface for understanding your data.
 
 :::{image} /explore-analyze/images/kibana-discover-overview.png
-:alt: Discover in ES|QL mode with two tabs, a query on the sample web logs, the fields list, a chart, the results table with a search term highlighted, and the document flyout open
+:alt: Discover in ES|QL mode with two tabs, a query on the sample web logs, the fields list, a chart of results over time, the results table with a search term highlighted, and the document flyout open
 :screenshot:
 :::
 

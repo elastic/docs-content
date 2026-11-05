@@ -22,7 +22,7 @@ To open **Discover**, find it in the navigation menu or use the [global search f
 ## What you see in Discover [discover-screen]
 
 :::{image} /explore-analyze/images/kibana-discover-overview.png
-:alt: Discover in ES|QL mode with two tabs, a query on the sample web logs, the fields list, a chart, the results table with a search term highlighted, and the document flyout open
+:alt: Discover in ES|QL mode with two tabs, a query on the sample web logs, the fields list, a chart of results over time, the results table with a search term highlighted, and the document flyout open
 :screenshot:
 :::
 
