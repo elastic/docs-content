@@ -41,7 +41,7 @@ For more information, check [#290828]({{kib-pull}}290828).
 
 **Impact**<br> Requests to the removed endpoints return a `404` error.
 
-**Action**<br> Update any scripts, integrations, or workflows that call these endpoints.
+**Action**<br> There is no public replacement. Remove calls to these endpoints, and remove `kibana.streams.getSignificantEvents`, from scripts, integrations, and workflows.
 ::::
 
 ## 9.0.0 [elastic-observability-9.0.0-breaking-changes]
