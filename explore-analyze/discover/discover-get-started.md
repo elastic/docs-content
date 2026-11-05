@@ -13,7 +13,9 @@ description: See what Discover shows by default, how you define the data to expl
 
 # How Discover works [discover-get-started]
 
-When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. You query your data, and **Discover** shows the results as a table and, when the data allows it, as a chart. To learn by running a first query, follow [Get started with {{esql}} in Discover](try-esql.md).
+When you need to look at the documents in your data, find out why something happened, or check that data arrived as expected, **Discover** is where you start. You query your data, and **Discover** shows the results as a table and, when the data allows it, as a chart.
+
+If you're new to **Discover**, this page introduces its core concepts. When you're ready to get hands-on, the [next steps](#next-steps) at the end of this page point to a tutorial and to guides for each task.
 
 To open **Discover**, find it in the navigation menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 
@@ -103,3 +105,8 @@ When a session gets you the answer, you have several ways to keep it, share it, 
 ## Troubleshooting
 
 If **Discover** asks you to add data or create a data view, refer to [Discover or Dashboards asks you to add data or create a data view](/troubleshoot/kibana/discover-dashboards-no-data-screen.md). If fields show as empty when they shouldn't, refer to [Some fields show as empty in Discover](/troubleshoot/kibana/discover-empty-fields.md).
+
+## Next steps [next-steps]
+
+- [Get started with {{esql}} in Discover](try-esql.md): Build your first query step by step.
+- [What you can do with Discover](../discover.md#what-you-can-do): Find the guide for what you want to do, from querying and shaping results to saving and sharing them.
