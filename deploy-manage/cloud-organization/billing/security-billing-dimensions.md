@@ -15,14 +15,13 @@ sub:
 
     Billing is based on the number of agent executions completed in your project over the course of a month.
   abb-free-executions: 10,000
-  abb-pricing-label: Elastic Cloud pricing table
-  abb-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
+  pricing-label: Elastic Cloud pricing table
+  pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
   wfe-anchor: security-billing-workflow-executions
   wfe-preamble: Workflows enable you to automate multi-step processes across your security operations, including alert triage, case management, enrichment, and response actions. Workflow Executions is a billing dimension for Security Serverless projects on the Security Analytics Complete tier and the Elastic AI SOC Engine (EASE) tier.
   wfe-billing-detail: Billing is based on the number of workflow executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
-  wfe-pricing-label: Elastic Cloud pricing table
-  wfe-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
+
 ---
 
 # {{elastic-sec}} Serverless billing dimensions [security-billing]
@@ -99,6 +98,6 @@ For more details about {{elastic-sec}} serverless project rates and billable ass
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
 
-## {{cps-cap}} [security-billing-cps]
+## Related billing dimensions [security-billing-related]
 
-If you use [{{cps}}](/deploy-manage/cross-project-search-config.md), charges are billed to the origin project. For how {{cps}} charges are calculated, refer to [{{cps-cap}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps).
+Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out), [support](serverless-project-billing-dimensions.md#general-serverless-billing-support), and [{{cps}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps) may also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).

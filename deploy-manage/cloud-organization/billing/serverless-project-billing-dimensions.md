@@ -72,7 +72,7 @@ Workflow usage is billed in addition to the other billing dimensions of your pro
 
 Using Elastic Managed LLMs consumes tokens and incurs token-based billing in addition to the other billing dimensions of your project. For details, refer to Elastic Managed LLMs for your project type:
 
-* [{{es-serverless}}](elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml)
+* [{{es-serverless}}](elasticsearch-billing-dimensions.md#elasticsearch-billing-elastic-managed-llms)
 * [{{es}} {{vectordb}}](vector-database-billing-dimensions.md#vector-database-billing-elastic-managed-llms)
 * [{{obs-serverless}}](elastic-observability-billing-dimensions.md#observability-billing-elastic-managed-llms)
 * [{{elastic-sec}}](security-billing-dimensions.md#security-billing-elastic-managed-llms)

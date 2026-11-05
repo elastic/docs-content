@@ -13,14 +13,13 @@ sub:
   abb-preamble: |
     Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Serverless project. Agent usage is billed in addition to VCU-based dimensions, based on the number of executions completed in your project over the course of a month.
   abb-free-executions: 1,000
-  abb-pricing-label: Elasticsearch Serverless pricing page
-  abb-pricing-url: https://www.elastic.co/pricing/serverless-search
+  pricing-label: Elasticsearch Serverless pricing page
+  pricing-url: https://www.elastic.co/pricing/serverless-search
   wfe-anchor: elasticsearch-billing-workflow-executions
   wfe-preamble: Workflows enable you to automate multi-step processes within your Elasticsearch project.
   wfe-billing-detail: In addition to the VCU-based billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
-  wfe-pricing-label: Elasticsearch Serverless pricing page
-  wfe-pricing-url: https://www.elastic.co/pricing/serverless-search
+
 ---
 
 # {{es-serverless}} billing dimensions [elasticsearch-billing]
@@ -48,7 +47,7 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
   Unlike ingest, Search VCU billing does not scale to zero during idle periods. A baseline of search capacity is always provisioned so your data remains instantly queryable, and you are billed a reduced rate for this baseline when no search activity is occurring. The baseline is determined primarily by your Search Power setting and your [search-ready](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#elasticsearch-manage-project-search-ai-lake-settings) dataset size.
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities. ML VCUs are a factor of the models deployed and number of ML operations such as inference for search and ingest. ML VCUs are typically consumed for generating embeddings during ingestion and during semantic search or reranking.
-* **Tokens:** [The Elastic Inference Service](https://www.elastic.co/docs/explore-analyze/elastic-inference/eis) is charged based on tokens used with machine learning models. For embeddings and rerankers, usage is billed per million input tokens sent to the models. For LLMs, this is either per 1 million input or per 1 million output tokens. Elastic Managed LLMs can power AI Search features such as Agent Builder and AI Assistant for Search, as well as features in the Security and Observability products, and are enabled by default.
+* **Tokens:** [The Elastic Inference Service](https://www.elastic.co/docs/explore-analyze/elastic-inference/eis) is charged based on tokens used with machine learning models. For embeddings and rerankers, usage is billed per million input tokens sent to the models. For LLMs, this is either per 1 million input or per 1 million output tokens. For details about Elastic Managed LLMs, refer to [](#elasticsearch-billing-elastic-managed-llms).
 
 ## Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
 
@@ -104,6 +103,10 @@ When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasti
 :::{include} _snippets/workflow-executions-billing.md
 :::
 
-## {{cps-cap}} [elasticsearch-billing-cps]
+## Elastic Managed LLMs [elasticsearch-billing-elastic-managed-llms]
 
-If you use [{{cps}}](/deploy-manage/cross-project-search-config.md), charges are billed to the origin project. For how {{cps}} charges are calculated, refer to [{{cps-cap}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps).
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) can power AI features in {{es-serverless}} projects, such as Agent Builder and AI Assistant, and are enabled by default. Using Elastic Managed LLMs consumes tokens and incurs token-based billing in addition to the other billing dimensions of your project.
+
+## Related billing dimensions [elasticsearch-billing-related]
+
+Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out), [support](serverless-project-billing-dimensions.md#general-serverless-billing-support), and [{{cps}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps) might also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).

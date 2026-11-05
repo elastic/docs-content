@@ -11,16 +11,15 @@ description: >-
 sub:
   abb-anchor: vector-database-billing-agent-builder-executions
   abb-preamble: |
-    Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your {{es}} {{vectordb}} project. Agent usage is billed in addition to the other billing dimensions of your project, based on the number of executions completed in your project over the course of a month.
+    Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Vector Database project. Agent usage is billed in addition to the other billing dimensions of your project, based on the number of executions completed in your project over the course of a month.
   abb-free-executions: 1,000
-  abb-pricing-label: "{{es}} {{vectordb}} pricing page"
-  abb-pricing-url: https://cloud.elastic.co/pricing/serverless?s=vectordb
+  pricing-label: "Elasticsearch Vector Database pricing page"
+  pricing-url: https://cloud.elastic.co/pricing/serverless?s=vectordb
   wfe-anchor: vector-database-billing-workflow-executions
-  wfe-preamble: Workflows enable you to automate multi-step processes within your {{es}} {{vectordb}} project.
+  wfe-preamble: Workflows enable you to automate multi-step processes within your Elasticsearch Vector Database project.
   wfe-billing-detail: In addition to the other billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
-  wfe-pricing-label: "{{es}} {{vectordb}} pricing page"
-  wfe-pricing-url: https://cloud.elastic.co/pricing/serverless?s=vectordb
+
 ---
 
 # {{es}} {{vectordb}} billing dimensions [vector-database-billing]
@@ -80,6 +79,4 @@ There is no separate control to pause or make a project unavailable. To stop inf
 
 ## Related billing dimensions [vector-database-billing-related]
 
-Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out) and [support](serverless-project-billing-dimensions.md#general-serverless-billing-support) may also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).
-
-If you use [{{cps}}](/deploy-manage/cross-project-search-config.md), charges are billed to the origin project. For how those charges are calculated, refer to [{{cps-cap}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps).
+Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out), [support](serverless-project-billing-dimensions.md#general-serverless-billing-support), and [{{cps}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps) might also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).
