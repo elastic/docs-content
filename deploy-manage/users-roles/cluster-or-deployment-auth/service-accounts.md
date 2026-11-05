@@ -69,7 +69,7 @@ On {{serverless-short}}, user-managed service accounts can only be used within {
 To manage service accounts and use them in your workloads:
 
 - [Create and manage service accounts in {{kib}}](manage-service-accounts-in-kibana.md).
-- {applies_to}`{stack: ga 9.6+, serverless: unavailable}` [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
+- {applies_to}`serverless: unavailable` [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
 
 To use service accounts with {{kib}} Workflows, refer to [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
 
