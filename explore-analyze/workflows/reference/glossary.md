@@ -162,7 +162,7 @@ A workflow definition that Elastic ships and installs automatically to power pro
 
 ### Observable [workflows-glossary-observable]
 
-In Cases, an indicator of compromise (IP, hash, domain, URL). Added with `cases.addObservables`. Refer to [`cases.addObservables`](kibana://reference/workflows/cases-steps.md#cases-addobservables).
+In Cases, an indicator of compromise (IP, hash, domain, URL). Added with `cases.addObservables`. Refer to `cases.addObservables`.
 
 ### On-failure [workflows-glossary-on-failure]
 

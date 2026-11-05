@@ -161,7 +161,7 @@ serverless: preview
 
 Cases triggers start a workflow when a case changes, such as when a case is created, updated, or changes status, or when comments or attachments are added. Use them to react to case activity without polling the Cases API.
 
-For the list of Cases triggers and the event data each one passes to the workflow, refer to [Cases workflow triggers](kibana://reference/workflows/cases-triggers.md).
+For the list of Cases triggers and the event data each one passes to the workflow, refer to Cases workflow triggers.
 
 To run a workflow only for some cases, filter on the event data in `on.condition`. For example, this trigger only fires for {{elastic-sec}} cases:
 

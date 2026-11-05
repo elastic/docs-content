@@ -37,14 +37,14 @@ For an alphabetical catalog of every step type, refer to the [Step type index](/
 
 | Intent | Step |
 |---|---|
-| Create a case | [`cases.createCase`](kibana://reference/workflows/cases-steps.md#cases-createcase) |
-| Look up a case | [`cases.getCase`](kibana://reference/workflows/cases-steps.md#cases-getcase), [`cases.findCases`](kibana://reference/workflows/cases-steps.md#cases-findcases), [`cases.getCasesByAlertId`](kibana://reference/workflows/cases-steps.md#cases-getcasesbyalertid) |
-| Change status, severity, or tags | [`cases.updateCase`](kibana://reference/workflows/cases-steps.md#cases-updatecase) or the field-specific `set*` steps |
-| Attach alerts or observables | [`cases.addAlerts`](kibana://reference/workflows/cases-steps.md#cases-addalerts), [`cases.addObservables`](kibana://reference/workflows/cases-steps.md#cases-addobservables) |
-| Attach comments, alerts, dashboards, and more | [`cases.addAttachments`](kibana://reference/workflows/cases-steps.md#cases-addattachments) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
-| Add a comment | [`cases.addComment`](kibana://reference/workflows/cases-steps.md#cases-addcomment) |
-| Close the case | [`cases.closeCase`](kibana://reference/workflows/cases-steps.md#cases-closecase) |
-| Assign or unassign | [`cases.assignCase`](kibana://reference/workflows/cases-steps.md#cases-assigncase), [`cases.unassignCase`](kibana://reference/workflows/cases-steps.md#cases-unassigncase) |
+| Create a case | `cases.createCase` |
+| Look up a case | `cases.getCase`, `cases.findCases`, `cases.getCasesByAlertId` |
+| Change status, severity, or tags | `cases.updateCase` or the field-specific `set*` steps |
+| Attach alerts or observables | `cases.addAlerts`, `cases.addObservables` |
+| Attach comments, alerts, dashboards, and more | `cases.addAttachments` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
+| Add a comment | `cases.addComment` |
+| Close the case | `cases.closeCase` |
+| Assign or unassign | `cases.assignCase`, `cases.unassignCase` |
 
 The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.updateCase`, `kibana.addCaseComment`) are deprecated. Use the `cases.*` replacements. Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md).
 
