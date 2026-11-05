@@ -50,7 +50,9 @@ Configuring an agent's pre-execution workflows requires a role that grants wildc
 Changing the space setting works differently: it requires the `manage_advanced_settings` privilege, which you can grant through the **Advanced Settings** [feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 :::
 
-A pre-execution workflow runs before the agent calls the model. It doesn't run before every LLM call or tool call inside that response. When the agent resumes after a [human-in-the-loop prompt](chat.md#human-in-the-loop-prompts), the workflow runs again for that same user message. If the workflow fails, the agent run stops.
+A pre-execution workflow runs before the agent calls the model. It doesn't run before every LLM call or tool call inside that response. When the agent resumes after a [human-in-the-loop prompt](chat.md#human-in-the-loop-prompts), the workflow runs again for that same user message. {{agent-builder}} waits up to 120 seconds for each workflow to finish. If the workflow fails, or {{agent-builder}} can't find the execution after that wait, the agent run stops. A workflow that is still running after 120 seconds, or that pauses for input with `waitForInput` or `waitForApproval`, doesn't hold the agent back: {{agent-builder}} ignores its output and continues the run. Don't use pausing steps in a pre-execution workflow.
+
+By default, each pre-execution workflow runs as the user who sent the message, so its steps can do only what that user's privileges allow. If the workflow is private, that user must own it or have **Executor** or **Editor** access to it. Otherwise the workflow fails and the agent run stops.
 
 Pre-execution workflows can:
 
@@ -120,18 +122,18 @@ Disabling a workflow doesn't remove it from the agents or spaces that use it. Un
 
 ### Workflow inputs [pre-execution-workflow-inputs]
 
-Declare inputs as described in [`inputs`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs). Inside the workflow, reference an input as `{{ inputs.prompt }}`.
+Declare the inputs you want the workflow to receive under its manual trigger, not at the workflow root. {{agent-builder}} doesn't detect `inputs` declared at the root of a workflow saved in 9.5 or later. Refer to [`inputs`](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs). Inside the workflow, reference an input as `{{ inputs.prompt }}`.
 
 {{agent-builder}} can send these inputs:
 
-| Input | Contains |
-|---|---|
-| `prompt` | The user message for this run, or an empty string when there's none, such as when a resumed run only answers a human-in-the-loop prompt. |
-| `conversation_id` {applies_to}`stack: ga 9.6+` | The conversation ID. If the run doesn't save the conversation, the ID might not match a saved conversation. |
-| `agent_id` {applies_to}`stack: ga 9.6+` | The agent ID. Omitted when the run has no agent ID. |
-| `round_execution_index` {applies_to}`stack: ga 9.6+` | `0` the first time the agent runs for a user message. Greater than `0` each time the agent resumes after a human-in-the-loop prompt. |
+| Input | Type | Contains |
+|---|---|---|
+| `prompt` | `string` | The user message for this run, or an empty string when there's none, such as when a resumed run only answers a human-in-the-loop prompt. |
+| `conversation_id` {applies_to}`stack: ga 9.6+` | `string` | The conversation ID. If the run doesn't save the conversation, the ID might not match a saved conversation. |
+| `agent_id` {applies_to}`stack: ga 9.6+` | `string` | The agent ID. Omitted when the run has no agent ID. |
+| `round_execution_index` {applies_to}`stack: ga 9.6+` | `integer` | `0` the first time the agent runs for a user message. Greater than `0` each time the agent resumes after a human-in-the-loop prompt. |
 
-{{agent-builder}} always sends `prompt`, and sends `conversation_id` whenever the run has one, even if the workflow doesn't declare it. It sends `agent_id` and `round_execution_index` only when the workflow declares them.
+{{agent-builder}} always sends `prompt`, and sends `conversation_id` whenever the run has one, even if the workflow doesn't declare it. It sends `agent_id` and `round_execution_index` only when the workflow declares them under its manual trigger.
 
 If the workflow declares its inputs with `additionalProperties: false`, declare every input that {{agent-builder}} sends. Otherwise input validation fails, the workflow execution fails, and the agent run stops.
 
@@ -140,11 +142,11 @@ If the workflow declares its inputs with `additionalProperties: false`, declare 
 Starting in 9.6, {{agent-builder}} also sends `conversation_id`. Before you upgrade, add `conversation_id` to any pre-execution workflow that sets `additionalProperties: false`. Otherwise every message to the agents that use the workflow fails.
 :::
 
-{applies_to}`stack: ga 9.6+` When {{agent-builder}} starts the workflow, [`execution.triggeredBy`](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution) is `agent-builder-hook`. To skip runs that someone started directly, check that value in the workflow. In earlier versions, the value is `manual`.
+{applies_to}`stack: ga 9.6+` When {{agent-builder}} starts the workflow, [`execution.triggeredBy`](/explore-analyze/workflows/reference/context-variables.md#workflows-ctx-execution) is `agent-builder-hook`. To reject runs that someone started directly, check that value in the workflow. This is useful when the workflow uses `settings.run_as` to run with a service account's privileges. In earlier versions, the value is `manual`.
 
 ### Workflow outputs [pre-execution-workflow-outputs]
 
-{{agent-builder}} reads the output of the last top-level step that ran. If that step contains other steps, such as `if` or `foreach`, {{agent-builder}} uses the output only when exactly one nested step produced output, and ignores every output field otherwise. To make sure {{agent-builder}} reads the output, end the workflow with a top-level [`workflow.output`](/explore-analyze/workflows/steps/composition.md#workflow-output) step, which is in technical preview.
+{{agent-builder}} reads the output of the last top-level step that ran, including a top-level step with an `if` condition. It doesn't merge outputs from multiple steps or loops. To return output fields reliably, end the workflow with a top-level [`data.set`](/explore-analyze/workflows/steps/data.md#data-set) step or a top-level [`workflow.output`](/explore-analyze/workflows/steps/composition.md#workflow-output) step {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`.
 
 The output can include these fields:
 
@@ -153,10 +155,12 @@ The output can include these fields:
 | `new_prompt` | A non-empty value replaces the user message that the agent receives. Later workflows receive this text as `prompt`. |
 | `abort` | `true` stops the agent run. |
 | `abort_message` | Any non-empty value stops the agent run, even when `abort` is `false`. The conversation shows the message in a **Conversation Aborted** notice. Without a message, the notice says that the workflow stopped the run. |
-| `model_context` {applies_to}`stack: ga 9.6+` | Text that the model receives as a separate message after the user message. The conversation doesn't show it. |
-| `workflow_context` {applies_to}`stack: ga 9.6+` | Data for the agent's post-execution workflows. The model never receives it. |
+| `model_context` {applies_to}`stack: ga 9.6+` | Text that the model receives as a separate message after the user message. The chat UI doesn't display it, though {{agent-builder}} stores it on the conversation record. |
+| `workflow_context` {applies_to}`stack: ga 9.6+` | Data for the agent's post-execution workflows. The model never receives it, but {{agent-builder}} stores it on the conversation record. |
 
 Each user message and the agent's response to it form a round. {{agent-builder}} stores `model_context` with the round, so the model keeps receiving it later in the conversation. When {{agent-builder}} summarizes older rounds to shorten a long conversation, the summary leaves `model_context` out.
+
+Because {{agent-builder}} stores both values on the conversation record, anyone who can read the conversation can read them through the API. Don't put secrets in either one.
 
 A workflow assigned under **Post-execution workflow** in the agent's **Settings** receives the stored `workflow_context` when it declares a `workflow_context` input.
 
@@ -180,24 +184,19 @@ serverless: ga
 * The value is an object keyed by namespace, a name you choose to group your data, such as `support.policy`. Each namespace has a `version` and a `data` object.
   * `version` is a positive integer.
   * `data` is a JSON object. Nested objects and arrays can go eight levels deep, counting `data` as the first level.
-* A namespace name can be 1 to 256 characters long, and the object can contain at most 16 namespaces.
-* The whole `workflow_context` JSON, including namespaces from earlier workflows, can be at most 65,536 bytes.
+* A namespace name can be 1 to 256 characters long.
+* The whole `workflow_context` JSON, including namespaces from earlier workflows, can contain at most 16 namespaces and be at most 65,536 bytes.
 * If any namespace breaks a rule, {{agent-builder}} ignores that workflow's whole `workflow_context`. Namespaces that earlier workflows stored stay in place.
 
 When more than one workflow returns `workflow_context`, a later workflow replaces a namespace with the same name and keeps the other namespaces. If the combined object would exceed a limit, {{agent-builder}} ignores the later workflow's `workflow_context` and keeps the earlier one.
 
 #### When the agent resumes [pre-execution-workflow-resume]
 
-```{applies_to}
-stack: ga 9.6+
-serverless: ga
-```
+When the agent resumes after a [human-in-the-loop prompt](chat.md#human-in-the-loop-prompts), pre-execution workflows run again:
 
-When the agent resumes after a human-in-the-loop prompt, the workflow runs again, but {{agent-builder}} keeps `model_context` and `workflow_context` only from the first run of the round. In the later run:
-
-* The workflow can still stop the agent run.
-* {{agent-builder}} ignores `model_context` and `workflow_context`.
-* A `new_prompt` doesn't change the message the agent answers, which stays the original user message. Later workflows still receive the `new_prompt` text as `prompt`.
+* The workflow can still stop the agent run with `abort` or `abort_message`.
+* {applies_to}`stack: ga 9.6+` {{agent-builder}} keeps `model_context` and `workflow_context` from the first run of the round (`round_execution_index: 0`) and ignores any that a later run returns. To skip steps that only prepare initial context, declare `round_execution_index` and add `if: "inputs.round_execution_index : 0"` to those steps.
+* {applies_to}`stack: ga 9.6+` A `new_prompt` doesn't change the message the agent answers, which stays the original user message.
 
 ### Example: Add flight delay context before the agent answers [pre-execution-workflow-example]
 
@@ -206,7 +205,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-The following workflow searches the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) for delayed flights. It gives the model the current count, and stores the count for the agent's post-execution workflows.
+The following workflow searches the [{{kib}} sample flight data](/manage-data/ingest/sample-data.md#add-sample-data-sets) for delayed flights. It gives the model the current count, and stores the count for the agent's post-execution workflows.
 
 ```yaml
 version: "1"
@@ -217,11 +216,12 @@ triggers:
   - type: manual
     inputs:
       properties:
-        prompt: <1>
-          type: string
+        round_execution_index: <1>
+          type: integer
 steps:
   - name: find_delays
     type: elasticsearch.search
+    if: "inputs.round_execution_index : 0" <2>
     with:
       index: "kibana_sample_data_flights"
       query:
@@ -229,23 +229,25 @@ steps:
           FlightDelayMin:
             gt: 60
       size: 0
-  - name: return_context <2>
-    type: workflow.output
+  - name: return_context <3>
+    type: data.set
+    if: "inputs.round_execution_index : 0"
     with:
-      model_context: | <3>
+      model_context: | <4>
         There are currently {{ steps.find_delays.output.hits.total.value }} flights delayed by more than an hour in kibana_sample_data_flights.
         Use this number when the user asks about delays.
       workflow_context:
-        flights.delays: <4>
+        flights.delays: <5>
           version: 1
           data:
             index: "kibana_sample_data_flights"
             delayed_flights: "{{ steps.find_delays.output.hits.total.value }}"
 ```
-1. The workflow declares only the input it needs. Because it doesn't set `additionalProperties: false`, {{agent-builder}} can send other inputs without failing validation.
-2. `workflow.output` is the last top-level step, so {{agent-builder}} reads its output.
-3. The model receives this text as a separate message. The user doesn't see it.
-4. A namespace you choose. Post-execution workflows read this data from their `workflow_context` input.
+1. Declares `round_execution_index` so {{agent-builder}} sends it. Because the trigger doesn't set `additionalProperties: false`, {{agent-builder}} can still send `prompt` and `conversation_id` without failing validation.
+2. Runs the search only on the first execution for the user message, and skips it when the agent resumes after a human-in-the-loop prompt.
+3. `data.set` is the last top-level step that runs, so {{agent-builder}} reads its output. You can also use `workflow.output`.
+4. The model receives this text as a separate message. The chat UI doesn't display it.
+5. A namespace you choose. Post-execution workflows read this data from their `workflow_context` input.
 
 ## Use the `ai.agent` step [use-ai-agent-workflow-step]
 
