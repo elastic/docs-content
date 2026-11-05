@@ -433,7 +433,7 @@ For example, the following **What went wrong?** dialog has one option selected a
 
 :::{image} images/agent-builder-rate-response-dialog.png
 :screenshot:
-:alt: What went wrong? dialog with the Incomplete option selected, a comment in the Add comment field, the notice that your comment and metadata will be shared with Elastic, and Cancel and Submit buttons
+:alt: The What went wrong? dialog with the Incomplete option selected and a comment entered
 :width: 400px
 :::
 
