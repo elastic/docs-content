@@ -56,6 +56,10 @@ Your new account is automatically subscribed to the Enterprise subscription leve
 ::::
 
 
+## Troubleshooting
+
+https://docs.redhat.com/en/documentation/openshift_dedicated/4/html/planning_your_environment/gcp-ccs#ccs-gcp-customer-procedure-wif_gcp-ccs
+
 
 ## Changes to your billing account [ec-billing-gcp-account-change] 
 
