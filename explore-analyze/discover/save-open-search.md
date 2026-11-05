@@ -17,12 +17,7 @@ When an exploration is worth coming back to, save it as a Discover session. A sa
 
 ## Before you begin [save-search-requirements]
 
-To save Discover sessions, you need the **All** privilege for the **Discover** feature in {{product.kibana}}. If you don't have it, the **Save** button isn't visible. For more information, refer to [Read-only access](#discover-read-only-access).
-
-
-### Read-only access [discover-read-only-access]
-
-If you don’t have sufficient privileges to save Discover sessions, **Discover** shows a **Read only** badge in the header, as in the following image, and the **Save** button isn't visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
+To save Discover sessions, you need the **All** privilege for the **Discover** feature in {{product.kibana}}. If you don't have it, **Discover** shows a **Read only** badge in the header, as in the following image, and the **Save** button isn't visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 :::{image} /explore-analyze/images/kibana-read-only-badge.png
 :alt: Example of Discover's read only access indicator in the {{product.kibana}} header
