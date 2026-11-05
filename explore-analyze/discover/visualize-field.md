@@ -23,17 +23,27 @@ When a field in the Discover fields list looks interesting, you can open it in *
 
 1. In the list of fields, find an aggregatable field. For example, in the [sample ecommerce data](/manage-data/ingest/sample-data.md), you can look for `day_of_week`.
 
-   ![Top values for the day_of_week field in the sample ecommerce data](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
+   :::{image} /explore-analyze/images/kibana-discover-day-of-week.png
+   :alt: Top values for the day_of_week field in the sample ecommerce data
+   :screenshot:
+   :width: 60%
+   :::
 
 2. In the popup, select **Visualize**.
 
    {{kib}} creates a **Lens** visualization best suited for this field. For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geoip-icon.png "kibana-geoip-icon =4%x4%")), your data appears on a map instead.
 
-   ![Map containing documents](/explore-analyze/images/kibana-discover-maps.png "")
+   :::{image} /explore-analyze/images/kibana-discover-maps.png
+   :alt: Map containing documents
+   :screenshot:
+   :::
 
 3. Optional: In **Lens**, from the **Available fields** list, drag more fields onto the workspace to refine the visualization. In this example, adding the `manufacturer.keyword` field automatically adds a breakdown of the top values to the visualization.
 
-   ![Visualization that opens from Discover based on your data](/explore-analyze/images/kibana-discover-from-visualize.png "")
+   :::{image} /explore-analyze/images/kibana-discover-from-visualize.png
+   :alt: Visualization that opens from Discover based on your data
+   :screenshot:
+   :::
 
 4. To add the visualization to a dashboard or keep it in the Visualize library for later use, save it.
 
