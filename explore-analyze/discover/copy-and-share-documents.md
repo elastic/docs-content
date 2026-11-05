@@ -9,7 +9,7 @@ type: how-to
 description: Copy results from Discover as text, JSON, or Markdown, or send a link that reopens the same view or the same document in Discover.
 ---
 
-# Copy results and share links to documents
+# Copy results and share links to documents in Discover
 
 When you want to use results outside of **Discover**, you can copy them to your clipboard. When you want someone else to see what you see, you can send a link that reopens the same view or the same document.
 

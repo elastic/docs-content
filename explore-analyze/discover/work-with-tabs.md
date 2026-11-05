@@ -9,7 +9,7 @@ type: how-to
 description: Run several explorations side by side in Discover tabs, then open, duplicate, rename, reorder, close, and restore tabs as you work.
 ---
 
-# Run multiple explorations with tabs
+# Run multiple explorations with tabs in Discover
 
 **Discover** supports multiple tabs to help you explore different aspects of your data simultaneously. Each tab maintains its own independent state, including the query ({{esql}} or classic mode), time range, filters, selected data source, columns and sort order you defined, and the active [context-aware experience](discover-get-started.md#context-aware-discover).
 

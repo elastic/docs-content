@@ -9,7 +9,7 @@ type: how-to
 description: Compare the field values of several results side by side in Discover to spot what differs between them, then adjust how differences show.
 ---
 
-# Compare documents
+# Compare documents in Discover
 
 To spot what differs between results, such as two log lines from the same service, compare their field values next to each other.
 

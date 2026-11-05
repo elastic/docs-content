@@ -9,7 +9,7 @@ type: how-to
 description: Narrow the documents in a data view to the ones you need by searching with Kibana Query Language (KQL) or Lucene and adding filters in classic mode.
 ---
 
-# Search and filter with KQL, Lucene, and filters in classic mode
+# Search and filter with KQL, Lucene, and filters in Discover's classic mode
 
 In classic mode, you find the documents you need by searching a data view with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), two search syntaxes, and narrowing the results with filters that you set in the interface. The chart and the results table update to show only the matching documents.
 

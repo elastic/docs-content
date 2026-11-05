@@ -1,4 +1,5 @@
 ---
+navigation_title: Search for relevance
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/discover-search-for-relevance.html
 applies_to:
@@ -10,7 +11,7 @@ products:
 description: Sort results by relevance score in Discover to see the documents that best match your query first, in classic mode or with an ES|QL query.
 ---
 
-# Search for relevance [discover-search-for-relevance]
+# Sort Discover results by relevance [discover-search-for-relevance]
 
 {{product.elasticsearch}} assigns a relevancy score to each document based on how well it matches your query. Sorting by this score helps you identify the most relevant results quickly. To put the best matches at the top of your results in **Discover**, sort by this score.
 

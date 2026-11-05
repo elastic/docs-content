@@ -9,7 +9,7 @@ type: how-to
 description: Check which fields your data has and their most frequent values, add fields as columns, and break the chart down by a field in Discover.
 ---
 
-# Explore the fields in your data
+# Explore fields in Discover
 
 When you open **Discover** on data you don't know yet, the fields list shows what that data contains. You can check the most frequent values of a field, break the chart down by a field, and add the fields you need as columns in the results table.
 

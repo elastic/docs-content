@@ -1,4 +1,5 @@
 ---
+navigation_title: Run a pattern analysis
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/run-pattern-analysis-discover.html
 applies_to:
@@ -10,7 +11,7 @@ products:
 description: Detect patterns in unstructured data with pattern analysis in Discover. Categorize log messages, identify common structures, and filter noise during troubleshooting.
 ---
 
-# Run a pattern analysis on your log data [run-pattern-analysis-discover]
+# Run a pattern analysis on your log data in Discover [run-pattern-analysis-discover]
 
 Pattern analysis helps you find patterns in unstructured log messages by performing categorization analysis on text fields. It creates categories based on message structures, displays their distribution in a chart, and provides example documents for each pattern. This makes it easier to identify common log patterns, filter out noise, and focus on anomalous messages during troubleshooting.
 

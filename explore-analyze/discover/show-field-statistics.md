@@ -1,4 +1,5 @@
 ---
+navigation_title: View field statistics
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/show-field-statistics.html
 applies_to:
@@ -10,7 +11,7 @@ products:
 description: Explore field statistics in Discover to view distributions, top values, and data quality metrics. Analyze numeric ranges, geographic coordinates, and field cardinality.
 ---
 
-# View field statistics [show-field-statistics]
+# View field statistics in Discover [show-field-statistics]
 
 The **Field statistics** view in **Discover** provides statistical summaries and visualizations of your data fields. View distributions, top values, minimum and maximum ranges, and cardinality to quickly understand your data quality and patterns. Use field statistics to identify data issues, understand field characteristics, and discover insights before building visualizations.
 
