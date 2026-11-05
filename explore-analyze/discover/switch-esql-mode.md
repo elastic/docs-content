@@ -15,17 +15,17 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 
 You can switch a tab between the two modes at any time. When you move to {{esql}} mode, **Discover** converts your KQL or Lucene search into an {{esql}} query. When you move back to classic mode, you keep the data you were querying but start with an empty search.
 
+## Before you begin
+
+- Open **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
+- Switching modes applies only to the selected [Discover tab](work-with-tabs.md). To switch several tabs, repeat the operation for each tab.
+
 The mode that Discover opens in by default depends on your version:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Discover opens in {{esql}} mode.
 - {applies_to}`stack: ga 9.0-9.5` Discover opens in classic mode.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers the last query mode you used in your browser. New Discover tabs and sessions open in that mode.
-
-## Before you begin
-
-- Open **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
-- Switching modes applies only to the selected [Discover tab](work-with-tabs.md). To switch several tabs, repeat the operation for each tab.
 
 ## Switch to Discover's {{esql}} mode [switch-discover-query-mode]
 
