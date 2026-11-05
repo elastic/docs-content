@@ -13,7 +13,7 @@ products:
   - id: elastic-stack
 ---
 
-# Content crawlers [content-connectors]
+# Content crawlers
 
 Elastic's content crawlers allow you to extract, transform, index, and sync data from third-party applications including GitHub, Jira, Teams, Google Drive, Slack, email, and more ([view all connectors](elasticsearch://reference/search-connectors/index.md)).
 
