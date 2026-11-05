@@ -15,6 +15,7 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 
 ## Before you begin
 
+- Make sure **Discover** is in {{esql}} mode. Classic mode doesn't support this functionality. To switch, refer to [Switch to Discover's {{esql}} mode](switch-esql-mode.md#switch-discover-query-mode).
 - You need a [Platinum or Enterprise subscription](https://www.elastic.co/subscriptions) or an active trial for Elastic Stack. On Elastic Cloud Serverless, `CHANGE_POINT` is available for all project types.
 - To analyze your own data, you need a date field and values that you can aggregate into a numeric metric. The `CHANGE_POINT` command requires at least 22 values per series.
 - To follow the example, [add the **Sample web logs** data](/manage-data/ingest/sample-data.md).
@@ -24,9 +25,8 @@ Use an {{esql}} [`CHANGE_POINT`](elasticsearch://reference/query-languages/esql/
 In this example, you use the sample web logs data to detect changes in the average number of bytes transferred for each destination country.
 
 1. Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. If **Discover** isn't in {{esql}} mode, switch to it. Refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md#switch-discover-query-mode).
-3. Set the time range to **All time**, or select a range that covers at least one month of the sample data.
-4. Enter the following query:
+2. Set the time range to **All time**, or select a range that covers at least one month of the sample data.
+3. Enter the following query:
 
    ```esql
    FROM kibana_sample_data_logs
@@ -37,7 +37,7 @@ In this example, you use the sample web logs data to detect changes in the avera
 
    The query calculates the average number of bytes transferred each day for every destination country, then returns the detected change points.
 
-5. Select **Search**.
+4. Select **Search**.
 
    Discover shows a separate chart for each destination country with a detected change point. The results table lists the detected changes. A lower p-value indicates a more significant change.
 

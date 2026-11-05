@@ -13,17 +13,19 @@ description: Ask an AI agent to analyze the full dataset behind your Discover ES
 
 If you want to know what is behind your {{esql}} results without writing the aggregation queries yourself, you can ask an AI agent to analyze them. With [{{agent-builder}}](../ai-features/elastic-agent-builder.md), the [`discover-data-analysis` skill](../ai-features/agent-builder/builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) runs aggregation queries against the full dataset behind your current view, charts the main finding, and proposes drill-down queries you can run in a new tab.
 
-This feature is available only when **Discover** is in [{{esql}} mode](use-esql.md). To write or fix the query itself with AI, use the [AI assistance in the {{esql}} editor](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance).
+## Before you begin
 
-To start an analysis:
+- Make sure **Discover** is in {{esql}} mode. Classic mode doesn't support this functionality. To switch, refer to [Switch to Discover's {{esql}} mode](switch-esql-mode.md#switch-discover-query-mode).
+- Run a query so results are loaded in the table.
 
-1. Switch to {{esql}} mode and run a query so results are loaded in the table.
-2. Select the **AI Agent** button in the {{kib}} header, or press {kbd}`cmd+;` (Mac) / {kbd}`ctrl+;` (Windows and Linux), to open the agent chat.
+## Start an analysis
+
+1. Select the **AI Agent** button in the {{kib}} header, or press {kbd}`cmd+;` (Mac) / {kbd}`ctrl+;` (Windows and Linux), to open the agent chat.
 
    The agent automatically receives your current query, columns, sample rows, and time range as context.
 
-3. Ask the agent to analyze your data. For example, prompt it with `analyze this data` or a more specific question.
-4. Review the agent's findings, the inline visualization, and the suggested drill-down queries.
+2. Ask the agent to analyze your data. For example, prompt it with `analyze this data` or a more specific question.
+3. Review the agent's findings, the inline visualization, and the suggested drill-down queries.
 
 You can also ask the agent for follow-up analyses, including correlations between fields, time-over-time comparisons, and field statistics for specific columns.
 
@@ -43,4 +45,5 @@ If your query doesn't match any of those experiences, the agent infers the analy
 ## Related pages
 
 - [Discover tables in chat](../ai-features/agent-builder/agent-builder-discover-tables.md)
+- [AI assistance in the {{esql}} editor](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-ai-assistance): Write or fix the query itself with AI.
 - [How Discover works](discover-get-started.md)
