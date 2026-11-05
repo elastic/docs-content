@@ -1,19 +1,20 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
-description: Learn how to explore and interact with Kibana dashboards using filters, time ranges, and controls to uncover insights in your data.
+description: Use KQL queries, filter pills, time ranges, and controls to focus a dashboard on specific data, then inspect the data and requests behind each panel.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
-# Exploring dashboards [_use_and_filter_dashboards]
+# Inspect and filter a dashboard [_use_and_filter_dashboards]
 
-{{product.kibana}} dashboards support filtering, time range adjustments, and interactive controls that let you focus on specific data segments or time periods. Use these interactive features to drill into your data, compare metrics across different dimensions, and uncover insights that matter to your analysis.
+To focus a dashboard on specific data or a specific period, filter it with a {{kib}} Query Language (KQL) query, filter pills, a time range, or dashboard controls. These options help you drill into your data, compare metrics across different dimensions, and find the insights that matter to your analysis.
 
-This page covers the main ways to explore dashboard data: using Kibana Query Language (KQL) queries, filter pills, time ranges, and dashboard controls. You'll also learn how to view underlying data and switch between different display modes.
+You can also inspect the data and requests behind a panel, and view a dashboard in full screen or maximize a single panel.
 
 
 
@@ -26,12 +27,15 @@ This page covers the main ways to explore dashboard data: using Kibana Query Lan
 * **Controls**, that dashboard creators can add to help viewers filter on specific values.
 * **Filter pills**, that you can add and combine by clicking on specific parts of the dashboard visualizations, or by defining conditions manually from the filter editor. The filter editor is a good alternative if you’re not comfortable with using KQL expressions in the main query bar.
 * View the data of a panel and the requests used to build it.
+* Open the data behind a panel in **Discover**.
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-On {{esql}} visualizations and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command, {icon}`bolt` **Fast mode** can return faster, estimated results. {{es}} still returns exact results when sampling would not speed up the query. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+On {{esql}} visualizations, {{esql}}-based Discover sessions, [custom panels](/explore-analyze/visualize/custom-panels.md) that have an {{esql}} query, and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command, {icon}`bolt` **Fast mode** can return faster, estimated results. {{es}} still returns exact results when sampling would not speed up the query. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Panels where {{es}} applied approximation show a {icon}`bolt` badge in the panel header. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 :::
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
@@ -47,7 +51,6 @@ You can use KQL to create complex queries that filter your dashboard data. For e
 :applies_to: {"stack": "preview 9.2", "serverless": "unavailable"}
 When working with large datasets, complex KQL queries might cause dashboards to load slowly. In versions 9.2 and later, you can [send long-running searches to the background](../discover/background-search.md) and continue working on other tasks while the data loads.
 :::
-
 
 ### Use filter pills [_use_filter_pills]
 
@@ -231,6 +234,24 @@ When a custom time range is active for a single panel, it is indicated in the pa
 
 You can view it in more detail and edit it by clicking the filter.
 
+### Open the data behind a panel in Discover [explore-panel-data-in-discover]
+
+If a panel raises a question that the dashboard can't answer, you can open the data behind it in **Discover** and work with the individual documents. The option to use depends on the panel type. For all of them, you need at least **Read** access to the **Discover** feature.
+
+* **Lens visualizations**: Open the panel menu and select **Explore in Discover**. **Discover** opens with the panel's data, and with the dashboard's filters, query, and time range applied. On {{esql}} panels, {{kib}} turns the dashboard filters and query into a `WHERE` clause and drops filters that {{esql}} can't express.
+
+    The option doesn't appear when {{kib}} can't trace a chart back to one set of documents, for example when the chart has several data layers or a time shift. While you edit a visualization, you can also [explore its data in Discover](../visualize/lens.md#explore-lens-data-in-discover) from the editor toolbar.
+
+* **Discover sessions**: In view mode, open the panel menu and select **Open in Discover**. **Discover** opens the session on the tab that the panel displays. If the session exists only on the dashboard, **Discover** opens with the panel's query, filters, and columns instead.
+
+* {applies_to}`serverless: unavailable` **Other panels that use one data view**: In view mode, open the panel menu and select **Explore underlying data**. **Discover** opens with the filters, query, and time range of the dashboard and the panel.
+
+    If you don't see this option, it might not be turned on. By default, {{kib}} doesn't offer it. Administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-context) to `true` in the {{kib}} settings. Refer to [Stack settings](/deploy-manage/stack-settings.md).
+
+* {applies_to}`self: ga` **One value or time range in a chart**: Select a value in the chart, or drag across a time range, then select **Explore underlying data** in the menu that opens. **Discover** opens with the same filters, query, and time range as the panel, narrowed to the value or time range that you selected. The option isn't available on maps.
+
+    This option is separate from the **Explore underlying data** option in the panel menu, and each one has its own setting. If you don't see it, it might not be turned on. By default, {{kib}} doesn't offer it. On self-managed deployments, administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInChart.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-chart) to `true` in `kibana.yml`.
+
 ### View and edit the visualization configuration
 ```{applies_to}
 stack: ga 9.1
@@ -262,6 +283,15 @@ Sometimes, the scope behaves differently:
 * **The dashboard restores a saved scope on open.** Some dashboards are configured to [store a {{cps}} scope](/explore-analyze/dashboards/create-dashboard.md). When you open them, the {{cps-init}} scope selector is set to the stored scope. You can still change it during your session.
 * **A panel has a Custom CPS scope badge.** This means the panel uses [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to query a fixed set of projects. It is not affected when you change the dashboard's scope. Select the badge to view which projects the panel queries.
 * **Query bar and filter suggestions come from the origin project only.** As you type a query or filter value, the autocomplete suggests values from the origin project, regardless of the selected scope. Filtering itself still respects the scope, so a value that exists only in a linked project works when you enter it manually. For value suggestions across all projects in scope, use an **Options list** control instead.
+
+
+## Cancel a slow dashboard load [cancel-dashboard-load]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If a dashboard takes too long to load, you can stop it instead of waiting. While it loads, a **Cancel** button is available at the top of the dashboard. Select it to stop the queries that are still running. To load the dashboard again, select **Refresh**.
 
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]

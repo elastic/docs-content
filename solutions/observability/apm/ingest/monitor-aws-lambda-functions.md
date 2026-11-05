@@ -32,7 +32,7 @@ Normally, during the execution of a Lambda function, there’s only a single lan
 :screenshot:
 :::
 
-By using an AWS Lambda extension, Elastic APM agents can send data to a local Lambda extension process, and that process will forward data on to the managed intake service asynchronously. The Lambda extension ensures that any potential latency between the Lambda function and the managed intake service instance will not cause latency in the request flow of the Lambda function itself.
+By using an AWS Lambda extension, Elastic APM agents can send data to a local Lambda extension process, and that process will forward data on to managed inputs asynchronously. The Lambda extension ensures that any potential latency between the Lambda function and managed inputs will not cause latency in the request flow of the Lambda function itself.
 
 ## Setup [apm-agents-aws-lambda-functions-setup]
 

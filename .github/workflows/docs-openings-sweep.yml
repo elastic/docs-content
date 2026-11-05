@@ -1,4 +1,4 @@
-name: Docs page openings sweep
+name: "Sweep: Openings"
 on:
   workflow_dispatch:
     inputs:

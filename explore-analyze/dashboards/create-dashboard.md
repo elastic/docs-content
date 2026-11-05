@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
 navigation_title: Create from the UI
-description: Create a new Kibana dashboard from scratch by adding visualizations, controls, and organizing panels to display your data insights.
+description: Steps to create a dashboard in Kibana, from adding panels and controls to arranging the layout, setting display options, and saving.
 applies_to:
   stack: ga
   serverless: ga
@@ -13,7 +13,7 @@ type: how-to
 
 # Create a dashboard from the {{kib}} UI [create-dashboard]
 
-Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data.
+To build a dashboard panel by panel in {{product.kibana}}, start with an empty dashboard, add your content, and save it. If you need an overview or examples, refer to [](../dashboards.md).
 
 :::{tip} - New ways to create dashboards
 :applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
@@ -26,6 +26,8 @@ Before creating a dashboard, ensure you have:
 
 * [Data indexed into {{product.elasticsearch}}](/manage-data/ingest.md) and at least one [data view](../find-and-organize/data-views.md) configured
 * **All** privilege for the **Dashboard** feature in {{product.kibana}}
+
+If **Dashboards** asks you to add data or create a data view instead of opening and you're not sure of what to do next, refer to [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md).
 
 ## Create a new dashboard [create-dashboard-steps]
 
@@ -54,7 +56,7 @@ Before creating a dashboard, ensure you have:
         * **Store time with dashboard** — Saves the specified time filter.
         * **Use margins between panels** — Adds a margin of space between each panel.
         * **Show panel titles** — Displays the titles in the panel headers.
-        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Show panel borders** — Displays a border around each panel. Turn off for a cleaner look. Individual panels can override this setting from their own settings.
+        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Show panel borders** — Displays a border around each panel. Turn off for a cleaner look. Individual panels can [override this setting](arrange-panels.md#customize-panel-settings) from their own settings.
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.
@@ -88,4 +90,14 @@ Before creating a dashboard, ensure you have:
 ## Create a dashboard with {{agent-builder}}
 
 You can also create dashboards through natural language chat with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/chat.md) agents. Describe what you want to visualize and the agent builds a dashboard with {{esql}}-powered visualization panels. You can iterate on the dashboard in conversation before saving it. To learn more, refer to [Dashboards and visualizations in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
+
+## Remove a panel from a dashboard [remove-panel]
+
+If a panel no longer belongs on a dashboard, you can remove it without affecting any other dashboard.
+
+1. In the application menu, select **Edit**.
+2. Hover over the panel, open the panel menu {icon}`boxes_vertical`, and select **Remove**.
+3. Save the dashboard.
+
+If the panel came from the [Visualize library](../visualize/visualize-library.md), it stays in the library and on every other dashboard that uses it. If you created the panel directly on the dashboard, removing it deletes it. To keep a copy, [save the panel to the library](../visualize/visualize-library.md#save-to-visualize-library) before you remove it.
 

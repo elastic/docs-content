@@ -80,7 +80,7 @@ In role management, features are organized into the following groups.
 | Group | What it contains |
 | --- | --- |
 | **Analytics** | Privileges for the features you use to explore and visualize data. Refer to [Privileges in the Analytics group](#kibana-privileges-analytics). |
-| **Alerting V2** {applies_to}`stack: experimental 9.5+` | Privileges for the {{alerting-v2-system}}. Refer to [Configure access to the {{alerting-v2-system}}](/explore-analyze/alerting/experimental-alerting-system/get-started/configure-access.md). <br> {applies_to}`stack: experimental =9.5` Before 9.5.4, this group is called **Alerting**. |
+| **Universal Alerting** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). |
 | **Elasticsearch** | Privileges for {{es}} features. |
 | **Observability** | Privileges for Elastic {{observability}} features. Refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md). |
 | **Security** | Privileges for {{elastic-sec}} features. Refer to [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md). |
@@ -141,6 +141,7 @@ Each of the following privileges controls access to a different feature.
 | **Graph** | Access [Graph](/explore-analyze/visualize/graph.md), and create and edit graphs. |
 | **Visualize library** | Access the [Visualize library](/explore-analyze/visualize.md), create and edit visualizations, and add visualizations to dashboards. Turn on **Customize sub-feature privileges** to grant individual Visualize library privileges. For the full list, refer to [Visualize library sub-feature privileges](#kibana-privileges-visualize-subfeatures). |
 | **Agent Builder** {applies_to}`stack: ga 9.2+` | Access [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md), including agents, tools, and conversations.<br> {applies_to}`stack: ga 9.4+` Turn on **Customize sub-feature privileges** to grant individual {{agent-builder}} privileges. For the full list, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md). |
+| **Context Engine** {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` | Access [{{context-engine}}](/explore-analyze/ai-features/context-engine.md). **Read** allows viewing AI indices and retrieving context. **All** also allows creating, editing, and deleting AI indices. Users need separate {{es}} index privileges to access backing indices and source data. |
 | **Agent Builder - Semantic Metadata Layer (SML)** {applies_to}`stack: ga 9.5+` | Access the semantic metadata that {{agent-builder}} uses to interpret your data.<br> {applies_to}`stack: ga =9.5` This privilege is called **Agent Context Layer**. |
 | **Workflows** {applies_to}`stack: ga 9.3+` | Access [Workflows](/explore-analyze/workflows.md), and create, edit, and run workflows. Turn on **Customize sub-feature privileges** to grant individual workflow privileges. For the full list, refer to [Workflows sub-feature privileges](#kibana-privileges-workflows-subfeatures). |
 :::

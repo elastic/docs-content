@@ -187,7 +187,6 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-openshift-deploy-operator.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-deploy-elasticsearch.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-deploy-kibana.md
-                      - file: deploy/cloud-on-k8s/k8s-openshift-anyuid-workaround.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-beats.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-agent.md
                   - file: deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md
@@ -411,7 +410,6 @@ toc:
                   - file: tools/snapshot-and-restore/ece-aws-custom-repository.md
                   - file: tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md
                   - file: tools/snapshot-and-restore/azure-storage-repository.md
-                  - file: tools/snapshot-and-restore/minio-on-premise-repository.md
               - file: tools/snapshot-and-restore/cloud-on-k8s.md
           - file: tools/snapshot-and-restore/create-snapshots.md
           - file: tools/snapshot-and-restore/restore-snapshot.md
@@ -820,14 +818,14 @@ toc:
                 children:
                   - file: monitor/stack-audit-logging/logfile-audit-events-ignore-policies.md
                   - file: monitor/stack-audit-logging/logfile-audit-output.md
-              - file: monitor/stack-audit-logging/auditing-search-queries.md
+              - file: monitor/stack-audit-logging/auditing-http-request-bodies.md
               - file: monitor/stack-audit-logging/correlating-kibana-elasticsearch-audit-logs.md
           - file: monitor/cloud-audit-trail.md
           - title: "Kibana user activity"
             crosslink: kibana://reference/user-activity.md
-          - hidden: monitor/log-delivery.md
+          - file: monitor/log-delivery.md
             children:
-              - hidden: monitor/log-delivery/audit-trail.md
+              - file: monitor/log-delivery/audit-trail.md
       - file: monitor/logging-configuration.md
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md

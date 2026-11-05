@@ -2,7 +2,7 @@ If your organization uses firewalls, you need to provide access to port 443 and 
 * `https://api.elastic-cloud.com`
 * `https://otel-auto-ops.${region}.${csp}.svc.elastic.cloud/`
 
-    Replace `${region}` and `${csp}` with the region and cloud service provider you have selected as your [storage location](../autoops/cc-connect-self-managed-to-autoops.md#storage-location). For example:
+    Replace `${region}` and `${csp}` with the region and cloud service provider you have selected as your [storage location](../autoops/cc-connect-self-managed-to-autoops.md#configure-agent). For example:
 
     `https://otel-auto-ops.us-east-1.aws.svc.elastic.cloud/`
 

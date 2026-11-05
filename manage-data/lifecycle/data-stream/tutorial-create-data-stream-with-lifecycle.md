@@ -134,7 +134,7 @@ The result will look like this:
 If you want to see more information about how the data stream lifecycle is applied on individual backing indices use the [explain data stream lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle):
 
 ```console
-GET .ds-my-data-stream-test/_lifecycle/explain
+GET my-data-stream-test/_lifecycle/explain
 ```
 
 :::{tip}

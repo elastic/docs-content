@@ -250,7 +250,7 @@ For an explanation of a dashboard's translation, click its name to open the dash
 
 ### Finalize translated dashboards
 
-Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
+Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [](/explore-analyze/dashboards/open-dashboard.md).
 
 ## Frequently asked questions (FAQ)
 

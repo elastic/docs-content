@@ -30,6 +30,20 @@ The process of tool selection, execution, and analysis consumes tokens. To under
 
 You can also use pre-configured [built-in agents](builtin-agents-reference.md) that are specialized for common use cases.
 
+### Elastic deployment awareness
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Agents tailor their guidance on features, navigation, and terminology to the Elastic deployment they run in, and they can answer questions about that deployment directly. To make this possible, {{agent-builder}} adds details about the deployment to the instructions of every agent, built-in or custom. The details depend on the deployment type:
+
+- {applies_to}`stack: ga 9.6+` **{{ech}}, {{ece}}, and self-managed**: The environment, the {{stack}} version, and, when available, the space's solution view and the license type and status. If {{kib}} is configured as air-gapped, the details also say so.
+- {applies_to}`serverless: ga` **{{serverless-full}}**: The environment, the project type, and the product tier, when the project has one.
+
+{{agent-builder}} adds these details automatically, and you can't turn them off. Agents can share these details with anyone who chats with them, even though they don't disclose their other instructions.
+
 ## Built-in agents
 
 {{agent-builder}} includes a pre-configured built-in agent optimized for common use cases, which you can also customize using custom instructions, tools, and skills.
@@ -102,11 +116,13 @@ The **Enable Elastic capabilities** toggle controls whether an agent is automati
 
 This toggle is available for all agents, both built-in and custom.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The toggle doesn't affect the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools), which every agent has.
+
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This toggle doesn't assign [connectors](connectors.md), but it includes the `connector-discovery` skill that agents need to find their assigned connectors. You assign connectors to each agent separately, and agents start with none, including the built-in **Elastic AI Agent**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
 
 ### Default settings
 
-- **Built-in agents**: Elastic capabilities are **enabled** by default. Disable if you want to limit the agent to a specific set of tools and skills.
+- **Built-in agents**: Elastic capabilities are **enabled** by default. Disable if you want to limit the agent to the tools and skills you assign. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent keeps the HTTP API tools.
 - **Custom agents**: Elastic capabilities are **disabled** by default. Enable if you want the agent to have access to all current and future Elastic-built tools, skills, and plugins.
 
 To review which tools and skills are active, open the agent's **Tools** or **Skills** tab after enabling the toggle. Elastic-provided items are marked with a lock icon.

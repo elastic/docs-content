@@ -23,31 +23,11 @@ A useful Knowledge Indicator (KI) gives an agent accurate, relevant context with
 
 You need an AI index that contains at least one generated KI, the **Read** privilege for the **Context Engine** feature, and the `read` and `view_index_metadata` index privileges on its backing index (`ai-index-*`). To refine an AI index's sources or automations, you need the **All** privilege for the **Context Engine** feature. To create an AI index and generate a KI, follow the [{{context-engine}} quickstart](quickstart.md).
 
-You can inspect and test KIs in a [managed AI index](concepts.md#managed-ai-indices), but you cannot refine its sources or automations. The owning Elastic integration maintains that configuration.
+You can inspect and test KIs in a [managed AI index](concepts.md#managed-ai-indices), but you cannot refine its sources or automations. The Elastic feature that provides the managed AI index maintains that configuration.
 
-## Inspect Knowledge Indicators
+## Review the Knowledge Indicator document
 
-Inspect KIs interactively in {{kib}}, or query them programmatically when you are evaluating an automated integration.
-
-### Use the UI
-
-Follow these steps to inspect a generated KI:
-
-1. Find **Context** in the navigation menu or use the global search field.
-2. Open the AI index you want to inspect.
-3. Select the **Knowledge Indicators** tab.
-4. If the AI index contains several KI types, filter the list by type.
-5. Select a KI to expand its JSON document.
-
-### Use the API
-
-Use the [list AI indices API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-context-engine-ai-index) to find the AI index and its {{esql}} query target. You can also use the [describe AI index API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-context-engine-ai-index-aiindexid-describe) to inspect its fields, KI types, tags, and example queries.
-
-Run an {{esql}} query with the [query AI indices API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-context-engine-ai-index-query) to retrieve the KI or set of KIs you want to evaluate. Filter by fields such as `id`, `type`, or `tags`, and return the content, metadata, and provenance fields needed for the review.
-
-## Review the KI document
-
-The following fields help you determine what a KI represents, where it came from, and how an agent can use it:
+Open a KI as described in [Inspect and manage Knowledge Indicators](inspect-and-manage-knowledge-indicators.md), then review the following fields:
 
 | Field | What to review |
 |---|---|
@@ -124,7 +104,7 @@ Use {{kib}} or the APIs to verify that later automation runs update the intended
 
 If the automation intentionally creates one KI per event or source document, multiple KIs are expected. Stable IDs are most important when an automation maintains one KI for a dataset, entity, or other long-lived subject.
 
-## Test how an agent uses the KI
+## Test how an agent uses the Knowledge Indicator
 
 After you make the AI index available to an agent or application:
 

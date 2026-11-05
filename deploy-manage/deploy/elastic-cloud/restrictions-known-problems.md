@@ -19,9 +19,9 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [APIs](#ec-restrictions-apis)
 * [Transport client](#ec-restrictions-transport-client)
 * [{{es}} and {{kib}} plugins](#ec-restrictions-plugins)
-* [Watcher](#ec-restrictions-watcher)
+* [{{watcher}}](#ec-restrictions-watcher)
 * [Private connectivity](#ec-restrictions-network-security-kibana-sso)
-* [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-network-security-watcher)
+* [Automatic report generation using {{kib}} alerting or {{watcher}}](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
 * [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
@@ -97,13 +97,13 @@ $$$ec-restrictions-apis-kibana$$$
 % * In {{es}} 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](/manage-data/data-store/perform-index-operations.md#manage-indices) if you want more detailed information or perform index management actions.
 
 
-## Watcher [ec-restrictions-watcher]
+## {{watcher}} [ec-restrictions-watcher]
 
-Watcher encryption Key Setup is not supported.
+Setting up [encryption for sensitive data in {{watcher}}](../../../explore-analyze/alerting/watcher/encrypting-data.md) with the `xpack.watcher.encryption_key` setting is not supported on {{ecloud}}.
 
 Changing the default throttle period is not possible. You can specify a throttle period per watch, however.
 
-Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
+{{watcher}} comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
 
 Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerting/watcher/enable-watcher.md#watcher-custom-mail-server)
 
@@ -118,10 +118,11 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 ```
 * **Remote clusters with API key authentication over GCP Private Service Connect:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic over GCP PSC.
 
-## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
+## Automatic report generation using {{kib}} alerting or {{watcher}} [ec-restrictions-network-security-watcher]
 
-* PDF report automatic generation via Alerts is not possible on {{ecloud}}.
-* PDF report generation isn’t possible for deployments running on {{stack}} version 8.7.0 or before that are protected by network security. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on {{stack}} version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass network security.
+* Automatic report generation from {{kib}} alerting rules is not supported on {{ecloud}}.
+* On deployments running {{stack}} 8.7.0 and earlier, {{watcher}} can't generate PDF, PNG, or CSV reports when [network security](../../security/network-security.md) (formerly traffic filtering) is enabled. This restriction applies to requests from {{watcher}} to {{es}} or {{kib}}. It doesn't affect {{watcher}} actions that connect to external services, such as Slack, PagerDuty, or email actions without report attachments.
+* On deployments running {{stack}} 8.7.1 and later, {{watcher}} can generate reports when [network security](/deploy-manage/security/network-security.md) is enabled. Set `xpack.notification.webhook.additional_token_enabled` to `true` to add an authentication token to requests from {{watcher}} to {{kib}} through the {{ecloud}} proxy. To generate and email reports, use a [`reporting` attachment in a {{watcher}} `email` action](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher).
 
 
 ## {{kib}} [ec-restrictions-kibana]

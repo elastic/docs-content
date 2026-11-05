@@ -94,7 +94,7 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 - **Filter out**: append a `WHERE` clause that excludes documents matching this group.
 - **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
 
-**Filter in** and **Filter out** are disabled when the grouping field isn't filterable.
+If the grouping field isn't filterable, **Filter in** and **Filter out** are unavailable.
 
 ## Opt out of the grouped layout [opt-out-of-the-grouped-layout]
 
