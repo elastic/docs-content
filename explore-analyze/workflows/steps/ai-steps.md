@@ -555,7 +555,7 @@ All parameters go in the `with` block and use `snake_case`. Every attachment ste
 
 The examples in this section use the conversation created by the `investigate` step in [Example: Call an agent](#example-call-an-agent).
 
-These steps follow the same access rules as the [conversation metadata steps](#ai-conversation-metadata-steps): the user who authorizes the run must be able to access the conversation.
+These steps follow the same access rules as the [conversation metadata steps](#ai-conversation-metadata-steps): the user who authorizes the run must be able to access both the conversation and the agent it uses.
 
 ### `ai.attachment.add` [ai-attachment-add]
 
