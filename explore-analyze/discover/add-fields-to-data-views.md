@@ -25,7 +25,7 @@ When your data doesn't have a field you need, such as a value that is part of an
    - In the sidebar, select **Add a field**.
    - In the data view menu, select **Add a field to this data view**.
 
-2. Select the **Type** that matches the value your script returns. If they don't match, the data view fails wherever it's used. The options are:
+2. Select the **Type** of value that the field holds:
 
    - **Keyword** for text, such as names or labels.
    - **Long** for whole numbers and **Double** for numbers with decimals.
@@ -37,7 +37,7 @@ When your data doesn't have a field you need, such as a value that is part of an
 
 3. **Name** the field. Name it in a way that corresponds to the way other fields of the data view are named. You can set a custom label and description for the field to make it more recognizable in your data view.
 4. Define the value that you want the field to show. By default, the field value is retrieved from the source data if it already contains a field with the same name. You can customize this with the following options:
-   - **Set value**: Define a script that determines the value to show for the field. For more information on adding fields and Painless scripting language examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
+   - **Set value**: Define a script that determines the value to show for the field. The script must return a value of the **Type** you selected, or the data view fails wherever it's used. For more information on adding fields and Painless scripting language examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md).
    - **Set format**: Set your preferred format for displaying the value. Changing the format can affect the value and prevent highlighting in Discover.
 
 5. To check what your script returns before you save, use the **Preview**. Select the **Document ID** arrows to see the value for other documents.
