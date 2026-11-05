@@ -213,6 +213,55 @@ spec:
         secretName: my-cert
 ```
 
+### Provide additional HTTP certificate authorities [k8s-http-certificate-authorities]
+
+{applies_to}`eck: ga 3.7`
+
+If your HTTP certificate secret lacks the issuing CA, provide its certificates in a ConfigMap. This lets associated resources, such as {{kib}}, and Stack Monitoring Beats trust the HTTP endpoint without changing the certificate secret.
+
+Create the ConfigMap in the resource's namespace with one or more CA certificates in PEM format under `ca.crt`:
+
+```sh
+kubectl create configmap my-http-ca --from-file=ca.crt=./ca.crt
+```
+
+Reference it alongside your HTTP certificate secret, which contains `tls.crt` and `tls.key`:
+
+```yaml
+spec:
+  http:
+    tls:
+      certificate:
+        secretName: my-cert
+      certificateAuthorities:
+        configMapName: my-http-ca
+```
+
+ECK combines these certificates with any CAs already provided by the HTTP certificate configuration. Clients trust only the resulting bundle, so include all CAs they need. You can [retrieve the bundle from the public HTTP certificate secret](#k8s-tls-certificates).
+
+For Fleet Server, configure this field on the Agent resource. For Logstash, configure it on the `spec.services` entry named `api`:
+
+```yaml
+spec:
+  services:
+    - name: api
+      tls:
+        certificate:
+          secretName: my-cert
+        certificateAuthorities:
+          configMapName: my-http-ca
+```
+
+For Logstash, these CAs apply only to API clients, such as Stack Monitoring Metricbeat. They do not configure TLS for pipeline inputs or outputs.
+
+#### Updates and limitations
+
+ECK updates client trust automatically when the ConfigMap changes. These changes can restart associated resources, such as {{kib}}. With Stack Monitoring enabled, adding a CA bundle for the first time can also restart the monitored resource. Later bundle updates do not restart the monitored resource.
+
+Beats 9.5 and later reload CA changes automatically. Earlier versions with certificate reloading off need a restart to use the updated bundle.
+
+These CAs configure client trust of the HTTP endpoint, not authentication of incoming client certificates.
+
 ## {{kib}} HTTP configuration in ECK [k8s-kibana-http-configuration]
 
 By default, ECK creates a `ClusterIP` [Service](https://kubernetes.io/docs/concepts/services-networking/service/) and associates it with the {{kib}} deployment.
