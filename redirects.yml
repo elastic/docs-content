@@ -685,11 +685,9 @@ redirects:
       - to: 'explore-analyze/discover/generate-alerts-from-discover.md'
         anchors:
           'alert-from-Discover': ''
-      - to: 'explore-analyze/discover/use-classic-mode.md'
-        anchors:
-          'find-the-data-you-want-to-use': 'find-the-data-you-want-to-use'
       - to: 'explore-analyze/discover/search-and-filter-classic.md'
         anchors:
+          'find-the-data-you-want-to-use': 'find-the-data-you-want-to-use'
           'search-in-discover': ''
           '_default_mode_search_and_filter_using_kql': ''
           'filter-in-discover': 'filter-in-discover'
