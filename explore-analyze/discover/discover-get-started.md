@@ -50,8 +50,8 @@ Document flyout
 
 **Discover** has two ways to define the data you explore, called query modes. You can [switch between them](switch-esql-mode.md) at any time.
 
-- [{{esql}} mode](use-esql.md): A query written in [{{esql}}](elasticsearch://reference/query-languages/esql.md), the {{es}} query language, names the data to explore and can also filter it, calculate new fields, and summarize it. For example, `FROM kibana_sample_data_logs | WHERE bytes > 5000` returns the entries in the sample web logs that transferred more than 5,000 bytes.
-- [Classic mode](use-classic-mode.md): A [data view](../find-and-organize/data-views.md), which is a saved definition of the data to query such as all your web logs, sets the data to explore. Searches in [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), two search syntaxes, and filters then narrow the results.
+- [{{esql}} mode](use-esql.md): You write a query in [{{esql}}](elasticsearch://reference/query-languages/esql.md), the {{es}} query language. The query names the data to explore and can also filter it, calculate new fields, and summarize it. For example, `FROM kibana_sample_data_logs | WHERE bytes > 5000` returns the entries in the sample web logs that transferred more than 5,000 bytes.
+- [Classic mode](use-classic-mode.md): You select a [data view](../find-and-organize/data-views.md), which is a saved definition of the data to query, such as all your web logs. You then search it with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), two search syntaxes, and narrow the results with filters.
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Each tab keeps its own query, so one tab can run an {{esql}} query while another uses classic mode.
 
