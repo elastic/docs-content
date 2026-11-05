@@ -77,7 +77,7 @@ This button appears only if you have the **Read** or **All** privilege for **Dis
 
 ## Save the table to a dashboard
 
-Add the table to a new or existing dashboard as a panel. This works like [saving a table to a dashboard from Discover](/explore-analyze/discover/save-open-search.md#save-table-to-dashboard).
+Add the table to a new or existing dashboard as a panel. This works like [saving a table to a dashboard from Discover](/explore-analyze/discover/use-sessions-in-dashboards.md#save-table-to-dashboard).
 
 1. In the table toolbar, select {icon}`add_to_dashboard` **Save table to dashboard**. The **Save Discover session** dialog opens.
 2. Edit the pre-filled title for the panel if needed, and optionally add a description.

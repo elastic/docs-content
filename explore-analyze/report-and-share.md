@@ -68,7 +68,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **Download as JSON** {applies_to}`serverless: unavailable` — Generate and download JSON files of **Canvas** workpads.
 * **Export JSON**
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, preview 9.4-9.5` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
-    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
+    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/export-discover-session.md#export-discover-session-json).
 
 :::{tip}
 Several applications let you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation).
@@ -137,7 +137,7 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
-In Discover, a CSV report also stops at a row limit, and the file is truncated at a size limit. To find both limits for your deployment and how they work in each query mode, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
+In Discover, a CSV report also stops at a row limit, and the file is truncated at a size limit. To find both limits for your deployment and how they work in each query mode, refer to [Export Discover session results as CSV](discover/export-discover-session.md#export-discover-session-csv).
 
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 

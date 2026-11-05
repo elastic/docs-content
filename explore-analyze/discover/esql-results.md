@@ -164,7 +164,7 @@ When {{es}} applies approximation to a query, for example because [**Fast mode**
 If you omit `LIMIT`, the table shows up to 1,000 rows, or up to 10,000 rows for queries that start with `TS` or `PROMQL`. `LIMIT` can raise that to 10,000, which is as many rows as Discover displays. Aggregations still run on the full data set.
 
 - **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
-- **CSV export:** A CSV report of an {{esql}} query stops at a row limit that depends on your deployment. Queries and aggregations still run on the full data set. To find the limit, refer to [](save-open-search.md#export-discover-session-csv).
+- **CSV export:** A CSV report of an {{esql}} query stops at a row limit that depends on your deployment. Queries and aggregations still run on the full data set. To find the limit, refer to [](export-discover-session.md#export-discover-session-csv).
 
 ## Set the time filter for the table and the chart [_esql_and_time_series_data]
 
@@ -197,9 +197,9 @@ FROM kibana_sample_data_ecommerce
 
 To keep the chart or the table, use one of these options:
 
-- **Save the Discover session.** [Save a Discover session for reuse](save-open-search.md) explains the options.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Save the table to a dashboard.** [Customize the table](document-explorer.md#document-explorer-customize) explains how to configure it before you [save it](save-open-search.md#save-table-to-dashboard).
-- **Save the chart to a dashboard.** [Change the chart type and display options](../visualize/esorql.md#_edit_and_add_from_discover) explains how to configure it before you [save it](save-open-search.md#add-discover-visualization-esql).
+- **Save the Discover session.** [Save and manage Discover sessions](save-open-search.md) explains the options.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Save the table to a dashboard.** [Customize the table](document-explorer.md#document-explorer-customize) explains how to configure it before you [save it](use-sessions-in-dashboards.md#save-table-to-dashboard).
+- **Save the chart to a dashboard.** [Change the chart type and display options](../visualize/esorql.md#_edit_and_add_from_discover) explains how to configure it before you [save it](use-sessions-in-dashboards.md#add-discover-visualization-esql).
 
 ## Cancel a query and partial results [cancel-query-in-discover]
 
@@ -220,5 +220,5 @@ Partial results appear when an {{esql}} query:
 - [Query your data in Discover with {{esql}}](use-esql.md)
 - [Analyze your data with AI](analyze-discover-data-with-ai.md)
 - [Inspect grouped STATS results in Discover](inspect-grouped-stats.md)
-- [Save a Discover session for reuse](save-open-search.md)
+- [Save and manage Discover sessions](save-open-search.md)
 - [Customize the Discover view](document-explorer.md)

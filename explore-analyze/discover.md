@@ -57,7 +57,7 @@ Tasks that apply to only one query mode say so.
 **Save and share your explorations**
 
 * [Save sessions](discover/save-open-search.md#_save_a_discover_session) to reuse your queries, filters, and views later.
-* [Add Discover content to dashboards](discover/save-open-search.md#_add_search_results_to_a_dashboard), as charts, tables, or whole sessions.
-* [Export your results](report-and-share.md#manually-generate-reports) as a file. For the limits of large CSV exports, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
+* [Add Discover content to dashboards](discover/use-sessions-in-dashboards.md), as charts, tables, or whole sessions.
+* [Export your results](report-and-share.md#manually-generate-reports) as a file. For the limits of large CSV exports, refer to [Export Discover session results as CSV](discover/export-discover-session.md#export-discover-session-csv).
 * [Copy results](discover/copy-and-share-documents.md#copy-row-content) as text, JSON, or Markdown, or [share a link](discover/copy-and-share-documents.md#share-your-findings) to a session or a document.
 * [Create an alert rule](discover/generate-alerts-from-discover.md) from the query and filters of a session.

@@ -40,9 +40,9 @@ You can copy the content of a single cell to your clipboard from the quick actio
 You can share the current view, show the results on a dashboard, export the session, or copy a link that reopens a specific document.
 
 - Select {icon}`share` **Share** in the application menu to copy a link to the current view. For the link options, refer to [Reporting and sharing](../report-and-share.md).
-- To show the results on a dashboard, add the session, its chart, or its table, to the dashboard. Refer to [Use Discover sessions in dashboards](save-open-search.md#_add_search_results_to_a_dashboard).
-- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Some limits apply. Refer to [](save-open-search.md#export-discover-session-csv) for details.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](save-open-search.md#export-discover-session-json).
+- To show the results on a dashboard, add the session, its chart, or its table, to the dashboard. Refer to [Use Discover sessions in dashboards](use-sessions-in-dashboards.md).
+- To export the rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**. Some limits apply. Refer to [](export-discover-session.md#export-discover-session-csv) for details.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To export the session definition as JSON, without the query results, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**. Refer to [Export a Discover session as JSON](export-discover-session.md#export-discover-session-json).
 
 In classic mode, you can also [open a document on a bookmarkable page of its own](inspect-documents.md#open-single-document).
 
@@ -82,4 +82,4 @@ If the query transforms rows, such as with `STATS` or `KEEP`, you cannot copy a 
 ## Related pages
 
 - [Inspect documents and requests in Discover](inspect-documents.md)
-- [Save a Discover session for reuse](save-open-search.md)
+- [Save and manage Discover sessions](save-open-search.md)

@@ -713,6 +713,28 @@ redirects:
       - to: 'troubleshoot/kibana/discover-empty-fields.md'
         anchors:
           '_troubleshooting': ''
+  # Discover session page split
+  'explore-analyze/discover/save-open-search.md':
+    to: 'explore-analyze/discover/save-open-search.md'
+    many:
+      - to: 'explore-analyze/discover/export-discover-session.md'
+        anchors:
+          'export-discover-session-csv': 'export-discover-session-csv'
+          'export-discover-session-json': 'export-discover-session-json'
+      - to: 'explore-analyze/discover/use-sessions-in-dashboards.md'
+        anchors:
+          '_add_search_results_to_a_dashboard': '_add_search_results_to_a_dashboard'
+          'add-discover-visualization-to-dashboard': 'add-discover-visualization-to-dashboard'
+          'add-discover-visualization-esql': 'add-discover-visualization-esql'
+          'add-discover-visualization-classic': 'add-discover-visualization-classic'
+          'add-discover-tables-to-dashboards': 'add-discover-tables-to-dashboards'
+          'save-table-to-dashboard': 'save-table-to-dashboard'
+          'save-discover-session-with-add-to-dashboard': 'save-discover-session-with-add-to-dashboard'
+          'add-discover-session-from-library': 'add-discover-session-from-library'
+          'add-ad-hoc-discover-session-panel': 'add-ad-hoc-discover-session-panel'
+          'manage-discover-session-panels': 'manage-discover-session-panels'
+          'discover-session-save-as-from-dashboard': 'discover-session-save-as-from-dashboard'
+          'discover-session-choose-tab': 'discover-session-choose-tab'
   # related to https://github.com/elastic/docs-content/issues/4890
   'explore-analyze/discover/try-esql.md':
     to: 'explore-analyze/discover/try-esql.md'

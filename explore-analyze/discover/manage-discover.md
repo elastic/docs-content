@@ -15,9 +15,10 @@ description: Set up the Discover view the way you work, keep several exploration
 
 * [Customize the Discover view](document-explorer.md) to show the columns, density, and layout you need.
 * Keep [several explorations open side by side](work-with-tabs.md) in tabs.
-* [Save sessions](save-open-search.md) to reuse your queries, filters, and views later, or add them to dashboards.
+* [Save sessions](save-open-search.md) to reuse your queries, filters, and views later, and open, find, or duplicate them.
+* [Add sessions to dashboards](use-sessions-in-dashboards.md) as charts, tables, or whole sessions.
 * [Copy results](copy-and-share-documents.md) as text, JSON, or Markdown, or share a link to a session or a document.
-* [Export your results](../report-and-share.md#manually-generate-reports) as a file.
+* [Export your results](export-discover-session.md) as a CSV file, or the session itself as JSON.
 * Learn how to handle long-running queries with [background search](background-search.md).
 * [Create an alert rule](generate-alerts-from-discover.md) from the query and filters of a session.
 

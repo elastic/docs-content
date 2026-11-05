@@ -91,12 +91,12 @@ To check which experience is active, refer to [Check which context-aware experie
 When a session gets you the answer, you have several ways to keep it, share it, or take it somewhere else:
 
 - [Save the session](save-open-search.md#_save_a_discover_session) to reuse its query, filters, and view later.
-- [Add the chart, the table, or the whole session to a dashboard](save-open-search.md#_add_search_results_to_a_dashboard) to keep it next to your other panels.
+- [Add the chart, the table, or the whole session to a dashboard](use-sessions-in-dashboards.md) to keep it next to your other panels.
 - [Open Discover from a dashboard panel](../dashboards/create-discover-drilldown.md) with a drilldown to read the documents behind a value you select.
 - [Open a field in a visualization](visualize-field.md) from the fields list, in classic mode.
 - [Copy a link](copy-and-share-documents.md#share-your-findings) to a session or to a single document, so that others can open the same view.
 - [Copy rows](copy-and-share-documents.md#copy-row-content) as text, JSON, or Markdown.
-- Export the results of a session as [CSV](save-open-search.md#export-discover-session-csv) or [JSON](save-open-search.md#export-discover-session-json).
+- Export the results of a session as [CSV](export-discover-session.md#export-discover-session-csv) or [JSON](export-discover-session.md#export-discover-session-json).
 - [Create an alert rule](generate-alerts-from-discover.md) from your query to keep an eye on it.
 
 ## Troubleshooting

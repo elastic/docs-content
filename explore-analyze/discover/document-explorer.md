@@ -162,4 +162,4 @@ You can't filter on values {{es}} ignored at index time, or on values inside a J
 
 To go back to columns, set **View mode** to **Table**. You can then change [**Density**](#document-explorer-density) and [header and body row height](#document-explorer-row-height).
 
-If you save the session in **JSON** view, you get the same tree and the same **Lines shown**, **Hide nulls**, and **Wrap lines** values when you open it again. A dashboard panel from that session, or from [**Save table to dashboard**](save-open-search.md#save-table-to-dashboard), looks the same.
+If you save the session in **JSON** view, you get the same tree and the same **Lines shown**, **Hide nulls**, and **Wrap lines** values when you open it again. A dashboard panel from that session, or from [**Save table to dashboard**](use-sessions-in-dashboards.md#save-table-to-dashboard), looks the same.
