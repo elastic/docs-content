@@ -239,7 +239,7 @@ To share the session, refer to [Share your Discover session](copy-and-share-docu
 
 ## Next steps
 
-- [Use Discover with {{esql}}](use-esql.md): Explore the other {{esql}} tasks in Discover, including variable controls.
+- [Query your data in Discover with {{esql}}](use-esql.md): Find more ways to write and refine {{esql}} queries, including variable controls.
 - [Create lookup indices from Discover queries](create-lookup-indices.md): Add fields from a lookup index with `LOOKUP JOIN`.
 - [Detect change points in Discover](detect-change-points.md): Find a spike, dip, or shift in a time series.
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Look up commands, functions, and operators beyond this tutorial.

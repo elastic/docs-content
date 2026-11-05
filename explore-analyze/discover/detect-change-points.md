@@ -93,6 +93,6 @@ Discover displays a separate chart for each group that contains a detected chang
 ## Related pages
 
 - [Get started with {{esql}} in Discover](try-esql.md)
-- [Use Discover with {{esql}}](use-esql.md)
+- [Query your data in Discover with {{esql}}](use-esql.md)
 - [`CHANGE_POINT` command reference](elasticsearch://reference/query-languages/esql/commands/change-point.md)
 - [Detect change points in AIOps Labs](../machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection)

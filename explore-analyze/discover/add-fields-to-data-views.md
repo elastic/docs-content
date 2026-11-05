@@ -79,5 +79,5 @@ The following examples use the [sample ecommerce data](/manage-data/ingest/sampl
 
 ## Related pages
 
-- [Use Discover in classic mode](use-classic-mode.md)
+- [Query your data in Discover's classic mode](use-classic-mode.md)
 - [Explore your data with runtime fields](../find-and-organize/data-views/runtime-fields.md)

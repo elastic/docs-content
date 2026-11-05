@@ -91,5 +91,5 @@ From the application menu, select **Switch to classic**.
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
+- [Query your data in Discover with {{esql}}](use-esql.md)
 - [How Discover works](discover-get-started.md)

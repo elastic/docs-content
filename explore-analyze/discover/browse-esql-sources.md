@@ -44,6 +44,6 @@ Both browsers operate on the main query only and don't apply to subqueries.
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
+- [Query your data in Discover with {{esql}}](use-esql.md)
 - [Work with {{esql}} results in Discover](esql-results.md)
 - [](../query-filter/languages/esql-kibana.md)

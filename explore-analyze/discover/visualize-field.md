@@ -51,5 +51,5 @@ When a field in the Discover fields list looks interesting, you can open it in *
 
 ## Related pages
 
-- [Use Discover in classic mode](use-classic-mode.md)
+- [Query your data in Discover's classic mode](use-classic-mode.md)
 - [Lens](../visualize/lens.md)

@@ -309,4 +309,4 @@ A Discover session panel displays one tab at a time. When the underlying session
 - [How Discover works](discover-get-started.md)
 - [Create a dashboard](../dashboards/create-dashboard.md)
 - [Get started with {{esql}} in Discover](try-esql.md)
-- [Use Discover with {{esql}}](use-esql.md)
+- [Query your data in Discover with {{esql}}](use-esql.md)

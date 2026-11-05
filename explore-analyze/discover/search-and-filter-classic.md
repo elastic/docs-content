@@ -96,6 +96,6 @@ For example, exclude results from the ecommerce sample data view where the day o
 
 ## Related pages
 
-- [Use Discover in classic mode](use-classic-mode.md)
+- [Query your data in Discover's classic mode](use-classic-mode.md)
 - [Search for relevance](discover-search-for-relevance.md)
 - [Kibana Query Language](../query-filter/languages/kql.md)

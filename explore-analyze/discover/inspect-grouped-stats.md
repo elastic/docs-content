@@ -104,7 +104,7 @@ Discover preselects the grouping field from your `STATS BY` clause. From the **G
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
+- [Query your data in Discover with {{esql}}](use-esql.md)
 - [Run a pattern analysis on your log data](run-pattern-analysis-discover.md)
 - [`STATS` command reference](elasticsearch://reference/query-languages/esql/commands/stats-by.md)
 - [Get faster results with approximate `STATS`](../query-filter/languages/esql-kibana.md#approximation-fast-mode)

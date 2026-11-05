@@ -65,6 +65,6 @@ When you save your edits, Discover updates the control for your query.
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
+- [Query your data in Discover with {{esql}}](use-esql.md)
 - [Add variable controls to dashboards](../visualize/add-variable-controls.md)
 - [Save a Discover session for reuse](save-open-search.md)

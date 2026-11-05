@@ -155,6 +155,6 @@ Row display limit
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
+- [Query your data in Discover with {{esql}}](use-esql.md)
 - [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md)
 - [](../query-filter/languages/esql-kibana.md)

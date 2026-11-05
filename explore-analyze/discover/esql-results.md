@@ -217,7 +217,7 @@ Partial results appear when an {{esql}} query:
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
+- [Query your data in Discover with {{esql}}](use-esql.md)
 - [Analyze your data with AI](analyze-discover-data-with-ai.md)
 - [Inspect grouped STATS results in Discover](inspect-grouped-stats.md)
 - [Save a Discover session for reuse](save-open-search.md)
