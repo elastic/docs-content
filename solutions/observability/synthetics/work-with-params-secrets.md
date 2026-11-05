@@ -159,41 +159,58 @@ Your synthetics scripts might require the use of passwords or other sensitive se
 
 ### Reference secrets from HashiCorp Vault [synthetics-secrets-vault]
 ```{applies_to}
-stack: ga 9.6+
+stack: preview 9.6+
 serverless: unavailable
 ```
 
-Instead of storing a sensitive value in {{kib}}, you can keep it in HashiCorp Vault and reference it from a param or a monitor field, with {{kib}} storing and forwarding only the reference. The {{agent}} running the monitor looks the value up in Vault each time the monitor runs, so the value itself never reaches {{kib}} or {{es}}.
+Use HashiCorp Vault to keep secret values out of the monitor configuration stored in {{kib}}. A param or supported monitor field holds a reference to the secret, and the {{agent}} running the monitor looks the value up in Vault each time the monitor runs, so the value itself never reaches {{kib}} or {{es}}.
 
-This works on [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md) only, and the agents running the monitors must be on {{agent}} 9.6 or later. A monitor that references a secret and runs on a public location is rejected when you save it.
+This feature requires:
+
+* A [{{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md) running {{agent}} 9.6 or later.
+* Synthetics integration version 1.13.0 or later. To update an earlier version, refer to [Upgrade an integration](/reference/fleet/upgrade-integration.md).
+* [{{fleet}} secret storage](/reference/fleet/agent-policy.md#agent-policy-secret-values) enabled.
+
+A monitor that references a secret and runs on a public location is rejected when you save it.
 
 #### Add a Vault connection [synthetics-secrets-vault-connection]
 
 Each connection holds the credential that reads secrets from one Vault account. You can add several per {{kib}} space.
 
+To add, edit, test, or delete connections, you need the **Can manage** privilege under **Secret provider connections**. This privilege is included in **All** for **Synthetics and Uptime**. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for role configuration.
+
+:::{warning}
+Anyone who can edit monitors or global parameters in the space can reference any secret the connection's credential can read. Give each connection a dedicated, read-only credential scoped to the paths your monitors need. Monitor scripts can expose resolved values in logs, network requests, or screenshots.
+:::
+
 1. Go to **Synthetics** → **Settings** → **Global parameters**, then find **HashiCorp Vault connections**.
-2. Select **Add connection** and fill in the fields:
+2. Click **Add connection** and fill in the fields:
 
     | Field | Description |
     | --- | --- |
     | **Name** | The name you reference the connection by, such as `prod`. You can't change it after you save the connection. |
     | **Vault address** | The address of your Vault server. It must use `https`, unless the host is a loopback address such as `localhost` or `127.0.0.1`. |
-    | **Authorization method** | Can be a **Token**, or an AppRole with a **Role ID** and **Secret ID**. |
+    | **Auth method** | Can be a **Token**, or an AppRole with a **Role ID** and **Secret ID**. |
     | **KV v2 mount** | Optional. It's the mount holding the secrets this connection reads. |
     | **Allowed monitor hosts** | Decides which monitor targets might receive secrets from this connection. Leave it empty to allow any host. |
     | **Skip TLS verification (dev only)** | Turns off certificate validation. Use it only against a development Vault server. |
 
-3. Select **Test connection** to check that {{kib}} can reach and authenticate with Vault, then select **Save connection**.
+3. Click **Test connection** to check that {{kib}} can reach and authenticate with Vault, then click **Save connection**.
 
 Test connection runs from {{kib}}. A monitor looks secrets up from the {{private-location}}'s network instead, so confirm that the agents can also reach the address. A loopback address can't be tested from {{kib}} at all, because it refers to whichever host is making the request.
 
-:::{note}
-Anyone who can edit monitors or global parameters in the space can reference any secret the connection's credential can read. Give each connection a dedicated, read-only credential scoped to the paths your monitors need.
-:::
+To change a connection later, click **Edit**. You can edit a connection even if params and monitors are already using it. You can also enter a new credential to rotate it.
 
-To change a connection later, select **Edit**. You can edit a connection that params and monitors are already using, which is how you rotate its credential: you can leave the secret field blank to keep the stored value, or enter a new one to replace it. If you add or narrow **Allowed monitor hosts**, the form lists the monitors that the restriction would stop before you save.
+You can leave the secret field blank to keep the stored credential unless you:
 
-To remove a connection, select **Delete**. However, this fails while any param or monitor still names it, so point them at another connection first.
+* Change **Vault address**, **Auth method**, or **Skip TLS verification (dev only)**.
+* Add hosts to an existing **Allowed monitor hosts** list or remove the restriction.
+
+These changes require you to re-enter the credential. Adding a restriction to an unrestricted connection or narrowing an existing list doesn't require re-entry.
+
+If you add or narrow **Allowed monitor hosts**, the form lists the monitors that the restriction would stop before you save.
+
+To remove a connection, click **Delete**. However, this fails while any param or monitor still names it, so point them at another connection first.
 
 #### Reference a secret [synthetics-secrets-vault-reference]
 
@@ -213,6 +230,8 @@ Use only letters, digits, `.`, `_`, and `-`, plus `/` to separate segments of th
 
 References work in params and in monitor fields, but not in browser monitor scripts. Pass a secret into a script through a param instead.
 
+After saving the monitor, run it from its {{private-location}} and confirm that the request using the secret succeeds. This verifies access from the agent's network, which **Test connection** doesn't check.
+
 #### Limit which hosts receive a secret [synthetics-secrets-vault-allowed-hosts]
 
 **Allowed monitor hosts** restricts a connection so its secrets only reach the targets you list. Enter host names or IP addresses without a scheme, port, path, or wildcard, using the punycode form for international names.
@@ -227,9 +246,9 @@ A monitor that the restriction excludes reports down, and the secret isn't sent.
 
 #### Known limitations [synthetics-secrets-vault-limitations]
 
-* An {{agent}} keeps a secret for five minutes after looking it up. Saving the connection again gives it a fresh copy.
+* The {{agent}} resolves references before each monitor run, reusing secret values cached for five minutes. After an agent receives a saved connection update, it fetches fresh values on the next run that uses that connection.
 * {{kib}} doesn't detect references inside base64-encoded Kerberos and NTLM fields, so a secret referenced there is never looked up.
-* Deleting or changing a connection doesn't withdraw access to Vault. {{agents}} keep cached values until they restart, and an offline {{agent}} keeps whatever it already holds. To withdraw access, revoke the credential in Vault and rotate any secrets it retrieved.
+* Deleting or changing a connection doesn't revoke its credential in Vault. The running agent process can retain connection credentials and configuration, and an offline {{agent}} doesn't receive updates until it reconnects. This is separate from the five-minute cache for retrieved secret values. To withdraw access, revoke the credential in Vault and rotate any secrets it retrieved.
 
 ### Use environment variables in Synthetics Projects
 
