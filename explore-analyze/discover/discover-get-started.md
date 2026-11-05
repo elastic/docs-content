@@ -26,7 +26,7 @@ To open **Discover**, find it in the navigation menu or use the [global search f
 :screenshot:
 :::
 
-A **Discover** session combines data, a query, and a time range. This is the default view, and you can [customize it](document-explorer.md) to fit your work. The elements that show can also change automatically, based on your context and the data you search. Refer to [Context-aware experiences](#context-aware-discover).
+Whatever you explore in **Discover** comes from three things: the data, a query, and a time range. Together they make a session, which you can save and reopen later. This is the default view, and you can [customize it](document-explorer.md) to fit your work. The elements that show can also change automatically, based on your context and the data you search. Refer to [Context-aware experiences](#context-aware-discover).
 
 Tabs
 :   {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` A single session can have several tabs, each with its own exploration, such as a different query and time range. Refer to [Run multiple explorations with tabs](work-with-tabs.md).
@@ -38,20 +38,20 @@ Fields list
 :   Lists the fields of your data. Select a field to see its most frequent values.
 
 Chart
-:   Shows how the results spread over the time range. It appears when your data has a time field, and in {{esql}} mode when your query doesn't transform the results, for example with `STATS`.
+:   Shows how the results spread over the time range, when your data has a time field. Some queries, such as ones that summarize your results, change what the chart shows.
 
 Results table
-:   Lists the results. The table is named **Results** in {{esql}} mode and **Documents** in classic mode.
+:   Lists the results, one row for each document.
 
 Document flyout
-:   When you need to focus on a specific row of the table, open it to see the document in more detail. Refer to [Look inside a document](inspect-documents.md#look-inside-a-document).
+:   When you need to focus on a specific row of the table, open it. A panel opens beside the table and shows every field of that document. Refer to [Look inside a document](inspect-documents.md#look-inside-a-document).
 
 ## Query modes in Discover [query-modes]
 
-**Discover** has two query modes, and you can [switch between them](switch-esql-mode.md) at any time:
+**Discover** has two ways to define the data you explore, called query modes. You can [switch between them](switch-esql-mode.md) at any time.
 
-- [{{esql}} mode](use-esql.md): You write a query that defines the data, so you don't need a data view. The query can also filter, transform, and group results.
-- [Classic mode](use-classic-mode.md): You select a [data view](../find-and-organize/data-views.md), search with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), and add filters.
+- [{{esql}} mode](use-esql.md): You write a query in [{{esql}}](elasticsearch://reference/query-languages/esql.md), the {{es}} query language. The query names the data to explore and can also filter it, calculate new fields, and summarize it. For example, `FROM kibana_sample_data_logs | WHERE bytes > 5000` returns the entries in the sample web logs that transferred more than 5,000 bytes.
+- [Classic mode](use-classic-mode.md): You select a [data view](../find-and-organize/data-views.md), which is a saved definition of the data to query, such as all your web logs. You then search it with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), two search syntaxes, and narrow the results with filters.
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Each tab keeps its own query, so one tab can run an {{esql}} query while another uses classic mode.
 
