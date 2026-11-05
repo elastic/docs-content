@@ -287,7 +287,7 @@ stack: ga 9.6+
 serverless: unavailable
 ```
 
-Scripts and other programmatic clients can post to a conversation as a [service account](permissions.md#service-accounts) through the [{{kib}} API](kibana-api.md#chat-as-a-service-account). By default, Chat shows these messages with the account username, such as `kibana/automation`, instead of a person's name. A workflow that runs as a service account can set `author_name` on an [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) or [`ai.conversation.add_user_message`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-user-message) step to show a different name, such as the workflow name.
+Scripts and other programmatic clients can post to a conversation as a [service account](permissions.md#service-accounts) through the [{{kib}} API](kibana-api.md#chat-as-a-service-account). By default, Agent Chat shows these messages with the account username, such as `kibana/automation`, instead of a person's name. A workflow that runs as a service account can set `author_name` on an [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) or [`ai.conversation.add_user_message`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-user-message) step to show a different name, such as the workflow name.
 
 If the service account created the conversation, **Author** in the conversation details shows the account username.
 

@@ -1519,7 +1519,7 @@ Keep these constraints in mind:
 - Each user can appear only once. Repeated IDs are rejected.
 - `member` is the only supported role, and `user` is the only supported entry type.
 - An entry that names the owner is accepted but not stored.
-- Entry IDs are not validated. An ID that does not match an existing user profile or service account is stored anyway. It grants access if a matching service account is created later.
+- Entry IDs are not validated. An ID that does not match a real user profile is stored and simply never grants access to anyone. {applies_to}`serverless: unavailable` An ID that does not match a service account is also stored, and it grants access if a matching service account is created later.
 - If you do not own the conversation, the request fails with a `404` error rather than a permissions error.
 
 ### Get A2A agent card configuration
