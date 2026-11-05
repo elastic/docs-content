@@ -582,6 +582,8 @@ If you set `origin` without `data`, the content is loaded once, when the attachm
 | `type` | string | Always. |
 | `current_version` | number | Always. `1` for a new attachment. |
 
+The following example adds a runbook to the conversation and shows it to users as soon as they open the conversation:
+
 ```yaml
 - name: add_runbook
   type: ai.attachment.add
