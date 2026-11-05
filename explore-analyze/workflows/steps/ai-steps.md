@@ -529,7 +529,9 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Add, update, delete, read, and list the attachments of an {{agent-builder}} conversation. Each attachment has a type, such as `text`, and keeps a version history of its content.
+An attachment is content, such as a runbook or a dashboard, that you add to an {{agent-builder}} conversation so the agent can use it as context. Each attachment has a type, such as text, that determines the shape of its content. When you update an attachment, the earlier content is kept as a previous version.
+
+Use these steps to add, update, delete, read, and list the attachments in a conversation.
 
 All parameters go in the `with` block and use `snake_case`. Every attachment step takes the `conversation_id` of the conversation the attachment belongs to.
 
