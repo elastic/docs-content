@@ -13,7 +13,7 @@ description: Find the Discover tasks that only exist in classic mode, from searc
 
 Classic mode in **Discover** lets you explore the documents of a [data view](../find-and-organize/data-views.md), a saved definition of the data to query. You search them with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), two search syntaxes, and narrow them down with filters.
 
-## More classic mode tasks in Discover
+## What you can do in classic mode
 
 | When you need this | Guide |
 | --- | --- |

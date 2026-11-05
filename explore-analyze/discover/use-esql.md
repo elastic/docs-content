@@ -13,7 +13,7 @@ description: Find the Discover tasks that are specific to ES|QL mode, from runni
 
 In {{esql}} mode, you write a query in [{{esql}}](elasticsearch://reference/query-languages/esql.md), the {{es}} query language, and **Discover** shows the results. The query says which data to read and can also filter, calculate, and summarize it. For example, `FROM kibana_sample_data_logs | WHERE bytes > 5000` returns the sample web log entries that transferred more than 5,000 bytes.
 
-## {{esql}} tasks in Discover
+## What you can do in {{esql}} mode
 
 | When you need this | Guide |
 | --- | --- |
