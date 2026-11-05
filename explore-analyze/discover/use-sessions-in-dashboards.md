@@ -17,19 +17,24 @@ To keep what you found next to your other panels, add different pieces of a Disc
 - [Add Discover tables to dashboards](#add-discover-tables-to-dashboards): save the table from a Discover session as a panel. Several paths exist, depending on whether you start from Discover or from the dashboard.
 - [Manage Discover session panels on a dashboard](#manage-discover-session-panels): edit a session panel from a dashboard, save your edits as a new session, or choose which tab to display.
 
+## Before you begin
+
+- You need permission to view and create dashboards. Without it, the options to add content to a dashboard aren't available.
+- To add a whole session, save it first. Refer to [Save and manage Discover sessions](save-open-search.md#_save_a_discover_session).
+
 ## Add Discover visualizations to dashboards [add-discover-visualization-to-dashboard]
 
 When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact steps depend on the [query mode](switch-esql-mode.md) you're using in Discover.
 
-You need permission to view and create dashboards.
-
 ### In {{esql}} mode [add-discover-visualization-esql]
 
 1. In Discover, run an {{esql}} query that produces a chart.
-2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
+2. Next to the chart, select {icon}`addToDashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 3. Enter a title for the panel, and optionally a description.
 4. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 5. Select **Save and go to dashboard**.
+
+**Result:** The chart appears as a visualization panel on the dashboard.
 
 :::{note}
 :applies_to: stack: ga =9.2
@@ -40,21 +45,21 @@ In that version, if your {{esql}} query defines [variable controls](esql-variabl
 
 In classic mode there's no direct save button next to the chart. Instead, you open the chart in **Lens**, edit it as needed, and save from there.
 
-The {icon}`app_lens` **Edit visualization** button only appears when the {{data-source}} you're querying is time-based and its time field can be visualized. If those conditions aren't met, the chart isn't shown and the button isn't available.
+The {icon}`pencil` **Edit visualization** button appears only when you query a time-based {{data-source}} whose time field can be visualized, and **Lens** is available.
 
 1. In Discover, run a query that produces a chart.
-2. Next to the chart, select {icon}`app_lens` **Edit visualization**. The chart opens in **Lens**, prefilled with your current query and time range.
+2. Next to the chart, select {icon}`pencil` **Edit visualization**. The chart opens in **Lens**, prefilled with your current query and time range.
 3. In Lens, adjust the visualization as needed.
 4. Select **Save** in the Lens application menu.
 5. Enter a **Title** for the panel, and optionally a **Description**.
 6. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 7. Select **Save and go to dashboard**.
 
+**Result:** The visualization appears as a panel on the dashboard.
+
 ## Add Discover tables to dashboards [add-discover-tables-to-dashboards]
 
 You can add the table from a Discover session to a dashboard in several ways. They differ in where you start and in the lifecycle of the resulting panel: whether the session is saved to the library or only lives on a specific dashboard, and whether the panel displays a single table or lets you switch between the tables of each tab in your Discover session.
-
-You need permission to view and create dashboards.
 
 The flow you choose depends on where you start:
 
@@ -73,12 +78,14 @@ serverless: ga
 
 From Discover, save the current view of the table to a new or existing dashboard, without saving the Discover session to the library. The resulting panel stores its configuration with the dashboard, so later changes to the Discover session don't affect the panel. If the session has multiple tabs, only the current table is saved.
 
-The button isn't available when Discover is opened from another application, such as when editing a session panel from a dashboard.
+The button isn't available when **Discover** is opened from another application, such as when editing a session panel from a dashboard, or when you can't create dashboards.
 
-1. In the documents table toolbar, select {icon}`app_dashboard` **Save table to dashboard**.
+1. In the documents table toolbar, select {icon}`addToDashboard` **Save table to dashboard**.
 2. Enter a title for the panel, and optionally a description.
 3. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 4. Select **Save and go to dashboard**.
+
+**Result:** The table appears as a panel on the dashboard.
 
 ### Save a Discover session and add it to a dashboard [save-discover-session-with-add-to-dashboard]
 
@@ -87,11 +94,11 @@ From Discover, save the entire Discover session, including all its tabs, columns
 ::::{applies-switch}
 
 :::{applies-item} { serverless: ga, stack: ga 9.5+ }
-When you save a Discover session, it is saved to the library. The **Add to dashboard** option of the dialog lets you choose whether to also add it as a panel on a dashboard:
+When you save a Discover session, it is saved to the library. When you save a new session, or save an existing one as a new session, the **Add to dashboard** option of the dialog also lets you choose whether to add it as a panel on a dashboard. The option isn't available when you save changes to a session that already exists:
 
 - **Existing**: The session is also added as a panel on a dashboard you choose.
 - **New**: The session is also added as a panel on a new dashboard.
-- **None**: The session is saved to the library only. To add it as a panel later, [add it from the dashboard library](#add-discover-session-from-library).
+- **None** (the default): The session is saved to the library only. To add it as a panel later, [add it from the dashboard library](#add-discover-session-from-library).
 
 If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
 
@@ -104,6 +111,8 @@ Saving from Discover saves the session to the library only. To put it on a dashb
 
 ::::
 
+**Result:** The session is saved to the library, and it also appears as a panel on the dashboard if you chose one.
+
 ### Add a Discover session from the library [add-discover-session-from-library]
 
 From a dashboard, add a Discover session that's already saved to the library. The same session can be added to multiple dashboards, and each panel stays linked to the library, so updates to the session are reflected on all dashboards. You can break that link by unlinking a panel from the library after adding it from the panel's contextual menu.
@@ -112,9 +121,11 @@ This option requires that the session has already been [saved to the library](sa
 
 1. Go to **Dashboards**.
 2. Open or create the dashboard, then switch to **Edit** mode if necessary.
-3. Depending on the version you're using, select **Add from library**, or **Add** → **From library**.
+3. Select **Add**, then open the **From library** tab. In earlier versions, select **Add from library**.
 4. From the **Types** dropdown, select **Discover session**.
-5. Select the Discover session that you want to add, then select **X** to close the list.
+5. Select the Discover session that you want to add.
+
+**Result:** The session appears as a panel on the dashboard, linked to the library.
 
 If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
 
@@ -128,9 +139,11 @@ Use this option to create a single-tab Discover session directly on the dashboar
 
 You need permission to access Discover, and the dashboard must be in **Edit** mode.
 
-1. From the application menu, add a new **Discover session** panel.
-2. Configure the session: enter a query, adjust columns, sort, and apply other view settings as needed.
+1. Select **Add** → **New**, then select **Discover session**.
+2. Configure the session. It starts in {{esql}} mode with an empty query. Enter a query, adjust columns, sort, and apply other view settings as needed.
 3. Select **Save and return** in the application menu to add the configured panel to the dashboard.
+
+**Result:** The session appears as a panel on the dashboard, stored only with the dashboard.
 
 ## Manage Discover session panels on a dashboard [manage-discover-session-panels]
 
@@ -144,17 +157,20 @@ serverless: ga
 
 When editing a Discover session panel from a dashboard, you can save your changes as a new Discover session, instead of updating the panel in place. This works whether the panel was added from the library or created directly on the dashboard.
 
-1. On the dashboard, hover over the panel and select {icon}`pencil` **Edit Discover session configuration**. Discover opens in embedded editor mode.
-2. Make your changes in **Discover**.
-3. In the application menu, from the menu next to **Save and return**, select **Save as**.
-4. In the **Save Discover session** dialog, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-5. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the new session as a panel on a dashboard. The session is saved to the library in all cases.
+1. On the dashboard, hover over the panel and select {icon}`pencil` **Edit Discover session configuration**.
+2. If the panel was added from the library, select **Edit in Discover**. **Discover** opens in embedded editor mode.
+3. Make your changes in **Discover**.
+4. In the application menu, from the menu next to **Save and return**, select **Save as**.
+5. In the **Save Discover session** dialog, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
+6. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the new session as a panel on a dashboard. The session is saved to the library in all cases.
 
-   - **Existing**: The session is also added as a panel on a dashboard you choose.
+   - **Existing**: The session is also added as a new panel on a dashboard you choose. The original panel stays as it is.
    - **New**: The session is also added as a panel on a new dashboard.
-   - **None**: The session is saved to the library only.
+   - **None** (the default): The session is saved to the library only, and **Discover** shows the new session.
 
-6. Select **Save**.
+7. Select **Save**.
+
+**Result:** A new Discover session is saved with the title you entered.
 
 ### Choose which tab a session panel displays [discover-session-choose-tab]
 ```{applies_to}
@@ -162,9 +178,9 @@ stack: ga 9.4
 serverless: ga
 ```
 
-A Discover session panel displays one tab at a time. When the underlying session has multiple tabs, you can change which tab the panel shows.
+A Discover session panel displays one tab at a time. When the underlying session has multiple tabs, you can change which tab the panel shows. This applies to panels that you added from the library. A panel that you created on the dashboard has a single tab.
 
-1. On the dashboard, open the panel menu and select **Edit**.
+1. On the dashboard, hover over the panel and select {icon}`pencil` **Edit Discover session configuration**.
 2. From the tab selector, select the tab you want to display.
 
    :::{image} /explore-analyze/images/discover-session-tab-selector.png
@@ -173,7 +189,13 @@ A Discover session panel displays one tab at a time. When the underlying session
    :screenshot:
    :::
 
-3. Select **Apply**.
+3. Select **Apply**. To keep the tab that the panel showed before, select **Discard** instead.
+
+**Result:** The panel shows the tab you selected.
+
+## Next steps
+
+- [Arrange panels](../dashboards/arrange-panels.md): Position and resize the new panel on the dashboard.
 
 ## Related pages
 
