@@ -612,6 +612,8 @@ The step creates a new version only when `data` differs from the current content
 
 **Output shape:** `{ attachment_id: string, current_version: number }`. `current_version` is the new version number when the content changed, and the existing version number otherwise.
 
+The following example replaces the runbook's content, which creates version 2 of the attachment:
+
 ```yaml
 - name: update_runbook
   type: ai.attachment.update
