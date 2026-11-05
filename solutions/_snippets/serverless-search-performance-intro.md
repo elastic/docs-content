@@ -1,0 +1,1 @@
+In {{obs-serverless}} and {{sec-serverless}} projects, search is optimized for fast, responsive performance on data from the most recent day, while historical data remains available for broader analysis.
