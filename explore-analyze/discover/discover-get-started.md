@@ -53,13 +53,6 @@ Document flyout
 - {{esql}} mode: You write a query that defines the data, so you don't need a data view. The query can also filter, transform, and group results.
 - Classic mode: You select a [data view](../find-and-organize/data-views.md), search with [Kibana Query Language (KQL)](../query-filter/languages/kql.md) or [Lucene](../query-filter/languages/lucene-query-syntax.md), and add filters.
 
-The mode that **Discover** opens in by default depends on your version:
-
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Discover** opens in {{esql}} mode.
-- {applies_to}`stack: ga 9.0-9.5` **Discover** opens in classic mode.
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` After you switch modes, **Discover** remembers the last mode you used in your browser and opens new tabs and sessions in that mode.
-
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Each tab keeps its own query, so one tab can run an {{esql}} query while another uses classic mode.
 
 The steps for a task can differ between the two modes, and a few tasks work in only one. The guide for each task says which mode it covers. For the tasks that belong to a mode, refer to [Use Discover with {{esql}}](use-esql.md) and [Use Discover in classic mode](use-classic-mode.md). To see what happens to your query when you switch, refer to [Switch between {{esql}} and classic mode](switch-esql-mode.md).

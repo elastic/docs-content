@@ -15,6 +15,11 @@ description: Switch Discover between ES|QL and classic mode, and see what happen
 
 To switch between modes, and to see what Discover does with your query when you switch, use the following sections.
 
+The mode that Discover opens in by default depends on your version:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Discover opens in {{esql}} mode.
+- {applies_to}`stack: ga 9.0-9.5` Discover opens in classic mode.
+
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers the last query mode you used in your browser. New Discover tabs and sessions open in that mode.
 
 ## Before you begin
