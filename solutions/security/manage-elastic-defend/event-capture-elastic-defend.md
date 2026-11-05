@@ -17,6 +17,7 @@ products:
 
 You can supplement {{elastic-defend}}'s protection capabilities with additional [Elastic integrations](https://docs.elastic.co/en/integrations) and tools that provide more visibility and historical data. Consult the following sections to learn what {{elastic-defend}} collects for specific system events and how to expand data collection.
 
+The detailed event and API lists on this page cover Windows only. For other operating systems, {{elastic-defend}} collects a similar selective set of events, but this page doesn't list them. To see which event categories {{elastic-defend}} collects on each operating system, refer to [Event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection).
 
 ## Network port creation and deletion [_network_port_creation_and_deletion]
 
@@ -35,6 +36,8 @@ For complete network capture, consider deploying {{packetbeat}} using the [Netwo
 ## User behavior [_user_behavior]
 
 {{elastic-defend}} collects a selected set of user security events to support threat detection and prevention. It doesn't capture every user event, and the events it collects vary by operating system.
+
+### Windows user events [_windows_user_events]
 
 On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect the following Windows Security events and stores them in the `logs-endpoint.events.security-*` data stream. 
 
@@ -57,6 +60,8 @@ On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect t
 
 {{elastic-defend}} only captures system service security events required by its behavioral protection engine.
 
+### Windows service events [_windows_service_events]
+
 On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect the following Windows Security events and stores them in the `logs-endpoint.events.security-*` data stream. 
 
 | Windows event ID | Description |
@@ -71,6 +76,8 @@ For complete capture of all or specific Windows security events, consider the [C
 ## Scheduled task creation and modification [_scheduled_task_creation_and_modification]
 
 {{elastic-defend}} only captures scheduled task security events required by its behavioral protection engine.
+
+### Windows scheduled task events [_windows_scheduled_task_events]
 
 On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect the following Windows Security events and stores them in the `logs-endpoint.events.security-*` data stream. 
 
