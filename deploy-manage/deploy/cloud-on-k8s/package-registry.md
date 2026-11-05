@@ -56,7 +56,7 @@ Refer to the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{
 stack: ga 9.6+
 ```
 
-If your environment requires FIPS 140-3 validated cryptography, set `spec.image` to a `-fips` distribution tag. For details on the FIPS images, refer to [FIPS 140-3 images](/reference/fleet/air-gapped.md#air-gapped-diy-epr-fips). To also run the operator itself in FIPS mode, refer to [](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md).
+If your environment requires FIPS 140-3 validated cryptography, set `spec.image` to a `-fips` distribution tag. This example uses the `lite` distribution, which is what ECK deploys by default. For all packages, use `docker.elastic.co/package-registry/distribution:<version>-fips` instead. For details on the FIPS images, refer to [FIPS 140-3 images](/reference/fleet/air-gapped.md#air-gapped-diy-epr-fips). To also run the operator itself in FIPS mode, refer to [](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md).
 
 ```yaml subs=true
 apiVersion: packageregistry.k8s.elastic.co/v1alpha1
