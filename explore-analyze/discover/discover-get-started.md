@@ -106,4 +106,4 @@ If **Discover** asks you to add data or create a data view, refer to [Discover o
 ## Next steps [next-steps]
 
 - [Get started with {{esql}} in Discover](try-esql.md): Build your first query step by step.
-- [What you can do with Discover](../discover.md#what-you-can-do): Find the guide for what you want to do, from querying and shaping results to saving and sharing them.
+- [What you can do with Discover](../discover.md#what-you-can-do): Find what you want to do, from querying and shaping results to saving and sharing them.

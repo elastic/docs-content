@@ -26,7 +26,7 @@ type: overview
 
 ## What you can do with Discover [what-you-can-do]
 
-The guides for each task say which query mode they cover.
+Tasks that apply to only one query mode say so.
 
 **Query your data**
 
