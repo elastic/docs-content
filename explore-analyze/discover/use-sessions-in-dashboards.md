@@ -29,7 +29,7 @@ When a query in Discover produces a chart, you can save that chart as a visualiz
 ### In {{esql}} mode [add-discover-visualization-esql]
 
 1. In Discover, run an {{esql}} query that produces a chart.
-2. Next to the chart, select {icon}`addToDashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
+2. Next to the chart, select {icon}`add_to_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 3. Enter a title for the panel, and optionally a description.
 4. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 5. Select **Save and go to dashboard**.
@@ -80,7 +80,7 @@ From Discover, save the current view of the table to a new or existing dashboard
 
 The button isn't available when **Discover** is opened from another application, such as when editing a session panel from a dashboard, or when you can't create dashboards.
 
-1. In the documents table toolbar, select {icon}`addToDashboard` **Save table to dashboard**.
+1. In the documents table toolbar, select {icon}`add_to_dashboard` **Save table to dashboard**.
 2. Enter a title for the panel, and optionally a description.
 3. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 4. Select **Save and go to dashboard**.
