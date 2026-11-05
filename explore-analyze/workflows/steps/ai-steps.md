@@ -559,7 +559,7 @@ These steps follow the same access rules as the [conversation metadata steps](#a
 
 ### `ai.attachment.add` [ai-attachment-add]
 
-Add an attachment to a conversation.
+Add an attachment to a conversation. Provide the content directly in `data`, or set `origin` to copy it from a {{kib}} object, such as a dashboard.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
