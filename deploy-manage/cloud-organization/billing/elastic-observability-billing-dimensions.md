@@ -39,7 +39,11 @@ Your monthly bill is based on the capabilities you use. When you use {{obs-serve
 :::{include} _snippets/note-data-volumes-ingest-retention.md
 :::
 
-Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates, or you can create a [Serverless estimate](https://cloud.elastic.co/pricing/serverless?s=observability).
+Charges like these, which depend on your project type, are called *project charges*. Project charges also include features such as [Agent Builder](#observability-billing-agent-builder-executions) and [{{cps}}](#observability-billing-cps), whose pricing depends on your project type.
+
+Your bill can also include [add-ons](#observability-billing-add-ons) and [organization charges](#observability-billing-organization-charges). To learn more about billing dimension categories, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
+
+Refer to the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates, or you can create a [Serverless estimate](https://cloud.elastic.co/pricing/serverless?s=observability).
 
 ## Synthetics [synthetics-billing]
 
@@ -48,13 +52,27 @@ Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.m
 :::{include} _snippets/agent-builder-executions-billing.md
 :::
 
+## {{cps-cap}} [observability-billing-cps]
+
+[{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
+
+:::{include} /deploy-manage/_snippets/cps-billing.md
+:::
+
+## Add-ons [observability-billing-add-ons]
+
+Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
+
 :::{include} _snippets/workflow-executions-billing.md
 :::
 
-## Elastic Managed LLMs [observability-billing-elastic-managed-llms]
+### Elastic Managed LLMs [observability-billing-elastic-managed-llms]
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Observability Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with Agent Builder and other applicable AI features as a part of the "Observability Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
 
-## Related billing dimensions [observability-billing-related]
+## Organization charges [observability-billing-organization-charges]
 
-Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out), [support](serverless-project-billing-dimensions.md#general-serverless-billing-support), and [{{cps}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps) might also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).
+These charges apply regardless of which product you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
+:::

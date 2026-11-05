@@ -1,4 +1,4 @@
-## Workflow executions [{{wfe-anchor}}]
+### Workflow executions [{{wfe-anchor}}]
 
 {{wfe-preamble}}
 

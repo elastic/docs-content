@@ -33,6 +33,10 @@ Your monthly bill is calculated based on these components:
 * **Ingest** - Measured by the volume of data you ingest into your project over the course of a month, in GB.
 * **Infrastructure fee** - A recurring project fee. Usage is metered by the hour for as long as the project exists, so a full month looks like a flat monthly charge and partial months are pro-rated.
 
+Charges like these, which depend on your project type, are called *project charges*. Project charges also include features such as [Agent Builder](#vector-database-billing-agent-builder-executions) and [{{cps}}](#vector-database-billing-cps), whose pricing depends on your project type. This page also explains how to [manage costs](#vector-database-billing-managing-costs) related to these charges.
+
+Your bill can also include [add-ons](#vector-database-billing-add-ons) and [organization charges](#vector-database-billing-organization-charges). To learn more about billing dimension categories, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
+
 For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or the [{{serverless-full}} pricing](https://cloud.elastic.co/pricing/serverless?s=vectordb) pages.
 
 ## Storage [vector-database-billing-storage]
@@ -59,6 +63,16 @@ You are billed an infrastructure fee for as long as the project exists. Elastic 
 
 There is no separate control to pause or make a project unavailable. To stop infrastructure charges, [delete the project](/deploy-manage/uninstall/delete-a-cloud-deployment.md).
 
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
+
+## {{cps-cap}} [vector-database-billing-cps]
+
+[{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
+
+:::{include} /deploy-manage/_snippets/cps-billing.md
+:::
+
 ## Managing {{vectordb}} costs [vector-database-billing-managing-costs]
 
 {{vectordb}} costs follow your storage footprint, search resource allocation, ingest volume, and the infrastructure fee for the time your project exists. To balance performance with spend, adjust the controls described in this section.
@@ -67,16 +81,20 @@ There is no separate control to pause or make a project unavailable. To stop inf
 
 [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) reserves search capacity for your project. Start at the default of **100**, measure latency and throughput for your workload, then increase Search Power if you need more capacity. You increase Search Power in increments of 100. Higher Search Power increases search charges in proportion to the setting and your active storage. You can increase Search Power up to **1900**.
 
-:::{include} _snippets/agent-builder-executions-billing.md
-:::
+## Add-ons [vector-database-billing-add-ons]
+
+Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
 
 :::{include} _snippets/workflow-executions-billing.md
 :::
 
-## Elastic Managed LLMs [vector-database-billing-elastic-managed-llms]
+### Elastic Managed LLMs [vector-database-billing-elastic-managed-llms]
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. Using Elastic Managed LLMs consumes tokens and incurs token-based billing in addition to the other billing dimensions of your project. For current rates, refer to the [{{es}} {{vectordb}} pricing page](https://cloud.elastic.co/pricing/serverless?s=vectordb).
 
-## Related billing dimensions [vector-database-billing-related]
+## Organization charges [vector-database-billing-organization-charges]
 
-Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out), [support](serverless-project-billing-dimensions.md#general-serverless-billing-support), and [{{cps}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps) might also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).
+These charges apply regardless of which product you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
+:::

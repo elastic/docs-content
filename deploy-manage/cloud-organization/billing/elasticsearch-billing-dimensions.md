@@ -36,6 +36,10 @@ The number of VCUs you need is determined by:
 * Search Power setting
 * Machine learning usage
 
+Charges like these, which depend on your project type, are called *project charges*. Project charges also include features such as [Agent Builder](#elasticsearch-billing-agent-builder-executions) and [{{cps}}](#elasticsearch-billing-cps), whose pricing depends on your project type. This page also explains how to [manage costs](#elasticsearch-billing-managing-elasticsearch-costs) related to these charges. 
+
+Your bill can also include [add-ons](#elasticsearch-billing-add-ons) and [organization charges](#elasticsearch-billing-organization-charges). To learn more about billing dimension categories, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
+
 For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pricing page](https://www.elastic.co/pricing/serverless-search).
 
 ## VCU types: search, ingest, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
@@ -52,6 +56,16 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 ## Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
+
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
+
+## {{cps-cap}} [elasticsearch-billing-cps]
+
+[{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
+
+:::{include} /deploy-manage/_snippets/cps-billing.md
+:::
 
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 
@@ -97,16 +111,20 @@ When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasti
 
   The `vector` option is recommended only for uncompressed dense vectors ([dense_vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields with `int4` or `int8` quantization strategies) and high dimensionality. Though the per VCU cost is the same for general purpose and vector profiles, the latter allocates more VCUs for searchable data. This leads to higher VCU consumption in order to improve the performance for uncompressed vector data.
 
-:::{include} _snippets/agent-builder-executions-billing.md
-:::
+## Add-ons [elasticsearch-billing-add-ons]
+
+Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
 
 :::{include} _snippets/workflow-executions-billing.md
 :::
 
-## Elastic Managed LLMs [elasticsearch-billing-elastic-managed-llms]
+### Elastic Managed LLMs [elasticsearch-billing-elastic-managed-llms]
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) can power AI features in {{es-serverless}} projects, such as Agent Builder and AI Assistant, and are enabled by default. Using Elastic Managed LLMs consumes tokens and incurs token-based billing in addition to the other billing dimensions of your project.
 
-## Related billing dimensions [elasticsearch-billing-related]
+## Organization charges [elasticsearch-billing-organization-charges]
 
-Shared {{serverless-short}} add-ons such as [data out](serverless-project-billing-dimensions.md#general-serverless-billing-data-out), [support](serverless-project-billing-dimensions.md#general-serverless-billing-support), and [{{cps}}](serverless-project-billing-dimensions.md#general-serverless-billing-cps) might also appear on your bill. Refer to [](serverless-project-billing-dimensions.md).
+These charges apply regardless of which product you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
+:::

@@ -10,70 +10,37 @@ products:
 
 # Serverless project billing dimensions [general-serverless-billing]
 
-{{serverless-full}} billing is based on your usage across these dimensions:
+{{serverless-full}} billing is based on your usage across these categories of billing dimensions:
 
-* [Offerings](#offerings)
+* [Project charges](#project-charges)
+* [Organization charges](#organization-charges)
 * [Add-ons](#add-ons)
 
 Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or you can create an [Elastic Cloud Serverless Estimate](https://cloud.elastic.co/pricing/serverless).
 
-## Offerings [offerings] 
-
-To learn about billing dimensions for specific offerings, refer to:
+This page describes each category and how it applies to your projects. For details, refer to the billing dimensions page for your project type:
 
 * [](elasticsearch-billing-dimensions.md)
 * [](vector-database-billing-dimensions.md)
 * [](elastic-observability-billing-dimensions.md)
 * [](security-billing-dimensions.md)
 
+## Project charges [project-charges]
 
-## Add-ons [add-ons] 
+Each project type, or *offering*, is billed based on dimensions that best reflect how that kind of project is used. For example, an [{{obs-serverless}}](elastic-observability-billing-dimensions.md) project is billed based on the volume of data it ingests and retains. An [{{es-serverless}}](elasticsearch-billing-dimensions.md) project is billed for the compute it uses to ingest and search your data, measured in VCUs.
 
+Some billing dimensions are part of only certain offerings, such as [Synthetics](elastic-observability-billing-dimensions.md#synthetics-billing) for {{observability}}, and [Endpoint Protection](security-billing-dimensions.md#security-billing-endpoint-protection) and [Cloud Protection](security-billing-dimensions.md#security-billing-cloud-protection) for {{elastic-sec}}.
 
-### Data out [general-serverless-billing-data-out] 
+Some features that are available in more than one offering, such as [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) and [{{cps}}](/explore-analyze/cross-project-search.md), are priced differently depending on the project type.
+## Organization charges [organization-charges]
 
-*Data out* accounts for all of the traffic coming out of a serverless project. This includes search results, as well as monitoring data sent from the project. The same rate applies regardless of the destination of the data, whether to the internet, another region, or a cloud provider account in the same region. Data coming out of the project through AWS PrivateLink, GCP Private Service Connect, or Azure Private Link is also considered data out.
+These charges apply regardless of which project type you use, and include data out and support.
 
+:::{include} _snippets/serverless-organization-charges.md
+:::
 
-### Support [general-serverless-billing-support] 
+## Add-ons [add-ons]
 
-If your subscription level is Standard, there is no separate charge for Support reflected on your bill. If your subscription level is Gold, Platinum, or Enterprise, a charge is made for Support as a percentage (%) of the ECUs. To find out more about our support levels, go to [https://www.elastic.co/support](https://www.elastic.co/support).
+Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project. Add-ons include [Workflows](/explore-analyze/workflows.md), which are billed based on the number of successful workflow executions, and [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), which are billed based on token usage. 
 
-
-### {{cps-cap}} [general-serverless-billing-cps]
-
-[{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
-
-::::{include} /deploy-manage/_snippets/cps-billing.md
-::::
-
-
-### Agent Builder Executions [general-serverless-billing-agent-builder]
-
-Agent Builder usage is billed in addition to the other billing dimensions of your project. Free allocations and requirements depend on your project type. For details, refer to Agent Builder Executions for your project type:
-
-* [{{es-serverless}}](elasticsearch-billing-dimensions.md#elasticsearch-billing-agent-builder-executions)
-* [{{es}} {{vectordb}}](vector-database-billing-dimensions.md#vector-database-billing-agent-builder-executions)
-* [{{obs-serverless}}](elastic-observability-billing-dimensions.md#observability-billing-agent-builder-executions)
-* [{{elastic-sec}}](security-billing-dimensions.md#security-billing-agent-builder-executions)
-
-
-### Workflow Executions [general-serverless-billing-workflow-executions]
-
-Workflow usage is billed in addition to the other billing dimensions of your project. Free allocations and requirements depend on your project type. For details, refer to Workflow Executions for your project type:
-
-* [{{es-serverless}}](elasticsearch-billing-dimensions.md#elasticsearch-billing-workflow-executions)
-* [{{es}} {{vectordb}}](vector-database-billing-dimensions.md#vector-database-billing-workflow-executions)
-* [{{obs-serverless}}](elastic-observability-billing-dimensions.md#observability-billing-workflow-executions)
-* [{{elastic-sec}}](security-billing-dimensions.md#security-billing-workflow-executions)
-
-
-### Elastic Managed LLMs [general-serverless-billing-elastic-managed-llms]
-
-Using Elastic Managed LLMs consumes tokens and incurs token-based billing in addition to the other billing dimensions of your project. For details, refer to Elastic Managed LLMs for your project type:
-
-* [{{es-serverless}}](elasticsearch-billing-dimensions.md#elasticsearch-billing-elastic-managed-llms)
-* [{{es}} {{vectordb}}](vector-database-billing-dimensions.md#vector-database-billing-elastic-managed-llms)
-* [{{obs-serverless}}](elastic-observability-billing-dimensions.md#observability-billing-elastic-managed-llms)
-* [{{elastic-sec}}](security-billing-dimensions.md#security-billing-elastic-managed-llms)
-
+Add-ons are priced the same for all project types, but their availability depends on your project type and [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md). For details, refer to the billing dimensions page for your project type.
