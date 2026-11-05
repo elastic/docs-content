@@ -70,63 +70,35 @@ Before you run a kNN search, use this checklist to confirm that your vectors are
 
 Confirm that the document contains embeddings in the expected field.
 
-Select your version, then use the example for your field type:
+Select your deployment type or the {{stack}} version in which the index was created, then use the example for your field type. Upgrading {{stack}} doesn't change this behavior for existing indices.
 
 :::::::{applies-switch}
 ::::::{applies-item} { stack: ga 9.2+, serverless: ga }
 :::::{tab-set}
 ::::{tab-item} `dense_vector`
-To retrieve the embeddings for a document, request the `dense_vector` field by name:
+Retrieve the document by ID and include only the `dense_vector` field. Replace `my-index`, `1`, and `dense-vector-field` with the values for your document:
 
 ```console
-POST my-index/_search
-{
-  "_source": false,
-  "query": {
-    "ids": {
-      "values": ["1"] <1>
-    }
-  },
-  "fields": ["dense-vector-field"] <2>
-}
+GET my-index/_doc/1?_source_includes=dense-vector-field
 ```
 
-1. Identifies the document to check. Replace `1` with the ID of a document you indexed.
-2. Requests the vector field. Replace `dense-vector-field` with the name of your `dense_vector` field.
-
-A stored vector appears under `fields` as an array of numbers.
+A stored vector appears in `_source` as an array of numbers.
 
 :::{dropdown} Example response
 :open:
 ```console-result
 {
-  "took": 2,
-  "timed_out": false,
-  "_shards": {
-    "total": 6,
-    "successful": 6,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": {
-    "total": {
-      "value": 1,
-      "relation": "eq"
-    },
-    "max_score": 1,
-    "hits": [
-      {
-        "_index": "my-index",
-        "_id": "1",
-        "_score": 1,
-        "fields": {
-          "embedding": [ <1>
-            1,
-            0,
-            0
-          ]
-        }
-      }
+  "_index": "my-index",
+  "_id": "1",
+  "_version": 1,
+  "_seq_no": 0,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "dense-vector-field": [ <1>
+      1,
+      0,
+      0
     ]
   }
 }
@@ -227,13 +199,13 @@ Stored embeddings appear under `_inference_fields` in `_source`.
 ::::::{applies-item} stack: ga 9.0-9.1
 :::::{tab-set}
 ::::{tab-item} `dense_vector`
-Retrieve a document by ID. Replace `my-index` with your index name and `1` with the ID of a document you indexed:
+Retrieve the document by ID and include only the `dense_vector` field. Replace `my-index`, `1`, and `dense-vector-field` with the values for your document:
 
 ```console
-GET my-index/_doc/1
+GET my-index/_doc/1?_source_includes=dense-vector-field
 ```
 
-A stored vector appears in `_source` as an array of numbers under the name of the `dense_vector` field.
+A stored vector appears in `_source` as an array of numbers.
 
 :::{dropdown} Example response
 :open:
@@ -246,8 +218,7 @@ A stored vector appears in `_source` as an array of numbers under the name of th
   "_primary_term": 1,
   "found": true,
   "_source": {
-    "title": "Test document",
-    "embedding": [ <1>
+    "dense-vector-field": [ <1>
       1,
       0,
       0
@@ -256,7 +227,7 @@ A stored vector appears in `_source` as an array of numbers under the name of th
 }
 ```
 
-1. The stored vector values. The presence of this array confirms that the document has a vector.
+1. The stored vector values. The presence of this array confirms that the document has a vector in the requested field.
 :::
 ::::
 ::::{tab-item} `semantic_text`
@@ -355,7 +326,7 @@ Confirm that the field mapping supports kNN search.
 
 The field mapping controls how {{es}} stores and searches embeddings. A kNN search can search:
 
-- A `dense_vector` field.
+- A `dense_vector` field with `index: true`.
 - A `semantic_text` field that uses a dense embedding model.
 
 It can't search a `sparse_vector` field or a `semantic_text` field that uses a sparse embedding model such as ELSER. Use a [`sparse_vector` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md) or a `match` query on the `semantic_text` field instead.
@@ -373,6 +344,8 @@ GET my-index/_mapping
 Confirm the following:
 
 - `type` is `dense_vector`.
+- `index` is `true`. A kNN search can't run on a field with `index: false`.
+- `dims` matches the number of dimensions in the query vectors.
 
 :::{dropdown} Example response
 :open:
@@ -383,8 +356,8 @@ Confirm the following:
       "properties": {
         "embedding": {
           "type": "dense_vector", <1>
-          "dims": 3,
-          "index": true,
+          "dims": 3, <2>
+          "index": true, <3>
           "similarity": "cosine",
           "index_options": {
             "type": "bbq_disk",
@@ -407,6 +380,8 @@ Confirm the following:
 ```
 
 1. Confirms that the field stores dense vectors.
+2. The number of dimensions in each stored vector. Query vectors must have the same number of dimensions.
+3. Confirms that the field is indexed and supports kNN search.
 :::
 ::::
 ::::{tab-item} `semantic_text`
@@ -419,7 +394,7 @@ GET my-index/_mapping
 Confirm the following:
 
 - `type` is `semantic_text`.
-- `model_settings.task_type` is `text_embedding` or `embedding`, not `sparse_embedding`.
+- `model_settings.task_type` isn't `sparse_embedding`, which isn't compatible with kNN search.
 
 :::{dropdown} Example response
 :open:
@@ -457,8 +432,8 @@ Before you search, confirm which model generated the indexed vectors. The query 
 
 Use the example for your field type:
 
-:::::{tab-set}
-::::{tab-item} `dense_vector`
+:::::::{tab-set}
+::::::{tab-item} `dense_vector`
 A `dense_vector` field doesn't record which model generated its vectors. If an {{infer}} processor generated the document embeddings, retrieve the ingest pipeline that processed the document:
 
 ```console
@@ -496,12 +471,22 @@ Check that the {{infer}} endpoint is still available. Use the `model_id` from th
 GET _inference/.jina-embeddings-v5-text-small
 ```
 
+If `model_id` refers to a trained model instead of an {{infer}} endpoint, check the model deployment:
+
+```console
+GET _ml/trained_models/my-model/_stats
+```
+
 Use the same model to generate the query vector.
 
 If you generated the vectors outside {{es}}, check the configuration of the application that generated them. {{es}} can't determine the model from the stored vectors.
-::::
+::::::
 
-::::{tab-item} `semantic_text`
+::::::{tab-item} `semantic_text`
+Select your deployment type or the {{stack}} version in which the index was created:
+
+:::::{applies-switch}
+::::{applies-item} { stack: ga 9.2+, serverless: ga }
 Retrieve a document and include its stored embeddings. Replace `my-index` with your index name and `1` with the document ID:
 
 ```console
@@ -590,7 +575,97 @@ GET _inference/.jina-embeddings-v5-text-small
 
 Use the same model to generate the query vector.
 ::::
+
+::::{applies-item} stack: ga 9.0-9.1
+Request the internal inference fields for a document. Replace `my-index` with your index name and `1` with the document ID:
+
+```console
+POST my-index/_search
+{
+  "query": {
+    "ids": {
+      "values": ["1"]
+    }
+  },
+  "fields": ["_inference_fields"]
+}
+```
+
+:::{dropdown} Example response
+:open:
+```console-result
+{
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "my-index",
+        "_id": "1",
+        "_score": 1,
+        "_source": {
+          "content": "Paris is the capital of France.",
+          "_inference_fields": {
+            "content": {
+              "inference": {
+                "inference_id": ".multilingual-e5-small-elasticsearch", <1>
+                "model_settings": {
+                  "service": "elasticsearch",
+                  "task_type": "text_embedding",
+                  "dimensions": 384,
+                  "similarity": "cosine",
+                  "element_type": "float"
+                },
+                "chunks": {
+                  "content": [
+                    {
+                      "start_offset": 0,
+                      "end_offset": 31,
+                      "embeddings": [
+                        0.007674215,
+                        -0.0059343106,
+                        0.023091488,
+                        ...
+                        0.07972942
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+1. The {{infer}} endpoint that generated the stored embedding.
+:::
+
+Check that the {{infer}} endpoint is still available. Use the `inference_id` from the document, for example:
+
+```console
+GET _inference/.multilingual-e5-small-elasticsearch
+```
+
+Use the same model to generate the query vector.
+::::
 :::::
+::::::
+:::::::
 
 ### Check that search returns the expected document [verify-embeddings-query]
 
@@ -604,12 +679,12 @@ Use the example for your field type:
 POST my-index/_search
 {
   "knn": {
-    "field": "dense-vector-field",
+    "field": "embedding",
     "k": 5,
     "num_candidates": 50,
     "query_vector_builder": {
       "text_embedding": {
-        "model_id": "my-inference-endpoint",
+        "model_id": ".jina-embeddings-v5-text-small",
         "model_text": "Paris is the capital of France." <1>
       }
     }
@@ -651,8 +726,8 @@ POST my-index/_search
 }
 ```
 
-1. With the default `cosine` similarity, `_score` falls between 0 and 1. A score close to 1 means the vectors point in the same direction. When the query text is the document text and both vectors come from the same model, expect a score close to 1.
-2. Confirms that the expected document is the top result.
+1. The high `_score` indicates a strong match.
+2. The expected document is the top result.
 :::
 ::::
 
@@ -662,7 +737,7 @@ POST my-index/_search
 {
   "query": {
     "knn": {
-      "field": "semantic-text-field",
+      "field": "content",
       "k": 1,
       "num_candidates": 10,
       "query_vector_builder": {
@@ -709,8 +784,8 @@ POST my-index/_search
 }
 ```
 
-1. With the default `cosine` similarity, `_score` falls between 0 and 1. A score close to 1 means the vectors point in the same direction. When the query text is the document text and both vectors come from the same model, expect a score close to 1.
-2. Confirms that the expected document is the top result.
+1. The high `_score` indicates a strong match.
+2. The expected document is the top result.
 :::
 ::::
 :::::
