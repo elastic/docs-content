@@ -258,7 +258,7 @@ When a custom panel has a query, it responds to filters and options active on th
 
 A panel without a query renders the same content regardless of the dashboard state.
 
-To find out why a panel with a query shows unexpected rows or columns, open the panel menu and select **Inspect**. The **Inspector** shows the {{esql}} request with the dashboard's query bar, filters, time range, and variable controls applied, and the response that {{es}} returned. For the steps to read them, refer to [View the panel data and requests](/explore-analyze/dashboards/using.md#download-csv).
+To find out why a panel with a query shows unexpected rows or columns, open the panel menu and select **Inspect**. The **Inspector** shows the {{esql}} request with the dashboard's query bar, filters, time range, and variable controls applied, and the response that {{es}} returned. For the full procedure, refer to [View the panel data and requests](/explore-analyze/dashboards/using.md#download-csv).
 
 ### Connect the panel to the time filter [custom-panels-time-filter]
 
