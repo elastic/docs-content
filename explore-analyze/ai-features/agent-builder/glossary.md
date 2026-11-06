@@ -141,7 +141,7 @@ Custom tool
 
 $$$customize-accordion$$$
 Customize accordion {applies_to}`stack: ga 9.4+`
-:   The expandable section in the standalone-mode left sidebar that groups the agent-scoped configuration pages: Overview, Skills, Plugins, and Tools. See [](standalone-and-flyout-modes.md#sidebar-mode).
+:   The expandable section in the standalone-mode left sidebar that groups the agent-scoped configuration pages: Overview, Skills, Plugins, Connectors, and Tools. **Connectors** appears in {{stack}} 9.6 and later and in {{serverless-short}}. See [](standalone-and-flyout-modes.md#sidebar-mode).
 
 ## D
 
