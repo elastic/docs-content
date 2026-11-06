@@ -108,6 +108,7 @@ Event-driven triggers run workflows when a platform event occurs:
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Security triggers** fire when {{elastic-sec}} detection alerts, attack discoveries, or document notes change. The family includes `security.alertStatusChanged`, `security.alertTagsChanged`, `security.alertAssigneesChanged`, `security.attackStatusChanged`, `security.attackTagsChanged`, `security.attackAssigneesChanged`, `security.noteCreated`, and `security.noteUpdated`.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}** fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system}}** fire when someone creates, updates, deletes, enables, or disables a rule. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **{{agent-builder}} triggers** fire when a conversation attachment is added, updated, or deleted, or when conversation metadata changes. `ai.conversation.updated` also fires for other conversation changes, but only for conversation templates that have it turned on. The family includes `ai.attachmentAdded`, `ai.attachmentUpdated`, `ai.attachmentDeleted`, `ai.conversation.metadataUpdated`, and `ai.conversation.updated`.
 
 Event-driven trigger example:
 
@@ -128,6 +129,7 @@ Each trigger family suits a different kind of automation:
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Respond to triage in {{elastic-sec}}**: Use a security trigger to act when someone changes the status, tags, or assignees of detection alerts or attack discoveries, or adds or updates a note on a document.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Follow up on alert triage in {{alerting-v2-system}}**: Use an alert lifecycle trigger for a one-time action after someone triages an alert, such as opening a ticket when someone assigns it or posting a message when someone resolves it.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Track rule changes in {{alerting-v2-system}}**: Use a rule lifecycle trigger to audit rule management actions, sync your rule inventory with an external system, or notify a channel when someone changes a rule.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **React to {{agent-builder}} conversation changes**: Use a trigger to respond to attachment changes, metadata updates, and, for supported conversation templates, new messages and other conversation changes.
 
 ## Trigger context
 
@@ -143,6 +145,7 @@ Each trigger type provides different data to the workflow context through the `e
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Security triggers provide `event.alertIds` or `event.attackIds` alongside `event.truncated`, and event-specific fields (status changes carry `status` and `previousStatuses`; tag and assignee changes carry the added and removed values). The note triggers provide `event.noteId`, `event.documentId`, and the acting user.
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Alert lifecycle triggers in {{alerting-v2-system}} provide `event.alertId`, `event.ruleId`, and `event.spaceId`.
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Rule lifecycle triggers in {{alerting-v2-system}} provide `event.rule.ruleId`, `event.rule.spaceId`, and `event.rule.tags`.
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` {{agent-builder}} triggers provide `event.conversationId` and event-specific fields. Attachment triggers also provide `event.attachmentId`, `event.attachmentType`, and `event.source`.
 
   Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) for the full payload shapes.
 
