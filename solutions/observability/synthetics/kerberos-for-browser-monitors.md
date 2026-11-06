@@ -15,7 +15,7 @@ products:
 
 Kerberos authentication enables monitoring on single sign-on (SSO) protected sites, usually behind Microsoft Active Directory.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` HTTP monitors reach Kerberos-protected endpoints a different way. Rather than the Chromium settings described here, they take a `kerberos` block in the monitor configuration, and they can run from Elastic managed locations as well as {{private-location}}s. For the fields that block takes, refer to the [HTTP options](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-http).
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` HTTP monitors reach Kerberos-protected endpoints a different way. Rather than the Chromium settings described here, they take a `kerberos` block in the monitor configuration. Like browser monitors, they only run from {{private-location}}s. For the fields that block takes, refer to the [HTTP options](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-http).
 
 :::{admonition} Requirements
 * Kerberos authentication works for **Private Locations only**. It does not work from Elastic's managed global locations.
