@@ -33,7 +33,7 @@ Production guidelines and concepts described in this section apply to all [deplo
 However, certain parts may be relevant only to self-managed clusters, as orchestration systems automate some of the configurations discussed here. Check the [badges](/get-started/versioning-availability.md#availability-of-features) on each document or section to confirm whether the content applies to your deployment type.
 
 ::::{note}
-**{{serverless-full}}** projects are fully managed and automatically scaled by Elastic. Your project’s performance and general data retention are controlled by the [Search AI Lake settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
+**{{serverless-full}}** projects are fully managed and automatically scaled by Elastic. Your project’s performance and general data retention are controlled by [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
 ::::
 
 ## Other Elastic products
