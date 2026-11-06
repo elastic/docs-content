@@ -33,7 +33,7 @@ This procedure uses the [Elastic AI Agent](/explore-analyze/ai-features/agent-bu
 * Ensure **AI Agent** is the chat experience for your space. Refer to [Switch between chat experiences](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 * To include entity risk scores in the analysis, turn on [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 * To correlate alerts with {{elastic-sec}} Labs threat intelligence, install **Security labs** content from **GenAI Settings**. Refer to [Security labs content](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#security-labs-content).
-* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To control which alert field values are anonymized before they're sent to the LLM, open **Stack Management**, then select **Anonymization** in the **AI** section. This requires elevated privieleges. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management) for more details.
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To mask sensitive values, such as email addresses, IP addresses, and host names, before they're sent to the LLM, turn on masking on the **Anonymization** page. Refer to [](/explore-analyze/ai-features/anonymize-ai-requests.md).
 
 ### Triage a specific alert [triage-alerts-agent-builder-single]
 

@@ -234,7 +234,7 @@ Each of the following privileges controls access to a different feature.
 | Privilege | What it allows |
 | --- | --- |
 | **Streams** {applies_to}`stack: ga 9.1+` | Access [Streams](/solutions/observability/streams/streams.md), and change stream processing, retention, and routing.<br> {applies_to}`stack: ga =9.1` This privilege is in the **Observability** group. |
-| **AI Anonymization** {applies_to}`stack: ga 9.4+` | Change the anonymization rules that control which field values are masked before they're sent to a large language model. |
+| **AI Anonymization** {applies_to}`stack: ga 9.4+` | Change the anonymization rules that control which field values are masked before they're sent to a large language model.<br>{applies_to}`stack: preview 9.6+` This privilege doesn't grant access to the [**Anonymization** page for AI requests](/explore-analyze/ai-features/anonymize-ai-requests.md). That page requires **All** for **Advanced Settings** and **Read** or **All** for **Actions and Connectors**. |
 | **Dev Tools** | Access [Console](/explore-analyze/query-filter/tools/console.md), {{searchprofiler}}, and Grok Debugger. Users also need the matching {{es}} cluster and index privileges for the requests they run. |
 | **Advanced Settings** | Change the settings that control how {{kib}} behaves in a space, such as the default index pattern and date format. |
 | **Data View Management** | Create and edit [{{data-sources}}](/explore-analyze/find-and-organize/data-views.md). |
