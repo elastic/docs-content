@@ -61,28 +61,29 @@ Document flyout
 
 ## Context-aware experiences [context-aware-discover]
 
-**Discover** adapts to the kind of data you explore. When it recognizes your data, it switches to a tailored experience, with columns, charts, and document details that suit that data. For example, log data opens with log-specific columns and details, and security alerts get color-coded row indicators. This is called a context-aware experience.
+**Discover** adapts to the kind of data you explore. When it recognizes your data, it switches to a tailored experience with columns, charts, and document details that suit that data. For example, log data opens with log-specific columns and details, and security alerts get color-coded row indicators. This is called a context-aware experience. When none applies, you get the default **Discover** experience, with all its core functionality for general-purpose data exploration.
 
-Which experiences you can get depends on where you open **Discover** from, and then on the data you query.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The active experience also shapes [AI-powered analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces, the AI agent receives guidance for that type of data. Refer to [How the analysis adapts to your data](analyze-discover-data-with-ai.md#context-aware-deep-analysis).
 
-**In {{observability}} projects and [solution views](/deploy-manage/manage-spaces.md)**, **Discover** automatically switches to one of these experiences, depending on the data you query:
+The experiences you can get depend on where you open **Discover** from, such as a project type or the [solution view](/deploy-manage/manage-spaces.md) of a space, and then on the data you query:
 
-* [Logs exploration](/solutions/observability/logs/discover-logs.md): Explore log data.
-* [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md): Explore metrics data that you query in {{esql}} mode with the `TS` command.
-* [Traces exploration](/solutions/observability/apm/discover-traces.md): Explore trace data.
+|  | [Logs experience](/solutions/observability/logs/discover-logs.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.2-9.3` [Metrics experience](/solutions/observability/infra-and-hosts/discover-metrics.md) | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1+` [Traces experience](/solutions/observability/apm/discover-traces.md) | [Security alerts and events experience](/solutions/security/investigate/discover-security.md) |
+| --- | --- | --- | --- | --- |
+| {{observability}} projects and solution views | Yes | Yes [\[1\]](#note-metrics) | Yes [\[2\]](#note-traces) | No |
+| Security projects and solution views | No | Yes [\[1\]](#note-metrics) | No | Yes |
+| {{es}} solution views | No | Yes [\[1\]](#note-metrics) | No | No |
+| {{es-serverless}} projects | No | No | No | No |
+| Classic solution views [\[3\]](#classic-setting-note) | {applies_to}`stack: ga 9.6+` Yes [\[4\]](#note-logs-classic) | Yes [\[1\]](#note-metrics) | {applies_to}`stack: preview 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes [\[5\]](#note-security-classic) |
 
-**In Security projects and [solution views](/deploy-manage/manage-spaces.md)**, **Discover** automatically switches to one of these experiences, depending on the data you query:
+$$$note-metrics$$$\[1\] The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command. In {{serverless-short}} projects, it also needs the Observability Complete or Security Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
 
-* [Security data exploration](/solutions/security/investigate/discover-security.md): Explore security alerts and events.
-* [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md): Explore metrics data that you query in {{esql}} mode with the `TS` command.
+$$$note-traces$$$\[2\] In {{serverless-short}} projects, the traces experience needs the Observability Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
 
-{applies_to}`stack: ga 9.6+` **In spaces with the Classic [solution view](/deploy-manage/manage-spaces.md)**, the traces and Security experiences can also apply when you query matching data. These experiences apply as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
+$$$classic-setting-note$$$\[3\] {applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs, traces, and Security experiences apply only while the [**Contextual profiles in Classic navigation**](kibana://reference/advanced-settings.md#discover-enablesolutionprofilesinclassic) advanced setting is on, which it is by default. The setting name uses "profiles" to mean context-aware experiences.
 
-{applies_to}`stack: ga 9.6+` In the Classic solution view, the logs experience applies only when you query data from one of these integrations: Apache error logs, AWS S3 access logs, Kubernetes container logs, Nginx access logs, Nginx error logs, or System logs. Other log data, such as `logs-*`, `filebeat-*`, or Windows logs, keeps the default experience. To get the logs experience for any log data, use the {{observability}} solution view.
+$$$note-logs-classic$$$\[4\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the logs experience applies only to data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
 
-When you open **Discover** outside of these contexts, or query data without a tailored experience, you get the default **Discover** experience with all its core functionality for general-purpose data exploration.
-
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The active experience also shapes [AI-powered analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces, the AI agent receives guidance that suits that type of data. For what changes for each type, refer to [How the analysis adapts to your data](analyze-discover-data-with-ai.md#context-aware-deep-analysis).
+$$$note-security-classic$$$\[5\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the Security experience applies when you use a Security {{data-source}} or when your {{data-source}} or query targets only Security data. For details, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
 ### When you query several kinds of data [view-active-context-aware-experience]
 
