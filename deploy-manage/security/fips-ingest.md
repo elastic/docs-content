@@ -17,11 +17,11 @@ applies_to:
 | {{agent}} | 9.1–9.5 on Linux | 9.6+ on Linux, Windows, and macOS |
 | {{fleet-server}} | 9.1–9.5 on Linux | 9.6+ on Linux and Windows |
 | {{filebeat}} and {{metricbeat}} | 9.1–9.5 on Linux | 9.6+ on Linux and Windows |
-| {{apm-server}} | 9.1–9.2, 9.3.0–9.3.7, and 9.4.0–9.4.3 on Linux | 9.3.8+, 9.4.4+, and 9.5+ on Linux |
+| {{apm-server}} | 9.1–9.5 on Linux | 9.6+ on Linux |
 
 FIPS 140-3 binaries use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library, which is validated under the Cryptographic Module Validation Program (CMVP). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
-{applies_to}`stack: ga 9.6+` {{agent}}, {{fleet-server}}, {{filebeat}}, and {{metricbeat}} are FIPS 140-3 compliant. The 9.6 binaries use module version v1.0.0 (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
+{applies_to}`stack: ga 9.6+` {{agent}}, {{fleet-server}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are FIPS 140-3 compliant. The 9.6 binaries use module version v1.0.0 (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
