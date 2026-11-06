@@ -20,7 +20,7 @@ When a step needs a person, such as closing alerts, isolating a host, or changin
 
 - **Less noise to sort through.** The {{az-triage-watch}} proposes closing false positives, and the {{az-detection-watch}} proposes fixes for the noisy rules that create them.
 - **Investigations that start further along.** Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you decide rather than repeat the work.
-- **Fewer gaps in your detections.** The {{az-hunt-watch}} looks for activity before an alert fires, and the {{az-detection-watch}} proposes rules for the gaps it finds.
+- **Fewer gaps in your detections.** The {{az-hunt-watch}} looks for activity that your detection rules might have missed, and the {{az-detection-watch}} proposes rules for the gaps that the {{az-hunt-watch}} finds.
 - **Control stays with you.** You control which {{az-workers}} run and [how much {{az-autonomy}} each one has](#alertzero-overview-autonomy).
 
 ## What {{az-workers}} take on [alertzero-overview-watches]
@@ -29,17 +29,17 @@ When a step needs a person, such as closing alerts, isolating a host, or changin
 
 | {{az-watch}} | What it does | {{az-workers}} |
 | --- | --- | --- |
-| {{az-triage-watch}} | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks, so you review attacks and {{az-proposed-actions}} instead of individual alerts. | {{az-alert-triage}}, {{az-attack-discovery}} |
-| {{az-hunt-watch}} | Hunts your data for activity described in {{az-threat-reports}}, so you find out about it before any alert fires. | {{az-continuous-threat-hunt}} |
-| {{az-detection-watch}} | Tunes noisy rules to cut false positives and proposes new rules for the gaps that the {{az-hunt-watch}} finds, so your detections improve over time. | {{az-rule-tuning}}, {{az-rule-coverage}} |
+| {{az-triage-watch}} | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks, so you review {{az-proposed-actions}} instead of individual alerts. | {{az-alert-triage}}, {{az-attack-discovery}} |
+| {{az-hunt-watch}} | Hunts your data for activity described in {{az-threat-reports}} that your detection rules might have missed, so you have fewer blind spots. | {{az-continuous-threat-hunt}} |
+| {{az-detection-watch}} | Tunes noisy rules to cut false positives. For the gaps that the {{az-hunt-watch}} finds, it proposes turning on an existing rule, installing a prebuilt rule, or creating a new one. | {{az-rule-tuning}}, {{az-rule-coverage}} |
 | {{az-forensics-watch}} | Investigates attacks that the {{az-triage-watch}} hands off and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
 
 % For docs writers: For the 9.6 release, uncomment the following table and sentence, and remove the table before them.
 % | {{az-watch}} | What it does | {{az-workers}} |
 % | --- | --- | --- |
-% | [{{az-triage-watch}}](watches-and-workers.md#alertzero-triage-watch) | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks, so you review attacks and {{az-proposed-actions}} instead of individual alerts. | {{az-alert-triage}}, {{az-attack-discovery}} |
-% | [{{az-hunt-watch}}](watches-and-workers.md#alertzero-hunt-watch) | Hunts your data for activity described in {{az-threat-reports}}, so you find out about it before any alert fires. | {{az-continuous-threat-hunt}} |
-% | [{{az-detection-watch}}](watches-and-workers.md#alertzero-detection-watch) | Tunes noisy rules to cut false positives and proposes new rules for the gaps that the {{az-hunt-watch}} finds, so your detections improve over time. | {{az-rule-tuning}}, {{az-rule-coverage}} |
+% | [{{az-triage-watch}}](watches-and-workers.md#alertzero-triage-watch) | Classifies new alerts, proposes closing false positives, and groups related alerts into attacks, so you review {{az-proposed-actions}} instead of individual alerts. | {{az-alert-triage}}, {{az-attack-discovery}} |
+% | [{{az-hunt-watch}}](watches-and-workers.md#alertzero-hunt-watch) | Hunts your data for activity described in {{az-threat-reports}} that your detection rules might have missed, so you have fewer blind spots. | {{az-continuous-threat-hunt}} |
+% | [{{az-detection-watch}}](watches-and-workers.md#alertzero-detection-watch) | Tunes noisy rules to cut false positives. For the gaps that the {{az-hunt-watch}} finds, it proposes turning on an existing rule, installing a prebuilt rule, or creating a new one. | {{az-rule-tuning}}, {{az-rule-coverage}} |
 % | [{{az-forensics-watch}}](watches-and-workers.md#alertzero-forensics-watch) | Investigates attacks that the {{az-triage-watch}} hands off and proposes response actions, such as isolating a host. | {{az-endpoint-analysis}} |
 %
 % To learn how {{az-watches}} pass work to each other, refer to [](watches-and-workers.md).
