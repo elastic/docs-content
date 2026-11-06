@@ -69,13 +69,21 @@ The experiences you can get depend on where you open **Discover** from, such as 
 
 |  | [Logs experience](/solutions/observability/logs/discover-logs.md) | [Metrics experience](/solutions/observability/infra-and-hosts/discover-metrics.md) | [Traces experience](/solutions/observability/apm/discover-traces.md) | [Security alerts and events experience](/solutions/security/investigate/discover-security.md) |
 | --- | --- | --- | --- | --- |
-| {{observability}} projects and solution views | Yes | Yes, refer to [About the metrics experience](#about-metrics-experience) | Yes, refer to [About the traces experience](#about-traces-experience) | No |
-| Security projects and solution views | No | Yes, refer to [About the metrics experience](#about-metrics-experience) | No | Yes |
-| {{es}} solution views | No | Yes, refer to [About the metrics experience](#about-metrics-experience) | No | No |
+| {{observability}} projects and solution views | Yes | Yes [\[1\]](#note-metrics) | Yes [\[2\]](#note-traces) | No |
+| Security projects and solution views | No | Yes [\[1\]](#note-metrics) | No | Yes |
+| {{es}} solution views | No | Yes [\[1\]](#note-metrics) | No | No |
 | {{es-serverless}} projects | No | No | No | No |
-| Spaces with the Classic solution view [\[1\]](#classic-setting-note) | {applies_to}`stack: ga 9.6+` Yes, refer to [About the logs experience](#about-logs-experience) | Yes, refer to [About the metrics experience](#about-metrics-experience) | {applies_to}`stack: ga 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes, refer to [About the Security alerts and events experience](#about-security-experience) |
+| Spaces with the Classic solution view [\[3\]](#classic-setting-note) | {applies_to}`stack: ga 9.6+` Yes [\[4\]](#note-logs-classic) | Yes [\[1\]](#note-metrics) | {applies_to}`stack: ga 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes [\[5\]](#note-security-classic) |
 
-$$$classic-setting-note$$$\[1\] {applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs, traces, and Security experiences apply only while the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. The setting name uses "profiles" to mean context-aware experiences.
+$$$note-metrics$$$\[1\] The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command. In {{serverless-short}} projects, it also needs the Observability Complete or Security Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
+
+$$$note-traces$$$\[2\] In {{serverless-short}} projects, the traces experience needs the Observability Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
+
+$$$classic-setting-note$$$\[3\] {applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs, traces, and Security experiences apply only while the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. The setting name uses "profiles" to mean context-aware experiences.
+
+$$$note-logs-classic$$$\[4\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the logs experience applies only to data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
+
+$$$note-security-classic$$$\[5\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the Security experience applies when you use a Security {{data-source}} or when your {{data-source}} or query targets only Security data. For details, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
 ### When you query several kinds of data [view-active-context-aware-experience]
 
@@ -84,22 +92,6 @@ Your query can include several kinds of data that each have a tailored experienc
 In this case **Discover** provides the default experience until it detects that you're interacting with a single kind of data. For example, when you [look inside a document](inspect-documents.md#look-inside-a-document).
 
 To check which experience is active, open the Inspector and select **Profiles** from the **View** menu. The **Profiles** view lists the solution view and the type of data that Discover detected. Together, they determine the experience. To open the Inspector, refer to [Inspect the request behind your results](inspect-documents.md#inspect-discover-request).
-
-### About the logs experience [about-logs-experience]
-
-{applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs experience applies only to data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
-
-### About the metrics experience [about-metrics-experience]
-
-The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command. In {{serverless-short}} projects, it also needs the Observability Complete or Security Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
-
-### About the traces experience [about-traces-experience]
-
-In {{serverless-short}} projects, the traces experience needs the Observability Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
-
-### About the Security alerts and events experience [about-security-experience]
-
-{applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the Security experience applies when you use a Security {{data-source}} or when your {{data-source}} or query targets only Security data. For details, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
 ## Save, share, and export what you find [discover-save-share]
 
