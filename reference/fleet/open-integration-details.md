@@ -28,7 +28,7 @@ Your role needs these privileges:
 
 ## Open the integration's details [integration-details-steps]
 
-Search for the integration in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and select it.
+Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find the integration, then select it from the results.
 
 To open the details from the **Integrations** page instead:
 
