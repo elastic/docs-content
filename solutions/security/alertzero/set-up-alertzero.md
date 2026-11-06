@@ -109,5 +109,7 @@ To change which {{az-workers}} run after setup, or the default {{az-worker}} set
 ## Next steps [alertzero-set-up-next]
 
 - [Give your team access to {{alertzero}}](alertzero-privileges.md) so they can review and decide {{az-proposed-actions}}.
-- [Find the {{az-proposed-actions}} that need your decision](work-in-alertzero.md).
+- [Find the {{az-proposed-actions}} that need your decision](use-alertzero.md).
 - [Change {{az-worker}} settings](configure-worker-settings.md), such as {{az-autonomy}} and schedule.
+
+% For docs writers: After elastic/docs-content#9157 merges, change the link to use-alertzero.md in the preceding list to work-in-alertzero.md, which #9157 renames it to.
