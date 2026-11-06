@@ -40,8 +40,8 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 ## Step 1: Install AWS integration in {{kib}} [firehose-firewall-step-one]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Browse the catalog to find the AWS integration.
-3. Navigate to the **Settings** tab and click **Install AWS assets**.
+2. Search for **AWS**, then [open the integration's details](/reference/fleet/open-integration-details.md).
+3. Select the **Settings** tab and click **Install AWS**. In the confirmation dialog, click **Install AWS**.
 
 
 ## Step 2: Select a resource [firehose-firewall-step-two]

@@ -92,10 +92,10 @@ To keep integration policies up to date automatically:
 
 If you can’t upgrade integration policies when you upgrade the integration, upgrade them manually.
 
-1. Click the **Policies** tab and find the integration policies you want to upgrade.
+1. Select the **Integration policies** tab and find the integration policies you want to upgrade.
 
     :::{image} images/upgrade-package-policy.png
-    :alt: Policies tab under Integrations shows how to upgrade the package policy
+    :alt: Integration policies tab under Integrations shows how to upgrade the package policy
     :screenshot:
     :::
 

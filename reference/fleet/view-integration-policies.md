@@ -18,6 +18,6 @@ An integration policy is created when you add an [integration](integration-docs:
 To view details about all the integration policies for a specific integration:
 
 1. In {{kib}}, go to the **Integrations** page and open the **Installed integrations** tab. Search for and select the integration you want to view. You can select a category to narrow your search.
-2. Click the **Policies** tab to see the list of integration policies.
+2. Select the **Integration policies** tab to see the list of integration policies.
 
 Open the **Actions** menu to see other actions you can perform from this view.
