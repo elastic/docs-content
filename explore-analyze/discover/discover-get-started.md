@@ -65,7 +65,7 @@ Document flyout
 
 Which experiences you can get depends on where you open **Discover** from, such as a project type or the [solution view](/deploy-manage/manage-spaces.md) of a space, and then on the data you query. **Discover** switches to an experience automatically when your data matches it:
 
-| Where you open **Discover** | [Logs exploration](/solutions/observability/logs/discover-logs.md) | [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md) | [Traces exploration](/solutions/observability/apm/discover-traces.md) | [Security data exploration](/solutions/security/investigate/discover-security.md) |
+| Where you open **Discover** | [Logs exploration](/solutions/observability/logs/discover-logs.md) | [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md) | [Traces exploration](/solutions/observability/apm/discover-traces.md) | [Security alerts and events exploration](/solutions/security/investigate/discover-security.md) |
 | --- | --- | --- | --- | --- |
 | {{observability}} projects and solution views | Yes | Yes, [see note](#discover-serverless-tiers) | Yes, [see note](#discover-serverless-tiers) | No |
 | Security projects and solution views | No | Yes, [see note](#discover-serverless-tiers) | No | Yes |
@@ -80,7 +80,7 @@ $$$discover-serverless-tiers$$$In {{serverless-short}} projects, the metrics exp
 $$$discover-classic-limits$$$In spaces with the Classic solution view, the logs and Security experiences apply to some data only:
 
 * **Logs**: Data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [Use the logs experience in the Classic solution view](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
-* **Security**: A Security {{data-source}}, or a {{data-source}} or query that targets only Security data. Refer to [Access the Security Discover experience](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
+* **Security alerts and events**: A Security {{data-source}}, or a {{data-source}} or query that targets only Security data. Refer to [Access the Security Discover experience](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
 {applies_to}`stack: ga 9.6+` The logs, traces, and Security experiences apply in spaces with the Classic solution view as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
 
