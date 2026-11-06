@@ -57,7 +57,9 @@ stack: ga 9.6+
 
 To create, update, list, and delete {{data-sources}} from scripts or CI/CD pipelines, use the [Data views v2 API]({{kib-apis}}group/endpoint-data-views-v2). Each {{data-source}} is a JSON definition that you can store in version control and deploy to other environments.
 
-The v2 API uses a different format from the earlier [Data views API]({{kib-apis}}group/endpoint-data-views). For example, `index_pattern` and `time_field` replace `title` and `timeFieldName`. A `PUT` request creates the {{data-source}} with the ID you give it, or replaces it if it already exists.
+The v2 API has its own paths, which start with `/api/data_views/v2`, and different property names from the earlier [Data views API]({{kib-apis}}group/endpoint-data-views). For example, `index_pattern` and `time_field` replace `title` and `timeFieldName`.
+
+A `PUT` request creates the {{data-source}} with the ID you give it and returns `201`. If the ID already exists, the request replaces the {{data-source}} and returns `200`. A replacement removes any optional property you omit, such as `time_field`.
 
 ## Work with data views
 
