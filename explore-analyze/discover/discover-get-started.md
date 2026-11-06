@@ -63,27 +63,23 @@ Document flyout
 
 **Discover** adapts to the kind of data you explore. When it recognizes your data, it switches to a tailored experience, with columns, charts, and document details that suit that data. For example, log data opens with log-specific columns and details, and security alerts get color-coded row indicators. This is called a context-aware experience.
 
-Which experiences you can get depends on where you open **Discover** from, and then on the data you query.
+Which experiences you can get depends on where you open **Discover** from, such as a project type or the [solution view](/deploy-manage/manage-spaces.md) of a space, and then on the data you query. **Discover** switches to an experience automatically when your data matches it:
 
-**In {{observability}} projects and [solution views](/deploy-manage/manage-spaces.md)**, **Discover** automatically switches to one of these experiences, depending on the data you query:
+| Experience | {{observability}} projects and solution views | Security projects and solution views | Spaces with the Classic solution view |
+| --- | --- | --- | --- |
+| [Logs exploration](/solutions/observability/logs/discover-logs.md) | Yes | No | {applies_to}`stack: ga 9.6+` Yes\* |
+| [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md) | Yes | Yes | Yes |
+| [Traces exploration](/solutions/observability/apm/discover-traces.md) | Yes | No | {applies_to}`stack: ga 9.6+` Yes |
+| [Security data exploration](/solutions/security/investigate/discover-security.md) | No | Yes | {applies_to}`stack: ga 9.6+` Yes\* |
 
-* [Logs exploration](/solutions/observability/logs/discover-logs.md): Explore log data.
-* [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md): Explore metrics data that you query in {{esql}} mode with the `TS` command.
-* [Traces exploration](/solutions/observability/apm/discover-traces.md): Explore trace data.
+The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command.
 
-**In Security projects and [solution views](/deploy-manage/manage-spaces.md)**, **Discover** automatically switches to one of these experiences, depending on the data you query:
+\* In spaces with the Classic solution view, the logs and Security experiences apply to some data only:
 
-* [Security data exploration](/solutions/security/investigate/discover-security.md): Explore security alerts and events.
-* [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md): Explore metrics data that you query in {{esql}} mode with the `TS` command.
+* **Logs**: Data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [Use the logs experience in the Classic solution view](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
+* **Security**: A Security {{data-source}}, or a {{data-source}} or query that targets only Security data. Refer to [Access the Security Discover experience](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
-**In spaces with the Classic [solution view](/deploy-manage/manage-spaces.md)**, **Discover** automatically switches to one of these experiences, depending on the data you query:
-
-* {applies_to}`stack: ga 9.6+` [Logs exploration](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view): Explore log data from some integrations, such as System and Nginx logs. Other log data keeps the default experience.
-* [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md): Explore metrics data that you query in {{esql}} mode with the `TS` command.
-* {applies_to}`stack: ga 9.6+` [Traces exploration](/solutions/observability/apm/discover-traces.md): Explore trace data.
-* {applies_to}`stack: ga 9.6+` [Security data exploration](/solutions/security/investigate/discover-security.md): Explore security alerts and events when you use a Security {{data-source}} or query only Security data.
-
-{applies_to}`stack: ga 9.6+` The logs, traces, and Security experiences apply in these spaces as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
+{applies_to}`stack: ga 9.6+` The logs, traces, and Security experiences apply in spaces with the Classic solution view as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
 
 When you open **Discover** outside of these contexts, or query data without a tailored experience, you get the default **Discover** experience with all its core functionality for general-purpose data exploration.
 
