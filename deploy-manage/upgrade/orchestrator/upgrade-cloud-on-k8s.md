@@ -87,11 +87,32 @@ kubectl apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.
 kubectl apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml
 ```
 
-If you are using Helm:
+If you are using Helm, run the command that matches where you installed the chart from:
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
 
 ```shell
 helm upgrade elastic-operator elastic/eck-operator -n elastic-system
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+{applies_to}`eck: ga 3.6+`
+
+```shell subs=true
+helm upgrade elastic-operator oci://docker.elastic.co/eck-charts/eck-operator --version {{version.eck}} -n elastic-system
+```
+
+:::
+
+::::
 
 This will update the ECK installation to the latest binary and update the CRDs and other ECK resources in the cluster.
 

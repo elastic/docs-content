@@ -91,9 +91,11 @@ Run the following command.
 kubectl get secret <secret_name> -o yaml
 ```
 Make sure the secret has the following required keys:
-* `autoops-token`
 * `autoops-otel-url`
 * `cloud-connected-mode-api-key`
+* {applies_to}`eck: ga 3.3-3.5` `autoops-token`
+
+{applies_to}`eck: ga 3.6+` The `autoops-token` key is no longer used. The agent authenticates with the `cloud-connected-mode-api-key` key only. If the secret still contains `autoops-token`, ECK ignores it.
 ::::
 
 ::::{step} Confirm secret reference

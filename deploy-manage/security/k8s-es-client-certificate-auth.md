@@ -53,6 +53,8 @@ The supported {{stack}} components differ by version. ECK performs the following
   If you have manually set `xpack.security.http.ssl.client_authentication` in `spec.nodeSets[*].config`, that value takes precedence over the ECK-managed setting and the mTLS configuration may not apply as expected.
   :::
 
+{applies_to}`eck: ga 3.6+` By default, components still authenticate to {{es}} with a service account token or a username and password, in addition to their client certificate. To let components authenticate with their client certificate only, see [{{es}} PKI authentication](/deploy-manage/security/k8s-es-pki-authentication.md).
+
 For Fleet Server acting as the mTLS endpoint (requiring client certificates from connecting {{agents}}), see [Fleet Server client certificate authentication](/deploy-manage/security/k8s-fleet-server-client-certificate-auth.md).
 
 ## Use a custom client certificate [k8s-custom-client-cert]
