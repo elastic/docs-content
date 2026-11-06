@@ -19,6 +19,8 @@ If you're just getting started with **Discover** and want to learn its main prin
 
 :::{note}
 For a contextual logs experience, set the **Solution view** for your space to **{{observability}}**. Refer to [Managing spaces](/deploy-manage/manage-spaces.md) for more information.
+
+{applies_to}`stack: ga 9.6+` In spaces that use the Classic solution view, you also get the logs experience for data from some integrations, such as System and Nginx logs. For the full list, refer to [Context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover).
 :::
 
 :::{image} ../../images/observability-log-explorer.png
