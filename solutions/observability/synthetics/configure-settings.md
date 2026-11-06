@@ -100,6 +100,8 @@ Global parameters can be defined once and used across the configuration of light
 
 In the **Global parameters** tab, you can define variables and parameters. This is one of several methods you can use to define variables and parameters. To learn more about the other methods and which methods take precedence over others, see [Work with params and secrets](/solutions/observability/synthetics/work-with-params-secrets.md).
 
+{applies_to}`stack: preview 9.6+` This tab also holds **HashiCorp Vault connections**, which let a param or a monitor field reference a secret in Vault rather than store the value in {{kib}}. To set one up, refer to [Reference secrets from HashiCorp Vault](/solutions/observability/synthetics/work-with-params-secrets.md#synthetics-secrets-vault).
+
 :::{image} /solutions/images/observability-synthetics-settings-global-parameters.png
 :alt: Global parameters tab on the Synthetics Settings page in {{kib}}
 :screenshot:
