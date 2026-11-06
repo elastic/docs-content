@@ -79,11 +79,11 @@ $$$note-metrics$$$\[1\] The metrics experience applies when you query metrics da
 
 $$$note-traces$$$\[2\] In {{serverless-short}} projects, the traces experience needs the Observability Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
 
-{applies_to}`stack: ga 9.6+` $$$classic-setting-note$$$\[3\] In spaces with the Classic solution view, the logs, traces, and Security experiences apply only while the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. The setting name uses "profiles" to mean context-aware experiences.
+$$$classic-setting-note$$$\[3\] {applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs, traces, and Security experiences apply only while the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. The setting name uses "profiles" to mean context-aware experiences.
 
-$$$note-logs-classic$$$\[4\] In the Classic solution view, the logs experience applies only to data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
+$$$note-logs-classic$$$\[4\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the logs experience applies only to data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
 
-$$$note-security-classic$$$\[5\] In the Classic solution view, the Security experience applies when you use a Security {{data-source}} or when your {{data-source}} or query targets only Security data. For details, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
+$$$note-security-classic$$$\[5\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the Security experience applies when you use a Security {{data-source}} or when your {{data-source}} or query targets only Security data. For details, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
 ### When you query several kinds of data [view-active-context-aware-experience]
 
