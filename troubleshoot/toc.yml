@@ -1,4 +1,8 @@
 project: 'Troubleshoot'
+
+suppress:
+  - DeepLinkingVirtualFile
+
 toc:
   - file: index.md
   - file: elasticsearch.md
