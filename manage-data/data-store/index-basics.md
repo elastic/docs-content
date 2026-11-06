@@ -124,6 +124,7 @@ It changes default settings, how {{es}} stores fields on disk, and whether it ke
 The index mode cannot be changed after you create the index.
 For every supported value and where they're available, refer to [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
 
+The index mode you choose determines how data is stored and which optimizations apply. The following modes are available:
 - Standard (`standard`) mode is optimized for search and any type of retrieval.
 - LogsDB (`logsdb`) mode is optimized for logs use cases, with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode. LogsDB columnar (`logsdb_columnar`) is  optimized for logs use cases that align with [columnar semantics](/manage-data/data-store/columnar.md) and [limitations](elasticsearch://reference/elasticsearch/columnar/index.md#columnar-limitations).
 - TSDB (`time_series`) mode is optimized for metrics and time series use cases. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. It is  only to data streams.
