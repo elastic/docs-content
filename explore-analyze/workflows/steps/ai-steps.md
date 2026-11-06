@@ -52,14 +52,18 @@ Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}
 
 For `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent`, `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`) and are written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most of their parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). The conversation steps have no top-level fields and use `snake_case` inside `with`.
 
+Whether you can use Liquid expressions in these top-level fields depends on your version:
+
 ::::{applies-switch}
-:::{applies-item} { stack: ga 9.5, serverless: ga }
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
 Liquid expressions are evaluated in these top-level fields, so you can use templated values (for example, `"{{ consts.agent_id }}"`).
 :::
 :::{applies-item} stack: ga 9.3-9.4
 Liquid expressions in these top-level fields aren't evaluated, so use a literal value (for example, `agent-id: elastic-ai-agent`) instead of `"{{ consts.agent_id }}"`.
 :::
 ::::
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` `ai.prompt` and `ai.agent` also accept a top-level `reasoning-level` field. Refer to [Reasoning level](#ai-reasoning-level).
 
 :::{include} ../_snippets/schema-location-legend.md
 :::
@@ -75,6 +79,7 @@ Call an LLM with a prompt. Supports optional structured output through a JSON Sc
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `connector-id` | top level | string | No | The Generative AI connector to use. If omitted, the step uses the default model described at the start of this page. |
+| `reasoning-level` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | top level | string | No | How much reasoning the model does before it responds: `none`, `minimal`, `low`, `medium`, `high`, or `xhigh`. If omitted, the model uses its own default. Refer to [Reasoning level](#ai-reasoning-level). |
 | `prompt` | `with` | string | Yes | Prompt text. Supports Liquid templating. |
 | `systemPrompt` | `with` | string | No | System prompt sent before the user prompt. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
@@ -235,6 +240,7 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | `inference-id` | top level | string | No | Inference endpoint ID. Mutually exclusive with `connector-id`. |
 | `create-conversation` | top level | boolean | No | When `true`, persist the conversation for follow-up steps or later reference. |
 | `public-conversation` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | top level | boolean | No | When `true`, make the conversation this step creates public. Any user who can access the agent can read and continue the conversation and see it in their conversation list. Only applies when `create-conversation` is `true`. Defaults to `false` (private). Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
+| `reasoning-level` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | top level | string | No | How much reasoning the agent's model does before it responds: `none`, `minimal`, `low`, `medium`, `high`, or `xhigh`. If omitted, the step uses the agent's default level, if it has one. Refer to [Reasoning level](#ai-reasoning-level). |
 | `message` | `with` | string | Yes | User message to send to the agent. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
 | `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
@@ -260,7 +266,7 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
 - name: investigate
   type: ai.agent
   agent-id: "security-analyst-agent"
-  connector-id: "my-openai"
+  inference-id: "my-inference-endpoint"
   create-conversation: true
   with:
     message: |
@@ -285,6 +291,36 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
   with:
     conversation_id: "{{ steps.investigate.output.conversation_id }}"
     message: "Apply the recommended action and report back."
+```
+
+## Reasoning level [ai-reasoning-level]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Use the optional `reasoning-level` field on `ai.prompt` and `ai.agent` steps to control how much reasoning the model does before it responds. The field accepts `none`, `minimal`, `low`, `medium`, `high`, or `xhigh`, in lowercase. Only `ai.prompt` and `ai.agent` accept this field. How each level affects the response depends on the model and provider.
+
+Whether the model receives the level depends on how the step connects to it:
+
+- [Elastic Managed LLMs](/explore-analyze/ai-features/agent-builder/models.md) and {{infer}} endpoints receive the level you set. If the model doesn't support that level, the step fails. Check the model provider's documentation for the levels each model supports.
+- OpenAI (including Azure OpenAI and OpenAI-compatible providers), Amazon Bedrock, and Google Gemini connectors ignore the field, and the step runs normally.
+
+On `ai.agent` steps:
+
+- If you omit `reasoning-level`, the step uses the agent's default level. Only built-in agents have a default. For custom agents, or when the agent has no default, the model uses its own default.
+- The level applies only to the agent's own model calls. It doesn't apply to the sub-agents that the agent starts, or to tasks that {{agent-builder}} sends to the [fast model](/explore-analyze/ai-features/agent-builder/models.md#fast-model).
+
+For example, this step sets a high reasoning level for a custom agent:
+
+```yaml
+- name: investigate
+  type: ai.agent
+  agent-id: "security-analyst-agent"
+  reasoning-level: "high"
+  with:
+    message: "Investigate alert {{ event.alerts[0]._id }} and propose next steps."
 ```
 
 ## `ai.conversation.create` [ai-conversation-create]
