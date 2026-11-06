@@ -56,8 +56,9 @@ The logs experience is available in:
 Once you have the logs you want to focus on, you can drill down further. For more on filtering, refer to [Filter logs in Discover](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover).
 
 ### Use the logs experience in the Classic solution view [logs-classic-solution-view]
+{applies_to}`stack: ga 9.6+`
 
-{applies_to}`stack: ga 9.6+` In a space that uses the Classic solution view, **Discover** switches to the logs experience only when your {{data-source}} or {{esql}} query targets data from one of these integrations:
+In a space that uses the Classic solution view, **Discover** switches to the logs experience only when your {{data-source}} or {{esql}} query targets data from one of these integrations:
 
 | Integration | Example index pattern |
 | --- | --- |
