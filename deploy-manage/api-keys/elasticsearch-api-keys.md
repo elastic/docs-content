@@ -78,6 +78,7 @@ Use the API key page to create a personal or cross-cluster API key with configur
       * For a user API key, you can opt to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and the [Create API key]({{es-apis}}operation/operation-security-create-api-key) API documentation to learn more.
       * For a cross-cluster API key, you can control the indices that other clusters have access to. Refer to [](/deploy-manage/remote-clusters.md) and the [Create cross-cluster API key]({{es-apis}}operation/operation-security-create-cross-cluster-api-key) API documentation to learn more.
   6. Add any additional metadata about the API as one or more key-value pairs. Refer to the [Create API key]({{es-apis}}operation/operation-security-create-api-key) API documentation for examples.
+  7. {applies_to}`stack: ga 9.6+` For a cross-cluster API key, optionally turn on **Add strong identity verification** and enter a pattern that matches the Distinguished Name (DN) of the local cluster's signing certificate. Refer to [Strong identity verification](/deploy-manage/remote-clusters/security-models.md#remote-cluster-strong-verification) for the required cluster configuration.
    
 :::{image} /deploy-manage/images/kibana-create-user-api-key.png
 :alt: Create API Key UI
@@ -99,6 +100,7 @@ You can't update the name or the type of an API key.
 * For a cross-cluster API key, you can update:
   * The indices that other clusters have access to.
   * The metadata associated with the key.
+  * {applies_to}`stack: ga 9.6+` The certificate identity pattern for strong identity verification. You can add or edit the pattern, or remove it to clear the key's certificate identity restriction.
  
   Refer to the [Update cross-cluster API key]({{es-apis}}operation/operation-security-update-cross-cluster-api-key) API documentation to learn more.
 
