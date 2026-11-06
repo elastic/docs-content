@@ -38,12 +38,6 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 ## Add the {{elastic-defend}} integration [add-security-integration]
 
 1. Find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-    :::{image} /solutions/images/security-endpoint-cloud-sec-integrations-page.png
-    :alt: Search result for "{{elastic-defend}}" on the Integrations page.
-    :screenshot:
-    :::
-
 2. Search for and select **{{elastic-defend}}**. If the integration's **Overview** page opens, select **Add {{elastic-defend}}**.
 3. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**. You can [install {{agent}}](#enroll-agent) after you set up the {{elastic-defend}} integration.
 4. On the integration configuration page, configure the {{elastic-defend}} integration with an **Integration name** and optional **Description**.
