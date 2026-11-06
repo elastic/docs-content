@@ -116,6 +116,7 @@ toc:
           - file: ingest/managed-integrations/enable-managed-integration.md
           - file: ingest/managed-integrations/cloud-connector-deployment.md
           - file: ingest/managed-integrations/managed-integrations-faq.md
+      - file: ingest/aws-guided-onboarding.md
       - file: ingest/otlp-endpoint.md
       - file: ingest/sample-data.md
       - file: ingest/upload-data-files.md
