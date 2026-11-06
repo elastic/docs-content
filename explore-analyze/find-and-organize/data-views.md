@@ -49,6 +49,16 @@ To customize a managed {{data-source}}, [duplicate it](data-views/duplicate-data
 
 To match data in another cluster, another project, or a rollup index, refer to [What the index pattern matches](data-views/create-data-view.md#what-the-index-pattern-matches).
 
+## Manage data views from code [data-views-from-code]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+To create, update, list, and delete {{data-sources}} from scripts or CI/CD pipelines, use the [Data views v2 API]({{kib-apis}}group/endpoint-data-views-v2). Each {{data-source}} is a JSON definition that you can store in version control and deploy to other environments.
+
+The v2 API is separate from the earlier [Data views API]({{kib-apis}}group/endpoint-data-views) and uses a different format. For example, `index_pattern` and `time_field` replace `title` and `timeFieldName`. A `PUT` request creates the {{data-source}} with the ID you give it, or replaces it if it already exists.
+
 ## Work with data views
 
 * [Create a data view](data-views/create-data-view.md)
