@@ -30,6 +30,20 @@ The process of tool selection, execution, and analysis consumes tokens. To under
 
 You can also use pre-configured [built-in agents](builtin-agents-reference.md) that are specialized for common use cases.
 
+### Elastic deployment awareness
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Agents tailor their guidance on features, navigation, and terminology to the Elastic deployment they run in, and they can answer questions about that deployment directly. To make this possible, {{agent-builder}} adds details about the deployment to the instructions of every agent, built-in or custom. The details depend on the deployment type:
+
+- {applies_to}`stack: ga 9.6+` **{{ech}}, {{ece}}, and self-managed**: The environment, the {{stack}} version, and, when available, the space's solution view and the license type and status. If {{kib}} is configured as air-gapped, the details also say so.
+- {applies_to}`serverless: ga` **{{serverless-full}}**: The environment, the project type, and the product tier, when the project has one.
+
+{{agent-builder}} adds these details automatically, and you can't turn them off. Agents can share these details with anyone who chats with them, even though they don't disclose their other instructions.
+
 ## Built-in agents
 
 {{agent-builder}} includes a pre-configured built-in agent optimized for common use cases, which you can also customize using custom instructions, tools, and skills.

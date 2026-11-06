@@ -86,7 +86,9 @@ Including frozen tier data doesn't extend tool timeouts. Queries over large amou
 
 ### A2A streaming not supported
 
-The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+In 9.2 through 9.5, the [Agent-to-Agent (A2A) server](a2a-server.md) doesn't support the `message/stream` method. Use [`message/send`](a2a-server.md#send-messages) instead.
+
+Fixed on {{serverless-short}} and in 9.6 and later. Refer to [Stream responses](a2a-server.md#stream-responses).
 
 ### Human-in-the-loop prompts require an interactive conversation
 
@@ -94,7 +96,26 @@ The [A2A server](a2a-server.md) does not currently support streaming operations.
 
 The subagent run itself does not fail. The tool call returns an error result and the subagent continues, so the subagent can report the declined action in its output.
 
-A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
+A2A executions behave differently: the action isn't declined. Instead, the conversation round stays in the `awaiting_prompt` state, but A2A clients can't respond to the prompt.
+
+:::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+What the client sees depends on the method:
+
+* [`message/send`](a2a-server.md#send-messages): Nothing in the response shows that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+* [`message/stream`](a2a-server.md#stream-responses): The stream ends with a status update in the `input-required` state that describes the prompt.
+
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
+
+A2A clients use [`message/send`](a2a-server.md#send-messages), and nothing in the response shows that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+
+:::
+
+:::::
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) follows the same rule in subagent runs and in [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent): it declines any {{es}} or {{kib}} API operation that requires [confirmation](chat.md#confirm-an-api-operation), unless the operation is approved in advance. You can approve operations in advance in these ways:
 
@@ -119,6 +140,8 @@ Ensure your cluster version supports the {{esql}} features you intend to use.
 For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
 ## Known issues
+
+The following known issues affect current versions of {{agent-builder}}. For fixes and known issues in a specific release, refer to the **Elastic Agent Builder** entries in the [{{kib}} release notes](kibana://release-notes/index.md) and [{{kib}} known issues](kibana://release-notes/known-issues.md).
 
 ### Troubleshoot incompatible LLMs
 

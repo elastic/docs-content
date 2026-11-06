@@ -59,9 +59,13 @@ triggers:
   - type: entityStore.entityRiskScoreChanged   # tech preview (9.5+)
     on:
       condition: 'event.direction: "increase" AND event.delta >= 25'
+
+  - type: ai.conversation.updated      # tech preview (9.6+), opt-in templates only
+    on:
+      condition: 'event.templateId: "investigation" and event.eventTypes: "user_message"'
 ```
 
-The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. The entity store trigger family also includes `entityStore.entityAssetCriticalityUpdated`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
+The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. The entity store trigger family also includes `entityStore.entityAssetCriticalityUpdated`. The {{agent-builder}} trigger family also includes `ai.attachmentAdded`, `ai.attachmentUpdated`, `ai.attachmentDeleted`, and `ai.conversation.metadataUpdated`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
 
 Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/workflows/triggers.md).
 
