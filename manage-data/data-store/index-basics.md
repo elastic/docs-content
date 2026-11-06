@@ -97,7 +97,7 @@ Common settings include:
 
 * `index.number_of_shards`: The number of primary shards. Cannot be changed after you create the index.
 * `index.number_of_replicas`: The number of replica copies per primary shard. Can be changed at any time.
-* `index.refresh_interval`: How often new data becomes searchable. Defaults to `1s`. Can be changed at any time.
+* `index.refresh_interval`: How often new data becomes searchable. Can be changed at any time.
 
 To configure settings at creation time, include a `settings` object in the [create index API]({{es-apis}}operation/operation-indices-create) request or in an index template.
 The following example creates `my-index` with a refresh interval of 30 seconds:
@@ -123,17 +123,16 @@ It changes default settings, how {{es}} stores fields on disk, and whether it ke
 It also turns on optimizations for certain queries and workloads.
 For example, the TSDB index mode unlocks the use of time series aggregations in {{esql}}.
 
-The index mode cannot be changed after you create the index.
-For every supported value and where they're available, refer to [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
-
-The index mode you choose determines how data is stored and which optimizations apply. The following modes are available:
+The following modes are available:
 
 - Standard (`standard`) mode is optimized for search and any type of retrieval.
 - Columnar (`columnar`) mode is optimized for storage efficiency and analytics. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
-- LogsDB (`logsdb`) mode is optimized for logs use cases, with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode. LogsDB columnar (`logsdb_columnar`) is  optimized for logs use cases that align with [columnar semantics](/manage-data/data-store/columnar.md) and [limitations](elasticsearch://reference/elasticsearch/columnar/index.md#columnar-limitations).
+- LogsDB (`logsdb`) mode is optimized for logs use cases with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode. LogsDB columnar (`logsdb_columnar`) is optimized for logs use cases that align with [columnar semantics](/manage-data/data-store/columnar.md) and [limitations](elasticsearch://reference/elasticsearch/columnar/index.md#columnar-limitations).
 - TSDB (`time_series`) mode is optimized for metrics and time series use cases. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. It is only applicable to data streams.
 - VectorDB (`vectordb_document`) mode is optimized for vector search use cases, enabling similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). VectorDB columnar (`vectordb_columnar`) mode is optimized for vector search with columnar storage. It applies the same vector search defaults as `vectordb_document` and keeps `dense_vector` and `text` fields indexed. Refer to [`vectordb_columnar`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-columnar-mode).
 - Lookup (`lookup`) mode is optimized for reference data you join in {{esql}}, for example a list of users, hosts, or known threat IPs. Refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md). Only the lookup index needs this mode, not the source index.
+
+For every supported value and where they're available, refer to [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
 
 ## How an index stores data
 
