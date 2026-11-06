@@ -84,7 +84,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
     After you create the rule, you can find all custom highlighted fields in the About section of the rule details page. If the rule has alerts, you can find custom highlighted fields in the [Highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) section of the alert details flyout.
 
 **Elastic endpoint exceptions** (optional)
-:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) to this rule.
+:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) to this rule.
 
     This setting is available on deployments where {{elastic-endpoint}} exceptions are evaluated by detection rules. It's not available on deployments that use [per-policy {{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md#endpoint-exceptions-opt-in).
 

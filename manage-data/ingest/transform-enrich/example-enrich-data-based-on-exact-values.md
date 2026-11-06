@@ -52,7 +52,7 @@ PUT /_enrich/policy/users-policy
 Use the [execute enrich policy API]({{es-apis}}operation/operation-enrich-execute-policy) to create an enrich index for the policy.
 
 ```console
-POST /_enrich/policy/users-policy/_execute?wait_for_completion=false
+POST /_enrich/policy/users-policy/_execute
 ```
 
 Use the [create or update pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) that includes:

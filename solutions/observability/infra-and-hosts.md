@@ -17,6 +17,8 @@ products:
 
 Explore the topics in this section to learn how to observe and monitor hosts and other systems running in your environment.
 
+To work with metrics from any source, including Prometheus and custom application metrics, refer to [Metrics](/solutions/observability/metrics.md).
+
 :::{tip}
 We recommend using [{{agent}}](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md) to collect infrastructure metrics and logs. You can also use the [Elastic Agent](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md) with integrations for infrastructure monitoring.
 :::

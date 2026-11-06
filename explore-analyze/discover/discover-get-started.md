@@ -366,7 +366,7 @@ This allows you to pivot quickly between different explorations without losing y
 
 You can open new tabs or duplicate existing ones to compare different queries:
 - To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs. What the new tab does when it opens depends on your version:
-  - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The tab starts empty. It doesn't run any search until you enter a query and run it.
+  - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The tab starts empty. It doesn't run any search until you run a query. In {{esql}} mode, Discover offers recommended queries for you to start from.
   - {applies_to}`stack: preview 9.2-9.5` The tab opens on the same data source as the tab you came from and, by default, runs a search right away.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
