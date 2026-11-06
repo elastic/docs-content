@@ -13,7 +13,7 @@ products:
 
 The **GenAI Settings** and **Feature Settings** pages let you control the list of models available for each AI feature, turn on token usage tracking, install documentation, and more.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To mask sensitive values before AI requests reach an LLM, refer to [](/explore-analyze/ai-features/anonymize-ai-requests.md).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To mask sensitive values before AI requests reach a large language model (LLM), refer to [](/explore-analyze/ai-features/anonymize-ai-requests.md).
 
 ## Requirements
 

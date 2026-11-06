@@ -406,7 +406,7 @@ When you send alert data to AI Assistant, you may want to obfuscate sensitive in
 
 The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated (replaced by placeholders), so AI Assistant won't have access to their actual values.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` These field-level settings are separate from the **Anonymization** page under **AI** in {{stack-manage-app}}, which masks values that match patterns, such as email addresses and IP addresses, in AI requests across the space. Refer to [](/explore-analyze/ai-features/anonymize-ai-requests.md).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` These field-level settings are separate from the [**Anonymization** page for AI requests](/explore-analyze/ai-features/anonymize-ai-requests.md), which masks values that match patterns in requests from features that use {{kib}}'s shared AI integration.
 
 This can help with:
 - **Compliance**: Avoid sending PII or sensitive data to third-party LLM providers.

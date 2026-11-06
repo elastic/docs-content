@@ -533,9 +533,9 @@ stack: preview 9.1
 Anonymization masks personally identifiable or otherwise sensitive information before chat messages leave Kibana for a third-party LLM.
 Enabled rules substitute deterministic tokens (for example `EMAIL_ee4587…`) so the model can keep context without ever seeing the real value.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Configure anonymization on the **Anonymization** page under **AI** in {{stack-manage-app}}. Masking is off by default. Refer to [](/explore-analyze/ai-features/anonymize-ai-requests.md).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Configure anonymization on the **Anonymization** page. Masking is off by default. Refer to [](/explore-analyze/ai-features/anonymize-ai-requests.md).
 
-{applies_to}`stack: preview 9.1-9.5` When all rules are disabled (the default), data is forwarded unchanged. The following sections describe how to configure rules in these versions.
+{applies_to}`stack: preview 9.1-9.5` When all rules are turned off (the default), data is forwarded unchanged. The following sections describe how to configure rules in these versions.
 
 ### How it works [obs-ai-anonymization-how]
 ```{applies_to}

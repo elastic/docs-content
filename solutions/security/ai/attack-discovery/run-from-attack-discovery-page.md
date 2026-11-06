@@ -72,7 +72,7 @@ It may take from a few seconds up to several minutes to generate discoveries, de
 ::::{important}
 Attack Discovery uses the same data anonymization settings as [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). To configure which alert fields are sent to the LLM and which of those fields are obfuscated, use the Elastic AI Assistant settings. Consider the privacy policies of third-party LLMs before sending them sensitive data.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` These field-level settings are separate from the **Anonymization** page, which masks values that match patterns in AI requests across the space. Refer to [](/explore-analyze/ai-features/anonymize-ai-requests.md).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` These field-level settings are separate from the [**Anonymization** page for AI requests](/explore-analyze/ai-features/anonymize-ai-requests.md), which masks values that match patterns in requests from features that use {{kib}}'s shared AI integration.
 ::::
 
 ## Schedule runs [schedule-discoveries]
