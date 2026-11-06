@@ -27,6 +27,8 @@ Each time a {{az-worker}} runs, {{kib}} records the run. Use the execution histo
 
 If a run fails, open it and find the step with the error indicator to see what went wrong. For troubleshooting steps, refer to [](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md).
 
+<!-- After elastic/docs-content#9157 merges, change this link to work-in-alertzero.md. -->
+
 To see what a run produced, such as {{az-proposed-actions}}, refer to [](use-alertzero.md).
 
 :::{note}
