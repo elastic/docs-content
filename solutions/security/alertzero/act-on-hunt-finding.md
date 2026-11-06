@@ -11,7 +11,7 @@ products:
 
 # Act on a {{az-hunt-finding}} [alertzero-act-on-hunt-finding]
 
-The {{az-continuous-threat-hunt}} {{az-worker}} in the {{az-hunt-watch}} searches your data for activity that matches recent {{az-threat-reports}}. When the {{az-continuous-threat-hunt}} {{az-worker}} confirms a match, it adds a {{az-hunt-finding}} to the {{az-threat-report}}'s {{az-investigation}} and proposes response actions for the hosts and processes involved.
+The {{az-continuous-threat-hunt}} {{az-worker}} in the {{az-hunt-watch}} searches your data for activity that matches recent {{az-threat-reports}}. When the {{az-worker}} confirms a match, it adds a {{az-hunt-finding}} to the {{az-threat-report}}'s {{az-investigation}} and proposes response actions for the hosts and processes involved.
 
 The {{az-continuous-threat-hunt}} {{az-worker}} offers only {{az-manual}} {{az-autonomy}}, so every action it proposes waits for a person. To learn what the {{az-worker}} searches and which sources it draws on, refer to [](watches-and-workers.md).
 
