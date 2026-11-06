@@ -29,7 +29,7 @@ Each proposed closure appears as a {{az-proposed-action}} on the **{{az-proposed
 
 ### {{az-attack-discovery}} [alertzero-attack-discovery]
 
-The {{az-attack-discovery}} {{az-worker}} groups related alerts into potential attacks and opens an {{az-investigation}} for each one. For each attack that it confirms or can't rule out, it proposes handing the attack to the {{az-forensics-watch}} for a deeper investigation.
+The {{az-attack-discovery}} {{az-worker}} groups related alerts into potential attacks and opens an {{az-investigation}} for each one. For each attack that it confirms as a true positive or can't rule out, it proposes handing the attack to the {{az-forensics-watch}} for a deeper investigation. It doesn't hand off false positives.
 
 To generate discoveries, {{az-attack-discovery}} needs the [**Attack Discovery Workflows**](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting turned on in the current space. It also needs [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) so that the attacks it hands off can reach the {{az-endpoint-analysis}} {{az-worker}} in the {{az-forensics-watch}}.
 
@@ -125,6 +125,10 @@ The {{az-forensics-watch}} does deep research on an attack. It works on attacks 
 
 The {{az-endpoint-analysis}} {{az-worker}} reconstructs the attack timeline on the affected host, extracts indicators of compromise, and proposes response actions, such as isolating a host or terminating a process.
 
-{{az-endpoint-analysis}} works only on the attacks that {{az-attack-discovery}} hands off, and it doesn't look for attacks on its own. It also needs {{elastic-defend}} to be set up so that it can investigate hosts, and [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) so that it can read and update {{az-investigations}}.
+{{az-endpoint-analysis}} works only on the attacks that {{az-attack-discovery}} hands off, and it doesn't look for attacks on its own. It also needs {{elastic-defend}} to be set up so that it can investigate hosts, and it analyzes only hosts that have {{elastic-defend}} data from around the time of the attack. 
+
+To read and update {{az-investigations}}, {{az-endpoint-analysis}} also needs [{{context-engine}}](/explore-analyze/ai-features/context-engine.md).
 
 {{az-endpoint-analysis}} adds its findings to the {{az-investigation}} that {{az-attack-discovery}} opened for the attack, and the response actions appear there as {{az-proposed-actions}}. To decide on them, refer to [](respond-to-attack.md).
+
+When no response actions are waiting for your decision, {{az-endpoint-analysis}} proposes closing the {{az-investigation}}. If you approve, {{alertzero}} closes the {{az-investigation}}, the attack, and the attack's alerts.
