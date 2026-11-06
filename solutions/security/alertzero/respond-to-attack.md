@@ -51,7 +51,7 @@ The {{az-endpoint-analysis}} {{az-worker}}'s response actions appear in the **Re
 1. Select a response action.
 2. Check the host or process that the action's title names, and make sure the forensics report implicates it. Consider what stops working when you act on it. For example, isolating a server also cuts off the people and services that depend on it.
 3. Select **Approve** or **Decline**.
-    - **If you approve:** The action runs under your account, through {{elastic-defend}}. Approving doesn't give you the privileges to run the action. Refer to [](alertzero-privileges.md). If the host doesn't respond within 10 minutes, the {{az-proposed-action}} shows **Failed**, and {{alertzero}} might offer it again as a new {{az-proposed-action}}. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
+    - **If you approve:** The action runs under your account, through {{elastic-defend}}. For privileges that you need to run the action, refer to [](alertzero-privileges.md). If the host doesn't respond within 10 minutes, the {{az-proposed-action}} shows **Failed**, and {{alertzero}} might offer it again as a new {{az-proposed-action}}. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
     - **If you decline:** The action doesn't run.
 
 ## Undo a response action [alertzero-respond-undo]
