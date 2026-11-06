@@ -108,6 +108,7 @@ Event-driven triggers run workflows when a platform event occurs:
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}** fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system}}** fire when someone creates, updates, deletes, enables, or disables a rule. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`.
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule execution triggers in {{alerting-v2-system}}** fire when a rule execution produces rule events or fails. The family includes `alerting.ruleEventsGenerated` and `alerting.ruleExecutionFailed`.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **{{agent-builder}} triggers** fire when a conversation attachment is added, updated, or deleted, or when conversation metadata changes. `ai.conversation.updated` also fires for other conversation changes, but only for conversation templates that have it turned on. The family includes `ai.attachmentAdded`, `ai.attachmentUpdated`, `ai.attachmentDeleted`, `ai.conversation.metadataUpdated`, and `ai.conversation.updated`.
 
 Use event-driven triggers for:
 
@@ -115,6 +116,7 @@ Use event-driven triggers for:
 * Reacting to case lifecycle changes (case opened, status changed, attachments or comments added)
 * Paging on-call, opening cases, or logging when a production workflow fails
 * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Auditing rule management actions, syncing rule inventory with external systems, or notifying a channel when rules change in {{alerting-v2-system}}
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Reacting to {{agent-builder}} conversation attachments, metadata changes, and, for supported conversation templates, new messages and other conversation changes
 
 Event-driven trigger example:
 
@@ -139,6 +141,7 @@ Each trigger type provides different data to the workflow context through the `e
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Alert lifecycle triggers in {{alerting-v2-system}} provide `event.alertId`, `event.ruleId`, and `event.spaceId`.
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Rule lifecycle triggers in {{alerting-v2-system}} provide `event.rule.ruleId` and `event.rule.spaceId`.
   * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Rule execution triggers in {{alerting-v2-system}} provide `event.rule.id` and `event.rule.spaceId`, plus execution details for `alerting.ruleEventsGenerated` (`event.rule.kind`, `event.rule.tags`, `event.execution.*`, and `event.ruleEventsGenerated`) or `event.error` for `alerting.ruleExecutionFailed`.
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` {{agent-builder}} triggers provide `event.conversationId` and event-specific fields. Attachment triggers also provide `event.attachmentId`, `event.attachmentType`, and `event.source`.
 
   Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) for the full payload shapes.
 
