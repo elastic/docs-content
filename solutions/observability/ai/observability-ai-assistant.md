@@ -187,7 +187,7 @@ Field names in custom indices have no specific requirements. Any `semantic_text`
 
    **Use the UI**:
 
-   - Search for `connectors` in the global search field. {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` The page is named **Content crawlers**. {applies_to}`stack: ga 9.0-9.6` The page is named **Content connectors**.
+   - Search for **Content crawlers** {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` or **Content connectors** {applies_to}`stack: ga 9.0-9.6` in the global search field.
    - Create a connector for your data source (example: [GitHub connector](elasticsearch://reference/search-connectors/es-connectors-github.md))
    - If your Space lacks the Search solution, either create the connector from a different space or change your space **Solution view** to `Classic`
 
@@ -218,7 +218,7 @@ This is a more complex method that requires you to set up the ELSER model and in
 
 To create the embeddings needed by the AI Assistant (weights and tokens into a sparse vector field) using an **ML Inference Pipeline**:
 
-1. Open the previously created connector on the connectors page, and select the **Pipelines** tab.
+1. Open the previously created connector on the page for managing connectors, and select the **Pipelines** tab.
 2. Select **Copy and customize** under `Unlock your custom pipelines`.
 3. Select **Add Inference Pipeline** under `Machine Learning Inference Pipelines`.
 4. Select the **ELSER (Elastic Learned Sparse EncodeR)** ML model to add the necessary embeddings to the data.
