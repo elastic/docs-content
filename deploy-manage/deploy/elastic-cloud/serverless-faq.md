@@ -33,7 +33,7 @@ User-initiated data recovery is anticipated in a future release. You can follow 
 ## Security, compliance, and access
 
 **Q: How can I create {{serverless-full}} service accounts?**<br>
-A: You can [create user-managed service accounts in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) for use within {{kib}} applications, such as [Workflows](/explore-analyze/workflows.md). For programmatic access from external applications, use [API keys](/deploy-manage/api-keys.md).
+A: You can [create user-managed service accounts in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) for use within {{kib}} applications, such as [Workflows](/explore-analyze/workflows.md). For programmatic access from external applications, use [API keys](/deploy-manage/api-keys/serverless-project-api-keys.md).
 
 **Q: Can I configure {{es}} authentication realms (for example, native realm) in {{serverless-short}} projects?**  
 A: No. {{serverless-short}} uses a different authentication model and does not support [{{es}} authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md). Project-level access is handled through [Serverless project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md), and user authentication is managed at the [{{ecloud}} organization level](/deploy-manage/users-roles/cloud-organization.md) (including SAML SSO).
