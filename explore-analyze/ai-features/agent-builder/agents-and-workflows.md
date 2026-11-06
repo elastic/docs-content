@@ -22,7 +22,7 @@ Elastic Workflows and {{agent-builder}} combine deterministic automation with co
 
 * **Create workflows from Agent Chat**: {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Create and edit workflows by describing what you want [in plain language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md). {{kib}} generates and updates the workflow YAML for you, so you can quickly build without memorizing step types or Liquid syntax. 
 * **Use workflows from agents:** Trigger an existing workflow from a conversation with a [workflow tool](./tools/workflow-tools.md) {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`, or assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
-* **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). To add context to a conversation without triggering an agent response, use the [conversation steps](#add-conversation-context-workflow) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`. For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
+* **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). To add context to a conversation without triggering an agent response, use the [conversation steps](#add-conversation-context-workflow) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`. To manage a conversation's attachments and metadata, use the [attachment and metadata steps](#manage-conversation-attachments-metadata-workflow) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`. For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
 * **React to conversation activity:** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Run a workflow when an attachment is added, updated, or deleted, or when conversation metadata changes. For supported conversation templates, you can also run a workflow when a conversation gets new messages or other changes. Refer to [{{agent-builder}} triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#agent-builder-triggers).
 
 ## Prerequisites [prerequisites]
@@ -194,7 +194,10 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Workflows can read and update the attachments and metadata of {{agent-builder}} conversations. For example, a workflow can add a runbook to the conversation that an `ai.agent` step created, or record the outcome of an investigation in the metadata of a conversation it created from a template.
+Workflows can read and update the attachments and metadata of {{agent-builder}} conversations:
+
+- **Attachments** are content, such as a runbook or a dashboard, that the agent can use as context. For example, a workflow can add a runbook to a conversation that an `ai.agent` step created.
+- **Metadata** is a set of structured fields, such as `status` and `severity`, that track the state of a conversation. For example, a workflow can mark an investigation as closed. Only conversations created from a template have metadata. To create one from a workflow, use [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`.
 
 Use these steps:
 
