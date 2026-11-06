@@ -722,6 +722,9 @@ toc:
               - file: security/get-started/create-runtime-fields-in-elastic-security.md
       - hidden: security/alertzero/index.md
         children:
+          - hidden: security/alertzero/watches-and-workers.md
+            children:
+              - hidden: security/alertzero/threat-reports.md
           - hidden: security/alertzero/set-up-alertzero.md
             children:
               - hidden: security/alertzero/requirements.md
@@ -740,7 +743,6 @@ toc:
               - hidden: security/alertzero/configure-worker-settings.md
               - hidden: security/alertzero/run-worker-on-demand.md
               - hidden: security/alertzero/view-execution-history.md
-          - hidden: security/alertzero/watches-and-workers.md
           - hidden: security/alertzero/glossary.md
       - file: security/ai.md
         children:
