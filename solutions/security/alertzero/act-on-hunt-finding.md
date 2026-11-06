@@ -15,7 +15,7 @@ The {{az-continuous-threat-hunt}} {{az-worker}} in the {{az-hunt-watch}} searche
 
 The {{az-continuous-threat-hunt}} {{az-worker}} offers only {{az-manual}} {{az-autonomy}}, so every action it proposes waits for a person. To learn what the {{az-worker}} searches and which sources it draws on, refer to [](watches-and-workers.md).
 
-% For docs writers: After the Watches and Workers reference (elastic/docs-content-internal#1814) merges, link to its Hunt Watch section instead of the whole page.
+% For docs writers: After the Watches and Workers reference (elastic/docs-content#9144) merges, link to its Hunt Watch section instead of the whole page.
 
 ## How the {{az-continuous-threat-hunt}} {{az-worker}} reports a hunt [alertzero-hunt-finding-outcomes]
 

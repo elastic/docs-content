@@ -19,7 +19,7 @@ Rule changes always wait for your approval, because the {{az-rule-tuning}} and {
 
 By default, the {{az-rule-tuning}} {{az-worker}} runs every 2 hours. It picks a rule when, over the last 7 days, at least 10 of the rule's alerts that it hasn't reviewed yet are false positives, and at least half of the rule's alerts are false positives. The {{az-rule-coverage}} {{az-worker}} runs every hour and reviews up to 5 detection gaps from the last 14 days in each run. To change these defaults, edit the {{az-rule-tuning}} and {{az-rule-coverage}} settings in the {{az-detection-watch}}. Refer to [](configure-worker-settings.md). For more about what each {{az-worker}} checks, refer to [](watches-and-workers.md).
 
-% For docs writers: After elastic/docs-content#9144 merges, point the link to configure-worker-settings.md at configure-worker-settings.md#configure-worker-settings-detection-watch. After the Watches and Workers reference (elastic/docs-content-internal#1814) merges, link to its Detection Watch section instead of the whole page.
+% For docs writers: After elastic/docs-content#9144 merges, point the link to configure-worker-settings.md at configure-worker-settings.md#configure-worker-settings-detection-watch. After the Watches and Workers reference (elastic/docs-content#9144) merges, link to its Detection Watch section instead of the whole page.
 
 With **{{az-manual}}** {{az-autonomy}} (the default), each {{az-worker}} asks before it starts work on a change:
 
