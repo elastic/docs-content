@@ -148,7 +148,7 @@ Use this skill to investigate anomalies surfaced by Security {{ml-app}} jobs: at
 
 **Enable:** `detection-rule-edit`
 
-Use this skill to create or edit detection rules. The skill supports **{{esql}} rules only**. It drafts rules from natural language and edits fields such as severity, tags, MITRE ATT&CK mappings, schedule, and query. The agent describes its proposed changes and applies them to a rule attachment in the conversation. You then click **Apply to creation** or **Update rule** in the chat to apply the change to the rule creation or edit form.
+Use this skill to create or edit detection rules. The skill supports **{{esql}} rules only**. It drafts rules from natural language and edits fields such as severity, tags, MITRE ATT&CK® mappings, schedule, and query. The agent describes its proposed changes and applies them to a rule attachment in the conversation. You then click **Apply to creation** or **Update rule** in the chat to apply the change to the rule creation or edit form.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
@@ -159,6 +159,27 @@ Use this skill to create or edit detection rules. The skill supports **{{esql}} 
 :::{tip}
 `detection-rule-edit` operates on a rule attachment. The skill activates when a rule attachment is present in the conversation. You can start a rule attachment from the rule creation form, the rule details page, or by asking the agent to "create a detection rule" directly in chat — the skill creates the attachment and renders an **Apply to creation** button so you can save the rule from the chat.
 :::
+
+## Rule noise investigation [rule-noise-investigation]
+
+```{applies_to}
+stack: preview 9.6+
+serverless:
+  security: preview
+```
+
+**Enable:** `investigate-rule` (optionally combine with [`alert-analysis`](#alert-triage-and-investigation) for verdicts on individual open alerts)
+
+Use this skill to find out why one detection rule generates too many alerts or false positives. The agent ranks the hosts, users, and source IP addresses behind most of the rule's alerts, reviews the alerts that analysts already closed and the reasons they gave, and identifies the likely root cause. It then suggests changes you make yourself, such as adding a [rule exception](/solutions/security/detect-and-alert/add-manage-exceptions.md) or configuring [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md). The skill doesn't change the rule.
+
+To find the noisiest rules before you pick one, ask the agent to rank your rules by alert count. The [`find-security-rules`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-find-security-rules-skill) skill handles that request and offers to investigate the rule you select.
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Why is the Suspicious PowerShell Execution rule firing so much? | Rank the hosts, users, and source IP addresses by alert count, break the alerts down by status, and classify the root cause. |
+| Most alerts from this rule look like false positives. How do I reduce the noise? | Review the alerts that analysts closed as false positives or benign positives, and propose an exception that matches only those confirmed patterns. |
+| `build-server-01` keeps triggering this rule, but it's expected behavior | Show how much of the rule's alert volume comes from that host, and suggest alert suppression or an exception, depending on whether analysts already confirmed the activity. |
+| Which rules generated the most alerts this week? | Rank rules by alert count with `find-security-rules` and offer to investigate one. When you pick a rule, `investigate-rule` attaches it to the conversation and analyzes its alerts. |
 
 ## {{elastic-defend}} troubleshooting
 
