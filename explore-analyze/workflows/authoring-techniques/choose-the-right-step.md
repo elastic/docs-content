@@ -59,7 +59,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 
 | Intent | Step |
 |---|---|
-| There's a dedicated {{kib}} connector (Slack, Jira, PagerDuty, and so on) | The connector's named step, for example [`slack.postMessage`](/explore-analyze/workflows/steps/external-systems-apps.md). |
+| There's a dedicated {{kib}} connector (Slack, Jira, PagerDuty, and so on) | The connector's named step, for example [`slack`](/explore-analyze/workflows/steps/external-systems-apps.md). |
 | No dedicated connector, credentials matter | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md) with a configured HTTP connector for secrets storage. |
 | No dedicated connector, quick one-off | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md) without a `connector-id`. |
 

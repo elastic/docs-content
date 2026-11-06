@@ -244,14 +244,13 @@ A `default` value can be a Liquid expression as well as a literal. For example, 
 consts:
   watch_index: "security.watch.findings"
   threshold: 0.85
-  slack_channel: "#soc-oncall"
 
 steps:
   - name: post
-    type: slack.postMessage
+    type: slack
+    connector-id: "soc-oncall-slack"
     with:
-      channel: "{{ consts.slack_channel }}"
-      text: "Threshold {{ consts.threshold }} exceeded."
+      message: "Findings in {{ consts.watch_index }} exceeded threshold {{ consts.threshold }}."
 ```
 
 Constants are evaluated once at workflow load. They don't have access to `inputs`, `steps`, or `event`. Use a [`data.set` step](/explore-analyze/workflows/steps/data.md#data-set) if you need a dynamic value.
