@@ -112,3 +112,6 @@ Understand current limitations and known issues with {{agent-builder}}.
 
 [**Learn more about limitations and known issues**](agent-builder/limitations-known-issues.md)
 
+## Release notes
+
+{{agent-builder}} release notes are part of the [{{kib}} release notes](kibana://release-notes/index.md). Look for the **Elastic Agent Builder** entries in each release.

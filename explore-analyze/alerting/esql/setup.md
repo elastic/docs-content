@@ -43,12 +43,21 @@ stack: experimental 9.6+
 
 Experimental features are new {{alerting-v2-system}} capabilities that are still in development. They can change or be removed in a future release, so avoid relying on them in production.
 
+When the setting is on, you can chain rules into a sequence and detect multi-step alert patterns. On the **Rules** page, select **Build a sequence**.
+
 To turn them on:
 
 1. Switch to the space where you want the features.
 2. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. On the **Space Settings** tab, turn on **Universal Alerting: Experimental Features**.
 4. Select **Save changes**, then reload {{kib}}.
+
+You can create rules and action policies with {{agent-builder}} while this setting is off.
+
+- On the **Rules** page, select **Create rule** → **Create with agent**. When the Rules list is empty, select **With AI Agent**.
+- On the **Action Policies** page, select **Create policy** → **Create with agent**. When the Action Policies list is empty, select **Create with AI Agent**.
+
+{{agent-builder}} has [its own requirements](rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
 
 ### Keep the {{observability}} Alerts page for {{alerting-v1-system}} [alerting-setup-v1-alerts-page]
 

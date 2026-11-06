@@ -1,6 +1,6 @@
 ---
 navigation_title: "Connect agents and workflows"
-description: "Combine Agent Builder agents with Elastic Workflows. Create workflows from chat, call workflows as tools, run pre-execution and post-execution workflows, and invoke agents with the `ai.agent` step."
+description: "Learn how Agent Builder works with Elastic Workflows, including creating workflows from chat, workflow tools, pre-execution and post-execution workflows, the `ai.agent` step, and conversation triggers."
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
@@ -14,11 +14,11 @@ products:
 
 # Connect {{agent-builder}} agents and Elastic Workflows
 
-Elastic Workflows and {{agent-builder}} combine deterministic automation with conversational reasoning. You can create workflows conversationally, make workflows available to agents, and invoke agents from workflows.
+Elastic Workflows and {{agent-builder}} combine deterministic automation with conversational reasoning. You can create workflows conversationally, make workflows available to agents, invoke agents from workflows, and start workflows from conversation events.
 
 ## Approaches
 
-There are three ways to use {{agent-builder}} and workflows together:
+{{agent-builder}} and workflows work together in the following ways:
 
 * **Create workflows from Agent Chat**: {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Create and edit workflows by describing what you want [in plain language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md). {{kib}} generates and updates the workflow YAML for you, so you can quickly build without memorizing step types or Liquid syntax. 
 * **Use workflows from agents:**
@@ -26,6 +26,7 @@ There are three ways to use {{agent-builder}} and workflows together:
     * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Assign [pre-execution workflows](#pre-execution-workflows) that run before the agent starts reasoning.
     * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Assign [post-execution workflows](#post-execution-workflows) that run after the agent finishes responding.
 * **Use agents from workflows:** Invoke an agent from a workflow with the [`ai.agent` step](#use-ai-agent-workflow-step). To add context to a conversation without triggering an agent response, use the [conversation steps](#add-conversation-context-workflow) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`. For advanced API operations, use the [`kibana.request` step](#use-kibana-request-workflow-step).
+* **React to conversation activity:** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Run a workflow when an attachment is added, updated, or deleted, or when conversation metadata changes. For supported conversation templates, you can also run a workflow when a conversation gets new messages or other changes. Refer to [{{agent-builder}} triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#agent-builder-triggers).
 
 ## Prerequisites [prerequisites]
 
@@ -379,4 +380,5 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 * [Tools overview](./tools.md)
 * [Workflow tools](../agent-builder/tools/workflow-tools.md)
 * [Author workflows with natural language](/explore-analyze/workflows/authoring-techniques/use-natural-language.md)
+* [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md#agent-builder-triggers)
 * [Agent Builder API]({{kib-apis}}group/endpoint-agent-builder)
