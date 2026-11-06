@@ -120,7 +120,7 @@ If your LLM provider doesn't support streaming, you can have {{kib}} wait for th
 
 To turn off streaming for the current space:
 
-1. Go to **GenAI Settings**.
+1. Go to **GenAI Settings** by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Turn off **Stream inference endpoint responses**.
 3. Select **Save changes**.
 
