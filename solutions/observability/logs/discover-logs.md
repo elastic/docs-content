@@ -20,7 +20,7 @@ If you're just getting started with **Discover** and want to learn its main prin
 :::{note}
 For a contextual logs experience, set the **Solution view** for your space to **{{observability}}**. Refer to [Managing spaces](/deploy-manage/manage-spaces.md) for more information.
 
-{applies_to}`stack: ga 9.6+` In spaces that use the Classic solution view, you also get the logs experience for data from some integrations, such as System and Nginx logs. For the full list, refer to [Context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover).
+{applies_to}`stack: ga 9.6+` In spaces that use the Classic solution view, you also get the logs experience for data from some integrations. Refer to [Use the logs experience in the Classic solution view](#logs-classic-solution-view).
 :::
 
 :::{image} ../../images/observability-log-explorer.png
@@ -54,6 +54,23 @@ The logs experience is available in:
     ```
 
 Once you have the logs you want to focus on, you can drill down further. For more on filtering, refer to [Filter logs in Discover](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover).
+
+### Use the logs experience in the Classic solution view [logs-classic-solution-view]
+
+{applies_to}`stack: ga 9.6+` In a space that uses the Classic solution view, **Discover** switches to the logs experience only when your {{data-source}} or {{esql}} query targets data from one of these integrations:
+
+| Integration | Example index pattern |
+| --- | --- |
+| Apache error logs | `logs-apache.error-*` |
+| AWS S3 access logs | `logs-aws.s3access-*` |
+| Kubernetes container logs | `logs-kubernetes.container_logs-*` |
+| Nginx access logs | `logs-nginx.access-*` |
+| Nginx error logs | `logs-nginx.error-*` |
+| System logs | `logs-system.*` |
+
+Other log data keeps the default experience, including the default document details. This includes `logs-*`, `filebeat-*`, Windows logs, and a {{data-source}} or query that mixes several integrations. To get the logs experience for any log data, use the {{observability}} solution view.
+
+The logs experience in the Classic solution view applies as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default.
 
 
 ## Review log data in the documents table [review-log-data-in-the-documents-table]
