@@ -35,6 +35,8 @@ Go to **Alerting** → **Execution History** in the {{observability}} navigation
 
 You can search records by action policy name, rule name, or saved-object ID, and filter by outcome to view only dispatched, throttled, or failed records.
 
+To review the dispatcher's decisions for a single alert across its whole lifetime, open the [**Policy history** tab](../alerts/investigate-alert-episodes.md#policy-history) on that alert's details page.
+
 ## Dispatch outcomes [dispatch-outcomes]
 
 After each dispatcher run, {{kib}} records an outcome for each action policy in the event log. The **Action policies** tab shows these outcomes:
