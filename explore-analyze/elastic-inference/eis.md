@@ -64,7 +64,11 @@ Available actions include:
 - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Region preferences](eis-region-and-hosting.md#inference-region-preferences) for where EIS processes {{infer}} requests
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Show or hide models](#eis-display-options) that are in preview, past end of life, or outside your region preferences
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Find models available in specific geographies or regions with the **Region** filter on the toolbar. The filter doesn't change where EIS processes {{infer}} requests, which [region preferences](eis-region-and-hosting.md#inference-region-preferences) control. Models that are [hidden by default](#eis-display-options) stay hidden unless you show them.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Sort models in card view by name or release date
+
+:::{tip}
+:applies_to: { serverless: ga, stack: ga 9.6+ }
+To find a model faster, filter the list by region, sort the model cards by name or release date, or [show models that are hidden by default](#eis-display-options).
+:::
 
 ### Show models that are hidden by default [eis-display-options]
 
