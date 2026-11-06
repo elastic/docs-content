@@ -146,7 +146,7 @@ To filter your data with KQL:
 1. If the search bar isn't visible, open it ({icon}`magnify` or {icon}`magnify_sparkles`).
 2. Set the data sources to search:
 
-   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Make sure the query in the editor names the data sources, for example `FROM logs-*`. If the query names none, submitting the search does nothing.
+   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Make sure the query in the editor names the data sources, for example `FROM logs-*`. Until the query names a data source, KQL search isn't available.
    - {applies_to}`stack: preview 9.3-9.5` Select the data sources to search. The list starts with the data sources named in the editor.
 
 3. Enter the text you want to search for as free text or using [KQL](elasticsearch://reference/query-languages/kql.md) syntax.
@@ -208,8 +208,6 @@ You can use this to:
 
 - Write a query from scratch when the editor is empty. For example, type `// Show the top 10 destinations by flight count` and press {kbd}`cmd+J` to generate a complete query.
 - Add a step to an existing query. Place the comment between pipes (for example `// filter for delayed flights`) and the AI agent generates a single pipe to append. If the AI agent determines that your comment describes a change to the next pipe rather than a new step, it modifies that pipe instead.
-
-As you write, the editor displays inline hints that remind you how to use the feature: on an empty line it suggests starting a `//` comment, and once you've written one it prompts you to press the shortcut. The placeholder in an empty editor conveys the same order: describe what you want in a `//` comment first, then press the shortcut to generate {{esql}} from it.
 
 While the AI agent is generating, a `Generating...` indicator appears next to your comment. Press the shortcut again to cancel the in-flight request and start a new one.
 
