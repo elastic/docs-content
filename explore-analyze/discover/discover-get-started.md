@@ -61,13 +61,11 @@ Document flyout
 
 ## Context-aware experiences [context-aware-discover]
 
-**Discover** adapts to the kind of data you explore. When it recognizes your data, it switches to a tailored experience, with columns, charts, and document details that suit that data. For example, log data opens with log-specific columns and details, and security alerts get color-coded row indicators. This is called a context-aware experience.
+**Discover** adapts to the kind of data you explore. When it recognizes your data, it switches to a tailored experience with columns, charts, and document details that suit that data. For example, log data opens with log-specific columns and details, and security alerts get color-coded row indicators. This is called a context-aware experience. When none applies, you get the default **Discover** experience, with all its core functionality for general-purpose data exploration.
 
-When no tailored experience applies to where you open **Discover** from or to the data you query, you get the default **Discover** experience with all its core functionality for general-purpose data exploration.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The active experience also shapes [AI-powered analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces, the AI agent receives guidance for that type of data. Refer to [How the analysis adapts to your data](analyze-discover-data-with-ai.md#context-aware-deep-analysis).
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The active experience also shapes [AI-powered analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces, the AI agent receives guidance that suits that type of data. For what changes for each type, refer to [How the analysis adapts to your data](analyze-discover-data-with-ai.md#context-aware-deep-analysis).
-
-Which experiences you can get depends on where you open **Discover** from, such as a project type or the [solution view](/deploy-manage/manage-spaces.md) of a space, and then on the data you query. **Discover** switches to an experience automatically when your data matches it:
+The experiences you can get depend on where you open **Discover** from, such as a project type or the [solution view](/deploy-manage/manage-spaces.md) of a space, and then on the data you query:
 
 |  | [Logs experience](/solutions/observability/logs/discover-logs.md) | [Metrics experience](/solutions/observability/infra-and-hosts/discover-metrics.md) | [Traces experience](/solutions/observability/apm/discover-traces.md) | [Security alerts and events experience](/solutions/security/investigate/discover-security.md) |
 | --- | --- | --- | --- | --- |
@@ -77,11 +75,19 @@ Which experiences you can get depends on where you open **Discover** from, such 
 | {{es-serverless}} projects | No | No | No | No |
 | Spaces with the Classic solution view [\[1\]](#classic-setting-note) | {applies_to}`stack: ga 9.6+` Yes, refer to [About the logs experience](#about-logs-experience) | Yes, refer to [About the metrics experience](#about-metrics-experience) | {applies_to}`stack: ga 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes, refer to [About the Security alerts and events experience](#about-security-experience) |
 
-$$$classic-setting-note$$$\[1\] {applies_to}`stack: ga 9.6+` The logs, traces, and Security experiences apply in spaces with the Classic solution view as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
+$$$classic-setting-note$$$\[1\] {applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs, traces, and Security experiences apply only while the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. The setting name uses "profiles" to mean context-aware experiences.
+
+### When you query several kinds of data [view-active-context-aware-experience]
+
+Your query can include several kinds of data that each have a tailored experience. For example, you might query both `logs-*` and `traces-*` indices within an {{observability}} context.
+
+In this case **Discover** provides the default experience until it detects that you're interacting with a single kind of data. For example, when you [look inside a document](inspect-documents.md#look-inside-a-document).
+
+To check which experience is active, open the Inspector and select **Profiles** from the **View** menu. The **Profiles** view lists the solution view and the type of data that Discover detected. Together, they determine the experience. To open the Inspector, refer to [Inspect the request behind your results](inspect-documents.md#inspect-discover-request).
 
 ### About the logs experience [about-logs-experience]
 
-{applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs experience applies to data from some integrations only, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
+{applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs experience applies only to data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
 
 ### About the metrics experience [about-metrics-experience]
 
@@ -93,15 +99,7 @@ In {{serverless-short}} projects, the traces experience needs the Observability 
 
 ### About the Security alerts and events experience [about-security-experience]
 
-{applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the Security experience applies when you use a Security {{data-source}}, or when your {{data-source}} or query targets only Security data. For more detail, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
-
-### When you query several kinds of data [view-active-context-aware-experience]
-
-Your query can include several kinds of data that each have a tailored experience. For example, you might query both `logs-*` and `traces-*` indices within an {{observability}} context.
-
-In this case **Discover** provides the default experience until it detects that you're interacting with a single kind of data. For example, when you [look inside a document](inspect-documents.md#look-inside-a-document).
-
-To check which experience is active, open the Inspector and select **Profiles** from the **View** menu. The **Profiles** view lists the solution view and the type of data that Discover detected. Together, they determine the experience. To open the Inspector, refer to [Inspect the request behind your results](inspect-documents.md#inspect-discover-request).
+{applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the Security experience applies when you use a Security {{data-source}} or when your {{data-source}} or query targets only Security data. For details, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
 ## Save, share, and export what you find [discover-save-share]
 
