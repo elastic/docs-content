@@ -56,7 +56,7 @@ Document flyout
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2` Each tab keeps its own query, so one tab can run an {{esql}} query while another uses classic mode.
 
 :::{tip} - Not sure which mode to start with? We recommend {{esql}}
-{{esql}} mode lets you query your data sources directly, with optimized support for time series data through the [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) and [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) commands. You can also transform the data right from the query, for example with the [`EVAL`](elasticsearch://reference/query-languages/esql/commands/eval.md) or [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) commands. You don't need to set up a data view or a runtime field first. To try it, follow [Get started with {{esql}} in Discover](try-esql.md).
+{{esql}} mode lets you query your data sources directly, with optimized support for time series data through the [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) and [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) commands. You can also transform the data right from the query, for example with the [`EVAL`](elasticsearch://reference/query-languages/esql/commands/eval.md) or [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) commands. You don't need to set up a data view or a runtime field first. To get familiar with it, follow [Get started with {{esql}} in Discover](try-esql.md).
 :::
 
 ## Context-aware experiences [context-aware-discover]
