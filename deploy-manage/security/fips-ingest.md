@@ -21,7 +21,7 @@ applies_to:
 
 FIPS 140-3 binaries use the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library, which is validated under the Cryptographic Module Validation Program (CMVP). Specific components and configurations that fall outside the validated module boundary are documented in the [Limitations](#ingest-limitations-all) section.
 
-{applies_to}`stack: ga 9.6+` {{agent}} (including the bundled {{fleet-server}}), {{filebeat}}, and {{metricbeat}} are FIPS 140-3 compliant. The 9.6 binaries use module version v1.0.0 (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
+{applies_to}`stack: ga 9.6+` {{agent}}, {{fleet-server}}, {{filebeat}}, and {{metricbeat}} are FIPS 140-3 compliant. The 9.6 binaries use module version v1.0.0 (CMVP Certificate [#5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
@@ -44,7 +44,7 @@ The default configurations provided in the binaries are FIPS compatible. Be sure
 To help you avoid using [integrations that aren't FIPS compatible](#ingest-limitations-integrations) with {{agent}} in FIPS mode, {{fleet}} warns you or blocks them:
 
 * {applies_to}`stack: ga 9.2+` {{fleet}} shows a warning when you add an integration that isn't FIPS compatible to an agent policy with one or more enrolled agents running in FIPS mode. It also shows a warning when you enroll an agent in a policy containing integrations that aren't FIPS compatible. These warnings appear whether or not {{kib}} runs in FIPS mode.
-* {applies_to}`stack: ga 9.6+` When {{kib}} runs in [FIPS mode](/deploy-manage/security/fips-kib.md#_enable_fips_mode), {{fleet}} hides integrations that aren't FIPS compatible from the **Integrations** catalog, and blocks installing them or adding them to an agent policy, including through the API. When only some of an integration's policy templates aren't FIPS compatible, the integration stays available and {{fleet}} shows only its FIPS compatible policy templates.
+* {applies_to}`stack: ga 9.6+` When {{kib}} runs in [FIPS mode](/deploy-manage/security/fips-kib.md#_enable_fips_mode), {{fleet}} hides integrations that aren't FIPS compatible from the **Integrations** catalog and blocks installing them or adding them to an agent policy. Through the {{fleet}} API, these requests fail unless you set `force: true`. Uploading an integration package that isn't FIPS compatible is always blocked. When only some of an integration's policy templates aren't FIPS compatible, the integration stays available and {{fleet}} shows only its FIPS compatible policy templates.
 
   Hiding integrations from the catalog requires [{{package-registry}}](/reference/fleet/air-gapped.md#air-gapped-diy-epr) version 1.41.0 or later. If you run your own registry with an earlier version, the integrations stay visible in the catalog, but {{fleet}} still blocks them.
 
