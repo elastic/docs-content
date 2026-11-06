@@ -11,9 +11,22 @@ products:
 
 # Watches and Workers
 
-A {{az-watch}} covers one area of security work and includes one or more {{az-workers}}. {{az-workers}} in different {{az-watches}} often depend on each other. For example, the {{az-forensics-watch}} analyzes the attacks that the {{az-triage-watch}} finds, so turn on the {{az-workers}} in both {{az-watches}} if you want {{alertzero}} to take an attack from discovery to a response.
+A {{az-watch}} covers one area of security work and includes one or more {{az-workers}}. {{az-workers}} in different {{az-watches}} often depend on each other. Refer to [](#alertzero-workers-together).
 
 A {{az-worker}} also needs certain features and integrations to be set up. Without them, a {{az-worker}} can't work, or works only in part, so set them up before you turn the {{az-worker}} on. To change a {{az-worker}}'s settings, refer to [](configure-worker-settings.md).
+
+## How {{az-workers}} work together [alertzero-workers-together]
+
+Some {{az-workers}} use what other {{az-workers}} produce, so turning one off can leave another with nothing to work on. Use the following table to decide which {{az-workers}} to keep on.
+
+| {{az-worker}} | {{az-watch}} | What it does | Works with |
+| --- | --- | --- | --- |
+| [{{az-alert-triage}}](#alertzero-alert-triage) | {{az-triage-watch}} | Classifies alerts and proposes closing false positives. | {{az-rule-tuning}}, which learns from the alerts that {{az-alert-triage}} classifies as false positives. |
+| [{{az-attack-discovery}}](#alertzero-attack-discovery) | {{az-triage-watch}} | Groups related alerts into potential attacks and proposes handing them off for a deeper investigation. | {{az-endpoint-analysis}}, which investigates the attacks that {{az-attack-discovery}} hands off. |
+| [{{az-continuous-threat-hunt}}](#alertzero-continuous-threat-hunt) | {{az-hunt-watch}} | Hunts your data for activity that matches {{az-threat-reports}} and records the detection gaps it finds. | {{az-rule-coverage}}, which reviews the gaps that {{az-continuous-threat-hunt}} records. |
+| [{{az-rule-tuning}}](#alertzero-rule-tuning) | {{az-detection-watch}} | Proposes tuning changes for rules that produce many false positives. | {{az-alert-triage}}. Without it, {{az-rule-tuning}} still works, but has fewer alerts to learn from. |
+| [{{az-rule-coverage}}](#alertzero-rule-coverage) | {{az-detection-watch}} | Proposes a fix for each detection gap, such as turning on an existing rule, installing a prebuilt rule, or drafting a new one. | {{az-continuous-threat-hunt}}. Without it, {{az-rule-coverage}} has no gaps to review. |
+| [{{az-endpoint-analysis}}](#alertzero-endpoint-analysis) | {{az-forensics-watch}} | Reconstructs the attack timeline on an affected host and proposes response actions. | {{az-attack-discovery}}. Without it, {{az-endpoint-analysis}} has no attacks to investigate. |
 
 ## {{az-triage-watch}} [alertzero-triage-watch]
 
