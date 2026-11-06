@@ -19,7 +19,7 @@ Every rule runs in one of these modes:
 | Mode | What it does |
 | --- | --- |
 | **Detect and respond** (**Alert** in earlier {{stack}} versions) | Opens a tracked [alert](../alerts.md) that {{kib}} follows as the condition persists and recovers. Alerts appear on the **Alerts** page for triage, and action policies can route them to workflows that notify your team. |
-| **Collect evidence** (**Signal** in earlier {{stack}} versions) | Records each match as a [rule event](rule-event-field-reference.md) that you can [query in Discover](../alerts/query-signals.md), chart on a dashboard, or feed into a later rule. Matches never appear on the **Alerts** page and never notify anyone. |
+| **Collect evidence** (**Signal** in earlier {{stack}} versions) | Records each match as a [rule event](rule-event-field-reference.md) that you can [query in Discover](../alerts/query-signals.md), chart on a dashboard, or feed into a later rule. Matches never appear on the **Alerts** page, and action policies don't route them to workflows. |
 
 ## When to use each [rule-mode-when-to-use]
 
