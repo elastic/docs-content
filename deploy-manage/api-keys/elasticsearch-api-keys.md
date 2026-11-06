@@ -46,8 +46,8 @@ To manage roles, go to the **Roles** management page using the navigation menu o
 
 The following options are available to create an API key:
 
-* On {{ech}} and {{ece}} deployments, [use the simple API key creation menu](/deploy-manage/images/kibana-create-user-api-key.png).
-* On all deployment types, and for more complex key creation needs, [use the API key page](/deploy-manage/images/kibana-create-user-api-key.png).
+* On {{ech}} and {{ece}} deployments, [use the simple API key creation menu](#simple-api-key-creation).
+* On all deployment types, and for more complex key creation needs, [use the API key page](#advanced-api-key-creation).
 * Create an API key [using the {{es}} API]({{es-apis}}/operation/operation-security-create-api-key).
 
 ### Simple API key creation
