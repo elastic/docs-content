@@ -28,7 +28,11 @@ Your role needs these privileges:
 
 ## Open the integration's details [integration-details-steps]
 
-1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find the integration, then select it from the results.
+
+To open the details from the **Integrations** page instead:
+
+1. Find **Integrations** in the navigation menu.
 2. Select the integration:
     * If the integration is installed, select it on the **Installed integrations** tab.
     * If the integration isn't installed yet, select it on the **Browse integrations** tab.
