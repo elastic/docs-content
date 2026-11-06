@@ -53,7 +53,7 @@ On {{stack}}, assign one of these [built-in roles](elasticsearch://reference/ela
 
 ## Build a custom role [alertzero-build-custom-role]
 
-Build a [custom role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) from the privileges for each job the analayst does.
+Build a [custom role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) from the privileges for each job the analyst does.
 
 ### Let analysts review proposed actions and investigations [alertzero-analyst-access]
 

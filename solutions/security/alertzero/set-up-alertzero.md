@@ -109,5 +109,5 @@ To change which {{az-workers}} run after setup, or the default {{az-worker}} set
 ## Next steps [alertzero-set-up-next]
 
 - [Give your team access to {{alertzero}}](alertzero-privileges.md) so they can review and decide {{az-proposed-actions}}.
-- [Find the {{az-proposed-actions}} that need your decision](use-alertzero.md).
+- [Find the {{az-proposed-actions}} that need your decision](work-in-alertzero.md).
 - [Change {{az-worker}} settings](configure-worker-settings.md), such as {{az-autonomy}} and schedule.
