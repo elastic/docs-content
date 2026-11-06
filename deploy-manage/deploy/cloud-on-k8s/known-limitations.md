@@ -46,3 +46,55 @@ Solution: enable CNI when starting minikube: `minikube start --cni=true`.
 Full configuration examples exist in  [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
 
 
+## Rolling updates and multiple replicas with host path volumes [k8s_agent_hostpath_rolling_updates]
+
+Two {{agent}} Pods on the same {{k8s}} node cannot use the same host path at the same time. The second Pod stops with the error `failed to get app lock: another elastic-agent is already running`. This happens in two cases:
+
+* You deploy {{agent}} as a `Deployment` with more than one replica, and {{k8s}} schedules two replicas on the same node.
+* You update a `Deployment` that has one replica, for example to change resources. By default, a `Deployment` uses the `RollingUpdate` strategy. The strategy starts the new Pod before it stops the old Pod. If both Pods run on the same node, the new Pod fails until the old Pod stops.
+
+To avoid the error, use one of these options:
+
+1. Deploy {{agent}} as a `DaemonSet`. A `DaemonSet` runs one Pod on each node.
+2. For a `Deployment` with one replica, set the `Recreate` strategy. {{k8s}} stops the old Pod before it starts the new Pod. The {{agent}} is not available during the update.
+
+    ```yaml
+    apiVersion: agent.k8s.elastic.co/v1alpha1
+    kind: Agent
+    metadata:
+      name: elastic-agent
+    spec:
+      deployment:
+        replicas: 1
+        strategy:
+          type: Recreate
+    ...
+    ```
+
+3. For a `Deployment` with more than one replica, add a `podAntiAffinity` rule. The rule prevents two replicas from running on the same node. Make sure that the cluster has more nodes than replicas. If no free node is available, a Pod stays in the `Pending` state.
+
+    ```yaml
+    apiVersion: agent.k8s.elastic.co/v1alpha1
+    kind: Agent
+    metadata:
+      name: elastic-agent
+    spec:
+      deployment:
+        replicas: 2
+        podTemplate:
+          spec:
+            affinity:
+              podAntiAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                - labelSelector:
+                    matchLabels:
+                      agent.k8s.elastic.co/name: elastic-agent <1>
+                  topologyKey: kubernetes.io/hostname
+    ...
+    ```
+
+    1. Use the name of the {{agent}} resource.
+
+4. Use an `emptyDir` volume instead of the host path volume. {{agent}} then does not keep its local state when a Pod restarts. This option is not recommended. Refer to [Storing local state in host path volume](#k8s_storing_local_state_in_host_path_volume_2).
+
+
