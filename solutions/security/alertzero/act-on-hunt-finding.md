@@ -27,21 +27,6 @@ Each {{az-threat-report}} has one {{az-investigation}} in each space, named afte
 
 If a later hunt of the same {{az-threat-report}} confirms more activity, the {{az-continuous-threat-hunt}} {{az-worker}} reopens the {{az-investigation}} and adds the new {{az-hunt-finding}} to it.
 
-## Check the evidence in the {{az-hunt-finding}} [alertzero-hunt-finding-check]
-
-Before you decide any response action, make sure the evidence shows a real threat in your environment.
-
-1. In the **Respond** section of the **{{az-proposed-actions-cap}}** page, select a response action from the hunt. Its title names the action and the host, such as `Isolate host WIN-ANALYST01`. The {{az-investigation}} opens in a flyout.
-2. Find the **{{az-hunt-finding-cap}}**. It names the {{az-threat-report}} it came from and shows the finding's severity and the {{az-continuous-threat-hunt}} {{az-worker}}'s confidence as a percentage.
-3. Check that the evidence holds:
-    - **Hunt result:** **Confirmed by** shows how the hunt confirmed the match. **IOC Hunt** means your events contain indicators of compromise (IOCs) from the {{az-threat-report}}, such as file hashes or IP addresses. **Behavior Hunt** means your events show activity that matches an attack technique from the report.
-    - **Affected hosts** and **Affected users:** Look for activity that's normal on those hosts, such as an admin tool that uses the same technique. Normal activity points to a false match.
-    - **Evidence for** and **Evidence against:** Weigh what supports the match against what argues against it.
-
-    To see the matching events, select **Open events in Discover**. To ask follow-up questions about the evidence, select **Open chat**.
-
-If the evidence doesn't show a real threat, decline the response actions from the hunt.
-
 ## How the {{az-continuous-threat-hunt}} {{az-worker}} picks response actions [alertzero-hunt-finding-how]
 
 The {{az-continuous-threat-hunt}} {{az-worker}} proposes response actions only for hosts that run {{elastic-defend}}. For each process that the hunt implicates, the {{az-worker}} picks one response. For each host, the {{az-worker}} decides separately whether to isolate it.
@@ -63,11 +48,18 @@ If another {{az-investigation}} already has the same response action waiting for
 
 ## Decide each response action [alertzero-hunt-finding-actions]
 
-If containing hosts isn't your role, assign the {{az-investigation}} to an incident responder from its card. To decide a response action:
+If containing hosts isn't your role, assign the {{az-investigation}} to an incident responder from its card. Before you decide a response action, make sure the evidence in the {{az-hunt-finding}} shows a real threat in your environment.
 
-1. Select the response action.
-2. Check **Action** and **Why**. The **Why** list starts with the rule that picked the action. Make sure the {{az-hunt-finding}} implicates the host or process, and consider what stops working when you act on it. For example, isolating a server also cuts off the people and services that depend on it.
-3. Select **Approve** or **Decline**.
+1. In the **Respond** section of the **{{az-proposed-actions-cap}}** page, select a response action from the hunt. This section also lists response actions for attacks from the {{az-endpoint-analysis}} {{az-worker}}, so make sure that the action belongs to the hunt's {{az-investigation}}. The {{az-investigation}} opens in a flyout.
+2. Find the **{{az-hunt-finding-cap}}**. It names the {{az-threat-report}} it came from and shows the finding's severity and the {{az-continuous-threat-hunt}} {{az-worker}}'s confidence as a percentage.
+3. Check that the evidence holds:
+    - **Hunt result:** **Confirmed by** shows how the hunt confirmed the match. **IOC Hunt** means your events contain indicators of compromise (IOCs) from the {{az-threat-report}}, such as file hashes or IP addresses. **Behavior Hunt** means your events show activity that matches an attack technique from the report.
+    - **Affected hosts** and **Affected users:** Look for activity that's normal on those hosts, such as an admin tool that uses the same technique. Normal activity points to a false match.
+    - **Evidence for** and **Evidence against:** Weigh what supports the match against what argues against it.
+
+    To see the matching events, select **Open events in Discover**. To ask follow-up questions about the evidence, select **Open chat**. If the evidence doesn't show a real threat, decline the response actions from the hunt.
+4. In the flyout's **{{az-proposed-actions-cap}}** section, select the response action, and check **Action** and **Why**. The **Why** list starts with the rule that picked the action. Make sure the {{az-hunt-finding}} implicates the host or process, and consider what stops working when you act on it. For example, isolating a server also cuts off the people and services that depend on it.
+5. Select **Approve** or **Decline**.
     - **If you approve:** The action runs under your account, through {{elastic-defend}}. Approving doesn't give you the privileges to run the action. Refer to [](alertzero-privileges.md). If you don't have those privileges, or the host doesn't respond within 10 minutes, the {{az-proposed-action}} shows **Failed**. {{alertzero}} then offers the action again as a new {{az-proposed-action}} with the same deadline. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
     - **If you decline:** The action doesn't run.
 
@@ -109,8 +101,8 @@ To work on the finding with other people instead, escalate the {{az-investigatio
 
 Every hunt, including one with no confirmed match, passes the attack techniques it searched for to the {{az-rule-coverage}} {{az-worker}} in the {{az-detection-watch}}. The {{az-rule-coverage}} {{az-worker}} checks whether your detection rules cover those techniques, and proposes rules for the gaps in the **Configure** section. To review those rules, refer to [](decide-detection-change.md#alertzero-detection-change-coverage).
 
-## Related pages [alertzero-hunt-finding-related]
+## Next steps [alertzero-hunt-finding-next-steps]
 
-- [](use-alertzero.md): Find other work that {{az-workers}} bring you.
-- [](respond-to-attack.md): Decide the response actions for an attack that the {{az-attack-discovery}} {{az-worker}} finds.
-- [](/solutions/security/endpoint-response-actions.md): Run response actions by hand.
+- [Find other work that {{az-workers}} bring you](work-in-alertzero.md).
+- [Decide the response actions for an attack](respond-to-attack.md) that the {{az-attack-discovery}} {{az-worker}} finds.
+- [Run response actions by hand](/solutions/security/endpoint-response-actions.md).

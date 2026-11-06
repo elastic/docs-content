@@ -21,12 +21,20 @@ To learn what starts each kind of change, refer to [](watches-and-workers.md).
 
 ## How the {{az-detection-watch}} proposes a change [alertzero-detection-change-how]
 
-By default, each {{az-worker}} asks before it starts work on a change:
+By default, the {{az-rule-tuning}} {{az-worker}} runs every 2 hours. It picks a rule when, over the last 7 days, at least 10 of the rule's alerts that it hasn't reviewed yet are false positives, and at least half of the rule's alerts are false positives. The {{az-rule-coverage}} {{az-worker}} runs every hour and reviews up to 5 detection gaps from the last 14 days in each run. To change these defaults, edit the {{az-rule-tuning}} and {{az-rule-coverage}} settings in the {{az-detection-watch}}. Refer to [](configure-worker-settings.md).
 
-- **The {{az-rule-tuning}} {{az-worker}}:** Asks whether to analyze a noisy rule, with the {{az-proposed-action}} **Review rule for tuning**.
-- **The {{az-rule-coverage}} {{az-worker}}:** Asks whether to work on a gap, with the {{az-proposed-action}} **Review detection gap**.
+% For docs writers: After elastic/docs-content#9144 merges, point the preceding link at configure-worker-settings.md#configure-worker-settings-detection-watch.
+
+With **{{az-manual}}** {{az-autonomy}} (the default), each {{az-worker}} asks before it starts work on a change:
+
+- **{{az-rule-tuning}} {{az-worker}}:** Asks whether to analyze a noisy rule, with the {{az-proposed-action}} **Review rule for tuning**.
+- **{{az-rule-coverage}} {{az-worker}}:** Asks whether to work on a gap, with the {{az-proposed-action}} **Review detection gap**.
 
 After you approve, the {{az-worker}} drafts the change and proposes it for your review. If you decline **Review rule for tuning**, the {{az-rule-tuning}} {{az-worker}} doesn't review those false positives again, but new ones can start a new review. If you decline **Review detection gap**, the {{az-rule-coverage}} {{az-worker}} leaves that gap out of future coverage checks.
+
+With **{{az-assisted}}** {{az-autonomy}}, the {{az-workers}} skip this question. They draft each change on their own and propose it for your review.
+
+Each {{az-proposed-action}} expires after 72 hours. If nobody decides before then, your rules stay as they are, and the {{az-worker}} can ask again on a later run.
 
 % For the AlertZero product team: The proposal text inside the UI tells people to "dismiss," but the button says Decline. The flyout also has a separate Dismiss button that acts on the whole investigation. The docs say Decline to match the button, but users might find the mix confusing.
 
@@ -34,7 +42,7 @@ After you approve, the {{az-worker}} drafts the change and proposes it for your 
 
 The {{az-rule-tuning}} {{az-worker}} proposes one change for each noisy rule.
 
-1. In the **Configure** section of the **{{az-proposed-actions-cap}}** page, select the rule's card. Its name starts with **Rule tuning:**.
+1. In the **Configure** section of the **{{az-proposed-actions-cap}}** page, select the card for the noisy rule. This section also lists proposed rules for detection gaps, so make sure that the card is for tuning a rule.
 2. In the flyout's **{{az-proposed-actions-cap}}** section, select the change.
 3. Check that the change drops the false positives without hiding real threats:
     - **Why this rule was picked:** How many of the rule's recent alerts were judged false positives, either closed by analysts or classified by the {{az-alert-triage}} {{az-worker}}.
@@ -51,7 +59,7 @@ To tune a rule by hand instead, refer to [](/solutions/security/detect-and-alert
 
 The {{az-rule-coverage}} {{az-worker}} proposes a rule for each gap that the {{az-hunt-watch}} finds.
 
-1. In the **Configure** section of the **{{az-proposed-actions-cap}}** page, select the gap's card. Its name starts with **Detection coverage:**.
+1. In the **Configure** section of the **{{az-proposed-actions-cap}}** page, select the card for the detection gap. This section also lists tuning changes for noisy rules, so make sure that the card is for a detection gap.
 2. In the flyout's **{{az-proposed-actions-cap}}** section, select the proposed rule.
 3. For a new rule, check the **Proposed rule** query and the **Backtest**, which shows how often the rule matches your past data. A rule that matches often in the backtest is likely to be noisy once it's on.
 4. Select **Approve** or **Decline**.
@@ -69,7 +77,7 @@ To manage rules by hand, refer to [](/solutions/security/detect-and-alert/manage
 
 To see or undo an approved change later, refer to [](/solutions/security/detect-and-alert/view-rule-changes-history.md).
 
-## Related pages [alertzero-detection-change-related]
+## Next steps [alertzero-detection-change-next-steps]
 
-- [](act-on-hunt-finding.md): Find out how hunts pass detection gaps to the {{az-rule-coverage}} {{az-worker}}.
-- [](use-alertzero.md): Find other work that {{az-workers}} bring you.
+- [Find out how hunts pass detection gaps](act-on-hunt-finding.md#alertzero-hunt-finding-coverage) to the {{az-rule-coverage}} {{az-worker}}.
+- [Find other work that {{az-workers}} bring you](work-in-alertzero.md).

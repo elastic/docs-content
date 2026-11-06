@@ -726,9 +726,9 @@ toc:
             children:
               - hidden: security/alertzero/requirements.md
           - hidden: security/alertzero/review-first-proposed-action.md
-          - hidden: security/alertzero/use-alertzero.md
+          - hidden: security/alertzero/work-in-alertzero.md
             children:
-              - hidden: security/alertzero/decide-proposed-action.md
+              - hidden: security/alertzero/close-false-positive-alerts.md
               - hidden: security/alertzero/respond-to-attack.md
               - hidden: security/alertzero/act-on-hunt-finding.md
               - hidden: security/alertzero/decide-detection-change.md

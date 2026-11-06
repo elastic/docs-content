@@ -13,7 +13,7 @@ products:
 
 The {{az-alert-triage}} {{az-worker}} reviews your open and acknowledged alerts and finds the ones it judges to be false positives. Its [{{az-autonomy}}](configure-worker-settings.md) controls what it does with them.
 
-- With **{{az-manual}}** {{az-autonomy}}, the default, the {{az-worker}} proposes closing the false positives and waits for you to [approve or decline](#alertzero-decide-review) each proposed closure.
+- With **{{az-manual}}** {{az-autonomy}} (the default) the {{az-worker}} proposes closing the false positives and waits for you to [approve or decline](#alertzero-decide-review) each proposed closure.
 - With **{{az-supervised}}** {{az-autonomy}}, the {{az-worker}} closes the false positives on its own. You [check its closures](#alertzero-decide-autonomy) afterward and reopen any that you disagree with.
 
 ## How the {{az-alert-triage}} {{az-worker}} picks alerts to close [alertzero-decide-how]
@@ -29,14 +29,14 @@ To change these defaults, edit the {{az-alert-triage}} settings in the {{az-tria
 ## Review a proposed closure [alertzero-decide-review]
 
 1. Find **{{alertzero}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). The **{{az-proposed-actions-cap}}** page opens.
-2. In the **Investigate** section, select the {{az-proposed-action}}'s card. Its {{az-investigation}} opens in a flyout.
+2. In the **Investigate** section, select the card for the proposed closure. This section also lists attacks from the {{az-attack-discovery}} {{az-worker}}, so make sure that the card is for closing alerts. The {{az-investigation}} opens in a flyout.
 3. In the flyout's **{{az-proposed-actions-cap}}** section, select the {{az-proposed-action}}.
 4. Check that the reasoning holds for every alert in the batch:
     - **Scope:** How many alerts the closure covers, which rule they came from, and which hosts and users they involve. Look for a host or user you don't expect for that rule.
     - **Reasoning:** Why the {{az-alert-triage}} {{az-worker}} judged them false positives. The {{az-worker}} adds a note to each alert that explains why. Look for a note whose reasoning doesn't match what the alert shows. To ask follow-up questions, select **Open chat**.
 
         :::{note}
-        You approve or decline the batch as a whole. If some alerts need a closer look, decline the closure and handle them individually.
+        You approve or decline the batch as a whole. If some alerts need a closer look, ask in the chat to remove them from the closure, and then decide the revised closure. You can also decline the closure and handle the alerts individually.
         :::
 
 5. Select **Approve** or **Decline**. You can't change your decision afterward.
@@ -56,8 +56,8 @@ To change these defaults, edit the {{az-alert-triage}} settings in the {{az-tria
 You can check any closure, whether someone approved it or the {{az-alert-triage}} {{az-worker}} closed the alerts on its own. If your team sets the {{az-worker}} to {{az-supervised}} {{az-autonomy}}, it closes false positives without waiting for approval, so check its closures regularly, especially soon after the change.
 
 1. On the **{{az-proposed-actions-cap}}** page, expand **Closed Actions**. It lists decisions from the last 72 hours. For older closures, find the alerts on the **Alerts** page.
-2. Find the {{az-alert-triage}} closures. Each one's title starts with **Close** and ends with **as false positive**. The name of its {{az-investigation}} starts with **{{az-alert-triage}}** and includes the rule name. To narrow the list to a host or user, use the **Impacted entities** filter.
-3. Check who decided each closure. Closures that the {{az-worker}} made on its own say **Approved by {{az-alert-triage}} worker**.
+2. Find the {{az-alert-triage}} closures. To narrow the list to a host or user, filter it by impacted entity.
+3. Check who decided each closure. Each closure shows whether a person approved it or the {{az-alert-triage}} {{az-worker}} closed the alerts on its own.
 
 If a closure looks wrong, [reopen its alerts](#alertzero-decide-reopen).
 
@@ -68,7 +68,7 @@ If a closure turns out to be wrong, reopen its alerts. You can reopen them wheth
 1. In **Closed Actions**, select the closure's card to see the evidence behind it.
 2. If you disagree with the closure, reopen the alerts. Refer to [](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
 
-## Related pages [alertzero-decide-related]
+## Next steps [alertzero-decide-next-steps]
 
-- [](respond-to-attack.md): Decide what happens next when the {{az-attack-discovery}} {{az-worker}} finds an attack.
-- [](use-alertzero.md): Find other work that {{az-workers}} bring you.
+- [Respond to an attack](respond-to-attack.md) that the {{az-attack-discovery}} {{az-worker}} finds.
+- [Find other work that {{az-workers}} bring you](work-in-alertzero.md).
