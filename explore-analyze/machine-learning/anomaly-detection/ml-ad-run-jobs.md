@@ -158,7 +158,8 @@ For advanced jobs, the project scope and data source controls appear together on
 The following default scopes apply to jobs created after {{cps-init}} is available on the project:
 
 * **UI:** Defaults to the space default routing expression, or all linked projects if no space default is configured.
-* **API:** Not space-aware. Defaults to all linked projects unless you specify a `project_routing` expression or a qualified index expression. This also applies to prebuilt jobs started from {{elastic-sec}} **ML job settings**, which don't set `project_routing`.
+* **API:** Not space-aware. Defaults to all linked projects unless you specify a `project_routing` expression or a qualified index expression.
+* **{{elastic-sec}} prebuilt jobs:** Jobs that you start from {{elastic-sec}} **ML job settings** search all linked projects, and you can't select a different scope when you start them. To change the scope, stop the job's {{dfeed}}, then edit **Project scope** on the **Datafeed** tab of **Edit job**. After you stop the {{dfeed}}, **Edit job** opens with **Project scope** set to the origin project. Saving any change to the job limits it to the origin project unless you select another scope.
 * **Clone:** Initializes to the original job's `project_routing`. If the original has no stored routing, for example, in the case of a job created before {{cps-init}} was enabled on the project, the clone uses the space default.
 
 Changes to the space default routing do not retroactively affect existing jobs. Each job retains the `project_routing` that was set at creation or last update. This keeps the model stable. 
