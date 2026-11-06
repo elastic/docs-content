@@ -41,6 +41,8 @@ To switch:
 
 **Result:** The tab changes to {{esql}} mode. If a KQL or Lucene query exists, Discover converts it and runs it.
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` If the tab hasn't run a search yet, Discover shows recommended queries that you can run as a starting point.
+
 ## Switch to Discover's classic mode [revert-to-classic-mode]
 
 When you switch from {{esql}} mode to classic mode, Discover drops the {{esql}} query and keeps the data you were querying:
