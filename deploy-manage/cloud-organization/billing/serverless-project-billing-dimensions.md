@@ -27,11 +27,13 @@ This page describes each category and how it applies to your projects. For detai
 
 ## Project charges [project-charges]
 
-Each project type, or *offering*, is billed based on dimensions that best reflect how that kind of project is used. For example, an [{{obs-serverless}}](elastic-observability-billing-dimensions.md) project is billed based on the volume of data it ingests and retains. An [{{es-serverless}}](elasticsearch-billing-dimensions.md) project is billed for the compute it uses to ingest and search your data, measured in VCUs.
+Project charges are based on dimensions that best reflect how each project type, or *offering*, is used. For example, an {{obs-serverless}} project is billed based on the volume of data it ingests and retains. An {{es-serverless}} project is billed for the compute it uses to ingest and search your data, measured in VCUs.
 
-Some billing dimensions are part of only certain offerings, such as [Synthetics](elastic-observability-billing-dimensions.md#synthetics-billing) for {{observability}}, and [Endpoint Protection](security-billing-dimensions.md#security-billing-endpoint-protection) and [Cloud Protection](security-billing-dimensions.md#security-billing-cloud-protection) for {{elastic-sec}}.
+Some features that are specific to a project type, such as [Synthetics](elastic-observability-billing-dimensions.md#synthetics-billing) for {{observability}}, and [Endpoint Protection](security-billing-dimensions.md#security-billing-endpoint-protection) and [Cloud Protection](security-billing-dimensions.md#security-billing-cloud-protection) for {{elastic-sec}}, have dedicated billing dimensions.
 
 Some features that are available in more than one offering, such as [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) and [{{cps}}](/explore-analyze/cross-project-search.md), are priced differently depending on the project type.
+
+For details, refer to the billing dimensions page for your project type.
 ## Organization charges [organization-charges]
 
 These charges apply regardless of which project type you use, and include data out and support.
