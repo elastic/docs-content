@@ -13,6 +13,12 @@ products:
 
 {{az-workers}} do the analysis, and you decide what they bring you, such as which alerts to close, how to contain an attack, and which detection rules to change. When the {{az-investigation}} behind a decision needs more work, you can hand it to a teammate or escalate it.
 
+Each kind of work waits in its own section of the **{{az-proposed-actions-cap}}** page:
+
+- **Investigate:** Alert closures, attacks to send for forensics, and memory dumps.
+- **Respond:** Response actions, analyst recommendations, and the {{az-proposed-action}} that closes an attack's {{az-investigation}}.
+- **Configure:** Detection rule changes.
+
 ## Find the work that fits your role [alertzero-use-start]
 
 | Your goal | Start here |
@@ -24,7 +30,7 @@ products:
 | Ask follow-up questions about the evidence | Select **Open in chat** on the card |
 | Focus on one host, user, or service | Select it in **Impacted entities** |
 | Hand off the {{az-investigation}} or coordinate a response | Assign it from its card, or [escalate it](escalate-investigation.md) |
-| Dismiss the {{az-investigation}} and all its pending {{az-proposed-actions}} | Close the {{az-investigation}} from its card |
+| Close the {{az-investigation}} and dismiss all its pending {{az-proposed-actions}} | Select **Close investigation** on its card |
 | Audit recent decisions, including ones {{az-workers}} made on their own | Expand **Closed Actions**, which lists decisions from the last 72 hours. A decision that a {{az-worker}} made on its own names the {{az-worker}} that made it. |
 
 % For docs writers: elastic/docs-content#9184 replaces track-escalations.md with manage-escalations.md. After it merges, add "and then [manage the {{az-escalation}}](manage-escalations.md)" to the end of the escalation row.

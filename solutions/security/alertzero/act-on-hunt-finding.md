@@ -48,9 +48,9 @@ If another {{az-investigation}} already has the same response action waiting for
 
 ## Decide each response action [alertzero-hunt-finding-actions]
 
-If containing hosts isn't your role, assign the {{az-investigation}} to an incident responder from its card. Before you decide a response action, make sure the evidence in the {{az-hunt-finding}} shows a real threat in your environment.
+If containing hosts isn't your role, assign the {{az-investigation}} to an incident responder from its card.
 
-1. In the **Respond** section of the **{{az-proposed-actions-cap}}** page, select a response action from the hunt. This section also lists response actions for attacks from the {{az-endpoint-analysis}} {{az-worker}}, so make sure that the action belongs to the hunt's {{az-investigation}}. The {{az-investigation}} opens in a flyout.
+1. In the **Respond** section of the **{{az-proposed-actions-cap}}** page, select a response action from the hunt. Each card names the action and its target, such as `Isolate host WIN-ANALYST01`, and the {{az-investigation}} it belongs to. Response actions from a hunt belong to the {{az-investigation}} named after the {{az-threat-report}}. The {{az-investigation}} opens in a flyout.
 2. Find the **{{az-hunt-finding-cap}}**. It names the {{az-threat-report}} it came from and shows the finding's severity and the {{az-continuous-threat-hunt}} {{az-worker}}'s confidence as a percentage.
 3. Check that the evidence holds:
     - **Hunt result:** **Confirmed by** shows how the hunt confirmed the match. **IOC Hunt** means your events contain indicators of compromise (IOCs) from the {{az-threat-report}}, such as file hashes or IP addresses. **Behavior Hunt** means your events show activity that matches an attack technique from the report.
@@ -60,16 +60,14 @@ If containing hosts isn't your role, assign the {{az-investigation}} to an incid
     To see the matching events, select **Open events in Discover**. To ask follow-up questions about the evidence, select **Open chat**. If the evidence doesn't show a real threat, decline the response actions from the hunt.
 4. In the flyout's **{{az-proposed-actions-cap}}** section, select the response action, and check **Action** and **Why**. The **Why** list starts with the rule that picked the action. Make sure the {{az-hunt-finding}} implicates the host or process, and consider what stops working when you act on it. For example, isolating a server also cuts off the people and services that depend on it.
 5. Select **Approve** or **Decline**.
-    - **If you approve:** The action runs under your account, through {{elastic-defend}}. Approving doesn't give you the privileges to run the action. Refer to [](alertzero-privileges.md). If you don't have those privileges, or the host doesn't respond within 10 minutes, the {{az-proposed-action}} shows **Failed**. {{alertzero}} then offers the action again as a new {{az-proposed-action}} with the same deadline. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
+    - **If you approve:** The action runs under your account, through {{elastic-defend}}, so you need the privileges to run it. Refer to [](alertzero-privileges.md). If you don't have those privileges, or the host doesn't respond within 10 minutes, the {{az-proposed-action}} shows **Failed**, and {{alertzero}} offers the action again as a new {{az-proposed-action}} with the same deadline. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
     - **If you decline:** The action doesn't run.
 
     Each {{az-proposed-action}} expires 72 hours after the {{az-continuous-threat-hunt}} {{az-worker}} proposes it. If nobody decides before then, the action doesn't run.
 
+If you isolate a host, {{alertzero}} doesn't propose releasing it later. When it's safe to reconnect the host, [release it](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host) yourself. You can't undo the other response actions.
+
 % For docs writers: After elastic/docs-content#9158 merges, link to alertzero-privileges.md#alertzero-action-privileges.
-
-## Undo a response action [alertzero-hunt-finding-undo]
-
-Host isolation is the only response action you can undo. {{alertzero}} doesn't propose releasing the host, so when it's safe to reconnect it, [release the host](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host) yourself.
 
 ## Follow up on the analyst recommendation [alertzero-hunt-finding-recommendation]
 
@@ -93,7 +91,7 @@ To follow up:
 
 After you decide every {{az-proposed-action}} in the {{az-investigation}}, or they expire, the {{az-continuous-threat-hunt}} {{az-worker}} closes the {{az-investigation}}.
 
-If the finding joined the waiting {{az-proposed-action}} in another {{az-investigation}}, this {{az-investigation}} doesn't close on its own. Close it yourself from its card.
+If the finding joined the waiting {{az-proposed-action}} in another {{az-investigation}}, this {{az-investigation}} doesn't close on its own. To close it, select **Close investigation** on its card.
 
 To work on the finding with other people instead, escalate the {{az-investigation}}. Refer to [](escalate-investigation.md).
 

@@ -86,7 +86,7 @@ The default [{{az-autonomy}}](#alertzero-glossary-autonomy) level. At this level
 
 ### {{az-proposed-action-cap}} [alertzero-glossary-proposed-action]
 
-A recommendation from a {{az-worker}} that waits for your decision, such as closing false-positive alerts, isolating a host, or changing a detection rule. You review the details, then approve or decline it. Depending on the {{az-worker}}'s [{{az-autonomy}}](#alertzero-glossary-autonomy) level, some {{az-proposed-actions}} run without waiting for you. Statuses include **Needs review**, **Applying**, **Applied**, **Declined**, **Failed**, and **Expired**. Refer to [](close-false-positive-alerts.md).
+A recommendation from a {{az-worker}} that waits for your decision, such as closing false-positive alerts, isolating a host, or changing a detection rule. You review the details, then approve or decline it. Depending on the {{az-worker}}'s [{{az-autonomy}}](#alertzero-glossary-autonomy) level, some {{az-proposed-actions}} run without waiting for you. Statuses include **Needs review**, **Applying**, **Applied**, **Declined**, **Failed**, and **Expired**. Refer to [](work-in-alertzero.md).
 
 ## R-S [alertzero-glossary-r-s]
 
