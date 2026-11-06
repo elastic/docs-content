@@ -11,21 +11,16 @@ products:
 
 # {{alertzero}} [alertzero-overview]
 
-{{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}} are AI agents that each specialize in one kind of security work: triaging alerts, hunting for threats, tuning detection rules, and investigating attacks. After you turn the {{az-workers}} on, they run on a schedule.
+{{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}} are AI agents that triage alerts, hunt for threats, tune detection rules, and investigate attacks on a schedule, so your team spends less time sorting through noise and more time on the decisions that need a person.
 
-When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} that you approve or decline on the **{{az-proposed-actions-cap}}** page. With {{az-workers}} doing the first pass, your team spends less time sorting through noise and more time deciding on investigated work:
+When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} on the **{{az-proposed-actions-cap}}** page. Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you approve or decline instead of redoing the work.
 
 % For docs writers: For the 9.6 release, uncomment the following paragraph and remove the one before it.
-% When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} that you approve or decline on the [**{{az-proposed-actions-cap}}** page](use-alertzero.md). With {{az-workers}} doing the first pass, your team spends less time sorting through noise and more time deciding on investigated work:
-
-- **Less noise to sort through.** The {{az-triage-watch}} proposes closing false positives, and the {{az-detection-watch}} proposes fixes for the noisy rules that create them.
-- **Investigations that start further along.** Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you decide rather than repeat the work.
-- **Fewer gaps in your detections.** The {{az-hunt-watch}} looks for activity that your detection rules might have missed, and the {{az-detection-watch}} proposes rules for the gaps that the {{az-hunt-watch}} finds.
-- **Control stays with you.** You control which {{az-workers}} run and [how much {{az-autonomy}} each one has](#alertzero-overview-autonomy).
+% When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} on the [**{{az-proposed-actions-cap}}** page](use-alertzero.md). Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you approve or decline instead of redoing the work.
 
 ## What {{az-workers}} take on [alertzero-overview-watches]
 
-{{alertzero}} has four {{az-watches}}, one for each area of security operations. Each {{az-watch}} brings together the {{az-workers}} for that area, and the {{az-watches}} pass work to each other, so a finding in one area can lead to action in another. In the {{az-triage-watch}}, for example, {{az-alert-triage}} classifies individual alerts, while {{az-attack-discovery}} connects related alerts into attacks.
+{{az-workers}} are grouped into four {{az-watches}}, one for each area of security operations. The {{az-watches}} pass work to each other, so a finding in one area can lead to action in another.
 
 | {{az-watch}} | What it does | {{az-workers}} |
 | --- | --- | --- |
@@ -63,13 +58,13 @@ deployment:
 
 {{az-workers}} can add to your bill in three ways:
 
-- **Workflow executions:** {{az-workers}} in every {{az-watch}} run as workflows, so their runs count as workflow executions.
-- **{{agent-builder}} executions:** When a {{az-worker}} in any {{az-watch}} asks an AI agent to analyze its findings, each agent response counts as an {{agent-builder}} execution.
+- **Workflow executions:** {{az-workers}} run as workflows, so each run counts as a workflow execution.
+- **{{agent-builder}} executions:** When a {{az-worker}} asks an AI agent to analyze its findings, each agent response counts as an {{agent-builder}} execution.
 - **AI model tokens:** If the space uses an Elastic Managed LLM, Elastic bills its model calls by token. Third-party model providers bill you directly.
 
 % For docs writers: For the 9.6 release, uncomment the following list and sentence, and remove the list before them.
-% - **Workflow executions:** {{az-workers}} in every {{az-watch}} run as workflows, so their runs count as [workflow executions](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing).
-% - **{{agent-builder}} executions:** When a {{az-worker}} in any {{az-watch}} asks an AI agent to analyze its findings, each agent response counts as an [{{agent-builder}} execution](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
+% - **Workflow executions:** {{az-workers}} run as workflows, so each run counts as a [workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing).
+% - **{{agent-builder}} executions:** When a {{az-worker}} asks an AI agent to analyze its findings, each agent response counts as an [{{agent-builder}} execution](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
 % - **AI model tokens:** If the space uses an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md), Elastic bills its model calls by token. Third-party model providers bill you directly.
 %
 % For rates and free monthly allowances, refer to [{{elastic-sec}} {{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md) for {{serverless-short}} and [{{ech}} billing dimensions](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) for {{ech}}.
