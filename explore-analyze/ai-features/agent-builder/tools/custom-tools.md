@@ -71,7 +71,7 @@ To create a custom tool in the UI:
     :width:250px
     :::
 
-### Create a tool from an agent [create-a-tool-from-an-agent]
+### Create and attach a tool [create-and-attach-a-tool]
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
@@ -84,16 +84,9 @@ To create and attach a tool, you need:
 - **Agent Builder: All**, or both **Agent Builder > Management: Create and edit custom tools** and **Agent Builder > Management: Create and edit agents**. Refer to [{{kib}} feature privileges](../permissions.md#kib-privileges).
 - Edit access to the agent. Refer to [Access control settings](../custom-agents.md#access-control-settings).
 
-**Add tool** appears whenever you have edit access to the agent, even if you lack one of these privileges. In that case:
+To create a tool for an agent:
 
-- Without **Create and edit custom tools**, saving the tool fails.
-- Without **Create and edit agents**, the tool is saved to the tool library but isn't attached to the agent.
-
-If the agent has no tools and **Enable Elastic capabilities** is off, the page shows **Add tools** instead of **Add tool**. **Add tools** only opens the tool library. To add a new tool to that agent, create it from **Manage components** → **Tools**, then [assign it](#assign-tools-to-agents).
-
-To create a tool from an agent:
-
-1. Select the agent from the agent selector in the left sidebar.
+1. Select the agent from the agent selector in the sidebar.
 2. Under **Customize** in the sidebar, select **Tools**.
 3. Click **Add tool** → **Create a tool**.
 
@@ -107,7 +100,18 @@ To create a tool from an agent:
 4. Complete the tool form. It's the same form that **+ New tool** opens from **Manage components** → **Tools**.
 5. Click **Save and attach**. The flyout has no **Save & test** option.
 
-To manage the tool later, click it on the agent's **Tools** page to open its detail panel:
+:::{note}
+**Add tool** appears whenever you have edit access to the agent, even if you lack one of the privileges listed earlier. In that case:
+
+- Without **Create and edit custom tools**, saving the tool fails.
+- Without **Create and edit agents**, the tool is saved to the tool library but isn't attached to the agent.
+
+If the agent has no tools and **Enable Elastic capabilities** is off, the page shows **Add tools** instead of **Add tool**. **Add tools** only opens the tool library. To add a new tool to that agent, create it from **Manage components** → **Tools**, then [assign it](#assign-tools-to-agents).
+:::
+
+#### Edit or remove an attached tool
+
+To manage the tool, click it on the agent's **Tools** page to open its detail panel:
 
 - To change the tool, click **Edit in library**. The tool's page in the tool library opens in a new tab.
 - To stop this agent from using the tool, click **Remove**, then click **Remove** again to confirm. The tool is detached from the agent but stays in the tool library.
@@ -161,20 +165,20 @@ To start using a custom tool, you must assign it to a [custom agent](../custom-a
 
 ::::{applies-item} { stack: ga 9.5+, serverless: ga }
 
-1. Select the agent from the agent selector in the left sidebar.
+1. Select the agent from the agent selector in the sidebar.
 2. Under **Customize** in the sidebar, select **Tools**.
 3. Open the tool library:
    - If the page shows **Add tools**, click it.
    - Otherwise, click **Add tool** → **Import from tool library**.
 4. Select the tools to assign.
 
-To create a tool and attach it in the same action, refer to [Create a tool from an agent](#create-a-tool-from-an-agent).
+To create a tool and attach it in the same action, refer to [Create and attach a tool](#create-and-attach-a-tool).
 
 ::::
 
 ::::{applies-item} { stack: ga =9.4 }
 
-1. Select the agent from the agent selector in the left sidebar.
+1. Select the agent from the agent selector in the sidebar.
 2. Under **Customize** in the sidebar, select **Tools**.
 3. Click **Add tool** and select the tools to assign.
 

@@ -97,20 +97,20 @@ To assign a tool to an agent:
 
 ::::{applies-item} { stack: ga 9.5+, serverless: ga }
 
-1. Select the agent from the agent selector in the left sidebar.
+1. Select the agent from the agent selector in the sidebar.
 2. Under **Customize** in the sidebar, select **Tools**.
 3. Open the tool library:
    - If the page shows **Add tools**, click it.
    - Otherwise, click **Add tool** → **Import from tool library**.
 4. Select the workflow tool.
 
-To create a workflow tool and attach it in the same action, refer to [Create a tool from an agent](custom-tools.md#create-a-tool-from-an-agent).
+To create a workflow tool and attach it in the same action, refer to [Create and attach a tool](custom-tools.md#create-and-attach-a-tool).
 
 ::::
 
 ::::{applies-item} { stack: ga =9.4 }
 
-1. Select the agent from the agent selector in the left sidebar.
+1. Select the agent from the agent selector in the sidebar.
 2. Under **Customize** in the sidebar, select **Tools**.
 3. Click **Add tool** and select the workflow tool to assign.
 
