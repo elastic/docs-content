@@ -52,7 +52,7 @@ To set up or use AI assistant, you need the following:
     :::{note}
     In {{ecloud}} or {{ece}}, if you have {{ml}} autoscaling enabled, {{ml}} nodes automatically start when using the knowledge base and AI Assistant. Therefore using these features incurs additional costs.
     :::
-  - If you want to use [content connectors](elasticsearch://reference/search-connectors/index.md) to add external data to knowledge base: A self-deployed connector service
+  - If you want to use [connectors](elasticsearch://reference/search-connectors/index.md) to add external data to knowledge base: A self-deployed connector service
 
 ## Manage access to AI Assistant
 
@@ -135,7 +135,7 @@ Adding data such as Runbooks, GitHub issues, internal documentation, and Slack m
 Add data to the knowledge base with one or more of the following methods:
 
 * [Use the knowledge base UI](#obs-ai-kb-ui) available at [AI Assistant Settings](#obs-ai-settings) page.
-* [Use content connectors](#obs-ai-search-connectors)
+* [Use connectors](#obs-ai-search-connectors)
 
 You can also add information to the knowledge base by asking the AI Assistant to remember something while chatting (for example, "remember this for next time"). The assistant will create a summary of the information and add it to the knowledge base.
 
@@ -159,9 +159,9 @@ To add external data to the knowledge base in {{kib}}:
         }
         ```
 
-### Use content connectors [obs-ai-search-connectors]
+### Use connectors [obs-ai-search-connectors]
 
-[Content connectors](elasticsearch://reference/search-connectors/index.md) index content from external sources like GitHub, Confluence, Google Drive, Jira, S3, Teams, and Slack to improve the AI Assistant's responses.
+[Connectors](elasticsearch://reference/search-connectors/index.md) index content from external sources like GitHub, Confluence, Google Drive, Jira, S3, Teams, and Slack to improve the AI Assistant's responses.
 
 #### Requirements and limitations
 
@@ -187,7 +187,7 @@ Field names in custom indices have no specific requirements. Any `semantic_text`
 
    **Use the UI**:
 
-   - Navigate to `Content / Connectors` in the global search field
+   - Search for **Content crawlers** {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` or **Content connectors** {applies_to}`stack: ga 9.0-9.6` in the global search field.
    - Create a connector for your data source (example: [GitHub connector](elasticsearch://reference/search-connectors/es-connectors-github.md))
    - If your Space lacks the Search solution, either create the connector from a different space or change your space **Solution view** to `Classic`
 
@@ -218,7 +218,7 @@ This is a more complex method that requires you to set up the ELSER model and in
 
 To create the embeddings needed by the AI Assistant (weights and tokens into a sparse vector field) using an **ML Inference Pipeline**:
 
-1. Open the previously created content connector in **Content / Connectors**, and select the **Pipelines** tab.
+1. Open the previously created connector on the page for managing connectors, and select the **Pipelines** tab.
 2. Select **Copy and customize** under `Unlock your custom pipelines`.
 3. Select **Add Inference Pipeline** under `Machine Learning Inference Pipelines`.
 4. Select the **ELSER (Elastic Learned Sparse EncodeR)** ML model to add the necessary embeddings to the data.
@@ -512,7 +512,7 @@ The AI Assistant Settings page contains the following tabs:
 
 * **Settings**: Configures the main AI Assistant settings, which are explained directly within the interface.
 * **Knowledge base**: Manages [knowledge base entries](#obs-ai-kb-ui).
-* **Content connectors**: Provides a link to {{kib}} **Search** → **Content** → **Connectors** UI for connectors configuration.
+* {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` **Content crawlers** {applies_to}`stack: ga 9.0-9.6` **Content connectors**: Provides a link to the {{kib}} connectors UI for connectors configuration.
 
 ### Add Elastic documentation [obs-ai-product-documentation]
 
