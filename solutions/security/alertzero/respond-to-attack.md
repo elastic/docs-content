@@ -25,7 +25,7 @@ The {{az-attack-discovery}} {{az-worker}} gives each attack a verdict, and the v
 
 1. In the **Investigate** section of the **{{az-proposed-actions-cap}}** page, select the attack's card.
 2. Check the verdict and why the {{az-attack-discovery}} {{az-worker}} reached it. To read the verdict and its **Rationale**, select **Open chat**. The verdict's **Conclusion** also appears in the {{az-investigation}}'s details.
-3. Select **Approve** or **Decline**.
+3. Select **Approve** or **Decline** for each proposed action.
     - **If you approve:** The {{az-endpoint-analysis}} {{az-worker}} analyzes the attack and proposes response actions. The {{az-investigation}} and the attack stay open for the forensics report. You can't undo this approval.
     - **If you decline:** The {{az-investigation}} and the attack close. {{alertzero}} marks the attack's open alerts as acknowledged, but doesn't close them.
 
