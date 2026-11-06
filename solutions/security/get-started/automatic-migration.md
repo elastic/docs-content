@@ -290,11 +290,11 @@ If the rule matches a prebuilt rule, changing its integration or query makes it 
 
 To send rules to the agent and fix them in chat:
 
-1. On the **Translated rules** page, open a chat in one of these ways:
+1. On the **Translated rules** page, select the rules to add to the chat:
 
-   * For one rule, select its name to open the rule details flyout, then select **Add to chat**.
-   * For several rules, select them in the table, then select **Add to chat**.
-   * For every rule in the migration, clear all selections, then select **Add to chat**.
+   * To add one rule, select its name to open the rule details flyout, then select **Add to chat**.
+   * To add several rules, select them in the table, then select **Add to chat**.
+   * To add every rule in the migration, clear all selections, then select **Add to chat**.
 
    A new chat opens with the rules attached and automatically asks the agent for help. The agent reviews the rules and asks what you want to fix.
 
