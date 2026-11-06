@@ -23,15 +23,15 @@ This guide is the side-by-side for the migrations every 9.3 workflow author need
 
 | Change | Old (9.3) | New (9.4) | What happens to existing workflows |
 |---|---|---|---|
-| Case management | `kibana.createCaseDefaultSpace`, `kibana.getCaseDefaultSpace`, `kibana.updateCaseDefaultSpace`, `kibana.addCaseCommentDefaultSpace` | `cases.createCase`, `cases.getCase`, `cases.updateCase`, `cases.addComment` (plus 23 additional `cases.*` steps) | Deprecated aliases still work. New workflows must use `cases.*`. |
-| Direct AI connector steps | `inference.*`, `bedrock.*`, `gen-ai.*`, `gemini.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) (or `ai.classify`, `ai.summarize`, `ai.agent` when appropriate) | Deprecated steps still run. They're hidden from autocomplete and the **Add Action** menu, and the YAML editor shows a deprecation warning on hover. |
+| Case management | `kibana.createCase`, `kibana.getCase`, `kibana.updateCase`, `kibana.addCaseComment`, and their `*DefaultSpace` aliases | `cases.createCase`, `cases.getCase`, `cases.updateCase`, `cases.addComment` (plus many new `cases.*` steps) | Deprecated aliases still work. New workflows must use `cases.*`. |
+| Direct AI connector steps | `inference.*`, `bedrock.*`, `gen-ai.*`, `gemini.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) (or `ai.classify`, `ai.summarize`, `ai.agent` when appropriate) | Deprecated steps still run. They're hidden from autocomplete and the **Actions menu**, and the YAML editor shows a deprecation warning on hover. |
 | HTTP step `timeout` | Inside `with` | At the step top level (common field) | Existing workflows auto-migrate on save. |
 | HTTP step allowed hosts | `workflowsExecutionEngine.http.allowedHosts` controlled workflow HTTP steps. The default was `["*"]`. | `xpack.actions.allowedHosts` controls HTTP steps because they now run through the Actions framework HTTP connector. | If `xpack.actions.allowedHosts` is unset, the default is still `["*"]`. If it is set restrictively, existing HTTP steps can fail until their target hosts are added. |
 | Scheduled trigger interval minimum | Any duration | Minimum `1m` / `60s` | Sub-minute intervals auto-migrate to `1m` on first edit. |
 
 ## 1. Cases: `kibana.*` aliases to `cases.*` [workflows-migrate-cases]
 
-Case management moved out of the `kibana.*` namespace into its own `cases.*` namespace, and the new namespace uses `snake_case` parameters instead of the old `camelCase`.
+Case management moved out of the `kibana.*` namespace into its own `cases.*` namespace, and its ID parameters use `snake_case`, such as `case_id` instead of `caseId`.
 
 9.4 also adds many new case steps that have no 9.3 equivalent. Check [Cases action steps](/explore-analyze/workflows/steps/cases.md) for the complete catalog.
 
@@ -74,7 +74,7 @@ Case management moved out of the `kibana.*` namespace into its own `cases.*` nam
     case_id: "abc-123"
 ```
 
-Note the parameter rename: `caseId` (camelCase) becomes `case_id` (snake_case). This pattern applies to every parameter in the `cases.*` namespace.
+Note the parameter rename: `caseId` becomes `case_id`. Most `cases.*` parameters use `snake_case`, but some keep the `camelCase` of the Cases API, such as `perPage` and `sortField` in `cases.findCases`. Check each step's parameters in [Cases action steps](/explore-analyze/workflows/steps/cases.md).
 
 ### Update a case
 
@@ -205,7 +205,7 @@ If `every: "30s"` was a proxy for reacting quickly to something, consider switch
 Beyond the breaking changes, 9.4 adds many capabilities that don't require you to change existing workflows but are available for new ones:
 
 - **Workflows is enabled by default.** The `workflows:ui:enabled` advanced setting now defaults to `true` on deployments with the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
-- **27 `cases.*` steps.** Full Cases API coverage. To learn more, refer to [Cases action steps](/explore-analyze/workflows/steps/cases.md).
+- **A dedicated `cases.*` namespace.** Steps that cover the full Cases API. To learn more, refer to [Cases action steps](/explore-analyze/workflows/steps/cases.md).
 - **Composition (technical preview).** Call child workflows with typed inputs and outputs. To learn more, refer to [Composition steps](/explore-analyze/workflows/steps/composition.md).
 - **Human-in-the-loop.** Pause a workflow and resume after a human provides input. To learn more, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
 - **Event-driven triggers.** React to other workflow failures. To learn more, refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
