@@ -54,7 +54,7 @@ A model setting in **Feature Settings** for {{alertzero}} calls that need quick,
 
 ### {{az-escalation-cap}} [alertzero-glossary-escalation]
 
-A coordinated response that you create from an [{{az-investigation}}](#alertzero-glossary-investigation) to work on it with other people, privately if needed. An {{az-escalation}} can link related {{az-investigations}}, and it has an owner, assignees, and a visibility of **Public** or **Private**. Closing an {{az-escalation}} also closes its linked {{az-investigations}}. Refer to [](escalate-investigation.md) and [](track-escalations.md).
+A coordinated response that you create from an [{{az-investigation}}](#alertzero-glossary-investigation) to work on it with other people, privately if needed. An {{az-escalation}} can link related {{az-investigations}}, and it has an owner, assignees, and a visibility of **Public** or **Private**. Closing an {{az-escalation}} also closes its linked {{az-investigations}}. Refer to [](escalate-investigation.md) and [](manage-escalations.md).
 
 ### {{az-forensics-watch}} [alertzero-glossary-forensics-watch]
 
