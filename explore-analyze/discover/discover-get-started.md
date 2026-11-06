@@ -78,6 +78,8 @@ Which experiences you can get depends on where you open **Discover** from, and t
 
 {applies_to}`stack: ga 9.6+` **In spaces with the Classic [solution view](/deploy-manage/manage-spaces.md)**, the metrics, traces, and Security experiences can also apply when you query matching data. The experiences apply as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
 
+{applies_to}`stack: ga 9.6+` In the Classic solution view, the logs experience applies only when you query data from one of these integrations: Apache error logs, AWS S3 access logs, Kubernetes container logs, Nginx access logs, Nginx error logs, or System logs. Other log data, such as `logs-*`, `filebeat-*`, or Windows logs, keeps the default experience. To get the logs experience for any log data, use the {{observability}} solution view.
+
 When you open **Discover** outside of these contexts, or query data without a tailored experience, you get the default **Discover** experience with all its core functionality for general-purpose data exploration.
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The active experience also shapes [AI-powered analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces, the AI agent receives guidance that suits that type of data. For what changes for each type, refer to [How the analysis adapts to your data](analyze-discover-data-with-ai.md#context-aware-deep-analysis).
