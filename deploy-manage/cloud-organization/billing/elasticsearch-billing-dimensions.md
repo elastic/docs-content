@@ -9,18 +9,15 @@ products:
   - id: cloud-serverless
 description: Learn about how costs for Elasticsearch Serverless projects are calculated, and strategies you can use to lower your costs.
 sub:
-  abb-anchor: elasticsearch-billing-agent-builder-executions
   abb-preamble: |
     Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Serverless project. Agent usage is billed in addition to VCU-based dimensions, based on the number of executions completed in your project over the course of a month.
   abb-free-executions: 1,000
-  abb-pricing-label: Elasticsearch Serverless pricing page
-  abb-pricing-url: https://www.elastic.co/pricing/serverless-search
-  wfe-anchor: elasticsearch-billing-workflow-executions
+  pricing-label: Elasticsearch Serverless pricing page
+  pricing-url: https://www.elastic.co/pricing/serverless-search
   wfe-preamble: Workflows enable you to automate multi-step processes within your Elasticsearch project.
   wfe-billing-detail: In addition to the VCU-based billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
-  wfe-pricing-label: Elasticsearch Serverless pricing page
-  wfe-pricing-url: https://www.elastic.co/pricing/serverless-search
+
 ---
 
 # {{es-serverless}} billing dimensions [elasticsearch-billing]
@@ -37,6 +34,10 @@ The number of VCUs you need is determined by:
 * Search Power setting
 * Machine learning usage
 
+Charges like these, which depend on your project type, are called *project charges*. Project charges also include features such as [Agent Builder](#elasticsearch-billing-agent-builder-executions) and [{{cps}}](#elasticsearch-billing-cps), whose pricing depends on your project type. This page also explains how to [manage costs](#elasticsearch-billing-managing-elasticsearch-costs) related to these charges. 
+
+Your bill can also include [add-ons](#elasticsearch-billing-add-ons) and [organization charges](#elasticsearch-billing-organization-charges). To learn more about billing dimension categories, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
+
 For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pricing page](https://www.elastic.co/pricing/serverless-search).
 
 ## VCU types: search, ingest, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
@@ -48,16 +49,23 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
   Unlike ingest, Search VCU billing does not scale to zero during idle periods. A baseline of search capacity is always provisioned so your data remains instantly queryable, and you are billed a reduced rate for this baseline when no search activity is occurring. The baseline is determined primarily by your Search Power setting and your [search-ready](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#elasticsearch-manage-project-search-ai-lake-settings) dataset size.
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities. ML VCUs are a factor of the models deployed and number of ML operations such as inference for search and ingest. ML VCUs are typically consumed for generating embeddings during ingestion and during semantic search or reranking.
-* **Tokens:** [The Elastic Inference Service](https://www.elastic.co/docs/explore-analyze/elastic-inference/eis) is charged based on tokens used with machine learning models. For embeddings and rerankers, usage is billed per million input tokens sent to the models. For LLMs, this is either per 1 million input or per 1 million output tokens. Elastic Managed LLMs can power AI Search features such as Agent Builder and AI Assistant for Search, as well as features in the Security and Observability products, and are enabled by default.
+
+  Models that run on the [Elastic {{infer-cap}} Service](#elasticsearch-billing-elastic-managed-llms) are billed based on tokens as an add-on, not as ML VCUs.
 
 ## Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
+## Agent Builder executions [elasticsearch-billing-agent-builder-executions]
+
 :::{include} _snippets/agent-builder-executions-billing.md
 :::
 
-:::{include} _snippets/workflow-executions-billing.md
+## {{cps-cap}} [elasticsearch-billing-cps]
+
+[{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
+
+:::{include} /deploy-manage/_snippets/cps-billing.md
 :::
 
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
@@ -103,3 +111,26 @@ When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasti
   The `general_purpose` option is suitable for most search use cases. For example, it is the right profile for full-text search, sparse vectors, and dense vectors that use compression such as BBQ. It is used by default when you create projects from the UI.
 
   The `vector` option is recommended only for uncompressed dense vectors ([dense_vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields with `int4` or `int8` quantization strategies) and high dimensionality. Though the per VCU cost is the same for general purpose and vector profiles, the latter allocates more VCUs for searchable data. This leads to higher VCU consumption in order to improve the performance for uncompressed vector data.
+
+## Add-ons [elasticsearch-billing-add-ons]
+
+Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
+
+### Workflow executions [elasticsearch-billing-workflow-executions]
+
+:::{include} _snippets/workflow-executions-billing.md
+:::
+
+### Elastic {{infer-cap}} Service [elasticsearch-billing-elastic-managed-llms]
+
+:::{include} _snippets/eis-billing.md
+:::
+
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) can power AI features in {{es-serverless}} projects, such as Agent Builder and AI Assistant, and are enabled by default.
+
+## Organization charges [elasticsearch-billing-organization-charges]
+
+These charges apply regardless of which product you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
+:::

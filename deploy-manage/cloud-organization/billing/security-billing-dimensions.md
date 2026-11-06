@@ -9,20 +9,17 @@ products:
   - id: cloud-serverless
 sub:
   offering: Security Analytics
-  abb-anchor: security-billing-agent-builder-executions
   abb-preamble: |
     Elastic Agent Builder enables you to create AI agents that assist with security operations, including alert investigation, threat triage, root cause analysis, and guided response actions. Agent Builder Executions is a billing dimension for Elastic Security Serverless projects on the Security Analytics Complete tier.
 
     Billing is based on the number of agent executions completed in your project over the course of a month.
   abb-free-executions: 10,000
-  abb-pricing-label: Elastic Cloud pricing table
-  abb-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
-  wfe-anchor: security-billing-workflow-executions
+  pricing-label: Elastic Cloud pricing table
+  pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
   wfe-preamble: Workflows enable you to automate multi-step processes across your security operations, including alert triage, case management, enrichment, and response actions. Workflow Executions is a billing dimension for Security Serverless projects on the Security Analytics Complete tier and the Elastic AI SOC Engine (EASE) tier.
   wfe-billing-detail: Billing is based on the number of workflow executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
-  wfe-pricing-label: Elastic Cloud pricing table
-  wfe-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
+
 ---
 
 # {{elastic-sec}} Serverless billing dimensions [security-billing]
@@ -39,6 +36,10 @@ Your monthly bill is based on the capabilities you use. When you use Security An
 
 :::{include} _snippets/note-data-volumes-ingest-retention.md
 :::
+
+Charges like these, which depend on your project type, are called *project charges*. Project charges also include features such as [Agent Builder](#security-billing-agent-builder-executions) and [{{cps}}](#security-billing-cps), whose pricing depends on your project type.
+
+Your bill can also include [add-ons](#security-billing-add-ons) and [organization charges](#security-billing-organization-charges). To learn more about billing dimension categories, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
 
 [Create a serverless estimate](https://cloud.elastic.co/pricing/serverless?s=security) or refer to the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for more details.
 
@@ -89,12 +90,37 @@ Logs, events, alerts, and configuration data ingested into your security project
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
 
+## Agent Builder executions [security-billing-agent-builder-executions]
+
 :::{include} _snippets/agent-builder-executions-billing.md
 :::
+
+## {{cps-cap}} [security-billing-cps]
+
+[{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
+
+:::{include} /deploy-manage/_snippets/cps-billing.md
+:::
+
+## Add-ons [security-billing-add-ons]
+
+Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
+
+### Workflow executions [security-billing-workflow-executions]
 
 :::{include} _snippets/workflow-executions-billing.md
 :::
 
-## Elastic Managed LLMs [security-billing-elastic-managed-llms]
+### Elastic {{infer-cap}} Service [security-billing-elastic-managed-llms]
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
+:::{include} _snippets/eis-billing.md
+:::
+
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier.
+
+## Organization charges [security-billing-organization-charges]
+
+These charges apply regardless of which product you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
+:::
