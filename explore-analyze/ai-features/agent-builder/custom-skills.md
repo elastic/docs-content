@@ -1,6 +1,6 @@
 ---
 navigation_title: "Custom skills"
-description: "Learn how to create and manage custom skills in Agent Builder."
+description: "Learn how to create, edit, and manage custom skills in Agent Builder."
 applies_to:
   stack: ga 9.4+
   serverless: ga
@@ -122,6 +122,29 @@ Review the description, instructions, associated tools, and references, and ask 
 :alt: Skill draft in Agent Chat showing its description, instructions preview, associated tool references, and a Create skill button
 :width: 750px
 :::
+
+To edit a skill that is already in your library, refer to [Edit a custom skill from Agent Chat](#edit-a-skill-from-chat).
+
+## Edit a custom skill from Agent Chat [edit-a-skill-from-chat]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Ask an agent to view or edit a custom skill by name or ID. For example, "Add a rate-limiting section to the incident-triage skill." The agent loads the skill and shows it in the conversation.
+
+To view the saved skill, review the card. Select **Edit in Management** to open that skill in a new tab, on **Manage components** → **Skills**.
+
+To edit the skill, describe the change in the conversation. The agent updates the card. The updated card shows a **Draft** badge, a **Latest** badge, and **Save changes**.
+
+Turn on **Show diff** to compare the draft instructions with the saved instructions. **Show diff** appears when the instructions differ from the saved instructions and you have not saved the draft. The diff covers instructions. **Description** and **References** stay on the card. An edit that changes only the description, tools, or references still shows **Save changes**, and it does not show **Show diff**.
+
+When the draft is ready, select **Save changes**. The skill in your library is not updated until you select **Save changes**. After you save, the card shows a **Saved** badge and **Edit in Management**.
+
+Built-in skills are read-only. The agent cannot open them in chat.
+
+Saving requires the **Create and edit skills** privilege in the current space, the same privilege required to update a skill from **Manage components** → **Skills**. Without it, **Save changes** is disabled. Refer to [{{agent-builder}} privileges](permissions.md#kib-privileges).
 
 ## Related pages
 

@@ -614,9 +614,12 @@ For example, the following preview shows a skill draft that you can review befor
 :width: 750px
 :::
 
-You need the same privileges that are required to create the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
+To edit a custom skill that is already in your library, ask the agent to view or edit it by name or ID. When the agent changes the instructions, turn on **Show diff** to compare the draft instructions with the saved instructions, then select **Save changes**. **Show diff** appears only when the instructions differ and you have not saved the draft yet. Refer to [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat).
+
+You need the same privileges that are required to create or update the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
 
 - [Create and manage custom skills](custom-skills.md#create-a-skill-from-chat)
+- [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat)
 - [Create and manage workflows](/explore-analyze/workflows.md)
 
 ## Customize your agent [customize-your-agent]

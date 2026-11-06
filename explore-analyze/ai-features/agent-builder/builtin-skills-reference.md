@@ -230,7 +230,7 @@ $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`s
 ### Agent and skill authoring
 
 $$$agent-builder-skill-management-skill$$$ `skill-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Authors and edits {{agent-builder}} skills from a chat description. Use when a user asks to create, build, generate, design, or modify a skill, capability, or expertise area for an agent.
+:   Creates, views, and edits custom {{agent-builder}} skills from a chat description. Use when a user asks to create, build, generate, design, view, or edit a skill, capability, or expertise area for an agent. Built-in skills are read-only and cannot be opened from chat. For the editing steps, refer to [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat).
 
     :::{dropdown} Assigned tools
     Internal tools to list available tools and existing skills, and to propose, load, and patch a skill definition.
