@@ -142,8 +142,10 @@ Columnar (`columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: 
 VectorDB (`vectordb_document`) {applies_to}`stack: ga 9.5+` {applies_to}`vectordb: ga`
 :   Optimized for vector search use cases, enabling similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). In {{vectordb}} projects, it is the only mode available.
 
-VectorDB columnar (`vectordb_columnar`) {applies_to}`stack: preview 9.6+`
+<!-- TBD: This appears in the settings reference, should it appear here too?
+VectorDB columnar (`vectordb_columnar`) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`  {applies_to}`vectordb: unavailable`
 :   Optimized for vector search with columnar storage. Applies the same vector search defaults as `vectordb_document` and keeps `dense_vector` and `text` fields indexed. Refer to [`vectordb_columnar`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-columnar-mode).
+-->
 
 Lookup (`lookup`) {applies_to}`vectordb: unavailable`
 :   Use it for reference data you join in {{esql}}, for example a list of users, hosts, or known threat IPs. Refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md). Only the lookup index needs this mode, not the source index.
