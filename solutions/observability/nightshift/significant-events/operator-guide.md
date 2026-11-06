@@ -28,7 +28,7 @@ The following table shows each pipeline component, where it runs, what triggers 
 |---|---|---|---|---|
 | KI feature identification | Task Manager + Workflow | On-demand / continuous extraction | Stream logs | `.significant_events-knowledge_indicators` |
 | KI query generation | Workflow | On-demand | Features + existing queries | Query KI assets |
-| Alerting rule execution | {{kib}} alerting → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
+| Alerting rule execution | {{alerting-v2-system-cap}} → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
 | Detection Workflow | Workflows | Cron 10m | `.rule-events` | `.significant_events-detections` |
 | Discovery Workflow | Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries`, `.rule-events` |
 
