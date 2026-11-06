@@ -73,7 +73,7 @@ The experiences you can get depend on where you open **Discover** from, such as 
 | Security projects and solution views | No | Yes [\[1\]](#note-metrics) | No | Yes |
 | {{es}} solution views | No | Yes [\[1\]](#note-metrics) | No | No |
 | {{es-serverless}} projects | No | No | No | No |
-| Spaces with the Classic solution view [\[3\]](#classic-setting-note) | {applies_to}`stack: ga 9.6+` Yes [\[4\]](#note-logs-classic) | Yes [\[1\]](#note-metrics) | {applies_to}`stack: ga 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes [\[5\]](#note-security-classic) |
+| Classic solution views [\[3\]](#classic-setting-note) | {applies_to}`stack: ga 9.6+` Yes [\[4\]](#note-logs-classic) | Yes [\[1\]](#note-metrics) | {applies_to}`stack: ga 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes [\[5\]](#note-security-classic) |
 
 $$$note-metrics$$$\[1\] The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command. In {{serverless-short}} projects, it also needs the Observability Complete or Security Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
 
