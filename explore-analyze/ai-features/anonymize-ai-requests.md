@@ -1,6 +1,6 @@
 ---
 navigation_title: Anonymization
-description: Mask email addresses, IP addresses, host names, and other sensitive values before Kibana sends AI requests to a large language model, and restore them in the response.
+description: Mask email addresses, IP addresses, host names, and other sensitive values before Kibana sends AI requests to a large language model, and restore matching tokens in the response.
 type: how-to
 applies_to:
   stack: preview 9.6+
@@ -15,7 +15,7 @@ products:
 
 # Anonymize data sent to LLMs [anonymize-ai-requests]
 
-The **Anonymization** page lets you mask sensitive values, such as email addresses, IP addresses, and host names, before {{kib}} sends an AI request to a large language model (LLM). The model receives a token in place of each value, and {{kib}} restores the original values in the response.
+The **Anonymization** page lets you mask sensitive values, such as email addresses, IP addresses, and host names, before {{kib}} sends an AI request to a large language model (LLM). The model receives a token in place of each value, and {{kib}} restores matching tokens in the response.
 
 Masking is configured separately for each [space](/deploy-manage/manage-spaces.md) and is off by default in new spaces.
 
@@ -32,18 +32,20 @@ If you don't meet these requirements, the page doesn't appear in the navigation.
 Masking applies to AI features in the space that use {{kib}}'s shared AI integration, with any connector. For example:
 
 - [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) chat, including attached alerts and tool calls
+- [{{observability}} AI Assistant](/solutions/observability/ai/observability-ai-assistant.md)
 - [AI steps](/explore-analyze/workflows/steps/ai-steps.md) in workflows
 - [Automatic Migration](/solutions/security/get-started/automatic-migration.md) of detection rules
 
 Requests sent directly to a connector aren't masked.
+Data returned to external clients through {{agent-builder}}'s MCP server isn't masked.
 
 The {{elastic-sec}} AI Assistant also has separate [field-level anonymization settings](/solutions/security/ai/ai-assistant.md#ai-assistant-anonymization) that control which alert fields are sent to the LLM and which are obfuscated.
 
 ## How masking works [anonymize-ai-requests-how]
 
-Each enabled pattern scans the request, including the system prompt, messages, and tool call arguments and responses. Every match is replaced with a token made of the entity type and a hash of the value, for example `EMAIL_ee4587b4…`. The same entity type and value always produce the same token, so the model can tell values apart and keep track of them without seeing them.
+Each enabled pattern scans text in the request, including the system prompt, messages, and tool call arguments and responses. Each matched value is replaced with a token made of the entity type and a hash of the value, for example `EMAIL_ee4587b4…`. The same entity type and value always produce the same token, so the model can tell values apart and keep track of them without seeing them.
 
-When the model responds, {{kib}} restores the original values before you see the response, including while it streams. Masked values in tool call arguments are also restored before the tool runs, so tools such as {{esql}} queries run against the real values. Stored conversations keep the original values.
+When the model responds, {{kib}} restores tokens that the model returns unchanged before you see the response, including while it streams. Masked values in tool call arguments are also restored before the tool runs, so tools such as {{esql}} queries run against the real values. Stored conversations keep the original values.
 
 :::{important}
 Tokens are pseudonyms, not encryption. When a value comes from a small set, such as an IP address range or a list of user names, someone with access to the token can recover the value by guessing.
@@ -51,7 +53,7 @@ Tokens are pseudonyms, not encryption. When a value comes from a small set, such
 
 ## Turn on masking [anonymize-ai-requests-turn-on]
 
-1. Find **Anonymization** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). In Classic view, it's under **Stack Management → AI**. In solution views and {{serverless-short}} projects, it's under **Management → AI**.
+1. Find **Anonymization** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). In {{stack}}, it's under **Stack Management → AI**. In {{serverless-short}}, it's under **Admin and Settings → AI**.
 2. Review the **Built-in patterns** and **Custom patterns** tabs and turn on the patterns you want to apply.
 3. Turn on **Masking enabled** in the page header. This switch is the same as **Mask PII in AI requests** on the **Settings** tab.
 
@@ -91,6 +93,8 @@ To mask values that the built-in patterns miss, such as your own host naming con
 3. Click **Test pattern** to check the pattern against sample input.
 4. Click **Save pattern**.
 
+A space supports up to 150 rules, including built-in patterns and any NER rules carried over from an earlier version.
+
 Patterns use [RE2 syntax](https://github.com/google/re2/wiki/Syntax), not JavaScript regular expressions:
 
 - Lookahead, lookbehind, and backreferences aren't supported.
@@ -105,13 +109,14 @@ Custom patterns saved in an earlier version that aren't valid RE2 keep working. 
 Use the **Pattern tester** tab to check what the model would receive before you turn on masking. Paste JSON or plain text as input, then click **Test pattern**. The output shows what the model receives, and a table lists each value that was masked and its token. The tester doesn't save the input or send it to a model.
 
 The tab doesn't appear if `xpack.aiAnonymizationSettings.patternTester.enabled` is set to `false` in `kibana.yml`.
+Testing also requires `xpack.inference.workers.anonymization.enabled` to be `true`.
 
 ## Choose what happens when masking can't run [anonymize-ai-requests-on-failure]
 
 A pattern might fail to run, for example because it doesn't compile or it times out. On the **Settings** tab, under **If masking cannot run**, select one of the following:
 
-- **Block the request** (default): The request isn't sent to the model.
-- **Allow the request through without the patterns that cannot run**: A pattern that doesn't compile is skipped, and the other patterns still apply. If the patterns fail while running, none of them apply, and the request is sent unmasked.
+- **Block the request** (default): If a regular expression can't compile or times out, the request isn't sent to the model.
+- **Allow the request through without the patterns that cannot run**: The request continues. Values that only failed patterns would have matched can be sent unmasked.
 
 ## Upgrade from an earlier version [anonymize-ai-requests-upgrade]
 
@@ -121,4 +126,4 @@ If a space had anonymization rules saved before the upgrade:
 
 - Masking stays on if at least one rule was enabled.
 - Built-in patterns are added turned off. Turn on the ones you want.
-- Named entity recognition (NER) rules don't appear on the page.
+- Named entity recognition (NER) rules don't appear on the page, but enabled NER rules remain active.
