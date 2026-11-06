@@ -76,7 +76,7 @@ Which experiences you can get depends on where you open **Discover** from, and t
 * [Security data exploration](/solutions/security/investigate/discover-security.md): Explore security alerts and events.
 * [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md): Explore metrics data that you query in {{esql}} mode with the `TS` command.
 
-{applies_to}`stack: ga 9.6+` **In spaces with the Classic [solution view](/deploy-manage/manage-spaces.md)**, the metrics, traces, and Security experiences can also apply when you query matching data. The experiences apply as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
+{applies_to}`stack: ga 9.6+` **In spaces with the Classic [solution view](/deploy-manage/manage-spaces.md)**, the traces and Security experiences can also apply when you query matching data. These experiences apply as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
 
 {applies_to}`stack: ga 9.6+` In the Classic solution view, the logs experience applies only when you query data from one of these integrations: Apache error logs, AWS S3 access logs, Kubernetes container logs, Nginx access logs, Nginx error logs, or System logs. Other log data, such as `logs-*`, `filebeat-*`, or Windows logs, keeps the default experience. To get the logs experience for any log data, use the {{observability}} solution view.
 
