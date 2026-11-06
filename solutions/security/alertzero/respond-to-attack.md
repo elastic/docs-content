@@ -15,7 +15,7 @@ When the {{az-attack-discovery}} {{az-worker}} finds an attack it can't rule out
 
 ## How the {{az-attack-discovery}} {{az-worker}} sorts attacks [alertzero-respond-how]
 
-The {{az-attack-discovery}} {{az-worker}} gives each attack a verdict, and the verdict decides whether {{alertzero}} asks you:
+The {{az-attack-discovery}} {{az-worker}} gives each attack a verdict, and the verdict decides what {{alertzero}} does:
 
 - **True positive or inconclusive:** {{alertzero}} asks whether to send the attack for forensics.
 - **False positive:** {{alertzero}} closes the {{az-investigation}} and the attack without asking you, and marks the attack's open alerts as acknowledged.
