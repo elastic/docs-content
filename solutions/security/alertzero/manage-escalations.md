@@ -14,9 +14,7 @@ products:
 Use the **{{az-escalations-cap}}** page to see which {{az-escalations}} are open, who is assigned to each, and where each one stands. You see every {{az-escalation}} that you have access to in one place, and each one shows its assignees.
 
 ::::{admonition} Requirements
-* You need the **Agentic Investigations**: **View escalations** sub-feature privilege to see the **{{az-escalations-cap}}** page. To learn more, refer to [](/solutions/security/alertzero/alertzero-privileges.md).
-* You need the **Agentic Investigations**: **Manage escalations** sub-feature privilege to change assignees or close an {{az-escalation}}. To close an {{az-escalation}}, you also need the **Agentic Investigations**: **Manage investigations** sub-feature privilege. To close an {{az-escalation}} that has pending {{az-proposed-actions}}, you also need the **Proposed Actions**: **All** {{kib}} feature privilege.
-* You need the **Agent Builder: Read** or **Agent Builder: All** {{kib}} feature privilege to open an {{az-escalation}}. To learn more, refer to [](/explore-analyze/ai-features/agent-builder/permissions.md).
+To see, assign, or close an {{az-escalation}}, your role needs specific privileges. Refer to [](alertzero-privileges.md).
 ::::
 
 ## Find your {{az-escalations}} [manage-escalations-find]

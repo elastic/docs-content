@@ -16,8 +16,7 @@ Escalate an {{az-investigation}} when you need to work on it with other people, 
 You create each {{az-escalation}} yourself; {{alertzero}} doesn't create them for you. When you create one, you become its owner, and only the owner can change its visibility later. Escalating an {{az-investigation}} doesn't close it or change its status, assignees, or contents. When you close the {{az-escalation}}, its linked open {{az-investigations}} close too.
 
 ::::{admonition} Requirements
-* You need the **Agentic Investigations**: **Manage escalations** sub-feature privilege to create an {{az-escalation}} or add an {{az-investigation}} to one. To learn more, refer to [](/solutions/security/alertzero/alertzero-privileges.md).
-* You need the **Agent Builder: Read** or **Agent Builder: All** {{kib}} feature privilege to open an {{az-escalation}} and its linked {{az-investigations}}. To learn more, refer to [](/explore-analyze/ai-features/agent-builder/permissions.md).
+To create an {{az-escalation}} or add an {{az-investigation}} to one, your role needs specific privileges. Refer to [](alertzero-privileges.md).
 ::::
 
 ## Create an {{az-escalation}} [escalate-investigation-create]
