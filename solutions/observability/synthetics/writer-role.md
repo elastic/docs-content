@@ -55,8 +55,8 @@ Additional privileges will depend on the factors below.
 To restrict users assigned this role from using monitors hosted on Elastic’s global managed infrastructure:
 
 1. Expand `Synthetics and Uptime` in the list of [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md#synthetics-and-uptime-sub-feature-privileges).
-2. Toggle *Customize sub-feature privileges*.
-3. Uncheck *Elastic managed locations enabled*.
+2. Toggle **Customize sub-feature privileges**.
+3. Under **Elastic managed locations**, turn off **Enabled**.
 
 ### If using Private Locations [synthetics-role-write-private-locations]
 
