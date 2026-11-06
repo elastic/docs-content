@@ -82,6 +82,10 @@ Review KIs and [agent traces](context-engine/concepts.md#agent-traces) to identi
 
 Follow the [{{context-engine}} quickstart](context-engine/quickstart.md) to create an AI index from existing {{es}} data, generate your first KI, and test how an {{agent-builder}} agent uses it.
 
+## {{context-engine}} availability and limits
+
+Check deployment support, licensing, the space setting, required privileges, and product limits in [{{context-engine}} availability and limits](context-engine/availability-and-limits.md).
+
 ## {{context-engine}} concepts
 
 Learn how AI indices, sources, automations, KIs, memories, and agent access fit together in [{{context-engine}} concepts](context-engine/concepts.md).
@@ -97,7 +101,3 @@ Learn how to retrieve context directly or through an agent or application in [Us
 ## Reference
 
 Use the [{{context-engine}} API guide](context-engine/context-engine-api.md) to find the available operations and links to the complete {{kib}} API reference.
-
-<!--
-Review [{{context-engine}} availability and limits](context-engine/availability-and-limits.md) for deployment support, requirements, and product limits.
--->
