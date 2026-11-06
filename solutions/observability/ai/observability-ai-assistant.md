@@ -75,7 +75,7 @@ It's important to understand how your data is handled when using the AI Assistan
 :   Elastic does not use customer data for model training, but all data is processed by third-party AI providers.
 
 **Anonymization**
-:   Data sent to the AI Assistant is *not* anonymized, including alert data, configurations, queries, logs, and chat interactions. If you need to anonymize data, use the [anonymization pipeline](#obs-ai-anonymization).
+:   By default, data sent to the AI Assistant is *not* anonymized, including alert data, configurations, queries, logs, and chat interactions. If you need to anonymize data, refer to [Anonymization](#obs-ai-anonymization).
 
 **Permission context**
 :   When the AI Assistant performs searches, it uses the same permissions as the current user.
@@ -532,9 +532,16 @@ stack: preview 9.1
 
 Anonymization masks personally identifiable or otherwise sensitive information before chat messages leave Kibana for a third-party LLM.
 Enabled rules substitute deterministic tokens (for example `EMAIL_ee4587…`) so the model can keep context without ever seeing the real value.
-When all rules are disabled (the default), data is forwarded unchanged.
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Configure anonymization on the **Anonymization** page under **AI** in {{stack-manage-app}}. Masking is off by default. Refer to [](/explore-analyze/ai-features/anonymize-ai-requests.md).
+
+{applies_to}`stack: preview 9.1-9.5` When all rules are disabled (the default), data is forwarded unchanged. The following sections describe how to configure rules in these versions.
 
 ### How it works [obs-ai-anonymization-how]
+```{applies_to}
+stack: preview 9.1-9.5
+serverless: unavailable
+```
 
 When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-settings), every message in the request (system prompt, message content, function call arguments/responses) is run through an *anonymization pipeline* before it leaves Kibana:
 
@@ -545,6 +552,10 @@ When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-set
 3. After the LLM responds, the original values are restored so the user sees deanonymized text and any persisted conversation history stores the original content. Deanonymization information is stored with the conversation messages to enable the UI to highlight anonymized content.
 
 ### Rule types [obs-ai-anonymization-rules]
+```{applies_to}
+stack: preview 9.1-9.5
+serverless: unavailable
+```
 
 
 **RegExp**: Runs a JavaScript‑style regular expression. Use for fixed patterns such as email addresses, host names, etc.
@@ -572,6 +583,10 @@ When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-set
 Rules are evaluated top-to-bottom with `RegExp` rules processed first, then `NER` rules; the first rule that captures a given entity wins. Rules can be configured in the [AI Assistant Settings](#obs-ai-settings) page.
 
 ### Example
+```{applies_to}
+stack: preview 9.1-9.5
+serverless: unavailable
+```
 
 The following example shows the anonymized content highlighted in the chat window using a `RegExp` rule to mask GKE hostnames:
 
@@ -590,6 +605,10 @@ The following example shows the anonymized content highlighted in the chat windo
 :::
 
 ### Requirements [obs-ai-anonymization-requirements]
+```{applies_to}
+stack: preview 9.1-9.5
+serverless: unavailable
+```
 Anonymization requires the following:
 
 * **Advanced Settings privilege**: Necessary to edit the configuration and enable rules.
@@ -603,6 +622,10 @@ Results for other languages or models may vary.
 ::::
 
 ### Limitations [obs-ai-anonymization-limitations]
+```{applies_to}
+stack: preview 9.1-9.5
+serverless: unavailable
+```
 Anonymization has the following limitations:
 
 * **Non-string fields**:  {applies_to}`stack: ga 9.1.3` Anonymization only applies to string values. Booleans, numbers, image types, and other non-string values are ignored.
