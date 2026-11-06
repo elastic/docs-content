@@ -71,6 +71,8 @@ The certificate and key used by the local cluster to sign cross-cluster requests
 
 1. When creating the cross-cluster API key on the remote cluster, you must specify a `certificate_identity` pattern that matches the Distinguished Name (DN) of the certificate used by the local cluster.
 
+    {applies_to}`stack: ga 9.6+` You can also use [{{kib}}](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to create the cross-cluster API key with strong identity verification.
+
     :::{tip}
     In {{ecloud}}, the certificates of all {{es}} nodes follow this Distinguished Name (DN) format:  
     `CN=<node_id>.node.<cluster_id>.cluster.<scope_id>`.

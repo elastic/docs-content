@@ -39,7 +39,7 @@ Before you create or manage service accounts, check these requirements:
 
 Create a service account with the roles your workloads need:
 
-1. Find **Service accounts** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+1. Find **Service accounts** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create account**.
 3. In the **Name** field, enter a unique name of up to 128 characters. The name must start with a letter or number and can contain letters, numbers, hyphens, and underscores.
 4. Optional: In the **Description** field, describe what the account is used for.
