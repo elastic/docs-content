@@ -65,7 +65,7 @@ Document flyout
 
 Which experiences you can get depends on where you open **Discover** from, such as a project type or the [solution view](/deploy-manage/manage-spaces.md) of a space, and then on the data you query. **Discover** switches to an experience automatically when your data matches it:
 
-| Where you open **Discover** | [Logs exploration](/solutions/observability/logs/discover-logs.md) | [Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md) | [Traces exploration](/solutions/observability/apm/discover-traces.md) | [Security alerts and events exploration](/solutions/security/investigate/discover-security.md) |
+|  | [Logs experience](/solutions/observability/logs/discover-logs.md) | [Metrics experience](/solutions/observability/infra-and-hosts/discover-metrics.md) | [Traces experience](/solutions/observability/apm/discover-traces.md) | [Security alerts and events experience](/solutions/security/investigate/discover-security.md) |
 | --- | --- | --- | --- | --- |
 | {{observability}} projects and solution views | Yes | Yes, [see details](#discover-serverless-tiers) | Yes, [see details](#discover-serverless-tiers) | No |
 | Security projects and solution views | No | Yes, [see details](#discover-serverless-tiers) | No | Yes |
