@@ -122,33 +122,14 @@ The `index.mode` setting affects the storage and query profile for an index or f
 It changes default settings, how {{es}} stores fields on disk, and whether it keeps the original JSON ([`_source`](#elasticsearch-intro-documents-fields)) or reconstructs it.
 
 The index mode cannot be changed after you create the index.
-For every supported value, refer to [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
+For every supported value and where they're available, refer to [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
 
-Standard (`standard`) {applies_to}`vectordb: unavailable`
-:   Optimized for search and any type of retrieval.
-
-LogsDB (`logsdb`) {applies_to}`stack: ga 9.0+` {applies_to}`vectordb: unavailable`
-:   Optimized for logs use cases, with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode.
-
-LogsDB columnar (`logsdb_columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
-:   Optimized for logs use cases that align with columnar semantics and [limitations](elasticsearch://reference/elasticsearch/columnar/index.md#columnar-limitations). Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
-
-TSDB (`time_series`) {applies_to}`vectordb: unavailable`
-:   Optimized for metrics and time series use cases. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. This mode is for data streams only.
-
-Columnar (`columnar`) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` {applies_to}`vectordb: unavailable`
-:   Optimized for storage efficiency and analytics. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
-
-VectorDB (`vectordb_document`) {applies_to}`stack: ga 9.5+` {applies_to}`vectordb: ga`
-:   Optimized for vector search use cases, enabling similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). In {{vectordb}} projects, it is the only mode available.
-
-<!-- TBD: This appears in the settings reference, should it appear here too?
-VectorDB columnar (`vectordb_columnar`) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`  {applies_to}`vectordb: unavailable`
-:   Optimized for vector search with columnar storage. Applies the same vector search defaults as `vectordb_document` and keeps `dense_vector` and `text` fields indexed. Refer to [`vectordb_columnar`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-columnar-mode).
--->
-
-Lookup (`lookup`) {applies_to}`vectordb: unavailable`
-:   Use it for reference data you join in {{esql}}, for example a list of users, hosts, or known threat IPs. Refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md). Only the lookup index needs this mode, not the source index.
+- Standard (`standard`) mode is optimized for search and any type of retrieval.
+- LogsDB (`logsdb`) mode is optimized for logs use cases, with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode. LogsDB columnar (`logsdb_columnar`) is  optimized for logs use cases that align with [columnar semantics](/manage-data/data-store/columnar.md) and [limitations](elasticsearch://reference/elasticsearch/columnar/index.md#columnar-limitations).
+- TSDB (`time_series`) mode is optimized for metrics and time series use cases. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. It is  only to data streams.
+- Columnar (`columnar`) mode is optimized for storage efficiency and analytics. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
+- VectorDB (`vectordb_document`) mode is optimized for vector search use cases, enabling similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). VectorDB columnar (`vectordb_columnar`) mode is optimized for vector search with columnar storage. It applies the same vector search defaults as `vectordb_document` and keeps `dense_vector` and `text` fields indexed. Refer to [`vectordb_columnar`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-columnar-mode).
+- Lookup (`lookup`) mode is optimized for reference data you join in {{esql}}, for example a list of users, hosts, or known threat IPs. Refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md). Only the lookup index needs this mode, not the source index.
 
 ## How an index stores data
 
