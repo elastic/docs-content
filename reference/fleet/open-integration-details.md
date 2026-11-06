@@ -26,8 +26,6 @@ Your role needs these privileges:
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` If you [customize sub-feature privileges for {{fleet}}](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features), the **Integration policies** tab needs `Read` or `All` for **Agent policies**, and the **Configs** tab needs `All` for **Agents**.
 
-For more information, refer to [](/reference/fleet/fleet-roles-privileges.md).
-
 ## Open the integration's details [integration-details-steps]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
