@@ -9,6 +9,8 @@ description: With cross-project search, detection rules query the origin and any
 
 # {{cps-cap}} and detection rules [sec-rules-cross-project-search]
 
+For how detection rules fit into a central SOC, along with where alerts and cases live and how to investigate across projects, refer to [{{cps-cap}} in {{elastic-sec}}](/solutions/security/cross-project-search.md).
+
 If your data spans ECH, ECE, ECK, or self-managed clusters rather than linked {{serverless-short}} projects, refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md) instead.
 
 ## {{cps-cap}} scope for rules [cps-scope-for-rules]
