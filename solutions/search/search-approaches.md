@@ -33,6 +33,24 @@ The following table provides an overview of the fundamental search techniques av
  Full-text search is a very powerful tool in itself. One of the key strengths of {{es}} is its flexibility, allowing you to start with full-text search and gradually incorporate more complex or resource-intensive approaches over time.
 :::::
 
+## Choose a search approach [choose-search-approach]
+
+If you're not sure where to start, answer these questions in order:
+
+1. **What kind of matching do you need?**
+   - Exact words, phrases, filters, or aggregations: start with [full-text search](full-text.md).
+   - Matches based on meaning or intent: continue to the next question.
+   - Both: continue to the next question, then add keyword matching with [hybrid search](hybrid-search.md).
+2. **Where do your embeddings come from?**
+   - You already have embeddings: [bring your own dense vectors](vector/bring-own-vectors.md) and query them with kNN.
+   - You want {{es}} to generate them: continue to the next question.
+3. **How much control over the model do you need?**
+   - Managed defaults: use [`semantic_text`](semantic-search/semantic-search-semantic-text.md), the recommended starting point.
+   - A specific model: use `semantic_text` with an `inference_id` that points to that model. Refer to [configure {{infer}} endpoints](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints).
+   - Learned sparse vectors with Elastic Learned Sparse Encoder (ELSER): refer to [sparse vector search](vector/sparse-vector.md).
+
+The default {{infer}} endpoint for `semantic_text` depends on the version and deployment type. For production, set `inference_id` explicitly.
+
 ## Next step
 
 Once you've chosen your search approach(es), you'll need to select a query language to implement them. Refer to [query languages for search use cases](querying-for-search.md) to learn about the available options.
