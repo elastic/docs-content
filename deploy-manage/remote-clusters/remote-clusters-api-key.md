@@ -330,7 +330,7 @@ POST /_security/cross_cluster/api_key
 }
 ```
 
-{applies_to}`stack: ga 9.6+` You can also use [{{kib}}](../api-keys/elasticsearch-api-keys.md#create-api-key) to create the cross-cluster API key with strong identity verification.
+{applies_to}`stack: ga 9.6+` You can also use [{{kib}}](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to create the cross-cluster API key with strong identity verification.
 
 The `certificate_identity` field supports regular expressions. For example:
 
