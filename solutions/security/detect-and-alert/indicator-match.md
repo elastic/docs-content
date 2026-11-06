@@ -15,9 +15,15 @@ description: Detect security events that match known threat indicators from thre
 
 Indicator match rules continuously compare field values in your security event indices against field values in threat indicator indices. When a match is found, an alert is generated, enriched with metadata from the matched indicator. This makes indicator match rules the primary mechanism for operationalizing threat intelligence feeds within {{elastic-sec}}.
 
-### Limitations
+### Limitations [indicator-match-limitations]
 
 Indicator match rules provide a powerful capability to search your security data; however, their queries can consume significant deployment resources. When creating an indicator match rule, limit the time range of the indicator index query to the minimum period necessary for the desired rule coverage. For example, the default indicator index query `@timestamp > "now-30d/d"` searches specified indicator indices for indicators ingested during the past 30 days and rounds the query start time down to the nearest day (resolves to UTC `00:00:00`). Without this limitation, the rule includes all of the indicators in your indicator indices, which may extend the time it takes for the indicator index query to complete.
+
+To keep indicator match rules from slowing down your cluster, also follow these guidelines.
+
+* Make the indicator index query as specific as you can. An empty or match-all (`*:*`) query can make the rule run large, slow queries.
+* Keep the rule's **Additional look-back time** as short as possible.
+* Run the rule every hour or less often, which is the default schedule for new indicator match rules. Avoid short intervals, such as every five minutes.
 
 :::{admonition} Support restrictions
 Indicator match rules have two additional constraints:
