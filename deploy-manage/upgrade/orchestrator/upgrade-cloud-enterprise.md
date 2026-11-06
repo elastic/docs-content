@@ -149,6 +149,14 @@ By default, ECE updates to the most current available version. If you want to up
 bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --user admin --pass $PASSWORD --cloud-enterprise-version {{version.ece}}
 ```
 
+## After the upgrade
+```{applies_to}
+deployment:
+  ece: ga 4.3+
+```
+
+After the upgrade has completed on all hosts, consider [configuring an install password](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/configure-ece-install-password.md) to protect the bootstrap secrets that additional hosts read when they join. Set the password only when every host runs a version that supports this feature.
+
 
 
 

@@ -495,6 +495,7 @@ toc:
         children:
           - file: security/secure-your-elastic-cloud-enterprise-installation.md
             children:
+              - file: security/secure-your-elastic-cloud-enterprise-installation/configure-ece-install-password.md
               - file: security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md
               - file: security/secure-your-elastic-cloud-enterprise-installation/allow-x509-certificates-signed-with-sha-1.md
               - file: security/secure-your-elastic-cloud-enterprise-installation/configure-tls-version.md

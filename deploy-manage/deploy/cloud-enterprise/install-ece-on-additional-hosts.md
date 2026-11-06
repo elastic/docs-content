@@ -19,6 +19,9 @@ To install {{ece}} on additional hosts:
 
 1. Download and run the installation script on each additional host. Include the `--coordinator-host HOST_IP` and `--roles-token 'TOKEN'` parameters provided to you when you installed on the first host, otherwise the new host will be rejected. As well, `VERSION_NAME` must match your current ECE installation version for the process to succeed.
 
+    ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-additional-hosts.md
+    ::::
+
     ```
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install
       --coordinator-host HOST_IP
@@ -26,6 +29,7 @@ To install {{ece}} on additional hosts:
       --cloud-enterprise-version VERSION_NAME
       --availability-zone ZONE_NAME
     ```
+
     If you are creating a larger {{ece}} installation:
 
     * Make your installation [fault tolerant or highly available](ece-ha.md) by determining the failure domain for each host and using the `--availability-zone ZONE_NAME` parameter to specify the name of an [availability zone](ece-ha.md). For production systems, hosts should go into three different availability zones. For example, including the parameter `--availability-zone ece-zone-1c` when you install on additional hosts will assign each host to availability zone `ece-zone-1c`.
