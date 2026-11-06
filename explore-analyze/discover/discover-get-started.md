@@ -67,13 +67,11 @@ Which experiences you can get depends on where you open **Discover** from, such 
 
 |  | [Logs experience](/solutions/observability/logs/discover-logs.md) | [Metrics experience](/solutions/observability/infra-and-hosts/discover-metrics.md) | [Traces experience](/solutions/observability/apm/discover-traces.md) | [Security alerts and events experience](/solutions/security/investigate/discover-security.md) |
 | --- | --- | --- | --- | --- |
-| {{observability}} projects and solution views | Yes | Yes, [see details](#discover-serverless-tiers) | Yes, [see details](#discover-serverless-tiers) | No |
-| Security projects and solution views | No | Yes, [see details](#discover-serverless-tiers) | No | Yes |
-| {{es}} solution views | No | Yes | No | No |
+| {{observability}} projects and solution views | Yes | Yes, refer to [About the metrics experience](#about-metrics-experience) | Yes, refer to [About the traces experience](#about-traces-experience) | No |
+| Security projects and solution views | No | Yes, refer to [About the metrics experience](#about-metrics-experience) | No | Yes |
+| {{es}} solution views | No | Yes, refer to [About the metrics experience](#about-metrics-experience) | No | No |
 | {{es-serverless}} projects | No | No | No | No |
-| Spaces with the Classic solution view | {applies_to}`stack: ga 9.6+` Yes, [see details](#discover-classic-limits) | Yes | {applies_to}`stack: ga 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes, [see details](#discover-classic-limits) |
-
-The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command.
+| Spaces with the Classic solution view | {applies_to}`stack: ga 9.6+` Yes, refer to [About the logs experience](#about-logs-experience) | Yes, refer to [About the metrics experience](#about-metrics-experience) | {applies_to}`stack: ga 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes, refer to [About the Security alerts and events experience](#about-security-experience) |
 
 {applies_to}`stack: ga 9.6+` The logs, traces, and Security experiences apply in spaces with the Classic solution view as long as the **Contextual profiles in Classic navigation** advanced setting is on, which it is by default. In that setting, "profiles" means context-aware experiences.
 
@@ -81,18 +79,21 @@ When you open **Discover** outside of these contexts, or query data without a ta
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` The active experience also shapes [AI-powered analysis](analyze-discover-data-with-ai.md): when you query logs, metrics, or traces, the AI agent receives guidance that suits that type of data. For what changes for each type, refer to [How the analysis adapts to your data](analyze-discover-data-with-ai.md#context-aware-deep-analysis).
 
-### Experiences that need a higher Serverless tier [discover-serverless-tiers]
+### About the logs experience [about-logs-experience]
 
-In {{serverless-short}} projects, the metrics experience needs the Observability Complete or Security Complete feature tier, and the traces experience needs Observability Complete. For the Observability tiers, refer to [Observability feature tiers](/solutions/observability/observability-serverless-feature-tiers.md).
+{applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs experience applies to data from some integrations only, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
 
-### Which data gets an experience in the Classic solution view [discover-classic-limits]
+### About the metrics experience [about-metrics-experience]
 
-{applies_to}`stack: ga 9.6+`
+The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command. In {{serverless-short}} projects, it also needs the Observability Complete or Security Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
 
-In spaces with the Classic solution view, the logs and Security experiences apply to some data only:
+### About the traces experience [about-traces-experience]
 
-* **Logs**: Data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [Use the logs experience in the Classic solution view](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
-* **Security alerts and events**: A Security {{data-source}}, or a {{data-source}} or query that targets only Security data. Refer to [Access the Security Discover experience](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
+In {{serverless-short}} projects, the traces experience needs the Observability Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
+
+### About the Security alerts and events experience [about-security-experience]
+
+{applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the Security experience applies when you use a Security {{data-source}}, or when your {{data-source}} or query targets only Security data. For more detail, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
 ### When you query several kinds of data [view-active-context-aware-experience]
 
