@@ -58,13 +58,14 @@ For a complete list of integrations that can run as {{managed-integrations}}, re
 
 ## Enable the integration [enable-managed-integration-steps]
 
-1. In {{kib}}, go to **{{integrations}}** and select an integration that can be deployed as an {{managed-integration}}.
-2. Select **Add `<integration>`**.
-3. Provide the credentials and any other required configuration for the source.
-4. Choose the deployment mode:
+1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select an integration that can run as an {{managed-integration}}.
+3. If the integration's **Overview** page opens, select **Add <integration>**.
+4. Provide the credentials and any other required configuration for the source.
+5. Choose the deployment mode:
    - {applies_to}`{serverless: ga, stack: ga 9.5+}` In the **Deployment** section, select **Elastic Managed Integration**.
    - {applies_to}`{stack: preview 9.0-9.4}` In the **Deployment options** section, select **Agentless**.
-5. Select **Save and continue**.
+6. Select **Save and continue**.
 
 Within a few minutes, data from the source appears in the integration's data streams in your cluster.
 
