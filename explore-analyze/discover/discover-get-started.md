@@ -67,7 +67,7 @@ Document flyout
 
 The experiences you can get depend on where you open **Discover** from, such as a project type or the [solution view](/deploy-manage/manage-spaces.md) of a space, and then on the data you query:
 
-|  | [Logs experience](/solutions/observability/logs/discover-logs.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+, preview 9.2-9.3` [Metrics experience](/solutions/observability/infra-and-hosts/discover-metrics.md) | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1+` [Traces experience](/solutions/observability/apm/discover-traces.md) | [Security alerts and events experience](/solutions/security/investigate/discover-security.md) |
+|  | [Logs experience](/solutions/observability/logs/discover-logs.md) | [Metrics experience](/solutions/observability/infra-and-hosts/discover-metrics.md) | [Traces experience](/solutions/observability/apm/discover-traces.md) | [Security alerts and events experience](/solutions/security/investigate/discover-security.md) |
 | --- | --- | --- | --- | --- |
 | {{observability}} projects and solution views | Yes | Yes [\[1\]](#note-metrics) | Yes [\[2\]](#note-traces) | No |
 | Security projects and solution views | No | Yes [\[1\]](#note-metrics) | No | Yes |
