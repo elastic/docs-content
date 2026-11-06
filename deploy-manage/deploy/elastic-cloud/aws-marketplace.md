@@ -69,7 +69,9 @@ To subscribe to {{ecloud}} through the AWS Marketplace:
 
 ## Changes to your billing [ec-billing-aws-account-change] 
 
-{{ecloud}} subscriptions through AWS Marketplace are associated with a marketplace agreement on an AWS Account.  In order to change the AWS Account associated with an {{ecloud}} organization, reach out to Elastic support and provide the old and new AWS Account Ids. You need to have purchased and subscribed to {{ecloud}} on the new Account using the details above—but do not create a new Elastic user or organization (that is, you can skip Step 3 in the subscription instructions, above). Once you have successfully subscribed with the new Account, reach out to Elastic support and provide the old and new AWS Account IDs. You can find an AWS Account ID in the account menu at the top right of the AWS Management Console. The ID is a 12-digit number.
+{{ecloud}} subscriptions through AWS Marketplace are associated with a marketplace agreement on an AWS account. To change the AWS account associated with your {{ecloud}} organization, first purchase and subscribe to {{ecloud}} using the new AWS account, without creating a new Elastic user or organization. To do that, follow the [subscription instructions](#ec_subscribe_to_elasticsearch_service_through_the_aws_marketplace) through **Set Up Your Account**, but do not complete the Elastic signup process described in step 3.
+
+Then [contact Elastic support](/troubleshoot/index.md#contact-us) and provide the old and new AWS account IDs. You can find the 12-digit AWS account ID in the account menu of the AWS Management Console.
 
 If you cancel your {{ecloud}} agreement on AWS before the switch to the new AWS Account has been done, any running resources could be terminated.
 
