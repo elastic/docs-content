@@ -57,13 +57,13 @@ The {{az-triage-watch}} includes the {{az-alert-triage}} and {{az-attack-discove
 :::
 
 **Minimum confidence score**
-:   How confident {{az-alert-triage}} must be that an alert is a false positive before it proposes closing the alert or closes it. Alerts below this score are still tagged with their classification, but stay open. A higher score means fewer alerts are closed, so it's the safer choice if you want to review more alerts yourself. A lower score means more alerts are closed.
+:   How confident {{az-alert-triage}} must be that an alert is a false positive before it proposes closing the alert or closes it. A false positive below this score is classified as inconclusive and stays open. A higher score means fewer alerts are closed, so it's the safer choice if you want to review more alerts yourself. A lower score means more alerts are closed.
 
 **Minimum severity**
 :   The lowest alert severity to triage. Alerts below this severity are skipped. To triage every alert, select **Low**.
 
 **Exclude building block alerts**
-:   Skips the building block alerts that an EQL sequence rule creates. The main alert of each sequence rule is still triaged.
+:   Skips the alerts that any rule configured as a [building block rule](/solutions/security/detect-and-alert/about-building-block-rules.md) generates.
 
 **Excluded rule tags**
 :   Skips alerts from rules that carry any of these tags. Press **Enter** after each tag to add more than one. Tags are case-sensitive.

@@ -21,7 +21,7 @@ The {{az-triage-watch}} is your first line of defense. It reviews incoming alert
 
 ### {{az-alert-triage}} [alertzero-alert-triage]
 
-The {{az-alert-triage}} {{az-worker}} reviews alerts that are waiting to be triaged. It classifies each alert as a true positive or a false positive, adds its classification to the alert as a tag and a note, and proposes closing the false positives.
+The {{az-alert-triage}} {{az-worker}} reviews alerts that are waiting to be triaged. It classifies each alert as a true positive, a false positive, or, if the false positive confidence score is below the threshold set in the [**Minimum confidence score** setting](configure-worker-settings.md#configure-worker-settings-alert-triage), inconclusive. It adds its classification to the alert as a tag and a note, and proposes closing the false positives.
 
 {{az-alert-triage}} relies on the [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) to analyze alerts, so make sure that workflow is turned on.
 
