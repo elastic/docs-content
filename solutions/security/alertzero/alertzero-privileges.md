@@ -85,7 +85,7 @@ Approving an action doesn't grant the privileges to run it. An approved action r
 | Action | Privileges |
 | --- | --- |
 | Close alerts | **Alerts**: **All** |
-| Create, edit, or turn on a detection rule, or add a rule exception | **Rules and Exceptions**: **All** |
+| Create, edit, install, or turn on a detection rule, or add a rule exception | **Rules and Exceptions**: **All** |
 | Isolate a host | **Security**: **All**, with the [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md#response-actions) **Host Isolation** and **Response Actions History** |
 | Kill or suspend a process | **Security**: **All**, with the [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md#response-actions) **Process Operations** and **Response Actions History** |
 

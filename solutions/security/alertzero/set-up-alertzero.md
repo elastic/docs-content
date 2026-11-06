@@ -33,7 +33,7 @@ Before you start the {{az-workers}}, make sure you have all the following:
   - The **All** privilege for **{{alertzero}}**, which you need to start onboarding and turn on the {{az-workers}}.
   - The **Update** and **Update managed workflows** sub-feature privileges for **Workflows**, which let you turn on each {{az-worker}}. Each {{az-worker}} runs as a [managed workflow](/explore-analyze/workflows/managed-workflows.md).
   - The `manage_security` cluster privilege, which {{alertzero}} uses to create a [service account](alertzero-privileges.md#alertzero-worker-privileges) for each {{az-worker}}. It also lets anyone who has it manage users and roles for the whole cluster, so don't add it to a role only for {{alertzero}}. If you don't have it, ask an administrator who does to start the {{az-workers}}.
-- An AI model in the space, either an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) or an LLM connector. If your subscription includes Elastic Managed LLMs, they're available by default. Otherwise, refer to [Connect to an LLM](/solutions/security/ai/set-up-ai-features.md#set-up-ai-llm). To change which models the {{az-workers}} use, refer to [Select models for the {{az-workers}}](#alertzero-choose-models).
+- An AI model in the space, either an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) or an [external {{infer}} endpoint](/explore-analyze/elastic-inference/external.md) for a third-party model provider. If your subscription includes Elastic Managed LLMs, they're available by default. To change which models the {{az-workers}} use, refer to [Select models for the {{az-workers}}](#alertzero-choose-models).
 - Events and alerts in {{elastic-sec}} for the {{az-workers}} to analyze. Without both, the {{az-workers}} have nothing to triage, correlate, or hunt through. If you don't have them yet, [ingest data](/solutions/security/get-started/ingest-data-to-elastic-security.md) into {{elastic-sec}}, then [turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md) and [install and enable prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) so that your data generates alerts.
 
 ### Required for specific {{az-workers}} [alertzero-set-up-before-workers]
@@ -49,7 +49,7 @@ Each {{az-worker}} analyzes different data, and some need extra setup, such as [
 | [{{az-rule-coverage}}](watches-and-workers.md#alertzero-detection-watch) | Detection gaps from {{az-continuous-threat-hunt}} | {{az-continuous-threat-hunt}} and {{context-engine}} |
 | [{{az-endpoint-analysis}}](watches-and-workers.md#alertzero-forensics-watch) | Attacks handed off by {{az-attack-discovery}} | {{az-attack-discovery}}, {{elastic-defend}}, and {{context-engine}} |
 
-% For docs writers: After elastic/docs-content#9144 merges, link each Worker to its own anchor in watches-and-workers.md: alertzero-alert-triage, alertzero-attack-discovery, alertzero-continuous-threat-hunt, alertzero-rule-tuning, alertzero-rule-coverage, and alertzero-endpoint-analysis. In the Continuous Threat Hunt row, keep Context Engine, and replace the threat feeds, models, and embedding endpoint requirements with a link to watches-and-workers.md#alertzero-threat-reports-requirements, which owns those details.
+% For docs writers: After elastic/docs-content#9144 merges, link each Worker to its own anchor in watches-and-workers.md: alertzero-alert-triage, alertzero-attack-discovery, alertzero-continuous-threat-hunt, alertzero-rule-tuning, alertzero-rule-coverage, and alertzero-endpoint-analysis. In the Continuous Threat Hunt row, keep Context Engine, and replace the threat feeds, models, and embedding endpoint requirements with a link to threat-reports.md#alertzero-threat-reports-requirements, which owns those details.
 
 ## Turn on {{alertzero}} for a space [alertzero-turn-on]
 
@@ -70,9 +70,7 @@ The {{az-workers}} match each model call to a model tier based on what the call 
 - **{{az-balanced-models}}**: Calls where accuracy matters, but that run often or use tools over many steps, such as triaging alerts or diagnosing a noisy rule.
 - **{{az-frontier-models}}**: Complex work where output quality matters most, such as generating attack discoveries or drafting a detection rule.
 
-    :::{note}
-    By default, GPT-6 Sol is first in the **{{az-frontier-models}}** list, followed by GPT-5.6 Sol and Claude Opus 5. The {{az-workers}} use Claude Opus 5, which costs more than the GPT models, only when neither GPT model is available.
-    :::
+% For docs writers: When Elastic publishes model evaluations for AlertZero, link them here so readers can compare models for each tier. Don't list the default models for each tier, because they change with the product defaults.
 
 Each tier starts with recommended models instead of your default model, and the {{az-workers}} use the first available model in the tier's list. To use a different model for a tier, change it before you [start the {{az-workers}}](#alertzero-turn-on-workers), because their first run starts right away:
 
@@ -110,6 +108,6 @@ To change which {{az-workers}} run after setup, or the default {{az-worker}} set
 
 ## Next steps [alertzero-set-up-next]
 
-- [](alertzero-privileges.md): Give your team the privileges they need to view and decide {{az-proposed-actions}}.
-- [](use-alertzero.md): Find the {{az-proposed-actions}} that need your decision.
-- [](configure-worker-settings.md): Change {{az-worker}} settings, such as {{az-autonomy}} and schedule.
+- [Give your team access to {{alertzero}}](alertzero-privileges.md) so they can review and decide {{az-proposed-actions}}.
+- [Find the {{az-proposed-actions}} that need your decision](use-alertzero.md).
+- [Change {{az-worker}} settings](configure-worker-settings.md), such as {{az-autonomy}} and schedule.

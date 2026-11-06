@@ -102,7 +102,7 @@ serverless: preview
 stack: preview 9.6
 ```
 
-{{alertzero}} is off by default, and you turn it on in each space where you want it. Its {{az-workers}} can't turn on until the space has an AI model, either an Elastic Managed LLM or an [LLM connector](#set-up-ai-llm). Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) or the **Attack Discovery Workflows** [advanced setting](#set-up-ai-advanced-settings). For what each {{az-worker}} needs and the steps to start them, refer to [](/solutions/security/alertzero/set-up-alertzero.md).
+{{alertzero}} is off by default, and you turn it on in each space where you want it. Its {{az-workers}} can't turn on until the space has an AI model, either an Elastic Managed LLM or an [external {{infer}} endpoint](/explore-analyze/elastic-inference/external.md). Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) or the **Attack Discovery Workflows** [advanced setting](#set-up-ai-advanced-settings). For what each {{az-worker}} needs and the steps to start them, refer to [](/solutions/security/alertzero/set-up-alertzero.md).
 
 ### Features with their own setup [set-up-ai-feature-specific]
 
