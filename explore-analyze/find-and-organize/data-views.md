@@ -55,9 +55,7 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-To create, update, list, and delete {{data-sources}} from scripts or CI/CD pipelines, use the [Data views v2 API]({{kib-apis}}group/endpoint-data-views-v2). Each {{data-source}} is a JSON definition that you can store in version control and deploy to other environments.
-
-The v2 API is separate from the existing [Data views API]({{kib-apis}}group/endpoint-data-views). It has its own paths and request format, so check the reference before you reuse requests from the existing API.
+To create, update, list, and delete {{data-sources}} from scripts or CI/CD pipelines, you can use the latest [Data views v2 API]({{kib-apis}}group/endpoint-data-views-v2). It defines each {{data-source}} as a JSON definition that you can store in version control and deploy to other environments. An earlier Data views API is also available.
 
 ## Work with data views
 
