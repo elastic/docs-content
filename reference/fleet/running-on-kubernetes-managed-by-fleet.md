@@ -11,6 +11,10 @@ products:
 
 # Run Elastic Agent on Kubernetes managed by Fleet [running-on-kubernetes-managed-by-fleet]
 
+:::{note}
+Helm is the preferred method for installing {{agent}} on Kubernetes. Refer to [Install {{agent}} on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md) for installation examples for standalone and {{fleet}}-managed agents.
+:::
+
 ## What you need [_what_you_need_2]
 
 * [kubectl installed](https://kubernetes.io/docs/tasks/tools/).
