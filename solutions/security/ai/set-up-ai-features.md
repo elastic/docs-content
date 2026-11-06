@@ -30,6 +30,7 @@ For the privileges that each feature needs, refer to:
 - AI Assistant: [AI Assistant for Security requirements](/solutions/security/ai/ai-assistant.md)
 - Attack Discovery: [Attack Discovery privileges](/solutions/security/ai/attack-discovery/grant-access.md)
 - {{agent-builder}}: [Permissions and access control in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md)
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6` {{alertzero}}: [{{alertzero}} privileges](/solutions/security/alertzero/alertzero-privileges.md)
 
 ## Optional setup [set-up-ai-optional]
 
@@ -43,6 +44,15 @@ stack: ga 9.2+
 ```
 
 To limit which connectors and models AI features can use, or to turn AI features off, go to **Feature Settings** or **GenAI Settings** (depending on your {{stack}} version). For details, refer to [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
+
+#### Select models for {{alertzero}} [set-up-ai-alertzero-models]
+
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
+
+{{alertzero}} has its own model settings, which start with recommended models instead of your default model. For how the {{az-workers}} choose a model, and how to balance quality and cost, refer to [Select models for the {{az-workers}}](/solutions/security/alertzero/set-up-alertzero.md#alertzero-choose-models).
 
 ### Switch chat experiences [set-up-ai-chat]
 
@@ -82,6 +92,17 @@ stack: ga 9.5+
 ```
 
 To run Attack Discovery from a workflow or from {{agent-builder}}, turn on the [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting. This setting also lets you configure alert retrieval, generation, and validation in the **Attacks** view. After you turn it on, users also need [Workflows privileges](/solutions/security/ai/attack-discovery/grant-access.md#attack-discovery-workflows-privileges).
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6` The {{alertzero}} {{az-attack-discovery}} {{az-worker}} also needs this setting.
+
+### Set up {{alertzero}} [set-up-ai-alertzero]
+
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
+
+{{alertzero}} is off by default, and you turn it on in each space where you want it. Its {{az-workers}} can't turn on until the space has an AI model, either an Elastic Managed LLM or an [external {{infer}} endpoint](/explore-analyze/elastic-inference/external.md). Some {{az-workers}} also need [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) or the **Attack Discovery Workflows** [advanced setting](#set-up-ai-advanced-settings). For what each {{az-worker}} needs and the steps to start them, refer to [](/solutions/security/alertzero/set-up-alertzero.md).
 
 ### Features with their own setup [set-up-ai-feature-specific]
 
