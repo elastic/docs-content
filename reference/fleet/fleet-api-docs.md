@@ -156,7 +156,7 @@ curl --request POST \
 ::::{admonition}
 * To save time, you can use {{kib}} to generate the API call, then run it from the Dev Tools console.
 
-    1. Go to **Integrations**, select an {{agent}} integration, and click **Add <Integration>**.
+    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for and select an {{agent}} integration. If the integration's **Overview** page opens, click **Add <integration>**.
     2. Configure the integration settings and select which agent policy to use.
     3. Click **Preview API request**.
 
@@ -164,7 +164,7 @@ curl --request POST \
 
     4. Click **Open in Console** and run the request (or requests).
 
-* To find out which inputs, streams, and variables are available for an integration, go to **Integrations**, select an {{agent}} integration, and click **API reference**.
+* To find out which inputs, streams, and variables are available for an integration, [open the integration's details](/reference/fleet/open-integration-details.md), then select the **API reference** tab.
 
 ::::
 

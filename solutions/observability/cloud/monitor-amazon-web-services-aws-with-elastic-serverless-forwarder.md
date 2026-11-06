@@ -99,9 +99,9 @@ For more details, refer to the AWS documentation on how to [Configure a bucket f
 
 {{kib}} offers prebuilt dashboards, ingest node configurations, and other assets that help you get the most value out of the logs you ingest.
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for AWS.
-3. Click the AWS integration, select **Settings** and click **Install AWS assets** to install all the AWS integration assets.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for **AWS**, then [open the integration's details](/reference/fleet/open-integration-details.md).
+3. Select the **Settings** tab and click **Install AWS**. In the confirmation dialog, click **Install AWS**.
 
 
 ## Step 5: Create a new S3 bucket to store the configuration file [esf-step-five]

@@ -190,8 +190,8 @@ If your organization requires administrators to manage SCCs and role bindings se
     ```
 
 2. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
-3. Run a search for `Kubernetes` and then select the {{k8s}} integration card.
-4. On the {{k8s}} integration **Settings** page, select **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
+3. Search for `Kubernetes`, then [open the {{k8s}} integration's details](/reference/fleet/open-integration-details.md).
+4. Select the **Settings** tab and click **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
 5. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
 
     On the dashboard, you can view the status of your {{k8s}} nodes, including metrics on memory, CPU, and filesystem usage, network throughput, and more.
