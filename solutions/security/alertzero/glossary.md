@@ -98,11 +98,11 @@ The highest [{{az-autonomy}}](#alertzero-glossary-autonomy) level. At this level
 
 ### {{az-threat-intel-supply-cap}} [alertzero-glossary-threat-intel-supply]
 
-The set of workflows that feed threat intelligence to the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch). **Ingest threat feeds** collects threat feeds, **Enrich threat report** builds out {{az-threat-reports}}, and **Attribute alerts to reports** connects alerts to those reports. {{alertzero}} turns them on when you turn on the {{az-continuous-threat-hunt}} {{az-worker}}. All spaces share **Ingest threat feeds** and **Enrich threat report**, so {{alertzero}} turns them off only when {{az-continuous-threat-hunt}} is off in every space. Refer to [](configure-worker-settings.md).
+The set of workflows that feed threat intelligence to the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch). **Ingest threat feeds** collects threat feeds, **Enrich threat report** builds out {{az-threat-reports}}, and **Attribute alerts to reports** connects alerts to those reports. {{alertzero}} turns them on when you turn on the {{az-continuous-threat-hunt}} {{az-worker}}. All spaces share **Ingest threat feeds** and **Enrich threat report**, so {{alertzero}} turns them off only when {{az-continuous-threat-hunt}} is off in every space. Refer to [](threat-reports.md).
 
 ### {{az-threat-report-cap}} [alertzero-glossary-threat-report]
 
-A report of threat activity, built from ingested threat intelligence, that the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch) searches your data for. A [{{az-hunt-finding}}](#alertzero-glossary-hunt-finding) links back to its source report.
+A report of threat activity, built from ingested threat intelligence, that the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch) searches your data for. A [{{az-hunt-finding}}](#alertzero-glossary-hunt-finding) links back to its source report. Refer to [](threat-reports.md).
 
 ### {{az-triage-watch}} [alertzero-glossary-triage-watch]
 

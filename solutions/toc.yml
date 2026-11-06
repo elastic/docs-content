@@ -723,6 +723,8 @@ toc:
       - hidden: security/alertzero/index.md
         children:
           - hidden: security/alertzero/watches-and-workers.md
+            children:
+              - hidden: security/alertzero/threat-reports.md
           - hidden: security/alertzero/set-up-alertzero.md
             children:
               - hidden: security/alertzero/requirements.md
