@@ -9,58 +9,51 @@ products:
   - id: cloud-serverless
 ---
 
-# Close false-positive alerts [alertzero-decide]
+# Close false-positive alerts [alertzero-close-false-positives]
 
 The {{az-alert-triage}} {{az-worker}} reviews your open and acknowledged alerts and finds the ones it judges to be false positives. Its [{{az-autonomy}}](configure-worker-settings.md) controls what it does with them.
 
-- With **{{az-manual}}** {{az-autonomy}} (the default), the {{az-worker}} proposes closing the false positives and waits for you to [approve or decline](#alertzero-decide-review) each proposed closure.
-- With **{{az-supervised}}** {{az-autonomy}}, the {{az-worker}} closes the false positives on its own. You [check its closures](#alertzero-decide-autonomy) afterward and reopen any that you disagree with.
+- With **{{az-manual}}** {{az-autonomy}} (the default), the {{az-worker}} proposes closing the false positives and waits for you to [review](#alertzero-close-false-positives-review) and [approve or decline](#alertzero-close-false-positives-decide) each proposed closure.
+- With **{{az-supervised}}** {{az-autonomy}}, the {{az-worker}} closes the false positives on its own. You [check its closures](#alertzero-close-false-positives-past-closures) afterward and reopen any that you disagree with.
 
-## How the {{az-alert-triage}} {{az-worker}} picks alerts to close [alertzero-decide-how]
+## How the {{az-alert-triage}} {{az-worker}} picks alerts to close [alertzero-close-false-positives-how]
 
 By default, the {{az-alert-triage}} {{az-worker}} runs every 15 minutes and triages alerts of every severity. It proposes closing an alert only when it's at least 85% confident that the alert is a false positive. It tags alerts with a lower score `az:inconclusive` and leaves them open for you to triage.
 
-The {{az-worker}} groups false positives from the same rule that share a pattern into one {{az-proposed-action}}, so you can close a batch of noise in one decision instead of alert by alert. For example, if a backup agent on many hosts runs from the same folder, with the same publisher signature and the same parent process, its alerts become one {{az-proposed-action}}.
+The {{az-worker}} groups false positives from the same rule that share a pattern into one {{az-proposed-action}}. For example, if a backup agent on many hosts runs from the same folder, with the same publisher signature and the same parent process, its alerts become one {{az-proposed-action}}.
 
-To change these defaults, edit the {{az-alert-triage}} settings in the {{az-triage-watch}}. For example, you can raise the **Minimum confidence score**, skip less severe alerts with **Minimum severity**, or skip alerts from rules that carry certain tags with **Excluded rule tags**. Refer to [](configure-worker-settings.md).
+To change how often the {{az-worker}} runs, which alerts it triages, or how confident it must be before it proposes a closure, refer to [](configure-worker-settings.md).
 
 % For docs writers: After elastic/docs-content#9144 merges, point both links to configure-worker-settings.md on this page at its configure-worker-settings-alert-triage anchor.
 
-## Review a proposed closure [alertzero-decide-review]
+## Review a proposed closure [alertzero-close-false-positives-review]
 
-1. Find **{{alertzero}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). The **{{az-proposed-actions-cap}}** page opens.
-2. In the **Investigate** section, select the card for the proposed closure. The {{az-investigation}} opens in a flyout.
-3. In the flyout's **{{az-proposed-actions-cap}}** section, select the {{az-proposed-action}}.
-4. Check that the reasoning holds for every alert in the batch:
-    - **Scope:** How many alerts the closure covers, which rule they came from, and which hosts and users they involve. Look for a host or user you don't expect for that rule.
-    - **Reasoning:** Why the {{az-alert-triage}} {{az-worker}} judged them false positives. The {{az-worker}} adds a note to each alert that explains why. Look for a note whose reasoning doesn't match what the alert shows. To ask follow-up questions, select **Open chat**.
+Open the proposed closure on the **{{az-proposed-actions-cap}}** page, and check that the reasoning holds for every alert in the batch. Start with how many alerts the closure covers, which rule they came from, and which hosts and users they involve. A host or user you don't expect for that rule is a reason to look closer. The {{az-worker}} also adds a note to each alert that explains why it judged the alert a false positive, so look for a note whose reasoning doesn't match what the alert shows.
 
-        :::{note}
-        You decide the batch as a whole. If some alerts need a closer look, ask in the chat to remove them from the closure, or decline the closure and handle the alerts one by one.
-        :::
+You decide the batch as a whole. If some alerts need a closer look, ask in the {{az-investigation}}'s chat to remove them from the closure, or decline the closure and handle the alerts one by one.
 
-5. Select **Approve** or **Decline**. You can't change your decision afterward.
-    - **If you approve:** The alerts close as false positives. The closure runs under your account, so you need the privileges to close alerts. Without them, the closure fails. Refer to [](alertzero-privileges.md).
-    - **If you decline:** The {{az-alert-triage}} {{az-worker}} tags the alerts `az:inconclusive` and leaves them open.
+## Approve or decline a proposed closure [alertzero-close-false-positives-decide]
 
-    :::{important}
-    The {{az-attack-discovery}} {{az-worker}} skips closed alerts. If you close a real threat by mistake, {{az-attack-discovery}} might miss part of an attack.
-    :::
+After you review a closure, approve or decline it.
 
-    Each {{az-proposed-action}} expires after 72 hours. If nobody decides before then, the alerts stay open, tagged `az:inconclusive`.
+- **If you approve:** The alerts close as false positives. The closure runs under your account, so you need the [privileges to close alerts](alertzero-privileges.md). Without them, the closure fails.
+- **If you decline:** The alerts stay open, tagged `az:inconclusive`. The same happens if the {{az-proposed-action}} [expires](work-in-alertzero.md) before anyone decides.
 
-% For docs writers: After elastic/docs-content#9158 merges, point the link to alertzero-privileges.md in step 5 at its alertzero-action-privileges anchor.
+:::{important}
+You can't change your decision on a proposed closure. If you approve one by mistake, [reopen its alerts](#alertzero-close-false-positives-past-closures). Until you do, the {{az-attack-discovery}} {{az-worker}} skips them, so it might miss part of an attack.
+:::
 
-## Check and reopen past closures [alertzero-decide-autonomy]
+% For docs writers: After elastic/docs-content#9158 merges, point the link to alertzero-privileges.md in the approve outcome at its alertzero-action-privileges anchor.
 
-You can check and reopen any closure, whether someone approved it or the {{az-alert-triage}} {{az-worker}} closed the alerts on its own. If your team sets the {{az-worker}} to {{az-supervised}} {{az-autonomy}}, check its closures regularly, especially soon after the change.
+## Check and reopen past closures [alertzero-close-false-positives-past-closures]
 
-1. On the **{{az-proposed-actions-cap}}** page, expand **Closed Actions**. It lists decisions from the last 72 hours. For older closures, find the alerts on the **Alerts** page.
-2. Find the {{az-alert-triage}} closures. To narrow the list to a host or user, filter it by impacted entity.
-3. Check who decided each closure. A closure that the {{az-alert-triage}} {{az-worker}} made on its own shows **Approved by** and the {{az-worker}}'s name.
-4. To see the evidence behind a closure, select its card. If you disagree with the closure, reopen its alerts. Refer to [](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status). The {{az-attack-discovery}} {{az-worker}} then considers the reopened alerts again.
+Check closures regularly, especially soon after your team switches the {{az-alert-triage}} {{az-worker}} to {{az-supervised}} {{az-autonomy}}.
 
-## Next steps [alertzero-decide-next-steps]
+**Closed Actions** on the **{{az-proposed-actions-cap}}** page lists decisions from the last 72 hours, with the evidence behind each one. A closure that the {{az-worker}} made on its own names the {{az-worker}}.
+
+If you disagree with a closure, [reopen its alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status) on the **Alerts** page, where you can also find alerts from older closures. The {{az-attack-discovery}} {{az-worker}} then considers the reopened alerts again.
+
+## Next steps [alertzero-close-false-positives-next-steps]
 
 - [Respond to an attack](respond-to-attack.md) that the {{az-attack-discovery}} {{az-worker}} finds.
 - [Find other work that {{az-workers}} bring you](work-in-alertzero.md).

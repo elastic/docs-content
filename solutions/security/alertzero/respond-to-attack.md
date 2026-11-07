@@ -18,7 +18,7 @@ The {{az-attack-discovery}} {{az-worker}} opens an {{az-investigation}} for each
 
 In forensics, the {{az-endpoint-analysis}} {{az-worker}} analyzes the affected host, reports what happened on it, and proposes response actions, such as isolating the host. An incident responder usually takes over from there to decide each response action and whether to close the {{az-investigation}}.
 
-## How the {{az-attack-discovery}} {{az-worker}} sorts attacks [alertzero-respond-how]
+## How the {{az-attack-discovery}} {{az-worker}} judges an attack [alertzero-respond-verdict]
 
 The {{az-attack-discovery}} {{az-worker}} gives each attack a verdict, and the verdict decides what {{alertzero}} does:
 
@@ -28,65 +28,59 @@ The {{az-attack-discovery}} {{az-worker}} gives each attack a verdict, and the v
 
 ## Decide whether to send the attack for forensics [alertzero-respond-handoff]
 
-1. In the **Investigate** section of the **{{az-proposed-actions-cap}}** page, select the attack's card.
-2. Check the verdict and why the {{az-attack-discovery}} {{az-worker}} reached it. To read the verdict and its **Rationale**, select **Open chat**. The verdict's **Conclusion** also appears in the {{az-investigation}}'s details.
-3. Select **Approve** or **Decline** for each proposed action.
-    - **If you approve:** The {{az-endpoint-analysis}} {{az-worker}} analyzes the attack and proposes response actions. The {{az-investigation}} and the attack stay open for the forensics report. You can't undo this approval.
-    - **If you decline:** The {{az-investigation}} and the attack close. {{alertzero}} marks the attack's open alerts as acknowledged, but doesn't close them.
+Open the attack on the **{{az-proposed-actions-cap}}** page, and check the verdict and the reasoning behind it. Then approve or decline sending the attack for forensics:
 
-    The {{az-proposed-action}} expires after 72 hours. If nobody decides before then, the {{az-investigation}} stays open.
+- **If you approve:** The {{az-endpoint-analysis}} {{az-worker}} analyzes the attack and proposes response actions. The {{az-investigation}} and the attack stay open for the forensics report. You can't undo this approval.
+- **If you decline:** The {{az-investigation}} and the attack close. {{alertzero}} marks the attack's open alerts as acknowledged, but doesn't close them.
 
-## Read the forensics report [alertzero-respond-forensics]
+If the {{az-proposed-action}} [expires](work-in-alertzero.md) before anyone decides, the {{az-investigation}} stays open.
 
-The forensics report shows what the attack did on the affected host. It appears in the **What's happened** section of the {{az-investigation}}'s details:
+## How the {{az-endpoint-analysis}} {{az-worker}} analyzes an attack [alertzero-respond-analysis]
 
-- **Forensic timeline:** The attack's events on the host, in order.
-- **IOCs:** The indicators of compromise that the {{az-endpoint-analysis}} {{az-worker}} found, such as file hashes, IP addresses, file paths, command lines, and affected identities.
+The {{az-endpoint-analysis}} {{az-worker}} analyzes one host per attack. It picks the host that the attack names or, if the attack names none, the host that appears most often in the attack's alerts. Then it searches that host's {{elastic-defend}} data from around the time of the attack. If the host has no {{elastic-defend}} data from that time, the {{az-worker}} doesn't run, and no report appears. Close the {{az-investigation}} yourself.
 
-The {{az-endpoint-analysis}} {{az-worker}} analyzes one host per attack. It picks the host that the attack names or, if the attack names none, the host that appears most often in the attack's alerts. Then it searches that host's {{elastic-defend}} data from around the time of the attack.
-
-Because the report covers only one host, check whether its IOCs appear on your other hosts to find out which ones the attack reached.
-
-If the host has no {{elastic-defend}} data from the time of the attack, the {{az-endpoint-analysis}} {{az-worker}} doesn't run, and no report appears. Close the {{az-investigation}} yourself.
-
-## How the {{az-endpoint-analysis}} {{az-worker}} picks response actions [alertzero-respond-actions-how]
-
-The {{az-endpoint-analysis}} {{az-worker}} proposes response actions only when its forensics report shows malicious activity on the host. It can propose killing a process, suspending a process, or isolating the host. It bases each action on the timeline and IOCs in the report, and picks the most specific action that the evidence supports:
+The {{az-worker}} writes what it finds into a forensics report. When the report shows malicious activity on the host, the {{az-worker}} also proposes response actions. It picks the most specific action that the evidence in the report supports:
 
 - **Kill or suspend a process:** When the evidence identifies the process, such as by its process ID.
 - **Isolate the host:** When the evidence identifies the host, but not a specific process.
 
-If the evidence doesn't identify the host or process that an action needs, the {{az-worker}} doesn't propose that action. Each response action explains the evidence it rests on and what it stops.
+If the evidence doesn't identify the host or process that an action needs, the {{az-worker}} doesn't propose that action.
+
+## Read the forensics report [alertzero-respond-forensics]
+
+The forensics report in the {{az-investigation}}'s details shows what the attack did on the host:
+
+- **Forensic timeline:** The attack's events on the host, in order.
+- **IOCs:** The indicators of compromise that the {{az-endpoint-analysis}} {{az-worker}} found, such as file hashes, IP addresses, file paths, command lines, and affected identities.
+
+Because the report covers only one host, check whether its IOCs appear on your other hosts to find out which ones the attack reached.
 
 ## Decide each response action [alertzero-respond-actions]
 
-The {{az-endpoint-analysis}} {{az-worker}}'s response actions appear in the **Respond** section of the **{{az-proposed-actions-cap}}** page.
+On the **{{az-proposed-actions-cap}}** page, an attack's response actions belong to the {{az-investigation}} named after the attack. Each one explains the evidence it rests on and what it stops. Check which host or process it targets, and make sure the forensics report implicates it. Consider what stops working when you act on it. For example, isolating a server also cuts off the people and services that depend on it. Then approve or decline the action:
 
-1. Select a response action for the attack. Each card names the action and its target, such as `Isolate host WIN-ANALYST01`, and the {{az-investigation}} it belongs to. Response actions for an attack belong to the {{az-investigation}} named after the attack.
-2. Check the host or process that the action's title names, and make sure the forensics report implicates it. Consider what stops working when you act on it. For example, isolating a server also cuts off the people and services that depend on it.
-3. Select **Approve** or **Decline**.
-    - **If you approve:** The action runs under your account, through {{elastic-defend}}, so you need the privileges to run it. Refer to [](alertzero-privileges.md). If you don't have those privileges, or the host doesn't respond within 10 minutes, the {{az-proposed-action}} shows **Failed**, and {{alertzero}} offers the action again as a new {{az-proposed-action}} with the same deadline. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
-    - **If you decline:** The action doesn't run.
+- **If you approve:** The action runs under your account, through {{elastic-defend}}, so you need the [privileges to run it](alertzero-privileges.md). If you don't have them, or the host doesn't respond within 10 minutes, the action fails, and {{alertzero}} offers it again as a new {{az-proposed-action}} with the same deadline. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
+- **If you decline:** The action doesn't run. The same happens if the {{az-proposed-action}} [expires](work-in-alertzero.md) before anyone decides.
 
 If you isolate a host, {{alertzero}} doesn't propose releasing it later. When it's safe to reconnect the host, [release it](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host) yourself. You can't undo the other response actions.
 
-## Close the {{az-investigation}} [alertzero-respond-close]
-
-After you decide every response action, or immediately if there are none, the {{az-endpoint-analysis}} {{az-worker}} proposes closing the {{az-investigation}}. This {{az-proposed-action}} always waits for you, even when the {{az-workers}} run at {{az-supervised}} {{az-autonomy}}.
-
-- **If you approve:** The {{az-investigation}}, the attack, and its alerts close. Alerts that another open attack also includes stay open.
-- **If you decline:** Everything stays open. {{alertzero}} asks again after you decide the next {{az-proposed-action}} in the {{az-investigation}}.
-
-To work on the attack with other people instead, escalate the {{az-investigation}}. Refer to [](escalate-investigation.md).
-
-## Check response actions that ran without you [alertzero-respond-autonomy]
+## Check what ran without you [alertzero-respond-autonomy]
 
 Your team can set either {{az-worker}} to {{az-supervised}} {{az-autonomy}}, so the {{az-worker}} acts without waiting for you:
 
 - **{{az-attack-discovery}} {{az-worker}}:** Sends attacks for forensics without asking.
 - **{{az-endpoint-analysis}} {{az-worker}}:** Runs its response actions without asking.
 
-To see what ran, expand **Closed Actions** on the **{{az-proposed-actions-cap}}** page and look for cards approved by the {{az-endpoint-analysis}} {{az-worker}}, or check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md). If the {{az-endpoint-analysis}} {{az-worker}} isolated a host and it's safe to bring the host back, [release it](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host).
+To see which response actions ran, check **Closed Actions** on the **{{az-proposed-actions-cap}}** page for actions that the {{az-endpoint-analysis}} {{az-worker}} approved, or check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md). If the {{az-endpoint-analysis}} {{az-worker}} isolated a host and it's safe to reconnect the host, [release it](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host).
+
+## Close the {{az-investigation}} [alertzero-respond-close]
+
+When no response actions are waiting for a decision, the {{az-endpoint-analysis}} {{az-worker}} proposes closing the {{az-investigation}}. This {{az-proposed-action}} always waits for you, even when the {{az-workers}} run at {{az-supervised}} {{az-autonomy}}.
+
+- **If you approve:** The {{az-investigation}}, the attack, and its alerts close. Alerts that another open attack also includes stay open.
+- **If you decline:** Everything stays open. {{alertzero}} asks again after you decide the next {{az-proposed-action}} in the {{az-investigation}}.
+
+To work on the attack with other people instead, [escalate the {{az-investigation}}](escalate-investigation.md).
 
 ## Next steps [alertzero-respond-next-steps]
 

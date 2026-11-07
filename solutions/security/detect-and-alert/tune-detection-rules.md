@@ -20,7 +20,7 @@ If a rule is correctly written but fires on known-safe activity specific to your
 
 :::{tip}
 :applies_to: {"serverless": "preview", "stack": "preview 9.6"}
-If you use [{{alertzero}}](/solutions/security/alertzero/index.md), it can find your noisiest rules and propose tuning changes for them, so you don't have to find them yourself. Refer to [](/solutions/security/alertzero/decide-detection-change.md).
+If you use [{{alertzero}}](/solutions/security/alertzero/index.md), it can find your noisiest rules and [propose tuning changes](/solutions/security/alertzero/decide-detection-change.md) for them, so you don't have to find them yourself.
 :::
 
 This page covers tuning guidance for specific rule categories:

@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Work in {{alertzero}} [alertzero-use]
+# Work in {{alertzero}} [alertzero-work]
 
 {{az-workers}} do the analysis, and you decide what they bring you, such as which alerts to close, how to contain an attack, and which detection rules to change. When the {{az-investigation}} behind a decision needs more work, you can hand it to a teammate or escalate it.
 
@@ -19,7 +19,9 @@ Each kind of work waits in its own section of the **{{az-proposed-actions-cap}}*
 - **Respond:** Response actions, analyst recommendations, and the {{az-proposed-action}} that closes an attack's {{az-investigation}}.
 - **Configure:** Detection rule changes.
 
-## Find the work that fits your role [alertzero-use-start]
+Each {{az-proposed-action}} expires 72 hours after a {{az-worker}} proposes it. If nobody decides before then, the action doesn't run, and the {{az-proposed-action}} shows **Expired**.
+
+## Find the work that fits your role [alertzero-work-start]
 
 | Your goal | Start here |
 | --- | --- |
