@@ -26,6 +26,8 @@ If an index exists primarily for vector search, create it with the `vectordb_doc
 
 For the setup example, see [Vector index mode](/solutions/search/vector/knn/approximate-knn.md#approximate-knn-vector-index-mode). For the full list of defaults, see [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes).
 
+{applies_to}`stack: preview 9.6+` The `vectordb_columnar` index mode applies the same defaults on top of [columnar storage](/manage-data/data-store/columnar.md).
+
 
 ## Reduce vector memory footprint [_reduce_vector_memory_foot_print]
 
