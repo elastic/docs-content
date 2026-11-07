@@ -21,6 +21,149 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.6.0 [elastic-observability-9.6.0-release-notes]
+
+### Features and enhancements [elastic-observability-9.6.0-features-enhancements]
+
+#### AI Assistant and Agent Builder [elastic-observability-9.6.0-features-ai-assistant-and-agent-builder]
+
+* Adds an **Add to chat** button to the {{observability}} alert details page that opens Agent Builder with the alert attached and starts an investigation, replacing the AI insights panel. **Add to case**, **View in Discover**, and **Inspect rule query** move to the **Actions** menu [#287420]({{kib-pull}}287420).
+* Adds a `public-conversation` option to the `ai.agent` workflow step so conversations it creates are visible to and can be continued by other users of the agent [#280364]({{kib-pull}}280364).
+* Enables the New Relic connector for Agent Builder sandbox tools, allowing agents to call the New Relic NerdGraph API from the sandbox [#299688]({{kib-pull}}299688).
+
+#### {{product.apm}} [elastic-observability-9.6.0-features-apm]
+
+* Adds a low transaction count detector to {{product.apm}} Anomaly rules, selected by default on new rules, so you can alert when a service's transaction volume drops to zero or near zero [#286264]({{kib-pull}}286264) [#286454]({{kib-pull}}286454).
+* Adds the `observability:apmMaxNumberOfServices` advanced setting for raising the maximum number of services shown in the {{product.apm}} **Service Inventory** (default 1,000, maximum 5,000) [#293939]({{kib-pull}}293939).
+* Adds a **GenAI** tab in technical preview to span details in Discover and the trace waterfall, showing GenAI OpenTelemetry attributes such as prompts, responses, token counts, and model information [#282090]({{kib-pull}}282090).
+* Adds an **Issue context** section to {{product.apm}} error sample details, showing the group ID, occurrence count, error type, and SDK name and version [#272795]({{kib-pull}}272795).
+* Adds a PHP runtime metrics and SDK health dashboard for EDOT PHP and OpenTelemetry PHP instrumentation [#277480]({{kib-pull}}277480).
+* Adds `opentelemetry-javaagent` as a recognized OpenTelemetry Java agent name (3.0 and later) for central configuration and telemetry [#276674]({{kib-pull}}276674).
+
+#### Metrics [elastic-observability-9.6.0-features-metrics]
+
+* Adds a **Grid Settings** flyout to the metrics grid in Discover for choosing the aggregation function used for counter, gauge, and histogram metrics [#276283]({{kib-pull}}276283).
+* Persists the metrics grid sort in Discover across page reloads, in the URL, and in saved Discover sessions [#281891]({{kib-pull}}281891) [#285467]({{kib-pull}}285467) [#296287]({{kib-pull}}296287).
+* Uses `FROM` instead of `TS` when switching to {{esql}} mode in Discover with a `*:*` index pattern, avoiding endless loading on broad cross-cluster patterns that contain non-time series data [#289328]({{kib-pull}}289328).
+
+#### General [elastic-observability-9.6.0-features-general]
+
+* Returns you to **Add data** instead of the Integrations catalog when you leave **Browse all**, {{product.apm}}, **Upload a file**, Synthetics, or Automatic Import from the {{observability}} **Add data** page [#286493]({{kib-pull}}286493).
+* Enables the Kubernetes connector for workflows [#280854]({{kib-pull}}280854).
+
+#### Infrastructure [elastic-observability-9.6.0-features-infrastructure]
+
+* Adds OpenTelemetry (`kubeletstats`) support for Kubernetes Pods in **Infrastructure Inventory**. When both Elastic Kubernetes integration and OpenTelemetry data exist, use the **Schema** control to switch between them. Inventory threshold rules for pods follow the selected schema [#293125]({{kib-pull}}293125) [#294464]({{kib-pull}}294464).
+* Moves Infrastructure **Inventory**, **Hosts**, **Metrics Explorer**, **Settings**, and asset and metric details pages to the shared {{kib}} app header. Details pages now navigate back to the page you opened them from [#287733]({{kib-pull}}287733) [#287734]({{kib-pull}}287734) [#287736]({{kib-pull}}287736) [#289432]({{kib-pull}}289432) [#289646]({{kib-pull}}289646).
+
+#### Streams [elastic-observability-9.6.0-features-streams]
+
+* Adds an **Import from another stream** action to the Streams **Data lifecycle** tab, allowing users to copy a lifecycle configuration from another stream [#275948]({{kib-pull}}275948).
+* Adds smooth animated transitions to the Streams **Data lifecycle** phases preview bar when adding, removing, or editing lifecycle phases [#277149]({{kib-pull}}277149).
+
+#### Synthetics [elastic-observability-9.6.0-features-synthetics]
+
+* Adds support for HashiCorp Vault secret references (`vault://`) in Synthetics global parameters and monitor fields for private location monitors. Heartbeat resolves the secret on the private location host, so the secret value is never stored in {{kib}} or {{es}} [#282098]({{kib-pull}}282098).
+* Adds a certificate error SPKI allowlist (`certificateErrorSpkiAllowlist`) to Synthetics browser monitors, allowing Chromium to bypass certificate errors for matching public keys [#284094]({{kib-pull}}284094).
+* Shows Heartbeat and {{agent}} monitors that have no Synthetics configuration, such as Kubernetes autodiscovered monitors, as read-only in the Synthetics app when **Show autodiscovered monitors** is turned on [#274947]({{kib-pull}}274947).
+* Adds the **Show monitors from** filter to the Synthetics TLS **Certificates** page for viewing certificates from monitors in the current space or all permitted spaces [#287796]({{kib-pull}}287796).
+* Adds a **Can manage rules** sub-feature privilege to Synthetics, allowing users with **Read** access to create and manage Synthetics and Uptime rules without monitor write access [#289952]({{kib-pull}}289952).
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+* Adds **Created** and **Last modified** columns and a column selector to Synthetics monitor tables, and a **Created** sort option on the **Overview** page [#289582]({{kib-pull}}289582).
+* Allows bulk enabling and disabling of project and Terraform monitors from the Synthetics **Monitor Management** table [#282743]({{kib-pull}}282743).
+* Shows attached maintenance windows in the Synthetics monitor details panel, resolving each window's ID to a title and linking directly to the **{{maint-windows-app}}** management page [#281853]({{kib-pull}}281853).
+* Adds a confirmation modal in Synthetics **Alerting defaults** settings when disabling an active default status or TLS rule. Custom synthetics rules are not affected [#287914]({{kib-pull}}287914).
+* Reduces the size of Synthetics agent policies by omitting monitor fields whose values match the Heartbeat defaults [#280600]({{kib-pull}}280600).
+* Improves Synthetics performance by bounding remote monitor latest-state queries to a run timestamp window [#274333]({{kib-pull}}274333).
+
+### Fixes [elastic-observability-9.6.0-fixes]
+
+#### AI Assistant and Agent Builder [elastic-observability-9.6.0-fixes-ai-assistant-and-agent-builder]
+
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
+* Fixes an error in a non-streaming {{observability}} AI Assistant chat request crashing {{kib}} [#281411]({{kib-pull}}281411).
+
+#### Alerting and SLOs [elastic-observability-9.6.0-fixes-alerting-and-slos]
+
+* Hides the **Rules** entry from {{kib}} global search for users who have alerts-only access (`stackAlertsOnly`) without rules access [#278895]({{kib-pull}}278895).
+* Fixes alert untracking on the {{observability}} **Alert Details** page for alerts from non-observability rule types [#278643]({{kib-pull}}278643).
+* Fixes grouped Custom threshold rules that alert on missing data firing a false no data alert while all groups are still reporting data [#289927]({{kib-pull}}289927).
+* Fixes Custom threshold rules sharing missing-group state with other rules, which could produce incorrect no data alerts [#287151]({{kib-pull}}287151).
+* Fixes Custom threshold and Metric threshold rules so grouped alerts stay active when **If there is no data** is set to **Do nothing** [#289623]({{kib-pull}}289623).
+* Fixes Custom Threshold rules using the rate aggregation to correctly fire when a monitored counter increases from `0` to any positive value [#283973]({{kib-pull}}283973).
+* Fixes custom threshold and metric threshold rules dropping alert context fields when source data uses flat dotted keys (for example, `"host.hostname": "host1"`) instead of nested objects [#277354]({{kib-pull}}277354).
+* Fixes duplicate {{product.apm}} {{anomaly-detect}} alerts by filtering ML results on `event.ingested` (result write time) instead of the anomaly bucket time [#275289]({{kib-pull}}275289).
+* Fixes a race that creates the SLO summary temporary index with the wrong `service.name` mapping, causing new SLOs to be missing from filters [#286871]({{kib-pull}}286871).
+
+#### {{product.apm}} [elastic-observability-9.6.0-fixes-apm]
+
+* Fixes {{product.apm}} transaction waterfalls showing a different top-level transaction than the one selected when the trace exceeds `xpack.apm.ui.maxTraceItems` [#284971]({{kib-pull}}284971).
+* Fixes a 500 error when opening an {{product.apm}} trace waterfall if `logs-*` contains log documents that are missing fields {{product.apm}} requires [#291512]({{kib-pull}}291512).
+* Fixes {{product.apm}} trace waterfall error badges for unprocessed OpenTelemetry exceptions. Error badges now always open the **Errors** page, which shows {{product.apm}} errors and errors from logs in separate sections [#292030]({{kib-pull}}292030).
+* Fixes the trace waterfall error badge opening an empty **Errors** page for OpenTelemetry data [#290844]({{kib-pull}}290844).
+* Fixes the error count in the transaction sample header and transaction detail flyout so it matches the error badges in the waterfall when a trace contains both {{product.apm}} errors and OpenTelemetry exception logs [#296018]({{kib-pull}}296018).
+* Fixes {{product.apm}} trace waterfall auto-refresh disrupting an open span or transaction details flyout by pausing auto-refresh while a flyout is open [#295429]({{kib-pull}}295429).
+* Fixes the {{product.apm}} **Trace sample** pagination getting out of sync with the URL when using browser back and forward navigation [#292098]({{kib-pull}}292098).
+* Fixes the {{product.apm}} service flyout latency, failed transaction rate, and throughput charts showing values that differ from the alert details page and service overview [#288930]({{kib-pull}}288930).
+* Fixes {{product.apm}} service overview chart tooltips appearing on top of the service flyout [#286842]({{kib-pull}}286842) [#286920]({{kib-pull}}286920).
+* Fixes the {{product.apm}} environment filter and dropdown not recognizing OpenTelemetry data that uses `deployment.environment.name` [#297170]({{kib-pull}}297170).
+* Fixes {{product.apm}} service icons ignoring the selected environment [#293927]({{kib-pull}}293927).
+* Fixes the Docker badge appearing on {{product.apm}} services that don't run in Docker [#296350]({{kib-pull}}296350).
+* Fixes the {{product.apm}} mobile errors and crashes filters showing values from transaction and span documents instead of each tab's own error or crash documents [#293933]({{kib-pull}}293933).
+* Fixes the {{product.apm}} **Dashboards** tab failing when a service name contains special characters such as a colon (for example, `unknown_service:java`) [#291091]({{kib-pull}}291091).
+* Fixes misaligned columns across sections of the {{product.apm}} **Metadata** tab [#291172]({{kib-pull}}291172).
+* Fixes {{product.apm}} service group counts for data without {{product.apm}} metrics [#284452]({{kib-pull}}284452).
+* Fixes the {{product.apm}} high cardinality warning linking to version 8.7 documentation [#290815]({{kib-pull}}290815).
+* Removes the APM Server reference from the {{product.apm}} services limit warning, which also appears in deployments that don't use APM Server [#292571]({{kib-pull}}292571).
+* Removes the redundant `Version:` label from {{product.apm}} chart annotation popups [#273578]({{kib-pull}}273578).
+* Fixes {{product.apm}} **Storage Explorer** returning a 500 error when a configured {{product.apm}} index doesn't exist [#293813]({{kib-pull}}293813).
+* Fixes the {{product.apm}} data check timing out on large deployments and incorrectly showing the onboarding screen as if no {{product.apm}} data exists [#296846]({{kib-pull}}296846).
+* Fixes the {{product.apm}} agent configuration tutorial page exposing the APM Server secret token to users without APM write permissions [#283942]({{kib-pull}}283942).
+* Fixes a {{esql}} `verification_exception` when using the **View in Discover** link from the {{product.apm}} traces flyout on indices where `transaction.id` is unmapped [#278294]({{kib-pull}}278294).
+
+#### Discover [elastic-observability-9.6.0-fixes-discover]
+
+* Fixes the **Similar errors** panel in the Discover document viewer failing with a `verification_exception` error when the logs index pattern contains fields with mismatched or missing mappings [#278614]({{kib-pull}}278614).
+* Fixes the Discover document viewer showing an empty or incomplete GenAI conversation when input or output messages exceed the keyword length limit. Messages are now recovered from `_source`, including in {{esql}} queries without `METADATA _id, _index` [#289081]({{kib-pull}}289081) [#290539]({{kib-pull}}290539).
+* Fixes reasoning in GenAI output messages showing as raw JSON. Reasoning now shows as formatted text in a collapsed section [#298407]({{kib-pull}}298407).
+* Fixes metrics charts in Discover failing with an `Unknown column` error when an {{esql}} `TS` query filters on a metadata field such as `_ignored` [#302705]({{kib-pull}}302705).
+* Fixes metrics charts in Discover failing with an `Unknown column` error when a parent filter references a field that the metric data stream doesn't map [#289428]({{kib-pull}}289428).
+* Fixes an issue in the metrics view in Discover where the chart section could silently drop a selected breakdown dimension if it reloaded or encountered an error right after you made the selection [#296940]({{kib-pull}}296940).
+
+#### General [elastic-observability-9.6.0-fixes-general]
+
+* Fixes the date picker not updating its time bounds when you click **Refresh** with a relative time range such as **Last 15 minutes** [#297346]({{kib-pull}}297346).
+
+#### Infrastructure [elastic-observability-9.6.0-fixes-infrastructure]
+
+* Fixes the Inventory rule flyout showing OpenTelemetry instead of Elastic System Integration for existing Hosts and Kubernetes Pods rules saved without a schema, matching how the rules are evaluated [#300058]({{kib-pull}}300058).
+* Fixes **Switch schema** in the **Infrastructure Inventory** and **Hosts** empty states, which now switches the schema in place instead of opening a broken documentation link [#299642]({{kib-pull}}299642).
+* Fixes a 500 error when hovering over AWS RDS instances in the **Infrastructure Inventory** map tooltip, caused by unquoted ARN identifiers containing `:` characters being misinterpreted as KQL field-value separators [#288209]({{kib-pull}}288209).
+
+#### Streams [elastic-observability-9.6.0-fixes-streams]
+
+* Fixes the Streams `create_partition` tool returning a raw validation error on classic streams. It now returns a clear error explaining that partitioning requires a wired stream [#292097]({{kib-pull}}292097).
+* Updates Streams write tool descriptions so MCP clients aren't told to expect capabilities that are only available in Agent Builder, such as confirmation dialogs [#291269]({{kib-pull}}291269).
+* Adds maximum length limits to string parameters in Streams API requests [#292011]({{kib-pull}}292011).
+* Fixes classic streams keeping a stale {{es}} data stream mappings override after all field overrides are removed [#288788]({{kib-pull}}288788).
+
+#### Synthetics [elastic-observability-9.6.0-fixes-synthetics]
+
+* Fixes custom Synthetics monitor status rules with **Alert me if there's no data** firing false pending alerts on a single delayed ping. Rules now wait for a delay proportional to the monitor schedule and, by default, two consecutive pending checks before firing. Set `pendingThreshold` to `1` to restore the previous behavior [#270132]({{kib-pull}}270132).
+* Fixes Synthetics monitor status alerts showing the location ID instead of the location name when a pending (no data) alert recovers, and adds a clearer recovery message for pending alerts [#300220]({{kib-pull}}300220).
+* Fixes the Synthetics **Inspect configuration** flyout showing monitor secrets, such as passwords, in plain text [#278097]({{kib-pull}}278097).
+* Fixes Synthetics private location monitors never producing results when attached to a one-off maintenance window created through the API [#297018]({{kib-pull}}297018).
+* Fixes the Synthetics private location cleanup timing out on large private locations by updating each affected {{agent}} policy once after all deletions [#295492]({{kib-pull}}295492).
+* Fixes **Run test** running on only the first private location when a Synthetics monitor with multiple private locations is in a non-default space [#295614]({{kib-pull}}295614).
+* Fixes the {{fleet}} **Edit in Synthetics** link opening a monitor in the current space instead of the space it belongs to, and prevents **Delete integration** from deleting the package policy of a monitor that still exists [#294888]({{kib-pull}}294888).
+* Fixes the Synthetics diagnostics bundle by restricting agent policies in the current space, and requires the **Can manage private locations** privilege in addition to Synthetics write access to download it [#293783]({{kib-pull}}293783).
+* Warns in Synthetics when a private location's {{agent}} version predates Maintenance Window support (8.19.x), so you know monitors on that location don't honor active maintenance windows [#285327]({{kib-pull}}285327).
+* Fixes Synthetics monitors to support referencing maintenance windows by name in addition to ID [#282570]({{kib-pull}}282570).
+* Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
+* Fixes an error loading maintenance window status on the Synthetics monitors overview for users with read-only access [#281894]({{kib-pull}}281894).
+* Fixes Synthetics remote monitor Cross-Cluster Search queries to correctly scope to the target cluster [#278141]({{kib-pull}}278141).
+* Fixes `retest_on_failure: false` being ignored when updating an existing Synthetics monitor through the API [#277701]({{kib-pull}}277701).
+
 ## 9.5.6 [elastic-observability-9.5.6-release-notes]
 
 ### Fixes [elastic-observability-9.5.6-fixes]
