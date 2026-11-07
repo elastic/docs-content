@@ -34,6 +34,7 @@ Keep these points in mind when you create artifacts:
 | Keep {{es}} from storing high-volume or low-value endpoint events | [Event filters](/solutions/security/manage-elastic-defend/event-filters.md) |
 | Let isolated hosts communicate with specific IP addresses | [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md) |
 | Prevent known malicious applications from running | [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Detect threats that are specific to your environment with your own YARA rules | [Custom YARA signatures](/solutions/security/manage-elastic-defend/custom-yara-signatures.md) |
 | Check how to enter file paths and other values for each exception type | [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) |
 
 ## Next steps
