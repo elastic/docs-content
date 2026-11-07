@@ -53,4 +53,4 @@ For more detailed information about the `start-local` setup, refer to the [READM
 
 ## Next steps [local-dev-next-steps]
 
-Use our [quick start guides](/solutions/search/get-started/quickstarts.md) to learn the basics of {{es}}.
+Use the [hybrid search quickstart](/solutions/search/get-started/quickstarts.md) to learn the basics of {{es}}.

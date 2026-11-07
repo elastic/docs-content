@@ -27,7 +27,7 @@ You can also create a deployment using the [{{ecloud}} API]({{cloud-apis}}group/
 
 1. Select a solution view for your deployment. Solution views define the navigation and set of features that will be first available in your deployment. You can change it later, or [create different spaces](/deploy-manage/manage-spaces.md) with different solution views within your deployment.
 
-    To learn more about what each solution offers, check [Elasticsearch](/solutions/search/get-started.md), [Observability](/solutions/observability/get-started.md), and [Security](/solutions/security/get-started.md).
+    To learn more about what each solution offers, check [Elasticsearch](/solutions/search.md), [Observability](/solutions/observability/get-started.md), and [Security](/solutions/security/get-started.md).
 
 1. From the main **Settings**, you can change the cloud provider and region that host your deployment, the stack version, and the hardware profile, or restore data from another deployment (**Restore snapshot data**):
 

@@ -54,7 +54,7 @@ The following APIs are available for {{es-serverless}} users:
 
 - [{{es}} {{serverless-short}} APIs]({{es-serverless-apis}}): Use these APIs to index, manage, search, and analyze your data in {{es-serverless}}.
 
-  Learn how to [connect to your {{es-serverless}} endpoint](/solutions/search/get-started.md).
+  Learn how to [connect to your {{es-serverless}} endpoint](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md).
 - [{{kib}} {{serverless-short}} APIs]({{kib-serverless-apis}}): Use these APIs to manage resources such as connectors, data views, and saved objects for your {{serverless-full}} project.
 
 #### Version reporting [serverless-tools-apis-version-reporting]

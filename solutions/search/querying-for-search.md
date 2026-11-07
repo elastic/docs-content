@@ -85,5 +85,5 @@ You can use the [{{es}} REST APIs]({{es-apis}}) to search your data using any HT
 ::::
 
 ::::{tip}
-Try our hands-on [quickstart guides](/solutions/search/get-started/quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
+Try the hands-on [hybrid search quickstart](/solutions/search/get-started/quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
 ::::
