@@ -13,13 +13,16 @@ products:
 
 To use {{alertzero}} in an {{elastic-sec}} space, turn it on, select the models the {{az-workers}} use, and start the {{az-workers}}. {{alertzero}} is off by default, so repeat this setup in each space.
 
+:::{note}
+To use {{alertzero}}, you need a subscription that includes it. For the features in each subscription tier, refer to the subscription pages for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}} and self-managed deployments]({{subscriptions}}).
+:::
+
 ## Before you begin [alertzero-set-up-before]
 
 ### Required for all {{az-workers}} [alertzero-set-up-before-all]
 
 Before you start the {{az-workers}}, make sure you have all the following:
 
-- A subscription that includes {{alertzero}}. For the features in each subscription tier, refer to the subscription pages for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}} and self-managed deployments]({{subscriptions}}).
 - A role with the [privileges to set up {{alertzero}}](alertzero-privileges.md#alertzero-admin-access).
 - An AI model in the space, either an [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) or an [external {{infer}} endpoint](/explore-analyze/elastic-inference/external.md) for a third-party model provider. If your subscription includes Elastic Managed LLMs, they're available by default. To change which models the {{az-workers}} use, refer to [Select models for the {{az-workers}}](#alertzero-choose-models).
 - Events and alerts in {{elastic-sec}} for the {{az-workers}} to analyze. If you don't have them yet, [ingest data](/solutions/security/get-started/ingest-data-to-elastic-security.md) into {{elastic-sec}}, then [turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md) and [install and enable prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) so that your data generates alerts.
