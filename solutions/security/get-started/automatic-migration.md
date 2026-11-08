@@ -57,7 +57,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
   - At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for **Agent Builder**.
   - {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
-  - To use **Add to chat**, the [`agentBuilder:experimentalFeatures`](/explore-analyze/ai-features/agent-builder/get-started.md#enable-experimental-features-optional) and [`agentBuilder:apiDiscovery`](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#api-discovery) advanced settings turned on in your space.
+  - To use **Add to chat**, turn on the [`agentBuilder:experimentalFeatures`](/explore-analyze/ai-features/agent-builder/get-started.md#enable-experimental-features-optional) and [`agentBuilder:apiDiscovery`](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#api-discovery) advanced settings in your space.
   - To install rules from chat, `All` privileges for **Rules and Exceptions**.
 :::
 
