@@ -180,7 +180,7 @@ These common scheduled tasks benefit from using `event.ingested`:
 
 * [Transforms](/explore-analyze/transforms.md)
 * [Machine Learning](/explore-analyze/machine-learning.md)
-* [{{alerting-v1-system-cap}}](/explore-analyze/alerting/alerts.md)
+* [{{alerting-v1-system-short}}](/explore-analyze/alerting/alerts.md)
 * [Watchers](/explore-analyze/alerting/watcher.md)
 
 The `event.ingested` approach is recommended for [{{elastic-sec}} data sources](/solutions/security/detect-and-alert/set-rule-data-sources.md#best-practices) and is commonly used in [{{observability}} rules](/solutions/observability/incident-management/create-manage-rules.md#observability-create-manage-rules-observability-rules).

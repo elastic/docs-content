@@ -18,7 +18,7 @@ To use workflows, your role must have the appropriate privileges and your subscr
 
 ## Send notifications or trigger an action
 
-To send a notification or trigger an action from a rule in {{alerting-v2-system}}:
+To send a notification or trigger an action from a rule in {{alerting-v2-system-short}}:
 
 1. [Build a workflow](../../workflows/get-started/build-your-first-workflow.md) that defines what to do, for example, send a message, call a webhook, open a case, or run any other automation.
 
