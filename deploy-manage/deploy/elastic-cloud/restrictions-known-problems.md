@@ -21,7 +21,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [{{es}} and {{kib}} plugins](#ec-restrictions-plugins)
 * [{{watcher}}](#ec-restrictions-watcher)
 * [Private connectivity](#ec-restrictions-network-security-kibana-sso)
-* [Automatic report generation using {{kib}} alerting or {{watcher}}](#ec-restrictions-network-security-watcher)
+* [Automatic report generation using {{alerting-v1-system}} or {{watcher}}](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
 * [Restore a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
@@ -118,9 +118,9 @@ $$$ec-restrictions-network-security-kibana-sso$$$
 ```
 * **Remote clusters with API key authentication over GCP Private Service Connect:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic over GCP PSC.
 
-## Automatic report generation using {{kib}} alerting or {{watcher}} [ec-restrictions-network-security-watcher]
+## Automatic report generation using {{alerting-v1-system}} or {{watcher}} [ec-restrictions-network-security-watcher]
 
-* Automatic report generation from {{kib}} alerting rules is not supported on {{ecloud}}.
+* Automatic report generation from {{alerting-v1-system-short}} rules is not supported on {{ecloud}}.
 * On deployments running {{stack}} 8.7.0 and earlier, {{watcher}} can't generate PDF, PNG, or CSV reports when [network security](../../security/network-security.md) (formerly traffic filtering) is enabled. This restriction applies to requests from {{watcher}} to {{es}} or {{kib}}. It doesn't affect {{watcher}} actions that connect to external services, such as Slack, PagerDuty, or email actions without report attachments.
 * On deployments running {{stack}} 8.7.1 and later, {{watcher}} can generate reports when [network security](/deploy-manage/security/network-security.md) is enabled. Set `xpack.notification.webhook.additional_token_enabled` to `true` to add an authentication token to requests from {{watcher}} to {{kib}} through the {{ecloud}} proxy. To generate and email reports, use a [`reporting` attachment in a {{watcher}} `email` action](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher).
 

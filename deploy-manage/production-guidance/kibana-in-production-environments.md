@@ -44,7 +44,7 @@ Topics covered include:
 
 * [Manage {{kib}} background tasks](./kibana-task-manager-scaling-considerations.md): Learn how {{kib}} runs background tasks like alerting and reporting, and get guidance on scaling and throughput tuning for reliable task execution. Applicable to all deployment types.
 
-* [Optimize {{kib}} alerting performance](./kibana-alerting-production-considerations.md): Learn how {{kib}} runs alerting rules and actions using background tasks, and how to scale alerting by tuning task throughput and circuit breakers. Applicable to all deployment types.
+* [Optimize {{alerting-v1-system}} performance](./kibana-alerting-production-considerations.md): Learn how {{kib}} runs alerting rules and actions using background tasks, and how to scale alerting by tuning task throughput and circuit breakers. Applicable to all deployment types.
 
 * [{{kib}} reporting production setup](./kibana-reporting-production-considerations.md): Learn how {{kib}} generates reports using a headless version of Chromium, and how to configure your environment securely for production, including sandboxing and OS compatibility.
 
