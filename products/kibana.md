@@ -344,11 +344,11 @@ links:
 :::
 
 :::{link-card}
-title: Kibana alerting
+title: Kibana Classic Alerting
 links:
-  - label: Kibana alerting overview
+  - label: Kibana Classic Alerting overview
     url: /explore-analyze/alerting/alerts.md
-  - label: Get started with Kibana alerting
+  - label: Get started with Kibana Classic Alerting
     url: /explore-analyze/alerting/alerts/alerting-getting-started.md
   - label: Create and manage rules
     url: /explore-analyze/alerting/alerts/create-manage-rules.md
@@ -367,7 +367,7 @@ links:
     url: /explore-analyze/alerting/esql/get-started.md
   - label: Rules
     url: /explore-analyze/alerting/esql/rules.md
-  - label: Alert episodes
+  - label: Alerts
     url: /explore-analyze/alerting/esql/alerts.md
 :::
 
