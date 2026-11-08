@@ -43,7 +43,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates the **Alerts** page so the **Assignees** filter appears next to the other page filters, matching the **Attacks** page [#286624]({{kib-pull}}286624).
 * Adds pagination to the alert details flyout so you can step through every alert in the Alerts table, or every event in Timeline, without closing the flyout [#266189]({{kib-pull}}266189).
 % Also documented in the 9.5.0 release notes.
-* Enables the advanced setting that turns on the new flyout system in {{elastic-sec}} [#279300]({{kib-pull}}279300).
 % Also documented in the 9.5.0 release notes.
 * Adds an action in the correlations section of the alert details flyout to open a related attack as a preview (legacy expandable flyout) or as a child panel (new flyout system) [#279306]({{kib-pull}}279306).
 * Adds the ability to open a source event from the **Table** tab of the alert details flyout [#282346]({{kib-pull}}282346).
