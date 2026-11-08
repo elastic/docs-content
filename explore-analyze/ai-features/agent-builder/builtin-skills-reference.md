@@ -489,7 +489,7 @@ stack: preview 9.6+
 
 These skills let the agent report on and run the rule migrations you create with [Automatic Migration](/solutions/security/get-started/automatic-migration.md), install their rules, and fix translated rules. They have the same requirements as Automatic Migration and don't cover dashboard migrations. For the workflow, refer to [Manage rule migrations with {{agent-builder}}](/solutions/security/get-started/automatic-migration.md#siem-migration-agent-builder).
 
-$$$agent-builder-automatic-migration-rules-summarize-skill$$$ `automatic-migration-rules-summarize` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
+$$$agent-builder-automatic-migration-rules-summarize-skill$$$ `automatic-migration-rules-summarize` {applies_to}`stack: preview 9.6+`
 :   Reports on your rule migrations. Lists every migration with its source platform, status, and progress, or reports one migration's translation results and the macros, lookups, reference sets, or watchlists it's still missing. This is a read-only skill.
 
     :::{dropdown} Assigned tools
@@ -497,7 +497,7 @@ $$$agent-builder-automatic-migration-rules-summarize-skill$$$ `automatic-migrati
 
     :::
 
-$$$agent-builder-automatic-migration-rules-start-migration-skill$$$ `automatic-migration-rules-start-migration` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
+$$$agent-builder-automatic-migration-rules-start-migration-skill$$$ `automatic-migration-rules-start-migration` {applies_to}`stack: preview 9.6+`
 :   Starts translating a migration's uploaded rules, resumes a stopped or interrupted migration, or reprocesses failed rules, rules that weren't fully translated, or selected rules. Before a first run or a reprocess, it lists any missing resources. For a first run, it also asks which AI connector to use and whether to match rules to Elastic prebuilt rules.
 
     :::{dropdown} Assigned tools
@@ -505,7 +505,7 @@ $$$agent-builder-automatic-migration-rules-start-migration-skill$$$ `automatic-m
 
     :::
 
-$$$agent-builder-automatic-migration-rules-stop-migration-skill$$$ `automatic-migration-rules-stop-migration` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
+$$$agent-builder-automatic-migration-rules-stop-migration-skill$$$ `automatic-migration-rules-stop-migration` {applies_to}`stack: preview 9.6+`
 :   Stops a running rule migration.
 
     :::{dropdown} Assigned tools
@@ -513,7 +513,7 @@ $$$agent-builder-automatic-migration-rules-stop-migration-skill$$$ `automatic-mi
 
     :::
 
-$$$agent-builder-automatic-migration-rules-update-translated-rule-skill$$$ `automatic-migration-rules-update-translated-rule` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
+$$$agent-builder-automatic-migration-rules-update-translated-rule-skill$$$ `automatic-migration-rules-update-translated-rule` {applies_to}`stack: preview 9.6+`
 :   Fixes problems in translated rules that aren't installed yet, such as a wrong prebuilt rule match, integration, index pattern, or field names, or unresolved macro and lookup placeholders. It asks you to confirm each change and adds a note to the rule's **Summary** tab. For details, refer to [Rule problems you can fix in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-chat-fixes).
 
     :::{dropdown} Assigned tools
@@ -523,7 +523,7 @@ $$$agent-builder-automatic-migration-rules-update-translated-rule-skill$$$ `auto
 
     **How to activate:** In addition to the [standard activation methods](skills.md#how-skills-are-invoked), this skill activates when you select **Add to chat** on the **Translated rules** page. Refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
 
-$$$agent-builder-automatic-migration-rules-install-rules-skill$$$ `automatic-migration-rules-install-rules` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
+$$$agent-builder-automatic-migration-rules-install-rules-skill$$$ `automatic-migration-rules-install-rules` {applies_to}`stack: preview 9.6+`
 :   Installs translated rules from a migration, either every rule that's ready to install or the rules you name. Before it installs, the skill tells you how many rules it's about to install and asks whether to enable them. If you don't enable them, the rules stay disabled. Afterward, it links to the installed rules, or to a sample of them when you install all rules.
 
     :::{dropdown} Assigned tools
@@ -533,7 +533,7 @@ $$$agent-builder-automatic-migration-rules-install-rules-skill$$$ `automatic-mig
 
     **Prerequisites:** You need `All` privileges for the **Rules and Exceptions** feature.
 
-$$$agent-builder-automatic-migration-rules-update-migration-skill$$$ `automatic-migration-rules-update-migration` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
+$$$agent-builder-automatic-migration-rules-update-migration-skill$$$ `automatic-migration-rules-update-migration` {applies_to}`stack: preview 9.6+`
 :   Renames a rule migration.
 
     :::{dropdown} Assigned tools
@@ -541,7 +541,7 @@ $$$agent-builder-automatic-migration-rules-update-migration-skill$$$ `automatic-
 
     :::
 
-$$$agent-builder-automatic-migration-rules-delete-migration-skill$$$ `automatic-migration-rules-delete-migration` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+`
+$$$agent-builder-automatic-migration-rules-delete-migration-skill$$$ `automatic-migration-rules-delete-migration` {applies_to}`stack: preview 9.6+`
 :   Permanently deletes a rule migration and its rules. If the migration is running, the skill offers to stop it first. After it stops, ask again to delete it.
 
     :::{dropdown} Assigned tools

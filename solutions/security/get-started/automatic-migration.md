@@ -269,7 +269,7 @@ serverless:
 stack: preview 9.6+
 ```
 
-Check on your rule migrations, start or stop them, install translated rules, and fix rule translations that need your input, all by chatting with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). The agent asks you to confirm before it changes a migration or a rule. For example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration). To create a migration or upload rules, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
+Chat with [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) to check on your rule migrations, start or stop them, install translated rules, and fix translated rules before you install them. The agent asks you to confirm before it changes a migration or a rule. To fix rules, follow the steps in [Fix translated rules in chat](#siem-migration-fix-rules-in-chat). For the other tasks, use the example prompts in [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#automatic-migration). To create a migration or upload rules, use the **Get started** page as described in [Get started with Automatic Migration](#get-started-with-automatic-migration).
 
 ### Rule problems you can fix in chat [siem-migration-chat-fixes]
 
