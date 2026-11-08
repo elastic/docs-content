@@ -28,22 +28,25 @@ This page covers the sequence. The pages it links to cover each step.
 :::::{stepper}
 
 ::::{step} Send the same logs to Elastic
+:anchor: logs-migrate-send
 
 Add Elastic as a second destination without removing the first:
 
 - **Your logs already pass through an OpenTelemetry Collector.** Add an OTLP exporter that points at Elastic and attach it to the same logs pipeline. The endpoint depends on your deployment type. Refer to [Endpoint by deployment type](/solutions/observability/logs/ingest.md#logs-ingest-endpoints).
-- **A vendor agent collects your logs.** Elastic doesn't read another vendor's agent protocol. Install {{agent}} in OTel mode alongside it and collect the same files or sources. Follow [Get started with logs](/solutions/observability/logs/get-started.md) for the quickstart, or [Ingest logs](/solutions/observability/logs/ingest.md) for the full set of paths.
+- **A vendor agent collects your logs.** Elastic doesn't read another vendor's agent protocol. Install {{agent}} configured as an OTel Collector alongside it and collect the same files or sources. Follow [Get started with logs](/solutions/observability/logs/get-started.md) for the quickstart, or [Ingest logs](/solutions/observability/logs/ingest.md) for the full set of paths.
 - **You already run {{ls}} or {{beats}}.** Add an {{es}} output next to the existing one. Refer to [Other ways to collect logs](/solutions/observability/logs/ingest.md#logs-ingest-other).
 
 Confirm the logs arrive in **Discover** before you move on. Refer to [Explore logs](/solutions/observability/logs/explore-logs.md).
 ::::
 
 ::::{step} Give the logs the fields your searches need
+:anchor: logs-migrate-fields
 
 Field names differ between platforms, so a search that worked before won't match until the same fields exist in Elastic. Parse the logs in Streams or keep the raw message and query it with {{esql}} while you decide. Refer to [Process logs](/solutions/observability/logs/process.md).
 ::::
 
 ::::{step} Rebuild searches, dashboards, and alerts
+:anchor: logs-migrate-rebuild
 
 Elastic has no importer for another platform's saved searches, dashboards, or alert rules. Recreate the ones people still use, starting with the alerts:
 
@@ -52,6 +55,7 @@ Elastic has no importer for another platform's saved searches, dashboards, or al
 ::::
 
 ::::{step} Set retention, then switch over
+:anchor: logs-migrate-switch
 
 Set retention per stream so the new data streams don't keep everything forever. Refer to [Manage logs storage](/solutions/observability/logs/manage-storage.md). When every alert you kept fires from Elastic and the dashboards your team opens are rebuilt, stop sending to the old platform.
 ::::

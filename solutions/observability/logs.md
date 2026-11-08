@@ -2,6 +2,10 @@
 navigation_title: Logs
 meta_title: Log management and monitoring with Elastic
 description: Collect, manage, search, and analyze logs with Elastic Observability. Compare ingestion options, configure log data, detect anomalies, and create threshold alerts.
+applies_to:
+  stack: ga
+  serverless:
+    observability: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-checklist.html
   - https://www.elastic.co/guide/en/serverless/current/observability-log-monitoring.html
@@ -11,7 +15,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Log monitoring with Elastic Observability [logs-checklist]
+# Logs [logs-checklist]
 
 Elastic lets you collect logs from hosts, containers, cloud services, and applications, give them structure, search them at any scale, and alert on what matters. Use this page to find what you need to set up your logs in Elastic, whether you're starting from new, working with existing data in {{es}}, or migrating an existing logging stack. If you ship logs from a service you own, start with [Application logs](/solutions/observability/logs/ingest.md#logs-ingest-application).
 
@@ -24,7 +28,7 @@ This page covers:
 
 ## Send logs to Elastic [logs-send]
 
-For a new setup, collect logs with {{agent}} in OTel mode. [Ingest logs](/solutions/observability/logs/ingest.md) covers the endpoint for your deployment type and when an integration, {{filebeat}}, or {{ls}} is the better fit.
+For a new setup, collect logs with {{agent}} configured as an OTel Collector. [Ingest logs](/solutions/observability/logs/ingest.md) covers the endpoint for your deployment type and when an integration, {{filebeat}}, or {{ls}} is the better fit.
 
 [Get started with logs](/solutions/observability/logs/get-started.md)
 :   Get one log source flowing and see it in **Discover** in minutes with a quickstart for your deployment type and environment. Start here if you're evaluating Elastic or want a working pipeline before you plan the full setup, then continue to Ingest logs.
@@ -60,7 +64,7 @@ Once logs are in {{es}}, **Discover** is where you search, filter, and investiga
 
 The following related pages provide more background on working with logs in Elastic:
 
-- [Start using OpenTelemetry with Elastic](/solutions/observability/get-started/opentelemetry/start-with-otel.md): why {{agent}} in OTel mode is the recommended collector, and when to keep using classic Elastic components.
+- [Start using OpenTelemetry with Elastic](/solutions/observability/get-started/opentelemetry/start-with-otel.md): why Elastic recommends {{agent}} configured as an OTel Collector, and when to keep using classic Elastic components.
 - [{{obs-serverless}} feature tiers](/solutions/observability/observability-serverless-feature-tiers.md): what the Logs Essentials tier includes compared to {{observability}} Complete.
-- [Streams](/solutions/observability/streams/streams.md): the {{kib}} Process, route, and manage data retention from the {{kib}} UI.
+- [Streams](/solutions/observability/streams/streams.md): process, route, and manage data retention for your logs from the {{kib}} UI.
 - [Troubleshoot logs](/troubleshoot/observability/troubleshoot-logs.md): fixes for errors you might encounter while onboarding logs.

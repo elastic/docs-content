@@ -29,7 +29,7 @@ Work down this table and stop at the first row that matches:
 | An existing setup with ingest pipelines that work | Keep the [ingest pipelines](#logs-parse-pipelines) | Nothing forces you to migrate. Ingest pipelines expose every processor and run in {{es}}, so they work for any shipper. Streams builds on them. |
 | Streams lacks the processor you need, or you need {{product.painless}} scripting | In an [ingest pipeline](#logs-parse-pipelines) | Same reason: the full processor set. |
 | Complex normalization across many sources, or enrichment from external systems before indexing | In {{ls}} filters | {{ls}} runs before {{es}} and can join, enrich, and fan out. OpenTelemetry and {{agent}} don't replace it for this. Refer to [{{ls}}](logstash://reference/index.md). |
-| OpenTelemetry-native logs where you want structure before they leave the host | In {{agent}} in OTel mode, the OTel Collector | The `filelog` receiver operators and the transform processor parse JSON, multiline, and custom formats at the edge. Refer to [Configure logs collection](elastic-agent://reference/edot-collector/config/configure-logs-collection.md). |
+| OpenTelemetry-native logs where you want structure before they leave the host | In {{agent}} configured as an OTel Collector | The `filelog` receiver operators and the transform processor parse JSON, multiline, and custom formats at the edge. Refer to [Configure logs collection](elastic-agent://reference/edot-collector/config/configure-logs-collection.md). |
 
 Whatever you choose, keep the original message. Every option here leaves the raw line in place by default, and you'll want it when a parsing rule is wrong.
 

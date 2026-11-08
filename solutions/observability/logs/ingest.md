@@ -1,6 +1,6 @@
 ---
 navigation_title: Ingest logs
-description: Send logs to Elastic with Elastic Agent in OTel mode, Elastic Agent integrations, or another shipper, with the recommended path for each deployment type and log source.
+description: Send logs to Elastic with Elastic Agent configured as an OTel Collector, Elastic Agent integrations, or another shipper, with the recommended path for each deployment type and log source.
 applies_to:
   stack: ga
   serverless:
@@ -13,13 +13,13 @@ products:
 
 # Ingest logs [logs-ingest]
 
-For a new setup, collect logs with {{agent}} in OTel mode and send them over the OpenTelemetry Protocol (OTLP). Use {{agent}} integrations instead when a prebuilt integration exists for the source and you want its parsing and dashboards, or when you already manage agents with {{fleet}}. Everything else on this page follows from that choice: the endpoint you send to, the schema your logs are stored in, and where parsing happens.
+For a new setup, collect logs with {{agent}} configured as an OTel Collector and send them over the OpenTelemetry Protocol (OTLP). Use {{agent}} integrations instead when a prebuilt integration exists for the source and you want its parsing and dashboards, or when you already manage agents with {{fleet}}. Everything else on this page follows from that choice: the endpoint you send to, the schema your logs are stored in, and where parsing happens.
 
 ## Choose a collection path [logs-ingest-recommended]
 
 | Your log source | Collect with | Because |
 |---|---|---|
-| Any log source, when you're setting up new collection | [{{agent}} in OTel mode](#logs-ingest-otel) | One collector for logs, metrics, and traces in OpenTelemetry-native form, and the path Elastic recommends for new deployments. You parse in Streams or in the Collector. |
+| Any log source, when you're setting up new collection | [{{agent}} configured as an OTel Collector](#logs-ingest-otel) | One collector for logs, metrics, and traces in OpenTelemetry-native form, and the path Elastic recommends for new deployments. You parse in Streams or in the Collector. |
 | A service or platform that has an Elastic integration, when you want its prebuilt content or already run {{fleet}} | {{fleet}}-managed {{agent}} with the [integration](#logs-ingest-integrations) | The integration parses the logs, maps the fields, and installs dashboards. Elastic doesn't ship centrally managed ingest pipelines for OpenTelemetry-native logs, so an integration is the shortest path to structured data for that source. |
 | Your own application | Structured logging at the source, then either path above | Logs arrive with fields and trace IDs, so nothing needs parsing. Refer to [Application logs](#logs-ingest-application). |
 
@@ -29,7 +29,7 @@ A few cases still work better with classic Elastic components, such as web real 
 
 ## Ingest with OpenTelemetry (recommended) [logs-ingest-otel]
 
-{{agent}} in OTel mode runs as an OpenTelemetry Collector: it reads log files with the `filelog` receiver, adds host metadata, and exports OpenTelemetry-native logs. It's the distribution Elastic supports, and it's what the quickstarts in [Get started with logs](/solutions/observability/logs/get-started.md) install. You don't need it to send OpenTelemetry logs: any Collector or SDK that speaks OTLP, including the upstream OpenTelemetry Collector, can send to the same endpoints.
+{{agent}} configured as an OTel Collector reads log files with the `filelog` receiver, adds host metadata, and exports OpenTelemetry-native logs. It's the distribution Elastic supports, and it's what the quickstarts in [Get started with logs](/solutions/observability/logs/get-started.md) install. You don't need it to send OpenTelemetry logs: any Collector or SDK that speaks OTLP, including the upstream OpenTelemetry Collector, can send to the same endpoints.
 
 - To collect a specific log file rather than the platform defaults, follow [Send any log file using OTel Collector](/solutions/observability/logs/stream-any-log-file-using-edot-collector.md).
 - To parse JSON, multiline, or custom formats in the Collector, refer to [Configure logs collection](elastic-agent://reference/edot-collector/config/configure-logs-collection.md).
@@ -41,14 +41,28 @@ Where OpenTelemetry logs go depends on your deployment type. Integrations aren't
 
 :::::{applies-switch}
 
-::::{applies-item} { serverless:, ess: }
-Send logs to the {{motlp}}. For application logs, point an EDOT SDK or any OTLP-compatible exporter directly at the endpoint, with no {{agent}} required. For host, container, and {{k8s}} logs, run {{agent}} in OTel mode on the host or cluster and configure its OTLP exporter to send to the endpoint. For the endpoint URL, authentication, and limitations, refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
+::::{applies-item} serverless:
+Send logs to the {{motlp}}. Use the setup that matches the source of your logs:
+
+- **Application logs:** Point an [EDOT SDK](opentelemetry://reference/edot-sdks/index.md) or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
+- **Host, container, and {{k8s}} logs:** Run {{agent}} configured as an OTel Collector on the host or cluster and point its OTLP exporter at the endpoint. The [quickstarts](/solutions/observability/logs/get-started.md#logs-get-started-quickstart) set this up for you.
+
+For the endpoint URL, authentication, and limitations, refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
+::::
+
+::::{applies-item} ech:
+Send logs to the {{motlp}}. Use the setup that matches the source of your logs:
+
+- **Application logs:** Point an [EDOT SDK](opentelemetry://reference/edot-sdks/index.md) or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
+- **Host, container, and {{k8s}} logs:** Run {{agent}} configured as an OTel Collector on the host or cluster and point its OTLP exporter at the endpoint. The [quickstarts](/solutions/observability/logs/get-started.md#logs-get-started-quickstart) set this up for you.
 
 The {{ech}} quickstarts currently write to {{es}} directly with the `elasticsearch` exporter. That works, but for a new setup on {{ech}}, send to the {{motlp}} instead. Refer to [Send OTLP data to the {{motlp}}](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
+
+For the endpoint URL, authentication, and limitations, refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
-The {{motlp}} isn't available. Run {{agent}} in OTel mode as a gateway: it exposes an OTLP endpoint that your edge collectors and EDOT SDKs send to, and it writes to {{es}} with the `elasticsearch` exporter. Use the OTLP exporter at the edge and the `elasticsearch` exporter only on the gateway. Refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
+The {{motlp}} isn't available. Run {{agent}} configured as an OTel Collector gateway: it exposes an OTLP endpoint that your edge collectors and EDOT SDKs send to, and it writes to {{es}} with the `elasticsearch` exporter. Use the OTLP exporter at the edge and the `elasticsearch` exporter only on the gateway. Refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
 ::::
 
 :::::
@@ -79,7 +93,7 @@ Elastic doesn't convert logs between schemas at ingest, so the collection path f
 
 | Path | Stored as | Data streams |
 |---|---|---|
-| {{agent}} in OTel mode, EDOT SDKs, any OTLP client | OpenTelemetry-native, with attributes under `attributes.*` and `resource.attributes.*` | `logs-*.otel-*` |
+| {{agent}} configured as an OTel Collector, EDOT SDKs, any OTLP client | OpenTelemetry-native, with attributes under `attributes.*` and `resource.attributes.*` | `logs-*.otel-*` |
 | {{agent}} integrations, {{filebeat}}, ECS loggers | ECS, for example `host.name` and `log.level` | `logs-<dataset>-<namespace>` |
 
 Prefer one schema across your sources. Mixing them works, but every query and dashboard then has two sets of field names. For how the two are stored and which ECS-style queries work on OpenTelemetry data, refer to [OpenTelemetry data streams compared to classic {{product.apm}} and ECS-based integrations](opentelemetry://reference/compatibility/data-streams.md).
@@ -116,10 +130,6 @@ These tools remain supported. Use one when its constraint applies:
 [{{es}} REST APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md)
 :   Send documents straight from your own code or scripts with the bulk API. Use it for custom pipelines where a shipper doesn't fit. You own batching, retries, and backpressure.
 
-## Related pages [logs-ingest-related]
+## Next steps [logs-ingest-next]
 
-- [Process logs](/solutions/observability/logs/process.md)
-- [Manage logs storage](/solutions/observability/logs/manage-storage.md)
-- [Migrate logs to Elastic](/solutions/observability/logs/migrate.md)
-- [Start using OpenTelemetry with Elastic](/solutions/observability/get-started/opentelemetry/start-with-otel.md)
-- [Ingest: Bring your data to Elastic](/manage-data/ingest.md)
+After logs are flowing, give unstructured messages the fields your searches need in [Process logs](/solutions/observability/logs/process.md), then [explore them](/solutions/observability/logs/explore-logs.md) in {{kib}}. Log volume grows quickly, so [set retention per stream](/solutions/observability/logs/manage-storage.md) before your rollout becomes production-critical. If you're replacing another logging platform, follow the sequence in [Migrate logs to Elastic](/solutions/observability/logs/migrate.md).

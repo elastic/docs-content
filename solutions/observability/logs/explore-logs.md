@@ -23,7 +23,7 @@ From the navigation menu, go to **Discover** and select the **All logs** {{data-
 
 Expand a document to open the log details: the message broken into fields, similar errors, the stream it belongs to, and for application logs the stack trace and trace summary. If the message hasn't been parsed into fields, **Parse content in Streams** takes you to the stream to fix that.
 
-Refer to [Explore logs in Discover](/solutions/observability/logs/discover-logs.md). To change which index patterns count as logs, refer to [Configure log data sources](/solutions/observability/logs/log-data-sources.md).
+Refer to [Explore logs in Discover](/solutions/observability/logs/discover-logs.md). To change which index patterns count as logs, refer to [Configure log data sources](/solutions/observability/logs/log-data-sources.md). For **Discover** features that aren't log-specific, refer to [Discover](/explore-analyze/discover.md).
 
 ## Filter and aggregate [logs-explore-aggregate]
 
@@ -44,6 +44,10 @@ When you have more log lines than you can read, let Elastic group them:
 [Inspect log anomalies](/solutions/observability/logs/inspect-log-anomalies.md)
 :   Create an {{anomaly-job}} on the log rate to catch drops and spikes per partition, such as a service that stopped logging.
 
+## Dashboards [logs-explore-dashboards]
+
+Build dashboards in {{kib}} to track log volume and error rates over time, compare sources, and share views with your team. Create charts from your log data with Lens, or save a chart from an {{esql}} query in **Discover** straight to a dashboard. Start with [Create a dashboard](/explore-analyze/dashboards/create-dashboard.md), then add charts using [Visualize data with Lens](/explore-analyze/visualize/lens.md).
+
 ## Alert on logs [logs-explore-alert]
 
 When a search is worth repeating, make it a rule. Pick the rule type by the condition you want to catch:
@@ -63,8 +67,6 @@ For actions, snoozing, and the other rule types, refer to [Create and manage rul
 
 If a search returns less than you expect, the logs might be arriving with ignored or malformed fields. The **Data Set Quality** page shows the share of degraded documents per data set and lets you open the affected documents in **Discover**. Refer to [Data set quality](/solutions/observability/data-set-quality-monitoring.md).
 
-## Related pages [logs-explore-related]
+## Next steps [logs-explore-next]
 
-- [Process logs](/solutions/observability/logs/process.md)
-- [Manage logs storage](/solutions/observability/logs/manage-storage.md)
-- [Discover](/explore-analyze/discover.md): the general Discover documentation, for features that aren't log-specific.
+As your log volume grows, learn how to control storage costs and retention with [Manage logs storage](/solutions/observability/logs/manage-storage.md). If searches come back empty because fields are missing, give your logs structure with [Process logs](/solutions/observability/logs/process.md).

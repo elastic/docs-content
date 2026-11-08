@@ -13,9 +13,9 @@ products:
 
 # Manage logs storage [logs-manage-storage]
 
-You can control logs storage costs by deciding how logs are stored on disk, configuring the default index template, and setting long each stream keeps data. Tracking data set quality can also tell you when a parsing or mapping problem is impacting storage or data ingestion.
+You can control logs storage costs by deciding how logs are stored on disk, configuring the default index template, and setting how long each stream keeps data. Tracking data set quality can also tell you when a parsing or mapping problem is impacting storage or data ingestion.
 
-Use this page decide how to configure each of these steps in managing your log data.
+Use this page to decide how to configure each of these steps in managing your log data.
 
 ## Before you begin [logs-manage-storage-prereqs]
 
@@ -27,15 +27,17 @@ Use this page decide how to configure each of these steps in managing your log d
 :::::{stepper}
 
 ::::{step} Use logsdb index mode
+:anchor: logs-manage-storage-logsdb
 
 Logsdb is an {{es}} index mode built for logs. It sorts and compresses documents by host and time and, with the right subscription, reconstructs `_source` on read instead of storing it. In Elastic's benchmarks it cut the storage footprint of log data by up to 60%, with a 10% to 20% cost to indexing throughput.
 
-{applies_to}`serverless: ga`{applies_to}`stack: ga 9.0+` Logsdb is on by default for new logs data streams . The exception is a cluster upgraded from 8.x: `logs-*-*` data streams that already existed, including integration and {{product.apm}} data streams, keep their old mode, and new data streams in that cluster only get logsdb automatically if no logs data streams existed at upgrade time. Enable logsdb for those yourself, a few data streams at a time on a busy cluster, by following [Enable logsdb for integrations](/manage-data/data-store/data-streams/logs-data-stream-integrations.md).
+{applies_to}`serverless: ga`{applies_to}`stack: ga 9.0+` Logsdb is on by default for new logs data streams. The exception is a cluster upgraded from 8.x: `logs-*-*` data streams that already existed, including integration and {{product.apm}} data streams, keep their old mode, and new data streams in that cluster only get logsdb automatically if no logs data streams existed at upgrade time. Enable logsdb for those yourself, a few data streams at a time on a busy cluster, by following [Enable logsdb for integrations](/manage-data/data-store/data-streams/logs-data-stream-integrations.md).
 
 For more on configuring logsdb, refer to [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) and [Configure a logs data stream](/manage-data/data-store/data-streams/logs-data-stream-configure.md).
 ::::
 
 ::::{step} Customize the default logs index template through `logs@custom`
+:anchor: logs-manage-storage-template
 
 Every `logs-*-*` data stream gets the managed `logs` index template unless you override it with a higher-priority template of your own. It sets logsdb mode, ECS-compatible dynamic mappings, and the default lifecycle, and it reserves a `logs@custom` component template and a `logs@custom` ingest pipeline for you. Neither exists until you create it.
 
@@ -43,12 +45,13 @@ Put your changes there, such as extra mappings, a different `default_field`, or 
 ::::
 
 ::::{step} Set data retention
+:anchor: logs-manage-storage-retention
 
 **Streams UI**
 
 {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga` Use the **Data lifecycle** tab (**Retention** tab in earlier versions) in the Streams UI to set lifecycle policies per stream, monitor storage in one view, and reduce storage with downsampling. Configure how long each stream retains data without touching ILM policies, index templates, or index settings directly.
 
-The Streams UI shows the stream's storage size and ingestion rate so you can where you might need to make adjustments. You can set data retention using:
+The Streams UI shows the stream's storage size and ingestion rate so you can see where you might need to make adjustments. You can set data retention using:
 
 - A retention period on the stream itself, when the period is specific to that stream. Data stays in the hot tier and is deleted after the period.
 - {applies_to}`serverless: unavailable` An existing {{ilm}} ({{ilm-init}}) policy, when several streams share one policy or you need warm, cold, or frozen tiers.
@@ -66,6 +69,7 @@ For a summary of the options for logs, refer to [Configure log data retention](/
 ::::
 
 ::::{step} Track data set quality
+:anchor: logs-manage-storage-quality
 ```{applies_to}
 stack: beta
 serverless: beta

@@ -13,7 +13,7 @@ products:
 
 # Get started with logs [logs-get-started]
 
-Start here to go from ingesting logs from a single source to using **Discover** to query and explore the data you ingest. You'll use a quickstart to install {{agent}} in OTel mode with sensible defaults, so you don't have to choose a collector, a field naming schema, or a retention policy yet. Once you have your logs flowing into {{es}}, follow the links in [Plan your full setup](#logs-get-started-next) to add more log sources, process logs, and set up data retention.
+Start here to go from ingesting logs from a single source to using **Discover** to query and explore the data you ingest. You'll use a quickstart to install {{agent}} configured as an OTel Collector with sensible defaults, so you don't have to choose a collector, a field naming schema, or a retention policy yet. Once you have your logs flowing into {{es}}, follow the links in [Plan your full setup](#logs-get-started-next) to add more log sources, process logs, and set up data retention.
 
 Use this page if you're trying Elastic for the first time, or if you want to see your own logs in Elastic before setting up a complete roll out.
 
@@ -46,13 +46,14 @@ You also need a host, container, or cluster you can install software on, with lo
 :::::{stepper}
 
 ::::{step} Get data flowing
+:anchor: logs-get-started-quickstart
 
-Follow the quickstart for your deployment type and where your workloads run. Each one installs {{agent}} in OTel mode, which collects logs and metrics from the host, container, or cluster and sends them to Elastic:
+Follow the quickstart for your deployment type and where your workloads run. Each one installs {{agent}} configured as an OTel Collector, which collects logs and metrics from the host, container, or cluster and sends them to Elastic:
 
 | Deployment | {{k8s}} | Docker | Hosts or VMs |
 |---|---|---|---|
-| {{serverless-full}} | [{{k8s}} on {{serverless-short}}](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md) | [Docker on {{serverless-short}}](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md) | [Hosts on {{serverless-short}}](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md) |
 | {{ech}} | [{{k8s}} on {{ech}}](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md) | [Docker on {{ech}}](/solutions/observability/get-started/opentelemetry/quickstart/ech/docker.md) | [Hosts on {{ech}}](/solutions/observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md) |
+| {{serverless-full}} | [{{k8s}} on {{serverless-short}}](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md) | [Docker on {{serverless-short}}](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md) | [Hosts on {{serverless-short}}](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md) |
 | Self-managed {{stack}} | [{{k8s}} on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
 
 Two other ways to get a first source in:
@@ -64,6 +65,7 @@ Either collector is fine for a first look, and you can run both while you decide
 ::::
 
 ::::{step} Confirm logs are arriving
+:anchor: logs-get-started-confirm
 
 From the navigation menu, go to **Discover** and select the **All logs** {{data-source}}. You should see documents from your host, newest first, each with a timestamp and a message. Expand a document to see its fields.
 
@@ -71,6 +73,7 @@ If nothing appears after a few minutes, refer to [Troubleshoot logs](/troublesho
 ::::
 
 ::::{step} Explore your first logs
+:anchor: logs-get-started-explore
 
 Try the following to get an understanding of how you can work with your data in Elastic. Each one links to the page that covers it in depth.
 
