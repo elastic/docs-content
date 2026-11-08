@@ -189,9 +189,9 @@ If your organization requires administrators to manage SCCs and role bindings se
 
 Now that you’ve {{agent}} and data is flowing, you can set up the {{k8s}} integration.
 
-1. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
-2. Run a search for `Kubernetes` and then select the {{k8s}} integration card.
-3. On the {{k8s}} integration page, click **Add Kubernetes** to add the integration to your {{agent}} policy.
+1. In your {{ecloud}} deployment, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Kubernetes**.
+3. If the integration's **Overview** page opens, click **Add Kubernetes**.
 4. Scroll to the bottom of **Add Kubernetes integration** page. Under **Where to add this integration?** select the **Existing hosts** tab. On the **Agent policies** menu, select the agent policy that you created previously in the [Install {{agent}}](#agent-fleet-managed-helm-example-install-agent) steps.
 
     You can leave all other integration settings at their default values. For details about the available inputs and data sets, refer to the [Kubernetes integration](integration-docs://reference/kubernetes/index.md) documentation.
