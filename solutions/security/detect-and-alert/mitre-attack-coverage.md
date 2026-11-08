@@ -55,7 +55,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-To view the coverage grid for MITRE ATLAS [v2026.08](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.08), select the **MITRE ATLAS** tab. The grid works the same way as on the **MITRE ATT&CK** tab, with MITRE ATLAS tactics, such as AI Model Access, as columns. If a rule is mapped to both frameworks, it counts toward coverage on both tabs.
+To view the coverage grid for MITRE ATLAS [v2026.09](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.09), select the **MITRE ATLAS** tab. The grid works the same way as on the **MITRE ATT&CK** tab, with MITRE ATLAS tactics, such as AI Model Access, as columns. If a rule is mapped to both frameworks, it counts toward coverage on both tabs.
 
 :::{image} /solutions/images/security-mitre-coverage-atlas.png
 :alt: MITRE coverage page on the MITRE ATLAS tab, with tactic columns such as AI Attack Adaptation and AI Model Access, and shaded cells for techniques that have rules, such as LLM Prompt Injection
