@@ -233,6 +233,7 @@ subs:
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
   edot:  "Elastic OpenTelemetry"
+  edot-cf: "Elastic Cloud Forwarder"
   motlp: "Elastic Cloud Managed OTLP Endpoint"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
