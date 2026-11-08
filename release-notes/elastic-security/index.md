@@ -79,7 +79,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds MITRE ATLAS support to detection rules, using MITRE ATLAS `2026.09`. The **MITRE ATT&CK® coverage** page gets a framework tab, the rule creation form groups threat mappings by framework, and rule details, the rule upgrade view, and the alert details flyout show ATLAS mappings [#298185]({{kib-pull}}298185), [#296562]({{kib-pull}}296562), [#302501]({{kib-pull}}302501).
 * Speeds up importing new detection rules by creating them in bulk instead of one at a time [#275695]({{kib-pull}}275695).
 % Also documented in the 9.5.0 release notes.
-* Makes detection rule changes history generally available. A **History** entry in the rule actions menu opens a dedicated changes-history page with an infinite-scroll timeline of recorded rule changes and a JSON diff between revisions [#278052]({{kib-pull}}278052), [#269617]({{kib-pull}}269617), [#270091]({{kib-pull}}270091).
 % Also documented in the 9.5.0 release notes.
 * Updates MITRE ATT&CK mappings to `v19.1` [#278547]({{kib-pull}}278547).
 * Speeds up importing detection rules with overwrite enabled by updating existing rules in bulk instead of one at a time [#291560]({{kib-pull}}291560).
