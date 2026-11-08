@@ -42,8 +42,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds **Destination IP** as a built-in **Group alerts by** option on the alerts table, and includes aggregatable IP fields in the **Custom field** picker [#284769]({{kib-pull}}284769).
 * Updates the **Alerts** page so the **Assignees** filter appears next to the other page filters, matching the **Attacks** page [#286624]({{kib-pull}}286624).
 * Adds pagination to the alert details flyout so you can step through every alert in the Alerts table, or every event in Timeline, without closing the flyout [#266189]({{kib-pull}}266189).
-% Also documented in the 9.5.0 release notes.
-% Also documented in the 9.5.0 release notes.
 * Adds the ability to open a source event from the **Table** tab of the alert details flyout [#282346]({{kib-pull}}282346).
 * Adds a **Flyout settings** menu to the alert and event details flyout. Use **Flyout type** to select whether the flyout displays next to the page (**Push**) or over it (**Overlay**). On small screens, the flyout always uses **Overlay** [#289742]({{kib-pull}}289742).
 * Saves the width of resized Security flyouts, so they open at the same width next time. Use **Flyout settings** → **Reset size** to return to the default width. Tool flyouts, such as notes, the visual event analyzer, and Session View, always open at their default width [#291873]({{kib-pull}}291873).
@@ -75,18 +73,18 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 #### Detection rules and exceptions [elastic-security-9.6.0-features-detection-rules-and-exceptions]
 * Adds MITRE ATLAS support to detection rules, using MITRE ATLAS `2026.09`. The **MITRE ATT&CK® coverage** page gets a framework tab, the rule creation form groups threat mappings by framework, and rule details, the rule upgrade view, and the alert details flyout show ATLAS mappings [#298185]({{kib-pull}}298185), [#296562]({{kib-pull}}296562), [#302501]({{kib-pull}}302501).
-* Speeds up importing new detection rules by creating them in bulk instead of one at a time [#275695]({{kib-pull}}275695).
-% Also documented in the 9.5.0 release notes.
 % Also documented in the 9.5.0 release notes.
 * Updates MITRE ATT&CK mappings to `v19.1` [#278547]({{kib-pull}}278547).
-* Speeds up importing detection rules with overwrite enabled by updating existing rules in bulk instead of one at a time [#291560]({{kib-pull}}291560).
+* Speeds up importing new and existing detection rules by creating or updating them in bulk instead of one at a time [#275695]({{kib-pull}}275695), [#291560]({{kib-pull}}291560).
+* Speeds up re-importing detection rules with overwrite enabled by skipping rules that haven't changed, which also fixes blank change history entries. The import API response includes a new `rules_summary` field with the number of created, updated, skipped, and failed rules. For example, if you re-import a file of 1,000 rules where only one rule changed, the import updates only that rule, and `rules_summary` returns `{ "created": 0, "updated": 1, "skipped": 999, "failed": 0 }` [#293948]({{kib-pull}}293948).
 * Adds an **Update to Elastic version** bulk action to the Rule Updates table that force-upgrades prebuilt rules to the exact Elastic version, discarding any customizations on the updated rules [#290589]({{kib-pull}}290589).
+* Reduces the time it takes to bulk import, update, or enable detection rules by skipping the wait for {{es}} to refresh after creating each rule's API key [#290306]({{kib-pull}}290306).
 * Adds a **Reason for closing** option to the rule exception and Endpoint exception flyouts, so alerts that you close while adding or editing an exception record why they were closed. The default is **Close without reason** [#289074]({{kib-pull}}289074).
 
 #### {{elastic-defend}} [elastic-security-9.6.0-features-elastic-defend]
 * Shows a `Creating action` message in the response console while a response action is being created, before it moves to pending [#276523]({{kib-pull}}276523).
 * Adds the `cancel` response action for {{elastic-defend}}, which cancels a pending response action on a host from the response console or the `POST /api/endpoint/action/cancel` API [#279290]({{kib-pull}}279290).
-* Shows the results of `kill-process` and `suspend-process` response actions, including the process ID, entity ID, process name, and command, in the response console and the response actions history [#280519]({{kib-pull}}280519).
+* Shows the results of `kill-process` and `suspend-process` response actions, including the process ID and entity ID, in the response console and the response actions history [#280519]({{kib-pull}}280519).
 * Adds command and argument suggestions to the response console. Press **Alt+Space** (**Option+Space** on macOS) to list the available commands, or the arguments for the command you entered [#285794]({{kib-pull}}285794).
 * Adds the `--raw` option to the `memory-dump` response action for {{elastic-defend}} Windows hosts running {{agent}} 9.5.2 or later [#287713]({{kib-pull}}287713).
 * Adds a `--kill-descendants` option to the `kill-process` response action for {{elastic-defend}} that also terminates all descendants of the target process. The option requires an {{elastic-defend}} version that supports it. When process events are turned off in the policy, {{elastic-defend}} finds descendants by enumerating running processes and might miss some of them [#292143]({{kib-pull}}292143).
@@ -134,7 +132,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates the {{elastic-sec}} **Overview** page with a sticky header that has a back button to the **Dashboards** page, and moves the {{data-source}} picker and search bar into the page [#297995]({{kib-pull}}297995).
 
 #### Osquery [elastic-security-9.6.0-features-osquery]
-* Adds a **Date & time** schedule option to Osquery packs, so scheduled queries can run at set times (for example, every Saturday at 9am) with an optional stop date and splay time, in addition to interval-based schedules [#279154]({{kib-pull}}279154).
+* Adds a **Date & time** schedule option to Osquery packs, so scheduled queries can run at set times (for example, every Saturday at 9am) with an optional stop date and splay time, in addition to interval-based schedules. Requires {{agent}} 9.5.0 or later [#279154]({{kib-pull}}279154).
 * Updates the Osquery packs and saved queries actions menus to show **View pack** or **View query** instead of **Edit pack** or **Edit query** when the item opens as a read-only page, for example when you lack write privileges or open a prebuilt saved query [#288575]({{kib-pull}}288575).
 
 #### Workflows [elastic-security-9.6.0-features-workflows]
@@ -243,10 +241,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the detection rule `PATCH` API so it applies type-specific fields (such as `new_terms_fields`) even when `type` is omitted from the request, instead of silently ignoring them [#288917]({{kib-pull}}288917).
 * Fixes New Terms rule executions failing with `The content length (...) is bigger than the maximum allowed string (...)` when the documents fetched for new terms exceed `elasticsearch.maxResponseSize`. The rule now retries with smaller batches of terms and reports a warning instead of failing [#290058]({{kib-pull}}290058).
 * Fixes an issue where the Rule details **Alerts** tab could show no results, and throw a `tableById is undefined` error in the console, when the alerts table had not been initialized yet (typical on first visit or in a private window) [#290076]({{kib-pull}}290076).
-* Reduces the time it takes to bulk import, update, or enable detection rules by skipping the wait for {{es}} to refresh after creating each rule's API key [#290306]({{kib-pull}}290306).
 * Fixes detection rules that failed with a generic "expected to find aggregations on search result" error when the events search returned zero shards, for example because the rule owner lacks `read` privileges on the source indices. These rules now report an actionable warning that explains the cause [#290924]({{kib-pull}}290924).
 * Fixes an issue where detection rule failures caused by an invalid IP field query (such as a wildcard or literal value against an `ip` field) were classified as framework errors, which caused them to count against SLO dashboards [#291256]({{kib-pull}}291256).
-* Fixes blank change history entries when importing detection rules with overwrite enabled by skipping rules that haven't changed. A new `rules_summary` field has been added in the API response to surface this behavior. For example, re-importing a file of 1000 rules where only one rule changed now updates only that rule, with counts under `rules_summary` appearing as `{ "created":  0, "updated": 1, "skipped": 999, "failed": 0 }` [#293948]({{kib-pull}}293948).
 % Also documented in the 9.5.0 release notes.
 * Fixes an issue where {{kib}} assets from an installed integration package (such as dashboards used by prebuilt detection rules) could remain stale across a {{kib}} upgrade because {{fleet}} never overwrote existing assets on reinstall [#277953]({{kib-pull}}277953).
 % Also documented in the 9.5.0 release notes.
@@ -263,7 +259,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes validation of boolean flag arguments in the response console so flags that must not take a value are rejected when a value is provided [#288124]({{kib-pull}}288124).
 * Fixes the **Isolate host** response action so it's disabled, with an explanatory tooltip, when the target host's {{elastic-defend}} version doesn't support host isolation [#290115]({{kib-pull}}290115).
 * Fixes the response console command parser so it rejects un-prefixed positional arguments (such as `get-file path /some/file/here`) with an error, instead of silently treating them as valid [#290325]({{kib-pull}}290325).
-* Fixes the **Download script** action in the Script Library so the download link works when {{kib}} runs with a base path [#298398]({{kib-pull}}298398).
+* Fixes the **Download script** action in the Script Library so the download link works in non-default {{kib}} spaces and when {{kib}} runs with a custom base path [#298398]({{kib-pull}}298398).
 * Fixes an issue where new {{elastic-defend}} policies on Platinum licenses enabled **Device Control** by default, even though that feature requires an Enterprise license. Affected policies blocked USB storage and later policy saves failed [#282133]({{kib-pull}}282133).
 * Improves how {{elastic-defend}} on Linux handles DNS events when packet data is incomplete or unavailable.
 * Fixes {{elastic-defend}} on Linux to report DNS event sources as unsupported on kprobe-based kernels.
@@ -365,7 +361,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where Osquery live query results and statuses were empty in non-default spaces for queries that ran before {{kib}} began recording the space on results [#294515]({{kib-pull}}294515).
 * Fixes the Osquery **Minimum osquery version** field for packs and pack queries so it lists versions from the installed Osquery Manager integration instead of a list that stopped at 5.0.1. You can also type a version, which is validated, and the packs API now rejects invalid version values [#295450]({{kib-pull}}295450).
 * Fixes Osquery agent search so it matches both `host.name` and `host.hostname` regardless of case, and host names copied from alerts find their agents [#298193]({{kib-pull}}298193).
-* Fixes Osquery so the live queries API and detection rule response actions require read access to a pack or saved query before running it [#299125]({{kib-pull}}299125).
+* Fixes Osquery so the live queries API and detection rule response actions require read access to a pack before they run it. If you have only the **Run Saved queries** privilege, they also require read access to the saved query [#299125]({{kib-pull}}299125).
 
 #### Threat intelligence [elastic-security-9.6.0-fixes-threat-intelligence]
 * Fixes an issue where the Threat Intelligence **Indicators** page could stay stuck on a loading spinner when the request for installed integrations was cancelled before it finished [#295486]({{kib-pull}}295486).
@@ -392,8 +388,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.5.6-fixes]
 
-* Fixes Osquery so the live queries API and detection rule response actions require read access to a pack or saved query before running it [#299125]({{kib-pull}}299125).
-* Fixes the **Download script** action in the Script Library so the download link works when {{kib}} runs with a base path [#298398]({{kib-pull}}298398).
+* Fixes Osquery so the live queries API and detection rule response actions require read access to a pack before they run it. If you have only the **Run Saved queries** privilege, they also require read access to the saved query [#299125]({{kib-pull}}299125).
+* Fixes the **Download script** action in the Script Library so the download link works in non-default {{kib}} spaces and when {{kib}} runs with a custom base path [#298398]({{kib-pull}}298398).
 * Fixes an issue where maximizing a panel on a dashboard opened in {{elastic-sec}} showed a blank view [#297340]({{kib-pull}}297340).
 * Fixes Cribl integration routing to OpenTelemetry input package data streams. Previously, events were routed to a data stream without the `.otel` suffix, so the integration's index template and ingest pipeline did not apply [#296533]({{kib-pull}}296533).
 * Fixes an issue where clicking **Generate** on the Entity Analytics **Threat hunting leads** panel failed with a `No connector or inference endpoint found` error. Also fixes an issue where leads were sometimes generated but not shown the first time you generated them [#295785]({{kib-pull}}295785).
