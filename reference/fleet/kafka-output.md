@@ -182,16 +182,16 @@ outputs:
 Settings that set a duration, such as `timeout` and `expiry_buffer`, take an integer number of nanoseconds. For example, use `10000000000` for 10 seconds. Values with a unit, such as `10s`, aren't supported.
 
 `auth.oauth2client.token_url`
-:   (string) The URL of the token endpoint of your OAuth 2.0 authorization server. Required.
+:   (string) **Required**. The URL of the token endpoint of your OAuth 2.0 authorization server.
 
 `auth.oauth2client.client_id`
-:   (string) The client ID that your authorization server issued for {{agent}}. Required, unless you set `client_id_file`.
+:   (string) **Required** unless you set `client_id_file`. The client ID that your authorization server issued for {{agent}}.
 
 `auth.oauth2client.client_id_file`
 :   (string) The path to a file that contains the client ID. {{agent}} reads the file each time it requests a token, so you can rotate the client ID by updating the file. Takes precedence over `client_id`.
 
 `auth.oauth2client.client_secret`
-:   (string) The client secret that your authorization server issued for {{agent}}. Required for the client credentials grant, unless you set `client_secret_file`.
+:   (string) **Required** for the client credentials grant, unless you set `client_secret_file`. The client secret that your authorization server issued for {{agent}}.
 
 `auth.oauth2client.client_secret_file`
 :   (string) The path to a file that contains the client secret. {{agent}} reads the file each time it requests a token, so you can rotate the secret by updating the file. Takes precedence over `client_secret`.
@@ -229,7 +229,7 @@ Settings that set a duration, such as `timeout` and `expiry_buffer`, take an int
 The following settings apply only to the JWT bearer grant:
 
 `auth.oauth2client.client_certificate_key`
-:   (string) The PEM-encoded RSA private key that {{agent}} uses to sign the JWT. Required for the JWT bearer grant, unless you set `client_certificate_key_file`.
+:   (string) **Required** for the JWT bearer grant, unless you set `client_certificate_key_file`. The PEM-encoded RSA private key that {{agent}} uses to sign the JWT.
 
 `auth.oauth2client.client_certificate_key_file`
 :   (string) The path to a PEM file that contains the private key. {{agent}} reads the file each time it requests a token, so you can rotate the key by updating the file. Takes precedence over `client_certificate_key`.
