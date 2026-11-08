@@ -18,8 +18,8 @@ Columnar index mode turns {{es}} into an analytical and search columnar store fo
 Instead of keeping multiple copies of each field for different query paths, columnar mode stores fields once as [doc values](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) by default.
 This strategy can reduce storage cost for high-volume, analytics-heavy data while keeping the same APIs, dashboards, and integrations.
 
-Columnar mode ships alongside existing index modes such as `standard`, [`logsdb`](/manage-data/data-store/data-streams/logs-data-stream.md), and [`time_series`](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md).
-You choose it per index (or in a template) at creation time; you can't change the mode after the index has been created.
+The `columnar` and `logsdb_columnar` modes ship alongside the other [index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
+You choose a mode when you create the index, or in a template. You can't change the mode after the index has been created.
 
 :::{note}
 Columnar index mode is not available in {{vectordb}} projects, which only support [vector index mode](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-document-mode). Use an {{es}} project for columnar workloads. For details, refer to [when to use this project type](/solutions/vector-database.md#when-to-use-this-project-type).
