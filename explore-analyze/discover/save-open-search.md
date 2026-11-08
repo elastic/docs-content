@@ -13,7 +13,7 @@ description: Save Discover sessions to reuse queries, filters, and views. Add se
 
 # Save a Discover session for reuse [save-open-search]
 
-Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, export, and manage Discover sessions.
+Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, rename, duplicate, export, and manage Discover sessions.
 
 ## Requirements [save-search-requirements]
 
@@ -87,7 +87,9 @@ If you need more rows than the limit allows, use filters to create several small
 
 An export can also time out or return incomplete data for reasons unrelated to these limits, such as slow storage, an unavailable shard, or high network latency. For the common causes, refer to [CSV report limitations](../report-and-share.md#csv-limitations).
 
-To generate the same export automatically, from a script, {{watcher}}, or on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
+To generate the same export automatically on a schedule, refer to [Automatically generate reports](../report-and-share/automating-report-generation.md).
+
+{applies_to}`serverless: unavailable` You can also trigger the export from a script or {{watcher}} by [creating a POST URL](../report-and-share/automating-report-generation.md#create-a-post-url).
 
 ## Export a Discover session as JSON [export-discover-session-json]
 ```{applies_to}
@@ -110,6 +112,23 @@ Export the session as JSON to inspect its definition, or to use that JSON as the
    - Select **Copy to clipboard** to copy it.
    - Select **Open in Console** to open {{kib}} Dev Tools with a request that contains the JSON. This option is available if you have access to **Dev Tools**.
    - Select **Download JSON** to save the file. The file name is the session title. For an unsaved session, the file is named `Untitled Discover session.json`.
+
+## Rename a Discover session [rename-discover-session]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+This does not apply to {{kib}} spaces that use the **Classic** solution view.
+
+To rename a session:
+
+1. In **Discover**, select the session title at the top of the page. The title becomes a text field.
+2. Enter the new title.
+3. Press {kbd}`enter` or select outside the field to confirm the new title. To keep the current title, press {kbd}`esc` instead.
+4. If the session isn't saved yet, the **Save Discover session** dialog opens with your title in the **Title** field. Select **Save** to save the session.
+
+A session that you've already saved takes the new title right away, and changes in your open tabs that you haven't saved stay unsaved. If you close the dialog without saving a new session, the title goes back to **New session**.
 
 ## Duplicate a Discover session [_duplicate_a_discover_session]
 
@@ -260,6 +279,8 @@ You need permission to access Discover, and the dashboard must be in **Edit** mo
 3. Select **Save and return** in the application menu to add the configured panel to the dashboard.
 
 ### Manage Discover session panels on a dashboard [manage-discover-session-panels]
+
+To open the session behind a panel in **Discover** without editing the panel, refer to [Open the data behind a panel in Discover](../dashboards/using.md#explore-panel-data-in-discover).
 
 #### Save panel edits as a new Discover session [discover-session-save-as-from-dashboard]
 ```{applies_to}
