@@ -11,6 +11,8 @@ description: "Learn what happens after a rule runs, look up key terms, and follo
 
 # Get started with {{alerting-v2-system}} [get-started]
 
+This section introduces {{alerting-v2-system}}. It explains what happens after a rule runs, defines key terms, and walks you through creating your first rule.
+
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 

@@ -87,7 +87,7 @@ Here's what the severity-specific steps do:
 
 - **`EVAL burn_rate`**: Computes the error rate as failures over total requests.
 - **`EVAL severity`**: Maps the burn rate to a severity level.
-- **`KEEP`**: Keeps `severity` in the output so {{alerting-v2-system}} reads and stores it.
+- **`KEEP`**: Keeps `severity` in the output so {{alerting-v2-system-short}} reads and stores it.
 
 ## Related pages
 
