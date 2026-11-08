@@ -54,7 +54,7 @@ The following deployment options are available: {{managed-integration}} and agen
     * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to Azure. The following methods are available:
     
-    * Option 1 (recommended): [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:
+    * Option 1 (recommended): [Federated Identity](/reference/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:
 
       ::::{applies-switch}
 

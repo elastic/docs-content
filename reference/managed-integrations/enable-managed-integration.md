@@ -16,7 +16,7 @@ type: how-to
 
 # Enable an {{managed-integration}} [enable-managed-integration]
 
-Enable an {{managed-integration}} in {{kib}} to start collecting data from a cloud source. Elastic provisions and operates the collector for you on Elastic-managed infrastructure, so there's nothing to install or maintain. For details on the architecture, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
+Enable an {{managed-integration}} in {{kib}} to start collecting data from a cloud source. Elastic provisions and operates the collector for you on Elastic-managed infrastructure, so there's nothing to install or maintain. For details on the architecture, refer to [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md).
 
 ## Before you begin [enable-managed-integration-before-you-begin]
 
@@ -70,10 +70,10 @@ For a complete list of integrations that can run as {{managed-integrations}}, re
 Within a few minutes, data from the source appears in the integration's data streams in your cluster.
 
 :::{tip}
-For integrations that authenticate to a cloud provider, you can use [federated identity authentication](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
+For integrations that authenticate to a cloud provider, you can use [federated identity authentication](/reference/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
 :::
 
 ## Next steps [enable-managed-integration-next-steps]
 
-* Learn more about [how {{managed-integrations}} work](/manage-data/ingest/managed-integrations/managed-integrations.md#managed-integrations-architecture).
-* Review common questions in the [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md).
+* Learn more about [how {{managed-integrations}} work](/reference/managed-integrations/managed-integrations.md#managed-integrations-architecture).
+* Review common questions in the [{{managed-integrations}} FAQ](/reference/managed-integrations/managed-integrations-faq.md).

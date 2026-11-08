@@ -24,6 +24,7 @@ This section contains reference information for ingestion tools, including:
 * [Elastic Serverless Forwarder for AWS](elastic-serverless-forwarder://reference/index.md)
 * [Content connectors](elasticsearch://reference/search-connectors/index.md)
 * [{{es}} for Apache Hadoop](elasticsearch-hadoop://reference/index.md)
+* [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md)
 * [Elastic integrations](integration-docs://reference/index.md)
 
 For introductory content and broader overviews, check out [Ingest tools overview](/manage-data/ingest/tools.md).
