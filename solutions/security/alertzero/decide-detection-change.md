@@ -22,9 +22,9 @@ These are the default schedules and thresholds:
 - **{{az-rule-tuning}} {{az-worker}}:** Runs every 2 hours. It picks a rule when, over the last 7 days, at least 10 of the rule's alerts that it hasn't reviewed yet are false positives, and at least half of the rule's alerts are false positives.
 - **{{az-rule-coverage}} {{az-worker}}:** Runs every hour, and reviews up to 5 detection gaps from the last 14 days in each run.
 
-To change these defaults, refer to [](configure-worker-settings.md). For more about what each {{az-worker}} checks, refer to [](watches-and-workers.md).
+To change these defaults, refer to [](configure-worker-settings.md). For more about what each {{az-worker}} checks, refer to [](watches-and-workers.md#alertzero-detection-watch).
 
-% For docs writers: After elastic/docs-content#9144 merges, point the link to configure-worker-settings.md at configure-worker-settings.md#configure-worker-settings-detection-watch. After the Watches and Workers reference (elastic/docs-content#9144) merges, link to its Detection Watch section instead of the whole page.
+% For docs writers: After elastic/docs-content#9144 merges, point the link to configure-worker-settings.md at configure-worker-settings.md#configure-worker-settings-detection-watch.
 
 With **{{az-manual}}** {{az-autonomy}} (the default), each {{az-worker}} asks before it starts work on a change:
 
@@ -34,8 +34,6 @@ With **{{az-manual}}** {{az-autonomy}} (the default), each {{az-worker}} asks be
 When you approve either one, the {{az-worker}} drafts the change and proposes it for your review. With **{{az-assisted}}** {{az-autonomy}}, the {{az-workers}} skip this question and draft each change on their own.
 
 If a {{az-proposed-action}} [expires](work-in-alertzero.md) before anyone decides, your rules stay as they are, and the {{az-worker}} can ask again on a later run.
-
-% For the AlertZero product team: The proposal text inside the UI tells people to "dismiss," but the button says Decline. The flyout also has a separate Dismiss button that acts on the whole investigation. The docs say Decline to match the button, but users might find the mix confusing.
 
 ## Review a tuning change for a noisy rule [alertzero-detection-change-tuning]
 

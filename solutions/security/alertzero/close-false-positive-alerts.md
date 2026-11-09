@@ -36,14 +36,12 @@ You decide the batch as a whole. If some alerts need a closer look, ask in the {
 
 After you review a closure, approve or decline it.
 
-- **If you approve:** The alerts close as false positives. The closure runs under your account, so you need the [privileges to close alerts](alertzero-privileges.md). Without them, the closure fails.
+- **If you approve:** The alerts close as false positives. The closure runs under your account, so you need the [privileges to close alerts](alertzero-privileges.md#alertzero-action-privileges). Without them, the closure fails.
 - **If you decline:** The alerts stay open, tagged `az:inconclusive`. The same happens if the {{az-proposed-action}} [expires](work-in-alertzero.md) before anyone decides.
 
 :::{important}
 You can't change your decision on a proposed closure. If you approve one by mistake, [reopen its alerts](#alertzero-close-false-positives-past-closures). Until you do, the {{az-attack-discovery}} {{az-worker}} skips them, so it might miss part of an attack.
 :::
-
-% For docs writers: After elastic/docs-content#9158 merges, point the link to alertzero-privileges.md in the approve outcome at its alertzero-action-privileges anchor.
 
 ## Check and reopen past closures [alertzero-close-false-positives-past-closures]
 

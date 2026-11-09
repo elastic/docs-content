@@ -13,9 +13,7 @@ products:
 
 The {{az-continuous-threat-hunt}} {{az-worker}} in the {{az-hunt-watch}} searches your data for activity that matches recent {{az-threat-reports}}. When the {{az-worker}} confirms a match, it adds a {{az-hunt-finding}} to the {{az-threat-report}}'s {{az-investigation}} and proposes response actions for the hosts and processes involved. The {{az-worker}} offers only {{az-manual}} {{az-autonomy}}, so every action it proposes waits for you.
 
-To learn what the {{az-worker}} searches and which sources it draws on, refer to [](watches-and-workers.md).
-
-% For docs writers: After the Watches and Workers reference (elastic/docs-content#9144) merges, link to its Hunt Watch section instead of the whole page.
+To learn what the {{az-worker}} searches and which sources it draws on, refer to [](watches-and-workers.md#alertzero-hunt-watch).
 
 ## How the {{az-continuous-threat-hunt}} {{az-worker}} reports a hunt [alertzero-hunt-finding-outcomes]
 
@@ -64,12 +62,10 @@ To dig deeper, open the matching events in Discover, or ask follow-up questions 
 
 For each response action, check what it does and why the {{az-worker}} picked it. Make sure the {{az-hunt-finding}} implicates the host or process it targets, and consider what stops working when you act on it. For example, isolating a server also cuts off the people and services that depend on it. Then approve or decline the action:
 
-- **If you approve:** The action runs under your account, through {{elastic-defend}}, so you need the [privileges to run it](alertzero-privileges.md). If you don't have them, or the host doesn't respond within 10 minutes, the action fails, and {{alertzero}} offers it again as a new {{az-proposed-action}} with the same deadline. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
+- **If you approve:** The action runs under your account, through {{elastic-defend}}, so you need the [privileges to run it](alertzero-privileges.md#alertzero-action-privileges). If you don't have them, or the host doesn't respond within 10 minutes, the action fails, and {{alertzero}} offers it again as a new {{az-proposed-action}} with the same deadline. The {{elastic-defend}} action might still run when the host comes back online, so check the [response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md) before you approve it again.
 - **If you decline:** The action doesn't run. The same happens if the {{az-proposed-action}} [expires](work-in-alertzero.md) before anyone decides.
 
 If you isolate a host, {{alertzero}} doesn't propose releasing it later. When it's safe to reconnect the host, [release it](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host) yourself. You can't undo the other response actions.
-
-% For docs writers: After elastic/docs-content#9158 merges, link to alertzero-privileges.md#alertzero-action-privileges.
 
 ## Follow up on the analyst recommendation [alertzero-hunt-finding-recommendation]
 
