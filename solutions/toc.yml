@@ -720,11 +720,9 @@ toc:
                   - file: security/get-started/spaces-defend-faq.md
               - file: security/get-started/data-views-elastic-security.md
               - file: security/get-started/create-runtime-fields-in-elastic-security.md
-      - hidden: security/alertzero/index.md
+      - file: security/alertzero/index.md
         children:
           - hidden: security/alertzero/set-up-alertzero.md
-            children:
-              - hidden: security/alertzero/requirements.md
           - hidden: security/alertzero/review-first-proposed-action.md
           - hidden: security/alertzero/use-alertzero.md
             children:
@@ -816,6 +814,7 @@ toc:
               - file: security/detect-and-alert/using-the-api.md
               - file: security/detect-and-alert/common-rule-settings.md
               - file: security/detect-and-alert/set-rule-data-sources.md
+              - file: security/detect-and-alert/plan-rule-performance.md
               - file: security/detect-and-alert/write-investigation-guides.md
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/advanced-data-source-configuration.md
