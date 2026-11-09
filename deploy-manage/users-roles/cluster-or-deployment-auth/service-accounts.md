@@ -95,11 +95,10 @@ For example, {{fleet}} server uses a service token to authenticate with {{es}} a
 When you [create a user-managed service account in {{kib}}](manage-service-accounts-in-kibana.md), {{kib}} creates and stores a service token named `kibana-managed` so applications such as Workflows can run on behalf of the account. This token isn't displayed. To authenticate requests from your own application, create an additional service token with the API.
 :::
 
-You can create a service token using the following methods:
+You can create a service token using either:
 
 * The [create service account token API]({{es-apis}}operation/operation-security-create-service-token) (recommended). The API stores the token in the `.security` index and returns the bearer token in the HTTP response. Tokens are available for authentication on all nodes and are included in cluster snapshots.
 * The [elasticsearch-service-tokens](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool, for built-in accounts on self-managed and {{eck}} deployments. The tool stores the token in the [`$ES_HOME/config/service_tokens` file](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) and outputs the bearer token to your terminal. This method is intended for environments where an external orchestration process, such as [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) or [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), manages and distributes the file.
-* The {{fleet}} UI in {{kib}}, for the built-in `elastic/fleet-server` account. Click **Generate service token** when [adding a {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md#add-fleet-server-on-prem-add-server).
 
 Both the API and CLI generate service tokens with a 22-character secret. {{es}} requires a secret of at least 10 characters and rejects shorter secrets without checking their value.
 
