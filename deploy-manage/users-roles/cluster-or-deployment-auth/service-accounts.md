@@ -47,7 +47,7 @@ The following built-in accounts are available:
 
 The `elastic` namespace is reserved for built-in accounts.
 
-In {{stack}}, you can create and delete service tokens for these accounts, but you can't change their predefined privileges.
+In {{stack}}, you can create and delete service tokens for these accounts, but you can't change their predefined privileges. On {{serverless-short}}, Elastic manages their credentials.
 
 ### User-managed service accounts [user-managed-service-accounts]
 ```{applies_to}
@@ -55,7 +55,9 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-You create user-managed service accounts and assign roles to control their privileges. These accounts belong to the deployment on {{stack}} or to the Cloud organization on {{serverless-short}}, rather than to the user who created them. In {{stack}}, accounts created in {{kib}} use the `kibana` namespace, and their principals have the form `kibana/<name>`.
+You create user-managed service accounts and assign roles to control their privileges. These accounts belong to the deployment on {{stack}} or to the Cloud organization on {{serverless-short}}, rather than to the user who created them.
+
+In {{stack}}, accounts created in {{kib}} use the `kibana` namespace, and their principals have the form `kibana/<name>`. On {{serverless-short}}, accounts have a generated identifier that is independent of the name you enter in {{kib}}.
 
 Use a user-managed service account when your workload needs its own identity to access {{es}} or {{kib}} APIs. Assign the roles required by the workload.
 
@@ -63,7 +65,7 @@ Use a user-managed service account when your workload needs its own identity to 
 
 :::{note}
 :applies_to: serverless: ga
-On {{serverless-short}}, user-managed service accounts can only be used within {{kib}} applications. For programmatic access from external applications, use [API keys](/deploy-manage/api-keys.md).
+On {{serverless-short}}, user-managed service accounts can only be used within {{kib}} applications. The {{es}} service account APIs aren't available for these accounts. For programmatic access from external applications, use [API keys](/deploy-manage/api-keys.md).
 :::
 
 To manage service accounts and use them in your workloads:
@@ -77,19 +79,6 @@ On {{stack}}, the {{es}} API reference also documents these operations:
 
 - [Create or replace an account]({{es-apis}}operation/operation-security-put-user-managed-service-account).
 - [Delete an account]({{es-apis}}operation/operation-security-delete-user-managed-service-account).
-
-### Service accounts in {{serverless-short}} [service-accounts-serverless]
-```{applies_to}
-serverless: ga
-```
-
-{{serverless-short}} uses the same [built-in service accounts](#built-in-service-accounts), with credentials managed by Elastic.
-
-User-managed accounts have a generated identifier that is independent of the name you enter in {{kib}}. Their identifiers don't use the `<namespace>/<service>` principal format of {{stack}} accounts.
-
-You can assign a user-managed account to a workflow, and {{kib}} manages the short-lived credentials used to run it. You can't obtain a token for an external application or manage these accounts through the {{es}} service account APIs. The service token instructions on this page apply to {{stack}}.
-
-The account's privileges are limited to those allowed by both its assigned roles and its creator's access at creation time. For details about role limits, cross-project search, and deleting accounts, refer to [Create and manage service accounts in {{kib}}](manage-service-accounts-in-kibana.md).
 
 ## Service account tokens [service-accounts-tokens]
 ```{applies_to}
