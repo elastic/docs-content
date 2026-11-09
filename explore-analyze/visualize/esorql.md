@@ -121,12 +121,9 @@ Other chart types, such as pie or metric, use a single query.
 
 A chart can combine these layer types:
 
-- **Visualization**: Plots the results of its own query.
-- **Annotations**: Mark an event or a period, such as a deployment, on a time axis.
-- **Reference lines**: Show a threshold, such as a target or a budget. How you set the values depends on your version:
-
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` **ES|QL reference lines** calculate the thresholds with a query. **Static reference lines** hold fixed values that you enter.
-    - {applies_to}`stack: ga 9.6` Reference lines hold fixed values that you enter.
+- [**Visualization**](#plot-another-query-in-its-own-layer): Plots the results of its own query.
+- [**Annotations**](#mark-events-with-annotations): Mark an event or a period, such as a deployment, on a time axis.
+- [**Reference lines**](#add-reference-lines): Show a threshold, such as a target or a budget.
 
 Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
 
