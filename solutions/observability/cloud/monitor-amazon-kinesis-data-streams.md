@@ -34,16 +34,11 @@ To collect Kinesis data stream metrics from Amazon CloudWatch, you typically nee
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
 :::::{dropdown} Quick guide: Add data
-1. In the Observability UI, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for and select the **Amazon Kinesis Data Stream** integration.
-3. Read the overview to make sure you understand integration requirements and other considerations.
-4. Click **Add Amazon Kinesis Data Stream**.
-
-    ::::{tip}
-    If you’re installing an integration for the first time, you may be prompted to install {{agent}}. If you see this page, click **Add integration only (skip agent installation)**.
-    ::::
-
-5. Configure the integration name and optionally add a description. Make sure you configure all required settings.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Amazon Kinesis Data Stream**.
+3. If the integration's **Overview** page opens, click **Add Amazon Kinesis Data Stream**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
+5. Configure the integration name and optionally add a description.
 6. Choose where to add the integration policy.
 
     * If {{agent}} is not already deployed locally or on an EC2 instance, click **New hosts** and enter a name for the new agent policy.
