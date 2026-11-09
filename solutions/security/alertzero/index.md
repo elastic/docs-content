@@ -13,10 +13,7 @@ products:
 
 {{alertzero}} is the agentic layer of {{elastic-sec}}. Its {{az-workers}} are AI agents that triage alerts, hunt for threats, tune detection rules, and investigate attacks on a schedule, so your team spends less time sorting through noise and more time on the decisions that need a person.
 
-When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} on the **{{az-proposed-actions-cap}}** page. Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you approve or decline instead of redoing the work.
-
-% For docs writers: For the 9.6 release, uncomment the following paragraph and remove the one before it.
-% When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} on the [**{{az-proposed-actions-cap}}** page](work-in-alertzero.md). Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you approve or decline instead of redoing the work.
+When a step needs a person, such as closing alerts, isolating a host, or changing a detection rule, a {{az-worker}} brings it to you as a {{az-proposed-action}} on the [**{{az-proposed-actions-cap}}** page](work-in-alertzero.md). Each {{az-proposed-action}} comes with an {{az-investigation}} that holds the {{az-worker}}'s evidence and conclusion, so you can check its reasoning before you approve or decline instead of redoing the work.
 
 ## What {{az-workers}} take on [alertzero-overview-watches]
 
