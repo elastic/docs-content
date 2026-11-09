@@ -1,4 +1,8 @@
 redirects:
+  # related to https://github.com/elastic/docs-content/pull/9157
+  'solutions/security/alertzero/review-closed-proposed-actions.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
+  'solutions/security/alertzero/decide-proposed-action.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
+  'solutions/security/alertzero/use-alertzero.md': 'solutions/security/alertzero/work-in-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/9158
   'solutions/security/alertzero/requirements.md': 'solutions/security/alertzero/set-up-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/4251
