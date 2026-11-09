@@ -176,6 +176,10 @@ If you edit a layer's query and its results no longer contain a compatible colum
    :::
 
 #### Mark events with annotations
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
 
 Annotations mark an event or a period on a time chart, such as a deployment or an outage. The chart needs a time axis, so **Annotations** stays unavailable until the horizontal axis shows time.
 
