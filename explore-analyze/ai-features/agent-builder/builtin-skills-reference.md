@@ -135,7 +135,7 @@ $$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$
 :   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover:
 
     * [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) rules
-    * {{observability}} rules created with {{alerting-v1-system}}
+    * {{observability}} rules created with {{alerting-v1-system-short}}
     * {{elastic-sec}} detection rules
 
     {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This skill was previously named `rule-management`. If a custom agent lists `rule-management`, replace that id with `rule-authoring`.
@@ -153,7 +153,7 @@ $$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$
 
     **Prerequisites:**
 
-    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This setting is on by default.
+    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system-short}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This setting is on by default.
     * {applies_to}`stack: experimental =9.5` The `agentBuilder:experimentalFeatures` advanced setting turned on. You can find it on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
     * {applies_to}`stack: experimental =9.5` To find or edit saved rules and action policies, the `contextEngine:enabled` advanced setting also turned on. You can find it on the **Space Settings** tab.
     * {applies_to}`stack: experimental 9.6+` A space that uses the Classic or {{observability}} solution view.
@@ -175,7 +175,7 @@ $$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {app
 
     **Prerequisites:**
 
-    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). This setting is on by default.
+    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system-short}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). This setting is on by default.
     * {applies_to}`stack: experimental 9.6+` A space that uses the Classic or {{observability}} solution view.
     * {applies_to}`serverless: experimental` An {{obs-serverless}} project.
 

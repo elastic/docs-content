@@ -21,7 +21,7 @@ Every term and acronym used in the Workflows documentation. Each entry links to 
 
 ### Action [workflows-glossary-action]
 
-In alerting, an operation a rule takes when it fires. Workflows runs as an action through the **Run workflow** rule action. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
+In {{alerting-v1-system}}, an operation a rule takes when it fires. Workflows runs as an action through the **Run workflow** rule action. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
 
 ### Agent Builder [workflows-glossary-agent-builder]
 
@@ -37,7 +37,7 @@ One of `new`, `ongoing`, or `recovered`. Workflows can trigger on any combinatio
 
 ### Alerting rule [workflows-glossary-alerting-rule]
 
-A {{kib}} construct that watches data and fires when a condition is met. Triggers alert-type workflows. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
+A {{alerting-v1-system-short}} rule that watches data and fires when a condition is met. Triggers alert-type workflows. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
 
 ### Anatomy [workflows-glossary-anatomy]
 

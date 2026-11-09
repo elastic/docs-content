@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create Universal Alerting rules and action policies with Agent Builder. Describe what to monitor in natural language, review the proposal, and save the rule, workflow, and action policy."
+description: "Create Kibana Universal Alerting rules and action policies with Agent Builder. Describe what to monitor in natural language, review the proposal, and save the rule, workflow, and action policy."
 ---
 
 # Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
@@ -31,7 +31,7 @@ Select **Create rule** → **Create with agent**. When the Rules list is empty, 
 
 Alternatively, open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the [`rule-authoring`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-rule-authoring-skill) skill configured.
 
-The `rule-authoring` skill covers {{esql}} query patterns, thresholds, grouping, and the {{alerting-v2-system}} data model.
+The `rule-authoring` skill covers {{esql}} query patterns, thresholds, grouping, and the {{alerting-v2-system-short}} data model.
 
 ### Review the proposal [ai-agent-review-proposal]
 
@@ -71,7 +71,7 @@ Action policies invoke workflows for alerts only. If you ask the agent to set up
 - **Saved rule** - Whether a rule opens alerts can't change after you save it. The agent offers to create a new rule with the same query and schedule that opens alerts, then set up notifications on that rule.
 :::
 
-- **Workflows** - Workflows are the delivery mechanism. They define what happens when {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
+- **Workflows** - Workflows are the delivery mechanism. They define what happens when {{alerting-v2-system-short}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
 - **Action Policies** - Action policies are the gating mechanism. {{kib}} evaluates them against the rule's alerts and invokes the workflow for the alerts they apply to. When you create an action policy with a rule, the policy applies to that rule's alerts.
     * The agent links the policy to the rule with a [routing tag](../action-policies/create-configure-action-policy.md#routing-tags).
         * If the rule already has a routing tag that no other rule uses, the agent can reuse it.
