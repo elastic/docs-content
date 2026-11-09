@@ -59,9 +59,13 @@ triggers:
   - type: entityStore.entityRiskScoreChanged   # tech preview (9.5+)
     on:
       condition: 'event.direction: "increase" AND event.delta >= 25'
+
+  - type: ai.conversation.updated      # tech preview (9.6+), opt-in templates only
+    on:
+      condition: 'event.templateId: "investigation" and event.eventTypes: "user_message"'
 ```
 
-The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. The entity store trigger family also includes `entityStore.entityAssetCriticalityUpdated`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
+The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. The entity store trigger family also includes `entityStore.entityAssetCriticalityUpdated`. The {{agent-builder}} trigger family also includes `ai.attachmentAdded`, `ai.attachmentUpdated`, `ai.attachmentDeleted`, and `ai.conversation.metadataUpdated`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
 
 Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/workflows/triggers.md).
 
@@ -105,6 +109,8 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Pause | `wait`, `waitForInput` |
 | Transform data | `data.filter`, `data.map`, `data.aggregate`, `data.parseJson`, `data.regexExtract` |
 | Call AI | `ai.prompt`, `ai.classify`, `ai.summarize`, `ai.agent` |
+| Create or add to an {{agent-builder}} conversation {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | `ai.conversation.create` (tech preview), `ai.conversation.add_event`, `ai.conversation.add_user_message` |
+| Manage conversation attachments and metadata {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | `ai.attachment.add`, `ai.attachment.update`, `ai.attachment.delete`, `ai.attachment.read`, `ai.attachment.list`, `ai.conversation.metadata.read`, `ai.conversation.metadata.patch` |
 | Call another workflow | `workflow.execute` (synchronous), `workflow.executeAsync` (asynchronous, tech preview) |
 | Log | `console` |
 

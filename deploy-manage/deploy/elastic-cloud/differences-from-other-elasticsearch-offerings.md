@@ -65,7 +65,7 @@ These capabilities cover identity and access, security and networking, infrastru
 | **Feature**  | {{ech}} | Serverless projects| Notes  |
 |----------|----------------------|--------------------|--------|
 | **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | Available across {{ech}} and Serverless using deployment/project and cloud API key types. |
-| **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
+| **Audit logging** | ✅ | ✅ | Available in {{ech}} through [Stack audit logging](/deploy-manage/monitor/stack-audit-logging.md) and the [{{ecloud}} audit trail](/deploy-manage/monitor/cloud-audit-trail.md) ({{fedramp-mod}} only), and in {{serverless-short}} through the [Serverless audit trail](/deploy-manage/monitor/log-delivery/audit-trail.md) |
 | **Authentication and SSO** | Deployment-level [authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) and organization-level [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) | Organization-level [user management](/deploy-manage/users-roles/cloud-organization/manage-users.md) and [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) | Serverless does not provide deployment-level realm configuration. |
 | **BYO-Key for encryption at rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
