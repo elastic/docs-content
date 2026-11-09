@@ -94,6 +94,8 @@ In the Lens editor, use the {icon}`brush` **Style** and ![Legend icon](/explore-
 You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_square` , then choose the layer type and select the {{data-source}}. 
 To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To add layers to a visualization built from an {{esql}} query, refer to [Add multiple layers to {{esql}} charts](esorql.md#esql-viz-multi-layer).
+
 ::::
 
 ::::{step} Save and add the panel
