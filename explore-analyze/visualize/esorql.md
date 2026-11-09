@@ -111,6 +111,8 @@ serverless: ga
 
 If the series you want to compare come from different queries, you can plot each query in its own layer on the same chart. You can also add annotations and reference lines on top of the data.
 
+Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
+
 Layers are available on these chart types:
 
 - Bar
@@ -124,8 +126,6 @@ A chart can combine these layer types:
 - [**Visualization**](#plot-another-query-in-its-own-layer): Plots the results of its own query.
 - [**Annotations**](#mark-events-with-annotations): Mark an event or a period, such as a deployment, on a time axis.
 - [**Reference lines**](#add-reference-lines): Show a threshold, such as a target or a budget.
-
-Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
 
 To add a layer, select {icon}`plus` **Add layer** in the editor, then select the type of layer. The new layer opens in its own tab.
 
