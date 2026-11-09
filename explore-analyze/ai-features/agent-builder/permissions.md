@@ -99,7 +99,7 @@ Conversations, custom agents, and custom tools are scoped to the current {{kib}}
 
 {applies_to}`stack: ga 9.4+` The default Elastic AI Agent is an exception: it is a persisted, space-aware agent that is automatically created in each space.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Each space can also have a [space default agent](agent-builder-agents.md#space-default-agent). In the {{agent-builder}} UI, users without the **Create and edit agents** privilege can only use that agent in that space.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Each space can also have a [space default agent](agent-builder-agents.md#space-default-agent). In the {{agent-builder}} UI, users without the **Create and edit agents** privilege can only use that agent, as long as they can view it.
 
 In a role or API key descriptor, specify the space in the application privilege resource. For example, use `"resources": ["space:production"]` for the `production` space. Users and API keys cannot access resources in spaces outside their assigned resources.
 

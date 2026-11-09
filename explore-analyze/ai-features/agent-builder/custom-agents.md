@@ -259,11 +259,13 @@ From the **Agents** page, you can perform various actions on custom agents:
 - **Edit**: Modify the agent's settings, instructions, tools, or appearance.
 - **Clone**: Create a copy of the agent as a starting point for a new agent.
 - **Delete**: Remove the agent from your workspace.
-- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Set as space default**: Make the agent the [space default agent](agent-builder-agents.md#space-default-agent).
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Set as space default**: Make the agent the [space default agent](agent-builder-agents.md#space-default-agent). You need the **Create and edit agents** privilege. This action isn't available for hidden agents.
+
+The actions menu for a custom agent includes these options, plus **Manage access** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` for agents whose access you can change:
 
 :::{image} images/chat-edit-clone-delete.png
 :screenshot:
-:alt: Agent context menu showing Chat, Edit, Clone, and Delete options
+:alt: Actions menu for an agent showing Chat, Edit, Clone, Manage access, Set as space default, and Delete
 :width: 130px
 :::
 

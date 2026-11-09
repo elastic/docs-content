@@ -79,7 +79,9 @@ stack: ga 9.3+
 
 Use the agent selector to switch agents, to navigate to the agent management section, or to create a new agent. An agent's behavior is defined by its custom instructions and available tools. Switch agents when you need different capabilities for your tasks.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If the space has a [space default agent](agent-builder-agents.md#space-default-agent) and you don't have the privilege to create and edit agents, the agent selector lists only that agent.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If the space has a [space default agent](agent-builder-agents.md#space-default-agent) and you don't have the privilege to create and edit agents, the agent selector lists only that agent, as long as you can view it.
+
+The following image shows the agent selector:
 
 :::{image} images/agent-builder-agent-selector.png
 :screenshot:

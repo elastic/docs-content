@@ -149,7 +149,7 @@ $$$default-agent$$$
 Default agent {applies_to}`stack: ga 9.4+`
 :   The Elastic AI Agent, which is automatically created in each {{kib}} space and acts as the starting agent for new conversations. See [](builtin-agents-reference.md#elastic-ai-agent).
 
-    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Not the same as the [](#space-default-agent). When a space has a space default agent, users without the privilege to create and edit agents start on that agent instead.
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Not the same as the [](#space-default-agent).
 
 $$$default-model$$$
 Default model
@@ -327,7 +327,7 @@ Space
 
 $$$space-default-agent$$$
 Space default agent {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-:   An agent that a user with the privilege to create and edit agents assigns as the default for a {{kib}} space. In the {{agent-builder}} UI, users in that space without that privilege can only use the space default agent. See [](agent-builder-agents.md#space-default-agent).
+:   The only agent that users without the privilege to create and edit agents can use in the {{agent-builder}} UI for a {{kib}} space. Users with the privilege set it. See [](agent-builder-agents.md#space-default-agent).
 
 $$$standalone-mode$$$
 Standalone mode
