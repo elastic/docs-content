@@ -130,14 +130,26 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
     :::
 
 $$$agent-builder-cases-analytics-skill$$$ `cases-analytics` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Answers reporting questions about [cases](/explore-analyze/cases.md). It covers volume and trends, closure rate, time to resolve and related timings, time in status, assignee workload, and breakdowns of alerts, observables, and custom fields. The skill queries the [case analytics indices](/explore-analyze/cases/case-analytics-indices.md) with {{esql}} and can build a chart from the result. To arrange several charts on one dashboard, it uses the [`dashboards`](#agent-builder-dashboards-skill) skill (`dashboard-management` in 9.5). Creating, reading, or updating a single case stays with [`cases-management`](#agent-builder-cases-management-skill).
+:   Answers reporting questions about [cases](/explore-analyze/cases.md) by querying the [case analytics indices](/explore-analyze/cases/case-analytics-indices.md) with {{esql}}. Use it to:
+
+    - Report on case volume and trends, closure rate, time to resolve, and time in status.
+    - Report on assignee workload.
+    - Break down alerts, observables, and custom fields.
+    - Build a chart from the result.
+    - Arrange several charts on a dashboard, using the [`dashboards`](#agent-builder-dashboards-skill) skill (named `dashboard-management` in 9.5).
+
+    To create, read, or update a single case, use [`cases-management`](#agent-builder-cases-management-skill) instead.
 
     :::{dropdown} Assigned tools
     `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.get_index_mapping`, `platform.core.create_visualization`, `platform.core.cases`
 
     :::
 
-    **Prerequisites:** `xpack.cases.analyticsV2.enabled` must be `true` for this skill to appear. The setting defaults to `true`. {applies_to}`stack: preview 9.5` To turn the skill off, set it to `false` in [`kibana.yml`](/deploy-manage/stack-settings.md). Queries run as the current user. [Grant access to the case analytics indices](/explore-analyze/cases/control-case-access.md#give-analytics-access). A role with direct access to those indices can read case data across spaces and solutions.
+    **Prerequisites:**
+
+    - The `xpack.cases.analyticsV2.enabled` setting must be `true`. It defaults to `true`. To turn off the skill in {{stack}}, set it to `false` in [`kibana.yml`](/deploy-manage/stack-settings.md). This also turns off the case analytics indices (`.cases`, `.cases-activity`, and `.cases-attachments`) and the **Case Analytics** data view.
+    - Starting in 9.6, the skill is hidden in spaces that use the {{es}} solution view. On {{serverless-short}}, it's available only in {{observability}} and {{elastic-sec}} projects, not in {{es-serverless}} projects.
+    - Queries run as the current user. Users with **Cases** privilege **Read** or higher can query only the cases they can access. To report across all spaces and solutions, [grant direct access to the case analytics indices](/explore-analyze/cases/control-case-access.md#give-analytics-access).
 
 $$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Composes, discovers, and modifies alerting rules and action policies from within a conversation.

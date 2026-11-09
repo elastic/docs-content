@@ -32,7 +32,7 @@ The following table shows the minimum privileges required for each activity. Hig
 | Manage connectors and push cases externally | **Cases: All** + **{{connectors-feature}}: All** (under **Management**) |
 | Manage case templates and the field library {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` | **Cases: All** + **Manage templates** sub-feature privilege |
 | Add alerts to cases | **Cases: All** + alert privileges for your solution (refer to [Give access to add alerts to cases](#give-alerts-access) for more information) |
-| Report on case data with the analytics indices | **read** and **view_index_metadata** {{es}} index privileges (refer to [Give access to the case analytics indices](#give-analytics-access) for more information) |
+| Report on case data across all spaces and solutions with the analytics indices | **read** and **view_index_metadata** {{es}} index privileges (refer to [Give access to the case analytics indices](#give-analytics-access) for more information) |
 
 ## Create custom roles for cases [create-custom-roles]
 
@@ -181,7 +181,7 @@ stack: preview 9.2-9.4, ga 9.5+
 serverless: ga
 ```
 
-To let users report on case data, grant them read access to the [case analytics indices](case-analytics-indices.md). {{kib}} Cases feature privileges don't apply to these indices, so grant access with {{es}} index privileges instead.
+To let users report on case data, grant them read access to the [case analytics indices](case-analytics-indices.md).
 
 :::::{applies-switch}
 
@@ -194,9 +194,11 @@ To let users report on case data, grant them read access to the [case analytics 
 | `.cases-activity` | What happened to cases over time, such as status changes, comments, and who made each change. |
 | `.cases-attachments` | What's attached to cases, such as alerts, comments, files, dashboards, and visualizations. |
 
-By default, only users with sufficient {{es}} privileges (such as a superuser) can read them. To give other users access, grant them the required privileges on the indices directly.
+Users with the {{kib}} **Cases** feature privilege **Read** or higher can already query these indices. {{es}} limits their results to the cases in the spaces and solutions their role covers.
 
-To grant access, create an {{es}} role with the `read` and `view_index_metadata` privileges on the analytics indices, and set `allow_restricted_indices` to `true`. Then assign the role to your users.
+Users without **Cases** privileges can't read the indices unless they have sufficient {{es}} privileges, such as a superuser.
+
+To let users report on case data across all spaces and solutions, grant them the required privileges on the indices directly. Create an {{es}} role with the `read` privilege on the analytics indices. Add `view_index_metadata` if users also need to retrieve the index mappings. Then assign the role to your users.
 
 For example, the following request creates a `cases_analytics_reader` role with read access to all three indices:
 
@@ -206,20 +208,19 @@ PUT _security/role/cases_analytics_reader
   "indices": [
     {
       "names": [".cases", ".cases-activity", ".cases-attachments"],
-      "privileges": ["read", "view_index_metadata"],
-      "allow_restricted_indices": true
+      "privileges": ["read", "view_index_metadata"]
     }
   ]
 }
 ```
 
 :::{warning}
-A role with read access to these indices can query case data across all spaces and solutions, regardless of which spaces or solutions the user works in. Grant this access carefully, and filter by `space_id` and `owner` in your queries and visualizations to limit scope.
+A role with direct read access to these indices isn't limited to the user's spaces and solutions. It can query case data across all of them. Grant this access carefully, and filter by `space_id` and `owner` in your queries and visualizations to limit scope.
 :::
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4
-Grant your role at least `read` and `view_index_metadata` privileges on the case analytics indices. Each solution and space has its own set of indices, so use the `.internal.cases*` pattern to cover them all, or target specific indices by name. To find the right index names, refer to [Case analytics indices](case-analytics-indices.md#case-analytics-indices-list).
+{{kib}} Cases feature privileges don't apply to these indices, so grant access with {{es}} index privileges instead. Grant your role at least `read` and `view_index_metadata` privileges on the case analytics indices. Each solution and space has its own set of indices, so use the `.internal.cases*` pattern to cover them all, or target specific indices by name. To find the right index names, refer to [Case analytics indices](case-analytics-indices.md#case-analytics-indices-list).
 ::::
 
 :::::
