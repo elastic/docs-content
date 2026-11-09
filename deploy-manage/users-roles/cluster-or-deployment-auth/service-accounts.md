@@ -86,7 +86,7 @@ stack: all
 serverless: unavailable
 ```
 
-A service account token, or service token, is a credential that a service or workload uses to authenticate with {{es}}. User-managed service accounts can also use service tokens to authenticate with {{kib}}. Keep service tokens secret.
+A service account token, or service token, is a credential that a service or workload uses to authenticate requests to {{es}} or {{kib}} APIs. Treat service tokens as secrets: anyone who has a valid token can authenticate as the service account.
 
 For example, {{fleet}} server uses a service token to authenticate with {{es}} and manage its own API keys. You can create multiple service tokens for the same service account. This lets multiple instances of a service use the same identity without sharing credentials.
 
