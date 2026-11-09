@@ -506,10 +506,10 @@ $$$monitor-http-kerberos$$$
     :   **Required**. The Kerberos principal. Both authentication types need it.
 
     **`password`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
-    :   The principal's password. **Required** when `auth_type` is `password`.
+    :   **Required** when `auth_type` is `password`. The principal's password.
 
     **`keytab`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
-    :   Path to the keytab file on the {{agent}} host. **Required** when `auth_type` is `keytab`. **Keytab file path** in the UI.
+    :   **Required** when `auth_type` is `keytab`. Path to the keytab file on the {{agent}} host. **Keytab file path** in the UI.
 
     **`config_path`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
     :   Path to the `krb5.conf` file on the {{agent}} host, for example `/etc/krb5.conf`. Kerberos needs exactly one of `config_path` and `krb5_conf`. **Configuration file path** in the UI.
@@ -521,18 +521,20 @@ $$$monitor-http-kerberos$$$
     :   **Required**. The Kerberos realm, for example `CORP.LOCAL`.
 
     **`service_name`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
-    :   The service principal name (SPN) to request a ticket for. Optional: if you leave it empty, the monitor requests `HTTP/<host>`, taking the host from the monitor URL.
+    :   **Optional**. The service principal name (SPN) to request a ticket for. If you leave it empty, the monitor requests `HTTP/<host>`, taking the host from the monitor URL.
 
     **`enable_krb5_fast`** ([boolean](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
     :   Set to `true` to use Kerberos Flexible Authentication Secure Tunneling (FAST). FAST conflicts with some Active Directory configurations, so leave it off unless your realm requires it. **Enable Kerberos FAST** in the UI.
 
         **Default**: `false`
 
+    ::::{note}
     Kerberos is only supported on a [{{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), not on Elastic managed locations. `keytab` and `config_path` name files on the {{agent}} host.
 
     Kerberos needs version 1.12.0 or later of the Synthetics integration. Upgrade the package in {{fleet}} before you save the monitor. Saving against an older package fails.
 
     An {{agent}} built in FIPS mode has no Kerberos support at all, so a monitor that uses it fails on a {{private-location}} running a FIPS build.
+    ::::
 
     **Example**:
 
@@ -575,14 +577,16 @@ $$$monitor-http-ntlm$$$
     :   **Required**. The password to authenticate with.
 
     **`domain`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
-    :   The Windows domain to authenticate against. Optional if `username` already includes it, as in `DOMAIN\user` or `user@domain`.
+    :   **Optional**. The Windows domain to authenticate against. You can omit it if `username` already includes the domain, as in `DOMAIN\user` or `user@domain`.
 
     **`workstation`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
-    :   The client name to send in the NTLM negotiate message. Optional.
+    :   **Optional**. The client name to send in the NTLM negotiate message.
 
+    ::::{note}
     NTLM is only supported on a {{private-location}}, not on Elastic managed locations. Like Kerberos, it needs version 1.12.0 or later of the Synthetics integration. Upgrade the package in {{fleet}} before you save the monitor.
 
     An {{agent}} built in FIPS mode rejects NTLM, which relies on MD4 and RC4, so a monitor that uses it fails on a {{private-location}} running a FIPS build.
+    ::::
 
     **Example**:
 
