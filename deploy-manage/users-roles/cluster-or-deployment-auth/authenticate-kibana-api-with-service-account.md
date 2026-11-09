@@ -17,7 +17,7 @@ products:
 
 Use a service token to authenticate programmatic requests to {{kib}} as a user-managed service account. The account provides a non-human identity whose privileges come from its assigned roles.
 
-On {{serverless-full}}, use [API keys](/deploy-manage/api-keys.md) for programmatic access from external applications, because service account tokens aren't available for this use.
+Service accounts can't be used with external applications on {{serverless-full}}. For programmatic access from external applications, use [API keys](/deploy-manage/api-keys.md).
 
 ## Before you begin [authenticate-kibana-api-service-account-prerequisites]
 
@@ -47,9 +47,6 @@ curl --request GET "$KIBANA_URL/api/spaces/space" \
   --header "Authorization: Bearer $SERVICE_ACCOUNT_TOKEN"
 ```
 
-Ensure that your [HTTP authentication configuration](kibana-authentication.md#http-authentication) accepts the `Bearer` scheme.
-
-The response depends on the account's roles. A `403` response means the account authenticated but doesn't have the required privilege. Add privileges by editing the assigned role rather than assigning broad administrative roles to the account.
 
 For requests that change data, also include the headers required by that API, such as `kbn-xsrf`.
 

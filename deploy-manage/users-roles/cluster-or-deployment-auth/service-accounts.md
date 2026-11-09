@@ -55,7 +55,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-You create these accounts and assign roles to control their privileges. The accounts belong to the deployment on {{stack}} or to the Cloud organization on {{serverless-short}}, rather than to the user who created them. In {{stack}}, accounts created in {{kib}} use the `kibana` namespace, and their principals have the form `kibana/<name>`.
+You create user-managed service accounts and assign roles to control their privileges. These accounts belong to the deployment on {{stack}} or to the Cloud organization on {{serverless-short}}, rather than to the user who created them. In {{stack}}, accounts created in {{kib}} use the `kibana` namespace, and their principals have the form `kibana/<name>`.
 
 Use a user-managed service account when your workload needs its own identity to access {{es}} or {{kib}} APIs. Assign the roles required by the workload.
 
@@ -103,7 +103,7 @@ For example, {{fleet}} server uses a service token to authenticate with {{es}} a
 
 :::{note}
 :applies_to: stack: ga 9.6+
-When you create a user-managed service account in {{kib}}, {{kib}} creates and stores a service token so applications such as Workflows can run on behalf of the account. This token isn't displayed. To authenticate requests from your own application, create an additional service token with the API.
+When you create a user-managed service account in {{kib}}, {{kib}} creates and stores a service token named `kibana-managed` so applications such as Workflows can run on behalf of the account. This token isn't displayed. To authenticate requests from your own application, create an additional service token with the API.
 :::
 
 You can create a service token using either:

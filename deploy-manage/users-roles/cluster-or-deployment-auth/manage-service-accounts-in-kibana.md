@@ -16,7 +16,7 @@ products:
 
 # Create and manage service accounts in {{kib}} [manage-service-accounts-kibana]
 
-Create user-managed service accounts and assign roles to control programmatic access to {{es}} and {{kib}} APIs. Accounts created in {{kib}} are ready to use with applications such as [Workflows](/explore-analyze/workflows.md), and {{kib}} automatically manages the credentials needed to run workloads as those accounts.
+Create user-managed service accounts and assign roles to control programmatic access to {{es}} and {{kib}} APIs. Accounts created in {{kib}} are ready to use with {{kib}} applications such as [Workflows](/explore-analyze/workflows.md). On {{stack}} deployments, you can also use them with your own applications by [creating a service token](authenticate-kibana-api-with-service-account.md#create-service-account-api-token).
 
 Some service account capabilities differ between [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) and other [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type). This guide uses {{stack}} deployments to refer to {{ech}}, {{ece}}, {{eck}}, and self-managed deployments.
 
@@ -33,7 +33,7 @@ Before you create or manage service accounts, check these requirements:
 
 - Sign in to {{kib}} as a user with the `manage_security` cluster privilege. Without it, the **Service accounts** page isn't available.
 - {applies_to}`self: ga` Set [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-encryptionkey) in `kibana.yml`. {{kib}} uses this key to encrypt the stored credential.
-- On {{stack}} deployments, make sure service accounts are enabled in {{kib}}. They're enabled by default. If they've been turned off, set [`xpack.security.serviceAccounts.enabled`](kibana://reference/configuration-reference/security-settings.md#service-account-settings) to `true` before continuing.
+- On {{stack}} deployments, service accounts must be enabled in {{kib}}. This is the default. If your deployment turns them off, set [`xpack.security.serviceAccounts.enabled`](kibana://reference/configuration-reference/security-settings.md#service-account-settings) to `true` to re-enable them.
 
 ## Create a service account [create-service-account-kibana]
 
@@ -48,7 +48,7 @@ Create a service account with the roles your workloads need:
     For details on predefined roles and how to create custom roles, refer to:
 
     - {{stack}} deployments: [Built-in roles](elasticsearch://reference/elasticsearch/roles.md) and [role management in {{kib}}](kibana-role-management.md).
-    - {{serverless-short}} projects: [Predefined roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) and [custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
+    - {{serverless-short}} projects: [Predefined roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) and [custom roles](/deploy-manage/users-roles/serverless-custom-roles.md). Before you assign roles, review the [role limits in {{serverless-short}}](#service-account-serverless-roles).
 
 6. Review the selected roles, and click **Create account**.
 7. Confirm that the account appears in the **Service accounts** table with the roles you selected. On {{stack}} deployments, the account uses the principal `kibana/<name>`.
@@ -64,19 +64,14 @@ serverless: ga
 
 A service account can have up to 50 roles. Its privileges come from its assigned roles and cannot exceed the access its creator had when the account was created.
 
-Roles reserved for internal use by [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md) aren't available in the role picker.
-
 When a workload uses [cross-project search](/explore-analyze/cross-project-search.md), its service account's predefined roles apply across linked projects. For a custom role to grant access to a linked project, that project must define a role with the same name. Custom roles aren't copied between projects.
 
-% Pending confirmation from Larry: determine whether role assignment is restricted when linked projects have different project types. No restriction was found in the code reviewed.
 
 ## Review service accounts [review-service-accounts-kibana]
 
 The **Service accounts** table shows each account's name, description, roles, creator, and number of bound workloads. A **Disabled** badge identifies accounts that can't authenticate. Use the **Role** filter to find accounts assigned to specific roles.
 
 When an account has bound workloads, click **View** in the **Workloads** column to review them.
-
-{applies_to}`serverless: unavailable` Accounts created directly through the [{{es}} API]({{es-apis}}operation/operation-security-put-user-managed-service-account) also appear in the table, but don't have associated {{kib}} workloads.
 
 ## Update a service account [update-service-account-kibana]
 
@@ -126,19 +121,13 @@ To delete a service account:
 
 If you force delete an account, workloads assigned to it fail on their next run. To restore access, assign each affected workload a valid service account. This reassignment is required even if you recreate the deleted account with the same name. For Workflows, [assign a service account to each affected workflow](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md#assign-workflow-service-account).
 
-### Credentials after deletion in {{serverless-short}} [delete-service-account-serverless-credentials]
-```{applies_to}
-serverless: ga
-```
-
-Deleting an account stops new tokens from being issued immediately. Tokens already issued remain valid until they expire, which takes a few minutes at most.
 
 ### Credentials after deletion in {{stack}} deployments [delete-service-account-stack-credentials]
 ```{applies_to}
 serverless: unavailable
 ```
 
-Deleting an account through {{kib}} attempts to remove every service token, including the credential it stores for workloads and tokens created outside {{kib}}. It also attempts to invalidate any short-lived access tokens used to run workloads as the account. If any credential cleanup fails, {{kib}} completes the deletion and reports a warning.
+Deleting an account through {{kib}} attempts to remove every service token, including the credential it stores for workloads and tokens created outside {{kib}}. If any credential cleanup fails, {{kib}} completes the deletion and reports a warning.
 
 A service token left behind after deletion can't authenticate, but it prevents you from creating another account with the same name until you delete the token. If you delete an account directly through the {{es}} API, short-lived access tokens already issued to the account remain valid until they expire, 20 minutes after issuance by default.
 
@@ -151,5 +140,5 @@ API keys owned by the account aren't invalidated when you delete the account. {{
 Use these guides to work with service accounts and learn more about their credentials:
 
 - [Run a workflow as a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md).
-- {applies_to}`{serverless: unavailable}` [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
+- {applies_to}`serverless: unavailable` [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
 - Learn more about [service account types and credentials](service-accounts.md).
