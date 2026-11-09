@@ -146,6 +146,7 @@ import { startTracesSdk } from '@opentelemetry/browser-sdk/traces';
 // The traces SDK start function sets all necessary components and registers a provider
 // for instrumentations and calls to the API to start and end spans
 const tracesSdk = startTracesSdk({
+  logLevel: OTEL_LOG_LEVEL,
   resourceAttributes: OTEL_RESOURCE_ATTRIBUTES,
   contextManager: new ZoneContextManager()
   exportConfig: {
@@ -185,6 +186,7 @@ import { startLogsSdk } from '@opentelemetry/browser-sdk/logs';
 // The logs SDK start function sets all necessary components and registers a provider
 // for instrumentations and calls to the API to emit logs
 const logsSdk = startLogsSdk({
+  logLevel: OTEL_LOG_LEVEL,
   resourceAttributes: OTEL_RESOURCE_ATTRIBUTES,
   exportConfig: {
     // Set the logs endpoint based on the config provided
@@ -198,7 +200,7 @@ const logsSdk = startLogsSdk({
 
 :::::{step} (Optional) Configure metrics
 
-Unlike other signals thre is no utility function in the upstream SDK. So you need to configure a [MeterProvider](https://opentelemetry.io/docs/concepts/signals/metrics/#meter-provider) for metrics. A MeterProvider requires several components:
+Unlike other signals there is no utility function in the upstream SDK. So you need to configure a [MeterProvider](https://opentelemetry.io/docs/concepts/signals/metrics/#meter-provider) for metrics. A MeterProvider requires several components:
 
 - **Resource**: The resource to be associated with the metrics created by the meters.
 - **Metric Reader**: Used to determine how often metrics are collected and what destination they should be exported to. In this case, use a `PeriodicExportingMetricReader` configured to collect and export metrics at a fixed interval.
