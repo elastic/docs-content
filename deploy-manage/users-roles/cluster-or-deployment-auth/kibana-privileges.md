@@ -243,7 +243,7 @@ These privileges control specific actions on {{az-investigations}} and {{az-esca
 | --- | --- |
 | **Manage investigations** | Assign {{az-investigations}} and change their status, including closing and reopening them. |
 | **View escalations** | View {{az-escalations}}. |
-| **Manage escalations** | Create {{az-escalations}}, add {{az-investigations}} to them, and change who is assigned to them. To close an {{az-escalation}}, users also need **Manage investigations**.|
+| **Manage escalations** | Create {{az-escalations}}, add {{az-investigations}} to them, and change who is assigned to them. To close an {{az-escalation}}, you also need **Manage investigations**.|
 :::
 
 ## Privileges in the Management group [kibana-privileges-management]
