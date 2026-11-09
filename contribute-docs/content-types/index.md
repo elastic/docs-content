@@ -49,6 +49,12 @@ The guides are particularly powerful when combined with LLMs by putting them int
 - **Diagnose structural problems:** Give the LLM all the guides plus a page that feels "off" and ask it to pinpoint where the structure breaks down. It can often spot issues (like interleaved content types) that are hard to see when you're close to the content.
 - **Make the guides always available:** Add them to your LLM's system prompt, a custom project, or an AI-assisted PR review workflow so they're applied automatically without extra effort.
 
+## Start with a statement of intent
+
+Every page has a purpose, whether it's to explain a concept, complete a task, teach a skill, or resolve a problem. A short introduction should state that intent: what the page covers and the benefit to readers.
+
+A clear statement of intent sets expectations up front. Readers can quickly tell whether they're in the correct place, and know what they'll learn or achieve if they continue. It also helps reviewers and LLMs check the rest of the page against its stated purpose.
+
 ## Mixing different content types
 
 Some documentation pages combine multiple content types.
