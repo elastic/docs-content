@@ -203,7 +203,7 @@ On {{esql}} visualizations, you can define a reference line in the following way
 - **With a fixed value**: Draw the line at a number that you choose.
 
     1. Select {icon}`plus` **Add layer** → **Reference lines**.
-    2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select **Static reference lines**.
+    2. If you're asked for a source, select **Static reference lines**.
     3. Set the value where you want the line to appear.
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` **With a value from an {{esql}} query**: Calculate the threshold from your data, for example an average.
