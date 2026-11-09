@@ -177,7 +177,14 @@ If you edit a layer's query and its results no longer contain a compatible colum
 
 Annotations mark an event or a period on a time chart, such as a deployment or an outage. The chart needs a time axis, so **Annotations** stays unavailable until the horizontal axis shows time.
 
-Select {icon}`plus` **Add layer** → **Annotations**. {{kib}} creates a new annotation straight away. In a point-and-click visualization, you choose between a new annotation and one from the annotation library, and an annotation can be based on a query. {{esql}} charts offer neither. Each annotation is placed manually: set **Annotation date**, or turn on **Apply as range** and set **From** and **To**.
+For example, in the chart that compares server and client errors, the client errors spike on one day. To mark that day:
+
+1. Select {icon}`plus` **Add layer** → **Annotations**. {{kib}} creates an annotation straight away.
+2. Set **Annotation date** to the time of the spike.
+
+To mark a period instead, such as an outage, turn on **Apply as range** and set **From** and **To**.
+
+If you're used to adding [annotations](lens.md#add-annotations) to visualizations created using the point-and-click editor, annotations on {{esql}} visualizations work differently. You place each annotation yourself, by date or by date range. You can't base an annotation on a query or reuse one from the annotation library.
 
 #### Add reference lines
 
@@ -189,8 +196,6 @@ A reference line shows a threshold, such as a target or a budget, so you can see
     - **ES|QL reference lines**: Calculate the thresholds with a separate query, independent of the queries of your data layers. Each column of numbers that the query returns can become a line.
 
 - {applies_to}`stack: ga 9.6` Select {icon}`plus` **Add layer** → **Reference lines**, then enter fixed values.
-
-In a point-and-click visualization, you add a reference line first, then choose in its settings how to calculate it, for example with a formula. On an {{esql}} chart, you choose the source when you add the layer.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` For example, to draw a line at the average number of requests per time bucket, add an **ES|QL reference lines** layer with this query. It reuses the time-bucket query and averages its results:
 
