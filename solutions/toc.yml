@@ -720,7 +720,7 @@ toc:
                   - file: security/get-started/spaces-defend-faq.md
               - file: security/get-started/data-views-elastic-security.md
               - file: security/get-started/create-runtime-fields-in-elastic-security.md
-      - hidden: security/alertzero/index.md
+      - file: security/alertzero/index.md
         children:
           - hidden: security/alertzero/set-up-alertzero.md
             children:
