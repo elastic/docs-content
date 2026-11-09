@@ -16,7 +16,24 @@ description: Associate rule exceptions with detection rules to prevent trusted a
 
 You can associate rule exceptions with detection and endpoint rules to prevent trusted processes and network activity from generating unnecessary alerts, therefore, reducing the number of false positives.
 
-When creating exceptions, you can assign them to [individual rules](#rule-exceptions-intro) or to [multiple rules](#shared-exception-list-intro).
+When creating exceptions, you can assign them to [individual rules](#rule-exceptions-intro) or to [multiple rules](#shared-exception-list-intro). If a rule fires on activity that's normal in any environment, [tune the rule](/solutions/security/detect-and-alert/tune-detection-rules.md) instead.
+
+## Exceptions for authorized activity [exceptions-authorized-activity]
+
+Authorized activity often triggers detection rules because it looks like what attackers do. When a rule correctly detects a behavior that your organization performs on purpose, add an exception so the rule ignores that specific source. Common examples include the following activity.
+
+* Authorized security testing and research
+* System and software management tools that run scripts, including scripts that start child processes
+* Administration frameworks that create users, schedule tasks, make `psexec` connections, or run WMI commands
+* Backup programs and other applications that use file shares over the server message block (SMB) protocol
+* Microsoft Office files with macros or scripts that users receive from a trusted third party
+* Scripts that support staff give remote workers to collect troubleshooting information
+
+Match the exception to what identifies the authorized source, such as the host (`host.name is <server-name>`), the process (`process.name is <process-name>`), or the user (`user.name is <security-tester>`). Combine conditions where you can. An exception that matches only a process name also hides that process when an attacker runs it.
+
+Take extra care with exceptions on rules that detect initial access or persistence, such as [Suspicious MS Office Child Process](detection-rules://rules/windows/initial_access_suspicious_ms_office_child_process.md). A broad exception on these rules can let a malicious document or a persistence mechanism go unnoticed.
+
+If you still want alerts for the activity, but at a lower priority, [lower the rule's severity or risk score](/solutions/security/detect-and-alert/tune-detection-rules.md#change-rule-logic) instead of adding an exception.
 
 
 ## Exceptions for individual rules [rule-exceptions-intro]

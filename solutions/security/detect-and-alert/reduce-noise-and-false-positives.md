@@ -19,7 +19,7 @@ Use the following table to identify which mechanism matches your situation. If m
 
 | Your situation | Use this | What it does |
 |---|---|---|
-| The rule fires on activity that isn't suspicious in any environment (for example, the query is too broad and catches normal admin behavior) | [Tune rule logic](/solutions/security/detect-and-alert/tune-detection-rules.md) | Refine the query, threshold, or schedule so the rule only matches what it should |
+| The rule fires on activity that isn't suspicious in any environment (for example, the query is too broad and catches normal admin behavior) | [Tune rule logic](/solutions/security/detect-and-alert/tune-detection-rules.md) | Refine the query, threshold, or other rule logic so the rule matches only the activity it's meant to detect |
 | The rule correctly identifies a pattern, but a specific known-safe case keeps firing in your environment (for example, an SCCM server triggers your remote service creation rule nightly) | [Exception](/solutions/security/detect-and-alert/rule-exceptions.md) | Permanently suppress alerts matching specific field values. The rule logic stays unchanged. |
 | The rule generates many alerts for the same entity in a short window (for example, a compromised host triggers the same rule every 5 minutes for an hour) | [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) | After the first alert for a given field value, suppress further alerts for a defined time window |
 | You need to temporarily stop receiving notifications during scheduled maintenance or a known event | [Snooze actions](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) | The rule runs and alerts are still created and stored. Only notifications (email, Slack, webhooks) are paused. |
@@ -36,7 +36,7 @@ Acts on: **the rule query, before events are evaluated**
 
 *"The rule is catching the wrong things."*
 
-Modify the rule query, threshold count, look-back window, or schedule to improve detection precision. Tuning is the only mechanism that improves the underlying signal rather than filtering output. Alerts are still created for events matching the revised logic, and change history requires version tracking. Tuning affects all environments using the rule.
+Modify the rule query, threshold, or other detection logic to improve detection precision. Tuning is the only mechanism that improves the underlying signal rather than filtering output. Alerts are still created for events matching the revised logic, and change history requires version tracking. Tuning affects all environments using the rule.
 
 Refer to [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) for more guidance.
 
