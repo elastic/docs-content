@@ -255,6 +255,7 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | `schema` | `with` | object | No | JSON Schema for structured output. |
 | `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
 | `attachments` | `with` | array | No | Attachments to provide to the agent. Each attachment has `{ id?, type, data?, origin?, hidden? }`. |
+| `configuration_overrides` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | Replaces selected fields on the agent for this step. The agent saved in {{agent-builder}} keeps its configuration. Refer to [Override the agent for this step](#ai-agent-configuration-overrides). |
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The step ignores `public-conversation` if `create-conversation` isn't `true`, or if it continues an existing conversation instead of creating one. Neither case returns an error.
 
@@ -301,6 +302,41 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
   with:
     conversation_id: "{{ steps.investigate.output.conversation_id }}"
     message: "Apply the recommended action and report back."
+```
+
+### Example: Override the agent for this step [ai-agent-configuration-overrides]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+`configuration_overrides` replaces the agent fields you include, for this step only. The agent saved in {{agent-builder}} keeps its configuration. Omit a field to keep the value saved on the agent. A later `ai.agent` step uses the saved agent again, unless that step sets `configuration_overrides` too. If that later step continues the same conversation, tools that a skill loaded earlier can still be available.
+
+- `instructions`: string, up to 2048 characters. Replaces the instructions saved on the agent.
+- `tools`: array of up to 50 objects. Each object has a `tool_ids` array of tool IDs. Each ID can be up to 100 characters. This list replaces the tools saved on the agent. While [Elastic capabilities](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#elastic-capabilities) are enabled for the run, built-in Elastic tools stay available.
+- `skill_ids`: array of up to 50 skill IDs. Each ID can be up to 100 characters. This list replaces the skills saved on the agent. While Elastic capabilities are enabled for the run, {{agent-builder}} also includes the built-in Elastic skills those capabilities assign, even when they are not in this list. Set `enable_elastic_capabilities` to `false` to leave those built-in skills out of the run. {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` {{agent-builder}} limits skills from [plugins](/explore-analyze/ai-features/agent-builder/plugins.md) assigned to the agent to IDs in this list.
+- `enable_elastic_capabilities`: boolean. Turns [Elastic capabilities](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#elastic-capabilities) on or off for this run. The saved setting on the agent stays as it is.
+
+The agent can load a skill when that skill is in the set resolved for the run. If it tries to load a skill outside that set, the `load_skill` tool returns an error.
+
+{applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental` When the resolved configuration includes an AI index, {{agent-builder}} can grant the [`ki-retrieval`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-ki-retrieval-skill) skill for the run. The grant follows the resolved AI indices and is independent of the saved skill list, `skill_ids`, and `enable_elastic_capabilities`. The resolved set includes indices saved on the agent and can also include an index the agent type adds. {{agent-builder}} doesn't grant the skill when {{context-engine}} is turned off in the space.
+
+```yaml
+- name: investigate
+  type: ai.agent
+  agent-id: "my-custom-agent"
+  with:
+    message: "Investigate the root cause of the issue."
+    configuration_overrides:
+      instructions: "Focus on the security implications."
+      enable_elastic_capabilities: false
+      skill_ids:
+        - "alert-analysis"
+      tools:
+        - tool_ids:
+            - "platform.core.search"
+            - "platform.core.list_indices"
 ```
 
 ## `ai.conversation.create` [ai-conversation-create]

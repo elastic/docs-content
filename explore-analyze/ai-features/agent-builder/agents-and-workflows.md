@@ -272,6 +272,7 @@ Follow these steps to invoke an `ai.agent` as a step within a workflow.
 4.  In the **`with`** block, set the **`message`** parameter to your natural language prompt.
 5.  Optionally, in the **`with`** block, set the **`schema`** parameter to a JSON Schema object to receive structured output from the agent instead of free-text.
 6.  Optionally, route the step to a specific model by setting **`connector-id`** or **`inference-id`** at the top level of the step. These parameters are mutually exclusive.
+7.  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Optionally, in the **`with`** block, set **`configuration_overrides`** to replace the agent's instructions, tools, skills, or Elastic capabilities setting for this step. The agent saved in {{agent-builder}} keeps its configuration. For the fields, refer to [Override the agent for this step](/explore-analyze/workflows/steps/ai-steps.md#ai-agent-configuration-overrides).
 
 :::{dropdown} Example: Analyze flight delays
 The following example demonstrates a workflow that searches for flight delays and uses the **Elastic AI Agent** to summarize the impact. To follow along with this example ensure that the [{{kib}} sample flight data](https://www.elastic.co/docs/extend/kibana/sample-data) is installed.
@@ -329,6 +330,7 @@ Set `agent-id` and other configuration keys at the top level of the step. Set in
 | `schema` | `with` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the agent returns structured data matching the schema instead of free-text. |
 | `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
 | `attachments` | `with` | array | No | Attachments to provide to the agent. |
+| `configuration_overrides` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | Replaces selected fields on the agent for this step. The agent saved in {{agent-builder}} keeps its configuration. For the fields, refer to [Override the agent for this step](/explore-analyze/workflows/steps/ai-steps.md#ai-agent-configuration-overrides). |
 
 For the complete step reference, refer to [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent).
 
