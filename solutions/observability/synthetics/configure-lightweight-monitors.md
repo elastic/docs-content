@@ -530,9 +530,9 @@ $$$monitor-http-kerberos$$$
 
     ::::{note}
     Kerberos is only supported on a [{{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), not on Elastic managed locations. `keytab` and `config_path` name files on the {{agent}} host.
-
+    
     Kerberos needs version 1.12.0 or later of the Synthetics integration. Upgrade the package in {{fleet}} before you save the monitor. Saving against an older package fails.
-
+    
     An {{agent}} built in FIPS mode has no Kerberos support at all, so a monitor that uses it fails on a {{private-location}} running a FIPS build.
     ::::
 
@@ -584,7 +584,7 @@ $$$monitor-http-ntlm$$$
 
     ::::{note}
     NTLM is only supported on a {{private-location}}, not on Elastic managed locations. Like Kerberos, it needs version 1.12.0 or later of the Synthetics integration. Upgrade the package in {{fleet}} before you save the monitor.
-
+    
     An {{agent}} built in FIPS mode rejects NTLM, which relies on MD4 and RC4, so a monitor that uses it fails on a {{private-location}} running a FIPS build.
     ::::
 
