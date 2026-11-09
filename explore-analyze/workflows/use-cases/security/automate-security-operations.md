@@ -23,7 +23,7 @@ This section describes common security automation patterns you can build with wo
 
 The following patterns map directly to workflow building blocks:
 
-- **Respond to alerts automatically.** An [alert trigger](/explore-analyze/workflows/triggers/alert-triggers.md) starts the workflow when a detection rule or a {{alerting-v1-system-short}} rule fires. The full alert context is available as `event.alerts[*]`, so later steps can query additional data, build case content, and route notifications based on alert fields.
+- **Respond to alerts automatically.** An [alert trigger](/explore-analyze/workflows/triggers/alert-triggers.md) starts the workflow when a rule fires. The full alert context is available as `event.alerts[*]`, so later steps can query additional data, build case content, and route notifications based on alert fields.
 - **Create and populate cases.** [Cases action steps](/explore-analyze/workflows/steps/cases.md) give you 27 step types to create cases, attach alerts and observables, assign on-call reviewers, and manage the case lifecycle. Use `cases.createCase` to open a case from the alert payload, then `cases.addAlerts` and `cases.addObservables` to attach supporting evidence.
 - **Route by severity or entity.** Use [`if`](/explore-analyze/workflows/steps/if.md) or [`switch`](/explore-analyze/workflows/steps/switch.md) steps to branch on alert severity, host, user, or rule name, and send notifications to different Slack channels, PagerDuty services, or Jira projects.
 - **Enrich alerts with external context.** Use [HTTP actions](/explore-analyze/workflows/steps/external-systems-apps.md) to pull data from threat intelligence APIs, CMDBs, or identity providers, then write the enriched record back to {{es}} or into the case body.
