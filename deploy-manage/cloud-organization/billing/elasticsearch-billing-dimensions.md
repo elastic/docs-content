@@ -74,7 +74,9 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 [Minimum Search VCUs](/deploy-manage/deploy/elastic-cloud/project-settings.md#minimum-search-vcus) lets you pre-scale the Search tier to a baseline level of capacity ahead of anticipated traffic. When you configure this setting, you are billed for at least that number of Search VCUs at all times, including when search load is low or the project is idle. Autoscaling can still provision Search VCUs above the minimum when your Search Power setting, searchable data, or search load require it, and you are also billed for those additional VCUs for as long as they remain provisioned. All Search VCUs are billed at the same per-VCU rate.
 
-To avoid paying for capacity you don't need, set the minimum no higher than your workload requires.
+After it's been configured, the minimum remains in effect, and continues to be billed, until you lower or disable it in your project settings or through the API. Lowering the minimum might not reduce your Search VCUs immediately, because capacity stays provisioned for as long as search load requires it.
+
+To avoid paying for capacity you don't need, set the minimum no higher than your workload requires, and lower or disable it when you no longer need it.
 
 
 ### Search-ready dataset size [elasticsearch-billing-search-ready-dataset-size]

@@ -88,9 +88,10 @@ serverless:
 
 Use **Minimum Search VCUs** to set a lower bound on Search tier scaling for {{es-serverless}} projects, expressed in [virtual compute units (VCUs)](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml). When configured, the Search tier does not scale below this value, even during idle periods. This allows you to pre-scale the Search tier ahead of anticipated increases in traffic. As a guideline, set the minimum approximately 30 to 60 minutes ahead of incoming requests.
 
-Search capacity can still scale above the configured minimum under higher load, and will scale back down toward it only once that additional capacity is no longer required.
+Search capacity can still scale above the configured minimum under higher load, and will scale back down toward it only once that additional capacity is no longer required. The minimum stays at the value you set until you lower or disable it. Lowering the minimum might not reduce capacity immediately if search load still requires it.
 
-You can set **Minimum Search VCUs** to any whole number up to 4,992. Reducing the minimum Search VCUs value may not immediately reduce capacity if the load still requires it.
+You can set **Minimum Search VCUs** to any whole number up to 4,992.
+
 During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
 
 If you set a high **Minimum Search VCUs** value, consider also increasing [Search Power](#elasticsearch-manage-project-search-power-settings) to get the most out of the capacity you pre-scale.
