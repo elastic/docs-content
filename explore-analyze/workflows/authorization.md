@@ -41,7 +41,7 @@ stack: ga 9.6+
 
 When you [assign a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md) with `settings.run_as`, every run uses that account's privileges. The trigger type and the user who last saved or started the workflow don't change its privileges.
 
-The workflow stores a reference to the account. When a run starts, {{kib}} obtains a short-lived credential and renews it as needed. Changes to an assigned role affect the account's privileges without saving the workflow again.
+The workflow stores a reference to the account. When a run starts, {{kib}} obtains a short-lived credential and renews it as needed. Edits to an assigned role are reflected in the account's effective privileges the next time {{kib}} obtains a credential. You don't need to save the workflow again.
 
 On {{serverless-short}}, the account's privileges are also limited by its creator's access when the account was created. Refer to [Roles and privileges in {{serverless-short}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md#service-account-serverless-roles).
 

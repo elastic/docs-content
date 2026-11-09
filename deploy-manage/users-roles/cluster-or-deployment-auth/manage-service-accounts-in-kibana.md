@@ -76,7 +76,7 @@ When an account has bound workloads, click **View** in the **Workloads** column 
 You can't update service accounts in the {{kib}} UI. On {{serverless-short}}, to change an account's assigned roles or description, [delete the account](#delete-service-account-kibana) and [create a new one](#create-service-account-kibana). On {{stack}} deployments, you can update accounts through the {{es}} API.
 
 :::{tip}
-To change a service account's privileges, you can edit a role already assigned to it without changing the account's role assignments. Changes to a role also affect other users and service accounts assigned that role.
+To change a service account's effective privileges, you can edit a role already assigned to it without changing the account's role assignments. Changes to a role also affect other users and service accounts assigned that role.
 :::
 
 ### Update or deactivate an account through the {{es}} API [disable-service-account]
