@@ -61,9 +61,9 @@ Before you can monitor nginx, you need the following:
 Follow these steps to add the nginx integration to your deployment:
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Enter "nginx" in the search bar, and select the **Nginx** integration.
-3. Select **Add Nginx** at the top of the integration page.
-4. Select **Add integration only (skip agent installation)** at the bottom of the page.
+2. Search for and select **Nginx**.
+3. If the integration's **Overview** page opens, select **Add Nginx** at the top of the page.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
 
 
 ## Step 2: Configure the nginx integration [monitor-nginx-configure-integration]
