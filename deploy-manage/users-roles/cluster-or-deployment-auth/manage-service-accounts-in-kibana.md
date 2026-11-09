@@ -55,7 +55,7 @@ Your service account is now ready to use in {{kib}} applications such as [Workfl
 
 {applies_to}`serverless: unavailable` To use the account from an external API client, [create a separate named service token](authenticate-kibana-api-with-service-account.md#create-service-account-api-token).
 
-### Roles and privileges in {{serverless-short}} [service-account-serverless-roles]
+## Roles and privileges in {{serverless-short}} [service-account-serverless-roles]
 ```{applies_to}
 serverless: ga
 ```
