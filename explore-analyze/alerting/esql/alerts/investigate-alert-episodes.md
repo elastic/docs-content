@@ -10,7 +10,7 @@ description: "Investigate alerts. Understand what triggered an alert, assess met
 
 # Investigate alerts in {{alerting-v2-system}} [investigate-alert-episodes]
 
-From the **Alerts** page in {{alerting-v2-system}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
+From the **Alerts** page in {{alerting-v2-system-short}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 
 Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system-short}}](#investigate-classic-alerts).
 

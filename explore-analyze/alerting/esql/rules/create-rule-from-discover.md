@@ -10,7 +10,7 @@ description: "Convert an ES|QL query from a Discover session into a rule, with t
 
 # Create a {{alerting-v2-system}} rule from Discover [create-from-discover]
 
-Convert an {{esql}} query you've already built in Discover directly into a {{alerting-v2-system}} rule, without rewriting it. Because you test the query against live data in Discover first, you know it returns the shape you expect before the rule is ever saved.
+Convert an {{esql}} query you've already built in Discover directly into a {{alerting-v2-system-short}} rule, without rewriting it. Because you test the query against live data in Discover first, you know it returns the shape you expect before the rule is ever saved.
 
 ## Entry points [discover-rule-entry-points]
 

@@ -11,7 +11,7 @@ description: Kibana Universal Alerting writes each match as a rule event, then e
 
 # {{alerting-v2-system-cap}} overview [system-overview]
 
-Use {{alerting-v2-system}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
+Use {{alerting-v2-system-short}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
 
 To open {{alerting-v2-system-short}}, go to **Alerting** in the {{observability}} navigation menu.
 
@@ -45,7 +45,7 @@ For a step-by-step walkthrough of what happens after a rule runs, refer to [How 
 ## Get started or go deeper [system-overview-next-steps]
 
 - [Get started](get-started.md): Learn how the system works and its key terms, then create your first rule in a hands-on tutorial.
-- [Set up {{alerting-v2-system}}](setup.md): Check the requirements and turn on optional features.
+- [Set up {{alerting-v2-system-short}}](setup.md): Check the requirements and turn on optional features.
 - [Manage](manage.md): Give your team the role privileges it needs, and manage the API keys that authorize rules, action policies, and workflows.
 - [Rules](rules.md): Define what to watch for in {{esql}}, and decide which creation path fits your use case.
 - [Alerts](alerts.md): Learn how alerts track a problem from first detection through recovery, and how to triage them.

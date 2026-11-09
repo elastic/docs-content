@@ -10,7 +10,7 @@ description: "Monitor alerts with KPI panels, a histogram, and filters. Triage a
 
 # View and manage alerts in {{alerting-v2-system}} [view-manage-alerts]
 
-In {{alerting-v2-system}}, use the **Alerts** page to monitor alerts with KPI panels, a histogram, and filters. To open it, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+In {{alerting-v2-system-short}}, use the **Alerts** page to monitor alerts with KPI panels, a histogram, and filters. To open it, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 The page also lists alerts from {{alerting-v1-system}} rules, so you can monitor and triage alerts from both systems in one table. Refer to [View alerts from both alerting systems](#alerts-from-both-systems).
 

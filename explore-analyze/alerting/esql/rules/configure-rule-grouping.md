@@ -10,7 +10,7 @@ description: "Configure rule grouping to track multiple subjects as independent 
 
 # Rule grouping in {{alerting-v2-system}} [rule-grouping]
 
-Rule grouping is an optional {{alerting-v2-system}} setting that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
+Rule grouping is an optional {{alerting-v2-system-short}} setting that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 
 When matches are grouped into alerts, each group becomes its own alert with an independent lifecycle. One group can be active while another has recovered, and notifications apply per alert, not across all groups combined. Snooze state is also per series. Snoozing one group doesn't affect other groups tracked by the same rule.
 

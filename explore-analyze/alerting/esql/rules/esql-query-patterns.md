@@ -10,7 +10,7 @@ description: "ES|QL query patterns for rules, from basic event filters to SLO bu
 
 # {{esql}} query patterns for {{alerting-v2-system}} rules [esql-query-patterns]
 
-The following pages cover {{esql}} query patterns for {{alerting-v2-system}} rules, ordered from the simplest starting point to advanced use cases. Start with [Your first rule query](esql-first-rule-query.md) if you're new, or jump to the pattern you need.
+The following pages cover {{esql}} query patterns for {{alerting-v2-system-short}} rules, ordered from the simplest starting point to advanced use cases. Start with [Your first rule query](esql-first-rule-query.md) if you're new, or jump to the pattern you need.
 
 | Pattern | What it solves | Complexity |
 | --- | --- | --- |
