@@ -561,7 +561,7 @@ API calls use the privileges of the current user or API key. {{kib}} API calls r
 
     Before each call to an operation that can change or delete existing data, `execute_api` requests confirmation unless the agent's **Auto-approved APIs** setting includes the operation. For prompt behavior and exceptions, refer to [Confirm an API operation](../chat.md#confirm-an-api-operation). To configure auto-approval, refer to [Auto-approve API operations](../custom-agents.md#auto-approve-api-operations-optional).
 
-    In runs where no one can respond to a prompt, such as workflow `ai.agent` steps and sub-agent runs, `execute_api` declines these operations unless they were approved in advance. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+    In runs where no one can respond to a prompt, such as workflow `ai.agent` steps and subagent runs, `execute_api` declines these operations unless they were approved in advance. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 `discover_apis` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 :   Lists the supported API operations for {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.
@@ -590,7 +590,8 @@ Identifier formats depend on the service:
 Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active. Because they are scoped to a skill rather than assignable on their own, they are not listed among the namespaced tools in this reference. For example:
 
 - The [`dashboards`](../builtin-skills-reference.md#agent-builder-dashboards-skill) skill (`dashboard-management` in 9.4 and 9.5) includes an inline tool for generating and updating dashboards.
-- The `rule-management` skill includes the `platform.alerting.manage_rule` and `platform.alerting.manage_action_policy` tools for composing and modifying alerting rules and their action policies.
+- The [`rule-authoring`](../builtin-skills-reference.md#agent-builder-rule-authoring-skill) skill (`rule-management` in 9.5) includes the `platform.alerting.manage_rule` tool for composing and modifying {{alerting-v2-system}} rules. In 9.5, it also includes `platform.alerting.manage_action_policy`.
+- {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` The [`action-policy-authoring`](../builtin-skills-reference.md#agent-builder-action-policy-authoring-skill) skill includes the `platform.alerting.manage_action_policy` tool for composing and modifying action policies.
 - The `alert-triage` skill includes the `security.alert-triage` tool for prioritizing the alert queue.
 
 :::{tip}
