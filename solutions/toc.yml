@@ -814,6 +814,7 @@ toc:
               - file: security/detect-and-alert/using-the-api.md
               - file: security/detect-and-alert/common-rule-settings.md
               - file: security/detect-and-alert/set-rule-data-sources.md
+              - file: security/detect-and-alert/plan-rule-performance.md
               - file: security/detect-and-alert/write-investigation-guides.md
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/advanced-data-source-configuration.md
