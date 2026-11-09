@@ -223,6 +223,11 @@ On {{esql}} visualizations, you can define a reference line in one of the follow
 
     For this query, select `average_requests` as the **Vertical axis**.
 
+    :::{image} /explore-analyze/images/esql-visualization-layer-reference-line.png
+    :alt: The chart of web log events with a horizontal reference line at the average number of events per time bucket
+    :screenshot:
+    :::
+
 #### Suggestions with several layers
 
 The **Suggestions** panel is hidden while the chart has more than one layer, because applying a suggestion would replace the other layers.
