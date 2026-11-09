@@ -487,7 +487,7 @@ At certain points an agent pauses and hands control back to you before it contin
 
 HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
-HITL prompts require an interactive conversation, so [sub-agent executions cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+HITL prompts require an interactive conversation, so [subagents cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Confirm a change
 
@@ -551,7 +551,7 @@ The prompt shows the HTTP method, path, and whether the call goes to {{es}} or {
 
 Select **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
 
-A parent agent can also ask you to approve operations before starting a sub-agent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+A parent agent can also ask you to approve operations before starting a subagent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Authorize a connector
 ```{applies_to}
@@ -655,11 +655,17 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
+**Connectors** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Lists the [connectors](connectors.md) assigned to the current agent. Select a connector to open a detail panel that shows its sub-actions. To assign a connector, select **Add connector**. To view and manage the connectors library, select **Manage all connectors**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
+
 **Tools**
 :   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
 
+The following image shows the **Customize** section of the left sidebar:
+
 :::{image} images/customize-your-agent-accordion.png
-:alt: Customize accordion open
+:screenshot:
+:alt: Customize accordion in the agent sidebar listing Overview, Skills, Connectors, and Tools
 :width: 200px
 :::
 
@@ -689,13 +695,11 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 :::
 
 **Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   View and manage the {{agent-builder}} connectors library, which gives agents access to external data sources and systems. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use a connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
+:   View and manage the {{agent-builder}} connectors library, which gives agents access to external data sources and systems.
 
-:::{note}
-:applies_to: stack: preview 9.4-9.5
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use a connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
 
-The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
-:::
+    {applies_to}`stack: preview 9.4-9.5` The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 
 **Tools**
 :   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.
