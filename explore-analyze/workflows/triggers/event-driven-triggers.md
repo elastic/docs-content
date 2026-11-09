@@ -459,7 +459,7 @@ stack: preview 9.6+
 ```
 
 :::{note}
-These triggers are available only when {{alerting-v2-system-short}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
+These triggers are available only when {{alerting-v2-system-short}} is enabled. 
 :::
 
 Alert lifecycle triggers run a workflow when a user acts on an alert in {{alerting-v2-system-short}}, either in the UI or through the API. They don't fire when an alert becomes active or recovers based on rule evaluations. To run a workflow when an alert's status changes automatically, use an action policy instead. For a comparison, refer to [When to use action policies or lifecycle triggers](../../alerting/esql/workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
