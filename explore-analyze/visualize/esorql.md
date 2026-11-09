@@ -136,7 +136,7 @@ To add it:
 3. In the new layer's tab, enter the query and run it.
 4. Assign `time_bucket` to the **Horizontal axis** and `server_errors` to the **Vertical axis**.
 
-{{kib}} doesn't assign the columns of a new layer for you. If the **Horizontal axis** is empty, the values of the layer don't follow time and stack at a single position on the chart.
+Check that both dimensions are set before you look at the chart. If the **Horizontal axis** of a layer is empty, the values of that layer don't follow time and stack at a single position.
 
 Use the same time-bucket column on the **Horizontal axis** of each layer so the layers line up in time. To compare client errors (response codes that start with 4) as well, add a third layer the same way, with this query:
 
