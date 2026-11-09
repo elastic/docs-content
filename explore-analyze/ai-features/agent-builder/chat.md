@@ -484,7 +484,7 @@ Some tools and skills pause for confirmation before they perform consequential a
 
 The prompt you get depends on the tool:
 
-* **Change preview**: Some Elastic-built tools and skills show the proposed change before it takes effect. Review the preview, then confirm the action to proceed or deny it to cancel. The preview format and the button labels vary by tool or skill. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For example, a prompt to create a [stream](/solutions/observability/streams/streams.md) offers **Create stream**, and a prompt to delete one offers **Delete permanently**.
+* **Change preview**: Some Elastic-built tools and skills show the proposed change before it takes effect. Review the preview, then confirm the action to proceed or deny it to cancel. The preview format and the button labels vary by tool or skill.
 * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **API confirmation**: The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
 * **Generic prompt**: Other tools, including all custom tools, show a prompt that names the tool and asks whether to proceed. Click **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
@@ -504,7 +504,9 @@ When an agent updates a workflow, it shows the proposed change as a diff and wai
 :width: 700px
 :::
 
-For irreversible actions, the prompt highlights the consequences before you proceed. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The following screenshot shows a prompt to delete a stream:
+For irreversible actions, the prompt highlights the consequences before you proceed.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The following screenshot shows the Streams management skill prompting you to delete a stream:
 
 :::{image} images/agent-builder-confirm-delete-stream.png
 :screenshot:
