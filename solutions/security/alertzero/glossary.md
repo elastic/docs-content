@@ -86,7 +86,7 @@ The default [{{az-autonomy}}](#alertzero-glossary-autonomy) level. At this level
 
 ### {{az-proposed-action-cap}} [alertzero-glossary-proposed-action]
 
-A recommendation from a {{az-worker}} that waits for your decision, such as closing false-positive alerts, isolating a host, or changing a detection rule. You review the details, then approve or decline it. Depending on the {{az-worker}}'s [{{az-autonomy}}](#alertzero-glossary-autonomy) level, some {{az-proposed-actions}} run without waiting for you. Statuses include **Needs review**, **Applying**, **Applied**, **Declined**, **Failed**, and **Expired**. Refer to [](decide-proposed-action.md).
+A recommendation from a {{az-worker}} that waits for your decision, such as closing false-positive alerts, isolating a host, or changing a detection rule. You review the details, then approve or decline it. Depending on the {{az-worker}}'s [{{az-autonomy}}](#alertzero-glossary-autonomy) level, some {{az-proposed-actions}} run without waiting for you. Statuses include **Needs review**, **Applying**, **Applied**, **Declined**, **Failed**, and **Expired**. Refer to [](work-in-alertzero.md).
 
 ## R-S [alertzero-glossary-r-s]
 
@@ -116,9 +116,9 @@ A named group of [{{az-workers}}](#alertzero-glossary-worker) with one area of e
 
 An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-watch). A {{az-worker}} runs in the background, either on a schedule or in response to events such as new alerts. It analyzes your data and brings you [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). Each {{az-worker}} has its own settings, including whether it's turned on, its schedule, and its [{{az-autonomy}}](#alertzero-glossary-autonomy) level. Refer to [](watches-and-workers.md) and [](configure-worker-settings.md).
 
-## Related [alertzero-glossary-related]
+## Next steps [alertzero-glossary-next-steps]
 
-- [](index.md): What {{alertzero}} is and how its parts fit together.
-- [](watches-and-workers.md): Reference for every {{az-watch}} and {{az-worker}}.
-- [](use-alertzero.md): Read the {{alertzero}} home page and decide on {{az-proposed-actions}}.
-- [](manage-alertzero.md): What you can and can't configure in {{alertzero}}.
+- [Learn what {{alertzero}} is and how its parts fit together](index.md).
+- [Look up what each {{az-watch}} and {{az-worker}} does](watches-and-workers.md).
+- [Find the work that {{az-workers}} bring you](work-in-alertzero.md) and decide what happens next.
+- [Find out what you can and can't configure in {{alertzero}}](manage-alertzero.md).
