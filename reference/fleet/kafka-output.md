@@ -149,10 +149,7 @@ stack: ga 9.6+
 
 To authenticate to Kafka with OAuth 2.0, set `sasl.mechanism` to `OAUTHBEARER` and configure an OAuth 2.0 client under `auth.oauth2client`. {{agent}} requests an access token from your authorization server, uses it to authenticate to Kafka, and requests a new token before the current one expires.
 
-OAuth 2.0 authentication isn't supported in the following cases:
-
-* The output sends data from uptime monitoring inputs: `synthetics/http`, `synthetics/icmp`, and `synthetics/tcp`.
-* The output configuration includes the `keep_alive` or `ssl.ca_trusted_fingerprint` setting.
+OAuth 2.0 authentication works only when the inputs that send data to the output run as [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) in the OpenTelemetry (OTel) runtime of {{agent}}.
 
 {{agent}} supports two OAuth 2.0 grant types:
 
@@ -179,8 +176,6 @@ outputs:
           - kafka
 ```
 
-Settings that set a duration, such as `timeout` and `expiry_buffer`, take an integer number of nanoseconds. For example, use `10000000000` for 10 seconds. Values with a unit, such as `10s`, aren't supported.
-
 `auth.oauth2client.token_url`
 :   (string) **Required**. The URL of the token endpoint of your OAuth 2.0 authorization server.
 
@@ -205,7 +200,7 @@ Settings that set a duration, such as `timeout` and `expiry_buffer`, take an int
 :   (list of strings) The scopes to request with the access token.
 
 `auth.oauth2client.endpoint_params`
-:   Additional parameters to send to the token endpoint, as a map of parameter names to lists of values. Each value must be a list, even when it has a single item. For example:
+:   Additional parameters to send to the token endpoint, as a map of parameter names to lists of values. For example:
 
     ```yaml
     endpoint_params:
@@ -214,12 +209,12 @@ Settings that set a duration, such as `timeout` and `expiry_buffer`, take an int
     ```
 
 `auth.oauth2client.timeout`
-:   (int) How long to wait for a response from the token endpoint, in nanoseconds.
+:   (string) How long to wait for a response from the token endpoint, for example `10s`.
 
 `auth.oauth2client.expiry_buffer`
-:   (int) How long before the access token expires that {{agent}} requests a new one, in nanoseconds.
+:   (string) How long before the access token expires that {{agent}} requests a new one.
 
-    **Default:** `300000000000` (5 minutes)
+    **Default:** `5m`
 
 `auth.oauth2client.tls`
 :   TLS settings for the connection to the authorization server. These settings are separate from the `ssl` settings of the output, and use the OpenTelemetry names, such as `ca_file`, `cert_file`, `key_file`, and `insecure_skip_verify`. For the full list, refer to the [OpenTelemetry TLS configuration settings](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md).
