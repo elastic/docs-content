@@ -121,7 +121,7 @@ const OTEL_RESOURCE_ATTRIBUTES = {
 
 :::::{step} Configure tracing
 
-Configure the traces signal to enable instrumentations to transmit traces and allow for the creation of custom spans. The upstream SDK offers a utility function to configure the signal wihtout having to handle all the dependencies by yourself.
+Configure the traces signal to enable instrumentations to transmit traces and allow for the creation of custom spans. The upstream SDK offers a utility function to configure the signal without having to handle all the dependencies by yourself.
 
 The function will configure a [TracerProvider](https://opentelemetry.io/docs/concepts/signals/traces/#tracer-provider) to enable instrumentations to transmit traces and allow for the creation of custom spans. A TracerProvider requires several components:
 
@@ -130,7 +130,7 @@ The function will configure a [TracerProvider](https://opentelemetry.io/docs/con
 For this step, you need the following dependencies:
 
 - `@opentelemetry/browser-sdk`: This package contains all the core components to set up tracing for browsers.
-- `@opentelemetry/context-zone`: This package contains a context manager which uses on [zone.js](https://www.npmjs.com/package/zone.js) library.
+- `@opentelemetry/context-zone`: This package contains a context manager that uses the [zone.js](https://www.npmjs.com/package/zone.js) library.
 
 ```bash
 npm install @opentelemetry/browser-sdk @opentelemetry/context-zone
@@ -157,13 +157,13 @@ const tracesSdk = startTracesSdk({
 ```
 :::
 
-Now you can use the OpenTelemetry API to get a tracer and start creating your own spans. Instrumentations are also using OpenTelemetry API to get tracers and send telemetry data. Registering intrumentations after having the tracer provider set up ensures they have the right tracers when requested to the API.
+Now you can use the OpenTelemetry API to get a tracer and start creating your own spans. Instrumentations are also using OpenTelemetry API to get tracers and send telemetry data. Registering instrumentations after having the tracer provider set up ensures they have the right tracers when requested to the API.
 
 :::::
 
 :::::{step} Configure logs
 
-Configure the logs signal to enable instrumentations to transmit logs and allow for the creation of custom log records. The upstream SDK offers a utility function to configure the signal wihtout having to handle all the dependencies by yourself.
+Configure the logs signal to enable instrumentations to transmit logs and allow for the creation of custom log records. The upstream SDK offers a utility function to configure the signal without having to handle all the dependencies by yourself.
 
 The function will configure a [LoggerProvider](https://opentelemetry.io/docs/specs/otel/logs/sdk/#loggerprovider) allowing you to record relevant events that are happening in your application using the API or instrumentations.
 
@@ -228,7 +228,7 @@ import { defaultResource, resourceFromAttributes } from '@opentelemetry/resource
 import { MeterProvider, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
 
-// set the resource for metics from the given attributes
+// Set the resource for metrics from the given attributes
 const resource = resourceFromAttributes(OTEL_RESOURCE_ATTRIBUTES)
                   .merge(defaultResource());
 
@@ -379,12 +379,12 @@ export function startOtel(config) {
     },
   });
 
-  // set the resource for metics from the given attributes
-  const resource = resourceFromAttributes(OTEL_RESOURCE_ATTRIBUTES)
+  // Set the resource for metrics from the given attributes
+  const resource = resourceFromAttributes(config.resourceAttributes)
                   .merge(defaultResource());
 
   // Set the metrics endpoint based on the config provided
-  const metricsEndpoint = `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/metrics`;
+  const metricsEndpoint = `${config.endpoint}/v1/metrics`;
 
   // Create metric reader to process metrics and export using OTLP
   const metricReader = new PeriodicExportingMetricReader({
@@ -479,7 +479,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'telemetry.umd.js',
     library: {
-      type: 'umd'
+      name: 'startOtel',
+      type: 'umd',
+      export: 'startOtel',
     }
   },
 };
@@ -502,7 +504,7 @@ export default defineConfig({
     lib: {
         entry: resolve(__dirname, './path/to/telemetry.js'),
         formats: ['umd'],
-        name: 'telemetry',
+        name: 'startOtel',
         fileName: (format) => `telemetry.${format}.js`
     },
     sourcemap: true,
@@ -602,7 +604,7 @@ Relevant events occurring within your application can be recorded using a logger
 
 :::{dropdown} Example: Record relevant events with logs
 ```javascript
-import { logs, SeverityNumber } from '@opentelemetry/api-logs';
+import { logs } from '@opentelemetry/api-logs';
 const logger = logs.getLogger('app-logger');
 
 logger.emit({
@@ -790,10 +792,10 @@ If you've instrumented your application but don't see data in {{kib}}, check the
 
 4. In {{kib}}, navigate to **{{stack-manage-app}}** > **{{index-manage-app}}** > **Data Streams** and verify that OpenTelemetry data streams are being created (for example, `traces-*`, `logs-*`, `metrics-*`).
 
-5. Set `OTEL_LOG_LEVEL` to `debug` to get detailed information about what's happening:
+5. Set `OTEL_LOG_LEVEL` to `DEBUG` to get detailed information about what's happening:
 
 ```javascript
-const OTEL_LOG_LEVEL = 'debug';
+const OTEL_LOG_LEVEL = 'DEBUG';
 ```
 
 :::
@@ -882,8 +884,8 @@ If you're having issues with how you've integrated the telemetry code:
 
 ```javascript
 // Top of your entry file
-import { initOpenTelemetry } from './telemetry.js';
-initOpenTelemetry({...});
+import { startOtel } from './telemetry.js';
+startOtel({...});
 
 // Then your app code
 import { MyApp } from './app.js';
@@ -898,13 +900,15 @@ import { MyApp } from './app.js';
 <script src="./js/telemetry.umd.js"></script>
 ```
 
-4. If `initOpenTelemetry` is not defined, ensure your bundler is exposing it globally. For example, for Webpack:
+4. If `startOtel` is not defined, ensure your bundler is exposing it globally. For example, for Webpack:
 
 ```javascript
 output: {
-  library: 'initOpenTelemetry',
-  libraryTarget: 'window',
-  libraryExport: 'default'
+  library: {
+    name: 'startOtel',
+    type: 'umd',
+    export: 'startOtel',
+  }
 }
 ```
 
@@ -916,10 +920,10 @@ If you continue to experience issues:
 
 1. Ensure your target browsers support the OpenTelemetry features you're using.
 2. Consult the [OpenTelemetry JavaScript documentation](https://opentelemetry.io/docs/languages/js/) for additional troubleshooting guidance.
-3. Set the log level to `verbose` for maximum detail:
+3. Set the log level to `VERBOSE` for maximum detail:
 
 ```javascript
-const OTEL_LOG_LEVEL = 'verbose';
+const OTEL_LOG_LEVEL = 'VERBOSE';
 ```
 
 4. Start with only traces (no metrics or logs) and one instrumentation to isolate the issue.
