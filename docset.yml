@@ -488,6 +488,8 @@ subs:
   az-balanced-models: "Balanced models"
   az-frontier-models: "Frontier models"
   az-cyber-domain-models: "Cyber domain models"
+  openai-daybreak: "OpenAI Daybreak"
+  daybreak: "Daybreak"
   kube-stack-version: 0.16.0
   helm-version: 4.3.0
   ece-docker-images-8: 8.19.23
