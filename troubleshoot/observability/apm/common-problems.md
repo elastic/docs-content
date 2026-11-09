@@ -231,10 +231,6 @@ If your problem is occurring in a different {{apm-agent}}, the tips above still 
 
 
 ## Too many unique services [troubleshooting-too-many-services]
-```yaml {applies_to}
-stack: ga
-serverless: ga
-```
 
 The **Service inventory** stops listing every service separately once it reaches a limit. Your data is still ingested and stored, and you can still open the services that are listed. Only the inventory list is affected.
 
@@ -246,10 +242,6 @@ Two limits can cause this, and each one shows a different warning:
 In both cases, a service is each unique combination of `service.name`, `service.environment`, `service.language.name`, and `agent.name`. This means that one application can count as several services, for example when it reports from more than one environment. This is why a production deployment can reach a limit while a development one with more instrumented applications doesn't.
 
 ### Limit on the services {{kib}} displays [troubleshooting-too-many-services-displayed]
-```yaml {applies_to}
-stack: ga
-serverless: ga
-```
 
 {{kib}} returns at most 1,000 services to the Service inventory. Services past that limit are left out of the list, and the warning tells you which limit is in effect.
 
@@ -266,10 +258,6 @@ Raising the limit makes the Service inventory query slower and increases its mem
 :::
 
 ### Limit on the services tracked in aggregated metrics [troubleshooting-too-many-services-aggregated]
-```yaml {applies_to}
-stack: ga
-serverless: ga
-```
 
 Service metrics are aggregated as your data is written, and only a limited number of services can be tracked at a time. Services past that limit are combined into a single overflow bucket, which the Service inventory shows as **Remaining Services**. 
 
