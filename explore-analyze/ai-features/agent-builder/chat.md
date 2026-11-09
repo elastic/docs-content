@@ -108,12 +108,6 @@ serverless: ga
 
 Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram.
 
-Image attachments have the following requirements and limits:
-
-- The selected [model](models.md) must support image input. {{agent-builder}} doesn't check this before sending. If the model doesn't support images, the request can fail with an error, or the agent can respond that it can't read the image.
-- You can attach up to 10 images to a single message.
-- Each image must be a PNG or JPEG file no larger than 3.5 MB.
-
 To attach an image:
 
 1. Copy the image to your clipboard.
@@ -123,16 +117,21 @@ To attach an image:
 The following example shows a pasted image attached to a message, ready to send:
 
 :::{image} images/agent-builder-image-attachment.png
-:alt: Chat input with an image thumbnail above the message text "Explain this dashboard:", followed by an image.png file chip, with the model selector and send button below
+:alt: Chat input with an image thumbnail above the message text, followed by an image.png file chip, with the model selector and send button below
 :width: 650px
 :screenshot:
 :::
 
-Pasting is the only way to attach an image. You can't drag a file onto the input or select one from a file picker.
-
 To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`, or delete the image's chip from the message text.
 
 After you submit the message, the image appears in the conversation history, and the agent can refer to it in later messages in the same conversation.
+
+#### Requirements and limits
+
+- The selected [model](models.md) must support image input. {{agent-builder}} doesn't check this before sending. If the model doesn't support images, the request can fail with an error, or the agent can respond that it can't read the image.
+- You can attach up to 10 images to a single message.
+- Each image must be a PNG or JPEG file no larger than 3.5 MB.
+- Pasting is the only way to attach an image. You can't drag a file onto the input or select one from a file picker.
 
 ### Chat with data from multiple projects [agent-builder-cps-scope]
 ```{applies_to}
