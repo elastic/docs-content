@@ -32,7 +32,7 @@ Before you assign a service account to a workflow, make sure you meet these requ
 
 The `settings.run_as` field specifies the ID of the account that runs the workflow. On {{stack}} deployments, this is the account's principal, such as `kibana/incident-response`. On {{serverless-short}}, it is a generated identifier independent of the account's name.
 
-You can assign an existing account or create one without leaving the workflow editor. In both cases, the account must be [created in {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-service-accounts-in-kibana.md) and have the privileges required by the workflow steps.
+You can assign an existing account or create one without leaving the workflow editor. The account must have the privileges required by the workflow steps.
 
 1. Open the workflow in the {{kib}} workflow editor.
 2. In the `settings` block, add `run_as`:
