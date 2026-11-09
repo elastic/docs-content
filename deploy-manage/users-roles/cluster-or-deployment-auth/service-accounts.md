@@ -61,7 +61,7 @@ In {{stack}}, accounts created in {{kib}} use the `kibana` namespace, and their 
 
 Use a user-managed service account when your workload needs its own identity to access {{es}} or {{kib}} APIs. Assign the roles required by the workload.
 
-[Workflows](/explore-analyze/workflows.md) is the only {{kib}} application that supports directly assigning a service account as the execution identity of a workload. {{kib}} manages the credential used for this integration.
+[Workflows](/explore-analyze/workflows.md) is the only {{kib}} application that supports directly assigning a service account as the execution identity of a workload. To use this integration, create the service account in {{kib}}, which manages the credential for you.
 
 :::{note}
 :applies_to: serverless: ga
@@ -92,13 +92,14 @@ For example, {{fleet}} server uses a service token to authenticate with {{es}} a
 
 :::{note}
 :applies_to: stack: ga 9.6+
-When you create a user-managed service account in {{kib}}, {{kib}} creates and stores a service token named `kibana-managed` so applications such as Workflows can run on behalf of the account. This token isn't displayed. To authenticate requests from your own application, create an additional service token with the API.
+When you [create a user-managed service account in {{kib}}](manage-service-accounts-in-kibana.md), {{kib}} creates and stores a service token named `kibana-managed` so applications such as Workflows can run on behalf of the account. This token isn't displayed. To authenticate requests from your own application, create an additional service token with the API.
 :::
 
-You can create a service token using either:
+You can create a service token using the following methods:
 
 * The [create service account token API]({{es-apis}}operation/operation-security-create-service-token) (recommended). The API stores the token in the `.security` index and returns the bearer token in the HTTP response. Tokens are available for authentication on all nodes and are included in cluster snapshots.
 * The [elasticsearch-service-tokens](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool, for built-in accounts on self-managed and {{eck}} deployments. The tool stores the token in the [`$ES_HOME/config/service_tokens` file](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) and outputs the bearer token to your terminal. This method is intended for environments where an external orchestration process, such as [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) or [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), manages and distributes the file.
+* The {{fleet}} UI in {{kib}}, for the built-in `elastic/fleet-server` account. Click **Generate service token** when [adding a {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md#add-fleet-server-on-prem-add-server).
 
 Both the API and CLI generate service tokens with a 22-character secret. {{es}} requires a secret of at least 10 characters and rejects shorter secrets without checking their value.
 
