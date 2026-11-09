@@ -113,7 +113,7 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 
 ::::
 
-1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Elastic APM**.
 
     :::{image} /solutions/images/observability-kibana-fleet-integrations-apm.png
@@ -121,7 +121,7 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
     :screenshot:
     :::
 
-3. Click **Add Elastic APM**.
+3. If the integration's **Overview** page opens, click **Add Elastic APM**.
 
     :::{image} /solutions/images/observability-kibana-fleet-integrations-apm-overview.png
     :alt: {{fleet}} showing APM integration overview
