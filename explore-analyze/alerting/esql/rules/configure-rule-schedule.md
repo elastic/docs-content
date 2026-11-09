@@ -24,6 +24,8 @@ The lookback window (`schedule.lookback`) is optional and determines the time ra
 
 If the lookback is shorter than the execution interval, evaluations can miss data between runs. Use a lookback at least as long as the execution interval unless you deliberately want a shorter window.
 
+Longer intervals and shorter lookbacks also reduce how much search capacity a rule uses. To plan rules with search load in mind, refer to [](/explore-analyze/alerting/esql/rules/plan-rule-performance.md).
+
 ## When to use a short or long interval and lookback [schedule-when-to-use]
 
 Use a short execution interval (seconds to a few minutes) when:
