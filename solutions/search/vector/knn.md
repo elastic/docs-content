@@ -70,12 +70,10 @@ Before you run a kNN search, use this checklist to confirm that your vectors are
 
 Confirm that the document contains embeddings in the expected field.
 
-Select your deployment type or the {{stack}} version in which the index was created, then use the example for your field type. Upgrading {{stack}} doesn't change this behavior for existing indices.
+Use the example for your field type. For a `semantic_text` field, select your deployment type or the {{stack}} version in which the index was created. Upgrading {{stack}} doesn't change this behavior for existing indices.
 
-:::::::{applies-switch}
-::::::{applies-item} { stack: ga 9.2+, serverless: ga }
-:::::{tab-set}
-::::{tab-item} `dense_vector`
+:::::::{tab-set}
+::::::{tab-item} `dense_vector`
 Retrieve the document by ID and include only the `dense_vector` field. Replace `my-index`, `1`, and `dense-vector-field` with the values for your document:
 
 ```console
@@ -106,8 +104,11 @@ A stored vector appears in `_source` as an array of numbers.
 
 1. The stored vector values. The presence of this array confirms that the document has a vector in the requested field.
 :::
-::::
-::::{tab-item} `semantic_text`
+::::::
+
+::::::{tab-item} `semantic_text`
+:::::{applies-switch}
+::::{applies-item} { stack: ga 9.2+, serverless: ga }
 Include the embeddings in `_source`:
 
 ```console
@@ -193,44 +194,8 @@ Stored embeddings appear under `_inference_fields` in `_source`.
 1. The stored embedding for this text chunk. The example omits most values from the 1024-dimension vector.
 :::
 ::::
-:::::
-::::::
 
-::::::{applies-item} stack: ga 9.0-9.1
-:::::{tab-set}
-::::{tab-item} `dense_vector`
-Retrieve the document by ID and include only the `dense_vector` field. Replace `my-index`, `1`, and `dense-vector-field` with the values for your document:
-
-```console
-GET my-index/_doc/1?_source_includes=dense-vector-field
-```
-
-A stored vector appears in `_source` as an array of numbers.
-
-:::{dropdown} Example response
-:open:
-```console-result
-{
-  "_index": "my-index",
-  "_id": "1",
-  "_version": 1,
-  "_seq_no": 0,
-  "_primary_term": 1,
-  "found": true,
-  "_source": {
-    "dense-vector-field": [ <1>
-      1,
-      0,
-      0
-    ]
-  }
-}
-```
-
-1. The stored vector values. The presence of this array confirms that the document has a vector in the requested field.
-:::
-::::
-::::{tab-item} `semantic_text`
+::::{applies-item} stack: ga 9.0-9.1
 Request the internal inference fields:
 
 ```console

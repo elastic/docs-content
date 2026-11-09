@@ -241,6 +241,10 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
 
+:::{note}
+If you ran a kNN search and it failed or returned no results, [check whether your vectors are searchable and compatible with kNN search](/solutions/search/vector/knn.md#verify-embeddings).
+:::
+
 ## Pricing [pricing]
 
 All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).

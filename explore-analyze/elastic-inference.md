@@ -31,7 +31,3 @@ There are several ways to perform {{infer}} in the {{stack}}, depending on the u
 
   - [The `semantic_text` workflow](/solutions/search/semantic-search/semantic-search-semantic-text.md): a simplified method that uses the {{infer}} API behind the scenes to enable semantic search.
   - [The {{infer}} API](elastic-inference/inference-api.md): a general-purpose API that enables you to run {{infer}} using EIS, your own models, or third-party services.
-
-:::{important}
-After you generate embeddings, [confirm that your vectors are searchable](/solutions/search/vector/knn.md#verify-embeddings).
-:::
