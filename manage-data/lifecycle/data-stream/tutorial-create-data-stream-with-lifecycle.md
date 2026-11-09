@@ -29,7 +29,7 @@ To follow these steps, you need:
   * {applies_to}`stack: ga 9.3+` `manage` if you create the stream in **Streams**, which writes data stream settings.
 
   Refer to [Granting privileges for data streams and aliases](/deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
-* {applies_to}`stack: ga 9.3+` The **All** privilege for the **Streams** feature in {{kib}}, if you use the **Streams** app.
+* {applies_to}`stack: ga 9.3+` {applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` The **All** [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Streams** feature.
 * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` A default snapshot repository and an [appropriate license]({{subscriptions}}) for {{search-snaps}} if you turn on frozen phase transitions. Refer to [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md).
 
 ## Create an index template [create-index-template-with-lifecycle]
@@ -45,15 +45,15 @@ Set the lifecycle on that template, in the same place you set mappings and index
 
 1. Find **{{index-manage-app}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. On the **Index Templates** tab, click **Create template**.
-1. On the **Logistics** page, enter a name and an index pattern that matches the data stream. For example, use `my-data-stream-test*` for the index pattern.
+1. On the **Logistics** page, enter a name and an index pattern that matches the data stream. For example, use `my-index-template` for the name and `my-data-stream-test*` for the index pattern.
 
-   {applies_to}`stack: ga 9.3+` To use the **Streams** app in subsequent steps your index pattern must contain a wildcard (`*`).
+   {applies_to}`stack: ga 9.3+`{applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` To use the **Streams** app in subsequent steps your index pattern must contain a wildcard (`*`).
 
 1. Turn on **Create data stream**.
 1. Select **Delete phase** (**Data retention** in earlier versions), and choose how long to retain your data, in days, hours, minutes, or seconds.
 1. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Optional: Select the **Frozen phase** to choose when to move your data to {{search-snaps}}, in days, hours, minutes, or seconds. This period must be shorter than the delete phase. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
 1. In **Priority**, enter a value higher than `200` so it doesn't collide with built-in templates. Refer to [Avoid index pattern collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions).
-1. Complete the rest of the wizard. On the **Review** page, click **Create template**. For the other wizard pages, refer to [Index templates](/manage-data/data-store/templates.md).
+1. Complete the rest of the wizard. On the **Review** page, click **Create template**. For the other wizard pages, refer to [Index templates](/manage-data/data-store/templates.md) and [Index fundamentals](/manage-data/data-store/index-basics.md).
 ::::
 ::::{tab-item} API
 :sync: api
@@ -124,12 +124,13 @@ Otherwise, the lifecycle on the template doesn't apply.
 ::::{tab-item} {{kib}}
 :sync: kibana
 
-* {applies_to}`stack: ga 9.3+` Create a classic stream in [**Streams**](/solutions/observability/streams/streams.md).
-    1. Find **Streams** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-    1. Click **Create classic stream**.
-    1. Select the index template, enter the stream name, and click **Create**.
+{applies_to}`stack: ga 9.3+`{applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` Create a classic data stream in [**Streams**](/solutions/observability/streams/streams.md):
 
-<!-- TBD: These steps don't work for my in 9.4.9. It does not find my template. -->
+1. Find **Streams** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Click **Create classic stream**.
+1. Select the index template, enter the stream name, and click **Create**.
+
+Alternatively, create a data stream and load data by submitting API requests in [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md). Refer to the API tab for examples.
 
 ::::
 
@@ -161,7 +162,7 @@ Create the stream in either of these ways:
 
 ## Retrieve lifecycle information [retrieve-lifecycle-information]
 
-Confirm that the stream uses the lifecycle from the template and then check the state of a [backing index](/manage-data/data-store/data-streams.md#backing-indices).
+Confirm that the data stream uses the lifecycle from the template.
 
 :::::{tab-set}
 :group: kibana-api
@@ -169,15 +170,17 @@ Confirm that the stream uses the lifecycle from the template and then check the 
 ::::{tab-item} {{kib}}
 :sync: kibana
 
-1. Find **{{index-manage-app}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Select the **Data Streams** tab.
-1. Search for the data stream, and then select it.
-1. In the flyout, check **Data retention** and **Effective data retention**. For this example stream, both show 7 days.
+* View the data stream in **{{index-manage-app}}**:
+    1. Find **{{index-manage-app}}** in the navigation menu or use the global search field.
+    1. Select the **Data Streams** tab.
+    1. Search for the data stream, and then select it.
+    1. In the flyout, review the data phases (**Data retention** in earlier versions).
 
-:::{image} /manage-data/images/elasticsearch-reference-lifecycle-status.png
-:alt: Data stream details flyout showing data retention
-:screenshot:
-:::
+* {applies_to}`stack: ga 9.3+`{applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` View the data stream in [**Streams**](/solutions/observability/streams/streams.md):
+    1. Find **Streams** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    1. Select your stream from the list.
+    1. Go to the **Data lifecycle** tab (**Retention** in earlier versions).
+    1. Review the lifecycle summary and data phases. For more information, refer to [](/solutions/observability/streams/configure-retention.md).
 
 ::::
 
