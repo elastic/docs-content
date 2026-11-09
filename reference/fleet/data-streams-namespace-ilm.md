@@ -25,9 +25,9 @@ The {{ilm-init}} policy is tied to an `(integration, namespace)` pair rather tha
 ## Apply an {{ilm-init}} policy in the UI [data-streams-namespace-ilm-ui]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the integration you want, then:
-   * To create an integration policy, click **Add <integration>**.
-   * To edit an existing one, open the **Integration policies** tab and select the policy.
+2. Create an integration policy or edit an existing one:
+   * To create one, search for and select an integration. If the integration's **Overview** page opens, click **Add <integration>**.
+   * To edit one, open the **Installed integrations** tab, select the integration, open the **Integration policies** tab, and select the policy.
 3. In the **Integration settings** section, expand **Advanced options**.
 4. In the **Namespace** field, enter the namespace you want a custom {{ilm-init}} policy for.
 5. Turn on **Use dedicated index templates for this namespace**, if it isn't on already.
