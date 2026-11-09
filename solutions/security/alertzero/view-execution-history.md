@@ -27,9 +27,7 @@ Each time a {{az-worker}} runs, {{kib}} records the run. Use the execution histo
 
 If a run fails, open it and find the step with the error indicator to see what went wrong. For troubleshooting steps, refer to [](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md).
 
-<!-- After elastic/docs-content#9157 merges, change this link to work-in-alertzero.md. -->
-
-To see what a run produced, such as {{az-proposed-actions}}, refer to [](use-alertzero.md).
+To see what a run produced, such as {{az-proposed-actions}}, refer to [](work-in-alertzero.md).
 
 :::{note}
 Runs that you start from the workflow editor are test runs. They're saved with a flask {icon}`flask` badge, so you can tell them apart from scheduled runs and from runs that you start from the workflow list. Refer to [](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md#workflows-test-vs-production-runs).
