@@ -18,8 +18,6 @@ products:
 
 Create user-managed service accounts and assign roles to control programmatic access to {{es}} and {{kib}} APIs. Accounts created in {{kib}} are ready to use with {{kib}} applications such as [Workflows](/explore-analyze/workflows.md). On {{stack}} deployments, you can also use them with your own applications by [creating a service token](authenticate-kibana-api-with-service-account.md#create-service-account-api-token).
 
-Some service account capabilities differ between [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) and other [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type). This guide uses {{stack}} deployments to refer to {{ech}}, {{ece}}, {{eck}}, and self-managed deployments.
-
 :::{note}
 :applies_to: serverless: ga
 On {{serverless-short}}, user-managed service accounts can only be used within {{kib}} applications. For programmatic access from external applications, use [API keys](/deploy-manage/api-keys.md).
@@ -127,9 +125,9 @@ If you force delete an account, workloads assigned to it fail on their next run.
 serverless: unavailable
 ```
 
-Deleting an account through {{kib}} attempts to remove every service token, including the credential it stores for workloads and tokens created outside {{kib}}. If any credential cleanup fails, {{kib}} completes the deletion and reports a warning.
+Deleting an account through {{kib}} attempts to remove every service token, including the credential it stores for workloads and tokens created outside {{kib}}. It also attempts to invalidate any short-lived access tokens used to run workloads as the account. If any credential cleanup fails, {{kib}} completes the deletion and reports a warning.
 
-A service token left behind after deletion can't authenticate, but it prevents you from creating another account with the same name until you delete the token. If you delete an account directly through the {{es}} API, short-lived access tokens already issued to the account remain valid until they expire, 20 minutes after issuance by default.
+A service token left behind after deletion can't authenticate, but it prevents you from creating another account with the same name until you delete the token.
 
 :::{important}
 API keys owned by the account aren't invalidated when you delete the account. {{rules-ui}} and tasks that obtained an API key while authenticated as the account can continue to run with that key. To revoke this access, [invalidate the API keys]({{es-apis}}operation/operation-security-invalidate-api-key) explicitly.
