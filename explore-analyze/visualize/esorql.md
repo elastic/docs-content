@@ -177,7 +177,7 @@ If you edit a layer's query and its results no longer contain a compatible colum
 
 Annotations mark an event or a period on a time chart, such as a deployment or an outage. The chart needs a time axis, so **Annotations** stays unavailable until the horizontal axis shows time.
 
-For example, in the chart that compares server and client errors, the client errors spike on one day. To mark that day:
+In the chart example that compares server and client errors of the previous section, the client errors spike on one day. To mark that day:
 
 1. Select {icon}`plus` **Add layer** → **Annotations**. {{kib}} creates an annotation straight away.
 2. Set **Annotation date** to the time of the spike.
