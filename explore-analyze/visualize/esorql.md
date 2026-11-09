@@ -208,7 +208,7 @@ On {{esql}} visualizations, you can define a reference line in one of the follow
 
     1. Select {icon}`plus` **Add layer** → **Reference lines** → **ES|QL reference lines**.
     2. Enter a query that returns the threshold in its first row, then run it.
-    3. Select the column that holds the value for the line.
+    3. Select the column that holds the value for the line as the **Vertical axis**.
 
     The line uses the first row of the results, and the column must contain a number. If the query returns more than one row, {{kib}} uses the first row and shows a warning.
 
@@ -220,6 +220,8 @@ On {{esql}} visualizations, you can define a reference line in one of the follow
     | STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
     | STATS average_requests = AVG(requests)
     ```
+
+    For this query, select `average_requests` as the **Vertical axis**.
 
 #### Suggestions with several layers
 
