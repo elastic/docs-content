@@ -40,10 +40,8 @@ The flyout header shows the {{az-escalation}} title, status, and assignees, and 
 
 The {{az-escalation}} is where you and your team coordinate the response. Everyone who can see it can read the full conversation and send messages in it. You decide on {{az-proposed-actions}} in the linked {{az-investigations}}.
 
-1. In the details flyout, under **Linked investigations**, select each {{az-investigation}} marked **Action required**, and decide on its {{az-proposed-actions}}. To learn how, refer to [](use-alertzero.md).
+1. In the details flyout, under **Linked investigations**, select each {{az-investigation}} marked **Action required**, and decide on its {{az-proposed-actions}}. To learn how, refer to [](work-in-alertzero.md).
 2. To talk to your team, send a message in the chat. To post a message for the other people without asking the agent to respond, select **Include agent**, and then select **Skip agent**. To learn more, refer to [](/explore-analyze/ai-features/agent-builder/chat.md#post-without-running-the-agent).
-
-% For docs writers: After elastic/docs-content#9157 merges, change the link to use-alertzero.md in step 1 to work-in-alertzero.md, which #9157 renames it to.
 
 ## Change who is assigned [manage-escalations-assignees]
 
