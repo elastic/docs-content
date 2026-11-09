@@ -212,7 +212,7 @@ On {{esql}} visualizations, you can define a reference line in one of the follow
 
     The line uses the first row of the results, and the column must contain a number. If the query returns more than one row, {{kib}} uses the first row and shows a warning.
 
-    For example, to draw a line at the average number of events per time bucket, use this query. It counts events in each time bucket, then averages the counts:
+    The chart in the previous examples groups web log events into time buckets. To draw a line at the average number of events across those buckets, use this query. It counts the events in each time bucket, as the chart does, then averages the counts:
 
     ```esql
     FROM kibana_sample_data_logs
@@ -224,7 +224,7 @@ On {{esql}} visualizations, you can define a reference line in one of the follow
     For this query, select `average_requests` as the **Vertical axis**.
 
     :::{image} /explore-analyze/images/esql-visualization-layer-reference-line.png
-    :alt: The chart of web log events with a horizontal reference line at the average number of events per time bucket
+    :alt: The chart of web log events with a horizontal reference line at the average number of events across the time buckets
     :screenshot:
     :::
 
