@@ -103,7 +103,7 @@ In the resulting chart, the time buckets are placed on the **Horizontal axis**, 
 
 To add another field to the breakdown, select **Add a field** under **Breakdown** and choose a column from your query. You can also drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
 
-### Combine several queries in one chart [esql-viz-multi-layer]
+### Add multiple layers to ES|QL charts [esql-viz-multi-layer]
 ```{applies_to}
 stack: ga 9.6
 serverless: ga
