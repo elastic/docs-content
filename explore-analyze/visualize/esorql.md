@@ -177,12 +177,18 @@ If you edit a layer's query and its results no longer contain a compatible colum
 
 Annotations mark an event or a period on a time chart, such as a deployment or an outage. The chart needs a time axis, so **Annotations** stays unavailable until the horizontal axis shows time.
 
-In the chart example that compares server and client errors of the previous section, the client errors spike on one day. To mark that day:
+In the chart example that compares server and client errors of the previous section, the client errors spike on one day. To mark the outage behind that spike:
 
 1. Select {icon}`plus` **Add layer** → **Annotations**. {{kib}} creates an annotation straight away.
-2. Set **Annotation date** to the time of the spike.
+2. Turn on **Apply as range**, then set **From** and **To** to the start and end of the outage.
+3. In **Name**, enter a label for the annotation, such as `eu-west-36 outage`.
 
-To mark a period instead, such as an outage, turn on **Apply as range** and set **From** and **To**.
+To mark a single moment instead, such as a deployment, leave **Apply as range** off and set **Annotation date**.
+
+:::{image} /explore-analyze/images/esql-visualization-layer-annotation.png
+:alt: The chart of web log events with an annotation named eu-west-36 outage, shading the period of the client errors spike
+:screenshot:
+:::
 
 If you're used to adding [annotations](lens.md#add-annotations) to visualizations created using the point-and-click editor, annotations on {{esql}} visualizations work differently. You place each annotation yourself, by date or by date range. You can't base an annotation on a query or reuse one from the annotation library.
 
