@@ -183,34 +183,43 @@ In the chart example that compares server and client errors of the previous sect
 2. Turn on **Apply as range**, then set **From** and **To** to the start and end of the outage.
 3. In **Name**, enter a label for the annotation, such as `eu-west-36 outage`.
 
-To mark a single moment instead, such as a deployment, leave **Apply as range** off and set **Annotation date**.
-
 :::{image} /explore-analyze/images/esql-visualization-layer-annotation.png
 :alt: The chart of web log events with an annotation named eu-west-36 outage, shading the period of the client errors spike
 :screenshot:
 :::
 
+To mark a single moment instead, such as a deployment, leave **Apply as range** off and set **Annotation date**.
+
 If you're used to adding [annotations](lens.md#add-annotations) to visualizations created using the point-and-click editor, annotations on {{esql}} visualizations work differently. You place each annotation yourself, by date or by date range. You can't base an annotation on a query or reuse one from the annotation library.
 
 #### Add reference lines
 
-A reference line shows a threshold, such as a target or a budget, so you can see at a glance where your data crosses it. How you add one depends on your version:
+A reference line shows a threshold, such as a target or a budget, so you can see at a glance where your data crosses it.
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select {icon}`plus` **Add layer** → **Reference lines**, then select the source of the values:
+On {{esql}} visualizations, you can define a reference line in one of the following ways:
 
-    - **Static reference lines**: Enter fixed values. This layer has no query.
-    - **ES|QL reference lines**: Calculate the thresholds with a separate query, independent of the queries of your data layers. Each column of numbers that the query returns can become a line.
+- **With a fixed value**: Draw the line at a number that you choose.
 
-- {applies_to}`stack: ga 9.6` Select {icon}`plus` **Add layer** → **Reference lines**, then enter fixed values.
+    1. Select {icon}`plus` **Add layer** → **Reference lines**.
+    2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select **Static reference lines**.
+    3. Set the value where you want the line to appear.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` For example, to draw a line at the average number of requests per time bucket, add an **ES|QL reference lines** layer with this query. It reuses the time-bucket query and averages its results:
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` **With a value from an {{esql}} query**: Calculate the threshold from your data, for example an average.
 
-```esql
-FROM kibana_sample_data_logs
-| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
-| STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
-| STATS average_requests = AVG(requests)
-```
+    1. Select {icon}`plus` **Add layer** → **Reference lines** → **ES|QL reference lines**.
+    2. Enter a query that returns the threshold in its first row, then run it.
+    3. Select the column that holds the value for the line.
+
+    The line uses the first row of the results, and the column must contain a number. If the query returns more than one row, {{kib}} uses the first row and shows a warning.
+
+    For example, to draw a line at the average number of events per time bucket, use this query. It counts events in each time bucket, then averages the counts:
+
+    ```esql
+    FROM kibana_sample_data_logs
+    | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+    | STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+    | STATS average_requests = AVG(requests)
+    ```
 
 #### Suggestions with several layers
 
