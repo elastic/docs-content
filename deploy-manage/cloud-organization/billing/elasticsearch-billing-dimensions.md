@@ -22,7 +22,18 @@ sub:
 
 # {{es-serverless}} billing dimensions [elasticsearch-billing]
 
-{{es-serverless}} projects are priced based on consumption of the underlying infrastructure that supports your use case with the performance characteristics you need.
+[{{es-serverless}}](/solutions/elasticsearch-solution-project.md) projects are priced based on consumption of the underlying infrastructure that supports your use case with the performance characteristics you need.
+
+Your bill is made up of [project charges](#elasticsearch-billing-project-charges), [add-ons](#elasticsearch-billing-add-ons), and [organization charges](#elasticsearch-billing-organization-charges). This page also explains how to [manage costs](#elasticsearch-billing-managing-elasticsearch-costs) related to project charges.
+
+Refer to [](serverless-project-billing-dimensions.md) and the [{{es-serverless}} pricing page](https://www.elastic.co/pricing/serverless-search) for more details.
+
+## Project charges [elasticsearch-billing-project-charges]
+
+Project charges are based on the capabilities you use in your {{es-serverless}} project, starting with [VCUs](#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) and [data storage](#elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb). Some features are also priced differently depending on the project type, such as [Agent Builder](#elasticsearch-billing-agent-builder-executions) and [{{cps}}](#elasticsearch-billing-cps).
+
+### VCU types: search, ingest, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
+
 Measurements are in virtual compute units (VCUs).
 Each VCU represents a fraction of RAM, CPU, and local disk for caching.
 
@@ -34,14 +45,6 @@ The number of VCUs you need is determined by:
 * Search Power setting
 * Machine learning usage
 
-Charges like these, which depend on your project type, are called *project charges*. Project charges also include features such as [Agent Builder](#elasticsearch-billing-agent-builder-executions) and [{{cps}}](#elasticsearch-billing-cps), whose pricing depends on your project type. This page also explains how to [manage costs](#elasticsearch-billing-managing-elasticsearch-costs) related to these charges. 
-
-Your bill can also include [add-ons](#elasticsearch-billing-add-ons) and [organization charges](#elasticsearch-billing-organization-charges). To learn more about billing dimension categories, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
-
-For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pricing page](https://www.elastic.co/pricing/serverless-search).
-
-## VCU types: search, ingest, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
-
 {{es-serverless}} uses the following VCU types:
 
 * **Ingest:** The VCUs used to index incoming documents. Ingest VCUs account for compute resources consumed for ingestion. This is based on ingestion rate and amount of data ingested at any given time. Transforms and ingest pipelines also contribute to ingest VCU consumption. Ingest VCU billing scales to zero during periods with no ingest activity.
@@ -52,16 +55,16 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
   Models that run on the [Elastic {{infer-cap}} Service](#elasticsearch-billing-elastic-managed-llms) are billed based on tokens as an add-on, not as ML VCUs.
 
-## Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
+### Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
-## Agent Builder executions [elasticsearch-billing-agent-builder-executions]
+### Agent Builder executions [elasticsearch-billing-agent-builder-executions]
 
 :::{include} _snippets/agent-builder-executions-billing.md
 :::
 
-## {{cps-cap}} [elasticsearch-billing-cps]
+### {{cps-cap}} [elasticsearch-billing-cps]
 
 [{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
 
@@ -130,7 +133,7 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 
 ## Organization charges [elasticsearch-billing-organization-charges]
 
-These charges apply regardless of which product you use, and include data out and support.
+These charges apply regardless of which project type you use, and include data out and support.
 
 :::{include} _snippets/serverless-organization-charges.md
 :::

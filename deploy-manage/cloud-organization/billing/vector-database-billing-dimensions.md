@@ -22,26 +22,28 @@ sub:
 
 # {{es}} {{vectordb}} billing dimensions [vector-database-billing]
 
-{{es}} {{vectordb}} projects on {{serverless-full}} are priced based on consumption across storage, search, ingest, and infrastructure.
+[{{es}} {{vectordb}}](/solutions/vector-database.md) projects on {{serverless-full}} are priced based on consumption across storage, search, ingest, and infrastructure.
 
-Your monthly bill is calculated based on these components:
+Your bill is made up of [project charges](#vector-database-billing-project-charges), [add-ons](#vector-database-billing-add-ons), and [organization charges](#vector-database-billing-organization-charges). This page also explains how to [manage costs](#vector-database-billing-managing-costs) related to project charges.
 
-* **Storage** - Measured by the total amount of data stored in your project, in GB.
-* **Search** - Measured by reserved search capacity for your stored data. Capacity is controlled by your project's [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) setting and scales with your project's active storage.
-* **Ingest** - Measured by the volume of data you ingest into your project over the course of a month, in GB.
-* **Infrastructure fee** - A recurring project fee. Usage is metered by the hour for as long as the project exists, so a full month looks like a flat monthly charge and partial months are pro-rated.
+Refer to [](serverless-project-billing-dimensions.md), the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless), or the [{{serverless-full}} pricing](https://cloud.elastic.co/pricing/serverless?s=vectordb) page for more details.
 
-Charges like these, which depend on your project type, are called *project charges*. Project charges also include features such as [Agent Builder](#vector-database-billing-agent-builder-executions) and [{{cps}}](#vector-database-billing-cps), whose pricing depends on your project type. This page also explains how to [manage costs](#vector-database-billing-managing-costs) related to these charges.
+## Project charges [vector-database-billing-project-charges]
 
-Your bill can also include [add-ons](#vector-database-billing-add-ons) and [organization charges](#vector-database-billing-organization-charges). To learn more about billing dimension categories, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
+Project charges are based on the capabilities you use in your {{es}} {{vectordb}} project, starting with these components:
 
-For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or the [{{serverless-full}} pricing](https://cloud.elastic.co/pricing/serverless?s=vectordb) pages.
+* **[Storage](#vector-database-billing-storage)** - Measured by the total amount of data stored in your project, in GB.
+* **[Search](#vector-database-billing-search)** - Measured by reserved search capacity for your stored data. Capacity is controlled by your project's [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) setting and scales with your project's active storage.
+* **[Ingest](#vector-database-billing-ingest)** - Measured by the volume of data you ingest into your project over the course of a month, in GB.
+* **[Infrastructure fee](#vector-database-billing-infrastructure)** - A recurring project fee. Usage is metered by the hour for as long as the project exists, so a full month looks like a flat monthly charge and partial months are pro-rated.
 
-## Storage [vector-database-billing-storage]
+Some features are also priced differently depending on the project type, such as [Agent Builder](#vector-database-billing-agent-builder-executions) and [{{cps}}](#vector-database-billing-cps).
+
+### Storage [vector-database-billing-storage]
 
 You are charged per GB of data stored in the project. Storage charges apply for as long as the data remains in the project. Each {{vectordb}} project can store up to 1 TB of data.
 
-## Search [vector-database-billing-search]
+### Search [vector-database-billing-search]
 
 Search charges are based on the search capacity reserved for your stored data. All stored data is searchable by default, which means it actively contributes to search charges.
 
@@ -51,22 +53,22 @@ At Search Power **100**, capacity is reserved to keep the project's full dataset
 
 Increasing Search Power reserves more capacity and raises search charges. Running more queries does not increase search charges. For current rates, refer to the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
-## Ingest [vector-database-billing-ingest]
+### Ingest [vector-database-billing-ingest]
 
 Ingest charges are based on the volume of data written to your project, measured in GB for the billing period. This uses the same definition of billable ingested bytes as other Serverless offerings.
 
-## Infrastructure [vector-database-billing-infrastructure]
+### Infrastructure [vector-database-billing-infrastructure]
 
 You are billed an infrastructure fee for as long as the project exists. Elastic meters this fee by the hour, so on your bill it behaves like a monthly project fee that is pro-rated if you create or delete the project mid-month.
 
 There is no separate control to pause or make a project unavailable. To stop infrastructure charges, [delete the project](/deploy-manage/uninstall/delete-a-cloud-deployment.md).
 
-## Agent Builder executions [vector-database-billing-agent-builder-executions]
+### Agent Builder executions [vector-database-billing-agent-builder-executions]
 
 :::{include} _snippets/agent-builder-executions-billing.md
 :::
 
-## {{cps-cap}} [vector-database-billing-cps]
+### {{cps-cap}} [vector-database-billing-cps]
 
 [{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
 
@@ -99,7 +101,7 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 
 ## Organization charges [vector-database-billing-organization-charges]
 
-These charges apply regardless of which product you use, and include data out and support.
+These charges apply regardless of which project type you use, and include data out and support.
 
 :::{include} _snippets/serverless-organization-charges.md
 :::

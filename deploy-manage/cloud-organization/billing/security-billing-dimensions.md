@@ -10,7 +10,7 @@ products:
 sub:
   offering: Security Analytics
   abb-preamble: |
-    Elastic Agent Builder enables you to create AI agents that assist with security operations, including alert investigation, threat triage, root cause analysis, and guided response actions. Agent Builder Executions is a billing dimension for Elastic Security Serverless projects on the Security Analytics Complete tier.
+    Elastic Agent Builder enables you to create AI agents that assist with security operations, including alert investigation, threat triage, root cause analysis, and guided response actions. Agent Builder Executions is a billing dimension for Elastic Security Serverless projects on the Security Analytics Complete tier and the Elastic AI SOC Engine (EASE) tier.
 
     Billing is based on the number of agent executions completed in your project over the course of a month.
   abb-free-executions: 10,000
@@ -24,12 +24,24 @@ sub:
 
 # {{elastic-sec}} Serverless billing dimensions [security-billing]
 
-{{elastic-sec}} serverless projects provide you with all the capabilities of {{elastic-sec}} to perform SIEM, security analytics, endpoint security, and cloud security workflows. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption based. Security Analytics/SIEM is available in two tiers of carefully selected features to enable common security operations:
+[{{elastic-sec}}](/solutions/security.md) serverless projects provide you with all the capabilities of {{elastic-sec}} to perform SIEM, security analytics, endpoint security, and cloud security workflows. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption based. Security Analytics/SIEM is available in two tiers of carefully selected features to enable common security operations:
 
 * **Security Analytics Essentials** — Includes everything you need to operationalize traditional SIEM in most organizations.
 * **Security Analytics Complete** — Adds advanced security analytics and AI-driven features that many organizations will require when upgrading or replacing legacy SIEM systems.
 
-Your monthly bill is based on the capabilities you use. When you use Security Analytics/SIEM, your bill is calculated based on data volume, which has these components:
+Projects that complement a third-party SIEM can use the Elastic AI SOC Engine (EASE) tier instead, which provides AI-powered threat hunting and alert triage capabilities.
+
+Your bill is made up of [project charges](#security-billing-project-charges), [add-ons](#security-billing-add-ons), and [organization charges](#security-billing-organization-charges).
+
+Refer to [](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for more details, or [create a serverless estimate](https://cloud.elastic.co/pricing/serverless?s=security).
+
+## Project charges [security-billing-project-charges]
+
+Project charges are based on the capabilities you use in your {{sec-serverless}} project, starting with [data volume](#security-billing-data-volume), which also covers [Endpoint Protection](#security-billing-endpoint-protection). Some features also have dedicated billing dimensions, such as [Cloud Protection](#security-billing-cloud-protection), and others are priced differently depending on the project type, such as [Agent Builder](#security-billing-agent-builder-executions) and [{{cps}}](#security-billing-cps). Some of these charges apply only in the [feature tiers](/deploy-manage/deploy/elastic-cloud/project-settings.md) where the related feature is available.
+
+### Data volume [security-billing-data-volume]
+
+Data volume charges have these components:
 
 * **Ingest** — Measured by the number of GB of log/event/info data that you send to your Security project over the course of a month.
 * **Retention** — Measured by the total amount of ingested data stored in your Security project.
@@ -37,22 +49,20 @@ Your monthly bill is based on the capabilities you use. When you use Security An
 :::{include} _snippets/note-data-volumes-ingest-retention.md
 :::
 
-Charges like these, which depend on your project type, are called *project charges*. Project charges also include features such as [Agent Builder](#security-billing-agent-builder-executions) and [{{cps}}](#security-billing-cps), whose pricing depends on your project type.
+### Endpoint Protection [security-billing-endpoint-protection]
 
-Your bill can also include [add-ons](#security-billing-add-ons) and [organization charges](#security-billing-organization-charges). To learn more about billing dimension categories, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
-
-[Create a serverless estimate](https://cloud.elastic.co/pricing/serverless?s=security) or refer to the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for more details.
-
-## Endpoint Protection [security-billing-endpoint-protection]
+**Tiers:** Security Analytics Essentials, Security Analytics Complete
 
 Endpoint Protection is included with Security Analytics with no per-endpoint licensing fees, providing endpoint protection and threat prevention for all your endpoints. Endpoint Protection is available in two tiers of selected features to enable common endpoint security operations:
 
 * **Endpoint Protection Essentials** — Includes robust protection against malware, ransomware, and other malicious behaviors.
 * **Endpoint Protection Complete** — Adds endpoint response actions and advanced policy management.
 
-Endpoint Protection is built into all {{sec-serverless}} projects without additional per-endpoint license cost. You only pay for the alerts and telemetry generated by your endpoints, billed using the **Ingest** and **Retention** rates. You can customize telemetry collection in your endpoint policy to precisely control your data volume.
+Endpoint Protection is built into all Security Analytics projects without additional per-endpoint license cost. You only pay for the alerts and telemetry generated by your endpoints, billed using the **Ingest** and **Retention** rates. You can customize telemetry collection in your endpoint policy to precisely control your data volume.
 
-## Cloud Protection [security-billing-cloud-protection]
+### Cloud Protection [security-billing-cloud-protection]
+
+**Tiers:** Security Analytics Essentials, Security Analytics Complete
 
 Cloud Protection is an *optional* add-on to Security Analytics that provides value-added protection capabilities for cloud assets. Cloud Protection is available in two tiers of carefully selected features to enable common cloud security operations:
 
@@ -90,12 +100,16 @@ Logs, events, alerts, and configuration data ingested into your security project
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
 
-## Agent Builder executions [security-billing-agent-builder-executions]
+### Agent Builder executions [security-billing-agent-builder-executions]
+
+**Tiers:** Security Analytics Complete, EASE
 
 :::{include} _snippets/agent-builder-executions-billing.md
 :::
 
-## {{cps-cap}} [security-billing-cps]
+### {{cps-cap}} [security-billing-cps]
+
+**Tiers:** Security Analytics Complete
 
 [{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
 
@@ -104,9 +118,11 @@ For more details about {{elastic-sec}} serverless project rates and billable ass
 
 ## Add-ons [security-billing-add-ons]
 
-Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
+Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project. Some add-ons apply only in the [feature tiers](/deploy-manage/deploy/elastic-cloud/project-settings.md) where the related feature is available.
 
 ### Workflow executions [security-billing-workflow-executions]
+
+**Tiers:** Security Analytics Complete, EASE
 
 :::{include} _snippets/workflow-executions-billing.md
 :::
@@ -116,11 +132,11 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::{include} _snippets/eis-billing.md
 :::
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier.
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" and "Elastic AI SOC Engine" feature tiers.
 
 ## Organization charges [security-billing-organization-charges]
 
-These charges apply regardless of which product you use, and include data out and support.
+These charges apply regardless of which project type you use, and include data out and support.
 
 :::{include} _snippets/serverless-organization-charges.md
 :::
