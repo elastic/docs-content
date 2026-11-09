@@ -96,7 +96,7 @@ To build the chart:
 
 The chart preview shows one bar for each response code. The request count determines the height of each bar.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To compare these bars with the results of another query, add a layer to the chart. Refer to [Add multiple layers to ES|QL charts](../esorql.md#esql-viz-multi-layer).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To compare these bars with the results of another query, add a layer to the chart. Refer to [Add multiple layers to {{esql}} charts](../esorql.md#esql-viz-multi-layer).
 
 ## Apply bar chart best practices [bar-chart-best-practices]
 

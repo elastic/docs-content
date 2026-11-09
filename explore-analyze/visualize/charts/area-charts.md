@@ -97,7 +97,7 @@ To build the chart:
 
 The chart preview shows how the volume of transferred data changes over time.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To compare this area with the results of another query, add a layer to the chart. Refer to [Add multiple layers to ES|QL charts](../esorql.md#esql-viz-multi-layer).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To compare this area with the results of another query, add a layer to the chart. Refer to [Add multiple layers to {{esql}} charts](../esorql.md#esql-viz-multi-layer).
 
 ## Apply area chart best practices [area-chart-best-practices]
 
