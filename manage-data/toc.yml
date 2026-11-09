@@ -1,4 +1,8 @@
 project: 'Manage data'
+
+suppress:
+  - DeepLinkingVirtualFile
+
 toc:
   - file: index.md
   - file: data-store.md
