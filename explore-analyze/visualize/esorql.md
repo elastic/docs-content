@@ -115,7 +115,10 @@ Every {{esql}} data layer has its own query and its own dimensions, so you can c
 
 To add a layer, select {icon}`plus` **Add layer** in the editor, then select the type of layer. The new layer opens in its own tab. When a chart has more than one layer, each layer has a tab, and you select a tab to edit that layer's query and dimensions.
 
-![The ES|QL visualization editor with the Add layer button next to the layer tabs](/explore-analyze/images/esql-visualization-add-layer.png)
+:::{image} /explore-analyze/images/esql-visualization-add-layer.png
+:alt: The Configuration flyout of an ES|QL visualization, showing the Add layer button next to the layer tabs
+:screenshot:
+:::
 
 The layer types work a little differently from the same layers in a point-and-click visualization, as the following sections describe.
 
