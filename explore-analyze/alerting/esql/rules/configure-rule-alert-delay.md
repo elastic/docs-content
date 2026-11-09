@@ -10,7 +10,7 @@ description: "Configure alert delay for rules that group matches into an alert, 
 
 # Alert delay in {{alerting-v2-system}} [alert-delay]
 
-Alert delay is an optional setting for {{alerting-v2-system}} rules that group matches into an alert. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change.
+Alert delay is an optional setting for {{alerting-v2-system-short}} rules that group matches into an alert. It controls when a breached rule transitions from pending to active, reducing noise from brief spikes that don't reflect a real state change.
 
 In YAML, alert delay corresponds to the `state_transition.pending` object.
 

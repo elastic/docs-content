@@ -10,7 +10,7 @@ description: "Search, filter, and bulk-manage rules. Use inline editing, the rul
 
 # View and manage rules in {{alerting-v2-system}} [manage-rules]
 
-After you create {{alerting-v2-system}} rules, use the **Rules** page to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
+After you create {{alerting-v2-system-short}} rules, use the **Rules** page to keep track of them. Search and filter to find the ones you need, check status and recent activity at a glance, and make changes without losing your place in the list.
 
 To open the **Rules** page, go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -44,7 +44,7 @@ Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, 
 
 ## Disable or snooze a rule [disable-snooze-rule]
 
-Use **Disable** when you want the rule to stop running entirely until you re-enable it. Snoozing is different: the rule keeps evaluating, but you suppress notifications or quiet a specific series or action policy.
+Use **Disable** when you want the rule to stop running entirely until you re-enable it. Snoozing is different: the rule keeps evaluating, but you pause notifications or quiet a specific series or action policy.
 
 ## Related pages
 

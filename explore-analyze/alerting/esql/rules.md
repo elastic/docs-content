@@ -13,7 +13,7 @@ description: "Rules define what to detect using ES|QL. Each match is written as 
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-In {{alerting-v2-system}}, a rule is where detection starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten.
+In {{alerting-v2-system-short}}, a rule is where detection starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. On each scheduled run, {{kib}} writes each matching row as a [rule event](rules/rule-event-field-reference.md) to `.rule-events`. Those events are never overwritten.
 
 ## Workflows on action policies send notifications [rules-dont-control-notifications]
 

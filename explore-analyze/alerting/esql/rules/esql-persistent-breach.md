@@ -10,7 +10,7 @@ description: "Detect conditions that persist across consecutive time buckets usi
 
 # Persistent breach detection in {{alerting-v2-system}} [persistent-breach]
 
-A persistent breach condition in a {{alerting-v2-system}} rule detects a metric that stays above a threshold across several consecutive time buckets, for example CPU above 90% in all 10 of the last 10 five-minute windows. This filters out transient spikes and fires only when a problem has been sustained.
+A persistent breach condition in a {{alerting-v2-system-short}} rule detects a metric that stays above a threshold across several consecutive time buckets, for example CPU above 90% in all 10 of the last 10 five-minute windows. This filters out transient spikes and fires only when a problem has been sustained.
 
 {{esql}} can express this with bucket counting:
 
