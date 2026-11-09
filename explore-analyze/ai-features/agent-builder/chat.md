@@ -642,11 +642,17 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
+**Connectors** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Lists the [connectors](connectors.md) assigned to the current agent. Select a connector to open a detail panel that shows its sub-actions. To assign a connector, select **Add connector**. To view and manage the connectors library, select **Manage all connectors**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
+
 **Tools**
 :   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
 
+The following image shows the **Customize** section of the left sidebar:
+
 :::{image} images/customize-your-agent-accordion.png
-:alt: Customize accordion open
+:screenshot:
+:alt: Customize accordion in the agent sidebar listing Overview, Skills, Connectors, and Tools
 :width: 200px
 :::
 
@@ -676,13 +682,11 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 :::
 
 **Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   View and manage the {{agent-builder}} connectors library, which gives agents access to external data sources and systems. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use a connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
+:   View and manage the {{agent-builder}} connectors library, which gives agents access to external data sources and systems.
 
-:::{note}
-:applies_to: stack: preview 9.4-9.5
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use a connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
 
-The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
-:::
+    {applies_to}`stack: preview 9.4-9.5` The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 
 **Tools**
 :   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.
