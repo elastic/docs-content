@@ -119,12 +119,12 @@ The layer types work a little differently from the same layers in a point-and-cl
 
 #### Plot another query in its own layer
 
-To compare two sets of results on one chart, add a layer with its own query. For example, start from the [time series chart](#esql-time-series-charts) that counts requests, then add a layer for the requests that failed:
+To compare two sets of results on one chart, add a layer with its own query. For example, start from the [time series chart](#esql-time-series-charts) that counts requests, then add a layer for the requests that ended in a server error (response codes that start with 5):
 
 ```esql
 FROM kibana_sample_data_logs
 | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "5*"
-| STATS errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+| STATS server_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
 ```
 
 To add it:
@@ -132,9 +132,17 @@ To add it:
 1. Select {icon}`plus` **Add layer** → **Visualization**.
 2. If you're asked, select the chart type for the layer. Each layer can use a different type, for example a line over bars.
 3. In the new layer's tab, enter the query and run it.
-4. Assign `time_bucket` to the **Horizontal axis** and `errors` to the **Vertical axis**.
+4. Assign `time_bucket` to the **Horizontal axis** and `server_errors` to the **Vertical axis**.
 
-Use the same time-bucket column on the **Horizontal axis** of each layer so the layers line up in time.
+{{kib}} doesn't assign the columns of a new layer for you. If the **Horizontal axis** is empty, the values of the layer don't follow time and stack at a single position on the chart.
+
+Use the same time-bucket column on the **Horizontal axis** of each layer so the layers line up in time. To compare client errors (response codes that start with 4) as well, add a third layer the same way, with this query:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "4*"
+| STATS client_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
 
 If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
 
