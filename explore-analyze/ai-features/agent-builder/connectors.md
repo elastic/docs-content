@@ -137,7 +137,7 @@ The connector and its sub-actions appear on the agent's **Connectors** page. The
 
 :::{image} images/agent-connectors-add-connector.png
 :screenshot:
-:alt: An agent's Connectors page with the Add connector menu open, showing the From library and Create new connector options, next to an assigned GraphQL connector and its sub-actions
+:alt: An agent's Connectors page with the Add connector menu open
 :width: 750px
 :::
 
