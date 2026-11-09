@@ -117,7 +117,7 @@ Layers are available on bar, line, and area charts. Other chart types, such as p
 
 A chart can combine these layer types:
 
-- [**Visualization**](#plot-another-query-in-its-own-layer): Plots the results of its own query.
+- [**Visualization**](#add-another-visualization-as-a-layer): Shows the results of its own query.
 - [**Annotations**](#mark-events-with-annotations): Mark an event or a period, such as a deployment, on a time axis.
 - [**Reference lines**](#add-reference-lines): Show a threshold, such as a target or a budget.
 
@@ -129,7 +129,7 @@ To add a layer, select {icon}`plus` **Add layer** in the editor, then select the
 :width: 50%
 :::
 
-#### Plot another query in its own layer
+#### Add another visualization as a layer
 
 To compare two sets of results on one chart, add a layer with its own query. For example, start from the [stacked bar chart of web log events](#esql-viz-multi-field-breakdown), then add a layer for the events that returned a server error (response codes that start with 5):
 
