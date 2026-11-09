@@ -21,25 +21,15 @@ To create an {{az-escalation}} or add an {{az-investigation}} to one, your role 
 
 ## Create an {{az-escalation}} [escalate-investigation-create]
 
-1. Start from the {{az-investigation}} that you want to escalate:
-   * On the **{{az-proposed-actions-cap}}** page, find the {{az-investigation}}, select the actions menu {icon}`boxes_vertical`, then select **Open an escalation**.
-   * If you already have the {{az-investigation}} open, select **Open an escalation** at the bottom of its details flyout.
-2. In the **Escalate investigation** window, keep **Create escalation** selected.
-3. (Optional) Edit the {{az-escalation}} title. It starts as the title of the {{az-investigation}}.
-4. Choose who can see the {{az-escalation}}:
-   * **Public**: Any user with the **Agent Builder: Read** or **Agent Builder: All** privilege can see it. This is the default. You're its only assignee until you add more.
-   * **Private**: Only you and the people you add under **Who has access** can see it. You're listed as the owner and added as an assignee. Search for users and select any others you want to work with.
-5. Select **Open escalation**.
+To escalate an {{az-investigation}}, select **Open an escalation** from its actions menu {icon}`boxes_vertical` on the **{{az-proposed-actions-cap}}** page, or from its details flyout. You can change the {{az-escalation}}'s title and choose whether it's visible to anyone with the [appropriate privileges](alertzero-privileges.md#alertzero-escalation-access), or restricted to specific people. If you restrict access, add the people who should work on it. You become its owner and an assignee, and you can [change assignees](manage-escalations.md#manage-escalations-assignees) later.
 
 ## Add an {{az-investigation}} to an existing {{az-escalation}} [escalate-investigation-add]
 
-Link an {{az-investigation}} to an {{az-escalation}} that already exists when it belongs to the same response. The {{az-escalation}} then covers both.
+If an {{az-investigation}} belongs to a response that's already escalated, add it to that {{az-escalation}} instead of creating a new one.
 
-1. On the **{{az-proposed-actions-cap}}** page, find the {{az-investigation}}, select the actions menu {icon}`boxes_vertical`, then select **Attach to an escalation**.
+Start from the {{az-investigation}} and choose to attach it to an existing {{az-escalation}}. Search the open {{az-escalations}} and select the one for the same response. Each shows how many {{az-investigations}} it already links. Some {{az-escalations}} are unavailable, such as one that already links the {{az-investigation}}. Hover over an unavailable {{az-escalation}} to find out why.
 
-   If you opened the {{az-investigation}} details flyout instead, select **Open an escalation** at the bottom of the flyout, and then select **Add to existing** in the **Escalate investigation** window.
-2. Search for the {{az-escalation}}. The list shows open {{az-escalations}}, and each one shows how many {{az-investigations}} it links. An {{az-escalation}} is unavailable if the {{az-investigation}} is already linked to it, or if you don't own it and weren't added to it as a member of a private {{az-escalation}}. Hover over an unavailable {{az-escalation}} to see why.
-3. Select the {{az-escalation}}, and then select **Add to escalation**.
+You can add an {{az-investigation}} to a restricted {{az-escalation}} only if you own it or have been given access to it.
 
 ## Next steps [escalate-investigation-next-steps]
 
