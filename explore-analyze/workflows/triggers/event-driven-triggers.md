@@ -513,7 +513,7 @@ stack: preview 9.6+
 These triggers are available only when {{alerting-v2-system-short}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
 :::
 
-Rule lifecycle triggers run a workflow when someone creates, updates, deletes, enables, or disables a rule in {{alerting-v2-system-short}}. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
+Rule lifecycle triggers run a workflow when someone creates, updates, deletes, enables, or disables a rule. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
 
 Rule lifecycle triggers fire independently of alerts.
 
