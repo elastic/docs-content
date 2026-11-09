@@ -289,7 +289,9 @@ $$$agent-builder-connector-authoring-skill$$$ `connector-authoring` {applies_to}
 
     :::
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library but doesn't assign it to an agent. To let an agent use the new connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
+    {applies_to}`stack: preview =9.5` **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library. If you can edit the agent in the conversation, {{kib}} also assigns the connector to it. For the required privileges and what happens when {{kib}} can't assign it, refer to [Assign a connector from chat](connectors.md#assign-a-connector-from-chat).
 
 ## Observability skills
 ```{applies_to}
