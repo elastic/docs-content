@@ -96,6 +96,8 @@ To build the chart:
 
 The chart preview shows how the request count changes over time.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To compare this line with the results of another query, add a layer to the chart. Refer to [Combine several queries in one chart](../esorql.md#esql-viz-multi-layer).
+
 ## Apply line chart best practices [line-chart-best-practices]
 
 After building the chart with the point-and-click editor or an {{esql}} query, customize its appearance for your data and audience:
