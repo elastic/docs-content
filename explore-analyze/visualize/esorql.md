@@ -127,7 +127,7 @@ A chart can combine these layer types:
 
 Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
 
-To add a layer, select {icon}`plus` **Add layer** in the editor, then select the type of layer. The new layer opens in its own tab. When a chart has more than one layer, each layer has a tab, and you select a tab to edit that layer's query and dimensions.
+To add a layer, select {icon}`plus` **Add layer** in the editor, then select the type of layer. The new layer opens in its own tab.
 
 :::{image} /explore-analyze/images/esql-visualization-add-layer.png
 :alt: The Configuration flyout of an ES|QL visualization, showing the Add layer button next to the layer tabs
