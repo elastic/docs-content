@@ -19,7 +19,7 @@ You’ll learn to:
 * Use {{agent}} to ingest the [TriMet REST API](https://developer.trimet.org/ws_docs/) into {{es}}.
 * Create a map with layers that visualize asset tracks and last-known locations.
 * Use symbols and colors to style data values and show which direction an asset is heading.
-* Set up tracking containment alerts to monitor moving vehicles.
+* Set up tracking containment alerts in {{alerting-v1-system}} to monitor moving vehicles.
 * Display those alerts on a map.
 
 When you complete this tutorial, you’ll have a map that looks like this:
