@@ -723,8 +723,6 @@ toc:
       - file: security/alertzero/index.md
         children:
           - hidden: security/alertzero/set-up-alertzero.md
-            children:
-              - hidden: security/alertzero/requirements.md
           - hidden: security/alertzero/review-first-proposed-action.md
           - hidden: security/alertzero/work-in-alertzero.md
             children:
