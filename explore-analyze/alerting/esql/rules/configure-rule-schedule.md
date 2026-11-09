@@ -20,7 +20,7 @@ The execution interval (`schedule.every`) determines how frequently the rule eva
 
 ## Lookback window [schedule-lookback-window]
 
-The lookback window (`schedule.lookback`) is optional and determines the time range that the {{esql}} query covers. The minimum is `5s` and the maximum is `365d`. If you omit it, the query runs without a time bound, so leaving it unset is rarely what you want outside of quick testing.
+The lookback window (`schedule.lookback`) is optional and determines the time range that the {{esql}} query covers. The minimum is `5s` and the maximum is `365d`. If you omit it, the query covers a time range as long as the execution interval.
 
 If the lookback is shorter than the execution interval, evaluations can miss data between runs. Use a lookback at least as long as the execution interval unless you deliberately want a shorter window.
 
