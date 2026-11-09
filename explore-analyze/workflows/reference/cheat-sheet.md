@@ -109,6 +109,8 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Pause | `wait`, `waitForInput` |
 | Transform data | `data.filter`, `data.map`, `data.aggregate`, `data.parseJson`, `data.regexExtract` |
 | Call AI | `ai.prompt`, `ai.classify`, `ai.summarize`, `ai.agent` |
+| Create or add to an {{agent-builder}} conversation {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | `ai.conversation.create` (tech preview), `ai.conversation.add_event`, `ai.conversation.add_user_message` |
+| Manage conversation attachments and metadata {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | `ai.attachment.add`, `ai.attachment.update`, `ai.attachment.delete`, `ai.attachment.read`, `ai.attachment.list`, `ai.conversation.metadata.read`, `ai.conversation.metadata.patch` |
 | Call another workflow | `workflow.execute` (synchronous), `workflow.executeAsync` (asynchronous, tech preview) |
 | Log | `console` |
 
@@ -247,16 +249,16 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
        reason: "Verified non-malicious."
    ```
 
-6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`. Liquid expressions in these top-level fields aren't evaluated; use literal values. Refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
+6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`. In 9.5 and later, Liquid expressions in these top-level fields are evaluated. In 9.3–9.4, use literal values. Refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
 
    ```yaml
-   # Wrong — fields nested under with, and templated agent-id is not substituted
+   # Wrong — fields nested under with, and camelCase agentId
    - type: ai.agent
      with:
        agentId: "{{ consts.agent_id }}"
        message: "..."
 
-   # Right — top-level kebab-case with literal values
+   # Right — top-level kebab-case
    - type: ai.agent
      agent-id: elastic-ai-agent
      with:
