@@ -459,7 +459,7 @@ stack: preview 9.6+
 ```
 
 :::{note}
-These triggers are available only when {{alerting-v2-system-short}} is enabled. 
+These triggers are available only when [{{alerting-v2-system-short}} is enabled](/explore-analyze/alerting/esql/setup.md).
 :::
 
 Alert lifecycle triggers run a workflow when a user acts on an alert in {{alerting-v2-system-short}}, either in the UI or through the API. They don't fire when an alert becomes active or recovers based on rule evaluations. To run a workflow when an alert's status changes automatically, use an action policy instead. For a comparison, refer to [When to use action policies or lifecycle triggers](../../alerting/esql/workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
@@ -510,7 +510,7 @@ stack: preview 9.6+
 ```
 
 :::{note}
-These triggers are available only when {{alerting-v2-system-short}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
+These triggers are available only when [{{alerting-v2-system-short}} is enabled](/explore-analyze/alerting/esql/setup.md).
 :::
 
 Rule lifecycle triggers run a workflow when someone creates, updates, deletes, enables, or disables a rule. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
