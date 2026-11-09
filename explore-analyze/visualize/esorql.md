@@ -109,20 +109,64 @@ stack: ga 9.6
 serverless: ga
 ```
 
-If the series you want to compare come from different queries, you can plot each query in its own layer on the same bar, line, or area chart. Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
+If the series you want to compare come from different queries, you can plot each query in its own layer on the same chart. You can also add annotations and reference lines on top of the data. Layers are available on bar, line, and area charts. Other chart types, such as pie or metric, use a single query.
 
-To add a layer:
+Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
 
-1. In the editor, select {icon}`plus` **Add layer**.
-2. Select the type of layer to add:
+To add a layer, select {icon}`plus` **Add layer** in the editor, then select the type of layer. The new layer opens in its own tab. When a chart has more than one layer, each layer has a tab, and you select a tab to edit that layer's query and dimensions.
 
-    - **Visualization**: Plots the results of another query. Enter the query, run it, then assign its columns to the layer's dimensions.
-    - **Annotations**: Marks events or time ranges on the chart. Annotations need a chart with a time axis, and they are always static. Query-based annotations and the annotation library aren't available on {{esql}} charts.
-    - **Reference lines**: Draws a threshold on the chart. Select **Static reference lines** to enter fixed values, or **ES|QL reference lines** to calculate the values with a separate query.
+The layer types work a little differently from the same layers in a point-and-click visualization, as the following sections describe.
 
-The new layer opens in its own tab. When a chart has more than one layer, each layer has a tab, and you select a tab to edit that layer's query and dimensions.
+#### Plot another query in its own layer
+
+To compare two sets of results on one chart, add a layer with its own query. For example, start from the [time series chart](#esql-time-series-charts) that counts requests, then add a layer for the requests that failed:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "5*"
+| STATS errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+```
+
+To add it:
+
+1. Select {icon}`plus` **Add layer** → **Visualization**.
+2. If you're asked, select the chart type for the layer. Each layer can use a different type, for example a line over bars.
+3. In the new layer's tab, enter the query and run it.
+4. Assign `time_bucket` to the **Horizontal axis** and `errors` to the **Vertical axis**.
+
+Use the same time-bucket column on the **Horizontal axis** of each layer so the layers line up in time.
 
 If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
+
+#### Mark events with annotations
+
+Annotations mark an event or a period on a time chart, such as a deployment or an outage. The chart needs a time axis, so **Annotations** stays unavailable until the horizontal axis shows time.
+
+Select {icon}`plus` **Add layer** → **Annotations**. {{kib}} creates a new annotation straight away. In a point-and-click visualization, you choose between a new annotation and one from the annotation library, and an annotation can be based on a query. {{esql}} charts offer neither. Each annotation is placed manually: set **Annotation date**, or turn on **Apply as range** and set **From** and **To**.
+
+#### Add reference lines
+
+A reference line shows a threshold, such as a target or a budget, so you can see at a glance where your data crosses it. How you add one depends on your version:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select {icon}`plus` **Add layer** → **Reference lines**, then select the source of the values:
+
+    - **Static reference lines**: Enter fixed values. This layer has no query.
+    - **ES|QL reference lines**: Calculate the thresholds with a separate query, independent of the queries of your data layers. Each column of numbers that the query returns can become a line.
+
+- {applies_to}`stack: ga 9.6` Select {icon}`plus` **Add layer** → **Reference lines**, then enter fixed values.
+
+In a point-and-click visualization, you add a reference line first, then choose in its settings how to calculate it, for example with a formula. On an {{esql}} chart, you choose the source when you add the layer.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` For example, to draw a line at the average number of requests per time bucket, add an **ES|QL reference lines** layer with this query. It reuses the time-bucket query and averages its results:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+| STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+| STATS average_requests = AVG(requests)
+```
+
+#### Suggestions with several layers
 
 The **Suggestions** panel is hidden while the chart has more than one layer, because applying a suggestion would replace the other layers.
 
