@@ -21,7 +21,7 @@ To create an {{az-escalation}} or add an {{az-investigation}} to one, your role 
 
 ## Create an {{az-escalation}} [escalate-investigation-create]
 
-To escalate an {{az-investigation}}, select **Open an escalation** from its actions menu {icon}`boxes_vertical` on the **{{az-proposed-actions-cap}}** page, or from its details flyout. You can change the {{az-escalation}}'s title and choose whether it's visible to anyone with the [appropriate privileges](alertzero-privileges.md#alertzero-escalation-access), or restricted to specific people. If you restrict access, add the people who should work on it. You become its owner and an assignee, and you can [change assignees](manage-escalations.md#manage-escalations-assignees) later.
+To escalate an {{az-investigation}}, select **Open an escalation** from its actions menu {icon}`boxes_vertical` on the **{{az-proposed-actions-cap}}** page, or from its details flyout. You can change the {{az-escalation}}'s title and choose whether it's visible to anyone with the [appropriate privileges](alertzero-privileges.md), or restricted to specific people. If you restrict access, add the people who should work on it. You become its owner and an assignee, and you can [change assignees](manage-escalations.md#manage-escalations-assignees) later.
 
 ## Add an {{az-investigation}} to an existing {{az-escalation}} [escalate-investigation-add]
 
