@@ -149,8 +149,8 @@ If you edit a layer's query and its results no longer contain a compatible colum
 
    ```esql
    FROM kibana_sample_data_logs
-   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "5*"
-   | STATS server_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "5*" AND extension.keyword != ""
+   | STATS server_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 100, ?_tstart, ?_tend)
    ```
 
 3. In this layer, assign `time_bucket` to the **Horizontal axis** and `server_errors` to the **Vertical axis**.
@@ -164,8 +164,8 @@ If you edit a layer's query and its results no longer contain a compatible colum
 
    ```esql
    FROM kibana_sample_data_logs
-   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "4*"
-   | STATS client_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "4*" AND extension.keyword != ""
+   | STATS client_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 100, ?_tstart, ?_tend)
    ```
 
 5. In this layer, assign `time_bucket` to the **Horizontal axis** and `client_errors` to the **Vertical axis**.
@@ -218,8 +218,8 @@ On {{esql}} visualizations, you can define a reference line in the following way
 
     ```esql
     FROM kibana_sample_data_logs
-    | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
-    | STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+    | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND extension.keyword != ""
+    | STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 100, ?_tstart, ?_tend)
     | STATS average_requests = AVG(requests)
     ```
 
