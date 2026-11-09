@@ -60,7 +60,7 @@ Every chart, table, map, or metric on a dashboard is a **panel**. [Panels and vi
 
 - **Lens**: drag-and-drop editor for charts, tables, metrics, and more. Lens also supports an {{esql}} query mode for building visualizations directly from queries.
 - **Maps**: geospatial data visualization
-- **Canvas**: dynamic, multi-page presentations combining live data with custom styling, images, and text
+- {applies_to}`serverless: unavailable` **Canvas**: dynamic, multi-page presentations combining live data with custom styling, images, and text
 - **Vega**: fully custom visualizations
 
 You can also add context with text, images, and link panels.

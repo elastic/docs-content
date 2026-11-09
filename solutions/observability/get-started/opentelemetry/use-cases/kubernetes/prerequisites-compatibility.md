@@ -27,18 +27,16 @@ Before setting up observability for Kubernetes, make sure you have the following
 
 The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
 
-You can download the values file for a specific {{stack}} version from the following URL:
+Use the values file and installation instructions for your deployment mode:
 
-```
-https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<STACK_VERSION>/deploy/helm/edot-collector/kube-stack/values.yaml
-```
-
-Where `<STACK_VERSION>` is the version of the Elastic Stack you are using, for example `9.1.2`.
-
-For Serverless, use the [latest version of the values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml). For version 8.16.0, use [this chart](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml).
+| Deployment mode | Values file | Installation instructions |
+| --- | --- | --- |
+| Direct ingestion into {{es}} | `kube-stack/values.yaml` | [Deploy {{edot}} for Kubernetes observability](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md) |
+| {{motlp}} on {{ech}} | `kube-stack/managed_otlp/values.yaml` | [Quickstart for Kubernetes on {{ech}}](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md) |
+| {{motlp}} on {{serverless-short}} | `kube-stack/managed_otlp/values.yaml` | [Quickstart for Kubernetes on {{serverless-full}}](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md) |
 
 :::{important}
-When [installing the release](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md), make sure you use the right `--version` and `-f <values-file>` parameters.
-
-The latest Helm chart version is {{kube-stack-version}}.
+For Elastic Stack `8.16.0`, use the [values file](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml) from the `elastic/opentelemetry` repository instead.
 :::
+
+The latest supported kube-stack Helm chart version is {{kube-stack-version}}.

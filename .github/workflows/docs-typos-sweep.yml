@@ -1,4 +1,4 @@
-name: Docs typos sweep
+name: "Sweep: Typos"
 on:
   workflow_dispatch:
     inputs:

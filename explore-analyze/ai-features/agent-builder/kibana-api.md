@@ -52,9 +52,9 @@ Need an API key? Refer to [Create API keys for {{agent-builder}} APIs](api-keys.
 
 ### Working with spaces
 
-To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space_name>` before `/api/agent_builder` in your requests.
+To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space-id>` before `/api/agent_builder` in your requests.
 
-For example, to list tools in a space named `my-space`:
+For example, to list tools in a space with the ID `my-space`:
 
 ```bash
 curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
@@ -63,7 +63,7 @@ curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
 
 The default space does not require the `/s/default` prefix.
 
-Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space_name>` prefix.
+Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and doesn't require the `/s/<space-id>` prefix.
 
 ### Use APIs with data from multiple projects [agent-builder-api-cps]
 ```{applies_to}
@@ -71,7 +71,7 @@ stack: unavailable
 serverless: ga
 ```
 
-  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the default space.
+  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the default space.
 
 To override that default, include a `project_routing` expression in the body of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) or the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async). The [run a tool API]({{kib-apis}}operation/operation-post-agent-builder-tools-execute) uses the space default and does not accept this field. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md). For an example, refer to [Chat and conversations](#chat-and-conversations).
 
@@ -701,6 +701,8 @@ This example uses the [create an agent API]({{kib-apis}}operation/operation-post
 
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can't grant individual users access when you create an agent. On create, `access_control` accepts only `access_mode`, and including `entries` returns a validation error. To grant access, call `PUT /api/agent_builder/agents/{id}/access_control` after the agent exists.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To assign [connectors](connectors.md) to the agent, list their IDs in `configuration.connector_ids`. If you omit `connector_ids`, the agent can't run any connectors.
+
 ::::{tab-set}
 :group: api-examples
 
@@ -1026,6 +1028,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents/elastic-ai-agent/consumptio
 
 Use these APIs to send messages to agents and manage conversation history.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `input` parameter of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) and the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) accepts up to 100,000 characters. A request with a longer `input` returns a `400` error.
+
 **Example:** Chat with an agent
 
 This example uses the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse).
@@ -1101,12 +1105,12 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse/async" \
 
 **Example:** Route a request to a specific model {applies_to}`stack: ga 9.4+`
 
-By default, an agent uses its configured model. To override the model for a single request, pass either `connector_id` or `inference_id` in the request body:
+By default, a request uses the default model for {{agent-builder}}, as set on the **Feature settings** page. To override the model for a single request, pass either `connector_id` or `inference_id` in the request body:
 
-* `inference_id` takes an [{{infer}} endpoint](models.md#add-an-inference-endpoint) ID.
-* `connector_id` takes a [connector](models.md#configure-a-connector) ID.
+* `inference_id` takes an [{{infer}} endpoint](models.md#add-an-inference-endpoint) ID. Use this parameter for new integrations.
+* `connector_id` takes a [connector](models.md#configure-a-connector) ID. Generative AI connectors are deprecated.
 
-Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the agent uses its default model.
+Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error.
 
 ::::{tab-set}
 :group: api-examples
@@ -1143,7 +1147,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 **Example:** Scope a chat across projects {applies_to}`serverless: ga`
 
-By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the {{cps-init}} scope from the default space. 
+By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the {{cps-init}} scope from the default space.
 
 Include a `project_routing` expression in the body to override the space's {{cps-init}} scope. The `_alias:my_search_project` expression in this example searches only the project with that alias. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
@@ -1239,6 +1243,92 @@ The response includes the conversation's `access_control` and your `permissions`
 To share the conversation at creation time, include an `access_control` object with the same shape
 as the [update conversation access control](#update-conversation-access-control) example.
 
+**Example:** Add events to a conversation $$$add-conversation-events$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+
+This example uses the [add events to a conversation API]({{kib-apis}}operation/operation-post-agent-builder-conversations-conversation-id-add-events).
+
+Use this API to add information to a conversation without the agent responding. For example, an integration can post incident updates as they happen. The agent reads notes the next time it runs on the conversation, so a later request can ask it to summarize them.
+
+{{kib}} features can define their own event types, and each type defines the shape of its `data` payload. Some event types are only shown in the conversation and aren't sent to the agent. {{agent-builder}} provides the `text_note` event type, which takes a required `text` field (up to 1,000 characters) and an optional `title` field (up to 256 characters). Other fields in `data` are discarded. Notes appear in the conversation in Agent Chat.
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/conversations/{conversation_id}/_add_events
+{
+  "events": [
+    {
+      "type": "text_note",
+      "data": {
+        "title": "Status update",
+        "text": "Checkout service latency is back to normal."
+      }
+    }
+  ]
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}/_add_events" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "events": [
+         {
+           "type": "text_note",
+           "data": {
+             "title": "Status update",
+             "text": "Checkout service latency is back to normal."
+           }
+         }
+       ]
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+The response returns each added event with the ID, author, and timestamp that {{kib}} assigned to it:
+
+```json
+{
+  "events": [
+    {
+      "type": "text_note",
+      "data": {
+        "title": "Status update",
+        "text": "Checkout service latency is back to normal."
+      },
+      "id": "cb684ca4-c5f6-4cd3-bbbc-7411ce893a5c",
+      "actor": {
+        "type": "user",
+        "id": "u_mGBROF_q5bmFCATbLXAcCwKa0k8JvONAwSruelyKA5E_0",
+        "username": "elastic"
+      },
+      "created_at": "2026-10-13T12:55:51.379Z"
+    }
+  ]
+}
+```
+
+Keep the following in mind:
+
+- If any event in the request is invalid, the whole request fails with a `400` error and no events are added.
+- Each request can add between 1 and 10 events.
+- Events are append-only. You can't update or remove an event after you add it.
+- You must own the conversation or be a member of it, or the conversation must be public. You must also be able to use the conversation's agent. Otherwise, the request returns a `404` error.
+
+To add events from a workflow, use the [`ai.conversation.add_event`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-event) step.
+
 **Example:** List conversations
 
 This example uses the [list conversations API]({{kib-apis}}operation/operation-get-agent-builder-conversations).
@@ -1318,7 +1408,7 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}"
 
 ::::
 
-**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+**Example:** Update conversation access control $$$update-conversation-access-control$$$ {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 
 This example uses the [update conversation access control API]({{kib-apis}}operation/operation-put-agent-builder-conversations-conversation-id-access-control).
 

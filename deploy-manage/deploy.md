@@ -1,4 +1,5 @@
 ---
+navigation_title: Deploy
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/intro.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-deploy.html
@@ -9,7 +10,7 @@ products:
   - id: elastic-stack
 ---
 
-# Deploy
+# Elastic deployment options
 
 Whether you're planning to use Elastic's pre-built solutions or Serverless projects, build your own applications with {{es}}, or analyze your data using {{kib}} tools, you need to deploy Elastic first.
 

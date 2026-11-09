@@ -49,7 +49,7 @@ Consider adding the Cloud Native Vulnerability Management (CNVM) integration, wh
 
 The Cloud Posture dashboard summarizes your cloud infrastructure's overall performance against security guidelines defined by the Center for Internet Security (CIS). It shows configuration risk metrics for all your monitored cloud accounts and Kubernetes clusters and groups them by specific parameters. All configuration risks the integration identifies are called benchmark rules and are listed on the **Findings** page. 
 
-The dashboard also shows your overall compliance score and your compliance score for each CIS section. Use these scores to determine how securely configured your overall cloud environment is. To learn more, refer to our [documentation](/solutions/security/cloud/cspm-dashboard.md).
+The dashboard also shows your overall compliance score and your compliance score for each CIS section. Use these scores to determine how securely configured your overall cloud environment is. To learn more, refer to our [documentation](/solutions/security/dashboards/cloud-security-posture-dashboard.md).
 
 :::{image} /solutions/images/security-gs-cspm-dashboard.png
 :alt: Cloud Security Posture dashboard

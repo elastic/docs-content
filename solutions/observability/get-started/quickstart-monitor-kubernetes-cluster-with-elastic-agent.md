@@ -95,7 +95,7 @@ The installation command provided by the UI during the quickstart cannot be used
     If you encounter an error during the installation, refer to [Troubleshooting](#monitor-k8s-with-agent-troubleshooting).
 
     :::{dropdown} Details about the install command
-    The install command provided by the UI may be similar to:
+    The install command provided by the UI might be similar to:
 
     ```sh subs=true
     helm repo add elastic https://helm.elastic.co/ && helm install elastic-agent elastic/elastic-agent --version {{version.stack}} -n kube-system --set outputs.default.url=https:<elasticsearch-url>:443 --set kubernetes.onboardingID=<internal-id> --set kubernetes.enabled=true --set outputs.default.type=ESPlainAuthAPI --set outputs.default.api_key=$(echo "<api-key>" | base64 -d)
@@ -133,7 +133,7 @@ The installation command provided by the UI during the quickstart cannot be used
     If you encounter an error during the installation, refer to [Troubleshooting](#monitor-k8s-with-agent-troubleshooting).
 
     :::{dropdown} Details about the install command
-    The install command provided by the UI may be similar to:
+    The install command provided by the UI might be similar to:
 
     ```sh subs=true
     helm repo add elastic https://helm.elastic.co/ && helm install elastic-agent elastic/elastic-agent --version {{version.stack}} -n kube-system --set outputs.default.url=https:<elasticsearch-url>:443 --set kubernetes.onboardingID=<internal-id> --set kubernetes.enabled=true --set outputs.default.type=ESPlainAuthAPI --set outputs.default.api_key=$(echo "<api-key>" | base64 -d)

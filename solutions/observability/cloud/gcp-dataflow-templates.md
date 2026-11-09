@@ -27,23 +27,26 @@ Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=do
 
 This tutorial assumes the {{es}} cluster is already running.
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} stack: ga
+::::{applies-item} stack: ga
 For {{ech}} deployments, you need your **Cloud ID** and an **API Key**.
 
 To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments), go to the deployment’s **Overview** page.
 
 ![Cloud ID](/solutions/images/observability-monitor-gcp-cloud-id.png "")
-:::
+::::
 
-:::{applies-item} serverless: ga
+::::{applies-item} serverless: ga
 For {{obs-serverless}} projects, you need your **{{es}} endpoint URL** and an **API key**.
 
-To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+:::{include} /deploy-manage/deploy/elastic-cloud/_snippets/find-endpoint-serverless-console.md
 :::
 
+You can also copy the endpoint from {{kib}}, and create an API key. Refer to [](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md).
 ::::
+
+:::::
 
 Use {{kib}} to [create a Base64-encoded API key](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to authenticate on your deployment.
 
@@ -55,20 +58,22 @@ You can optionally restrict the privileges of your API Key; otherwise they’ll 
 
 You’ll start with installing the Elastic GCP integration to add pre-built dashboards, ingest node configurations, and other assets that help you get the most of the GCP logs you ingest.
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `gcp`.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Google Cloud Platform**.
 
     :::{image} /solutions/images/observability-monitor-gcp-kibana-integrations.png
     :alt: {{kib}} integrations
     :::
 
-3. Click the Elastic Google Cloud Platform (GCP) integration to see more details about it, then click **Add Google Cloud Platform (GCP)**.
+3. If the integration's **Overview** page opens, click **Add Google Cloud Platform**.
 
     :::{image} /solutions/images/observability-monitor-gcp-integration.png
     :alt: GCP integration
     :::
 
-4. Click **Save integration**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
+5. Click **Save and continue**.
+6. In the dialog that opens, click **Add {{agent}} later**. The Dataflow template sends data directly to {{es}}, so you don't need to install {{agent}}.
 
 ## Step 2: Create a Pub/Sub topic and subscription [_step_2_create_a_pubsub_topic_and_subscription]
 

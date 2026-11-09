@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens tag cloud chart showing popular search terms](/explore-analyze/images/tag-cloud-chart-example.png)
 
-## Build a tag cloud chart with the point-and-click editor [build-a-tag-cloud-chart]
+## Create a tag cloud chart [create-a-tag-cloud-chart]
+
+### Create a tag cloud chart with the point-and-click editor [build-a-tag-cloud-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a tag cloud chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -61,7 +64,7 @@ The chart preview updates to show text labels sized by metric value, with more p
 
 ::::::
 
-## Build a tag cloud chart with an {{esql}} query [build-a-tag-cloud-chart-with-esql]
+### Create a tag cloud chart with an {{esql}} query [build-a-tag-cloud-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

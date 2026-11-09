@@ -73,7 +73,7 @@ To export CloudTrail logs to CloudWatch, you must set up a **trail** through the
 6. Review the attributes and log events you have specified in the previous steps and click **Create trail**.
 7. Verify everything is working as expected.
 
-    Open the log group you just created on CloudWatch and make sure there are events from the CloudTrail you have just created.
+    Open the log group you created on CloudWatch and make sure there are events from the CloudTrail you created.
 
     :::{image} /solutions/images/observability-firehose-verify-events-cloudwatch.png
     :alt: Verify events in CloudWatch
@@ -95,7 +95,7 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
-        3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        3. Under **Application endpoints, cluster and component IDs**, select **Elasticsearch** and copy the **Direct endpoint** value from the flyout.
         4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:

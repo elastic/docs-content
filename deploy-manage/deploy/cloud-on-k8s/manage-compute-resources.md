@@ -54,9 +54,9 @@ spec:
 
 #### Memory limit and JVM Heap settings [k8s-elasticsearch-memory]
 
-Starting with {{es}} 7.11, the heap size of the JVM is automatically calculated based on the node roles and the available memory. The available memory is defined by the value of `resources.limits.memory` set on the `elasticsearch` container in the Pod template, or the available memory on the Kubernetes node if no limit is set.
+The heap size of the JVM is automatically calculated based on the node roles and the available memory. The available memory is defined by the value of `resources.limits.memory` set on the `elasticsearch` container in the Pod template, or the available memory on the Kubernetes node if no limit is set.
 
-For {{es}} before 7.11, or if you want to override the default calculated heap size on newer versions, set the `ES_JAVA_OPTS` environment variable in the `podTemplate` to an appropriate value:
+To override the default calculated heap size, set the `ES_JAVA_OPTS` environment variable in the `podTemplate` to an appropriate value:
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1

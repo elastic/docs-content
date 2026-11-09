@@ -13,6 +13,8 @@ products:
 
 # Collect application data [apm-collect-application-data]
 
+Send application traces, metrics, and logs to Elastic APM by instrumenting your services. Choose an [{{edot}}](/solutions/observability/apm/opentelemetry/index.md), an [Elastic APM agent](/solutions/observability/apm/apm-agents/index.md), or a service-specific tool for Kubernetes, AWS Lambda, and Jaeger. Compare the options below to pick the right approach for each service.
+
 ::::{note}
 **For Observability Serverless projects**, the **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 ::::

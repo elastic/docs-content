@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-master-node-out-of-disk.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -18,6 +13,9 @@ products:
 # Fix master nodes out of disk [fix-master-node-out-of-disk]
 
 {{es}} is using master nodes to coordinate the cluster. If the master or any master eligible nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API]({{es-apis}}operation/operation-health-report) reports that your master node is out of space you need to increase the disk capacity of your master nodes.
+
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
 
 :::::::{applies-switch}
 

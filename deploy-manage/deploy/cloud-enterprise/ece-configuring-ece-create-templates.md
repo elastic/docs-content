@@ -72,7 +72,7 @@ Before you start creating your own deployment templates, you should have: [tagge
         :::
 
 
-    If a data tier or component is not required for your particular use case, you can simply set its initial size per zone to `0`. You can enable a tier or component anytime you need it just by scaling up the size. If autoscaling is enabled, data tiers and machine learning nodes are sized up automatically when they’re needed. For example, when you configure your first machine learning job, ML nodes are enabled by the autoscaling process. Similarly, if you choose to create a cold data phase as part of your deployment’s index lifecycle management (ILM) policy, a cold data node is enabled automatically without your needing to configure it.
+    If a data tier or component is not required for your particular use case, you can set its initial size per zone to `0`. You can enable a tier or component anytime you need it by scaling up the size. If autoscaling is enabled, data tiers and machine learning nodes are sized up automatically when they’re needed. For example, when you configure your first machine learning job, ML nodes are enabled by the autoscaling process. Similarly, if you choose to create a cold data phase as part of your deployment’s index lifecycle management (ILM) policy, a cold data node is enabled automatically without your needing to configure it.
 
 8. Select **Manage indices**.
    

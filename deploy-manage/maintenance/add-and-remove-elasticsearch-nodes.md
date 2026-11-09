@@ -4,13 +4,16 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+navigation_title: Add and remove Elasticsearch nodes on self-managed clusters
 products:
   - id: elasticsearch
 sub:
   slash: \
 ---
 
-# Add and Remove {{es}} nodes [add-elasticsearch-nodes]
+# Add and remove {{es}} nodes on self-managed clusters [add-elasticsearch-nodes]
+
+Use the procedures on this page to add and remove nodes in a self-managed {{es}} cluster.
 
 When you start an instance of {{es}}, you are starting a *node*. An {{es}} *cluster* is a group of nodes that have the same `cluster.name` attribute. As nodes join or leave a cluster, the cluster automatically reorganizes itself to evenly distribute the data across the available nodes.
 
@@ -31,12 +34,11 @@ When you add more nodes to a cluster, it automatically allocates replica shards.
 ## Enroll nodes in an existing cluster [_enroll_nodes_in_an_existing_cluster_5]
 
 ::::{tip}
-Refer to the following pages to learn more about how to add nodes to your cluster in different environments:
+If your deployment is orchestrated, don't enroll nodes manually. Use [autoscaling](../autoscaling.md) or change its capacity or topology instead:
 
-* [autoscaling](../autoscaling.md)
-* [{{ece}}](../deploy/cloud-enterprise/resize-deployment.md)
-* [{{ech}}](../deploy/elastic-cloud/configure.md)
-* [{{eck}}](../deploy/cloud-on-k8s/update-deployments.md)
+* [Configure an {{ech}} deployment](../deploy/elastic-cloud/configure.md)
+* [Resize an {{ece}} deployment](../deploy/cloud-enterprise/resize-deployment.md)
+* [Update an {{eck}} deployment](../deploy/cloud-on-k8s/update-deployments.md)
 
 ::::
 
@@ -57,12 +59,12 @@ When you need to remove a node from an {{es}} cluster, you must first empty the 
 If the node to remove is a master-eligible node, review the [master-eligible node considerations](#modules-discovery-removing-nodes) before proceeding and do not remove multiple master-eligible nodes at the same time.
 :::
 
-1. Optional: Stop indexing and perform a synced flush:
+1. Optional: Stop indexing and perform a flush:
 
-    If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a synced flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
+    If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a flush, run the following command:
 
     ```console
-    POST /_flush/synced
+    POST /_flush
     ```
 
 2. Retrieve the node name:
@@ -100,7 +102,7 @@ If the node to remove is a master-eligible node, review the [master-eligible nod
 
     After all shards have relocated to the other nodes, you can safely [stop the {{es}} process](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#stopping-elasticsearch) on the node you want to remove. Depending on your installation method and operating system, the command to stop {{es}} may vary. For example, if you are using systemd on a Linux system, you can run the following command:
 
-    ```console
+    ```sh
     sudo systemctl stop elasticsearch
     ```
 

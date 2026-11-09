@@ -27,13 +27,100 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.5.6 [elastic-security-9.5.6-release-notes]
+
+### Features and enhancements [elastic-security-9.5.6-features-enhancements]
+
+* Speeds up importing detection rules with overwrite enabled by updating existing rules in bulk instead of one at a time [#291560]({{kib-pull}}291560).
+* Improves the reliability of macOS system extension management in {{elastic-defend}}.
+* Updates {{elastic-defend}} to accept `advanced.utilization_limits.cpu` values from 1% to 100%. Values below 20, previously ignored with a policy warning, are now applied. The effective limit never drops below 20% of the host's CPUs, or 6.4 CPUs on hosts with more than 32 logical CPUs.
+* Increases the default maximum file size that {{elastic-defend}} scans for malware to 150 MiB, up from 75 MiB. The `advanced.malware.max_file_size_bytes` setting continues to accept values from 1 MiB to 1 GiB.
+
+### Fixes [elastic-security-9.5.6-fixes]
+
+* Fixes Osquery so the live queries API and detection rule response actions require read access to a pack or saved query before running it [#299125]({{kib-pull}}299125).
+* Fixes the **Download script** action in the Script Library so the download link works when {{kib}} runs with a base path [#298398]({{kib-pull}}298398).
+* Fixes an issue where maximizing a panel on a dashboard opened in {{elastic-sec}} showed a blank view [#297340]({{kib-pull}}297340).
+* Fixes Cribl integration routing to OpenTelemetry input package data streams. Previously, events were routed to a data stream without the `.otel` suffix, so the integration's index template and ingest pipeline did not apply [#296533]({{kib-pull}}296533).
+* Fixes an issue where clicking **Generate** on the Entity Analytics **Threat hunting leads** panel failed with a `No connector or inference endpoint found` error. Also fixes an issue where leads were sometimes generated but not shown the first time you generated them [#295785]({{kib-pull}}295785).
+* Fixes **Open in Lens** on the **Hosts**, **Network**, and **Users** pages' KPI tiles, which previously opened Lens with a "Data view not found" error [#295261]({{kib-pull}}295261).
+* Fixes the success message after updating a missing index pattern for translated rules so it says "rules" instead of "migrations" [#295064]({{kib-pull}}295064).
+* Fixes an issue where prebuilt rules were flagged as customized, and showed non-solvable `required_fields` upgrade conflicts, even though you hadn't edited the field. Also improves the performance of the rule edit form and the upgrade flyout for rules with long `required_fields` lists [#294946]({{kib-pull}}294946).
+* Fixes an issue where Osquery live query results and statuses were empty in non-default spaces for queries that ran before {{kib}} began recording the space on results [#294515]({{kib-pull}}294515).
+* Fixes blank change history entries when importing detection rules with overwrite enabled by skipping rules that haven't changed. A new `rules_summary` field has been added in the API response to surface this behavior. For example, re-importing a file of 1000 rules where only one rule changed now updates only that rule, with counts under `rules_summary` appearing as `{ "created":  0, "updated": 1, "skipped": 999, "failed": 0 }` [#293948]({{kib-pull}}293948).
+* Fixes an issue where {{elastic-sec}} pages could stay stuck on a loading spinner when more than one data view selection was requested at the same time [#293909]({{kib-pull}}293909).
+* Fixes an authorization issue where users with only the Osquery **Run Saved queries** privilege could run arbitrary SQL by referencing a saved query or pack [#287882]({{kib-pull}}287882).
+* Fixes the detection rules bulk delete action (`POST /api/detection_engine/rules/_bulk_action`) returning HTTP 500 when a targeted rule was already deleted, for example by a concurrent request. These rules are now reported as skipped with a `RULE_NOT_FOUND` reason, and the response is HTTP 200 [#287003]({{kib-pull}}287003).
+* Fixes the `get-file` response action so {{elastic-defend}} no longer fails the action as host unreachable when a TLS handshake fails due to a broken connection.
+* Fixes a startup crash on macOS that occurred when {{elastic-defend}} could not determine the OS version.
+* Improves how {{elastic-defend}} on Linux handles DNS events when packet data is incomplete or unavailable.
+* Fixes an issue where {{elastic-defend}} could negotiate a different TLS cipher suite than configured, or reject a valid one, when `ssl.cipher_suites` used the Beats-style names `ECDHE-RSA-AES-128-CBC-SHA256`, `RSA-AES-128-CBC-SHA256`, or `ECDHE-RSA-AES-256-CBC-SHA`.
+* Updates the {{elastic-defend}} `get-file` response action to return a symbolic link on Linux and macOS as a regular file with the content and permissions of the file the link points to. On Windows, `get-file` no longer returns an empty file when another process has the file open for reading.
+* Fixes an issue where {{elastic-defend}} incorrectly enforced device control policies on non-removable devices.
+* Fixes the {{elastic-defend}} `get-file` response action so it no longer fails on a symbolic link whose target is a relative path, such as most shared-library links on Linux, and reports the link's real target path.
+* Improves {{elastic-defend}} memory threat protection on macOS 27.
+* Fixes file signature reporting on macOS, which reduces false positive alerts from {{elastic-defend}}.
+* Fixes caseless comparison in {{elastic-defend}} so it ignores case for non-ASCII letters, such as Cyrillic, Greek, or accented Latin.
+
+## 9.5.5 [elastic-security-9.5.5-release-notes]
+
+### Features and enhancements [elastic-security-9.5.5-features-enhancements]
+
+* Adds an **Update to Elastic version** bulk action to the Rule Updates table that force-upgrades prebuilt rules to the exact Elastic version, discarding any customizations on the updated rules [#290589]({{kib-pull}}290589).
+* Speeds up importing new detection rules by creating them in bulk instead of one at a time [#275695]({{kib-pull}}275695).
+* Adds the **Flyout settings** menu to all main Security flyouts, including the rule, host, user, network, indicator, and attack flyouts. The menu doesn't appear in tool flyouts, such as notes or the visual event analyzer, or in flyouts that open as a child of another flyout [#292535]({{kib-pull}}292535).
+* Saves the width of resized Security flyouts, so they open at the same width next time. Use **Flyout settings** → **Reset size** to return to the default width. Tool flyouts, such as notes, the visual event analyzer, and Session View, always open at their default width [#291873]({{kib-pull}}291873).
+* Adds a **Flyout settings** menu to the alert and event details flyout. Use **Flyout type** to select whether the flyout displays next to the page (**Push**) or over it (**Overlay**). On small screens, the flyout always uses **Overlay** [#289742]({{kib-pull}}289742).
+* Adds the ability for Agent Builder to find case templates by name, so you can create a case from a template without knowing its ID. Requires the Cases templates feature [#287744]({{kib-pull}}287744).
+
+### Fixes [elastic-security-9.5.5-fixes]
+
+* Fixes an issue where long text in table cells in the Security AI Assistant was cut off or caused the whole conversation to scroll horizontally [#293924]({{kib-pull}}293924).
+* Fixes an issue where Attack Discovery didn't automatically select a connector when multiple were available, which disabled **Run** and caused attack discovery generation to fail with a "No model selected" error [#293656]({{kib-pull}}293656).
+* Fixes detection rules created or enabled by a workflow so they use their own {{es}} API key instead of the workflow's, which previously caused the rule to stop running once the workflow's API key was revoked [#292911]({{kib-pull}}292911).
+* Fixes Osquery live query results and agent status so they display correctly when the query runs in a non-default {{kib}} space [#291767]({{kib-pull}}291767).
+* Fixes an issue where long-running Attack Discovery generations could fail with a `Security Exception: token expired` error [#291623]({{kib-pull}}291623).
+* Fixes an issue where detection rule failures caused by an invalid IP field query (such as a wildcard or literal value against an `ip` field) were classified as framework errors, which caused them to count against SLO dashboards [#291256]({{kib-pull}}291256).
+* Disables the Security Alert Analysis workflow by default for new spaces. Enable it from the Alert Analysis Workflow settings page [#291240]({{kib-pull}}291240).
+* Fixes detection rules that failed with a generic "expected to find aggregations on search result" error when the events search returned zero shards, for example because the rule owner lacks `read` privileges on the source indices. These rules now report an actionable warning that explains the cause [#290924]({{kib-pull}}290924).
+* Fixes the Alert Analysis workflow so it finds related alerts after the Security alerts index rolls over. Previously, the lookup failed when the source alert was stored in an older backing index [#290661]({{kib-pull}}290661).
+* Fixes the response console command parser so it rejects un-prefixed positional arguments (such as `get-file path /some/file/here`) with an error, instead of silently treating them as valid [#290325]({{kib-pull}}290325).
+* Reduces the time it takes to bulk import, update, or enable detection rules by skipping the wait for {{es}} to refresh after creating each rule's API key [#290306]({{kib-pull}}290306).
+* Fixes the **Isolate host** response action so it's disabled, with an explanatory tooltip, when the target host's {{elastic-defend}} version doesn't support host isolation [#290115]({{kib-pull}}290115).
+* Fixes an issue where the Rule details **Alerts** tab could show no results, and throw a `tableById is undefined` error in the console, when the alerts table had not been initialized yet (typical on first visit or in a private window) [#290076]({{kib-pull}}290076).
+* Fixes New Terms rule executions failing with `The content length (...) is bigger than the maximum allowed string (...)` when the documents fetched for new terms exceed `elasticsearch.maxResponseSize`. The rule now retries with smaller batches of terms and reports a warning instead of failing [#290058]({{kib-pull}}290058).
+* Fixes bulk **Investigate in Timeline** so it includes the correlated building-block events for selected EQL sequence alerts, instead of only the selected alerts [#289676]({{kib-pull}}289676).
+* Fixes bulk closing alerts filtered on a scripted data view runtime field (one with a Painless script), which previously closed 0 alerts because the script wasn't forwarded to {{es}}. Also fixes the same issue in **Group alerts by** → **Take actions** → **Mark as closed**, which didn't forward runtime field data at all [#289549]({{kib-pull}}289549).
+* Fixes the detection rule `PATCH` API so it applies type-specific fields (such as `new_terms_fields`) even when `type` is omitted from the request, instead of silently ignoring them [#288917]({{kib-pull}}288917).
+* Allows bulk upgrading non-customized prebuilt rules whose rule type changed in the target version (such as `query` to `eql`), instead of blocking the upgrade as a non-solvable conflict [#288450]({{kib-pull}}288450).
+* Fixes rule exception items being deleted immediately from the actions menu with no warning. {{kib}} now shows a confirmation dialog before it deletes the exception item [#286807]({{kib-pull}}286807).
+* Fixes the **Create case** button in the **Add to case** selector so it's disabled for users who can add attachments to cases but can't create cases. These users can still add attachments to existing cases [#292761]({{kib-pull}}292761).
+* Fixes an issue where the Cases API accepted Security events as attachments on closed cases. Attaching an event to a closed case now returns an error, which matches the existing behavior for alerts [#291173]({{kib-pull}}291173).
+* Fixes an issue where Agent Builder couldn't update template fields on a case and used legacy custom fields instead. Requires the Cases templates feature [#287638]({{kib-pull}}287638).
+* Fixes an issue where macOS updates failed when {{elastic-defend}} **Device Control** was enabled. Previously, Device Control had to be disabled to allow the update to complete.
+* Fixes high memory usage in {{elastic-defend}} on Linux when a single process repeatedly calls `exec`.
+* Fixes {{elastic-defend}} so it stops retrying Kafka documents that are permanently rejected by the broker due to an invalid topic name, and now logs the topic name alongside the document ID and error code when a delivery-report failure occurs.
+* Improves the efficiency of {{elastic-defend}} file event enrichment on Linux hosts with network filesystem mounts.
+* Relocates {{elastic-defend}} diagnostics bundles to its protected data directory and removes leftover bundles from previous runs.
+* Fixes a bug in {{elastic-defend}}'s Call Stack Attribution where DLLs could be incorrectly named.
+* Adds a workaround in {{elastic-defend}} on macOS for an Apple `Network.framework` issue that breaks network connections in apps that use it ([details](https://developer.apple.com/forums/thread/837709)).
+* Fixes {{elastic-defend}} on Linux incorrectly rejecting Quark and eBPF event sources when only the unsupported probes are disabled.
+* Fixes {{elastic-defend}} diagnostics bundles generated by the `elastic-endpoint diagnostics` command so they're no longer readable by unprivileged local users on Windows, Linux, and macOS.
+* Fixes a bug where {{elastic-defend}} ignored a cached artifact and treated the lookup as a miss.
+* Fixes a crash in {{elastic-defend}} on Windows when processing files or processes with paths that contain CJK (Chinese, Japanese, Korean) characters.
+* Hardens how {{elastic-defend}} moves, restores, and stores quarantined files on Linux and macOS.
+* Hardens how {{elastic-defend}} restores file ownership and permissions during malware quarantine on Linux and macOS.
+* Fixes a memory leak in {{elastic-defend}} process tracking on hosts where process IDs are reused rapidly.
+* Improves the reliability of {{elastic-defend}} upgrades on slow machines.
+* Scans on-disk binaries of already-running processes when {{elastic-defend}} becomes active and MalwareScore is enabled.
+* Fixes {{elastic-defend}} exception list and trusted application matching on `host.name` to correctly handle mixed-case values. Previously, an exception such as `host.name: "MyServer"` could silently fail to match because {{elastic-defend}} normalizes `host.name` to lowercase, while {{kib}}'s default comparison is case-sensitive.
+* Updates a `c-ares` dependency in {{elastic-defend}} on Linux to resolve [CVE-2024-25629](https://github.com/c-ares/c-ares/security/advisories/GHSA-mg26-v6qh-x48q). The gRPC-bundled `c-ares` snapshot (~1.19) is unchanged and is tracked separately pending a gRPC version upgrade.
+
 ## 9.5.4 [elastic-security-9.5.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.5.4-features-enhancements]
 
 * Adds an {{elastic-defend}} advanced policy setting to enable additional vulnerable driver abuse mitigation, which provides further safeguards and enrichment for driver loads [#288529]({{kib-pull}}288529).
-* Adds the ability for Agent Builder to find case templates by name [#287744]({{kib-pull}}287744).
-
 ### Fixes [elastic-security-9.5.4-fixes]
 
 * Fixes bulk closing all matching alerts so they are updated when the filter uses a {{data-source}} runtime field. Previously the action reported 0 updated alerts [#288946]({{kib-pull}}288946).
@@ -46,10 +133,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the alert analysis workflow settings page so it loads without a Workflows privilege, instead of staying on a loading spinner [#287708]({{kib-pull}}287708).
 * Fixes the count label in Security donut charts so it's vertically centered [#286900]({{kib-pull}}286900).
 * Keeps the Agent Builder `security.alerts` tool scoped to the current {{kib}} space [#276488]({{kib-pull}}276488).
-* Fixes {{elastic-defend}} Device Control blocking macOS system updates from completing. Also adds a warning log about potential misuse of the filter_images advanced policy setting.
 * Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
 * Increases the {{elastic-defend}} event buffer size.
-* Updates a `c-ares` dependency in {{elastic-defend}} on Linux to resolve [CVE-2024-25629](https://github.com/c-ares/c-ares/security/advisories/GHSA-mg26-v6qh-x48q). The gRPC-bundled `c-ares` snapshot (~1.19) is unchanged and is tracked separately pending a gRPC version upgrade.
 
 ## 9.5.3 [elastic-security-9.5.3-release-notes]
 
@@ -307,6 +392,74 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a partial-write bug so {{elastic-defend}} correctly sends data to a {{ls}} output when the kernel TCP send buffer is full, resolving premature connection failures.
 * Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
 
+## 9.4.9 [elastic-security-9.4.9-release-notes]
+
+### Features and enhancements [elastic-security-9.4.9-features-enhancements]
+
+* Improves the reliability of macOS system extension management in {{elastic-defend}}.
+* Updates {{elastic-defend}} to accept `advanced.utilization_limits.cpu` values from 1% to 100%. Values below 20, previously ignored with a policy warning, are now applied. The effective limit never drops below 20% of the host's CPUs, or 6.4 CPUs on hosts with more than 32 logical CPUs.
+* Updates {{elastic-defend}} to populate `process.ai_agent.name` and `process.ai_agent.is_descendant` on file, network, and DNS events, which attributes activity to AI agent tools and their descendant processes.
+
+### Fixes [elastic-security-9.4.9-fixes]
+
+* Fixes an issue where the `host.name` and `user.name` cells in the alerts table on the **Alerts** tab of a case showed "An error occurred" instead of the value [#297879]({{kib-pull}}297879).
+* Fixes Cribl integration routing to OpenTelemetry input package data streams. Previously, events were routed to a data stream without the `.otel` suffix, so the integration's index template and ingest pipeline did not apply [#296533]({{kib-pull}}296533).
+* Fixes an issue where clicking **Generate** on the Entity Analytics **Threat hunting leads** panel failed with a `No connector or inference endpoint found` error. Also fixes an issue where leads were sometimes generated but not shown the first time you generated them [#295785]({{kib-pull}}295785).
+* Fixes an issue where prebuilt rules were flagged as customized, and showed non-solvable `required_fields` upgrade conflicts, even though you hadn't edited the field. Also improves the performance of the rule edit form and the upgrade flyout for rules with long `required_fields` lists [#294946]({{kib-pull}}294946).
+* Fixes Osquery live query results and agent status so they display correctly when the query runs in a non-default {{kib}} space [#291767]({{kib-pull}}291767).
+* Fixes the detection rules bulk delete action (`POST /api/detection_engine/rules/_bulk_action`) returning HTTP 500 when a targeted rule was already deleted, for example by a concurrent request. These rules are now reported as skipped with a `RULE_NOT_FOUND` reason, and the response is HTTP 200 [#287003]({{kib-pull}}287003).
+* Fixes a startup crash on macOS that occurred when {{elastic-defend}} could not determine the OS version.
+* Improves how {{elastic-defend}} on Linux handles DNS events when packet data is incomplete or unavailable.
+* Fixes the `get-file` response action so {{elastic-defend}} no longer fails the action as host unreachable when a TLS handshake fails due to a broken connection.
+* Fixes an issue where {{elastic-defend}} could negotiate a different TLS cipher suite than configured, or reject a valid one, when `ssl.cipher_suites` used the Beats-style names `ECDHE-RSA-AES-128-CBC-SHA256`, `RSA-AES-128-CBC-SHA256`, or `ECDHE-RSA-AES-256-CBC-SHA`.
+* Updates the {{elastic-defend}} `get-file` response action to return a symbolic link on Linux and macOS as a regular file with the content and permissions of the file the link points to. On Windows, `get-file` no longer returns an empty file when another process has the file open for reading.
+* Fixes an issue where {{elastic-defend}} incorrectly enforced device control policies on non-removable devices.
+* Fixes file signature reporting on macOS, which reduces false positive alerts from {{elastic-defend}}.
+* Fixes the {{elastic-defend}} `get-file` response action so it no longer fails on a symbolic link whose target is a relative path, such as most shared-library links on Linux, and reports the link's real target path.
+* Improves {{elastic-defend}} memory threat protection on macOS 27.
+* Fixes caseless comparison in {{elastic-defend}} so it ignores case for non-ASCII letters, such as Cyrillic, Greek, or accented Latin.
+
+## 9.4.8 [elastic-security-9.4.8-release-notes]
+
+### Features and enhancements [elastic-security-9.4.8-features-enhancements]
+
+* Adds the `--raw` option to the `memory-dump` response action for {{elastic-defend}} Windows hosts running {{agent}} 9.4.6 or later [#287713]({{kib-pull}}287713).
+* Adds an **Update to Elastic version** bulk action to the Rule Updates table that force-upgrades prebuilt rules to the exact Elastic version, discarding any customizations on the updated rules [#290589]({{kib-pull}}290589).
+* Adds experimental macOS 27 support to {{elastic-defend}}.
+
+### Fixes [elastic-security-9.4.8-fixes]
+
+* Fixes an issue where long text in table cells in the Security AI Assistant was cut off or caused the whole conversation to scroll horizontally [#293924]({{kib-pull}}293924).
+* Fixes an issue where Attack Discovery didn't automatically select a connector when multiple were available, which disabled **Run** and caused attack discovery generation to fail with a "No model selected" error [#293656]({{kib-pull}}293656).
+* Fixes an issue where detection rule failures caused by an invalid IP field query (such as a wildcard or literal value against an `ip` field) were classified as framework errors, which caused them to count against SLO dashboards [#291256]({{kib-pull}}291256).
+* Fixes detection rules that failed with a generic "expected to find aggregations on search result" error when the events search returned zero shards, for example because the rule owner lacks `read` privileges on the source indices. These rules now report an actionable warning that explains the cause [#290924]({{kib-pull}}290924).
+* Fixes the response console command parser so it rejects un-prefixed positional arguments (such as `get-file path /some/file/here`) with an error, instead of silently treating them as valid [#290325]({{kib-pull}}290325).
+* Fixes the **Isolate host** response action so it's disabled, with an explanatory tooltip, when the target host's {{elastic-defend}} version doesn't support host isolation [#290115]({{kib-pull}}290115).
+* Fixes an issue where the Rule details **Alerts** tab could show no results, and throw a `tableById is undefined` error in the console, when the alerts table had not been initialized yet (typical on first visit or in a private window) [#290076]({{kib-pull}}290076).
+* Fixes New Terms rule executions failing with `The content length (...) is bigger than the maximum allowed string (...)` when the documents fetched for new terms exceed `elasticsearch.maxResponseSize`. The rule now retries with smaller batches of terms and reports a warning instead of failing [#290058]({{kib-pull}}290058).
+* Fixes bulk closing alerts filtered on a scripted data view runtime field (one with a Painless script), which previously closed 0 alerts because the script wasn't forwarded to {{es}}. Also fixes the same issue in **Group alerts by** → **Take actions** → **Mark as closed**, which didn't forward runtime field data at all [#289549]({{kib-pull}}289549).
+* Fixes the detection rule `PATCH` API so it applies type-specific fields (such as `new_terms_fields`) even when `type` is omitted from the request, instead of silently ignoring them [#288917]({{kib-pull}}288917).
+* Allows bulk upgrading non-customized prebuilt rules whose rule type changed in the target version (such as `query` to `eql`), instead of blocking the upgrade as a non-solvable conflict [#288450]({{kib-pull}}288450).
+* Fixes rule exception items being deleted immediately from the actions menu with no warning. Kibana now shows a confirmation dialog before it deletes the exception item [#286807]({{kib-pull}}286807).
+* Fixes {{elastic-defend}} Device Control blocking macOS system updates from completing. On affected versions, you had to turn off Device Control to let the update finish.
+* Fixes high memory usage in {{elastic-defend}} on Linux when a single process repeatedly calls `exec`.
+* Fixes {{elastic-defend}} so it no longer retries Kafka documents that a broker permanently rejects due to an invalid topic name, and logs the topic name alongside the document ID and error code when a delivery-report failure occurs.
+* Improves the efficiency of {{elastic-defend}} file event enrichment on Linux hosts with network filesystem mounts.
+* Fixes {{elastic-defend}} so diagnostics bundles are written to its protected data directory instead of a shared temporary directory, and removes leftover bundles from previous runs.
+* Fixes a bug in {{elastic-defend}}'s call stack attribution where DLLs could be mis-named.
+* Fixes a macOS bug that broke network connections in apps using `Network.framework` while {{elastic-defend}}'s network filter was active. For more information, refer to this [Apple Developer Forums thread](https://developer.apple.com/forums/thread/837709).
+* Fixes {{elastic-defend}} on Linux incorrectly rejecting Quark and eBPF event sources when only the kernel's disabled probes were unsupported.
+* Fixes {{elastic-defend}} diagnostics bundles generated by the `elastic-endpoint diagnostics` command so they're no longer readable by unprivileged local users. Previously, bundles were written world-readable on Windows, Linux, and macOS.
+* Fixes a bug where {{elastic-defend}} ignored a cached artifact and treated the lookup as a cache miss.
+* Fixes a crash in {{elastic-defend}} on Windows when processing files or processes whose paths contain CJK (Chinese, Japanese, or Korean) characters.
+* Hardens how {{elastic-defend}} moves, restores, and stores quarantined files on Linux and macOS.
+* Hardens how {{elastic-defend}} restores file ownership and permissions during malware quarantine on Linux and macOS.
+* Fixes a memory leak in {{elastic-defend}} process tracking on hosts with very fast process ID reuse.
+* Improves the reliability of {{elastic-defend}} upgrades on slow machines.
+* Scans the on-disk binaries of already-running processes when {{elastic-defend}} becomes active and MalwareScore becomes enabled.
+* Fixes {{elastic-defend}} exception list and trusted application matching on `host.name` so it's case-insensitive. Previously, an exception with `host.name: "MyServer"` could silently fail to match, because {{elastic-defend}} normalizes `host.name` to lowercase per ECS while {{kib}}'s default comparison is case-sensitive.
+* Updates a `c-ares` dependency in {{elastic-defend}} on Linux from 1.17.2 to 1.34.8, resolving [CVE-2024-25629](https://github.com/c-ares/c-ares/security/advisories/GHSA-mg26-v6qh-x48q). The gRPC-bundled `c-ares` snapshot (~1.19) is unchanged and is tracked separately pending a gRPC version upgrade.
+
 ## 9.4.7 [elastic-security-9.4.7-release-notes]
 
 ### Fixes [elastic-security-9.4.7-fixes]
@@ -318,7 +471,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
 * Fixes an issue where Google Gemini 3.x models rejected requests that included tools with unconstrained string parameters [#286302]({{kib-pull}}286302).
 * Fixes an issue where generating threat hunting leads failed when the number of candidate entities was very large [#275970]({{kib-pull}}275970).
-* Fixes {{elastic-defend}} Device Control blocking macOS system updates from completing. Also adds a warning log about potential misuse of the filter_images advanced policy setting.
 * Reduces {{elastic-defend}} CPU usage and lock contention during network cache cleanup on Linux, preventing event enrichment stalls at high connection counts.
 * Fixes false malicious behavior detection alerts in {{elastic-defend}} caused by process ID reuse after a process exits.
 * Increases the {{elastic-defend}} event buffer size.

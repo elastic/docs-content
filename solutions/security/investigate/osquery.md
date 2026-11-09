@@ -139,7 +139,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
     If you choose the **Policy** option, configure these fields:
 
     ::::{note}
-    When defining pack deployment details, you cannot configure the same policy multiple times. In other words, after specifying a policy, you can either choose to deploy the pack to all of the policy’s agents or only a subset. You cannot choose both.
+    When defining pack deployment details, you cannot configure the same policy multiple times. In other words, after specifying a policy, you can either choose to deploy the pack to all the policy’s agents or only a subset. You cannot choose both.
     ::::
 
 

@@ -7,7 +7,7 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: Send long-running queries to run in the background with background searches from Discover and Dashboards. Continue working while queries complete and access results later.
+description: Send long-running Discover and dashboard queries to the background. Keep working while they run, and open the results later.
 ---
 
 # Run Discover and Dashboards queries in the background [background-search]
@@ -27,15 +27,15 @@ If you have been using search sessions and upgrade to 9.2, your search sessions 
 
 :::::{applies-switch}
 
-::::{applies-item} serverless: ga
+::::{applies-item} serverless: preview
 This feature is enabled by default.
 ::::
 
-::::{applies-item} stack: ga 9.3
+::::{applies-item} stack: preview 9.3
 This feature is enabled by default.
 ::::
 
-::::{applies-item} stack: ga =9.2
+::::{applies-item} stack: preview =9.2
 This feature is disabled by default. You can enable background searches by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 
 :::{note} - Exception for search sessions users
@@ -57,12 +57,12 @@ The background searches that you run are personal and only visible by you. To us
 
 :::::{applies-switch}
 
-::::{applies-item} serverless: ga
+::::{applies-item} serverless: preview
 
 To send searches to the background, and to view and interact with the list of background searches from the **Discover** and **Dashboards** apps, you need permissions for **Discover** and **Dashboard**, and for the [Background search subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 ::::
 
-::::{applies-item} stack: ga 9.2
+::::{applies-item} stack: preview 9.2
 
 To send searches to the background, and to view and interact with the list of background searches from **Discover** and **Dashboards** apps, you must have permissions for **Discover** and **Dashboard**, and for the [Background search subfeature](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 ::::
@@ -82,14 +82,19 @@ You can send a search to the background only after it starts running. Until then
 
 1. Write or edit the query.
 
-1. Select {icon}`play` **Run** (or {icon}`refresh` **Refresh** if you already ran the query at least once) to start executing the query. At this point, the {icon}`background_task` **Send to background** button becomes available.
+1. Start the query:
+
+   - In {{esql}} mode, select **Search**. In earlier versions, select **Run**, or {icon}`refresh` **Refresh** if the query hasn't changed.
+   - In classic mode, select **Update**, or {icon}`refresh` **Refresh** if the query hasn't changed.
+
+   At this point, the {icon}`background_task` **Send to background** button becomes available.
 
 1. Select {icon}`background_task` **Send to background**. The search is sent to the background and added to the queue of background searches.
 
 You can resume your other tasks, for example start a new search, navigate to a different application, or close the browser.
 
 :::{tip}
-:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+:applies_to: {"serverless": "preview", "stack": "preview 9.4+"}
 When the search completes, a notification informs you, even if you have navigated to a different application. Selecting it opens the completed search results directly.
 :::
 
@@ -112,7 +117,7 @@ From the list of background searches, you can reopen, inspect, and edit any sear
    - To open it to view its results and continue your explorations, select its name. Relative dates are converted to absolute dates.
    - To rename it, select the {icon}`boxes_horizontal` **More actions** button, then select {icon}`pencil` **Edit name**. By default, background searches get default names that indicate their execution date and time.
    - To extend its current expiration date by another 7 days, select the {icon}`boxes_horizontal` More actions button, then select **Extend**.
-   - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` To inspect the details of a background search, select {icon}`boxes_horizontal` **More actions**, then select {icon}`document` **Inspect**. A child flyout opens showing the configuration for that background search.
+   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` To inspect the details of a background search, select {icon}`boxes_horizontal` **More actions**, then select {icon}`document` **Inspect**. A child flyout opens showing the configuration for that background search.
    - To delete it, select the {icon}`boxes_horizontal` More actions button, then select {icon}`trash` **Delete**.
 
 

@@ -64,7 +64,7 @@ If no deployments appeared in the previous step, run the following command to ch
 ```shell
 kubectl get elasticsearch <elasticsearch_cluster_name> --show-labels
 ```
-Make sure that the label you applied in the [Launch AutoOps](../autoops/cc-connect-self-managed-to-autoops.md#launch-autoops) step of the wizard appears correctly in the list.
+Make sure that the label you applied in the [Open AutoOps](../autoops/cc-connect-self-managed-to-autoops.md#open-autoops) step of the wizard appears correctly in the list.
 
 If deployments appeared in the previous step, run the following command to check pod status.
 ```shell

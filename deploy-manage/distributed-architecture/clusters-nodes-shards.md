@@ -1,4 +1,5 @@
 ---
+navigation_title: Clusters, nodes, and shards
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/nodes-shards.html
 applies_to:
@@ -7,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Clusters, nodes, and shards [nodes-shards]
+# Clusters, nodes, and shards in {{es}} [nodes-shards]
 
 ::::{note}
 Nodes and shards are what make {{es}} distributed and scalable. These concepts aren’t essential if you’re just getting started. How you [deploy {{es}}](../../get-started/deployment-options.md) in production determines what you need to know:

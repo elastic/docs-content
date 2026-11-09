@@ -1,4 +1,5 @@
 ---
+navigation_title: Migrate
 applies_to:
   stack: preview =9.0, ga 9.1+
   serverless:
@@ -12,9 +13,9 @@ products:
   - id: elastic-stack
 ---
 
-# Automatic migration
+# Migrate to {{elastic-sec}} with Automatic Migration
 
-Automatic Migration helps you quickly migrate Microsoft Sentinel, Splunk, and QRadar assets to {{elastic-sec}}. The following asset types are supported:
+Move your detection rules and dashboards from Microsoft Sentinel, Splunk, or QRadar to {{elastic-sec}} without rebuilding them by hand. Automatic Migration translates them into {{elastic-sec}} rules and dashboards that you can review and edit. It supports the following asset types:
 
 * {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` Microsoft Sentinel rules
 * {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` Splunk Classic dashboards (v1.1)
@@ -249,7 +250,7 @@ For an explanation of a dashboard's translation, click its name to open the dash
 
 ### Finalize translated dashboards
 
-Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [Building dashboards](/explore-analyze/dashboards/building.md).
+Once you're on the **Translated dashboards** page, to install any assets that were partially translated, you need to edit them. Optionally, you can also edit assets that were successfully translated to finetune them. For more information about editing dashboards, refer to [](/explore-analyze/dashboards/open-dashboard.md).
 
 ## Frequently asked questions (FAQ)
 

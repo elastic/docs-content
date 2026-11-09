@@ -36,7 +36,7 @@ APM agents communicate with the APM server by sending events in an HTTP request.
 :::
 
 :::{applies-item} serverless:
-APM agents communicate with the Managed intake service by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](/solutions/observability/apm/spans.md) or [reducing collected stack trace information](/solutions/observability/apm/reduce-storage.md#observability-apm-reduce-stacktrace).
+APM agents communicate with managed inputs by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](/solutions/observability/apm/spans.md) or [reducing collected stack trace information](/solutions/observability/apm/reduce-storage.md#observability-apm-reduce-stacktrace).
 :::
 
 ::::

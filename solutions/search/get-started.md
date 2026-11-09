@@ -6,6 +6,7 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 navigation_title: Get started
+meta_title: Get started with search in Elasticsearch
 description: Get started with the search use case using the core Elasticsearch search features available on any deployment type.
 ---
 

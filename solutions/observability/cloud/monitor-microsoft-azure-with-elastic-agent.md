@@ -61,7 +61,7 @@ The [Azure REST API](https://learn.microsoft.com/en-us/rest/api/azure/) allows y
 5. Type a description of the secret and select an expiration. Click **Add** to create the client secret. Under **Value**, copy the secret value and save it (along with your client ID) for later.
 
     ::::{important}
-    This is your only chance to copy the secret value. You can’t retrieve this value after you leave this page!
+    This is your only chance to copy the secret value. You can’t retrieve this value after you leave this page.
 
     ::::
 
@@ -95,16 +95,13 @@ In this step, you install the Azure Billing Metrics integration in {{kib}}. This
 
 To add the integration:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **Azure Billing** and select the Azure Billing Metrics integration to see more details about it.
-3. Click **Add Azure Billing Metrics**.
-4. Under Integration settings, configure the integration name and optionally add a description.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Azure Billing Metrics**.
+3. If the integration's **Overview** page opens, click **Add Azure Billing Metrics**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
+5. Under Integration settings, configure the integration name and optionally add a description.
 
-    ::::{tip}
-    If you don’t see options for configuring the integration, you’re probably in a workflow designed for new deployments. Follow the steps, then return to this tutorial when you’re ready to configure the integration.
-    ::::
-
-5. Specify values for all the required fields. For more information about these settings, refer to the [Azure Billing Metrics](https://docs.elastic.co/en/integrations/azure_billing) documentation.
+6. Specify values for all the required fields. For more information about these settings, refer to the [Azure Billing Metrics](https://docs.elastic.co/en/integrations/azure_billing) documentation.
 
     **Client ID**
     :   The Application (client) ID that you copied earlier when you created the service principal.
@@ -123,9 +120,9 @@ To add the integration:
         :screenshot:
         :::
 
-6. Make sure the **Collect Azure Billing metrics** selector is turned on.
-7. Accept the defaults to create a new agent policy.
-8. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains the Azure configuration you just specified.
+7. Make sure the **Collect Azure Billing metrics** selector is turned on.
+8. Accept the defaults to create a new agent policy.
+9. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains the Azure configuration you just specified.
 
 A popup should appear that prompts you to **Add {{agent}} to your hosts**.
 
@@ -248,9 +245,9 @@ Now that activity logs are streaming into the event hub, you can configure the A
 
 To add the integration:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **Azure activity logs** and select the Azure activity logs integration to see more details about it.
-3. Click **Add Azure activity logs**.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Azure Activity Logs**.
+3. If the integration's **Overview** page opens, click **Add Azure Activity Logs**.
 4. Under Integration settings, configure the integration name and optionally add a description.
 5. Specify values for all the required fields. For more information about these settings, refer to the [Azure activity logs](https://docs.elastic.co/en/integrations/azure/activitylogs) documentation.
 

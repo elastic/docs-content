@@ -1,5 +1,5 @@
 ---
-navigation_title: Manage saved discoveries
+navigation_title: Review and triage discoveries
 description: "Choose where to triage saved Attack Discovery findings: the Attacks view or the Attack Discovery page."
 applies_to:
   stack: ga 9.1

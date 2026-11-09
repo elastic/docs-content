@@ -37,7 +37,7 @@ Other repository types are available through official plugins:
 
 {{ech}} deployments automatically register a repository named `found-snapshots` in {{es}} clusters. These repositories are used together with the `cloud-snapshot-policy` SLM policy to take periodic snapshots of your {{es}} clusters. You can also use the `found-snapshots` repository for your own [SLM policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
-The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s found-snapshots repository if the deployments are under the same account and in the same region.
+The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are in the same organization and the same region. To restore snapshots across regions or organizations using a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), refer to [](../../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization)
 
 In addition to the platform-managed `found-snapshots` repository, you can register custom snapshot repositories in {{ech}} deployments of the following types:
 
@@ -59,11 +59,8 @@ When a platform-level repository is associated with a deployment, the `found-sna
 * [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [MinIO](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
-:::{note}
-No repository types other than those listed are supported in the {{ece}} platform, even if they are supported by {{es}}.
-:::
+While Elastic permits the use of storage that is fully compatible with AWS S3, Elastic does not test or support third-party storage itself. Refer to [S3-compatible services](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-compatible-services) for details.
 
 For more details, refer to [Managing snapshot repositories in {{ece}}](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
 

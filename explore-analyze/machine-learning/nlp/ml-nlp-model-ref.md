@@ -80,7 +80,7 @@ Text Embedding models are designed to work with specific scoring functions for c
 
 The embeddings produced by these models should be indexed in {{es}} using the [dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) with an appropriate [similarity function](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) chosen for the model.
 
-To find similar embeddings in {{es}} use the efficient [Approximate k-nearest neighbor (kNN)](../../../solutions/search/vector/knn.md#approximate-knn) search API with a text embedding as the query vector. Approximate kNN search uses the similarity function defined in the dense vector field mapping is used to calculate the relevance. For the best results the function must be one of the suitable similarity functions for the model.
+To find similar embeddings in {{es}} use the efficient [Approximate k-nearest neighbor (kNN)](../../../solutions/search/vector/knn/approximate-knn.md) search API with a text embedding as the query vector. Approximate kNN search uses the similarity function defined in the dense vector field mapping is used to calculate the relevance. For the best results the function must be one of the suitable similarity functions for the model.
 
 Using `SentenceTransformerWrapper`:
 

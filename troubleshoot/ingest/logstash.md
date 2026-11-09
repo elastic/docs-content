@@ -111,7 +111,7 @@ This issue affects some OpenJDK-derived JVM versions (Adoptium, OpenJDK, and Azu
 
 ### Container exits with *An unexpected error occurred!* message [ts-container-cgroup]
 
-{{ls}} running in a container may not start due to a [bug in the JDK](https://bugs.openjdk.org/browse/JDK-8343191).
+{{ls}} running in a container might not start due to a [bug in the JDK](https://bugs.openjdk.org/browse/JDK-8343191).
 
 **Sample error**
 

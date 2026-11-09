@@ -4,6 +4,7 @@ Adjust the visual appearance of your area chart to control how the data series a
 **Appearance**
 :   Allow you to customize the overall chart appearance:
 
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Fill**: To fade each series color, select **Gradient**. **Solid** is the default, so area charts saved before this setting existed stay solid until you change **Fill**.
 - **Area fill opacity**: Control how transparent or opaque the colored area beneath the data line appears. The opacity value ranges from 0 to 1.
 - **Point visibility**: Show or hide data points. Set to **Auto** by default: Points are visible unless the distance between them is too short.
 - **Line interpolation**: Choose how to interpolate the line between data points from the available options: **Straight** (default), **Smooth**, and **Step**.

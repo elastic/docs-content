@@ -24,7 +24,7 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 
 * Real-time root-cause analysis for hundreds of issues.
 * Accurate resolution paths and customized recommendations.
-* Insight into what occurred and detailed views into nodes, index, shards, and templates.
+* Information about what occurred and detailed views into nodes, index, shards, and templates.
 * Wide range of insights, including:
 
     * Cluster status, node failures, and shard sizes.
@@ -37,6 +37,8 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 * Multi-deployment dashboard to quickly spot issues across all clusters.
 * Possibility to customize event triggers and connect to different notification services such as PagerDuty, Slack, MS Teams, and webhooks.
 * Coming soon: Long-term reports for sustained evaluation.
+
+For a full list of what AutoOps can detect and help you resolve, refer to [AutoOps insights](autoops-insights://elasticsearch/index.md).
 
 ## Regions where AutoOps is available
 

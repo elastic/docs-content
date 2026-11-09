@@ -139,10 +139,7 @@ This realm has a few mandatory settings, and a number of optional settings. The 
 
         If your OpenID Connect Provider doesn’t publish its JWKS at an https URL, or if you want to use a local copy, you can upload the JWKS as a file.
 
-        :::{tip}
-        * In self-managed clusters, the specified path is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
-        * If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
-        * If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+        :::{include} /deploy-manage/_snippets/es-file-path-tip.md
         :::
 
     op.userinfo_endpoint
@@ -177,6 +174,12 @@ That document should contain all the necessary information to configure the Open
 ## Map claims [oidc-claims-mappings]
 
 When authenticating to {{kib}} using OpenID Connect, the OP will provide information about the user in the form of **OpenID Connect Claims**. These claims can be included either in the ID Token, or be retrieved from the UserInfo endpoint of the OP.
+
+The OpenID Connect realm reads claims only from the ID Token and, when [`op.userinfo_endpoint`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings) is configured, from the UserInfo response. It doesn't read claims from the access token, which it uses only to call the UserInfo endpoint. Which claims the UserInfo endpoint returns depends on your OP configuration.
+
+::::{important}
+Some OPs let you choose which token a custom claim is added to. If a claim is added only to the access token, it's not available to the OpenID Connect realm for claims mapping or role mapping. Configure the OP to include the claim in the ID Token or in the UserInfo response instead.
+::::
 
 An **OpenID Connect Claim** is a piece of information asserted by the OP for the authenticated user, and consists of a name/value pair that contains information about the user.
 
@@ -317,9 +320,9 @@ OpenID Connect depends on TLS to provide security properties such as encryption 
 
 However, if the issuer of your OP’s certificate is not trusted by the JVM on which {{es}} is running (e.g it uses an organization CA), then you must configure {{es}} to trust that CA.
 
-If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+If you're using {{ech}} or {{ece}}, upload the certificate before referencing it in the configuration. For {{ech}}, upload it [as a custom bundle](/deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md). For {{ece}}, follow the equivalent [ECE procedure](/deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/add-custom-bundles-plugins.md).
 
-If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 The following example demonstrates how to trust a CA certificate (`/oidc/company-ca.pem`), which is located within the configuration directory.
 

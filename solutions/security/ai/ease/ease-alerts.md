@@ -1,5 +1,5 @@
 ---
-navigation_title: Triage alerts
+navigation_title: Triage alerts in Elastic AI SOC Engine
 applies_to:
   serverless:
     security: preview

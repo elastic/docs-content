@@ -32,7 +32,7 @@ Monitoring consists of two components:
 
 With logging and monitoring enabled for a deployment, metrics are collected for {{es}}, {{kib}}, and APM with Fleet Server.
 
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::{include} /deploy-manage/_snippets/autoops-callout-monitoring.md
 :::
 
 ## Before you begin [logging-and-monitoring-limitations]
@@ -118,7 +118,7 @@ When shipping logs to a monitoring deployment there are more logging features av
 
 ### For {{es}} [extra-logging-features-elasticsearch]
 
-* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
+* [Audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md) - logs security-related events on your deployment
 * [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
@@ -127,7 +127,7 @@ After you’ve enabled log delivery on your deployment, you can [add the {{es}} 
 
 ### For {{kib}} [extra-logging-features-kibana]
 
-* [Audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
+* [Audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md) - logs security-related events on your deployment
 
 After you’ve enabled log delivery on your deployment, you can [add the {{kib}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable this feature.
 

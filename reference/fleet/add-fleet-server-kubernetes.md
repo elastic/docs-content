@@ -166,7 +166,7 @@ The `service token` required by the {{fleet-server}} is different from the `enro
     * Search for and select the {{fleet-server}} integration.
     * Select **Add {{fleet-server}}** to add the integration to the {{agent}} policy.
 
-        At this point you can configure the integration settings per [{{fleet-server}} scalability](/reference/fleet/fleet-server-scalability.md).
+        You can now configure the integration settings per [{{fleet-server}} scalability](/reference/fleet/fleet-server-scalability.md).
 
     * When done, select **Save and continue**. Do not add an {{agent}} at this stage.
 

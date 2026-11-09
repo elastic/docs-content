@@ -23,9 +23,6 @@ Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthroug
 :::
 ::::
 
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
-:::
-
 ## Requirements [diagnostic-tool-requirements]
 
 * Java Runtime Environment or Java Development Kit v1.8 or higher
@@ -89,7 +86,7 @@ To capture an {{es}} diagnostic:
 
     ::::{tip}
 
-    You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
+    You can run the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
     * `local` (default, recommended): Polls the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
     * `remote`: Establishes an ssh session to the applicable target server to pull the same information as `local`.

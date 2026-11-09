@@ -186,13 +186,13 @@ def extract_helm_version(content: str) -> str:
         content (str): The content of the go.mod file
         
     Returns:
-        str: The Helm version (e.g., '3.15.4')
+        str: The Helm version (e.g., '4.3.0')
         
     Raises:
         Exception: If the Helm version pattern is not found
     """
-    # Pattern to match helm.sh/helm/v3 vX.Y.Z
-    pattern = r'helm\.sh/helm/v3\s+v([\d.]+)'
+    # Pattern to match helm.sh/helm/vN vX.Y.Z (elastic-agent moved from v3 to v4)
+    pattern = r'helm\.sh/helm/v\d+\s+v([\d.]+)'
     
     match = re.search(pattern, content)
     if not match:

@@ -25,7 +25,7 @@ A {{vectordb}} project gives you the same {{es}} vector search capabilities as o
 
 ### Vectors and structured data in one index
 
-Like any {{es}} index, you can store embeddings alongside standard [field types](/manage-data/data-store/mapping.md) in the same documents, such as `keyword`, `text`, numeric types, `date`, `boolean`, geo fields, `nested`, and more. Combine similarity search with [filters](/solutions/search/vector/knn.md#knn-search-filter-example) on that metadata using Query DSL queries such as `bool`, `range`, and `terms`. Combining vectors and structured fields in one engine is an advantage over a typical dedicated vector store.
+Like any {{es}} index, you can store embeddings alongside standard [field types](/manage-data/data-store/mapping.md) in the same documents, such as `keyword`, `text`, numeric types, `date`, `boolean`, geo fields, `nested`, and more. Combine similarity search with [filters](/solutions/search/vector/knn/filtered-knn-search.md) on that metadata using Query DSL queries such as `bool`, `range`, and `terms`. Combining vectors and structured fields in one engine is an advantage over a typical dedicated vector store.
 
 ### Vector-optimized defaults and hardware profile
 

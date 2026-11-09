@@ -33,7 +33,11 @@ This section explains the general process for setting up cross-cluster search in
     ::::{tab-item} API key authentication
     With API key authentication (recommended), the remote cluster's access is governed by the cross-cluster API key, so you only need to create a role on the **local** cluster. You don't need to create a role on the remote cluster.
 
-    Create a role on the local cluster with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) for the remote cluster alias and the indices you want to search. Assign the `read`, `read_cross_cluster`, and `view_index_metadata` privileges.
+    Create a role on the local cluster with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) for the remote cluster alias and the indices you want to search. Assign the following privileges:
+
+    * `read`
+    * `view_index_metadata`
+    * {applies_to}`stack: ga 9.0-9.3` `read_cross_cluster`
 
     For example, if the remote cluster is connected as `remote-security-data` and you want to query the `logs-*` indices:
 
@@ -50,6 +54,8 @@ This section explains the general process for setting up cross-cluster search in
     }
     ```
 
+    The example includes `read_cross_cluster` so the role works across all supported {{stack}} versions.
+
     If the user also needs to query local indices or use {{kib}}, add the required local privileges to the same role or assign the user additional roles.
     ::::
 
@@ -62,7 +68,12 @@ This section explains the general process for setting up cross-cluster search in
 
         For example, if the remote cluster's name is `remote-security-data` and you want to query the `logs-*` indices, include both the `logs-*` and `remote-security-data:logs-*` index patterns and assign them the `read` privilege.
 
-    * **Remote cluster role**: Assign the `read` and `read_cross_cluster` privileges to the indices you want to search. You don't need to include the remote cluster's name here.
+    * **Remote cluster role**: Assign the following privileges to the indices you want to search:
+
+        * `read`
+        * {applies_to}`stack: ga 9.0-9.3` `read_cross_cluster`
+
+        You don't need to include the remote cluster's name here.
     ::::
     :::::
 

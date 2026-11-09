@@ -162,6 +162,12 @@ cat nodes.json | jq -rc '.nodes[]|.name as $n|.jvm.mem|{name:$n, heap_min:.heap_
 
 Every shard uses memory. Usually, a small set of large shards uses fewer resources than many small shards. For tips on reducing your shard count, refer to [](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
 
+### Reduce your segment count  [reduce-jvm-memory-pressure-segments]
+
+Once document writes are complete, ensure an index is [merged](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to optimize its read performance. For indices managed by {{ilm}}, you can automate this by adding the [{{ilm-init}} force merge action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md).
+
+Every segment contributes to memory, so force merging significantly improves the read performance of [partially mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#searchable-snapshot-mount-storage-options). As a safeguard, the [{{ilm-init}} searchable snapshot action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) sets `force_merge_index` to `true` by default, which force merges the index before the snapshot is taken.
+
 ### Common traffic issues [reduce-jvm-memory-pressure-traffic]
 
 This section contains some common suggestions for reducing JVM memory pressure related to traffic patterns.
@@ -170,11 +176,11 @@ This section contains some common suggestions for reducing JVM memory pressure r
 
 Expensive searches can use large amounts of memory. To better track expensive searches on your cluster, enable [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md).
 
-Expensive searches may have a large [`size` argument](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md), use aggregations with a large number of buckets, or include [expensive queries](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries). To prevent expensive searches, consider the following setting changes:
+Expensive searches may have a large [`size` argument](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md), use aggregations with a large number of buckets, or include [expensive queries](elasticsearch://reference/query-languages/querydsl.md#query-dsl-allow-expensive-queries). To prevent expensive searches, consider the following setting changes:
 
 * Lower the `size` limit using the [`index.max_result_window`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-max-result-window) index setting.
 * Decrease the maximum number of allowed aggregation buckets using the [search.max_buckets](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md#search-settings-max-buckets) cluster setting.
-* Disable expensive queries using the [`search.allow_expensive_queries`](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries) cluster setting.
+* Disable expensive queries using the [`search.allow_expensive_queries`](elasticsearch://reference/query-languages/querydsl.md#query-dsl-allow-expensive-queries) cluster setting.
 * Set a default search timeout using the [`search.default_search_timeout`](../../solutions/search/the-search-api.md#search-timeout) cluster setting.
 
 ```console

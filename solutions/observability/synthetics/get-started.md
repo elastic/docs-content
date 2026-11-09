@@ -1,5 +1,6 @@
 ---
 navigation_title: Get started
+description: Set up your first synthetic monitor with Elastic Synthetics. Compare the Synthetics project and Synthetics UI workflows, then create lightweight and browser monitors.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-get-started.html

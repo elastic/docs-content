@@ -37,7 +37,7 @@ Load balancing helps to mitigate traffic spikes by horizontally scaling your {{k
 
 ## Before you start [_before_sizing_kibana]
 
-{{es}} is the search engine and backing database of {{kib}}. Any performance issues in {{es}} will manifest in {{kib}}. Additionally, while Elastic tries to mitigate this possibility, {{kib}} may be sending requests to {{es}} that degrade performance if {{es}} is underprovisioned.
+{{es}} is the search engine and backing database of {{kib}}. Any performance issues in {{es}} will manifest in {{kib}}. Additionally, while Elastic tries to mitigate this possibility, {{kib}} might be sending requests to {{es}} that degrade performance if {{es}} is under-provisioned. When that happens, {{kib}} might display a [`Kibana server is not ready yet` error](/troubleshoot/kibana/error-server-not-ready.md) or receive [HTTP 429 responses](/troubleshoot/elasticsearch/rejected-requests.md) from {{es}}.
 
 ### Is the {{es}} cluster correctly sized?
 
@@ -45,17 +45,28 @@ Follow [the production guidance for {{es}}](./elasticsearch-in-production-enviro
 
 ### What requests is {{kib}} sending to {{es}}?
 
-In user interfaces like Dashboards or Discover, you can view the full query that {{kib}} is sending to {{es}}. This is a good way to get an idea of the volume of data and work a {{kib}} visualization or dashboard is creating for {{es}}. Dashboards with many visualizations will generate higher load for {{es}} and {{kib}}.
+In user interfaces like Dashboards or Discover, you can view the full query that {{kib}} is sending to {{es}} under **Inspect**. For an example, refer to the [blog post on troubleshooting Discover load](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load#3.-load-search). This is a good way to get an idea of the volume of data and work a {{kib}} visualization or dashboard is creating for {{es}}. Dashboards with many visualizations will generate higher load for {{es}} and {{kib}}.
 
 ## Basic scaling using number of concurrent users
 
 Follow this strategy if you know the maximum number of expected concurrent users.
 
-Start {{kib}} on **1 vCPU** and **2GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards.
+Start with **1 vCPU** and **2GB** of memory for a {{kib}} instance. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards.
 
 If you are experiencing performance issues, you can scale {{kib}} vertically by adding the following resources for every 10 additional concurrent users:
+
 * 1 vCPU
 * 2GB of memory
+
+  :::{tip}
+  :applies_to: { self: }
+  You might need to manually [configure `--max-old-space-size` memory](/deploy-manage/production-guidance/kibana-configure-memory.md) to ensure it scales with your provisioning environment.
+  :::
+
+:::{note}
+:applies_to: { ess: }
+Deployments created in May 2026 or later include 2 GB RAM {{kib}} instances. Existing 1 GB instances are not resized automatically. Increase them to at least 2 GB. Increasing the instance size above 1 GB [affects billing](/deploy-manage/cloud-organization/billing/billing-faq.md#faq-included).
+:::
 
 These amounts are a safe minimum to ensure that {{kib}} is not resource-starved for common analytics use cases.
 
@@ -113,5 +124,6 @@ The way that you alter the resources allocated to your {{kib}} instance depends 
 * **Self-managed:** Users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
 
 :::{note}
-For {{eck}} and self-managed deployments, Node.js suggests allocating 80% of available host memory to heap, assuming that {{kib}} is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example, allowing for HTTP sockets to be allocated.
+:applies_to: { self:, eck: }
+When running in a container, including {{eck}}, {{kib}} automatically sets the default Node.js heap based on the container memory limit. Starting in {{kib}} 9.4.0, the default is 75% of available memory, up to 4096 MB. Leave `--max-old-space-size` unset unless you need to override this default. For more information, refer to [](./kibana-configure-memory.md).
 :::

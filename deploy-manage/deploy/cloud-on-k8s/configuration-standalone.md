@@ -366,7 +366,7 @@ spec:
               )
             for dir in ${dirs[@]}; do
               mkdir -p "${dir}"
-              # chcon is only required when running an an SELinux-enabled/OpenShift environment.
+              # chcon is only required when running in an SELinux-enabled/OpenShift environment.
               # chcon -Rt svirt_sandbox_file_t "${dir}"
               chmod g+rw "${dir}"
               # Gid 1000 is the default group at which the Agent container runs. Adjust as necessary if `runAsGroup` has been modified.

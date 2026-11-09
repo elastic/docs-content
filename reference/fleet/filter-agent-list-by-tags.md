@@ -15,10 +15,10 @@ You can add tags to {{agent}} during or after enrollment, then use the tags to f
 
 Tags are useful for capturing information that is specific to the installation environment, such machine type, location, operating system, environment, and so on. Tags can be any arbitrary information that will help you filter and perform operations on {{agent}}s with the same attributes.
 
-To filter the Agents list by tag, in {{kib}}, go to **{{fleet}} > Agents** and click **Tags**. Select the tags to filter on. The tags are also available in the KQL field for autocompletion.
+To filter the Agents list by tag, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**. Click **Tags**, then select the tags to filter on. The tags are also available in the KQL field for autocompletion.
 
 :::{image} images/agent-tags.png
-:alt: Agents list filtered to show agents with the staging tag
+:alt: Tags filter on the Fleet Agents page
 :screenshot:
 :::
 
@@ -34,7 +34,7 @@ Want to add tags when enrolling from a host instead? See [Add tags during agent 
 To manage tags in {{fleet}}:
 
 1. On the **Agents** tab, select one or more agents.
-2. From the **Actions** menu, click **Add / remove tags**.
+2. Click **Actions → Add / remove tags**.
 
     :::{image} images/add-remove-tags.png
     :alt: Screenshot of add / remove tags menu

@@ -41,7 +41,7 @@ Elastic provides an open source search, analytics, and AI platform, and out-of-t
 
 Continue your journey with these essential guides that will help you understand and work with Elastic:
 
-* **[](/get-started/introduction.md)**: Get an introduction to the {{es}}, Elastic {{observability}}, and {{elastic-sec}} solutions and projects.
+* **[](/get-started/introduction.md)**: Get an introduction to the {{es}}, Elastic {{observability}}, and {{elastic-sec}} solutions and {{serverless-short}} project types, plus {{es}} {{vectordb}}, an additional {{serverless-short}}-only project type.
 
 * **[](/get-started/the-stack.md)**: Dive deeper into how the {{stack}}—our suite of open-source tools, including {{es}}, {{kib}}, {{beats}}, and {{ls}}—components work together. Learn about data ingestion methods and understand the core concepts of storing, visualizing, and querying your data.
 

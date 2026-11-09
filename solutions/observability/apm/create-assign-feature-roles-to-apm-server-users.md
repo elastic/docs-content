@@ -62,7 +62,7 @@ To grant an APM Server user the required privileges for writing events to {{es}}
     | Cluster | `monitor` | Allows cluster UUID checks, which are performed as part of APM server startup preconditionsif [Elasticsearch security](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) is enabled (it is enabled by default), and allows a license check, which is required if [tail-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) is enabled. |
 
     ::::{note}
-    If you have explicitly disabled Elastic security *and* you are *not* using tail-based sampling, the `monitor` privilege may not be necessary.
+    If you have explicitly turned off Elastic security *and* you are *not* using tail-based sampling, the `monitor` privilege might not be necessary.
     ::::
 
 1. Assign the **general writer role** to APM Server users who need to publish APM data.

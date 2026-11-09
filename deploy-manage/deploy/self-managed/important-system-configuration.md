@@ -1,4 +1,5 @@
 ---
+navigation_title: Important system configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Important system configuration [system-config]
+# Important system configuration for {{es}} [system-config]
 
 Ideally, {{es}} should run alone on a server and use all of the resources available to it. In order to do so, you need to configure your operating system to allow the user running {{es}} to access more resources than allowed by default.
 

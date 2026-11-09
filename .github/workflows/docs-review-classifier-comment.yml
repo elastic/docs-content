@@ -1,0 +1,23 @@
+name: Review classification comment
+
+on:
+  workflow_run:
+    workflows: [Review classification]
+    types: [completed]
+
+permissions: {}
+
+concurrency:
+  group: review-classification-comment-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  comment:
+    if: >
+      (github.event.workflow_run.event == 'pull_request' || github.event.workflow_run.event == 'workflow_dispatch')
+      && github.event.workflow_run.conclusion == 'success'
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: write
+    uses: elastic/docs-actions/.github/workflows/review-classifier-comment.yml@v1

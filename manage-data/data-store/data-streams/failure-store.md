@@ -490,7 +490,7 @@ Failure documents have a uniform structure that is handled internally by {{es}}.
     :   (`keyword`, optional) If the failure occurred in an ingest processor that is annotated with a tag, the tag contents will be present here.
 
     `error.processor_type`
-    :   (`keyword`, optional) If the failure occurred in an ingest processor, this will contain the processor type. (e.g. `script`, `append`, `enrich`, etc.)
+    :   (`keyword`, optional) If the failure occurred in an ingest processor, this will contain the processor type. (for example, `script`, `append`, or `enrich`)
 
 #### Failure document source [use-failure-store-document-source]
 

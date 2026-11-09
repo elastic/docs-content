@@ -42,6 +42,8 @@ Built-in tools serve as building blocks for more complex interactions and provid
 
 For the complete list, refer to [Built-in tools reference](tools/builtin-tools-reference.md).
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Every agent also has [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools) for calling {{es}} and {{kib}} APIs. These tools don't appear on the **Tools** page.
+
 :::{note}
 Some built-in skills also include inline tools that are only available while that skill is active and are not listed in the tools reference. For details, refer to [Built-in skills reference](builtin-skills-reference.md).
 :::
@@ -110,7 +112,7 @@ Tools can also be accessed through the Model Context Protocol (MCP) server, whic
 
 On the Tools page, open the **Manage MCP** dropdown to access:
 
-- **Copy MCP Server URL**: Copy the MCP server URL for configuring external clients.
+- **Copy MCP Server URL**: Copy the current space's MCP server URL to configure external clients.
 - **Bulk import MCP tools**: Import multiple tools from an MCP server at once.
 - **Documentation**: Open the MCP documentation.
 
@@ -120,18 +122,21 @@ On the Tools page, open the **Manage MCP** dropdown to access:
 :width: 250px
 :::
 
+{applies_to}`serverless: ga` If you connect with [OAuth](/deploy-manage/app-connections/oauth-clients.md), use the MCP server URL shown in your OAuth client's details instead.
+
 ::::
 
 ::::{applies-item} { stack: ga 9.2-9.3 }
 
-The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
+To copy the MCP server URL, open the **MCP Server** dropdown on the Tools page ({{stack}} 9.2) or the **Manage MCP** dropdown ({{stack}} 9.3), then select **Copy MCP Server URL**.
 
 ::::
 
 :::::
 
 :::{important}
-There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.
+:applies_to: stack: preview =9.2.0
+**Copy MCP Server URL** doesn't include the space ID. Refer to the [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name).
 :::
 
 For detailed MCP server configuration, refer to [MCP server](mcp-server.md).

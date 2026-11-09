@@ -34,14 +34,14 @@ Setting newly assigned partitions [elk-pmbr-9] for group log-pmbr
 
 **Background**
 
-Kafka tracks the individual consumers in a consumer group (for example, a number of {{ls}} instances) and tries to give each consumer one or more specific partitions of data in the topic they’re consuming. In order to achieve this, Kafka tracks whether or not a consumer ({{ls}} Kafka input thread) is making progress on their assigned partition, and reassigns partitions that have not made progress in a set timeframe.
+Kafka tracks the individual consumers in a consumer group (for example, a number of {{ls}} instances) and tries to give each consumer one or more specific partitions of data in the topic they’re consuming. To achieve this, Kafka tracks whether a consumer ({{ls}} Kafka input thread) is making progress on their assigned partition, and reassigns partitions that have not made progress in a set timeframe.
 
 When {{ls}} requests more events from the Kafka Broker than it can process within the timeout, it triggers reassignment of partitions. Reassignment of partitions takes time, and can cause duplicate processing of events and significant throughput problems.
 
 **Possible solutions**
 
-* Reduce the number of records per request that {{ls}} polls from the Kafka Broker in one request,
-* Reduce the number of Kafka input threads, and/or
+* Reduce the number of records per request that {{ls}} polls from the Kafka Broker in one request.
+* Reduce the number of Kafka input threads.
 * Increase the relevant timeouts in the Kafka Consumer configuration.
 
 **Details**
@@ -67,7 +67,7 @@ From a performance perspective, decreasing the `max_poll_records` value is prefe
 
 ## Kafka input plugin crashes when using schema registry [ts-schema-registry]
 
-By default, the kafka input plugin checks connectivity and validates the schema registry during plugin registration before events are processed. In some circumstances, this process may fail when it tries to validate an authenticated schema registry, causing the plugin to crash.
+By default, the kafka input plugin checks connectivity and validates the schema registry during plugin registration before events are processed. In some circumstances, this process might fail when it tries to validate an authenticated schema registry, causing the plugin to crash.
 
 The plugin offers a `schema_registry_validation` setting to change the default behavior. This setting allows the plugin to skip validation during registration, which allows the plugin to continue and events to be processed. See the [kafka input plugin documentation](logstash-docs-md://lsr/plugins-inputs-kafka.md#plugins-inputs-kafka-schema_registry_validation) for more information about the plugin and other configuration options.
 
@@ -90,13 +90,13 @@ Logstash’s Kafka Input is causing a much higher number of commits to the offse
 
 **Solution**
 
-For Kafka Broker versions 0.10.2.1 to 1.0.x: The problem is caused by a bug in Kafka. [https://issues.apache.org/jira/browse/KAFKA-6362](https://issues.apache.org/jira/browse/KAFKA-6362) The client’s best option is upgrading their Kafka Brokers to version 1.1 or newer.
+For Kafka Broker versions 0.10.2.1 to 1.0.x: The problem is caused by a bug in Kafka. [https://issues.apache.org/jira/browse/KAFKA-6362](https://issues.apache.org/jira/browse/KAFKA-6362) The client’s best option is upgrading their Kafka Brokers to version 1.1 or later.
 
-For older versions of Kafka or if the above does not fully resolve the issue: The problem can also be caused by setting the value for `poll_timeout_ms` too low relative to the rate at which the Kafka Brokers receive events themselves (or if Brokers periodically idle between receiving bursts of events). Increasing the value set for `poll_timeout_ms` proportionally decreases the number of offsets commits in this scenario. For example, raising it by 10x will lead to 10x fewer offset commits.
+For earlier versions of Kafka or if the above does not fully resolve the issue: The problem can also be caused by setting the value for `poll_timeout_ms` too low relative to the rate at which the Kafka Brokers receive events themselves (or if Brokers periodically idle between receiving bursts of events). Increasing the value set for `poll_timeout_ms` proportionally decreases the number of offsets commits in this scenario. For example, raising it by 10x will lead to 10x fewer offset commits.
 
 **Symptoms**
 
-Logstash Kafka input randomly logs errors from the configured codec and/or reads events incorrectly (partial reads, mixing data between multiple events etc.).
+Logstash Kafka input randomly logs errors from the configured codec, reads events incorrectly (such as partial reads or mixing data between multiple events), or both.
 
 ```
 Log example:  [2018-02-05T13:51:25,773][FATAL][logstash.runner          ] An

@@ -11,7 +11,7 @@ products:
   - id: kibana
 ---
 
-# Start a multi-node cluster with Docker Compose [docker-compose-file]
+# Start a multi-node {{es}} cluster with Docker Compose [docker-compose-file]
 
 Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Compose lets you start multiple containers with a single command.
 

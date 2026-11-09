@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens pie chart](../../images/kibana-lens-pie-chart.png)
 
-## Build a pie chart with the point-and-click editor [build-a-pie-chart]
+## Create a pie chart [create-a-pie-chart]
+
+### Create a pie chart with the point-and-click editor [build-a-pie-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a pie chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -65,7 +68,7 @@ The chart preview updates to show a pie divided into slices. Each slice represen
 
 ::::::
 
-## Build a pie chart with an {{esql}} query [build-a-pie-chart-with-esql]
+### Create a pie chart with an {{esql}} query [build-a-pie-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -612,7 +615,10 @@ Configure elements of your pie chart's legend:
 :   Choose whether to truncate long legend labels, and set a limit for how many lines to display.
 
 **Width**
-:   Set the width of the legend.
+:   Control the width of the legend panel. Select **Auto**, **Small**, **Medium**, **Large**, or **Extra large**. **Auto** sizes the legend to fit its labels, and the other options set a fixed width. The default and available options depend on your environment:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Auto** is the default.
+    - {applies_to}`stack: ga 9.0-9.5` **Medium** is the default. **Auto** is available in the interface only for charts whose width is already set to **Auto**, for example charts created with the API, or charts created before 8.3 that had no width set.
 
 ## Pie chart examples
 

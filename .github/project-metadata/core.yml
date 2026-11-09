@@ -1,0 +1,96 @@
+version: 1
+
+project:
+  owner: elastic
+  number: 2517
+  url: https://github.com/orgs/elastic/projects/2517
+
+eligibility:
+  repositories:
+    - elastic/docs-content
+    - elastic/docs-content-internal
+  required_labels: []
+
+fields:
+  Area:
+    type: single_select
+    enabled: true
+    guidance: |
+      Set Area to the best-matching option when you have reasonable confidence. Use the option's own
+      scope, not just its name. A single Area can cover many pages, paths, or tasks.
+
+      Option coverage:
+      - ES Core: Storage and retrieval (indexing, mappings, codecs, shards) and search (query DSL,
+        aggregations, relevance, kNN). Use ES Core for search API behavior and query execution.
+      - ES Foundations: Distributed systems (replication, cluster coordination, cross-cluster), performance
+        tuning, security configuration (roles, privileges, TLS), and core infrastructure. Use ES Foundations
+        for operational and configuration topics.
+      - Models and Inference: ML model management, inference APIs, ELSER, dense and sparse vector search,
+        high-performance inference, and Jina AI integration.
+      - CP and Billing: IAM, serverless deployment experience, hosted deployment management, billing and
+        subscriptions.
+      - Platform Infrastructure: Core cloud infrastructure, reliability engineering, and engineering
+        productivity and developer experience tooling.
+      - Admin Experience: Kibana spaces, user management, roles, Fleet, and the integrations UI.
+      - Clients, Agents, Context: Language clients, AI agent SDKs, context window tooling, and the Agents
+        and Context product surface.
+      - Cross-area: use only when the issue explicitly describes work spanning multiple areas.
+      - Strategic work: OKR-level initiatives, roadmap items, and cross-team strategic projects.
+      - Team stuff: internal process, tooling, team operations.
+
+      Leave Area empty only when you genuinely cannot tell, or when two options are equally strong.
+
+  Category:
+    type: single_select
+    enabled: true
+    excluded_options:
+      - PR takeover
+      - Project (child)
+      - Feature (child)
+    guidance: |
+      Set Category to the primary type of work the issue represents:
+      - Bug: something incorrect, broken, or misleading in existing docs.
+      - Feature: net-new documentation for a new product capability.
+      - Enhancement: improving existing content (clarity, completeness, accuracy).
+      - Maintenance: keeping docs current with product changes (deprecations, renames, version bumps).
+      - Redirect: adding or updating URL redirects.
+      - Debt: known quality or structural debt to pay down.
+      - Internal: internal process or team-only content.
+      - Tooling: docs tooling, scripts, automation.
+      - UI copy: in-product text changes.
+      - Chore: small administrative tasks.
+      - Meta: parent/tracking issues with no direct writing work.
+      - Decision: issues used to document or reach a decision.
+
+      When one category is clearly primary, set it even if the issue touches a secondary type.
+
+  Team:
+    type: single_select
+    enabled: true
+    guidance: |
+      Set Team based on the issue's labels:
+      - Team:Admin label only → Admin Docs
+      - Team:Developer label only → Developer Docs
+      - Both Team:Admin and Team:Developer → Cross-team
+      - Neither label → leave Team empty
+
+  Quarter:
+    type: iteration
+    enabled: false
+
+  Due date:
+    type: date
+    enabled: false
+
+  Status:
+    type: single_select
+    enabled: true
+    guidance: |
+      - Triage: newly opened, not yet assessed.
+      - Backlog: assessed and queued, not yet scheduled.
+      - Ready: scheduled and ready to start.
+      - In progress: actively being worked.
+      - In review: writing done, awaiting review or merge.
+      - Blocked: cannot proceed, waiting on external input.
+      - Done: complete and merged.
+      - Meta: parent tracking issue, status reflects sub-issue progress.

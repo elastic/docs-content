@@ -14,18 +14,18 @@ navigation_title: Events
 
 AutoOps continuously monitors your {{es}} deployments by sampling performance and health metrics at 10-second intervals. This high-frequency data collection allows AutoOps to rapidly detect and diagnose issues so you can get timely notifications and resolve issues faster. 
 
-When AutoOps detects an issue, it creates an event. Events provide detailed analyses of detected issues, including why they were triggered and the steps needed to resolve them. 
+When AutoOps detects an issue, it raises insights in the form of an **Event**. These are detailed analyses of detected issues, including why they were triggered and the steps needed to resolve them. For a full list of what AutoOps can detect and help you resolve, refer to [AutoOps insights](autoops-insights://elasticsearch/index.md).
 
 You can view events on the **Deployment** page (for {{ECH}} deployments) or the **Cluster** page (for ECE, ECK, and self-managed clusters) in the **Open events** and **Event history** tabs.
 
-When you select an event, a flyout appears with insights about the detected issue and actions you can take.
+When you select an event, a flyout displays details about the detected issue and actions you can take.
 
 :::{image} /deploy-manage/images/cloud-autoops-events.png
 :screenshot:
 :alt: Screenshot showing an AutoOps event flyout
 :::
 
-## Event insights
+## Event details
 
 The following table describes the information presented in this flyout:
 

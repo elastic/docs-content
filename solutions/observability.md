@@ -1,5 +1,7 @@
 ---
 navigation_title: Observability solution
+meta_title: Elastic Observability overview
+description: Unify logs, metrics, traces, user experience data, and synthetic monitoring with Elastic Observability to investigate application and infrastructure problems.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html
   - https://www.elastic.co/guide/en/observability/current/index.html

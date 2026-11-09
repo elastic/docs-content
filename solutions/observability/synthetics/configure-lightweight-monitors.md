@@ -93,7 +93,7 @@ $$$monitor-type$$$
 
     * `http`: Connects via HTTP and optionally verifies that the host returns the expected response.
     * `icmp`: Uses an ICMP (v4 and v6) Echo Request to ping the configured hosts. Requires special permissions or root access.
-    * `tcp`: Connects via TCP and optionally verifies the endpoint by sending and/or receiving a custom payload.
+    * `tcp`: Connects via TCP and optionally verifies the endpoint by sending a custom payload, receiving one, or both.
 
 $$$monitor-id$$$
 
@@ -445,7 +445,7 @@ $$$monitor-http-max_redirects$$$
 
     By default, Synthetics will not follow redirects, but will report the status of the redirect. If set to a number greater than `0`, Synthetics will follow that number of redirects.
 
-    When this option is set to a value greater than `0`, the `monitor.ip` field will no longer be reported, as multiple DNS requests across multiple IPs may return multiple IPs. Fine-grained network timing data will also not be recorded, as with redirects that data will span multiple requests. Specifically the fields `http.rtt.content.us`, `http.rtt.response_header.us`, `http.rtt.total.us`, `http.rtt.validate.us`, `http.rtt.write_request.us` and `dns.rtt.us` will be omitted.
+    When this option is set to a value greater than `0`, the `monitor.ip` field will no longer be reported, as multiple DNS requests across multiple IPs might return multiple IPs. Fine-grained network timing data will also not be recorded, as with redirects that data will span multiple requests. Specifically the fields `http.rtt.content.us`, `http.rtt.response_header.us`, `http.rtt.total.us`, `http.rtt.validate.us`, `http.rtt.write_request.us` and `dns.rtt.us` will be omitted.
 
     **Default**: `0`
 

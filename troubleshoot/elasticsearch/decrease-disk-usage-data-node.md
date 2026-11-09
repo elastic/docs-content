@@ -12,6 +12,9 @@ products:
 
 To decrease the disk usage in your cluster without losing any data, you can try reducing the replicas of indices.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 ::::{note}
 Reducing the replicas of an index can potentially reduce search throughput and data redundancy. However, it can quickly give the cluster breathing room until a more permanent solution is in place.
 

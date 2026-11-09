@@ -155,7 +155,7 @@ To learn more about creating and managing rules, refer to [Alerting](/solutions/
 
 ::::
 
-## Select the data collection schema[host-schema-selector]
+## Select the data collection schema [host-schema-selector]
 ```{applies_to}
 stack: ga 9.2
 serverless: ga
@@ -329,12 +329,7 @@ To learn more about roles, refer to [Assign user roles and privileges](/deploy-m
 
 ::::
 
-
-::::{important}
 You must have an active [{{agent}}](/reference/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration.
-
-::::
-
 
 The **Osquery** tab allows you to build SQL statements to query your host data. You can create and run live or saved queries against the {{agent}}. Osquery results are stored in {{es}} so that you can use the {{stack}} to search, analyze, and visualize your host metrics. To create saved queries and add scheduled query groups, refer to [Osquery](/solutions/security/investigate/osquery.md).
 
@@ -426,7 +421,7 @@ When a host is detected by APM, but is not collecting full metrics (for example,
 
 This could mean that the APM agent has not been configured to use the correct host name. Instead, the host name might be the container name or the Kubernetes pod name.
 
-To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-intake-service-event-api.md#kubernetes-data).
+To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-inputs-apm-intake-event-api.md#kubernetes-data).
 
 ### I don't see all of my host data [observability-analyze-hosts-i-dont-see-all-of-my-host-data]
 ```{applies_to}

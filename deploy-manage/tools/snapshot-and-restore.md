@@ -1,4 +1,5 @@
 ---
+navigation_title: Snapshot and restore
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
   - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-restore.html
@@ -14,7 +15,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Snapshot and restore
+# Snapshot and restore in {{es}}
 
 A snapshot is a backup of a running {{es}} cluster. You can use snapshots to:
 
@@ -55,7 +56,7 @@ The default policy and repository are used when:
 - Restoring a snapshot to a different deployment
 - Taking automated snapshots in case of deployment changes
 
-In {{ech}}, you can [restore snapshots](snapshot-and-restore/restore-snapshot.md) across clusters, but only within the same region.
+In {{ech}}, a snapshot in the default `found-snapshots` repository can be restored to another deployment only when both deployments are in the same organization and the same region. To move data across different regions or organizations using a [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), refer to [](../deploy/elastic-cloud/restrictions-known-problems.md#ec-migrate-deployment-another-region-or-organization).
 
 For API-driven deployment linking of platform-managed snapshots, refer to [Manage snapshot repositories in {{ech}}](snapshot-and-restore/elastic-cloud-hosted.md#register-snapshot-repos-ech).
 

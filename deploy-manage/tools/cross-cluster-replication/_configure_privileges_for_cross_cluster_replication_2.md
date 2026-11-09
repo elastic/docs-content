@@ -18,6 +18,9 @@ To use a [remote cluster](/deploy-manage/remote-clusters.md) for {{ccr}}, you ne
 :::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-role-management.md
 :::
 
+:::{note}
+The role examples on this page use the `manage_ccr` cluster privilege on the local cluster because it is the minimum cluster privilege required to manage CCR. If a user already has a role that grants a broader cluster privilege covering these operations, such as `manage` or `all`, you don't need to grant `manage_ccr` separately. Regardless of which cluster privilege you use, you must still grant the required index privileges.
+:::
 ## API key authentication [configure-privileges-for-ccr-api-key]
 
 :::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-api-key-authorization.md

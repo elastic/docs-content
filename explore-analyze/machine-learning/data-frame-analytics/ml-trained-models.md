@@ -74,7 +74,7 @@ Models trained in Elasticsearch are portable and can be transferred between clus
         | more
 ```
 
-    If you want to show just the model IDs available, use `jq` to select a subset.
+    If you want to show only the model IDs available, use `jq` to select a subset.
 
 ```bash
     curl -s -u username:password \

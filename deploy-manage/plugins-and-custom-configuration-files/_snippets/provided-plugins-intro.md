@@ -1,0 +1,1 @@
+You can use a variety of [official {{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md) that are compatible with your version of {{es}}. When you upgrade to a new {{es}} version, these plugins are upgraded with the rest of your deployment, unless there are breaking changes.

@@ -55,7 +55,7 @@ To balance search performance and flexibility, index fields that you’ll freque
 Use the [asynchronous search API]({{es-apis}}operation/operation-async-search-submit) to run searches that include runtime fields. This method of search helps to offset the performance impacts of computing values for runtime fields in each document containing that field. If the query can’t return the result set synchronously, you’ll get results asynchronously as they become available.
 
 ::::{important}
-Queries against runtime fields are considered expensive. If [`search.allow_expensive_queries`](../../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries) is set to `false`, expensive queries are not allowed and {{es}} will reject any queries against runtime fields.
+Queries against runtime fields are considered expensive. If [`search.allow_expensive_queries`](elasticsearch://reference/query-languages/querydsl.md#query-dsl-allow-expensive-queries) is set to `false`, expensive queries are not allowed and {{es}} will reject any queries against runtime fields.
 ::::
 
 

@@ -14,6 +14,9 @@ Disk capacity pressures may cause index failures, unassigned shards, and cluster
 
 {{es}} uses [disk-based shard allocation watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to manage disk space on nodes, which can block allocation or indexing when nodes run low on disk space. Refer to [](/troubleshoot/elasticsearch/fix-watermark-errors.md) for additional details on how to address this situation.
 
+:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::
+
 To increase the disk capacity of the data nodes in your cluster, complete these steps:
 
 1. [Estimate how much disk capacity you need](#estimate-required-capacity).

@@ -1,4 +1,5 @@
 ---
+navigation_title: Triage alerts with AI Assistant
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/assistant-triage.html
   - https://www.elastic.co/guide/en/serverless/current/security-triage-alerts-with-elastic-ai-assistant.html

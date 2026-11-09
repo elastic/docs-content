@@ -96,7 +96,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
     :::{admonition} For organizations with many group memberships
-    If you configure [`claims.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-properties) to read the list of Azure AD groups from the ID token, be aware that users who belong to many groups may exceed Azure AD’s token size limit. In that case, the `groups` claim will be omitted.
+    If you configure [`claims.groups`](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-properties) to read the list of Azure AD groups from the ID token, be aware that users who belong to many groups might exceed Azure AD’s token size limit. In that case, the `groups` claim will be omitted.
 
     To avoid this, enable the **Groups assigned to the application** option in Azure Entra (**App registrations > Token configuration > Edit groups claim**). This setting limits the `groups` claim to only those assigned to the application.
 
