@@ -1,4 +1,8 @@
 redirects:
+  # related to https://github.com/elastic/docs-content/pull/9157
+  'solutions/security/alertzero/review-closed-proposed-actions.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
+  'solutions/security/alertzero/decide-proposed-action.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
+  'solutions/security/alertzero/use-alertzero.md': 'solutions/security/alertzero/work-in-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/9158
   'solutions/security/alertzero/requirements.md': 'solutions/security/alertzero/set-up-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/4251
@@ -110,12 +114,11 @@ redirects:
   'solutions/observability/streams/management/extract/set.md': 'solutions/observability/streams/processors/set.md'
   'solutions/observability/streams/management/extract/trim.md': 'solutions/observability/streams/processors/trim.md'
   'solutions/observability/streams/management/extract/uppercase.md': 'solutions/observability/streams/processors/uppercase.md'
-  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/streams/knowledge-indicators.md'
   'solutions/observability/streams/management/partitioning.md': 'solutions/observability/streams/organize-your-data.md'
   'solutions/observability/streams/management/retention.md': 'solutions/observability/streams/configure-retention.md'
   'solutions/observability/streams/management/schema.md': 'solutions/observability/streams/map-fields.md'
-  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
-  'solutions/observability/streams/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/management/significant-events.md': 'solutions/observability/streams/knowledge-indicators.md'
   'solutions/observability/streams/management/streamlang.md': 'solutions/observability/streams/streamlang.md'
 
   # Related to https://github.com/elastic/docs-content/pull/1069
@@ -928,8 +931,8 @@ redirects:
   'solutions/security/detect-and-alert/custom-rules.md': 'solutions/security/detect-and-alert/author-rules.md'
 
   # Prebuilt rules restructure
-  # Note: Cross-file anchor redirects are not supported. Old links to 
-  # install-manage-prebuilt-rules.md#prebuilt-rule-tags, #rule-prerequisites, 
+  # Note: Cross-file anchor redirects are not supported. Old links to
+  # install-manage-prebuilt-rules.md#prebuilt-rule-tags, #rule-prerequisites,
   # and #select-all-prebuilt-rules will land on install-prebuilt-rules.md.
   # Internal links have been updated to point to the correct new locations.
   'solutions/security/detect-and-alert/install-manage-prebuilt-rules.md':
@@ -1023,7 +1026,7 @@ redirects:
   'explore-analyze/alerts-cases/cases.md': 'explore-analyze/cases.md'
   'explore-analyze/alerts-cases/alerts.md': 'explore-analyze/alerting/alerts.md'
   'explore-analyze/alerts-cases/watcher.md': 'explore-analyze/alerting/watcher.md'
-  
+
   # Cases redirects
   'explore-analyze/alerts-cases/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/alerts-cases/cases/manage-cases.md': 'explore-analyze/cases/manage-cases.md'
@@ -1060,7 +1063,7 @@ redirects:
   'explore-analyze/cases/setup-cases.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/configure-case-access.md': 'explore-analyze/cases/control-case-access.md'
   'explore-analyze/cases/find-share-cases.md': 'explore-analyze/cases/search-share-cases.md'
-  
+
   # Alerts redirects
   'explore-analyze/alerts-cases/alerts/alerting-getting-started.md': 'explore-analyze/alerting/alerts/alerting-getting-started.md'
   'explore-analyze/alerts-cases/alerts/alerting-setup.md': 'explore-analyze/alerting/alerts/alerting-setup.md'
@@ -1078,7 +1081,7 @@ redirects:
   'explore-analyze/alerts-cases/alerts/event-log-index.md': 'explore-analyze/alerting/alerts/event-log-index.md'
   'explore-analyze/alerts-cases/alerts/testing-connectors.md': 'explore-analyze/alerting/alerts/testing-connectors.md'
   'explore-analyze/alerts-cases/alerts/maintenance-windows.md': 'explore-analyze/alerting/alerts/maintenance-windows.md'
-  
+
   # Watcher redirects
   'explore-analyze/alerts-cases/watcher/watcher-getting-started.md': 'explore-analyze/alerting/watcher/watcher-getting-started.md'
   'explore-analyze/alerts-cases/watcher/how-watcher-works.md': 'explore-analyze/alerting/watcher/how-watcher-works.md'
@@ -1146,7 +1149,7 @@ redirects:
   'solutions/security/advanced-entity-analytics/overview.md': 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
   'solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md': 'solutions/security/advanced-entity-analytics/entity-analytics-requirements.md'
   'solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md': 'solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md'
-  
+
 # Related to https://github.com/elastic/docs-content/pull/5222
   'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
 
@@ -1181,7 +1184,7 @@ redirects:
 
 # No more elasticsearch solution add-ons
   'solutions/elasticsearch-solution-project/es-serverless-add-ons.md': 'solutions/elasticsearch-solution-project.md'
-  
+
 # Fleet: removed "Hybrid Agent" product wording; remap section anchors on the same pages
   'reference/fleet/elastic-agent-as-otel-collector.md':
     anchors:
@@ -1208,7 +1211,7 @@ redirects:
     many:
       - to: 'explore-analyze/elastic-inference/eis-supported-models.md'
         anchors:
-          'supported-models': 
+          'supported-models':
   'explore-analyze/elastic-inference/eis-supported-models.md':
     to: 'explore-analyze/elastic-inference/eis-supported-models.md'
     many:
@@ -1571,7 +1574,7 @@ redirects:
         anchors:
           'explore-the-underlying-documents': 'explore-panel-data-in-discover'
 
-  
+
   # Related to https://github.com/elastic/docs-content/pull/8651
   # Remove duplicate Security dashboard pages
   'solutions/security/cloud/cnvm-dashboard.md': 'solutions/security/dashboards/cloud-native-vulnerability-management-dashboard.md'
@@ -1589,13 +1592,13 @@ redirects:
   'deploy-manage/monitor/log-delivery/cloud-audit-trail.md': 'deploy-manage/monitor/cloud-audit-trail.md'
   # Related to https://github.com/elastic/docs-content/issues/6203
   'deploy-manage/monitor/stack-audit-logging/auditing-search-queries.md': 'deploy-manage/monitor/stack-audit-logging/auditing-http-request-bodies.md'
-  
+
   # Related to https://github.com/elastic/docs-content/pull/8717
   'solutions/observability/streams/significant-events/index.md': 'solutions/observability/nightshift/significant-events/index.md'
   'solutions/observability/streams/significant-events/how-it-works.md': 'solutions/observability/nightshift/significant-events/how-it-works.md'
   'solutions/observability/streams/significant-events/operator-guide.md': 'solutions/observability/nightshift/significant-events/operator-guide.md'
   'solutions/observability/streams/significant-events/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
-  
+
   # related to https://github.com/elastic/docs-content/issues/7421
   'cloud-account/change-interface-language.md': 'explore-analyze/find-and-organize/personal-preferences/change-interface-language.md'
   'cloud-account/dark-mode.md': 'explore-analyze/find-and-organize/personal-preferences/dark-mode.md'
