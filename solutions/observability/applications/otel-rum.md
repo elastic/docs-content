@@ -148,7 +148,7 @@ import { startTracesSdk } from '@opentelemetry/browser-sdk/traces';
 const tracesSdk = startTracesSdk({
   logLevel: OTEL_LOG_LEVEL,
   resourceAttributes: OTEL_RESOURCE_ATTRIBUTES,
-  contextManager: new ZoneContextManager()
+  contextManager: new ZoneContextManager(),
   exportConfig: {
     // Set the traces endpoint based on the config provided
     url: `${OTEL_EXPORTER_OTLP_ENDPOINT}/v1/traces`,
@@ -324,7 +324,7 @@ After the dependencies are installed, you can wrap the setup in a function with 
 :::{dropdown} Complete setup script example
 ```javascript
 // file: telemetry.js
-import { metrics } from '@opentelemetry/api';
+import { metrics, diag } from '@opentelemetry/api';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { startTracesSdk } from '@opentelemetry/browser-sdk/traces';
 import { startLogsSdk } from '@opentelemetry/browser-sdk/logs';
@@ -361,7 +361,7 @@ export function startOtel(config) {
   const tracesSdk = startTracesSdk({
     logLevel: config.logLevel,
     resourceAttributes: config.resourceAttributes,
-    contextManager: new ZoneContextManager()
+    contextManager: new ZoneContextManager(),
     exportConfig: {
       // Set the traces endpoint based on the config provided
       url: `${config.endpoint}/v1/traces`,
@@ -515,7 +515,7 @@ export default defineConfig({
 Place the file within the application's assets folder and include it in the `<head>` section of the HTML page. Assuming the files are in a folder named `js` you can load the telemetry file in a synchronous or asynchronous way.
 
 ::::{dropdown} Example: Synchronous / Blocking pattern
-Add a `<script>` tag to load the bundle and use the `initOpenTelemetry` global function to initialize the agent:
+Add a `<script>` tag to load the bundle and use the `startOtel` global function to initialize the agent:
 
 ```html
 <script src="./js/telemetry.umd.js"></script>
@@ -541,7 +541,7 @@ Loading the script asynchronously ensures the agent script doesn't block other r
       t = d.getElementsByTagName(s)[0]
 
     j.src = './js/telemetry.umd.js'
-    j.onload = function() {elasticApm.init(c)}
+    j.onload = function() {startOtel(c)}
     t.parentNode.insertBefore(j, t)
   })(
     document,
@@ -760,14 +760,20 @@ const OTEL_RESOURCE_ATTRIBUTES = {
 };
 ```
 
-3. Ensure providers are registered before instrumentations:
+3. Ensure providers are registered before enabling instrumentations:
 
 ```javascript
 // Correct order:
-// 1. Configure and register tracer provider
-tracerProvider.register({ contextManager: new ZoneContextManager() });
-// 2. Then register instrumentations
-registerInstrumentations({...});
+// 1. Logger and Tracer providers are registered through start functions
+startLogsSdk({...});
+startTracesSdk({...});
+// 2. Meter provider should be registered through API
+metrics.setGlobalMeterProvider(new MeterProvider({...}));
+// 3. Then enable instrumentations
+const instrumentations = [...];
+for(const instr of instrumentations) {
+  instr.enable();
+}
 ```
 
 :::
