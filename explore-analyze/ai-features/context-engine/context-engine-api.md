@@ -27,6 +27,8 @@ API requests use the permissions and space of the authenticated caller. Include 
 
 The caller also needs the `read` index privilege on each AI index's backing index (`ai-index-*`). Describing an AI index also requires the `view_index_metadata` privilege. AI indices without `read` are left out of list results, and query or describe requests return `403` when the caller lacks a required privilege.
 
+For the privileges each task requires and the query limits, refer to [](availability-and-limits.md).
+
 ## Operations quick access
 
 The following operations are available:
