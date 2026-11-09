@@ -144,6 +144,8 @@ Each of the following privileges controls access to a different feature.
 | **Context Engine** {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` | Access [{{context-engine}}](/explore-analyze/ai-features/context-engine.md). **Read** allows viewing AI indices and retrieving context. **All** also allows creating, editing, and deleting AI indices. Users need separate {{es}} index privileges to access backing indices and source data. |
 | **Agent Builder - Semantic Metadata Layer (SML)** {applies_to}`stack: ga 9.5+` | Access the semantic metadata that {{agent-builder}} uses to interpret your data.<br> {applies_to}`stack: ga =9.5` This privilege is called **Agent Context Layer**. |
 | **Workflows** {applies_to}`stack: ga 9.3+` | Access [Workflows](/explore-analyze/workflows.md), and create, edit, and run workflows. Turn on **Customize sub-feature privileges** to grant individual workflow privileges. For the full list, refer to [Workflows sub-feature privileges](#kibana-privileges-workflows-subfeatures). |
+| **Proposed Actions** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | View {{az-proposed-actions}}, which are recommendations an agent makes for a user to decide on. **All** also allows users to approve or decline them. |
+| **Agentic Investigations** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | View {{az-investigations}} and {{az-escalations}}. Turn on **Customize sub-feature privileges** to grant individual {{az-investigation}} and {{az-escalation}} privileges. For the full list, refer to [Agentic Investigations sub-feature privileges](#kibana-privileges-agentic-investigations-subfeatures). |
 :::
 
 ### Discover sub-feature privileges [kibana-privileges-discover-subfeatures]
@@ -223,6 +225,25 @@ These privileges control specific actions on workflows. Selecting **All** includ
 | **Read managed workflows** {applies_to}`stack: ga 9.5+` | View the workflows that Elastic provides. |
 | **Read managed workflow execution** {applies_to}`stack: ga 9.5+` | View the results of a managed workflow run. |
 | **Update managed workflows** {applies_to}`stack: ga 9.5+` | Edit the workflows that Elastic provides. |
+:::
+
+### Agentic Investigations sub-feature privileges [kibana-privileges-agentic-investigations-subfeatures]
+
+```yaml {applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+These privileges control specific actions on {{az-investigations}} and {{az-escalations}}. Selecting **All** for **Agentic Investigations** includes **Manage investigations**, but not **Manage escalations**. Selecting **Read** includes only **View escalations**.
+
+:::{table}
+:widths: description
+
+| Privilege | What it allows |
+| --- | --- |
+| **Manage investigations** | Assign {{az-investigations}} and change their status, including closing and reopening them. |
+| **View escalations** | View {{az-escalations}}. |
+| **Manage escalations** | Create {{az-escalations}}, add {{az-investigations}} to them, and change who is assigned to them. To close an {{az-escalation}}, you also need **Manage investigations**.|
 :::
 
 ## Privileges in the Management group [kibana-privileges-management]
