@@ -64,7 +64,7 @@ Each {{az-hunt-finding}} appears in its {{az-investigation}}, with the finding's
 
 ## {{az-detection-watch}} [alertzero-detection-watch]
 
-The {{az-detection-watch}} improves your detection rules at the source, instead of handling the alerts they produce one by one. Its {{az-workers}} build on what other {{az-watches}} produce.
+The {{az-detection-watch}} improves your detection rules at the source, instead of handling the alerts they produce one by one. Its {{az-workers}} find noisy rules and gaps in detection coverage, and propose changes to fix them.
 
 ### {{az-rule-tuning}} [alertzero-rule-tuning]
 
