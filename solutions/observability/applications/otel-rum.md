@@ -624,10 +624,12 @@ Review the following constraints in your web application to avoid any data trans
 
 ### Content security policies (CSP)
 
-If your website is making use of Content Security Policies (CSPs), make sure that the domain of your OTLP endpoint is included. If your Collector endpoint is `https://collector.example.com:4318/v1/traces`, add the following directive:
+If your website uses Content Security Policies (CSPs), add the OTLP export origin to the `connect-src` directive. Use the same base URL as `OTEL_EXPORTER_OTLP_ENDPOINT` in your setup—typically the [reverse proxy](#before-you-begin), not the backend collector. The SDK sends export requests to `/v1/traces`, `/v1/logs`, and `/v1/metrics` on that origin, so allow the full origin (scheme, host, and port), not a single signal path.
+
+For example, if exports go to `https://proxy.example.com`, add that origin to `connect-src`:
 
 ```text
-connect-src collector.example.com:4318/v1/traces
+Content-Security-Policy: connect-src 'self' https://proxy.example.com
 ```
 
 ### Cross-origin resource sharing (CORS)
@@ -826,12 +828,12 @@ curl -X POST https://your-proxy-endpoint/v1/traces \
 
 :::{dropdown} Content Security Policy (CSP) violations
 
-If you get CSP violation errors in the browser console, your Content Security Policy is blocking connections to the OTLP endpoint.
+If you get CSP violation errors in the browser console, your Content Security Policy is blocking connections to the OTLP export origin.
 
-Add the Collector endpoint to your CSP `connect-src` directive:
+Add the same base URL you use in `OTEL_EXPORTER_OTLP_ENDPOINT` (typically your reverse proxy) to the `connect-src` directive. Allow the origin, not only one signal path, so `/v1/traces`, `/v1/logs`, and `/v1/metrics` are permitted:
 
 ```text
-Content-Security-Policy: connect-src 'self' https://collector.example.com:4318
+Content-Security-Policy: connect-src 'self' https://proxy.example.com
 ```
 
 :::
