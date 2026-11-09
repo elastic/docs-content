@@ -15,7 +15,7 @@ products:
 
 # Automate security operations [workflows-automate-security]
 
-Use workflows to close the loop between detection and response. When a detection rule or a {{alerting-v1-system}} rule fires, a workflow can enrich the alert with additional context, create or update a case, notify the right channel, and take follow-up actions, all without leaving Elastic.
+Use workflows to close the loop between detection and response. When a rule fires, a workflow can enrich the alert with additional context, create or update a case, notify the right channel, and take follow-up actions, all without leaving Elastic.
 
 This section describes common security automation patterns you can build with workflows today. Each pattern uses capabilities that already exist in the workflow engine: [alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md), [{{es}} action steps](/explore-analyze/workflows/steps/elasticsearch.md), [Cases action steps](/explore-analyze/workflows/steps/cases.md), [AI steps](/explore-analyze/workflows/steps/ai-steps.md), and [external system connectors](/explore-analyze/workflows/steps/external-systems-apps.md).
 
