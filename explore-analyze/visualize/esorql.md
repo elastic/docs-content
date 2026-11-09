@@ -136,7 +136,7 @@ To add a layer, select {icon}`plus` **Add layer** in the editor, then select the
 
 #### Plot another query in its own layer
 
-To compare two sets of results on one chart, add a layer with its own query. For example, start from the [time series chart](#esql-time-series-charts) that counts requests, then add a layer for the requests that ended in a server error (response codes that start with 5):
+To compare two sets of results on one chart, add a layer with its own query. For example, start from the [stacked bar chart of web log events](#esql-viz-multi-field-breakdown), then add a layer for the events that returned a server error (response codes that start with 5):
 
 ```esql
 FROM kibana_sample_data_logs
@@ -153,6 +153,11 @@ To add it:
 
 Check that both dimensions are set before you look at the chart. If the **Horizontal axis** of a layer is empty, the values of that layer don't follow time and stack at a single position.
 
+:::{image} /explore-analyze/images/esql-visualization-layer-server-errors.png
+:alt: A stacked bar chart of web log events by host and file extension, with a line for server errors over the same time range
+:screenshot:
+:::
+
 Use the same time-bucket column on the **Horizontal axis** of each layer so the layers line up in time. To compare client errors (response codes that start with 4) as well, add a third layer the same way, with this query:
 
 ```esql
@@ -160,6 +165,11 @@ FROM kibana_sample_data_logs
 | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "4*"
 | STATS client_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
 ```
+
+:::{image} /explore-analyze/images/esql-visualization-layer-client-errors.png
+:alt: The same chart with a second line for client errors
+:screenshot:
+:::
 
 If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
 
