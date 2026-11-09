@@ -109,7 +109,7 @@ stack: ga 9.6
 serverless: ga
 ```
 
-If the series you want to compare come from different queries, you can plot each query in its own layer on the same chart. You can also add annotations and reference lines on top of the data.
+When you create an {{esql}} visualization from a dashboard, you can show each query in its own layer on the same chart. This helps when the series you want to compare come from different queries. You can also add annotations and reference lines on top of the data.
 
 Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
 
@@ -117,9 +117,9 @@ Layers are available on bar, line, and area charts. Other chart types, such as p
 
 A chart can combine these layer types:
 
-- [**Visualization**](#add-another-visualization-as-a-layer): Shows the results of its own query.
-- [**Annotations**](#mark-events-with-annotations): Mark an event or a period, such as a deployment, on a time axis.
-- [**Reference lines**](#add-reference-lines): Show a threshold, such as a target or a budget.
+- [**Visualization**](#add-another-visualization-as-a-layer): The results of its own query.
+- [**Annotations**](#mark-events-with-annotations): An event or a period, such as a deployment, marked on a time axis.
+- [**Reference lines**](#add-reference-lines): A threshold, such as a target or a budget, drawn across the chart.
 
 To add a layer, select {icon}`plus` **Add layer** in the editor, then select the type of layer. The new layer opens in its own tab.
 
@@ -138,14 +138,14 @@ To compare two sets of results on one chart, add a layer with its own query:
 3. In the new layer's tab, enter the query and run it.
 4. Assign the column that holds time to the **Horizontal axis** and the column that holds the values to the **Vertical axis**.
 
-Check that both dimensions are set before you look at the chart. If the **Horizontal axis** of a layer is empty, the values of that layer don't follow time and stack at a single position. To line the layers up in time, group every query by the same time buckets and assign that column to the **Horizontal axis** of each layer.
+Before you look at the chart, make sure both dimensions have a column. If the **Horizontal axis** of a layer is empty, the values of that layer don't follow time and stack at a single position. To line the layers up in time, group every query by the same time buckets and assign that column to the **Horizontal axis** of each layer.
 
 If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
 
 **Example: Compare server and client errors**
 
 1. Start from the [stacked bar chart of web log events](#esql-viz-multi-field-breakdown).
-2. Add a layer for the events that returned a server error (response codes that start with 5), with this query:
+2. Add a layer for the events that returned a server error (response codes that start with 5). If you're asked for a chart type, select **Line**. Use this query:
 
    ```esql
    FROM kibana_sample_data_logs
@@ -160,7 +160,7 @@ If you edit a layer's query and its results no longer contain a compatible colum
    :screenshot:
    :::
 
-4. Add a third layer for the events that returned a client error (response codes that start with 4), with this query:
+4. Add a third layer for the events that returned a client error (response codes that start with 4). Select **Line** again if you're asked for a chart type. Use this query:
 
    ```esql
    FROM kibana_sample_data_logs
@@ -181,7 +181,7 @@ Annotations mark an event or a period on a time chart, such as a deployment or a
 
 In the chart example that compares server and client errors of the previous section, the client errors spike on one day. To mark the outage behind that spike:
 
-1. Select {icon}`plus` **Add layer** → **Annotations**. {{kib}} creates an annotation straight away.
+1. Select {icon}`plus` **Add layer** → **Annotations**. {{kib}} creates an annotation immediately.
 2. Turn on **Apply as range**, then set **From** and **To** to the start and end of the outage.
 3. In **Name**, enter a label for the annotation, such as `eu-west-36 outage`.
 
@@ -198,7 +198,7 @@ If you're used to adding [annotations](lens.md#add-annotations) to visualization
 
 A reference line shows a threshold, such as a target or a budget, so you can see at a glance where your data crosses it.
 
-On {{esql}} visualizations, you can define a reference line in one of the following ways:
+On {{esql}} visualizations, you can define a reference line in the following ways:
 
 - **With a fixed value**: Draw the line at a number that you choose.
 
