@@ -149,6 +149,7 @@ toc:
           - file: observability/troubleshooting-infrastructure-monitoring/understanding-no-results-found-message.md
           - file: observability/troubleshooting-infrastructure-monitoring/kubernetes-pods-docker-containers-empty-otel.md
       - file: observability/troubleshoot-service-level-objectives-slos.md
+      - file: observability/search-capacity.md
   - file: security.md
     children:
       - file: security/detection-rules.md
