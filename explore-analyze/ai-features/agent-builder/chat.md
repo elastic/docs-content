@@ -153,38 +153,71 @@ The options menu provides access to:
 - **Agent details**: View information about the currently selected agent.
 - **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
+The following image shows the options menu:
+
 :::{image} images/more-actions-menu-options-9.4.png
 :screenshot:
 :alt: Options menu showing Agent details and GenAI Settings
 :width: 250px
 :::
 
-:::{tip}
-To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
-:::
-
 ::::
 
-::::{applies-item} { stack: ga 9.6+, serverless: ga }
+::::{applies-item} stack: ga 9.6+
 
 The options menu provides access to:
 
 - **Agent details**: View information about the currently selected agent.
 - **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
-- **Download conversation**: Save the conversation as a JSON file. {{kib}} builds the file name from the conversation title by lowercasing it, replacing characters other than letters and numbers with hyphens, and adding `.json`. A title of `New conversation` becomes `new-conversation.json`. The file contains a `conversation` object with the conversation `id`, `agent_id`, title, rounds, and the rest of the saved conversation. This action stays unavailable until that saved conversation has loaded. While the agent is responding, the file contains the last saved conversation and can omit the round in progress.
+- **Download conversation**: Save the conversation as a JSON file.
+  - **File name**: {{kib}} lowercases the conversation title, replaces each run of characters other than letters and numbers with a single hyphen, and adds `.json`. For example, `New conversation` becomes `new-conversation.json`.
+  - **Contents**: A `conversation` object with the conversation `id`, `agent_id`, title, rounds, and the rest of the saved conversation.
+  - **Availability**: Unavailable until the saved conversation has loaded. While the agent responds, the file contains the last saved conversation and can omit the round in progress.
 - **Load trace from file**: Open a saved trace in the [Trace flyout](#view-traces). Refer to [Load a trace from a file](#load-a-trace-from-a-file).
 
-In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), **Download conversation** and **Load trace from file** appear in the same options menu as **Agent details** and **GenAI Settings**. In [standalone mode](standalone-and-flyout-modes.md#standalone-mode), the options menu in the conversation header includes **Download conversation** and **Load trace from file**. Open agent details from **Overview** in the [**Customize**](#customize-your-agent) accordion.
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the menu also includes **Open in full screen**. The following image shows the sidebar mode menu:
 
-:::{tip}
-To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
+:::{image} images/more-actions-menu-options-9.6-sidebar.png
+:screenshot:
+:alt: Options menu in sidebar mode showing Agent details, Open in full screen, GenAI Settings, Download conversation, and Load trace from file
+:width: 250px
 :::
+
+In [standalone mode](standalone-and-flyout-modes.md#standalone-mode), the options menu in the conversation header includes only **Download conversation** and **Load trace from file**. Open agent details from **Overview** in the [**Customize**](#customize-your-agent) accordion. The following image shows the standalone mode menu:
+
+:::{image} images/more-actions-menu-options-9.6-standalone.png
+:screenshot:
+:alt: Options menu in standalone mode showing Download conversation and Load trace from file
+:width: 250px
+:::
+
+::::
+
+::::{applies-item} serverless: ga
+
+In [standalone mode](standalone-and-flyout-modes.md#standalone-mode), the options menu in the conversation header provides access to the following actions:
+
+- **Chat details**: View the conversation's title, author, creation and last edited times, visibility, members, and type.
+- **Activity log**: View a timeline of events, such as when the chat was created and when its title changed.
+- **Download chat**: Save the conversation as a JSON file named after the conversation title.
+- **Delete**: Permanently delete the conversation after you confirm. You can't undo this action.
+- **Feedback**: Open a form to send feedback about the chat.
+
+The following image shows the standalone mode menu:
+
+:::{image} images/more-actions-menu-options-serverless.png
+:screenshot:
+:alt: Options menu in standalone mode showing Chat details, Activity log, Download chat, Delete, and Feedback
+:width: 250px
+:::
+
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the options menu provides access to **Agent details**, **Open in full screen**, **GenAI Settings**, and **Download conversation**. {{serverless-short}} doesn't include **Load trace from file**.
 
 ::::
 
 ::::{applies-item} { stack: ga =9.3 }
 
-This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication.
+This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication. The following image shows the options menu:
 
 :::{image} images/more-actions-menu-options.png
 :screenshot:
@@ -195,6 +228,12 @@ This menu provides links to key actions and management pages, including agent ma
 ::::
 
 :::::
+
+:::{tip}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
+:::
 
 ### Find conversation history
 
@@ -466,7 +505,10 @@ Each conversation round can record OpenTelemetry traces of how the agent ran. To
 
 The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The header includes the **Download trace** icon {icon}`download`. Select it to save the spans as a JSON file. The file name is `trace-` followed by the trace id in lowercase. When the flyout has no trace id, the file is named `trace-trace.json`. When the flyout has a trace id, the file includes `trace_id` and a `spans` array. Otherwise the file includes `spans`.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The header includes the **Download trace** icon {icon}`download`. Select it to save the spans as a JSON file:
+
+- **File name**: `trace-` followed by the trace id in lowercase, plus `.json`. When the flyout has no trace id, the file is named `trace-trace.json`.
+- **Contents**: A `spans` array. When the flyout has a trace id, the file also includes `trace_id`.
 
 Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
 
@@ -480,12 +522,27 @@ To learn how traces are collected, configured, and secured, refer to [Collect ag
 
 ```{applies_to}
 stack: ga 9.6+
-serverless: ga
 ```
 
-Select **Load trace from file** in the [options menu](#access-key-actions), then select a JSON file. A valid file is a JSON array of spans, or an object with a `spans` array. Each span must include `span_id`. The object can also include a string `trace_id`. A file saved with **Download trace** uses this object format.
+To load a trace from a file:
 
-The Trace flyout opens and shows the callout "Viewing a trace loaded from a file." You can load a file when trace collection is off, or when the round has no **View Trace** icon.
+1. Select **Load trace from file** in the [options menu](#access-key-actions).
+2. Select a JSON file.
+
+A valid file is either of the following:
+
+- A JSON array of spans.
+- An object with a `spans` array, and optionally a string `trace_id`. A file saved with **Download trace** uses this format.
+
+Each span must include `span_id`.
+
+The Trace flyout opens and shows the callout "Viewing a trace loaded from a file." You can load a file when trace collection is off, or when the round has no **View Trace** icon. The following image shows the flyout:
+
+:::{image} images/trace-flyout-loaded-from-file.png
+:screenshot:
+:alt: Trace flyout with the callout "Viewing a trace loaded from a file." above the span list
+:width: 600px
+:::
 
 If the file is not valid JSON or is not a valid trace, an error toast titled **Could not load trace file** shows the error `The file does not contain a valid trace. Expected a JSON array of spans or an object with a "spans" array.`
 
