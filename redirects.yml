@@ -110,7 +110,7 @@ redirects:
   'solutions/observability/streams/management/extract/set.md': 'solutions/observability/streams/processors/set.md'
   'solutions/observability/streams/management/extract/trim.md': 'solutions/observability/streams/processors/trim.md'
   'solutions/observability/streams/management/extract/uppercase.md': 'solutions/observability/streams/processors/uppercase.md'
-  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/streams/knowledge-indicators.md
+  'solutions/observability/streams/management/knowledge-indicators.md': 'solutions/observability/streams/knowledge-indicators.md'
   'solutions/observability/streams/management/partitioning.md': 'solutions/observability/streams/organize-your-data.md'
   'solutions/observability/streams/management/retention.md': 'solutions/observability/streams/configure-retention.md'
   'solutions/observability/streams/management/schema.md': 'solutions/observability/streams/map-fields.md'
