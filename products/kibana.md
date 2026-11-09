@@ -221,8 +221,6 @@ links:
     url: /explore-analyze/dashboards/create-dashboard.md
   - label: Ways to create a dashboard
     url: /explore-analyze/dashboards/building.md
-  - label: Custom panels
-    url: /explore-analyze/visualize/custom-panels.md
   - label: Best practices
     url: /explore-analyze/dashboards/arrange-panels.md
 :::
