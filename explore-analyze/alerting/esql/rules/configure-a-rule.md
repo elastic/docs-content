@@ -10,7 +10,7 @@ description: "Overview of configurable rule settings: required settings (mode, q
 
 # Configure a rule in {{alerting-v2-system}} [rule-settings]
 
-{{alerting-v2-system-cap}} rules have required settings and several optional ones. Start with the required settings, then add optional settings after you've validated the detection logic, for example by previewing results in the [query sandbox](create-esql-rule.md#rule-builder-query-sandbox) when writing {{esql}} directly. The following table links to a dedicated page for each setting, with field descriptions, accepted values, and when to configure it.
+{{alerting-v2-system}} rules have required settings and several optional ones. Start with the required settings, then add optional settings after you've validated the detection logic, for example by previewing results in the [query sandbox](create-esql-rule.md#rule-builder-query-sandbox) when writing {{esql}} directly. The following table links to a dedicated page for each setting, with field descriptions, accepted values, and when to configure it.
 
 | Setting | Description | Required |
 | --- | --- | --- |

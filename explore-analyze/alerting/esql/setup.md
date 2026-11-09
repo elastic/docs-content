@@ -11,7 +11,7 @@ description: "License, connector, data, and space requirements, plus how to turn
 
 # Set up {{alerting-v2-system}} [setup]
 
-{{alerting-v2-system-cap}} is on by default. Check that you have what you need to create rules, then turn on any optional features you want.
+{{alerting-v2-system}} is on by default. Check that you have what you need to create rules, then turn on any optional features you want.
 
 :::{note}
 If you tried {{alerting-v2-system-short}} while it was experimental in {{stack}} 9.5, upgrade to 9.6 or later. The system changed a lot before it became generally available, and these docs cover only the generally available version.

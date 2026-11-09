@@ -1,5 +1,5 @@
 ---
-navigation_title: "{{alerting-v2-system-cap}}"
+navigation_title: "{{alerting-v2-system}}"
 applies_to:
   stack: ga 9.6+
   serverless: ga
@@ -9,14 +9,14 @@ products:
 description: Kibana Universal Alerting writes each match as a rule event, then either groups those events into an alert with notifications or keeps them available for later analysis.
 ---
 
-# {{alerting-v2-system-cap}} overview [system-overview]
+# {{alerting-v2-system}} overview [system-overview]
 
 Use {{alerting-v2-system-short}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
 
 To open {{alerting-v2-system-short}}, go to **Alerting** in the {{observability}} navigation menu.
 
 :::{note}
-Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
+Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system}} overview](/explore-analyze/alerting/alerts.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
 
 If you tried {{alerting-v2-system-short}} while it was experimental in {{stack}} 9.5, upgrade to 9.6 or later to use the generally available version. The system changed significantly between 9.5 and 9.6. This documentation covers only the generally available version.
 :::

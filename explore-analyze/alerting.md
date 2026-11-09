@@ -20,7 +20,7 @@ Elastic alerting helps you watch your data and respond when something needs atte
 
 Elastic offers more than one alerting system, and which ones you can use depends on your deployment type and version. If you're not sure which fits your situation, refer to [Compare alerting systems](alerting/compare-alerting-systems.md).
 
-## {{alerting-v2-system-cap}}
+## {{alerting-v2-system}}
 
 ```{applies_to}
 serverless: ga
@@ -35,7 +35,7 @@ You write an {{esql}} query that defines what to watch for, decide whether match
 
 [Get started with {{alerting-v2-system}} →](alerting/esql/system-overview.md)
 
-## {{alerting-v1-system-cap}}
+## {{alerting-v1-system}}
 
 ```{applies_to}
 stack: ga

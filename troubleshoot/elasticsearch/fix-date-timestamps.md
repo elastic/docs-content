@@ -37,7 +37,7 @@ Timestamp data quality issues can strain resources and cause unexpected search r
 * [Dashboards](/explore-analyze/dashboards.md)
 * {{elastic-sec}} [detections and alerts](/solutions/security/detect-and-alert.md)
 * {{observability}} [incident management alerts](/solutions/observability/incident-management/alerting.md)
-* [{{alerting-v1-system-cap}}](/explore-analyze/alerting/alerts.md)
+* [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md)
 * [Watchers](/explore-analyze/alerting/watcher.md)
 
 Common symptoms of these issues include:

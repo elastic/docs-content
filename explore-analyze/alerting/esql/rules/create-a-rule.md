@@ -10,7 +10,7 @@ description: "Create rules using the ES|QL editor, AI Agent, rule builder, or di
 
 # Create a rule in {{alerting-v2-system}} [create-a-rule]
 
-{{alerting-v2-system-cap}} provides several ways to create rules. Compare the options below and pick the one that best fits your workflow and how comfortable you are writing {{esql}}.
+{{alerting-v2-system}} provides several ways to create rules. Compare the options below and pick the one that best fits your workflow and how comfortable you are writing {{esql}}.
 
 | Option | Best for |
 | --- | --- |
