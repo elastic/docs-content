@@ -113,13 +113,7 @@ If the series you want to compare come from different queries, you can plot each
 
 Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
 
-Layers are available on these chart types:
-
-- Bar
-- Line
-- Area
-
-Other chart types, such as pie or metric, use a single query.
+Layers are available on bar, line, and area charts. Other chart types, such as pie or metric, use a single query.
 
 A chart can combine these layer types:
 
