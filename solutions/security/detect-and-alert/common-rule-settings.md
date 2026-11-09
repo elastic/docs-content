@@ -165,6 +165,8 @@ It is recommended to set the `Additional look-back time` to at least 1 minute. T
 {{elastic-sec}} prevents duplication. Any duplicate alerts that are discovered during the `Additional look-back time` are *not* created.
 ::::
 
+{applies_to}`security: ga` Rules that run often or look back over long time ranges add search load. To set schedules that keep rules running on time, refer to [](/solutions/security/detect-and-alert/plan-rule-performance.md).
+
 ## Rule actions [rule-notifications]
 
 Use rule actions to set up notifications sent through other systems when alerts are generated. Rule actions let you send Slack messages, create {{jira}} tickets, trigger PagerDuty incidents, and more.

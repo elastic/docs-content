@@ -12,10 +12,6 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-sub:
-  search-load-sources: Detection rules (the number of enabled rules, how often they run, and lookback windows longer than the most recent day; rules that fail or time out and trigger catch-up runs over wider windows), other alerting rules, transforms, dashboards, Discover, ES|QL queries, and external clients that query the project
-  search-saturation-signals: detection rule failures or timeouts in the Rule Monitoring tab
-  search-reduce-load: disable rules you don't need, shorten lookbacks where your false positive tolerance allows, stagger rule schedules, and narrow time ranges on dashboards
 ---
 
 # Troubleshoot detection rules [ts-detection-rules]
@@ -192,21 +188,18 @@ For **non-aggregating** {{esql}} detection rules, the engine uses document `_id`
 
 ## Rule executions
 
-### Understand search capacity and rule performance [security-search-capacity]
+### Troubleshoot rule timeouts caused by search load [security-search-capacity]
 ```{applies_to}
 serverless:
   security: ga
 ```
 
-:::{include} /solutions/_snippets/serverless-search-performance-intro.md
-:::
+If many detection rules time out or fail at around the same time, your project might be running out of search capacity. Other signs include `Request timed out` errors in {{kib}}, circuit breaker exceptions, and slower queries in Discover. To check rule outcomes, use the [**Rule Monitoring** tab](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-monitoring-tab).
 
-::::{dropdown} Prevent rule timeouts and slow searches
+To fix the problem:
 
-:::{include} /solutions/_snippets/serverless-search-performance.md
-:::
-
-::::
+1. Reduce the search load from your rules. For what to change, refer to [Keep rules running on time](/solutions/security/detect-and-alert/plan-rule-performance.md#rule-performance-best-practices).
+2. If rules still time out, contact Elastic Support to request more search capacity. To learn how {{ecloud}} sizes your project's search capacity, refer to [How search capacity works](/solutions/security/detect-and-alert/plan-rule-performance.md#rule-performance-search-capacity).
 
 
 ### Troubleshoot missing alerts [troubleshoot-signals]
@@ -239,7 +232,7 @@ If you see gaps for numerous rules:
 
 * If you restarted {{kib}} when many rules were activated, try deactivating them and then reactivating them in small batches at staggered intervals. This ensures {{kib}} does not attempt to run all the rules at the same time.
 * Consider adding another {{kib}} instance to your environment.
-* {applies_to}`security: ga` If rules time out or fail alongside the gaps, your project might be running out of search capacity. Refer to [Understand search capacity and rule performance](#security-search-capacity).
+* {applies_to}`security: ga` If rules time out or fail alongside the gaps, your project might be running out of search capacity. Refer to [Troubleshoot rule timeouts caused by search load](#security-search-capacity).
 
 ::::
 
