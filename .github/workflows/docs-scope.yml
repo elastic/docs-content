@@ -1,5 +1,7 @@
-name: "Issues: Scope on request"
+name: "Issues: Scope"
 on:
+  issues:
+    types: [opened]
   issue_comment:
     types: [created]
   workflow_dispatch:
@@ -15,10 +17,15 @@ permissions:
 
 jobs:
   run:
+    # Automatic: every new issue. Manual: /scope from a member, owner, or collaborator, to scope
+    # again after the issue changes.
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      (startsWith(github.event.comment.body, '/scope') &&
-       github.event.issue.pull_request == null)
+      github.event_name == 'issues' ||
+      (github.event_name == 'issue_comment' &&
+       startsWith(github.event.comment.body, '/scope') &&
+       github.event.issue.pull_request == null &&
+       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-scope.lock.yml@v1
     with:
       project-instructions-path: .github/scope-instructions.md
