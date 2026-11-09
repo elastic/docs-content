@@ -40,6 +40,36 @@ The step uses the [default AI connector](/explore-analyze/ai-features/manage-acc
 Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`; the other AI steps currently take `connector-id` only.
 :::
 
+## Reasoning level [ai-reasoning-level]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Use the optional `reasoning-level` field on `ai.prompt` and `ai.agent` steps to control how much reasoning the model does before it responds. The field accepts `none`, `minimal`, `low`, `medium`, `high`, or `xhigh`, in lowercase. Only `ai.prompt` and `ai.agent` accept this field. How each level affects the response depends on the model and provider.
+
+Whether the model receives the level depends on how the step connects to it:
+
+- [Elastic Managed LLMs](/explore-analyze/ai-features/agent-builder/models.md) and {{infer}} endpoints receive the level you set. If the model doesn't support that level, the step fails. Check the model provider's documentation for the levels each model supports.
+- Other connectors, such as OpenAI, Amazon Bedrock, and Google Gemini, ignore the field, and the step runs normally.
+
+On [`ai.agent`](#ai-agent) steps:
+
+- If you omit `reasoning-level`, the step uses the agent's default level. Only built-in agents have a default. For custom agents, or when the agent has no default, the model uses its own default.
+- The level applies only to the agent's own model calls. It doesn't apply to the sub-agents that the agent starts, or to tasks that {{agent-builder}} sends to the [fast model](/explore-analyze/ai-features/agent-builder/models.md#fast-model).
+
+For example, this step sets a high reasoning level for a custom agent:
+
+```yaml
+- name: investigate
+  type: ai.agent
+  agent-id: "security-analyst-agent"
+  reasoning-level: "high"
+  with:
+    message: "Investigate alert {{ event.alerts[0]._id }} and propose next steps."
+```
+
 ## Step types
 
 - [`ai.prompt`](#ai-prompt): Send a prompt to a model and receive a response. Supports structured output with a JSON Schema. {applies_to}`stack: preview 9.3, ga 9.4+`
@@ -291,36 +321,6 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
   with:
     conversation_id: "{{ steps.investigate.output.conversation_id }}"
     message: "Apply the recommended action and report back."
-```
-
-## Reasoning level [ai-reasoning-level]
-
-```{applies_to}
-stack: preview 9.6+
-serverless: preview
-```
-
-Use the optional `reasoning-level` field on `ai.prompt` and `ai.agent` steps to control how much reasoning the model does before it responds. The field accepts `none`, `minimal`, `low`, `medium`, `high`, or `xhigh`, in lowercase. Only `ai.prompt` and `ai.agent` accept this field. How each level affects the response depends on the model and provider.
-
-Whether the model receives the level depends on how the step connects to it:
-
-- [Elastic Managed LLMs](/explore-analyze/ai-features/agent-builder/models.md) and {{infer}} endpoints receive the level you set. If the model doesn't support that level, the step fails. Check the model provider's documentation for the levels each model supports.
-- OpenAI (including Azure OpenAI and OpenAI-compatible providers), Amazon Bedrock, and Google Gemini connectors ignore the field, and the step runs normally.
-
-On `ai.agent` steps:
-
-- If you omit `reasoning-level`, the step uses the agent's default level. Only built-in agents have a default. For custom agents, or when the agent has no default, the model uses its own default.
-- The level applies only to the agent's own model calls. It doesn't apply to the sub-agents that the agent starts, or to tasks that {{agent-builder}} sends to the [fast model](/explore-analyze/ai-features/agent-builder/models.md#fast-model).
-
-For example, this step sets a high reasoning level for a custom agent:
-
-```yaml
-- name: investigate
-  type: ai.agent
-  agent-id: "security-analyst-agent"
-  reasoning-level: "high"
-  with:
-    message: "Investigate alert {{ event.alerts[0]._id }} and propose next steps."
 ```
 
 ## `ai.conversation.create` [ai-conversation-create]
