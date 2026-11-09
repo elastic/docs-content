@@ -256,6 +256,7 @@ toc:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
               - file: ai-features/agent-builder/troubleshooting/pre-execution-workflow-disabled.md
+              - file: ai-features/agent-builder/troubleshooting/gemini-3-vertex-tool-calls.md
           - file: ai-features/agent-builder/limitations-known-issues.md
           - file: ai-features/agent-builder/glossary.md
           - hidden: ai-features/agent-builder/connectors.md
@@ -284,6 +285,10 @@ toc:
                 children:
                   - hidden: ai-features/context-engine/use-context-engine-with-agent-builder.md
                   - hidden: ai-features/context-engine/langchain-integration.md
+                  - hidden: ai-features/context-engine/use-context-engine-with-claude-code.md
+                    # children:
+                    #   # Tracked by https://github.com/elastic/search-team/issues/16315.
+                    #   - file: ai-features/context-engine/send-claude-code-telemetry.md
           - hidden: ai-features/context-engine/context-engine-api.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
@@ -426,7 +431,6 @@ toc:
           - file: visualize/legacy-editors/tsvb.md
           - file: visualize/legacy-editors/timelion.md
       - file: visualize/visualize-library.md
-      - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/kibana-interface.md
@@ -497,6 +501,7 @@ toc:
                   - file: alerting/esql/rules/configure-rule-artifacts.md
               - file: alerting/esql/rules/view-manage-rules.md
               - file: alerting/esql/rules/review-rule-execution-history.md
+              - file: alerting/esql/rules/review-rule-change-history.md
               - file: alerting/esql/rules/esql-query-patterns.md
                 children:
                   - file: alerting/esql/rules/esql-first-rule-query.md

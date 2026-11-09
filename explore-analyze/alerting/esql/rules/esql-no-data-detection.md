@@ -1,7 +1,7 @@
 ---
 navigation_title: No-data detection
 applies_to:
-  stack: ga 9.6+, experimental =9.5
+  stack: ga 9.6+
   serverless: ga
 products:
   - id: kibana
@@ -28,10 +28,7 @@ FROM metrics-*
 Every row returned is a host that has gone silent. The query result itself drives the alert. A separate alert condition isn't needed.
 
 :::{note}
-This pattern opens an alert for a silent source. To control what the rule does with an alert that already exists when its data stops, refer to [No-data handling](configure-no-data-handling.md). When that setting applies depends on your version:
-
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The rule checks each group. If a group with an alert stops reporting, the rule applies **No data behavior** to that alert, even when other groups keep reporting. It never opens an alert for a group that hasn't breached.
-* {applies_to}`stack: experimental =9.5` The rule applies the setting only when the entire base query returns zero rows, for example when an index is completely empty.
+This pattern opens an alert for a silent source. To control what the rule does with an alert that already exists when its data stops, refer to [No-data handling](configure-no-data-handling.md). That setting applies to each group. If a group with an alert stops reporting, the rule applies **No data behavior** to that alert, even when other groups keep reporting. It never opens an alert for a group that hasn't breached.
 :::
 
 ## Related pages

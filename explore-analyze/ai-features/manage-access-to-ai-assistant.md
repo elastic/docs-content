@@ -1,4 +1,5 @@
 ---
+description: Control which models power AI features in Kibana, track token usage, turn off streaming for inference endpoints, and install Elastic's documentation for more accurate answers from agents.
 applies_to:
   stack: ga 9.2+
   serverless: ga
@@ -36,12 +37,14 @@ The **GenAI Settings** page has the following settings:
 
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
-- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+- **Stream inference endpoint responses**: If your LLM provider doesn't support streaming, turn this off so {{kib}} waits for the full response. For details, refer to [Turn off streaming for {{infer}} endpoint responses](#turn-off-inference-streaming).
+- **Agent Builder Traces**: Turn collection of Agent Builder conversation traces on or off, install a prebuilt dashboard, and set which content traces capture. For details, refer to [Collect Agent Builder traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
 ::::{applies-item} stack: ga 9.4+
 
 :::{image} /explore-analyze/images/genai-settings-stack.png
-:alt: GenAI Settings for Stack in 9.4
+:alt: GenAI Settings for Stack
 :screenshot:
 :::
 
@@ -50,7 +53,9 @@ The **GenAI Settings** page has the following settings:
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
 - **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 - **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
-- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+- **Stream inference endpoint responses**: {applies_to}`stack: ga 9.6+` If your LLM provider doesn't support streaming, turn this off so {{kib}} waits for the full response. For details, refer to [Turn off streaming for {{infer}} endpoint responses](#turn-off-inference-streaming).
+- **Agent Builder Traces**: {applies_to}`stack: ga 9.5` Turn collection of Agent Builder conversation traces on or off, install a prebuilt dashboard, and set which content traces capture. For details, refer to [Collect Agent Builder traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 ::::
 ::::{applies-item} stack: ga 9.2-9.3
 
@@ -71,6 +76,7 @@ The **GenAI Settings** page has the following settings:
   - **{{obs-ai-assistant}} in other apps**: The {{obs-ai-assistant}} appears throughout {{kib}} regardless of solution. The Security AI Assistant does not appear anywhere.
   - **Security AI Assistant in other apps**: The Security AI Assistant appears throughout {{kib}} regardless of solution. The {{obs-ai-assistant}} does not appear anywhere.
   - **Hide all assistants**: Turns off AI Assistant throughout {{kib}}.
+- **Documentation**: {applies_to}`stack: preview 9.3+` Install Elastic documentation or content from Security labs to improve Agent Builder responses. This section appears only when the chat experience is AI Agent. For details, refer to [Give {{agent-builder}} access to Elastic documentation](#give-agent-builder-access-to-elastic-documentation).
 
 ::::
 :::::
@@ -103,6 +109,53 @@ If you open the dashboard right after turning on tracking and its breakdown pane
 :::
 
 For per-response token counts and billing details specific to {{agent-builder}}, refer to [Monitor usage and costs for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
+
+### Turn off streaming for {{infer}} endpoint responses [turn-off-inference-streaming]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If your LLM provider doesn't support streaming, you can have {{kib}} wait for the full response from an {{infer}} endpoint instead of receiving it piece by piece as the LLM generates it. By default, {{kib}} streams responses.
+
+To turn off streaming for the current space:
+
+1. Go to **GenAI Settings** by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Turn off **Stream inference endpoint responses**.
+3. Select **Save changes**.
+
+The setting applies to {{infer}} endpoints, including the AI connector, which sends its requests through one. It doesn't affect the OpenAI, Amazon Bedrock, or Google Gemini connectors. If an {{infer}} endpoint's service doesn't support non-streaming chat completion, {{kib}} keeps streaming from that endpoint even when the setting is off.
+
+### Give {{agent-builder}} access to Elastic documentation [give-agent-builder-access-to-elastic-documentation]
+```{applies_to}
+serverless: ga
+stack: preview =9.3, ga 9.4+
+```
+
+{{agent-builder}} agents can answer questions about Elastic products from the official Elastic documentation once it's installed in {{kib}}. To check, go to **GenAI Settings**. The **Documentation** section should show **Installed** next to **Elastic documentation**.
+
+How the documentation gets installed depends on your version and configuration:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` {{kib}} installs the documentation automatically when it starts, if both of these are true. If the documentation is already installed, {{kib}} updates it instead.
+  - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) is available.
+  - **Use AI features** is turned on in **Feature Settings**.
+- In earlier versions, or if these conditions aren't met, you need to install the documentation from **GenAI Settings**.
+
+To install the documentation, you need the [**Agent Builder: All** privilege](/explore-analyze/ai-features/agent-builder/permissions.md).
+
+1. Go to **GenAI Settings**.
+2. In the **Documentation** section, select **Install** next to **Elastic documentation**.
+
+The install takes a few minutes. When it finishes, the **Documentation** section shows **Installed** next to **Elastic documentation**.
+
+#### Security labs content
+
+Security labs content gives agents access to [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence. To install it, follow the same steps as for Elastic documentation, and select **Install** next to **Security labs** instead.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, {{kib}} also installs Security labs content automatically:
+
+- In serverless {{elastic-sec}} projects, when {{kib}} starts, if EIS is available and **Use AI features** is turned on.
+- In any {{elastic-sec}} deployment, when a user with the **Agent Builder: All** privilege opens {{elastic-sec}}, **Use AI features** is turned on, and the content isn't installed yet.
 
 ## Feature settings
 ```{applies_to}

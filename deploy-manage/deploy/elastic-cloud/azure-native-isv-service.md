@@ -260,14 +260,20 @@ Multiple Azure users can deploy to the same {{ecloud}} organization. Before anot
 
 You can add Azure users as members of your organization even if they don't have an inbox. Reach out to Elastic support.
 
-## Azure tenant information [azure-integration-azure-tenant]
+## Hosting and data location [azure-integration-hosting-data-location]
 
-{{es}} resources deployed in an Azure tenant are managed by Elastic. The management capabilities associated with this tenant are the same as used to run Elastic's managed service, which also allows users to deploy on Azure. {{es}} is not deployed into your Azure tenant.
+When you create an {{ecloud}} deployment or project through the Azure Native Service, Elastic runs it in Azure subscriptions owned and managed by Elastic, in the Azure region you select. Your deployments and projects, and the data stored in them, are not deployed into your Azure tenant or subscription.
+
+The Elastic resource that appears in your Azure resource group lets you manage and pay for your deployment or project from Azure. It represents your deployment or project, but doesn't host it.
+
+Because your data is stored outside your tenant, traffic between your Azure workloads and {{es}} crosses from your tenant into Elastic's. To connect privately, use [Azure Private Link](../../security/private-connectivity-azure.md). To control the encryption of your data at rest, use a [customer-managed encryption key](azure-native-isv-service-byok.md).
+
+## Azure tenant information shared with Elastic [azure-integration-azure-tenant]
 
 $$$azure-integration-azure-tenant-info$$$
 After you subscribe to {{ecloud}} through the Azure Native Service, Elastic has access to the following Azure tenant information:
 
-* Data defined in the marketplace [Saas fulfillment Subscription APIs](https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api).
+* Data defined in the marketplace [SaaS fulfillment Subscription APIs](https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api).
 * The following additional data:
     * Marketplace subscription ID
     * Marketplace plan ID
@@ -278,7 +284,7 @@ After you subscribe to {{ecloud}} through the Azure Native Service, Elastic has 
     * Last name
     * Country
 
-Elastic can also access data from {{ecloud}} Azure Native Service features, including [resource and activity log data](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/platform-logs-overview). This data is available when [log ingestion](azure-native-isv-service-logs-metrics.md#configure-log-ingestion) is configured. By default, Elastic does not have access to this information.
+Elastic can also access data from {{ecloud}} Azure Native Service features, such as [resource and activity log data](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/platform-logs-overview), but only when [log ingestion](azure-native-isv-service-logs-metrics.md#configure-log-ingestion) is configured. By default, Elastic doesn't have access to this data.
 
 ## Delete a resource or Azure resource group [ec-azure-integration-delete]
 

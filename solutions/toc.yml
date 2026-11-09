@@ -11,6 +11,11 @@ toc:
               - file: search/get-started/index-basics.md
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
+      - file: search/set-up.md
+        children:
+          - file: search/set-up/get-elasticsearch-running-for-search.md
+          - file: search/set-up/api-key-and-endpoints.md
+          - file: search/set-up/connect-with-an-sdk.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -20,6 +25,7 @@ toc:
             children:
               - file: search/full-text/how-full-text-works.md
               - file: search/full-text/text-analysis-during-search.md
+              - file: search/full-text/intervals-query-tutorial.md
               - file: search/full-text/search-relevance.md
                 children:
                   - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
@@ -153,7 +159,7 @@ toc:
               - folder: observability/get-started/opentelemetry/use-cases/llms
                 file: index.md
                 children:
-                  - hidden: send-claude-platform-traces.md
+                  - file: send-claude-platform-traces.md
               - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:
@@ -325,7 +331,7 @@ toc:
                       - file: observability/apm/elastic-apm-agent-configuration-api.md
                       - file: observability/apm/opentelemetry-intake-api.md
                       - file: observability/apm/jaeger-event-intake.md
-                  - file: observability/apm/managed-intake-service-event-api.md
+                  - file: observability/apm/managed-inputs-apm-intake-event-api.md
               - file: observability/apm/upgrade.md
                 children:
                   - file: observability/apm/apm-agent-compatibility.md
@@ -486,6 +492,17 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
+      - file: observability/metrics.md
+        children:
+          - file: observability/metrics/get-started.md
+          - file: observability/metrics/plan-your-setup.md
+          - file: observability/metrics/ingest.md
+          - file: observability/metrics/migrate.md
+            children:
+              - file: observability/metrics/migrate/prometheus.md
+              - file: observability/metrics/migrate/datadog.md
+          - file: observability/metrics/explore.md
+          - file: observability/metrics/manage-storage.md
       - file: observability/streams/streams.md
         children:
         - file: observability/streams/get-data-in.md
@@ -623,6 +640,9 @@ toc:
               - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/enable-cloud-security-features.md
           - file: security/cloud/d4c/get-started-with-d4c.md
+          - file: security/ai/set-up-ai-features.md
+            children:
+              - file: security/ai/large-language-model-performance-matrix.md
           - file: security/advanced-entity-analytics/entity-analytics-requirements.md
           - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
       - file: security/get-started/ingest-data-to-elastic-security.md
@@ -700,21 +720,20 @@ toc:
                   - file: security/get-started/spaces-defend-faq.md
               - file: security/get-started/data-views-elastic-security.md
               - file: security/get-started/create-runtime-fields-in-elastic-security.md
-      - hidden: security/alertzero/index.md
+      - file: security/alertzero/index.md
         children:
           - hidden: security/alertzero/set-up-alertzero.md
-            children:
-              - hidden: security/alertzero/requirements.md
           - hidden: security/alertzero/review-first-proposed-action.md
-          - hidden: security/alertzero/use-alertzero.md
+          - hidden: security/alertzero/work-in-alertzero.md
             children:
-              - hidden: security/alertzero/decide-proposed-action.md
-              - hidden: security/alertzero/decide-detection-change.md
+              - hidden: security/alertzero/close-false-positive-alerts.md
               - hidden: security/alertzero/respond-to-attack.md
+              - hidden: security/alertzero/act-on-hunt-finding.md
+              - hidden: security/alertzero/decide-detection-change.md
+              # Keep the escalation pages last in Work in AlertZero, after the decision pages. When this merges with
+              # elastic/docs-content#9184, keep its manage-escalations.md entry, nested under escalate-investigation.md, in place of track-escalations.md.
               - hidden: security/alertzero/escalate-investigation.md
               - hidden: security/alertzero/track-escalations.md
-              - hidden: security/alertzero/act-on-hunt-finding.md
-              - hidden: security/alertzero/review-closed-proposed-actions.md
           - hidden: security/alertzero/manage-alertzero.md
             children:
               - hidden: security/alertzero/configure-worker-settings.md
@@ -724,7 +743,6 @@ toc:
           - hidden: security/alertzero/glossary.md
       - file: security/ai.md
         children:
-          - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/agent-builder/agent-builder.md
             children:
               - file: security/ai/agent-builder/skills-model.md
@@ -797,6 +815,7 @@ toc:
               - file: security/detect-and-alert/using-the-api.md
               - file: security/detect-and-alert/common-rule-settings.md
               - file: security/detect-and-alert/set-rule-data-sources.md
+              - file: security/detect-and-alert/plan-rule-performance.md
               - file: security/detect-and-alert/write-investigation-guides.md
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/advanced-data-source-configuration.md

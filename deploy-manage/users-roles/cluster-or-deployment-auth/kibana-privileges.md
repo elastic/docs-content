@@ -80,7 +80,7 @@ In role management, features are organized into the following groups.
 | Group | What it contains |
 | --- | --- |
 | **Analytics** | Privileges for the features you use to explore and visualize data. Refer to [Privileges in the Analytics group](#kibana-privileges-analytics). |
-| **Universal Alerting** {applies_to}`serverless: ga` {applies_to}`stack: experimental =9.5, ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). <br><br> {applies_to}`stack: experimental =9.5` In 9.5, this group is called **Alerting V2**. Before 9.5.4, it's called **Alerting**. |
+| **Universal Alerting** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). |
 | **Elasticsearch** | Privileges for {{es}} features. |
 | **Observability** | Privileges for Elastic {{observability}} features. Refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md). |
 | **Security** | Privileges for {{elastic-sec}} features. Refer to [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md). |
@@ -141,8 +141,11 @@ Each of the following privileges controls access to a different feature.
 | **Graph** | Access [Graph](/explore-analyze/visualize/graph.md), and create and edit graphs. |
 | **Visualize library** | Access the [Visualize library](/explore-analyze/visualize.md), create and edit visualizations, and add visualizations to dashboards. Turn on **Customize sub-feature privileges** to grant individual Visualize library privileges. For the full list, refer to [Visualize library sub-feature privileges](#kibana-privileges-visualize-subfeatures). |
 | **Agent Builder** {applies_to}`stack: ga 9.2+` | Access [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md), including agents, tools, and conversations.<br> {applies_to}`stack: ga 9.4+` Turn on **Customize sub-feature privileges** to grant individual {{agent-builder}} privileges. For the full list, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md). |
+| **Context Engine** {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` | Access [{{context-engine}}](/explore-analyze/ai-features/context-engine.md). **Read** allows viewing AI indices and retrieving context. **All** also allows creating, editing, and deleting AI indices. Users need separate {{es}} index privileges to access backing indices and source data. |
 | **Agent Builder - Semantic Metadata Layer (SML)** {applies_to}`stack: ga 9.5+` | Access the semantic metadata that {{agent-builder}} uses to interpret your data.<br> {applies_to}`stack: ga =9.5` This privilege is called **Agent Context Layer**. |
 | **Workflows** {applies_to}`stack: ga 9.3+` | Access [Workflows](/explore-analyze/workflows.md), and create, edit, and run workflows. Turn on **Customize sub-feature privileges** to grant individual workflow privileges. For the full list, refer to [Workflows sub-feature privileges](#kibana-privileges-workflows-subfeatures). |
+| **Proposed Actions** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | View {{az-proposed-actions}}, which are recommendations an agent makes for a user to decide on. **All** also allows users to approve or decline them. |
+| **Agentic Investigations** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | View {{az-investigations}} and {{az-escalations}}. Turn on **Customize sub-feature privileges** to grant individual {{az-investigation}} and {{az-escalation}} privileges. For the full list, refer to [Agentic Investigations sub-feature privileges](#kibana-privileges-agentic-investigations-subfeatures). |
 :::
 
 ### Discover sub-feature privileges [kibana-privileges-discover-subfeatures]
@@ -222,6 +225,25 @@ These privileges control specific actions on workflows. Selecting **All** includ
 | **Read managed workflows** {applies_to}`stack: ga 9.5+` | View the workflows that Elastic provides. |
 | **Read managed workflow execution** {applies_to}`stack: ga 9.5+` | View the results of a managed workflow run. |
 | **Update managed workflows** {applies_to}`stack: ga 9.5+` | Edit the workflows that Elastic provides. |
+:::
+
+### Agentic Investigations sub-feature privileges [kibana-privileges-agentic-investigations-subfeatures]
+
+```yaml {applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+These privileges control specific actions on {{az-investigations}} and {{az-escalations}}. Selecting **All** for **Agentic Investigations** includes **Manage investigations**, but not **Manage escalations**. Selecting **Read** includes only **View escalations**.
+
+:::{table}
+:widths: description
+
+| Privilege | What it allows |
+| --- | --- |
+| **Manage investigations** | Assign {{az-investigations}} and change their status, including closing and reopening them. |
+| **View escalations** | View {{az-escalations}}. |
+| **Manage escalations** | Create {{az-escalations}}, add {{az-investigations}} to them, and change who is assigned to them. To close an {{az-escalation}}, you also need **Manage investigations**.|
 :::
 
 ## Privileges in the Management group [kibana-privileges-management]
