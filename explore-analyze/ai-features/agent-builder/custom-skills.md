@@ -43,75 +43,142 @@ You can create a skill from **Manage components → Skills**, or inline when add
 For guidance on writing effective descriptions and instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
 :::
 
-:::::{stepper}
-::::{step} Open the create skill form
+::::::{stepper}
+:::::{step} Open the create skill form
 
 Go to **Manage components → Skills**, then select **New skill**. This opens the **Create a new skill** page.
 
-From an agent's **Customize → Skills** page, select **Add skill**, then **Create a skill**. That opens the **Create skill** flyout.
+From an agent's **Customize → Skills** page, select **Add skill**, then **Create a skill**. This opens the **Create skill** flyout.
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.4-9.5
+The **Create skill** flyout in 9.4 and 9.5 has separate **ID** and **Name** fields:
 
 :::{image} images/create-new-skill.png
-:alt: Create skill flyout with ID, Name, Description, Instructions, and Associated tools under Advanced options
+:alt: Create skill flyout with ID, Name, Description, Instructions, an Add file button, and Associated tools under Advanced options
 :width: 550px
 :screenshot:
-:applies_to: { stack: ga 9.4-9.5 }
+:::
 :::
 
-::::
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+The **Create skill** flyout in 9.6 and later has a single **Name** field:
 
-::::{step} Fill in the skill fields
+:::{image} images/create-skill-flyout-name.png
+:alt: Create skill flyout with a single Name field, Description, Instructions, Files, and Advanced options
+:width: 550px
+:screenshot:
+:::
 
-Complete the fields in the form:
+The **Create a new skill** page has the same fields in separate sections:
 
-- {applies_to}`stack: ga 9.4-9.5` **ID**: Unique identifier for the skill. Use lowercase letters, numbers, hyphens, and underscores. Start and end with a lowercase letter or a number. The limit is 64 characters. The create form shows this field. The edit form shows it read-only.
-- {applies_to}`stack: ga 9.4-9.5` **Name**: Display name. Use letters, numbers, spaces, hyphens, and underscores. Start and end with a letter or a number. The limit is 64 characters.
-- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Name**: Identifier for the skill. Use lowercase letters, numbers, hyphens, and underscores. Start and end with a lowercase letter or a number. The limit is 64 characters. As you type, the field lowercases text and replaces each space with a hyphen. The **Create a new skill** page and the **Create skill** flyout save this value as both the skill ID and the skill name. You can't change the name in the UI after you save the skill. The skills library and skill details show the name. Create and update messages from these forms show the name. Delete messages use the ID. For a skill created in this form, the ID and the name are the same value.
-- **Description**: Short description of when the agent should use the skill (1,024-character limit). The agent uses the description to choose when to load the skill, so make it specific and distinct from other skill descriptions. Corresponds to `description` in the API.
-- **Instructions**: Skill content in Markdown. Include trigger conditions, step-by-step instructions, examples, and edge cases. Corresponds to `content` in the API.
-- **Files**: Optional Markdown the agent can read when it uses the skill, such as a runbook, playbook, or other reference material. On the **Create a new skill** page this is the **Files** section. In the **Create skill** flyout it appears above **Advanced options**. Select **Add file** to add one. The limit is 100 files. Corresponds to [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) in the API.
-- **Associated tools**: Tools the skill can use. The limit is 5. On the **Create a new skill** page this is its own section. In the **Create skill** flyout, open **Advanced options** to select the tools. Corresponds to `tool_ids` in the API.
-
-::::
-
-::::{step} Save the skill
-
-Select **Save**. The skill is added to your library and becomes available to assign to any agent.
-
-::::
-
-::::{step} Add the skill to an agent
-
-Custom skills in your library are not available to your agents until you add them. On the agent, go to **Customize → Skills**.
-
-- If the agent already has skills, select **Add skill**.
-- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` If the agent has no skills yet, select **Add skills**. That opens the library panel.
-
-From **Add skill** you can:
-
-- **Import from skill library**: Open the **Add skill from library** panel. Turn on the switch next to a skill to add it to this agent.
-- **Create a skill**: Open the **Create skill** flyout, save the skill, and add it to this agent. The skill is also saved to your library.
-
-Built-in skill availability depends on your deployment type. Refer to [Built-in skills reference](builtin-skills-reference.md) for details.
-
-::::
-
-::::{step} Test the skill
-
-Send the agent realistic queries that should trigger the skill. Check that the agent selects the skill when expected, follows your instructions correctly, and handles the edge cases you documented. Revise the description or instructions based on what you observe.
-
-For guidance on writing effective instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
+:::{image} images/create-skill-page.png
+:alt: Create a new skill page with Name and Description under Skill identity, followed by Instructions, Files, and Associated tools sections
+:width: 750px
+:screenshot:
+:::
+:::
 
 ::::
 
 :::::
 
+:::::{step} Fill in the skill fields
+
+Complete the fields in the form. The identifier fields depend on your version:
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga 9.4-9.5
+- **ID**: Unique identifier for the skill.
+  - Use lowercase letters, numbers, hyphens, and underscores.
+  - Start and end with a lowercase letter or a number.
+  - The limit is 64 characters.
+  - You can set the ID when you create the skill. In an agent's edit flyout it's read-only, and the edit page doesn't show it as a field.
+- **Name**: Display name.
+  - Use letters, numbers, spaces, hyphens, and underscores.
+  - Start and end with a letter or a number.
+  - The limit is 64 characters.
+:::
+
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+- **Name**: Identifier for the skill.
+  - Use lowercase letters, numbers, hyphens, and underscores.
+  - Start and end with a lowercase letter or a number.
+  - The limit is 64 characters.
+  - As you type, the field lowercases text and replaces each space with a hyphen.
+  - The form saves this value as both the skill ID and the skill name.
+  - You can't change the name in the UI after you save the skill.
+  - The skills library and skill details show the name.
+  - Create and update messages show the name.
+  - Delete confirmation dialogs show the name, and delete notifications use the ID.
+:::
+
+::::
+
+The remaining fields are the same in all versions:
+
+- **Description**: Short description of when the agent should use the skill (1,024-character limit). The agent uses the description to choose when to load the skill, so make it specific and distinct from other skill descriptions. Corresponds to `description` in the API.
+- **Instructions**: Skill content in Markdown. Include trigger conditions, step-by-step instructions, examples, and edge cases. Corresponds to `content` in the API.
+- **Files**: Optional Markdown the agent can read when it uses the skill, such as a runbook, playbook, or other reference material. The limit is 100 files. Corresponds to [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) in the API.
+  - On the **Create a new skill** page, **Files** is its own section.
+  - In the **Create skill** flyout, it appears above **Advanced options**. Select **Add file** to add one.
+- **Associated tools**: Tools the skill can use. The limit is 5. Corresponds to `tool_ids` in the API.
+  - On the **Create a new skill** page, this is its own section.
+  - In the **Create skill** flyout, open **Advanced options** to select the tools.
+
+:::::
+
+:::::{step} Save the skill
+
+Select **Save**. The skill is added to your library and becomes available to assign to any agent.
+
+:::::
+
+:::::{step} Add the skill to an agent
+
+Custom skills in your library are not available to your agents until you add them. On the agent, go to **Customize → Skills**.
+
+- If the agent already has skills, select **Add skill**. From there you can:
+  - **Import from skill library**: Open the **Add skill from library** panel. Turn on the switch next to a skill to add it to this agent.
+  - **Create a skill**: Open the **Create skill** flyout, save the skill, and add it to this agent. The skill is also saved to your library. This option appears only if you have permission to manage skills.
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` If the agent has no skills yet, select **Add skills**. That opens the **Add skill from library** panel, where you turn on the switch next to a skill. To create a new skill instead, use **Manage components → Skills**.
+
+Built-in skill availability depends on your deployment type. Refer to [Built-in skills reference](builtin-skills-reference.md) for details.
+
+:::::
+
+:::::{step} Test the skill
+
+Send the agent realistic queries that should trigger the skill. Check that the agent selects the skill when expected, follows your instructions correctly, and handles the edge cases you documented. Revise the description or instructions based on what you observe.
+
+For guidance on writing effective instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
+
+:::::
+
+::::::
+
 ### Create a skill with the API [skills-api]
 
 Create and manage skills programmatically using the {{kib}} REST API. You can set the description, instructions (`content`), associated tools (`tool_ids`), and [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) the same way you do in the UI. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` A create request still requires separate `id` and `name` fields. The **Create a new skill** page and the **Create skill** flyout send the **Name** value for both. With the API, `name` can differ from `id`. Use letters, numbers, spaces, hyphens, and underscores, start and end with a letter or a number, and stay within 64 characters. `id` uses lowercase letters, numbers, hyphens, and underscores, starts and ends with a lowercase letter or a number, and has the same 64-character limit. Get, update, and delete requests use `id` in the path. An update can change `name` and cannot change `id`. Skills created earlier keep their stored `id` and `name`. When those values differ, the skills library and skill details show `name`.
+A create request requires separate `id` and `name` fields:
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Agent Chat **Create skill** posts the `id` and `name` stored on the draft. That path does not copy the form behavior of sending one **Name** value for both fields.
+- `id`: Use lowercase letters, numbers, hyphens, and underscores. Start and end with a lowercase letter or a number. The limit is 64 characters.
+- `name`: Use letters, numbers, spaces, hyphens, and underscores. Start and end with a letter or a number. The limit is 64 characters. It can differ from `id`.
+
+Keep these rules in mind:
+
+- Get, update, and delete requests use `id` in the path.
+- An update can change `name` but not `id`.
+- The API rejects more than 5 `tool_ids`, even if the API reference shows a higher maximum.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The UI and Agent Chat set `id` and `name` differently:
+
+- The **Create a new skill** page and the **Create skill** flyout send the **Name** value for both `id` and `name`.
+- Agent Chat **Create skill** posts the `id` and `name` stored on the draft. The agent normally uses the same value for both, but nothing requires it.
+- Skills created earlier keep their stored `id` and `name`. When those values differ, the skills library and skill details show `name`.
 
 - [List skills]({{kib-apis}}operation/operation-get-agent-builder-skills) `GET /api/agent_builder/skills`
 - [Create a skill]({{kib-apis}}operation/operation-post-agent-builder-skills) `POST /api/agent_builder/skills`
@@ -126,9 +193,9 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Open a conversation with any agent and ask it to create a skill. For example, "Create a skill that handles production alerts using our incident runbook." The agent presents the generated skill as a draft.
+Open a conversation with any agent and ask it to create a skill. For example, "Create a skill that handles production alerts using our incident runbook." The agent may ask clarifying questions before it presents the generated skill as a draft.
 
-Review the description, instructions, associated tools, and references, and ask the agent to edit anything that needs changing. When the draft is ready, select **Create skill**. The skill is not added to your library until you select **Create skill**.
+Review the description, instructions, associated tools, and references, and ask the agent to edit anything that needs changing. When the draft is ready, select **Create skill**. The skill is not added to your library until you select **Create skill**. When you do, it's also added to the agent you're chatting with.
 
 :::{image} images/create-skill-from-chat.png
 :screenshot:
