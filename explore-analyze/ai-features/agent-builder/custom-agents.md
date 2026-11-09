@@ -17,7 +17,9 @@ products:
 Custom agents enable you to create specialized AI assistants tailored to your specific use cases and workflows. Unlike [built-in agents](builtin-agents-reference.md), which are pre-configured by Elastic, custom agents give you full control over instructions, tools, and behavior.
 
 :::{note}
-Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch. The **Elastic AI Agent** is an exception {applies_to}`stack: ga 9.4+`: as the default agent for each space, it can be edited directly.
+Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch.
+
+{applies_to}`stack: ga 9.4+` The **Elastic AI Agent** is an exception: as the default agent for each space, it can be edited directly.
 :::
 
 Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created. In contrast, built-in agents are available across all spaces.
@@ -102,9 +104,21 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-Users whose role grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role, can assign workflows that run once after each user message, before the agent makes any calls to the large language model (LLM) in response. Use pre-execution workflows to add or rewrite prompt context, or to stop an agent run before the LLM starts.
+Users whose role grants wildcard (`*`) {{kib}} privileges, such as the built-in `superuser` role or the **Admin** role in {{serverless-short}}, can assign workflows that run once after each user message, before the agent makes any calls to the large language model (LLM) in response. Use pre-execution workflows to add or rewrite prompt context, or to stop an agent run before the LLM starts.
 
 For details, refer to [Pre-execution workflows](agents-and-workflows.md#pre-execution-workflows).
+
+:::::
+
+:::::{step} Configure post-execution workflows (optional)
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Users whose role grants wildcard (`*`) {{kib}} privileges, such as the `superuser` role or the **Admin** role in {{serverless-short}}, can assign workflows that run once after the agent finishes responding. For example, use them to audit the exchange or notify a channel. Post-execution workflows can't change or discard the agent's response.
+
+For details, refer to [Post-execution workflows](agents-and-workflows.md#post-execution-workflows).
 
 :::::
 
@@ -127,6 +141,18 @@ For what each level means, refer to [Access control settings](#access-control-se
 
 :::::
 
+:::::{step} Configure subagents (optional)
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+In the **Subagents** section of the **Settings** tab, select **Enable subagents** to let the agent delegate tasks to other agents. **This agent (self-fork)** is then selected under **Delegable subagents**, so the agent can delegate to a copy of itself. In the same list, select any other agents it can delegate to.
+
+For more information, refer to [Subagents](agent-builder-agents.md#subagents).
+
+:::::
+
 :::::{step} Auto-approve API operations (optional)
 ```{applies_to}
 stack: ga 9.6+
@@ -145,7 +171,7 @@ For each service, you can select:
 
 Some {{es}} operations, such as `bulk` and `delete_by_query`, don't belong to a group. To approve them, select them individually or select `*`.
 
-The approval applies to every run of the agent and to the sub-agents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
+The approval applies to every run of the agent and to the subagents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
 
 Only the owner, a user with **Manager** access, or an administrator can change the auto-approved APIs. For the **Elastic AI Agent**, only an administrator can change them.
 
@@ -216,7 +242,7 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-New agents start with no connectors. To let your agent reach external systems, assign connectors after you save the agent: select the agent, then in the sidebar under **Customize**, select **Connectors**, then select **Add connector**.
+New agents start with no connectors. To let your agent reach external systems, assign connectors after you save the agent: select the agent, select **Customize** → **Connectors** in the left sidebar, and then select **Add connector**.
 
 If you left **Enable Elastic capabilities** off, also assign the built-in `connector-discovery` skill on the agent's **Skills** page. Without it, the agent can't find its connectors.
 
@@ -241,7 +267,7 @@ From the **Agents** page, you can perform various actions on custom agents:
 :::
 
 :::{note}
-These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+`. Other built-in agents can only be chatted with or cloned, not edited or deleted.
+These management options apply only to custom agents and, {applies_to}`stack: ga 9.4+`, the Elastic AI Agent. Other built-in agents can only be chatted with or cloned, not edited or deleted.
 :::
 
 ## Access control settings [access-control-settings]
