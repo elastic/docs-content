@@ -45,7 +45,7 @@ Elasticsearch in Elastic Cloud (Hosted & Serverless) communicates directly with 
 
 In addition to this, CSPs on which Elastic Cloud runs offer encryption at the physical network level between regions in their clouds.
 
-For example, the AWS global network interconnects the AWS data centers and Regions and is automatically encrypted at the physical layer before it leaves AWS secured facilities with AWS responsibility. This means that traffic stays on the AWS global network when a request that originates from an Elastic Cloud deployment/project (that resides in an AWS region) is sent to EIS instances (that also reside in an AWS region). This can be the same region or another AWS region.
+For example, the AWS global network interconnects the AWS data centers and regions and is automatically encrypted at the physical layer before it leaves AWS secured facilities with AWS responsibility. This means that traffic stays on the AWS global network when a request that originates from an Elastic Cloud deployment/project (that resides in an AWS region) is sent to EIS instances (that also reside in an AWS region). This can be the same region or another AWS region.
 
 ## Inference region preferences [inference-region-preferences]
 
