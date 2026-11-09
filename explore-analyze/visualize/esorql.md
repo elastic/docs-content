@@ -120,8 +120,6 @@ To add a layer, select {icon}`plus` **Add layer** in the editor, then select the
 :screenshot:
 :::
 
-The layer types work a little differently from the same layers in a point-and-click visualization, as the following sections describe.
-
 #### Plot another query in its own layer
 
 To compare two sets of results on one chart, add a layer with its own query. For example, start from the [time series chart](#esql-time-series-charts) that counts requests, then add a layer for the requests that ended in a server error (response codes that start with 5):
