@@ -652,7 +652,7 @@ The following image shows the **Customize** section of the left sidebar:
 
 :::{image} images/customize-your-agent-accordion.png
 :screenshot:
-:alt: Customize section of the agent sidebar listing Overview, Skills, Connectors, and Tools
+:alt: Customize accordion in the agent sidebar listing Overview, Skills, Connectors, and Tools
 :width: 200px
 :::
 
