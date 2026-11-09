@@ -71,6 +71,8 @@ In a space that uses the Classic solution view, **Discover** switches to the log
 | Nginx error logs | `logs-nginx.error-*` |
 | System logs | `logs-system.*` |
 
+In {{esql}} mode, the `FROM` command must name the integration, as in `FROM logs-nginx.access-*`.
+
 Other log data keeps the default experience, including the default document details. This includes `logs-*`, `filebeat-*`, Windows logs, and a {{data-source}} or query that mixes several integrations. To get the logs experience for any log data, use the {{observability}} solution view.
 
 The logs experience in the Classic solution view applies as long as the [**Contextual profiles in Classic navigation**](kibana://reference/advanced-settings.md#discover-enablesolutionprofilesinclassic) advanced setting is on, which it is by default.

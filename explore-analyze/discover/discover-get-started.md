@@ -75,13 +75,13 @@ The experiences you can get depend on where you open **Discover** from, such as 
 | {{es-serverless}} projects | No | No | No | No |
 | Classic solution views [\[3\]](#classic-setting-note) | {applies_to}`stack: ga 9.6+` Yes [\[4\]](#note-logs-classic) | Yes [\[1\]](#note-metrics) | {applies_to}`stack: preview 9.6+` Yes | {applies_to}`stack: ga 9.6+` Yes [\[5\]](#note-security-classic) |
 
-$$$note-metrics$$$\[1\] The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command. In {{serverless-short}} projects, it also needs the Observability Complete or Security Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
+$$$note-metrics$$$\[1\] The metrics experience applies when you query metrics data in {{esql}} mode with the `TS` command. The query can also use `LIMIT` and `SORT`, and in {{serverless-short}} projects and {{stack}} 9.4 and later, `WHERE`. Any other command turns the experience off. In {{serverless-short}} projects, it also needs the Observability Complete or Security Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
 
 $$$note-traces$$$\[2\] In {{serverless-short}} projects, the traces experience needs the Observability Complete feature tier. For the Observability tiers, refer to [](/solutions/observability/observability-serverless-feature-tiers.md).
 
 $$$classic-setting-note$$$\[3\] {applies_to}`stack: ga 9.6+` In spaces with the Classic solution view, the logs, traces, and Security experiences apply only while the [**Contextual profiles in Classic navigation**](kibana://reference/advanced-settings.md#discover-enablesolutionprofilesinclassic) advanced setting is on, which it is by default. The setting name uses "profiles" to mean context-aware experiences.
 
-$$$note-logs-classic$$$\[4\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the logs experience applies only to data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
+$$$note-logs-classic$$$\[4\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the logs experience applies only to data from some integrations, such as System and Nginx logs. Other log data keeps the default experience. In {{esql}} mode, the `FROM` command must name the integration, as in `FROM logs-nginx.access-*`. `FROM logs-*` doesn't match. For the full list, refer to [](/solutions/observability/logs/discover-logs.md#logs-classic-solution-view).
 
 $$$note-security-classic$$$\[5\] {applies_to}`stack: ga 9.6+` In the Classic solution view, the Security experience applies when you use a Security {{data-source}} or when your {{data-source}} or query targets only Security data. For details, refer to [](/solutions/security/investigate/discover-security.md#access-the-security-discover-experience).
 
