@@ -131,7 +131,18 @@ To add a layer, select {icon}`plus` **Add layer** in the editor, then select the
 
 #### Add another visualization as a layer
 
-To compare two sets of results on one chart, add a layer with its own query. For example, start from the [stacked bar chart of web log events](#esql-viz-multi-field-breakdown), then add a layer for the events that returned a server error (response codes that start with 5):
+To compare two sets of results on one chart, add a layer with its own query:
+
+1. Select {icon}`plus` **Add layer** → **Visualization**.
+2. If you're asked, select the chart type for the layer. Each layer can use a different type, for example a line over bars.
+3. In the new layer's tab, enter the query and run it.
+4. Assign the column that holds time to the **Horizontal axis** and the column that holds the values to the **Vertical axis**.
+
+Check that both dimensions are set before you look at the chart. If the **Horizontal axis** of a layer is empty, the values of that layer don't follow time and stack at a single position. To line the layers up in time, group every query by the same time buckets and assign that column to the **Horizontal axis** of each layer.
+
+If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
+
+For example, start from the [stacked bar chart of web log events](#esql-viz-multi-field-breakdown), then add a layer for the events that returned a server error (response codes that start with 5):
 
 ```esql
 FROM kibana_sample_data_logs
@@ -139,21 +150,14 @@ FROM kibana_sample_data_logs
 | STATS server_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
 ```
 
-To add it:
-
-1. Select {icon}`plus` **Add layer** → **Visualization**.
-2. If you're asked, select the chart type for the layer. Each layer can use a different type, for example a line over bars.
-3. In the new layer's tab, enter the query and run it.
-4. Assign `time_bucket` to the **Horizontal axis** and `server_errors` to the **Vertical axis**.
-
-Check that both dimensions are set before you look at the chart. If the **Horizontal axis** of a layer is empty, the values of that layer don't follow time and stack at a single position.
+In this layer, assign `time_bucket` to the **Horizontal axis** and `server_errors` to the **Vertical axis**.
 
 :::{image} /explore-analyze/images/esql-visualization-layer-server-errors.png
 :alt: A stacked bar chart of web log events by host and file extension, with a line for server errors over the same time range
 :screenshot:
 :::
 
-Use the same time-bucket column on the **Horizontal axis** of each layer so the layers line up in time. To compare client errors (response codes that start with 4) as well, add a third layer the same way, with this query:
+To compare client errors (response codes that start with 4) as well, add a third layer the same way, with this query:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -165,8 +169,6 @@ FROM kibana_sample_data_logs
 :alt: The same chart with a second line for client errors
 :screenshot:
 :::
-
-If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
 
 #### Mark events with annotations
 
