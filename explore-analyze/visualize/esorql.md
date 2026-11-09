@@ -132,6 +132,7 @@ To add a layer, select {icon}`plus` **Add layer** in the editor, then select the
 :::{image} /explore-analyze/images/esql-visualization-add-layer.png
 :alt: The Configuration flyout of an ES|QL visualization, showing the Add layer button next to the layer tabs
 :screenshot:
+:width: 50%
 :::
 
 #### Plot another query in its own layer
