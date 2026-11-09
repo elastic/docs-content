@@ -100,6 +100,35 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :alt: Agent context menu showing Chat, Edit, Clone, and Delete options
       :width: 130px
       :::
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Set an agent as the [space default agent](#space-default-agent)
+
+### Set a default agent for a space [space-default-agent]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+You can make one agent the default agent for a {{kib}} space. Users in that space who can't manage agents then work only with that agent in the {{agent-builder}} UI. For example, use a space default agent to give a team one agent that's configured for their data and tasks.
+
+To set or remove the space default agent, you need the **Agent Builder > Management: Create and edit agents** privilege, which **Agent Builder: All** also includes. For details, refer to [](permissions.md#kib-privileges).
+
+To set the space default agent, go to the **Agents** page and select **Set as space default** for the agent. The agent then shows a **Space default** badge. Each space has at most one space default agent, so setting a new one replaces the previous one.
+
+To remove it, select **Remove as space default** for the current space default agent.
+
+The space default agent can be a **Public** or **Shared** custom agent, or a built-in agent such as the Elastic AI Agent. A **Private** agent can't be the space default. To use one, first change its [access control level](custom-agents.md#access-control-settings) to **Public** or **Shared**.
+
+When a space has a default agent:
+
+- **Users without the privilege to create and edit agents** open {{agent-builder}} on the space default agent. The agent selector lists only that agent, and links to other agents open the space default agent instead. This also applies in [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode).
+- **Users with the privilege to create and edit agents** can still use all the agents they have access to. {{agent-builder}} opens on the agent they used last, or on the space default agent if their last agent is no longer available.
+
+While a space default agent is set, users without the privilege can't open conversations with other agents, including conversations that are shared with them. The conversations aren't deleted, and they're available again when you remove the space default agent.
+
+If the space default agent is deleted, changed to **Private**, or not accessible to a user, that user isn't restricted to it. {{agent-builder}} opens on the agent they used last, or on the Elastic AI Agent.
+
+The space default agent only affects the {{agent-builder}} UI. It doesn't restrict which agents users can call through the [{{agent-builder}} APIs](kibana-api.md). To control who can use an agent, use its [access control settings](custom-agents.md#access-control-settings).
 
 
 ## Elastic capabilities [elastic-capabilities]
