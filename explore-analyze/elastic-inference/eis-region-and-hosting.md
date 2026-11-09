@@ -39,6 +39,14 @@ All {{infer}} requests sent through EIS are routed to the nearest region, regard
 
 Depending on the model being used, request processing can involve Elastic {{infer}} infrastructure and, in some cases, trusted third-party model providers. For example, ELSER and Jina requests are processed entirely within Elastic {{infer}} infrastructure. Other models, such as large language models or third-party embedding models, can involve additional processing by their respective model providers, which can operate in different cloud platforms or regions.
 
+**Security:**
+
+Elasticsearch in Elastic Cloud (Hosted & Serverless) communicates directly with EIS on behalf of your deployment/project. Elastic uses mTLS to perform bidirectional encryption & authentication.
+
+In addition to this, CSPs on which Elastic Cloud runs offer encryption at the physical network level between regions in their clouds.
+
+For example, the AWS global network interconnects the AWS data centers and Regions and is automatically encrypted at the physical layer before it leaves AWS secured facilities with AWS responsibility. This means that traffic stays on the AWS global network when a request that originates from an Elastic Cloud deployment/project (that resides in an AWS region) is sent to EIS instances (that also reside in an AWS region). This can be the same region or another AWS region.
+
 ## Inference region preferences [inference-region-preferences]
 
 ```{applies_to}
