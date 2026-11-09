@@ -236,16 +236,16 @@ The **Service inventory** stops listing every service separately once it reaches
 
 Two limits can cause this, and each one shows a different warning:
 
-* A **warning icon above the table**, in a message that the limit of *n* services is exceeded, means you reached the [limit on the services {{kib}} displays](#troubleshooting-too-many-services-displayed).
+* A **warning icon** above the table, with the tooltip *The limit of n services is exceeded*, means you reached the [limit on the services {{kib}} displays](#troubleshooting-too-many-services-displayed).
 * A row named **Remaining Services** at the end of the table, with its own warning icon, means you reached the [limit on the services tracked in aggregated metrics](#troubleshooting-too-many-services-aggregated).
 
 In both cases, a service is each unique combination of `service.name`, `service.environment`, `service.language.name`, and `agent.name`. This means that one application can count as several services, for example when it reports from more than one environment. This is why a production deployment can reach a limit while a development one with more instrumented applications doesn't.
 
 ### Limit on the services {{kib}} displays [troubleshooting-too-many-services-displayed]
 
-{{kib}} returns at most 1,000 services to the Service inventory. Services past that limit are left out of the list, and the warning tells you which limit is in effect.
+By default, {{kib}} returns up to 1,000 services to the Service inventory. Services past that limit are left out of the list, and the warning shows the current limit.
 
-This limit is applied when {{kib}} queries your data, so it behaves the same however that data was ingested, whether your applications use {{apm-agent}}s or EDOT SDKs, and whether they report through {{apm-server}} or the {{motlp}}.
+This limit is applied when {{kib}} queries your data, so it doesn't depend on how the data was ingested. It works the same for {{apm-agent}}s and EDOT SDKs, and for {{apm-server}} and the {{motlp}}.
 
 The services are still there, so any of the following brings them back into view:
 
@@ -261,13 +261,13 @@ Raising the limit makes the Service inventory query slower and increases its mem
 
 Service metrics are aggregated as your data is written, and only a limited number of services can be tracked at a time. Services past that limit are combined into a single overflow bucket, which the Service inventory shows as **Remaining Services**. 
 
-{applies_to}`stack: ga` With {{apm-server}}, service metrics share a limit of 1,000 services per GB of memory available to {{apm-server}}.
+With {{apm-server}}, service metrics share a limit of 1,000 services per GB of memory available to {{apm-server}}.
 
 Because this happens as the data is written, narrowing the query or raising the display limit doesn't recover the individual services. To list them separately, reduce the number of unique services you send by:
 
 * Using stable values for `service.name` and `service.environment`. Values taken from build numbers, per-instance identifiers, or short-lived test environments create a new service every time they change.
 * Reviewing your instrumentation so that only the services you need to monitor send {{product.apm}} data.
-* {applies_to}`stack: ga` Increase the memory available to {{apm-server}}.
+* Increase the memory available to {{apm-server}}.
 
 For the full set of limits and an explanation of how overflow buckets work, refer to [Aggregated metrics: limits and overflows](/solutions/observability/apm/metrics.md#_aggregated_metrics_limits_and_overflows).
 
