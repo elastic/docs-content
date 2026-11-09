@@ -39,6 +39,49 @@ Refer to [](/explore-analyze/workflows/authoring-techniques/pass-data-handle-err
 :::
 
 
+:::{include} /explore-analyze/workflows/_snippets/inputs-location-by-version.md
+:::
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+```yaml
+name: Manual Processing Workflow
+
+triggers:
+  - type: manual
+    inputs:
+      - name: environment
+        type: string
+        required: true
+        default: "staging"
+        description: "Target environment for processing"
+
+      - name: batchSize
+        type: number
+        required: false
+        default: 100
+        description: "Number of records to process"
+
+      - name: dryRun
+        type: boolean
+        required: false
+        default: true
+        description: "Run in test mode without making changes"
+
+steps:
+  - name: validateInputs
+    type: console
+    with:
+      message: |
+        Starting workflow with:
+        - Environment: {{ inputs.environment }}
+        - Batch Size: {{ inputs.batchSize }}
+        - Dry Run: {{ inputs.dryRun }}
+```
+:::
+
+:::{applies-item} stack: preview 9.3, ga =9.4
 ```yaml
 name: Manual Processing Workflow
 inputs:
@@ -47,13 +90,13 @@ inputs:
     required: true
     default: "staging"
     description: "Target environment for processing"
-  
+
   - name: batchSize
     type: number
     required: false
     default: 100
     description: "Number of records to process"
-  
+
   - name: dryRun
     type: boolean
     required: false
@@ -73,4 +116,7 @@ steps:
         - Batch Size: {{ inputs.batchSize }}
         - Dry Run: {{ inputs.dryRun }}
 ```
+:::
+
+::::
 

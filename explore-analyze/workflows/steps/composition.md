@@ -155,8 +155,44 @@ If the workflow was invoked by a parent through `workflow.execute`, the parent r
 
 A common pattern: a platform team maintains a set of `shared--<verb>-<noun>` workflows, each with a clean manual trigger and a documented input and output schema. Product teams then compose those shared workflows into their own domain-specific automation.
 
+:::{include} /explore-analyze/workflows/_snippets/inputs-location-by-version.md
+:::
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
-# Platform team's shared workflow
+# Shared workflow
+name: shared--enrich-alerts
+description: Enrich alerts with threat intel and geo data.
+
+triggers:
+  - type: manual
+    inputs:
+      - name: alerts
+        type: object
+        required: true
+
+outputs:
+  - name: enriched_alerts
+    type: object
+  - name: enrichment_stats
+    type: object
+
+steps:
+  # ...enrichment logic...
+
+  - name: return_result
+    type: workflow.output
+    with:
+      enriched_alerts: "${{ steps.enrich.output }}"
+      enrichment_stats: "${{ steps.stats.output }}"
+```
+:::
+
+:::{applies-item} stack: preview 9.3, ga =9.4
+```yaml
+# Shared workflow
 name: shared--enrich-alerts
 description: Enrich alerts with threat intel and geo data.
 triggers:
@@ -182,6 +218,9 @@ steps:
       enriched_alerts: "${{ steps.enrich.output }}"
       enrichment_stats: "${{ steps.stats.output }}"
 ```
+:::
+
+::::
 
 ```yaml
 # Security team's workflow that composes it
