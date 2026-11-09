@@ -220,5 +220,4 @@ In {{stack}}, {{es}} [audit events](elasticsearch://reference/elasticsearch/elas
 
 On {{serverless-short}}, configure [audit trail log delivery](/deploy-manage/monitor/log-delivery/audit-trail.md) to collect audit logs from your project.
 
-% Follow-up in elastic/kibana: Update all five service account audit events from preview to GA for 9.6 and document their Serverless availability.
 % Serverless verification: Confirm Elasticsearch audit attribution for UIAM-backed service accounts.
