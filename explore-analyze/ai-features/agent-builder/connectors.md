@@ -122,7 +122,7 @@ If {{kib}} can't assign the connector, it still creates it and shows a **Connect
 
 To fix this, [assign the connector](#assign-connectors-to-an-agent) from the agent's **Connectors** page.
 
-Connector types that the agent can't call from chat, such as email, are added to the library only. For these types, {{kib}} shows the warning only if you don't have **Create and edit agents**.
+Connector types that the agent can't call from chat, such as email, are added to the library only. For these types, {{kib}} doesn't show the warning unless you lack the **Create and edit agents** privilege.
 
 ## Authorize connector access from chat
 
