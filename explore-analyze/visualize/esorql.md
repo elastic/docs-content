@@ -109,7 +109,7 @@ stack: ga 9.6
 serverless: ga
 ```
 
-When you create an {{esql}} visualization from a dashboard, you can show several queries in their own layers on the same chart. This helps when the series you want to compare come from different queries. You can also add annotations and reference lines on top of the data.
+When you create an {{esql}} visualization from a dashboard, you can combine the results of several queries on one chart by giving each query its own layer. Layers can also hold annotations and reference lines, which mark events and thresholds on top of your data.
 
 Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
 
