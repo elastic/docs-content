@@ -417,7 +417,7 @@ $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga
     :::
 
 $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}`stack: ga 9.4+`
-:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, or query.
+:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK® mappings, schedule, or query.
 
     :::{dropdown} Assigned tools
     `security.create_detection_rule`, `security.security_labs_search`, `platform.core.generate_esql`, `platform.core.product_documentation`
@@ -436,8 +436,6 @@ $$$agent-builder-recommend-prebuilt-rules-skill$$$ `recommend-prebuilt-rules` {a
 
     :::
 
-    **Prerequisites:** The `dexAiSkillRecommendPrebuiltRules` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
-
 $$$agent-builder-find-security-rules-skill$$$ `find-security-rules` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Discovers, lists, ranks, and counts {{elastic-sec}} detection rules. Filters by tag, MITRE technique, severity, rule type, name, or enabled state. This is a read-only skill.
 
@@ -446,7 +444,25 @@ $$$agent-builder-find-security-rules-skill$$$ `find-security-rules` {applies_to}
 
     :::
 
-    **Prerequisites:** The `dexAiSkillFindRules` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
+$$$agent-builder-investigate-rule-skill$$$ `investigate-rule` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Investigates why a single {{elastic-sec}} detection rule generates too many alerts or false positives. Ranks the hosts, users, and source IP addresses that account for most of the rule's alerts, reviews the alerts that analysts already closed and the reasons they gave, and identifies the likely root cause, such as expected activity from a known source or a query that matches too broadly. It then recommends changes you can make yourself, such as adding a [rule exception](/solutions/security/detect-and-alert/add-manage-exceptions.md) or configuring [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md). It recommends an exception only for patterns that analysts already confirmed by closing the alerts as false positives or benign positives. This is a read-only skill: it doesn't change the rule. By default, it analyzes the rule's alerts from the last 24 hours, and it can look back up to 7 days when you ask about a longer period.
+
+    :::{dropdown} Assigned tools
+    `security.alerts`, plus internal tools to attach the rule to the conversation and to retrieve specific alerts by ID.
+
+    :::
+
+    **How to activate:** In addition to the [standard activation methods](skills.md#how-skills-are-invoked), this skill activates when you ask why a specific rule is noisy. Name the rule by its exact name or rule ID, ask about a rule that's already attached to the conversation, or pick one rule from [`find-security-rules`](#agent-builder-find-security-rules-skill) results. If the rule isn't attached yet, the skill attaches it for you. Requests about several rules, such as "which rules are the noisiest?", go to `find-security-rules` until you select one rule to investigate.
+
+$$$agent-builder-detection-coverage-skill$$$ `detection-coverage` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Finds the cheapest way to detect a behavior when you ask for detection coverage without supplying rule logic, for example "we need to detect credential dumping". Searches all your installed rules, whether or not they're enabled, and then the Elastic prebuilt rules you haven't installed yet. It then recommends one route: no action when an enabled rule already covers the behavior, enabling an installed rule that covers it, installing a [prebuilt rule](/solutions/security/detect-and-alert/install-prebuilt-rules.md), or creating a new rule. To enable or install a rule, the agent links you to the page where you do it. To create a rule, it offers to draft one with the [`detection-rule-edit`](#agent-builder-detection-rule-edit-skill) skill. This skill doesn't change any rules itself.
+
+    :::{dropdown} Assigned tools
+    `security.build_redirect_url`. To search for rules, the skill loads the [`find-security-rules`](#agent-builder-find-security-rules-skill) and [`recommend-prebuilt-rules`](#agent-builder-recommend-prebuilt-rules-skill) skills and uses their tools.
+
+    :::
+
+    When your request already includes rule logic, such as a query or field conditions, or when you ask for a new rule, the agent uses `detection-rule-edit` directly. Questions about existing coverage, such as "do we have a rule for credential dumping?", go to `find-security-rules` or `recommend-prebuilt-rules`.
 
 $$$agent-builder-pci-compliance-skill$$$ `pci-compliance` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Runs PCI DSS v4.0.1 compliance assessments with violation detection, confidence scoring, data quality preflight checks, and visual audit reporting. Use when a user asks about PCI compliance, PCI DSS requirements, compliance audits, or cardholder data security.
