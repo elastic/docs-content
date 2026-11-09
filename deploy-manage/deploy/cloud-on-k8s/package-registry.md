@@ -13,7 +13,7 @@ The {{package-registry}} is a service that stores Elastic package definitions in
 
 ## Deploy the Package Registry
 
-Create a `PackageRegistry` resource to deploy the registry. By default, ECK deploys the `lite` distribution that matches `spec.version`. To use a different image, set `spec.image`.
+Create a `PackageRegistry` resource to deploy the registry. By default, ECK deploys the `lite` distribution that matches `spec.version`. To use a different image, set `spec.image`. ECK uses that image as-is: operator flags that change the default image, such as `--ubi-only` and `--container-suffix`, don't apply to it.
 
 ### Use the default image
 
@@ -42,6 +42,8 @@ stack: ga 9.6+
 ```
 
 If your environment requires FIPS 140-3 validated cryptography, set `spec.image` to a `-fips` distribution tag. This example uses the `lite` distribution, which is what ECK deploys by default. For all packages, use `docker.elastic.co/package-registry/distribution:<version>-fips` instead. For details on the FIPS images, refer to [FIPS 140-3 images](/reference/fleet/air-gapped.md#air-gapped-diy-epr-fips). To also run the operator itself in FIPS mode, refer to [](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md).
+
+The FIPS images have no UBI variant. If you run the operator with `--ubi-only`, setting a `-fips` image moves the registry off UBI.
 
 ```yaml subs=true
 apiVersion: packageregistry.k8s.elastic.co/v1alpha1
