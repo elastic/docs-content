@@ -134,6 +134,7 @@ serverless: ga
 
 ```{applies_to}
 stack: ga 9.3+
+serverless: ga
 ```
 
 Click the three-dot menu icon in the top-right corner to access additional options.
@@ -153,7 +154,7 @@ The options menu provides access to:
 - **Agent details**: View information about the currently selected agent.
 - **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
-The following image shows the options menu:
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the menu also includes **Open in full screen**. The following image shows the options menu in standalone mode:
 
 :::{image} images/more-actions-menu-options-9.4.png
 :screenshot:
@@ -170,7 +171,7 @@ The options menu provides access to:
 - **Agent details**: View information about the currently selected agent.
 - **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 - **Download conversation**: Save the conversation as a JSON file.
-  - **File name**: {{kib}} lowercases the conversation title, replaces each run of characters other than letters and numbers with a single hyphen, and adds `.json`. For example, `New conversation` becomes `new-conversation.json`.
+  - **File name**: {{kib}} lowercases the conversation title, replaces each run of characters other than letters and numbers with a single hyphen, removes leading and trailing hyphens, and adds `.json`. For example, `New conversation` becomes `new-conversation.json`.
   - **Contents**: A `conversation` object with the conversation `id`, `agent_id`, title, rounds, and the rest of the saved conversation.
   - **Availability**: Unavailable until the saved conversation has loaded. While the agent responds, the file contains the last saved conversation and can omit the round in progress.
 - **Load trace from file**: Open a saved trace in the [Trace flyout](#view-traces). Refer to [Load a trace from a file](#load-a-trace-from-a-file).

@@ -64,12 +64,12 @@ At the end of each round, the total token usage is displayed after the agent res
 
 ::::{applies-item} stack: preview =9.4
 
-To view the raw JSON response, which includes detailed token information, click the **View JSON** button. This opens a modal with the complete, raw response data:
+To view the raw JSON response, which includes detailed token information, click the **View JSON** button. This opens a flyout titled **Raw response** with the complete, raw response data:
 
 :::{image} images/token-usage-json-raw-response.png
 :screenshot:
 :width: 900px
-:alt: Screenshot of the JSON raw response modal
+:alt: Screenshot of the Raw response flyout
 :::
 
 ::::
