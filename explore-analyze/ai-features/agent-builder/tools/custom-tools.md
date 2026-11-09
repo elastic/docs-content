@@ -102,7 +102,7 @@ In the [Tools API](../tools.md#tools-api), the setting is the tool's `confirmati
 Confirmation applies only when an agent calls the tool:
 
 - Calls that don't come from an agent skip confirmation and run the tool. This includes calls through the Tools API and through the [{{agent-builder}} MCP server](../mcp-server.md).
-- When no one can answer the prompt, such as in a sub-agent run, the call is declined and the tool doesn't run. Refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+- When no one can answer the prompt, such as in a subagent run, the call is declined and the tool doesn't run. Refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 ## Test your tools
 

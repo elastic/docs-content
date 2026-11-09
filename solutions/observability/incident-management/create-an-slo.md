@@ -50,19 +50,19 @@ From the **Choose the SLI type** dropdown, select the type of SLI to use.
 
 The type of SLI to use depends on the location of your data:
 
-* [Custom KQL](/solutions/observability/incident-management/create-an-slo.md#custom-kql): Create an SLI based on raw logs coming from your services.
+* [Custom Query](/solutions/observability/incident-management/create-an-slo.md#custom-kql): Create an SLI based on raw logs coming from your services.
 * [Timeslice metric](/solutions/observability/incident-management/create-an-slo.md#timeslice-metric): Create an SLI based on a custom equation that uses multiple aggregations.
 * [Custom metric](/solutions/observability/incident-management/create-an-slo.md#custom-metric): Create an SLI to define custom equations from metric fields in your indices.
 * [Histogram metric](/solutions/observability/incident-management/create-an-slo.md#histogram-metric): Create an SLI based on histogram metrics.
 * [APM latency and APM availability](/solutions/observability/incident-management/create-an-slo.md#apm-latency-and-availability): Create an SLI based on services using application performance monitoring (APM).
 
-### Custom KQL [custom-kql]
+### Custom Query [custom-kql]
 
 Create an indicator based on any of your {{es}} indices or data views. You define two queries: one that yields the good events from your index, and one that yields the total events from your index.
 
-**Example:** You can define a custom KQL indicator based on the `service-logs` index with the **good query** defined as `nested.field.response.latency <= 100 and nested.field.env : “production”` and the **total query** defined as `nested.field.env : “production”`.
+**Example:** You can define a Custom Query indicator based on the `service-logs` index with the **good query** defined as `nested.field.response.latency <= 100 and nested.field.env : “production”` and the **total query** defined as `nested.field.env : “production”`.
 
-When defining a custom KQL SLI, set the following fields:
+When defining a Custom Query SLI, set the following fields:
 
 * **Index:** The data view or index pattern you want to base the SLI on. For example, `service-logs`.
 * **Timestamp field:** The timestamp field used by the index.
