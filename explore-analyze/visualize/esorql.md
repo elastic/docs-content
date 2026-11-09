@@ -142,33 +142,38 @@ Check that both dimensions are set before you look at the chart. If the **Horizo
 
 If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
 
-For example, start from the [stacked bar chart of web log events](#esql-viz-multi-field-breakdown), then add a layer for the events that returned a server error (response codes that start with 5):
+**Example: Compare server and client errors**
 
-```esql
-FROM kibana_sample_data_logs
-| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "5*"
-| STATS server_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
-```
+1. Start from the [stacked bar chart of web log events](#esql-viz-multi-field-breakdown).
+2. Add a layer for the events that returned a server error (response codes that start with 5), with this query:
 
-In this layer, assign `time_bucket` to the **Horizontal axis** and `server_errors` to the **Vertical axis**.
+   ```esql
+   FROM kibana_sample_data_logs
+   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "5*"
+   | STATS server_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+   ```
 
-:::{image} /explore-analyze/images/esql-visualization-layer-server-errors.png
-:alt: A stacked bar chart of web log events by host and file extension, with a line for server errors over the same time range
-:screenshot:
-:::
+3. In this layer, assign `time_bucket` to the **Horizontal axis** and `server_errors` to the **Vertical axis**.
 
-To compare client errors (response codes that start with 4) as well, add a third layer the same way, with this query:
+   :::{image} /explore-analyze/images/esql-visualization-layer-server-errors.png
+   :alt: A stacked bar chart of web log events by host and file extension, with a line for server errors over the same time range
+   :screenshot:
+   :::
 
-```esql
-FROM kibana_sample_data_logs
-| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "4*"
-| STATS client_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
-```
+4. Add a third layer for the events that returned a client error (response codes that start with 4), with this query:
 
-:::{image} /explore-analyze/images/esql-visualization-layer-client-errors.png
-:alt: The same chart with a second line for client errors
-:screenshot:
-:::
+   ```esql
+   FROM kibana_sample_data_logs
+   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "4*"
+   | STATS client_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 50, ?_tstart, ?_tend)
+   ```
+
+5. In this layer, assign `time_bucket` to the **Horizontal axis** and `client_errors` to the **Vertical axis**.
+
+   :::{image} /explore-analyze/images/esql-visualization-layer-client-errors.png
+   :alt: The same chart with a second line for client errors
+   :screenshot:
+   :::
 
 #### Mark events with annotations
 
