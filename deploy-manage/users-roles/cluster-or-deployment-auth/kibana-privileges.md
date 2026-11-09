@@ -234,7 +234,7 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-These privileges control specific actions on {{az-investigations}} and {{az-escalations}}. Selecting **All** for **Agentic Investigations** includes **Manage investigations**, but not **Manage escalations**. Selecting **Read** includes **View escalations**.
+These privileges control specific actions on {{az-investigations}} and {{az-escalations}}. Selecting **All** for **Agentic Investigations** includes **Manage investigations**, but not **Manage escalations**. Selecting **Read** includes only **View escalations**.
 
 :::{table}
 :widths: description
