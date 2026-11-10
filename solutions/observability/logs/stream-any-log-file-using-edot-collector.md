@@ -27,7 +27,8 @@ To follow the steps in this guide, you need an {{stack}} deployment that include
 
 * {{es}} for storing and searching data
 * {{kib}} for visualizing and managing data
-* Kibana user with `All` privileges on {{fleet}} and Integrations. Because many Integrations assets are shared across spaces, users need the Kibana privileges in all spaces.
+* A user with the `monitor` and `manage_own_api_key` cluster privileges, and the `auto_configure` and `create_doc` index privileges on `logs-*-*`, `logs`, `logs.*`, `metrics-*-*`, and `traces-*-*`. The OpenTelemetry onboarding page checks for these privileges before it creates an API key.
+    * {applies_to}`stack: ga 9.6+` The index privileges must also cover `exemplars-*-*`.
 * Integrations Server (included by default in every {{ech}} deployment)
 
 To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).

@@ -38,11 +38,64 @@ Solution: enable CNI when starting minikube: `minikube start --cni=true`.
 
 ## Storing local state in host path volume [k8s_storing_local_state_in_host_path_volume_2]
 
-{{agent}} managed by ECK stores local state in a host path volume by default. This ensures that {{integrations}} run by the agent can continue their work without duplicating work that has already been done after the Pod has been recreated for example because of a Pod configuration change. Multiple replicas of an agent, for example {{fleet}} Servers, can not be deployed on the same underlying {{k8s}} node as they would try to use the same host path. There are 2 options for managing this feature:
+{{agent}} managed by ECK stores local state in a host path volume by default. This ensures that {{integrations}} run by the agent can continue their work without duplicating work that has already been done after the Pod has been recreated for example because of a Pod configuration change. Multiple replicas of an agent, for example {{fleet}} Servers, can not be deployed on the same underlying {{k8s}} node as they would try to use the same host path. Consider the following options for managing local state storage:
 
-1. If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
-2. If local state storage is still desired but running the Agent container as root is not allowed, then you can run a `DaemonSet` that adjusts the permissions for the Agent local state on each Node prior to running {{agent}}. Note that this `DaemonSet` must be `runAsUser: 0` and possibly `privileged: true`. Also note the {{kib}} changes required to trust the {{es}} CA when running in fleet mode.
+* If local state storage in `hostPath` volumes is not desired this can be turned off by configuring an `emptyDir` volume instead.
+* {applies_to}`stack: ga 8.16` If local state storage is still desired but running the Agent container as root is not allowed, then you can give the Agent container the `CHOWN` and `SETPCAP` capabilities. At startup, {{agent}} changes the owner of its state directory to its own user and group.
+* If you use an {{agent}} version before 8.16 or cannot grant additional capabilities to the Agent container, you can use a `DaemonSet` to adjust the permissions of the Agent local state on each node before {{agent}} starts. This `DaemonSet` must run as root (`runAsUser: 0`) and might also require `privileged: true`. Also note the {{kib}} changes required to trust the {{es}} CA when running in fleet mode.
 
 Full configuration examples exist in  [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
+
+
+## Rolling updates and multiple replicas with host path volumes [k8s_agent_hostpath_rolling_updates]
+
+Two {{agent}} Pods on the same {{k8s}} node cannot use the same host path at the same time. The second Pod stops with the error `failed to get app lock: another elastic-agent is already running`. This happens in two cases:
+
+* You deploy {{agent}} as a `Deployment` with more than one replica, and {{k8s}} schedules two replicas on the same node.
+* You update a `Deployment` that has one replica, for example to change resources. By default, a `Deployment` uses the `RollingUpdate` strategy. The strategy starts the new Pod before it stops the old Pod. If both Pods run on the same node, the new Pod fails until the old Pod stops.
+
+To avoid the error, use one of these options:
+
+1. Deploy {{agent}} as a `DaemonSet`. A `DaemonSet` runs one Pod on each node.
+2. For a `Deployment` with one replica, set the update strategy to `Recreate` so that {{k8s}} stops the old Pod before starting the new one. The {{agent}} is not available during the update.
+
+    ```yaml
+    apiVersion: agent.k8s.elastic.co/v1alpha1
+    kind: Agent
+    metadata:
+      name: elastic-agent
+    spec:
+      deployment:
+        replicas: 1
+        strategy:
+          type: Recreate
+    ...
+    ```
+
+3. For a `Deployment` with more than one replica, add a `podAntiAffinity` rule to prevent two replicas from running on the same node. Make sure that the cluster has more available nodes than replicas. Otherwise, a Pod stays in the `Pending` state.
+
+    ```yaml
+    apiVersion: agent.k8s.elastic.co/v1alpha1
+    kind: Agent
+    metadata:
+      name: elastic-agent
+    spec:
+      deployment:
+        replicas: 2
+        podTemplate:
+          spec:
+            affinity:
+              podAntiAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                - labelSelector:
+                    matchLabels:
+                      agent.k8s.elastic.co/name: elastic-agent <1>
+                  topologyKey: kubernetes.io/hostname
+    ...
+    ```
+
+    1. Use the name of the {{agent}} resource.
+
+4. Use an `emptyDir` volume instead of the host path volume. {{agent}} then does not keep its local state when a Pod restarts. This option is not recommended. Refer to [Storing local state in host path volume](#k8s_storing_local_state_in_host_path_volume_2).
 
 

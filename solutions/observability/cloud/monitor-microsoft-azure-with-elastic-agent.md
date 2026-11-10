@@ -283,7 +283,7 @@ To add the integration:
 
 ## Step 5: Visualize Azure activity logs [azure-elastic-agent-visualize-azure-logs]
 
-Now that logs are streaming into {{es}}, you can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Notice that you can filter on a specific data stream. For example, you can use `data_stream.dataset : "azure.activitylogs"` to show Azure activity logs.
+Now that logs are streaming into {{es}}, you can visualize them in {{kib}}. To see the raw logs, find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Notice that you can filter on a specific data stream. For example, to show Azure activity logs, enter `FROM logs-* | WHERE data_stream.dataset == "azure.activitylogs"` in {{esql}} mode, or enter `data_stream.dataset : "azure.activitylogs"` in the KQL search bar in classic mode.
 
 The Azure activity logs integration also comes with pre-built dashboards that you can use to visualize the data. In {{kib}}, open the main menu and click **Dashboard**. Search for Azure activity and select the dashboard called **[Logs Azure] User Activity**:
 
