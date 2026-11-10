@@ -29,7 +29,7 @@ Traffic decides which links earn a place. Page rules decide how the page stays b
 4. **Rank and compare.** Mark which ranked pages the hub links. Check every link already on the hub against the same ranking.
 5. **Decide.**
    - Add a page when it has about 800 or more organic views in 90 days, or about 100 or more search clicks, and it is a first-stop page for its topic.
-   - Do not remove a link because it has low traffic. New and strategic features (Alerting V2, Context connectors, Vector Database) stay.
+   - Do not remove a link because it has low traffic. New and strategic features (Kibana Universal Alerting, Context connectors, Vector Database) stay.
    - Link the page people land on, not its parent, when the two serve the same task and the child has clearly more traffic.
 6. **Correctness checks still win.** Skip a page when:
    - it is deprecated and a current alternative exists (for example Playground),
@@ -103,7 +103,7 @@ Icons: only keys in docs-builder `ProductIcons` (`elasticsearch`, `kibana`, `obs
 - Omit `link` on `{link-card}` so the title is plain text.
 - Do not set `description` on a link-card inside `{explore}`. The builder drops it.
 - If a page used to be the title URL, make it the first list item.
-- Feature-app cards (Discover, Dashboards, Visualizations, Machine learning, Kibana alerting, Alerting V2, Agent Builder, Workflows, AI Agent chat):
+- Feature-app cards (Discover, Dashboards, Visualizations, Machine learning, Kibana Classic Alerting, Kibana Universal Alerting, Agent Builder, Workflows, AI Agent chat):
   1. `<Name> overview`
   2. `Get started with <Name>` when that page exists
   3. A few key pages
@@ -134,7 +134,7 @@ Do not add a link only to even the count. Leave a card short when it has only tw
 
 **Secure Kibana.** Authenticate users links Kibana authentication, Cloud organization authentication, Cloud SAML single sign-on, and the high-traffic realms that apply to every deployment type (SAML, OpenID Connect). Skip realms that are self-managed only, such as LDAP. Authorize access links user roles, Kibana role management, serverless custom roles, and Kibana privileges. Control and audit access links spaces, API keys, and audit logging. Protect data links secure saved objects and Kibana and Elasticsearch mutual TLS.
 
-**Alerting.** Four cards: Alerting systems (the alerting overview and Watcher), Kibana alerting (classic), Alerting V2, Alerting connectors. In Alerting connectors, order the popular connectors by traffic (Slack, Email, Microsoft Teams, Jira, PagerDuty).
+**Alerting.** Four cards: Alerting systems (the alerting overview and Watcher), Kibana Classic Alerting, Kibana Universal Alerting, Alerting connectors. In Alerting connectors, order the popular connectors by traffic (Slack, Email, Microsoft Teams, Jira, PagerDuty).
 
 **AI and Workflows.** Six cards: AI features, Agent Builder, Models and MCP, Workflows, AI Agent chat, Context connectors. AI features is the product-wide entry point: AI-powered features, AI agent skills, Connect to LLMs, and Elastic Managed LLMs. Agent Builder links the overview, Get started, Agents, Tools, and Custom tools. Models and MCP links Models and the MCP server guide. AI assistants in Kibana meets the traffic threshold but stays off the hub as an editorial choice. Confirm with the hub owner before you add it. Context connectors lead with three popular connectors, then View all.
 

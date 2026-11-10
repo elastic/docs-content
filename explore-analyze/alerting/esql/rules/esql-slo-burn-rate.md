@@ -2,7 +2,8 @@
 navigation_title: SLO burn rate
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Detect SLO error budget burn across multiple time windows using ES|QL conditional aggregation."
@@ -10,7 +11,7 @@ description: "Detect SLO error budget burn across multiple time windows using ES
 
 # SLO burn rate detection in {{alerting-v2-system}} [slo-burn-rate-query]
 
-An SLO burn rate query in a {{alerting-v2-system}} rule answers a specific question: are you consuming your error budget faster than you can afford to? It calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
+An SLO burn rate query in a {{alerting-v2-system-short}} rule answers a specific question: are you consuming your error budget faster than you can afford to? It calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
 
 ## Single-tier query
 

@@ -2,7 +2,8 @@
 navigation_title: Authorization
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -11,7 +12,7 @@ description: "Learn which credentials authorize rule, action policy, and workflo
 
 # Rule, action policy, and workflow authorization [experimental-alerting-authorization]
 
-{{alerting-v2-system-cap}} authorizes rules, action policies, and workflows with different credentials. Knowing which credential applies to each operation helps you diagnose authorization errors and keep credentials current.
+{{alerting-v2-system}} authorizes rules, action policies, and workflows with different credentials. Knowing which credential applies to each operation helps you diagnose authorization errors and keep credentials current.
 
 ## Which key authorizes each operation [key-per-operation]
 
