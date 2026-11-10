@@ -9,7 +9,7 @@ products:
 navigation_title: "{{agent}} data streams"
 ---
 
-# Configuring stack monitoring data streams created by Elastic Agent [config-monitoring-data-streams-elastic-agent]
+# Configuring stack monitoring data streams created by Elastic Agent
 
 When [monitoring using {{agent}}](../stack-monitoring/collecting-monitoring-data-with-elastic-agent.md), data is stored in a set of data streams with the following pattern:
 
