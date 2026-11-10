@@ -103,35 +103,47 @@ PUT _cluster/settings
 ```
 ::::
 
-### Default lifecycle for the `metrics` {{ilm-init}} policy [minimum-lifecycle-metrics-policy]
+### Pre-installed lifecycle management for `metrics` moves to the minimum lifecycle [minimum-lifecycle-metrics-policy]
 
 ```{applies_to}
 stack: ga 9.6
 serverless: unavailable
 ```
 
-{{es}} ships with a pre-installed `metrics` {{ilm-init}} policy. New backing indices of {{tsds-init}} that use this policy default `index.lifecycle.prefer_ilm` to `false`, so data stream lifecycle manages them instead of {{ilm-init}}. If the data stream has no lifecycle of its own, the minimum lifecycle manages them.
+From stack: ga 9.6, {{es}} migrates {{tsds}} that use the pre-installed `metrics` {{ilm-init}} policy from {{ilm-init}} to the minimum lifecycle. 
 
-This default applies only while the `metrics` policy is unmodified, meaning it is still on version 1 and its only action is a rollover in the hot phase. Data streams with a custom {{ilm-init}} policy, or a modified `metrics` policy, stay under {{ilm-init}}. An explicit `index.lifecycle.prefer_ilm` value in the index template, the data stream settings, or the create index request always takes precedence.
+#### How it works
 
-The change affects only backing indices created after the default applies. Existing backing indices stay under {{ilm-init}}. To opt out:
+For new backing indices of a {{tsds-init}} that uses the **pre-installed and unmodified** `metrics` policy, {{es}} defaults [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `false`. The policy stays attached to the index, but {{ilm-init}} no longer manages it. If the data stream has its own data stream lifecycle, that lifecycle manages the index. Otherwise, the minimum lifecycle does.
 
-* Set the dynamic cluster setting [`data_streams.lifecycle.prefer_by_default.metrics_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-prefer-by-default-metrics-enabled) to `false`. This doesn't change backing indices that already have `prefer_ilm` set to `false`.
-* Set `index.lifecycle.prefer_ilm` to `true` in the component or index template.
+#### When it applies
 
-To return backing indices that are already managed by data stream lifecycle to {{ilm-init}}, update the data stream settings. The following request will change the `prefer_ilm` value of all the backing indices of the data stream:
+The new default for [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) applies to a backing index only when all the following are true:
 
-```console
-PUT _data_stream/my-time-series/_settings
-{
-  "index.lifecycle.prefer_ilm": true
-}
-```
+* The index is created in stack: ga 9.6 or later. Existing backing indices stay under {{ilm-init}} until they are deleted or you change them manually.
+* The data stream is a {{tsds-init}} that uses the `metrics` policy, and the policy is unmodified. Data streams that use a custom policy or a modified `metrics` policy remain unaffected.
+* No `index.lifecycle.prefer_ilm` value is set in the index template, the data stream settings, or the create index request. An explicit value always takes precedence.
+* The [`data_streams.lifecycle.prefer_by_default.metrics_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-prefer-by-default-metrics-enabled) cluster setting is `true`, which is the default.
+
+#### Revert to {{ilm-init}}
+
+Choose the option that matches the scope you need:
+
+* **All new backing indices in the cluster:** Set the dynamic cluster setting `data_streams.lifecycle.prefer_by_default.metrics_enabled` to `false`. This doesn't change backing indices that already have `prefer_ilm` set to `false`.
+* **New backing indices of specific data streams:** Set `index.lifecycle.prefer_ilm` to `true` in the component or index template.
+* **Existing backing indices of a data stream:** Update the data stream settings. The following request changes `prefer_ilm` on all backing indices of the data stream:
+
+  ```console
+  PUT _data_stream/my-time-series/_settings
+  {
+    "index.lifecycle.prefer_ilm": true
+  }
+  ```
 
 ### Check what manages a data stream [minimum-lifecycle-check]
 
-To find out whether the minimum lifecycle manages a data stream or an index:
+To check whether the minimum lifecycle manages a data stream or an index, use the following APIs:
 
-* The [get data stream API]({{es-apis}}operation/operation-indices-get-data-stream) returns `"minimum_lifecycle_enabled": true` and `"next_generation_managed_by": "Data stream lifecycle"` for the data stream.
-* The [get data stream lifecycle API]({{es-apis}}operation/operation-indices-get-data-lifecycle) returns `"minimum_lifecycle_enabled": true` for the data stream.
-* The [explain data stream lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle) returns `"minimum_lifecycle_enabled": true` for each index the minimum lifecycle manages. For indices that no lifecycle manages, the response includes an `unmanaged_reason` field when {{es}} can determine why. The [{{ilm-init}} explain API]({{es-apis}}operation/operation-ilm-explain-lifecycle) includes the same field.
+* [Get data stream API]({{es-apis}}operation/operation-indices-get-data-stream): returns `"minimum_lifecycle_enabled": true` and `"next_generation_managed_by": "Data stream lifecycle"` for the data stream.
+* [Get data stream lifecycle API]({{es-apis}}operation/operation-indices-get-data-lifecycle): returns `"minimum_lifecycle_enabled": true` for the data stream.
+* [Explain data stream lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle): returns `"minimum_lifecycle_enabled": true` for each index the minimum lifecycle manages. For indices that no lifecycle manages, the response includes an `unmanaged_reason` field when {{es}} can determine why. The [{{ilm-init}} explain API]({{es-apis}}operation/operation-ilm-explain-lifecycle) includes the same field.
