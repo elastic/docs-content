@@ -269,9 +269,9 @@ To deploy Elastic Agent in clusters with the Pod Security Policy admission contr
 
 In order to run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
 
-1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
-2. {applies_to}`stack: ga 8.16` Run {{agent}} with the default `hostPath` volume and give the Agent container the `CHOWN` and `SETPCAP` capabilities. At startup, {{agent}} changes the owner of its state directory to its own user and group.
-3. Run {{agent}} with a `hostPath` volume in addition to a `DaemonSet` running as `root` that sets up permissions for the `agent` user. Use this option for {{agent}} versions before 8.16, or when you cannot add capabilities to the Agent container, for example on OpenShift.
+* Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
+* {applies_to}`stack: ga 8.16` Run {{agent}} with the default `hostPath` volume and give the Agent container the `CHOWN` and `SETPCAP` capabilities. At startup, {{agent}} changes the owner of its state directory to its own user and group.
+* Run {{agent}} with a `hostPath` volume in addition to a `DaemonSet` running as `root` that sets up permissions for the `agent` user. Use this option for {{agent}} versions before 8.16, or when you cannot add capabilities to the Agent container, for example on OpenShift.
 
 In addition to these decisions, if you are running {{agent}} in {{fleet}} mode as a non-root user, you must configure `certificate_authorities.ssl` in each `xpack.fleet.outputs` to trust the CA of the {{es}} Cluster.
 
