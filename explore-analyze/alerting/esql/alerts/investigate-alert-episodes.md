@@ -47,7 +47,7 @@ Related alerts from the same rule are grouped to help you answer whether this is
 
 ## Spot a flapping alert [flapping]
 
-A **Flapping** badge next to an alert's status warns you not to rely on that status. The alert keeps changing between `active` and `recovering` instead of staying active or closing, so its status doesn't tell you whether the problem is ongoing or fixed. Select the badge to see why {{kib}} added it. To decide how to respond, refer to [Triage a flapping alert](triage-alert-episodes.md#triage-flapping).
+A **Flapping** badge next to an alert's status warns you not to rely on that status. The alert keeps changing between `active` and `recovering` instead of staying active or closing, so its status doesn't tell you whether the problem is ongoing or fixed. The badge appears only in an alert's details, not in the **Alerts** table, so open the alert to check for it. Select the badge to see why {{kib}} added it. To decide how to respond, refer to [Triage a flapping alert](triage-alert-episodes.md#triage-flapping).
 
 {{kib}} adds the badge when an alert changes between `active` and `recovering` at least 4 times in its last 20 rule events. These details affect which alerts show it:
 
@@ -67,7 +67,7 @@ These rows only appear when the alert is in the corresponding state. System-gene
 
 ## Inspect the underlying data [inspect-data]
 
-Each alert includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
+Each alert includes a **Data container** tab that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
 
 :::{tip}
 Use the **Open in Discover** action to view the full source documents instead of these computed values. The action runs the rule's base query in Discover, aligned with the alert's timeframe. Once there, adjust the query to see what you need. For example, remove the aggregation to return source documents instead of aggregated output.
