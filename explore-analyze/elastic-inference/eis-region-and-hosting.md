@@ -33,7 +33,9 @@ EIS is available to all Elastic customers in all regions on Elastic Cloud Server
 * `europe-west1` (Belgium)
 * `us-east4` (N. Virginia, US)
 
-All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted. For deployments and projects in an EU region, we will route to the nearest EIS presence in an EU region.
+For {{ech}} deployments and {{serverless-short}} projects, {{infer}} requests sent through EIS are routed to the nearest EIS region, regardless of where your deployment or project is hosted. For deployments and projects in an EU region, requests are routed to the nearest EIS region in the EU.
+
+{applies_to}`stack: ga 9.3+` For self-managed clusters using EIS via [Cloud Connect](/deploy-manage/cloud-connect.md), all {{infer}} requests sent through EIS are routed to the {{aws}} `us-east-1` (N. Virginia, US) region.
 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` If you configure [region preferences](#inference-region-preferences), EIS routes only within your allowed geographies or regions.
 
@@ -56,7 +58,7 @@ You can express preferences in one of two ways:
 
 You must choose either geographies or regions. The two modes are mutually exclusive.
 
-When no region policy is configured, EIS uses the default nearest-region routing described on this page.
+When no region policy is configured, EIS uses the default routing described on this page.
 
 ### How enforcement works [region-preferences-enforcement]
 
