@@ -200,7 +200,7 @@ title: Discover
 links:
   - label: Discover overview
     url: /explore-analyze/discover.md
-  - label: Get started with Discover
+  - label: How Discover works
     url: /explore-analyze/discover/discover-get-started.md
   - label: Data views
     url: /explore-analyze/find-and-organize/data-views.md
