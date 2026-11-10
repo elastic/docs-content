@@ -43,7 +43,7 @@ To create a template:
    A template can have up to 200 custom fields. Refer to [Limits](yaml-template-schema-reference.md#case-templates-field-library-limits) for this and other template and field library size limits.
    :::
 
-3. On the **Configuration** tab, enter a template name. Optionally add a description, tags, case settings (**Sync alerts** and **Extract observables**), and an external connector. 
+3. On the **Configuration** tab, enter a template name. Optionally add a description, tags, case settings (**Sync detections** and **Extract observables**), and an external connector. **Sync detections** is called **Sync alerts** in earlier versions.
 
    :::{note}
    **Extract observables** is available in {{elastic-sec}} only.
