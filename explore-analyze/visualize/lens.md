@@ -2,11 +2,13 @@
 navigation_title: Visualizations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
+description: Build charts, tables, and metrics in Kibana with Lens. Add fields, use formulas and annotations, and save the result to a dashboard or the Visualize library.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Lens visualizations [lens]
@@ -423,6 +425,8 @@ Open the data in **Discover**:
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Open in Discover**.
 - {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Explore in Discover**.
 
+To open the data behind a visualization that's already on a dashboard, refer to [Open the data behind a panel in Discover](../dashboards/using.md#explore-panel-data-in-discover).
+
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 
 
@@ -532,7 +536,7 @@ Here’s a short list of few different aspects to check:
 ::::{dropdown} How do I sort by multiple columns?
 :name: can-i-sort-by-multiple-columns
 
-Multiple column sorting is unsupported, but is supported in **Discover**. For information on how to sort multiple columns in **Discover**, refer to [Explore the fields in your data](../discover/discover-get-started.md#explore-fields-in-your-data).
+Multiple column sorting is unsupported, but is supported in **Discover**. For information on how to sort multiple columns in **Discover**, refer to [Sort documents by one or more fields](../discover/document-explorer.md#document-explorer-sort-data).
 
 ::::
 

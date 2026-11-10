@@ -2,7 +2,8 @@
 navigation_title: Create an action policy
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Create action policies to route alerts to workflows. Scope policies with routing tags or a KQL expression, set batching and frequency, and link rules to policies with matching routing tags."

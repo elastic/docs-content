@@ -53,7 +53,7 @@ Keep Prometheus scraping and add Elastic as a `remote_write` target. Your scrape
 
 Use these pages to add remote write, keep Grafana, and reuse PromQL:
 
-[Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+`
+[Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+`
 :   The recommended remote write destination on {{serverless-full}} and {{ech}}.
 
 [Ingest Prometheus metrics with the {{es}} remote write endpoint](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) {applies_to}`stack: ga 9.5+, preview =9.4`
