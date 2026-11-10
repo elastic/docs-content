@@ -79,7 +79,7 @@ serverless: unavailable
 
 {{es}} manages {{tsds}} ({{tsds-init}}) that have no data stream lifecycle of their own with a minimum lifecycle. The minimum lifecycle performs only the operations a data stream needs to stay healthy: [rollover](index-lifecycle-management/rollover.md) and tail merging. It never changes the data set, so it doesn't downsample, move data to {{search-snaps}}, or delete data. It doesn't delete data even if you configure a global retention.
 
-The minimum lifecycle applies to a data stream when all of the following are true:
+The minimum lifecycle applies to a data stream when all the following are true:
 
 * The data stream is a {{tsds-init}}.
 * The data stream has no data stream lifecycle configured. A data stream with a lifecycle that is explicitly disabled keeps that configuration, and the minimum lifecycle doesn't apply.
@@ -119,7 +119,7 @@ The change affects only backing indices created after the default applies. Exist
 * Set the dynamic cluster setting [`data_streams.lifecycle.prefer_by_default.metrics_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-prefer-by-default-metrics-enabled) to `false`. This doesn't change backing indices that already have `prefer_ilm` set to `false`.
 * Set `index.lifecycle.prefer_ilm` to `true` in the component or index template.
 
-To return backing indices that are already managed by data stream lifecycle to {{ilm-init}}, update the data stream settings. This applies the change to all of its backing indices:
+To return backing indices that are already managed by data stream lifecycle to {{ilm-init}}, update the data stream settings. The following request will change the `prefer_ilm` value of all the backing indices of the data stream:
 
 ```console
 PUT _data_stream/my-time-series/_settings
