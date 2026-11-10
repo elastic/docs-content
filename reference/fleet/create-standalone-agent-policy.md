@@ -23,21 +23,19 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
 ## Create a standalone policy [create-standalone-policy]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for and select the {{agent}} integration you want to use. If the integration's **Overview** page opens, click **Add <integration>**.
+2. Search for and select the {{agent}} integration you want to use.
+3. If the integration's **Overview** page opens, click **Add <integration>**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**. You add {{agent}} after you save the integration.
+5. Under **Configure integration**, enter a name and description for the integration.
 
     :::{image} images/add-integration-standalone.png
     :alt: Add Nginx integration screen with agent policy selected
     :screenshot:
     :::
 
-    ::::{note}
-    If you’re adding your first integration and no {{agent}}s are installed, {{kib}} might display a page that walks you through configuring the integration and installing {{agent}}. If you see this page, click **Install {{agent}}**, then click the **standalone mode** link. Follow the in-product instructions instead of the steps described here.
-    ::::
-
-3. Under **Configure integration**, enter a name and description for the integration.
-4. Click the down arrow next to enabled streams and make sure the settings are correct for your host.
-5. Under **Apply to agent policy**, select an existing policy, or click **Create agent policy** and create a new one.
-6. When you’re done, click **Save and continue**.
+6. Click the down arrow next to enabled streams and make sure the settings are correct for your host.
+7. Under **Apply to agent policy**, select an existing policy, or click **Create agent policy** and create a new one.
+8. When you’re done, click **Save and continue**.
 
     A popup window gives you the option to add {{agent}} to your hosts.
 
@@ -46,10 +44,10 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
     :screenshot:
     :::
 
-7. (Optional) To add more integrations to the agent policy, click **Add {{agent}} later** and go back to the **Integrations** page. Repeat the previous steps for each integration.
-8. When you’re done adding integrations, in the popup window, click **Add {{agent}} to your hosts** to open the **Add agent** flyout.
-9. Click **Run standalone** and follow the in-product instructions to download {{agent}} (if you haven’t already).
-10. Click **Download Policy** to download the policy file.
+9. (Optional) To add more integrations to the agent policy, click **Add {{agent}} later** and go back to the **Integrations** page. Repeat the previous steps for each integration.
+10. When you’re done adding integrations, in the popup window, click **Add {{agent}} to your hosts** to open the **Add agent** flyout.
+11. Click **Run standalone** and follow the in-product instructions to download {{agent}} (if you haven’t already).
+12. Click **Download Policy** to download the policy file.
 
     :::{image} images/download-agent-policy.png
     :alt: Add data screen with option to download the default agent policy
