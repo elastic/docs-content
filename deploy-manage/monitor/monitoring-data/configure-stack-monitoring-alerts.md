@@ -3,8 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cluster-health-notifications.html
   - https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html
 applies_to:
-  deployment:
-    stack: ga
+  stack: ga
 products:
   - id: cloud-hosted
   - id: kibana
