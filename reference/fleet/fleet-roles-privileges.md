@@ -48,7 +48,7 @@ Some actions, such as adding an integration to an agent policy, require privileg
     * {{fleet}}: `read`
     * Integrations: `read`
 
-You can also create a new role that can be assigned to a user, to grant more specific levels of access to {{fleet}} and Integrations.
+You can also create a new role that can be assigned to a user to grant more specific levels of access to {{fleet}} and Integrations.
 
 
 ## Create a new role for {{fleet}} [fleet-roles-and-privileges-create]
