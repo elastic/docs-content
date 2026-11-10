@@ -56,6 +56,8 @@
 /reference/elasticsearch-clients/           @elastic/developer-docs
 /reference/fleet/                           @elastic/ski-docs
 /reference/ingestion-tools/                 @elastic/ski-docs
+/reference/managed-inputs/                  @elastic/ski-docs
+/reference/managed-integrations/            @elastic/ski-docs
 /reference/machine-learning/                @elastic/developer-docs
 /reference/observability/                   @elastic/ski-docs
 /reference/security/                        @elastic/ski-docs
