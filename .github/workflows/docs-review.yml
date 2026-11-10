@@ -5,10 +5,11 @@ on:
   issue_comment:
     types: [created]
 
-# A newer event for the same pull request cancels the review in progress. Converting a pull
-# request to draft therefore stops a running review, even though no new review starts.
+# Pull request events share one group per pull request, so converting a pull request to draft
+# cancels a review in progress. A comment gets its own group, so a discussion comment never
+# cancels a review.
 concurrency:
-  group: docs-review-${{ github.event.pull_request.number || github.event.issue.number }}
+  group: docs-review-${{ github.event.pull_request.number || github.event.issue.number }}-${{ github.event_name == 'pull_request' && 'pr' || github.run_id }}
   cancel-in-progress: true
 
 permissions:
