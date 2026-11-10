@@ -149,7 +149,10 @@ Use the default notification message or customize it. You can add more context t
 The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.checkedAt`
-:   Timestamp of the monitor run.
+:   The time of the check, preformatted using the Kibana `dateFormat` and `dateFormat:tz` settings. Do not pass it to `FormatDate`; use the `timestamp` variable instead.
+
+`context.timestamp`
+:   The ISO 8601 time of the check included with this alert. Empty for a pending monitor with no ping. On recovery, this can be the previous alert time rather than the up check. Use `FormatDate` to render it in a timezone.
 
 `context.hostName`
 :   Hostname of the location from which the check is performed.
