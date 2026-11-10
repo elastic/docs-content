@@ -10,7 +10,7 @@ navigation_title: "{{metricbeat}} data streams"
 
 # Configuring stack monitoring data streams created by {{metricbeat}}
 
-When [monitoring using {{metricbeat}}](/stack-monitoring/collecting-monitoring-data-with-metricbeat.md), data is stored in a set of data streams with the following pattern:
+When [monitoring using {{metricbeat}}](../stack-monitoring/collecting-monitoring-data-with-metricbeat.md), data is stored in a set of data streams with the following pattern:
 
 ```
 .monitoring-{{product}}-8-mb
