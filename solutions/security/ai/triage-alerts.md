@@ -21,7 +21,7 @@ If you use AI Assistant, refer to [Use AI Assistant (deprecated)](#triage-alerts
 ## Triage alerts with {{agent-builder}} [triage-alerts-agent-builder]
 
 ```{applies_to}
-stack: ga 9.5+
+stack: ga 9.4+
 serverless:
   security: ga
 ```
@@ -30,15 +30,15 @@ This procedure uses the [Elastic AI Agent](/explore-analyze/ai-features/agent-bu
 
 ### Before you begin [triage-alerts-agent-builder-requirements]
 
-* Ensure **AI Agent** is the chat experience for your space. Refer to [Switch between chat experiences](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+* Ensure **AI Agent** is the chat experience for your space. Refer to [Switch to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 * To include entity risk scores in the analysis, turn on [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 * To correlate alerts with {{elastic-sec}} Labs threat intelligence, install **Security labs** content from **GenAI Settings**. Refer to [Security labs content](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#security-labs-content).
-* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To control which alert field values are anonymized before they're sent to the LLM, open **Stack Management**, then select **Anonymization** in the **AI** section. This requires elevated privieleges. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management) for more details.
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To mask values such as email addresses, IP addresses, and host names before they're sent to the LLM, turn on anonymization, which is off by default. Open **Stack Management**, then select **Anonymization** in the **AI** section. This page requires the **Advanced Settings: All** and **Actions and Connectors** privileges. For details, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management).
 
 ### Triage a specific alert [triage-alerts-agent-builder-single]
 
 1. On the **Alerts** page, click **View details** for an alert.
-2. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` In the alert details flyout, click **Add to chat**. {{agent-builder}} opens a new conversation with the alert attached and a suggested triage prompt.
+2. In the alert details flyout, click **Add to chat**. {{agent-builder}} opens a new conversation with the alert attached and a suggested triage prompt.
 3. Send the suggested prompt, or edit it first. The agent summarizes the alert and recommends one of four dispositions: true positive, benign true positive, false positive, or needs more data.
 4. If the agent flags concerns, ask follow-up questions. For example:
 
@@ -58,8 +58,14 @@ This procedure uses the [Elastic AI Agent](/explore-analyze/ai-features/agent-bu
 
 ### Triage multiple alerts [triage-alerts-agent-builder-multiple]
 
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  security: ga
+```
+
 1. On the **Alerts** page, select up to 100 of the alerts loaded in the table. Don't use **Select all**, which switches to query mode and disables **Add to chat**.
-2. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **Selected *x* alerts** → **Add to chat**.
+2. Click **Selected *x* alerts** → **Add to chat**.
 3. Ask the agent to compare the alerts, for example "Which of these alerts should I prioritize, and why?"
 4. Decide a disposition for each alert you investigate, then document the outcome in a case, as described in [Triage a specific alert](#triage-alerts-agent-builder-single).
 

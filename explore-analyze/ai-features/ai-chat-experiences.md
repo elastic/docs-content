@@ -11,11 +11,13 @@ products:
 
 # AI chat experiences
 
-{{kib}} AI chat helps you answer questions about your data, suggest next steps, and explain how to use Elastic's software.
+{{kib}} AI chat answers questions about your data, suggests next steps, and explains how to use Elastic's software.
 
 - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is the default AI chat experience across {{kib}}. It includes built-in agents and [tools](/explore-analyze/ai-features/agent-builder/tools.md) for common tasks, and you can create custom agents, tools, and [skills](/explore-analyze/ai-features/agent-builder/skills.md) for your own use cases.
 - {applies_to}`stack: ga =9.3` Agent Builder is the default for {{es}} solution users. {{product.observability}} and {{product.security}} solution users can switch to Agent Builder to opt in.
-- {applies_to}`stack: deprecated` {applies_to}`serverless: deprecated` [AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md) is Elastic's original AI chat. Both the Elastic AI Assistant for Observability and Search and the AI Assistant for Security have been deprecated.
+- [AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md) is Elastic's original AI chat. It's deprecated:
+  - {applies_to}`stack: ga 9.0-9.3, deprecated 9.4+` {applies_to}`serverless: deprecated` {{obs-ai-assistant}}
+  - {applies_to}`stack: ga 9.0-9.5, deprecated 9.6+` {applies_to}`serverless: deprecated` AI Assistant for Security
 
   To switch to {{agent-builder}}, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 

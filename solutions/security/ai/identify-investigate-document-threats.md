@@ -49,7 +49,7 @@ serverless:
   security: ga
 ```
 
-To start a conversation with a discovery as context, click **Add to chat** on a discovery on the **Attack Discovery** page. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Or, from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** → **Add to chat** on an attack.
+To start a conversation with a discovery as context, click **Add to chat** on a discovery on the **Attack Discovery** page. {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` Or, from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** → **Add to chat** on an attack.
 
 The [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) can compile essential data and suggest next steps to help you plan an effective response. Ask it questions such as:
 
@@ -69,7 +69,7 @@ serverless:
   security: ga
 ```
 
-[Cases](/solutions/security/investigate/security-cases.md) centralize relevant details in one place for easy sharing with stakeholders. To add a discovery and its alerts to a case, select **Take action** → **Add to new case** or **Add to existing case** on the discovery. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Or, on the **Attacks** view, select **Take actions** → **Add to new case** or **Add to existing case** on the attack.
+[Cases](/solutions/security/investigate/security-cases.md) centralize relevant details in one place for easy sharing with stakeholders. To add a discovery and its alerts to a case, select **Take action** → **Add to new case** or **Add to existing case** on the discovery. {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` Or, on the **Attacks** view, select **Take actions** → **Add to new case** or **Add to existing case** on the attack.
 
 Ask the agent for an incident report, remediation steps, or a summary, then add them to the case.
 

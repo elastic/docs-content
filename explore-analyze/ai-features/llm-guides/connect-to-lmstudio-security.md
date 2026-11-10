@@ -234,5 +234,5 @@ Setup is now complete. You can use the model you’ve loaded in LM Studio to pow
 ::::::
 
 ::::{note}
-Self-managed models are likely to improve over time. As they do, using one for [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) may become more viable. For current guidance, refer to the warning near the top of this page.
+Self-managed models are likely to improve over time. As they do, using one for [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) may become more viable. For current guidance, refer to the note near the top of this page.
 ::::

@@ -27,7 +27,7 @@ There is some setup required:
 * Entity risk scores require [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 * {{elastic-sec}} Labs correlation requires [Security labs content](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#security-labs-content) installed from **GenAI Settings**.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For the full UI procedure, from **Add to chat** through disposition and case, refer to [Triage alerts](/solutions/security/ai/triage-alerts.md).
+For the full UI procedure, from **Add to chat** through disposition and case, refer to [Triage alerts](/solutions/security/ai/triage-alerts.md).
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
@@ -35,7 +35,7 @@ There is some setup required:
 | Find alerts related to this one over the last 7 days | Search for alerts sharing `host.name`, `user.name`, `source.ip`, or `destination.ip` with the source alert. |
 | Should we escalate this alert? | Summarize evidence and recommend a disposition with supporting reasoning. If entity risk scoring is on, include risk scores for the involved hosts and users. |
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The skill also activates when you attach an alert to the conversation with [**Add to chat**](/solutions/security/detect-and-alert/manage-detection-alerts.md#add-alerts-to-chat).
+The skill also activates when you attach an alert to the conversation with **Add to chat** in the alert details flyout. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can also [add alerts to chat from the Alerts table](/solutions/security/detect-and-alert/manage-detection-alerts.md#add-alerts-to-chat).
 
 ## Entity risk investigation
 
