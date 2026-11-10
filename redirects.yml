@@ -5,6 +5,8 @@ redirects:
   'solutions/security/alertzero/use-alertzero.md': 'solutions/security/alertzero/work-in-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/9158
   'solutions/security/alertzero/requirements.md': 'solutions/security/alertzero/set-up-alertzero.md'
+  # related to https://github.com/elastic/docs-content/pull/9304
+  'solutions/security/alertzero/review-first-proposed-action.md': 'solutions/security/alertzero/work-in-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   # related to https://github.com/elastic/docs-content/issues/7502

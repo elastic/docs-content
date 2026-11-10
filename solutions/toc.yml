@@ -726,7 +726,6 @@ toc:
             children:
               - file: security/alertzero/threat-reports.md
           - file: security/alertzero/set-up-alertzero.md
-          - file: security/alertzero/review-first-proposed-action.md
           - file: security/alertzero/work-in-alertzero.md
             children:
               - file: security/alertzero/close-false-positive-alerts.md
