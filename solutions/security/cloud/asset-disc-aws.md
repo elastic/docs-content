@@ -38,7 +38,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 ## {{managed-integration}} deployment [cad-aws-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for and select `Cloud Asset Discovery`.
+2. Search for and select **Cloud Asset Discovery**.
 3. If the integration's **Overview** page opens, select **Add Cloud Asset Discovery**.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
@@ -99,7 +99,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 ### Add the Cloud Asset Discovery integration [cad-aws-add-and-name-integration]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for and select `Cloud Asset Discovery`.
+2. Search for and select **Cloud Asset Discovery**.
 3. If the integration's **Overview** page opens, select **Add Cloud Asset Discovery**.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
