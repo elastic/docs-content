@@ -40,8 +40,8 @@ The following deployment options are available: {{managed-integration}} and agen
 ## {{managed-integration}} deployment [cspm-azure-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+2. Search for `CSPM`, then select **Cloud Security Posture Management (CSPM)**.
+3. If the integration's **Overview** page opens, select **Add Cloud Security Posture Management (CSPM)**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
 5. Give your integration a name and description that match the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
 6. (Optional) Expand the **Advanced options** menu and add a `Namespace` to the integration's data stream.
@@ -54,7 +54,7 @@ The following deployment options are available: {{managed-integration}} and agen
     * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to Azure. The following methods are available:
     
-    * Option 1 (recommended): [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:
+    * Option 1 (recommended): [Federated Identity](/reference/managed-integrations/federated-identity.md), also called a cloud connector in earlier versions:
 
       ::::{applies-switch}
 
@@ -93,8 +93,8 @@ The following deployment options are available: {{managed-integration}} and agen
 ### Add your CSPM integration [cspm-add-and-name-integration-azure]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+2. Search for `CSPM`, then select **Cloud Security Posture Management (CSPM)**.
+3. If the integration's **Overview** page opens, select **Add Cloud Security Posture Management (CSPM)**.
 4. In **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
 5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CSPM-dev-1`.
 6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.

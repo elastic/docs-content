@@ -64,7 +64,7 @@ If backing indices older than `frozen_after` are not converting to frozen {{sear
 
 ## Next steps [next-steps]
 
-- New data streams: Include `frozen_after` in the index template lifecycle when you create a data stream. Refer to [Creating a data stream with a lifecycle](/manage-data/lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md).
+- New data streams: Include `frozen_after` in the index template lifecycle when you create a data stream. Refer to [Create a data stream with a lifecycle](/manage-data/lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md).
 - Existing data streams: Add or update `frozen_after` on an individual data stream using the lifecycle API. Refer to [Update the lifecycle of a data stream](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#configure-dlm-searchable-snapshots).
 
 ## Related pages [related-pages]
