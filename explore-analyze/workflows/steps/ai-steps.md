@@ -44,6 +44,36 @@ The step uses the [default AI connector](/explore-analyze/ai-features/manage-acc
 Generative AI connectors are deprecated. The `ai.agent` step accepts an {{infer}} endpoint through `inference-id`. The `ai.prompt`, `ai.classify`, and `ai.summarize` steps take `connector-id` only.
 :::
 
+## Reasoning level [ai-reasoning-level]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+Use the optional `reasoning-level` field on `ai.prompt` and `ai.agent` steps to control how much reasoning the model does before it responds. The field accepts `none`, `minimal`, `low`, `medium`, `high`, or `xhigh`, in lowercase. Only `ai.prompt` and `ai.agent` accept this field. How each level affects the response depends on the model and provider.
+
+Whether the model receives the level depends on how the step connects to it:
+
+- [Elastic Managed LLMs](/explore-analyze/ai-features/agent-builder/models.md) and {{infer}} endpoints receive the level you set. If the model doesn't support that level, the step fails. Check the model provider's documentation for the levels each model supports.
+- Other connectors, such as OpenAI, Amazon Bedrock, and Google Gemini, ignore the field, and the step runs normally.
+
+On [`ai.agent`](#ai-agent) steps:
+
+- If you omit `reasoning-level`, the step uses the agent's default level. Only built-in agents have a default. For custom agents, or when the agent has no default, the model uses its own default.
+- The level applies only to the agent's own model calls. It doesn't apply to the [subagents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#subagents) that the agent starts, or to tasks that {{agent-builder}} sends to the [fast model](/explore-analyze/ai-features/agent-builder/models.md#fast-model).
+
+For example, this step sets a high reasoning level for a custom agent:
+
+```yaml
+- name: investigate
+  type: ai.agent
+  agent-id: "security-analyst-agent"
+  reasoning-level: "high"
+  with:
+    message: "Investigate alert {{ event.alerts[0]._id }} and propose next steps."
+```
+
 ## Step types
 
 - [`ai.prompt`](#ai-prompt): Send a prompt to a model and receive a response. Supports structured output with a JSON Schema. {applies_to}`stack: preview 9.3, ga 9.4+`
@@ -68,14 +98,18 @@ Where a step's fields go, and how they're named, depends on the step:
 | `ai.prompt`, `ai.classify`, `ai.summarize`, `ai.agent` | Fields marked **top level** in each step's table, such as `connector-id`, `agent-id`, and `inference-id`. They use kebab-case (`connector-id`, not `connectorId`) and sit alongside `name`, `type`, `if`, and `foreach`, not under `with`. | Mostly camelCase, such as `systemPrompt`, `maxLength`, and `includeRationale`. |
 | `ai.conversation.*`, `ai.attachment.*` | None. | snake_case, such as `conversation_id`. |
 
+Whether you can use Liquid expressions in these top-level fields depends on your version:
+
 ::::{applies-switch}
-:::{applies-item} { stack: ga 9.5, serverless: ga }
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
 Liquid expressions are evaluated in these top-level fields, so you can use templated values (for example, `"{{ consts.agent_id }}"`).
 :::
 :::{applies-item} stack: ga 9.3-9.4
 Liquid expressions in these top-level fields aren't evaluated, so use a literal value (for example, `agent-id: elastic-ai-agent`) instead of `"{{ consts.agent_id }}"`.
 :::
 ::::
+
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` `ai.prompt` and `ai.agent` also accept a top-level `reasoning-level` field. Refer to [Reasoning level](#ai-reasoning-level).
 
 :::{include} ../_snippets/schema-location-legend.md
 :::
@@ -91,6 +125,7 @@ Call an LLM with a prompt. Supports optional structured output through a JSON Sc
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `connector-id` | top level | string | No | The Generative AI connector to use. If omitted, the step uses the default model described at the start of this page. |
+| `reasoning-level` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | top level | string | No | How much reasoning the model does before it responds: `none`, `minimal`, `low`, `medium`, `high`, or `xhigh`. If omitted, the model uses its own default. Refer to [Reasoning level](#ai-reasoning-level). |
 | `prompt` | `with` | string | Yes | Prompt text. Supports Liquid templating. |
 | `systemPrompt` | `with` | string | No | System prompt sent before the user prompt. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
@@ -251,12 +286,12 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 | `inference-id` | top level | string | No | Inference endpoint ID. Mutually exclusive with `connector-id`. |
 | `create-conversation` | top level | boolean | No | When `true`, persist the conversation for follow-up steps or later reference. |
 | `public-conversation` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | top level | boolean | No | When `true`, make the conversation this step creates public. Any user who can access the agent can read and continue the conversation and see it in their conversation list. Only applies when `create-conversation` is `true`. Defaults to `false` (private). Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
+| `ephemeral` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | top level | boolean | No | When `true`, the agent uses the history, attachments, and metadata of the conversation set in `conversation_id` as context but doesn't change it. The run doesn't answer a conversation that's [awaiting your input](/explore-analyze/ai-features/agent-builder/chat.md#track-conversation-status), and it runs the agent's [pre-execution workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#pre-execution-workflows) but not its post-execution workflows. The [user who authorizes the run](/explore-analyze/workflows/authorization.md#workflows-authorization-user) must own the conversation, be a member of it, or the conversation must be public, and must be able to use its agent. Otherwise, the step fails. Has no effect without `conversation_id`. Can't be combined with `create-conversation: true`. The editor doesn't flag this combination, but the step fails at run time. Defaults to `false`. Refer to [Example: Summarize a conversation without changing it](#ai-agent-ephemeral). |
+| `reasoning-level` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | top level | string | No | How much reasoning the agent's model does before it responds: `none`, `minimal`, `low`, `medium`, `high`, or `xhigh`. If omitted, the step uses the agent's default level, if it has one. Refer to [Reasoning level](#ai-reasoning-level). |
 | `message` | `with` | string | Yes | User message to send to the agent. |
 | `schema` | `with` | object | No | JSON Schema for structured output. |
-| `conversation_id` | `with` | string | No | Continue an existing conversation by ID. |
+| `conversation_id` | `with` | string | No | Continue an existing conversation by ID. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` With `ephemeral: true`, the conversation is read and not updated. |
 | `attachments` | `with` | array | No | Attachments to provide to the agent. Each attachment has `{ id?, type, data?, origin?, hidden? }`. |
-
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The step ignores `public-conversation` if `create-conversation` isn't `true`, or if it continues an existing conversation instead of creating one. Neither case returns an error.
 
 **Output shape:**
 
@@ -264,7 +299,7 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 |---|---|---|
 | `message` | string | Always. Text response, or a string representation when `schema` is provided. |
 | `structured_output` | any | Present when `schema` is provided. |
-| `conversation_id` | string | Present when `create-conversation: true` or `conversation_id` was provided. |
+| `conversation_id` | string | Present when the step creates or updates a conversation. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Omitted when `ephemeral` is `true`, even if `conversation_id` was provided. |
 
 :::{important}
 Use `connector-id` **or** `inference-id`, not both. The schema rejects a step that sets both.
@@ -276,7 +311,7 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
 - name: investigate
   type: ai.agent
   agent-id: "security-analyst-agent"
-  connector-id: "my-openai"
+  inference-id: "my-inference-endpoint"
   create-conversation: true
   with:
     message: |
@@ -301,6 +336,25 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
   with:
     conversation_id: "{{ steps.investigate.output.conversation_id }}"
     message: "Apply the recommended action and report back."
+```
+
+### Example: Summarize a conversation without changing it [ai-agent-ephemeral]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The following step summarizes the `investigate` conversation without changing it. The summary is in `steps.summarize.output.message`.
+
+```yaml
+- name: summarize
+  type: ai.agent
+  agent-id: "security-analyst-agent"
+  ephemeral: true
+  with:
+    conversation_id: "{{ steps.investigate.output.conversation_id }}"
+    message: "Summarize this conversation in five bullet points."
 ```
 
 ## `ai.conversation.create` [ai-conversation-create]

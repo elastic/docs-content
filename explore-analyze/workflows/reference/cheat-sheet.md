@@ -249,16 +249,16 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
        reason: "Verified non-malicious."
    ```
 
-6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`. Liquid expressions in these top-level fields aren't evaluated; use literal values. Refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
+6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`. In 9.5 and later, Liquid expressions in these top-level fields are evaluated. In 9.3–9.4, use literal values. Refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
 
    ```yaml
-   # Wrong — fields nested under with, and templated agent-id is not substituted
+   # Wrong — fields nested under with, and camelCase agentId
    - type: ai.agent
      with:
        agentId: "{{ consts.agent_id }}"
        message: "..."
 
-   # Right — top-level kebab-case with literal values
+   # Right — top-level kebab-case
    - type: ai.agent
      agent-id: elastic-ai-agent
      with:

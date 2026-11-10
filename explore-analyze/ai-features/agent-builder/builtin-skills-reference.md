@@ -56,7 +56,7 @@ $$$agent-builder-dashboard-management-skill$$$ $$$agent-builder-dashboards-skill
     :::
 
 $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Analyzes {{esql}} query results in {{kib}} **Discover**, identifying patterns, trends, and anomalies by running aggregation queries against the full dataset. The skill receives the current query, columns, sample rows, and time range as an attachment, then runs 2 to 3 focused aggregation queries, renders an inline visualization for the main finding, and proposes drill-down queries. When the active [context-aware profile](/explore-analyze/discover/discover-get-started.md#context-aware-discover) is logs, metrics, or traces, the skill receives shape-specific guidance. For example, it uses the {{esql}} `TS` source command for time series metrics.
+:   Analyzes {{esql}} query results in {{kib}} **Discover**, identifying patterns, trends, and anomalies by running aggregation queries against the full dataset. The skill receives the current query, columns, sample rows, and time range as an attachment, then runs 2 to 3 focused aggregation queries, renders an inline visualization for the main finding, and proposes drill-down queries. When the active [context-aware experience](/explore-analyze/discover/discover-get-started.md#context-aware-discover) is for logs, metrics, or traces, the skill receives shape-specific guidance. For example, it uses the {{esql}} `TS` source command for time series metrics.
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you ask to see the documents in a **Discover** table, the skill can also show them in the conversation. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
@@ -65,7 +65,7 @@ $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {appli
 
     :::
 
-    **How to activate:** Activates from the [standard activation methods](skills.md#how-skills-are-invoked) when the conversation is started from a Discover session tab that is in {{esql}} mode and has loaded results. The current query, columns, sample rows, and time range are automatically attached to the conversation, so the agent has the context it needs to run the analysis. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai) for the full workflow.
+    **How to activate:** Activates from the [standard activation methods](skills.md#how-skills-are-invoked) when the conversation is started from a Discover session tab that is in {{esql}} mode and has loaded results. The current query, columns, sample rows, and time range are automatically attached to the conversation, so the agent has the context it needs to run the analysis. Refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md) for the full workflow.
 
 $$$agent-builder-discover-session-skill$$$ `discover-session` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
 :   Shows {{es}} documents, events, or logs as an interactive **Discover** table in the conversation. Use it to see the matching rows rather than a chart or an aggregation. The skill generates an {{esql}} query and creates or updates a **Discover** table that renders inline in chat. Requests for charts, metrics, or trends go to [`visualization-creation`](#agent-builder-visualization-creation-skill). Unlike [`discover-data-analysis`](#agent-builder-discover-data-analysis-skill), this skill doesn't need a conversation started from **Discover**. For the full workflow, refer to [Discover tables in chat](agent-builder-discover-tables.md).
@@ -289,7 +289,9 @@ $$$agent-builder-connector-authoring-skill$$$ `connector-authoring` {applies_to}
 
     :::
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library but doesn't assign it to an agent. To let an agent use the new connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
+    {applies_to}`stack: preview =9.5` **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library. If you can edit the agent in the conversation, {{kib}} also assigns the connector to it. For the required privileges and what happens when {{kib}} can't assign it, refer to [Assign a connector from chat](connectors.md#assign-a-connector-from-chat).
 
 ## Observability skills
 ```{applies_to}
@@ -415,7 +417,7 @@ $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga
     :::
 
 $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}`stack: ga 9.4+`
-:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, or query.
+:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE mappings, schedule, or query.
 
     :::{dropdown} Assigned tools
     `security.create_detection_rule`, `security.security_labs_search`, `platform.core.generate_esql`, `platform.core.product_documentation`
