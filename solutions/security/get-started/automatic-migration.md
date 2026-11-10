@@ -75,7 +75,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 :::{applies-item} stack: ga 9.0-9.2
 **Requirements**
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature. In 9.2.4 and later, this feature is called **Automatic Migration**.
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Automatic Migration** (or **SIEM migrations** in earlier versions) {{kib}} feature.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
