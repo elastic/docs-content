@@ -28,7 +28,7 @@ To follow the steps in this guide, you need an {{stack}} deployment that include
 
 * {{es}} for storing and searching data
 * {{kib}} for visualizing and managing data
-* Kibana user with `All` privileges on {{fleet}} and Integrations. Because many Integrations assets are shared across spaces, users need the Kibana privileges in all spaces.
+* Kibana user with `All` privileges on {{fleet}} and Integrations. For the minimum privileges and how they apply across spaces, refer to [](/reference/fleet/fleet-roles-privileges.md).
 * Integrations Server (included by default in every {{ech}} deployment)
 
 To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
@@ -54,25 +54,26 @@ The **Admin** role or higher is required to onboard system metrics data. To lear
 
 In this step, add the System integration to monitor host logs and metrics.
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **System** and select the integration to see more details about it.
-3. Select **Add System**.
-4. Configure the integration name and optionally add a description. Make sure that **Collect logs from System instances** and **Collect metrics from System instances** are turned on.
-5. Expand each configuration section to verify that the settings are correct for your host. For example, if you're deploying {{agent}} on macOS hosts, you need to add a new path to the *System syslog logs* section by clicking **Add row** and specifying `/var/log/system.log`.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **System**.
+3. If the integration's **Overview** page opens, select **Add System**.
+4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+5. Configure the integration name and optionally add a description. Make sure that **Collect logs from System instances** and **Collect metrics from System instances** are turned on.
+6. Expand each configuration section to verify that the settings are correct for your host. For example, if you're deploying {{agent}} on macOS hosts, you need to add a new path to the *System syslog logs* section by clicking **Add row** and specifying `/var/log/system.log`.
 
     :::{image} /solutions/images/observability-kibana-agent-add-log-path.png
     :alt: Configuration page for adding log paths to the {{agent}} System integration
     :screenshot:
     :::
 
-6. Select **Save and continue**. This step takes a minute or two to complete. When it's done, the new agent policy contains a system integration policy for the configuration you specified.
+7. Select **Save and continue**. This step takes a minute or two to complete. When it's done, the new agent policy contains a system integration policy for the configuration you specified.
 
     :::{image} /solutions/images/observability-kibana-system-policy.png
     :alt: Configuration page for adding the {{agent}} System integration
     :screenshot:
     :::
 
-7. In the dialog, select **Add {{agent}} to your hosts** to open the **Add agent** flyout.
+8. In the dialog, select **Add {{agent}} to your hosts** to open the **Add agent** flyout.
 
     ::::{tip}
     If you accidentally close the popup, go to **{{fleet}} > Agents**, then select **Add agent** to access the flyout.
@@ -84,8 +85,8 @@ In this step, add the System integration to monitor host logs and metrics.
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Project Settings** → **Integrations**.
-3. Enter **System** in the search bar, then select the integration to see more details about it.
-4. Select **Add System**.
+3. Search for and select **System**.
+4. If the integration's **Overview** page opens, select **Add System**.
 5. Follow the in-product steps to install the System integration and deploy an {{agent}}. The sequence of steps varies depending on whether you have already installed an integration.
 
     * When configuring the System integration, make sure that **Collect metrics from System instances** is turned on.

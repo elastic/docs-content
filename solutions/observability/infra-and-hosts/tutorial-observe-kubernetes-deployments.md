@@ -93,10 +93,10 @@ To start collecting logs and metrics from your Kubernetes clusters, first add th
 
 Follow these steps to add the Kubernetes integration to your policy:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Enter "Kubernetes" in the search bar, and select the **Kubernetes** integration.
-3. Click **Add Kubernetes** at the top of the Kubernetes integration page.
-4. Click **Add integration only (skip agent installation)** at the bottom of the Add integration page.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Kubernetes**.
+3. If the integration's **Overview** page opens, click **Add Kubernetes** at the top of the page.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
 
 Continue to [Step 2: Configure your Kubernetes integration](#monitor-k8s-configure-integration).
 
