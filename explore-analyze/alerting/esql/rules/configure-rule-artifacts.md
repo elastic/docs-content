@@ -88,5 +88,5 @@ For the same checkout rule, link the dashboard that breaks down checkout errors 
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
 - [View and manage rules](view-manage-rules.md): Filter the rules list by tag, and review a rule's runbook and linked dashboards on the rule details page.
-- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by the tags added to alerts during triage.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by the tags you add to alerts during triage.
 - [YAML rule schema reference](yaml-rule-schema-reference.md): Artifact field names, types, and limits.

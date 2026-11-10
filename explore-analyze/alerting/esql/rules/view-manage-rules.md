@@ -21,13 +21,13 @@ Use the search bar to find rules by name or description. Each space-separated te
 
 Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort. Use bulk actions to enable, disable, or delete several rules at once, or to [rotate their API keys](#rotate-rule-api-key).
 
-The table has the following columns for tags. A dash means the rule has no tags.
+The table shows each rule's tags in two columns. A dash means the rule has no tags.
 
 **Tags**
 :   Labels you use to organize rules.
 
 **Routing tags**
-:   Tags that link a rule to [action policies](../action-policies/create-configure-action-policy.md#routing-tags). The table can't be filtered by routing tags.
+:   Tags that link a rule to [action policies](../action-policies/create-configure-action-policy.md#routing-tags). You can't filter the table by routing tags.
 
 ## Edit a rule inline [quick-edit-rule]
 

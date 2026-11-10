@@ -130,3 +130,4 @@ To add a policy without leaving the rule, select **Create action policy** in **A
 - [Manage action policies](manage-action-policies.md): Enable, disable, snooze, and rotate API keys after setup.
 - [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
 - [About action policies](about-action-policies.md): Understand the eligibility, scope, and frequency gates that determine when workflows are invoked.
+- [View and manage rules](../rules/view-manage-rules.md#find-filter-rules): See each rule's routing tags on the **Rules** page.
