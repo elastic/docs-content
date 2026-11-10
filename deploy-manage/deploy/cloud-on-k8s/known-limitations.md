@@ -56,7 +56,7 @@ Two {{agent}} Pods on the same {{k8s}} node cannot use the same host path at the
 To avoid the error, use one of these options:
 
 1. Deploy {{agent}} as a `DaemonSet`. A `DaemonSet` runs one Pod on each node.
-2. For a `Deployment` with one replica, set the `Recreate` strategy. {{k8s}} stops the old Pod before it starts the new Pod. The {{agent}} is not available during the update.
+2. For a `Deployment` with one replica, set the update strategy to `Recreate` so that {{k8s}} stops the old Pod before starting the new one. The {{agent}} is not available during the update.
 
     ```yaml
     apiVersion: agent.k8s.elastic.co/v1alpha1
@@ -71,7 +71,7 @@ To avoid the error, use one of these options:
     ...
     ```
 
-3. For a `Deployment` with more than one replica, add a `podAntiAffinity` rule. The rule prevents two replicas from running on the same node. Make sure that the cluster has more nodes than replicas. If no free node is available, a Pod stays in the `Pending` state.
+3. For a `Deployment` with more than one replica, add a `podAntiAffinity` rule to prevent two replicas from running on the same node. Make sure that the cluster has more available nodes than replicas. Otherwise, a Pod stays in the `Pending` state.
 
     ```yaml
     apiVersion: agent.k8s.elastic.co/v1alpha1

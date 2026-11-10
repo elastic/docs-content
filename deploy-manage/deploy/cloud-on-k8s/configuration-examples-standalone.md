@@ -54,4 +54,4 @@ Deploys two {{es}} clusters and two {{kib}} instances together with single Elast
 
 Full configuration examples exist in  [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
 
-If you deploy {{agent}} as a `Deployment`, refer to [Rolling updates and multiple replicas with host path volumes](known-limitations.md#k8s_agent_hostpath_rolling_updates). Two Pods on the same node cannot share the host path.
+If you deploy {{agent}} as a `Deployment`, keep in mind that two Pods on the same node cannot share the host path. Refer to [Rolling updates and multiple replicas with host path volumes](known-limitations.md#k8s_agent_hostpath_rolling_updates) for more information.
