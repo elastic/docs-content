@@ -74,7 +74,7 @@ Choose how to provide an {{es}} API key for the `elasticsearch/otel` exporter:
 * **Create one in the flyout**: Click **Create API key**. {{fleet}} creates an API key with default privileges and substitutes it for `${API_KEY}` in the generated configuration.
 * **Use an existing key**: Skip this action in the flyout, and replace `${API_KEY}` manually after copying the configuration in the next step. The key must have `create_index`, `write`, and `auto_configure` index privileges on `metrics-*`, `logs-*`, and `traces-*` data streams.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` If your deployment sends data through the [{{motlp}}](opentelemetry://reference/motlp.md), this step asks for a managed OTLP API key instead. Replace `${API_KEY}` in the `Authorization` header rather than the `api_key` field, and note that the generated configuration exports through an `otlp/managed` exporter instead of `elasticsearch/otel`.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` If your deployment sends data through the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md), this step asks for a managed OTLP API key instead. Replace `${API_KEY}` in the `Authorization` header rather than the `api_key` field, and note that the generated configuration exports through an `otlp/managed` exporter instead of `elasticsearch/otel`.
 
 :::::
 

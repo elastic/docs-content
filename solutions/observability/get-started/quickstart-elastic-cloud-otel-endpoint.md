@@ -15,7 +15,7 @@ products:
 
 You can send OpenTelemetry data to Elastic Serverless and Elastic Cloud Hosted using the {{motlp}} endpoint.
 
-The {{motlp}} provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. Refer to [{{motlp}}](opentelemetry://reference/motlp.md) for more information.
+The {{motlp}} provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for more information.
 
 The {{motlp}} is designed for the following use cases:
 
@@ -249,7 +249,7 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ## Troubleshooting
 
-Refer to the [Troubleshoot {{edot}}](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
+Refer to the [Troubleshoot {{edot}}](/reference/managed-inputs/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
 
 ## Provide feedback
 
