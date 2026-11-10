@@ -5,4 +5,6 @@
     :screenshot:
     :::
 
-2. Select the **Settings** tab and click **Install AWS**. In the confirmation dialog, click **Install AWS**.
+    If the results show **Amazon Web Services** instead of **AWS**, go to `/app/integrations/detail/aws/overview` in {{kib}}. The **Amazon Web Services** result opens the AWS onboarding flow, not the integration's details.
+
+2. Select the **Settings** tab, then select **Install AWS**. In the confirmation dialog, select **Install AWS**.

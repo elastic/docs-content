@@ -39,7 +39,10 @@ Install AWS integration assets to load index templates, ingest pipelines, and da
 :::{include} _snippets/install-aws-integration-assets.md
 :::
 
-Repeat these steps for the **Amazon Data Firehose** integration.
+Then install the Amazon Data Firehose integration assets:
+
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Amazon Data Firehose, then select **Amazon Data Firehose** from the results.
+2. Select the **Settings** tab, then select **Install Amazon Data Firehose**. In the confirmation dialog, select **Install Amazon Data Firehose**.
 
 
 ## Step 2: Create a delivery stream in Amazon Data Firehose [firehose-step-two]
