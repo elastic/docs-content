@@ -36,10 +36,13 @@ Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=do
 
 Install AWS integration assets to load index templates, ingest pipelines, and dashboards into {{kib}}:
 
-1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for **AWS**, then [open the integration's details](/reference/fleet/open-integration-details.md).
-3. Select the **Settings** tab and click **Install AWS**. In the confirmation dialog, click **Install AWS**.
-4. Install Amazon Data Firehose integration assets in Kibana.
+:::{include} _snippets/install-aws-integration-assets.md
+:::
+
+Then install the Amazon Data Firehose integration assets:
+
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Amazon Data Firehose, then select **Amazon Data Firehose** from the results.
+2. Select the **Settings** tab, then select **Install Amazon Data Firehose**. In the confirmation dialog, select **Install Amazon Data Firehose**.
 
 
 ## Step 2: Create a delivery stream in Amazon Data Firehose [firehose-step-two]
