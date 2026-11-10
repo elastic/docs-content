@@ -12,7 +12,7 @@ description: "Monitor action policy dispatch activity from the execution history
 
 In {{alerting-v2-system}}, action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
 
-Go to **Alerting** → **Execution History** in the {{observability}} navigation menu, or find **Execution History** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the **Action policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alerts it processed:
+Go to **Alerting** → **Execution history** in the {{observability}} navigation menu, or find **Execution history** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the **Action policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alerts it processed:
 
 | Column | Description |
 |---|---|
@@ -34,6 +34,8 @@ Go to **Alerting** → **Execution History** in the {{observability}} navigation
 -->
 
 You can search records by action policy name, rule name, or saved-object ID, and filter by outcome to view only dispatched, throttled, or failed records.
+
+To review the dispatcher's decisions for a single alert across its whole lifetime, open the [**Policy history** tab](../alerts/investigate-alert-episodes.md#policy-history) on that alert's details page.
 
 ## Dispatch outcomes [dispatch-outcomes]
 
