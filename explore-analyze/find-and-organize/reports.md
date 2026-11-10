@@ -10,9 +10,9 @@ products:
 
 # Reports [reports]
 
-{{kib}} provides you with several options to share saved searches, dashboards, and visualizations.
+{{kib}} provides you with several options to share Discover sessions, dashboards, and visualizations.
 
-For example, in **Discover**, you can create and download comma-separated values (CSV) reports for saved searches.
+For example, in **Discover**, you can create and download comma-separated values (CSV) reports for Discover sessions.
 
 To view and manage reports, go to **Management** > **Reporting**.
 

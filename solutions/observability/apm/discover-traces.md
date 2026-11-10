@@ -38,9 +38,9 @@ For more information, refer to [{{kib}} privileges](/deploy-manage/users-roles/c
 
 The traces experience is available in:
 
-* **{{data-source-cap}} mode**: Select a {{data-source}} that matches a `traces-*` index pattern from the **Discover** main page.
+* **Classic mode**: Make sure **Discover** is in [classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode), then select a {{data-source}} that matches a `traces-*` index pattern from the data view menu.
 
-* **{{esql}} mode**: Switch to **{{esql}}** mode and use the `FROM` command to query your trace data:
+* **{{esql}} mode**: Make sure **Discover** is in [{{esql}} mode](/explore-analyze/discover/switch-esql-mode.md#switch-discover-query-mode), then use the `FROM` command to query your trace data:
 
     ```esql
     FROM traces-*

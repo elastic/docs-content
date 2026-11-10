@@ -50,7 +50,7 @@ Elastic supports both the  [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/
 
 ## EDOT SDKs with APM Server OTel intake [apm-open-telemetry-edot-sdk-limitations]
 
-EDOT SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](/reference/managed-inputs/managed-otlp-endpoint.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 
 ## OpenTelemetry Collector exporter for Elastic [apm-open-telemetry-collector-exporter]
 

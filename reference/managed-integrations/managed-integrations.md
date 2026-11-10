@@ -20,7 +20,9 @@ type: overview
 
 {{managed-integrations}} let you ingest data from cloud sources into Elastic without deploying or maintaining any collectors yourself. Elastic runs the collectors for you and writes the data directly to your cluster, so you can focus on the data rather than on the infrastructure that collects it. {{managed-integrations}} are available on {{serverless-full}} and {{ech}} deployments.
 
-To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md).
+{applies_to}`stack: ga 9.6+` {{managed-integrations}} are available on {{ech}} deployments in [{{fedramp-mod}}](/deploy-manage/deploy/elastic-cloud/fedramp.md). The **{{integrations}}** catalog on these deployments shows only FIPS compatible integrations. {{managed-integrations}} aren't available in {{fedramp-high}}.
+
+To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md).
 
 ## Key benefits [managed-integrations-benefits]
 
@@ -67,7 +69,7 @@ The following limits apply to {{managed-integrations}}:
 
 The collector for each {{managed-integration}} writes documents directly to your cluster. Data is stored in your project or deployment, and Elastic employees don't have access to it.
 
-Data typically travels from Elastic-managed infrastructure to your cluster over Elastic's internal network. On an {{ech}} deployment in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach your cluster. For more information, refer to [Does my data travel over the public internet?](/manage-data/ingest/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-public-internet) in the FAQ.
+Data typically travels from Elastic-managed infrastructure to your cluster over Elastic's internal network. On an {{ech}} deployment in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach your cluster. For more information, refer to [Does my data travel over the public internet?](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-public-internet) in the FAQ.
 
 Each collector is dedicated to a single {{managed-integration}}: no other workloads can be added to it.
 
@@ -75,16 +77,16 @@ Each collector is dedicated to a single {{managed-integration}}: no other worklo
 
 Because Elastic operates the collectors on your behalf, they aren't visible in {{fleet}} by default, and Elastic resolves service-level issues for you. You still keep visibility into the parts that matter to you — each integration's status is available in the **{{integrations}}** app, and the ingested data lands in your cluster so you can query it, view it in dashboards, and set [alerting rules](/explore-analyze/alerting.md) on it as you would for any other integration.
 
-For how {{managed-integrations}} behave during a service issue, refer to [What happens to my data if there's a service issue?](/manage-data/ingest/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-service-issue) in the FAQ.
+For how {{managed-integrations}} behave during a service issue, refer to [What happens to my data if there's a service issue?](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-service-issue) in the FAQ.
 
 For service issues or to request diagnostics, contact [Elastic Support](https://support.elastic.co).
 
 ## Next steps [managed-integrations-next-steps]
 
-* [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md) in {{kib}} to start collecting data from a cloud source.
-* [Authenticate {{managed-integrations}} using a federated identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
+* [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md) in {{kib}} to start collecting data from a cloud source.
+* [Authenticate {{managed-integrations}} using a federated identity](/reference/managed-integrations/federated-identity.md) to avoid managing API keys directly.
 
 ## Related pages [managed-integrations-related]
 
-* [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md)
+* [{{managed-integrations}} FAQ](/reference/managed-integrations/managed-integrations-faq.md)
 * [Managed integrations quick reference](integration-docs://reference/managed_integrations.md)
