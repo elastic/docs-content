@@ -287,22 +287,22 @@ Follow these steps to ingest and centrally manage your logs using {{agent}} and 
 
 To add the custom logs integration to your project:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Type `custom` in the search bar and select **Custom Logs**.
-3. Click **Add Custom Logs**.
-4. Click **Install {{agent}}** at the bottom of the page, and follow the instructions for your system to install the {{agent}}.
-5. After installing the {{agent}}, configure the integration from the **Add Custom Logs integration** page.
-6. Give your integration a meaningful name and description.
-7. Add the **Log file path**. For example, `/var/log/your-logs.log`.
-8. Give your agent policy a name. The agent policy defines the data your {{agent}} collects.
-9. Save your integration to add it to your deployment.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Custom Logs**.
+3. If the integration's **Overview** page opens, click **Add Custom Logs**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**. You install {{agent}} after you save the integration.
+5. Give your integration a name and description.
+6. Add the **Log file path**. For example, `/var/log/your-logs.log`.
+7. Give your agent policy a name. The agent policy defines the data your {{agent}} collects.
+8. Click **Save and continue**.
+9. In the dialog that opens, click **Add {{agent}} to your hosts**. In the **Add agent** flyout, follow the instructions for your system to install {{agent}}.
 
 
 #### Step 2: Add an ingest pipeline to your integration [step-2-plaintext-add-an-ingest-pipeline-to-your-integration]
 
 To aggregate or search for information in plaintext logs, use an ingest pipeline with your integration to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](ecs://reference/index.md)-compatible fields.
 
-1. From the custom logs integration, select **Integration policies** tab.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). On the **Installed integrations** tab, select **Custom Logs**, then open the **Integration policies** tab.
 2. Select the integration policy you created in the previous section.
 3. Click **Change defaults → Advanced options**.
 4. Under **Ingest pipelines**, click **Add custom pipeline**.
@@ -357,4 +357,4 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
 ## View logs [view-plaintext-logs]
 
-To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. You can also select **All logs** from the **Data views** menu as it includes the `filebeat-*` index pattern by default. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for more information.
+To view logs ingested by {{filebeat}}, go to **Discover** from the navigation menu. In {{esql}} mode, enter `FROM filebeat-*` in the editor. In classic mode, create a data view based on the `filebeat-*` index pattern, or select **All logs** from the **Data views** menu, which includes the `filebeat-*` index pattern by default. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for more information.

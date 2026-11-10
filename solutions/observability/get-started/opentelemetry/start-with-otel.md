@@ -62,7 +62,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} ess:
@@ -80,7 +80,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} self:
@@ -183,4 +183,4 @@ If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opente
 * [Limitations of {{edot}}](opentelemetry://reference/compatibility/limitations.md)
 * [{{edot}} vs upstream OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md)
 * [{{agent}} reference](elastic-agent://reference/edot-collector/index.md)
-* [Managed inputs](opentelemetry://reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints
+* [Managed inputs](/reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints

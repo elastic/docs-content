@@ -93,10 +93,10 @@ To start collecting logs and metrics from your Kubernetes clusters, first add th
 
 Follow these steps to add the Kubernetes integration to your policy:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Enter "Kubernetes" in the search bar, and select the **Kubernetes** integration.
-3. Click **Add Kubernetes** at the top of the Kubernetes integration page.
-4. Click **Add integration only (skip agent installation)** at the bottom of the Add integration page.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Kubernetes**.
+3. If the integration's **Overview** page opens, click **Add Kubernetes** at the top of the page.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
 
 Continue to [Step 2: Configure your Kubernetes integration](#monitor-k8s-configure-integration).
 
@@ -538,7 +538,7 @@ For more on using the **Metrics Explorer** page, refer to [Explore infrastructur
 
 Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From the **Data view** menu, select `All logs`. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
+In {{esql}} mode, enter `FROM logs-*`. In classic mode, select `All logs` from the **Data view** menu. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
 
 * [Explore logs in Discover](../logs/discover-logs.md) for an overview of viewing your logs in Discover.
 * [Filter logs in Discover](../logs/filter-aggregate-logs.md#logs-filter-discover) for more on filtering logs in Discover.
