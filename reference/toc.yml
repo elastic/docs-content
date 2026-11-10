@@ -11,6 +11,7 @@ toc:
   - toc: apm-agents
   # Published under Reference > Ingestion tools
   - toc: managed-inputs
+  - toc: managed-integrations
   - toc: machine-learning
   - toc: glossary
   - toc: autoops-insights
