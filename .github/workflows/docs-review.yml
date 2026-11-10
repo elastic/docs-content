@@ -5,11 +5,12 @@ on:
   issue_comment:
     types: [created]
 
-# Pull request events and authorized /docs-review commands share one group per pull request, so
-# converting a pull request to draft cancels a review in progress. Any other comment gets its own
-# group, so a discussion comment or an unauthorized command never cancels a review.
+# Same-repository pull request events and authorized /docs-review commands share one group per pull
+# request, so converting a pull request to draft cancels a review in progress. Everything else gets
+# its own group: a discussion comment, an unauthorized command, or an event from a fork pull
+# request, which the job skips, never cancels a review.
 concurrency:
-  group: docs-review-${{ github.event.pull_request.number || github.event.issue.number }}-${{ (github.event_name == 'pull_request' || (startsWith(github.event.comment.body, '/docs-review') && contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))) && 'pr' || github.run_id }}
+  group: docs-review-${{ github.event.pull_request.number || github.event.issue.number }}-${{ ((github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (startsWith(github.event.comment.body, '/docs-review') && contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))) && 'pr' || github.run_id }}
   cancel-in-progress: true
 
 permissions:
