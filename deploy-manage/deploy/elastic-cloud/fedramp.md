@@ -38,13 +38,14 @@ Most {{ecloud}} and {{ech}} features are also available in FedRAMP authorized Cl
 | [Bring Your Own Key (BYOK)](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) | Yes | No | No |
 | [Support policy](https://www.elastic.co/support/welcome) | Global coverage | Global coverage or optional U.S. persons on U.S. soil support available | U.S. persons on U.S. soil support |
 | [{{kib}} connectors](kibana://reference/connectors-kibana.md) | All connector types | Email, Index, Webhook, Gen-AI, Bedrock, Gemini, Inference, Slack, Slack-API, PagerDuty | Email, Index, Webhook, Gen-AI, Bedrock, Gemini, Inference, Slack, Slack-API, PagerDuty |
-| [Private connectivity](/deploy-manage/security/private-connectivity.md) | Yes | Yes | No |
+| [Private connectivity](/deploy-manage/security/private-connectivity.md) | Yes | Yes | Yes |
 | [AutoOps](/deploy-manage/monitor/autoops.md) | Yes | Yes | No |
 | [Synthetic monitoring](/solutions/observability/synthetics/index.md) | Yes | No | No |
 | [Elastic Inference Service](/explore-analyze/elastic-inference/eis.md) | Yes | No | No |
-| [Managed OTLP Endpoint (mOTLP)](opentelemetry://reference/motlp.md) | Yes | No | No |
-| [Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md) | Yes | No | No |
-| [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) | Yes | No | No |
+| [Managed OTLP Endpoint (mOTLP)](/reference/managed-inputs/managed-otlp-endpoint.md) | Yes | No | No |
+| [Managed {{es}} _bulk endpoint](/reference/managed-inputs/elasticsearch-bulk.md) | Yes | No | No |
+| [Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md) | Yes | No | No |
+| [{{managed-integrations}}](/reference/managed-integrations/index.md) | Yes | {applies_to}`stack: ga 9.6+` Yes, with [limitations](#ec-fedramp-managed-integrations) | No |
 | [Custom bundles and plugins](/deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
 | [Elastic AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
 | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) | Yes | Yes | TBD |
@@ -80,6 +81,15 @@ Be sure to enforce security in your FIPS environments through other means, such 
 **Applies to:** {{fedramp-mod}}, {{fedramp-high}}
 
 The {{elastic-defend}} integration that runs on hosts being protected has various features that require data to be sent directly to Elastic-managed cloud services. The data sent is not sourced from within the secure enclave on the host. However, you may still want to adjust the configuration for your {{fedramp-mod}} and {{fedramp-high}} environments. You can use the [advanced setting](/reference/security/defend-advanced-settings.md) `[linux,mac,windows].advanced.allow_cloud_features` to activate or deactivate each {{elastic-defend}} feature individually.
+
+### {{managed-integrations}} [ec-fedramp-managed-integrations]
+```{applies_to}
+stack: ga 9.6+
+```
+
+**Applies to:** {{fedramp-mod}}
+
+Only {{managed-integrations}} that are FIPS compatible are available in {{fedramp-mod}} deployments. To check which integrations are excluded, refer to [Elastic integrations that are not FIPS compatible](/deploy-manage/security/fips-ingest.md#ingest-limitations-integrations).
 
 ### Custom plugins
 

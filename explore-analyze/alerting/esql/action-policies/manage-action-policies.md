@@ -2,7 +2,8 @@
 navigation_title: Manage action policies
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Manage action policies: turn them on or off, snooze them so they don't invoke workflows, and rotate API keys."

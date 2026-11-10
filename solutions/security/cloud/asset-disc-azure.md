@@ -40,8 +40,8 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 ## {{managed-integration}} deployment [cad-azure-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for and select `Cloud asset discovery`.
-3. Click **Add Cloud Asset Discovery**.
+2. Search for and select **Cloud Asset Discovery**.
+3. If the integration's **Overview** page opens, select **Add Cloud Asset Discovery**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
 5. Give your integration a name that matches the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
 6. In **Deployment options**, select the deployment mode:
@@ -49,7 +49,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
     * {applies_to}`stack: preview 9.1-9.4` Select **Agentless**.
 7. Next, you’ll need to authenticate to Azure. The following methods are available:
     
-    * Option 1 (recommended): [Federated Identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md), also called a cloud connector in earlier versions:
+    * Option 1 (recommended): [Federated Identity](/reference/managed-integrations/federated-identity.md), also called a cloud connector in earlier versions:
 
       ::::{applies-switch}
 
@@ -86,8 +86,8 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 ### Add the Cloud Asset Discovery integration [cad-add-and-name-integration-azure]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for and select `Cloud asset discovery`.
-3. Click **Add Cloud Asset Discovery**.
+2. Search for and select **Cloud Asset Discovery**.
+3. If the integration's **Overview** page opens, select **Add Cloud Asset Discovery**.
 4. In **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
 5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CAD-dev-1`.
 

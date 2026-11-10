@@ -233,6 +233,7 @@ subs:
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
   edot:  "Elastic OpenTelemetry"
+  edot-cf: "Elastic Cloud Forwarder"
   motlp: "Elastic Cloud Managed OTLP Endpoint"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
@@ -264,9 +265,9 @@ subs:
   maint-windows-app:   "Maintenance Windows"
   maint-windows-cap:   "Maintenance windows"
   alerting-v2-system:   "Kibana Universal Alerting"
-  alerting-v2-system-cap:   "Kibana Universal Alerting"
+  alerting-v2-system-short:   "Universal Alerting"
   alerting-v1-system:   "Kibana Classic Alerting"
-  alerting-v1-system-cap:   "Kibana Classic Alerting"
+  alerting-v1-system-short:   "Classic Alerting"
   custom-roles-app:   "Custom Roles"
   data-source:   "data view"
   data-sources:   "data views"
@@ -488,6 +489,8 @@ subs:
   az-balanced-models: "Balanced models"
   az-frontier-models: "Frontier models"
   az-cyber-domain-models: "Cyber domain models"
+  openai-daybreak: "OpenAI Daybreak"
+  daybreak: "Daybreak"
   kube-stack-version: 0.16.0
   helm-version: 4.3.0
   ece-docker-images-8: 8.19.23
