@@ -26,7 +26,7 @@ To follow these steps, you need:
 
   * `create_index`, `create_doc`, and `view_index_metadata` to create the stream, index documents, and read the lifecycle.
   * `auto_configure` if you use the bulk indexing API example, which adds mappings for fields that aren't defined in the template.
-  * {applies_to}`stack: ga 9.3+` `manage` if you create the stream in **Streams**, which writes data stream settings.
+  * {applies_to}`stack: ga 9.3+` {applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` `manage` if you create the stream in **Streams**, which writes data stream settings.
 
   Refer to [Granting privileges for data streams and aliases](/deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
 * {applies_to}`stack: ga 9.3+` {applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` The **All** [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) for the **Streams** feature.
@@ -47,12 +47,12 @@ Set the lifecycle on that template, in the same place you set mappings and index
 1. On the **Index Templates** tab, click **Create template**.
 1. On the **Logistics** page, enter a name and an index pattern that matches the data stream. For example, use `my-index-template` for the name and `my-data-stream-test*` for the index pattern.
 
-   {applies_to}`stack: ga 9.3+`{applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` To use the **Streams** app in subsequent steps your index pattern must contain a wildcard (`*`).
+   {applies_to}`stack: ga 9.3+` {applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` To use the **Streams** app in subsequent steps, your index pattern must contain a wildcard (`*`).
 
 1. Turn on **Create data stream**.
 1. Select **Delete phase** (**Data retention** in earlier versions), and choose how long to retain your data, in days, hours, minutes, or seconds.
 1. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Optional: Select the **Frozen phase** to choose when to move your data to {{search-snaps}}, in days, hours, minutes, or seconds. This period must be shorter than the delete phase. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
-1. In **Priority**, enter a value higher than `200` so it doesn't collide with built-in templates. Refer to [Avoid index pattern collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions).
+1. In **Priority**, enter a value higher than `500` so it doesn't collide with built-in templates. Refer to [Avoid index pattern collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions).
 1. Complete the rest of the wizard. On the **Review** page, click **Create template**. For the other wizard pages, refer to [Index templates](/manage-data/data-store/templates.md) and [Index fundamentals](/manage-data/data-store/index-basics.md).
 ::::
 ::::{tab-item} API
@@ -66,7 +66,7 @@ PUT _index_template/my-index-template
 {
   "index_patterns": ["my-data-stream-test*"], <1>
   "data_stream": { }, <2>
-  "priority": 500, <3>
+  "priority": 501, <3>
   "template": { 
     "lifecycle": { <4>
       "data_retention": "7d" <5>
@@ -80,7 +80,7 @@ PUT _index_template/my-index-template
 
 1. You can use a wildcard (`*`) in the index pattern to match every data stream whose name matches the pattern.
 1. Include the `data_stream` object to enable data streams.
-1. Set the priority higher than `200` so it doesn't collide with built-in templates. Refer to [Avoid index pattern collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions).
+1. Set the priority higher than `500` so it doesn't collide with built-in templates. Refer to [Avoid index pattern collisions](/manage-data/data-store/templates.md#avoid-index-pattern-collisions).
 1. Define the lifecycle in the template section or in a [component template](/manage-data/data-store/templates.md#component-templates).
 1. Choose how long to retain your data, in days, hours, minutes, or seconds.
 
@@ -94,7 +94,7 @@ PUT _index_template/my-index-template
 {
   "index_patterns": ["my-data-stream-test*"],
   "data_stream": { },
-  "priority": 500,
+  "priority": 501,
   "template": {
     "lifecycle": {
       "data_retention": "365d",
@@ -124,13 +124,13 @@ Otherwise, the lifecycle on the template doesn't apply.
 ::::{tab-item} {{kib}}
 :sync: kibana
 
-{applies_to}`stack: ga 9.3+`{applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` Create a classic data stream in [**Streams**](/solutions/observability/streams/streams.md):
+* Create a data stream and load data by submitting API requests in [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md). Refer to the API tab for examples.
 
-1. Find **Streams** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Click **Create classic stream**.
-1. Select the index template, enter the stream name, and click **Create**.
+* {applies_to}`stack: ga 9.3+` {applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` Create a classic data stream in [Streams](/solutions/observability/streams/streams.md):
 
-Alternatively, create a data stream and load data by submitting API requests in [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md). Refer to the API tab for examples.
+  1. Find **Streams** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+  1. Click **Create classic stream**.
+  1. Select the index template, enter the stream name, and click **Create**.
 
 ::::
 
@@ -176,10 +176,10 @@ Confirm that the data stream uses the lifecycle from the template.
     1. Search for the data stream, and then select it.
     1. In the flyout, review the data phases (**Data retention** in earlier versions).
 
-* {applies_to}`stack: ga 9.3+`{applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` View the data stream in [**Streams**](/solutions/observability/streams/streams.md):
+* {applies_to}`stack: ga 9.3+` {applies_to}`elasticsearch: unavailable` {applies_to}`vectordb: unavailable` View the data stream in [Streams](/solutions/observability/streams/streams.md):
     1. Find **Streams** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     1. Select your stream from the list.
-    1. Go to the **Data lifecycle** tab (**Retention** in earlier versions).
+    1. Select the **Data lifecycle** tab (**Retention** in earlier versions).
     1. Review the lifecycle summary and data phases. For more information, refer to [](/solutions/observability/streams/configure-retention.md).
 
 ::::
@@ -187,7 +187,7 @@ Confirm that the data stream uses the lifecycle from the template.
 ::::{tab-item} API
 :sync: api
 
-Use the [get data stream lifecycle API]({{es-apis}}operation/operation-indices-get-data-lifecycle) to see the lifecycle configuration details.
+Use the [get data stream lifecycle API]({{es-apis}}operation/operation-indices-get-data-lifecycle) to view the lifecycle configuration details.
 For example:
 
 ```console
@@ -216,7 +216,7 @@ GET _data_stream/my-data-stream-test*/_lifecycle
 1. The name of your data stream.
 2. Whether the data stream lifecycle is turned on for this data stream.
 3. The retention period configured for data in this data stream.
-4. The retention period that the data stream lifecycle applies. {{es}} keeps this data for at least 7 days and can delete it later.
+4. The retention period that the data stream lifecycle uses. {{es}} keeps this data for at least 7 days and can delete it later.
 
 Use the [explain data stream lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle) to view lifecycle details for the backing indices.
 For example:
@@ -230,7 +230,7 @@ GET my-data-stream-test*/_lifecycle/explain
 ```console-result
   {
     "indices": {
-      ".ds-my-data-stream-test-2026.10.23-000001"": {
+      ".ds-my-data-stream-test-2026.10.23-000001": {
         "index": ".ds-my-data-stream-test-2026.10.23-000001",      <1>
         "managed_by_lifecycle": true,                               <2>
         "index_creation_date_millis": 1792718438578,
@@ -257,7 +257,7 @@ GET my-data-stream-test*/_lifecycle/explain
 ## Next steps [create-data-stream-lifecycle-next-steps]
 
 * To change or remove the lifecycle on a stream that already exists, refer to [Update the lifecycle of a data stream](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md).
-* To see how effective retention is calculated, refer to [Setting retention for {{es}} data streams](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
+* To learn how effective retention is calculated, refer to [Setting retention for {{es}} data streams](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
 
 ## Related pages [create-data-stream-lifecycle-related]
 
