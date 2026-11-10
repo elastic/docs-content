@@ -9,11 +9,14 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: Amazon Bedrock
+  inference-service: Amazon Bedrock
 ---
 
 # Connect to Amazon Bedrock
 
-This page provides step-by-step instructions for setting up an Amazon Bedrock connector for the first time. This connector type enables you to leverage large language models (LLMs) within {{kib}}. You’ll first need to configure AWS, then configure the connector in {{kib}}.
+This page provides step-by-step instructions for connecting {{kib}} to large language models (LLMs) in Amazon Bedrock. You’ll first need to configure AWS, then connect {{kib}} to Amazon Bedrock.
 
 ::::{note}
 All models in Amazon Bedrock's `Claude` model group are supported.
@@ -79,7 +82,7 @@ The following video demonstrates these steps (click to watch).
 
 ### Create an access key [_create_an_access_key]
 
-Create the access keys that will authenticate your Elastic connector:
+Create the access keys that Elastic uses to authenticate with Amazon Bedrock:
 
 1. Return to the **IAM** menu. Select **Users** from the navigation menu.
 2. Search for the user you created, and click its name.
@@ -94,16 +97,22 @@ The following video demonstrates these steps (click to watch).
 
 
 
-## Configure the Amazon Bedrock connector [_configure_the_amazon_bedrock_connector]
+## Connect {{kib}} to Amazon Bedrock [_configure_the_amazon_bedrock_connector]
 
-::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-This connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+::::::{applies-switch}
 
-For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
-::::
+:::::{applies-item} { stack: ga 9.5+, serverless: ga }
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-Finally, configure the connector in {{kib}}:
+4. For **Provider**, select the provider of your model, for example Anthropic. For **Model**, enter the model ID.
+5. For **Region**, enter the AWS region where your model is available.
+6. Enter the access key and secret key that you generated earlier.
+7. Select the `chat_completion` task type, then select **Save**.
+:::::
+
+:::::{applies-item} stack: ga 9.0-9.4
+Create an Amazon Bedrock connector so that {{kib}} can use Amazon Bedrock models.
 
 1. Log in to {{kib}}.
 2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **Amazon Bedrock**.
@@ -130,3 +139,6 @@ If you’re using [provisioned throughput](https://docs.aws.amazon.com/bedrock/l
 The following video demonstrates these steps (click to watch).
 
 [![bedrock-configure-model-video](https://play.vidyard.com/QJe4RcTJbp6S6m9CkReEXs.jpg)](https://videos.elastic.co/watch/QJe4RcTJbp6S6m9CkReEXs?)
+:::::
+
+::::::

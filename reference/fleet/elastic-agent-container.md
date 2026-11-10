@@ -231,7 +231,10 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
     :screenshot:
     :::
 
-3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specifically, `metrics-kubernetes.*`. If you can’t see these indexes, [create a {{data-source}}](/explore-analyze/find-and-organize/data-views/create-data-view.md) for them.
+3. To view data flowing in, go to **Analytics → Discover**. To check the Kubernetes metrics:
+
+   - In {{esql}} mode, enter `FROM metrics-kubernetes.*`. To include all metrics data, enter `FROM metrics-*` instead.
+   - In classic mode, select a data view that matches `metrics-kubernetes.*`, or `metrics-*` for all metrics data. If you can’t see one, [create a {{data-source}}](/explore-analyze/find-and-organize/data-views/create-data-view.md) for it.
 4. To view predefined dashboards, either select **Analytics→Dashboard** or [install assets through an integration](/reference/fleet/view-integration-assets.md).
 
 

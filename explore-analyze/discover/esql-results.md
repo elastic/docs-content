@@ -11,40 +11,36 @@ description: Filter and sort ES|QL results in Discover, select columns, and turn
 
 # Work with {{esql}} results in Discover
 
-After an {{esql}} query runs in **Discover**, the results table shows what that query returned. You can filter the rows, sort them, and show the fields you want. You can also set the time filter, and the table and the chart use that time range.
-
-- **Rows:** [Filter from a value](#refine-esql-query-from-table), or [sort rows or change which rows the query returns](#_sorting). [Show more than 1,000 rows](#esql-kibana-results-table-limitations) with `LIMIT`.
-- **Columns:** [Show the fields you want](#esql-kibana-results-table), from the fields list or with `KEEP`. The table displays at most 50 columns.
-- **Matches:** [See highlighted matches in the table](#esql-kibana-results-highlights) when a query uses `HIGHLIGHT`, or `TOP_SNIPPETS` with highlighting turned on.
-- **Time filter and chart:** [Set the time filter for the table and the chart](#_esql_and_time_series_data). Discover applies the time filter when the data has an `@timestamp` field. If the time field has another name, name it in the query.
-
-To keep the chart or the table, [save the session or add it to a dashboard](#_edit_the_esql_visualization).
+After a query runs, you can shape what the results table shows without rewriting the query: keep or exclude rows by value, reorder them, select the columns you see, and spot where your search terms matched. This page also explains how the time filter applies to the table and the chart, and what happens when you cancel a long query.
 
 ## Before you begin
 
-- You need an {{esql}} query in **Discover** that returns rows. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
+- Make sure **Discover** is in {{esql}} mode. Classic mode doesn't support this functionality. To switch, refer to [Switch to Discover's {{esql}} mode](switch-esql-mode.md#switch-discover-query-mode).
+- You need an {{esql}} query that returns rows. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Filter from a value in the results table [refine-esql-query-from-table]
 
 Hover over a value in the results table, then filter for it or filter it out.
 
-- {icon}`plus_circle` **Filter for this** keeps that value. For example, ``WHERE `machine.os` == "osx"``.
-- {icon}`minus_circle` **Filter out this** excludes that value. For example, ``WHERE `machine.os` != "osx"``.
+- {icon}`plus_circle` **Filter for** keeps that value. For example, ``WHERE `machine.os` == "osx"``.
+- {icon}`minus_circle` **Filter out** excludes that value. For example, ``WHERE `machine.os` != "osx"``.
 
-  :::{image} /explore-analyze/images/kibana-discover-esql-filter-out.png
-  :alt: The value osx in the machine.os column, with Filter out this available.
-  :screenshot:
-  :width: 50%
-  :::
+The tooltips of these buttons read **Filter for this** or **Filter out this**, followed by the field name.
+
+:::{image} /explore-analyze/images/kibana-discover-esql-filter-out.png
+:alt: The value osx in the machine.os column, with the Filter out button available.
+:screenshot:
+:width: 50%
+:::
 
 :::{note}
 :applies_to: { serverless: ga, stack: ga 9.3+ }
-Filtering for multi-value fields translates into `WHERE MV_CONTAINS` or `WHERE NOT MV_CONTAINS` clauses. For example, ``WHERE MV_CONTAINS(`tags.keyword`, ["error", "security"]::keyword)``.
+Filtering for multi-value fields translates into `WHERE MV_CONTAINS` or `WHERE NOT MV_CONTAINS` clauses. For example, ``WHERE MV_CONTAINS(`tags.keyword`, ["error", "security"]::keyword)``. If Discover can't determine the field type, it uses `MATCH` clauses instead.
 :::
 
-{{esql}} mode has no filter bar, and dragging a field onto the table doesn't change the query.
+The query is the only place where the filter lives, so the filter shows up in the query text.
 
-**Result:** When you select **Filter for this** or **Filter out this**, Discover adds or completes a `WHERE` clause for that value, and the table shows the matching rows.
+**Result:** When you select **Filter for** or **Filter out**, Discover adds or completes a `WHERE` clause for that value, and the table shows the matching rows.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-filter-where.png
 :alt: An ES|QL query with a WHERE clause that excludes osx from machine.os.
@@ -54,7 +50,7 @@ Filtering for multi-value fields translates into `WHERE MV_CONTAINS` or `WHERE N
 
 ## Sort query results [_sorting]
 
-From the menu of a column, select **Sort High-Low** or **Sort Low-High**. Discover reorders the rows already in the table. The query stays the same, and Discover doesn't run it again.
+From the menu of a column, select a sort option. The labels depend on the column type: numeric columns offer **Sort Low-High** and **Sort High-Low**, text columns offer **Sort A-Z** and **Sort Z-A**, and date columns offer **Sort Old-New** and **Sort New-Old**. Discover reorders the rows already in the table. The query stays the same, and Discover doesn't run it again. The **Summary** column doesn't offer sorting.
 
 :::{image} /explore-analyze/images/kibana-discover-esql-sort-column.png
 :alt: The menu for the bytes column, with Sort High-Low highlighted.
@@ -82,24 +78,24 @@ FROM kibana_sample_data_logs
 
 ## Show specific columns in the results table [esql-kibana-results-table]
 
-### The Summary column and the time field
+### Understand the default columns
 
-Until you add fields, the table shows a **Summary** column of each result's key-value pairs. The time field is the first column when the data has `@timestamp`, or when the query names that field.
+If the query has no `KEEP`, `STATS`, or `PROMQL` command, the table shows a **Summary** column of each result's key-value pairs until you add fields. A query with one of these commands shows its result columns instead, up to the first 50 by default. The time field, which is the date field that the time filter uses, is the first column when the data has `@timestamp`, or when the query names that field.
 
 :::{note}
 :applies_to: { serverless: ga, stack: ga 9.4+ }
-When a query without a command such as `KEEP` or `STATS` returns five or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
+When a query without `KEEP`, `STATS`, or `PROMQL` returns five or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
 :::
 
-To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
+{applies_to}`stack: ga` {applies_to}`serverless: unavailable` To hide the time field, enable [**Hide 'Time' column** (`doc_table:hideTimeColumn`)](kibana://reference/advanced-settings.md#kibana-discover-settings).
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To inspect each result as an expandable tree of its fields instead of columns, set **View mode** to **JSON** in **Display options**. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
 ### Add a column from the fields list
 
-Add a field from the [fields list](discover-get-started.md#explore-fields-in-your-data) to show it as its own column. The query stays the same.
+Add a field from the [fields list in the sidebar](explore-fields.md) to show it as its own column. The query stays the same.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no command such as `KEEP` or `STATS`, the time field stays the first column after you add other fields. CSV exports from **Discover** and from Discover session panels on dashboards also include the time field.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` When the query has no `KEEP`, `STATS`, or `PROMQL` command, the time field stays the first column after you add other fields. CSV exports from **Discover** and from Discover session panels on dashboards also include the time field.
 
 ### Return specific fields with `KEEP`
 
@@ -121,6 +117,18 @@ To display all fields as separate columns, use `KEEP *`:
 FROM kibana_sample_data_logs
 | KEEP *
 ```
+
+### Add a calculated column with `EVAL` [esql-kibana-results-eval]
+
+To show a value that your data doesn't store, such as a size in kilobytes, calculate it in the query with the [`EVAL`](elasticsearch://reference/query-languages/esql/commands/eval.md) command. The calculated value becomes a column in the table. It exists only in that query, so your data and any data view stay as they are. If you're used to adding a [runtime field](add-fields-to-data-views.md) in classic mode, `EVAL` serves the same purpose.
+
+```esql
+FROM kibana_sample_data_logs
+| EVAL kb = bytes / 1024.0
+| KEEP @timestamp, bytes, kb
+```
+
+If your query uses `KEEP`, list the new column in it, or `KEEP` removes the column.
 
 ## See highlighted matches in the results table [esql-kibana-results-highlights]
 
@@ -150,18 +158,29 @@ Discover highlights matches for:
   | KEEP snippets
   ```
 
+## Tell whether results are approximate [esql-kibana-results-approximation]
+```{applies_to}
+serverless: preview
+stack: preview 9.6+
+```
+
+On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, approximation requires an [Enterprise subscription](https://www.elastic.co/subscriptions). Without one, **Fast mode** is unavailable.
+
+When {{es}} applies approximation to a query, for example because [**Fast mode**](../query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) is on or the query explicitly sets [`approximation = true`](../query-filter/languages/esql-kibana.md#esql-kibana-approximation), a {icon}`bolt` badge shows next to the chart actions and in the table toolbar. Hover over the badge to see why the results are approximate. For what the badge and the extra columns mean, refer to [Interpret approximate results](../query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
+
 ## Row and column limits [esql-kibana-results-table-limitations]
 
-If you omit `LIMIT`, the table shows up to 1,000 rows, or up to 10,000 rows for queries that start with `TS` or `PROMQL`. `LIMIT` can raise that to 10,000, which is as many rows as Discover displays. Aggregations still run on the full data set.
+If you omit `LIMIT`, the table shows up to 1,000 rows. When a query uses `TS` with `STATS`, or `PROMQL`, the default is 10,000 rows. To show more rows, add a `LIMIT`. By default, {{es}} returns at most 10,000 rows for a query, and a higher maximum applies to queries that use `TS` with `STATS`, or `PROMQL`. Aggregations still run on the full data set. {{es}} cluster settings define these limits. Refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
 
-- **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
-- **CSV export:** A CSV report of an {{esql}} query stops at a row limit that depends on your deployment. Queries and aggregations still run on the full data set. To find the limit, refer to [](save-open-search.md#export-discover-session-csv).
+- **Column limit:** For queries that use `KEEP`, `STATS`, or `PROMQL`, Discover shows the first 50 columns by default when the query returns more.
+- **Empty columns:** Discover doesn't show a column that has no value in any returned row.
+- **CSV export:** A CSV report of an {{esql}} query stops at a row limit that depends on your deployment. Queries and aggregations still run on the full data set. To find the limit, refer to [](export-discover-session.md#export-discover-session-csv).
 
 ## Set the time filter for the table and the chart [_esql_and_time_series_data]
 
 When the data has an `@timestamp` field, the time filter applies to the table and the chart.
 
-If the time field has another name, name it in the query with the `?_tstart` and `?_tend` parameters. For the editor behavior, refer to [Custom time parameters](../query-filter/languages/esql-kibana.md#_custom_time_parameters).
+If the time field has another name, reference it in the query with the `?_tstart` and `?_tend` parameters. These parameters hold the start and end of the time filter. For the editor behavior, refer to [Custom time parameters](../query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
 For example, the eCommerce sample data set has no `@timestamp` field. It has an `order_date` field. With this query, the time filter doesn't apply, and Discover shows no chart:
 
@@ -188,14 +207,33 @@ FROM kibana_sample_data_ecommerce
 
 To keep the chart or the table, use one of these options:
 
-- **Save the Discover session.** [Save a Discover session for reuse](save-open-search.md) explains the options.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Save the table to a dashboard.** [Customize the table](document-explorer.md#document-explorer-customize) explains how to configure it before you [save it](save-open-search.md#save-table-to-dashboard).
-- **Save the chart to a dashboard.** [Change the chart type and display options](../visualize/esorql.md#_edit_and_add_from_discover) explains how to configure it before you [save it](save-open-search.md#add-discover-visualization-esql).
+- **Save the Discover session.** [Save and manage Discover sessions](save-open-search.md) explains the options.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Save the table to a dashboard.** [Customize the table](document-explorer.md#document-explorer-customize) explains how to configure it before you [save it](use-sessions-in-dashboards.md#save-table-to-dashboard).
+- **Save the chart to a dashboard.** [Change the chart type and display options](../visualize/esorql.md#_edit_and_add_from_discover) explains how to configure it before you [save it](use-sessions-in-dashboards.md#add-discover-visualization-esql).
+
+## Cancel a query and partial results [cancel-query-in-discover]
+
+:::{include} ../_snippets/discover-cancel-query.md
+:::
+
+:::{important}
+:applies_to: { serverless: ga, stack: ga 9.1+ }
+Partial results appear when an {{esql}} query times out or when you cancel it.
+
+- The query times out. The timeout depends on your deployment and version:
+  - {applies_to}`serverless: ga` In serverless projects, the timeout is fixed at 20 minutes.
+  - {applies_to}`stack: ga 9.6+` The [`search:timeout`](kibana://reference/advanced-settings.md#kibana-search-settings) advanced setting defines the timeout. The default is 20 minutes (1200000 ms).
+  - {applies_to}`stack: ga 9.1-9.5` The `search:timeout` advanced setting defines the timeout. The default is 10 minutes (600000 ms).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` You cancel the query.
+:::
+
+## Next steps
+
+- To get an AI-written analysis of your results, refer to [Analyze your data with AI](analyze-discover-data-with-ai.md).
+- To look inside groups of `STATS` results, refer to [Inspect grouped STATS results in Discover](inspect-grouped-stats.md).
+- To keep your work, refer to [Save and manage Discover sessions](save-open-search.md).
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
-- [Analyze your data with AI](discover-get-started.md#analyze-with-ai)
-- [Inspect grouped STATS results in Discover](inspect-grouped-stats.md)
-- [Save a Discover session for reuse](save-open-search.md)
+- [How to query in Discover's {{esql}} mode](use-esql.md)
 - [Customize the Discover view](document-explorer.md)

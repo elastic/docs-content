@@ -43,12 +43,21 @@ stack: experimental 9.6+
 
 Experimental features are new {{alerting-v2-system}} capabilities that are still in development. They can change or be removed in a future release, so avoid relying on them in production.
 
+When the setting is on, you can chain rules into a sequence and detect multi-step alert patterns. On the **Rules** page, select **Build a sequence**.
+
 To turn them on:
 
 1. Switch to the space where you want the features.
 2. Go to the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. On the **Space Settings** tab, turn on **Universal Alerting: Experimental Features**.
 4. Select **Save changes**, then reload {{kib}}.
+
+You can create rules and action policies with {{agent-builder}} while this setting is off.
+
+- On the **Rules** page, select **Create rule** → **Create with agent**. When the Rules list is empty, select **With AI Agent**.
+- On the **Action Policies** page, select **Create policy** → **Create with agent**. When the Action Policies list is empty, select **Create with AI Agent**.
+
+{{agent-builder}} has [its own requirements](rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
 
 ### Keep the {{observability}} Alerts page for {{alerting-v1-system}} [alerting-setup-v1-alerts-page]
 
@@ -79,8 +88,8 @@ This hides the UI and turns off the APIs. Your rules, action policies, and alert
 
 Rules and action policies keep running after you turn off the setting. To stop them:
 
-- {applies_to}`serverless: ga` [Contact Elastic support](/troubleshoot/index.md#contact-us).
-- {applies_to}`stack: ga 9.6+` Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
+- On {{serverless-short}}, [contact Elastic support](/troubleshoot/index.md#contact-us).
+- On {{stack}}, set [`xpack.alerting_v2.enabled`](kibana://reference/configuration-reference/alerting-settings.md) to `false` in `kibana.yml`, then restart {{kib}}.
 
 ## Next steps [alerting-setup-next-steps]
 
