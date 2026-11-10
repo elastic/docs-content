@@ -111,6 +111,7 @@ Specific {{kib}} privileges for each artifact type—such as event filters or tr
 * Blocklist items
 * Event filters
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` {{elastic-endpoint}} exceptions (after opting in to per-policy assignment) 
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Custom YARA signatures
 
 The **Global Artifact Management** privilege grants full control over artifacts in any space. This privilege by itself does not enable you to manage the different artifact types, but rather grants additional privileged actions to users who also have the **All** privilege for a given artifact type. This includes the ability to:
 

@@ -101,6 +101,7 @@ When you downgrade your Security project features selection from **Security Anal
 * Endpoint response actions history
 * Endpoint host isolation exceptions
 * Trusted devices
+* Custom YARA signatures
 * AI Assistant
 * Attack discovery
 

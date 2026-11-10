@@ -1020,6 +1020,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to disable scanning memory for trampolines, even if Memory Threat protection is enabled. Memory Threat protection will remain effective even without this scan.
 
 
+`[linux,mac,windows].advanced.memory_protection.user_yara_rescan_interval_seconds`
+:   Added in 9.6.0.
+
+    *Specify the interval, in seconds, at which memory is re-scanned using custom YARA signatures. Default: `86400`.*
+
+
 `windows.advanced.mitigations.policies.redirection_guard`
 :   Added in 9.3.0.
 
