@@ -25,6 +25,10 @@ Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/el
 
 You can use this quickstart with any type of deployment, although for most search use cases we recommend creating a free [{{es}} {{vectordb}} project](https://cloud.elastic.co/serverless-registration?onboarding_token=vector).
 
+:::{note}
+Some features that search use cases rely on work differently on {{serverless-short}} than on {{ech}}. For example, {{serverless-short}} uses data stream lifecycle instead of {{ilm-init}}. To check the features you depend on, refer to [Compare {{ech}} and {{serverless-short}}](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#indexing-search-and-analysis).
+:::
+
 The project takes about a minute to start. The **Getting started** page then displays the **{{es}} endpoint** and a generated API key. Copy both values. If you need a new API key, refer to [Create an API key](/solutions/search/set-up/api-key-and-endpoints.md#get-your-api-key).
 
 You can follow the examples in Python, TypeScript, PHP, Ruby, C#/.NET, Java, or Go, with curl, or in the {{kib}} [**Dev Tools**](/explore-analyze/query-filter/tools/console.md) Console. If you use Console, you don't need to connect or install a client: after you set up {{es}}, start at [Create an index and add data](#vector-full-text-search-add-data).
