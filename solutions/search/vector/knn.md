@@ -56,10 +56,6 @@ If a kNN search fails or returns no results, [troubleshoot the indexed vectors](
 
 If you're using {{serverless-full}}, [compare {{es}} and {{vectordb}} projects](/solutions/vector-database.md#when-to-use-this-project-type) before implementing kNN search.
 
-## Confirm that your vectors are searchable [verify-embeddings]
-
-If a kNN search fails, returns no results, or does not return the expected document, verify that your indexed vectors are available and compatible with the query. Follow [Resolve missing or unexpected kNN search results](knn/troubleshoot-knn-search.md) to check the stored embeddings, field mapping, model, and query.
-
 ## kNN search methods [knn-methods]
 
 {{es}} provides two ways to perform kNN search. Select a method based on your dataset size, latency requirements, and whether you need exact scoring.
@@ -175,6 +171,10 @@ POST image-index/_search
 For approximate kNN similarity thresholds, hybrid search, multiple vector fields, and aggregations, refer to [Approximate kNN query examples](knn/approximate-knn-query-examples.md). For filtering, refer to [Filter approximate kNN results](knn/filtered-knn-search.md).
 
 For exact kNN filtering and scoring examples, refer to [Exact kNN search](knn/exact-knn.md).
+
+## Troubleshoot kNN search results [verify-embeddings]
+
+If a kNN search fails, returns no results, or does not return the expected document, verify that your indexed vectors are available and compatible with the query. Follow [Resolve missing or unexpected kNN search results](knn/troubleshoot-knn-search.md) to check the stored embeddings, field mapping, model, and query.
 
 ## Next steps
 
