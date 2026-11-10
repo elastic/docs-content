@@ -2,7 +2,8 @@
 navigation_title: Route by severity
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to route alerts to different workflows based on severity level."

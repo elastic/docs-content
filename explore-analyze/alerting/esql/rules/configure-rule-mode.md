@@ -2,7 +2,8 @@
 navigation_title: Rule mode
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How rule mode determines whether Kibana opens an alert or keeps matching rows available for later analysis, and when to use each."

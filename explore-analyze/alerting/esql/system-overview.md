@@ -2,7 +2,8 @@
 navigation_title: "{{alerting-v2-system}}"
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless

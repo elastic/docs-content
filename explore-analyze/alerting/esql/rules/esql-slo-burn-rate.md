@@ -2,7 +2,8 @@
 navigation_title: SLO burn rate
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Detect SLO error budget burn across multiple time windows using ES|QL conditional aggregation."

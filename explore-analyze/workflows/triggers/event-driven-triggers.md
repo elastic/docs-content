@@ -20,8 +20,8 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` **`workflows.failed`**: Fires when another workflow's execution fails.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Cases triggers**: Fire when cases change (created, updated, status changed, attachments added, comments added).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers**: Fire when an entity's asset criticality or risk score changes in the entity store.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system-short}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
+- {applies_to}`observability: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
+- {applies_to}`observability: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system-short}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **{{agent-builder}} triggers**: Fire when a conversation attachment is added, updated, or deleted, or when conversation metadata changes. `ai.conversation.updated` also fires for other conversation changes, but only for conversation templates that have it turned on.
 
 
@@ -454,7 +454,8 @@ triggers:
 ## Alert lifecycle triggers in {{alerting-v2-system-short}} [alert-episode-lifecycle-triggers-event-driven]
 
 ```{applies_to}
-serverless: preview
+serverless:
+  observability: preview
 stack: preview 9.6+
 ```
 
@@ -505,7 +506,8 @@ Use these fields to write workflow conditions that scope the automation to speci
 ## Rule lifecycle triggers in {{alerting-v2-system-short}} [alerting-rule-lifecycle-triggers-event-driven]
 
 ```{applies_to}
-serverless: preview
+serverless:
+  observability: preview
 stack: preview 9.6+
 ```
 

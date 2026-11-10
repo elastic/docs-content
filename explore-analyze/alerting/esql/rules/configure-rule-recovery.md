@@ -2,7 +2,8 @@
 navigation_title: Recovery condition
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to configure when and how an alert recovers: the recovery strategy and the delay before an alert closes."

@@ -2,7 +2,8 @@
 navigation_title: ES|QL query
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to structure the ES|QL detection query for a rule: the base query, the alert condition, and dynamic parameters for time bounds and thresholds."

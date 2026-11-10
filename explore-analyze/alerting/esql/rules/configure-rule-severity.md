@@ -2,7 +2,8 @@
 navigation_title: Severity
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Assign severity levels to alerts using a severity column in ES|QL query output."

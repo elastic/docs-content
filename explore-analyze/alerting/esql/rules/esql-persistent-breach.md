@@ -2,7 +2,8 @@
 navigation_title: Persistent breach detection
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Detect conditions that persist across consecutive time buckets using ES|QL bucket counting."

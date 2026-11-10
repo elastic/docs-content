@@ -2,7 +2,8 @@
 navigation_title: Rule events
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Rule events are the append-only documents Kibana writes to .rule-events for every matching row. Use them to replay alerts, investigate type signal events, and build dashboards."

@@ -2,7 +2,8 @@
 navigation_title: Tags, runbooks, and dashboards
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Add tags, runbooks, and related dashboards to rules, for filtering, triage context, and investigation dashboards."

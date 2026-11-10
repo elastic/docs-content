@@ -2,7 +2,8 @@
 navigation_title: Create an ES|QL rule
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Write ES|QL detection queries for rules using the rule form or YAML editor, with a live query sandbox for previewing results."

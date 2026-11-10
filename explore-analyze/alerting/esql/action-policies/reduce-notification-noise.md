@@ -2,7 +2,8 @@
 navigation_title: Reduce notification noise
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Silence alert notifications by acknowledging, snoozing, or resolving alerts, or with a maintenance window."

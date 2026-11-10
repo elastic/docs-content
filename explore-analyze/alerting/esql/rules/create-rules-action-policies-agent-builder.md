@@ -1,8 +1,9 @@
 ---
 navigation_title: Create rules using Agent Builder
 applies_to:
-  stack: experimental 9.6+
-  serverless: experimental
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Create Kibana Universal Alerting rules and action policies with Agent Builder. Describe what to monitor in natural language, review the proposal, and save the rule, workflow, and action policy."
@@ -17,8 +18,8 @@ Use an agent with the [`rule-authoring`](/explore-analyze/ai-features/agent-buil
 Before you start, make sure you have the following:
 
 - **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
-- {applies_to}`stack: experimental 9.6+` **A space that uses the Classic or {{observability}} solution view** - The `rule-authoring` and `action-policy-authoring` skills aren't available in other spaces.
-- {applies_to}`serverless: experimental` **An {{obs-serverless}} project** - The `rule-authoring` and `action-policy-authoring` skills aren't available in other project types.
+- {applies_to}`stack: ga 9.6+` **A space that uses the Classic or {{observability}} solution view** - The `rule-authoring` and `action-policy-authoring` skills aren't available in other spaces.
+- {applies_to}`observability: ga` **An {{obs-serverless}} Complete project** - {{obs-serverless}} Logs Essentials projects don't include {{agent-builder}}.
 - **The required privileges** - Your role needs the [privileges to use {{agent-builder}} and save rules and action policies](../manage/configure-access.md#alerting-agent-builder-privileges).
 
 ## Propose and save a rule [ai-agent-rule-proposal]

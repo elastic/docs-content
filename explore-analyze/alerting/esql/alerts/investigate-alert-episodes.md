@@ -2,7 +2,8 @@
 navigation_title: Investigate alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Investigate alerts. Understand what triggered an alert, assess metric behavior, find related alerts, review responders, and inspect underlying data."

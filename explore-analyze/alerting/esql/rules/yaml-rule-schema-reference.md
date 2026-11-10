@@ -2,7 +2,8 @@
 navigation_title: YAML rule schema reference
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "YAML rule definitions support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."

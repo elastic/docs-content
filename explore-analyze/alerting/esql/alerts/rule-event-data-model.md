@@ -2,7 +2,8 @@
 navigation_title: How Kibana stores rule events
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Kibana stores rule events in .rule-events. The episode.* lifecycle fields apply only to type alert. Triage actions go to .alert-actions."

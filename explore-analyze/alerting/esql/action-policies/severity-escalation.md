@@ -2,7 +2,8 @@
 navigation_title: Severity escalation
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to manage notifications when alert severity changes, including escalation, de-escalation, and duplicate notification prevention."

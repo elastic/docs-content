@@ -1,7 +1,8 @@
 ---
 navigation_title: Review rule change history
 applies_to:
-  serverless: ga
+  serverless:
+    observability: ga
   stack: ga 9.6+
 products:
   - id: kibana

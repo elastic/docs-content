@@ -2,7 +2,8 @@
 navigation_title: View and manage alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Monitor alerts with KPI panels, a histogram, and filters. Triage and investigate alerts from the same page."

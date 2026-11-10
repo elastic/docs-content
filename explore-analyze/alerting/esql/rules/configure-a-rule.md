@@ -2,7 +2,8 @@
 navigation_title: Configure a rule
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Overview of configurable rule settings: required settings (mode, query, schedule) and optional settings (severity, grouping, alert delay, recovery, no-data, artifacts)."

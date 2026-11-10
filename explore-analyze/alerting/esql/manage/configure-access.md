@@ -2,7 +2,8 @@
 navigation_title: Configure access
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -27,7 +28,7 @@ The following table shows the minimum privileges for each activity. Higher privi
 | Monitor rule execution | **Execution history: Read** (under **Universal Alerting**) |
 | Triage alerts | **Alerts: All** (under **Universal Alerting**) |
 | Configure notifications | **Action Policies: All** (under **Universal Alerting**) + **Workflows: Read** (under **Analytics** → **Workflows**) |
-| Create rules and action policies with {{agent-builder}} {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
+| Create rules and action policies with {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
@@ -99,11 +100,6 @@ Action policies invoke workflows, which send notifications. The **Workflows** pr
 | **Read** | View and select existing workflows in action policies |
 
 ## Create rules and action policies with {{agent-builder}} [alerting-agent-builder-privileges]
-
-```{applies_to}
-serverless: experimental
-stack: experimental 9.6+
-```
 
 To create rules and action policies with [{{agent-builder}}](../rules/create-rules-action-policies-agent-builder.md), your role needs these privileges:
 

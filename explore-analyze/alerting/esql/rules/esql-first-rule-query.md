@@ -2,7 +2,8 @@
 navigation_title: Your first rule query
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Write your first ES|QL rule query. Covers the minimum query structure and how to adapt it to your data."

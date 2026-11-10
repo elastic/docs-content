@@ -2,7 +2,8 @@
 navigation_title: Set up
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -19,6 +20,7 @@ If you tried {{alerting-v2-system-short}} while it was experimental in {{stack}}
 
 ## Before you begin [alerting-setup-requirements]
 
+- **An {{observability}} project, if you use {{serverless-short}}**: {{alerting-v2-system-short}} isn't available in {{es-serverless}}, {{sec-serverless}}, or {{vectordb}} projects.
 - **Data to query**: Rules can only find conditions in data that's already in {{es}}. [Ingest your data](/manage-data/ingest.md) before you create rules.
 - **A space to work in**: Rules, [action policies](action-policies/about-action-policies.md), and the privileges that control them belong to a single space. [Create or switch spaces](/deploy-manage/manage-spaces.md) if you need to.
 - **A connector, if you want notifications**: [Workflows](workflows-alerting.md) send notifications through [connectors](/deploy-manage/manage-connectors.md), such as Slack, email, or PagerDuty.
@@ -37,7 +39,8 @@ Three advanced settings change how {{alerting-v2-system-short}} works. A space s
 ### Try experimental features in a space [alerting-setup-experimental-features]
 
 ```yaml {applies_to}
-serverless: experimental
+serverless:
+  observability: experimental
 stack: experimental 9.6+
 ```
 
@@ -60,12 +63,6 @@ You can create rules and action policies with {{agent-builder}} while this setti
 {{agent-builder}} has [its own requirements](rules/create-rules-action-policies-agent-builder.md#create-ai-agent-requirements).
 
 ### Keep the {{observability}} Alerts page for {{alerting-v1-system}} [alerting-setup-v1-alerts-page]
-
-```yaml {applies_to}
-serverless:
-  observability: ga
-stack: ga 9.6+
-```
 
 With {{alerting-v2-system-short}} on, a new **Alerts** page that shows alerts from both systems replaces the {{observability}} **Alerts** page, which shows only {{alerting-v1-system-short}} alerts. You can find the new page in the **Alerting** menu. To keep the old page as well, turn on the **Classic Alerting: Show Classic Alerts table** setting. The old page then appears as **Alerts (Classic)** in the **Alerting** menu.
 

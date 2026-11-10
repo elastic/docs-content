@@ -2,7 +2,8 @@
 navigation_title: Triage alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Take triage actions on alerts. Acknowledge, snooze, resolve, reopen, tag, and assign alerts individually or in bulk."
@@ -85,4 +86,4 @@ You can't unresolve or assign {{alerting-v1-system-short}} alerts, or open them 
 
 To add a {{alerting-v1-system-short}} alert from an Observability rule to a case, turn on the [**Classic Alerting: Show Classic Alerts table**](../setup.md#alerting-setup-v1-alerts-page) advanced setting in the space, then add the alert from the **Alerts (Classic)** page.
 
-{applies_to}`serverless: ga` You can't add {{alerting-v1-system-short}} alerts to cases from the **Alerts** page.
+{applies_to}`observability: ga` You can't add {{alerting-v1-system-short}} alerts to cases from the **Alerts** page.

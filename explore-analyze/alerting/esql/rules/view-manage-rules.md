@@ -2,7 +2,8 @@
 navigation_title: View and manage rules
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Search, filter, and bulk-manage rules. Use inline editing, the rule summary flyout, and the rule details page to manage rules."

@@ -2,7 +2,8 @@
 navigation_title: Connect workflows
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How action policies and alert lifecycle triggers invoke workflows, and when to use each."
@@ -23,7 +24,8 @@ In {{alerting-v2-system-short}}, [workflows](../../workflows.md) define what hap
 ### Alert lifecycle triggers [alert-episode-lifecycle-triggers]
 
 ```{applies_to}
-serverless: preview
+serverless:
+  observability: preview
 stack: preview 9.6+
 ```
 

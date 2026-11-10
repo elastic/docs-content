@@ -2,7 +2,8 @@
 navigation_title: No-data handling
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to configure the no-data strategy for rules: hold the last known alert state, trigger recovery, or ignore an empty query result."

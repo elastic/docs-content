@@ -2,7 +2,8 @@
 navigation_title: ES|QL query patterns
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "ES|QL query patterns for rules, from basic event filters to SLO burn rates, silent source detection, and persistent breach checks."

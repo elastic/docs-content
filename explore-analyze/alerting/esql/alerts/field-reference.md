@@ -2,7 +2,8 @@
 navigation_title: Field reference
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Query alerting data in Discover with .rule-events and .alert-actions field schemas. Reference tables list shared rule event fields, episode.* fields, and all action_type values."

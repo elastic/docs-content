@@ -2,7 +2,8 @@
 navigation_title: Alert delay
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Configure alert delay for rules that group matches into an alert, to reduce noise from brief spikes before the alert opens."

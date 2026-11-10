@@ -2,7 +2,8 @@
 navigation_title: Alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Alerts track a problem from first detection through recovery. Alerts belong to a series that groups recurrences of the same condition."
