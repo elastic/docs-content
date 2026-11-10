@@ -14,7 +14,9 @@ products:
 
 # Maintenance windows
 
-You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
+Maintenance windows are part of {{alerting-v1-system}}. You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`observability: ga` Maintenance windows also apply to {{alerting-v2-system-short}}, where they [pause action policy dispatch](/explore-analyze/alerting/esql/action-policies/manage-action-policies.md#maintenance-windows).
 
 By default, a maintenance window affects all rules in all {{kib}} apps within its space. You can refine the scope of a maintenance window by adding filters and rule categories.
 
