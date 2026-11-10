@@ -161,15 +161,11 @@ To add a role assignment to your app:
 
 ## Step 3: Configure the Azure OpenAI integration [azure-openai-configure-integration]
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **Azure OpenAI** and select the Azure OpenAI integration card.
-3. Click **Add Azure OpenAI**.
-4. Under Integration settings, configure the integration name and optionally add a description.
-
-    ::::{tip}
-    If you don’t have options for configuring the integration, you’re probably in a workflow designed for new deployments. Follow the steps, then return to this tutorial when you’re ready to configure the integration.
-    ::::
-
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Azure OpenAI**.
+3. If the integration's **Overview** page opens, click **Add Azure OpenAI**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
+5. Under Integration settings, configure the integration name and optionally add a description.
 
 
 ### Configure logs collection [azure-openai-configure-integration-logs]
@@ -268,7 +264,7 @@ For more on dashboards and visualization, refer to the [Dashboards and visualiza
 
 ### View logs and metrics with Discover [azure-openai-discover]
 
-Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the data view drop-down, select either `logs-*` or `metrics-*` to view specific data. You can also create data views if, for example, you wanted to view both `logs-*` and `metrics-*` simultaneously.
+Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). In {{esql}} mode, enter `FROM logs-*` or `FROM metrics-*` to view specific data, or `FROM logs-*,metrics-*` to view both simultaneously. In classic mode, select either `logs-*` or `metrics-*` from the data view drop-down. You can also create a data view if, for example, you wanted to view both `logs-*` and `metrics-*` simultaneously.
 
 ![screenshot of the Discover data view dropdown](/solutions/images/observability-discover-data-view-menu.png "")
 
@@ -292,7 +288,7 @@ For this tutorial, we’ll be using an [example Python application](https://gith
 
 To start collecting {{product.apm}} data for your Azure OpenAI applications, gather the OpenTelemetry OTLP exporter endpoint and authentication header from the {{product.apm}} integration in {{kib}}:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **APM** integration.
 3. Scroll down to **APM Agents** and select the **OpenTelemetry** tab.
 4. Make note of the configuration values for the following configuration settings:

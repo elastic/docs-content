@@ -33,7 +33,7 @@ Send metrics to the Managed OTLP Endpoint. Use the setup that matches the source
 - **Application metrics:** Point your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
 - **Infrastructure metrics (host, {{k8s}}, Docker):** Run {{agent}} configured as an OTel Collector on your hosts or cluster and point its OTLP exporter at the endpoint. The [quickstarts](/solutions/observability/metrics/get-started.md#metrics-get-started-quickstart) set this up for you. For the exporter and pipeline configuration, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
 
-The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
+The {{es}} OTLP endpoint isn't a supported ingest path on {{serverless-full}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](/reference/managed-inputs/managed-otlp-endpoint.md).
 ::::
 
 ::::{applies-item} ech:
@@ -42,7 +42,7 @@ Send metrics to the Managed OTLP Endpoint. Use the setup that matches the source
 - **Application metrics:** Point your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) or any OTLP-compatible exporter directly at the endpoint. No {{agent}} required.
 - **Infrastructure metrics (host, {{k8s}}, Docker):** Run {{agent}} configured as an OTel Collector on your hosts or cluster and point its OTLP exporter at the endpoint. The [quickstarts](/solutions/observability/metrics/get-started.md#metrics-get-started-quickstart) set this up for you. For the exporter and pipeline configuration, refer to [Using the Managed OTLP Endpoint](elastic-agent://reference/edot-collector/config/default-config-standalone.md#using-the-managed-otlp-endpoint).
 
-The {{es}} OTLP endpoint isn't a supported ingest path on {{ech}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md).
+The {{es}} OTLP endpoint isn't a supported ingest path on {{ech}}: use the Managed OTLP Endpoint instead. For authentication, endpoint URL, and protocol details, refer to [Managed OTLP Endpoint](/reference/managed-inputs/managed-otlp-endpoint.md).
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
@@ -102,11 +102,11 @@ The remote write endpoint depends on your deployment:
 :::::{applies-switch}
 
 ::::{applies-item} serverless:
-Use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md). Managed inputs, the endpoints {{ecloud}} runs for you, provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}. Sending remote write traffic directly to the {{es}} endpoint bypasses that.
+Use the [Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md). Managed inputs, the endpoints {{ecloud}} runs for you, provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}. Sending remote write traffic directly to the {{es}} endpoint bypasses that.
 ::::
 
 ::::{applies-item} ech:
-{applies_to}`stack: ga 9.4+` Use the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md). Managed inputs, the endpoints {{ecloud}} runs for you, provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}. Sending remote write traffic directly to the {{es}} endpoint bypasses that.
+{applies_to}`stack: ga 9.4+` Use the [Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md). Managed inputs, the endpoints {{ecloud}} runs for you, provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}. Sending remote write traffic directly to the {{es}} endpoint bypasses that.
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }

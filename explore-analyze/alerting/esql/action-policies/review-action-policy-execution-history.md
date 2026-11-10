@@ -2,7 +2,8 @@
 navigation_title: Review action policy execution history
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Monitor action policy dispatch activity from the execution history. Understand dispatched, throttled, and unmatched outcomes, search and filter records, and query the event log in Discover."
@@ -12,7 +13,7 @@ description: "Monitor action policy dispatch activity from the execution history
 
 In {{alerting-v2-system}}, action policy execution history shows dispatcher decisions from the last 24 hours across all action policies in the space, so you can confirm notifications are dispatching as expected or investigate unexpected notification behavior.
 
-Go to **Alerting** → **Execution History** in the {{observability}} navigation menu, or find **Execution History** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the **Action policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alerts it processed:
+Go to **Alerting** → **Execution history** in the {{observability}} navigation menu, or find **Execution history** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the **Action policies** tab. Each row covers one dispatcher run for one action policy, grouped by the rule whose alerts it processed:
 
 | Column | Description |
 |---|---|
@@ -35,6 +36,8 @@ Go to **Alerting** → **Execution History** in the {{observability}} navigation
 
 You can search records by action policy name, rule name, or saved-object ID, and filter by outcome to view only dispatched, throttled, or failed records.
 
+To review the dispatcher's decisions for a single alert across its whole lifetime, open the [**Policy history** tab](../alerts/investigate-alert-episodes.md#policy-history) on that alert's details page.
+
 ## Dispatch outcomes [dispatch-outcomes]
 
 After each dispatcher run, {{kib}} records an outcome for each action policy in the event log. The **Action policies** tab shows these outcomes:
@@ -45,7 +48,7 @@ After each dispatcher run, {{kib}} records an outcome for each action policy in 
 | **Throttled** | `throttled` | The alert matched an action policy but was rate-limited by the frequency setting, so no workflow ran. This is expected behavior, not an error. |
 | **Failed** | `dispatch_failed` | The dispatcher failed to invoke the workflow, so no workflow ran. The row shows the failure reason: `missing_api_key`, `workflow_not_found`, `workflow_disabled`, `schedule_error`, or `license_not_supported`. The outcome's tooltip shows the error message. |
 
-When no action policy matches an alert, the event log records `unmatched`, and no workflow runs. These records don't appear in the execution history. To find them, open Discover and query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
+When no action policy matches an alert, the event log records `unmatched`, and no workflow runs. These records don't appear in the execution history. To find them, open Discover. In {{esql}} mode, run `FROM .kibana-event-log-* | WHERE event.provider == "alerting_v2" AND event.action == "unmatched"`. In classic mode, query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
 
 :::{note}
 Alerts that are acknowledged, snoozed, resolved, or covered by a [maintenance window](../../alerts/maintenance-windows.md) fail the eligibility check, so the dispatcher doesn't evaluate action policies for them. They don't appear in the execution history.

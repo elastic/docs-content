@@ -9,9 +9,9 @@ products:
   - id: kibana
 ---
 
-# Set up {{kib}} alerting [alerting-setup]
+# Set up {{alerting-v1-system}} [alerting-setup]
 
-{{kib}} alerting is the built-in alerting system in {{kib}}. {{alert-features}} are automatically enabled, but might require some additional configuration.
+{{alerting-v1-system}} is the built-in alerting system in {{kib}}. {{alert-features}} are automatically enabled, but might require some additional configuration.
 
 ## Prerequisites [alerting-prerequisites]
 

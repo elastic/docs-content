@@ -864,6 +864,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
     :::
 
 
+`windows.advanced.kernel.registry_credential_hardening.descendants`
+:   Added in 9.6.0.
+
+    *Also block saving subkeys of protected credential registry hives (for example, `HKLM\SYSTEM\Select`). Only applies when registry credential hardening is enabled. Default: `true`.*
+
+
 `windows.advanced.kernel.registryaccess`
 :   Added in 7.15.0.
 
