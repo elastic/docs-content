@@ -119,7 +119,7 @@ $$$agent-builder-ki-retrieval-skill$$$ `ki-retrieval` {applies_to}`stack: experi
 
 For the relationship between these skills, AI indices, automations, and KIs, refer to [{{context-engine}} concepts](/explore-analyze/ai-features/context-engine/concepts.md).
 
-### Cases and alerting
+### Cases
 
 $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Manages investigation and incident cases across {{elastic-sec}}, {{observability}}, and Stack Management. Covers creating, updating, searching, and enriching cases with comments, alerts, events, and observables such as indicators of compromise.
@@ -131,8 +131,10 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 
     :::
 
+### {{alerting-v2-system}}
+
 $$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$$$ `rule-authoring` {applies_to}`stack: ga 9.6+` {applies_to}`observability: ga`
-:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover:
+:   Composes, discovers, and modifies {{alerting-v2-system-short}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover:
 
     * [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) rules
     * {{observability}} rules created with {{alerting-v1-system-short}}
