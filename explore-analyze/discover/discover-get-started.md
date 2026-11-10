@@ -53,9 +53,9 @@ The various profiles listed show details such as the active solution and data so
 Select the data you want to explore, and then specify the time range in which to view that data.
 
 1. Find **Discover** in the navigation menu or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the data view that contains the data you want to explore.
+2. Make sure **Discover** is in [classic mode](switch-esql-mode.md#revert-to-classic-mode), then select the data view that contains the data you want to explore.
    ::::{tip}
-   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
+   In classic mode, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
    You can also [use {{esql}}](try-esql.md), which lets you query any data you have in {{es}} without specifying a {{data-source}} first.
 
@@ -264,7 +264,7 @@ To copy a link that reopens this document, select {icon}`link` **Copy link** in 
 ## Search and filter data [search-in-discover]
 
 
-### Default mode: Search and filter using KQL [_default_mode_search_and_filter_using_kql]
+### Search and filter using KQL in classic mode [_default_mode_search_and_filter_using_kql]
 
 One of the unique capabilities of **Discover** is the ability to combine free text search with filtering based on structured data. To search all fields, enter a simple string in the query bar.
 
