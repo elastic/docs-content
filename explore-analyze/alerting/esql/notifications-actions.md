@@ -2,7 +2,8 @@
 navigation_title: Notifications and actions
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to set up notifications and actions for rules. Action policies invoke workflows, which send the notification."
@@ -10,7 +11,7 @@ description: "How to set up notifications and actions for rules. Action policies
 
 # Notifications and actions in {{alerting-v2-system}} [notifications-actions]
 
-To notify people or run automation for an alert in {{alerting-v2-system}}, build a workflow and create an action policy that invokes it. Action policies act only on alerts, so the rule's [mode](rules/configure-rule-mode.md) must be **Detect and respond** or **Alert** (depending on your {{stack}} version).
+To notify people or run automation for an alert in {{alerting-v2-system-short}}, build a workflow and create an action policy that invokes it. Action policies act only on alerts, so the rule's [mode](rules/configure-rule-mode.md) must be **Detect and respond** or **Alert** (depending on your {{stack}} version).
 
 :::{note}
 To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
@@ -18,7 +19,7 @@ To use workflows, your role must have the appropriate privileges and your subscr
 
 ## Send notifications or trigger an action
 
-To send a notification or trigger an action from a rule in {{alerting-v2-system}}:
+To send a notification or trigger an action from a rule in {{alerting-v2-system-short}}:
 
 1. [Build a workflow](../../workflows/get-started/build-your-first-workflow.md) that defines what to do, for example, send a message, call a webhook, open a case, or run any other automation.
 

@@ -80,7 +80,7 @@ In role management, features are organized into the following groups.
 | Group | What it contains |
 | --- | --- |
 | **Analytics** | Privileges for the features you use to explore and visualize data. Refer to [Privileges in the Analytics group](#kibana-privileges-analytics). |
-| **Universal Alerting** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). |
+| **Universal Alerting** {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). |
 | **Elasticsearch** | Privileges for {{es}} features. |
 | **Observability** | Privileges for Elastic {{observability}} features. Refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md). |
 | **Security** | Privileges for {{elastic-sec}} features. Refer to [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md). |
@@ -144,6 +144,8 @@ Each of the following privileges controls access to a different feature.
 | **Context Engine** {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` | Access [{{context-engine}}](/explore-analyze/ai-features/context-engine.md). **Read** allows viewing AI indices and retrieving context. **All** also allows creating, editing, and deleting AI indices. Users need separate {{es}} index privileges to access backing indices and source data. |
 | **Agent Builder - Semantic Metadata Layer (SML)** {applies_to}`stack: ga 9.5+` | Access the semantic metadata that {{agent-builder}} uses to interpret your data.<br> {applies_to}`stack: ga =9.5` This privilege is called **Agent Context Layer**. |
 | **Workflows** {applies_to}`stack: ga 9.3+` | Access [Workflows](/explore-analyze/workflows.md), and create, edit, and run workflows. Turn on **Customize sub-feature privileges** to grant individual workflow privileges. For the full list, refer to [Workflows sub-feature privileges](#kibana-privileges-workflows-subfeatures). |
+| **Proposed Actions** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | View {{az-proposed-actions}}, which are recommendations an agent makes for a user to decide on. **All** also allows users to approve or decline them. |
+| **Agentic Investigations** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | View {{az-investigations}} and {{az-escalations}}. Turn on **Customize sub-feature privileges** to grant individual {{az-investigation}} and {{az-escalation}} privileges. For the full list, refer to [Agentic Investigations sub-feature privileges](#kibana-privileges-agentic-investigations-subfeatures). |
 :::
 
 ### Discover sub-feature privileges [kibana-privileges-discover-subfeatures]
@@ -225,6 +227,25 @@ These privileges control specific actions on workflows. Selecting **All** includ
 | **Update managed workflows** {applies_to}`stack: ga 9.5+` | Edit the workflows that Elastic provides. |
 :::
 
+### Agentic Investigations sub-feature privileges [kibana-privileges-agentic-investigations-subfeatures]
+
+```yaml {applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+These privileges control specific actions on {{az-investigations}} and {{az-escalations}}. Selecting **All** for **Agentic Investigations** includes **Manage investigations**, but not **Manage escalations**. Selecting **Read** includes only **View escalations**.
+
+:::{table}
+:widths: description
+
+| Privilege | What it allows |
+| --- | --- |
+| **Manage investigations** | Assign {{az-investigations}} and change their status, including closing and reopening them. |
+| **View escalations** | View {{az-escalations}}. |
+| **Manage escalations** | Create {{az-escalations}}, add {{az-investigations}} to them, and change who is assigned to them. To close an {{az-escalation}}, you also need **Manage investigations**.|
+:::
+
 ## Privileges in the Management group [kibana-privileges-management]
 
 Each of the following privileges controls access to a different feature.
@@ -253,8 +274,8 @@ Each of the following privileges controls access to a different feature.
 | **Cloud Connect** {applies_to}`stack: ga 9.3+` | Connect a cluster to {{ecloud}} services. This privilege appears on {{ece}} and self-managed clusters, but not on {{ech}}. |
 | **Automatic Import** {applies_to}`stack: ga 9.4+` | Access [Automatic Import](/solutions/security/get-started/automatic-import.md), and create custom integrations from sample data. |
 | **Data Set Quality** | Access the [Data Set Quality](/solutions/observability/data-set-quality-monitoring.md) page. Turn on **Customize sub-feature privileges** to grant individual data set quality privileges. For the full list, refer to [Data Set Quality sub-feature privileges](#kibana-privileges-data-set-quality-subfeatures). |
-| **Fleet** | Access [{{fleet}}](/reference/fleet/index.md), and manage agents and agent policies. Turn on **Customize sub-feature privileges** to grant individual {{fleet}} privileges. For the full list, refer to [{{fleet}} privileges and available actions](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features-table). |
-| **Integrations** | Browse and install [integrations](/reference/fleet/index.md). |
+| **Fleet** | Access [{{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md), and manage agents, agent policies, and {{fleet}} settings. Turn on **Customize sub-feature privileges** to grant individual {{fleet}} privileges. For the full list, refer to [{{fleet}} privileges and available actions](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features-table). |
+| **Integrations** | Browse and install [integrations](/reference/fleet/manage-integrations.md). To install integrations or add them to agent policies, users also need [**All** for **Fleet** or its **Agent policies** sub-feature](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-integrations). |
 | **Maintenance Windows** | Create and manage [maintenance windows](/explore-analyze/alerting/alerts/maintenance-windows.md), which suppress rule notifications for a scheduled period. |
 | **Manage Scheduled Reports** {applies_to}`stack: ga 9.1+` | View and manage the [scheduled reports](/explore-analyze/report-and-share/automating-report-generation.md) of every user in the space. |
 | **Query activity** {applies_to}`stack: ga 9.4+` | Access [Query activity](/deploy-manage/monitor/query-activity.md), and cancel long-running queries. |

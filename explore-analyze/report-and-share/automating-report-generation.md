@@ -45,11 +45,8 @@ To create the POST URL for PDF reports:
 To create the POST URL for CSV reports:
 
 1. Go to **Discover**.
-2. Open the saved Discover session you want to share.
-3. In the toolbar, do one of the following:
-  
-   * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.  
-   * {applies_to}`stack: ga =9.0` Click **Share > Export > Copy POST URL**.
+2. Open the saved Discover session you want to share, so the POST URL keeps working. If the session has unsaved changes, the export flyout warns that the link might not be permanent.
+3. Open the CSV export, as described in [Export Discover session results as CSV](/explore-analyze/discover/export-discover-session.md#export-discover-session-csv). In the export flyout, copy the POST URL. In 9.0, select **Share** → **Export** → **Copy POST URL** instead.
 
 
 ## Use Watcher [use-watcher]
@@ -250,7 +247,7 @@ Save time by setting up a recurring task that automatically generates reports an
 ### Create a schedule [create-scheduled-report]
 
 1. Open the saved Discover session, dashboard, or visualization you want to share. 
-2. Click the **Export** icon, then **Schedule export**.
+2. Look for the **Schedule export** action. In **Discover**, it's in the same menu as the CSV export action. In other apps, select the **Export** icon, then **Schedule export**.
 3. Enter the requested details, and (optional) enable **Print format** to generate the report in a printer-friendly format.
 4. Set up a schedule for generating the report.
 

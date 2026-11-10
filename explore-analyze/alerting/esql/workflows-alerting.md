@@ -2,7 +2,8 @@
 navigation_title: Connect workflows
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How action policies, alert lifecycle triggers, and rule execution triggers invoke workflows, and when to use each."
@@ -10,11 +11,11 @@ description: "How action policies, alert lifecycle triggers, and rule execution 
 
 # Connect workflows to {{alerting-v2-system}} [connect-workflows]
 
-In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens in response to an alert, such as sending a message, calling a webhook, or opening a ticket.
+In {{alerting-v2-system-short}}, [workflows](../../workflows.md) define what happens in response to an alert, such as sending a message, calling a webhook, or opening a ticket.
 
 ## How the alerting system connects to workflows [connection-pathways]
 
-{{alerting-v2-system-cap}} starts workflows through action policies, alert lifecycle triggers, and rule execution triggers. Action policies and alert lifecycle triggers require an alert. Rule execution triggers respond to a rule's own evaluation and don't require an alert.
+{{alerting-v2-system-short}} starts workflows through action policies, alert lifecycle triggers, and rule execution triggers. Action policies and alert lifecycle triggers require an alert. Rule execution triggers respond to a rule's own evaluation and don't require an alert.
 
 ### Action policies [action-policy-driven-workflows]
 
@@ -23,7 +24,8 @@ In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens i
 ### Alert lifecycle triggers [alert-episode-lifecycle-triggers]
 
 ```{applies_to}
-serverless: preview
+serverless:
+  observability: preview
 stack: preview 9.6+
 ```
 
