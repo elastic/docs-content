@@ -163,7 +163,7 @@ stack: preview 9.6+
 serverless: unavailable
 ```
 
-Use HashiCorp Vault to keep secret values out of the monitor configuration stored in {{kib}}. A param or supported monitor field holds a reference to the secret, and the {{agent}} running the monitor looks the value up in Vault each time the monitor runs, so the value itself never reaches {{kib}} or {{es}}.
+Use HashiCorp Vault to keep secret values out of the monitor configuration stored in {{kib}}. A param or supported monitor field holds a reference to the secret. The {{agent}} running the monitor looks the value up in Vault when the monitor runs and caches it for five minutes, so {{kib}} never stores the secret value. {{kib}} does store each connection's credential as an encrypted saved object, and delivers it to the agent as a {{fleet}} secret.
 
 This feature requires:
 
@@ -171,7 +171,7 @@ This feature requires:
 * Synthetics integration version 1.13.0 or later. To update an earlier version, refer to [Upgrade an integration](/reference/fleet/upgrade-integration.md).
 * [{{fleet}} secret storage](/reference/fleet/agent-policy.md#agent-policy-secret-values) enabled.
 
-A monitor that references a secret and runs on a public location is rejected when you save it.
+A monitor that references a secret directly and runs on an Elastic managed location is rejected when you save it. This check doesn't cover params. If a param holds a reference, make sure the monitors that use it run only on private locations.
 
 #### Add a Vault connection [synthetics-secrets-vault-connection]
 
@@ -189,9 +189,9 @@ Anyone who can edit monitors or global parameters in the space can reference any
     | Field | Description |
     | --- | --- |
     | **Name** | The name you reference the connection by, such as `prod`. You can't change it after you save the connection. |
-    | **Vault address** | The address of your Vault server. It must use `https`, unless the host is a loopback address such as `localhost` or `127.0.0.1`. |
+    | **Vault address** | The address of your Vault server, such as `https://vault.example.com:8200`. It must use `https`, unless the host is a loopback address such as `localhost` or `127.0.0.1`. It can't include credentials, a query string, or a fragment, and it can't be a link-local address such as `169.254.169.254`. If `xpack.synthetics.secretConnections.allowedHosts` limits which hosts {{kib}} can contact, the host must be on that list. |
     | **Auth method** | Can be a **Token**, or an AppRole with a **Role ID** and **Secret ID**. |
-    | **KV v2 mount** | Optional. It's the mount holding the secrets this connection reads. |
+    | **KV v2 mount** | Optional. It's the KV v2 secrets engine mount that holds the secrets this connection reads. Defaults to `secret`. |
     | **Allowed monitor hosts** | Decides which monitor targets might receive secrets from this connection. Leave it empty to allow any host. |
     | **Skip TLS verification (dev only)** | Turns off certificate validation. Use it only against a development Vault server. |
 
@@ -228,13 +228,13 @@ Bearer vault://prod@myapp/credentials#password
 
 Use only letters, digits, `.`, `_`, and `-`, plus `/` to separate segments of the path. Percent-encoded characters aren't accepted. {{kib}} rejects a reference that is malformed, names a connection that doesn't exist, or leaves the connection name out.
 
-References work in params and in monitor fields, but not in browser monitor scripts. Pass a secret into a script through a param instead.
+References work in params and in these monitor fields: **Username**, **Password**, **Request headers**, **Request body**, **Request payload** (TCP monitors), **Parameters** (browser monitors), and the TLS **Client certificate**, **Client key**, and **Client key passphrase**. {{kib}} rejects a reference in any other field, such as the URL, when you save the monitor. References don't work in browser monitor scripts. Pass a secret into a script through a param instead.
 
 After saving the monitor, run it from its {{private-location}} and confirm that the request using the secret succeeds. This verifies access from the agent's network, which **Test connection** doesn't check.
 
 #### Limit which hosts receive a secret [synthetics-secrets-vault-allowed-hosts]
 
-**Allowed monitor hosts** restricts a connection so its secrets only reach the targets you list. Enter host names or IP addresses without a scheme, port, path, or wildcard, using the punycode form for international names.
+**Allowed monitor hosts** restricts a connection so its secrets only reach the targets you list. Enter up to 100 host names or IP addresses without a scheme, port, path, or wildcard, using the punycode form for international names.
 
 When the list isn't empty, the connection becomes much narrower:
 
@@ -243,6 +243,16 @@ When the list isn't empty, the connection becomes much narrower:
 * Monitors that follow redirects or use Kerberos can't use it either.
 
 A monitor that the restriction excludes reports down, and the secret isn't sent.
+
+#### Configure {{kib}} settings [synthetics-secrets-vault-settings]
+
+Set these in `kibana.yml`:
+
+`xpack.synthetics.secretConnections.enabled`
+:   Turns Vault connections and secret references on or off. Defaults to `true`. When it's `false`, the **HashiCorp Vault connections** panel is hidden and a monitor that contains a reference is rejected when you save it.
+
+`xpack.synthetics.secretConnections.allowedHosts`
+:   The Vault host names {{kib}} can contact when you save or test a connection. Defaults to `['*']`, which allows any host. Host names must match exactly, and the only wildcard supported is the literal `*`. A connection whose host isn't on the list can't be saved or tested, and monitors that reference a connection saved before the list was tightened fail until its host is added again. Accepts up to 1000 entries.
 
 #### Known limitations [synthetics-secrets-vault-limitations]
 
