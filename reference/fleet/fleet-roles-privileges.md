@@ -69,25 +69,8 @@ To create a new role with access to {{fleet}} and Integrations:
     * {applies_to}`stack: ga =9.0` {{fleet}} privileges apply to all spaces, so select **All Spaces**.
 5. Expand the **Management** section, then choose the access level that you'd like the role to have with respect to {{fleet}} and integrations:
     1. To grant the role full access to use and manage {{fleet}} and integrations, set both the **Fleet** and **Integrations** privileges to `All`.
-
-       :::{image} images/kibana-fleet-privileges-all.png
-       :alt: Kibana privileges flyout showing Fleet and Integrations access set to All
-       :screenshot:
-       :::
-
     2. To create a read-only user for {{fleet}} and Integrations, set both the **Fleet** and **Integrations** privileges to `Read`.
-
-       :::{image} images/kibana-fleet-privileges-read.png
-       :alt: Kibana privileges flyout showing Fleet and Integrations access set to Read
-       :screenshot:
-       :::
-
     3. If you'd like to define more specialized access to {{fleet}} based on individual components, set **Fleet** to `All` or `Read`, then expand the **Fleet** menu and enable **Customize sub-feature privileges**.
-
-       :::{image} images/kibana-fleet-privileges-enable.png
-       :alt: Kibana customize sub-feature privileges UI
-       :screenshot:
-       :::
 
        The sub-feature privileges you select replace the general **Fleet** privilege and determine which {{fleet}} UI features the role can access. For details, refer to [Customize sub-feature privileges for {{fleet}}](#fleet-roles-and-privileges-sub-features).
 
