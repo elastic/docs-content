@@ -85,7 +85,7 @@ Replace these values:
 
 1. `<KIBANA-VERSION>` with your version of {{kib}}.
 2. `<POLICY-ID>` with the agent policy ID you received in step 1.
-3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, navigate to **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **{{elastic-defend}}**.
+3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, [open the {{elastic-defend}} integration's details](/reference/fleet/open-integration-details.md) and check **Version** on the **Overview** page.
 
 This adds the {{elastic-defend}} integration to your agent policy with the default settings.
 
@@ -503,7 +503,7 @@ Include the resulting JSON object in the following call to save your customized 
 
 1. `<PACKAGE-POLICY-ID>` with the {{elastic-defend}} policy ID you received in step 2.
 2. `<KIBANA-VERSION>` with your version of {{kib}}.
-3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, navigate to **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **{{elastic-defend}}**.
+3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, [open the {{elastic-defend}} integration's details](/reference/fleet/open-integration-details.md) and check **Version** on the **Overview** page.
 
 ```console
 curl --user <username>:<password> --request PUT \

@@ -247,7 +247,7 @@ The proposed fix appears directly below your query, with the original lines and 
 
 :::{tip}
 :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
-After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md).
 :::
 
 
@@ -621,7 +621,7 @@ For more details, refer to [Approximate `STATS` queries](elasticsearch://referen
 
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators.
 - [Get started with {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial for your first {{esql}} queries in Discover.
-- [Use Discover with {{esql}}](/explore-analyze/discover/use-esql.md): Discover tasks that are specific to {{esql}} mode.
+- [How to query in Discover's {{esql}} mode](/explore-analyze/discover/use-esql.md): Write and refine {{esql}} queries in Discover.
 - [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
 - [Add variable controls to dashboards](/explore-analyze/visualize/add-variable-controls.md): Add {{esql}}-powered variable controls to dashboards.

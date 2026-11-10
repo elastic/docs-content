@@ -36,7 +36,9 @@ To open the details from the **Integrations** page instead:
 2. Select the integration:
     * If the integration is installed, select it on the **Installed integrations** tab.
     * If the integration isn't installed yet, select it on the **Browse integrations** tab.
-3. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, click **View documentation** in the **New to this integration?** panel, then click **Integration details**.
+
+        {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the integration is part of a collection, such as **Nginx**, select the collection tile, then select the integration in the flyout.
+3. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
 
     Integrations that only install assets, such as dashboards, or only provide setup documentation open their **Overview** page directly. The **Overview** page also opens directly if your role has `Read` access to **Integrations** instead of `All`.
 
