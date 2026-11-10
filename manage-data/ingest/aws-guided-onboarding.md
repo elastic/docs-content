@@ -18,7 +18,7 @@ The guided AWS onboarding flow in {{kib}} sets up several AWS services at once. 
 
 Depending on the service and the deployment method you choose, the flow collects data in the following ways:
 
-- **{{managed-integrations}}**: Elastic runs the collectors for you. Elastic authenticates to your AWS account with a [federated identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) or an access key pair. For more information, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
+- **{{managed-integrations}}**: Elastic runs the collectors for you. Elastic authenticates to your AWS account with a [federated identity](/reference/managed-integrations/federated-identity.md) or an access key pair. For more information, refer to [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md).
 - **Elastic Cloud Forwarder**: A CloudFormation stack in your AWS account forwards logs from S3 buckets or CloudWatch log groups to Elastic. For more information, refer to the [Elastic Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md).
 - **{{agent}}**: You enroll a self-managed {{agent}} on a host that has access to your AWS environment.
 
@@ -69,13 +69,13 @@ You don't choose between these sections. Each service appears in the section tha
    - **Identity Federation**: Elastic assumes an IAM role in your account. You don't enter long-lived credentials.
    - **Access Keys**: Enter an AWS access key pair.
 
-   **Identity Federation** is available only when every service in the **Managed Integrations** section supports it. If any selected service doesn't, only **Access Keys** is available. For the integrations and data streams that support Identity Federation, refer to [Integrations that support federated identity authentication](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md#federated-identity-supported-integrations).
+   **Identity Federation** is available only when every service in the **Managed Integrations** section supports it. If any selected service doesn't, only **Access Keys** is available. For the integrations and data streams that support Identity Federation, refer to [Integrations that support federated identity authentication](/reference/managed-integrations/federated-identity.md#federated-identity-supported-integrations).
 2. If you chose **Identity Federation**, create a new federated identity or select an existing one:
 
    :::{include} /manage-data/_snippets/aws-federated-identity-steps.md
    :::
 
-   For what the stack creates and how stack updates work, refer to [Set up federated identity for an AWS integration](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md#federated-identity-aws-setup).
+   For what the stack creates and how stack updates work, refer to [Set up federated identity for an AWS integration](/reference/managed-integrations/federated-identity.md#federated-identity-aws-setup).
 3. Select **Deploy integrations**. When the deployment finishes, the **Managed Integrations** section shows **Done**. Select **Next**.
 
 ### Deploy with the Elastic Cloud Forwarder [aws-onboarding-deploy-ecf]
@@ -107,7 +107,7 @@ Select **Finish** to close the flow, or **Take me to my data** to open the data.
 
 ## Related pages [aws-onboarding-related]
 
-- [Authenticate {{managed-integrations}} using a federated identity](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md)
-- [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md)
+- [Authenticate {{managed-integrations}} using a federated identity](/reference/managed-integrations/federated-identity.md)
+- [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md)
 - [Elastic Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md)
 - [Amazon Web Services (AWS) monitoring](/solutions/observability/cloud/amazon-web-services-aws-monitoring.md)

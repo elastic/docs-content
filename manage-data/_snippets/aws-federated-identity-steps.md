@@ -7,4 +7,4 @@
   6. When the stack status is `CREATE_COMPLETE`, open the **Outputs** tab.
   7. In {{kib}}, paste the `RoleArn` output value into **Role ARN**. Optionally, paste the `StackId` output value into **CloudFormation stack ARN** so {{kib}} can link directly to the stack.
   8. Select **Create Identity**.
-- To reuse an identity, select the **Existing Identity** tab, then select the identity from the **Federated Identity Name** list. If the identity doesn't have the permissions the integrations you're setting up need, update its stack as described in [Update a federated identity's stack](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md#federated-identity-aws-update).
+- To reuse an identity, select the **Existing Identity** tab, then select the identity from the **Federated Identity Name** list. If the identity doesn't have the permissions the integrations you're setting up need, update its stack as described in [Update a federated identity's stack](/reference/managed-integrations/federated-identity.md#federated-identity-aws-update).

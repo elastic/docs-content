@@ -72,7 +72,7 @@ To set up federated identity authentication for an {{aws}} integration, you need
 
 ### Create or select a federated identity [federated-identity-aws-steps]
 
-1. In {{kib}}, go to **{{integrations}}** and start adding the integration as an {{managed-integration}}, as described in [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md). Make sure you select the **Elastic Managed Integration** deployment option.
+1. In {{kib}}, go to **{{integrations}}** and start adding the integration as an {{managed-integration}}, as described in [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md). Make sure you select the **Elastic Managed Integration** deployment option.
 2. Under **Setup Access**, for **Preferred method**, select **Identity Federation**.
 3. Create a new federated identity or reuse an existing one:
 
