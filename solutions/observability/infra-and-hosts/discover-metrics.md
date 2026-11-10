@@ -35,6 +35,12 @@ You can also query a specific index:
 TS metrics-index-1
 ```
 
+The query can also use the following commands. If it uses any other command, **Discover** shows the default experience instead of the dedicated metrics view.
+
+- `LIMIT`
+- `SORT`
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` `WHERE`
+
 To visualize your metrics data as charts:
   - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
   - The metric must be a time series metric. Gauge, counter, and histogram metrics are supported.
