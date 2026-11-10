@@ -503,5 +503,6 @@ subs:
   tsdses: "time series data streams"
   tsds-cap: "Time series data stream"
   tsds-init: "TSDS"
+  mcp-service: "Elastic Global MCP Service" 
 release_notes:
   - product: cloud-serverless
