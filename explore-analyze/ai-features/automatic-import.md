@@ -138,7 +138,9 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    :::{note}
    The **Manage my integrations** menu lists only integrations created with Automatic Import on versions 9.4+. 
    
-   Manually created custom integration `.zip`s  get installed from the **Installed integrations** tab and aren't tracked on the **Manage my integrations** menu. For more information about user-created custom integrations, refer to [Upload a new integration](https://www.elastic.co/docs/extend/integrations/upload-new-integration).
+   From this menu, you can also [edit an integration](#automatic-import-edit) or [download it to use on another cluster or project](#automatic-import-reuse).
+
+   Manually created custom integration `.zip`s  get installed from the **Installed integrations** tab and aren't tracked on the **Manage my integrations** menu. For more information about user-created custom integrations, refer to [Upload a new integration](integrations://extend/upload-new-integration.md).
    :::
 
    :::{image} /solutions/images/security-auto-import-data-streams-status.png
@@ -231,3 +233,38 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 ::::{tip}
 If you use {{elastic-sec}}, you can use the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md) to check the health of your data ingest pipelines and field mappings.
 ::::
+
+## Edit an integration [automatic-import-edit]
+```{applies_to}
+serverless: ga
+stack: ga 9.4+
+```
+
+You can edit an integration only on the cluster or project where you created it.
+
+1. In {{kib}}, find **Integrations**, then select **Manage my integrations**.
+2. Open the integration's **Actions** menu and select **Edit**.
+3. Make your changes:
+
+   - Update the integration details.
+   - Add a data stream with **Add Data Stream**.
+   - Re-analyze or delete an existing data stream.
+
+Editing an approved integration raises its version and makes **Review & approve** available again. Approve the new version as described in [Create a new custom integration](#_create_a_new_custom_integration).
+
+## Use an integration on another cluster or project [automatic-import-reuse]
+```{applies_to}
+serverless: ga
+stack: ga 9.4+
+```
+
+To use an integration on another cluster or project, download its package and upload it there. You can download the package only when all of the integration's data streams have a **Success** status.
+
+1. On the cluster or project where you created the integration, find **Integrations**, then select **Manage my integrations**.
+2. Open the integration's **Actions** menu and select **Download .zip package**.
+3. On the other cluster or project, find **Integrations**. In the **Can't find an integration?** panel, select **upload an integration package**.
+4. Upload the `.zip` package you downloaded, then select **Add to Elastic**.
+
+On the other cluster or project, the uploaded integration is a regular custom integration. It doesn't appear in **Manage my integrations**, so you can't edit it there with Automatic Import. To change it, edit the integration on the cluster or project where you created it, download the package again, and upload it.
+
+The upload fails if the other cluster or project already has an integration with the same name. The exception is a custom integration you uploaded earlier. The upload upgrades that integration only when the new package has a higher version than the installed one.
