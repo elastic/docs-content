@@ -17,7 +17,7 @@ A {{az-worker}} normally runs on its own schedule. You can also start a run your
 
 * Turn the {{az-worker}} on. A {{az-worker}} that's turned off can't be run. Refer to [](configure-worker-settings.md#configure-worker-settings-enabled).
 * Turn on the [**Show managed workflows**](kibana://reference/advanced-settings.md#kibana-workflows-settings) advanced setting. Managed workflows are hidden by default, and the **Workflows** page can't show a {{az-worker}} while they're hidden. Refer to [](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility).
-* Make sure your role includes the privilege to run workflows. Refer to [](alertzero-privileges.md).
+* Make sure your role includes the privilege to run workflows. Refer to [](alertzero-privileges.md#alertzero-admin-access).
 
 ## What to expect from an on-demand run [run-worker-on-demand-expect]
 

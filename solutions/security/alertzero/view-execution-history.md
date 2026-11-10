@@ -16,7 +16,7 @@ Each time a {{az-worker}} runs, {{kib}} records the run. Use the execution histo
 ## Before you begin [view-execution-history-before-you-begin]
 
 * Turn on the [**Show managed workflows**](kibana://reference/advanced-settings.md#kibana-workflows-settings) advanced setting. Because each {{az-worker}} is a [managed workflow](/explore-analyze/workflows/managed-workflows.md), you can't see its runs while managed workflows are hidden. Refer to [](/explore-analyze/workflows/get-started/setup.md#workflows-managed-visibility).
-* Make sure your role includes the privilege to read the executions of managed workflows. Refer to [](alertzero-privileges.md).
+* Make sure your role includes the privilege to read the executions of managed workflows. Refer to [](alertzero-privileges.md#alertzero-admin-access).
 
 ## View a Worker's runs [view-execution-history-steps]
 
