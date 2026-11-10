@@ -8,7 +8,7 @@ applies_to:
 type: how-to
 products:
   - id: kibana
-description: Group similar log messages into patterns in Discover to see common structures, filter out noise, and find unusual messages when you troubleshoot.
+description: Group similar log messages into patterns in Discover, or check how common one message is, to filter out noise and find unusual messages.
 ---
 
 # Run a pattern analysis on your log data in Discover [run-pattern-analysis-discover]
@@ -17,7 +17,7 @@ If your logs are free-form messages, pattern analysis groups similar messages in
 
 ## Before you begin
 
-- Make sure **Discover** is in classic mode. {{esql}} mode doesn't support this functionality. To switch, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+- Make sure **Discover** is in classic mode. {{esql}} mode doesn't have the **Patterns** view. To switch, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 - You need a [Platinum or Enterprise subscription](https://www.elastic.co/subscriptions) or an active trial for Elastic Stack. Pattern analysis relies on a feature that requires it.
 - **Discover** must have a [data view](../find-and-organize/data-views.md) selected that has a time field and contains a text field, and a time range that contains data.
 - This example uses the [web logs sample data](/manage-data/ingest/sample-data.md). To follow along, add it and select its data view, or use your own log data.
@@ -56,16 +56,14 @@ If one message in the table catches your eye, you can check how common it is wit
 
 The **Find similar values** button appears only for text fields in a data view that has a time field.
 
-In the **Summary** column, which gives an overview of each result, the buttons are **Copy value** and **Find similar values**. **Find similar values** analyzes the message of the document. For example, it uses `message`, `error.message`, or `event.original`, depending on which of these fields the document has.
-
 1. Go to **Discover** and run a query that returns log messages. For example, select **Kibana Sample Data Logs** and expand the time range if the table is empty.
 2. In the table, hover over a value in a text field column, such as `message`, and select **Find similar values**.
 3. In the flyout, read the pattern that the message follows, the number of documents that match it, and the chart that shows when they occurred. The table in the flyout lists the matching documents. The analysis uses the query, filters, and time range of your table.
 4. Optional: To keep working with these documents, select **Open documents in Discover** to see only the documents that match the pattern. To see everything else instead, select **Filter out documents in Discover**.
 
-**Result:** **Discover** opens a new tab, labeled **Pattern** followed by the field name, with a filter that keeps or excludes the documents that match the pattern. Your original tab stays as it was.
+**Result:** The flyout shows how common the message is and when it occurred. If you select one of the buttons in step 4, **Discover** opens a new tab, labeled **Pattern** followed by the field name, with your query and filters plus a filter that keeps or excludes the matching documents. Your original tab stays as it was.
 
-In a [Discover session panel on a dashboard](use-sessions-in-dashboards.md), the analysis also uses the dashboard's filters and time range, and the buttons open **Discover** in a new browser tab.
+In the **Summary** column, which gives an overview of each result, the buttons are **Copy value** and **Find similar values**. The analysis uses the message of the document. For example, it uses `message`, `error.message`, or `event.original`, depending on which of these fields the document has.
 
 In {{esql}} mode, refer to [](esql-results.md#find-similar-values-esql).
 
