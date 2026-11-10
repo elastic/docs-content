@@ -1,4 +1,7 @@
 redirects:
+  # related to https://github.com/elastic/docs-content/issues/1461
+  'deploy-manage/monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md': 'deploy-manage/monitor/monitoring-data/config-monitoring-data-streams-metricbeat.md'
+  'deploy-manage/monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md': 'deploy-manage/monitor/monitoring-data/config-monitoring-indices-internal-collection.md'
   # related to https://github.com/elastic/docs-content/pull/9158
   'solutions/security/alertzero/requirements.md': 'solutions/security/alertzero/set-up-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/4251
