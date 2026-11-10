@@ -46,7 +46,7 @@ For an alphabetical catalog of every step type, refer to the [Step type index](/
 | Close the case | [`cases.closeCase`](/explore-analyze/workflows/steps/cases.md#cases-closecase) |
 | Assign or unassign | [`cases.assignCase`](/explore-analyze/workflows/steps/cases.md#cases-assigncase), [`cases.unassignCase`](/explore-analyze/workflows/steps/cases.md#cases-unassigncase) |
 
-The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.updateCase`, `kibana.addCaseComment`) are deprecated. Use the `cases.*` replacements. Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md).
+The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.updateCase`, `kibana.addCaseComment`, and their `*DefaultSpace` aliases) are deprecated. Use the `cases.*` replacements. Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md).
 
 ### Manage detection alerts [workflows-choose-alerts]
 

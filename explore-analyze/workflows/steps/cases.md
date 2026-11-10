@@ -15,7 +15,7 @@ products:
 
 # Cases action steps [workflows-cases-steps]
 
-Cases action steps let workflows create, query, update, and manage cases in any Cases-enabled app, including {{elastic-sec}}, Observability, and Stack Cases. The `cases.*` namespace provides full coverage of the Cases API through a single, consistent set of step types so you can automate case workflows without leaving the Elastic platform.
+Cases action steps let workflows create, query, update, and manage cases in {{elastic-sec}}, {{observability}}, or {{stack-manage-app}}. The `cases.*` namespace provides full coverage of the Cases API through a single, consistent set of step types so you can automate case workflows without leaving the Elastic platform.
 
 Use Cases steps for patterns like:
 
@@ -28,7 +28,7 @@ Use Cases steps for patterns like:
 
 Every `cases.*` step shares the same conventions, so once you learn one step the others are predictable.
 
-**Parameter casing.** Case-level parameters use `snake_case`: `case_id`, not `caseId`. The editor rejects camelCase for these fields. (Individual payloads, such as the alert object attached by `cases.addAlerts`, use the casing of the originating API (for example, `alertId`, `index`) because they match external API shapes.)
+**Parameter casing.** Use the exact casing shown in each step's parameter table. Steps don't convert parameter names, so `caseId` doesn't work in place of `case_id`. Most `cases.*` parameters use `snake_case`, such as `case_id`, `case_ids`, and `observable_id`. Some parameters keep the `camelCase` of the Cases API, such as `perPage`, `sortField`, and `customFields` in `cases.findCases`. Fields inside payload objects also keep the casing of the originating API, such as `alertId` in `cases.addAlerts` and `typeKey` in `cases.addObservables`.
 
 **Optional `push-case` config.** Many `cases.*` steps accept an optional top-level `push-case` boolean (defaults to `false`). When `true`, the step pushes the updated case to a connected external system (for example, {{jira}} or ServiceNow) after the workflow operation succeeds. Refer to each step's parameters for whether `push-case` is supported.
 
@@ -44,7 +44,7 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
 :::{include} ../_snippets/schema-location-legend.md
 :::
 
-% Ben Ironside Goldstein, 2026-04-27: Engineering review (Janmonschke) noted that not all 27 steps
+% Ben Ironside Goldstein, 2026-04-27: Engineering review (Janmonschke) noted that not all steps
 % support push-case. A complete list of which steps support it would strengthen this section once
 % available. For now the page documents the optional flag generally and leaves per-step support
 % for SME confirmation.
@@ -94,7 +94,8 @@ The Cases steps group into seven operational categories. Jump to any step:
 [`cases.addEvents`](#cases-addevents) ·
 [`cases.addObservables`](#cases-addobservables) ·
 [`cases.addAttachments`](#cases-addattachments) ·
-[`cases.getAllAttachments`](#cases-getallattachments)
+[`cases.getAllAttachments`](#cases-getallattachments) ·
+[`cases.deleteAttachments`](#cases-deleteattachments)
 
 **Tags and assignees**
 [`cases.addTags`](#cases-addtags) ·
@@ -104,7 +105,8 @@ The Cases steps group into seven operational categories. Jump to any step:
 
 **Update and delete observables**
 [`cases.updateObservable`](#cases-updateobservable) ·
-[`cases.deleteObservable`](#cases-deleteobservable)
+[`cases.deleteObservable`](#cases-deleteobservable) ·
+[`cases.bulkDeleteObservables`](#cases-bulkdeleteobservables)
 
 **Push to external connector**
 [`cases.pushCases`](#cases-pushcases)
@@ -132,6 +134,7 @@ Create a case with a title, description, severity, tags, and optional assignees.
 | `category` | `with` | string | No | Case category. |
 | `customFields` | `with` | array | No | Custom field values. |
 | `settings` | `with` | object | No | Case settings, for example `syncAlerts`. |
+| `template` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | [Case template](/explore-analyze/cases/manage-case-templates.md) to create the case from, as `{ id, version }`. The template's defaults fill in any field you don't set. If you omit `version`, the case uses the latest version of the template. |
 
 ```yaml
 - name: create_case
@@ -146,17 +149,24 @@ Create a case with a title, description, severity, tags, and optional assignees.
 
 ### `cases.createCaseFromTemplate` [cases-createcasefromtemplate]
 
-Create a case from a configured case template. Useful when a team has pre-defined case shapes (default title, description, tags, severity) for common scenarios.
+Create a case from a case template. Useful when a team has pre-defined case shapes (default title, description, tags, severity) for common scenarios.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
+| `owner` | `with` | string | Yes | Case owner: `securitySolution`, `observability`, or `cases`. Must match the owner of the template. |
 | `case_template_id` | `with` | string | Yes | ID of the template to apply. |
 | `overwrites` | `with` | object | No | Fields to override on the templated case, for example `title`, `tags`. |
+
+How the step finds the template depends on your version:
+
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The step first looks for a [case template](/explore-analyze/cases/manage-case-templates.md) with this ID. To find template IDs, use the [Get all case templates]({{kib-apis}}operation/operation-getcasetemplatesdefaultspace) API. If no case template matches, the step looks for a legacy template with this key, so workflows written for earlier versions keep working. If the case template has no default title, set `overwrites.title`. If it has no default description, set `overwrites.description`.
+- {applies_to}`stack: ga =9.4` The step uses the template with this key from the case settings for the owner.
 
 ```yaml
 - name: create_from_template
   type: cases.createCaseFromTemplate
   with:
+    owner: "securitySolution"
     case_template_id: "malware-triage-template"
     overwrites:
       title: "Malware: {{ event.alerts[0].host.name }}"
@@ -164,19 +174,18 @@ Create a case from a configured case template. Useful when a team has pre-define
 
 ### `cases.getCase` [cases-getcase]
 
-Retrieve a complete case object by ID. Optionally include comments and attachments in the response.
+Retrieve a complete case object by ID. To get the case's comments and other attachments, use [`cases.getAllAttachments`](#cases-getallattachments).
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
-| `include_comments` | `with` | boolean | Yes | Whether to include comments and attachments in the response. |
+| `include_comments` {applies_to}`stack: deprecated 9.5+, ga =9.4` {applies_to}`serverless: deprecated` | `with` | boolean | No | Whether to include comments and attachments in the response. Defaults to `false`. Use [`cases.getAllAttachments`](#cases-getallattachments) instead. |
 
 ```yaml
 - name: fetch_case
   type: cases.getCase
   with:
     case_id: "{{ inputs.case_id }}"
-    include_comments: true
 ```
 
 ### `cases.getCases` [cases-getcases]
@@ -242,8 +251,8 @@ Find cases similar to a given case, matched by shared observables. Useful for de
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Source case ID to find similar cases for. |
-| `page` | `with` | integer | Yes | Page number (1-based). |
-| `perPage` | `with` | integer | Yes | Results per page. |
+| `page` | `with` | integer | No | Page number (1-based). Defaults to `1`. |
+| `perPage` | `with` | integer | No | Results per page, up to `100`. Defaults to `20`. |
 
 Output: `{ cases: array, page: integer, per_page: integer, total: integer }`.
 
@@ -262,7 +271,7 @@ Find every case that contains a specific alert. The canonical "does a case alrea
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `alert_id` | `with` | string | Yes | Alert signal ID. |
+| `alert_id` | `with` | string | Yes | ID of the alert document (its `_id`). |
 | `owner` | `with` | string | No | Filter by case owner. |
 
 ```yaml
@@ -278,12 +287,12 @@ Find every case that contains a specific alert. The canonical "does a case alrea
 
 ### `cases.updateCase` [cases-updatecase]
 
-Update one case's fields. Changes go inside a required `updates` object. An optional `version` field enforces optimistic concurrency.
+Update one case's fields. Changes go inside a required `updates` object. Pass the optional `version` field to make the step fail instead of overwriting changes that someone else made to the case after you read it.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
-| `version` | `with` | string | No | Case version for optimistic concurrency. |
+| `version` | `with` | string | No | Case `version` from an earlier step's output. The step fails if the case changed after that version. If you omit it, the step updates the latest version of the case. |
 | `updates` | `with` | object | Yes | Fields to update. At least one field required. Includes `title`, `description`, `status`, `severity`, `category`, `tags`, `assignees`, `settings`, and more. |
 
 ```yaml
@@ -296,6 +305,8 @@ Update one case's fields. Changes go inside a required `updates` object. An opti
       severity: "critical"
       tags: ["escalated"]
 ```
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` To switch the case to another [case template](/explore-analyze/cases/manage-case-templates.md), set `updates.template` to `{ id, version }` and include both values. To remove the template from the case, set `updates.template` to `null`.
 
 :::{important}
 Update fields must sit inside the `updates` object, not at the top level of `with`. `updates: { status: open }` is valid; `with: { status: open, case_id: ... }` is not.
@@ -386,7 +397,7 @@ Set a single custom-field value on a case. The `field_name` parameter is the sys
 | `field_name` | `with` | string | Yes | Custom-field identifier. System-set, typically a UUID. |
 | `value` | `with` | `string \| number \| boolean` | Yes | Field value. |
 | `owner` | `with` | string | No | Case owner. Optional, but providing it helps with editor auto-completion. |
-| `version` | `with` | string | No | Case version for optimistic concurrency. |
+| `version` | `with` | string | No | Case `version` from an earlier step's output. The step fails if the case changed after that version. If you omit it, the step updates the latest version of the case. |
 
 ```yaml
 - name: set_investigation_owner
@@ -404,7 +415,7 @@ Close a case.
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
-| `version` | `with` | string | No | Case version for optimistic concurrency. |
+| `version` | `with` | string | No | Case `version` from an earlier step's output. The step fails if the case changed after that version. If you omit it, the step updates the latest version of the case. |
 
 ```yaml
 - name: close_case
@@ -522,7 +533,6 @@ Add observables (indicators of compromise such as IPs, file hashes, domains, or 
 The `typeKey` must match one of the built-in observable type keys: `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, or `observable-type-file-hash`. Use `observable-type-file-hash` for all hash algorithms (MD5, SHA-1, SHA-256, and so on).
 
 ### `cases.addAttachments` [cases-addattachments]
-
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
@@ -601,6 +611,36 @@ Output: `{ attachments: array }`.
   type: cases.getAllAttachments
   with:
     case_id: "{{ inputs.case_id }}"
+```
+
+### `cases.deleteAttachments` [cases-deleteattachments]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Delete one or more attachments from a case in a single step. The case activity records each deletion. If any ID doesn't match an attachment on the case, the step fails and deletes nothing.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `case_id` | `with` | string | Yes | Case ID. |
+| `ids` | `with` | `string[]` | Yes | IDs of the attachments to delete (1–100). Use the `id` of each attachment that [`cases.getAllAttachments`](#cases-getallattachments) returns, not its `attachmentId`, which identifies the alert, event, or saved object that the attachment refers to. |
+| `include_related` | `with` | boolean | No | Whether to also delete attachments related to the deleted ones, such as the alerts of an attack attachment. Defaults to `true`. |
+
+Output: `{ case_id: string, ids: array }`.
+
+```yaml
+- name: list_attachments
+  type: cases.getAllAttachments
+  with:
+    case_id: "{{ inputs.case_id }}"
+
+- name: delete_first_attachment
+  type: cases.deleteAttachments
+  with:
+    case_id: "{{ inputs.case_id }}"
+    ids:
+      - "{{ steps.list_attachments.output.attachments[0].id }}"
 ```
 
 ---
@@ -684,6 +724,31 @@ Remove an observable from a case.
 | `case_id` | `with` | string | Yes | Case ID. |
 | `observable_id` | `with` | string | Yes | Observable ID. |
 
+### `cases.bulkDeleteObservables` [cases-bulkdeleteobservables]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Remove several observables from a case in a single step. If any ID doesn't match an observable on the case, the step fails and removes nothing.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `case_id` | `with` | string | Yes | Case ID. |
+| `observable_ids` | `with` | `string[]` | Yes | IDs of the observables to remove (1–50). |
+
+Output: `{ case_id: string, observable_ids: array }`.
+
+```yaml
+- name: remove_false_positives
+  type: cases.bulkDeleteObservables
+  with:
+    case_id: "{{ steps.create_case.output.case.id }}"
+    observable_ids:
+      - "{{ steps.add_iocs.output.case.observables[0].id }}"
+      - "{{ steps.add_iocs.output.case.observables[1].id }}"
+```
+
 ---
 
 ## Push to external connector
@@ -744,12 +809,12 @@ Deleted cases can't be recovered. If you don't want to permanently delete a case
 
 In 9.3, case management lived under the `kibana.*` namespace. Those step types remain as deprecated aliases so existing workflows keep running, but new workflows must use `cases.*`:
 
-| Deprecated (9.3 alias) | Current (9.4) |
+| Deprecated (9.3) | Current (9.4) |
 |---|---|
-| `kibana.createCaseDefaultSpace` | [`cases.createCase`](#cases-createcase) |
-| `kibana.getCaseDefaultSpace` | [`cases.getCase`](#cases-getcase) |
-| `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](#cases-updatecase) |
-| `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](#cases-addcomment) |
+| `kibana.createCase`, `kibana.createCaseDefaultSpace` | [`cases.createCase`](#cases-createcase) |
+| `kibana.getCase`, `kibana.getCaseDefaultSpace` | [`cases.getCase`](#cases-getcase) |
+| `kibana.updateCase`, `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](#cases-updatecase) |
+| `kibana.addCaseComment`, `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](#cases-addcomment) |
 
 Refer to [Migrate from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for side-by-side replacement patterns.
 
