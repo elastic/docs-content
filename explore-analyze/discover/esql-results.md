@@ -65,7 +65,7 @@ The **Find similar values** button appears only for text fields from a data sour
 
 **Result:** The flyout shows how common the message is and when it occurred. If you select one of the buttons in step 4, **Discover** opens a new tab, labeled **Pattern** followed by the field name, with your query plus a `WHERE` clause that keeps or excludes the matching documents. Your original tab stays as it was.
 
-In the **Summary** column, which shows each result's key-value pairs, the buttons are **Copy value** and **Find similar values**. The analysis uses the message of the document. For example, it uses `message`, `error.message`, or `event.original`, depending on which of these fields the document has.
+In the **Summary** column, which shows each result's key-value pairs, **Find similar values** analyzes the message of the document. For example, it uses `message`, `error.message`, or `event.original`, depending on which of these fields the document has.
 
 In classic mode, refer to [](run-pattern-analysis-discover.md#find-similar-values-classic).
 

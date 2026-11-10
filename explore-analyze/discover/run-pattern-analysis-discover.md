@@ -63,7 +63,7 @@ The **Find similar values** button appears only for text fields in a data view t
 
 **Result:** The flyout shows how common the message is and when it occurred. If you select one of the buttons in step 4, **Discover** opens a new tab, labeled **Pattern** followed by the field name, with your query and filters plus a filter that keeps or excludes the matching documents. Your original tab stays as it was.
 
-In the **Summary** column, which gives an overview of each result, the buttons are **Copy value** and **Find similar values**. The analysis uses the message of the document. For example, it uses `message`, `error.message`, or `event.original`, depending on which of these fields the document has.
+In the **Summary** column, which gives an overview of each result, **Find similar values** analyzes the message of the document. For example, it uses `message`, `error.message`, or `event.original`, depending on which of these fields the document has.
 
 In {{esql}} mode, refer to [](esql-results.md#find-similar-values-esql).
 
