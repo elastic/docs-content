@@ -13,7 +13,7 @@ description: Turn the query and filters of a Discover session into an alert rule
 
 If you want to be notified when your data goes above or below a threshold within a time interval, turn the query and filters of a **Discover** session into an alert rule. The rule then checks your data on a schedule.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{esql}} mode, **Discover** can also create a {{alerting-v2-system}} rule. This option appears when the **Universal Alerting** advanced setting is on, you work in a space with the Classic or Observability solution view, and your role can create {{alerting-v2-system}} rules. Refer to [Create a {{alerting-v2-system}} rule from Discover](../alerting/esql/rules/create-rule-from-discover.md).
+{applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` In {{esql}} mode, **Discover** can also create a {{alerting-v2-system}} rule. This option appears when the **Universal Alerting** advanced setting is on, you work in a space with the Classic or Observability solution view, and your role can create {{alerting-v2-system}} rules. Refer to [Create a {{alerting-v2-system}} rule from Discover](../alerting/esql/rules/create-rule-from-discover.md).
 
 ## Before you begin
 
