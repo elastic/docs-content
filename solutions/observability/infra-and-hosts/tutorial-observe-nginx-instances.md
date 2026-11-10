@@ -61,9 +61,9 @@ Before you can monitor nginx, you need the following:
 Follow these steps to add the nginx integration to your deployment:
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Enter "nginx" in the search bar, and select the **Nginx** integration.
-3. Select **Add Nginx** at the top of the integration page.
-4. Select **Add integration only (skip agent installation)** at the bottom of the page.
+2. Search for and select **Nginx**.
+3. If the integration's **Overview** page opens, select **Add Nginx** at the top of the page.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
 
 
 ## Step 2: Configure the nginx integration [monitor-nginx-configure-integration]
@@ -208,11 +208,10 @@ With Discover, you can quickly search and filter your log data, get information 
 
 Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Filter your results to see logs from the nginx integration from the data selector:
+Filter your results to see logs from the nginx integration. Use the `nginx.error` dataset for error logs and the `nginx.access` dataset for access logs:
 
-1. From the **Data view** menu, select all logs.
-
-2. Filter the log results using the KQL search bar. Enter `data_stream.dataset : "nginx.error"` to show nginx error logs or `data_stream.dataset : "nginx.access"` to show nginx access logs.
+- In {{esql}} mode, enter `FROM logs-* | WHERE data_stream.dataset == "nginx.error"` or `FROM logs-* | WHERE data_stream.dataset == "nginx.access"`.
+- In classic mode, select all logs from the **Data view** menu. Then enter `data_stream.dataset : "nginx.error"` or `data_stream.dataset : "nginx.access"` in the KQL search bar.
 
 #### nginx logs dashboards [monitor-nginx-logs-dashboard]
 

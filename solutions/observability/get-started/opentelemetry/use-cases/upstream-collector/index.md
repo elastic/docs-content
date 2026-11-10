@@ -42,7 +42,7 @@ flowchart LR
 The `elasticsearch` exporter with `mapping.mode: otel` is the recommended path for self-managed deployments.
 
 :::{note}
-The [Managed OTLP endpoint](opentelemetry://reference/motlp.md) is an alternative ingest path available only on {{ecloud}}, so it doesn't apply to self-managed deployments. Sending directly to {{apm-server-or-mis}} through OTLP is also possible, but the {{edot}} gateway path in this guide is recommended for full {{product.apm}} functionality.
+The [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md) is an alternative ingest path available only on {{ecloud}}, so it doesn't apply to self-managed deployments. Sending directly to {{apm-server-or-mis}} through OTLP is also possible, but the {{edot}} gateway path in this guide is recommended for full {{product.apm}} functionality.
 :::
 
 ## Before you begin
@@ -203,4 +203,4 @@ If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/t
 * [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md)
 * [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md)
 * [{{agent}}](elastic-agent://reference/edot-collector/index.md)
-* [Managed OTLP endpoint](opentelemetry://reference/motlp.md)
+* [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md)
