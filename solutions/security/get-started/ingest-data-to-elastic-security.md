@@ -60,7 +60,7 @@ For other sources, and on self-managed deployments, use an integration that runs
 
 | Integration type | Who runs the collector | Data sources | To get started |
 |---|---|---|---|
-| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md) | Elastic. You only provide credentials, such as an API key. | Cloud services, through an API | [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md). |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/reference/managed-integrations/index.md) | Elastic. You only provide credentials, such as an API key. | Cloud services, through an API | [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md). |
 | Integrations that use [{{agent}}](/reference/fleet/index.md) | You. You install, update, and scale {{agent}} with {{fleet}}. | The host where {{agent}} runs, or remote sources such as syslog, cloud storage, or an API | [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md). |
 
 ### Find and add an integration [security-ingest-add-integration]
