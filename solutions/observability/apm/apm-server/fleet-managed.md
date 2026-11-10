@@ -25,7 +25,7 @@ You need {{es}} for storing and searching your data, and {{kib}} for visualizing
 * {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. Refer to [](/deploy-manage/deploy.md).
 * Secure, encrypted connection between {{kib}} and {{es}}. For more information, refer to [](/deploy-manage/security/self-setup.md).
 * Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
-* {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
+* {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. For the minimum privileges and how they apply across spaces, refer to [](/reference/fleet/fleet-roles-privileges.md).
 * In the {{es}} configuration, the [built-in API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
 * In the {{kib}} configuration, the saved objects encryption key must be set. {{fleet}} requires this setting in order to save API keys and encrypt them in {{kib}}. You can either set `xpack.encryptedSavedObjects.encryptionKey` to an alphanumeric value of at least 32 characters, or run the [`kibana-encryption-keys` command](kibana://reference/commands/kibana-encryption-keys.md) to generate the key.
 
