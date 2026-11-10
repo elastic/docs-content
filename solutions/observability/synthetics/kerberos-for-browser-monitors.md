@@ -1,5 +1,5 @@
 ---
-navigation_title: Kerberos authentication
+navigation_title: Kerberos for browser monitors
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-kerberos.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-kerberos.html
@@ -13,7 +13,9 @@ products:
 
 # Kerberos authentication for browser monitors [synthetics-kerberos]
 
-Kerberos auhtentication enables monitoring on single sign-on (SSO) protected sites, usually behind Microsoft Active Directory.
+Kerberos authentication enables monitoring on single sign-on (SSO) protected sites, usually behind Microsoft Active Directory.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` HTTP monitors reach Kerberos-protected endpoints a different way. Rather than the Chromium settings described here, they take a `kerberos` block in the monitor configuration. Like browser monitors, they only run from {{private-location}}s. For the fields that block takes, refer to the [HTTP options](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-http).
 
 :::{admonition} Requirements
 * Kerberos authentication works for **Private Locations only**. It does not work from Elastic's managed global locations.
@@ -21,7 +23,6 @@ Kerberos auhtentication enables monitoring on single sign-on (SSO) protected sit
 * Configure `/etc/krb5.conf` for your realm.
 * Register the SPN (for example, `HTTP/intranet.corp.local@CORP.LOCAL`) on the service account that fronts the protected URL.
 :::
-:::: 
 
 ## Configuring Kerberos authentication [configuring_kerberos]
 

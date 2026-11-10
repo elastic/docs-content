@@ -17,6 +17,8 @@ Attack Discovery uses large language models (LLMs) to analyze alerts and identif
 
 You can start a run from the UI (manual or scheduled), from an automated workflow, or from an {{agent-builder}} conversation. All methods use the same analysis steps. To act on the attacks you confirm, refer to [Respond and contain](/solutions/security/respond-and-contain.md).
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6` To have {{alertzero}} take an attack from discovery to containment, with a forensics report and proposed response actions, refer to [](/solutions/security/alertzero/respond-to-attack.md).
+
 For a demo, refer to the following video (click to view).
 
 [![Attack Discovery video](https://play.vidyard.com/eT92arEbpRddmSM4JeyzdX.jpg)](https://videos.elastic.co/watch/eT92arEbpRddmSM4JeyzdX?)
