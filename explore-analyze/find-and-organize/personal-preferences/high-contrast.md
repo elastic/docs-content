@@ -25,7 +25,7 @@ You can change the interface contrast mode of Kibana to improve visibility and r
     - **High**: The high-contrast color mode of Kibana.
 
 4. Select **Save changes**.
-5. Refresh the page to apply the selected contrast mode.
+5. {applies_to}`stack: ga 9.1-9.6` Refresh the page to apply the selected contrast mode.
 
 ## Related pages
 
