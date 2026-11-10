@@ -50,9 +50,9 @@ For what these differences mean feature by feature, refer to [Compare features](
 
 ## Plan a migration to {{serverless-short}} [plan-migration-to-serverless]
 
-Moving from {{ech}} to {{serverless-short}} is not an in-place conversion. Create a {{serverless-short}} project, move supported data and configuration, and then direct your applications and ingestion to the new project.
+Moving from {{ech}} to {{serverless-short}} is not an in-place conversion. Create one or more {{serverless-short}} projects, move supported data and configuration, and then direct your applications and ingestion to the destination projects.
 
-Use the comparison tables on this page to identify features, APIs, and settings that you need to adapt. Then follow [Migrate to an {{es-serverless}} project](migrate-to-serverless.md) to plan the migration, select a data transfer method, move configuration, update applications, and validate the destination.
+Use the comparison tables on this page to identify features, APIs, and settings that you need to adapt. Then follow [Migrate to {{serverless-full}}](migrate-to-serverless.md) to plan the migration, select a data transfer method, move configuration, update applications, and validate the destination projects.
 
 ## Compare features [elasticsearch-differences-serverless-infrastructure-management]
 
