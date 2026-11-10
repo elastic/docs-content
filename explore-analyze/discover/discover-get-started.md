@@ -46,6 +46,11 @@ Results table
 Document flyout
 :   When you need to focus on one result, select {icon}`maximize` **View details** on its row. A panel opens beside the table and shows the fields of that document. In {{esql}} mode, it shows the columns that your query returned. Refer to [Look inside a document](inspect-documents.md#look-inside-a-document).
 
+## What a dash or `(null)` in your results means [missing-values-in-results]
+
+:::{include} ../_snippets/missing-value-placeholders.md
+:::
+
 ## Query modes in Discover [query-modes]
 
 **Discover** has two ways to define the data you explore, called query modes. You can [switch between them](switch-esql-mode.md) at any time.

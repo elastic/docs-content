@@ -97,6 +97,8 @@ You can export the data displayed in a visualization on a dashboard as a CSV fil
 1. On the dashboard, open the panel menu of the visualization.
 2. Select **Download CSV**. The file downloads to your machine.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the downloaded CSV file, a table writes a missing value as a dash (`-`), and a chart writes it as `(null)`. Refer to [What a dash or `(null)` in panel data means](using.md#missing-values-in-panel-data).
+
 ## Export JSON [export-dashboards]
 
 You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it.

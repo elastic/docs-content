@@ -223,6 +223,13 @@ This action is possible for all charts created using **Lens** or {{esql}}. It is
 
         When you download a visualization panel with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
 
+#### What a dash or `(null)` in panel data means [missing-values-in-panel-data]
+
+:::{include} ../_snippets/missing-value-placeholders.md
+:::
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In a **Formatted CSV** file, a table's missing values appear as a dash. In a chart, they appear as `(null)`.
+
 #### View the requests that collect the data
 
 :::{include} ../_snippets/inspect-request.md
