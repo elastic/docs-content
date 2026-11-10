@@ -62,9 +62,11 @@ The Synthetics UI has no mechanism of its own for dynamic autodiscovery of infra
 
 For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
 
-* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods.
-* {applies_to}`stack: ga` Autodiscovery results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Autodiscovery results also appear in the {{synthetics-app}} as read-only entries when the monitor writes to `synthetics-*`.
+* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Autodiscovery results appear in:
+
+    * {applies_to}`serverless: unavailable` The [{{uptime-app}}](/solutions/observability/uptime/index.md).
+    * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The {{synthetics-app}}, as read-only entries, when the monitor writes to `synthetics-*`.
+
 * **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The {{uptime-app}} is deprecated as of 8.15 and is not available in {{serverless-full}}.
 
 ## Scale {{private-location}}s [synthetics-scale-private-locations]

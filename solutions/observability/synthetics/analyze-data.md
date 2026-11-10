@@ -320,6 +320,7 @@ You can open a remote monitor's individual page the same way as a local monitor.
 ## Autodiscovered monitors [synthetics-analyze-autodiscovered-monitors]
 ```{applies_to}
 stack: ga 9.6+
+serverless: ga
 ```
 
 Monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs also appear in the Synthetics UI. This includes monitors {{heartbeat}} creates through [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) as hosts and pods come and go. You can see their status in Synthetics, including when you move off the deprecated {{uptime-app}}. Synthetics builds each entry from check data alone, so the entry carries a **Heartbeat** badge next to the monitor type and is read-only.
