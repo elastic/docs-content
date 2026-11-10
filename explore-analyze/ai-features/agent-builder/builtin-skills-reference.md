@@ -56,7 +56,7 @@ $$$agent-builder-dashboard-management-skill$$$ $$$agent-builder-dashboards-skill
     :::
 
 $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Analyzes {{esql}} query results in {{kib}} **Discover**, identifying patterns, trends, and anomalies by running aggregation queries against the full dataset. The skill receives the current query, columns, sample rows, and time range as an attachment, then runs 2 to 3 focused aggregation queries, renders an inline visualization for the main finding, and proposes drill-down queries. When the active [context-aware profile](/explore-analyze/discover/discover-get-started.md#context-aware-discover) is logs, metrics, or traces, the skill receives shape-specific guidance. For example, it uses the {{esql}} `TS` source command for time series metrics.
+:   Analyzes {{esql}} query results in {{kib}} **Discover**, identifying patterns, trends, and anomalies by running aggregation queries against the full dataset. The skill receives the current query, columns, sample rows, and time range as an attachment, then runs 2 to 3 focused aggregation queries, renders an inline visualization for the main finding, and proposes drill-down queries. When the active [context-aware experience](/explore-analyze/discover/discover-get-started.md#context-aware-discover) is for logs, metrics, or traces, the skill receives shape-specific guidance. For example, it uses the {{esql}} `TS` source command for time series metrics.
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you ask to see the documents in a **Discover** table, the skill can also show them in the conversation. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
@@ -65,7 +65,7 @@ $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {appli
 
     :::
 
-    **How to activate:** Activates from the [standard activation methods](skills.md#how-skills-are-invoked) when the conversation is started from a Discover session tab that is in {{esql}} mode and has loaded results. The current query, columns, sample rows, and time range are automatically attached to the conversation, so the agent has the context it needs to run the analysis. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai) for the full workflow.
+    **How to activate:** Activates from the [standard activation methods](skills.md#how-skills-are-invoked) when the conversation is started from a Discover session tab that is in {{esql}} mode and has loaded results. The current query, columns, sample rows, and time range are automatically attached to the conversation, so the agent has the context it needs to run the analysis. Refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md) for the full workflow.
 
 $$$agent-builder-discover-session-skill$$$ `discover-session` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
 :   Shows {{es}} documents, events, or logs as an interactive **Discover** table in the conversation. Use it to see the matching rows rather than a chart or an aggregation. The skill generates an {{esql}} query and creates or updates a **Discover** table that renders inline in chat. Requests for charts, metrics, or trends go to [`visualization-creation`](#agent-builder-visualization-creation-skill). Unlike [`discover-data-analysis`](#agent-builder-discover-data-analysis-skill), this skill doesn't need a conversation started from **Discover**. For the full workflow, refer to [Discover tables in chat](agent-builder-discover-tables.md).
@@ -131,13 +131,57 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 
     :::
 
-$$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Composes, discovers, and modifies alerting rules and action policies from within a conversation.
+$$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$$$ `rule-authoring` {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
+:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover:
+
+    * [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) rules
+    * {{observability}} rules created with {{alerting-v1-system}}
+    * {{elastic-sec}} detection rules
+
+    {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This skill was previously named `rule-management`. If a custom agent lists `rule-management`, replace that id with `rule-authoring`.
+
+    {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` [`action-policy-authoring`](#agent-builder-action-policy-authoring-skill) sets up notifications. After this skill proposes a complete rule that opens alerts, it offers to set up notifications. If you accept, the agent loads `action-policy-authoring`.
+
+    {applies_to}`stack: experimental =9.5` In 9.5, this skill is named `rule-management` and also composes action policies.
 
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_rule`, `platform.alerting.manage_action_policy`
+    `platform.alerting.manage_rule`
+
+    {applies_to}`stack: experimental =9.5` `platform.alerting.manage_action_policy`
 
     :::
+
+    **Prerequisites:**
+
+    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This setting is on by default.
+    * {applies_to}`stack: experimental =9.5` The `agentBuilder:experimentalFeatures` advanced setting turned on. You can find it on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
+    * {applies_to}`stack: experimental =9.5` To find or edit saved rules and action policies, the `contextEngine:enabled` advanced setting also turned on. You can find it on the **Space Settings** tab.
+    * {applies_to}`stack: experimental 9.6+` A space that uses the Classic or {{observability}} solution view.
+    * {applies_to}`serverless: experimental` An {{obs-serverless}} project.
+
+    Saving a rule requires the **Rules: All** privilege. For all the privileges you need, refer to [Create rules and action policies with {{agent-builder}}](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-agent-builder-privileges).
+
+$$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental`
+:   Composes, discovers, and modifies action policies from within a conversation. Use it to set up, inspect, or edit alert notifications, such as email or paging an on-call responder.
+
+    An [action policy](/explore-analyze/alerting/esql/action-policies/about-action-policies.md) controls how alerts are matched, grouped, throttled, and sent to workflows. A policy belongs to a space, so one policy can match alerts from many rules.
+
+    {applies_to}`serverless: experimental` This skill was previously named `action-policy-management`. If a custom agent lists `action-policy-management`, replace that id with `action-policy-authoring`.
+
+    :::{dropdown} Assigned tools
+    `platform.alerting.manage_action_policy`
+
+    :::
+
+    **Prerequisites:**
+
+    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). This setting is on by default.
+    * {applies_to}`stack: experimental 9.6+` A space that uses the Classic or {{observability}} solution view.
+    * {applies_to}`serverless: experimental` An {{obs-serverless}} project.
+
+    Saving an action policy requires the **Action Policies: All** privilege and, on {{stack}} deployments, an Enterprise license. The policy sends alerts to a workflow. The workflow steps use a configured connector. For all the privileges you need, refer to [Create rules and action policies with {{agent-builder}}](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-agent-builder-privileges).
+
+    **Related skills:** [`rule-authoring`](#agent-builder-rule-authoring-skill) composes the rules whose alerts a policy matches.
 
 ### Anomaly detection
 
@@ -257,7 +301,9 @@ $$$agent-builder-connector-authoring-skill$$$ `connector-authoring` {applies_to}
 
     :::
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library but doesn't assign it to an agent. To let an agent use the new connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
+    {applies_to}`stack: preview =9.5` **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This skill adds the connector to the connectors library. If you can edit the agent in the conversation, {{kib}} also assigns the connector to it. For the required privileges and what happens when {{kib}} can't assign it, refer to [Assign a connector from chat](connectors.md#assign-a-connector-from-chat).
 
 ## Observability skills
 ```{applies_to}
@@ -383,7 +429,7 @@ $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga
     :::
 
 $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}`stack: ga 9.4+`
-:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, or query.
+:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE mappings, schedule, or query.
 
     :::{dropdown} Assigned tools
     `security.create_detection_rule`, `security.security_labs_search`, `platform.core.generate_esql`, `platform.core.product_documentation`
