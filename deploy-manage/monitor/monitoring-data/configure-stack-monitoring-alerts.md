@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html
 applies_to:
   deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+    stack: ga
 products:
   - id: cloud-hosted
   - id: kibana

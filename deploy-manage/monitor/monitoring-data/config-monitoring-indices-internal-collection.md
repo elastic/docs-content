@@ -6,16 +6,19 @@ applies_to:
     self: deprecated 7.16, removed 10.0
 products:
   - id: elasticsearch
+navigation_title: Legacy collection indices
 ---
 
-# Configuring indices created by internal collection [config-monitoring-indices-internal-collection]
+# Configuring stack monitoring indices created by legacy collection
 
 :::{include} ../stack-monitoring/_snippets/legacy-warning.md
 :::
 
 To configure the data streams created by {{agent}} or {{metricbeat}}, refer to [](configuring-data-streamsindices-for-monitoring.md).
 
-When monitoring using internal collection, data is stored in a set of indices called `.monitoring-{{product}}-7-{{date}}`. Internal collection is available for [{{es}}](../stack-monitoring/es-legacy-collection-methods.md), [{{kib}}](../stack-monitoring/kibana-monitoring-legacy.md), and [{{beats}}](beats://reference/filebeat/monitoring-internal-collection.md).
+When monitoring using internal or legacy collection, data is stored in a set of indices called `.monitoring-{{product}}-7-{{date}}`. Internal collection is available for [{{es}}](../stack-monitoring/es-legacy-collection-methods.md), [{{kib}}](../stack-monitoring/kibana-monitoring-legacy.md), and [{{beats}}](beats://reference/filebeat/monitoring-internal-collection.md).
+
+The `7` in the index name is the monitoring template version.
 
 Indices created by {{metricbeat}} 7 are called `.monitoring-{{product}}-7-mb-{{date}}`. If you still have these indices from an earlier version, the same templates and steps apply to them.
 

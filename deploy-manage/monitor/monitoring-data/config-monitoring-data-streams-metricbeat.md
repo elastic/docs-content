@@ -5,9 +5,10 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+navigation_title: "{{metricbeat}} data streams"
 ---
 
-# Configuring data streams created by Metricbeat [config-monitoring-data-streams-metricbeat]
+# Configuring stack monitoring data streams created by {{metricbeat}}
 
 When [monitoring using {{metricbeat}}](/stack-monitoring/collecting-monitoring-data-with-metricbeat.md), data is stored in a set of data streams with the following pattern:
 
