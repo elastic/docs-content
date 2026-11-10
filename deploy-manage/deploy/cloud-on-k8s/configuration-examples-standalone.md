@@ -53,3 +53,5 @@ Deploys two {{es}} clusters and two {{kib}} instances together with single Elast
 2. If local state storage is still desired but running the Agent container as root is not allowed, then you can run a `DaemonSet` that adjusts the permissions for the Agent local state on each Node prior to running {{agent}}. Note that this `DaemonSet` must be `runAsUser: 0` and possibly `privileged: true`. Also note the {{kib}} changes required to trust the {{es}} CA when running in fleet mode.
 
 Full configuration examples exist in  [Running as a non-root user](configuration-fleet.md#k8s-elastic-agent-running-as-a-non-root-user).
+
+If you deploy {{agent}} as a `Deployment`, keep in mind that two Pods on the same node cannot share the host path. Refer to [Rolling updates and multiple replicas with host path volumes](known-limitations.md#k8s_agent_hostpath_rolling_updates) for more information.
