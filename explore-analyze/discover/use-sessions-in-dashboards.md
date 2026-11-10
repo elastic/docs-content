@@ -209,3 +209,4 @@ A Discover session panel displays one tab at a time. When the underlying session
 - [Save and manage Discover sessions](save-open-search.md)
 - [Create a dashboard](../dashboards/create-dashboard.md)
 - [Add variable controls to Discover queries](esql-variable-controls.md)
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Manage Discover sessions programmatically](manage-sessions-programmatically.md)
