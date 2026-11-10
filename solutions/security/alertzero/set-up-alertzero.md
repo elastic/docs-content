@@ -42,10 +42,7 @@ Check what each {{az-worker}} you plan to run needs:
 
 ## Turn on {{alertzero}} for a space [alertzero-turn-on]
 
-In the space where you want {{alertzero}}, open **Advanced Settings**, turn on the **{{alertzero}}** setting (`securitySolution:enableAlertZero`), save your changes, and reload {{kib}}. {{alertzero}} then appears in the {{elastic-sec}} navigation menu.
-
-% For docs writers: After elastic/kibana#302289 adds this setting to the advanced settings reference, uncomment the following sentence.
-% For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
+In the space where you want {{alertzero}}, open **Advanced Settings**, turn on the **{{alertzero}}** setting (`securitySolution:enableAlertZero`), save your changes, and reload {{kib}}. {{alertzero}} then appears in the {{elastic-sec}} navigation menu. For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
 
 ## Select models for the {{az-workers}} [alertzero-choose-models]
 
