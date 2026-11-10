@@ -21,7 +21,7 @@ For example:
 .monitoring-es-8-mb
 ```
 
-The `8` in the data stream name is the monitoring template version, which uses the ECS schema.
+The `8` in the data stream name is the monitoring template version. It is not pinned to the {{stack}} major version.
 
 The settings and mappings for these data streams are determined by an index template with the following pattern:
 
