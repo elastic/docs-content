@@ -241,7 +241,7 @@ In {{serverless-short}}, attack surface reduction requires the Endpoint Protecti
 **Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the SAM, SECURITY, and SYSTEM registry hives on Windows endpoints, a common credential dumping technique. Trusted applications are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
-
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the Security Account Manager (`SAM`), `SECURITY`, and `SYSTEM` registry hives on Windows endpoints, a common credential dumping technique. [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
 ## Device control [device-control]
 
 ```yaml {applies_to}
