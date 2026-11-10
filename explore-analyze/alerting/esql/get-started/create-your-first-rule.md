@@ -2,7 +2,8 @@
 navigation_title: Create your first rule
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -11,7 +12,7 @@ description: "Step-by-step tutorial for creating an ES|QL rule, covering alert d
 
 # Create a rule in {{alerting-v2-system}} and observe the alert lifecycle [create-first-rule]
 
-In this tutorial, you'll create a {{alerting-v2-system}} rule to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert, how it tracks that alert over time, and how it closes automatically when things return to normal, without any manual intervention.
+In this tutorial, you'll create a {{alerting-v2-system-short}} rule to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert, how it tracks that alert over time, and how it closes automatically when things return to normal, without any manual intervention.
 
 Here's what you'll do:
 
@@ -24,7 +25,7 @@ Here's what you'll do:
 ## Requirements [create-rule-requirements]
 
 - An {{stack}} deployment or an {{observability}} project on {{serverless-short}}.
-- The [{{alerting-v2-system}} privileges](../manage/configure-access.md#alerting-quick-reference) to create rules, triage alerts, and view execution history, plus the `create_index` and `write` index privileges on `checkout-service-logs`.
+- The [{{alerting-v2-system-short}} privileges](../manage/configure-access.md#alerting-quick-reference) to create rules, triage alerts, and view execution history, plus the `create_index` and `write` index privileges on `checkout-service-logs`.
 
 ## Prepare your environment [prepare-your-environment]
 
@@ -254,7 +255,7 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 Go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-If you already have {{alerting-v2-system}} rules, select **Create rule** first. Then select **ES|QL rule** to open the rule form.
+If you already have {{alerting-v2-system-short}} rules, select **Create rule** first. Then select **ES|QL rule** to open the rule form.
 
 ::::
 
@@ -338,7 +339,7 @@ The sandbox showed that your query *can* find a breach. This step confirms the r
 
 ::::{step} Open Execution history
 
-Go to **Alerting** → **Execution History** in the {{observability}} navigation menu, or find **Execution History** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Go to **Alerting** → **Execution history** in the {{observability}} navigation menu, or find **Execution history** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::
 

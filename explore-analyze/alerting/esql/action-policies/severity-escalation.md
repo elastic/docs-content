@@ -2,7 +2,8 @@
 navigation_title: Severity escalation
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to manage notifications when alert severity changes, including escalation, de-escalation, and duplicate notification prevention."
@@ -10,7 +11,7 @@ description: "How to manage notifications when alert severity changes, including
 
 # Manage severity escalation notifications in {{alerting-v2-system}} [severity-escalation]
 
-Not every severity change in {{alerting-v2-system}} invokes a workflow. The outcome depends on whether the action policy has already matched the alert and which frequency option you've selected. You can control what happens on first-time matches, duplicate invocations, and de-escalation.
+Not every severity change in {{alerting-v2-system-short}} invokes a workflow. The outcome depends on whether the action policy has already matched the alert and which frequency option you've selected. You can control what happens on first-time matches, duplicate invocations, and de-escalation.
 
 ## Notify when an alert escalates into a new severity threshold
 
