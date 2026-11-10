@@ -9,6 +9,8 @@ toc:
   - toc: apm
   # The next one should be child of ☝️
   - toc: apm-agents
+  # Published under Reference > Ingestion tools
+  - toc: managed-inputs
   - toc: machine-learning
   - toc: glossary
   - toc: autoops-insights
