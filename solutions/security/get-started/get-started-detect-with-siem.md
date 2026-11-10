@@ -33,12 +33,12 @@ Before you can begin using {{elastic-sec}}, you need to choose an integration to
 ::::{step} Install the Elastic Defend integration
 
 :::{dropdown} Steps to install {{elastic-defend}}
-1. On the **Get started** page, in the **Ingest your data** section, select **{{elastic-defend}}**, then click **Add {{elastic-defend}}**. Elastic has several integrations for you to choose from—so you can select one of our recommended integrations or another of your choice. 
+1. On the **Get started** page, in the **Ingest your data** section, expand **Add data with integrations**, then select **{{elastic-defend}}**. Elastic has several integrations for you to choose from—so you can select one of our recommended integrations or another of your choice. If the integration's **Overview** page opens, select **Add {{elastic-defend}}**.
 
     :::{note} 
     If you've added data through another integration besides {{elastic-defend}}, you can skip to [Add Elastic prebuilt detection rules](#add-elastic-prebuilt-detection-rules). 
     ::: 
-2. On the next page that says, "Ready to add your first integration?", click **Add integration only (skip agent installation)**. The integration configuration page appears.
+2. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**. The integration configuration page appears.
 3. Give the {{elastic-defend}} integration a name and optional description.
 4. Select the type of environment you want to protect—**Traditional Endpoints** or **Cloud Workloads**. For this guide, we'll select **Traditional Endpoints**. 
 5. Select a configuration preset. Each preset comes with different default settings for {{agent}}, which you can further customize later by [configuring the {{elastic-defend}} integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md). For optimal endpoint protection, we recommend selecting **Complete EDR (Endpoint, Detection & Response)**. 

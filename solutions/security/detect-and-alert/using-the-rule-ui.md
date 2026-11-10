@@ -65,3 +65,5 @@ To understand which type to use, refer to [Select the right rule type](/solution
 ## Next steps
 
 After creating the rule, you can change its settings, enable or disable it, and more. Refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md) for more information.
+
+{applies_to}`security: ga` Before you turn on many rules at once, learn how to keep them running on time in [Plan detection rules for search performance](/solutions/security/detect-and-alert/plan-rule-performance.md).
