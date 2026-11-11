@@ -65,7 +65,7 @@ After you save a region policy:
 * EIS routes {{infer}} requests only to locations that match your allowed geographies or regions.
 * EIS does not silently fall back to a disallowed region during outages or capacity events.
 * Models that aren't available in any of your allowed locations become unavailable for use.
-  In model details, check the **Regions** field to see where each model can run.
+  To see where a model is available, whether or not your policy allows it, open its details and check **Region options** (or **Regions** in earlier versions).
 
   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, the models list on the **Elastic Inference Service** page hides models that aren't available in your allowed locations. To show them, refer to [Show models that are hidden by default](eis.md#eis-display-options).
 * If a request targets a model that isn't available in your allowed locations, {{infer}} fails with a `403` error that includes:
@@ -80,7 +80,7 @@ After you save a region policy:
 
 :::{important}
 Changing region preferences affects all Elastic {{infer-cap}} Service endpoints across all spaces.
-Before you save, check **Regions** in the details for any models you rely on.
+Before you save, check **Region options** (or **Regions** in earlier versions) in the details for any models you rely on.
 Models that aren't available in your allowed locations become unavailable.
 :::
 

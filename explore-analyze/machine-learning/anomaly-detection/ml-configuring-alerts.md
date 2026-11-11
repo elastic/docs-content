@@ -12,7 +12,7 @@ products:
 
 This guide explains how to create alerts that notify you automatically when an anomaly is detected in a [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md), or when issues occur that affect job performance.
 
-{{kib}}'s {{alert-features}} support two types of {{ml}} rules, which run scheduled checks on your {{anomaly-jobs}}:
+{{alerting-v1-system}} supports two types of {{ml}} rules, which run scheduled checks on your {{anomaly-jobs}}:
 
 [{{anomaly-detect-cap}} alert](#creating-anomaly-alert-rules)
 :   Checks job results for anomalies that match your defined conditions and raises an alert when found.

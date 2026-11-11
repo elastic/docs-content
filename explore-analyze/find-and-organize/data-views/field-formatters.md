@@ -1,5 +1,5 @@
 ---
-description: Field formatters for string, date, geographic point, and numeric fields in a Kibana data view. Set a custom label and choose how Kibana displays each field.
+description: Change how Kibana displays the fields of a data view. Set a custom label and select a field formatter for string, date, geographic point, or numeric fields.
 applies_to:
   stack: ga
   serverless: ga
@@ -37,9 +37,9 @@ Geographic point fields support the [**String**](#string-transformations) format
 
 ## Number field formatters [field-formatters-numeric]
 
-Numeric fields support the **Bytes and Bits**, **Color**, **Duration**, **Histogram**, **Number**, **Percentage**, [**String**](#string-transformations), and [`Url`](#url-field-formatter) formatters.
+Numeric fields support the **Bytes and Bits**, **Color / Badge**, **Duration**, **Histogram**, **Number**, **Percentage**, [**String**](#string-transformations), and [`Url`](#url-field-formatter) formatters.
 
-The **Bytes and Bits**, **Number**, and **Percentage** formatters let you choose the display formats of numbers in the field using the [Elastic numeral pattern](/explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
+The **Bytes and Bits**, **Number**, and **Percentage** formatters let you choose the display formats of numbers in the field using the [Elastic numeral pattern](/explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains. The decimal and thousands separators that these patterns produce follow the **Formatting locale** [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is `en` by default.
 
 The **Histogram** formatter is used only for the [histogram field type](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes and Bits**, **Number**, or **Percentage** format to aggregated data.
 
@@ -59,9 +59,12 @@ The **Duration** field formatter displays the numeric value of a field in the fo
 
 You can specify these increments with up to 20 decimal places for input and output formats.
 
-The **Color** field formatter lets you specify colors with ranges of values for a number field.
+The **Color / Badge** field formatter lets you specify colors with ranges of values for a number field. Values in a range show in the text and background colors you set for that range. To set it up:
 
-When you select the **Color** formatter, select **Add color**, then specify the **Range**, **Text color**, and **Background color**.
+* Select **Add color**, then enter a **Range** as `start:end`, such as `100:150`, and pick a text color and a background color. Both ends are included. If ranges overlap, the last matching one applies. To color another range, select **Add color** again.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To control the decimal places, thousands separator, or other number format of a colored value, enter an [Elastic numeral pattern](/explore-analyze/numeral-formatting.md) in **Numeral.js format pattern (optional)**. For example, the pattern `0,0.00` formats 1234.5 as 1,234.50.
+  * Color ranges still match the original value, not the formatted one. For example, the pattern `0.00` rounds 99.999 to 100.00, but the value still doesn't match a range that starts at 100.
+  * If you leave the field empty, {{kib}} shows the value as stored.
 
 ## String transformations [string-transformations]
 

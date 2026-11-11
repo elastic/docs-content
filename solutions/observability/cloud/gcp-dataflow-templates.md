@@ -58,20 +58,22 @@ You can optionally restrict the privileges of your API Key; otherwise they’ll 
 
 You’ll start with installing the Elastic GCP integration to add pre-built dashboards, ingest node configurations, and other assets that help you get the most of the GCP logs you ingest.
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `gcp`.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Google Cloud Platform**.
 
     :::{image} /solutions/images/observability-monitor-gcp-kibana-integrations.png
     :alt: {{kib}} integrations
     :::
 
-3. Click the Elastic Google Cloud Platform (GCP) integration to see more details about it, then click **Add Google Cloud Platform (GCP)**.
+3. If the integration's **Overview** page opens, click **Add Google Cloud Platform**.
 
     :::{image} /solutions/images/observability-monitor-gcp-integration.png
     :alt: GCP integration
     :::
 
-4. Click **Save integration**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
+5. Click **Save and continue**.
+6. In the dialog that opens, click **Add {{agent}} later**. The Dataflow template sends data directly to {{es}}, so you don't need to install {{agent}}.
 
 ## Step 2: Create a Pub/Sub topic and subscription [_step_2_create_a_pubsub_topic_and_subscription]
 
