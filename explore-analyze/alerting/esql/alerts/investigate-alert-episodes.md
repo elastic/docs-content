@@ -48,13 +48,18 @@ Related alerts from the same rule are grouped to help you answer whether this is
 
 ## Spot a flapping alert [flapping]
 
-A **Flapping** badge next to an alert's status warns you not to rely on that status. The alert keeps changing between `active` and `recovering` instead of staying active or closing, so its status doesn't tell you whether the problem is ongoing or fixed. The badge appears only on the alert's detail page, not in the **Alerts** table, so open the alert to check for it. Select the badge to see why {{kib}} added it. To decide how to respond, refer to [Triage a flapping alert](triage-alert-episodes.md#triage-flapping).
+A flapping alert keeps changing status instead of staying active or closing, so its status doesn't tell you whether the problem is ongoing or fixed. To warn you not to rely on that status, {{kib}} marks the alert as **Flapping**. {{kib}} shows the mark in different places for alerts from {{alerting-v2-system-short}} and {{alerting-v1-system-short}} rules, and uses different criteria to add it:
 
-{{kib}} adds the badge when an alert changes between `active` and `recovering` at least 4 times in its last 20 rule events. Some alerts that change status often don't show the badge, and some `inactive` alerts keep it:
+| Behavior | {{alerting-v2-system-short}} alerts | {{alerting-v1-system-short}} alerts |
+|---|---|---|
+| In the **Alerts** table | The table doesn't show that the alert is flapping. | A {icon}`chart_gauge` **Flapping** icon appears in the **Status** column while the alert is active. |
+| In the alert details | A **Flapping** badge appears next to the status, including after the alert becomes `inactive`. Select the badge to see why {{kib}} added it. | No badge appears. On the **Fields** tab, `kibana.alert.flapping` is `true` when the alert is flapping. |
+| When {{kib}} marks the alert as flapping | The alert's last 20 rule events include at least 4 changes between `active` and `recovering`. {{kib}} doesn't check alerts with fewer than 20 rule events, and changes into or out of `pending` or `inactive` don't count. | The {{alerting-v1-system-short}} [flapping settings](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details) decide when an alert is flapping. |
+| How to respond | Follow the steps in [Triage a flapping alert](triage-alert-episodes.md#triage-flapping). | Acknowledging the alert doesn't stop its notifications. For other differences, refer to [How actions affect alerts from {{alerting-v1-system-short}}](triage-alert-episodes.md#classic-triage-action-results). |
 
-- An alert with fewer than 20 rule events doesn't show the badge, even if it's already changing between `active` and `recovering`.
-- Changes into or out of `pending` or `inactive` don't count toward the badge.
-- An `inactive` alert keeps the badge if its last 20 rule events include at least 4 changes between `active` and `recovering`.
+:::{tip}
+If a {{alerting-v2-system-short}} alert's status in the **Alerts** table keeps changing between `active` and `recovering`, open the alert details to check for the **Flapping** badge. If an [action policy](../action-policies/create-configure-action-policy.md#reduce-noise-grouping) notifies on status changes, repeated notifications for the same alert are another reason to check.
+:::
 
 ## Review who has responded [review-responders]
 

@@ -71,6 +71,8 @@ Go to Discover to check whether the data behind an alert shows a genuine problem
 
 Base your response to a flapping alert on the data behind it, not on its status. A flapping alert keeps changing between `active` and `recovering`, so its status can't tell you whether the problem is ongoing or fixed. To recognize a flapping alert, refer to [Spot a flapping alert](investigate-alert-episodes.md#flapping).
 
+The following steps are for alerts from {{alerting-v2-system-short}} rules. On alerts from {{alerting-v1-system-short}} rules, acknowledging an alert doesn't stop its notifications. For other differences, refer to [How actions affect alerts from {{alerting-v1-system-short}}](#classic-triage-action-results).
+
 To triage a flapping alert:
 
 1. [Acknowledge the alert](#track-review-status) to stop its notifications while you investigate, because flapping doesn't stop or delay them. The acknowledgment stays in place each time the alert returns to `active`, because it's still the same alert.
