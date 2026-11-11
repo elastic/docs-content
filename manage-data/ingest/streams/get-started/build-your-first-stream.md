@@ -67,7 +67,7 @@ Copy the endpoint URLs from the dialog rather than typing them. An OTLP source's
 :::::{step} Create a destination
 :anchor: streams-first-stream-destination
 
-A destination is where data lands. For your first stream, write to the {{es}} project you're working in.
+A destination is where data lands. For your first stream, write to the {{serverless-short}} project you're working in.
 
 1. On the Map, select **Destination**.
 1. Under **Where will this destination's data live?**, select **Local Elasticsearch**.

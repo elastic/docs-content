@@ -19,7 +19,7 @@ A destination is where a stream ends. It's the place data is written to, togethe
 :::{include} /manage-data/ingest/streams/_snippets/private-preview-note.md
 :::
 
-A destination is a connection, not an index. A Local or Remote Elasticsearch destination is one connection to one {{es}} project or deployment. The records it carries can land in many data streams and indices, as many as its write patterns allow. An Amazon S3 destination is one connection to one bucket. On the Streams Map, each destination is one node. On the **Destinations** tab, each destination is one row, and you expand the row to see the indices and data streams that match its write patterns.
+A destination is a connection, not an index. A Local or Remote Elasticsearch destination is one connection to one {{serverless-short}} project or {{ech}} deployment. The records it carries can land in many data streams and indices, as many as its write patterns allow. An Amazon S3 destination is one connection to one bucket. On the Streams Map, each destination is one node. On the **Destinations** tab, each destination is one row, and you expand the row to see the indices and data streams that match its write patterns.
 
 ## Destination types [streams-destinations-types]
 
@@ -27,7 +27,7 @@ When you create a destination, you first answer **Where will this destination's 
 
 | Choice | Writes to | Credentials | Use it for |
 | --- | --- | --- | --- |
-| [Local Elasticsearch](destinations/elasticsearch.md) | The {{es}} project you're working in | Created by Streams and scoped to the destination's write patterns | Data you search and analyze in this project |
+| [Local Elasticsearch](destinations/elasticsearch.md) | The {{serverless-short}} project you're working in | Created by Streams and scoped to the destination's write patterns | Data you search and analyze in this project |
 | [Remote Elasticsearch](destinations/remote-elasticsearch.md) | Another Elastic Cloud deployment or project on 9.5 or later | An API key from the remote deployment that you supply | A copy in another region, team, or deployment, including {{ech}} |
 | [External storage](destinations/s3.md) | An Amazon S3 bucket you own, as newline-delimited JSON | An AWS access key pair that you supply | The complete record, kept on infrastructure you control, while you index only a subset |
 

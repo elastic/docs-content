@@ -1,6 +1,6 @@
 ---
 navigation_title: Local Elasticsearch
-description: Write data from a stream to the Elasticsearch project you're in. Choose Auto or Fixed index mode, set write patterns, and find the data streams it creates.
+description: Write data from a stream to the Serverless project you're in. Choose Auto or Fixed index mode, set write patterns, and find the data streams it creates.
 applies_to:
   serverless:
     elasticsearch: preview
@@ -14,7 +14,7 @@ products:
 
 # Local Elasticsearch destination
 
-A **Local Elasticsearch** destination writes data from a stream to the {{es}} project you're working in. It's the destination for anything you want to search, visualize, and alert on in this project, and the one that most streams end at. One destination is one connection to the project, and the records it carries can land in many data streams, as many as its write patterns allow. Streams creates and manages the destination's credentials for you, so the only decisions are how the target data streams are named and what the destination is allowed to write to.
+A **Local Elasticsearch** destination writes data from a stream to the {{serverless-short}} project you're working in. It's the destination for anything you want to search, visualize, and alert on in this project, and the one that most streams end at. One destination is one connection to the project, and the records it carries can land in many data streams, as many as its write patterns allow. Streams creates and manages the destination's credentials for you, so the only decisions are how the target data streams are named and what the destination is allowed to write to.
 
 :::{include} /manage-data/ingest/streams/_snippets/private-preview-note.md
 :::

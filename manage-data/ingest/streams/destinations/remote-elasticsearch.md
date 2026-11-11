@@ -14,7 +14,7 @@ products:
 
 # Remote Elasticsearch destination
 
-A **Remote Elasticsearch** destination writes data from a stream to an {{es}} deployment other than the project you're working in. Use it to keep a copy of data in another region or another team's deployment, to send data from a {{serverless-short}} project to an {{ech}} deployment, or to move a stream between projects without touching the shippers. Unlike a [Local Elasticsearch destination](elasticsearch.md), you supply the credentials, and Streams uses them as they are.
+A **Remote Elasticsearch** destination writes data from a stream to an {{ech}} deployment or {{serverless-short}} project other than the one you're working in. Use it to keep a copy of data in another region or another team's deployment, to send data from a {{serverless-short}} project to an {{ech}} deployment, or to move a stream between projects without touching the shippers. Unlike a [Local Elasticsearch destination](elasticsearch.md), you supply the credentials, and Streams uses them as they are.
 
 :::{include} /manage-data/ingest/streams/_snippets/private-preview-note.md
 :::

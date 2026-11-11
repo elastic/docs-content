@@ -104,7 +104,7 @@ These pages cover ingesting, processing, and routing data before it reaches {{es
 * [Get started](get-started/index.md): Learn the model with [How Streams works](get-started/how-streams-work.md), then [build your first stream](get-started/build-your-first-stream.md).
 * [Streams Map](streams-map.md): Read and edit the Map, and move around it.
 * [Sources](sources.md): Create [OTLP](sources/otlp.md), [Prometheus Remote Write](sources/prometheus-remote-write.md), and [{{es}} bulk](sources/elasticsearch-bulk.md) sources, point your shippers at them, and manage them on the **Sources** tab.
-* [Destinations](destinations.md): Write to [{{es}} in this project](destinations/elasticsearch.md), a [remote {{es}} deployment](destinations/remote-elasticsearch.md), or [Amazon S3](destinations/s3.md), and manage destinations on the **Destinations** tab.
+* [Destinations](destinations.md): Write to [{{es}} in this project](destinations/elasticsearch.md), a [remote {{ech}} deployment or {{serverless-short}} project](destinations/remote-elasticsearch.md), or [Amazon S3](destinations/s3.md), and manage destinations on the **Destinations** tab.
 * [Process data](process-data.md): Add a pipeline and configure its processors.
 * [Route data](route-data.md): Send records to different destinations by condition, or copy them.
 * [Monitor streams](monitor-streams.md): Read the states and statistics on the Map.
