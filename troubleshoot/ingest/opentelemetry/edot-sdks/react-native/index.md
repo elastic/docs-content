@@ -118,7 +118,7 @@ The affected variant does not meet the
 
 ### Resolution [resolution-android-api-level]
 
-Raise the app's `minSdk` to 26, or use API level 24 or higher with
+Raise the app's `minSdk` to 26, or use API level 24 or later with
 [Java 8 library desugaring](../android/index.md#why-desugaring).
 Check the `minSdk` for the variant named in the error.
 
@@ -139,7 +139,7 @@ elastic-otel-config.json was not found in the app assets. Create it at the React
 elastic-otel-config.json was not found in the app bundle. Create it at the React Native project root, run setup-ios, and check that the file is in the app target's Copy Bundle Resources build phase.
 ```
 
-Expo prebuild can fail with:
+`npx expo prebuild` can fail with:
 
 ```text
 elastic-otel-config.json was not found. Create it at the project root, next to package.json.
@@ -272,7 +272,7 @@ For an initialization rejection, check the startup logs for a configuration
 error and confirm that
 [bootstrap runs before React Native starts](elastic-otel-react-native://reference/edot-react-native/getting-started.md#bootstrap-before-react-native).
 
-## Expo prebuild cannot edit a generated file [expo-layout]
+## Expo config plugin cannot edit a generated file [expo-layout]
 
 ### Symptoms [symptoms-expo-layout]
 
@@ -286,16 +286,24 @@ error and confirm that
 
 ### Causes [causes-expo-layout]
 
-A generated file lacks the expected insertion point, `MainApplication` is not
-Kotlin, or `AppDelegate` is not Swift.
+A generated file lacks a line that the package's config plugin inserts after,
+`MainApplication` is not Kotlin, or `AppDelegate` is not Swift. The config
+plugin edits only the Kotlin `MainApplication` and Swift `AppDelegate` that the
+Expo template generates, and checks the language before it edits either file.
 
 ### Resolution [resolution-expo-layout]
 
-Check the named file against
-[Set up an Expo app](elastic-otel-react-native://reference/edot-react-native/getting-started.md#set-up-an-expo-app).
-For a customized native project, use
+For a missing line in a Gradle file, add the lines from
 [Manual host setup fallback](elastic-otel-react-native://reference/edot-react-native/getting-started.md#manual-host-setup-fallback)
-to apply the required lines to that project.
+to the named file. For a missing line in `MainApplication` or `AppDelegate`,
+add the lines from
+[Bootstrap before React Native](elastic-otel-react-native://reference/edot-react-native/getting-started.md#bootstrap-before-react-native).
+The config plugin skips lines that are already present.
+
+For a `MainApplication` that is not Kotlin or an `AppDelegate` that is not
+Swift, restore the Kotlin or Swift file that the Expo template generates.
+Adding the bootstrap lines by hand does not resolve this error while the
+package's config plugin is listed in `expo.plugins`.
 
 ## Babel plugin options stop the Metro transform [babel-options]
 
