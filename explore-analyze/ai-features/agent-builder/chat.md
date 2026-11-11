@@ -230,6 +230,8 @@ Your changes save immediately. If a change fails, the popover shows the error "F
 
 The user search includes users who can log in to the current space, but a member can open the conversation only if they can also access its agent. You can't add users who have never logged in to {{kib}}.
 
+{applies_to}`serverless: unavailable` Service accounts don't appear in this search. To add one as a member, use the API as described in [Service accounts in conversations](permissions.md#service-account-conversations). A service account that is only a member doesn't appear under **Current members** or **Participants**, but the user count on the sharing button includes it. A service account that owns the conversation appears as the author. To remove it, update the access control with the API or switch the conversation to **Public**.
+
 To remove a member, click the **Remove member** icon {icon}`cross` next to their name. Switching to **Public** removes all members, and switching back to **Restricted** doesn't restore them.
 
 When a conversation is public, the sharing button shows the {icon}`globe` icon and **Public**.
@@ -277,6 +279,17 @@ The following example shows the chat input with **Skip agent** selected:
 An open shared or public conversation refreshes about every five seconds, so messages from other participants appear shortly after they're sent, not instantly. It doesn't refresh while the browser tab is in the background.
 
 The chat history panel doesn't refresh on a timer. A conversation that someone shares with you appears the next time the list refreshes, for example when you return to the browser tab or reload the page.
+
+#### Messages from a service account [messages-from-a-service-account]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: unavailable
+```
+
+Scripts and other programmatic clients can post to a conversation as a [service account](permissions.md#service-accounts) through the [{{kib}} API](kibana-api.md#chat-as-a-service-account). By default, Agent Chat shows these messages with the account username, such as `kibana/automation`, instead of a person's name. A workflow that runs as a service account can set `author_name` on an [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) or [`ai.conversation.add_user_message`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-user-message) step to show a different name, such as the workflow name.
+
+If the service account created the conversation, **Author** in the conversation details shows the account username.
 
 ### Track conversation status
 ```{applies_to}

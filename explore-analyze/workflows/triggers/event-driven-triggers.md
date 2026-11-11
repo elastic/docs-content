@@ -20,8 +20,8 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. The fo
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview =9.4` **`workflows.failed`**: Fires when another workflow's execution fails.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Cases triggers**: Fire when cases change (created, updated, status changed, attachments added, comments added).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` **Entity store triggers**: Fire when an entity's asset criticality or risk score changes in the entity store.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
+- {applies_to}`observability: preview` {applies_to}`stack: preview 9.6+` **Alert lifecycle triggers in {{alerting-v2-system}}**: Fire when a user takes a triage action on an alert, such as resolving, assigning, acknowledging, or snoozing it.
+- {applies_to}`observability: preview` {applies_to}`stack: preview 9.6+` **Rule lifecycle triggers in {{alerting-v2-system-short}}**: Fire when someone creates, updates, deletes, enables, or disables a rule.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` **{{agent-builder}} triggers**: Fire when a conversation attachment is added, updated, or deleted, or when conversation metadata changes. `ai.conversation.updated` also fires for other conversation changes, but only for conversation templates that have it turned on.
 
 
@@ -451,18 +451,19 @@ triggers:
       condition: 'event.score >= 70'
 ```
 
-## Alert lifecycle triggers in {{alerting-v2-system}} [alert-episode-lifecycle-triggers-event-driven]
+## Alert lifecycle triggers in {{alerting-v2-system-short}} [alert-episode-lifecycle-triggers-event-driven]
 
 ```{applies_to}
-serverless: preview
+serverless:
+  observability: preview
 stack: preview 9.6+
 ```
 
 :::{note}
-These triggers are available only when {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
+These triggers are available only when [{{alerting-v2-system-short}} is enabled](/explore-analyze/alerting/esql/setup.md).
 :::
 
-Alert lifecycle triggers run a workflow when a user acts on an alert in {{alerting-v2-system}}, either in the UI or through the API. They don't fire when an alert becomes active or recovers based on rule evaluations. To run a workflow when an alert's status changes automatically, use an action policy instead. For a comparison, refer to [When to use action policies or lifecycle triggers](../../alerting/esql/workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
+Alert lifecycle triggers run a workflow when a user acts on an alert in {{alerting-v2-system-short}}, either in the UI or through the API. They don't fire when an alert becomes active or recovers based on rule evaluations. To run a workflow when an alert's status changes automatically, use an action policy instead. For a comparison, refer to [When to use action policies or lifecycle triggers](../../alerting/esql/workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
 
 Each trigger fires exactly once per event. To subscribe a workflow, add the trigger ID to its `triggers` block, as with other event-driven triggers.
 
@@ -502,18 +503,19 @@ Reference these fields with Liquid templating in workflow steps:
 
 Use these fields to write workflow conditions that scope the automation to specific rules or alerts. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alerts from a specific rule.
 
-## Rule lifecycle triggers in {{alerting-v2-system}} [alerting-rule-lifecycle-triggers-event-driven]
+## Rule lifecycle triggers in {{alerting-v2-system-short}} [alerting-rule-lifecycle-triggers-event-driven]
 
 ```{applies_to}
-serverless: preview
+serverless:
+  observability: preview
 stack: preview 9.6+
 ```
 
 :::{note}
-These triggers are available only when {{alerting-v2-system}} is enabled. If it isn't enabled, they don't appear in the trigger picker.
+These triggers are available only when [{{alerting-v2-system-short}} is enabled](/explore-analyze/alerting/esql/setup.md).
 :::
 
-Rule lifecycle triggers run a workflow when someone creates, updates, deletes, enables, or disables a rule in {{alerting-v2-system}}. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
+Rule lifecycle triggers run a workflow when someone creates, updates, deletes, enables, or disables a rule. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
 
 Rule lifecycle triggers fire independently of alerts.
 

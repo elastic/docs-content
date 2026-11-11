@@ -2,7 +2,8 @@
 navigation_title: Configure access
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -11,7 +12,7 @@ description: "Kibana feature privileges and Elasticsearch index privileges neede
 
 # Configure access to {{alerting-v2-system}} [access]
 
-To create rules, triage alerts, and configure notifications in {{alerting-v2-system}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
+To create rules, triage alerts, and configure notifications in {{alerting-v2-system-short}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
 
 :::{note}
 Depending on how your rules and notifications are configured, your role might also need `read` index privileges on the indices their rules query and **Actions and Connectors: All** (under **Management**) to create or edit workflow connectors. Refer to [{{kib}} role management](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for guidance on building roles that combine privileges across features.
@@ -27,7 +28,7 @@ The following table shows the minimum privileges for each activity. Higher privi
 | Monitor rule execution | **Execution history: Read** (under **Universal Alerting**) |
 | Triage alerts | **Alerts: All** (under **Universal Alerting**) |
 | Configure notifications | **Action Policies: All** (under **Universal Alerting**) + **Workflows: Read** (under **Analytics** → **Workflows**) |
-| Create rules and action policies with {{agent-builder}} {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6+` | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
+| Create rules and action policies with {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
@@ -45,12 +46,12 @@ The **Rules** privilege controls who can create and manage rules.
 | **Read** | View rules and their configuration |
 
 :::{note}
-**Rules: All** also grants access to the **Alerts** menu in Discover, which routes rule creation to the {{alerting-v2-system}} rule form when the system is enabled in your space.
+**Rules: All** also grants access to the **Alerts** menu in Discover, which routes rule creation to the {{alerting-v2-system-short}} rule form when the system is enabled in your space.
 :::
 
-### View rule execution history [alerting-execution-history-privileges]
+### View execution history [alerting-execution-history-privileges]
 
-The **Execution history** privilege controls who can view rule execution history. Because execution history is read-only, **All** and **Read** grant the same access.
+The **Execution history** privilege controls who can view rule and action policy execution history, including the **Policy history** tab on an alert's details page. Because execution history is read-only, **All** and **Read** grant the same access.
 
 ## Triage alerts [alerting-triage-privileges]
 
@@ -65,12 +66,12 @@ Both levels also grant read access to the alert data streams. Refer to [{{es}} i
 
 ### Alerts from {{alerting-v1-system}} [alerting-classic-alert-privileges]
 
-The **Alerts** page also lists {{alerting-v1-system}} alerts. Your role's {{alerting-v1-system}} privileges for each alert's rule type decide which of these alerts you can see and act on:
+The **Alerts** page also lists {{alerting-v1-system-short}} alerts. Your role's {{alerting-v1-system-short}} privileges for each alert's rule type decide which of these alerts you can see and act on:
 
-- **To view an alert**: Your role must be able to view alerts from the alert's rule type in {{alerting-v1-system}}.
-- **To triage an alert**: Your role needs **Alerts: All** and the {{alerting-v1-system}} privileges for the alert's rule type. With **Alerts: Read**, you can't triage {{alerting-v1-system}} alerts from the **Alerts** page.
+- **To view an alert**: Your role must be able to view alerts from the alert's rule type in {{alerting-v1-system-short}}.
+- **To triage an alert**: Your role needs **Alerts: All** and the {{alerting-v1-system-short}} privileges for the alert's rule type. With **Alerts: Read**, you can't triage {{alerting-v1-system-short}} alerts from the **Alerts** page.
 
-For the {{alerting-v1-system}} privileges, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules). To learn how each triage action affects these alerts, refer to [Triage alerts from {{alerting-v1-system}}](../alerts/triage-alert-episodes.md#triage-classic-alerts).
+For the {{alerting-v1-system-short}} privileges, refer to [Give access to triage alerts without managing rules](/explore-analyze/alerting/alerts/alerting-setup.md#_give_access_to_triage_alerts_without_managing_rules). To learn how each triage action affects these alerts, refer to [Triage alerts from {{alerting-v1-system}}](../alerts/triage-alert-episodes.md#triage-classic-alerts).
 
 ## Configure notifications [alerting-notifications-privileges]
 
@@ -100,11 +101,6 @@ Action policies invoke workflows, which send notifications. The **Workflows** pr
 
 ## Create rules and action policies with {{agent-builder}} [alerting-agent-builder-privileges]
 
-```{applies_to}
-serverless: experimental
-stack: experimental 9.6+
-```
-
 To create rules and action policies with [{{agent-builder}}](../rules/create-rules-action-policies-agent-builder.md), your role needs these privileges:
 
 | To... | Minimum required |
@@ -116,7 +112,7 @@ To create rules and action policies with [{{agent-builder}}](../rules/create-rul
 
 ## Query rule output and alert data [alerting-data-investigation-privileges]
 
-{{alerting-v2-system-cap}} writes rule output and alert data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access to Discover. For rule events and alert actions, the **Alerts** privilege also provides the {{es}} index access you need. Dispatch outcomes need a custom role.
+{{alerting-v2-system-short}} writes rule output and alert data to three queryable data sources. To query them in Discover using {{esql}}, your role needs {{kib}} feature access to Discover. For rule events and alert actions, the **Alerts** privilege also provides the {{es}} index access you need. Dispatch outcomes need a custom role.
 
 ### {{kib}} feature access
 

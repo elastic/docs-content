@@ -316,7 +316,7 @@ Filebeat should begin tailing `logs/log.json` and shipping events to Elasticsear
 
 1. [Log in to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the {{kib}} main menu, under **Observability** select **Discover**.
-3. In the **Data view** dropdown, select **`filebeat-*`**.
+3. In {{esql}} mode, enter `FROM filebeat-*`. In classic mode, select **`filebeat-*`** from the **Data view** dropdown.
 
 You should see the ingested events.
 
@@ -443,7 +443,7 @@ The next step is to confirm that the log data has successfully found its way int
 
 1. [Log in to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the {{kib}} main menu, under **Observability** select **Discover**.
-3. In the **Data view** dropdown, select **`filebeat-*`**.
+3. In {{esql}} mode, enter `FROM filebeat-*`. In classic mode, select **`filebeat-*`** from the **Data view** dropdown.
 
 You should see the ingested events.
 
