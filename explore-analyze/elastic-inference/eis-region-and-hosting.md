@@ -35,7 +35,7 @@ EIS is available to all Elastic customers in all regions on Elastic Cloud Server
 
 For {{ech}} deployments and {{serverless-short}} projects, {{infer}} requests sent through EIS are routed to the nearest EIS region, regardless of where your deployment or project is hosted. For deployments and projects in an EU region, requests are routed to the nearest EIS region in the EU.
 
-{applies_to}`stack: ga 9.3+` For self-managed clusters using EIS via [Cloud Connect](/deploy-manage/cloud-connect.md), all {{infer}} requests sent through EIS are routed to the {{aws}} `us-east-1` (N. Virginia, US) region.
+{applies_to}`stack: ga 9.3+` For {{ece}}, {{eck}}, and self-managed clusters that use EIS through [Cloud Connect](/deploy-manage/cloud-connect.md), EIS routes all {{infer}} requests to the {{aws}} `us-east-1` (N. Virginia, US) region.
 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` If you configure [region preferences](#inference-region-preferences), EIS routes only within your allowed geographies or regions.
 
@@ -147,7 +147,7 @@ If the policy would deny access to in-use {{infer}} endpoints, {{kib}} blocks th
 
 When the update succeeds, {{kib}} shows the **Region preferences saved** message.
 
-#### Restore default nearest-region routing [restore-default-region-preferences]
+#### Restore default routing [restore-default-region-preferences]
 
 1. Open **Region preferences**.
 1. Turn off **Use custom region policy** (or **Restrict inference to specific locations** in earlier versions).
@@ -208,7 +208,7 @@ GET _inference/_region_policy
 
 If no policy is configured, the response is a `404` error with the reason `No region policy is configured for this deployment`.
 
-To remove the policy and restore default nearest-region routing:
+To remove the policy and restore default routing:
 
 ```console
 DELETE _inference/_region_policy
