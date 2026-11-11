@@ -42,7 +42,7 @@ To pull data from the respective applicable locations, refer to:
 
     :::{note}
     :applies_to: { serverless: unavailable, stack: preview 9.1-9.4 }
-    To pull [{{managed-integration}}](/manage-data/ingest/managed-integrations/managed-integrations.md) diagnostics, you have to use the {{fleet}} UI. To display Managed integration resources in {{fleet}}, refer to [Show {{managed-integration}} resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting).
+    To pull [{{managed-integration}}](/reference/managed-integrations/index.md) diagnostics, you have to use the {{fleet}} UI. To display Managed integration resources in {{fleet}}, refer to [Show {{managed-integration}} resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting).
     :::
 
 You need to determine which diagnostic types are needed to investigate your specific issue. This table shows common troubleshooting situations and which diagnostics are commonly associated:

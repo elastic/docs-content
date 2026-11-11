@@ -23,17 +23,17 @@ Elastic offers more than one alerting system, each suited to different use cases
 
 | Goal | Suggested system | Availability |
 |---|---|---|
-| Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{alerting-v1-system-cap}}](alerts.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga` |
-| Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
-| Record matches as rule events with `type: signal` for later analysis, without sending notifications | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
-| Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
-| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
-| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](esql/system-overview.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` |
+| Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{alerting-v1-system}}](alerts.md) | {applies_to}`serverless: ga` {applies_to}`stack: ga` |
+| Write {{esql}} to define exactly what to detect and what data each rule event carries | [{{alerting-v2-system}}](esql/system-overview.md) | {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` |
+| Record matches as rule events with `type: signal` for later analysis, without sending notifications | [{{alerting-v2-system-short}}](esql/system-overview.md) | {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` |
+| Query rule event history in Discover or build dashboards from rule event data | [{{alerting-v2-system-short}}](esql/system-overview.md) | {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` |
+| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-short}}](esql/system-overview.md) | {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` |
+| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-short}}](esql/system-overview.md) | {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` |
 | Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | {applies_to}`stack: ga` {applies_to}`serverless: unavailable` |
 
 ## Compare at a glance
 
-| | {{alerting-v1-system-cap}} | {{alerting-v2-system-cap}} | Watcher |
+| | {{alerting-v1-system-short}} | {{alerting-v2-system-short}} | Watcher |
 |---|---|---|---|
 | **Best for** | Teams using built-in rule types with form-based setup | Teams that need control over detection, and over notification routing when matches are tracked as alerts | Custom alerting logic requiring scripting |
 | **Rule definition** | Select a rule type and fill in parameters | [Write an {{esql}} query](esql/rules/configure-rule-query.md) or use a rule builder with form-based setup | Write a JSON watch definition |

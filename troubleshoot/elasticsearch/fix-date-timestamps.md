@@ -37,7 +37,8 @@ Timestamp data quality issues can strain resources and cause unexpected search r
 * [Dashboards](/explore-analyze/dashboards.md)
 * {{elastic-sec}} [detections and alerts](/solutions/security/detect-and-alert.md)
 * {{observability}} [incident management alerts](/solutions/observability/incident-management/alerting.md)
-* [{{kib}} alerting](/explore-analyze/alerting/alerts.md)
+* [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md)
+* [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md)
 * [Watchers](/explore-analyze/alerting/watcher.md)
 
 Common symptoms of these issues include:
@@ -180,7 +181,8 @@ These common scheduled tasks benefit from using `event.ingested`:
 
 * [Transforms](/explore-analyze/transforms.md)
 * [Machine Learning](/explore-analyze/machine-learning.md)
-* [{{kib}} alerting](/explore-analyze/alerting/alerts.md)
+* [{{alerting-v1-system-short}}](/explore-analyze/alerting/alerts.md)
+* [{{alerting-v2-system-short}}](/explore-analyze/alerting/esql/system-overview.md) rules, which filter each [lookback window](/explore-analyze/alerting/esql/rules/configure-rule-schedule.md#schedule-lookback-window) on the rule's **Time field**
 * [Watchers](/explore-analyze/alerting/watcher.md)
 
 The `event.ingested` approach is recommended for [{{elastic-sec}} data sources](/solutions/security/detect-and-alert/set-rule-data-sources.md#best-practices) and is commonly used in [{{observability}} rules](/solutions/observability/incident-management/create-manage-rules.md#observability-create-manage-rules-observability-rules).

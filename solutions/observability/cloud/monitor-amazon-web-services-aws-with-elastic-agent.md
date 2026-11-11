@@ -124,16 +124,13 @@ In this step, you install the AWS integration in {{kib}}. The AWS integration co
 
 To add the integration:
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the query bar, search for **AWS** and select the AWS integration to see more details about it.
-3. Click **Add AWS**.
-4. Configure the integration name and optionally add a description.
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **AWS**.
+3. If the integration's **Overview** page opens, click **Add AWS**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
+5. Configure the integration name and optionally add a description.
 
-    ::::{tip}
-    If you don’t see options for configuring the integration, you’re probably in a workflow designed for new deployments. Follow the steps, then return to this tutorial when you’re ready to configure the integration.
-    ::::
-
-5. Specify the AWS credentials required to connect to AWS and read log files. In this tutorial, we use an AWS access key ID and secret, but there are a few other ways to provide AWS credentials. To learn more, refer to the [AWS integration](https://docs.elastic.co/en/integrations/aws) documentation. The account you specify must have at least the following privileges:
+6. Specify the AWS credentials required to connect to AWS and read log files. In this tutorial, we use an AWS access key ID and secret, but there are a few other ways to provide AWS credentials. To learn more, refer to the [AWS integration](https://docs.elastic.co/en/integrations/aws) documentation. The account you specify must have at least the following privileges:
 
     ```yaml
     {
@@ -153,9 +150,9 @@ To add the integration:
     }
     ```
 
-6. Turn off all data collection selectors *except* **Collect VPC flow logs from S3**.
-7. Change defaults and in the **Queue URL** field, specify the URL of the SQS queue you created earlier.
-8. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains the AWS configuration you just specified.
+7. Turn off all data collection selectors *except* **Collect VPC flow logs from S3**.
+8. Change defaults and in the **Queue URL** field, specify the URL of the SQS queue you created earlier.
+9. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains the AWS configuration you just specified.
 
 A popup should appear that prompts you to **Add {{agent}} to your hosts**.
 
@@ -306,7 +303,16 @@ It takes a few minutes for {{agent}} to update its configuration and start colle
 
 ## Step 7: Visualize AWS metrics [aws-elastic-agent-visualize-metrics]
 
-Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}}. Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select the `metrics-*` data view, then filter on `data_stream.dataset: "aws.ec2_metrics"`:
+Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}}. Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To see the EC2 metrics:
+
+* In {{esql}} mode, enter:
+
+  ```esql
+  FROM metrics-*
+  | WHERE data_stream.dataset == "aws.ec2_metrics"
+  ```
+
+* In classic mode, select the `metrics-*` data view, then filter on `data_stream.dataset: "aws.ec2_metrics"`.
 
 :::{image} /solutions/images/observability-agent-tut-ec2-metrics-discover.png
 :alt: Screenshot of the Discover app showing EC2 metrics
