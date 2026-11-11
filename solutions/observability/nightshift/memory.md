@@ -8,28 +8,28 @@ products:
   - id: cloud-serverless
 ---
 
-# Context [nightshift-memory]
+# Context engine [nightshift-memory]
 
 The Elastic nightshift AI SRE uses a knowledge base of facts about your systems that agents read when investigating incidents. Rather than rebuilding an understanding of your environment from raw telemetry on every [investigation](./investigations.md), Elastic nightshift keeps knowledge about your services, infrastructure, dependencies, and known failure patterns, and uses it as a starting point.
 
 :::{note}
-Elastic nightshift is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
+Elastic nightshift isn't enabled by default. For what you need to use it, refer to [Requirements](./get-started.md#nightshift-get-started-requirements).
 :::
 
-## View and edit context [nightshift-memory-manage]
+## View what Elastic nightshift has learned [nightshift-memory-manage]
 
-To see what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**, then check the **Cortex** and **Memory** tabs:
+To see what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**, then check the **Wiki** and **Memory** tabs:
 
-- **Cortex**: Durable knowledge that the investigator reads before each run, organized into pages by type, such as services, runbooks, postmortems, and queries.
+- **Wiki**: Durable knowledge that the investigator reads before each run, organized into pages by type, such as services, runbooks, postmortems, and queries.
 - **Memory**: Lessons that the investigator saves after a run and recalls when it works on a similar problem, such as how a previous problem was resolved or which checks found its cause.
 
-Review the knowledge to confirm it's correct for your environment. You can edit, archive, or delete anything that isn't correct or useful. You can also add information about your systems and processes that Elastic nightshift might not discover from your data, such as team conventions, deployment processes, or known issues. For the steps, refer to [Manage what Elastic nightshift knows about your systems](./get-started.md#nightshift-get-started-knowledge).
+Elastic nightshift manages the Wiki and Memory itself, so you can't edit them. To stop Elastic nightshift from using something that isn't correct or useful, archive it. You can restore it later. To give Elastic nightshift more context about your systems and processes, add instructions to an automation. For the steps, refer to [Manage knowledge and memory](./manage/manage-knowledge-and-memory.md).
 
 ## How investigations use context [nightshift-memory-usage]
 
 When an [investigation](./investigations.md) starts, the investigation agent reads the knowledge relevant to the affected services before querying your telemetry. This means the agent starts with an understanding of your environment, and investigations produce more accurate conclusions than they would from raw data alone.
 
-Elastic nightshift also learns from every investigation it runs. It saves what it learns as knowledge, which makes later investigations more accurate and uses fewer tokens. If something it learned isn't correct, you can edit, archive, or delete it.
+Elastic nightshift also learns from the investigations it runs. It saves what it learns to the Wiki and Memory, which makes later investigations more accurate and uses fewer tokens. If something it learned isn't correct, archive it.
 
 ## Give feedback [nightshift-memory-feedback]
 
@@ -37,9 +37,7 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-memory-nav]
 
-- [Get started with Elastic nightshift](./get-started.md): Start an investigation and review the results
-- [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
-- [Investigations](./investigations.md): Learn how Elastic nightshift investigates problems and how to read the results
-- [How Significant Events works](./significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
-- [Knowledge Indicators](./significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
-- [Operator guide](./significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
+- [Manage knowledge and memory](./manage/manage-knowledge-and-memory.md): Review what Elastic nightshift has learned and give it context
+- [Get started with Elastic nightshift](./get-started.md): Check the requirements, enable Elastic nightshift, and run your first investigation
+- [Core components](./core-components/index.md): Learn how the engines, automations, and connectors work
+- [Work in Elastic nightshift](./work-in-elastic-nightshift.md): Investigate and respond, audit and manage detections, and automate investigations

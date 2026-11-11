@@ -24,19 +24,15 @@ Use this guide to understand how Significant Events affects your cluster and how
 
 The following table shows each pipeline component, where it runs, what triggers it, and what it reads and writes:
 
-<!-- TODO for Mike B. (@mdbirnstiehl): My very general understanding is that Significant Events runs these rules on {{alerting-v2-system-short}}, so the "Alerting rule execution" row in the following table might need a small tweak for Nightshift's serverless release. 
-
-Potential revision for the row:
-| Alerting rule execution | {{alerting-v2-system}} → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
--->
-
 | Component | Uses | Trigger | Reads | Writes |
 |---|---|---|---|---|
-| KI feature identification | Task Manager + Workflow | On-demand / continuous extraction | Stream logs | `.significant_events-knowledge_indicators` |
-| KI query generation | Workflow | On-demand | Features + existing queries | Query KI assets |
-| Alerting rule execution | {{alerting-v1-system}} → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
+| KI feature identification | Task Manager + Workflow | On-demand / continuous extraction | Source data | `.significant_events-knowledge_indicators` |
+| KI query generation | Workflow | On-demand | Feature KIs + existing queries | Query KI assets |
+| Alerting rule execution | {{alerting-v2-system}} → {{es}} | Shared schedule | Source data using {{esql}} | `.rule-events` |
 | Detection Workflow | Workflows | Cron 10m | `.rule-events` | `.significant_events-detections` |
 | Discovery Workflow | Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries`, `.rule-events` |
+
+% TODO(verify): Is this table still accurate for Tech Preview? Source: nightshift-program#1103 and #1104 moved KI feature identification and query generation to Agent Builder agents, and #1760 added a status workflow that runs without an agent. I couldn't confirm the workflow triggers or the `.significant_events-discoveries` data stream in the Kibana code.
 
 ## System impact [sig-events-op-impact]
 
@@ -44,13 +40,7 @@ The following sections describe the query load, pipeline lag, memory, and storag
 
 **Alerting rule query load**
 
-<!-- TODO for Mike B. (@mdbirnstiehl): In case you haven't already updated this: I think the paragraph below might need a couple of tweaks. My general understanding is that Significant Events sets these rules to **Collect evidence** mode, so they record matches rather than create alerts. Also looks like all promoted rules share one schedule, instead of each running on its own. Feel free to ignore this if you've already covered it. 
-
-Potential revision:
 One {{alerting-v2-system-short}} rule runs for each promoted query KI, in [**Collect evidence** mode](/explore-analyze/alerting/esql/rules/configure-rule-mode.md). All of these rules run on the same [shared schedule](how-it-works.md#sig-events-hiw-execution), and each run records a match count in `.rule-events` for each time bucket. These matches don't open alerts or appear on the **Alerts** page. On each detection cycle, change point aggregation runs separately for each active rule, against that rule's per-time-bucket match counts. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
--->
-
-One {{esql}} alerting rule runs for each promoted query KI. Each rule executes on its own schedule, creating an alert when its query matches. On each detection cycle, change point aggregation runs separately for each active rule, against that rule's per-time-bucket alert counts. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
 
 **Pipeline lag**
 
@@ -69,7 +59,7 @@ Agent runs add memory pressure. Observe {{kib}} memory under realistic load. Exa
 
 **Ingest assumptions**
 
-Streams must have recent log data for KI extraction to produce useful results. Empty streams or streams with very sparse data produce weak KIs, which produce weak query KIs, which produce fewer promoted rules.
+Sources must have recent data for KI extraction to produce useful results. Empty sources or sources with very sparse data produce weak KIs, which produce weak query KIs, which produce fewer promoted rules.
 
 **Storage growth**
 
@@ -86,15 +76,15 @@ The `.significant_events-detections` data stream uses a data stream lifecycle (D
 
 ## Cost drivers [sig-events-op-costs]
 
-LLM costs scale with the number of streams, the number of promoted rules, and whether you enable continuous extraction. The pipeline has the following LLM call sites with different cost profiles:
+LLM costs scale with the number of sources, the number of promoted rules, and whether you enable continuous extraction. The pipeline has the following LLM call sites with different cost profiles:
 
 | Phase | Cadence | Cost profile |
 |---|---|---|
-| Feature identification | Per stream onboarding + optional continuous (up to 5 streams per 35-minute run) | Highest token volume; uses a fast classification model |
-| Query generation | Per stream after features exist | Medium; requires reasoning and ES\|QL validation |
+| Feature identification | Per source onboarding + optional continuous (up to 5 sources per 35-minute run) | Highest token volume; uses a fast classification model |
+| Query generation | Per source after feature KIs exist | Medium; requires reasoning and ES\|QL validation |
 | Discovery agent (including triage) | ~10 min cycles when unprocessed detections exist | Bursty; scales with the number of active alerting rules firing |
 
-Continuous extraction is the largest cost multiplier. When enabled, feature identification runs on a recurring schedule across all eligible streams. Enabling it on many streams significantly increases token consumption.
+Continuous extraction is the largest cost multiplier. When enabled, feature identification runs on a recurring schedule across all eligible sources. Enabling it on many sources significantly increases token consumption.
 
 ### Daily run limits [sig-events-op-cost-limits]
 
@@ -102,9 +92,9 @@ Deployment-wide daily run limits cap how many scheduled runs each activity can s
 
 ## Pause and resume [sig-events-op-disable]
 
-To pause all Significant Events activity, select **Show all events** from the Elastic nightshift home page and select **Settings**. Managing these settings requires the manage engines privilege.
+To pause detection, select the {icon}`boxes_vertical` menu on the Elastic nightshift home page, then **Settings**, and open the **Detections** tab. Managing these settings requires the manage engines privilege.
 
-Select **Pause Significant Events activity** to stop scheduled discovery, continuous onboarding, detections, investigations, and the alerting rules backing knowledge indicator queries. The pause applies across the entire deployment — every {{kib}} space — not only the current space. Existing data is kept.
+Select **Pause detection engine**, then confirm. Pausing stops detection activity in the current space, including knowledge indicator extraction, query alerting, rule creation, and significant event discovery. It disables the Significant Events workflows in the space and cancels their in-flight executions, and it disables the alerting rules that back knowledge indicator queries. Workflows that every space shares stay on, but their executions in this space are cancelled. Other spaces keep running, and no data is deleted.
 
 Resuming restores the managed workflows and rules that pause disabled, and turns scheduled discovery and continuous onboarding back on only if they were enabled before the pause.
 
@@ -112,7 +102,7 @@ Resuming restores the managed workflows and rules that pause disabled, and turns
 
 To stop continuous onboarding without pausing Significant Events:
 
-1. Select **Show all events** from the Elastic nightshift home page and select **Settings**.
+1. From the Elastic nightshift home page, select the {icon}`boxes_vertical` menu, then **Settings**, and open the **Detections** tab.
 2. Under **Continuous KI onboarding**, turn off **Enable continuous KI onboarding**.
 
 Already-extracted KIs aren't deleted, and manually triggered extractions continue to work.
@@ -122,9 +112,9 @@ Already-extracted KIs aren't deleted, and manually triggered extractions continu
 
 ### KI extraction running constantly
 
-**Symptom**: Continuous extraction appears to be running continuously or processing streams more frequently than expected.
+**Symptom**: Continuous extraction appears to be running continuously or processing sources more frequently than expected.
 
-**Action**: Check the **Continuous KI onboarding** setting. If enabled, check the number of streams eligible for extraction — more streams means more runs per cycle.
+**Action**: Check the **Continuous KI onboarding** setting. If enabled, check the number of sources eligible for extraction — more sources means more runs per cycle.
 
 ### High LLM cost
 
@@ -133,17 +123,17 @@ Already-extracted KIs aren't deleted, and manually triggered extractions continu
 **Action**:
 
 1. Turn off **Enable continuous KI onboarding** first — this is the primary cost multiplier.
-2. Check how many streams are eligible for continuous extraction.
+2. Check how many sources are eligible for continuous extraction.
 
 ### Incidents not clearing
 
 **Symptom**: A significant event remains open after the underlying condition appears to have resolved.
 
-**Action**: This is expected behavior. The Discovery agent must verify that the underlying condition has resolved. Detections clearing alone isn't sufficient.
+**Action**: This is expected behavior. An event moves to recovering when every member rule was last judged healthy. It becomes inactive only after every confirming signal on it has been re-checked and cleared, and while any of them is unresolved, the event stays active. A rule going quiet isn't sufficient on its own.
 
 ## Learn more [sig-events-operator-learn-more]
 
-- [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
+- [Detection engine](../core-components/detection-engine.md): Get an overview of how detection works
 - [Elastic nightshift](../nightshift.md): Get an overview of Elastic nightshift and its requirements
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work

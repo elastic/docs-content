@@ -16,14 +16,14 @@ This page describes the pipeline behavior for engineers and adopters who need to
 
 The pipeline has four sequential phases, each building on the outputs of the previous:
 
-- [Phase 1: Knowledge Indicators (KIs) extraction](#sig-events-hiw-ki): large language model (LLM) and programmatic analysis of stream logs
+- [Phase 1: Knowledge Indicators (KIs) extraction](#sig-events-hiw-ki): large language model (LLM) and programmatic analysis of source data
 - [Phase 2: Rule generation](#sig-events-hiw-rules): LLM generates detection rules using KIs as input
 - [Phase 3: Rule execution](#sig-events-hiw-execution): Alerting framework runs promoted rules continuously
 - [Phase 4: Discovery](#sig-events-hiw-discovery): Detection and discovery workflows convert alert signals into confirmed significant events
 
 ## Phase 1: KI extraction [sig-events-hiw-ki]
 
-KIs are stable, evidence-backed facts about the services and infrastructure present in a stream's log data. The LLM that generates detection operates entirely on KIs. This keeps rule generation deterministic and decouples detection logic from data format specifics.
+KIs are stable, evidence-backed facts about the services and infrastructure present in a source's data. The LLM that generates detection operates entirely on KIs. This keeps rule generation deterministic and decouples detection logic from data format specifics.
 
 ### How KIs are extracted
 
@@ -39,13 +39,11 @@ KIs are written to `.significant_events-knowledge_indicators` and deduplicated o
 
 ## Phase 2: Rule generation [sig-events-hiw-rules]
 
-Once a stream has KIs, the LLM generates detection rules using the KIs as input. The generated rule is an {{esql}} query with conditions derived from the stream's KIs:
+Once a source has KIs, the LLM generates detection rules using the KIs as input. The generated rule is an {{esql}} query with conditions derived from the source's KIs.
 
-```
-FROM {stream},{stream}.* METADATA _id | WHERE <esql_expression>
-```
+The LLM operates in a reasoning loop: it retrieves the KIs for the source, analyzes what entities and technologies are present, then submits a batch of rules. This means rules are scoped to the specific services and failure modes present in each source.
 
-The LLM operates in a reasoning loop: it calls `get_stream_features` to retrieve KIs for the stream, analyzes what entities and technologies are present, then calls `add_queries` to submit a batch of rules. This means rules are scoped to the specific services and failure modes present in each stream.
+% TODO(verify): What does a generated rule's {{esql}} query look like now that detection works on sources? Source: this page showed `FROM {stream},{stream}.*` and the `get_stream_features` and `add_queries` tools. nightshift-program#1311 moved the tools to source ids, and the Kibana significant_events plugin says KIs and events are keyed by source id.
 
 ## Phase 3: Rule execution and detection [sig-events-hiw-execution]
 
@@ -68,11 +66,19 @@ Discovery converts raw alert signals into confirmed significant events in two st
 
 A Detection workflow reads `.rule-events`, buckets each rule's alerts by time, and runs the change point aggregation function against those counts to detect statistically significant shifts. When a shift is found, a document is appended to the detections index. The most recent detection document for a rule reflects its current state, for example, whether it's still producing an unusual rate of alerts or has returned to normal.
 
-Change point detection is per-rule. A stream can have many independent rules, and one rule recovering doesn't collapse the signal from others still anomalous on the same stream.
+Change point detection is per-rule. A source can have many independent rules, and one rule recovering doesn't collapse the signal from others still anomalous on the same stream.
 
 ### Discovery agent [sig-events-hiw-discovery-agent]
 
-A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent reads detection signals, produces structured discovery documents describing what is happening, and performs triage on its own findings: it verifies each hypothesis and sets the event status to open (page on-call), closed (confirmed settled), or dismissed (low severity and low confidence). Status transitions are written as alert documents to `.rule-events`.
+A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent reads detection signals, produces structured discovery documents describing what is happening, and verifies each hypothesis, and opens a significant event when a current failure is confirmed or remains plausibly unverified.
+
+A significant event has one of three statuses:
+
+- **Active**: A current failure is confirmed, or remains plausibly unverified.
+- **Recovering**: Every member rule was last judged healthy. Only the lifecycle process sets this status, never a person or the agent, and an event never starts as recovering. A breach in any member rule returns it to active.
+- **Inactive**: Every confirming signal on the event was re-checked and cleared. An event never starts as inactive. An operator can also deactivate an event with **Mark inactive**, in the **Actions** menu of the event's details.
+
+Status transitions are written as alert documents to `.rule-events`.
 
 Significant events are also written as alerts, so they can be managed, routed, and acted on like any other Elastic alert.
 
@@ -91,6 +97,6 @@ Significant events are also written as alerts, so they can be managed, routed, a
 
 ## Learn more [sig-events-hiw-learn-more]
 
-- [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
+- [Detection engine](../core-components/detection-engine.md): Get an overview of how detection works
 - [Operator guide](./operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
