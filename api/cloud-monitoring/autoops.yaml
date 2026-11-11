@@ -1,0 +1,976 @@
+openapi: 3.0.3
+info:
+  title: Elastic Cloud Monitoring API
+  description: Retrieves the AutoOps insights raised for Elastic Cloud deployments, serverless projects, and connected clusters.
+  version: 1.0.0
+servers:
+  - url: /api
+    description: Base path of the API.
+security:
+  - apiKey: []
+tags:
+  - name: Insights
+    description: Endpoints for querying insights matching the specified search criteria or retrieving individual ones by ID.
+paths:
+  /v1/monitoring/{resourceType}/{resourceId}/insights/_search:
+    post:
+      summary: Search insights
+      description: |
+        Returns a paginatable list of insights that were open (active) at any
+        point during the selected time interval and that match the specified criteria.
+        An insight matches the time interval when it started at or before `to` and it is
+        still open, or was closed at or after `from`. By default, only insights that are
+        currently open are returned; closed insights that overlapped the selected time
+        interval are included only when `include_closed` is set to `true` in the request body.
+        Insights of rules that were disabled for the resource are never returned.
+
+        The insights are sorted by their start time (`event.start`).
+
+        Each criterion narrows the results: an insight is returned only when it matches all
+        the criteria that are set. Within a criterion that takes a list, an insight matches
+        when it matches any of the values.
+
+        Results are paginated with a cursor: when `return_count` equals the page size, which is
+        the requested `size` capped at 5000, the response carries a `cursor`; pass it in the next
+        request to get the next page. Because a full page always carries a cursor, even when no
+        insights remain, the page that follows the last insight can be empty.
+
+        ## Required authorization
+
+        The caller must be authorized to read AutoOps data for the deployment, project, or
+        connected cluster named in the path, and the resource must belong to the organization
+        of the caller. Access is checked for that single resource on every request.
+      operationId: searchInsights
+      tags:
+        - Insights
+      parameters:
+        - name: resourceType
+          in: path
+          required: true
+          description: The type of the resource.
+          schema:
+            $ref: '#/components/schemas/ResourceType'
+        - name: resourceId
+          in: path
+          required: true
+          description: |
+            The resource ID (Deployment ID, Serverless project ID, or Connected cluster ID)
+            to get insights for. It must be a resource of the type given in `resourceType`.
+          schema:
+            type: string
+            example: deployment-123
+      requestBody:
+        required: false
+        description: The search criteria. When the body is omitted, every default applies.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsightSearchRequest'
+            examples:
+              basic-time-range:
+                summary: Basic time range search (open insights only)
+                value:
+                  from: '2025-08-01T00:00:00.000Z'
+                  to: '2025-08-15T23:59:59.999Z'
+                  size: 10
+                  order: desc
+              full-filter:
+                summary: Filtered search with severities, rules, tags, and closed insights
+                value:
+                  from: '2025-08-01T00:00:00.000Z'
+                  to: '2025-08-15T23:59:59.999Z'
+                  size: 25
+                  order: asc
+                  rules:
+                    - high_cpu_utilization
+                    - disk_watermark_high
+                  severities:
+                    - high
+                    - medium
+                  include_closed: true
+                  actionable_only: true
+                  tags:
+                    - domain:performance
+                    - scope:node
+              next-page:
+                summary: Next page of a previous search
+                value:
+                  cursor: k7Qm2vXz9Rt4LpN8wYcA1eHsJf6UbDgO3iVxZ0nTqEy5MhKrWd2SaB8uCjPo7lNvG4tFxQ1
+                  size: 10
+      responses:
+        '200':
+          description: The insights that match the search criteria.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightSearchResponse'
+              examples:
+                two-insights:
+                  summary: Response containing two insights (one closed, one open)
+                  value:
+                    ok: true
+                    match_count: 2
+                    return_count: 2
+                    insights:
+                      - '@timestamp': '2025-08-05T14:20:00.000Z'
+                        event:
+                          id: 5f4f3e2d-1c0b-0a09-0000-aabbcc110002
+                          start: '2025-08-05T14:20:00.000Z'
+                          end: '2025-08-05T14:35:00.000Z'
+                          duration: 900000000000
+                          updated: '2025-08-05T14:35:00.000Z'
+                          url: https://api.elastic-cloud.com/api/v1/monitoring/deployments/deployment-abc123/insights/5f4f3e2d-1c0b-0a09-0000-aabbcc110002
+                        tags:
+                          - deployment:hosted
+                          - deployment:self-managed-ccm
+                          - component:elasticsearch
+                          - scope:node
+                          - domain:cpu
+                          - domain:performance
+                          - domain:stability
+                        organization:
+                          id: org-456
+                        service:
+                          type: elasticsearch
+                          id: deployment-abc123
+                          name: my-production-cluster
+                        elasticsearch:
+                          cluster:
+                            id: cluster-xyz789
+                            name: my-production-cluster
+                          node:
+                            name:
+                              - instance-0000000002
+                            id:
+                              - node-id-456
+                            tier: hot
+                        observer:
+                          name: autoops
+                        rule:
+                          id: high_cpu_utilization
+                          name: High CPU utilization
+                          description: High CPU usage can lead to slower response times, reduced throughput, increased error rates, and instability or crashing of the cluster. It can also indicate inefficient resource usage, leading to higher costs. Lastly, if Elasticsearch shares hardware with other applications, its high CPU usage can negatively impact their performance. To avoid these problems, it's crucial to appropriately configure the cluster, optimize operations, monitor performance, and scale resources as necessary.
+                        message: The CPU utilization on node instance-0000000002 has crossed the defined threshold of 80 % usage.
+                        autoops:
+                          title: The CPU utilization on node instance-0000000002 is high
+                          severity: medium
+                          actions:
+                            - type: check_slow_log_for_cpu_intensive_queries
+                              title: Enable and review search slow logs
+                              description: Enable search slow logs with the action below, then review logs on instance-0000000002 for long-running or repeatedly executed queries. Tune or rewrite expensive queries to reduce CPU load. On 8.14+, set <code>index.search.slowlog.include.user</code> to <code>true</code> to identify which user triggered slow searches.
+                              command: |-
+                                // this command requires the manage index privilege
+                                curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
+                                { "index.search.slowlog.threshold.query.warn": "10s", "index.search.slowlog.threshold.query.info": "5s", "index.search.slowlog.threshold.query.debug": "2s", "index.search.slowlog.threshold.query.trace": "500ms", "index.search.slowlog.threshold.fetch.warn": "1s", "index.search.slowlog.threshold.fetch.info": "800ms", "index.search.slowlog.threshold.fetch.debug": "500ms", "index.search.slowlog.threshold.fetch.trace": "200ms" }
+                                JSON
+                      - '@timestamp': '2025-08-01T10:34:00.000Z'
+                        event:
+                          id: 5f4f3e2d-1c0b-0a09-0000-aabbcc110001
+                          start: '2025-08-01T10:34:00.000Z'
+                          updated: '2025-08-01T10:49:00.000Z'
+                          url: https://api.elastic-cloud.com/api/v1/monitoring/deployments/deployment-abc123/insights/5f4f3e2d-1c0b-0a09-0000-aabbcc110001
+                        tags:
+                          - deployment:hosted
+                          - deployment:self-managed-ccm
+                          - component:elasticsearch
+                          - scope:node
+                          - domain:cpu
+                          - domain:performance
+                          - domain:stability
+                        organization:
+                          id: org-456
+                        service:
+                          type: elasticsearch
+                          id: deployment-abc123
+                          name: my-production-cluster
+                        elasticsearch:
+                          cluster:
+                            id: cluster-xyz789
+                            name: my-production-cluster
+                          node:
+                            name:
+                              - instance-0000000001
+                            id:
+                              - node-id-123
+                            tier: hot
+                        observer:
+                          name: autoops
+                        rule:
+                          id: high_cpu_utilization
+                          name: High CPU utilization
+                          description: High CPU usage can lead to slower response times, reduced throughput, increased error rates, and instability or crashing of the cluster. It can also indicate inefficient resource usage, leading to higher costs. Lastly, if Elasticsearch shares hardware with other applications, its high CPU usage can negatively impact their performance. To avoid these problems, it's crucial to appropriately configure the cluster, optimize operations, monitor performance, and scale resources as necessary.
+                        message: The CPU utilization on node instance-0000000001 has crossed the defined threshold of 80 % usage.
+                        autoops:
+                          title: The CPU utilization on node instance-0000000001 is high
+                          severity: medium
+                          actions:
+                            - type: check_slow_log_for_cpu_intensive_queries
+                              title: Enable and review search slow logs
+                              description: Enable search slow logs with the action below, then review logs on instance-0000000001 for long-running or repeatedly executed queries. Tune or rewrite expensive queries to reduce CPU load. On 8.14+, set <code>index.search.slowlog.include.user</code> to <code>true</code> to identify which user triggered slow searches.
+                              command: |-
+                                // this command requires the manage index privilege
+                                curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
+                                { "index.search.slowlog.threshold.query.warn": "10s", "index.search.slowlog.threshold.query.info": "5s", "index.search.slowlog.threshold.query.debug": "2s", "index.search.slowlog.threshold.query.trace": "500ms", "index.search.slowlog.threshold.fetch.warn": "1s", "index.search.slowlog.threshold.fetch.info": "800ms", "index.search.slowlog.threshold.fetch.debug": "500ms", "index.search.slowlog.threshold.fetch.trace": "200ms" }
+                                JSON
+        '400':
+          description: |
+            Bad request: a malformed body, a value that cannot be read as the type of its field,
+            an unknown enumeration value, an unknown rule ID, a date that is not valid, a `size`
+            lower than 1, an invalid cursor, or a `to` date earlier than `from`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                bad-request:
+                  summary: Rejected criteria, such as an unknown rule ID
+                  value:
+                    ok: false
+                    error:
+                      type: BAD_REQUEST
+                invalid-field:
+                  summary: Invalid value in a field of the body
+                  value:
+                    ok: false
+                    error:
+                      type: BAD_REQUEST
+                      details:
+                        size:
+                          - must be greater than or equal to 1
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: |
+            Not found: AutoOps has no resource with that ID for the organization of the caller,
+            or the resource is not of the type given in `resourceType`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                not-found:
+                  value:
+                    ok: false
+                    error:
+                      type: NOT_FOUND
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v1/monitoring/{resourceType}/{resourceId}/insights/{insightId}:
+    get:
+      summary: Get insight by ID
+      description: |
+        Returns a specific insight by ID.
+
+        ## Required authorization
+
+        The caller must be authorized to read AutoOps data for the deployment, project, or
+        connected cluster named in the path, and the resource must belong to the organization
+        of the caller. Access is checked for that single resource on every request.
+      operationId: getInsightById
+      tags:
+        - Insights
+      parameters:
+        - name: resourceType
+          in: path
+          required: true
+          description: The type of the resource.
+          schema:
+            $ref: '#/components/schemas/ResourceType'
+        - name: resourceId
+          in: path
+          required: true
+          description: |
+            The resource ID (Deployment ID, Serverless project ID, or Connected cluster ID)
+            that the insight belongs to. It must be a resource of the type given in `resourceType`.
+          schema:
+            type: string
+            example: deployment-123
+        - name: insightId
+          in: path
+          required: true
+          description: The ID of the insight, as returned in `event.id`.
+          schema:
+            type: string
+            format: uuid
+            example: 5f4f3e2d-1c0b-0a09-0000-000000000001
+      responses:
+        '200':
+          description: The requested insight.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleInsightResponse'
+              examples:
+                high-cpu-open:
+                  summary: An open high-CPU insight with node context (name and id are always arrays)
+                  value:
+                    ok: true
+                    insight:
+                      '@timestamp': '2025-08-01T10:34:00.000Z'
+                      event:
+                        id: 5f4f3e2d-1c0b-0a09-0000-aabbcc110001
+                        start: '2025-08-01T10:34:00.000Z'
+                        updated: '2025-08-01T10:49:00.000Z'
+                        url: https://api.elastic-cloud.com/api/v1/monitoring/deployments/deployment-abc123/insights/5f4f3e2d-1c0b-0a09-0000-aabbcc110001
+                      tags:
+                        - deployment:hosted
+                        - deployment:self-managed-ccm
+                        - component:elasticsearch
+                        - scope:node
+                        - domain:cpu
+                        - domain:performance
+                        - domain:stability
+                      organization:
+                        id: org-456
+                      service:
+                        type: elasticsearch
+                        id: deployment-abc123
+                        name: my-production-cluster
+                      elasticsearch:
+                        cluster:
+                          id: cluster-xyz789
+                          name: my-production-cluster
+                        node:
+                          name:
+                            - instance-0000000001
+                          id:
+                            - node-id-123
+                          tier: hot
+                      observer:
+                        name: autoops
+                      rule:
+                        id: high_cpu_utilization
+                        name: High CPU utilization
+                        description: High CPU usage can lead to slower response times, reduced throughput, increased error rates, and instability or crashing of the cluster. It can also indicate inefficient resource usage, leading to higher costs. Lastly, if Elasticsearch shares hardware with other applications, its high CPU usage can negatively impact their performance. To avoid these problems, it's crucial to appropriately configure the cluster, optimize operations, monitor performance, and scale resources as necessary.
+                      message: The CPU utilization on node instance-0000000001 has crossed the defined threshold of 80 % usage.
+                      autoops:
+                        title: The CPU utilization on node instance-0000000001 is high
+                        severity: medium
+                        actions:
+                          - type: check_slow_log_for_cpu_intensive_queries
+                            title: Enable and review search slow logs
+                            description: Enable search slow logs with the action below, then review logs on instance-0000000001 for long-running or repeatedly executed queries. Tune or rewrite expensive queries to reduce CPU load. On 8.14+, set <code>index.search.slowlog.include.user</code> to <code>true</code> to identify which user triggered slow searches.
+                            command: |-
+                              // this command requires the manage index privilege
+                              curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
+                              { "index.search.slowlog.threshold.query.warn": "10s", "index.search.slowlog.threshold.query.info": "5s", "index.search.slowlog.threshold.query.debug": "2s", "index.search.slowlog.threshold.query.trace": "500ms", "index.search.slowlog.threshold.fetch.warn": "1s", "index.search.slowlog.threshold.fetch.info": "800ms", "index.search.slowlog.threshold.fetch.debug": "500ms", "index.search.slowlog.threshold.fetch.trace": "200ms" }
+                              JSON
+                high-cpu-closed:
+                  summary: A closed high-CPU insight
+                  value:
+                    ok: true
+                    insight:
+                      '@timestamp': '2025-08-05T14:20:00.000Z'
+                      event:
+                        id: 5f4f3e2d-1c0b-0a09-0000-aabbcc110002
+                        start: '2025-08-05T14:20:00.000Z'
+                        end: '2025-08-05T14:35:00.000Z'
+                        duration: 900000000000
+                        updated: '2025-08-05T14:35:00.000Z'
+                        url: https://api.elastic-cloud.com/api/v1/monitoring/deployments/deployment-abc123/insights/5f4f3e2d-1c0b-0a09-0000-aabbcc110002
+                      tags:
+                        - deployment:hosted
+                        - deployment:self-managed-ccm
+                        - component:elasticsearch
+                        - scope:node
+                        - domain:cpu
+                        - domain:performance
+                        - domain:stability
+                      organization:
+                        id: org-456
+                      service:
+                        type: elasticsearch
+                        id: deployment-abc123
+                        name: my-production-cluster
+                      elasticsearch:
+                        cluster:
+                          id: cluster-xyz789
+                          name: my-production-cluster
+                        node:
+                          name:
+                            - instance-0000000002
+                          id:
+                            - node-id-456
+                          tier: hot
+                      observer:
+                        name: autoops
+                      rule:
+                        id: high_cpu_utilization
+                        name: High CPU utilization
+                        description: High CPU usage can lead to slower response times, reduced throughput, increased error rates, and instability or crashing of the cluster. It can also indicate inefficient resource usage, leading to higher costs. Lastly, if Elasticsearch shares hardware with other applications, its high CPU usage can negatively impact their performance. To avoid these problems, it's crucial to appropriately configure the cluster, optimize operations, monitor performance, and scale resources as necessary.
+                      message: The CPU utilization on node instance-0000000002 has crossed the defined threshold of 80 % usage.
+                      autoops:
+                        title: The CPU utilization on node instance-0000000002 is high
+                        severity: medium
+                        actions:
+                          - type: check_slow_log_for_cpu_intensive_queries
+                            title: Enable and review search slow logs
+                            description: Enable search slow logs with the action below, then review logs on instance-0000000002 for long-running or repeatedly executed queries. Tune or rewrite expensive queries to reduce CPU load. On 8.14+, set <code>index.search.slowlog.include.user</code> to <code>true</code> to identify which user triggered slow searches.
+                            command: |-
+                              // this command requires the manage index privilege
+                              curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
+                              { "index.search.slowlog.threshold.query.warn": "10s", "index.search.slowlog.threshold.query.info": "5s", "index.search.slowlog.threshold.query.debug": "2s", "index.search.slowlog.threshold.query.trace": "500ms", "index.search.slowlog.threshold.fetch.warn": "1s", "index.search.slowlog.threshold.fetch.info": "800ms", "index.search.slowlog.threshold.fetch.debug": "500ms", "index.search.slowlog.threshold.fetch.trace": "200ms" }
+                              JSON
+        '400':
+          description: Bad request, returned when the stored resource type cannot be resolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                bad-request:
+                  value:
+                    ok: false
+                    error:
+                      type: BAD_REQUEST
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: |
+            Not found: AutoOps has no resource with that ID for the organization of the caller,
+            the resource is not of the type given in `resourceType`, `insightId` is not a valid
+            UUID, or the insight does not exist on that resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                not-found:
+                  value:
+                    ok: false
+                    error:
+                      type: NOT_FOUND
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  responses:
+    Unauthorized:
+      description: |
+        Unauthorized: the credentials are missing, invalid, or expired, the organization
+        they belong to has no AutoOps account, or the credentials could not be verified.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            unauthorized:
+              value:
+                ok: false
+                error:
+                  type: UNAUTHORIZED
+    Forbidden:
+      description: |
+        Forbidden: the caller is not authorized to read AutoOps data for the resource
+        named in the path, or `resourceType` is not one of the supported values.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            forbidden:
+              value:
+                ok: false
+                error:
+                  type: FORBIDDEN
+    TooManyRequests:
+      description: |
+        Too many requests: the organization exceeded the request rate limit of the API,
+        which is applied per organization. Retry after a few seconds. Responses from this
+        API don't include `Retry-After` or `x-ratelimit-*` headers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RateLimitErrorResponse'
+          examples:
+            rate-limited:
+              value:
+                status: Too Many Requests
+                code: '429'
+                message: Rate limit reached. Please try again in few seconds
+    ServerError:
+      description: |
+        An unexpected error occurred on the server. Retry the request later.
+        When AutoOps is temporarily unavailable, the response has no body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            server-error:
+              value:
+                ok: false
+                error:
+                  type: INTERNAL_SERVER_ERROR
+  schemas:
+    InsightSearchRequest:
+      type: object
+      description: |
+        The search criteria. Every field is optional, and fields that are not listed here are ignored.
+      properties:
+        from:
+          type: string
+          description: |
+            The start of the time window, either in ISO 8601 format with seconds and a `Z` or
+            offset time zone, or as a UNIX epoch in milliseconds. The bound is inclusive.
+            Insights that are still open or that closed at or after this time are included.
+            Defaults to 24 hours before the time of the request.
+          example: '2025-08-01T10:34:00.000Z'
+        to:
+          type: string
+          description: |
+            The end of the time window, either in ISO 8601 format with seconds and a `Z` or
+            offset time zone, or as a UNIX epoch in milliseconds. The bound is inclusive.
+            Only insights that started at or before this time are included.
+            Defaults to the time of the request. Must not be earlier than `from`.
+          example: '2025-08-15T15:52:00.000Z'
+        order:
+          type: string
+          enum:
+            - asc
+            - desc
+          default: desc
+          description: |
+            By default, the most recent insights are returned first.
+            Use `asc` to return the oldest insights first. The value is case-sensitive.
+        cursor:
+          type: string
+          description: |
+            When paginating over a list of insights, the cursor found in the previous page
+            leads to the next page of insights. When this parameter is set, the search
+            criteria and the order of the request that returned the cursor are used, and all
+            the other parameters except `size` are validated but otherwise ignored. The cursor is
+            an opaque value: pass it back exactly as received, and do not parse it or build one
+            yourself, because its format can change without notice.
+          example: k7Qm2vXz9Rt4LpN8wYcA1eHsJf6UbDgO3iVxZ0nTqEy5MhKrWd2SaB8uCjPo7lNvG4tFxQ1
+        size:
+          type: integer
+          format: int64
+          default: 1000
+          minimum: 1
+          description: |
+            When paginating over a list of insights, the number of insights to return.
+            Defaults to 1000 when omitted. Values above 5000 are hard capped to 5000.
+        rules:
+          type: array
+          items:
+            type: string
+          externalDocs:
+            description: The list of rule IDs.
+            url: https://ela.st/autoops-insights.json
+          description: |
+            The IDs of the rules whose insights to return. Values are matched case-insensitively.
+            The list of rule IDs is available at https://ela.st/autoops-insights.json.
+            An unknown rule ID is rejected with a `400` error.
+            Which rules can raise insights depends on the resource type in the URL.
+          example:
+            - high_cpu_utilization
+            - disk_watermark_high
+        severities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Severity'
+          description: |
+            The severities of the insights to return. Values are case-sensitive and lowercase.
+            The severity matched is the one recorded when the insight was raised, which can
+            differ from `autoops.severity` if the severity of the rule changed afterwards.
+        include_closed:
+          type: boolean
+          default: false
+          description: A boolean indicating whether closed insights should also be returned.
+        actionable_only:
+          type: boolean
+          default: false
+          description: When true, only insights with at least one recommended action are returned.
+        tags:
+          type: array
+          items:
+            type: string
+          description: |
+            The tags to match. A tag matches the whole value of a tag of the insight,
+            case-insensitively. The available insight tags depend on the rule and on the
+            resource type in the URL, and they are namespaced, for example
+            `domain:performance` or `scope:node`.
+          example:
+            - domain:performance
+            - scope:node
+        modified_only:
+          type: boolean
+          default: false
+          description: |
+            When true, the `from` and `to` time window is matched against the time each insight
+            was last updated (`event.updated`) instead of its start and end times. Only the latest
+            update time of the insight is considered, so an insight that was open during the time
+            window is not returned if it was updated again after `to`. The `include_closed`
+            setting still applies.
+    InsightSearchResponse:
+      type: object
+      required:
+        - ok
+        - match_count
+        - return_count
+        - insights
+      properties:
+        ok:
+          type: boolean
+          description: Indicates whether the request succeeded. Always `true` for successful responses.
+          example: true
+        match_count:
+          type: integer
+          format: int64
+          description: |
+            The total number of insights that match the search criteria, across all pages. When the
+            request carries a cursor, it is the total for the criteria of the original search, not
+            the number of insights that remain.
+          example: 24
+        return_count:
+          type: integer
+          format: int64
+          description: |
+            The number of insights that have been returned in the response.
+            When this number equals the page size, which is the requested `size` capped at 5000,
+            the response carries a `cursor` and there might be more insights to return.
+          example: 10
+        cursor:
+          type: string
+          description: |
+            The cursor to the next page of insights. Pass it in the `cursor` field of the
+            next search request. It is omitted when the page has fewer insights than the page
+            size, which is the requested `size` capped at 5000. For example, a request with a
+            `size` of 6000 that returns 5000 insights carries a cursor. The cursor is an opaque
+            value: do not parse it or build one yourself, because its format can change without
+            notice.
+          example: k7Qm2vXz9Rt4LpN8wYcA1eHsJf6UbDgO3iVxZ0nTqEy5MhKrWd2SaB8uCjPo7lNvG4tFxQ1
+        insights:
+          type: array
+          items:
+            $ref: '#/components/schemas/Insight'
+          description: The insights that match the search criteria.
+    SingleInsightResponse:
+      type: object
+      required:
+        - ok
+        - insight
+      properties:
+        ok:
+          type: boolean
+          description: Indicates whether the request succeeded. Always `true` for successful responses.
+          example: true
+        insight:
+          $ref: '#/components/schemas/Insight'
+    Insight:
+      type: object
+      description: |
+        An insight. Properties that have no value are omitted from the response instead of
+        being set to `null`.
+      required:
+        - '@timestamp'
+        - event
+        - service
+        - elasticsearch
+        - observer
+        - rule
+        - message
+        - autoops
+      properties:
+        '@timestamp':
+          type: string
+          format: date-time
+          description: The time when the insight was raised, in ISO 8601 format (UTC).
+          example: '2025-08-01T10:34:00.000Z'
+        event:
+          $ref: '#/components/schemas/InsightEvent'
+        tags:
+          type: array
+          items:
+            type: string
+          description: |
+            The tags of the insight, for example `domain:performance` or `scope:node`.
+            Tag values keep the casing in which they are defined.
+        organization:
+          $ref: '#/components/schemas/InsightOrganization'
+        service:
+          $ref: '#/components/schemas/InsightService'
+        elasticsearch:
+          $ref: '#/components/schemas/InsightElasticsearch'
+        observer:
+          $ref: '#/components/schemas/InsightObserver'
+        rule:
+          $ref: '#/components/schemas/InsightRule'
+        message:
+          type: string
+          description: The context and conditions that led to the insight being raised, as plain text.
+          example: The CPU utilization on node instance-0000000001 has crossed the defined threshold of 80 % usage.
+        autoops:
+          $ref: '#/components/schemas/InsightAutoops'
+    InsightEvent:
+      type: object
+      required:
+        - id
+        - start
+        - url
+      properties:
+        id:
+          type: string
+          description: The public ID of the insight, as a UUID.
+          example: 5f4f3e2d-1c0b-0a09-0000-000000000001
+        start:
+          type: string
+          format: date-time
+          description: The time when the insight was raised, in ISO 8601 format (UTC).
+          example: '2025-08-01T10:34:00.000Z'
+        end:
+          type: string
+          format: date-time
+          description: The time when the insight was closed, in ISO 8601 format (UTC). Omitted while the insight is open.
+          example: '2025-08-15T15:52:00.000Z'
+        duration:
+          type: integer
+          format: int64
+          description: The duration of the insight in nanoseconds (`end` minus `start`). Omitted while the insight is open.
+          example: 1296000000000000
+        updated:
+          type: string
+          format: date-time
+          description: |
+            The time when AutoOps last updated the insight, in ISO 8601 format (UTC). It equals `start`
+            when the insight is raised, AutoOps moves it forward each time it confirms that the insight
+            is still open, and it equals `end` when the insight is closed.
+          example: '2025-08-10T08:00:00.000Z'
+        url:
+          type: string
+          description: The URL that returns this insight.
+          example: https://api.elastic-cloud.com/api/v1/monitoring/deployments/deployment-123/insights/5f4f3e2d-1c0b-0a09-0000-000000000001
+    InsightOrganization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the organization that owns the resource.
+          example: org-123
+    InsightService:
+      type: object
+      required:
+        - type
+        - id
+        - name
+      properties:
+        type:
+          type: string
+          description: The service type. Always `elasticsearch`.
+          example: elasticsearch
+        id:
+          type: string
+          description: The resource ID (deployment ID, project ID, or connected cluster ID).
+          example: deployment-abc
+        name:
+          type: string
+          description: The name of the resource. It can be empty when the resource has no name.
+          example: my-production-cluster
+    InsightElasticsearch:
+      type: object
+      required:
+        - cluster
+      properties:
+        cluster:
+          $ref: '#/components/schemas/InsightElasticsearchCluster'
+        node:
+          $ref: '#/components/schemas/InsightElasticsearchNode'
+        index:
+          $ref: '#/components/schemas/InsightElasticsearchIndex'
+    InsightElasticsearchCluster:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          description: The ID of the Elasticsearch cluster.
+          example: cluster-xyz789
+        name:
+          type: string
+          description: The name of the Elasticsearch cluster. It can be empty when the cluster has no name.
+          example: my-production-cluster
+    InsightElasticsearchNode:
+      type: object
+      properties:
+        name:
+          type: array
+          items:
+            type: string
+          description: The node name(s). Always an array, even when only a single node is affected.
+          example:
+            - instance-0000000001
+        id:
+          type: array
+          items:
+            type: string
+          description: The node ID(s). Always an array, even when only a single node is affected.
+          example:
+            - node-id-123
+        tier:
+          type: string
+          description: The data tier of the nodes, for example `hot`, `warm`, or `cold`.
+          example: hot
+    InsightElasticsearchIndex:
+      type: object
+      properties:
+        name:
+          type: array
+          items:
+            type: string
+          description: The index name(s). Always an array, even when only a single index is affected.
+          example:
+            - my-index
+    InsightObserver:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The observer name. Always `autoops`.
+          example: autoops
+    InsightRule:
+      type: object
+      required:
+        - id
+        - name
+        - description
+      properties:
+        id:
+          type: string
+          externalDocs:
+            description: The list of rule IDs.
+            url: https://ela.st/autoops-insights.json
+          description: |
+            The ID of the rule that raised the insight, in lowercase. Use it in the `rules` field
+            of a search request. The list of rule IDs is available at
+            https://ela.st/autoops-insights.json.
+          example: high_cpu_utilization
+        name:
+          type: string
+          description: The short, human-readable name of the rule.
+          example: High CPU utilization
+        description:
+          type: string
+          description: The description of the rule and an explanation of its potential impact, as plain text.
+          example: High CPU usage can lead to slower response times, reduced throughput, increased error rates, and instability or crashing of the cluster.
+    InsightAutoops:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+          description: The human-readable title of the insight, as plain text.
+          example: The CPU utilization on node instance-0000000001 is high
+        severity:
+          $ref: '#/components/schemas/Severity'
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/InsightActionResponse'
+          description: The recommended actions to troubleshoot the insight, in the order to carry them out.
+    InsightActionResponse:
+      type: object
+      required:
+        - type
+        - title
+        - description
+      properties:
+        type:
+          type: string
+          description: The identifier of the action type, in lowercase.
+          example: check_slow_log_for_cpu_intensive_queries
+        title:
+          type: string
+          description: The human-readable title of the action.
+          example: Enable and review search slow logs
+        description:
+          type: string
+          description: |
+            A description of the action and its purpose. It can contain HTML markup, such as
+            `<code>` tags, and it can be empty.
+          example: Enable search slow logs with the action below, then review logs on instance-0000000001 for long-running or repeatedly executed queries.
+        command:
+          type: string
+          description: A command that carries out the action. Omitted when the action has no command.
+          example: 'curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" -d ''{ "index.search.slowlog.threshold.query.warn": "10s" }'''
+    ResourceType:
+      type: string
+      enum:
+        - deployments
+        - projects
+        - clusters
+      description: The type of the resource.
+    Severity:
+      type: string
+      enum:
+        - critical
+        - high
+        - medium
+        - low
+        - info
+      description: The severity level of an insight.
+    ErrorDetail:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          description: The error type, the name of the HTTP status (for example `BAD_REQUEST`).
+          example: BAD_REQUEST
+        details:
+          type: object
+          description: |
+            Optional additional context about the error, for diagnosis only. It is omitted for most errors, and its structure and wording are not part of the contract and can change.
+          additionalProperties: true
+    ErrorResponse:
+      type: object
+      required:
+        - ok
+        - error
+      properties:
+        ok:
+          type: boolean
+          description: Always `false` for error responses.
+          example: false
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+    RateLimitErrorResponse:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: string
+          description: The reason phrase of the HTTP status.
+          example: Too Many Requests
+        code:
+          type: string
+          description: The error code.
+          example: '429'
+        message:
+          type: string
+          description: A human-readable explanation of the error.
+          example: Rate limit reached. Please try again in few seconds
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: |
+        An Elastic Cloud API key, sent in the `Authorization` header as `ApiKey <key>`.
+        Generate one at https://cloud.elastic.co/account/keys.
