@@ -21,8 +21,8 @@ Before upgrading or updating the release configuration, refer to the [compatibil
 
 To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and the values file that matches your deployment. Use the same values file you used during installation:
 
-- **{{serverless-full}} and {{ech}}**: `deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml`
-- **Self-managed {{stack}}, {{ece}}, and {{eck}}**: `deploy/helm/edot-collector/kube-stack/values.yaml`
+- {applies_to}`serverless: ga` {applies_to}`ech: ga` `deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml`
+- {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` `deploy/helm/edot-collector/kube-stack/values.yaml`
 
 For example, for a self-managed deployment:
 
