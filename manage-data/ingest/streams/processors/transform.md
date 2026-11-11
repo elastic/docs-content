@@ -1,5 +1,5 @@
 ---
-navigation_title: Transform
+navigation_title: Transform processor
 description: Run OTTL statements of your choice on records in a Streams pipeline, optionally guarded by conditions, for anything the other processors don't cover.
 applies_to:
   serverless:

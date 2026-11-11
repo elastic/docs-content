@@ -1,5 +1,5 @@
 ---
-navigation_title: Set
+navigation_title: Set processor
 description: Write to any field of a record in a Streams pipeline by its location or full OTTL path, with a literal value or an OTTL expression.
 applies_to:
   serverless:

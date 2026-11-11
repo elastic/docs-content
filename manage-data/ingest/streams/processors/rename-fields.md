@@ -1,5 +1,5 @@
 ---
-navigation_title: Rename fields
+navigation_title: Rename fields processor
 description: Rename fields of records in a Streams pipeline, within their location, optionally only when a condition holds.
 applies_to:
   serverless:

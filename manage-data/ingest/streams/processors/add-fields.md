@@ -1,5 +1,5 @@
 ---
-navigation_title: Add fields
+navigation_title: Add fields processor
 description: Add fields to records in a Streams pipeline, with a literal value or an OTTL expression, optionally only when a condition holds.
 applies_to:
   serverless:
