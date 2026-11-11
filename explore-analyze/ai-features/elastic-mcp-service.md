@@ -52,7 +52,7 @@ The connection can do what you can do. You can't limit it to selected projects o
 - [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md): Use this when you want {{agent-builder}} tools, including custom tools, for one project or deployment. The {{agent-builder}} MCP server is one endpoint per project. The [{{serverless-full}} connector for Claude](/explore-analyze/ai-features/claude-connector.md) uses this server.
 - [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md): Use this when you want to chat in {{kib}} and build agents, tools, and skills in the product.
 - [Docs MCP server](/get-started/machine-readable-docs.md): Use this when you want Elastic documentation only. It doesn't need an Elastic account and it doesn't connect to your data.
-- [AI agent skills](/expore-analyze/ai-features/agent-skills.md): Use these when you want Elastic procedures in the host. Skills don't connect the host to a project. You can install them with this service, but they aren't required.
+- [AI agent skills](/explore-analyze/ai-features/agent-skills.md): Use these when you want Elastic procedures in the host. Skills don't connect the host to a project. You can install them with this service, but they aren't required.
 - [Elastic CLI](cli://index.md): Use this when you want a terminal instead of an MCP host, including for self-managed clusters this service doesn't cover.
 
 ## Next steps [next-steps]
