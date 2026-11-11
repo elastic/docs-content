@@ -2,7 +2,8 @@
 navigation_title: Recovery condition
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to configure when and how an alert recovers: the recovery strategy and the delay before an alert closes."
@@ -10,7 +11,7 @@ description: "How to configure when and how an alert recovers: the recovery stra
 
 # Recovery condition settings for {{alerting-v2-system}} [recovery-condition]
 
-Recovery condition settings are optional for {{alerting-v2-system}} rules that group matches into an alert. They control how the rule decides an alert has resolved and how much confirmation it needs before closing the alert. Setting these correctly ensures alerts close when the underlying problem is actually fixed, rather than staying open indefinitely, closing for the wrong reason, or flapping between open and closed.
+Recovery condition settings are optional for {{alerting-v2-system-short}} rules that group matches into an alert. They control how the rule decides an alert has resolved and how much confirmation it needs before closing the alert. Setting these correctly ensures alerts close when the underlying problem is actually fixed, rather than staying open indefinitely, closing for the wrong reason, or flapping between open and closed.
 
 ## Recovery strategy [recovery-strategy-options]
 
