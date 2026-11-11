@@ -40,6 +40,7 @@ The profiler runs on each host you want to profile. Every host must meet these r
 
 * Linux with an x86_64 or ARM64 CPU. The profiler doesn't run on other operating systems.
 * Linux kernel 5.10 or later with eBPF support.
+* Access to the host's tracefs or debugfs filesystem. If the profiler runs in a container, mount the host's `/sys/kernel/tracing` directory at the same path in the container, read-only.
 * Root privileges, or the `CAP_SYS_ADMIN` capability, for the profiler process. If you use {{agent}}, run it as root rather than in [unprivileged mode](/reference/fleet/elastic-agent-unprivileged.md).
 * {{agent}} 9.4 or later if you deploy the profiler with {{fleet}}.
 
@@ -107,6 +108,8 @@ securityContext:
     add:
       - SYS_ADMIN
 ```
+
+Also mount the host's `/sys/kernel/tracing` directory read-only at `/sys/kernel/tracing` in the Agent container. The security context alone does not expose tracefs.
 
 ### Deploy with a standalone {{agent}} configured as an OTel Collector [profiling-otel-deploy-standalone]
 
@@ -229,6 +232,23 @@ failed to load eBPF tracer: failed to read kernel symbols: unable to read kallsy
 ```
 
 Run the agent as root, or grant the `CAP_SYS_ADMIN` capability, and confirm that the host meets the [kernel requirements](#profiling-otel-requirements-hosts).
+
+**The receiver reports that neither debugfs nor tracefs is mounted.** The profiler needs access to scheduler tracepoints. Mount tracefs on the Linux host:
+
+```bash
+sudo mount -t tracefs tracefs /sys/kernel/tracing
+```
+
+For a container deployment, expose that directory at `/sys/kernel/tracing` in the container. The Helm profiling preset configures this container mount for you.
+
+**The receiver fails with `system analysis request was not handled` on a local kind cluster.** kind runs its nodes in containers, so the profiler runs in a nested PID namespace. With {{agent}} 9.6, enable PID namespace translation by adding the following receiver setting to your Helm values:
+
+```yaml
+config:
+  receivers:
+    profiling:
+      pid_namespace_translation_mode: auto
+```
 
 **Agents cannot create profiling data streams.** {{agent}} logs show an error like this one:
 
