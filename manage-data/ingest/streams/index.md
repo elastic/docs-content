@@ -40,7 +40,7 @@ A stream is the path that data follows into Elastic, from a source to a destinat
 * A **source** is the endpoint your shippers send to. It accepts OpenTelemetry Protocol (OTLP), Prometheus Remote Write, or {{es}} bulk requests, so OpenTelemetry Collectors, Prometheus, and applications that send bulk requests keep sending in the format they use today.
 * A **pipeline** is a list of processors that change each record or drop it.
 * A **router** decides which destination a record goes to, and whether it's moved there or copied.
-* A **destination** is where the data is stored. It can be {{es}}, in this project or in another Elastic Cloud deployment, or an Amazon S3 bucket you own.
+* A **destination** is where the data is stored. It can be {{es}} in this project or in another {{ecloud}} deployment, or an Amazon S3 bucket you own.
 
 You build and edit streams on the **Streams Map**, where each building block is a node and the connections between them show where data goes. Pipelines and routers run in OpenTelemetry Collectors that Elastic operates, so there's nothing for you to install or scale, and the data is already processed by the time it reaches a destination.
 
@@ -73,11 +73,11 @@ Use this table to decide which side of Streams a task belongs to:
 :::{table}
 :widths: 3-5-4
 
-| Aspect | Before data reaches {{es}} (Streams Map) {applies_to}`serverless: { elasticsearch: preview, observability: preview, security: preview }` | After data reaches {{es}} (classic streams) |
+| Aspect | Before data reaches {{es}} (Streams Map) {applies_to}`serverless: preview` | After data reaches {{es}} (classic streams) |
 | --- | --- | --- |
 | What you work with | Sources, pipelines (lists of processors), routers, and destinations | Classic streams |
 | Processing runs in | OpenTelemetry Collectors that Elastic manages | {{es}} ingest pipelines, as data is indexed |
-| Can send data to | {{es}}, another Elastic Cloud deployment, or Amazon S3 | The data stream it's attached to |
+| Can send data to | Local {{es}}, another {{ecloud}} deployment, or Amazon S3 | The data stream it's attached to |
 | Where you work in Streams | The **Map**, **Sources**, and **Destinations** tabs | The **Classic Streams** tab, and each stream's own page with its **Processing**, **Data lifecycle**, **Schema**, and **Data quality** tabs |
 :::
 
@@ -89,13 +89,13 @@ Nothing is migrated between the two. Classic streams keep working as before and 
 
 Where each side of Streams is available depends on your deployment type:
 
-| Deployment | Before data reaches {{es}} (Streams Map) | After data reaches {{es}} (classic streams) |
+| Project or deployment | Before data reaches {{es}} (Streams Map) | After data reaches {{es}} (classic streams) |
 | --- | --- | --- |
-| {{serverless-full}}, Observability and Security projects | Private technical preview | Available |
-| {{serverless-full}}, {{es}} projects | Private technical preview | Not available |
-| {{serverless-full}}, {{es}} Vector DB projects | Not available | Not available |
-| {{ech}} | Not available | Available |
-| Self-managed, {{ece}}, {{eck}} | Not available | Available |
+| {{serverless-short}} Observability and Security projects | Private technical preview | Available |
+| {{serverless-short}} {{es}} projects | Private technical preview | Not available |
+| {{serverless-short}} {{es}} Vector Database projects | Not available | Not available |
+| {{ech}} deployments | Not available | Available |
+| Self-managed, {{ece}}, {{eck}} deployments | Not available | Available |
 
 ## Learn more [streams-learn-more]
 
