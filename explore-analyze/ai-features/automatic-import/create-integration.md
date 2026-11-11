@@ -20,35 +20,36 @@ Build a custom integration from a sample of your data, then install it and add i
 
 ## Before you begin [automatic-import-create-prerequisites]
 
-Make sure that you meet the [Automatic Import requirements](/explore-analyze/ai-features/automatic-import.md#automatic-import-requirements).
+- Make sure that you meet the [Automatic Import requirements](/explore-analyze/ai-features/automatic-import.md#automatic-import-requirements).
 
-$$$automatic-import-sample-data$$$ Prepare a sample of your data in one of the following formats:
+$$$automatic-import-sample-data$$$ 
+- Prepare a sample of your data in one of the following formats:
 
-* **JSON and NDJSON**: Represent each event as its own object, and keep nesting shallow.
-* **CSV**: Include a header row with column names. Automatic Import recognizes the header. Without a header, the LLM attempts to create descriptive field names from the column formats and values.
-* **Syslog**: Use a structured or unstructured sample.
+   * **JSON and NDJSON**: Represent each event as its own object, and keep nesting shallow.
+   * **CSV**: Include a header row with column names. Automatic Import recognizes the header. Without a header, the LLM attempts to create descriptive field names from the column formats and values.
+   * **Syslog**: Use a structured or unstructured sample.
 
-For an accurate pipeline, include a wide range of unique log entries for each event type that you want the integration to handle. Automatic Import reads the file from the beginning, so start it with the event types that matter most to you.
+   For an accurate pipeline, include a wide range of unique log entries for each event type that you want the integration to handle. Automatic Import reads the file from the beginning, so start it with the event types that matter most to you.
 
-Your LLM provider receives the sample, so remove or mask personal, sensitive, or confidential values before you upload it.
+   Your LLM provider receives the sample, so remove or mask personal, sensitive, or confidential values before you upload it.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Instead of uploading a file, you can select an existing index as the sample. The index must include the `event.original` field.
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Instead of uploading a file, you can select an existing index as the sample. The index must include the `event.original` field.
 
-:::{dropdown} Sample size limits
-:name: automatic-import-sample-limits
+   :::{dropdown} Sample size limits
+   :name: automatic-import-sample-limits
 
-Automatic Import limits how much of the sample it sends to the LLM. Each log line or document counts as one sample.
+   Automatic Import limits how much of the sample it sends to the LLM. Each log line or document counts as one sample.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` You can upload a file of any size. Automatic Import reads the file from the beginning and sends samples to the LLM until it reaches one of the following limits. If it omits samples, the **Sample log limits applied** warning tells you how many samples it sent to the LLM and how many it left out.
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` You can upload a file of any size. Automatic Import reads the file from the beginning and sends samples to the LLM until it reaches one of the following limits. If it omits samples, the **Sample log limits applied** warning tells you how many samples it sent to the LLM and how many it left out.
 
-| Limit | Value | What happens |
-| --- | --- | --- |
-| Maximum samples | 1,000 | Stops after adding 1,000 samples to the request. |
-| Maximum sample length | 100,000 characters | Skips the entire sample and continues with later samples. |
-| Maximum request size | 10 MB | Stops before the request to the LLM exceeds 10 MB. |
+   | Limit | Value | What happens |
+   | --- | --- | --- |
+   | Maximum samples | 1,000 | Stops after adding 1,000 samples to the request. |
+   | Maximum sample length | 100,000 characters | Skips the entire sample and continues with later samples. |
+   | Maximum request size | 10 MB | Stops before the request to the LLM exceeds 10 MB. |
 
-{applies_to}`stack: ga 9.0-9.3` Automatic Import sends the first 100 samples to the LLM.
-:::
+   {applies_to}`stack: ga 9.0-9.3` Automatic Import sends the first 100 samples to the LLM.
+   :::
 
 ## Build and deploy the integration [automatic-import-build]
 ```{applies_to}
