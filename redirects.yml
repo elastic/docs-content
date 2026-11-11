@@ -1,6 +1,12 @@
 redirects:
+  # related to https://github.com/elastic/docs-content/pull/9157
+  'solutions/security/alertzero/review-closed-proposed-actions.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
+  'solutions/security/alertzero/decide-proposed-action.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
+  'solutions/security/alertzero/use-alertzero.md': 'solutions/security/alertzero/work-in-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/9158
   'solutions/security/alertzero/requirements.md': 'solutions/security/alertzero/set-up-alertzero.md'
+  # related to https://github.com/elastic/docs-content/pull/9304
+  'solutions/security/alertzero/review-first-proposed-action.md': 'solutions/security/alertzero/work-in-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   # related to https://github.com/elastic/docs-content/issues/7502
@@ -653,6 +659,90 @@ redirects:
 
 # Search sessions becoming background search
   'explore-analyze/discover/search-sessions.md': 'explore-analyze/discover/background-search.md'
+  # related to https://github.com/elastic/docs-content/issues/4898
+  'explore-analyze/discover/discover-get-started.md':
+    to: 'explore-analyze/discover/discover-get-started.md'
+    many:
+      - to: 'explore-analyze/discover/explore-fields.md'
+        anchors:
+          'explore-fields-in-your-data': ''
+      - to: 'explore-analyze/discover/inspect-documents.md'
+        anchors:
+          'in-table-search': 'in-table-search'
+          'look-inside-a-document': 'look-inside-a-document'
+          'document-explorer-expand-documents': 'document-explorer-expand-documents'
+          'inspect-your-discover-queries': 'inspect-discover-request'
+      - to: 'explore-analyze/discover/compare-documents.md'
+        anchors:
+          'compare-documents-in-discover': ''
+      - to: 'explore-analyze/discover/copy-and-share-documents.md'
+        anchors:
+          'copy-row-content': 'copy-row-content'
+          'share-your-findings': 'share-your-findings'
+          'share-a-document-link': 'share-a-document-link'
+      - to: 'explore-analyze/discover/work-with-tabs.md'
+        anchors:
+          'run-multiple-explorations-with-tabs': ''
+          'manage-discover-tabs': 'manage-tabs'
+      - to: 'explore-analyze/discover/analyze-discover-data-with-ai.md'
+        anchors:
+          'analyze-with-ai': ''
+      - to: 'explore-analyze/discover/generate-alerts-from-discover.md'
+        anchors:
+          'alert-from-Discover': ''
+      - to: 'explore-analyze/discover/search-and-filter-classic.md'
+        anchors:
+          'find-the-data-you-want-to-use': 'find-the-data-you-want-to-use'
+          'search-in-discover': ''
+          '_default_mode_search_and_filter_using_kql': ''
+          'filter-in-discover': 'filter-in-discover'
+          'filter-pill-actions': 'filter-pill-actions'
+      - to: 'explore-analyze/discover/add-fields-to-data-views.md'
+        anchors:
+          'add-field-in-discover': ''
+      - to: 'explore-analyze/discover/visualize-field.md'
+        anchors:
+          '_visualize_aggregated_fields': ''
+      - to: 'explore-analyze/discover/esql-results.md'
+        anchors:
+          'cancel-query-in-discover': 'cancel-query-in-discover'
+      - to: 'explore-analyze/discover/use-esql.md'
+        anchors:
+          '_search_and_filter_using_esql': ''
+      - to: 'explore-analyze/discover/save-open-search.md'
+        anchors:
+          'save-discover-search': '_save_a_discover_session'
+      - to: 'explore-analyze/discover/background-search.md'
+        anchors:
+          'run-long-running-queries-in-the-background': ''
+      - to: 'troubleshoot/kibana/discover-empty-fields.md'
+        anchors:
+          '_troubleshooting': ''
+  # Discover session page split
+  'explore-analyze/discover/save-open-search.md':
+    to: 'explore-analyze/discover/save-open-search.md'
+    many:
+      - to: 'explore-analyze/discover/save-open-search.md'
+        anchors:
+          'discover-read-only-access': 'save-search-requirements'
+      - to: 'explore-analyze/discover/export-discover-session.md'
+        anchors:
+          'export-discover-session-csv': 'export-discover-session-csv'
+          'export-discover-session-json': 'export-discover-session-json'
+      - to: 'explore-analyze/discover/use-sessions-in-dashboards.md'
+        anchors:
+          '_add_search_results_to_a_dashboard': '_add_search_results_to_a_dashboard'
+          'add-discover-visualization-to-dashboard': 'add-discover-visualization-to-dashboard'
+          'add-discover-visualization-esql': 'add-discover-visualization-esql'
+          'add-discover-visualization-classic': 'add-discover-visualization-classic'
+          'add-discover-tables-to-dashboards': 'add-discover-tables-to-dashboards'
+          'save-table-to-dashboard': 'save-table-to-dashboard'
+          'save-discover-session-with-add-to-dashboard': 'save-discover-session-with-add-to-dashboard'
+          'add-discover-session-from-library': 'add-discover-session-from-library'
+          'add-ad-hoc-discover-session-panel': 'add-ad-hoc-discover-session-panel'
+          'manage-discover-session-panels': 'manage-discover-session-panels'
+          'discover-session-save-as-from-dashboard': 'discover-session-save-as-from-dashboard'
+          'discover-session-choose-tab': 'discover-session-choose-tab'
   # related to https://github.com/elastic/docs-content/issues/4890
   'explore-analyze/discover/try-esql.md':
     to: 'explore-analyze/discover/try-esql.md'
@@ -1125,9 +1215,9 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/5251
 # Targets updated after the agentless -> managed-integrations rename below
-  'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
-  'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/managed-integrations/managed-integrations.md'
-  'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/managed-integrations/cloud-connector-deployment.md'
+  'solutions/security/get-started/agentless-integrations-faq.md': 'reference/managed-integrations/managed-integrations-faq.md'
+  'solutions/security/get-started/agentless-integrations.md': 'reference/managed-integrations/index.md'
+  'solutions/security/get-started/cloud-connector-deployment.md': 'reference/managed-integrations/federated-identity.md'
 
 # Related to https://github.com/elastic/docs-content-internal/issues/1986 and https://github.com/elastic/docs-content-internal/issues/1702
 # Moved the Security Kibana privileges catalog from Get started to Access control
@@ -1250,19 +1340,19 @@ redirects:
 #   - Files and folder renamed from `agentless` -> `managed-integrations`
 #     to match the new product name (Elastic Managed integrations).
   'manage-data/ingest/agentless/agentless-integrations.md':
-    to: 'manage-data/ingest/managed-integrations/managed-integrations.md'
+    to: 'reference/managed-integrations/index.md'
     many:
-      - to: 'manage-data/ingest/managed-integrations/enable-managed-integration.md'
+      - to: 'reference/managed-integrations/enable-managed-integration.md'
         anchors:
           'requirements': 'enable-managed-integration-before-you-begin'
           'find-agentless-integrations': 'enable-managed-integration-find'
           'generally-available-ga-agentless-integrations': 'enable-managed-integration-find'
           'beta-agentless-integrations': 'enable-managed-integration-find'
 
-  'manage-data/ingest/agentless/cloud-connector-deployment.md': 'manage-data/ingest/managed-integrations/cloud-connector-deployment.md'
+  'manage-data/ingest/agentless/cloud-connector-deployment.md': 'reference/managed-integrations/federated-identity.md'
 
   'manage-data/ingest/agentless/agentless-integrations-faq.md':
-    to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
+    to: 'reference/managed-integrations/managed-integrations-faq.md'
     anchors:
       'agentless-integration-troubleshooting': null
       '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': null
@@ -1278,7 +1368,7 @@ redirects:
   # included the FAQ snippet, so its H1 anchor plus the FAQ section
   # anchors all resolve to the new FAQ page.
   'troubleshoot/security/agentless-integrations.md':
-    to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
+    to: 'reference/managed-integrations/managed-integrations-faq.md'
     anchors:
       'agentless-integration-troubleshoot': null
       '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': null
@@ -1289,6 +1379,14 @@ redirects:
       '_how_do_i_delete_an_agentless_integration': 'managed-integrations-faq-delete'
       'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'managed-integrations-faq-static-ip'
       'do-agentless-integrations-work-if-im-using-traffic-filtering': 'managed-integrations-faq-traffic-filtering'
+
+  # Managed integrations moved from Manage data > Ingest to Reference > Ingestion tools.
+  'manage-data/ingest/managed-integrations/cloud-connector-deployment.md': 'reference/managed-integrations/federated-identity.md'
+  'manage-data/ingest/managed-integrations/enable-managed-integration.md': 'reference/managed-integrations/enable-managed-integration.md'
+  'manage-data/ingest/managed-integrations/managed-integrations-faq.md': 'reference/managed-integrations/managed-integrations-faq.md'
+  'manage-data/ingest/managed-integrations/managed-integrations.md': 'reference/managed-integrations/index.md'
+  'reference/managed-integrations/managed-integrations.md': 'reference/managed-integrations/index.md'
+
   # Rehome CCS and CCR privileges from remote-clusters-cert.md
   'deploy-manage/remote-clusters/remote-clusters-cert.md':
     to: 'deploy-manage/remote-clusters/remote-clusters-cert.md'
@@ -1733,3 +1831,5 @@ redirects:
   'reference/autoops-insights/vector_memory_pressure.md': 'autoops-insights://elasticsearch/vector_memory_pressure.md'
   'reference/autoops-insights/version_is_outdated.md': 'autoops-insights://elasticsearch/version_is_outdated.md'
   'reference/autoops-insights/write_queue_size.md': 'autoops-insights://elasticsearch/write_queue_size.md'
+  # related to https://github.com/elastic/docs-content-internal/issues/1919
+  'solutions/security/alertzero/track-escalations.md': 'solutions/security/alertzero/manage-escalations.md'

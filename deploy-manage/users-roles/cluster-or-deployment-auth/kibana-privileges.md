@@ -80,7 +80,7 @@ In role management, features are organized into the following groups.
 | Group | What it contains |
 | --- | --- |
 | **Analytics** | Privileges for the features you use to explore and visualize data. Refer to [Privileges in the Analytics group](#kibana-privileges-analytics). |
-| **Universal Alerting** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). |
+| **Universal Alerting** {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). |
 | **Elasticsearch** | Privileges for {{es}} features. |
 | **Observability** | Privileges for Elastic {{observability}} features. Refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md). |
 | **Security** | Privileges for {{elastic-sec}} features. Refer to [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md). |
@@ -274,8 +274,8 @@ Each of the following privileges controls access to a different feature.
 | **Cloud Connect** {applies_to}`stack: ga 9.3+` | Connect a cluster to {{ecloud}} services. This privilege appears on {{ece}} and self-managed clusters, but not on {{ech}}. |
 | **Automatic Import** {applies_to}`stack: ga 9.4+` | Access [Automatic Import](/solutions/security/get-started/automatic-import.md), and create custom integrations from sample data. |
 | **Data Set Quality** | Access the [Data Set Quality](/solutions/observability/data-set-quality-monitoring.md) page. Turn on **Customize sub-feature privileges** to grant individual data set quality privileges. For the full list, refer to [Data Set Quality sub-feature privileges](#kibana-privileges-data-set-quality-subfeatures). |
-| **Fleet** | Access [{{fleet}}](/reference/fleet/index.md), and manage agents and agent policies. Turn on **Customize sub-feature privileges** to grant individual {{fleet}} privileges. For the full list, refer to [{{fleet}} privileges and available actions](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features-table). |
-| **Integrations** | Browse and install [integrations](/reference/fleet/index.md). |
+| **Fleet** | Access [{{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md), and manage agents, agent policies, and {{fleet}} settings. Turn on **Customize sub-feature privileges** to grant individual {{fleet}} privileges. For the full list, refer to [{{fleet}} privileges and available actions](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features-table). |
+| **Integrations** | Browse and install [integrations](/reference/fleet/manage-integrations.md). To install integrations or add them to agent policies, users also need [**All** for **Fleet** or its **Agent policies** sub-feature](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-integrations). |
 | **Maintenance Windows** | Create and manage [maintenance windows](/explore-analyze/alerting/alerts/maintenance-windows.md), which suppress rule notifications for a scheduled period. |
 | **Manage Scheduled Reports** {applies_to}`stack: ga 9.1+` | View and manage the [scheduled reports](/explore-analyze/report-and-share/automating-report-generation.md) of every user in the space. |
 | **Query activity** {applies_to}`stack: ga 9.4+` | Access [Query activity](/deploy-manage/monitor/query-activity.md), and cancel long-running queries. |
