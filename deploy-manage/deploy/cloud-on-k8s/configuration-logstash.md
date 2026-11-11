@@ -65,8 +65,23 @@ stringData:
     log.level: debug
 ```
 
+By default, ECK sets `config.reload.automatic: true` in `logstash.yml` to enable automatic pipeline reloads.
+
+{applies_to}`eck: ga 3.6+` For {{ls}} 9.5.0 and later, ECK also sets `ssl.reload.automatic: true` by default so that {{ls}} reloads pipeline TLS certificates in place when their backing Secret is updated. If `ssl.reload.automatic`, `config.reload.automatic`, or `xpack.management.enabled` are explicitly configured, `ssl.reload.automatic: true` is not set. Refer to [Automatic TLS certificate reload](logstash-plugins.md#automatic-tls-certificate-reload) for details.
+
 
 ## Configuring Logstash pipelines [k8s-logstash-pipelines]
+
+You can define [Logstash pipelines](logstash://reference/creating-logstash-pipeline.md) using the following methods:
+
+* [Inline](#k8s-logstash-pipelines-inline) in the `spec.pipelines` section
+* Reference a `pipelines.yml` entry from a [Secret](#k8s-logstash-pipelines-secret) or a [ConfigMap](#k8s-logstash-pipelines-configmap) through `spec.pipelinesRef`.
+
+Specify at most one of `spec.pipelines` and `spec.pipelinesRef`.
+
+All standard `pipelines.yml` settings are supported. Refer to [Pipeline options](#k8s-logstash-pipelines-options) for an example.
+
+### Inline pipelines [k8s-logstash-pipelines-inline]
 
 Define Logstash pipelines in the `spec.pipelines` section (the ECK equivalent to `pipelines.yml`):
 
@@ -98,6 +113,8 @@ spec:
           }
         }
 ```
+
+### Pipelines from a Secret [k8s-logstash-pipelines-secret]
 
 Alternatively, you can provide the pipelines configuration through a Secret specified in the `spec.pipelinesRef` field. The Secret must have a `pipelines.yml` entry with your configuration:
 
@@ -138,7 +155,13 @@ stringData:
         }
 ```
 
-Logstash on ECK supports all options present in `pipelines.yml`, including settings to update the number of workers, and the size of the batch that the pipeline will process. This also includes using `path.config` to point to volumes mounted on the Logstash container:
+### Pipelines from a ConfigMap [k8s-logstash-pipelines-configmap]
+
+```{applies_to}
+eck: ga 3.6+
+```
+
+If the pipeline definitions are not sensitive, you can reference a ConfigMap instead of a Secret by using `configMapName` in the `spec.pipelinesRef` field. The ConfigMap must have a `pipelines.yml` entry with your configuration:
 
 ```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
@@ -151,7 +174,15 @@ spec:
   elasticsearchRefs:
     - clusterName: qs
       name: quickstart
-  pipelines:
+  pipelinesRef:
+    configMapName: quickstart-pipeline
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quickstart-pipeline
+data:
+  pipelines.yml: |-
     - pipeline.id: main
       config.string: |
         input {
@@ -167,6 +198,62 @@ spec:
             ssl_certificate_authorities => "${QS_ES_SSL_CERTIFICATE_AUTHORITY}"
           }
         }
+```
+
+Specify at most one of `secretName` and `configMapName` in `spec.pipelinesRef`. ECK watches the referenced Secret or ConfigMap and updates the pipelines when its content changes.
+
+### Pipeline options [k8s-logstash-pipelines-options]
+
+Logstash on ECK supports all options present in `pipelines.yml`, including settings to update the number of workers, and the size of the batch that the pipeline will process. This also includes using `path.config` to point to files in volumes mounted on the Logstash container. The following example sets the worker count and batch size, and loads the pipeline definition from a ConfigMap mounted through `podTemplate`:
+
+```yaml subs=true
+apiVersion: logstash.k8s.elastic.co/v1alpha1
+kind: Logstash
+metadata:
+  name: quickstart
+spec:
+  version: {{version.stack}}
+  count: 1
+  elasticsearchRefs:
+    - clusterName: qs
+      name: quickstart
+  pipelines:
+    - pipeline.id: main
+      pipeline.workers: 4
+      pipeline.batch.size: 250
+      path.config: /usr/share/logstash/pipeline-conf/main.conf
+  podTemplate:
+    spec:
+      containers:
+        - name: logstash
+          volumeMounts:
+            - name: pipeline-conf
+              mountPath: /usr/share/logstash/pipeline-conf
+              readOnly: true
+      volumes:
+        - name: pipeline-conf
+          configMap:
+            name: quickstart-pipeline-conf
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quickstart-pipeline-conf
+data:
+  main.conf: |
+    input {
+      beats {
+        port => 5044
+      }
+    }
+    output {
+      elasticsearch {
+        hosts => [ "${QS_ES_HOSTS}" ]
+        user => "${QS_ES_USER}"
+        password => "${QS_ES_PASSWORD}"
+        ssl_certificate_authorities => "${QS_ES_SSL_CERTIFICATE_AUTHORITY}"
+      }
+    }
 ```
 
 ::::{note}

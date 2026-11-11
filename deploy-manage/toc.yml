@@ -192,6 +192,7 @@ toc:
                   - file: deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md
                   - file: deploy/cloud-on-k8s/eck-gdch.md
                   - file: deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md
+                  - file: deploy/cloud-on-k8s/wolfi-stack-images.md
               - file: deploy/cloud-on-k8s/air-gapped-install.md
               - file: deploy/cloud-on-k8s/configure.md
                 children:
@@ -232,6 +233,7 @@ toc:
                     children:
                       - file: deploy/cloud-on-k8s/k8s-kibana-es.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md
+                      - file: deploy/cloud-on-k8s/kibana-background-tasks.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/propagate-labels-annotations.md
                   - file: deploy/cloud-on-k8s/k8s-pause-orchestration.md
@@ -525,6 +527,7 @@ toc:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
                   - file: security/k8s-es-client-certificate-auth.md
+                  - file: security/k8s-es-pki-authentication.md
                   - file: security/k8s-fleet-server-client-certificate-auth.md
               - file: security/external-ca-transport.md
           - file: security/network-security.md

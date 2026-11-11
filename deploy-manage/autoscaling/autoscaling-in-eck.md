@@ -212,6 +212,99 @@ spec:
 ```
 
 
+#### Autoscaling and field ownership [k8s-autoscaling-ssa]
+```{applies_to}
+  eck: ga 3.6
+```
+
+The autoscaler changes fields of your {{es}} resource when it scales the cluster. For each NodeSet that a policy manages, it sets the number of nodes (`count`) and the resources that the policy manages (CPU, memory, and storage), and it writes only those fields. Kubernetes [Server-Side Apply](https://kubernetes.io/docs/reference/using-api/server-side-apply/) (SSA) tracks which manager owns each field of a resource. The operator owns the fields that the autoscaler writes, and it appears as the `elastic-operator` field manager.
+
+Under SSA, Kubernetes rejects a tool that sets an owned field to a different value and reports a conflict, instead of silently overwriting the autoscaler. Tools that apply resources with SSA, such as Helm 4 or `kubectl apply --server-side`, conflict with the autoscaler if your manifest also sets these fields, on the first apply after the autoscaler changes one of them. The following error is an example from Helm:
+
+```
+UPGRADE FAILED: conflict with "elastic-operator" using elasticsearch.k8s.elastic.co/v1: .spec.nodeSets[name="data"].count
+```
+
+To make your {{es}} manifest compatible with the autoscaler, remove the fields that the policy manages for that NodeSet and let the autoscaler own them. The autoscaler always manages `count`, because every policy requires `nodeCount`, so always remove it. Remove the other fields only if the `resources` settings of your policy manage them. For example, if your policy sets `memory` but not `cpu`, keep `cpu` in your manifest. The storage class and access modes in `volumeClaimTemplates` always stay in your manifest.
+
+The following example shows a policy that manages all four settings. It also shows an {{es}} manifest that declares the fields that the policy manages:
+
+```yaml subs=true
+apiVersion: autoscaling.k8s.elastic.co/v1alpha1
+kind: ElasticsearchAutoscaler
+metadata:
+  name: autoscaling-sample
+spec:
+  elasticsearchRef:
+    name: elasticsearch-sample
+  policies:
+    - name: data
+      roles: [data, ingest]
+      resources:
+        nodeCount: { min: 1, max: 2 } <1>
+        cpu: { min: 1, max: 2 } <2>
+        memory: { min: 2Gi, max: 4Gi } <3>
+        storage: { min: 2Gi, max: 4Gi } <4>
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: elasticsearch-sample
+spec:
+  version: {{version.stack}}
+  nodeSets:
+    ...
+    - name: data
+      count: 1 <1>
+      config:
+        node.roles: [data, ingest]
+      resources:
+        requests:
+          cpu: 1 <2>
+          memory: 2Gi <3>
+        limits:
+          cpu: 1 <2>
+          memory: 2Gi <3>
+        storage: 2Gi <4>
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data
+          spec:
+            accessModes: [ReadWriteOnce]
+            storageClassName: standard
+```
+1. The `nodeCount` setting is always applied and manages `count`. Remove `count` from the NodeSet.
+2. The `cpu` setting manages `resources.requests.cpu` and `resources.limits.cpu`. Remove both.
+3. The `memory` setting manages `resources.requests.memory` and `resources.limits.memory`. Remove both.
+4. The `storage` setting manages `resources.storage`. Remove it.
+
+After applying the changes, the manifest contains only the fields that you own:
+
+```yaml subs=true
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: elasticsearch-sample
+spec:
+  version: {{version.stack}}
+  nodeSets:
+    ...
+    - name: data
+      config:
+        node.roles: [data, ingest]
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data
+          spec:
+            accessModes: [ReadWriteOnce]
+            storageClassName: standard
+```
+
+::::{note}
+The autoscaler records the storage size in the `resources.storage` field of the NodeSet, applies it to the data volume claim, and overrides any size in `volumeClaimTemplates`. If you define a size in `volumeClaimTemplates`, it does not conflict with the autoscaler, but it has no effect, so remove it.
+::::
+
+
 ### Monitoring [k8s-monitoring]
 
 
