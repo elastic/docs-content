@@ -146,6 +146,8 @@ In this mode, {{es}} encodes vectors as `bfloat16` to halve raw vector storage, 
 
 Refer to [Index modes for vector search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-modes) for the full list of applied settings.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`elasticsearch: preview` To combine these defaults with [columnar storage](/manage-data/data-store/columnar.md), set `index.mode` to `vectordb_columnar` instead. It's a good fit when your documents carry many non-vector, non-text fields.
+
 ## Resources
 
 - [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Production guidance for vector memory, node sizing, indexing, filesystem cache, and on-disk rescoring.
