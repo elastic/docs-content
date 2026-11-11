@@ -201,6 +201,9 @@ toc:
   - file: ai-features.md
     children:
       - file: ai-features/automatic-import.md
+        children:
+          - file: ai-features/automatic-import/create-integration.md
+          - file: ai-features/automatic-import/manage-integrations.md
       - file: ai-features/elastic-agent-builder.md
         children:
           - file: ai-features/agent-builder/get-started.md
