@@ -35,8 +35,8 @@ Choose a different option when:
 
 You connect the MCP host to `https://mcp.elastic.co` and authorize it with OAuth 2.1. The service finds the {{serverless-short}} projects you can access and routes each call to the project. Your data stays in the project. The connection acts as you.
 
-The {{mcp-service}} maps {{es}}, {{kib}}, and Cloud control-plane REST APIs onto a small set of MCP tools.
-One of those tools searches the API catalog so the host can find the operation it needs, read its schema, and run the call.
+The {{mcp-service}} maps {{es}}, {{kib}}, and Cloud control-plane REST APIs onto the [tools](#available-tools) below.
+One tool searches the API catalog so the host can find the operation it needs, read its schema, and run the call.
 That keeps the conversation from filling with the full API surface, and Elastic can change an API without breaking the host.
 
 Read, write, and destructive calls are separate so a destructive call can be confirmed. Hosts that support confirmation ask you before that call runs.
@@ -46,6 +46,32 @@ You can create and update projects through this service. You can't delete a proj
 :::{important}
 The connection can do what you can do. You can't limit it to selected projects or to read-only actions.
 :::
+
+## Available tools [available-tools]
+
+When you talk to an agent in natural language, it picks appropriate tools based on your request.
+The agent uses them to find your projects, find the Elastic API that matches your request, and run it.
+
+`list_projects`
+:   Lists the {{serverless-short}} projects you can access.
+
+`discover_tool`
+:   Searches for the Elastic API that matches a request. Each result names the API and which of `execute_read`, `execute_write`, or `execute_destructive` can run it.
+
+`describe_tool`
+:   Returns arguments and response details when the agent needs more than that result.
+
+`describe_type`
+:   Returns a type that `describe_tool` left out. The agent can skip both describe tools when it already knows the API.
+
+`execute_read`
+:   Runs a read-only API. Refuses an API that can write or delete data.
+
+`execute_write`
+:   Runs an API that reads or writes data. Refuses an API that can delete or overwrite data.
+
+`execute_destructive`
+:   Runs any API, including one that deletes or overwrites data.
 
 ## How it relates to other Elastic features [how-it-relates]
 
