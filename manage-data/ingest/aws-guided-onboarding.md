@@ -18,7 +18,7 @@ The guided AWS onboarding flow in {{kib}} sets up several AWS services at once. 
 
 Depending on the service and the deployment method you choose, the flow collects data in the following ways:
 
-- **{{managed-integrations}}**: Elastic runs the collectors for you. Elastic authenticates to your AWS account with a [federated identity](/reference/managed-integrations/federated-identity.md) or an access key pair. For more information, refer to [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md).
+- **{{managed-integrations}}**: Elastic runs the collectors for you. Elastic authenticates to your AWS account with a [federated identity](/reference/managed-integrations/federated-identity.md) or an access key pair. For more information, refer to [{{managed-integrations}}](/reference/managed-integrations/index.md).
 - **Elastic Cloud Forwarder**: A CloudFormation stack in your AWS account forwards logs from S3 buckets or CloudWatch log groups to Elastic. For more information, refer to the [Elastic Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md).
 - **{{agent}}**: You enroll a self-managed {{agent}} on a host that has access to your AWS environment.
 
@@ -108,6 +108,6 @@ Select **Finish** to close the flow, or **Take me to my data** to open the data.
 ## Related pages [aws-onboarding-related]
 
 - [Authenticate {{managed-integrations}} using a federated identity](/reference/managed-integrations/federated-identity.md)
-- [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md)
+- [{{managed-integrations}}](/reference/managed-integrations/index.md)
 - [Elastic Cloud Forwarder](opentelemetry://reference/edot-cloud-forwarder/index.md)
 - [Amazon Web Services (AWS) monitoring](/solutions/observability/cloud/amazon-web-services-aws-monitoring.md)
