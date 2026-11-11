@@ -2,7 +2,8 @@
 navigation_title: Investigate alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Investigate alerts. Understand what triggered an alert, assess metric behavior, find related alerts, review responders, and inspect underlying data."
@@ -10,9 +11,9 @@ description: "Investigate alerts. Understand what triggered an alert, assess met
 
 # Investigate alerts in {{alerting-v2-system}} [investigate-alert-episodes]
 
-From the **Alerts** page in {{alerting-v2-system}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
+From the **Alerts** page in {{alerting-v2-system-short}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 
-Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system}}](#investigate-classic-alerts).
+Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system-short}}](#investigate-classic-alerts).
 
 ## Understand the trigger and scope [understand-trigger]
 
@@ -55,6 +56,22 @@ Each alert tracks who performed the most recent response action of each type, so
 
 These rows only appear when the alert is in the corresponding state. System-generated actions display as **System**.
 
+## Check whether an alert's notifications went out [policy-history]
+
+To find out whether {{kib}} sent a notification for an alert, open the **Policy history** tab on the alert's details page. For each time an action policy handled the alert since it started, the tab shows whether the policy sent the notification (**Dispatched**), held it back because of its frequency setting (**Throttled**), or failed to send it (**Failed**).
+
+To narrow the list, filter by outcome or search it. To check which alerts a policy matches and where it sends notifications, select the policy's name.
+
+If a notification you expected isn't listed, no action policy tried to send it. This happens when:
+
+- No action policy matches the alert.
+- The alert is acknowledged, snoozed, or resolved.
+- A maintenance window covers the alert.
+
+An empty tab means no action policy has handled the alert yet, even though the empty message mentions the last 24 hours.
+
+To review notifications for every alert in the space, use the [action policy execution history](../action-policies/review-action-policy-execution-history.md).
+
 ## Inspect the underlying data [inspect-data]
 
 Each alert includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
@@ -67,14 +84,14 @@ Use the **Open in Discover** action to view the full source documents instead of
 
 If the rule has a runbook attached, you can view it directly from the alert to follow the documented triage steps.
 
-## Investigate alerts from {{alerting-v1-system}} [investigate-classic-alerts]
+## Investigate alerts from {{alerting-v1-system-short}} [investigate-classic-alerts]
 
 Select an alert with **Classic** in the **Source** column to open its details flyout, then use its tabs to check the alert:
 
 - **Overview**: Check the alert's status, severity, reason, and timing, along with its rule and the rule's tags.
 - **Fields**: Look up any value stored on the alert, such as the rule type in `kibana.alert.rule.rule_type_id`.
 
-Trend charts, timelines, and related alerts are available only for {{alerting-v2-system}} alerts.
+Trend charts, timelines, and related alerts are available only for {{alerting-v2-system-short}} alerts.
 
 To triage the alert from the flyout, use the **Take action** menu. It has the same actions as the alerts table on the **Alerts** page. For details, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
 

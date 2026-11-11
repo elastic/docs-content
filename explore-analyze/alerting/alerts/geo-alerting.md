@@ -11,7 +11,7 @@ products:
 
 # Tracking containment [geo-alerting]
 
-The tracking containment rule alerts when an entity is contained or no longer contained within a boundary.
+The tracking containment rule is part of {{alerting-v1-system}}. It alerts when an entity is contained or no longer contained within a boundary.
 
 In **{{rules-ui}}**, click **Create rule**. For help navigating to the Rules page, refer to [Create and manage alerting rules](create-manage-rules.md). Select the **Tracking containment** rule type then fill in the name and optional tags.
 

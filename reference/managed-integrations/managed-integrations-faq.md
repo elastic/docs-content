@@ -22,7 +22,7 @@ Frequently asked questions about {{managed-integrations}}.
 
 ### What types of integrations are supported? [managed-integrations-faq-supported]
 
-{{managed-integrations}} are best suited for integrations that pull data from a cloud source through an API at [lower volumes](/reference/managed-integrations/managed-integrations.md#managed-integrations-limits). For a complete list, refer to [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). Elastic continually adds more integrations to this list.
+{{managed-integrations}} are best suited for integrations that pull data from a cloud source through an API at [lower volumes](/reference/managed-integrations/index.md#managed-integrations-limits). For a complete list, refer to [{{managed-integrations}} quick reference](integration-docs://reference/managed_integrations.md). Elastic continually adds more integrations to this list.
 
 ### Why aren't some integrations available as {{managed-integrations}}? [managed-integrations-faq-missing]
 

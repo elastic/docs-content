@@ -5,6 +5,8 @@ redirects:
   'solutions/security/alertzero/use-alertzero.md': 'solutions/security/alertzero/work-in-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/9158
   'solutions/security/alertzero/requirements.md': 'solutions/security/alertzero/set-up-alertzero.md'
+  # related to https://github.com/elastic/docs-content/pull/9304
+  'solutions/security/alertzero/review-first-proposed-action.md': 'solutions/security/alertzero/work-in-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   # related to https://github.com/elastic/docs-content/issues/7502
@@ -1214,7 +1216,7 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/5251
 # Targets updated after the agentless -> managed-integrations rename below
   'solutions/security/get-started/agentless-integrations-faq.md': 'reference/managed-integrations/managed-integrations-faq.md'
-  'solutions/security/get-started/agentless-integrations.md': 'reference/managed-integrations/managed-integrations.md'
+  'solutions/security/get-started/agentless-integrations.md': 'reference/managed-integrations/index.md'
   'solutions/security/get-started/cloud-connector-deployment.md': 'reference/managed-integrations/federated-identity.md'
 
 # Related to https://github.com/elastic/docs-content-internal/issues/1986 and https://github.com/elastic/docs-content-internal/issues/1702
@@ -1338,7 +1340,7 @@ redirects:
 #   - Files and folder renamed from `agentless` -> `managed-integrations`
 #     to match the new product name (Elastic Managed integrations).
   'manage-data/ingest/agentless/agentless-integrations.md':
-    to: 'reference/managed-integrations/managed-integrations.md'
+    to: 'reference/managed-integrations/index.md'
     many:
       - to: 'reference/managed-integrations/enable-managed-integration.md'
         anchors:
@@ -1382,7 +1384,8 @@ redirects:
   'manage-data/ingest/managed-integrations/cloud-connector-deployment.md': 'reference/managed-integrations/federated-identity.md'
   'manage-data/ingest/managed-integrations/enable-managed-integration.md': 'reference/managed-integrations/enable-managed-integration.md'
   'manage-data/ingest/managed-integrations/managed-integrations-faq.md': 'reference/managed-integrations/managed-integrations-faq.md'
-  'manage-data/ingest/managed-integrations/managed-integrations.md': 'reference/managed-integrations/managed-integrations.md'
+  'manage-data/ingest/managed-integrations/managed-integrations.md': 'reference/managed-integrations/index.md'
+  'reference/managed-integrations/managed-integrations.md': 'reference/managed-integrations/index.md'
 
   # Rehome CCS and CCR privileges from remote-clusters-cert.md
   'deploy-manage/remote-clusters/remote-clusters-cert.md':
