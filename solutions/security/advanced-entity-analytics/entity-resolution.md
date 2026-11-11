@@ -20,7 +20,7 @@ In enterprise environments, a single person or host often appears as multiple en
 
 Entity resolution links multiple entity records that represent the same real-world identity into a *resolution group*, consolidates their risk scores into a single view, and reduces noise in the entities table by surfacing only the authoritative record. Resolution groups also receive a combined [resolution group risk score](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#resolution-scoring) that aggregates risk inputs from all members of the group.
 
-Entity resolution can happen automatically or manually. Automated resolution matches user entities based on shared identifiers, such as email addresses. Manual resolution lets you explicitly link entity records using a CSV file or directly from the entity details flyout.
+Entity resolution can happen automatically or manually. Automated resolution matches user entities based on shared identifiers. Manual resolution lets you explicitly link entity records using a CSV file or directly from the entity details flyout.
 
 ## Resolution groups [entity-resolution-groups]
 
@@ -39,21 +39,23 @@ Entity resolution runs an automated process that matches user entities across id
 
 ::::{note}
 :applies_to: {"stack": "ga 9.4-9.5"}
-In these versions, automated resolution matches on email addresses only. Automated resolution might produce false-positive links when non-IDP entities happen to share an email address with an IDP entity.
+In these versions, automated resolution matches on email addresses only by default. Automated resolution might produce false-positive links when non-IDP entities happen to share an email address with an IDP entity.
 ::::
 
 ### Built-in automated resolution rules [entity-resolution-built-in-rules]
 ```{applies_to}
-stack: ga 9.6+
+stack: ga 9.5+
 serverless: ga
 ```
 
 Automated resolution uses built-in rules. Each rule links user entities that share a particular identifier.
 
-You can use the Entity Store API to [list the rules]({{kib-apis}}operation/operation-get-security-entity-store-resolution-rules) in a space and to turn each rule [on]({{kib-apis}}operation/operation-put-security-entity-store-resolution-rules-id-enable) or [off]({{kib-apis}}operation/operation-put-security-entity-store-resolution-rules-id-disable) for a space. If a rule links the wrong accounts, turn that rule off.
+You can use the Entity Store API to [list the rules]({{kib-apis}}operation/operation-get-security-entity-store-resolution-rules) in a space and to turn each rule [on]({{kib-apis}}operation/operation-put-security-entity-store-resolution-rules-id-enable) or [off]({{kib-apis}}operation/operation-put-security-entity-store-resolution-rules-id-disable) for a space.
+
+If a rule links the wrong accounts, turn the rule off first, then unlink the wrong entities from the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) or with the [unlink API]({{kib-apis}}operation/operation-post-security-entity-store-resolution-unlink). Turning a rule off only stops new links, so links it already created stay in place. If you unlink entities while the rule is still on, it can link them again when a new entity with the same identifier appears.
 
 
-`crowdstrike_sid_bridge`
+`crowdstrike_sid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   **Default:** Off
 
     **What it links:** Existing [CrowdStrike](integration-docs://reference/crowdstrike.md) user entities in your entity store that share a SID (`user.id`) with an [Active Directory](integration-docs://reference/entityanalytics_ad.md) user.
@@ -65,13 +67,19 @@ You can use the Entity Store API to [list the rules]({{kib-apis}}operation/opera
 `email_exact_match`
 :   **Default:** On
 
-    **What it links:** User entities that share the same email address across different identity providers. Email addresses are compared case-insensitively. Several local users with that email — one for each user name and host — are linked too. Users from the same identity provider that share an address are left unlinked.
+    **What it links:** User entities that share the same email address across different identity providers. Several local users with that email — one for each user name and host — are linked too.
+
+    How email addresses are matched differs depending on your version:
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Email addresses are compared case-insensitively. Users from the same identity provider that share an address are left unlinked.
+
+    {applies_to}`stack: ga =9.5` Email addresses must match exactly, including case, and users from the same identity provider that share an address are also linked.
 
     **What it needs:** User entities with an email address.
 
     **When to turn it off:** If shared mailboxes or role accounts produce false links.
 
-`entra_guid_bridge`
+`entra_guid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   **Default:** On
 
     **What it links:** Microsoft Defender identities and Entra ID users that share a GUID (`user.id`).
@@ -83,22 +91,22 @@ You can use the Entity Store API to [list the rules]({{kib-apis}}operation/opera
 `related_user_alias_resolution`
 :   **Default:** Off
 
-    **What it links:** User entities that an identity provider's user record lists as related users of another user.
+    **What it links:** Non-local user entities that match a related user listed in the `related.user` field of an identity provider's user record. An entity matches when its user ID, name, email address, or full name equals one of those values. An identity provider user becomes the primary entity.
 
-    **What it needs:** Identity provider user records that list related users.
+    **What it needs:** At least one of the [Okta Entity Analytics](integration-docs://reference/entityanalytics_okta.md), Active Directory Entity Analytics, or Microsoft Entra ID Entity Analytics integrations.
 
     **When to turn it on:** If the related users listed in your identity provider records should be linked.
 
-`upn_cross_field_bridge`
+`upn_cross_field_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   **Default:** Off
 
-    **What it links:** [Microsoft 365](integration-docs://reference/o365.md) audit users and Entra ID users that share a user principal name. User principal names are compared case-insensitively.
+    **What it links:** [Microsoft 365](integration-docs://reference/o365.md) user entities and Entra ID users that share a user principal name. User principal names are compared case-insensitively.
 
-    **What it needs:** Microsoft 365 audit events that create user entities, and the Microsoft Entra ID Entity Analytics integration.
+    **What it needs:** Microsoft 365 user entities in your entity store, and the Microsoft Entra ID Entity Analytics integration.
 
-    **When to turn it on:** If Microsoft 365 audit events create user entities in your environment. It's off by default because those audit events don't create user entities.
+    **When to turn it on:** Microsoft 365 audit events don't create user entities, so in most environments this rule has nothing to link. Turn it on only if your entity store contains Microsoft 365 user entities.
 
-`windows_sid_bridge`
+`windows_sid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
 :   **Default:** On
 
     **What it links:** User entities that share a Windows SID (`user.id`), including users seen on multiple hosts in Windows or CrowdStrike data. Windows domain accounts seen on several hosts are linked even before the Active Directory user is available. When that user arrives, the group is linked to it. Well-known SIDs, such as `LocalSystem`, are excluded.
