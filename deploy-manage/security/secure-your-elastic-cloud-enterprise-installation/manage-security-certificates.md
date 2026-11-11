@@ -54,7 +54,7 @@ If your organization already uses a CA certificate and X.509 certificate chain, 
 
 
 
-## Generate the full certificate chain [generate_the_full_certificate_chain] 
+## Certificate chain requirements [ece-tls-chain-requirements]
 
 When uploading the certificate chain to ECE, the following requirements apply:
 
