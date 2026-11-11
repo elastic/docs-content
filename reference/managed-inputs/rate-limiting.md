@@ -41,7 +41,9 @@ For OTLP troubleshooting steps, refer to [Error: too many requests](./troublesho
 
 ### {{ech}} deployments
 
-For {{ech}} deployments, `429` errors typically indicate that your {{es}} cluster is undersized for the current data volume. If [AutoOps](./troubleshooting.md#use-autoops-to-diagnose-issues) is available in your region, use it to check CPU utilization, index queue depth, and node load to confirm whether your cluster is under-resourced. If AutoOps is not available in your region, [contact Elastic Support](/troubleshoot/ingest/opentelemetry/contact-support.md).
+For {{ech}} deployments, `429` errors typically indicate that your {{es}} cluster is undersized for the current data volume. If [AutoOps](./troubleshooting.md#use-autoops-to-diagnose-issues) is available in your region, use it to check latency, CPU utilization, index queue depth, and node load to confirm whether your cluster is under-resourced. If AutoOps is not available in your region, [contact Elastic Support](/troubleshoot/ingest/opentelemetry/contact-support.md).
+
+When {{es}} latency exceeds 6 seconds, managed inputs reduce concurrency and return HTTP `429` errors.
 
 If metrics confirm the cluster needs more capacity, scale your deployment:
 
