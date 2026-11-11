@@ -24,6 +24,10 @@ PersistentVolumes can be of two types: **Network-attached** or **Local**. ECK ha
 
 In both cases, the performance depends on the underlying hardware and implementation. In general, local SSDs give the best performance. The fastest network-attached volumes from major Cloud providers can also provide acceptable performance, depending on your {{es}} use cases. To better evaluate your performance requirements, you can [benchmark](https://github.com/elastic/rally) your storage options against the expected {{es}} usage.
 
+::::{warning}
+Versions of NFS older than 4.1 don't support the file system locking semantics that {{es}} relies on, and are known not to work. Don't use NFS volumes older than 4.1 for {{es}} data. Prefer block storage or local disks.
+::::
+
 
 ## Local PersistentVolumes operations [k8s_local_persistentvolumes_operations]
 
