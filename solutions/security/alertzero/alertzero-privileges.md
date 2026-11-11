@@ -64,7 +64,7 @@ Every analyst needs the privileges in the first row. Add the privileges in the o
 | View {{alertzero}}, its {{az-watch}} settings, and the **{{az-proposed-actions-cap}}** page | **{{alertzero}}**: **Read** and **Proposed Actions**: **Read** |
 | Approve or decline {{az-proposed-actions}} | **Proposed Actions**: **All**, plus the [privileges for each action](#alertzero-action-privileges) they approve |
 | See impacted entities, and filter {{az-proposed-actions}} by entity | **Agentic Investigations**: **Read** |
-| Open {{az-investigation}} details or chats | **Agent Builder**: **Read** |
+| Open {{az-investigation}} details or chats | **Agent Builder**: **Read** and **Actions and Connectors**: **Read** |
 | Assign, close, or reopen {{az-investigations}} | **Agentic Investigations**: **All**, or its **Manage investigations** sub-feature privilege |
 
 ### Let analysts work on {{az-escalations}} [alertzero-escalation-access]
@@ -74,7 +74,7 @@ Add the privileges for each task the analyst does with {{az-escalations}}.
 | To let someone | Add |
 | --- | --- |
 | View {{az-escalations}} | **Agentic Investigations**: **Read**, or its **View escalations** sub-feature privilege |
-| Open {{az-escalation}} details or chats | **Agent Builder**: **Read** |
+| Open {{az-escalation}} details or chats | **Agent Builder**: **Read** and **Actions and Connectors**: **Read** |
 | Create an {{az-escalation}}, add an {{az-investigation}} to one, or change who is assigned to one | **Agentic Investigations**: **Manage escalations** sub-feature privilege, which **All** doesn't include |
 | Close an {{az-escalation}} | **Agentic Investigations**: **Manage escalations** and **Manage investigations** sub-feature privileges. To close an {{az-escalation}} that has pending {{az-proposed-actions}}, also add **Proposed Actions**: **All**. |
 
