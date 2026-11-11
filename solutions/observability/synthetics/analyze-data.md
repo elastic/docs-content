@@ -247,7 +247,7 @@ Next to each metric, there’s an icon that indicates whether the value is highe
 
 The **Object weight** visualization shows the cumulative size of downloaded resources by type, and **Object count** shows the number of individual resources by type.
 
-This provides a different kind of analysis. For example, you might have a large number of JavaScript files, each of which needs a separate download, but they may be collectively small. This could help you identify an opportunity to improve efficiency by combining multiple files into one.
+This provides a different kind of analysis. For example, you might have many JavaScript files, each of which needs a separate download, but they can be collectively small. This could help you identify an opportunity to improve efficiency by combining multiple files into one.
 
 :::{image} /solutions/images/observability-synthetics-analyze-one-step-object.png
 :alt: Object visualization for one step in a browser monitor in the {{synthetics-app}}
@@ -323,11 +323,11 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-Monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs also appear in the Synthetics UI. This includes monitors {{heartbeat}} creates through [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) as hosts and pods come and go. You can see their status in Synthetics, including when you move off the deprecated {{uptime-app}}. Synthetics builds each entry from check data alone, so the entry carries a **Heartbeat** badge next to the monitor type and is read-only.
+Monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs can also appear in the Synthetics UI, as long as they write to `synthetics-*`. This includes monitors {{heartbeat}} creates through [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) as hosts and pods come and go. You can see their status in Synthetics, including when you move off the deprecated {{uptime-app}}. Synthetics builds each entry from check data alone. The entry carries a **Heartbeat** badge next to the monitor type and is read-only.
 
-To hide them, click {icon}`controls` **Display options** in the monitor list toolbar and turn off **Show autodiscovered monitors**. Your browser remembers the setting for each {{kib}} space. Turning it off also removes these monitors from the status counts, because Synthetics stops collecting them rather than filtering them out of the page.
+To hide them, click {icon}`controls` **Display options** in the toolbar on the **Overview** tab and turn off **Show autodiscovered monitors**. Your browser remembers the setting for each {{kib}} space. Turning it off also removes these monitors from the status counts, because Synthetics stops collecting them rather than filtering them out of the page.
 
-Because these monitors have no saved object, the following actions are not available:
+Because these monitors have no saved object, the following actions are disabled:
 
 - **Edit monitor**
 - **Clone monitor**
@@ -357,4 +357,4 @@ Synthetics reads check data from `synthetics-*` only, so where a monitor writes 
         type: synthetics
     ```
 
-Synthetics shows at most 1,000 autodiscovered monitors, which keeps a large pool of short-lived pod-level monitors from crowding out the monitors you defined yourself.
+Synthetics shows at most 1,000 autodiscovered monitors, which keeps a large pool of short-lived pod-level monitors from crowding out the monitors you defined yourself. Monitors over the limit are left out of both the monitor list and the status counts.
