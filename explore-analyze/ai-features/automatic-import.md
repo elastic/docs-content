@@ -1,6 +1,7 @@
 ---
 navigation_title: Automatic Import
-description: Use Automatic Import with an LLM to build a custom Elastic integration from a data sample when no prebuilt integration exists, for Security, Observability, and other solutions.
+description: Automatic Import uses an LLM to build a custom Elastic integration from a sample of your data when no prebuilt integration exists. Learn when to use it and how it works.
+type: overview
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/automatic-import.html
   - https://www.elastic.co/guide/en/serverless/current/security-automatic-import.html
@@ -19,215 +20,54 @@ products:
 :::{include} /explore-analyze/_snippets/automatic-import-intro.md
 :::
 
-## Requirements [automatic-import-requirements]
+## When to use Automatic Import [automatic-import-when-to-use]
 
-* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
-* {{stack}} users: An [Enterprise](https://www.elastic.co/pricing) subscription.
-* {{serverless-short}} **{{sec-serverless}}** projects: the [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features) feature tier.
-* {{serverless-short}} **{{obs-serverless}}** projects: the [Observability Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#obs-serverless-project-features) feature tier.
-* A sample of the data you want to import.
+Use the option that fits your data source:
 
+* **A prebuilt integration exists:** Use it. To check, search the [Elastic integrations catalog](integration-docs://reference/index.md).
+* **{{agent}} can collect the data from files, cloud storage, Kafka, TCP, UDP, or another [supported method](/explore-analyze/ai-features/automatic-import/create-integration.md#_create_a_new_custom_integration):** Use Automatic Import.
+* **The source is an HTTP API, or you need full control of the package:** Use the [Elastic integration skills](https://github.com/elastic/integration-skills) in your AI coding environment to build and test a package, then [upload it to {{kib}}](integrations://extend/upload-new-integration.md). {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Automatic Import can't collect data from HTTP APIs.
 
-## Prepare your sample data [automatic-import-sample-data]
+## How Automatic Import works [automatic-import-how-it-works]
 
-Collect a sample of the data you want to import before you create the integration. Automatic Import sends that sample to the LLM, and the LLM builds an integration from it.
-
-Save that sample in one of the following formats:
-
-* **JSON and NDJSON**: Represent each event as its own object, and keep nesting shallow.
-* **CSV**: Include a header row with column names. Automatic Import recognizes the header. Without a header, the LLM attempts to create descriptive field names from the column formats and values.
-* **Syslog**: Use a structured or unstructured sample.
-
-Whichever format you use, include a wide range of unique log entries for the event types you want the integration to handle. The more the sample varies, the more accurate the pipeline is.
-
-:::{tip}
-Start the file with a focused set of the event types you want the integration to handle. Automatic Import sends the first samples in the file to the LLM, and the LLM builds the pipeline from those samples.
-:::
-
-### Sample size limits
-
-Automatic Import has limits on what it can send to the LLM. A sample is a log line or a document.
+An integration has one data stream for each type of data that your source produces. For each data stream, you upload a sample and select how {{agent}} collects the data. The integration doesn't include dashboards.
 
 :::::{applies-switch}
 
 ::::{applies-item} { "serverless": "ga", "stack": "ga 9.4+" }
 
-You can upload a file of any size. Automatic Import reads the file from the beginning and sends samples to the LLM until it reaches one of these limits:
+After the LLM analyzes your samples:
 
-| Limit | Value | What happens |
-| --- | --- | --- |
-| Maximum samples | 1,000 | Stops after adding 1,000 samples to the request. |
-| Maximum sample length | 100,000 characters | Skips the entire sample and continues with later samples. |
-| Maximum request size | 10 MB | Stops before the request to the LLM exceeds 10 MB. This limit doesn't cap the file you upload. |
-
-Automatic Import stops at 1,000 samples or 10 MB, whichever comes first. A sample longer than 100,000 characters doesn't count toward either limit. Short log lines reach the 1,000-sample limit first. Long samples, such as verbose JSON, can fill the 10 MB request first.
-
-If Automatic Import omits samples, the **Sample log limits applied** warning tells you how many samples it sent to the LLM and how many it left out.
+1. **Review and approve:** You check the field mappings and the ingest pipeline, adjust the pipeline if needed, and approve the integration. By default, approving also installs it.
+2. **Collect data:** You add the integration to an agent policy, and {{agent}} starts collecting the data.
+3. **Update:** To change the integration, you edit it and approve a new version. You can edit it only on the cluster or project where you created it. To use it elsewhere, download its package and upload it there.
 
 ::::
 
 ::::{applies-item} stack: ga 9.0-9.3
 
-Automatic Import sends the first 100 samples to the LLM.
+Each integration has one data stream. After the LLM analyzes your sample, you select **Add to Elastic** to install the integration, then add it to an agent policy.
 
 ::::
 
 :::::
 
+## Requirements [automatic-import-requirements]
+
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). For model guidance, refer to [Recommended models](#automatic-import-recommended-models).
+* The required project feature tier or subscription: [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features) for {{sec-serverless}} projects, [Observability Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#obs-serverless-project-features) for {{obs-serverless}} projects, or an [Enterprise](https://www.elastic.co/pricing) subscription for {{stack}}.
+* {applies_to}`stack: ga 9.4+` The **Automatic Import** feature privilege in {{kib}}.
+* To install the integration and add it to an agent policy: The **Integrations** [feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), and **All** for **Fleet** or its **Agent policies** sub-feature.
 
 ## Recommended models [automatic-import-recommended-models]
 
-You can use Automatic Import with any LLM. Model performance varies. Model performance for Automatic Import is similar to model performance for Attack Discovery: models that perform well for Attack Discovery perform well for Automatic Import. Refer to the [large language model performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md). For {{observability}} AI asistant tasks, refer to the [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md).
+Automatic Import works with any LLM, but results vary by model. Models that perform well for Attack Discovery also perform well for Automatic Import. To compare models, refer to the LLM performance matrices for [{{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md) and the [{{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md).
 
 ::::{important}
 Using Automatic Import allows users to create new third-party data integrations through the use of third-party generative AI models (“GAI models”). Any third-party GAI models that you choose to use are owned and operated by their respective providers. Elastic does not own or control these third-party GAI models, nor does it influence their design, training, or data-handling practices. Using third-party GAI models with Elastic solutions, and using your data with third-party GAI models is at your discretion. Elastic bears no responsibility or liability for the content, operation, or use of these third-party GAI models, nor for any potential loss or damage arising from their use. Users are advised to exercise caution when using GAI models with personal, sensitive, or confidential information, as data submitted can be used to train the models or for other purposes. Elastic recommends familiarizing yourself with the development practices and terms of use of any third-party GAI models before use. You are responsible for ensuring that your use of Automatic Import complies with the terms and conditions of any third-party platform you connect with.
 ::::
 
+## Next steps [automatic-import-next-steps]
 
-
-## Create a new custom integration [_create_a_new_custom_integration]
-
-The integration creation flow changed in {{stack}} 9.4 to support multiple data streams per integration and a new approve-then-install workflow. {{serverless-short}} already uses the updated flow.
-
-:::::{applies-switch}
-
-::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
-
-1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use your solution's entry point, such as **Add integrations** in {{elastic-sec}} or **Add data** in {{observability}}.
-2. Under **Can't find an integration?** click **Create integration**.
-
-   :::{image} /solutions/images/security-auto-import-create-new-integration-button.png
-   :alt: The Integrations page with the Create integration button highlighted
-   :::
-
-3. Select an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md) in the top right.
-4. Under **Integration Details**, provide a **Title** (required), **Description** (required), and **Logo** (optional).
-
-   :::{image} /solutions/images/security-auto-import-new-integration-form.png
-   :alt: The New Integration page showing Integration Details fields and an Add Data Stream button
-   :::
-
-5. Under **Define data streams and upload logs**, click **Add Data Stream**. You can add multiple data streams to a single integration.
-6. In the **Data Stream** panel, provide a **Data stream title** and **Data stream description**. These fields appear on the integration's configuration page to help identify the data stream it writes to.
-
-   :::{image} /solutions/images/security-auto-import-data-stream-flyout.png
-   :alt: The Data Stream panel with fields for title, description, data collection method, and sample logs
-   :::
-
-7. Select a [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md) to determine how the integration ingests the data. Supported methods: 
-
-   - File Stream
-   - AWS S3
-   - AWS Cloudwatch
-   - Azure Blob Storage
-   - Azure Event Hub
-   - GCP Pub/Sub
-   - Google Cloud Storage
-   - HTTP Endpoint
-   - Kafka
-   - TCP 
-   - UDP
-
-   :::{note}
-   These methods don't call an HTTP API. To build an integration package that calls an HTTP API, use the [Elastic integration skills](https://github.com/elastic/integration-skills). These workflows build the package with an AI coding agent.
-   :::
-
-8. Under **Logs**, either upload a sample of your data or select an existing index. Only indexes that include the `event.original` field are supported. Make sure your sample includes all the types of events that you want the integration to handle.
-9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later.
-
-   :::{note}
-   The **Manage my integrations** menu lists only integrations created with Automatic Import on versions 9.4+. 
-   
-   Manually created custom integration `.zip`s  get installed from the **Installed integrations** tab and aren't tracked on the **Manage my integrations** menu. For more information about user-created custom integrations, refer to [Upload a new integration](https://www.elastic.co/docs/extend/integrations/upload-new-integration).
-   :::
-
-   :::{image} /solutions/images/security-auto-import-data-streams-status.png
-   :alt: The New Integration page showing multiple data streams with Analyzing and Success statuses
-   :::
-
-10. When all data streams reach a **Success** status, the integration is ready to approve.
-
-    :::{image} /solutions/images/security-auto-import-manage-integrations-row.png
-    :alt: The Manage my integrations view showing a custom integration with a Ready to approve status
-    :::
-
-11. From the integration's **Actions** menu, click **Review & approve**. Select a category to help identify the integration on the Integrations page, then review the field mappings and the ingest pipeline.
-
-    :::{image} /solutions/images/auto-import-approve-stream-modal.png
-    :alt: The Review and approve data streams modal with a category selector and an Approve button
-    :::
-
-    Integration versions automatically increase when more data streams are added after the integration is approved.
-
-    (Optional) To fine-tune the ingest pipeline, open it from the **Review & approve** panel and make your changes. Refer to the [{{elastic-sec}} ECS reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) for field-mapping guidance. Click **Save** when you're done.
-
-12. When you approve an integration, by default it's also installed, which makes it available for assignment to a policy. To approve an integration without installing it, turn off the automatic installation option on its approval confirmation popup. Then, to install it later, click **Install** on the **Actions** menu. 
-
-
-13. Once you've installed an integration, you can find it using its category.
-
-    :::{image} /solutions/images/security-auto-import-find-integration.png
-    :alt: The Integrations catalog showing a newly installed custom integration under its chosen category
-    :::
-
-14. Select the integration. If the integration's **Overview** page opens, click **Add <integration>**. Configure the integration and assign it to an [agent policy](/reference/fleet/agent-policy.md) to start collecting data.
-
-    :::{image} /solutions/images/security-auto-import-add-integration.png
-    :alt: The integration details page with an Add button to deploy the integration to an agent policy
-    :::
-
-15. (Optional) After you've added an integration, you can edit the ingest pipeline from the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-::::
-
-::::{applies-item} stack: ga 9.0-9.3
-
-1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use your solution's entry point, such as **Add integrations** in {{elastic-sec}} or **Add data** in {{observability}}.
-2. Under **Can't find an integration?** click **Create new integration**.
-3. Click **Create integration**.
-4. Select an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
-5. Define how your new integration appears on the Integrations page by providing a **Title**, **Description**, and **Logo**. Click **Next**.
-6. Define your integration's package name, which prefixes the imported event fields.
-7. Define your **Data stream title**, **Data stream description**, and **Data stream name**. These fields appear on the integration's configuration page to help identify the data stream it writes to.
-8. Select your [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md). This determines how your new integration ingests the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
-
-   :::{warning}
-   CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-   :::
-
-   If you select **API (CEL input)**, upload an OpenAPI specification (OAS) file in JSON or YAML format. This file is separate from the data sample, and the sample formats described earlier don't apply to it. Automatic Import generates a Common Expression Language (CEL) program from that file. The LLM uses the specification to determine which API endpoints (GET only), query parameters, and data structures to use. Select the endpoints to consume and your authentication method, then upload a sample of the API responses in the next step. For background, refer to the [CEL specification](https://github.com/google/cel-spec) and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
-
-9. Upload a sample of your data. Make sure to include all the types of events that you want the new integration to handle.
-10. Click **Analyze logs**, then wait for processing to complete. This may take several minutes.
-11. After processing is complete, the pipeline's field mappings appear, including ECS and custom fields.
-
-    :::{image} /solutions/images/security-auto-import-review-integration-page.png
-    :alt: The Automatic Import Review page showing proposed field mappings
-    :::
-
-12. (Optional) After reviewing the proposed pipeline, you can fine-tune it by clicking **Edit pipeline**. Refer to the [{{elastic-sec}} ECS reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) to learn more about formatting field mappings. When you're satisfied with your changes, click **Save**.
-
-    :::{note}
-    If your new integration collects data from an API, you can update the [CEL input](beats://reference/filebeat/filebeat-input-cel.md) configuration (program and API authentication information) from the new integration's integration policy.
-    :::
-
-    :::{image} /solutions/images/security-auto-import-edit-pipeline.gif
-    :alt: An animation showing a user clicking the edit pipeline button and viewing the ingest pipeline flyout
-    :::
-
-13. Click **Add to Elastic**. After the **Success** message appears, your new integration is available on the Integrations page.
-
-    :::{image} /solutions/images/security-auto-import-success-message.png
-    :alt: The automatic import success message
-    :::
-
-14. Click **Add to an agent** to deploy your new integration and start collecting data, or click **View integration** to view detailed information about your new integration.
-15. (Optional) After you've added an integration, you can edit the ingest pipeline from the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-::::
-
-:::::
-
-::::{tip}
-If you use {{elastic-sec}}, you can use the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md) to check the health of your data ingest pipelines and field mappings.
-::::
+* [Create a custom integration with Automatic Import](/explore-analyze/ai-features/automatic-import/create-integration.md): Prepare a sample, build the integration, and start collecting data.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Manage integrations created with Automatic Import](/explore-analyze/ai-features/automatic-import/manage-integrations.md): Edit an integration or use it on another cluster or project.

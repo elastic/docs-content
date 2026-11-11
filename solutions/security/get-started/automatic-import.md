@@ -14,4 +14,4 @@ products:
 :::{include} /explore-analyze/_snippets/automatic-import-intro.md
 :::
 
-Refer to [Automatic Import](/explore-analyze/ai-features/automatic-import.md) for requirements, supported sample formats, recommended models, and step-by-step instructions.
+For requirements, refer to [Automatic Import](/explore-analyze/ai-features/automatic-import.md). To build an integration, refer to [](/explore-analyze/ai-features/automatic-import/create-integration.md).
