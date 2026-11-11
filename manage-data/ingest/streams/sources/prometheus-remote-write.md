@@ -1,5 +1,5 @@
 ---
-navigation_title: Prometheus Remote Write source
+navigation_title: Prometheus Remote Write
 description: Create a Prometheus Remote Write source in Streams and send metrics to it from a Prometheus server or Grafana Alloy.
 applies_to:
   serverless:
