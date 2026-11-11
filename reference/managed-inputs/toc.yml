@@ -4,6 +4,7 @@ toc:
   - file: rate-limiting.md
   - file: managed-otlp-endpoint.md
     children:
+      - file: data-routing.md
       - file: troubleshooting.md
   - file: prometheus-remote-write.md
   - file: elasticsearch-bulk.md
