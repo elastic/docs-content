@@ -257,7 +257,7 @@ Before each release {{es}} passes through some checks to detect unexpected chang
 
 * If your storage is known to be incompatible with features of Amazon S3 which were added very recently, consult the {{es}} release notes to determine whether those features are needed. If they are, determine the temporary configuration options required to reinstate the previous behavior.
 
-* In all cases, verify that your storage passes [repository analysis]({{es-apis}}operation/operation-snapshot-repository-analyze) in the upgraded version of a test cluster before upgrading any production clusters.
+* In all cases, verify that your storage passes [repository analysis]({{es-apis}}operation/operation-snapshot-repository-analyze) in a test cluster running the upgraded version before upgrading any production clusters.
 ::::
 
 ### Investigating incompatibilities
