@@ -1,5 +1,5 @@
 ---
-navigation_title: Get started
+navigation_title: Get started with Universal Profiling
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
 applies_to:
@@ -15,6 +15,8 @@ products:
 
 
 This page shows you how to configure and use Universal Profiling on an {{ecloud}} deployment. To set up a self-hosted deployment of {{stack}}, refer to [Run Universal Profiling on self-hosted Elastic stack ](./run-universal-profiling-on-self-hosted-elastic-stack.md).
+
+Universal Profiling is Elastic's original profiling agent and backend. For a setup that needs no {{kib}} setup step and also works on {{serverless-short}}, use OpenTelemetry profiling instead: refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md) for the host requirements and deployment steps.
 
 This page covers:
 
