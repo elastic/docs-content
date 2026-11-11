@@ -20,7 +20,7 @@ Streams is the part of {{kib}} where you manage how data gets into Elastic and w
 
 Streams has two sets of capabilities. They differ in when they act on your data:
 
-* {applies_to}`serverless: { elasticsearch: preview, observability: preview, security: preview }` {applies_to}`stack: unavailable` **Before data reaches {{es}}.** Keep your shippers as they are and point them at a source. Streams processes and routes the data on infrastructure that Elastic manages, then delivers it to {{es}}, to an Amazon S3 bucket you own, or to both. You build the whole path on the Streams Map.
+* {applies_to}`serverless: preview` **Before data reaches {{es}}.** Keep your shippers as they are and point them at a source. Streams processes and routes the data on infrastructure that Elastic manages, then delivers it to {{es}}, to an Amazon S3 bucket you own, or to both. You build the whole path on the Streams Map.
 * **After data reaches {{es}}.** You manage existing data streams in {{es}}. You parse and process their data with ingest pipelines, set retention, and check data quality. These are classic streams.
 
 :::{include} /manage-data/ingest/streams/_snippets/private-preview-note.md
@@ -33,7 +33,6 @@ serverless:
   elasticsearch: preview
   observability: preview
   security: preview
-stack: unavailable
 ```
 
 A stream is the path that data follows into Elastic, from a source to a destination. It's made of four kinds of building blocks:
@@ -53,6 +52,7 @@ Processing and routing data before it reaches {{es}} lets you:
 * See every source, pipeline, router, and destination in one place, and change them there.
 
 To begin, go to [Get started](get-started/index.md). Read [How Streams works](get-started/how-streams-work.md) to learn the model, then follow [Build your first stream](get-started/build-your-first-stream.md) to try it. Before you send production data, read the [limitations](limitations.md).
+
 ## Classic streams: Manage data streams in {{es}} [streams-classic]
 
 ```{applies_to}
@@ -73,7 +73,7 @@ Use this table to decide which side of Streams a task belongs to:
 :::{table}
 :widths: 3-5-4
 
-| Aspect | Before data reaches {{es}} (Streams Map) {applies_to}`serverless: { elasticsearch: preview, observability: preview, security: preview }` {applies_to}`stack: unavailable` | After data reaches {{es}} (classic streams) |
+| Aspect | Before data reaches {{es}} (Streams Map) {applies_to}`serverless: { elasticsearch: preview, observability: preview, security: preview }` | After data reaches {{es}} (classic streams) |
 | --- | --- | --- |
 | What you work with | Sources, pipelines (lists of processors), routers, and destinations | Classic streams |
 | Processing runs in | OpenTelemetry Collectors that Elastic manages | {{es}} ingest pipelines, as data is indexed |

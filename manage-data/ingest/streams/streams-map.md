@@ -6,7 +6,6 @@ applies_to:
     elasticsearch: preview
     observability: preview
     security: preview
-  stack: unavailable
 products:
   - id: kibana
   - id: cloud-serverless
