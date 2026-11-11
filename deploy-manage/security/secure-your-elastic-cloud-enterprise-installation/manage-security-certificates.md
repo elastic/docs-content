@@ -100,7 +100,7 @@ Review the documentation for your certificate generation tool to determine how t
 This step is optional. You need it only if you want to add your certificate from the command line instead of using the Cloud UI.
 
 Obtain the existing CA certificate generated during the installation of ECE. 
-This CA certificate might not be the same CA certificate you are using to generate Server certificate.
+This CA certificate might not be the same CA certificate associated with the certificate chain you are planning to add.
 
 1. You can use the [openssl](https://www.openssl.org/source/) command line tool to display the whole server certificate chain. Run the command against the Cloud UI URL provided at the end of the installation process on your first host, `192.168.43.10:12343` in our example:
 
