@@ -97,7 +97,7 @@ Review the documentation for your certificate generation tool to determine how t
 
 ## Get existing ECE security certificates [ece-existing-security-certificates] 
 
-This is optional step if you want to add the certificate from the command line instead using the Cloud UI.
+This step is optional. You need it only if you want to add your certificate from the command line instead of using the Cloud UI.
 
 Obtain the existing CA certificate generated during the installation of ECE. 
 This CA certificate might not be the same CA certificate you are using to generate Server certificate.
