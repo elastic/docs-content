@@ -46,7 +46,7 @@ After creating a shared exception list, add exception items to it:
 6. Choose one or more shared exception lists to add the exception to.
 
     ::::{note}
-    This option is unavailable if no shared exception list exists. You also can't add an endpoint exception item to the Endpoint Security Exception List from this UI. Refer to [Add {{elastic-endpoint}} exceptions](add-manage-exceptions.md#endpoint-rule-exceptions) for instructions.
+    This option is unavailable if no shared exception list exists. You also can't add an endpoint exception item to the Endpoint Security Exception List from this UI. Refer to [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) for instructions.
     ::::
 
 7. (Optional) Enter a comment describing the exception.

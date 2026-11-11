@@ -2,7 +2,7 @@
 applies_to:
   stack: ga 9.4+, preview 9.2-9.3
   serverless: ga
-description: Make the most of Discover to explore metrics data.
+description: Explore metrics data in Discover with an automatic grid of charts. Search, filter, and break down metrics by dimension, then add them to dashboards.
 products:
   - id: observability
   - id: security
@@ -21,11 +21,25 @@ If you're just getting started with **Discover** and want to learn its main prin
 
 ## Requirements
 
+The dedicated metrics view is only available in {{esql}} mode. If **Discover** doesn't open in {{esql}} mode, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) in the application menu.
+
 Use the `TS` command to select the data source. For example, the following query returns all of your metrics data:
 
   ```esql
   TS metrics-*
   ```
+
+You can also query a specific index:
+
+```esql
+TS metrics-index-1
+```
+
+The query can also use the following commands. If it uses any other command, **Discover** shows the default experience instead of the dedicated metrics view.
+
+- `LIMIT`
+- `SORT`
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` `WHERE`
 
 To visualize your metrics data as charts:
   - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
@@ -34,14 +48,6 @@ To visualize your metrics data as charts:
     {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Histogram metrics are charted using the 95th percentile by default. Supported field types are [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md) and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md).
 
     Metrics stored as the legacy [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) field type are also charted, but their percentiles are calculated assuming T-Digest encoding. If the histogram was encoded differently, the chart shows a warning that the values might be approximate.
-
-The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from Discover.
-
-You can also query a specific index:
-
-```esql
-TS metrics-index-1
-```
 
 :::{note}
 By default, all data stored in a `metrics-*` index is recognized as metrics data and triggers the **Discover** experience described on this page.

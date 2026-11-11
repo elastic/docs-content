@@ -1,4 +1,5 @@
 ---
+navigation_title: Data streams
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-data-streams
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Data streams [data-streams]
+# Data streams in {{es}} [data-streams]
 
 A data stream acts as a layer of abstraction over a set of indices that are optimized for storing append-only time series data. It stores data across multiple backing indices while giving you a single named resource to use for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Important settings configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/networkaddress-cache-ttl.html
@@ -9,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Important settings configuration [important-settings]
+# Important {{es}} settings [important-settings]
 
 {{es}} requires very little configuration to get started, but there are a number of items which **must** be considered before using your cluster in production:
 

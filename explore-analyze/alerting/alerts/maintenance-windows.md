@@ -4,7 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/maintenance-windows.html
 applies_to:
   stack: preview 9.0-9.1, ga 9.2+
-  serverless: ga
+  serverless:
+    observability: ga
+    security: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -12,10 +14,9 @@ products:
 
 # Maintenance windows
 
-This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security.md)
+Maintenance windows are part of {{alerting-v1-system}}. You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
 
-
-You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
+{applies_to}`stack: ga 9.6+` {applies_to}`observability: ga` Maintenance windows also apply to {{alerting-v2-system-short}}, where they [pause action policy dispatch](/explore-analyze/alerting/esql/action-policies/manage-action-policies.md#maintenance-windows).
 
 By default, a maintenance window affects all rules in all {{kib}} apps within its space. You can refine the scope of a maintenance window by adding filters and rule categories.
 

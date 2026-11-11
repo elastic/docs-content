@@ -6,7 +6,7 @@ To create the visualization:
 
 1. Open a dashboard and add a new {{esql}} visualization:
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations**, depending on your {{kib}} version.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** in the application menu, then select **Create visualization (query)** (**Visualization (query)** or **New panel** → **{{esql}}** under **Visualizations** in earlier versions).
     * {applies_to}`stack: ga 9.0-9.1` Select **Add panel** in the application menu, then select **{{esql}}**.
 
 2. Set the [time filter](/explore-analyze/query-filter/filtering.md) to the last 15 days so both 7-day windows have data.

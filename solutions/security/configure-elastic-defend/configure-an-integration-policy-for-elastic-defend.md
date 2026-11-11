@@ -123,12 +123,6 @@ If you have the appropriate license or project feature tier, you can customize t
 ::::
 
 
-:::{image} /solutions/images/security-malware-protection.png
-:alt: Detail of malware protection section.
-:screenshot:
-:::
-
-
 ### Manage quarantined files [manage-quarantined-files]
 
 When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically, {{elastic-defend}} will remove the file from its current location, apply a rolling XOR with the key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
@@ -180,12 +174,6 @@ If you have the appropriate license or project feature tier, you can customize t
 ::::
 
 
-:::{image} /solutions/images/security-ransomware-protection.png
-:alt: Detail of ransomware protection section.
-:screenshot:
-:::
-
-
 ## Memory threat protection [memory-protection]
 
 Memory threat protection detects and stops in-memory threats, such as shellcode injection, which are used to evade traditional file-based detection techniques.
@@ -207,12 +195,6 @@ Select **Notify user** to send a push notification in the host operating system 
 ::::{tip}
 If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
 ::::
-
-
-:::{image} /solutions/images/security-memory-protection.png
-:alt: Detail of memory protection section.
-:screenshot:
-:::
 
 
 ## Malicious behavior protection [behavior-protection]
@@ -245,12 +227,6 @@ If you have the appropriate license or project feature tier, you can customize t
 ::::
 
 
-:::{image} /solutions/images/security-behavior-protection.png
-:alt: Detail of behavior protection section.
-:screenshot:
-:::
-
-
 ## Attack surface reduction [attack-surface-reduction]
 
 This section helps you reduce vulnerabilities that attackers can target on Windows endpoints.
@@ -258,15 +234,14 @@ This section helps you reduce vulnerabilities that attackers can target on Windo
 ::::{admonition} Requirements
 :class: note
 In {{serverless-short}}, attack surface reduction requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Registry credential hardening also requires an Enterprise subscription in {{stack}}, or the Endpoint Protection Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 **Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.
 
-:::{image} /solutions/images/security-attack-surface-reduction.png
-:alt: Detail of attack surface reduction section.
-:screenshot:
-:::
-
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the SAM, SECURITY, and SYSTEM registry hives on Windows endpoints, a common credential dumping technique. Trusted applications are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the Security Account Manager (`SAM`), `SECURITY`, and `SYSTEM` registry hives on Windows endpoints, a common credential dumping technique. [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
 ## Device control [device-control]
 
 ```yaml {applies_to}
@@ -282,11 +257,6 @@ Device control only affects external USB storage devices. It does not affect oth
 
 To configure device control for one or more hosts, edit the {{elastic-defend}} policy that affects those hosts. Your policy specifies which operations these devices are allowed to take on a host. You can create [trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md) to define exceptions to your policy for specific devices. 
 
-
-:::{image} /solutions/images/security-defend-policy-device-control.png
-:alt: Detail of device control section.
-:screenshot:
-:::
 
 By default, each {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has device control enabled, the dashboard displays data about attempted device connections and their outcomes. To access it and review information about blocked connections, search for `device control` in the **Dashboards** page's **Custom Dashboards** section.
 
@@ -320,13 +290,22 @@ This means that if you want to allow any access to Windows Portable Devices, you
 
 ## Event collection [event-collection]
 
-In the **Settings** section, select which categories of events to collect on each operating system. Most categories are collected by default.
+In the **Settings** section, select which categories of events to collect on each operating system. {{elastic-defend}} collects most categories by default.
 
-:::{image} /solutions/images/security-event-collection.png
-:alt: Detail of event collection section.
-:screenshot:
-:::
+| Event category | Windows | macOS | Linux |
+|---|---|---|---|
+| **API** | ✓ | — | — |
+| **DLL and Driver Load** | ✓ | — | — |
+| **DNS** | ✓ | ✓ | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` ✓ |
+| **File** | ✓ | ✓ | ✓ |
+| **Network** | ✓ | ✓ | ✓ |
+| **Process** | ✓ | ✓ | ✓ |
+| **Registry** | ✓ | — | — |
+| **Security** | ✓ | ✓ | — |
 
+On Linux, DNS events are only available with eBPF-based event collection. You can also select **Collect session data** to capture the extended process data that [Session View](/solutions/security/investigate/session-view.md) uses. This option requires **Process** events. To also record terminal output, such as the commands users run, select **Capture terminal output**. Terminal output capture only works on hosts that support eBPF.
+
+{{elastic-defend}} doesn't capture every system event in these categories, and it might aggregate, truncate, or deduplicate the events it collects. To learn which events it doesn't capture and how to collect them with other integrations, refer to [Event capture and {{elastic-defend}}](/solutions/security/manage-elastic-defend/event-capture-elastic-defend.md).
 
 ## Register {{elastic-sec}} as antivirus (optional) [register-as-antivirus]
 
@@ -340,12 +319,6 @@ Windows Server versions are not supported. Antivirus registration requires Windo
 By default, the **Sync with malware protection level** is selected to automatically set antivirus registration to match how you’ve configured {{elastic-defend}}'s [malware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection). If malware protection is turned on *and* set to **Prevent**, antivirus registration will also be enabled; in any other case, antivirus registration will be disabled.
 
 If you don’t want to sync antivirus registration, you can set it manually with **Enabled** or **Disabled**.
-
-:::{image} /solutions/images/security-register-as-antivirus.png
-:alt: Detail of Register as antivirus option.
-:screenshot:
-:::
-
 
 ## Advanced policy settings (optional) [adv-policy-settings]
 

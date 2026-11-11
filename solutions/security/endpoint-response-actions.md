@@ -239,9 +239,9 @@ Use one of the following parameters to specify the type of memory dump:
     * `--pid`: The process ID (PID) of the process to dump.
     * `--entityId`: The entity ID of the process to dump.
 
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--raw`: Generate a raw dump of the host's physical memory. No other arguments are required when using this parameter.
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `--raw`: Generate a raw dump of the host's physical memory. No other arguments are required when using this parameter.
   ::::{note}
-  Raw memory dumps are only supported on Windows endpoints running {{agent}} 9.5.2 or later. The host must have free disk space of at least twice its physical RAM.
+  Raw memory dumps are only supported on Windows endpoints running {{agent}} 9.4.6 or later, except 9.5.0 and 9.5.1. The host must have free disk space of at least twice its physical RAM.
   ::::
 
 Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**

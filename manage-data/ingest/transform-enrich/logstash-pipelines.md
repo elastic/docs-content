@@ -3,14 +3,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/logstash-pipelines.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
 products:
   - id: cloud-serverless
 ---
 
 # Logstash pipelines [logstash-pipelines]
-
-This content applies to: [![Elasticsearch](/manage-data/images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Observability](/manage-data/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/manage-data/images/serverless-sec-badge.svg "")](../../../solutions/security.md)
 
 On the **{{ls-pipelines-app}}** management page, you can control multiple {{ls}} instances and pipeline configurations.
 

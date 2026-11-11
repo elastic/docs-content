@@ -202,13 +202,17 @@ This can occur on newer macOS software. To resolve the problem, [ensure that fil
 
 ### {{agent}} hangs while unenrolling [agent-hangs-while-unenrolling]
 
-When unenrolling {{agent}}, {{fleet}} waits for acknowledgment from the agent before it completes the unenroll process. If {{fleet}} doesn’t receive an acknowledgment, the status hangs at `unenrolling.`
+When unenrolling {{agent}}, {{fleet}} waits for acknowledgment from the agent before it completes the unenroll process. If {{fleet}} doesn’t receive an acknowledgment, the agent's status stays **Updating**.
 
-You can unenroll an agent to invalidate all API keys related to the agent and change the status to `inactive` so that the agent no longer appears in {{fleet}}.
+You can force unenroll the agent to invalidate all API keys related to the agent and change the status to **Unenrolled** so that the agent no longer appears in {{fleet}}. Use force unenroll only when the agent is offline or can't be reached. A force-unenrolled agent keeps running on its host, and you can't undo the action from {{fleet}}. For details, refer to [Force unenroll an agent](/reference/fleet/unenroll-elastic-agent.md#force-unenroll-elastic-agent).
 
 1. In {{fleet}}, select **Agents**.
-2. Under Agents, choose **Unenroll agent** from the **Actions** menu next to the agent you want to unenroll.
-3. Click **Force unenroll**.
+2. Open the **Actions** menu next to the agent you want to unenroll, and then select:
+
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` **Security and removal** → **Force unenroll**
+    * {applies_to}`stack: ga 9.0-9.2` **Force unenroll**
+
+3. Select **Unenroll agent** to confirm.
 
 
 ### {{agent}} is automatically unenrolled after failed check-ins with 401 errors [agent-auto-unenroll-401]

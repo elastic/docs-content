@@ -33,6 +33,10 @@ Cluster autoscaling supports:
 * Scaling machine learning nodes up and down.
 * Scaling data nodes up based on storage.
 
+Autoscaling only scales data nodes up and doesn't scale them down. If you delete data and want to reduce the size of a data tier in {{ech}} or {{ece}}, [adjust its size manually](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-behavior).
+
+In {{eck}}, storage can't be scaled down. For more information, refer to the [storage restrictions for ECK autoscaling](/deploy-manage/autoscaling/autoscaling-in-eck.md#k8s-autoscaling-policies).
+
 ## Trained model autoscaling
 
 :::{admonition} Trained model auto-scaling for self-managed deployments

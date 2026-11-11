@@ -19,5 +19,7 @@ Use the topics in this section to troubleshoot data-related issues in your {{es}
 
 ## Additional resources
 * [](/troubleshoot/elasticsearch/fix-watermark-errors.md)
+* [](/troubleshoot/elasticsearch/data-lifecycle.md)
+* [](/troubleshoot/elasticsearch/data-stream-frozen-transition.md)
 * [Troubleshooting overview](/troubleshoot/index.md)
 * [Contact us](/troubleshoot/index.md#contact-us)

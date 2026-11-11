@@ -1,4 +1,5 @@
 ---
+navigation_title: Detect and analyze
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detection-engine-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-engine-overview.html
@@ -18,8 +19,8 @@ products:
 The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint protection](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) (malware, ransomware, memory threats, and malicious behavior) and [external alerts](https://www.elastic.co/docs/reference/security/prebuilt-rules/rules/promotions/external_alerts) from third-party tools like Suricata, giving you a unified view of threats across your security stack.
 
 :::{note}
-:applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
-{{kib}} also has an {{esql}}-based alerting system that's not tied to any specific solution. For threat detection, use {{elastic-sec}} detection rules. They include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that the solution-agnostic system doesn't provide.
+:applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
+[{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md) is a separate alerting system that isn't tied to any specific solution. Its rules aren't the same as {{elastic-sec}} [{{esql}} rules](/solutions/security/detect-and-alert/esql.md). For threat detection, use {{elastic-sec}} detection rules. They include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that {{alerting-v2-system-short}} doesn't provide.
 :::
 
 ## Where to start
@@ -27,7 +28,7 @@ The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint pr
 | Your goal | Start here |
 |---|---|
 | Set up detection for the first time | [Setup](/solutions/security/detect-and-alert/before-you-begin.md#one-time-setup) → [Install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) |
-| Take over or manage an existing deployment | [MITRE ATT&CK coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) → [Monitor rule executions](/solutions/security/detect-and-alert/monitor-rule-executions.md) |
+| Take over or manage an existing deployment | [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) → [Monitor rule executions](/solutions/security/detect-and-alert/monitor-rule-executions.md) |
 | Build coverage for a specific threat | [Choose the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md) → [Build it using the UI](/solutions/security/detect-and-alert/using-the-rule-ui.md) |
 | Reduce noise from existing rules | [Tune detection rules](/solutions/security/detect-and-alert/tune-detection-rules.md) → [Exceptions](/solutions/security/detect-and-alert/rule-exceptions.md), [Suppression](/solutions/security/detect-and-alert/alert-suppression.md), or [Snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) |
 
@@ -36,7 +37,7 @@ The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint pr
 The following stages represent the suggested path to a functioning detection program. Most deployments move through these stages roughly in order, though the boundaries are not strict: tuning and noise reduction are ongoing rather than a final stage.
 
 1. **Confirm requirements.** Verify infrastructure, privileges, and data availability.
-2. **Assess coverage gaps.** Identify which threats matter most to your environment, then use MITRE ATT&CK coverage to find gaps in your detection rules.
+2. **Assess coverage gaps.** Identify which threats matter most to your environment, then use the MITRE coverage page to find gaps in your detection rules.
 3. **Enable prebuilt rules.** Activate Elastic's maintained rule library for priority tactics.
 4. **Build custom rules.** Fill remaining gaps with rules tailored to your environment.
 5. **Validate before enabling.** Test rule logic against historical data before going live.

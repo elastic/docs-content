@@ -26,6 +26,7 @@ This section describes common problems you might encounter when using {{apm-serv
 **Applications UI**:
 
 * [Too many unique transaction names](#troubleshooting-too-many-transactions)
+* [Too many unique services](#troubleshooting-too-many-services)
 * [Unknown route](#troubleshooting-unknown-route)
 * [Fields are not searchable](#troubleshooting-fields-unsearchable)
 * [Service Maps: no connection between client and server](#service-map-rum-connections)
@@ -227,6 +228,50 @@ While this can happen with any {{apm-agent}}, it typically occurs with the RUM a
 The RUM agent can also set the `transaction.name` when observing for transaction events. Refer to [`apm.observe()`](apm-agent-rum-js://reference/agent-api.md#observe) for more information.
 
 If your problem is occurring in a different {{apm-agent}}, the tips above still apply. Refer to the relevant [Agent API documentation](/reference/apm-agents/index.md) to adjust how you’re naming your transactions.
+
+
+## Too many unique services [troubleshooting-too-many-services]
+
+The **Service inventory** stops listing every service separately once it reaches a limit. Your data is still ingested and stored, and you can still open the services that are listed. Only the inventory list is affected.
+
+Two limits can cause this, and each one shows a different warning:
+
+* A **warning icon** above the table, with the tooltip *The limit of n services is exceeded*, means you reached the [limit on the services {{kib}} displays](#troubleshooting-too-many-services-displayed).
+* A row named **Remaining Services** at the end of the table, with its own warning icon, means you reached the [limit on the services tracked in aggregated metrics](#troubleshooting-too-many-services-aggregated).
+
+In both cases, a service is each unique combination of `service.name`, `service.environment`, `service.language.name`, and `agent.name`. This means that one application can count as several services, for example when it reports from more than one environment. This is why a production deployment can reach a limit while a development one with more instrumented applications doesn't.
+
+### Limit on the services {{kib}} displays [troubleshooting-too-many-services-displayed]
+
+By default, {{kib}} returns up to 1,000 services to the Service inventory. Services past that limit are left out of the list, and the warning shows the current limit.
+
+This limit is applied when {{kib}} queries your data, so it doesn't depend on how the data was ingested. It works the same for {{apm-agent}}s and EDOT SDKs, and for {{apm-server}} and the {{motlp}}.
+
+The services are still there, so any of the following brings them back into view:
+
+* Use the query bar to narrow the list to the services you need.
+* Create [service groups](/solutions/observability/apm/services.md#service-groups) and view one group at a time.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Raise the limit in the `observability:apmMaxNumberOfServices` advanced setting, shown as **Maximum services in the Services Inventory**. The highest value you can set is 5,000.
+
+:::{note}
+Raising the limit makes the Service inventory query slower and increases its memory use on {{es}}. Past about 2,000 services, the query can also exceed `search.max_buckets`, the cluster-wide cap on aggregation buckets that defaults to 65,536. When that happens, the query fails instead of returning a shorter list, so raise `search.max_buckets` to match, or leave the service limit lower and filter the list instead.
+:::
+
+### Limit on the services tracked in aggregated metrics [troubleshooting-too-many-services-aggregated]
+
+Service metrics are aggregated as your data is written, and only a limited number of services can be tracked at a time. Services past that limit are combined into a single overflow bucket, which the Service inventory shows as **Remaining Services**. 
+
+With {{apm-server}}, service metrics share a limit of 1,000 services per GB of memory available to {{apm-server}}.
+
+Because this happens as the data is written, narrowing the query or raising the display limit doesn't recover the individual services. To list them separately, reduce the number of unique services you send by:
+
+* Using stable values for `service.name` and `service.environment`. Values taken from build numbers, per-instance identifiers, or short-lived test environments create a new service every time they change.
+* Reviewing your instrumentation so that only the services you need to monitor send {{product.apm}} data.
+* Increase the memory available to {{apm-server}}.
+
+For the full set of limits and an explanation of how overflow buckets work, refer to [Aggregated metrics: limits and overflows](/solutions/observability/apm/metrics.md#_aggregated_metrics_limits_and_overflows).
+
+If you also see warnings about transaction groups, refer to [Too many unique transaction names](#troubleshooting-too-many-transactions), which covers the equivalent limits for transactions.
 
 
 ## Unknown route [troubleshooting-unknown-route]

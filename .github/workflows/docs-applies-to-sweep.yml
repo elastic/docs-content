@@ -1,4 +1,4 @@
-name: Docs applies_to sweep
+name: "Sweep: Applies-to"
 on:
   workflow_dispatch:
     inputs:

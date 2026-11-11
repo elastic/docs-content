@@ -1,4 +1,5 @@
 ---
+navigation_title: S3 repository
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# S3 repository [repository-s3]
+# S3 repository for {{es}} snapshots [repository-s3]
 
 You can use AWS S3 as a repository for [Snapshot/Restore](../snapshot-and-restore.md).
 

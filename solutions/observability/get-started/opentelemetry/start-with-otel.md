@@ -18,6 +18,8 @@ products:
 
 This guide helps you choose the right setup for your environment so you can start sending metrics, logs, and traces to Elastic using {{edot}}. {{edot}} is Elastic's fully supported, pre-configured distribution of the upstream OpenTelemetry tools, optimized for Elastic ingest and analysis.
 
+If you already use classic Elastic {{product.apm}} agents, {{beats}}, or {{agent}} and want to move to OpenTelemetry, refer to [Switch to OpenTelemetry](switch-to-otel.md) instead.
+
 ## Before you begin [start-with-otel-prereqs]
 
 EDOT SDKs and {{agent}} in OTel mode require {{stack}} 8.16 or later for basic compatibility. For a supported configuration, use:
@@ -60,7 +62,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} ess:
@@ -78,7 +80,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} self:
@@ -181,4 +183,4 @@ If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opente
 * [Limitations of {{edot}}](opentelemetry://reference/compatibility/limitations.md)
 * [{{edot}} vs upstream OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md)
 * [{{agent}} reference](elastic-agent://reference/edot-collector/index.md)
-* [Managed inputs](opentelemetry://reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints
+* [Managed inputs](/reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints

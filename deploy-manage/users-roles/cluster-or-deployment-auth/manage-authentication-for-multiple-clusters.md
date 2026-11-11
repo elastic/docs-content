@@ -396,7 +396,7 @@ Configuring JWT with {{stack}} configuration policy
         ```yaml
           elasticsearch:
             secureSettings:
-        :   - secretName: shared-secret
+            - secretName: shared-secret
         ```
 
 3. Add an additional volume to the {{es}} pods that contain the JSON Web Keys, it should be mounted to the path that is configured for the `xpack.security.authc.realms.jwt.jwt1.pkc_jwkset_path` config. The file path is resolved relative to the {{es}} configuration directory.

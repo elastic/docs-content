@@ -1,4 +1,6 @@
 ---
+navigation_title: Upgrade your deployment or cluster
+meta_title: Upgrade your Elasticsearch deployment or cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/upgrade.html
   - https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elastic-stack.html
@@ -21,7 +23,7 @@ products:
   - id: elasticsearch
 ---
 
-# Upgrade your deployment or cluster [upgrade-deployment-cluster]
+# {{es}} deployment and cluster upgrades [upgrade-deployment-cluster]
 
 This section contains the upgrade instructions for {{es}} clusters and {{kib}} instances. Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
 

@@ -59,7 +59,13 @@ This is a valid scenario that can happen due to index configuration or simply be
 
 Reads in {{es}} can be very lightweight lookups by ID or a heavy search request with complex aggregations that take non-trivial CPU power. One of the beauties of the primary-backup model is that it keeps all shard copies identical (with the exception of in-flight operations). As such, a single in-sync copy is sufficient to serve read requests.
 
-When a read request is received by a node, that node is responsible for forwarding it to the nodes that hold the relevant shards, collating the responses, and responding to the client. We call that node the *coordinating node* for that request. The basic flow is as follows:
+When a read request is received by a node, that node is responsible for forwarding it to the nodes that hold the relevant shards, collating the responses, and responding to the client. We call that node the [coordinating node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#coordinating-node) for that request.
+
+:::{image} /deploy-manage/images/elasticsearch-reference-data_processing_flow-read.png
+:alt: An example of a basic read model.
+:::
+
+The basic flow is as follows:
 
 1. Resolve the read requests to the relevant shards. Note that since most searches will be sent to one or more indices, they typically need to read from multiple shards, each representing a different subset of the data.
 2. Select an active copy of each relevant shard, from the shard replication group. This can be either the primary or a replica. By default, {{es}} uses [adaptive replica selection](elasticsearch://reference/elasticsearch/rest-apis/search-shard-routing.md#search-adaptive-replica) to select the shard copies.

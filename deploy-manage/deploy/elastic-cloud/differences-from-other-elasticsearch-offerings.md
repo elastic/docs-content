@@ -65,7 +65,7 @@ These capabilities cover identity and access, security and networking, infrastru
 | **Feature**  | {{ech}} | Serverless projects| Notes  |
 |----------|----------------------|--------------------|--------|
 | **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | Available across {{ech}} and Serverless using deployment/project and cloud API key types. |
-| **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
+| **Audit logging** | ✅ | ✅ | Available in {{ech}} through [Stack audit logging](/deploy-manage/monitor/stack-audit-logging.md) and the [{{ecloud}} audit trail](/deploy-manage/monitor/cloud-audit-trail.md) ({{fedramp-mod}} only), and in {{serverless-short}} through the [Serverless audit trail](/deploy-manage/monitor/log-delivery/audit-trail.md) |
 | **Authentication and SSO** | Deployment-level [authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) and organization-level [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) | Organization-level [user management](/deploy-manage/users-roles/cloud-organization/manage-users.md) and [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) | Serverless does not provide deployment-level realm configuration. |
 | **BYO-Key for encryption at rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
@@ -120,7 +120,7 @@ These capabilities cover alerting, notifications, reporting, and AI-assisted exp
 | [**Agent Builder**](/explore-analyze/ai-features/elastic-agent-builder.md) | ✅ | ✅ | The AI Agent chat experience that Agent Builder powers is the default in all project types. |
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
-| **[Reporting](/explore-analyze/report-and-share.md)** | ✅ All report types and file formats | ✅ Discover CSV, Lens CSV, Discover session JSON, Dashboard JSON<br><br>❌ Dashboard and visualization PDF and PNG | |
+| **[Reporting](/explore-analyze/report-and-share.md)** | ✅ All report types and file formats | ✅ Discover CSV, Lens CSV, Discover session JSON (preview), Dashboard JSON<br><br>❌ Dashboard and visualization PDF and PNG | |
 | [**Watcher**](/explore-analyze/alerting/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
 
 ### {{es}} [elasticsearch]
@@ -150,7 +150,7 @@ This table compares the {{observability}} solution on {{ech}} deployments with O
 | **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
 | [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ (deprecated) | ✅ (deprecated) | The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
-| **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](opentelemetry://reference/motlp.md) for OTLP data ingestion |
+| **APM integration** | ✅ | ✅ | Use **Managed Inputs** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md) for OTLP data ingestion |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
 | [**Android agent/SDK instrumentation**](apm-agent-android://reference/edot-android/index.md) | ✅ | ✅ | |
@@ -168,9 +168,9 @@ This table compares the {{observability}} solution on {{ech}} deployments with O
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
-| **[Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md)** | ✅ | ✅ | |
-| **[Managed OTLP Endpoint](opentelemetry://reference/motlp.md)** | ✅ | ✅ | |
-| **[Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md)** | ✅ | ✅ | |
+| **[Managed {{es}} _bulk endpoint](/reference/managed-inputs/elasticsearch-bulk.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](/reference/managed-inputs/managed-otlp-endpoint.md)** | ✅ | ✅ | |
+| **[Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md)** | ✅ | ✅ | |
 | **[Metrics monitoring](/solutions/observability/apm/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
 | [**Real User Monitoring (RUM)**](/solutions/observability/applications/user-experience.md) | ✅ | **Planned** | Anticipated in a future release |
@@ -191,9 +191,9 @@ This table compares the Security solution on {{ech}} deployments with {{serverle
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
-| **[Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md)** | ✅ | ✅ | |
-| **[Managed OTLP Endpoint](opentelemetry://reference/motlp.md)** | ✅ | ✅ | |
-| **[Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md)** | ✅ | ✅ | |
+| **[Managed {{es}} _bulk endpoint](/reference/managed-inputs/elasticsearch-bulk.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](/reference/managed-inputs/managed-otlp-endpoint.md)** | ✅ | ✅ | |
+| **[Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md)** | ✅ | ✅ | |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
 ## Serverless index sizing and project limits [elasticsearch-differences-serverless-index-size]

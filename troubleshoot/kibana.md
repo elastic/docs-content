@@ -23,5 +23,6 @@ Use the topics in this section to troubleshoot issues with {{kib}}:
 * [](/troubleshoot/kibana/task-manager.md)
 * [](/troubleshoot/kibana/maps.md)
 * [](/troubleshoot/kibana/graph.md)
+* [](/troubleshoot/kibana/discover-dashboards-no-data-screen.md)
 * [](/troubleshoot/kibana/migration-failures.md)
 * [](/troubleshoot/kibana/capturing-diagnostics.md)

@@ -11,7 +11,7 @@ products:
   - id: elastic-stack
 ---
 
-# Start a single-node cluster in Docker [docker-cli-run-dev-mode]
+# Start a single-node {{es}} cluster in Docker [docker-cli-run-dev-mode]
 
 Use Docker commands to start a single-node {{es}} cluster for development or testing. You can then run additional Docker commands to add nodes to the test cluster or run {{kib}}.
 

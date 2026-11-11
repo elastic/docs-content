@@ -64,7 +64,8 @@ function getStatusText(workflowState, workflowStatus) {
 
   if (workflowStatus?.status === 'completed') {
     if (workflowStatus.conclusion === 'success') {
-      return `Status: completed.${progressLink}`;
+      const outcome = workflowStatus.outcome === 'no-findings' ? ', no findings' : '';
+      return `Status: completed${outcome}.${progressLink}`;
     }
 
     if (workflowStatus.conclusion === 'cancelled') {
@@ -72,6 +73,12 @@ function getStatusText(workflowState, workflowStatus) {
     }
 
     return `Status: needs attention.${progressLink}`;
+  }
+
+  // A refresh without an override, for example after a push, must not reset a finished run to "queued".
+  const existingStatus = workflowState?.statusText;
+  if (workflowState?.selected && existingStatus && !/^Status: (not started|queued)\./.test(existingStatus)) {
+    return existingStatus;
   }
 
   if (workflowState?.selected) {
@@ -101,6 +108,49 @@ function getWorkflowStatusFromCheckRuns(key, checkRuns) {
     detailsUrl: matchingCheckRuns[0].details_url,
     status: matchingCheckRuns[0].status,
   };
+}
+
+const DOCS_REVIEW_SUMMARY_HEADING = '## Docs review summary';
+
+// The review workflow submits a PR review when it has findings. With no findings it posts the summary
+// as a regular PR comment instead. Neither means that no summary is visible (for example, a noop).
+async function getDocsReviewOutcome({ github, context, pullRequestNumber, since }) {
+  const sinceTime = new Date(since).getTime();
+
+  if (Number.isNaN(sinceTime)) {
+    return null;
+  }
+
+  const { owner, repo } = context.repo;
+  const isBot = (item) => item.user?.login === 'github-actions[bot]';
+
+  const reviews = await github.paginate(github.rest.pulls.listReviews, {
+    owner,
+    repo,
+    pull_number: pullRequestNumber,
+    per_page: 100,
+  });
+
+  if (reviews.some((review) => isBot(review) && new Date(review.submitted_at).getTime() >= sinceTime)) {
+    return 'findings';
+  }
+
+  const comments = await github.paginate(github.rest.issues.listComments, {
+    owner,
+    repo,
+    issue_number: pullRequestNumber,
+    per_page: 100,
+  });
+
+  if (comments.some((comment) =>
+    isBot(comment) &&
+    new Date(comment.created_at).getTime() >= sinceTime &&
+    comment.body?.startsWith(DOCS_REVIEW_SUMMARY_HEADING)
+  )) {
+    return 'no-findings';
+  }
+
+  return null;
 }
 
 function buildWorkflowLine(key, workflowState, workflowStatus) {
@@ -201,6 +251,22 @@ async function upsertMenuComment({
   }
 
   const existingState = parseMenuState(existingComment?.body || '');
+  const docsReviewOverride = statusOverrides?.docsReview;
+
+  if (docsReviewOverride?.status === 'completed' && docsReviewOverride.conclusion === 'success' && !docsReviewOverride.outcome) {
+    try {
+      const outcome = await getDocsReviewOutcome({
+        github,
+        context,
+        pullRequestNumber,
+        since: context.payload?.comment?.updated_at,
+      });
+      statusOverrides = { ...statusOverrides, docsReview: { ...docsReviewOverride, outcome } };
+    } catch (error) {
+      core?.warning(`Could not classify the docs review outcome: ${error.message}`);
+    }
+  }
+
   const statuses = buildWorkflowStatuses(checkRuns, statusOverrides, existingState);
   const body = buildMenuBody(existingState, statuses);
 
@@ -228,6 +294,7 @@ module.exports = {
   WORKFLOW_ORDER,
   parseMenuState,
   getWorkflowStatusFromCheckRuns,
+  getDocsReviewOutcome,
   buildMenuBody,
   upsertMenuComment,
 };

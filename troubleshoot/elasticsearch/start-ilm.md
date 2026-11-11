@@ -1,5 +1,5 @@
 ---
-navigation_title: Lifecycle management
+navigation_title: Snapshot and index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-ilm.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-slm.html

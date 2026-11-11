@@ -16,7 +16,6 @@ This section shows how to run ECK on OpenShift.
 * [Deploy the operator](k8s-openshift-deploy-operator.md)
 * [Deploy an {{es}} instance with a route](k8s-openshift-deploy-elasticsearch.md)
 * [Deploy a {{kib}} instance with a route](k8s-openshift-deploy-kibana.md)
-* [Deploy Docker images with `anyuid` SCC](k8s-openshift-anyuid-workaround.md)
 * [Grant privileged permissions to Beats](k8s-openshift-beats.md)
 * [Grant host access permission to Elastic Agent](k8s-openshift-agent.md)
 

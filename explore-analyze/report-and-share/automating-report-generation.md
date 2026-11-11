@@ -12,7 +12,7 @@ products:
 
 Generate PDF, PNG, and CSV reports automatically instead of exporting them by hand each time. Available methods and export formats vary by deployment type. Choose the approach that fits your workflow:
 
-* **[Trigger reports with a POST URL](#create-a-post-url)**: Trigger a report from a script or {{watcher}}.
+* {applies_to}`serverless: unavailable` **[Trigger reports with a POST URL](#create-a-post-url)**: Trigger a report from a script or {{watcher}}.
 * **[Schedule and share reports](#schedule-report-generation)**: Set up a recurring schedule in {{kib}} that generates and emails reports at an interval you choose.
 
 :::{note}
@@ -23,13 +23,13 @@ If you have a cross-cluster search environment and want to generate reports from
 :::
 
 ## Create a POST URL [create-a-post-url]
+```{applies_to}
+serverless: unavailable
+```
 
 Create the POST URL that triggers a report to generate PDF and CSV reports.
 
 ### PDF and PNG reports [pdf-png-post-url]
-```{applies_to}
-serverless: unavailable
-```
 
 To create the POST URL for PDF reports:
 
@@ -45,14 +45,14 @@ To create the POST URL for PDF reports:
 To create the POST URL for CSV reports:
 
 1. Go to **Discover**.
-2. Open the saved Discover session you want to share.
-3. In the toolbar, do one of the following:
-  
-   * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.  
-   * {applies_to}`stack: ga =9.0` Click **Share > Export > Copy POST URL**.
+2. Open the saved Discover session you want to share, so the POST URL keeps working. If the session has unsaved changes, the export flyout warns that the link might not be permanent.
+3. Open the CSV export, as described in [Export Discover session results as CSV](/explore-analyze/discover/export-discover-session.md#export-discover-session-csv). In the export flyout, copy the POST URL. In 9.0, select **Share** → **Export** → **Copy POST URL** instead.
 
 
 ## Use Watcher [use-watcher]
+```{applies_to}
+serverless: unavailable
+```
 
 To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 
@@ -111,6 +111,9 @@ For more information about configuring watches, refer to [How Watcher works](../
 
 
 ## Use a script [use-a-script]
+```{applies_to}
+serverless: unavailable
+```
 
 To automatically generate reports from a script, make a request to the `POST` URL. The request returns a JSON and contains a `path` property with a URL that you use to download the report. Use the `GET` method in the HTTP request to download the report.
 
@@ -153,6 +156,9 @@ An example response for a successfully queued report:
 
 
 ## HTTP response codes [reporting-response-codes]
+```{applies_to}
+serverless: unavailable
+```
 
 The response payload of a request to generate a report includes the path to download a report. The API to download a report uses HTTP response codes to give feedback. In automation, this helps external systems track the various possible job states:
 
@@ -168,6 +174,9 @@ The response payload of a request to generate a report includes the path to down
 
 
 ## Deprecated report URLs [deprecated-report-urls]
+```{applies_to}
+serverless: unavailable
+```
 
 If you experience issues with the deprecated report URLs after you upgrade {{kib}}, regenerate the POST URL for your reports.
 
@@ -195,7 +204,8 @@ Save time by setting up a recurring task that automatically generates reports an
 
 * {applies_to}`serverless: unavailable` To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
-* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
+* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. To learn how, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges), or to [{{kib}} privileges in project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) for {{serverless-short}}. If your role doesn't have the **Manage Scheduled Reports** feature privilege, you can only share reports with yourself. 
+* {applies_to}`stack:` (Optional) The **Manage Scheduled Reports** feature must be enabled in the [**Feature visibility** settings](/deploy-manage/manage-spaces.md#spaces-managing) of the space.
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
    * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a built-in preconfigured email connector that uses the SMTP protocol to send emails. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
@@ -237,7 +247,7 @@ Save time by setting up a recurring task that automatically generates reports an
 ### Create a schedule [create-scheduled-report]
 
 1. Open the saved Discover session, dashboard, or visualization you want to share. 
-2. Click the **Export** icon, then **Schedule export**.
+2. Look for the **Schedule export** action. In **Discover**, it's in the same menu as the CSV export action. In other apps, select the **Export** icon, then **Schedule export**.
 3. Enter the requested details, and (optional) enable **Print format** to generate the report in a printer-friendly format.
 4. Set up a schedule for generating the report.
 
@@ -248,7 +258,7 @@ Save time by setting up a recurring task that automatically generates reports an
 5. (Optional) To share generated reports outside of Kibana, enable **Send by email** and enter a list of email addresses. Recipients will receive emails with the generated reports attached and on the schedule that you specified.
 
    ::::{note} 
-   If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only send reports to yourself. 
+   If your role doesn't have the **Manage Scheduled Reports** feature privilege, you can only send reports to yourself. 
    ::::
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+`: (Optional) Enter additional details for email notifications:
@@ -266,7 +276,7 @@ Save time by setting up a recurring task that automatically generates reports an
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
-{applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
 
 ### Manage schedules [manage-report-schedules]
 
@@ -274,7 +284,7 @@ To manage a schedule, you can take the following actions from the **Schedules** 
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.3+
+:::{applies-item} {serverless: ga, stack: ga 9.3+}
 - **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page.
 - **Enable schedule**: Restart a disabled schedule.
 - **Edit schedule config**: Modify an existing schedule.

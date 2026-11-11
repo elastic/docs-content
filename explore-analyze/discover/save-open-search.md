@@ -1,5 +1,5 @@
 ---
-navigation_title: Save a Discover session for reuse
+navigation_title: Save and manage sessions
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/save-open-search.html
 applies_to:
@@ -8,75 +8,90 @@ applies_to:
 type: how-to
 products:
   - id: kibana
-description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
+description: Save a Discover session to reuse its queries, filters, and view, then reopen, find, and duplicate it.
 ---
 
-# Save a Discover session for reuse [save-open-search]
+# Save and manage Discover sessions [save-open-search]
 
-Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, export, and manage Discover sessions.
+When an exploration is worth coming back to, save it as a Discover session. The session keeps your queries, filters, columns, and view, so you can reopen the same exploration later or put it on a dashboard.
 
-## Requirements [save-search-requirements]
+{{kib}} stores every saved session in the *library*, the place that the **Open session** list in **Discover** and the dashboards that use your sessions read from.
 
-To save searches, you need **Create** and **Edit** permissions for the {{saved-objects-app}} feature in {{product.kibana}}. If you don't have these permissions, the **Save** button won't be visible. For more information, refer to [Read-only access](#discover-read-only-access).
+## Before you begin [save-search-requirements]
 
+The privileges you need depend on what you do on this page:
 
-### Read-only access [discover-read-only-access]
+- **Save a session, or save it as a new session:** The **All** privilege for the **Discover** feature in {{product.kibana}}. If you don't have it, **Discover** shows a **Read only** badge in the header and the **Save** button isn't visible.
+- **Add the session to a dashboard when you save it:** The privileges to access and create dashboards, in addition to the **All** privilege for **Discover**. Without them, the **Add to dashboard** option isn't available.
+- **Open a saved session:** Access to **Discover**.
+- **Rename or delete saved sessions:** Edit or delete access to saved objects, which the {{saved-objects-app}} feature grants. You reach this from the **Open Discover session** flyout, where you open sessions.
 
-If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
+For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
+
+The following screenshot shows the **Read only** badge:
 
 :::{image} /explore-analyze/images/kibana-read-only-badge.png
 :alt: Example of Discover's read only access indicator in the {{product.kibana}} header
 :screenshot:
 :::
 
-
 ## Save a Discover session [_save_a_discover_session]
 
-1. Once you’ve created a view worth saving, select **Save** in the application menu. A dialog with several options opens:
-    1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-    2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
-    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
-2. Select **Save**.
-3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
+When you save, all open [tabs](work-with-tabs.md) are saved to the session.
+
+1. When you've created a view worth saving, select **Save** in the application menu.
+2. Enter a **Title** for the session.
+3. Optional: Enter a **Description**, and add [**Tags**](../find-and-organize/tags.md).
+4. Optional: If the session's data has a time field, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
+5. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` Optional: When you save a new session, use **Add to dashboard** to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to select one, or **None** to skip. The session is saved to the library in all cases.
+6. Select **Save**.
+
+**Result:** The session is saved and appears in the **Open Discover session** flyout. To reload it later, refer to [Open a saved Discover session](#open-discover-session).
 
 A Discover session stores the following elements for each of its tabs:
 
-- The query mode ({{esql}} or Classic)
+- The query mode ({{esql}} or classic)
 - The query text and filters
 - The {{data-source}}
 - If you turned on **Store time with Discover session**, the selected time filter and refresh interval
-- The current view of **Discover**, including the document table layout, the chart, and any {{esql}} [variable controls](try-esql.md#add-variable-control)
+- The current view of **Discover**, including the document table layout, the chart, and any {{esql}} [variable controls](esql-variable-controls.md)
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The **JSON** view of the document table, including how each tree is displayed. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` The {icon}`bolt` **Fast mode** setting in {{esql}} mode. Refer to [Use Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle).
 
-If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
+To work with the tabs of a session, refer to [Run multiple explorations with tabs in Discover](work-with-tabs.md).
 
+## Open a saved Discover session [open-discover-session]
 
-## Export a Discover session as JSON [export-discover-session-json]
+To go back to a session you saved, or to find one that a teammate saved, open it from **Discover**.
+
+1. In the application menu, select **Open session**. The **Open Discover session** flyout lists the saved sessions.
+2. To find a session, enter part of its title in the search box, or filter the list by tag. When the search box is empty, you can also sort the list by selecting the **Title** column header.
+3. Select the session.
+
+**Result:** The session opens in **Discover**. If it uses a different {{data-source}} than the one currently selected, **Discover** switches to it. The query mode that the session used is also selected automatically.
+
+To rename, delete, or otherwise manage your saved sessions, select **Manage Discover sessions** in the flyout. The button opens the [{{saved-objects-app}}](../find-and-organize/saved-objects.md) page, filtered to Discover sessions. It appears if your role lets you edit or delete saved objects.
+
+## Rename a Discover session [rename-discover-session]
 ```{applies_to}
-serverless: preview
-stack: preview 9.6+
+serverless: ga
+stack: ga 9.6+
 ```
 
-Export the session as JSON to inspect its definition, or to use that JSON as the starting point for managing the session as code. For each tab you include, the JSON contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart. It does not include the query results. The rows in the document table are not in the file. To export those rows from a saved session, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Tab results as CSV**.
+This does not apply to {{kib}} spaces that use the **Classic** solution view.
 
-1. In **Discover**, in the application menu, select {icon}`ellipsis` **More** → {icon}`upload` **Export** → **Export JSON**.
-2. Set what the JSON includes:
+To rename a session:
 
-   - To include every open tab, leave **Export only the current tab** off. Turn it on to include only the tab you are viewing.
-   - If the session is not saved, turn on **Include current time settings** to include the current time filter and refresh interval. The setting is off by default.
-   - If the session is saved, **Include current time settings** is not available. The JSON includes the current time filter and refresh interval only when you saved the session with **Store time with Discover session**.
+1. In **Discover**, select the session title at the top of the page. The title becomes a text field.
+2. Enter the new title.
+3. Press {kbd}`enter` or select outside the field to confirm the new title. To keep the current title, press {kbd}`esc` instead.
+4. If the session isn't saved yet, the **Save Discover session** dialog opens with your title in the **Title** field. Select **Save** to save the session.
 
-3. Review the JSON. If a property can't be included, {{kib}} removes it and lists it under **Unsupported properties were removed**. Select **Show details** to see what was removed. If {{kib}} can't export the session, the flyout shows **Unable to export** and the error. Select **Retry** to try again.
-4. Copy, download, or open the JSON:
-
-   - Select **Copy to clipboard** to copy it.
-   - Select **Open in Console** to open {{kib}} Dev Tools with a request that contains the JSON. This option is available if you have access to **Dev Tools**.
-   - Select **Download JSON** to save the file. The file name is the session title. For an unsaved session, the file is named `Untitled Discover session.json`.
+A session that you've already saved takes the new title right away, and changes in your open tabs that you haven't saved stay unsaved. If you close the dialog without saving a new session, the title goes back to **New session**.
 
 ## Duplicate a Discover session [_duplicate_a_discover_session]
 
-To duplicate an existing Discover session as a new one, the workflow depends on the version you're using.
+To start a new session from an existing one, save a copy under a new title. The steps depend on your version.
 
 ::::{applies-switch}
 
@@ -84,7 +99,7 @@ To duplicate an existing Discover session as a new one, the workflow depends on 
 1. In **Discover**, open the Discover session that you want to duplicate.
 2. In the application menu, from the menu next to **Save**, select **Save as**. The **Save Discover session** dialog opens.
 3. Enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
+4. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` Optional: In **Add to dashboard**, decide whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to select one, or **None** to skip. The session is saved to the library in all cases.
 5. Select **Save**.
 :::
 
@@ -98,173 +113,15 @@ To duplicate an existing Discover session as a new one, the workflow depends on 
 
 ::::
 
+**Result:** A new Discover session is saved with the title you entered.
 
-## Use Discover sessions in dashboards [_add_search_results_to_a_dashboard]
 
-You can add different pieces of a Discover session to a dashboard, and manage how they appear:
+## Next steps
 
-- [Add Discover visualizations to dashboards](#add-discover-visualization-to-dashboard): save the chart generated by your query as a visualization panel.
-- [Add Discover tables to dashboards](#add-discover-tables-to-dashboards): save the table from a Discover session as a panel. Several paths exist, depending on whether you start from Discover or from the dashboard.
-- [Manage Discover session panels on a dashboard](#manage-discover-session-panels): edit a session panel from a dashboard, save your edits as a new session, or choose which tab to display.
-
-### Add Discover visualizations to dashboards [add-discover-visualization-to-dashboard]
-
-When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact flow depends on the [query mode](discover-get-started.md#search-in-discover) you're using in Discover.
-
-You need permission to view and create dashboards.
-
-#### In {{esql}} mode [add-discover-visualization-esql]
-
-1. In Discover, run an {{esql}} query that produces a chart.
-2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** depending on the version you're using).
-3. Enter a title for the panel, and optionally a description.
-4. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
-5. Select **Save and go to dashboard**.
-
-:::{note}
-:applies_to: stack: ga =9.2
-In that version, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. To preserve them, follow [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) instead.
-:::
-
-#### In classic mode [add-discover-visualization-classic]
-
-In classic mode there's no direct save button next to the chart. Instead, you open the chart in **Lens**, edit it as needed, and save from there.
-
-The {icon}`app_lens` **Edit visualization** button only appears when the {{data-source}} you're querying is time-based and its time field can be visualized. If those conditions aren't met, the chart isn't shown and the button isn't available.
-
-1. In Discover, run a query that produces a chart.
-2. Next to the chart, select {icon}`app_lens` **Edit visualization**. The chart opens in **Lens**, prefilled with your current query and time range.
-3. In Lens, adjust the visualization as needed.
-4. Select **Save** in the Lens application menu.
-5. Enter a **Title** for the panel, and optionally a **Description**.
-6. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
-7. Select **Save and go to dashboard**.
-
-### Add Discover tables to dashboards [add-discover-tables-to-dashboards]
-
-You can add the table from a Discover session to a dashboard in several ways. They differ in where you start and in the lifecycle of the resulting panel: whether the session is saved to the library or only lives on a specific dashboard, and whether the panel displays a single table or lets you switch between the tables of each tab in your Discover session.
-
-You need permission to view and create dashboards.
-
-The flow you choose depends on where you start:
-
-- From Discover:
-  - [Save the current table to a dashboard](#save-table-to-dashboard)
-  - [Save a Discover session and add it to a dashboard](#save-discover-session-with-add-to-dashboard)
-- From a dashboard:
-  - [Add a Discover session from the library](#add-discover-session-from-library)
-  - [Create a Discover session on the dashboard](#add-ad-hoc-discover-session-panel)
-
-#### Save the current table to a dashboard [save-table-to-dashboard]
-```{applies_to}
-stack: ga 9.4
-serverless: ga
-```
-
-From Discover, save the current view of the table to a new or existing dashboard, without saving the Discover session to the library. The resulting panel stores its configuration with the dashboard, so later changes to the Discover session don't affect the panel. If the session has multiple tabs, only the current table is saved.
-
-The button isn't available when Discover is opened from another application, such as when editing a session panel from a dashboard.
-
-1. In the documents table toolbar, select {icon}`app_dashboard` **Save table to dashboard**.
-2. Enter a title for the panel, and optionally a description.
-3. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
-4. Select **Save and go to dashboard**.
-
-#### Save a Discover session and add it to a dashboard [save-discover-session-with-add-to-dashboard]
-
-From Discover, save the entire Discover session, including all its tabs, columns, sort order, and other settings.
-
-::::{applies-switch}
-
-:::{applies-item} {"stack": "ga 9.5", "serverless": "ga"}
-When you save a Discover session, it is saved to the library. The **Add to dashboard** option of the dialog lets you choose whether to also add it as a panel on a dashboard:
-
-- **Existing**: The session is also added as a panel on a dashboard you choose.
-- **New**: The session is also added as a panel on a new dashboard.
-- **None**: The session is saved to the library only. To add it as a panel later, [add it from the dashboard library](#add-discover-session-from-library).
-
-If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
-
-Follow the steps under [Save a Discover session](#_save_a_discover_session), and select the **Add to dashboard** option that matches what you want.
-:::
-
-:::{applies-item} {"stack": "ga 9.0-9.4"}
-Saving from Discover saves the session to the library only. To put it on a dashboard, follow the steps under [Save a Discover session](#_save_a_discover_session), then [add the session from the dashboard library](#add-discover-session-from-library).
-:::
-
-::::
-
-#### Add a Discover session from the library [add-discover-session-from-library]
-
-From a dashboard, add a Discover session that's already saved to the library. The same session can be added to multiple dashboards, and each panel stays linked to the library, so updates to the session are reflected on all dashboards. You can break that link by unlinking a panel from the library after adding it from the panel's contextual menu.
-
-This option requires that the session has already been [saved to the library](#_save_a_discover_session).
-
-1. Go to **Dashboards**.
-2. Open or create the dashboard, then switch to **Edit** mode if necessary.
-3. Depending on the version you're using, select **Add from library**, or **Add** > **From library**.
-4. From the **Types** dropdown, select **Discover session**.
-5. Select the Discover session that you want to add, then select **X** to close the list.
-
-If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
-
-#### Create a Discover session on the dashboard [add-ad-hoc-discover-session-panel]
-```{applies_to}
-stack: ga 9.4
-serverless: ga
-```
-
-Use this option to create a single-tab Discover session directly on the dashboard, without first saving it to the library. The session is stored only with the dashboard.
-
-You need permission to access Discover, and the dashboard must be in **Edit** mode.
-
-1. From the application menu, add a new **Discover session** panel.
-2. Configure the session: enter a query, adjust columns, sort, and apply other view settings as needed.
-3. Select **Save and return** in the application menu to add the configured panel to the dashboard.
-
-### Manage Discover session panels on a dashboard [manage-discover-session-panels]
-
-#### Save panel edits as a new Discover session [discover-session-save-as-from-dashboard]
-```{applies_to}
-stack: ga 9.4
-serverless: ga
-```
-
-When editing a Discover session panel from a dashboard, you can save your changes as a new Discover session, instead of updating the panel in place. This works whether the panel was added from the library or created directly on the dashboard.
-
-1. On the dashboard, hover over the panel and select {icon}`pencil` **Edit Discover session configuration**. Discover opens in embedded editor mode.
-2. Make your changes in **Discover**.
-3. In the application menu, from the menu next to **Save and return**, select **Save as**.
-4. In the **Save Discover session** dialog, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-5. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the new session as a panel on a dashboard. The session is saved to the library in all cases.
-
-   - **Existing**: The session is also added as a panel on a dashboard you choose.
-   - **New**: The session is also added as a panel on a new dashboard.
-   - **None**: The session is saved to the library only.
-
-6. Select **Save**.
-
-#### Choose which tab a session panel displays [discover-session-choose-tab]
-```{applies_to}
-stack: ga 9.4
-serverless: ga
-```
-
-A Discover session panel displays one tab at a time. When the underlying session has multiple tabs, you can change which tab the panel shows.
-
-1. On the dashboard, open the panel menu and select **Edit**.
-2. From the tab selector, select the tab you want to display.
-
-   :::{image} /explore-analyze/images/discover-session-tab-selector.png
-   :alt: Tab selector showing the list of available tabs for a Discover session panel
-   :width: 50%
-   :screenshot:
-   :::
-
-3. Select **Apply**.
+- [Use Discover sessions in dashboards](use-sessions-in-dashboards.md): Add the session, its chart, or its table to a dashboard.
+- [Export results and sessions from Discover](export-discover-session.md): Take the results or the session definition elsewhere.
 
 ## Related pages [save-open-search-related]
 
-- [Explore fields and data with Discover](discover-get-started.md)
-- [Create a dashboard](../dashboards/create-dashboard.md)
-- [Using ES|QL](try-esql.md)
+- [How Discover works](discover-get-started.md)
+- [How to query in Discover's {{esql}} mode](use-esql.md)

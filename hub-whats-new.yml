@@ -1,0 +1,146 @@
+# Content for the {whats-new} panel on hub pages, keyed by product.
+#
+# This file lives at the root of the documentation set, alongside changelog.yml and
+# redirects.yml. A hub page renders a panel from it with one line: `:product: <key>`.
+#
+# Schema: https://elastic.github.io/docs-builder/syntax/whats-new/
+# Refresh with the docs-hub-whats-new skill. Source the cards from the published
+# release notes and the official what's-new blog, not from changelog YAML.
+
+products:
+  elasticsearch:
+    title: What's new in Elasticsearch
+    id: whats-new
+    intro: Highlights from recent releases.
+    release-links:
+      - label: '{{version.stack}}'
+        url: elasticsearch://release-notes/index.md
+      - label: Serverless
+        url: /release-notes/elastic-cloud-serverless/index.md
+    upgrade-link:
+      label: Upgrade Elasticsearch
+      url: /deploy-manage/upgrade/deployment-or-cluster.md
+    items:
+      - title: Vector database project type
+        description: Run vector workloads on a Serverless project with vector-tuned defaults, inference access, and pricing built for embeddings.
+        link: /solutions/vector-database.md
+        availability:
+          - Serverless
+        tag: Vector search
+        featured: true
+      - title: Cross-project search
+        description: Query data across several Serverless projects without moving or copying it, from Discover, ES|QL, dashboards, and alerting. Generally available.
+        link: /explore-analyze/cross-project-search.md
+        availability:
+          - Serverless
+        tag: Search
+      - title: ES|QL HIGHLIGHT command
+        description: Show which terms matched a full-text query by wrapping them in highlight tags in your ES|QL results. Generally available.
+        link: elasticsearch://reference/query-languages/esql/commands/highlight.md
+        availability:
+          - Serverless
+        tag: ES|QL
+      - title: Columnar index mode
+        description: Store each field once in a column store, with no inverted index by default, for a smaller footprint. Technical preview.
+        link: /manage-data/data-store/columnar.md
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Storage
+      - title: Native Prometheus and PromQL
+        description: Query Prometheus metrics with PromQL in Elasticsearch, generally available.
+        link: elasticsearch://reference/query-languages/promql.md
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Metrics
+  kibana:
+    title: What's new in Kibana
+    id: whats-new
+    intro: Highlights from recent releases.
+    release-links:
+      - label: '{{version.stack}}'
+        url: kibana://release-notes/index.md
+      - label: Serverless
+        url: /release-notes/elastic-cloud-serverless/index.md
+    upgrade-link:
+      label: Upgrade Kibana
+      url: /deploy-manage/upgrade/deployment-or-cluster.md
+    items:
+      - title: Custom panels for dashboards
+        description: Add HTML panels to a dashboard with Liquid templates and ES|QL queries, or generate them in Agent Builder chat. Technical preview.
+        link: /explore-analyze/visualize/custom-panels.md
+        availability:
+          - Serverless
+        tag: Dashboards
+        featured: true
+      - title: Share Agent Builder conversations
+        description: Share a conversation with specific people or make it public, so others can read the full history and continue it. Generally available.
+        link: /explore-analyze/ai-features/agent-builder/chat.md#share-a-conversation
+        availability:
+          - Serverless
+        tag: Agent Builder
+      - title: Dashboards and Visualizations APIs
+        description: Create, update, and manage dashboards and visualizations in code. Generally available.
+        link: /explore-analyze/dashboards/create-dashboards-programmatically.md
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Dashboards
+      - title: Dashboards in Agent Builder chat
+        description: Build dashboards from chat, create skills, and add dashboard controls without leaving the conversation. Generally available.
+        link: /explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Agent Builder
+      - title: Workflows version history
+        description: Every save records a version you can compare and restore. Generally available.
+        link: /explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Workflows
+
+  logstash:
+    title: What's new in Logstash
+    id: whats-new
+    intro: Highlights from recent releases.
+    release-links:
+      - label: '{{version.stack}}'
+        url: logstash://release-notes/index.md
+    upgrade-link:
+      label: Upgrade Logstash
+      url: logstash://reference/upgrading-logstash.md
+    items:
+      - title: OTLP metrics export
+        description: Export Logstash monitoring metrics to any OpenTelemetry-compatible endpoint. Technical preview.
+        link: logstash://reference/monitoring-with-opentelemetry.md
+        availability:
+          - '9.5'
+        tag: Monitoring
+        featured: true
+      - title: Kafka integration plugin 12
+        description: The plugin now uses Kafka client 4.x, supports an opt-in consumer group protocol, and drops two partitioner options. Review the breaking changes before you upgrade.
+        link: logstash-docs-md://lsr/plugins-integrations-kafka.md
+        availability:
+          - '9.5'
+        tag: Integrations
+      - title: TLS certificate auto-reload
+        description: Pipelines reload when TLS certificates rotate on disk, without a full pipeline restart.
+        link: logstash://reference/reloading-config.md
+        availability:
+          - '9.5'
+        tag: Security
+      - title: cgroup v2 awareness
+        description: Read resource limits from cgroup v2 as well as v1, for modern Linux hosts and Kubernetes.
+        link: logstash://release-notes/index.md
+        availability:
+          - '9.5'
+        tag: Containers
+      - title: Cloud API keys in Elasticsearch plugins
+        description: The Elasticsearch input, filter, and output plugins accept Elastic Cloud API keys in the api_key option.
+        link: logstash-docs-md://lsr/plugins-outputs-elasticsearch.md
+        availability:
+          - '9.5'
+        tag: Elasticsearch

@@ -116,7 +116,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
 :::::::
 
 :::{dropdown} Example response
-```console
+```console-result
 {
   "acknowledged": true,
   "shards_acknowledged": true,
@@ -182,7 +182,7 @@ EOF
 
 :::{dropdown} Example response
 
-```console
+```console-result
 {
   "errors": false,
   "took": 400,
@@ -338,7 +338,7 @@ Both queries return the documents ranked by semantic relevance. The documents ab
 
 ::::{dropdown} Example Query DSL response
 
-```console
+```console-result
 {
   "took": 87,
   "timed_out": false,

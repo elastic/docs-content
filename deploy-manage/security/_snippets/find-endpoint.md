@@ -7,8 +7,8 @@ If you have many deployments, you can instead go to the **Hosted deployments** (
 :::
 
 3. Select **Manage**.
-4. In the deployment overview, under **Applications**, find the application that you want to test.
-5. Click **Copy endpoint**. The value looks something like the following:
+4. In the deployment overview, select **Application endpoints, cluster and component IDs**.
+5. Expand the section for the application you want to access, then copy the **Direct endpoint** value. It looks something like the following:
 
 ```text subs=true
 https://my-deployment-d53192.es.{{example-default-dn}}

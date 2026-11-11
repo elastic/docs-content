@@ -4,9 +4,10 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+description: Find the data streams for an Elastic integration, then view or customize the lifecycle policy that manages their backing indices.
 ---
 
-# Managing lifecycle polices for integrations data [ilm-manage-lifecycle-policy-integrations-data]
+# Managing lifecycle policies for integrations data [ilm-manage-lifecycle-policy-integrations-data]
 
 Learn to apply and manage lifecycle policies for integrations data stored in {{es}}. This documentation covers default policies for Elastic integrations, how to override them, and how to align retention rules with your requirements.
 
@@ -25,7 +26,7 @@ To find the data stream associated with a visualization in a {{kib}}:
 
     ![Explore in discover](/manage-data/images/ilm-explore-in-discover.png "")
 
-1. In **Discover**, the list of documents shows the columns for fields applicable to the visualization that you selected. Select any document that has data for those fields, then select the **View details** icon {icon}`expand` (**Toggle dialog with details** in earlier {{stack}} versions).
+1. In **Discover**, the list of documents shows the columns for fields applicable to the visualization that you selected. Select any document that has data for those fields, then select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier {{stack}} versions).
 
     ![View details in the Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
 

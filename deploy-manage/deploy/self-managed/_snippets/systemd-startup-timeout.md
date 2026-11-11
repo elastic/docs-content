@@ -23,6 +23,6 @@ Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Failed with result 'ti
 Jan 31 01:37:15 debian systemd[1]: Failed to start Elasticsearch.
 ```
 
-To avoid this, upgrade your `systemd` to at least version 238. You can also temporarily work around the problem by extending the `TimeoutStartSec` parameter. If the timeout error persists after upgrading, set `NotifyAccess=all` in your [systemd override configuration](../setting-system-settings.md#systemd).
+To avoid this, upgrade your `systemd` to at least version 238. You can also temporarily work around the problem by extending the `TimeoutStartSec` parameter. If the timeout error persists after upgrading, set `NotifyAccess=all` in your [systemd override configuration](/deploy-manage/deploy/self-managed/setting-system-settings.md#systemd).
 
 ::::

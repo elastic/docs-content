@@ -1,4 +1,5 @@
 ---
+navigation_title: Lucene query syntax
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lucene-query.html
 applies_to:
@@ -8,13 +9,13 @@ products:
   - id: kibana
 ---
 
-# Lucene query syntax [lucene-query]
+# Lucene query syntax in {{kib}} [lucene-query]
 
 Lucene query syntax is available to {{kib}} users who opt out of the [{{kib}} Query Language](kql.md). Full documentation for this syntax is available as part of {{es}} [query string syntax](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md#query-string-syntax).
 
 The main reason to use the Lucene query syntax in {{kib}} is for advanced Lucene features, such as regular expressions or fuzzy term matching. However, Lucene syntax is not able to search nested objects or scripted fields.
 
-To use the Lucene syntax, open the **Saved query** menu, and then select **Language: KQL** > **Lucene**.
+To use the Lucene syntax, open the query menu next to the search bar, select **Language: KQL**, and then select **Lucene**.
 
 ![Click the circle icon for the saved query menu](/explore-analyze/images/kibana-lucene.png "")
 

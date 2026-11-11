@@ -122,7 +122,7 @@ Sample data sets come with sample visualizations, dashboards, and more to help y
 
 1. Open the **Integrations** page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the list of integrations, select **Sample Data**.
-3. On the page that opens, select **Other sample data sets**.
+3. {applies_to}`stack: ga 9.0-9.3` On the page that opens, select **Other sample data sets**.
 4. Install the sample data sets that you want.
 
 Once installed, you can access the sample data in the various {{kib}} apps available to you.

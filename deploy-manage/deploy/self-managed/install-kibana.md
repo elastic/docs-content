@@ -29,11 +29,11 @@ To support certain older Linux platforms (most notably CentOS7/RHEL7), {{kib}} f
 
 ## {{kib}} install packages [install]
 
-{{kib}} is provided in the following package formats:
+{{kib}} is provided in the following package formats. Which format you choose depends on your company's infrastructure policies and environment. If you don't have an existing preference, Docker containers and Linux packages (`deb` and `rpm`) offer the most straightforward setup. Archive installations (`tar.gz` and `zip`) require more manual effort for installation, upgrades, and ongoing maintenance.
 
 | Format | Description | Instructions |
 | --- | --- | --- |
-| `tar.gz` | The `tar.gz` packages are provided for installation on Linux and Darwin and are the easiest choice for getting started with {{kib}}. | [Install from archive on Linux or macOS](/deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md)|
+| `tar.gz` | The `tar.gz` packages are provided for installation on Linux and Darwin. | [Install from archive on Linux or macOS](/deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md)|
 | `zip` | The `zip` package is the only supported package for Windows.| [Install on Windows](/deploy-manage/deploy/self-managed/install-kibana-on-windows.md)|
 | `deb` | The `deb` package is suitable for Debian, Ubuntu, and other Debian-based systems.  Debian packages may be downloaded from the Elastic website or from our Debian repository. | [Install with Debian package](/deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md) |
 | `rpm` | The `rpm` package is suitable for installation on Red Hat, SLES, OpenSuSE and other RPM-based systems.  RPMs may be downloaded from the Elastic website or from our RPM repository. | [Install with RPM](/deploy-manage/deploy/self-managed/install-kibana-with-rpm.md) |

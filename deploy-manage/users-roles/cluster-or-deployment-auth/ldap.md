@@ -72,7 +72,7 @@ To configure an `ldap` realm with user search:
                 bind_dn: "cn=ldapuser, ou=users, o=services, dc=example, dc=com" <3>
                 user_search:
                   base_dn: "ou=users, o=services, dc=example, dc=com" <4>
-                  filter: "(cn=\{0})" <5>
+                  filter: "(cn={0})" <5>
                 group_search:
                   base_dn: "ou=groups, o=services, dc=example, dc=com" <6>
     ```
