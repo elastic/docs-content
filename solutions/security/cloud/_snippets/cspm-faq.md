@@ -21,7 +21,7 @@ Newly unenrolled cloud accounts can take a maximum of 24 hours to disappear from
 
 **Can I install an unlimited number of {{managed-integrations}}?**
 
-Each {{managed-integration}} deployment counts towards the maximum number of {{managed-integrations}} you can have in the same project. When you reach the maximum, you'll see an error message similar to `You've reached the maximum number of 50 managed integrations. To add more, either remove or change some to Elastic Agent-based integrations.` You won't be able to deploy another {{managed-integration}} until you remove an existing one. All [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md) count towards this limit.
+Each {{managed-integration}} deployment counts towards the maximum number of {{managed-integrations}} you can have in the same project. When you reach the maximum, you'll see an error message similar to `You've reached the maximum number of 50 managed integrations. To add more, either remove or change some to Elastic Agent-based integrations.` You won't be able to deploy another {{managed-integration}} until you remove an existing one. All [{{managed-integrations}}](/reference/managed-integrations/index.md) count towards this limit.
 
 
 ## KSPM FAQ [_kspm_faq]

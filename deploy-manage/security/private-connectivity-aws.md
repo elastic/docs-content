@@ -561,7 +561,7 @@ If the private connection is later removed from your project, {{fleet}} restores
 
 :::{admonition} Limitations
 * You can't create another {{es}} output that points to the private endpoint. Only the output that {{fleet}} adds can use that URL.
-* {{managed-integrations}} don't use the private endpoints. Elastic runs their collectors and writes the data to your project over Elastic's internal network. For more information, refer to [Security and data residency](/reference/managed-integrations/managed-integrations.md#managed-integrations-data-security).
+* {{managed-integrations}} don't use the private endpoints. Elastic runs their collectors and writes the data to your project over Elastic's internal network. For more information, refer to [Security and data residency](/reference/managed-integrations/index.md#managed-integrations-data-security).
 :::
 ::::
 

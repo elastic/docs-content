@@ -16,7 +16,7 @@ type: how-to
 
 # Enable an {{managed-integration}} [enable-managed-integration]
 
-Enable an {{managed-integration}} in {{kib}} to start collecting data from a cloud source. Elastic provisions and operates the collector for you on Elastic-managed infrastructure, so there's nothing to install or maintain. For details on the architecture, refer to [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md).
+Enable an {{managed-integration}} in {{kib}} to start collecting data from a cloud source. Elastic provisions and operates the collector for you on Elastic-managed infrastructure, so there's nothing to install or maintain. For details on the architecture, refer to [{{managed-integrations}}](/reference/managed-integrations/index.md).
 
 ## Before you begin [enable-managed-integration-before-you-begin]
 
@@ -75,5 +75,5 @@ For integrations that authenticate to a cloud provider, you can use [federated i
 
 ## Next steps [enable-managed-integration-next-steps]
 
-* Learn more about [how {{managed-integrations}} work](/reference/managed-integrations/managed-integrations.md#managed-integrations-architecture).
+* Learn more about [how {{managed-integrations}} work](/reference/managed-integrations/index.md#managed-integrations-architecture).
 * Review common questions in the [{{managed-integrations}} FAQ](/reference/managed-integrations/managed-integrations-faq.md).

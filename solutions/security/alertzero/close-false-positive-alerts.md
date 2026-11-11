@@ -11,7 +11,7 @@ products:
 
 # Close false-positive alerts [alertzero-close-false-positives]
 
-The {{az-alert-triage}} {{az-worker}} reviews your open and acknowledged alerts and finds the ones it judges to be false positives. Its [{{az-autonomy}}](configure-worker-settings.md) controls what it does with them.
+The {{az-alert-triage}} {{az-worker}} reviews your open and acknowledged alerts and finds the ones it judges to be false positives. Its [{{az-autonomy}}](configure-worker-settings.md#configure-worker-settings-alert-triage) controls what it does with them.
 
 - With **{{az-manual}}** {{az-autonomy}} (the default), the {{az-worker}} proposes closing the false positives and waits for you to [review](#alertzero-close-false-positives-review) and [approve or decline](#alertzero-close-false-positives-decide) each proposed closure.
 - With **{{az-supervised}}** {{az-autonomy}}, the {{az-worker}} closes the false positives on its own. You [check its closures](#alertzero-close-false-positives-past-closures) afterward and reopen any that you disagree with.
@@ -22,9 +22,7 @@ By default, the {{az-alert-triage}} {{az-worker}} runs every 15 minutes and tria
 
 The {{az-worker}} groups false positives from the same rule that share a pattern into one {{az-proposed-action}}. For example, if a backup agent on many hosts runs from the same folder, with the same publisher signature and the same parent process, its alerts become one {{az-proposed-action}}.
 
-To change how often the {{az-worker}} runs, which alerts it triages, or how confident it must be before it proposes a closure, refer to [](configure-worker-settings.md).
-
-% For docs writers: After elastic/docs-content#9144 merges, point both links to configure-worker-settings.md on this page at its configure-worker-settings-alert-triage anchor.
+To change how often the {{az-worker}} runs, which alerts it triages, or how confident it must be before it proposes a closure, refer to [{{az-alert-triage}} settings](configure-worker-settings.md#configure-worker-settings-alert-triage).
 
 ## Review a proposed closure [alertzero-close-false-positives-review]
 

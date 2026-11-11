@@ -10,7 +10,7 @@ products:
 
 # Rule action variables [rule-action-variables]
 
-Alerting rules can use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to pass values when the actions run.
+Rule action variables are part of {{alerting-v1-system}}. Alerting rules can use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to pass values when the actions run.
 
 ## Common variables [common-rule-action-variables]
 

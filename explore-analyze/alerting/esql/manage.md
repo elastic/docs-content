@@ -2,7 +2,8 @@
 navigation_title: Manage
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -11,7 +12,7 @@ description: "Use role privileges to control who can create rules and triage ale
 
 # Manage {{alerting-v2-system}} [manage]
 
-Access to {{alerting-v2-system}} works at two levels. Role privileges control what each person can do in {{kib}}, such as create rules or triage alerts. Stored API keys control what rules, action policies, and workflows can do when they run in the background. For example, a rule runs with the API key of the user who last saved it. That user's privileges determine what data the rule can query.
+Access to {{alerting-v2-system-short}} works at two levels. Role privileges control what each person can do in {{kib}}, such as create rules or triage alerts. Stored API keys control what rules, action policies, and workflows can do when they run in the background. For example, a rule runs with the API key of the user who last saved it. That user's privileges determine what data the rule can query.
 
 Use the following pages to set up access for your team and keep those background runs authorized.
 
