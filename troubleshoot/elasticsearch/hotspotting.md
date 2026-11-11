@@ -88,9 +88,9 @@ Historically, clusters experience hot spotting mainly as an effect of hardware, 
 
 Here are some common improper hardware setups which might contribute to hot spotting:
 
-* Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications. To check this, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes):
+* Resources are available non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications. To check this, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes):
   ```console
-  GET _cat/nodes?v=true&s=name&h=name,role,disk.total,heap.max,allocated_processors
+  GET _cat/nodes?v=true&s=name&h=name,role,disk.total,heap.max,available_processors
   ```
 * Resources are consumed by another service on the host, including other {{es}} nodes. Refer to our [dedicated host](../../deploy-manage/deploy/self-managed/installing-elasticsearch.md#dedicated-host) recommendation.
 * Resources experience different network or disk throughputs. For example, if one node’s I/O is lower than its peers. Refer to [Use faster hardware](../../deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) for more information.
