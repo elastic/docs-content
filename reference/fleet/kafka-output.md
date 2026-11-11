@@ -133,10 +133,122 @@ The `kafka` output supports the following settings, grouped by category. Many of
 :   The SASL mechanism to use when connecting to Kafka. It can be one of:
     * `PLAIN` for SASL/PLAIN.
     * `SCRAM-SHA-256` for SCRAM-SHA-256.
-    * `SCRAM-SHA-512` for SCRAM-SHA-512. If `sasl.mechanism` is not set, `PLAIN` is used if `username` and `password` are provided. Otherwise, SASL authentication is disabled.
+    * `SCRAM-SHA-512` for SCRAM-SHA-512.
+    * {applies_to}`stack: ga 9.6+` `OAUTHBEARER` for SASL/OAUTHBEARER, which authenticates with an OAuth 2.0 access token. Requires the [OAuth 2.0 settings](#output-kafka-oauth2-settings), and can't be combined with `username` and `password`.
+
+    If `sasl.mechanism` is not set, `PLAIN` is used if `username` and `password` are provided. Otherwise, SASL authentication isn't used.
 
 `ssl` $$$kafka-ssl-setting$$$
 :   When sending data to a secured cluster through the `kafka` output, {{agent}} can use SSL/TLS. For a list of available settings, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options).
+
+
+### OAuth 2.0 settings [output-kafka-oauth2-settings]
+```{applies_to}
+stack: ga 9.6+
+```
+
+To authenticate to Kafka with OAuth 2.0, set `sasl.mechanism` to `OAUTHBEARER` and configure an OAuth 2.0 client under `auth.oauth2client`. {{agent}} requests an access token from your authorization server, uses it to authenticate to Kafka, and requests a new token before the current one expires.
+
+OAuth 2.0 authentication works only when the inputs that send data to the output run as [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) in the OpenTelemetry (OTel) runtime of {{agent}}.
+
+{{agent}} supports two OAuth 2.0 grant types:
+
+* **Client credentials** (default): {{agent}} authenticates to the authorization server with a client ID and a client secret.
+* **JWT bearer** ([RFC 7523](https://datatracker.ietf.org/doc/html/rfc7523)): {{agent}} authenticates to the authorization server with a JSON Web Token (JWT) that it signs with your private key.
+
+This example configures a Kafka output that uses the client credentials grant:
+
+```yaml
+outputs:
+  kafka-output:
+    type: kafka
+    hosts:
+      - 'kafka1:9093'
+    topic: 'elastic-agent'
+    sasl:
+      mechanism: OAUTHBEARER
+    auth:
+      oauth2client:
+        token_url: https://auth.example.com/oauth2/token
+        client_id: <my-client-id>
+        client_secret: <my-client-secret>
+        scopes:
+          - kafka
+```
+
+`auth.oauth2client.token_url`
+:   (string) **Required**. The URL of the token endpoint of your OAuth 2.0 authorization server.
+
+`auth.oauth2client.client_id`
+:   (string) **Required** unless you set `client_id_file`. The client ID that your authorization server issued for {{agent}}.
+
+`auth.oauth2client.client_id_file`
+:   (string) The path to a file that contains the client ID. {{agent}} reads the file each time it requests a token, so you can rotate the client ID by updating the file. Takes precedence over `client_id`.
+
+`auth.oauth2client.client_secret`
+:   (string) **Required** for the client credentials grant, unless you set `client_secret_file`. The client secret that your authorization server issued for {{agent}}.
+
+`auth.oauth2client.client_secret_file`
+:   (string) The path to a file that contains the client secret. {{agent}} reads the file each time it requests a token, so you can rotate the secret by updating the file. Takes precedence over `client_secret`.
+
+`auth.oauth2client.grant_type`
+:   (string) The OAuth 2.0 grant type. Set to `client_credentials` for the client credentials grant or `urn:ietf:params:oauth:grant-type:jwt-bearer` for the JWT bearer grant.
+
+    **Default:** `client_credentials`
+
+`auth.oauth2client.scopes`
+:   (list of strings) The scopes to request with the access token.
+
+`auth.oauth2client.endpoint_params`
+:   Additional parameters to send to the token endpoint, as a map of parameter names to lists of values. For example:
+
+    ```yaml
+    endpoint_params:
+      audience:
+        - kafka-cluster
+    ```
+
+`auth.oauth2client.timeout`
+:   (string) How long to wait for a response from the token endpoint, for example `10s`.
+
+`auth.oauth2client.expiry_buffer`
+:   (string) How long before the access token expires that {{agent}} requests a new one.
+
+    **Default:** `5m`
+
+`auth.oauth2client.tls`
+:   TLS settings for the connection to the authorization server. These settings are separate from the `ssl` settings of the output, and use the OpenTelemetry names, such as `ca_file`, `cert_file`, `key_file`, and `insecure_skip_verify`. For the full list, refer to the [OpenTelemetry TLS configuration settings](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md).
+
+#### JWT bearer grant settings [output-kafka-oauth2-jwt-bearer-settings]
+
+The following settings apply only to the JWT bearer grant:
+
+`auth.oauth2client.client_certificate_key`
+:   (string) **Required** for the JWT bearer grant, unless you set `client_certificate_key_file`. The PEM-encoded RSA private key that {{agent}} uses to sign the JWT.
+
+`auth.oauth2client.client_certificate_key_file`
+:   (string) The path to a PEM file that contains the private key. {{agent}} reads the file each time it requests a token, so you can rotate the key by updating the file. Takes precedence over `client_certificate_key`.
+
+`auth.oauth2client.client_certificate_key_id`
+:   (string) The key ID (`kid`) to include in the JWT.
+
+`auth.oauth2client.signature_algorithm`
+:   (string) The algorithm used to sign the JWT. Can be `RS256`, `RS384`, or `RS512`.
+
+    **Default:** `RS256`
+
+`auth.oauth2client.iss`
+:   (string) The issuer (`iss`) claim of the JWT.
+
+    **Default:** the client ID
+
+`auth.oauth2client.audience`
+:   (string) The audience (`aud`) claim of the JWT.
+
+    **Default:** the value of `token_url`
+
+`auth.oauth2client.claims`
+:   (map) Additional claims to include in the JWT.
 
 
 ## Memory queue settings [output-kafka-memory-queue-settings]
