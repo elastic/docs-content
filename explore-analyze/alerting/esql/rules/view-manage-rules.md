@@ -24,10 +24,10 @@ Combine text search with filter controls to narrow by rule type, status, or tags
 The table shows each rule's tags in two columns. A dash means the rule has no tags.
 
 **Tags**
-:   Labels you use to organize rules.
+:   Free-form labels for organizing rules. Add them to filter the **Rules** page or to mark which team owns a rule. Tags don't affect which action policies apply.
 
 **Routing tags**
-:   Tags that link a rule to [action policies](../action-policies/create-configure-action-policy.md#routing-tags). You can't filter the table by routing tags.
+:   Labels that link a rule to [action policies](../action-policies/create-configure-action-policy.md#routing-tags). An action policy applies to a rule's alerts when the rule and the policy share at least one routing tag. You can't filter the **Rules** page by routing tags.
 
 ## Edit a rule inline [quick-edit-rule]
 
